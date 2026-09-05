@@ -19,6 +19,8 @@
 
 - Claude Code が書いてよいのは、担当した商材ディレクトリの中だけ
   （`<slug>/index.html`、`<slug>/og.png` など）
+- 商材ディレクトリはClaude Code専用ではない。commit・push・引き継ぎ後は、Codexが同じ商材を続けて編集してよい。逆方向も同じ
+- 同じ商材を同時に編集しない。作業開始時は最新のmainと現在のファイル、直近のGit履歴を読み直す
 - 商材ページを更新したら、一覧は自分で直さず「引き継ぎメモ」を出して終わる
 - 「一覧も更新して」「公開まで」と明示された場合のみ、下の手順で触る
 
@@ -29,15 +31,15 @@
 ```
 一覧更新の引き継ぎ（Codex向け）
   id            : <ディレクトリ名>
-  data-updated  : <本体コミットの日時 ISO8601+09:00>  ← コミットハッシュも書く
+  data-updated  : <本体コミットのAuthor Date ISO8601+09:00を分単位にした値>  ← コミットハッシュも書く
   最新の変更     : <何を変えたかが分かる1行。「更新しました」は不可>
   並び替え・採番 : 要 / 不要
 ```
 
 ### 明示指示があって index.html を触る場合の手順
 
-1. `git fetch origin` の後 `git log --oneline HEAD..origin/main -- index.html` を必ず見る。
-   1件でもあれば、先に `git pull --rebase` してから編集を始める
+1. `git status --short --branch` で未コミット変更がないことを確認し、`git fetch origin` の後
+   `git log --oneline HEAD..origin/main` を必ず見る。1件でもあれば、先に `git pull --rebase` してから編集を始める
 2. 取り込んだ後の「現在の」カード構造を読み直す。前回の構造を前提にしない。
    （実例：カードは `<a class="service">` から `<article class="service-entry">` へ移り、
    日時属性も `<a>` から `<article>` へ移動した）
@@ -45,9 +47,18 @@
 4. 競合したら、**自分の index.html 側の変更を捨てて上流をそのまま採り、カード1枚を貼り直す**。
    `--ours` / `--theirs` での一括解決は禁止。相手の変更を丸ごと消しても git は成功と報告する
 5. 編集スクリプトは決め打ち＋assert。構造が変わったら黙って素通りせず落とす
-6. `data-updated` は **rebase 後の最終的なコミット日時**を取り直して入れる。
-   rebase するとコミット日時が変わるので、rebase 前の値を使うと一覧と実履歴がズレる
-7. 書いたらヘッドレスで描画し、並び順・連番・バッジ・日時を読み戻して検証する
+6. `data-updated` は `git show -s --format='%aI %h %s' <本体コミット>` のAuthor Dateを分単位にして入れる。
+   rebaseで変動するCommitter Dateは使わない
+7. `node tools/check-index.mjs --history` を実行する
+8. 書いたらヘッドレスで描画し、並び順・連番・バッジ・日時を読み戻して検証する
+9. push直前に `git fetch origin` を行い、上流の新しい変更を確認する
 
 1 は Claude Code 側の PreToolUse フック（`~/.claude/hooks/index-guard/`）でも
 機械的に止まる。上流が進んでいる状態でこのファイルを編集しようとすると deny される。
+ローカルフックは補助であり、共通の最終判定はGitHub Actionsの `check-index` とする。
+
+## 商材ページだけを先に更新する場合
+
+- 一覧へ反映すべき実質更新のコミット本文に `Index-Update: pending` を付ける
+- 一覧日時を変えない軽微な修正のコミット本文に `Catalog-Update: no` を付ける
+- commit・push後、READMEの `LP引き継ぎ` と上記の `一覧更新の引き継ぎ` をユーザーへ返す
