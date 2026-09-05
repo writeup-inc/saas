@@ -5,7 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="株式会社ライトアップ AIコンサル局のSaaSチームが企画・検討している、新しいAIサービスのLP一覧です。">
   <meta name="theme-color" content="#f4f2ec">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="WRITEUP / SaaS">
+  <meta property="og:title" content="See. Notice. Know. Knock. | AIコンサル局 SaaSチーム">
+  <meta property="og:description" content="株式会社ライトアップ AIコンサル局のSaaSチームが企画・検討している、新しいAIサービスのLP一覧です。">
+  <meta property="og:url" content="https://writeup-inc.github.io/saas/">
+  <meta name="twitter:card" content="summary">
   <link rel="canonical" href="https://writeup-inc.github.io/saas/">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
   <title>See. Notice. Know. Knock. | AIコンサル局 SaaSチーム</title>
   <style>
     :root {
@@ -210,10 +218,10 @@
       --note-delay: .15s;
       --note-tilt: -.65deg;
       --note-paper: #eee5c9;
-      opacity: 0;
+      opacity: 1;
       transform-origin: 52% 8%;
       animation: note-stick 1.05s cubic-bezier(.2,.78,.2,1) var(--note-delay) both;
-      will-change: opacity, transform;
+      will-change: transform;
     }
 
     .hero-note:nth-child(2) {
@@ -230,17 +238,14 @@
 
     @keyframes note-stick {
       0% {
-        opacity: 0;
-        transform: translate3d(24px, -32px, 0) rotate(4deg) scale(1.055);
+        transform: translate3d(0, -24px, 0) rotate(2.4deg) scale(1.035);
       }
       52% {
-        opacity: 1;
         transform: translate3d(-2px, 4px, 0) rotate(-.8deg) scale(.985);
       }
       70% { transform: translate3d(1px, -2px, 0) rotate(.35deg) scale(1.008); }
       86% { transform: translate3d(0, 1px, 0) rotate(-.12deg) scale(.997); }
       100% {
-        opacity: 1;
         transform: translate3d(0, 0, 0) rotate(0) scale(1);
       }
     }
@@ -482,6 +487,53 @@
       font-size: 10px;
       font-weight: 700;
       letter-spacing: .12em;
+    }
+
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: -2px 0 6px;
+      padding: 10px 0 12px;
+      overflow-x: auto;
+      scrollbar-width: thin;
+    }
+
+    .filter-button {
+      flex: 0 0 auto;
+      min-height: 44px;
+      padding: 9px 15px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--ink-soft);
+      background: rgba(251,250,246,.72);
+      font: inherit;
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: .04em;
+      cursor: pointer;
+      transition: color .2s ease, background .2s ease, border-color .2s ease;
+    }
+
+    .filter-button:hover,
+    .filter-button:focus-visible {
+      outline: none;
+      border-color: rgba(23,75,60,.42);
+      color: var(--green);
+      background: var(--surface);
+    }
+
+    .filter-button[aria-pressed="true"] {
+      border-color: var(--green);
+      color: #fff;
+      background: var(--green);
+    }
+
+    .filter-status {
+      margin: -3px 0 8px;
+      color: var(--muted);
+      font-size: 10px;
+      text-align: right;
     }
 
     .service {
@@ -773,7 +825,7 @@
     .service-share {
       display: flex;
       width: max-content;
-      min-height: 32px;
+      min-height: 44px;
       align-items: center;
       gap: 7px;
       margin: -1px 1px 0 auto;
@@ -949,6 +1001,7 @@
       .url { display: none; }
       .arrow { width: 36px; font-size: 17px; }
       .service-share { margin-right: 0; }
+      .filter-bar { margin-right: -8px; padding-right: 8px; }
       .category-legend { padding: 24px 18px; }
       .legend-grid { grid-template-columns: 1fr; }
       .legend-item { display: grid; grid-template-columns: 38px 1fr; column-gap: 13px; padding: 15px; }
@@ -1083,6 +1136,8 @@
           <strong>Recent activity</strong>
           <span>最終更新順</span>
         </div>
+        <div class="filter-bar" role="group" aria-label="カテゴリで絞り込む"></div>
+        <p class="filter-status" aria-live="polite"></p>
 
         <article class="service-entry" id="ai-ad-agency-pack" data-published="2026-09-05T00:48:00+09:00" data-updated="2026-09-05T14:41:00+09:00">
         <a class="service" data-category="build" href="./ai-ad-agency-pack/">
@@ -1243,7 +1298,16 @@
       const activityWindowMs = 7 * 24 * 60 * 60 * 1000;
       const list = document.querySelector('.list');
       const services = [...list.querySelectorAll('.service-entry')];
+      const filterBar = list.querySelector('.filter-bar');
+      const filterStatus = list.querySelector('.filter-status');
       const now = Date.now();
+      const categoryLabels = {
+        sales: '集客・営業',
+        people: '採用・人材',
+        care: '顧客対応・店舗',
+        work: '経営・社内業務',
+        build: 'AI導入・事業化'
+      };
 
       services
         .sort((a, b) => new Date(b.dataset.updated) - new Date(a.dataset.updated))
@@ -1269,6 +1333,44 @@
 
           list.appendChild(service);
         });
+
+      const categoriesInUse = new Set(services.map((service) => service.querySelector('.service').dataset.category));
+      const visibleCategories = Object.keys(categoryLabels).filter((category) => categoriesInUse.has(category));
+      const filterOptions = [['all', 'すべて'], ...visibleCategories.map((category) => [category, categoryLabels[category]])];
+
+      const applyFilter = (selectedCategory) => {
+        let visibleIndex = 0;
+
+        services.forEach((service) => {
+          const category = service.querySelector('.service').dataset.category;
+          const isVisible = selectedCategory === 'all' || category === selectedCategory;
+          service.hidden = !isVisible;
+          if (isVisible) {
+            visibleIndex += 1;
+            service.querySelector('.number').textContent = String(visibleIndex).padStart(2, '0');
+          }
+        });
+
+        filterBar.querySelectorAll('.filter-button').forEach((button) => {
+          button.setAttribute('aria-pressed', String(button.dataset.filter === selectedCategory));
+        });
+
+        const label = selectedCategory === 'all' ? 'すべて' : categoryLabels[selectedCategory];
+        filterStatus.textContent = `${label}：${visibleIndex}件を表示中`;
+      };
+
+      filterOptions.forEach(([value, label]) => {
+        const button = document.createElement('button');
+        button.className = 'filter-button';
+        button.type = 'button';
+        button.dataset.filter = value;
+        button.setAttribute('aria-pressed', String(value === 'all'));
+        button.textContent = label;
+        button.addEventListener('click', () => applyFilter(value));
+        filterBar.appendChild(button);
+      });
+
+      applyFilter('all');
 
       const canonical = new URL(document.querySelector('link[rel="canonical"]').href);
       const copyStatus = document.querySelector('#copy-status');
