@@ -92,6 +92,33 @@ blockquote p + p{margin-top:.9em}
 }
 hr.sep{border:0; border-top:1px solid var(--line); margin:58px 0 0}
 
+/* ---------- cast ---------- */
+.cast{margin:76px 0 0; padding:44px 0 0; border-top:1px solid var(--line)}
+.cast > h2{
+  font-family:var(--sans); font-size:11px; font-weight:700; letter-spacing:.26em;
+  color:var(--muted); margin:0 0 34px;
+}
+.cast-grid{display:block}
+.person{display:flex; gap:28px; padding:28px 0; border-top:1px solid var(--line)}
+.person:first-child{padding-top:0; border-top:0}
+.person .fig{flex:none; height:64px; width:62px; color:var(--ink); opacity:.8; margin:2px 0 0}
+.person .body{flex:1; min-width:0}
+.person h3{
+  font-size:20px; font-weight:600; letter-spacing:.08em; margin:0 0 4px; line-height:1.4;
+}
+.person .role{
+  font-family:var(--sans); font-size:11px; font-weight:700; letter-spacing:.14em;
+  color:var(--accent); margin:0 0 14px;
+}
+.person p{font-size:14.5px; line-height:1.9; margin:0 0 .9em; color:var(--ink-soft); text-align:left}
+.person p:last-child{margin:0}
+@media (max-width:700px){
+  .cast{margin:60px 0 0; padding:36px 0 0}
+  .person{gap:18px; padding:24px 0}
+  .person .fig{height:50px; width:48px}
+  .person p{font-size:14px}
+}
+
 /* ---------- coda ---------- */
 .coda{
   margin:70px 0 0; padding:34px 30px 30px; background:var(--surface);
@@ -438,6 +465,65 @@ footer a{color:var(--muted); display:inline-flex; align-items:center; min-height
 </section>
 
 </article>
+
+
+<section class="cast">
+  <h2>登場人物</h2>
+  <div class="cast-grid">
+
+    <div class="person">
+      <svg class="fig" width="62" height="64" viewBox="0 0 62 64" fill="none" aria-hidden="true">
+      <g stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="31" cy="38" r="16"/>
+        <path d="M31 22 v-8"/>
+      </g>
+      <path d="M31 17 q12 -8 17 1 q-10 7 -17 -1" stroke="#a8503c" stroke-width="1.35" stroke-linejoin="round" fill="none"/>
+    </svg>
+      <div class="body"><h3>アタル</h3>
+      <p class="role">りんご農家の子</p>
+      <p>売り物にならないりんごを、リヤカーで配って歩く係だった。誰がどれを喜ぶかを、頼まれなくても覚えている。</p>
+      <p>知らない引き戸を平気で開ける。断られても、次の家に行く。持っている人と、欲しい人を出会わせたい。それだけの人。</p>
+      <p>のちに東京の不動産会社へ。</p>
+      </div>
+    </div>
+
+    <div class="person">
+      <svg class="fig" width="62" height="64" viewBox="0 0 62 64" fill="none" aria-hidden="true">
+      <g stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 12 h30 v40 h-30 z"/>
+        <path d="M16 24 h18 M16 32 h18 M16 40 h11" opacity=".55"/>
+        <path d="M40 54 L54 34 L60 39 L46 59 L37 62 z"/>
+        <path d="M54 39 L60 44" opacity=".5"/>
+      </g>
+      <path d="M37 62 L46 59 L40 54 z" fill="#a8503c" stroke="none" opacity=".9"/>
+    </svg>
+      <div class="body"><h3>タケル</h3>
+      <p class="role">駅前の電器屋の子</p>
+      <p>アタルが聞いてきた話を、誰が言ったか、いつ聞いたかまで書き残す。親が修理のあとに置いてくるメモを、ずっと見て育った。</p>
+      <p>人が上手くいく瞬間の隣にいるのが好きで、自分は前に出ない。出所の言えない数字は、口に出さない。</p>
+      <p>のちに東京へ出て、いまは町に戻っている。</p>
+      </div>
+    </div>
+
+    <div class="person">
+      <svg class="fig" width="62" height="64" viewBox="0 0 62 64" fill="none" aria-hidden="true">
+      <g stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 34 L31 8 L50 34 z"/>
+        <path d="M14 34 h34" opacity=".5"/>
+        <path d="M20 34 q0 18 11 18 q11 0 11 -18" stroke-dasharray="3 4" opacity=".55"/>
+      </g>
+      <circle cx="31" cy="42" r="2.2" fill="#a8503c" stroke="none" opacity=".9"/>
+    </svg>
+      <div class="body"><h3>コビト</h3>
+      <p class="role">正体不明</p>
+      <p>この話に二度だけ出てくる。名前は分かっていない。姿を見た者もいない。</p>
+      <p>この町には昔から、難しいことが朝になると片付いていることがある、と言われている。祖母は毎年、誰にも配らないりんごをひとつだけ置いた。理由を聞いた者はいない。</p>
+      <p>礼を言ってはいけない、とも。</p>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 <aside class="coda">
   <h2>この物語について</h2>
