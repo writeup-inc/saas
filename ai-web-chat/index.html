@@ -277,10 +277,10 @@ h1 em{color:var(--accent); font-style:normal}
 
 .ava-art-wrap{position:relative; flex:1; min-height:246px; overflow:hidden; background:var(--green-050)}
 .ava-art{position:absolute; inset:0; display:block; width:100%; height:100%}
-.ava-glow{transform-origin:120px 116px; opacity:.9}
+.ava-glow{transform-origin:120px 118px; opacity:.9}
 .is-speaking .ava-glow{animation:glow 2.2s ease-in-out infinite}
 @keyframes glow{0%,100%{transform:scale(1); opacity:.9}50%{transform:scale(1.06); opacity:.65}}
-.ava-body{transform-origin:120px 240px}
+.ava-body{transform-origin:120px 300px}
 .is-speaking .ava-body{animation:bob 2.6s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
 .ava-eye{transform-origin:center; transform-box:fill-box; animation:blinkEye 5.4s infinite}
@@ -288,10 +288,7 @@ h1 em{color:var(--accent); font-style:normal}
 @keyframes blinkEye{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.12)}}
 .ava-mouth{transform-origin:center; transform-box:fill-box}
 .is-speaking .ava-mouth{animation:talk .34s ease-in-out infinite}
-@keyframes talk{0%,100%{transform:scaleY(.45)}50%{transform:scaleY(1.5)}}
-.ava-ping{transform-origin:120px 44px; opacity:0}
-.is-speaking .ava-ping{animation:ping 1.6s ease-out infinite}
-@keyframes ping{0%{transform:scale(.6); opacity:.8}100%{transform:scale(1.9); opacity:0}}
+@keyframes talk{0%,100%{transform:scaleY(.45)}50%{transform:scaleY(1.5)}}100%{transform:scale(1.9); opacity:0}}
 
 .ava-meta{padding:20px 20px 22px; border-top:1px solid var(--hair)}
 .ava-meta b{display:block; font-size:16.5px; font-weight:800; letter-spacing:-.03em}
@@ -425,19 +422,27 @@ footer .wrap{display:flex; flex-wrap:wrap; align-items:center; justify-content:s
           <em>24時間・登録不要</em>
         </div>
         <div class="mini-ava">
-          <svg viewBox="0 0 240 240" aria-hidden="true">
-            <circle cx="120" cy="116" r="78" fill="#dfe9e4"/>
-            <path d="M46 240 q0-56 74-56 t74 56 z" fill="#2b6555"/>
-            <rect x="108" y="152" width="24" height="30" rx="11" fill="#1e5245"/>
-            <line x1="120" y1="60" x2="120" y2="44" stroke="#2b6555" stroke-width="4" stroke-linecap="round"/>
-            <circle cx="120" cy="42" r="5.5" fill="#e36b32"/>
-            <rect x="62" y="58" width="116" height="106" rx="34" fill="#fbfaf6" stroke="#2b6555" stroke-width="3"/>
-            <rect x="46" y="96" width="18" height="34" rx="9" fill="#2b6555"/>
-            <rect x="176" y="96" width="18" height="34" rx="9" fill="#2b6555"/>
-            <rect x="78" y="82" width="84" height="58" rx="24" fill="#12352c"/>
-            <rect x="97" y="100" width="10" height="15" rx="5" fill="#eff3f1"/>
-            <rect x="133" y="100" width="10" height="15" rx="5" fill="#eff3f1"/>
-            <rect x="110" y="124" width="20" height="6" rx="3" fill="#e36b32"/>
+          <svg viewBox="0 0 240 300" preserveAspectRatio="xMidYMin slice" aria-hidden="true">
+            <circle cx="120" cy="118" r="90" fill="#dfe9e4"/>
+            <path d="M108 146 h24 v46 q0 12-12 12 t-12-12 z" fill="#dcab86"/>
+            <path d="M6 300 C6 236 56 181 120 181 C184 181 234 236 234 300 Z" fill="#2b6555"/>
+            <path d="M106 182 L120 206 L134 182 L128 179 L120 194 L112 179 Z" fill="#fbfaf6"/>
+            <ellipse cx="120" cy="110" rx="43" ry="46" fill="#33291f"/>
+            <ellipse cx="82" cy="122" rx="7" ry="9.5" fill="#f2cdad"/>
+            <ellipse cx="158" cy="122" rx="7" ry="9.5" fill="#f2cdad"/>
+            <ellipse cx="120" cy="118" rx="38" ry="42" fill="#f2cdad"/>
+            <path d="M84 104 q4-27 36-27 t36 27 q-13-15-36-15 t-36 15 z" fill="#33291f"/>
+            <path d="M99 106 q8-4 15-1" stroke="#33291f" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+            <path d="M126 105 q7-3 15 1" stroke="#33291f" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+            <ellipse cx="106" cy="119" rx="4.2" ry="5.2" fill="#2d2521"/>
+            <ellipse cx="134" cy="119" rx="4.2" ry="5.2" fill="#2d2521"/>
+            <path d="M120 124 v8 q0 3 3.6 3" stroke="#d9a179" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+            <ellipse cx="120" cy="142" rx="7" ry="2.6" fill="#a85a48"/>
+            <path d="M79 118 q0-53 41-53 t41 53" stroke="#12352c" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+            <rect x="69" y="109" width="15" height="25" rx="7.5" fill="#12352c"/>
+            <rect x="156" y="109" width="15" height="25" rx="7.5" fill="#12352c"/>
+            <path d="M85 130 q13 12 20 14" stroke="#12352c" stroke-width="3.8" fill="none" stroke-linecap="round"/>
+            <circle cx="107" cy="145" r="4.2" fill="#e36b32"/>
           </svg>
           <span><b>AIアシスタント</b><small>資料の範囲で回答／範囲外は担当者へ</small></span>
         </div>
@@ -455,7 +460,7 @@ footer .wrap{display:flex; flex-wrap:wrap; align-items:center; justify-content:s
           </div>
         </div>
         <div class="chat-foot">
-          <p class="demo-note">画面はイメージです。企業名・相談内容・回答はすべて架空です。</p>
+          <p class="demo-note">画面はイメージです。企業名・相談内容・回答はすべて架空で、イラストは実在の人物ではありません。</p>
         </div>
       </div>
     </div>
@@ -658,22 +663,28 @@ footer .wrap{display:flex; flex-wrap:wrap; align-items:center; justify-content:s
       <div class="ava-panel">
         <span class="ava-state"><span class="ava-wave" aria-hidden="true"><i></i><i></i><i></i><i></i></span></span>
         <div class="ava-art-wrap">
-        <svg class="ava-art" viewBox="0 0 240 240" preserveAspectRatio="xMidYMax slice" role="img" aria-label="応答しているAIアシスタントのイラスト">
-          <circle class="ava-glow" cx="120" cy="116" r="78" fill="#dfe9e4"/>
-          <circle class="ava-ping" cx="120" cy="44" r="9" fill="none" stroke="#e36b32" stroke-width="2"/>
+        <svg class="ava-art" viewBox="0 0 240 300" preserveAspectRatio="xMidYMax slice" role="img" aria-label="応答しているAIアシスタントのイラスト。架空の人物です。">
+          <circle class="ava-glow" cx="120" cy="118" r="90" fill="#dfe9e4"/>
           <g class="ava-body">
-            <path d="M46 240 q0-56 74-56 t74 56 z" fill="#2b6555"/>
-            <path d="M104 190 l16 18 l16-18" fill="none" stroke="#eff3f1" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="108" y="152" width="24" height="30" rx="11" fill="#1e5245"/>
-            <line x1="120" y1="60" x2="120" y2="44" stroke="#2b6555" stroke-width="4" stroke-linecap="round"/>
-            <circle cx="120" cy="42" r="5.5" fill="#e36b32"/>
-            <rect x="62" y="58" width="116" height="106" rx="34" fill="#fbfaf6" stroke="#2b6555" stroke-width="3"/>
-            <rect x="46" y="96" width="18" height="34" rx="9" fill="#2b6555"/>
-            <rect x="176" y="96" width="18" height="34" rx="9" fill="#2b6555"/>
-            <rect x="78" y="82" width="84" height="58" rx="24" fill="#12352c"/>
-            <rect class="ava-eye" x="97" y="100" width="10" height="15" rx="5" fill="#eff3f1"/>
-            <rect class="ava-eye r" x="133" y="100" width="10" height="15" rx="5" fill="#eff3f1"/>
-            <rect class="ava-mouth" x="110" y="124" width="20" height="6" rx="3" fill="#e36b32"/>
+            <path d="M108 146 h24 v46 q0 12-12 12 t-12-12 z" fill="#dcab86"/>
+            <path d="M6 300 C6 236 56 181 120 181 C184 181 234 236 234 300 Z" fill="#2b6555"/>
+            <path d="M106 182 L120 206 L134 182 L128 179 L120 194 L112 179 Z" fill="#fbfaf6"/>
+            <ellipse cx="120" cy="110" rx="43" ry="46" fill="#33291f"/>
+            <ellipse cx="82" cy="122" rx="7" ry="9.5" fill="#f2cdad"/>
+            <ellipse cx="158" cy="122" rx="7" ry="9.5" fill="#f2cdad"/>
+            <ellipse cx="120" cy="118" rx="38" ry="42" fill="#f2cdad"/>
+            <path d="M84 104 q4-27 36-27 t36 27 q-13-15-36-15 t-36 15 z" fill="#33291f"/>
+            <path d="M99 106 q8-4 15-1" stroke="#33291f" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+            <path d="M126 105 q7-3 15 1" stroke="#33291f" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+            <ellipse class="ava-eye" cx="106" cy="119" rx="4.2" ry="5.2" fill="#2d2521"/>
+            <ellipse class="ava-eye r" cx="134" cy="119" rx="4.2" ry="5.2" fill="#2d2521"/>
+            <path d="M120 124 v8 q0 3 3.6 3" stroke="#d9a179" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+            <ellipse class="ava-mouth" cx="120" cy="142" rx="7" ry="2.6" fill="#a85a48"/>
+            <path d="M79 118 q0-53 41-53 t41 53" stroke="#12352c" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+            <rect x="69" y="109" width="15" height="25" rx="7.5" fill="#12352c"/>
+            <rect x="156" y="109" width="15" height="25" rx="7.5" fill="#12352c"/>
+            <path d="M85 130 q13 12 20 14" stroke="#12352c" stroke-width="3.8" fill="none" stroke-linecap="round"/>
+            <circle cx="107" cy="145" r="4.2" fill="#e36b32"/>
           </g>
         </svg>
         </div>
@@ -689,7 +700,7 @@ footer .wrap{display:flex; flex-wrap:wrap; align-items:center; justify-content:s
           <b><span class="dot"></span><span>ひなた社会保険労務士事務所（架空）</span></b>
           <em>24時間・登録不要</em>
         </div>
-        <p class="demo-banner">事務所名・相談内容・回答はすべて架空です。デモ用の応答スクリプトで動作し、個人情報の入力・送信は行いません。</p>
+        <p class="demo-banner">事務所名・相談内容・回答はすべて架空です。イラストは実在の人物ではありません。デモ用の応答スクリプトで動作し、個人情報の入力・送信は行いません。</p>
         <div class="chat-body" id="demoBody" role="log" aria-live="polite" aria-label="デモ会話"></div>
         <div class="chat-foot">
           <div class="chips" id="demoChips"></div>
