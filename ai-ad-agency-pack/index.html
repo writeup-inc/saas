@@ -1,0 +1,2253 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Claude Codeを実務基盤に、Meta広告の提案・設定・入稿準備・分析・改善を自社サービスにする。12の広告代理店スキルを毎月更新する実務パッケージ。">
+  <meta name="theme-color" content="#111b2b">
+  <title>誰でも、広告代理店になれる。｜AI広告代理店スタートパック</title>
+  <style>
+    :root {
+      --navy: #111b2b;
+      --navy-2: #18263a;
+      --ink: #101723;
+      --muted: #637083;
+      --paper: #f7f5ef;
+      --white: #ffffff;
+      --line: #d8dde4;
+      --soft: #eef1f4;
+      --orange: #ff6a2a;
+      --orange-dark: #d94b10;
+      --mint: #c9f2df;
+      --yellow: #ffe27a;
+      --container: 1200px;
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --shadow: 0 24px 80px rgba(11, 22, 39, .14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+      letter-spacing: .025em;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .28;
+      z-index: -1;
+      background-image: radial-gradient(rgba(17, 27, 43, .15) .65px, transparent .65px);
+      background-size: 7px 7px;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(calc(100% - 64px), var(--container));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 50;
+      background: rgba(247, 245, 239, .88);
+      border-bottom: 1px solid rgba(17, 27, 43, .1);
+      backdrop-filter: blur(18px);
+      transform: translateY(0);
+      transition: transform .3s ease, background-color .25s ease, border-color .25s ease;
+      will-change: transform;
+    }
+
+    .site-header.is-hidden {
+      transform: translateY(calc(-100% - 2px));
+    }
+
+    .header-inner {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      font-weight: 900;
+      text-decoration: none;
+      letter-spacing: .08em;
+    }
+
+    .brand-mark {
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: var(--orange);
+      border-radius: 7px 7px 2px 7px;
+      font-size: 11px;
+      box-shadow: 5px 5px 0 var(--navy);
+    }
+
+    .header-note {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .header-cta {
+      display: inline-flex;
+      min-height: 42px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      color: var(--white);
+      background: var(--navy);
+      border: 0;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform .2s, background .2s;
+    }
+
+    .header-cta:hover {
+      background: var(--orange-dark);
+      transform: translateY(-2px);
+    }
+
+    main {
+      overflow: clip;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 820px;
+      padding: 150px 0 80px;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 88% 18%, rgba(255, 106, 42, .28), transparent 25%),
+        radial-gradient(circle at 7% 90%, rgba(201, 242, 223, .12), transparent 30%),
+        var(--navy);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 12px;
+      background: linear-gradient(90deg, var(--orange) 0 25%, var(--yellow) 25% 47%, var(--mint) 47% 68%, var(--paper) 68%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(380px, .85fr);
+      align-items: center;
+      gap: clamp(48px, 7vw, 112px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 28px;
+      color: var(--mint);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 3px;
+      background: var(--orange);
+      border-radius: 999px;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 880px;
+      margin-bottom: 28px;
+      font-size: clamp(54px, 7vw, 108px);
+      line-height: .98;
+      letter-spacing: -.065em;
+      font-weight: 950;
+    }
+
+    .hero-accent {
+      display: inline-block;
+      position: relative;
+      color: var(--white);
+      z-index: 0;
+    }
+
+    .hero-accent::after {
+      content: "";
+      position: absolute;
+      left: -.02em;
+      right: -.05em;
+      bottom: .02em;
+      height: .16em;
+      background: var(--orange);
+      z-index: -1;
+      transform: rotate(-1.2deg);
+    }
+
+    .hero-lead {
+      max-width: 720px;
+      margin-bottom: 32px;
+      color: #d8e0ea;
+      font-size: clamp(18px, 2vw, 24px);
+      line-height: 1.75;
+      font-weight: 650;
+    }
+
+    .hero-lead strong {
+      color: var(--white);
+    }
+
+    .concept-status {
+      display: inline-flex;
+      margin: 0 0 18px;
+      padding: 7px 11px;
+      color: var(--navy);
+      background: var(--yellow);
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: .08em;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .button-primary,
+    .button-secondary {
+      display: inline-flex;
+      min-height: 58px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 25px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s, background .2s;
+    }
+
+    .button-primary {
+      color: var(--white);
+      background: var(--orange);
+      box-shadow: 0 13px 30px rgba(255, 106, 42, .25);
+    }
+
+    .button-primary:hover {
+      background: #ff7c43;
+      transform: translateY(-3px);
+      box-shadow: 0 18px 34px rgba(255, 106, 42, .32);
+    }
+
+    .button-secondary {
+      color: var(--white);
+      border-color: rgba(255, 255, 255, .38);
+      background: rgba(255, 255, 255, .05);
+    }
+
+    .button-secondary:hover {
+      background: rgba(255, 255, 255, .12);
+      transform: translateY(-3px);
+    }
+
+    .hero-conditions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .hero-conditions li {
+      padding: 8px 12px;
+      color: #d6dde6;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .hero-guardrails {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      margin: 18px 0 24px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 13px;
+      background: rgba(255, 255, 255, .16);
+    }
+
+    .hero-guardrails span {
+      display: flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 12px;
+      color: #e8edf3;
+      background: rgba(255, 255, 255, .05);
+      font-size: 11px;
+      font-weight: 850;
+      text-align: center;
+    }
+
+    .kit-board {
+      position: relative;
+      padding: 28px;
+      color: var(--ink);
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      transform: rotate(1deg);
+    }
+
+    .kit-board::before {
+      content: "START KIT";
+      position: absolute;
+      top: -17px;
+      right: 30px;
+      padding: 7px 13px;
+      color: var(--navy);
+      background: var(--yellow);
+      border: 2px solid var(--navy);
+      box-shadow: 4px 4px 0 var(--orange);
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: .14em;
+      transform: rotate(-3deg);
+    }
+
+    .kit-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .kit-title {
+      font-size: 20px;
+      font-weight: 950;
+      letter-spacing: -.025em;
+    }
+
+    .kit-count {
+      display: grid;
+      width: 66px;
+      height: 66px;
+      place-items: center;
+      color: var(--white);
+      background: var(--navy);
+      border-radius: 50%;
+      font-size: 22px;
+      font-weight: 950;
+      line-height: 1;
+    }
+
+    .kit-count small {
+      display: block;
+      font-size: 8px;
+      letter-spacing: .08em;
+    }
+
+    .kit-flow {
+      display: grid;
+      gap: 10px;
+      padding: 22px 0;
+    }
+
+    .flow-row {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 12px;
+      padding: 13px;
+      background: var(--soft);
+      border-radius: 12px;
+    }
+
+    .flow-num {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      color: var(--white);
+      background: var(--orange);
+      border-radius: 9px;
+      font-size: 11px;
+      font-weight: 950;
+    }
+
+    .flow-name {
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .flow-meta {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .board-safe {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 16px;
+      color: #0d5b3b;
+      background: var(--mint);
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .safe-dot {
+      width: 9px;
+      height: 9px;
+      flex: 0 0 auto;
+      background: #15945f;
+      border-radius: 50%;
+      box-shadow: 0 0 0 5px rgba(21, 148, 95, .14);
+    }
+
+    .intro {
+      padding: 120px 0 100px;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: .78fr 1.22fr;
+      gap: clamp(50px, 8vw, 130px);
+      align-items: start;
+    }
+
+    .kicker {
+      margin-bottom: 16px;
+      color: var(--orange-dark);
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin-bottom: 24px;
+      font-size: clamp(36px, 4vw, 64px);
+      line-height: 1.18;
+      letter-spacing: -.045em;
+      font-weight: 950;
+    }
+
+    .section-lead {
+      max-width: 760px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .quote-stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    .client-quote {
+      position: relative;
+      margin: 0;
+      padding: 28px 30px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      box-shadow: 10px 10px 0 rgba(17, 27, 43, .05);
+      font-size: clamp(18px, 2vw, 25px);
+      font-weight: 850;
+      line-height: 1.55;
+    }
+
+    .client-quote:nth-child(2) {
+      margin-left: 8%;
+      color: var(--white);
+      background: var(--navy);
+      border-color: var(--navy);
+      box-shadow: 10px 10px 0 var(--orange);
+    }
+
+    .client-quote small {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 750;
+    }
+
+    .client-quote:nth-child(2) small {
+      color: #acb8c7;
+    }
+
+    .concept {
+      padding: 110px 0;
+      background: var(--white);
+      border-block: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 50px;
+      margin-bottom: 52px;
+    }
+
+    .section-head h2 {
+      max-width: 820px;
+      margin-bottom: 0;
+    }
+
+    .section-number {
+      flex: 0 0 auto;
+      color: var(--orange);
+      font-size: 64px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -.08em;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .pillar {
+      min-height: 310px;
+      padding: 30px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+    }
+
+    .pillar:nth-child(2) {
+      background: var(--navy);
+      color: var(--white);
+      transform: translateY(-16px);
+    }
+
+    .pillar-label {
+      display: inline-flex;
+      min-width: 86px;
+      min-height: 31px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 56px;
+      color: var(--white);
+      background: var(--orange);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 950;
+    }
+
+    .pillar:nth-child(2) .pillar-label {
+      color: var(--navy);
+      background: var(--mint);
+    }
+
+    .pillar h3 {
+      margin-bottom: 12px;
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: -.03em;
+      font-weight: 950;
+    }
+
+    .pillar p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .pillar:nth-child(2) p {
+      color: #bdc7d3;
+    }
+
+    .platform {
+      padding: 120px 0;
+      background: var(--paper);
+    }
+
+    .platform-grid {
+      display: grid;
+      grid-template-columns: .82fr 1.18fr;
+      align-items: center;
+      gap: clamp(48px, 8vw, 110px);
+    }
+
+    .platform-copy .section-lead + .section-lead {
+      margin-top: 18px;
+    }
+
+    .platform-chip {
+      display: inline-flex;
+      margin-top: 28px;
+      padding: 9px 13px;
+      color: #0d5b3b;
+      background: var(--mint);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .platform-board {
+      overflow: hidden;
+      color: var(--white);
+      background: var(--navy);
+      border: 1px solid rgba(17, 27, 43, .12);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      transform: rotate(-.6deg);
+    }
+
+    .platform-board-head,
+    .platform-board-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 22px;
+      border-bottom: 1px solid rgba(255, 255, 255, .12);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .12em;
+    }
+
+    .platform-board-head strong {
+      color: var(--mint);
+      font-size: 12px;
+    }
+
+    .platform-commands {
+      display: grid;
+      gap: 10px;
+      padding: 22px;
+    }
+
+    .platform-command {
+      display: grid;
+      grid-template-columns: minmax(138px, .75fr) 1.25fr;
+      gap: 18px;
+      align-items: center;
+      padding: 16px;
+      background: rgba(255, 255, 255, .07);
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 12px;
+    }
+
+    .platform-command code {
+      color: var(--yellow);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .platform-command span {
+      color: #d6dee8;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .platform-board-foot {
+      color: #9eabba;
+      border-top: 1px solid rgba(255, 255, 255, .12);
+      border-bottom: 0;
+    }
+
+    .skill-lifecycle {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-top: 44px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--line);
+    }
+
+    .lifecycle-item {
+      padding: 24px 20px;
+      background: var(--white);
+    }
+
+    .lifecycle-item strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--orange-dark);
+      font-size: 11px;
+      letter-spacing: .12em;
+    }
+
+    .lifecycle-item span {
+      display: block;
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .roadmap {
+      padding: 120px 0;
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .roadmap .kicker {
+      color: var(--mint);
+    }
+
+    .roadmap .section-lead {
+      color: #bdc7d3;
+    }
+
+    .weeks {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      margin-top: 56px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .15);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, .15);
+    }
+
+    .week {
+      min-height: 320px;
+      padding: 30px 26px;
+      background: var(--navy-2);
+    }
+
+    .week:first-child {
+      background: var(--orange);
+    }
+
+    .week-num {
+      display: block;
+      margin-bottom: 80px;
+      color: var(--mint);
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: .13em;
+    }
+
+    .week:first-child .week-num {
+      color: var(--white);
+    }
+
+    .week h3 {
+      margin-bottom: 12px;
+      font-size: 24px;
+      line-height: 1.3;
+      letter-spacing: -.025em;
+      font-weight: 950;
+    }
+
+    .week p {
+      margin-bottom: 0;
+      color: #b8c4d1;
+      font-size: 13px;
+    }
+
+    .week:first-child p {
+      color: #fff4ed;
+    }
+
+    .deliverables {
+      padding: 110px 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .deliverable-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 44px;
+    }
+
+    .deliverable {
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr);
+      gap: 16px;
+      padding: 24px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+
+    .deliverable-num {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      color: var(--white);
+      background: var(--orange);
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 950;
+    }
+
+    .deliverable h3 {
+      margin-bottom: 6px;
+      font-size: 17px;
+      line-height: 1.4;
+      font-weight: 950;
+    }
+
+    .deliverable p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    .skills {
+      padding: 120px 0;
+    }
+
+    .skill-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .update-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 10px 14px;
+      color: #0d5b3b;
+      background: var(--mint);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .skill-card {
+      min-height: 180px;
+      padding: 22px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      transition: transform .2s, border-color .2s, box-shadow .2s;
+    }
+
+    .skill-card:hover {
+      border-color: var(--orange);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(17, 27, 43, .08);
+    }
+
+    .skill-index {
+      display: block;
+      margin-bottom: 34px;
+      color: var(--orange-dark);
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: .12em;
+    }
+
+    .skill-card h3 {
+      margin-bottom: 8px;
+      font-size: 17px;
+      line-height: 1.45;
+      font-weight: 950;
+    }
+
+    .skill-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    .safety {
+      padding: 120px 0;
+      background: var(--white);
+      border-block: 1px solid var(--line);
+    }
+
+    .safety-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: clamp(48px, 8vw, 120px);
+      align-items: center;
+    }
+
+    .safety-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .safety-item {
+      display: grid;
+      grid-template-columns: 28px minmax(0, 1fr);
+      align-items: start;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .check {
+      display: grid;
+      width: 25px;
+      height: 25px;
+      place-items: center;
+      color: var(--white);
+      background: #15945f;
+      border-radius: 50%;
+      font-size: 13px;
+      font-weight: 950;
+    }
+
+    .approval-board {
+      padding: 28px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+    }
+
+    .approval-head {
+      margin-bottom: 24px;
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: .12em;
+    }
+
+    .approval-flow {
+      display: grid;
+      gap: 10px;
+    }
+
+    .approval-step {
+      display: grid;
+      grid-template-columns: 84px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 18px;
+      padding: 16px 18px;
+      background: var(--white);
+      border-radius: 12px;
+    }
+
+    .approval-role {
+      color: var(--orange-dark);
+      font-size: 11px;
+      font-weight: 950;
+    }
+
+    .approval-action {
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .approval-state {
+      padding: 5px 9px;
+      color: var(--muted);
+      background: var(--soft);
+      border-radius: 999px;
+      font-size: 9px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .approval-state.final {
+      color: #0d5b3b;
+      background: var(--mint);
+    }
+
+    .model {
+      padding: 120px 0;
+    }
+
+    .model-layout {
+      display: grid;
+      grid-template-columns: 1fr .9fr;
+      gap: 22px;
+      margin-top: 48px;
+    }
+
+    .model-card {
+      padding: 34px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+    }
+
+    .model-card.dark {
+      color: var(--white);
+      background: var(--navy);
+      border-color: var(--navy);
+    }
+
+    .model-card h3 {
+      margin-bottom: 22px;
+      font-size: 24px;
+      letter-spacing: -.025em;
+      font-weight: 950;
+    }
+
+    .revenue-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .dark .revenue-line {
+      border-color: rgba(255, 255, 255, .15);
+    }
+
+    .revenue-line:last-of-type {
+      border-bottom: 0;
+    }
+
+    .revenue-label {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .dark .revenue-label {
+      color: #b9c4d1;
+    }
+
+    .revenue-value {
+      text-align: right;
+      font-size: 17px;
+      font-weight: 950;
+    }
+
+    .hypothesis {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .dark .hypothesis {
+      color: #9eabba;
+    }
+
+    .arrow-band {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: stretch;
+      gap: 0;
+      margin-top: 22px;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .arrow-cell {
+      padding: 18px;
+      color: var(--navy);
+      background: var(--mint);
+      font-size: 12px;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .arrow-cell:nth-child(2) {
+      background: var(--yellow);
+    }
+
+    .arrow-cell:nth-child(3) {
+      color: var(--white);
+      background: var(--orange);
+    }
+
+    .audience {
+      padding: 110px 0;
+      background: var(--white);
+      border-top: 1px solid var(--line);
+    }
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 42px;
+    }
+
+    .audience-card {
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--paper);
+    }
+
+    .audience-card.excluded {
+      color: var(--white);
+      background: var(--navy);
+      border-color: var(--navy);
+    }
+
+    .audience-card h3 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      line-height: 1.3;
+      font-weight: 950;
+    }
+
+    .audience-list {
+      display: grid;
+      gap: 12px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .audience-list li {
+      position: relative;
+      padding-left: 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .excluded .audience-list li {
+      color: #c4ced9;
+    }
+
+    .audience-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #15945f;
+      font-weight: 950;
+    }
+
+    .excluded .audience-list li::before {
+      content: "—";
+      color: var(--orange);
+    }
+
+    .price {
+      padding: 120px 0;
+      color: var(--white);
+      background: var(--navy);
+    }
+
+    .price-panel {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 80px;
+      padding: clamp(34px, 6vw, 72px);
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(120deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0)),
+        var(--navy-2);
+    }
+
+    .price h2 {
+      margin-bottom: 16px;
+    }
+
+    .price-copy {
+      max-width: 680px;
+      margin-bottom: 26px;
+      color: #bbc6d2;
+    }
+
+    .price-includes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .price-includes li {
+      padding: 7px 11px;
+      color: #d8e0e9;
+      border: 1px solid rgba(255, 255, 255, .15);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .price-box {
+      min-width: 310px;
+      padding: 30px;
+      color: var(--ink);
+      background: var(--white);
+      border-radius: var(--radius-md);
+      box-shadow: 14px 14px 0 var(--orange);
+    }
+
+    .price-limit {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 5px 10px;
+      color: var(--white);
+      background: var(--orange);
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 950;
+    }
+
+    .price-value {
+      margin-bottom: 3px;
+      font-size: 50px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -.06em;
+    }
+
+    .price-value small {
+      font-size: 14px;
+      letter-spacing: 0;
+    }
+
+    .price-term {
+      margin-bottom: 22px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .price-box .button-primary {
+      width: 100%;
+    }
+
+    .price-note {
+      margin: 17px 0 0;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.65;
+    }
+
+    .faq {
+      padding: 120px 0;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: .75fr 1.25fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    details {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 13px;
+    }
+
+    summary {
+      display: flex;
+      min-height: 68px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 15px 20px;
+      list-style: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      flex: 0 0 auto;
+      color: var(--orange);
+      font-size: 23px;
+      font-weight: 500;
+      transition: transform .2s;
+    }
+
+    details[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .answer {
+      padding: 0 20px 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .answer p {
+      margin-bottom: 0;
+    }
+
+    .closing {
+      padding: 40px 0 120px;
+    }
+
+    .closing-panel {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(48px, 8vw, 100px);
+      color: var(--white);
+      background: var(--orange);
+      border-radius: var(--radius-lg);
+    }
+
+    .closing-panel::before {
+      content: "10";
+      position: absolute;
+      right: 4%;
+      top: -18%;
+      color: rgba(255, 255, 255, .11);
+      font-size: clamp(230px, 32vw, 500px);
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -.1em;
+    }
+
+    .closing-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+
+    .closing .kicker {
+      color: var(--navy);
+    }
+
+    .closing h2 {
+      margin-bottom: 20px;
+    }
+
+    .closing p {
+      margin-bottom: 30px;
+      color: #fff2eb;
+      font-size: 17px;
+    }
+
+    .closing .button-primary {
+      color: var(--white);
+      background: var(--navy);
+      box-shadow: none;
+    }
+
+    .closing .button-primary:hover {
+      background: #25354b;
+    }
+
+    .site-footer {
+      padding: 30px 0 46px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      font-size: 11px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .concept-label {
+      color: var(--orange-dark);
+      font-weight: 900;
+    }
+
+    dialog {
+      width: min(calc(100% - 32px), 560px);
+      padding: 0;
+      color: var(--ink);
+      background: var(--white);
+      border: 0;
+      border-radius: 22px;
+      box-shadow: 0 30px 100px rgba(0, 0, 0, .35);
+    }
+
+    dialog::backdrop {
+      background: rgba(7, 14, 25, .72);
+      backdrop-filter: blur(6px);
+    }
+
+    .dialog-inner {
+      padding: 34px;
+    }
+
+    .dialog-label {
+      margin-bottom: 14px;
+      color: var(--orange-dark);
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: .13em;
+    }
+
+    .dialog-inner h2 {
+      margin-bottom: 14px;
+      font-size: 30px;
+    }
+
+    .dialog-inner p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .dialog-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .dialog-close {
+      min-height: 44px;
+      padding: 0 18px;
+      color: var(--white);
+      background: var(--navy);
+      border: 0;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    @media (max-width: 1060px) {
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-grid,
+      .intro-grid,
+      .platform-grid,
+      .safety-grid,
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid {
+        gap: 70px;
+      }
+
+      .kit-board {
+        width: min(100%, 650px);
+        transform: none;
+      }
+
+      .intro-grid,
+      .faq-grid {
+        gap: 44px;
+      }
+
+      .pillars {
+        grid-template-columns: 1fr;
+      }
+
+      .pillar {
+        min-height: auto;
+      }
+
+      .pillar:nth-child(2) {
+        transform: none;
+      }
+
+      .pillar-label {
+        margin-bottom: 36px;
+      }
+
+      .weeks,
+      .skills-grid,
+      .deliverable-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .model-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .platform-board {
+        width: min(100%, 720px);
+        transform: none;
+      }
+
+      .audience-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .price-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .price-box {
+        min-width: 0;
+        width: min(100%, 430px);
+      }
+    }
+
+    @media (max-width: 680px) {
+      body {
+        font-size: 15px;
+      }
+
+      .container {
+        width: min(calc(100% - 32px), var(--container));
+      }
+
+      .site-header {
+        position: fixed;
+        color: var(--white);
+        background: transparent;
+        border-color: rgba(255, 255, 255, .14);
+        backdrop-filter: none;
+      }
+
+      .site-header.is-scrolled {
+        color: var(--ink);
+        background: rgba(247, 245, 239, .94);
+        border-color: rgba(17, 27, 43, .1);
+        backdrop-filter: blur(18px);
+      }
+
+      .header-inner {
+        min-height: 62px;
+      }
+
+      .header-note {
+        display: none;
+      }
+
+      .header-cta {
+        min-height: 36px;
+        padding: 0 12px;
+        color: var(--navy);
+        background: var(--white);
+        font-size: 11px;
+      }
+
+      .site-header.is-scrolled .header-cta {
+        color: var(--white);
+        background: var(--navy);
+      }
+
+      .brand {
+        font-size: 11px;
+      }
+
+      .brand-mark {
+        width: 19px;
+        height: 19px;
+        box-shadow: 3px 3px 0 var(--white);
+      }
+
+      .site-header.is-scrolled .brand-mark {
+        box-shadow: 3px 3px 0 var(--navy);
+      }
+
+      .hero {
+        padding: 118px 0 70px;
+      }
+
+      .hero-grid {
+        gap: 58px;
+      }
+
+      h1 {
+        margin-bottom: 24px;
+        font-size: clamp(50px, 16vw, 76px);
+      }
+
+      .hero-lead {
+        font-size: 17px;
+      }
+
+      .hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .hero-guardrails {
+        grid-template-columns: 1fr;
+      }
+
+      .button-primary,
+      .button-secondary {
+        width: 100%;
+      }
+
+      .kit-board {
+        padding: 20px;
+      }
+
+      .flow-row {
+        grid-template-columns: 38px minmax(0, 1fr);
+      }
+
+      .flow-meta {
+        display: none;
+      }
+
+      .intro,
+      .concept,
+      .platform,
+      .roadmap,
+      .deliverables,
+      .skills,
+      .safety,
+      .model,
+      .price,
+      .faq {
+        padding: 82px 0;
+      }
+
+      .section-head {
+        align-items: start;
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 36px;
+      }
+
+      .section-number {
+        font-size: 46px;
+      }
+
+      .client-quote:nth-child(2) {
+        margin-left: 0;
+      }
+
+      .weeks,
+      .skills-grid,
+      .deliverable-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .deliverable {
+        padding: 20px;
+      }
+
+      .week {
+        min-height: auto;
+      }
+
+      .week-num {
+        margin-bottom: 50px;
+      }
+
+      .skill-toolbar {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .skill-lifecycle {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .platform-command {
+        grid-template-columns: 1fr;
+        gap: 5px;
+      }
+
+      .skill-card {
+        min-height: 160px;
+      }
+
+      .approval-step {
+        grid-template-columns: 72px minmax(0, 1fr);
+      }
+
+      .approval-state {
+        grid-column: 2;
+        justify-self: start;
+      }
+
+      .arrow-band {
+        grid-template-columns: 1fr;
+      }
+
+      .price-panel {
+        gap: 44px;
+        padding: 28px 20px;
+      }
+
+      .price-box {
+        box-shadow: 8px 8px 0 var(--orange);
+      }
+
+      .faq-grid {
+        gap: 32px;
+      }
+
+      .footer-inner {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .closing {
+        padding: 16px 0 82px;
+      }
+
+      .closing-panel {
+        padding: 46px 24px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="ページ上部へ">
+        <span class="brand-mark">AI</span>
+        <span>広告代理店スタートパック</span>
+      </a>
+      <span class="header-note">CONCEPT PAGE / 申込受付前</span>
+      <button class="header-cta" type="button" data-open-dialog>仮条件を見る</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">既存の法人顧客を持つ会社なら</p>
+          <p class="concept-status">コンセプト確認用｜現在は申込を受け付けていません</p>
+          <h1 id="hero-title">誰でも、<br><span class="hero-accent">広告代理店</span><br>になれる。</h1>
+          <p class="hero-lead">
+            <strong>Claude Codeを、広告代理店の実務基盤に。</strong>Meta広告の提案・設定・入稿準備・分析・改善を進める12のスキルを導入し、30日で最初の提案まで進む設計です。
+          </p>
+          <div class="hero-guardrails" aria-label="重要な注意事項">
+            <span>Meta公認・認定ではありません</span>
+            <span>広告成果は保証しません</span>
+            <span>公開・増額は必ず人が承認</span>
+          </div>
+          <div class="hero-actions">
+            <button class="button-primary" type="button" data-open-dialog>コンセプトの仮条件を見る <span aria-hidden="true">→</span></button>
+            <a class="button-secondary" href="#program">30日プログラムを見る</a>
+          </div>
+          <ul class="hero-conditions" aria-label="主な提供条件">
+            <li>月額5万円・3か月</li>
+            <li>1社2名まで</li>
+            <li>広告費は顧客が直接支払い</li>
+            <li>本番公開は人が承認</li>
+          </ul>
+        </div>
+
+        <aside class="kit-board" aria-label="広告代理店スタートキットの概要">
+          <div class="kit-head">
+            <div>
+              <div class="kit-title">Claude Codeに、<br>広告代理店の仕事を。</div>
+            </div>
+            <div class="kit-count">12<small>AI SKILLS</small></div>
+          </div>
+          <div class="kit-flow">
+            <div class="flow-row">
+              <span class="flow-num">01</span>
+              <span class="flow-name">顧客をヒアリング</span>
+              <span class="flow-meta">SELL</span>
+            </div>
+            <div class="flow-row">
+              <span class="flow-num">02</span>
+              <span class="flow-name">広告提案をつくる</span>
+              <span class="flow-meta">BUILD</span>
+            </div>
+            <div class="flow-row">
+              <span class="flow-num">03</span>
+              <span class="flow-name">Meta広告を設定・入稿</span>
+              <span class="flow-meta">OPERATE</span>
+            </div>
+            <div class="flow-row">
+              <span class="flow-num">04</span>
+              <span class="flow-name">結果を分析・改善する</span>
+              <span class="flow-meta">GROW</span>
+            </div>
+          </div>
+          <div class="board-safe"><span class="safe-dot"></span>Claude Codeが操作を支援。本番公開は、人が決める。</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="intro">
+      <div class="container intro-grid">
+        <div>
+          <p class="kicker">THE FIRST MARKET</p>
+          <h2>最初のお客様は、<br>もう目の前にいる。</h2>
+          <p class="section-lead">新規で広告主を探し回る前に、すでに取引のある企業から始めます。</p>
+        </div>
+        <div class="quote-stack">
+          <blockquote class="client-quote">
+            「ホームページだけじゃなく、<br>集客もお願いできない？」
+            <small>既存顧客からよく生まれる相談</small>
+          </blockquote>
+          <blockquote class="client-quote">
+            その一言を、断らない会社になる。
+            <small>広告の提案・設定・改善を、会社の新しい商品へ</small>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="concept">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker">NOT JUST LESSONS</p>
+            <h2>動画を見るだけでは、<br>仕事にはならない。</h2>
+          </div>
+          <div class="section-number">3</div>
+        </div>
+        <div class="pillars">
+          <article class="pillar">
+            <span class="pillar-label">売る型</span>
+            <h3>何を、いくらで<br>提案するか。</h3>
+            <p>顧客候補の選び方、ヒアリング、見積、提案書まで。広告サービスを売るための型を持ち帰ります。</p>
+          </article>
+          <article class="pillar">
+            <span class="pillar-label">つくる型</span>
+            <h3>広告案を、AIと<br>一緒につくる。</h3>
+            <p>Claude Code上の12のスキルで、目的、予算、ターゲット、コピー、クリエイティブを標準化。担当者の経験差を小さくします。</p>
+          </article>
+          <article class="pillar">
+            <span class="pillar-label">守る型</span>
+            <h3>広告費を、勝手に<br>使わない。</h3>
+            <p>顧客アカウント、最小権限、停止状態、人の承認。AI時代の広告運用に必要な安全手順も商品に含めます。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="platform" aria-labelledby="platform-title">
+      <div class="container">
+        <div class="platform-grid">
+          <div class="platform-copy">
+            <p class="kicker">CLAUDE CODE PLATFORM</p>
+            <h2 id="platform-title">Claude Codeに、<br>広告代理店の仕事を<br>インストールする。</h2>
+            <p class="section-lead">このパックのプラットフォームはClaude Codeです。必要な接続と権限を設定した環境で、顧客ヒアリングからMeta広告の提案、設定・入稿準備、配信後の分析・改善までを進めます。</p>
+            <p class="section-lead">単なる使い方講座ではありません。広告代理店として自社が活動するための手順、判断基準、成果物を、呼び出して使える実務スキルとして提供します。</p>
+            <span class="platform-chip">AIツールではなく、仕事の型を導入する</span>
+          </div>
+          <div class="platform-board" aria-label="Claude Codeで進める広告代理店業務の例">
+            <div class="platform-board-head"><strong>CLAUDE CODE</strong><span>META ADS WORKFLOW</span></div>
+            <div class="platform-commands">
+              <div class="platform-command"><code>/ad-intake</code><span>顧客の事業と集客課題を聞き出す</span></div>
+              <div class="platform-command"><code>/ad-proposal</code><span>提供範囲・見積・広告提案をつくる</span></div>
+              <div class="platform-command"><code>/meta-campaign</code><span>Meta広告の設定・入稿準備を進める</span></div>
+              <div class="platform-command"><code>/ad-review</code><span>配信結果を分析し、次の改善案を出す</span></div>
+            </div>
+            <div class="platform-board-foot"><span>SKILL-BASED OPERATIONS</span><span>HUMAN APPROVAL</span></div>
+          </div>
+        </div>
+        <div class="skill-lifecycle" aria-label="スキルの更新方針">
+          <div class="lifecycle-item"><strong>KEEP</strong><span>常時12個を提供</span></div>
+          <div class="lifecycle-item"><strong>UPDATE</strong><span>毎月、内容を修正</span></div>
+          <div class="lifecycle-item"><strong>DELETE</strong><span>不要なものは削除</span></div>
+          <div class="lifecycle-item"><strong>ADD</strong><span>新しいものを追加</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="roadmap" id="program">
+      <div class="container">
+        <p class="kicker">30-DAY LAUNCH</p>
+        <h2>学ぶ30日ではなく、<br>提案する30日。</h2>
+        <p class="section-lead">実際の顧客候補を1社決め、広告提案に必要な成果物を順番に仕上げます。</p>
+        <div class="weeks">
+          <article class="week">
+            <span class="week-num">WEEK 01</span>
+            <h3>売る相手を<br>ひとつ決める</h3>
+            <p>既存顧客3社から、広告相談につながりやすい1社を選定。提案商品と役割を決めます。</p>
+          </article>
+          <article class="week">
+            <span class="week-num">WEEK 02</span>
+            <h3>聞く・測る・<br>設計する</h3>
+            <p>目標、予算、顧客像、計測環境を確認。分からないまま出稿しないための土台を作ります。</p>
+          </article>
+          <article class="week">
+            <span class="week-num">WEEK 03</span>
+            <h3>広告案を<br>形にする</h3>
+            <p>Claude Codeスキルで提案書、予算案、コピー、クリエイティブ案、停止状態の設定案を作ります。</p>
+          </article>
+          <article class="week">
+            <span class="week-num">WEEK 04</span>
+            <h3>人が確認し、<br>顧客へ提案する</h3>
+            <p>実務レビューを通し、説明できる提案へ。公開・増額は顧客の承認後に行います。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="deliverables" aria-labelledby="deliverables-title">
+      <div class="container">
+        <p class="kicker">SIX DELIVERABLES</p>
+        <h2 id="deliverables-title">30日で仕上げる設計の<br>6つの成果物。</h2>
+        <p class="section-lead">「勉強した」で終わらせず、顧客へ説明し、社内で引き継げる形まで残します。</p>
+        <div class="deliverable-grid">
+          <article class="deliverable"><span class="deliverable-num">01</span><div><h3>顧客候補リスト</h3><p>既存顧客3社を比較し、最初に提案する1社を決めます。</p></div></article>
+          <article class="deliverable"><span class="deliverable-num">02</span><div><h3>ヒアリング記録</h3><p>目的・予算・顧客像・計測環境・扱えない条件を整理します。</p></div></article>
+          <article class="deliverable"><span class="deliverable-num">03</span><div><h3>広告提案書</h3><p>提供範囲、広告目的、予算、進め方を顧客へ説明できる資料です。</p></div></article>
+          <article class="deliverable"><span class="deliverable-num">04</span><div><h3>停止状態の設定案</h3><p>目的・期間・上限・リンクを揃え、公開前の状態で確認します。</p></div></article>
+          <article class="deliverable"><span class="deliverable-num">05</span><div><h3>承認記録</h3><p>公開・増額・停止解除を、誰がいつ承認したか残します。</p></div></article>
+          <article class="deliverable"><span class="deliverable-num">06</span><div><h3>月次レポート雛形</h3><p>実績と次の改善案を、毎月同じ型で説明できるようにします。</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <div class="skill-toolbar">
+          <div>
+            <p class="kicker">12 AI SKILLS</p>
+            <h2 id="skills-title">Claude Codeで動かす、<br>12の広告代理店スキル。</h2>
+            <p class="section-lead">必要な場面でスキルを呼び出し、ヒアリングから改善報告までを同じ型で進めます。</p>
+          </div>
+          <span class="update-badge"><span class="safe-dot"></span>常時12スキルを、毎月更新・入れ替え</span>
+        </div>
+        <div class="skills-grid">
+          <article class="skill-card"><span class="skill-index">SKILL 01</span><h3>広告受注可否<br>ヒアリング</h3><p>受ける案件、断る案件、追加確認が必要な案件を分ける。</p></article>
+          <article class="skill-card"><span class="skill-index">SKILL 02</span><h3>商品設計・見積</h3><p>提供範囲と価格を揃え、安請け合いを防ぐ。</p></article>
+          <article class="skill-card"><span class="skill-index">SKILL 03</span><h3>Meta接続・<br>権限設定</h3><p>パスワードを共有せず、必要最小限の権限で接続する。</p></article>
+          <article class="skill-card"><span class="skill-index">SKILL 04</span><h3>広告目的・KPI</h3><p>売上、商談、問い合わせ。何を増やす広告か決める。</p></article>
+          <article class="skill-card"><span class="skill-index">SKILL 05</span><h3>予算・損益設計</h3><p>広告費、運用費、目標件数の関係を事前にそろえる。</p></article>
+          <article class="skill-card"><span class="skill-index">SKILL 06</span><h3>ターゲット仮説</h3><p>誰に届けるかを、事業と顧客の言葉から組み立てる。</p></article>
+          <article class="skill-card"><span class="skill-index">SKILL 07</span><h3>広告コピー</h3><p>誤認を生まず、動きたくなる短い言葉を作る。</p></article>
+          <article class="skill-card"><span class="skill-index">SKILL 08</span><h3>クリエイティブ<br>ブリーフ</h3><p>写真・動画・デザイン担当へ、意図が伝わる指示を作る。</p></article>
+          <article class="skill-card"><span class="skill-index">SKILL 09</span><h3>Meta広告設定・<br>入稿準備</h3><p>目的、期間、上限、リンク、停止状態を公開前に整える。</p></article>
+          <article class="skill-card"><span class="skill-index">SKILL 10</span><h3>ポリシー確認</h3><p>業種、表現、個人情報、ブランド利用の注意点を洗う。</p></article>
+          <article class="skill-card"><span class="skill-index">SKILL 11</span><h3>配信分析・<br>月次レポート</h3><p>数字を並べず、次に何を変えるかまで説明する。</p></article>
+          <article class="skill-card"><span class="skill-index">SKILL 12</span><h3>本番承認ログ</h3><p>公開、増額、停止解除を、誰が承認したか残す。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="safety">
+      <div class="container safety-grid">
+        <div>
+          <p class="kicker">HUMAN APPROVAL</p>
+          <h2>Claude Codeに任せる。<br>でも、丸投げしない。</h2>
+          <p class="section-lead">Claude Codeは速く案を作り、操作を支援できます。だからこそ、お金と信用に関わる最後の判断は人が持ちます。</p>
+          <div class="safety-list">
+            <div class="safety-item"><span class="check">✓</span><span>広告アカウントと決済は、原則としてエンド顧客が所有</span></div>
+            <div class="safety-item"><span class="check">✓</span><span>初期状態は停止。公開・増額・停止解除は承認を記録</span></div>
+            <div class="safety-item"><span class="check">✓</span><span>広告成果、審査通過、問い合わせ件数は保証しない</span></div>
+          </div>
+        </div>
+        <div class="approval-board">
+          <div class="approval-head">APPROVAL FLOW / お金が動く前に</div>
+          <div class="approval-flow">
+            <div class="approval-step">
+              <span class="approval-role">AI</span>
+              <span class="approval-action">広告案・予算案を作成</span>
+              <span class="approval-state">DRAFT</span>
+            </div>
+            <div class="approval-step">
+              <span class="approval-role">参加企業</span>
+              <span class="approval-action">商品事実・設定を確認</span>
+              <span class="approval-state">CHECK</span>
+            </div>
+            <div class="approval-step">
+              <span class="approval-role">顧客</span>
+              <span class="approval-action">内容と広告費を承認</span>
+              <span class="approval-state">APPROVE</span>
+            </div>
+            <div class="approval-step">
+              <span class="approval-role">担当者</span>
+              <span class="approval-action">承認後に本番公開</span>
+              <span class="approval-state final">READY</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="model">
+      <div class="container">
+        <p class="kicker">BUSINESS MODEL</p>
+        <h2>広告を覚えるのではなく、<br>売れる商品をひとつ増やす。</h2>
+        <div class="model-layout">
+          <article class="model-card">
+            <h3>エンド顧客への提供価格イメージ</h3>
+            <div class="revenue-line"><span class="revenue-label">初期設計</span><span class="revenue-value">10〜15万円</span></div>
+            <div class="revenue-line"><span class="revenue-label">月次運用</span><span class="revenue-value">8〜12万円</span></div>
+            <div class="revenue-line"><span class="revenue-label">広告費</span><span class="revenue-value">顧客が直接支払い</span></div>
+            <p class="hypothesis">※価格は事業設計上の推奨仮説です。利益・成果・受注を保証するものではありません。</p>
+          </article>
+          <article class="model-card dark">
+            <h3>受注後も、次の商品がある。</h3>
+            <p class="section-lead">広告で集め、その後を自社の既存サービスで支援。必要ならWeb制作やAI開発へ接続します。</p>
+            <div class="arrow-band" aria-label="広告から上位支援への流れ">
+              <div class="arrow-cell">広告で集客</div>
+              <div class="arrow-cell">AIで追客</div>
+              <div class="arrow-cell">開発へ接続</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="price" id="price">
+      <div class="container">
+        <div class="price-panel">
+          <div>
+            <p class="kicker">PROVISIONAL TERMS / 仮条件</p>
+            <h2>まずは、10社から。</h2>
+            <p class="price-copy">広く売る前に、既存顧客を持つ10社と商品を完成させます。成果物レビューの品質を保つため、先行期間は10社を当面の上限とする想定です。</p>
+            <ul class="price-includes">
+              <li>12のClaude Code実務スキル</li>
+              <li>30日ロードマップ</li>
+              <li>月2回のグループ実務会</li>
+              <li>成果物レビュー 月2件まで</li>
+              <li>毎月のスキル更新</li>
+            </ul>
+          </div>
+          <div class="price-box">
+            <span class="price-limit">仮条件｜先行10社</span>
+            <div class="price-value"><small>月額</small> 50,000<small>円</small></div>
+            <div class="price-term">税別／3か月合計15万円・1社2名まで</div>
+            <button class="button-primary" type="button" data-open-dialog>仮条件を確認する</button>
+            <p class="price-note">申込受付前の仮条件です。広告費は含まず、エンド顧客が自社の広告アカウントと決済方法から直接支払い、当社・参加企業とも立て替えません。クリエイティブ撮影、LP制作、個別運用代行も含みません。中途解約、返金、成果物の権利、3か月後の継続条件は正式募集前に確定します。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="audience" aria-labelledby="audience-title">
+      <div class="container">
+        <p class="kicker">WHO IT IS FOR</p>
+        <h2 id="audience-title">「誰でも」の中身を、<br>曖昧にしない。</h2>
+        <p class="section-lead">広告経験は問いません。一方で、顧客と広告費を守るために、参加条件を設けます。</p>
+        <div class="audience-grid">
+          <article class="audience-card">
+            <h3>対象となる会社</h3>
+            <ul class="audience-list">
+              <li>提案先となる既存の法人顧客がいる</li>
+              <li>営業担当と実務担当を各1名置ける</li>
+              <li>顧客への説明と承認取得を自社で行える</li>
+              <li>30日以内に顧客候補1社へ提案する意思がある</li>
+            </ul>
+          </article>
+          <article class="audience-card excluded">
+            <h3>この形では受けない案件</h3>
+            <ul class="audience-list">
+              <li>Claude Codeへの丸投げや、無承認での自動出稿</li>
+              <li>売上・問い合わせ件数などの成果保証</li>
+              <li>広告費の立替や、顧客パスワードの共有</li>
+              <li>個別確認が必要な規制業種を共通手順だけで運用</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq">
+      <div class="container faq-grid">
+        <div>
+          <p class="kicker">FAQ</p>
+          <h2>始める前に、<br>知ってほしいこと。</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>本当に未経験でも参加できますか？</summary>
+            <div class="answer"><p>参加できます。ただし、既存顧客を持ち、営業担当と運用担当を各1名置ける企業を対象にしています。Claude Codeだけへ丸投げするプログラムではありません。</p></div>
+          </details>
+          <details>
+            <summary>「広告代理店になれる」とは、どういう意味ですか？</summary>
+            <div class="answer"><p>Meta広告を顧客へ提案し、必要な設定・承認・報告を自社サービスとして提供できる状態を指します。Metaの認定や公式パートナー資格を付与するものではありません。</p></div>
+          </details>
+          <details>
+            <summary>Claude Codeから、Meta広告をどこまで操作できますか？</summary>
+            <div class="answer"><p>必要なAPI接続と権限が設定された環境では、広告案の作成、キャンペーン設定、入稿準備、配信結果の取得・分析をClaude Codeから支援できます。実際に利用できる操作範囲は接続環境とMeta側の権限により異なり、本番公開・予算変更・停止解除は人の承認後に行います。</p></div>
+          </details>
+          <details>
+            <summary>Claude Codeが勝手に広告を出稿しませんか？</summary>
+            <div class="answer"><p>しません。Claude Codeは広告案や設定案を作り、操作を支援しますが、公開・予算変更・停止解除は担当者と顧客の承認後に行います。</p></div>
+          </details>
+          <details>
+            <summary>広告費は誰が支払いますか？</summary>
+            <div class="answer"><p>原則としてエンド顧客自身の広告アカウント・決済方法からMetaへ直接支払います。本部や参加企業が広告費を一時的に預かる設計にはしません。</p></div>
+          </details>
+          <details>
+            <summary>広告の成果は保証されますか？</summary>
+            <div class="answer"><p>広告審査、問い合わせ数、CPA、ROAS、売上は保証しません。この商品が提供するのは、安全に提案・設定・改善できる業務の型と伴走です。</p></div>
+          </details>
+          <details>
+            <summary>社内でどのくらいの時間が必要ですか？</summary>
+            <div class="answer"><p>営業担当と実務担当の2名で、実務会への参加、顧客ヒアリング、成果物の確認が必要です。週あたりの時間目安は先行運用で実測し、正式募集前に提示します。</p></div>
+          </details>
+          <details>
+            <summary>途中で解約・返金できますか？</summary>
+            <div class="answer"><p>3か月を基本単位とする想定ですが、中途解約・返金条件は現在確定していません。正式募集時に契約条件として明示します。</p></div>
+          </details>
+          <details>
+            <summary>広告審査に落ちた場合はどうなりますか？</summary>
+            <div class="answer"><p>審査通過は保証しません。表現・リンク先・設定の見直し範囲と追加対応の条件は、正式募集前に運用ルールとして確定します。</p></div>
+          </details>
+          <details>
+            <summary>どの業種の広告でも扱えますか？</summary>
+            <div class="answer"><p>いいえ。医療、金融、投資、求人、政治など、個別の確認が必要な領域は共通スキルだけで扱いません。対象業種は初回ヒアリングで確認します。</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="container">
+        <div class="closing-panel">
+          <div class="closing-copy">
+            <p class="kicker">FROM CLIENTS TO AGENCY</p>
+            <h2>広告の相談を、<br>もう断らない。</h2>
+            <p>すでに信頼してくれている顧客へ、新しい提案をひとつ増やす。誰でも広告代理店になれる時代を、まず10社から始めます。</p>
+            <button class="button-primary" type="button" data-open-dialog>コンセプトの仮条件を見る <span aria-hidden="true">→</span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span class="concept-label">CONCEPT PAGE / 申込受付前</span>
+      <span>実績・申込条件・提供担当者・契約条件は確定後に反映します。</span>
+    </div>
+  </footer>
+
+  <dialog id="consultation-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-inner">
+      <p class="dialog-label">CONCEPT PREVIEW</p>
+      <h2 id="dialog-title">申込導線は準備中です。</h2>
+      <p>このページはコンセプト確認用です。現在、連絡先の収集や申込受付は行っていません。先行10社の対象条件、提供担当者、契約内容、募集時期を確定後に、正式な相談フォームへ接続します。</p>
+      <div class="dialog-actions">
+        <button class="dialog-close" type="button" data-close-dialog>ページへ戻る</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    const header = document.querySelector(".site-header");
+    const dialog = document.querySelector("#consultation-dialog");
+    const openButtons = document.querySelectorAll("[data-open-dialog]");
+    const closeButton = document.querySelector("[data-close-dialog]");
+    let lastScrollY = Math.max(window.scrollY, 0);
+    let scrollTicking = false;
+
+    const updateHeader = () => {
+      const currentScrollY = Math.max(window.scrollY, 0);
+      const delta = currentScrollY - lastScrollY;
+
+      header.classList.toggle("is-scrolled", currentScrollY > 16);
+
+      if (currentScrollY <= 16) {
+        header.classList.remove("is-hidden");
+        lastScrollY = currentScrollY;
+      } else if (delta > 8) {
+        header.classList.add("is-hidden");
+        lastScrollY = currentScrollY;
+      } else if (delta < -8) {
+        header.classList.remove("is-hidden");
+        lastScrollY = currentScrollY;
+      }
+
+      scrollTicking = false;
+    };
+
+    window.addEventListener("scroll", () => {
+      if (!scrollTicking) {
+        window.requestAnimationFrame(updateHeader);
+        scrollTicking = true;
+      }
+    }, { passive: true });
+
+    openButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        if (typeof dialog.showModal === "function") {
+          dialog.showModal();
+        }
+      });
+    });
+
+    closeButton.addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+  </script>
+</body>
+</html>

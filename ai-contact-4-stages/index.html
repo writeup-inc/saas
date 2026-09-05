@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="情報接触からAIO、AIウェブチャット、顧客対応ナーチャリングまで、AI接点の4段階を整理した図。">
+  <meta name="theme-color" content="#173d33">
+  <title>AI接点が深まる4段階</title>
+  <style>
+    :root {
+      --ink: #13231e;
+      --ink-soft: #41534d;
+      --muted: #71807b;
+      --paper: #f3f1ea;
+      --surface: #fbfaf6;
+      --line: #cdd2cb;
+      --green-900: #153d33;
+      --green-700: #2b6555;
+      --green-500: #6d9588;
+      --green-200: #c4d1cb;
+      --accent: #e36b32;
+      --accent-soft: #fff0e7;
+      --accent-line: #f0a17a;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        linear-gradient(rgba(19,35,30,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(19,35,30,.025) 1px, transparent 1px),
+        var(--paper);
+      background-size: 32px 32px;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      width: min(100%, 1350px);
+      margin-inline: auto;
+      padding: 54px clamp(24px, 4vw, 58px) 38px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 390px);
+      gap: 52px;
+      align-items: end;
+      padding-bottom: 30px;
+      border-bottom: 1px solid rgba(19,35,30,.2);
+    }
+
+    .overline {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 12px;
+      color: var(--green-700);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .overline::before {
+      content: "";
+      width: 26px;
+      height: 3px;
+      background: var(--accent);
+    }
+
+    h1 {
+      max-width: 800px;
+      margin: 0;
+      font-size: clamp(34px, 4.8vw, 66px);
+      line-height: 1.08;
+      letter-spacing: -.055em;
+    }
+
+    h1 em { color: var(--accent); font-style: normal; }
+
+    .hero-copy {
+      margin: 0 0 3px;
+      color: var(--ink-soft);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .hero-copy strong { color: var(--ink); }
+
+    .diagram-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 20px 0 16px;
+    }
+
+    .diagram-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    .depth-key {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--green-900) !important;
+    }
+
+    .depth-key::after {
+      content: "";
+      width: 86px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .map {
+      display: grid;
+      grid-template-columns: minmax(430px, 46%) minmax(0, 1fr);
+      min-height: 760px;
+      background: rgba(251,250,246,.93);
+      border: 1px solid rgba(19,35,30,.1);
+      box-shadow: 0 18px 60px rgba(19,35,30,.08);
+    }
+
+    .pyramid-panel {
+      position: relative;
+      min-width: 0;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 43% 48%, rgba(43,101,85,.11), transparent 54%),
+        rgba(255,255,255,.42);
+      border-right: 1px solid rgba(19,35,30,.08);
+    }
+
+    .vertical-axis {
+      position: absolute;
+      top: 82px;
+      bottom: 72px;
+      left: 26px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .11em;
+      writing-mode: vertical-rl;
+    }
+
+    .vertical-axis::before {
+      content: "";
+      position: absolute;
+      top: 28px;
+      bottom: 28px;
+      left: 50%;
+      z-index: -1;
+      width: 1px;
+      background: var(--line);
+      transform: translateX(-50%);
+    }
+
+    .vertical-axis .arrow {
+      display: grid;
+      place-items: center;
+      width: 20px;
+      height: 20px;
+      color: var(--accent);
+      background: var(--surface);
+      border: 1px solid var(--accent-line);
+      border-radius: 50%;
+      writing-mode: horizontal-tb;
+    }
+
+    .pyramid-panel svg { display: block; width: 100%; height: 100%; }
+
+    .slice-number {
+      fill: rgba(255,255,255,.68);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-anchor: middle;
+    }
+
+    .slice-title {
+      fill: #fff;
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      text-anchor: middle;
+    }
+
+    .slice-en {
+      fill: rgba(255,255,255,.7);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-anchor: middle;
+    }
+
+    .slice-light.slice-number,
+    .slice-light.slice-title { fill: var(--green-900); }
+    .slice-light.slice-en { fill: var(--green-700); }
+
+    .layer-highlight {
+      fill: none;
+      stroke: rgba(255,255,255,.42);
+      stroke-width: 1.5;
+      stroke-linecap: round;
+    }
+
+    .layer-highlight.dark { stroke: rgba(21,61,51,.18); }
+
+    .connector { stroke: var(--line); stroke-width: 1.5; }
+    .connector.focus { stroke: var(--accent); stroke-width: 2.5; }
+    .connector-dot { fill: var(--green-500); }
+    .connector-dot.focus { fill: var(--accent); }
+
+    .details {
+      display: grid;
+      grid-template-rows: repeat(4, minmax(190px, 1fr));
+      min-width: 0;
+    }
+
+    .stage {
+      position: relative;
+      display: grid;
+      grid-template-columns: 60px minmax(0, 1fr);
+      align-content: center;
+      gap: 20px;
+      padding: 25px 34px 23px 28px;
+      border-bottom: 1px solid rgba(19,35,30,.11);
+    }
+
+    .stage:last-child { border-bottom: 0; }
+
+    .stage.focus {
+      background:
+        linear-gradient(90deg, rgba(227,107,50,.1), transparent 62%),
+        var(--accent-soft);
+    }
+
+    .stage-index {
+      padding-top: 3px;
+      color: var(--green-500);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 33px;
+      font-style: italic;
+      line-height: 1;
+    }
+
+    .stage.focus .stage-index { color: var(--accent); }
+    .stage-body { min-width: 0; }
+
+    .stage-topline {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 3px;
+    }
+
+    .stage-kicker {
+      margin: 0;
+      color: var(--green-700);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .focus-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--accent);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+
+    .focus-label::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: currentColor;
+      border-radius: 50%;
+    }
+
+    .stage h2 {
+      margin: 0;
+      font-size: clamp(21px, 2vw, 29px);
+      line-height: 1.25;
+      letter-spacing: -.035em;
+    }
+
+    .stage-copy {
+      margin: 7px 0 0;
+      color: var(--ink-soft);
+      font-size: 13px;
+    }
+
+    .meaning {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .meaning strong {
+      margin-right: 8px;
+      color: var(--ink);
+      font-size: 10px;
+      letter-spacing: .1em;
+    }
+
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 18px;
+      margin-top: 12px;
+    }
+
+    .service-link,
+    .service-planned {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      color: var(--green-900);
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1.35;
+      text-decoration: none;
+    }
+
+    .service-link {
+      border-bottom: 1px solid rgba(21,61,51,.38);
+      transition: color .18s ease, border-color .18s ease;
+    }
+
+    .stage.focus .service-link { border-bottom-color: rgba(227,107,50,.45); }
+
+    .service-link::after {
+      content: "↗";
+      margin-left: 6px;
+      color: var(--accent);
+      font-size: 10px;
+    }
+
+    .service-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+    .service-link:focus-visible {
+      outline: 3px solid rgba(227,107,50,.28);
+      outline-offset: 4px;
+    }
+
+    .service-planned {
+      padding: 3px 10px;
+      color: #6c746f;
+      background: rgba(19,35,30,.055);
+      border: 1px dashed rgba(19,35,30,.24);
+      border-radius: 3px;
+    }
+
+    .service-planned small {
+      margin-left: 7px;
+      color: var(--accent);
+      font-size: 9px;
+      letter-spacing: .08em;
+    }
+
+    .bottom-note {
+      display: grid;
+      grid-template-columns: 160px minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+      margin-top: 18px;
+      padding-top: 17px;
+      color: var(--muted);
+      border-top: 1px solid rgba(19,35,30,.16);
+      font-size: 11px;
+    }
+
+    .bottom-note strong {
+      color: var(--ink);
+      font-size: 10px;
+      letter-spacing: .1em;
+    }
+
+    @media (max-width: 1030px) {
+      .hero { grid-template-columns: 1fr; gap: 16px; }
+      .hero-copy { max-width: 760px; }
+      .map { grid-template-columns: 42% minmax(0, 1fr); }
+      .stage { grid-template-columns: 46px minmax(0, 1fr); gap: 12px; padding-inline: 22px; }
+    }
+
+    @media (max-width: 800px) {
+      .page { padding-top: 36px; }
+      .diagram-head { align-items: flex-start; }
+      .map { grid-template-columns: 1fr; min-height: 0; }
+      .pyramid-panel { height: 520px; border-right: 0; border-bottom: 1px solid rgba(19,35,30,.1); }
+      .vertical-axis { top: 55px; bottom: 48px; }
+      .details { grid-template-rows: none; }
+      .stage { min-height: 188px; border-left: 5px solid var(--green-900); }
+      .stage:nth-child(2) { border-left-color: var(--accent); }
+      .stage:nth-child(3) { border-left-color: var(--green-700); }
+      .stage:nth-child(4) { border-left-color: var(--green-200); }
+    }
+
+    @media (max-width: 560px) {
+      .page { padding: 24px 14px 28px; }
+      .hero { padding-bottom: 22px; }
+      h1 { font-size: clamp(32px, 10.5vw, 46px); }
+      .hero-copy { font-size: 13px; }
+      .diagram-head { display: grid; gap: 7px; padding-block: 16px 12px; }
+      .pyramid-panel { height: 400px; }
+      .vertical-axis { top: 38px; bottom: 34px; left: 15px; }
+      .stage { grid-template-columns: 38px minmax(0, 1fr); gap: 8px; min-height: 0; padding: 22px 16px 23px 12px; }
+      .stage-index { font-size: 26px; }
+      .stage-copy { font-size: 12px; }
+      .services { gap: 7px 16px; }
+      .service-link, .service-planned { min-height: 42px; }
+      .bottom-note { grid-template-columns: 1fr; gap: 5px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .page { width: 100%; padding: 20px; }
+      .map { box-shadow: none; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div>
+        <p class="overline">AI contact architecture / 4 layers</p>
+        <h1>顧客との「会話」は、<br><em>4段階</em>で深くなる。</h1>
+      </div>
+      <p class="hero-copy">情報を読むだけの接点から、AIへの質問、初期営業、継続対応へ。<strong>チャネルではなく「顧客との関係の深さ」</strong>で整理すると、各サービスの役割が明確になります。</p>
+    </header>
+
+    <div class="diagram-head" aria-hidden="true">
+      <p class="depth-key">上に行くほど、顧客との関係が深い</p>
+      <p>匿名・一方向&nbsp;&nbsp;→&nbsp;&nbsp;個人を識別・継続</p>
+    </div>
+
+    <section class="map" aria-label="情報接触から顧客対応ナーチャリングまでの4段階">
+      <div class="pyramid-panel">
+        <div class="vertical-axis" aria-hidden="true">
+          <span class="arrow">↑</span>
+          <span>RELATIONSHIP DEPTH</span>
+          <span>START</span>
+        </div>
+
+        <svg viewBox="0 0 620 760" role="img" aria-labelledby="pyramid-title pyramid-desc">
+          <title id="pyramid-title">AI接点が深まる4つのレイヤー</title>
+          <desc id="pyramid-desc">下から情報接触、AIOによる理解と比較、AIウェブチャットによる初期営業、Lシンクと受電AIによる継続対応。上段も十分な幅を持つ4枚のレイヤーで構成し、AIウェブチャットを今回の中心として強調しています。</desc>
+
+          <defs>
+            <filter id="layer-shadow" x="-20%" y="-20%" width="140%" height="160%">
+              <feDropShadow dx="0" dy="7" stdDeviation="6" flood-color="#173d33" flood-opacity=".14"/>
+            </filter>
+            <filter id="focus-shadow" x="-20%" y="-20%" width="140%" height="160%">
+              <feDropShadow dx="0" dy="10" stdDeviation="9" flood-color="#b54818" flood-opacity=".24"/>
+            </filter>
+          </defs>
+
+          <g filter="url(#layer-shadow)">
+            <path d="M275 3 L378 59 Q386 62 388 70 L405 164 Q407 174 396 174 H154 Q143 174 145 164 L162 70 Q164 62 172 59 Z" fill="var(--green-900)"/>
+            <path d="M174 61 L275 6 L376 61" class="layer-highlight"/>
+          </g>
+
+          <g filter="url(#focus-shadow)">
+            <path d="M132 194 Q122 194 120 204 L102 340 Q100 350 112 350 H438 Q450 350 448 340 L430 204 Q428 194 418 194 Z" fill="var(--accent)"/>
+            <path d="M132 196 H418" class="layer-highlight"/>
+          </g>
+
+          <g filter="url(#layer-shadow)">
+            <path d="M88 370 Q78 370 76 380 L55 520 Q53 530 65 530 H485 Q497 530 495 520 L474 380 Q472 370 462 370 Z" fill="var(--green-700)"/>
+            <path d="M88 372 H462" class="layer-highlight"/>
+          </g>
+
+          <g filter="url(#layer-shadow)">
+            <path d="M48 550 Q38 550 36 560 L14 700 Q12 710 24 710 H526 Q538 710 536 700 L514 560 Q512 550 502 550 Z" fill="var(--green-200)"/>
+            <path d="M48 552 H502" class="layer-highlight dark"/>
+          </g>
+
+          <text x="275" y="94" class="slice-number">04</text>
+          <text x="275" y="122" class="slice-title">継続対応</text>
+          <text x="275" y="143" class="slice-en">NURTURE</text>
+
+          <text x="275" y="247" class="slice-number">03</text>
+          <text x="275" y="279" class="slice-title" font-size="21">初期営業</text>
+          <text x="275" y="303" class="slice-en">AI WEB CHAT</text>
+
+          <text x="275" y="427" class="slice-number">02</text>
+          <text x="275" y="459" class="slice-title">理解・比較</text>
+          <text x="275" y="482" class="slice-en">AIO</text>
+
+          <text x="275" y="607" class="slice-number slice-light">01</text>
+          <text x="275" y="639" class="slice-title slice-light">情報に触れる</text>
+          <text x="275" y="663" class="slice-en slice-light">OWNED MEDIA</text>
+
+          <line x1="405" y1="114" x2="595" y2="114" class="connector"/>
+          <circle cx="595" cy="114" r="4" class="connector-dot"/>
+          <line x1="448" y1="272" x2="595" y2="272" class="connector focus"/>
+          <circle cx="595" cy="272" r="5" class="connector-dot focus"/>
+          <line x1="495" y1="450" x2="595" y2="450" class="connector"/>
+          <circle cx="595" cy="450" r="4" class="connector-dot"/>
+          <line x1="536" y1="630" x2="595" y2="630" class="connector"/>
+          <circle cx="595" cy="630" r="4" class="connector-dot"/>
+        </svg>
+      </div>
+
+      <div class="details">
+        <article class="stage">
+          <div class="stage-index" aria-hidden="true">04</div>
+          <div class="stage-body">
+            <div class="stage-topline"><p class="stage-kicker">顧客対応ナーチャリング</p></div>
+            <h2>Lシンク・受電AI</h2>
+            <p class="stage-copy">LINEや電話で顧客情報・対応履歴をつなぎ、AIが継続的にやり取りする。</p>
+            <div class="meaning"><strong>意義</strong>一度つながった顧客を放置せず、次の相談・提案まで関係を育てる。</div>
+            <div class="services" aria-label="該当サービス">
+              <a class="service-link" href="https://lsync.figma.site/" target="_blank" rel="noopener noreferrer">Lシンク</a>
+              <a class="service-link" href="https://omakase-juden-ai.taka2007.chatgpt.site" target="_blank" rel="noopener noreferrer">おまかせ受電AI</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="stage focus">
+          <div class="stage-index" aria-hidden="true">03</div>
+          <div class="stage-body">
+            <div class="stage-topline">
+              <p class="stage-kicker">初期営業</p>
+              <span class="focus-label">このサービスの領域</span>
+            </div>
+            <h2>AIウェブチャット</h2>
+            <p class="stage-copy">自社サイト内のAIが、質問対応・ヒアリング・初回相談までを行う。</p>
+            <div class="meaning"><strong>意義</strong>「読むだけ」の訪問者を会話へ変え、人が提案できる状態まで相談を整理する。</div>
+            <div class="services" aria-label="該当サービス">
+              <a class="service-link" href="https://claude.ai/public/artifacts/76d879c0-8ebc-45b3-9ada-907d26a2440e" target="_blank" rel="noopener noreferrer">議員チャットデモ</a>
+              <a class="service-link" href="https://claude.ai/public/artifacts/d9af66bb-310e-4132-ba7c-8a52ae0265e9" target="_blank" rel="noopener noreferrer">初回相談AI（士業向け）</a>
+              <a class="service-link" href="https://claude.ai/public/artifacts/e069feaf-5167-46bc-a74b-45bd4be59acf" target="_blank" rel="noopener noreferrer">社労士ヒアリングモック</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="stage">
+          <div class="stage-index" aria-hidden="true">02</div>
+          <div class="stage-body">
+            <div class="stage-topline"><p class="stage-kicker">AIO</p></div>
+            <h2>外部のChatGPTに聞く</h2>
+            <p class="stage-copy">顧客自身のChatGPTに、そのサービスを客観的に比較・深掘りしてもらう。</p>
+            <div class="meaning"><strong>意義</strong>企業の説明だけでなく、第三者的なAIとの対話で理解と納得を深める。</div>
+            <div class="services" aria-label="該当サービス">
+              <a class="service-link" href="https://writeup-inc.github.io/aio-chatplus/" target="_blank" rel="noopener noreferrer">AIO ChatPLUS+</a>
+              <a class="service-link" href="https://aio-master-consult-lp.taka2007.chatgpt.site" target="_blank" rel="noopener noreferrer">AIO MASTER（限定公開）</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="stage">
+          <div class="stage-index" aria-hidden="true">01</div>
+          <div class="stage-body">
+            <div class="stage-topline"><p class="stage-kicker">情報接触</p></div>
+            <h2>サイト・LP・パンフレット</h2>
+            <p class="stage-copy">ユーザーが能動的に情報を取りに行く、最初の接触点。</p>
+            <div class="meaning"><strong>意義</strong>会話が始まる前に、必要な情報へいつでも触れられる状態をつくる。</div>
+            <div class="services" aria-label="商品化を検討中">
+              <span class="service-planned">ウェブサイト制作会社になれますパック <small>企画候補</small></span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <aside class="bottom-note" aria-label="受電AIの分類について">
+      <strong>受電AIの位置づけ</strong>
+      <span>匿名の新規問い合わせ対応だけならStage 03。ここでは、顧客情報や対応履歴をつないで継続対応する使い方をStage 04に分類しています。</span>
+    </aside>
+  </main>
+</body>
+</html>

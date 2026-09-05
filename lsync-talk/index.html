@@ -1,0 +1,832 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Lシンクを商談で話すための営業トーク集。つかみ・本題・自社否定・クロージングのセリフ、業種別の言い換え、想定質問15本の切り返し。">
+<meta name="theme-color" content="#111b2b">
+<title>Lシンク 営業トーク集</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
+<style>
+:root{
+  color-scheme: light;
+  --navy:#111b2b; --navy-2:#18263a; --ink:#101723; --muted:#637083;
+  --paper:#f7f5ef; --white:#ffffff; --line:#d8dde4; --soft:#eef1f4;
+  --orange:#ff6a2a; --orange-dark:#d94b10; --mint:#c9f2df; --yellow:#ffe27a;
+  --container:1120px; --r-lg:28px; --r-md:18px; --r-sm:12px;
+  --shadow:0 24px 80px rgba(11,22,39,.14);
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:80px; background:var(--paper)}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic UI","Meiryo",sans-serif;
+  font-size:16px; line-height:1.9; letter-spacing:.01em; -webkit-font-smoothing:antialiased;
+}
+.wrap{width:min(var(--container), calc(100% - 48px)); margin-inline:auto}
+h1,h2,h3,h4,.say p,.lead,.reply p,.hc-row span,.checks li,.checks li span,.fork p{text-wrap:balance}
+p,li{text-wrap:pretty}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:60; background:rgba(247,245,239,.93); backdrop-filter:saturate(180%) blur(12px); border-bottom:1px solid var(--line)}
+.nav-in{display:flex; align-items:center; gap:20px; height:62px}
+.brand{display:flex; align-items:center; gap:10px; flex:0 0 auto; font-weight:900; font-size:15px; letter-spacing:-.01em}
+.brand i{width:26px; height:26px; border-radius:8px; background:var(--orange); color:#fff; display:grid; place-items:center; font-size:11px; font-weight:900; font-family:var(--mono); font-style:normal}
+.nav-links{display:flex; gap:2px; overflow-x:auto; flex:1 1 auto; scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{flex:0 0 auto; text-decoration:none; color:var(--muted); font-size:13px; font-weight:700; padding:12px 12px; border-radius:999px; white-space:nowrap; line-height:1.3}
+.nav-links a:hover{color:var(--ink); background:var(--soft)}
+.nav-links a:focus-visible{outline:2px solid var(--orange); outline-offset:2px}
+.nav-tag{flex:0 0 auto; font-size:11px; font-weight:900; letter-spacing:.1em; color:var(--orange-dark); background:#ffe9e0; border-radius:999px; padding:7px 13px; font-family:var(--mono)}
+
+/* hero */
+.hero{background:var(--navy); color:#fff; padding:88px 0 0; position:relative}
+.eyebrow{display:flex; align-items:center; gap:14px; font-size:12px; font-weight:900; letter-spacing:.14em; color:#9fb0c4; margin:0 0 26px}
+.eyebrow::before{content:""; width:34px; height:3px; background:var(--orange); border-radius:2px}
+.hero h1{
+  font-size:clamp(38px,7.4vw,92px); font-weight:900; line-height:1.1; letter-spacing:-.05em;
+  margin:0 0 30px; color:#fff;
+}
+.hero h1 u{text-decoration:none; background-image:linear-gradient(transparent 79%, var(--orange) 79%, var(--orange) 99%, transparent 99%)}
+.hero .lead{max-width:34em; font-size:17.5px; color:#cdd7e2; margin:0 0 32px; font-weight:500}
+.hero .lead b{color:#fff; font-weight:900}
+.hero-grid{display:grid; grid-template-columns:1.08fr .92fr; gap:56px; align-items:start; padding-bottom:76px}
+.pills{display:flex; flex-wrap:wrap; gap:8px}
+.pill{font-size:12.5px; font-weight:700; color:#cdd7e2; border:1px solid #2c3d54; border-radius:999px; padding:8px 15px; line-height:1.5}
+.hero-card{background:#fff; color:var(--ink); border-radius:var(--r-lg); padding:34px 32px 30px; box-shadow:var(--shadow)}
+.hero-card h2{font-size:20px; font-weight:900; letter-spacing:-.02em; margin:0 0 6px; line-height:1.55}
+.hero-card .hc-sub{font-size:13px; color:var(--muted); margin:0 0 22px}
+.hc-row{display:flex; align-items:center; gap:14px; background:var(--soft); border-radius:var(--r-sm); padding:14px 16px}
+.hc-row+.hc-row{margin-top:9px}
+.hc-row b{flex:0 0 auto; width:30px; height:30px; border-radius:9px; background:var(--orange); color:#fff; display:grid; place-items:center; font-size:12px; font-weight:900; font-family:var(--mono)}
+.hc-row span{font-size:14.5px; font-weight:700; line-height:1.5}
+.hc-row em{margin-left:auto; font-style:normal; font-size:11px; font-weight:900; letter-spacing:.08em; color:var(--muted); font-family:var(--mono); flex:0 0 auto}
+.hc-note{margin:18px 0 0; background:var(--mint); border-radius:var(--r-sm); padding:14px 16px; font-size:13.5px; font-weight:700; line-height:1.7}
+.stripe{display:flex; height:10px}
+.stripe i{flex:1} .stripe i:nth-child(1){background:var(--orange); flex:2.6} .stripe i:nth-child(2){background:var(--yellow); flex:2.2} .stripe i:nth-child(3){background:var(--mint); flex:2} .stripe i:nth-child(4){background:var(--paper); flex:3.2}
+
+/* section */
+section{padding:88px 0; border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+section.dark{background:var(--navy); color:#fff; border-bottom:0}
+.sec-top{display:flex; justify-content:space-between; align-items:flex-start; gap:30px; margin-bottom:38px}
+.kick{font-size:12px; font-weight:900; letter-spacing:.14em; color:var(--orange-dark); margin:0 0 14px; font-family:var(--mono)}
+.dark .kick{color:#ffb18c}
+h2{font-size:clamp(27px,4.2vw,48px); font-weight:900; line-height:1.28; letter-spacing:-.04em; margin:0; max-width:15em}
+.aim{color:var(--muted); font-size:15px; margin:16px 0 0; max-width:38em}
+.dark .aim{color:#9fb0c4}
+.big-n{font-size:clamp(46px,7vw,86px); font-weight:900; color:var(--orange); line-height:.9; letter-spacing:-.06em; flex:0 0 auto; font-family:var(--mono)}
+.time{display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:900; letter-spacing:.06em; color:var(--navy); background:var(--yellow); border-radius:999px; padding:6px 14px; margin-bottom:16px}
+
+/* talk components */
+.talk{display:grid; gap:14px; max-width:52em}
+.say{background:#fff; border-radius:var(--r-md); padding:26px 30px 26px 32px; position:relative; overflow:hidden; border:1px solid var(--line)}
+.say::before{content:""; position:absolute; left:0; top:0; bottom:0; width:5px; background:var(--orange)}
+.say .tag{display:block; font-size:12px; font-weight:900; letter-spacing:.16em; color:var(--orange-dark); font-family:var(--mono); margin-bottom:11px}
+.say p{margin:0; font-size:18.5px; font-weight:700; line-height:1.95; letter-spacing:-.012em; color:var(--ink)}
+.say p+p{margin-top:15px}
+.reply{background:var(--navy); color:#fff; border-radius:var(--r-md); padding:20px 26px; margin-left:44px}
+.reply .tag{display:block; font-size:12px; font-weight:900; letter-spacing:.16em; color:#8fa3ba; font-family:var(--mono); margin-bottom:8px}
+.reply p{margin:0; font-size:16px; font-weight:700; line-height:1.8}
+.beat{text-align:center; font-size:13px; font-weight:700; color:var(--muted); letter-spacing:.06em; padding:2px 0}
+.why{background:var(--soft); border-radius:var(--r-md); padding:22px 26px}
+.why .tag{display:block; font-size:12px; font-weight:900; letter-spacing:.16em; color:var(--orange-dark); font-family:var(--mono); margin-bottom:9px}
+.why p{margin:0; text-wrap:balance; font-size:14.5px; color:#3d4959; line-height:1.85}
+.why p+p{margin-top:11px}
+.ng{background:#fff; border:1px dashed #c2c9d2; border-radius:var(--r-md); padding:22px 26px}
+.ng .tag{display:block; font-size:12px; font-weight:900; letter-spacing:.16em; color:var(--muted); font-family:var(--mono); margin-bottom:11px}
+.ng ul{margin:0; padding:0; list-style:none; display:grid; gap:9px}
+.ng li{font-size:15px; color:#77808d; padding-left:26px; position:relative; line-height:1.75}
+.ng li::before{content:"✕"; position:absolute; left:0; top:0; font-weight:900; color:#a7b0bb}
+.fork{display:grid; grid-template-columns:1fr 1fr; gap:14px; max-width:52em}
+.fork > div{background:#fff; border:1px solid var(--line); border-radius:var(--r-md); padding:22px 24px}
+.fork .tag{display:block; font-size:12px; font-weight:900; letter-spacing:.14em; font-family:var(--mono); margin-bottom:10px; color:var(--orange-dark)}
+.fork .cold .tag{color:var(--muted)}
+.fork p{margin:0; font-size:15px; line-height:1.8; font-weight:500}
+.fork b{font-weight:900}
+
+/* generic blocks */
+.cards3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+.card{background:#fff; border:1px solid var(--line); border-radius:var(--r-lg); padding:30px 28px 32px}
+.card.on{background:var(--navy); border-color:var(--navy); color:#fff}
+.card .cap{display:inline-block; font-size:11px; font-weight:900; letter-spacing:.08em; color:#fff; background:var(--orange); border-radius:999px; padding:6px 13px; margin-bottom:20px}
+.card.on .cap{background:var(--mint); color:var(--navy)}
+.card h3{font-size:20px; font-weight:900; line-height:1.5; letter-spacing:-.025em; margin:0 0 12px}
+.card p{margin:0; font-size:14.5px; color:var(--muted); line-height:1.85}
+.card.on p{color:#b8c5d4}
+.card ol{margin:14px 0 0; padding-left:1.2em; font-size:14.5px; color:var(--muted); line-height:1.9}
+.card.on ol{color:#b8c5d4}
+
+/* table */
+.tablewrap{overflow-x:auto; border:1px solid var(--line); border-radius:var(--r-md); background:#fff}
+table{border-collapse:collapse; width:100%; min-width:720px; font-size:14.5px}
+th,td{text-align:left; padding:16px 20px; border-bottom:1px solid var(--soft); vertical-align:top}
+thead th{font-size:11.5px; letter-spacing:.1em; font-weight:900; color:var(--muted); background:var(--soft); font-family:var(--mono); white-space:nowrap}
+tbody th{font-weight:900; white-space:nowrap; color:var(--ink); font-size:15px}
+tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
+td.c{color:var(--muted)}
+td.o{color:var(--ink); font-weight:700}
+.tnote{font-size:12.5px; color:var(--muted); margin:14px 0 0}
+
+/* qa */
+.qa{display:grid; gap:14px}
+.q{background:#fff; border:1px solid var(--line); border-radius:var(--r-lg); padding:28px 30px 30px; scroll-margin-top:80px}
+.qhead{display:flex; gap:14px; align-items:flex-start; margin:0 0 18px}
+.qhead i{flex:0 0 auto; font-style:normal; font-size:12px; font-weight:900; font-family:var(--mono); color:#fff; background:var(--navy); border-radius:8px; padding:5px 9px; margin-top:5px}
+.qhead h3{margin:0; font-size:19px; font-weight:900; line-height:1.6; letter-spacing:-.02em; text-wrap:balance}
+.q .say{border-radius:var(--r-sm); padding:22px 26px 22px 28px}
+.q .say p{font-size:17px}
+.q .why{border-radius:var(--r-sm); margin-top:12px}
+.q .reply{margin-left:0; border-radius:var(--r-sm); margin-bottom:12px}
+.flagged{background:#fff8e6; border:1px solid #e8cf7a; border-radius:var(--r-sm); padding:16px 20px; margin-top:12px; font-size:13.5px; color:#6b5510; line-height:1.8}
+.flagged b{display:block; font-size:11px; font-weight:900; letter-spacing:.14em; color:#8a6a05; font-family:var(--mono); margin-bottom:7px}
+
+/* checklist */
+.checks{display:grid; gap:11px; max-width:46em; margin:0; padding:0; list-style:none; counter-reset:c}
+.checks li{counter-increment:c; background:var(--navy-2); border-radius:var(--r-md); padding:20px 24px 20px 62px; position:relative; font-size:16px; font-weight:700; line-height:1.7}
+.checks li::before{content:counter(c); position:absolute; left:22px; top:20px; width:26px; height:26px; border-radius:8px; background:var(--orange); color:#fff; display:grid; place-items:center; font-size:12px; font-weight:900; font-family:var(--mono)}
+.checks li span{display:block; text-wrap:balance; font-size:13.5px; font-weight:500; color:#9fb0c4; margin-top:5px; line-height:1.7}
+
+footer{background:var(--navy); color:#8fa3ba; padding:44px 0 60px; font-size:12.5px}
+footer p{margin:0 0 7px}
+footer b{color:#fff}
+
+@media(max-width:960px){
+  .hero-grid{grid-template-columns:1fr; gap:38px; padding-bottom:56px}
+  .cards3{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .wrap{width:calc(100% - 32px)}
+  .hero{padding-top:52px}
+  section{padding:56px 0}
+  .sec-top{flex-direction:column-reverse; align-items:flex-start; gap:6px; margin-bottom:28px}
+  .big-n{line-height:1}
+  .nav-links{display:none}
+  .say{padding:22px 22px 22px 24px} .say p{font-size:17px}
+  .reply{margin-left:16px; padding:18px 20px}
+  .fork{grid-template-columns:1fr}
+  .q{padding:24px 22px 26px} .qhead h3{font-size:17.5px}
+  .hero-card{padding:26px 22px 24px}
+  .checks li{padding:18px 20px 18px 56px} .checks li::before{left:18px; top:18px}
+}
+@media(max-width:700px){
+  .tablewrap{overflow:visible; border-radius:var(--r-md)}
+  table{min-width:0}
+  table,thead,tbody,tr,th,td{display:block; width:auto}
+  thead{display:none}
+  tbody tr{border-bottom:1px solid var(--line); padding:18px 0}
+  tbody tr:last-child{border-bottom:0}
+  tbody th{padding:0 20px 12px; font-size:16px; border:0}
+  tbody td{border:0; padding:0 20px}
+  tbody td::before{content:attr(data-l); display:block; font-size:12px; font-weight:900; letter-spacing:.06em; color:var(--muted); font-family:var(--mono); margin-bottom:2px}
+  tbody td+td{margin-top:12px}
+}
+@media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
+@media print{
+  .nav{display:none} .hero{padding-top:24px}
+  section{page-break-inside:avoid; padding:26px 0}
+  .say,.q,.card{break-inside:avoid}
+  body{font-size:12px} .hero h1{font-size:34px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-in">
+    <div class="brand"><i>L</i>Lシンク 営業トーク集</div>
+    <div class="nav-links">
+      <a href="#rule">3原則</a>
+      <a href="#open">つかみ</a>
+      <a href="#how">仕組み</a>
+      <a href="#core">本題・タグ</a>
+      <a href="#deny">自社否定</a>
+      <a href="#close">クロージング</a>
+      <a href="#len">尺別</a>
+      <a href="#biz">業種別</a>
+      <a href="#qa">想定質問15</a>
+      <a href="#ng">禁句</a>
+      <a href="#hear">ヒアリング</a>
+    </div>
+    <div class="nav-tag">社内限</div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">LSYNC SALES TALK ／ 社内限・商談用</p>
+      <h1>機能を<br>説明すると、<br><u>売れない。</u></h1>
+      <p class="lead">「24時間AIが対応します」と言った瞬間、相手は<b>聞いたことのある話</b>として処理します。Lシンクは、機能ではなく<b>一晩の出来事</b>から話し始めてください。この資料は、そのための<b>セリフ集</b>です。</p>
+      <div class="pills">
+        <span class="pill">読むのではなく、口に出す言葉</span>
+        <span class="pill">想定質問15本の切り返し付き</span>
+        <span class="pill">業種別の言い換え表</span>
+        <span class="pill">全部で7分</span>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h2>商談で話す順番は、これだけ</h2>
+      <p class="hc-sub">上から順に。合計7分。残り時間で削る順番も後ろに載せています。</p>
+      <div class="hc-row"><b>01</b><span>深夜3時に、予約が入っていた</span><em>60秒</em></div>
+      <div class="hc-row"><b>02</b><span>やっているのは3つだけ</span><em>60秒</em></div>
+      <div class="hc-row"><b>03</b><span>一番の魅力は、分身じゃない</span><em>3分</em></div>
+      <div class="hc-row"><b>04</b><span>9割は、話しかけてこない</span><em>60秒</em></div>
+      <div class="hc-row"><b>05</b><span>5分だけ、雑談してみてください</span><em>90秒</em></div>
+      <p class="hc-note">03がこの商談の山場です。ここで相手の顔が変わらなければ、その先を話しても決まりません。</p>
+    </div>
+  </div>
+  <div class="stripe"><i></i><i></i><i></i><i></i></div>
+</header>
+
+<main>
+
+<!-- 3原則 -->
+<section id="rule">
+  <div class="wrap">
+    <div class="sec-top">
+      <div>
+        <p class="kick">PRINCIPLES</p>
+        <h2>この3つを外すと、<br>何を話しても同じになる</h2>
+        <p class="aim">Lシンクは説明しやすいサービスです。説明しやすいので、つい説明してしまう。そこが唯一の落とし穴です。</p>
+      </div>
+      <div class="big-n">3</div>
+    </div>
+
+    <div class="cards3">
+      <div class="card">
+        <span class="cap">原則 01</span>
+        <h3>機能ではなく、<br>起きた事実から入る</h3>
+        <p>「AIが24時間対応します」は、相手がすでに10回聞いている話です。深夜3時に予約が入っていた、という事実から入ると、同じ機能がまったく別の話に聞こえます。</p>
+      </div>
+      <div class="card on">
+        <span class="cap">原則 02</span>
+        <h3>「分身」で<br>終わらせない</h3>
+        <p>24時間動くことは入口です。一番の売りはタグ別配信。ここまで持っていかずに終わる商談が一番もったいない。相手が「便利ですね」と言った時点では、まだ何も刺さっていません。</p>
+      </div>
+      <div class="card">
+        <span class="cap">原則 03</span>
+        <h3>最後は説明せず、<br>触らせる</h3>
+        <p>5分の雑談が、そのままデモです。相手が自分についたタグを見た瞬間の反応が、こちらの説明100個分にあたります。触りはじめたら、こちらは黙る。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 つかみ -->
+<section id="open">
+  <div class="wrap">
+    <div class="sec-top">
+      <div>
+        <p class="kick">TALK 01 ／ OPENING</p>
+        <span class="time">60秒</span>
+        <h2>深夜3時に、<br>予約が入っていた</h2>
+        <p class="aim">最初の30秒で、この一言だけ置きます。商品名も機能もまだ出しません。</p>
+      </div>
+      <div class="big-n">01</div>
+    </div>
+
+    <div class="fork" style="margin-bottom:24px">
+      <div>
+        <span class="tag">入り方 ／ LINEを使っている相手</span>
+        <p><b>「LINE、御社でも使われてますか」</b>→「配信、どれくらいの方が読んでます？」<br>反応率の話が出たところで、下のセリフに入る。</p>
+      </div>
+      <div class="cold">
+        <span class="tag">入り方 ／ LINEを使っていない相手</span>
+        <p><b>「問い合わせって、今どうやって来ますか」</b>→「それ、返すのは誰ですか」<br>一次対応が人だと分かったところで、下のセリフに入る。</p>
+      </div>
+    </div>
+
+    <div class="talk">
+      <div class="say">
+        <span class="tag">SAY</span>
+        <p>先日、うちの営業から共有があったんですが、深夜3時に、Lシンクから商談の予約が入っていたんです。</p>
+      </div>
+      <div class="beat">（ここで2秒、間を置く）</div>
+      <div class="say">
+        <span class="tag">SAY</span>
+        <p>もちろん、こちらは誰も起きていません。AIが勝手に会話して、勝手に日程まで押さえていました。</p>
+        <p>翌朝、お客様のほうから「こんな時間にすみません」と言われたそうなんです。謝ることじゃないんですよ、誰も起きていないので。ただ、そう言われたということは、<strong>人だと思われていた</strong>ということなんです。</p>
+      </div>
+      <div class="why">
+        <span class="tag">WHY</span>
+        <p>ここまでで、機能の話をひとつもしていません。「AI」「自動対応」「24時間」という言葉を先に出すと、相手の頭の中で既存のチャットボットの棚に入ってしまい、そこから出せなくなります。</p>
+        <p>「人だと思われていた」は、精度の証明を1行で済ませる言い方です。ここを飛ばさないでください。</p>
+      </div>
+      <div class="ng">
+        <span class="tag">DO NOT SAY</span>
+        <ul>
+          <li>24時間365日、AIが自動で対応します</li>
+          <li>弊社のLシンクは、LINE公式アカウントにAIを組み込むサービスでして</li>
+          <li>まず機能をご説明させてください</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="fork" style="margin-top:28px">
+      <div>
+        <span class="tag">相手が食いついたら</span>
+        <p>「へえ」「それどうやって」が出たら、そのまま <b>02 仕組み</b> へ。ここで焦って機能を全部言わない。3つだけ。</p>
+      </div>
+      <div class="cold">
+        <span class="tag">反応が薄かったら</span>
+        <p>説明を足さず、質問に切り替える。<b>「御社の場合、問い合わせが来てから実際に返すまで、どれくらいかかっていますか」</b>。相手の現状を話させてから 02 に戻る。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 仕組み -->
+<section id="how">
+  <div class="wrap">
+    <div class="sec-top">
+      <div>
+        <p class="kick">TALK 02 ／ MECHANISM</p>
+        <span class="time">60秒</span>
+        <h2>やっているのは、3つだけです</h2>
+        <p class="aim">仕組みの説明はここで終わり。これ以上増やすと、相手の集中が本題の前に切れます。</p>
+      </div>
+      <div class="big-n">02</div>
+    </div>
+
+    <div class="talk">
+      <div class="say">
+        <span class="tag">SAY</span>
+        <p>やっていることは3つだけなんです。</p>
+        <p>ひとつ目。あらかじめプロフィールと商品の情報を入れておくと、AIがその場で文章を作って答えます。決まった文面を返しているわけじゃないので、聞かれ方が違っても止まりません。</p>
+        <p>ふたつ目。答えて終わりにしないんです。疑問がひとつずつ消えたところで、「では日程はいかがですか」と、AIのほうから聞きます。</p>
+        <p>三つ目。営業時間という概念がないので、深夜に聞かれれば深夜に返します。冒頭の3時の予約も、人は誰も触っていません。</p>
+      </div>
+      <div class="say">
+        <span class="tag">SAY ／ ここで一段深くする</span>
+        <p>人が動いた時点で、その仕組みは負けだと思っていて。</p>
+        <p>問い合わせが来る、人が気づく、人が返す。今までは、その一番はじめが、いつも人だったんです。だから夜は止まるし、土日も止まる。人が休んだ分だけ、会社も止まっていた。</p>
+      </div>
+      <div class="why">
+        <span class="tag">WHY</span>
+        <p>「人が動いた時点で負け」は、この商材で一番よく刺さる一文です。相手の頭の中で、Lシンクが「便利なツール」から「考え方」に変わります。棒読みにならないよう、自分の言葉で言い直して構いません。</p>
+      </div>
+      <div class="ng">
+        <span class="tag">DO NOT SAY</span>
+        <ul>
+          <li>機能を4つ以上並べる（3つを超えると、どれも憶えてもらえません）</li>
+          <li>「生成AI」「LLM」「RAG」などの技術用語（相手が自分で使い始めた場合を除く）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 本題 -->
+<section id="core" class="dark">
+  <div class="wrap">
+    <div class="sec-top">
+      <div>
+        <p class="kick">TALK 03 ／ THE POINT</p>
+        <span class="time">3分</span>
+        <h2>一番の魅力は、<br>分身じゃないんです</h2>
+        <p class="aim">この商談の山場。ここだけは削らない。相手がこちらの説明を止めて質問してきたら、成功しています。</p>
+      </div>
+      <div class="big-n">03</div>
+    </div>
+
+    <div class="talk">
+      <div class="say">
+        <span class="tag">SAY ／ 自分でひっくり返す</span>
+        <p>ここまでだと「自分がもう一人いる」という話に聞こえると思うんですが、実は、一番の魅力はそこじゃないんです。</p>
+      </div>
+      <div class="reply">
+        <span class="tag">相手</span>
+        <p>え、違うんですか。</p>
+      </div>
+      <div class="say">
+        <span class="tag">SAY</span>
+        <p>分身はすごいです。ただ、一番の肝は、<strong>タグ別に配信できること</strong>だと思っています。しかも、そのタグを人がつけるんじゃなくて、会話しながら勝手についていくんです。</p>
+      </div>
+      <div class="say">
+        <span class="tag">SAY ／ なぜそこが一番か</span>
+        <p>商売って、結局アテンションが全部じゃないですか。相手がこっちを向いていない状態では、何を送っても届かない。</p>
+        <p>届かないだけならまだいいんです。相手によっては、<strong>送ったことがマイナスになる。</strong></p>
+      </div>
+      <div class="reply">
+        <span class="tag">相手</span>
+        <p>マイナス、ですか。たとえば、どういうことが起きるんですか。
+      </p></div>
+      <div class="say">
+        <span class="tag">SAY ／ 選挙の例（標準版）</span>
+        <p>選挙で考えてもらうと早いです。統一地方選が近づくと、議員さんから「LINEを使えないか」という相談が来るんですね。</p>
+        <p>ここで、子育て中の方に、中小企業支援の公約を送ってしまう。その人、投票しないんですよ。それどころか「この人は自分を見ていない」と思われて、そこで切られる。で、別の候補者のLINEに登録される。</p>
+        <p>送ったせいで、票が相手に移るんです。<strong>送らないほうがマシだった</strong>、ということが実際に起きます。</p>
+      </div>
+      <div class="beat">（ここで2秒。この資料で一番効く「間」です）</div>
+      <div class="say">
+        <span class="tag">SAY ／ 正しい順番</span>
+        <p>じゃあ正しい順番はどうかというと、その方にはまず、子育て支援のアンケートを送るんです。1週間後に「みなさんの声を、取りまとめました」と言って、そこで初めて公約を送る。</p>
+        <p>中小企業の社長には、中小企業支援のアンケートを取ってから、公約を送る。</p>
+        <p><strong>順番を逆にしただけで、読まれない。文章は同じなのに。</strong></p>
+      </div>
+      <div class="say">
+        <span class="tag">SAY ／ 人の手では無理だと閉じる</span>
+        <p>これ、人が手でやろうとすると、誰が子育て中で誰が経営者かを、いちいち調べて振り分けないといけません。数千人いたら、無理ですよね。</p>
+      </div>
+      <div class="why">
+        <span class="tag">WHY</span>
+        <p>選挙の例を使う理由は、<strong>「送ったせいで損をする」が誰にでも一瞬で分かる</strong>からです。売上や再来店の話でこれをやると、抽象的になって伝わりません。</p>
+        <p>「送らないほうがマシだった」の直後に必ず間を空けてください。ここで相手が自社に置き換えはじめます。すぐ次を話すと、その時間を奪ってしまいます。</p>
+      </div>
+      <div class="ng">
+        <span class="tag">DO NOT SAY</span>
+        <ul>
+          <li>特定の政党名・候補者名を出す（相手の支持先が分からない以上、必ず地雷になります）</li>
+          <li>「選挙でも使われています」と実績のように言う（例として話しているだけです）</li>
+          <li>タグの説明を先にして、選挙の例を後にする（順番が逆だと、ただの機能説明になります）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 自社否定 -->
+<section id="deny">
+  <div class="wrap">
+    <div class="sec-top">
+      <div>
+        <p class="kick">TALK 04 ／ SELF-DENIAL</p>
+        <span class="time">60秒</span>
+        <h2>9割の人は、<br>話しかけてこない</h2>
+        <p class="aim">自社の一番の売りを、自分で否定します。ここを言い切れるかどうかで、以降の話の信用度が変わります。</p>
+      </div>
+      <div class="big-n">04</div>
+    </div>
+
+    <div class="talk">
+      <div class="say">
+        <span class="tag">SAY</span>
+        <p>もうひとつ、正直に言っておきたいことがあって。</p>
+        <p>公式LINEって、登録した人の9割は、こちらから話しかけない限り黙ってるんです。体感では、10人登録して、自分から質問してくる人は1人いるかどうか。登録したこと自体を忘れている人も多い。</p>
+        <p>つまり、<strong>うちが一番売りにしている「24時間返信できます」という機能は、放っておいたら9割空振りするんですよ。</strong></p>
+      </div>
+      <div class="reply">
+        <span class="tag">相手</span>
+        <p>……それ、言っちゃっていいんですか。</p>
+      </div>
+      <div class="say">
+        <span class="tag">SAY ／ ここは一息で言い切る</span>
+        <p>事実なので。公式LINEが悪いんじゃなくて、悪いのは<strong>待っている側の設計</strong>なんです。登録してもらって、あとは向こうから聞いてくるのを待つ。あれをやめない限り、何を入れても同じです。</p>
+        <p>だから待つのをやめて、こっちから声をかけにいく。ただし、間違えると嫌われて終わる。だから、相手が誰なのかを知っている必要がある。<strong>それを溜めているのがタグなんです。</strong></p>
+      </div>
+      <div class="why">
+        <span class="tag">WHY</span>
+        <p>弱みを先に出すと、そのあとの主張が全部本当に聞こえます。ただし<strong>「だからタグが要る」まで一息で言い切ること。</strong>途中で切ると、ただの弱みの開示になって終わります。</p>
+        <p>相手の公式LINEの登録者数と、直近の配信の反応率を聞けるとベストです。数字が出た時点で、この話はそのまま相手の話になります。</p>
+      </div>
+      <div class="flagged">
+        <b>要確認</b>
+        「10人に1人」は自社運用での体感値です。集計期間と母数が確定するまで、確定数値として断言しないでください。必ず「体感では」を付けます。実数が出せる場合は、社内の質問部屋で確認してから前置きを外します。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 クロージング -->
+<section id="close">
+  <div class="wrap">
+    <div class="sec-top">
+      <div>
+        <p class="kick">TALK 05 ／ CLOSING</p>
+        <span class="time">90秒</span>
+        <h2>説明を終わらせて、<br>その場で触ってもらう</h2>
+        <p class="aim">ここまで来たら、もう説明を足さない。5分の雑談がデモです。</p>
+      </div>
+      <div class="big-n">05</div>
+    </div>
+
+    <div class="talk">
+      <div class="say">
+        <span class="tag">SAY ／ 定義を一度だけ言い直す</span>
+        <p>改めて何をするサービスかというと、<strong>雑談するだけで、お客様のことが分かるサービス</strong>です。24時間返すのは、そのための入口でしかありません。</p>
+        <p>雑談しながら、その人がどんな人かを憶えて、その人に効く一言で声をかける。はじめの一手も、憶えることも、人がやらなくていい。それがLシンクです。</p>
+      </div>
+      <div class="say">
+        <span class="tag">SAY ／ ここでQRを出す</span>
+        <p>返信の速さは、見なくて大丈夫です。</p>
+        <p>5分だけ雑談してみてください。そのあと、自分に何のタグがついたかを見てもらえれば、それで分かります。</p>
+        <p>たぶん思っているより言い当てられていて、少し気持ち悪いはずです。<strong>その気持ち悪さが、効くということなので。</strong></p>
+      </div>
+      <div class="why">
+        <span class="tag">WHY</span>
+        <p>「気持ち悪い」という言葉をこちらから先に言うことで、相手が同じことを感じたときに、それが欠点ではなく<strong>性能の証明</strong>に変わります。ここを避けて「すごいですよ」と言うと、逆に警戒されます。</p>
+        <p>相手が触りはじめたら、こちらは黙ってください。間を埋めようとして説明を足すのが、この場面で一番多い失敗です。</p>
+      </div>
+      <div class="ng">
+        <span class="tag">DO NOT SAY</span>
+        <ul>
+          <li>「では資料をお送りしますので、ご検討ください」（触らせずに帰らない）</li>
+          <li>相手が画面を触っている最中に機能を説明する</li>
+        </ul>
+      </div>
+      <div class="flagged">
+        <b>準備</b>
+        QRコードはこの資料に入っていません。商談前に自分のスマホか画面で出せるようにしておくこと。あわせて、<strong>読み取った直後に届く1通目の文面</strong>を必ず自分で確認しておいてください。ここが古いと、その場で信用を失います。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 尺別 -->
+<section id="len">
+  <div class="wrap">
+    <div class="sec-top">
+      <div>
+        <p class="kick">TIME VARIANTS</p>
+        <h2>残り時間で、<br>削る順番を決めておく</h2>
+        <p class="aim">商談が押したときに何を捨てるかを、その場で考えないための表です。</p>
+      </div>
+      <div class="big-n">3</div>
+    </div>
+
+    <div class="cards3">
+      <div class="card">
+        <span class="cap">1分版</span>
+        <h3>立ち話・電話・<br>展示会ブース</h3>
+        <ol>
+          <li>深夜3時に予約が入っていた</li>
+          <li>ただ、一番の売りはそこじゃなくて、会話しながら勝手にタグがついていくこと</li>
+          <li>5分だけ触ってみてください</li>
+        </ol>
+        <p style="margin-top:14px">選挙の例も、仕組みの3つも捨てる。<b>「勝手にタグがつく」</b>だけは絶対に残す。</p>
+      </div>
+      <div class="card on">
+        <span class="cap">3分版</span>
+        <h3>他の商材の<br>ついでに出すとき</h3>
+        <ol>
+          <li>深夜3時（30秒）</li>
+          <li>一番の魅力は分身じゃない → タグ（60秒）</li>
+          <li>選挙の例（60秒）</li>
+          <li>5分だけ触ってください（30秒）</li>
+        </ol>
+        <p style="margin-top:14px">仕組みの3つと自社否定を捨てる。<b>選挙の例は残す。</b>ここを捨てると、ただの機能紹介に戻ります。</p>
+      </div>
+      <div class="card">
+        <span class="cap">10分版</span>
+        <h3>Lシンクが<br>主題の商談</h3>
+        <ol>
+          <li>01〜05 を全部（7分）</li>
+          <li>ヒアリング5問（3分）</li>
+        </ol>
+        <p style="margin-top:14px">時間が余ったら、機能を足すのではなく<b>相手に質問する</b>。特に「お客様を3つに分けるとしたら」は、そのままタグ設計の打ち合わせになります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 業種別 -->
+<section id="biz">
+  <div class="wrap">
+    <div class="sec-top">
+      <div>
+        <p class="kick">BY INDUSTRY</p>
+        <h2>選挙の話が<br>使えない相手には</h2>
+        <p class="aim">構造はまったく同じです。「相手を分けずに送ると損をする」を、相手の商売の言葉に置き換えるだけ。</p>
+      </div>
+      <div class="big-n">6</div>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>業種</th><th>自動でつくタグの例</th><th>順番を間違えた送り方</th><th>正しい順番</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>美容室</th>
+            <td class="c" data-l="タグの例">白髪染め／学生／毛量が多い</td>
+            <td class="c" data-l="間違えた送り方">学生に、白髪染めの割引を送る</td>
+            <td class="o" data-l="正しい順番">髪の悩みを聞く → その悩み向けのメニューを送る</td>
+          </tr>
+          <tr>
+            <th>住宅・不動産</th>
+            <td class="c" data-l="タグの例">土地あり／建替え／賃貸派</td>
+            <td class="c" data-l="間違えた送り方">賃貸で満足している人に、注文住宅の見学会を送る</td>
+            <td class="o" data-l="正しい順番">今の住まいの不満を聞く → その不満に効く事例を送る</td>
+          </tr>
+          <tr>
+            <th>保険</th>
+            <td class="c" data-l="タグの例">独身／子育て中／経営者</td>
+            <td class="c" data-l="間違えた送り方">独身の方に、学資保険の案内を送る</td>
+            <td class="o" data-l="正しい順番">ライフプランを聞く → 挙がった不安に沿った商品を送る</td>
+          </tr>
+          <tr>
+            <th>飲食</th>
+            <td class="c" data-l="タグの例">ランチ利用／宴会の幹事／家族連れ</td>
+            <td class="c" data-l="間違えた送り方">家族連れに、深夜の飲み放題を送る</td>
+            <td class="o" data-l="正しい順番">利用シーンを聞く → そのシーンのコースを送る</td>
+          </tr>
+          <tr>
+            <th>塾・スクール</th>
+            <td class="c" data-l="タグの例">受験学年／低学年／部活と両立</td>
+            <td class="c" data-l="間違えた送り方">低学年の保護者に、受験直前講習を送る</td>
+            <td class="o" data-l="正しい順番">今の悩みを聞く → 学年に合った内容を送る</td>
+          </tr>
+          <tr>
+            <th>BtoB全般</th>
+            <td class="c" data-l="タグの例">決裁者／情報収集中／導入時期が近い</td>
+            <td class="c" data-l="間違えた送り方">情報収集中の相手に、いきなり見積を送る</td>
+            <td class="o" data-l="正しい順番">検討状況を聞く → 段階に合った資料を送る</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tnote">タグ名は説明用の例です。実際に設定できるタグの自由度と上限は、社内の質問部屋で確認してから提示してください。</p>
+  </div>
+</section>
+
+<!-- QA -->
+<section id="qa">
+  <div class="wrap">
+    <div class="sec-top">
+      <div>
+        <p class="kick">OBJECTION HANDLING</p>
+        <h2>想定質問 15本と、<br>そのまま使える切り返し</h2>
+        <p class="aim">太字がそのまま口に出す言葉です。答えを持っていない質問（料金・期間・個人情報）は、憶測で埋めずに「持ち帰る型」を使ってください。</p>
+      </div>
+      <div class="big-n">15</div>
+    </div>
+
+    <div class="qa">
+
+      <div class="q">
+        <div class="qhead"><i>Q01</i><h3>今のLINEツールで足りているので、必要ないかな</h3></div>
+        <div class="say"><span class="tag">SAY</span><p>タグ自体は、たいていのツールに付いていますよね。ひとつだけ伺いたいんですが、<strong>そのタグ、今は誰がつけていますか。</strong></p></div>
+        <div class="reply"><span class="tag">たいていこう返ってくる</span><p>担当が、トークを見て手でつけてます。</p></div>
+        <div class="say"><span class="tag">SAY</span><p>そこなんです。Lシンクは、会話しているうちに勝手につきます。だから、登録者が数千人になっても運用が崩れないんです。</p></div>
+        <div class="why"><span class="tag">WHY</span><p>ツールの優劣を並べて比較しないこと。<strong>論点を「タグを誰がつけるか」の1点に絞る</strong>と、相手が自分で差に気づきます。</p></div>
+      </div>
+
+      <div class="q">
+        <div class="qhead"><i>Q02</i><h3>AIが変なことを言わないか、心配なんですが</h3></div>
+        <div class="say"><span class="tag">SAY</span><p>入れていただいたナレッジの範囲で答えます。それと、いきなり全部を任せる必要はないんです。<strong>まずご自身で5分触ってみてください。</strong>答え方を見てから決めていただくのが早いです。</p></div>
+        <div class="why"><span class="tag">WHY</span><p>技術的な安全性を言葉で説明しても不安は消えません。<strong>「見てから決めてください」に変換する</strong>のが唯一効く返しです。ここでもデモに寄せます。</p></div>
+      </div>
+
+      <div class="q">
+        <div class="qhead"><i>Q03</i><h3>うちの業種で使えるんですか</h3></div>
+        <div class="say"><span class="tag">SAY</span><p>タグの中身を御社に合わせて作るだけなので、業種は問いません。むしろ逆に伺いたいんですが、<strong>御社のお客様を3つに分けるとしたら、どう分けますか。</strong></p></div>
+        <div class="beat">（相手が答えるまで待つ）</div>
+        <div class="say"><span class="tag">SAY</span><p>それが、そのままタグになります。</p></div>
+        <div class="why"><span class="tag">WHY</span><p>この資料で<strong>一番強い切り返し</strong>です。相手が自分の口でタグ設計をした瞬間、それはもう自分ごとになります。答えが出てこない相手には「上客と、そうでない方の違いは何ですか」と言い換えてください。</p></div>
+      </div>
+
+      <div class="q">
+        <div class="qhead"><i>Q04</i><h3>登録者が少ないので、まだ意味がないのでは</h3></div>
+        <div class="say"><span class="tag">SAY</span><p>むしろ、少ないうちのほうがいいです。数千人溜まってからだと、誰が誰か分からない状態で始めることになるので。<strong>今から会話を溜めておくと、増えたときに全員分のカルテがある状態になります。</strong></p></div>
+      </div>
+
+      <div class="q">
+        <div class="qhead"><i>Q05</i><h3>いくらですか</h3></div>
+        <div class="say"><span class="tag">SAY ／ 数字を持っていないときの型</span><p>金額の前に、ひとつだけ伺ってもいいですか。<strong>今、公式LINEに何名くらい登録されていますか。</strong></p><p>……ありがとうございます。その規模だと構成が変わるので、正確なところを確認して、明日までにお送りします。</p></div>
+        <div class="flagged"><b>要確認</b>料金は商材ごとに正本が変わります。<strong>商談前に社内の質問部屋で最新を確認してから臨んでください。</strong>この型は、確認を忘れた／その場で答えを持っていないときの逃げ方であって、毎回これを使うものではありません。憶測の数字を一度でも口にすると、あとで必ず揉めます。</div>
+      </div>
+
+      <div class="q">
+        <div class="qhead"><i>Q06</i><h3>導入までどれくらいかかりますか</h3></div>
+        <div class="say"><span class="tag">SAY</span><p>御社のナレッジがどれくらい揃っているかで変わります。すでにFAQや商品資料をお持ちの会社さんは早いです。<strong>まず、いま何をお持ちか見せていただけますか。</strong></p></div>
+        <div class="flagged"><b>要確認</b>標準的な期間は社内で確認してから使ってください。日数を憶測で答えないこと。この返しは、同時に「ナレッジの棚卸し」という次のアポの理由にもなります。</div>
+      </div>
+
+      <div class="q">
+        <div class="qhead"><i>Q07</i><h3>個人情報の扱いは大丈夫ですか</h3></div>
+        <div class="say"><span class="tag">SAY</span><p>そこは正確にお答えしたいので、<strong>確認して、書面でお出しします。</strong>口頭でうろ覚えのことを申し上げるほうが、御社にとって危ないので。</p></div>
+        <div class="flagged"><b>要確認</b>この質問だけは、絶対にその場で答えないでください。取得する情報の範囲、保存場所、削除方法。3点セットで社内確認してから書面で返します。</div>
+      </div>
+
+      <div class="q">
+        <div class="qhead"><i>Q08</i><h3>AIって、結局チャットボットでしょう</h3></div>
+        <div class="say"><span class="tag">SAY</span><p>シナリオ型のチャットボットとは別物です。シナリオ型は、想定していない質問が来ると止まって、担当者にアラートが飛ぶ。<strong>結局そこから人が手で返すことになります。</strong>Lシンクはその場で文章を作るので、止まりません。</p></div>
+        <div class="why"><span class="tag">WHY</span><p>「違います」と否定から入らず、<strong>相手がチャットボットで実際に困ったことを言い当てる</strong>。過去に導入して失敗している相手ほど、この一言で前のめりになります。</p></div>
+      </div>
+
+      <div class="q">
+        <div class="qhead"><i>Q09</i><h3>設定は誰がやるんですか。難しそうですが</h3></div>
+        <div class="say"><span class="tag">SAY</span><p>設定画面と格闘する時間って、正直1円にもならないですよね。使い方を覚えるためにツールを入れるわけじゃないので。</p><p>LシンクはMCPに対応したので、Claudeをお使いなら<strong>「この業種向けのタグを作って、ステップ配信を組んで」と伝えるだけ</strong>で構築が進みます。</p></div>
+        <div class="flagged"><b>要確認</b>MCPでどこまで設定できるかを、必ず事前に確認してください。できないことを言うと、そのまま問い合わせと解約理由になります。相手がAIに詳しくない場合は「MCP」という単語を出さず、「Claudeに話しかけるだけで設定できます」だけで止めてください。</div>
+      </div>
+
+      <div class="q">
+        <div class="qhead"><i>Q10</i><h3>そもそもLINE公式アカウントを持っていません</h3></div>
+        <div class="say"><span class="tag">SAY</span><p>そこからご一緒できます。むしろ、まだ何も配信していない状態のほうが、最初から正しい設計で始められます。</p></div>
+        <div class="flagged"><b>要確認</b>開設代行の可否、費用、必要な期間は社内確認が必要です。「できます」と言い切る前に、どこまでこちらでやるのかを確認してください。</div>
+      </div>
+
+      <div class="q">
+        <div class="qhead"><i>Q11</i><h3>効果が出なかったら、どうするんですか</h3></div>
+        <div class="say"><span class="tag">SAY</span><p>効果の前に、ひとつだけ確認していただきたいことがあって。<strong>5分雑談して、ご自身についたタグを見てください。</strong>そこが当たっていなければ、この先も当たりません。</p><p>逆に当たっていれば、あとは何を送るかだけの話になります。</p></div>
+        <div class="why"><span class="tag">WHY</span><p>成果を約束せず、<strong>相手が自分で判定できる基準を渡す</strong>。「保証します」と言った瞬間に、この商談は稟議の材料に格下げされます。</p></div>
+      </div>
+
+      <div class="q">
+        <div class="qhead"><i>Q12</i><h3>他社と何が違うんですか</h3></div>
+        <div class="say"><span class="tag">SAY</span><p>タグを人がつけるか、会話が勝手につけるか。<strong>その1点です。</strong></p></div>
+        <div class="why"><span class="tag">WHY</span><p>言い切って、止めてください。差分を4つも5つも並べると、どれも憶えてもらえません。この一文のあとに相手が黙ったら、それは考えている時間です。埋めないこと。</p></div>
+        <div class="flagged"><b>禁句</b>「他社にはできません」とは言わないこと。必ず<strong>「当社で調べた範囲では、確認できていません」</strong>に言い換えます。</div>
+      </div>
+
+      <div class="q">
+        <div class="qhead"><i>Q13</i><h3>社内で使いこなせるか不安です</h3></div>
+        <div class="say"><span class="tag">SAY</span><p>触るのは、お客様と会話するAIのほうなので、社内の方が毎日操作するものではありません。<strong>むしろ、今まで人がやっていた一次対応が減ります。</strong></p></div>
+      </div>
+
+      <div class="q">
+        <div class="qhead"><i>Q14</i><h3>似たようなAIを、もう入れています</h3></div>
+        <div class="say"><span class="tag">SAY</span><p>ちなみにそれ、<strong>タグはどこまで自動でついていますか。</strong></p></div>
+        <div class="why"><span class="tag">WHY</span><p>既存ツールを否定しない。質問1本で、相手に差を発見させます。ここで「ついていない」と返ってきたら、そのまま <b>03 本題</b> に入ってください。</p></div>
+      </div>
+
+      <div class="q">
+        <div class="qhead"><i>Q15</i><h3>いったん持ち帰って検討します</h3></div>
+        <div class="say"><span class="tag">SAY</span><p>ぜひ。ひとつだけお願いがあって、<strong>検討の前に、5分だけ触ってみていただけませんか。</strong>ご自身についたタグを見てからのほうが、社内でも説明しやすいと思います。</p></div>
+        <div class="why"><span class="tag">WHY</span><p>持ち帰らせない努力より、<strong>持ち帰る中身を体験に変える</strong>ほうが通ります。社内で「AIが自動で対応するらしい」と共有されるか、「自分についたタグが当たっていた」と共有されるかで、次回の温度がまったく違います。</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 禁句 -->
+<section id="ng" class="dark">
+  <div class="wrap">
+    <div class="sec-top">
+      <div>
+        <p class="kick">NEVER SAY</p>
+        <h2>これを言うと、<br>あとで必ず戻ってくる</h2>
+        <p class="aim">その場で気持ちよく話せてしまう言葉ほど、解約理由とクレームになります。</p>
+      </div>
+      <div class="big-n">6</div>
+    </div>
+
+    <ul class="checks">
+      <li>「他社にはできません」と断言する
+        <span>→「当社で調べた範囲では、確認できていません」に必ず言い換える。</span></li>
+      <li>「10人に1人」を確定した数値として言う
+        <span>→ 自社運用での体感値。必ず「体感では」を付ける。集計期間と母数が確定するまで断言しない。</span></li>
+      <li>特定の政党名・候補者名を出す
+        <span>→ 選挙は構造の例として話すだけ。相手の支持先は分からない。政治色を避けたい相手には、業種別の表から差し替える。</span></li>
+      <li>料金・導入期間・個人情報の扱いを、確認せずその場で答える
+        <span>→ 一度口にした数字は必ず引用される。持ち帰る型（Q05・Q06・Q07）を使う。</span></li>
+      <li>MCPでできることを盛る
+        <span>→ できないことを言うと、そのまま問い合わせと解約理由になる。範囲を確認してから話す。</span></li>
+      <li>「絶対に成果が出ます」と約束する
+        <span>→ 成果を保証せず、相手が自分で判定できる基準（5分のタグ）を渡す。</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ヒアリング -->
+<section id="hear">
+  <div class="wrap">
+    <div class="sec-top">
+      <div>
+        <p class="kick">DISCOVERY</p>
+        <h2>商談中に、<br>必ず持って帰る5つ</h2>
+        <p class="aim">この5つが埋まっていれば、次回は提案から始められます。埋まっていなければ、次も同じ説明を繰り返すことになります。</p>
+      </div>
+      <div class="big-n">5</div>
+    </div>
+
+    <div class="cards3" style="grid-template-columns:1fr">
+      <div class="card" style="padding:0; overflow:hidden; border-radius:var(--r-md)">
+        <div class="tablewrap" style="border:0; border-radius:0">
+          <table>
+            <thead><tr><th>聞くこと</th><th>そのまま使う言い方</th><th>何に効くか</th></tr></thead>
+            <tbody>
+              <tr><th>登録者数</th><td class="o" data-l="そのまま使う言い方">今、公式LINEに何名くらい登録されていますか</td><td class="c" data-l="何に効くか">規模。9割の話を相手の数字に変える</td></tr>
+              <tr><th>一次対応</th><td class="o" data-l="そのまま使う言い方">問い合わせが来てから返すまで、いま誰が、どれくらいかかっていますか</td><td class="c" data-l="何に効くか">深夜3時の話を自分ごとにする</td></tr>
+              <tr><th>配信の実態</th><td class="o" data-l="そのまま使う言い方">配信は月に何回くらいですか。全員に同じ内容ですか</td><td class="c" data-l="何に効くか">タグ別配信の必要性が数字で出る</td></tr>
+              <tr><th>顧客の分け方</th><td class="o" data-l="そのまま使う言い方">お客様を3つに分けるとしたら、どう分けますか</td><td class="c" data-l="何に効くか">そのままタグ設計になる。最重要</td></tr>
+              <tr><th>決裁と時期</th><td class="o" data-l="そのまま使う言い方">進めるとしたら、どなたと、いつごろまでに決まりそうですか</td><td class="c" data-l="何に効くか">次のアポの設計</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p class="tnote">4つ目が最重要です。ここで相手が答えた分け方は、そのままタグの初期設計として次回に持っていけます。</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>Lシンク 営業トーク集</b> ／ 2026-09-05 作成</p>
+    <p>白石のLシンク・インタビュー原稿をもとに構成。<b>社内限。顧客への配布・画面共有は想定していません。</b></p>
+    <p>料金・導入期間・個人情報の扱い・MCPの対応範囲・LINE公式アカウント開設代行は、いずれも本資料に記載していません。商談前に社内の質問部屋で確認してください。</p>
+    <p>© Writeup Co., Ltd.</p>
+  </div>
+</footer>
+
+</body>
+</html>
