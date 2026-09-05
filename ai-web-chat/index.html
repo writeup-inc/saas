@@ -244,15 +244,68 @@ h1 em{color:var(--accent); font-style:normal}
 .aside-box dd{margin:6px 0 0; color:var(--muted); font-size:13px; line-height:1.75}
 
 /* ── demo ───────────────────────────────────────────────── */
-.demo-grid{display:grid; grid-template-columns:minmax(0,368px) minmax(0,1fr); gap:clamp(28px,4vw,56px); align-items:start; margin-top:52px}
-.demo-side h3{font-size:18px}
-.demo-side ol{margin:22px 0 0; padding-left:1.3em; color:var(--ink-soft); font-size:14px}
-.demo-side li{margin-top:12px; line-height:1.78}
-.demo-side li b{color:var(--ink)}
-.demo-side>p:last-child{margin-top:24px; color:var(--muted); font-size:13px}
+.demo-stage{display:grid; grid-template-columns:minmax(0,286px) minmax(0,1fr); gap:clamp(20px,2.6vw,32px); align-items:stretch; margin-top:52px}
+.demo-points{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr)); gap:1px; margin-top:32px; background:var(--line); border:1px solid var(--line); border-radius:var(--r); overflow:hidden}
+.demo-point{min-width:0; padding:22px 24px 24px; background:var(--surface)}
+.demo-point b{display:block; font-size:15.5px; letter-spacing:-.03em}
+.demo-point span{display:block; margin-top:8px; color:var(--ink-soft); font-size:13.5px; line-height:1.75}
+.demo-foot{margin-top:20px; color:var(--muted); font-size:13px}
+
+/* ── avatar panel ───────────────────────────────────────── */
+.ava-panel{
+  position:relative; display:flex; flex-direction:column; min-width:0;
+  background:var(--white); border:1px solid var(--line); border-radius:var(--r-lg);
+  box-shadow:0 22px 64px rgba(19,35,30,.09); overflow:hidden;
+}
+.ava-state{
+  position:absolute; top:15px; left:15px; z-index:3;
+  display:inline-flex; align-items:center; gap:9px; padding:5px 12px 5px 11px;
+  color:var(--muted); background:rgba(255,255,255,.92); border:1px solid var(--line);
+  border-radius:100px; font-size:12px; font-weight:800; letter-spacing:.02em;
+}
+.ava-state::before{content:"待機中"}
+.is-speaking .ava-state{color:#fff; background:var(--green-700); border-color:var(--green-700)}
+.is-speaking .ava-state::before{content:"応答中"}
+.ava-wave{display:inline-flex; align-items:flex-end; gap:2.5px; height:13px}
+.ava-wave i{width:2.5px; height:4px; background:currentColor; border-radius:2px; opacity:.45}
+.is-speaking .ava-wave i{animation:wave .72s ease-in-out infinite; opacity:1}
+.is-speaking .ava-wave i:nth-child(2){animation-delay:.12s}
+.is-speaking .ava-wave i:nth-child(3){animation-delay:.24s}
+.is-speaking .ava-wave i:nth-child(4){animation-delay:.36s}
+@keyframes wave{0%,100%{height:4px}50%{height:13px}}
+
+.ava-art-wrap{position:relative; flex:1; min-height:246px; overflow:hidden; background:var(--green-050)}
+.ava-art{position:absolute; inset:0; display:block; width:100%; height:100%}
+.ava-glow{transform-origin:120px 116px; opacity:.9}
+.is-speaking .ava-glow{animation:glow 2.2s ease-in-out infinite}
+@keyframes glow{0%,100%{transform:scale(1); opacity:.9}50%{transform:scale(1.06); opacity:.65}}
+.ava-body{transform-origin:120px 240px}
+.is-speaking .ava-body{animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+.ava-eye{transform-origin:center; transform-box:fill-box; animation:blinkEye 5.4s infinite}
+.ava-eye.r{animation-delay:.06s}
+@keyframes blinkEye{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.12)}}
+.ava-mouth{transform-origin:center; transform-box:fill-box}
+.is-speaking .ava-mouth{animation:talk .34s ease-in-out infinite}
+@keyframes talk{0%,100%{transform:scaleY(.45)}50%{transform:scaleY(1.5)}}
+.ava-ping{transform-origin:120px 44px; opacity:0}
+.is-speaking .ava-ping{animation:ping 1.6s ease-out infinite}
+@keyframes ping{0%{transform:scale(.6); opacity:.8}100%{transform:scale(1.9); opacity:0}}
+
+.ava-meta{padding:20px 20px 22px; border-top:1px solid var(--hair)}
+.ava-meta b{display:block; font-size:16.5px; font-weight:800; letter-spacing:-.03em}
+.ava-meta small{display:block; margin-top:5px; color:var(--muted); font-size:13px}
+.ava-meta p{margin-top:14px; padding-top:14px; border-top:1px dashed var(--line); color:var(--ink-soft); font-size:12.5px; line-height:1.7}
+
+/* hero mini avatar */
+.mini-ava{display:flex; align-items:center; gap:11px; padding:12px 17px; background:var(--white); border-bottom:1px solid var(--hair)}
+.mini-ava svg{flex:none; width:38px; height:38px; border-radius:50%; background:var(--green-050)}
+.mini-ava b{font-size:13.5px; font-weight:800; letter-spacing:-.02em}
+.mini-ava small{display:block; margin-top:1px; color:var(--muted); font-size:12px; font-weight:700}
 .demo-banner{display:flex; align-items:center; gap:11px; padding:11px 17px; color:rgba(255,255,255,.92); background:var(--green-700); font-size:12.5px; line-height:1.65}
 .demo-banner::before{content:"DEMO"; flex:none; padding:2px 8px; color:var(--green-900); background:#fff; border-radius:3px; font-size:10px; font-weight:800; letter-spacing:.08em}
-#demoChat .chat-body{min-height:430px; max-height:540px; overflow-y:auto; scroll-behavior:smooth}
+#demoChat{display:flex; flex-direction:column}
+#demoChat .chat-body{flex:1; min-height:390px; max-height:520px; overflow-y:auto; scroll-behavior:smooth}
 .typing{display:inline-flex; gap:5px; align-items:center; padding:5px 2px}
 .typing i{width:6px; height:6px; background:var(--green-500); border-radius:50%; animation:blink 1.2s infinite}
 .typing i:nth-child(2){animation-delay:.2s}
@@ -278,12 +331,23 @@ footer .wrap{display:flex; flex-wrap:wrap; align-items:center; justify-content:s
 @media (max-width:1080px){
   .hero-grid{grid-template-columns:1fr; gap:40px}
   .hero-chat{max-width:520px}
-  .demo-grid,.flow-grid{grid-template-columns:1fr}
+  .flow-grid{grid-template-columns:1fr}
   .funnel{grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px}
   .step::after{display:none}
 }
+@media (max-width:900px){
+  .demo-stage{grid-template-columns:1fr; gap:18px}
+  .ava-panel{flex-direction:row; align-items:center; gap:16px; padding:14px}
+  .ava-state{position:static; flex:none; order:3}
+  .ava-art-wrap{width:88px; height:88px; min-height:0; flex:none; border-radius:50%}
+  .ava-meta{flex:1; min-width:0; padding:0; border-top:0}
+  .ava-meta small{display:none}
+  .ava-meta p{margin-top:9px; padding-top:9px}
+}
 @media (max-width:760px){
   body{font-size:15px}
+  .ava-panel{flex-wrap:wrap}
+  .ava-meta p{display:none}
   .fc-split{grid-template-columns:1fr; gap:22px; padding-top:0; margin-top:0}
   .fc-split::before{display:none}
   .fc-branch::before{display:none}
@@ -358,6 +422,23 @@ footer .wrap{display:flex; flex-wrap:wrap; align-items:center; justify-content:s
         <div class="chat-head">
           <b><span class="dot"></span><span>サイト内AIチャット</span></b>
           <em>24時間・登録不要</em>
+        </div>
+        <div class="mini-ava">
+          <svg viewBox="0 0 240 240" aria-hidden="true">
+            <circle cx="120" cy="116" r="78" fill="#dfe9e4"/>
+            <path d="M46 240 q0-56 74-56 t74 56 z" fill="#2b6555"/>
+            <rect x="108" y="152" width="24" height="30" rx="11" fill="#1e5245"/>
+            <line x1="120" y1="60" x2="120" y2="44" stroke="#2b6555" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="120" cy="42" r="5.5" fill="#e36b32"/>
+            <rect x="62" y="58" width="116" height="106" rx="34" fill="#fbfaf6" stroke="#2b6555" stroke-width="3"/>
+            <rect x="46" y="96" width="18" height="34" rx="9" fill="#2b6555"/>
+            <rect x="176" y="96" width="18" height="34" rx="9" fill="#2b6555"/>
+            <rect x="78" y="82" width="84" height="58" rx="24" fill="#12352c"/>
+            <rect x="97" y="100" width="10" height="15" rx="5" fill="#eff3f1"/>
+            <rect x="133" y="100" width="10" height="15" rx="5" fill="#eff3f1"/>
+            <rect x="110" y="124" width="20" height="6" rx="3" fill="#e36b32"/>
+          </svg>
+          <span><b>AIアシスタント</b><small>資料の範囲で回答／範囲外は担当者へ</small></span>
         </div>
         <div class="chat-body">
           <p class="bubble user">うちの規模でも導入できますか？</p>
@@ -572,15 +653,34 @@ footer .wrap{display:flex; flex-wrap:wrap; align-items:center; justify-content:s
       <p class="lead">質問候補を選ぶだけで会話が始まります。回答が返ってくるだけでなく、<strong>次に確かめることが示され、最後に担当者への引き継ぎまで進む</strong>のが特徴です。</p>
     </div>
 
-    <div class="demo-grid">
-      <div class="demo-side">
-        <h3>この会話で見ていただきたい3点</h3>
-        <ol>
-          <li><b>答える前に、状況を聞く。</b>同じ質問でも、規模や時期によって案内は変わります。</li>
-          <li><b>答えられないことは、答えられる形にして返す。</b>金額のように確定できない話は、確定するための条件を示します。</li>
-          <li><b>範囲外は答えず、人へ渡す。</b>伺った内容が引き継ぎメモとして整理されます。</li>
-        </ol>
-        <p>下のデモは、あらかじめ用意した応答スクリプトで動いています。実際の設置時は、自社の資料と回答方針にもとづいて回答します。</p>
+    <div class="demo-stage" id="demoStage">
+      <div class="ava-panel">
+        <span class="ava-state"><span class="ava-wave" aria-hidden="true"><i></i><i></i><i></i><i></i></span></span>
+        <div class="ava-art-wrap">
+        <svg class="ava-art" viewBox="0 0 240 240" preserveAspectRatio="xMidYMax slice" role="img" aria-label="応答しているAIアシスタントのイラスト">
+          <circle class="ava-glow" cx="120" cy="116" r="78" fill="#dfe9e4"/>
+          <circle class="ava-ping" cx="120" cy="44" r="9" fill="none" stroke="#e36b32" stroke-width="2"/>
+          <g class="ava-body">
+            <path d="M46 240 q0-56 74-56 t74 56 z" fill="#2b6555"/>
+            <path d="M104 190 l16 18 l16-18" fill="none" stroke="#eff3f1" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="108" y="152" width="24" height="30" rx="11" fill="#1e5245"/>
+            <line x1="120" y1="60" x2="120" y2="44" stroke="#2b6555" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="120" cy="42" r="5.5" fill="#e36b32"/>
+            <rect x="62" y="58" width="116" height="106" rx="34" fill="#fbfaf6" stroke="#2b6555" stroke-width="3"/>
+            <rect x="46" y="96" width="18" height="34" rx="9" fill="#2b6555"/>
+            <rect x="176" y="96" width="18" height="34" rx="9" fill="#2b6555"/>
+            <rect x="78" y="82" width="84" height="58" rx="24" fill="#12352c"/>
+            <rect class="ava-eye" x="97" y="100" width="10" height="15" rx="5" fill="#eff3f1"/>
+            <rect class="ava-eye r" x="133" y="100" width="10" height="15" rx="5" fill="#eff3f1"/>
+            <rect class="ava-mouth" x="110" y="124" width="20" height="6" rx="3" fill="#e36b32"/>
+          </g>
+        </svg>
+        </div>
+        <div class="ava-meta">
+          <b>AIアシスタント</b>
+          <small>ひなた社会保険労務士事務所（架空）</small>
+          <p>このチャットはAIが応答しています。事務所が用意した資料の範囲でお答えし、判断が必要なご相談は担当者へお繋ぎします。</p>
+        </div>
       </div>
 
       <div class="chat" id="demoChat">
@@ -596,6 +696,13 @@ footer .wrap{display:flex; flex-wrap:wrap; align-items:center; justify-content:s
         </div>
       </div>
     </div>
+
+    <div class="demo-points">
+      <div class="demo-point"><b>答える前に、状況を聞く</b><span>同じ質問でも、規模や時期によって案内は変わります。</span></div>
+      <div class="demo-point"><b>答えられないことは、答えられる形にして返す</b><span>金額のように確定できない話は、確定するための条件を示します。</span></div>
+      <div class="demo-point"><b>範囲外は答えず、人へ渡す</b><span>伺った内容が引き継ぎメモとして整理されます。</span></div>
+    </div>
+    <p class="demo-foot">上のデモは、あらかじめ用意した応答スクリプトで動いています。実際の設置時は、自社の資料と回答方針にもとづいて回答します。</p>
 
     <div class="notes" style="max-width:none; margin-top:56px">
       同じ質問が繰り返し来て、かつ人が答えないと先へ進まない場面です。ただし<b>答えてよい範囲は場面ごとに大きく異なり、適合度は同じではありません。</b>とくに議員・自治体関連や士業では、政治的判断・個別の法的助言などAIに答えさせない領域を先に確定させる必要があり、<b>その線引きは案件ごとに要確認です。</b>
@@ -725,7 +832,9 @@ footer .wrap{display:flex; flex-wrap:wrap; align-items:center; justify-content:s
 <script>
 (function(){
   var body=document.getElementById('demoBody'), chips=document.getElementById('demoChips');
+  var stage=document.getElementById('demoStage');
   if(!body||!chips) return;
+  function speaking(on){ if(stage) stage.classList.toggle('is-speaking', !!on); }
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches, facts=[];
 
   var nodes={
@@ -803,6 +912,7 @@ footer .wrap{display:flex; flex-wrap:wrap; align-items:center; justify-content:s
 
   function say(lines,i,scope,done){
     if(i>=lines.length){
+      speaking(false);
       if(scope){
         body.appendChild(el('span','scope '+scope, scope==='in'?'事務所の資料から回答':'回答範囲外 ／ 担当者へ'));
         down();
@@ -822,6 +932,7 @@ footer .wrap{display:flex; flex-wrap:wrap; align-items:center; justify-content:s
     lock();
     if(n.user){body.appendChild(el('p','bubble user',n.user)); down();}
     if(n.fact) facts.push(n.fact);
+    speaking(true);
     say(n.ai,0,n.scope,function(){
       if(n.handoff){
         renderHandoff();
@@ -830,7 +941,7 @@ footer .wrap{display:flex; flex-wrap:wrap; align-items:center; justify-content:s
     });
   }
 
-  function reset(){facts=[]; body.innerHTML=''; chips.innerHTML=''; go('start');}
+  function reset(){facts=[]; body.innerHTML=''; chips.innerHTML=''; speaking(false); go('start');}
   reset();
 })();
 </script>
