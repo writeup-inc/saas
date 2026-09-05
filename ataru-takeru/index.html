@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>りんごと、地図と、一枚の写真 ｜ アタルとタケル</title>
+<meta name="description" content="長野県・白科町の小学三年生の秋から、東京の石油ストーブの前まで。アタルとタケル、二人の幼馴染の物語。">
+<meta name="theme-color" content="#f4f2ec">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="WRITEUP / SaaS">
+<meta property="og:title" content="りんごと、地図と、一枚の写真 ｜ アタルとタケル">
+<meta property="og:description" content="持っている人と、欲しい人が、歩いて十分の距離で出会わないまま二十年。九歳の秋に、二人の役割が決まった。">
+<meta property="og:url" content="https://writeup-inc.github.io/saas/ataru-takeru/">
+<link rel="canonical" href="https://writeup-inc.github.io/saas/ataru-takeru/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --paper:#f4f2ec; --surface:#fbfaf6; --ink:#14251f; --ink-soft:#40514b;
+  --muted:#7b8883; --line:rgba(20,37,31,.14); --accent:#a8503c; --green:#174b3c;
+  --serif:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP","Songti SC",serif;
+  --sans:"Hiragino Sans","Yu Gothic",YuGothic,"Noto Sans JP",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#121614; --surface:#181d1b; --ink:#e8e6df; --ink-soft:#bdc4c0;
+    --muted:#8d9793; --line:rgba(232,230,223,.16); --accent:#d98b73; --green:#8fb9a8;
+  }
+}
+*{box-sizing:border-box}
+html{overflow-x:clip}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--serif); font-size:17px; line-height:2.0;
+  -webkit-font-smoothing:antialiased; font-feature-settings:"palt" 0;
+}
+.wrap{max-width:720px; margin:0 auto; padding:0 24px}
+p{margin:0 0 1.7em; text-align:justify; word-break:normal; line-break:strict; overflow-wrap:anywhere}
+
+/* ---------- hero ---------- */
+.hero{padding:76px 0 54px; border-bottom:1px solid var(--line)}
+.eyebrow{
+  font-family:var(--sans); font-size:11px; font-weight:700; letter-spacing:.28em;
+  color:var(--muted); margin:0 0 30px; text-transform:uppercase;
+}
+h1{
+  font-size:clamp(30px,7.4vw,46px); line-height:1.5; margin:0 0 22px;
+  font-weight:600; letter-spacing:.02em;
+}
+.sub{font-family:var(--sans); font-size:13px; font-weight:700; letter-spacing:.2em; color:var(--accent); margin:0 0 34px}
+.lede{font-size:16px; color:var(--ink-soft); margin:0; line-height:1.95}
+.ridge{display:block; width:100%; height:auto; margin:38px 0 0; color:var(--line)}
+.meta{
+  font-family:var(--sans); font-size:12px; color:var(--muted); letter-spacing:.06em;
+  margin:30px 0 0; display:flex; flex-wrap:wrap; gap:8px 18px;
+}
+
+/* ---------- toc ---------- */
+.toc{padding:34px 0 6px; border-bottom:1px solid var(--line)}
+.toc h2{font-family:var(--sans); font-size:11px; letter-spacing:.24em; color:var(--muted); margin:0 0 18px; font-weight:700}
+.toc ol{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:2px 26px}
+.toc li{margin:0}
+.toc a{
+  display:flex; gap:12px; align-items:baseline; padding:7px 0; text-decoration:none;
+  color:var(--ink-soft); font-size:15px; min-height:44px; border-bottom:1px solid transparent;
+}
+.toc a:hover{color:var(--accent)}
+.toc .n{font-family:var(--sans); font-size:11px; letter-spacing:.1em; color:var(--muted); flex:none; width:1.6em}
+
+/* ---------- chapters ---------- */
+.ch{padding:64px 0 0; scroll-margin-top:24px}
+.ch-head{margin:0 0 34px}
+.ch-num{
+  font-family:var(--sans); font-size:11px; font-weight:700; letter-spacing:.3em;
+  color:var(--accent); display:block; margin:0 0 12px;
+}
+h2.ch-title{font-size:23px; font-weight:600; margin:0; letter-spacing:.04em; line-height:1.6}
+.art{display:block; margin:0 auto 40px; color:var(--ink); opacity:.82}
+.line{max-width:100%; height:auto}
+
+blockquote{
+  margin:2.4em 0; padding:0 0 0 20px; border-left:2px solid var(--accent);
+  font-size:19px; line-height:1.9; color:var(--ink);
+}
+blockquote p{margin:0}
+blockquote p + p{margin-top:.9em}
+.said{margin:0 0 1.7em; color:var(--ink)}
+.said span{display:block; text-indent:-1em; padding-left:1em}
+em.strong{font-style:normal; font-weight:600; background:linear-gradient(transparent 62%, rgba(168,80,60,.20) 62%)}
+.beat{
+  font-family:var(--sans); font-size:12px; letter-spacing:.2em; color:var(--muted);
+  text-align:center; margin:2.6em 0;
+}
+hr.sep{border:0; border-top:1px solid var(--line); margin:58px 0 0}
+
+/* ---------- coda ---------- */
+.coda{
+  margin:70px 0 0; padding:34px 30px 30px; background:var(--surface);
+  border:1px solid var(--line); border-radius:14px; font-family:var(--sans);
+  font-size:14px; line-height:1.95; color:var(--ink-soft);
+}
+.coda h2{font-size:13px; letter-spacing:.18em; color:var(--ink); margin:0 0 18px; font-weight:700}
+.coda ul{margin:0 0 1.4em; padding-left:1.15em}
+.coda li{margin:0 0 .5em}
+.coda p{margin:0 0 1.2em; text-align:left}
+.coda p:last-child{margin:0}
+.coda strong{color:var(--ink)}
+
+footer{
+  margin:56px 0 0; padding:26px 0 70px; border-top:1px solid var(--line);
+  font-family:var(--sans); font-size:12px; color:var(--muted); letter-spacing:.06em;
+  display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
+}
+footer a{color:var(--muted); display:inline-flex; align-items:center; min-height:44px; padding:0 2px}
+
+@media (max-width:600px){
+  body{font-size:16px; line-height:1.95}
+  .wrap{padding:0 20px}
+  .hero{padding:56px 0 42px}
+  .ch{padding:52px 0 0}
+  blockquote{font-size:17px; margin:2.1em 0}
+  .coda{padding:26px 20px 22px; border-radius:12px}
+  .toc ol{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header class="hero">
+  <p class="eyebrow">Writeup / Character Universe</p>
+  <h1>りんごと、地図と、<br>一枚の写真</h1>
+  <p class="sub">アタルとタケル</p>
+  <p class="lede">
+    持っている人と、欲しい人が、<br>
+    歩いて十分の距離に二十年いた。<br>
+    それでも、出会わなかった。<br>
+    長野県・白科町、<br>
+    小学三年生の秋の話です。
+  </p>
+  <svg class="ridge" viewBox="0 0 720 112" fill="none" aria-hidden="true">
+    <path d="M0 92 L96 46 L152 66 L236 14 L306 60 L360 38 L428 74 L494 32 L556 68 L624 50 L676 78 L720 62"
+          stroke="currentColor" stroke-width="1.2"/>
+    <path d="M0 104 L720 104" stroke="currentColor" stroke-width="1" opacity=".55"/>
+    <g stroke="currentColor" stroke-width="1.1">
+      <path d="M286 104 v-20 h26 v20"/>
+      <path d="M282 84 L299 71 L316 84"/>
+      <path d="M330 104 v-14 h20 v14"/>
+      <path d="M327 90 L340 80 L353 90"/>
+      <path d="M366 104 v-11 h16 v11"/>
+    </g>
+    <rect x="294" y="90" width="9" height="8" fill="#a8503c" opacity=".85"/>
+  </svg>
+  <p class="meta"><span>全九章</span><span>読了 約9分</span><span>社内向け・キャラクター設定資料</span></p>
+</header>
+
+<nav class="toc">
+  <h2>目次</h2>
+  <ol>
+    <li><a href="#c1"><span class="n">一</span>箱</a></li>
+    <li><a href="#c2"><span class="n">二</span>白地図</a></li>
+    <li><a href="#c3"><span class="n">三</span>三日</a></li>
+    <li><a href="#c4"><span class="n">四</span>坂の上</a></li>
+    <li><a href="#c5"><span class="n">五</span>座敷から</a></li>
+    <li><a href="#c6"><span class="n">六</span>別々の電車</a></li>
+    <li><a href="#c7"><span class="n">七</span>生きてる?</a></li>
+    <li><a href="#c8"><span class="n">八</span>安全な場所</a></li>
+    <li><a href="#c9"><span class="n">九</span>石油ストーブ</a></li>
+  </ol>
+</nav>
+
+<article>
+
+<section class="ch" id="c1">
+  <div class="ch-head"><span class="ch-num">第一章</span><h2 class="ch-title">箱</h2></div>
+  <svg class="art line" width="184" height="104" viewBox="0 0 184 104" fill="none" aria-hidden="true">
+    <path d="M22 44 h84 v40 h-84 z" stroke="currentColor" stroke-width="1.3"/>
+    <path d="M22 56 h84 M22 70 h84" stroke="currentColor" stroke-width=".8" opacity=".5"/>
+    <circle cx="44" cy="36" r="8" stroke="currentColor" stroke-width="1.3"/>
+    <circle cx="64" cy="34" r="8" stroke="currentColor" stroke-width="1.3"/>
+    <circle cx="84" cy="36" r="8" fill="none" stroke="#a8503c" stroke-width="1.6"/>
+    <path d="M84 28 v-6 M84 24 q7-4 10 0" stroke="#a8503c" stroke-width="1.2"/>
+    <path d="M106 84 h44 M150 84 l14 -10" stroke="currentColor" stroke-width="1.3"/>
+    <circle cx="122" cy="92" r="8" stroke="currentColor" stroke-width="1.3"/>
+    <path d="M14 84 h8" stroke="currentColor" stroke-width="1.3"/>
+  </svg>
+  <p>白科町の秋は、においで来る。</p>
+  <p>川沿いのりんご畑からトラックが出ていくようになると、アタルの家の土間には木箱が積み上がった。売り物にならない実だけを集めた箱だ。ヒョウが当たって表面がへこんだもの、枝ですって傷になったもの、そろわなかった小玉。味は何も変わらない。</p>
+  <p class="said"><span>「アタル、回ってきてくれや」</span></p>
+  <p>母がそう言うと、アタルは軍手をはめて、空気の少し抜けたタイヤのリヤカーを引いて出た。小学校に上がる前からの係だった。</p>
+  <p>町の子どもはたいてい面倒がる。アタルは面倒がらなかった。それどころか、配る前の晩に、頭の中で順番を組んだ。</p>
+  <p>坂の上の家は歯が悪いから、小玉で柔らかいのを多めに。角の家は毎年ジャムにするから、傷ものでいい。駅前の食堂は客に出すから、見た目のいいのを少しだけ。多く渡しすぎると気を遣わせるから、あの家は三つまで。</p>
+  <p><em class="strong">同じ量を配っても、アタルが回った後だけ、誰も困らなかった。</em></p>
+  <p>祖母はそれを見て、いつも同じことを言った。</p>
+  <blockquote><p>「アタルはずくがあるなあ」</p></blockquote>
+  <p>この町で一番の褒め言葉だった。</p>
+  <hr class="sep">
+</section>
+
+<section class="ch" id="c2">
+  <div class="ch-head"><span class="ch-num">第二章</span><h2 class="ch-title">白地図</h2></div>
+  <svg class="art line" width="184" height="112" viewBox="0 0 184 112" fill="none" aria-hidden="true">
+    <path d="M28 16 h112 v80 h-112 z" stroke="currentColor" stroke-width="1.3"/>
+    <path d="M84 16 v80" stroke="currentColor" stroke-width=".8" stroke-dasharray="3 4" opacity=".7"/>
+    <path d="M40 74 q22-26 44-20 t50-24" stroke="currentColor" stroke-width="1"/>
+    <path d="M40 44 h22 M40 52 h14 M96 62 h30 M96 70 h18" stroke="currentColor" stroke-width=".9" opacity=".75"/>
+    <rect x="60" y="28" width="9" height="9" stroke="#a8503c" stroke-width="1.3"/>
+    <path d="M146 96 l16-18 6 5 -16 18 -8 3 z" stroke="currentColor" stroke-width="1.2"/>
+  </svg>
+  <p>三年生の秋、社会科で白地図が配られた。「わたしたちのまち」。班ごとに担当の地区を歩いて、店や施設を描き込んでくる。</p>
+  <p>アタルと同じ班になったのが、タケルだった。</p>
+  <p>タケルは駅前通りの電器屋の子で、クラスではよく笑う方だった。人と話すのが嫌いなわけではない。ただ、町探検が始まってすぐ、自分の役割が別にあると気づいた。</p>
+  <p>アタルは、知らない店の引き戸を平気で開ける。</p>
+  <p class="said"><span>「すみません、学校の授業で来ました。お店の名前と、いつからやってるか教えてください」</span></p>
+  <p>断られる。次の家に行く。また断られる。また次に行く。落ち込む間がない。</p>
+  <p class="said"><span>「よくそんな入ってけるな」</span><span>「聞かんと分からんし」</span></p>
+  <p>アタルは本当にそれだけの理由で言っていた。</p>
+  <p>タケルは後ろを歩きながら、アタルが聞いてきた話をノートに落とした。家に帰って、白地図に清書した。折り目を伸ばして、鉛筆で薄く下描きをして、それから書いた。</p>
+  <p>店の名前。始めた年。誰が言ったか。<em class="strong">いつ聞いたか。</em></p>
+  <p>そこまで書いたのは、二人の班だけだった。先生は少し驚いた顔をして、その地図を廊下に貼った。</p>
+  <hr class="sep">
+</section>
+
+<section class="ch" id="c3">
+  <div class="ch-head"><span class="ch-num">第三章</span><h2 class="ch-title">三日</h2></div>
+  <p>商店街の一番奥に、桑原写真館があった。</p>
+  <p>そこだけ断られた。引き戸を開けたアタルに、店主は顔も上げずに「忙しいで」と言った。</p>
+  <p>翌日、アタルはまた行った。「忙しいで」。</p>
+  <p>三日目、アタルは学校帰りにひとりで行った。タケルは校門で待つと言ったが、結局ついていった。</p>
+  <p>三日目の店主は、少し長くアタルの顔を見た。それから、奥の暗い部屋のほうへ顎をしゃくった。</p>
+  <p class="said"><span>「まあ、上がりな」</span></p>
+  <p>引き出しから出てきたのは、町の写真だった。今より一回り若い商店街。舗装される前の道。祭りの日に人が詰まっている駅前。縁がギザギザに切られた白黒写真が、束になって出てきた。</p>
+  <p class="said"><span>「昔はな、ここらは全部、店だったんだに」</span></p>
+  <p>タケルは夢中で書いた。何年の写真か、どこから撮ったか、写っているのはどの店か。店主に一枚ずつ聞いて、全部書いた。</p>
+  <p>アタルは、写真そのものを見ていた。</p>
+  <hr class="sep">
+</section>
+
+<section class="ch" id="c4">
+  <div class="ch-head"><span class="ch-num">第四章</span><h2 class="ch-title">坂の上</h2></div>
+  <svg class="art line" width="196" height="120" viewBox="0 0 196 120" fill="none" aria-hidden="true">
+    <g transform="rotate(-5 98 60)">
+      <path d="M46 22 h104 v76 h-104 z" stroke="currentColor" stroke-width="1.3"/>
+      <path d="M52 28 h92 v52 h-92 z" stroke="currentColor" stroke-width=".9" opacity=".8"/>
+      <circle cx="76" cy="50" r="5" stroke="currentColor" stroke-width="1"/>
+      <circle cx="92" cy="50" r="5" stroke="currentColor" stroke-width="1"/>
+      <circle cx="108" cy="50" r="5" stroke="#a8503c" stroke-width="1.3"/>
+      <circle cx="124" cy="50" r="5" stroke="currentColor" stroke-width="1"/>
+      <path d="M70 62 h12 M86 62 h12 M102 62 h12 M118 62 h12" stroke="currentColor" stroke-width="1" opacity=".7"/>
+      <path d="M60 88 h44" stroke="currentColor" stroke-width=".9" opacity=".55"/>
+    </g>
+  </svg>
+  <p>一枚のところで、アタルの手が止まった。</p>
+  <p>床屋の前で、家族が四人並んでいる写真だった。その床屋はもうない。空き家になって、看板だけが残っている。</p>
+  <p class="said"><span>「……これ、坂の上のばあちゃんじゃない?」</span></p>
+  <p>タケルは覗き込んだ。真ん中に、若い女の人がいる。言われてみれば、そうかもしれない。そうでないかもしれない。</p>
+  <p>でもアタルは確信していた。りんごを届けたときに、その人が言ったことを覚えていたからだ。</p>
+  <blockquote><p>うちにはね、家族で写った写真が一枚も無いんだわ。焼けちゃってね。</p></blockquote>
+  <p>アタルは店主に頼み込んだ。焼き増ししてほしい、と。三年生が言うことではなかった。金も持っていなかった。店主は困った顔をして、それから何も言わずに奥へ入っていった。</p>
+  <p>数日後、写真は封筒に入って出てきた。</p>
+  <p>坂の上まで、二人で持っていった。玄関で封筒を開けたおばあちゃんは、写真を見て、そのまま立っていた。座りもしないで、両手で持ったまま、長いこと立っていた。それから泣いた。</p>
+  <p>帰り道、日が落ちて、川の上の空だけがまだ明るかった。</p>
+  <p>アタルは震えていた。寒いからではなかった。</p>
+  <p>写真は、最初からあった。欲しい人も、最初からいた。<em class="strong">歩いて十分の距離に、二十年、並んで在った。それでも、出会わなかった。</em></p>
+  <p>店主は、自分の引き出しの中身を誰かが欲しがるとは思っていなかった。おばあちゃんは、その写真がこの世に残っているとは思っていなかった。</p>
+  <p class="said"><span>「タケル」</span><span>「ん」</span><span>「なんでこういうの、誰も繋がねえの」</span></p>
+  <p>タケルは答えられなかった。答えの代わりに、その晩、焼き増しの一枚の裏に鉛筆で書いた。撮影した年。撮った場所。写っている四人が誰か。桑原さんに聞いた通りに、全部。</p>
+  <p>書きながら、決めていた。</p>
+  <blockquote>
+    <p>アタルが見つけてくるなら、自分は全部残す。</p>
+    <p>たぶんアタルも、同じ日に決めている。タケルが残してくれるなら、自分はもう一軒回れる。</p>
+  </blockquote>
+  <p class="beat">九歳の秋だった。</p>
+  <hr class="sep">
+</section>
+
+<section class="ch" id="c5">
+  <div class="ch-head"><span class="ch-num">第五章</span><h2 class="ch-title">座敷から</h2></div>
+  <p>タケルの家は、夕飯の途中でよく電話が鳴った。</p>
+  <p class="said"><span>「はいはい、今行くわ」</span></p>
+  <p>親は箸を置いて、工具箱を提げて出ていく。テレビが映らない。暖房が動かない。電球が切れた。電球一個でも行った。</p>
+  <p>タケルは店の奥の座敷から、それをずっと見ていた。見ているうちに、二つのことに気づいた。</p>
+  <p>ひとつ。<em class="strong">親が呼ばれるのは、誰かが困っている時だけだ。</em></p>
+  <p>ふたつ。親は直したあと、必ずメモを一枚置いてきた。次から自分でできるように、使い方を手書きで。字は上手ではなかった。</p>
+  <p>そして親は、直した話を家では一度もしなかった。</p>
+  <p>ついでに、その家にはひとつ言い伝えがあった。難しい修理は、朝になると直っていることがある、というものだ。タケルは長いこと、親が夜中にやっているのだと思っていた。</p>
+  <p>一度だけ聞いたことがある。親はこう答えた。</p>
+  <blockquote><p>「小人が来るんだに」</p></blockquote>
+  <p>それ以上は、何も言わなかった。</p>
+  <hr class="sep">
+</section>
+
+<section class="ch" id="c6">
+  <div class="ch-head"><span class="ch-num">第六章</span><h2 class="ch-title">別々の電車</h2></div>
+  <svg class="art line" width="196" height="104" viewBox="0 0 196 104" fill="none" aria-hidden="true">
+    <path d="M18 96 L92 40 L178 22" stroke="currentColor" stroke-width="1.3"/>
+    <path d="M30 100 L96 52 L182 46" stroke="currentColor" stroke-width="1.3"/>
+    <path d="M22 92 l10 6 M40 78 l10 6 M58 64 l10 6 M76 50 l10 6" stroke="currentColor" stroke-width=".9" opacity=".6"/>
+    <path d="M104 46 l2 7 M126 38 l1 8 M150 32 l1 8 M172 26 l1 8" stroke="currentColor" stroke-width=".9" opacity=".6"/>
+    <path d="M110 52 l0 7 M134 50 l0 8 M158 48 l0 8" stroke="currentColor" stroke-width=".9" opacity=".45"/>
+    <circle cx="94" cy="46" r="3.4" fill="none" stroke="#a8503c" stroke-width="1.5"/>
+  </svg>
+  <p>中学まで一緒だった。</p>
+  <p>高校は分かれた。アタルは松本の商業高校へ。簿記と販売の資格を取った。タケルは進学して、東京の大学に出た。</p>
+  <p>アタルは十八で東京の不動産会社に入った。タケルがまだ大学二年のときだ。</p>
+  <p>連絡が途切れたのは、この頃だ。喧嘩をしたわけではない。</p>
+  <p>十八で働き始めた人間と、二十歳の大学生では、平日の使い方が違いすぎた。アタルが始発で出る時間に、タケルは寝ていた。タケルが飲んでいる時間に、アタルは翌日の準備をしていた。話したいことも、話せる時間も、噛み合わなくなった。</p>
+  <p class="beat">悪意なく、静かに空いた。</p>
+  <p>その頃、アタルの会社の同期はほとんど大卒だった。最初の二年、まともに話を聞いてもらえなかった。だから数で押した。一日百件かける。断られる。次にかける。町探検と同じやり方で、東京を回した。</p>
+  <p>三年目のある日、何度も断っている相手に言われた。</p>
+  <blockquote><p>「あんた、毎回同じことを聞くね。うちが何を持ってるか、一度も聞いたことないでしょ」</p></blockquote>
+  <p>アタルは受話器を持ったまま、しばらく動けなかった。</p>
+  <p>その日から、全員に同じ質問を投げるのをやめた。相手ごとに、その会社が興味を持つはずの具体だけを持っていくようになった。</p>
+  <p>名前の意味が、変わった日だった。<em class="strong">数を打てば当たる、から、当てにいく、へ。</em></p>
+  <hr class="sep">
+</section>
+
+<section class="ch" id="c7">
+  <div class="ch-head"><span class="ch-num">第七章</span><h2 class="ch-title">生きてる?</h2></div>
+  <p>一方その頃、タケルは営業に配属されていた。</p>
+  <p>同行していた商談で、先輩がうろ覚えの数字を口にした。客がその場で指摘した。商談は飛んだ。</p>
+  <p>タケルが後で調べると、数字が違っていたこと自体は、大した問題ではなかった。問題は、<em class="strong">誰も出所を確認していなかった</em>ことだった。全員がなんとなく、その数字を知っている気になっていた。</p>
+  <p>以来、タケルは出所の言えない数字を口に出さなくなった。分からないときは分からないと言う。埋めない。</p>
+  <p>そういう時期に、深夜、一行だけ届いた。</p>
+  <blockquote><p>「生きてる?」</p></blockquote>
+  <p>アタルからだった。終電を逃したらしい。用件はなかった。</p>
+  <p>タケルは即返した。</p>
+  <p>それから、数ヶ月に一度、どちらからともなく電話をする習慣ができた。近況を言い合って、大した結論も出ないまま切る。二人ともその電話のことを、他の誰にも説明していない。</p>
+  <hr class="sep">
+</section>
+
+<section class="ch" id="c8">
+  <div class="ch-head"><span class="ch-num">第八章</span><h2 class="ch-title">安全な場所</h2></div>
+  <p>一度だけ、まずい夜があった。</p>
+  <p>アタルが会社で無理な案件を抱えて、珍しく相談してきた。タケルは聞いた。聞いてから、冷静に、正確に、やめたほうがいい理由を並べた。数字も出した。順序立てて話した。</p>
+  <p>判断としては、正しかった。後から見ても正しかった。</p>
+  <p>アタルは最後まで黙って聞いていた。それから言った。</p>
+  <p class="said"><span>「お前さ、いっつも正しいよな」</span></p>
+  <p>タケルは何か言おうとした。</p>
+  <blockquote><p>「……でも、お前は安全な場所から言うよな」</p></blockquote>
+  <p>電話が切れた。</p>
+  <p>三週間、連絡がなかった。三週間目に、アタルから普通の電話がかかってきた。普通に喋りだして、普通に切れた。</p>
+  <p class="beat">謝っていない。どちらも。</p>
+  <p>タケルは、その言葉を今も覚えている。</p>
+  <hr class="sep">
+</section>
+
+<section class="ch" id="c9">
+  <div class="ch-head"><span class="ch-num">第九章</span><h2 class="ch-title">石油ストーブ</h2></div>
+  <svg class="art line" width="168" height="118" viewBox="0 0 168 118" fill="none" aria-hidden="true">
+    <path d="M62 30 q4-10 -2-16 M78 28 q5-11 -1-18 M94 30 q4-10 -2-16" stroke="currentColor" stroke-width="1.1" opacity=".65"/>
+    <path d="M56 44 h44 v6 h-44 z" stroke="currentColor" stroke-width="1.2"/>
+    <path d="M100 46 q12 0 12 5" stroke="currentColor" stroke-width="1.2"/>
+    <path d="M46 52 h64 v46 h-64 z" stroke="currentColor" stroke-width="1.3"/>
+    <path d="M56 64 h44 v22 h-44 z" stroke="currentColor" stroke-width=".9" opacity=".7"/>
+    <path d="M66 84 q6-14 12 0 q6-13 10 0" stroke="#a8503c" stroke-width="1.4"/>
+    <path d="M40 98 h76" stroke="currentColor" stroke-width="1.2"/>
+  </svg>
+  <p>タケルは、テレワークに切り替わったのを機に町へ戻った。山際の斜面に小さな家を建てた。窓の外は杉林で、冬は屋根から雪が落ちる音がする。会社の誰も、家の正確な場所を知らない。</p>
+  <p>去年の正月、帰省したアタルが上がり込んできた。</p>
+  <p>石油ストーブの上でやかんが鳴っていた。アタルは湯呑みを両手で持って、火を見ながら愚痴をこぼした。</p>
+  <p class="said"><span>「五十社に同じ文面送って、返事が三件。全部『今はないです』だに」</span><span>「なんで送ってるの、それ」</span><span>「物件が要るからだに」</span><span>「向こうは?」</span><span>「……向こう?」</span></p>
+  <p>タケルは少し黙った。それから言った。</p>
+  <p class="said"><span>「順番、逆じゃない?」</span></p>
+  <p>アタルが顔を上げた。</p>
+  <blockquote><p>「物件を聞きに行くんじゃなくて、買える人の条件を先に渡す。誰が、いくらで、いつまでに買えるか。それを先に持っていけば、向こうも返す理由があるだろ」</p></blockquote>
+  <p>アタルは何も言わなかった。</p>
+  <p>湯呑みを両手で持ったまま、しばらく火を見ていた。たぶん、頭の中では別のものを見ていた。ギザギザに切られた縁の、白黒の写真。それを引き出しにしまったまま、誰も欲しがらないと思っていた男の顔。</p>
+  <p class="said"><span>「……お前さ」</span><span>「ん」</span><span>「昔から、そういうとこあるよな」</span></p>
+  <p>タケルは笑って、やかんを下ろした。</p>
+  <p class="beat">— 了 —</p>
+</section>
+
+</article>
+
+<aside class="coda">
+  <h2>この物語について</h2>
+  <p>ライトアップのAIサービスに登場するキャラクターの、共通の背景設定です。<strong>アタル</strong>（仕入れシンク／アタルシリーズ）と<strong>タケル</strong>（相棒タケル）は、長野県・白科町という同じ町の出身で、小学三年生の秋から続く幼馴染、という設定にしています。</p>
+  <ul>
+    <li><strong>白科町・桑原写真館・登場する人物は、すべて架空です。</strong>実在の地名、人物、出来事とは関係ありません</li>
+    <li>作中の商談・数字・サービス仕様は物語のためのもので、<strong>実際の製品仕様や実績ではありません</strong></li>
+    <li>「仕入れシンク」は仮称です。料金・提供開始時期は未確定のため、この物語には登場しません</li>
+  </ul>
+  <p>他のサービスのキャラクターも、同じ町に接続していく予定です。<strong>作中で関係を説明することはしません。</strong>気づいた人だけが気づく、という置き方にしています。</p>
+</aside>
+
+<footer>
+  <span>WRITEUP / AIコンサル局 SaaSチーム</span>
+  <span><a href="../">サービス一覧へ戻る</a></span>
+</footer>
+
+</div>
+</body>
+</html>
