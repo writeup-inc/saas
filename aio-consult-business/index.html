@@ -479,9 +479,13 @@ section[id] {
 }
 .market-answer h3 {
   margin: 12px 0 16px;
-  font-size: clamp(27px, 3vw, 39px);
+  font-size: clamp(26px, 2.2vw, 32px);
   line-height: 1.28;
   letter-spacing: -0.04em;
+}
+.market-answer h3 span {
+  display: block;
+  white-space: nowrap;
 }
 .market-answer p {
   margin: 0;
@@ -673,13 +677,19 @@ section[id] {
 
 .experiment-proof {
   margin-top: 56px;
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 0.86fr) minmax(430px, 1.14fr);
   gap: clamp(48px, 7vw, 90px);
   align-items: center;
   padding: clamp(38px, 5vw, 62px);
-  color: #fff;
-  background: var(--ink);
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid #c3c9d1;
+  border-top: 6px solid var(--blue);
+  box-shadow:
+    12px 12px 0 #dfe3e8,
+    0 24px 54px rgba(22, 25, 29, 0.12);
 }
 .experiment-copy h3 {
   margin: 14px 0 20px;
@@ -690,14 +700,15 @@ section[id] {
 }
 .experiment-copy > p:not(.section-kicker) {
   margin: 0;
-  color: #bdc4cc;
-  font-size: 13px;
+  color: #4d5660;
+  font-size: 14px;
+  font-weight: 550;
   line-height: 1.85;
 }
 .experiment-copy > small {
   display: block;
   margin-top: 20px;
-  color: #858e98;
+  color: #737c86;
   font-size: 9px;
   line-height: 1.7;
 }
@@ -834,7 +845,7 @@ section[id] {
 .shift-timeline article {
   position: relative;
   min-width: 0;
-  min-height: 316px;
+  min-height: 340px;
   padding: 28px;
   border-right: 1px solid #484f57;
   border-bottom: 1px solid #484f57;
@@ -861,10 +872,12 @@ section[id] {
   font-size: 17px;
 }
 .shift-timeline p {
-  margin: 11px 0 0;
-  color: #a8afb7;
-  font-size: 12px;
-  line-height: 1.7;
+  max-width: 280px;
+  margin: 15px 0 0;
+  color: #c4cad0;
+  font-size: clamp(15px, 1.15vw, 17px);
+  font-weight: 650;
+  line-height: 1.72;
 }
 .shift-timeline article > i {
   position: absolute;
@@ -952,6 +965,151 @@ section[id] {
   color: #8db8ec;
   font-size: 10px;
   text-underline-offset: 3px;
+}
+
+.aio-stats {
+  margin-top: clamp(64px, 7vw, 88px);
+  padding-top: clamp(52px, 6vw, 72px);
+  border-top: 1px solid #484f57;
+}
+.aio-stats-heading {
+  max-width: 760px;
+  margin-bottom: 34px;
+}
+.aio-stats-heading h3 {
+  margin: 13px 0 0;
+  font-size: clamp(30px, 3.4vw, 46px);
+  line-height: 1.2;
+  letter-spacing: -0.045em;
+}
+.aio-stats-heading > p:last-child {
+  margin: 17px 0 0;
+  color: #bdc4cc;
+  font-size: 15px;
+  font-weight: 550;
+  line-height: 1.85;
+}
+.aio-stat-flow {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  list-style: none;
+  border-top: 1px solid #4b535c;
+  border-left: 1px solid #4b535c;
+}
+.aio-stat-flow li {
+  min-width: 0;
+  min-height: 390px;
+  padding: 23px 21px 21px;
+  display: flex;
+  flex-direction: column;
+  background: #1d2228;
+  border-right: 1px solid #4b535c;
+  border-bottom: 1px solid #4b535c;
+}
+.aio-stat-flow li:nth-child(4) {
+  background: #242b33;
+}
+.aio-stat-flow li:last-child {
+  background: var(--blue);
+  border-color: #3977c5;
+}
+.aio-stat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #8bb9ed;
+  font:
+    800 9px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
+    monospace;
+  letter-spacing: 0.08em;
+}
+.aio-stat-top b {
+  padding: 5px 8px;
+  color: #c8d8e9;
+  border: 1px solid #596674;
+}
+.aio-stat-flow li:last-child .aio-stat-top,
+.aio-stat-flow li:last-child .aio-stat-top b {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.55);
+}
+.aio-stat-value {
+  min-height: 92px;
+  margin: 33px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 6px;
+}
+.aio-stat-value strong {
+  color: #fff;
+  font-size: clamp(46px, 4.2vw, 66px);
+  line-height: 0.88;
+  letter-spacing: -0.075em;
+}
+.aio-stat-value span {
+  padding-bottom: 5px;
+  color: #aeb8c2;
+  font-size: 11px;
+  font-weight: 850;
+}
+.aio-stat-flow li:last-child .aio-stat-value span {
+  color: #dceafb;
+}
+.aio-stat-flow h4 {
+  margin: 8px 0 0;
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.aio-stat-flow li > p:not(.aio-stat-value) {
+  margin: 11px 0 0;
+  color: #aeb6bf;
+  font-size: 11px;
+  line-height: 1.75;
+}
+.aio-stat-flow li:last-child > p:not(.aio-stat-value) {
+  color: #dce9f8;
+}
+.aio-stat-flow a {
+  margin-top: auto;
+  padding-top: 20px;
+  color: #8db8ec;
+  font-size: 9px;
+  line-height: 1.45;
+  text-underline-offset: 3px;
+}
+.aio-stat-flow li:last-child a {
+  color: #fff;
+}
+.aio-stats-conclusion {
+  padding: 24px 27px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 25px;
+  align-items: center;
+  color: var(--ink);
+  background: #fff;
+  border-left: 6px solid var(--blue);
+}
+.aio-stats-conclusion span {
+  color: var(--blue);
+  font:
+    900 9px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
+    monospace;
+  letter-spacing: 0.1em;
+}
+.aio-stats-conclusion strong {
+  font-size: clamp(16px, 1.8vw, 22px);
+  line-height: 1.55;
+}
+.aio-stats-note {
+  margin: 13px 0 0;
+  color: #818b95;
+  font-size: 9px;
+  line-height: 1.7;
 }
 
 .foundation {
@@ -1437,6 +1595,13 @@ footer {
   .experiment-visual {
     max-width: 660px;
   }
+  .aio-stat-flow {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .aio-stat-flow li:nth-child(4),
+  .aio-stat-flow li:nth-child(5) {
+    min-height: 350px;
+  }
   .foundation-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -1516,6 +1681,9 @@ footer {
   .experiment-proof {
     margin-top: 42px;
     padding: 34px 26px;
+    box-shadow:
+      7px 7px 0 #dfe3e8,
+      0 18px 40px rgba(22, 25, 29, 0.11);
   }
   .vision-column {
     grid-template-columns: 1fr;
@@ -1554,6 +1722,21 @@ footer {
   .evidence-strip {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+  .aio-stat-flow {
+    grid-template-columns: 1fr;
+  }
+  .aio-stat-flow li,
+  .aio-stat-flow li:nth-child(4),
+  .aio-stat-flow li:nth-child(5) {
+    min-height: 300px;
+  }
+  .aio-stat-value {
+    min-height: auto;
+  }
+  .aio-stats-conclusion {
+    grid-template-columns: 1fr;
+    gap: 11px;
   }
   .foundation-grid {
     grid-template-columns: 1fr;
@@ -1743,4 +1926,4 @@ footer {
     transition: none !important;
   }
 }
-</style></head><body class="__variable_geist_19ysh9d __variable_geist_mono_1001rt9 antialiased"><main><header class="site-header"><div class="container header-inner"><a class="brand" href="#top" aria-label="ページ上部へ"><b>AIO</b><span>CONSULTING BUSINESS</span></a><nav class="header-nav" aria-label="主要ナビゲーション"><a href="#problem">必要な理由</a><a href="#aio">AIOとは</a><a href="#foundation">提供内容</a><a class="header-cta" href="#contact">説明を聞く</a></nav></div></header><section class="hero" id="top"><div class="container"><div class="hero-grid"><div class="hero-copy"><p class="eyebrow">AIOコンサル事業 スタートパック</p><h1><span class="heading-line">地元で唯一の、</span><span class="heading-line"><em>AIOコンサル会社</em>に</span><span class="heading-line">なりませんか。</span></h1><p class="hero-lead">顧客は、もういる。<br/>商品と売り方は、ライトアップが用意します。</p><div class="hero-actions"><a class="button-primary" href="#foundation">3つの提供内容を見る</a><span>御社が表に立ち、ライトアップが後ろから支えます。</span></div></div><aside class="hero-system" aria-label="ライトアップの3つの支援で御社が地域のAIO相談窓口になる図"><div class="system-source"><small>LIGHTUP / SUPPORT</small><strong>ライトアップ</strong><div class="source-items"><span>商品</span><span>営業</span><span>広報</span></div></div><div class="system-arrow" aria-hidden="true"><span>後方支援</span><i></i></div><div class="system-owner"><small>YOUR BUSINESS</small><strong>御社のAIO事業</strong><span>自社の看板で、地域に提案</span></div><div class="system-arrow" aria-hidden="true"><span>提案・支援</span><i></i></div><div class="system-clients"><div class="client-grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><p><strong>地域60社へ</strong><span>まずは既存顧客から</span></p></div></aside></div><ol class="story-rail" aria-label="この事業を始めるまでの考え方"><li><span>01</span><b>顧客が減る</b><small>地域市場の変化</small></li><li><span>02</span><b>商品を増やす</b><small>既存顧客へ再提案</small></li><li><span>03</span><b>AIOから始める</b><small>いま売るべき商材</small></li><li><span>04</span><b>相談窓口になる</b><small>地域60社へ展開</small></li></ol></div></section><section class="section market" id="problem"><div class="container"><div class="section-heading split-heading"><div><p class="section-kicker">01　必要な理由</p><h2><span class="heading-line">人口が減る。だから、</span><span class="heading-line">取引回数を増やす。</span></h2></div><p>新規顧客だけを追い続ける営業は、年々難しくなります。これから増やすべきは、顧客数よりも、一社あたりの取引回数です。</p></div><div class="fact-board"><article><small>JAPANESE POPULATION</small><strong>約2,500<em>人／日</em></strong><p>日本人人口の減少<br/>2024年の1年間で90万8,574人減</p></article><div class="fact-arrow" aria-hidden="true">→</div><article><small>SMALL BUSINESSES</small><strong>約4.3<em>万者／年</em></strong><p>中小企業数の減少ペース<br/>2016年から2021年の平均</p></article><div class="fact-arrow" aria-hidden="true">→</div><article class="fact-conclusion"><small>NEW CUSTOMERS</small><strong>減っていく</strong><p>地域の新規顧客候補も<br/>同じように減少します</p></article></div><p class="source-note">出典：<a href="https://www.soumu.go.jp/menu_news/s-news/01gyosei02_02000389.html" target="_blank" rel="noreferrer">総務省「住民基本台帳に基づく人口、人口動態及び世帯数」</a>、<a href="https://www.chusho.meti.go.jp/koukai/chousa/chu_kigyocnt/2023/231213chukigyocnt.html" target="_blank" rel="noreferrer">中小企業庁「中小企業・小規模事業者の数」</a></p><div class="market-answer"><div><small>THE ANSWER</small><h3>新しい顧客を探す前に、<br/>新しい商品を増やす。</h3><p>すでに信頼関係のある顧客へ、次の商品を提案する。それが、地域で売上を伸ばす現実的な方法です。</p></div><div class="formula" aria-label="売上は取引先数、一社あたりの取引回数、一回あたりの取引金額で決まる図"><div><small>SALES</small><strong>売上</strong></div><i>＝</i><div class="fixed"><small>CUSTOMERS</small><strong>取引先数</strong><span>増やしにくい</span></div><i>×</i><div class="focus"><small>FREQUENCY</small><strong>1社あたりの<br/>取引回数</strong><span>ここを増やす</span></div></div></div></div></section><section class="section sourcing"><div class="container"><div class="section-heading split-heading"><div><p class="section-kicker">02　商品の増やし方</p><h2><span class="heading-line">新商品は、</span><span class="heading-line">外から仕入れる。</span></h2></div><p>商品開発も営業方法も、毎回ゼロから用意する必要はありません。東京で新規事業をつくり続ける会社と組み、地域の顧客に合うものを選んで売る仕組みを持ちます。</p></div><div class="build-choice" aria-label="自社だけで商品開発する方法とライトアップと組む方法の比較"><article class="choice-slow"><small>自社だけで始める</small><div><span>市場調査</span><i>→</i><span>商品開発</span><i>→</i><span>売り方検証</span><i>→</i><span>運用整備</span></div><strong>販売まで時間がかかる</strong></article><article class="choice-fast"><small>ライトアップと組む</small><div><span>商品</span><b>＋</b><span>営業</span><b>＋</b><span>広報</span></div><strong>既存顧客へ、すぐ提案できる</strong></article></div><div class="supply-flow" aria-label="ライトアップが商品をつくり、御社が地域に届け、顧客の相談が戻る循環図"><div><small>DEVELOP</small><b>ライトアップ</b><span>新しいAIサービスを<br/>企画・開発</span></div><i><span>商品を供給</span>→</i><div class="supply-owner"><small>SELL</small><b>御社</b><span>自社の名前で<br/>地域へ提案</span></div><i><span>相談が集まる</span>→</i><div><small>USE</small><b>既存顧客</b><span>新しい経営課題を<br/>御社へ相談</span></div></div><aside class="experiment-proof"><div class="experiment-copy"><p class="section-kicker">WHY AIO NOW</p><h3><span class="heading-line">百発百中ではない。</span><span class="heading-line">失敗を重ねて、</span><span class="heading-line">売れる商品を残す。</span></h3><p>成功より、失敗の方が何倍も多い。ライトアップは、その失敗から「なぜ売れなかったか」を学び、次の商品へ反映してきました。失敗体験まで含めて選別した、成果が出始めているサービスを皆様へお届けします。</p><small>※2026年1月以降のライトアップ社内集計・現時点の見立てです。各サービスの成果を保証するものではありません。</small></div><div class="experiment-visual"><p class="funnel-period">2026年1月〜現在｜ライトアップ社内集計</p><div class="experiment-funnel" aria-label="300件の企画から100件を開発提供し、30件を継続、約10件を成長候補として選別する図"><div><strong>300</strong><span>AIサービスを企画</span></div><i aria-hidden="true">↓</i><div><strong>100</strong><span>開発・提供</span></div><i aria-hidden="true">↓</i><div><strong>30</strong><span>提供を継続</span></div><i aria-hidden="true">↓</i><div><strong>約10</strong><span>成長候補<em>現時点の見立て</em></span></div></div><p class="aio-signal"><small>BEST INITIAL RESPONSE</small><span>その中で、最も初動が良いのが</span><strong>AIO</strong><em>社内比較による現時点の評価</em></p></div></aside></div></section><section class="section aio-shift" id="aio"><div class="container"><div class="section-heading section-heading-light"><p class="section-kicker">03　最初の商品</p><h2><span class="heading-line">SEO、MEO、</span><span class="heading-line">そして今はAIO。</span></h2><p>会社の探され方は、およそ10年ごとに主戦場が変わってきました。いま始まっているのは、AIの回答で候補に入るための対策です。</p></div><div class="shift-timeline" aria-label="2005年頃のSEO、2015年頃のMEO、2025年頃のAIOへの変化を示す図"><article class=""><div class="shift-top"><span>2005〜</span><b>0<!-- -->1</b></div><strong>SEO</strong><h3>検索で見つかる</h3><p>検索結果の上位に入り、自社サイトへ来てもらうための対策。</p><i aria-hidden="true">→</i></article><article class=""><div class="shift-top"><span>2015〜</span><b>0<!-- -->2</b></div><strong>MEO</strong><h3>地図で選ばれる</h3><p>地図や口コミから、地域のお店・会社に選ばれるための対策。</p><i aria-hidden="true">→</i></article><article class="active"><div class="shift-top"><span>2025〜</span><b>0<!-- -->3</b></div><strong>AIO</strong><h3>AIの回答に入る</h3><p>AIの回答に、信頼できる候補として登場するための対策。</p></article></div><div class="shift-conclusion"><p><strong>これまで</strong><span>検索する → 比較する → 自分で決める</span></p><i aria-hidden="true">→</i><p><strong>これから</strong><span>AIに聞く → AIが候補を示す → その中から決める</span></p></div><div class="evidence-strip"><p><b>日本語でも、すでに始まっています。</b>Googleは2025年に日本語版AIモードを提供開始。2026年には、AIによる検索画面の変更を「過去25年以上で最大のアップグレード」と説明しています。</p><div><a href="https://blog.google/intl/ja-jp/products/explore-get-answers/ai-mode-search/" target="_blank" rel="noreferrer">Google：AIモード日本語提供開始</a><a href="https://blog.google/intl/ja-jp/products/explore-get-answers/search-io-2026/" target="_blank" rel="noreferrer">Google：AI検索の新時代</a></div></div></div></section><section class="section foundation" id="foundation"><div class="container"><div class="section-heading split-heading"><div><p class="section-kicker">04　提供するもの</p><h2><span class="heading-line">商品・営業・広報。</span><span class="heading-line">3つで始められる。</span></h2></div><p>商品だけを渡して終わりではありません。提案し、売り、地域で事業として続けるための基盤を、まとめて提供します。</p></div><div class="foundation-grid"><article class="foundation-card"><div class="foundation-card-top"><span>01</span><b>商品システム</b></div><div class="foundation-diagram product-diagram" aria-label="AIO MASTERで診断、対策、確認を行う図"><span>診断</span><i></i><strong>AIO<br/>MASTER</strong><i></i><span>確認</span></div><h3>売る商品があります。</h3><p>AI検索での掲載状況を調べ、対策し、継続確認する「AIO MASTER」を御社の商品として提供できます。</p><ul><li>診断</li><li>改善施策</li><li>継続確認</li></ul></article><article class="foundation-card"><div class="foundation-card-top"><span>02</span><b>営業スキル</b></div><div class="foundation-diagram sales-diagram" aria-label="顧客情報からClaude Codeで提案をつくる図"><span>顧客</span><i>→</i><strong>CLAUDE<br/>CODE</strong><i>→</i><span>提案</span></div><h3>売る方法があります。</h3><p>Claude Codeの営業スキルが、候補企業の選定、事前調査、提案書作成、商談準備、フォローを支援します。</p><ul><li>顧客選定</li><li>提案書</li><li>商談支援</li></ul></article><article class="foundation-card"><div class="foundation-card-top"><span>03</span><b>広報・後方支援</b></div><div class="foundation-diagram support-diagram" aria-label="御社をライトアップが後方支援する図"><span>顧客</span><i>←</i><strong>御社</strong><i>←</i><span>本部支援</span></div><h3>広げる支援があります。</h3><p>勉強会や事例発信を支援。御社だけでは対応が難しい相談や大型案件には、ライトアップが後ろから参加します。</p><ul><li>勉強会</li><li>情報発信</li><li>専門案件</li></ul></article></div></div></section><section class="section operation" id="roles"><div class="container"><div class="section-heading"><p class="section-kicker">05　役割と始め方</p><h2><span class="heading-line">主役は、御社。</span><span class="heading-line">支援は、ライトアップ。</span></h2><p>地域の相談窓口になるのは御社です。商品開発と専門実務はライトアップが支え、対応が難しい案件も一緒に受け止めます。</p></div><div class="role-map"><article class="role-card main-role"><small>FRONT / OWNER</small><h3>御社</h3><strong>地域のAIO相談窓口</strong><ul><li>顧客との関係を持つ</li><li>自社の名前で提案する</li><li>実績と次の相談を蓄積する</li></ul></article><div class="role-bridge"><span>商品・営業・広報</span><i>←</i><b>後方支援</b><i>→</i><span>高度案件を連携</span></div><article class="role-card"><small>BACK / SUPPORT</small><h3>ライトアップ</h3><strong>商品開発と専門実務</strong><ul><li>商品システムを供給する</li><li>営業と広報を支援する</li><li>対応が難しい案件を実行する</li></ul></article></div><div class="launch-plan"><div class="launch-goal"><strong>60</strong><span>社／12か月</span><p>まず目指すのは、<br/><b>地域60社の相談窓口</b></p></div><ol class="growth-steps"><li><span>01</span><b>自社で使う</b><small>まず成果を体験</small></li><li><span>02</span><b>顧客を選ぶ</b><small>既存顧客から選定</small></li><li><span>03</span><b>診断を案内</b><small>課題を見える化</small></li><li><span>04</span><b>AIOを提供</b><small>継続支援へ</small></li></ol></div><p class="condition-note">※60社は12か月・累計60IDの事業目標です。提供条件、価格、収益分配は個別にご案内します。</p></div></section><section class="section expansion"><div class="container"><div class="section-heading split-heading"><div><p class="section-kicker">06　事業の広がり</p><h2><span class="heading-line">AIOから始める。</span><span class="heading-line">地域のAI相談窓口へ。</span></h2></div><p>AIOの相談を入口にすると、顧客から別のAI相談が集まります。ライトアップが新しい商品を継続供給し、御社の提案機会を増やします。</p></div><div class="service-orbit" aria-label="AIOを入口にSNS、LINE、電話、AI開発の相談へ広がる図"><div class="orbit-center"><small>LOCAL AI DESK</small><strong>御社</strong><span>地域のAI相談窓口</span></div><div class="orbit-services"><article class="active"><b>AIO</b><span>AI検索で見つけてもらう</span></article><article class=""><b>SNS</b><span>情報発信を続ける</span></article><article class=""><b>LINE</b><span>顧客対応を自動化する</span></article><article class=""><b>電話</b><span>受電業務をAI化する</span></article><article class=""><b>開発</b><span>専用のAI業務をつくる</span></article></div></div><p class="statement">AIOは、一つの商品ではなく、次の商品が集まる入口です。</p><aside class="vision-column"><div class="vision-mark" aria-hidden="true">W</div><div class="vision-copy"><p class="section-kicker">WHY WE DO THIS</p><h3 aria-label="全国、全ての中小企業を黒字にする"><span class="heading-line">全国、全ての</span><span class="heading-line">中小企業を黒字にする</span></h3><p>株式会社ライトアップが掲げるビジョンです。東京証券取引所の上場会社3,891社のうちの一社として、私たちは赤字の中小企業に向き合い、黒字化という結果まで徹底して支援する会社でありたいと考えています。</p><blockquote>「ここまで中小企業の黒字化に向き合う上場企業は珍しい」と、言っていただくことがあります。</blockquote><small>出典：<a href="https://writeup.jp/" target="_blank" rel="noreferrer">株式会社ライトアップ公式サイト</a>／上場会社数3,891社（2026年9月4日時点）：<a href="https://www.jpx.co.jp/listing/co/index.html" target="_blank" rel="noreferrer">日本取引所グループ</a></small></div></aside></div></section><section class="section final-cta" id="contact"><div class="container final-grid"><div><p class="section-kicker">YOUR NEXT BUSINESS</p><h2><span class="heading-line">地元で、AIO事業を</span><span class="heading-line">始めませんか。</span></h2></div><div class="cta-panel"><p><strong>御社自身が、地域のAIOコンサル会社になります。</strong></p><p>どの顧客から始めるか、どのように60社へ広げるか。御社の顧客基盤に合わせてご説明します。</p><a class="button-primary" href="https://writeup.jp/contact/">AIOコンサル事業の説明を聞く</a><small>その場での契約は求めません。提供条件は説明時にご確認いただけます。</small></div></div></section><footer><div class="container footer-inner"><p>AIO CONSULTING BUSINESS</p><p>PRODUCT / SALES / PR &amp; SUPPORT</p></div></footer></main></body></html>
+</style></head><body class="__variable_geist_19ysh9d __variable_geist_mono_1001rt9 antialiased"><main><header class="site-header"><div class="container header-inner"><a class="brand" href="#top" aria-label="ページ上部へ"><b>AIO</b><span>CONSULTING BUSINESS</span></a><nav class="header-nav" aria-label="主要ナビゲーション"><a href="#problem">必要な理由</a><a href="#aio">AIOとは</a><a href="#foundation">提供内容</a><a class="header-cta" href="#contact">説明を聞く</a></nav></div></header><section class="hero" id="top"><div class="container"><div class="hero-grid"><div class="hero-copy"><p class="eyebrow">AIOコンサル事業 スタートパック</p><h1><span class="heading-line">地元で唯一の、</span><span class="heading-line"><em>AIOコンサル会社</em>に</span><span class="heading-line">なりませんか。</span></h1><p class="hero-lead">顧客は、もういる。<br/>商品と売り方は、ライトアップが用意します。</p><div class="hero-actions"><a class="button-primary" href="#foundation">3つの提供内容を見る</a><span>御社が表に立ち、ライトアップが後ろから支えます。</span></div></div><aside class="hero-system" aria-label="ライトアップの3つの支援で御社が地域のAIO相談窓口になる図"><div class="system-source"><small>LIGHTUP / SUPPORT</small><strong>ライトアップ</strong><div class="source-items"><span>商品</span><span>営業</span><span>広報</span></div></div><div class="system-arrow" aria-hidden="true"><span>後方支援</span><i></i></div><div class="system-owner"><small>YOUR BUSINESS</small><strong>御社のAIO事業</strong><span>自社の看板で、地域に提案</span></div><div class="system-arrow" aria-hidden="true"><span>提案・支援</span><i></i></div><div class="system-clients"><div class="client-grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><p><strong>地域60社へ</strong><span>まずは既存顧客から</span></p></div></aside></div><ol class="story-rail" aria-label="この事業を始めるまでの考え方"><li><span>01</span><b>顧客が減る</b><small>地域市場の変化</small></li><li><span>02</span><b>商品を増やす</b><small>既存顧客へ再提案</small></li><li><span>03</span><b>AIOから始める</b><small>いま売るべき商材</small></li><li><span>04</span><b>相談窓口になる</b><small>地域60社へ展開</small></li></ol></div></section><section class="section market" id="problem"><div class="container"><div class="section-heading split-heading"><div><p class="section-kicker">01　必要な理由</p><h2><span class="heading-line">人口が減る。だから、</span><span class="heading-line">取引回数を増やす。</span></h2></div><p>新規顧客だけを追い続ける営業は、年々難しくなります。これから増やすべきは、顧客数よりも、一社あたりの取引回数です。</p></div><div class="fact-board"><article><small>JAPANESE POPULATION</small><strong>約2,500<em>人／日</em></strong><p>日本人人口の減少<br/>2024年の1年間で90万8,574人減</p></article><div class="fact-arrow" aria-hidden="true">→</div><article><small>SMALL BUSINESSES</small><strong>約4.3<em>万者／年</em></strong><p>中小企業数の減少ペース<br/>2016年から2021年の平均</p></article><div class="fact-arrow" aria-hidden="true">→</div><article class="fact-conclusion"><small>NEW CUSTOMERS</small><strong>減っていく</strong><p>地域の新規顧客候補も<br/>同じように減少します</p></article></div><p class="source-note">出典：<a href="https://www.soumu.go.jp/menu_news/s-news/01gyosei02_02000389.html" target="_blank" rel="noreferrer">総務省「住民基本台帳に基づく人口、人口動態及び世帯数」</a>、<a href="https://www.chusho.meti.go.jp/koukai/chousa/chu_kigyocnt/2023/231213chukigyocnt.html" target="_blank" rel="noreferrer">中小企業庁「中小企業・小規模事業者の数」</a></p><div class="market-answer"><div><small>THE ANSWER</small><h3><span>新しい顧客を探すより、</span><span>新しい商品を増やす。</span></h3><p>すでに信頼関係のある顧客へ、次の商品を提案する。それが、地域で売上を伸ばす現実的な方法です。</p></div><div class="formula" aria-label="売上は取引先数、一社あたりの取引回数、一回あたりの取引金額で決まる図"><div><small>SALES</small><strong>売上</strong></div><i>＝</i><div class="fixed"><small>CUSTOMERS</small><strong>取引先数</strong><span>増やしにくい</span></div><i>×</i><div class="focus"><small>FREQUENCY</small><strong>1社あたりの<br/>取引回数</strong><span>ここを増やす</span></div></div></div></div></section><section class="section sourcing"><div class="container"><div class="section-heading split-heading"><div><p class="section-kicker">02　商品の増やし方</p><h2><span class="heading-line">新商品は、</span><span class="heading-line">外から仕入れる。</span></h2></div><p>商品開発も営業方法も、毎回ゼロから用意する必要はありません。東京で新規事業をつくり続ける会社と組み、地域の顧客に合うものを選んで売る仕組みを持ちます。</p></div><div class="build-choice" aria-label="自社だけで商品開発する方法とライトアップと組む方法の比較"><article class="choice-slow"><small>自社だけで始める</small><div><span>市場調査</span><i>→</i><span>商品開発</span><i>→</i><span>売り方検証</span><i>→</i><span>運用整備</span></div><strong>販売まで時間がかかる</strong></article><article class="choice-fast"><small>ライトアップと組む</small><div><span>商品</span><b>＋</b><span>営業</span><b>＋</b><span>広報</span></div><strong>既存顧客へ、すぐ提案できる</strong></article></div><div class="supply-flow" aria-label="ライトアップが商品をつくり、御社が地域に届け、顧客の相談が戻る循環図"><div><small>DEVELOP</small><b>ライトアップ</b><span>新しいAIサービスを<br/>企画・開発</span></div><i><span>商品を供給</span>→</i><div class="supply-owner"><small>SELL</small><b>御社</b><span>自社の名前で<br/>地域へ提案</span></div><i><span>相談が集まる</span>→</i><div><small>USE</small><b>既存顧客</b><span>新しい経営課題を<br/>御社へ相談</span></div></div><aside class="experiment-proof"><div class="experiment-copy"><p class="section-kicker">LIGHTUP / TEST &amp; LEARN</p><h3><span class="heading-line">たくさん試したから、</span><span class="heading-line">売れる商品がわかる。</span></h3><p>ライトアップは、最初から正解だけを当ててきた会社ではありません。300の企画を試し、売れなかった理由も学びながら、提供を続ける商品を30まで絞りました。皆様へ届けるのは、その試行錯誤を通過し、手応えが見え始めたサービスです。</p><small>※2026年1月以降のライトアップ社内集計・現時点の見立てです。各サービスの成果を保証するものではありません。</small></div><div class="experiment-visual"><p class="funnel-period">2026年1月〜現在｜ライトアップ社内集計</p><div class="experiment-funnel" aria-label="300件の企画から100件を開発提供し、30件を継続、約10件を成長候補として選別する図"><div><strong>300</strong><span>AIサービスを企画</span></div><i aria-hidden="true">↓</i><div><strong>100</strong><span>開発・提供</span></div><i aria-hidden="true">↓</i><div><strong>30</strong><span>提供を継続</span></div><i aria-hidden="true">↓</i><div><strong>約10</strong><span>成長候補<em>現時点の見立て</em></span></div></div><p class="aio-signal"><small>BEST INITIAL RESPONSE</small><span>その中で、最も初動が良いのが</span><strong>AIO</strong><em>社内比較による現時点の評価</em></p></div></aside></div></section><section class="section aio-shift" id="aio"><div class="container"><div class="section-heading section-heading-light"><p class="section-kicker">03　最初の商品</p><h2><span class="heading-line">SEO、MEO、</span><span class="heading-line">そして今はAIO。</span></h2><p>会社の探され方は、およそ10年ごとに主戦場が変わってきました。いま始まっているのは、AIの回答で候補に入るための対策です。</p></div><div class="shift-timeline" aria-label="2005年頃のSEO、2015年頃のMEO、2025年頃のAIOへの変化を示す図"><article class=""><div class="shift-top"><span>2005〜</span><b>0<!-- -->1</b></div><strong>SEO</strong><h3>検索で見つかる</h3><p>検索結果の上位に入り、自社サイトへ来てもらうための対策。</p><i aria-hidden="true">→</i></article><article class=""><div class="shift-top"><span>2015〜</span><b>0<!-- -->2</b></div><strong>MEO</strong><h3>地図で選ばれる</h3><p>地図や口コミから、地域のお店・会社に選ばれるための対策。</p><i aria-hidden="true">→</i></article><article class="active"><div class="shift-top"><span>2025〜</span><b>0<!-- -->3</b></div><strong>AIO</strong><h3>AIの回答に入る</h3><p>AIの回答に、信頼できる候補として登場するための対策。</p></article></div><div class="shift-conclusion"><p><strong>これまで</strong><span>検索する → 比較する → 自分で決める</span></p><i aria-hidden="true">→</i><p><strong>これから</strong><span>AIに聞く → AIが候補を示す → その中から決める</span></p></div><div class="evidence-strip"><p><b>日本語でも、すでに始まっています。</b>Googleは2025年に日本語版AIモードを提供開始。2026年には、AIによる検索画面の変更を「過去25年以上で最大のアップグレード」と説明しています。</p><div><a href="https://blog.google/intl/ja-jp/products/explore-get-answers/ai-mode-search/" target="_blank" rel="noreferrer">Google：AIモード日本語提供開始</a><a href="https://blog.google/intl/ja-jp/products/explore-get-answers/search-io-2026/" target="_blank" rel="noreferrer">Google：AI検索の新時代</a></div></div><div class="aio-stats"><div class="aio-stats-heading"><p class="section-kicker">5 NUMBERS / WHY AIO MATTERS</p><h3>AI経由の購買は、もう始まっている。</h3><p>AIで商品を探し、比較し、購入する行動が増えています。この変化は大企業だけではなく、中小企業や地域の店舗にも関係します。</p></div><ol class="aio-stat-flow" aria-label="AI経由の購買行動と中小企業、店舗ビジネスとの関係を示す5つの統計"><li><div class="aio-stat-top"><span>01</span><b>消費者</b></div><p class="aio-stat-value"><strong>39%</strong><span>が利用</span></p><h4>AIを使って買い物をする</h4><p>米国消費者の39%が、オンラインショッピングでAIを利用。商品探しや比較、購入判断に使われています。</p><a href="https://business.adobe.com/blog/ai-traffic-surge-retail-sites-not-machine-readable" target="_blank" rel="noreferrer">出典：<!-- -->Adobe Digital Insights 2026</a></li><li><div class="aio-stat-top"><span>02</span><b>流入</b></div><p class="aio-stat-value"><strong>+393%</strong><span>前年比</span></p><h4>AI経由の小売流入が急増</h4><p>2026年1〜3月、AIから米国小売サイトへの流入は前年比393%増。AIが新しい集客経路になっています。</p><a href="https://business.adobe.com/blog/ai-traffic-surge-retail-sites-not-machine-readable" target="_blank" rel="noreferrer">出典：<!-- -->Adobe Digital Insights 2026</a></li><li><div class="aio-stat-top"><span>03</span><b>購入</b></div><p class="aio-stat-value"><strong>+42%</strong><span>購入率</span></p><h4>AI経由は購入にもつながる</h4><p>2026年3月、AI経由の訪問はその他の流入より購入率が42%高く、調査開始以来の最高値でした。</p><a href="https://business.adobe.com/blog/ai-traffic-surge-retail-sites-not-machine-readable" target="_blank" rel="noreferrer">出典：<!-- -->Adobe Digital Insights 2026</a></li><li><div class="aio-stat-top"><span>04</span><b>中小企業</b></div><p class="aio-stat-value"><strong>58%</strong><span>が活用</span></p><h4>中小企業にもAIが普及</h4><p>米国の中小企業の58%が生成AIを利用。AIは大企業だけのものではなく、地域企業にも広がっています。</p><a href="https://www.uschamber.com/technology/artificial-intelligence/u-s-chambers-latest-empowering-small-business-report-shows-majority-of-businesses-in-all-50-states-are-embracing-ai" target="_blank" rel="noreferrer">出典：<!-- -->U.S. Chamber of Commerce 2025</a></li><li><div class="aio-stat-top"><span>05</span><b>店舗</b></div><p class="aio-stat-value"><strong>+400%</strong><span>地域検索</span></p><h4>「近くの営業中」が急増</h4><p>「営業中・近く」の検索は世界で前年比400%以上増加。場所や営業時間を持つ店舗は、検索が来店の入口になります。</p><a href="https://business.google.com/in/think/consumer-insights/increase-foot-traffic-and-in-store-sales/" target="_blank" rel="noreferrer">出典：<!-- -->Google 2022 Retail Guide</a></li></ol><div class="aio-stats-conclusion"><span>BEST FIT</span><strong>商品・料金・場所・実績など「選ぶ理由」が明確な中小企業や店舗ほど、AIに正しく理解される準備が重要です。</strong></div><p class="aio-stats-note">※購買関連の数値はAdobeが米国小売サイト1兆超の訪問と5,000人超の消費者調査を分析した結果。中小企業は全米商工会議所の2025年調査、地域検索はGoogleの2022年公表値です。AIO導入による成果を保証する数値ではありません。</p></div></div></section><section class="section foundation" id="foundation"><div class="container"><div class="section-heading split-heading"><div><p class="section-kicker">04　提供するもの</p><h2><span class="heading-line">商品・営業・広報。</span><span class="heading-line">3つで始められる。</span></h2></div><p>商品だけを渡して終わりではありません。提案し、売り、地域で事業として続けるための基盤を、まとめて提供します。</p></div><div class="foundation-grid"><article class="foundation-card"><div class="foundation-card-top"><span>01</span><b>商品システム</b></div><div class="foundation-diagram product-diagram" aria-label="AIO MASTERで診断、対策、確認を行う図"><span>診断</span><i></i><strong>AIO<br/>MASTER</strong><i></i><span>確認</span></div><h3>売る商品があります。</h3><p>AI検索での掲載状況を調べ、対策し、継続確認する「AIO MASTER」を御社の商品として提供できます。</p><ul><li>診断</li><li>改善施策</li><li>継続確認</li></ul></article><article class="foundation-card"><div class="foundation-card-top"><span>02</span><b>営業スキル</b></div><div class="foundation-diagram sales-diagram" aria-label="顧客情報からClaude Codeで提案をつくる図"><span>顧客</span><i>→</i><strong>CLAUDE<br/>CODE</strong><i>→</i><span>提案</span></div><h3>売る方法があります。</h3><p>Claude Codeの営業スキルが、候補企業の選定、事前調査、提案書作成、商談準備、フォローを支援します。</p><ul><li>顧客選定</li><li>提案書</li><li>商談支援</li></ul></article><article class="foundation-card"><div class="foundation-card-top"><span>03</span><b>広報・後方支援</b></div><div class="foundation-diagram support-diagram" aria-label="御社をライトアップが後方支援する図"><span>顧客</span><i>←</i><strong>御社</strong><i>←</i><span>本部支援</span></div><h3>広げる支援があります。</h3><p>勉強会や事例発信を支援。御社だけでは対応が難しい相談や大型案件には、ライトアップが後ろから参加します。</p><ul><li>勉強会</li><li>情報発信</li><li>専門案件</li></ul></article></div></div></section><section class="section operation" id="roles"><div class="container"><div class="section-heading"><p class="section-kicker">05　役割と始め方</p><h2><span class="heading-line">主役は、御社。</span><span class="heading-line">支援は、ライトアップ。</span></h2><p>地域の相談窓口になるのは御社です。商品開発と専門実務はライトアップが支え、対応が難しい案件も一緒に受け止めます。</p></div><div class="role-map"><article class="role-card main-role"><small>FRONT / OWNER</small><h3>御社</h3><strong>地域のAIO相談窓口</strong><ul><li>顧客との関係を持つ</li><li>自社の名前で提案する</li><li>実績と次の相談を蓄積する</li></ul></article><div class="role-bridge"><span>商品・営業・広報</span><i>←</i><b>後方支援</b><i>→</i><span>高度案件を連携</span></div><article class="role-card"><small>BACK / SUPPORT</small><h3>ライトアップ</h3><strong>商品開発と専門実務</strong><ul><li>商品システムを供給する</li><li>営業と広報を支援する</li><li>対応が難しい案件を実行する</li></ul></article></div><div class="launch-plan"><div class="launch-goal"><strong>60</strong><span>社／12か月</span><p>まず目指すのは、<br/><b>地域60社の相談窓口</b></p></div><ol class="growth-steps"><li><span>01</span><b>自社で使う</b><small>まず成果を体験</small></li><li><span>02</span><b>顧客を選ぶ</b><small>既存顧客から選定</small></li><li><span>03</span><b>診断を案内</b><small>課題を見える化</small></li><li><span>04</span><b>AIOを提供</b><small>継続支援へ</small></li></ol></div><p class="condition-note">※60社は12か月・累計60IDの事業目標です。提供条件、価格、収益分配は個別にご案内します。</p></div></section><section class="section expansion"><div class="container"><div class="section-heading split-heading"><div><p class="section-kicker">06　事業の広がり</p><h2><span class="heading-line">AIOから始める。</span><span class="heading-line">地域のAI相談窓口へ。</span></h2></div><p>AIOの相談を入口にすると、顧客から別のAI相談が集まります。ライトアップが新しい商品を継続供給し、御社の提案機会を増やします。</p></div><div class="service-orbit" aria-label="AIOを入口にSNS、LINE、電話、AI開発の相談へ広がる図"><div class="orbit-center"><small>LOCAL AI DESK</small><strong>御社</strong><span>地域のAI相談窓口</span></div><div class="orbit-services"><article class="active"><b>AIO</b><span>AI検索で見つけてもらう</span></article><article class=""><b>SNS</b><span>情報発信を続ける</span></article><article class=""><b>LINE</b><span>顧客対応を自動化する</span></article><article class=""><b>電話</b><span>受電業務をAI化する</span></article><article class=""><b>開発</b><span>専用のAI業務をつくる</span></article></div></div><p class="statement">AIOは、一つの商品ではなく、次の商品が集まる入口です。</p><aside class="vision-column"><div class="vision-mark" aria-hidden="true">W</div><div class="vision-copy"><p class="section-kicker">WHY WE DO THIS</p><h3 aria-label="全国、全ての中小企業を黒字にする"><span class="heading-line">全国、全ての</span><span class="heading-line">中小企業を黒字にする</span></h3><p>株式会社ライトアップが掲げるビジョンです。東京証券取引所の上場会社3,891社のうちの一社として、私たちは赤字の中小企業に向き合い、黒字化という結果まで徹底して支援する会社でありたいと考えています。</p><blockquote>「ここまで中小企業の黒字化に向き合う上場企業は珍しい」と、言っていただくことがあります。</blockquote><small>出典：<a href="https://writeup.jp/" target="_blank" rel="noreferrer">株式会社ライトアップ公式サイト</a>／上場会社数3,891社（2026年9月4日時点）：<a href="https://www.jpx.co.jp/listing/co/index.html" target="_blank" rel="noreferrer">日本取引所グループ</a></small></div></aside></div></section><section class="section final-cta" id="contact"><div class="container final-grid"><div><p class="section-kicker">YOUR NEXT BUSINESS</p><h2><span class="heading-line">地元で、AIO事業を</span><span class="heading-line">始めませんか。</span></h2></div><div class="cta-panel"><p><strong>御社自身が、地域のAIOコンサル会社になります。</strong></p><p>どの顧客から始めるか、どのように60社へ広げるか。御社の顧客基盤に合わせてご説明します。</p><a class="button-primary" href="https://writeup.jp/contact/">AIOコンサル事業の説明を聞く</a><small>その場での契約は求めません。提供条件は説明時にご確認いただけます。</small></div></div></section><footer><div class="container footer-inner"><p>AIO CONSULTING BUSINESS</p><p>PRODUCT / SALES / PR &amp; SUPPORT</p></div></footer></main></body></html>
