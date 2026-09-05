@@ -121,63 +121,70 @@ hr.sep{border:0; border-top:1px solid var(--line); margin:58px 0 0}
 
 /* ---------- drama ---------- */
 .drama{
-  --d-ink:#f0ece1; --d-bg:#141d24; --d-bg2:#0e161c; --d-gold:#c8a45c; --d-dim:#8b968f;
-  margin:74px 0 0; padding:52px 34px 40px; border-radius:16px; color:var(--d-ink);
-  background:
-    radial-gradient(120% 90% at 18% 0%, rgba(200,164,92,.16), transparent 58%),
-    radial-gradient(100% 80% at 88% 100%, rgba(168,80,60,.20), transparent 60%),
-    linear-gradient(180deg, var(--d-bg) 0%, var(--d-bg2) 100%);
-  font-family:var(--sans); overflow:hidden; position:relative;
+  --d-ink:#f2eee3; --d-bg:#0b1116; --d-gold:#c8a45c; --d-dim:#8892 8f;
+  --d-dim:#87918c;
+  margin:78px 0 0; border-radius:14px; overflow:hidden; color:var(--d-ink);
+  background:var(--d-bg); font-family:var(--sans); position:relative;
+  box-shadow:0 30px 70px -40px rgba(0,0,0,.6);
 }
-.drama:before{
-  content:""; position:absolute; inset:9px; border:1px solid rgba(200,164,92,.30);
-  border-radius:10px; pointer-events:none;
+.kv{display:block; width:100%; height:auto}
+.d-body{padding:4px 34px 34px; text-align:center; position:relative}
+.drama p{text-align:center}
+.d-tagline{
+  font-family:var(--serif); font-size:clamp(14px,3.4vw,17px); letter-spacing:.14em;
+  color:#d9cfb6; margin:0 0 30px; line-height:1.9;
 }
-.d-eyebrow{
-  font-size:10px; font-weight:700; letter-spacing:.44em; color:var(--d-gold);
-  margin:0 0 26px; text-align:center;
+.d-kicker{
+  font-size:clamp(12px,3.2vw,15px); font-weight:700; letter-spacing:.42em;
+  color:var(--d-gold); margin:0 0 20px;
 }
-.d-title{
-  font-family:var(--serif); font-size:clamp(34px,8.4vw,54px); font-weight:600;
-  letter-spacing:.16em; line-height:1.3; margin:0 0 6px; text-align:center; text-indent:.16em;
+.d-lock{position:relative; padding:22px 0; margin:0 0 22px}
+.d-lock:before,.d-lock:after{
+  content:""; position:absolute; left:50%; transform:translateX(-50%);
+  width:min(320px,86%); height:1px; background:linear-gradient(90deg,transparent,var(--d-gold),transparent);
 }
-.d-rule{
-  width:64px; height:1px; margin:22px auto; background:var(--d-gold); opacity:.7;
-}
-.d-kind{
-  font-size:12px; font-weight:700; letter-spacing:.3em; color:var(--d-dim);
-  text-align:center; margin:0 0 14px;
-}
+.d-lock:before{top:0} .d-lock:after{bottom:0}
 .d-work{
-  font-family:var(--serif); font-size:clamp(17px,4vw,21px); letter-spacing:.08em;
-  line-height:1.7; text-align:center; margin:0 0 14px; color:var(--d-ink);
+  font-family:var(--serif); font-size:clamp(27px,7vw,45px); font-weight:600;
+  letter-spacing:.12em; line-height:1.5; margin:0; text-indent:.12em;
+}
+.d-castlabel{
+  font-size:11px; font-weight:700; letter-spacing:.4em; color:var(--d-dim); margin:0 0 16px;
 }
 .d-when{
-  font-size:12px; font-weight:700; letter-spacing:.3em; color:var(--d-gold);
-  text-align:center; margin:0 0 34px;
+  font-size:clamp(12px,3.2vw,15px); font-weight:700; letter-spacing:.26em;
+  color:var(--d-gold); margin:0 0 34px;
 }
-.d-strip{display:block; width:100%; height:auto; margin:0 0 32px; opacity:.95}
-.d-cast{
-  display:flex; justify-content:center; align-items:stretch; gap:0; margin:0 0 30px;
-  text-align:center;
-}
-.d-cast div{padding:0 22px; flex:1; max-width:220px}
-.d-cast div + div{border-left:1px solid rgba(240,236,225,.18)}
+.d-cast{display:flex; justify-content:center; margin:0 0 34px}
+.d-cast div{padding:0 26px; flex:0 1 200px}
+.d-cast div + div{border-left:1px solid rgba(242,238,227,.18)}
 .d-cast b{
-  display:block; font-family:var(--serif); font-size:21px; font-weight:600;
-  letter-spacing:.14em; margin:0 0 6px;
+  display:block; font-family:var(--serif); font-size:clamp(19px,4.6vw,24px);
+  font-weight:600; letter-spacing:.16em; margin:0 0 8px;
 }
-.d-cast span{display:block; font-size:12px; letter-spacing:.14em; color:var(--d-dim)}
+.d-cast span{display:block; font-size:11.5px; letter-spacing:.14em; color:var(--d-dim)}
+.d-strip{display:block; width:100%; height:auto; margin:0 0 12px; opacity:.92}
+.d-stripcap{font-size:11px; letter-spacing:.2em; color:var(--d-dim); margin:0 0 32px}
+.d-credits{
+  display:inline-block; text-align:left; border-top:1px solid rgba(242,238,227,.14);
+  border-bottom:1px solid rgba(242,238,227,.14); padding:18px 0; margin:0 0 26px;
+}
+.d-credits dl{display:grid; grid-template-columns:auto 1fr; gap:9px 22px; margin:0; font-size:12.5px}
+.d-credits dt{color:var(--d-dim); letter-spacing:.2em; white-space:nowrap}
+.d-credits dd{margin:0; letter-spacing:.05em; color:var(--d-ink)}
 .d-note{
-  font-size:11px; line-height:1.9; color:var(--d-dim); text-align:center; margin:0;
-  padding:20px 0 0; border-top:1px solid rgba(240,236,225,.14);
+  font-size:11.5px; line-height:1.95; color:var(--d-dim); margin:0;
+  padding:18px 0 0; border-top:1px solid rgba(242,238,227,.1);
 }
+.d-copy{font-size:11.5px; letter-spacing:.2em; color:var(--d-dim); margin:16px 0 0}
 @media (max-width:600px){
-  .drama{padding:40px 16px 30px; border-radius:14px; margin:58px 0 0}
-  .d-title{font-size:29px; letter-spacing:.08em; text-indent:.08em}
-  .d-eyebrow{letter-spacing:.3em}
-  .d-cast div{padding:0 12px}
-  .d-cast b{font-size:18px}
+  .drama{margin:60px 0 0}
+  .d-body{padding:2px 18px 26px}
+  .d-work{font-size:24px; letter-spacing:.06em; text-indent:.06em}
+  .d-cast div{padding:0 14px}
+  .d-credits dl{grid-template-columns:1fr; gap:2px 0}
+  .d-credits dd{margin:0 0 10px}
+  .d-credits dd:last-child{margin:0}
 }
 
 /* ---------- coda ---------- */
@@ -587,59 +594,149 @@ footer a{color:var(--muted); display:inline-flex; align-items:center; min-height
 </section>
 
 
+
 <section class="drama" aria-label="ドラマ化のお知らせ（フィクション）">
-  <p class="d-eyebrow">SPECIAL ANNOUNCEMENT</p>
-  <h2 class="d-title">ドラマ化決定</h2>
-  <div class="d-rule"></div>
-  <p class="d-kind">連続ドラマ</p>
-  <p class="d-work">「りんごと、地図と、<br>一枚の写真」</p>
-  <p class="d-when">2027年1月 公開予定</p>
-  <svg class="d-strip" viewBox="0 0 640 140" fill="none" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
-    <rect x="0" y="8" width="640" height="124" rx="4" fill="rgba(0,0,0,.28)"/>
-    <g fill="rgba(240,236,225,.22)">
+  <svg class="kv" viewBox="0 0 900 470" fill="none" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0d1a26"/><stop offset=".46" stop-color="#1b2c34"/>
+        <stop offset=".74" stop-color="#3a3b34"/><stop offset="1" stop-color="#5a4634"/>
+      </linearGradient>
+      <radialGradient id="glow" cx=".5" cy=".5" r=".5">
+        <stop offset="0" stop-color="#f4e6c2" stop-opacity=".55"/>
+        <stop offset=".55" stop-color="#f4e6c2" stop-opacity=".12"/>
+        <stop offset="1" stop-color="#f4e6c2" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="scrim" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0b1116" stop-opacity="0"/>
+        <stop offset=".58" stop-color="#0b1116" stop-opacity=".72"/>
+        <stop offset="1" stop-color="#0b1116" stop-opacity="1"/>
+      </linearGradient>
+    </defs>
+
+    <rect width="900" height="470" fill="url(#sky)"/>
+    <g fill="#f2eee3" opacity=".55">
+      <circle cx="118" cy="58" r="1.5"/><circle cx="212" cy="34" r="1.1"/><circle cx="286" cy="84" r="1.4"/>
+      <circle cx="392" cy="46" r="1"/><circle cx="470" cy="96" r="1.3"/><circle cx="556" cy="40" r="1.1"/>
+      <circle cx="826" cy="62" r="1.3"/><circle cx="64" cy="126" r="1"/><circle cx="640" cy="112" r="1"/>
+    </g>
+    <circle cx="722" cy="104" r="96" fill="url(#glow)"/>
+    <circle cx="722" cy="104" r="40" fill="#f3e8ca"/>
+    <circle cx="706" cy="96" r="6" fill="#e6d8b4" opacity=".55"/>
+    <circle cx="736" cy="118" r="4" fill="#e6d8b4" opacity=".45"/>
+
+    <path d="M0 268 L96 198 L156 234 L248 160 L332 226 L410 182 L494 242 L578 186 L660 240 L742 200 L830 248 L900 214 L900 470 L0 470 Z" fill="#22323c" opacity=".72"/>
+    <path d="M0 312 L84 256 L176 296 L258 238 L348 300 L430 256 L530 306 L618 260 L708 308 L798 270 L900 306 L900 470 L0 470 Z" fill="#18262e"/>
+
+    <path d="M0 336 C 160 348, 300 380, 452 392 C 604 404, 752 406, 900 400 L900 470 L0 470 Z" fill="#0e171d"/>
+    <path d="M120 470 C 210 420, 320 396, 470 391 C 620 386, 780 392, 900 400 L900 470 Z" fill="#2b3a41" opacity=".85"/>
+    <path d="M232 470 C 300 428, 386 408, 500 404 C 650 399, 790 404, 900 411 L900 470 Z" fill="#3b4a4f" opacity=".55"/>
+    <g stroke="#4c5b5f" stroke-width="1.2" fill="none" opacity=".5">
+      <path d="M120 470 C 210 420, 320 396, 470 391 C 620 386, 780 392, 900 400"/>
+    </g>
+
+    <g fill="#060c10">
+      <path d="M96 316 v-44 M82 278 h28 M84 290 h24" stroke="#060c10" stroke-width="3"/>
+      <path d="M470 358 v-56 M455 310 h30 M457 322 h26" stroke="#060c10" stroke-width="3"/>
+    </g>
+    <path d="M96 278 C 240 296, 340 312, 470 310" stroke="#060c10" stroke-width="1.6" fill="none"/>
+    <path d="M470 310 C 620 318, 760 334, 900 338" stroke="#060c10" stroke-width="1.6" fill="none"/>
+
+    <g fill="#0a1319">
+      <path d="M556 396 v-30 h34 v30 z"/><path d="M550 366 L573 346 L596 366 z"/>
+      <path d="M600 398 v-22 h26 v22 z"/><path d="M595 376 L613 361 L631 376 z"/>
+      <path d="M636 400 v-17 h20 v17 z"/><path d="M632 383 L646 371 L660 383 z"/>
+      <path d="M700 402 v-24 h28 v24 z"/><path d="M695 378 L714 362 L733 378 z"/>
+    </g>
+    <rect x="565" y="374" width="10" height="9" fill="#c8a45c"/>
+    <rect x="707" y="386" width="8" height="7" fill="#c8a45c" opacity=".72"/>
+
+    <g fill="#0a1319">
+      <path d="M804 400 v-14 M792 392 l12 -20 l12 20 M795 380 l9 -16 l9 16"/>
+      <path d="M846 404 v-12 M836 396 l10 -17 l10 17"/>
+      <path d="M40 372 v-16 M26 362 l14 -24 l14 24 M29 348 l11 -19 l11 19"/>
+    </g>
+
+    <g fill="#05090c">
+      <ellipse cx="332" cy="438" rx="66" ry="7" opacity=".45"/>
+      <circle cx="374" cy="424" r="14"/>
+      <circle cx="374" cy="424" r="4" fill="#2b3a41"/>
+      <path d="M330 410 h50 v5 h-50 z"/>
+      <path d="M332 380 h46 v30 h-46 z"/>
+      <circle cx="344" cy="374" r="7.5"/><circle cx="360" cy="372" r="7.5"/>
+      <path d="M380 408 l34 -18 l3 5 l-34 18 z"/>
+      <circle cx="300" cy="360" r="11"/>
+      <path d="M288 414 v-38 q0 -11 12 -11 q12 0 12 11 v38 z"/>
+      <path d="M312 392 l18 -8 l2 5 l-18 8 z"/>
+      <circle cx="266" cy="366" r="10"/>
+      <path d="M255 416 v-36 q0 -10 11 -10 q11 0 11 10 v36 z"/>
+      <path d="M296 414 l-6 26 h6 l8 -22 z M306 414 l8 26 h-6 l-8 -22 z"/>
+      <path d="M263 416 l-6 24 h6 l7 -21 z M272 416 l7 24 h-6 l-7 -21 z"/>
+    </g>
+    <circle cx="376" cy="370" r="5.4" fill="#c8a45c" opacity=".95"/>
+
+    <rect y="196" width="900" height="274" fill="url(#scrim)"/>
+  </svg>
+  <div class="d-body">
+    <p class="d-tagline">その一枚は、二十年、引き出しの中で待っていた。</p>
+    <p class="d-kicker">連続ドラマ化決定</p>
+    <div class="d-lock">
+      <p class="d-work">りんごと、地図と、<br>一枚の写真</p>
+    </div>
+    <p class="d-when">2027年1月 公開予定</p>
+
+    <p class="d-castlabel">W主演</p>
+    <div class="d-cast">
+      <div><b>アタル</b><span>CAST — 発表前</span></div>
+      <div><b>タケル</b><span>CAST — 発表前</span></div>
+    </div>
+
+    <svg class="d-strip" viewBox="0 0 640 140" fill="none" aria-hidden="true">
+    <rect x="0" y="8" width="640" height="124" rx="4" fill="rgba(255,255,255,.045)"/>
+    <g fill="rgba(242,238,227,.20)">
       <rect x="12" y="14" width="16" height="9" rx="2"/><rect x="12" y="117" width="16" height="9" rx="2"/><rect x="46" y="14" width="16" height="9" rx="2"/><rect x="46" y="117" width="16" height="9" rx="2"/><rect x="80" y="14" width="16" height="9" rx="2"/><rect x="80" y="117" width="16" height="9" rx="2"/><rect x="114" y="14" width="16" height="9" rx="2"/><rect x="114" y="117" width="16" height="9" rx="2"/><rect x="148" y="14" width="16" height="9" rx="2"/><rect x="148" y="117" width="16" height="9" rx="2"/><rect x="182" y="14" width="16" height="9" rx="2"/><rect x="182" y="117" width="16" height="9" rx="2"/><rect x="216" y="14" width="16" height="9" rx="2"/><rect x="216" y="117" width="16" height="9" rx="2"/><rect x="250" y="14" width="16" height="9" rx="2"/><rect x="250" y="117" width="16" height="9" rx="2"/><rect x="284" y="14" width="16" height="9" rx="2"/><rect x="284" y="117" width="16" height="9" rx="2"/><rect x="318" y="14" width="16" height="9" rx="2"/><rect x="318" y="117" width="16" height="9" rx="2"/><rect x="352" y="14" width="16" height="9" rx="2"/><rect x="352" y="117" width="16" height="9" rx="2"/><rect x="386" y="14" width="16" height="9" rx="2"/><rect x="386" y="117" width="16" height="9" rx="2"/><rect x="420" y="14" width="16" height="9" rx="2"/><rect x="420" y="117" width="16" height="9" rx="2"/><rect x="454" y="14" width="16" height="9" rx="2"/><rect x="454" y="117" width="16" height="9" rx="2"/><rect x="488" y="14" width="16" height="9" rx="2"/><rect x="488" y="117" width="16" height="9" rx="2"/><rect x="522" y="14" width="16" height="9" rx="2"/><rect x="522" y="117" width="16" height="9" rx="2"/><rect x="556" y="14" width="16" height="9" rx="2"/><rect x="556" y="117" width="16" height="9" rx="2"/><rect x="590" y="14" width="16" height="9" rx="2"/><rect x="590" y="117" width="16" height="9" rx="2"/>
     </g>
-    <rect x="22" y="26" width="122" height="86" rx="3" stroke="rgba(240,236,225,.30)" stroke-width="1" fill="rgba(240,236,225,.045)"/><rect x="174" y="26" width="122" height="86" rx="3" stroke="rgba(240,236,225,.30)" stroke-width="1" fill="rgba(240,236,225,.045)"/><rect x="326" y="26" width="122" height="86" rx="3" stroke="rgba(240,236,225,.30)" stroke-width="1" fill="rgba(240,236,225,.045)"/><rect x="478" y="26" width="122" height="86" rx="3" stroke="rgba(240,236,225,.30)" stroke-width="1" fill="rgba(240,236,225,.045)"/>
-    <g stroke="#f0ece1" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" fill="none">
-      <path d="M60 96 h46"/>
-      <circle cx="83" cy="74" r="15"/>
-      <path d="M83 59 v-7"/>
+    <rect x="22" y="26" width="122" height="86" rx="3" stroke="rgba(242,238,227,.28)" stroke-width="1" fill="rgba(242,238,227,.04)"/><rect x="174" y="26" width="122" height="86" rx="3" stroke="rgba(242,238,227,.28)" stroke-width="1" fill="rgba(242,238,227,.04)"/><rect x="326" y="26" width="122" height="86" rx="3" stroke="rgba(242,238,227,.28)" stroke-width="1" fill="rgba(242,238,227,.04)"/><rect x="478" y="26" width="122" height="86" rx="3" stroke="rgba(242,238,227,.28)" stroke-width="1" fill="rgba(242,238,227,.04)"/>
+    <g stroke="#f2eee3" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M60 96 h46"/><circle cx="83" cy="74" r="15"/><path d="M83 59 v-7"/>
       <path d="M83 55 q10 -7 15 1 q-9 6 -15 -1" stroke="#c8a45c"/>
     </g>
-    <g stroke="#f0ece1" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" fill="none">
-      <path d="M204 40 h84 v58 h-84 z"/>
-      <path d="M246 40 v58" stroke-dasharray="2 5" opacity=".55"/>
-      <path d="M210 88 q14 -14 26 -12 q13 1 20 -10 q7 -11 22 -13"/>
-      <path d="M210 66 h72" opacity=".6"/>
+    <g stroke="#f2eee3" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M204 40 h84 v58 h-84 z"/><path d="M246 40 v58" stroke-dasharray="2 5" opacity=".55"/>
+      <path d="M210 88 q14 -14 26 -12 q13 1 20 -10 q7 -11 22 -13"/><path d="M210 66 h72" opacity=".6"/>
       <path d="M262 50 h10 v10 h-10 z" stroke="#c8a45c"/>
     </g>
-    <g stroke="#f0ece1" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <g stroke="#f2eee3" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" fill="none">
       <path d="M348 36 l5 3 l5 -3 l5 3 l5 -3 l5 3 l5 -3 l5 3 l5 -3 l5 3 l5 -3 l5 3 l5 -3 l5 3 l5 -3 v66 l-5 -3 l-5 3 l-5 -3 l-5 3 l-5 -3 l-5 3 l-5 -3 l-5 3 l-5 -3 l-5 3 l-5 -3 l-5 3 l-5 -3 l-5 3 z"/>
       <circle cx="368" cy="60" r="4.5"/><circle cx="384" cy="59" r="4.5"/>
       <circle cx="398" cy="65" r="3.6"/><circle cx="410" cy="67" r="3.2"/>
       <path d="M363 88 v-14 l2 -3 h6 l2 3 v14 M379 88 v-15 l2 -3 h6 l2 3 v15 M394 88 v-11 l2 -2 h4 l2 2 v11 M406 88 v-10 l2 -2 h4 l2 2 v10"/>
-      <path d="M358 88 h60" opacity=".5"/>
-      <path d="M424 56 h7 v28 h-7 z" stroke="#c8a45c"/>
+      <path d="M358 88 h60" opacity=".5"/><path d="M424 56 h7 v28 h-7 z" stroke="#c8a45c"/>
     </g>
-    <g stroke="#f0ece1" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" fill="none">
-      <path d="M512 52 v-10 q0 -7 7 -7 h20 q7 0 7 7 v10"/>
-      <path d="M528 35 v-5 M524 30 h8"/>
-      <path d="M512 44 l-12 -8 l-2 4 l14 10"/>
-      <path d="M546 52 q10 -3 9 -12" opacity=".8"/>
-      <path d="M506 52 h46"/>
-      <path d="M496 62 h68 v38 q0 5 -5 5 h-58 q-5 0 -5 -5 z"/>
-      <path d="M496 62 q0 -7 7 -7 h54 q7 0 7 7"/>
-      <path d="M508 72 h44 v22 h-44 z"/>
+    <g stroke="#f2eee3" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M512 52 v-10 q0 -7 7 -7 h20 q7 0 7 7 v10"/><path d="M528 35 v-5 M524 30 h8"/>
+      <path d="M512 44 l-12 -8 l-2 4 l14 10"/><path d="M546 52 q10 -3 9 -12" opacity=".8"/>
+      <path d="M506 52 h46"/><path d="M496 62 h68 v38 q0 5 -5 5 h-58 q-5 0 -5 -5 z"/>
+      <path d="M496 62 q0 -7 7 -7 h54 q7 0 7 7"/><path d="M508 72 h44 v22 h-44 z"/>
       <path d="M518 90 q4 -12 8 -3 q3 -10 7 -1 q4 -9 7 4" stroke="#c8a45c"/>
     </g>
   </svg>
-  <div class="d-cast">
-    <div><b>アタル</b><span>CAST — 発表前</span></div>
-    <div><b>タケル</b><span>CAST — 発表前</span></div>
+    <p class="d-stripcap">場面写真より</p>
+
+    <div class="d-credits">
+      <dl>
+        <dt>原　作</dt><dd>「りんごと、地図と、一枚の写真」全九章</dd>
+        <dt>舞　台</dt><dd>長野県・白科町（架空）</dd>
+        <dt>主題歌</dt><dd>未発表</dd>
+        <dt>公　開</dt><dd>2027年1月 予定</dd>
+      </dl>
+    </div>
+
+    <p class="d-note">
+      この告知はフィクションです。実在の番組・放送局・制作会社・俳優・キャスティングとは一切関係がなく、実際に映像化の予定はありません。白科町の物語の一部としてお楽しみください。
+    </p>
+    <p class="d-copy">© 白科町</p>
   </div>
-  <p class="d-note">
-    この告知はフィクションです。実在の番組・制作会社・放送局・キャスティングとは一切関係がありません。白科町の物語の一部としてお楽しみください。
-  </p>
 </section>
 
 <aside class="coda">
