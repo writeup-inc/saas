@@ -55,11 +55,11 @@ h1,h2,h3,h4,.say p,.lead,.reply p,.hc-row span,.card h3,.checks li,.checks li sp
 p,li{text-wrap:pretty}
 
 /* ============ モード ============ */
-body[data-mode="share"] .internal{display:none !important}
+body:not([data-mode="sales"]) .internal{display:none !important}
 body[data-mode="sales"] .shareonly{display:none !important}
-body[data-mode="share"] .say .tag{display:none}
-body[data-mode="share"] .reply .tag{display:none}
-body[data-mode="share"] .say{padding-top:24px}
+body:not([data-mode="sales"]) .say .tag{display:none}
+body:not([data-mode="sales"]) .reply .tag{display:none}
+body:not([data-mode="sales"]) .say{padding-top:24px}
 
 .modebar{display:none; position:sticky; top:0; z-index:70; background:var(--orange); color:#fff; text-align:center; font-size:13px; font-weight:900; padding:9px 16px; letter-spacing:.02em; line-height:1.5}
 body[data-mode="sales"] .modebar{display:block}
