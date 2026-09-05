@@ -40,6 +40,17 @@
 
     a { color: inherit; }
 
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
     .shell {
       width: min(calc(100% - 48px), 1160px);
       margin: 0 auto;
@@ -418,6 +429,17 @@
       gap: 14px;
     }
 
+    .service-entry {
+      position: relative;
+      scroll-margin-top: 24px;
+    }
+
+    .service-entry:target .service {
+      border-color: rgba(232,111,54,.72);
+      background: #fffdf6;
+      box-shadow: 0 0 0 4px rgba(232,111,54,.15), var(--shadow);
+    }
+
     .list-head {
       display: flex;
       align-items: baseline;
@@ -646,6 +668,42 @@
       transform: translateX(3px);
     }
 
+    .service-share {
+      display: flex;
+      width: max-content;
+      min-height: 32px;
+      align-items: center;
+      gap: 7px;
+      margin: -1px 1px 0 auto;
+      padding: 6px 11px 7px;
+      border: 1px solid var(--line);
+      border-top: 0;
+      border-radius: 0 0 5px 5px;
+      color: var(--ink-soft);
+      background: rgba(251,250,246,.92);
+      font: inherit;
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: .06em;
+      line-height: 1;
+      cursor: pointer;
+      transition: color .2s ease, background .2s ease, border-color .2s ease;
+    }
+
+    .service-share:hover,
+    .service-share:focus-visible {
+      outline: none;
+      border-color: rgba(23,75,60,.4);
+      color: #fff;
+      background: var(--green);
+    }
+
+    .service-share.is-copied {
+      border-color: var(--green);
+      color: #fff;
+      background: var(--green);
+    }
+
     footer {
       display: flex;
       justify-content: space-between;
@@ -699,6 +757,7 @@
       .change-note b { white-space: normal; }
       .url { display: none; }
       .arrow { width: 36px; font-size: 17px; }
+      .service-share { margin-right: 0; }
       footer { flex-direction: column; gap: 5px; }
     }
 
@@ -803,7 +862,8 @@
           <span>最終更新順</span>
         </div>
 
-        <a class="service" href="./ai-web-chat/" data-published="2026-09-05T02:54:00+09:00" data-updated="2026-09-05T12:35:00+09:00">
+        <article class="service-entry" id="ai-web-chat" data-published="2026-09-05T02:54:00+09:00" data-updated="2026-09-05T12:35:00+09:00">
+        <a class="service" href="./ai-web-chat/">
           <span class="number">01</span>
           <div>
             <div class="service-topline"><span class="service-type">SERVICE / WEB SALES</span><span class="badge-slot"></span></div>
@@ -817,8 +877,11 @@
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
         </a>
+        <button class="service-share" type="button" data-copy-anchor="ai-web-chat" data-service-name="AIウェブチャット" aria-label="AIウェブチャットの一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
+        </article>
 
-        <a class="service" href="./mcp-guide/" data-published="2026-09-05T12:12:00+09:00" data-updated="2026-09-05T12:19:00+09:00">
+        <article class="service-entry" id="mcp-guide" data-published="2026-09-05T12:12:00+09:00" data-updated="2026-09-05T12:19:00+09:00">
+        <a class="service" href="./mcp-guide/">
           <span class="number">02</span>
           <div>
             <div class="service-topline"><span class="service-type">MEDIA / AI INFRASTRUCTURE</span><span class="badge-slot"></span></div>
@@ -832,8 +895,11 @@
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
         </a>
+        <button class="service-share" type="button" data-copy-anchor="mcp-guide" data-service-name="MCP導入ガイド" aria-label="MCP導入ガイドの一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
+        </article>
 
-        <a class="service" href="./web-agency-kit/" data-published="2026-09-05T01:04:00+09:00" data-updated="2026-09-05T01:04:00+09:00">
+        <article class="service-entry" id="web-agency-kit" data-published="2026-09-05T01:04:00+09:00" data-updated="2026-09-05T01:04:00+09:00">
+        <a class="service" href="./web-agency-kit/">
           <span class="number">03</span>
           <div>
             <div class="service-topline"><span class="service-type">SERVICE / WEB PRODUCTION</span><span class="badge-slot"></span></div>
@@ -847,8 +913,11 @@
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
         </a>
+        <button class="service-share" type="button" data-copy-anchor="web-agency-kit" data-service-name="ホームページ制作会社スタートパック" aria-label="ホームページ制作会社スタートパックの一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
+        </article>
 
-        <a class="service" href="./ai-ad-agency-pack/" data-published="2026-09-05T00:48:00+09:00" data-updated="2026-09-05T00:48:00+09:00">
+        <article class="service-entry" id="ai-ad-agency-pack" data-published="2026-09-05T00:48:00+09:00" data-updated="2026-09-05T00:48:00+09:00">
+        <a class="service" href="./ai-ad-agency-pack/">
           <span class="number">04</span>
           <div>
             <div class="service-topline"><span class="service-type">SERVICE / ADVERTISING</span><span class="badge-slot"></span></div>
@@ -862,8 +931,11 @@
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
         </a>
+        <button class="service-share" type="button" data-copy-anchor="ai-ad-agency-pack" data-service-name="AI広告代理店スタートパック" aria-label="AI広告代理店スタートパックの一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
+        </article>
 
-        <a class="service" href="./ai-contact-4-stages/" data-published="2026-09-05T00:36:00+09:00" data-updated="2026-09-05T00:41:00+09:00">
+        <article class="service-entry" id="ai-contact-4-stages" data-published="2026-09-05T00:36:00+09:00" data-updated="2026-09-05T00:41:00+09:00">
+        <a class="service" href="./ai-contact-4-stages/">
           <span class="number">05</span>
           <div>
             <div class="service-topline"><span class="service-type">GUIDE / CUSTOMER CONTACT</span><span class="badge-slot"></span></div>
@@ -877,8 +949,11 @@
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
         </a>
+        <button class="service-share" type="button" data-copy-anchor="ai-contact-4-stages" data-service-name="AI接点が深まる4段階" aria-label="AI接点が深まる4段階の一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
+        </article>
 
-        <a class="service" href="./shiire-ataru-lp/" data-published="2026-09-04T19:55:00+09:00" data-updated="2026-09-04T23:49:00+09:00">
+        <article class="service-entry" id="shiire-ataru-lp" data-published="2026-09-04T19:55:00+09:00" data-updated="2026-09-04T23:49:00+09:00">
+        <a class="service" href="./shiire-ataru-lp/">
           <span class="number">06</span>
           <div>
             <div class="service-topline"><span class="service-type">SERVICE / REAL ESTATE</span><span class="badge-slot"></span></div>
@@ -892,7 +967,10 @@
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
         </a>
+        <button class="service-share" type="button" data-copy-anchor="shiire-ataru-lp" data-service-name="仕入れ担当アタル" aria-label="仕入れ担当アタルの一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
+        </article>
       </section>
+      <span class="sr-only" id="copy-status" role="status" aria-live="polite"></span>
       <p class="history-note">※ 日時は、各公開ページのGit履歴を基準に、日本時間で分まで表示しています。</p>
     </main>
 
@@ -905,12 +983,13 @@
     (() => {
       const activityWindowMs = 7 * 24 * 60 * 60 * 1000;
       const list = document.querySelector('.list');
-      const services = [...list.querySelectorAll('.service')];
+      const services = [...list.querySelectorAll('.service-entry')];
       const now = Date.now();
 
       services
         .sort((a, b) => new Date(b.dataset.updated) - new Date(a.dataset.updated))
         .forEach((service, index) => {
+          const card = service.querySelector('.service');
           const publishedAt = new Date(service.dataset.published).getTime();
           const updatedAt = new Date(service.dataset.updated).getTime();
           const publishedAge = now - publishedAt;
@@ -918,19 +997,70 @@
           const badgeSlot = service.querySelector('.badge-slot');
 
           service.querySelector('.number').textContent = String(index + 1).padStart(2, '0');
-          service.classList.remove('is-new', 'is-updated');
+          card.classList.remove('is-new', 'is-updated');
           badgeSlot.replaceChildren();
 
           if (publishedAge >= 0 && publishedAge <= activityWindowMs) {
-            service.classList.add('is-new');
+            card.classList.add('is-new');
             badgeSlot.innerHTML = '<span class="activity-badge new">新着</span>';
           } else if (updatedAt > publishedAt && updatedAge >= 0 && updatedAge <= activityWindowMs) {
-            service.classList.add('is-updated');
+            card.classList.add('is-updated');
             badgeSlot.innerHTML = '<span class="activity-badge updated">更新</span>';
           }
 
           list.appendChild(service);
         });
+
+      const canonical = new URL(document.querySelector('link[rel="canonical"]').href);
+      const copyStatus = document.querySelector('#copy-status');
+
+      const copyText = async (text) => {
+        try {
+          await navigator.clipboard.writeText(text);
+          return true;
+        } catch (error) {
+          const textarea = document.createElement('textarea');
+          textarea.value = text;
+          textarea.setAttribute('readonly', '');
+          textarea.style.position = 'fixed';
+          textarea.style.opacity = '0';
+          document.body.appendChild(textarea);
+          textarea.select();
+          const copied = document.execCommand('copy');
+          textarea.remove();
+          return copied;
+        }
+      };
+
+      list.querySelectorAll('[data-copy-anchor]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const anchor = button.dataset.copyAnchor;
+          const serviceName = button.dataset.serviceName;
+          const shareUrl = new URL(canonical.href);
+          shareUrl.hash = anchor;
+          const copied = await copyText(shareUrl.href);
+          const label = button.querySelector('.service-share-label');
+
+          if (copied) {
+            history.replaceState(null, '', `#${anchor}`);
+            button.classList.add('is-copied');
+            label.textContent = 'コピーしました';
+            copyStatus.textContent = `${serviceName}の共有URLをコピーしました。`;
+            window.setTimeout(() => {
+              button.classList.remove('is-copied');
+              label.textContent = '共有URLをコピー';
+            }, 1800);
+          } else {
+            label.textContent = 'コピーできません';
+            copyStatus.textContent = '共有URLをコピーできませんでした。';
+          }
+        });
+      });
+
+      if (location.hash) {
+        const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+        if (target) requestAnimationFrame(() => target.scrollIntoView({ block: 'start' }));
+      }
     })();
   </script>
 </body>
