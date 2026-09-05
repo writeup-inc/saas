@@ -16,7 +16,17 @@
       --surface: #fbfaf6;
       --line: rgba(20, 37, 31, .15);
       --green: #174b3c;
-      --orange: #e86f36;
+      --orange: #a86648;
+      --cat-sales: #9a6348;
+      --cat-sales-bg: #eee3dc;
+      --cat-people: #587184;
+      --cat-people-bg: #e2e9ed;
+      --cat-care: #5d776e;
+      --cat-care-bg: #e3eae6;
+      --cat-work: #716779;
+      --cat-work-bg: #e9e5eb;
+      --cat-build: #4f6575;
+      --cat-build-bg: #e1e7eb;
       --shadow: 0 18px 50px rgba(20, 37, 31, .08);
     }
 
@@ -28,7 +38,7 @@
       margin: 0;
       color: var(--ink);
       background:
-        radial-gradient(circle at 84% 4%, rgba(232,111,54,.1), transparent 24rem),
+        radial-gradient(circle at 84% 4%, rgba(168,102,72,.07), transparent 24rem),
         linear-gradient(rgba(20,37,31,.025) 1px, transparent 1px),
         linear-gradient(90deg, rgba(20,37,31,.025) 1px, transparent 1px),
         var(--paper);
@@ -49,6 +59,13 @@
       clip: rect(0, 0, 0, 0);
       white-space: nowrap;
       border: 0;
+    }
+
+    .icon-definitions {
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
     }
 
     .shell {
@@ -189,7 +206,7 @@
     .hero-note {
       --note-delay: .15s;
       --note-tilt: -.65deg;
-      --note-paper: #fff4bd;
+      --note-paper: #eee5c9;
       opacity: 0;
       transform-origin: 52% 8%;
       animation: note-stick 1.05s cubic-bezier(.2,.78,.2,1) var(--note-delay) both;
@@ -199,13 +216,13 @@
     .hero-note:nth-child(2) {
       --note-delay: .85s;
       --note-tilt: .55deg;
-      --note-paper: #fff9df;
+      --note-paper: #f3edde;
     }
 
     .hero-note:nth-child(3) {
       --note-delay: 1.55s;
       --note-tilt: -.3deg;
-      --note-paper: #e5f0e8;
+      --note-paper: #e4ebe5;
     }
 
     @keyframes note-stick {
@@ -296,7 +313,7 @@
       padding: clamp(28px, 4vw, 46px);
       color: #fff;
       background:
-        radial-gradient(circle at 88% 12%, rgba(232,111,54,.26), transparent 18rem),
+        radial-gradient(circle at 88% 12%, rgba(168,102,72,.16), transparent 18rem),
         var(--green);
       box-shadow: 0 22px 60px rgba(20,37,31,.13);
     }
@@ -313,7 +330,7 @@
     .context-label {
       display: block;
       margin-bottom: 10px;
-      color: #f2a47e;
+      color: #d5aa94;
       font-size: 10px;
       font-weight: 800;
       letter-spacing: .18em;
@@ -352,13 +369,13 @@
     }
 
     .org-node.team {
-      border-color: rgba(242,164,126,.62);
-      background: rgba(232,111,54,.13);
+      border-color: rgba(213,170,148,.52);
+      background: rgba(168,102,72,.09);
     }
 
     .org-node span {
       margin-bottom: 7px;
-      color: #f2a47e;
+      color: #d5aa94;
       font-size: 9px;
       font-weight: 800;
       letter-spacing: .15em;
@@ -379,7 +396,7 @@
     .org-arrow {
       display: grid;
       place-items: center;
-      color: #f2a47e;
+      color: #d5aa94;
       font-size: 19px;
     }
 
@@ -393,7 +410,7 @@
     }
 
     .notice b {
-      color: #f2a47e;
+      color: #d5aa94;
       font-size: 10px;
       letter-spacing: .16em;
     }
@@ -435,9 +452,9 @@
     }
 
     .service-entry:target .service {
-      border-color: rgba(232,111,54,.72);
+      border-color: rgba(168,102,72,.62);
       background: #fffdf6;
-      box-shadow: 0 0 0 4px rgba(232,111,54,.15), var(--shadow);
+      box-shadow: 0 0 0 4px rgba(168,102,72,.12), var(--shadow);
     }
 
     .list-head {
@@ -465,6 +482,8 @@
     }
 
     .service {
+      --category: var(--cat-build);
+      --category-bg: var(--cat-build-bg);
       position: relative;
       display: grid;
       grid-template-columns: 76px minmax(220px, .72fr) minmax(300px, 1.28fr) 44px;
@@ -479,11 +498,49 @@
       transition: transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease;
     }
 
+    .service[data-category="sales"],
+    .legend-item[data-category="sales"] {
+      --category: var(--cat-sales);
+      --category-bg: var(--cat-sales-bg);
+    }
+
+    .service[data-category="people"],
+    .legend-item[data-category="people"] {
+      --category: var(--cat-people);
+      --category-bg: var(--cat-people-bg);
+    }
+
+    .service[data-category="care"],
+    .legend-item[data-category="care"] {
+      --category: var(--cat-care);
+      --category-bg: var(--cat-care-bg);
+    }
+
+    .service[data-category="work"],
+    .legend-item[data-category="work"] {
+      --category: var(--cat-work);
+      --category-bg: var(--cat-work-bg);
+    }
+
+    .service[data-category="build"],
+    .legend-item[data-category="build"] {
+      --category: var(--cat-build);
+      --category-bg: var(--cat-build-bg);
+    }
+
+    .service::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 3px;
+      background: var(--category);
+      opacity: .78;
+    }
+
     .service.is-new {
-      border-color: rgba(226,117,47,.34);
+      border-color: rgba(20,37,31,.18);
       background:
-        linear-gradient(108deg, rgba(255,240,183,.72), rgba(255,248,221,.48) 42%, rgba(251,250,246,.9));
-      box-shadow: inset 4px 0 0 rgba(226,117,47,.72);
+        linear-gradient(108deg, rgba(239,233,213,.68), rgba(247,244,234,.44) 42%, rgba(251,250,246,.9));
     }
 
     .service.is-updated {
@@ -495,7 +552,7 @@
       position: absolute;
       inset: auto 0 0;
       height: 3px;
-      background: var(--orange);
+      background: var(--category);
       transform: scaleX(0);
       transform-origin: left;
       transition: transform .3s ease;
@@ -514,22 +571,64 @@
     .service:hover::after,
     .service:focus-visible::after { transform: scaleX(1); }
 
-    .number {
+    .service-index {
       align-self: stretch;
-      display: grid;
-      place-items: center;
+      display: flex;
+      min-width: 0;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
       border-right: 1px solid var(--line);
+    }
+
+    .category-icon {
+      display: grid;
+      width: 42px;
+      aspect-ratio: 1;
+      place-items: center;
+      border: 1px solid rgba(20,37,31,.12);
+      border-radius: 50%;
+      color: var(--category);
+      background: var(--category-bg);
+    }
+
+    .category-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 1.55;
+    }
+
+    .number {
       color: var(--green);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 30px;
+      font-size: 13px;
       font-style: italic;
+      letter-spacing: .04em;
     }
 
     .service-type {
-      color: var(--orange);
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 750;
+      letter-spacing: .12em;
+    }
+
+    .category-name {
+      color: var(--category);
       font-size: 10px;
       font-weight: 800;
-      letter-spacing: .15em;
+      letter-spacing: .08em;
+    }
+
+    .category-name::after {
+      content: "/";
+      margin-left: 9px;
+      color: rgba(20,37,31,.28);
     }
 
     .service-topline {
@@ -556,8 +655,8 @@
     }
 
     .activity-badge.new {
-      color: #74320d;
-      background: #ffd66e;
+      color: #694f37;
+      background: #e8ddbd;
     }
 
     .activity-badge.updated {
@@ -704,6 +803,90 @@
       background: var(--green);
     }
 
+    .category-legend {
+      margin-top: clamp(58px, 8vw, 92px);
+      padding: clamp(28px, 4vw, 42px);
+      border: 1px solid var(--line);
+      background: rgba(251,250,246,.72);
+    }
+
+    .legend-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .legend-kicker {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .16em;
+    }
+
+    .legend-title {
+      margin: 0;
+      font-size: clamp(22px, 2.7vw, 32px);
+      letter-spacing: -.035em;
+      line-height: 1.35;
+    }
+
+    .legend-intro {
+      max-width: 430px;
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .legend-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .legend-item {
+      --category: var(--cat-build);
+      --category-bg: var(--cat-build-bg);
+      min-width: 0;
+      padding: 18px 16px;
+      border: 1px solid rgba(20,37,31,.1);
+      background: rgba(255,255,255,.38);
+    }
+
+    .legend-item .category-icon {
+      width: 38px;
+      margin-bottom: 13px;
+    }
+
+    .legend-item .category-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .legend-item h3 {
+      margin: 0;
+      color: var(--category);
+      font-size: 13px;
+      letter-spacing: -.01em;
+      line-height: 1.5;
+    }
+
+    .legend-item p {
+      margin: 7px 0 0;
+      color: var(--ink-soft);
+      font-size: 11px;
+      line-height: 1.75;
+    }
+
     footer {
       display: flex;
       justify-content: space-between;
@@ -726,6 +909,10 @@
       .service { grid-template-columns: 52px 1fr 40px; gap: 20px; }
       .description-wrap { grid-column: 2 / 4; }
       .arrow { grid-column: 3; grid-row: 1; justify-self: end; }
+      .category-icon { width: 36px; }
+      .category-icon svg { width: 19px; height: 19px; }
+      .legend-head { align-items: start; flex-direction: column; gap: 10px; }
+      .legend-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (max-width: 560px) {
@@ -745,12 +932,13 @@
       .context-copy { font-size: 13px; }
       .notice { grid-template-columns: 1fr; gap: 12px; }
       .service {
-        grid-template-columns: 36px minmax(0, 1fr) 36px;
+        grid-template-columns: 44px minmax(0, 1fr) 36px;
         gap: 14px;
         min-height: 0;
         padding: 23px 18px;
       }
-      .number { font-size: 23px; }
+      .service-index { gap: 7px; }
+      .number { font-size: 11px; }
       .description-wrap { grid-column: 1 / 4; padding-top: 2px; }
       .description { font-size: 13px; }
       .change-note { grid-template-columns: 1fr; gap: 3px; }
@@ -758,6 +946,11 @@
       .url { display: none; }
       .arrow { width: 36px; font-size: 17px; }
       .service-share { margin-right: 0; }
+      .category-legend { padding: 24px 18px; }
+      .legend-grid { grid-template-columns: 1fr; }
+      .legend-item { display: grid; grid-template-columns: 38px 1fr; column-gap: 13px; padding: 15px; }
+      .legend-item .category-icon { grid-row: 1 / 3; margin: 0; }
+      .legend-item p { margin-top: 3px; }
       footer { flex-direction: column; gap: 5px; }
     }
 
@@ -776,6 +969,32 @@
   </style>
 </head>
 <body>
+  <svg class="icon-definitions" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="icon-sales" viewBox="0 0 24 24">
+        <path d="M4 10.2v3.6l10 3.7v-11L4 10.2Z"/>
+        <path d="M14 9h2.2a3 3 0 0 1 0 6H14M6.3 14.7 7.6 20h3.1l-1.1-4.1"/>
+      </symbol>
+      <symbol id="icon-people" viewBox="0 0 24 24">
+        <circle cx="9" cy="8" r="3"/>
+        <path d="M3.5 19c.5-3.2 2.3-5 5.5-5s5 1.8 5.5 5M15 6.3a2.7 2.7 0 0 1 0 5.4M16.3 14.2c2.4.5 3.8 2.1 4.2 4.8"/>
+      </symbol>
+      <symbol id="icon-care" viewBox="0 0 24 24">
+        <path d="M4 13v-2a8 8 0 0 1 16 0v2"/>
+        <path d="M4 12h2.5v6H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 1-2ZM20 12h-2.5v6H19a2 2 0 0 0 2-2v-2a2 2 0 0 0-1-2Z"/>
+        <path d="M17.5 18c-.5 1.3-1.5 2-3 2H12"/>
+      </symbol>
+      <symbol id="icon-work" viewBox="0 0 24 24">
+        <path d="M7 5h10v15H7zM9.5 5V3h5v2"/>
+        <path d="m9.5 12 1.6 1.6 3.7-4M9.5 17h5"/>
+      </symbol>
+      <symbol id="icon-build" viewBox="0 0 24 24">
+        <path d="m12 3 6 3.4v6.8L12 17l-6-3.8V6.4L12 3Z"/>
+        <path d="m6.2 6.5 5.8 3.4 5.8-3.4M12 10v7"/>
+        <path d="M8 16.2v3.1h8v-3.1"/>
+      </symbol>
+    </defs>
+  </svg>
   <div class="shell">
     <header>
       <a class="brand" href="./"><span class="brand-mark">W</span>WRITEUP / SaaS</a>
@@ -863,10 +1082,10 @@
         </div>
 
         <article class="service-entry" id="ai-web-chat" data-published="2026-09-05T02:54:00+09:00" data-updated="2026-09-05T12:35:00+09:00">
-        <a class="service" href="./ai-web-chat/">
-          <span class="number">01</span>
+        <a class="service" data-category="care" href="./ai-web-chat/">
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-care"/></svg></span><span class="number">01</span></span>
           <div>
-            <div class="service-topline"><span class="service-type">SERVICE / WEB SALES</span><span class="badge-slot"></span></div>
+            <div class="service-topline"><span class="category-name">顧客対応・店舗</span><span class="service-type">SERVICE / WEB SALES</span><span class="badge-slot"></span></div>
             <h2>AIウェブチャット<br>（仮称）</h2>
           </div>
           <div class="description-wrap">
@@ -881,10 +1100,10 @@
         </article>
 
         <article class="service-entry" id="mcp-guide" data-published="2026-09-05T12:12:00+09:00" data-updated="2026-09-05T12:19:00+09:00">
-        <a class="service" href="./mcp-guide/">
-          <span class="number">02</span>
+        <a class="service" data-category="build" href="./mcp-guide/">
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">02</span></span>
           <div>
-            <div class="service-topline"><span class="service-type">MEDIA / AI INFRASTRUCTURE</span><span class="badge-slot"></span></div>
+            <div class="service-topline"><span class="category-name">AI導入・事業化</span><span class="service-type">MEDIA / AI INFRASTRUCTURE</span><span class="badge-slot"></span></div>
             <h2>MCP導入<br>ガイド</h2>
           </div>
           <div class="description-wrap">
@@ -899,10 +1118,10 @@
         </article>
 
         <article class="service-entry" id="web-agency-kit" data-published="2026-09-05T01:04:00+09:00" data-updated="2026-09-05T01:04:00+09:00">
-        <a class="service" href="./web-agency-kit/">
-          <span class="number">03</span>
+        <a class="service" data-category="build" href="./web-agency-kit/">
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">03</span></span>
           <div>
-            <div class="service-topline"><span class="service-type">SERVICE / WEB PRODUCTION</span><span class="badge-slot"></span></div>
+            <div class="service-topline"><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / WEB PRODUCTION</span><span class="badge-slot"></span></div>
             <h2>ホームページ制作会社<br>スタートパック</h2>
           </div>
           <div class="description-wrap">
@@ -917,10 +1136,10 @@
         </article>
 
         <article class="service-entry" id="ai-ad-agency-pack" data-published="2026-09-05T00:48:00+09:00" data-updated="2026-09-05T00:48:00+09:00">
-        <a class="service" href="./ai-ad-agency-pack/">
-          <span class="number">04</span>
+        <a class="service" data-category="build" href="./ai-ad-agency-pack/">
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">04</span></span>
           <div>
-            <div class="service-topline"><span class="service-type">SERVICE / ADVERTISING</span><span class="badge-slot"></span></div>
+            <div class="service-topline"><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / ADVERTISING</span><span class="badge-slot"></span></div>
             <h2>AI広告代理店<br>スタートパック</h2>
           </div>
           <div class="description-wrap">
@@ -935,10 +1154,10 @@
         </article>
 
         <article class="service-entry" id="ai-contact-4-stages" data-published="2026-09-05T00:36:00+09:00" data-updated="2026-09-05T00:41:00+09:00">
-        <a class="service" href="./ai-contact-4-stages/">
-          <span class="number">05</span>
+        <a class="service" data-category="sales" href="./ai-contact-4-stages/">
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-sales"/></svg></span><span class="number">05</span></span>
           <div>
-            <div class="service-topline"><span class="service-type">GUIDE / CUSTOMER CONTACT</span><span class="badge-slot"></span></div>
+            <div class="service-topline"><span class="category-name">集客・営業</span><span class="service-type">GUIDE / CUSTOMER CONTACT</span><span class="badge-slot"></span></div>
             <h2>AI接点が深まる<br>4段階</h2>
           </div>
           <div class="description-wrap">
@@ -953,10 +1172,10 @@
         </article>
 
         <article class="service-entry" id="shiire-ataru-lp" data-published="2026-09-04T19:55:00+09:00" data-updated="2026-09-04T23:49:00+09:00">
-        <a class="service" href="./shiire-ataru-lp/">
-          <span class="number">06</span>
+        <a class="service" data-category="work" href="./shiire-ataru-lp/">
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-work"/></svg></span><span class="number">06</span></span>
           <div>
-            <div class="service-topline"><span class="service-type">SERVICE / REAL ESTATE</span><span class="badge-slot"></span></div>
+            <div class="service-topline"><span class="category-name">経営・社内業務</span><span class="service-type">SERVICE / REAL ESTATE</span><span class="badge-slot"></span></div>
             <h2>仕入れ担当<br>アタル（仮称）</h2>
           </div>
           <div class="description-wrap">
@@ -972,6 +1191,43 @@
       </section>
       <span class="sr-only" id="copy-status" role="status" aria-live="polite"></span>
       <p class="history-note">※ 日時は、各公開ページのGit履歴を基準に、日本時間で分まで表示しています。</p>
+
+      <section class="category-legend" aria-labelledby="category-legend-title">
+        <div class="legend-head">
+          <div>
+            <span class="legend-kicker">SERVICE ICONS</span>
+            <h2 class="legend-title" id="category-legend-title">アイコンの見かた</h2>
+          </div>
+          <p class="legend-intro">サービスが主に支援する仕事を5つに整理しています。複数にまたがる場合は、いちばん中心となる役割のアイコンを表示します。</p>
+        </div>
+        <ul class="legend-grid">
+          <li class="legend-item" data-category="sales">
+            <span class="category-icon" aria-hidden="true"><svg><use href="#icon-sales"/></svg></span>
+            <h3>集客・営業</h3>
+            <p>見込み客との接点をつくり、相談や商談へつなげるサービス。</p>
+          </li>
+          <li class="legend-item" data-category="people">
+            <span class="category-icon" aria-hidden="true"><svg><use href="#icon-people"/></svg></span>
+            <h3>採用・人材</h3>
+            <p>候補者との出会いから選考、配置、活躍までを支えるサービス。</p>
+          </li>
+          <li class="legend-item" data-category="care">
+            <span class="category-icon" aria-hidden="true"><svg><use href="#icon-care"/></svg></span>
+            <h3>顧客対応・店舗</h3>
+            <p>電話やLINE、Web上の問い合わせ対応を整えるサービス。</p>
+          </li>
+          <li class="legend-item" data-category="work">
+            <span class="category-icon" aria-hidden="true"><svg><use href="#icon-work"/></svg></span>
+            <h3>経営・社内業務</h3>
+            <p>判断、確認、記録など、日々の社内業務を軽くするサービス。</p>
+          </li>
+          <li class="legend-item" data-category="build">
+            <span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span>
+            <h3>AI導入・事業化</h3>
+            <p>AIを安全に導入し、新しい商品や事業として育てるサービス。</p>
+          </li>
+        </ul>
+      </section>
     </main>
 
     <footer>
