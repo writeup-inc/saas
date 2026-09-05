@@ -321,6 +321,30 @@
       gap: 14px;
     }
 
+    .list-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 0 2px 4px;
+    }
+
+    .list-head strong {
+      color: var(--green);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 20px;
+      font-style: italic;
+      font-weight: 500;
+      letter-spacing: -.01em;
+    }
+
+    .list-head span {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .12em;
+    }
+
     .service {
       position: relative;
       display: grid;
@@ -334,6 +358,17 @@
       background: rgba(251,250,246,.78);
       text-decoration: none;
       transition: transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease;
+    }
+
+    .service.is-new {
+      border-color: rgba(226,117,47,.34);
+      background:
+        linear-gradient(108deg, rgba(255,240,183,.72), rgba(255,248,221,.48) 42%, rgba(251,250,246,.9));
+      box-shadow: inset 4px 0 0 rgba(226,117,47,.72);
+    }
+
+    .service.is-updated {
+      border-color: rgba(23,75,60,.28);
     }
 
     .service::after {
@@ -372,12 +407,43 @@
     }
 
     .service-type {
-      display: block;
-      margin-bottom: 9px;
       color: var(--orange);
       font-size: 10px;
       font-weight: 800;
       letter-spacing: .15em;
+    }
+
+    .service-topline {
+      display: flex;
+      min-height: 24px;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge-slot:empty { display: none; }
+
+    .activity-badge {
+      display: inline-flex;
+      min-height: 22px;
+      align-items: center;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .09em;
+      line-height: 1;
+    }
+
+    .activity-badge.new {
+      color: #74320d;
+      background: #ffd66e;
+    }
+
+    .activity-badge.updated {
+      color: #fff;
+      background: var(--green);
     }
 
     h2 {
@@ -392,6 +458,33 @@
       color: var(--ink-soft);
       font-size: 14px;
       line-height: 1.85;
+    }
+
+    .change-note {
+      display: grid;
+      grid-template-columns: max-content minmax(0, 1fr);
+      gap: 10px;
+      align-items: baseline;
+      margin-top: 10px;
+      padding-top: 9px;
+      border-top: 1px dashed rgba(20,37,31,.18);
+    }
+
+    .change-note span {
+      color: var(--orange);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+
+    .change-note b {
+      overflow: hidden;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 650;
+      line-height: 1.55;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .url {
@@ -476,6 +569,7 @@
       .org-arrow { min-height: 20px; transform: rotate(90deg); }
       .service { grid-template-columns: 52px 1fr 40px; gap: 20px; }
       .description-wrap { grid-column: 2 / 4; }
+      .arrow { grid-column: 3; grid-row: 1; justify-self: end; }
     }
 
     @media (max-width: 560px) {
@@ -500,6 +594,9 @@
       .number { font-size: 23px; }
       .description-wrap { grid-column: 1 / 4; padding-top: 2px; }
       .description { font-size: 13px; }
+      .change-note { grid-template-columns: 1fr; gap: 3px; }
+      .change-note b { white-space: normal; }
+      .url { display: none; }
       .arrow { width: 36px; font-size: 17px; }
       footer { flex-direction: column; gap: 5px; }
     }
@@ -573,86 +670,97 @@
       </section>
 
       <section class="list" aria-label="公開ページ一覧">
-        <a class="service" href="./ai-ad-agency-pack/">
+        <div class="list-head">
+          <strong>Recent activity</strong>
+          <span>最終更新順</span>
+        </div>
+
+        <a class="service" href="./ai-web-chat/" data-published="2026-09-05T02:54:00+09:00" data-updated="2026-09-05T12:14:00+09:00">
           <span class="number">01</span>
           <div>
-            <span class="service-type">SERVICE / ADVERTISING</span>
-            <h2>AI広告代理店<br>スタートパック</h2>
-          </div>
-          <div class="description-wrap">
-            <p class="description">Claude Codeを実務基盤に、広告提案・設定・入稿準備・分析・改善までを自社サービスにする実務パッケージ。</p>
-            <span class="url">writeup-inc.github.io/saas/ai-ad-agency-pack/</span>
-            <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-05T00:48:00+09:00">2026.09.05 00:48</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-05T00:48:00+09:00">2026.09.05 00:48</time></span></span>
-          </div>
-          <span class="arrow" aria-hidden="true">↗</span>
-        </a>
-
-        <a class="service" href="./shiire-ataru-lp/">
-          <span class="number">02</span>
-          <div>
-            <span class="service-type">SERVICE / REAL ESTATE</span>
-            <h2>仕入れ担当<br>アタル（仮称）</h2>
-          </div>
-          <div class="description-wrap">
-            <p class="description">全国の登録済み不動産会社へ物件の有無を確認し、回答と未回答を整理して仕入れ担当者へ報告するAIチームメイト。</p>
-            <span class="url">writeup-inc.github.io/saas/shiire-ataru-lp/</span>
-            <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-04T19:55:00+09:00">2026.09.04 19:55</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-04T23:49:00+09:00">2026.09.04 23:49</time></span></span>
-          </div>
-          <span class="arrow" aria-hidden="true">↗</span>
-        </a>
-
-        <a class="service" href="./ai-web-chat/">
-          <span class="number">03</span>
-          <div>
-            <span class="service-type">SERVICE / WEB SALES</span>
+            <div class="service-topline"><span class="service-type">SERVICE / WEB SALES</span><span class="badge-slot"></span></div>
             <h2>AIウェブチャット<br>（仮称）</h2>
           </div>
           <div class="description-wrap">
             <p class="description">自社サイト上で訪問者の質問に答え、必要なことを伺い、問い合わせ・相談予約・登録へ案内する一次営業AI。</p>
+            <p class="change-note"><span>最新の変更</span><b>会話デモのアバターを人物イラストへ変更</b></p>
             <span class="url">writeup-inc.github.io/saas/ai-web-chat/</span>
-            <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-05T02:54:00+09:00">2026.09.05 02:54</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-05T12:06:00+09:00">2026.09.05 12:06</time></span></span>
+            <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-05T02:54:00+09:00">2026.09.05 02:54</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-05T12:14:00+09:00">2026.09.05 12:14</time></span></span>
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
         </a>
 
-        <a class="service" href="./ai-contact-4-stages/">
-          <span class="number">04</span>
+        <a class="service" href="./mcp-guide/" data-published="2026-09-05T12:12:00+09:00" data-updated="2026-09-05T12:12:00+09:00">
+          <span class="number">02</span>
           <div>
-            <span class="service-type">GUIDE / CUSTOMER CONTACT</span>
-            <h2>AI接点が深まる<br>4段階</h2>
+            <div class="service-topline"><span class="service-type">MEDIA / AI INFRASTRUCTURE</span><span class="badge-slot"></span></div>
+            <h2>MCP導入<br>ガイド</h2>
           </div>
           <div class="description-wrap">
-            <p class="description">情報接触からAIO、AIウェブチャット、顧客対応・ナーチャリングまで、顧客とのAI接点を4段階で整理したガイド。</p>
-            <span class="url">writeup-inc.github.io/saas/ai-contact-4-stages/</span>
-            <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-05T00:36:00+09:00">2026.09.05 00:36</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-05T00:41:00+09:00">2026.09.05 00:41</time></span></span>
+            <p class="description">中小企業が業務に合うMCPを、権限・承認・対応クライアントまで確認して小さく試すための導入判断メディア。</p>
+            <p class="change-note"><span>最新の変更</span><b>中小企業向けのMCP導入判断ガイドを新規公開</b></p>
+            <span class="url">writeup-inc.github.io/saas/mcp-guide/</span>
+            <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-05T12:12:00+09:00">2026.09.05 12:12</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-05T12:12:00+09:00">2026.09.05 12:12</time></span></span>
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
         </a>
 
-        <a class="service" href="./web-agency-kit/">
-          <span class="number">05</span>
+        <a class="service" href="./web-agency-kit/" data-published="2026-09-05T01:04:00+09:00" data-updated="2026-09-05T01:04:00+09:00">
+          <span class="number">03</span>
           <div>
-            <span class="service-type">SERVICE / WEB PRODUCTION</span>
+            <div class="service-topline"><span class="service-type">SERVICE / WEB PRODUCTION</span><span class="badge-slot"></span></div>
             <h2>ホームページ制作会社<br>スタートパック</h2>
           </div>
           <div class="description-wrap">
             <p class="description">Codexと12個の実務スキルで、Web制作未経験の会社が地元企業へ提案・制作・納品できる事業パッケージ。</p>
+            <p class="change-note"><span>最新の変更</span><b>未経験企業向けWeb制作事業パッケージを新規公開</b></p>
             <span class="url">writeup-inc.github.io/saas/web-agency-kit/</span>
             <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-05T01:04:00+09:00">2026.09.05 01:04</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-05T01:04:00+09:00">2026.09.05 01:04</time></span></span>
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
         </a>
 
-        <a class="service" href="./mcp-guide/">
-          <span class="number">06</span>
+        <a class="service" href="./ai-ad-agency-pack/" data-published="2026-09-05T00:48:00+09:00" data-updated="2026-09-05T00:48:00+09:00">
+          <span class="number">04</span>
           <div>
-            <span class="service-type">MEDIA / AI INFRASTRUCTURE</span>
-            <h2>MCP導入<br>ガイド</h2>
+            <div class="service-topline"><span class="service-type">SERVICE / ADVERTISING</span><span class="badge-slot"></span></div>
+            <h2>AI広告代理店<br>スタートパック</h2>
           </div>
           <div class="description-wrap">
-            <p class="description">中小企業が業務に合うMCPを、権限・承認・対応クライアントまで確認して小さく試すための導入判断メディア。</p>
-            <span class="url">writeup-inc.github.io/saas/mcp-guide/</span>
-            <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-05">2026.09.05</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-05">2026.09.05</time></span></span>
+            <p class="description">Claude Codeを実務基盤に、広告提案・設定・入稿準備・分析・改善までを自社サービスにする実務パッケージ。</p>
+            <p class="change-note"><span>最新の変更</span><b>Claude Code活用のAI広告代理店構想を新規公開</b></p>
+            <span class="url">writeup-inc.github.io/saas/ai-ad-agency-pack/</span>
+            <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-05T00:48:00+09:00">2026.09.05 00:48</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-05T00:48:00+09:00">2026.09.05 00:48</time></span></span>
+          </div>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a class="service" href="./ai-contact-4-stages/" data-published="2026-09-05T00:36:00+09:00" data-updated="2026-09-05T00:41:00+09:00">
+          <span class="number">05</span>
+          <div>
+            <div class="service-topline"><span class="service-type">GUIDE / CUSTOMER CONTACT</span><span class="badge-slot"></span></div>
+            <h2>AI接点が深まる<br>4段階</h2>
+          </div>
+          <div class="description-wrap">
+            <p class="description">情報接触からAIO、AIウェブチャット、顧客対応・ナーチャリングまで、顧客とのAI接点を4段階で整理したガイド。</p>
+            <p class="change-note"><span>最新の変更</span><b>顧客とのAI接点を4段階で整理したガイドを公開</b></p>
+            <span class="url">writeup-inc.github.io/saas/ai-contact-4-stages/</span>
+            <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-05T00:36:00+09:00">2026.09.05 00:36</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-05T00:41:00+09:00">2026.09.05 00:41</time></span></span>
+          </div>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a class="service" href="./shiire-ataru-lp/" data-published="2026-09-04T19:55:00+09:00" data-updated="2026-09-04T23:49:00+09:00">
+          <span class="number">06</span>
+          <div>
+            <div class="service-topline"><span class="service-type">SERVICE / REAL ESTATE</span><span class="badge-slot"></span></div>
+            <h2>仕入れ担当<br>アタル（仮称）</h2>
+          </div>
+          <div class="description-wrap">
+            <p class="description">全国の登録済み不動産会社へ物件の有無を確認し、回答と未回答を整理して仕入れ担当者へ報告するAIチームメイト。</p>
+            <p class="change-note"><span>最新の変更</span><b>全国の不動産会社へ確認する役割を明確化</b></p>
+            <span class="url">writeup-inc.github.io/saas/shiire-ataru-lp/</span>
+            <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-04T19:55:00+09:00">2026.09.04 19:55</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-04T23:49:00+09:00">2026.09.04 23:49</time></span></span>
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
         </a>
@@ -665,5 +773,37 @@
       <span>AI SERVICE DIRECTORY</span>
     </footer>
   </div>
+  <script>
+    (() => {
+      const activityWindowMs = 7 * 24 * 60 * 60 * 1000;
+      const list = document.querySelector('.list');
+      const services = [...list.querySelectorAll('.service')];
+      const now = Date.now();
+
+      services
+        .sort((a, b) => new Date(b.dataset.updated) - new Date(a.dataset.updated))
+        .forEach((service, index) => {
+          const publishedAt = new Date(service.dataset.published).getTime();
+          const updatedAt = new Date(service.dataset.updated).getTime();
+          const publishedAge = now - publishedAt;
+          const updatedAge = now - updatedAt;
+          const badgeSlot = service.querySelector('.badge-slot');
+
+          service.querySelector('.number').textContent = String(index + 1).padStart(2, '0');
+          service.classList.remove('is-new', 'is-updated');
+          badgeSlot.replaceChildren();
+
+          if (publishedAge >= 0 && publishedAge <= activityWindowMs) {
+            service.classList.add('is-new');
+            badgeSlot.innerHTML = '<span class="activity-badge new">新着</span>';
+          } else if (updatedAt > publishedAt && updatedAge >= 0 && updatedAge <= activityWindowMs) {
+            service.classList.add('is-updated');
+            badgeSlot.innerHTML = '<span class="activity-badge updated">更新</span>';
+          }
+
+          list.appendChild(service);
+        });
+    })();
+  </script>
 </body>
 </html>
