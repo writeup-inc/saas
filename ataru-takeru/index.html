@@ -5,37 +5,48 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>りんごと、地図と、一枚の写真 ｜ アタルとタケル</title>
 <meta name="description" content="長野県・白科町の小学三年生の秋から、東京の石油ストーブの前まで。アタルとタケル、二人の幼馴染の物語。">
-<meta name="theme-color" content="#f4f2ec">
+<meta name="theme-color" content="#ececee">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:site_name" content="WRITEUP / SaaS">
 <meta property="og:title" content="りんごと、地図と、一枚の写真 ｜ アタルとタケル">
 <meta property="og:description" content="持っている人と、欲しい人が、歩いて十分の距離で出会わないまま二十年。九歳の秋に、二人の役割が決まった。">
 <meta property="og:url" content="https://writeup-inc.github.io/saas/ataru-takeru/">
+<meta property="og:image" content="https://writeup-inc.github.io/saas/drama/kv.jpg">
 <link rel="canonical" href="https://writeup-inc.github.io/saas/ataru-takeru/">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <style>
 :root{
-  --paper:#f4f2ec; --surface:#fbfaf6; --ink:#14251f; --ink-soft:#40514b;
-  --muted:#7b8883; --line:rgba(20,37,31,.14); --accent:#a8503c; --green:#174b3c;
+  --paper:#ececee; --surface:#f7f7f8; --ink:#14161a; --ink-soft:#454b53;
+  --muted:#828992; --line:rgba(20,22,26,.14); --accent:#a8503c; --green:#174b3c;
   --serif:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP","Songti SC",serif;
   --sans:"Hiragino Sans","Yu Gothic",YuGothic,"Noto Sans JP",system-ui,sans-serif;
 }
-@media (prefers-color-scheme:dark){
-  :root{
-    --paper:#121614; --surface:#181d1b; --ink:#e8e6df; --ink-soft:#bdc4c0;
-    --muted:#8d9793; --line:rgba(232,230,223,.16); --accent:#d98b73; --green:#8fb9a8;
-  }
-}
 *{box-sizing:border-box}
-html{overflow-x:clip}
+html{scroll-behavior:smooth; overflow-x:clip}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+}
 body{
   margin:0; background:var(--paper); color:var(--ink);
   font-family:var(--serif); font-size:17px; line-height:2.0;
-  -webkit-font-smoothing:antialiased; font-feature-settings:"palt" 0;
+  -webkit-font-smoothing:antialiased; font-feature-settings:"palt" 0; overflow-x:clip;
 }
 .wrap{max-width:720px; margin:0 auto; padding:0 24px}
 p{margin:0 0 1.7em; text-align:justify; word-break:normal; line-break:strict; overflow-wrap:anywhere}
+a:focus-visible{outline:2px solid var(--ink); outline-offset:3px}
+
+/* ---------- series bar ---------- */
+.seriesbar{position:sticky; top:0; z-index:20; background:rgba(236,236,238,.92);
+  backdrop-filter:blur(10px); border-bottom:1px solid rgba(20,22,26,.07); font-family:var(--sans)}
+.seriesbar .inner{max-width:1080px; margin:0 auto; padding:0 26px; display:flex;
+  align-items:center; justify-content:space-between; gap:14px; min-height:58px}
+.seriesbar .brand{font-family:var(--serif); font-size:15px; letter-spacing:.24em;
+  color:var(--ink); text-decoration:none; display:inline-flex; align-items:center; min-height:44px; white-space:nowrap}
+.seriesbar nav{display:flex; gap:0 22px; flex-wrap:wrap; justify-content:flex-end}
+.seriesbar nav a{font-size:11px; font-weight:700; letter-spacing:.18em; color:var(--muted);
+  text-decoration:none; display:inline-flex; align-items:center; min-height:44px; white-space:nowrap}
+.seriesbar nav a:hover,.seriesbar nav a[aria-current="page"]{color:var(--ink)}
 
 /* ---------- hero ---------- */
 .hero{padding:76px 0 54px; border-bottom:1px solid var(--line)}
@@ -47,23 +58,28 @@ p{margin:0 0 1.7em; text-align:justify; word-break:normal; line-break:strict; ov
 /* ---------- 話数ナビ ---------- */
 .epnav{
   margin:64px 0 0; padding:26px 0 0; border-top:1px solid var(--line);
-  font-family:var(--sans); display:grid; gap:2px;
+  font-family:var(--sans); display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px;
 }
 .epnav a{
-  display:flex; align-items:center; gap:14px; min-height:52px; padding:6px 2px;
-  text-decoration:none; color:var(--ink-soft); font-size:14px; letter-spacing:.04em;
-  border-bottom:1px solid var(--line-soft, rgba(20,37,31,.07));
+  display:grid; grid-template-columns:auto 1fr; align-items:center; gap:12px; min-height:76px;
+  padding:14px 16px; text-decoration:none; color:var(--ink-soft); font-size:13.5px;
+  line-height:1.65; letter-spacing:.03em; background:var(--surface); border:1px solid var(--line);
+  border-radius:10px; transition:border-color .2s ease,transform .2s ease;
 }
-.epnav a:last-child{border-bottom:0}
-.epnav a:hover{color:var(--accent)}
+.epnav a:last-child{grid-column:1/-1}
+.epnav a:hover{color:var(--accent); border-color:currentColor; transform:translateY(-1px)}
 .epnav .k{
-  flex:none; width:5.4em; font-size:11px; font-weight:700; letter-spacing:.18em; color:var(--muted);
+  font-size:10.5px; font-weight:700; letter-spacing:.16em; color:var(--muted); white-space:nowrap;
 }
-.epnav .now{color:var(--ink); font-weight:600}
+.epnav .now{color:var(--ink); font-weight:600; box-shadow:inset 3px 0 var(--accent)}
 .epnav .now .k{color:var(--accent)}
+@media (prefers-reduced-motion:reduce){
+  .epnav a{transition:none}
+  .epnav a:hover{transform:none}
+}
 h1{
   font-size:clamp(30px,7.4vw,46px); line-height:1.5; margin:0 0 22px;
-  font-weight:600; letter-spacing:.02em;
+  font-weight:600; letter-spacing:.02em; text-wrap:balance;
 }
 .sub{font-family:var(--sans); font-size:13px; font-weight:700; letter-spacing:.2em; color:var(--accent); margin:0 0 34px}
 .lede{font-size:16px; color:var(--ink-soft); margin:0; line-height:1.95}
@@ -86,7 +102,7 @@ h1{
 .toc .n{font-family:var(--sans); font-size:11px; letter-spacing:.1em; color:var(--muted); flex:none; width:1.6em}
 
 /* ---------- chapters ---------- */
-.ch{padding:64px 0 0; scroll-margin-top:24px}
+.ch{padding:64px 0 0; scroll-margin-top:80px}
 .ch-head{margin:0 0 34px}
 .ch-num{
   font-family:var(--sans); font-size:11px; font-weight:700; letter-spacing:.3em;
@@ -228,15 +244,32 @@ footer a{color:var(--muted); display:inline-flex; align-items:center; min-height
 @media (max-width:600px){
   body{font-size:16px; line-height:1.95}
   .wrap{padding:0 20px}
+  .seriesbar .inner{flex-direction:column; align-items:flex-start; min-height:0; padding:2px 20px}
+  .seriesbar nav{justify-content:flex-start; gap:0 18px}
+  .seriesbar nav a{letter-spacing:.13em}
   .hero{padding:56px 0 42px}
-  .ch{padding:52px 0 0}
+  .ch{padding:52px 0 0; scroll-margin-top:126px}
+  article p{text-align:left}
   blockquote{font-size:17px; margin:2.1em 0}
   .coda{padding:26px 20px 22px; border-radius:12px}
   .toc ol{grid-template-columns:1fr}
+  .epnav{grid-template-columns:1fr}
+  .epnav a:last-child{grid-column:auto}
 }
 </style>
 </head>
 <body>
+
+<div class="seriesbar">
+  <div class="inner">
+    <a class="brand" href="../drama/">アタルとタケル</a>
+    <nav aria-label="番組ナビゲーション">
+      <a href="../drama/">番組サイト</a>
+      <a href="./" aria-current="page">第一話</a>
+      <a href="../karin/">第二話</a>
+    </nav>
+  </div>
+</div>
 
 <div class="wrap">
 
@@ -614,7 +647,7 @@ footer a{color:var(--muted); display:inline-flex; align-items:center; min-height
 
 
 <nav class="epnav" aria-label="話数ナビ">
-  <a class="now" href="./"><span class="k">第一話</span>りんごと、地図と、一枚の写真</a>
+  <a class="now" href="./" aria-current="page"><span class="k">第一話</span>りんごと、地図と、一枚の写真</a>
   <a href="../karin/"><span class="k">第二話</span>言葉と、渋谷と、送らなかった一通</a>
   <a href="../drama/"><span class="k">一覧</span>全十話を見る</a>
 </nav>
