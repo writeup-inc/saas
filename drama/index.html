@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>アタルとタケル ｜ 公式サイト</title>
+<meta name="description" content="連続小説「アタルとタケル」全十話。長野県・白科町と、東京。持っている人と、欲しい人を出会わせる話。">
+<meta name="theme-color" content="#ececee">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="WRITEUP / SaaS">
+<meta property="og:title" content="アタルとタケル ｜ 公式サイト">
+<meta property="og:description" content="全十話。毎週金曜 深夜零時。長野県・白科町と、東京。">
+<meta property="og:url" content="https://writeup-inc.github.io/saas/drama/">
+<meta property="og:image" content="https://writeup-inc.github.io/saas/drama/kv.jpg">
+<link rel="canonical" href="https://writeup-inc.github.io/saas/drama/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --ground:#ececee; --panel:#f7f7f8; --white:#fff; --deep:#0e1014;
+  --ink:#14161a; --ink-2:#454b53; --muted:#828992;
+  --line:rgba(20,22,26,.14); --line-2:rgba(20,22,26,.07);
+  --tab:#ff2f7e;
+  --serif:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP","Songti SC",serif;
+  --sans:"Hiragino Sans","Yu Gothic",YuGothic,"Noto Sans JP",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--sans); font-size:15px; line-height:1.95;
+  -webkit-font-smoothing:antialiased; overflow-x:clip;
+}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ink); outline-offset:3px}
+.wrap{max-width:1080px; margin:0 auto; padding:0 26px}
+
+/* ── header ── */
+.bar{position:sticky; top:0; z-index:20; background:rgba(236,236,238,.9); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line-2)}
+.bar .wrap{display:flex; align-items:center; justify-content:space-between; gap:14px; min-height:58px}
+.bar .mark{font-family:var(--serif); font-size:15px; letter-spacing:.24em; text-decoration:none;
+  display:inline-flex; align-items:center; min-height:44px; white-space:nowrap}
+.bar nav{display:flex; gap:0 22px; flex-wrap:wrap; justify-content:flex-end}
+.bar nav a{font-size:11px; font-weight:700; letter-spacing:.22em; color:var(--muted);
+  text-decoration:none; display:inline-flex; align-items:center; min-height:44px}
+.bar nav a:hover{color:var(--ink)}
+@media (max-width:680px){
+  .bar .wrap{flex-direction:column; align-items:flex-start; min-height:0; padding-top:2px; padding-bottom:2px}
+  .bar nav{justify-content:flex-start; gap:0 18px}
+}
+
+/* ── hero ── */
+.hero{position:relative; background:var(--ground)}
+.kv{display:block; width:100%; height:auto}
+.kv-grain{position:absolute; inset:0; pointer-events:none; opacity:.05;
+  background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:160px 160px}
+.kv-wrap{position:relative; line-height:0}
+.lock{text-align:center; padding:34px 26px 54px}
+.logo{font-family:var(--serif); font-weight:400; letter-spacing:.16em; text-indent:.16em;
+  font-size:clamp(29px,8.6vw,74px); line-height:1.34; margin:0; color:var(--ink); text-wrap:balance}
+.rule{width:min(300px,72%); height:1px; margin:22px auto 20px; background:var(--line)}
+.slot{font-size:clamp(11.5px,2.8vw,13px); font-weight:700; letter-spacing:.34em; color:var(--ink); margin:0 0 8px}
+.count{font-size:11px; font-weight:700; letter-spacing:.26em; color:var(--muted); margin:0}
+@media (min-width:760px){
+  .lock{position:absolute; left:0; right:0; bottom:6%; padding:0}
+  .logo{color:#fff; text-shadow:0 2px 30px rgba(14,16,20,.62), 0 1px 4px rgba(14,16,20,.40)}
+  .slot,.count{text-shadow:0 1px 12px rgba(14,16,20,.6)}
+  .rule{background:rgba(255,255,255,.42)}
+  .slot{color:#fff}
+  .count{color:rgba(255,255,255,.72)}
+}
+
+/* ── sections ── */
+section.blk{padding:74px 0 0}
+.eyebrow{display:flex; align-items:center; gap:16px; font-size:11px; font-weight:700;
+  letter-spacing:.32em; color:var(--muted); margin:0 0 30px}
+.eyebrow::after{content:""; flex:1; height:1px; background:var(--line)}
+h2.sec{font-family:var(--serif); font-size:clamp(21px,4.4vw,30px); font-weight:400;
+  letter-spacing:.09em; line-height:1.65; margin:0 0 26px; text-wrap:balance}
+p.lead{margin:0 0 1.5em; color:var(--ink-2); max-width:62ch; text-wrap:pretty}
+p.lead:last-child{margin:0}
+p.lead strong{color:var(--ink); font-weight:600}
+
+/* ── news ── */
+.news{display:flex; flex-wrap:wrap; gap:4px 20px; align-items:baseline;
+  padding:18px 22px; background:var(--white); border:1px solid var(--line-2)}
+.news .d{font-size:11.5px; letter-spacing:.14em; color:var(--muted); font-variant-numeric:tabular-nums; white-space:nowrap}
+.news p{margin:0; font-size:13.5px; color:var(--ink-2); text-wrap:pretty}
+
+/* ── story ── */
+.eps{list-style:none; margin:0; padding:0}
+.eps li{border-top:1px solid var(--line-2)}
+.eps li:first-child{border-top:1px solid var(--line)}
+.eps li:last-child{border-bottom:1px solid var(--line)}
+.ep{display:grid; grid-template-columns:118px 1fr; gap:2px 26px; align-items:baseline;
+  padding:26px 6px; text-decoration:none}
+a.ep:hover h3{text-decoration:underline; text-underline-offset:5px}
+.ep .no{font-family:var(--serif); font-size:14px; letter-spacing:.24em; color:var(--ink);
+  align-self:start; padding-top:5px}
+.ep.soon .no{color:var(--muted)}
+.ep h3{font-family:var(--serif); font-weight:400; font-size:clamp(17px,3.4vw,22px);
+  letter-spacing:.05em; line-height:1.6; margin:0; text-wrap:balance}
+.ep.soon h3{font-family:var(--sans); font-size:12px; font-weight:700; letter-spacing:.28em; color:var(--muted)}
+.ep p{grid-column:2; margin:9px 0 0; font-size:13.5px; color:var(--ink-2); max-width:56ch; text-wrap:pretty}
+.ep .go{grid-column:2; margin:13px 0 0; font-size:11px; font-weight:700; letter-spacing:.2em;
+  color:var(--ink); display:inline-flex; align-items:center; gap:8px}
+.ep .go::before{content:""; width:16px; height:2px; background:var(--tab)}
+@media (max-width:600px){
+  .ep{grid-template-columns:1fr; gap:0; padding:22px 2px}
+  .ep h3{font-size:16px; letter-spacing:.02em}
+  .ep p,.ep .go{grid-column:1}
+  .ep .no{padding:0 0 8px}
+}
+
+/* ── cast ── */
+.cast{list-style:none; margin:0; padding:0; display:grid; gap:1px;
+  grid-template-columns:repeat(auto-fit,minmax(232px,1fr)); background:var(--line-2)}
+.cast li{padding:30px 24px 26px; background:var(--white); display:flex; flex-direction:column}
+.cast .fig{height:58px; width:56px; color:var(--ink); opacity:.7; margin:0 0 20px}
+.cast h3{font-family:var(--serif); font-size:23px; font-weight:400; letter-spacing:.18em; margin:0 0 8px}
+.cast .role{font-size:11px; font-weight:700; letter-spacing:.16em; color:var(--muted); margin:0 0 14px}
+.cast p{margin:0 0 12px; font-size:13px; color:var(--ink-2); line-height:1.9; text-wrap:pretty}
+.cast .actor{margin:auto 0 0; padding:14px 0 0; border-top:1px solid var(--line-2);
+  font-size:11.5px; letter-spacing:.18em; color:var(--muted)}
+
+/* ── staff ── */
+.staff{padding:28px 26px; background:var(--white); border:1px solid var(--line-2)}
+.staff dl{display:grid; grid-template-columns:auto 1fr; gap:14px 30px; margin:0; font-size:13.5px}
+.staff dt{letter-spacing:.26em; color:var(--muted); white-space:nowrap}
+.staff dd{margin:0; letter-spacing:.04em; color:var(--ink); text-wrap:balance}
+@media (max-width:520px){
+  .staff dl{grid-template-columns:1fr; gap:2px 0; font-size:12.5px}
+  .staff dd{margin:0 0 14px}
+  .staff dd:last-child{margin:0}
+}
+
+/* ── notice ── */
+.notice{margin:70px 0 0; padding:24px 0 0; border-top:1px solid var(--line);
+  font-size:11.5px; line-height:2.05; color:var(--muted); text-wrap:pretty}
+footer{margin:24px 0 0; padding:22px 0 78px; border-top:1px solid var(--line-2);
+  display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+  font-size:11px; letter-spacing:.16em; color:var(--muted)}
+footer a{display:inline-flex; align-items:center; min-height:44px}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="wrap">
+    <a class="mark" href="#top">アタルとタケル</a>
+    <nav>
+      <a href="#intro">INTRODUCTION</a>
+      <a href="#story">STORY</a>
+      <a href="#cast">CAST</a>
+      <a href="#staff">STAFF</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero" id="top">
+  <div class="kv-wrap">
+    <img class="kv" src="kv.jpg" width="2400" height="1240" fetchpriority="high"
+         alt="明るいグレーの空間に、書類や本の断面が水平に堆積している。そのまん中に、誰とも分からない人物の黒いシルエットが立っている。">
+    <span class="kv-grain" aria-hidden="true"></span>
+  </div>
+  <div class="lock">
+    <h1 class="logo">アタルとタケル</h1>
+    <div class="rule"></div>
+    <p class="slot">毎週金曜　深夜零時</p>
+    <p class="count">全十話　／　第二話まで公開</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="blk" id="intro">
+    <p class="eyebrow">INTRODUCTION</p>
+    <h2 class="sec">同じ町の、同じ小学校を<br>出た人たちの話です。</h2>
+    <p class="lead">長野県・白科町。松本から電車で三十分ほど、山に向かって上っていく途中にある小さな町。駅前に商店街が一本、川沿いにりんご畑、その先は森と山。この町で一番の褒め言葉は「ずくがある」。根気がある、面倒がらずに動く、という意味です。</p>
+    <p class="lead">そこで育った子どもたちが、いまはそれぞれ東京で働いています。人と人を出会わせる者、それを全部書き残す者、何かあってからでは遅いと先回りする者。会社も業界も違います。互いに、相手の仕事を正確には知りません。</p>
+    <p class="lead">一話ごとに主役が変わります。話の順番は、出来事の順番とは一致しません。<strong>作中で、誰と誰がどうつながっているのかを説明することはありません。</strong>気づいた人だけが気づく、という置き方にしています。</p>
+  </section>
+
+  <section class="blk">
+    <p class="eyebrow">NEWS</p>
+    <div class="news">
+      <span class="d">2026.09.06</span>
+      <p>第二話「言葉と、渋谷と、送らなかった一通」を公開しました。第一話は公開しています。</p>
+    </div>
+  </section>
+
+  <section class="blk" id="story">
+    <p class="eyebrow">STORY</p>
+    <h2 class="sec">全十話</h2>
+    <ol class="eps">
+      <li><a class="ep" href="../ataru-takeru/">
+        <span class="no">第一話</span>
+        <h3>りんごと、地図と、一枚の写真</h3>
+        <p>小学三年生の秋、社会科の町探検で同じ班になった二人が、商店街の奥の写真館で一枚の古い写真を見つける。歩いて十分の距離に二十年あったものが、そこで初めて届く。</p>
+        <span class="go">第一話を読む</span>
+      </a></li>
+      <li><a class="ep" href="../karin/">
+        <span class="no">第二話</span>
+        <h3>言葉と、渋谷と、送らなかった一通</h3>
+        <p>渋谷。企画のかりんが配ったヒアリングシートは、四週間、返ってこなかった。ある火曜の朝、昨日の商談で客が実際に言った言葉が、全部並んで届いていた。誰が置いているのかは、最後まで分からない。</p>
+        <span class="go">第二話を読む</span>
+      </a></li>
+      <li><div class="ep soon"><span class="no">第三話</span><h3>COMING SOON</h3></div></li>
+      <li><div class="ep soon"><span class="no">第四話</span><h3>COMING SOON</h3></div></li>
+      <li><div class="ep soon"><span class="no">第五話</span><h3>COMING SOON</h3></div></li>
+      <li><div class="ep soon"><span class="no">第六話</span><h3>COMING SOON</h3></div></li>
+      <li><div class="ep soon"><span class="no">第七話</span><h3>COMING SOON</h3></div></li>
+      <li><div class="ep soon"><span class="no">第八話</span><h3>COMING SOON</h3></div></li>
+      <li><div class="ep soon"><span class="no">第九話</span><h3>COMING SOON</h3></div></li>
+      <li><div class="ep soon"><span class="no">第十話</span><h3>COMING SOON</h3></div></li>
+    </ol>
+  </section>
+
+  <section class="blk" id="cast">
+    <p class="eyebrow">CAST</p>
+    <ul class="cast">
+      <li>
+        <svg class="fig" width="56" height="58" viewBox="0 0 62 64" fill="none" aria-hidden="true">
+          <g stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="31" cy="38" r="16"/><path d="M31 22 v-8"/></g>
+          <path d="M31 17 q12 -8 17 1 q-10 7 -17 -1" stroke="#ff2f7e" stroke-width="1.4" fill="none"/>
+        </svg>
+        <h3>アタル</h3>
+        <p class="role">りんご農家の子</p>
+        <p>売り物にならないりんごを、リヤカーで配って歩く係だった。誰がどれを喜ぶかを、頼まれなくても覚えている。知らない引き戸を平気で開ける。断られても、次の家に行く。</p>
+        <p class="actor">CAST ── 発表前</p>
+      </li>
+      <li>
+        <svg class="fig" width="56" height="58" viewBox="0 0 62 64" fill="none" aria-hidden="true">
+          <g stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 12 h30 v40 h-30 z"/><path d="M16 24 h18 M16 32 h18 M16 40 h11" opacity=".5"/>
+            <path d="M40 54 L54 34 L60 39 L46 59 L37 62 z"/><path d="M54 39 L60 44" opacity=".5"/></g>
+          <path d="M37 62 L46 59 L40 54 z" fill="#ff2f7e"/>
+        </svg>
+        <h3>タケル</h3>
+        <p class="role">駅前の電器屋の子</p>
+        <p>アタルが聞いてきた話を、誰が言ったか、いつ聞いたかまで書き残す。人が上手くいく瞬間の隣にいるのが好きで、自分は前に出ない。出所の言えない数字は、口に出さない。</p>
+        <p class="actor">CAST ── 発表前</p>
+      </li>
+      <li>
+        <svg class="fig" width="56" height="58" viewBox="0 0 62 64" fill="none" aria-hidden="true">
+          <g stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 12 h46 a5 5 0 0 1 5 5 v24 a5 5 0 0 1 -5 5 h-32 l-14 11 v-11 a5 5 0 0 1 -5 -5 v-24 a5 5 0 0 1 5 -5 z"/>
+            <path d="M17 24 h28 M17 33 h20" opacity=".5"/></g>
+          <circle cx="50" cy="33" r="3" fill="#ff2f7e"/>
+        </svg>
+        <h3>かりん</h3>
+        <p class="role">サービス企画</p>
+        <p>都内の生まれ。数字は勝手に集まるのに、客が実際に言った言葉だけが集まらないことを、ずっと気にしていた。四週間、営業のことを少し悪く思っていた。それを誰にも言わないまま、自分で取り下げた。</p>
+        <p class="actor">CAST ── 発表前</p>
+      </li>
+      <li>
+        <svg class="fig" width="56" height="58" viewBox="0 0 62 64" fill="none" aria-hidden="true">
+          <g stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 34 L31 8 L50 34 z"/><path d="M14 34 h34" opacity=".5"/>
+            <path d="M20 34 q0 18 11 18 q11 0 11 -18" stroke-dasharray="3 4" opacity=".5"/></g>
+          <circle cx="31" cy="42" r="2.4" fill="#ff2f7e"/>
+        </svg>
+        <h3>？</h3>
+        <p class="role">正体不明</p>
+        <p>姿を見た者はいない。この町には昔から、難しいことが朝になると片づいていることがある、と言われている。礼を言ってはいけない、とも。</p>
+        <p class="actor">CAST ── 発表前</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="blk" id="staff">
+    <p class="eyebrow">STAFF ／ ON AIR</p>
+    <div class="staff">
+      <dl>
+        <dt>原　作</dt><dd>「アタルとタケル」全十話</dd>
+        <dt>舞　台</dt><dd>長野県・白科町（架空）／東京</dd>
+        <dt>放　送</dt><dd>毎週金曜　深夜零時</dd>
+        <dt>主題歌</dt><dd>未発表</dd>
+        <dt>制　作</dt><dd>WRITEUP ／ AIコンサル局</dd>
+      </dl>
+    </div>
+
+    <p class="notice">
+      この番組ページはフィクションです。実在の番組・放送局・制作会社・配信事業者・俳優・キャスティングとは一切関係がなく、実際に映像化・放送の予定はありません。白科町、桑原写真館、登場する人物・会社・商談は、すべて架空です。作中の数字やサービスの描写は物語のためのもので、実際の製品仕様や実績ではありません。キービジュアルは本ページのために制作したもので、写真素材や既存の映像作品の画像は使用していません。ライトアップのAIサービスに登場するキャラクターの、共通の背景設定として社内向けに公開しています。
+    </p>
+
+    <footer>
+      <span>© 白科町</span>
+      <span><a href="../">サービス一覧へ戻る</a></span>
+    </footer>
+  </section>
+
+</main>
+
+</body>
+</html>

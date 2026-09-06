@@ -1,0 +1,80 @@
+<!doctype html><meta charset="utf-8"><title>KV3</title>
+<style>
+html,body{margin:0;width:2400px;height:1240px;overflow:hidden;background:#ececed}
+#stage{position:relative;width:2400px;height:1240px;overflow:hidden;
+  background:radial-gradient(120% 100% at 50% 34%,#f4f4f6 0%,#e7e7ea 52%,#d6d7db 100%)}
+.bar{position:absolute;border-radius:1px}
+.sheet{position:absolute;background:#fdfdfc;box-shadow:0 10px 26px rgba(20,22,26,.13)}
+#sil{position:absolute;left:50%;bottom:0;transform:translateX(-50%)}
+#floor{position:absolute;left:0;right:0;bottom:0;height:420px;
+  background:linear-gradient(180deg,rgba(214,215,219,0) 0%,rgba(200,201,207,.5) 58%,rgba(188,190,196,.78) 100%)}
+#logoshade{position:absolute;left:0;right:0;bottom:180px;height:340px;
+  background:radial-gradient(72% 100% at 50% 50%,rgba(24,26,30,.34) 0%,rgba(24,26,30,0) 74%)}
+#grain{position:absolute;inset:-60px;opacity:.055;
+ background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px 160px}
+</style>
+<div id="stage">
+  <div id="strata"></div>
+  <div id="floor"></div>
+  <svg id="sil" width="760" height="1060" viewBox="0 0 700 1060" aria-hidden="true">
+    <path fill="#0e1014" d="M350 34
+      C 249 34 199 126 197 248 C 196 338 201 402 216 456
+      C 148 492 94 546 66 622 C 38 698 24 812 16 934
+      C 10 1022 8 1046 8 1060 L 692 1060
+      C 692 1046 690 1022 684 934 C 676 812 662 698 634 622
+      C 606 546 552 492 484 456 C 499 402 504 338 503 248
+      C 501 126 451 34 350 34 Z"/>
+    <path fill="#0e1014" d="M214 236 C 200 156 236 96 300 72 C 262 108 250 166 258 232 Z"/>
+    <path fill="#0e1014" d="M486 236 C 500 160 470 104 414 78 C 448 114 462 168 456 232 Z"/>
+  </svg>
+  <div id="logoshade"></div>
+  <div id="grain"></div>
+</div>
+<script>
+// 決め打ちの擬似乱数（毎回同じ絵になる）
+let s = 20260906;
+const rnd = () => (s = (s * 1103515245 + 12345) % 2147483648) / 2147483648;
+const pick = a => a[Math.floor(rnd() * a.length)];
+
+const PAPER = ['#fbfbf9','#f4f2ec','#eae7de','#dfdcd2','#cfccc2'];
+const WOOD  = ['#d9b184','#c99a63','#b8894f','#e3c49f'];
+const DARK  = ['#1b1e23','#2a2e35','#3b4048','#565c66','#7a8089'];
+const NEON  = ['#ff2f7e','#c8ff2f','#2fa8ff','#ffd02f'];
+
+const root = document.getElementById('strata');
+const CX = 1200;
+function bar(){
+  const y = 90 + rnd() * 1010;
+  // 中央ほど密に、端に向かって疎に
+  const spread = Math.pow(rnd(), 0.72) * 1240;
+  const side = rnd() < 0.5 ? -1 : 1;
+  const w = 60 + Math.pow(rnd(), 1.6) * 420;
+  const x = CX + side * spread - (side < 0 ? w : 0);
+  if (x < -200 || x > 2400) return;
+  const h = 5 + Math.pow(rnd(), 2) * 22;
+  const r = rnd();
+  let c, sh;
+  if (r < 0.5)      { c = pick(PAPER); sh = '0 4px 10px rgba(20,22,26,.16)'; }
+  else if (r < 0.72){ c = pick(DARK);  sh = '0 5px 12px rgba(20,22,26,.26)'; }
+  else if (r < 0.9) { c = pick(WOOD);  sh = '0 4px 10px rgba(20,22,26,.18)'; }
+  else              { c = pick(PAPER); sh = '0 4px 10px rgba(20,22,26,.14)'; }
+  const d = document.createElement('div');
+  d.className = 'bar';
+  d.style.cssText = `left:${x}px;top:${y}px;width:${w}px;height:${h}px;background:${c};box-shadow:${sh};`;
+  // 遠いものはわずかに白へ沈める
+  const dist = Math.abs((x + w/2) - CX) / 1200;
+  d.style.opacity = (1 - dist * 0.42).toFixed(3);
+  if (rnd() < 0.05) { d.style.background = pick(NEON); d.style.height = Math.max(6, h * 0.6) + 'px'; d.style.width = (26 + rnd()*40) + 'px'; }
+  root.appendChild(d);
+}
+for (let i = 0; i < 620; i++) bar();
+
+// 上部に舞う紙
+[[705,20,150,196,-16],[1470,58,132,172,12],[1108,-8,120,158,6]].forEach(([x,y,w,h,rot])=>{
+  const d = document.createElement('div');
+  d.className = 'sheet';
+  d.style.cssText = `left:${x}px;top:${y}px;width:${w}px;height:${h}px;transform:rotate(${rot}deg)`;
+  root.appendChild(d);
+});
+window.__ready = true;
+</script>

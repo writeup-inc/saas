@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>言葉と、渋谷と、送らなかった一通 ｜ かりん</title>
+<meta name="description" content="数字は放っておいても集まる。集まらないのは、お客さんが何て言ったか、のほうだった。渋谷のオフィスと、朝七時に届くもの。かりんの物語。">
+<meta name="theme-color" content="#f4f2ec">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="WRITEUP / SaaS">
+<meta property="og:title" content="言葉と、渋谷と、送らなかった一通 ｜ かりん">
+<meta property="og:description" content="四週間、シートは返ってこなかった。ある朝、昨日の商談で客が実際に言った言葉が、全部並んで届いていた。誰がやっているのかは、いまも分かっていない。">
+<meta property="og:url" content="https://writeup-inc.github.io/saas/karin/">
+<link rel="canonical" href="https://writeup-inc.github.io/saas/karin/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --paper:#f4f2ec; --surface:#fbfaf6; --ink:#14251f; --ink-soft:#40514b;
+  --muted:#7b8883; --line:rgba(20,37,31,.14); --accent:#35566f;
+  --serif:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP","Songti SC",serif;
+  --sans:"Hiragino Sans","Yu Gothic",YuGothic,"Noto Sans JP",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#121614; --surface:#181d1b; --ink:#e8e6df; --ink-soft:#bdc4c0;
+    --muted:#8d9793; --line:rgba(232,230,223,.16); --accent:#9cbcd6;
+  }
+}
+*{box-sizing:border-box}
+html{overflow-x:clip}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--serif); font-size:17px; line-height:2.0;
+  -webkit-font-smoothing:antialiased; font-feature-settings:"palt" 0;
+}
+.wrap{max-width:720px; margin:0 auto; padding:0 24px}
+p{margin:0 0 1.7em; text-align:justify; word-break:normal; line-break:strict; overflow-wrap:anywhere}
+
+/* ---------- hero ---------- */
+.hero{padding:76px 0 54px; border-bottom:1px solid var(--line)}
+.eyebrow{
+  font-family:var(--sans); font-size:11.5px; font-weight:700; letter-spacing:.24em;
+  color:var(--muted); margin:0 0 30px;
+}
+
+/* ---------- 話数ナビ ---------- */
+.epnav{margin:64px 0 0; padding:26px 0 0; border-top:1px solid var(--line); font-family:var(--sans); display:grid; gap:2px}
+.epnav a{
+  display:flex; align-items:center; gap:14px; min-height:52px; padding:6px 2px;
+  text-decoration:none; color:var(--ink-soft); font-size:14px; letter-spacing:.04em;
+  border-bottom:1px solid rgba(20,37,31,.07);
+}
+.epnav a:last-child{border-bottom:0}
+.epnav a:hover{color:var(--accent)}
+.epnav .k{flex:none; width:5.4em; font-size:11px; font-weight:700; letter-spacing:.18em; color:var(--muted)}
+.epnav .now{color:var(--ink); font-weight:600}
+.epnav .now .k{color:var(--accent)}
+h1{
+  font-size:clamp(28px,6.6vw,42px); line-height:1.5; margin:0 0 22px;
+  font-weight:600; letter-spacing:.02em;
+}
+.sub{font-family:var(--sans); font-size:13px; font-weight:700; letter-spacing:.2em; color:var(--accent); margin:0 0 34px}
+.lede{font-size:16px; color:var(--ink-soft); margin:0; line-height:1.95}
+.ridge{display:block; width:100%; height:auto; margin:38px 0 0; color:var(--line)}
+.meta{
+  font-family:var(--sans); font-size:12px; color:var(--muted); letter-spacing:.06em;
+  margin:30px 0 0; display:flex; flex-wrap:wrap; gap:8px 18px;
+}
+
+/* ---------- toc ---------- */
+.toc{padding:34px 0 6px; border-bottom:1px solid var(--line)}
+.toc h2{font-family:var(--sans); font-size:11px; letter-spacing:.24em; color:var(--muted); margin:0 0 18px; font-weight:700}
+.toc ol{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:2px 26px}
+.toc li{margin:0}
+.toc a{
+  display:flex; gap:12px; align-items:baseline; padding:7px 0; text-decoration:none;
+  color:var(--ink-soft); font-size:15px; min-height:44px; border-bottom:1px solid transparent;
+}
+.toc a:hover{color:var(--accent)}
+.toc .n{font-family:var(--sans); font-size:11px; letter-spacing:.1em; color:var(--muted); flex:none; width:1.6em}
+
+/* ---------- chapters ---------- */
+.ch{padding:64px 0 0; scroll-margin-top:24px}
+.ch-head{margin:0 0 34px}
+.ch-num{
+  font-family:var(--sans); font-size:11px; font-weight:700; letter-spacing:.3em;
+  color:var(--accent); display:block; margin:0 0 12px;
+}
+h2.ch-title{font-size:23px; font-weight:600; margin:0; letter-spacing:.04em; line-height:1.6}
+.art{display:block; margin:0 auto 40px; color:var(--ink); opacity:.82}
+.line{max-width:100%; height:auto}
+
+blockquote{
+  margin:2.4em 0; padding:0 0 0 20px; border-left:2px solid var(--accent);
+  font-size:19px; line-height:1.9; color:var(--ink);
+}
+blockquote p{margin:0; text-wrap:balance}
+blockquote p + p{margin-top:.9em}
+.said{margin:0 0 1.7em; color:var(--ink)}
+.said span{display:block; text-indent:-1em; padding-left:1em; text-wrap:pretty}
+.think{
+  margin:2.2em 0; padding:0 0 0 20px; border-left:2px solid var(--line);
+  color:var(--ink-soft); font-size:17px;
+}
+.think p{margin:0; text-wrap:balance}
+.sheet{
+  font-family:var(--sans); font-size:14.5px; line-height:1.95; margin:2.2em 0;
+  padding:20px 22px; background:var(--surface); border:1px solid var(--line); border-radius:10px;
+  text-wrap:pretty;
+}
+.sheet .tag{
+  display:block; font-size:11.5px; letter-spacing:.14em; color:var(--muted); margin:0 0 6px;
+}
+.sheet p{margin:0; text-align:left; color:var(--ink)}
+.beat{
+  font-family:var(--sans); font-size:12px; letter-spacing:.2em; color:var(--muted);
+  text-align:center; margin:2.6em 0;
+}
+hr.sep{border:0; border-top:1px solid var(--line); margin:58px 0 0}
+
+/* ---------- cast ---------- */
+.cast{margin:76px 0 0; padding:44px 0 0; border-top:1px solid var(--line)}
+.cast > h2{
+  font-family:var(--sans); font-size:11px; font-weight:700; letter-spacing:.26em;
+  color:var(--muted); margin:0 0 34px;
+}
+.cast-grid{display:block}
+.person{display:flex; gap:28px; padding:28px 0; border-top:1px solid var(--line)}
+.person:first-child{padding-top:0; border-top:0}
+.person .fig{flex:none; height:64px; width:62px; color:var(--ink); opacity:.8; margin:2px 0 0}
+.person .body{flex:1; min-width:0}
+.person h3{font-size:20px; font-weight:600; letter-spacing:.08em; margin:0 0 4px; line-height:1.4}
+.person .role{
+  font-family:var(--sans); font-size:11px; font-weight:700; letter-spacing:.14em;
+  color:var(--accent); margin:0 0 14px;
+}
+.person p{font-size:14.5px; line-height:1.9; margin:0 0 .9em; color:var(--ink-soft); text-align:left}
+.person p:last-child{margin:0}
+@media (max-width:700px){
+  .cast{margin:60px 0 0; padding:36px 0 0}
+  .person{gap:18px; padding:24px 0}
+  .person .fig{height:50px; width:48px}
+  .person p{font-size:14px}
+}
+
+/* ---------- coda ---------- */
+.coda{
+  margin:70px 0 0; padding:34px 30px 30px; background:var(--surface);
+  border:1px solid var(--line); border-radius:14px; font-family:var(--sans);
+  font-size:14px; line-height:1.95; color:var(--ink-soft);
+}
+.coda h2{font-size:13px; letter-spacing:.18em; color:var(--ink); margin:0 0 18px; font-weight:700}
+.coda ul{margin:0 0 1.4em; padding-left:1.15em}
+.coda li{margin:0 0 .5em}
+.coda p{margin:0 0 1.2em; text-align:left}
+.coda p:last-child{margin:0}
+.coda strong{color:var(--ink); font-weight:600}
+.coda a{color:var(--accent)}
+.coda .prev{margin:0; display:flex; flex-direction:column}
+.coda .prev a{
+  display:inline-flex; align-items:center; min-height:44px; padding:0 2px;
+  font-weight:700; letter-spacing:.04em; text-decoration:none; align-self:flex-start;
+  border-bottom:1px solid var(--accent);
+}
+.coda .prev a + a{margin-top:10px}
+
+footer{
+  margin:56px 0 0; padding:26px 0 70px; border-top:1px solid var(--line);
+  font-family:var(--sans); font-size:12px; color:var(--muted); letter-spacing:.06em;
+  display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
+}
+footer a{color:var(--muted); display:inline-flex; align-items:center; min-height:44px; padding:0 2px}
+
+@media (max-width:600px){
+  body{font-size:16px; line-height:1.95}
+  .wrap{padding:0 20px}
+  .hero{padding:56px 0 42px}
+  .ch{padding:52px 0 0}
+  blockquote{font-size:17px; margin:2.1em 0}
+  .think{font-size:16px}
+  .sheet{padding:16px 16px; font-size:14px}
+  .coda{padding:26px 20px 22px; border-radius:12px}
+  .toc ol{grid-template-columns:1fr}
+}
+@media (max-width:380px){
+  .wrap{padding:0 16px}
+  .said span{font-size:15px; text-wrap:balance}
+  .sheet{padding:14px 14px; font-size:13.5px}
+  .sheet p{text-wrap:balance}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header class="hero">
+  <p class="eyebrow">アタルとタケル　第二話　／　全十話</p>
+  <h1>言葉と、渋谷と、<br>送らなかった一通</h1>
+  <p class="sub">かりん</p>
+  <p class="lede">
+    数字は、放っておいても集まる。<br>
+    集まらないのは、<br>
+    お客さんが何て言ったか、<br>
+    のほうだった。<br>
+    渋谷のオフィスと、<br>
+    朝七時に届くものの話です。
+  </p>
+  <svg class="ridge" viewBox="0 0 720 132" fill="none" aria-hidden="true">
+    <g stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M0 122 H720" opacity=".5"/>
+      <path d="M24 100 h96 a6 6 0 0 0 6 -6 v-38 a6 6 0 0 0 -6 -6 h-96 a6 6 0 0 0 -6 6 v38 a6 6 0 0 0 6 6 z"/>
+      <path d="M42 100 v12 l16 -12" />
+      <path d="M32 66 h72 M32 78 h56" opacity=".5"/>
+      <path d="M170 92 h68 a6 6 0 0 0 6 -6 v-28 a6 6 0 0 0 -6 -6 h-68 a6 6 0 0 0 -6 6 v28 a6 6 0 0 0 6 6 z"/>
+      <path d="M186 92 v10 l14 -10"/>
+      <path d="M178 66 h50" opacity=".5"/>
+      <path d="M288 104 h108 a6 6 0 0 0 6 -6 v-46 a6 6 0 0 0 -6 -6 h-108 a6 6 0 0 0 -6 6 v46 a6 6 0 0 0 6 6 z"/>
+      <path d="M306 104 v12 l16 -12"/>
+      <path d="M298 62 h84 M298 74 h84 M298 86 h60" opacity=".5"/>
+      <path d="M446 96 h58 a6 6 0 0 0 6 -6 v-30 a6 6 0 0 0 -6 -6 h-58 a6 6 0 0 0 -6 6 v30 a6 6 0 0 0 6 6 z"/>
+      <path d="M460 96 v10 l14 -10"/>
+      <path d="M454 70 h42" opacity=".5"/>
+      <path d="M556 100 h92 a6 6 0 0 0 6 -6 v-36 a6 6 0 0 0 -6 -6 h-92 a6 6 0 0 0 -6 6 v36 a6 6 0 0 0 6 6 z"/>
+      <path d="M572 100 v12 l16 -12"/>
+      <path d="M564 68 h70 M564 80 h48" opacity=".5"/>
+    </g>
+    <g stroke="#35566f" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" opacity=".95">
+      <path d="M288 104 h108 a6 6 0 0 0 6 -6 v-46 a6 6 0 0 0 -6 -6 h-108 a6 6 0 0 0 -6 6 v46 a6 6 0 0 0 6 6 z"/>
+      <path d="M306 104 v12 l16 -12"/>
+    </g>
+  </svg>
+  <p class="meta"><span>全五章</span><span>読了 約5分</span><span>社内向け・キャラクター設定資料</span></p>
+</header>
+
+<nav class="toc">
+  <h2>目次</h2>
+  <ol>
+    <li><a href="#c1"><span class="n">一</span>回収率</a></li>
+    <li><a href="#c2"><span class="n">二</span>一人だけ</a></li>
+    <li><a href="#c3"><span class="n">三</span>火曜日の朝</a></li>
+    <li><a href="#c4"><span class="n">四</span>待ち伏せ</a></li>
+    <li><a href="#c5"><span class="n">五</span>送らなかった一通</a></li>
+  </ol>
+</nav>
+
+<article>
+
+<section class="ch" id="c1">
+  <div class="ch-head"><span class="ch-num">第一章</span><h2 class="ch-title">回収率</h2></div>
+  <svg class="art line" width="200" height="140" viewBox="0 0 200 140" fill="none" aria-hidden="true">
+    <g stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M56 14 h88 v112 h-88 z"/>
+      <path d="M68 34 h64" opacity=".65"/>
+      <path d="M68 52 h64 M68 62 h64" opacity=".28"/>
+      <path d="M68 80 h64 M68 90 h64" opacity=".28"/>
+      <path d="M68 108 h64" opacity=".28"/>
+      <path d="M68 44 h20" opacity=".65"/>
+      <path d="M68 72 h20" opacity=".65"/>
+      <path d="M68 100 h20" opacity=".65"/>
+    </g>
+    <g stroke="currentColor" stroke-width="1.15" stroke-linecap="round" opacity=".35">
+      <path d="M28 30 h14 M28 40 h10 M158 96 h14 M158 106 h9"/>
+    </g>
+  </svg>
+
+  <p>渋谷の会社は、情報が多い。</p>
+  <p>チャンネルが二百近くある。誰かが毎日、何かを書いている。既読にならないまま流れていくものが、毎日ある。</p>
+  <p>これだけ流れているのだから、必要なことは自然に集まってくるはずだ、と、みんなが思っていた。</p>
+  <p>かりんはサービス企画にいる。次に何を作るかを決める側の、下から二番目くらいの席だった。</p>
+  <p>決めるためには、現場で何が起きているかを知らないといけない。</p>
+  <p>数字は、放っておいても集まる。訪問件数、商談化率、受注までの日数。日報に入れれば勝手に出てくる。</p>
+  <p>集まらないのは、そっちではなかった。</p>
+
+  <blockquote>
+    <p>今日、お客さんは、何て言いましたか。</p>
+  </blockquote>
+
+  <p>これが、集まらない。</p>
+  <p>かりんはヒアリングシートを作った。A4一枚。設問は三つだけにした。多いと書かれないと思ったからだ。</p>
+  <p>一週目の回収率は四割だった。二週目は二割。三週目に催促した。</p>
+  <p class="said"><span>「あー、すいません、書きます書きます」</span></p>
+  <p>書かれなかった。</p>
+  <p>四週目、かりんは営業部の島を回った。一人ずつ、机の横に立って、直接聞いた。</p>
+  <p class="said"><span>「感触は悪くなかったです」</span><span>「前向きでしたよ」</span><span>「刺さってたと思います」</span></p>
+  <p>そのたびに、かりんは少しずつ何かを思った。口には出さなかった。出さなかったが、思っていた。</p>
+
+  <div class="think">
+    <p>この人たちは、たぶん、<br>ちゃんと聞いていない。</p>
+  </div>
+</section>
+
+<hr class="sep">
+
+<section class="ch" id="c2">
+  <div class="ch-head"><span class="ch-num">第二章</span><h2 class="ch-title">一人だけ</h2></div>
+  <svg class="art line" width="200" height="140" viewBox="0 0 200 140" fill="none" aria-hidden="true">
+    <g stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M56 14 h88 v112 h-88 z"/>
+      <path d="M68 34 h64" opacity=".65"/>
+      <path d="M68 44 h64 M68 52 h64 M68 60 h50" opacity=".55"/>
+      <path d="M68 70 h64" opacity=".65"/>
+      <path d="M68 80 h64 M68 88 h64 M68 96 h58" opacity=".55"/>
+      <path d="M68 106 h64" opacity=".65"/>
+      <path d="M68 116 h64" opacity=".55"/>
+    </g>
+    <path d="M132 118 l16 -22 l7 5 l-16 22 l-9 3 z" stroke="currentColor" stroke-width="1.15" stroke-linejoin="round" fill="none"/>
+    <path d="M130 126 l9 -3 l-7 -5 z" fill="#35566f" stroke="none" opacity=".9"/>
+  </svg>
+
+  <p>一人だけ、毎回返してくる人がいた。</p>
+  <p>タケルという営業だった。返してくるだけではなく、書きすぎていた。</p>
+  <p>設問は三つなのに、余白が全部埋まっている。しかも、書いてある形が変だった。</p>
+
+  <div class="sheet">
+    <span class="tag">Q3／今日、先方が言ったこと</span>
+    <p>（部長・八月二日・三回目の訪問時）<br>「これ、現場の人間が触れますかね」</p>
+  </div>
+
+  <p>誰が言ったか。いつ言ったか。何回目の訪問だったか。そのうえで、言葉そのもの。</p>
+  <p>要約されていなかった。「現場の運用面に懸念あり」ではなく、口から出た通りに書いてあった。</p>
+  <p>かりんは一度、聞きに行った。</p>
+  <p class="said"><span>「なんで、そこまで書くんですか」</span></p>
+  <p>タケルは少し考えてから言った。</p>
+  <p class="said"><span>「言い換えると、別のものになるので」</span></p>
+  <p>それから、付け足した。</p>
+  <p class="said"><span>「昔からの癖です」</span></p>
+  <p>それ以上は言わなかった。かりんも、それ以上は聞かなかった。</p>
+</section>
+
+<hr class="sep">
+
+<section class="ch" id="c3">
+  <div class="ch-head"><span class="ch-num">第三章</span><h2 class="ch-title">火曜日の朝</h2></div>
+
+  <p>十月の、火曜日だった。</p>
+  <p>かりんが出社すると、朝から営業部がざわついていた。</p>
+  <p>その日の七時に、全員のところに何かが届いていた。かりんのところにも来ていた。</p>
+  <p>開いた。</p>
+  <p>昨日、社内の十七件の商談で、客が実際に口にした言葉が並んでいた。誰が、いつ、どの案件で言ったか。全部ついている。</p>
+  <p>感想は書かれていなかった。要約もされていなかった。まとめの一行すら無かった。数字は、ひとつも入っていなかった。</p>
+  <p>言葉だけが、言われた順に並んでいた。</p>
+  <p>かりんはしばらく画面を見ていた。それから、上から下まで、もう一度読んだ。</p>
+  <p>斜め後ろの島で、誰かが言った。</p>
+  <p class="said"><span>「これ、すげえや」</span></p>
+  <p>かりんが見ていたのは、別のところだった。</p>
+
+  <div class="think">
+    <p>全員、ちゃんと聞いていた。</p>
+  </div>
+
+  <p>「感触は悪くなかったです」と言った人も、その場では、客の言葉をきちんと受け取っていた。書いていなかっただけだった。書き方を教わっていなかっただけだった。</p>
+  <p>かりんは、四週間ぶんの自分の考えを、その場で取り下げた。</p>
+  <p>誰にも言わなかった。</p>
+</section>
+
+<hr class="sep">
+
+<section class="ch" id="c4">
+  <div class="ch-head"><span class="ch-num">第四章</span><h2 class="ch-title">待ち伏せ</h2></div>
+  <svg class="art line" width="200" height="126" viewBox="0 0 200 126" fill="none" aria-hidden="true">
+    <g stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 100 h160"/>
+      <path d="M60 100 v-8 h80 v8" opacity=".5"/>
+      <path d="M118 92 v-30 l24 -22"/>
+      <path d="M112 92 h12" opacity=".7"/>
+      <path d="M130 36 l24 8 l-12 20 l-18 -12 z"/>
+    </g>
+    <path d="M130 66 q6 12 2 22" stroke="#35566f" stroke-width="1.25" stroke-linecap="round" fill="none" opacity=".9"/>
+    <path d="M142 66 q8 14 3 26" stroke="#35566f" stroke-width="1.25" stroke-linecap="round" fill="none" opacity=".55"/>
+  </svg>
+
+  <p>形が、タケルのシートと同じだった。</p>
+  <p>誰が。いつ。何回目に。言葉そのまま。要約しない。癖まで同じだった。</p>
+  <p>かりんは、タケルがやっているのだと思った。夜のうちに全員ぶんを書き起こして、朝七時に置いているのだと。</p>
+  <p>聞かなかった。聞いても「昔からの癖です」で終わる気がした。</p>
+  <p>その週の水曜、かりんは残った。</p>
+  <p>タケルは二十二時に帰った。お先に失礼します、と言って、荷物をまとめて、普通に帰った。二十三時四十分、最後の一人が出ていった。</p>
+  <p>かりんは自分の席の電気だけ消して、待った。</p>
+
+  <p class="beat">零 時</p>
+
+  <p>何も起きなかった。</p>
+  <p>配管が鳴った。冷蔵庫が思い出したように動き出した。どこかの階でドアが閉まった。</p>
+  <p>一度だけ、複合機のあたりの影が、少し濃くなった気がした。</p>
+  <p>かりんは目をこすった。目をこすっている時間が、思っていたより長かった。</p>
+  <p>気がついたら、窓の外が白かった。</p>
+  <p>机のライトが、ついていた。かりんは、消したはずだった。</p>
+  <p>七時ちょうどに、届いた。</p>
+  <p>タケルは、まだ来ていなかった。</p>
+</section>
+
+<hr class="sep">
+
+<section class="ch" id="c5">
+  <div class="ch-head"><span class="ch-num">第五章</span><h2 class="ch-title">送らなかった一通</h2></div>
+
+  <p>それから何度か、かりんは残った。何度目かでやめた。やめた理由は、うまく言えない。</p>
+  <p>八時半に人が来る。九時に会議が始まる。会議では、届いたものが普通に使われている。誰も、誰が作っているのかを言わない。聞いた人はいる。答えは返ってこない。</p>
+  <p>かりんは一度だけ、宛先を選んで、文面を書いた。</p>
+
+  <div class="sheet">
+    <p>毎朝、ありがとうございます。おかげで</p>
+  </div>
+
+  <p>そこで手が止まった。消した。全部消して、閉じた。</p>
+  <p>なぜやめたのかを、かりんはいまも説明できない。ただ、言ってはいけない気がした。それだけだった。</p>
+
+  <p class="beat">＊</p>
+
+  <p>タケルは、その年の終わりに東京を出た。働き方が変わったのを機に、長野の実家のほうへ戻っていった。</p>
+  <p>送別会の帰り道、かりんは一度だけ聞いた。</p>
+  <p class="said"><span>「あれ、タケルさんじゃないんですよね」</span></p>
+  <p>タケルは、少しだけ黙った。</p>
+  <p>それから笑って、こう言った。</p>
+  <p class="said"><span>「僕だったら、もっと遅いですよ」</span></p>
+  <p>それきり、その話はしなかった。</p>
+
+  <p class="beat">＊</p>
+
+  <p>それから何年も経つ。</p>
+  <p>朝七時に届くものは、いまも届く。形は変わっていない。誰が、いつ、何回目に、どんな言葉で言ったか。要約はされていない。</p>
+  <p>誰がやっているのかは、いまも分かっていない。</p>
+
+  <p class="beat">— 了 —</p>
+</section>
+
+</article>
+
+<section class="cast">
+  <h2>登場人物</h2>
+  <div class="cast-grid">
+
+    <div class="person">
+      <svg class="fig" width="62" height="64" viewBox="0 0 62 64" fill="none" aria-hidden="true">
+        <g stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 12 h46 a5 5 0 0 1 5 5 v24 a5 5 0 0 1 -5 5 h-32 l-14 11 v-11 a5 5 0 0 1 -5 -5 v-24 a5 5 0 0 1 5 -5 z"/>
+          <path d="M17 24 h28 M17 33 h20" opacity=".5"/>
+        </g>
+        <circle cx="50" cy="33" r="3" fill="#35566f" stroke="none" opacity=".9"/>
+      </svg>
+      <div class="body"><h3>かりん</h3>
+      <p class="role">サービス企画</p>
+      <p>都内の生まれ。次に何を作るかを決める側にいる。数字は勝手に集まるのに、客が実際に言った言葉だけが集まらないことを、ずっと気にしていた。</p>
+      <p>シートが返ってこない四週間のあいだ、営業のことを少しだけ悪く思っていた。それを誰にも言わないまま、自分で取り下げた。</p>
+      <p>お礼を書いて、送らなかった。理由は本人にも説明できない。</p>
+      </div>
+    </div>
+
+    <div class="person">
+      <svg class="fig" width="62" height="64" viewBox="0 0 62 64" fill="none" aria-hidden="true">
+        <g stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 12 h30 v40 h-30 z"/>
+          <path d="M16 24 h18 M16 32 h18 M16 40 h11" opacity=".55"/>
+          <path d="M40 54 L54 34 L60 39 L46 59 L37 62 z"/>
+          <path d="M54 39 L60 44" opacity=".5"/>
+        </g>
+        <path d="M37 62 L46 59 L40 54 z" fill="#35566f" stroke="none" opacity=".9"/>
+      </svg>
+      <div class="body"><h3>タケル</h3>
+      <p class="role">営業・当時は東京</p>
+      <p>シートを毎回返す、たった一人。設問は三つなのに余白まで埋めてくる。誰が言ったか、いつ聞いたかまで書く。</p>
+      <p>理由を聞かれると「昔からの癖です」としか答えない。</p>
+      <p>この年の終わりに東京を出て、長野へ戻った。</p>
+      </div>
+    </div>
+
+    <div class="person">
+      <svg class="fig" width="62" height="64" viewBox="0 0 62 64" fill="none" aria-hidden="true">
+        <g stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 34 L31 8 L50 34 z"/>
+          <path d="M14 34 h34" opacity=".5"/>
+          <path d="M20 34 q0 18 11 18 q11 0 11 -18" stroke-dasharray="3 4" opacity=".55"/>
+        </g>
+        <circle cx="31" cy="42" r="2.2" fill="#35566f" stroke="none" opacity=".9"/>
+      </svg>
+      <div class="body"><h3>正体不明</h3>
+      <p class="role">この会社の言い伝え</p>
+      <p>この話に、一度も出てこない。姿を見た者はいない。零時から朝七時までのあいだのことは、何も分かっていない。</p>
+      <p>渋谷のその会社には、いまもこう言われている。難しいことは、朝になると片づいている。</p>
+      <p>礼を言ってはいけない、とも。</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<nav class="epnav" aria-label="話数ナビ">
+  <a href="../ataru-takeru/"><span class="k">第一話</span>りんごと、地図と、一枚の写真</a>
+  <a class="now" href="./"><span class="k">第二話</span>言葉と、渋谷と、送らなかった一通</a>
+  <a href="../drama/"><span class="k">一覧</span>全十話を見る</a>
+</nav>
+
+<aside class="coda">
+  <h2>この物語について</h2>
+  <p>ライトアップのAIサービスに登場するキャラクターの、共通の背景設定です。「アタルとタケル」の第二話にあたります。<strong>かりん</strong>は都内の生まれで、白科町とは関係がありません。<strong>タケル</strong>（相棒タケル）が東京にいた頃、長野へ戻る前の時期の話です。</p>
+  <ul>
+    <li><strong>登場する会社、人物、商談は、すべて架空です。</strong>実在の取引先、社員、案件とは関係ありません</li>
+    <li>作中の件数・回収率・やりとりは物語のためのもので、<strong>実際の製品仕様や運用実績ではありません</strong></li>
+    <li>朝七時に届くものが何なのか、誰が置いているのかは、<strong>この話でも明かしていません</strong>。今後も明かしません</li>
+  </ul>
+  <p class="prev"><a href="../drama/">番組サイト「アタルとタケル」全十話<span aria-hidden="true"> →</span></a></p>
+</aside>
+
+<footer>
+  <span>WRITEUP / AIコンサル局 SaaSチーム</span>
+  <span><a href="../">サービス一覧へ戻る</a></span>
+</footer>
+
+</div>
+</body>
+</html>
