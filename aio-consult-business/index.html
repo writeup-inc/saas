@@ -3,14 +3,20 @@
 
 
 <meta name="robots" content="noindex,nofollow"><link rel="canonical" href="https://writeup-inc.github.io/saas/aio-consult-business/"><link rel="icon" href="../favicon.svg" type="image/svg+xml"><style>:root {
-  --blue: #1557b0;
-  --blue-dark: #0d3e81;
-  --blue-pale: #eaf1fa;
-  --ink: #16191d;
-  --mute: #5a626c;
+  /* 白黒グレーのみ。差し色（オレンジ）は後日 --accent を差し替えて導入する */
+  --blue: #111111;
+  --blue-dark: #000000;
+  --blue-pale: #f1f0ed;
+  --ink: #111111;
+  --mute: #686868;
   --paper: #ffffff;
-  --soft: #f3f4f6;
-  --line: #d4d8de;
+  --soft: #f1f0ed;
+  --line: #dcd9d5;
+  --panel: #ffffff;
+  --slide-a: #ffffff;
+  --slide-b: #f1f0ed;
+  /* mcp-guide と同じ差し色 */
+  --accent: #f97316;
 }
 
 * {
@@ -117,13 +123,13 @@ section[id] {
   align-items: center;
   gap: 11px;
   text-decoration: none;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 850;
   letter-spacing: 0.13em;
 }
 .brand b {
   color: var(--blue);
-  font-size: 18px;
+  font-size: 19px;
   letter-spacing: -0.03em;
 }
 .header-nav {
@@ -132,7 +138,7 @@ section[id] {
   gap: 26px;
 }
 .header-nav a {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 850;
   text-decoration: none;
 }
@@ -156,7 +162,7 @@ section[id] {
   color: #fff;
   background: var(--blue);
   text-decoration: none;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 900;
   transition:
     background 0.2s ease,
@@ -172,7 +178,7 @@ section[id] {
 .source-note a:focus-visible,
 .evidence-strip a:focus-visible,
 .vision-copy a:focus-visible {
-  outline: 3px solid #93b6e3;
+  outline: 3px solid #b4b1ad;
   outline-offset: 3px;
 }
 
@@ -237,14 +243,14 @@ section[id] {
   display: block;
   color: var(--blue);
   font:
-    800 8px/1.4 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
+    800 11px/1.4 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
     monospace;
   letter-spacing: 0.1em;
 }
 .system-source > strong {
   display: block;
   margin-top: 7px;
-  font-size: 18px;
+  font-size: 19px;
 }
 .source-items {
   margin-top: 13px;
@@ -269,7 +275,7 @@ section[id] {
 }
 .system-arrow span {
   color: var(--mute);
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 850;
 }
 .system-arrow i {
@@ -296,7 +302,7 @@ section[id] {
   text-align: center;
 }
 .system-owner small {
-  color: #92b8e8;
+  color: #b6b3af;
 }
 .system-owner strong {
   display: block;
@@ -306,8 +312,8 @@ section[id] {
 .system-owner span {
   display: block;
   margin-top: 4px;
-  color: #bec4cc;
-  font-size: 10px;
+  color: #c6c3bf;
+  font-size: 11px;
   font-weight: 750;
 }
 .system-clients {
@@ -324,7 +330,7 @@ section[id] {
 .client-grid i {
   width: 8px;
   height: 8px;
-  background: #c7ccd2;
+  background: #cecbc7;
   border-radius: 50%;
 }
 .client-grid i:nth-child(3n + 1) {
@@ -338,12 +344,12 @@ section[id] {
   display: block;
 }
 .system-clients strong {
-  font-size: 17px;
+  font-size: 16px;
 }
 .system-clients span {
   margin-top: 3px;
   color: var(--mute);
-  font-size: 10px;
+  font-size: 11px;
 }
 .story-rail {
   margin: clamp(38px, 5vw, 58px) 0 0;
@@ -383,7 +389,7 @@ section[id] {
   grid-row: 1 / 3;
   color: var(--blue);
   font:
-    800 10px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
+    800 11px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
     monospace;
 }
 .story-rail b {
@@ -392,7 +398,7 @@ section[id] {
 .story-rail small {
   margin-top: 3px;
   color: var(--mute);
-  font-size: 9px;
+  font-size: 11px;
 }
 
 .market {
@@ -417,7 +423,7 @@ section[id] {
 .market-answer > div:first-child > small {
   color: var(--mute);
   font:
-    800 9px/1.4 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
+    800 11px/1.4 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
     monospace;
   letter-spacing: 0.1em;
 }
@@ -429,7 +435,7 @@ section[id] {
 }
 .fact-board strong em {
   margin-left: 5px;
-  font-size: 12px;
+  font-size: 11px;
   font-style: normal;
   letter-spacing: 0;
 }
@@ -447,21 +453,21 @@ section[id] {
 }
 .fact-board .fact-conclusion small,
 .fact-board .fact-conclusion p {
-  color: #b4bbc3;
+  color: #bdbab6;
 }
 .fact-board .fact-conclusion strong {
-  color: #7fb0eb;
+  color: #aca9a5;
 }
 .fact-arrow {
   display: grid;
   place-items: center;
   color: var(--blue);
-  font-size: 20px;
+  font-size: 19px;
 }
 .source-note {
   margin: 13px 0 0;
-  color: #747c85;
-  font-size: 9px;
+  color: #7d7a76;
+  font-size: 11px;
   line-height: 1.7;
   text-align: right;
 }
@@ -517,13 +523,13 @@ section[id] {
   display: grid;
   place-items: center;
   color: var(--mute);
-  font-size: 18px;
+  font-size: 19px;
   font-style: normal;
 }
 .formula small {
   color: var(--mute);
   font:
-    800 7px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
+    800 11px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
     monospace;
   letter-spacing: 0.08em;
 }
@@ -537,16 +543,16 @@ section[id] {
   top: 8px;
   right: 8px;
   padding: 5px 6px;
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 900;
 }
 .formula .fixed {
-  color: #6d747c;
+  color: #76736f;
   background: #e6e8eb;
 }
 .formula .fixed > span {
-  color: #656d76;
-  background: #d5d8dc;
+  color: #6e6b67;
+  background: #dad7d3;
 }
 .formula .focus {
   color: var(--blue-dark);
@@ -593,30 +599,30 @@ section[id] {
   flex: 1;
   background: var(--soft);
   border: 1px solid var(--line);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 850;
   text-align: center;
 }
 .build-choice i,
 .build-choice b {
   color: var(--blue);
-  font-size: 12px;
+  font-size: 11px;
   font-style: normal;
 }
 .build-choice strong {
-  font-size: 15px;
+  font-size: 16px;
 }
 .build-choice .choice-fast {
   color: #fff;
   background: var(--ink);
 }
 .build-choice .choice-fast small {
-  color: #9eabb8;
+  color: #aca9a5;
 }
 .build-choice .choice-fast span {
   color: #fff;
-  background: #262b31;
-  border-color: #4a525b;
+  background: #2d2a26;
+  border-color: #53504c;
 }
 .supply-flow {
   margin-top: 18px;
@@ -636,7 +642,7 @@ section[id] {
 .supply-flow small {
   color: var(--mute);
   font:
-    800 8px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
+    800 11px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
     monospace;
   letter-spacing: 0.1em;
 }
@@ -647,7 +653,7 @@ section[id] {
 .supply-flow span {
   margin-top: 9px;
   color: var(--mute);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 650;
   line-height: 1.55;
 }
@@ -658,7 +664,7 @@ section[id] {
 }
 .supply-flow .supply-owner small,
 .supply-flow .supply-owner span {
-  color: #dbe9f8;
+  color: #eae7e3;
 }
 .supply-flow > i {
   display: flex;
@@ -666,12 +672,12 @@ section[id] {
   align-items: center;
   justify-content: center;
   color: var(--blue);
-  font-size: 17px;
+  font-size: 16px;
   font-style: normal;
 }
 .supply-flow > i span {
   margin: 0 0 7px;
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 850;
 }
 
@@ -685,11 +691,11 @@ section[id] {
   padding: clamp(38px, 5vw, 62px);
   color: var(--ink);
   background: #fff;
-  border: 1px solid #c3c9d1;
+  border: 1px solid #cbc8c4;
   border-top: 6px solid var(--blue);
   box-shadow:
-    12px 12px 0 #dfe3e8,
-    0 24px 54px rgba(22, 25, 29, 0.12);
+    12px 12px 0 #e5e2de,
+    0 24px 54px rgba(27, 24, 20, 0.12);
 }
 .experiment-copy h3 {
   margin: 14px 0 20px;
@@ -700,16 +706,16 @@ section[id] {
 }
 .experiment-copy > p:not(.section-kicker) {
   margin: 0;
-  color: #4d5660;
-  font-size: 14px;
+  color: #575450;
+  font-size: 13px;
   font-weight: 550;
   line-height: 1.85;
 }
 .experiment-copy > small {
   display: block;
   margin-top: 20px;
-  color: #737c86;
-  font-size: 9px;
+  color: #7d7a76;
+  font-size: 11px;
   line-height: 1.7;
 }
 .experiment-visual {
@@ -717,9 +723,9 @@ section[id] {
 }
 .funnel-period {
   margin: 0 0 12px;
-  color: #9ca6af;
+  color: #a7a4a0;
   font:
-    800 8px/1.4 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
+    800 11px/1.4 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
     monospace;
   letter-spacing: 0.08em;
   text-align: center;
@@ -736,8 +742,8 @@ section[id] {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  background: #282e35;
-  border: 1px solid #4a525b;
+  background: #302d29;
+  border: 1px solid #53504c;
 }
 .experiment-funnel > div:nth-of-type(1) {
   width: 100%;
@@ -752,7 +758,7 @@ section[id] {
   width: 58%;
   color: #fff;
   background: var(--blue);
-  border-color: #3c78c3;
+  border-color: #73706c;
 }
 .experiment-funnel strong {
   font-size: clamp(28px, 3vw, 42px);
@@ -760,27 +766,27 @@ section[id] {
   letter-spacing: -0.05em;
 }
 .experiment-funnel span {
-  color: #bec6ce;
-  font-size: 10px;
+  color: #c7c4c0;
+  font-size: 11px;
   font-weight: 800;
   text-align: right;
 }
 .experiment-funnel span em {
   display: block;
   margin-top: 4px;
-  color: #a8c8ed;
-  font-size: 8px;
+  color: #c6c3bf;
+  font-size: 11px;
   font-style: normal;
   font-weight: 750;
 }
 .experiment-funnel > div:last-of-type span {
-  color: #e1edfa;
+  color: #eeebe7;
 }
 .experiment-funnel > i {
   height: 18px;
   display: grid;
   place-items: center;
-  color: #78ace8;
+  color: #a8a5a1;
   font-size: 11px;
   font-style: normal;
 }
@@ -796,8 +802,8 @@ section[id] {
 .aio-signal > em {
   grid-column: 1 / -1;
   margin-top: 10px;
-  color: #7a828b;
-  font-size: 8px;
+  color: #83807c;
+  font-size: 11px;
   font-style: normal;
 }
 .aio-signal small,
@@ -807,7 +813,7 @@ section[id] {
 .aio-signal small {
   color: var(--blue);
   font:
-    800 8px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
+    800 11px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
     monospace;
   letter-spacing: 0.1em;
 }
@@ -831,50 +837,50 @@ section[id] {
   background: var(--ink);
 }
 .aio-shift .section-kicker {
-  color: #78ace8;
+  color: #a8a5a1;
 }
 .section-heading-light > p:last-child {
-  color: #b4bbc3;
+  color: #bdbab6;
 }
 .shift-timeline {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid #484f57;
-  border-left: 1px solid #484f57;
+  border-top: 1px solid #514e4a;
+  border-left: 1px solid #514e4a;
 }
 .shift-timeline article {
   position: relative;
   min-width: 0;
   min-height: 340px;
   padding: 28px;
-  border-right: 1px solid #484f57;
-  border-bottom: 1px solid #484f57;
+  border-right: 1px solid #514e4a;
+  border-bottom: 1px solid #514e4a;
 }
 .shift-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #9da5ad;
+  color: #a6a39f;
   font:
-    800 10px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
+    800 11px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
     monospace;
 }
 .shift-timeline article > strong {
   display: block;
   margin-top: 48px;
-  color: #d6dbe0;
+  color: #dddad6;
   font-size: clamp(48px, 5.3vw, 70px);
   line-height: 1;
   letter-spacing: -0.07em;
 }
 .shift-timeline h3 {
   margin: 18px 0 0;
-  font-size: 17px;
+  font-size: 16px;
 }
 .shift-timeline p {
   max-width: 280px;
   margin: 15px 0 0;
-  color: #c4cad0;
+  color: #ccc9c5;
   font-size: clamp(15px, 1.15vw, 17px);
   font-weight: 650;
   line-height: 1.72;
@@ -888,17 +894,17 @@ section[id] {
   height: 30px;
   display: grid;
   place-items: center;
-  color: #79ade9;
+  color: #a9a6a2;
   background: var(--ink);
   font-style: normal;
 }
 .shift-timeline .active {
   background: var(--blue);
-  border-color: #3977c5;
+  border-color: #726f6b;
 }
 .shift-timeline .active .shift-top,
 .shift-timeline .active p {
-  color: #dae8f8;
+  color: #e9e6e2;
 }
 .shift-timeline .active > strong {
   color: #fff;
@@ -912,24 +918,24 @@ section[id] {
 .shift-conclusion p {
   margin: 0;
   padding: 21px 23px;
-  border: 1px solid #484f57;
+  border: 1px solid #514e4a;
 }
 .shift-conclusion strong,
 .shift-conclusion span {
   display: block;
 }
 .shift-conclusion strong {
-  color: #7eafe9;
-  font-size: 10px;
+  color: #aba8a4;
+  font-size: 11px;
 }
 .shift-conclusion span {
   margin-top: 8px;
-  color: #d3d8dd;
-  font-size: 12px;
+  color: #dad7d3;
+  font-size: 11px;
   font-weight: 750;
 }
 .shift-conclusion > i {
-  color: #78ace8;
+  color: #a8a5a1;
   font-style: normal;
   text-align: center;
 }
@@ -940,13 +946,13 @@ section[id] {
   grid-template-columns: 1fr auto;
   gap: 36px;
   align-items: center;
-  background: #22272d;
-  border-left: 3px solid #70a7e7;
+  background: #292622;
+  border-left: 3px solid #a29f9b;
 }
 .evidence-strip p {
   max-width: 760px;
   margin: 0;
-  color: #b7bec5;
+  color: #c0bdb9;
   font-size: 11px;
   line-height: 1.75;
 }
@@ -954,7 +960,7 @@ section[id] {
   display: block;
   margin-bottom: 4px;
   color: #fff;
-  font-size: 14px;
+  font-size: 13px;
 }
 .evidence-strip > div {
   display: flex;
@@ -962,15 +968,15 @@ section[id] {
   gap: 7px;
 }
 .evidence-strip a {
-  color: #8db8ec;
-  font-size: 10px;
+  color: #b5b2ae;
+  font-size: 11px;
   text-underline-offset: 3px;
 }
 
 .aio-stats {
   margin-top: clamp(64px, 7vw, 88px);
   padding-top: clamp(52px, 6vw, 72px);
-  border-top: 1px solid #484f57;
+  border-top: 1px solid #514e4a;
 }
 .aio-stats-heading {
   max-width: 760px;
@@ -984,8 +990,8 @@ section[id] {
 }
 .aio-stats-heading > p:last-child {
   margin: 17px 0 0;
-  color: #bdc4cc;
-  font-size: 15px;
+  color: #c6c3bf;
+  font-size: 16px;
   font-weight: 550;
   line-height: 1.85;
 }
@@ -995,8 +1001,8 @@ section[id] {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   list-style: none;
-  border-top: 1px solid #4b535c;
-  border-left: 1px solid #4b535c;
+  border-top: 1px solid #54514d;
+  border-left: 1px solid #54514d;
 }
 .aio-stat-flow li {
   min-width: 0;
@@ -1004,31 +1010,31 @@ section[id] {
   padding: 23px 21px 21px;
   display: flex;
   flex-direction: column;
-  background: #1d2228;
-  border-right: 1px solid #4b535c;
-  border-bottom: 1px solid #4b535c;
+  background: #24211d;
+  border-right: 1px solid #54514d;
+  border-bottom: 1px solid #54514d;
 }
 .aio-stat-flow li:nth-child(4) {
-  background: #242b33;
+  background: #2d2a26;
 }
 .aio-stat-flow li:last-child {
   background: var(--blue);
-  border-color: #3977c5;
+  border-color: #726f6b;
 }
 .aio-stat-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #8bb9ed;
+  color: #b5b2ae;
   font:
-    800 9px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
+    800 11px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
     monospace;
   letter-spacing: 0.08em;
 }
 .aio-stat-top b {
   padding: 5px 8px;
-  color: #c8d8e9;
-  border: 1px solid #596674;
+  color: #d8d5d1;
+  border: 1px solid #676460;
 }
 .aio-stat-flow li:last-child .aio-stat-top,
 .aio-stat-flow li:last-child .aio-stat-top b {
@@ -1051,33 +1057,33 @@ section[id] {
 }
 .aio-stat-value span {
   padding-bottom: 5px;
-  color: #aeb8c2;
+  color: #b9b6b2;
   font-size: 11px;
   font-weight: 850;
 }
 .aio-stat-flow li:last-child .aio-stat-value span {
-  color: #dceafb;
+  color: #ebe8e4;
 }
 .aio-stat-flow h4 {
   margin: 8px 0 0;
   color: #fff;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.5;
 }
 .aio-stat-flow li > p:not(.aio-stat-value) {
   margin: 11px 0 0;
-  color: #aeb6bf;
+  color: #b7b4b0;
   font-size: 11px;
   line-height: 1.75;
 }
 .aio-stat-flow li:last-child > p:not(.aio-stat-value) {
-  color: #dce9f8;
+  color: #eae7e3;
 }
 .aio-stat-flow a {
   margin-top: auto;
   padding-top: 20px;
-  color: #8db8ec;
-  font-size: 9px;
+  color: #b5b2ae;
+  font-size: 11px;
   line-height: 1.45;
   text-underline-offset: 3px;
 }
@@ -1097,7 +1103,7 @@ section[id] {
 .aio-stats-conclusion span {
   color: var(--blue);
   font:
-    900 9px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
+    900 11px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
     monospace;
   letter-spacing: 0.1em;
 }
@@ -1107,8 +1113,8 @@ section[id] {
 }
 .aio-stats-note {
   margin: 13px 0 0;
-  color: #818b95;
-  font-size: 9px;
+  color: #8c8985;
+  font-size: 11px;
   line-height: 1.7;
 }
 
@@ -1143,7 +1149,7 @@ section[id] {
 }
 .foundation-card-top b {
   color: var(--blue);
-  font-size: 12px;
+  font-size: 11px;
 }
 .foundation-diagram {
   width: 100%;
@@ -1167,7 +1173,7 @@ section[id] {
   color: #fff;
   background: var(--ink);
   border-radius: 50%;
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.2;
   text-align: center;
 }
@@ -1176,7 +1182,7 @@ section[id] {
   padding: 8px 5px;
   background: #fff;
   border: 1px solid var(--line);
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 850;
   text-align: center;
 }
@@ -1203,7 +1209,7 @@ section[id] {
 .foundation-card > p {
   margin: 0;
   color: var(--mute);
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.75;
 }
 .foundation-card ul {
@@ -1219,7 +1225,7 @@ section[id] {
   color: var(--mute);
   background: var(--soft);
   border: 1px solid var(--line);
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 800;
 }
 
@@ -1243,7 +1249,7 @@ section[id] {
 .role-card small {
   color: var(--blue);
   font:
-    800 9px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
+    800 11px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
     monospace;
   letter-spacing: 0.1em;
 }
@@ -1253,7 +1259,7 @@ section[id] {
 }
 .role-card > strong {
   color: var(--mute);
-  font-size: 12px;
+  font-size: 11px;
 }
 .role-card ul {
   margin: 28px 0 0;
@@ -1263,7 +1269,7 @@ section[id] {
 .role-card li {
   padding: 10px 0;
   border-top: 1px solid var(--line);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 760;
 }
 .role-bridge {
@@ -1272,7 +1278,7 @@ section[id] {
   align-items: center;
   justify-content: center;
   color: var(--mute);
-  font-size: 8px;
+  font-size: 11px;
   text-align: center;
 }
 .role-bridge i {
@@ -1285,8 +1291,8 @@ section[id] {
   padding: 7px 10px;
   color: var(--blue-dark);
   background: var(--blue-pale);
-  border: 1px solid #b9cee8;
-  font-size: 10px;
+  border: 1px solid #cecbc7;
+  font-size: 11px;
 }
 .launch-plan {
   margin-top: 20px;
@@ -1313,7 +1319,7 @@ section[id] {
 .launch-goal > span {
   margin: 0 0 3px 8px;
   color: var(--mute);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 850;
 }
 .launch-goal p {
@@ -1325,7 +1331,7 @@ section[id] {
 }
 .launch-goal p b {
   color: var(--ink);
-  font-size: 14px;
+  font-size: 13px;
 }
 .growth-steps {
   margin: 0;
@@ -1348,22 +1354,22 @@ section[id] {
 .growth-steps span {
   color: var(--blue);
   font:
-    800 8px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
+    800 11px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
     monospace;
 }
 .growth-steps b {
   margin-top: 9px;
-  font-size: 12px;
+  font-size: 11px;
 }
 .growth-steps small {
   margin-top: 5px;
   color: var(--mute);
-  font-size: 9px;
+  font-size: 11px;
 }
 .condition-note {
   margin: 12px 0 0;
-  color: #747c85;
-  font-size: 9px;
+  color: #7d7a76;
+  font-size: 11px;
   line-height: 1.6;
   text-align: right;
 }
@@ -1398,9 +1404,9 @@ section[id] {
     0 0 0 17px var(--line);
 }
 .orbit-center small {
-  color: #85b2e8;
+  color: #afaca8;
   font:
-    800 8px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
+    800 11px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
     monospace;
 }
 .orbit-center strong {
@@ -1409,8 +1415,8 @@ section[id] {
 }
 .orbit-center span {
   margin-top: 3px;
-  color: #bdc4cc;
-  font-size: 9px;
+  color: #c6c3bf;
+  font-size: 11px;
 }
 .orbit-services {
   display: grid;
@@ -1433,16 +1439,16 @@ section[id] {
   border-color: var(--blue);
 }
 .orbit-services b {
-  font-size: 15px;
+  font-size: 16px;
 }
 .orbit-services span {
   margin-top: 5px;
   color: var(--mute);
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 700;
 }
 .orbit-services .active span {
-  color: #e1edfa;
+  color: #eeebe7;
 }
 
 .vision-column {
@@ -1476,7 +1482,7 @@ section[id] {
   max-width: 780px;
   margin: 0;
   color: var(--mute);
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.85;
 }
 .vision-copy blockquote {
@@ -1485,15 +1491,15 @@ section[id] {
   color: var(--blue-dark);
   background: var(--blue-pale);
   border-left: 3px solid var(--blue);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 850;
   line-height: 1.7;
 }
 .vision-copy > small {
   display: block;
   margin-top: 17px;
-  color: #7a828b;
-  font-size: 9px;
+  color: #83807c;
+  font-size: 11px;
   line-height: 1.7;
 }
 .vision-copy a {
@@ -1505,7 +1511,7 @@ section[id] {
   background: var(--ink);
 }
 .final-cta .section-kicker {
-  color: #7eafe9;
+  color: #aba8a4;
 }
 .final-grid {
   display: grid;
@@ -1515,12 +1521,12 @@ section[id] {
 }
 .cta-panel {
   padding-top: 24px;
-  border-top: 1px solid #59616a;
+  border-top: 1px solid #625f5b;
 }
 .cta-panel p {
   margin: 0;
-  color: #b6bdc4;
-  font-size: 12px;
+  color: #bfbcb8;
+  font-size: 11px;
   line-height: 1.75;
 }
 .cta-panel p + p {
@@ -1528,7 +1534,7 @@ section[id] {
 }
 .cta-panel p strong {
   color: #fff;
-  font-size: 15px;
+  font-size: 16px;
 }
 .cta-panel .button-primary {
   width: 100%;
@@ -1537,13 +1543,13 @@ section[id] {
 .cta-panel small {
   display: block;
   margin-top: 12px;
-  color: #89919a;
-  font-size: 9px;
+  color: #928f8b;
+  font-size: 11px;
   line-height: 1.6;
 }
 footer {
   padding: 27px 0;
-  color: #8f979f;
+  color: #989591;
   background: #0c0f12;
 }
 .footer-inner {
@@ -1554,7 +1560,7 @@ footer {
 .footer-inner p {
   margin: 0;
   font:
-    750 9px/1.5 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
+    750 11px/1.5 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
     monospace;
   letter-spacing: 0.08em;
 }
@@ -1682,8 +1688,8 @@ footer {
     margin-top: 42px;
     padding: 34px 26px;
     box-shadow:
-      7px 7px 0 #dfe3e8,
-      0 18px 40px rgba(22, 25, 29, 0.11);
+      7px 7px 0 #e5e2de,
+      0 18px 40px rgba(27, 24, 20, 0.11);
   }
   .vision-column {
     grid-template-columns: 1fr;
@@ -1807,7 +1813,7 @@ footer {
     font-size: 11px;
   }
   .story-rail small {
-    font-size: 8px;
+    font-size: 11px;
   }
   .section-heading h2,
   .final-grid h2 {
@@ -1845,7 +1851,7 @@ footer {
   }
   .section-heading > p:last-child,
   .split-heading > p {
-    font-size: 14px;
+    font-size: 13px;
   }
   .market-answer {
     gap: 34px;
@@ -1926,4 +1932,2228 @@ footer {
     transition: none !important;
   }
 }
-</style></head><body class="__variable_geist_19ysh9d __variable_geist_mono_1001rt9 antialiased"><main><header class="site-header"><div class="container header-inner"><a class="brand" href="#top" aria-label="ページ上部へ"><b>AIO</b><span>CONSULTING BUSINESS</span></a><nav class="header-nav" aria-label="主要ナビゲーション"><a href="#problem">必要な理由</a><a href="#aio">AIOとは</a><a href="#foundation">提供内容</a><a class="header-cta" href="#contact">説明を聞く</a></nav></div></header><section class="hero" id="top"><div class="container"><div class="hero-grid"><div class="hero-copy"><p class="eyebrow">AIOコンサル事業 スタートパック</p><h1><span class="heading-line">地元で唯一の、</span><span class="heading-line"><em>AIOコンサル会社</em>に</span><span class="heading-line">なりませんか。</span></h1><p class="hero-lead">顧客は、もういる。<br/>商品と売り方は、ライトアップが用意します。</p><div class="hero-actions"><a class="button-primary" href="#foundation">3つの提供内容を見る</a><span>御社が表に立ち、ライトアップが後ろから支えます。</span></div></div><aside class="hero-system" aria-label="ライトアップの3つの支援で御社が地域のAIO相談窓口になる図"><div class="system-source"><small>LIGHTUP / SUPPORT</small><strong>ライトアップ</strong><div class="source-items"><span>商品</span><span>営業</span><span>広報</span></div></div><div class="system-arrow" aria-hidden="true"><span>後方支援</span><i></i></div><div class="system-owner"><small>YOUR BUSINESS</small><strong>御社のAIO事業</strong><span>自社の看板で、地域に提案</span></div><div class="system-arrow" aria-hidden="true"><span>提案・支援</span><i></i></div><div class="system-clients"><div class="client-grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><p><strong>地域60社へ</strong><span>まずは既存顧客から</span></p></div></aside></div><ol class="story-rail" aria-label="この事業を始めるまでの考え方"><li><span>01</span><b>顧客が減る</b><small>地域市場の変化</small></li><li><span>02</span><b>商品を増やす</b><small>既存顧客へ再提案</small></li><li><span>03</span><b>AIOから始める</b><small>いま売るべき商材</small></li><li><span>04</span><b>相談窓口になる</b><small>地域60社へ展開</small></li></ol></div></section><section class="section market" id="problem"><div class="container"><div class="section-heading split-heading"><div><p class="section-kicker">01　必要な理由</p><h2><span class="heading-line">人口が減る。だから、</span><span class="heading-line">取引回数を増やす。</span></h2></div><p>新規顧客だけを追い続ける営業は、年々難しくなります。これから増やすべきは、顧客数よりも、一社あたりの取引回数です。</p></div><div class="fact-board"><article><small>JAPANESE POPULATION</small><strong>約2,500<em>人／日</em></strong><p>日本人人口の減少<br/>2024年の1年間で90万8,574人減</p></article><div class="fact-arrow" aria-hidden="true">→</div><article><small>SMALL BUSINESSES</small><strong>約4.3<em>万者／年</em></strong><p>中小企業数の減少ペース<br/>2016年から2021年の平均</p></article><div class="fact-arrow" aria-hidden="true">→</div><article class="fact-conclusion"><small>NEW CUSTOMERS</small><strong>減っていく</strong><p>地域の新規顧客候補も<br/>同じように減少します</p></article></div><p class="source-note">出典：<a href="https://www.soumu.go.jp/menu_news/s-news/01gyosei02_02000389.html" target="_blank" rel="noreferrer">総務省「住民基本台帳に基づく人口、人口動態及び世帯数」</a>、<a href="https://www.chusho.meti.go.jp/koukai/chousa/chu_kigyocnt/2023/231213chukigyocnt.html" target="_blank" rel="noreferrer">中小企業庁「中小企業・小規模事業者の数」</a></p><div class="market-answer"><div><small>THE ANSWER</small><h3><span>新しい顧客を探すより、</span><span>新しい商品を増やす。</span></h3><p>すでに信頼関係のある顧客へ、次の商品を提案する。それが、地域で売上を伸ばす現実的な方法です。</p></div><div class="formula" aria-label="売上は取引先数、一社あたりの取引回数、一回あたりの取引金額で決まる図"><div><small>SALES</small><strong>売上</strong></div><i>＝</i><div class="fixed"><small>CUSTOMERS</small><strong>取引先数</strong><span>増やしにくい</span></div><i>×</i><div class="focus"><small>FREQUENCY</small><strong>1社あたりの<br/>取引回数</strong><span>ここを増やす</span></div></div></div></div></section><section class="section sourcing"><div class="container"><div class="section-heading split-heading"><div><p class="section-kicker">02　商品の増やし方</p><h2><span class="heading-line">新商品は、</span><span class="heading-line">外から仕入れる。</span></h2></div><p>商品開発も営業方法も、毎回ゼロから用意する必要はありません。東京で新規事業をつくり続ける会社と組み、地域の顧客に合うものを選んで売る仕組みを持ちます。</p></div><div class="build-choice" aria-label="自社だけで商品開発する方法とライトアップと組む方法の比較"><article class="choice-slow"><small>自社だけで始める</small><div><span>市場調査</span><i>→</i><span>商品開発</span><i>→</i><span>売り方検証</span><i>→</i><span>運用整備</span></div><strong>販売まで時間がかかる</strong></article><article class="choice-fast"><small>ライトアップと組む</small><div><span>商品</span><b>＋</b><span>営業</span><b>＋</b><span>広報</span></div><strong>既存顧客へ、すぐ提案できる</strong></article></div><div class="supply-flow" aria-label="ライトアップが商品をつくり、御社が地域に届け、顧客の相談が戻る循環図"><div><small>DEVELOP</small><b>ライトアップ</b><span>新しいAIサービスを<br/>企画・開発</span></div><i><span>商品を供給</span>→</i><div class="supply-owner"><small>SELL</small><b>御社</b><span>自社の名前で<br/>地域へ提案</span></div><i><span>相談が集まる</span>→</i><div><small>USE</small><b>既存顧客</b><span>新しい経営課題を<br/>御社へ相談</span></div></div><aside class="experiment-proof"><div class="experiment-copy"><p class="section-kicker">LIGHTUP / TEST &amp; LEARN</p><h3><span class="heading-line">たくさん試したから、</span><span class="heading-line">売れる商品がわかる。</span></h3><p>ライトアップは、最初から正解だけを当ててきた会社ではありません。300の企画を試し、売れなかった理由も学びながら、提供を続ける商品を30まで絞りました。皆様へ届けるのは、その試行錯誤を通過し、手応えが見え始めたサービスです。</p><small>※2026年1月以降のライトアップ社内集計・現時点の見立てです。各サービスの成果を保証するものではありません。</small></div><div class="experiment-visual"><p class="funnel-period">2026年1月〜現在｜ライトアップ社内集計</p><div class="experiment-funnel" aria-label="300件の企画から100件を開発提供し、30件を継続、約10件を成長候補として選別する図"><div><strong>300</strong><span>AIサービスを企画</span></div><i aria-hidden="true">↓</i><div><strong>100</strong><span>開発・提供</span></div><i aria-hidden="true">↓</i><div><strong>30</strong><span>提供を継続</span></div><i aria-hidden="true">↓</i><div><strong>約10</strong><span>成長候補<em>現時点の見立て</em></span></div></div><p class="aio-signal"><small>BEST INITIAL RESPONSE</small><span>その中で、最も初動が良いのが</span><strong>AIO</strong><em>社内比較による現時点の評価</em></p></div></aside></div></section><section class="section aio-shift" id="aio"><div class="container"><div class="section-heading section-heading-light"><p class="section-kicker">03　最初の商品</p><h2><span class="heading-line">SEO、MEO、</span><span class="heading-line">そして今はAIO。</span></h2><p>会社の探され方は、およそ10年ごとに主戦場が変わってきました。いま始まっているのは、AIの回答で候補に入るための対策です。</p></div><div class="shift-timeline" aria-label="2005年頃のSEO、2015年頃のMEO、2025年頃のAIOへの変化を示す図"><article class=""><div class="shift-top"><span>2005〜</span><b>0<!-- -->1</b></div><strong>SEO</strong><h3>検索で見つかる</h3><p>検索結果の上位に入り、自社サイトへ来てもらうための対策。</p><i aria-hidden="true">→</i></article><article class=""><div class="shift-top"><span>2015〜</span><b>0<!-- -->2</b></div><strong>MEO</strong><h3>地図で選ばれる</h3><p>地図や口コミから、地域のお店・会社に選ばれるための対策。</p><i aria-hidden="true">→</i></article><article class="active"><div class="shift-top"><span>2025〜</span><b>0<!-- -->3</b></div><strong>AIO</strong><h3>AIの回答に入る</h3><p>AIの回答に、信頼できる候補として登場するための対策。</p></article></div><div class="shift-conclusion"><p><strong>これまで</strong><span>検索する → 比較する → 自分で決める</span></p><i aria-hidden="true">→</i><p><strong>これから</strong><span>AIに聞く → AIが候補を示す → その中から決める</span></p></div><div class="evidence-strip"><p><b>日本語でも、すでに始まっています。</b>Googleは2025年に日本語版AIモードを提供開始。2026年には、AIによる検索画面の変更を「過去25年以上で最大のアップグレード」と説明しています。</p><div><a href="https://blog.google/intl/ja-jp/products/explore-get-answers/ai-mode-search/" target="_blank" rel="noreferrer">Google：AIモード日本語提供開始</a><a href="https://blog.google/intl/ja-jp/products/explore-get-answers/search-io-2026/" target="_blank" rel="noreferrer">Google：AI検索の新時代</a></div></div><div class="aio-stats"><div class="aio-stats-heading"><p class="section-kicker">5 NUMBERS / WHY AIO MATTERS</p><h3>AI経由の購買は、もう始まっている。</h3><p>AIで商品を探し、比較し、購入する行動が増えています。この変化は大企業だけではなく、中小企業や地域の店舗にも関係します。</p></div><ol class="aio-stat-flow" aria-label="AI経由の購買行動と中小企業、店舗ビジネスとの関係を示す5つの統計"><li><div class="aio-stat-top"><span>01</span><b>消費者</b></div><p class="aio-stat-value"><strong>39%</strong><span>が利用</span></p><h4>AIを使って買い物をする</h4><p>米国消費者の39%が、オンラインショッピングでAIを利用。商品探しや比較、購入判断に使われています。</p><a href="https://business.adobe.com/blog/ai-traffic-surge-retail-sites-not-machine-readable" target="_blank" rel="noreferrer">出典：<!-- -->Adobe Digital Insights 2026</a></li><li><div class="aio-stat-top"><span>02</span><b>流入</b></div><p class="aio-stat-value"><strong>+393%</strong><span>前年比</span></p><h4>AI経由の小売流入が急増</h4><p>2026年1〜3月、AIから米国小売サイトへの流入は前年比393%増。AIが新しい集客経路になっています。</p><a href="https://business.adobe.com/blog/ai-traffic-surge-retail-sites-not-machine-readable" target="_blank" rel="noreferrer">出典：<!-- -->Adobe Digital Insights 2026</a></li><li><div class="aio-stat-top"><span>03</span><b>購入</b></div><p class="aio-stat-value"><strong>+42%</strong><span>購入率</span></p><h4>AI経由は購入にもつながる</h4><p>2026年3月、AI経由の訪問はその他の流入より購入率が42%高く、調査開始以来の最高値でした。</p><a href="https://business.adobe.com/blog/ai-traffic-surge-retail-sites-not-machine-readable" target="_blank" rel="noreferrer">出典：<!-- -->Adobe Digital Insights 2026</a></li><li><div class="aio-stat-top"><span>04</span><b>中小企業</b></div><p class="aio-stat-value"><strong>58%</strong><span>が活用</span></p><h4>中小企業にもAIが普及</h4><p>米国の中小企業の58%が生成AIを利用。AIは大企業だけのものではなく、地域企業にも広がっています。</p><a href="https://www.uschamber.com/technology/artificial-intelligence/u-s-chambers-latest-empowering-small-business-report-shows-majority-of-businesses-in-all-50-states-are-embracing-ai" target="_blank" rel="noreferrer">出典：<!-- -->U.S. Chamber of Commerce 2025</a></li><li><div class="aio-stat-top"><span>05</span><b>店舗</b></div><p class="aio-stat-value"><strong>+400%</strong><span>地域検索</span></p><h4>「近くの営業中」が急増</h4><p>「営業中・近く」の検索は世界で前年比400%以上増加。場所や営業時間を持つ店舗は、検索が来店の入口になります。</p><a href="https://business.google.com/in/think/consumer-insights/increase-foot-traffic-and-in-store-sales/" target="_blank" rel="noreferrer">出典：<!-- -->Google 2022 Retail Guide</a></li></ol><div class="aio-stats-conclusion"><span>BEST FIT</span><strong>商品・料金・場所・実績など「選ぶ理由」が明確な中小企業や店舗ほど、AIに正しく理解される準備が重要です。</strong></div><p class="aio-stats-note">※購買関連の数値はAdobeが米国小売サイト1兆超の訪問と5,000人超の消費者調査を分析した結果。中小企業は全米商工会議所の2025年調査、地域検索はGoogleの2022年公表値です。AIO導入による成果を保証する数値ではありません。</p></div></div></section><section class="section foundation" id="foundation"><div class="container"><div class="section-heading split-heading"><div><p class="section-kicker">04　提供するもの</p><h2><span class="heading-line">商品・営業・広報。</span><span class="heading-line">3つで始められる。</span></h2></div><p>商品だけを渡して終わりではありません。提案し、売り、地域で事業として続けるための基盤を、まとめて提供します。</p></div><div class="foundation-grid"><article class="foundation-card"><div class="foundation-card-top"><span>01</span><b>商品システム</b></div><div class="foundation-diagram product-diagram" aria-label="AIO MASTERで診断、対策、確認を行う図"><span>診断</span><i></i><strong>AIO<br/>MASTER</strong><i></i><span>確認</span></div><h3>売る商品があります。</h3><p>AI検索での掲載状況を調べ、対策し、継続確認する「AIO MASTER」を御社の商品として提供できます。</p><ul><li>診断</li><li>改善施策</li><li>継続確認</li></ul></article><article class="foundation-card"><div class="foundation-card-top"><span>02</span><b>営業スキル</b></div><div class="foundation-diagram sales-diagram" aria-label="顧客情報からClaude Codeで提案をつくる図"><span>顧客</span><i>→</i><strong>CLAUDE<br/>CODE</strong><i>→</i><span>提案</span></div><h3>売る方法があります。</h3><p>Claude Codeの営業スキルが、候補企業の選定、事前調査、提案書作成、商談準備、フォローを支援します。</p><ul><li>顧客選定</li><li>提案書</li><li>商談支援</li></ul></article><article class="foundation-card"><div class="foundation-card-top"><span>03</span><b>広報・後方支援</b></div><div class="foundation-diagram support-diagram" aria-label="御社をライトアップが後方支援する図"><span>顧客</span><i>←</i><strong>御社</strong><i>←</i><span>本部支援</span></div><h3>広げる支援があります。</h3><p>勉強会や事例発信を支援。御社だけでは対応が難しい相談や大型案件には、ライトアップが後ろから参加します。</p><ul><li>勉強会</li><li>情報発信</li><li>専門案件</li></ul></article></div></div></section><section class="section operation" id="roles"><div class="container"><div class="section-heading"><p class="section-kicker">05　役割と始め方</p><h2><span class="heading-line">主役は、御社。</span><span class="heading-line">支援は、ライトアップ。</span></h2><p>地域の相談窓口になるのは御社です。商品開発と専門実務はライトアップが支え、対応が難しい案件も一緒に受け止めます。</p></div><div class="role-map"><article class="role-card main-role"><small>FRONT / OWNER</small><h3>御社</h3><strong>地域のAIO相談窓口</strong><ul><li>顧客との関係を持つ</li><li>自社の名前で提案する</li><li>実績と次の相談を蓄積する</li></ul></article><div class="role-bridge"><span>商品・営業・広報</span><i>←</i><b>後方支援</b><i>→</i><span>高度案件を連携</span></div><article class="role-card"><small>BACK / SUPPORT</small><h3>ライトアップ</h3><strong>商品開発と専門実務</strong><ul><li>商品システムを供給する</li><li>営業と広報を支援する</li><li>対応が難しい案件を実行する</li></ul></article></div><div class="launch-plan"><div class="launch-goal"><strong>60</strong><span>社／12か月</span><p>まず目指すのは、<br/><b>地域60社の相談窓口</b></p></div><ol class="growth-steps"><li><span>01</span><b>自社で使う</b><small>まず成果を体験</small></li><li><span>02</span><b>顧客を選ぶ</b><small>既存顧客から選定</small></li><li><span>03</span><b>診断を案内</b><small>課題を見える化</small></li><li><span>04</span><b>AIOを提供</b><small>継続支援へ</small></li></ol></div><p class="condition-note">※60社は12か月・累計60IDの事業目標です。提供条件、価格、収益分配は個別にご案内します。</p></div></section><section class="section expansion"><div class="container"><div class="section-heading split-heading"><div><p class="section-kicker">06　事業の広がり</p><h2><span class="heading-line">AIOから始める。</span><span class="heading-line">地域のAI相談窓口へ。</span></h2></div><p>AIOの相談を入口にすると、顧客から別のAI相談が集まります。ライトアップが新しい商品を継続供給し、御社の提案機会を増やします。</p></div><div class="service-orbit" aria-label="AIOを入口にSNS、LINE、電話、AI開発の相談へ広がる図"><div class="orbit-center"><small>LOCAL AI DESK</small><strong>御社</strong><span>地域のAI相談窓口</span></div><div class="orbit-services"><article class="active"><b>AIO</b><span>AI検索で見つけてもらう</span></article><article class=""><b>SNS</b><span>情報発信を続ける</span></article><article class=""><b>LINE</b><span>顧客対応を自動化する</span></article><article class=""><b>電話</b><span>受電業務をAI化する</span></article><article class=""><b>開発</b><span>専用のAI業務をつくる</span></article></div></div><p class="statement">AIOは、一つの商品ではなく、次の商品が集まる入口です。</p><aside class="vision-column"><div class="vision-mark" aria-hidden="true">W</div><div class="vision-copy"><p class="section-kicker">WHY WE DO THIS</p><h3 aria-label="全国、全ての中小企業を黒字にする"><span class="heading-line">全国、全ての</span><span class="heading-line">中小企業を黒字にする</span></h3><p>株式会社ライトアップが掲げるビジョンです。東京証券取引所の上場会社3,891社のうちの一社として、私たちは赤字の中小企業に向き合い、黒字化という結果まで徹底して支援する会社でありたいと考えています。</p><blockquote>「ここまで中小企業の黒字化に向き合う上場企業は珍しい」と、言っていただくことがあります。</blockquote><small>出典：<a href="https://writeup.jp/" target="_blank" rel="noreferrer">株式会社ライトアップ公式サイト</a>／上場会社数3,891社（2026年9月4日時点）：<a href="https://www.jpx.co.jp/listing/co/index.html" target="_blank" rel="noreferrer">日本取引所グループ</a></small></div></aside></div></section><section class="section final-cta" id="contact"><div class="container final-grid"><div><p class="section-kicker">YOUR NEXT BUSINESS</p><h2><span class="heading-line">地元で、AIO事業を</span><span class="heading-line">始めませんか。</span></h2></div><div class="cta-panel"><p><strong>御社自身が、地域のAIOコンサル会社になります。</strong></p><p>どの顧客から始めるか、どのように60社へ広げるか。御社の顧客基盤に合わせてご説明します。</p><a class="button-primary" href="https://writeup.jp/contact/">AIOコンサル事業の説明を聞く</a><small>その場での契約は求めません。提供条件は説明時にご確認いただけます。</small></div></div></section><footer><div class="container footer-inner"><p>AIO CONSULTING BUSINESS</p><p>PRODUCT / SALES / PR &amp; SUPPORT</p></div></footer></main></body></html>
+
+/* ==========================================================================
+   Editorial refinement layer
+   和文は字間を広げ行間を大きく、欧文ラベルは小さく大トラッキング。
+   紙は純白でなく生成り、黒は寒色でなく温色。青は差し色ではなく最終CTAで面にする。
+   JSは書き出し時に全削除されるため、動きはすべてCSSに閉じる。
+
+   重要：このブロックは既存のメディアクエリより後ろにあるため、
+   モバイル指定と同じプロパティを触る規則は必ずmin-widthで囲うこと。
+   囲い忘れると .hero-grid の1カラム化などが無効化され、横スクロールが発生する。
+   ========================================================================== */
+
+/* --- 以下はメディアクエリと衝突しない（無条件に適用してよい） --- */
+body {
+  letter-spacing: 0.012em;
+}
+.section-kicker,
+.eyebrow {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+}
+.hero h1 {
+  font-weight: 780;
+  letter-spacing: -0.058em;
+}
+.section-heading h2,
+.final-grid h2 {
+  font-weight: 740;
+  letter-spacing: -0.05em;
+}
+.section-heading > p:last-child,
+.split-heading > p {
+  line-height: 1.95;
+  letter-spacing: 0.02em;
+}
+
+/* --- 面の温度を紙に合わせる --- */
+.experiment-proof {
+  background: var(--panel);
+  border-color: #d0cdc9;
+  box-shadow:
+    12px 12px 0 #dedbd7,
+    0 24px 54px rgba(32, 34, 31, 0.11);
+}
+.fact-board article,
+.role-card {
+  background: var(--panel);
+}
+.aio-shift {
+  background:
+    radial-gradient(120% 90% at 78% 8%, #2f3230 0%, rgba(47, 50, 48, 0) 58%),
+    var(--ink);
+}
+.aio-shift .section-kicker {
+  color: #b7b4b0;
+}
+
+/* --- 最終CTA：青を差し色ではなく面として使う --- */
+.final-cta {
+  color: #fff;
+  background:
+    radial-gradient(115% 85% at 82% 6%, #585551 0%, rgba(88, 85, 81, 0) 60%),
+    var(--blue);
+}
+.final-cta .section-kicker {
+  color: rgba(255, 255, 255, 0.72);
+}
+.final-cta .cta-panel {
+  border-top-color: rgba(255, 255, 255, 0.38);
+}
+.final-cta .cta-panel p {
+  color: rgba(255, 255, 255, 0.85);
+}
+.final-cta .cta-panel small {
+  color: rgba(255, 255, 255, 0.62);
+}
+.final-cta .button-primary {
+  color: var(--blue);
+  background: #fff;
+}
+.final-cta .button-primary:hover {
+  background: #f3f0ec;
+}
+
+/* --- ホバーの質感 --- */
+.foundation-card,
+.role-card,
+.fact-board article {
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.foundation-card:hover,
+.role-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(32, 34, 31, 0.1);
+}
+
+/* --- スクロール連動の出現：CSSのみ。未対応ブラウザでは常に可視 --- */
+@keyframes editorial-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .section .section-heading,
+    .fact-board,
+    .market-answer,
+    .build-choice,
+    .supply-flow,
+    .experiment-proof,
+    .shift-timeline,
+    .aio-stats,
+    .foundation-grid,
+    .role-map,
+    .launch-plan,
+    .service-orbit,
+    .vision-column,
+    .final-grid {
+      animation: editorial-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 4% cover 24%;
+    }
+  }
+}
+
+/* --- ここから下はモバイル指定と同じプロパティを触るため必ず囲う --- */
+@media (min-width: 521px) {
+  .hero h1 {
+    line-height: 1.09;
+  }
+  .section-heading h2,
+  .final-grid h2 {
+    line-height: 1.12;
+  }
+}
+@media (min-width: 781px) {
+  .section {
+    padding: clamp(104px, 9vw, 168px) 0;
+  }
+  .section-heading {
+    margin-bottom: clamp(52px, 6vw, 84px);
+  }
+  .hero {
+    padding: clamp(72px, 9vw, 132px) 0 clamp(40px, 5vw, 64px);
+  }
+  .hero-lead {
+    margin: 0 0 40px;
+  }
+  .story-rail {
+    margin-top: clamp(56px, 7vw, 92px);
+  }
+}
+@media (min-width: 1025px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.25fr) minmax(340px, 0.72fr);
+    gap: clamp(52px, 8vw, 104px);
+  }
+  .hero h1 {
+    margin: 26px 0 34px;
+    font-size: clamp(48px, 5.8vw, 80px);
+  }
+}
+
+/* ==========================================================================
+   Bold pass ── 「かっこよさ」のための誇張
+   方針：大小のコントラストを作る。枠を外して余白で仕切る。数字を主役にする。
+   ここも既存メディアクエリより後ろにあるため、モバイル指定と同じ
+   プロパティを触る規則は必ず min-width で囲うこと。
+   ========================================================================== */
+
+/* --- ヒーローの箱を外し、図を地の上に置く --- */
+.hero-system {
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+/* --- 罫線を減らす。仕切りは余白に任せる --- */
+.foundation-grid {
+  border-left: none;
+}
+.foundation-card {
+  border-right: none;
+}
+.foundation-card:not(:last-child) {
+  border-right: 1px solid var(--line);
+}
+
+/* --- ここから下は必ず囲う --- */
+@media (min-width: 781px) {
+  .fact-board strong {
+    font-size: clamp(38px, 4.4vw, 60px);
+  }
+  .launch-goal strong {
+    font-size: clamp(88px, 8.6vw, 124px);
+  }
+}
+@media (min-width: 1025px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: clamp(48px, 6vw, 76px);
+  }
+  .hero-copy {
+    max-width: none;
+  }
+  .hero h1 {
+    margin: 30px 0 38px;
+    font-size: clamp(52px, 8.6vw, 118px);
+  }
+  .hero-system {
+    max-width: 940px;
+  }
+}
+
+/* ==========================================================================
+   Refinement pass 2
+   ・大きな日本語は「細く・広く」。太く詰めると圧だけが出て安く見える
+   ・矢印はテキスト文字をやめSVGに。線幅と先端を制御する
+   ・罫線を減らし、仕切りは余白に任せる
+   min-width の囲いルールはこれまでと同じ。
+   ========================================================================== */
+
+/* --- 大見出し：ウェイトを落とし、字間をゼロ付近へ戻す --- */
+.hero h1 {
+  font-weight: 430;
+  letter-spacing: -0.012em;
+}
+.section-heading h2,
+.final-grid h2 {
+  font-weight: 450;
+  letter-spacing: -0.014em;
+}
+.hero h1 em {
+  font-weight: 560;
+}
+.experiment-copy h3,
+.aio-stats-heading h3,
+.market-answer h3,
+.vision-copy h3 {
+  font-weight: 480;
+  letter-spacing: -0.02em;
+}
+
+/* --- 矢印：SVGに置き換え。emで既存の枠に収まる --- */
+.arrow-svg {
+  display: block;
+  width: 1.9em;
+  height: 0.67em;
+  overflow: visible;
+}
+.arrow-svg-down {
+  width: 0.67em;
+  height: 1.9em;
+}
+.arrow-svg-left {
+  transform: scaleX(-1);
+}
+.fact-arrow,
+.role-bridge i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- 罫線を減らす --- */
+.foundation-grid {
+  border-top-width: 1px;
+}
+.foundation-card:not(:last-child) {
+  border-right: none;
+}
+.foundation-card {
+  border-bottom: none;
+  padding-left: 0;
+  padding-right: clamp(20px, 2.4vw, 40px);
+}
+.role-card {
+  border: none;
+}
+.role-card.main-role {
+  border-top: 2px solid var(--blue);
+}
+.launch-goal {
+  border-right: none;
+}
+.fact-board article {
+  border: none;
+}
+
+/* --- 暗部と青面に質感を足す --- */
+.aio-shift,
+.final-cta {
+  position: relative;
+}
+.aio-shift::after,
+.final-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image:
+    linear-gradient(
+      115deg,
+      rgba(255, 255, 255, 0.07) 0%,
+      rgba(255, 255, 255, 0) 34%,
+      rgba(255, 255, 255, 0) 66%,
+      rgba(255, 255, 255, 0.05) 100%
+    ),
+    repeating-linear-gradient(
+      115deg,
+      rgba(255, 255, 255, 0.028) 0px,
+      rgba(255, 255, 255, 0.028) 1px,
+      rgba(255, 255, 255, 0) 1px,
+      rgba(255, 255, 255, 0) 9px
+    );
+}
+.aio-shift > *,
+.final-cta > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   Refinement pass 3
+   ・ウェイト430は「上品」でなく「無指定」に見えた。600前後へ戻す
+   ・118px→14pxの飛びを埋める中間サイズを置く
+   ・ヒーロー図と4ステップ帯の「箱と枠」をやめる（組織図・申込用紙に見える原因）
+   ・CSSのcontentに残っていたテキスト矢印を、描いた山形に置き換える
+   ========================================================================== */
+
+/* --- ウェイトの戻し（430は振りすぎだった） --- */
+.hero h1 {
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+.hero h1 em {
+  font-weight: 680;
+}
+.section-heading h2,
+.final-grid h2 {
+  font-weight: 580;
+  letter-spacing: -0.032em;
+}
+.experiment-copy h3,
+.aio-stats-heading h3,
+.market-answer h3,
+.vision-copy h3 {
+  font-weight: 580;
+  letter-spacing: -0.03em;
+}
+
+/* --- 大と小の間を埋める --- */
+.hero-lead {
+  font-size: clamp(18px, 1.9vw, 27px);
+  font-weight: 560;
+  line-height: 1.75;
+}
+
+/* --- ヒーロー図：箱と枠をやめる --- */
+.system-source,
+.system-clients {
+  padding: 18px 0;
+  background: none;
+  border: none;
+  border-top: 1px solid var(--line);
+}
+.system-source {
+  border-top: 2px solid var(--blue);
+}
+.source-items span {
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 13px;
+  font-weight: 620;
+  text-align: left;
+}
+.source-items {
+  gap: 0 clamp(14px, 2vw, 30px);
+}
+.system-source > strong {
+  font-size: 21px;
+  font-weight: 620;
+}
+
+/* --- 4ステップ帯：表組みをやめ、文字を読める大きさに --- */
+.story-rail {
+  border-left: none;
+}
+.story-rail li {
+  padding: 18px 22px 18px 0;
+  border-right: none;
+  border-bottom: none;
+}
+.story-rail li:not(:last-child)::after {
+  content: '';
+  right: 14px;
+  top: calc(50% - 4px);
+  width: 7px;
+  height: 7px;
+  background: none;
+  border: none;
+  border-top: 1.2px solid var(--blue);
+  border-right: 1.2px solid var(--blue);
+  transform: rotate(45deg);
+}
+.story-rail b {
+  font-size: 16px;
+  font-weight: 620;
+}
+.story-rail small {
+  margin-top: 5px;
+  font-size: 11px;
+}
+.story-rail span {
+  font-size: 11px;
+}
+
+/* ==========================================================================
+   Refinement pass 4 ── ヒーロー図と補助テキストの立て直し
+   ・枠を外したら3語が宙に浮いたので、上罫で3つの欄として見せる
+   ・9〜11pxの補助文字が小さすぎて読めなかったので上げる
+   ・黒帯が「棒」に見えていたので、塊にする
+   ========================================================================== */
+
+/* --- ボタン横の注記が小さすぎた --- */
+.hero-actions > span {
+  max-width: 300px;
+  font-size: 13px;
+  font-weight: 620;
+  line-height: 1.75;
+}
+
+/* --- 商品・営業・広報：3つの欄として見せる --- */
+.source-items span {
+  padding-top: 11px;
+  border-top: 1px solid var(--line);
+}
+.source-items {
+  margin-top: 18px;
+}
+
+/* --- 矢印まわりの説明文字 --- */
+.system-arrow {
+  height: 58px;
+}
+.system-arrow span {
+  font-size: 11px;
+  font-weight: 700;
+}
+.system-arrow i {
+  height: 20px;
+}
+
+/* --- 「御社のAIO事業」を棒ではなく塊にする --- */
+.system-owner {
+  padding: clamp(26px, 3vw, 40px) 20px;
+}
+.system-owner strong {
+  margin-top: 10px;
+  font-size: clamp(24px, 2.4vw, 32px);
+  font-weight: 620;
+}
+.system-owner span {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 620;
+}
+
+/* --- 60社の行 --- */
+.system-clients strong {
+  font-size: 19px;
+  font-weight: 620;
+}
+.system-clients small,
+.system-clients span:not(.client-grid span) {
+  font-size: 11px;
+}
+
+/* --- 4ステップ帯の山形を少し大きく --- */
+.story-rail li:not(:last-child)::after {
+  width: 9px;
+  height: 9px;
+  top: calc(50% - 5px);
+  border-top-width: 1.4px;
+  border-right-width: 1.4px;
+}
+
+/* ==========================================================================
+   Refinement pass 5 ── 日本語の折り返し
+   「増えていま／す。」「AIO MASTERで／す。」のように末尾1〜2文字だけが
+   次行に落ちていた。heading-lineで明示改行していない素の見出しが対象。
+   word-break:auto-phrase は日本語を文節単位で折る指定（非対応ブラウザは無視）。
+   ========================================================================== */
+
+h1,
+h2,
+h3,
+h4,
+.hero-lead,
+.section-heading > p,
+.split-heading > p,
+.foundation-card > p,
+.aio-stat-flow li > p,
+.role-card > strong,
+.cta-panel p,
+.experiment-copy > p,
+.aio-stats-heading > p {
+  word-break: auto-phrase;
+  text-wrap: pretty;
+}
+.aio-stats-heading h3,
+.foundation-card h3,
+.aio-stat-flow h4 {
+  text-wrap: balance;
+}
+
+/* --- 統計カードの本文が小さすぎた --- */
+.aio-stat-flow li > p:not(.aio-stat-value) {
+  font-size: 13px;
+  line-height: 1.75;
+}
+.aio-stat-flow li > a {
+  font-size: 11px;
+}
+
+/* ==========================================================================
+   Refinement pass 6 ── 日本語の極小文字をなくす
+   図のラベル・統計の見出し・出典・注記が8〜9pxで、実質読めなかった。
+   欧文だけのラベル（LIGHTUP / SUPPORT 等）は小さいままでよいが、
+   日本語が入る要素は11pxを下限にする。
+   ========================================================================== */
+
+.aio-stat-top b,
+.foundation-diagram span,
+.role-bridge span,
+.orbit-center span,
+.orbit-node span,
+.system-owner span,
+.system-arrow span,
+.supply-flow > div span,
+.supply-flow > i span,
+.build-choice article > div span,
+.experiment-visual p,
+.experiment-copy > small,
+.experiment-funnel span,
+.funnel-period,
+.aio-stats-note,
+.condition-note,
+.source-note,
+.source-note a,
+.cta-panel small,
+.evidence-strip,
+.evidence-strip a,
+.shift-timeline article > span,
+.story-rail small,
+.launch-goal > span,
+.growth-steps small {
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+/* 残っていた極小日本語（タグ・図中ラベル・出典リンク） */
+.foundation-card ul li,
+.service-orbit .orbit-services article span,
+.formula .fixed span,
+.formula .focus span,
+.vision-copy small,
+.vision-copy small a {
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+/* ==========================================================================
+   Proposal layout ── 1セクション＝1ページ
+   全ページ同じ骨格：上にページ見出し（章番号・章題・ページ番号）、
+   その下に主見出し、リード、図。位置が揃うことで提案書になる。
+   ========================================================================== */
+
+/* --- ページ見出し（全ページ共通の帯） --- */
+.page-head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  column-gap: 14px;
+  padding-bottom: 13px;
+  margin-bottom: clamp(34px, 4vw, 54px);
+  border-bottom: 1px solid var(--line);
+}
+.page-head span {
+  color: var(--blue);
+  font:
+    800 13px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
+    monospace;
+  letter-spacing: 0.08em;
+}
+.page-head b {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.page-head i {
+  color: var(--mute);
+  font:
+    700 11px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
+    monospace;
+  font-style: normal;
+  letter-spacing: 0.08em;
+}
+.aio-shift .page-head,
+.final-cta .page-head {
+  border-bottom-color: rgba(255, 255, 255, 0.26);
+}
+.aio-shift .page-head b,
+.final-cta .page-head b {
+  color: #fff;
+}
+.aio-shift .page-head span,
+.final-cta .page-head span {
+  color: #b7b4b0;
+}
+.aio-shift .page-head i,
+.final-cta .page-head i {
+  color: rgba(255, 255, 255, 0.62);
+}
+.final-cta .page-head span {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* --- 表紙 --- */
+.cover-meta {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 13px;
+  margin-bottom: clamp(48px, 7vw, 96px);
+  border-bottom: 1px solid var(--line);
+}
+.cover-meta p {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+.cover-meta p:last-child {
+  color: var(--blue);
+}
+
+/* --- 目次 --- */
+.toc {
+  margin-top: clamp(56px, 7vw, 92px);
+  padding-top: clamp(28px, 3vw, 40px);
+  border-top: 1px solid var(--line);
+}
+.toc-label {
+  margin: 0 0 22px;
+  color: var(--mute);
+  font:
+    800 11px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
+    monospace;
+  letter-spacing: 0.12em;
+}
+.toc ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.toc li + li {
+  border-top: 1px solid var(--line);
+}
+.toc a {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 200px) minmax(0, 1fr);
+  align-items: baseline;
+  column-gap: 16px;
+  padding: 16px 0;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+.toc a:hover {
+  background: rgba(69, 66, 62, 0.045);
+}
+.toc a span {
+  color: var(--blue);
+  font:
+    800 11px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
+    monospace;
+}
+.toc a b {
+  font-size: 16px;
+  font-weight: 700;
+}
+.toc a small {
+  color: var(--mute);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* --- 表題は提案書の大きさに戻す（LPのヒーローではない） --- */
+@media (min-width: 1025px) {
+  .hero h1 {
+    margin: 22px 0 30px;
+    font-size: clamp(44px, 4.4vw, 62px);
+  }
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.85fr);
+    align-items: start;
+  }
+}
+.hero {
+  min-height: 0;
+}
+
+/* --- 最終ページは面ベタをやめ、文書の締めにする --- */
+.final-cta {
+  color: var(--ink);
+  background: var(--soft);
+}
+.final-cta::after {
+  display: none;
+}
+.final-cta .cta-panel {
+  border-top-color: var(--line);
+}
+.final-cta .cta-panel p {
+  color: var(--mute);
+}
+.final-cta .cta-panel small {
+  color: var(--mute);
+}
+.final-cta .cta-panel p strong {
+  color: var(--ink);
+}
+.final-cta .button-primary {
+  color: #fff;
+  background: var(--blue);
+}
+.final-cta .button-primary:hover {
+  background: var(--blue-dark);
+}
+
+/* --- 目次：狭い幅では3カラムをやめて積む（孤立行が出るため） --- */
+@media (max-width: 780px) {
+  .toc a {
+    grid-template-columns: 34px minmax(0, 1fr);
+    row-gap: 6px;
+    padding: 15px 0;
+  }
+  .toc a small {
+    grid-column: 2 / 3;
+    font-size: 13px;
+  }
+  .cover-meta {
+    margin-bottom: 44px;
+  }
+}
+
+/* --- 見出しの下の「答え」の一行（問い→答えの構成） --- */
+.heading-answer {
+  max-width: 660px;
+  margin: clamp(14px, 1.6vw, 22px) 0 0;
+  color: var(--blue);
+  font-size: clamp(17px, 1.6vw, 23px);
+  font-weight: 620;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+  word-break: auto-phrase;
+  text-wrap: pretty;
+}
+.aio-shift .heading-answer,
+.evidence .heading-answer {
+  color: #b7b4b0;
+}
+.split-heading .heading-answer {
+  grid-column: 1 / -1;
+}
+
+/* ==========================================================================
+   Slide deck ── パワーポイントとして組む
+   背景は白と、わずかに色を付けたグレーの2種類だけを交互に。
+   色は白・黒・グレーのみ。差し色（オレンジ）は後で --accent として入れる。
+   ========================================================================== */
+
+/* --- スライドの地：白 → グレー → 白 …… の交互 --- */
+.hero {
+  background: var(--slide-a);
+}
+.market {
+  background: var(--slide-b);
+}
+.sourcing {
+  background: var(--slide-a);
+}
+.proof {
+  background: var(--slide-b);
+}
+.aio-shift {
+  background: var(--slide-a);
+}
+.evidence {
+  background: var(--slide-b);
+}
+.foundation {
+  background: var(--slide-a);
+}
+.operation {
+  background: var(--slide-b);
+}
+.expansion {
+  background: var(--slide-a);
+}
+.final-cta {
+  background: var(--slide-b);
+}
+
+/* --- 暗かった2枚を明るいスライドへ読み替える --- */
+.aio-shift,
+.evidence {
+  color: var(--ink);
+}
+.aio-shift::after,
+.evidence::after {
+  display: none;
+}
+.aio-shift .page-head,
+.evidence .page-head {
+  border-bottom-color: var(--line);
+}
+.aio-shift .page-head b,
+.evidence .page-head b,
+.aio-shift .page-head span,
+.evidence .page-head span {
+  color: var(--ink);
+}
+.aio-shift .page-head i,
+.evidence .page-head i {
+  color: var(--mute);
+}
+.aio-shift .section-kicker,
+.evidence .section-kicker,
+.aio-shift .heading-answer,
+.evidence .heading-answer {
+  color: var(--ink);
+}
+.section-heading-light > p:last-child {
+  color: var(--mute);
+}
+
+/* 04：SEO / MEO / AIO のカード */
+.shift-timeline article {
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+.shift-top,
+.shift-timeline article > strong,
+.shift-timeline p {
+  color: var(--mute);
+}
+.shift-timeline h3 {
+  color: var(--ink);
+}
+.shift-timeline article > i {
+  color: var(--ink);
+  background: var(--slide-a);
+}
+.shift-timeline .active {
+  color: #fff;
+  background: var(--ink);
+  border-color: var(--ink);
+}
+.shift-timeline .active .shift-top,
+.shift-timeline .active p,
+.shift-timeline .active > strong,
+.shift-timeline .active h3 {
+  color: #fff;
+}
+.evidence-strip,
+.evidence-strip a {
+  color: var(--mute);
+}
+
+/* 05：統計5枚 */
+.aio-stats-heading h3,
+.aio-stat-flow h4 {
+  color: var(--ink);
+}
+.aio-stats-heading > p:last-child {
+  color: var(--mute);
+}
+.aio-stat-flow li,
+.aio-stat-flow li:nth-child(4) {
+  color: var(--ink);
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+.aio-stat-flow li:last-child {
+  color: #fff;
+  background: var(--ink);
+  border-color: var(--ink);
+}
+.aio-stat-top,
+.aio-stat-top b,
+.aio-stat-value span,
+.aio-stat-flow li > p:not(.aio-stat-value),
+.aio-stat-flow a {
+  color: var(--mute);
+}
+.aio-stat-value strong {
+  color: var(--ink);
+}
+.aio-stat-flow li:last-child .aio-stat-top,
+.aio-stat-flow li:last-child .aio-stat-top b,
+.aio-stat-flow li:last-child .aio-stat-value strong,
+.aio-stat-flow li:last-child .aio-stat-value span,
+.aio-stat-flow li:last-child h4,
+.aio-stat-flow li:last-child > p:not(.aio-stat-value),
+.aio-stat-flow li:last-child a {
+  color: #fff;
+}
+.aio-stat-flow li:last-child .aio-stat-top,
+.aio-stat-flow li:last-child .aio-stat-top b {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.aio-stats-conclusion {
+  color: var(--ink);
+}
+.aio-stats-note {
+  color: var(--mute);
+}
+
+/* ==========================================================================
+   mcp-guide 準拠
+   同リポジトリの mcp-guide（公開中）から実測した設計をそのまま移植する。
+     見出し  weight 800 / 行間 0.98前後 / 字間 -0.065em  ← 密に詰めて塊にする
+     小見出し weight 400                                ← 見出しとの太さの落差で見せる
+     ラベル  10px / weight 800 / 字間 +0.17em ＋ 頭にオレンジの短い線
+     差し色  #f97316 を、四角・矢印・分類名だけに使う（面には使わない）
+     角丸    0〜3px
+   ========================================================================== */
+
+/* --- 見出し：太く、詰める --- */
+.hero h1 {
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.072em;
+}
+.hero h1 em {
+  font-weight: 800;
+}
+.section-heading h2,
+.final-grid h2 {
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.065em;
+}
+@media (min-width: 521px) {
+  .hero h1 {
+    line-height: 0.98;
+  }
+  .section-heading h2,
+  .final-grid h2 {
+    line-height: 1.02;
+  }
+}
+@media (min-width: 1025px) {
+  .section-heading h2,
+  .final-grid h2 {
+    font-size: clamp(38px, 4vw, 52px);
+  }
+}
+
+/* --- 小見出しは逆に軽く。太さの落差で階層をつくる --- */
+.foundation-card h3,
+.shift-timeline h3,
+.aio-stat-flow h4,
+.role-card > strong {
+  font-weight: 400;
+  letter-spacing: -0.045em;
+}
+.heading-answer {
+  font-weight: 500;
+  color: var(--mute);
+  letter-spacing: -0.02em;
+}
+
+/* --- ラベル：小さく、大きく空け、頭にオレンジの線 --- */
+.section-kicker,
+.eyebrow,
+.toc-label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.17em;
+  color: var(--ink);
+}
+.section-kicker::before,
+.eyebrow::before,
+.toc-label::before {
+  content: '';
+  flex: 0 0 auto;
+  width: 18px;
+  height: 2px;
+  background: var(--accent);
+}
+
+/* --- 差し色は点で使う。面には使わない --- */
+.page-head span {
+  color: var(--accent);
+}
+.arrow-svg {
+  color: var(--accent);
+}
+.aio-stat-top b,
+.foundation-card-top b,
+.role-card small,
+.build-choice small,
+.supply-flow small,
+.shift-timeline .shift-top b {
+  color: var(--accent);
+}
+.cover-meta p:last-child {
+  color: var(--accent);
+}
+
+/* --- 角はほぼ立てる --- */
+.button-primary,
+.foundation-card,
+.role-card,
+.aio-stat-flow li,
+.shift-timeline article,
+.fact-board article,
+.experiment-proof {
+  border-radius: 3px;
+}
+
+/* --- ボタンは黒地・白文字 --- */
+.button-primary {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   問いと回答 ── 重要度は同じ。差は色だけでつける
+   上（h2）＝黒、下（.heading-answer）＝グレー。大きさ・太さ・字間は同一。
+   同サイズ2文になるぶん行数が増えるため、狭い幅では両方を1段下げる。
+   ========================================================================== */
+
+.heading-answer {
+  max-width: none;
+  margin-top: clamp(10px, 1.1vw, 16px);
+  color: var(--mute);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.065em;
+  font-size: clamp(28px, 4vw, 52px);
+}
+.heading-answer .heading-line {
+  display: block;
+}
+@media (min-width: 1025px) {
+  .heading-answer {
+    font-size: clamp(38px, 4vw, 52px);
+  }
+}
+/* 狭い幅：問いも回答も1段小さくして、4行でも収まるようにする */
+@media (max-width: 520px) {
+  .section-heading h2,
+  .final-grid h2,
+  .heading-answer {
+    font-size: 28px;
+    line-height: 1.08;
+  }
+}
+
+/* ==========================================================================
+   図の凡例規約
+   線種は「確度」だけを表す。実線＝すでに起きていること／破線＝目標・構想。
+   役割の前後は線種ではなく、位置と塗りの濃さで表す（意味の衝突を避けるため）。
+   出典・地域・調査年は、線種ではなく数値の隣のラベルで示す。
+   ========================================================================== */
+
+/* --- 07：事業目標は手順から切り離し、破線で囲う --- */
+.launch-target {
+  margin-top: clamp(28px, 3.4vw, 44px);
+  padding: clamp(22px, 2.6vw, 34px);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: clamp(22px, 3vw, 44px);
+  row-gap: 12px;
+  border: 1.5px dashed var(--line);
+  border-radius: 3px;
+}
+.launch-target-label {
+  grid-column: 1 / -1;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.17em;
+  color: var(--mute);
+}
+.launch-target-label::before {
+  content: '';
+  width: 18px;
+  height: 2px;
+  background: var(--accent);
+}
+.launch-target .launch-goal {
+  padding: 0;
+  border: none;
+}
+.launch-target-note {
+  margin: 0;
+  color: var(--mute);
+  font-size: 11px;
+  line-height: 1.8;
+  word-break: auto-phrase;
+}
+@media (max-width: 780px) {
+  .launch-target {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- 05：出典ごとに区切る。1本の流れとして繋がない --- */
+.aio-stat-flow {
+  gap: 10px;
+}
+.aio-stat-flow li[data-group='A'] {
+  box-shadow: inset 3px 0 0 var(--ink);
+}
+.aio-stat-flow li[data-group='B'],
+.aio-stat-flow li[data-group='C'] {
+  box-shadow: inset 3px 0 0 var(--line);
+}
+.aio-stat-flow li[data-group='B'] {
+  margin-left: clamp(10px, 1.4vw, 22px);
+}
+.aio-stat-flow a {
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* --- 09：見る → 調整する → 判断する の3段 --- */
+.cta-steps {
+  margin: 0 0 26px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0;
+}
+.cta-steps li {
+  position: relative;
+  padding: 14px 0 14px 40px;
+  border-top: 1px solid var(--line);
+}
+.cta-steps li:last-child {
+  border-bottom: 1px solid var(--line);
+}
+.cta-steps li span {
+  position: absolute;
+  left: 0;
+  top: 15px;
+  color: var(--accent);
+  font:
+    800 11px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
+    monospace;
+  letter-spacing: 0.1em;
+}
+.cta-steps li b {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+}
+.cta-steps li small {
+  display: block;
+  margin-top: 4px;
+  color: var(--mute);
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+/* ==========================================================================
+   スライド構図
+   規約1：1枚は1画面に収める（縮小して詰め込まず、収まらなければ割る）
+   規約2：1枚に主役を1つだけ置き、他の要素より明確に大きくする
+   規約3：主役の種類（文字／数字／図）を隣り合う枚で変える
+   ========================================================================== */
+
+@media (min-width: 1025px) {
+  /* ページ見出しは流れの中で上に固定し、本文は残りの領域の中央に置く。
+     絶対配置にすると本文が帯の下へ潜り込むため使わない。 */
+  .section {
+    min-height: 100svh;
+    padding: clamp(40px, 3.1vw, 46px) 0 clamp(34px, 2.6vw, 40px);
+    display: flex;
+    flex-direction: column;
+  }
+  .section > .container:first-child {
+    flex: 0 0 auto;
+  }
+  /* 全枚で見出しの位置を揃える。短い枚は下に余白が残るが、
+     枚ごとに開始位置が動くほうが並べたとき不揃いに見える。 */
+  .section > .container:last-child {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .section-heading {
+    margin-bottom: clamp(28px, 3vw, 46px);
+  }
+}
+
+/* --- 表紙：右半分を空けたまま残す。埋めない --- */
+.hero .hero-copy {
+  max-width: 760px;
+}
+.hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* --- 目次：単独スライド --- */
+.slide-toc .toc {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+/* --- 01：数字を主役にする --- */
+.market .fact-board {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+}
+.market .fact-board .fact-arrow,
+.market .fact-board article:nth-of-type(2),
+.market .fact-board article:nth-of-type(3) {
+  display: none;
+}
+.market .fact-board article:first-of-type {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: clamp(26px, 3.4vw, 52px);
+  min-height: 0;
+  padding: 0;
+  background: none;
+}
+.market .fact-board article:first-of-type small {
+  grid-column: 2;
+  grid-row: 1;
+}
+.market .fact-board article:first-of-type strong {
+  grid-column: 1;
+  grid-row: 1 / 4;
+  margin: 0;
+  font-size: clamp(64px, 11vw, 148px);
+  line-height: 0.86;
+  letter-spacing: -0.07em;
+}
+.market .fact-board article:first-of-type strong em {
+  font-size: clamp(13px, 1.1vw, 16px);
+}
+.market .fact-board article:first-of-type p {
+  grid-column: 2;
+  grid-row: 2;
+}
+.market .source-note {
+  margin-top: 18px;
+}
+
+/* --- はみ出した4枚を1画面へ収める（縮小ではなく、詰まりの原因を削る） --- */
+@media (min-width: 1025px) {
+  /* 06 統計：5枚を横一列のまま、出典の重みを大きさで分ける */
+  .evidence .aio-stat-flow {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 8px;
+    align-items: start;
+  }
+  .evidence .aio-stat-flow li[data-group='B'],
+  .evidence .aio-stat-flow li[data-group='C'] {
+    margin-left: 0;
+    margin-top: clamp(16px, 1.8vw, 28px);
+  }
+  .evidence .aio-stat-flow li[data-group='B'] .aio-stat-value strong,
+  .evidence .aio-stat-flow li[data-group='C'] .aio-stat-value strong {
+    font-size: clamp(26px, 2.2vw, 34px);
+  }
+  .evidence .aio-stat-flow li > p:not(.aio-stat-value) {
+    font-size: 11.5px;
+    line-height: 1.65;
+  }
+  .evidence .aio-stat-flow li {
+    padding: 16px 14px;
+  }
+  .evidence .aio-stats-conclusion {
+    padding: 14px 18px;
+  }
+  .evidence .aio-stats-conclusion strong {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .evidence .aio-stats-heading > p:last-child {
+    display: none;
+  }
+
+  /* 03 選別実績：本文を絞り、ファネルを主役の大きさへ */
+  .proof .experiment-proof {
+    padding: clamp(28px, 3vw, 44px);
+    box-shadow: none;
+  }
+  .proof .experiment-copy > p {
+    max-width: 46ch;
+  }
+
+  /* 09 始め方・10 その先：縦の詰めを浅くする */
+  .launch .launch-target,
+  .expansion .service-orbit {
+    margin-top: clamp(20px, 2.2vw, 30px);
+  }
+  .launch .growth-steps li {
+    min-height: 0;
+  }
+}
+
+/* --- 残る4枚を1画面へ。詰まりの原因ごとに個別に対処する --- */
+@media (min-width: 1025px) {
+  /* 03：ファネルが主役。左の本文は要点だけにして高さを譲る */
+  .proof .experiment-proof {
+    align-items: start;
+    gap: clamp(32px, 4vw, 60px);
+    padding: 0;
+    background: none;
+    border: none;
+  }
+  .proof .experiment-copy > p {
+    font-size: 13.5px;
+    line-height: 1.85;
+  }
+
+  /* 06：見出しと数字の間を詰める */
+  .evidence .aio-stats-heading {
+    display: none;
+  }
+
+  /* 09・10：見出し直後の余白を浅くする */
+  .launch .section-heading,
+  .expansion .statement {
+    margin: clamp(18px, 2vw, 26px) 0 0;
+    font-size: 16px;
+  }
+}
+
+/* --- 06 統計：横一列を保ち、本文を落として背を下げる（h4が意味を担う） --- */
+@media (min-width: 1025px) {
+  .evidence .aio-stat-flow li > p:not(.aio-stat-value) {
+    display: none;
+  }
+  .evidence .aio-stat-flow li {
+    padding: 18px 15px;
+  }
+  .evidence .aio-stat-flow h4 {
+    margin-top: 12px;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .evidence .aio-stat-flow li a {
+    margin-top: 14px;
+  }
+}
+
+/* --- 06 統計：この1枚だけ縦が余るので、数値と注記を締める --- */
+@media (min-width: 1025px) {
+  .evidence {
+    padding: clamp(60px, 4.6vw, 80px) 0;
+  }
+  .evidence .aio-stat-value strong {
+    font-size: clamp(34px, 3vw, 46px);
+  }
+  .evidence .aio-stat-flow li {
+    padding: 15px 14px;
+  }
+  .evidence .aio-stat-flow h4 {
+    margin-top: 10px;
+    font-size: 13px;
+  }
+  .evidence .aio-stat-flow li a {
+    margin-top: 11px;
+  }
+  .evidence .aio-stats-conclusion {
+    margin-top: 14px;
+  }
+  .evidence .aio-stats-note {
+    margin-top: 12px;
+    font-size: 11px;
+    line-height: 1.6;
+  }
+}
+
+/* ==========================================================================
+   崩れの修正
+   ・統計カードの段違いをやめ、上端を揃える（差は大きさと濃さで付ける）
+   ・見出し横のリード文を、見出しの最終行に沿わせる（上端揃えだと宙に浮く）
+   ・見出しの塊と本文の間隔を、全枚で同じにする
+   ========================================================================== */
+
+/* --- 06：5枚の上端を揃える --- */
+@media (min-width: 1025px) {
+  .evidence .aio-stat-flow li[data-group='B'],
+  .evidence .aio-stat-flow li[data-group='C'] {
+    margin-top: 0;
+  }
+  .evidence .aio-stat-flow li[data-group='B'],
+  .evidence .aio-stat-flow li[data-group='C'] {
+    background: var(--slide-b);
+    box-shadow: inset 3px 0 0 var(--line);
+  }
+  .evidence .aio-stat-flow li[data-group='C'] {
+    color: var(--ink);
+    background: var(--slide-b);
+    border-color: var(--line);
+  }
+  .evidence .aio-stat-flow li[data-group='C'] .aio-stat-top,
+  .evidence .aio-stat-flow li[data-group='C'] .aio-stat-top b,
+  .evidence .aio-stat-flow li[data-group='C'] .aio-stat-value span,
+  .evidence .aio-stat-flow li[data-group='C'] a {
+    color: var(--mute);
+  }
+  .evidence .aio-stat-flow li[data-group='C'] .aio-stat-value strong,
+  .evidence .aio-stat-flow li[data-group='C'] h4 {
+    color: var(--ink);
+  }
+  .evidence .aio-stat-flow li[data-group='C'] .aio-stat-top,
+  .evidence .aio-stat-flow li[data-group='C'] .aio-stat-top b {
+    border-color: var(--line);
+  }
+}
+
+/* --- 見出し横のリード文を最終行に沿わせる --- */
+@media (min-width: 1025px) {
+  .split-heading {
+    align-items: end;
+  }
+  .split-heading > p {
+    margin-bottom: 6px;
+  }
+}
+
+/* --- 01：巨大数字の前に息を入れる --- */
+@media (min-width: 1025px) {
+  .market .fact-board {
+    margin-top: clamp(14px, 1.6vw, 24px);
+  }
+  .market .market-answer {
+    margin-top: clamp(30px, 3.4vw, 48px);
+    padding-top: clamp(26px, 3vw, 40px);
+    border-top: 1px solid var(--line);
+  }
+}
+
+/* ==========================================================================
+   余白の詰め（Codexの実測レビューを反映）
+   ・900pxを超えていた10枚を、要素間隔と図の内部余白で吸収する
+   ・見出しの高さが202〜324pxと動くため、見出し下は固定値ではなく
+     見出しの行数に依存しない一定の「間」として扱う
+   ・内容が少ない2枚（05・11）は上揃えをやめて中央に置く。
+     上揃えのまま下に240px超の余りが出ると、未完成に見えるため。
+   ========================================================================== */
+
+@media (min-width: 1025px) {
+  /* 内容が少ない枚だけ中央寄せにする */
+  .behavior > .container:last-child,
+  .company > .container:last-child {
+    justify-content: center;
+  }
+
+  /* 01 */
+  .market .fact-board {
+    margin-top: 14px;
+  }
+  .market .market-answer {
+    margin-top: 32px;
+    padding-top: 28px;
+  }
+
+  /* 02 */
+  .sourcing .build-choice {
+    margin-top: -5px;
+  }
+
+  /* 03：見出し下を詰め、ファネルの内部余白を締める */
+  .proof .experiment-funnel > div {
+    min-height: 58px;
+    padding: 10px 18px;
+  }
+  .proof .funnel-period {
+    margin-bottom: 10px;
+  }
+
+  /* 04 */
+  .aio-shift .shift-timeline {
+    margin-top: -7px;
+  }
+
+  /* 06：最大の超過。見出し下と統計の内部を両方詰める */
+  .evidence .aio-stat-flow li {
+    padding: 13px 13px;
+  }
+  .evidence .aio-stat-value strong {
+    font-size: clamp(28px, 2.4vw, 38px);
+  }
+  .evidence .aio-stat-flow h4 {
+    margin-top: 8px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .evidence .aio-stat-flow li a {
+    margin-top: 9px;
+  }
+  .evidence .aio-stats-conclusion {
+    margin-top: 12px;
+    padding: 12px 16px;
+  }
+  .evidence .aio-stats-note {
+    margin-top: 10px;
+  }
+
+  /* 09 */
+  .launch .launch-target {
+    margin-top: 22px;
+    padding: clamp(18px, 2vw, 26px);
+  }
+  .launch .growth-steps li {
+    padding: 13px 16px;
+  }
+
+  /* 10 */
+  .expansion .service-orbit {
+    margin-top: 34px;
+  }
+  .expansion .statement {
+    margin-top: 20px;
+  }
+
+  /* 12 */
+  .final-cta .cta-panel {
+    margin-top: -60px;
+  }
+  .final-cta .cta-steps li {
+    padding: 11px 0 11px 40px;
+  }
+}
+
+/* --- 06・10：外側の間隔では届かない内部余白を直接詰める --- */
+@media (min-width: 1025px) {
+  .evidence .aio-stats {
+    padding: 26px;
+  }
+  .evidence .aio-stat-flow li {
+    min-height: 0;
+    align-content: start;
+  }
+  .evidence .aio-stat-flow {
+    align-items: stretch;
+  }
+
+  .expansion .service-orbit {
+    padding: 24px;
+  }
+  .expansion .orbit-services article {
+    padding: 12px 14px;
+  }
+  .expansion .orbit-center {
+    padding: 0;
+  }
+  .expansion .statement {
+    padding: 14px 18px;
+  }
+}
+
+/* ==========================================================================
+   余白の正規化（最終）
+   枚ごとに margin-top を足し続けた結果、見出しと本文の間隔が
+   43 / 66 / 80 / 110px と不揃いになっていた。1つの値に統一する。
+   名前を分けて管理する：
+     帯下   ＝ ページ見出し帯から見出しまで  … 54px
+     見出し下 ＝ 見出しの塊から本文の主役まで  … 44px
+   ========================================================================== */
+
+@media (min-width: 1025px) {
+  .section-heading {
+    margin-bottom: 44px;
+  }
+  /* 蓄積した個別の上マージンを打ち消し、間隔は見出し側だけで決める */
+  .section > .container:last-child > .section-heading + * {
+    margin-top: 0;
+  }
+
+  /* 05・11の中央寄せを撤回。本文の開始位置は全枚で揃える
+     （下に余白が出ることより、基準線がずれることの影響が大きい） */
+  .behavior > .container:last-child,
+  .company > .container:last-child {
+    justify-content: flex-start;
+  }
+
+  /* 10：残る超過を1箇所に負わせず分散して削る */
+  .expansion .service-orbit {
+    padding: 20px;
+  }
+  .expansion .orbit-services article {
+    padding: 10px 14px;
+  }
+  .expansion .statement {
+    margin-top: 14px;
+    padding: 12px 16px;
+  }
+}
+
+/* --- 08・10の残り数pxを、内部の詰めで吸収する --- */
+@media (min-width: 1025px) {
+  .operation .role-card {
+    padding: clamp(24px, 2.6vw, 34px);
+  }
+  .operation .role-card ul {
+    margin-top: 20px;
+  }
+  .expansion .orbit-services article {
+    padding: 9px 14px;
+  }
+}
+
+/* --- 表紙：AIOの定義を1行。略語の意味を冒頭で示す --- */
+.hero-define {
+  margin: 0 0 14px;
+  padding-left: 14px;
+  border-left: 2px solid var(--accent);
+  color: var(--mute);
+  font-size: clamp(13px, 1.1vw, 15px);
+  font-weight: 620;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+}
+
+/* --- 09 向いている会社：条件ではなく傾向として見せる --- */
+.fitness-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+.fitness-list li {
+  position: relative;
+  padding: clamp(22px, 2.4vw, 32px) clamp(20px, 2.2vw, 30px)
+    clamp(22px, 2.4vw, 32px) 0;
+}
+.fitness-list li + li {
+  padding-left: clamp(20px, 2.2vw, 30px);
+  border-left: 1px solid var(--line);
+}
+.fitness-list li span {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--accent);
+  font:
+    800 11px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
+    monospace;
+  letter-spacing: 0.1em;
+}
+.fitness-list li b {
+  display: block;
+  font-size: clamp(16px, 1.5vw, 19px);
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.03em;
+  word-break: auto-phrase;
+}
+.fitness-list li small {
+  display: block;
+  margin-top: 10px;
+  color: var(--mute);
+  font-size: 13px;
+  line-height: 1.8;
+  word-break: auto-phrase;
+}
+@media (max-width: 780px) {
+  .fitness-list {
+    grid-template-columns: 1fr;
+  }
+  .fitness-list li {
+    padding: 18px 0;
+  }
+  .fitness-list li + li {
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid var(--line);
+  }
+}
+
+/* ==========================================================================
+   佐藤可士和 レイアウト
+   本質の一語「看板」／コンセプトワード「渡すのは、商品ではなく看板。」
+   規約：幅1150px／ヒーロー以外は2カラム（左sticky見出し・右本文）／
+        セクション余白120px前後／モチーフは正方形／中間サイズを増やさない
+   ========================================================================== */
+
+.container {
+  max-width: 1150px;
+}
+
+/* --- スライド型の枠組みを解く。縦に読む1本の文書にする --- */
+@media (min-width: 1025px) {
+  .section {
+    min-height: 0;
+    padding: clamp(96px, 8vw, 128px) 0;
+    display: block;
+  }
+  .section > .container:first-child {
+    margin-bottom: 0;
+  }
+
+  /* 2カラム：左sticky見出し／右本文 */
+  .section > .container:last-child {
+    display: grid;
+    grid-template-columns: minmax(330px, 0.4fr) minmax(0, 1fr);
+    column-gap: clamp(48px, 5vw, 76px);
+    row-gap: 0;
+    align-items: start;
+  }
+  .section > .container:last-child > .section-heading {
+    grid-column: 1;
+    position: sticky;
+    top: 104px;
+    margin-bottom: 0;
+    display: block;
+  }
+  .section > .container:last-child > *:not(.section-heading) {
+    grid-column: 2;
+  }
+  .section
+    > .container:last-child
+    > *:not(.section-heading)
+    + *:not(.section-heading) {
+    margin-top: clamp(26px, 2.6vw, 40px);
+  }
+
+  /* split-heading の右カラム本文は、右側へ送る */
+  .split-heading {
+    display: block;
+  }
+  .split-heading > p {
+    max-width: none;
+    margin-top: 22px;
+  }
+
+  /* 左カラムに収まる見出しの大きさへ。中間サイズは作らない */
+  .section-heading h2,
+  .final-grid h2 {
+    font-size: clamp(30px, 2.6vw, 37px);
+    line-height: 1.24;
+    letter-spacing: -0.05em;
+  }
+  .heading-answer {
+    margin-top: 14px;
+    font-size: clamp(30px, 2.6vw, 37px);
+    line-height: 1.24;
+  }
+  .split-heading > p,
+  .section-heading > p:last-child:not(.heading-answer) {
+    font-size: 13px;
+    line-height: 1.95;
+  }
+}
+
+/* --- ページ見出し帯を、左カラムの頭として扱う --- */
+.page-head {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: clamp(56px, 5vw, 84px);
+  grid-template-columns: auto 1fr auto;
+}
+
+/* --- モチーフ：正方形。横線を全部これに置き換える --- */
+.section-kicker::before,
+.eyebrow::before,
+.toc-label::before,
+.launch-target-label::before {
+  width: 9px;
+  height: 9px;
+  background: var(--accent);
+}
+.page-head span::after {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-left: 9px;
+  background: var(--accent);
+  vertical-align: 2px;
+}
+.hero-define {
+  padding-left: 0;
+  border-left: none;
+  position: relative;
+  padding-top: 20px;
+}
+.hero-define::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+}
+
+/* --- ヒーロー：説明ではなくアイコンにする。表題が画面を支配する --- */
+@media (min-width: 1025px) {
+  .hero {
+    padding: clamp(96px, 9vw, 150px) 0 clamp(80px, 7vw, 120px);
+  }
+  .hero .hero-copy {
+    max-width: none;
+  }
+  .hero h1 {
+    margin: 26px 0 0;
+    font-size: clamp(56px, 7.6vw, 106px);
+    line-height: 0.98;
+    letter-spacing: -0.075em;
+  }
+  /* 表題以外は一段下げて、大と小の2層に寄せる */
+  .hero-define {
+    margin: 52px 0 0;
+    max-width: 40ch;
+    font-size: 13px;
+  }
+  .hero-lead {
+    margin: 20px 0 0;
+    max-width: 44ch;
+    font-size: 16px;
+    font-weight: 620;
+    line-height: 1.85;
+  }
+  .hero-actions {
+    margin-top: 44px;
+    align-items: center;
+  }
+  .hero-actions > span {
+    font-size: 13px;
+    max-width: 260px;
+  }
+  .eyebrow {
+    font-size: 11px;
+  }
+  .cover-meta {
+    margin-bottom: clamp(72px, 7vw, 116px);
+  }
+}
+
+/* --- 中間サイズを整理する。大と小の2層に寄せ、あいだを減らす --- */
+@media (min-width: 1025px) {
+  /* 小の層：13px に寄せる */
+  .foundation-card > p,
+  .aio-stat-flow li > p:not(.aio-stat-value),
+  .fitness-list li small,
+  .cta-steps li small,
+  .launch-target-note,
+  .experiment-copy > p,
+  .shift-timeline p,
+  .role-card li,
+  .growth-steps small,
+  .cta-panel p {
+    font-size: 13px;
+    line-height: 1.9;
+  }
+  /* 中の層：19px に寄せる（カード見出し類） */
+  .foundation-card h3,
+  .fitness-list li b,
+  .cta-steps li b,
+  .shift-timeline h3,
+  .role-card > strong,
+  .growth-steps b,
+  .story-rail b {
+    font-size: 19px;
+    line-height: 1.5;
+  }
+  /* 極小ラベルは11pxに統一 */
+  .page-head i,
+  .aio-stat-flow li a,
+  .source-note,
+  .aio-stats-note,
+  .condition-note,
+  .funnel-period,
+  .vision-copy small {
+    font-size: 11px;
+  }
+}
+
+/* --- 孤立行の残り2件：折り返し位置を文節で決める --- */
+.role-card h3,
+.fitness-list li b {
+  word-break: auto-phrase;
+  text-wrap: balance;
+}
+.fitness-list li b {
+  max-width: 15ch;
+}
+
+/* --- 役割カードの社名が2行に割れるのを防ぐ --- */
+/* 社名を2行に割らない。ただし狭い幅では解除する（横あふれを起こすため） */
+@media (min-width: 781px) {
+  .role-card h3 {
+    white-space: nowrap;
+    font-size: clamp(26px, 2.4vw, 34px);
+  }
+}
+@media (max-width: 780px) {
+  .role-card h3 {
+    font-size: 26px;
+    word-break: auto-phrase;
+  }
+}
+
+/* --- 英字ラベルは折り返しを許す（サイズを上げた副作用で溢れていた） --- */
+.fact-board small,
+.market-answer > div:first-child > small,
+.role-card small,
+.build-choice small,
+.supply-flow small,
+.system-source small,
+.system-owner small,
+.orbit-center small,
+.aio-stat-top,
+.shift-top {
+  overflow-wrap: anywhere;
+  word-break: normal;
+  line-height: 1.5;
+}
+@media (max-width: 520px) {
+  .fact-board small,
+  .market-answer > div:first-child > small {
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+}
+
+/* ==========================================================================
+   2カラムの行送り修正
+   左の見出しがグリッドの行1を占めるため、右カラムの短い要素が
+   見出しの高さまで引き伸ばされ、要素間に意図しない余白（最大264px）が出ていた。
+   見出しを全行にまたがらせ、行の高さは右カラムの中身だけで決める。
+   ========================================================================== */
+@media (min-width: 1025px) {
+  /* -1 は明示グリッドの終端を指すため行1しかまたげない。span で明示する。
+     併せて行の高さを中身なりにする（min-content）。 */
+  .section > .container:last-child {
+    grid-auto-rows: min-content;
+  }
+  .section > .container:last-child > .section-heading {
+    grid-row: 1 / span 99;
+    align-self: start;
+  }
+  .section > .container:last-child > *:not(.section-heading) {
+    grid-column: 2;
+    align-self: start;
+  }
+}
+
+/* --- 目次：左に見出しが付いたので、右のラベルは重複。落とす --- */
+.slide-toc .toc-label {
+  display: none;
+}
+@media (min-width: 1025px) {
+  .slide-toc .toc a {
+    grid-template-columns: 40px minmax(0, 200px) minmax(0, 1fr);
+    padding: 13px 0;
+  }
+  .slide-toc .toc a b {
+    font-size: 16px;
+  }
+  .slide-toc .toc a small {
+    font-size: 13px;
+  }
+}
+
+/* --- 最低高さは設けない。中身なりの高さにして、下の余白を全枚115pxで揃える。
+       最低高さを与えると、中身の短い枚だけ下余白が198pxに膨らむため。 --- */
+@media (min-width: 1025px) {
+  .hero {
+    min-height: 100svh;
+  }
+}
+
+/* --- 01 売上の式：右カラム幅では5列が入らない。縦に積む --- */
+.formula {
+  grid-template-columns: minmax(0, 1fr);
+  border-bottom: none;
+}
+.formula > div {
+  min-height: 0;
+  padding: 16px 18px;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 14px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+.formula > div > small {
+  flex: 0 0 auto;
+  min-width: 74px;
+}
+.formula > div > strong {
+  font-size: 19px;
+  white-space: nowrap;
+}
+.formula > i {
+  display: none;
+}
+.formula .fixed span,
+.formula .focus span {
+  position: static;
+  margin-left: auto;
+  padding: 3px 9px;
+  white-space: nowrap;
+  font-size: 11px;
+}
+.formula .focus {
+  background: var(--slide-b);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+.formula .focus span {
+  color: #fff;
+  background: var(--ink);
+}
+
+/* --- 07 3基盤の図：2カラム化で幅が狭まり、ラベルが割れていた --- */
+.foundation-diagram {
+  gap: 8px;
+}
+.foundation-diagram span {
+  padding: 6px 4px;
+  font-size: 11px;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+.foundation-diagram.support-diagram span:last-child {
+  white-space: normal;
+  max-width: 5em;
+  text-align: center;
+}
+.foundation-diagram strong {
+  font-size: 11px;
+  line-height: 1.25;
+}
+
+/* --- 06 統計：右カラム幅では5列が窮屈。3＋2の2段にして読める幅を確保 --- */
+@media (min-width: 1025px) {
+  .evidence .aio-stat-flow {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .evidence .aio-stat-flow li[data-group='A'] {
+    grid-column: span 2;
+  }
+  .evidence .aio-stat-flow li[data-group='B'],
+  .evidence .aio-stat-flow li[data-group='C'] {
+    grid-column: span 3;
+  }
+  .evidence .aio-stat-flow h4 {
+    font-size: 13px;
+  }
+  .evidence .aio-stat-value strong {
+    font-size: clamp(30px, 2.6vw, 40px);
+  }
+}
+
+/* --- 10 進め方4段階：右カラム幅では4列が縦割れする。縦積みの手順にする --- */
+.growth-steps {
+  grid-template-columns: minmax(0, 1fr);
+  border-left: none;
+  border-top: 1px solid var(--line);
+}
+.growth-steps li {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  align-items: baseline;
+  column-gap: 14px;
+  min-height: 0;
+  padding: 14px 0;
+  border-right: none;
+  border-bottom: 1px solid var(--line);
+}
+.growth-steps li::after {
+  display: none;
+}
+.growth-steps b {
+  white-space: nowrap;
+}
+.growth-steps small {
+  grid-column: 2;
+  margin-top: 3px;
+}
+
+/* --- 08 見出し：「ない。」が割れないよう文節で折る --- */
+.roles .section-heading h2,
+.section-heading h2 .heading-line {
+  word-break: auto-phrase;
+}
+
+/* --- 狭い幅の天地も一定にする（タブレットで下余白が290pxまで開いていた） --- */
+@media (max-width: 1024px) {
+  .section {
+    min-height: 0;
+    padding: clamp(64px, 8vw, 88px) 0;
+  }
+  .hero {
+    min-height: 0;
+    padding: clamp(64px, 9vw, 104px) 0 clamp(56px, 7vw, 80px);
+  }
+  .section > .container:last-child > * + * {
+    margin-top: clamp(24px, 3.4vw, 34px);
+  }
+  .section-heading {
+    margin-bottom: clamp(26px, 3.4vw, 36px);
+  }
+}
+
+/* --- 09：初動の小ささを主役にする。60は参考目標へ降格 --- */
+.launch-first {
+  margin-top: 37px;
+  padding: clamp(24px, 2.6vw, 34px);
+  background: var(--slide-b);
+  box-shadow: inset 4px 0 0 var(--accent);
+}
+.launch-first-label {
+  margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.17em;
+  color: var(--mute);
+}
+.launch-first-label::before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  background: var(--accent);
+}
+.launch-first strong {
+  display: block;
+  font-size: clamp(24px, 2.4vw, 32px);
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.05em;
+}
+.launch-first > p:last-child {
+  margin: 12px 0 0;
+  color: var(--mute);
+  font-size: 13px;
+  line-height: 1.9;
+  word-break: auto-phrase;
+}
+.launch-target {
+  display: block;
+  padding: 18px 0 0;
+  border: none;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+}
+.launch-target-label {
+  margin-bottom: 8px;
+}
+
+/* --- 09 手順：罫線が右半分で切れていた。全幅に通す --- */
+.growth-steps li {
+  grid-template-columns: 34px minmax(0, 1fr);
+}
+.growth-steps li b,
+.growth-steps li small {
+  grid-column: 2;
+}
+.growth-steps li > span {
+  grid-column: 1;
+  grid-row: 1 / 3;
+}
+
+/* --- 09：60社の枠を外したので、launch-plan の2カラムは不要。1カラムにする --- */
+.launch-plan {
+  grid-template-columns: minmax(0, 1fr);
+  margin-top: 0;
+  border: none;
+  background: none;
+}
+.growth-steps li:last-child {
+  border-bottom: 1px solid var(--line);
+}
+/* 注記内の出典リンク */
+.aio-stats-note a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+</style></head><body class="__variable_geist_19ysh9d __variable_geist_mono_1001rt9 antialiased"><main><header class="site-header"><div class="container header-inner"><a class="brand" href="#top" aria-label="ページ上部へ"><b>AIO</b><span>CONSULTING BUSINESS</span></a><nav class="header-nav" aria-label="主要ナビゲーション"><a href="#problem">必要な理由</a><a href="#aio">AIOとは</a><a href="#foundation">提供内容</a><a class="header-cta" href="#contact">説明を聞く</a></nav></div></header><section class="hero" id="top"><div class="container"><div class="hero-copy"><p class="eyebrow">AIOコンサル事業 スタートパック</p><h1><span class="heading-line">地元で唯一の、</span><span class="heading-line"><em>AIOコンサル会社</em>に</span><span class="heading-line">なりませんか。</span></h1><p class="hero-define">AIO＝AIの回答に、自社が候補として出てくるための対策です。</p><p class="hero-lead">顧客は、もういる。<br/>商品と売り方は、ライトアップが用意します。</p><div class="hero-actions"><a class="button-primary" href="#foundation">3つの提供内容を見る</a><span>御社が表に立ち、ライトアップが後ろから支えます。</span></div></div></div></section><section class="section slide-toc" id="toc"><div class="container"><div class="section-heading"><h2><span class="heading-line">この提案書は、</span><span class="heading-line">本文12章です。</span></h2><p class="heading-answer"><span class="heading-line">読む順に、</span><span class="heading-line">番号を振りました。</span></p></div><nav class="toc" aria-label="目次"><p class="toc-label">目次</p><ol><li><a href="#problem"><span>01</span><b>なぜ、いま動くのか</b><small>毎日2,500人ずつ、人口が減っていく。</small></a></li><li><a href="#sourcing"><span>02</span><b>なぜ、外から仕入れるのか</b><small>新しい商品を、毎回ゼロからはつくれない。</small></a></li><li><a href="#proof"><span>03</span><b>なぜライトアップなのか</b><small>300の企画のうち、続いているのは30。</small></a></li><li><a href="#aio"><span>04</span><b>なぜ、AIOなのか</b><small>会社の探され方は、10年ごとに変わる。</small></a></li><li><a href="#evidence"><span>05</span><b>AIOを裏づける数字</b><small>AIで買う人は、米国ですでに増えている。</small></a></li><li><a href="#foundation"><span>06</span><b>お渡しする3つ</b><small>商品だけを渡されても、売り方が分からない。</small></a></li><li><a href="#roles"><span>07</span><b>誰が何をするか</b><small>表に立つのは、ライトアップではない。</small></a></li><li><a href="#fitness"><span>08</span><b>向いている会社</b><small>向き不向きは、あります。</small></a></li><li><a href="#launch"><span>09</span><b>どう始めるか</b><small>最初のお客様は、もう御社の中にいる。</small></a></li><li><a href="#expansion"><span>10</span><b>その先</b><small>お客様の相談は、AIOだけでは終わらない。</small></a></li><li><a href="#company"><span>11</span><b>ライトアップについて</b><small>なぜ、この会社がこれをやるのか。</small></a></li><li><a href="#contact"><span>12</span><b>次のステップ</b><small>いま決めていただく必要は、ありません。</small></a></li></ol></nav></div></section><section class="section market" id="problem"><div class="container"><div class="page-head"><span>01</span><b>なぜ、いま動くのか</b><i>1 / 12</i></div></div><div class="container"><div class="section-heading split-heading"><div><h2><span class="heading-line">毎日2,500人ずつ、</span><span class="heading-line">人口が減っていく。</span></h2><p class="heading-answer"><span class="heading-line">新規開拓から、</span><span class="heading-line">既存顧客への追加提案へ。</span></p></div><p>新規顧客だけを追い続ける営業は、年々難しくなります。これから増やすべきは、顧客数よりも、一社あたりの取引回数です。</p></div><div class="fact-board"><article><small>JAPANESE POPULATION</small><strong>約2,500<em>人／日</em></strong><p>日本人人口の減少<br/>2024年の1年間で90万8,574人減</p></article><div class="fact-arrow" aria-hidden="true"><svg class="arrow-svg" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h28M23.4 1.4 28 6l-4.6 4.6" fill="none" stroke="currentColor" stroke-width="1.3"></path></svg></div><article><small>SMALL BUSINESSES</small><strong>約4.3<em>万者／年</em></strong><p>中小企業数の減少ペース<br/>2016年から2021年の平均</p></article><div class="fact-arrow" aria-hidden="true"><svg class="arrow-svg" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h28M23.4 1.4 28 6l-4.6 4.6" fill="none" stroke="currentColor" stroke-width="1.3"></path></svg></div><article class="fact-conclusion"><small>NEW CUSTOMERS</small><strong>減っていく</strong><p>地域の新規顧客候補も<br/>同じように減少します</p></article></div><p class="source-note">出典：<a href="https://www.soumu.go.jp/menu_news/s-news/01gyosei02_02000389.html" target="_blank" rel="noreferrer">総務省「住民基本台帳に基づく人口、人口動態及び世帯数」</a>、<a href="https://www.chusho.meti.go.jp/koukai/chousa/chu_kigyocnt/2023/231213chukigyocnt.html" target="_blank" rel="noreferrer">中小企業庁「中小企業・小規模事業者の数」</a></p><div class="market-answer"><div><small>THE ANSWER</small><h3><span>新しい顧客を探すより、</span><span>新しい商品を増やします。</span></h3><p>すでに信頼関係のある顧客へ、次の商品を提案する。それが、地域で売上を伸ばす現実的な方法です。</p></div><div class="formula" aria-label="売上は取引先数、一社あたりの取引回数、一回あたりの取引金額で決まる図"><div><small>SALES</small><strong>売上</strong></div><i>＝</i><div class="fixed"><small>CUSTOMERS</small><strong>取引先数</strong><span>増やしにくい</span></div><i>×</i><div class="focus"><small>FREQUENCY</small><strong>1社あたりの<br/>取引回数</strong><span>ここを増やす</span></div></div></div></div></section><section class="section sourcing" id="sourcing"><div class="container"><div class="page-head"><span>02</span><b>なぜ、外から仕入れるのか</b><i>2 / 12</i></div></div><div class="container"><div class="section-heading split-heading"><div><h2><span class="heading-line">新しい商品を、</span><span class="heading-line">毎回ゼロからは</span><span class="heading-line">つくれない。</span></h2><p class="heading-answer"><span class="heading-line">選定済みの商品を、</span><span class="heading-line">御社の顧客基盤へ。</span></p></div><p>商品開発も営業方法も、毎回ゼロから用意する必要はありません。東京で新規事業をつくり続ける会社と組み、地域の顧客に合うものを選んで売る仕組みを持ちます。</p></div><div class="build-choice" aria-label="自社だけで商品開発する方法とライトアップと組む方法の比較"><article class="choice-slow"><small>自社だけで始める</small><div><span>市場調査</span><i><svg class="arrow-svg" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h28M23.4 1.4 28 6l-4.6 4.6" fill="none" stroke="currentColor" stroke-width="1.3"></path></svg></i><span>商品開発</span><i><svg class="arrow-svg" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h28M23.4 1.4 28 6l-4.6 4.6" fill="none" stroke="currentColor" stroke-width="1.3"></path></svg></i><span>売り方検証</span><i><svg class="arrow-svg" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h28M23.4 1.4 28 6l-4.6 4.6" fill="none" stroke="currentColor" stroke-width="1.3"></path></svg></i><span>運用整備</span></div><strong>販売まで時間がかかる</strong></article><article class="choice-fast"><small>ライトアップと組む</small><div><span>商品</span><b>＋</b><span>営業</span><b>＋</b><span>広報</span></div><strong>既存顧客へ、すぐ提案できる</strong></article></div><div class="supply-flow" aria-label="ライトアップが商品をつくり、御社が地域に届け、顧客の相談が戻る循環図"><div><small>DEVELOP</small><b>ライトアップ</b><span>新しいAIサービスを<br/>企画・開発</span></div><i><span>商品を供給</span><svg class="arrow-svg" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h28M23.4 1.4 28 6l-4.6 4.6" fill="none" stroke="currentColor" stroke-width="1.3"></path></svg></i><div class="supply-owner"><small>SELL</small><b>御社</b><span>自社の名前で<br/>地域へ提案</span></div><i><span>相談が集まる</span><svg class="arrow-svg" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h28M23.4 1.4 28 6l-4.6 4.6" fill="none" stroke="currentColor" stroke-width="1.3"></path></svg></i><div><small>USE</small><b>既存顧客</b><span>新しい経営課題を<br/>御社へ相談</span></div></div></div></section><section class="section proof" id="proof"><div class="container"><div class="page-head"><span>03</span><b>なぜライトアップなのか</b><i>3 / 12</i></div></div><div class="container"><div class="section-heading"><h2><span class="heading-line">300の企画のうち、</span><span class="heading-line">続いているのは30。</span></h2><p class="heading-answer"><span class="heading-line">たくさん試したので、</span><span class="heading-line">売れる商品がわかります。</span></p></div><aside class="experiment-proof"><div class="experiment-copy"><p>ライトアップは、最初から正解だけを当ててきた会社ではありません。300の企画を試し、売れなかった理由も学びながら、提供を続ける商品を30まで絞りました。皆様へ届けるのは、その試行錯誤を通過し、手応えが見え始めたサービスです。</p><small>※2026年1月以降のライトアップ社内集計・現時点の見立てです。各サービスの成果を保証するものではありません。</small></div><div class="experiment-visual"><p class="funnel-period">2026年1月〜現在｜ライトアップ社内集計</p><div class="experiment-funnel" aria-label="300件の企画から100件を開発提供し、30件を継続、約10件を成長候補として選別する図"><div><strong>300</strong><span>AIサービスを企画</span></div><i aria-hidden="true"><svg class="arrow-svg arrow-svg-down" viewBox="0 0 12 34" aria-hidden="true"><path d="M6 0v28M1.4 23.4 6 28l4.6-4.6" fill="none" stroke="currentColor" stroke-width="1.3"></path></svg></i><div><strong>100</strong><span>開発・提供</span></div><i aria-hidden="true"><svg class="arrow-svg arrow-svg-down" viewBox="0 0 12 34" aria-hidden="true"><path d="M6 0v28M1.4 23.4 6 28l4.6-4.6" fill="none" stroke="currentColor" stroke-width="1.3"></path></svg></i><div><strong>30</strong><span>提供を継続</span></div><i aria-hidden="true"><svg class="arrow-svg arrow-svg-down" viewBox="0 0 12 34" aria-hidden="true"><path d="M6 0v28M1.4 23.4 6 28l4.6-4.6" fill="none" stroke="currentColor" stroke-width="1.3"></path></svg></i><div><strong>約10</strong><span>成長候補<em>現時点の見立て</em></span></div></div><p class="aio-signal"><small>BEST INITIAL RESPONSE</small><span>その中で、最も初動が良いのが</span><strong>AIO</strong><em>社内比較による現時点の評価</em></p></div></aside></div></section><section class="section aio-shift" id="aio"><div class="container"><div class="page-head"><span>04</span><b>なぜ、AIOなのか</b><i>4 / 12</i></div></div><div class="container"><div class="section-heading section-heading-light"><h2><span class="heading-line">会社の探され方は、</span><span class="heading-line">10年ごとに変わる。</span></h2><p class="heading-answer"><span class="heading-line">比較される前に、</span><span class="heading-line">AIが候補を絞ります。</span></p><p>会社の探され方は、およそ10年ごとに主戦場が変わってきました。いま始まっているのは、AIの回答で候補に入るための対策です。</p></div><div class="shift-timeline" aria-label="2005年頃のSEO、2015年頃のMEO、2025年頃のAIOへの変化を示す図"><article class=""><div class="shift-top"><span>2005〜</span><b>0<!-- -->1</b></div><strong>SEO</strong><h3>検索で見つかる</h3><p>検索結果の上位に入り、自社サイトへ来てもらうための対策。</p><i aria-hidden="true"><svg class="arrow-svg" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h28M23.4 1.4 28 6l-4.6 4.6" fill="none" stroke="currentColor" stroke-width="1.3"></path></svg></i></article><article class=""><div class="shift-top"><span>2015〜</span><b>0<!-- -->2</b></div><strong>MEO</strong><h3>地図で選ばれる</h3><p>地図や口コミから、地域のお店・会社に選ばれるための対策。</p><i aria-hidden="true"><svg class="arrow-svg" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h28M23.4 1.4 28 6l-4.6 4.6" fill="none" stroke="currentColor" stroke-width="1.3"></path></svg></i></article><article class="active"><div class="shift-top"><span>2025〜</span><b>0<!-- -->3</b></div><strong>AIO</strong><h3>AIの答えに出てくる</h3><p>AIの回答に、信頼できる候補として登場するための対策。</p></article></div><div class="shift-conclusion"><p><strong>これまで</strong><span>検索する → 比較する → 自分で決める</span></p><i aria-hidden="true"><svg class="arrow-svg" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h28M23.4 1.4 28 6l-4.6 4.6" fill="none" stroke="currentColor" stroke-width="1.3"></path></svg></i><p><strong>これから</strong><span>AIに聞く → AIが候補を示す → その中から決める</span></p></div><div class="evidence-strip"><p><b>日本語でも、すでに始まっています。</b>Googleは2025年に日本語版AIモードを提供開始。2026年には、AIによる検索画面の変更を「過去25年以上で最大のアップグレード」と説明しています。</p><div><a href="https://blog.google/intl/ja-jp/products/explore-get-answers/ai-mode-search/" target="_blank" rel="noreferrer">Google：AIモード日本語提供開始</a><a href="https://blog.google/intl/ja-jp/products/explore-get-answers/search-io-2026/" target="_blank" rel="noreferrer">Google：AI検索の新時代</a></div></div></div></section><section class="section evidence" id="evidence"><div class="container"><div class="page-head"><span>05</span><b>AIOを裏づける数字</b><i>5 / 12</i></div></div><div class="container"><div class="section-heading"><h2><span class="heading-line">AIで買う人は、</span><span class="heading-line">米国ですでに増えている。</span></h2><p class="heading-answer"><span class="heading-line">ただし、これは</span><span class="heading-line">日本の成果を保証しません。</span></p></div><div class="aio-stats"><div class="aio-stats-heading"><p>AIで商品を探し、比較し、購入する行動が増えています。この変化は大企業だけではなく、中小企業や地域の店舗にも関係します。</p></div><ol class="aio-stat-flow" aria-label="AI経由の購買行動と中小企業、店舗ビジネスとの関係を示す5つの統計"><li data-group="A"><div class="aio-stat-top"><span>01</span><b>消費者</b></div><p class="aio-stat-value"><strong>39%</strong><span>が利用</span></p><h4>AIで買い物をする米国の消費者</h4><p>米国消費者の39%が、オンラインショッピングでAIを利用。商品探しや比較、購入判断に使われています。</p><a href="https://business.adobe.com/blog/ai-traffic-surge-retail-sites-not-machine-readable" target="_blank" rel="noreferrer">米国・2026年｜Adobe Digital Insights 2026</a></li><li data-group="A"><div class="aio-stat-top"><span>02</span><b>流入</b></div><p class="aio-stat-value"><strong>+393%</strong><span>前年比</span></p><h4>AIから人が集まる米国の通販サイト</h4><p>2026年1〜3月、AIから米国小売サイトへの流入は前年比393%増。AIが新しい集客経路になっています。</p><a href="https://business.adobe.com/blog/ai-traffic-surge-retail-sites-not-machine-readable" target="_blank" rel="noreferrer">米国・2026年｜Adobe Digital Insights 2026</a></li><li data-group="A"><div class="aio-stat-top"><span>03</span><b>購入</b></div><p class="aio-stat-value"><strong>+42%</strong><span>購入率</span></p><h4>購入につながりやすいAI経由の訪問</h4><p>2026年3月、AI経由の訪問はその他の流入より購入率が42%高く、調査開始以来の最高値でした。</p><a href="https://business.adobe.com/blog/ai-traffic-surge-retail-sites-not-machine-readable" target="_blank" rel="noreferrer">米国・2026年｜Adobe Digital Insights 2026</a></li></ol><div class="aio-stats-conclusion"><span>BEST FIT</span><strong>商品・料金・場所・実績など「選ぶ理由」が明確な中小企業や店舗ほど、AIに正しく理解される準備が重要です。</strong></div><p class="aio-stats-note">※米国での行動変化を示す参考値です。日本での成果を保証する数値ではありません。いずれもAdobeが米国小売サイト1兆超の訪問と5,000人超の消費者調査を分析した結果です。ほかに<a href="https://www.uschamber.com/technology/artificial-intelligence/u-s-chambers-latest-empowering-small-business-report-shows-majority-of-businesses-in-all-50-states-are-embracing-ai" target="_blank" rel="noreferrer">全米商工会議所（2025年）</a>と<a href="https://business.google.com/in/think/consumer-insights/increase-foot-traffic-and-in-store-sales/" target="_blank" rel="noreferrer">Google（2022年公表）</a>の調査も参照しています。</p></div></div></section><section class="section foundation" id="foundation"><div class="container"><div class="page-head"><span>06</span><b>お渡しする3つ</b><i>6 / 12</i></div></div><div class="container"><div class="section-heading split-heading"><div><h2><span class="heading-line">商品だけを渡されても、</span><span class="heading-line">売り方が分からない。</span></h2><p class="heading-answer"><span class="heading-line">商品と営業と広報を、</span><span class="heading-line">まとめてお渡しします。</span></p></div><p>商品だけを渡して終わりではありません。提案し、売り、地域で事業として続けるための基盤を、まとめて提供します。</p></div><div class="foundation-grid"><article class="foundation-card"><div class="foundation-card-top"><span>01</span><b>商品システム</b></div><div class="foundation-diagram product-diagram" aria-label="AIO MASTERで診断、対策、確認を行う図"><span>診断</span><i></i><strong>AIO<br/>MASTER</strong><i></i><span>確認</span></div><h3>売る商品は、AIO MASTER</h3><p>AI検索での掲載状況を調べ、対策し、継続確認する「AIO MASTER」を御社の商品として提供できます。</p><ul><li>診断</li><li>改善施策</li><li>継続確認</li></ul></article><article class="foundation-card"><div class="foundation-card-top"><span>02</span><b>営業スキル</b></div><div class="foundation-diagram sales-diagram" aria-label="顧客情報からClaude Codeで提案をつくる図"><span>顧客</span><i><svg class="arrow-svg" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h28M23.4 1.4 28 6l-4.6 4.6" fill="none" stroke="currentColor" stroke-width="1.3"></path></svg></i><strong>CLAUDE<br/>CODE</strong><i><svg class="arrow-svg" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h28M23.4 1.4 28 6l-4.6 4.6" fill="none" stroke="currentColor" stroke-width="1.3"></path></svg></i><span>提案</span></div><h3>売り方は、Claude Code</h3><p>Claude Codeの営業スキルが、候補企業の選定、事前調査、提案書作成、商談準備、フォローを支援します。</p><ul><li>顧客選定</li><li>提案書</li><li>商談支援</li></ul></article><article class="foundation-card"><div class="foundation-card-top"><span>03</span><b>広報・後方支援</b></div><div class="foundation-diagram support-diagram" aria-label="御社をライトアップが後方支援する図"><span>顧客</span><i><svg class="arrow-svg arrow-svg-left" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h28M23.4 1.4 28 6l-4.6 4.6" fill="none" stroke="currentColor" stroke-width="1.3"></path></svg></i><strong>御社</strong><i><svg class="arrow-svg arrow-svg-left" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h28M23.4 1.4 28 6l-4.6 4.6" fill="none" stroke="currentColor" stroke-width="1.3"></path></svg></i><span>本部支援</span></div><h3>広め方は、勉強会と発信</h3><p>勉強会や事例発信を支援。御社だけでは対応が難しい相談や大型案件には、ライトアップが後ろから参加します。</p><ul><li>勉強会</li><li>情報発信</li><li>専門案件</li></ul></article></div></div></section><section class="section operation" id="roles"><div class="container"><div class="page-head"><span>07</span><b>誰が何をするか</b><i>7 / 12</i></div></div><div class="container"><div class="section-heading"><h2><span class="heading-line">表に立つのは、</span><span class="heading-line">ライトアップではない。</span></h2><p class="heading-answer"><span class="heading-line">実績も次の相談も、</span><span class="heading-line">御社に積み上がります。</span></p><p>地域の相談窓口になるのは御社です。商品開発と専門実務はライトアップが支え、対応が難しい案件も一緒に受け止めます。</p></div><div class="role-map"><article class="role-card main-role"><small>FRONT / OWNER</small><h3>御社</h3><strong>地域のAIO相談窓口</strong><ul><li>顧客との関係を持つ</li><li>自社の名前で提案する</li><li>実績と次の相談を蓄積する</li></ul></article><div class="role-bridge"><span>商品・営業・広報</span><i><svg class="arrow-svg arrow-svg-left" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h28M23.4 1.4 28 6l-4.6 4.6" fill="none" stroke="currentColor" stroke-width="1.3"></path></svg></i><b>後方支援</b><i><svg class="arrow-svg" viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h28M23.4 1.4 28 6l-4.6 4.6" fill="none" stroke="currentColor" stroke-width="1.3"></path></svg></i><span>高度案件を連携</span></div><article class="role-card"><small>BACK / SUPPORT</small><h3>ライトアップ</h3><strong>商品づくりと、難しい実務</strong><ul><li>商品システムを供給する</li><li>営業と広報を支援する</li><li>対応が難しい案件を実行する</li></ul></article></div></div></section><section class="section fitness" id="fitness"><div class="container"><div class="page-head"><span>08</span><b>向いている会社</b><i>8 / 12</i></div></div><div class="container"><div class="section-heading split-heading"><div><h2><span class="heading-line">向き不向きは、</span><span class="heading-line">あります。</span></h2><p class="heading-answer"><span class="heading-line">相性がよいのは、</span><span class="heading-line">この3つの傾向です。</span></p></div><p>条件ではありません。当てはまらなくても始められますが、当てはまるほど立ち上がりが早くなります。</p></div><ol class="fitness-list"><li><span>01</span><b>すでに取引のあるお客様がいる</b><small>新規開拓から始めなくてよいぶん、最初の提案までが短くなります。</small></li><li><span>02</span><b>提案に動ける担当者がいる</b><small>商談の準備と提案書づくりはClaude Codeが支えますが、会いに行くのは御社です。</small></li><li><span>03</span><b>地域の相談ごとが持ち込まれる</b><small>AIOの相談が入口になり、そのあとの相談も御社に集まります。</small></li></ol></div></section><section class="section launch" id="launch"><div class="container"><div class="page-head"><span>09</span><b>どう始めるか</b><i>9 / 12</i></div></div><div class="container"><div class="section-heading"><h2><span class="heading-line">最初のお客様は、</span><span class="heading-line">もう御社の中にいる。</span></h2><p class="heading-answer"><span class="heading-line">4段階で、</span><span class="heading-line">小さく始められます。</span></p></div><div class="launch-plan"><ol class="growth-steps"><li><span>01</span><b>自社で使う</b><small>まず成果を体験</small></li><li><span>02</span><b>顧客を選ぶ</b><small>既存顧客から選定</small></li><li><span>03</span><b>診断を案内</b><small>課題を見える化</small></li><li><span>04</span><b>AIOを提供</b><small>継続支援へ</small></li></ol></div><div class="launch-first"><p class="launch-first-label">最初にやること</p><strong>まず、既存のお客様1社。</strong><p>いきなり広げません。すでに取引のあるお客様を1社選び、診断からご案内します。</p></div><div class="launch-target"><p class="launch-target-label">参考：事業目標</p><p class="launch-target-note">ライトアップが置いている目標は、12か月・累計60IDです。4段階を終えると必ず到達する数ではなく、御社に課す数量でもありません。</p></div><p class="condition-note">※60社は12か月・累計60IDの事業目標です。提供条件、価格、収益分配は個別にご案内します。</p></div></section><section class="section expansion" id="expansion"><div class="container"><div class="page-head"><span>10</span><b>その先</b><i>10 / 12</i></div></div><div class="container"><div class="section-heading split-heading"><div><h2><span class="heading-line">お客様の相談は、</span><span class="heading-line">AIOだけでは終わらない。</span></h2><p class="heading-answer"><span class="heading-line">AIOを入口に、</span><span class="heading-line">次の相談へ。</span></p></div><p>AIOの相談を入口にすると、顧客から別のAI相談が集まります。ライトアップが新しい商品を継続供給し、御社の提案機会を増やします。</p></div><div class="service-orbit" aria-label="AIOを入口にSNS、LINE、電話、AI開発の相談へ広がる図"><div class="orbit-center"><small>LOCAL AI DESK</small><strong>御社</strong><span>地域のAI相談窓口</span></div><div class="orbit-services"><article class="active"><b>AIO</b><span>AI検索で見つけてもらう</span></article><article class=""><b>SNS</b><span>情報発信を続ける</span></article><article class=""><b>LINE</b><span>顧客対応を自動化する</span></article><article class=""><b>電話</b><span>受電業務をAI化する</span></article><article class=""><b>開発</b><span>専用のAI業務をつくる</span></article></div></div><p class="statement">AIOは、一つの商品ではなく、次の商品が集まる入口です。</p></div></section><section class="section company" id="company"><div class="container"><div class="page-head"><span>11</span><b>ライトアップについて</b><i>11 / 12</i></div></div><div class="container"><div class="section-heading"><h2><span class="heading-line">なぜ、この会社が</span><span class="heading-line">これをやるのか。</span></h2><p class="heading-answer"><span class="heading-line">商品を渡して終わりに、</span><span class="heading-line">しないためです。</span></p></div><aside class="vision-column"><div class="vision-mark" aria-hidden="true">W</div><div class="vision-copy"><p class="section-kicker">ライトアップがこれをやる理由</p><h3 aria-label="全国、全ての中小企業を黒字にする"><span class="heading-line">全国、全ての</span><span class="heading-line">中小企業を黒字にする</span></h3><p>株式会社ライトアップが掲げるビジョンです。東京証券取引所の上場会社3,891社のうちの一社として、私たちは赤字の中小企業に向き合い、黒字化という結果まで徹底して支援する会社でありたいと考えています。</p><blockquote>「ここまで中小企業の黒字化に向き合う上場企業は珍しい」と、言っていただくことがあります。</blockquote><small>出典：<a href="https://writeup.jp/" target="_blank" rel="noreferrer">株式会社ライトアップ公式サイト</a>／上場会社数3,891社（2026年9月4日時点）：<a href="https://www.jpx.co.jp/listing/co/index.html" target="_blank" rel="noreferrer">日本取引所グループ</a></small></div></aside></div></section><section class="section final-cta" id="contact"><div class="container"><div class="page-head"><span>12</span><b>次のステップ</b><i>12 / 12</i></div></div><div class="container"><div class="section-heading"><h2><span class="heading-line">いま決めていただく</span><span class="heading-line">必要は、ありません。</span></h2><p class="heading-answer"><span class="heading-line">まずはオンライン</span><span class="heading-line">セミナーをご覧ください。</span></p></div><div class="cta-panel"><ol class="cta-steps" aria-label="ご覧いただいてから判断するまでの3段階"><li><span>01</span><b>15分の動画を見る</b><small>事業の全体像をご説明します</small></li><li><span>02</span><b>日程を調整する</b><small>ご都合のよい時間をお選びください</small></li><li><span>03</span><b>打ち合わせで判断する</b><small>御社の顧客基盤に合わせてご相談します</small></li></ol><p><strong>御社自身が、地域のAIOコンサル会社になります。</strong></p><p>どの顧客から始めるか、どのように広げるか。動画をご覧いただいたうえで、御社の顧客基盤に合わせてご説明します。</p><a class="button-primary" href="https://writeup.jp/contact/">15分の説明動画を見る</a><small>その場での契約は求めません。提供条件は説明時にご確認いただけます。</small></div></div></section><footer><div class="container footer-inner"><p>AIO CONSULTING BUSINESS</p><p>PRODUCT / SALES / PR &amp; SUPPORT</p></div></footer></main></body></html>
