@@ -50,7 +50,7 @@ pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
   --ink-sub:#4F5C55;
   --line:#DCD6C8;
   --gold:#9C7526;
-  --wrap:1000px;
+  --wrap:850px;
 
   --fs-h1:  clamp(1.7rem, 5.4vw, 2.9rem);
   --fs-h2:  clamp(1.34rem, 4vw, 1.85rem);
@@ -284,9 +284,10 @@ p{ margin:0; }
   .hero{ padding:22px 32px 32px; }
   .lead-box{ padding:var(--sp) 32px; }
   .foot{ padding:var(--sp) 32px; }
-  /* キャンプの話だけ長いので全幅に置き、残り3つを横並びにする */
+  /* 長いキャンプと短い剣道を全幅にして、間の2枚を横並びにする */
   .likes{ grid-template-columns:1fr 1fr; }
-  .likes .like:first-child{ grid-column:1 / -1; }
+  .likes .like:first-child,
+  .likes .like:last-child{ grid-column:1 / -1; }
   .cards{ grid-template-columns:1fr 1fr; }
   .shots{ grid-template-columns:1fr 1fr; }
   .contact__list{ grid-template-columns:1fr 1fr; }
@@ -305,10 +306,6 @@ p{ margin:0; }
   .role{ grid-column:2; grid-row:2; justify-self:start; align-self:end; margin-bottom:0; }
   .hero__body{ grid-column:2; grid-row:3; }
   .hero__meta{ grid-column:2; grid-row:4; align-self:start; margin:0; padding-top:18px; }
-}
-
-@media (min-width:900px){
-  .likes{ grid-template-columns:repeat(3,1fr); }
 }
 
 @media print{
