@@ -71,6 +71,109 @@ function openChatGPT(questionKind, notice) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  const swallow = document.querySelector('.swallow-flight');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let swallowTimer;
+  let swallowAnimation;
+  let previousFlightTop;
+  let previousFlightDuration;
+
+  const randomBetween = (min, max) => min + Math.random() * (max - min);
+
+  const chooseFlightTop = () => {
+    const min = Math.max(72, Math.round(window.innerHeight * .09));
+    const max = Math.max(min + 48, Math.min(260, Math.round(window.innerHeight * .32)));
+    let next = Math.round(randomBetween(min, max));
+
+    if (previousFlightTop !== undefined && Math.abs(next - previousFlightTop) < 42) {
+      const alternateRanges = [];
+      if (previousFlightTop - 48 >= min) alternateRanges.push([min, previousFlightTop - 48]);
+      if (previousFlightTop + 48 <= max) alternateRanges.push([previousFlightTop + 48, max]);
+      if (alternateRanges.length) {
+        const [alternateMin, alternateMax] = alternateRanges[Math.floor(Math.random() * alternateRanges.length)];
+        next = Math.round(randomBetween(alternateMin, alternateMax));
+      } else {
+        next = Math.abs(previousFlightTop - min) >= Math.abs(max - previousFlightTop) ? min : max;
+      }
+    }
+    previousFlightTop = next;
+    return next;
+  };
+
+  const chooseFlightDuration = () => {
+    let next = Math.round(randomBetween(1800, 4200));
+
+    if (previousFlightDuration !== undefined && Math.abs(next - previousFlightDuration) < 650) {
+      next = next < 3000 ? Math.min(4200, next + 950) : Math.max(1800, next - 950);
+    }
+    previousFlightDuration = next;
+    return next;
+  };
+
+  const launchSwallow = () => {
+    if (!swallow || reducedMotion.matches || document.hidden || !swallow.animate) return;
+
+    swallowAnimation?.cancel();
+    swallow.classList.remove('is-flying');
+    const fromLeft = Math.random() >= .5;
+    const duration = chooseFlightDuration();
+    const top = chooseFlightTop();
+    const drift = Math.round(randomBetween(-56, 56));
+    const scale = randomBetween(.78, 1.06).toFixed(2);
+    const startX = fromLeft ? -170 : window.innerWidth + 170;
+    const endX = fromLeft ? window.innerWidth + 170 : -170;
+    const startBank = fromLeft ? -7 : 7;
+    const endBank = fromLeft ? 5 : -5;
+
+    swallow.style.top = `${top}px`;
+    swallow.classList.toggle('is-reverse', !fromLeft);
+    swallow.classList.add('is-flying');
+    swallow.dataset.flightTop = String(top);
+    swallow.dataset.flightDuration = String(duration);
+    swallow.dataset.flightDirection = fromLeft ? 'left-to-right' : 'right-to-left';
+
+    swallowAnimation = swallow.animate([
+      { opacity: 0, transform: `translate3d(${startX}px, 20px, 0) rotate(${startBank}deg) scale(${scale})`, offset: 0 },
+      { opacity: .88, offset: .08 },
+      { opacity: .88, offset: .84 },
+      { opacity: 0, transform: `translate3d(${endX}px, ${drift}px, 0) rotate(${endBank}deg) scale(${scale})`, offset: 1 }
+    ], {
+      duration,
+      easing: 'cubic-bezier(.42, 0, .24, 1)',
+      fill: 'none'
+    });
+
+    swallowAnimation.addEventListener('finish', () => swallow.classList.remove('is-flying'), { once: true });
+  };
+
+  const scheduleSwallow = (delay = 10000) => {
+    window.clearTimeout(swallowTimer);
+    swallowTimer = window.setTimeout(() => {
+      launchSwallow();
+      scheduleSwallow();
+    }, delay);
+  };
+
+  const updateSwallowMotion = () => {
+    window.clearTimeout(swallowTimer);
+    swallowAnimation?.cancel();
+    swallow?.classList.remove('is-flying');
+    if (reducedMotion.matches) return;
+    scheduleSwallow(900);
+  };
+
+  reducedMotion.addEventListener?.('change', updateSwallowMotion);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      window.clearTimeout(swallowTimer);
+      swallowAnimation?.cancel();
+      swallow?.classList.remove('is-flying');
+      return;
+    }
+    scheduleSwallow(900);
+  });
+  updateSwallowMotion();
+
   const header = document.querySelector('.site-header');
   let previousScrollY = Math.max(window.scrollY, 0);
   let scrollDirection = 0;
