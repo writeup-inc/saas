@@ -20,6 +20,7 @@
   --g08:#EDEDED;
   --g04:#F6F6F6;
   --notice:#536B82;
+  --future:#985038;
   --w:1150px;
   --jp:"Noto Sans JP",sans-serif;
   --en:"Inter",sans-serif;
@@ -70,6 +71,7 @@ body{
 .hyear{border-top:2px solid var(--ink);margin-top:40px;padding-top:28px}
 .hym{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
 .hym i{display:block;width:100%;aspect-ratio:1;background:var(--g20)}
+.hym i.future{background:var(--future)}
 .hym span{display:block;font-family:var(--en);font-weight:900;font-size:11px;
   color:var(--g40);margin-top:10px;letter-spacing:.06em}
 .hyfoot{border-top:1px solid var(--g20);margin-top:26px;padding-top:22px;
@@ -394,15 +396,15 @@ body{
         <div><i></i><span>03</span></div><div><i></i><span>04</span></div>
         <div><i></i><span>05</span></div><div><i></i><span>06</span></div>
         <div><i></i><span>07</span></div><div><i></i><span>08</span></div>
-        <div><i></i><span>09</span></div><div><i></i><span>10</span></div>
-        <div><i></i><span>11</span></div><div><i></i><span>12</span></div>
+        <div><i class="future"></i><span>09</span></div><div><i class="future"></i><span>10</span></div>
+        <div><i class="future"></i><span>11</span></div><div><i class="future"></i><span>12</span></div>
       </div>
       <div class="hyfoot">
         <div>
           <div class="l">1年間、毎月おうかがいします。</div>
           <div class="m">担当　<span class="ph">【氏名】</span>　株式会社ライトアップ</div>
         </div>
-        <div class="r">265 ／ 1000社　・　残り 735社　・　2026年7月31日 時点</div>
+        <div class="r">326 ／ 1000社　・　残り 674社　・　2026年9月8日 時点</div>
       </div>
     </div>
     <p class="bridge">なぜ1000社なのか。<br>そして、なぜ200社で止めるのか。</p>
@@ -648,8 +650,8 @@ body{
     <div class="body">
       <div class="kgrid" id="kgrid"></div>
       <div class="kstat">
-        <b id="knum">735</b>
-        <span>社が空いています。（2026年7月31日 時点）</span>
+        <b id="knum">674</b>
+        <span>社が空いています。（2026年9月8日 時点）</span>
       </div>
       <p style="margin-top:26px"><span class="mk">埋まったら、そこで締め切ります。</span></p>
     </div>
@@ -686,7 +688,7 @@ body{
   <div class="wrap">
     <div class="sqr"><i></i><i></i><i></i><i class="o"></i><i class="o"></i></div>
     <div class="k">私を、<br>御社のAI担当に。</div>
-    <p class="cs">残り735社。この場で、次回の日程だけ決めさせてください。</p>
+    <p class="cs">残り674社。この場で、次回の日程だけ決めさせてください。</p>
     <a class="btn" href="#how"><span class="sq"></span>次回の日程を決める</a>
   </div>
 </section>
@@ -710,7 +712,7 @@ body{
 <script>
 (function(){
   var kg=document.getElementById('kgrid');
-  var filled=265; /* 現在の参加社数。更新はこの数字だけ変えてください（0-1000） */
+  var filled=326; /* 現在の参加社数。更新はこの数字だけ変えてください（0-1000） */
   for(var j=0;j<1000;j++){var c=document.createElement('i');if(j<filled)c.className='f';kg.appendChild(c);}
   if(filled>0){document.getElementById('knum').textContent=(1000-filled);}
 
