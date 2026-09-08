@@ -19,7 +19,7 @@
   --g20:#D5D5D5;
   --g08:#EDEDED;
   --g04:#F6F6F6;
-  --accent:#E65328;
+  --notice:#536B82;
   --w:1150px;
   --jp:"Noto Sans JP",sans-serif;
   --en:"Inter",sans-serif;
@@ -80,8 +80,10 @@ body{
   grid-template-rows:auto minmax(0,1fr);min-height:420px;overflow:hidden;
   border:1px solid var(--ink);background:var(--g04)}
 .hero-guest-notice{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;
-  gap:14px;padding:11px 13px;background:var(--accent);color:var(--paper)}
-.hero-guest-notice span{font-size:9px;font-weight:900;letter-spacing:.12em}
+  gap:14px;padding:12px 13px;background:var(--paper);color:var(--ink);border-bottom:1px solid var(--ink)}
+.hero-guest-notice span{display:flex;align-items:center;gap:7px;color:var(--notice);
+  font-size:9px;font-weight:900;letter-spacing:.12em}
+.hero-guest-notice span::before{content:"";width:7px;height:7px;background:var(--notice);flex:0 0 auto}
 .hero-guest-notice b{font-size:14px;font-weight:900;letter-spacing:.03em}
 .hero-guest{position:relative;min-width:0;overflow:hidden;background:var(--paper)}
 .hero-guest + .hero-guest{border-left:1px solid var(--ink)}
@@ -331,7 +333,7 @@ body{
   .dcell{padding:0;border-left:0}
   .hero-guests{min-height:360px}
   .hero-guest-notice{display:block;padding:9px 10px}
-  .hero-guest-notice span{display:block;font-size:8px}
+  .hero-guest-notice span{font-size:8px}
   .hero-guest-notice b{display:block;margin-top:1px;font-size:12px}
   .hero-guest figcaption{left:9px;right:7px;bottom:9px}
   .hero-guest figcaption b{font-size:13px}
