@@ -71,6 +71,7 @@ function openChatGPT(questionKind, notice) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  const SWALLOW_INTERVAL = 30000;
   const swallow = document.querySelector('.swallow-flight');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let swallowTimer;
@@ -101,10 +102,10 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const chooseFlightDuration = () => {
-    let next = Math.round(randomBetween(1800, 4200));
+    let next = Math.round(randomBetween(6200, 9800));
 
-    if (previousFlightDuration !== undefined && Math.abs(next - previousFlightDuration) < 650) {
-      next = next < 3000 ? Math.min(4200, next + 950) : Math.max(1800, next - 950);
+    if (previousFlightDuration !== undefined && Math.abs(next - previousFlightDuration) < 1200) {
+      next = next < 8000 ? Math.min(9800, next + 1700) : Math.max(6200, next - 1700);
     }
     previousFlightDuration = next;
     return next;
@@ -118,12 +119,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const fromLeft = Math.random() >= .5;
     const duration = chooseFlightDuration();
     const top = chooseFlightTop();
-    const drift = Math.round(randomBetween(-56, 56));
-    const scale = randomBetween(.78, 1.06).toFixed(2);
-    const startX = fromLeft ? -170 : window.innerWidth + 170;
-    const endX = fromLeft ? window.innerWidth + 170 : -170;
-    const startBank = fromLeft ? -7 : 7;
-    const endBank = fromLeft ? 5 : -5;
+    const scale = randomBetween(.72, .96).toFixed(2);
+    const startX = fromLeft ? -80 : window.innerWidth + 80;
+    const endX = fromLeft ? window.innerWidth + 80 : -80;
+    const xStops = fromLeft
+      ? [startX, window.innerWidth * .18, window.innerWidth * .46, window.innerWidth * .76, endX]
+      : [startX, window.innerWidth * .82, window.innerWidth * .54, window.innerWidth * .24, endX];
+    const pathMin = Math.max(48, Math.round(window.innerHeight * .06));
+    const pathMax = Math.max(pathMin + 130, Math.min(420, Math.round(window.innerHeight * .46)));
+    const pathRange = pathMax - pathMin;
+    const highBand = [pathMin, pathMin + pathRange * .3];
+    const lowBand = [pathMin + pathRange * .65, pathMax];
+    const dipFirst = Math.random() >= .5;
+    const absoluteY = [
+      top,
+      Math.round(randomBetween(...(dipFirst ? lowBand : highBand))),
+      Math.round(randomBetween(...(dipFirst ? highBand : lowBand))),
+      Math.round(randomBetween(...(dipFirst ? lowBand : highBand))),
+      Math.round(randomBetween(pathMin, pathMax))
+    ];
+    const yStops = absoluteY.map((point) => point - top);
+    const bankStops = yStops.map((point, index) => {
+      const nextPoint = yStops[Math.min(index + 1, yStops.length - 1)];
+      const bank = Math.max(-15, Math.min(15, (nextPoint - point) / 7));
+      return fromLeft ? bank : -bank;
+    });
 
     swallow.style.top = `${top}px`;
     swallow.classList.toggle('is-reverse', !fromLeft);
@@ -131,22 +151,25 @@ document.addEventListener('DOMContentLoaded', () => {
     swallow.dataset.flightTop = String(top);
     swallow.dataset.flightDuration = String(duration);
     swallow.dataset.flightDirection = fromLeft ? 'left-to-right' : 'right-to-left';
+    swallow.dataset.flightInterval = String(SWALLOW_INTERVAL);
+    swallow.dataset.flightPath = absoluteY.join(',');
 
     swallowAnimation = swallow.animate([
-      { opacity: 0, transform: `translate3d(${startX}px, 20px, 0) rotate(${startBank}deg) scale(${scale})`, offset: 0 },
-      { opacity: .88, offset: .08 },
-      { opacity: .88, offset: .84 },
-      { opacity: 0, transform: `translate3d(${endX}px, ${drift}px, 0) rotate(${endBank}deg) scale(${scale})`, offset: 1 }
+      { opacity: 0, transform: `translate3d(${xStops[0]}px, ${yStops[0]}px, 0) rotate(${bankStops[0]}deg) scale(${scale})`, offset: 0 },
+      { opacity: .76, transform: `translate3d(${xStops[1]}px, ${yStops[1]}px, 0) rotate(${bankStops[1]}deg) scale(${scale})`, offset: .2 },
+      { opacity: .84, transform: `translate3d(${xStops[2]}px, ${yStops[2]}px, 0) rotate(${bankStops[2]}deg) scale(${scale})`, offset: .5 },
+      { opacity: .78, transform: `translate3d(${xStops[3]}px, ${yStops[3]}px, 0) rotate(${bankStops[3]}deg) scale(${scale})`, offset: .78 },
+      { opacity: 0, transform: `translate3d(${xStops[4]}px, ${yStops[4]}px, 0) rotate(${bankStops[4]}deg) scale(${scale})`, offset: 1 }
     ], {
       duration,
-      easing: 'cubic-bezier(.42, 0, .24, 1)',
+      easing: 'ease-in-out',
       fill: 'none'
     });
 
     swallowAnimation.addEventListener('finish', () => swallow.classList.remove('is-flying'), { once: true });
   };
 
-  const scheduleSwallow = (delay = 10000) => {
+  const scheduleSwallow = (delay = SWALLOW_INTERVAL) => {
     window.clearTimeout(swallowTimer);
     swallowTimer = window.setTimeout(() => {
       launchSwallow();
@@ -159,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
     swallowAnimation?.cancel();
     swallow?.classList.remove('is-flying');
     if (reducedMotion.matches) return;
-    scheduleSwallow(900);
+    scheduleSwallow(1200);
   };
 
   reducedMotion.addEventListener?.('change', updateSwallowMotion);
@@ -170,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
       swallow?.classList.remove('is-flying');
       return;
     }
-    scheduleSwallow(900);
+    scheduleSwallow(1200);
   });
   updateSwallowMotion();
 
