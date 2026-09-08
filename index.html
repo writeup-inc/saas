@@ -318,8 +318,14 @@
 
     .thoughts {
       position: relative;
+      display: grid;
+      grid-template-areas:
+        "head ideas"
+        "head footer";
+      grid-template-columns: minmax(250px, .72fr) minmax(0, 1.48fr);
+      gap: 12px clamp(24px, 3.5vw, 44px);
       margin-bottom: clamp(38px, 5vw, 58px);
-      padding: clamp(30px, 4.5vw, 52px);
+      padding: clamp(26px, 3.4vw, 38px);
       overflow: hidden;
       border: 1px solid rgba(20,37,31,.14);
       background:
@@ -347,13 +353,14 @@
     .thoughts-head {
       position: relative;
       z-index: 1;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
-      gap: clamp(24px, 4vw, 56px);
-      align-items: end;
-      margin-bottom: 28px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid var(--line);
+      grid-area: head;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 0;
+      padding-right: clamp(22px, 3vw, 38px);
+      border-right: 1px solid var(--line);
     }
 
     .thoughts-kicker {
@@ -379,9 +386,9 @@
     .thoughts-title {
       max-width: 720px;
       margin: 0;
-      font-size: clamp(27px, 3.7vw, 46px);
+      font-size: clamp(25px, 2.8vw, 36px);
       letter-spacing: -.045em;
-      line-height: 1.25;
+      line-height: 1.2;
     }
 
     .thoughts-title em {
@@ -393,13 +400,14 @@
     .thoughts-disclaimer {
       margin: 0;
       color: var(--ink-soft);
-      font-size: 12px;
-      line-height: 1.85;
+      font-size: 10px;
+      line-height: 1.65;
     }
 
     .thoughts-disclaimer b {
       display: inline-block;
-      margin-bottom: 5px;
+      margin-right: 6px;
+      margin-bottom: 0;
       color: var(--green);
       font-size: 10px;
       letter-spacing: .12em;
@@ -408,22 +416,23 @@
     .thought-grid {
       position: relative;
       z-index: 1;
+      grid-area: ideas;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
+      gap: 8px;
     }
 
     .thought-card {
       position: relative;
       min-width: 0;
-      padding: 22px 20px 20px;
+      padding: 14px 14px 13px;
       border: 1px solid rgba(20,37,31,.11);
       background: rgba(255,255,255,.7);
     }
 
     .thought-number {
       display: block;
-      margin-bottom: 13px;
+      margin-bottom: 6px;
       color: var(--orange);
       font-family: Georgia, "Times New Roman", serif;
       font-size: 12px;
@@ -433,38 +442,35 @@
     .thought-card p {
       margin: 0;
       color: var(--ink);
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 680;
       letter-spacing: -.012em;
-      line-height: 1.8;
+      line-height: 1.65;
     }
 
     .thought-card small {
-      display: block;
-      margin-top: 13px;
-      color: var(--muted);
-      font-size: 10px;
-      line-height: 1.6;
+      display: none;
     }
 
     .thought-footer {
       position: relative;
       z-index: 1;
+      grid-area: footer;
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
-      gap: 18px;
+      gap: 12px;
       align-items: center;
-      margin-top: 14px;
+      margin-top: 0;
     }
 
     .poison-note {
       margin: 0;
-      padding: 12px 15px;
+      padding: 8px 11px;
       border-left: 3px solid var(--orange);
       color: var(--ink-soft);
       background: rgba(168,102,72,.075);
-      font-size: 11px;
-      line-height: 1.7;
+      font-size: 10px;
+      line-height: 1.55;
     }
 
     .poison-note b {
@@ -476,10 +482,10 @@
 
     .thought-action {
       display: flex;
-      min-width: min(100%, 310px);
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 8px;
+      min-width: 0;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
     }
 
     .thought-prompt {
@@ -488,17 +494,18 @@
       color: var(--green);
       font-size: 11px;
       font-weight: 750;
+      line-height: 1.45;
       text-align: right;
     }
 
     .thought-nudge {
       min-height: 44px;
-      padding: 10px 16px;
+      padding: 9px 13px;
       border: 1px solid var(--green);
       color: #fff;
       background: var(--green);
       font: inherit;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 800;
       letter-spacing: .04em;
       cursor: pointer;
@@ -1154,13 +1161,13 @@
       .hero { grid-template-columns: 1fr; gap: 28px; }
       .hero-aside { display: grid; width: 100%; grid-template-columns: minmax(0, 1fr) auto; align-items: end; }
       .hero-notes { max-width: 430px; }
-      .thoughts-head { grid-template-columns: 1fr; gap: 16px; }
-      .thought-grid { grid-template-columns: 1fr; }
-      .thought-card { display: grid; grid-template-columns: 34px 1fr; column-gap: 10px; }
-      .thought-number { grid-row: 1 / 3; margin: 2px 0 0; }
-      .thought-card small { margin-top: 8px; }
+      .thoughts { grid-template-areas: "head" "ideas" "footer"; grid-template-columns: 1fr; gap: 14px; }
+      .thoughts-head { flex-direction: row; align-items: end; gap: 18px; padding: 0 0 14px; border-right: 0; border-bottom: 1px solid var(--line); }
+      .thoughts-head > div { min-width: 0; }
+      .thoughts-disclaimer { max-width: 260px; }
+      .thought-grid { grid-template-columns: repeat(3, minmax(210px, 1fr)); overflow-x: auto; padding-bottom: 3px; scrollbar-width: thin; }
       .thought-footer { grid-template-columns: 1fr; }
-      .thought-action { width: 100%; align-items: flex-start; }
+      .thought-action { width: 100%; justify-content: space-between; }
       .thought-prompt { text-align: left; }
       .context-head { grid-template-columns: 1fr; gap: 18px; }
       .org-flow { grid-template-columns: 1fr; }
@@ -1188,11 +1195,15 @@
       .hero-aside { grid-template-columns: 1fr; align-items: start; gap: 20px; }
       .hero-notes { max-width: none; }
       .hero-board { padding: 15px 18px 13px; }
-      .thoughts { padding: 25px 20px; }
-      .thoughts-title { font-size: clamp(27px, 8vw, 38px); }
+      .thoughts { padding: 20px 18px; }
+      .thoughts-head { align-items: start; flex-direction: column; gap: 9px; padding-bottom: 12px; }
+      .thoughts-title { font-size: clamp(24px, 7.4vw, 32px); }
+      .thoughts-disclaimer { max-width: none; }
       .thoughts::after { display: none; }
-      .thought-card { padding: 18px 16px; }
-      .thought-card p { font-size: 13px; }
+      .thought-grid { margin-right: -18px; padding-right: 18px; }
+      .thought-card { padding: 13px; }
+      .thought-card p { font-size: 11px; }
+      .thought-action { align-items: stretch; flex-direction: column; gap: 7px; }
       .thought-nudge { width: 100%; }
       .context { padding: 25px 20px; }
       .context-copy { font-size: 13px; }
@@ -1307,26 +1318,23 @@
         <div class="thoughts-head">
           <div>
             <p class="thoughts-kicker">TAKA MASTER'S CODEX / WILD INFERENCE</p>
-            <h2 class="thoughts-title" id="thoughts-title">最近、たかマスターは<br>こんなことを考えている<em>…かも。</em></h2>
+            <h2 class="thoughts-title" id="thoughts-title">最近、たかマスターはこんなことを考えている<em>…かも。</em></h2>
           </div>
-          <p class="thoughts-disclaimer"><b>推定精度：たぶん68%</b><br>本人の正式発言ではありません。制作ログを見すぎた「たかマスターのCodex」による、わりと筋のいい妄想です。</p>
+          <p class="thoughts-disclaimer"><b>推定精度：たぶん68%</b>本人の正式発言ではありません。たかマスターのCodexによる、筋のいい妄想です。</p>
         </div>
 
         <div class="thought-grid">
           <article class="thought-card">
             <span class="thought-number">01</span>
-            <p>「AIを入れるか」より、<br>「AIを同僚として何人雇うか」を考える会社が増えそう。なら、その同僚の履歴書も評価制度も先につくりたい。</p>
-            <small>採用面接には来ません。たぶん即日入社します。</small>
+            <p>「AIを入れるか」より、「AIを同僚として何人雇うか」。履歴書と評価制度も先につくりたい。</p>
           </article>
           <article class="thought-card">
             <span class="thought-number">02</span>
-            <p>SaaSは、完成してから売るより、LPにして見せた瞬間から会話が始まる。つくりながら売る。売りながら、またつくる。</p>
-            <small>落ち着く予定は、いまのところ未実装です。</small>
+            <p>SaaSは完成してから売らない。LPで会話を始め、つくりながら売り、売りながらまたつくる。</p>
           </article>
           <article class="thought-card">
             <span class="thought-number">03</span>
-            <p>地方の会社に足りないのは、アイデアより「じゃあ、明日だれがやる？」への答えかも。そこをAIで埋めたら、景色が変わる。</p>
-            <small>大きな構想ほど、最初の一歩は妙に地味です。</small>
+            <p>地方企業に足りないのは、アイデアより「明日だれがやる？」への答え。そこをAIで埋めたい。</p>
           </article>
         </div>
 
@@ -1334,7 +1342,7 @@
           <p class="poison-note"><b>毒 10%</b>AI活用会議を3回やって、やったことが会議だけなら、それは「AI活用」ではなく「会議活用」です。</p>
           <div class="thought-action">
             <p class="thought-prompt" id="thought-prompt" aria-live="polite">白石さんに聞くなら：「これ、次の商材になります？」</p>
-            <button class="thought-nudge" type="button" aria-describedby="thought-prompt">話しかけるネタをもう1つ ↻</button>
+            <button class="thought-nudge" type="button" aria-describedby="thought-prompt">別の話題を出す ↻</button>
           </div>
         </div>
       </section>
