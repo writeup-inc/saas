@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>土屋 慧介（つっちー）｜株式会社ライトアップ 第一営業部</title>
+<meta name="description" content="AI活用アドバイザー／売上2倍担当 土屋慧介のプロフィール。営業・販促・採用・社内業務の4領域から、1年かけて毎月1つずつAIを入れていきます。">
+<meta name="theme-color" content="#25452F">
+<style>
+/* ===== lp-base.css（初期CSS：改行制御・最小文字サイズ・固定CTAの逃げは削除しない） ===== */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] {
+    word-break: normal;
+  }
+}
+.nobr { white-space: nowrap; }
+
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+
+:root { --fixed-cta-h: 64px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+
+/* ===== ここから本ページ ===== */
+:root{
+  --green:#25452F;
+  --green-deep:#173021;
+  --green-soft:#3D6B4C;
+  --bg:#F6F3EB;
+  --bg-alt:#EFEBE1;
+  --card:#FFFFFF;
+  --ink:#1C2A22;
+  --ink-sub:#5A6660;
+  --line:#DFD9CB;
+  --gold:#A8802F;
+  --wrap:640px;
+  --sp:32px;
+  --sp-in:16px;
+}
+html{ -webkit-text-size-adjust:100%; }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,system-ui,sans-serif;
+  letter-spacing:.01em;
+}
+.wrap{ max-width:var(--wrap); margin:0 auto; }
+section{ padding:var(--sp) 20px; }
+a{ color:inherit; }
+
+/* 見出し */
+.sec-title{
+  margin:0 0 var(--sp-in); font-size:clamp(1.15rem,4.4vw,1.45rem);
+  font-weight:700; line-height:1.5; letter-spacing:.01em;
+}
+.sec-title::before{
+  content:""; display:block; width:28px; height:3px; border-radius:2px;
+  background:var(--green); margin-bottom:12px;
+}
+
+/* ── 1. ヒーロー ───────────────────────── */
+.hero{ background:var(--green); color:#fff; padding:18px 20px 26px; }
+.hero__org{ margin:0 0 14px; font-size:var(--fs-min); letter-spacing:.08em; color:#A9C4B4; }
+.hero__inner{
+  display:grid; grid-template-columns:clamp(100px,33%,190px) 1fr;
+  gap:18px; align-items:end; min-width:0;
+}
+.photo-frame{ border-radius:6px; overflow:hidden; background:var(--green-deep); }
+.photo-main{
+  display:block; width:100%; aspect-ratio:286/404; object-fit:cover; object-position:center 22%;
+}
+.hero__body{ min-width:0; }
+.role{
+  display:inline-block; margin:0 0 18px; padding:5px 12px;
+  border:1px solid rgba(255,255,255,.45); border-radius:99px;
+  font-size:var(--fs-min); font-weight:700; letter-spacing:.04em;
+}
+.hero__title{
+  margin:0; font-weight:700; letter-spacing:.04em;
+  font-size:clamp(1.4rem, 4.8vw, 2.5rem);
+}
+.hero__title .nick{
+  display:inline-block; font-size:.46em; font-weight:700;
+  margin-left:.4em; letter-spacing:.02em; white-space:nowrap;
+}
+.romaji{ margin:6px 0 0; font-size:var(--fs-min); letter-spacing:clamp(.1em,1.1vw,.34em); color:#A9C4B4; }
+.hero__meta{
+  margin:20px 0 0; padding-top:var(--sp-in); border-top:1px solid rgba(255,255,255,.22);
+  font-size:13px; line-height:1.9; color:#DCE7E0;
+  display:flex; flex-wrap:wrap; gap:4px 20px;
+}
+.hero__meta span{ white-space:nowrap; }
+.hero__meta .strong{ color:#fff; font-weight:700; }
+
+/* ── 2. リード ─────────────────────────── */
+.lead-box{ background:var(--card); padding:var(--sp) 20px; border-bottom:1px solid var(--line); }
+.lead{ margin:0; font-size:15px; line-height:2.05; }
+.lead + .lead{ margin-top:.9em; }
+.lead b{ color:var(--green); background:linear-gradient(transparent 62%, #F2E3A9 62%); font-weight:700; }
+
+/* ── 3. 12ヶ月の型（CSSで作図。文字を縮めないため） ── */
+.plan{ background:var(--bg-alt); }
+.timeline{ margin:0; }
+.timeline__cap{
+  display:flex; justify-content:space-between; gap:12px;
+  font-size:var(--fs-min); color:var(--ink-sub); margin-bottom:10px;
+}
+.timeline__track{
+  position:relative; display:flex; justify-content:space-between; align-items:center; height:26px;
+}
+.timeline__track::before{
+  content:""; position:absolute; left:5px; right:5px; top:50%;
+  height:2px; margin-top:-1px; background:var(--line);
+}
+.timeline__dot{
+  position:relative; z-index:1; width:11px; height:11px; border-radius:50%;
+  background:var(--green); box-shadow:0 0 0 3px var(--bg-alt);
+}
+.timeline__dot:last-child{ background:var(--gold); width:14px; height:14px; }
+.timeline__note{ margin:14px 0 0; font-size:13px; line-height:1.85; color:var(--ink-sub); }
+.timeline__note b{ color:var(--green); }
+
+/* ── 4. 4領域カード ────────────────────── */
+.cards{ display:grid; gap:12px; margin-top:var(--sp-in); }
+.card{ background:var(--card); border:1px solid var(--line); border-radius:8px; padding:16px 18px; }
+.card h3{
+  margin:0 0 8px; font-size:15px; font-weight:700; color:var(--green);
+  display:flex; align-items:center; gap:10px;
+}
+.card h3 svg{
+  flex:none; width:22px; height:22px; stroke:var(--green); fill:none; stroke-width:1.6;
+  stroke-linecap:round; stroke-linejoin:round;
+}
+.card p{ margin:0; font-size:14px; line-height:1.85; color:var(--ink-sub); }
+.subsidy{
+  margin-top:12px; background:#E6EDE7; border-radius:6px; padding:13px 16px;
+  font-size:13px; line-height:1.8; color:var(--green);
+}
+
+/* ── 5. いま動いている現場 ─────────────── */
+.works{ margin:0; padding:0; list-style:none; }
+.works li{ padding:14px 0; border-bottom:1px dashed var(--line); font-size:14px; line-height:1.8; }
+.works li b{
+  display:flex; align-items:center; flex-wrap:wrap; gap:2px 8px;
+  font-size:15px; color:var(--green);
+}
+.works .tag{
+  display:inline-block; padding:1px 8px; border-radius:99px;
+  background:#E6EDE7; color:var(--green-soft); font-size:var(--fs-min); font-weight:700;
+}
+.disclaim{ margin:14px 0 0; color:var(--ink-sub); }
+
+/* ── 6. 人となり ───────────────────────── */
+.person{ background:var(--bg-alt); }
+.quote{
+  margin:0 0 var(--sp-in); padding:16px 18px;
+  background:var(--card); border-left:5px solid var(--gold); border-radius:6px;
+}
+.quote__label{ margin:0 0 6px; font-size:var(--fs-min); font-weight:700; letter-spacing:.1em; color:var(--gold); }
+.quote__text{ margin:0; font-size:clamp(1.05rem,4.2vw,1.35rem); font-weight:700; line-height:1.6; }
+
+.dl{ margin:0; border-top:1px solid var(--line); }
+.dl > div{
+  display:grid; grid-template-columns:84px 1fr; gap:0 14px;
+  padding:14px 0; border-bottom:1px solid var(--line); align-items:start; min-width:0;
+}
+.dl dt{
+  font-size:var(--fs-min); font-weight:700; color:#fff; background:var(--green);
+  text-align:center; padding:4px 0; border-radius:4px; letter-spacing:.08em;
+}
+.dl dd{ margin:0; font-size:14px; line-height:1.85; min-width:0; overflow-wrap:anywhere; }
+
+.career{ margin:0; padding:0 0 0 18px; list-style:none; position:relative; }
+.career li{ position:relative; padding:3px 0; }
+.career li::before{
+  content:""; position:absolute; left:-18px; top:12px;
+  width:7px; height:7px; border-radius:50%; background:var(--green);
+}
+.career li:not(:last-child)::after{
+  content:""; position:absolute; left:-15px; top:19px; bottom:-4px;
+  width:1px; background:var(--line);
+}
+.career li b{ color:var(--green); }
+
+.seeds{
+  margin-top:20px; background:var(--card); border:1px solid var(--line);
+  border-left:5px solid var(--gold); border-radius:6px; padding:18px;
+}
+.seeds h3{ margin:0 0 10px; font-size:13px; letter-spacing:.08em; color:var(--gold); }
+.seeds ul{ margin:0; padding-left:1.1em; font-size:14px; line-height:1.9; }
+
+.shots{ display:grid; grid-template-columns:1fr; gap:var(--sp-in); margin-top:20px; }
+.shots figure{ margin:0; }
+.shots img{
+  width:100%; aspect-ratio:336/96; object-fit:cover; border-radius:6px;
+  background:#DDD8CC; display:block;
+}
+.shots figcaption{ margin-top:7px; color:var(--ink-sub); }
+
+/* ── 7. 連絡先 ─────────────────────────── */
+.contact{ background:var(--green); color:#fff; }
+.contact .sec-title{ color:#fff; }
+.contact .sec-title::before{ background:#A9C4B4; }
+.contact__org{ margin:0 0 var(--sp-in); font-size:14px; line-height:1.8; color:#DCE7E0; }
+.contact__list{ margin:0 0 var(--sp-in); display:grid; gap:10px; }
+.contact__list a{
+  display:flex; align-items:center; gap:12px; text-decoration:none;
+  background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.25);
+  border-radius:8px; padding:13px 16px; font-size:15px; font-weight:700; min-height:52px;
+}
+.contact__list a small{ display:block; font-weight:400; color:#A9C4B4; letter-spacing:.1em; }
+.contact__list svg{ flex:none; width:20px; height:20px; fill:#A9C4B4; }
+.qr{ background:#fff; border-radius:8px; padding:16px; display:flex; align-items:center; gap:16px; }
+.qr img{
+  width:112px; height:112px; flex:none; object-fit:contain; background:#fff; border-radius:4px;
+  image-rendering:pixelated;
+}
+.qr p{ margin:0; color:var(--ink); font-size:13px; line-height:1.8; }
+.qr p b{ display:block; color:var(--green); font-size:14px; }
+
+/* ── 8. フッター ───────────────────────── */
+.foot{ background:var(--green-deep); color:#fff; padding:var(--sp) 20px; }
+.foot p{ margin:0 0 8px; font-size:16px; font-weight:700; line-height:1.7; }
+.foot small{ color:#A9C4B4; letter-spacing:.06em; }
+.foot__links{
+  margin:20px 0 0; padding:14px 0 0; list-style:none;
+  border-top:1px solid rgba(255,255,255,.18);
+  display:flex; flex-wrap:wrap; gap:8px 18px;
+}
+.foot__links a{ color:#A9C4B4; font-size:var(--fs-min); text-decoration:underline; text-underline-offset:3px; }
+
+/* ── 固定CTA（ヒーローを過ぎてから出す） ── */
+.cta{
+  position:fixed; left:0; right:0; bottom:0; z-index:20;
+  background:rgba(23,48,33,.97); backdrop-filter:blur(6px);
+  padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));
+  display:flex; gap:8px; justify-content:center;
+  transform:translateY(110%); transition:transform .25s ease;
+}
+.cta.is-on{ transform:none; }
+.cta a{
+  flex:1; max-width:220px; text-align:center; text-decoration:none;
+  color:#fff; font-size:13px; font-weight:700; letter-spacing:.04em;
+  border:1px solid rgba(255,255,255,.3); border-radius:8px; padding:12px 4px;
+  min-height:44px; display:flex; align-items:center; justify-content:center; gap:6px;
+}
+@media (prefers-reduced-motion:reduce){ .cta{ transition:none; } }
+
+/* 画像プレースホルダ */
+.ph{ position:relative; }
+.ph::after{
+  content:attr(data-ph); position:absolute; inset:0; display:grid; place-items:center;
+  background:#E4E0D6; color:#8A8578; font-size:var(--fs-min); text-align:center;
+  padding:8px; line-height:1.6; border-radius:inherit;
+}
+.ph.is-loaded::after{ display:none; }
+
+@media (min-width:601px){
+  :root{ --sp:44px; }
+  section{ padding:var(--sp) 32px; }
+  .hero{ padding:20px 32px 30px; }
+  .lead-box{ padding:var(--sp) 32px; }
+  .foot{ padding:var(--sp) 32px; }
+  .cards{ grid-template-columns:1fr 1fr; }
+  .shots{ grid-template-columns:1fr 1fr; }
+  .contact__list{ grid-template-columns:1fr 1fr; }
+}
+
+@media print{
+  :root{ --fixed-cta-h:0px; --sp:14px; --sp-in:10px; }
+  .cta{ display:none; }
+  body{ background:#fff; font-size:10.5pt; }
+  .wrap{ max-width:none; }
+  section{ padding:10px 16px; }
+  .hero{ padding:12px 16px; break-inside:avoid; }
+  .hero__inner{ grid-template-columns:120px 1fr; }
+  .lead-box{ padding:12px 16px; }
+  .foot{ padding:12px 16px; }
+  .cards, .shots, .contact__list{ grid-template-columns:1fr 1fr; }
+  .dl > div{ grid-template-columns:70px 1fr; padding:7px 0; }
+  .qr img{ width:88px; height:88px; }
+  .card,.seeds,.quote,.qr,.shots figure,.dl > div,.works li,.contact__list,.timeline{
+    break-inside:avoid; page-break-inside:avoid;
+  }
+  h2,.sec-title{ break-after:avoid; page-break-after:avoid; }
+  .hero,.contact,.foot,.card,.seeds,.quote,.subsidy,.qr,.plan,.person{
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 1. だれか -->
+  <header class="hero" id="hero">
+    <p class="hero__org">株式会社ライトアップ　第一営業部</p>
+    <p class="role">AI活用アドバイザー ／ 売上2倍担当</p>
+    <div class="hero__inner">
+      <div class="ph photo-frame" data-ph="main.jpg">
+        <img class="photo-main" src="profile-assets/main.jpg" alt="土屋慧介">
+      </div>
+      <div class="hero__body">
+        <h1 class="hero__title">土屋 慧介<span class="nick">（つっちー）</span></h1>
+        <p class="romaji">TSUCHIYA KEISUKE</p>
+      </div>
+    </div>
+    <p class="hero__meta">
+      <span class="strong">毎月1つずつ、12ヶ月で12個</span>
+      <span>製造業・店舗ビジネスが得意</span>
+      <span>全国対応</span>
+    </p>
+  </header>
+
+  <!-- 2. 何をする人か -->
+  <div class="lead-box">
+    <p class="lead">オーダーメイド印刷の法人営業を12年。売る側の苦労は、ひととおり通ってきました。</p>
+    <p class="lead">いまは営業・販促・採用・社内業務の4領域を見て、御社のどこにAIを入れると効くかを一緒に決めます。<b>1年かけて毎月1つずつ、12ヶ月で12個。</b>それで売上2倍を目指します。</p>
+  </div>
+
+  <!-- 3. 進め方の型 -->
+  <section class="plan">
+    <h2 class="sec-title">1年で12個。毎月1つずつ入れます</h2>
+    <figure class="timeline">
+      <div class="timeline__cap"><span>1ヶ月目</span><span>12ヶ月目</span></div>
+      <div class="timeline__track" aria-hidden="true">
+        <span class="timeline__dot"></span><span class="timeline__dot"></span>
+        <span class="timeline__dot"></span><span class="timeline__dot"></span>
+        <span class="timeline__dot"></span><span class="timeline__dot"></span>
+        <span class="timeline__dot"></span><span class="timeline__dot"></span>
+        <span class="timeline__dot"></span><span class="timeline__dot"></span>
+        <span class="timeline__dot"></span><span class="timeline__dot"></span>
+      </div>
+      <figcaption class="timeline__note">
+        ●1つが1か月。<b>一度に全部は入れません。</b>順番は御社の状況しだい。効くところから始めて、慣れたら次へ進みます。
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- 4. 何を入れられるか -->
+  <section>
+    <h2 class="sec-title">ご支援できる4領域</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg>
+          営業
+        </h3>
+        <p><span class="nobr">Lシンク</span>／<span class="nobr">名刺LINEエージェント</span>／<span class="nobr">リストマスター</span>／<span class="nobr">つばめリード</span></p>
+      </div>
+      <div class="card">
+        <h3>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11v2a1 1 0 0 0 1 1h2l4 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M14.5 8.5a4.5 4.5 0 0 1 0 7"/></svg>
+          販促・集客
+        </h3>
+        <p><span class="nobr">ソーシャルマスター</span>／<span class="nobr">AIOマスター</span><span class="nobr">（AI検索対策）</span></p>
+      </div>
+      <div class="card">
+        <h3>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5 6-5s6 1.7 6 5"/><path d="M18 8.5v6M15 11.5h6"/></svg>
+          採用
+        </h3>
+        <p><span class="nobr">ハチドリHR＋note</span><span class="nobr">（求人票生成・自動投稿）</span></p>
+      </div>
+      <div class="card">
+        <h3>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v2.6M12 18.4V21M3 12h2.6M18.4 12H21M5.6 5.6l1.9 1.9M16.5 16.5l1.9 1.9M18.4 5.6l-1.9 1.9M7.5 16.5l-1.9 1.9"/></svg>
+          社内業務・ナレッジ
+        </h3>
+        <p><span class="nobr">AIバード</span>／<span class="nobr">マイナレッジ</span>／<span class="nobr">エリオット</span></p>
+      </div>
+    </div>
+    <p class="subsidy">補助金・助成金が使えるかどうかも、あわせて確認。</p>
+  </section>
+
+  <!-- 5. いま動いている現場 -->
+  <section>
+    <h2 class="sec-title">いま動いている現場</h2>
+    <ul class="works">
+      <li><b>印刷加工業（工場）<span class="tag">進行中</span></b>工場業務の自動化に着手</li>
+      <li><b>HP制作業<span class="tag">進行中</span></b>社内業務の改善に着手</li>
+    </ul>
+    <p class="disclaim note">※ いずれも着手して進めている案件です。完了実績ではなく、いま手を動かしている現場としてご覧ください。</p>
+  </section>
+
+  <!-- 6. どんな人か -->
+  <section class="person">
+    <h2 class="sec-title">仕事以外の、土屋慧介</h2>
+
+    <blockquote class="quote">
+      <p class="quote__label">口癖</p>
+      <p class="quote__text">「めっちゃいいじゃないですか！」</p>
+    </blockquote>
+
+    <dl class="dl">
+      <div><dt>出身地</dt><dd>茨城県つくばみらい市（高校まで茨城）<br>現在は東京都東久留米市在住</dd></div>
+      <div><dt>生年月日</dt><dd>1989年8月28日</dd></div>
+      <div><dt>経歴</dt><dd>
+        <ol class="career">
+          <li>伊奈高校（剣道部）</li>
+          <li>武蔵野大学</li>
+          <li>アクセア　<b>12年</b>（営業→店長→AM）</li>
+          <li>ライトアップ　第一営業部 リーダー</li>
+        </ol>
+      </dd></div>
+      <div><dt>趣味</dt><dd>キャンプ・バイク（年間50泊のツーリング歴）<br>アニメ（ロボット・サスペンス系）</dd></div>
+      <div><dt>資格</dt><dd>剣道2段（始めて3年でストレート合格）</dd></div>
+    </dl>
+
+    <div class="seeds">
+      <h3>話のタネ</h3>
+      <ul>
+        <li>リクガメの「巌（がん）」を6年飼育</li>
+        <li>『<span class="nobr">バック・トゥ・ザ・フューチャー</span>』は生涯30周</li>
+        <li>休日はキャンプと銭湯巡り</li>
+      </ul>
+    </div>
+
+    <div class="shots">
+      <figure>
+        <div class="ph" data-ph="camp.jpg">
+          <img src="profile-assets/camp.jpg" alt="家族3人でキャンプ">
+        </div>
+        <figcaption>家族3人でキャンプ、リサイクルショップ巡り</figcaption>
+      </figure>
+      <figure>
+        <div class="ph" data-ph="bike.jpg">
+          <img src="profile-assets/bike.jpg" alt="バイクでツーリング">
+        </div>
+        <figcaption>バイクでスーパー銭湯巡り／ソロキャンプ</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 7. 連絡先 -->
+  <section class="contact">
+    <h2 class="sec-title">まずはご連絡ください</h2>
+    <p class="contact__org">株式会社ライトアップ　第一営業部　リーダー<br>土屋 慧介（つっちー）</p>
+    <div class="contact__list">
+      <a href="tel:08094597759">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.2 2.2z"/></svg>
+        <span>080-9459-7759<small>TEL</small></span>
+      </a>
+      <a href="mailto:k_tsuchiya@writeup.co.jp">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18c.6 0 1 .4 1 1v12c0 .6-.4 1-1 1H3c-.6 0-1-.4-1-1V6c0-.6.4-1 1-1zm9 7.2L20 7H4l8 5.2z"/></svg>
+        <span>k_tsuchiya@writeup.co.jp<small>MAIL</small></span>
+      </a>
+    </div>
+    <div class="qr">
+      <div class="ph" data-ph="QR" style="border-radius:4px">
+        <img src="profile-assets/line-qr.png" alt="LINE友だち追加QRコード">
+      </div>
+      <p><b>LINEでつながる</b>ご相談・日程調整はLINEが早いです。カメラで読み取ってください。</p>
+    </div>
+  </section>
+
+  <div class="foot">
+    <p>1年かけて、御社の売上を2倍に。<br>毎月1つずつAIを入れていきましょう。</p>
+    <small>株式会社ライトアップ</small>
+    <ul class="foot__links">
+      <li><a href="https://www.writeup.co.jp/company/company.html">会社概要</a></li>
+      <li><a href="https://www.writeup.co.jp/privacy/">個人情報保護方針</a></li>
+      <li><a href="https://www.writeup.co.jp/">公式サイト</a></li>
+    </ul>
+  </div>
+</div>
+
+<nav class="cta" id="cta">
+  <a href="tel:08094597759">電話する</a>
+  <a href="mailto:k_tsuchiya@writeup.co.jp">メール</a>
+</nav>
+
+<script>
+document.querySelectorAll('.ph > img').forEach(function (img) {
+  var mark = function () { img.parentNode.classList.add('is-loaded'); };
+  if (img.complete && img.naturalWidth > 0) { mark(); }
+  img.addEventListener('load', function () { if (img.naturalWidth > 0) mark(); });
+  img.addEventListener('error', function () { img.style.visibility = 'hidden'; });
+});
+
+(function () {
+  var hero = document.getElementById('hero');
+  var cta = document.getElementById('cta');
+  if (!hero || !cta) { return; }
+  if (!('IntersectionObserver' in window)) { cta.classList.add('is-on'); return; }
+  new IntersectionObserver(function (es) {
+    cta.classList.toggle('is-on', !es[0].isIntersecting);
+  }, { threshold: 0 }).observe(hero);
+})();
+</script>
+</body>
+</html>
