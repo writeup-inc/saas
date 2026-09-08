@@ -7,6 +7,62 @@
 <meta name="description" content="人物アイコンと吹き出しで、ホームページの問題提起からAIハイブリッド営業までを生ログ順に話せる営業トーク集。">
 <title>生ログ順 AI営業トーク集｜第二営業部</title>
 <style>
+/* lp-base.css — 日本語LP／HTML成果物の初期CSS
+ *
+ * 品質台帳（~/Documents/Codex/loop-engineering-memory/events.jsonl）で
+ * 再発が確認された表示欠陥を、指摘ではなく初期値で潰すためのファイル。
+ * 対応する欠陥ID:
+ *   japanese-heading-midword-wrap（見出しが単語途中で改行）11回
+ *   mobile-fv-headline-wrap（モバイルFVの見出し改行）3回
+ *   mobile-fixed-cta-overlap（固定CTAが本文を隠す）3回
+ *   meaningful-small-text-under-readable-size（意味のある文字が可読サイズ未満）5回
+ *
+ * 使い方: HTMLの<style>先頭にこの内容を貼る。色・書体・余白は各LPで上書きしてよいが、
+ * 下の「改行制御」「最小文字サイズ」「固定CTAの逃げ」の3ブロックは消さないこと。
+ */
+
+/* ── 改行制御 ─────────────────────────────────────────────
+ * 日本語は単語区切りが無いため、既定のままだと文節の途中で折り返す。
+ * auto-phrase は文節単位で折る（Chrome 119+）。非対応環境は strict で逃がす。 */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] {
+    word-break: normal;
+  }
+}
+/* 明示的に折りたくない語の途中で切られたら、その語を <span class="nobr"> で包む */
+.nobr { white-space: nowrap; }
+
+/* ── 最小文字サイズ ───────────────────────────────────────
+ * 判断材料になる文字は12px未満にしない。注記・免責のみ .note を許容。 */
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+
+/* ── ファーストビューの見出し ─────────────────────────────
+ * 固定pxだと狭い画面で必ず折り返す。clamp で画面幅に追従させる。 */
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+
+/* ── 固定CTAの逃げ ────────────────────────────────────────
+ * 画面下に固定CTAを置くページは、この変数を実測の高さに書き換える。
+ * 置かないページはそのままでよい（0のまま）。 */
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+
+/* ── 横はみ出しの予防 ─────────────────────────────────────
+ * flex/grid の子は既定で min-width:auto のため、長い語で親を押し広げる。 */
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+
 :root{--black:#080808;--graphite:#242424;--gray-700:#555;--gray-500:#898989;--gray-300:#c9c9c9;--gray-200:#e2e2e2;--gray-100:#f2f2f2;--gray-050:#fafafa;--white:#fff}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:82px}body{background:var(--white);color:var(--black);margin:0;font-family:Hiragino Kaku Gothic ProN,Yu Gothic,Noto Sans JP,system-ui,sans-serif;overflow-x:hidden}a{color:inherit;text-decoration:none}.container{width:min(1200px,100% - 48px);margin-inline:auto}.site-header{z-index:20;border-bottom:1px solid var(--black);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);background:#fffffff2;position:sticky;top:0}.header-inner{letter-spacing:.14em;justify-content:space-between;align-items:center;gap:24px;min-height:68px;font-size:11px;font-weight:900;display:flex}.brand{border-bottom:1px solid var(--black);padding-bottom:3px}nav{gap:6px;display:flex}nav a{border:1px solid var(--gray-300);place-items:center;width:30px;height:30px;font-size:9px;transition:all .2s;display:grid}nav a:hover{border-color:var(--black);background:var(--black);color:var(--white)}.hero{border-bottom:1px solid var(--black);background-image:linear-gradient(var(--gray-200) 1px, transparent 1px), linear-gradient(90deg, var(--gray-200) 1px, transparent 1px);background-size:32px 32px;padding:104px 0 96px}.hero-grid{grid-template-columns:.92fr 1.08fr;align-items:center;gap:84px;display:grid}.overline{color:var(--gray-700);letter-spacing:.18em;margin:0 0 24px;font-size:10px;font-weight:900}h1{letter-spacing:-.065em;margin:0;font-size:clamp(52px,6.4vw,86px);line-height:1.02}.hero-lead{max-width:570px;color:var(--gray-700);margin:28px 0 0;font-size:17px;line-height:1.95}.jump{border-bottom:2px solid var(--black);align-items:center;gap:10px;margin-top:34px;padding-bottom:5px;font-size:13px;font-weight:900;display:inline-flex}.hero-speech{border:1px solid var(--gray-300);background:#ffffffe6;padding:34px}.read-guide{color:var(--gray-700);align-items:center;gap:9px;margin:26px 0 0 96px;font-size:11px;line-height:1.6;display:flex}.order-map{border-bottom:1px solid var(--black);background:var(--black);color:var(--white);padding:72px 0}.order-map .overline{color:var(--gray-300)}.order-grid{border-top:1px solid var(--gray-700);border-left:1px solid var(--gray-700);grid-template-columns:repeat(5,1fr);display:grid}.order-grid a{border-right:1px solid var(--gray-700);border-bottom:1px solid var(--gray-700);grid-template-columns:1fr auto;align-content:space-between;gap:18px;min-height:154px;padding:20px;transition:all .2s;display:grid}.order-grid a:hover{background:var(--white);color:var(--black)}.order-grid span{color:var(--gray-300);font:900 10px/1 system-ui}.order-grid strong{grid-column:1/-1;align-self:end;font-size:14px;line-height:1.7}.order-grid svg{grid-area:1/2}.chapter{border-bottom:1px solid var(--black);padding:112px 0 124px}#chapter-02,#chapter-04{background:var(--gray-100)}.script-layout{grid-template-columns:288px 1fr;align-items:start;gap:72px;display:grid}.chapter-rail{border-top:5px solid var(--black);padding-top:16px;position:sticky;top:104px}.chapter-rail>span{letter-spacing:.16em;font-size:10px;font-weight:900}.chapter-rail h2{letter-spacing:-.045em;margin:18px 0 13px;font-size:30px;line-height:1.35}.chapter-rail p{color:var(--gray-700);margin:0;font-size:13px;line-height:1.85}.scene-list{gap:40px;display:grid}.scene{border:1px solid var(--gray-300);background:var(--white);padding:38px}.scene-heading{border-bottom:1px solid var(--gray-200);grid-template-columns:48px 1fr;align-items:start;gap:17px;margin-bottom:34px;padding-bottom:24px;display:grid}.scene-heading>span{background:var(--black);width:46px;height:46px;color:var(--white);place-items:center;font:900 11px/1 system-ui;display:grid}.scene-heading small{color:var(--gray-700);letter-spacing:.07em;font-size:10px;font-weight:900}.scene-heading h3{letter-spacing:-.035em;margin:6px 0 0;font-size:26px;line-height:1.38}.conversation{gap:18px;display:grid}.speech{grid-template-columns:78px 1fr;align-items:flex-start;gap:18px;display:grid}.speaker{text-align:center;justify-items:center;gap:9px;display:grid}.speaker strong{letter-spacing:.05em;white-space:nowrap;font-size:9px;line-height:1.4}.person-icon{border:2px solid var(--black);background:var(--black);width:58px;height:58px;color:var(--white);border-radius:50%;place-items:center;display:grid}.person-icon svg{stroke-width:1.8px;width:28px;height:28px}.bubble{border:2px solid var(--black);background:var(--white);min-height:76px;box-shadow:7px 7px 0 var(--black);border-radius:3px;padding:23px 27px;position:relative}.bubble:before{content:"";border-left:2px solid var(--black);border-bottom:2px solid var(--black);background:var(--white);width:20px;height:20px;position:absolute;top:22px;left:-12px;transform:rotate(45deg)}.bubble p{margin:0;font-size:15px;font-weight:700;line-height:2;position:relative}.speech-customer{grid-template-columns:1fr 78px;margin-left:96px}.speech-customer .speaker{grid-area:1/2}.speech-customer .bubble{border-color:var(--gray-300);background:var(--gray-100);min-height:66px;box-shadow:none;grid-area:1/1}.speech-customer .bubble:before{border:0;border-top:2px solid var(--gray-300);border-right:2px solid var(--gray-300);background:var(--gray-100);left:auto;right:-12px}.speech-customer .person-icon{border-color:var(--gray-500);background:var(--white);color:var(--gray-700)}.speech-customer .bubble p{color:var(--gray-700);font-weight:600}.talk-point,.caution{border-left:3px solid var(--black);background:var(--gray-100);align-items:flex-start;gap:12px;margin:26px 0 0 96px;padding:16px 18px;display:flex}.talk-point svg,.caution svg{flex:none;margin-top:3px}.talk-point p,.caution p{color:var(--gray-700);margin:0;font-size:12px;line-height:1.8}.talk-point strong,.caution strong{color:var(--black);letter-spacing:.08em;margin-bottom:1px;font-size:9px;display:block}.caution{border:1px solid var(--black);background:var(--white);border-left-width:7px}.closing{background:var(--black);color:var(--white);padding:112px 0}.closing-inner{max-width:920px}.closing .overline{color:var(--gray-300)}.closing h2{letter-spacing:-.06em;margin:0 0 48px;font-size:clamp(52px,7vw,92px);line-height:1.02}.closing .speech{max-width:820px}.closing .speaker strong{color:var(--white)}.closing .person-icon{border-color:var(--white);background:var(--white);color:var(--black)}.closing .bubble{border-color:var(--white);background:var(--black);box-shadow:7px 7px 0 var(--gray-700)}.closing .bubble:before{border-color:var(--white);background:var(--black)}.closing>.container>a{border-bottom:1px solid var(--white);align-items:center;gap:10px;margin:44px 0 0 96px;padding-bottom:5px;font-size:12px;font-weight:900;display:inline-flex}footer{border-top:1px solid var(--gray-700);background:var(--black);color:var(--gray-300)}footer .container{letter-spacing:.13em;justify-content:space-between;align-items:center;gap:20px;min-height:72px;font-size:9px;display:flex}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}@media (width<=980px){.hero-grid,.script-layout{grid-template-columns:1fr;gap:58px}.chapter-rail{max-width:650px;position:static}.order-grid{grid-template-columns:repeat(2,1fr)}.order-grid a:last-child{grid-column:1/-1}}@media (width<=640px){.container{width:min(100% - 28px,1200px)}.header-inner{min-height:60px}nav{display:none}.hero{padding:70px 0}h1{font-size:45px}.hero-grid{gap:46px}.hero-speech{padding:20px 15px}.read-guide{margin-left:0}.order-map{padding:58px 0}.order-grid{grid-template-columns:1fr}.order-grid a,.order-grid a:last-child{grid-column:auto;min-height:110px}.chapter{padding:76px 0 84px}.scene{padding:25px 16px}.scene-heading{grid-template-columns:42px 1fr;gap:13px}.scene-heading>span{width:40px;height:40px}.scene-heading h3{font-size:21px}.speech{grid-template-columns:46px 1fr;gap:11px}.speech-customer{grid-template-columns:1fr 46px;margin-left:24px}.person-icon{width:42px;height:42px}.person-icon svg{width:21px;height:21px}.speaker strong{white-space:normal;max-width:46px;font-size:7px}.bubble{min-height:64px;box-shadow:5px 5px 0 var(--black);padding:18px 15px}.bubble:before{top:16px}.bubble p{font-size:13px;line-height:1.9}.talk-point,.caution{margin-left:57px;padding:14px}.closing{padding:80px 0}.closing h2{font-size:48px}.closing>.container>a{margin-left:57px}footer .container{flex-direction:column;justify-content:center;align-items:flex-start;padding-block:18px}}
 
 
