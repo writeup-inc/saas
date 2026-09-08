@@ -41,7 +41,83 @@ pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
   --num:#e7e7e2;
   --line:#e4e4e0;
   --mark:rgba(255,224,74,.78);
+  /* 社内だけの面。客に見せない情報は必ずこの色 */
+  --inbg:#fbf7e9;
+  --inline:#ddcb90;
+  --intext:#7d6417;
 }
+
+/* ── 話す言葉：白地＋赤の太い縦線。読み上げる用 ── */
+.talk{
+  background:#fff !important;
+  border:1px solid var(--line);
+  border-left:5px solid var(--red);
+  position:relative;
+}
+.talk:before{
+  content:"\201C";position:absolute;right:16px;top:-6px;
+  font-family:Georgia,serif;font-size:72px;color:#f3f1ec;line-height:1;pointer-events:none;
+}
+.talk p{position:relative;z-index:1}
+
+/* ── 社内だけ：黄の地＋左帯。ひと目で「客に見せない」と分かる ── */
+.memo, .ng, .scene .tip, .packnote.internal{
+  background:var(--inbg);
+  border:none !important;
+  border-left:4px solid var(--inline) !important;
+  padding:18px 22px !important;
+  margin:24px 0;
+}
+.memo{margin-top:22px;padding-top:18px !important;color:#6b5c33}
+.memo b{color:var(--intext)}
+.ng{margin:28px 0}
+.ng .lb{background:var(--intext) !important;color:#fff}
+.ng p{color:#4a4132}
+.ng .why{color:#6b5c33}
+.scene .tip{margin-top:12px;color:#6b5c33}
+.packnote.internal{background:var(--inbg);border-left:4px solid var(--inline) !important}
+.packnote.internal .pl{color:var(--intext)}
+.blockhead.hold{background:var(--intext)}
+.side .memo:before{
+  content:"社内メモ ／ 客には見せない";display:block;
+  font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--intext);
+  margin-bottom:10px;
+}
+.side .memo b:first-child{display:none}
+
+/* ── 章の要約1行 ── */
+.gist{
+  margin-top:16px;font-size:14px;line-height:1.85;font-weight:700;color:#333;
+  padding-left:12px;border-left:3px solid var(--red);
+}
+
+/* ── 冒頭サマリー ── */
+.brief{border-bottom:1px solid var(--ink);padding:64px 0 72px}
+.brief .bl{font-family:"Inter";font-size:12px;font-weight:800;letter-spacing:.18em;color:var(--gray);margin-bottom:12px}
+.brief .bh{font-size:clamp(21px,3.2vw,32px);font-weight:900;line-height:1.55;margin-bottom:34px}
+.brief .bh .r{color:var(--red)}
+.bgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.bcard{border:1px solid var(--ink);padding:22px 20px 20px;text-decoration:none;color:var(--ink);display:block;transition:background .18s,color .18s}
+.bcard:hover{background:var(--ink);color:#fff}
+.bcard:hover .bn,.bcard:hover .bs{color:#fff}
+.bcard .bn{font-family:"Inter";font-size:12px;font-weight:900;letter-spacing:.12em;color:var(--red);margin-bottom:12px;display:block}
+.bcard h4{font-size:17px;font-weight:900;line-height:1.5;margin-bottom:10px}
+.bcard .bs{font-size:13px;line-height:1.9;color:#555}
+
+/* ── 常時表示の章ナビ ── */
+#nav{
+  position:fixed;top:47px;left:0;right:0;z-index:99;
+  background:#fff;border-bottom:1px solid var(--line);
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+}
+#nav ul{display:flex;list-style:none;gap:0;padding:0 44px;white-space:nowrap;min-width:min-content}
+#nav a{
+  display:block;padding:11px 15px;font-size:13px;font-weight:700;color:var(--gray);
+  text-decoration:none;border-bottom:2px solid transparent;transition:color .18s,border-color .18s;
+}
+#nav a:hover{color:var(--ink)}
+#nav a.on{color:var(--ink);border-bottom-color:var(--red)}
+#nav::-webkit-scrollbar{height:0}
 *{margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
@@ -61,7 +137,7 @@ body{
   display:flex;align-items:center;justify-content:space-between;gap:14px;
   transition:transform .32s ease;
 }
-#hd.hide{transform:translateY(-100%)}
+#hd.hide{transform:none}
 #hd .logo{font-size:14px;font-weight:900;letter-spacing:.02em;white-space:nowrap}
 #hd .logo span{color:var(--gray);font-weight:500;margin-left:10px;font-size:12px;letter-spacing:.06em}
 #hd .rt{display:flex;align-items:center;gap:10px}
@@ -88,7 +164,7 @@ body.client .badge{border-color:var(--gray);color:var(--gray)}
 #bar{position:fixed;top:0;left:0;height:4px;width:100%;background:#cfcfca;transform:scaleX(0);transform-origin:0 50%;z-index:101}
 
 /* ===== hero ===== */
-.hero{padding:178px 0 104px;border-bottom:1px solid var(--ink)}
+.hero{padding:150px 0 90px;border-bottom:1px solid var(--ink)}
 .kicker{font-size:12px;font-weight:700;letter-spacing:.2em;color:var(--gray);margin-bottom:44px;line-height:2}
 .kicker b{color:var(--ink)}
 .pre{
@@ -136,9 +212,9 @@ h1 .q{color:var(--gray)}
 .flownote{font-size:12.5px;color:var(--gray);line-height:1.95;margin-top:22px}
 
 /* ===== section ===== */
-section{border-top:1px solid var(--ink);padding:104px 0;scroll-margin-top:72px}
+section{border-top:1px solid var(--ink);padding:104px 0;scroll-margin-top:104px}
 .row{display:grid;grid-template-columns:320px 1fr;gap:64px}
-.side{position:sticky;top:104px;align-self:start}
+.side{position:sticky;top:130px;align-self:start}
 .secicon{color:#9a9a9a;margin-bottom:14px;display:block}
 .snum{font-family:"Inter";font-weight:900;font-size:clamp(64px,7.6vw,112px);color:var(--num);line-height:.9;letter-spacing:-.03em}
 .elbl{font-family:"Inter";font-size:11px;font-weight:800;letter-spacing:.18em;color:var(--ink);margin:20px 0 14px}
@@ -285,6 +361,7 @@ footer b{color:var(--ink)}
 
 @media(max-width:1100px){
   .packgrid{grid-template-columns:repeat(2,1fr)}
+  .bgrid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:1000px){
   .steps{grid-template-columns:repeat(2,1fr)}
@@ -295,7 +372,7 @@ footer b{color:var(--ink)}
 @media(max-width:900px){
   .wrap{padding:0 22px}
   #hd{padding:9px 22px}
-  #hd .logo span{display:none}
+  #hd .logo span.en{display:none}
   .row{grid-template-columns:1fr;gap:28px}
   .side{position:static}
   .snum{font-size:56px}
@@ -304,8 +381,11 @@ footer b{color:var(--ink)}
   .strip{grid-template-columns:repeat(2,1fr)}
   .strip .c{border-bottom:1px solid var(--line)}
   .rlist{grid-template-columns:1fr}
-  .hero{padding:140px 0 70px}
+  .hero{padding:132px 0 60px}
   section{padding:70px 0}
+  .brief{padding:48px 0 56px}
+  #nav ul{padding:0 22px}
+  #nav a{padding:10px 12px;font-size:12.5px}
   .pack{padding:70px 0}
   .principle{padding:88px 0}
   .talk{padding:24px 22px}
@@ -319,6 +399,7 @@ footer b{color:var(--ink)}
   .strip{grid-template-columns:1fr}
   .priceline div{border-right:none;border-bottom:1px solid var(--line)}
   .packgrid{grid-template-columns:1fr}
+  .bgrid{grid-template-columns:1fr}
   .talk p{font-size:15px}
   .pbar{grid-template-columns:1fr}
   #hd .logo{font-size:12.5px}
@@ -330,6 +411,20 @@ footer b{color:var(--ink)}
 <body>
 
 <div id="bar"></div>
+<div id="nav">
+  <ul>
+    <li><a href="#brief">まとめ</a></li>
+    <li><a href="#s01">01 順番</a></li>
+    <li><a href="#s02">02 2本必要</a></li>
+    <li><a href="#s03">03 AIの限界</a></li>
+    <li><a href="#pack">04 12本の中身</a></li>
+    <li><a href="#s05">05 お金の話</a></li>
+    <li><a href="#s06">06 商圏と本部</a></li>
+    <li class="internal"><a href="#s08">07 切り返し</a></li>
+    <li><a href="#s09">08 締め方</a></li>
+    <li><a href="#mkt">09 数字</a></li>
+  </ul>
+</div>
 <div id="hd">
   <div class="logo"><span class="internal">営業トーク集</span><span class="cli">ホームページ制作会社パック</span><span class="en internal">VOL.2</span></div>
   <div class="rt">
@@ -355,22 +450,40 @@ footer b{color:var(--ink)}
       <div style="font-size:11px;font-weight:800;letter-spacing:.14em;margin-bottom:12px">この資料の使い方</div>
       <p style="font-size:13.5px;line-height:2;color:#333">右上の<b>「顧客提示モード」</b>を押すと、社内メモ・NG例・POINT・未確定リストが画面から消えます。<b>商談中にお客様へ画面を見せるときは、必ず先に押してください。</b>もう一度押すと戻ります。</p>
     </div>
-    <div class="toc">
-      <div class="lbl en">CONTENTS</div>
-      <ol>
-        <li><a href="#s01"><span class="n en">01</span>AIの話は、その手前で止まる</a></li>
-        <li><a href="#s02"><span class="n en">02</span>ホームページは、1本では足りない</a></li>
-        <li><a href="#s03"><span class="n en">03</span>AIでも、何を作るかは決められない</a></li>
-        <li><a href="#pack"><span class="n en">04</span>12本の中身 ── 10本で作り、2本で売る</a></li>
-        <li><a href="#s05"><span class="n en">05</span>月5万円で、御社が制作会社になる</a></li>
-        <li><a href="#s06"><span class="n en">06</span>東京より、地元のほうが空いている</a></li>
-        <li class="internal"><a href="#s08"><span class="n en">07</span>現場で、こう切り返す</a></li>
-        <li><a href="#s09"><span class="n en">08</span>決めるのは、1本目をどれにするか</a></li>
-        <li><a href="#mkt"><span class="n en">09</span>使える数字と、その出典</a></li>
-      </ol>
-    </div>
   </div>
 </header>
+
+<!-- ===== BRIEF ===== -->
+<section class="brief" style="border-top:none;padding-top:64px">
+  <div class="wrap">
+    <div class="bl en"><span class="internal">THE WHOLE TALK IN ONE SCREEN</span><span class="cli">SUMMARY</span></div>
+    <div class="bh"><span class="internal">この商談で言うことは、<span class="r">4つ</span>だけ。<br>あとは全部、その補足です。</span><span class="cli">この<span class="r">4つ</span>が、<br>本日ご説明することです。</span></div>
+    <div class="bgrid">
+      <a class="bcard" href="#s01">
+        <span class="bn en">01 ／ 順番</span>
+        <h4>AIの前に、<br>ホームページ2本</h4>
+        <p class="bs">集客のAIは、着地点が無いと効かない。左脳のコーポレートと、右脳のブランドLP。</p>
+      </a>
+      <a class="bcard" href="#pack">
+        <span class="bn en">02 ／ 中身</span>
+        <h4>6工程×12本。<br>作るのはCodex</h4>
+        <p class="bs">売る・聞く・組み立てる・つくる・確かめる・納める。詰まるのはデザインの手前。</p>
+      </a>
+      <a class="bcard" href="#s05">
+        <span class="bn en">03 ／ お金</span>
+        <h4>年60万円。<br>36万が2本で回る</h4>
+        <p class="bs">「1本いくら」で比べさせない。1年で何本売れるかの話に移す。</p>
+      </a>
+      <a class="bcard" href="#s09">
+        <span class="bn en">04 <span class="internal">／ 締め</span><span class="cli">／ 次の一歩</span></span>
+        <h4><span class="internal">契約は今日じゃない。<br>1本目を決めて帰る</span><span class="cli">まず1本目を、<br>決めるところから</span></h4>
+        <p class="bs">お決めいただくのは「どの会社のページを1本目にするか」だけです。</p>
+      </a>
+    </div>
+    <div class="memo internal" style="margin-top:32px;border-left-width:4px">
+      <b>社内メモ：</b>この4枚の順番は入れ替えない。<b>順番 → 中身 → お金 → 締め</b>。お金を先に出すと、相手は値段で判断しはじめる。中身を答える前にお金の話になったら、「先に何をお渡しするか説明させてください」で戻す。<b>相手に画面を見せるときは、右上の「顧客提示モード」を先に押すこと。</b></div>
+  </div>
+</section>
 
 <!-- ===== FLOW BAND ===== -->
 <section class="flow" style="border-top:none;padding-top:76px">
@@ -415,6 +528,7 @@ footer b{color:var(--ink)}
       <div class="snum en">01</div>
       <div class="elbl en">THE PROBLEM</div>
       <div class="sh">AIの話は、<br>その<span class="r">手前</span>で止まる</div>
+      <div class="gist">AIが刺さらないのではない。土台が無いから、決裁まで進まないだけ。</div>
       <div class="memo internal"><b>社内メモ：</b>入口は必ず<b>相手自身の話</b>から。いきなり「御社の取引先は」と言うと、相手はまだ自分が客のつもりで座っているので一拍置かれる。<b>自分事 → 商圏の話、の順で反転させる。</b>AI商材が刺さらないのではなく、土台が無いから決裁まで進まないだけ。「営業の敗因」ではなく<b>「順番の問題」</b>として話す。</div>
     </div>
     <div class="bd">
@@ -446,6 +560,7 @@ footer b{color:var(--ink)}
       <div class="snum en">02</div>
       <div class="elbl en">THE REFRAME</div>
       <div class="sh">ホームページは、<br><span class="r">1本</span>では足りない</div>
+      <div class="gist">足りないのはリニューアルではなく、2本目。だから新規提案になる。</div>
       <div class="memo internal"><b>社内メモ：</b>役割の違う2本を1本で兼ねようとしているのが「問い合わせが来ない」の正体。ここを分けて話せると、<b>リニューアル提案ではなく「2本目の新規提案」</b>になる。本数も単価も変わる。<b class="ph">ただし、この章には裏の取れた数字が無い（下の注記）。数字で押さず、質問で確かめさせること。</b></div>
     </div>
     <div class="bd">
@@ -496,6 +611,7 @@ footer b{color:var(--ink)}
       <div class="snum en">03</div>
       <div class="elbl en">THE GAP</div>
       <div class="sh">AIでも、<br><span class="r">何を作るか</span>は<br>決められない</div>
+      <div class="gist">詰まるのはデザインではなく、その手前。売っているのは決める力。</div>
       <div class="memo internal"><b>社内メモ：</b>「AIで作れるから制作の仕事は無くなる」という思い込みを、ここで必ず壊す。ボトルネックがデザインから<b>設計（誰に・何を言うか）</b>へ移っただけ。売っているのは"作る力"ではなく"決める力"。</div>
     </div>
     <div class="bd">
@@ -527,6 +643,7 @@ footer b{color:var(--ink)}
   <div class="wrap">
     <div class="elbl en">WHAT'S IN THE 12</div>
     <div class="ph2">「で、その<span class="r">12本</span>って何ですか？」<br><span class="internal">——必ず聞かれる。ここで答える。</span><span class="cli">——中身は、これです。</span></div>
+    <div class="gist" style="max-width:820px">6工程×2本。作るのはCodex、何を作るか決めるのが12本。</div>
     <p class="pp">6工程・12本。<b>売る2本、聞く2本、組み立てる2本、つくる2本、確かめる2本、納める2本。</b>1本ずつが独立した手順書で、上から順に使えばページが仕上がります。常時12本を基本に、毎月数本を点検・修正・入れ替え。古くなったスキルは止めます。</p>
     <div class="packgrid">
       <div class="pcol"><div class="pch"><span class="pcn en">SELL</span><span class="pct">売る</span></div><ol>
@@ -580,6 +697,7 @@ footer b{color:var(--ink)}
       <div class="snum en">05</div>
       <div class="elbl en">THE OFFER</div>
       <div class="sh">月5万円で、<br>御社が<span class="r">制作会社</span>に<br>なる</div>
+      <div class="gist">年60万円。標準36万円が2本決まれば72万円。3本目からは利益。</div>
       <div class="memo internal"><b>社内メモ：</b>単価の話に落とさない。<b>「1本いくら」ではなく「12ヶ月で何本でも」</b>に言い換える。<b class="ph">重要：実際の発注中央値は43.4万円。「1本の値段」で比べると、こちらが不利になる場面がある。</b>だから土俵を移すのは、格好つけではなく必須。初期費用ゼロは値引きではなく、<b>始めない理由を消すため</b>のもの。</div>
     </div>
     <div class="bd">
@@ -657,6 +775,7 @@ footer b{color:var(--ink)}
       <div class="snum en">06</div>
       <div class="elbl en">THE TERRITORY</div>
       <div class="sh">東京より、<br>地元のほうが<span class="r">空いている</span></div>
+      <div class="gist">東京は飽和。地元は空いている。受けきれない案件は本部へ回せる。</div>
       <div class="memo internal"><b>社内メモ：</b>東京は制作会社が飽和。逆に地方は<b>「AIで作れる制作会社」がまだ空いている</b>。パートナーの既存取引先が、そのまま商圏になるという絵を見せる。そのうえで「難案件は投げていい」と伝え、断る理由を消す。<b class="ph">率は絶対に口約束しない。</b></div>
     </div>
     <div class="bd">
@@ -712,6 +831,7 @@ footer b{color:var(--ink)}
       <div class="snum en">07</div>
       <div class="elbl en">ON THE FIELD</div>
       <div class="sh">現場で、<br>こう<span class="r">切り返す</span></div>
+      <div class="gist">つぶさない。いったん認めてから、土俵をずらす。</div>
       <div class="memo internal"><b>社内メモ：</b>反論はつぶすのではなく、<b>相手の言い分をいったん認めてから土俵をずらす</b>。特にSCENE 02とSCENE 03は握り違えると解約に直結するので、正直に言い切る。</div>
     </div>
     <div class="bd">
@@ -760,6 +880,7 @@ footer b{color:var(--ink)}
       <div class="snum en">08</div>
       <div class="elbl en">THE CLOSE</div>
       <div class="sh">決めるのは、<br>1本目を<span class="r">どれにするか</span></div>
+      <div class="gist">その場で契約を取りに行かない。宿題を1つだけ置いて帰る。</div>
       <div class="memo internal"><b>社内メモ：</b>その場の契約を取りに行かない。<b class="ph">最低契約期間・解約条件が未確定なので、「いつでも止められます」を絶対に言わない。</b>代わりに、次回までの宿題を1つだけ置いて帰る。宿題が決まっていれば、次回はそのまま作り始められる。</div>
     </div>
     <div class="bd">
@@ -932,6 +1053,24 @@ footer b{color:var(--ink)}
     else if(y<last-4){ hd.classList.remove('hide'); }
     last=y;
   },{passive:true});
+
+  var navEl=document.getElementById('nav');
+  function syncNav(){ navEl.style.top = hd.offsetHeight + 'px'; }
+  syncNav(); window.addEventListener('resize',syncNav);
+
+  var links=[].slice.call(document.querySelectorAll('#nav a'));
+  var targets=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  function markNav(){
+    var y=(window.scrollY||0)+150, cur=-1;
+    targets.forEach(function(t,i){ if(t && t.offsetTop<=y) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+    var act=links[cur];
+    if(act){var n=document.getElementById('nav');
+      var l=act.offsetLeft, r=l+act.offsetWidth;
+      if(l<n.scrollLeft||r>n.scrollLeft+n.clientWidth) n.scrollLeft=l-16;}
+  }
+  window.addEventListener('scroll',markNav,{passive:true});
+  markNav();
 
   var btn=document.getElementById('toggle');
   btn.addEventListener('click',function(){
