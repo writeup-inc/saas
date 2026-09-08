@@ -36,6 +36,73 @@
     linear-gradient(90deg, rgba(7,52,90,.06), transparent 38%);
 }
 
+.swallow-flight {
+  position: fixed;
+  z-index: 80;
+  top: clamp(108px, 18vh, 190px);
+  left: -150px;
+  width: clamp(62px, 6.4vw, 88px);
+  opacity: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 8px 10px rgba(7, 52, 90, .18));
+  transform: translate3d(0, 32px, 0) rotate(-7deg) scale(.82);
+  transform-origin: center;
+  animation: swallow-pass 10s cubic-bezier(.4, 0, .2, 1) infinite;
+  will-change: transform, opacity;
+}
+
+.swallow-flight svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+.swallow-wing,
+.swallow-body {
+  fill: #0b3b63;
+}
+
+.swallow-wing {
+  transform-box: fill-box;
+  transform-origin: right center;
+  animation: swallow-wingbeat .42s ease-in-out infinite alternate;
+}
+
+.swallow-wing-bottom {
+  fill: #126b9f;
+  animation-delay: -.21s;
+}
+
+.swallow-highlight {
+  fill: rgba(180, 231, 252, .72);
+}
+
+@keyframes swallow-pass {
+  0%, 2% {
+    opacity: 0;
+    transform: translate3d(0, 32px, 0) rotate(-7deg) scale(.82);
+  }
+
+  5%, 24% {
+    opacity: .88;
+  }
+
+  31% {
+    opacity: 0;
+    transform: translate3d(calc(100vw + 300px), -56px, 0) rotate(5deg) scale(1);
+  }
+
+  32%, 100% {
+    opacity: 0;
+    transform: translate3d(calc(100vw + 300px), -56px, 0) rotate(5deg) scale(1);
+  }
+}
+
+@keyframes swallow-wingbeat {
+  from { transform: rotate(-5deg) scaleY(.86); }
+  to { transform: rotate(5deg) scaleY(1.08); }
+}
+
 .hero-copy {
   z-index: 3;
   align-self: start;
@@ -282,5 +349,11 @@
   .chatgpt-trigger .ai-logo {
     width: 38px;
     height: 38px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .swallow-flight {
+    display: none;
   }
 }
