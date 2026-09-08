@@ -316,6 +316,203 @@
       text-align: right;
     }
 
+    .thoughts {
+      position: relative;
+      margin-bottom: clamp(38px, 5vw, 58px);
+      padding: clamp(30px, 4.5vw, 52px);
+      overflow: hidden;
+      border: 1px solid rgba(20,37,31,.14);
+      background:
+        radial-gradient(circle at 94% 10%, rgba(168,102,72,.15), transparent 18rem),
+        linear-gradient(135deg, rgba(255,255,255,.94), rgba(244,242,236,.88));
+      box-shadow: var(--shadow);
+    }
+
+    .thoughts::after {
+      content: "CODEX / OBSERVATION LOG";
+      position: absolute;
+      right: -26px;
+      bottom: 26px;
+      color: rgba(20,37,31,.045);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(40px, 6vw, 78px);
+      font-style: italic;
+      font-weight: 700;
+      letter-spacing: -.04em;
+      line-height: .8;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .thoughts-head {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
+      gap: clamp(24px, 4vw, 56px);
+      align-items: end;
+      margin-bottom: 28px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .thoughts-kicker {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 10px;
+      color: var(--orange);
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: .18em;
+    }
+
+    .thoughts-kicker::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #34a56f;
+      box-shadow: 0 0 0 4px rgba(52,165,111,.12);
+    }
+
+    .thoughts-title {
+      max-width: 720px;
+      margin: 0;
+      font-size: clamp(27px, 3.7vw, 46px);
+      letter-spacing: -.045em;
+      line-height: 1.25;
+    }
+
+    .thoughts-title em {
+      color: var(--orange);
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+    }
+
+    .thoughts-disclaimer {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 12px;
+      line-height: 1.85;
+    }
+
+    .thoughts-disclaimer b {
+      display: inline-block;
+      margin-bottom: 5px;
+      color: var(--green);
+      font-size: 10px;
+      letter-spacing: .12em;
+    }
+
+    .thought-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .thought-card {
+      position: relative;
+      min-width: 0;
+      padding: 22px 20px 20px;
+      border: 1px solid rgba(20,37,31,.11);
+      background: rgba(255,255,255,.7);
+    }
+
+    .thought-number {
+      display: block;
+      margin-bottom: 13px;
+      color: var(--orange);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    .thought-card p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 680;
+      letter-spacing: -.012em;
+      line-height: 1.8;
+    }
+
+    .thought-card small {
+      display: block;
+      margin-top: 13px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+    .thought-footer {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+      margin-top: 14px;
+    }
+
+    .poison-note {
+      margin: 0;
+      padding: 12px 15px;
+      border-left: 3px solid var(--orange);
+      color: var(--ink-soft);
+      background: rgba(168,102,72,.075);
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    .poison-note b {
+      margin-right: 8px;
+      color: var(--orange);
+      font-size: 9px;
+      letter-spacing: .12em;
+    }
+
+    .thought-action {
+      display: flex;
+      min-width: min(100%, 310px);
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .thought-prompt {
+      min-height: 1.7em;
+      margin: 0;
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 750;
+      text-align: right;
+    }
+
+    .thought-nudge {
+      min-height: 44px;
+      padding: 10px 16px;
+      border: 1px solid var(--green);
+      color: #fff;
+      background: var(--green);
+      font: inherit;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      cursor: pointer;
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+    }
+
+    .thought-nudge:hover,
+    .thought-nudge:focus-visible {
+      outline: none;
+      background: #0f3b2e;
+      box-shadow: 0 9px 22px rgba(20,37,31,.16);
+      transform: translateY(-2px);
+    }
+
     .context {
       margin-bottom: clamp(38px, 5vw, 58px);
       padding: clamp(28px, 4vw, 46px);
@@ -957,6 +1154,14 @@
       .hero { grid-template-columns: 1fr; gap: 28px; }
       .hero-aside { display: grid; width: 100%; grid-template-columns: minmax(0, 1fr) auto; align-items: end; }
       .hero-notes { max-width: 430px; }
+      .thoughts-head { grid-template-columns: 1fr; gap: 16px; }
+      .thought-grid { grid-template-columns: 1fr; }
+      .thought-card { display: grid; grid-template-columns: 34px 1fr; column-gap: 10px; }
+      .thought-number { grid-row: 1 / 3; margin: 2px 0 0; }
+      .thought-card small { margin-top: 8px; }
+      .thought-footer { grid-template-columns: 1fr; }
+      .thought-action { width: 100%; align-items: flex-start; }
+      .thought-prompt { text-align: left; }
       .context-head { grid-template-columns: 1fr; gap: 18px; }
       .org-flow { grid-template-columns: 1fr; }
       .org-node { min-height: 0; }
@@ -983,6 +1188,12 @@
       .hero-aside { grid-template-columns: 1fr; align-items: start; gap: 20px; }
       .hero-notes { max-width: none; }
       .hero-board { padding: 15px 18px 13px; }
+      .thoughts { padding: 25px 20px; }
+      .thoughts-title { font-size: clamp(27px, 8vw, 38px); }
+      .thoughts::after { display: none; }
+      .thought-card { padding: 18px 16px; }
+      .thought-card p { font-size: 13px; }
+      .thought-nudge { width: 100%; }
       .context { padding: 25px 20px; }
       .context-copy { font-size: 13px; }
       .notice { grid-template-columns: 1fr; gap: 12px; }
@@ -1088,6 +1299,42 @@
                 <span class="board-link">詳しく見る ↗</span>
               </a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="thoughts" aria-labelledby="thoughts-title">
+        <div class="thoughts-head">
+          <div>
+            <p class="thoughts-kicker">TAKA MASTER'S CODEX / WILD INFERENCE</p>
+            <h2 class="thoughts-title" id="thoughts-title">最近、たかマスターは<br>こんなことを考えている<em>…かも。</em></h2>
+          </div>
+          <p class="thoughts-disclaimer"><b>推定精度：たぶん68%</b><br>本人の正式発言ではありません。制作ログを見すぎた「たかマスターのCodex」による、わりと筋のいい妄想です。</p>
+        </div>
+
+        <div class="thought-grid">
+          <article class="thought-card">
+            <span class="thought-number">01</span>
+            <p>「AIを入れるか」より、<br>「AIを同僚として何人雇うか」を考える会社が増えそう。なら、その同僚の履歴書も評価制度も先につくりたい。</p>
+            <small>採用面接には来ません。たぶん即日入社します。</small>
+          </article>
+          <article class="thought-card">
+            <span class="thought-number">02</span>
+            <p>SaaSは、完成してから売るより、LPにして見せた瞬間から会話が始まる。つくりながら売る。売りながら、またつくる。</p>
+            <small>落ち着く予定は、いまのところ未実装です。</small>
+          </article>
+          <article class="thought-card">
+            <span class="thought-number">03</span>
+            <p>地方の会社に足りないのは、アイデアより「じゃあ、明日だれがやる？」への答えかも。そこをAIで埋めたら、景色が変わる。</p>
+            <small>大きな構想ほど、最初の一歩は妙に地味です。</small>
+          </article>
+        </div>
+
+        <div class="thought-footer">
+          <p class="poison-note"><b>毒 10%</b>AI活用会議を3回やって、やったことが会議だけなら、それは「AI活用」ではなく「会議活用」です。</p>
+          <div class="thought-action">
+            <p class="thought-prompt" id="thought-prompt" aria-live="polite">白石さんに聞くなら：「これ、次の商材になります？」</p>
+            <button class="thought-nudge" type="button" aria-describedby="thought-prompt">話しかけるネタをもう1つ ↻</button>
           </div>
         </div>
       </section>
@@ -1380,6 +1627,21 @@
         work: '経営・社内業務',
         build: 'AI導入・事業化'
       };
+
+      const thoughtPrompts = [
+        '白石さんに聞くなら：「これ、次の商材になります？」',
+        '白石さんに聞くなら：「私、この妄想に混ざってもいいですか？」',
+        '白石さんに聞くなら：「いま一番、誰かと試したい企画はどれですか？」',
+        '白石さんに聞くなら：「この中で、月曜から始められるのはどれですか？」'
+      ];
+      const thoughtNudge = document.querySelector('.thought-nudge');
+      const thoughtPrompt = document.querySelector('#thought-prompt');
+      let thoughtPromptIndex = 0;
+
+      thoughtNudge.addEventListener('click', () => {
+        thoughtPromptIndex = (thoughtPromptIndex + 1) % thoughtPrompts.length;
+        thoughtPrompt.textContent = thoughtPrompts[thoughtPromptIndex];
+      });
 
       services
         .sort((a, b) => new Date(b.dataset.updated) - new Date(a.dataset.updated))
