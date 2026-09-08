@@ -49,7 +49,7 @@ pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
   --ink-sub:#5A6660;
   --line:#DFD9CB;
   --gold:#A8802F;
-  --wrap:640px;
+  --wrap:1000px;
   --sp:32px;
   --sp-in:16px;
 }
@@ -111,7 +111,7 @@ a{ color:inherit; }
 
 /* ── 2. リード ─────────────────────────── */
 .lead-box{ background:var(--card); padding:var(--sp) 20px; border-bottom:1px solid var(--line); }
-.lead{ margin:0; font-size:15px; line-height:2.05; }
+.lead{ margin:0; font-size:15px; line-height:2.05; max-width:40em; }
 .lead + .lead{ margin-top:.9em; }
 .lead b{ color:var(--green); background:linear-gradient(transparent 62%, #F2E3A9 62%); font-weight:700; }
 
@@ -134,7 +134,7 @@ a{ color:inherit; }
   background:var(--green); box-shadow:0 0 0 3px var(--bg-alt);
 }
 .timeline__dot:last-child{ background:var(--gold); width:14px; height:14px; }
-.timeline__note{ margin:14px 0 0; font-size:13px; line-height:1.85; color:var(--ink-sub); }
+.timeline__note{ margin:14px 0 0; font-size:13px; line-height:1.85; color:var(--ink-sub); max-width:44em; }
 .timeline__note b{ color:var(--green); }
 
 /* ── 4. 4領域カード ────────────────────── */
@@ -165,7 +165,7 @@ a{ color:inherit; }
   display:inline-block; padding:1px 8px; border-radius:99px;
   background:#E6EDE7; color:var(--green-soft); font-size:var(--fs-min); font-weight:700;
 }
-.disclaim{ margin:14px 0 0; color:var(--ink-sub); }
+.disclaim{ margin:14px 0 0; color:var(--ink-sub); max-width:44em; }
 
 /* ── 6. 人となり ───────────────────────── */
 .person{ background:var(--bg-alt); }
@@ -281,6 +281,21 @@ a{ color:inherit; }
   .cards{ grid-template-columns:1fr 1fr; }
   .shots{ grid-template-columns:1fr 1fr; }
   .contact__list{ grid-template-columns:1fr 1fr; }
+}
+
+/* 1000px級の画面：写真を大きくし、右段に肩書き・氏名・要約を積んで余白を埋める */
+@media (min-width:700px){
+  .hero{ display:grid; grid-template-columns:clamp(200px,26vw,250px) 1fr; column-gap:32px; align-items:center; }
+  .hero__inner{ display:contents; }
+  .hero__org{ grid-column:1 / -1; margin-bottom:18px; }
+  .photo-frame{ grid-column:1; grid-row:2 / span 3; }
+  .role{ grid-column:2; grid-row:2; justify-self:start; align-self:end; margin-bottom:0; }
+  .hero__body{ grid-column:2; grid-row:3; }
+  .hero__meta{
+    grid-column:2; grid-row:4; align-self:start;
+    margin:0; padding-top:16px;
+  }
+  .lead{ font-size:16px; }
 }
 
 @media print{
