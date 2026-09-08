@@ -119,6 +119,7 @@ p{ margin:0; }
 .lead{ font-size:var(--fs-lead); line-height:2.1; max-width:46em; }
 .lead + .lead{ margin-top:1.1em; }
 .lead b{ color:var(--green); background:linear-gradient(transparent 62%, #F4E5A6 62%); font-weight:700; }
+.lead b.q{ background:none; }
 
 /* ── 口癖 ─────────────────────────────── */
 .quote{
@@ -151,6 +152,7 @@ p{ margin:0; }
   content:""; position:absolute; left:-16.5px; top:22px; bottom:-4px; width:1px; background:var(--line);
 }
 .career li b{ color:var(--green); }
+.career li span{ display:block; margin-top:2px; font-size:var(--fs-sub); color:var(--ink-sub); }
 
 /* ── 好きなこと ───────────────────────── */
 .likes{ display:grid; gap:14px; margin-top:var(--sp-in); }
@@ -371,6 +373,7 @@ a.svc__name:hover::after, a.svc__name:focus-visible::after{ opacity:1; }
   /* グリッド行は分割できず丸ごと次ページへ送られるので、経歴は1行の矢印表記にする */
   .career{ padding-left:0; }
   .career li{ display:inline; padding:0; }
+  .career li span{ display:none; }
   .career li::before{ display:none; }
   .career li:not(:last-child)::after{
     content:" → "; position:static; display:inline;
@@ -414,6 +417,8 @@ a.svc__name:hover::after, a.svc__name:focus-visible::after{ opacity:1; }
   <!-- 2. 自己紹介 -->
   <div class="lead-box">
     <p class="lead">オーダーメイド印刷の法人営業を12年経験し、現在は中小企業のAI活用を支援しています。</p>
+    <p class="lead">この部署に来たのは昨年です。それまでは、正直なところアナログな営業マンでした。</p>
+    <p class="lead">その自分がAIを使えるようになって、いま、営業の仕事が本当に面白くなっています。来てよかったと思っていますし、営業としても伸びました。だから、AIに詳しくない状態から始める不安は分かるつもりです。<b class="q">昨年までは自分がその側にいました。</b></p>
     <p class="lead">4領域から「どこにAIを入れると効くか」を一緒に設計し、<b>1年かけて毎月1つずつ導入して売上2倍</b>を目指します。</p>
     <blockquote class="quote">
       <p class="quote__label">口癖</p>
@@ -432,7 +437,7 @@ a.svc__name:hover::after, a.svc__name:focus-visible::after{ opacity:1; }
           <li>伊奈高校（剣道部）</li>
           <li>武蔵野大学</li>
           <li>アクセア　<b>12年</b>（営業→店長→AM）</li>
-          <li>ライトアップ　第一営業部 リーダー</li>
+          <li>ライトアップ　第一営業部 リーダー<span>アナログ営業から転向。昨年からAI SaaSを担当</span></li>
         </ol>
       </dd></div>
       <div><dt>趣味</dt><dd>キャンプ・バイク（年間50泊のツーリング歴）<br>アニメ（ロボット・サスペンス系）</dd></div>
