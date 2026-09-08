@@ -200,7 +200,21 @@ p{ margin:0; }
   flex:none; width:24px; height:24px; stroke:var(--green); fill:none; stroke-width:1.6;
   stroke-linecap:round; stroke-linejoin:round;
 }
-.card p{ font-size:var(--fs-txt); line-height:1.95; color:var(--ink-sub); }
+.card__note{ font-size:var(--fs-sub); line-height:1.9; color:var(--ink-sub); margin-bottom:16px; }
+.svc{ list-style:none; margin:0; padding:0; border-top:1px solid var(--line); }
+.svc li{ padding:12px 0; border-bottom:1px solid var(--line); }
+.svc li:last-child{ border-bottom:none; padding-bottom:0; }
+.svc__name{
+  display:inline-block; font-size:var(--fs-txt); font-weight:700; color:var(--ink);
+  line-height:1.6;
+}
+a.svc__name{ color:var(--green); text-decoration:underline; text-underline-offset:4px; }
+a.svc__name::after{
+  content:"↗"; display:inline-block; margin-left:.35em; font-size:.78em;
+  color:var(--green-soft); text-decoration:none;
+}
+.svc__desc{ display:block; margin-top:3px; font-size:var(--fs-sub); line-height:1.85; color:var(--ink-sub); }
+.svc__link-note{ margin-top:14px; color:var(--ink-sub); }
 .subsidy{
   margin-top:14px; background:var(--green-pale); border-radius:10px; padding:16px 18px;
   font-size:var(--fs-txt); line-height:1.9; color:var(--green);
@@ -288,7 +302,8 @@ p{ margin:0; }
   .likes{ grid-template-columns:1fr 1fr; }
   .likes .like:first-child,
   .likes .like:last-child{ grid-column:1 / -1; }
-  .cards{ grid-template-columns:1fr 1fr; }
+  /* サービス数が違うので、高さを揃えず自然な高さで並べる */
+  .cards{ grid-template-columns:1fr 1fr; align-items:start; }
   .shots{ grid-template-columns:1fr 1fr; }
   .contact__list{ grid-template-columns:1fr 1fr; }
 }
@@ -450,36 +465,90 @@ p{ margin:0; }
   <!-- 5. 4領域 -->
   <section>
     <h2 class="sec-title">ご支援できる4領域</h2>
+    <p class="sec-sub">御社の状況をうかがったうえで、この4つのどこから手をつけるかを一緒に決めます。全部を一度に入れることはしません。</p>
     <div class="cards">
+
       <div class="card">
         <h3>
           <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg>
           営業
         </h3>
-        <p><span class="nobr">Lシンク</span>／<span class="nobr">名刺LINEエージェント</span>／<span class="nobr">リストマスター</span>／<span class="nobr">つばめリード</span></p>
+        <p class="card__note">見込み客と出会うところから、つながり続けるところまでを受け持ちます。名刺・リスト・フォーム営業・LINEを組み合わせ、入口と関係維持の両方に手を入れる領域です。</p>
+        <ul class="svc">
+          <li>
+            <a class="svc__name" href="https://lsync.figma.site/" target="_blank" rel="noopener">Lシンク</a>
+            <span class="svc__desc">営業担当者本人をAI化し、LINEでお客さまの対応を続けます</span>
+          </li>
+          <li>
+            <a class="svc__name" href="https://meishi-line.figma.site/" target="_blank" rel="noopener">名刺LINEエージェント</a>
+            <span class="svc__desc">名刺をLINEで撮るだけ。そのあとのフォローは自動で続きます</span>
+          </li>
+          <li>
+            <a class="svc__name" href="https://writeup-inc.github.io/listmaster-lp/" target="_blank" rel="noopener">リストマスター</a>
+            <span class="svc__desc">リスト集めから初回メールの送信までを、毎朝自動で実行</span>
+          </li>
+          <li>
+            <a class="svc__name" href="https://tsubame.figma.site/" target="_blank" rel="noopener">つばめリード</a>
+            <span class="svc__desc">フォーム営業の代行です。送信できた分だけの費用で動かせます</span>
+          </li>
+        </ul>
       </div>
+
       <div class="card">
         <h3>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11v2a1 1 0 0 0 1 1h2l4 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M14.5 8.5a4.5 4.5 0 0 1 0 7"/></svg>
           販促・集客
         </h3>
-        <p><span class="nobr">ソーシャルマスター</span>／<span class="nobr">AIOマスター</span><span class="nobr">（AI検索対策）</span></p>
+        <p class="card__note">広告費を増やすのではなく、見つけてもらう入口そのものを増やす領域です。SNSとAI検索の2方向から流入をつくります。</p>
+        <ul class="svc">
+          <li>
+            <b class="svc__name">ソーシャルマスター</b>
+            <span class="svc__desc">競合アカウントを起点に、すでに関心のある人と接点を持ちます</span>
+          </li>
+          <li>
+            <b class="svc__name">AIOマスター</b>
+            <span class="svc__desc">AI検索で質問されたとき、自社が答えに出てくる状態をつくります</span>
+          </li>
+        </ul>
       </div>
+
       <div class="card">
         <h3>
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5 6-5s6 1.7 6 5"/><path d="M18 8.5v6M15 11.5h6"/></svg>
           採用
         </h3>
-        <p><span class="nobr">ハチドリHR＋note</span><span class="nobr">（求人票生成・自動投稿）</span></p>
+        <p class="card__note">求人を出す手間そのものを減らす領域です。書く人がいなくて募集が止まる、という状態をなくすところが目的になります。</p>
+        <ul class="svc">
+          <li>
+            <a class="svc__name" href="https://hachidori-hr-note.figma.site/" target="_blank" rel="noopener">ハチドリHR＋note</a>
+            <span class="svc__desc">求人票の作成と更新、noteでの採用発信までを自動化</span>
+          </li>
+        </ul>
       </div>
+
       <div class="card">
         <h3>
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v2.6M12 18.4V21M3 12h2.6M18.4 12H21M5.6 5.6l1.9 1.9M16.5 16.5l1.9 1.9M18.4 5.6l-1.9 1.9M7.5 16.5l-1.9 1.9"/></svg>
           社内業務・ナレッジ
         </h3>
-        <p><span class="nobr">AIバード</span>／<span class="nobr">マイナレッジ</span>／<span class="nobr">エリオット</span></p>
+        <p class="card__note">「あの人しか知らない」と「毎回同じ作業」を減らす領域です。社内に溜まっている情報を、使える形に変えるところまで見ます。</p>
+        <ul class="svc">
+          <li>
+            <a class="svc__name" href="https://aibird.figma.site/" target="_blank" rel="noopener">AIバード</a>
+            <span class="svc__desc">AIの選び方と使い方に伴走する、御社専属のサポート係です</span>
+          </li>
+          <li>
+            <b class="svc__name">マイナレッジ</b>
+          </li>
+          <li>
+            <a class="svc__name" href="https://elliotlog.figma.site/" target="_blank" rel="noopener">エリオット</a>
+            <span class="svc__desc">会議ログや商談記録、日報を読み解き、翌朝の判断材料に変えます</span>
+          </li>
+        </ul>
       </div>
+
     </div>
+    <p class="svc__link-note note">サービス名に下線のあるものは、クリックでそれぞれの紹介ページへ。</p>
     <p class="subsidy">補助金・助成金の活用可否もあわせて確認できます。</p>
   </section>
 
