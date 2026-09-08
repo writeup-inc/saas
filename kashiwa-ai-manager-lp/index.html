@@ -50,21 +50,24 @@ body{
 
 /* hero */
 .hero{padding:100px 0 80px;border-bottom:1px solid var(--ink)}
+.hero-main{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(360px,.82fr);gap:52px;align-items:end}
+.hero-copy{min-width:0}
 .hby{display:flex;align-items:center;gap:14px;margin-bottom:26px}
 .hbyp{width:62px;height:62px;background:var(--g04);border:1px solid var(--g20);
   display:flex;align-items:center;justify-content:center;font-size:9px;
   color:var(--g40);flex:0 0 auto;text-align:center;line-height:1.4}
 .hbyt{font-size:12.5px;color:var(--g60);line-height:1.6}
 .hbyt b{font-weight:900;font-size:16px;color:var(--ink);display:block;margin-bottom:2px}
-.hero h1{font-weight:900;font-size:clamp(23px,5.4vw,72px);line-height:1.14;
+.hero h1{font-weight:900;font-size:clamp(23px,4.7vw,62px);line-height:1.14;
   letter-spacing:-.02em;margin-bottom:30px}
+.hero .yr{display:block;margin-top:14px;font-size:clamp(16px,.42em,26px);letter-spacing:.06em}
 .hero .sub{font-size:clamp(15px,1.7vw,20px);font-weight:700;line-height:1.9;
   max-width:700px;margin:0 0 4px}
 .subn{font-size:13px;color:var(--g60);line-height:1.9;max-width:700px}
 .hero .note{font-size:13.5px;color:var(--g60);max-width:660px;margin-bottom:0}
 .hyear{border-top:2px solid var(--ink);margin-top:40px;padding-top:28px}
 .hym{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
-.hym i{display:block;width:100%;aspect-ratio:1;background:var(--ink)}
+.hym i{display:block;width:100%;aspect-ratio:1;background:var(--g20)}
 .hym span{display:block;font-family:var(--en);font-weight:900;font-size:11px;
   color:var(--g40);margin-top:10px;letter-spacing:.06em}
 .hyfoot{border-top:1px solid var(--g20);margin-top:26px;padding-top:22px;
@@ -72,6 +75,21 @@ body{
 .hyfoot .l{font-size:clamp(15px,1.7vw,19px);font-weight:900;letter-spacing:-.01em}
 .hyfoot .m{font-size:13px;color:var(--g60);font-weight:700;margin-top:7px}
 .hyfoot .r{font-size:13px;color:var(--g60);font-weight:700}
+.hero-guests{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  min-height:380px;overflow:hidden;border:1px solid var(--ink);background:var(--g04)}
+.hero-guests::before{content:"MONTHLY GUESTS";position:absolute;z-index:2;top:12px;left:12px;
+  padding:5px 8px;background:var(--ink);color:var(--paper);font-family:var(--en);
+  font-size:9px;font-weight:900;letter-spacing:.16em}
+.hero-guest{position:relative;min-width:0;overflow:hidden;background:var(--paper)}
+.hero-guest + .hero-guest{border-left:1px solid var(--ink)}
+.hero-guest img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 18%;
+  filter:grayscale(1) contrast(1.07)}
+.hero-guest.yamaguchi img{object-position:center 14%}
+.hero-guest::after{content:"";position:absolute;inset:55% 0 0;
+  background:linear-gradient(to bottom,transparent,rgba(0,0,0,.82))}
+.hero-guest figcaption{position:absolute;z-index:1;left:12px;right:10px;bottom:12px;color:var(--paper)}
+.hero-guest figcaption b{display:block;font-size:15px;font-weight:900;line-height:1.4}
+.hero-guest figcaption span{display:block;margin-top:3px;color:#D5D5D5;font-size:9px;font-weight:700;line-height:1.5}
 .btn{display:inline-block;background:var(--ink);color:var(--paper);
   font-weight:700;font-size:15px;letter-spacing:.04em;
   padding:18px 40px;text-decoration:none;transition:opacity .25s}
@@ -269,6 +287,8 @@ body{
 }
 @media(max-width:820px){
   .wrap{padding:0 22px}
+  .hero-main{grid-template-columns:1fr;gap:34px}
+  .hero-guests{min-height:360px}
   .sec .wrap{grid-template-columns:1fr;gap:38px}
   .lcol{position:static}
   .snum{font-size:46px}
@@ -304,6 +324,10 @@ body{
 @media(max-width:520px){
   .dgrid{grid-template-columns:1fr}
   .dcell{padding:0;border-left:0}
+  .hero-guests{min-height:300px}
+  .hero-guest figcaption{left:9px;right:7px;bottom:9px}
+  .hero-guest figcaption b{font-size:13px}
+  .hero-guest figcaption span{font-size:8px}
   .event-copy{grid-template-columns:auto 1fr auto;gap:11px;padding:14px}
   .event-date{padding-right:11px}
   .venue-photo figcaption{display:block;left:14px;right:14px;bottom:12px}
@@ -322,9 +346,23 @@ body{
 
 <section class="hero">
   <div class="wrap">
-    <h1>私を、御社のAI担当に<br>指名してください<span class="yr">（1年間）</span>。</h1>
-    <p class="sub">私が見るのは、200社までです。</p>
-    <p class="subn">規模は問いません。ひとりの会社も、社員がいる会社も。</p>
+    <div class="hero-main">
+      <div class="hero-copy">
+        <h1>私を、御社のAI担当に<br>指名してください。<span class="yr">1年間。</span></h1>
+        <p class="sub">私が見るのは、200社までです。</p>
+        <p class="subn">規模は問いません。ひとりの会社も、社員がいる会社も。</p>
+      </div>
+      <div class="hero-guests" aria-label="開催予定の講演会ゲスト">
+        <figure class="hero-guest">
+          <img src="assets/ogiwara.webp" alt="荻原猛氏" loading="eager">
+          <figcaption><b>荻原 猛</b><span>元上場企業経営者 ／ 09.30</span></figcaption>
+        </figure>
+        <figure class="hero-guest yamaguchi">
+          <img src="assets/yamaguchi.jpg" alt="山口拓己氏" loading="eager">
+          <figcaption><b>山口 拓己</b><span>上場企業経営者 ／ 11.17</span></figcaption>
+        </figure>
+      </div>
+    </div>
     <div class="hyear">
       <div class="hym">
         <div><i></i><span>01</span></div><div><i></i><span>02</span></div>
