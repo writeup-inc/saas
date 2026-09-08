@@ -340,6 +340,15 @@
         <p>表示額は、成功送信数×5円の単純試算です。反応は商材、ターゲット、文面、送信時期で大きく変わり、「1,000通で必ず1件」ではありません。</p>
       </div>
 
+      <div class="sim-ai-check">
+        <div>
+          <span>AI EFFECT CHECK</span>
+          <h3>テレアポや広告より、本当に安い？</h3>
+          <p>フォーム営業の一般的な反応率・商談獲得費用を、テレアポやWeb広告と同じ条件でAIに比較してもらいます。</p>
+        </div>
+        <button class="button primary" type="button" data-open-chatgpt data-question-kind="effectiveness">一般的な効果をChatGPTに聞く <span>↗</span></button>
+      </div>
+
       <div class="terms-bar" id="price">
         <div>
           <span>初期費用</span><strong>0円</strong>
@@ -559,9 +568,10 @@
       <button class="chatgpt-trigger" type="button" id="chatgpt-trigger" aria-label="ChatGPTで4社の比較表を作成" aria-expanded="false" aria-controls="chatgpt-panel"><span class="ai-logo chatgpt" aria-hidden="true">◎</span><span>ChatGPTに聞く<small>4社の比較表を作成</small></span></button>
       <aside class="chatgpt-panel" id="chatgpt-panel" role="dialog" aria-modal="true" aria-live="polite" aria-labelledby="chatgpt-panel-title" hidden>
         <header><div><span class="ai-logo chatgpt">◎</span><div><b>公開情報で比較</b><small>ChatGPTへ質問文を渡します</small></div></div><button type="button" id="chatgpt-close" aria-label="ChatGPT質問パネルを閉じる">×</button></header>
-        <h2 id="chatgpt-panel-title">フォーム営業ツールを<br>最新情報で比較</h2>
-        <p>つばめリードと現在の主要3社を、価格・契約条件・送信証跡など、同じ基準で確認します。</p>
-        <div class="chatgpt-questions"><button type="button" data-question-kind="comparison"><span class="question-copy"><b>最新の比較表を作成する</b><small>つばめリード＋主要3社</small></span><span class="question-arrow">↗</span></button></div>
+        <h2 id="chatgpt-panel-title">フォーム営業ツールを最新情報で比較</h2>
+        <p id="chatgpt-panel-summary">つばめリードと現在の主要3社を、価格・契約条件・送信証跡など、同じ基準で確認します。</p>
+        <div class="chatgpt-prompt-preview"><b>ChatGPTに渡す質問文</b><p id="chatgpt-question-preview">つばめリードと、現在提供中の主要なフォーム営業サービス3社を比較してください。</p></div>
+        <div class="chatgpt-questions"><button type="button" id="chatgpt-confirm" data-question-kind="comparison"><span class="question-copy"><b>最新の比較表を作成する</b><small>つばめリード＋主要3社</small></span><span class="question-arrow">↗</span></button></div>
         <p class="chatgpt-notice" id="chatgpt-notice" role="status">ChatGPTの入力欄に質問文を表示します。送信前に内容をご確認ください。</p>
       </aside>
     </div>
