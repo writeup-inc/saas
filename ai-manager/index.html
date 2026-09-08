@@ -91,10 +91,13 @@ body{
   line-height:1.35;letter-spacing:.02em}
 .hero-guest{position:relative;min-width:0;overflow:hidden;background:var(--paper)}
 .hero-guest img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 18%;
-  filter:grayscale(1) contrast(1.07)}
+  filter:grayscale(1) contrast(1.07);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
 .hero-guest.yamaguchi img{object-position:center 14%}
 .hero-guest::after{content:"";position:absolute;inset:55% 0 0;
-  background:linear-gradient(to bottom,transparent,rgba(0,0,0,.82))}
+  background:linear-gradient(to bottom,transparent,rgba(0,0,0,.82));pointer-events:none}
+.hero-guest-hit{position:absolute;z-index:4;inset:0;cursor:pointer}
+.hero-guest-hit:focus-visible{outline:3px solid var(--paper);outline-offset:-5px}
+.hero-guest:hover img,.hero-guest:focus-within img{transform:scale(1.065)}
 .hero-guest figcaption{position:absolute;z-index:1;left:12px;right:10px;bottom:12px;color:var(--paper)}
 .hero-guest figcaption b{display:block;font-size:15px;font-weight:900;line-height:1.4}
 .hero-guest figcaption span{display:block;margin-top:3px;color:#D5D5D5;font-size:9px;font-weight:700;line-height:1.5}
@@ -348,6 +351,10 @@ body{
   .venue-photo figcaption{display:block;left:14px;right:14px;bottom:12px}
   .venue-photo span{display:block;margin-top:4px;text-align:left}
 }
+@media(prefers-reduced-motion:reduce){
+  .hero-guest img{transition:none}
+  .hero-guest:hover img,.hero-guest:focus-within img{transform:none}
+}
 </style>
 </head>
 <body>
@@ -370,10 +377,12 @@ body{
       <div class="hero-guests" aria-label="9月・11月の講演会に登壇する経営者">
         <div class="hero-guest-notice"><span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6.2h2.3L13 3v10L4.3 9.8H2V6.2Zm3.3 4 1.2.5.8 2.3H5.5l-.8-2.5.6-.3Z"/></svg>講演会のお知らせ</span><b>9月・11月の登壇経営者が決定しました！</b></div>
         <figure class="hero-guest">
+          <a class="hero-guest-hit" href="https://sme-leaders-nihonbashi-2026.taka2007.chatgpt.site/" aria-label="荻原猛氏が登壇する9月30日の中小企業経営者サミットを見る"></a>
           <img src="assets/ogiwara.webp" alt="ソウルドアウト創業者の荻原猛氏" loading="eager">
           <figcaption><b>荻原 猛</b><span>ソウルドアウト創業者<br>元東証プライム上場</span><time datetime="2026-09-30">2026.09.30</time></figcaption>
         </figure>
         <figure class="hero-guest yamaguchi">
+          <a class="hero-guest-hit" href="https://sme-leaders-nihonbashi-2026.taka2007.chatgpt.site/vol2" aria-label="山口拓己氏が登壇する11月17日の中小企業経営者サミットを見る"></a>
           <img src="assets/yamaguchi.jpg" alt="PR TIMES代表取締役社長の山口拓己氏" loading="eager">
           <figcaption><b>山口 拓己</b><span>PR TIMES代表取締役社長<br>東証プライム上場</span><time datetime="2026-11-17">2026.11.17</time></figcaption>
         </figure>
