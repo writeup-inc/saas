@@ -113,12 +113,16 @@ header .w{ display:flex; align-items:center; justify-content:space-between; heig
 .cta.gh:hover{ box-shadow:inset 0 0 0 1.5px var(--ac); opacity:1; }
 
 /* スペックカード */
-.spec{ border:1px solid var(--ln); padding:24px 24px 8px; }
-.spec .st{ font-weight:900; font-size:1.12rem; letter-spacing:-.01em; }
-.spec .sd{ font-size:13px; color:var(--g2); margin:6px 0 16px; line-height:1.7; }
-.spec .row{ display:grid; grid-template-columns:96px 1fr; gap:12px; align-items:baseline;
-  padding:11px 0; border-top:1px solid var(--ln2); }
-.spec .row dt{ font-size:12.5px; color:var(--g2); }
+.spec{ border:1px solid var(--ln); padding:10px 24px; }
+.spec dl{ margin:0; }
+.spec .row{ display:grid; grid-template-columns:20px 76px 1fr; gap:9px; align-items:start;
+  padding:13px 0; border-top:1px solid var(--ln2); }
+.spec .row:first-child{ border-top:0; }
+.spec .ic{ width:20px; height:20px; margin-top:1px; }
+.spec .ic svg{ display:block; width:20px; height:20px; min-width:0; fill:none;
+  stroke:var(--ac); stroke-width:1.5; stroke-linejoin:miter; stroke-linecap:butt; }
+.spec .row.wm .ic svg{ stroke:#b0561f; }
+.spec .row dt{ font-size:12.5px; color:var(--g2); line-height:1.6; padding-top:1px; }
 .spec .row dd{ margin:0; font-size:14px; font-weight:700; line-height:1.6; }
 .spec .row dd small{ display:block; font-size:12px; color:var(--g2); font-weight:400; margin-top:2px; line-height:1.6; }
 .spec .row dd em{ font-style:normal; color:var(--ac); }
@@ -370,15 +374,37 @@ footer .note{ color:var(--g2); }
     </div>
   </div>
   <div class="spec">
-    <p class="st">Jマッチエンジン</p>
-    <p class="sd">補助金と融資の、事業計画書を書くための道具</p>
     <dl>
-      <div class="row"><dt>毎週届くもの</dt><dd>使える制度<small>補助金・助成金／融資／税制優遇</small></dd></div>
-      <div class="row"><dt>書ける一枚</dt><dd>事業計画書・融資の申請書類<small>雇用関係の助成金は顧問契約のみ</small></dd></div>
-      <div class="row"><dt>つくり方</dt><dd><em>6つのAIエージェント</em>との対話<small>Claude Code上で動き、スキルは毎月更新</small></dd></div>
-      <div class="row"><dt>料金</dt><dd>無料／3,000円／30,000円<small>月額・税別。顧問契約は150,000円〜</small></dd></div>
-      <div class="row"><dt>会員特典</dt><dd>AIサービス・専門家相談<small>一定期間無料。ライト以上に付きます</small></dd></div>
-      <div class="row"><dt>しないこと</dt><dd>書かない・預からない<small>士業の紹介料は受け取りません</small></dd></div>
+      <div class="row">
+        <span class="ic"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="1.5" y="4.5" width="17" height="11"/><path d="M1.5 5.5l8.5 6 8.5-6"/></svg></span>
+        <dt>毎週届く</dt>
+        <dd>使える制度<small>補助金・助成金、融資、税制優遇</small></dd>
+      </div>
+      <div class="row">
+        <span class="ic"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="4" y="1.5" width="12" height="17"/><path d="M7 6.5h6M7 10h6M7 13.5h4"/></svg></span>
+        <dt>書ける一枚</dt>
+        <dd>事業計画書と、融資の申請書類<small>雇用関係の助成金は顧問契約のみ</small></dd>
+      </div>
+      <div class="row">
+        <span class="ic"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="1.5" y="3.5" width="5" height="5"/><rect x="7.5" y="3.5" width="5" height="5"/><rect x="13.5" y="3.5" width="5" height="5"/><rect x="1.5" y="11.5" width="5" height="5"/><rect x="7.5" y="11.5" width="5" height="5"/><rect x="13.5" y="11.5" width="5" height="5"/></svg></span>
+        <dt>つくり方</dt>
+        <dd><em>6つのAIエージェント</em>との対話<small>Claude Code上で動き、スキルは毎月更新</small></dd>
+      </div>
+      <div class="row">
+        <span class="ic"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10.5 1.5H18.5v8L9.5 18.5 1.5 10.5 10.5 1.5z"/><path d="M13.8 5.2h1.8"/></svg></span>
+        <dt>料金</dt>
+        <dd>無料／3,000円／30,000円<small>月額・税別。顧問契約は150,000円〜</small></dd>
+      </div>
+      <div class="row wm">
+        <span class="ic"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M1.5 4.5h17v4a2 2 0 000 4v3h-17v-3a2 2 0 000-4v-4z"/><path d="M10 6.5v1.6M10 10.2v1.6M10 13.9v1.6"/></svg></span>
+        <dt>会員特典</dt>
+        <dd>AIサービスと専門家相談<small>一定期間無料。ライト以上に付きます</small></dd>
+      </div>
+      <div class="row">
+        <span class="ic"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="1.5" y="4.5" width="17" height="11"/><path d="M13 4.5v11"/></svg></span>
+        <dt>しないこと</dt>
+        <dd>書かない、預からない<small>士業の紹介料も受け取りません</small></dd>
+      </div>
     </dl>
   </div>
 </div></div>
