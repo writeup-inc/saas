@@ -1,0 +1,676 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#132f31">
+  <meta name="description" content="Salesforceを利用する企業の売上情報と、税理士・会計側の月次確認を近づける1社限定の共同実証パートナー募集です。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="PL BRIDGE｜1社実証パートナー募集">
+  <meta property="og:description" content="Salesforceを使っている会社を、一社だけご紹介ください。">
+  <meta property="og:url" content="https://writeup-inc.github.io/saas/pl-bridge/">
+  <link rel="canonical" href="https://writeup-inc.github.io/saas/pl-bridge/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23132f31'/%3E%3Cpath d='M16 40h9V24h14v16h9' fill='none' stroke='%23f08b52' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='40' r='4' fill='%23fff'/%3E%3Ccircle cx='48' cy='40' r='4' fill='%23fff'/%3E%3C/svg%3E">
+  <title>PL BRIDGE｜Salesforce利用企業の1社実証パートナー募集</title>
+  <style>
+    :root {
+      --ink:#14282a;
+      --ink-soft:#506163;
+      --paper:#f3f1ea;
+      --white:#fffdf8;
+      --navy:#132f31;
+      --navy-2:#1b4445;
+      --orange:#e8783e;
+      --orange-soft:#f8dfd1;
+      --mint:#cbe4d8;
+      --line:#d9d7cd;
+      --shadow:0 26px 70px -46px rgba(19,47,49,.55);
+      --radius:24px;
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; overflow-x:clip; }
+    body {
+      margin:0;
+      color:var(--ink);
+      background:var(--paper);
+      font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",Meiryo,sans-serif;
+      line-height:1.8;
+      -webkit-font-smoothing:antialiased;
+    }
+    a,button { -webkit-tap-highlight-color:transparent; }
+    a { color:inherit; }
+    button { color:inherit; font:inherit; }
+    a:focus-visible,button:focus-visible,summary:focus-visible {
+      outline:3px solid rgba(232,120,62,.48);
+      outline-offset:4px;
+    }
+    h1,h2,h3,p { margin-top:0; }
+    .shell { width:min(calc(100% - 48px),1200px); margin-inline:auto; }
+    .topbar {
+      position:sticky;
+      top:0;
+      z-index:50;
+      border-bottom:1px solid rgba(217,215,205,.78);
+      background:rgba(243,241,234,.9);
+      backdrop-filter:blur(16px);
+    }
+    .topbar-inner {
+      min-height:68px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+    .brand { display:flex; align-items:center; gap:12px; text-decoration:none; }
+    .brand-mark {
+      width:38px;
+      aspect-ratio:1;
+      display:grid;
+      place-items:center;
+      border-radius:12px;
+      color:white;
+      background:var(--navy);
+      font:900 14px/1 ui-monospace,SFMono-Regular,monospace;
+      letter-spacing:-.08em;
+    }
+    .brand-copy { display:grid; line-height:1.2; }
+    .brand-copy b { font-size:13px; letter-spacing:.06em; }
+    .brand-copy small { margin-top:3px; color:var(--ink-soft); font-size:9px; font-weight:700; }
+    .status {
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      padding:7px 11px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,253,248,.75);
+      color:var(--ink-soft);
+      font-size:10px;
+      font-weight:800;
+    }
+    .status::before { content:""; width:7px; height:7px; border-radius:50%; background:var(--orange); }
+    .hero { position:relative; overflow:hidden; }
+    .hero::before {
+      content:"";
+      position:absolute;
+      width:640px;
+      height:640px;
+      right:-280px;
+      top:-280px;
+      border:110px solid rgba(203,228,216,.42);
+      border-radius:50%;
+      pointer-events:none;
+    }
+    .hero-grid {
+      position:relative;
+      min-height:700px;
+      display:grid;
+      grid-template-columns:minmax(0,1.16fr) minmax(360px,.84fr);
+      align-items:center;
+      gap:72px;
+      padding-block:74px 82px;
+    }
+    .eyebrow {
+      margin:0 0 22px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:var(--navy-2);
+      font:900 11px/1.5 ui-monospace,SFMono-Regular,monospace;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .eyebrow::before { content:""; width:38px; height:2px; background:var(--orange); }
+    .hero h1 {
+      max-width:760px;
+      margin:0;
+      font-size:clamp(45px,6.2vw,82px);
+      line-height:1.04;
+      letter-spacing:-.065em;
+    }
+    .hero h1 em { display:block; color:var(--orange); font-style:normal; }
+    .hero-lead {
+      max-width:680px;
+      margin:28px 0 0;
+      color:var(--ink-soft);
+      font-size:clamp(15px,1.4vw,18px);
+    }
+    .hero-lead strong { color:var(--ink); }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:34px; }
+    .btn {
+      min-height:52px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 19px;
+      border:1px solid transparent;
+      border-radius:12px;
+      color:white;
+      background:var(--navy);
+      text-decoration:none;
+      cursor:pointer;
+      font-size:13px;
+      font-weight:900;
+      transition:transform .18s,box-shadow .18s,background .18s;
+    }
+    .btn:hover { transform:translateY(-2px); box-shadow:0 16px 30px -22px rgba(19,47,49,.8); background:var(--navy-2); }
+    .btn.secondary { border-color:var(--line); color:var(--navy); background:rgba(255,253,248,.72); }
+    .btn.secondary:hover { background:white; }
+    .btn-arrow { font-size:17px; line-height:1; }
+    .micro-list {
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px 18px;
+      margin:25px 0 0;
+      padding:0;
+      list-style:none;
+      color:var(--ink-soft);
+      font-size:11px;
+      font-weight:700;
+    }
+    .micro-list li { display:flex; align-items:center; gap:7px; }
+    .micro-list li::before { content:"✓"; color:var(--orange); font-weight:900; }
+    .letter {
+      position:relative;
+      padding:38px 34px 34px;
+      border:1px solid #e4e0d6;
+      border-radius:3px;
+      background:var(--white);
+      box-shadow:var(--shadow);
+      transform:rotate(1.1deg);
+    }
+    .letter::before {
+      content:"1社限定";
+      position:absolute;
+      right:24px;
+      top:23px;
+      padding:6px 10px;
+      border:2px solid var(--orange);
+      border-radius:3px;
+      color:var(--orange);
+      font:900 10px/1 ui-monospace,monospace;
+      letter-spacing:.1em;
+      transform:rotate(4deg);
+    }
+    .letter-kicker { color:var(--ink-soft); font:800 10px/1.6 ui-monospace,monospace; letter-spacing:.12em; }
+    .letter h2 { margin:52px 0 20px; font-size:clamp(24px,2.7vw,36px); line-height:1.28; letter-spacing:-.04em; }
+    .letter p { color:var(--ink-soft); font-size:13px; }
+    .deliverables { display:grid; gap:1px; margin:28px 0; border:1px solid var(--line); background:var(--line); }
+    .deliverable { display:grid; grid-template-columns:44px 1fr; gap:13px; align-items:center; padding:14px; background:#fffefb; }
+    .deliverable span { width:32px; height:32px; display:grid; place-items:center; border-radius:50%; color:white; background:var(--navy); font:900 10px ui-monospace,monospace; }
+    .deliverable b { display:block; font-size:12px; }
+    .deliverable small { display:block; margin-top:2px; color:var(--ink-soft); font-size:9px; }
+    .signature { padding-top:16px; border-top:1px solid var(--line); color:var(--ink-soft); font-size:10px; }
+    .signature strong { display:block; color:var(--ink); font-size:12px; }
+    .section { padding:104px 0; }
+    .section.white { background:var(--white); }
+    .section.dark { color:white; background:var(--navy); }
+    .section-head { max-width:780px; margin-bottom:46px; }
+    .section-no { margin-bottom:12px; color:var(--orange); font:900 10px/1 ui-monospace,monospace; letter-spacing:.16em; }
+    .section h2 { margin-bottom:0; font-size:clamp(32px,4.6vw,58px); line-height:1.14; letter-spacing:-.055em; }
+    .section-head p { margin:20px 0 0; color:var(--ink-soft); font-size:14px; }
+    .dark .section-head p { color:rgba(255,255,255,.63); }
+    .bridge-visual {
+      display:grid;
+      grid-template-columns:1fr 150px 1fr;
+      align-items:stretch;
+      gap:18px;
+    }
+    .bridge-side { padding:30px; border:1px solid var(--line); border-radius:var(--radius); background:white; box-shadow:var(--shadow); }
+    .bridge-side small { color:var(--orange); font:900 10px ui-monospace,monospace; letter-spacing:.12em; }
+    .bridge-side h3 { margin:10px 0 22px; font-size:22px; letter-spacing:-.03em; }
+    .bridge-side ul { display:grid; gap:12px; margin:0; padding:0; list-style:none; }
+    .bridge-side li { display:flex; gap:10px; color:var(--ink-soft); font-size:12px; }
+    .bridge-side li::before { content:""; width:7px; height:7px; margin-top:8px; flex:none; border-radius:50%; background:var(--orange); }
+    .bridge-mid { display:grid; place-items:center; }
+    .bridge-line { position:relative; width:100%; height:2px; background:var(--line); }
+    .bridge-line::before,.bridge-line::after { content:""; position:absolute; top:50%; width:10px; height:10px; border-radius:50%; background:var(--orange); transform:translateY(-50%); }
+    .bridge-line::before { left:0; }
+    .bridge-line::after { right:0; }
+    .bridge-badge {
+      position:absolute;
+      left:50%;
+      top:50%;
+      width:104px;
+      aspect-ratio:1;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      color:white;
+      background:var(--navy);
+      box-shadow:0 16px 36px -20px rgba(19,47,49,.9);
+      font:900 10px/1.5 ui-monospace,monospace;
+      text-align:center;
+      transform:translate(-50%,-50%);
+    }
+    .note { margin-top:22px; padding:20px 22px; border-left:4px solid var(--orange); background:var(--orange-soft); color:#684331; font-size:12px; }
+    .scope-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .scope-card { padding:34px; border-radius:var(--radius); background:white; color:var(--ink); }
+    .scope-card.muted { border:1px solid rgba(255,255,255,.17); color:white; background:rgba(255,255,255,.055); }
+    .scope-label { display:inline-flex; padding:6px 9px; border-radius:6px; color:white; background:var(--orange); font:900 9px/1 ui-monospace,monospace; letter-spacing:.1em; }
+    .muted .scope-label { color:var(--navy); background:var(--mint); }
+    .scope-card h3 { margin:20px 0 10px; font-size:25px; letter-spacing:-.035em; }
+    .scope-card > p { color:var(--ink-soft); font-size:12px; }
+    .muted > p { color:rgba(255,255,255,.58); }
+    .check-list { display:grid; gap:13px; margin:24px 0 0; padding:0; list-style:none; }
+    .check-list li { display:grid; grid-template-columns:26px 1fr; gap:10px; align-items:start; font-size:12px; }
+    .check-list li::before { content:"✓"; width:24px; height:24px; display:grid; place-items:center; border-radius:50%; color:var(--navy); background:var(--mint); font-size:10px; font-weight:900; }
+    .muted .check-list li::before { content:"—"; color:white; background:rgba(255,255,255,.12); }
+    .steps { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; counter-reset:step; }
+    .step { position:relative; min-height:280px; padding:28px 24px; border:1px solid var(--line); border-radius:20px; background:white; counter-increment:step; }
+    .step::before { content:"0" counter(step); display:block; margin-bottom:52px; color:var(--orange); font:900 12px ui-monospace,monospace; }
+    .step:not(:last-child)::after { content:"→"; position:absolute; z-index:2; right:-18px; top:48%; width:22px; color:var(--orange); font-weight:900; text-align:center; }
+    .step h3 { margin-bottom:10px; font-size:18px; letter-spacing:-.025em; }
+    .step p { margin:0; color:var(--ink-soft); font-size:11px; }
+    .kpi-panel { margin-top:24px; display:grid; grid-template-columns:.75fr 1.25fr; border-radius:24px; overflow:hidden; background:var(--navy); color:white; }
+    .kpi-intro { padding:34px; background:rgba(255,255,255,.04); }
+    .kpi-intro small { color:var(--mint); font:900 9px ui-monospace,monospace; letter-spacing:.14em; }
+    .kpi-intro h3 { margin:12px 0 0; font-size:24px; line-height:1.35; }
+    .kpis { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,.12); }
+    .kpi { padding:28px 22px; background:var(--navy); }
+    .kpi b { display:block; color:var(--orange); font:900 11px ui-monospace,monospace; }
+    .kpi span { display:block; margin-top:8px; font-size:12px; }
+    .persona-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .persona { padding:34px; border:1px solid var(--line); border-radius:var(--radius); background:var(--white); }
+    .persona-icon { width:48px; height:48px; display:grid; place-items:center; border-radius:15px; color:white; background:var(--navy); font-weight:900; }
+    .persona h3 { margin:22px 0 10px; font-size:24px; letter-spacing:-.035em; }
+    .persona p { margin:0; color:var(--ink-soft); font-size:12px; }
+    .persona strong { color:var(--ink); }
+    .after-intro { margin-top:20px; padding:32px; border:1px solid var(--line); border-radius:var(--radius); background:white; }
+    .after-intro h3 { margin-bottom:20px; font-size:22px; }
+    .after-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+    .after-item { padding:18px; border-radius:14px; background:#f6f4ee; }
+    .after-item b { display:block; font-size:12px; }
+    .after-item span { display:block; margin-top:5px; color:var(--ink-soft); font-size:10px; }
+    .data-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .data-card { padding:34px; border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); background:rgba(255,255,255,.055); }
+    .data-card h3 { margin-bottom:20px; font-size:23px; }
+    .data-list { display:grid; gap:0; margin:0; padding:0; list-style:none; border-top:1px solid rgba(255,255,255,.13); }
+    .data-list li { display:grid; grid-template-columns:130px 1fr; gap:16px; padding:15px 0; border-bottom:1px solid rgba(255,255,255,.13); font-size:11px; }
+    .data-list b { color:var(--mint); }
+    .data-list span { color:rgba(255,255,255,.65); }
+    .future {
+      position:relative;
+      overflow:hidden;
+      padding:44px;
+      border:1px solid var(--line);
+      border-radius:30px;
+      background:var(--white);
+    }
+    .future::after { content:"CONCEPT"; position:absolute; right:-12px; top:8px; color:rgba(19,47,49,.035); font:900 clamp(70px,12vw,150px)/1 ui-monospace,monospace; pointer-events:none; }
+    .future-top { position:relative; z-index:1; display:grid; grid-template-columns:.85fr 1.15fr; gap:48px; }
+    .concept-chip { display:inline-flex; padding:7px 10px; border-radius:7px; color:#6d3a22; background:var(--orange-soft); font:900 9px ui-monospace,monospace; letter-spacing:.1em; }
+    .future h3 { margin:18px 0 12px; font-size:clamp(30px,4vw,48px); line-height:1.15; letter-spacing:-.05em; }
+    .future p { color:var(--ink-soft); font-size:12px; }
+    .future-list { display:grid; gap:10px; }
+    .future-item { display:grid; grid-template-columns:44px 1fr; gap:14px; align-items:center; padding:17px; border:1px solid var(--line); border-radius:15px; background:white; }
+    .future-item span { width:40px; height:40px; display:grid; place-items:center; border-radius:12px; color:white; background:var(--navy); font:900 10px ui-monospace,monospace; }
+    .future-item b { display:block; font-size:12px; }
+    .future-item small { display:block; margin-top:3px; color:var(--ink-soft); font-size:9px; }
+    .future-foot { position:relative; z-index:1; margin-top:26px; padding-top:20px; border-top:1px solid var(--line); color:var(--ink-soft); font-size:10px; }
+    .terms-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .term { padding:26px; border:1px solid var(--line); border-radius:18px; background:white; }
+    .term small { color:var(--orange); font:900 9px ui-monospace,monospace; letter-spacing:.12em; }
+    .term h3 { margin:13px 0 8px; font-size:18px; }
+    .term p { margin:0; color:var(--ink-soft); font-size:11px; }
+    .faq { display:grid; gap:10px; }
+    .faq details { border:1px solid var(--line); border-radius:16px; background:white; }
+    .faq summary { cursor:pointer; padding:20px 22px; font-size:13px; font-weight:900; list-style:none; }
+    .faq summary::-webkit-details-marker { display:none; }
+    .faq summary::after { content:"＋"; float:right; color:var(--orange); }
+    .faq details[open] summary::after { content:"−"; }
+    .faq p { margin:0; padding:0 22px 22px; color:var(--ink-soft); font-size:12px; }
+    .final { padding:110px 0; background:var(--orange); }
+    .final-box { display:grid; grid-template-columns:1.1fr .9fr; gap:54px; align-items:end; }
+    .final h2 { margin:0; color:#351e14; font-size:clamp(38px,5.7vw,72px); line-height:1.08; letter-spacing:-.06em; }
+    .final p { margin:20px 0 0; color:rgba(53,30,20,.72); font-size:13px; }
+    .final-actions { display:grid; gap:10px; }
+    .final .btn { width:100%; background:#351e14; }
+    .final .btn.secondary { border-color:rgba(53,30,20,.22); color:#351e14; background:rgba(255,255,255,.48); }
+    .copy-note { min-height:1.8em; margin:2px 0 0; color:#512d1d; font-size:10px; font-weight:800; text-align:center; }
+    footer { padding:32px 0; border-top:1px solid rgba(255,255,255,.1); color:rgba(255,255,255,.48); background:var(--navy); }
+    .footer-inner { display:flex; justify-content:space-between; gap:28px; font-size:9px; }
+    .footer-inner p { max-width:780px; margin:0; }
+    .footer-inner a:hover { color:white; }
+    @media (max-width:960px) {
+      .hero-grid { grid-template-columns:1fr; gap:54px; }
+      .letter { width:min(100%,620px); transform:none; }
+      .bridge-visual { grid-template-columns:1fr; }
+      .bridge-mid { min-height:100px; }
+      .bridge-line { width:2px; height:100%; }
+      .bridge-line::before { left:50%; top:0; transform:translate(-50%,-50%); }
+      .bridge-line::after { left:50%; right:auto; top:auto; bottom:0; transform:translate(-50%,50%); }
+      .steps { grid-template-columns:1fr 1fr; }
+      .step:not(:last-child)::after { display:none; }
+      .kpi-panel,.future-top,.final-box { grid-template-columns:1fr; }
+    }
+    @media (max-width:680px) {
+      .shell { width:min(calc(100% - 28px),1200px); }
+      .topbar-inner { min-height:62px; }
+      .brand-copy small,.status span { display:none; }
+      .hero-grid { min-height:auto; padding-block:54px 66px; }
+      .hero h1 { font-size:clamp(41px,13.5vw,62px); }
+      .hero-lead { font-size:14px; }
+      .actions { display:grid; }
+      .btn { width:100%; }
+      .letter { padding:30px 22px; }
+      .letter::before { right:18px; }
+      .letter h2 { margin-top:58px; }
+      .section { padding:72px 0; }
+      .section h2 { font-size:clamp(31px,10vw,44px); }
+      .bridge-side,.scope-card,.persona,.after-intro,.data-card,.future { padding:25px 21px; }
+      .scope-grid,.persona-grid,.data-grid,.steps,.kpis,.terms-grid,.after-grid { grid-template-columns:1fr; }
+      .step { min-height:auto; }
+      .step::before { margin-bottom:28px; }
+      .kpi-panel { border-radius:20px; }
+      .kpis { gap:1px; }
+      .future::after { top:20px; }
+      .data-list li { grid-template-columns:1fr; gap:3px; }
+      .final { padding:78px 0; }
+      .footer-inner { display:grid; }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      html { scroll-behavior:auto; }
+      *,*::before,*::after { animation:none !important; transition:none !important; }
+    }
+    @media print {
+      .topbar,.actions,.final-actions { display:none !important; }
+      body { background:white; }
+      .section,.final { padding:42px 0; break-inside:avoid; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#top" aria-label="PL BRIDGE ページ先頭へ">
+        <span class="brand-mark">PL</span>
+        <span class="brand-copy"><b>PL BRIDGE</b><small>共同実証オファー / サービス構想</small></span>
+      </a>
+      <span class="status"><span>先行実証パートナー</span> 1社募集</span>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="shell hero-grid">
+        <div>
+          <p class="eyebrow">A SMALL, SHARP PARTNERSHIP</p>
+          <h1 id="hero-title">Salesforceを使っている会社を、<em>一社だけ。</em></h1>
+          <p class="hero-lead"><strong>ご紹介いただけないでしょうか。</strong><br>営業側の売上数字と根拠を、税理士が毎月確認しやすい形へ整える。まず一社で、確認の往復をどこまで減らせるか共同実証します。</p>
+          <div class="actions">
+            <a class="btn" href="https://writeup.jp/contact/" target="_blank" rel="noopener">一社、紹介候補を相談する <span class="btn-arrow" aria-hidden="true">↗</span></a>
+            <a class="btn secondary" href="#logic">実証の考え方を見る <span class="btn-arrow" aria-hidden="true">↓</span></a>
+          </div>
+          <ul class="micro-list" aria-label="相談時の条件">
+            <li>最初は30分の状況確認</li>
+            <li>実証へ進むかは双方で判断</li>
+            <li>価格・期間は要件確認後</li>
+          </ul>
+        </div>
+
+        <aside class="letter" aria-label="今回のお願いと実証成果物">
+          <div class="letter-kicker">PARTNERSHIP OFFER / 2026</div>
+          <h2>お願いは、紹介候補を<br>一社つないでいただくこと。</h2>
+          <p>その後の現状整理とご提案は、私たちが直接担当します。いきなり導入を決める話ではありません。</p>
+          <div class="deliverables" aria-label="現状整理で作るもの">
+            <div class="deliverable"><span>01</span><div><b>いまの流れを1枚に</b><small>商談 → 受注 → 請求 → 会計確認</small></div></div>
+            <div class="deliverable"><span>02</span><div><b>判断の対応表</b><small>商談ステージ × 売上計上の条件</small></div></div>
+            <div class="deliverable"><span>03</span><div><b>毎月渡す型</b><small>項目・担当・タイミングを固定</small></div></div>
+          </div>
+          <div class="signature"><strong>株式会社ライトアップ</strong>先行実証パートナー募集</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section white" id="logic" aria-labelledby="logic-title">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-no">01 / THE GAP</div>
+          <h2 id="logic-title">システムを増やす前に、<br>営業と会計の間を整える。</h2>
+          <p>目指すのは「商談データをそのままPLへ入れる」ことではありません。売上として確認できる条件と根拠を、税理士が扱いやすい共通の型にすることです。</p>
+        </div>
+        <div class="bridge-visual" aria-label="営業側と税理士側の情報の橋渡し">
+          <article class="bridge-side">
+            <small>SALES SIDE</small>
+            <h3>Salesforceにある情報</h3>
+            <ul>
+              <li>商談ステージと受注状況</li>
+              <li>金額・契約期間・担当者</li>
+              <li>請求や検収に関する根拠</li>
+            </ul>
+          </article>
+          <div class="bridge-mid" aria-hidden="true"><div class="bridge-line"><div class="bridge-badge">毎月同じ<br>型と時点へ</div></div></div>
+          <article class="bridge-side">
+            <small>ACCOUNTING SIDE</small>
+            <h3>税理士が確認したいこと</h3>
+            <ul>
+              <li>今月の売上として扱う条件</li>
+              <li>数字の根拠と確認担当</li>
+              <li>前月との差分と未確定項目</li>
+            </ul>
+          </article>
+        </div>
+        <p class="note"><strong>今回の仮説：</strong> 売上側の資料準備と確認の往復を整えれば、税理士の月次確認と経営側の数字把握を、少し早く・説明しやすくできる。効果は一社の実測で確かめます。</p>
+      </div>
+    </section>
+
+    <section class="section dark" aria-labelledby="scope-title">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-no">02 / SCOPE</div>
+          <h2 id="scope-title">今回やること。<br>今は言わないこと。</h2>
+          <p>未確定の機能や成果を大きく約束せず、一社で検証できる範囲から始めます。</p>
+        </div>
+        <div class="scope-grid">
+          <article class="scope-card">
+            <span class="scope-label">NOW / 今回</span>
+            <h3>業務とデータの受け渡しを設計</h3>
+            <p>現在できるのは、現状整理・データ項目の設計・小さな実装・運用伴走です。</p>
+            <ul class="check-list">
+              <li>営業から会計までの流れを見える化</li>
+              <li>売上計上条件と商談ステージの対応表を作成</li>
+              <li>毎月の出力項目・担当・締切を決める</li>
+              <li>小さく試し、実証前後の変化を確認</li>
+            </ul>
+          </article>
+          <article class="scope-card muted">
+            <span class="scope-label">NOT YET / 未確定</span>
+            <h3>自動PL・標準API連携は約束しない</h3>
+            <p>連携方式は、対象企業のSalesforce設定・会計運用・権限を確認してから決めます。</p>
+            <ul class="check-list">
+              <li>商談情報の自動的な会計仕訳化</li>
+              <li>すべての会計ソフトへの標準連携</li>
+              <li>税務判断・申告・会計処理の代行</li>
+              <li>成果数値や導入期間の事前保証</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white" aria-labelledby="steps-title">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-no">03 / ONE-COMPANY PILOT</div>
+          <h2 id="steps-title">一社で試す、4つのステップ。</h2>
+          <p>紹介いただいた段階では、導入も契約も決まりません。現状を聞き、実証範囲と費用条件に合意できた場合だけ進みます。</p>
+        </div>
+        <div class="steps">
+          <article class="step"><h3>候補をつなぐ</h3><p>Salesforceを使う企業か、顧問税理士との月次確認に課題を感じる企業をご紹介ください。</p></article>
+          <article class="step"><h3>30分で状況確認</h3><p>現在の流れ、困っている往復、使っている項目を伺います。合わなければここで終了です。</p></article>
+          <article class="step"><h3>小さく設計・実装</h3><p>対象範囲、役割、データの型、権限、費用、期間を合意してから作業します。</p></article>
+          <article class="step"><h3>変化を一緒に確認</h3><p>実証前後を比べ、続ける価値があるか、追加のAI活用へ進むかを判断します。</p></article>
+        </div>
+        <div class="kpi-panel">
+          <div class="kpi-intro"><small>MEASURE, DON'T PROMISE</small><h3>成功の数字は、<br>始める前に一緒に決める。</h3></div>
+          <div class="kpis">
+            <div class="kpi"><b>KPI 01</b><span>売上確認の<br>往復回数</span></div>
+            <div class="kpi"><b>KPI 02</b><span>売上資料の<br>準備時間</span></div>
+            <div class="kpi"><b>KPI 03</b><span>売上数字が<br>揃う日</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="partner-title">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-no">04 / WHO CAN CONNECT US</div>
+          <h2 id="partner-title">税理士さんにも、<br>経営者・顧問の方にも。</h2>
+          <p>紹介後のやり取りは私たちが直接担当します。紹介者の方に、説明役や進行役をお願いする前提ではありません。</p>
+        </div>
+        <div class="persona-grid">
+          <article class="persona"><div class="persona-icon" aria-hidden="true">税</div><h3>税理士・会計事務所の方</h3><p>顧問先から毎月、売上の根拠確認に時間がかかっている。<strong>その往復を減らす型を、顧問先と一緒に作れます。</strong></p></article>
+          <article class="persona"><div class="persona-icon" aria-hidden="true">経</div><h3>経営者・顧問・支援者の方</h3><p>Salesforceは使っているが、経営数字とのつながりが弱い企業がいる。<strong>月次管理を整える入口としてご紹介ください。</strong></p></article>
+        </div>
+        <div class="after-intro">
+          <h3>ご紹介後は、こう進めます。</h3>
+          <div class="after-grid">
+            <div class="after-item"><b>連絡は私たちが担当</b><span>候補企業との日程調整と説明を引き取ります。</span></div>
+            <div class="after-item"><b>最初は状況確認だけ</b><span>実証するかは、内容を見て双方で判断します。</span></div>
+            <div class="after-item"><b>別提案は事前に相談</b><span>今回の目的外の提案へ勝手に広げません。</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" aria-labelledby="data-title">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-no">05 / DATA &amp; ROLES</div>
+          <h2 id="data-title">見る範囲も、決める人も、<br>先に線を引く。</h2>
+          <p>受注・請求に関わる情報を扱うため、データへのアクセスは必要最小限とし、実証前に扱い方を合意します。</p>
+        </div>
+        <div class="data-grid">
+          <article class="data-card">
+            <h3>データの扱い</h3>
+            <ul class="data-list">
+              <li><b>秘密保持</b><span>必要な合意を行ってから個別情報を確認</span></li>
+              <li><b>閲覧範囲</b><span>実証対象の業務・項目・期間に限定</span></li>
+              <li><b>本番変更</b><span>書き込みの有無と承認者を事前に決定</span></li>
+              <li><b>終了時</b><span>付与された権限とデータの扱いを確認</span></li>
+            </ul>
+          </article>
+          <article class="data-card">
+            <h3>役割の分担</h3>
+            <ul class="data-list">
+              <li><b>企業</b><span>現状説明と業務上の最終承認</span></li>
+              <li><b>税理士</b><span>売上計上・税務・会計処理の判断</span></li>
+              <li><b>ライトアップ</b><span>業務整理、データ設計、実装と運用伴走</span></li>
+              <li><b>紹介者</b><span>最初の接点づくり。以降の進行は任意</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white" aria-labelledby="future-title">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-no">06 / AFTER THE FIRST BRIDGE</div>
+          <h2 id="future-title">一社で橋がかかれば、<br>AIの夢はその先に広げられる。</h2>
+          <p>最初から全部は作りません。毎月の型が定着した後に、必要なところだけAI化を検討します。</p>
+        </div>
+        <article class="future">
+          <div class="future-top">
+            <div>
+              <span class="concept-chip">仮称・提供構想</span>
+              <h3>Eliot AI<br>Sales Edition</h3>
+              <p>営業情報を「入れる」だけでなく、経営と会計が使える形へ整える構想です。下記は実証後に検討できる例であり、現時点の提供機能ではありません。</p>
+            </div>
+            <div class="future-list">
+              <div class="future-item"><span>A1</span><div><b>入力のばらつきを見つける</b><small>不足項目や表記差の確認候補を出す構想</small></div></div>
+              <div class="future-item"><span>A2</span><div><b>月次の確認候補をまとめる</b><small>前月差・未確定・要確認を整理する構想</small></div></div>
+              <div class="future-item"><span>A3</span><div><b>次のアクションへつなぐ</b><small>営業・経営・会計それぞれの確認事項を提示する構想</small></div></div>
+            </div>
+          </div>
+          <div class="future-foot">実証結果が確認でき、関係各社の合意がある場合に限り、共同事例やPR TIMES等での発表も検討します。社名・数値・内容を無断で公開することはありません。</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="terms-title">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-no">07 / OPEN CONDITIONS</div>
+          <h2 id="terms-title">決まっていないことは、<br>決まっていないと書く。</h2>
+          <p>今回のページは一社目の共同実証に向けたオファーです。正式な商品仕様ではありません。</p>
+        </div>
+        <div class="terms-grid">
+          <article class="term"><small>PRICE</small><h3>価格</h3><p>実証範囲を絞った条件を、ヒアリング後に個別提案します。標準価格・割引率は未確定です。</p></article>
+          <article class="term"><small>SCHEDULE</small><h3>期間</h3><p>対象業務、データ量、承認手順を確認後に決めます。開始日・完了日は現時点で未確定です。</p></article>
+          <article class="term"><small>CONNECTION</small><h3>連携方式</h3><p>CSV、既存レポート、個別設定などを含めて検討します。API自動連携は未検証です。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white" aria-labelledby="faq-title">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-no">08 / FAQ</div>
+          <h2 id="faq-title">紹介する前に、<br>気になること。</h2>
+        </div>
+        <div class="faq">
+          <details><summary>どんな会社を紹介すればよいですか？</summary><p>Salesforceを利用しており、受注・請求・売上確認のどこかで、営業担当・経理・税理士間の確認往復がある企業を想定しています。規模や業種は最初の30分で確認します。</p></details>
+          <details><summary>紹介したら、契約しないといけませんか？</summary><p>いいえ。最初は状況確認です。実証の対象範囲、費用、期間、データの扱いに双方が合意した場合だけ次へ進みます。</p></details>
+          <details><summary>税理士の仕事をAIが代行するサービスですか？</summary><p>違います。税務・会計の判断は税理士が担当します。私たちは営業から会計へ渡す業務とデータの流れを整理し、必要な実装と運用を支援します。</p></details>
+          <details><summary>Salesforceの公式サービスですか？</summary><p>いいえ。本構想は株式会社ライトアップによるもので、Salesforce社の公式提供・認定・提携サービスではありません。ロゴ等も使用していません。</p></details>
+          <details><summary>Eliot AI Sales Editionは、もう使えますか？</summary><p>現時点では仮称・提供構想です。今回提供を検討するのは、現状整理、データ設計、小さな実装、運用伴走です。</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="final" aria-labelledby="final-title">
+      <div class="shell final-box">
+        <div>
+          <div class="section-no">ONE INTRODUCTION TO START</div>
+          <h2 id="final-title">まず一社、<br>思い浮かぶ会社は<br>ありますか。</h2>
+          <p>会社名を送る前の「このケースは対象になりそう？」という相談だけでも構いません。</p>
+        </div>
+        <div class="final-actions">
+          <a class="btn" href="https://writeup.jp/contact/" target="_blank" rel="noopener">紹介候補を相談する <span class="btn-arrow" aria-hidden="true">↗</span></a>
+          <button class="btn secondary" type="button" id="copy-intro">紹介用の短い文面をコピー</button>
+          <p class="copy-note" id="copy-note" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <p>PL BRIDGEは先行実証に向けたサービス構想です。価格、期間、連携方式、Eliot AI Sales Editionの仕様は未確定です。Salesforce社の公式提供・認定・提携サービスではありません。</p>
+      <a href="https://writeup.jp/" target="_blank" rel="noopener">© LIGHT UP INC.</a>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const button = document.getElementById('copy-intro');
+      const note = document.getElementById('copy-note');
+      const message = 'Salesforceを使っている会社向けに、営業側の売上情報と税理士さんの月次確認を近づける1社実証を検討しています。まず30分、今の流れを聞かせてもらえませんか？ 詳細：https://writeup-inc.github.io/saas/pl-bridge/';
+
+      button.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(message);
+          note.textContent = '紹介文をコピーしました。';
+        } catch (error) {
+          const textarea = document.createElement('textarea');
+          textarea.value = message;
+          textarea.setAttribute('readonly', '');
+          textarea.style.position = 'fixed';
+          textarea.style.opacity = '0';
+          document.body.appendChild(textarea);
+          textarea.select();
+          const copied = document.execCommand('copy');
+          textarea.remove();
+          note.textContent = copied ? '紹介文をコピーしました。' : 'コピーできませんでした。文面を長押ししてお使いください。';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
