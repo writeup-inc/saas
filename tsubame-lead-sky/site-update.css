@@ -334,16 +334,16 @@ footer > * {
 
 .motion-ready .chatgpt-scroll-reveal {
   opacity: 0;
-  transition: opacity .68s ease, translate .82s cubic-bezier(.22, 1, .36, 1);
+  transition: opacity .58s ease, translate 1.05s cubic-bezier(.16, 1, .3, 1);
   will-change: opacity, translate;
 }
 
 .motion-ready .chatgpt-scroll-reveal.reveal-from-left {
-  translate: clamp(-86px, -7vw, -42px) 0;
+  translate: var(--chatgpt-reveal-x, -100vw) 0;
 }
 
 .motion-ready .chatgpt-scroll-reveal.reveal-from-right {
-  translate: clamp(42px, 7vw, 86px) 0;
+  translate: var(--chatgpt-reveal-x, 100vw) 0;
 }
 
 .motion-ready .chatgpt-scroll-reveal.is-visible {

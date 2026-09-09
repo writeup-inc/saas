@@ -124,9 +124,17 @@ document.addEventListener('DOMContentLoaded', () => {
   let previousFlightDuration;
 
   const chatGptRevealButtons = [...document.querySelectorAll('[data-open-chatgpt]')];
+  const chatGptRevealTargets = new Map();
   let chatGptRevealObserver;
 
-  chatGptRevealButtons.forEach((button) => button.classList.add('chatgpt-scroll-reveal'));
+  chatGptRevealButtons.forEach((button) => {
+    button.classList.add('chatgpt-scroll-reveal');
+    const target = button.parentElement;
+    if (!target) return;
+    const targetButtons = chatGptRevealTargets.get(target) || [];
+    targetButtons.push(button);
+    chatGptRevealTargets.set(target, targetButtons);
+  });
 
   const assignChatGptRevealDirections = () => {
     chatGptRevealButtons.forEach((button, index) => {
@@ -135,8 +143,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const destinationCenter = rect.left + rect.width / 2 - translatedX;
       const positionRatio = destinationCenter / window.innerWidth;
       const enterFromRight = positionRatio < .48 || (positionRatio <= .52 && index % 2 === 0);
+      const edgeClearance = Math.max(64, Math.min(160, window.innerWidth * .08));
+      const revealDistance = enterFromRight
+        ? window.innerWidth + rect.width / 2 + edgeClearance - destinationCenter
+        : -(destinationCenter + rect.width / 2 + edgeClearance);
       button.classList.toggle('reveal-from-right', enterFromRight);
       button.classList.toggle('reveal-from-left', !enterFromRight);
+      button.style.setProperty('--chatgpt-reveal-x', `${Math.round(revealDistance)}px`);
     });
   };
 
@@ -162,11 +175,11 @@ document.addEventListener('DOMContentLoaded', () => {
     chatGptRevealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-visible');
+        chatGptRevealTargets.get(entry.target)?.forEach((button) => button.classList.add('is-visible'));
         observer.unobserve(entry.target);
       });
-    }, { threshold: .35, rootMargin: '0px 0px -8% 0px' });
-    chatGptRevealButtons.forEach((button) => chatGptRevealObserver.observe(button));
+    }, { threshold: .16, rootMargin: '0px 0px -8% 0px' });
+    chatGptRevealTargets.forEach((_, target) => chatGptRevealObserver.observe(target));
   }
 
   reducedMotion.addEventListener?.('change', (event) => {
