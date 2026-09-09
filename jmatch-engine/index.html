@@ -128,6 +128,29 @@ header .w{ display:flex; align-items:center; justify-content:space-between; heig
 .spec .row dd small{ display:block; font-size:12px; color:var(--g2); font-weight:400; margin-top:2px; line-height:1.6; }
 .spec .row dd em{ font-style:normal; color:var(--ac); }
 
+/* ══ 登録すると使える5つ ══ */
+.five{ background:var(--pa); padding:86px 0 92px; }
+@media (max-width:600px){ .five{ padding:56px 0 62px; } }
+.five h2{ font-weight:900; letter-spacing:-.03em; line-height:1.4; margin:18px 0 16px;
+  font-size:clamp(1.55rem,3.2vw,2.4rem); }
+.fvleg{ font-size:14px; color:var(--g1); margin:0 0 30px; line-height:1.9; max-width:46em; }
+.fv{ display:grid; gap:16px; }
+@media (min-width:620px){ .fv{ grid-template-columns:repeat(2,1fr); } }
+@media (min-width:1080px){ .fv{ grid-template-columns:repeat(5,1fr); gap:14px; } }
+.fvc{ background:#fff; border:1px solid var(--ln); padding:22px 20px 20px;
+  display:flex; flex-direction:column; }
+.fvn{ font-family:"Inter",sans-serif; font-weight:900; font-size:13px; color:var(--acm);
+  letter-spacing:.06em; display:block; margin-bottom:9px; }
+.fvt{ font-weight:900; font-size:1.02rem; line-height:1.62; letter-spacing:-.012em; margin:0 0 10px; }
+.fvd{ font-size:13.5px; color:var(--g1); line-height:1.85; margin:0 0 auto; }
+.fvbar{ display:grid; grid-template-columns:repeat(4,1fr); gap:2px; margin:20px 0 9px; }
+.fvbar i{ height:8px; background:var(--ln); display:block; }
+.fvbar i.on{ background:var(--ac); }
+.fvp{ font-size:13px; font-weight:900; color:var(--ac); line-height:1.6; letter-spacing:-.01em; }
+.fvp span{ display:block; font-size:12.5px; font-weight:700; color:var(--g1); margin-top:2px; letter-spacing:0; }
+.fvtag{ font-family:"Noto Sans JP",sans-serif; font-style:normal; font-size:12px; font-weight:700;
+  background:var(--ln2); color:var(--g2); padding:2px 7px; margin-left:7px; letter-spacing:0; }
+
 /* ══ 山場（1カラム例外・図は置かない） ══ */
 .peak{ background:var(--bk); color:#fff; padding:140px 0 132px; }
 @media (max-width:600px){ .peak{ padding:80px 0 76px; } }
@@ -379,7 +402,7 @@ footer .note{ color:var(--g2); }
       <div class="row">
         <span class="ic"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="1.5" y="4.5" width="17" height="11"/><path d="M1.5 5.5l8.5 6 8.5-6"/></svg></span>
         <dt>毎週届く</dt>
-        <dd>使える制度<small>補助金・助成金、融資、税制優遇</small></dd>
+        <dd>使える制度<small>補助金、融資、税制優遇</small></dd>
       </div>
       <div class="row">
         <span class="ic"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="4" y="1.5" width="12" height="17"/><path d="M7 6.5h6M7 10h6M7 13.5h4"/></svg></span>
@@ -411,6 +434,55 @@ footer .note{ color:var(--g2); }
 </div></div>
 
 <main>
+
+<div class="five"><div class="w">
+  <span class="snum">WHAT YOU GET</span>
+  <h2>登録すると、この5つが使えます。</h2>
+  <p class="fvleg">帯は左から、無料・ライト・スタンダード・顧問契約の4段階です。塗ってあるところから、お使いいただけます。</p>
+  <div class="fv">
+
+    <div class="fvc">
+      <span class="fvn">01</span>
+      <p class="fvt">使える制度が、毎週届く</p>
+      <p class="fvd">補助金、融資、税制優遇。国と都道府県と市区町村から、御社が対象になりそうなものだけを選んでお送りします。</p>
+      <div class="fvbar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+      <p class="fvp">無料<span>0円</span></p>
+    </div>
+
+    <div class="fvc">
+      <span class="fvn">02</span>
+      <p class="fvt">採択された事業計画書が、見られる</p>
+      <p class="fvd">主要な補助金で採択された申請書と事業計画書、過去の事例をダウンロードできます。白紙から考えずに済みます。</p>
+      <div class="fvbar" aria-hidden="true"><i></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+      <p class="fvp">ライト から<span>月3,000円</span></p>
+    </div>
+
+    <div class="fvc">
+      <span class="fvn">03<em class="fvtag">開発中</em></span>
+      <p class="fvt">事業計画書が、自分で書けるようになる</p>
+      <p class="fvd">6つのAIエージェントが順番に問いを出します。答えていくと、補助金の事業計画書と、銀行に出す資料ができます。現在は開発中で、まだお使いいただけません。</p>
+      <div class="fvbar" aria-hidden="true"><i></i><i></i><i class="on"></i><i class="on"></i></div>
+      <p class="fvp">スタンダード から<span>月30,000円</span></p>
+    </div>
+
+    <div class="fvc">
+      <span class="fvn">04</span>
+      <p class="fvt">提携するAIサービスが、無料で使える</p>
+      <p class="fvd">会員特典です。AIサービスと専門家へのご相談を、一定期間無料で。対象と期間は入れ替わります。</p>
+      <div class="fvbar" aria-hidden="true"><i></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+      <p class="fvp">ライト から<span>月3,000円</span></p>
+    </div>
+
+    <div class="fvc">
+      <span class="fvn">05</span>
+      <p class="fvt">合う専門家を、紹介してもらえる</p>
+      <p class="fvd">自分で出すのが難しいときは、士業の先生をご紹介します。紹介料は受け取りません。</p>
+      <div class="fvbar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+      <p class="fvp">無料<span>0円</span></p>
+    </div>
+
+  </div>
+</div></div>
 
 <div class="peak"><div class="w">
   <p class="big"><span>届かない。</span><span>書けない。</span></p>
@@ -459,7 +531,7 @@ footer .note{ color:var(--g2); }
       <p class="figs">帯の長さは公募期間のイメージで、特定の制度の日数を示すものではありません。</p>
     </div>
 
-    <p style="margin-top:32px"><strong>ここまでは、無料でお使いいただけます。</strong>補助金・助成金だけでなく、融資制度と税制優遇も同じ経路で届きます。お示しできるのは「対象になり得る」候補までで、最終的に対象かどうかは制度の事務局が判断します。</p>
+    <p style="margin-top:32px"><strong>ここまでは、無料でお使いいただけます。</strong>補助金だけでなく、融資制度と税制優遇も同じ経路で届きます。お示しできるのは「対象になり得る」候補までで、最終的に対象かどうかは制度の事務局が判断します。</p>
   </div>
 </div></section>
 
@@ -664,7 +736,7 @@ footer .note{ color:var(--g2); }
       <p class="ptax">ずっと無料</p>
       <p class="pd">使える制度が毎週届いて、自社が対象になりそうなものが分かるところまで。</p>
       <ul>
-        <li>毎週、使える制度が届く（補助金・助成金／融資／税制優遇）</li>
+        <li>毎週、使える制度が届く（補助金／融資／税制優遇）</li>
         <li>自社が対象になりそうな制度が分かる</li>
         <li>対象経費に使える商材のご紹介</li>
         <li>申請の進め方と、相談先のご案内</li>
@@ -681,6 +753,7 @@ footer .note{ color:var(--g2); }
       <p class="pd">申請を取りにいく方だけ。過去の採択事例をもとに、御社の計画のたたきをAIがつくります。</p>
       <ul>
         <li>無料の内容をすべて含みます</li>
+        <li>主要な補助金で採択された申請書・事業計画書・過去の事例をダウンロードできる</li>
         <li>自社の計画のたたきをダウンロードできる</li>
         <li>顧問の税理士・社労士へ渡す依頼書の生成</li>
         <li>申請にあたっての注意点</li>
@@ -905,7 +978,7 @@ footer .note{ color:var(--g2); }
   <span style="font-weight:400;color:var(--g2)">お申し込みの前に、解約の条件、最低利用期間、返金の取り扱い、お預かりする情報の範囲と保存・削除・外部送信の有無を、申込画面でご確認いただけます。</span></p>
   <p class="note">Jマッチエンジン<br>
   「開発中」と表示した機能は、現在ご利用いただけません。<br>
-  補助金・助成金の制度内容、支払時期、申請要件は制度ごとに異なります。詳細は各制度の公募要領をご確認ください。<br>
+  制度の内容、支払時期、申請要件は制度ごとに異なります。詳細は各制度の公募要領をご確認ください。<br>
   顧問契約における書類の作成は、提携する士業事務所が担当します。<br>
   会員特典の対象サービス・ご相談窓口・無料期間および回数は変更されることがあります。最新の一覧に記載されているものが有効です。<br>
   掲載している画面と図はイメージです。実際の表示と異なる場合があります。</p>
