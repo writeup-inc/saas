@@ -322,6 +322,30 @@ footer > * {
   background: #fff;
 }
 
+.motion-ready .chatgpt-scroll-reveal {
+  opacity: 0;
+  transition: opacity .68s ease, translate .82s cubic-bezier(.22, 1, .36, 1);
+  will-change: opacity, translate;
+}
+
+.motion-ready .chatgpt-scroll-reveal.reveal-from-left {
+  translate: clamp(-86px, -7vw, -42px) 0;
+}
+
+.motion-ready .chatgpt-scroll-reveal.reveal-from-right {
+  translate: clamp(42px, 7vw, 86px) 0;
+}
+
+.motion-ready .chatgpt-scroll-reveal.is-visible {
+  opacity: 1;
+  translate: 0 0;
+  will-change: auto;
+}
+
+.motion-ready .chatgpt-scroll-reveal:not(.is-visible) {
+  pointer-events: none;
+}
+
 .chatgpt-prompt-preview {
   margin-top: 18px;
   padding: 16px 17px;
@@ -464,5 +488,11 @@ footer > * {
 @media (prefers-reduced-motion: reduce) {
   .swallow-flight {
     display: none;
+  }
+
+  .motion-ready .chatgpt-scroll-reveal {
+    opacity: 1;
+    translate: 0 0;
+    transition: none;
   }
 }

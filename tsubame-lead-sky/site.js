@@ -1,3 +1,5 @@
+document.documentElement.classList.add('motion-ready');
+
 const canonicalUrl = 'https://writeup-inc.github.io/saas/tsubame-lead-sky/';
 const starterQuestions = {
   comparison: {
@@ -120,6 +122,35 @@ document.addEventListener('DOMContentLoaded', () => {
   let swallowAnimation;
   let previousFlightTop;
   let previousFlightDuration;
+
+  const chatGptRevealButtons = [...document.querySelectorAll('[data-open-chatgpt]')];
+  let chatGptRevealObserver;
+
+  chatGptRevealButtons.forEach((button, index) => {
+    button.classList.add('chatgpt-scroll-reveal', index % 2 ? 'reveal-from-right' : 'reveal-from-left');
+  });
+
+  const showAllChatGptButtons = () => {
+    chatGptRevealObserver?.disconnect();
+    chatGptRevealButtons.forEach((button) => button.classList.add('is-visible'));
+  };
+
+  if (reducedMotion.matches || !('IntersectionObserver' in window)) {
+    showAllChatGptButtons();
+  } else {
+    chatGptRevealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: .35, rootMargin: '0px 0px -8% 0px' });
+    chatGptRevealButtons.forEach((button) => chatGptRevealObserver.observe(button));
+  }
+
+  reducedMotion.addEventListener?.('change', (event) => {
+    if (event.matches) showAllChatGptButtons();
+  });
 
   const randomBetween = (min, max) => min + Math.random() * (max - min);
 
