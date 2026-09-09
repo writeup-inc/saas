@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="社労士・税理士事務所の相談ヒアリング、書類ドラフト、データ整形をAIで支援。資格者の確認を前提に、まず1業務から実演します。">
+  <link rel="canonical" href="https://writeup-inc.github.io/saas/shigyo-ai-practice-pack/">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="士業AI実務パック｜打ち合わせに行く前に、売るものがある。">
+  <meta property="og:description" content="聞く、整える、作る、確認する。社労士・税理士向けの業務AIパック。">
+  <meta property="og:url" content="https://writeup-inc.github.io/saas/shigyo-ai-practice-pack/">
+  <meta property="og:image" content="https://writeup-inc.github.io/saas/shigyo-ai-practice-pack/og-card.svg">
+  <title>士業AI実務パック｜社労士・税理士向け</title>
+  <style>
+    :root {
+      --ink: #111820;
+      --ink-2: #26313b;
+      --paper: #f7f4ee;
+      --paper-2: #eee9df;
+      --white: #fff;
+      --red: #d8112b;
+      --red-dark: #aa0d21;
+      --mint: #c9ff63;
+      --blue: #c9e8ff;
+      --line: #d9d5cd;
+      --muted: #66717b;
+      --shadow: 0 18px 60px rgba(17, 24, 32, .12);
+      --radius: 22px;
+      --wrap: 1200px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; overflow-x: clip; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+      letter-spacing: .02em;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+    :focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
+    .wrap { width: min(100%, var(--wrap)); margin: 0 auto; padding-inline: 32px; }
+    .eyebrow { margin: 0 0 18px; color: var(--red); font-size: 12px; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; }
+    .section-head { max-width: 780px; margin-bottom: 48px; }
+    .section-head h2 { margin: 0; font-size: clamp(32px, 5vw, 64px); line-height: 1.18; letter-spacing: -.04em; }
+    .section-head p:last-child { margin: 22px 0 0; color: var(--ink-2); font-size: 17px; }
+    .skip-link { position: fixed; left: 12px; top: -80px; z-index: 100; padding: 12px 18px; color: #fff; background: var(--ink); }
+    .skip-link:focus { top: 12px; }
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 50;
+      border-bottom: 1px solid rgba(17, 24, 32, .1);
+      background: rgba(247, 244, 238, .9);
+      backdrop-filter: blur(16px);
+    }
+    .header-inner { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 900; line-height: 1.2; }
+    .brand-mark { width: 28px; height: 28px; display: grid; place-items: center; color: #fff; background: var(--red); font-size: 14px; }
+    .brand small { display: block; margin-top: 3px; color: var(--muted); font-size: 10px; letter-spacing: .12em; }
+    .header-cta, .primary-cta {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 0;
+      color: #fff;
+      background: var(--red);
+      font-weight: 900;
+      text-decoration: none;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .header-cta { padding: 0 20px; font-size: 13px; }
+    .primary-cta { padding: 18px 28px; border-radius: 999px; }
+    .header-cta:hover, .primary-cta:hover { background: var(--red-dark); transform: translateY(-2px); }
+
+    .hero { min-height: 760px; padding: 148px 0 92px; display: grid; align-items: center; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(390px, .92fr); gap: 64px; align-items: center; }
+    .hero h1 { max-width: 760px; margin: 0; font-size: clamp(48px, 7vw, 92px); line-height: 1.02; letter-spacing: -.065em; }
+    .hero h1 span { display: block; color: var(--red); font-size: .82em; white-space: nowrap; }
+    .hero-lead { max-width: 690px; margin: 34px 0 0; font-size: clamp(17px, 2vw, 21px); line-height: 1.95; font-weight: 700; }
+    .hero-note { margin: 18px 0 0; color: var(--muted); font-size: 13px; }
+    .hero-actions { margin-top: 34px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .hero-sub-action { min-height: 44px; display: inline-flex; align-items: center; font-size: 14px; font-weight: 900; text-underline-offset: 5px; }
+
+    .demo-card { position: relative; border: 1px solid var(--ink); border-radius: 28px; background: var(--white); box-shadow: var(--shadow); overflow: hidden; transform: rotate(1.25deg); }
+    .demo-card::before { content: "LIVE DEMO"; position: absolute; top: 16px; right: 18px; z-index: 2; padding: 4px 9px; color: var(--ink); background: var(--mint); font-size: 10px; font-weight: 900; letter-spacing: .12em; transform: rotate(2deg); }
+    .demo-bar { min-height: 54px; display: flex; align-items: center; gap: 7px; padding: 0 18px; border-bottom: 1px solid var(--line); background: var(--paper); }
+    .demo-bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--line); }
+    .demo-bar i:first-child { background: var(--red); }
+    .demo-body { padding: 24px; }
+    .demo-label { margin: 0 0 14px; font-size: 12px; color: var(--muted); font-weight: 900; }
+    .demo-modes, .channel-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .demo-mode, .channel-button {
+      min-height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0 15px;
+      color: var(--ink);
+      background: #fff;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 900;
+    }
+    .demo-mode[aria-selected="true"], .channel-button[aria-pressed="true"] { color: #fff; border-color: var(--ink); background: var(--ink); }
+    .chat-window { margin-top: 20px; padding: 18px; border-radius: 18px; background: var(--paper); }
+    .bubble { width: fit-content; max-width: 86%; margin-bottom: 10px; padding: 11px 14px; border-radius: 15px 15px 15px 4px; background: #fff; font-size: 13px; line-height: 1.65; }
+    .bubble.client { margin-left: auto; border-radius: 15px 15px 4px 15px; color: #fff; background: var(--ink-2); }
+    .demo-output { margin-top: 16px; padding: 16px; border-left: 4px solid var(--red); background: #fff; }
+    .demo-output b { display: block; margin-bottom: 6px; font-size: 12px; color: var(--red); letter-spacing: .1em; }
+    .demo-output p { margin: 0; font-size: 13px; line-height: 1.65; }
+
+    .flow-band { border-block: 1px solid var(--ink); background: var(--ink); color: #fff; }
+    .flow-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .flow-item { position: relative; min-height: 134px; padding: 28px 24px; border-left: 1px solid #3b4650; }
+    .flow-item:last-child { border-right: 1px solid #3b4650; }
+    .flow-item span { display: block; color: var(--mint); font-size: 11px; font-weight: 900; letter-spacing: .12em; }
+    .flow-item strong { display: block; margin-top: 8px; font-size: 21px; }
+    .flow-item small { display: block; margin-top: 4px; color: #bac2c9; font-size: 12px; }
+    .flow-item:not(:last-child)::after { content: "→"; position: absolute; top: 50%; right: -12px; z-index: 2; width: 24px; height: 24px; display: grid; place-items: center; border-radius: 50%; color: var(--ink); background: var(--mint); font-size: 13px; font-weight: 900; transform: translateY(-50%); }
+
+    .problem { padding: 120px 0; }
+    .reality { padding: 54px 0; border-bottom: 1px solid var(--line); background: var(--white); }
+    .reality-head { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; margin-bottom: 22px; }
+    .reality-head h2 { margin: 0; font-size: 20px; }
+    .reality-head p { margin: 0; color: var(--muted); font-size: 12px; }
+    .reality-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .reality-card { padding: 20px; border: 1px solid var(--line); background: var(--paper); }
+    .reality-card b { display: block; margin-bottom: 10px; font-size: 11px; color: var(--red); letter-spacing: .1em; }
+    .reality-card strong { display: block; font-size: 16px; line-height: 1.45; }
+    .reality-card span { display: block; margin-top: 8px; color: var(--muted); font-size: 12px; line-height: 1.65; }
+    .problem-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, .72fr); gap: 72px; align-items: end; }
+    .problem h2 { margin: 0; font-size: clamp(38px, 6vw, 76px); line-height: 1.12; letter-spacing: -.055em; }
+    .problem h2 em { color: var(--red); font-style: normal; }
+    .problem-copy { border-top: 1px solid var(--ink); padding-top: 24px; }
+    .problem-copy p { margin: 0 0 18px; color: var(--ink-2); }
+    .problem-copy p:last-child { margin-bottom: 0; }
+    .marker { background: linear-gradient(transparent 58%, var(--mint) 58%); font-weight: 900; }
+
+    .products { padding: 120px 0; background: var(--white); }
+    .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .product-card { min-height: 430px; display: flex; flex-direction: column; padding: 30px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
+    .product-card:nth-child(2) { color: #fff; border-color: var(--ink); background: var(--ink); transform: translateY(-14px); }
+    .product-card .num { font-size: 12px; font-weight: 900; letter-spacing: .16em; color: var(--red); }
+    .product-card:nth-child(2) .num { color: var(--mint); }
+    .product-card h3 { margin: 36px 0 16px; font-size: 28px; line-height: 1.25; letter-spacing: -.03em; }
+    .product-card p { margin: 0; color: var(--ink-2); }
+    .product-card:nth-child(2) p { color: #c3cbd2; }
+    .product-card ul { margin: auto 0 0; padding: 22px 0 0; list-style: none; border-top: 1px solid var(--line); }
+    .product-card:nth-child(2) ul { border-color: #404b55; }
+    .product-card li { position: relative; padding-left: 18px; margin: 8px 0; font-size: 13px; font-weight: 800; }
+    .product-card li::before { content: ""; position: absolute; left: 0; top: .8em; width: 7px; height: 7px; background: var(--red); transform: translateY(-50%); }
+    .product-card:nth-child(2) li::before { background: var(--mint); }
+
+    .skills { padding: 120px 0; background: var(--paper-2); }
+    .skill-tabs { display: flex; gap: 10px; margin-bottom: 26px; }
+    .skill-tab { min-height: 50px; padding: 0 24px; border: 1px solid var(--ink); border-radius: 999px; background: transparent; cursor: pointer; font-weight: 900; }
+    .skill-tab[aria-selected="true"] { color: #fff; background: var(--ink); }
+    .skill-panel[hidden] { display: none; }
+    .skill-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .skill-card { min-height: 188px; padding: 22px; border: 1px solid var(--line); background: var(--white); }
+    .skill-card .skill-num { display: block; color: var(--red); font-size: 11px; font-weight: 900; letter-spacing: .12em; }
+    .skill-card h3 { margin: 18px 0 8px; font-size: 17px; line-height: 1.45; }
+    .skill-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .skill-note { margin: 24px 0 0; padding: 18px 20px; border: 1px dashed var(--muted); font-size: 13px; color: var(--ink-2); }
+
+    .system { padding: 120px 0; background: var(--ink); color: #fff; }
+    .system .section-head p:last-child { color: #c3cbd2; }
+    .system-board { display: grid; grid-template-columns: 1fr 64px 1fr 64px 1fr; align-items: stretch; }
+    .system-card { min-height: 270px; padding: 30px; border: 1px solid #44505a; border-radius: 18px; background: #1a232b; }
+    .system-card .tag { display: inline-block; padding: 4px 9px; color: var(--ink); background: var(--mint); font-size: 10px; font-weight: 900; letter-spacing: .12em; }
+    .system-card h3 { margin: 32px 0 14px; font-size: 24px; line-height: 1.35; }
+    .system-card p { margin: 0; color: #bdc6cd; font-size: 14px; }
+    .system-arrow { display: grid; place-items: center; font-size: 26px; color: var(--mint); }
+    .system-caution { margin-top: 24px; padding: 18px 20px; border-left: 4px solid var(--mint); background: #202c35; color: #d7dde2; font-size: 13px; }
+
+    .guardrail { padding: 120px 0; }
+    .guardrail-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 72px; align-items: start; }
+    .guardrail-title { position: sticky; top: 110px; }
+    .guardrail h2 { margin: 0; font-size: clamp(38px, 5vw, 66px); line-height: 1.14; letter-spacing: -.045em; }
+    .guardrail h2 span { display: block; color: var(--red); }
+    .guardrail-list { border-top: 1px solid var(--ink); }
+    .guardrail-item { display: grid; grid-template-columns: 52px 1fr; gap: 18px; padding: 28px 0; border-bottom: 1px solid var(--line); }
+    .guardrail-item .gnum { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--ink); font-size: 12px; font-weight: 900; }
+    .guardrail-item h3 { margin: 0 0 6px; font-size: 19px; }
+    .guardrail-item p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .start { padding: 120px 0; background: var(--white); }
+    .start-grid { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--ink); }
+    .start-step { min-height: 240px; padding: 26px; border-right: 1px solid var(--ink); }
+    .start-step:last-child { border-right: 0; }
+    .start-step span { color: var(--red); font-size: 12px; font-weight: 900; letter-spacing: .12em; }
+    .start-step h3 { margin: 28px 0 12px; font-size: 21px; line-height: 1.4; }
+    .start-step p { margin: 0; color: var(--muted); font-size: 13px; }
+
+    .faq { padding: 120px 0; }
+    .faq-list { max-width: 900px; margin: 0 auto; border-top: 1px solid var(--ink); }
+    details { border-bottom: 1px solid var(--line); }
+    summary { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 20px; cursor: pointer; font-weight: 900; list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; flex: 0 0 auto; font-size: 26px; font-weight: 400; }
+    details[open] summary::after { content: "−"; }
+    .faq-answer { max-width: 760px; padding: 0 0 26px; color: var(--muted); font-size: 14px; }
+
+    .final-cta { padding: 128px 0; color: #fff; background: var(--red); text-align: center; }
+    .final-cta .eyebrow { color: #fff; opacity: .72; }
+    .final-cta h2 { max-width: 880px; margin: 0 auto; font-size: clamp(38px, 6vw, 76px); line-height: 1.1; letter-spacing: -.05em; }
+    .final-cta p { max-width: 680px; margin: 26px auto 34px; font-weight: 700; }
+    .final-cta .primary-cta { color: var(--ink); background: var(--mint); }
+    .final-cta small { display: block; margin-top: 18px; opacity: .8; }
+
+    footer { padding: 48px 0; color: #d8dee3; background: var(--ink); }
+    .footer-grid { display: flex; align-items: flex-start; justify-content: space-between; gap: 30px; }
+    .footer-grid strong { display: block; color: #fff; }
+    .footer-grid p { max-width: 620px; margin: 12px 0 0; font-size: 12px; line-height: 1.8; }
+    .sources { text-align: right; font-size: 12px; line-height: 2; }
+    .sources a { color: #fff; text-underline-offset: 4px; }
+
+    @media (max-width: 980px) {
+      .hero-grid, .problem-grid, .guardrail-grid { grid-template-columns: 1fr; }
+      .reality-grid { grid-template-columns: 1fr 1fr; }
+      .demo-card { max-width: 620px; transform: none; }
+      .product-grid { grid-template-columns: 1fr; }
+      .product-card, .product-card:nth-child(2) { min-height: auto; transform: none; }
+      .product-card ul { margin-top: 28px; }
+      .skill-grid { grid-template-columns: repeat(3, 1fr); }
+      .system-board { grid-template-columns: 1fr; gap: 12px; }
+      .system-arrow { min-height: 34px; transform: rotate(90deg); }
+      .guardrail-title { position: static; }
+      .start-grid { grid-template-columns: repeat(2, 1fr); }
+      .start-step:nth-child(2) { border-right: 0; }
+      .start-step:nth-child(-n+2) { border-bottom: 1px solid var(--ink); }
+    }
+    @media (max-width: 720px) {
+      .wrap { padding-inline: 20px; }
+      .header-inner { min-height: 62px; }
+      .brand small { display: none; }
+      .header-cta { padding: 0 14px; font-size: 12px; }
+      .hero { min-height: auto; padding: 118px 0 72px; }
+      .hero-grid { gap: 42px; }
+      .hero h1 { font-size: clamp(44px, 13vw, 62px); }
+      .hero-lead { font-size: 16px; }
+      .hero-actions { align-items: stretch; flex-direction: column; }
+      .primary-cta { width: 100%; }
+      .hero-sub-action { justify-content: center; }
+      .demo-body { padding: 18px; }
+      .demo-card::before { top: 18px; }
+      .flow-grid { grid-template-columns: 1fr 1fr; }
+      .flow-item { min-height: 118px; border-bottom: 1px solid #3b4650; }
+      .flow-item:nth-child(2n) { border-right: 1px solid #3b4650; }
+      .flow-item:nth-child(2)::after { display: none; }
+      .flow-item:nth-child(3)::after { right: auto; left: 50%; top: -13px; transform: rotate(90deg) translateY(50%); }
+      .problem, .products, .skills, .system, .guardrail, .start, .faq { padding: 82px 0; }
+      .reality-head { align-items: flex-start; flex-direction: column; gap: 4px; }
+      .section-head { margin-bottom: 34px; }
+      .section-head h2 { font-size: 38px; }
+      .skill-tabs { display: grid; grid-template-columns: 1fr 1fr; }
+      .skill-tab { padding: 0 12px; }
+      .skill-grid { grid-template-columns: 1fr 1fr; }
+      .skill-card { min-height: 180px; }
+      .start-grid { grid-template-columns: 1fr; }
+      .start-step { min-height: auto; border-right: 0; border-bottom: 1px solid var(--ink); }
+      .start-step:last-child { border-bottom: 0; }
+      .final-cta { padding: 90px 0; }
+      .footer-grid { flex-direction: column; }
+      .sources { text-align: left; }
+    }
+    @media (max-width: 430px) {
+      .brand { gap: 8px; font-size: 13px; }
+      .brand-mark { width: 24px; height: 24px; }
+      .header-cta { min-height: 42px; padding: 0 11px; }
+      .demo-mode, .channel-button { padding: 0 12px; }
+      .skill-grid { grid-template-columns: 1fr; }
+      .reality-grid { grid-template-columns: 1fr; }
+      .skill-card { min-height: auto; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="士業AI実務パック トップへ">
+        <span class="brand-mark">W</span>
+        <span>士業AI実務パック<small>BY WRITEUP AI CONSULTING BUREAU</small></span>
+      </a>
+      <a class="header-cta" href="https://writeup.jp/contact/">デモを見る ↗</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">For labor &amp; tax professionals</p>
+          <h1>打ち合わせに行く前に、<span>売るものがある。</span></h1>
+          <p class="hero-lead">チャット・LINE・電話で相談を聞く。必要情報を整える。書類の下書きと確認事項をつくる。社労士・税理士の判断は残したまま、面倒な手前をAIへ渡します。</p>
+          <p class="hero-note">相談ヒアリング、書類ドラフト、データ整形を組み合わせた士業事務所向けの業務AIパックです。</p>
+          <div class="hero-actions">
+            <a class="primary-cta" href="https://writeup.jp/contact/">自分の事務所でデモを見る <span aria-hidden="true">↗</span></a>
+            <a class="hero-sub-action" href="#skills">24の業務メニューを見る</a>
+          </div>
+        </div>
+
+        <div class="demo-card" aria-label="初回相談AIの操作デモ">
+          <div class="demo-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="demo-body">
+            <p class="demo-label">誰の相談ですか？</p>
+            <div class="demo-modes" role="tablist" aria-label="デモする士業">
+              <button class="demo-mode" type="button" role="tab" aria-selected="true" aria-controls="demo-content" data-demo="labor">社労士</button>
+              <button class="demo-mode" type="button" role="tab" aria-selected="false" aria-controls="demo-content" data-demo="tax">税理士</button>
+            </div>
+            <p class="demo-label" style="margin-top:18px">お客さまの入口</p>
+            <div class="channel-row" aria-label="相談チャネル">
+              <button class="channel-button" type="button" aria-pressed="true" data-channel="チャット">チャット</button>
+              <button class="channel-button" type="button" aria-pressed="false" data-channel="LINE">LINE</button>
+              <button class="channel-button" type="button" aria-pressed="false" data-channel="電話">電話</button>
+            </div>
+            <div class="chat-window" id="demo-content" aria-live="polite">
+              <div class="bubble" id="demo-question">入社日はいつですか？ 扶養に入れるご家族はいますか？</div>
+              <div class="bubble client" id="demo-answer">来月1日です。配偶者と子どもが1人います。</div>
+              <div class="demo-output">
+                <b>事務所へ渡すもの</b>
+                <p id="demo-output">資格取得・扶養追加の確認候補。未確認情報を3件に整理し、資格者の判断待ちにします。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="flow-band" aria-label="AIと資格者の役割分担">
+      <div class="wrap flow-grid">
+        <div class="flow-item"><span>01 / HEAR</span><strong>AIが聞く</strong><small>チャット・LINE・電話</small></div>
+        <div class="flow-item"><span>02 / STRUCTURE</span><strong>AIが整える</strong><small>要点・不足・矛盾</small></div>
+        <div class="flow-item"><span>03 / DRAFT</span><strong>AIがつくる</strong><small>書類下書き・変換データ</small></div>
+        <div class="flow-item"><span>04 / DECIDE</span><strong>資格者が確定</strong><small>判断・承認・申請</small></div>
+      </div>
+    </section>
+
+    <section class="reality" aria-labelledby="reality-title">
+      <div class="wrap">
+        <div class="reality-head"><h2 id="reality-title">いま見せられるもの／これから組むもの</h2><p>営業時点の説明を揃えるための現在地</p></div>
+        <div class="reality-grid">
+          <article class="reality-card"><b>DEMO</b><strong>初回相談AI</strong><span>チャットでの聞き取りと、事務所向け要約をデモ可能。</span></article>
+          <article class="reality-card"><b>IN DEVELOPMENT</b><strong>障害年金申立書ドラフト</strong><span>受注した開発案件として、LINE等での聞き取りを検討中。</span></article>
+          <article class="reality-card"><b>MENU CANDIDATES</b><strong>士業別 12＋12</strong><span>事務所ごとの様式と確認基準に合わせて順次実装。</span></article>
+          <article class="reality-card"><b>RFI / POC</b><strong>システム間データ受け渡し</strong><span>利用可能な公式方式と権限を確認してから実装判断。</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="problem">
+      <div class="wrap problem-grid">
+        <div>
+          <p class="eyebrow">The real bottleneck</p>
+          <h2>専門判断の前に、<br><em>聞く・転記する・探す</em><br>が多すぎる。</h2>
+        </div>
+        <div class="problem-copy">
+          <p>お客さまとの初回面談で同じ質問を繰り返す。回答をもう一度システムへ入れ直す。申請前に不足資料を探す。</p>
+          <p><span class="marker">AIが代わるのは、先生の判断ではありません。</span>判断にたどり着くまでの往復と手作業です。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="products" id="pack">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">One pack, three jobs</p>
+          <h2>「聞く」から「申請前」まで、<br>ひとつの流れに。</h2>
+          <p>単発のAIツールを増やすのではなく、相談内容がそのまま事務所の実務へ流れるように組みます。</p>
+        </div>
+        <div class="product-grid">
+          <article class="product-card">
+            <span class="num">01 / INITIAL CONSULTATION</span>
+            <h3>初回相談AI</h3>
+            <p>お客さまは使い慣れた入口から回答。AIが必要項目を聞き、曖昧な回答だけ追加で確認します。</p>
+            <ul><li>チャット・LINE・電話に対応</li><li>相談要約と追加質問を生成</li><li>事務所ごとの質問順へ調整</li></ul>
+          </article>
+          <article class="product-card">
+            <span class="num">02 / PRACTICE SKILLS</span>
+            <h3>実務スキル<br>12＋12</h3>
+            <p>社労士と税理士、それぞれ12の業務メニュー。選んだ業務の手順・資料・確認基準に合わせてAIを実装します。</p>
+            <ul><li>書類ドラフト</li><li>資料・数値・整合性チェック</li><li>お客さま向け説明文の生成</li></ul>
+          </article>
+          <article class="product-card">
+            <span class="num">03 / DATA BRIDGE</span>
+            <h3>データ整形・<br>申請前チェック</h3>
+            <p>既存システムから出したデータを、次のシステムや申請用の形式へ。差分を見せてから人が確定します。</p>
+            <ul><li>CSV等の項目対応と整形</li><li>空欄・形式・不整合を検知</li><li>接続方法は事前調査で確定</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills" id="skills">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">24 practice menus</p>
+          <h2>「何ができますか？」に、<br>業務名で答える。</h2>
+          <p>下記は導入候補メニューです。事務所の様式・運用・確認基準を受け取り、対象業務を選んで調整します。</p>
+        </div>
+        <div class="skill-tabs" role="tablist" aria-label="士業別の業務メニュー">
+          <button class="skill-tab" type="button" role="tab" aria-selected="true" aria-controls="labor-panel" id="labor-tab">社労士向け 12</button>
+          <button class="skill-tab" type="button" role="tab" aria-selected="false" aria-controls="tax-panel" id="tax-tab">税理士向け 12</button>
+        </div>
+
+        <div class="skill-panel" role="tabpanel" id="labor-panel" aria-labelledby="labor-tab">
+          <div class="skill-grid">
+            <article class="skill-card"><span class="skill-num">LABOR 01</span><h3>初回相談ヒアリング</h3><p>相談の目的、期限、状況、不足情報を会う前に整理。</p></article>
+            <article class="skill-card"><span class="skill-num">LABOR 02</span><h3>入社手続ヒアリング</h3><p>資格取得や雇用保険に必要な確認候補を事前収集。</p></article>
+            <article class="skill-card"><span class="skill-num">LABOR 03</span><h3>扶養追加情報の整理</h3><p>家族情報と未確認項目を分けて資格者へ渡す。</p></article>
+            <article class="skill-card"><span class="skill-num">LABOR 04</span><h3>退職手続チェック</h3><p>日付・保険・離職理由などの確認漏れを見つける。</p></article>
+            <article class="skill-card"><span class="skill-num">LABOR 05</span><h3>傷病手当金の聞き取り</h3><p>申請前に必要な期間・状況・添付資料を整理。</p></article>
+            <article class="skill-card"><span class="skill-num">LABOR 06</span><h3>障害年金申立書ドラフト</h3><p>LINE等の聞き取りから時系列と生活状況を下書き。</p></article>
+            <article class="skill-card"><span class="skill-num">LABOR 07</span><h3>育児・介護休業整理</h3><p>申出内容、日程、必要確認事項をケース別に整理。</p></article>
+            <article class="skill-card"><span class="skill-num">LABOR 08</span><h3>助成金ヒアリング</h3><p>制度判断前の事実関係と資料有無を確認。</p></article>
+            <article class="skill-card"><span class="skill-num">LABOR 09</span><h3>就業規則の差分確認</h3><p>現行規程と変更案の差分、矛盾、確認点を一覧化。</p></article>
+            <article class="skill-card"><span class="skill-num">LABOR 10</span><h3>労働条件通知書チェック</h3><p>契約内容と社内ルールの不整合候補を抽出。</p></article>
+            <article class="skill-card"><span class="skill-num">LABOR 11</span><h3>勤怠・労務ログ確認</h3><p>長時間労働や入力不備など、確認すべき箇所を絞る。</p></article>
+            <article class="skill-card"><span class="skill-num">LABOR 12</span><h3>申請前データ整形</h3><p>Office Station等の出力を対象形式へ整え、差分を表示。</p></article>
+          </div>
+        </div>
+
+        <div class="skill-panel" role="tabpanel" id="tax-panel" aria-labelledby="tax-tab" hidden>
+          <div class="skill-grid">
+            <article class="skill-card"><span class="skill-num">TAX 01</span><h3>初回相談ヒアリング</h3><p>事業、相談目的、対象年度、期限、資料状況を整理。</p></article>
+            <article class="skill-card"><span class="skill-num">TAX 02</span><h3>節税相談の論点整理</h3><p>お客さまの質問と選択肢をまとめ、税理士が回答。</p></article>
+            <article class="skill-card"><span class="skill-num">TAX 03</span><h3>事業計画書ヒアリング</h3><p>経営者の言葉から市場、強み、計画、根拠を構造化。</p></article>
+            <article class="skill-card"><span class="skill-num">TAX 04</span><h3>融資資料ドラフト</h3><p>必要情報を質問し、説明資料のたたき台を作成。</p></article>
+            <article class="skill-card"><span class="skill-num">TAX 05</span><h3>月次変動の説明補助</h3><p>試算表の変化から確認候補と説明案を整理。</p></article>
+            <article class="skill-card"><span class="skill-num">TAX 06</span><h3>決算前チェック</h3><p>資料不足、未処理、前年との差を確認リストにする。</p></article>
+            <article class="skill-card"><span class="skill-num">TAX 07</span><h3>資料回収アシスト</h3><p>不足資料ごとに、お客さまへ送る依頼文を作成。</p></article>
+            <article class="skill-card"><span class="skill-num">TAX 08</span><h3>証憑・仕訳の確認補助</h3><p>証憑と入力内容の不一致候補をまとめて確認。</p></article>
+            <article class="skill-card"><span class="skill-num">TAX 09</span><h3>税務調査の事前QA</h3><p>事実関係と資料の所在を質問形式で棚卸し。</p></article>
+            <article class="skill-card"><span class="skill-num">TAX 10</span><h3>法人設立の比較整理</h3><p>条件・目的・候補を聞き、税理士が判断する材料へ。</p></article>
+            <article class="skill-card"><span class="skill-num">TAX 11</span><h3>補助金計画の下書き</h3><p>投資目的と実施内容を聞き、計画文の素案を作る。</p></article>
+            <article class="skill-card"><span class="skill-num">TAX 12</span><h3>面談記録・次回宿題</h3><p>会話から決定、要確認、担当、期限を分けて記録。</p></article>
+          </div>
+        </div>
+        <p class="skill-note">名称と内容は業務メニューの企画案です。法令・制度判断、税務相談、申告・申請、最終書類の確定は各資格者・事務所の責任で行います。</p>
+      </div>
+    </section>
+
+    <section class="system" id="system">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Data bridge</p>
+          <h2>転記は減らす。<br>確認は飛ばさない。</h2>
+          <p>既存システムの出力を読み、次に必要な形式へ整え、変えた箇所を見せる。人が差分を確認してから次へ進みます。</p>
+        </div>
+        <div class="system-board">
+          <article class="system-card"><span class="tag">INPUT</span><h3>既存システムから<br>データを出す</h3><p>CSVや指定様式など、正式に利用できる方法で受け取ります。</p></article>
+          <div class="system-arrow" aria-hidden="true">→</div>
+          <article class="system-card"><span class="tag">AI WORK</span><h3>項目を対応させ、<br>不足と差分を出す</h3><p>列順、形式、必須項目、空欄の扱いをルール化します。</p></article>
+          <div class="system-arrow" aria-hidden="true">→</div>
+          <article class="system-card"><span class="tag">HUMAN GATE</span><h3>資格者が確認し、<br>申請へ渡す</h3><p>確定判断・承認・ログイン・申請は人の操作として残します。</p></article>
+        </div>
+        <p class="system-caution"><strong>接続方法は事前確認。</strong> Office Station等との受け渡しは、契約中の製品・権限・対象業務を確認し、公式CSV、公開API、手動受け渡しなど利用可能な方法を決めてから実装します。</p>
+      </div>
+    </section>
+
+    <section class="guardrail">
+      <div class="wrap guardrail-grid">
+        <div class="guardrail-title">
+          <p class="eyebrow">Human in the loop</p>
+          <h2>AIに任せる。<span>責任は任せない。</span></h2>
+        </div>
+        <div class="guardrail-list">
+          <article class="guardrail-item"><span class="gnum">01</span><div><h3>資格者の最終確認</h3><p>税務相談・税務書類、労務手続、申請内容は資格者が根拠と原文を確認し、確定します。</p></div></article>
+          <article class="guardrail-item"><span class="gnum">02</span><div><h3>不明点は「不明」のまま返す</h3><p>回答が足りない、資料同士が矛盾する、制度判断が必要な場合は自動確定せず要確認へ送ります。</p></div></article>
+          <article class="guardrail-item"><span class="gnum">03</span><div><h3>機微情報は業務と権限を分ける</h3><p>扱う情報、保存範囲、閲覧者、保管期間を対象業務ごとに決め、不要な二次利用を前提にしません。</p></div></article>
+          <article class="guardrail-item"><span class="gnum">04</span><div><h3>一つの業務で実演してから広げる</h3><p>実データを入れる前に、匿名化したサンプルで質問・出力・確認手順を一緒に確かめます。</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="start" id="start">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Start with one job</p>
+          <h2>まず、面倒な業務を<br>ひとつ選ぶ。</h2>
+          <p>大規模な入れ替えから始めません。今使っている質問票・様式・チェック方法をもとに、商談で見せられるデモをつくります。</p>
+        </div>
+        <div class="start-grid">
+          <article class="start-step"><span>STEP 01</span><h3>対象業務を選ぶ</h3><p>頻度が高い、往復が多い、担当者によって抜けが出る業務から。</p></article>
+          <article class="start-step"><span>STEP 02</span><h3>今の資料を預かる</h3><p>質問票、様式、出力例、確認手順を業務単位で確認します。</p></article>
+          <article class="start-step"><span>STEP 03</span><h3>デモで触る</h3><p>匿名化サンプルを使い、お客さま側と事務所側の両画面を確認。</p></article>
+          <article class="start-step"><span>STEP 04</span><h3>人の確認点を決める</h3><p>どこまでAIが進め、どこで資格者が止めるかを確定します。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq">
+      <div class="wrap">
+        <div class="section-head" style="margin-inline:auto;text-align:center">
+          <p class="eyebrow">Questions</p>
+          <h2>よくある確認</h2>
+        </div>
+        <div class="faq-list">
+          <details><summary>AIが相談へ回答してしまいませんか？</summary><div class="faq-answer">聞き取り、論点整理、下書きまではAIで行えますが、税務相談や制度判断をAIだけで確定する設計にはしません。最終回答は資格者が確認・承認します。</div></details>
+          <details><summary>LINEや電話から本当に聞き取れますか？</summary><div class="faq-answer">相談チャネルとして構成できます。ただし、利用するLINE環境、電話サービス、本人確認、録音・同意の方法は事務所ごとに確認して設計します。まずはチャット版のデモから確認できます。</div></details>
+          <details><summary>Office Stationやe-Govへ自動で入れられますか？</summary><div class="faq-answer">対象製品、契約、権限、手続によって利用できる方式が異なります。公式CSV、公開API、手動受け渡しを含めて事前調査し、差分確認を残せる方式を選びます。接続可否を確認前に約束はしません。</div></details>
+          <details><summary>24のメニューを全部入れる必要がありますか？</summary><div class="faq-answer">ありません。頻度が高く、確認手順が決まっている業務を一つ選び、デモと運用確認から始めます。その結果を見て次の業務へ広げます。</div></details>
+          <details><summary>料金や導入条件を知りたいです。</summary><div class="faq-answer">対象業務、利用チャネル、既存システム、扱う情報の範囲を確認したうえでご案内します。まず相談フォームから、面倒な業務を一つ教えてください。</div></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="wrap">
+        <p class="eyebrow">Show, then decide</p>
+        <h2>とりあえず訪問、をやめる。<br>まずデモを持っていく。</h2>
+        <p>社労士または税理士の業務を一つ選んでください。相談の入口から資格者の確認画面まで、商談で見せられる形を一緒に考えます。</p>
+        <a class="primary-cta" href="https://writeup.jp/contact/">自分の事務所でデモを見る <span aria-hidden="true">↗</span></a>
+        <small>お問い合わせフォームへ移動します。対象業務名をご記入ください。</small>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <div><strong>株式会社ライトアップ｜士業AI実務パック</strong><p>掲載内容は企画・提供候補を含みます。サービス名、対象業務、提供条件は今後変更される場合があります。個別の法令・制度・申請要件は必ず最新の公式情報と資格者の判断で確認してください。</p></div>
+      <div class="sources"><span>参考にした公式情報</span><br><a href="https://www.nta.go.jp/taxes/zeirishi/zeirishiseido/qa/02.htm">国税庁：税理士の業務 ↗</a><br><a href="https://shinsei.e-gov.go.jp/">e-Gov電子申請 ↗</a><br><a href="https://www.officestation.jp/helpcenter/18828/">Office Station：CSV登録 ↗</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const demoData = {
+        labor: {
+          question: "入社日はいつですか？ 扶養に入れるご家族はいますか？",
+          answer: "来月1日です。配偶者と子どもが1人います。",
+          output: "資格取得・扶養追加の確認候補。未確認情報を3件に整理し、資格者の判断待ちにします。"
+        },
+        tax: {
+          question: "融資を受ける目的と、必要な時期を教えてください。",
+          answer: "新店舗の設備資金です。3か月後までに必要です。",
+          output: "資金使途・時期・事業計画の下書き材料を整理。数値根拠の不足を2件、税理士の確認待ちにします。"
+        }
+      };
+      const channelSuffix = { "チャット": "", "LINE": "（LINEで回答）", "電話": "（電話内容を文字起こし）" };
+      let activeDemo = "labor";
+      let activeChannel = "チャット";
+      const renderDemo = () => {
+        const data = demoData[activeDemo];
+        document.querySelector("#demo-question").textContent = data.question;
+        document.querySelector("#demo-answer").textContent = `${data.answer}${channelSuffix[activeChannel]}`;
+        document.querySelector("#demo-output").textContent = data.output;
+      };
+      const demoModes = Array.from(document.querySelectorAll(".demo-mode"));
+      const activateDemoMode = (button) => {
+        activeDemo = button.dataset.demo;
+        demoModes.forEach((item) => item.setAttribute("aria-selected", String(item === button)));
+        renderDemo();
+      };
+      demoModes.forEach((button, index) => {
+        button.addEventListener("click", () => {
+          activateDemoMode(button);
+        });
+        button.addEventListener("keydown", (event) => {
+          if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+          event.preventDefault();
+          let next = index;
+          if (event.key === "ArrowLeft") next = (index - 1 + demoModes.length) % demoModes.length;
+          if (event.key === "ArrowRight") next = (index + 1) % demoModes.length;
+          if (event.key === "Home") next = 0;
+          if (event.key === "End") next = demoModes.length - 1;
+          activateDemoMode(demoModes[next]);
+          demoModes[next].focus();
+        });
+      });
+      document.querySelectorAll(".channel-button").forEach((button) => {
+        button.addEventListener("click", () => {
+          activeChannel = button.dataset.channel;
+          document.querySelectorAll(".channel-button").forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+          renderDemo();
+        });
+      });
+
+      const skillTabs = Array.from(document.querySelectorAll(".skill-tab"));
+      const panels = Array.from(document.querySelectorAll(".skill-panel"));
+      const activateSkillTab = (tab) => {
+        skillTabs.forEach((item) => item.setAttribute("aria-selected", String(item === tab)));
+        panels.forEach((panel) => { panel.hidden = panel.id !== tab.getAttribute("aria-controls"); });
+      };
+      skillTabs.forEach((tab, index) => {
+        tab.addEventListener("click", () => activateSkillTab(tab));
+        tab.addEventListener("keydown", (event) => {
+          if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+          event.preventDefault();
+          let next = index;
+          if (event.key === "ArrowLeft") next = (index - 1 + skillTabs.length) % skillTabs.length;
+          if (event.key === "ArrowRight") next = (index + 1) % skillTabs.length;
+          if (event.key === "Home") next = 0;
+          if (event.key === "End") next = skillTabs.length - 1;
+          activateSkillTab(skillTabs[next]);
+          skillTabs[next].focus();
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
