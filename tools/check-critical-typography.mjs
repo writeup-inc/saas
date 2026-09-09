@@ -32,12 +32,26 @@ function rule(css, selector) {
 function validatePage(page, html) {
   const errors = [];
   const css = extractCss(html);
+  const googleFontsHrefs = [...html.matchAll(/<link[^>]+href=["']([^"']*fonts\.googleapis\.com\/css2[^"']*)["']/gi)]
+    .map((match) => match[1].replaceAll("&amp;", "&").replaceAll("+", " "));
+  const googleFontsRequest = googleFontsHrefs.join("\n");
 
   if (!css) errors.push("style要素が見つかりません");
 
   if (page.forbidRemoteFonts) {
     if (/fonts\.(googleapis|gstatic)\.com/i.test(html) || /@import\s+url\(\s*["']?https?:/i.test(css)) {
       errors.push("外部フォント依存が再導入されています");
+    }
+  }
+
+  if (page.requiredGoogleFonts?.length) {
+    if (googleFontsHrefs.length === 0) errors.push("Google Fontsのstylesheet読み込みがありません");
+    if (!/display=swap/i.test(googleFontsRequest)) errors.push("Google Fontsにdisplay=swapがありません");
+    if (!/<link[^>]+rel=["']preconnect["'][^>]+href=["']https:\/\/fonts\.gstatic\.com["'][^>]*crossorigin/i.test(html)) {
+      errors.push("fonts.gstatic.comへのcrossorigin付きpreconnectがありません");
+    }
+    for (const font of page.requiredGoogleFonts) {
+      if (!googleFontsRequest.includes(`family=${font}`)) errors.push(`Google Fontsの取得対象にありません: ${font}`);
     }
   }
 
