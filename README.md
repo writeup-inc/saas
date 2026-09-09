@@ -42,6 +42,7 @@ LP引き継ぎ
 
 | フォルダ | 資料 | 用途 |
 |---|---|---|
+| `monitor/` | AIサービス先行モニター一覧 | 外部企業向けに、初期費用・月額利用料0円、API実費のみの対象サービスと利用条件を案内 |
 | `lsync-sales-talk/` | Lシンク 営業トーク集 | 営業担当が商談前に読む。話す順番と言葉、切り返し、地雷 |
 | `mcp-guide/` | MCP導入ガイド | 中小企業が業務に合うMCPを比較し、導入条件を確認する公開メディア |
 
@@ -108,6 +109,8 @@ Catalog-Update: no
 ## 一覧の自動検証
 
 `node tools/check-index.mjs --history` は、並び順、連番、日時表示、リンク、共有アンカー、カテゴリ、対象ディレクトリ、重要告知、基準コミット以降のGit履歴を検査する。GitHub Actionsでも同じコマンドを実行する。
+
+`node tools/check-monitor.mjs` は、`monitor/index.html` の料金表示、事前確認事項、サービスカード、共有アンカー、連絡導線、レスポンシブ対応の必須要素を検査する。GitHub Actionsでも同じコマンドを実行する。
 
 公開一覧へ載せない商材ディレクトリは、理由とともに `tools/index-check.config.json` の `excludedDirectories` へ明示する。
 

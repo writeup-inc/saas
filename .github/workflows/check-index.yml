@@ -24,5 +24,8 @@ jobs:
       - name: Validate root index
         run: node tools/check-index.mjs --history
 
+      - name: Validate monitor index
+        run: node tools/check-monitor.mjs
+
       - name: Guard critical typography
         run: node tools/check-critical-typography.mjs --self-test
