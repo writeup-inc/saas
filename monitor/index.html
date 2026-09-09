@@ -160,7 +160,7 @@
     h1 {
       max-width: 760px;
       margin: 0;
-      font-size: clamp(42px, 6.9vw, 86px);
+      font-size: clamp(42px, 6vw, 60px);
       font-weight: 800;
       letter-spacing: -.065em;
       line-height: 1.01;
@@ -173,12 +173,27 @@
       font-weight: 500;
     }
 
+    .title-mobile { display: none; }
+
     .hero-lead {
       max-width: 640px;
       margin: 25px 0 0;
       color: var(--ink-soft);
       font-size: clamp(16px, 1.65vw, 20px);
       line-height: 1.95;
+    }
+
+    .hero-lead span { display: block; }
+
+    .nowrap { white-space: nowrap; }
+
+    .card-description,
+    .card-test b,
+    .section-copy,
+    .terms-list span,
+    .step p,
+    .final-cta p {
+      text-wrap: pretty;
     }
 
     .hero-actions {
@@ -534,6 +549,8 @@
       line-height: 1.85;
     }
 
+    .card-description span { display: block; }
+
     .card-test {
       display: grid;
       grid-template-columns: max-content minmax(0, 1fr);
@@ -750,7 +767,7 @@
       .condition-grid { grid-template-columns: repeat(3, 1fr); }
       .condition-intro { grid-column: 1 / -1; }
       .section-head { grid-template-columns: 1fr; gap: 18px; }
-      .service-card { grid-template-columns: 62px minmax(190px, .8fr) minmax(260px, 1.2fr); }
+      .service-card { grid-template-columns: 62px minmax(260px, .9fr) minmax(0, 1.1fr); }
       .card-actions { grid-column: 2 / -1; grid-template-columns: repeat(3, 1fr); }
       .terms { grid-template-columns: 1fr; }
     }
@@ -762,17 +779,18 @@
       .status-full { display: none; }
       .status-short { display: inline; }
       .hero { padding: 64px 0 72px; }
-      h1 { font-size: clamp(40px, 13vw, 58px); }
+      h1 { font-size: clamp(40px, 8vw, 52px); }
       .hero-actions { align-items: stretch; flex-direction: column; }
       .button { width: 100%; }
       .condition-grid { grid-template-columns: 1fr; }
       .condition-intro { grid-column: auto; }
       .filter-wrap { align-items: stretch; flex-direction: column; gap: 8px; }
       .filter-status { text-align: right; }
-      .service-card { grid-template-columns: 48px minmax(0, 1fr); gap: 18px; padding: 24px 20px; }
-      .card-index { grid-row: 1 / 3; }
-      .card-copy { grid-column: 2; }
-      .card-detail { grid-column: 2; }
+      .service-card { grid-template-columns: 1fr; gap: 18px; padding: 24px 20px; }
+      .card-index { display: none; }
+      .card-copy { grid-column: 1; }
+      .card-detail { grid-column: 1 / -1; }
+      .card-test { grid-template-columns: 1fr; gap: 4px; }
       .card-actions { grid-column: 1 / -1; grid-template-columns: 1fr; }
       .terms { padding: 30px 22px; }
       .steps { grid-template-columns: 1fr; }
@@ -780,6 +798,11 @@
       .step h3 { margin-top: 24px; }
       .final-cta { grid-template-columns: 1fr; gap: 24px; }
       .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (max-width: 480px) {
+      .title-desktop { display: none; }
+      .title-mobile { display: inline; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -805,8 +828,8 @@
       <section class="hero" aria-labelledby="page-title">
         <div>
           <p class="eyebrow">法人向けモニター募集中</p>
-          <h1 id="page-title">新しいAIサービスを、<br><em>モニターで試せます。</em></h1>
-          <p class="hero-lead">ライトアップが開発している4つのサービスを、実際の仕事でお試しいただけます。初期費用と月額料金は0円。API利用料など、実際にかかった費用だけご負担ください。</p>
+          <h1 id="page-title"><span class="title-desktop">新しいAIサービスを、<br><em>モニターで試せます。</em></span><span class="title-mobile">新しいAI<br>サービスを、<br><em>モニターで<br>試せます。</em></span></h1>
+          <p class="hero-lead"><span>ライトアップが開発している<span class="nowrap">4つのサービスを</span>お試しいただけます。</span><span>初期費用と月額料金は0円です。</span><span>API利用料など、使った分の実費だけ<span class="nowrap">ご負担ください。</span></span></p>
           <div class="hero-actions">
             <a class="button primary" href="#services">モニター対象を見る <span aria-hidden="true">↓</span></a>
             <a class="button secondary" href="#conditions">利用条件を確認する</a>
@@ -861,7 +884,7 @@
               <h3>Elliot</h3>
             </div>
             <div class="card-detail">
-              <p class="card-description">会議・商談・日報などの記録をAIが読み、見落としていた課題や次にやることを見つけます。</p>
+              <p class="card-description"><span>会議・商談・日報などの記録を整理します。</span><span>見落としていた課題や次の行動が分かります。</span></p>
               <p class="card-test"><span>試せること</span><b>ログの整理、課題の発見、次のアクションの提案</b></p>
             </div>
             <div class="card-actions">
@@ -878,7 +901,7 @@
               <h3>スーパーマネージャー</h3>
             </div>
             <div class="card-detail">
-              <p class="card-description">オンライン商談の内容を見ながら、事例や数字の根拠、切り返し方などを営業担当にリアルタイムで伝えます。</p>
+              <p class="card-description"><span>オンライン商談の内容をAIが確認します。</span><span>事例や根拠、切り返し案をその場で伝えます。</span></p>
               <p class="card-test"><span>試せること</span><b>商談中の助言、提案候補の整理、議事録と次の対応づくり</b></p>
             </div>
             <div class="card-actions">
@@ -894,7 +917,7 @@
               <h3>ワークログ・インサイト</h3>
             </div>
             <div class="card-detail">
-              <p class="card-description">パソコンの作業記録から、どの仕事に時間がかかっているか、何を自動化できそうかを見えるようにします。</p>
+              <p class="card-description"><span>パソコンの作業記録を確認します。</span><span>時間がかかる仕事が分かります。</span><span>自動化できる仕事も見つけます。</span></p>
               <p class="card-test"><span>試せること</span><b>仕事時間の見える化、自動化候補の発見、改善の優先順位づけ</b></p>
             </div>
             <div class="card-actions">
@@ -911,7 +934,7 @@
               <h3>Jマッチエンジン</h3>
             </div>
             <div class="card-detail">
-              <p class="card-description">自社に合いそうな補助金を探し、申請に使う事業計画書を12の手順で作れるようにサポートします。</p>
+              <p class="card-description"><span>自社に合う補助金を探せます。</span><span>事業計画書も12の手順で作れます。</span></p>
               <p class="card-test"><span>試せること</span><b>補助金探し、制度の比較、事業計画書づくり</b></p>
             </div>
             <div class="card-actions">
