@@ -765,6 +765,95 @@
 
     .creator-legend b { color: #275e78; }
 
+    .service-columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      align-items: start;
+    }
+
+    .service-lane {
+      min-width: 0;
+    }
+
+    .service-lane-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 8px 16px;
+      align-items: start;
+      min-height: 116px;
+      margin-bottom: 12px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      background: rgba(251,250,246,.76);
+    }
+
+    .service-lane[data-owner="taka"] .service-lane-head {
+      border-color: rgba(62,126,156,.34);
+      background: linear-gradient(108deg, rgba(210,233,245,.72), rgba(247,251,252,.82));
+    }
+
+    .service-lane-kicker {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .14em;
+    }
+
+    .service-lane[data-owner="taka"] .service-lane-kicker,
+    .service-lane[data-owner="taka"] .service-lane-title {
+      color: #275e78;
+    }
+
+    .service-lane-title {
+      margin: 0;
+      color: var(--green);
+      font-size: clamp(19px, 2vw, 25px);
+      letter-spacing: -.025em;
+      line-height: 1.35;
+    }
+
+    .service-lane-description {
+      grid-column: 1 / -1;
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    .service-lane-count {
+      display: inline-flex;
+      min-width: 48px;
+      min-height: 30px;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--ink-soft);
+      background: rgba(255,255,255,.74);
+      font-size: 10px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .service-lane-body {
+      display: grid;
+      gap: 14px;
+    }
+
+    .service-lane-empty {
+      margin: 0;
+      padding: 24px 18px;
+      border: 1px dashed var(--line);
+      color: var(--muted);
+      background: rgba(251,250,246,.44);
+      font-size: 11px;
+      text-align: center;
+    }
+
     .service {
       --category: var(--cat-build);
       --category-bg: var(--cat-build-bg);
@@ -780,6 +869,38 @@
       background: rgba(251,250,246,.78);
       text-decoration: none;
       transition: transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease;
+    }
+
+    .service-columns .service {
+      grid-template-columns: 52px minmax(0, 1fr) 40px;
+      gap: 18px;
+      align-items: start;
+      min-height: 0;
+      padding: 22px 20px;
+    }
+
+    .service-columns .service-index {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .service-columns .description-wrap {
+      grid-column: 1 / 4;
+      padding-top: 2px;
+    }
+
+    .service-columns .arrow {
+      grid-column: 3;
+      grid-row: 1;
+      justify-self: end;
+    }
+
+    .service-columns .change-note b {
+      white-space: normal;
+    }
+
+    .service-columns .service h2 {
+      font-size: clamp(19px, 1.8vw, 24px);
     }
 
     .service[data-category="sales"],
@@ -1245,6 +1366,8 @@
       .org-flow { grid-template-columns: 1fr; }
       .org-node { min-height: 0; }
       .org-arrow { min-height: 20px; transform: rotate(90deg); }
+      .service-columns { grid-template-columns: 1fr; gap: 36px; }
+      .service-lane-head { min-height: 0; }
       .service { grid-template-columns: 52px 1fr 40px; gap: 20px; }
       .description-wrap { grid-column: 2 / 4; }
       .arrow { grid-column: 3; grid-row: 1; justify-self: end; }
@@ -1280,7 +1403,9 @@
       .context { padding: 25px 20px; }
       .context-copy { font-size: 13px; }
       .notice { grid-template-columns: 1fr; gap: 12px; }
-      .service {
+      .creator-legend { align-items: center; }
+      .service-lane-head { padding: 16px 17px; }
+      .service-columns .service {
         grid-template-columns: 44px minmax(0, 1fr) 36px;
         gap: 14px;
         min-height: 0;
@@ -1466,7 +1591,7 @@
         <div class="filter-bar" role="group" aria-label="カテゴリで絞り込む"></div>
         <div class="creator-legend">
           <span class="creator-legend-swatch" aria-hidden="true"></span>
-          <span><b>水色は、Git履歴上の初回作成者が「たかマスター」のサイトです。</b><br>タグは初回作成者と最終更新者を表示します。「履歴不明」は移管前の作成履歴を確認できないため、色分け対象外です。</span>
+          <span><b>初回作成者を基準に、左を「たかマスター制作」、右を「チーム制作・履歴不明」に分けています。</b><br>その後に別の人が更新した場合も配置は変えず、最終更新者は各カードのタグに表示します。</span>
         </div>
         <p class="filter-status" aria-live="polite"></p>
 
@@ -1960,6 +2085,39 @@
       const services = [...list.querySelectorAll('.service-entry')];
       const filterBar = list.querySelector('.filter-bar');
       const filterStatus = list.querySelector('.filter-status');
+      const serviceColumns = document.createElement('div');
+      serviceColumns.className = 'service-columns';
+      serviceColumns.innerHTML = `
+        <div class="service-lane" data-owner="taka" aria-labelledby="taka-lane-title">
+          <div class="service-lane-head">
+            <div>
+              <span class="service-lane-kicker">CREATED BY TAKA MASTER</span>
+              <h2 class="service-lane-title" id="taka-lane-title">たかマスター制作</h2>
+            </div>
+            <span class="service-lane-count" aria-live="polite">0件</span>
+            <p class="service-lane-description">たかマスターが初回作成したページ。共同制作を含み、後から別の人が更新してもこちらに掲載します。</p>
+          </div>
+          <div class="service-lane-body"></div>
+          <p class="service-lane-empty" hidden>このカテゴリのページはありません。</p>
+        </div>
+        <div class="service-lane" data-owner="team" aria-labelledby="team-lane-title">
+          <div class="service-lane-head">
+            <div>
+              <span class="service-lane-kicker">CREATED BY TEAM</span>
+              <h2 class="service-lane-title" id="team-lane-title">チーム制作・履歴不明</h2>
+            </div>
+            <span class="service-lane-count" aria-live="polite">0件</span>
+            <p class="service-lane-description">たかマスター以外が初回作成したページと、移管前の作成履歴を確認できないページです。</p>
+          </div>
+          <div class="service-lane-body"></div>
+          <p class="service-lane-empty" hidden>このカテゴリのページはありません。</p>
+        </div>`;
+      filterStatus.insertAdjacentElement('afterend', serviceColumns);
+
+      const lanes = {
+        taka: serviceColumns.querySelector('[data-owner="taka"]'),
+        team: serviceColumns.querySelector('[data-owner="team"]')
+      };
       const now = Date.now();
       const categoryLabels = {
         sales: '集客・営業',
@@ -2006,7 +2164,8 @@
             badgeSlot.innerHTML = '<span class="activity-badge updated">更新</span>';
           }
 
-          list.appendChild(service);
+          const owner = service.dataset.takaCreated === 'true' ? 'taka' : 'team';
+          lanes[owner].querySelector('.service-lane-body').appendChild(service);
         });
 
       const categoriesInUse = new Set(services.map((service) => service.querySelector('.service').dataset.category));
@@ -2014,16 +2173,22 @@
       const filterOptions = [['all', 'すべて'], ...visibleCategories.map((category) => [category, categoryLabels[category]])];
 
       const applyFilter = (selectedCategory) => {
-        let visibleIndex = 0;
+        const visibleCounts = { taka: 0, team: 0 };
 
         services.forEach((service) => {
           const category = service.querySelector('.service').dataset.category;
           const isVisible = selectedCategory === 'all' || category === selectedCategory;
           service.hidden = !isVisible;
           if (isVisible) {
-            visibleIndex += 1;
-            service.querySelector('.number').textContent = String(visibleIndex).padStart(2, '0');
+            const owner = service.dataset.takaCreated === 'true' ? 'taka' : 'team';
+            visibleCounts[owner] += 1;
+            service.querySelector('.number').textContent = String(visibleCounts[owner]).padStart(2, '0');
           }
+        });
+
+        Object.entries(lanes).forEach(([owner, lane]) => {
+          lane.querySelector('.service-lane-count').textContent = `${visibleCounts[owner]}件`;
+          lane.querySelector('.service-lane-empty').hidden = visibleCounts[owner] !== 0;
         });
 
         filterBar.querySelectorAll('.filter-button').forEach((button) => {
@@ -2031,7 +2196,8 @@
         });
 
         const label = selectedCategory === 'all' ? 'すべて' : categoryLabels[selectedCategory];
-        filterStatus.textContent = `${label}：${visibleIndex}件を表示中`;
+        const visibleTotal = visibleCounts.taka + visibleCounts.team;
+        filterStatus.textContent = `${label}：${visibleTotal}件を表示中（たかマスター ${visibleCounts.taka}件／チーム・履歴不明 ${visibleCounts.team}件）`;
       };
 
       filterOptions.forEach(([value, label]) => {
