@@ -153,19 +153,19 @@
   .intro { padding: clamp(56px, 11vw, 104px) 0 0; }
   .intro__title {
     margin: 0 0 24px;
-    font-size: clamp(27px, 5.4vw, 40px);
-    line-height: 1.5;
+    font-size: clamp(22px, 5.4vw, 40px);
+    line-height: 1.55;
     letter-spacing: .01em;
     font-weight: 800;
   }
-  .intro__title span { display: block; }
+  .intro__title span { display: block; word-break: auto-phrase; }
   .intro__body {
     margin: 0;
     color: var(--ink-2);
     font-size: clamp(15px, 2.2vw, 17px);
   }
   .intro__meta {
-    margin: 34px 0 0;
+    margin: 40px 0 0;
     padding: 0;
     list-style: none;
     display: grid;
@@ -191,8 +191,8 @@
     min-width: 92px;
     flex: none;
   }
-  .intro__actions { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
-  .intro__note { margin: 22px 0 0; font-size: 13px; color: var(--muted); }
+  .intro__actions { margin-top: 34px; }
+  .intro__note { margin: 14px 0 0; font-size: 13px; color: var(--muted); }
 
   /* buttons */
   .btn {
@@ -227,6 +227,18 @@
     font-size: 14px;
   }
   .btn--ghost:hover { border-color: var(--muted); }
+  .btn--start {
+    background: var(--accent);
+    color: #fff;
+    padding: 21px 46px;
+    font-size: 17px;
+    border-radius: 12px;
+    box-shadow: 0 10px 24px rgba(31, 95, 208, .22);
+  }
+  .btn--start:hover { transform: translateY(-1px); box-shadow: 0 14px 30px rgba(31, 95, 208, .28); }
+  @media (prefers-color-scheme: dark) {
+    .btn--start { color: #0b1220; }
+  }
   .btn--cta {
     background: var(--accent);
     color: #fff;
@@ -447,6 +459,7 @@
     .option { padding: 18px 48px 18px 18px; }
     .intro__meta li { flex-direction: column; gap: 4px; }
     .result__foot .btn { width: 100%; justify-content: center; }
+    .btn--start { width: 100%; justify-content: center; padding: 20px 24px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -477,16 +490,15 @@
       5つの質問に答えるだけで、いま参加する価値のあるウェビナーをご案内します。<br>
       関心のあるテーマと立場から、おすすめの1つとその理由をお伝えします。
     </p>
+    <div class="intro__actions">
+      <button class="btn btn--start" type="button" id="start">診断をはじめる<span class="btn__arrow" aria-hidden="true">→</span></button>
+      <p class="intro__note">診断結果から、そのままお申し込みへ進めます。</p>
+    </div>
     <ul class="intro__meta">
       <li><b>質問数</b><span>5問（所要 約1分）</span></li>
       <li><b>ご案内</b><span>4つのウェビナーから、あなたに最も合う1つ</span></li>
       <li><b>入力</b><span>選択式のみ。診断の途中で個人情報の入力はありません</span></li>
     </ul>
-    <div class="intro__actions">
-      <button class="btn btn--primary" type="button" id="start">診断をはじめる<span class="btn__arrow" aria-hidden="true">→</span></button>
-      <button class="btn btn--ghost" type="button" id="skip-to-list">ウェビナー一覧から選ぶ</button>
-    </div>
-    <p class="intro__note">診断結果からそのままお申し込みへ進めます。</p>
   </section>
 
   <!-- QUESTION -->
@@ -1042,50 +1054,12 @@
     });
   }
 
-  function showAllWebinars() {
-    answers = [];
-    step = 0;
-    el.rBadge.textContent = 'ALL WEBINARS';
-    var featured = WEBINARS.filter(function (w) { return w.featured; })[0] || WEBINARS[0];
-    el.rTitle.textContent = '「' + featured.title + '」';
-    el.rSubtitle.textContent = featured.subtitle;
-    el.rReason.innerHTML = '';
-    var listLead = document.createElement('p');
-    listLead.textContent = '診断をご利用いただくと、ご関心に合わせた1つをご案内します。まずは一覧をご覧になりたい方に、いちばんおすすめのウェビナーと、そのほかのウェビナーを表示しています。';
-    el.rReason.appendChild(listLead);
-    el.rAnswers.innerHTML = '';
-    el.rAnswersBlock.hidden = true;
-
-    var rows = [
-      ['ウェビナー概要', featured.description],
-      ['対象者', featured.target],
-      ['紹介されるサービス', featured.services],
-      ['開催形式', featured.format]
-    ];
-    el.rDetails.innerHTML = '';
-    rows.forEach(function (row) {
-      var wrap = document.createElement('div');
-      var dt = document.createElement('dt');
-      dt.textContent = row[0];
-      var dd = document.createElement('dd');
-      dd.textContent = row[1];
-      wrap.appendChild(dt);
-      wrap.appendChild(dd);
-      el.rDetails.appendChild(wrap);
-    });
-
-    el.rCta.href = featured.form_url;
-    renderOthers(WEBINARS.filter(function (w) { return w.id !== featured.id; }));
-    show('result');
-  }
-
   document.getElementById('start').addEventListener('click', function () {
     step = 0;
     answers = [];
     renderQuestion();
     show('quiz');
   });
-  document.getElementById('skip-to-list').addEventListener('click', showAllWebinars);
   el.qBack.addEventListener('click', goBack);
   document.getElementById('r-restart').addEventListener('click', function () {
     step = 0;
