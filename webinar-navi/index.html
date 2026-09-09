@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="探すのを、やめよう。必要な情報は、AIに聞けばいい。仕事内容や課題を伝えるだけで、いまのあなたに合ったウェビナーをAIが提案します。">
+<meta name="description" content="5つの問いで、次の一手が決まる。AI・営業・SNS・新規事業。いまのあなたに最も近いウェビナーを導き出します。">
 <meta name="theme-color" content="#05070c">
-<title>探すのを、やめよう。｜ウェビナー AIコンシェルジュ</title>
+<title>WEBINAR NAVIGATOR｜5つの問いで、次の一手が決まる</title>
 <link rel="canonical" href="https://writeup-inc.github.io/saas/webinar-navi/">
 <link rel="icon" href="/saas/favicon.svg">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:site_name" content="ウェビナー AIコンシェルジュ｜ライトアップ">
-<meta property="og:title" content="探すのを、やめよう。必要な情報は、AIに聞けばいい。">
-<meta property="og:description" content="あなたの仕事内容や課題、興味をAIに伝えるだけ。今のあなたに合った「次の一歩」をAIが提案します。">
+<meta property="og:site_name" content="WEBINAR NAVIGATOR｜ライトアップ">
+<meta property="og:title" content="5つの問いで、次の一手が決まる。">
+<meta property="og:description" content="AI・営業・SNS・新規事業。いまのあなたに最も近いウェビナーを導き出します。">
 <meta property="og:url" content="https://writeup-inc.github.io/saas/webinar-navi/">
 <style>
   :root {
@@ -86,9 +86,7 @@
     100% { transform: translate(0, 0); }
   }
 
-  main { position: relative; z-index: 3; }
-  /* 追従ヘッダーは本文より前面。本文がヘッダーの上へ乗り上げないようにする */
-  .masthead { position: relative; z-index: 20; }
+  main, .masthead { position: relative; z-index: 3; }
 
   a { color: inherit; text-decoration: none; }
   button { font: inherit; color: inherit; -webkit-tap-highlight-color: transparent; }
@@ -138,13 +136,16 @@
   /* 日本語の折り返しを文節単位に寄せる（未対応ブラウザは既定動作） */
   .hero__lead,
   .hero__meta span,
-  .bubble__text,
-  .rec__subtitle,
-  .rec__reason,
+  .question__title,
+  .question__note,
+  .option__label,
+  .option__desc,
+  .result__subtitle,
+  .result__reason,
+  .answers li,
   .details dd,
   .mini__title,
-  .mini__desc,
-  .chip { word-break: auto-phrase; }
+  .mini__desc { word-break: auto-phrase; }
 
   /* labels */
   .tag {
@@ -180,7 +181,7 @@
     min-height: calc(100svh - 74px);
     display: flex;
     align-items: center;
-    padding: 60px 0 90px;
+    padding: 60px 0 100px;
   }
   .hero__grid {
     width: min(100% - 44px, var(--shell));
@@ -191,24 +192,23 @@
     gap: 60px;
   }
   .hero__title {
-    margin: 0 0 30px;
-    font-size: clamp(34px, 5vw, 62px);
+    margin: 0 0 34px;
+    font-size: clamp(36px, 5.2vw, 64px);
     font-weight: 300;
-    line-height: 1.24;
+    line-height: 1.22;
     letter-spacing: -.035em;
   }
   .hero__title span { display: block; word-break: auto-phrase; }
   .hero__title .thin { color: var(--ink-2); }
   .hero__lead {
-    margin: 0 0 40px;
+    margin: 0 0 44px;
     max-width: 30em;
     color: var(--ink-2);
-    font-size: clamp(14.5px, 1.5vw, 16.5px);
+    font-size: clamp(14.5px, 1.5vw, 16px);
     font-weight: 300;
     line-height: 2.05;
   }
-  .hero__lead span { display: block; }
-  .hero__actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .hero__actions { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
   .hero__hint {
     font-family: var(--mono);
     font-size: 10.5px;
@@ -216,7 +216,7 @@
     color: var(--muted);
   }
   .hero__meta {
-    margin: 60px 0 0;
+    margin: 66px 0 0;
     padding: 0;
     list-style: none;
     display: grid;
@@ -225,7 +225,7 @@
     border-top: 1px solid var(--line);
   }
   .hero__meta li { padding: 20px 22px 0 0; }
-  .hero__meta b {
+  .hero__meta dt, .hero__meta b {
     display: block;
     margin-bottom: 7px;
     font-family: var(--mono);
@@ -291,16 +291,14 @@
     background: transparent;
     border: 1px solid transparent;
     border-radius: 999px;
-    padding: 17px 34px;
+    padding: 17px 38px;
     font-size: 14.5px;
     font-weight: 500;
     letter-spacing: .06em;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
     gap: 14px;
-    text-align: center;
     transition: background-color .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease), transform .3s var(--ease), box-shadow .3s var(--ease);
   }
   .btn--light {
@@ -312,56 +310,158 @@
   .btn--line {
     border-color: var(--line-2);
     color: var(--ink-2);
-    padding: 14px 26px;
+    padding: 14px 28px;
     font-size: 13px;
   }
   .btn--line:hover { border-color: var(--ink); color: var(--ink); }
-  .btn--hero { padding: 21px 44px; font-size: 16.5px; }
-  .btn--cta { width: 100%; padding: 22px 30px; font-size: 16px; }
+  .btn--cta { width: 100%; justify-content: center; padding: 22px 30px; font-size: 16px; }
   .btn__arrow { transition: transform .3s var(--ease); }
   .btn:hover .btn__arrow { transform: translateX(5px); }
 
-  /* 相談CTA（一覧セクション・追従バー共通） */
-  .ask {
-    margin: 96px 0 0;
-    padding: 46px 40px;
-    border: 1px solid var(--line-2);
-    border-radius: 16px;
-    background:
-      radial-gradient(120% 140% at 12% 0%, rgba(70, 105, 190, .22), transparent 62%),
-      var(--panel-2);
-    text-align: center;
+  /* quiz */
+  .quiz { padding: clamp(40px, 8vh, 90px) 0 110px; }
+  .progress { margin-bottom: 46px; }
+  .progress__row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 16px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .22em;
+    color: var(--muted);
   }
-  .ask__title {
+  .progress__count { margin: 0; color: var(--ink-2); }
+  .progress__count b { color: var(--ink); font-weight: 500; }
+  .progress__theme { margin: 0; font-family: var(--sans); letter-spacing: .16em; font-size: 11px; }
+  .progress__track { height: 1px; background: var(--line); overflow: hidden; }
+  .progress__bar {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, rgba(255, 255, 255, .35), var(--ink));
+    transition: width .6s var(--ease);
+  }
+
+  .question__title {
     margin: 0 0 12px;
-    font-size: clamp(20px, 2.6vw, 27px);
+    font-size: clamp(23px, 3.2vw, 36px);
     font-weight: 300;
-    line-height: 1.55;
+    line-height: 1.5;
     letter-spacing: -.02em;
+  }
+  .question__note { margin: 0 0 40px; font-size: 12.5px; color: var(--muted); letter-spacing: .08em; }
+
+  .options { display: grid; gap: 10px; }
+  .option {
+    position: relative;
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr) 26px;
+    align-items: center;
+    gap: 4px;
+    text-align: left;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 24px 24px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: border-color .35s var(--ease), background-color .35s var(--ease), transform .35s var(--ease);
+  }
+  .option::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, .07), transparent 70%);
+    opacity: 0;
+    transition: opacity .4s var(--ease);
+  }
+  .option:hover { border-color: var(--line-2); background: var(--panel-2); transform: translateX(5px); }
+  .option:hover::after { opacity: 1; }
+  .option__no {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .16em;
+    color: var(--muted);
+    align-self: start;
+    padding-top: 5px;
+  }
+  .option__label { display: block; font-size: 16px; font-weight: 400; line-height: 1.65; letter-spacing: .01em; }
+  .option__desc { display: block; margin-top: 6px; font-size: 12.5px; color: var(--muted); line-height: 1.8; }
+  .option__go {
+    justify-self: end;
+    font-size: 14px;
+    color: var(--muted);
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity .3s var(--ease), transform .3s var(--ease);
+  }
+  .option:hover .option__go { opacity: 1; transform: none; color: var(--ink); }
+  .option.is-selected { border-color: rgba(255, 255, 255, .55); background: rgba(255, 255, 255, .07); }
+  .option.is-selected .option__go { opacity: 1; transform: none; color: var(--ink); }
+
+  .quiz__foot { margin-top: 34px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .linkish {
+    background: none;
+    border: 0;
+    padding: 6px 0;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .18em;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color .3s var(--ease);
+  }
+  .linkish:hover { color: var(--ink); }
+  .dots { display: flex; gap: 8px; }
+  .dots i { width: 16px; height: 1px; background: var(--line-2); transition: background-color .5s var(--ease); }
+  .dots i.is-done { background: var(--ink); }
+
+  /* result */
+  .result { padding: clamp(40px, 8vh, 84px) 0 120px; }
+  .result__badge {
+    margin: 0 0 26px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .28em;
+    color: var(--accent);
+  }
+  .result__intro { margin: 0 0 14px; font-size: 13px; color: var(--muted); letter-spacing: .1em; }
+  .result__title {
+    margin: 0 0 14px;
+    font-size: clamp(25px, 3.6vw, 44px);
+    font-weight: 300;
+    line-height: 1.36;
+    letter-spacing: -.03em;
     word-break: auto-phrase;
   }
-  .ask__note { margin: 0 0 30px; font-size: 13.5px; color: var(--muted); font-weight: 300; word-break: auto-phrase; }
-  .ask .btn { max-width: 460px; width: 100%; }
-
-  .cta-bar {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 30;
-    padding: 13px 22px calc(13px + env(safe-area-inset-bottom, 0px));
-    border-top: 1px solid var(--line);
-    background: rgba(5, 7, 12, .88);
-    backdrop-filter: blur(16px);
-    transform: translateY(140%);
-    transition: transform .45s var(--ease);
+  .result__subtitle { margin: 0 0 40px; font-size: 14.5px; color: var(--ink-2); font-weight: 300; letter-spacing: .02em; }
+  .result__reason {
+    margin: 0;
+    padding-left: 24px;
+    border-left: 1px solid var(--line-2);
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--ink-2);
+    line-height: 2.1;
+    max-width: 46em;
   }
-  .cta-bar.is-on { transform: none; }
-  .cta-bar__inner { width: min(100%, 560px); margin-inline: auto; }
-  .cta-bar .btn { width: 100%; padding: 16px 24px; font-size: 14.5px; }
+  .result__reason p { margin: 0; }
+  .result__reason p + p { margin-top: 16px; }
 
-  /* 一覧（副次的な導線） */
-  .list { padding: 0 0 40px; }
+  .cta { margin: 44px 0 0; max-width: 560px; }
+  .cta__note {
+    margin: 14px 0 0;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .16em;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  .answers-block { margin: 60px 0 0; }
+  .answers-block[hidden] { display: none; }
+  .answers__title,
   .section__title {
     margin: 0 0 20px;
     font-family: var(--mono);
@@ -369,8 +469,35 @@
     letter-spacing: .24em;
     color: var(--muted);
   }
-  .list__lead { margin: 0 0 30px; font-size: 13.5px; color: var(--muted); font-weight: 300; word-break: auto-phrase; }
-  .mini-list { border-top: 1px solid var(--line); }
+  .answers { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+  .answers li {
+    display: grid;
+    grid-template-columns: 60px minmax(0, 1fr);
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 13.5px;
+    color: var(--ink-2);
+    font-weight: 300;
+  }
+  .answers li:last-child { border-bottom: 0; }
+  .answers__q { font-family: var(--mono); font-size: 10px; letter-spacing: .16em; color: var(--muted); }
+
+  .details { margin: 56px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+  .details div { padding: 24px 28px 24px 0; border-bottom: 1px solid var(--line); }
+  .details div:nth-child(1),
+  .details div:nth-child(4) { grid-column: 1 / -1; }
+  .details dt {
+    margin: 0 0 9px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .2em;
+    color: var(--muted);
+  }
+  .details dd { margin: 0; font-size: 14px; font-weight: 300; color: var(--ink-2); line-height: 1.95; }
+
+  .others { margin-top: 88px; }
+  .others__list { border-top: 1px solid var(--line); }
   .mini {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
@@ -405,237 +532,7 @@
   }
   .mini:hover .mini__go { color: var(--ink); }
 
-  /* ------------------------------------------------------------------
-   * CHAT
-   * ------------------------------------------------------------------ */
-  .chat { padding: clamp(26px, 5vh, 50px) 0 0; min-height: calc(100svh - 74px); display: flex; flex-direction: column; }
-  .chat__head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 18px;
-    padding-bottom: 20px;
-    margin-bottom: 30px;
-    border-bottom: 1px solid var(--line);
-  }
-  .chat__who { display: inline-flex; align-items: center; gap: 12px; }
-  .chat__who b {
-    font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: .24em;
-    font-weight: 500;
-    color: var(--ink-2);
-  }
-  .pulse {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 0 0 rgba(126, 166, 255, .55);
-    animation: pulse 2.4s var(--ease) infinite;
-  }
-  @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(126, 166, 255, .5); }
-    70% { box-shadow: 0 0 0 11px rgba(126, 166, 255, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(126, 166, 255, 0); }
-  }
-  .linkish {
-    background: none;
-    border: 0;
-    padding: 6px 0;
-    font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: .18em;
-    color: var(--muted);
-    cursor: pointer;
-    transition: color .3s var(--ease);
-  }
-  .linkish:hover { color: var(--ink); }
-
-  .chat__log { flex: 1; display: flex; flex-direction: column; gap: 16px; padding-bottom: 20px; }
-
-  .msg { display: flex; gap: 14px; align-items: flex-start; max-width: 100%; animation: pop .45s var(--ease) both; }
-  @keyframes pop {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: none; }
-  }
-  .msg--user { justify-content: flex-end; }
-  .avatar {
-    flex: none;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    border: 1px solid var(--line-2);
-    background: radial-gradient(circle at 34% 28%, rgba(214, 228, 255, .34), rgba(70, 104, 178, .18) 60%, transparent 78%);
-    font-family: var(--mono);
-    font-size: 9.5px;
-    letter-spacing: .1em;
-    color: var(--ink);
-  }
-  .bubble {
-    max-width: min(100%, 33em);
-    padding: 15px 21px;
-    border-radius: 16px;
-    font-size: 15px;
-    font-weight: 300;
-    line-height: 1.9;
-  }
-  .msg--ai .bubble {
-    background: var(--panel-2);
-    border: 1px solid var(--line);
-    border-top-left-radius: 5px;
-    color: var(--ink);
-  }
-  .msg--user .bubble {
-    background: var(--ink);
-    color: #05070c;
-    border-top-right-radius: 5px;
-    font-weight: 400;
-  }
-  .bubble__text { margin: 0; }
-  .bubble--typing { padding: 17px 21px; }
-  .typing { display: inline-flex; gap: 6px; align-items: center; }
-  .typing i {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--muted);
-    animation: blink 1.3s var(--ease) infinite;
-  }
-  .typing i:nth-child(2) { animation-delay: .18s; }
-  .typing i:nth-child(3) { animation-delay: .36s; }
-  @keyframes blink {
-    0%, 60%, 100% { opacity: .25; transform: translateY(0); }
-    30% { opacity: 1; transform: translateY(-3px); }
-  }
-
-  .chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 9px;
-    padding-left: 48px;
-    animation: pop .45s var(--ease) both;
-  }
-  .chip {
-    background: var(--panel);
-    border: 1px solid var(--line-2);
-    border-radius: 999px;
-    padding: 11px 19px;
-    font-size: 13.5px;
-    font-weight: 300;
-    color: var(--ink-2);
-    cursor: pointer;
-    text-align: left;
-    transition: border-color .3s var(--ease), background-color .3s var(--ease), color .3s var(--ease), transform .3s var(--ease);
-  }
-  .chip:hover { border-color: var(--ink); background: var(--panel-2); color: var(--ink); transform: translateY(-2px); }
-
-  /* おすすめカード */
-  .rec {
-    margin-left: 48px;
-    max-width: 100%;
-    border: 1px solid var(--line-2);
-    border-radius: 16px;
-    background:
-      radial-gradient(120% 140% at 10% 0%, rgba(70, 105, 190, .18), transparent 60%),
-      var(--panel-2);
-    padding: 32px 32px 34px;
-    animation: pop .5s var(--ease) both;
-  }
-  .rec__badge {
-    margin: 0 0 18px;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: .26em;
-    color: var(--accent);
-  }
-  .rec__title {
-    margin: 0 0 12px;
-    font-size: clamp(21px, 2.9vw, 30px);
-    font-weight: 300;
-    line-height: 1.42;
-    letter-spacing: -.028em;
-    word-break: auto-phrase;
-  }
-  .rec__subtitle { margin: 0 0 24px; font-size: 14px; color: var(--ink-2); font-weight: 300; }
-  .rec__reason {
-    margin: 0;
-    padding-left: 20px;
-    border-left: 1px solid var(--line-2);
-    font-size: 14.5px;
-    font-weight: 300;
-    color: var(--ink-2);
-    line-height: 2.05;
-  }
-  .rec__reason p { margin: 0; }
-  .rec__reason p + p { margin-top: 14px; }
-  .rec__cta { margin-top: 30px; }
-  .rec__note {
-    margin: 13px 0 0;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: .16em;
-    color: var(--muted);
-    text-align: center;
-  }
-  .details { margin: 30px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); }
-  .details div { padding: 20px 24px 20px 0; border-bottom: 1px solid var(--line); }
-  .details div:nth-child(1),
-  .details div:nth-child(4) { grid-column: 1 / -1; }
-  .details div:last-child { border-bottom: 0; }
-  .details dt {
-    margin: 0 0 8px;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: .2em;
-    color: var(--muted);
-  }
-  .details dd { margin: 0; font-size: 13.5px; font-weight: 300; color: var(--ink-2); line-height: 1.95; }
-
-  .others { margin-left: 48px; animation: pop .45s var(--ease) both; }
-
-  /* 入力欄 */
-  .composer {
-    position: sticky;
-    bottom: 0;
-    z-index: 5;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    padding: 16px 0 calc(24px + env(safe-area-inset-bottom, 0px));
-    background: linear-gradient(180deg, rgba(5, 7, 12, 0) 0%, var(--bg) 34%);
-  }
-  .composer[hidden] { display: none; }
-  .composer__field {
-    flex: 1;
-    min-width: 0;
-    background: var(--panel-2);
-    border: 1px solid var(--line-2);
-    border-radius: 999px;
-    padding: 16px 24px;
-    color: var(--ink);
-    font-size: 15px;
-    font-family: inherit;
-    font-weight: 300;
-    transition: border-color .3s var(--ease);
-  }
-  .composer__field::placeholder { color: var(--muted); }
-  .composer__field:focus { outline: none; border-color: var(--ink); }
-  .composer__send {
-    flex: none;
-    width: 54px;
-    height: 54px;
-    border-radius: 50%;
-    border: 0;
-    background: var(--ink);
-    color: #05070c;
-    font-size: 17px;
-    cursor: pointer;
-    transition: transform .3s var(--ease), box-shadow .3s var(--ease);
-  }
-  .composer__send:hover { transform: translateY(-2px); box-shadow: 0 16px 34px rgba(180, 205, 255, .18); }
+  .result__foot { margin-top: 54px; }
 
   .footer {
     position: relative;
@@ -660,7 +557,7 @@
   @media (max-width: 900px) {
     .hero__grid { grid-template-columns: minmax(0, 1fr); gap: 34px; }
     .orb-wrap { order: -1; max-width: 240px; margin: 0 auto; width: 100%; }
-    .hero { min-height: 0; padding: 34px 0 80px; }
+    .hero { min-height: 0; padding: 34px 0 90px; }
     .details { grid-template-columns: minmax(0, 1fr); }
     .details div:nth-child(1),
     .details div:nth-child(4) { grid-column: auto; }
@@ -668,21 +565,17 @@
   @media (max-width: 560px) {
     body { font-size: 15px; }
     .orb-wrap { max-width: 196px; }
-    .hero { padding: 24px 0 72px; }
-    .hero__title { margin-bottom: 24px; }
-    .hero__lead { margin-bottom: 32px; }
-    .hero__meta { margin-top: 44px; grid-template-columns: minmax(0, 1fr); }
+    .hero { padding: 24px 0 80px; }
+    .hero__title { margin-bottom: 26px; }
+    .hero__lead { margin-bottom: 34px; }
+    .hero__meta { margin-top: 48px; }
+    .hero__meta { grid-template-columns: minmax(0, 1fr); }
     .hero__meta li { padding: 18px 0 0; }
-    .btn { width: 100%; }
-    .hero__actions { gap: 16px; }
-    .ask { margin-top: 68px; padding: 34px 20px; }
+    .btn { width: 100%; justify-content: center; }
+    .hero__actions { gap: 18px; }
+    .option { grid-template-columns: 30px minmax(0, 1fr) 20px; padding: 20px 18px; }
     .mini { grid-template-columns: minmax(0, 1fr); gap: 10px; }
-    .bubble { max-width: 100%; font-size: 14.5px; }
-    .chips, .rec, .others { padding-left: 0; margin-left: 0; }
-    .rec { padding: 24px 20px 26px; }
-    .rec__reason { padding-left: 16px; }
-    .composer__field { padding: 14px 20px; font-size: 15px; }
-    .composer__send { width: 50px; height: 50px; }
+    .result__reason { padding-left: 18px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -700,71 +593,90 @@
 <header class="masthead">
   <div class="masthead__inner">
     <span class="brand"><span class="brand__mark"></span>WRITEUP</span>
-    <span class="masthead__meta">WEBINAR AI CONCIERGE</span>
+    <span class="masthead__meta">WEBINAR NAVIGATOR / 2026</span>
   </div>
 </header>
 
 <main>
   <!-- INTRO -->
-  <section class="view" id="view-intro" aria-labelledby="intro-title">
-    <div class="hero">
-      <div class="hero__grid">
-        <div>
-          <p class="tag">AI CONCIERGE</p>
-          <h1 class="hero__title" id="intro-title">
-            <span>探すのを、やめよう。</span>
-            <span class="thin">必要な情報は、AIに聞けばいい。</span>
-          </h1>
-          <p class="hero__lead">
-            <span>あなたの仕事内容や課題、興味をAIに伝えるだけ。</span>
-            <span>今のあなたに合った「次の一歩」をAIが提案します。</span>
-          </p>
-          <div class="hero__actions">
-            <button class="btn btn--light btn--hero" type="button" data-open-chat>AIに聞いてみる<span class="btn__arrow" aria-hidden="true">→</span></button>
-            <span class="hero__hint">ABOUT 30 SEC</span>
-          </div>
-          <ul class="hero__meta">
-            <li><b>HOW</b><span>チャットで質問に答えるだけ</span></li>
-            <li><b>OUTPUT</b><span>4つのウェビナーから最適な1つ</span></li>
-            <li><b>INPUT</b><span>相談中の個人情報入力なし</span></li>
-          </ul>
+  <section class="view hero" id="view-intro" aria-labelledby="intro-title">
+    <div class="hero__grid">
+      <div>
+        <p class="tag">FIVE QUESTIONS</p>
+        <h1 class="hero__title" id="intro-title">
+          <span>5つの問いで、</span>
+          <span class="thin">次の一手が決まる。</span>
+        </h1>
+        <p class="hero__lead">
+          AI、営業、SNS、新規事業。いま向き合うべきテーマは、会社ごとに違います。
+          5つの問いに答えるだけで、あなたに最も近いウェビナーを1つ、理由とともにご案内します。
+        </p>
+        <div class="hero__actions">
+          <button class="btn btn--light" type="button" id="start">診断をはじめる<span class="btn__arrow" aria-hidden="true">→</span></button>
+          <span class="hero__hint">ABOUT 60 SEC</span>
         </div>
-        <div class="orb-wrap" aria-hidden="true">
-          <div class="orb">
-            <span class="orb-ring"></span>
-            <span class="orb-ring orb-ring--2"></span>
-          </div>
-        </div>
+        <ul class="hero__meta">
+          <li><b>QUESTIONS</b><span>5問・選択式のみ</span></li>
+          <li><b>OUTPUT</b><span>4つのウェビナーから最適な1つ</span></li>
+          <li><b>INPUT</b><span>診断中の個人情報入力なし</span></li>
+        </ul>
       </div>
-    </div>
-
-    <div class="shell list">
-      <h2 class="section__title">ALL WEBINARS</h2>
-      <p class="list__lead">開催中のウェビナーは4つです。どれが自分に合うか迷ったら、AIに相談してください。</p>
-      <div class="mini-list" id="intro-list"></div>
-
-      <div class="ask">
-        <p class="ask__title">どれを選べばいいか、迷ったら。</p>
-        <p class="ask__note">いまのお悩みを一言そえるだけで、理由つきで1つに絞ってご案内します。</p>
-        <button class="btn btn--light" type="button" data-open-chat>AIに相談して、参加するイベントを決める<span class="btn__arrow" aria-hidden="true">→</span></button>
+      <div class="orb-wrap" aria-hidden="true">
+        <div class="orb">
+          <span class="orb-ring"></span>
+          <span class="orb-ring orb-ring--2"></span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CHAT -->
-  <section class="view shell--narrow chat" id="view-chat" hidden aria-labelledby="chat-heading">
-    <h2 class="visually-hidden" id="chat-heading" hidden>AIコンシェルジュとの相談</h2>
-    <div class="chat__head">
-      <span class="chat__who"><span class="pulse" aria-hidden="true"></span><b>AI CONCIERGE</b></span>
-      <button class="linkish" type="button" id="chat-reset">← はじめから</button>
+  <!-- QUESTION -->
+  <section class="view shell--narrow quiz" id="view-quiz" hidden aria-labelledby="q-title">
+    <div class="progress">
+      <div class="progress__row">
+        <p class="progress__count">QUESTION <b id="q-index">01</b> / 05</p>
+        <p class="progress__theme" id="q-theme"></p>
+      </div>
+      <div class="progress__track" role="progressbar" aria-label="診断の進捗" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" id="q-progress">
+        <div class="progress__bar" id="q-bar"></div>
+      </div>
     </div>
+    <h2 class="question__title" id="q-title"></h2>
+    <p class="question__note" id="q-note"></p>
+    <div class="options" id="q-options" role="group" aria-labelledby="q-title"></div>
+    <div class="quiz__foot">
+      <button class="linkish" type="button" id="q-back">← BACK</button>
+      <div class="dots" id="q-dots" aria-hidden="true"></div>
+    </div>
+  </section>
 
-    <div class="chat__log" id="chat-log" role="log" aria-live="polite" aria-atomic="false"></div>
+  <!-- RESULT -->
+  <section class="view shell--narrow result" id="view-result" hidden aria-labelledby="r-title">
+    <article>
+      <p class="result__badge" id="r-badge">YOUR RECOMMENDATION</p>
+      <p class="result__intro">あなたにおすすめなのは、</p>
+      <h2 class="result__title" id="r-title"></h2>
+      <p class="result__subtitle" id="r-subtitle"></p>
+      <div class="result__reason" id="r-reason"></div>
+      <div class="cta">
+        <a class="btn btn--light btn--cta" id="r-cta" href="#" target="_blank" rel="noopener">このウェビナーに申し込む <span class="btn__arrow" aria-hidden="true">→</span></a>
+        <p class="cta__note">FORM OPENS IN A NEW TAB</p>
+      </div>
+      <div class="answers-block" id="r-answers-block" hidden>
+        <p class="answers__title">YOUR ANSWERS</p>
+        <ul class="answers" id="r-answers"></ul>
+      </div>
+      <dl class="details" id="r-details"></dl>
+    </article>
 
-    <form class="composer" id="composer" autocomplete="off">
-      <input class="composer__field" id="chat-input" type="text" name="concern" placeholder="例）営業を効率化したい" aria-label="現在のお悩みを入力してください" maxlength="120">
-      <button class="composer__send" type="submit" aria-label="送信する">→</button>
-    </form>
+    <section class="others" aria-labelledby="others-title">
+      <h3 class="section__title" id="others-title">OTHER WEBINARS</h3>
+      <div class="others__list" id="r-others"></div>
+    </section>
+
+    <div class="result__foot">
+      <button class="btn btn--line" type="button" id="r-restart">もう一度診断する</button>
+    </div>
   </section>
 </main>
 
@@ -774,12 +686,6 @@
     <p>株式会社ライトアップ</p>
   </div>
 </footer>
-
-<div class="cta-bar" id="cta-bar">
-  <div class="cta-bar__inner">
-    <button class="btn btn--light" type="button" data-open-chat>AIに相談して、参加するイベントを決める<span class="btn__arrow" aria-hidden="true">→</span></button>
-  </div>
-</div>
 
 <script>
 (function () {
@@ -839,256 +745,361 @@
   ];
 
   /* ------------------------------------------------------------------
-   * お悩みのテーマ。入力された自由文をキーワードで判定する。
-   * reaction は「〜に興味がある方には、こちらがおすすめです。」に差し込む。
-   * weights のキーは WEBINARS の id と対応する。
+   * 質問。weights のキーは WEBINARS の id と対応する。
+   * reason は診断結果の文章に差し込まれる断片。
    * ------------------------------------------------------------------ */
-  var TOPICS = [
+  var QUESTIONS = [
     {
-      id: 'sales',
-      reaction: '営業活動の効率化',
-      echo: '営業の効率化',
-      keywords: ['営業', '商談', 'アポ', '受注', '売上', '売り上げ', '新規開拓', 'テレアポ', '顧客管理', 'sfa', 'リード', '見込み', '成約', '契約', '集客', '問い合わせ', '案件'],
-      weights: { 'exec-ai-referral': 3, 'free-monitor': 2, 'social-master-oem': 1 }
+      theme: 'ご関心',
+      title: 'ウェビナーで、いちばん知りたいことはどれですか。',
+      note: '最も近いものを1つお選びください。',
+      options: [
+        {
+          label: 'AIサービスを、自社の商材として扱う方法',
+          desc: '代理店・OEMとして販売する前提で検討している',
+          reason: 'AIサービスを自社の商材として扱いたい',
+          weights: { 'social-master-oem': 3, 'aio-master-oem': 3 }
+        },
+        {
+          label: '自社の営業・集客を伸ばす方法',
+          desc: '商談数や顧客との接点を増やしたい',
+          reason: '自社の営業・集客を伸ばしたい',
+          weights: { 'exec-ai-referral': 3, 'social-master-oem': 1 }
+        },
+        {
+          label: 'まず試せるAIサービス',
+          desc: '導入を決める前に、実際の使い勝手を確かめたい',
+          reason: 'まず実際に使って確かめたい',
+          weights: { 'free-monitor': 3 }
+        },
+        {
+          label: '経営として、AIとどう向き合うか',
+          desc: '個別のツールより、全体の方針から整理したい',
+          reason: '経営としてAIとの向き合い方を整理したい',
+          weights: { 'exec-ai-referral': 3, 'free-monitor': 1 }
+        }
+      ]
     },
     {
-      id: 'sns',
-      reaction: 'SNSでの発信・集客',
-      echo: 'SNSでの発信',
-      keywords: ['sns', 'インスタ', 'instagram', 'ツイッター', 'twitter', 'tiktok', 'ティックトック', 'youtube', 'facebook', '投稿', '発信', 'フォロワー', '拡散', '認知'],
-      weights: { 'social-master-oem': 4 }
+      theme: '注力したい領域',
+      title: 'いま、いちばん伸ばしたい領域はどこですか。',
+      note: '事業の中で優先度が高いものをお選びください。',
+      options: [
+        {
+          label: 'SNSからの認知・集客',
+          desc: '発信を続けられる仕組みをつくりたい',
+          reason: 'SNSからの集客を強めたい',
+          weights: { 'social-master-oem': 3 }
+        },
+        {
+          label: '検索・生成AI経由での指名',
+          desc: 'ChatGPTや検索で、自社が候補に挙がる状態をつくりたい',
+          reason: '生成AI経由で自社が指名される状態をつくりたい',
+          weights: { 'aio-master-oem': 3 }
+        },
+        {
+          label: '人脈・紹介からの商談創出',
+          desc: '名刺交換やご縁を、次の商談につなげたい',
+          reason: '人脈や紹介から商談を生みたい',
+          weights: { 'exec-ai-referral': 3 }
+        },
+        {
+          label: '社内業務・マネジメントの効率化',
+          desc: '営業管理や日々の業務の手間を減らしたい',
+          reason: '社内業務やマネジメントを効率化したい',
+          weights: { 'free-monitor': 3 }
+        }
+      ]
     },
     {
-      id: 'aio',
-      reaction: '生成AI検索での見つけられ方（AIO／LLMO）',
-      echo: '生成AI検索での対策',
-      keywords: ['aio', 'llmo', 'chatgpt', 'チャットgpt', '生成ai', 'ai検索', '検索', 'seo', '指名', '上位', 'perplexity', 'gemini', 'クローラ'],
-      weights: { 'aio-master-oem': 4 }
+      theme: 'お立場',
+      title: '現在のお立場に近いものを教えてください。',
+      note: 'ご案内の内容を調整するためにお伺いしています。',
+      options: [
+        {
+          label: '経営者・役員',
+          desc: '会社全体の方針を決める立場',
+          reason: '経営の立場で判断される',
+          weights: { 'exec-ai-referral': 2, 'free-monitor': 1 }
+        },
+        {
+          label: '新規事業・事業開発',
+          desc: '次の柱になる事業を探している',
+          reason: '新規事業として検討されている',
+          weights: { 'social-master-oem': 2, 'aio-master-oem': 2 }
+        },
+        {
+          label: '営業・マーケティングの責任者',
+          desc: '数字づくりの現場を預かっている',
+          reason: '営業・マーケティングの責任者として成果を求めている',
+          weights: { 'exec-ai-referral': 2, 'social-master-oem': 1 }
+        },
+        {
+          label: '個人事業・フリーランス',
+          desc: '一人、または少人数で事業をしている',
+          reason: '少人数の体制で事業をされている',
+          weights: { 'aio-master-oem': 1, 'free-monitor': 2 }
+        }
+      ]
     },
     {
-      id: 'oem',
-      reaction: '新しい商材の取り扱い（代理店・OEM）',
-      echo: '自社の商材を増やすこと',
-      keywords: ['代理店', 'oem', '商材', '販売', '仕入', '新規事業', '収益', '売りたい', '取り扱', 'ライセンス', '再販', 'パートナー', '稼ぎ', '事業の柱', '扱いたい'],
-      weights: { 'social-master-oem': 3, 'aio-master-oem': 3 }
+      theme: '目的',
+      title: 'このウェビナーで、どこまで進めたいですか。',
+      note: '今回のゴールに近いものをお選びください。',
+      options: [
+        {
+          label: '新しい収益の柱をつくる',
+          desc: '取り扱う商材を決めて、販売を始めたい',
+          reason: '新しい収益の柱をつくりたい',
+          weights: { 'social-master-oem': 2, 'aio-master-oem': 2 }
+        },
+        {
+          label: '自社の成果を伸ばす',
+          desc: '既存の事業の売上や商談数を増やしたい',
+          reason: '自社の成果を伸ばしたい',
+          weights: { 'exec-ai-referral': 2, 'social-master-oem': 1 }
+        },
+        {
+          label: '実際に使って確かめる',
+          desc: '導入判断の前に、自社で試してみたい',
+          reason: '導入の前に自社で試したい',
+          weights: { 'free-monitor': 3 }
+        },
+        {
+          label: '全体像を知り、判断材料にする',
+          desc: '今は情報を集めている段階',
+          reason: 'まずは判断材料を集めたい',
+          weights: { 'exec-ai-referral': 1, 'free-monitor': 1 }
+        }
+      ]
     },
     {
-      id: 'referral',
-      reaction: 'ご縁や名刺を商談につなげること',
-      echo: '人脈・紹介の活用',
-      keywords: ['名刺', '人脈', '紹介', 'リファラル', 'ご縁', '交流会', 'つながり', '口コミ', '既存顧客', 'line', 'ライン'],
-      weights: { 'exec-ai-referral': 4 }
-    },
-    {
-      id: 'internal',
-      reaction: '社内業務やマネジメントの効率化',
-      echo: '社内業務の効率化',
-      keywords: ['社内', '業務', 'マネジメント', '部下', '勤怠', '工数', '日報', '育成', '人事', '採用', '残業', '属人', 'バックオフィス', '経理', '事務', '管理', 'チーム', '生産性'],
-      weights: { 'free-monitor': 4 }
-    },
-    {
-      id: 'exec',
-      reaction: '経営としてのAIとの向き合い方',
-      echo: '経営とAIの向き合い方',
-      keywords: ['経営', '方針', '社長', '役員', '経営者', 'dx', 'ai活用', '向き合', '戦略', '2026', '全体像', '何から'],
-      weights: { 'exec-ai-referral': 3, 'free-monitor': 1 }
-    },
-    {
-      id: 'trial',
-      reaction: 'まず試せるAIサービス',
-      echo: 'まず試してみること',
-      keywords: ['無料', '試し', '試す', '試して', 'モニター', 'お試し', '体験', '使ってみ', '触って', 'トライアル', '検証'],
-      weights: { 'free-monitor': 4 }
+      theme: '時間軸',
+      title: '検討の時間軸を教えてください。',
+      note: '最後の質問です。',
+      options: [
+        {
+          label: 'すぐにでも動きたい',
+          desc: '1ヶ月以内に着手したい',
+          reason: 'すぐに動きたいとお考えである',
+          weights: { 'free-monitor': 2, 'social-master-oem': 1, 'aio-master-oem': 1 }
+        },
+        {
+          label: '3ヶ月以内には決めたい',
+          desc: '準備をしながら判断したい',
+          reason: '3ヶ月以内の判断を目指している',
+          weights: { 'social-master-oem': 1, 'aio-master-oem': 1, 'exec-ai-referral': 1 }
+        },
+        {
+          label: '来期・半年先に向けて',
+          desc: '中期の計画として考えている',
+          reason: '来期に向けて計画を立てている',
+          weights: { 'exec-ai-referral': 2 }
+        },
+        {
+          label: 'まだ決めていない',
+          desc: '良いものがあれば検討したい',
+          reason: '時期は決めずに情報を集めている',
+          weights: { 'exec-ai-referral': 1, 'free-monitor': 1 }
+        }
+      ]
     }
-  ];
-
-  /* 1問目の選択肢（自由入力の代わりにも使える） */
-  var CONCERN_CHIPS = [
-    '営業を効率化したい',
-    'SNSでの発信を増やしたい',
-    '生成AIの検索で見つけてほしい',
-    'AIサービスを自社の商材にしたい',
-    '名刺や人脈を商談につなげたい',
-    '社内業務・マネジメントを楽にしたい'
-  ];
-
-  /* 2問目。テーマだけでは決まらない「立ち位置」を1回だけ確認する */
-  var INTENTS = [
-    { id: 'use', label: '自社で使って成果を出したい', weights: { 'exec-ai-referral': 2, 'free-monitor': 2 } },
-    { id: 'sell', label: '自社の商材として販売したい（代理店・OEM）', weights: { 'social-master-oem': 3, 'aio-master-oem': 3 } },
-    { id: 'try', label: 'まずは無料で試してみたい', weights: { 'free-monitor': 3 } },
-    { id: 'policy', label: '経営としての方針から整理したい', weights: { 'exec-ai-referral': 3 } }
   ];
 
   /* ---------------------------------------------------------------- */
 
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-
   var views = {
     intro: document.getElementById('view-intro'),
-    chat: document.getElementById('view-chat')
+    quiz: document.getElementById('view-quiz'),
+    result: document.getElementById('view-result')
   };
-  var log = document.getElementById('chat-log');
-  var composer = document.getElementById('composer');
-  var input = document.getElementById('chat-input');
-  var ctaBar = document.getElementById('cta-bar');
+  var el = {
+    qIndex: document.getElementById('q-index'),
+    qTheme: document.getElementById('q-theme'),
+    qTitle: document.getElementById('q-title'),
+    qNote: document.getElementById('q-note'),
+    qOptions: document.getElementById('q-options'),
+    qBack: document.getElementById('q-back'),
+    qBar: document.getElementById('q-bar'),
+    qProgress: document.getElementById('q-progress'),
+    qDots: document.getElementById('q-dots'),
+    rTitle: document.getElementById('r-title'),
+    rSubtitle: document.getElementById('r-subtitle'),
+    rReason: document.getElementById('r-reason'),
+    rAnswersBlock: document.getElementById('r-answers-block'),
+    rAnswers: document.getElementById('r-answers'),
+    rDetails: document.getElementById('r-details'),
+    rCta: document.getElementById('r-cta'),
+    rOthers: document.getElementById('r-others'),
+    rBadge: document.getElementById('r-badge')
+  };
 
-  var state = { stage: 'idle', topic: null, intent: null };
-  var activeChips = null;
-  var timers = [];
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var step = 0;
+  var answers = [];
+  var busy = false;
 
-  function later(fn, ms) {
-    var id = window.setTimeout(fn, reduceMotion.matches ? 0 : ms);
-    timers.push(id);
-    return id;
-  }
-  function clearTimers() {
-    timers.forEach(window.clearTimeout);
-    timers = [];
-  }
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
 
-  function show(name) {
+  function show(name, focusTarget) {
     Object.keys(views).forEach(function (key) {
-      views[key].hidden = key !== name;
+      var node = views[key];
+      node.hidden = key !== name;
+      node.classList.remove('is-enter');
     });
-    if (name === 'intro') {
-      views.intro.classList.remove('is-enter');
-      void views.intro.offsetWidth;
-      views.intro.classList.add('is-enter');
-    }
+    var current = views[name];
+    void current.offsetWidth;
+    current.classList.add('is-enter');
     window.scrollTo({ top: 0, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
-    updateCtaBar();
-  }
-
-  /* --- 入力の正規化。全角英数を半角へ寄せてから小文字にする --- */
-  function normalize(value) {
-    return String(value || '')
-      .replace(/[Ａ-Ｚａ-ｚ０-９]/g, function (c) {
-        return String.fromCharCode(c.charCodeAt(0) - 0xFEE0);
-      })
-      .toLowerCase();
-  }
-
-  function detectTopic(text) {
-    var haystack = normalize(text);
-    var best = null;
-    var bestScore = 0;
-    TOPICS.forEach(function (topic) {
-      var score = 0;
-      topic.keywords.forEach(function (keyword) {
-        if (haystack.indexOf(normalize(keyword)) !== -1) {
-          score += normalize(keyword).length >= 3 ? 2 : 1;
-        }
-      });
-      if (score > bestScore) {
-        bestScore = score;
-        best = topic;
-      }
-    });
-    return bestScore > 0 ? best : null;
-  }
-
-  function rank() {
-    var totals = {};
-    WEBINARS.forEach(function (w) { totals[w.id] = 0; });
-    [state.topic, state.intent].forEach(function (source) {
-      if (!source || !source.weights) return;
-      Object.keys(source.weights).forEach(function (id) {
-        if (typeof totals[id] === 'number') totals[id] += source.weights[id];
-      });
-    });
-    return WEBINARS.slice().sort(function (a, b) {
-      if (totals[b.id] !== totals[a.id]) return totals[b.id] - totals[a.id];
-      return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
-    });
-  }
-
-  /* --- 描画の部品 --- */
-
-  function scrollToEnd() {
-    later(function () {
-      var last = log.lastElementChild;
-      if (last && last.scrollIntoView) {
-        last.scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'end' });
-      }
-    }, 50);
-  }
-
-  function addRow(node) {
-    log.appendChild(node);
-    scrollToEnd();
-    return node;
-  }
-
-  function message(who, text) {
-    var row = document.createElement('div');
-    row.className = 'msg msg--' + who;
-    if (who === 'ai') {
-      var avatar = document.createElement('span');
-      avatar.className = 'avatar';
-      avatar.setAttribute('aria-hidden', 'true');
-      avatar.textContent = 'AI';
-      row.appendChild(avatar);
+    if (focusTarget) {
+      window.setTimeout(function () { focusTarget.focus({ preventScroll: true }); }, 60);
     }
-    var bubble = document.createElement('div');
-    bubble.className = 'bubble';
-    var p = document.createElement('p');
-    p.className = 'bubble__text';
-    p.textContent = text;
-    bubble.appendChild(p);
-    row.appendChild(bubble);
-    return addRow(row);
   }
 
-  /* 入力中の3点。delay のあとに done() を呼んで本文へ差し替える */
-  function typing(delay, done) {
-    var row = document.createElement('div');
-    row.className = 'msg msg--ai';
-    row.innerHTML =
-      '<span class="avatar" aria-hidden="true">AI</span>' +
-      '<div class="bubble bubble--typing"><span class="typing" aria-hidden="true"><i></i><i></i><i></i></span></div>';
-    addRow(row);
-    later(function () {
-      if (row.parentNode) row.parentNode.removeChild(row);
-      done();
-    }, delay);
+  function renderDots() {
+    el.qDots.innerHTML = '';
+    for (var i = 0; i < QUESTIONS.length; i++) {
+      var dot = document.createElement('i');
+      if (i < step) dot.className = 'is-done';
+      el.qDots.appendChild(dot);
+    }
   }
 
-  /* 選択肢は常に1組だけ。自由入力で答えたときも古い選択肢を残さない */
-  function clearChips() {
-    if (activeChips && activeChips.parentNode) activeChips.parentNode.removeChild(activeChips);
-    activeChips = null;
-  }
+  function renderQuestion() {
+    var q = QUESTIONS[step];
+    el.qIndex.textContent = pad(step + 1);
+    el.qTheme.textContent = q.theme;
+    el.qTitle.textContent = q.title;
+    el.qNote.textContent = q.note;
+    el.qBar.style.width = (step / QUESTIONS.length * 100) + '%';
+    el.qProgress.setAttribute('aria-valuenow', String(step));
+    el.qBack.textContent = step === 0 ? '← TOP' : '← BACK';
+    renderDots();
 
-  function chips(items, onPick) {
-    clearChips();
-    var wrap = document.createElement('div');
-    wrap.className = 'chips';
-    items.forEach(function (item) {
-      var label = typeof item === 'string' ? item : item.label;
+    el.qOptions.innerHTML = '';
+    q.options.forEach(function (option, index) {
       var btn = document.createElement('button');
       btn.type = 'button';
-      btn.className = 'chip';
-      btn.textContent = label;
-      btn.addEventListener('click', function () {
-        clearChips();
-        onPick(item, label);
-      });
-      wrap.appendChild(btn);
+      btn.className = 'option';
+      if (answers[step] === index) btn.classList.add('is-selected');
+      btn.innerHTML =
+        '<span class="option__no"></span>' +
+        '<span><span class="option__label"></span><span class="option__desc"></span></span>' +
+        '<span class="option__go" aria-hidden="true">→</span>';
+      btn.querySelector('.option__no').textContent = pad(index + 1);
+      btn.querySelector('.option__label').textContent = option.label;
+      btn.querySelector('.option__desc').textContent = option.desc;
+      btn.addEventListener('click', function () { choose(index, btn); });
+      el.qOptions.appendChild(btn);
     });
-    activeChips = wrap;
-    return addRow(wrap);
+
+    var focusable = el.qOptions.querySelector('.option');
+    if (focusable) {
+      window.setTimeout(function () { focusable.focus({ preventScroll: true }); }, 80);
+    }
   }
 
-  function detailRows(webinar) {
-    var dl = document.createElement('dl');
-    dl.className = 'details';
-    [
+  function replay(view) {
+    view.classList.remove('is-enter');
+    void view.offsetWidth;
+    view.classList.add('is-enter');
+  }
+
+  function choose(index, btn) {
+    if (busy) return;
+    busy = true;
+    answers[step] = index;
+    Array.prototype.forEach.call(el.qOptions.children, function (node) {
+      node.classList.remove('is-selected');
+    });
+    btn.classList.add('is-selected');
+    el.qBar.style.width = ((step + 1) / QUESTIONS.length * 100) + '%';
+
+    var wait = reduceMotion.matches ? 0 : 300;
+    window.setTimeout(function () {
+      busy = false;
+      if (step < QUESTIONS.length - 1) {
+        step += 1;
+        replay(views.quiz);
+        renderQuestion();
+      } else {
+        renderResult();
+        show('result');
+      }
+    }, wait);
+  }
+
+  function goBack() {
+    if (busy) return;
+    if (step === 0) {
+      show('intro', document.getElementById('start'));
+      return;
+    }
+    step -= 1;
+    replay(views.quiz);
+    renderQuestion();
+  }
+
+  function score() {
+    var totals = {};
+    var firstAnswerWeights = {};
+    WEBINARS.forEach(function (w) { totals[w.id] = 0; });
+
+    answers.forEach(function (optionIndex, qIndex) {
+      var option = QUESTIONS[qIndex].options[optionIndex];
+      if (!option) return;
+      Object.keys(option.weights).forEach(function (id) {
+        if (typeof totals[id] !== 'number') return;
+        totals[id] += option.weights[id];
+        if (qIndex === 0) firstAnswerWeights[id] = option.weights[id];
+      });
+    });
+
+    var ranked = WEBINARS.slice().sort(function (a, b) {
+      if (totals[b.id] !== totals[a.id]) return totals[b.id] - totals[a.id];
+      var fa = firstAnswerWeights[a.id] || 0;
+      var fb = firstAnswerWeights[b.id] || 0;
+      if (fb !== fa) return fb - fa;
+      return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
+    });
+
+    return { ranked: ranked, totals: totals };
+  }
+
+  function buildReason(winner) {
+    var fragments = [];
+    answers.forEach(function (optionIndex, qIndex) {
+      var option = QUESTIONS[qIndex].options[optionIndex];
+      if (!option) return;
+      var weight = option.weights[winner.id] || 0;
+      if (weight > 0) fragments.push({ text: option.reason, weight: weight, order: qIndex });
+    });
+    fragments.sort(function (a, b) {
+      if (b.weight !== a.weight) return b.weight - a.weight;
+      return a.order - b.order;
+    });
+
+    var picked = fragments.slice(0, 2).map(function (f) { return f.text; });
+    var lead;
+    if (picked.length === 0) {
+      lead = 'いただいたご回答をふまえると、まずはこのウェビナーが全体像をつかむのに適しています。';
+    } else if (picked.length === 1) {
+      lead = '「' + picked[0] + '」というご回答から、今回はこのウェビナーが最もおすすめです。';
+    } else {
+      lead = '「' + picked[0] + '」「' + picked[1] + '」というご回答から、今回はこのウェビナーが最もおすすめです。';
+    }
+    return { lead: lead, detail: winner.recommendation_reason };
+  }
+
+  function renderDetails(webinar) {
+    var rows = [
       ['OVERVIEW / ウェビナー概要', webinar.description],
       ['FOR / 対象者', webinar.target],
       ['SERVICES / 紹介されるサービス', webinar.services],
       ['FORMAT / 開催形式', webinar.format]
-    ].forEach(function (row) {
+    ];
+    el.rDetails.innerHTML = '';
+    rows.forEach(function (row) {
       var wrap = document.createElement('div');
       var dt = document.createElement('dt');
       dt.textContent = row[0];
@@ -1096,224 +1107,92 @@
       dd.textContent = row[1];
       wrap.appendChild(dt);
       wrap.appendChild(dd);
-      dl.appendChild(wrap);
-    });
-    return dl;
-  }
-
-  function recommendation(webinar) {
-    var card = document.createElement('article');
-    card.className = 'rec';
-
-    var badge = document.createElement('p');
-    badge.className = 'rec__badge';
-    badge.textContent = webinar.featured ? 'RECOMMENDED — FEATURED' : 'RECOMMENDED';
-
-    var title = document.createElement('h3');
-    title.className = 'rec__title';
-    title.textContent = webinar.title;
-
-    var subtitle = document.createElement('p');
-    subtitle.className = 'rec__subtitle';
-    subtitle.textContent = webinar.subtitle;
-
-    var reason = document.createElement('div');
-    reason.className = 'rec__reason';
-    var why = document.createElement('p');
-    why.textContent = webinar.recommendation_reason;
-    reason.appendChild(why);
-
-    var ctaWrap = document.createElement('div');
-    ctaWrap.className = 'rec__cta';
-    var cta = document.createElement('a');
-    cta.className = 'btn btn--light btn--cta';
-    cta.href = webinar.form_url;
-    cta.target = '_blank';
-    cta.rel = 'noopener';
-    cta.innerHTML = 'このウェビナーに申し込む <span class="btn__arrow" aria-hidden="true">→</span>';
-    var note = document.createElement('p');
-    note.className = 'rec__note';
-    note.textContent = 'FORM OPENS IN A NEW TAB';
-    ctaWrap.appendChild(cta);
-    ctaWrap.appendChild(note);
-
-    card.appendChild(badge);
-    card.appendChild(title);
-    card.appendChild(subtitle);
-    card.appendChild(reason);
-    card.appendChild(ctaWrap);
-    card.appendChild(detailRows(webinar));
-    return addRow(card);
-  }
-
-  function miniLink(webinar) {
-    var a = document.createElement('a');
-    a.className = 'mini';
-    a.href = webinar.form_url;
-    a.target = '_blank';
-    a.rel = 'noopener';
-
-    var body = document.createElement('div');
-    var title = document.createElement('span');
-    title.className = 'mini__title';
-    title.textContent = webinar.title;
-    if (webinar.featured) {
-      var tag = document.createElement('span');
-      tag.className = 'mini__tag';
-      tag.textContent = 'FEATURED';
-      title.appendChild(tag);
-    }
-    var desc = document.createElement('p');
-    desc.className = 'mini__desc';
-    desc.textContent = webinar.subtitle + '／' + webinar.services;
-    body.appendChild(title);
-    body.appendChild(desc);
-
-    var go = document.createElement('span');
-    go.className = 'mini__go';
-    go.textContent = 'ENTRY →';
-
-    a.appendChild(body);
-    a.appendChild(go);
-    return a;
-  }
-
-  function others(list) {
-    var wrap = document.createElement('div');
-    wrap.className = 'others';
-    var heading = document.createElement('h3');
-    heading.className = 'section__title';
-    heading.textContent = 'OTHER WEBINARS';
-    var inner = document.createElement('div');
-    inner.className = 'mini-list';
-    list.forEach(function (webinar) { inner.appendChild(miniLink(webinar)); });
-    wrap.appendChild(heading);
-    wrap.appendChild(inner);
-    return addRow(wrap);
-  }
-
-  /* --- 会話の進行 --- */
-
-  function setComposer(on) {
-    composer.hidden = !on;
-    if (on) later(function () { input.focus({ preventScroll: true }); }, 120);
-  }
-
-  function startChat() {
-    clearTimers();
-    log.innerHTML = '';
-    activeChips = null;
-    input.value = '';
-    state = { stage: 'concern', topic: null, intent: null };
-    setComposer(false);
-    typing(600, function () {
-      message('ai', 'こんにちは。');
-      typing(700, function () {
-        message('ai', '現在のお悩みを教えてください。');
-        chips(CONCERN_CHIPS, function (item, label) { answerConcern(label); });
-        setComposer(true);
-      });
+      el.rDetails.appendChild(wrap);
     });
   }
 
-  function answerConcern(text) {
-    var value = String(text || '').trim();
-    if (state.stage !== 'concern' || !value) return;
-    state.stage = 'intent';
-    clearChips();
-    setComposer(false);
-    input.value = '';
-    message('user', value);
-    state.topic = detectTopic(value);
+  function renderResult() {
+    var result = score();
+    var winner = result.ranked[0];
 
-    typing(800, function () {
-      message('ai', state.topic
-        ? '「' + state.topic.echo + '」ですね。ありがとうございます。'
-        : 'ありがとうございます。承知しました。');
-      typing(750, function () {
-        message('ai', 'もう一点だけ。今回は、どちらのお考えに近いですか。');
-        chips(INTENTS, function (item) { answerIntent(item); });
-      });
+    el.rBadge.textContent = winner.featured ? 'YOUR RECOMMENDATION — FEATURED' : 'YOUR RECOMMENDATION';
+    el.rTitle.textContent = winner.title;
+    el.rSubtitle.textContent = winner.subtitle;
+
+    var reason = buildReason(winner);
+    el.rReason.innerHTML = '';
+    [reason.lead, reason.detail].forEach(function (text) {
+      var p = document.createElement('p');
+      p.textContent = text;
+      el.rReason.appendChild(p);
     });
+
+    el.rAnswers.innerHTML = '';
+    el.rAnswersBlock.hidden = false;
+    answers.forEach(function (optionIndex, qIndex) {
+      var option = QUESTIONS[qIndex].options[optionIndex];
+      if (!option) return;
+      var li = document.createElement('li');
+      var q = document.createElement('span');
+      q.className = 'answers__q';
+      q.textContent = 'Q' + pad(qIndex + 1);
+      var a = document.createElement('span');
+      a.textContent = option.label;
+      li.appendChild(q);
+      li.appendChild(a);
+      el.rAnswers.appendChild(li);
+    });
+
+    renderDetails(winner);
+    el.rCta.href = winner.form_url;
+    renderOthers(result.ranked.slice(1));
   }
 
-  function answerIntent(intent) {
-    if (state.stage !== 'intent') return;
-    state.stage = 'result';
-    state.intent = intent;
-    message('user', intent.label);
+  function renderOthers(list) {
+    el.rOthers.innerHTML = '';
+    list.forEach(function (webinar) {
+      var a = document.createElement('a');
+      a.className = 'mini';
+      a.href = webinar.form_url;
+      a.target = '_blank';
+      a.rel = 'noopener';
 
-    typing(900, function () {
-      var ranked = rank();
-      message('ai', state.topic
-        ? state.topic.reaction + 'に興味がある方には、こちらがおすすめです。'
-        : 'いただいた内容をふまえると、こちらがおすすめです。');
-      typing(700, function () {
-        recommendation(ranked[0]);
-        afterResult(ranked);
-      });
-    });
-  }
-
-  function afterResult(ranked) {
-    chips([
-      { id: 'others', label: 'ほかの選択肢も見てみる' },
-      { id: 'restart', label: 'はじめから相談する' }
-    ], function (item) {
-      if (item.id === 'restart') {
-        startChat();
-        return;
+      var body = document.createElement('div');
+      var title = document.createElement('span');
+      title.className = 'mini__title';
+      title.textContent = webinar.title;
+      if (webinar.featured) {
+        var tag = document.createElement('span');
+        tag.className = 'mini__tag';
+        tag.textContent = 'FEATURED';
+        title.appendChild(tag);
       }
-      typing(600, function () {
-        message('ai', 'ほかのウェビナーもご案内します。気になるものがあれば、こちらからお申し込みいただけます。');
-        others(ranked.slice(1));
-        chips([{ id: 'restart', label: 'はじめから相談する' }], function () { startChat(); });
-      });
+      var desc = document.createElement('p');
+      desc.className = 'mini__desc';
+      desc.textContent = webinar.subtitle + '／' + webinar.services;
+      body.appendChild(title);
+      body.appendChild(desc);
+
+      var go = document.createElement('span');
+      go.className = 'mini__go';
+      go.textContent = 'ENTRY →';
+
+      a.appendChild(body);
+      a.appendChild(go);
+      el.rOthers.appendChild(a);
     });
   }
 
-  function openChat() {
-    show('chat');
-    startChat();
+  function startQuiz() {
+    step = 0;
+    answers = [];
+    renderQuestion();
+    show('quiz');
   }
 
-  /* --- 導線 --- */
-
-  Array.prototype.forEach.call(document.querySelectorAll('[data-open-chat]'), function (btn) {
-    btn.addEventListener('click', openChat);
-  });
-
-  document.getElementById('chat-reset').addEventListener('click', function () {
-    clearTimers();
-    show('intro');
-  });
-
-  composer.addEventListener('submit', function (event) {
-    event.preventDefault();
-    answerConcern(input.value);
-  });
-
-  /* 一覧はデータから描く。カードの重複記述を避ける */
-  (function renderIntroList() {
-    var host = document.getElementById('intro-list');
-    if (!host) return;
-    WEBINARS.slice().sort(function (a, b) {
-      return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
-    }).forEach(function (webinar) {
-      host.appendChild(miniLink(webinar));
-    });
-  })();
-
-  /* ヒーローのCTAが画面から外れたら、追従バーを出す */
-  function updateCtaBar() {
-    if (!views.intro.hidden && window.scrollY > window.innerHeight * .72) {
-      ctaBar.classList.add('is-on');
-    } else {
-      ctaBar.classList.remove('is-on');
-    }
-  }
-  window.addEventListener('scroll', updateCtaBar, { passive: true });
-  updateCtaBar();
+  document.getElementById('start').addEventListener('click', startQuiz);
+  document.getElementById('r-restart').addEventListener('click', startQuiz);
+  el.qBack.addEventListener('click', goBack);
 
   /* ------------------------------------------------------------------
    * 背景。流体のような流れ場をゆっくり描く抽象ビジュアル。
