@@ -227,16 +227,26 @@
     color: var(--ink-3); margin: 0 0 16px;
   }
 
-  .issues { display: grid; gap: 16px; margin-bottom: 44px; }
-  .issue { border: 2px solid var(--line-soft); border-left: 8px solid var(--ink); padding: 20px 22px; }
-  .issue h4 { margin: 0 0 8px; font-size: 20px; font-weight: 800; line-height: 1.6; }
-  .issue .quote {
-    margin: 12px 0 0; padding: 12px 14px; background: var(--wash);
-    font-size: 15px; line-height: 1.8; color: var(--ink-2);
+  .issues {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(430px, 100%), 1fr));
+    gap: 6px 32px;
+    margin-bottom: 40px;
   }
-  .issue .quote b { display: block; font-size: 13px; letter-spacing: .1em; color: var(--ink-3); margin-bottom: 4px; }
-  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-  .tag { font-size: 14px; font-weight: 700; padding: 4px 10px; border: 2px solid var(--line-soft); }
+  .issue { border-left: 5px solid var(--ink); padding: 8px 0 8px 14px; }
+  .issue p { margin: 0; }
+  .issue .head { font-size: 17px; line-height: 1.6; font-weight: 700; }
+  .issue .tag {
+    display: inline-block; margin-right: 8px; padding: 1px 8px;
+    border: 2px solid var(--line-soft); font-size: 13px; font-weight: 700;
+    color: var(--ink-3); vertical-align: 2px;
+  }
+  .issue .quote {
+    margin-top: 2px; font-size: 14px; line-height: 1.7; color: var(--ink-3);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .issue--none { border-left-color: var(--line-soft); grid-column: 1 / -1; }
+  .issue--none .quote { white-space: normal; }
 
   .pick { border: 3px solid var(--line); padding: 30px; margin-bottom: 20px; }
   .pick .badge {
@@ -247,7 +257,7 @@
   .pick .sub { margin: 0 0 20px; font-size: 18px; color: var(--ink-2); font-weight: 700; }
   .pick .why { margin: 0 0 22px; padding: 18px 20px; background: var(--wash); font-size: 17px; line-height: 1.9; }
   .pick .why b { display: block; margin-bottom: 6px; font-size: 14px; letter-spacing: .1em; color: var(--ink-3); }
-  .facts { margin: 0 0 24px; border-top: 2px solid var(--line-soft); }
+  .facts { margin: 22px 0 0; border-top: 2px solid var(--line-soft); }
   .facts div { display: grid; grid-template-columns: 8.5em minmax(0, 1fr); gap: 14px; padding: 12px 0; border-bottom: 2px solid var(--line-soft); font-size: 16px; }
   .facts dt { font-weight: 700; color: var(--ink-3); font-size: 15px; }
   .facts dd { margin: 0; color: var(--ink-2); }
@@ -291,6 +301,10 @@
     .head-note { display: none; }
     .facts div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
     .btn--wide { font-size: 18px; }
+    .result-head { padding-bottom: 16px; margin-bottom: 22px; }
+    .pick .badge { margin-bottom: 12px; }
+    .pick .sub { margin-bottom: 14px; }
+    .pick .why { padding: 14px 16px; margin-bottom: 16px; line-height: 1.8; }
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -402,11 +416,11 @@
           <p id="result-sub"></p>
         </div>
 
-        <p class="block-title">読み取った課題</p>
-        <div class="issues" id="issues"></div>
-
         <p class="block-title">この会議に、いちばん合うウェビナー</p>
         <div class="pick" id="pick"></div>
+
+        <p class="block-title" id="issues-title">読み取った課題</p>
+        <div class="issues" id="issues"></div>
 
         <p class="block-title" id="alts-title">ほかに合いそうなウェビナー</p>
         <div class="alts" id="alts"></div>
@@ -701,22 +715,21 @@
     var top = hits.slice(0, 4);
 
     if (!top.length) {
-      box.innerHTML = '<div class="issue"><h4>はっきりした課題の言葉が見つかりませんでした</h4>'
-        + '<p style="margin:0;color:#2f3640">決定事項だけのメモや、議題のない雑談のログだと読み取れないことがあります。'
-        + '課題や困りごとが話されている部分を足すか、下の一覧から直接お選びください。</p></div>';
+      box.innerHTML = '<div class="issue issue--none">'
+        + '<p class="head">はっきりした課題の言葉が見つかりませんでした</p>'
+        + '<p class="quote">決定事項だけのメモや、議題のない雑談のログだと読み取れないことがあります。'
+        + '課題が話されている部分を足すか、下の一覧から直接お選びください。</p></div>';
       return;
     }
 
     top.forEach(function (h) {
       var el = document.createElement('div');
       el.className = 'issue';
-      var html = '<h4>' + esc(h.topic.issue) + '</h4>';
-      if (h.quote) {
-        html += '<p class="quote"><b>ログ内の該当箇所</b>「' + esc(h.quote) + '」</p>';
-      }
-      html += '<div class="tags"><span class="tag">' + esc(h.topic.label) + '</span>';
-      h.matched.forEach(function (k) { html += '<span class="tag">' + esc(TAG_LABEL[k] || k) + '</span>'; });
-      html += '</div>';
+      var quote = h.quote;
+      if (quote.length > 46) quote = quote.slice(0, 46) + '…';
+      var html = '<p class="head"><span class="tag">' + esc(h.topic.label) + '</span>'
+        + esc(h.topic.issue) + '</p>';
+      if (quote) html += '<p class="quote" title="' + esc(h.quote) + '">「' + esc(quote) + '」</p>';
       el.innerHTML = html;
       box.appendChild(el);
     });
@@ -733,14 +746,14 @@
       + '<h3>' + esc(w.title) + '</h3>'
       + '<p class="sub">' + esc(w.subtitle) + '</p>'
       + '<p class="why"><b>なぜこのウェビナーか</b>' + esc(why) + '</p>'
+      + '<a class="btn btn--accent btn--wide" href="' + esc(w.form_url) + '" target="_blank" rel="noopener">このウェビナーに申し込む</a>'
+      + '<p class="note">お申し込みフォームが新しいタブで開きます</p>'
       + '<dl class="facts">'
       + '<div><dt>内容</dt><dd>' + esc(w.description) + '</dd></div>'
       + '<div><dt>こんな方へ</dt><dd>' + esc(w.target) + '</dd></div>'
       + '<div><dt>紹介サービス</dt><dd>' + esc(w.services) + '</dd></div>'
       + '<div><dt>開催形式</dt><dd>' + esc(w.format) + '</dd></div>'
-      + '</dl>'
-      + '<a class="btn btn--accent btn--wide" href="' + esc(w.form_url) + '" target="_blank" rel="noopener">このウェビナーに申し込む</a>'
-      + '<p class="note">お申し込みフォームが新しいタブで開きます</p>';
+      + '</dl>';
   }
 
   function renderAlts(ranked) {
