@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="名刺交換から関係づくり、紹介、営業顧問の提案まで。Codexと毎月更新される12のAIスキルで、人脈を営業代行事業へ育てるスタートパック。">
+  <meta name="description" content="手元の名刺と交流会でもらう名刺を台帳化し、関係づくり、紹介、営業顧問の提案まで。Codexで動く12個のAIエージェントが、人脈を営業代行事業へ育てます。">
   <meta name="theme-color" content="#08150f">
   <meta name="robots" content="noindex, nofollow">
   <title>出会いを、営業会社に変える。｜AI営業代行会社スタートパック</title>
@@ -13,12 +13,12 @@
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="AI営業代行会社スタートパック">
   <meta property="og:title" content="出会いを、営業会社に変える。">
-  <meta property="og:description" content="会う。残す。見つける。つなぐ。育てる。Codexと12のAIスキルで始める営業代行事業。">
+  <meta property="og:description" content="名刺を撮り、台帳化する。そこから12個のAIエージェントと始める営業代行事業。">
   <meta property="og:url" content="https://writeup-inc.github.io/saas/ai-sales-agency-starter/">
   <meta property="og:image" content="https://writeup-inc.github.io/saas/ai-sales-agency-starter/og-card.svg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="出会いを、営業会社に変える。">
-  <meta name="twitter:description" content="人脈を紹介と継続収益へ。月額5万円のAI営業代行会社スタートパック。">
+  <meta name="twitter:description" content="名刺を台帳化し、人脈を紹介と継続収益へ。12個のAIエージェントで始める営業代行事業。">
   <meta name="twitter:image" content="https://writeup-inc.github.io/saas/ai-sales-agency-starter/og-card.svg">
   <style>
     :root {
@@ -163,16 +163,20 @@
     @keyframes dash { to { stroke-dashoffset: -140; } }
 
     .process { background: var(--white); }
-    .process-head { display: grid; grid-template-columns: 1fr .7fr; gap: 48px; align-items: end; }
-    .origin-note { padding: 22px 24px; border-left: 4px solid var(--lime); border-radius: 0 18px 18px 0; background: var(--deep); color: white; }
-    .origin-note strong { display: block; color: var(--lime); font-size: 28px; line-height: 1; letter-spacing: -.03em; }
-    .origin-note p { margin: 10px 0 0; color: rgba(255,255,255,.68); font-size: 13px; line-height: 1.7; }
-    .flowchart { position: relative; display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; margin-top: 58px; }
-    .flowchart::before { content: ""; position: absolute; left: 7%; right: 7%; top: 38px; height: 2px; background: linear-gradient(90deg,var(--lime),var(--blue),var(--coral)); }
-    .flow-step { position: relative; min-height: 224px; padding: 76px 20px 22px; border: 1px solid var(--line); border-radius: 20px; background: var(--paper); }
+    .process-head { max-width: 970px; }
+    .start-point { display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center; margin-top: 42px; padding: 26px 28px; border-radius: 22px; color: white; background: var(--deep); box-shadow: var(--shadow); }
+    .start-badge { width: 76px; height: 76px; display: grid; place-items: center; border-radius: 50%; color: var(--deep); background: var(--lime); font-size: 11px; font-weight: 950; letter-spacing: .1em; }
+    .start-copy strong { display: block; color: var(--lime); font-size: clamp(23px,3vw,34px); line-height: 1.2; letter-spacing: -.035em; }
+    .start-line { display: inline; }
+    .start-copy p { margin: 8px 0 0; color: rgba(255,255,255,.68); font-size: 13px; }
+    .card-sources { display: flex; gap: 8px; }
+    .card-sources span { padding: 9px 12px; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; color: rgba(255,255,255,.78); font-size: 10px; font-weight: 850; white-space: nowrap; }
+    .flowchart { position: relative; display: grid; grid-template-columns: repeat(6,1fr); gap: 12px; margin-top: 22px; }
+    .flowchart::before { content: ""; position: absolute; left: 6%; right: 6%; top: 38px; height: 2px; background: linear-gradient(90deg,var(--lime),var(--blue),var(--coral)); }
+    .flow-step { position: relative; min-height: 224px; padding: 76px 18px 22px; border: 1px solid var(--line); border-radius: 20px; background: var(--paper); }
     .flow-no { position: absolute; top: 14px; left: 20px; z-index: 1; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; color: var(--deep); background: var(--lime); font-size: 12px; font-weight: 950; }
-    .flow-step:nth-child(2) .flow-no, .flow-step:nth-child(3) .flow-no { background: var(--blue); }
-    .flow-step:nth-child(4) .flow-no, .flow-step:nth-child(5) .flow-no { background: var(--coral); }
+    .flow-step:nth-child(3) .flow-no, .flow-step:nth-child(4) .flow-no { background: var(--blue); }
+    .flow-step:nth-child(5) .flow-no, .flow-step:nth-child(6) .flow-no { background: var(--coral); }
     .role-chip { display: inline-flex; padding: 4px 8px; border-radius: 999px; color: var(--muted); background: white; font-size: 9px; font-weight: 900; letter-spacing: .08em; }
     .flow-step h3 { margin: 14px 0 7px; font-size: 23px; line-height: 1.25; letter-spacing: -.03em; }
     .flow-step p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.65; }
@@ -200,6 +204,11 @@
     .skills-count { width: 112px; height: 112px; display: grid; place-items: center; border-radius: 50%; color: var(--deep); background: var(--blue); box-shadow: 10px 10px 0 var(--ink); text-align: center; transform: rotate(5deg); }
     .skills-count strong { display: block; font-size: 40px; line-height: .86; }
     .skills-count span { display: block; margin-top: 5px; font-size: 9px; font-weight: 950; letter-spacing: .1em; }
+    .agent-path { display: grid; grid-template-columns: repeat(4,1fr); gap: 26px; padding: 0; margin: 38px 0 0; list-style: none; }
+    .agent-path li { position: relative; padding: 14px 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--white); font-size: 12px; font-weight: 900; text-align: center; }
+    .agent-path li::after { content: "→"; position: absolute; top: 50%; right: -21px; color: var(--coral); font-size: 18px; transform: translateY(-52%); }
+    .agent-path li:last-child::after { display: none; }
+    .agent-path span { margin-right: 7px; color: var(--muted); font-size: 9px; letter-spacing: .08em; }
     .skill-groups { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-top: 48px; }
     .skill-group { overflow: hidden; border: 1px solid var(--line); border-radius: 24px; background: rgba(255,254,249,.78); box-shadow: 0 16px 42px rgba(8,27,17,.06); }
     .group-head { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center; padding: 22px 24px; background: var(--deep); color: white; }
@@ -278,9 +287,11 @@
     @media (max-width: 1020px) {
       .nav { display: none; }
       .hero { min-height: auto; }
-      .hero-grid, .process-head, .sim-grid, .price-box, .asset-panel, .faq { grid-template-columns: 1fr; }
+      .hero-grid, .sim-grid, .price-box, .asset-panel, .faq { grid-template-columns: 1fr; }
       .hero-grid { gap: 52px; }
       .network-panel { width: min(100%,610px); margin-inline: auto; }
+      .start-point { grid-template-columns: auto 1fr; }
+      .card-sources { grid-column: 1 / -1; padding-left: 100px; }
       .flowchart { grid-template-columns: repeat(3,1fr); }
       .flowchart::before, .rocket::before { display: none; }
       .rocket { grid-template-columns: 1fr; }
@@ -304,6 +315,11 @@
       .profile-a { right: 3%; }
       .profile-b { left: 3%; }
       .section-title { font-size: clamp(38px,12vw,52px); }
+      .process .section-title { font-size: 40px; }
+      .start-point { grid-template-columns: 1fr; gap: 16px; padding: 22px; }
+      .start-badge { width: 62px; height: 62px; }
+      .start-line { display: block; }
+      .card-sources { grid-column: auto; flex-wrap: wrap; padding-left: 0; }
       .flowchart { grid-template-columns: 1fr; gap: 10px; }
       .flow-step { min-height: 0; padding: 19px 18px 19px 76px; }
       .flow-no { top: 20px; left: 16px; }
@@ -311,6 +327,8 @@
       .approval-bar { align-items: flex-start; }
       .skills-head { grid-template-columns: 1fr; align-items: start; }
       .skills-count { width: 92px; height: 92px; }
+      .agent-path { grid-template-columns: 1fr; gap: 18px; }
+      .agent-path li::after { content: "↓"; top: auto; right: 50%; bottom: -20px; transform: translateX(50%); }
       .skill-groups { grid-template-columns: 1fr; }
       .update-note { flex-direction: column; gap: 6px; }
       .price-detail ul, .asset-list { grid-template-columns: 1fr; }
@@ -327,7 +345,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="#top" aria-label="AI営業代行会社スタートパック ページ上部へ"><span class="brand-mark">↗</span><span>AI営業代行会社スタートパック</span></a>
-      <nav class="nav" aria-label="ページ内ナビゲーション"><a href="#flow">始め方</a><a href="#model">収益モデル</a><a href="#skills">12スキル</a><a href="#simulator">試算</a></nav>
+      <nav class="nav" aria-label="ページ内ナビゲーション"><a href="#flow">始め方</a><a href="#model">収益モデル</a><a href="#skills">12のAI</a><a href="#simulator">試算</a></nav>
       <a class="header-cta" href="#price">事業の条件を見る</a>
     </div>
   </header>
@@ -343,7 +361,7 @@
             <a class="button-primary" href="#flow">始め方を3分で見る <span aria-hidden="true">↓</span></a>
             <a class="button-secondary" href="#simulator">月の売上を試算する</a>
           </div>
-          <ul class="hero-facts"><li>副業・新規事業から</li><li>月額5万円</li><li>12スキルを毎月更新</li></ul>
+          <ul class="hero-facts"><li>副業・新規事業から</li><li>月5万円・年間60万円</li><li>12個のAIを毎月更新</li></ul>
         </div>
         <div class="network-panel" aria-label="名刺から相性のよい2社を見つけ、紹介につなげるイメージ">
           <div class="network-label"><span>RELATIONSHIP MAP</span><span>AI MATCHING</span></div>
@@ -362,17 +380,24 @@
     <section class="section process" id="flow">
       <div class="container">
         <div class="process-head">
-          <div><p class="section-kicker">HOW IT WORKS</p><h2 class="section-title"><span class="title-line">会う。残す。</span><span class="title-line">見つける。つなぐ。</span></h2></div>
-          <aside class="origin-note" aria-label="この事業の着想"><strong>月に150人。</strong><p>多くの経営者と会い、相性のよい人同士をつなぐ若手経営者の仕事が着想。Excelと記憶に頼っていた部分を、AIで続けやすくします。</p></aside>
+          <p class="section-kicker">HOW IT STARTS</p>
+          <h2 class="section-title"><span class="title-line">最初の仕事は、</span><span class="title-line">名刺を撮ること。</span></h2>
+          <p class="section-lead">交流会でもらう新しい名刺も、これまで手元にためてきた名刺も、まず一つの台帳へ。ここからすべてが始まります。</p>
         </div>
-        <div class="flowchart" aria-label="出会いを営業支援事業へ育てる5段階">
-          <article class="flow-step"><span class="flow-no">01</span><span class="role-chip">HUMAN</span><h3>会う</h3><p>相手の事業、困りごと、会いたい人を聞く。</p></article>
-          <article class="flow-step"><span class="flow-no">02</span><span class="role-chip">AI + CHECK</span><h3>残す</h3><p>名刺と会話を台帳化し、本人が内容を確認。</p></article>
-          <article class="flow-step"><span class="flow-no">03</span><span class="role-chip">AI</span><h3>見つける</h3><p>人脈へ質問し、相性のよい候補を理由つきで抽出。</p></article>
-          <article class="flow-step"><span class="flow-no">04</span><span class="role-chip">APPROVAL</span><h3>つなぐ</h3><p>双方の意向を確認してから、紹介文を送る。</p></article>
-          <article class="flow-step"><span class="flow-no">05</span><span class="role-chip">HUMAN × AI</span><h3>育てる</h3><p>紹介、商談、営業顧問まで関係を継続する。</p></article>
+        <div class="start-point" aria-label="営業代行事業のスタート地点">
+          <span class="start-badge">START</span>
+          <div class="start-copy"><strong><span class="start-line">名刺をパシャッと撮って、</span><span class="start-line">台帳化。</span></strong><p>会社名、氏名、役職、会話メモを整理し、確認できた情報から登録します。</p></div>
+          <div class="card-sources"><span>いままでの名刺</span><span>交流会の新しい名刺</span></div>
         </div>
-        <div class="approval-bar"><span>AIの役割</span> 候補抽出と下書きまで。送信・紹介・契約は、必ず人が判断します。</div>
+        <div class="flowchart" aria-label="名刺交換から営業支援事業へ育てる6段階">
+          <article class="flow-step"><span class="flow-no">01</span><span class="role-chip">HUMAN</span><h3>交流会へ</h3><p>会って話し、相手の事業や困りごとを知る。</p></article>
+          <article class="flow-step"><span class="flow-no">02</span><span class="role-chip">INPUT</span><h3>名刺を撮る</h3><p>新しい名刺も、手元の名刺もまとめて撮影。</p></article>
+          <article class="flow-step"><span class="flow-no">03</span><span class="role-chip">AI + CHECK</span><h3>台帳化する</h3><p>AIが読み取り、人が確認して接点を蓄積。</p></article>
+          <article class="flow-step"><span class="flow-no">04</span><span class="role-chip">AI</span><h3>相性を探す</h3><p>悩みと提供価値から、紹介候補を理由つきで抽出。</p></article>
+          <article class="flow-step"><span class="flow-no">05</span><span class="role-chip">APPROVAL</span><h3>合意を取る</h3><p>双方へ確認し、紹介してよいかを人が判断。</p></article>
+          <article class="flow-step"><span class="flow-no">06</span><span class="role-chip">HUMAN × AI</span><h3>紹介・継続</h3><p>紹介から商談、営業顧問まで関係を育てる。</p></article>
+        </div>
+        <div class="approval-bar"><span>自動化の境界</span> AIは読み取り・候補抽出・下書きまで。登録内容、送信、紹介、契約は人が確認します。</div>
       </div>
     </section>
 
@@ -393,13 +418,14 @@
     <section class="section" id="skills">
       <div class="container">
         <div class="skills-head">
-          <div><p class="section-kicker">12 CODEX SKILLS</p><h2 class="section-title"><span class="title-line">12個を、4つの</span><span class="title-line">仕事にまとめました。</span></h2></div>
-          <div class="skills-count" aria-label="12スキル"><div><strong>12</strong><span>CODEX SKILLS</span></div></div>
+          <div><p class="section-kicker">12 CODEX SKILLS</p><h2 class="section-title"><span class="title-line">12個のAIエージェントを</span><span class="title-line">4つの仕事にまとめました。</span></h2></div>
+          <div class="skills-count" aria-label="12個のAIエージェント"><div><strong>12</strong><span>AI AGENTS</span></div></div>
         </div>
-        <p class="section-lead">機能名を並べるだけではなく、実際の仕事の流れで使えるように整理。覚える、探す、つなぐ、売上にする——4つの業務群で支えます。</p>
+        <p class="section-lead">名刺を台帳にするAIから、相性を探すAI、紹介を支えるAI、継続収益へ育てるAIまで。事業の時系列に沿って働きます。</p>
+        <ol class="agent-path" aria-label="12個のAIエージェントが担当する4つの仕事の順番"><li><span>STEP 1</span>名刺を台帳化</li><li><span>STEP 2</span>相性を検索</li><li><span>STEP 3</span>紹介を支援</li><li><span>STEP 4</span>継続支援へ</li></ol>
         <div class="skill-groups">
           <article class="skill-group">
-            <header class="group-head"><span>01</span><div><small>CAPTURE / 01–03</small><h3>出会いを、覚える</h3></div></header>
+            <header class="group-head"><span>01</span><div><small>STEP 1 / AI 01–03</small><h3>出会いを、覚える</h3></div></header>
             <div class="skill-list">
               <div class="skill-item"><span>01</span><div><h4>名刺パシャっと台帳化</h4><p>名刺を読み取り、人が確認して接点リストへ。</p></div></div>
               <div class="skill-item"><span>02</span><div><h4>お礼メール下書き</h4><p>会話を反映した、その人だけのお礼文を生成。</p></div></div>
@@ -407,7 +433,7 @@
             </div>
           </article>
           <article class="skill-group">
-            <header class="group-head"><span>02</span><div><small>DISCOVER / 04–06</small><h3>相性を、見つける</h3></div></header>
+            <header class="group-head"><span>02</span><div><small>STEP 2 / AI 04–06</small><h3>相性を、見つける</h3></div></header>
             <div class="skill-list">
               <div class="skill-item"><span>04</span><div><h4>人脈コンシェルジュ</h4><p>自然な言葉で、自分の人脈へ質問できます。</p></div></div>
               <div class="skill-item"><span>05</span><div><h4>相性検索</h4><p>悩み、提供価値、地域、温度感から候補を検索。</p></div></div>
@@ -415,7 +441,7 @@
             </div>
           </article>
           <article class="skill-group">
-            <header class="group-head"><span>03</span><div><small>CONNECT / 07–09</small><h3>関係を、つなぐ</h3></div></header>
+            <header class="group-head"><span>03</span><div><small>STEP 3 / AI 07–09</small><h3>関係を、つなぐ</h3></div></header>
             <div class="skill-list">
               <div class="skill-item"><span>07</span><div><h4>紹介メール作成</h4><p>双方への確認文と紹介本文を安全に下書き。</p></div></div>
               <div class="skill-item"><span>08</span><div><h4>近況メルマガ</h4><p>活動や出会った商材を近況便として下書き。</p></div></div>
@@ -423,15 +449,15 @@
             </div>
           </article>
           <article class="skill-group">
-            <header class="group-head"><span>04</span><div><small>GROW / 10–12</small><h3>仕事を、育てる</h3></div></header>
+            <header class="group-head"><span>04</span><div><small>STEP 4 / AI 10–12</small><h3>仕事を、育てる</h3></div></header>
             <div class="skill-list">
               <div class="skill-item"><span>10</span><div><h4>紹介進捗ボード</h4><p>打診前から商談中まで、紹介後も追います。</p></div></div>
               <div class="skill-item"><span>11</span><div><h4>営業顧問の提案書</h4><p>支援範囲、件数、定例、料金を提案書へ。</p></div></div>
-              <div class="skill-item"><span>12</span><div><h4>月次スキル更新</h4><p>使われた運用を残し、古い型を入れ替えます。</p></div></div>
+              <div class="skill-item"><span>12</span><div><h4>月次AIアップデート</h4><p>使われた運用を残し、古い役割を入れ替えます。</p></div></div>
             </div>
           </article>
         </div>
-        <div class="update-note"><strong>毎月アップデート</strong><span>古くなったスキルは統合・削除し、現場で反応のよかった新しい営業手順を追加していく想定です。</span></div>
+        <div class="update-note"><strong>毎月アップデート</strong><span>古くなったAIの役割は統合・削除し、現場で反応のよかった新しい営業手順を追加していく想定です。</span></div>
       </div>
     </section>
 
@@ -472,7 +498,7 @@
           <div class="price-main"><small>AI営業代行会社スタートパック</small><strong>5<span>万円 / 月</span></strong><p>12か月利用した場合：60万円<br>※税区分・最低利用期間・開始時期は要確認</p></div>
           <div class="price-detail">
             <h3>含まれるもの</h3>
-            <ul><li>営業代行事業に最適化したCodex環境</li><li>4業務群・合計12のAIスキル</li><li>AIセミナーの集客案件</li><li>スキルの月次アップデート</li><li>人が承認して進める運用設計</li></ul>
+            <ul><li>営業代行事業に最適化したCodex環境</li><li>4業務群・合計12のAIエージェント</li><li>AIセミナーの集客案件</li><li>AIエージェントの月次アップデート</li><li>人が承認して進める運用設計</li></ul>
             <a class="button-primary" href="https://writeup.jp/contact/" target="_blank" rel="noopener">事業説明を相談する <span aria-hidden="true">↗</span></a>
             <p class="price-note">このページは企画検討用です。正式な提供範囲、利用環境、データ保管、サポート、契約・報酬条件は相談時に確認します。</p>
           </div>
@@ -492,7 +518,7 @@
           <details><summary>AIが勝手にメールを送りますか？</summary><p>いいえ。初期運用ではAIが下書きと候補抽出を行い、宛先・内容・タイミングを本人が確認してから送信します。自動送信は権限、同意、停止条件を整えた範囲でのみ検討します。</p></details>
           <details><summary>名刺や会話の情報はどこに保存されますか？</summary><p>利用環境によって異なるため要確認です。登録前に保管先、アクセス権、削除方法、第三者提供の有無を定め、相手との約束と個人情報保護のルールに沿って運用します。</p></details>
           <details><summary>必ず月5万円以上の利益が出ますか？</summary><p>保証はありません。収益は出会う人数、紹介の質、稼働時間、地域、商材、顧問契約などで変わります。試算機は事業の構造を考えるための目安です。</p></details>
-          <details><summary>12個のスキルはずっと同じですか？</summary><p>いいえ。使われ方と現場の反応を見て毎月見直し、古くなったものは更新・統合・削除し、新しい営業手順を追加していく想定です。</p></details>
+          <details><summary>12個のAIエージェントはずっと同じですか？</summary><p>いいえ。使われ方と現場の反応を見て毎月見直し、古くなった役割は更新・統合・削除し、新しい営業手順を追加していく想定です。</p></details>
         </div>
       </div>
     </section>
