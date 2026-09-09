@@ -126,9 +126,30 @@ document.addEventListener('DOMContentLoaded', () => {
   const chatGptRevealButtons = [...document.querySelectorAll('[data-open-chatgpt]')];
   let chatGptRevealObserver;
 
-  chatGptRevealButtons.forEach((button, index) => {
-    button.classList.add('chatgpt-scroll-reveal', index % 2 ? 'reveal-from-right' : 'reveal-from-left');
-  });
+  chatGptRevealButtons.forEach((button) => button.classList.add('chatgpt-scroll-reveal'));
+
+  const assignChatGptRevealDirections = () => {
+    chatGptRevealButtons.forEach((button, index) => {
+      const rect = button.getBoundingClientRect();
+      const translatedX = Number.parseFloat(getComputedStyle(button).translate) || 0;
+      const destinationCenter = rect.left + rect.width / 2 - translatedX;
+      const positionRatio = destinationCenter / window.innerWidth;
+      const enterFromRight = positionRatio < .48 || (positionRatio <= .52 && index % 2 === 0);
+      button.classList.toggle('reveal-from-right', enterFromRight);
+      button.classList.toggle('reveal-from-left', !enterFromRight);
+    });
+  };
+
+  assignChatGptRevealDirections();
+  let revealResizeTicking = false;
+  window.addEventListener('resize', () => {
+    if (revealResizeTicking) return;
+    revealResizeTicking = true;
+    window.requestAnimationFrame(() => {
+      assignChatGptRevealDirections();
+      revealResizeTicking = false;
+    });
+  }, { passive: true });
 
   const showAllChatGptButtons = () => {
     chatGptRevealObserver?.disconnect();
