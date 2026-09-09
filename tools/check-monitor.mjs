@@ -6,12 +6,13 @@ import process from 'node:process';
 
 const pagePath = path.resolve(process.cwd(), 'monitor/index.html');
 const html = fs.readFileSync(pagePath, 'utf8');
+const expectedIds = ['elliot', 'super-manager', 'worklog-insight', 'jmatch-engine'];
 
 const checks = [
   ['canonical URL', /<link rel="canonical" href="https:\/\/writeup-inc\.github\.io\/saas\/monitor\/">/],
   ['noindex policy', /<meta name="robots" content="noindex, nofollow">/],
   ['initial fee disclosure', /初期費用[\s\S]{0,180}0円/],
-  ['monthly fee disclosure', /月額利用料[\s\S]{0,180}0円/],
+  ['monthly fee disclosure', /月額料金[\s\S]{0,180}0円/],
   ['API actual-cost disclosure', /API利用料などの実費のみ/],
   ['pre-start agreement', /開始前に書面で確認/],
   ['post-monitor terms', /継続は自動ではありません/],
@@ -30,6 +31,7 @@ const validate = (source) => {
   const duplicateIds = ids.filter((id, index) => ids.indexOf(id) !== index);
 
   if (cards.length < 4) failures.push(['at least four monitor cards']);
+  if (ids.join(',') !== expectedIds.join(',')) failures.push(['expected monitor service lineup']);
   if (duplicateIds.length) failures.push([`unique card ids (${[...new Set(duplicateIds)].join(', ')})`]);
 
   for (const id of ids) {
@@ -44,7 +46,7 @@ const validate = (source) => {
 if (process.argv.includes('--self-test')) {
   const cases = [
     ['API disclosure removed', html.replaceAll('API利用料などの実費のみ', '実費をご負担'), 'API actual-cost disclosure'],
-    ['share anchor removed', html.replace('data-share="ai-web-chat"', 'data-share="missing"'), 'share anchor for ai-web-chat'],
+    ['share anchor removed', html.replace('data-share="elliot"', 'data-share="missing"'), 'share anchor for elliot'],
   ];
 
   for (const [label, source, expected] of cases) {
@@ -65,4 +67,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`Monitor page checks passed: ${checks.length + 2 + ids.length} assertions, ${cards.length} service cards.`);
+console.log(`Monitor page checks passed: ${checks.length + 3 + ids.length} assertions, ${cards.length} service cards.`);
