@@ -111,6 +111,12 @@ Catalog-Update: no
 
 公開一覧へ載せない商材ディレクトリは、理由とともに `tools/index-check.config.json` の `excludedDirectories` へ明示する。
 
+## 重要タイポグラフィの回帰検査
+
+見出し階層や強調文の太さ・大きさを合意したLPは、`tools/critical-typography.config.json` に検査条件を登録する。`node tools/check-critical-typography.mjs --self-test` は、外部フォント依存、代替フォント、必須CSS宣言、本文ルールに負けないセレクタ優先順位を検査し、意図的に崩した陰性試験でも検知できることを確認する。GitHub Actionsでも毎回実行する。
+
+外部フォントを削除・変更するときは、代替フォントだけでなく、1440pxと390pxで見出しと強調文のcomputed style、横スクロール、コンソールエラーを確認する。CSS上の指定値だけでなく、ブラウザで最終的に適用された値を判定する。
+
 ## 注意
 
 - **料金・導入期間・個人情報の取り扱いは、資料に書かない。** 正本が未確定の商材があるため、社内の質問部屋で都度確認する運用にしている

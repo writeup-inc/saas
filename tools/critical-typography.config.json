@@ -1,0 +1,69 @@
+{
+  "pages": [
+    {
+      "path": "ai-business-partner/index.html",
+      "forbidRemoteFonts": true,
+      "requiredFallbackFonts": [
+        "-apple-system",
+        "BlinkMacSystemFont",
+        "Hiragino Sans",
+        "Yu Gothic",
+        "Meiryo"
+      ],
+      "requiredRules": [
+        {
+          "selector": "h1,h2,h3,h4",
+          "declarations": {
+            "font-weight": "900",
+            "-webkit-text-stroke": ".35px currentColor"
+          }
+        },
+        {
+          "selector": ".hero h1",
+          "declarations": {
+            "font-weight": "900",
+            "-webkit-text-stroke": ".7px currentColor"
+          }
+        },
+        {
+          "selector": ".body p.lead",
+          "declarations": {
+            "font-size": "clamp(20px,2.2vw,24px)",
+            "font-weight": "900",
+            "-webkit-text-stroke": ".4px currentColor"
+          },
+          "after": [
+            ".body p",
+            ".body p:last-child"
+          ]
+        }
+      ],
+      "forbiddenRules": [
+        ".lead"
+      ],
+      "requiredOccurrences": [
+        {
+          "text": "class=\"lead\"",
+          "minimum": 3
+        }
+      ],
+      "selfTestMutations": [
+        {
+          "name": "hero weight compensation removed",
+          "find": "-webkit-text-stroke:.7px currentColor",
+          "replace": "-webkit-text-stroke:0 currentColor"
+        },
+        {
+          "name": "lead selector loses specificity",
+          "find": ".body p.lead{font-size:clamp(20px,2.2vw,24px)",
+          "replace": ".lead{font-size:clamp(20px,2.2vw,24px)"
+        },
+        {
+          "name": "lead text shrinks to body size",
+          "find": "font-size:clamp(20px,2.2vw,24px);font-weight:900;line-height:1.8",
+          "replace": "font-size:16px;font-weight:900;line-height:1.8"
+        }
+      ]
+    }
+  ]
+}
