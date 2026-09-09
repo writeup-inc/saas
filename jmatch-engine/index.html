@@ -225,7 +225,7 @@ section{ padding:118px 0; border-top:1px solid var(--ln); }
 
 /* ══ 料金 ══ */
 .cover{ border:1px solid var(--ln); margin-bottom:24px; background:#fff; }
-.covh{ display:grid; grid-template-columns:104px repeat(3,1fr); border-bottom:1px solid var(--ln); }
+.covh{ display:grid; grid-template-columns:104px repeat(4,1fr); border-bottom:1px solid var(--ln); }
 .covh div{ padding:11px 14px; font-size:12.5px; font-weight:700; color:var(--g1); text-align:center; }
 .covh div:first-child{ text-align:left; }
 .covr{ display:grid; grid-template-columns:104px 1fr; align-items:center; border-bottom:1px solid var(--ln2); }
@@ -236,19 +236,19 @@ section{ padding:118px 0; border-top:1px solid var(--ln); }
 .covb{ height:20px; background:var(--acl2); border:1px solid var(--acm); }
 .covb.f2{ background:var(--ac); border-color:var(--ac); }
 .covb.f3{ background:var(--bk); border-color:var(--bk); }
+.covb.f0{ background:#fff; }
 @media (max-width:640px){ .cover{ display:none; } }
 
-.plans{ display:grid; border:1px solid var(--ln); background:#fff; }
-@media (min-width:900px){ .plans{ grid-template-columns:repeat(3,1fr); } }
-.pl{ padding:32px 26px 30px; display:flex; flex-direction:column;
-  border-right:1px solid var(--ln); border-bottom:1px solid var(--ln); }
-.pl:last-child{ border-right:0; }
-.pl.on{ background:var(--ac); color:#fff; border-right-color:var(--ac); }
+.plans{ display:grid; gap:1px; background:var(--ln); border:1px solid var(--ln); }
+@media (min-width:640px){ .plans{ grid-template-columns:1fr 1fr; } }
+.pl{ padding:30px 24px 28px; display:flex; flex-direction:column; background:#fff; }
+.pl.on{ background:var(--ac); color:#fff; }
+.pl.fr{ background:var(--pa); }
 .pl.dk{ background:var(--bk); color:#fff; }
 .pn{ font-family:"Inter",sans-serif; font-weight:700; font-size:12px; letter-spacing:.17em; color:var(--g2); }
 .pl.on .pn,.pl.dk .pn{ color:rgba(255,255,255,.64); }
-.pw{ font-weight:900; font-size:1.18rem; margin:9px 0 20px; letter-spacing:-.015em; }
-.pp{ font-family:"Inter",sans-serif; font-weight:900; font-size:clamp(2.4rem,4.4vw,3.3rem);
+.pw{ font-weight:900; font-size:1.14rem; margin:9px 0 18px; letter-spacing:-.015em; }
+.pp{ font-family:"Inter",sans-serif; font-weight:900; font-size:clamp(2.3rem,4vw,3.1rem);
   line-height:1; letter-spacing:-.05em; }
 .pu{ font-family:"Noto Sans JP",sans-serif; font-size:13px; font-weight:700; color:var(--g1);
   letter-spacing:0; display:block; margin-top:9px; }
@@ -263,6 +263,8 @@ section{ padding:118px 0; border-top:1px solid var(--ln); }
 .soon{ font-family:"Inter",sans-serif; font-size:12px; font-weight:700; color:var(--g2); }
 .pl.on .soon{ color:rgba(255,255,255,.6); }
 .pnote{ font-size:13.5px; color:var(--g1); margin-top:22px; line-height:1.85; }
+.plfoot{ font-size:12.5px; color:var(--g2); margin:16px 0 0; padding-top:14px; border-top:1px solid var(--ln2); line-height:1.7; }
+.pl.on .plfoot{ color:rgba(255,255,255,.66); border-top-color:rgba(255,255,255,.24); }
 
 /* ══ しないこと ══ */
 .nt{ display:grid; gap:10px; padding:28px 0; border-bottom:1px solid var(--ln); }
@@ -334,9 +336,9 @@ footer .note{ color:var(--g2); }
   <div>
     <span class="chip">SUBSIDY ／ FINANCE</span><span class="chipn">補助金も、融資も。</span>
     <h1>要るのは、<br><em>同じ一枚</em>だけ。</h1>
-    <p class="sub">事業計画書という一枚です。補助金の申請にも、銀行に出す書類にも、聞かれることはほとんど同じ。<b>その一枚を、16の手順に分けました。</b>自分で書けるようにするか、士業に丸ごと任せるか。どちらも選べます。</p>
+    <p class="sub">事業計画書という一枚です。補助金の申請にも、銀行に出す書類にも、聞かれることはほとんど同じ。<b>その一枚を、16の手順に分けました。</b>制度を知るところまでは無料です。たたきを受け取るか、自分で書けるようになるか、士業に丸ごと任せるか。そこから選べます。</p>
     <div class="hbtn">
-      <a class="cta" href="#price">3つのプランを見る</a>
+      <a class="cta" href="#price">料金を見る</a>
       <a class="cta gh" href="#how">使い方を見る ▸</a>
     </div>
   </div>
@@ -346,7 +348,7 @@ footer .note{ color:var(--g2); }
     <dl>
       <div class="row"><dt>使えるもの</dt><dd>補助金・融資<small>雇用関係の助成金は顧問契約のみ</small></dd></div>
       <div class="row"><dt>手順の数</dt><dd><em>16</em>（うち6つは使い回せる）</dd></div>
-      <div class="row"><dt>料金</dt><dd>月額3,000円／30,000円<small>顧問契約は月額100,000円〜・随時お見積り</small></dd></div>
+      <div class="row"><dt>料金</dt><dd>無料／月3,000円／30,000円<small>顧問契約は月額100,000円〜・随時お見積り</small></dd></div>
       <div class="row"><dt>しないこと</dt><dd>書かない・預からない<small>紹介料も受け取りません</small></dd></div>
       <div class="row"><dt>提供状況</dt><dd>順番待ち受付中<small>16の手順は順次ご提供します</small></dd></div>
     </dl>
@@ -520,43 +522,61 @@ footer .note{ color:var(--g2); }
 <section id="price"><div class="w two">
   <div class="side">
     <span class="snum">04</span><span class="slab">PRICE</span>
-    <h2>自分で書くか、<br>任せるか。</h2>
-    <p class="snote">工程のどこまでを持つかで、3つに分かれます。</p>
+    <h2>無料で始めて、<br>必要な分だけ上げる。</h2>
+    <p class="snote">工程のどこまでを持つかで、4つに分かれます。</p>
   </div>
   <div class="body">
     <div class="cover" aria-hidden="true">
-      <div class="covh"><div>PLAN</div><div>見つける</div><div>書く</div><div>任せる</div></div>
-      <div class="covr"><span class="covn">LIGHT</span><div class="covt"><div class="covb" style="width:33.3%"></div></div></div>
-      <div class="covr"><span class="covn">STANDARD</span><div class="covt"><div class="covb f2" style="width:66.6%"></div></div></div>
+      <div class="covh"><div>PLAN</div><div>知る</div><div>たたき</div><div>書き上げる</div><div>任せる</div></div>
+      <div class="covr"><span class="covn">FREE</span><div class="covt"><div class="covb f0" style="width:25%"></div></div></div>
+      <div class="covr"><span class="covn">LIGHT</span><div class="covt"><div class="covb" style="width:50%"></div></div></div>
+      <div class="covr"><span class="covn">STANDARD</span><div class="covt"><div class="covb f2" style="width:75%"></div></div></div>
       <div class="covr"><span class="covn">ADVISORY</span><div class="covt"><div class="covb f3" style="width:100%"></div></div></div>
     </div>
 
     <div class="plans">
+      <div class="pl fr">
+        <span class="pn">FREE</span>
+        <p class="pw">知る</p>
+        <p class="pp">0<span class="pu">円（税別）</span></p>
+        <p class="pd">使える制度が毎週届いて、自社が対象になりそうなものが分かるところまで。</p>
+        <ul>
+          <li>毎週、使える制度が届く（補助金・融資・税制優遇）</li>
+          <li>自社が対象になりそうな制度が分かる</li>
+          <li>対象経費に使える商材のご紹介</li>
+          <li>申請の進め方と、相談先のご案内</li>
+        </ul>
+        <p class="plfoot">ここまで、1円もかかりません。ほとんどの方は、ここで足ります。</p>
+      </div>
+
       <div class="pl">
         <span class="pn">LIGHT</span>
-        <p class="pw">見つける</p>
+        <p class="pw">たたきを受け取る</p>
         <p class="pp">3,000<span class="pu">円／月（税別）</span></p>
-        <p class="pd">使える制度を探して、締切を逃さないところまで。</p>
+        <p class="pd">本気で申請を取りにいく方だけ。過去の採択事例をもとに、AIがたたきをつくります。</p>
         <ul>
-          <li>制度検索。条件を入れて絞り込めます</li>
-          <li>診断結果の保存</li>
-          <li>公募開始・締切・要領改定のお知らせ</li>
-          <li>補助の対象になりうる商材のご紹介</li>
-          <li>士業のご紹介</li>
+          <li>無料の内容をすべて含みます</li>
+          <li>事業計画書のたたきをダウンロードできる</li>
+          <li>顧問の税理士・社労士へ渡す依頼書の生成</li>
+          <li>申請にあたっての注意点</li>
         </ul>
+        <p class="plfoot">出てくるのは、たたきです。仕上げるのは御社ご自身か、士業の先生になります。</p>
       </div>
+
       <div class="pl on">
         <span class="pn">STANDARD</span>
-        <p class="pw">自分で書く</p>
+        <p class="pw">自分で書けるようになる</p>
         <p class="pp">30,000<span class="pu">円／月（税別）</span></p>
-        <p class="pd">16の手順で、御社ご自身が一枚を書き上げるところまで。</p>
+        <p class="pd">たたきを受け取るのではなく、16の手順で御社ご自身が書き上げます。</p>
         <ul>
           <li>ライトの内容をすべて含みます</li>
           <li>16の手順。制度3・自社6・応募3・銀行4 <span class="soon">順次ご提供</span></li>
           <li>案件ごとの作業場と書き直しの記録 <span class="soon">順次ご提供</span></li>
           <li>お問い合わせ窓口 <span class="soon">準備中</span></li>
         </ul>
+        <p class="plfoot">一度書いた6つは資産として残り、来年も、銀行に出す一枚にも使えます。</p>
       </div>
+
       <div class="pl dk">
         <span class="pn">ADVISORY</span>
         <p class="pw">丸ごと任せる</p>
@@ -570,6 +590,7 @@ footer .note{ color:var(--g2); }
           <li>雇用関係の助成金（社会保険労務士が担当）</li>
           <li>範囲・ご契約の形は、ご相談のうえ決めます</li>
         </ul>
+        <p class="plfoot">顧問の先生がすでにいらっしゃる場合は、その先生に渡す資料をつくる使い方もできます。</p>
       </div>
     </div>
     <p class="pnote">スタンダードは現在、順番待ちの受付のみとなります。顧問契約は、対象とする制度と業務の範囲をお伺いしたうえでお見積りします。</p>
@@ -583,7 +604,8 @@ footer .note{ color:var(--g2); }
     <p class="snote">ライトとスタンダードで引いている線です。</p>
   </div>
   <div class="body">
-    <p class="rd">ライトとスタンダードは、御社ご自身が書くための道具です。私たちが代わりに書くことはありません。</p>
+    <p class="rd">無料・ライト・スタンダードは、御社ご自身が書くための道具です。私たちが代わりに書くことはありません。</p>
+    <p>ライトで出てくるのは、あくまで<strong>たたき</strong>です。過去の採択事例をもとにAIが下書きをつくりますが、そのまま出せるものではありません。仕上げるのは御社ご自身か、士業の先生になります。</p>
     <div class="nt"><span class="ni">01</span><b>申請書類は書きません</b>
       <span>報酬をいただいて代わりに書くのは、社会保険労務士や行政書士といった有資格者の仕事だからです。名目がコンサルティング料であっても、実態で判断されます。<strong>御社ご自身が書かれる分には、もちろん問題ありません。</strong>その速度を上げるのが、この手順です。</span></div>
     <div class="nt"><span class="ni">02</span><b>決算書は預かりません</b>
@@ -594,6 +616,7 @@ footer .note{ color:var(--g2); }
       <p><strong>書類の作成そのものが必要な場合は、顧問契約をご案内します。</strong>担当するのは提携先の士業事務所です。</p>
       <p>雇用や採用に関わる助成金は社会保険労務士の領域にあたるため、ライトとスタンダードでは扱えません。この場合も顧問契約でのご対応になります。</p>
       <p>採択や融資の承認をお約束することはありません。審査するのは制度の実施機関と金融機関であり、私たちではありません。</p>
+      <p>ある商材や経費がその制度の対象になるかどうかの最終判断も、制度の事務局が行います。私たちがお示しできるのは「対象になり得る」候補までです。</p>
     </div>
   </div>
 </div></section>
@@ -604,6 +627,10 @@ footer .note{ color:var(--g2); }
     <h2>申し込む前の、<br>確認事項。</h2>
   </div>
   <div class="body"><div class="qa">
+    <div class="r"><span class="m">Q</span><span class="q">無料と月3,000円は、何が違いますか。</span></div>
+    <div class="r a"><span class="m">A</span><span class="t">無料では、使える制度が毎週届き、自社が対象になりそうなものが分かります。ほとんどの方はここで足ります。月3,000円は、本気で申請を取りにいく方だけのものです。過去の採択事例をもとにした事業計画書のたたきと、顧問の税理士・社労士へ渡す依頼書が出せるようになります。</span></div>
+    <div class="r"><span class="m">Q</span><span class="q">月3,000円のたたきと、月30,000円の16の手順は、どう違いますか。</span></div>
+    <div class="r a"><span class="m">A</span><span class="t">たたきは、受け取るものです。16の手順は、御社ご自身が書けるようになるためのものです。たたきは制度ごとに作り直しますが、手順で書いた6つは資産として残り、来年も、銀行に出す一枚にも使えます。</span></div>
     <div class="r"><span class="m">Q</span><span class="q">本当に自分で書けるようになりますか。</span></div>
     <div class="r a"><span class="m">A</span><span class="t">書けるようになることを目指した設計ですが、お約束はできません。白紙の欄を埋める代わりに、答えられる問いにお答えいただく形にしています。手を動かしていただく必要はあります。</span></div>
     <div class="r"><span class="m">Q</span><span class="q">採択されることは約束されますか。</span></div>
@@ -623,10 +650,10 @@ footer .note{ color:var(--g2); }
 
 <section id="cta" class="fin"><div class="w">
   <span class="snum">07</span><span class="slab">NEXT</span>
-  <h2>まず、1つの制度で<br>試してみてください。</h2>
-  <p>使えそうな制度を探すところまでは、月額3,000円から始められます。書けるようになりたい段階でスタンダードへ、書類の作成そのものが必要になったら顧問契約へ。順番に上げていけます。</p>
+  <h2>まず、無料で<br>受け取ってみてください。</h2>
+  <p>使える制度が毎週届くところまでは、無料です。申請を取りにいく段になったらライトへ、自分で書けるようになりたければスタンダードへ、書類の作成そのものが必要になったら顧問契約へ。必要な分だけ、順番に上げていけます。</p>
   <div class="hbtn">
-    <a class="cta" href="#">プランを申し込む</a>
+    <a class="cta" href="#">無料ではじめる</a>
     <a class="cta gh" href="#">顧問契約を相談する ▸</a>
   </div>
   <p class="coda">補助金も、融資も、<br>要るのは同じ一枚です。</p>
@@ -664,7 +691,7 @@ footer .note{ color:var(--g2); }
   画面はイメージです。実際の表示と異なる場合があります。</p>
 </div></footer>
 
-<div class="fx"><a href="#price">3つのプランを見る</a></div>
+<div class="fx"><a href="#price">料金を見る</a></div>
 
 </body>
 </html>
