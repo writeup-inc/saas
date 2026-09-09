@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://writeup-inc.github.io/saas/ai-bird-work-discovery/">
+<meta name="theme-color" content="#101219">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AIバード｜AI化する仕事から、一緒に見つける。">
+<meta property="og:description" content="業務を見つけ、優先順位を決め、AIスキルをつくり、運用まで伴走。AIツールの企業向け家庭教師・運用代行サービス。">
+<meta property="og:url" content="https://writeup-inc.github.io/saas/ai-bird-work-discovery/">
+<meta name="twitter:card" content="summary">
+<title>AIバード｜AI化する仕事から、一緒に見つける。</title>
+<style>
+:root{
+  --ink:#101219;
+  --ink2:#272b35;
+  --paper:#f4f2eb;
+  --white:#fffefa;
+  --blue:#1769e8;
+  --blue-d:#0c47a8;
+  --lime:#d8ff56;
+  --mist:#e7ecf5;
+  --muted:#666c78;
+  --line:#cfd2d7;
+  --max:1200px;
+  --shadow:0 24px 70px rgba(16,18,25,.13);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif;line-height:1.85;letter-spacing:.025em;-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:inherit}
+button,a{touch-action:manipulation}
+svg{display:block;max-width:100%}
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding-inline:32px}
+.eyebrow{display:flex;align-items:center;gap:11px;font-size:11px;font-weight:850;letter-spacing:.2em;text-transform:uppercase;line-height:1;color:var(--blue)}
+.eyebrow::before{content:"";width:28px;height:2px;background:currentColor}
+.section-head{display:grid;grid-template-columns:minmax(0,390px) minmax(0,1fr);gap:64px;align-items:end;margin-bottom:54px}
+.section-head h2{margin:18px 0 0;font-size:clamp(30px,4.4vw,56px);line-height:1.28;letter-spacing:-.045em;font-weight:900}
+.section-head p{margin:0;color:var(--muted);font-size:16px;max-width:650px}
+.accent{color:var(--blue)}
+.marker{background:linear-gradient(transparent 59%,var(--lime) 59%);padding-inline:.04em}
+.btn{display:inline-flex;min-height:56px;align-items:center;justify-content:center;gap:14px;padding:14px 26px;background:var(--ink);color:#fff;text-decoration:none;font-size:14px;font-weight:850;letter-spacing:.06em;border:2px solid var(--ink);transition:transform .2s ease,background .2s ease,border-color .2s ease}
+.btn:hover{transform:translateY(-2px);background:var(--blue);border-color:var(--blue)}
+.btn:focus-visible,.text-link:focus-visible,.choice-link:focus-visible{outline:3px solid var(--lime);outline-offset:4px}
+.btn .arrow{font-size:19px;line-height:1}
+.rv{opacity:1;transform:none}
+
+/* header */
+.site-header{position:fixed;z-index:50;inset:0 0 auto;background:rgba(244,242,235,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(16,18,25,.13)}
+.header-inner{height:64px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:11px;font-size:13px;font-weight:900;letter-spacing:.08em;text-decoration:none;white-space:nowrap}
+.bird-mark{position:relative;width:24px;height:18px;flex:none}
+.bird-mark::before,.bird-mark::after{content:"";position:absolute;top:2px;width:15px;height:11px;border-top:3px solid var(--blue);border-radius:80% 80% 0 0}
+.bird-mark::before{left:0;transform:rotate(19deg)}
+.bird-mark::after{right:0;transform:rotate(-19deg)}
+.header-nav{display:flex;align-items:center;gap:28px}
+.header-nav .text-link{font-size:12px;font-weight:800;text-decoration:none}
+.header-nav .btn{min-height:40px;padding:7px 16px;font-size:12px}
+
+/* hero */
+.hero{min-height:790px;padding:154px 0 88px;position:relative;isolation:isolate;background:var(--paper);overflow:hidden}
+.hero::before{content:"";position:absolute;z-index:-2;right:-170px;top:40px;width:610px;height:610px;border:1px solid rgba(23,105,232,.2);border-radius:50%}
+.hero::after{content:"";position:absolute;z-index:-1;left:0;right:0;bottom:0;height:92px;background:var(--ink)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.16fr) minmax(360px,.84fr);gap:72px;align-items:center}
+.hero .eyebrow{margin-bottom:30px}
+.hero h1{margin:0;font-size:clamp(48px,7.1vw,98px);line-height:1.08;letter-spacing:-.065em;font-weight:950}
+.hero h1 span{display:block}
+.hero h1 .small{font-size:.48em;letter-spacing:-.035em;margin-bottom:14px}
+.hero-lead{max-width:690px;margin:36px 0 0;font-size:clamp(17px,1.55vw,21px);font-weight:750;line-height:1.9}
+.hero-lead small{display:block;margin-top:10px;font-size:13px;font-weight:600;color:var(--muted)}
+.hero-actions{margin-top:40px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.hero-actions .note{font-size:12px;color:var(--muted);line-height:1.65}
+.hero-map{position:relative;background:var(--white);border:1px solid var(--ink);box-shadow:var(--shadow);padding:18px;transform:rotate(1.2deg)}
+.hero-map::before{content:"FIELD MAP / AI-BIRD";position:absolute;right:18px;top:-29px;font-size:9px;font-weight:900;letter-spacing:.2em;color:var(--muted)}
+.map-window{border:1px solid var(--line)}
+.map-head{display:flex;align-items:center;justify-content:space-between;background:var(--ink);color:#fff;padding:12px 14px}
+.map-head strong{font-size:11px;letter-spacing:.15em}
+.map-head span{display:flex;align-items:center;gap:7px;font-size:9px;color:#d8dde9}
+.map-head span::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 4px rgba(216,255,86,.14)}
+.map-body{padding:19px}
+.map-question{background:var(--mist);border-left:5px solid var(--blue);padding:13px 14px;font-size:13px;font-weight:850;line-height:1.55}
+.map-route{display:grid;grid-template-columns:1fr 26px 1fr;align-items:center;margin-top:16px}
+.route-card{border:1px solid var(--line);padding:14px 12px;min-height:112px}
+.route-card span{font-size:9px;color:var(--blue);font-weight:900;letter-spacing:.14em}
+.route-card strong{display:block;font-size:15px;margin-top:5px;line-height:1.4}
+.route-card small{display:block;margin-top:7px;color:var(--muted);font-size:10px;line-height:1.55}
+.route-or{text-align:center;font-size:9px;font-weight:900;color:var(--muted)}
+.map-down{text-align:center;font-size:18px;height:31px;line-height:31px;color:var(--blue)}
+.map-result{background:var(--ink);color:#fff;padding:17px 16px}
+.map-result span{font-size:9px;color:var(--lime);font-weight:900;letter-spacing:.14em}
+.map-result strong{display:block;font-size:18px;line-height:1.45;margin-top:4px}
+.map-result small{display:block;font-size:10px;color:#b8beca;margin-top:6px}
+.hero-strip{position:absolute;left:0;right:0;bottom:0;height:92px;color:#fff;display:flex;align-items:center;overflow:hidden}
+.ticker{display:flex;gap:46px;align-items:center;white-space:nowrap;font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;animation:ticker 26s linear infinite}
+.ticker span{display:flex;gap:46px;align-items:center}
+.ticker i{width:7px;height:7px;background:var(--lime);transform:rotate(45deg)}
+@keyframes ticker{to{transform:translateX(-50%)}}
+
+/* pain */
+.pain{padding:124px 0 126px;background:var(--ink);color:#fff}
+.pain .eyebrow{color:var(--lime)}
+.pain-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(420px,1.14fr);gap:78px;align-items:start}
+.pain h2{margin:23px 0 0;font-size:clamp(35px,5vw,68px);line-height:1.24;letter-spacing:-.05em;font-weight:900}
+.pain h2 em{color:var(--lime);font-style:normal}
+.voice-stack{position:relative;padding-top:10px}
+.voice{position:relative;background:#fff;color:var(--ink);padding:24px 27px;margin-bottom:16px;border-radius:0 22px 22px 22px;font-size:clamp(18px,2.1vw,26px);font-weight:900;line-height:1.55;box-shadow:0 18px 45px rgba(0,0,0,.18)}
+.voice:nth-child(2){margin-left:54px;background:var(--lime);border-radius:22px 0 22px 22px}
+.voice small{display:block;margin-top:10px;font-size:11px;font-weight:700;color:#5b6070;line-height:1.6}
+.voice-note{margin:24px 0 0;color:#aeb4c2;font-size:12px;line-height:1.8}
+.pain-answer{grid-column:1/-1;margin-top:18px;padding-top:44px;border-top:1px solid #323641;display:grid;grid-template-columns:180px 1fr;gap:40px}
+.pain-answer b{color:var(--lime);font-size:12px;letter-spacing:.15em}
+.pain-answer p{margin:0;max-width:880px;font-size:clamp(20px,2.5vw,31px);font-weight:800;line-height:1.7}
+
+/* process */
+.process{padding:126px 0;background:var(--white)}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--ink)}
+.step{position:relative;padding:28px 22px 30px;border-left:1px solid var(--line);min-height:260px;background:var(--white)}
+.step:first-child{border-left:0;background:var(--blue);color:#fff}
+.step:nth-child(2){background:#edf3ff}
+.step-no{font-size:10px;font-weight:900;letter-spacing:.18em;color:var(--blue)}
+.step:first-child .step-no{color:var(--lime)}
+.step h3{margin:32px 0 12px;font-size:20px;line-height:1.35;letter-spacing:-.02em}
+.step p{margin:0;font-size:13px;line-height:1.8;color:var(--muted)}
+.step:first-child p{color:#dbe7ff}
+.step::after{content:"→";position:absolute;z-index:2;right:-13px;top:47px;width:26px;height:26px;border:1px solid var(--line);background:var(--white);display:grid;place-items:center;color:var(--blue);font-size:12px;border-radius:50%}
+.step:last-child::after{display:none}
+.process-caption{margin:25px 0 0;display:flex;justify-content:flex-end;gap:11px;align-items:center;color:var(--muted);font-size:12px}
+.process-caption::before{content:"";width:44px;height:1px;background:var(--line)}
+
+/* delivery */
+.delivery{padding:126px 0;border-top:1px solid var(--line)}
+.delivery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.delivery-card{background:var(--paper);padding:36px 34px;min-height:230px}
+.delivery-card.feature{background:var(--lime)}
+.delivery-card .tag{font-size:10px;font-weight:900;letter-spacing:.15em;color:var(--blue)}
+.delivery-card h3{margin:22px 0 10px;font-size:23px;line-height:1.45;letter-spacing:-.02em}
+.delivery-card p{margin:0;color:var(--muted);font-size:14px}
+.delivery-card.feature p{color:#3c421c}
+.delivery-card ul{margin:18px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:7px}
+.delivery-card li{font-size:10px;font-weight:800;border:1px solid rgba(16,18,25,.2);padding:4px 9px;background:rgba(255,255,255,.5)}
+
+/* choices */
+.choices{padding:126px 0;background:var(--blue);color:#fff;position:relative;overflow:hidden}
+.choices::before{content:"";position:absolute;left:-190px;bottom:-360px;width:650px;height:650px;border:1px solid rgba(255,255,255,.22);border-radius:50%}
+.choices .section-head{position:relative}
+.choices .eyebrow{color:var(--lime)}
+.choices .section-head p{color:#d7e4fb}
+.choice-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.choice-card{background:var(--white);color:var(--ink);padding:42px 40px;display:flex;flex-direction:column;min-height:500px}
+.choice-top{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line);padding-bottom:26px}
+.choice-kicker{font-size:10px;color:var(--blue);font-weight:900;letter-spacing:.16em}
+.choice-card h3{margin:8px 0 0;font-size:clamp(31px,4vw,48px);line-height:1.15;letter-spacing:-.04em}
+.choice-icon{width:74px;height:74px;flex:none;border:1px solid var(--ink);display:grid;place-items:center;background:var(--lime)}
+.choice-icon svg{width:45px;height:45px}
+.choice-for{margin:26px 0 0;font-size:16px;font-weight:850;line-height:1.7}
+.choice-desc{margin:13px 0 0;color:var(--muted);font-size:14px}
+.deliverable{margin:28px 0 0;padding:20px;background:var(--mist)}
+.deliverable span{font-size:9px;font-weight:900;color:var(--blue);letter-spacing:.15em}
+.deliverable strong{display:block;margin-top:5px;font-size:17px;line-height:1.55}
+.choice-link{margin-top:auto;padding-top:28px;text-decoration:none;font-weight:850;font-size:13px;color:var(--blue);display:inline-flex;align-items:center;gap:9px;width:max-content}
+.choice-help{position:relative;margin-top:20px;padding:22px 26px;border:1px solid rgba(255,255,255,.42);display:flex;align-items:center;justify-content:space-between;gap:24px;background:rgba(9,54,125,.38)}
+.choice-help strong{font-size:16px}
+.choice-help p{margin:0;color:#dbe7fa;font-size:13px}
+
+/* benefit */
+.benefit{padding:126px 0;background:var(--paper)}
+.benefit-band{display:grid;grid-template-columns:310px 1fr;border:1px solid var(--ink)}
+.benefit-title{background:var(--ink);color:#fff;padding:42px 34px}
+.benefit-title span{font-size:10px;color:var(--lime);font-weight:900;letter-spacing:.16em}
+.benefit-title h2{margin:18px 0 0;font-size:31px;line-height:1.4;letter-spacing:-.035em}
+.benefit-body{background:var(--white);padding:42px 44px}
+.benefit-body .big{margin:0;font-size:clamp(22px,3vw,36px);font-weight:900;line-height:1.55;letter-spacing:-.025em}
+.benefit-body .big em{font-style:normal;color:var(--blue)}
+.benefit-body .detail{margin:24px 0 0;color:var(--muted);font-size:14px}
+.benefit-items{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:28px}
+.benefit-items div{background:var(--mist);padding:17px 15px}
+.benefit-items span{font-size:9px;color:var(--blue);font-weight:900;letter-spacing:.12em}
+.benefit-items strong{display:block;margin-top:6px;font-size:13px;line-height:1.55}
+.benefit-note{margin:18px 0 0;font-size:11px;color:var(--muted)}
+
+/* guardrails */
+.guardrails{padding:126px 0;background:var(--white);border-top:1px solid var(--line)}
+.guard-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:70px;align-items:start}
+.guard-copy h2{margin:20px 0 0;font-size:clamp(32px,4.5vw,56px);line-height:1.3;letter-spacing:-.045em}
+.guard-copy p{margin:26px 0 0;color:var(--muted)}
+.guard-list{border-top:1px solid var(--ink)}
+.guard-item{display:grid;grid-template-columns:54px 1fr;gap:18px;padding:24px 0;border-bottom:1px solid var(--line)}
+.guard-item span{font-size:11px;color:var(--blue);font-weight:900}
+.guard-item strong{display:block;font-size:16px}
+.guard-item p{margin:6px 0 0;color:var(--muted);font-size:13px}
+
+/* cta */
+.cta{padding:130px 0;background:var(--lime)}
+.cta-box{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:70px;align-items:center}
+.cta .eyebrow{color:var(--ink)}
+.cta h2{margin:22px 0 0;font-size:clamp(38px,6vw,76px);line-height:1.18;letter-spacing:-.055em}
+.cta p{margin:28px 0 0;max-width:660px;color:#424827;font-size:15px}
+.cta-action{background:var(--white);border:1px solid var(--ink);padding:30px}
+.cta-action .btn{width:100%}
+.cta-action ol{margin:22px 0 0;padding:0 0 0 20px}
+.cta-action li{font-size:12px;line-height:1.8;margin-top:7px;color:var(--muted)}
+.cta-action li:first-child{margin-top:0}
+.cta-action b{color:var(--ink)}
+.cta-action .official{display:block;margin-top:20px;text-align:center;font-size:11px;font-weight:800;color:var(--blue)}
+
+footer{padding:54px 0;background:var(--ink);color:#fff}
+.footer-inner{display:flex;justify-content:space-between;align-items:flex-start;gap:30px}
+.footer-brand{font-size:14px;font-weight:900;letter-spacing:.08em}
+.footer-copy{text-align:right;font-size:11px;line-height:1.8;color:#9da4b2;max-width:620px}
+
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:70px}.hero-map{max-width:580px;margin-left:auto;margin-right:auto}
+  .pain-grid{grid-template-columns:1fr;gap:52px}.pain-answer{grid-template-columns:1fr;gap:12px}
+  .section-head{grid-template-columns:1fr;gap:24px}
+  .steps{grid-template-columns:1fr 1fr}.step{border-top:1px solid var(--line);min-height:220px}.step:first-child{border-top:0}.step:nth-child(2){border-top:0}.step::after{display:none}
+  .choice-grid{grid-template-columns:1fr}.choice-card{min-height:0}.choice-link{margin-top:30px}
+  .benefit-band{grid-template-columns:1fr}.benefit-items{grid-template-columns:1fr}
+  .guard-grid{grid-template-columns:1fr;gap:44px}.cta-box{grid-template-columns:1fr}.cta-action{max-width:520px}
+}
+@media(max-width:720px){
+  .wrap{padding-inline:20px}.site-header{position:absolute}.header-nav .text-link{display:none}.header-nav .btn{font-size:11px;padding-inline:12px}
+  .hero{padding:128px 0 80px;min-height:auto}.hero::after{height:74px}.hero h1{font-size:clamp(46px,15vw,72px)}.hero h1 .small{font-size:.42em}.hero-grid{gap:56px}.hero-strip{height:74px}.ticker{font-size:9px}
+  .pain,.process,.delivery,.choices,.benefit,.guardrails,.cta{padding:86px 0}
+  .voice:nth-child(2){margin-left:20px}.voice{padding:20px;font-size:20px}
+  .steps{grid-template-columns:1fr}.step,.step:nth-child(2){border-left:0;border-top:1px solid var(--line);min-height:0;padding:24px}.step:first-child{border-top:0}.step h3{margin-top:18px}
+  .delivery-grid{grid-template-columns:1fr}.delivery-card{min-height:0;padding:28px 24px}
+  .choice-card{padding:30px 24px}.choice-icon{width:60px;height:60px}.choice-icon svg{width:36px;height:36px}.choice-help{align-items:flex-start;flex-direction:column}
+  .benefit-title,.benefit-body{padding:30px 24px}.guard-item{grid-template-columns:40px 1fr}
+  .cta-action{padding:24px}.footer-inner{flex-direction:column}.footer-copy{text-align:left}
+}
+@media(max-width:420px){
+  .brand{font-size:12px}.brand span:last-child{display:none}.header-inner{height:58px}.header-nav .btn{min-height:36px}
+  .hero h1{font-size:45px}.hero-lead{font-size:16px}.hero-actions{align-items:flex-start;flex-direction:column}.hero-map{padding:11px}.map-body{padding:13px}.map-route{grid-template-columns:1fr}.route-or{padding:8px}.route-card{min-height:0}
+  .pain h2{font-size:36px}.section-head h2{font-size:34px}.choice-top{align-items:center}.choice-card h3{font-size:34px}.choice-icon{width:52px;height:52px}.benefit-body .big{font-size:23px}.cta h2{font-size:42px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}.ticker{animation:none}.btn{transition:none}}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top" aria-label="AIバード トップへ"><span class="bird-mark" aria-hidden="true"></span><span>AIバード</span><span>｜企業向けAI運用パートナー</span></a>
+    <nav class="header-nav" aria-label="ページ内ナビゲーション">
+      <a class="text-link" href="#how">支援の流れ</a>
+      <a class="text-link" href="#choice">選べる業務発見</a>
+      <a class="btn" href="#contact">相談方法 <span class="arrow" aria-hidden="true">↓</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div class="hero-copy rv">
+        <p class="eyebrow">AI Operation Partner</p>
+        <h1 id="hero-title"><span class="small">AI化する仕事から、</span><span>一緒に<span class="accent">見つける。</span></span></h1>
+        <p class="hero-lead">見つけたら、つくる。回す。育てる。<br>AIバードは、ツールの使い方だけでなく、<span class="marker">何をAIに任せるか</span>から並走する企業向けAI運用パートナーです。<small>AIスキル作成／Claude Codeスキル作成／AIツール運用代行／AIコンサル／社内向け家庭教師</small></p>
+        <div class="hero-actions">
+          <a class="btn" href="#choice">業務の見つけ方を見る <span class="arrow" aria-hidden="true">↓</span></a>
+          <span class="note">ツールが決まっていなくても<br>相談できます。</span>
+        </div>
+      </div>
+      <div class="hero-map rv" aria-label="業務発見からAI実装までの流れ">
+        <div class="map-window">
+          <div class="map-head"><strong>WHAT SHOULD AI DO?</strong><span>SEARCHING WORK</span></div>
+          <div class="map-body">
+            <div class="map-question">「AIを使おう」より先に、<br>任せる仕事を見つける。</div>
+            <div class="map-route">
+              <div class="route-card"><span>EXISTING LOGS</span><strong>Elliot</strong><small>会議・商談・日報から<br>見落とされた課題を読む</small></div>
+              <div class="route-or">OR</div>
+              <div class="route-card"><span>ACTUAL WORK</span><strong>ワークログ</strong><small>日々の作業時間から<br>AI化候補を見つける</small></div>
+            </div>
+            <div class="map-down" aria-hidden="true">↓</div>
+            <div class="map-result"><span>AI-BIRD DELIVERY</span><strong>つくる → 回す → 社内に残す</strong><small>AIスキル・運用フロー・使い方の定着</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-strip" aria-hidden="true">
+      <div class="ticker"><span>FIND THE WORK <i></i> BUILD THE SKILL <i></i> RUN WITH PEOPLE <i></i> LEARN AND IMPROVE <i></i></span><span>FIND THE WORK <i></i> BUILD THE SKILL <i></i> RUN WITH PEOPLE <i></i> LEARN AND IMPROVE <i></i></span></div>
+    </div>
+  </section>
+
+  <section class="pain" aria-labelledby="pain-title">
+    <div class="wrap pain-grid">
+      <div class="rv">
+        <p class="eyebrow">The Real Bottleneck</p>
+        <h2 id="pain-title">止まっているのは、<br>AIではなく<br><em>「依頼」</em>です。</h2>
+      </div>
+      <div class="voice-stack rv">
+        <div class="voice">「Claude Codeに、何を頼めばいいんだろう。」<small>AIを渡された社員から、よく出る相談</small></div>
+        <div class="voice">「それなら、チャットで十分では？」<small>使い分けより先に、仕事の定義で止まっている</small></div>
+        <p class="voice-note">※実際に寄せられた複数の相談をもとに、人物や部署を特定できない形で再構成しています。</p>
+      </div>
+      <div class="pain-answer rv">
+        <b>AI-BIRD'S VIEW</b>
+        <p>必要なのは、もっと多くのAIツールではありません。<br><span class="marker">社内の仕事を見つけ、AIへの依頼に変える設計</span>です。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="process" id="how" aria-labelledby="how-title">
+    <div class="wrap">
+      <div class="section-head rv">
+        <div><p class="eyebrow">How We Work</p><h2 id="how-title">発見から運用まで、<br>一本につなぐ。</h2></div>
+        <p>「何をAI化するか」と「どうAI化するか」を別々にしない。AIバードが、現場の仕事を見つけるところから、つくった仕組みが使われ続けるところまで支えます。</p>
+      </div>
+      <div class="steps rv">
+        <article class="step"><span class="step-no">01 / FIND</span><h3>仕事を<br>見つける</h3><p>Elliotまたはワークログで、AI化の種を拾います。</p></article>
+        <article class="step"><span class="step-no">02 / PRIORITIZE</span><h3>順番を<br>決める</h3><p>効果と実行しやすさから、最初に着手する業務を選びます。</p></article>
+        <article class="step"><span class="step-no">03 / BUILD</span><h3>仕組みを<br>つくる</h3><p>AIスキル、Claude Codeスキル、運用フローへ落とします。</p></article>
+        <article class="step"><span class="step-no">04 / RUN</span><h3>一緒に<br>回す</h3><p>設定だけで終わらせず、日々の運用を支えます。</p></article>
+        <article class="step"><span class="step-no">05 / LEARN</span><h3>社内に<br>残す</h3><p>家庭教師のように伝え、改善できる知見を育てます。</p></article>
+      </div>
+      <p class="process-caption">納品して終わりではなく、使われるところまで。</p>
+    </div>
+  </section>
+
+  <section class="delivery" aria-labelledby="delivery-title">
+    <div class="wrap">
+      <div class="section-head rv">
+        <div><p class="eyebrow">What AI-Bird Can Do</p><h2 id="delivery-title">必要な役割を、<br>必要な分だけ。</h2></div>
+        <p>決まったパッケージを当てはめるのではなく、見つかった業務に合わせて、設計・実装・運用・社内定着を組み合わせます。</p>
+      </div>
+      <div class="delivery-grid rv">
+        <article class="delivery-card feature"><span class="tag">BUILD</span><h3>AIスキルをつくる</h3><p>よく使う手順や判断基準を、繰り返し使えるAIスキルに整えます。</p><ul><li>業務手順</li><li>判断ルール</li><li>検証方法</li></ul></article>
+        <article class="delivery-card"><span class="tag">DEVELOP</span><h3>Claude Codeスキルをつくる</h3><p>開発や制作の依頼を、社内の型に合った再利用可能な手順へ変えます。</p><ul><li>制作</li><li>開発</li><li>QA</li></ul></article>
+        <article class="delivery-card"><span class="tag">OPERATE</span><h3>AIツールを運用する</h3><p>設定後の実務、改善、見直しまで、日々の運用を一緒に回します。</p><ul><li>初期設定</li><li>業務組込み</li><li>改善提案</li></ul></article>
+        <article class="delivery-card"><span class="tag">COACH</span><h3>相談相手・家庭教師になる</h3><p>経営と現場の両方に合わせて、AIの使い方と任せ方を伝えます。</p><ul><li>AIコンサル</li><li>社内レクチャー</li><li>自走支援</li></ul></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="choices" id="choice" aria-labelledby="choice-title">
+    <div class="wrap">
+      <div class="section-head rv">
+        <div><p class="eyebrow">Choose How To Find</p><h2 id="choice-title">業務の見つけ方を、<br>2つから選べます。</h2></div>
+        <p>すでに社内へ蓄積している言葉を読むか、日々の実作業を測るか。会社の状態に合う入口を選び、AIバードの実装へつなげます。</p>
+      </div>
+      <div class="choice-grid">
+        <article class="choice-card rv">
+          <div class="choice-top"><div><span class="choice-kicker">READ EXISTING LOGS</span><h3>Elliot</h3></div><div class="choice-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M8 10h25v27H8z" stroke="#101219" stroke-width="2"/><path d="M15 17h11M15 23h13M15 29h8" stroke="#1769e8" stroke-width="3"/><path d="m31 27 9 9m0-9-9 9" stroke="#101219" stroke-width="2"/></svg></div></div>
+          <p class="choice-for">会議・商談・日報はある。<br>でも、次の打ち手に変わっていない会社へ。</p>
+          <p class="choice-desc">すでにある生ログを横断して読み、営業・経営・企画に必要な示唆を見つけます。</p>
+          <div class="deliverable"><span>YOU RECEIVE</span><strong>埋もれていた論点と、<br>AI化へつながる業務の示唆</strong></div>
+          <a class="choice-link" href="https://elliotlog.figma.site/" target="_blank" rel="noopener noreferrer">Elliotの詳細を見る <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="choice-card rv">
+          <div class="choice-top"><div><span class="choice-kicker">SEE ACTUAL WORK</span><h3>ワークログ<br>インサイト</h3></div><div class="choice-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M7 9h34v24H7zM17 39h14M24 33v6" stroke="#101219" stroke-width="2"/><path d="M12 27V17m7 10V13m7 14v-7m7 7V11" stroke="#1769e8" stroke-width="3"/></svg></div></div>
+          <p class="choice-for">誰が何に時間を使っているか、<br>自己申告だけでは分からない会社へ。</p>
+          <p class="choice-desc">PC上の業務ログから作業時間を捉え、AI化すべき業務と優先順位を可視化します。</p>
+          <div class="deliverable"><span>YOU RECEIVE</span><strong>仕事の時間内訳と、<br>優先順位つきのAI化候補</strong></div>
+          <a class="choice-link" href="../worklog-insight/">ワークログ インサイトの詳細を見る <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+      <div class="choice-help rv"><strong>迷ったら、相談時に一緒に決めます。</strong><p>会議・商談の情報が滞留しているなら Elliot。実作業の時間が見えないならワークログが目安です。</p></div>
+    </div>
+  </section>
+
+  <section class="benefit" aria-labelledby="benefit-title">
+    <div class="wrap">
+      <div class="benefit-band rv">
+        <div class="benefit-title"><span>DISCOVERY BENEFIT</span><h2 id="benefit-title">AIバードと、<br>仕事の発見を<br>セットに。</h2></div>
+        <div class="benefit-body">
+          <p class="big">一定の条件を満たすAIバードのご契約では、<em>2つの業務発見サービスから1つ</em>を選択できます。</p>
+          <p class="detail">「つくってほしいもの」が決まっていなくても大丈夫です。先に仕事を見つけ、AIバードが実装・運用へつなげます。</p>
+          <div class="benefit-items"><div><span>OUTPUT 01</span><strong>AI化候補の業務リスト</strong></div><div><span>OUTPUT 02</span><strong>現状と課題の見える化</strong></div><div><span>OUTPUT 03</span><strong>着手順の判断材料</strong></div></div>
+          <p class="benefit-note">※適用条件および提供範囲は個別にご案内します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="guardrails" aria-labelledby="guard-title">
+    <div class="wrap guard-grid">
+      <div class="guard-copy rv"><p class="eyebrow">Human In The Loop</p><h2 id="guard-title">人を置き去りにしない、<br>業務改善へ。</h2><p>特にワークログは、社員を順位づけるためではなく、本人と会社が仕事を見直すために使います。AIの推定だけで重要な判断を確定しません。</p></div>
+      <div class="guard-list rv">
+        <div class="guard-item"><span>01</span><div><strong>本人へ還元する</strong><p>まず自分の仕事を振り返り、改善の材料として使います。</p></div></div>
+        <div class="guard-item"><span>02</span><div><strong>人事評価の断定材料にしない</strong><p>AIが示すのは確認候補です。能力や姿勢を決めつけません。</p></div></div>
+        <div class="guard-item"><span>03</span><div><strong>大事な判断は人が確認する</strong><p>業務目的や現場の事情を確かめてから、改善内容を決めます。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contact" aria-labelledby="cta-title">
+    <div class="wrap cta-box">
+      <div class="rv"><p class="eyebrow">Start With The Work</p><h2 id="cta-title">何を頼むか、<br>決まっていなくて<br>大丈夫です。</h2><p>ツール名ではなく、いま困っている仕事をお聞かせください。AI化する仕事の見つけ方から、一緒に整理します。</p></div>
+      <aside class="cta-action rv" aria-label="相談の手順">
+        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScBbMVD7cVKEpZBl4hUr22qAn0FaSm7xkUnhATmnU-xirFacw/viewform?usp=pp_url&amp;entry.326719039=AI%E3%83%90%E3%83%BC%E3%83%89%E3%80%80AI%E3%83%84%E3%83%BC%E3%83%AB%E3%81%AE%E9%81%8B%E7%94%A8%E4%BB%A3%E8%A1%8C" target="_blank" rel="noopener noreferrer">Googleフォームで相談する <span class="arrow" aria-hidden="true">↗</span></a>
+        <ol><li>相談フォームを開く</li><li>相談内容に<b>「業務発見特典を見た」</b>と添える</li><li>会社に合う発見方法を一緒に選ぶ</li></ol>
+        <a class="official" href="https://aibird.figma.site/" target="_blank" rel="noopener noreferrer">AIバード公式ページを確認する ↗</a>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner"><div class="footer-brand">AIバード｜株式会社ライトアップ</div><div class="footer-copy">本ページは企画検討中のサービス案内です。内容・提供条件は今後変更される場合があります。<br>AIの推定のみで重要な意思決定を確定せず、必要な確認と人の判断を組み合わせます。</div></div>
+</footer>
+
+</body>
+</html>
