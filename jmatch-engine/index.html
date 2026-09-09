@@ -139,17 +139,18 @@ header .w{ display:flex; align-items:center; justify-content:space-between; heig
 @media (min-width:1080px){ .fv{ grid-template-columns:repeat(5,1fr); gap:14px; } }
 .fvc{ background:#fff; border:1px solid var(--ln); padding:22px 20px 20px;
   display:flex; flex-direction:column; }
+.fvh{ display:flex; align-items:center; justify-content:space-between; gap:10px;
+  margin-bottom:14px; flex-wrap:wrap; }
 .fvn{ font-family:"Inter",sans-serif; font-weight:900; font-size:13px; color:var(--acm);
-  letter-spacing:.06em; display:block; margin-bottom:9px; }
+  letter-spacing:.06em; }
+.tgs{ display:flex; gap:6px; align-items:center; }
+.tg{ font-size:12.5px; font-weight:900; letter-spacing:.01em; padding:4px 11px; white-space:nowrap; }
+.tg-free{ background:var(--ac); color:#fff; }
+.tg-light{ background:#fff; color:var(--ac); box-shadow:inset 0 0 0 1.5px var(--ac); }
+.tg-std{ background:var(--bk); color:#fff; }
+.tg-dev{ background:var(--ln2); color:var(--g2); font-weight:700; }
 .fvt{ font-weight:900; font-size:1.02rem; line-height:1.62; letter-spacing:-.012em; margin:0 0 10px; }
-.fvd{ font-size:13.5px; color:var(--g1); line-height:1.85; margin:0 0 auto; }
-.fvbar{ display:grid; grid-template-columns:repeat(4,1fr); gap:2px; margin:20px 0 9px; }
-.fvbar i{ height:8px; background:var(--ln); display:block; }
-.fvbar i.on{ background:var(--ac); }
-.fvp{ font-size:13px; font-weight:900; color:var(--ac); line-height:1.6; letter-spacing:-.01em; }
-.fvp span{ display:block; font-size:12.5px; font-weight:700; color:var(--g1); margin-top:2px; letter-spacing:0; }
-.fvtag{ font-family:"Noto Sans JP",sans-serif; font-style:normal; font-size:12px; font-weight:700;
-  background:var(--ln2); color:var(--g2); padding:2px 7px; margin-left:7px; letter-spacing:0; }
+.fvd{ font-size:13.5px; color:var(--g1); line-height:1.85; margin:0; }
 
 /* ══ 山場（1カラム例外・図は置かない） ══ */
 .peak{ background:var(--bk); color:#fff; padding:140px 0 132px; }
@@ -404,47 +405,37 @@ footer .note{ color:var(--g2); }
 <div class="five"><div class="w">
   <span class="snum">WHAT YOU GET</span>
   <h2>登録すると、この5つが使えます。</h2>
-  <p class="fvleg">帯は左から、無料・ライト・スタンダード・顧問契約の4段階です。塗ってあるところから、お使いいただけます。</p>
+  <p class="fvleg">タグの金額は、その機能を使えるようになる<strong>いちばん下のプラン</strong>です。上のプランには、すべて含まれます。</p>
   <div class="fv">
 
     <div class="fvc">
-      <span class="fvn">01</span>
+      <div class="fvh"><span class="fvn">01</span><span class="tgs"><span class="tg tg-free">無料</span></span></div>
       <p class="fvt">使える制度が、毎週届く</p>
       <p class="fvd">補助金、融資、税制優遇。国と都道府県と市区町村から、御社が対象になりそうなものだけを選んでお送りします。</p>
-      <div class="fvbar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
-      <p class="fvp">無料<span>0円</span></p>
     </div>
 
     <div class="fvc">
-      <span class="fvn">02</span>
+      <div class="fvh"><span class="fvn">02</span><span class="tgs"><span class="tg tg-light">月3,000円</span></span></div>
       <p class="fvt">採択された事業計画書が、見られる</p>
       <p class="fvd">主要な補助金で採択された申請書と事業計画書、過去の事例をダウンロードできます。白紙から考えずに済みます。</p>
-      <div class="fvbar" aria-hidden="true"><i></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
-      <p class="fvp">ライト から<span>月3,000円</span></p>
     </div>
 
     <div class="fvc">
-      <span class="fvn">03<em class="fvtag">開発中</em></span>
+      <div class="fvh"><span class="fvn">03</span><span class="tgs"><span class="tg tg-std">月30,000円</span></span></div>
       <p class="fvt">事業計画書が、自分で書けるようになる</p>
-      <p class="fvd">6つのAIエージェントが順番に問いを出します。答えていくと、補助金の事業計画書と、銀行に出す資料ができます。現在は開発中で、まだお使いいただけません。</p>
-      <div class="fvbar" aria-hidden="true"><i></i><i></i><i class="on"></i><i class="on"></i></div>
-      <p class="fvp">スタンダード から<span>月30,000円</span></p>
+      <p class="fvd">6つのAIエージェントが順番に問いを出します。答えていくと、補助金の事業計画書と、銀行に出す資料ができます。<strong>現在は開発中で、まだお使いいただけません。</strong></p>
     </div>
 
     <div class="fvc">
-      <span class="fvn">04</span>
+      <div class="fvh"><span class="fvn">04</span><span class="tgs"><span class="tg tg-light">月3,000円</span></span></div>
       <p class="fvt">提携するAIサービスが、無料で使える</p>
       <p class="fvd">会員特典です。AIサービスと専門家へのご相談を、一定期間無料で。対象と期間は入れ替わります。</p>
-      <div class="fvbar" aria-hidden="true"><i></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
-      <p class="fvp">ライト から<span>月3,000円</span></p>
     </div>
 
     <div class="fvc">
-      <span class="fvn">05</span>
+      <div class="fvh"><span class="fvn">05</span><span class="tgs"><span class="tg tg-free">無料</span></span></div>
       <p class="fvt">合う専門家を、紹介してもらえる</p>
       <p class="fvd">自分で出すのが難しいときは、士業の先生をご紹介します。紹介料は受け取りません。</p>
-      <div class="fvbar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
-      <p class="fvp">無料<span>0円</span></p>
     </div>
 
   </div>
