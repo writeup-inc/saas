@@ -4,38 +4,38 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="名刺交換から関係づくり、紹介、営業顧問の提案まで。Codexと毎月更新される12のAIスキルで、人脈を営業代行事業へ育てるスタートパック。">
-  <meta name="theme-color" content="#12231b">
+  <meta name="theme-color" content="#08150f">
   <meta name="robots" content="noindex, nofollow">
-  <title>誰でも、営業代行会社になれる。｜AI営業代行会社スタートパック</title>
+  <title>出会いを、営業会社に変える。｜AI営業代行会社スタートパック</title>
   <link rel="canonical" href="https://writeup-inc.github.io/saas/ai-sales-agency-starter/">
   <link rel="icon" href="/saas/favicon.svg">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="AI営業代行会社スタートパック">
-  <meta property="og:title" content="誰でも、営業代行会社になれる。">
-  <meta property="og:description" content="出会いを記録し、つながりを見つけ、紹介を生む。Codexと12のAIスキルで始める営業代行事業。">
+  <meta property="og:title" content="出会いを、営業会社に変える。">
+  <meta property="og:description" content="会う。残す。見つける。つなぐ。育てる。Codexと12のAIスキルで始める営業代行事業。">
   <meta property="og:url" content="https://writeup-inc.github.io/saas/ai-sales-agency-starter/">
   <meta property="og:image" content="https://writeup-inc.github.io/saas/ai-sales-agency-starter/og-card.svg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="誰でも、営業代行会社になれる。">
-  <meta name="twitter:description" content="出会いを、紹介と継続収益へ。月額5万円の営業代行事業スタートパック。">
+  <meta name="twitter:title" content="出会いを、営業会社に変える。">
+  <meta name="twitter:description" content="人脈を紹介と継続収益へ。月額5万円のAI営業代行会社スタートパック。">
   <meta name="twitter:image" content="https://writeup-inc.github.io/saas/ai-sales-agency-starter/og-card.svg">
   <style>
     :root {
-      --ink: #12231b;
-      --deep: #0b1812;
+      --ink: #102219;
+      --deep: #08150f;
+      --deep-2: #10271c;
       --paper: #f4f1e8;
-      --white: #fffef8;
-      --lime: #c8ff3d;
-      --blue: #5aa7ff;
-      --coral: #ff765f;
-      --yellow: #ffd85a;
-      --muted: #68736c;
-      --line: rgba(18, 35, 27, .16);
+      --white: #fffef9;
+      --lime: #c9ff46;
+      --blue: #69adff;
+      --coral: #ff7b63;
+      --yellow: #ffda61;
+      --muted: #627068;
+      --line: rgba(16,34,25,.15);
       --container: 1200px;
-      --shadow: 0 26px 70px rgba(12, 31, 22, .14);
+      --shadow: 0 24px 70px rgba(8,27,17,.12);
     }
-
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; scroll-padding-top: 82px; }
     body {
@@ -51,10 +51,10 @@
       content: "";
       position: fixed;
       inset: 0;
-      pointer-events: none;
-      opacity: .24;
       z-index: -1;
-      background-image: radial-gradient(rgba(18, 35, 27, .22) .6px, transparent .6px);
+      pointer-events: none;
+      opacity: .2;
+      background-image: radial-gradient(rgba(16,34,25,.22) .6px, transparent .6px);
       background-size: 7px 7px;
     }
     a { color: inherit; }
@@ -63,239 +63,259 @@
     :focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
     main { overflow: clip; }
     .container { width: min(calc(100% - 48px), var(--container)); margin-inline: auto; }
-    .section { padding: 112px 0; }
-    .section-label {
+    .section { padding: 104px 0; }
+    .title-line { display: block; }
+    .section-kicker {
       display: inline-flex;
       align-items: center;
       gap: 10px;
       margin: 0 0 18px;
-      font-size: 12px;
+      color: var(--muted);
+      font-size: 11px;
       font-weight: 900;
       letter-spacing: .15em;
       text-transform: uppercase;
     }
-    .section-label::before { content: ""; width: 30px; height: 3px; background: var(--coral); }
+    .section-kicker::before { content: ""; width: 28px; height: 3px; background: var(--coral); }
     .section-title {
+      max-width: 920px;
       margin: 0;
-      font-size: clamp(38px, 6vw, 76px);
-      line-height: 1.07;
-      letter-spacing: -.055em;
+      font-size: clamp(40px,5.5vw,72px);
       font-weight: 950;
+      line-height: 1.06;
+      letter-spacing: -.055em;
+      text-wrap: balance;
+      word-break: auto-phrase;
     }
-    .section-lead { max-width: 720px; margin: 26px 0 0; color: var(--muted); font-size: clamp(16px, 2vw, 20px); }
+    .section-lead { max-width: 720px; margin: 24px 0 0; color: var(--muted); font-size: clamp(16px,1.8vw,19px); }
 
     .site-header {
       position: fixed;
       inset: 0 0 auto;
       z-index: 50;
-      border-bottom: 1px solid rgba(255,255,255,.12);
-      background: rgba(11, 24, 18, .88);
       color: white;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      background: rgba(8,21,15,.9);
       backdrop-filter: blur(16px);
     }
     .header-inner { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .brand { min-height: 44px; display: flex; align-items: center; gap: 11px; text-decoration: none; font-size: 13px; font-weight: 900; letter-spacing: .06em; }
-    .brand-mark { width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; background: var(--lime); color: var(--deep); box-shadow: 7px 0 0 var(--blue); }
-    .nav { display: flex; gap: 28px; }
-    .nav a { color: rgba(255,255,255,.76); text-decoration: none; font-size: 12px; font-weight: 800; }
+    .brand { min-height: 44px; display: flex; align-items: center; gap: 11px; text-decoration: none; font-size: 13px; font-weight: 900; letter-spacing: .055em; }
+    .brand-mark { width: 27px; height: 27px; display: grid; place-items: center; border-radius: 50%; color: var(--deep); background: var(--lime); box-shadow: 7px 0 0 var(--blue); }
+    .nav { display: flex; align-items: center; gap: 28px; }
+    .nav a { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; color: rgba(255,255,255,.72); text-decoration: none; font-size: 12px; font-weight: 800; }
+    .nav a:hover { color: white; }
     .header-cta, .button-primary, .button-secondary {
-      min-height: 46px;
+      min-height: 48px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
+      padding: 0 24px;
       border-radius: 999px;
-      padding: 0 22px;
       text-decoration: none;
       font-weight: 900;
       transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
     }
-    .header-cta { background: var(--lime); color: var(--deep); font-size: 13px; }
-    .header-cta:hover, .button-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(200,255,61,.22); }
+    .header-cta { min-height: 44px; padding-inline: 20px; color: var(--deep); background: var(--lime); font-size: 13px; }
+    .header-cta:hover, .button-primary:hover { transform: translateY(-2px); box-shadow: 0 13px 30px rgba(201,255,70,.2); }
 
     .hero {
       position: relative;
-      min-height: 860px;
-      padding: 154px 0 100px;
+      min-height: 790px;
+      padding: 142px 0 94px;
       color: white;
       background:
-        radial-gradient(circle at 80% 20%, rgba(90,167,255,.22), transparent 28%),
-        radial-gradient(circle at 10% 85%, rgba(200,255,61,.12), transparent 30%),
+        radial-gradient(circle at 83% 18%, rgba(105,173,255,.22), transparent 27%),
+        radial-gradient(circle at 8% 88%, rgba(201,255,70,.13), transparent 30%),
         var(--deep);
     }
-    .hero::after { content: ""; position: absolute; inset: auto 0 0; height: 12px; background: linear-gradient(90deg, var(--lime) 0 42%, var(--blue) 42% 67%, var(--coral) 67%); }
-    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(420px, .95fr); gap: clamp(48px, 7vw, 104px); align-items: center; }
-    .eyebrow { display: flex; align-items: center; gap: 12px; margin: 0 0 22px; color: var(--lime); font-size: 13px; font-weight: 900; letter-spacing: .11em; }
-    .eyebrow span { width: 42px; height: 2px; background: currentColor; }
-    h1 { margin: 0; max-width: 700px; font-size: clamp(52px, 7.6vw, 106px); line-height: .98; letter-spacing: -.075em; font-weight: 950; }
+    .hero::after { content: ""; position: absolute; inset: auto 0 0; height: 10px; background: linear-gradient(90deg,var(--lime) 0 44%,var(--blue) 44% 70%,var(--coral) 70%); }
+    .hero-grid { display: grid; grid-template-columns: minmax(0,1.06fr) minmax(400px,.94fr); gap: clamp(46px,7vw,96px); align-items: center; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; margin: 0 0 24px; color: var(--lime); font-size: 12px; font-weight: 900; letter-spacing: .12em; }
+    .eyebrow::before { content: ""; width: 40px; height: 2px; background: currentColor; }
+    h1 { margin: 0; font-size: clamp(60px,7.25vw,100px); font-weight: 950; line-height: .95; letter-spacing: -.075em; }
     h1 em { color: var(--lime); font-style: normal; }
-    .hero-lead { max-width: 650px; margin: 30px 0 0; color: rgba(255,255,255,.76); font-size: clamp(17px, 2vw, 21px); }
+    .hero-lead { max-width: 650px; margin: 28px 0 0; color: rgba(255,255,255,.72); font-size: clamp(16px,1.9vw,20px); }
     .hero-lead strong { color: white; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 32px; }
     .button-primary { color: var(--deep); background: var(--lime); }
-    .button-secondary { color: white; border: 1px solid rgba(255,255,255,.36); }
+    .button-secondary { color: white; border: 1px solid rgba(255,255,255,.34); }
     .button-secondary:hover { background: rgba(255,255,255,.08); }
-    .hero-points { display: flex; flex-wrap: wrap; gap: 12px 20px; padding: 0; margin: 30px 0 0; list-style: none; color: rgba(255,255,255,.72); font-size: 12px; font-weight: 800; }
-    .hero-points li::before { content: "●"; margin-right: 8px; color: var(--blue); }
+    .hero-facts { display: flex; flex-wrap: wrap; gap: 10px; padding: 0; margin: 27px 0 0; list-style: none; }
+    .hero-facts li { padding: 7px 11px; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; color: rgba(255,255,255,.68); font-size: 11px; font-weight: 800; }
+    .hero-facts li::before { content: "●"; margin-right: 7px; color: var(--blue); }
 
-    .network-panel { position: relative; aspect-ratio: 1 / 1.02; border: 1px solid rgba(255,255,255,.18); border-radius: 36px; background: rgba(255,255,255,.055); box-shadow: 0 34px 100px rgba(0,0,0,.24); overflow: hidden; }
-    .network-panel::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px); background-size: 36px 36px; mask-image: linear-gradient(to bottom, black, transparent); }
+    .network-panel { position: relative; aspect-ratio: 1/1.03; overflow: hidden; border: 1px solid rgba(255,255,255,.17); border-radius: 34px; background: rgba(255,255,255,.05); box-shadow: 0 34px 100px rgba(0,0,0,.25); }
+    .network-panel::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px); background-size: 34px 34px; mask-image: linear-gradient(to bottom,black,transparent); }
+    .network-label { position: absolute; inset: 28px 28px auto; display: flex; justify-content: space-between; gap: 12px; color: rgba(255,255,255,.5); font-size: 9px; font-weight: 900; letter-spacing: .16em; }
     .network-svg { position: absolute; inset: 7%; width: 86%; height: 86%; }
-    .network-svg line { stroke: rgba(200,255,61,.48); stroke-width: 1.3; stroke-dasharray: 7 8; animation: dash 16s linear infinite; }
+    .network-svg line { stroke: rgba(201,255,70,.45); stroke-width: 1.3; stroke-dasharray: 7 8; animation: dash 16s linear infinite; }
     .network-svg circle { fill: var(--deep); stroke-width: 3; }
     .network-svg .you { fill: var(--lime); stroke: white; }
     .network-svg .person { stroke: var(--blue); }
     .network-svg .match { stroke: var(--coral); }
-    .network-copy { position: absolute; inset: 30px 30px auto; display: flex; justify-content: space-between; gap: 14px; font-size: 10px; letter-spacing: .14em; font-weight: 900; color: rgba(255,255,255,.56); }
-    .profile-card { position: absolute; width: 190px; padding: 15px; border-radius: 16px; color: var(--ink); background: var(--white); box-shadow: var(--shadow); font-size: 11px; }
+    .profile-card { position: absolute; width: 180px; padding: 14px; border-radius: 15px; color: var(--ink); background: var(--white); box-shadow: var(--shadow); font-size: 10px; }
     .profile-card b { display: block; font-size: 13px; }
     .profile-card span { display: block; color: var(--muted); }
     .profile-a { right: 5%; top: 22%; transform: rotate(3deg); }
     .profile-b { left: 6%; bottom: 20%; transform: rotate(-3deg); }
-    .match-chip { position: absolute; right: 8%; bottom: 8%; padding: 12px 17px; border-radius: 999px; color: var(--deep); background: var(--lime); font-size: 12px; font-weight: 950; box-shadow: 0 12px 30px rgba(200,255,61,.22); }
+    .match-chip { position: absolute; right: 8%; bottom: 8%; padding: 11px 16px; border-radius: 999px; color: var(--deep); background: var(--lime); box-shadow: 0 12px 30px rgba(201,255,70,.2); font-size: 11px; font-weight: 950; }
     @keyframes dash { to { stroke-dashoffset: -140; } }
 
-    .quote-band { background: var(--lime); }
-    .quote-inner { padding: 40px 0; display: grid; grid-template-columns: 160px 1fr; gap: 30px; align-items: center; }
-    .quote-label { font-size: 12px; font-weight: 950; letter-spacing: .16em; }
-    blockquote { margin: 0; font-size: clamp(22px, 3.5vw, 42px); line-height: 1.3; letter-spacing: -.035em; font-weight: 950; }
-
-    .story-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(48px, 8vw, 120px); align-items: start; }
-    .story-card { position: sticky; top: 102px; padding: 32px; border: 1px solid var(--line); border-radius: 28px; background: var(--white); box-shadow: var(--shadow); }
-    .story-card small { color: var(--coral); font-weight: 900; letter-spacing: .12em; }
-    .story-card strong { display: block; margin-top: 16px; font-size: clamp(32px, 5vw, 60px); line-height: 1; letter-spacing: -.05em; }
-    .story-card p { margin: 20px 0 0; color: var(--muted); }
-    .story-steps { display: grid; gap: 18px; }
-    .story-step { display: grid; grid-template-columns: 72px 1fr; gap: 24px; padding: 30px 0; border-top: 1px solid var(--line); }
-    .story-step:first-child { border-top: 0; }
-    .story-step span { width: 58px; height: 58px; display: grid; place-items: center; border: 1px solid var(--ink); border-radius: 50%; font-size: 13px; font-weight: 950; }
-    .story-step h3 { margin: 0; font-size: clamp(24px, 3vw, 36px); line-height: 1.25; letter-spacing: -.035em; }
-    .story-step p { margin: 10px 0 0; color: var(--muted); }
+    .process { background: var(--white); }
+    .process-head { display: grid; grid-template-columns: 1fr .7fr; gap: 48px; align-items: end; }
+    .origin-note { padding: 22px 24px; border-left: 4px solid var(--lime); border-radius: 0 18px 18px 0; background: var(--deep); color: white; }
+    .origin-note strong { display: block; color: var(--lime); font-size: 28px; line-height: 1; letter-spacing: -.03em; }
+    .origin-note p { margin: 10px 0 0; color: rgba(255,255,255,.68); font-size: 13px; line-height: 1.7; }
+    .flowchart { position: relative; display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; margin-top: 58px; }
+    .flowchart::before { content: ""; position: absolute; left: 7%; right: 7%; top: 38px; height: 2px; background: linear-gradient(90deg,var(--lime),var(--blue),var(--coral)); }
+    .flow-step { position: relative; min-height: 224px; padding: 76px 20px 22px; border: 1px solid var(--line); border-radius: 20px; background: var(--paper); }
+    .flow-no { position: absolute; top: 14px; left: 20px; z-index: 1; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; color: var(--deep); background: var(--lime); font-size: 12px; font-weight: 950; }
+    .flow-step:nth-child(2) .flow-no, .flow-step:nth-child(3) .flow-no { background: var(--blue); }
+    .flow-step:nth-child(4) .flow-no, .flow-step:nth-child(5) .flow-no { background: var(--coral); }
+    .role-chip { display: inline-flex; padding: 4px 8px; border-radius: 999px; color: var(--muted); background: white; font-size: 9px; font-weight: 900; letter-spacing: .08em; }
+    .flow-step h3 { margin: 14px 0 7px; font-size: 23px; line-height: 1.25; letter-spacing: -.03em; }
+    .flow-step p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.65; }
+    .approval-bar { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 18px; padding: 13px 18px; border-radius: 14px; color: white; background: var(--deep-2); font-size: 12px; font-weight: 850; text-align: center; }
+    .approval-bar span { color: var(--lime); }
 
     .revenue { color: white; background: var(--deep); }
-    .revenue .section-label::before { background: var(--lime); }
-    .revenue .section-lead { color: rgba(255,255,255,.66); }
-    .rocket { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 54px; }
-    .rocket::before { content: ""; position: absolute; left: 10%; right: 10%; top: 44px; height: 2px; background: linear-gradient(90deg, var(--yellow), var(--coral), var(--blue)); }
-    .rocket-card { position: relative; padding: 82px 26px 28px; border: 1px solid rgba(255,255,255,.16); border-radius: 24px; background: rgba(255,255,255,.055); }
-    .rocket-no { position: absolute; top: 20px; left: 24px; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; color: var(--deep); background: var(--yellow); font-weight: 950; z-index: 1; }
+    .revenue .section-kicker, .investment .section-kicker { color: rgba(255,255,255,.58); }
+    .revenue .section-kicker::before { background: var(--lime); }
+    .revenue .section-lead, .investment .section-lead { color: rgba(255,255,255,.64); }
+    .rocket { position: relative; display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 50px; }
+    .rocket::before { content: ""; position: absolute; left: 10%; right: 10%; top: 39px; height: 2px; background: linear-gradient(90deg,var(--yellow),var(--coral),var(--blue)); }
+    .rocket-card { position: relative; min-height: 300px; padding: 74px 25px 25px; border: 1px solid rgba(255,255,255,.14); border-radius: 23px; background: rgba(255,255,255,.05); }
+    .rocket-no { position: absolute; top: 15px; left: 23px; z-index: 1; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; color: var(--deep); background: var(--yellow); font-weight: 950; }
     .rocket-card:nth-child(2) .rocket-no { background: var(--coral); }
     .rocket-card:nth-child(3) .rocket-no { background: var(--blue); }
-    .rocket-card small { color: rgba(255,255,255,.54); font-weight: 900; letter-spacing: .1em; }
-    .rocket-card h3 { margin: 8px 0 8px; font-size: 25px; }
-    .rocket-price { font-size: 44px; line-height: 1; font-weight: 950; letter-spacing: -.05em; }
-    .rocket-price span { font-size: 15px; letter-spacing: 0; }
-    .rocket-card p { margin: 18px 0 0; color: rgba(255,255,255,.67); font-size: 14px; }
-    .caution { margin-top: 24px; padding: 15px 18px; border: 1px solid rgba(255,255,255,.18); border-radius: 13px; color: rgba(255,255,255,.62); font-size: 12px; }
+    .rocket-card small { color: rgba(255,255,255,.5); font-weight: 900; letter-spacing: .1em; }
+    .rocket-card h3 { margin: 7px 0; font-size: 24px; }
+    .rocket-price { font-size: clamp(35px,4vw,45px); font-weight: 950; line-height: 1; letter-spacing: -.055em; }
+    .rocket-price span { font-size: 13px; letter-spacing: 0; }
+    .rocket-card p { margin: 17px 0 0; color: rgba(255,255,255,.65); font-size: 13px; }
+    .caution { margin-top: 22px; padding: 14px 17px; border: 1px solid rgba(255,255,255,.16); border-radius: 13px; color: rgba(255,255,255,.58); font-size: 11px; }
 
-    .skills-head { display: flex; justify-content: space-between; align-items: end; gap: 40px; }
-    .skills-badge { flex: 0 0 auto; width: 130px; height: 130px; display: grid; place-items: center; border-radius: 50%; color: var(--deep); background: var(--blue); transform: rotate(6deg); box-shadow: 12px 12px 0 var(--ink); text-align: center; }
-    .skills-badge strong { display: block; font-size: 44px; line-height: .9; }
-    .skills-badge span { font-size: 10px; font-weight: 950; letter-spacing: .08em; }
-    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 54px; }
-    .skill-card { min-height: 230px; display: flex; flex-direction: column; padding: 26px; border: 1px solid var(--line); border-radius: 22px; background: rgba(255,254,248,.72); transition: transform .2s, background .2s; }
-    .skill-card:hover { transform: translateY(-4px); background: var(--white); }
-    .skill-top { display: flex; justify-content: space-between; align-items: center; }
-    .skill-no { font-size: 12px; font-weight: 950; letter-spacing: .12em; }
-    .skill-mode { padding: 5px 9px; border-radius: 999px; color: var(--deep); background: var(--lime); font-size: 9px; font-weight: 950; }
-    .skill-card h3 { margin: 26px 0 9px; font-size: 21px; line-height: 1.35; }
-    .skill-card p { margin: 0; color: var(--muted); font-size: 13px; }
-    .skill-card footer { margin-top: auto; padding-top: 18px; color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .08em; }
+    .skills-head { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; }
+    .skills-count { width: 112px; height: 112px; display: grid; place-items: center; border-radius: 50%; color: var(--deep); background: var(--blue); box-shadow: 10px 10px 0 var(--ink); text-align: center; transform: rotate(5deg); }
+    .skills-count strong { display: block; font-size: 40px; line-height: .86; }
+    .skills-count span { display: block; margin-top: 5px; font-size: 9px; font-weight: 950; letter-spacing: .1em; }
+    .skill-groups { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-top: 48px; }
+    .skill-group { overflow: hidden; border: 1px solid var(--line); border-radius: 24px; background: rgba(255,254,249,.78); box-shadow: 0 16px 42px rgba(8,27,17,.06); }
+    .group-head { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center; padding: 22px 24px; background: var(--deep); color: white; }
+    .group-head > span { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; color: var(--deep); background: var(--lime); font-size: 11px; font-weight: 950; }
+    .skill-group:nth-child(2) .group-head > span { background: var(--blue); }
+    .skill-group:nth-child(3) .group-head > span { background: var(--coral); }
+    .skill-group:nth-child(4) .group-head > span { background: var(--yellow); }
+    .group-head small { display: block; color: rgba(255,255,255,.5); font-size: 9px; font-weight: 900; letter-spacing: .12em; }
+    .group-head h3 { margin: 2px 0 0; font-size: 23px; line-height: 1.2; }
+    .skill-list { padding: 0 24px; }
+    .skill-item { display: grid; grid-template-columns: 40px 1fr; gap: 13px; padding: 18px 0; border-top: 1px solid var(--line); }
+    .skill-item:first-child { border-top: 0; }
+    .skill-item > span { color: var(--muted); font-size: 10px; font-weight: 950; letter-spacing: .08em; }
+    .skill-item h4 { margin: 0; font-size: 16px; line-height: 1.35; }
+    .skill-item p { margin: 4px 0 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .update-note { display: flex; justify-content: space-between; gap: 24px; margin-top: 18px; padding: 17px 20px; border: 1px dashed var(--line); border-radius: 15px; color: var(--muted); font-size: 12px; }
+    .update-note strong { flex: 0 0 auto; color: var(--ink); }
 
-    .simulator { background: #dfeeff; }
-    .sim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 52px; }
-    .sim-controls, .sim-result { padding: clamp(26px, 5vw, 48px); border-radius: 28px; background: var(--white); box-shadow: var(--shadow); }
-    .sim-controls h3, .sim-result h3 { margin: 0 0 26px; font-size: 24px; }
-    .control { margin-top: 24px; }
+    .simulator { background: #deedff; }
+    .sim-grid { display: grid; grid-template-columns: .92fr 1.08fr; gap: 22px; margin-top: 46px; }
+    .sim-controls, .sim-result { padding: clamp(26px,4vw,44px); border-radius: 27px; background: var(--white); box-shadow: var(--shadow); }
+    .sim-controls h3, .sim-result h3 { margin: 0 0 24px; font-size: 22px; }
+    .control { display: block; margin-top: 20px; }
     .control:first-of-type { margin-top: 0; }
-    .control-label { display: flex; justify-content: space-between; gap: 18px; margin-bottom: 10px; font-size: 14px; font-weight: 850; }
-    .control-label output { min-width: 68px; text-align: right; color: #13569f; font-size: 20px; }
+    .control-label { display: flex; justify-content: space-between; gap: 18px; margin-bottom: 8px; font-size: 13px; font-weight: 850; }
+    .control-label output { min-width: 66px; color: #12579f; font-size: 19px; text-align: right; }
     input[type="range"] { width: 100%; min-height: 44px; accent-color: #246fbe; cursor: pointer; }
-    .result-total { padding-bottom: 28px; border-bottom: 1px solid var(--line); }
+    .result-total { padding-bottom: 25px; border-bottom: 1px solid var(--line); }
     .result-total small { display: block; color: var(--muted); font-weight: 850; }
-    .result-total strong { display: block; margin-top: 6px; font-size: clamp(50px, 7vw, 80px); line-height: 1; letter-spacing: -.06em; }
-    .result-total strong span { font-size: 20px; letter-spacing: 0; }
-    .result-lines { display: grid; gap: 12px; margin: 24px 0 0; }
-    .result-line { display: flex; justify-content: space-between; gap: 20px; font-size: 14px; }
+    .result-total strong { display: block; margin-top: 4px; font-size: clamp(48px,7vw,76px); font-weight: 950; line-height: 1; letter-spacing: -.06em; }
+    .result-total strong span { font-size: 19px; letter-spacing: 0; }
+    .result-lines { display: grid; gap: 10px; margin-top: 22px; }
+    .result-line { display: flex; justify-content: space-between; gap: 20px; font-size: 13px; }
     .result-line b { font-variant-numeric: tabular-nums; }
-    .result-line.net { margin-top: 8px; padding-top: 16px; border-top: 1px dashed var(--line); font-size: 18px; }
-    .result-line.net b { color: #13569f; }
-    .sim-note { margin: 22px 0 0; color: var(--muted); font-size: 11px; }
+    .result-line.net { margin-top: 7px; padding-top: 15px; border-top: 1px dashed var(--line); font-size: 17px; }
+    .result-line.net b { color: #12579f; }
+    .sim-note { margin: 19px 0 0; color: var(--muted); font-size: 10px; }
 
-    .asset-strip { padding: 58px 0; background: var(--yellow); }
-    .asset-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: 50px; align-items: center; }
-    .asset-grid h2 { margin: 0; font-size: clamp(34px, 5vw, 62px); line-height: 1.08; letter-spacing: -.05em; }
-    .asset-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .asset-list div { padding: 18px; border: 1px solid rgba(18,35,27,.22); border-radius: 16px; background: rgba(255,255,255,.36); }
-    .asset-list strong { display: block; font-size: 18px; }
-    .asset-list span { display: block; margin-top: 4px; font-size: 11px; }
-
-    .price-section { color: white; background: var(--deep); }
-    .price-box { display: grid; grid-template-columns: .9fr 1.1fr; gap: 0; margin-top: 52px; border: 1px solid rgba(255,255,255,.18); border-radius: 30px; overflow: hidden; box-shadow: 0 32px 100px rgba(0,0,0,.28); }
-    .price-main { padding: clamp(32px, 6vw, 62px); background: var(--lime); color: var(--deep); }
-    .price-main small { font-weight: 950; letter-spacing: .12em; }
-    .price-main strong { display: block; margin-top: 20px; font-size: clamp(68px, 10vw, 118px); line-height: .9; letter-spacing: -.08em; }
-    .price-main strong span { font-size: 22px; letter-spacing: 0; }
-    .price-main p { margin: 24px 0 0; font-size: 14px; font-weight: 800; }
-    .price-detail { padding: clamp(32px, 6vw, 62px); background: rgba(255,255,255,.055); }
-    .price-detail h3 { margin: 0 0 20px; font-size: 24px; }
-    .price-detail ul { display: grid; gap: 12px; padding: 0; margin: 0; list-style: none; }
-    .price-detail li { position: relative; padding-left: 28px; color: rgba(255,255,255,.76); }
+    .investment { color: white; background: var(--deep); }
+    .investment .section-kicker::before { background: var(--yellow); }
+    .price-box { display: grid; grid-template-columns: .78fr 1.22fr; margin-top: 46px; overflow: hidden; border: 1px solid rgba(255,255,255,.16); border-radius: 28px; box-shadow: 0 30px 90px rgba(0,0,0,.26); }
+    .price-main { padding: clamp(32px,5vw,54px); color: var(--deep); background: var(--lime); }
+    .price-main small { font-weight: 950; letter-spacing: .1em; }
+    .price-main strong { display: block; margin-top: 18px; font-size: clamp(68px,9vw,108px); line-height: .9; letter-spacing: -.08em; }
+    .price-main strong span { font-size: 20px; letter-spacing: 0; }
+    .price-main p { margin: 21px 0 0; font-size: 13px; font-weight: 800; }
+    .price-detail { padding: clamp(32px,5vw,54px); background: rgba(255,255,255,.05); }
+    .price-detail h3 { margin: 0 0 18px; font-size: 22px; }
+    .price-detail ul { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px 24px; padding: 0; margin: 0; list-style: none; }
+    .price-detail li { position: relative; padding-left: 25px; color: rgba(255,255,255,.72); font-size: 13px; }
     .price-detail li::before { content: "✓"; position: absolute; left: 0; color: var(--lime); font-weight: 950; }
-    .price-detail .button-primary { margin-top: 30px; }
-    .price-note { margin: 20px 0 0; color: rgba(255,255,255,.5); font-size: 11px; }
+    .price-detail .button-primary { margin-top: 27px; }
+    .price-note { margin: 17px 0 0; color: rgba(255,255,255,.46); font-size: 10px; }
+    .asset-panel { display: grid; grid-template-columns: .75fr 1.25fr; gap: 42px; align-items: center; margin-top: 22px; padding: 28px; border: 1px solid rgba(255,255,255,.14); border-radius: 24px; background: rgba(255,255,255,.04); }
+    .asset-panel h3 { margin: 0; color: var(--yellow); font-size: clamp(27px,3.5vw,42px); line-height: 1.12; letter-spacing: -.045em; }
+    .asset-list { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+    .asset-list div { padding: 16px; border-radius: 15px; color: var(--deep); background: var(--yellow); }
+    .asset-list strong { display: block; font-size: 15px; }
+    .asset-list span { display: block; margin-top: 3px; font-size: 10px; line-height: 1.55; }
 
-    .faq { display: grid; grid-template-columns: .75fr 1.25fr; gap: clamp(48px, 8vw, 110px); }
+    .faq { display: grid; grid-template-columns: .68fr 1.32fr; gap: clamp(44px,7vw,96px); }
     .faq-list { border-top: 1px solid var(--line); }
     details { border-bottom: 1px solid var(--line); }
-    summary { position: relative; padding: 26px 48px 26px 0; cursor: pointer; font-weight: 900; list-style: none; }
+    summary { position: relative; min-height: 70px; display: flex; align-items: center; padding: 20px 48px 20px 0; cursor: pointer; font-weight: 900; list-style: none; }
     summary::-webkit-details-marker { display: none; }
-    summary::after { content: "+"; position: absolute; right: 4px; top: 22px; font-size: 26px; }
+    summary::after { content: "+"; position: absolute; right: 4px; top: 17px; font-size: 25px; }
     details[open] summary::after { content: "−"; }
-    details p { margin: 0; padding: 0 30px 26px 0; color: var(--muted); }
-
-    .final-cta { padding: 92px 0; background: var(--coral); }
-    .final-grid { display: flex; justify-content: space-between; align-items: center; gap: 40px; }
-    .final-grid h2 { max-width: 760px; margin: 0; font-size: clamp(42px, 7vw, 84px); line-height: 1.03; letter-spacing: -.06em; }
-    .final-grid .button-primary { flex: 0 0 auto; background: var(--deep); color: white; }
-    .site-footer { padding: 32px 0; color: rgba(255,255,255,.58); background: var(--deep); font-size: 11px; }
+    details p { margin: 0; padding: 0 30px 23px 0; color: var(--muted); }
+    .final-cta { padding: 86px 0; background: var(--coral); }
+    .final-grid { display: flex; justify-content: space-between; align-items: center; gap: 42px; }
+    .final-grid h2 { max-width: 770px; margin: 0; font-size: clamp(42px,6.5vw,78px); font-weight: 950; line-height: 1.03; letter-spacing: -.06em; }
+    .final-grid .button-primary { flex: 0 0 auto; color: white; background: var(--deep); }
+    .site-footer { padding: 29px 0; color: rgba(255,255,255,.55); background: var(--deep); font-size: 10px; }
     .footer-inner { display: flex; justify-content: space-between; gap: 30px; }
 
-    @media (max-width: 920px) {
+    @media (max-width: 1020px) {
       .nav { display: none; }
       .hero { min-height: auto; }
-      .hero-grid, .story-grid, .sim-grid, .price-box, .faq, .asset-grid { grid-template-columns: 1fr; }
-      .hero-grid { gap: 54px; }
-      .network-panel { max-width: 600px; width: 100%; margin-inline: auto; }
-      .story-card { position: static; }
+      .hero-grid, .process-head, .sim-grid, .price-box, .asset-panel, .faq { grid-template-columns: 1fr; }
+      .hero-grid { gap: 52px; }
+      .network-panel { width: min(100%,610px); margin-inline: auto; }
+      .flowchart { grid-template-columns: repeat(3,1fr); }
+      .flowchart::before, .rocket::before { display: none; }
       .rocket { grid-template-columns: 1fr; }
-      .rocket::before { display: none; }
-      .skills-grid { grid-template-columns: repeat(2, 1fr); }
-      .asset-list { grid-template-columns: repeat(3, 1fr); }
+      .rocket-card { min-height: 0; }
+      .asset-panel { gap: 22px; }
       .final-grid { align-items: flex-start; flex-direction: column; }
     }
-    @media (max-width: 620px) {
-      .container { width: min(calc(100% - 30px), var(--container)); }
-      .section { padding: 82px 0; }
+    @media (max-width: 720px) {
+      .container { width: min(calc(100% - 30px),var(--container)); }
+      .section { padding: 76px 0; }
       .header-inner { min-height: 62px; }
       .brand { min-width: 44px; }
       .brand span:last-child { display: none; }
-      .header-cta { min-height: 42px; padding-inline: 15px; }
-      .hero { padding: 122px 0 74px; }
-      h1 { font-size: clamp(50px, 16vw, 72px); }
+      .header-cta { min-height: 44px; padding-inline: 15px; }
+      .hero { padding: 116px 0 70px; }
+      h1 { font-size: clamp(50px,15.5vw,64px); }
+      .hero-lead { margin-top: 24px; }
       .button-primary, .button-secondary { width: 100%; }
       .network-panel { border-radius: 24px; }
-      .profile-card { width: 154px; padding: 12px; }
+      .profile-card { width: 152px; padding: 11px; }
       .profile-a { right: 3%; }
       .profile-b { left: 3%; }
-      .quote-inner { grid-template-columns: 1fr; gap: 10px; padding: 30px 0; }
-      .story-step { grid-template-columns: 52px 1fr; gap: 14px; }
-      .story-step span { width: 48px; height: 48px; }
-      .skills-head { align-items: flex-start; flex-direction: column; }
-      .skills-grid { grid-template-columns: 1fr; }
-      .skill-card { min-height: 210px; }
-      .asset-list { grid-template-columns: 1fr; }
-      .footer-inner { flex-direction: column; }
+      .section-title { font-size: clamp(38px,12vw,52px); }
+      .flowchart { grid-template-columns: 1fr; gap: 10px; }
+      .flow-step { min-height: 0; padding: 19px 18px 19px 76px; }
+      .flow-no { top: 20px; left: 16px; }
+      .flow-step h3 { margin-top: 8px; }
+      .approval-bar { align-items: flex-start; }
+      .skills-head { grid-template-columns: 1fr; align-items: start; }
+      .skills-count { width: 92px; height: 92px; }
+      .skill-groups { grid-template-columns: 1fr; }
+      .update-note { flex-direction: column; gap: 6px; }
+      .price-detail ul, .asset-list { grid-template-columns: 1fr; }
+      .asset-list div { padding: 14px 16px; }
+      .footer-inner { flex-direction: column; gap: 7px; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -307,7 +327,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="#top" aria-label="AI営業代行会社スタートパック ページ上部へ"><span class="brand-mark">↗</span><span>AI営業代行会社スタートパック</span></a>
-      <nav class="nav" aria-label="ページ内ナビゲーション"><a href="#model">収益モデル</a><a href="#skills">12スキル</a><a href="#simulator">試算</a><a href="#price">料金</a></nav>
+      <nav class="nav" aria-label="ページ内ナビゲーション"><a href="#flow">始め方</a><a href="#model">収益モデル</a><a href="#skills">12スキル</a><a href="#simulator">試算</a></nav>
       <a class="header-cta" href="#price">事業の条件を見る</a>
     </div>
   </header>
@@ -316,22 +336,21 @@
     <section class="hero" id="top">
       <div class="container hero-grid">
         <div>
-          <p class="eyebrow"><span></span>PEOPLE × CODEX × SALES</p>
-          <h1>誰でも、<br><em>営業代行会社</em>に<br>なれる。</h1>
-          <p class="hero-lead">名刺をためるだけで終わらせない。<strong>出会いを記録し、相性を見つけ、紹介を生む。</strong>Codexと12個のAIスキルで、人脈を育てながら始める営業支援事業です。</p>
+          <p class="eyebrow">PEOPLE × CODEX × SALES</p>
+          <h1><span class="title-line">出会いを、</span><span class="title-line"><em>営業会社</em>に</span><span class="title-line">変える。</span></h1>
+          <p class="hero-lead"><strong>会う。残す。見つける。つなぐ。</strong> 名刺と会話をCodexに預け、相性のよい二社を見つけ、人の確認を経て紹介する。人脈を育てながら営業支援事業を始めるスターターパックです。</p>
           <div class="hero-actions">
-            <a class="button-primary" href="#skills">12個のAIスキルを見る <span aria-hidden="true">↓</span></a>
-            <a class="button-secondary" href="#simulator">収益モデルを試算する</a>
+            <a class="button-primary" href="#flow">始め方を3分で見る <span aria-hidden="true">↓</span></a>
+            <a class="button-secondary" href="#simulator">月の売上を試算する</a>
           </div>
-          <ul class="hero-points"><li>副業・新規事業から開始</li><li>月額5万円</li><li>スキルは毎月更新</li></ul>
+          <ul class="hero-facts"><li>副業・新規事業から</li><li>月額5万円</li><li>12スキルを毎月更新</li></ul>
         </div>
-
         <div class="network-panel" aria-label="名刺から相性のよい2社を見つけ、紹介につなげるイメージ">
-          <div class="network-copy"><span>RELATIONSHIP MAP</span><span>AI MATCHING</span></div>
+          <div class="network-label"><span>RELATIONSHIP MAP</span><span>AI MATCHING</span></div>
           <svg class="network-svg" viewBox="0 0 500 500" role="img" aria-label="あなたを中心に経営者のつながりが広がる図">
             <line x1="250" y1="250" x2="105" y2="118"/><line x1="250" y1="250" x2="400" y2="115"/><line x1="250" y1="250" x2="110" y2="365"/><line x1="250" y1="250" x2="400" y2="370"/><line x1="105" y1="118" x2="400" y2="115"/><line x1="110" y1="365" x2="400" y2="370"/>
             <circle class="you" cx="250" cy="250" r="55"/><circle class="person" cx="105" cy="118" r="26"/><circle class="person" cx="400" cy="115" r="30"/><circle class="match" cx="110" cy="365" r="28"/><circle class="match" cx="400" cy="370" r="34"/>
-            <text x="250" y="245" text-anchor="middle" fill="#0b1812" font-size="14" font-weight="900">YOU</text><text x="250" y="265" text-anchor="middle" fill="#0b1812" font-size="9" font-weight="800">SALES HUB</text>
+            <text x="250" y="245" text-anchor="middle" fill="#08150f" font-size="14" font-weight="900">YOU</text><text x="250" y="265" text-anchor="middle" fill="#08150f" font-size="9" font-weight="800">SALES HUB</text>
           </svg>
           <div class="profile-card profile-a"><b>採用支援会社</b><span>拡販パートナーを探している</span></div>
           <div class="profile-card profile-b"><b>地方メーカー</b><span>人材採用を強化したい</span></div>
@@ -340,31 +359,28 @@
       </div>
     </section>
 
-    <section class="quote-band" aria-label="この事業の着想">
-      <div class="container quote-inner"><span class="quote-label">THE ORIGIN</span><blockquote>「月に150人と会い、会った人同士をつなぐ」——その仕事を、もっと丁寧に、もっと続けやすく。</blockquote></div>
-    </section>
-
-    <section class="section">
-      <div class="container story-grid">
-        <article class="story-card">
-          <small>ANONYMOUS STORY / 着想となった実例</small>
-          <strong>人が好き。<br>それが、仕事になった。</strong>
-          <p>以前は人付き合いが得意ではなかった、ある若手経営者。いまは毎月多くの経営者と会い、「この二人は合いそうだ」と縁をつなぐ営業支援を行っています。</p>
-        </article>
-        <div class="story-steps">
-          <article class="story-step"><span>01</span><div><h3>会う。まず相手を知る。</h3><p>名刺と会話を残し、会社名だけでは見えない「いま困っていること」「誰に会いたいか」を蓄積します。</p></div></article>
-          <article class="story-step"><span>02</span><div><h3>覚える仕事は、AIに預ける。</h3><p>Excelを眺めて思い出す代わりに、Codexへ「あの会社に合う相手は？」と聞く。根拠つきの候補から人が判断します。</p></div></article>
-          <article class="story-step"><span>03</span><div><h3>つなぐ。関係が価値になる。</h3><p>お礼、近況共有、紹介、商談化までを途切れさせず、単発の名刺交換を継続的なリレーションへ変えます。</p></div></article>
-          <article class="story-step"><span>04</span><div><h3>営業顧問へ。事業に育てる。</h3><p>一度の紹介で終わらず、相手企業の営業活動を継続して支える月額契約へ。人脈が増えるほど、提案の選択肢も増えます。</p></div></article>
+    <section class="section process" id="flow">
+      <div class="container">
+        <div class="process-head">
+          <div><p class="section-kicker">HOW IT WORKS</p><h2 class="section-title"><span class="title-line">会う。残す。</span><span class="title-line">見つける。つなぐ。</span></h2></div>
+          <aside class="origin-note" aria-label="この事業の着想"><strong>月に150人。</strong><p>多くの経営者と会い、相性のよい人同士をつなぐ若手経営者の仕事が着想。Excelと記憶に頼っていた部分を、AIで続けやすくします。</p></aside>
         </div>
+        <div class="flowchart" aria-label="出会いを営業支援事業へ育てる5段階">
+          <article class="flow-step"><span class="flow-no">01</span><span class="role-chip">HUMAN</span><h3>会う</h3><p>相手の事業、困りごと、会いたい人を聞く。</p></article>
+          <article class="flow-step"><span class="flow-no">02</span><span class="role-chip">AI + CHECK</span><h3>残す</h3><p>名刺と会話を台帳化し、本人が内容を確認。</p></article>
+          <article class="flow-step"><span class="flow-no">03</span><span class="role-chip">AI</span><h3>見つける</h3><p>人脈へ質問し、相性のよい候補を理由つきで抽出。</p></article>
+          <article class="flow-step"><span class="flow-no">04</span><span class="role-chip">APPROVAL</span><h3>つなぐ</h3><p>双方の意向を確認してから、紹介文を送る。</p></article>
+          <article class="flow-step"><span class="flow-no">05</span><span class="role-chip">HUMAN × AI</span><h3>育てる</h3><p>紹介、商談、営業顧問まで関係を継続する。</p></article>
+        </div>
+        <div class="approval-bar"><span>AIの役割</span> 候補抽出と下書きまで。送信・紹介・契約は、必ず人が判断します。</div>
       </div>
     </section>
 
     <section class="section revenue" id="model">
       <div class="container">
-        <p class="section-label">THREE-STAGE REVENUE</p>
-        <h2 class="section-title">収益は、<br>三段ロケット。</h2>
-        <p class="section-lead">最初から大きな顧問契約だけを狙わない。小さな集客支援から信用をつくり、紹介、継続支援へ進みます。</p>
+        <p class="section-kicker">THREE-STAGE REVENUE</p>
+        <h2 class="section-title"><span class="title-line">小さく始めて、</span><span class="title-line">継続収益へ。</span></h2>
+        <p class="section-lead">最初から大きな顧問契約だけを狙わない。セミナー集客で接点をつくり、紹介で価値を示し、継続支援へ進む三段設計です。</p>
         <div class="rocket">
           <article class="rocket-card"><span class="rocket-no">1</span><small>FIRST CASH</small><h3>セミナー集客</h3><div class="rocket-price">3,000<span>円 / 1集客</span></div><p>ライトアップのAIサービスセミナーを案内。参加につながったときの紹介報酬を、最初の収益機会に。</p></article>
           <article class="rocket-card"><span class="rocket-no">2</span><small>MATCHING</small><h3>経営者マッチング</h3><div class="rocket-price">10,000<span>円 / 1件</span></div><p>相性のよい2社を選び、双方の合意を得て紹介。関係づくりそのものをサービスにします。</p></article>
@@ -377,31 +393,52 @@
     <section class="section" id="skills">
       <div class="container">
         <div class="skills-head">
-          <div><p class="section-label">12 CODEX SKILLS</p><h2 class="section-title">出会いから受注まで。<br>12個のAIが、横で支える。</h2></div>
-          <div class="skills-badge"><div><strong>12</strong><span>SKILLS<br>UPDATED MONTHLY</span></div></div>
+          <div><p class="section-kicker">12 CODEX SKILLS</p><h2 class="section-title"><span class="title-line">12個を、4つの</span><span class="title-line">仕事にまとめました。</span></h2></div>
+          <div class="skills-count" aria-label="12スキル"><div><strong>12</strong><span>CODEX SKILLS</span></div></div>
         </div>
-        <p class="section-lead">プラットフォームはCodex。古くなったスキルは見直し、現場で使える新しいスキルへ毎月入れ替えていきます。</p>
-        <div class="skills-grid">
-          <article class="skill-card"><div class="skill-top"><span class="skill-no">SKILL 01</span><span class="skill-mode">INPUT</span></div><h3>名刺パシャっと台帳化</h3><p>名刺画像から会社・氏名・役職を読み取り、確認待ちの接点リストを作成。</p><footer>撮影 → OCR → 人が確認 → 登録</footer></article>
-          <article class="skill-card"><div class="skill-top"><span class="skill-no">SKILL 02</span><span class="skill-mode">FOLLOW</span></div><h3>お礼メール下書き</h3><p>会話メモを反映した、その人だけのお礼メールを生成。送信前に本人が確認します。</p><footer>下書き → 承認 → 送信</footer></article>
-          <article class="skill-card"><div class="skill-top"><span class="skill-no">SKILL 03</span><span class="skill-mode">MEMORY</span></div><h3>接点・関心ログ</h3><p>いつ、どこで、何を話したか。次に連絡するときに必要な文脈を整理。</p><footer>人脈を「思い出せる資産」に</footer></article>
-          <article class="skill-card"><div class="skill-top"><span class="skill-no">SKILL 04</span><span class="skill-mode">ASK</span></div><h3>人脈コンシェルジュ</h3><p>「製造業に強い採用会社は？」など、自然な言葉で自分の人脈へ質問。</p><footer>回答には候補理由を添付</footer></article>
-          <article class="skill-card"><div class="skill-top"><span class="skill-no">SKILL 05</span><span class="skill-mode">MATCH</span></div><h3>相性検索</h3><p>提供価値、悩み、地域、商談温度から相性のよい会社を検索。</p><footer>AIが候補、人が最終判断</footer></article>
-          <article class="skill-card"><div class="skill-top"><span class="skill-no">SKILL 06</span><span class="skill-mode">SELECT</span></div><h3>紹介候補5社</h3><p>いま紹介する意味がある5社を、根拠と注意点つきで並べます。</p><footer>なぜ今つなぐかを言語化</footer></article>
-          <article class="skill-card"><div class="skill-top"><span class="skill-no">SKILL 07</span><span class="skill-mode">INTRO</span></div><h3>紹介メール作成</h3><p>双方への確認文と紹介本文を生成。合意後に紹介する流れを標準化。</p><footer>勝手につながない設計</footer></article>
-          <article class="skill-card"><div class="skill-top"><span class="skill-no">SKILL 08</span><span class="skill-mode">CARE</span></div><h3>近況メルマガ</h3><p>自分の活動、出会った商材、次回イベントを近況便として下書き。</p><footer>配信先と内容を毎回確認</footer></article>
-          <article class="skill-card"><div class="skill-top"><span class="skill-no">SKILL 09</span><span class="skill-mode">SEMINAR</span></div><h3>セミナー案内候補</h3><p>テーマに関心がありそうな相手を抽出し、個別案内文を作成。</p><footer>一斉送信ではなく関心基準</footer></article>
-          <article class="skill-card"><div class="skill-top"><span class="skill-no">SKILL 10</span><span class="skill-mode">PIPELINE</span></div><h3>紹介進捗ボード</h3><p>打診前、双方確認中、紹介済み、商談中を整理し、放置を防ぎます。</p><footer>紹介後まで追える</footer></article>
-          <article class="skill-card"><div class="skill-top"><span class="skill-no">SKILL 11</span><span class="skill-mode">OFFER</span></div><h3>営業顧問の提案書</h3><p>相手の課題に合わせ、支援範囲・件数・定例・料金を提案書に。</p><footer>契約条件は個別合意</footer></article>
-          <article class="skill-card"><div class="skill-top"><span class="skill-no">SKILL 12</span><span class="skill-mode">UPDATE</span></div><h3>月次スキル更新</h3><p>使われない型を外し、反応のよかった運用を新しいスキルへ反映。</p><footer>毎月、営業OSを育てる</footer></article>
+        <p class="section-lead">機能名を並べるだけではなく、実際の仕事の流れで使えるように整理。覚える、探す、つなぐ、売上にする——4つの業務群で支えます。</p>
+        <div class="skill-groups">
+          <article class="skill-group">
+            <header class="group-head"><span>01</span><div><small>CAPTURE / 01–03</small><h3>出会いを、覚える</h3></div></header>
+            <div class="skill-list">
+              <div class="skill-item"><span>01</span><div><h4>名刺パシャっと台帳化</h4><p>名刺を読み取り、人が確認して接点リストへ。</p></div></div>
+              <div class="skill-item"><span>02</span><div><h4>お礼メール下書き</h4><p>会話を反映した、その人だけのお礼文を生成。</p></div></div>
+              <div class="skill-item"><span>03</span><div><h4>接点・関心ログ</h4><p>いつ、何を話し、次に何をするかを整理。</p></div></div>
+            </div>
+          </article>
+          <article class="skill-group">
+            <header class="group-head"><span>02</span><div><small>DISCOVER / 04–06</small><h3>相性を、見つける</h3></div></header>
+            <div class="skill-list">
+              <div class="skill-item"><span>04</span><div><h4>人脈コンシェルジュ</h4><p>自然な言葉で、自分の人脈へ質問できます。</p></div></div>
+              <div class="skill-item"><span>05</span><div><h4>相性検索</h4><p>悩み、提供価値、地域、温度感から候補を検索。</p></div></div>
+              <div class="skill-item"><span>06</span><div><h4>紹介候補5社</h4><p>いま紹介する理由と注意点まで並べます。</p></div></div>
+            </div>
+          </article>
+          <article class="skill-group">
+            <header class="group-head"><span>03</span><div><small>CONNECT / 07–09</small><h3>関係を、つなぐ</h3></div></header>
+            <div class="skill-list">
+              <div class="skill-item"><span>07</span><div><h4>紹介メール作成</h4><p>双方への確認文と紹介本文を安全に下書き。</p></div></div>
+              <div class="skill-item"><span>08</span><div><h4>近況メルマガ</h4><p>活動や出会った商材を近況便として下書き。</p></div></div>
+              <div class="skill-item"><span>09</span><div><h4>セミナー案内候補</h4><p>関心がありそうな相手と個別案内文を用意。</p></div></div>
+            </div>
+          </article>
+          <article class="skill-group">
+            <header class="group-head"><span>04</span><div><small>GROW / 10–12</small><h3>仕事を、育てる</h3></div></header>
+            <div class="skill-list">
+              <div class="skill-item"><span>10</span><div><h4>紹介進捗ボード</h4><p>打診前から商談中まで、紹介後も追います。</p></div></div>
+              <div class="skill-item"><span>11</span><div><h4>営業顧問の提案書</h4><p>支援範囲、件数、定例、料金を提案書へ。</p></div></div>
+              <div class="skill-item"><span>12</span><div><h4>月次スキル更新</h4><p>使われた運用を残し、古い型を入れ替えます。</p></div></div>
+            </div>
+          </article>
         </div>
+        <div class="update-note"><strong>毎月アップデート</strong><span>古くなったスキルは統合・削除し、現場で反応のよかった新しい営業手順を追加していく想定です。</span></div>
       </div>
     </section>
 
     <section class="section simulator" id="simulator">
       <div class="container">
-        <p class="section-label">MONTHLY SIMULATOR</p>
-        <h2 class="section-title">月5万円を、<br>どう超えるか。</h2>
+        <p class="section-kicker">MONTHLY SIMULATOR</p>
+        <h2 class="section-title"><span class="title-line">月5万円を、</span><span class="title-line">どう超えるか。</span></h2>
         <p class="section-lead">件数を動かして、月間の売上イメージを確認できます。結果はあくまで単純試算です。</p>
         <div class="sim-grid">
           <div class="sim-controls">
@@ -426,32 +463,30 @@
       </div>
     </section>
 
-    <section class="asset-strip">
-      <div class="container asset-grid">
-        <h2>たとえ1年でやめても、<br>人脈は消えない。</h2>
-        <div class="asset-list"><div><strong>名刺資産</strong><span>会った人が整理されて残る</span></div><div><strong>関係資産</strong><span>会話とフォローの履歴が残る</span></div><div><strong>事業資産</strong><span>次の新規事業にもつなげられる</span></div></div>
-      </div>
-    </section>
-
-    <section class="section price-section" id="price">
+    <section class="section investment" id="price">
       <div class="container">
-        <p class="section-label">STARTER PRICE</p>
-        <h2 class="section-title">新規事業に、<br>まず1年投資する。</h2>
+        <p class="section-kicker">STARTER INVESTMENT</p>
+        <h2 class="section-title"><span class="title-line">月5万円で、</span><span class="title-line">営業OSを育てる。</span></h2>
+        <p class="section-lead">1年間なら投資額は60万円。単月黒字を目指しながら、出会いと関係の記録を、自分の次の事業にも使える資産へ変えていきます。</p>
         <div class="price-box">
           <div class="price-main"><small>AI営業代行会社スタートパック</small><strong>5<span>万円 / 月</span></strong><p>12か月利用した場合：60万円<br>※税区分・最低利用期間・開始時期は要確認</p></div>
           <div class="price-detail">
             <h3>含まれるもの</h3>
-            <ul><li>営業代行事業に最適化したCodex環境</li><li>名刺・フォロー・紹介・提案を支える12スキル</li><li>ライトアップのAIセミナー集客案件</li><li>スキルの月次アップデートと入れ替え</li><li>人が承認して進める安全な運用設計</li></ul>
+            <ul><li>営業代行事業に最適化したCodex環境</li><li>4業務群・合計12のAIスキル</li><li>AIセミナーの集客案件</li><li>スキルの月次アップデート</li><li>人が承認して進める運用設計</li></ul>
             <a class="button-primary" href="https://writeup.jp/contact/" target="_blank" rel="noopener">事業説明を相談する <span aria-hidden="true">↗</span></a>
             <p class="price-note">このページは企画検討用です。正式な提供範囲、利用環境、データ保管、サポート、契約・報酬条件は相談時に確認します。</p>
           </div>
+        </div>
+        <div class="asset-panel">
+          <h3><span class="title-line">1年でやめても、</span><span class="title-line">人脈は残る。</span></h3>
+          <div class="asset-list"><div><strong>名刺資産</strong><span>会った人が整理されて残る</span></div><div><strong>関係資産</strong><span>会話とフォローの履歴が残る</span></div><div><strong>事業資産</strong><span>次の新規事業にもつなげられる</span></div></div>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="container faq">
-        <div><p class="section-label">FAQ</p><h2 class="section-title">始める前に。</h2></div>
+        <div><p class="section-kicker">FAQ</p><h2 class="section-title"><span class="title-line">始める前に、</span><span class="title-line">知ること。</span></h2></div>
         <div class="faq-list">
           <details><summary>本当に営業未経験でも始められますか？</summary><p>提案文や紹介文はAIが支援しますが、相手に会う、話を聞く、約束を守るのは人の仕事です。「誰でも」は、経験よりも関係づくりを続ける意思がある方を想定しています。</p></details>
           <details><summary>AIが勝手にメールを送りますか？</summary><p>いいえ。初期運用ではAIが下書きと候補抽出を行い、宛先・内容・タイミングを本人が確認してから送信します。自動送信は権限、同意、停止条件を整えた範囲でのみ検討します。</p></details>
@@ -463,12 +498,10 @@
     </section>
 
     <section class="final-cta">
-      <div class="container final-grid"><h2>次に会う一人から、<br>営業会社を始めよう。</h2><a class="button-primary" href="https://writeup.jp/contact/" target="_blank" rel="noopener">AI営業代行会社の話を聞く <span aria-hidden="true">↗</span></a></div>
+      <div class="container final-grid"><h2><span class="title-line">次に会う一人から、</span><span class="title-line">事業を始めよう。</span></h2><a class="button-primary" href="https://writeup.jp/contact/" target="_blank" rel="noopener">AI営業代行会社の話を聞く <span aria-hidden="true">↗</span></a></div>
     </section>
   </main>
-
   <footer class="site-footer"><div class="container footer-inner"><span>AI営業代行会社スタートパック｜企画検討用LP</span><span>© Writeup Co., Ltd.</span></div></footer>
-
   <script>
     (() => {
       const seminar = document.querySelector('#seminar');
