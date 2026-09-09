@@ -1,0 +1,918 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="社内の会議の文字起こしやSlackのログを貼り付けるだけ。話されていた課題を抽出して、いま参加すべきウェビナーを提案します。">
+<meta name="theme-color" content="#ffffff">
+<title>会議のログから、次の一手を。｜ウェビナー提案</title>
+<link rel="canonical" href="https://writeup-inc.github.io/saas/webinar-log-scan/">
+<link rel="icon" href="/saas/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="ウェビナー提案｜ライトアップ">
+<meta property="og:title" content="会議のログから、次の一手を。">
+<meta property="og:description" content="議事録やSlackのログを貼り付けると、話されていた課題を抽出して、いま参加すべきウェビナーを提案します。">
+<meta property="og:url" content="https://writeup-inc.github.io/saas/webinar-log-scan/">
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #ffffff;
+    --ink: #0a0c0f;
+    --ink-2: #2f3640;
+    --ink-3: #5a636e;
+    --line: #1a1d22;
+    --line-soft: #d5dae0;
+    --wash: #f4f6f8;
+    --accent: #0f3fd1;
+    --accent-ink: #0a2f9e;
+    --warn: #8a4b00;
+    --sans: "Helvetica Neue", Helvetica, Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", Meiryo, sans-serif;
+    --shell: 1080px;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 18px;
+    line-height: 1.9;
+    letter-spacing: .01em;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a { color: var(--accent-ink); }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+  .shell { width: min(100% - 40px, var(--shell)); margin-inline: auto; }
+
+  /* ---------- header ---------- */
+  .site-head {
+    border-bottom: 2px solid var(--line);
+    padding: 18px 0;
+  }
+  .site-head .shell { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .brand { font-size: 17px; font-weight: 700; letter-spacing: .02em; }
+  .brand span { display: block; font-size: 13px; font-weight: 400; color: var(--ink-3); letter-spacing: .08em; }
+  .head-note { font-size: 14px; color: var(--ink-3); text-align: right; }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 64px 0 8px; }
+  .eyebrow {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    padding: 6px 12px;
+    border: 2px solid var(--line);
+    margin-bottom: 24px;
+  }
+  h1 {
+    margin: 0 0 22px;
+    font-size: clamp(32px, 6.4vw, 56px);
+    line-height: 1.32;
+    letter-spacing: -.01em;
+    font-weight: 800;
+  }
+  .lead {
+    margin: 0;
+    font-size: clamp(18px, 2.3vw, 21px);
+    line-height: 1.95;
+    color: var(--ink-2);
+    max-width: 44em;
+  }
+  .lead strong { color: var(--ink); font-weight: 700; }
+
+  /* ---------- steps ---------- */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin: 44px 0 0;
+    border: 2px solid var(--line);
+    list-style: none;
+    padding: 0;
+  }
+  .steps li { padding: 18px 20px; border-right: 2px solid var(--line); }
+  .steps li:last-child { border-right: 0; }
+  .steps b { display: block; font-size: 13px; letter-spacing: .12em; color: var(--ink-3); font-weight: 700; }
+  .steps span { font-size: 17px; font-weight: 700; line-height: 1.6; }
+
+  /* ---------- layout ---------- */
+  .work { padding: 56px 0 24px; }
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+    gap: 32px;
+    align-items: start;
+  }
+
+  .panel { border: 2px solid var(--line); padding: 28px; }
+  .panel h2 {
+    margin: 0 0 8px;
+    font-size: clamp(21px, 2.6vw, 25px);
+    line-height: 1.55;
+    font-weight: 800;
+  }
+  .panel .sub { margin: 0 0 20px; color: var(--ink-2); font-size: 17px; }
+
+  textarea {
+    width: 100%;
+    min-height: 260px;
+    padding: 18px;
+    border: 2px solid var(--line-soft);
+    background: #fff;
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 17px;
+    line-height: 1.85;
+    resize: vertical;
+  }
+  textarea:focus { border-color: var(--line); outline: none; box-shadow: 0 0 0 3px rgba(15,63,209,.18); }
+  textarea::placeholder { color: #97a0ab; }
+  .dropping textarea { border-color: var(--accent); background: #f2f6ff; }
+
+  .meter { display: flex; justify-content: space-between; gap: 12px; margin-top: 10px; font-size: 14px; color: var(--ink-3); }
+  .meter .ok { color: var(--accent-ink); font-weight: 700; }
+
+  .tools { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; align-items: center; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.4;
+    padding: 15px 24px;
+    border: 2px solid var(--line);
+    background: #fff;
+    color: var(--ink);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background .15s ease, color .15s ease;
+  }
+  .btn:hover { background: var(--wash); }
+  .btn--primary { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .btn--primary:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn--accent { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn--accent:hover { background: var(--accent-ink); border-color: var(--accent-ink); }
+  .btn--wide { width: 100%; font-size: 19px; padding: 19px 24px; }
+  .btn--ghost { border-color: var(--line-soft); font-size: 16px; padding: 12px 18px; }
+  .btn[disabled] { opacity: .38; cursor: not-allowed; }
+
+  .filename { font-size: 15px; color: var(--ink-2); word-break: break-all; }
+  .filename b { color: var(--ink); }
+
+  .privacy {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: var(--wash);
+    border-left: 6px solid var(--line);
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--ink-2);
+  }
+
+  /* ---------- guide ---------- */
+  .guide { border: 2px solid var(--line); padding: 26px; }
+  .guide h3 { margin: 0 0 14px; font-size: 19px; font-weight: 800; line-height: 1.6; }
+  .guide h3 + p { margin: -8px 0 16px; font-size: 15px; color: var(--ink-3); }
+  .guide ul { margin: 0 0 24px; padding: 0; list-style: none; }
+  .guide li { position: relative; padding-left: 28px; margin-bottom: 12px; font-size: 16px; line-height: 1.8; }
+  .guide li::before {
+    content: "";
+    position: absolute;
+    left: 4px; top: 12px;
+    width: 12px; height: 3px;
+    background: var(--ink);
+  }
+  .guide li b { font-weight: 700; }
+  .guide li em { display: block; font-style: normal; font-size: 14px; color: var(--ink-3); }
+  .guide .no li::before { background: #b8bfc7; }
+  .guide .hr { height: 2px; background: var(--line-soft); margin: 0 0 22px; }
+
+  /* ---------- analyzing ---------- */
+  #stage-run { display: none; }
+  .runbox { border: 2px solid var(--line); padding: 32px; }
+  .runbox h2 { margin: 0 0 22px; font-size: 24px; font-weight: 800; }
+  .runlist { list-style: none; margin: 0; padding: 0; }
+  .runlist li {
+    display: flex; gap: 14px; align-items: baseline;
+    font-size: 18px; padding: 10px 0; color: #9aa3ad;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .runlist li:last-child { border-bottom: 0; }
+  .runlist li .mark { font-weight: 800; width: 1.6em; flex: none; }
+  .runlist li.on { color: var(--ink); font-weight: 700; }
+  .runlist li.done { color: var(--ink-2); }
+  .runlist li.done .mark { color: var(--accent-ink); }
+
+  /* ---------- result ---------- */
+  #stage-result { display: none; }
+  .result-head { border-bottom: 2px solid var(--line); padding-bottom: 22px; margin-bottom: 34px; }
+  .result-head h2 { margin: 0 0 10px; font-size: clamp(24px, 4vw, 34px); font-weight: 800; line-height: 1.45; }
+  .result-head p { margin: 0; color: var(--ink-2); font-size: 17px; }
+
+  .block-title {
+    font-size: 14px; font-weight: 800; letter-spacing: .14em;
+    color: var(--ink-3); margin: 0 0 16px;
+  }
+
+  .issues { display: grid; gap: 16px; margin-bottom: 44px; }
+  .issue { border: 2px solid var(--line-soft); border-left: 8px solid var(--ink); padding: 20px 22px; }
+  .issue h4 { margin: 0 0 8px; font-size: 20px; font-weight: 800; line-height: 1.6; }
+  .issue .quote {
+    margin: 12px 0 0; padding: 12px 14px; background: var(--wash);
+    font-size: 15px; line-height: 1.8; color: var(--ink-2);
+  }
+  .issue .quote b { display: block; font-size: 13px; letter-spacing: .1em; color: var(--ink-3); margin-bottom: 4px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .tag { font-size: 14px; font-weight: 700; padding: 4px 10px; border: 2px solid var(--line-soft); }
+
+  .pick { border: 3px solid var(--line); padding: 30px; margin-bottom: 20px; }
+  .pick .badge {
+    display: inline-block; background: var(--ink); color: #fff;
+    font-size: 14px; font-weight: 800; letter-spacing: .1em; padding: 6px 14px; margin-bottom: 18px;
+  }
+  .pick h3 { margin: 0 0 8px; font-size: clamp(24px, 3.6vw, 32px); font-weight: 800; line-height: 1.45; }
+  .pick .sub { margin: 0 0 20px; font-size: 18px; color: var(--ink-2); font-weight: 700; }
+  .pick .why { margin: 0 0 22px; padding: 18px 20px; background: var(--wash); font-size: 17px; line-height: 1.9; }
+  .pick .why b { display: block; margin-bottom: 6px; font-size: 14px; letter-spacing: .1em; color: var(--ink-3); }
+  .facts { margin: 0 0 24px; border-top: 2px solid var(--line-soft); }
+  .facts div { display: grid; grid-template-columns: 8.5em minmax(0, 1fr); gap: 14px; padding: 12px 0; border-bottom: 2px solid var(--line-soft); font-size: 16px; }
+  .facts dt { font-weight: 700; color: var(--ink-3); font-size: 15px; }
+  .facts dd { margin: 0; color: var(--ink-2); }
+  .pick .note { margin: 14px 0 0; font-size: 14px; color: var(--ink-3); text-align: center; }
+
+  .alts { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 40px; }
+  .alt { border: 2px solid var(--line-soft); padding: 22px; display: flex; flex-direction: column; gap: 10px; }
+  .alt h4 { margin: 0; font-size: 19px; font-weight: 800; line-height: 1.55; }
+  .alt p { margin: 0; font-size: 15px; color: var(--ink-2); flex: 1; }
+  .alt .btn { margin-top: 6px; }
+
+  .redo { display: flex; flex-wrap: wrap; gap: 12px; padding-top: 8px; }
+
+  /* ---------- all list ---------- */
+  .all { border-top: 2px solid var(--line); margin-top: 64px; padding: 56px 0 72px; }
+  .all h2 { margin: 0 0 10px; font-size: clamp(24px, 3.4vw, 30px); font-weight: 800; }
+  .all > .shell > p { margin: 0 0 30px; color: var(--ink-2); font-size: 17px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; }
+  .card { border: 2px solid var(--line); padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+  .card h3 { margin: 0; font-size: 20px; font-weight: 800; line-height: 1.55; }
+  .card .sub { margin: 0; font-size: 16px; font-weight: 700; color: var(--ink-2); }
+  .card p { margin: 0; font-size: 15px; color: var(--ink-2); flex: 1; }
+  .card .svc { font-size: 14px; color: var(--ink-3); }
+
+  .site-foot { border-top: 2px solid var(--line); padding: 28px 0 56px; font-size: 15px; color: var(--ink-3); }
+
+  .err { margin-top: 16px; padding: 14px 16px; border: 2px solid var(--warn); color: var(--warn); font-size: 16px; font-weight: 700; }
+  .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: minmax(0, 1fr); }
+    .steps { grid-template-columns: minmax(0, 1fr); }
+    .steps li { border-right: 0; border-bottom: 2px solid var(--line); }
+    .steps li:last-child { border-bottom: 0; }
+  }
+  @media (max-width: 640px) {
+    body { font-size: 17px; }
+    .shell { width: min(100% - 32px, var(--shell)); }
+    .hero { padding: 44px 0 0; }
+    .panel, .guide, .pick, .runbox { padding: 22px 18px; }
+    .head-note { display: none; }
+    .facts div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+    .btn--wide { font-size: 18px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="shell">
+    <div class="brand">ライトアップ<span>WEBINAR</span></div>
+    <div class="head-note">ウェビナーは全て無料・オンライン開催です</div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="shell">
+      <p class="eyebrow">議事録・ログ解析</p>
+      <h1>会議で話していた課題から、<br>出るべきウェビナーを選びます。</h1>
+      <p class="lead">社内の会議の文字起こしや、Slackのやりとりをそのまま貼り付けてください。<strong>何に困っていたのかを読み取り</strong>、いま参加する価値があるウェビナーを1つに絞ってご提案します。探す時間は要りません。</p>
+
+      <ol class="steps">
+        <li><b>STEP 1</b><span>ログを貼る／ファイルを選ぶ</span></li>
+        <li><b>STEP 2</b><span>課題を抽出して照合</span></li>
+        <li><b>STEP 3</b><span>提案を見て、そのまま申し込む</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="work">
+    <div class="shell">
+
+      <div id="stage-input" class="grid">
+        <div class="panel" id="dropzone">
+          <h2>ここに社内の会議の文字起こしをそのまま貼り付けるか、ファイルをアップロードしてください。</h2>
+          <p class="sub">整形は不要です。発言者名やタイムスタンプが入ったままで構いません。</p>
+
+          <label class="visually-hidden" for="log">会議の文字起こし</label>
+          <textarea id="log" placeholder="例）&#10;佐藤：今期、新規のアポ数が先月から2割落ちています。&#10;田中：リストを回しきっていて、次にどこへ当たるかが決まっていない状態です。&#10;佐藤：交換した名刺は溜まっているので、そこから掘り起こせないか。&#10;…"></textarea>
+
+          <div class="meter">
+            <span id="count">0 文字</span>
+            <span id="hint">目安は500文字以上。長いほど精度が上がります</span>
+          </div>
+
+          <div class="tools">
+            <button type="button" class="btn btn--ghost" id="pick-file">ファイルを選ぶ</button>
+            <button type="button" class="btn btn--ghost" id="use-sample">サンプルのログで試す</button>
+            <span class="filename" id="filename"></span>
+          </div>
+          <input type="file" id="file" accept=".txt,.md,.markdown,.csv,.tsv,.log,.json,.vtt,.srt,text/plain" hidden>
+
+          <div class="tools" style="margin-top:22px">
+            <button type="button" class="btn btn--primary btn--wide" id="run">課題を抽出してウェビナーを提案する</button>
+          </div>
+          <div id="err" class="err" hidden></div>
+
+          <p class="privacy"><strong>貼り付けた内容は、お使いのブラウザの中だけで処理されます。</strong>サーバーへ送信されず、保存もされません。社外秘の議事録でもそのままお使いいただけます。</p>
+        </div>
+
+        <aside class="guide">
+          <h3>こんなログが向いています</h3>
+          <p>課題や困りごとが言葉として出てくる場が最適です。</p>
+          <ul>
+            <li><b>経営会議・幹部会議の議事録</b><em>今期の方針、伸び悩んでいる事業の話</em></li>
+            <li><b>営業の定例・案件レビュー</b><em>アポが取れない、リードが足りない、失注の理由</em></li>
+            <li><b>新規事業・商材検討の打ち合わせ</b><em>何を仕入れるか、どう収益の柱を増やすか</em></li>
+            <li><b>Slackの相談チャンネルの書き出し</b><em>#営業 #マーケ などの直近1〜2か月分</em></li>
+            <li><b>部門横断の課題出しミーティング</b><em>属人化、工数、マネジメントの話</em></li>
+          </ul>
+
+          <div class="hr"></div>
+
+          <h3>向いていないもの</h3>
+          <ul class="no">
+            <li>議題のない雑談だけのログ</li>
+            <li>数行のメモ、決定事項だけの箇条書き</li>
+            <li>数値の表や、スクリーンショットの画像</li>
+          </ul>
+
+          <div class="hr"></div>
+
+          <h3>読み込めるファイル</h3>
+          <ul class="no">
+            <li>テキスト（.txt / .md / .csv / .log / .json）</li>
+            <li>字幕形式の文字起こし（.vtt / .srt）</li>
+            <li><b>Word・PDFは非対応です。</b><em>本文をコピーして貼り付けてください。</em></li>
+          </ul>
+        </aside>
+      </div>
+
+      <div id="stage-run">
+        <div class="runbox">
+          <h2>ログを読んでいます</h2>
+          <ul class="runlist" id="runlist">
+            <li><span class="mark">1</span><span>本文を読み込む</span></li>
+            <li><span class="mark">2</span><span>論点になっていた箇所を抜き出す</span></li>
+            <li><span class="mark">3</span><span>課題のテーマを判定する</span></li>
+            <li><span class="mark">4</span><span>ウェビナーの内容と照合する</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="stage-result">
+        <div class="result-head">
+          <h2 id="result-title"></h2>
+          <p id="result-sub"></p>
+        </div>
+
+        <p class="block-title">読み取った課題</p>
+        <div class="issues" id="issues"></div>
+
+        <p class="block-title">この会議に、いちばん合うウェビナー</p>
+        <div class="pick" id="pick"></div>
+
+        <p class="block-title" id="alts-title">ほかに合いそうなウェビナー</p>
+        <div class="alts" id="alts"></div>
+
+        <div class="redo">
+          <button type="button" class="btn" id="again">別のログを解析する</button>
+          <button type="button" class="btn btn--ghost" id="edit">貼り付けた内容を直す</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="all">
+    <div class="shell">
+      <h2>開催中のウェビナー（4件）</h2>
+      <p>解析を使わずに、ここから直接お申し込みいただけます。</p>
+      <div class="cards" id="cards"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="shell">株式会社ライトアップ ／ お申し込みは各ウェビナーのフォームから承ります。</div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ------------------------------------------------------------------
+   * ウェビナー定義。id / title / subtitle / description / target /
+   * services / format / recommendation_reason / form_url
+   * ------------------------------------------------------------------ */
+  var WEBINARS = [
+    {
+      id: 'social-master-oem',
+      title: 'ソーシャルマスター OEM説明会',
+      subtitle: 'SNS自動投稿ツールを、自社サービスとして販売する',
+      description: 'SNS運用を自動化するツール「ソーシャルマスター」を、自社ブランドの商材として取り扱うためのOEM・代理店向け説明会です。開発をせずにSNS支援メニューを持つ方法と、提供開始までの流れをご説明します。',
+      target: '自社サービスとしてSNSツールを販売したい方／代理店・OEMビジネスを始めたい方／既存の顧客にSNS運用支援を提案したい方',
+      services: 'ソーシャルマスター（SNS自動投稿ツール）',
+      format: 'オンライン開催／説明会形式・質疑応答あり',
+      reason: 'SNSという明確な入口があり、提案先を選ばない商材です。自社の看板で売れる形になっているため、はじめてのOEMでも扱いやすいのが特長です。',
+      form_url: 'https://docs.google.com/forms/d/e/1FAIpQLScMJ4YKJvhmb_zu3sB1uCb3yG4Dy3aD9TUVYAmgb7k0dV4e6g/viewform'
+    },
+    {
+      id: 'aio-master-oem',
+      title: 'AIOマスター OEM説明会',
+      subtitle: '生成AIに「指名される」対策を、自社の商材にする',
+      description: 'ChatGPTなどの生成AI検索で自社が指名される状態をつくるAIO（LLMO）対策ツール「AIOマスター」の、OEM・代理店向け説明会です。新しい提案商材としての位置づけと、提供の進め方をご説明します。',
+      target: 'AI・検索領域で新しい商材を持ちたい方／Web・広告・制作の事業をされている方／代理店・OEMビジネスを始めたい方',
+      services: 'AIOマスター（生成AI検索対策・AIO／LLMO）',
+      format: 'オンライン開催／説明会形式・質疑応答あり',
+      reason: '検索の入口が生成AIへ移りつつある今、まだ提案できる会社が少ない領域です。先行して商材を持てることが、そのまま差別化になります。',
+      form_url: 'https://docs.google.com/forms/d/1l2mGroXn9ozZcTKWT2chPBgTplBFsNCMZN726B0b4VM/prefill'
+    },
+    {
+      id: 'exec-ai-referral',
+      title: '2026年、経営者はAIとどう向き合うべきか',
+      subtitle: 'ご縁を資産に。名刺系新サービスのご紹介',
+      description: '2026年に向けて経営者がAIとどう向き合うべきかを整理したうえで、名刺交換や人脈を営業の資産に変える新サービス群をまとめてご紹介します。いちばんおすすめしているウェビナーです。',
+      target: '経営者・役員／事業責任者／人脈や紹介から商談を増やしたい方',
+      services: 'つばめリファラル／つばめリード／名刺LINEエージェント／リストマスター／AIO／Lシンク',
+      format: 'オンライン開催／解説＋サービス紹介',
+      reason: '個別のツールの話ではなく、経営としてAIをどう位置づけるかから入る内容です。そのうえで、すでに持っているご縁を商談に変える具体策までつながります。',
+      form_url: 'https://forms.gle/s6JMDjueAbrdrbzQ8',
+      featured: true
+    },
+    {
+      id: 'free-monitor',
+      title: '無料モニター先行案内ウェビナー',
+      subtitle: 'これから提供するAIサービスを、先に使ってみる',
+      description: '提供開始前のAIサービスを、モニターとして先行してお使いいただくためのご案内ウェビナーです。対象サービスでできることと、モニターの条件・進め方をご説明します。',
+      target: 'まずは実際に使って確かめたい方／社内業務やマネジメントを効率化したい方／新しいツールを先行して試したい方',
+      services: 'スーパーマネージャー／Elliot／ワークログ・インサイト／Jマッチ・エンジン',
+      format: 'オンライン開催／サービス紹介＋モニター条件のご説明',
+      reason: '資料を読むより、実際に触ったほうが早い段階です。先行利用の枠があるうちに、自社に合うかどうかを確かめられます。',
+      form_url: 'https://forms.gle/3w1XbLtCYKMQc2B4A'
+    }
+  ];
+
+  /* ------------------------------------------------------------------
+   * 課題テーマ。ログ本文をキーワードで判定し、weights で各ウェビナーへ配点する。
+   * issue は結果画面に「読み取った課題」として出す1行。
+   * ------------------------------------------------------------------ */
+  var TOPICS = [
+    {
+      id: 'sales',
+      label: '営業活動',
+      issue: '新規の商談数や受注が伸び悩み、次に当たる先が決まっていない',
+      keywords: ['営業', '商談', 'アポ', '受注', '売上', '売り上げ', '新規開拓', 'テレアポ', '顧客管理', 'sfa', 'リード', '見込み', '成約', '契約', '集客', '問い合わせ', '案件', '失注', 'ノルマ', '目標未達'],
+      weights: { 'exec-ai-referral': 3, 'free-monitor': 2, 'social-master-oem': 1 }
+    },
+    {
+      id: 'sns',
+      label: 'SNS・発信',
+      issue: 'SNSでの発信が続かず、認知や集客の入口が細っている',
+      keywords: ['sns', 'インスタ', 'instagram', 'ツイッター', 'twitter', 'tiktok', 'ティックトック', 'youtube', 'facebook', '投稿', '発信', 'フォロワー', '拡散', '認知'],
+      weights: { 'social-master-oem': 4 }
+    },
+    {
+      id: 'aio',
+      label: '生成AI検索・AIO',
+      issue: '生成AIや検索で自社が見つけられず、指名で選ばれていない',
+      keywords: ['aio', 'llmo', 'chatgpt', 'チャットgpt', '生成ai', 'ai検索', '検索', 'seo', '指名', '上位', 'perplexity', 'gemini', 'クローラ', 'ホームページ', 'web集客'],
+      weights: { 'aio-master-oem': 4 }
+    },
+    {
+      id: 'oem',
+      label: '新商材・代理店',
+      issue: '収益の柱を増やすための新しい商材を探している',
+      keywords: ['代理店', 'oem', '商材', '販売', '仕入', '新規事業', '収益', '売りたい', '取り扱', 'ライセンス', '再販', 'パートナー', '事業の柱', '扱いたい', '粗利', 'ストック'],
+      weights: { 'social-master-oem': 3, 'aio-master-oem': 3 }
+    },
+    {
+      id: 'referral',
+      label: '人脈・紹介',
+      issue: '交換した名刺や既存のご縁が、商談につながらないまま眠っている',
+      keywords: ['名刺', '人脈', '紹介', 'リファラル', 'ご縁', '交流会', 'つながり', '口コミ', '既存顧客', 'line', 'ライン', '掘り起こ', '休眠'],
+      weights: { 'exec-ai-referral': 4 }
+    },
+    {
+      id: 'internal',
+      label: '社内業務・マネジメント',
+      issue: '業務が属人化し、マネジメントや管理に時間を取られている',
+      keywords: ['社内', '業務', 'マネジメント', '部下', '勤怠', '工数', '日報', '育成', '人事', '採用', '残業', '属人', 'バックオフィス', '経理', '事務', '管理', 'チーム', '生産性', '離職', '教育'],
+      weights: { 'free-monitor': 4 }
+    },
+    {
+      id: 'exec',
+      label: '経営・AI方針',
+      issue: 'AIを経営としてどう位置づけるか、何から着手するかが定まっていない',
+      keywords: ['経営', '方針', '社長', '役員', '経営者', 'dx', 'ai活用', '向き合', '戦略', '2026', '全体像', '何から', '来期', '中期'],
+      weights: { 'exec-ai-referral': 3, 'free-monitor': 1 }
+    },
+    {
+      id: 'trial',
+      label: 'まず試す',
+      issue: '検討だけが続いていて、実際に試して確かめる段階に進めていない',
+      keywords: ['無料', '試し', '試す', '試して', 'モニター', 'お試し', '体験', '使ってみ', '触って', 'トライアル', '検証', '導入コスト', '予算'],
+      weights: { 'free-monitor': 4 }
+    }
+  ];
+
+  var SAMPLE = [
+    '【営業定例 議事録】',
+    '出席：佐藤（部長）／田中／鈴木',
+    '',
+    '佐藤：まず数字から。今期の新規アポ数が前月比で2割落ちている。受注も未達のままだ。',
+    '田中：架電リストを回しきってしまっていて、次にどこへ当たるかが決まっていません。',
+    '鈴木：展示会と交流会で交換した名刺が1,000枚くらい溜まっていますが、名刺管理ソフトに入れたきりで手つかずです。',
+    '佐藤：そこは資産のはずだ。過去のご縁から掘り起こせないか検討したい。紹介で決まった案件は成約率も高い。',
+    '田中：あと、問い合わせ自体が減っています。ホームページ経由の流入が去年より落ちていて、最近はお客様がChatGPTで比較してから来るケースが増えている印象です。',
+    '鈴木：検索で自社が出てこないという話は、私も別のお客様から聞きました。',
+    '佐藤：そのあたりも含めて、経営としてAIとどう向き合うか整理しないといけない。来期の方針に関わる。',
+    '田中：ただ現場としては、日報や案件の管理に時間を取られていて、新しいことを検討する余裕がないのが正直なところです。属人化していて私しか状況を把握していません。',
+    '佐藤：分かった。まずは情報を集めよう。無料で試せるものがあれば触ってみたい。'
+  ].join('\n');
+
+  /* ---------------------------------------------------------------- */
+
+  /* 語幹で拾っているキーワードは、タグに出すとき読める形に直す */
+  var TAG_LABEL = {
+    '向き合': '向き合い方', '試し': '試したい', '試す': '試したい', '試して': '試したい',
+    '使ってみ': '使ってみたい', '触って': '触ってみたい', '取り扱': '取り扱い',
+    '仕入': '仕入れ', '掘り起こ': '掘り起こし', '何から': '何から始めるか',
+    '売りたい': '売りたい', '扱いたい': '扱いたい', '見込み': '見込み客', '属人': '属人化'
+  };
+
+  var $ = function (id) { return document.getElementById(id); };
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var stageInput = $('stage-input');
+  var stageRun = $('stage-run');
+  var stageResult = $('stage-result');
+  var logEl = $('log');
+  var errEl = $('err');
+  var timers = [];
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function byId(id) {
+    for (var i = 0; i < WEBINARS.length; i++) { if (WEBINARS[i].id === id) return WEBINARS[i]; }
+    return null;
+  }
+  function clearTimers() {
+    timers.forEach(clearTimeout);
+    timers = [];
+  }
+  function later(fn, ms) { timers.push(setTimeout(fn, ms)); }
+
+  /* ---------- 入力量の表示 ---------- */
+  function updateCount() {
+    var n = logEl.value.trim().length;
+    var c = $('count');
+    var h = $('hint');
+    c.textContent = n.toLocaleString('ja-JP') + ' 文字';
+    if (n >= 500) {
+      h.textContent = '十分な長さです';
+      h.className = 'ok';
+    } else if (n > 0) {
+      h.textContent = '目安は500文字以上。短くても解析はできます';
+      h.className = '';
+    } else {
+      h.textContent = '目安は500文字以上。長いほど精度が上がります';
+      h.className = '';
+    }
+  }
+
+  /* ---------- 解析 ---------- */
+  function sentences(text) {
+    return text
+      .replace(/\r/g, '')
+      .split(/[。\n！？!?]+/)
+      .map(function (s) { return s.trim(); })
+      .filter(function (s) { return s.length >= 8; });
+  }
+
+  function analyze(text) {
+    var lower = text.toLowerCase();
+    var sents = sentences(text);
+    var hits = [];
+
+    TOPICS.forEach(function (t) {
+      var count = 0;
+      var found = [];
+      t.keywords.forEach(function (k) {
+        var n = lower.split(k).length - 1;
+        if (n === 0) return;
+        count += n;
+        found.push({ word: k, n: n });
+      });
+      if (count === 0) return;
+
+      // 出現数の多い語をタグに出す
+      var matched = found.slice().sort(function (a, b) { return b.n - a.n; })
+        .slice(0, 3).map(function (x) { return x.word; });
+
+      // 根拠となる一文は「その話題の語をいくつ含むか」で選ぶ。
+      // 見出し行や出席者行は根拠にならないので落とす。
+      var best = '', bestScore = 0;
+      for (var i = 0; i < sents.length; i++) {
+        var raw = sents[i];
+        if (raw.length < 12) continue;
+        if (/[【】]/.test(raw)) continue;
+        if (/^(出席|参加者|日時|場所|議題|司会|欠席)\s*[:：]/.test(raw)) continue;
+        var low = raw.toLowerCase();
+        var hitCount = 0;
+        for (var j = 0; j < found.length; j++) {
+          if (low.indexOf(found[j].word) !== -1) hitCount++;
+        }
+        if (hitCount === 0) continue;
+        if (hitCount > bestScore || (hitCount === bestScore && raw.length > best.length)) {
+          best = raw;
+          bestScore = hitCount;
+        }
+      }
+      var quote = best;
+      if (quote.length > 110) quote = quote.slice(0, 110) + '…';
+
+      hits.push({ topic: t, count: count, score: Math.min(count, 5), matched: matched, quote: quote });
+    });
+
+    hits.sort(function (a, b) { return b.count - a.count; });
+
+    var totals = {};
+    WEBINARS.forEach(function (w) { totals[w.id] = 0; });
+    hits.forEach(function (h) {
+      var w = h.topic.weights;
+      for (var id in w) { if (totals.hasOwnProperty(id)) totals[id] += w[id] * h.score; }
+    });
+
+    var ranked = WEBINARS.slice().sort(function (a, b) {
+      var d = totals[b.id] - totals[a.id];
+      if (d !== 0) return d;
+      if (a.featured) return -1;
+      if (b.featured) return 1;
+      return 0;
+    });
+
+    return { hits: hits, totals: totals, ranked: ranked, chars: text.trim().length, lines: text.trim().split(/\n+/).length };
+  }
+
+  /* ---------- 描画 ---------- */
+  function renderIssues(hits) {
+    var box = $('issues');
+    box.innerHTML = '';
+    var top = hits.slice(0, 4);
+
+    if (!top.length) {
+      box.innerHTML = '<div class="issue"><h4>はっきりした課題の言葉が見つかりませんでした</h4>'
+        + '<p style="margin:0;color:#2f3640">決定事項だけのメモや、議題のない雑談のログだと読み取れないことがあります。'
+        + '課題や困りごとが話されている部分を足すか、下の一覧から直接お選びください。</p></div>';
+      return;
+    }
+
+    top.forEach(function (h) {
+      var el = document.createElement('div');
+      el.className = 'issue';
+      var html = '<h4>' + esc(h.topic.issue) + '</h4>';
+      if (h.quote) {
+        html += '<p class="quote"><b>ログ内の該当箇所</b>「' + esc(h.quote) + '」</p>';
+      }
+      html += '<div class="tags"><span class="tag">' + esc(h.topic.label) + '</span>';
+      h.matched.forEach(function (k) { html += '<span class="tag">' + esc(TAG_LABEL[k] || k) + '</span>'; });
+      html += '</div>';
+      el.innerHTML = html;
+      box.appendChild(el);
+    });
+  }
+
+  function renderPick(w, hits) {
+    var lead = hits.length ? hits[0].topic.issue : null;
+    var why = lead
+      ? '会議のなかで最も繰り返されていたのは「' + lead + '」という論点でした。' + w.reason
+      : w.reason;
+
+    $('pick').innerHTML =
+      '<span class="badge">' + (hits.length ? 'このログからの提案' : 'まずはこちらから') + '</span>'
+      + '<h3>' + esc(w.title) + '</h3>'
+      + '<p class="sub">' + esc(w.subtitle) + '</p>'
+      + '<p class="why"><b>なぜこのウェビナーか</b>' + esc(why) + '</p>'
+      + '<dl class="facts">'
+      + '<div><dt>内容</dt><dd>' + esc(w.description) + '</dd></div>'
+      + '<div><dt>こんな方へ</dt><dd>' + esc(w.target) + '</dd></div>'
+      + '<div><dt>紹介サービス</dt><dd>' + esc(w.services) + '</dd></div>'
+      + '<div><dt>開催形式</dt><dd>' + esc(w.format) + '</dd></div>'
+      + '</dl>'
+      + '<a class="btn btn--accent btn--wide" href="' + esc(w.form_url) + '" target="_blank" rel="noopener">このウェビナーに申し込む</a>'
+      + '<p class="note">お申し込みフォームが新しいタブで開きます</p>';
+  }
+
+  function renderAlts(ranked) {
+    var box = $('alts');
+    box.innerHTML = '';
+    ranked.slice(1, 3).forEach(function (w) {
+      var el = document.createElement('div');
+      el.className = 'alt';
+      el.innerHTML = '<h4>' + esc(w.title) + '</h4>'
+        + '<p>' + esc(w.subtitle) + '</p>'
+        + '<a class="btn btn--ghost" href="' + esc(w.form_url) + '" target="_blank" rel="noopener">内容を見て申し込む</a>';
+      box.appendChild(el);
+    });
+  }
+
+  function renderResult(res) {
+    var top = res.ranked[0];
+    $('result-title').textContent = res.hits.length
+      ? '「' + res.hits[0].topic.label + '」を軸に、1つに絞りました。'
+      : 'いちばんおすすめのウェビナーをご案内します。';
+    $('result-sub').textContent = res.chars.toLocaleString('ja-JP') + '文字を読み込み、'
+      + (res.hits.length ? res.hits.length + '件の論点を検出しました。' : '課題の言葉は検出できませんでした。')
+      + ' 解析はこのブラウザ内だけで行われています。';
+
+    renderIssues(res.hits);
+    renderPick(top, res.hits);
+    renderAlts(res.ranked);
+    $('alts-title').style.display = res.hits.length ? '' : 'none';
+  }
+
+  /* ---------- 画面遷移 ---------- */
+  function show(stage) {
+    stageInput.style.display = stage === 'input' ? '' : 'none';
+    stageRun.style.display = stage === 'run' ? 'block' : 'none';
+    stageResult.style.display = stage === 'result' ? 'block' : 'none';
+  }
+
+  function runAnalysis() {
+    var text = logEl.value.trim();
+    errEl.hidden = true;
+
+    if (text.length < 30) {
+      errEl.textContent = '解析するには本文が短すぎます。会議のログを30文字以上貼り付けてください。';
+      errEl.hidden = false;
+      logEl.focus();
+      return;
+    }
+
+    var res = analyze(text);
+    var items = $('runlist').children;
+    for (var i = 0; i < items.length; i++) { items[i].className = ''; }
+
+    show('run');
+    stageRun.scrollIntoView({ block: 'start' });
+    clearTimers();
+
+    if (reduceMotion) {
+      for (var k = 0; k < items.length; k++) {
+        items[k].className = 'done';
+        items[k].firstChild.textContent = '✓';
+      }
+      renderResult(res);
+      show('result');
+      return;
+    }
+
+    var step = 460;
+    for (var n = 0; n < items.length; n++) {
+      (function (idx) {
+        later(function () {
+          if (idx > 0) {
+            items[idx - 1].className = 'done';
+            items[idx - 1].firstChild.textContent = '✓';
+          }
+          items[idx].className = 'on';
+        }, step * idx);
+      })(n);
+    }
+    later(function () {
+      items[items.length - 1].className = 'done';
+      items[items.length - 1].firstChild.textContent = '✓';
+    }, step * items.length);
+    later(function () {
+      renderResult(res);
+      show('result');
+      stageResult.scrollIntoView({ block: 'start' });
+    }, step * items.length + 320);
+  }
+
+  /* ---------- ファイル読み込み ---------- */
+  function readFile(file) {
+    if (!file) return;
+    if (file.size > 4 * 1024 * 1024) {
+      errEl.textContent = 'ファイルが大きすぎます（4MBまで）。必要な部分だけを貼り付けてください。';
+      errEl.hidden = false;
+      return;
+    }
+    if (/\.(docx?|pdf|pptx?|xlsx?|png|jpe?g|gif|zip)$/i.test(file.name)) {
+      errEl.textContent = 'この形式は読み込めません。本文をコピーして、上のテキスト欄へ貼り付けてください。';
+      errEl.hidden = false;
+      return;
+    }
+    var reader = new FileReader();
+    reader.onload = function () {
+      errEl.hidden = true;
+      logEl.value = String(reader.result || '');
+      $('filename').innerHTML = '読み込み済み：<b>' + esc(file.name) + '</b>';
+      updateCount();
+      logEl.focus();
+    };
+    reader.onerror = function () {
+      errEl.textContent = 'ファイルを読み込めませんでした。テキスト形式かどうかをご確認ください。';
+      errEl.hidden = false;
+    };
+    reader.readAsText(file, 'utf-8');
+  }
+
+  /* ---------- 一覧 ---------- */
+  function renderCards() {
+    var box = $('cards');
+    WEBINARS.forEach(function (w) {
+      var el = document.createElement('div');
+      el.className = 'card';
+      el.innerHTML = '<h3>' + esc(w.title) + '</h3>'
+        + '<p class="sub">' + esc(w.subtitle) + '</p>'
+        + '<p>' + esc(w.description) + '</p>'
+        + '<p class="svc">紹介サービス：' + esc(w.services) + '</p>'
+        + '<a class="btn" href="' + esc(w.form_url) + '" target="_blank" rel="noopener">申し込む</a>';
+      box.appendChild(el);
+    });
+  }
+
+  /* ---------- イベント ---------- */
+  logEl.addEventListener('input', updateCount);
+  $('run').addEventListener('click', runAnalysis);
+  $('pick-file').addEventListener('click', function () { $('file').click(); });
+  $('file').addEventListener('change', function (e) { readFile(e.target.files[0]); });
+  $('use-sample').addEventListener('click', function () {
+    logEl.value = SAMPLE;
+    $('filename').textContent = '';
+    errEl.hidden = true;
+    updateCount();
+    logEl.focus();
+  });
+  $('again').addEventListener('click', function () {
+    logEl.value = '';
+    $('filename').textContent = '';
+    updateCount();
+    show('input');
+    stageInput.scrollIntoView({ block: 'start' });
+    logEl.focus();
+  });
+  $('edit').addEventListener('click', function () {
+    show('input');
+    stageInput.scrollIntoView({ block: 'start' });
+    logEl.focus();
+  });
+
+  var dz = $('dropzone');
+  ['dragenter', 'dragover'].forEach(function (ev) {
+    dz.addEventListener(ev, function (e) { e.preventDefault(); dz.classList.add('dropping'); });
+  });
+  ['dragleave', 'drop'].forEach(function (ev) {
+    dz.addEventListener(ev, function (e) { e.preventDefault(); dz.classList.remove('dropping'); });
+  });
+  dz.addEventListener('drop', function (e) {
+    if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length) readFile(e.dataTransfer.files[0]);
+  });
+
+  renderCards();
+  updateCount();
+})();
+</script>
+</body>
+</html>
