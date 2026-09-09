@@ -1,0 +1,1099 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="5つの質問に答えるだけで、いまのあなたに合うウェビナーをご案内します。AI・営業・SNS・新規事業。ライトアップのウェビナー診断。">
+<meta name="theme-color" content="#0f1c2e">
+<title>ウェビナー診断｜あなたに合うウェビナーを見つける</title>
+<link rel="canonical" href="https://writeup-inc.github.io/saas/webinar-navi/">
+<link rel="icon" href="/saas/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="ライトアップ ウェビナー診断">
+<meta property="og:title" content="あなたに合うウェビナーを診断します">
+<meta property="og:description" content="5つの質問に答えるだけ。AI・営業・SNS・新規事業。いまのあなたに合うウェビナーをご案内します。">
+<meta property="og:url" content="https://writeup-inc.github.io/saas/webinar-navi/">
+<style>
+  :root {
+    --bg: #f5f6f8;
+    --surface: #ffffff;
+    --surface-2: #fafbfc;
+    --ink: #101a28;
+    --ink-2: #3d4b5c;
+    --muted: #6b7787;
+    --line: #e2e6ec;
+    --line-strong: #cfd6e0;
+    --navy: #12294a;
+    --accent: #1f5fd0;
+    --accent-soft: #eef3fd;
+    --accent-ink: #164aa8;
+    --shadow-sm: 0 1px 2px rgba(16, 26, 40, .05);
+    --shadow-md: 0 2px 6px rgba(16, 26, 40, .05), 0 12px 28px rgba(16, 26, 40, .06);
+    --radius: 12px;
+    --radius-lg: 16px;
+    --ease: cubic-bezier(.22, .61, .36, 1);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0d131c;
+      --surface: #141c27;
+      --surface-2: #18212e;
+      --ink: #eef2f7;
+      --ink-2: #c3ccd8;
+      --muted: #94a1b1;
+      --line: #253040;
+      --line-strong: #33415a;
+      --navy: #dbe5f2;
+      --accent: #6ea2f5;
+      --accent-soft: #1a2740;
+      --accent-ink: #9dc0fb;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, .35);
+      --shadow-md: 0 2px 6px rgba(0, 0, 0, .3), 0 14px 30px rgba(0, 0, 0, .32);
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", Meiryo, sans-serif;
+    font-size: 16px;
+    line-height: 1.85;
+    letter-spacing: .02em;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+  button { font: inherit; color: inherit; -webkit-tap-highlight-color: transparent; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+  .shell {
+    width: min(100% - 40px, 760px);
+    margin-inline: auto;
+    padding-bottom: 72px;
+  }
+
+  .shell--wide { width: min(100% - 40px, 860px); }
+
+  /* header */
+  .masthead {
+    border-bottom: 1px solid var(--line);
+    background: var(--surface);
+  }
+  .masthead__inner {
+    width: min(100% - 40px, 860px);
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    height: 62px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .06em;
+  }
+  .brand__mark {
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
+    background: var(--navy);
+    color: var(--surface);
+    display: grid;
+    place-items: center;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .04em;
+  }
+  @media (prefers-color-scheme: dark) {
+    .brand__mark { color: #0d131c; }
+  }
+  .masthead__label {
+    font-size: 11px;
+    letter-spacing: .16em;
+    color: var(--muted);
+    font-weight: 700;
+  }
+
+  /* generic */
+  .eyebrow {
+    margin: 0 0 14px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .2em;
+    color: var(--accent-ink);
+  }
+  .lede {
+    margin: 0;
+    color: var(--ink-2);
+    font-size: 15px;
+  }
+  .stack > * + * { margin-top: 14px; }
+
+  /* view transitions */
+  .view[hidden] { display: none; }
+  .view.is-enter { animation: rise .42s var(--ease) both; }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  /* intro */
+  .intro { padding: clamp(56px, 11vw, 104px) 0 0; }
+  .intro__title {
+    margin: 0 0 24px;
+    font-size: clamp(27px, 5.4vw, 40px);
+    line-height: 1.5;
+    letter-spacing: .01em;
+    font-weight: 800;
+  }
+  .intro__title span { display: block; }
+  .intro__body {
+    margin: 0;
+    color: var(--ink-2);
+    font-size: clamp(15px, 2.2vw, 17px);
+  }
+  .intro__meta {
+    margin: 34px 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .intro__meta li {
+    background: var(--surface);
+    padding: 15px 18px;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    font-size: 14px;
+  }
+  .intro__meta dt, .intro__meta b {
+    font-size: 11px;
+    letter-spacing: .12em;
+    color: var(--muted);
+    font-weight: 700;
+    min-width: 92px;
+    flex: none;
+  }
+  .intro__actions { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .intro__note { margin: 22px 0 0; font-size: 13px; color: var(--muted); }
+
+  /* buttons */
+  .btn {
+    appearance: none;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 15px 30px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: background-color .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease), box-shadow .2s var(--ease);
+  }
+  .btn--primary {
+    background: var(--navy);
+    color: var(--surface);
+    box-shadow: var(--shadow-sm);
+  }
+  @media (prefers-color-scheme: dark) {
+    .btn--primary { color: #0d131c; }
+  }
+  .btn--primary:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+  .btn--ghost {
+    background: transparent;
+    border-color: var(--line-strong);
+    color: var(--ink-2);
+    padding: 13px 22px;
+    font-size: 14px;
+  }
+  .btn--ghost:hover { border-color: var(--muted); }
+  .btn--cta {
+    background: var(--accent);
+    color: #fff;
+    width: 100%;
+    justify-content: center;
+    padding: 20px 26px;
+    font-size: 17px;
+    border-radius: 12px;
+    box-shadow: 0 10px 24px rgba(31, 95, 208, .22);
+  }
+  @media (prefers-color-scheme: dark) {
+    .btn--cta { color: #0b1220; }
+  }
+  .btn--cta:hover { transform: translateY(-1px); box-shadow: 0 14px 30px rgba(31, 95, 208, .28); }
+  .btn__arrow { transition: transform .2s var(--ease); }
+  .btn:hover .btn__arrow { transform: translateX(3px); }
+
+  /* question */
+  .quiz { padding: clamp(36px, 7vw, 64px) 0 0; }
+  .progress { margin-bottom: 30px; }
+  .progress__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+  .progress__count {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .2em;
+    color: var(--accent-ink);
+  }
+  .progress__count b { font-size: 13px; letter-spacing: .12em; }
+  .progress__theme { font-size: 12px; color: var(--muted); letter-spacing: .08em; }
+  .progress__track {
+    height: 3px;
+    border-radius: 3px;
+    background: var(--line);
+    overflow: hidden;
+  }
+  .progress__bar {
+    height: 100%;
+    width: 0;
+    background: var(--accent);
+    border-radius: 3px;
+    transition: width .45s var(--ease);
+  }
+
+  .question__title {
+    margin: 0 0 8px;
+    font-size: clamp(20px, 3.6vw, 26px);
+    line-height: 1.6;
+    font-weight: 800;
+    letter-spacing: .01em;
+  }
+  .question__note { margin: 0 0 26px; font-size: 13px; color: var(--muted); }
+
+  .options { display: grid; gap: 12px; }
+  .option {
+    position: relative;
+    text-align: left;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 20px 54px 20px 22px;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: border-color .18s var(--ease), box-shadow .18s var(--ease), transform .18s var(--ease), background-color .18s var(--ease);
+  }
+  .option:hover { border-color: var(--accent); box-shadow: var(--shadow-md); transform: translateY(-1px); }
+  .option__label { display: block; font-size: 16px; font-weight: 700; line-height: 1.6; }
+  .option__desc { display: block; margin-top: 5px; font-size: 13.5px; color: var(--muted); line-height: 1.7; }
+  .option__tick {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1.5px solid var(--line-strong);
+    display: grid;
+    place-items: center;
+    transition: border-color .18s var(--ease), background-color .18s var(--ease);
+  }
+  .option__tick svg { width: 12px; height: 12px; opacity: 0; transform: scale(.6); transition: opacity .18s var(--ease), transform .18s var(--ease); }
+  .option.is-selected { border-color: var(--accent); background: var(--accent-soft); }
+  .option.is-selected .option__tick { background: var(--accent); border-color: var(--accent); }
+  .option.is-selected .option__tick svg { opacity: 1; transform: none; color: #fff; }
+  @media (prefers-color-scheme: dark) {
+    .option.is-selected .option__tick svg { color: #0b1220; }
+  }
+
+  .quiz__foot { margin-top: 26px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .linkish {
+    background: none;
+    border: 0;
+    padding: 6px 2px;
+    font-size: 13.5px;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+  }
+  .linkish:hover { color: var(--ink); border-bottom-color: var(--line-strong); }
+  .dots { display: flex; gap: 6px; }
+  .dots i { width: 6px; height: 6px; border-radius: 50%; background: var(--line-strong); transition: background-color .3s var(--ease); }
+  .dots i.is-done { background: var(--accent); }
+
+  /* result */
+  .result { padding: clamp(36px, 7vw, 64px) 0 0; }
+  .result__card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: clamp(26px, 5vw, 44px);
+  }
+  .result__badge {
+    display: inline-block;
+    margin-bottom: 18px;
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .1em;
+  }
+  .result__intro { margin: 0 0 10px; font-size: 14px; color: var(--muted); }
+  .result__title {
+    margin: 0 0 6px;
+    font-size: clamp(24px, 4.6vw, 34px);
+    line-height: 1.45;
+    font-weight: 800;
+    letter-spacing: .01em;
+  }
+  .result__subtitle { margin: 0 0 22px; font-size: 15px; color: var(--ink-2); font-weight: 600; }
+  .result__reason {
+    margin: 0;
+    padding: 22px;
+    border-radius: var(--radius);
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    font-size: 15px;
+    color: var(--ink-2);
+    line-height: 1.95;
+  }
+  .result__reason p { margin: 0; }
+  .result__reason p + p { margin-top: 14px; }
+
+  .answers-block { margin: 28px 0 0; }
+  .answers-block[hidden] { display: none; }
+  .answers__title { margin: 0 0 10px; font-size: 11px; letter-spacing: .14em; color: var(--muted); font-weight: 700; }
+  .answers { margin: 0; padding: 0; list-style: none; display: grid; gap: 9px; }
+  .answers li { display: flex; gap: 12px; align-items: baseline; font-size: 13.5px; color: var(--ink-2); }
+  .answers .answers__q { flex: none; min-width: 58px; font-size: 11px; letter-spacing: .1em; color: var(--muted); font-weight: 700; }
+
+  .details { margin: 30px 0 0; display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  .details div { background: var(--surface); padding: 17px 20px; }
+  .details dt { margin: 0 0 5px; font-size: 11px; letter-spacing: .14em; color: var(--muted); font-weight: 700; }
+  .details dd { margin: 0; font-size: 14.5px; color: var(--ink-2); line-height: 1.8; }
+
+  .cta { margin-top: 30px; }
+  .cta__note { margin: 12px 0 0; font-size: 12.5px; color: var(--muted); text-align: center; }
+
+  .others { margin-top: 46px; }
+  .others__title {
+    margin: 0 0 4px;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: .02em;
+  }
+  .others__note { margin: 0 0 18px; font-size: 13px; color: var(--muted); }
+  .others__list { display: grid; gap: 12px; }
+  .mini {
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    text-decoration: none;
+    box-shadow: var(--shadow-sm);
+    transition: border-color .18s var(--ease), transform .18s var(--ease), box-shadow .18s var(--ease);
+  }
+  .mini:hover { border-color: var(--accent); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+  .mini__head { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
+  .mini__title { font-size: 15px; font-weight: 700; line-height: 1.6; }
+  .mini__go { flex: none; font-size: 12.5px; color: var(--accent-ink); font-weight: 700; }
+  .mini__tag {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    vertical-align: 2px;
+  }
+  .mini__desc { margin-top: 5px; font-size: 13px; color: var(--muted); line-height: 1.75; }
+
+  .result__foot { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 12px; }
+
+  .footer {
+    margin-top: 56px;
+    border-top: 1px solid var(--line);
+    padding-top: 22px;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+  .footer p { margin: 0; }
+
+  @media (max-width: 560px) {
+    body { font-size: 15.5px; }
+    .option { padding: 18px 48px 18px 18px; }
+    .intro__meta li { flex-direction: column; gap: 4px; }
+    .result__foot .btn { width: 100%; justify-content: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead__inner">
+    <div class="brand"><span class="brand__mark">W</span><span>ライトアップ</span></div>
+    <span class="masthead__label">WEBINAR NAVIGATOR</span>
+  </div>
+</header>
+
+<main>
+  <!-- INTRO -->
+  <section class="view shell intro" id="view-intro" aria-labelledby="intro-title">
+    <p class="eyebrow">WEBINAR DIAGNOSIS</p>
+    <h1 class="intro__title" id="intro-title">
+      <span>AI・営業・SNS・新規事業。</span>
+      <span>今のあなたに合うウェビナーを、</span>
+      <span>見つけませんか。</span>
+    </h1>
+    <p class="intro__body">
+      5つの質問に答えるだけで、いま参加する価値のあるウェビナーをご案内します。<br>
+      関心のあるテーマと立場から、おすすめの1つとその理由をお伝えします。
+    </p>
+    <ul class="intro__meta">
+      <li><b>質問数</b><span>5問（所要 約1分）</span></li>
+      <li><b>ご案内</b><span>4つのウェビナーから、あなたに最も合う1つ</span></li>
+      <li><b>入力</b><span>選択式のみ。診断の途中で個人情報の入力はありません</span></li>
+    </ul>
+    <div class="intro__actions">
+      <button class="btn btn--primary" type="button" id="start">診断をはじめる<span class="btn__arrow" aria-hidden="true">→</span></button>
+      <button class="btn btn--ghost" type="button" id="skip-to-list">ウェビナー一覧から選ぶ</button>
+    </div>
+    <p class="intro__note">診断結果からそのままお申し込みへ進めます。</p>
+  </section>
+
+  <!-- QUESTION -->
+  <section class="view shell quiz" id="view-quiz" hidden aria-labelledby="q-title">
+    <div class="progress">
+      <div class="progress__row">
+        <p class="progress__count">QUESTION <b id="q-index">01</b> / 05</p>
+        <p class="progress__theme" id="q-theme"></p>
+      </div>
+      <div class="progress__track" role="progressbar" aria-label="診断の進捗" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" id="q-progress">
+        <div class="progress__bar" id="q-bar"></div>
+      </div>
+    </div>
+    <h2 class="question__title" id="q-title"></h2>
+    <p class="question__note" id="q-note"></p>
+    <div class="options" id="q-options" role="group" aria-labelledby="q-title"></div>
+    <div class="quiz__foot">
+      <button class="linkish" type="button" id="q-back">← 前の質問へ戻る</button>
+      <div class="dots" id="q-dots" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section class="view shell shell--wide result" id="view-result" hidden aria-labelledby="r-title">
+    <article class="result__card">
+      <p class="result__badge" id="r-badge">YOUR RECOMMENDATION</p>
+      <p class="result__intro">あなたにおすすめなのは、</p>
+      <h2 class="result__title" id="r-title"></h2>
+      <p class="result__subtitle" id="r-subtitle"></p>
+      <div class="result__reason" id="r-reason"></div>
+      <div class="answers-block" id="r-answers-block" hidden>
+        <p class="answers__title">あなたの回答</p>
+        <ul class="answers" id="r-answers"></ul>
+      </div>
+      <dl class="details" id="r-details"></dl>
+      <div class="cta">
+        <a class="btn btn--cta" id="r-cta" href="#" target="_blank" rel="noopener">このウェビナーに申し込む <span class="btn__arrow" aria-hidden="true">→</span></a>
+        <p class="cta__note">お申し込みフォームが新しいタブで開きます。</p>
+      </div>
+    </article>
+
+    <section class="others" aria-labelledby="others-title">
+      <h3 class="others__title" id="others-title">ほかのウェビナー</h3>
+      <p class="others__note">気になるテーマがあれば、こちらからもお申し込みいただけます。</p>
+      <div class="others__list" id="r-others"></div>
+    </section>
+
+    <div class="result__foot">
+      <button class="btn btn--ghost" type="button" id="r-restart">もう一度診断する</button>
+    </div>
+  </section>
+
+  <div class="shell shell--wide">
+    <footer class="footer">
+      <p>各ウェビナーはオンラインで開催します。お申し込み後、詳細のご案内をお送りします。</p>
+      <p>株式会社ライトアップ</p>
+    </footer>
+  </div>
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ------------------------------------------------------------------
+   * ウェビナーのデータ。追加・変更はこの配列だけを書き換えれば反映される。
+   * id / title / subtitle / description / target / services /
+   * recommendation_reason / format / form_url
+   * ------------------------------------------------------------------ */
+  var WEBINARS = [
+    {
+      id: 'social-master-oem',
+      title: 'ソーシャルマスター OEM説明会',
+      subtitle: 'SNS自動投稿ツールを、自社サービスとして販売する',
+      description: 'SNS運用を自動化するツール「ソーシャルマスター」を、自社ブランドの商材として取り扱うためのOEM・代理店向け説明会です。開発をせずにSNS支援メニューを持つ方法と、提供開始までの流れをご説明します。',
+      target: '自社サービスとしてSNSツールを販売したい方／代理店・OEMビジネスを始めたい方／既存の顧客にSNS運用支援を提案したい方',
+      services: 'ソーシャルマスター（SNS自動投稿ツール）',
+      format: 'オンライン開催／説明会形式・質疑応答あり',
+      recommendation_reason: 'SNSという明確な入口があり、提案先を選ばない商材です。自社の看板で売れる形になっているため、はじめてのOEMでも扱いやすいのが特長です。',
+      form_url: 'https://docs.google.com/forms/d/e/1FAIpQLScMJ4YKJvhmb_zu3sB1uCb3yG4Dy3aD9TUVYAmgb7k0dV4e6g/viewform'
+    },
+    {
+      id: 'aio-master-oem',
+      title: 'AIOマスター OEM説明会',
+      subtitle: '生成AIに“指名される”対策を、自社の商材にする',
+      description: 'ChatGPTなどの生成AI検索で自社が指名される状態をつくるAIO（LLMO）対策ツール「AIOマスター」の、OEM・代理店向け説明会です。新しい提案商材としての位置づけと、提供の進め方をご説明します。',
+      target: 'AI・検索領域で新しい商材を持ちたい方／Web・広告・制作の事業をされている方／代理店・OEMビジネスを始めたい方',
+      services: 'AIOマスター（生成AI検索対策・AIO／LLMO）',
+      format: 'オンライン開催／説明会形式・質疑応答あり',
+      recommendation_reason: '検索の入口が生成AIへ移りつつある今、まだ提案できる会社が少ない領域です。先行して商材を持てることが、そのまま差別化になります。',
+      form_url: 'https://docs.google.com/forms/d/1l2mGroXn9ozZcTKWT2chPBgTplBFsNCMZN726B0b4VM/prefill'
+    },
+    {
+      id: 'exec-ai-referral',
+      title: '2026年、経営者はAIとどう向き合うべきか',
+      subtitle: 'ご縁を資産に。名刺系新サービスのご紹介',
+      description: '2026年に向けて経営者がAIとどう向き合うべきかを整理したうえで、名刺交換や人脈を営業の資産に変える新サービス群をまとめてご紹介します。今いちばんおすすめしているウェビナーです。',
+      target: '経営者・役員／事業責任者／人脈や紹介から商談を増やしたい方',
+      services: 'つばめリファラル／つばめリード／名刺LINEエージェント／リストマスター／AIO／Lシンク',
+      format: 'オンライン開催／解説＋サービス紹介',
+      recommendation_reason: '個別のツールの話ではなく、経営としてAIをどう位置づけるかから入る内容です。そのうえで、すでに持っているご縁を商談に変える具体策までつながります。',
+      form_url: 'https://forms.gle/s6JMDjueAbrdrbzQ8',
+      featured: true
+    },
+    {
+      id: 'free-monitor',
+      title: '無料モニター先行案内ウェビナー',
+      subtitle: 'これから提供するAIサービスを、先に使ってみる',
+      description: '提供開始前のAIサービスを、モニターとして先行してお使いいただくためのご案内ウェビナーです。対象サービスでできることと、モニターの条件・進め方をご説明します。',
+      target: 'まずは実際に使って確かめたい方／社内業務やマネジメントを効率化したい方／新しいツールを先行して試したい方',
+      services: 'スーパーマネージャー／Elliot／ワークログ・インサイト／Jマッチ・エンジン',
+      format: 'オンライン開催／サービス紹介＋モニター条件のご説明',
+      recommendation_reason: '資料を読むより、実際に触ったほうが早い段階です。先行利用の枠があるうちに、自社に合うかどうかを確かめられます。',
+      form_url: 'https://forms.gle/3w1XbLtCYKMQc2B4A'
+    }
+  ];
+
+  /* ------------------------------------------------------------------
+   * 質問。weights のキーは WEBINARS の id と対応する。
+   * reason は診断結果の文章に差し込まれる断片。
+   * ------------------------------------------------------------------ */
+  var QUESTIONS = [
+    {
+      theme: 'ご関心',
+      title: 'ウェビナーで、いちばん知りたいことはどれですか。',
+      note: '最も近いものを1つお選びください。',
+      options: [
+        {
+          label: 'AIサービスを、自社の商材として扱う方法',
+          desc: '代理店・OEMとして販売する前提で検討している',
+          reason: 'AIサービスを自社の商材として扱いたい',
+          weights: { 'social-master-oem': 3, 'aio-master-oem': 3 }
+        },
+        {
+          label: '自社の営業・集客を伸ばす方法',
+          desc: '商談数や顧客との接点を増やしたい',
+          reason: '自社の営業・集客を伸ばしたい',
+          weights: { 'exec-ai-referral': 3, 'social-master-oem': 1 }
+        },
+        {
+          label: 'まず試せるAIサービス',
+          desc: '導入を決める前に、実際の使い勝手を確かめたい',
+          reason: 'まず実際に使って確かめたい',
+          weights: { 'free-monitor': 3 }
+        },
+        {
+          label: '経営として、AIとどう向き合うか',
+          desc: '個別のツールより、全体の方針から整理したい',
+          reason: '経営としてAIとの向き合い方を整理したい',
+          weights: { 'exec-ai-referral': 3, 'free-monitor': 1 }
+        }
+      ]
+    },
+    {
+      theme: '注力したい領域',
+      title: 'いま、いちばん伸ばしたい領域はどこですか。',
+      note: '事業の中で優先度が高いものをお選びください。',
+      options: [
+        {
+          label: 'SNSからの認知・集客',
+          desc: '発信を続けられる仕組みをつくりたい',
+          reason: 'SNSからの集客を強めたい',
+          weights: { 'social-master-oem': 3 }
+        },
+        {
+          label: '検索・生成AI経由での指名',
+          desc: 'ChatGPTや検索で、自社が候補に挙がる状態をつくりたい',
+          reason: '生成AI経由で自社が指名される状態をつくりたい',
+          weights: { 'aio-master-oem': 3 }
+        },
+        {
+          label: '人脈・紹介からの商談創出',
+          desc: '名刺交換やご縁を、次の商談につなげたい',
+          reason: '人脈や紹介から商談を生みたい',
+          weights: { 'exec-ai-referral': 3 }
+        },
+        {
+          label: '社内業務・マネジメントの効率化',
+          desc: '営業管理や日々の業務の手間を減らしたい',
+          reason: '社内業務やマネジメントを効率化したい',
+          weights: { 'free-monitor': 3 }
+        }
+      ]
+    },
+    {
+      theme: 'お立場',
+      title: '現在のお立場に近いものを教えてください。',
+      note: 'ご案内の内容を調整するためにお伺いしています。',
+      options: [
+        {
+          label: '経営者・役員',
+          desc: '会社全体の方針を決める立場',
+          reason: '経営の立場で判断される',
+          weights: { 'exec-ai-referral': 2, 'free-monitor': 1 }
+        },
+        {
+          label: '新規事業・事業開発',
+          desc: '次の柱になる事業を探している',
+          reason: '新規事業として検討されている',
+          weights: { 'social-master-oem': 2, 'aio-master-oem': 2 }
+        },
+        {
+          label: '営業・マーケティングの責任者',
+          desc: '数字づくりの現場を預かっている',
+          reason: '営業・マーケティングの責任者として成果を求めている',
+          weights: { 'exec-ai-referral': 2, 'social-master-oem': 1 }
+        },
+        {
+          label: '個人事業・フリーランス',
+          desc: '一人、または少人数で事業をしている',
+          reason: '少人数の体制で事業をされている',
+          weights: { 'aio-master-oem': 1, 'free-monitor': 2 }
+        }
+      ]
+    },
+    {
+      theme: '目的',
+      title: 'このウェビナーで、どこまで進めたいですか。',
+      note: '今回のゴールに近いものをお選びください。',
+      options: [
+        {
+          label: '新しい収益の柱をつくる',
+          desc: '取り扱う商材を決めて、販売を始めたい',
+          reason: '新しい収益の柱をつくりたい',
+          weights: { 'social-master-oem': 2, 'aio-master-oem': 2 }
+        },
+        {
+          label: '自社の成果を伸ばす',
+          desc: '既存の事業の売上や商談数を増やしたい',
+          reason: '自社の成果を伸ばしたい',
+          weights: { 'exec-ai-referral': 2, 'social-master-oem': 1 }
+        },
+        {
+          label: '実際に使って確かめる',
+          desc: '導入判断の前に、自社で試してみたい',
+          reason: '導入の前に自社で試したい',
+          weights: { 'free-monitor': 3 }
+        },
+        {
+          label: '全体像を知り、判断材料にする',
+          desc: '今は情報を集めている段階',
+          reason: 'まずは判断材料を集めたい',
+          weights: { 'exec-ai-referral': 1, 'free-monitor': 1 }
+        }
+      ]
+    },
+    {
+      theme: '時間軸',
+      title: '検討の時間軸を教えてください。',
+      note: '最後の質問です。',
+      options: [
+        {
+          label: 'すぐにでも動きたい',
+          desc: '1ヶ月以内に着手したい',
+          reason: 'すぐに動きたいとお考えである',
+          weights: { 'free-monitor': 2, 'social-master-oem': 1, 'aio-master-oem': 1 }
+        },
+        {
+          label: '3ヶ月以内には決めたい',
+          desc: '準備をしながら判断したい',
+          reason: '3ヶ月以内の判断を目指している',
+          weights: { 'social-master-oem': 1, 'aio-master-oem': 1, 'exec-ai-referral': 1 }
+        },
+        {
+          label: '来期・半年先に向けて',
+          desc: '中期の計画として考えている',
+          reason: '来期に向けて計画を立てている',
+          weights: { 'exec-ai-referral': 2 }
+        },
+        {
+          label: 'まだ決めていない',
+          desc: '良いものがあれば検討したい',
+          reason: '時期は決めずに情報を集めている',
+          weights: { 'exec-ai-referral': 1, 'free-monitor': 1 }
+        }
+      ]
+    }
+  ];
+
+  /* ---------------------------------------------------------------- */
+
+  var views = {
+    intro: document.getElementById('view-intro'),
+    quiz: document.getElementById('view-quiz'),
+    result: document.getElementById('view-result')
+  };
+  var el = {
+    rAnswersBlock: document.getElementById('r-answers-block'),
+    qIndex: document.getElementById('q-index'),
+    qTheme: document.getElementById('q-theme'),
+    qTitle: document.getElementById('q-title'),
+    qNote: document.getElementById('q-note'),
+    qOptions: document.getElementById('q-options'),
+    qBack: document.getElementById('q-back'),
+    qBar: document.getElementById('q-bar'),
+    qProgress: document.getElementById('q-progress'),
+    qDots: document.getElementById('q-dots'),
+    rTitle: document.getElementById('r-title'),
+    rSubtitle: document.getElementById('r-subtitle'),
+    rReason: document.getElementById('r-reason'),
+    rAnswers: document.getElementById('r-answers'),
+    rDetails: document.getElementById('r-details'),
+    rCta: document.getElementById('r-cta'),
+    rOthers: document.getElementById('r-others'),
+    rBadge: document.getElementById('r-badge')
+  };
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var step = 0;
+  var answers = [];
+  var busy = false;
+
+  function byId(id) {
+    for (var i = 0; i < WEBINARS.length; i++) {
+      if (WEBINARS[i].id === id) return WEBINARS[i];
+    }
+    return null;
+  }
+
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+  function show(name, focusTarget) {
+    Object.keys(views).forEach(function (key) {
+      var node = views[key];
+      node.hidden = key !== name;
+      node.classList.remove('is-enter');
+    });
+    var current = views[name];
+    void current.offsetWidth;
+    current.classList.add('is-enter');
+    window.scrollTo({ top: 0, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+    if (focusTarget) {
+      window.setTimeout(function () { focusTarget.focus({ preventScroll: true }); }, 60);
+    }
+  }
+
+  function renderDots() {
+    el.qDots.innerHTML = '';
+    for (var i = 0; i < QUESTIONS.length; i++) {
+      var dot = document.createElement('i');
+      if (i < step) dot.className = 'is-done';
+      el.qDots.appendChild(dot);
+    }
+  }
+
+  function renderQuestion() {
+    var q = QUESTIONS[step];
+    el.qIndex.textContent = pad(step + 1);
+    el.qTheme.textContent = q.theme;
+    el.qTitle.textContent = q.title;
+    el.qNote.textContent = q.note;
+    el.qBar.style.width = ((step) / QUESTIONS.length * 100) + '%';
+    el.qProgress.setAttribute('aria-valuenow', String(step));
+    el.qBack.textContent = step === 0 ? '← 最初の画面へ戻る' : '← 前の質問へ戻る';
+    renderDots();
+
+    el.qOptions.innerHTML = '';
+    q.options.forEach(function (option, index) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'option';
+      if (answers[step] === index) btn.classList.add('is-selected');
+      btn.innerHTML =
+        '<span class="option__label"></span>' +
+        '<span class="option__desc"></span>' +
+        '<span class="option__tick"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 6.4 4.4 9.2 10.5 2.9" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
+      btn.querySelector('.option__label').textContent = option.label;
+      btn.querySelector('.option__desc').textContent = option.desc;
+      btn.addEventListener('click', function () { choose(index, btn); });
+      el.qOptions.appendChild(btn);
+    });
+
+    var focusable = el.qOptions.querySelector('.option');
+    if (focusable) {
+      window.setTimeout(function () { focusable.focus({ preventScroll: true }); }, 80);
+    }
+  }
+
+  function choose(index, btn) {
+    if (busy) return;
+    busy = true;
+    answers[step] = index;
+    Array.prototype.forEach.call(el.qOptions.children, function (node) {
+      node.classList.remove('is-selected');
+    });
+    btn.classList.add('is-selected');
+    el.qBar.style.width = ((step + 1) / QUESTIONS.length * 100) + '%';
+
+    var wait = reduceMotion.matches ? 0 : 280;
+    window.setTimeout(function () {
+      busy = false;
+      if (step < QUESTIONS.length - 1) {
+        step += 1;
+        views.quiz.classList.remove('is-enter');
+        void views.quiz.offsetWidth;
+        views.quiz.classList.add('is-enter');
+        renderQuestion();
+      } else {
+        renderResult();
+        show('result');
+      }
+    }, wait);
+  }
+
+  function goBack() {
+    if (busy) return;
+    if (step === 0) {
+      show('intro', document.getElementById('start'));
+      return;
+    }
+    step -= 1;
+    views.quiz.classList.remove('is-enter');
+    void views.quiz.offsetWidth;
+    views.quiz.classList.add('is-enter');
+    renderQuestion();
+  }
+
+  function score() {
+    var totals = {};
+    var firstAnswerWeights = {};
+    WEBINARS.forEach(function (w) { totals[w.id] = 0; });
+
+    answers.forEach(function (optionIndex, qIndex) {
+      var option = QUESTIONS[qIndex].options[optionIndex];
+      if (!option) return;
+      Object.keys(option.weights).forEach(function (id) {
+        if (typeof totals[id] !== 'number') return;
+        totals[id] += option.weights[id];
+        if (qIndex === 0) firstAnswerWeights[id] = option.weights[id];
+      });
+    });
+
+    var ranked = WEBINARS.slice().sort(function (a, b) {
+      if (totals[b.id] !== totals[a.id]) return totals[b.id] - totals[a.id];
+      var fa = firstAnswerWeights[a.id] || 0;
+      var fb = firstAnswerWeights[b.id] || 0;
+      if (fb !== fa) return fb - fa;
+      return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
+    });
+
+    return { ranked: ranked, totals: totals };
+  }
+
+  function buildReason(winner) {
+    var fragments = [];
+    answers.forEach(function (optionIndex, qIndex) {
+      var option = QUESTIONS[qIndex].options[optionIndex];
+      if (!option) return;
+      var weight = option.weights[winner.id] || 0;
+      if (weight > 0) fragments.push({ text: option.reason, weight: weight, order: qIndex });
+    });
+    fragments.sort(function (a, b) {
+      if (b.weight !== a.weight) return b.weight - a.weight;
+      return a.order - b.order;
+    });
+
+    var picked = fragments.slice(0, 2).map(function (f) { return f.text; });
+    var lead;
+    if (picked.length === 0) {
+      lead = 'いただいたご回答をふまえると、まずはこのウェビナーが全体像をつかむのに適しています。';
+    } else if (picked.length === 1) {
+      lead = '「' + picked[0] + '」というご回答から、今回はこのウェビナーが最もおすすめです。';
+    } else {
+      lead = '「' + picked[0] + '」「' + picked[1] + '」というご回答から、今回はこのウェビナーが最もおすすめです。';
+    }
+    return { lead: lead, detail: winner.recommendation_reason };
+  }
+
+  function renderResult() {
+    var result = score();
+    var winner = result.ranked[0];
+    var others = result.ranked.slice(1);
+
+    el.rBadge.textContent = winner.featured ? 'YOUR RECOMMENDATION ／ イチオシ' : 'YOUR RECOMMENDATION';
+    el.rTitle.textContent = '「' + winner.title + '」';
+    el.rSubtitle.textContent = winner.subtitle;
+    var reason = buildReason(winner);
+    el.rReason.innerHTML = '';
+    [reason.lead, reason.detail].forEach(function (text) {
+      var p = document.createElement('p');
+      p.textContent = text;
+      el.rReason.appendChild(p);
+    });
+
+    el.rAnswers.innerHTML = '';
+    el.rAnswersBlock.hidden = false;
+    answers.forEach(function (optionIndex, qIndex) {
+      var option = QUESTIONS[qIndex].options[optionIndex];
+      if (!option) return;
+      var li = document.createElement('li');
+      var q = document.createElement('span');
+      q.className = 'answers__q';
+      q.textContent = 'Q' + pad(qIndex + 1);
+      var a = document.createElement('span');
+      a.textContent = option.label;
+      li.appendChild(q);
+      li.appendChild(a);
+      el.rAnswers.appendChild(li);
+    });
+
+    var rows = [
+      ['ウェビナー概要', winner.description],
+      ['対象者', winner.target],
+      ['紹介されるサービス', winner.services],
+      ['開催形式', winner.format]
+    ];
+    el.rDetails.innerHTML = '';
+    rows.forEach(function (row) {
+      var wrap = document.createElement('div');
+      var dt = document.createElement('dt');
+      dt.textContent = row[0];
+      var dd = document.createElement('dd');
+      dd.textContent = row[1];
+      wrap.appendChild(dt);
+      wrap.appendChild(dd);
+      el.rDetails.appendChild(wrap);
+    });
+
+    el.rCta.href = winner.form_url;
+    renderOthers(others);
+  }
+
+  function renderOthers(list) {
+    el.rOthers.innerHTML = '';
+    list.forEach(function (webinar) {
+      var a = document.createElement('a');
+      a.className = 'mini';
+      a.href = webinar.form_url;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      var head = document.createElement('div');
+      head.className = 'mini__head';
+      var title = document.createElement('span');
+      title.className = 'mini__title';
+      title.textContent = webinar.title;
+      var go = document.createElement('span');
+      go.className = 'mini__go';
+      go.textContent = '申し込む →';
+      if (webinar.featured) {
+        var tag = document.createElement('span');
+        tag.className = 'mini__tag';
+        tag.textContent = 'イチオシ';
+        title.appendChild(tag);
+      }
+      head.appendChild(title);
+      head.appendChild(go);
+      var desc = document.createElement('p');
+      desc.className = 'mini__desc';
+      desc.textContent = webinar.subtitle + '／' + webinar.services;
+      a.appendChild(head);
+      a.appendChild(desc);
+      el.rOthers.appendChild(a);
+    });
+  }
+
+  function showAllWebinars() {
+    answers = [];
+    step = 0;
+    el.rBadge.textContent = 'ALL WEBINARS';
+    var featured = WEBINARS.filter(function (w) { return w.featured; })[0] || WEBINARS[0];
+    el.rTitle.textContent = '「' + featured.title + '」';
+    el.rSubtitle.textContent = featured.subtitle;
+    el.rReason.innerHTML = '';
+    var listLead = document.createElement('p');
+    listLead.textContent = '診断をご利用いただくと、ご関心に合わせた1つをご案内します。まずは一覧をご覧になりたい方に、いちばんおすすめのウェビナーと、そのほかのウェビナーを表示しています。';
+    el.rReason.appendChild(listLead);
+    el.rAnswers.innerHTML = '';
+    el.rAnswersBlock.hidden = true;
+
+    var rows = [
+      ['ウェビナー概要', featured.description],
+      ['対象者', featured.target],
+      ['紹介されるサービス', featured.services],
+      ['開催形式', featured.format]
+    ];
+    el.rDetails.innerHTML = '';
+    rows.forEach(function (row) {
+      var wrap = document.createElement('div');
+      var dt = document.createElement('dt');
+      dt.textContent = row[0];
+      var dd = document.createElement('dd');
+      dd.textContent = row[1];
+      wrap.appendChild(dt);
+      wrap.appendChild(dd);
+      el.rDetails.appendChild(wrap);
+    });
+
+    el.rCta.href = featured.form_url;
+    renderOthers(WEBINARS.filter(function (w) { return w.id !== featured.id; }));
+    show('result');
+  }
+
+  document.getElementById('start').addEventListener('click', function () {
+    step = 0;
+    answers = [];
+    renderQuestion();
+    show('quiz');
+  });
+  document.getElementById('skip-to-list').addEventListener('click', showAllWebinars);
+  el.qBack.addEventListener('click', goBack);
+  document.getElementById('r-restart').addEventListener('click', function () {
+    step = 0;
+    answers = [];
+    renderQuestion();
+    show('quiz');
+  });
+})();
+</script>
+</body>
+</html>
