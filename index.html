@@ -740,6 +740,31 @@
       text-align: right;
     }
 
+    .creator-legend {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin: 0 0 10px;
+      padding: 13px 15px;
+      border: 1px solid rgba(62,126,156,.24);
+      background: rgba(230,242,248,.62);
+      color: var(--ink-soft);
+      font-size: 11px;
+      line-height: 1.75;
+    }
+
+    .creator-legend-swatch {
+      flex: 0 0 auto;
+      width: 28px;
+      height: 18px;
+      margin-top: 1px;
+      border: 1px solid rgba(62,126,156,.42);
+      border-radius: 3px;
+      background: linear-gradient(108deg, rgba(210,233,245,.95), rgba(239,247,250,.92));
+    }
+
+    .creator-legend b { color: #275e78; }
+
     .service {
       --category: var(--cat-build);
       --category-bg: var(--cat-build-bg);
@@ -804,6 +829,19 @@
 
     .service.is-updated {
       border-color: rgba(23,75,60,.28);
+    }
+
+    .service-entry[data-taka-created="true"] .service,
+    .service-entry[data-taka-created="true"] .service.is-new {
+      border-color: rgba(62,126,156,.38);
+      background:
+        linear-gradient(108deg, rgba(210,233,245,.86), rgba(239,247,250,.74) 48%, rgba(251,250,246,.94));
+    }
+
+    .service-entry[data-taka-created="true"] .service:hover,
+    .service-entry[data-taka-created="true"] .service:focus-visible {
+      border-color: rgba(39,94,120,.58);
+      background: #f7fcfe;
     }
 
     .service::after {
@@ -973,6 +1011,40 @@
       font-size: 10px;
       text-overflow: ellipsis;
       white-space: nowrap;
+    }
+
+    .author-tags {
+      display: flex;
+      gap: 7px;
+      margin-top: 11px;
+      flex-wrap: wrap;
+    }
+
+    .author-tag {
+      display: inline-flex;
+      min-height: 24px;
+      align-items: center;
+      padding: 4px 9px;
+      border: 1px solid rgba(20,37,31,.14);
+      border-radius: 999px;
+      color: var(--ink-soft);
+      background: rgba(255,255,255,.72);
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: .03em;
+      line-height: 1.45;
+    }
+
+    .service-entry[data-taka-created="true"] .author-tag.creator {
+      border-color: rgba(62,126,156,.38);
+      color: #275e78;
+      background: rgba(255,255,255,.9);
+    }
+
+    .author-tag.unknown {
+      border-style: dashed;
+      color: var(--muted);
+      background: rgba(242,241,237,.76);
     }
 
     .dates {
@@ -1392,9 +1464,13 @@
           <span>最終更新順</span>
         </div>
         <div class="filter-bar" role="group" aria-label="カテゴリで絞り込む"></div>
+        <div class="creator-legend">
+          <span class="creator-legend-swatch" aria-hidden="true"></span>
+          <span><b>水色は、Git履歴上の初回作成者が「たかマスター」のサイトです。</b><br>タグは初回作成者と最終更新者を表示します。「履歴不明」は移管前の作成履歴を確認できないため、色分け対象外です。</span>
+        </div>
         <p class="filter-status" aria-live="polite"></p>
 
-        <article class="service-entry" id="jmatch-engine" data-published="2026-09-09T12:48:00+09:00" data-updated="2026-09-09T22:20:00+09:00">
+        <article class="service-entry" id="jmatch-engine" data-published="2026-09-09T12:48:00+09:00" data-updated="2026-09-10T00:34:00+09:00" data-taka-created="true">
         <a class="service" data-category="work" href="./jmatch-engine/">
           <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-work"/></svg></span><span class="number">01</span></span>
           <div>
@@ -1403,16 +1479,17 @@
           </div>
           <div class="description-wrap">
             <p class="description">補助金・融資に共通して使える事業計画を16の手順で整え、顧問支援まで選べる事業計画サービス。</p>
-            <p class="change-note"><span>最新の変更</span><b>ヒーローの仕様カードへアイコンを追加し、見出しを整理して縦幅を圧縮</b></p>
+            <p class="change-note"><span>最新の変更</span><b>機能カード03から開発中の重複説明を削除し、案内を整理</b></p>
             <span class="url">writeup-inc.github.io/saas/jmatch-engine/</span>
-            <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-09T12:48:00+09:00">2026.09.09 12:48</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-09T22:20:00+09:00">2026.09.09 22:20</time></span></span>
+            <span class="author-tags"><span class="author-tag creator">初回作成：たかマスター＋Claude Code</span><span class="author-tag editor">最終更新：たかマスター＋Claude Code</span></span>
+            <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-09T12:48:00+09:00">2026.09.09 12:48</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-10T00:34:00+09:00">2026.09.10 00:34</time></span></span>
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
         </a>
         <button class="service-share" type="button" data-copy-anchor="jmatch-engine" data-service-name="Jマッチエンジン" aria-label="Jマッチエンジンの一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
         </article>
 
-        <article class="service-entry" id="ai-training-100k-jp" data-published="2026-09-09T22:13:00+09:00" data-updated="2026-09-09T22:13:00+09:00">
+        <article class="service-entry" id="ai-training-100k-jp" data-published="2026-09-09T22:13:00+09:00" data-updated="2026-09-09T22:13:00+09:00" data-taka-created="true">
         <a class="service" data-category="build" href="./ai-training-100k-jp/">
           <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">02</span></span>
           <div>
@@ -1423,6 +1500,7 @@
             <p class="description">大学生・20代を中心に、Claude Codeで成果物をつくり、確認・改善する実践型AI研修を無料で届けるプロジェクト。</p>
             <p class="change-note"><span>最新の変更</span><b>Vercel版LPをGitHub Pages向けに移植し、画像・OG・共有URLを商品ディレクトリ内へ統合</b></p>
             <span class="url">writeup-inc.github.io/saas/ai-training-100k-jp/</span>
+            <span class="author-tags"><span class="author-tag creator">初回作成：たかマスター</span><span class="author-tag editor">最終更新：たかマスター</span></span>
             <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-09T22:13:00+09:00">2026.09.09 22:13</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-09T22:13:00+09:00">2026.09.09 22:13</time></span></span>
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
@@ -1430,7 +1508,7 @@
         <button class="service-share" type="button" data-copy-anchor="ai-training-100k-jp" data-service-name="20代10万人 AI研修プロジェクト" aria-label="20代10万人 AI研修プロジェクトの一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
         </article>
 
-        <article class="service-entry" id="webinar-log-scan" data-published="2026-09-09T21:27:00+09:00" data-updated="2026-09-09T21:51:00+09:00">
+        <article class="service-entry" id="webinar-log-scan" data-published="2026-09-09T21:27:00+09:00" data-updated="2026-09-09T21:51:00+09:00" data-taka-created="false">
         <a class="service" data-category="build" href="./webinar-log-scan/">
           <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">03</span></span>
           <div>
@@ -1441,6 +1519,7 @@
             <p class="description">会議の文字起こしやSlackのログを貼ると、話されていた課題を抽出し、参加すべきウェビナーを1件に絞って提案する申し込み導線。</p>
             <p class="change-note"><span>最新の変更</span><b>結果画面をウェビナーの提案と申し込みボタン優先の並びに変更し、読み取った課題を2列の短い行へ圧縮</b></p>
             <span class="url">writeup-inc.github.io/saas/webinar-log-scan/</span>
+            <span class="author-tags"><span class="author-tag creator">初回作成：Writeupaistudy</span><span class="author-tag editor">最終更新：Claude Code</span></span>
             <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-09T21:27:00+09:00">2026.09.09 21:27</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-09T21:51:00+09:00">2026.09.09 21:51</time></span></span>
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
@@ -1448,9 +1527,28 @@
         <button class="service-share" type="button" data-copy-anchor="webinar-log-scan" data-service-name="ウェビナー提案（議事録・ログ解析）" aria-label="ウェビナー提案（議事録・ログ解析）の一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
         </article>
 
-        <article class="service-entry" id="ai-sales-agency-starter" data-published="2026-09-09T13:32:00+09:00" data-updated="2026-09-09T19:33:00+09:00">
-        <a class="service" data-category="build" href="./ai-sales-agency-starter/">
+        <article class="service-entry" id="webinar-ai-concierge" data-published="2026-09-09T21:03:00+09:00" data-updated="2026-09-09T21:03:00+09:00" data-taka-created="false">
+        <a class="service" data-category="build" href="./webinar-ai-concierge/">
           <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">04</span></span>
+          <div>
+            <div class="service-topline"><span class="category-name">AI導入・事業化</span><span class="service-type">WEBINAR / AI CONCIERGE</span><span class="badge-slot"></span></div>
+            <h2>ウェビナー<br>AIコンシェルジュ</h2>
+          </div>
+          <div class="description-wrap">
+            <p class="description">仕事内容や課題をチャットで伝えると、開催中の4つから今の自分に合うウェビナーを理由付きで提案する案内ページ。</p>
+            <p class="change-note"><span>最新の変更</span><b>自由入力と選択肢の両方で相談できるチャット型のウェビナー案内を新規公開</b></p>
+            <span class="url">writeup-inc.github.io/saas/webinar-ai-concierge/</span>
+            <span class="author-tags"><span class="author-tag creator">初回作成：Writeupaistudy＋Claude Code</span><span class="author-tag editor">最終更新：Writeupaistudy＋Claude Code</span></span>
+            <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-09T21:03:00+09:00">2026.09.09 21:03</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-09T21:03:00+09:00">2026.09.09 21:03</time></span></span>
+          </div>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+        <button class="service-share" type="button" data-copy-anchor="webinar-ai-concierge" data-service-name="ウェビナー AIコンシェルジュ" aria-label="ウェビナー AIコンシェルジュの一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
+        </article>
+
+        <article class="service-entry" id="ai-sales-agency-starter" data-published="2026-09-09T13:32:00+09:00" data-updated="2026-09-09T19:33:00+09:00" data-taka-created="true">
+        <a class="service" data-category="build" href="./ai-sales-agency-starter/">
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">05</span></span>
           <div>
             <div class="service-topline"><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / SALES AGENCY</span><span class="badge-slot"></span></div>
             <h2>AI営業代行会社<br>スタートパック</h2>
@@ -1459,6 +1557,7 @@
             <p class="description">手元の名刺と交流会でもらう名刺の台帳化から、紹介、営業顧問の提案までを、12個のAIエージェントで支援。</p>
             <p class="change-note"><span>最新の変更</span><b>150人の着想説明を外し、名刺台帳化から始まる6段階フローと12個のAIエージェント表現へ刷新</b></p>
             <span class="url">writeup-inc.github.io/saas/ai-sales-agency-starter/</span>
+            <span class="author-tags"><span class="author-tag creator">初回作成：たかマスター</span><span class="author-tag editor">最終更新：たかマスター</span></span>
             <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-09T13:32:00+09:00">2026.09.09 13:32</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-09T19:33:00+09:00">2026.09.09 19:33</time></span></span>
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
@@ -1466,9 +1565,9 @@
         <button class="service-share" type="button" data-copy-anchor="ai-sales-agency-starter" data-service-name="AI営業代行会社スタートパック" aria-label="AI営業代行会社スタートパックの一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
         </article>
 
-        <article class="service-entry" id="pl-bridge" data-published="2026-09-09T12:35:00+09:00" data-updated="2026-09-09T18:10:00+09:00">
+        <article class="service-entry" id="pl-bridge" data-published="2026-09-09T12:35:00+09:00" data-updated="2026-09-09T18:10:00+09:00" data-taka-created="true">
         <a class="service" data-category="sales" href="./pl-bridge/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-sales"/></svg></span><span class="number">05</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-sales"/></svg></span><span class="number">06</span></span>
           <div>
             <div class="service-topline"><span class="category-name">集客・営業</span><span class="service-type">PILOT / SALES &amp; ACCOUNTING</span><span class="badge-slot"></span></div>
             <h2>PL BRIDGE<br>1社実証パートナー募集</h2>
@@ -1477,6 +1576,7 @@
             <p class="description">Salesforceを利用する企業の売上情報と税理士の月次確認を近づけ、確認往復を減らせるか一社で試す共同実証オファー。</p>
             <p class="change-note"><span>最新の変更</span><b>コピーを刷新し、10セクションを7つへ統合。月次確認フローとAI構想の図解を追加</b></p>
             <span class="url">writeup-inc.github.io/saas/pl-bridge/</span>
+            <span class="author-tags"><span class="author-tag creator">初回作成：たかマスター</span><span class="author-tag editor">最終更新：たかマスター</span></span>
             <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-09T12:35:00+09:00">2026.09.09 12:35</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-09T18:10:00+09:00">2026.09.09 18:10</time></span></span>
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
@@ -1484,9 +1584,28 @@
         <button class="service-share" type="button" data-copy-anchor="pl-bridge" data-service-name="PL BRIDGE 1社実証パートナー募集" aria-label="PL BRIDGE 1社実証パートナー募集の一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
         </article>
 
-        <article class="service-entry" id="ai-bird-work-discovery" data-published="2026-09-09T12:22:00+09:00" data-updated="2026-09-09T14:08:00+09:00">
+        <article class="service-entry" id="webinar-navi" data-published="2026-09-09T17:57:00+09:00" data-updated="2026-09-09T17:57:00+09:00" data-taka-created="false">
+        <a class="service" data-category="build" href="./webinar-navi/">
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">07</span></span>
+          <div>
+            <div class="service-topline"><span class="category-name">AI導入・事業化</span><span class="service-type">WEBINAR / DIAGNOSIS</span><span class="badge-slot"></span></div>
+            <h2>WEBINAR<br>NAVIGATOR</h2>
+          </div>
+          <div class="description-wrap">
+            <p class="description">AI・営業・SNS・新規事業に関する5つの問いから、今の課題に最も近いウェビナーを選び、申し込みへ案内する診断ページ。</p>
+            <p class="change-note"><span>最新の変更</span><b>5問の選択式診断と理由付きのウェビナー推薦導線を新規公開</b></p>
+            <span class="url">writeup-inc.github.io/saas/webinar-navi/</span>
+            <span class="author-tags"><span class="author-tag creator">初回作成：Claude Code</span><span class="author-tag editor">最終更新：Claude Code</span></span>
+            <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-09T17:57:00+09:00">2026.09.09 17:57</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-09T17:57:00+09:00">2026.09.09 17:57</time></span></span>
+          </div>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+        <button class="service-share" type="button" data-copy-anchor="webinar-navi" data-service-name="WEBINAR NAVIGATOR" aria-label="WEBINAR NAVIGATORの一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
+        </article>
+
+        <article class="service-entry" id="ai-bird-work-discovery" data-published="2026-09-09T12:22:00+09:00" data-updated="2026-09-09T14:08:00+09:00" data-taka-created="true">
         <a class="service" data-category="build" href="./ai-bird-work-discovery/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">06</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">08</span></span>
           <div>
             <div class="service-topline"><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / AI OPERATIONS</span><span class="badge-slot"></span></div>
             <h2>AIバード<br>業務発見セット</h2>
@@ -1495,6 +1614,7 @@
             <p class="description">ElliotまたはワークログでAI化する仕事を見つけ、AIスキルの実装・運用・社内定着までつなぐ伴走サービス。</p>
             <p class="change-note"><span>最新の変更</span><b>キャッチコピー刷新・4段階フロー化・セクション統合、タブレット操作性まで改善</b></p>
             <span class="url">writeup-inc.github.io/saas/ai-bird-work-discovery/</span>
+            <span class="author-tags"><span class="author-tag creator">初回作成：たかマスター</span><span class="author-tag editor">最終更新：たかマスター</span></span>
             <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-09T12:22:00+09:00">2026.09.09 12:22</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-09T14:08:00+09:00">2026.09.09 14:08</time></span></span>
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
@@ -1502,9 +1622,9 @@
         <button class="service-share" type="button" data-copy-anchor="ai-bird-work-discovery" data-service-name="AIバード 業務発見セット" aria-label="AIバード 業務発見セットの一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
         </article>
 
-        <article class="service-entry" id="shigyo-ai-practice-pack" data-published="2026-09-09T12:39:00+09:00" data-updated="2026-09-09T12:39:00+09:00">
+        <article class="service-entry" id="shigyo-ai-practice-pack" data-published="2026-09-09T12:39:00+09:00" data-updated="2026-09-09T12:39:00+09:00" data-taka-created="true">
         <a class="service" data-category="work" href="./shigyo-ai-practice-pack/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-work"/></svg></span><span class="number">07</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-work"/></svg></span><span class="number">09</span></span>
           <div>
             <div class="service-topline"><span class="category-name">経営・社内業務</span><span class="service-type">SERVICE / PROFESSIONAL PRACTICE AI</span><span class="badge-slot"></span></div>
             <h2>士業AI実務パック</h2>
@@ -1513,6 +1633,7 @@
             <p class="description">社労士・税理士事務所の相談ヒアリング、書類ドラフト、データ整形を、資格者の最終確認を残したままAIで支援。</p>
             <p class="change-note"><span>最新の変更</span><b>操作できる初回相談デモ、士業別24メニュー、申請前の人による確認工程を公開</b></p>
             <span class="url">writeup-inc.github.io/saas/shigyo-ai-practice-pack/</span>
+            <span class="author-tags"><span class="author-tag creator">初回作成：たかマスター</span><span class="author-tag editor">最終更新：たかマスター</span></span>
             <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-09T12:39:00+09:00">2026.09.09 12:39</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-09T12:39:00+09:00">2026.09.09 12:39</time></span></span>
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
@@ -1520,9 +1641,9 @@
         <button class="service-share" type="button" data-copy-anchor="shigyo-ai-practice-pack" data-service-name="士業AI実務パック" aria-label="士業AI実務パックの一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
         </article>
 
-        <article class="service-entry" id="worklog-insight" data-published="2026-09-08T19:51:00+09:00" data-updated="2026-09-09T11:32:00+09:00">
+        <article class="service-entry" id="worklog-insight" data-published="2026-09-08T19:51:00+09:00" data-updated="2026-09-09T11:32:00+09:00" data-taka-created="true">
         <a class="service" data-category="work" href="./worklog-insight/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-work"/></svg></span><span class="number">08</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-work"/></svg></span><span class="number">10</span></span>
           <div>
             <div class="service-topline"><span class="category-name">経営・社内業務</span><span class="service-type">SERVICE / WORK ANALYTICS</span><span class="badge-slot"></span></div>
             <h2>ワークログ・<br>インサイト</h2>
@@ -1531,6 +1652,7 @@
             <p class="description">1分ごとの業務ログを、次に自動化すべき仕事の判断と、1年後のAIによる業務自動化へつなげる導入案内。</p>
             <p class="change-note"><span>最新の変更</span><b>Noto Sans JPとInterを実読込し、外部フォント欠落をCIで検知</b></p>
             <span class="url">writeup-inc.github.io/saas/worklog-insight/</span>
+            <span class="author-tags"><span class="author-tag creator">初回作成：たかマスター</span><span class="author-tag editor">最終更新：たかマスター</span></span>
             <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-08T19:51:00+09:00">2026.09.08 19:51</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-09T11:32:00+09:00">2026.09.09 11:32</time></span></span>
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
@@ -1538,9 +1660,9 @@
         <button class="service-share" type="button" data-copy-anchor="worklog-insight" data-service-name="ワークログ・インサイト" aria-label="ワークログ・インサイトの一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
         </article>
 
-        <article class="service-entry" id="ai-business-partner" data-published="2026-09-09T10:26:00+09:00" data-updated="2026-09-09T10:47:00+09:00">
+        <article class="service-entry" id="ai-business-partner" data-published="2026-09-09T10:26:00+09:00" data-updated="2026-09-09T10:47:00+09:00" data-taka-created="true">
         <a class="service" data-category="build" href="./ai-business-partner/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">09</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">11</span></span>
           <div>
             <div class="service-topline"><span class="category-name">AI導入・事業化</span><span class="service-type">PARTNER PROGRAM / AI BUSINESS</span><span class="badge-slot"></span></div>
             <h2>正規パートナー募集<br>（商材供給）</h2>
@@ -1549,6 +1671,7 @@
             <p class="description">売れているAI SaaSの販売権と営業支援を組み合わせ、既存顧客への周回提案からAI事業部を立ち上げるパートナー募集。</p>
             <p class="change-note"><span>最新の変更</span><b>ヒーローと全見出しを太くし、各セクションの強調文を拡大</b></p>
             <span class="url">writeup-inc.github.io/saas/ai-business-partner/</span>
+            <span class="author-tags"><span class="author-tag creator">初回作成：たかマスター</span><span class="author-tag editor">最終更新：たかマスター</span></span>
             <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-09T10:26:00+09:00">2026.09.09 10:26</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-09T10:47:00+09:00">2026.09.09 10:47</time></span></span>
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
@@ -1556,9 +1679,9 @@
         <button class="service-share" type="button" data-copy-anchor="ai-business-partner" data-service-name="正規パートナー募集（商材供給）" aria-label="正規パートナー募集（商材供給）の一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
         </article>
 
-        <article class="service-entry" id="ai-hybrid-sales-talk" data-published="2026-09-08T19:57:00+09:00" data-updated="2026-09-08T20:15:00+09:00">
+        <article class="service-entry" id="ai-hybrid-sales-talk" data-published="2026-09-08T19:57:00+09:00" data-updated="2026-09-08T20:15:00+09:00" data-taka-created="true">
         <a class="service" data-category="sales" href="./ai-hybrid-sales-talk/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-sales"/></svg></span><span class="number">10</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-sales"/></svg></span><span class="number">12</span></span>
           <div>
             <div class="service-topline"><span class="category-name">集客・営業</span><span class="service-type">PLAYBOOK / WEB SALES</span><span class="badge-slot"></span></div>
             <h2>左脳×右脳<br>Web制作営業トーク集</h2>
@@ -1567,6 +1690,7 @@
             <p class="description">Web制作が改めて売れている理由から、左脳の論理サイト、右脳の共感LP、AIハイブリッド営業までを話せる30場面。</p>
             <p class="change-note"><span>最新の変更</span><b>生ログ10場面を融合し、左右脳の対比と話す相手が一目で分かる導線へ更新</b></p>
             <span class="url">writeup-inc.github.io/saas/ai-hybrid-sales-talk/</span>
+            <span class="author-tags"><span class="author-tag creator">初回作成：たかマスター＋Claude Code</span><span class="author-tag editor">最終更新：たかマスター</span></span>
             <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-08T19:57:00+09:00">2026.09.08 19:57</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-08T20:15:00+09:00">2026.09.08 20:15</time></span></span>
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
@@ -1574,9 +1698,28 @@
         <button class="service-share" type="button" data-copy-anchor="ai-hybrid-sales-talk" data-service-name="左脳×右脳 Web制作営業トーク集" aria-label="左脳×右脳 Web制作営業トーク集の一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
         </article>
 
-        <article class="service-entry" id="tsubame-lead-sky" data-published="2026-09-08T18:32:00+09:00" data-updated="2026-09-08T19:03:00+09:00">
+        <article class="service-entry" id="web-agency-kit-sales-talk" data-published="2026-09-08T15:34:00+09:00" data-updated="2026-09-08T19:42:00+09:00" data-taka-created="true">
+        <a class="service" data-category="sales" href="./web-agency-kit-sales-talk/">
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-sales"/></svg></span><span class="number">13</span></span>
+          <div>
+            <div class="service-topline"><span class="category-name">集客・営業</span><span class="service-type">GUIDE / SALES TALK</span><span class="badge-slot"></span></div>
+            <h2>ホームページ制作会社パック<br>営業トーク集</h2>
+          </div>
+          <div class="description-wrap">
+            <p class="description">ホームページ制作会社パックを、制作ツールではなく新規事業の開業として説明するための営業トーク集。</p>
+            <p class="change-note"><span>最新の変更</span><b>商談の4点サマリー、常時表示の章ナビ、話す言葉と社内メモの表示ルールを追加</b></p>
+            <span class="url">writeup-inc.github.io/saas/web-agency-kit-sales-talk/</span>
+            <span class="author-tags"><span class="author-tag creator">初回作成：たかマスター＋Claude Code</span><span class="author-tag editor">最終更新：たかマスター＋Claude Code</span></span>
+            <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-08T15:34:00+09:00">2026.09.08 15:34</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-08T19:42:00+09:00">2026.09.08 19:42</time></span></span>
+          </div>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+        <button class="service-share" type="button" data-copy-anchor="web-agency-kit-sales-talk" data-service-name="ホームページ制作会社パック 営業トーク集" aria-label="ホームページ制作会社パック 営業トーク集の一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
+        </article>
+
+        <article class="service-entry" id="tsubame-lead-sky" data-published="2026-09-08T18:32:00+09:00" data-updated="2026-09-08T19:03:00+09:00" data-taka-created="true">
         <a class="service" data-category="sales" href="./tsubame-lead-sky/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-sales"/></svg></span><span class="number">11</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-sales"/></svg></span><span class="number">14</span></span>
           <div>
             <div class="service-topline"><span class="category-name">集客・営業</span><span class="service-type">SERVICE / FORM SALES</span><span class="badge-slot"></span></div>
             <h2>つばめリード<br>skyバージョン</h2>
@@ -1585,6 +1728,7 @@
             <p class="description">成功送信課金と全件動画記録を、青空と都市のビジュアルで軽やかに伝えるBtoBフォーム営業サービスLP。</p>
             <p class="change-note"><span>最新の変更</span><b>SIMULATIONにフォーム営業・テレアポ・広告の効果を比較するChatGPT導線を追加</b></p>
             <span class="url">writeup-inc.github.io/saas/tsubame-lead-sky/</span>
+            <span class="author-tags"><span class="author-tag creator">初回作成：たかマスター</span><span class="author-tag editor">最終更新：たかマスター</span></span>
             <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-08T18:32:00+09:00">2026.09.08 18:32</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-08T19:03:00+09:00">2026.09.08 19:03</time></span></span>
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
@@ -1592,9 +1736,9 @@
         <button class="service-share" type="button" data-copy-anchor="tsubame-lead-sky" data-service-name="つばめリード skyバージョン" aria-label="つばめリード skyバージョンの一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
         </article>
 
-        <article class="service-entry" id="ai-manager" data-published="2026-09-08T09:45:00+09:00" data-updated="2026-09-08T13:54:00+09:00">
+        <article class="service-entry" id="ai-manager" data-published="2026-09-08T09:45:00+09:00" data-updated="2026-09-08T13:54:00+09:00" data-taka-created="true">
         <a class="service" data-category="build" href="./ai-manager/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">12</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">15</span></span>
           <div>
             <div class="service-topline"><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / AI MANAGEMENT</span><span class="badge-slot"></span></div>
             <h2>御社のAI担当<br>1年間伴走募集</h2>
@@ -1603,6 +1747,7 @@
             <p class="description">中小企業のAI活用を、専任担当・成功失敗事例・講演会・研修・プロダクト開発で1年間支える募集ページ。</p>
             <p class="change-note"><span>最新の変更</span><b>9月の実践研修と講演会の開催予定を追加</b></p>
             <span class="url">writeup-inc.github.io/saas/ai-manager/</span>
+            <span class="author-tags"><span class="author-tag creator">初回作成：たかマスター</span><span class="author-tag editor">最終更新：たかマスター</span></span>
             <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-08T09:45:00+09:00">2026.09.08 09:45</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-08T13:54:00+09:00">2026.09.08 13:54</time></span></span>
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
@@ -1610,9 +1755,28 @@
         <button class="service-share" type="button" data-copy-anchor="ai-manager" data-service-name="御社のAI担当 1年間伴走募集" aria-label="御社のAI担当 1年間伴走募集の一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
         </article>
 
-        <article class="service-entry" id="first-sales-sfa-check" data-published="2026-09-07T12:41:00+09:00" data-updated="2026-09-07T12:41:00+09:00">
+        <article class="service-entry" id="aio-consult-business" data-published="2026-09-05T18:35:00+09:00" data-updated="2026-09-08T01:00:00+09:00" data-taka-created="true">
+        <a class="service" data-category="build" href="./aio-consult-business/">
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">16</span></span>
+          <div>
+            <div class="service-topline"><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / BUSINESS STARTER</span><span class="badge-slot"></span></div>
+            <h2>AIOコンサル事業<br>スタートパック</h2>
+          </div>
+          <div class="description-wrap">
+            <p class="description">商品システム・営業スキル・広報支援を揃え、既存顧客との新しい取引をつくるAIOコンサル事業の立ち上げパック。</p>
+            <p class="change-note"><span>最新の変更</span><b>CTAを10分の説明動画へ統一し、動画未公開時は準備中と明示</b></p>
+            <span class="url">writeup-inc.github.io/saas/aio-consult-business/</span>
+            <span class="author-tags"><span class="author-tag creator">初回作成：たかマスター</span><span class="author-tag editor">最終更新：たかマスター＋Claude Code</span></span>
+            <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-05T18:35:00+09:00">2026.09.05 18:35</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-08T01:00:00+09:00">2026.09.08 01:00</time></span></span>
+          </div>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+        <button class="service-share" type="button" data-copy-anchor="aio-consult-business" data-service-name="AIOコンサル事業スタートパック" aria-label="AIOコンサル事業スタートパックの一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
+        </article>
+
+        <article class="service-entry" id="first-sales-sfa-check" data-published="2026-09-07T12:41:00+09:00" data-updated="2026-09-07T12:41:00+09:00" data-taka-created="true">
         <a class="service" data-category="sales" href="./first-sales-sfa-check/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-sales"/></svg></span><span class="number">13</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-sales"/></svg></span><span class="number">17</span></span>
           <div>
             <div class="service-topline"><span class="category-name">集客・営業</span><span class="service-type">TOOL / SFA DIAGNOSIS</span><span class="badge-slot"></span></div>
             <h2>第一営業部<br>SFA商談診断</h2>
@@ -1621,6 +1785,7 @@
             <p class="description">8問または商談メモから、SFA・CRMの候補、刺さる切り口、次に確認する3問、営業担当者の今日の行動を整理。</p>
             <p class="change-note"><span>最新の変更</span><b>第一営業部向けの固定ロジック診断と商談フォロー出力を新規公開</b></p>
             <span class="url">writeup-inc.github.io/saas/first-sales-sfa-check/</span>
+            <span class="author-tags"><span class="author-tag creator">初回作成：たかマスター</span><span class="author-tag editor">最終更新：たかマスター</span></span>
             <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-07T12:41:00+09:00">2026.09.07 12:41</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-07T12:41:00+09:00">2026.09.07 12:41</time></span></span>
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
@@ -1628,27 +1793,9 @@
         <button class="service-share" type="button" data-copy-anchor="first-sales-sfa-check" data-service-name="第一営業部 SFA商談診断" aria-label="第一営業部 SFA商談診断の一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
         </article>
 
-        <article class="service-entry" id="aio-consult-business" data-published="2026-09-05T18:35:00+09:00" data-updated="2026-09-06T05:30:00+09:00">
-        <a class="service" data-category="build" href="./aio-consult-business/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">14</span></span>
-          <div>
-            <div class="service-topline"><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / BUSINESS STARTER</span><span class="badge-slot"></span></div>
-            <h2>AIOコンサル事業<br>スタートパック</h2>
-          </div>
-          <div class="description-wrap">
-            <p class="description">商品システム・営業スキル・広報支援を揃え、既存顧客との新しい取引をつくるAIOコンサル事業の立ち上げパック。</p>
-            <p class="change-note"><span>最新の変更</span><b>AI経由の購買増加、中小企業・店舗との相性を示す統計へ更新</b></p>
-            <span class="url">writeup-inc.github.io/saas/aio-consult-business/</span>
-            <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-05T18:35:00+09:00">2026.09.05 18:35</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-06T05:30:00+09:00">2026.09.06 05:30</time></span></span>
-          </div>
-          <span class="arrow" aria-hidden="true">↗</span>
-        </a>
-        <button class="service-share" type="button" data-copy-anchor="aio-consult-business" data-service-name="AIOコンサル事業スタートパック" aria-label="AIOコンサル事業スタートパックの一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
-        </article>
-
-        <article class="service-entry" id="ai-ad-agency-pack" data-published="2026-09-05T00:48:00+09:00" data-updated="2026-09-05T14:41:00+09:00">
+        <article class="service-entry" id="ai-ad-agency-pack" data-published="2026-09-05T00:48:00+09:00" data-updated="2026-09-05T14:41:00+09:00" data-taka-created="false">
         <a class="service" data-category="build" href="./ai-ad-agency-pack/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">15</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">18</span></span>
           <div>
             <div class="service-topline"><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / ADVERTISING</span><span class="badge-slot"></span></div>
             <h2>AI広告代理店<br>スタートパック</h2>
@@ -1657,15 +1804,16 @@
             <p class="description">Claude Codeを実務基盤に、広告提案・設定・入稿準備・分析・改善までを自社サービスにする実務パッケージ。</p>
             <p class="change-note"><span>最新の変更</span><b>料金部の表示崩れと見出し改行を修正、OGPとCTA導線を整備</b></p>
             <span class="url">writeup-inc.github.io/saas/ai-ad-agency-pack/</span>
+            <span class="author-tags"><span class="author-tag creator unknown">初回作成：履歴不明</span><span class="author-tag editor">最終更新：たかマスター＋Claude Code</span></span>
             <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-05T00:48:00+09:00">2026.09.05 00:48</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-05T14:41:00+09:00">2026.09.05 14:41</time></span></span>
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
         </a>
         <button class="service-share" type="button" data-copy-anchor="ai-ad-agency-pack" data-service-name="AI広告代理店スタートパック" aria-label="AI広告代理店スタートパックの一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
         </article>
-        <article class="service-entry" id="ai-web-chat" data-published="2026-09-05T02:54:00+09:00" data-updated="2026-09-05T13:45:00+09:00">
+        <article class="service-entry" id="ai-web-chat" data-published="2026-09-05T02:54:00+09:00" data-updated="2026-09-05T13:45:00+09:00" data-taka-created="false">
         <a class="service" data-category="care" href="./ai-web-chat/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-care"/></svg></span><span class="number">16</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-care"/></svg></span><span class="number">19</span></span>
           <div>
             <div class="service-topline"><span class="category-name">顧客対応・店舗</span><span class="service-type">SERVICE / WEB SALES</span><span class="badge-slot"></span></div>
             <h2>AIウェブチャット<br>（仮称）</h2>
@@ -1674,6 +1822,7 @@
             <p class="description">自社サイト上で訪問者の質問に答え、必要なことを伺い、問い合わせ・相談予約・登録へ案内する一次営業AI。</p>
             <p class="change-note"><span>最新の変更</span><b>重複構成と余白を整理し、表示崩れとファネルの可読性を改善</b></p>
             <span class="url">writeup-inc.github.io/saas/ai-web-chat/</span>
+            <span class="author-tags"><span class="author-tag creator unknown">初回作成：履歴不明</span><span class="author-tag editor">最終更新：たかマスター＋Claude Code</span></span>
             <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-05T02:54:00+09:00">2026.09.05 02:54</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-05T13:45:00+09:00">2026.09.05 13:45</time></span></span>
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
@@ -1681,9 +1830,9 @@
         <button class="service-share" type="button" data-copy-anchor="ai-web-chat" data-service-name="AIウェブチャット" aria-label="AIウェブチャットの一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
         </article>
 
-        <article class="service-entry" id="mcp-guide" data-published="2026-09-05T12:12:00+09:00" data-updated="2026-09-05T12:19:00+09:00">
+        <article class="service-entry" id="mcp-guide" data-published="2026-09-05T12:12:00+09:00" data-updated="2026-09-05T12:19:00+09:00" data-taka-created="true">
         <a class="service" data-category="build" href="./mcp-guide/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">17</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">20</span></span>
           <div>
             <div class="service-topline"><span class="category-name">AI導入・事業化</span><span class="service-type">MEDIA / AI INFRASTRUCTURE</span><span class="badge-slot"></span></div>
             <h2>MCP導入<br>ガイド</h2>
@@ -1692,6 +1841,7 @@
             <p class="description">中小企業が業務に合うMCPを、権限・承認・対応クライアントまで確認して小さく試すための導入判断メディア。</p>
             <p class="change-note"><span>最新の変更</span><b>静的アセットをGitHub Pagesで配信できるよう修正</b></p>
             <span class="url">writeup-inc.github.io/saas/mcp-guide/</span>
+            <span class="author-tags"><span class="author-tag creator">初回作成：たかマスター</span><span class="author-tag editor">最終更新：たかマスター</span></span>
             <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-05T12:12:00+09:00">2026.09.05 12:12</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-05T12:19:00+09:00">2026.09.05 12:19</time></span></span>
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
@@ -1699,9 +1849,9 @@
         <button class="service-share" type="button" data-copy-anchor="mcp-guide" data-service-name="MCP導入ガイド" aria-label="MCP導入ガイドの一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
         </article>
 
-        <article class="service-entry" id="web-agency-kit" data-published="2026-09-05T01:04:00+09:00" data-updated="2026-09-05T01:04:00+09:00">
+        <article class="service-entry" id="web-agency-kit" data-published="2026-09-05T01:04:00+09:00" data-updated="2026-09-05T01:04:00+09:00" data-taka-created="false">
         <a class="service" data-category="build" href="./web-agency-kit/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">18</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">21</span></span>
           <div>
             <div class="service-topline"><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / WEB PRODUCTION</span><span class="badge-slot"></span></div>
             <h2>ホームページ制作会社<br>スタートパック</h2>
@@ -1710,6 +1860,7 @@
             <p class="description">Codexと12個の実務スキルで、Web制作未経験の会社が地元企業へ提案・制作・納品できる事業パッケージ。</p>
             <p class="change-note"><span>最新の変更</span><b>未経験企業向けWeb制作事業パッケージを新規公開</b></p>
             <span class="url">writeup-inc.github.io/saas/web-agency-kit/</span>
+            <span class="author-tags"><span class="author-tag creator unknown">初回作成：履歴不明</span><span class="author-tag editor">最終更新：たかマスター</span></span>
             <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-05T01:04:00+09:00">2026.09.05 01:04</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-05T01:04:00+09:00">2026.09.05 01:04</time></span></span>
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
@@ -1718,9 +1869,9 @@
         </article>
 
 
-        <article class="service-entry" id="ai-contact-4-stages" data-published="2026-09-05T00:36:00+09:00" data-updated="2026-09-05T00:41:00+09:00">
+        <article class="service-entry" id="ai-contact-4-stages" data-published="2026-09-05T00:36:00+09:00" data-updated="2026-09-05T00:41:00+09:00" data-taka-created="false">
         <a class="service" data-category="sales" href="./ai-contact-4-stages/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-sales"/></svg></span><span class="number">19</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-sales"/></svg></span><span class="number">22</span></span>
           <div>
             <div class="service-topline"><span class="category-name">集客・営業</span><span class="service-type">GUIDE / CUSTOMER CONTACT</span><span class="badge-slot"></span></div>
             <h2>AI接点が深まる<br>4段階</h2>
@@ -1729,6 +1880,7 @@
             <p class="description">情報接触からAIO、AIウェブチャット、顧客対応・ナーチャリングまで、顧客とのAI接点を4段階で整理したガイド。</p>
             <p class="change-note"><span>最新の変更</span><b>顧客とのAI接点を4段階で整理したガイドを公開</b></p>
             <span class="url">writeup-inc.github.io/saas/ai-contact-4-stages/</span>
+            <span class="author-tags"><span class="author-tag creator unknown">初回作成：履歴不明</span><span class="author-tag editor">最終更新：たかマスター</span></span>
             <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-05T00:36:00+09:00">2026.09.05 00:36</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-05T00:41:00+09:00">2026.09.05 00:41</time></span></span>
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
@@ -1736,9 +1888,9 @@
         <button class="service-share" type="button" data-copy-anchor="ai-contact-4-stages" data-service-name="AI接点が深まる4段階" aria-label="AI接点が深まる4段階の一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
         </article>
 
-        <article class="service-entry" id="shiire-ataru-lp" data-published="2026-09-04T19:55:00+09:00" data-updated="2026-09-04T23:49:00+09:00">
+        <article class="service-entry" id="shiire-ataru-lp" data-published="2026-09-04T19:55:00+09:00" data-updated="2026-09-04T23:49:00+09:00" data-taka-created="false">
         <a class="service" data-category="work" href="./shiire-ataru-lp/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-work"/></svg></span><span class="number">20</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-work"/></svg></span><span class="number">23</span></span>
           <div>
             <div class="service-topline"><span class="category-name">経営・社内業務</span><span class="service-type">SERVICE / REAL ESTATE</span><span class="badge-slot"></span></div>
             <h2>仕入れ担当<br>アタル（仮称）</h2>
@@ -1747,6 +1899,7 @@
             <p class="description">全国の登録済み不動産会社へ物件の有無を確認し、回答と未回答を整理して仕入れ担当者へ報告するAIチームメイト。</p>
             <p class="change-note"><span>最新の変更</span><b>全国の不動産会社へ確認する役割を明確化</b></p>
             <span class="url">writeup-inc.github.io/saas/shiire-ataru-lp/</span>
+            <span class="author-tags"><span class="author-tag creator unknown">初回作成：履歴不明</span><span class="author-tag editor">最終更新：たかマスター</span></span>
             <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-04T19:55:00+09:00">2026.09.04 19:55</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-04T23:49:00+09:00">2026.09.04 23:49</time></span></span>
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
@@ -1755,7 +1908,7 @@
         </article>
       </section>
       <span class="sr-only" id="copy-status" role="status" aria-live="polite"></span>
-      <p class="history-note">※ 日時は、各公開ページのGit履歴を基準に、日本時間で分まで表示しています。</p>
+      <p class="history-note">※ 日時・初回作成者・最終更新者は、各公開ページのGit履歴を基準に表示しています。</p>
 
       <section class="category-legend" aria-labelledby="category-legend-title">
         <div class="legend-head">

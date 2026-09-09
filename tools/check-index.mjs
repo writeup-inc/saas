@@ -61,6 +61,35 @@ function git(args) {
   }).trim();
 }
 
+function commitPeople(commit) {
+  const output = git(["show", "-s", "--format=%an%n%ae%n%B", commit]);
+  const [authorName, authorEmail, ...bodyLines] = output.split("\n");
+  const aliases = config.attribution.authorAliases;
+  const people = [aliases[authorEmail] ?? authorName];
+  const body = bodyLines.join("\n");
+  const coAuthorPattern = /^Co-Authored-By:\s*(.+?)\s*<([^>]+)>\s*$/gim;
+
+  for (const match of body.matchAll(coAuthorPattern)) {
+    people.push(aliases[match[2]] ?? match[1]);
+  }
+
+  return {
+    primaryEmail: authorEmail,
+    label: [...new Set(people)].join("＋")
+  };
+}
+
+function firstCreationCommit(cardId) {
+  const path = config.attribution.creationOrigins[cardId] ?? `${cardId}/index.html`;
+  const output = git(["log", "--reverse", "--format=%H", "--", path]);
+  return output ? output.split("\n")[0] : null;
+}
+
+function latestSiteCommit(cardId) {
+  const output = git(["log", "-1", "--format=%H", "--", `${cardId}/`]);
+  return output || null;
+}
+
 function commitsAfterBaseline(path) {
   const output = git(["rev-list", "--reverse", `${config.historyBaseline}..HEAD`, "--", path]);
   return output ? output.split("\n") : [];
@@ -82,12 +111,13 @@ if (!listMatch) {
   error(".list セクションが見つかりません");
 }
 
-const cardPattern = /<article class="service-entry" id="([^"]+)" data-published="([^"]+)" data-updated="([^"]+)">([\s\S]*?)<\/article>/g;
+const cardPattern = /<article class="service-entry" id="([^"]+)" data-published="([^"]+)" data-updated="([^"]+)" data-taka-created="(true|false)">([\s\S]*?)<\/article>/g;
 const cards = [...(listMatch?.[0] ?? "").matchAll(cardPattern)].map((match) => ({
   id: match[1],
   published: match[2],
   updated: match[3],
-  body: match[4]
+  takaCreated: match[4],
+  body: match[5]
 }));
 
 if (cards.length === 0) error("サービスカードが1件も見つかりません");
@@ -110,6 +140,8 @@ cards.forEach((card, index) => {
   const urlText = card.body.match(/<span class="url">([^<]+)<\/span>/)?.[1]?.trim();
   const publishedDisplay = card.body.match(/<b>初回公開<\/b><time datetime="([^"]+)">([^<]+)<\/time>/);
   const updatedDisplay = card.body.match(/<b>最終更新<\/b><time datetime="([^"]+)">([^<]+)<\/time>/);
+  const creatorTag = card.body.match(/<span class="author-tag creator(?: unknown)?">初回作成：([^<]+)<\/span>/)?.[1]?.trim();
+  const editorTag = card.body.match(/<span class="author-tag editor">最終更新：([^<]+)<\/span>/)?.[1]?.trim();
 
   if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:00\+09:00$/.test(card.published)) {
     error(`${prefix} data-published は分単位の日本時間ISO 8601ではありません: ${card.published}`);
@@ -153,6 +185,24 @@ cards.forEach((card, index) => {
   } else {
     if (updatedDisplay[1] !== card.updated) error(`${prefix} 最終更新のdatetimeがdata-updatedと一致しません`);
     if (updatedDisplay[2].trim() !== formatJapaneseMinute(card.updated)) error(`${prefix} 最終更新の表示日時がdatetimeと一致しません`);
+  }
+  const creationCommit = firstCreationCommit(card.id);
+  const latestCommit = latestSiteCommit(card.id);
+  if (!creationCommit) {
+    error(`${prefix} 初回作成コミットを取得できません`);
+  } else {
+    const creationUnknown = config.attribution.unknownCreationCommits.includes(creationCommit);
+    const creation = commitPeople(creationCommit);
+    const expectedCreator = creationUnknown ? "履歴不明" : creation.label;
+    const expectedTakaCreated = String(!creationUnknown && creation.primaryEmail === config.attribution.takaAuthorEmail);
+    if (creatorTag !== expectedCreator) error(`${prefix} 初回作成者タグがGit履歴と一致しません。期待値: ${expectedCreator}`);
+    if (card.takaCreated !== expectedTakaCreated) error(`${prefix} data-taka-createdがGit履歴と一致しません。期待値: ${expectedTakaCreated}`);
+  }
+  if (!latestCommit) {
+    error(`${prefix} 最終更新コミットを取得できません`);
+  } else {
+    const editor = commitPeople(latestCommit);
+    if (editorTag !== editor.label) error(`${prefix} 最終更新者タグがGit履歴と一致しません。期待値: ${editor.label}`);
   }
   const categoryRule = config.categories[category];
   if (!categoryRule) {
