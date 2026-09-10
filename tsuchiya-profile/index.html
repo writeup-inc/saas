@@ -57,7 +57,7 @@ pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
   --ink-sub:#4F5C55;
   --line:#DCD6C8;
   --gold:#9C7526;
-  --wrap:1120px;
+  --wrap:1200px;
 
   --fs-h1:  clamp(1.7rem, 5.4vw, 2.9rem);
   --fs-h2:  clamp(1.34rem, 4vw, 1.85rem);
@@ -187,6 +187,7 @@ p{ margin:0; }
 
 /* ── 好きなこと ───────────────────────── */
 .likes{ display:grid; gap:14px; margin-top:var(--sp-in); }
+.likes__column{ display:contents; }
 .like{ background:var(--card); border:1px solid var(--line); border-radius:10px; padding:20px; overflow:hidden; }
 .like__visual{
   height:156px; margin:-20px -20px 18px; overflow:hidden;
@@ -334,9 +335,10 @@ a.svc__name:hover::after, a.svc__name:focus-visible::after{ opacity:1; }
   background:rgba(23,48,33,.97); backdrop-filter:blur(6px);
   padding:9px 10px calc(9px + env(safe-area-inset-bottom,0px));
   display:flex; gap:9px; justify-content:center;
-  transform:translateY(110%); transition:transform .25s ease;
+  transform:translateY(110%); opacity:0; pointer-events:none;
+  transition:transform .25s ease, opacity .2s ease;
 }
-.cta.is-on{ transform:none; }
+.cta.is-on{ transform:none; opacity:1; pointer-events:auto; }
 .cta a{
   flex:1; max-width:230px; text-align:center; text-decoration:none;
   color:#fff; font-size:var(--fs-sub); font-weight:700; letter-spacing:.04em;
@@ -371,8 +373,8 @@ a.svc__name:hover::after, a.svc__name:focus-visible::after{ opacity:1; }
   .story-grid{ grid-template-columns:minmax(0,1.35fr) minmax(280px,.85fr); align-items:start; }
   /* 家族キャンプと天然パーマを全幅にして、間の2枚を横並びにする */
   .likes{ grid-template-columns:1fr 1fr; }
-  .likes .like:first-child,
-  .likes .like:last-child{ grid-column:1 / -1; }
+  .likes__column:first-child .like:first-child,
+  .likes__column:last-child .like:last-child{ grid-column:1 / -1; }
   /* 営業だけサービスが多いので全幅に置き、残り3つを横並びにする */
   .cards{ grid-template-columns:1fr 1fr; align-items:start; }
   .cards .card:first-child{ grid-column:1 / -1; }
@@ -397,16 +399,70 @@ a.svc__name:hover::after, a.svc__name:focus-visible::after{ opacity:1; }
 }
 
 @media (min-width:820px){
+  /* 短いプロフィール情報は2段へ。経歴と趣味・資格を左右で組み、空いた横幅を使う */
+  .dl{
+    display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    column-gap:36px;
+  }
+  .dl > div:nth-child(1){ grid-column:1; grid-row:1; }
+  .dl > div:nth-child(2){ grid-column:2; grid-row:1; }
+  .dl > div:nth-child(3){ grid-column:1; grid-row:2 / span 2; }
+  .dl > div:nth-child(4){ grid-column:2; grid-row:2; }
+  .dl > div:nth-child(5){ grid-column:2; grid-row:3; }
+
   .cards{ grid-template-columns:repeat(3,1fr); }
   .cards .card:first-child{ grid-column:1 / -1; }
   .cards .card:first-child .svc{ display:grid; grid-template-columns:1fr 1fr; column-gap:28px; }
   .cards .card:first-child .svc li:nth-child(2){ border-bottom:none; }
 }
 
+@media (min-width:900px){
+  body{ padding-bottom:0; }
+  /* 文章量に合わせた2列の流れにして、段差由来の空白をなくす */
+  .likes{ grid-template-columns:minmax(0,7fr) minmax(0,5fr); align-items:start; }
+  .likes__column{ display:grid; gap:14px; align-content:start; }
+  .like__visual{ height:144px; }
+  .seeds ul{
+    display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:4px 30px; line-height:1.8;
+  }
+
+  .contact{
+    display:grid;
+    grid-template-columns:minmax(280px,.72fr) minmax(520px,1.28fr);
+    column-gap:48px; align-items:start;
+  }
+  .contact .sec-title{ grid-column:1; grid-row:1; }
+  .contact__org{ grid-column:1; grid-row:2; margin-bottom:0; }
+  .contact__list{ grid-column:2; grid-row:1; margin-bottom:14px; }
+  .qr{ grid-column:2; grid-row:2; }
+
+  .foot{
+    display:grid; grid-template-columns:minmax(0,1fr) auto;
+    gap:10px 40px; align-items:end;
+  }
+  .foot p{ margin-bottom:0; }
+  .foot__links{
+    grid-column:2; grid-row:1 / span 2; align-self:end;
+    margin:0; padding:0; border-top:0; justify-content:flex-end;
+  }
+
+  /* PCは常設CTAを外し、本文と写真を隠さず最終の連絡先へ自然につなぐ */
+  .cta{ display:none; }
+}
+
 @media (min-width:1000px){
   :root{ --sp:64px; }
   section, .lead-box, .foot{ padding-left:64px; padding-right:64px; }
   .hero{ padding:26px 64px 44px; }
+}
+
+@media (min-width:1100px){
+  /* 文章量に合わせて下段3領域の幅を変え、カード下の空きを揃える */
+  .cards{ grid-template-columns:repeat(12,minmax(0,1fr)); }
+  .cards .card:nth-child(2){ grid-column:span 4; }
+  .cards .card:nth-child(3){ grid-column:span 3; }
+  .cards .card:nth-child(4){ grid-column:span 5; }
 }
 
 @media print{
@@ -520,6 +576,7 @@ a.svc__name:hover::after, a.svc__name:focus-visible::after{ opacity:1; }
 
     <h2 class="sec-title sec-likes" style="margin-top:40px">好きなこと</h2>
     <div class="likes">
+      <div class="likes__column">
       <div class="like">
         <div class="like__visual" aria-hidden="true">
           <svg viewBox="0 0 640 180">
@@ -565,6 +622,8 @@ a.svc__name:hover::after, a.svc__name:focus-visible::after{ opacity:1; }
         </h3>
         <p>ツーリングの行き先を決めるとき、まず調べるのはスーパー銭湯です。走って、湯に入って、帰る。年間50泊というツーリング歴は、ほとんどこの繰り返しで積み上がりました。</p>
       </div>
+      </div>
+      <div class="likes__column">
       <div class="like like--home">
         <div class="like__visual" aria-hidden="true">
           <svg viewBox="0 0 640 180">
@@ -602,6 +661,7 @@ a.svc__name:hover::after, a.svc__name:focus-visible::after{ opacity:1; }
           天然パーマ <em>最近の悩み</em>
         </h3>
         <p>年々強くなる天然パーマが、最近の悩みです。毎朝いったん髪をびしょびしょに濡らして整えても、会社に着くころにはくるくる。お会いしたときは、ぜひ優しい目で見てください。</p>
+      </div>
       </div>
     </div>
 
@@ -781,7 +841,7 @@ a.svc__name:hover::after, a.svc__name:focus-visible::after{ opacity:1; }
   </div>
 </div>
 
-<nav class="cta" id="cta" aria-label="問い合わせ">
+<nav class="cta" id="cta" aria-label="問い合わせ" aria-hidden="true" inert>
   <a href="tel:08094597759">電話する</a>
   <a href="mailto:k_tsuchiya@writeup.co.jp">メール</a>
 </nav>
@@ -797,11 +857,29 @@ document.querySelectorAll('.ph > img').forEach(function (img) {
 (function () {
   var hero = document.getElementById('hero');
   var cta = document.getElementById('cta');
-  if (!hero || !cta) { return; }
-  if (!('IntersectionObserver' in window)) { cta.classList.add('is-on'); return; }
-  new IntersectionObserver(function (es) {
-    cta.classList.toggle('is-on', !es[0].isIntersecting);
-  }, { threshold: 0 }).observe(hero);
+  var contact = document.querySelector('.contact');
+  if (!hero || !cta || !contact) { return; }
+  if (!('IntersectionObserver' in window)) {
+    cta.classList.add('is-on');
+    cta.removeAttribute('inert');
+    cta.setAttribute('aria-hidden', 'false');
+    return;
+  }
+  var visible = { hero: true, contact: false };
+  var update = function () {
+    var show = !visible.hero && !visible.contact;
+    cta.classList.toggle('is-on', show);
+    cta.toggleAttribute('inert', !show);
+    cta.setAttribute('aria-hidden', show ? 'false' : 'true');
+  };
+  var observer = new IntersectionObserver(function (es) {
+    es.forEach(function (entry) {
+      visible[entry.target === hero ? 'hero' : 'contact'] = entry.isIntersecting;
+    });
+    update();
+  }, { threshold: 0 });
+  observer.observe(hero);
+  observer.observe(contact);
 })();
 </script>
 </body>
