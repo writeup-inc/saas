@@ -765,10 +765,113 @@
 
     .creator-legend b { color: #275e78; }
 
+    .latest-updates {
+      margin: 2px 0 8px;
+      border: 1px solid var(--line);
+      background: rgba(251,250,246,.8);
+    }
+
+    .latest-updates-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 18px 13px;
+    }
+
+    .latest-updates-kicker {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--orange);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .14em;
+    }
+
+    .latest-updates-title {
+      margin: 0;
+      color: var(--green);
+      font-size: 20px;
+      letter-spacing: -.02em;
+      line-height: 1.35;
+    }
+
+    .latest-updates-head > span {
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 750;
+      letter-spacing: .1em;
+    }
+
+    .latest-updates-list {
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid var(--line);
+      list-style: none;
+    }
+
+    .latest-update-link {
+      display: grid;
+      grid-template-columns: 92px minmax(0, 1fr) 26px;
+      gap: 16px;
+      align-items: center;
+      min-height: 58px;
+      padding: 10px 18px;
+      border-bottom: 1px solid rgba(20,37,31,.1);
+      text-decoration: none;
+      transition: color .2s ease, background .2s ease;
+    }
+
+    .latest-updates-list li:last-child .latest-update-link { border-bottom: 0; }
+
+    .latest-update-link:hover,
+    .latest-update-link:focus-visible {
+      outline: none;
+      color: var(--green);
+      background: rgba(230,242,248,.54);
+    }
+
+    .latest-update-date {
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 10px;
+    }
+
+    .latest-update-copy {
+      display: grid;
+      grid-template-columns: minmax(170px, .7fr) minmax(0, 1.3fr);
+      gap: 18px;
+      align-items: baseline;
+      min-width: 0;
+    }
+
+    .latest-update-copy strong {
+      overflow: hidden;
+      font-size: 13px;
+      line-height: 1.5;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .latest-update-copy span {
+      overflow: hidden;
+      color: var(--ink-soft);
+      font-size: 11px;
+      line-height: 1.55;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .latest-update-arrow {
+      color: var(--green);
+      font-size: 16px;
+      text-align: right;
+    }
+
     .service-columns {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
+      grid-template-columns: 1fr;
+      gap: 48px;
       align-items: start;
     }
 
@@ -781,7 +884,7 @@
       grid-template-columns: minmax(0, 1fr) auto;
       gap: 8px 16px;
       align-items: start;
-      min-height: 116px;
+      min-height: 0;
       margin-bottom: 12px;
       padding: 18px 20px;
       border: 1px solid var(--line);
@@ -872,48 +975,45 @@
     }
 
     .service-columns .service {
-      grid-template-columns: 52px minmax(0, 1fr) 40px;
-      gap: 14px;
-      align-items: start;
-      min-height: 0;
-      padding: 18px;
+      grid-template-columns: 64px minmax(210px, .7fr) minmax(0, 1.3fr) 40px;
+      gap: 20px;
+      align-items: center;
+      min-height: 164px;
+      padding: 20px 22px;
     }
 
     .service-columns .service-index {
-      grid-column: 1;
-      grid-row: 1;
+      grid-column: auto;
+      grid-row: auto;
+      gap: 8px;
     }
 
     .service-columns .description-wrap {
-      grid-column: 1 / 4;
+      grid-column: auto;
       padding-top: 0;
     }
 
     .service-columns .arrow {
-      grid-column: 3;
-      grid-row: 1;
+      grid-column: auto;
+      grid-row: auto;
       justify-self: end;
     }
 
-    .service-columns .service-index {
-      gap: 7px;
-    }
-
     .service-columns .service-topline {
-      min-height: 20px;
-      gap: 7px;
-      margin-bottom: 4px;
+      min-height: 22px;
+      gap: 8px;
+      margin-bottom: 6px;
     }
 
     .service-columns .service h2 {
-      font-size: clamp(18px, 1.65vw, 22px);
+      font-size: clamp(20px, 2vw, 25px);
     }
 
     .service-columns .description {
       display: -webkit-box;
       overflow: hidden;
       font-size: 13px;
-      line-height: 1.65;
+      line-height: 1.7;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
     }
@@ -926,13 +1026,12 @@
     }
 
     .service-columns .change-note b {
-      display: -webkit-box;
+      display: block;
       overflow: hidden;
       font-size: 11px;
       line-height: 1.45;
-      white-space: normal;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .service-columns .url {
@@ -1435,9 +1534,9 @@
       .org-arrow { min-height: 20px; transform: rotate(90deg); }
       .service-columns { grid-template-columns: 1fr; gap: 36px; }
       .service-lane-head { min-height: 0; }
-      .service { grid-template-columns: 52px 1fr 40px; gap: 20px; }
-      .description-wrap { grid-column: 2 / 4; }
-      .arrow { grid-column: 3; grid-row: 1; justify-self: end; }
+      .service-columns .service { grid-template-columns: 52px 1fr 40px; gap: 20px; min-height: 0; }
+      .service-columns .description-wrap { grid-column: 2 / 4; }
+      .service-columns .arrow { grid-column: 3; grid-row: 1; justify-self: end; }
       .category-icon { width: 36px; }
       .category-icon svg { width: 19px; height: 19px; }
       .legend-head { align-items: start; flex-direction: column; gap: 10px; }
@@ -1471,6 +1570,10 @@
       .context-copy { font-size: 13px; }
       .notice { grid-template-columns: 1fr; gap: 12px; }
       .creator-legend { align-items: center; }
+      .latest-updates-head { padding: 14px 15px 12px; }
+      .latest-update-link { grid-template-columns: 74px minmax(0, 1fr) 20px; gap: 11px; padding: 9px 15px; }
+      .latest-update-copy { grid-template-columns: 1fr; gap: 1px; }
+      .latest-update-copy strong { white-space: normal; }
       .service-lane-head { padding: 16px 17px; }
       .service-columns .service {
         grid-template-columns: 44px minmax(0, 1fr) 36px;
@@ -1480,7 +1583,7 @@
       }
       .service-index { gap: 7px; }
       .number { font-size: 11px; }
-      .description-wrap { grid-column: 1 / 4; padding-top: 2px; }
+      .service-columns .description-wrap { grid-column: 1 / 4; padding-top: 2px; }
       .description { font-size: 13px; }
       .change-note { grid-template-columns: 1fr; gap: 3px; }
       .change-note b { white-space: normal; }
@@ -1658,7 +1761,7 @@
         <div class="filter-bar" role="group" aria-label="カテゴリで絞り込む"></div>
         <div class="creator-legend">
           <span class="creator-legend-swatch" aria-hidden="true"></span>
-          <span><b>初回作成者を基準に、左を「たかマスター制作」、右を「チーム制作・履歴不明」に分けています。</b><br>その後に別の人が更新した場合も配置は変えず、最終更新者は各カードのタグに表示します。</span>
+          <span><b>初回作成者を基準に、上を「たかマスター制作」、下を「チーム制作・履歴不明」に分けています。</b><br>その後に別の人が更新した場合も配置は変えず、最終更新者は各カードのタグに表示します。</span>
         </div>
         <p class="filter-status" aria-live="polite"></p>
 
@@ -2152,6 +2255,20 @@
       const services = [...list.querySelectorAll('.service-entry')];
       const filterBar = list.querySelector('.filter-bar');
       const filterStatus = list.querySelector('.filter-status');
+      const latestUpdates = document.createElement('div');
+      latestUpdates.className = 'latest-updates';
+      latestUpdates.setAttribute('aria-labelledby', 'latest-updates-title');
+      latestUpdates.innerHTML = `
+        <div class="latest-updates-head">
+          <div>
+            <span class="latest-updates-kicker">LATEST UPDATES</span>
+            <h2 class="latest-updates-title" id="latest-updates-title">最新の更新 5件</h2>
+          </div>
+          <span>最終更新順</span>
+        </div>
+        <ol class="latest-updates-list"></ol>`;
+      filterStatus.insertAdjacentElement('afterend', latestUpdates);
+
       const serviceColumns = document.createElement('div');
       serviceColumns.className = 'service-columns';
       serviceColumns.innerHTML = `
@@ -2179,7 +2296,7 @@
           <div class="service-lane-body"></div>
           <p class="service-lane-empty" hidden>このカテゴリのページはありません。</p>
         </div>`;
-      filterStatus.insertAdjacentElement('afterend', serviceColumns);
+      latestUpdates.insertAdjacentElement('afterend', serviceColumns);
 
       const lanes = {
         taka: serviceColumns.querySelector('[data-owner="taka"]'),
@@ -2209,9 +2326,38 @@
         thoughtPrompt.textContent = thoughtPrompts[thoughtPromptIndex];
       });
 
-      services
-        .sort((a, b) => new Date(b.dataset.updated) - new Date(a.dataset.updated))
-        .forEach((service, index) => {
+      services.sort((a, b) => new Date(b.dataset.updated) - new Date(a.dataset.updated));
+
+      const latestUpdatesList = latestUpdates.querySelector('.latest-updates-list');
+      services.slice(0, 5).forEach((service) => {
+        const cardLink = service.querySelector('.service');
+        const item = document.createElement('li');
+        const link = document.createElement('a');
+        const date = document.createElement('time');
+        const copy = document.createElement('span');
+        const title = document.createElement('strong');
+        const change = document.createElement('span');
+        const arrow = document.createElement('span');
+
+        link.className = 'latest-update-link';
+        link.href = cardLink.getAttribute('href');
+        date.className = 'latest-update-date';
+        date.dateTime = service.dataset.updated;
+        date.textContent = service.dataset.updated.slice(0, 10).replaceAll('-', '.');
+        copy.className = 'latest-update-copy';
+        title.textContent = service.querySelector('h2').textContent.replace(/\s+/g, ' ').trim();
+        change.textContent = service.querySelector('.change-note b').textContent.trim();
+        arrow.className = 'latest-update-arrow';
+        arrow.setAttribute('aria-hidden', 'true');
+        arrow.textContent = '↗';
+
+        copy.append(title, change);
+        link.append(date, copy, arrow);
+        item.appendChild(link);
+        latestUpdatesList.appendChild(item);
+      });
+
+      services.forEach((service, index) => {
           const card = service.querySelector('.service');
           const publishedAt = new Date(service.dataset.published).getTime();
           const updatedAt = new Date(service.dataset.updated).getTime();
@@ -2233,7 +2379,7 @@
 
           const owner = service.dataset.takaCreated === 'true' ? 'taka' : 'team';
           lanes[owner].querySelector('.service-lane-body').appendChild(service);
-        });
+      });
 
       const categoriesInUse = new Set(services.map((service) => service.querySelector('.service').dataset.category));
       const visibleCategories = Object.keys(categoryLabels).filter((category) => categoriesInUse.has(category));
