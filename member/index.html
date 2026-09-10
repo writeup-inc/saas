@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="ライトアップの大切な販売パートナーへ、現場の動きと営業に使える知見を届ける実践メディアです。">
+  <meta name="theme-color" content="#b91c2b">
+  <link rel="canonical" href="https://writeup-inc.github.io/saas/member/">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="LIGHT UP PARTNER BRIEFING">
+  <meta property="og:title" content="LIGHT UP PARTNER BRIEFING">
+  <meta property="og:description" content="現場の動きを、明日の提案に。販売パートナー向け実践メディア。">
+  <meta property="og:url" content="https://writeup-inc.github.io/saas/member/">
+  <meta property="og:image" content="https://writeup-inc.github.io/saas/member/og-card.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>LIGHT UP PARTNER BRIEFING｜現場の動きを、明日の提案に。</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f4f0e8;
+      --paper-deep: #e9e2d6;
+      --white: #fffdf8;
+      --ink: #161616;
+      --muted: #6b6862;
+      --line: #cfc7ba;
+      --red: #b91c2b;
+      --red-dark: #8d1220;
+      --gold: #d6a742;
+      --green: #174f43;
+      --shadow: 0 24px 70px rgba(48, 36, 24, .12);
+      --radius: 22px;
+      --container: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 90% 5%, rgba(214, 167, 66, .13), transparent 23rem),
+        linear-gradient(180deg, var(--paper) 0%, #f8f5ef 48%, var(--paper) 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    button { font: inherit; }
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+
+    .container {
+      width: min(var(--container), calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(22, 22, 22, .12);
+      background: rgba(244, 240, 232, .9);
+      backdrop-filter: blur(18px);
+    }
+    .header-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 900;
+      letter-spacing: -.03em;
+    }
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: var(--red);
+      border-radius: 50% 50% 50% 12%;
+      transform: rotate(-8deg);
+      font-size: 14px;
+      box-shadow: 0 7px 16px rgba(185, 28, 43, .22);
+    }
+    .brand-mark span { transform: rotate(8deg); }
+    .brand small {
+      display: block;
+      margin-top: -4px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .13em;
+    }
+    .header-nav { display: flex; align-items: center; gap: 8px; }
+    .header-nav a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      color: #3b3935;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .header-nav a:hover { background: rgba(255, 255, 255, .72); }
+
+    .hero {
+      position: relative;
+      overflow: clip;
+      padding: 82px 0 70px;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero::before {
+      content: "BRIEFING";
+      position: absolute;
+      right: -2vw;
+      bottom: -7.5rem;
+      color: rgba(22, 22, 22, .035);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(8rem, 20vw, 21rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -.07em;
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(300px, .7fr);
+      align-items: end;
+      gap: clamp(42px, 7vw, 100px);
+    }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 24px;
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 38px; height: 2px; background: currentColor; }
+    h1 {
+      max-width: 850px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", "Yu Mincho", serif;
+      font-size: clamp(3.2rem, 7.2vw, 7.1rem);
+      font-weight: 500;
+      line-height: .98;
+      letter-spacing: -.065em;
+    }
+    h1 .jp {
+      display: block;
+      margin-top: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      font-size: clamp(1.9rem, 4vw, 4rem);
+      font-weight: 900;
+      line-height: 1.18;
+      letter-spacing: -.055em;
+    }
+    h1 em { color: var(--red); font-style: normal; }
+    .hero-copy {
+      max-width: 700px;
+      margin: 30px 0 0;
+      color: #4f4c46;
+      font-size: clamp(1rem, 1.45vw, 1.15rem);
+      font-weight: 600;
+    }
+    .hero-side {
+      padding: 30px;
+      color: var(--white);
+      background: var(--ink);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transform: rotate(1.2deg);
+    }
+    .hero-side-top { display: flex; justify-content: space-between; gap: 16px; align-items: center; }
+    .issue { color: #d8d1c5; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: .13em; }
+    .status-dot { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 800; }
+    .status-dot::before { content: ""; width: 8px; height: 8px; background: #75d5a7; border-radius: 50%; box-shadow: 0 0 0 5px rgba(117, 213, 167, .13); }
+    .hero-side h2 { margin: 54px 0 12px; font-family: Georgia, "Times New Roman", serif; font-size: 2.3rem; line-height: 1; }
+    .hero-side p { margin: 0; color: #d8d1c5; font-size: 14px; }
+    .public-note {
+      margin-top: 30px;
+      padding-top: 18px;
+      border-top: 1px solid #444;
+      color: #f2d481;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .06em;
+    }
+
+    .quick-value {
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 253, 248, .6);
+    }
+    .value-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .value-item { padding: 28px clamp(18px, 3vw, 38px); border-left: 1px solid var(--line); }
+    .value-item:last-child { border-right: 1px solid var(--line); }
+    .value-label { display: block; color: var(--red); font-size: 10px; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; }
+    .value-item strong { display: block; margin-top: 5px; font-size: clamp(1rem, 1.7vw, 1.25rem); line-height: 1.45; }
+
+    main { padding: 80px 0 110px; }
+    #latest, #formats, #policy { scroll-margin-top: 92px; }
+    .section-head { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 32px; margin-bottom: 28px; }
+    .section-kicker { margin: 0 0 8px; color: var(--red); font: 800 11px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .14em; text-transform: uppercase; }
+    .section-head h2 { margin: 0; font-family: Georgia, "Times New Roman", "Yu Mincho", serif; font-size: clamp(2rem, 4vw, 3.7rem); font-weight: 500; line-height: 1; letter-spacing: -.045em; }
+    .section-head p { max-width: 420px; margin: 0; color: var(--muted); font-size: 13px; }
+
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 26px;
+    }
+    .filter-button {
+      min-height: 44px;
+      padding: 9px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: #4a4741;
+      background: rgba(255, 253, 248, .72);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 900;
+    }
+    .filter-button:hover { border-color: #999085; }
+    .filter-button[aria-pressed="true"] { color: var(--white); border-color: var(--ink); background: var(--ink); }
+
+    .article-list { display: grid; gap: 16px; }
+    .article-card {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr) 58px;
+      min-height: 220px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 253, 248, .83);
+      box-shadow: 0 10px 35px rgba(48, 36, 24, .06);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .article-card:hover { transform: translateY(-3px); border-color: #aaa095; box-shadow: var(--shadow); }
+    .card-number {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px;
+      color: var(--white);
+      background: var(--red);
+    }
+    .card-number strong { font-family: Georgia, "Times New Roman", serif; font-size: 3.4rem; line-height: .9; font-weight: 500; }
+    .card-number span { writing-mode: vertical-rl; color: #f7d9dc; font-size: 9px; font-weight: 900; letter-spacing: .16em; }
+    .card-body { padding: 28px 34px; }
+    .card-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 9px 14px; margin-bottom: 13px; color: var(--muted); font-size: 11px; font-weight: 800; }
+    .card-tag { padding: 4px 9px; color: var(--red-dark); border: 1px solid #e4b9bf; border-radius: 999px; background: #fff4f5; }
+    .card-body h3 { margin: 0; font-size: clamp(1.45rem, 2.5vw, 2.15rem); line-height: 1.35; letter-spacing: -.04em; }
+    .card-body h3 a { text-decoration: none; }
+    .card-body h3 a::after { content: ""; position: absolute; }
+    .card-summary { max-width: 800px; margin: 12px 0 0; color: #55514b; font-size: 14px; }
+    .card-use { display: inline-flex; gap: 7px; margin-top: 16px; color: var(--green); font-size: 12px; font-weight: 900; }
+    .card-use::before { content: "↳"; }
+    .card-actions { display: flex; flex-direction: column; border-left: 1px solid var(--line); }
+    .card-arrow, .copy-button {
+      flex: 1;
+      display: grid;
+      place-items: center;
+      min-width: 58px;
+      min-height: 58px;
+      border: 0;
+      color: var(--ink);
+      background: transparent;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 22px;
+    }
+    .card-arrow { border-bottom: 1px solid var(--line); }
+    .card-arrow:hover, .copy-button:hover { color: var(--white); background: var(--red); }
+    .copy-button { font-size: 16px; }
+
+    .empty-state {
+      display: none;
+      padding: 46px 24px;
+      border: 1px dashed #b7aea2;
+      border-radius: var(--radius);
+      color: var(--muted);
+      text-align: center;
+      background: rgba(255, 253, 248, .5);
+    }
+    .empty-state[aria-hidden="false"] { display: block; }
+
+    .format-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 82px; }
+    .format-card { min-height: 280px; padding: 28px; border-top: 4px solid var(--ink); background: var(--white); box-shadow: 0 14px 42px rgba(48, 36, 24, .07); }
+    .format-card:nth-child(2) { border-color: var(--red); }
+    .format-card:nth-child(3) { border-color: var(--gold); }
+    .format-number { color: var(--muted); font: 800 10px/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .13em; }
+    .format-card h3 { margin: 52px 0 10px; font-size: 1.45rem; letter-spacing: -.03em; }
+    .format-card p { margin: 0; color: var(--muted); font-size: 13px; }
+    .format-card strong { display: block; margin-top: 20px; color: var(--green); font-size: 12px; }
+
+    .policy {
+      margin-top: 82px;
+      display: grid;
+      grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr);
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--ink);
+      box-shadow: var(--shadow);
+    }
+    .policy-title { padding: 42px; color: var(--white); border-right: 1px solid #414141; }
+    .policy-title span { color: #f2d481; font: 800 10px/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .15em; }
+    .policy-title h2 { margin: 18px 0 14px; font-size: clamp(1.8rem, 3vw, 2.8rem); line-height: 1.25; letter-spacing: -.045em; }
+    .policy-title p { margin: 0; color: #c5beb3; font-size: 13px; }
+    .policy-list { display: grid; grid-template-columns: 1fr 1fr; margin: 0; padding: 34px 42px; color: var(--white); list-style: none; }
+    .policy-list li { position: relative; padding: 14px 14px 14px 28px; color: #ded8ce; font-size: 13px; }
+    .policy-list li::before { content: "×"; position: absolute; left: 0; color: #f28a96; font-weight: 900; }
+
+    .site-footer { padding: 36px 0 50px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 24px; align-items: center; }
+    .footer-inner strong { color: var(--ink); }
+
+    .toast {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 30;
+      padding: 13px 18px;
+      color: var(--white);
+      background: var(--green);
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+      font-size: 12px;
+      font-weight: 900;
+      transform: translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .toast.is-visible { transform: translateY(0); opacity: 1; }
+
+    @media (max-width: 900px) {
+      .hero { padding-top: 60px; }
+      .hero-grid { grid-template-columns: 1fr; align-items: start; }
+      .hero-side { max-width: 560px; transform: none; }
+      .section-head { grid-template-columns: 1fr; gap: 14px; }
+      .format-grid { grid-template-columns: 1fr; }
+      .format-card { min-height: auto; }
+      .format-card h3 { margin-top: 28px; }
+      .policy { grid-template-columns: 1fr; }
+      .policy-title { border-right: 0; border-bottom: 1px solid #414141; }
+    }
+
+    @media (max-width: 680px) {
+      .container { width: min(var(--container), calc(100% - 30px)); }
+      .header-inner { min-height: 64px; }
+      .header-nav a:not(:last-child) { display: none; }
+      .hero { padding: 50px 0 44px; }
+      h1 { font-size: clamp(3.05rem, 16vw, 4.8rem); }
+      h1 .jp { margin-top: 16px; font-size: clamp(1.75rem, 9vw, 2.55rem); }
+      .hero-copy { margin-top: 22px; font-size: 14px; }
+      .hero-side { padding: 24px; }
+      .hero-side h2 { margin-top: 38px; }
+      .value-grid { grid-template-columns: 1fr; }
+      .value-item { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      .value-item:last-child { border-bottom: 0; }
+      main { padding: 60px 0 80px; }
+      .article-card { grid-template-columns: 58px minmax(0, 1fr); }
+      .card-number { padding: 16px 12px; }
+      .card-number strong { font-size: 2rem; }
+      .card-body { padding: 22px 20px; }
+      .card-actions { grid-column: 1 / -1; flex-direction: row; border-top: 1px solid var(--line); border-left: 0; }
+      .card-arrow { border-right: 1px solid var(--line); border-bottom: 0; }
+      .policy-title, .policy-list { padding: 28px 24px; }
+      .policy-list { grid-template-columns: 1fr; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="./" aria-label="LIGHT UP PARTNER BRIEFING トップへ">
+        <span class="brand-mark" aria-hidden="true"><span>LU</span></span>
+        <span>PARTNER BRIEFING<small>BY LIGHT UP</small></span>
+      </a>
+      <nav class="header-nav" aria-label="ページ内ナビゲーション">
+        <a href="#latest">新着</a>
+        <a href="#formats">記事の種類</a>
+        <a href="#policy">掲載方針</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" aria-labelledby="page-title">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Light Up Partner Media</p>
+        <h1 id="page-title">FIELD NOTES<span class="jp">現場の動きを、<br><em>明日の提案</em>に。</span></h1>
+        <p class="hero-copy">外部との打ち合わせや新サービス企画から、販売パートナーの皆さまが次の商談で使える知見だけを、短く、具体的に届けます。</p>
+      </div>
+      <aside class="hero-side" aria-label="創刊情報">
+        <div class="hero-side-top">
+          <span class="issue">ISSUE 000 / 2026.09</span>
+          <span class="status-dot">PREVIEW OPEN</span>
+        </div>
+        <h2>Partner first.</h2>
+        <p>「何があったか」だけではなく、「どう売るか」「何に気をつけるか」まで編集して共有します。</p>
+        <div class="public-note">PUBLIC-SAFE EDITION<br>外部公開されても問題ない情報だけを掲載</div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="quick-value" aria-label="このメディアの特徴">
+    <div class="container value-grid">
+      <div class="value-item"><span class="value-label">Read</span><strong>3分で要点をつかむ</strong></div>
+      <div class="value-item"><span class="value-label">Use</span><strong>次の商談で使える形に</strong></div>
+      <div class="value-item"><span class="value-label">Guard</span><strong>言い過ぎ・伝え間違いを防ぐ</strong></div>
+    </div>
+  </section>
+
+  <main>
+    <div class="container">
+      <section id="latest" aria-labelledby="latest-title">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Latest briefings</p>
+            <h2 id="latest-title">新着ブリーフィング</h2>
+          </div>
+          <p>記事は公開前に内容と機密性を確認し、承認済みのものだけを新しい順に掲載します。</p>
+        </div>
+
+        <div class="filter-bar" aria-label="記事の絞り込み">
+          <button class="filter-button" type="button" data-filter="all" aria-pressed="true">すべて <span>1</span></button>
+          <button class="filter-button" type="button" data-filter="weekly" aria-pressed="false">今週の動き <span>0</span></button>
+          <button class="filter-button" type="button" data-filter="playbook" aria-pressed="false">売り方の型 <span>0</span></button>
+          <button class="filter-button" type="button" data-filter="caution" aria-pressed="false">注意・NG <span>0</span></button>
+        </div>
+
+        <div class="article-list" aria-live="polite">
+          <article class="article-card" data-category="guide" data-published="2026-09-10" data-updated="2026-09-10">
+            <div class="card-number"><strong>00</strong><span>OPENING NOTE</span></div>
+            <div class="card-body">
+              <div class="card-meta"><span class="card-tag">はじめに</span><time datetime="2026-09-10">2026.09.10</time><span>3 MIN READ</span></div>
+              <h3><a href="./about/">PARTNER BRIEFING、始めます。</a></h3>
+              <p class="card-summary">打ち合わせの生ログではなく、パートナーの皆さまが営業で使える知見へ。届ける内容と、安心して読めるための掲載方針をまとめました。</p>
+              <span class="card-use">まず、このメディアの使い方を知る</span>
+            </div>
+            <div class="card-actions">
+              <a class="card-arrow" href="./about/" aria-label="創刊のお知らせを読む">↗</a>
+              <button class="copy-button" type="button" data-copy-url="https://writeup-inc.github.io/saas/member/about/" aria-label="創刊のお知らせのURLをコピー">⌁</button>
+            </div>
+          </article>
+          <p class="empty-state" aria-hidden="true">この種類の記事は、現在編集中です。公開前の確認が終わり次第、ここに追加します。</p>
+        </div>
+      </section>
+
+      <section id="formats" class="format-grid" aria-label="今後掲載する記事の種類">
+        <article class="format-card"><span class="format-number">FORMAT 01</span><h3>今週の動き</h3><p>外部打ち合わせや新サービス企画から、いま押さえるべき変化と、その意味を短く届けます。</p><strong>→ 状況をつかむ</strong></article>
+        <article class="format-card"><span class="format-number">FORMAT 02</span><h3>売り方の型</h3><p>顧客課題、刺さった切り口、提案の順番、再現できる条件を、営業で使える形にします。</p><strong>→ 次の商談で試す</strong></article>
+        <article class="format-card"><span class="format-number">FORMAT 03</span><h3>注意・NGメモ</h3><p>よくある誤解、まだ言い切れないこと、提案時に確認すべき条件を明確にします。</p><strong>→ 伝え間違いを防ぐ</strong></article>
+      </section>
+
+      <section id="policy" class="policy" aria-labelledby="policy-title">
+        <div class="policy-title">
+          <span>EDITORIAL POLICY</span>
+          <h2 id="policy-title">生ログは載せません。</h2>
+          <p>このページはURLを知っていれば誰でも閲覧できる公開領域です。営業に役立ち、外部公開されても問題ない情報だけを編集して掲載します。</p>
+        </div>
+        <ul class="policy-list">
+          <li>打ち合わせの文字起こし・生ログ</li>
+          <li>相手企業名・担当者名・個人情報</li>
+          <li>未公開サービスの確定前情報</li>
+          <li>価格・契約・個別案件の条件</li>
+          <li>許諾のない直接引用・画像</li>
+          <li>根拠確認前の効果・成果表現</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span><strong>LIGHT UP PARTNER BRIEFING</strong><br>大切な販売パートナーと、現場の知恵を共有するメディア。</span>
+      <span>© 2026 LIGHT UP</span>
+    </div>
+  </footer>
+
+  <div class="toast" role="status" aria-live="polite">URLをコピーしました</div>
+
+  <script>
+    const cards = [...document.querySelectorAll('.article-card')];
+    const emptyState = document.querySelector('.empty-state');
+    const filterButtons = [...document.querySelectorAll('.filter-button')];
+    const toast = document.querySelector('.toast');
+    let toastTimer;
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+        filterButtons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+        let visible = 0;
+        cards.forEach((card) => {
+          const show = filter === 'all' || card.dataset.category === filter;
+          card.hidden = !show;
+          if (show) visible += 1;
+        });
+        emptyState.setAttribute('aria-hidden', String(visible !== 0));
+      });
+    });
+
+    document.querySelectorAll('[data-copy-url]').forEach((button) => {
+      button.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(button.dataset.copyUrl);
+          toast.textContent = 'URLをコピーしました';
+        } catch {
+          toast.textContent = 'コピーできませんでした';
+        }
+        toast.classList.add('is-visible');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 1800);
+      });
+    });
+  </script>
+</body>
+</html>
