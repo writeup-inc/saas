@@ -124,6 +124,13 @@ if (cards.length === 0) error("サービスカードが1件も見つかりませ
 
 unique(cards.map(({ id }) => id), "カードID");
 
+for (const [cardId, override] of Object.entries(config.attribution.creatorOverrides ?? {})) {
+  if (!cards.some(({ id }) => id === cardId)) error(`[${cardId}] creatorOverridesに対応するカードがありません`);
+  if (!override.label?.trim()) error(`[${cardId}] creatorOverrides.labelがありません`);
+  if (typeof override.takaCreated !== "boolean") error(`[${cardId}] creatorOverrides.takaCreatedはbooleanではありません`);
+  if (!override.basis?.trim()) error(`[${cardId}] creatorOverrides.basisがありません`);
+}
+
 const hrefs = [];
 const copyAnchors = [];
 
@@ -191,12 +198,13 @@ cards.forEach((card, index) => {
   if (!creationCommit) {
     error(`${prefix} 初回作成コミットを取得できません`);
   } else {
+    const creatorOverride = config.attribution.creatorOverrides?.[card.id];
     const creationUnknown = config.attribution.unknownCreationCommits.includes(creationCommit);
     const creation = commitPeople(creationCommit);
-    const expectedCreator = creationUnknown ? "履歴不明" : creation.label;
-    const expectedTakaCreated = String(!creationUnknown && creation.primaryEmail === config.attribution.takaAuthorEmail);
-    if (creatorTag !== expectedCreator) error(`${prefix} 初回作成者タグがGit履歴と一致しません。期待値: ${expectedCreator}`);
-    if (card.takaCreated !== expectedTakaCreated) error(`${prefix} data-taka-createdがGit履歴と一致しません。期待値: ${expectedTakaCreated}`);
+    const expectedCreator = creatorOverride?.label ?? (creationUnknown ? "履歴不明" : creation.label);
+    const expectedTakaCreated = String(creatorOverride?.takaCreated ?? (!creationUnknown && creation.primaryEmail === config.attribution.takaAuthorEmail));
+    if (creatorTag !== expectedCreator) error(`${prefix} 初回作成者タグが作成者判定と一致しません。期待値: ${expectedCreator}`);
+    if (card.takaCreated !== expectedTakaCreated) error(`${prefix} data-taka-createdが作成者判定と一致しません。期待値: ${expectedTakaCreated}`);
   }
   if (!latestCommit) {
     error(`${prefix} 最終更新コミットを取得できません`);
