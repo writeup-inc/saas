@@ -225,6 +225,15 @@ body{
 .case-article-intro{margin:28px 0 38px;padding:24px 0;border-top:1px solid var(--ink);
   border-bottom:1px solid var(--ink);font-size:15px;line-height:2}
 .case-article-intro p + p{margin-top:14px}
+.case-profile{display:grid;grid-template-columns:180px 1fr;margin:0 0 38px;border:1px solid var(--ink);background:var(--g04)}
+.case-profile-photo{min-height:260px;overflow:hidden;background:var(--g20);border-right:1px solid var(--ink)}
+.case-profile-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:68% center;
+  filter:grayscale(.18) contrast(1.03)}
+.case-profile-copy{padding:24px}
+.case-profile-role{font-family:var(--en);font-size:10px;font-weight:900;letter-spacing:.16em;color:var(--future)}
+.case-profile-name{margin-top:5px;font-size:22px;font-weight:900;line-height:1.45}
+.case-profile-bio{margin-top:16px;font-size:13px;line-height:1.9}
+.case-profile-bio + .case-profile-bio{margin-top:10px}
 .case-interview{margin:0}
 .case-interview dt{margin-top:34px;font-size:16px;font-weight:900;line-height:1.75}
 .case-interview dt:first-child{margin-top:0}
@@ -442,6 +451,10 @@ body.modal-open{overflow:hidden}
   .case-node{min-height:76px}
   .case-teaser-foot{align-items:flex-end;padding:0 18px 18px}
   .case-article{padding:30px 20px 44px}
+  .case-profile{grid-template-columns:1fr}
+  .case-profile-photo{min-height:0;aspect-ratio:1;border-right:0;border-bottom:1px solid var(--ink)}
+  .case-profile-photo img{object-position:center}
+  .case-profile-copy{padding:20px}
 }
 @media(prefers-reduced-motion:reduce){
   .hero-guest img{transition:none}
@@ -624,6 +637,18 @@ body.modal-open{overflow:hidden}
         <p>今回、この事例について弊社の若手社員が村田に詳しく聞いてみました。</p>
       </div>
 
+      <aside class="case-profile" aria-label="村田峻平のプロフィール">
+        <div class="case-profile-photo">
+          <img src="assets/murata-shumpei.jpg" alt="株式会社ライトアップ AIセールスの村田峻平" loading="lazy">
+        </div>
+        <div class="case-profile-copy">
+          <p class="case-profile-role">AI SALES ／ INTERVIEWEE</p>
+          <p class="case-profile-name">村田 峻平</p>
+          <p class="case-profile-bio">もともとは保険の営業マン。お客様に寄り添うほど、深夜や休日の対応が前提になり、家族との関係を大切にし続けることの難しさを感じて、ライトアップへ転職しました。</p>
+          <p class="case-profile-bio">ここで初めてAIに出会い、「深夜や休日は自分のAIが顧客対応すれば、お客様も家族も自分も幸せになれる」と実感。それから猛烈にAIが好きになり、いまはAIを業務や売上の変化につなげる提案に取り組んでいます。</p>
+        </div>
+      </aside>
+
       <dl class="case-interview">
         <dt>若手社員：そもそも、どんなお客様だったんですか？</dt>
         <dd>
@@ -668,7 +693,7 @@ body.modal-open{overflow:hidden}
       <p class="case-article-note">だからこそ私たちは、<strong>「AIを売る」のではなく、「AIを使って、人の時間を生み出し、売上を増やすところまで一緒に考える」</strong>ことを大切にしていきたいと思っています。</p>
       <p class="case-article-note">そして今回、もう一つ嬉しかったことがあります。この成功事例を聞き出してくれたのは、弊社の若手社員でした。</p>
       <p class="case-article-note">「なぜ紹介してもらえたんですか？」「お客様は何に困っていたんですか？」「なぜ契約につながったんですか？」一つひとつ質問しながら、成功の理由を掘り下げてくれました。</p>
-      <p class="case-article-end">村田もすごい。そして、それをきちんと言葉にしてくれた若手社員もすごい。<br>こうした小さな成功を会社全体で共有しながら、これからもお客様の成果につながるAI活用を増やしていきます。</p>
+      <p class="case-article-end">村田もすごい。そして、それをきちんと言葉にしてくれた若手社員もすごい。<br>こうした小さな成功を会社全体で共有しながら、これからもお客様の成果につながるAI活用を増やしていきます。<br><br>本事例の詳しい内容は、また改めてお伝えします。</p>
     </article>
   </div>
 </dialog>
