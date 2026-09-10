@@ -193,8 +193,13 @@ body{
 .case-teaser-label{font-family:var(--en);font-size:10px;font-weight:900;letter-spacing:.18em;color:var(--future)}
 .case-teaser:hover .case-teaser-label{color:#E8B9A8}
 .case-teaser-head strong{font-size:13px;font-weight:900;letter-spacing:.02em}
+.case-teaser-main{display:grid;grid-template-columns:74px 1fr;gap:14px;align-items:stretch;padding:22px 20px 18px}
+.case-teaser-person{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:7px}
+.case-teaser-person img{display:block;width:74px;height:74px;object-fit:cover;object-position:68% center;
+  border:1px solid currentColor;filter:grayscale(1) contrast(1.08)}
+.case-teaser-person span{font-size:9px;font-weight:900;line-height:1.4;text-align:center}
 .case-relation{display:grid;grid-template-columns:1fr 32px 1fr 32px 1fr;align-items:stretch;
-  padding:22px 20px 18px}
+  padding:0}
 .case-node{display:flex;min-height:92px;flex-direction:column;justify-content:center;padding:14px;
   border:1px solid currentColor;text-align:center}
 .case-node b{font-family:var(--en);font-size:28px;font-weight:900;line-height:1;letter-spacing:-.04em}
@@ -222,12 +227,6 @@ body{
 .case-article-kicker{font-size:12px;font-weight:900;letter-spacing:.1em;color:var(--future);margin-bottom:14px}
 .case-article h2{font-size:clamp(25px,5vw,43px);font-weight:900;line-height:1.28;letter-spacing:-.02em}
 .case-article-lead{margin-top:18px;font-size:clamp(16px,2.4vw,20px);font-weight:900;line-height:1.7}
-.case-article-byline{display:flex;align-items:center;gap:14px;margin-top:24px}
-.case-article-byline img{display:block;width:62px;height:62px;flex:0 0 auto;object-fit:cover;object-position:68% center;
-  border:1px solid var(--ink);filter:grayscale(1) contrast(1.08)}
-.case-article-byline b{display:block;font-size:14px;font-weight:900;line-height:1.4}
-.case-article-byline span{display:block;margin-top:4px;font-family:var(--en);font-size:9px;
-  font-weight:900;letter-spacing:.12em;color:var(--g60)}
 .case-article-intro{margin:28px 0 38px;padding:24px 0;border-top:1px solid var(--ink);
   border-bottom:1px solid var(--ink);font-size:15px;line-height:2}
 .case-article-intro p + p{margin-top:14px}
@@ -452,7 +451,10 @@ body.modal-open{overflow:hidden}
   .schedule-arrow{grid-column:3;grid-row:1 / span 2}
   .case-teaser-head{display:block}
   .case-teaser-head strong{display:block;margin-top:5px}
-  .case-relation{grid-template-columns:1fr;padding:18px}
+  .case-teaser-main{grid-template-columns:56px 1fr;gap:12px;padding:18px}
+  .case-teaser-person img{width:56px;height:56px}
+  .case-teaser-person span{font-size:8px}
+  .case-relation{grid-template-columns:1fr;padding:0}
   .case-arrow{min-height:28px;transform:rotate(90deg)}
   .case-node{min-height:76px}
   .case-teaser-foot{align-items:flex-end;padding:0 18px 18px}
@@ -461,7 +463,6 @@ body.modal-open{overflow:hidden}
   .case-profile-photo{min-height:0;aspect-ratio:1;border-right:0;border-bottom:1px solid var(--ink)}
   .case-profile-photo img{object-position:center}
   .case-profile-copy{padding:20px}
-  .case-article-byline img{width:56px;height:56px}
 }
 @media(prefers-reduced-motion:reduce){
   .hero-guest img{transition:none}
@@ -635,11 +636,6 @@ body.modal-open{overflow:hidden}
       <p class="case-article-kicker">今月の営業成功事例</p>
       <h2 id="sales-case-title">「本当に良いと思ったから」</h2>
       <p class="case-article-lead">1人のお客様から、3社のご紹介につながりました</p>
-      <div class="case-article-byline">
-        <img src="assets/murata-shumpei.jpg" alt="" width="512" height="512">
-        <div><b>村田 峻平</b><span>LIGHT UP ／ AI SALES</span></div>
-      </div>
-
       <div class="case-article-intro">
         <p>今月、私たちにとってとても嬉しい出来事がありました。</p>
         <p>弊社の村田が担当したお客様から、なんと<strong>3社のお客様をご紹介いただき、そのうち2社で実際のご契約につながりました。</strong></p>
@@ -733,12 +729,18 @@ body.modal-open{overflow:hidden}
                 <span class="case-teaser-label">THIS MONTH'S SUCCESS STORY</span>
                 <strong>今月の営業成功事例</strong>
               </span>
-              <span class="case-relation" aria-label="1人のお客様から3社の紹介が生まれ、2社の契約につながりました">
-                <span class="case-node"><b>1</b><span>人のお客様</span></span>
-                <span class="case-arrow" aria-hidden="true">→</span>
-                <span class="case-node"><b>3</b><span>社をご紹介</span></span>
-                <span class="case-arrow" aria-hidden="true">→</span>
-                <span class="case-node is-result"><b>2</b><span>社でご契約</span></span>
+              <span class="case-teaser-main">
+                <span class="case-teaser-person">
+                  <img src="assets/murata-shumpei.jpg" alt="" width="512" height="512" loading="lazy">
+                  <span>村田 峻平</span>
+                </span>
+                <span class="case-relation" aria-label="1人のお客様から3社の紹介が生まれ、2社の契約につながりました">
+                  <span class="case-node"><b>1</b><span>人のお客様</span></span>
+                  <span class="case-arrow" aria-hidden="true">→</span>
+                  <span class="case-node"><b>3</b><span>社をご紹介</span></span>
+                  <span class="case-arrow" aria-hidden="true">→</span>
+                  <span class="case-node is-result"><b>2</b><span>社でご契約</span></span>
+                </span>
               </span>
               <span class="case-teaser-foot">
                 <span class="case-teaser-quote">「本当に良いと思ったから」</span>
