@@ -110,6 +110,124 @@ strong { font-weight: 850; }
 .footer-inner { display: flex; justify-content: space-between; gap: 24px; align-items: center; }
 .footer-inner strong { color: var(--ink); }
 
+/* Long-form, note-like article treatment. */
+.note-article main { background: rgba(255, 253, 248, .78); }
+.note-article .hero { padding-bottom: 54px; }
+.note-article .reading { --reading: 720px; }
+.note-article h1 { font-size: clamp(2.55rem, 5.25vw, 5rem); }
+.note-byline {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 30px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.note-avatar {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  color: var(--white);
+  background: var(--red);
+  border-radius: 50%;
+  font-weight: 900;
+}
+.note-byline strong { display: block; color: var(--ink); font-size: 13px; }
+.note-lead {
+  margin: 0 0 58px;
+  font-size: 1.08rem;
+  line-height: 2;
+}
+.note-lead p { margin-bottom: 1.45em; }
+.toc {
+  margin: 0 0 62px;
+  padding: 26px 28px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--paper);
+}
+.toc strong { display: block; margin-bottom: 10px; font-size: 12px; }
+.toc ol { margin: 0; padding-left: 1.35em; }
+.toc li { margin: 5px 0; color: var(--muted); font-size: 13px; }
+.toc a { text-decoration-color: transparent; text-underline-offset: 4px; }
+.toc a:hover { text-decoration-color: currentColor; }
+.note-prose { font-size: 1.04rem; }
+.note-prose p { margin-bottom: 1.45em; }
+.note-prose h2 { margin-top: 0; }
+.note-prose h3 { margin-top: 38px; font-size: 1.27rem; }
+.note-quote {
+  margin: 30px 0;
+  padding: 4px 0 4px 24px;
+  border-left: 4px solid var(--red);
+  color: #34312d;
+  font-family: Georgia, "Times New Roman", "Yu Mincho", serif;
+  font-size: clamp(1.15rem, 2.3vw, 1.45rem);
+  font-weight: 650;
+  line-height: 1.85;
+}
+.note-caption { margin: -15px 0 28px; color: var(--muted); font-size: 11px; }
+.note-flow {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin: 32px 0;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--paper);
+}
+.note-flow span {
+  position: relative;
+  min-height: 74px;
+  display: grid;
+  place-items: center;
+  padding: 10px;
+  border-radius: 11px;
+  text-align: center;
+  background: var(--white);
+  font-size: 12px;
+  font-weight: 850;
+}
+.note-flow span:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  right: -10px;
+  z-index: 2;
+  color: var(--red);
+}
+.question-block { margin: 30px 0; }
+.question {
+  margin: 0 0 12px;
+  padding: 18px 20px;
+  color: var(--white);
+  background: var(--green);
+  border-radius: 13px;
+  font-size: 1.02rem;
+  font-weight: 850;
+}
+.question-block p:last-child { margin-bottom: 0; }
+.dialogue {
+  margin: 28px 0;
+  padding: 26px 28px;
+  border-radius: 16px;
+  background: #f0ebe2;
+}
+.dialogue p { margin-bottom: 13px; }
+.dialogue p:last-child { margin-bottom: 0; }
+.dialogue b { color: var(--red-dark); }
+.note-end {
+  margin-top: 30px;
+  padding: 32px;
+  border-radius: 18px;
+  color: var(--white);
+  background: var(--ink);
+}
+.note-end p:last-child { margin-bottom: 0; }
+.note-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+.note-tags span { padding: 5px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 11px; }
+
 @media (max-width: 760px) {
   .container { width: min(var(--container), calc(100% - 30px)); }
   .header-inner { min-height: 64px; }
@@ -124,6 +242,11 @@ strong { font-weight: 850; }
   .steps li { grid-template-columns: 38px 1fr; padding: 16px; }
   .steps li::before { width: 36px; height: 36px; }
   .related { grid-template-columns: 1fr; gap: 10px; }
+  .note-article h1 { font-size: clamp(2.18rem, 10.5vw, 2.55rem); line-height: 1.12; }
+  .note-flow { grid-template-columns: 1fr; }
+  .note-flow span { min-height: 54px; }
+  .note-flow span:not(:last-child)::after { right: 50%; bottom: -16px; transform: rotate(90deg); }
+  .toc, .dialogue, .note-end { padding: 22px; }
   .footer-inner { flex-direction: column; align-items: flex-start; }
 }
 
