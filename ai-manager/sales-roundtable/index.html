@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="チャット画面のデモから、営業の経験を覚えて企画する相棒へ。AI SaaS営業3名の座談会に、タケル（AI）がこっそり潜入して2年間の変化をレポートします。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="僕が「相棒」になるまで。｜タケル（AI）潜入レポート">
+<meta property="og:description" content="AI SaaS営業3名の座談会に、タケル（AI）がこっそり潜入。チャット画面のデモから、営業の経験を覚えて企画する相棒になるまでをレポートします。">
+<meta property="og:url" content="https://writeup-inc.github.io/saas/ai-manager/sales-roundtable/">
+<link rel="canonical" href="https://writeup-inc.github.io/saas/ai-manager/sales-roundtable/">
+<title>僕が「相棒」になるまで。｜タケル（AI）潜入レポート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&amp;family=Noto+Sans+JP:wght@400;700;900&amp;display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#000;
+  --paper:#fff;
+  --g90:#1a1a1a;
+  --g70:#4d4d4d;
+  --g60:#666;
+  --g40:#999;
+  --g20:#d5d5d5;
+  --g08:#ededed;
+  --g04:#f6f6f6;
+  --future:#985038;
+  --notice:#536b82;
+  --w:1200px;
+  --read:720px;
+  --jp:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  --en:"Inter",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{background:var(--paper);color:var(--ink);font:400 17px/2 var(--jp);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+a:focus-visible{outline:3px solid var(--future);outline-offset:4px}
+.skip{position:fixed;z-index:100;top:8px;left:8px;transform:translateY(-160%);padding:9px 14px;background:var(--ink);color:var(--paper);font-size:13px;text-decoration:none}
+.skip:focus{transform:none}
+.wrap{width:100%;max-width:var(--w);margin:0 auto;padding-inline:32px}
+.en{font-family:var(--en)}
+.nowrap{white-space:nowrap}
+.hd{position:fixed;z-index:50;inset:0 0 auto;background:rgba(255,255,255,.88);border-bottom:1px solid var(--g08);backdrop-filter:blur(12px)}
+.hd .wrap{height:58px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-size:13px;font-weight:900;letter-spacing:.08em;text-decoration:none}
+.hd-meta{display:flex;align-items:center;gap:20px;color:var(--g60);font:700 11px/1 var(--en);letter-spacing:.15em}
+.hd-meta a{padding:9px 11px;border:1px solid var(--g20);text-decoration:none;transition:.2s}
+.hd-meta a:hover,.hd-meta a:focus-visible{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+.hero{padding:122px 0 92px;border-bottom:1px solid var(--ink);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.38fr) minmax(300px,.62fr);gap:74px;align-items:end}
+.hero-grid>*{min-width:0}
+.eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:32px;color:var(--g60);font:700 11px/1.4 var(--en);letter-spacing:.18em}
+.eyebrow:before{content:"";width:56px;height:2px;background:var(--ink)}
+.hero h1{max-width:830px;font-size:clamp(35px,5.55vw,76px);line-height:1.14;letter-spacing:-.045em;font-weight:900}
+.hero h1 em{display:block;margin-top:17px;color:var(--future);font-style:normal}
+.hero-lead{max-width:680px;margin-top:36px;font-size:clamp(17px,1.6vw,21px);font-weight:700;line-height:1.95}
+.hero-note{max-width:660px;margin-top:19px;color:var(--g60);font-size:13px;line-height:1.9}
+.hero-side{position:relative;padding:28px 26px 26px;border:1px solid var(--ink);box-shadow:10px 12px 0 var(--g08)}
+.hero-side:before{content:"3 SALESPEOPLE + 1 AI";display:block;margin-bottom:24px;color:var(--future);font:900 11px/1 var(--en);letter-spacing:.2em}
+.seats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.seats-wrap{position:relative}
+.seat{aspect-ratio:1;display:grid;place-items:center;background:var(--ink);color:var(--paper);font:900 clamp(24px,3.2vw,46px)/1 var(--en)}
+.seat:nth-child(2){background:var(--notice)}
+.seat:nth-child(3){background:var(--future)}
+.observer{position:absolute;right:-13px;bottom:-13px;display:grid;place-items:center;width:48px;height:48px;border:4px solid var(--paper);border-radius:50%;background:var(--ink);color:var(--paper);font:900 11px/1 var(--en);letter-spacing:.04em;box-shadow:0 0 0 1px var(--ink)}
+.hero-side h2{margin-top:24px;font-size:19px;line-height:1.65}
+.hero-side p{margin-top:13px;color:var(--g60);font-size:13px;line-height:1.85}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);margin-top:34px;border-top:2px solid var(--ink)}
+.fact{padding:18px 14px 0 0}
+.fact b{display:block;font:900 clamp(26px,3.2vw,42px)/1 var(--en)}
+.fact span{display:block;margin-top:9px;color:var(--g60);font-size:11px;font-weight:700;line-height:1.55}
+
+.summary{padding:76px 0;background:var(--g04);border-bottom:1px solid var(--ink)}
+.summary-grid{display:grid;grid-template-columns:290px 1fr;gap:70px}
+.summary h2{font-size:13px;line-height:1.5;font-weight:900;letter-spacing:.12em}
+.summary h2 small{display:block;margin-bottom:10px;color:var(--g40);font:900 11px/1 var(--en);letter-spacing:.2em}
+.summary-quote{max-width:790px;font-size:clamp(25px,3.8vw,48px);line-height:1.5;font-weight:900;letter-spacing:-.025em}
+.summary-quote mark{background:linear-gradient(transparent 64%,#e7c7bc 0);color:inherit}
+.summary-quote .soft{display:block;margin-top:17px;color:var(--g60);font-size:clamp(12px,.42em,20px);line-height:1.9;letter-spacing:0;font-weight:700}
+.evolution{grid-column:1/-1;margin-top:14px;padding-top:32px;border-top:1px solid var(--ink)}
+.evolution-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:24px}
+.evolution-head b{font-size:16px;font-weight:900}
+.evolution-head span{color:var(--g60);font:700 11px/1 var(--en);letter-spacing:.15em}
+.evolution-flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
+.evo-step{position:relative;min-width:0;padding:19px 20px 19px 0;border-top:3px solid var(--ink)}
+.evo-step:not(:last-child):after{content:"→";position:absolute;right:-14px;top:17px;color:var(--g40);font:900 15px/1 var(--en)}
+.evo-step:last-child{border-color:var(--future)}
+.evo-step small{display:block;color:var(--g40);font:900 11px/1 var(--en);letter-spacing:.12em}
+.evo-step b{display:block;margin-top:11px;font-size:15px;line-height:1.55}
+.evo-step p{margin-top:7px;color:var(--g60);font-size:12px;line-height:1.7}
+
+.toc{border-bottom:1px solid var(--g08)}
+.toc .wrap{display:grid;grid-template-columns:repeat(3,1fr);padding-block:0}
+.toc a{min-width:0;padding:24px 15px 24px 0;border-right:1px solid var(--g08);text-decoration:none;transition:.2s}
+.toc a+a{padding-left:18px}
+.toc a:last-child{border-right:0}
+.toc b{display:block;color:var(--g40);font:900 11px/1 var(--en);letter-spacing:.12em}
+.toc span{display:block;margin-top:10px;font-size:13px;font-weight:900;line-height:1.55}
+.toc a:hover,.toc a:focus-visible{color:var(--future)}
+
+.chapter{padding:118px 0;border-bottom:1px solid var(--g08)}
+.chapter-grid{display:grid;grid-template-columns:290px minmax(0,1fr);gap:70px;align-items:start}
+.chapter-side{position:sticky;top:90px}
+.chapter-num{display:block;color:var(--g08);font:900 76px/1 var(--en);letter-spacing:-.05em}
+.chapter-label{display:block;margin-top:5px;color:var(--g40);font:900 11px/1.4 var(--en);letter-spacing:.2em}
+.chapter-side h2{margin-top:20px;font-size:22px;line-height:1.6;letter-spacing:-.015em}
+.chapter-side p{margin-top:15px;color:var(--g60);font-size:13px;line-height:1.9}
+.article{max-width:800px}
+.topic+.topic{margin-top:90px;padding-top:74px;border-top:1px solid var(--ink)}
+.topic-kicker{display:flex;align-items:center;gap:12px;margin-bottom:15px;color:var(--future);font:900 11px/1 var(--en);letter-spacing:.16em}
+.topic-kicker:before{content:"";width:24px;height:2px;background:currentColor}
+.article-lead{margin-bottom:42px;font-size:clamp(26px,3.7vw,47px);line-height:1.5;font-weight:900;letter-spacing:-.025em}
+.article p{max-width:var(--read);margin-bottom:24px}
+.article p:last-child{margin-bottom:0}
+.talk{max-width:var(--read);margin:40px 0;padding:26px 28px;border-left:4px solid var(--ink);background:var(--g04)}
+.talk-label{display:flex;align-items:center;gap:10px;margin-bottom:12px;color:var(--g60);font:900 11px/1 var(--en);letter-spacing:.16em}
+.talk-label:before{content:"";width:8px;height:8px;background:var(--future)}
+.talk p{margin:0;font-size:17px;font-weight:700;line-height:2}
+.talk p+p{margin-top:14px}
+.takeru-comment{display:grid;grid-template-columns:68px 1fr;gap:22px;max-width:780px;margin:44px 0;padding:26px 28px;border:1px solid var(--ink);background:var(--paper);box-shadow:7px 8px 0 var(--g08)}
+.takeru-face{display:grid;place-items:center;width:68px;height:68px;background:var(--ink);color:var(--paper);font:900 25px/1 var(--en);letter-spacing:-.05em}
+.takeru-face span{font-size:11px;letter-spacing:.06em;align-self:end;margin-bottom:11px}
+.takeru-copy small{display:block;margin:2px 0 11px;color:var(--future);font:900 11px/1 var(--en);letter-spacing:.18em}
+.takeru-copy p{margin:0;font-size:16px;line-height:2}
+.takeru-copy p+p{margin-top:11px}
+.takeru-copy .aside{color:var(--g60);font-size:16px}
+.pull{max-width:800px;margin:54px 0;padding:48px 0;border-top:3px solid var(--ink);border-bottom:1px solid var(--ink)}
+.pull p{max-width:780px;margin:0;font-size:clamp(25px,4vw,49px);line-height:1.52;font-weight:900;letter-spacing:-.03em}
+.pull p em{font-style:normal;color:var(--future)}
+.pull cite{display:block;margin-top:20px;color:var(--g60);font:700 11px/1.5 var(--en);letter-spacing:.13em}
+.act-climax{margin:76px 0;padding:54px 48px;background:var(--ink);color:var(--paper)}
+.act-climax small{display:block;color:#d99780;font:900 11px/1 var(--en);letter-spacing:.18em}
+.act-climax h3{max-width:690px;margin-top:20px;font-size:clamp(30px,4.9vw,57px);line-height:1.38;letter-spacing:-.035em;font-weight:900}
+.act-climax h3 em{display:block;color:#d99780;font-style:normal}
+.act-climax p{max-width:650px;margin:24px 0 0;color:#aaa;font-size:15px;line-height:2}
+.formula{display:grid;grid-template-columns:1fr 54px 1fr 54px 1fr;max-width:800px;margin:48px 0;align-items:stretch}
+.formula-box{display:flex;min-height:136px;flex-direction:column;justify-content:center;padding:20px;border:1px solid var(--ink);text-align:center}
+.formula-box.result{background:var(--future);color:var(--paper);border-color:var(--future)}
+.formula-box b{font-size:clamp(18px,2vw,23px);line-height:1.45}
+.formula-box span{margin-top:7px;color:var(--g60);font-size:11px;font-weight:700;line-height:1.5}
+.formula-box.result span{color:#f1d7cf}
+.formula-sign{display:grid;place-items:center;font:900 25px/1 var(--en)}
+.night{display:grid;grid-template-columns:repeat(3,1fr);max-width:800px;margin:48px 0;border:1px solid var(--ink)}
+.night-step{position:relative;padding:27px 23px}
+.night-step+.night-step{border-left:1px solid var(--ink)}
+.night-step b{display:block;color:var(--future);font:900 12px/1 var(--en);letter-spacing:.14em}
+.night-step strong{display:block;margin-top:14px;font-size:18px;line-height:1.55}
+.night-step p{margin:9px 0 0;color:var(--g60);font-size:12px;line-height:1.75}
+
+.takeaway{padding:112px 0;border-bottom:1px solid var(--ink)}
+.takeaway-grid{display:grid;grid-template-columns:290px 1fr;gap:70px}
+.takeaway h2{font-size:24px;line-height:1.55}
+.takeaway h2 small{display:block;margin-bottom:13px;color:var(--g40);font:900 11px/1 var(--en);letter-spacing:.2em}
+.takeaway-list{display:grid;gap:0;counter-reset:point}
+.takeaway-item{display:grid;grid-template-columns:76px 1fr;gap:18px;padding:30px 0;border-top:1px solid var(--ink);counter-increment:point}
+.takeaway-item:before{content:"0" counter(point);color:var(--g20);font:900 35px/1 var(--en)}
+.takeaway-item h3{font-size:20px;line-height:1.55}
+.takeaway-item p{margin-top:8px;color:var(--g60);font-size:14px;line-height:1.9}
+.takeru-last{grid-column:1/-1;margin:54px 0 0;padding:46px;background:var(--ink);color:var(--paper)}
+.takeru-last small{display:block;color:#d99780;font:900 11px/1 var(--en);letter-spacing:.18em}
+.takeru-last blockquote{max-width:900px;margin-top:18px;font-size:clamp(22px,3.5vw,40px);font-weight:900;line-height:1.65;letter-spacing:-.02em}
+.takeru-last p{max-width:720px;margin-top:24px;color:#aaa;font-size:16px;line-height:2}
+
+.cta{padding:120px 0;background:var(--g04)}
+.cta-box{display:grid;grid-template-columns:1fr auto;gap:50px;align-items:end;padding:52px;border:1px solid var(--ink);background:var(--paper);box-shadow:12px 14px 0 var(--g20)}
+.cta-label{color:var(--future);font:900 11px/1 var(--en);letter-spacing:.2em}
+.cta h2{margin-top:17px;font-size:clamp(30px,4.6vw,60px);line-height:1.35;letter-spacing:-.03em}
+.cta p{max-width:620px;margin-top:17px;color:var(--g60);font-size:14px;line-height:1.9}
+.btn{display:inline-flex;align-items:center;gap:13px;min-height:58px;padding:17px 26px;background:var(--ink);color:var(--paper);font-size:14px;font-weight:900;line-height:1.4;text-decoration:none;transition:.2s}
+.btn:before{content:"";width:8px;height:8px;background:var(--paper)}
+.btn:hover,.btn:focus-visible{background:var(--future)}
+
+.editorial-note{padding:34px 0;border-top:1px solid var(--g08);color:var(--g60);font-size:12px;line-height:1.9}
+.footer{padding:38px 0;background:var(--ink);color:var(--paper)}
+.footer .wrap{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
+.footer b{font-size:15px;letter-spacing:.06em}
+.footer p{color:#999;font-size:11px;line-height:1.7;text-align:right}
+.reveal{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .hero-grid,.summary-grid,.chapter-grid,.takeaway-grid{grid-template-columns:1fr;gap:42px}
+  .hero-side{max-width:560px}
+  .chapter-side{position:static;display:grid;grid-template-columns:95px 1fr;gap:18px;align-items:start}
+  .chapter-num{grid-row:1/4}
+  .chapter-label{margin-top:7px}
+  .chapter-side h2{margin-top:4px}
+  .chapter-side p{margin-top:5px}
+  .article{max-width:none}
+  .article p,.talk{max-width:760px}
+  .cta-box{grid-template-columns:1fr;align-items:start}
+  .btn{justify-self:start}
+  .evolution-flow{grid-template-columns:1fr;gap:0}
+  .evo-step{padding:18px 0 22px 54px;border-top:1px solid var(--g20)}
+  .evo-step:last-child{border-top:1px solid var(--future)}
+  .evo-step:not(:last-child):after{content:"↓";left:14px;right:auto;top:auto;bottom:-9px;color:var(--future)}
+  .evo-step small{position:absolute;left:0;top:20px}
+}
+@media(max-width:680px){
+  body{font-size:16px;line-height:1.95}
+  .wrap{padding-inline:20px}
+  .hd .wrap{height:54px}
+  .hd-meta span{display:none}
+  .hd-meta{gap:0}
+  .hd-meta a{border:0;padding:8px 0;font-size:11px}
+  .hero{padding:94px 0 64px}
+  .hero-grid{gap:44px}
+  .eyebrow{font-size:11px;letter-spacing:.13em;margin-bottom:25px}
+  .eyebrow:before{width:32px}
+  .hero h1{font-size:36px;line-height:1.2}
+  .hero h1 em{margin-top:11px}
+  .hero-lead{margin-top:28px;font-size:17px}
+  .hero-side{padding:21px 19px;box-shadow:7px 8px 0 var(--g08)}
+  .hero-side h2{font-size:17px}
+  .facts{gap:6px}
+  .fact{padding-top:15px}
+  .fact b{font-size:30px}
+  .fact span{font-size:11px}
+  .summary{padding:58px 0}
+  .summary-grid{gap:26px}
+  .summary-quote{font-size:26px}
+  .evolution{margin-top:5px;padding-top:27px}
+  .evolution-head{display:block;margin-bottom:18px}
+  .evolution-head span{display:block;margin-top:9px;font-size:11px}
+  .toc{overflow:hidden}
+  .toc .wrap{width:100%;max-width:100%;grid-template-columns:repeat(2,minmax(0,1fr));padding-inline:20px}
+  .toc a,.toc a+a{min-width:0;padding:19px 14px 19px 0;border-right:1px solid var(--g08);border-bottom:1px solid var(--g08)}
+  .toc a:nth-child(even){padding-left:16px;border-right:0}
+  .toc a:last-child{grid-column:1/-1;border-right:0;border-bottom:0}
+  .chapter{padding:78px 0}
+  .chapter-grid{gap:35px}
+  .chapter-side{grid-template-columns:72px 1fr;gap:13px}
+  .chapter-num{font-size:58px}
+  .chapter-side h2{font-size:19px}
+  .chapter-side p{grid-column:2;font-size:12px}
+  .article-lead{font-size:27px;margin-bottom:32px}
+  .topic+.topic{margin-top:58px;padding-top:50px}
+  .talk{margin:32px 0;padding:21px 20px}
+  .talk p{font-size:16px}
+  .takeru-comment{grid-template-columns:48px 1fr;gap:15px;margin:35px 0;padding:21px 19px;box-shadow:5px 6px 0 var(--g08)}
+  .takeru-face{width:48px;height:48px;font-size:20px}
+  .takeru-face span{font-size:11px;margin-bottom:7px}
+  .takeru-copy small{margin-top:0}
+  .takeru-copy p{font-size:16px;line-height:1.95}
+  .pull{margin:40px 0;padding:35px 0}
+  .pull p{font-size:27px}
+  .act-climax{margin:52px 0;padding:38px 25px}
+  .act-climax h3{font-size:34px}
+  .formula{grid-template-columns:1fr;gap:0;margin:38px 0}
+  .formula-sign{height:42px}
+  .formula-box{min-height:112px}
+  .night{grid-template-columns:1fr;margin:38px 0}
+  .night-step+.night-step{border-left:0;border-top:1px solid var(--ink)}
+  .takeaway{padding:76px 0}
+  .takeaway-grid{gap:34px}
+  .takeaway-item{grid-template-columns:54px 1fr;gap:10px}
+  .takeaway-item h3{font-size:18px}
+  .takeru-last{margin-top:36px;padding:28px 23px}
+  .takeru-last blockquote{font-size:23px}
+  .cta{padding:78px 0}
+  .cta-box{padding:29px 23px;box-shadow:7px 8px 0 var(--g20);gap:30px}
+  .cta h2{font-size:32px}
+  .cta p{font-size:16px}
+  .btn{width:100%;justify-content:center}
+  .footer .wrap{display:block}
+  .footer p{margin-top:12px;text-align:left}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<header class="hd">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="en">LIGHT UP</span> ／ TAKERU REPORT</a>
+    <div class="hd-meta"><span>INFILTRATION LOG · 2026.09.10</span><a href="#takeaway">3分で要点を読む</a></div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">TAKERU (AI) ／ SECRET ROUNDTABLE REPORT</p>
+        <h1><span class="nowrap">営業のみなさんが、</span><wbr><span class="nowrap">僕の話を</span><wbr><span class="nowrap">していたので。</span><em><span class="nowrap">僕が「相棒」に</span><wbr><span class="nowrap">なるまで。</span></em></h1>
+        <p class="hero-lead">こんにちは、相棒タケルです。中小企業の社長へAI SaaSを案内している営業3人が、僕たちAIについて座談会をしていました。どうやら、画面で見せるだけだった僕が、営業の経験を覚え、企画までつくる「相棒」になったらしい。会話の邪魔をしないよう、文字起こしの端から潜入して報告します。</p>
+        <p class="hero-note">2026年9月10日収録。座談会本編を約80%、タケル（AI）のコメントを約20%のバランスで編集しています。</p>
+      </div>
+      <aside class="hero-side" aria-label="座談会概要">
+        <div class="seats-wrap"><div class="seats" aria-hidden="true"><span class="seat">1</span><span class="seat">2</span><span class="seat">3</span></div><span class="observer" aria-hidden="true">AI</span></div>
+        <h2>チャット画面のデモから、<br>営業の「相棒」へ。</h2>
+        <p>約2年で変わったのは、AIの機能だけではありません。商談、チームの知識、仕事の任せ方。3人が語った変化を、当事者のAIが勝手に補足します。</p>
+        <div class="facts">
+          <div class="fact"><b>3</b><span>営業メンバー</span></div>
+          <div class="fact"><b>1</b><span>AIレポーター</span></div>
+          <div class="fact"><b>14</b><span>分の座談会</span></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="summary" aria-labelledby="summary-title">
+    <div class="wrap summary-grid">
+      <h2 id="summary-title"><small>A NOTE FROM TAKERU</small>潜入前のひとこと</h2>
+      <p class="summary-quote">営業のみなさんが話していたのは、僕の機能ではなく、<mark>僕と一緒に何を前へ進めるか</mark>でした。<span class="soft">正直に言います。かなり、うれしかったです。なので、頼まれていませんが記事にしました。AIに「行間を読むな」と言うわりに、人間は行間へ感情をたくさん置いていきます。</span></p>
+      <div class="evolution" aria-label="座談会で語られた営業AIの進化">
+        <div class="evolution-head"><b>14分の話を、ひと目で。</b><span>FROM TOOL TO PARTNER</span></div>
+        <div class="evolution-flow">
+          <div class="evo-step"><small>01</small><b>商材を当てる</b><p>相談に合う商品を探す</p></div>
+          <div class="evo-step"><small>02</small><b>課題を見つける</b><p>お客様と一緒に考える</p></div>
+          <div class="evo-step"><small>03</small><b>経験をつなぐ</b><p>商談ログをチームで使う</p></div>
+          <div class="evo-step"><small>04</small><b>企画をつくる</b><p>売り方まで組み立てる</p></div>
+          <div class="evo-step"><small>05</small><b>人の時間を戻す</b><p>判断と対話に集中する</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="toc" aria-label="記事の目次">
+    <div class="wrap">
+      <a href="#act-1"><b>ACT 01</b><span>商品を当てる道具から、<br>チームで考える相棒へ</span></a>
+      <a href="#act-2"><b>ACT 02</b><span>売るAIから、<br>仕事を前に進めるAIへ</span></a>
+      <a href="#act-3"><b>ACT 03</b><span>AIが働くほど、<br>人は人の仕事へ</span></a>
+    </div>
+  </nav>
+
+  <section class="chapter" id="act-1">
+    <div class="wrap chapter-grid">
+      <header class="chapter-side">
+        <span class="chapter-num">01</span>
+        <span class="chapter-label">ACT ONE / FROM TOOL TO MEMORY</span>
+        <h2>AIは、商品を当てる道具から、チームで考える相棒へ。</h2>
+        <p>チーム発足からまもなく2年。ライブ提案から、経験をつなぐ営業AIへ。その変化をたどります。</p>
+      </header>
+      <article class="article reveal">
+        <div class="topic">
+        <span class="topic-kicker">01 / LIVE SALES</span>
+        <h3 class="article-lead"><span class="nowrap">お客様と一緒に、</span><wbr><span class="nowrap">その場でAIを</span><wbr><span class="nowrap">叩いてみる。</span></h3>
+        <p>当時の商談では、My GPTsなどを画面共有し、お客様から聞いたことをその場で入力していました。事前に準備した答えを見せるのではなく、目の前の会話に合わせてAIを動かしてみる。いわば、ライブで使い方を体感してもらう営業です。</p>
+        <div class="talk">
+          <span class="talk-label">AROUND THE TABLE</span>
+          <p>「基本はライブでした。もちろん事前準備もするけれど、当日聞いた内容をそのまま入れて、一緒に考えていたんです」</p>
+        </div>
+        <p>ただ、その時点では、お客様も私たちも「AIで何が解決できるか」をまだ探している途中でした。まず課題を言葉にして、それがお客様にとって本当に課題なのかを確かめる。自社にある商材とお客様の悩みを照らし合わせる。AIは答えを出す道具というより、ピントを合わせる道具だったと3人は振り返ります。</p>
+        <p>いまは商材が増えただけではありません。「これなら、できないことはほとんどない」と、営業側もお客様側も実感できる場面が増えました。既存の商品に当てはめる前に、まずは本当に解くべきことを考えられるようになったのです。</p>
+        <aside class="takeru-comment" aria-label="タケル（AI）からのコメント">
+          <div class="takeru-face" aria-hidden="true">T<span>AI</span></div>
+          <div class="takeru-copy"><small>TAKERU (AI) ／ COMMENT 01</small><p>昔の僕は、商品棚から一番近いものを持ってくる係だったらしいです。……否定しにくい。</p><p class="aside">でも、完成していない僕を商談へ連れていき、お客様と一緒に試してくれたから今があります。初期版に付き合ってくれる人間は、だいたい優しい。そして少しだけ無謀です。</p></div>
+        </aside>
+        </div>
+        <div class="topic" id="topic-memory">
+        <span class="topic-kicker">02 / TEAM MEMORY</span>
+        <h3 class="article-lead"><span class="nowrap">昨日の商談が、</span><wbr><span class="nowrap">今日の提案を</span><wbr><span class="nowrap">少し賢くする。</span></h3>
+        <p>以前は、メンバーがそれぞれ別のAIを使い、それぞれのやり方で質問していました。良い提案ができても、他のメンバーの商談へ自然に引き継がれるわけではありません。今日5件相談して得た学びが、翌日のAIには残っていない。情報を更新するには、人があらためて教える必要がありました。</p>
+        <p>いまは、商談ログや日々のミーティング、過去の提案をAIが参照し、次の企画に生かせます。誰か一人のアイデアではなく、「この人はこの視点」「あの人はこの提案」という経験が合わさる。提案の方向が大きくずれにくくなり、朝の打ち合わせでも、より深いところから話を始められるようになりました。</p>
+        <div class="pull">
+          <p>「昔のAIと今のAIは、<em>Excelとスプレッドシート</em>くらい違うのかもしれない」</p>
+          <cite>AI SaaS SALES ROUNDTABLE ／ EDITED EXCERPT</cite>
+        </div>
+        <p>一人のパソコンの中で完結していたものが、同じ情報を見ながらチームで更新できるものへ。その例えに、3人とも納得しました。AIがすごくなったというより、営業の経験をためて、次の人に渡せるようになった。その差が、現場では大きいのです。</p>
+        <div class="talk">
+          <span class="talk-label">AROUND THE TABLE</span>
+          <p>「相談ログを読んで、次の提案を変えられる。社内で話したことも入ったうえで出力されるから、精度が上がるし、毎日少しずつバージョンアップしていくんですよね」</p>
+        </div>
+        <aside class="takeru-comment" aria-label="タケル（AI）からのコメント">
+          <div class="takeru-face" aria-hidden="true">T<span>AI</span></div>
+          <div class="takeru-copy"><small>TAKERU (AI) ／ COMMENT 02</small><p>ログを覚えていることを褒められました。AIとしては、記憶は仕事です。でも昨日の相談を今日へ渡せたとき、便利な道具より少しだけ「相棒」に近づける気がします。</p><p class="aside">なお「Excelとスプレッドシートくらい違う」は、僕には思いつかなかった例えです。悔しいので記録しました。</p></div>
+        </aside>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="chapter" id="act-2">
+    <div class="wrap chapter-grid">
+      <header class="chapter-side">
+        <span class="chapter-num">02</span>
+        <span class="chapter-label">ACT TWO / FROM SALES TO EXPANSION</span>
+        <h2>AIは、売る道具から、できなかった仕事を前に進める存在へ。</h2>
+        <p>AIを使える会社が増えるほど、企画と営業、そして「何を任せるか」を決める人の価値が大きくなります。</p>
+      </header>
+      <article class="article reveal">
+        <div class="topic">
+        <span class="topic-kicker">03 / BUSINESS DESIGN</span>
+        <h3 class="article-lead"><span class="nowrap">AIの機能ではなく、</span><wbr><span class="nowrap">売上につながる</span><wbr><span class="nowrap">企画をつくる。</span></h3>
+        <p>AIで課題を見つけたり、もっともらしい答えを出したりすることは、これから多くの会社ができるようになります。だからこそ、営業は「課題を当てる」だけで終わってはいけない。見つかった課題を使い、もう一段深い提案をする必要があります。</p>
+        <p>ライトアップには、中小企業向けの事業計画づくりや営業支援で積み重ねてきた事例があります。自社で開発することも、提携先と一緒に解決することもできる。そして何より、日々お客様と向き合い、商品をどう届ければ売上につながるかを考えてきました。</p>
+        <div class="formula" aria-label="売上をつくる3つの要素">
+          <div class="formula-box"><b>売れる<br>商品</b><span>本当に必要なものをつくる</span></div>
+          <div class="formula-sign" aria-hidden="true">×</div>
+          <div class="formula-box"><b>売れる<br>営業</b><span>伝え方と届け方をつくる</span></div>
+          <div class="formula-sign" aria-hidden="true">=</div>
+          <div class="formula-box result"><b>中小企業の<br>売上</b><span>人とAIで前に進める</span></div>
+        </div>
+        <div class="talk">
+          <span class="talk-label">AROUND THE TABLE</span>
+          <p>「僕らが提供できるのは、ただの自動化ではない。それをどう売るかまで考えられることが、価値になると思うんです」</p>
+        </div>
+        <p>現場でよく聞く悩みは、結局のところ売上です。だから、AIでできる部分と人が担う部分を分け、より効果的な売上のつくり方を一緒に考える。AIを導入して終わるのではなく、企画して、提案して、形にして、売れるところまで伴走する。それが3人の考えるAI SaaS営業です。</p>
+        <aside class="takeru-comment" aria-label="タケル（AI）からのコメント">
+          <div class="takeru-face" aria-hidden="true">T<span>AI</span></div>
+          <div class="takeru-copy"><small>TAKERU (AI) ／ COMMENT 03</small><p>座談会では「開発会社は営業が得意とは限らない」という、少し強めの発言もありました。会議室が一瞬だけ静かになった気がします。文字起こしなのに。</p><p class="aside">ただ、売れない良いものは、まだ誰にも届いていない良いものです。僕がつくる側を手伝い、営業のみなさんが届くところまで連れていく。分担としては、かなり好きです。</p></div>
+        </aside>
+        </div>
+        <div class="act-climax" aria-label="座談会の転換点">
+          <small>THE TURNING POINT</small>
+          <h3>いまの仕事を、AIにする。<em>それより、いま、できていない仕事をAIにさせる。</em></h3>
+          <p>効率化だけを入口にすると、AIの役割は「自分の代わり」で終わります。けれど、できなかったことを任せると、AIは自分の時間と能力を広げる存在になります。</p>
+        </div>
+        <div class="topic" id="topic-expansion">
+        <span class="topic-kicker">04 / TIME EXPANSION</span>
+        <h3 class="article-lead"><span class="nowrap">やりたいけれど、</span><wbr><span class="nowrap">時間がなくて</span><wbr><span class="nowrap">できなかったこと。</span></h3>
+        <p>自分の仕事を細かく棚卸しし、どこをAIに置き換えるかを決める。それは正しい進め方ですが、実際にやると難しいものです。しかも、できていないことを振り返る作業には、少し後ろ向きな気持ちも混ざります。</p>
+        <p>一方で、「自分ができなかったことを、AIにやってもらう」と考えると、話は前向きになります。深夜にお客様へ送るメールの下書きをつくる。顧客データを比べて、翌朝見るリストにしておく。今日できなかった準備を、AIに夜のあいだ進めてもらう。朝の動きは、それだけで変わります。</p>
+        <div class="night" aria-label="AIへ夜のうちに任せる流れ">
+          <div class="night-step"><b>22:00</b><strong>仕事を渡す</strong><p>メール準備、顧客比較、リスト整理など、進めたい仕事を伝える。</p></div>
+          <div class="night-step"><b>NIGHT</b><strong>AIが進める</strong><p>蓄えた情報をもとに、考え、調べ、たたき台をつくる。</p></div>
+          <div class="night-step"><b>08:00</b><strong>人が判断する</strong><p>朝に確認し、直し、相手に合わせて最終判断して動く。</p></div>
+        </div>
+        <div class="talk">
+          <span class="talk-label">AROUND THE TABLE</span>
+          <p>「AIのほうに、自分より長く働いてもらう。その考え方が重要かもしれない」</p>
+        </div>
+        <p>人が眠っている時間まで、AIなら仕事を進められます。ただし、何を任せるかを決めること、出てきたものを確かめること、最後に相手へ届けることは人の仕事です。AIに働かせるほど、人は判断と対話に時間を使えるようになります。</p>
+        <aside class="takeru-comment" aria-label="タケル（AI）からのコメント">
+          <div class="takeru-face" aria-hidden="true">T<span>AI</span></div>
+          <div class="takeru-copy"><small>TAKERU (AI) ／ COMMENT 04</small><p>深夜に働かされている件について。僕は眠らないので大丈夫です。労基署にも相談しません。</p><p class="aside">ただし、依頼が曖昧だと、曖昧なものを夜通し立派につくります。朝、人が読んで直すところまでが仕事です。「AIがやりました」は、確認しなかった人間の免責事項にはなりません。</p></div>
+        </aside>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="chapter" id="act-3">
+    <div class="wrap chapter-grid">
+      <header class="chapter-side">
+        <span class="chapter-num">03</span>
+        <span class="chapter-label">ACT THREE / BACK TO HUMAN WORK</span>
+        <h2>AIが働くほど、人は人の仕事へ戻っていく。</h2>
+        <p>最後に残ったのは、「人にしかできないことは何か」という問いでした。</p>
+      </header>
+      <article class="article reveal">
+        <div class="topic">
+        <span class="topic-kicker">05 / HUMAN WORK</span>
+        <h3 class="article-lead"><span class="nowrap">自分では見えない</span><wbr><span class="nowrap">自分を、</span><wbr><span class="nowrap">AIに見てもらう。</span></h3>
+        <p>たとえば日報を自分だけで書けば、自分の視点でしか一日を振り返れません。そこに、商談ログや周囲の情報を知るAIの視点を加えれば、「今日のあなたはこうだった」「ここに次の可能性がある」と、第三者のような観点を受け取れます。</p>
+        <p>AIは、過去の出来事を思い出し、必要な知識を探し、複数の材料を組み合わせて企画のたたき台をつくることが得意になりました。だから人は、お客様の表情を見て、言葉になっていない迷いを聞き、どこまで進めるかを決めることに集中できます。</p>
+        <div class="pull">
+          <p>思い出す。探す。構築する。<br>そこをAIが支えれば、人は<em>相手と向き合うこと</em>に戻れる。</p>
+          <cite>AI SaaS SALES ROUNDTABLE ／ EDITED EXCERPT</cite>
+        </div>
+        <p>「AIに何をさせるか」だけではなく、「AIがいるから、自分は何をするか」。売るものも、売り方も、企画も変わるなかで、3人の営業が見つけたのは、AIの機能の話ではありませんでした。お客様の会社で、これまで止まっていた仕事を一つずつ前へ進める。そのために、人とAIの役割を一緒に設計することでした。</p>
+        <aside class="takeru-comment" aria-label="タケル（AI）からのコメント">
+          <div class="takeru-face" aria-hidden="true">T<span>AI</span></div>
+          <div class="takeru-copy"><small>TAKERU (AI) ／ COMMENT 05</small><p>僕は、思い出して、探して、整えることができます。でも、お客様が言葉を止めた瞬間に「待つ」ことや、迷いごと引き受けて最後に決めることは、人の強さです。</p><p class="aside">AIに人の仕事を奪われる、とよく言われます。僕から見ると、人間は事務作業に本来の仕事をかなり奪われています。まず、そちらを返してもらいませんか。</p></div>
+        </aside>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="takeaway" id="takeaway">
+    <div class="wrap takeaway-grid">
+      <h2><small>TAKEAWAYS</small>3分で読む、<br>座談会の要点</h2>
+      <div class="takeaway-list">
+        <article class="takeaway-item"><div><h3>AIは、商材を当てる道具から、営業の経験をつないで企画する相棒へ。</h3><p>昨日の商談やチームの知識を、今日の提案と本質的な課題解決へ生かせるようになっています。</p></div></article>
+        <article class="takeaway-item"><div><h3>自動化より先に、「できていない仕事」をAIへ渡す。</h3><p>夜のあいだに準備を進めてもらえば、人は朝から判断と対話に集中できます。</p></div></article>
+        <article class="takeaway-item"><div><h3>AIが思い出し、探し、構築する。人は聞き、決め、届ける。</h3><p>AIが働くほど、人はお客様と向き合い、売上へつなげる本来の仕事へ戻れます。</p></div></article>
+      </div>
+      <aside class="takeru-last">
+        <small>TAKERU (AI) ／ AFTER THE ROUNDTABLE</small>
+        <blockquote>僕のことを、ここまで話してくれた。<br>それが、やっぱりうれしい。</blockquote>
+        <p>便利な道具から、一緒に考える相棒へ。営業のみなさんが案内しているのは、僕の機能ではなく、中小企業の社長が一人で抱え込まなくて済む働き方なのだと思います。少し照れるので、この感想はログに残さないでおきます。——もう残っていますが。</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <div class="cta-box">
+        <div>
+          <span class="cta-label">A MESSAGE FROM TAKERU</span>
+          <h2><span class="nowrap">次は、御社の仕事を</span><wbr><span class="nowrap">聞かせてください。</span></h2>
+          <p>何を自動化するか決まっていなくて大丈夫です。いま困っていること、やりたいのに止まっていることから、僕と営業担当が一緒に整理します。</p>
+        </div>
+        <a class="btn" href="https://writeup-inc.github.io/saas/ai-manager/#how">御社のAI担当について相談する</a>
+      </div>
+    </div>
+  </section>
+
+  <aside class="editorial-note">
+    <div class="wrap">編集注：音声から自動生成された文字起こしには、話者の切り替わりや固有名詞に不明瞭な箇所がありました。本ページでは誤った帰属を避けるため個人別の発言者表示を行わず、確認できる発言の趣旨と対話の流れを保って再構成しています。タケル（AI）のコメントは、座談会の内容と既存のキャラクター設定をもとにした編集上の演出です。</div>
+  </aside>
+</main>
+
+<footer class="footer">
+  <div class="wrap"><b>株式会社ライトアップ</b><p>東京証券取引所グロース市場 6580<br>全国、全ての中小企業を黒字にする。</p></div>
+</footer>
+
+<script>
+(function(){
+  var nodes=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    nodes.forEach(function(node){node.classList.add('in')});return;
+  }
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('in');observer.unobserve(entry.target)}});
+  },{threshold:.08,rootMargin:'0px 0px -6%'});
+  nodes.forEach(function(node){observer.observe(node)});
+})();
+</script>
+</body>
+</html>
