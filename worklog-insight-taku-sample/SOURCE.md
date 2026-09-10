@@ -8,7 +8,7 @@ Build from the repository root:
 cd worklog-insight-taku-sample/source
 npm ci
 npm run build:saas-pages
-rsync -a --delete --exclude source out/ ../
+rsync -a --delete --exclude source --exclude SOURCE.md out/ ../
 ```
 
 The public path is `/saas/worklog-insight-taku-sample/`.

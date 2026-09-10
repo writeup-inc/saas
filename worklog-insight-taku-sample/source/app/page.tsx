@@ -55,7 +55,11 @@ const sourceLibrary = {
   asana2023: { label: 'Asana Anatomy of Work 2023', note: '反復作業や不要な会議など、仕事の周辺作業に関する国際調査', url: 'https://asana.com/resources/anatomy-of-work' },
   mhlw: { label: '厚生労働省｜過重労働による健康障害防止', note: '長時間労働者への健康管理と事後措置', url: 'https://www.mhlw.go.jp/stf/newpage_07041.html' },
   ppc: { label: '個人情報保護委員会｜従業者モニタリング', note: '目的・責任者・ルールの明示と適正運用', url: 'https://www.ppc.go.jp/all_faq_index/faq1-q5-7/' },
+  mhlwStress: { label: '厚生労働省｜ストレスチェック制度', note: '個人結果の取扱いと本人同意、集団分析の考え方', url: 'https://www.check-roudou.mhlw.go.jp/study/roudousya_stresscheck.html' },
   cisa: { label: 'CISA｜Insider Threat Mitigation Guide', note: '兆候は脅威の確定を意味せず、文脈を含む追加確認が必要', url: 'https://www.cisa.gov/sites/default/files/2022-11/Insider%20Threat%20Mitigation%20Guide_Final_508.pdf' },
+  metiAiGuidelines: { label: '経済産業省｜AI事業者ガイドライン 第1.2版', note: '役割・責任とリスクベースの管理を示す現行の公式ガイドライン（2026年3月31日公表）', url: 'https://www.meti.go.jp/shingikai/mono_info_service/ai_shakai_jisso/20260331_report.html' },
+  nistGenerativeAi: { label: 'NIST｜Generative AI Profile（NIST AI 600-1）', note: '導入前テスト、人間によるレビュー、記録、継続監視に関する任意ガイダンス', url: 'https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf' },
+  nistHumanAi: { label: 'NIST AI RMF｜Human-AI Interaction', note: '人間とAIの役割・責任を明確に分けるための公式解説', url: 'https://airc.nist.gov/airmf-resources/airmf/appendices/app-c-ai-risk-management-and-human-ai-interaction/' },
 } as const;
 
 const companyCases = [
@@ -135,6 +139,17 @@ const managerMembers: Array<{ name: string; state: ManagerMemberState; label: st
   { name: '清水', state: 'pending', label: '判定保留', signal: '観測日数が不足', hours: '23.6h', focus: '5.4h', switches: 92, note: '観測が3日のため、良し悪しを判定しません。休暇・外出予定を確認して次週に再判定します。' },
   { name: '池田', state: 'steady', label: '通常範囲', signal: '提案作成が安定', hours: '41.2h', focus: '11.4h', switches: 174, note: '大きな偏りは見られません。現在の案件状況と本人の実感が一致するかだけ確認します。' },
   { name: '阿部', state: 'pending', label: '判定保留', signal: '担当変更の影響候補', hours: '36.1h', focus: '8.7h', switches: 147, note: '担当変更週のため通常週と比較できません。新しい役割が落ち着いてから傾向を見ます。' },
+];
+
+type HiyoriDialogueState = 'check' | 'positive' | 'pending';
+
+const hiyoriDialogues: Array<{ name: string; anonymous: string; state: HiyoriDialogueState; label: string; observation: string; question: string; source: string }> = [
+  { name: '田中', anonymous: 'メンバーA', state: 'check', label: '対話候補', observation: '相談・レビュー依頼の27%が集中。木曜午後に依頼が重なりました。', question: '「相談窓口になって、抱えすぎていることはありませんか？」', source: '業務ログ・依頼履歴' },
+  { name: '佐藤', anonymous: 'メンバーB', state: 'check', label: '対話候補', observation: '終業後の入力が2日から4日に増加。商談数も同じ週に増えています。', question: '「商談後の入力で、今いちばん減らしたい工程はどこですか？」', source: '業務ログ・予定表' },
+  { name: '林', anonymous: 'メンバーC', state: 'check', label: '対話候補', observation: '会議後30分以内の作業切り替えが週18回。チーム平均の約1.6倍です。', question: '「会議後に、誰へ何を確認するか迷う場面はありますか？」', source: '予定表・作業切り替え' },
+  { name: '高橋', anonymous: 'メンバーD', state: 'positive', label: '良い兆し', observation: '通知確認をまとめた日から、午後の集中ブロックが平均42分伸びました。', question: '「うまくいった工夫を、無理のない範囲でチームに共有できますか？」', source: '業務ログ・前週比較' },
+  { name: '山本', anonymous: 'メンバーE', state: 'positive', label: '良い兆し', observation: '1on1後の週から依頼の差し戻しが減少。本人の予定変更も少ない状態です。', question: '「先週の対話で、続けたいと思ったことは何ですか？」', source: '予定表・依頼履歴' },
+  { name: '清水', anonymous: 'メンバーF', state: 'pending', label: '判定保留', observation: '有効観測が3日分のため、通常週との比較には足りません。', question: 'データが揃うまで結論を出さず、休暇・外出予定だけを確認します。', source: '観測日数' },
 ];
 
 const takuGuides: Record<Audience, { opening: string; summary: string; priority: string; time: string; people: string; action: string; evidence: string }> = {
@@ -325,6 +340,10 @@ export default function Home() {
     setAudience(next);
   }
 
+  function changeConsultant(next: string) {
+    setConsultantId(next);
+  }
+
   return (
     <div className="demo-app">
       <aside className="sample-switcher" aria-label="サンプル切替">
@@ -343,7 +362,7 @@ export default function Home() {
                 role="tab"
                 aria-selected={consultantId === item.id}
                 className={consultantId === item.id ? 'selected' : ''}
-                onClick={() => setConsultantId(item.id)}
+                onClick={() => changeConsultant(item.id)}
               >
                 <span>{String(index + 1).padStart(2, '0')}</span>
                 <strong>{item.name}</strong>
@@ -368,11 +387,21 @@ export default function Home() {
       </aside>
 
       <main className="product-stage">
-        {consultantId === 'taku' ? (
-          <TakuReport audience={audience} />
-        ) : (
-          <PendingReport consultant={consultant} audience={audience} onBack={() => setConsultantId('taku')} />
-        )}
+        {consultantId === 'taku'
+          ? <TakuReport audience={audience} />
+          : consultantId === 'kei'
+            ? audience === 'executive'
+              ? <KeiExecutiveReport />
+              : audience === 'manager'
+                ? <KeiManagerReport />
+                : <KeiStaffReport />
+          : consultantId === 'hiyori'
+            ? audience === 'executive'
+              ? <HiyoriExecutiveReport />
+              : audience === 'manager'
+                ? <HiyoriManagerReport />
+                : <HiyoriStaffReport />
+            : <PendingReport consultant={consultant} audience={audience} onBack={() => setConsultantId('taku')} />}
       </main>
     </div>
   );
@@ -622,6 +651,866 @@ function ManagerComparisonRow({ label, team, company, teamWidth, companyWidth, d
   );
 }
 
+type KeiCandidateView = 'ready' | 'design' | 'human';
+
+const keiCandidateGroups: Record<KeiCandidateView, {
+  label: string;
+  count: number;
+  lead: string;
+  items: { title: string; evidence: string; boundary: string }[];
+}> = {
+  ready: {
+    label: '今試す',
+    count: 4,
+    lead: '手順と入力が比較的そろい、まず下書き支援として試せる候補です。',
+    items: [
+      { title: '商談メモ → CRM入力案', evidence: '同内容の再入力が週平均14.2回／人', boundary: 'CRMへは自動登録せず、担当者が事実確認' },
+      { title: '日報の要点下書き', evidence: '商談後の記録が終業後へ移動する日が9名で観測', boundary: '評価コメントは生成せず、本人が編集・提出' },
+      { title: '定例会議のアクション抽出', evidence: '決定事項の再確認候補が週31件', boundary: '担当者・期限は会議責任者が確定' },
+      { title: '社内FAQの回答候補', evidence: '同じ規程・資料への検索が週86回', boundary: '参照元を併記し、対外回答には使わない' },
+    ],
+  },
+  design: {
+    label: '設計してから',
+    count: 5,
+    lead: '権限、正解条件、参照データを決めてから検証する候補です。',
+    items: [
+      { title: '顧客メールの返信案', evidence: '定型の問い合わせ候補が週44件', boundary: '宛先・契約条件・最終文面を人が確認' },
+      { title: '提案書の初稿', evidence: '過去資料の再利用候補が週23件', boundary: '実績・価格・権利表記の確認が必須' },
+      { title: '案件進捗の要約', evidence: '複数画面をまたぐ集計候補が週18回', boundary: 'SFA項目定義と閲覧権限を先に合意' },
+      { title: '見積項目の候補抽出', evidence: '過去見積の検索候補が週16回', boundary: '価格決定と値引承認は人が行う' },
+      { title: '日程調整の候補提示', evidence: '社内外の調整候補が週29件', boundary: 'カレンダー接続・代理予約は未確認' },
+    ],
+  },
+  human: {
+    label: 'AIに任せない',
+    count: 3,
+    lead: '支援情報は使えても、判断と責任をAIへ移さない領域です。',
+    items: [
+      { title: '価格・契約条件の最終決定', evidence: '権限と経営判断を伴う', boundary: '権限者が根拠を確認して承認' },
+      { title: '人事評価・配置・懲戒', evidence: '本人の事情と重要な権利へ影響する', boundary: '業務ログやAI出力だけで判断しない' },
+      { title: '苦情・例外案件の最終対応', evidence: '顧客関係と文脈判断を伴う', boundary: '責任者が顧客事情を確認して決定' },
+    ],
+  },
+};
+
+type KeiPortfolioId = 'sales' | 'report' | 'faq' | 'estimate' | 'hr';
+
+const keiPortfolioItems: Array<{
+  id: KeiPortfolioId;
+  title: string;
+  department: string;
+  hours: string;
+  effectScore: number;
+  readiness: string;
+  risk: string;
+  decision: string;
+  finding: string;
+  humanGate: string;
+}> = [
+  { id: 'sales', title: '商談後の記録', department: '営業3部門', hours: '162h/週', effectScore: 92, readiness: '高', risk: '中', decision: '30日検証', finding: '入力項目が比較的そろい、全社36名で同じ転記候補が観測されています。まず下書きだけで効果と誤りを測れます。', humanGate: '顧客名・金額・次の行動は担当者が原文と照合し、承認後も本人が手動登録します。' },
+  { id: 'report', title: '週次報告の要点整理', department: '全6部門', hours: '73h/週', effectScore: 74, readiness: '中', risk: '中', decision: '入力標準化', finding: '部門ごとに報告項目と粒度が異なり、AI導入前に正解例をそろえる必要があります。', humanGate: '評価・原因・次の方針は部門責任者が追記し、AI要約だけで経営報告を確定しません。' },
+  { id: 'faq', title: '社内FAQ回答候補', department: '業務推進部', hours: '84h/週', effectScore: 68, readiness: '中', risk: '低', decision: '参照元を整備', finding: '同じ規程検索が多い一方、参照文書の版が混在しています。先に正本と更新責任者を決めます。', humanGate: 'AI回答には参照元と更新日を付け、例外案件は所管部門が回答します。' },
+  { id: 'estimate', title: '見積項目の候補抽出', department: '営業・管理部門', hours: '61h/週', effectScore: 59, readiness: '中', risk: '高', decision: '権限設計後', finding: '検索・転記は支援候補ですが、価格表の権限、契約条件、承認経路が未確認です。', humanGate: '価格・値引き・契約条件は権限者だけが決定し、AIによる確定や自動送信は行いません。' },
+  { id: 'hr', title: '人事評価・配置判断', department: '人事・全管理職', hours: '29h/週', effectScore: 18, readiness: '対象外', risk: '高', decision: 'AIに任せない', finding: 'ログから評価文や配置案を自動決定すると、本人の事情や成果の文脈を欠くため対象外とします。', humanGate: '人事判断は権限者が複数情報と本人説明を確認し、業務ログやAI出力だけでは決めません。' },
+];
+
+function useKeiChartMotion() {
+  useEffect(() => {
+    const charts = Array.from(document.querySelectorAll<HTMLElement>('[data-chart-motion]'));
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    charts.forEach((chart) => chart.classList.add('motion-ready'));
+    if (reducedMotion) {
+      charts.forEach((chart) => chart.classList.add('is-visible'));
+      return;
+    }
+    const chartTargets = new Map<Element, HTMLElement[]>();
+    charts.forEach((chart) => {
+      const target = chart.parentElement ?? chart;
+      chartTargets.set(target, [...(chartTargets.get(target) ?? []), chart]);
+    });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          chartTargets.get(entry.target)?.forEach((chart) => chart.classList.add('is-visible'));
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.24 });
+    chartTargets.forEach((_, target) => observer.observe(target));
+    return () => observer.disconnect();
+  }, []);
+}
+
+function KeiExecutiveReport() {
+  const [portfolioId, setPortfolioId] = useState<KeiPortfolioId>('sales');
+  const selected = keiPortfolioItems.find((item) => item.id === portfolioId) ?? keiPortfolioItems[0];
+  useKeiChartMotion();
+
+  return (
+    <div className="report-page kei-report kei-executive-report">
+      <aside className="hiyori-oem-strip kei-oem-strip" aria-label="OEMサンプル表示">
+        <span>OEM SAMPLE</span><strong>サンプル人材｜AI化投資判断レポート</strong><small>powered by WORKLOG INSIGHT</small>
+      </aside>
+
+      <header className="report-title kei-title">
+        <div><p>AI PORTFOLIO / INVESTMENT GATE</p><h1>全社AI化 投資判断レポート</h1><span>候補数ではなく、事業効果・導入条件・人間承認をそろえて投資順を決めます。</span></div>
+        <dl><div><dt>対象</dt><dd>全社・82名</dd></div><div><dt>観測期間</dt><dd>2026.08.25 — 08.31</dd></div></dl>
+      </header>
+
+      <ReportActions audience="executive" title="全社AI化 投資判断レポート" shareNote="数値・比較基準・連携状況はOEM商談用の架空設定です。本投資やシステム実行を承認する画面ではありません。" />
+
+      <nav className="report-toc kei-toc" aria-label="慧の経営層向けレポート内メニュー">
+        <a href="#kei-exec-summary"><span>01</span>経営結論</a>
+        <a href="#kei-exec-benchmark"><span>02</span>外部比較</a>
+        <a href="#kei-exec-portfolio"><span>03</span>投資候補</a>
+        <a className="has-alert" href="#kei-exec-gate"><span>04</span>投資ゲート<em>HOLD</em></a>
+        <a href="#kei-exec-impact"><span>05</span>効果試算</a>
+        <a href="#kei-exec-evidence"><span>A</span>根拠・OEM</a>
+      </nav>
+
+      <section className="kei-hero kei-exec-hero" id="kei-exec-summary">
+        <div className="kei-hero-copy">
+          <p className="section-index">01 / EXECUTIVE DECISION</p>
+          <div className="kei-hero-advisor"><KeiAvatar compact /><div><span>KEI&apos;S DECISION</span><strong>慧の経営判断</strong></div></div>
+          <h2>全社導入はまだ決めない。<br /><em><span>営業記録1工程の</span><span>検証だけ承認する。</span></em></h2>
+          <p>全社でAI化候補は24工程ありますが、連携費用、入力データ、実行権限が未確認です。まず営業3部門・36名を対象に、外部システムへ接続しない下書き検証を30日行い、誤りと純削減時間を実測してから本投資を判断します。</p>
+          <div className="kei-first-action"><span>経営層の最初の行動</span><strong>今週、事業責任者・情報システム・データ管理責任者を1名ずつ指名する。</strong><small>承認するのは調査とオフライン検証です。CRM連携、AI利用契約、自動実行の予算承認ではありません。</small></div>
+        </div>
+        <div className="kei-hero-numbers" aria-label="経営判断サマリー">
+          <a href="#kei-exec-portfolio"><strong>24<small>工程</small></strong><span>全社候補</span><em>デモ観測・可否未判定</em></a>
+          <a href="#kei-exec-gate"><strong>3<small>条件</small></strong><span>本投資前の不足</span><em>費用・データ・権限</em></a>
+          <a href="#kei-exec-impact" className="is-rule"><strong>76.8<small>h</small></strong><span>4週の純短縮仮説</span><em>デモ計算・保証なし</em></a>
+        </div>
+      </section>
+      <div className="kei-exec-decision-strip" aria-label="経営判断の選択肢"><div><span>承認</span><strong>30日・未接続の検証</strong></div><div><span>条件付き</span><strong>接続は費用・データ・権限確認後</strong></div><div className="hold"><span>保留</span><strong>全社導入と本投資</strong></div><small>判断者：経営会議 ／ 時間軸：今月の検証、四半期の投資判断</small></div>
+
+      <section className="kei-exec-benchmark" id="kei-exec-benchmark">
+        <header className="kei-section-head"><div><p className="section-index">02 / EXTERNAL MODEL COMPARISON</p><h2>自社のAI化準備を、2つのデモ母集団と比べる</h2><small>業界・同規模企業の値はOEM商談用の架空モデルです。公的統計や実在企業の平均ではありません。</small></div><span>自社 n=82 ／ デモ比較</span></header>
+        <div className="kei-exec-benchmark-list">
+          <KeiExecutiveBenchmarkRow label="定型的な反復業務の比率" company="18.6%" industry="13.0%" peer="14.4%" companyWidth={100} industryWidth={70} peerWidth={77} finding="候補量は多い" />
+          <KeiExecutiveBenchmarkRow label="試行条件まで定義済み" company="31%" industry="27%" peer="24%" companyWidth={100} industryWidth={87} peerWidth={77} finding="設計はやや先行" tone="positive" />
+          <KeiExecutiveBenchmarkRow label="人間承認者が明確な候補" company="42%" industry="55%" peer="51%" companyWidth={76} industryWidth={100} peerWidth={93} finding="承認設計が不足" />
+        </div>
+        <p className="kei-compare-conclusion"><strong>経営上の読み方</strong>候補の発見数は十分ですが、投資可能な状態とは限りません。人間の承認者、誤り時の停止方法、接続費用がそろうまでは、候補数を増やすより一工程で運用証拠を作る方が妥当です。</p>
+        <p className="kei-model-method"><strong>デモ値の作り方</strong>比較状況を説明するため、自社より反復比率は低く、承認者定義率は高い仮想母集団を編集上設定しています。統計的な推定や市場調査結果ではなく、導入時はOEM先が定義・母数・期間・出典を開示して差し替えます。</p>
+      </section>
+
+      <section className="kei-exec-portfolio" id="kei-exec-portfolio">
+        <header className="kei-section-head"><div><p className="section-index">03 / AI INVESTMENT PORTFOLIO</p><h2>全社候補を、効果だけでなく判断リスクで並べる</h2><small>時間はデモ観測値。準備度・リスク・判断は仮説であり、各業務責任者の確認前です。</small></div><span>表示中：{selected.title}</span></header>
+        <div className="kei-portfolio-layout">
+          <div className="kei-portfolio-list" role="tablist" aria-label="AI化投資候補を選択">
+            {keiPortfolioItems.map((item, index) => (
+              <button type="button" role="tab" aria-selected={portfolioId === item.id} className={portfolioId === item.id ? 'selected' : ''} onClick={() => setPortfolioId(item.id)} key={item.id}>
+                <span>{String(index + 1).padStart(2, '0')}</span><span className="copy"><strong>{item.title}</strong><small>{item.department} ／ {item.hours}</small></span><i><b data-chart-motion style={{ width: `${item.effectScore}%` }} /></i><em>{item.decision}</em>
+              </button>
+            ))}
+          </div>
+          <aside className="kei-portfolio-detail" role="tabpanel">
+            <p>SELECTED INVESTMENT CASE</p><h3>{selected.title}</h3>
+            <dl><div><dt>準備度</dt><dd>{selected.readiness}</dd></div><div><dt>判断リスク</dt><dd>{selected.risk}</dd></div><div><dt>現時点の判断</dt><dd>{selected.decision}</dd></div></dl>
+            <div><strong>推測される結論</strong><p>{selected.finding}</p></div>
+            <div className="gate"><strong>残す人間承認</strong><p>{selected.humanGate}</p></div>
+          </aside>
+        </div>
+      </section>
+
+      <section className="kei-exec-gate" id="kei-exec-gate">
+        <header className="kei-section-head"><div><p className="section-index">04 / INVESTMENT &amp; GOVERNANCE GATE</p><h2>本投資へ進む前に、4つの経営ゲートを通す</h2><small>現時点は第1ゲートです。未確認の連携や自動実行を、導入済みとして扱いません。</small></div><span>現在：GATE 1</span></header>
+        <div className="kei-exec-gate-flow" aria-label="AI投資判断と人間承認のフロー">
+          <article className="is-current"><span>GATE 1</span><strong>範囲を承認</strong><p>1工程・36名・30日。責任者と停止条件を決める。</p><small>経営会議</small></article>
+          <article><span>GATE 2</span><strong>条件を確認</strong><p>入力データ、AI提供者、保持、連携費用を確認する。</p><small>情シス・法務・データ管理</small></article>
+          <article><span>GATE 3</span><strong>下書きを検証</strong><p>未接続環境で精度、修正時間、本人の使いやすさを測る。</p><small>業務責任者・利用者</small></article>
+          <article className="is-decision"><span>GATE 4</span><strong>投資を判断</strong><p>純効果から全費用を引き、継続・再設計・停止を決める。</p><small>経営会議・CFO</small></article>
+        </div>
+        <div className="kei-exec-governance-table" role="table" aria-label="経営判断の責任分担">
+          <div role="row" className="head"><span role="columnheader">判断</span><span role="columnheader">承認者</span><span role="columnheader">必要な証拠</span><span role="columnheader">現状</span></div>
+          <div role="row"><strong role="cell">30日検証の開始</strong><span role="cell">事業責任者</span><span role="cell">対象・停止条件・利用者説明</span><b role="cell">承認対象</b></div>
+          <div role="row"><strong role="cell">データ利用</strong><span role="cell">データ管理責任者</span><span role="cell">機密区分・保持・学習利用</span><b role="cell">未確認</b></div>
+          <div role="row"><strong role="cell">システム接続</strong><span role="cell">情報システム責任者</span><span role="cell">権限・監査ログ・復旧手順</span><b role="cell">未接続</b></div>
+          <div role="row"><strong role="cell">本投資</strong><span role="cell">経営会議・CFO</span><span role="cell">実測効果・全費用・残余リスク</span><b role="cell">保留</b></div>
+        </div>
+      </section>
+
+      <section className="kei-exec-impact" id="kei-exec-impact">
+        <header className="kei-section-head"><div><p className="section-index">05 / INVESTMENT SCENARIO</p><h2>効果は試算、投資回収はまだ未判定</h2><small>純短縮にはAI出力の確認・修正時間を差し引いています。金額換算は社内原価と全費用が未確認のため行いません。</small></div><span>デモ試算</span></header>
+        <p className="kei-assumption-note"><strong>すべて仮定値</strong>営業3部門を各12名と置いた36名、1人週4件、1件あたり純8分を掛けた編集用シナリオです。第三営業部の観測値を全社へ統計的に外挿したものではなく、実測効果でもありません。</p>
+        <div className="kei-equation kei-exec-equation"><div><strong>36<small>名</small></strong><span>営業3部門</span></div><b>×</b><div><strong>4<small>件/週</small></strong><span>記録候補</span></div><b>×</b><div><strong>8<small>分</small></strong><span>現行10分 − 確認2分</span></div><b>=</b><div className="result"><strong>19.2<small>h/週</small></strong><span>76.8時間／4週</span></div></div>
+        <div className="kei-exec-investment-verdict"><div><span>今、承認できること</span><strong>30日のオフライン検証</strong><p>対象者の説明、正解例の整理、下書き比較、誤り記録まで。</p></div><div><span>本投資前に見積もること</span><strong>初期設計＋利用＋連携＋監査</strong><p>社内原価と全費用をそろえ、純便益とリスク許容度で判断します。</p></div><div><span>停止条件</span><strong>未承認実行・機密利用・重大誤り</strong><p>1件でも発生した場合は拡大せず、入力と権限設計へ戻ります。</p></div></div>
+      </section>
+
+      <section className="kei-evidence" id="kei-exec-evidence">
+        <header className="kei-section-head"><div><p className="section-index">APPENDIX / EVIDENCE &amp; OEM</p><h2>経営判断に使える範囲と、OEM先の説明責任</h2><small>外部資料はガバナンス設計の参考であり、本画面の効果値や製品機能を証明するものではありません。</small></div><span>経営層向け</span></header>
+        <div className="kei-evidence-grid"><div><span>観測事実・デモ</span><strong>5日・82名・146,320枚</strong><p>反復画面、作業時間帯、部署別候補。業務目的と例外は未確認です。</p></div><div><span>推測</span><strong>24工程を候補化</strong><p>AI化可否、品質、事業効果、現場受容を確定するものではありません。</p></div><div><span>外部比較・デモ</span><strong>業界／同規模モデル</strong><p>すべて架空値。導入時は比較定義、母数、期間、出典をOEM先が提示します。</p></div><div><span>未確認条件</span><strong>費用・契約・接続</strong><p>AI提供者、学習利用、保持、権限、監査、連携方法は未設定です。</p></div></div>
+        <div className="kei-oem-requirements"><h3>OEM先が経営層へ説明する6条件</h3><ol><li>比較母集団と架空値の区別</li><li>候補抽出の定義と除外業務</li><li>AI提供者・保存・学習利用</li><li>投資範囲と全費用</li><li>承認権限・監査・停止手順</li><li>効果検証日と撤退条件</li></ol></div>
+        <div className="kei-guidance-map"><div><strong>経産省 第1.2版</strong><p>経営層のガバナンス構築・モニタリング → 投資ゲートと責任者設計の参考</p></div><div><strong>NIST AI 600-1</strong><p>導入前テスト・記録・継続監視 → 30日検証と停止条件の参考</p></div><div><strong>NIST Human-AI</strong><p>人とAIの役割・責任 → 下書き、個別承認、実行の分離に対応</p></div></div>
+        <p className="kei-no-automation"><strong>デモの固定条件</strong> AI生成、CRM書き込み、メール送信、削除、権限変更はすべて未接続です。本画面から投資承認やシステム実行はできません。</p>
+        <SourceLinks sources={['metiAiGuidelines', 'nistGenerativeAi', 'nistHumanAi']} />
+      </section>
+
+      <footer className="report-footer"><p><strong>利用目的</strong> 経営層がAI化ポートフォリオの検証順と投資ゲートを決めるための画面です。<br /><small>会社名・数値・比較基準・連携状況はすべてOEM商談用の架空設定です。慧のポートレートはAI生成画像です。</small></p><a href="#kei-exec-evidence">判断境界を確認</a></footer>
+    </div>
+  );
+}
+
+function KeiExecutiveBenchmarkRow({ label, company, industry, peer, companyWidth, industryWidth, peerWidth, finding, tone = 'care' }: { label: string; company: string; industry: string; peer: string; companyWidth: number; industryWidth: number; peerWidth: number; finding: string; tone?: 'care' | 'positive' }) {
+  return (
+    <article className={`kei-exec-benchmark-row is-${tone}`}>
+      <div><h3>{label}</h3><p>{finding}</p></div>
+      <div className="kei-exec-benchmark-bars"><div><span>自社</span><i><b className="company-bar" data-chart-motion style={{ width: `${companyWidth}%` }} /></i><strong>{company}</strong></div><div><span>業界モデル</span><i><b data-chart-motion style={{ width: `${industryWidth}%` }} /></i><strong>{industry}</strong></div><div><span>同規模モデル</span><i><b data-chart-motion style={{ width: `${peerWidth}%` }} /></i><strong>{peer}</strong></div></div>
+    </article>
+  );
+}
+
+function KeiManagerReport() {
+  const [candidateView, setCandidateView] = useState<KeiCandidateView>('ready');
+  const candidateGroup = keiCandidateGroups[candidateView];
+  useKeiChartMotion();
+
+  return (
+    <div className="report-page kei-report">
+      <aside className="hiyori-oem-strip kei-oem-strip" aria-label="OEMサンプル表示">
+        <span>OEM SAMPLE</span><strong>サンプル人材｜AI業務設計レポート</strong><small>powered by WORKLOG INSIGHT</small>
+      </aside>
+
+      <header className="report-title kei-title">
+        <div><p>AI WORK DESIGN / PILOT 01</p><h1>第三営業部 AI化設計レポート</h1><span>AIを増やすのではなく、任せる仕事と、人が決めることを一工程ずつ設計します。</span></div>
+        <dl><div><dt>対象</dt><dd>第三営業部・12名</dd></div><div><dt>観測期間</dt><dd>2026.08.25 — 08.31</dd></div></dl>
+      </header>
+
+      <ReportActions audience="manager" title="第三営業部 AI化設計レポート" shareNote="数値・氏名・連携状況はOEM商談用の架空設定です。30日・下書きのみの検証案で、CRMやメールは未接続です。" />
+
+      <nav className="report-toc kei-toc" aria-label="慧の管理職向けレポート内メニュー">
+        <a href="#kei-summary"><span>01</span>重要結論</a>
+        <a href="#kei-compare"><span>02</span>全社比較</a>
+        <a href="#kei-candidates"><span>03</span>候補12件</a>
+        <a className="has-alert" href="#kei-flow"><span>04</span>承認フロー<em>GATE</em></a>
+        <a href="#kei-pilot"><span>05</span>30日検証</a>
+        <a href="#kei-evidence"><span>A</span>根拠・OEM</a>
+      </nav>
+
+      <section className="kei-hero" id="kei-summary">
+        <div className="kei-hero-copy">
+          <p className="section-index">01 / AI SHIFT SUMMARY</p>
+          <div className="kei-hero-advisor"><KeiAvatar compact /><div><span>KEI&apos;S DECISION</span><strong>慧の導入判断</strong></div></div>
+          <h2>12候補を広げず、まず<br /><em><span>「商談後の記録」</span><span>1工程だけ。</span></em></h2>
+          <p>5日間のデモ観測では、第三営業部は全社より反復入力が多く、9名で商談後の記録が終業後へ移る日がありました。これはAI化できるという確定ではありませんが、入力ルールを確認しやすく、小さな下書き支援から検証しやすい候補です。</p>
+          <div className="kei-first-action"><span>最初の行動</span><strong>金曜までに、実際の商談メモ20件と入力ルールを集める。</strong><small>まだシステム接続はしません。まず正解例・必須項目・承認者を確定します。</small></div>
+        </div>
+        <div className="kei-hero-numbers" aria-label="AI化判断サマリー">
+          <a href="#kei-compare"><strong>71<small>h/週</small></strong><span>反復業務候補</span><em>サンプル集計・要確認</em></a>
+          <a href="#kei-candidates"><strong>4<small>/12</small></strong><span>試行候補</span><em>AI化可否は未判定</em></a>
+          <a href="#kei-flow" className="is-rule"><strong>なし</strong><span>承認なしの実行</span><em>設計方針・実行系は未接続</em></a>
+        </div>
+      </section>
+
+      <section className="kei-compare" id="kei-compare">
+        <header className="kei-section-head"><div><p className="section-index">02 / DEPARTMENT VS COMPANY</p><h2>第三営業部は、全社同職種より「繰り返し」が多い</h2><small>同じ5日間・営業記録カテゴリのデモ比較。個人の優劣ではなく、工程を選ぶための集団傾向です。</small></div><span>第三営業部 n=12 ／ 全社営業職 n=34</span></header>
+        <div className="kei-compare-list">
+          <KeiComparisonRow label="商談後の記録時間／人・週" team="中央値 5.9h" company="中央値 3.4h" teamWidth={100} companyWidth={58} delta="+2.5h" note="IQR 4.7–6.9h／2.7–4.2h" />
+          <KeiComparisonRow label="同内容の再入力／人・週" team="中央値 14.2回" company="中央値 7.8回" teamWidth={100} companyWidth={55} delta="+6.4回" note="IQR 9.5–17.5回／5.0–10.2回" />
+          <KeiComparisonRow label="手順が一定の業務比率" team="68%" company="54%" teamWidth={100} companyWidth={79} delta="+14pt" note="試行条件を定義しやすい" tone="positive" />
+        </div>
+        <p className="kei-compare-conclusion"><strong>推測される結論</strong>部署の働き方が悪いのではなく、商談件数が多い部署に同じ記録工程が重なっています。業務量を減らすより、記録の下書きを一度で作る検証が先です。中央値・IQR・nは画面説明用に作った架空分布で、導入時は実データと案件数で再集計します。</p>
+      </section>
+
+      <section className="kei-candidates" id="kei-candidates">
+        <header className="kei-section-head"><div><p className="section-index">03 / CANDIDATE INVENTORY</p><h2>12候補を、任せ方で3分類する</h2><small>「使えるツール」ではなく「人が何を確認するか」で分類しています。すべてデモ用の候補です。</small></div><span>4 + 5 + 3</span></header>
+        <aside className="kei-scoring-rule"><strong>候補の選び方</strong><p><span>5基準を各1点</span><b>→</b><span>4点以上＋高影響判断なし</span></p><small>デモ既定は、頻度・時間・手順の一定さ・検証しやすさ・誤り時の影響を同じ重みで判定。導入時は定義と閾値を業務責任者が承認します。</small></aside>
+        <div className="kei-candidate-tabs" role="tablist" aria-label="AI化候補の分類">
+          {(Object.keys(keiCandidateGroups) as KeiCandidateView[]).map((key) => (
+            <button type="button" role="tab" aria-selected={candidateView === key} className={candidateView === key ? 'selected' : ''} key={key} onClick={() => setCandidateView(key)}>
+              <span>{keiCandidateGroups[key].count}</span><strong>{keiCandidateGroups[key].label}</strong>
+            </button>
+          ))}
+        </div>
+        <p className="kei-candidate-lead">{candidateGroup.lead}</p>
+        <div className="kei-candidate-list" role="tabpanel">
+          {candidateGroup.items.map((item, index) => (
+            <article className={candidateView === 'ready' && index === 0 ? 'selected' : ''} key={item.title}>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <div><h3>{item.title}</h3><p><b>観測・理由</b>{item.evidence}</p></div>
+              <p><b>人が残す判断</b>{item.boundary}</p>
+            </article>
+          ))}
+        </div>
+        <aside className="kei-selected"><span>今回選ぶ1工程</span><strong>商談メモ → CRM入力案</strong><p>入力ルールを確認でき、対外送信せず、担当者が原文と照合できます。効果と誤りの両方を30日で測れるため、最初の候補にします。</p></aside>
+      </section>
+
+      <section className="kei-flow-section" id="kei-flow">
+        <header className="kei-section-head"><div><p className="section-index">04 / HUMAN-IN-THE-LOOP</p><h2>AIは下書きまで。決める・実行する・止めるは人。</h2><small>CRMやメールとの連携は未確認です。デモでは外部システムへ書き込みません。</small></div><span>現在：導入前の条件確認</span></header>
+        <div className="kei-flow" aria-label="AI導入と人間承認の業務フロー">
+          <article className="is-current"><span>BEFORE <b>確認中</b></span><strong>AI導入前</strong><p>担当者が商談メモを見ながら、CRMと日報へ別々に入力。</p><small>まず重複と必須項目を確認</small></article>
+          <article className="is-ai is-future"><span>ASSIST <b>未着手</b></span><strong>AI支援</strong><p>構造化した商談メモから、CRM入力案と日報要点を生成。</p><small>下書きのみ・保存しない</small></article>
+          <article className="is-gate is-future"><span>APPROVE <b>未着手</b></span><strong>人間承認</strong><p>担当者が顧客名、金額、次の行動、期限を原文と照合。</p><small>誤りがあれば修正・却下</small></article>
+          <article className="is-future"><span>EXECUTE <b>未接続</b></span><strong>実行</strong><p>承認した担当者がCRMへ登録。自動書き込みは導入要件として別途判断。</p><small>デモ環境では動作しない</small></article>
+          <article className="is-future"><span>VERIFY <b>未着手</b></span><strong>実行後確認</strong><p>時間、修正箇所、欠落、却下理由を記録し、継続可否を判断。</p><small>週次で止める判断も行う</small></article>
+        </div>
+        <div className="kei-boundary-band"><strong>3つの承認責任</strong><p><b>管理職</b>が試行開始を決め、<b>担当者</b>が個別の下書きを採否し、<b>管理職</b>が30日後の継続・停止を決めます。外部送信、価格・契約、削除、権限変更、人事・健康・懲戒はAI出力や業務ログだけで決めません。</p></div>
+        <div className="kei-approval-table" role="table" aria-label="人間承認の責任分担">
+          <div role="row" className="head"><span role="columnheader">誰が</span><span role="columnheader">何を</span><span role="columnheader">いつ</span><span role="columnheader">否認したら</span></div>
+          <div role="row"><strong role="cell">管理職</strong><span role="cell">試行の開始</span><span role="cell">接続・利用前</span><span role="cell">未着手のまま条件を再設計</span></div>
+          <div role="row"><strong role="cell">担当者</strong><span role="cell">個別の下書き</span><span role="cell">1件ごと</span><span role="cell">破棄し、外部へ書き込まない</span></div>
+          <div role="row"><strong role="cell">管理職</strong><span role="cell">継続・停止</span><span role="cell">週次・30日後</span><span role="cell">停止し、原因と入力を確認</span></div>
+        </div>
+        <p className="kei-operator-note">担当者は将来の試行時に下書きを確認する役割です。この管理職画面からAI出力を生成・承認する操作はできません。</p>
+      </section>
+
+      <section className="kei-pilot" id="kei-pilot">
+        <div className="kei-pilot-copy"><p className="section-index">05 / 30-DAY PILOT</p><span>今月の導入判断</span><h2>接続の前に、<br />下書きだけを30日。</h2><p>最初の20件で正解条件をそろえ、1チーム・1工程・下書きのみで試します。条件を満たさなければ拡大せず、入力設計へ戻ります。</p></div>
+        <ol className="kei-pilot-steps"><li><span>1週目</span><strong>正解を決める</strong><small>20件・必須項目・承認者</small></li><li><span>2週目</span><strong>下書き検証</strong><small>保存・送信なしで比較</small></li><li><span>3週目</span><strong>限定試行</strong><small>対象9名・1工程だけ</small></li><li><span>4週目</span><strong>継続判断</strong><small>時間・誤り・使いやすさ</small></li></ol>
+      </section>
+
+      <aside className="kei-manager-operation" aria-label="試行担当者と部下への確認事項">
+        <div><span>試行責任者・デモ設定</span><strong>第三営業部長 石川</strong><small>業務設計：営業企画 山口 ／ データ確認：情報システム部</small></div>
+        <div><span>部下へ先に聞く3問</span><ol><li>商談メモのどこを二度入力していますか</li><li>AIに見せてはいけない情報はありますか</li><li>下書きのどこを必ず自分で決めたいですか</li></ol></div>
+        <p>氏名・役割はOEM画面用の架空設定です。本人の回答によって対象、入力、承認手順を変更します。試行参加や反復量を人事評価・成績順位には使用しません。</p>
+      </aside>
+
+      <section className="kei-impact">
+        <header className="kei-section-head"><div><p className="section-index">IMPACT SCENARIO</p><h2>期待効果は、前提ごとに表示する</h2><small>削減保証ではありません。対象人数・件数・1件あたり短縮仮説から置いたデモ試算です。</small></div><span>デモ試算</span></header>
+        <div className="kei-equation"><div><strong>9<small>名</small></strong><span>対象者</span></div><b>×</b><div><strong>4<small>件/週</small></strong><span>商談記録</span></div><b>×</b><div><strong>8<small>分</small></strong><span>純短縮：現行10分 − AI確認・修正2分</span></div><b>=</b><div className="result"><strong>4.8<small>時間/週</small></strong><span>19.2時間／4週</span></div></div>
+        <div className="kei-scenario-range"><div><span>慎重｜現行10分 − 確認6分</span><strong>純2.4時間／週</strong></div><div className="standard"><span>標準｜現行10分 − 確認2分</span><strong>純4.8時間／週</strong></div><div><span>上限｜現行15分 − 確認3分</span><strong>純7.2時間／週</strong></div></div>
+        <p className="kei-cost-note"><strong>純短縮に含めたもの</strong> 1件ごとのAI出力確認・修正時間。<strong>費用試算に含めないもの</strong> 初期設計、AI利用料、連携開発、教育、監査運用。費用対効果はこれらを見積もってから判断します。</p>
+        <div className="kei-acceptance"><div><h3>続ける条件</h3><p>必須項目の欠落0件、全件人間承認、中央値で5分以上短縮、利用者の使いやすさが悪化しない。</p></div><div><h3>止める条件</h3><p>未承認の保存・送信、機密データの不適切利用、重大な事実誤り、修正負担の増加が1件でも確認された場合。</p></div></div>
+      </section>
+
+      <section className="kei-evidence" id="kei-evidence">
+        <header className="kei-section-head"><div><p className="section-index">APPENDIX / EVIDENCE &amp; OEM</p><h2>観測・推測・導入条件を混同しない</h2><small>人材会社がOEM商談で説明し、導入前に顧客と合意するための境界です。</small></div><span>管理職向け</span></header>
+        <div className="kei-evidence-grid">
+          <div><span>観測事実・デモ</span><strong>5日・12名・21,460枚</strong><p>画面遷移、作業時間帯、反復入力候補。業務目的や正解条件は本人・管理職へ確認します。</p></div>
+          <div><span>AI化候補・推測</span><strong>12件を3分類</strong><p>ログの反復だけで自動化可否は確定しません。手順、例外、入力品質、権限を確認します。</p></div>
+          <div><span>期待効果・試算</span><strong>4.8時間／週</strong><p>9名×4件×8分のデモ仮説。実測後に更新し、売上や成果を保証しません。</p></div>
+          <div><span>導入条件・未確認</span><strong>連携・権限・保存</strong><p>CRM接続、AI提供者、学習利用、保持期間、監査ログは未設定。OEM先ごとに要件化します。</p></div>
+        </div>
+        <div className="kei-oem-requirements"><h3>OEM先が説明・設定する6条件</h3><ol><li>利用目的と対象業務</li><li>入力データと機密区分</li><li>AI提供者・保存・学習利用</li><li>閲覧・実行・承認権限</li><li>監査ログ・訂正・停止手順</li><li>効果指標と見直し日</li></ol></div>
+        <div className="kei-source-note"><strong>参考資料の使い方</strong><p>下記は製品機能の証明ではなく、役割分担、導入前テスト、記録、継続監視を設計するための一次資料です。NIST AI RMF 1.0は改訂作業中のため、導入時に最新版を再確認します。</p></div>
+        <p className="kei-no-automation"><strong>デモの固定条件</strong> 本画面で自動実行される処理はありません。AI生成、CRM書き込み、メール送信、削除、権限変更はすべて未接続です。</p>
+        <SourceLinks sources={['metiAiGuidelines', 'nistGenerativeAi', 'nistHumanAi']} />
+      </section>
+
+      <footer className="report-footer"><p><strong>利用目的</strong> 管理職が、AIへ任せる工程と人が残す判断を小さく検証するための画面です。<br /><small>会社名・氏名・数値・連携状況はすべてデモ用の架空設定です。慧のポートレートはAI生成画像です。</small></p><a href="#kei-evidence">判断境界を確認</a></footer>
+    </div>
+  );
+}
+
+function KeiComparisonRow({ label, team, company, teamWidth, companyWidth, delta, note, tone = 'care' }: { label: string; team: string; company: string; teamWidth: number; companyWidth: number; delta: string; note: string; tone?: 'care' | 'positive' }) {
+  return (
+    <article className={`kei-comparison-row is-${tone}`}>
+      <div><h3>{label}</h3><p><strong>{delta}</strong>{note}</p></div>
+      <div className="kei-comparison-bars"><div><span>第三営業部</span><i><b className="team-bar" data-chart-motion style={{ width: `${teamWidth}%` }} /></i><strong>{team}</strong></div><div><span>全社平均</span><i><b className="company-bar" data-chart-motion style={{ width: `${companyWidth}%` }} /></i><strong>{company}</strong></div></div>
+    </article>
+  );
+}
+
+type KeiStaffResponse = 'idle' | 'try' | 'explain';
+
+function KeiStaffReport() {
+  const [response, setResponse] = useState<KeiStaffResponse>('idle');
+  useKeiChartMotion();
+
+  return (
+    <div className="report-page kei-report kei-staff-report">
+      <aside className="hiyori-oem-strip kei-oem-strip" aria-label="OEMサンプル表示">
+        <span>OEM SAMPLE</span><strong>サンプル人材｜わたしのAI仕事メモ</strong><small>powered by WORKLOG INSIGHT</small>
+      </aside>
+
+      <header className="report-title kei-title">
+        <div><p>MY AI WORK NOTE / WEEK 35</p><h1>佐藤さんのAI仕事メモ</h1><span>働き方を評価せず、自分で減らしたい繰り返しと、AIへ任せない判断を整理します。</span></div>
+        <dl><div><dt>閲覧範囲</dt><dd>本人のみ（デモ既定）</dd></div><div><dt>観測期間</dt><dd>2026.08.25 — 08.31</dd></div></dl>
+      </header>
+
+      <ReportActions audience="staff" title="佐藤さんのAI仕事メモ" shareNote="氏名・数値・比較基準・連携状況はOEM商談用の架空設定です。AI下書き、CRM保存、メール送信は未実装・未接続です。" />
+
+      <nav className="report-toc kei-toc" aria-label="慧のスタッフ本人向けレポート内メニュー">
+        <a href="#kei-self-summary"><span>01</span>今週の結論</a>
+        <a href="#kei-self-compare"><span>02</span>自分の比較</a>
+        <a href="#kei-self-boundary"><span>03</span>任せる境界</a>
+        <a href="#kei-self-flow"><span>04</span>試し方</a>
+        <a className="has-alert" href="#kei-self-next"><span>05</span>来週の一歩<em>5件</em></a>
+        <a href="#kei-self-data"><span>A</span>データ範囲</a>
+      </nav>
+
+      <section className="kei-self-hero" id="kei-self-summary">
+        <div className="kei-self-hero-copy">
+          <p className="section-index">01 / YOUR WEEK</p>
+          <div className="kei-hero-advisor"><KeiAvatar compact /><div><span>KEI&apos;S NOTE</span><strong>慧から佐藤さんへ</strong></div></div>
+          <h2>入力が遅いのではなく、<br /><em>同じ内容を何度も書いています。</em></h2>
+          <p>今週は商談後の記録が6.8時間あり、そのうち同じ内容を別画面へ入力した候補が17回ありました。商談数や例外対応の影響もあるため、能力や効率の評価には使いません。来週は5件だけ、AIの下書きと自分の入力を比べてみましょう。</p>
+          <div className="kei-first-action"><span>来週の最初の行動</span><strong>月曜に「試してよい商談メモ」を5件、自分で選ぶ。</strong><small>顧客の機密情報は入れず、システムへ接続・保存・送信しない比較テストです。</small></div>
+        </div>
+        <div className="kei-self-kpis" aria-label="本人向けサマリー">
+          <a href="#kei-self-compare"><strong>6.8<small>h/週</small></strong><span>記録時間</span><em>観測候補・事情未確認</em></a>
+          <a href="#kei-self-compare"><strong>17<small>回</small></strong><span>同内容の再入力</span><em>画面遷移からの推定</em></a>
+          <a href="#kei-self-next"><strong>5<small>件</small></strong><span>来週の小さな試行</span><em>本人が選び、いつでも停止</em></a>
+        </div>
+      </section>
+
+      <section className="kei-self-compare" id="kei-self-compare">
+        <header className="kei-section-head"><div><p className="section-index">02 / YOU VS TEAM VS COMPANY</p><h2>本人・所属部署・全社を、同じ営業記録で比べる</h2><small>同じ5日間のデモ値です。順位づけではなく、本人が減らしたい工程を見つけるために使います。</small></div><span>本人 n=1 ／ 部署 n=12 ／ 全社営業 n=34</span></header>
+        <div className="kei-self-comparison-list">
+          <KeiStaffComparisonRow label="商談後の記録時間／週" self="6.8h" team="中央値 5.9h" company="中央値 3.4h" selfWidth={100} teamWidth={87} companyWidth={50} note="本人は部署中央値より0.9時間多い" />
+          <KeiStaffComparisonRow label="同内容の再入力／週" self="17回" team="中央値 14.2回" company="中央値 7.8回" selfWidth={100} teamWidth={84} companyWidth={46} note="入力先と案件数を本人へ確認" />
+          <KeiStaffComparisonRow label="必須項目の入力完了" self="96%" team="93%" company="91%" selfWidth={100} teamWidth={97} companyWidth={95} note="丁寧さは維持できている" tone="positive" />
+        </div>
+        <p className="kei-compare-conclusion"><strong>良かったこと</strong>記録の必須項目はほぼ揃っています。短くするために情報を削るのではなく、丁寧に書いた一つのメモから下書きを作る方法が合いそうです。数値と分布はすべてデモ用の架空値です。</p>
+      </section>
+
+      <section className="kei-self-boundary" id="kei-self-boundary">
+        <header className="kei-section-head"><div><p className="section-index">03 / YOUR DECISION BOUNDARY</p><h2>AIに下書きを作らせることと、自分で決めること</h2><small>AIは作業を支援します。顧客への約束や事実の確定は佐藤さんが行います。</small></div><span>下書きまで</span></header>
+        <div className="kei-self-boundary-grid">
+          <div className="assist"><span>AIに下書きを作らせること</span><ul><li><strong>項目を分ける</strong><small>商談メモから顧客課題・次の行動・期限の候補を抽出</small></li><li><strong>短くまとめる</strong><small>日報用の要点を下書き</small></li><li><strong>抜けを知らせる</strong><small>必須項目が見当たらない箇所を確認候補として表示</small></li></ul></div>
+          <div className="human"><span>佐藤さんが判断すること</span><ul><li><strong>事実を確定する</strong><small>顧客名・金額・期限を原文と照合</small></li><li><strong>文脈を直す</strong><small>顧客の温度感や例外事情を自分の言葉で修正</small></li><li><strong>使うか決める</strong><small>下書きを採用・修正・破棄し、登録は自分で実行</small></li></ul></div>
+        </div>
+        <aside className="kei-self-rights"><strong>試さない選択もできます</strong><p>本人の説明、担当案件、顧客との約束、データの扱いを優先します。この本人画面は本人だけが閲覧するデモ既定で、管理職には別の部署集計画面を表示します。下の希望選択は保存・送信されず、数字やAI提案だけで能力・意欲・人事評価を判断しません。</p></aside>
+      </section>
+
+      <section className="kei-self-flow-section" id="kei-self-flow">
+        <header className="kei-section-head"><div><p className="section-index">04 / SAFE TRIAL FLOW</p><h2>来週は、外部へつながない5件だけ</h2><small>AI支援以降は未着手です。現在の製品画面からAI生成、CRM保存、メール送信はできません。</small></div><span>現在：試行前</span></header>
+        <div className="kei-self-flow" aria-label="本人向けAI下書き試行フロー">
+          <article className="is-current"><span>1</span><strong>本人が選ぶ</strong><p>機密情報を除いた5件を選ぶ。</p><small>選ばなくても不利益なし</small></article>
+          <article><span>2</span><strong>AIが下書く</strong><p>指定した項目だけを構造化。</p><small>未着手・保存なし</small></article>
+          <article className="is-gate"><span>3</span><strong>本人が確認</strong><p>原文と照合し、採用・修正・破棄。</p><small>判断は毎回本人</small></article>
+          <article><span>4</span><strong>本人が登録</strong><p>承認した内容だけを手動入力。</p><small>CRMは未接続</small></article>
+          <article><span>5</span><strong>本人が振り返る</strong><p>時間、直した箇所、使いやすさを記録。</p><small>続けるか自分でも確認</small></article>
+        </div>
+      </section>
+
+      <section className="kei-self-next" id="kei-self-next">
+        <div className="kei-self-next-copy"><p className="section-index">05 / NEXT WEEK</p><span>来週は、これだけ</span><h2>5件だけ比べて、<br />1件3分以上減るかを見る。</h2><p>現在の入力時間と、AI下書きの確認・修正を含む時間を同じ条件で比べます。速さだけでなく、事実誤りと「自分で使いやすいか」も記録します。</p></div>
+        <ol><li><span>1</span><strong>5件を選ぶ</strong><small>機密情報を除く</small></li><li><span>2</span><strong>時間を測る</strong><small>確認・修正を含める</small></li><li><span>3</span><strong>誤りを残す</strong><small>欠落・誤記・違和感</small></li><li><span>4</span><strong>自分で決める</strong><small>続ける・直す・止める</small></li></ol>
+      </section>
+
+      <aside className="kei-self-feedback" aria-live="polite">
+        <div><strong>この試行について</strong><p>本人の希望を先に記録します。ここで選んでも外部送信されません。</p></div>
+        <div className="kei-self-feedback-actions"><button type="button" className={response === 'try' ? 'selected' : ''} onClick={() => setResponse('try')}>5件だけ試してみたい</button><button type="button" className={response === 'explain' ? 'selected' : ''} onClick={() => setResponse('explain')}>先に事情を説明したい</button></div>
+        <p>{response === 'try' ? '選択を画面内だけに反映しました。実際の試行開始には、入力範囲と承認方法の確認が必要です。' : response === 'explain' ? '本人の説明を優先する選択です。担当案件や入力先の事情を確認してから、対象を見直します。' : 'まだ選択されていません。試行を断っても、人事評価や業務評価には使いません。'}</p>
+      </aside>
+
+      <section className="kei-evidence kei-self-data" id="kei-self-data">
+        <header className="kei-section-head"><div><p className="section-index">APPENDIX / YOUR DATA</p><h2>本人画面で分かること、決めないこと</h2><small>OEM導入時は、本人への説明、訂正、削除、相談窓口を事前に合意します。</small></div><span>スタッフ本人向け</span></header>
+        <div className="kei-evidence-grid"><div><span>観測事実・デモ</span><strong>5日・本人1名・3,126枚</strong><p>画面遷移、作業時間帯、同内容入力の候補。入力の理由は分かりません。</p></div><div><span>推測</span><strong>再入力17回</strong><p>案件数、顧客事情、作業ルールを確認するまで改善余地とは確定しません。</p></div><div><span>比較・デモ</span><strong>本人／部署／全社</strong><p>同じ営業記録を同期間で比較。すべて架空値で、人事評価には使いません。</p></div><div><span>本人が選べること</span><strong>試す・直す・止める</strong><p>入力対象と下書きの採否を本人が選び、説明や訂正を優先します。</p></div></div>
+        <div className="kei-oem-requirements"><h3>OEM先が本人へ説明する6条件</h3><ol><li>観測目的と閲覧者</li><li>入力してよいデータ</li><li>AI提供者・保存・学習利用</li><li>下書きの承認と実行者</li><li>訂正・削除・相談窓口</li><li>人事評価に使わない範囲</li></ol></div>
+        <p className="kei-no-automation"><strong>デモの固定条件</strong> AI生成、CRM書き込み、メール送信、削除、権限変更はすべて未接続です。上の希望ボタンも画面内表示だけで、送信されません。</p>
+        <SourceLinks sources={['metiAiGuidelines', 'nistGenerativeAi', 'nistHumanAi']} />
+      </section>
+
+      <footer className="report-footer"><p><strong>利用目的</strong> 本人が、自分で減らしたい反復作業とAIへ任せない判断を整理するための画面です。<br /><small>氏名・会社名・数値・比較基準・連携状況はすべてOEM商談用の架空設定です。慧のポートレートはAI生成画像です。</small></p><a href="#kei-self-data">データ利用方針</a></footer>
+    </div>
+  );
+}
+
+function KeiStaffComparisonRow({ label, self, team, company, selfWidth, teamWidth, companyWidth, note, tone = 'care' }: { label: string; self: string; team: string; company: string; selfWidth: number; teamWidth: number; companyWidth: number; note: string; tone?: 'care' | 'positive' }) {
+  return (
+    <article className={`kei-self-comparison-row is-${tone}`}>
+      <div><h3>{label}</h3><p>{note}</p></div>
+      <div className="kei-self-comparison-bars"><div><span>あなた</span><i><b className="self-bar" data-chart-motion style={{ width: `${selfWidth}%` }} /></i><strong>{self}</strong></div><div><span>所属部署</span><i><b data-chart-motion style={{ width: `${teamWidth}%` }} /></i><strong>{team}</strong></div><div><span>全社営業</span><i><b data-chart-motion style={{ width: `${companyWidth}%` }} /></i><strong>{company}</strong></div></div>
+    </article>
+  );
+}
+
+function HiyoriExecutiveReport() {
+  useEffect(() => {
+    const charts = Array.from(document.querySelectorAll<HTMLElement>('[data-chart-motion]'));
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    charts.forEach((chart) => chart.classList.add('motion-ready'));
+    if (reducedMotion) {
+      charts.forEach((chart) => chart.classList.add('is-visible'));
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          (entry.target as HTMLElement).classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.24 });
+    charts.forEach((chart) => observer.observe(chart));
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div className="report-page hiyori-report hiyori-executive-report">
+      <aside className="hiyori-oem-strip" aria-label="OEMサンプル表示">
+        <span>OEM SAMPLE</span><strong>サンプル人材｜組織ケア経営レポート</strong><small>powered by WORKLOG INSIGHT</small>
+      </aside>
+
+      <header className="report-title hiyori-title hiyori-executive-title">
+        <div><p>ORGANIZATION CARE / WEEK 35</p><h1>組織ケア経営レポート</h1><span>個人を予測・評価せず、働きにくさを生む組織側の条件と、今月の経営判断を整理します。</span></div>
+        <dl><div><dt>対象</dt><dd>全社・82名</dd></div><div><dt>集計期間</dt><dd>2026.08.25 — 08.31</dd></div></dl>
+      </header>
+
+      <ReportActions audience="executive" title="組織ケア経営レポート" />
+
+      <nav className="report-toc hiyori-toc hiyori-executive-toc" aria-label="ひより経営層向けレポート内メニュー">
+        <a href="#hiyori-exec-summary"><span>01</span>経営要点</a>
+        <a href="#hiyori-exec-benchmark"><span>02</span>外部比較</a>
+        <a className="has-alert" href="#hiyori-exec-priority"><span>03</span>重点テーマ<em>3件</em></a>
+        <a href="#hiyori-exec-decision"><span>04</span>30日計画</a>
+        <a href="#hiyori-exec-impact"><span>05</span>効果試算</a>
+        <a href="#hiyori-exec-data"><span>A</span>根拠・OEM</a>
+      </nav>
+
+      <section className="hiyori-exec-hero" id="hiyori-exec-summary">
+        <div className="hiyori-exec-hero-copy">
+          <p className="section-index">01 / EXECUTIVE SUMMARY</p>
+          <div className="hiyori-hero-advisor"><HiyoriAvatar compact /><div><span>HIYORI&apos;S VIEW</span><strong>ひよりの経営メモ</strong></div></div>
+          <h2>辞める人を当てるのではなく、<br /><em>働きにくさを生む構造を先に直す。</em></h2>
+          <p>全社では、相談先の集中と終業後作業が同規模企業のデモ基準を上回っています。個人の意欲ではなく、相談窓口・会議後の記録・入力工程が一部の人と部署へ寄っていることが共通要因と推測されます。今月は3テーマを同時に広げず、第三営業部の相談分散から検証します。</p>
+          <small>デモデータによる組織傾向の推定です。健康状態・ストレス・退職意向・個人の能力は判定していません。</small>
+        </div>
+        <div className="hiyori-exec-scoreboard" aria-label="経営判断サマリー">
+          <a href="#hiyori-exec-priority"><strong>3</strong><span>要経営判断</span><small>仕組みを変えるテーマ</small></a>
+          <a href="#hiyori-exec-benchmark" className="is-watch"><strong>2</strong><span>外部基準超過</span><small>相談集中・終業後作業</small></a>
+          <div><strong>1</strong><span>先行実施部署</span><small>第三営業部から開始</small></div>
+        </div>
+      </section>
+
+      <section className="hiyori-exec-benchmark" id="hiyori-exec-benchmark">
+        <header className="hiyori-section-head"><div><p className="section-index">02 / EXTERNAL BENCHMARK</p><h2>会社全体を、同規模企業のデモ基準と比べる</h2><small>外部比較は商談用のモデル値です。導入時は業種・職種・勤務形態を揃えた基準へ置き換えます。</small></div><span>従業員50〜100名モデル</span></header>
+        <div className="hiyori-exec-comparison-list">
+          <HiyoriExecutiveComparisonRow label="上位3名への相談集中" company="22%" benchmark="13%" companyWidth={100} benchmarkWidth={59} delta="+9pt" finding="窓口が一部社員へ偏る" />
+          <HiyoriExecutiveComparisonRow label="終業後作業が週2日以上" company="18%" benchmark="11%" companyWidth={100} benchmarkWidth={61} delta="+7pt" finding="日中に完結しにくい工程" />
+          <HiyoriExecutiveComparisonRow label="月1回以上の1on1実施" company="76%" benchmark="71%" companyWidth={100} benchmarkWidth={93} delta="+5pt" finding="対話の土台は確保" tone="positive" />
+        </div>
+        <p className="hiyori-comparison-note"><strong>結論</strong>対話機会は平均以上ですが、相談と作業の偏りは残っています。1on1の回数を増やすより、そこで確認した困りごとを業務設計へ戻す仕組みが優先です。</p>
+      </section>
+
+      <section className="hiyori-exec-priority" id="hiyori-exec-priority">
+        <header className="hiyori-section-head"><div><p className="section-index">03 / PRIORITY THEMES</p><h2>経営が今月決める、3つの組織課題</h2><small>個人への注意ではなく、会社側が変えられる条件に限定しています。</small></div><span>優先順</span></header>
+        <div className="hiyori-exec-priority-list">
+          <article><span>01</span><div><p>最優先｜第三営業部</p><h3>一次相談先を曜日で分散する</h3><small>観測：相談の38%が上位2名へ集中。木曜午後の集中時間は部署平均より31分短い。</small></div><strong>30日で検証</strong></article>
+          <article><span>02</span><div><p>次点｜業務推進部</p><h3>会議後の記録先と担当を固定する</h3><small>観測：会議後24時間以内の転記が週47件。重複確認の候補が前月比18%増。</small></div><strong>工程を標準化</strong></article>
+          <article><span>03</span><div><p>基盤｜全管理職</p><h3>1on1の困りごとを集団課題へ戻す</h3><small>観測：1on1実施率76%に対し、業務変更の記録が残るのは29%。対話後の実行が途切れています。</small></div><strong>月次で確認</strong></article>
+        </div>
+        <aside className="hiyori-exec-boundary"><strong>経営画面に個人名は出さない</strong><p>経営層は部署単位の構造と施策を確認します。個別支援が必要な場合も、管理職が本人へ事情を聞き、必要最小限の範囲で対応します。</p></aside>
+      </section>
+
+      <section className="hiyori-exec-decision" id="hiyori-exec-decision">
+        <div className="hiyori-exec-decision-copy"><p className="section-index">04 / 30-DAY DECISION</p><span>今月の経営判断</span><h2>第三営業部で、<br />相談分散を30日だけ試す。</h2><p>全社制度にする前に、対象部署・担当役員・終了条件を決めて小さく検証します。改善しなければ個人の努力を求めず、窓口設計を見直します。</p></div>
+        <div className="hiyori-exec-flow" aria-label="30日検証フロー">
+          <p>DECIDE → TRY → REVIEW</p>
+          <div><span>1</span><strong>決める</strong><small>責任者・対象・終了条件</small></div>
+          <div><span>2</span><strong>試す</strong><small>相談先を曜日で分散</small></div>
+          <div><span>3</span><strong>見直す</strong><small>本人実感と集団値を照合</small></div>
+        </div>
+      </section>
+
+      <section className="hiyori-exec-impact" id="hiyori-exec-impact">
+        <header className="hiyori-section-head"><div><p className="section-index">05 / IMPACT SCENARIO</p><h2>30日検証で確認する効果</h2><small>削減を保証する数値ではなく、対象工程と現状時間から置いた試算シナリオです。</small></div><span>デモ試算</span></header>
+        <div className="hiyori-exec-impact-grid">
+          <div><span>終業後入力</span><strong>月86<small>時間</small></strong><p>対象部署の現状から、日中へ戻せる可能性がある時間</p></div>
+          <div><span>確認・再転記</span><strong>月42<small>時間</small></strong><p>記録先と担当を固定した場合の削減候補</p></div>
+          <div><span>効果確認</span><strong>3<small>指標</small></strong><p>相談集中・終業後作業・本人の実感で判断</p></div>
+        </div>
+        <div className="hiyori-exec-verdict"><strong>判断基準</strong><p>相談集中が5pt以上下がり、本人の「進めやすさ」が悪化しなければ次の部署へ展開。どちらかが満たない場合は継続せず、設計を見直します。</p></div>
+      </section>
+
+      <section className="hiyori-exec-data" id="hiyori-exec-data">
+        <header className="hiyori-section-head"><div><p className="section-index">APPENDIX / EVIDENCE &amp; OEM</p><h2>根拠・判断境界・OEM導入条件</h2><small>人材会社が説明できる範囲までを、画面内に残します。</small></div><span>経営層向け</span></header>
+        <div className="hiyori-data-grid"><div><span>観測スクリーンショット</span><strong>126,840枚</strong></div><div><span>対象</span><strong>82名</strong></div><div><span>有効観測日</span><strong>5日</strong></div><div><span>集計単位</span><strong>部署・全社</strong></div></div>
+        <div className="hiyori-boundary-grid"><div><h3>この画面で経営判断すること</h3><p>相談窓口、会議後工程、入力工程、管理職支援など、会社側が変更できる条件と検証順を決めます。</p></div><div><h3>この画面では判断しないこと</h3><p>健康状態、ストレス、退職意向、性格、能力、人事評価。個人名や個人順位も経営画面には表示しません。</p></div></div>
+        <div className="hiyori-oem-legend"><p><strong>デモで確定していること</strong>3つの役割別画面、個人名を出さない経営集計、判断境界の表示</p><p><strong>OEM導入時に要合意</strong>ブランド、利用目的、比較母集団、閲覧権限、本人への説明、保存・訂正・削除手順</p></div>
+        <SourceLinks sources={['ppc', 'mhlwStress']} />
+      </section>
+
+      <footer className="report-footer"><p><strong>利用目的</strong> 経営層が組織側の働き方を改善するための画面です。個人の健康・退職・能力予測や人事査定には使用しません。<br /><small>会社名・数値・比較基準はすべてOEM商談用の架空データです。ひよりのポートレートはAI生成画像です。</small></p><a href="#hiyori-exec-data">判断境界を確認</a></footer>
+    </div>
+  );
+}
+
+function HiyoriExecutiveComparisonRow({ label, company, benchmark, companyWidth, benchmarkWidth, delta, finding, tone = 'care' }: { label: string; company: string; benchmark: string; companyWidth: number; benchmarkWidth: number; delta: string; finding: string; tone?: 'care' | 'positive' }) {
+  return (
+    <article className={`hiyori-exec-comparison-row is-${tone}`}>
+      <div><h3>{label}</h3><p><strong>{delta}</strong>{finding}</p></div>
+      <div className="hiyori-exec-comparison-bars"><div><span>自社</span><i><b className="company-bar" data-chart-motion style={{ width: `${companyWidth}%` }} /></i><strong>{company}</strong></div><div><span>同規模モデル</span><i><b className="benchmark-bar" data-chart-motion style={{ width: `${benchmarkWidth}%` }} /></i><strong>{benchmark}</strong></div></div>
+    </article>
+  );
+}
+
+function HiyoriManagerReport() {
+  const [showNames, setShowNames] = useState(false);
+  const dialogueCandidates = hiyoriDialogues.filter((item) => item.state === 'check');
+
+  useEffect(() => {
+    const charts = Array.from(document.querySelectorAll<HTMLElement>('[data-chart-motion]'));
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    charts.forEach((chart) => chart.classList.add('motion-ready'));
+    if (reducedMotion) {
+      charts.forEach((chart) => chart.classList.add('is-visible'));
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          (entry.target as HTMLElement).classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.24 });
+    charts.forEach((chart) => observer.observe(chart));
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div className="report-page hiyori-report">
+      <aside className="hiyori-oem-strip" aria-label="OEMサンプル表示">
+        <span>OEM SAMPLE</span><strong>サンプル人材｜定着支援レポート</strong><small>powered by WORKLOG INSIGHT</small>
+      </aside>
+
+      <header className="report-title hiyori-title">
+        <div><p>TEAM CARE / WEEK 35</p><h1>第三営業部 チームケア週報</h1><span>人を評価するのではなく、対話を始める理由を見つける管理職レポートです。</span></div>
+        <dl><div><dt>対象</dt><dd>第三営業部・12名</dd></div><div><dt>集計期間</dt><dd>2026.08.25 — 08.31</dd></div></dl>
+      </header>
+
+      <ReportActions audience="manager" title="第三営業部 チームケア週報" />
+
+      <nav className="report-toc hiyori-toc" aria-label="ひより管理職向けレポート内メニュー">
+        <a href="#hiyori-summary"><span>01</span>要点</a>
+        <a href="#hiyori-action"><span>02</span>今週やる</a>
+        <a href="#hiyori-pulse"><span>03</span>チーム差</a>
+        <a className="has-alert" href="#hiyori-dialogue"><span>04</span>今話す<em>3名</em></a>
+        <a href="#hiyori-positive"><span>05</span>チーム改善</a>
+        <a href="#hiyori-data"><span>A</span>範囲・OEM</a>
+      </nav>
+
+      <section className="hiyori-hero" id="hiyori-summary">
+        <div className="hiyori-hero-main">
+          <div className="hiyori-hero-copy">
+            <p className="section-index">01 / CARE SUMMARY</p>
+            <div className="hiyori-hero-advisor"><HiyoriAvatar compact /><div><span>HIYORI&apos;S VIEW</span><strong>ひよりの今週メモ</strong></div></div>
+            <h2>3人を判断する前に、<br /><em>3人へ聞く。</em></h2>
+            <p>田中さん・佐藤さん・林さんへ、相談・入力・会議後作業が偏っています。忙しさを個人の問題にせず、本人の事情を聞いてから依頼先と時間帯を1週間だけ分散します。</p>
+            <small>デモデータによる推定です。健康状態・ストレス・意欲・退職意向は判定していません。</small>
+          </div>
+          <div className="hiyori-care-flow" aria-label="ひよりの判断フロー">
+            <p>OBSERVE → ASK → SUPPORT</p>
+            <div><span>1</span><strong>変化を見る</strong><small>集団傾向と前週差</small></div>
+            <div><span>2</span><strong>本人に聞く</strong><small>理由を決めつけない</small></div>
+            <div><span>3</span><strong>チームを整える</strong><small>1週間だけ試す</small></div>
+          </div>
+        </div>
+        <div className="hiyori-counts" aria-label="今週のチームケア内訳">
+          <a href="#hiyori-positive"><strong>4</strong><span>良い兆し</span><small>工夫を認めて共有</small></a>
+          <a href="#hiyori-dialogue" className="is-check"><strong>3</strong><span>対話候補</span><small>本人へ事情を確認</small></a>
+          <div><strong>3</strong><span>通常範囲</span><small>今週は見守る</small></div>
+          <div><strong>2</strong><span>判定保留</span><small>データを待つ</small></div>
+        </div>
+      </section>
+
+      <section className="hiyori-action" id="hiyori-action">
+        <div className="hiyori-action-copy"><p className="section-index">02 / THIS WEEK</p><span>今週、管理職がやること</span><h2>3名に聞き、<br />1つの運用を変える。</h2><p>結論を持たずに事情を聞き、相談先の分散を1週間だけ試します。金曜に本人の実感と集団傾向を照合します。</p><div className="hiyori-prior-week"><span>LAST WEEK</span><p><strong>2名は通常範囲へ</strong>／1名は今週も継続確認 <small>デモ推移</small></p></div></div>
+        <ol><li><span>月</span><div><strong>個別に聞く</strong><small>3名へ10分ずつ、最初の質問から</small></div></li><li><span>水</span><div><strong>相談先を分散</strong><small>曜日別の一次相談先を試す</small></div></li><li><span>金</span><div><strong>実感を確認</strong><small>データと本人の説明を照合</small></div></li></ol>
+      </section>
+
+      <section className="hiyori-pulse" id="hiyori-pulse">
+        <header className="hiyori-section-head"><div><p className="section-index">03 / TEAM PULSE</p><h2>部署の変化を、会社全体と比べる</h2><small>個人の状態ではなく、チーム運営を見直すための集団傾向です。</small></div><span>全社82名・同期間のデモ集計</span></header>
+        <div className="hiyori-comparison-list">
+          <HiyoriComparisonRow label="上位3名への相談集中" team="27%" company="14%" teamWidth={100} companyWidth={52} delta="+13pt" note="相談先の偏りが大きい" />
+          <HiyoriComparisonRow label="終業後作業が週2日以上" team="25%" company="13%" teamWidth={100} companyWidth={52} delta="+12pt" note="業務配分を確認" />
+          <HiyoriComparisonRow label="1on1実施率" team="83%" company="72%" teamWidth={100} companyWidth={87} delta="+11pt" note="対話機会は確保" tone="positive" />
+        </div>
+        <p className="hiyori-comparison-note"><strong>比較の読み方</strong>平均との差は人の優劣ではありません。同期間の全社82名と比べ、管理職が事情を聞くテーマを絞るためのデモ値です。</p>
+      </section>
+
+      <section className="hiyori-dialogue" id="hiyori-dialogue">
+        <header className="hiyori-section-head">
+          <div><p className="section-index">04 / TALK NOW</p><h2>今週、先に話す<wbr />3名</h2><small>観測したことと、本人へ聞くことを分けて表示します。</small></div>
+          <div className="hiyori-name-control"><small>個人表示：{showNames ? 'ON（デモ）' : 'OFF（初期値）'}</small><button type="button" aria-pressed={!showNames} onClick={() => setShowNames((current) => !current)}>{showNames ? '匿名表示に戻す' : 'デモで個人名を表示'}</button></div>
+        </header>
+        <div className="hiyori-privacy-note"><strong>初期値は匿名</strong><p>実運用はOFF開始を想定。個人名は利用目的、閲覧権限、社内ルールを合意したOEM先でのみ表示します。本人画面への開示範囲も導入前に要合意です。ボタンは商談用デモです。</p></div>
+        <div className="hiyori-dialogue-list">
+          {dialogueCandidates.map((item) => (
+            <article className={`hiyori-dialogue-item is-${item.state}`} key={item.name}>
+              <header><div><strong>{showNames ? item.name : item.anonymous}</strong><small>第三営業部</small></div><span>{item.label}</span></header>
+              <dl><div><dt>観測したこと</dt><dd>{item.observation}</dd></div><div><dt>{item.state === 'positive' ? '本人に聞きたいこと' : item.state === 'pending' ? '扱い方' : '最初の質問'}</dt><dd>{item.question}</dd></div></dl>
+              <small>根拠：{item.source}</small>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <div className="hiyori-focus-grid" id="hiyori-positive">
+        <section className="hiyori-focus is-positive">
+          <header><p className="section-index">05 / KEEP</p><h2>続けたい、ログ上の良い変化</h2><small>4件から代表2件を表示</small></header>
+          <div><strong>通知確認をまとめる工夫</strong><p>高橋さんは午後の集中ブロックが42分増加。本人の許可を得て、再現できる条件だけを共有します。</p></div>
+          <div><strong>1on1後の差し戻し減少</strong><p>山本さんは相談のタイミングが整い、手戻りが減少。対話内容ではなく、進め方の工夫を確認します。</p></div>
+        </section>
+        <section className="hiyori-focus is-care">
+          <header><p className="section-index">05 / CHANGE</p><h2>管理職が変える、チーム側の条件</h2></header>
+          <div><strong>相談窓口を一人に寄せない</strong><p>曜日ごとに一次相談先を分け、3名への集中が下がるかを1週間確認します。</p></div>
+          <div><strong>会議後の確認先を明示する</strong><p>会議終了時に「記録場所・決める人・期限」の3点を残し、個人の工夫に依存しない状態を作ります。</p></div>
+        </section>
+        <aside className="hiyori-hold-note"><span>判定保留 2名</span><p>観測日数や担当変更の影響で通常週と比較できません。今週は結論を出さず、データが揃うのを待ちます。</p></aside>
+      </div>
+
+      <section className="hiyori-data" id="hiyori-data">
+        <header className="hiyori-section-head"><div><p className="section-index">APPENDIX / DATA & OEM</p><h2>表示する範囲と、OEM導入時の確認項目</h2><small>説明責任をロゴ差し替えだけにしないためのデモ仕様です。</small></div><span>人材会社向けサンプル</span></header>
+        <div className="hiyori-data-grid"><div><span>観測スクリーンショット</span><strong>17,920枚</strong></div><div><span>対象</span><strong>12名</strong></div><div><span>有効観測日</span><strong>5日</strong></div><div><span>照合データ</span><strong>3系統</strong></div></div>
+        <div className="hiyori-boundary-grid"><div><h3>この画面に表示する</h3><p>作業時間帯、相談・依頼の集中、予定表との重なり、前週からの変化、データ不足。ストレスチェック結果は利用データに含めません。</p></div><div><h3>この画面では判定しない</h3><p>健康状態、ストレス、意欲、能力、退職意向、人事評価。必要な支援は本人との対話から確認します。</p></div></div>
+        <div className="hiyori-oem-legend"><p><strong>このデモで操作可能</strong>匿名／個人名の表示切替</p><p><strong>導入時に要合意</strong>以下は設定済み機能ではなく、OEM導入前に決める要件です。</p></div>
+        <div className="hiyori-oem-requirements">
+          <div><span>要合意｜ブランド</span><strong>提供名・ロゴ・色</strong><small>OEM先ごとに要件確認</small></div>
+          <div><span>要合意｜利用データ</span><strong>ログ・予定表・依頼履歴</strong><small>利用目的と取得範囲を明示</small></div>
+          <div><span>要合意｜個人表示</span><strong>初期OFF・権限でON</strong><small>組織ルールに合わせて設計</small></div>
+          <div><span>要合意｜判定条件</span><strong>集計期間・閾値</strong><small>定義と根拠を説明可能に</small></div>
+          <div><span>要合意｜閲覧管理</span><strong>権限・閲覧ログ・保持期間</strong><small>本デモには未実装。導入前に要件定義</small></div>
+        </div>
+        <SourceLinks sources={['ppc', 'mhlwStress']} />
+      </section>
+
+      <footer className="report-footer"><p><strong>利用目的</strong> 採用後・就業後のチーム支援と対話のきっかけに使用します。健康診断・個人順位・人事査定には使用しません。<br /><small>会社名・氏名・数値・経歴はすべてデモ用の架空設定です。ひよりのポートレートはAI生成画像です。</small></p><a href="#hiyori-data">表示範囲を確認</a></footer>
+    </div>
+  );
+}
+
+function HiyoriComparisonRow({ label, team, company, teamWidth, companyWidth, delta, note, tone = 'care' }: { label: string; team: string; company: string; teamWidth: number; companyWidth: number; delta: string; note: string; tone?: 'care' | 'positive' }) {
+  return (
+    <article className={`hiyori-comparison-row is-${tone}`}>
+      <div><h3>{label}</h3><p><strong>{delta}</strong>{note}</p></div>
+      <div className="hiyori-comparison-bars"><div><span>第三営業部</span><i><b className="team-bar" data-chart-motion style={{ width: `${teamWidth}%` }} /></i><strong>{team}</strong></div><div><span>全社平均</span><i><b className="company-bar" data-chart-motion style={{ width: `${companyWidth}%` }} /></i><strong>{company}</strong></div></div>
+    </article>
+  );
+}
+
+function HiyoriStaffReport() {
+  const [feedback, setFeedback] = useState<'close' | 'different' | 'context' | null>(null);
+  const feedbackLabels = {
+    close: '実感に近い',
+    different: '少し違う',
+    context: '事情を補足したい',
+  } as const;
+
+  useEffect(() => {
+    const charts = Array.from(document.querySelectorAll<HTMLElement>('[data-chart-motion]'));
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    charts.forEach((chart) => chart.classList.add('motion-ready'));
+    if (reducedMotion) {
+      charts.forEach((chart) => chart.classList.add('is-visible'));
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          (entry.target as HTMLElement).classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.24 });
+    charts.forEach((chart) => observer.observe(chart));
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div className="report-page hiyori-report hiyori-self-report">
+      <aside className="hiyori-oem-strip" aria-label="OEMサンプル表示">
+        <span>OEM SAMPLE</span><strong>サンプル人材｜セルフケア週報</strong><small>powered by WORKLOG INSIGHT</small>
+      </aside>
+
+      <header className="report-title hiyori-title hiyori-self-title">
+        <div><p>MY WEEK / WEEK 35</p><h1>田中さんのチームワーク週報</h1><span>評価のためではなく、自分に合う働き方と相談のタイミングを見つける本人専用レポートです。</span></div>
+        <dl><div><dt>表示対象</dt><dd>田中さん本人</dd></div><div><dt>集計期間</dt><dd>2026.08.25 — 08.31</dd></div></dl>
+      </header>
+
+      <ReportActions audience="staff" title="田中さんのチームワーク週報" />
+
+      <nav className="report-toc hiyori-toc hiyori-self-toc" aria-label="ひよりスタッフ本人向けレポート内メニュー">
+        <a href="#hiyori-self-summary"><span>01</span>今週</a>
+        <a href="#hiyori-self-type"><span>02</span>あなたの型</a>
+        <a href="#hiyori-self-comparison"><span>03</span>部署・全社</a>
+        <a href="#hiyori-self-reflection"><span>04</span>良い点・注意</a>
+        <a href="#hiyori-self-next"><span>05</span>来週の一歩</a>
+        <a href="#hiyori-self-data"><span>A</span>データ</a>
+      </nav>
+
+      <section className="hiyori-self-hero" id="hiyori-self-summary">
+        <div className="hiyori-self-hero-copy">
+          <p className="section-index">01 / YOUR WEEK</p>
+          <div className="hiyori-hero-advisor"><HiyoriAvatar /><div><span>HIYORI&apos;S NOTE</span><strong>ひよりと振り返る、あなたの今週</strong></div></div>
+          <h2>助ける力が、<br /><em>抱え込む形にならないように。</em></h2>
+          <p>今週は、チーム内の相談・レビュー依頼の27%が田中さんに集まりました。頼られていることは明確な強みです。一方、木曜午後に依頼が重なり、自分の提案作成が終業後へ移った日があります。来週は「相談に応える力」を残しながら、自分の時間も守れる形を一つだけ試します。</p>
+          <small>今週のデモログから見える傾向です。性格・心身・能力・成果を判定するものではありません。</small>
+        </div>
+        <div className="hiyori-self-kpis" aria-label="今週の主な特徴">
+          <a href="#hiyori-self-comparison"><span>相談・レビューの集中</span><strong>27%</strong><small>部署平均 15% ／ 全社 11%</small></a>
+          <a href="#hiyori-self-comparison" className="is-care"><span>まとまった集中時間</span><strong>8.2<small>h</small></strong><small>部署平均より −2.2h</small></a>
+          <a href="#hiyori-self-next" className="is-care"><span>終業後の入力</span><strong>4<small>日</small></strong><small>前週より +2日</small></a>
+        </div>
+      </section>
+
+      <section className="hiyori-self-type" id="hiyori-self-type">
+        <header className="hiyori-section-head"><div><p className="section-index">02 / YOUR STYLE</p><h2>あなたは「頼られるハブ型」</h2><small>性格診断ではなく、今週の仕事の流れにつけた仮の名前です。</small></div><span>本人の実感を優先</span></header>
+        <div className="hiyori-self-type-grid">
+          <div className="hiyori-self-type-main"><strong>頼られるハブ型</strong><p>相談への初動が早く、レビューを止めないため、周囲の仕事を前へ進めています。依頼が短時間に重なると、自分の作業を夕方以降へ送りやすい傾向も見えます。</p></div>
+          <dl><div><dt>活きている強み</dt><dd>相談を受け止め、次の判断を早く返せる</dd></div><div><dt>崩れやすい条件</dt><dd>木曜午後にレビュー依頼が連続する</dd></div><div><dt>来週のキーワード</dt><dd>時間を決める・分ける・相談する</dd></div></dl>
+        </div>
+        <div className="hiyori-self-flow" aria-label="本人向けの振り返りフロー">
+          <p>NOTICE → SHARE → TRY</p>
+          <div><span>1</span><strong>気づく</strong><small>今週の変化を見る</small></div>
+          <div><span>2</span><strong>伝える</strong><small>自分の事情を補足する</small></div>
+          <div><span>3</span><strong>試す</strong><small>1週間だけ変える</small></div>
+        </div>
+        <div className="hiyori-self-feedback" aria-live="polite">
+          <div><strong>この見立ては、あなたの実感に近いですか？</strong><small>AIの推測より、本人の説明を優先します。</small></div>
+          <div className="hiyori-self-feedback-actions">
+            {(Object.keys(feedbackLabels) as Array<keyof typeof feedbackLabels>).map((key) => <button type="button" className={feedback === key ? 'selected' : ''} aria-pressed={feedback === key} onClick={() => setFeedback(key)} key={key}>{feedbackLabels[key]}</button>)}
+          </div>
+          {feedback && <p>「{feedbackLabels[feedback]}」を選びました。<span>このデモでは回答を保存・送信しません。</span></p>}
+        </div>
+      </section>
+
+      <section className="hiyori-self-comparison" id="hiyori-self-comparison">
+        <header className="hiyori-section-head"><div><p className="section-index">03 / YOU, TEAM &amp; COMPANY</p><h2>自分・所属部署・全社を、同じ尺度で比べる</h2><small>順位づけではなく、今週の働き方に合う相談や調整を見つける比較です。</small></div><span>同期間のデモ集計</span></header>
+        <div className="hiyori-self-comparison-list">
+          <HiyoriSelfComparisonRow label="相談・レビューの集中" self="27%" department="15%" company="11%" selfWidth={100} departmentWidth={56} companyWidth={41} finding="頼られる一方、依頼先が偏っています。" />
+          <HiyoriSelfComparisonRow label="まとまった集中時間" self="8.2h" department="10.4h" company="11.2h" selfWidth={73} departmentWidth={93} companyWidth={100} finding="自分の提案作成時間が少なめです。" tone="care" />
+          <HiyoriSelfComparisonRow label="終業後の入力日数" self="4日" department="2.1日" company="1.6日" selfWidth={100} departmentWidth={53} companyWidth={40} finding="入力が遅い時間へ移る日が多めです。" tone="care" />
+        </div>
+        <p className="hiyori-comparison-note"><strong>比較の読み方</strong>平均との差は良し悪しではありません。担当案件や勤務形態、突発対応など、ログに映らない事情を含めて本人が意味を確かめます。</p>
+      </section>
+
+      <section className="hiyori-self-reflection" id="hiyori-self-reflection">
+        <header className="hiyori-section-head"><div><p className="section-index">04 / GOOD &amp; CARE</p><h2>良かったことと、少し気をつけたいこと</h2><small>強みを消さずに、負担が生まれる条件だけを調整します。</small></div></header>
+        <div className="hiyori-self-reflection-grid">
+          <div className="is-good"><span>KEEP</span><h3>周囲の仕事を止めない初動</h3><p>レビュー依頼への初回反応は平均18分。部署平均の34分より早く、相談者が次の仕事へ進みやすい状態をつくれています。</p></div>
+          <div className="is-good"><span>KEEP</span><h3>確認の質が安定</h3><p>再確認になった依頼は前週より3件減少。速さだけでなく、相手が判断できる返し方ができています。</p></div>
+          <div className="is-care"><span>CARE</span><h3>木曜午後に依頼が集中</h3><p>13〜16時にレビューが7件続き、提案作成のまとまりが途切れました。依頼を断るより、受ける時間を決める方が強みを活かせそうです。</p></div>
+          <div className="is-care"><span>CARE</span><h3>自分の入力が終業後へ移動</h3><p>4日で合計2時間05分の入力が終業後に発生。案件量だけでなく、相談対応後の工程を上司と一緒に確認する候補です。</p></div>
+        </div>
+      </section>
+
+      <section className="hiyori-self-next" id="hiyori-self-next">
+        <div className="hiyori-self-next-copy"><p className="section-index">05 / NEXT WEEK</p><span>来週は、これだけ</span><h2>木曜13〜15時を、<br />提案作成の時間として先に確保。</h2><p>レビュー依頼は12時までに集め、緊急でない分は15時以降にまとめます。うまくいったかは処理件数だけで決めず、「相談に応えながら自分の仕事も進めやすかったか」を金曜に振り返ります。</p></div>
+        <ol><li><span>月</span><div><strong>上司へ共有</strong><small>木曜の集中枠を宣言</small></div></li><li><span>木</span><div><strong>2時間だけ試す</strong><small>緊急相談は例外にする</small></div></li><li><span>金</span><div><strong>実感で振り返る</strong><small>続けるか自分で決める</small></div></li></ol>
+      </section>
+
+      <section className="hiyori-self-data" id="hiyori-self-data">
+        <header className="hiyori-section-head"><div><p className="section-index">APPENDIX / YOUR DATA</p><h2>この画面で見ること、決めないこと</h2><small>本人向け画面の説明責任も、OEM導入条件に含めます。</small></div><span>本人専用</span></header>
+        <div className="hiyori-data-grid"><div><span>観測スクリーンショット</span><strong>2,842枚</strong></div><div><span>対象</span><strong>本人1名</strong></div><div><span>有効観測日</span><strong>5日</strong></div><div><span>比較対象</span><strong>部署・全社</strong></div></div>
+        <div className="hiyori-boundary-grid"><div><h3>この画面に表示する</h3><p>作業時間帯、相談・依頼の集中、まとまった作業時間、前週からの変化、匿名化した部署・全社平均を表示します。</p></div><div><h3>この画面だけでは決めない</h3><p>健康状態、ストレス、性格、能力、意欲、人事評価は判定しません。本人の説明と、担当・予定・勤務形態を優先します。</p></div></div>
+        <div className="hiyori-self-sharing"><strong>OEM導入時に要合意</strong><p>本人の回答を誰と共有するか、管理職画面に何を表示するか、保存期間と訂正方法を導入企業ごとに決めます。本デモの回答は保存・送信されません。</p></div>
+        <SourceLinks sources={['ppc', 'mhlwStress']} />
+      </section>
+
+      <footer className="report-footer"><p><strong>利用目的</strong> 本人が働き方を振り返り、上司との相談や小さな改善へつなげるための画面です。個人順位・人事査定には使用しません。<br /><small>会社名・氏名・数値はすべてデモ用の架空設定です。ひよりのポートレートはAI生成画像です。</small></p><a href="#hiyori-self-data">データ利用方針</a></footer>
+    </div>
+  );
+}
+
+function HiyoriSelfComparisonRow({ label, self, department, company, selfWidth, departmentWidth, companyWidth, finding, tone = 'strength' }: { label: string; self: string; department: string; company: string; selfWidth: number; departmentWidth: number; companyWidth: number; finding: string; tone?: 'strength' | 'care' }) {
+  return (
+    <article className={`hiyori-self-comparison-row is-${tone}`}>
+      <div><h3>{label}</h3><p>{finding}</p></div>
+      <div className="hiyori-self-comparison-bars">
+        <div><span>あなた</span><i><b className="self-bar" data-chart-motion style={{ width: `${selfWidth}%` }} /></i><strong>{self}</strong></div>
+        <div><span>第三営業部</span><i><b className="department-bar" data-chart-motion style={{ width: `${departmentWidth}%` }} /></i><strong>{department}</strong></div>
+        <div><span>全社平均</span><i><b className="company-bar" data-chart-motion style={{ width: `${companyWidth}%` }} /></i><strong>{company}</strong></div>
+      </div>
+    </article>
+  );
+}
+
 function StaffReport() {
   const report = reports.staff;
   const [feedback, setFeedback] = useState<'yes' | 'partly' | 'context' | null>(null);
@@ -785,15 +1674,15 @@ function SummaryDial({ audience }: { audience: Audience }) {
   );
 }
 
-function ReportActions({ audience, title }: { audience: Audience; title: string }) {
+function ReportActions({ audience, title, shareNote }: { audience: Audience; title: string; shareNote?: string }) {
   function shareByEmail() {
     const subject = `【ワークログ・インサイト】${audienceLabels[audience]}向けレポート`;
-    const body = `${title}\n\nレポートはこちらから確認できます。\n${window.location.href}\n\n※閲覧権限が必要です。`;
+    const body = `${title}\n\nレポートはこちらから確認できます。\n${window.location.href}\n\n※閲覧権限が必要です。${shareNote ? `\n※${shareNote}` : ''}`;
     window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
   return (
     <aside className="report-actions" aria-label="レポートの保存と共有">
-      <p><strong>保存・共有</strong><span>PDFは印刷画面から保存できます</span></p>
+      <p><strong>保存・共有</strong><span>PDFは印刷画面から保存できます</span>{shareNote ? <small>メールは端末の作成画面を開くのみ。送信・宛先管理・履歴保存は行いません。</small> : null}</p>
       <div>
         <button type="button" onClick={() => window.print()}><b aria-hidden="true">↓</b>PDFで保存</button>
         <button type="button" onClick={shareByEmail}><b aria-hidden="true">✉</b>メールで送付</button>
@@ -816,6 +1705,48 @@ function TakuAvatar({ compact = false }: { compact?: boolean }) {
           <div><dt>経歴</dt><dd>製造業の現場改善12年、SaaS導入支援7年という設定。付箋よりログを見る派。</dd></div>
           <div><dt>得意</dt><dd>会議後の転記、質問の集中、名もなき手戻りを見つけること。</dd></div>
           <div><dt>休日</dt><dd>喫茶店の行列を勝手に工程分析。自分の机だけは改善バックログが増えがち。</dd></div>
+        </dl>
+        <b>※人物・経歴はAIによる架空設定です</b>
+      </span>
+    </span>
+  );
+}
+
+function HiyoriAvatar({ compact = false }: { compact?: boolean }) {
+  return (
+    <span className={`taku-profile-shell hiyori-profile-shell${compact ? ' compact' : ''}`}>
+      <button type="button" className="taku-avatar hiyori-avatar" aria-label="ひよりのプロフィールを表示">
+        <img src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/hiyori-consultant.png`} alt="" width="96" height="96" /><i />
+      </button>
+      <span className="taku-profile-card hiyori-profile-card" role="tooltip">
+        <span className="profile-kicker">AI CONSULTANT PROFILE</span>
+        <strong>ひより（Hiyori）</strong>
+        <em>組織ケア・対話設計パートナー</em>
+        <dl>
+          <div><dt>経歴</dt><dd>人材会社の定着支援8年、組織開発6年という架空設定。数字より先に質問を整える派。</dd></div>
+          <div><dt>得意</dt><dd>良い変化を見逃さず、決めつけない声かけとチーム側の改善へつなげること。</dd></div>
+          <div><dt>休日</dt><dd>植物の新芽を毎朝観察。伸びた理由を考えすぎて、水やりを忘れそうになる。</dd></div>
+        </dl>
+        <b>※人物・経歴はAIによる架空設定です</b>
+      </span>
+    </span>
+  );
+}
+
+function KeiAvatar({ compact = false }: { compact?: boolean }) {
+  return (
+    <span className={`taku-profile-shell kei-profile-shell${compact ? ' compact' : ''}`}>
+      <button type="button" className="taku-avatar kei-avatar" aria-label="慧のプロフィールを表示">
+        <img src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/kei-consultant.png`} alt="" width="96" height="96" /><i />
+      </button>
+      <span className="taku-profile-card kei-profile-card" role="tooltip">
+        <span className="profile-kicker">AI CONSULTANT PROFILE</span>
+        <strong>慧（Kei）</strong>
+        <em>AI業務設計パートナー</em>
+        <dl>
+          <div><dt>経歴</dt><dd>BPR支援9年、業務システム設計6年という架空設定。ツール名より先に承認者を聞く派。</dd></div>
+          <div><dt>得意</dt><dd>AIへ任せる下書き、人が決める判断、失敗した時に止める条件を一枚に描くこと。</dd></div>
+          <div><dt>休日</dt><dd>コーヒー豆の在庫補充は自動化済み。でも「今日は何を飲むか」だけは毎朝ちゃんと悩む。</dd></div>
         </dl>
         <b>※人物・経歴はAIによる架空設定です</b>
       </span>
