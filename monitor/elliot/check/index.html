@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Elliotのモニターが自社に向いているかを、5つの質問で確かめられるページです。初期費用・月額料金0円、API利用料などの実費のみ。">
+  <meta name="theme-color" content="#f3f0e8">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="WRITEUP AI MONITOR">
+  <meta property="og:title" content="Elliotのモニター、うちに向いている？｜5つの質問で確認">
+  <meta property="og:description" content="5つの質問に答えると、Elliotのモニターが自社に向いているかが分かります。">
+  <meta property="og:url" content="https://writeup-inc.github.io/saas/monitor/elliot/check/">
+  <meta property="og:image" content="https://writeup-inc.github.io/saas/monitor/elliot/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://writeup-inc.github.io/saas/monitor/elliot/check/">
+  <link rel="icon" href="../assets/favicon.png" type="image/png">
+  <title>Elliotのモニター、うちに向いている？｜株式会社ライトアップ</title>
+  <style>
+    :root {
+      --ink: #14251f;
+      --ink-soft: #51615b;
+      --muted: #7c8984;
+      --paper: #f3f0e8;
+      --surface: #fffdf8;
+      --surface-deep: #ebe7dd;
+      --line: rgba(20, 37, 31, .15);
+      --line-strong: rgba(20, 37, 31, .34);
+      --brand: #174b3c;
+      --brand-deep: #0e382c;
+      --on-brand: #f3f0e8;
+      --accent: #9d4f2c;
+      --accent-soft: rgba(184, 100, 61, .1);
+      --yellow: #e4c76e;
+      --shadow: 0 22px 60px rgba(20, 37, 31, .09);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --ink: #e9e7e0;
+        --ink-soft: #b2bcb7;
+        --muted: #8a9590;
+        --paper: #101714;
+        --surface: #182320;
+        --surface-deep: #1f2c28;
+        --line: rgba(233, 231, 224, .16);
+        --line-strong: rgba(233, 231, 224, .38);
+        --brand: #0d2a22;
+        --brand-deep: #091d18;
+        --on-brand: #e9e7e0;
+        --accent: #e0916a;
+        --accent-soft: rgba(224, 145, 106, .12);
+        --shadow: 0 22px 60px rgba(0, 0, 0, .38);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { overflow-x: clip; scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(rgba(124, 137, 132, .05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(124, 137, 132, .05) 1px, transparent 1px),
+        var(--paper);
+      background-size: 32px 32px, 32px 32px, auto;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    button { font: inherit; color: inherit; }
+    img { display: block; max-width: 100%; height: auto; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+    .shell { width: min(calc(100% - 44px), 880px); margin: 0 auto; }
+
+    /* ---------- header ---------- */
+    .site-header {
+      position: sticky; top: 0; z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 88%, transparent);
+      backdrop-filter: blur(14px);
+    }
+    .header-inner { display: flex; min-height: 64px; align-items: center; justify-content: space-between; gap: 16px; }
+    .crumbs { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); min-width: 0; }
+    .crumbs a { text-decoration: none; border-bottom: 1px solid var(--line-strong); padding-bottom: 1px; }
+    .crumbs a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    .crumbs b { color: var(--ink); white-space: nowrap; }
+    .header-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      min-height: 40px; padding: 0 18px; border-radius: 999px;
+      background: var(--brand); color: var(--on-brand);
+      font-size: 13px; font-weight: 700; text-decoration: none; white-space: nowrap;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .header-cta:hover { background: var(--brand-deep); transform: translateY(-1px); }
+    @media (max-width: 620px) { .header-cta { display: none; } }
+
+    /* ---------- intro ---------- */
+    .intro { padding: 48px 0 34px; }
+    .kicker {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-bottom: 16px; padding: 5px 13px; border-radius: 999px;
+      background: var(--brand); color: var(--on-brand);
+      font-size: 12px; font-weight: 700; letter-spacing: .04em;
+    }
+    .kicker::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--yellow); }
+    h1 { margin: 0 0 14px; font-size: clamp(26px, 4.2vw, 40px); line-height: 1.4; }
+    .intro p { margin: 0; max-width: 42em; color: var(--ink-soft); font-size: 15.5px; }
+
+    /* ---------- 診断 ---------- */
+    .quiz { padding-bottom: 20px; }
+    .quiz-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 16px; }
+    .quiz-head h2 { margin: 0; font-size: 18px; }
+    .quiz-count { color: var(--muted); font-size: 13px; }
+    .quiz-count b { color: var(--accent); font-size: 17px; }
+
+    .q-list { display: grid; gap: 10px; margin: 0 0 24px; padding: 0; list-style: none; }
+    .q-item { margin: 0; }
+    .q-button {
+      display: grid;
+      grid-template-columns: 26px 1fr;
+      gap: 14px;
+      align-items: start;
+      width: 100%;
+      padding: 17px 20px;
+      border: 1px solid var(--line);
+      border-radius: 0;
+      background: var(--surface);
+      text-align: left;
+      cursor: pointer;
+      transition: border-color .2s ease, background .2s ease, transform .2s ease;
+    }
+    .q-button:hover { border-color: var(--line-strong); transform: translateY(-1px); }
+    .q-box {
+      margin-top: 3px;
+      width: 22px; height: 22px;
+      border: 1.5px solid var(--line-strong);
+      display: grid; place-items: center;
+      transition: background .2s ease, border-color .2s ease;
+    }
+    .q-box::after {
+      content: "";
+      width: 11px; height: 6px;
+      border-left: 2px solid var(--on-brand);
+      border-bottom: 2px solid var(--on-brand);
+      transform: rotate(-45deg) scale(.4);
+      opacity: 0;
+      transition: opacity .18s ease, transform .18s ease;
+    }
+    .q-text { font-size: 15px; font-weight: 700; }
+    .q-note { display: block; margin-top: 3px; color: var(--muted); font-size: 12.5px; font-weight: 400; }
+    .q-button[aria-pressed="true"] { border-color: var(--brand); background: var(--accent-soft); }
+    .q-button[aria-pressed="true"] .q-box { background: var(--brand); border-color: var(--brand); }
+    .q-button[aria-pressed="true"] .q-box::after { opacity: 1; transform: rotate(-45deg) scale(1); }
+
+    /* ---------- 結果 ---------- */
+    .result {
+      padding: 28px 28px 30px;
+      border: 1px solid var(--line-strong);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+    .result-label { margin: 0 0 8px; font-size: 11.5px; font-weight: 700; letter-spacing: .2em; color: var(--accent); }
+    .result h3 { margin: 0 0 10px; font-size: clamp(19px, 2.6vw, 24px); line-height: 1.5; }
+    .result p { margin: 0 0 20px; max-width: 42em; color: var(--ink-soft); font-size: 14.5px; }
+    .result-actions { display: flex; flex-wrap: wrap; gap: 11px; }
+    .result[data-state="idle"] { border-style: dashed; box-shadow: none; background: transparent; }
+    .result[data-state="idle"] h3 { color: var(--ink-soft); }
+    .result[data-state="high"] { border-color: var(--brand); }
+
+    .button {
+      display: inline-flex; align-items: center; gap: 9px;
+      min-height: 50px; padding: 0 24px; border-radius: 999px;
+      font-size: 14.5px; font-weight: 700; text-decoration: none;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .button.primary { background: var(--brand); color: var(--on-brand); }
+    .button.primary:hover { transform: translateY(-2px); background: var(--brand-deep); }
+    .button.ghost { border: 1px solid var(--line-strong); }
+    .button.ghost:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--accent); }
+
+    /* ---------- sections ---------- */
+    .section { padding: 50px 0; border-top: 1px solid var(--line); }
+    .section-kicker { margin: 0 0 8px; font-size: 11.5px; font-weight: 700; letter-spacing: .22em; color: var(--accent); }
+    .section-title { margin: 0 0 10px; font-size: clamp(20px, 2.7vw, 26px); line-height: 1.5; }
+    .section-copy { margin: 0 0 26px; max-width: 44em; color: var(--ink-soft); font-size: 14.5px; }
+
+    .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .facts > div { padding: 22px 20px; background: var(--surface); }
+    .facts span { display: block; margin-bottom: 5px; font-size: 11.5px; letter-spacing: .16em; color: var(--accent); }
+    .facts strong { display: block; margin-bottom: 5px; font-size: 18px; }
+    .facts small { color: var(--muted); font-size: 12.5px; line-height: 1.8; }
+    @media (max-width: 820px) { .facts { grid-template-columns: 1fr; } }
+    .facts-note { margin: 16px 0 0; color: var(--muted); font-size: 12.5px; }
+
+    .flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .flow article { padding: 20px; border: 1px solid var(--line); background: var(--surface); }
+    .flow b { display: block; margin-bottom: 6px; font-size: 11.5px; letter-spacing: .16em; color: var(--muted); }
+    .flow h3 { margin: 0 0 6px; font-size: 16px; }
+    .flow p { margin: 0; color: var(--ink-soft); font-size: 13.5px; }
+    @media (max-width: 820px) { .flow { grid-template-columns: 1fr; } }
+
+    .more { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; font-size: 14px; text-decoration: none; border-bottom: 1px solid var(--line-strong); padding-bottom: 2px; }
+    .more:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+    /* ---------- footer ---------- */
+    .site-footer { border-top: 1px solid var(--line); padding: 26px 0 40px; }
+    .footer-inner { display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: space-between; color: var(--muted); font-size: 12.5px; }
+    .footer-inner strong { color: var(--ink-soft); font-size: 13px; }
+    .back-link { text-decoration: none; border-bottom: 1px solid var(--line-strong); }
+    .back-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="shell header-inner">
+    <nav class="crumbs" aria-label="パンくず">
+      <a href="../../">モニター募集</a>
+      <span aria-hidden="true">›</span>
+      <a href="../">Elliot</a>
+      <span aria-hidden="true">›</span>
+      <b>向いているか確認</b>
+    </nav>
+    <a class="header-cta" href="#quiz">5つの質問へ <span aria-hidden="true">→</span></a>
+  </div>
+</header>
+
+<main>
+  <div class="shell">
+    <section class="intro">
+      <span class="kicker">モニター募集中</span>
+      <h1>Elliotのモニターは、<br>御社に向いているでしょうか。</h1>
+      <p>Elliotは、会議の記録・商談のメモ・日報といった社内の記録を夜のうちに読み、朝に要点を届けるAIです。合う会社と、そうでない会社があります。5つの質問で確かめてください。</p>
+    </section>
+
+    <section class="quiz" id="quiz" aria-labelledby="quiz-title">
+      <div class="quiz-head">
+        <h2 id="quiz-title">当てはまるものを選んでください</h2>
+        <p class="quiz-count"><b id="count">0</b> / 5 件を選択中</p>
+      </div>
+
+      <ul class="q-list">
+        <li class="q-item">
+          <button class="q-button" type="button" aria-pressed="false">
+            <span class="q-box" aria-hidden="true"></span>
+            <span class="q-text">議事録・商談メモ・日報を、テキストで残している
+              <span class="q-note">書式が統一されている必要はありません。長さや書き方がばらばらでも読み込めます。</span>
+            </span>
+          </button>
+        </li>
+        <li class="q-item">
+          <button class="q-button" type="button" aria-pressed="false">
+            <span class="q-box" aria-hidden="true"></span>
+            <span class="q-text">記録の保存先が、Googleドライブ（Google Workspace）である
+              <span class="q-note">集約用のフォルダは御社のドライブ内に作成します。</span>
+            </span>
+          </button>
+        </li>
+        <li class="q-item">
+          <button class="q-button" type="button" aria-pressed="false">
+            <span class="q-box" aria-hidden="true"></span>
+            <span class="q-text">記録は残っているが、書いた本人以外はあまり読み返していない
+              <span class="q-note">溜まっているのに使われていない状態が、いちばん効果の出やすい入口です。</span>
+            </span>
+          </button>
+        </li>
+        <li class="q-item">
+          <button class="q-button" type="button" aria-pressed="false">
+            <span class="q-box" aria-hidden="true"></span>
+            <span class="q-text">現場で起きていることが、経営に届くまでに時間がかかっている
+              <span class="q-note">失注の理由や現場の変化が、担当者の記憶の中だけにある状態です。</span>
+            </span>
+          </button>
+        </li>
+        <li class="q-item">
+          <button class="q-button" type="button" aria-pressed="false">
+            <span class="q-box" aria-hidden="true"></span>
+            <span class="q-text">API利用料などの実費を負担できる
+              <span class="q-note">初期費用と月額料金はかかりません。金額の目安は開始前のご相談でお伝えします。</span>
+            </span>
+          </button>
+        </li>
+      </ul>
+
+      <div class="result" id="result" data-state="idle" role="status" aria-live="polite">
+        <p class="result-label">RESULT</p>
+        <h3 id="result-title">当てはまるものを選ぶと、ここに結果が出ます。</h3>
+        <p id="result-body">ひとつも当てはまらない場合でも、お話をうかがったうえで別のご提案ができることがあります。</p>
+        <div class="result-actions" id="result-actions" hidden>
+          <a class="button primary" id="result-primary" href="#">申込フォームへ進む <span aria-hidden="true">↗</span></a>
+          <a class="button ghost" href="https://lsync.humanoid-inc.net/entry?tag=elliot1&amp;channel=f766f570-0f18-40e6-bebc-6e2d20f0416c" target="_blank" rel="noreferrer">公式LINEで相談する <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="facts-title">
+      <p class="section-kicker">Terms</p>
+      <h2 class="section-title" id="facts-title">モニターの条件</h2>
+      <p class="section-copy">モニタープログラム共通の条件に沿った内容です。</p>
+      <div class="facts">
+        <div>
+          <span>料金</span>
+          <strong>初期費用・月額料金 0円</strong>
+          <small>モニター期間中の固定費はかかりません。</small>
+        </div>
+        <div>
+          <span>ご負担</span>
+          <strong>API利用料などの実費のみ</strong>
+          <small>使った分の実費だけかかります。期間や上限は開始前に書面で確認します。</small>
+        </div>
+        <div>
+          <span>終了後</span>
+          <strong>継続は自動ではありません</strong>
+          <small>正式な内容と料金を見てから、続けるかお選びいただけます。</small>
+        </div>
+      </div>
+      <p class="facts-note">記録は御社のGoogleドライブ内に置いたまま扱います。データの取り扱いの詳細は、開始前に書面で確認します。</p>
+    </section>
+
+    <section class="section" aria-labelledby="flow-title">
+      <p class="section-kicker">How to start</p>
+      <h2 class="section-title" id="flow-title">始めるときの3STEP</h2>
+      <p class="section-copy">設定は担当が一緒に進めます。社内にエンジニアの方がいなくても問題ありません。</p>
+      <div class="flow">
+        <article><b>STEP 01</b><h3>アカウント登録</h3><p>申込フォームからElliotのアカウントを登録します。送信後、担当の西村よりメールでご連絡します。</p></article>
+        <article><b>STEP 02</b><h3>ログ連携</h3><p>記録が集まっているGoogleドライブと連携します。初期設定の打ち合わせで一緒に設定します。</p></article>
+        <article><b>STEP 03</b><h3>利用開始</h3><p>設定は以上で完了です。あとは、いつもどおり記録を残していただくだけです。</p></article>
+      </div>
+      <a class="more" href="../">くわしい募集要項を見る <span aria-hidden="true">→</span></a>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <strong>株式会社ライトアップ / AIコンサル局</strong>
+    <a class="back-link" href="../">← Elliotの募集要項へ</a>
+  </div>
+</footer>
+
+<script>
+  (() => {
+    const APPLY_URL = 'https://main.dxjqhu5a20eel.amplifyapp.com/p/6a8964ec2f3b/setup';
+    const CONTACT_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfsf8GUAJscF6J48NTug90zFhMzmaUyvHtGTC7yYVtAQoRY3A/viewform';
+
+    const buttons = [...document.querySelectorAll('.q-button')];
+    const count = document.getElementById('count');
+    const result = document.getElementById('result');
+    const title = document.getElementById('result-title');
+    const body = document.getElementById('result-body');
+    const actions = document.getElementById('result-actions');
+    const primary = document.getElementById('result-primary');
+
+    const verdicts = {
+      idle: {
+        state: 'idle',
+        title: '当てはまるものを選ぶと、ここに結果が出ます。',
+        body: 'ひとつも当てはまらない場合でも、お話をうかがったうえで別のご提案ができることがあります。',
+        show: false
+      },
+      low: {
+        state: 'low',
+        title: '今は、無理に始めなくてよさそうです。',
+        body: 'Elliotは、すでに残っている記録を読むAIです。読ませる記録がまだ少ない段階では、効果が見えにくくなります。まずは何をどう残すかからご相談ください。記録の整理以外のAI活用についてもお話しできます。',
+        show: true,
+        primaryLabel: 'お問い合わせフォームへ',
+        primaryHref: CONTACT_URL
+      },
+      mid: {
+        state: 'mid',
+        title: '相談してから決めるのがよさそうです。',
+        body: '条件のいくつかが当てはまっています。どの記録を対象にするか、どこまで自動で届けるか。使い方を決めてから始めたほうが、はじめの1か月が無駄になりません。申し込みの前に、まず話を聞かせてください。',
+        show: true,
+        primaryLabel: 'お問い合わせフォームへ',
+        primaryHref: CONTACT_URL
+      },
+      high: {
+        state: 'high',
+        title: 'そのまま始められます。',
+        body: '必要な条件がそろっています。申込フォームを送信いただくと、担当の西村よりメールでご連絡します。まずは初期設定の打ち合わせで、設定と使い方をご案内します。',
+        show: true,
+        primaryLabel: '申込フォームへ進む',
+        primaryHref: APPLY_URL
+      }
+    };
+
+    const pick = (n) => {
+      if (n === 0) return verdicts.idle;
+      if (n <= 1) return verdicts.low;
+      if (n <= 3) return verdicts.mid;
+      return verdicts.high;
+    };
+
+    const render = () => {
+      const n = buttons.filter((b) => b.getAttribute('aria-pressed') === 'true').length;
+      const v = pick(n);
+      count.textContent = String(n);
+      result.dataset.state = v.state;
+      title.textContent = v.title;
+      body.textContent = v.body;
+      actions.hidden = !v.show;
+      if (v.show) {
+        primary.textContent = v.primaryLabel + ' ';
+        const arrow = document.createElement('span');
+        arrow.setAttribute('aria-hidden', 'true');
+        arrow.textContent = '↗';
+        primary.appendChild(arrow);
+        primary.href = v.primaryHref;
+        primary.target = '_blank';
+        primary.rel = 'noreferrer';
+      }
+    };
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const on = button.getAttribute('aria-pressed') === 'true';
+        button.setAttribute('aria-pressed', on ? 'false' : 'true');
+        render();
+      });
+    });
+
+    render();
+  })();
+</script>
+
+</body>
+</html>

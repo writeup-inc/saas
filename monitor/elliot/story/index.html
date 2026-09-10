@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="社員が帰ったあとの一晩で、Elliotが社内の記録に何をしているのか。時刻をたどりながら読むElliotのモニター募集ページです。">
+  <meta name="theme-color" content="#101a2c">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="WRITEUP AI MONITOR">
+  <meta property="og:title" content="Elliotの、ある一晩｜モニター募集">
+  <meta property="og:description" content="21:00から翌朝7:00まで。社員が眠っているあいだに、社内の記録がどう読まれているか。">
+  <meta property="og:url" content="https://writeup-inc.github.io/saas/monitor/elliot/story/">
+  <meta property="og:image" content="https://writeup-inc.github.io/saas/monitor/elliot/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://writeup-inc.github.io/saas/monitor/elliot/story/">
+  <link rel="icon" href="../assets/favicon.png" type="image/png">
+  <title>Elliotの、ある一晩｜モニター募集｜株式会社ライトアップ</title>
+  <style>
+    :root {
+      --night: #101a2c;
+      --night-deep: #08101d;
+      --night-soft: #1a2740;
+      --ink: #eef1f6;
+      --ink-soft: #b7c1d2;
+      --muted: #7f8ca3;
+      --line: rgba(238, 241, 246, .14);
+      --line-strong: rgba(238, 241, 246, .3);
+      --gold: #d8b26a;
+      --gold-soft: rgba(216, 178, 106, .14);
+      --dawn: #e8c38d;
+      --leaf: #7fc0a5;
+    }
+
+    * { box-sizing: border-box; }
+    html { overflow-x: clip; scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--night);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+      line-height: 1.85;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    img { display: block; max-width: 100%; height: auto; }
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+    .shell { width: min(calc(100% - 44px), 880px); margin: 0 auto; }
+
+    /* ---------- header ---------- */
+    .site-header {
+      position: sticky; top: 0; z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(16, 26, 44, .9);
+      backdrop-filter: blur(14px);
+    }
+    .header-inner { display: flex; min-height: 64px; align-items: center; justify-content: space-between; gap: 16px; }
+    .crumbs { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); min-width: 0; }
+    .crumbs a { text-decoration: none; border-bottom: 1px solid var(--line-strong); padding-bottom: 1px; }
+    .crumbs a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+    .crumbs b { color: var(--ink); white-space: nowrap; }
+    .header-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      min-height: 40px; padding: 0 18px; border-radius: 999px;
+      background: var(--gold); color: #241a06;
+      font-size: 13px; font-weight: 700; text-decoration: none; white-space: nowrap;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .header-cta:hover { transform: translateY(-1px); background: var(--dawn); }
+    @media (max-width: 620px) { .header-cta { display: none; } }
+
+    /* ---------- opening ---------- */
+    .opening {
+      position: relative;
+      padding: 74px 0 62px;
+      background:
+        radial-gradient(1.5px 1.5px at 14% 22%, rgba(255,255,255,.7), transparent 60%),
+        radial-gradient(1.3px 1.3px at 32% 48%, rgba(255,255,255,.45), transparent 60%),
+        radial-gradient(1.7px 1.7px at 58% 16%, rgba(255,255,255,.6), transparent 60%),
+        radial-gradient(1.4px 1.4px at 78% 38%, rgba(255,255,255,.4), transparent 60%),
+        radial-gradient(1.6px 1.6px at 88% 12%, rgba(255,255,255,.55), transparent 60%),
+        linear-gradient(180deg, var(--night-deep), var(--night));
+      border-bottom: 1px solid var(--line);
+    }
+    .opening-grid { display: grid; grid-template-columns: 1fr 190px; gap: 36px; align-items: center; }
+    .kicker {
+      display: inline-flex; align-items: center; gap: 9px;
+      margin-bottom: 18px; padding: 5px 14px; border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      font-size: 12px; font-weight: 700; letter-spacing: .12em; color: var(--gold);
+    }
+    .kicker::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+    h1 { margin: 0 0 18px; font-size: clamp(27px, 4.6vw, 44px); line-height: 1.42; }
+    h1 em { font-style: normal; color: var(--dawn); }
+    .opening p { margin: 0; max-width: 40em; color: var(--ink-soft); font-size: 15.5px; }
+    .opening-fig img {
+      width: 190px; height: 190px; border-radius: 50%; object-fit: cover;
+      border: 1px solid var(--line-strong);
+      box-shadow: 0 26px 60px rgba(0,0,0,.55);
+    }
+    .opening-fig { justify-self: center; }
+    @media (max-width: 760px) {
+      .opening-grid { grid-template-columns: 1fr; gap: 26px; }
+      .opening-fig { justify-self: start; }
+      .opening-fig img { width: 118px; height: 118px; }
+    }
+
+    /* ---------- origin note ---------- */
+    .origin { padding: 40px 0; border-bottom: 1px solid var(--line); background: var(--night-deep); }
+    .origin-inner { border-left: 2px solid var(--gold); padding-left: 22px; }
+    .origin-inner p { margin: 0; color: var(--ink-soft); font-size: 15px; }
+    .origin-inner p + p { margin-top: 10px; }
+
+    /* ---------- timeline ---------- */
+    .night-section { padding: 62px 0 70px; }
+    .section-title { margin: 0 0 10px; font-size: clamp(20px, 2.8vw, 27px); line-height: 1.5; }
+    .section-copy { margin: 0 0 38px; max-width: 42em; color: var(--ink-soft); font-size: 14.5px; }
+
+    .tl { position: relative; margin: 0; padding: 0 0 0 40px; list-style: none; }
+    .tl::before {
+      content: ""; position: absolute; left: 9px; top: 10px; bottom: 14px; width: 1px;
+      background: linear-gradient(180deg, rgba(216,178,106,.16), var(--gold) 42%, var(--dawn));
+    }
+    .tl li { position: relative; padding-bottom: 40px; }
+    .tl li:last-child { padding-bottom: 0; }
+    .tl li::before {
+      content: ""; position: absolute; left: -36px; top: 12px;
+      width: 11px; height: 11px; border-radius: 50%;
+      background: var(--night); border: 1.5px solid var(--gold);
+      transition: background .2s ease, box-shadow .2s ease;
+    }
+    .tl li:hover::before { background: var(--gold); box-shadow: 0 0 0 6px var(--gold-soft); }
+    .tl-time { display: block; font-size: 20px; font-weight: 700; letter-spacing: .06em; color: var(--gold); line-height: 1.3; }
+    .tl li.dawn::before { border-color: var(--dawn); }
+    .tl li.dawn .tl-time { color: var(--dawn); }
+    .tl h3 { margin: 4px 0 8px; font-size: 18px; }
+    .tl p { margin: 0; max-width: 40em; color: var(--ink-soft); font-size: 14.5px; }
+
+    /* ---------- 要項 ---------- */
+    .terms-band { padding: 56px 0; background: var(--night-deep); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .terms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .terms > div { padding: 22px 20px; background: var(--night); }
+    .terms span { display: block; margin-bottom: 6px; font-size: 11.5px; letter-spacing: .16em; color: var(--gold); }
+    .terms strong { display: block; margin-bottom: 6px; font-size: 19px; }
+    .terms small { color: var(--muted); font-size: 12.5px; line-height: 1.8; }
+    @media (max-width: 820px) { .terms { grid-template-columns: 1fr; } }
+    .terms-note { margin: 18px 0 0; color: var(--muted); font-size: 12.5px; }
+
+    /* ---------- CTA ---------- */
+    .cta { padding: 66px 0 74px; text-align: center; background: linear-gradient(180deg, var(--night), #2a2f43 74%, #5b4f4a); }
+    .cta h2 { margin: 0 0 12px; font-size: clamp(21px, 3.2vw, 30px); line-height: 1.55; }
+    .cta p { margin: 0 auto 30px; max-width: 40em; color: var(--ink-soft); font-size: 14.5px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .button {
+      display: inline-flex; align-items: center; gap: 9px;
+      min-height: 52px; padding: 0 28px; border-radius: 999px;
+      font-size: 15px; font-weight: 700; text-decoration: none;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .button.primary { background: var(--gold); color: #241a06; }
+    .button.primary:hover { transform: translateY(-2px); background: var(--dawn); }
+    .button.ghost { border: 1px solid var(--line-strong); color: var(--ink); }
+    .button.ghost:hover { transform: translateY(-2px); border-color: var(--ink); }
+    .cta-note { margin: 22px 0 0; color: var(--muted); font-size: 12.5px; }
+
+    /* ---------- footer ---------- */
+    .site-footer { padding: 26px 0 40px; background: var(--night-deep); border-top: 1px solid var(--line); }
+    .footer-inner { display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: space-between; color: var(--muted); font-size: 12.5px; }
+    .footer-inner strong { color: var(--ink-soft); font-size: 13px; }
+    .back-link { text-decoration: none; border-bottom: 1px solid var(--line-strong); }
+    .back-link:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+    /* ---------- reveal ---------- */
+    .rv { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease; }
+    .rv.in { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      .rv { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="shell header-inner">
+    <nav class="crumbs" aria-label="パンくず">
+      <a href="../../">モニター募集</a>
+      <span aria-hidden="true">›</span>
+      <a href="../">Elliot</a>
+      <span aria-hidden="true">›</span>
+      <b>ある一晩</b>
+    </nav>
+    <a class="header-cta" href="#cta">モニターに申し込む <span aria-hidden="true">→</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="opening">
+    <div class="shell opening-grid">
+      <div>
+        <span class="kicker">モニター募集中</span>
+        <h1>みんなが眠っている<br>あいだに、<em>ボクが働きます。</em></h1>
+        <p>ボクはElliot。夜のあいだに、会社に溜まった記録——会議のメモ、商談の記録、日報——を読み解いて、朝までに「これは知っておいたほうがいい」ことをまとめてお届けします。</p>
+      </div>
+      <figure class="opening-fig">
+        <img src="../assets/elliot.png" alt="AIアシスタント「Elliot」のイラスト" width="190" height="190">
+      </figure>
+    </div>
+  </section>
+
+  <section class="origin">
+    <div class="shell">
+      <div class="origin-inner">
+        <p>名前は、靴屋が眠っているあいだに小人たちが靴を仕上げてくれる、あの童話から取りました。</p>
+        <p>朝、仕事場に降りてみると、革はきれいな靴に変わっている。誰がやったのかは分からないけれど、確かに仕事は前に進んでいる。Elliotがやろうとしているのは、それとほとんど同じことです。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="night-section" aria-labelledby="night-title">
+    <div class="shell">
+      <h2 class="section-title rv" id="night-title">Elliotの、ある一晩。</h2>
+      <p class="section-copy rv">みなさんが仕事を終えてから、翌朝出社するまでのあいだに起きていることです。</p>
+      <ol class="tl">
+        <li class="rv">
+          <span class="tl-time">21:00</span>
+          <h3>その日の記録が集まる</h3>
+          <p>社員それぞれのフォルダに保存された議事録・商談メモ・日報が、集約フォルダに揃います。集約フォルダは御社のGoogleドライブ内にあります。</p>
+        </li>
+        <li class="rv">
+          <span class="tl-time">01:00</span>
+          <h3>読みはじめる</h3>
+          <p>会議、商談、日報。書式も長さもばらばらのテキストを、種類をまたいで読み込みます。書き方を統一していただく必要はありません。</p>
+        </li>
+        <li class="rv">
+          <span class="tl-time">04:00</span>
+          <h3>突き合わせる</h3>
+          <p>同じ案件について複数の人が書いたこと、先週との違い、繰り返し出てくる言葉。ひとつの記録だけでは気づけない変化を拾います。</p>
+        </li>
+        <li class="rv dawn">
+          <span class="tl-time">07:00</span>
+          <h3>朝、要点が届く</h3>
+          <p>出社したときには、昨日社内で何が起きていたかがまとまっています。すべてを要約するのではなく、知っておいたほうがいいことだけを選んでいます。</p>
+        </li>
+        <li class="rv dawn">
+          <span class="tl-time">月末</span>
+          <h3>1か月をまとめる</h3>
+          <p>1か月分を振り返り、経営者向けのレポートを作ります。日々の要点では見えにくい変化や傾向をまとめます。</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="terms-band" aria-labelledby="terms-title">
+    <div class="shell">
+      <h2 class="section-title rv" id="terms-title">モニターの条件</h2>
+      <p class="section-copy rv">モニタープログラム共通の条件に沿った内容です。詳しい要項は<a href="../">Elliotの募集要項</a>にまとめています。</p>
+      <div class="terms rv">
+        <div>
+          <span>料金</span>
+          <strong>初期費用・月額料金 0円</strong>
+          <small>モニター期間中の固定費はかかりません。</small>
+        </div>
+        <div>
+          <span>ご負担</span>
+          <strong>API利用料などの実費のみ</strong>
+          <small>使った分の実費だけかかります。期間や上限は開始前に書面で確認します。</small>
+        </div>
+        <div>
+          <span>終了後</span>
+          <strong>継続は自動ではありません</strong>
+          <small>正式な内容と料金を見てから、続けるかお選びいただけます。</small>
+        </div>
+      </div>
+      <p class="terms-note">記録は御社のGoogleドライブ内に置いたまま扱います。データの取り扱いの詳細は、開始前に書面で確認します。</p>
+    </div>
+  </section>
+
+  <section class="cta" id="cta" aria-labelledby="cta-title">
+    <div class="shell">
+      <h2 id="cta-title">今夜から、Elliotを働かせてみませんか。</h2>
+      <p>フォームの送信後、担当の西村よりメールでご連絡します。まずは初期設定の打ち合わせで、設定と使い方をご案内します。</p>
+      <div class="actions">
+        <a class="button primary" href="https://main.dxjqhu5a20eel.amplifyapp.com/p/6a8964ec2f3b/setup" target="_blank" rel="noreferrer">申込フォームへ進む <span aria-hidden="true">↗</span></a>
+        <a class="button ghost" href="https://lsync.humanoid-inc.net/entry?tag=elliot1&amp;channel=f766f570-0f18-40e6-bebc-6e2d20f0416c" target="_blank" rel="noreferrer">公式LINEで相談する <span aria-hidden="true">↗</span></a>
+      </div>
+      <p class="cta-note">掲載内容・募集状況・提供条件は変更される場合があります。</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <strong>株式会社ライトアップ / AIコンサル局</strong>
+    <a class="back-link" href="../">← Elliotの募集要項へ</a>
+  </div>
+</footer>
+
+<script>
+  (() => {
+    const targets = [...document.querySelectorAll('.rv')];
+    if (!('IntersectionObserver' in window)) {
+      targets.forEach((el) => el.classList.add('in'));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      });
+    }, { threshold: .14, rootMargin: '0px 0px -40px' });
+    targets.forEach((el) => io.observe(el));
+  })();
+</script>
+
+</body>
+</html>
