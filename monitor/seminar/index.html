@@ -19,6 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700;800;900&amp;display=swap" rel="stylesheet">
   <title>まだ人がやっている仕事、1年間0円で減らしませんか。｜AI活用セミナー（参加無料）</title>
+  <script>if (new URLSearchParams(window.location.search).get("design") === "v2") document.documentElement.dataset.design = "v2";</script>
   <style>
     :root {
       color-scheme: light;
@@ -1122,6 +1123,140 @@
       .cta-cursor { display: none; }
       .entry.is-arrived .form-shell { animation: none; }
     }
+
+    .version-switcher {
+      position: absolute;
+      z-index: 45;
+      top: calc(100% + 10px);
+      right: max(20px, calc((100% - 1120px) / 2 + 20px));
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      padding: 4px;
+      background: rgba(255, 255, 255, .94);
+      border: 1px solid var(--line-2);
+      border-radius: 999px;
+      box-shadow: 0 8px 22px rgba(10, 13, 20, .12);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+    .version-switcher .k { padding: 0 7px 0 8px; color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: .12em; }
+    .version-switcher a { min-width: 34px; padding: 5px 8px; border-radius: 999px; color: var(--body); font-size: 11px; font-weight: 800; line-height: 1; text-align: center; text-decoration: none; transition: color .18s ease, background .18s ease; }
+    .version-switcher a[aria-current="page"] { background: var(--ink); color: #fff; }
+    .v2-service-rail { display: none; }
+
+    /* V2: BASE, Inc.のサービス一覧のように、余白・色面・製品導線を前面へ。 */
+    html[data-design="v2"] {
+      --ink: #12151d; --ink-2: #292f3c; --body: #535a69; --muted: #798191;
+      --bg: #fbfaf7; --bg-alt: #eef1f6; --bg-dark: #111a3d;
+      --line: #dce1ea; --line-2: #c7cedb; --accent: #3e60e6; --accent-dark: #2c47bc;
+    }
+    html[data-design="v2"] body { background: #fbfaf7; background-image: none; }
+    html[data-design="v2"] .wrap { width: min(1200px, 100%); }
+    html[data-design="v2"] section { padding-block: clamp(72px, 9vw, 136px); }
+    html[data-design="v2"] .bar { background: rgba(251, 250, 247, .94); border-bottom-color: rgba(18, 21, 29, .12); }
+    html[data-design="v2"] .brand { letter-spacing: .12em; }
+    html[data-design="v2"] .brand .mark { border-radius: 50%; background: #3e60e6; }
+    html[data-design="v2"] .bar-cta { border-color: #12151d; border-bottom-color: #12151d; background: #12151d; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16), 0 3px 0 #12151d, 0 9px 16px rgba(18, 21, 29, .18); }
+    html[data-design="v2"] .bar-cta:hover { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 5px 0 #12151d, 0 14px 22px rgba(18, 21, 29, .22); }
+    html[data-design="v2"] .cta-cursor { display: none; }
+    html[data-design="v2"] .version-switcher { right: max(20px, calc((100% - 1200px) / 2 + 20px)); border-color: rgba(18, 21, 29, .14); box-shadow: 0 10px 24px rgba(18, 21, 29, .12); }
+    html[data-design="v2"] .version-switcher a[aria-current="page"] { background: #3e60e6; }
+
+    html[data-design="v2"] .hero { position: relative; isolation: isolate; overflow: hidden; background: #e7f0ff; border-bottom: 0; padding-block: clamp(80px, 10vw, 148px) clamp(62px, 7vw, 104px); }
+    html[data-design="v2"] .hero::before,
+    html[data-design="v2"] .hero::after { content: ""; position: absolute; z-index: -1; border-radius: 50%; pointer-events: none; }
+    html[data-design="v2"] .hero::before { width: min(48vw, 680px); aspect-ratio: 1; right: -13%; top: -36%; background: #ffb72e; }
+    html[data-design="v2"] .hero::after { width: min(32vw, 470px); aspect-ratio: 1; left: 43%; bottom: -58%; background: #3e60e6; }
+    html[data-design="v2"] .hero .wrap { position: relative; z-index: 1; }
+    html[data-design="v2"] .hero-flags { gap: 8px; margin-bottom: clamp(32px, 5vw, 62px); }
+    html[data-design="v2"] .flag { border: 1px solid rgba(18, 21, 29, .2); background: rgba(255, 255, 255, .52); color: #12151d; }
+    html[data-design="v2"] .flag.hot { border-color: #ff6f3d; background: #ff6f3d; color: #fff; }
+    html[data-design="v2"] .hero-top { grid-template-columns: minmax(0, 1.3fr) minmax(270px, .7fr); align-items: stretch; gap: clamp(28px, 5vw, 86px); }
+    html[data-design="v2"] .hero h1 { max-width: 14em; font-size: clamp(38px, 5.6vw, 72px); line-height: 1.2; letter-spacing: -.04em; }
+    html[data-design="v2"] .hero h1 .small { max-width: 31em; margin-bottom: 1em; font-size: clamp(14px, 1.35vw, 18px); color: #3d4657; letter-spacing: .04em; }
+    html[data-design="v2"] .hero h1 .u { color: #3e60e6; text-decoration-color: currentColor; }
+    html[data-design="v2"] .hero p.lead { max-width: 58ch; color: #374154; }
+    html[data-design="v2"] .hero-panel { display: flex; flex-direction: column; justify-content: center; border: 0; border-radius: 28px; overflow: hidden; background: #243fba; color: #fff; box-shadow: 0 18px 0 rgba(18, 21, 29, .12), 0 30px 48px rgba(36, 63, 186, .22); }
+    html[data-design="v2"] .hero-panel .k { color: rgba(255, 255, 255, .66); border-bottom-color: rgba(255, 255, 255, .18); }
+    html[data-design="v2"] .hero-panel li { border-bottom-color: rgba(255, 255, 255, .16); }
+    html[data-design="v2"] .hero-panel .sq { background: #fff; border-radius: 50%; }
+    html[data-design="v2"] .hero-panel li em { color: rgba(255, 255, 255, .64); }
+    html[data-design="v2"] .hero-panel .foot { background: rgba(0, 0, 0, .13); color: rgba(255, 255, 255, .72); }
+    html[data-design="v2"] .stats { margin-bottom: 28px; border: 0; gap: 12px; background: transparent; }
+    html[data-design="v2"] .stats li { border: 1px solid rgba(18, 21, 29, .12); border-radius: 16px; background: rgba(255, 255, 255, .68); }
+    html[data-design="v2"] .stats .v { color: #12151d; }
+    html[data-design="v2"] .btn { border-radius: 999px; padding: 18px 32px; }
+    html[data-design="v2"] .btn.primary { background: #3e60e6; box-shadow: 0 5px 0 #263faa; }
+    html[data-design="v2"] .btn.primary:hover { background: #2c47bc; }
+    html[data-design="v2"] .btn.ghost { border-color: rgba(18, 21, 29, .25); background: rgba(255, 255, 255, .48); }
+    html[data-design="v2"] .v2-service-rail { display: block; background: #12151d; color: #fff; }
+    html[data-design="v2"] .v2-service-rail .wrap { display: flex; align-items: center; gap: 0; min-height: 68px; overflow-x: auto; }
+    html[data-design="v2"] .v2-service-rail .label { flex: none; padding-right: 28px; color: rgba(255, 255, 255, .52); font-size: 10px; font-weight: 800; letter-spacing: .16em; }
+    html[data-design="v2"] .v2-service-rail a { flex: none; padding: 8px 20px; border-left: 1px solid rgba(255, 255, 255, .18); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+    html[data-design="v2"] .v2-service-rail a:hover { background: rgba(255, 255, 255, .1); }
+
+    html[data-design="v2"] .message { background: #12151d; }
+    html[data-design="v2"] .message .quote { border-left-color: #ffb72e; background: #1f2430; border-radius: 0 20px 20px 0; }
+    html[data-design="v2"] .message .close .hl { color: #ffb72e; }
+    html[data-design="v2"] #why { background: #fbfaf7; }
+    html[data-design="v2"] .why-grid { gap: 14px; border: 0; background: transparent; }
+    html[data-design="v2"] .why-card { border: 0; border-radius: 22px; background: #fff; box-shadow: 0 10px 28px rgba(18, 21, 29, .07); }
+    html[data-design="v2"] .why-card:nth-child(2) { background: #eef1ff; }
+    html[data-design="v2"] .why-card:nth-child(3) { background: #fff5df; }
+    html[data-design="v2"] .why-card .n { color: #3e60e6; }
+    html[data-design="v2"] #services { background: #eef1f6; }
+    html[data-design="v2"] .services { grid-template-columns: 1fr; gap: 20px; border: 0; background: transparent; }
+    html[data-design="v2"] .services > * { background: transparent; }
+    html[data-design="v2"] .svc { overflow: hidden; padding: clamp(30px, 4vw, 58px); border: 0; border-radius: 30px; background: #fff; box-shadow: 0 12px 32px rgba(18, 21, 29, .08); }
+    html[data-design="v2"] .svc::before { inset: 0 auto 0 0; width: min(22%, 260px); height: auto; opacity: .1; }
+    html[data-design="v2"] .svc::after { content: ""; position: absolute; width: 190px; aspect-ratio: 1; right: -72px; top: -92px; border: 22px solid var(--accent-svc); border-radius: 50%; opacity: .13; pointer-events: none; }
+    html[data-design="v2"] .svc > * { position: relative; z-index: 1; }
+    html[data-design="v2"] .svc-meta { margin-bottom: 24px; }
+    html[data-design="v2"] .svc-no { color: var(--accent-svc); }
+    html[data-design="v2"] .svc-tag { border: 0; border-radius: 999px; background: rgba(18, 21, 29, .06); color: var(--accent-svc); }
+    html[data-design="v2"] .svc-title-row { grid-template-columns: 116px minmax(0, 1fr); gap: 22px; margin-bottom: 22px; }
+    html[data-design="v2"] .svc-illustration { width: 116px; height: 92px; border: 0; border-radius: 22px; background: var(--accent-svc); color: #fff; box-shadow: 0 8px 0 rgba(18, 21, 29, .24); }
+    html[data-design="v2"] .svc-illustration svg { width: 82px; height: 62px; }
+    html[data-design="v2"] .svc h3 { font-size: clamp(26px, 3.2vw, 38px); }
+    html[data-design="v2"] .svc-availability { border: 0; border-radius: 999px; background: var(--accent-svc); color: #fff; padding-inline: 11px; }
+    html[data-design="v2"] .svc .catch { max-width: 48ch; font-size: clamp(16px, 1.7vw, 20px); }
+    html[data-design="v2"] .svc .desc { max-width: 82ch; font-size: 15px; }
+    html[data-design="v2"] .svc-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; border: 0; }
+    html[data-design="v2"] .svc-facts > div { padding: 20px; border: 0; border-radius: 16px; background: #f5f6f9; }
+    html[data-design="v2"] .svc-facts dt { color: var(--accent-svc); }
+    html[data-design="v2"] .svc-more { color: var(--accent-svc); border-bottom-color: currentColor; }
+    html[data-design="v2"] .seminar-grid { gap: 14px; border: 0; background: transparent; }
+    html[data-design="v2"] .sem-card { border-radius: 20px; background: #fff; box-shadow: 0 8px 20px rgba(18, 21, 29, .06); }
+    html[data-design="v2"] .sem-card:nth-child(2) { background: #eaf0ff; }
+    html[data-design="v2"] .sem-card:nth-child(3) { background: #fff3d8; }
+    html[data-design="v2"] #terms { background: #f6f3ec; }
+    html[data-design="v2"] .terms, html[data-design="v2"] .terms .row { border-color: rgba(18, 21, 29, .16); }
+    html[data-design="v2"] .makers { background: #e7ecf7; border: 0; }
+    html[data-design="v2"] .maker { overflow: hidden; border: 0; border-radius: 20px; box-shadow: 0 10px 24px rgba(18, 21, 29, .08); }
+    html[data-design="v2"] .maker-photo { border: 0; }
+    html[data-design="v2"] .entry { background-color: #182d75; background-image: radial-gradient(circle at 88% 12%, #ffb72e 0 12%, transparent 12.2%), linear-gradient(135deg, #243fba, #111a3d 72%); }
+    html[data-design="v2"] .form-shell { border: 0; border-top: 6px solid #ffb72e; border-radius: 28px; box-shadow: 0 16px 0 rgba(5, 10, 30, .28), 0 30px 62px rgba(5, 10, 30, .38); }
+    html[data-design="v2"] footer { background: #12151d; }
+
+    @media (max-width: 760px) {
+      .version-switcher { right: 12px; top: calc(100% + 8px); }
+      .version-switcher .k { display: none; }
+      html[data-design="v2"] .version-switcher { right: 12px; }
+      html[data-design="v2"] .hero::before { width: 260px; right: -38%; top: -11%; }
+      html[data-design="v2"] .hero::after { width: 190px; left: 42%; bottom: -11%; }
+      html[data-design="v2"] .hero-top { grid-template-columns: 1fr; }
+      html[data-design="v2"] .hero-panel { min-height: 0; }
+      html[data-design="v2"] .v2-service-rail .wrap { padding-inline: 0; }
+      html[data-design="v2"] .v2-service-rail .label { padding-left: 20px; }
+      html[data-design="v2"] .svc { border-radius: 22px; }
+      html[data-design="v2"] .svc::before { width: 42%; }
+      html[data-design="v2"] .svc-title-row { grid-template-columns: 86px minmax(0, 1fr); gap: 16px; }
+      html[data-design="v2"] .svc-illustration { width: 86px; height: 70px; border-radius: 18px; }
+      html[data-design="v2"] .svc-illustration svg { width: 62px; height: 46px; }
+      html[data-design="v2"] .svc-facts { grid-template-columns: 1fr; gap: 10px; }
+      html[data-design="v2"] .form-shell { border-radius: 20px; }
+    }
   </style>
 </head>
 <body>
@@ -1166,6 +1301,11 @@
         </svg>
       </span>
     </div>
+    <nav class="version-switcher" aria-label="デザインバージョン">
+      <span class="k">DESIGN</span>
+      <a href="?design=v1" data-design-option="v1" aria-current="page">V1</a>
+      <a href="?design=v2" data-design-option="v2">V2</a>
+    </nav>
   </header>
 
   <main>
@@ -1229,6 +1369,16 @@
         </p>
       </div>
     </section>
+
+    <nav class="v2-service-rail" aria-label="4サービスの案内">
+      <div class="wrap">
+        <span class="label">EXPLORE SERVICES</span>
+        <a href="#service-super-manager">SUPER MANAGER</a>
+        <a href="#service-elliot">ELLIOT</a>
+        <a href="#service-worklog">WORKLOG INSIGHT</a>
+        <a href="#service-jmatch">J MATCH ENGINE</a>
+      </div>
+    </nav>
 
     <!-- ============ MESSAGE ============ -->
     <section id="message" class="message">
@@ -1301,7 +1451,7 @@
 
         <div class="hgrid services">
 
-          <article class="svc" style="--accent-svc: var(--sm);">
+          <article id="service-super-manager" class="svc" style="--accent-svc: var(--sm);">
             <div class="svc-meta">
               <span class="svc-no">SERVICE 01</span>
               <span class="svc-tag">商談・営業</span>
@@ -1333,7 +1483,7 @@
             <a class="svc-more" href="../super-manager/">詳しく見る <span aria-hidden="true">→</span></a>
           </article>
 
-          <article class="svc" style="--accent-svc: var(--el);">
+          <article id="service-elliot" class="svc" style="--accent-svc: var(--el);">
             <div class="svc-meta">
               <span class="svc-no">SERVICE 02</span>
               <span class="svc-tag">社内情報・経営</span>
@@ -1365,7 +1515,7 @@
             <a class="svc-more" href="../elliot/">詳しく見る <span aria-hidden="true">→</span></a>
           </article>
 
-          <article class="svc" style="--accent-svc: var(--wl);">
+          <article id="service-worklog" class="svc" style="--accent-svc: var(--wl);">
             <div class="svc-meta">
               <span class="svc-no">SERVICE 03</span>
               <span class="svc-tag">業務可視化・AI化</span>
@@ -1397,7 +1547,7 @@
             <a class="svc-more" href="../worklog-insight/">詳しく見る <span aria-hidden="true">→</span></a>
           </article>
 
-          <article class="svc" style="--accent-svc: var(--jm);">
+          <article id="service-jmatch" class="svc" style="--accent-svc: var(--jm);">
             <div class="svc-meta">
               <span class="svc-no">SERVICE 04</span>
               <span class="svc-tag">顧客フォロー・集客</span>
@@ -1762,6 +1912,39 @@
     }
 
     var $ = function (id) { return document.getElementById(id); };
+
+    /* ---------- デザインV1 / V2（内容とフォームは共通） ---------- */
+    (function setupDesignVersion() {
+      var root = document.documentElement;
+      var links = Array.prototype.slice.call(document.querySelectorAll("[data-design-option]"));
+
+      function applyVersion(version, updateUrl) {
+        var next = version === "v2" ? "v2" : "v1";
+        if (next === "v2") root.dataset.design = "v2";
+        else delete root.dataset.design;
+
+        links.forEach(function (link) {
+          var active = link.getAttribute("data-design-option") === next;
+          if (active) link.setAttribute("aria-current", "page");
+          else link.removeAttribute("aria-current");
+        });
+
+        if (updateUrl && window.history && window.history.replaceState) {
+          var url = new URL(window.location.href);
+          if (next === "v2") url.searchParams.set("design", "v2");
+          else url.searchParams.delete("design");
+          window.history.replaceState(null, "", url.pathname + url.search + url.hash);
+        }
+      }
+
+      applyVersion(root.dataset.design === "v2" ? "v2" : "v1", false);
+      links.forEach(function (link) {
+        link.addEventListener("click", function (event) {
+          event.preventDefault();
+          applyVersion(link.getAttribute("data-design-option"), true);
+        });
+      });
+    })();
 
     /* ---------- ヘッダーの申込導線（実際のリンク操作は奪わない） ---------- */
     (function setupCtaCursor() {

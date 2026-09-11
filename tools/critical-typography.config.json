@@ -208,11 +208,37 @@
             "background": "#fff",
             "color": "var(--ink)"
           }
+        },
+        {
+          "selector": "html[data-design=\"v2\"] .services",
+          "declarations": {
+            "grid-template-columns": "1fr",
+            "gap": "20px"
+          }
+        },
+        {
+          "selector": "html[data-design=\"v2\"] .v2-service-rail",
+          "declarations": {
+            "display": "block",
+            "background": "#12151d"
+          }
         }
       ],
       "requiredOccurrences": [
         {
           "text": "class=\"cta-cursor\"",
+          "minimum": 1
+        },
+        {
+          "text": "class=\"version-switcher\"",
+          "minimum": 1
+        },
+        {
+          "text": "class=\"v2-service-rail\"",
+          "minimum": 1
+        },
+        {
+          "text": "setupDesignVersion",
           "minimum": 1
         },
         {
@@ -278,6 +304,21 @@
           "name": "申込導線のカーソルを削除",
           "find": "class=\"cta-cursor\"",
           "replace": "class=\"cta-cursor-removed\""
+        },
+        {
+          "name": "V1とV2の切替UIを削除",
+          "find": "class=\"version-switcher\"",
+          "replace": "class=\"version-switcher-removed\""
+        },
+        {
+          "name": "V2のサービスレールを削除",
+          "find": "class=\"v2-service-rail\"",
+          "replace": "class=\"v2-service-rail-removed\""
+        },
+        {
+          "name": "V2のサービス一覧を2列に戻す",
+          "find": "html[data-design=\"v2\"] .services { grid-template-columns: 1fr; gap: 20px;",
+          "replace": "html[data-design=\"v2\"] .services { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px;"
         },
         {
           "name": "申込導線のカーソルを「なぜ0円なのか」より前から表示する",
