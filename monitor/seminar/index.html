@@ -774,16 +774,50 @@
     }
     .makers-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
 
-    /* ================= entry ================= */
-    .entry { background: var(--bg-alt); border-top: 1px solid var(--line); }
-    .entry-head { margin-bottom: 44px; }
-    .entry-head .eyebrow { justify-content: flex-start; }
+    .entry {
+      /* ================= entry ================= */
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      color: #fff;
+      background-color: #0a1737;
+      background-image:
+        linear-gradient(135deg, rgba(28, 68, 183, .78), rgba(10, 23, 55, .96)),
+        linear-gradient(rgba(255, 255, 255, .055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .055) 1px, transparent 1px);
+      background-size: auto, 38px 38px, 38px 38px;
+      background-position: 0, -1px -1px, -1px -1px;
+    }
+    .entry::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: min(720px, 76vw);
+      aspect-ratio: 1;
+      right: -21%;
+      bottom: -48%;
+      border: 1px solid rgba(174, 202, 255, .18);
+      border-radius: 50%;
+      box-shadow: 0 0 0 52px rgba(174, 202, 255, .035), 0 0 0 104px rgba(174, 202, 255, .02);
+      pointer-events: none;
+    }
+    .entry-head { position: relative; z-index: 1; margin-bottom: 44px; }
+    .entry-head .eyebrow { justify-content: flex-start; color: #a9c2ff; }
+    .entry-head .eyebrow::after { background: rgba(255, 255, 255, .3); }
+    .entry-head .title { color: #fff; }
+    .entry-head .section-lead { color: rgba(255, 255, 255, .82); }
+    .entry-head .section-lead b { color: #fff; }
 
     .form-shell {
+      position: relative;
+      z-index: 1;
       width: min(780px, 100%);
       margin-inline: auto;
-      background: var(--bg);
-      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      border: 1px solid rgba(157, 184, 255, .88);
+      border-top: 4px solid #75a0ff;
+      box-shadow: 0 10px 0 rgba(4, 14, 42, .36), 0 28px 46px rgba(4, 14, 42, .42);
       padding: clamp(24px, 3.6vw, 52px);
     }
 
@@ -1003,6 +1037,7 @@
       .flag { flex: 1 1 auto; text-align: center; }
       .slot { flex-wrap: wrap; }
       .slot .t { margin-left: 31px; }
+      .form-shell { box-shadow: 0 7px 0 rgba(4, 14, 42, .32), 0 20px 34px rgba(4, 14, 42, .38); }
     }
 
     @media (max-width: 460px) {
