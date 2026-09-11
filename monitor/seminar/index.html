@@ -98,6 +98,7 @@
       border-bottom: 1px solid var(--line);
     }
     .bar-inner {
+      position: relative;
       display: flex;
       align-items: center;
       gap: 14px;
@@ -125,15 +126,50 @@
       letter-spacing: 0;
     }
     .bar .spacer { margin-inline-start: auto; }
+    .cta-cursor {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      left: 0;
+      width: 21px;
+      height: 29px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-16%, -16%) scale(.72);
+      transform-origin: 20% 10%;
+      filter: drop-shadow(0 2px 2px rgba(5, 18, 51, .22));
+      transition: opacity .12s linear;
+      will-change: left, opacity, transform;
+    }
+    .cta-cursor.is-active {
+      opacity: var(--cursor-opacity, .14);
+      transform: translate(-16%, -16%) scale(var(--cursor-scale, .72));
+    }
+    .cta-cursor svg { display: block; width: 100%; height: 100%; }
+    .cta-cursor::after {
+      content: "";
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      left: 10px;
+      top: 17px;
+      border: 1.5px solid #b9d2ff;
+      border-radius: 50%;
+      opacity: 0;
+    }
+    .cta-cursor.is-clicking { animation: cta-cursor-press .54s cubic-bezier(.22, 1, .36, 1) both; }
+    .cta-cursor.is-clicking::after { animation: cta-cursor-tap .54s ease-out both; }
     .bar-cta {
+      position: relative;
+      isolation: isolate;
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 11px 20px;
       border: 1px solid rgba(255, 255, 255, .28);
-      border-bottom-color: #102d83;
-      background: linear-gradient(135deg, #3575f3 0%, #1d4ed8 68%, #1739a8 100%);
-      box-shadow: 0 4px 0 #102d83, 0 10px 18px rgba(23, 57, 168, .24);
+      border-bottom-color: #051234;
+      background: linear-gradient(145deg, #234eaa 0%, #102c70 58%, #081b49 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .26), 0 4px 0 #051234, 0 11px 20px rgba(5, 18, 52, .26);
       color: #fff;
       text-decoration: none;
       font-size: 13px;
@@ -146,18 +182,33 @@
     }
     .bar-cta:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 0 #102d83, 0 14px 22px rgba(23, 57, 168, .28);
-      filter: saturate(1.08);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .3), 0 6px 0 #051234, 0 15px 24px rgba(5, 18, 52, .3);
+      filter: saturate(1.12) brightness(1.05);
     }
     .bar-cta:active {
       transform: translateY(3px);
-      box-shadow: 0 1px 0 #102d83, 0 4px 8px rgba(23, 57, 168, .2);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16), 0 1px 0 #051234, 0 4px 8px rgba(5, 18, 52, .2);
     }
     @keyframes bar-cta-drop {
       from { opacity: 0; transform: translateY(-30px) scale(.96); }
       72% { opacity: 1; transform: translateY(3px) scale(.995); }
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
+    @keyframes cta-cursor-press {
+      0%, 100% { margin-top: 0; }
+      42% { margin-top: 4px; }
+    }
+    @keyframes cta-cursor-tap {
+      0%, 36% { opacity: 0; transform: scale(.3); }
+      52% { opacity: .92; }
+      100% { opacity: 0; transform: scale(2.5); }
+    }
+    @keyframes cta-arrival-press {
+      0%, 100% { transform: translateY(0) scale(1); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .26), 0 4px 0 #051234, 0 11px 20px rgba(5, 18, 52, .26); }
+      36% { transform: translateY(4px) scale(.985); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .14), 0 0 0 #051234, 0 4px 8px rgba(5, 18, 52, .2); }
+      66% { transform: translateY(-1px) scale(1.01); }
+    }
+    .bar-cta.is-arrived { animation: cta-arrival-press .62s cubic-bezier(.22, 1, .36, 1) both; }
 
     /* ================= shared ================= */
     section { padding-block: clamp(64px, 8vw, 116px); }
@@ -820,6 +871,12 @@
       box-shadow: 0 10px 0 rgba(4, 14, 42, .36), 0 28px 46px rgba(4, 14, 42, .42);
       padding: clamp(24px, 3.6vw, 52px);
     }
+    .entry.is-arrived .form-shell { animation: entry-form-reveal .72s cubic-bezier(.22, 1, .36, 1) both; }
+    @keyframes entry-form-reveal {
+      0% { transform: translateY(8px); box-shadow: 0 6px 0 rgba(4, 14, 42, .3), 0 18px 32px rgba(4, 14, 42, .3); }
+      54% { transform: translateY(-3px); box-shadow: 0 13px 0 rgba(4, 14, 42, .4), 0 34px 54px rgba(4, 14, 42, .48), 0 0 0 5px rgba(117, 160, 255, .12); }
+      100% { transform: translateY(0); box-shadow: 0 10px 0 rgba(4, 14, 42, .36), 0 28px 46px rgba(4, 14, 42, .42); }
+    }
 
     .field { margin-bottom: 32px; }
     .field:last-of-type { margin-bottom: 26px; }
@@ -1038,6 +1095,7 @@
       .slot { flex-wrap: wrap; }
       .slot .t { margin-left: 31px; }
       .form-shell { box-shadow: 0 7px 0 rgba(4, 14, 42, .32), 0 20px 34px rgba(4, 14, 42, .38); }
+      .cta-cursor { display: none; }
     }
 
     @media (max-width: 460px) {
@@ -1061,6 +1119,8 @@
       html { scroll-behavior: auto; }
       * { transition-duration: .01ms !important; }
       .bar-cta { animation: none; }
+      .cta-cursor { display: none; }
+      .entry.is-arrived .form-shell { animation: none; }
     }
   </style>
 </head>
@@ -1100,6 +1160,11 @@
       </a>
       <span class="spacer"></span>
       <a class="bar-cta" href="#entry">セミナーに申し込む</a>
+      <span class="cta-cursor" aria-hidden="true">
+        <svg viewBox="0 0 22 30" fill="none" aria-hidden="true">
+          <path d="M2.5 1.8 3.7 25l6-5.2 4.7 8.3 4-2.3-4.7-8.2 7.4-1.7L2.5 1.8Z" fill="#EAF3FF" stroke="#061B47" stroke-width="1.8" stroke-linejoin="round"/>
+        </svg>
+      </span>
     </div>
   </header>
 
@@ -1697,6 +1762,66 @@
     }
 
     var $ = function (id) { return document.getElementById(id); };
+
+    /* ---------- ヘッダーの申込導線（実際のリンク操作は奪わない） ---------- */
+    (function setupCtaCursor() {
+      var bar = document.querySelector(".bar");
+      var inner = document.querySelector(".bar-inner");
+      var brandMark = document.querySelector(".brand .mark");
+      var cta = document.querySelector(".bar-cta");
+      var cursor = document.querySelector(".cta-cursor");
+      var entry = $("entry");
+      var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
+      var arrived = false;
+      var frame = 0;
+
+      if (!bar || !inner || !brandMark || !cta || !cursor || !entry) return;
+
+      function motionEnabled() {
+        return window.innerWidth > 640 && !(reducedMotion && reducedMotion.matches);
+      }
+
+      function arrive() {
+        if (arrived) return;
+        arrived = true;
+        cursor.classList.add("is-clicking");
+        cta.classList.add("is-arrived");
+        entry.classList.add("is-arrived");
+      }
+
+      function update() {
+        frame = 0;
+        if (!motionEnabled()) {
+          cursor.classList.remove("is-active");
+          return;
+        }
+
+        var innerRect = inner.getBoundingClientRect();
+        var markRect = brandMark.getBoundingClientRect();
+        var ctaRect = cta.getBoundingClientRect();
+        var headerHeight = bar.offsetHeight;
+        var entryY = entry.getBoundingClientRect().top + window.scrollY - headerHeight;
+        var progress = Math.min(1, Math.max(0, window.scrollY / Math.max(1, entryY)));
+        var start = markRect.left - innerRect.left + markRect.width * .62;
+        var end = ctaRect.left - innerRect.left + ctaRect.width * .48;
+
+        cursor.style.left = (start + (end - start) * progress) + "px";
+        cursor.style.setProperty("--cursor-opacity", (.14 + progress * .82).toFixed(2));
+        cursor.style.setProperty("--cursor-scale", (.72 + progress * .28).toFixed(2));
+        cursor.classList.add("is-active");
+
+        if (entry.getBoundingClientRect().top <= headerHeight + 8) arrive();
+      }
+
+      function schedule() {
+        if (!frame) frame = window.requestAnimationFrame(update);
+      }
+
+      window.addEventListener("scroll", schedule, { passive: true });
+      window.addEventListener("resize", schedule);
+      if (reducedMotion && reducedMotion.addEventListener) reducedMotion.addEventListener("change", schedule);
+      schedule();
+    })();
 
     /* ---------- 設定チェック ---------- */
     function isConfigured() {

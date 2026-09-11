@@ -178,8 +178,21 @@
         {
           "selector": ".bar-cta",
           "declarations": {
-            "background": "linear-gradient(135deg, #3575f3 0%, #1d4ed8 68%, #1739a8 100%)",
+            "background": "linear-gradient(145deg, #234eaa 0%, #102c70 58%, #081b49 100%)",
             "animation": "bar-cta-drop .64s cubic-bezier(.22, 1, .36, 1) 1s backwards"
+          }
+        },
+        {
+          "selector": ".cta-cursor",
+          "declarations": {
+            "opacity": "0",
+            "pointer-events": "none"
+          }
+        },
+        {
+          "selector": ".entry.is-arrived .form-shell",
+          "declarations": {
+            "animation": "entry-form-reveal .72s cubic-bezier(.22, 1, .36, 1) both"
           }
         },
         {
@@ -198,6 +211,10 @@
         }
       ],
       "requiredOccurrences": [
+        {
+          "text": "class=\"cta-cursor\"",
+          "minimum": 1
+        },
         {
           "text": "id=\"makers\"",
           "minimum": 1
@@ -247,6 +264,16 @@
         {
           "name": "申込ボタンの登場アニメーションを削除",
           "find": "animation: bar-cta-drop .64s cubic-bezier(.22, 1, .36, 1) 1s backwards;",
+          "replace": "animation: none;"
+        },
+        {
+          "name": "申込導線のカーソルを削除",
+          "find": "class=\"cta-cursor\"",
+          "replace": "class=\"cta-cursor-removed\""
+        },
+        {
+          "name": "申込到達時のフォーム演出を削除",
+          "find": "animation: entry-form-reveal .72s cubic-bezier(.22, 1, .36, 1) both;",
           "replace": "animation: none;"
         },
         {
