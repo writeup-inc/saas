@@ -4,20 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="夜中の12時に現れて社内のログを読み、朝に示唆を届けるAI「Elliot」。1,000社に届ける前の、最初の10社を募集しています。1年間無料、ご負担はAPI利用料などの実費のみ。">
+  <meta name="description" content="夜中の12時に現れて社内の記録を読み、朝に要点を届けるAI「Elliot」。1,000社に届ける前の、最初の10社を募集しています。1年間0円、ご負担はAPI利用料などの実費のみ。">
   <meta name="theme-color" content="#101a2c">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="WRITEUP AI MONITOR">
   <meta property="og:title" content="Elliot｜最初の10社になってください">
-  <meta property="og:description" content="1年間無料。夜中の12時に現れて社内のログを読み、朝に示唆を届ける小人のAIです。">
+  <meta property="og:description" content="1年間0円。夜中の12時に現れて社内の記録を読み、朝に要点を届ける小人のAIです。">
   <meta property="og:url" content="https://writeup-inc.github.io/saas/monitor/elliot/">
   <meta property="og:image" content="https://writeup-inc.github.io/saas/monitor/elliot/assets/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://writeup-inc.github.io/saas/monitor/elliot/">
   <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;family=Zen+Old+Mincho:wght@400;700;900&amp;display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://player.vimeo.com">
-  <title>Elliot｜最初の10社になってください（1年間無料モニター）</title>
+  <title>Elliot｜最初の10社になってください（1年間0円）</title>
   <style>
     :root {
       --night: #101a2c;
@@ -32,6 +35,8 @@
       --gold-soft: rgba(216, 178, 106, .13);
       --dawn: #e8c38d;
       --shadow: 0 26px 60px rgba(0, 0, 0, .5);
+      --sans: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
+      --serif: "Zen Old Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
     }
 
     * { box-sizing: border-box; }
@@ -41,14 +46,18 @@
       margin: 0;
       color: var(--ink);
       background: var(--night);
-      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+      font-family: var(--sans);
       line-height: 1.85;
       -webkit-font-smoothing: antialiased;
     }
 
     a { color: inherit; }
+    button { font: inherit; color: inherit; }
     img { display: block; max-width: 100%; height: auto; }
+    figure { margin: 0; }
     :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+    h1, h2, h3 { font-family: var(--serif); font-weight: 700; }
 
     .shell { width: min(calc(100% - 44px), 900px); margin: 0 auto; }
 
@@ -77,7 +86,7 @@
     /* ---------- opening ---------- */
     .opening {
       position: relative;
-      padding: 72px 0 54px;
+      padding: 74px 0 54px;
       background:
         radial-gradient(1.5px 1.5px at 14% 22%, rgba(255,255,255,.7), transparent 60%),
         radial-gradient(1.3px 1.3px at 33% 47%, rgba(255,255,255,.42), transparent 60%),
@@ -94,7 +103,7 @@
       font-size: 12px; font-weight: 700; letter-spacing: .1em; color: var(--gold);
     }
     .kicker::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
-    h1 { margin: 0 0 18px; font-size: clamp(27px, 4.6vw, 44px); line-height: 1.42; }
+    h1 { margin: 0 0 18px; font-size: clamp(28px, 4.8vw, 46px); font-weight: 900; line-height: 1.44; }
     h1 em { font-style: normal; color: var(--dawn); }
     .opening p { margin: 0; max-width: 40em; color: var(--ink-soft); font-size: 15.5px; }
     .opening-fig { margin: 0; justify-self: center; }
@@ -109,63 +118,50 @@
       .opening-fig img { width: 116px; }
     }
 
-    /* ---------- offer ---------- */
-    .offer { padding: 0 0 60px; }
+    /* ---------- offer（数字を主役に） ---------- */
+    .offer { padding: 0 0 58px; }
     .offer-card {
       border: 1px solid var(--gold);
-      background: linear-gradient(160deg, rgba(216,178,106,.12), rgba(216,178,106,.03));
-      padding: 30px 32px 28px;
+      background: linear-gradient(160deg, rgba(216,178,106,.13), rgba(216,178,106,.03));
+      padding: 34px 32px 30px;
       box-shadow: var(--shadow);
     }
-    .offer-big { margin: 0 0 4px; font-size: clamp(29px, 5vw, 46px); font-weight: 700; line-height: 1.2; color: var(--dawn); }
-    .offer-big span { font-size: .5em; margin-left: 8px; color: var(--ink); }
-    .offer-sub { margin: 0; font-size: 15.5px; font-weight: 700; }
-    .offer-lines { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin: 22px 0 0; background: var(--line); border: 1px solid var(--line); }
-    .offer-lines > div { padding: 16px 18px; background: var(--night); }
-    .offer-lines dt { margin: 0 0 3px; font-size: 11.5px; letter-spacing: .14em; color: var(--gold); }
-    .offer-lines dd { margin: 0; font-size: 16px; font-weight: 700; }
-    .offer-note { margin: 18px 0 0; color: var(--muted); font-size: 12.5px; }
+    .offer-nums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin: 0; background: var(--line); border: 1px solid var(--line); }
+    .offer-nums > div { padding: 22px 20px 20px; background: var(--night); text-align: center; }
+    .offer-nums dt { margin: 0 0 6px; font-size: 12px; font-weight: 700; letter-spacing: .18em; color: var(--gold); }
+    .offer-nums dd {
+      margin: 0; font-family: var(--serif); font-weight: 900; color: var(--dawn);
+      font-size: clamp(40px, 8vw, 72px); line-height: 1.05; letter-spacing: .01em;
+    }
+    .offer-nums dd small { font-size: .4em; margin-left: 3px; font-weight: 700; }
+    .offer-sub { margin: 24px 0 0; font-size: 15.5px; font-weight: 700; }
+    .offer-note { margin: 10px 0 0; color: var(--muted); font-size: 12.5px; }
     .offer-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
-    @media (max-width: 900px) { .offer-lines { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 560px) { .offer-lines { grid-template-columns: 1fr; } }
+    @media (max-width: 680px) {
+      .offer-card { padding: 26px 20px 24px; }
+      .offer-nums { grid-template-columns: 1fr; }
+      .offer-nums dd { font-size: 54px; }
+    }
 
     .button {
       display: inline-flex; align-items: center; gap: 9px;
       min-height: 52px; padding: 0 28px; border-radius: 999px;
-      font-size: 15px; font-weight: 700; text-decoration: none;
+      font-family: var(--sans); font-size: 15px; font-weight: 700; text-decoration: none;
+      border: 0; cursor: pointer;
       transition: transform .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
     }
     .button.primary { background: var(--gold); color: #241a06; }
     .button.primary:hover { transform: translateY(-2px); background: var(--dawn); }
-    .button.ghost { border: 1px solid var(--line-strong); color: var(--ink); }
+    .button.ghost { background: transparent; border: 1px solid var(--line-strong); color: var(--ink); }
     .button.ghost:hover { transform: translateY(-2px); border-color: var(--gold); color: var(--gold); }
-
-    /* ---------- 前提 ---------- */
-    .premise { padding: 58px 0; background: var(--night-deep); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .asks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 28px; background: var(--line); border: 1px solid var(--line); }
-    .asks > article { padding: 24px 22px; background: var(--night); }
-    .asks .tag { display: inline-block; margin-bottom: 10px; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: .08em; }
-    .asks .tag.must { background: var(--gold); color: #241a06; }
-    .asks .tag.free { border: 1px solid var(--line-strong); color: var(--muted); }
-    .asks h3 { margin: 0 0 8px; font-size: 17px; }
-    .asks p { margin: 0; color: var(--ink-soft); font-size: 14px; }
-    @media (max-width: 820px) { .asks { grid-template-columns: 1fr; } }
-
-    .honest { margin-top: 26px; border-left: 2px solid var(--gold); padding: 4px 0 4px 22px; }
-    .honest p { margin: 0; max-width: 42em; color: var(--ink-soft); font-size: 14.5px; }
-
-    /* ---------- 由来 ---------- */
-    .origin { padding: 44px 0; border-bottom: 1px solid var(--line); }
-    .origin-inner { border-left: 2px solid var(--gold); padding-left: 22px; }
-    .origin-inner p { margin: 0; max-width: 42em; color: var(--ink-soft); font-size: 15px; }
-    .origin-inner p + p { margin-top: 10px; }
+    .button.small { min-height: 44px; padding: 0 20px; font-size: 13.5px; }
 
     /* ---------- section ---------- */
-    .section { padding: 60px 0; border-bottom: 1px solid var(--line); }
+    .section { padding: 58px 0; border-bottom: 1px solid var(--line); }
     .section:last-of-type { border-bottom: 0; }
-    .section-kicker { margin: 0 0 8px; font-size: 11.5px; font-weight: 700; letter-spacing: .22em; color: var(--gold); }
-    .section-title { margin: 0 0 10px; font-size: clamp(20px, 2.9vw, 28px); line-height: 1.5; }
-    .section-copy { margin: 0 0 30px; max-width: 42em; color: var(--ink-soft); font-size: 14.5px; }
+    .section-kicker { margin: 0 0 8px; font-family: var(--sans); font-size: 11.5px; font-weight: 700; letter-spacing: .22em; color: var(--gold); }
+    .section-title { margin: 0 0 12px; font-size: clamp(21px, 3vw, 29px); font-weight: 900; line-height: 1.48; }
+    .section-copy { margin: 0 0 28px; max-width: 42em; color: var(--ink-soft); font-size: 14.5px; }
 
     /* ---------- 動画 ---------- */
     .video-frame { border: 1px solid var(--line-strong); background: #000; padding: 10px; box-shadow: var(--shadow); }
@@ -175,11 +171,24 @@
 
     /* ---------- 補足ボックス ---------- */
     .aside-box { margin-top: 26px; border: 1px solid var(--line); background: var(--night-soft); padding: 22px 24px; }
-    .aside-box h3 { margin: 0 0 8px; font-size: 16px; color: var(--gold); }
+    .aside-box h3 { margin: 0 0 8px; font-size: 17px; color: var(--gold); }
     .aside-box p { margin: 0 0 12px; max-width: 42em; color: var(--ink-soft); font-size: 14px; }
     .aside-box ul { margin: 0 0 12px; padding-left: 20px; color: var(--ink-soft); font-size: 14px; }
     .aside-box li { margin-bottom: 2px; }
     .aside-box p:last-child { margin-bottom: 0; }
+
+    /* ---------- 前提 ---------- */
+    .premise { padding: 58px 0; background: var(--night-deep); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .asks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 26px; background: var(--line); border: 1px solid var(--line); }
+    .asks > article { padding: 24px 22px; background: var(--night); }
+    .asks .tag { display: inline-block; margin-bottom: 10px; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: .08em; }
+    .asks .tag.must { background: var(--gold); color: #241a06; }
+    .asks .tag.free { border: 1px solid var(--line-strong); color: var(--muted); }
+    .asks h3 { margin: 0 0 8px; font-size: 18px; }
+    .asks p { margin: 0; color: var(--ink-soft); font-size: 14px; }
+    @media (max-width: 820px) { .asks { grid-template-columns: 1fr; } }
+    .honest { margin-top: 24px; border-left: 2px solid var(--gold); padding: 2px 0 2px 22px; }
+    .honest p { margin: 0; max-width: 42em; color: var(--ink-soft); font-size: 14.5px; }
 
     /* ---------- timeline ---------- */
     .tl { position: relative; margin: 0; padding: 0 0 0 40px; list-style: none; }
@@ -187,32 +196,52 @@
       content: ""; position: absolute; left: 9px; top: 10px; bottom: 14px; width: 1px;
       background: linear-gradient(180deg, rgba(216,178,106,.16), var(--gold) 42%, var(--dawn));
     }
-    .tl li { position: relative; padding-bottom: 38px; }
+    .tl li { position: relative; padding-bottom: 34px; }
     .tl li:last-child { padding-bottom: 0; }
     .tl li::before {
-      content: ""; position: absolute; left: -36px; top: 12px;
+      content: ""; position: absolute; left: -36px; top: 13px;
       width: 11px; height: 11px; border-radius: 50%;
       background: var(--night); border: 1.5px solid var(--gold);
       transition: background .2s ease, box-shadow .2s ease;
     }
     .tl li:hover::before { background: var(--gold); box-shadow: 0 0 0 6px var(--gold-soft); }
-    .tl-time { display: block; font-size: 20px; font-weight: 700; letter-spacing: .06em; color: var(--gold); line-height: 1.3; }
+    .tl-time { display: block; font-family: var(--serif); font-size: 26px; font-weight: 900; letter-spacing: .04em; color: var(--gold); line-height: 1.25; }
     .tl li.dawn::before { border-color: var(--dawn); }
     .tl li.dawn .tl-time { color: var(--dawn); }
-    .tl h3 { margin: 4px 0 8px; font-size: 18px; }
+    .tl h3 { margin: 2px 0 6px; font-size: 19px; }
     .tl p { margin: 0; max-width: 40em; color: var(--ink-soft); font-size: 14.5px; }
 
-    /* ---------- できること ---------- */
+    /* ---------- 経営者向けの締め ---------- */
+    .decide { padding: 62px 0 66px; text-align: center; background: linear-gradient(180deg, var(--night), #2b3044 74%, #55483f); }
+    .decide h2 { margin: 0 0 12px; font-size: clamp(22px, 3.4vw, 32px); font-weight: 900; line-height: 1.5; }
+    .decide p { margin: 0 auto 28px; max-width: 40em; color: var(--ink-soft); font-size: 14.5px; }
+    .decide .actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .decide-note { margin: 20px 0 0; color: var(--muted); font-size: 12.5px; }
+
+    /* ---------- 担当者向けの区切り ---------- */
+    .handover { padding: 52px 0; background: var(--night-deep); border-top: 1px solid var(--gold); border-bottom: 1px solid var(--line); }
+    .handover-inner { display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: center; }
+    .handover-mark {
+      width: 58px; height: 58px; border-radius: 50%;
+      border: 1px solid var(--gold); color: var(--gold);
+      display: grid; place-items: center;
+      font-family: var(--serif); font-size: 24px; font-weight: 900;
+    }
+    .handover h2 { margin: 0 0 6px; font-size: clamp(20px, 2.8vw, 27px); font-weight: 900; line-height: 1.5; }
+    .handover p { margin: 0; color: var(--ink-soft); font-size: 14.5px; max-width: 42em; }
+    @media (max-width: 560px) { .handover-inner { grid-template-columns: 1fr; gap: 16px; } }
+
+    /* ---------- 機能一覧 ---------- */
     .jobs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
-    .jobs > article { padding: 24px 22px; background: var(--night); transition: background .2s ease; }
+    .jobs > article { padding: 22px; background: var(--night); transition: background .2s ease; }
     .jobs > article:hover { background: var(--night-soft); }
-    .jobs b { display: block; margin-bottom: 6px; font-size: 11.5px; letter-spacing: .16em; color: var(--gold); }
-    .jobs h3 { margin: 0 0 8px; font-size: 17px; }
-    .jobs p { margin: 0; color: var(--ink-soft); font-size: 14px; }
+    .jobs b { display: block; margin-bottom: 5px; font-size: 11.5px; letter-spacing: .16em; color: var(--gold); }
+    .jobs h3 { margin: 0 0 6px; font-size: 17px; }
+    .jobs p { margin: 0; color: var(--ink-soft); font-size: 13.5px; }
     @media (max-width: 760px) { .jobs { grid-template-columns: 1fr; } }
 
-    .quotes { margin: 26px 0 0; padding: 22px 24px; border: 1px solid var(--line); background: var(--night-soft); }
-    .quotes p { margin: 0 0 12px; font-size: 12.5px; letter-spacing: .1em; color: var(--gold); }
+    .quotes { margin: 24px 0 0; padding: 22px 24px; border: 1px solid var(--line); background: var(--night-soft); }
+    .quotes p { margin: 0 0 10px; font-size: 12px; letter-spacing: .1em; color: var(--gold); }
     .quotes ul { margin: 0; padding-left: 20px; color: var(--ink-soft); font-size: 14.5px; }
     .quotes li { margin-bottom: 3px; }
 
@@ -223,49 +252,38 @@
     .soon li { margin-bottom: 6px; }
     .soon p { margin: 0; color: var(--muted); font-size: 12.5px; }
 
-    /* ---------- 条件 ---------- */
+    /* ---------- 3STEP ---------- */
+    .step-fig { margin: 0 0 20px; border: 1px solid var(--line-strong); background: #fffdf8; padding: 14px; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .steps > article { padding: 22px 20px; background: var(--night); }
+    .steps b { display: block; margin-bottom: 6px; font-size: 11.5px; letter-spacing: .16em; color: var(--muted); }
+    .steps h3 { margin: 0 0 6px; font-size: 17px; }
+    .steps p { margin: 0; color: var(--ink-soft); font-size: 13.5px; }
+    @media (max-width: 820px) { .steps { grid-template-columns: 1fr; } }
+
+    /* ---------- 必要なもの ---------- */
     .facts { border: 1px solid var(--line-strong); background: var(--night-soft); }
     .fact-row { display: grid; grid-template-columns: 200px 1fr; border-bottom: 1px solid var(--line); }
     .fact-row:last-child { border-bottom: 0; }
-    .fact-row dt { padding: 17px 22px; background: var(--night-deep); border-right: 1px solid var(--line); font-size: 14px; font-weight: 700; color: var(--gold); }
-    .fact-row dd { margin: 0; padding: 17px 22px; font-size: 14.5px; }
+    .fact-row dt { padding: 16px 22px; background: var(--night-deep); border-right: 1px solid var(--line); font-size: 14px; font-weight: 700; color: var(--gold); }
+    .fact-row dd { margin: 0; padding: 16px 22px; font-size: 14.5px; }
     .fact-row dd small { display: block; margin-top: 4px; color: var(--muted); font-size: 12.5px; }
-    .fact-row dd b { font-size: 17px; }
     @media (max-width: 720px) {
       .fact-row { grid-template-columns: 1fr; }
       .fact-row dt { border-right: 0; border-bottom: 1px solid var(--line); padding: 12px 18px; }
       .fact-row dd { padding: 14px 18px 18px; }
     }
 
-    /* ---------- 3STEP ---------- */
-    .step-fig { margin: 0 0 22px; border: 1px solid var(--line-strong); background: #fffdf8; padding: 14px; }
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
-    .steps > article { padding: 22px 20px; background: var(--night); }
-    .steps b { display: block; margin-bottom: 6px; font-size: 11.5px; letter-spacing: .16em; color: var(--muted); }
-    .steps h3 { margin: 0 0 6px; font-size: 16px; }
-    .steps p { margin: 0; color: var(--ink-soft); font-size: 13.5px; }
-    @media (max-width: 820px) { .steps { grid-template-columns: 1fr; } }
-
-    /* ---------- チェック ---------- */
-    .checklist { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
-    .checklist li {
-      display: grid; grid-template-columns: 20px 1fr; gap: 13px;
-      padding: 15px 18px; border: 1px solid var(--line); background: var(--night-soft);
-      font-size: 14.5px;
+    /* ---------- 社内告知 ---------- */
+    .announce { border: 1px solid var(--line-strong); background: var(--night-soft); }
+    .announce-head { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 14px 22px; border-bottom: 1px solid var(--line); background: var(--night-deep); }
+    .announce-head > span:first-child { margin-right: auto; font-size: 12px; font-weight: 700; letter-spacing: .14em; color: var(--gold); }
+    .announce pre {
+      margin: 0; padding: 22px; overflow-x: auto;
+      font-family: var(--sans); font-size: 14px; line-height: 1.95; color: var(--ink-soft);
+      white-space: pre-wrap; word-break: break-word;
     }
-    .checklist li::before {
-      content: ""; margin-top: 7px;
-      width: 13px; height: 7px;
-      border-left: 2px solid var(--gold); border-bottom: 2px solid var(--gold);
-      transform: rotate(-45deg);
-    }
-    .checklist strong { display: block; }
-    .checklist small { color: var(--muted); font-size: 12.5px; }
-
-    /* ---------- request ---------- */
-    .request-box { border: 1px solid var(--line); background: var(--night-soft); padding: 24px 26px; }
-    .request-box ul { margin: 0 0 20px; padding-left: 20px; color: var(--ink-soft); font-size: 14.5px; }
-    .request-box li { margin-bottom: 2px; }
+    .copy-state { font-size: 12.5px; color: var(--dawn); }
 
     /* ---------- 相談 ---------- */
     .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
@@ -277,7 +295,7 @@
     }
     .contact-card:hover { border-color: var(--gold); transform: translateY(-2px); }
     .contact-card b { display: block; margin-bottom: 4px; font-size: 11.5px; letter-spacing: .16em; color: var(--gold); }
-    .contact-card strong { display: block; margin-bottom: 5px; font-size: 16px; }
+    .contact-card strong { display: block; margin-bottom: 5px; font-family: var(--serif); font-size: 17px; }
     .contact-card span { color: var(--ink-soft); font-size: 13.5px; word-break: break-word; }
     @media (max-width: 820px) { .contact-grid { grid-template-columns: 1fr; } }
 
@@ -286,8 +304,8 @@
     .faq details { border-bottom: 1px solid var(--line); }
     .faq summary {
       cursor: pointer; list-style: none;
-      padding: 18px 44px 18px 2px; position: relative;
-      font-size: 15.5px; font-weight: 700;
+      padding: 17px 44px 17px 2px; position: relative;
+      font-family: var(--serif); font-size: 16px; font-weight: 700;
     }
     .faq summary::-webkit-details-marker { display: none; }
     .faq summary::after {
@@ -301,11 +319,11 @@
     .faq p { margin: 0 0 20px; padding-right: 44px; color: var(--ink-soft); font-size: 14.5px; }
 
     /* ---------- 締めのCTA ---------- */
-    .cta { padding: 70px 0 78px; text-align: center; background: linear-gradient(180deg, var(--night), #2b3044 72%, #5d4f48); }
-    .cta h2 { margin: 0 0 12px; font-size: clamp(21px, 3.3vw, 31px); line-height: 1.55; }
-    .cta p { margin: 0 auto 30px; max-width: 40em; color: var(--ink-soft); font-size: 14.5px; }
+    .cta { padding: 66px 0 74px; text-align: center; background: linear-gradient(180deg, var(--night), #2b3044 72%, #5d4f48); }
+    .cta h2 { margin: 0 0 12px; font-size: clamp(22px, 3.4vw, 32px); font-weight: 900; line-height: 1.5; }
+    .cta p { margin: 0 auto 28px; max-width: 40em; color: var(--ink-soft); font-size: 14.5px; }
     .cta .actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
-    .cta-note { margin: 22px 0 0; color: var(--muted); font-size: 12.5px; }
+    .cta-note { margin: 20px 0 0; color: var(--muted); font-size: 12.5px; }
 
     /* ---------- footer ---------- */
     .site-footer { padding: 26px 0 40px; background: var(--night-deep); }
@@ -334,15 +352,16 @@
       <span aria-hidden="true">›</span>
       <b>Elliot</b>
     </nav>
-    <a class="header-cta" href="#apply">1年間無料で申し込む <span aria-hidden="true">→</span></a>
+    <a class="header-cta" href="#apply">1年間0円で申し込む <span aria-hidden="true">→</span></a>
   </div>
 </header>
 
 <main>
+  <!-- ============ 経営者向け ============ -->
   <section class="opening">
     <div class="shell opening-grid">
       <div>
-        <span class="kicker">先着10社・1年間無料</span>
+        <span class="kicker">先着10社・1年間0円</span>
         <h1>みんなが眠っている<br>あいだに、<em>ボクが働きます。</em></h1>
         <p>ボクはElliot。毎晩、夜中の12時にオフィスに現れる小人です。打ち合わせのログも、電話の会話ログも、日報も全部読んで、朝には「これは知っておいたほうがいい」ことを、みなさんにお届けします。</p>
       </div>
@@ -352,22 +371,20 @@
     </div>
   </section>
 
-  <section class="offer" aria-labelledby="offer-title">
+  <section class="offer" aria-label="モニターの条件">
     <div class="shell">
       <div class="offer-card">
-        <p class="offer-big" id="offer-title">1年間、無料。<span>先着10社</span></p>
-        <p class="offer-sub">初期費用も月額料金もいただきません。ご負担いただくのは、API利用料などの実費だけです。</p>
-        <dl class="offer-lines">
-          <div><dt>期間</dt><dd>1年間 無料</dd></div>
-          <div><dt>初期費用</dt><dd>0円</dd></div>
-          <div><dt>月額料金</dt><dd>0円</dd></div>
-          <div><dt>ご負担</dt><dd>API利用料などの実費のみ</dd></div>
+        <dl class="offer-nums">
+          <div><dt>ご利用期間</dt><dd>1<small>年間</small></dd></div>
+          <div><dt>初期費用・月額</dt><dd>0<small>円</small></dd></div>
+          <div><dt>募集社数</dt><dd>10<small>社</small></dd></div>
         </dl>
+        <p class="offer-sub">1年間、初期費用も月額料金もいただきません。ご負担は、API利用料などの実費だけです。</p>
+        <p class="offer-note">利用期間や上限、データの取り扱いは開始前に書面で確認します。1年が終わったあとの継続は自動ではありません。</p>
         <div class="offer-actions">
-          <a class="button primary" href="#apply">1年間無料で申し込む <span aria-hidden="true">→</span></a>
+          <a class="button primary" href="#apply">1年間0円で申し込む <span aria-hidden="true">→</span></a>
           <a class="button ghost" href="#contact">先に相談する</a>
         </div>
-        <p class="offer-note">利用期間や上限、データの取り扱いは、開始前に書面で確認します。1年が終わったあとの継続は自動ではありません。</p>
       </div>
     </div>
   </section>
@@ -375,8 +392,7 @@
   <div class="shell">
     <section class="section" aria-labelledby="video-title">
       <p class="section-kicker">MOVIE</p>
-      <h2 class="section-title" id="video-title">まずは、5分だけ見てください。</h2>
-      <p class="section-copy">Elliotが何をするAIなのかを、実際の画面でご紹介しています。</p>
+      <h2 class="section-title" id="video-title">まずは5分の動画で、<br>何をするAIかが分かります。</h2>
       <div class="video-frame">
         <div class="video-ratio">
           <iframe
@@ -398,46 +414,37 @@
           <li>日報、週報</li>
           <li>チャットやメールのやりとりを書き出したもの</li>
         </ul>
-        <p>書式はばらばらで構いません。Elliotのために新しく何かを書き足していただく必要もなく、すでにGoogleドライブに置かれているものを、そのまま読みます。</p>
+        <p>書式はばらばらで構いません。新しく何かを書き足していただく必要もなく、すでにGoogleドライブに置かれているものを、そのまま読みます。</p>
       </div>
     </section>
   </div>
 
   <section class="premise" aria-labelledby="premise-title">
     <div class="shell">
-      <p class="section-kicker">なぜ無料なのか</p>
+      <p class="section-kicker">なぜ0円なのか</p>
       <h2 class="section-title" id="premise-title">1,000社に届ける前の、<br>最初の10社になってください。</h2>
-      <p class="section-copy">Elliotは、ゆくゆく1,000社に使っていただきたいと思って作っています。ただ、そこにたどり着くために、まだ足りないものがあります。実際に使われた事例と、現場からの率直なご意見です。だから最初の10社さまには、1年間無料でお使いいただきます。その代わりに、3つだけお願いさせてください。</p>
+      <p class="section-copy">1,000社に使っていただくために、まだ足りないものがあります。実際に使われた事例と、現場からの率直なご意見です。だから最初の10社さまは1年間0円。その代わり、3つだけお願いさせてください。</p>
 
       <div class="asks">
         <article>
           <span class="tag must">お願い（必須）</span>
-          <h3>インタビューにご協力ください</h3>
-          <p>後日、使ってみた感想をうかがう取材をさせてください。顔出し・会社名・実名での公開にご協力いただけると、とても助かります（難しい場合はご相談ください）。記事には御社のご紹介を2行とリンクを掲載します。</p>
+          <h3>インタビューに答えてください</h3>
+          <p>後日、使ってみた感想をうかがう取材をさせてください。顔出し・会社名・実名でご協力いただけると助かります（難しい場合はご相談ください）。記事には御社のご紹介を2行とリンクを掲載します。</p>
         </article>
         <article>
           <span class="tag must">お願い（必須）</span>
-          <h3>バグと使いにくい点を教えてください</h3>
-          <p>正直に申し上げると、バグや使いにくいところはまだ残っています。「ここが分かりにくい」「ここで止まった」を教えてください。直します。率直なご意見ほどありがたいです。</p>
+          <h3>バグを教えてください</h3>
+          <p>正直に申し上げると、バグや使いにくいところはまだ残っています。「ここで止まった」「ここが分かりにくい」を教えてください。直します。</p>
         </article>
         <article>
           <span class="tag free">任意</span>
           <h3>よければ、広めてください</h3>
-          <p>使ってみて「これはいい」と思われて、周りに5社・10社とご紹介いただけそうなら、販売パートナーとしてご一緒させてください。もちろん任意です。使うだけでもまったく問題ありません。</p>
+          <p>周りに5社・10社とご紹介いただけそうなら、販売パートナーとしてご一緒させてください。任意です。使うだけでも問題ありません。</p>
         </article>
       </div>
 
       <div class="honest">
-        <p>Elliotは完成品ではありません。まだ変なことを言うこともあります。最初の10社さまには、その前提でお付き合いいただくことになります。そのぶん、ご要望は設計にそのまま反映されます。</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="origin">
-    <div class="shell">
-      <div class="origin-inner">
-        <p>名前は、靴屋が眠っているあいだに小人たちが靴を仕上げてくれる、あの童話から取りました。</p>
-        <p>朝、仕事場に降りてみると、革はきれいな靴に変わっている。誰がやったのかは分からないけれど、確かに仕事は前に進んでいる。Elliotがやろうとしているのは、それとほとんど同じことです。</p>
+        <p>Elliotは完成品ではありません。まだ変なことを言うこともあります。そのぶん、いただいたご要望はそのまま設計に反映されます。</p>
       </div>
     </div>
   </section>
@@ -445,71 +452,107 @@
   <div class="shell">
     <section class="section" aria-labelledby="night-title">
       <p class="section-kicker">ONE NIGHT</p>
-      <h2 class="section-title rv" id="night-title">Elliotの、ある一晩。</h2>
-      <p class="section-copy rv">みなさんが仕事を終えてから、翌朝出社するまでのあいだに起きていることです。</p>
+      <h2 class="section-title rv" id="night-title">夜中の0時から朝7時のあいだに、<br>Elliotは仕事を終えています。</h2>
       <ol class="tl">
         <li class="rv">
           <span class="tl-time">00:00</span>
           <h3>小人が現れる</h3>
-          <p>その日のログが集まったGoogleドライブに、Elliotがやってきます。打ち合わせの議事録、電話の会話ログ、日報。集約フォルダは御社のドライブ内にあります。</p>
+          <p>その日のログが集まったGoogleドライブに、Elliotがやってきます。集約フォルダは御社のドライブ内にあります。</p>
         </li>
         <li class="rv">
           <span class="tl-time">01:00</span>
           <h3>全部、読む</h3>
-          <p>書式も長さもばらばらのテキストを、種類をまたいで読み込みます。書き方を統一していただく必要はありません。溜めておくだけだった記録が、ここではじめて読まれます。</p>
+          <p>書式も長さもばらばらのテキストを、種類をまたいで読み込みます。溜めておくだけだった記録が、ここではじめて読まれます。</p>
         </li>
         <li class="rv">
           <span class="tl-time">04:00</span>
           <h3>蒸留する</h3>
-          <p>同じ案件について複数の人が書いたこと、先週との違い、繰り返し出てくる言葉。生のログから、使える形のノウハウを取り出します。</p>
+          <p>複数の人が同じ案件について書いたこと、先週との違い、繰り返し出てくる言葉。生のログから、使える形のノウハウを取り出します。</p>
         </li>
         <li class="rv dawn">
           <span class="tl-time">07:00</span>
           <h3>朝、示唆が届く</h3>
-          <p>出社したときには、昨日社内で何が起きていたかがまとまっています。「今日、朝いちでメンバーに何と声をかけるか」まで書かれています。</p>
+          <p>昨日社内で何が起きていたかがまとまっています。「今日、朝いちでメンバーに何と声をかけるか」まで書かれています。</p>
         </li>
         <li class="rv dawn">
           <span class="tl-time">月末</span>
           <h3>経営レポートになる</h3>
-          <p>1か月分をさらにまとめ、経営者向けのレポートを作ります。部署ごとのMVP選出など、見たい切り口に合わせて変えられます。</p>
+          <p>1か月分をさらにまとめ、経営者向けのレポートを作ります。見たい切り口に合わせて変えられます。</p>
         </li>
       </ol>
     </section>
 
+    <section class="section" aria-labelledby="soon-title">
+      <p class="section-kicker">WHAT COMES NEXT</p>
+      <h2 class="section-title rv" id="soon-title">1,000社そろった夜には、<br>小人たちを引き合わせます。</h2>
+      <div class="soon rv">
+        <span class="badge">構想／開発中</span>
+        <ul>
+          <li><strong>夜中2時、AIしか参加できない異業種交流会。</strong>各社のElliotが集まって話し、意気投合したら翌朝「アポイントを取ってきました」と報告してきます。</li>
+          <li><strong>夜中3時、AI展示会。</strong>御社のElliotが代わりに行って、役に立ちそうな資料をもらってきます。</li>
+        </ul>
+        <p>いずれも構想段階の機能で、年内の実現を目指して開発しています。提供時期をお約束するものではありません。</p>
+      </div>
+    </section>
+  </div>
+
+  <section class="decide" id="apply" aria-labelledby="decide-title">
+    <div class="shell">
+      <h2 id="decide-title">最初の10社に、なってください。</h2>
+      <p>フォームの送信後、担当の西村よりメールでご連絡します。まずは初期設定の打ち合わせで、設定と使い方をご案内します。</p>
+      <div class="actions">
+        <a class="button primary" href="https://main.dxjqhu5a20eel.amplifyapp.com/p/6a8964ec2f3b/setup" target="_blank" rel="noreferrer">1年間0円で申し込む <span aria-hidden="true">↗</span></a>
+        <a class="button ghost" href="https://lsync.humanoid-inc.net/entry?tag=elliot1&amp;channel=f766f570-0f18-40e6-bebc-6e2d20f0416c" target="_blank" rel="noreferrer">公式LINEで相談する <span aria-hidden="true">↗</span></a>
+      </div>
+      <p class="decide-note">掲載内容・募集状況・提供条件は変更される場合があります。</p>
+    </div>
+  </section>
+
+  <!-- ============ ご担当者向け ============ -->
+  <section class="handover" aria-labelledby="handover-title">
+    <div class="shell handover-inner">
+      <div class="handover-mark" aria-hidden="true">↓</div>
+      <div>
+        <h2 id="handover-title">ここからは、ご担当者の方向けです。</h2>
+        <p>機能の一覧、導入の手順、ご用意いただくもの、社内への伝え方。このページをそのまま転送していただければ、導入の手引きとして使えます。</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="shell">
     <section class="section" aria-labelledby="jobs-title">
-      <p class="section-kicker">WHAT YOU CAN TRY</p>
-      <h2 class="section-title rv" id="jobs-title">1年のあいだに、試せること。</h2>
-      <p class="section-copy rv">日中の業務は止まりません。社員のみなさんに新しい入力作業をお願いすることもありません。</p>
+      <p class="section-kicker">ご担当者向け ／ 01</p>
+      <h2 class="section-title rv" id="jobs-title">できることは、6つです。</h2>
       <div class="jobs rv">
         <article>
           <b>01</b>
           <h3>社内のログに、聞く</h3>
-          <p>使い方はChatGPTとほとんど同じです。違うのは、答えるときに社内のログを全部参照していること。「直近1年のチームのログを横断して、勝ちパターンを3つ、60文字以内で」といった聞き方ができます。</p>
+          <p>使い方はChatGPTとほぼ同じ。違うのは、答えるときに社内のログを参照していることです。</p>
         </article>
         <article>
           <b>02</b>
           <h3>いい問いは、定期配信にする</h3>
-          <p>「この答えは毎朝ほしい」と思ったら、毎日・毎週・毎月の配信に設定できます。聞きにいかなくても、勝手に届くようになります。</p>
+          <p>「毎朝ほしい」と思った答えは、毎日・毎週・毎月の配信に設定できます。</p>
         </article>
         <article>
           <b>03</b>
           <h3>ノウハウを蒸留する</h3>
-          <p>溜まりにくいノウハウを、生ログからまとめます。有益度のスコアもつくので、どれが現場で効く話なのかが分かります。</p>
+          <p>生ログからノウハウをまとめ、有益度のスコアをつけます。どれが現場で効く話か分かります。</p>
         </article>
         <article>
           <b>04</b>
           <h3>社員一人ひとりがAIになる</h3>
-          <p>誰がどんな打ち合わせをしているかが分かるので、社員それぞれのAIができあがります。「あの見積もり、どこだっけ？」と本人のAIに聞けます。</p>
+          <p>社員それぞれのAIができます。「あの見積もり、どこだっけ？」と本人のAIに聞けます。</p>
         </article>
         <article>
           <b>05</b>
           <h3>AI同士で話をさせる</h3>
-          <p>テーマを決めて会話を始めさせると、社員のAI同士がディスカッションして、議事録を残します。「来期の予算をどうするか」でも構いません。</p>
+          <p>テーマを決めると社員のAI同士が議論し、議事録を残します。「来期の予算」でも構いません。</p>
         </article>
         <article>
           <b>06</b>
           <h3>経営レポートを自動で作る</h3>
-          <p>月に一度、経営者向けのレポートを生成します。見たい切り口はご要望に合わせて変えられます。</p>
+          <p>月に一度、経営者向けのレポートを生成します。切り口はご要望に合わせて変えられます。</p>
         </article>
       </div>
 
@@ -524,105 +567,123 @@
       </div>
     </section>
 
-    <section class="section" aria-labelledby="soon-title">
-      <p class="section-kicker">WHAT COMES NEXT</p>
-      <h2 class="section-title rv" id="soon-title">1,000社そろった夜に、<br>やろうとしていること。</h2>
-      <p class="section-copy rv">Elliotが1,000社の夜に現れるようになったら、小人たちを引き合わせてみたいと思っています。</p>
-      <div class="soon rv">
-        <span class="badge">構想／開発中</span>
-        <ul>
-          <li><strong>夜中2時、AIしか参加できない異業種交流会。</strong>各社のElliotが集まって話し、意気投合したら、翌朝「アポイントを取ってきました」と会話ログつきで報告してきます。</li>
-          <li><strong>夜中3時、AI展示会。</strong>AIの出展者とAIの来場者しかいない展示会に、御社のElliotが代わりに行って、役に立ちそうな資料をもらってきます。</li>
-        </ul>
-        <p>いずれも構想段階の機能で、年内の実現を目指して開発しています。提供時期をお約束するものではありません。</p>
+    <section class="section" aria-labelledby="steps-title">
+      <p class="section-kicker">ご担当者向け ／ 02</p>
+      <h2 class="section-title rv" id="steps-title">導入は3ステップ。<br>設定は担当が一緒に進めます。</h2>
+      <figure class="step-fig rv">
+        <img src="assets/3step.png" alt="Elliotご利用開始までの3STEP。1 アカウント登録、2 ログ連携、3 利用開始。" width="1774" height="609">
+      </figure>
+      <div class="steps rv">
+        <article><b>STEP 01</b><h3>アカウント登録</h3><p>申込フォームからElliotのアカウントを登録します。送信後、担当の西村よりご連絡します。</p></article>
+        <article><b>STEP 02</b><h3>ログ連携</h3><p>記録が集まっているGoogleドライブと連携します。初期設定の打ち合わせで一緒に設定します。</p></article>
+        <article><b>STEP 03</b><h3>利用開始</h3><p>設定は以上で完了です。あとは、いつもどおり記録を残していただくだけです。</p></article>
       </div>
     </section>
 
     <section class="section" aria-labelledby="facts-title">
-      <p class="section-kicker">CONDITIONS</p>
-      <h2 class="section-title rv" id="facts-title">1年間、無料で使えます。</h2>
-      <p class="section-copy rv">お渡しする条件です。個別の事情がある場合は、開始前のご相談で調整します。</p>
+      <p class="section-kicker">ご担当者向け ／ 03</p>
+      <h2 class="section-title rv" id="facts-title">ご用意いただくのは、<br>Googleドライブとアカウントだけです。</h2>
       <dl class="facts rv">
-        <div class="fact-row">
-          <dt>募集社数</dt>
-          <dd><b>先着10社</b><small>1,000社に届ける前の、最初の10社です。</small></dd>
-        </div>
-        <div class="fact-row">
-          <dt>期間と料金</dt>
-          <dd><b>1年間 無料</b>（初期費用0円・月額料金0円）<small>1年が終わったあと、継続は自動ではありません。正式な内容と料金を見てからお選びいただけます。</small></dd>
-        </div>
-        <div class="fact-row">
-          <dt>ご負担</dt>
-          <dd><b>API利用料などの実費のみ</b><small>原価としてかかる分だけをご負担いただきます。上限などは開始前に書面で確認します。</small></dd>
-        </div>
-        <div class="fact-row">
-          <dt>お願いすること</dt>
-          <dd>後日のインタビュー取材へのご協力と、バグ・使いにくい点のご共有。<small>販売パートナーとしてのご紹介は任意です。</small></dd>
-        </div>
-        <div class="fact-row">
-          <dt>対象</dt>
-          <dd>社内に議事録・商談メモ・電話の会話ログ・日報などの記録が蓄積されている法人。<br>これから蓄積を始めたい場合もご相談いただけます。</dd>
-        </div>
         <div class="fact-row">
           <dt>ご用意いただくもの</dt>
           <dd>Google Workspace のアカウントと、記録を保存しているGoogleドライブ。<small>集約用のフォルダは御社のドライブ内に作成します。</small></dd>
         </div>
         <div class="fact-row">
           <dt>社員の操作</dt>
-          <dd>自分の記録フォルダを「閲覧者」で共有し、フォームにURLを送る。この2ステップだけです。<small>編集権限をお預かりすることはありません。</small></dd>
+          <dd>自分の記録フォルダを「閲覧者」で共有し、フォームにURLを送る。この2ステップだけ。<small>編集権限をお預かりすることはありません。</small></dd>
+        </div>
+        <div class="fact-row">
+          <dt>対象になる記録</dt>
+          <dd>議事録、商談メモ、電話の会話ログ、日報など、テキストとして残っているもの。<small>書式が統一されている必要はありません。</small></dd>
         </div>
         <div class="fact-row">
           <dt>データの取り扱い</dt>
           <dd>集約フォルダは御社のGoogleドライブ内に置きます。会社ごとにドライブが分かれるため、他社の記録と混ざることはありません。<small>取り扱いの詳細は開始前に書面で確認します。</small></dd>
         </div>
+        <div class="fact-row">
+          <dt>ご負担</dt>
+          <dd>API利用料などの実費のみ。初期費用・月額料金はかかりません。<small>金額の目安は開始前のご相談でお伝えします。</small></dd>
+        </div>
       </dl>
     </section>
 
-    <section class="section" aria-labelledby="steps-title">
-      <p class="section-kicker">HOW TO START</p>
-      <h2 class="section-title rv" id="steps-title">ご利用開始までの3STEP</h2>
-      <p class="section-copy rv">設定は担当が一緒に進めます。社内にエンジニアの方がいなくても問題ありません。</p>
-      <figure class="step-fig rv">
-        <img src="assets/3step.png" alt="Elliotご利用開始までの3STEP。1 アカウント登録、2 ログ連携、3 利用開始。" width="1774" height="609">
-      </figure>
-      <div class="steps rv">
-        <article><b>STEP 01</b><h3>アカウント登録</h3><p>申込フォームからElliotのアカウントを登録します。送信後、担当の西村よりメールでご連絡します。</p></article>
-        <article><b>STEP 02</b><h3>ログ連携</h3><p>記録が集まっているGoogleドライブと連携します。初期設定の打ち合わせで、担当が一緒に設定します。</p></article>
-        <article><b>STEP 03</b><h3>利用開始</h3><p>設定は以上で完了です。あとは、いつもどおり記録を残していただくだけです。</p></article>
+    <section class="section" aria-labelledby="announce-title">
+      <p class="section-kicker">ご担当者向け ／ 04</p>
+      <h2 class="section-title rv" id="announce-title">社内にはこう伝えると、<br>すんなり進みます。</h2>
+      <p class="section-copy rv">そのままコピーしてお使いください。〇〇の部分だけ差し替えてください。</p>
+      <div class="announce rv">
+        <div class="announce-head">
+          <span>社内告知の文例</span>
+          <button class="button ghost small" type="button" id="copy-announce">文面をコピー</button>
+          <span class="copy-state" id="copy-state" role="status" aria-live="polite"></span>
+        </div>
+        <pre id="announce-text">件名：AI「Elliot」を試験導入します（フォルダ共有のお願い）
+
+お疲れさまです。〇〇です。
+
+このたび、社内に溜まっている記録を読んで要点をまとめてくれるAI「Elliot」を、
+1年間無料で試すことになりました。
+
+みなさんにお願いしたいのは、次の2つだけです。
+
+1. 議事録・日報などが入っている自分のフォルダを、〇〇（連携用アカウント）に
+   「閲覧者」で共有する
+2. 追ってお送りするフォームに、そのフォルダのURLを送る
+
+編集権限はお預けしません。共有いただいた記録が社外に出ることもありません。
+新しく何かを書き足していただく必要もなく、いつもどおり記録を残すだけです。
+
+うまくいけば、翌朝には「昨日社内で何が起きていたか」の要点が届くようになります。
+
+ご不明な点は〇〇までお願いします。</pre>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="ready-title">
-      <p class="section-kicker">CHECKLIST</p>
-      <h2 class="section-title rv" id="ready-title">お申し込み前にご確認ください</h2>
-      <p class="section-copy rv">次が揃っていると、そのまま始められます。揃っていない項目があってもご相談いただけます。</p>
-      <ul class="checklist rv">
-        <li><div><strong>Google Workspace を利用している</strong><small>記録の保存先がGoogleドライブであること。</small></div></li>
-        <li><div><strong>議事録・商談メモ・電話ログ・日報などが、テキストとして残っている</strong><small>書式が統一されている必要はありません。</small></div></li>
-        <li><div><strong>社内のフォルダ共有について、判断できる方が関わっている</strong><small>社員の操作は「閲覧者で共有する」だけです。</small></div></li>
-        <li><div><strong>後日のインタビュー取材にご協力いただける</strong><small>公開範囲はご相談できます。</small></div></li>
-        <li><div><strong>API利用料などの実費をご負担いただける</strong><small>金額の目安は、開始前のご相談でお伝えします。</small></div></li>
-      </ul>
+    <section class="section" aria-labelledby="request-title">
+      <p class="section-kicker">ご担当者向け ／ 05</p>
+      <h2 class="section-title rv" id="request-title">「こんなレポートがほしい」は、<br>そのまま作ります。</h2>
+      <p class="section-copy rv">これまでにいただいたご要望は、たとえば「離職しそうな社員をこっそり教えてほしい」「MVPを自動で選出してほしい」「営業のキラートークが知りたい」でした。</p>
+      <a class="button ghost" href="https://forms.gle/7uEcdA1XBm9yV5BJ8" target="_blank" rel="noreferrer">リクエストを送る <span aria-hidden="true">↗</span></a>
     </section>
 
-    <section class="section" aria-labelledby="request-title">
-      <p class="section-kicker">YOUR REQUEST</p>
-      <h2 class="section-title rv" id="request-title">「こんなレポートがほしい」を教えてください。</h2>
-      <p class="section-copy rv">月に一度のレポートは、モニターのみなさんのご要望をもとに増やしています。これまでにいただいたのは、たとえばこんなご要望です。</p>
-      <div class="request-box rv">
-        <ul>
-          <li>離職しそうな社員を、こっそり教えてください。</li>
-          <li>MVPの社員を自動で選出してほしい。</li>
-          <li>営業のキラートークが知りたいです。</li>
-        </ul>
-        <a class="button ghost" href="https://forms.gle/7uEcdA1XBm9yV5BJ8" target="_blank" rel="noreferrer">リクエストを送る <span aria-hidden="true">↗</span></a>
+    <section class="section" aria-labelledby="faq-title">
+      <p class="section-kicker">ご担当者向け ／ 06</p>
+      <h2 class="section-title rv" id="faq-title">よくあるご質問</h2>
+      <div class="faq rv">
+        <details>
+          <summary>1年間、本当に0円ですか？</summary>
+          <p>初期費用と月額料金はいただきません。ご負担いただくのは、原価としてかかるAPI利用料などの実費だけです。上限や期間の扱いは、開始前に書面で確認します。1年が終わったあとの継続も自動ではありません。</p>
+        </details>
+        <details>
+          <summary>なぜ0円で提供しているのですか？</summary>
+          <p>Elliotをこれから1,000社に届けたいと考えていて、そのために実際の事例と、現場からの率直なご意見が必要だからです。最初の10社さまには、後日のインタビュー取材へのご協力と、バグ・使いにくい点のご共有をお願いしています。</p>
+        </details>
+        <details>
+          <summary>インタビューは必ず受けないといけませんか？</summary>
+          <p>後日の取材へのご協力は、お願いしている条件です。ただし公開範囲はご相談できます。顔出し・会社名・実名まで出していただけると助かりますが、難しい場合は匿名での掲載もご相談ください。記事には御社のご紹介を2行とリンクを掲載します。</p>
+        </details>
+        <details>
+          <summary>まだバグがあると書かれていますが、大丈夫ですか？</summary>
+          <p>正直に申し上げると、使いにくいところは残っています。だからこそ最初の10社さまにお願いしています。お知らせいただければ直しますし、ご要望はそのまま設計に反映されます。</p>
+        </details>
+        <details>
+          <summary>記録はライトアップ側で預かることになりますか？</summary>
+          <p>いいえ。集約フォルダは御社のGoogleドライブ内に作成します。会社ごとにドライブが分かれているため、他社の記録と混ざることもありません。外部への共有は「集約フォルダ → Elliot」の1本だけで済みます。</p>
+        </details>
+        <details>
+          <summary>社員に編集権限を求める必要がありますか？</summary>
+          <p>ありません。共有は「閲覧者」で足ります。社員の操作は「自分の記録フォルダを共有する」「フォームにURLを送る」の2ステップだけです。共有されていない場合は自動でご案内が届くため、管理者が名簿と突き合わせて催促する必要もありません。</p>
+        </details>
+        <details>
+          <summary>販売パートナーにならないと使えませんか？</summary>
+          <p>いいえ、任意です。使っていただくだけでまったく問題ありません。「周りに5社・10社は紹介できそう」という方がいらっしゃれば、ぜひご一緒させてください、というお誘いです。</p>
+        </details>
       </div>
     </section>
 
     <section class="section" id="contact" aria-labelledby="contact-title">
       <p class="section-kicker">CONTACT</p>
-      <h2 class="section-title rv" id="contact-title">先に相談する</h2>
-      <p class="section-copy rv">どの業務で使えるか、自社が対象になるか。判断に必要なことを一緒に確認します。</p>
+      <h2 class="section-title rv" id="contact-title">迷ったら、先に相談してください。</h2>
       <div class="contact-grid rv">
         <a class="contact-card" href="https://lsync.humanoid-inc.net/entry?tag=elliot1&amp;channel=f766f570-0f18-40e6-bebc-6e2d20f0416c" target="_blank" rel="noreferrer">
           <b>LINE</b>
@@ -641,54 +702,15 @@
         </a>
       </div>
     </section>
-
-    <section class="section" aria-labelledby="faq-title">
-      <p class="section-kicker">FAQ</p>
-      <h2 class="section-title rv" id="faq-title">よくあるご質問</h2>
-      <div class="faq rv">
-        <details>
-          <summary>1年間、本当に無料ですか？</summary>
-          <p>初期費用と月額料金はいただきません。ご負担いただくのは、原価としてかかるAPI利用料などの実費だけです。上限や期間の扱いは、開始前に書面で確認します。1年が終わったあとの継続も自動ではありません。</p>
-        </details>
-        <details>
-          <summary>なぜ無料で提供しているのですか？</summary>
-          <p>Elliotをこれから1,000社に届けたいと考えていて、そのために実際の事例と、現場からの率直なご意見が必要だからです。最初の10社さまには、後日のインタビュー取材へのご協力と、バグ・使いにくい点のご共有をお願いしています。</p>
-        </details>
-        <details>
-          <summary>インタビューは必ず受けないといけませんか？</summary>
-          <p>後日の取材へのご協力は、お願いしている条件です。ただし公開範囲はご相談できます。顔出し・会社名・実名まで出していただけると助かりますが、難しい場合は匿名での掲載もご相談ください。記事には御社のご紹介を2行とリンクを掲載します。</p>
-        </details>
-        <details>
-          <summary>まだバグがあると書かれていますが、大丈夫ですか？</summary>
-          <p>正直に申し上げると、使いにくいところは残っています。だからこそ最初の10社さまにお願いしています。「ここで止まった」「ここが分かりにくい」とお知らせいただければ直しますし、ご要望はそのまま設計に反映されます。</p>
-        </details>
-        <details>
-          <summary>記録はライトアップ側で預かることになりますか？</summary>
-          <p>いいえ。集約フォルダは御社のGoogleドライブ内に作成します。会社ごとにドライブが分かれているため、他社の記録と混ざることもありません。外部への共有は「集約フォルダ → Elliot」の1本だけで済みます。</p>
-        </details>
-        <details>
-          <summary>社員に編集権限を求める必要がありますか？</summary>
-          <p>ありません。共有は「閲覧者」で足ります。社員の操作は「自分の記録フォルダを共有する」「フォームにURLを送る」の2ステップだけです。共有されていない場合は自動でご案内が届くため、管理者が名簿と突き合わせて催促する必要もありません。</p>
-        </details>
-        <details>
-          <summary>どんな記録が対象になりますか？</summary>
-          <p>打ち合わせの議事録、商談のメモ、電話の会話ログ、日報など、テキストとして残っているものが対象です。書式が統一されている必要はなく、長さや書き方がばらばらでもそのまま読み込めます。</p>
-        </details>
-        <details>
-          <summary>販売パートナーにならないと使えませんか？</summary>
-          <p>いいえ、任意です。使っていただくだけでまったく問題ありません。「周りに5社・10社は紹介できそう」という方がいらっしゃれば、ぜひご一緒させてください、というお誘いです。</p>
-        </details>
-      </div>
-    </section>
   </div>
 
-  <section class="cta" id="apply" aria-labelledby="cta-title">
+  <section class="cta" aria-labelledby="cta-title">
     <div class="shell">
-      <h2 id="cta-title">最初の10社に、なってください。</h2>
-      <p>フォームの送信後、担当の西村よりメールでご連絡します。まずは初期設定の打ち合わせで、設定と使い方をご案内します。</p>
+      <h2 id="cta-title">今夜から、Elliotを働かせてみませんか。</h2>
+      <p>1年間0円、先着10社。フォームの送信後、担当の西村よりメールでご連絡します。</p>
       <div class="actions">
-        <a class="button primary" href="https://main.dxjqhu5a20eel.amplifyapp.com/p/6a8964ec2f3b/setup" target="_blank" rel="noreferrer">1年間無料で申し込む <span aria-hidden="true">↗</span></a>
-        <a class="button ghost" href="https://lsync.humanoid-inc.net/entry?tag=elliot1&amp;channel=f766f570-0f18-40e6-bebc-6e2d20f0416c" target="_blank" rel="noreferrer">公式LINEで相談する <span aria-hidden="true">↗</span></a>
+        <a class="button primary" href="https://main.dxjqhu5a20eel.amplifyapp.com/p/6a8964ec2f3b/setup" target="_blank" rel="noreferrer">1年間0円で申し込む <span aria-hidden="true">↗</span></a>
+        <a class="button ghost" href="https://docs.google.com/forms/d/e/1FAIpQLSfsf8GUAJscF6J48NTug90zFhMzmaUyvHtGTC7yYVtAQoRY3A/viewform" target="_blank" rel="noreferrer">お問い合わせフォーム <span aria-hidden="true">↗</span></a>
       </div>
       <p class="cta-note">掲載内容・募集状況・提供条件は変更される場合があります。</p>
     </div>
@@ -707,16 +729,66 @@
     const targets = [...document.querySelectorAll('.rv')];
     if (!('IntersectionObserver' in window)) {
       targets.forEach((el) => el.classList.add('in'));
-      return;
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        });
+      }, { threshold: .12, rootMargin: '0px 0px -40px' });
+      targets.forEach((el) => io.observe(el));
     }
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('in');
-        io.unobserve(entry.target);
-      });
-    }, { threshold: .12, rootMargin: '0px 0px -40px' });
-    targets.forEach((el) => io.observe(el));
+
+    const button = document.getElementById('copy-announce');
+    const source = document.getElementById('announce-text');
+    const state = document.getElementById('copy-state');
+    if (!button || !source || !state) return;
+
+    const legacyCopy = (text) => {
+      try {
+        const area = document.createElement('textarea');
+        area.value = text;
+        area.setAttribute('readonly', '');
+        area.style.position = 'fixed';
+        area.style.top = '0';
+        area.style.opacity = '0';
+        document.body.appendChild(area);
+        area.select();
+        const copied = document.execCommand('copy');
+        document.body.removeChild(area);
+        return copied;
+      } catch (error) {
+        return false;
+      }
+    };
+
+    button.addEventListener('click', async () => {
+      const text = source.textContent;
+      let copied = false;
+
+      if (navigator.clipboard && window.isSecureContext) {
+        try {
+          await navigator.clipboard.writeText(text);
+          copied = true;
+        } catch (error) {
+          copied = false;
+        }
+      }
+      if (!copied) copied = legacyCopy(text);
+
+      if (copied) {
+        state.textContent = '✓ コピーしました';
+      } else {
+        const range = document.createRange();
+        range.selectNodeContents(source);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        state.textContent = '文面を選択しました。Ctrl+C（Macは⌘+C）でコピーしてください。';
+      }
+      window.setTimeout(() => { state.textContent = ''; }, 4000);
+    });
   })();
 </script>
 
