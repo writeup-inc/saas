@@ -1,0 +1,840 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="商談の前日から終了5分後まで、営業のとなりで心配しつづけるAI「スーパーマネージャー」。1,000社に届ける前の、最初の10社を募集しています。1年間0円、ご負担はAPI利用料などの実費のみ。">
+  <meta name="theme-color" content="#191b22">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="WRITEUP AI MONITOR">
+  <meta property="og:title" content="スーパーマネージャー｜最初の10社になってもらえませんか？">
+  <meta property="og:description" content="1年間0円。営業マン一人に、上司を一人。商談の前・中・後をずっと見ている心配性の営業部長です。">
+  <meta property="og:url" content="https://writeup-inc.github.io/saas/monitor/super-manager/">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://writeup-inc.github.io/saas/monitor/super-manager/">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;family=Zen+Kaku+Gothic+New:wght@700;900&amp;display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://player.vimeo.com">
+  <title>スーパーマネージャー｜最初の10社になってもらえませんか？（1年間0円）</title>
+  <style>
+    :root {
+      --base: #191b22;
+      --base-deep: #101218;
+      --base-soft: #22252e;
+      --ink: #f1efea;
+      --ink-soft: #c3beb5;
+      --muted: #8e887f;
+      --line: rgba(241, 239, 234, .14);
+      --line-strong: rgba(241, 239, 234, .3);
+      --accent: #dd7a4e;
+      --accent-soft: rgba(221, 122, 78, .13);
+      --accent-2: #f2ac81;
+      --shadow: 0 26px 60px rgba(0, 0, 0, .5);
+      --sans: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
+      --display: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { overflow-x: clip; scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--base);
+      font-family: var(--sans);
+      line-height: 1.85;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    button { font: inherit; color: inherit; }
+    img { display: block; max-width: 100%; height: auto; }
+    figure { margin: 0; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    h1, h2, h3 { font-family: var(--display); font-weight: 700; }
+
+    .shell { width: min(calc(100% - 44px), 900px); margin: 0 auto; }
+
+    /* header */
+    .site-header {
+      position: sticky; top: 0; z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(25, 27, 34, .92);
+      backdrop-filter: blur(14px);
+    }
+    .header-inner { display: flex; min-height: 64px; align-items: center; justify-content: space-between; gap: 16px; }
+    .crumbs { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); min-width: 0; }
+    .crumbs a { text-decoration: none; border-bottom: 1px solid var(--line-strong); padding-bottom: 1px; }
+    .crumbs a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    .crumbs b { color: var(--ink); white-space: nowrap; }
+    .header-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      min-height: 40px; padding: 0 18px; border-radius: 999px;
+      background: var(--accent); color: #1b0f07;
+      font-size: 13px; font-weight: 700; text-decoration: none; white-space: nowrap;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .header-cta:hover { transform: translateY(-1px); background: var(--accent-2); }
+    @media (max-width: 660px) { .header-cta { display: none; } }
+
+    /* opening */
+    .opening {
+      padding: 74px 0 54px;
+      background: linear-gradient(180deg, var(--base-deep), var(--base));
+    }
+    .opening-grid { display: grid; grid-template-columns: 1fr minmax(0, 186px); gap: 36px; align-items: center; }
+    .kicker {
+      display: inline-flex; align-items: center; gap: 9px;
+      margin-bottom: 18px; padding: 5px 14px; border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      font-size: 12px; font-weight: 700; letter-spacing: .1em; color: var(--accent);
+    }
+    .kicker::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+    h1 { margin: 0 0 18px; font-size: clamp(28px, 4.8vw, 46px); font-weight: 900; line-height: 1.44; text-wrap: balance; }
+    h1 em { font-style: normal; color: var(--accent-2); }
+    .opening p { margin: 0; max-width: 40em; color: var(--ink-soft); font-size: 15.5px; }
+    .opening-fig { justify-self: center; }
+    .opening-fig svg {
+      width: 186px; height: auto; aspect-ratio: 1 / 1; max-width: 100%;
+      border-radius: 50%; background: var(--base-deep);
+      border: 1px solid var(--line-strong); box-shadow: var(--shadow);
+    }
+    @media (max-width: 760px) {
+      .opening-grid { grid-template-columns: 1fr; gap: 26px; }
+      .opening-fig { justify-self: start; }
+      .opening-fig svg { width: 116px; }
+    }
+
+    /* offer */
+    .offer { padding: 0 0 58px; }
+    .offer-card {
+      border: 1px solid var(--accent);
+      background: linear-gradient(160deg, rgba(221,122,78,.13), rgba(221,122,78,.03));
+      padding: 34px 32px 30px;
+      box-shadow: var(--shadow);
+    }
+    .offer-nums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin: 0; background: var(--line); border: 1px solid var(--line); }
+    .offer-nums > div { padding: 22px 20px 20px; background: var(--base); text-align: center; }
+    .offer-nums dt { margin: 0 0 6px; font-size: 12px; font-weight: 700; letter-spacing: .18em; color: var(--accent); }
+    .offer-nums dd {
+      margin: 0; font-family: var(--display); font-weight: 900; color: var(--accent-2);
+      font-size: clamp(40px, 8vw, 72px); line-height: 1.05;
+    }
+    .offer-nums dd small { font-size: .4em; margin-left: 3px; font-weight: 700; }
+    .offer-sub { margin: 24px 0 0; font-size: 15.5px; font-weight: 700; }
+    .offer-note { margin: 10px 0 0; color: var(--muted); font-size: 12.5px; }
+    .offer-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+    @media (max-width: 680px) {
+      .offer-card { padding: 26px 20px 24px; }
+      .offer-nums { grid-template-columns: 1fr; }
+      .offer-nums dd { font-size: 54px; }
+    }
+
+    .button {
+      display: inline-flex; align-items: center; gap: 9px;
+      min-height: 52px; padding: 0 28px; border-radius: 999px;
+      font-family: var(--sans); font-size: 15px; font-weight: 700; text-decoration: none;
+      border: 0; cursor: pointer;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
+    }
+    .button.primary { background: var(--accent); color: #1b0f07; }
+    .button.primary:hover { transform: translateY(-2px); background: var(--accent-2); }
+    .button.ghost { background: transparent; border: 1px solid var(--line-strong); color: var(--ink); }
+    .button.ghost:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--accent); }
+    .button.small { min-height: 44px; padding: 0 20px; font-size: 13.5px; }
+
+    /* section */
+    .section { padding: 58px 0; border-bottom: 1px solid var(--line); }
+    .section:last-of-type { border-bottom: 0; }
+    .section-kicker { margin: 0 0 8px; font-family: var(--sans); font-size: 11.5px; font-weight: 700; letter-spacing: .22em; color: var(--accent); }
+    .section-title { margin: 0 0 12px; font-size: clamp(21px, 3vw, 29px); font-weight: 900; line-height: 1.48; text-wrap: balance; }
+    .section-copy { margin: 0 0 28px; max-width: 42em; color: var(--ink-soft); font-size: 14.5px; }
+
+    /* video */
+    .video-frame { border: 1px solid var(--line-strong); background: #000; padding: 10px; box-shadow: var(--shadow); }
+    .video-ratio { position: relative; padding-top: 56.25%; }
+    .video-ratio iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .video-cap { margin: 12px 0 0; color: var(--muted); font-size: 12.5px; }
+
+    /* aside */
+    .aside-box { margin-top: 26px; border: 1px solid var(--line); background: var(--base-soft); padding: 22px 24px; }
+    .aside-box h3 { margin: 0 0 8px; font-size: 17px; color: var(--accent); }
+    .aside-box p { margin: 0 0 12px; max-width: 42em; color: var(--ink-soft); font-size: 14px; }
+    .aside-box ul { margin: 0 0 12px; padding-left: 20px; color: var(--ink-soft); font-size: 14px; }
+    .aside-box li { margin-bottom: 2px; }
+    .aside-box p:last-child { margin-bottom: 0; }
+
+    /* premise */
+    .premise { padding: 58px 0; background: var(--base-deep); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .asks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 26px; background: var(--line); border: 1px solid var(--line); }
+    .asks > article { padding: 24px 22px; background: var(--base); }
+    .asks .tag { display: inline-block; margin-bottom: 10px; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: .08em; }
+    .asks .tag.must { background: var(--accent); color: #1b0f07; }
+    .asks .tag.free { border: 1px solid var(--line-strong); color: var(--muted); }
+    .asks h3 { margin: 0 0 8px; font-size: 18px; }
+    .asks p { margin: 0; color: var(--ink-soft); font-size: 14px; }
+    @media (max-width: 820px) { .asks { grid-template-columns: 1fr; } }
+    .honest { margin-top: 24px; border-left: 2px solid var(--accent); padding: 2px 0 2px 22px; }
+    .honest p { margin: 0; max-width: 42em; color: var(--ink-soft); font-size: 14.5px; }
+
+    /* 図版 */
+    .art { margin: 0 0 28px; border: 1px solid var(--line); background: var(--base-deep); padding: 20px 20px 16px; }
+    .art-scroll { overflow-x: auto; }
+    .art svg { display: block; width: 100%; height: auto; }
+    .art-scroll svg { min-width: 640px; }
+    .art figcaption { margin-top: 12px; color: var(--muted); font-size: 12.5px; }
+    .svg-label { font-family: var(--sans); font-size: 13px; font-weight: 700; fill: var(--ink); }
+    .svg-sub { font-family: var(--sans); font-size: 11.5px; fill: var(--muted); }
+    .svg-time { font-family: var(--display); font-size: 18px; font-weight: 900; fill: var(--accent); }
+    .svg-note { font-family: var(--sans); font-size: 11px; font-weight: 700; fill: var(--accent); letter-spacing: .04em; }
+
+    .icon { width: 26px; height: 26px; display: block; margin-bottom: 10px; color: var(--accent); }
+
+    /* 経営者向けの締め */
+    .decide { padding: 62px 0 66px; text-align: center; background: linear-gradient(180deg, var(--base), #2c2620 74%, #4a3a2c); }
+    .decide h2 { margin: 0 0 12px; font-size: clamp(22px, 3.4vw, 32px); font-weight: 900; line-height: 1.5; }
+    .decide p { margin: 0 auto 28px; max-width: 40em; color: var(--ink-soft); font-size: 14.5px; }
+    .decide .actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .decide-note { margin: 20px 0 0; color: var(--muted); font-size: 12.5px; }
+
+    /* 区切り */
+    .handover { padding: 52px 0; background: var(--base-deep); border-top: 1px solid var(--accent); border-bottom: 1px solid var(--line); }
+    .handover-inner { display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: center; }
+    .handover-mark {
+      width: 58px; height: 58px; border-radius: 50%;
+      border: 1px solid var(--accent); color: var(--accent);
+      display: grid; place-items: center;
+      font-family: var(--display); font-size: 24px; font-weight: 900;
+    }
+    .handover h2 { margin: 0 0 6px; font-size: clamp(20px, 2.8vw, 27px); font-weight: 900; line-height: 1.5; }
+    .handover p { margin: 0; color: var(--ink-soft); font-size: 14.5px; max-width: 42em; }
+    @media (max-width: 560px) { .handover-inner { grid-template-columns: 1fr; gap: 16px; } }
+
+    /* できること */
+    .jobs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .jobs > article { padding: 22px; background: var(--base); transition: background .2s ease; }
+    .jobs > article:hover { background: var(--base-soft); }
+    .jobs b { display: block; margin-bottom: 5px; font-size: 11.5px; letter-spacing: .16em; color: var(--accent); }
+    .jobs h3 { margin: 0 0 6px; font-size: 17px; }
+    .jobs p { margin: 0; color: var(--ink-soft); font-size: 13.5px; }
+    @media (max-width: 760px) { .jobs { grid-template-columns: 1fr; } }
+
+    .quotes { margin: 24px 0 0; padding: 22px 24px; border: 1px solid var(--line); background: var(--base-soft); }
+    .quotes p { margin: 0 0 10px; font-size: 12px; letter-spacing: .1em; color: var(--accent); }
+    .quotes ul { margin: 0; padding-left: 20px; color: var(--ink-soft); font-size: 14.5px; }
+    .quotes li { margin-bottom: 3px; }
+
+    /* steps */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .steps > article { padding: 22px 20px; background: var(--base); }
+    .steps b { display: block; margin-bottom: 6px; font-size: 11.5px; letter-spacing: .16em; color: var(--muted); }
+    .steps h3 { margin: 0 0 6px; font-size: 17px; }
+    .steps p { margin: 0; color: var(--ink-soft); font-size: 13.5px; }
+    @media (max-width: 820px) { .steps { grid-template-columns: 1fr; } }
+
+    /* 用意するもの */
+    .needs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 0 0 20px; }
+    .needs > div { position: relative; padding: 24px 22px 22px 64px; border: 1px solid var(--line-strong); background: var(--base-soft); }
+    .needs .no {
+      position: absolute; left: 20px; top: 24px;
+      width: 30px; height: 30px; border-radius: 50%;
+      border: 1px solid var(--accent); color: var(--accent);
+      display: grid; place-items: center;
+      font-family: var(--display); font-weight: 900; font-size: 15px;
+    }
+    .needs strong { display: block; margin-bottom: 5px; font-family: var(--display); font-size: 18px; }
+    .needs small { color: var(--muted); font-size: 12.5px; line-height: 1.8; }
+    @media (max-width: 680px) { .needs { grid-template-columns: 1fr; } }
+    .notes { margin: 0; padding-left: 20px; color: var(--ink-soft); font-size: 13.5px; }
+    .notes li { margin-bottom: 4px; }
+
+    /* 社内告知 */
+    .announce-toggle { border: 1px solid var(--line-strong); background: var(--base-deep); }
+    .announce-toggle > summary {
+      cursor: pointer; list-style: none; position: relative;
+      padding: 16px 46px 16px 22px;
+      font-family: var(--display); font-size: 16px; font-weight: 700;
+    }
+    .announce-toggle > summary::-webkit-details-marker { display: none; }
+    .announce-toggle > summary::after {
+      content: ""; position: absolute; right: 20px; top: 50%;
+      width: 9px; height: 9px;
+      border-right: 2px solid var(--accent); border-bottom: 2px solid var(--accent);
+      transform: translateY(-70%) rotate(45deg); transition: transform .2s ease;
+    }
+    .announce-toggle[open] > summary::after { transform: translateY(-30%) rotate(225deg); }
+    .announce-toggle > summary:hover { color: var(--accent); }
+    .announce { border: 0; border-top: 1px solid var(--line); background: var(--base-soft); }
+    .announce-head { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 14px 22px; border-bottom: 1px solid var(--line); background: var(--base-deep); }
+    .announce-head > span:first-child { margin-right: auto; font-size: 12px; font-weight: 700; letter-spacing: .14em; color: var(--accent); }
+    .announce pre {
+      margin: 0; padding: 22px; overflow-x: auto;
+      font-family: var(--sans); font-size: 14px; line-height: 1.95; color: var(--ink-soft);
+      white-space: pre-wrap; word-break: break-word;
+    }
+    .copy-state { font-size: 12.5px; color: var(--accent-2); }
+    .toggle-body { padding: 20px; }
+
+    /* 相談 */
+    .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .contact-card {
+      display: block; padding: 22px 20px;
+      border: 1px solid var(--line); background: var(--base-soft);
+      text-decoration: none;
+      transition: border-color .2s ease, transform .2s ease;
+    }
+    .contact-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .contact-card b { display: block; margin-bottom: 4px; font-size: 11.5px; letter-spacing: .16em; color: var(--accent); }
+    .contact-card strong { display: block; margin-bottom: 5px; font-family: var(--display); font-size: 17px; }
+    .contact-card span { color: var(--ink-soft); font-size: 13.5px; word-break: break-word; }
+    @media (max-width: 820px) { .contact-grid { grid-template-columns: 1fr; } }
+
+    /* FAQ */
+    .faq { border-top: 1px solid var(--line); }
+    .faq details { border-bottom: 1px solid var(--line); }
+    .faq summary {
+      cursor: pointer; list-style: none;
+      padding: 17px 44px 17px 2px; position: relative;
+      font-family: var(--display); font-size: 16px; font-weight: 700;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after {
+      content: ""; position: absolute; right: 10px; top: 50%;
+      width: 9px; height: 9px;
+      border-right: 2px solid var(--accent); border-bottom: 2px solid var(--accent);
+      transform: translateY(-70%) rotate(45deg); transition: transform .2s ease;
+    }
+    .faq details[open] summary::after { transform: translateY(-30%) rotate(225deg); }
+    .faq summary:hover { color: var(--accent); }
+    .faq p { margin: 0 0 20px; padding-right: 44px; color: var(--ink-soft); font-size: 14.5px; }
+
+    /* CTA / footer */
+    .cta { padding: 66px 0 74px; text-align: center; background: linear-gradient(180deg, var(--base), #2c2620 72%, #4a3a2c); }
+    .cta h2 { margin: 0 0 12px; font-size: clamp(22px, 3.4vw, 32px); font-weight: 900; line-height: 1.5; }
+    .cta p { margin: 0 auto 28px; max-width: 40em; color: var(--ink-soft); font-size: 14.5px; }
+    .cta .actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .cta-note { margin: 20px 0 0; color: var(--muted); font-size: 12.5px; }
+    .site-footer { padding: 26px 0 40px; background: var(--base-deep); }
+    .footer-inner { display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: space-between; color: var(--muted); font-size: 12.5px; }
+    .footer-inner strong { color: var(--ink-soft); font-size: 13px; }
+    .back-link { text-decoration: none; border-bottom: 1px solid var(--line-strong); }
+    .back-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+    @media (max-width: 560px) {
+      h1 br, .section-title br, .decide h2 br, .cta h2 br, .handover h2 br { display: none; }
+    }
+
+    .rv { transition: opacity .7s ease, transform .7s ease; }
+    .rv.pending { opacity: 0; transform: translateY(16px); }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      .rv.pending { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="shell header-inner">
+    <nav class="crumbs" aria-label="パンくず">
+      <a href="../">AIサービス モニター募集</a>
+      <span aria-hidden="true">›</span>
+      <b>スーパーマネージャー</b>
+    </nav>
+    <a class="header-cta" href="#apply">1年間0円で申し込む <span aria-hidden="true">→</span></a>
+  </div>
+</header>
+
+<main>
+  <!-- ============ 経営者向け ============ -->
+  <section class="opening">
+    <div class="shell opening-grid">
+      <div>
+        <span class="kicker">先着10社・1年間0円</span>
+        <h1>わたしは、<em>心配性の営業部長</em>です。</h1>
+        <p>営業マン一人に、上司を一人。商談の前の日から、終わった5分後まで。準備はできているか、いま何を出すべきか、認識はずれていないか、次の一手は打てたか。営業のとなりで、ずっと心配しています。</p>
+      </div>
+      <figure class="opening-fig">
+        <svg viewBox="0 0 120 120" role="img" aria-label="スーパーマネージャーのイメージ">
+          <circle cx="60" cy="46" r="16" fill="none" stroke="#dd7a4e" stroke-width="2"/>
+          <path d="M44 38c2-9 10-14 16-14s14 5 16 14" fill="none" stroke="#dd7a4e" stroke-width="2" stroke-linecap="round"/>
+          <path d="M50 41.5c1.6-1.6 4-1.6 5.6 0M64.4 41.5c1.6-1.6 4-1.6 5.6 0" fill="none" stroke="#f2ac81" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M55 53c3 2 7 2 10 0" fill="none" stroke="#f2ac81" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M32 100c0-14 12-24 28-24s28 10 28 24" fill="none" stroke="#dd7a4e" stroke-width="2" stroke-linecap="round"/>
+          <path d="M54 76l6 6 6-6" fill="none" stroke="#f2ac81" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M60 82l-4 20 4 5 4-5z" fill="none" stroke="#f2ac81" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M92 26v9M92 41v.5" stroke="#f2ac81" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+      </figure>
+    </div>
+  </section>
+
+  <section class="offer" aria-label="モニターの条件">
+    <div class="shell">
+      <div class="offer-card">
+        <dl class="offer-nums">
+          <div><dt>ご利用期間</dt><dd>1<small>年間</small></dd></div>
+          <div><dt>初期費用・月額</dt><dd>0<small>円</small></dd></div>
+          <div><dt>募集社数</dt><dd>10<small>社</small></dd></div>
+        </dl>
+        <p class="offer-sub">1年間、初期費用も月額料金もいただきません。ご負担は、API利用料などの実費だけです。</p>
+        <p class="offer-note">利用期間や上限、データの取り扱いは開始前に書面で確認します。1年が終わったあとの継続は自動ではありません。</p>
+        <div class="offer-actions">
+          <a class="button primary" href="#apply">1年間0円で申し込む <span aria-hidden="true">→</span></a>
+          <a class="button ghost" href="#contact">先に相談する</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="shell">
+    <section class="section" aria-labelledby="video-title">
+      <p class="section-kicker">MOVIE</p>
+      <h2 class="section-title" id="video-title">まずは、<br>わたしの自己紹介をさせてください。</h2>
+      <p class="section-copy">4つの基本機能のご紹介と、「心配性の営業部長」がどう生まれたかの開発秘話インタビューです。</p>
+      <div class="video-frame">
+        <div class="video-ratio">
+          <iframe
+            src="https://player.vimeo.com/video/1210748868?h=8baa57b0f3&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+            title="スーパーマネージャー 基本機能と開発秘話インタビュー"
+            loading="lazy"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+      <p class="video-cap">スーパーマネージャー 基本機能＆開発秘話インタビュー</p>
+
+      <div class="aside-box">
+        <h3>そもそも、商談のどこを見ているの？</h3>
+        <p>わたしが手を出すのは、次の4つの場面です。</p>
+        <ul>
+          <li><strong>前日</strong>：お客様に、明日の商談の予告編を送っておく</li>
+          <li><strong>商談中</strong>：オンライン商談に同席して、チャットで耳打ちする</li>
+          <li><strong>途中</strong>：15分ごとに、ここまでの認識を整理して確認する</li>
+          <li><strong>終了5分後</strong>：まとめと次の一手を、お客様に送る</li>
+        </ul>
+        <p>営業の方に新しい入力作業をお願いすることはありません。いつもどおり商談をしていただければ、わたしが勝手に動きます。</p>
+      </div>
+    </section>
+  </div>
+
+  <section class="premise" aria-labelledby="premise-title">
+    <div class="shell">
+      <p class="section-kicker">なぜ0円なのか</p>
+      <h2 class="section-title" id="premise-title">1,000社に届ける前の、<br>最初の10社になってもらえませんか？</h2>
+      <p class="section-copy">1,000社に使っていただくために、まだ足りないものがあります。実際に使われた事例と、現場からの率直なご意見です。だから最初の10社さまは1年間0円。その代わり、3つだけお願いさせてください。</p>
+
+      <div class="asks">
+        <article>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="10" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0"/><path d="M12 18v3M9 21h6"/></svg>
+          <span class="tag must">お願い（必須）</span>
+          <h3>インタビューに答えてください</h3>
+          <p>後日、使ってみた感想をうかがう取材をさせてください。記事には御社のご紹介を2行とリンクを載せます。公開範囲はご相談できます。</p>
+        </article>
+        <article>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="7" width="8" height="11" rx="4"/><path d="M9.2 5l1.4 2M14.8 5l-1.4 2M4 11h4M16 11h4M4.8 16.5H8M16 16.5h3.2M12 18v3"/></svg>
+          <span class="tag must">お願い（必須）</span>
+          <h3>バグを教えてください</h3>
+          <p>使いにくいところはまだ残っています。「ここで止まった」を教えてください。直します。</p>
+        </article>
+        <article>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10v4a1 1 0 0 0 1 1h3l7 4V5L8 9H5a1 1 0 0 0-1 1z"/><path d="M18 9.5a4 4 0 0 1 0 5"/></svg>
+          <span class="tag free">任意</span>
+          <h3>よければ、広めてください</h3>
+          <p>周りにご紹介いただけそうなら、販売パートナーとしてご一緒させてください。使うだけでも問題ありません。</p>
+        </article>
+      </div>
+
+      <div class="honest">
+        <p>スーパーマネージャーは完成品ではありません。まだ的外れなことを言うこともあります。そのぶん、いただいたご要望はそのまま設計に反映されます。</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="shell">
+    <section class="section" aria-labelledby="flow-title">
+      <p class="section-kicker">ONE MEETING</p>
+      <h2 class="section-title rv" id="flow-title">わたしは商談の前日から、<br>終わった5分後まで起きています。</h2>
+
+      <figure class="art rv">
+        <div class="art-scroll">
+          <svg viewBox="0 0 880 200" role="img" aria-labelledby="mt-title">
+            <title id="mt-title">商談の前日から終了5分後まで、スーパーマネージャーが動く4つの場面</title>
+            <defs>
+              <linearGradient id="mtLine" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#dd7a4e" stop-opacity=".35"/>
+                <stop offset="55%" stop-color="#dd7a4e"/>
+                <stop offset="100%" stop-color="#f2ac81"/>
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="880" height="200" fill="#101218" rx="4"/>
+            <rect x="238" y="52" width="404" height="98" fill="none" stroke="#dd7a4e" stroke-width="1.2" stroke-dasharray="5 5" opacity=".6" rx="5"/>
+            <text class="svg-note" x="440" y="44" text-anchor="middle">オンライン商談のあいだ</text>
+
+            <path d="M70 112h740" stroke="url(#mtLine)" stroke-width="2" fill="none"/>
+
+            <g>
+              <circle cx="70" cy="112" r="6.5" fill="#101218" stroke="#dd7a4e" stroke-width="2"/>
+              <text class="svg-time" x="70" y="98" text-anchor="middle">前日</text>
+              <text class="svg-label" x="70" y="140" text-anchor="middle">予告編を送る</text>
+              <text class="svg-sub" x="70" y="160" text-anchor="middle">事前ヒアリングAI</text>
+            </g>
+            <g>
+              <circle cx="316" cy="112" r="6.5" fill="#101218" stroke="#dd7a4e" stroke-width="2"/>
+              <text class="svg-time" x="316" y="98" text-anchor="middle">商談中</text>
+              <text class="svg-label" x="316" y="140" text-anchor="middle">耳打ちする</text>
+              <text class="svg-sub" x="316" y="160" text-anchor="middle">商談同席AI</text>
+            </g>
+            <g>
+              <circle cx="562" cy="112" r="6.5" fill="#101218" stroke="#dd7a4e" stroke-width="2"/>
+              <text class="svg-time" x="562" y="98" text-anchor="middle">15分ごと</text>
+              <text class="svg-label" x="562" y="140" text-anchor="middle">認識を合わせる</text>
+              <text class="svg-sub" x="562" y="160" text-anchor="middle">中締めレポートAI</text>
+            </g>
+            <g>
+              <circle cx="810" cy="112" r="6.5" fill="#2c2620" stroke="#f2ac81" stroke-width="2"/>
+              <text class="svg-time" x="810" y="98" text-anchor="middle" fill="#f2ac81">5分後</text>
+              <text class="svg-label" x="810" y="140" text-anchor="middle">次の一手を打つ</text>
+              <text class="svg-sub" x="810" y="160" text-anchor="middle">勝手にフォローAI</text>
+            </g>
+          </svg>
+        </div>
+      </figure>
+
+      <p class="section-copy rv">商談が始まってから課題を聞き出して、30分ヒアリングして終わり。あとから録画を見て「あのとき、あの事例を出していれば」と悔しがる。そういう商談を、わたしは減らしにきました。記録するAIではなく、商談に参加するAIです。</p>
+
+      <details class="announce-toggle rv">
+        <summary>「中締めレポートAI」だけの解説インタビューも見る</summary>
+        <div class="announce">
+          <div class="toggle-body">
+            <div class="video-frame">
+              <div class="video-ratio">
+                <iframe
+                  src="https://player.vimeo.com/video/1214155285?h=6b0d51ffba&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                  title="中締めレポートAI 解説インタビュー"
+                  loading="lazy"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowfullscreen></iframe>
+              </div>
+            </div>
+            <p class="video-cap">4つの機能の中でも好評な「中締めレポートAI」について、ライトアップ代表・白石へのインタビューです。</p>
+          </div>
+        </div>
+      </details>
+    </section>
+  </div>
+
+  <section class="decide" id="apply" aria-labelledby="decide-title">
+    <div class="shell">
+      <h2 id="decide-title">最初の10社に、なってください。</h2>
+      <p>お問い合わせのあと、担当よりご連絡します。設定の進め方と使い方は、あわせてご案内します。</p>
+      <div class="actions">
+        <a class="button primary" href="https://www.writeup.jp/contact/" target="_blank" rel="noreferrer">1年間0円で申し込む <span aria-hidden="true">↗</span></a>
+        <a class="button ghost" href="https://main.dizclwc6aq233.amplifyapp.com/" target="_blank" rel="noreferrer">サービスの詳細を見る <span aria-hidden="true">↗</span></a>
+      </div>
+      <p class="decide-note">掲載内容・募集状況・提供条件は変更される場合があります。</p>
+    </div>
+  </section>
+
+  <!-- ============ ご担当者向け ============ -->
+  <section class="handover" aria-labelledby="handover-title">
+    <div class="shell handover-inner">
+      <div class="handover-mark" aria-hidden="true">↓</div>
+      <div>
+        <h2 id="handover-title">ここからは、ご担当者の方向けです。</h2>
+        <p>できること、ご利用開始までの流れ、ご用意いただくもの、社内への伝え方。このページをそのまま転送していただければ、導入の手引きとして使えます。</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="shell">
+    <section class="section" aria-labelledby="jobs-title">
+      <p class="section-kicker">ご担当者向け ／ 01</p>
+      <h2 class="section-title rv" id="jobs-title">商談の前・中・後に、<br>エースの判断を配ります。</h2>
+      <div class="jobs rv">
+        <article>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 6.5h17v12h-17z"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>
+          <b>前日</b>
+          <h3>事前ヒアリングAI</h3>
+          <p>お客様に「明日の商談の予告編」を送り、聞きたいことを先に伺っておきます。</p>
+        </article>
+        <article>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5A2.5 2.5 0 0 1 5.5 3h13A2.5 2.5 0 0 1 21 5.5v8a2.5 2.5 0 0 1-2.5 2.5H9l-4.5 4v-4A2.5 2.5 0 0 1 3 13.5z"/><path d="M8 8h8M8 11.5h5"/></svg>
+          <b>商談中</b>
+          <h3>商談同席AI</h3>
+          <p>オンライン商談に同席し、事例や切り返しをチャットで耳打ちします。値引きの場面でも黙りません。</p>
+        </article>
+        <article>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12.5" r="7.5"/><path d="M12 8.5v4l2.6 1.7"/><path d="M18.5 4.5V7H16"/></svg>
+          <b>15分ごと</b>
+          <h3>中締めレポートAI</h3>
+          <p>ここまでの会話を整理して「この理解で合っていますか」と確認します。ずれたまま終わりません。</p>
+        </article>
+        <article>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12l17-8-6.5 17-3-6.5z"/><path d="M10.5 14.5L20 4"/></svg>
+          <b>終了5分後</b>
+          <h3>勝手にフォローAI</h3>
+          <p>まとめと次の一手を送ります。今回は合わなかった場合も、別の切り口を置いてきます。</p>
+        </article>
+        <article>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v13H4z"/><path d="M9 20h6M12 17v3"/><path d="M7.5 13.5v-3M11 13.5v-5.5M14.5 13.5v-2"/></svg>
+          <b>管理画面</b>
+          <h3>商談の中身が見える</h3>
+          <p>同席した回数と時間、商談の一覧、すべての打ち合わせログ。営業がどう行われているかを確認できます。</p>
+        </article>
+        <article>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3.4 19a5.6 5.6 0 0 1 11.2 0"/><path d="M17 6.5a4.5 4.5 0 0 1 0 9"/></svg>
+          <b>設定</b>
+          <h3>上司の性格を決められる</h3>
+          <p>厳しめ、やわらかめ。マネージャーごとに人物像を設定できます。1on1で使っている会社もあります。</p>
+        </article>
+      </div>
+
+      <div class="quotes rv">
+        <p>たとえば、こんな場面で口を出します</p>
+        <ul>
+          <li>いま、この事例を出したほうが伝わります。</li>
+          <li>値引きの話が出ました。こう返してください。</li>
+          <li>雑談が長くなっています。そろそろ本題へ。</li>
+          <li>残り3分です。誰が何をするかを決めましょう。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="steps-title">
+      <p class="section-kicker">ご担当者向け ／ 02</p>
+      <h2 class="section-title rv" id="steps-title">ご利用開始まで、<br>3ステップです。</h2>
+      <p class="section-copy rv">おおまかな流れです。実際の設定は、ご案内の動画を見ながら進めていただけます。</p>
+      <div class="steps rv">
+        <article><b>STEP 01</b><h3>お申し込み</h3><p>お問い合わせフォームからご連絡ください。担当よりメールでご返信します。</p></article>
+        <article><b>STEP 02</b><h3>商談ツールと接続</h3><p>普段お使いのオンライン商談ツールに、わたしが同席できるようにします。</p></article>
+        <article><b>STEP 03</b><h3>利用開始</h3><p>次の商談から同席します。営業の方は、いつもどおり商談をしてください。</p></article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="needs-title">
+      <p class="section-kicker">ご担当者向け ／ 03</p>
+      <h2 class="section-title rv" id="needs-title">ご用意いただくのは、<br>この2つだけです。</h2>
+      <div class="needs rv">
+        <div>
+          <span class="no">1</span>
+          <strong>オンラインで行っている商談</strong>
+          <small>Google Meet に対応しています。ほかのツールをお使いの場合はご相談ください。</small>
+        </div>
+        <div>
+          <span class="no">2</span>
+          <strong>お客様に送るメールの送信元</strong>
+          <small>前日の予告編と、終了後のフォローを送るために使います。</small>
+        </div>
+      </div>
+      <ul class="notes rv">
+        <li>営業の方に新しい入力作業をお願いすることはありません。いつもどおり商談をしていただくだけです。</li>
+        <li>商談の記録の取り扱いは、開始前に書面で確認します。</li>
+        <li>ご負担はAPI利用料などの実費のみ。初期費用・月額料金はかかりません。</li>
+      </ul>
+    </section>
+
+    <section class="section" aria-labelledby="announce-title">
+      <p class="section-kicker">ご担当者向け ／ 04</p>
+      <h2 class="section-title rv" id="announce-title">社内には、<br>この文面をそのまま流してください。</h2>
+      <p class="section-copy rv">〇〇の部分だけ差し替えてお使いください。</p>
+      <details class="announce-toggle rv">
+        <summary>社内告知の文例を開く</summary>
+        <div class="announce">
+          <div class="announce-head">
+            <span>社内告知の文例</span>
+            <button class="button ghost small" type="button" id="copy-announce">文面をコピー</button>
+            <span class="copy-state" id="copy-state" role="status" aria-live="polite"></span>
+          </div>
+          <pre id="announce-text">件名：オンライン商談にAI「スーパーマネージャー」が同席します
+
+お疲れさまです。〇〇です。
+
+このたび、営業の商談を支援するAI「スーパーマネージャー」を、
+1年間無料で試すことになりました。
+
+やることは、いつもどおり商談をするだけです。
+
+・前日：お客様に、商談の予告編メールが自動で届きます
+・商談中：チャットで、事例や切り返しの候補がそっと表示されます
+・15分ごと：ここまでの認識を整理したメモが出ます
+・終了5分後：まとめと次の一手が、お客様に自動で送られます
+
+新しく入力していただく作業はありません。
+「余計なことを言っている」と感じたら、遠慮なく〇〇まで教えてください。
+そのまま開発側に伝えて直してもらいます。
+
+ご不明な点は〇〇までお願いします。</pre>
+        </div>
+      </details>
+    </section>
+
+    <section class="section" aria-labelledby="faq-title">
+      <p class="section-kicker">ご担当者向け ／ 05</p>
+      <h2 class="section-title rv" id="faq-title">よくあるご質問</h2>
+      <div class="faq rv">
+        <details>
+          <summary>1年間、本当に0円ですか？</summary>
+          <p>初期費用と月額料金はいただきません。ご負担いただくのは、原価としてかかるAPI利用料などの実費だけです。上限や期間の扱いは、開始前に書面で確認します。1年が終わったあとの継続も自動ではありません。</p>
+        </details>
+        <details>
+          <summary>なぜ0円で提供しているのですか？</summary>
+          <p>これから1,000社に届けたいと考えていて、そのために実際の事例と、現場からの率直なご意見が必要だからです。最初の10社さまには、後日のインタビュー取材へのご協力と、バグ・使いにくい点のご共有をお願いしています。</p>
+        </details>
+        <details>
+          <summary>どのオンライン商談ツールに対応していますか？</summary>
+          <p>Google Meet に対応しています。ほかのツールをお使いの場合は、対応状況をお調べしますのでご相談ください。</p>
+        </details>
+        <details>
+          <summary>AIの助言は、お客様にも見えてしまいますか？</summary>
+          <p>見える設定にも、営業側だけに見える設定にもできます。どちらで運用するかは開始前に決めていただけます。</p>
+        </details>
+        <details>
+          <summary>営業の監視に使われるのではと言われそうです。</summary>
+          <p>管理画面では同席回数や商談ログを確認できますが、目的は評価ではなく、エース営業の判断を全員に配ることです。社内への伝え方の文例もこのページに用意しています。</p>
+        </details>
+        <details>
+          <summary>途中でやめられますか？</summary>
+          <p>はい。停止のご連絡は、お問い合わせフォームまたはメールでお知らせください。</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <p class="section-kicker">CONTACT</p>
+      <h2 class="section-title rv" id="contact-title">迷ったら、先に相談してください。</h2>
+      <div class="contact-grid rv">
+        <a class="contact-card" href="https://www.writeup.jp/contact/" target="_blank" rel="noreferrer">
+          <b>FORM</b>
+          <strong>お問い合わせ</strong>
+          <span>モニターのお申し込み・ご相談はこちらから。</span>
+        </a>
+        <a class="contact-card" href="https://main.dizclwc6aq233.amplifyapp.com/" target="_blank" rel="noreferrer">
+          <b>SERVICE</b>
+          <strong>サービスの詳細</strong>
+          <span>機能や画面をもう少し詳しく見たい方へ。</span>
+        </a>
+        <a class="contact-card" href="mailto:karin_nishimura@writeup.co.jp">
+          <b>MAIL</b>
+          <strong>メール</strong>
+          <span>株式会社ライトアップ 西村果林<br>karin_nishimura@writeup.co.jp</span>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <section class="cta" aria-labelledby="cta-title">
+    <div class="shell">
+      <h2 id="cta-title">次の商談から、<br>となりに立たせてください。</h2>
+      <p>1年間0円、先着10社。お問い合わせのあと、担当よりご連絡します。</p>
+      <div class="actions">
+        <a class="button primary" href="https://www.writeup.jp/contact/" target="_blank" rel="noreferrer">1年間0円で申し込む <span aria-hidden="true">↗</span></a>
+        <a class="button ghost" href="../">ほかのモニター対象サービスを見る</a>
+      </div>
+      <p class="cta-note">掲載内容・募集状況・提供条件は変更される場合があります。</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <strong>株式会社ライトアップ / AIコンサル局</strong>
+    <a class="back-link" href="../">← AIサービス モニター募集の一覧へ</a>
+  </div>
+</footer>
+
+<script>
+  (() => {
+    const reduceMotion = window.matchMedia
+      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const pending = reduceMotion ? [] : [...document.querySelectorAll('.rv')];
+    const margin = 60;
+
+    pending.forEach((el) => {
+      if (el.getBoundingClientRect().top >= window.innerHeight - margin) {
+        el.classList.add('pending');
+      }
+    });
+
+    let queued = false;
+    const reveal = () => {
+      queued = false;
+      for (let i = pending.length - 1; i >= 0; i -= 1) {
+        const el = pending[i];
+        if (el.getBoundingClientRect().top < window.innerHeight - margin) {
+          el.classList.remove('pending');
+          pending.splice(i, 1);
+        }
+      }
+    };
+    const schedule = () => {
+      if (queued) return;
+      queued = true;
+      window.requestAnimationFrame(reveal);
+    };
+
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule, { passive: true });
+    window.addEventListener('hashchange', schedule);
+    window.addEventListener('load', schedule);
+    schedule();
+
+    const button = document.getElementById('copy-announce');
+    const source = document.getElementById('announce-text');
+    const state = document.getElementById('copy-state');
+    if (!button || !source || !state) return;
+
+    const legacyCopy = (text) => {
+      try {
+        const area = document.createElement('textarea');
+        area.value = text;
+        area.setAttribute('readonly', '');
+        area.style.position = 'fixed';
+        area.style.top = '0';
+        area.style.opacity = '0';
+        document.body.appendChild(area);
+        area.select();
+        const copied = document.execCommand('copy');
+        document.body.removeChild(area);
+        return copied;
+      } catch (error) {
+        return false;
+      }
+    };
+
+    button.addEventListener('click', async () => {
+      const text = source.textContent;
+      let copied = false;
+      if (navigator.clipboard && window.isSecureContext) {
+        try {
+          await navigator.clipboard.writeText(text);
+          copied = true;
+        } catch (error) {
+          copied = false;
+        }
+      }
+      if (!copied) copied = legacyCopy(text);
+
+      if (copied) {
+        state.textContent = '✓ コピーしました';
+      } else {
+        const range = document.createRange();
+        range.selectNodeContents(source);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        state.textContent = '文面を選択しました。Ctrl+C（Macは⌘+C）でコピーしてください。';
+      }
+      window.setTimeout(() => { state.textContent = ''; }, 4000);
+    });
+  })();
+</script>
+
+</body>
+</html>
