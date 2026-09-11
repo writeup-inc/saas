@@ -1,6 +1,33 @@
 {
   "pages": [
     {
+      "path": "saas-team-interview/index.html",
+      "requiredGoogleFonts": [
+        "Inter",
+        "Noto Sans JP",
+        "Noto Serif JP"
+      ],
+      "requiredFallbackFonts": [
+        "Hiragino Kaku Gothic ProN",
+        "Yu Gothic",
+        "Yu Mincho",
+        "sans-serif",
+        "serif"
+      ],
+      "selfTestMutations": [
+        {
+          "name": "interview Google Fonts stylesheet removed",
+          "find": "<link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800;900&amp;family=Noto+Sans+JP:wght@400;500;600;700;800;900&amp;family=Noto+Serif+JP:wght@600;700;900&amp;display=swap\" rel=\"stylesheet\">",
+          "replace": ""
+        },
+        {
+          "name": "interview Noto Serif JP removed from request",
+          "find": "family=Noto+Serif+JP:wght@600;700;900",
+          "replace": "family=Noto+Sans+JP:wght@600;700;900"
+        }
+      ]
+    },
+    {
       "path": "worklog-insight/index.html",
       "requiredGoogleFonts": [
         "Inter",
