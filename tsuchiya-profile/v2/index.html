@@ -435,8 +435,11 @@
       display: grid;
       grid-template-columns: minmax(0, 1.55fr) minmax(270px, .68fr);
       gap: clamp(42px, 6vw, 84px);
+      align-items: start;
       padding-top: 56px;
     }
+
+    .story__main { min-width: 0; }
 
     .article-copy {
       column-count: 2;
@@ -471,6 +474,54 @@
       font-weight: 700;
       line-height: 1.5;
       text-align: left;
+    }
+
+    .story__lower {
+      display: grid;
+      grid-template-columns: minmax(0, 1.18fr) minmax(220px, .82fr);
+      gap: 32px;
+      align-items: stretch;
+      margin-top: 42px;
+    }
+
+    .story__lower .facts { margin-top: 0; }
+    .story__lower .fact { min-height: 176px; padding: 20px; }
+    .story__lower .fact__num { font-size: clamp(38px, 4.2vw, 58px); }
+
+    .story-note {
+      min-height: 176px;
+      padding: 18px 0 18px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-left: 2px solid var(--red);
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .story-note__eyebrow {
+      margin: 0;
+      color: var(--red);
+      font-size: 9px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: .19em;
+      text-transform: uppercase;
+    }
+
+    .story-note h3 {
+      margin: 18px 0 8px;
+      font-family: var(--serif);
+      font-size: clamp(21px, 1.85vw, 27px);
+      font-weight: 700;
+      line-height: 1.32;
+    }
+
+    .story-note p:last-child {
+      margin: 0;
+      color: rgba(17,17,15,.7);
+      font-size: 12px;
+      line-height: 1.75;
     }
 
     .sidebar-card {
@@ -954,7 +1005,8 @@
 
       .cover__body { width: 67%; }
       .story__grid { grid-template-columns: 1fr; }
-      .story__aside { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+      .story__aside { display: block; max-width: 520px; }
+      .story__aside .portrait-small { height: 300px; }
       .sidebar-card + .sidebar-card { margin-top: 0; }
       .timeline { grid-template-columns: 1fr; gap: 22px; }
       .mission { grid-template-columns: 1fr; gap: 20px; }
@@ -1010,7 +1062,10 @@
       .story__deck { padding-left: 18px; }
       .byline { margin-left: 0; }
       .article-copy { column-count: 1; text-align: left; }
-      .story__aside { grid-template-columns: 1fr; }
+      .story__lower { grid-template-columns: 1fr; gap: 18px; margin-top: 32px; }
+      .story__lower .fact { min-height: 112px; padding: 24px; }
+      .story-note { min-height: 0; }
+      .story__aside { max-width: none; }
       .sidebar-card + .sidebar-card { margin-top: 18px; }
       .facts { grid-template-columns: 1fr; }
       .fact { min-height: 112px; flex-direction: row; align-items: end; gap: 20px; }
@@ -1125,12 +1180,26 @@
       </header>
 
       <div class="story__grid">
-        <div class="article-copy">
-          <p>社会人になった2012年。土屋慧介の営業人生は、新宿の高層ビルへ朝から晩まで飛び込むところから始まった。同期が先輩の仕事を引き継いでいくなか、彼は2年間、足と汗でお客さまを増やした。</p>
-          <p>楽な近道はなかった。けれど、そのお客さまに支えられ、営業成績でトップを取ることもできた。アクセアで営業、店長、エリアマネージャーを経験し、法人営業の現場に12年。積み重ねたのは、資料の数字だけでは見えない、人が動く瞬間の解像度だ。</p>
-          <aside class="pull-quote">「めっちゃいいじゃないですか！」から、次の一歩を一緒につくる。</aside>
-          <p>現在は株式会社ライトアップの第一営業部で、AI SaaSを担当する。いまはAIを使って、営業を仕組みにできる時代だ。ただし、仕組みに魂を込めるのは、現場で積み重ねた経験だと考えている。</p>
-          <p>泥臭い営業と、スマートなAI。その両方を知る担当として、会社ごとに違う課題をほどき、無理なく始められる一歩を設計する。目指しているのは、ツールを増やすことではない。毎月一つずつ、現場で本当に回る仕組みを増やすことだ。</p>
+        <div class="story__main">
+          <div class="article-copy">
+            <p>社会人になった2012年。土屋慧介の営業人生は、新宿の高層ビルへ朝から晩まで飛び込むところから始まった。同期が先輩の仕事を引き継いでいくなか、彼は2年間、足と汗でお客さまを増やした。</p>
+            <p>楽な近道はなかった。けれど、そのお客さまに支えられ、営業成績でトップを取ることもできた。アクセアで営業、店長、エリアマネージャーを経験し、法人営業の現場に12年。積み重ねたのは、資料の数字だけでは見えない、人が動く瞬間の解像度だ。</p>
+            <p>現在は株式会社ライトアップの第一営業部で、AI SaaSを担当する。いまはAIを使って、営業を仕組みにできる時代だ。ただし、仕組みに魂を込めるのは、現場で積み重ねた経験だと考えている。</p>
+            <p>泥臭い営業と、スマートなAI。その両方を知る担当として、会社ごとに違う課題をほどき、無理なく始められる一歩を設計する。目指しているのは、ツールを増やすことではない。毎月一つずつ、現場で本当に回る仕組みを増やすことだ。</p>
+          </div>
+
+          <div class="story__lower">
+            <section class="facts" aria-label="3つの数字">
+              <div class="fact"><span class="fact__num">2012</span><span class="fact__label">営業の原点</span></div>
+              <div class="fact"><span class="fact__num">12年</span><span class="fact__label">法人営業</span></div>
+              <div class="fact"><span class="fact__num">4領域</span><span class="fact__label">AI活用支援</span></div>
+            </section>
+            <aside class="story-note" aria-label="得意領域">
+              <p class="story-note__eyebrow">Specialty</p>
+              <h3>製造業と<br>店舗ビジネス。</h3>
+              <p>「めっちゃいいじゃないですか！」から、次の一歩を一緒につくる。</p>
+            </aside>
+          </div>
         </div>
 
         <aside class="story__aside" aria-label="プロフィール概要">
@@ -1140,19 +1209,8 @@
             <h3>土屋 慧介<br><small>つっちー</small></h3>
             <p>1989年8月28日生まれ。茨城県つくばみらい市育ち、東京都東久留米市在住。株式会社ライトアップ 第一営業部リーダー。</p>
           </section>
-          <section class="sidebar-card">
-            <p class="sidebar-card__eyebrow">Specialty</p>
-            <h3>製造業と<br>店舗ビジネス。</h3>
-            <p>営業、販促・集客、採用、社内業務・ナレッジの4領域から、その会社に合うAI活用を組み立てます。</p>
-          </section>
         </aside>
       </div>
-
-      <section class="facts" aria-label="3つの数字">
-        <div class="fact"><span class="fact__num">2012</span><span class="fact__label">営業の原点</span></div>
-        <div class="fact"><span class="fact__num">12年</span><span class="fact__label">法人営業</span></div>
-        <div class="fact"><span class="fact__num">4領域</span><span class="fact__label">AI活用支援</span></div>
-      </section>
 
       <section class="timeline" aria-labelledby="timeline-title">
         <h3 id="timeline-title">A Working<br>Life</h3>
