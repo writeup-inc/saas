@@ -99,6 +99,43 @@
       gap: 20px;
     }
 
+    .issue-bar__right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 18px;
+    }
+
+    .version-switch {
+      display: inline-flex;
+      gap: 2px;
+      padding: 2px;
+      border: 1px solid rgba(255,255,255,.38);
+      border-radius: 999px;
+      background: rgba(0,0,0,.26);
+      backdrop-filter: blur(8px);
+    }
+
+    .version-switch a {
+      min-width: 38px;
+      min-height: 28px;
+      padding: 5px 9px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      color: rgba(255,255,255,.8);
+      font-size: 9px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: .08em;
+      text-decoration: none;
+      transition: color .18s ease, background .18s ease;
+    }
+
+    .version-switch a:hover { color: white; background: rgba(255,255,255,.12); }
+    .version-switch a[aria-current="page"] { color: var(--ink); background: var(--cream); }
+
     .cover {
       min-height: 100svh;
       position: relative;
@@ -920,7 +957,10 @@
         width: min(100% - 32px, 1200px);
       }
 
-      .issue-bar__inner span:last-child { display: none; }
+      .issue-bar__org { display: none; }
+      .issue-bar__inner { gap: 10px; }
+      .issue-bar__inner > span { font-size: 8px; letter-spacing: .12em; }
+      .issue-bar__right { gap: 8px; }
       .cover__inner { padding-top: 72px; }
       .masthead { font-size: clamp(48px, 15vw, 68px); }
       .masthead span::after { bottom: -2.2em; font-size: 7px; }
@@ -1004,7 +1044,13 @@
     <div class="issue-bar" aria-label="号数情報">
       <div class="issue-bar__inner">
         <span>THE PEOPLE ISSUE · VOL. 02</span>
-        <span>WRITEUP / FIRST SALES DIVISION</span>
+        <div class="issue-bar__right">
+          <span class="issue-bar__org">WRITEUP / FIRST SALES DIVISION</span>
+          <nav class="version-switch" aria-label="プロフィールのバージョン切替">
+            <a href="../">V1</a>
+            <a href="./" aria-current="page">V2</a>
+          </nav>
+        </div>
       </div>
     </div>
 

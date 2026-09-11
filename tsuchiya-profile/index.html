@@ -12,6 +12,7 @@
 <meta property="og:title" content="土屋 慧介（つっちー）｜株式会社ライトアップ 第一営業部">
 <meta property="og:description" content="泥臭い営業と、スマートなAI。その両方を知る営業担当です。">
 <meta property="og:url" content="https://writeup-inc.github.io/saas/tsuchiya-profile/">
+<meta property="og:image" content="https://writeup-inc.github.io/saas/Interviews/ai-sales-roundtable/assets/tsuchiya.webp">
 <meta name="theme-color" content="#25452F">
 <style>
 /* ===== lp-base.css（初期CSS：改行制御・最小文字サイズ・固定CTAの逃げは削除しない） ===== */
@@ -94,19 +95,45 @@ p{ margin:0; }
 .sec-sub{ margin:0 0 var(--sp-in); font-size:var(--fs-sub); line-height:1.9; color:var(--ink-sub); max-width:46em; }
 
 /* ── ヒーロー ──────────────────────────── */
-.hero{ background:var(--green); color:#fff; padding:20px 20px 32px; position:relative; overflow:hidden; }
+.hero{
+  background:
+    radial-gradient(circle at 73% 25%, rgba(216,184,91,.1), transparent 25%),
+    linear-gradient(128deg,#0D281C 0%,#173725 58%,#213E2C 100%);
+  color:#fff; padding:18px 20px 34px; position:relative; overflow:hidden;
+}
 .hero::after{
-  content:""; position:absolute; width:360px; height:360px; border:1px solid rgba(255,255,255,.09);
-  border-radius:50%; right:-170px; top:-190px; box-shadow:0 0 0 62px rgba(255,255,255,.025);
+  content:""; position:absolute; width:420px; height:420px; border:1px solid rgba(216,184,91,.16);
+  border-radius:50%; right:-190px; top:-220px; box-shadow:0 0 0 74px rgba(216,184,91,.025);
   pointer-events:none;
 }
-.hero__org{ margin:0 0 16px; font-size:var(--fs-sub); letter-spacing:.08em; color:#AFC9B9; }
-.hero__inner{
-  display:grid; grid-template-columns:clamp(104px,33%,190px) 1fr;
-  gap:18px; align-items:end; min-width:0;
+.hero__top{
+  position:relative; z-index:2; margin:0 0 20px;
+  display:flex; align-items:center; justify-content:space-between; gap:18px;
 }
-.photo-frame{ border-radius:8px; overflow:hidden; background:var(--green-deep); }
-.photo-main{ display:block; width:100%; aspect-ratio:286/404; object-fit:cover; object-position:center 22%; }
+.hero__org{ margin:0; font-size:var(--fs-sub); letter-spacing:.08em; color:#B9CDBF; }
+.version-switch{
+  flex:none; display:inline-flex; gap:2px; padding:3px;
+  border:1px solid rgba(255,255,255,.34); border-radius:999px;
+  background:rgba(5,21,14,.3); backdrop-filter:blur(8px);
+}
+.version-switch a{
+  min-width:48px; min-height:34px; padding:6px 11px; border-radius:999px;
+  display:inline-flex; align-items:center; justify-content:center;
+  color:#D8E3DB; font-size:11px; font-weight:700; line-height:1;
+  letter-spacing:.08em; text-decoration:none; transition:background .18s,color .18s;
+}
+.version-switch a:hover{ color:#fff; background:rgba(255,255,255,.1); }
+.version-switch a[aria-current="page"]{ color:var(--green-deep); background:#F4E9C8; }
+.hero__inner{
+  display:grid; grid-template-columns:clamp(136px,43%,210px) 1fr;
+  gap:20px; align-items:end; min-width:0;
+}
+.photo-frame{
+  border-radius:2px; overflow:hidden; background:var(--green-deep);
+  border:1px solid rgba(244,229,166,.72);
+  box-shadow:10px 10px 0 rgba(216,184,91,.09), 0 28px 60px rgba(0,0,0,.25);
+}
+.photo-main{ display:block; width:100%; aspect-ratio:540/760; object-fit:cover; object-position:center 28%; filter:saturate(.86) contrast(1.03); }
 .hero__body{ min-width:0; }
 .hero__kicker{
   margin:0 0 12px; color:#F4E5A6; font-size:var(--fs-min); font-weight:700;
@@ -117,16 +144,19 @@ p{ margin:0; }
   border:1px solid rgba(255,255,255,.5); border-radius:99px;
   font-size:var(--fs-sub); font-weight:700; letter-spacing:.04em;
 }
-.hero__title{ margin:0; font-weight:700; letter-spacing:.04em; font-size:var(--fs-h1); }
+.hero__title{
+  margin:0; font-family:"Yu Mincho",YuMincho,"Hiragino Mincho ProN",serif;
+  font-weight:600; letter-spacing:.055em; font-size:clamp(2rem,5.4vw,3.65rem);
+}
 .hero__title .nick{
   display:inline-block; font-size:.42em; font-weight:700;
   margin-left:.45em; letter-spacing:.02em; white-space:nowrap;
 }
 .romaji{ margin:8px 0 0; font-size:var(--fs-min); letter-spacing:clamp(.1em,1.1vw,.34em); color:#AFC9B9; }
 .hero__catch{
-  margin:20px 0 0; padding-left:14px; border-left:3px solid #F4E5A6;
+  margin:22px 0 0; padding:4px 0 4px 18px; border-left:2px solid #D8B85B;
   max-width:42em; color:#fff; font-size:clamp(.95rem,3.8vw,1.2rem);
-  font-weight:700; line-height:1.7; letter-spacing:.035em;
+  font-weight:700; line-height:1.8; letter-spacing:.04em;
 }
 .hero__meta{
   margin:20px 0 0; padding-top:var(--sp-in); border-top:1px solid rgba(255,255,255,.24);
@@ -392,15 +422,15 @@ a.svc__name:hover::after, a.svc__name:focus-visible::after{ opacity:1; }
 @media (min-width:700px){
   :root{ --fs-txt:17px; --fs-sub:15px; }
   .hero{
-    display:grid; grid-template-columns:clamp(230px,27vw,315px) 1fr;
-    column-gap:clamp(38px,6vw,76px); align-items:center;
+    min-height:640px; display:grid; grid-template-columns:clamp(350px,36vw,410px) 1fr;
+    column-gap:clamp(46px,6vw,78px); align-items:center;
   }
   .hero__inner{ display:contents; }
-  .hero__org{ grid-column:1 / -1; margin-bottom:20px; }
+  .hero__top{ grid-column:1 / -1; margin-bottom:4px; align-self:start; }
   .photo-frame{ grid-column:1; grid-row:2 / span 4; }
-  .role{ grid-column:2; grid-row:2; justify-self:start; align-self:end; margin-bottom:0; }
+  .role{ grid-column:2; grid-row:2; justify-self:start; align-self:end; margin-bottom:8px; }
   .hero__body{ grid-column:2; grid-row:3; max-width:650px; }
-  .hero__catch{ grid-column:2; grid-row:4; align-self:center; margin:16px 0; }
+  .hero__catch{ grid-column:2; grid-row:4; align-self:center; margin:22px 0; }
   .hero__meta{ grid-column:2; grid-row:5; align-self:start; margin:0; padding-top:18px; }
 }
 
@@ -462,7 +492,7 @@ a.svc__name:hover::after, a.svc__name:focus-visible::after{ opacity:1; }
 @media (min-width:1000px){
   :root{ --sp:64px; }
   section, .lead-box, .foot{ padding-left:64px; padding-right:64px; }
-  .hero{ padding:26px 64px 44px; }
+  .hero{ padding:26px 64px 46px; }
 }
 
 @media (min-width:1100px){
@@ -520,11 +550,17 @@ a.svc__name:hover::after, a.svc__name:focus-visible::after{ opacity:1; }
 
   <!-- 1. 名前 -->
   <header class="hero" id="hero">
-    <p class="hero__org">株式会社ライトアップ　第一営業部</p>
+    <div class="hero__top">
+      <p class="hero__org">株式会社ライトアップ　第一営業部</p>
+      <nav class="version-switch" aria-label="プロフィールのバージョン切替">
+        <a href="./" aria-current="page">V1</a>
+        <a href="v2/">V2</a>
+      </nav>
+    </div>
     <p class="role">AI活用アドバイザー ／ 売上2倍担当</p>
     <div class="hero__inner">
-      <div class="ph photo-frame" data-ph="main.jpg">
-        <img class="photo-main" src="profile-assets/main.jpg" width="286" height="404" alt="土屋慧介">
+      <div class="ph photo-frame" data-ph="tsuchiya.webp">
+        <img class="photo-main" src="../Interviews/ai-sales-roundtable/assets/tsuchiya.webp" width="540" height="760" alt="インタビューで話す土屋慧介">
       </div>
       <div class="hero__body">
         <p class="hero__kicker">ANALOG EXPERIENCE × AI</p>
@@ -532,7 +568,7 @@ a.svc__name:hover::after, a.svc__name:focus-visible::after{ opacity:1; }
         <p class="romaji">TSUCHIYA KEISUKE</p>
       </div>
     </div>
-    <p class="hero__catch">髪は天然。営業は設計。AIで売れる仕組みを本気でつくります。</p>
+    <p class="hero__catch">髪は天然。営業は設計。<br>AIで売れる仕組みを本気でつくります。</p>
     <p class="hero__meta">
       <span class="strong">中小企業の全社AI化支援</span>
       <span>全国対応</span>
