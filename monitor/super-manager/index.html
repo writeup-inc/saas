@@ -12,12 +12,10 @@
   <meta property="og:title" content="スーパーマネージャー｜最初の10社になってもらえませんか？">
   <meta property="og:description" content="1年間0円。営業マン一人に、上司を一人。商談の前・中・後をずっと見ている心配性の営業部長です。">
   <meta property="og:url" content="https://writeup-inc.github.io/saas/monitor/super-manager/">
+  <meta property="og:image" content="https://writeup-inc.github.io/saas/monitor/super-manager/assets/super-manager.png">
   <meta name="twitter:card" content="summary">
   <link rel="canonical" href="https://writeup-inc.github.io/saas/monitor/super-manager/">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;family=Oswald:wght@500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://player.vimeo.com">
   <title>スーパーマネージャー｜最初の10社になってもらえませんか？（1年間0円）</title>
   <style>
@@ -35,8 +33,9 @@
       --lime-2: #d8ff62;
       --lime-ink: #5f7d00;
       --shadow: 0 22px 56px rgba(15, 31, 61, .12);
-      --sans: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
-      --num: "Oswald", "Noto Sans JP", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+      --num: Georgia, "Times New Roman", serif;
+      --display: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
     }
 
     * { box-sizing: border-box; }
@@ -56,7 +55,7 @@
     img { display: block; max-width: 100%; height: auto; }
     figure { margin: 0; }
     :focus-visible { outline: 3px solid var(--lime-ink); outline-offset: 3px; }
-    h1, h2, h3 { font-family: var(--sans); font-weight: 900; letter-spacing: .01em; }
+    h1, h2, h3 { font-family: var(--display); font-weight: 700; letter-spacing: .01em; }
 
     .shell { width: min(calc(100% - 44px), 940px); margin: 0 auto; }
 
@@ -91,7 +90,7 @@
       background: var(--lime); color: var(--navy);
       font-family: var(--num); font-size: 12.5px; font-weight: 700; letter-spacing: .14em;
     }
-    h1 { margin: 0 0 20px; font-size: clamp(28px, 4.6vw, 46px); line-height: 1.4; text-wrap: balance; }
+    h1 { margin: 0 0 20px; font-size: clamp(28px, 4.6vw, 46px); font-weight: 800; line-height: 1.4; letter-spacing: -.045em; text-wrap: balance; }
     .opening p { margin: 0 0 14px; color: var(--ink-soft); font-size: 15.5px; }
     .opening p:last-child { margin-bottom: 0; }
     .opening-fig { justify-self: center; }
@@ -105,6 +104,16 @@
       .opening-fig img, .opening-fig svg { width: 108px; }
     }
 
+    .role { margin: 0 0 10px; font-size: 13.5px; font-weight: 700; color: var(--lime); letter-spacing: .04em; }
+
+    /* プロフィール */
+    .profile { margin-top: 40px; border: 1px solid rgba(255, 255, 255, .2); border-left: 3px solid var(--lime); background: var(--navy-2); padding: 26px 30px; }
+    .profile-meta { display: grid; grid-template-columns: 92px 1fr; gap: 16px; margin: 0 0 18px; padding-bottom: 18px; border-bottom: 1px solid rgba(255, 255, 255, .16); }
+    .profile-meta dt { font-family: var(--num); font-size: 12px; font-weight: 700; letter-spacing: .16em; color: var(--lime); padding-top: 4px; }
+    .profile-meta dd { margin: 0; font-size: 15.5px; font-weight: 700; }
+    .profile-body { margin: 0; color: #b9c6d9; font-size: 14.5px; }
+    @media (max-width: 560px) { .profile-meta { grid-template-columns: 1fr; gap: 4px; } }
+
     /* offer */
     .offer { padding: 0 0 62px; }
     .offer-card { background: var(--navy); color: var(--white); padding: 36px 34px 32px; box-shadow: var(--shadow); }
@@ -112,10 +121,10 @@
     .offer-nums > div { padding: 22px 20px 20px; background: var(--navy); text-align: center; }
     .offer-nums dt { margin: 0 0 4px; font-family: var(--num); font-size: 12px; font-weight: 600; letter-spacing: .2em; color: var(--lime); }
     .offer-nums dd {
-      margin: 0; font-family: var(--num); font-weight: 700; color: var(--white);
-      font-size: clamp(44px, 8vw, 76px); line-height: 1.02;
+      margin: 0; font-family: var(--sans); font-weight: 800; color: var(--white);
+      font-size: clamp(44px, 8vw, 76px); line-height: 1.02; letter-spacing: -.03em;
     }
-    .offer-nums dd small { font-size: .34em; margin-left: 4px; font-family: var(--sans); font-weight: 700; }
+    .offer-nums dd small { font-size: .34em; margin-left: 4px; font-family: var(--sans); font-weight: 700; letter-spacing: 0; }
     .offer-sub { margin: 24px 0 0; font-size: 15.5px; font-weight: 700; }
     .offer-note { margin: 10px 0 0; color: #9fb0c8; font-size: 12.5px; }
     .offer-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
@@ -144,7 +153,7 @@
     .section { padding: 62px 0; border-bottom: 1px solid var(--line); }
     .section:last-of-type { border-bottom: 0; }
     .section-kicker { margin: 0 0 10px; font-family: var(--num); font-size: 12px; font-weight: 600; letter-spacing: .24em; color: var(--lime-ink); }
-    .section-title { margin: 0 0 14px; font-size: clamp(22px, 3vw, 30px); line-height: 1.45; text-wrap: balance; }
+    .section-title { margin: 0 0 14px; font-size: clamp(22px, 3vw, 30px); font-weight: 800; line-height: 1.45; letter-spacing: -.035em; text-wrap: balance; }
     .section-copy { margin: 0 0 28px; color: var(--ink-soft); font-size: 14.5px; }
 
     /* video */
@@ -241,7 +250,7 @@
       display: grid; place-items: center;
       font-family: var(--num); font-weight: 700; font-size: 16px;
     }
-    .needs strong { display: block; margin-bottom: 5px; font-size: 18px; font-weight: 900; }
+    .needs strong { display: block; margin-bottom: 5px; font-family: var(--display); font-size: 18px; font-weight: 700; }
     .needs small { color: var(--muted); font-size: 12.5px; line-height: 1.8; }
     @media (max-width: 680px) { .needs { grid-template-columns: 1fr; } }
     .notes { margin: 0; padding-left: 20px; color: var(--ink-soft); font-size: 13.5px; }
@@ -252,7 +261,7 @@
     .announce-toggle > summary {
       cursor: pointer; list-style: none; position: relative;
       padding: 16px 46px 16px 22px;
-      font-size: 16px; font-weight: 900;
+      font-family: var(--display); font-size: 16px; font-weight: 700;
     }
     .announce-toggle > summary::-webkit-details-marker { display: none; }
     .announce-toggle > summary::after {
@@ -280,7 +289,7 @@
     .handover-mark {
       width: 58px; height: 58px; border-radius: 50%;
       background: var(--navy); color: var(--lime);
-      display: grid; place-items: center; font-size: 24px; font-weight: 900;
+      display: grid; place-items: center; font-family: var(--display); font-size: 24px; font-weight: 700;
     }
     .handover h2 { margin: 0 0 6px; font-size: clamp(20px, 2.8vw, 27px); line-height: 1.45; }
     .handover p { margin: 0; color: var(--ink-soft); font-size: 14.5px; }
@@ -296,7 +305,7 @@
     }
     .contact-card:hover { border-color: var(--navy); transform: translateY(-2px); background: var(--paper); }
     .contact-card b { display: block; margin-bottom: 4px; font-family: var(--num); font-size: 11.5px; letter-spacing: .16em; color: var(--lime-ink); }
-    .contact-card strong { display: block; margin-bottom: 5px; font-size: 17px; font-weight: 900; }
+    .contact-card strong { display: block; margin-bottom: 5px; font-family: var(--display); font-size: 17px; font-weight: 700; }
     .contact-card span { color: var(--ink-soft); font-size: 13.5px; word-break: break-word; }
     @media (max-width: 820px) { .contact-grid { grid-template-columns: 1fr; } }
 
@@ -306,7 +315,7 @@
     .faq summary {
       cursor: pointer; list-style: none;
       padding: 17px 44px 17px 2px; position: relative;
-      font-size: 16px; font-weight: 900;
+      font-family: var(--display); font-size: 16px; font-weight: 700;
     }
     .faq summary::-webkit-details-marker { display: none; }
     .faq summary::after {
@@ -318,6 +327,33 @@
     .faq details[open] summary::after { transform: translateY(-30%) rotate(225deg); }
     .faq summary:hover { color: var(--navy-2); }
     .faq p { margin: 0 0 20px; padding-right: 44px; color: var(--ink-soft); font-size: 14.5px; }
+
+    /* 前半（経営者向け）を紺ベースに */
+    .upper { background: var(--navy); color: var(--white); }
+    .upper .opening { background: transparent; }
+    .upper h1, .upper .section-title, .upper .aside-box h3 { color: var(--white); }
+    .upper .opening p, .upper .section-copy, .upper .aside-box p { color: #b9c6d9; }
+    .upper .section { border-bottom-color: rgba(255, 255, 255, .14); }
+    .upper .section-kicker { color: var(--lime); }
+    .upper .offer-card { background: var(--navy-2); border-top: 3px solid var(--lime); }
+    .upper .offer-nums > div { background: var(--navy-2); }
+    .upper .premise { background: var(--navy-2); }
+    .upper .premise .asks > article { background: var(--navy-2); }
+    .upper .aside-box { background: var(--navy-2); border-color: rgba(255, 255, 255, .18); border-left-color: var(--lime); }
+    .upper .art { background: var(--navy-2); border-color: rgba(255, 255, 255, .18); }
+    .upper .svg-label { fill: #ffffff; }
+    .upper .svg-sub { fill: #9fb0c8; }
+    .upper .svg-phase { fill: #c8f53c; }
+    .upper .video-frame { border-color: rgba(255, 255, 255, .2); }
+    .upper .video-cap { color: #8fa2bb; }
+    .upper .announce-toggle { background: var(--navy-2); border-color: rgba(255, 255, 255, .2); }
+    .upper .announce-toggle > summary { color: var(--white); }
+    .upper .announce-toggle > summary:hover { color: var(--lime); }
+    .upper .announce-toggle > summary::after { border-right-color: var(--lime); border-bottom-color: var(--lime); }
+    .upper .toggle-body { border-top-color: rgba(255, 255, 255, .18); }
+    .upper .button.ghost { border-color: rgba(255, 255, 255, .42); color: var(--white); }
+    .upper .button.ghost:hover { border-color: var(--white); background: rgba(255, 255, 255, .08); }
+    .upper .opening-fig img { background: transparent; }
 
     /* 締め */
     .decide, .cta { padding: 66px 0 72px; text-align: center; background: var(--navy); color: var(--white); }
@@ -361,23 +397,28 @@
 
 <main>
   <!-- ============ 経営者向け ============ -->
+  <div class="upper on-navy">
   <section class="opening">
     <div class="shell opening-grid">
       <div>
         <span class="kicker">先着10社・1年間0円</span>
-        <h1>はじめまして、<br>スーパーマネージャーです。</h1>
-        <p>わたしの仕事は、営業マン一人に、上司を一人つけることです。オンラインの商談に同席して、いま出すべき事例を耳打ちし、値引きの場面では黙らず、話がずれたら途中で止めます。</p>
-        <p>少し心配性です。商談の前の日から、終わった5分後まで起きています。準備はできているか、認識はずれていないか、次の一手は打てたか。ずっと気にしています。</p>
+        <p class="role">あなたの商談に同席する、ベテラン営業マネージャー</p>
+        <h1>どうも、<br>スーパーマネージャーです。</h1>
+        <p>「商談後に振り返るんじゃ遅い、商談中に動けるAIが居る」その想いで、あなたの全商談にこっそり同席しています。事例・数字・値引き防衛・時間管理・要件整理まで、今この瞬間にそっと耳打ちします。</p>
       </div>
       <figure class="opening-fig">
-        <svg viewBox="0 0 120 120" role="img" aria-label="スーパーマネージャーのアイコン">
-          <circle cx="60" cy="60" r="56" fill="#ffffff" stroke="#0f1f3d" stroke-width="3.5"/>
-          <path d="M60 106c-16.5 0-30.4-6.6-37.6-16.8C27.2 78.8 41.2 72.4 60 72.4s32.8 6.4 37.6 16.8C90.4 99.4 76.5 106 60 106z" fill="#0f1f3d"/>
-          <circle cx="60" cy="46" r="19.5" fill="#0f1f3d"/>
-          <path d="M51.6 74.2L60 84.6l8.4-10.4 4 1.8L60 106 47.6 76z" fill="#ffffff"/>
-          <path d="M60 84.6l3.6 3.8-2.1 15.6h-3l-2.1-15.6z" fill="#c8f53c"/>
-        </svg>
+        <img src="assets/super-manager.png" alt="スーパーマネージャーのアイコン" width="192" height="192">
       </figure>
+    </div>
+
+    <div class="shell">
+      <div class="profile">
+        <dl class="profile-meta">
+          <dt>前職</dt>
+          <dd>営業マネージャー（プレイヤー時代は3年連続で全社10位）</dd>
+        </dl>
+        <p class="profile-body">営業畑ひと筋。プレイヤー時代は3年連続で全社10位という、派手ではないけれど落とさない堅実な成績でした。マネージャーになってからが本領発揮で、部下の商談が気になって気になって、気づいたら全員分のロープレに付き合い、商談には勝手に同席し、終わったあとのフォローメールまで下書きしてしまう。「部長、過保護です」とよく怒られました。…でも、それで受注が増えるならいいじゃないですか、ねえ？</p>
+      </div>
     </div>
   </section>
 
@@ -402,7 +443,7 @@
   <div class="shell">
     <section class="section" aria-labelledby="video-title">
       <p class="section-kicker">MOVIE</p>
-      <h2 class="section-title" id="video-title">まずは、わたしの自己紹介をさせてください。</h2>
+      <h2 class="section-title" id="video-title">動画でも、自己紹介させてください。</h2>
       <p class="section-copy">4つの基本機能のご紹介と、「心配性の営業部長」がどう生まれたかの開発秘話インタビューです。</p>
       <div class="video-frame">
         <div class="video-ratio">
@@ -463,32 +504,32 @@
         <div class="art-scroll">
           <svg viewBox="0 0 880 190" role="img" aria-labelledby="mt-title">
             <title id="mt-title">商談の前日から終了5分後まで、スーパーマネージャーが動く4つの場面</title>
-            <rect x="0" y="0" width="880" height="190" fill="#f4f6fa" rx="3"/>
-            <rect x="228" y="40" width="424" height="86" fill="#ffffff" stroke="#17305c" stroke-width="1.2" stroke-dasharray="5 5" rx="3"/>
+            <rect x="0" y="0" width="880" height="190" fill="#17305c" rx="3"/>
+            <rect x="228" y="40" width="424" height="86" fill="#0f1f3d" stroke="rgba(255,255,255,.45)" stroke-width="1.2" stroke-dasharray="5 5" rx="3"/>
             <text class="svg-sub" x="440" y="32" text-anchor="middle">オンライン商談のあいだ</text>
 
-            <path d="M70 100h740" stroke="#17305c" stroke-width="2" fill="none"/>
+            <path d="M70 100h740" stroke="rgba(255,255,255,.55)" stroke-width="2" fill="none"/>
 
             <g>
-              <circle cx="70" cy="100" r="9" fill="#0f1f3d"/>
+              <circle cx="70" cy="100" r="9" fill="#ffffff"/>
               <text class="svg-phase" x="70" y="76" text-anchor="middle">BEFORE</text>
               <text class="svg-label" x="70" y="132" text-anchor="middle">前日</text>
               <text class="svg-sub" x="70" y="152" text-anchor="middle">予告編を送る</text>
             </g>
             <g>
-              <circle cx="316" cy="100" r="9" fill="#0f1f3d"/>
+              <circle cx="316" cy="100" r="9" fill="#ffffff"/>
               <text class="svg-phase" x="316" y="76" text-anchor="middle">DURING</text>
               <text class="svg-label" x="316" y="132" text-anchor="middle">商談中</text>
               <text class="svg-sub" x="316" y="152" text-anchor="middle">事例を耳打ちする</text>
             </g>
             <g>
-              <circle cx="562" cy="100" r="9" fill="#0f1f3d"/>
+              <circle cx="562" cy="100" r="9" fill="#ffffff"/>
               <text class="svg-phase" x="562" y="76" text-anchor="middle">DURING</text>
               <text class="svg-label" x="562" y="132" text-anchor="middle">15分ごと</text>
               <text class="svg-sub" x="562" y="152" text-anchor="middle">認識を合わせる</text>
             </g>
             <g>
-              <circle cx="810" cy="100" r="11" fill="#c8f53c" stroke="#0f1f3d" stroke-width="2"/>
+              <circle cx="810" cy="100" r="11" fill="#c8f53c" stroke="#ffffff" stroke-width="2"/>
               <text class="svg-phase" x="810" y="76" text-anchor="middle">AFTER</text>
               <text class="svg-label" x="810" y="132" text-anchor="middle">終了5分後</text>
               <text class="svg-sub" x="810" y="152" text-anchor="middle">次の一手を打つ</text>
@@ -529,6 +570,7 @@
       <p class="decide-note">掲載内容・募集状況・提供条件は変更される場合があります。</p>
     </div>
   </section>
+  </div>
 
   <!-- ============ ご担当者向け ============ -->
   <section class="handover" aria-labelledby="handover-title">
@@ -536,7 +578,7 @@
       <div class="handover-mark" aria-hidden="true">↓</div>
       <div>
         <h2 id="handover-title">ここからは、ご担当者の方向けです。</h2>
-        <p>4つの機能、ご利用開始までの流れ、ご用意いただくもの、社内への伝え方。このページをそのまま転送していただければ、導入の手引きとして使えます。</p>
+        <p>4つの機能、ご利用開始までの流れ、社内への伝え方。このページをそのまま転送していただければ、導入の手引きとして使えます。</p>
       </div>
     </div>
   </section>
@@ -621,30 +663,8 @@
       </div>
     </section>
 
-    <section class="section" aria-labelledby="needs-title">
-      <p class="section-kicker">ご担当者向け ／ 03</p>
-      <h2 class="section-title rv" id="needs-title">ご用意いただくのは、この2つだけです。</h2>
-      <div class="needs rv">
-        <div>
-          <span class="no">1</span>
-          <strong>オンラインで行っている商談</strong>
-          <small>Google Meet に対応しています。ほかのツールをお使いの場合はご相談ください。</small>
-        </div>
-        <div>
-          <span class="no">2</span>
-          <strong>お客様に送るメールの送信元</strong>
-          <small>前日の予告編と、終了後のフォローを送るために使います。</small>
-        </div>
-      </div>
-      <ul class="notes rv">
-        <li>営業の方に新しい入力作業をお願いすることはありません。いつもどおり商談をしていただくだけです。</li>
-        <li>商談の記録の取り扱いは、開始前に書面で確認します。</li>
-        <li>ご負担はAPI利用料などの実費のみ。初期費用・月額料金はかかりません。</li>
-      </ul>
-    </section>
-
     <section class="section" aria-labelledby="announce-title">
-      <p class="section-kicker">ご担当者向け ／ 04</p>
+      <p class="section-kicker">ご担当者向け ／ 03</p>
       <h2 class="section-title rv" id="announce-title">社内には、この文面をそのまま流してください。</h2>
       <p class="section-copy rv">〇〇の部分だけ差し替えてお使いください。</p>
       <details class="announce-toggle rv">
@@ -681,7 +701,7 @@
     </section>
 
     <section class="section" aria-labelledby="faq-title">
-      <p class="section-kicker">ご担当者向け ／ 05</p>
+      <p class="section-kicker">ご担当者向け ／ 04</p>
       <h2 class="section-title rv" id="faq-title">よくあるご質問</h2>
       <div class="faq rv">
         <details>
