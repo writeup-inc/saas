@@ -143,6 +143,58 @@
       ]
     },
     {
+      "path": "monitor/seminar/index.html",
+      "requiredGoogleFonts": [
+        "Noto Sans JP"
+      ],
+      "requiredFallbackFonts": [
+        "Hiragino Sans",
+        "Yu Gothic",
+        "Meiryo",
+        "sans-serif"
+      ],
+      "requiredRules": [
+        {
+          "selector": "h2.title",
+          "declarations": {
+            "font-family": "var(--heading-sans)",
+            "font-weight": "800"
+          }
+        },
+        {
+          "selector": ".hero h1",
+          "declarations": {
+            "font-family": "var(--heading-sans)",
+            "font-weight": "900"
+          }
+        },
+        {
+          "selector": ".hero h1 .small",
+          "declarations": {
+            "font-family": "var(--sans)",
+            "font-weight": "700"
+          }
+        }
+      ],
+      "selfTestMutations": [
+        {
+          "name": "Google Fontsのstylesheetを削除",
+          "find": "<link href=\"https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700;800;900&amp;display=swap\" rel=\"stylesheet\">",
+          "replace": ""
+        },
+        {
+          "name": "H1のウェイトを下げる",
+          "find": "      font-weight: 900;",
+          "replace": "      font-weight: 700;"
+        },
+        {
+          "name": "H2のウェイトを下げる",
+          "find": "      font-weight: 800;",
+          "replace": "      font-weight: 700;"
+        }
+      ]
+    },
+    {
       "path": "monitor/super-manager/index.html",
       "forbidRemoteFonts": true,
       "requiredFallbackFonts": [
