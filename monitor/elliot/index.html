@@ -190,6 +190,20 @@
     .honest { margin-top: 24px; border-left: 2px solid var(--gold); padding: 2px 0 2px 22px; }
     .honest p { margin: 0; max-width: 42em; color: var(--ink-soft); font-size: 14.5px; }
 
+    /* ---------- 図版 ---------- */
+    .art { margin: 0 0 28px; border: 1px solid var(--line); background: var(--night-deep); padding: 20px 20px 16px; }
+    .art-scroll { overflow-x: auto; }
+    .art svg { display: block; width: 100%; height: auto; }
+    .art-scroll svg { min-width: 640px; }
+    .art figcaption { margin-top: 12px; color: var(--muted); font-size: 12.5px; }
+    .svg-label { font-family: var(--sans); font-size: 13px; font-weight: 700; fill: var(--ink); }
+    .svg-sub { font-family: var(--sans); font-size: 11.5px; fill: var(--muted); }
+    .svg-time { font-family: var(--serif); font-size: 19px; font-weight: 900; fill: var(--gold); }
+    .svg-time.dawn { fill: var(--dawn); }
+    .svg-note { font-family: var(--sans); font-size: 11px; font-weight: 700; fill: var(--gold); letter-spacing: .04em; }
+
+    .icon { width: 26px; height: 26px; display: block; margin-bottom: 10px; color: var(--gold); }
+
     /* ---------- timeline ---------- */
     .tl { position: relative; margin: 0; padding: 0 0 0 40px; list-style: none; }
     .tl::before {
@@ -333,13 +347,13 @@
     .back-link:hover { color: var(--gold); border-bottom-color: var(--gold); }
 
     /* ---------- reveal ---------- */
-    .rv { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease; }
-    .rv.in { opacity: 1; transform: none; }
+    .rv { transition: opacity .7s ease, transform .7s ease; }
+    .rv.pending { opacity: 0; transform: translateY(16px); }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       * { transition-duration: .01ms !important; animation-duration: .01ms !important; }
-      .rv { opacity: 1; transform: none; }
+      .rv.pending { opacity: 1; transform: none; }
     }
   </style>
 </head>
@@ -427,19 +441,22 @@
 
       <div class="asks">
         <article>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="10" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0"/><path d="M12 18v3M9 21h6"/></svg>
           <span class="tag must">お願い（必須）</span>
           <h3>インタビューに答えてください</h3>
-          <p>後日、使ってみた感想をうかがう取材をさせてください。顔出し・会社名・実名でご協力いただけると助かります（難しい場合はご相談ください）。記事には御社のご紹介を2行とリンクを掲載します。</p>
+          <p>後日、使ってみた感想をうかがう取材をさせてください。記事には御社のご紹介を2行とリンクを載せます。公開範囲はご相談できます。</p>
         </article>
         <article>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="7" width="8" height="11" rx="4"/><path d="M9.2 5l1.4 2M14.8 5l-1.4 2M4 11h4M16 11h4M4.8 16.5H8M16 16.5h3.2M12 18v3"/></svg>
           <span class="tag must">お願い（必須）</span>
           <h3>バグを教えてください</h3>
-          <p>正直に申し上げると、バグや使いにくいところはまだ残っています。「ここで止まった」「ここが分かりにくい」を教えてください。直します。</p>
+          <p>使いにくいところはまだ残っています。「ここで止まった」を教えてください。直します。</p>
         </article>
         <article>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10v4a1 1 0 0 0 1 1h3l7 4V5L8 9H5a1 1 0 0 0-1 1z"/><path d="M18 9.5a4 4 0 0 1 0 5"/></svg>
           <span class="tag free">任意</span>
           <h3>よければ、広めてください</h3>
-          <p>周りに5社・10社とご紹介いただけそうなら、販売パートナーとしてご一緒させてください。任意です。使うだけでも問題ありません。</p>
+          <p>周りにご紹介いただけそうなら、販売パートナーとしてご一緒させてください。使うだけでも問題ありません。</p>
         </article>
       </div>
 
@@ -453,31 +470,99 @@
     <section class="section" aria-labelledby="night-title">
       <p class="section-kicker">ONE NIGHT</p>
       <h2 class="section-title rv" id="night-title">夜中の0時から朝7時のあいだに、<br>Elliotは仕事を終えています。</h2>
+
+      <figure class="art rv">
+        <div class="art-scroll">
+          <svg viewBox="0 0 880 200" role="img" aria-labelledby="arc-title">
+            <title id="arc-title">夜中0時から朝7時にかけてElliotが働き、朝に示唆が届くまでの流れ</title>
+            <defs>
+              <linearGradient id="arcLine" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#d8b26a" stop-opacity=".35"/>
+                <stop offset="55%" stop-color="#d8b26a"/>
+                <stop offset="100%" stop-color="#e8c38d"/>
+              </linearGradient>
+              <linearGradient id="arcSky" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#0b1424"/>
+                <stop offset="70%" stop-color="#22283e"/>
+                <stop offset="100%" stop-color="#5a4a3d"/>
+              </linearGradient>
+            </defs>
+
+            <rect x="0" y="0" width="880" height="200" fill="url(#arcSky)" rx="4"/>
+            <g fill="#ffffff" opacity=".55">
+              <circle cx="96" cy="34" r="1.4"/><circle cx="178" cy="58" r="1.1"/><circle cx="250" cy="28" r="1.5"/>
+              <circle cx="326" cy="52" r="1.1"/><circle cx="404" cy="30" r="1.3"/><circle cx="486" cy="56" r="1"/>
+            </g>
+
+            <g fill="none" stroke="#d8b26a" stroke-width="1.4" opacity=".9">
+              <path d="M64 44a13 13 0 1 0 12 17 15 15 0 0 1-12-17z"/>
+            </g>
+            <g stroke="#e8c38d" stroke-width="1.4" opacity=".95">
+              <circle cx="822" cy="50" r="10" fill="none"/>
+              <path d="M822 30v-7M822 77v-7M802 50h-7M849 50h-7M807 35l-5-5M842 70l-5-5M807 65l-5 5M842 30l-5 5" fill="none" stroke-linecap="round"/>
+            </g>
+
+            <path d="M60 118h760" stroke="url(#arcLine)" stroke-width="2" fill="none"/>
+
+            <g>
+              <circle cx="60" cy="118" r="6.5" fill="#0b1424" stroke="#d8b26a" stroke-width="2"/>
+              <text class="svg-time" x="60" y="103" text-anchor="middle">00:00</text>
+              <text class="svg-label" x="60" y="146" text-anchor="middle">集まる</text>
+              <text class="svg-sub" x="60" y="166" text-anchor="middle">ログが揃う</text>
+            </g>
+            <g>
+              <circle cx="250" cy="118" r="6.5" fill="#0b1424" stroke="#d8b26a" stroke-width="2"/>
+              <text class="svg-time" x="250" y="103" text-anchor="middle">01:00</text>
+              <text class="svg-label" x="250" y="146" text-anchor="middle">読む</text>
+              <text class="svg-sub" x="250" y="166" text-anchor="middle">種類をまたいで</text>
+            </g>
+            <g>
+              <circle cx="440" cy="118" r="6.5" fill="#0b1424" stroke="#d8b26a" stroke-width="2"/>
+              <text class="svg-time" x="440" y="103" text-anchor="middle">04:00</text>
+              <text class="svg-label" x="440" y="146" text-anchor="middle">蒸留する</text>
+              <text class="svg-sub" x="440" y="166" text-anchor="middle">ノウハウを取り出す</text>
+            </g>
+            <g>
+              <circle cx="630" cy="118" r="6.5" fill="#22283e" stroke="#e8c38d" stroke-width="2"/>
+              <text class="svg-time dawn" x="630" y="103" text-anchor="middle">07:00</text>
+              <text class="svg-label" x="630" y="146" text-anchor="middle">届く</text>
+              <text class="svg-sub" x="630" y="166" text-anchor="middle">朝、示唆が1通</text>
+            </g>
+            <g>
+              <circle cx="820" cy="118" r="6.5" fill="#5a4a3d" stroke="#e8c38d" stroke-width="2"/>
+              <text class="svg-time dawn" x="820" y="103" text-anchor="middle">月末</text>
+              <text class="svg-label" x="820" y="146" text-anchor="middle">まとめる</text>
+              <text class="svg-sub" x="820" y="166" text-anchor="middle">経営レポート</text>
+            </g>
+          </svg>
+        </div>
+      </figure>
+
       <ol class="tl">
         <li class="rv">
           <span class="tl-time">00:00</span>
           <h3>小人が現れる</h3>
-          <p>その日のログが集まったGoogleドライブに、Elliotがやってきます。集約フォルダは御社のドライブ内にあります。</p>
+          <p>御社のドライブ内にある集約フォルダに、その日のログが揃います。</p>
         </li>
         <li class="rv">
           <span class="tl-time">01:00</span>
           <h3>全部、読む</h3>
-          <p>書式も長さもばらばらのテキストを、種類をまたいで読み込みます。溜めておくだけだった記録が、ここではじめて読まれます。</p>
+          <p>書式も長さもばらばらのテキストを、種類をまたいで読みます。</p>
         </li>
         <li class="rv">
           <span class="tl-time">04:00</span>
           <h3>蒸留する</h3>
-          <p>複数の人が同じ案件について書いたこと、先週との違い、繰り返し出てくる言葉。生のログから、使える形のノウハウを取り出します。</p>
+          <p>先週との違い、繰り返し出てくる言葉。生ログから使える形を取り出します。</p>
         </li>
         <li class="rv dawn">
           <span class="tl-time">07:00</span>
           <h3>朝、示唆が届く</h3>
-          <p>昨日社内で何が起きていたかがまとまっています。「今日、朝いちでメンバーに何と声をかけるか」まで書かれています。</p>
+          <p>「今日、朝いちでメンバーに何と声をかけるか」まで書かれています。</p>
         </li>
         <li class="rv dawn">
           <span class="tl-time">月末</span>
           <h3>経営レポートになる</h3>
-          <p>1か月分をさらにまとめ、経営者向けのレポートを作ります。見たい切り口に合わせて変えられます。</p>
+          <p>1か月分をまとめ、見たい切り口で経営者向けのレポートにします。</p>
         </li>
       </ol>
     </section>
@@ -525,31 +610,37 @@
       <h2 class="section-title rv" id="jobs-title">できることは、6つです。</h2>
       <div class="jobs rv">
         <article>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5A2.5 2.5 0 0 1 5.5 3h13A2.5 2.5 0 0 1 21 5.5v8a2.5 2.5 0 0 1-2.5 2.5H9l-4.5 4v-4A2.5 2.5 0 0 1 3 13.5z"/><path d="M9.9 8.1a2.2 2.2 0 1 1 2.6 2.2v1.1"/><path d="M12.5 13.4v.2"/></svg>
           <b>01</b>
           <h3>社内のログに、聞く</h3>
           <p>使い方はChatGPTとほぼ同じ。違うのは、答えるときに社内のログを参照していることです。</p>
         </article>
         <article>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12.5" r="7.5"/><path d="M12 8.5v4l2.6 1.7"/><path d="M18.5 4.5V7H16"/></svg>
           <b>02</b>
           <h3>いい問いは、定期配信にする</h3>
           <p>「毎朝ほしい」と思った答えは、毎日・毎週・毎月の配信に設定できます。</p>
         </article>
         <article>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5h16l-6 7v7.5l-4 2V11.5z"/></svg>
           <b>03</b>
           <h3>ノウハウを蒸留する</h3>
           <p>生ログからノウハウをまとめ、有益度のスコアをつけます。どれが現場で効く話か分かります。</p>
         </article>
         <article>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="9" r="3.4"/><path d="M4.8 20a6.2 6.2 0 0 1 12.4 0"/><path d="M19 3l.7 1.9L21.6 5.6l-1.9.7L19 8.2l-.7-1.9-1.9-.7 1.9-.7z" fill="currentColor" stroke="none"/></svg>
           <b>04</b>
           <h3>社員一人ひとりがAIになる</h3>
           <p>社員それぞれのAIができます。「あの見積もり、どこだっけ？」と本人のAIに聞けます。</p>
         </article>
         <article>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.8 5.4A1.9 1.9 0 0 1 4.7 3.5h8.1a1.9 1.9 0 0 1 1.9 1.9v3.8a1.9 1.9 0 0 1-1.9 1.9H8l-3 2.5v-2.5h-.3a1.9 1.9 0 0 1-1.9-1.9z"/><path d="M17.2 8.6h2.1a1.9 1.9 0 0 1 1.9 1.9v3.8a1.9 1.9 0 0 1-1.9 1.9H19v2.5l-3-2.5h-3.1"/></svg>
           <b>05</b>
           <h3>AI同士で話をさせる</h3>
           <p>テーマを決めると社員のAI同士が議論し、議事録を残します。「来期の予算」でも構いません。</p>
         </article>
         <article>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5"/><path d="M9.5 17.5v-3M12 17.5v-5.5M14.5 17.5v-2"/></svg>
           <b>06</b>
           <h3>経営レポートを自動で作る</h3>
           <p>月に一度、経営者向けのレポートを生成します。切り口はご要望に合わせて変えられます。</p>
@@ -583,26 +674,71 @@
     <section class="section" aria-labelledby="facts-title">
       <p class="section-kicker">ご担当者向け ／ 03</p>
       <h2 class="section-title rv" id="facts-title">ご用意いただくのは、<br>Googleドライブとアカウントだけです。</h2>
+
+      <figure class="art rv">
+        <div class="art-scroll">
+          <svg viewBox="0 0 960 240" role="img" aria-labelledby="flow-title">
+            <title id="flow-title">社員のフォルダを閲覧者で共有し、御社のGoogleドライブ内の集約フォルダにまとめ、Elliotが夜に読んで朝にダイジェストを届けるまでの流れ</title>
+            <defs>
+              <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M0 1l8 4-8 4z" fill="#d8b26a"/>
+              </marker>
+            </defs>
+
+            <g stroke="#d8b26a" stroke-width="1.5" fill="none">
+              <rect x="45" y="82" width="30" height="44" rx="3"/>
+              <rect x="83" y="82" width="30" height="44" rx="3"/>
+              <rect x="121" y="82" width="30" height="44" rx="3"/>
+              <path d="M52 94h16M52 102h16M52 110h10" opacity=".6"/>
+              <path d="M90 94h16M90 102h16M90 110h10" opacity=".6"/>
+              <path d="M128 94h16M128 102h16M128 110h10" opacity=".6"/>
+            </g>
+            <text class="svg-label" x="98" y="152" text-anchor="middle">社員それぞれのフォルダ</text>
+            <text class="svg-sub" x="98" y="172" text-anchor="middle">議事録・商談メモ・日報</text>
+
+            <text class="svg-note" x="209" y="92" text-anchor="middle">閲覧者で共有</text>
+            <path d="M176 104h60" stroke="#d8b26a" stroke-width="1.6" fill="none" marker-end="url(#arw)"/>
+
+            <rect x="250" y="44" width="310" height="150" rx="6" fill="none" stroke="#d8b26a" stroke-width="1.2" stroke-dasharray="5 5" opacity=".7"/>
+            <text class="svg-note" x="405" y="66" text-anchor="middle">御社のGoogleドライブ</text>
+            <path d="M357 88h32l7 9h49a4 4 0 0 1 4 4v39a4 4 0 0 1-4 4h-88a4 4 0 0 1-4-4V92a4 4 0 0 1 4-4z" fill="none" stroke="#d8b26a" stroke-width="1.6"/>
+            <text class="svg-label" x="405" y="178" text-anchor="middle">集約フォルダ</text>
+
+            <text class="svg-note" x="597" y="92" text-anchor="middle">夜0時に読む</text>
+            <path d="M570 104h52" stroke="#d8b26a" stroke-width="1.6" fill="none" marker-end="url(#arw)"/>
+
+            <circle cx="668" cy="112" r="30" fill="#0b1424" stroke="#d8b26a" stroke-width="1.6"/>
+            <path d="M663 100a12 12 0 1 0 11 15 14 14 0 0 1-11-15z" fill="none" stroke="#e8c38d" stroke-width="1.4"/>
+            <text class="svg-label" x="668" y="178" text-anchor="middle">Elliot</text>
+
+            <text class="svg-note" x="740" y="92" text-anchor="middle">朝7時</text>
+            <path d="M710 104h50" stroke="#e8c38d" stroke-width="1.6" fill="none" marker-end="url(#arw)"/>
+
+            <rect x="790" y="82" width="130" height="60" rx="4" fill="none" stroke="#e8c38d" stroke-width="1.6"/>
+            <path d="M790 82l65 38 65-38" fill="none" stroke="#e8c38d" stroke-width="1.4" opacity=".7"/>
+            <text class="svg-label" x="855" y="178" text-anchor="middle">朝のダイジェスト</text>
+            <text class="svg-sub" x="855" y="198" text-anchor="middle">みなさんへ</text>
+          </svg>
+        </div>
+        <figcaption>社員の操作は「閲覧者で共有する」「フォームにURLを送る」の2ステップだけ。記録は御社のGoogleドライブから出ません。</figcaption>
+      </figure>
+
       <dl class="facts rv">
         <div class="fact-row">
           <dt>ご用意いただくもの</dt>
-          <dd>Google Workspace のアカウントと、記録を保存しているGoogleドライブ。<small>集約用のフォルダは御社のドライブ内に作成します。</small></dd>
+          <dd>Google Workspace のアカウントと、記録を保存しているGoogleドライブ。</dd>
         </div>
         <div class="fact-row">
           <dt>社員の操作</dt>
-          <dd>自分の記録フォルダを「閲覧者」で共有し、フォームにURLを送る。この2ステップだけ。<small>編集権限をお預かりすることはありません。</small></dd>
-        </div>
-        <div class="fact-row">
-          <dt>対象になる記録</dt>
-          <dd>議事録、商談メモ、電話の会話ログ、日報など、テキストとして残っているもの。<small>書式が統一されている必要はありません。</small></dd>
+          <dd>「閲覧者」で共有し、フォームにURLを送る。<small>編集権限はお預かりしません。</small></dd>
         </div>
         <div class="fact-row">
           <dt>データの取り扱い</dt>
-          <dd>集約フォルダは御社のGoogleドライブ内に置きます。会社ごとにドライブが分かれるため、他社の記録と混ざることはありません。<small>取り扱いの詳細は開始前に書面で確認します。</small></dd>
+          <dd>会社ごとにドライブが分かれるため、他社の記録と混ざりません。<small>詳細は開始前に書面で確認します。</small></dd>
         </div>
         <div class="fact-row">
           <dt>ご負担</dt>
-          <dd>API利用料などの実費のみ。初期費用・月額料金はかかりません。<small>金額の目安は開始前のご相談でお伝えします。</small></dd>
+          <dd>API利用料などの実費のみ。初期費用・月額料金はかかりません。<small>目安は開始前のご相談でお伝えします。</small></dd>
         </div>
       </dl>
     </section>
@@ -726,19 +862,39 @@
 
 <script>
   (() => {
-    const targets = [...document.querySelectorAll('.rv')];
-    if (!('IntersectionObserver' in window)) {
-      targets.forEach((el) => el.classList.add('in'));
-    } else {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add('in');
-          io.unobserve(entry.target);
-        });
-      }, { threshold: .12, rootMargin: '0px 0px -40px' });
-      targets.forEach((el) => io.observe(el));
-    }
+    const reduceMotion = window.matchMedia
+      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const pending = reduceMotion ? [] : [...document.querySelectorAll('.rv')];
+    const margin = 60;
+
+    pending.forEach((el) => {
+      if (el.getBoundingClientRect().top >= window.innerHeight - margin) {
+        el.classList.add('pending');
+      }
+    });
+
+    let queued = false;
+    const reveal = () => {
+      queued = false;
+      for (let i = pending.length - 1; i >= 0; i -= 1) {
+        const el = pending[i];
+        if (el.getBoundingClientRect().top < window.innerHeight - margin) {
+          el.classList.remove('pending');
+          pending.splice(i, 1);
+        }
+      }
+    };
+    const schedule = () => {
+      if (queued) return;
+      queued = true;
+      window.requestAnimationFrame(reveal);
+    };
+
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule, { passive: true });
+    window.addEventListener('hashchange', schedule);
+    window.addEventListener('load', schedule);
+    schedule();
 
     const button = document.getElementById('copy-announce');
     const source = document.getElementById('announce-text');
