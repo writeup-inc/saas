@@ -1770,12 +1770,13 @@
       var brandMark = document.querySelector(".brand .mark");
       var cta = document.querySelector(".bar-cta");
       var cursor = document.querySelector(".cta-cursor");
+      var why = $("why");
       var entry = $("entry");
       var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
       var arrived = false;
       var frame = 0;
 
-      if (!bar || !inner || !brandMark || !cta || !cursor || !entry) return;
+      if (!bar || !inner || !brandMark || !cta || !cursor || !why || !entry) return;
 
       function motionEnabled() {
         return window.innerWidth > 640 && !(reducedMotion && reducedMotion.matches);
@@ -1801,12 +1802,13 @@
         var ctaRect = cta.getBoundingClientRect();
         var headerHeight = bar.offsetHeight;
         var entryY = entry.getBoundingClientRect().top + window.scrollY - headerHeight;
+        var revealStartY = why.getBoundingClientRect().top + window.scrollY - window.innerHeight * .52;
         var progress = Math.min(1, Math.max(0, window.scrollY / Math.max(1, entryY)));
         var start = markRect.left - innerRect.left + markRect.width * .62;
         var end = ctaRect.left - innerRect.left + ctaRect.width * .48;
 
-        // 前半は見せず、中間地点から少しずつ導線を見せる。
-        var revealProgress = Math.max(0, Math.min(1, (progress - .48) / .52));
+        // 「なぜ、0円なのか。」が画面中央へ来てから、申込へ向けて導線を見せる。
+        var revealProgress = Math.max(0, Math.min(1, (window.scrollY - revealStartY) / Math.max(1, entryY - revealStartY)));
         cursor.style.left = (start + (end - start) * progress) + "px";
         cursor.style.setProperty("--cursor-opacity", (Math.pow(revealProgress, 1.25) * .96).toFixed(2));
         cursor.style.setProperty("--cursor-scale", (.72 + progress * .28).toFixed(2));

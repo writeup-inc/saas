@@ -216,7 +216,11 @@
           "minimum": 1
         },
         {
-          "text": "var revealProgress = Math.max(0, Math.min(1, (progress - .48) / .52));",
+          "text": "var why = $(\"why\");",
+          "minimum": 1
+        },
+        {
+          "text": "var revealProgress = Math.max(0, Math.min(1, (window.scrollY - revealStartY) / Math.max(1, entryY - revealStartY)));",
           "minimum": 1
         },
         {
@@ -276,8 +280,8 @@
           "replace": "class=\"cta-cursor-removed\""
         },
         {
-          "name": "申込導線のカーソルを開始直後から表示する",
-          "find": "var revealProgress = Math.max(0, Math.min(1, (progress - .48) / .52));",
+          "name": "申込導線のカーソルを「なぜ0円なのか」より前から表示する",
+          "find": "var revealProgress = Math.max(0, Math.min(1, (window.scrollY - revealStartY) / Math.max(1, entryY - revealStartY)));",
           "replace": "var revealProgress = progress;"
         },
         {
