@@ -1805,8 +1805,10 @@
         var start = markRect.left - innerRect.left + markRect.width * .62;
         var end = ctaRect.left - innerRect.left + ctaRect.width * .48;
 
+        // 前半は見せず、中間地点から少しずつ導線を見せる。
+        var revealProgress = Math.max(0, Math.min(1, (progress - .48) / .52));
         cursor.style.left = (start + (end - start) * progress) + "px";
-        cursor.style.setProperty("--cursor-opacity", (.14 + progress * .82).toFixed(2));
+        cursor.style.setProperty("--cursor-opacity", (Math.pow(revealProgress, 1.25) * .96).toFixed(2));
         cursor.style.setProperty("--cursor-scale", (.72 + progress * .28).toFixed(2));
         cursor.classList.add("is-active");
 

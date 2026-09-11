@@ -216,6 +216,10 @@
           "minimum": 1
         },
         {
+          "text": "var revealProgress = Math.max(0, Math.min(1, (progress - .48) / .52));",
+          "minimum": 1
+        },
+        {
           "text": "id=\"makers\"",
           "minimum": 1
         },
@@ -270,6 +274,11 @@
           "name": "申込導線のカーソルを削除",
           "find": "class=\"cta-cursor\"",
           "replace": "class=\"cta-cursor-removed\""
+        },
+        {
+          "name": "申込導線のカーソルを開始直後から表示する",
+          "find": "var revealProgress = Math.max(0, Math.min(1, (progress - .48) / .52));",
+          "replace": "var revealProgress = progress;"
         },
         {
           "name": "申込到達時のフォーム演出を削除",
