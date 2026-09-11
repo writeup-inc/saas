@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f3efe6">
+  <meta name="description" content="新しいチームのメンバー全員へAIがインタビューし、仕事の得意・苦手、価値観、協働スタイル、AI活用度をチームの対話に変える。AIファシリテーター構想を白石崇と西村果林が語る。">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="株式会社ライトアップ">
+  <meta property="og:title" content="新しいチームは、最初の30日でもっと話しやすくなる。｜AIファシリテーター構想">
+  <meta property="og:description" content="一人ひとりの違いを、評価ではなく対話のきっかけへ。AIが聞き、整理し、チームの共通言語をつくる新サービス構想。">
+  <meta property="og:url" content="https://writeup-inc.github.io/saas/ai-facilitator-interview/">
+  <meta property="og:image" content="https://writeup-inc.github.io/saas/ai-facilitator-interview/assets/team-map-hero.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://writeup-inc.github.io/saas/ai-facilitator-interview/">
+  <title>新しいチームは、最初の30日でもっと話しやすくなる。｜AIファシリテーター構想</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2317191f'/%3E%3Ccircle cx='23' cy='27' r='8' fill='%23e05a47'/%3E%3Ccircle cx='42' cy='21' r='6' fill='%234b7ec5'/%3E%3Ccircle cx='41' cy='43' r='7' fill='%23749b7a'/%3E%3Cpath d='M28 27l8-4M27 33l8 6M42 27v9' stroke='%23fffdf8' stroke-width='3'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f3efe6;
+      --paper-soft: #faf7f0;
+      --white: #fffdf8;
+      --ink: #17191f;
+      --muted: #666761;
+      --line: #c9c4b9;
+      --red: #dc5947;
+      --blue: #3f73bd;
+      --green: #648b70;
+      --yellow: #e0b849;
+      --container: 1200px;
+      --article: 790px;
+      --sans: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+      --serif: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", Georgia, serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 78px; overflow-x: clip; }
+    body { margin: 0; color: var(--ink); background: var(--paper-soft); font: 400 16px/1.95 var(--sans); line-break: strict; word-break: normal; overflow-wrap: anywhere; -webkit-font-smoothing: antialiased; }
+    body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .32; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.075'/%3E%3C/svg%3E"); }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; }
+    h1, h2, h3, p, figure, blockquote { margin: 0; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid var(--blue); outline-offset: 5px; }
+    .wrap { width: min(var(--container), calc(100% - 48px)); margin-inline: auto; }
+    .nowrap { white-space: nowrap; }
+    .skip { position: fixed; left: 10px; top: 10px; z-index: 50; transform: translateY(-160%); padding: 8px 14px; color: #fff; background: var(--ink); font-weight: 800; text-decoration: none; }
+    .skip:focus { transform: none; }
+
+    .header { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid rgba(23,25,31,.16); background: rgba(250,247,240,.92); backdrop-filter: blur(16px); }
+    .header .wrap { min-height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand, .back { min-height: 44px; display: inline-flex; align-items: center; text-decoration: none; }
+    .brand { gap: 10px; font-weight: 900; letter-spacing: .04em; }
+    .brand-mark { width: 29px; height: 29px; display: grid; place-items: center; color: #fff; background: var(--red); border-radius: 50% 50% 48% 14%; font: 900 12px/1 var(--sans); transform: rotate(-7deg); }
+    .brand-mark span { transform: rotate(7deg); }
+    .back { color: var(--muted); font-size: 12px; font-weight: 800; }
+
+    .hero { position: relative; overflow: clip; padding: 76px 0 0; background: var(--paper); border-bottom: 1px solid var(--ink); }
+    .hero::after { content: "LISTEN / MAP / TALK / LEARN"; position: absolute; right: -44px; top: 116px; color: rgba(23,25,31,.045); font: 900 clamp(54px,7vw,110px)/.86 var(--sans); letter-spacing: -.06em; writing-mode: vertical-rl; }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0,.92fr) minmax(510px,1.08fr); gap: clamp(42px,6vw,86px); align-items: center; }
+    .eyebrow, .module-label, .chapter-no, .card-label { color: var(--red); font: 900 11px/1.5 var(--mono); letter-spacing: .16em; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; }
+    .eyebrow::before { content: ""; width: 38px; height: 3px; background: var(--red); }
+    h1 { margin-top: 24px; font-family: var(--serif); font-size: clamp(44px,5.45vw,73px); font-weight: 800; line-height: 1.34; letter-spacing: -.055em; text-wrap: balance; }
+    h1 em { color: var(--red); font-style: normal; }
+    .hero-lead { max-width: 590px; margin-top: 26px; font-size: clamp(16px,1.7vw,20px); font-weight: 700; line-height: 1.9; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 9px 22px; margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    .hero-meta b { color: var(--ink); }
+    .hero-figure { position: relative; align-self: end; }
+    .hero-figure img { width: 100%; aspect-ratio: 3/2; object-fit: cover; border: 1px solid var(--ink); border-bottom: 0; }
+    .hero-tag { position: absolute; right: -12px; top: -14px; padding: 11px 14px; color: #fff; background: var(--ink); font: 900 11px/1.3 var(--mono); letter-spacing: .15em; }
+    .hero-quote { position: absolute; left: -28px; bottom: 28px; width: min(400px,78%); padding: 20px 22px; color: #fff; background: var(--red); box-shadow: 9px 9px 0 rgba(23,25,31,.16); font-family: var(--serif); font-size: clamp(16px,2vw,22px); font-weight: 800; line-height: 1.65; }
+    .hero-image-note { padding: 8px 0 9px; color: #85867f; font-size: 10px; text-align: right; }
+
+    .intro-strip { border-bottom: 1px solid var(--ink); background: var(--ink); color: #fff; }
+    .intro-grid { display: grid; grid-template-columns: repeat(4,1fr); }
+    .intro-item { min-height: 134px; padding: 25px clamp(16px,2.5vw,30px); border-left: 1px solid #3d4148; }
+    .intro-item:last-child { border-right: 1px solid #3d4148; }
+    .intro-item b { display: block; color: #ef9488; font: 900 10px/1.3 var(--mono); }
+    .intro-item strong { display: block; margin-top: 9px; font-size: 15px; line-height: 1.65; }
+
+    .people { padding: 68px 0 72px; background: var(--white); border-bottom: 1px solid var(--line); }
+    .people-head { display: grid; grid-template-columns: 1fr minmax(280px,430px); gap: 42px; align-items: end; margin-bottom: 28px; }
+    .people-head h2 { font-family: var(--serif); font-size: clamp(31px,4vw,48px); line-height: 1.4; }
+    .people-head > p { color: var(--muted); font-size: 13px; }
+    .people-grid { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--ink); }
+    .person { display: grid; grid-template-columns: 110px 1fr; min-height: 180px; padding: 28px; background: var(--paper); }
+    .person + .person { border-left: 1px solid var(--ink); }
+    .person-symbol { width: 82px; height: 82px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--red); font: 800 27px/1 var(--serif); }
+    .person:nth-child(2) .person-symbol { background: var(--blue); }
+    .person h3 { margin-top: 5px; font-family: var(--serif); font-size: 26px; }
+    .person p { margin-top: 8px; color: var(--muted); font-size: 12px; }
+    .person .role { margin-top: 13px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--ink); font-weight: 700; line-height: 1.75; }
+
+    .story { padding: 88px 0 116px; }
+    .story-layout { display: grid; grid-template-columns: 238px minmax(0,var(--article)); justify-content: center; gap: 76px; }
+    .side { position: sticky; top: 92px; align-self: start; }
+    .side-title { margin-top: 10px; font-family: var(--serif); font-size: 22px; line-height: 1.6; }
+    .side-copy { margin-top: 12px; color: var(--muted); font-size: 12px; }
+    .toc { margin-top: 24px; padding: 16px 0; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--line); }
+    .toc > b { display: block; margin-bottom: 6px; color: #96938c; font: 900 10px/1.4 var(--mono); letter-spacing: .16em; }
+    .toc a { display: grid; grid-template-columns: 28px 1fr; gap: 7px; padding: 8px 0; color: var(--muted); font-size: 12px; font-weight: 700; line-height: 1.55; text-decoration: none; }
+    .toc a span { color: var(--red); font: 900 11px/1.6 var(--mono); }
+    .toc a:hover { color: var(--ink); }
+    .date-card { margin-top: 24px; padding: 16px; border: 1px solid var(--ink); background: var(--white); }
+    .date-card b { display: block; font: 900 11px/1.4 var(--mono); letter-spacing: .12em; }
+    .date-card span { display: block; margin-top: 5px; color: var(--muted); font-size: 12px; }
+    .article { min-width: 0; }
+    .digest { padding: 35px 38px; border-top: 4px solid var(--ink); background: var(--paper); }
+    .digest h2 { margin-top: 12px; font-family: var(--serif); font-size: clamp(23px,3vw,32px); line-height: 1.7; }
+    .digest-list { display: grid; grid-template-columns: repeat(3,1fr); margin-top: 26px; list-style: none; padding: 0; border-top: 1px solid var(--line); }
+    .digest-list li { padding: 17px 16px 0; border-left: 1px solid var(--line); font-size: 12px; font-weight: 700; line-height: 1.7; }
+    .digest-list li:first-child { padding-left: 0; border-left: 0; }
+    .digest-list b { display: block; color: var(--red); font: 900 11px/1.3 var(--mono); }
+    .attribution-note { margin-top: 17px; color: var(--muted); font-size: 11px; }
+
+    .chapter { padding-top: 84px; }
+    .chapter-head { padding-bottom: 25px; border-bottom: 2px solid var(--ink); }
+    .chapter h2 { margin-top: 10px; font-family: var(--serif); font-size: clamp(28px,3.8vw,43px); line-height: 1.5; letter-spacing: -.035em; text-wrap: pretty; }
+    .chapter-intro { margin-top: 28px; color: var(--muted); font-size: 14px; line-height: 1.95; }
+    .dialogue { margin-top: 30px; border-top: 2px solid var(--ink); }
+    .speech { display: grid; grid-template-columns: 88px minmax(0,1fr); gap: 24px; align-items: start; padding: 25px 0 27px; border-bottom: 1px solid var(--line); }
+    .speech-name { padding-top: 3px; color: var(--muted); font-size: 11px; font-weight: 900; line-height: 1.5; }
+    .speech-name::before { content: ""; display: block; width: 22px; height: 2px; margin-bottom: 8px; background: var(--ink); }
+    .speech-body { min-width: 0; font-size: 16px; line-height: 2.08; }
+    .speech-body p + p { margin-top: 15px; }
+    .speech.shiraishi .speech-body { font-family: var(--serif); font-size: 18px; font-weight: 700; line-height: 1.9; }
+    .speech.nishimura .speech-name { color: var(--red); }
+    .speech.nishimura .speech-name::before { background: var(--red); }
+    .pull { margin: 38px 0; padding: 31px 0; border-top: 3px solid var(--ink); border-bottom: 1px solid var(--ink); font-family: var(--serif); font-size: clamp(24px,3.5vw,38px); font-weight: 800; line-height: 1.65; }
+    .pull em { color: var(--red); font-style: normal; }
+    .pull small { display: block; margin-top: 12px; color: var(--muted); font: 700 10px/1.6 var(--sans); }
+    .flow { display: grid; grid-template-columns: repeat(5,1fr); margin: 35px 0; border: 1px solid var(--ink); background: var(--white); }
+    .flow-step { position: relative; min-height: 142px; padding: 20px 16px; }
+    .flow-step + .flow-step { border-left: 1px solid var(--ink); }
+    .flow-step b { color: var(--red); font: 900 11px/1 var(--mono); }
+    .flow-step strong { display: block; margin-top: 9px; font-size: 15px; }
+    .flow-step p { margin-top: 7px; color: var(--muted); font-size: 10px; line-height: 1.7; }
+    .flow-step:not(:last-child)::after { content: "→"; position: absolute; right: -10px; top: 20px; z-index: 2; width: 20px; color: var(--red); background: var(--white); text-align: center; font-weight: 900; }
+    .axis-board { margin: 36px 0; padding: 30px; border: 1px solid var(--ink); background: var(--paper); }
+    .axis-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; margin-top: 20px; }
+    .axis { min-height: 165px; padding: 22px; border: 1px solid var(--ink); background: var(--white); }
+    .axis:nth-child(2) { border-top: 5px solid var(--blue); }
+    .axis:nth-child(3) { border-top: 5px solid var(--green); }
+    .axis:nth-child(4) { border-top: 5px solid var(--yellow); }
+    .axis:first-child { border-top: 5px solid var(--red); }
+    .axis b { font: 900 10px/1 var(--mono); letter-spacing: .12em; }
+    .axis h3 { margin-top: 9px; font-family: var(--serif); font-size: 20px; }
+    .axis p { margin-top: 9px; color: var(--muted); font-size: 12px; }
+    .axis-note { margin-top: 15px; color: var(--muted); font-size: 11px; }
+    .sample { margin: 36px 0; padding: 30px; color: #fff; background: var(--blue); }
+    .sample > b { color: #d9e7ff; font: 900 10px/1.4 var(--mono); letter-spacing: .14em; }
+    .sample h3 { margin-top: 10px; font-family: var(--serif); font-size: 26px; }
+    .sample-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; margin-top: 21px; }
+    .sample-card { padding: 20px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.35); }
+    .sample-card small { color: #d9e7ff; font: 800 10px/1 var(--mono); }
+    .sample-card strong { display: block; margin-top: 8px; font-size: 15px; }
+    .sample-card p { margin-top: 7px; color: #eff5ff; font-size: 12px; }
+    .guard { margin: 36px 0; padding: 30px; border: 1px solid #c76b61; background: #fff2ef; }
+    .guard h3 { margin-top: 10px; font-family: var(--serif); font-size: 25px; }
+    .guard-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px 30px; margin-top: 20px; }
+    .guard-item { padding-top: 13px; border-top: 1px solid #ddb5ae; }
+    .guard-item b { color: #a83f34; font-size: 13px; }
+    .guard-item p { margin-top: 5px; color: #6c514d; font-size: 12px; }
+    .pilot { margin: 38px 0; padding: 32px; color: #fff; background: var(--green); }
+    .pilot b { color: #cfe4d5; font: 900 10px/1.4 var(--mono); letter-spacing: .15em; }
+    .pilot h3 { margin-top: 11px; font-family: var(--serif); font-size: clamp(23px,3vw,32px); }
+    .pilot ol { margin: 18px 0 0; padding-left: 1.4em; }
+    .pilot li { margin-top: 8px; font-size: 13px; }
+    .status-note { margin-top: 74px; padding: 29px; border: 1px solid var(--green); background: #f2f7f2; }
+    .status-note h2 { margin-top: 8px; font-family: var(--serif); font-size: clamp(23px,3vw,31px); }
+    .status-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 22px; }
+    .status-card { padding: 21px; border: 1px solid var(--ink); background: var(--white); }
+    .status-card small { color: var(--green); font: 900 10px/1 var(--mono); }
+    .status-card strong { display: block; margin-top: 9px; font-size: 15px; }
+    .status-card p { margin-top: 8px; color: var(--muted); font-size: 12px; }
+    .closing { margin-top: 78px; padding: 40px; color: #fff; background: var(--ink); }
+    .closing small { color: #ef9488; font: 900 11px/1.4 var(--mono); letter-spacing: .14em; }
+    .closing b { display: block; margin-top: 13px; font-family: var(--serif); font-size: clamp(24px,3.5vw,36px); line-height: 1.6; }
+    .closing p { margin-top: 18px; color: #c9ccd2; font-size: 14px; }
+    .editor-note { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); color: #888981; font-size: 11px; }
+    .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 31px; }
+    .link { min-height: 48px; display: inline-flex; align-items: center; justify-content: space-between; gap: 24px; padding: 13px 18px; border: 1px solid var(--ink); font-size: 12px; font-weight: 900; text-decoration: none; }
+    .link.primary { color: #fff; background: var(--ink); }
+    .footer { padding: 36px 0 50px; border-top: 1px solid var(--line); background: var(--white); }
+    .footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px; color: #85867f; font-size: 11px; }
+    .footer b { color: var(--ink); font-size: 13px; }
+
+    @media (max-width: 1040px) {
+      .hero-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+      h1 { font-size: 52px; }
+      .story-layout { grid-template-columns: 210px minmax(0,1fr); gap: 46px; }
+      .intro-grid { grid-template-columns: repeat(2,1fr); }
+      .intro-item:nth-child(3) { border-top: 1px solid #3d4148; }
+      .intro-item:nth-child(4) { border-top: 1px solid #3d4148; }
+    }
+    @media (max-width: 820px) {
+      .wrap { width: min(var(--container), calc(100% - 40px)); }
+      .hero { padding-top: 54px; }
+      .hero-grid { grid-template-columns: minmax(0,1fr); gap: 38px; }
+      h1 { font-size: clamp(42px,10vw,62px); }
+      .hero-figure { width: calc(100% + 40px); margin-left: -20px; }
+      .hero-tag { right: 8px; }
+      .hero-quote { left: 20px; }
+      .people-head { grid-template-columns: 1fr; gap: 12px; }
+      .people-grid { grid-template-columns: 1fr; }
+      .person + .person { border-left: 0; border-top: 1px solid var(--ink); }
+      .story { padding: 66px 0 90px; }
+      .story-layout { grid-template-columns: minmax(0,1fr); gap: 46px; }
+      .side { position: static; }
+      .toc { display: flex; max-width: 100%; overflow-x: auto; }
+      .toc > b { display: none; }
+      .toc a { flex: 0 0 200px; padding: 10px 12px; border-right: 1px solid var(--line); }
+      .date-card { max-width: 300px; }
+      .digest-list { grid-template-columns: 1fr; }
+      .digest-list li, .digest-list li:first-child { padding: 11px 0; border-left: 0; border-top: 1px solid var(--line); }
+      .digest-list li:first-child { border-top: 0; }
+      .flow { grid-template-columns: repeat(2,1fr); }
+      .flow-step { border-top: 1px solid var(--ink); }
+      .flow-step:nth-child(-n+2) { border-top: 0; }
+      .flow-step:nth-child(odd) { border-left: 0; }
+      .flow-step::after { display: none; }
+      .flow-step:last-child { grid-column: 1 / -1; }
+    }
+    @media (max-width: 560px) {
+      .wrap { width: min(var(--container), calc(100% - 32px)); }
+      .header .wrap { min-height: 56px; }
+      .brand { font-size: 12px; }
+      .back { font-size: 10px; }
+      .hero { padding-top: 44px; }
+      h1 { font-size: 40px; line-height: 1.4; }
+      .hero-lead { font-size: 16px; }
+      .hero-figure { width: calc(100% + 32px); margin-left: -16px; }
+      .hero-quote { position: relative; left: 16px; bottom: auto; width: calc(100% - 32px); margin-top: -32px; font-size: 17px; }
+      .intro-grid { grid-template-columns: 1fr; }
+      .intro-item { min-height: 0; padding: 19px 0; border-left: 0; border-top: 1px solid #3d4148; }
+      .intro-item:first-child { border-top: 0; }
+      .person { grid-template-columns: 70px 1fr; gap: 14px; padding: 22px 18px; }
+      .person-symbol { width: 62px; height: 62px; font-size: 22px; }
+      .person h3 { font-size: 21px; }
+      .digest { padding: 28px 23px; }
+      .chapter { padding-top: 70px; }
+      .chapter h2 { font-size: 29px; }
+      .speech { grid-template-columns: 54px minmax(0,1fr); gap: 13px; padding: 21px 0 23px; }
+      .speech-name { font-size: 10px; }
+      .speech-body { font-size: 14px; line-height: 2; }
+      .speech.shiraishi .speech-body { font-size: 16px; line-height: 1.85; }
+      .flow, .axis-grid, .sample-grid, .guard-grid, .status-grid { grid-template-columns: 1fr; }
+      .flow-step, .flow-step:nth-child(-n+2) { border-top: 1px solid var(--ink); border-left: 0; }
+      .flow-step:first-child { border-top: 0; }
+      .flow-step:last-child { grid-column: auto; }
+      .axis-board, .sample, .guard, .pilot, .status-note, .closing { padding: 26px 20px; }
+      .links { display: grid; }
+      .link { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">本文へ移動</a>
+  <header class="header">
+    <div class="wrap">
+      <a class="brand" href="../"><span class="brand-mark" aria-hidden="true"><span>W</span></span>株式会社ライトアップ</a>
+      <a class="back" href="../">SaaS資料一覧へ&nbsp; →</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">CONCEPT INTERVIEW ／ AI FACILITATOR</p>
+          <h1>新しいチームは、<br>最初の30日でもっと<br><em>話しやすくなる。</em></h1>
+          <p class="hero-lead">AIが全員へ一人ずつ話を聞き、違いを評価ではなく、協働のヒントに変える。白石と西村が考えた「AIファシリテーター」という新サービス構想。</p>
+          <div class="hero-meta">
+            <span><b>話し手</b>　白石崇・西村果林</span>
+            <span><b>テーマ</b>　AIファシリテーター構想</span>
+            <span><b>収録</b>　2026年9月11日</span>
+            <span><b>読了</b>　約16分</span>
+          </div>
+        </div>
+        <figure class="hero-figure">
+          <img src="assets/team-map-hero.webp" width="1536" height="1024" alt="二人の対話からチームメンバーのプロフィールと相関図が広がる様子を描いた編集イラスト" fetchpriority="high" decoding="async">
+          <figcaption class="hero-tag">CONCEPT TALK 01</figcaption>
+          <blockquote class="hero-quote">人を点数にするのではなく、話し合える言葉を増やす。</blockquote>
+          <p class="hero-image-note">AIで制作したコンセプトイラストです。実際の会議写真や人物の似顔絵ではありません。</p>
+        </figure>
+      </div>
+    </section>
+
+    <section class="intro-strip" aria-label="AIファシリテーターの4つの視点">
+      <div class="wrap intro-grid">
+        <div class="intro-item"><b>01 ／ WORK</b><strong>得意・苦手と、任せたい仕事を知る。</strong></div>
+        <div class="intro-item"><b>02 ／ OFF</b><strong>趣味や価値観から、素の人柄を知る。</strong></div>
+        <div class="intro-item"><b>03 ／ COLLABORATION</b><strong>相談・判断・フィードバックの癖を知る。</strong></div>
+        <div class="intro-item"><b>04 ／ AI FLUENCY</b><strong>AIを使える場面と、次に試す一歩を知る。</strong></div>
+      </div>
+    </section>
+
+    <section class="people" aria-labelledby="people-title">
+      <div class="wrap">
+        <div class="people-head">
+          <div><p class="module-label">THE CONVERSATION</p><h2 id="people-title">企画の原点は、<br>「新しいチームができたら」</h2></div>
+          <p>役割も経験も異なる人が集まった直後は、まだ互いの取り扱い方が分かりません。その空白を埋めるために、AIが全員の声を聞き、最初の対話を設計できないか。二人の会話は、そこから始まりました。</p>
+        </div>
+        <div class="people-grid">
+          <article class="person"><div class="person-symbol" aria-hidden="true">白</div><div><p class="card-label">IDEA OWNER</p><h3>白石 崇</h3><p>株式会社ライトアップ</p><p class="role">問い：AIは、新しいチームの関係づくりまで支援できるか。</p></div></article>
+          <article class="person"><div class="person-symbol" aria-hidden="true">西</div><div><p class="card-label">DISCUSSION PARTNER</p><h3>西村 果林</h3><p>株式会社ライトアップ</p><p class="role">視点：現場が答えやすく、次のヒアリングへつながる形にできるか。</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="story">
+      <div class="wrap story-layout">
+        <aside class="side">
+          <p class="module-label">ABOUT THIS TALK</p>
+          <h2 class="side-title">チームの違いを、仕事が始まる前に話せるようにする。</h2>
+          <p class="side-copy">短い会議ログをもとに、構想の背景、利用体験、レポート、運用条件、次の検証までを対話形式で編集・再構成しました。</p>
+          <nav class="toc" aria-label="目次">
+            <b>CONTENTS</b>
+            <a href="#why"><span>01</span>最初の30日</a>
+            <a href="#interview"><span>02</span>AIが全員に聞く</a>
+            <a href="#axes"><span>03</span>4つのレンズ</a>
+            <a href="#report"><span>04</span>レポートから対話へ</a>
+            <a href="#fortune"><span>05</span>占いも入口に</a>
+            <a href="#safety"><span>06</span>評価にしない</a>
+            <a href="#pilot"><span>07</span>次のヒアリング</a>
+          </nav>
+          <div class="date-card"><b>CONCEPT STAGE</b><span>Service idea<br>September 2026</span></div>
+        </aside>
+
+        <article class="article">
+          <section class="digest" aria-labelledby="digest-title">
+            <p class="module-label">STORY IN ONE MINUTE</p>
+            <h2 id="digest-title">全員に同じ質問をするのではなく、このチームだから必要な問いをAIがつくる。</h2>
+            <ul class="digest-list">
+              <li><b>01</b>登録したメンバー全員へ、AIが一対一でインタビュー。</li>
+              <li><b>02</b>仕事・人柄・協働・AI活用を、順位ではなく違いとして整理。</li>
+              <li><b>03</b>結果を読むだけで終わらせず、キックオフと30日後の対話へ。</li>
+            </ul>
+            <p class="attribution-note">※ 本記事は会議ログをもとに、読みやすさと企画検討のため編集・再構成したもので、逐語録ではありません。「AIファシリテーター」は構想段階の仮称です。提供時期、仕様、価格は未定です。</p>
+          </section>
+
+          <section class="chapter" id="why">
+            <header class="chapter-head"><p class="chapter-no">CHAPTER 01 ／ THE FIRST THIRTY DAYS</p><h2>新しいチームに足りないのは、能力より「説明書」かもしれない</h2></header>
+            <p class="chapter-intro">新しいプロジェクトが始まると、組織図と担当表はすぐにできます。しかし、「この人はいつ相談されると助かるか」「どんな説明なら判断しやすいか」は、仕事をしながら少しずつ知るしかありません。</p>
+            <div class="dialogue">
+              <div class="speech shiraishi"><span class="speech-name">白石</span><div class="speech-body"><p>たとえば社内で新しいチームができたとします。メンバーの名前をAIファシリテーターへ入れたら、AIが全員にインタビューする。そんなサービスはどうかなと思ったんです。</p></div></div>
+              <div class="speech nishimura"><span class="speech-name">西村</span><div class="speech-body"><p>チームができた直後に使うのが分かりやすいですね。普段の会議では、いきなり仕事の話から始まります。でも、新しく集まった人たちは、相手が何を知っていて、何が得意で、どこで困りやすいかをまだ知りません。</p><p>全員が一度ずつ話せる入口をAIがつくれば、声の大きい人だけでチームの説明が決まることも減らせます。最初から完璧に理解するのではなく、「これから聞いてみたいこと」が見えるだけでも、関係づくりは変わりそうです。</p></div></div>
+              <div class="speech shiraishi"><span class="speech-name">白石</span><div class="speech-body"><p>経歴や職歴だけではなくて、趣味とか、価値観みたいなものも聞きたい。仕事のオンと、少し素に戻るオフ、その両方を知っていた方が一緒に働きやすいですよね。</p></div></div>
+              <div class="speech nishimura"><span class="speech-name">西村</span><div class="speech-body"><p>はい。ただし、全部を同じ重さで集めるのではなく、本人が話してよい範囲を選べる必要があります。経歴は共有してよくても、価値観の回答は要点だけ、趣味はチームへ公開、といった具合です。</p><p>「何を知りたいか」より先に、「何なら安心して話せるか」を設計する。そこまで含めてファシリテーションだと思います。</p></div></div>
+              <div class="speech shiraishi"><span class="speech-name">白石</span><div class="speech-body"><p>AIが人を分析するサービスではなくて、互いに話しやすくなるための下準備なんですね。</p></div></div>
+              <div class="speech nishimura"><span class="speech-name">西村</span><div class="speech-body"><p>そうですね。レポートに「あなたはこういう人」と固定的に書くより、「こういう場面では力を出しやすいと本人は話しています」「ここはチームで確かめてみましょう」と返す。結論より、次の会話を増やす方がこのサービスらしいです。</p></div></div>
+            </div>
+            <blockquote class="pull">組織図の次に必要なのは、<em>一緒に働くための説明書。</em><small>会議ログをもとに編集・再構成</small></blockquote>
+          </section>
+
+          <section class="chapter" id="interview">
+            <header class="chapter-head"><p class="chapter-no">CHAPTER 02 ／ INTERVIEW EVERYONE</p><h2>質問票を配るのではなく、AIが会話を続ける</h2></header>
+            <p class="chapter-intro">同じ設問を並べたアンケートは比較しやすい一方、回答の背景がこぼれます。AIファシリテーター構想では、チームの目的と一人ひとりの答えに応じて、次の質問を変えていきます。</p>
+            <div class="dialogue">
+              <div class="speech shiraishi"><span class="speech-name">白石</span><div class="speech-body"><p>プロジェクトごとに、AIがヒアリング項目をつくるイメージです。営業の新チームと、開発の新チームでは、知っておくべきことが違いますから。</p></div></div>
+              <div class="speech nishimura"><span class="speech-name">西村</span><div class="speech-body"><p>最初にリーダーが、チームの目的、期間、メンバー、今回確かめたいテーマを入れる。その内容からAIが質問案をつくり、管理者がオン・オフを選ぶ形なら使いやすいです。</p><p>たとえば短期の提案チームなら「意思決定の速さ」「顧客対応の経験」「資料づくりでAIを使う場面」を厚くする。長期の開発チームなら「集中時間」「レビューの受け取り方」「不確実な状態での相談方法」を厚くする。質問の芯は共通でも、比重を変えられます。</p></div></div>
+              <div class="speech shiraishi"><span class="speech-name">白石</span><div class="speech-body"><p>回答する側は、面接されている感じにならない方がいいですよね。</p></div></div>
+              <div class="speech nishimura"><span class="speech-name">西村</span><div class="speech-body"><p>「正解を当てる」のではなく、「新しいメンバーへどう伝えるかを一緒に考える」会話にしたいです。最初は自己紹介から入り、最近うまくいった仕事、助けてもらって嬉しかったこと、苦手な場面へ少しずつ深めます。</p><p>AI活用についても、「使っていますか」の一問だけでは浅いです。毎日か週一回か、文章・調査・分析・自動化のどこで使うか、出力をどう確かめるか、チームへ共有できる再現性があるか。具体的なエピソードを聞くと、次の支援が見えます。</p></div></div>
+              <div class="speech shiraishi"><span class="speech-name">白石</span><div class="speech-body"><p>質問をオン・オフできるなら、占いや価値観の話を使いたくない会社でも、その部分だけ外せますね。</p></div></div>
+              <div class="speech nishimura"><span class="speech-name">西村</span><div class="speech-body"><p>はい。さらに本人側にも「答えない」「個人レポートだけに残す」「チームへ要約を出す」という選択が必要です。質問の自由度と、回答の公開範囲は別々に持たせるのがよいと思います。</p></div></div>
+            </div>
+            <div class="flow" aria-label="AIファシリテーターの利用ステップ">
+              <div class="flow-step"><b>01</b><strong>チーム登録</strong><p>目的・期間・メンバー・知りたいテーマを入力。</p></div>
+              <div class="flow-step"><b>02</b><strong>質問を設計</strong><p>AI案から管理者が項目をオン・オフ。</p></div>
+              <div class="flow-step"><b>03</b><strong>一人ずつ対話</strong><p>本人が公開範囲を選びながら回答。</p></div>
+              <div class="flow-step"><b>04</b><strong>チームを可視化</strong><p>共通点・違い・対話テーマを整理。</p></div>
+              <div class="flow-step"><b>05</b><strong>30日後に更新</strong><p>実際に働いた経験から内容を見直す。</p></div>
+            </div>
+          </section>
+
+          <section class="chapter" id="axes">
+            <header class="chapter-head"><p class="chapter-no">CHAPTER 03 ／ FOUR LENSES, NOT FOUR SCORES</p><h2>4軸で見る。でも、4つの点数にはしない</h2></header>
+            <p class="chapter-intro">「レベル感が分かる」と「人を序列化する」は違います。構想をサービスへ近づけるため、会話に出たオン・オフとAI活用度を、4つのレンズとして整理しました。</p>
+            <div class="dialogue">
+              <div class="speech shiraishi"><span class="speech-name">白石</span><div class="speech-body"><p>オン・オフの軸と、AI活用度の軸。全部で4軸くらいあると、チームの形が分かりやすい気がします。</p></div></div>
+              <div class="speech nishimura"><span class="speech-name">西村</span><div class="speech-body"><p>「強い・弱い」だけにすると、人事評価のように見えてしまいます。仕事の得意・苦手、素の関心、協働の癖、AI活用の現在地。この4つを、場面によって変わる情報として見せるのがよさそうです。</p><p>たとえばAIを毎日使っている人でも、調査は得意で自動化は未経験かもしれません。逆に利用頻度は少なくても、検証手順を丁寧に持っている人もいます。「AIレベル3」と一つに丸めず、誰が何を共有でき、誰にどんな支援があると進むかまで見たいです。</p></div></div>
+              <div class="speech shiraishi"><span class="speech-name">白石</span><div class="speech-body"><p>仕事のオンとオフも、対立する二択ではないですよね。</p></div></div>
+              <div class="speech nishimura"><span class="speech-name">西村</span><div class="speech-body"><p>はい。オンは、得意な役割、苦手な工程、集中しやすい条件、判断の仕方。オフは、趣味、関心、会話のきっかけ、大切にしていること。仕事だけでは見えない共通点が、相談のしやすさをつくることもあります。</p><p>ただしオフの情報は、とくに本人の選択を尊重します。共有したくないことまで「チームワークのため」と求めない。話したい人が話したい範囲で使うから、アイスブレイクとして機能します。</p></div></div>
+            </div>
+            <div class="axis-board">
+              <p class="module-label">THE FOUR LENSES</p>
+              <div class="axis-grid">
+                <article class="axis"><b>01 ／ WORK MODE</b><h3>仕事のオン</h3><p>得意な仕事、避けたい詰まり方、集中できる条件、任せてほしい役割。担当表には載りにくい実践知を扱います。</p></article>
+                <article class="axis"><b>02 ／ HUMAN SIDE</b><h3>仕事のオフ</h3><p>趣味、関心、最近夢中になっていること、価値観。本人が共有したい範囲だけを、会話の入口にします。</p></article>
+                <article class="axis"><b>03 ／ COLLABORATION</b><h3>協働スタイル</h3><p>相談のタイミング、情報量、意思決定、フィードバックの受け取り方。違いを衝突前に言葉へ変えます。</p></article>
+                <article class="axis"><b>04 ／ AI FLUENCY</b><h3>AI活用の現在地</h3><p>頻度ではなく用途・深さ・検証・共有可能性を見る。チーム内の教え合いと次の小さな実験につなげます。</p></article>
+              </div>
+              <p class="axis-note">※ 4軸は会議内容を具体化するための編集上の整理案です。性格診断や人事評価の確定仕様ではありません。</p>
+            </div>
+            <blockquote class="pull">人を比べるための軸ではなく、<em>助け合い方を見つけるレンズ。</em></blockquote>
+          </section>
+
+          <section class="chapter" id="report">
+            <header class="chapter-head"><p class="chapter-no">CHAPTER 04 ／ THE REPORT STARTS A CONVERSATION</p><h2>「こんな相関でした」で終わらず、次の会議を変える</h2></header>
+            <p class="chapter-intro">全員のインタビュー後、AIは共通点や違いを整理します。しかし、相関図がきれいに出るだけではチームワークは変わりません。必要なのは、誰が何を話せばよいかが分かるレポートです。</p>
+            <div class="dialogue">
+              <div class="speech shiraishi"><span class="speech-name">白石</span><div class="speech-body"><p>全員分が集まったら、「このチームはこんな相関でした」と出したい。自己紹介や、「この人とはこう関わるといいかも」というヒントもあると面白いですね。</p></div></div>
+              <div class="speech nishimura"><span class="speech-name">西村</span><div class="speech-body"><p>チーム全体の共通点と、補い合える違いを分けて見せたいです。たとえば「全員が考えてから話したい」なら、会議の議題を前日に共有する。「アイデアは多いが記録が苦手」なら、AI議事録を共通の習慣にする。可視化を、具体的な約束へ変えます。</p><p>一方で、誰か一人だけが回答した内容を「チームの傾向」として出すのは危険です。個人が特定される小さな集計は表示しない、本人が共有を選んだ内容だけ使う、AIの推測と本人の言葉を混ぜない、といったルールが必要です。</p></div></div>
+              <div class="speech shiraishi"><span class="speech-name">白石</span><div class="speech-body"><p>AI活用度も、レポートを読んだ次の日から役立てたいですね。</p></div></div>
+              <div class="speech nishimura"><span class="speech-name">西村</span><div class="speech-body"><p>「高い・低い」ではなく、チーム内で教え合える組み合わせを提案します。調査が得意な人と、資料化が得意な人。プロンプトは作れる人と、事実確認が丁寧な人。二人で一つの業務を試せるようにする。</p><p>30日後には、最初の回答と実際の仕事を照らし合わせます。「思っていた得意」と「一緒に働いて見えた得意」が違うこともある。その更新まで含めて、AIファシリテーターは一度きりの診断ではなく、チームの学習記録になります。</p></div></div>
+            </div>
+            <div class="sample">
+              <b>REPORT MOCKUP ／ EDITORIAL PROPOSAL</b>
+              <h3>チームレポートに返す4つのもの</h3>
+              <div class="sample-grid">
+                <div class="sample-card"><small>01 ／ INTRODUCTION</small><strong>本人が確認した自己紹介</strong><p>経歴、得意なこと、最近の関心、相談してほしいテーマ。</p></div>
+                <div class="sample-card"><small>02 ／ TEAM MAP</small><strong>共通点と補完関係</strong><p>誰が似ているかより、どの場面で力を組み合わせられるか。</p></div>
+                <div class="sample-card"><small>03 ／ WORKING AGREEMENT</small><strong>最初の約束を3つ</strong><p>議題共有、相談の時間、レビュー方法など、行動にできる約束。</p></div>
+                <div class="sample-card"><small>04 ／ AI EXPERIMENT</small><strong>次に試すAI活用</strong><p>一つの業務、一組のペア、一週間から始める小さな実験。</p></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="chapter" id="fortune">
+            <header class="chapter-head"><p class="chapter-no">CHAPTER 05 ／ PLAYFUL, OPTIONAL, NEVER DECISIVE</p><h2>四柱推命も使える。でも「当たっている人」にしない</h2></header>
+            <p class="chapter-intro">会話では、価値観9ブロックや四柱推命のような遊び心のある材料も挙がりました。重要なのは、科学的な適性判定として扱わず、本人が楽しめる会話の入口に限定することです。</p>
+            <div class="dialogue">
+              <div class="speech shiraishi"><span class="speech-name">白石</span><div class="speech-body"><p>それこそ、四柱推命の占い結果が入っていてもいいと思うんです。「このチームはこれ最高」みたいなレポートがあると、みんなで見たくなりますよね。</p></div></div>
+              <div class="speech nishimura"><span class="speech-name">西村</span><div class="speech-body"><p>固い診断だけではなく、会話が弾む要素としては面白いです。占いを信じるかどうかも含めて、その人らしさが出ますし、「意外と合っている」「ここは全然違う」と話すきっかけになります。</p><p>ただ、結果を役割分担や採用、人事評価の根拠にはしません。生年月日などの入力も任意で、使う目的を事前に伝える。表示するなら「エンターテインメントとしての参考情報」「本人とチームで確かめる問い」と明記するのが前提です。</p></div></div>
+              <div class="speech shiraishi"><span class="speech-name">白石</span><div class="speech-body"><p>価値観9ブロックも、ラベルを貼るより、九つの問いを持つような使い方がよさそうですね。</p></div></div>
+              <div class="speech nishimura"><span class="speech-name">西村</span><div class="speech-body"><p>そうですね。「成長」「安定」「貢献」「自由」などの言葉から、今大切にしたいものを本人が選ぶ。その結果を性格の確定ではなく、働き方を相談する素材にします。</p><p>遊び心は、安心があるときに初めて効きます。答えない自由があり、笑って違うと言える。そこを守れれば、形式的な自己紹介では出ない人柄が見えてきます。</p></div></div>
+            </div>
+            <blockquote class="pull">占いは答えではなく、<em>「どう思う？」を始めるカード。</em></blockquote>
+          </section>
+
+          <section class="chapter" id="safety">
+            <header class="chapter-head"><p class="chapter-no">CHAPTER 06 ／ TRUST BEFORE INSIGHT</p><h2>良い相関図より先に、安心して話せる境界をつくる</h2></header>
+            <p class="chapter-intro">経歴、価値観、苦手な仕事、AIの習熟度。チームに役立つ情報ほど、扱い方を誤ると本人を傷つけます。このサービスの品質は、質問の賢さだけでなく、同意と公開範囲の設計で決まります。</p>
+            <div class="dialogue">
+              <div class="speech shiraishi"><span class="speech-name">白石</span><div class="speech-body"><p>チームワークを良くするためのサービスが、逆に「苦手を会社へ提出する場」になったら意味がないですね。</p></div></div>
+              <div class="speech nishimura"><span class="speech-name">西村</span><div class="speech-body"><p>本人が最終プレビューを確認し、共有する内容を決める必要があります。AIの要約に違和感があれば直せる。個人レポートとチームレポートを分け、管理者だけが何でも見られる設計にはしない。</p><p>また、回答しなかったことを欠点として扱わないことも大切です。参加自体や質問ごとのスキップ、データの保存期間、削除方法を最初に示す。チームづくりのために使い、人事評価・査定・選抜へ転用しないという目的制限も明文化したいです。</p></div></div>
+              <div class="speech shiraishi"><span class="speech-name">白石</span><div class="speech-body"><p>AIが「この二人は相性が悪い」と断定するのも避けたい。</p></div></div>
+              <div class="speech nishimura"><span class="speech-name">西村</span><div class="speech-body"><p>断定ではなく、確認可能な言葉へ変えます。「Aさんは事前に考える時間を好み、Bさんは会話しながら考えると回答しています。会議前に論点を共有し、当日は口頭で広げる方法を試しませんか」という形です。</p><p>相関は真実ではなく仮説です。本人たちが読んで、違うと思ったら更新する。その余白があるほど、レポートは安全で実用的になります。</p></div></div>
+            </div>
+            <div class="guard">
+              <p class="module-label">DESIGN GUARDRAILS</p>
+              <h3>構想段階で外せない6つの境界</h3>
+              <div class="guard-grid">
+                <div class="guard-item"><b>回答は任意</b><p>質問単位でスキップでき、未回答をマイナス評価しない。</p></div>
+                <div class="guard-item"><b>共有前に本人確認</b><p>AI要約を本人が修正し、公開範囲を選んでから共有する。</p></div>
+                <div class="guard-item"><b>個人と集計を分離</b><p>小人数で個人が推定される集計は表示しない。</p></div>
+                <div class="guard-item"><b>推測を事実にしない</b><p>本人の回答、AIの整理、チームへの提案を明確に分ける。</p></div>
+                <div class="guard-item"><b>評価へ転用しない</b><p>採用、査定、配置の自動判断には利用しない。</p></div>
+                <div class="guard-item"><b>消せる・更新できる</b><p>保存期間、削除、再インタビューの手順を用意する。</p></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="chapter" id="pilot">
+            <header class="chapter-head"><p class="chapter-no">CHAPTER 07 ／ ASK THE NEXT PERSON</p><h2>最初につくるのは、完成版ではなく「聞けるデモ」</h2></header>
+            <p class="chapter-intro">会話の最後に名前が挙がったのは、リブ・コンサルティングの南東さん。構想を説明するだけでなく、実際に答えられる短い体験を見せれば、現場に必要な条件を聞きやすくなります。</p>
+            <div class="dialogue">
+              <div class="speech shiraishi"><span class="speech-name">白石</span><div class="speech-body"><p>これなら、リブ・コンサルティングの南東さんにも聞きやすいですよね。「こういうサービスを考えているんですが、新しいチームを立ち上げるときに使えそうですか」と。</p></div></div>
+              <div class="speech nishimura"><span class="speech-name">西村</span><div class="speech-body"><p>聞きやすいと思います。説明資料だけより、5分のミニインタビューを体験してもらい、最後にサンプルのチームレポートを見せる方が、具体的な意見をもらえます。</p><p>「どのタイミングなら使うか」「社員はどこまで答えられるか」「管理職が本当に欲しいアウトプットは何か」「使ってはいけない場面は何か」。導入意向を聞く前に、現場の境界を聞くのが次の一手です。</p></div></div>
+              <div class="speech shiraishi"><span class="speech-name">白石</span><div class="speech-body"><p>最初から大きなシステムをつくらず、チーム登録、インタビュー、4軸レポートの一本が動けば、話を始められる。</p></div></div>
+              <div class="speech nishimura"><span class="speech-name">西村</span><div class="speech-body"><p>はい。検証したいのは、質問の数ではありません。本人が「自分のことを適切に表している」と感じるか、チームで読んだ後に会話が増えるか、30日後に仕事の進め方が一つでも変わるか。その三つを確かめれば、次に何をつくるべきか見えます。</p></div></div>
+            </div>
+            <div class="pilot">
+              <b>FIRST VALIDATION ／ PROPOSAL</b>
+              <h3>最初のヒアリングで確かめる5点</h3>
+              <ol>
+                <li>新チームのどの時点なら、このインタビューを実施しやすいか。</li>
+                <li>仕事・人柄・協働・AI活用のうち、最も価値がある情報は何か。</li>
+                <li>本人、メンバー、リーダーで、見えてよい情報をどう分けるべきか。</li>
+                <li>チームレポートを、どの会議でどう使えば行動につながるか。</li>
+                <li>絶対に聞かないこと、表示しないこと、評価に使わないことは何か。</li>
+              </ol>
+            </div>
+            <blockquote class="pull">次に必要なのは、機能表ではなく、<em>一人目の率直な反応。</em></blockquote>
+          </section>
+
+          <aside class="status-note" aria-labelledby="status-title">
+            <p class="module-label">CURRENT STATUS ／ SEPTEMBER 2026</p>
+            <h2 id="status-title">この記事で確認できること、まだ決まっていないこと。</h2>
+            <div class="status-grid">
+              <div class="status-card"><small>CONFIRMED IDEA</small><strong>チーム全員へAIが聞く</strong><p>新チームを起点に、経歴・価値観・得意不得意・AI活用を整理する構想。</p></div>
+              <div class="status-card"><small>EDITORIAL PROPOSAL</small><strong>4レンズと運用境界</strong><p>会議内容を具体化するため、記事編集上の設計案として整理。</p></div>
+              <div class="status-card"><small>NOT DECIDED</small><strong>仕様・価格・提供時期</strong><p>名称を含めすべて検討中。外部ヒアリングを経て更新する段階。</p></div>
+            </div>
+          </aside>
+
+          <section class="closing" aria-label="まとめ">
+            <small>AFTER THE CONVERSATION</small>
+            <b>人を知るためにAIを使う。<br>でも、人を決めつけるためには使わない。</b>
+            <p>AIファシリテーターが目指すのは、きれいな人物診断ではありません。まだ言葉になっていない得意、助けてほしいこと、話しかけ方、AIの使い方を一度ずつ聞き、チームが自分たちで確かめられる形にすること。新しいチームの最初の30日を、少し話しやすく、少し学びやすくするための構想です。</p>
+          </section>
+
+          <p class="editor-note">※ 本記事は2026年9月11日に行われた白石崇と西村果林の会議ログをもとに、顧客向けのインタビュー記事として編集・再構成したものです。逐語録ではなく、会話で示された構想を、利用体験と検証条件が伝わるよう具体化しています。AIファシリテーターは構想段階の仮称であり、本文中の4軸、レポート項目、安全設計、検証手順は確定仕様ではなく編集上の提案を含みます。四柱推命などの占いはエンターテインメントとしての任意項目を想定し、適性判定、人事評価、採用、配置の根拠にしない前提です。掲載ビジュアルはAIで制作したコンセプトイラストで、実際の会議写真や人物の似顔絵ではありません。</p>
+          <div class="links"><a class="link primary" href="../"><span>SaaS資料一覧を見る</span><b>→</b></a></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap"><b>株式会社ライトアップ</b><span>AI FACILITATOR CONCEPT INTERVIEW ／ 2026</span></div>
+  </footer>
+</body>
+</html>
