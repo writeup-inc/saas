@@ -532,12 +532,59 @@
       color: var(--body);
       border: 1px solid var(--line);
     }
+    .svc-title-row {
+      display: grid;
+      grid-template-columns: 76px minmax(0, 1fr);
+      gap: 16px;
+      align-items: center;
+      margin: 0 0 14px;
+    }
+    .svc-illustration {
+      width: 76px;
+      height: 60px;
+      display: grid;
+      place-items: center;
+      color: var(--accent-svc);
+      background: #fff;
+      border: 1px solid currentColor;
+    }
+    .svc-illustration svg {
+      width: 62px;
+      height: 46px;
+      overflow: visible;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .svc-title-copy { min-width: 0; }
+    .svc-title-line {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
     .svc h3 {
-      margin: 0 0 10px;
+      margin: 0;
       font-size: clamp(21px, 2.3vw, 27px);
       font-weight: 700;
       line-height: 1.38;
       letter-spacing: -.005em;
+    }
+    .svc-availability {
+      flex: none;
+      display: inline-flex;
+      align-items: center;
+      min-height: 27px;
+      padding: 4px 8px;
+      color: var(--accent-svc);
+      border: 1px solid currentColor;
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      line-height: 1;
+      white-space: nowrap;
     }
     .svc .catch {
       margin: 0 0 18px;
@@ -962,6 +1009,10 @@
       .brand { font-size: 10px; gap: 8px; }
       .brand span:last-child { white-space: nowrap; }
       .bar-cta { padding: 10px 14px; font-size: 12px; }
+      .svc-title-row { grid-template-columns: 64px minmax(0, 1fr); gap: 12px; }
+      .svc-illustration { width: 64px; height: 54px; }
+      .svc-illustration svg { width: 54px; height: 40px; }
+      .svc-availability { padding-inline: 7px; font-size: 10px; }
     }
 
     @media (max-width: 359px) {
@@ -979,6 +1030,33 @@
   </style>
 </head>
 <body>
+  <svg class="visually-hidden" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="svc-super-manager" viewBox="0 0 96 64">
+        <path d="M10 18h37a6 6 0 0 1 6 6v13a6 6 0 0 1-6 6H27l-10 8v-8h-1a6 6 0 0 1-6-6V24a6 6 0 0 1 6-6Z"/>
+        <path d="M22 29h20M22 36h13"/>
+        <path d="M62 14h18a6 6 0 0 1 6 6v12a6 6 0 0 1-6 6h-4v7l-8-7h-6a6 6 0 0 1-6-6V20a6 6 0 0 1 6-6Z"/>
+        <path d="m72 20 2 4 4 2-4 2-2 4-2-4-4-2 4-2 2-4Z"/>
+      </symbol>
+      <symbol id="svc-elliot" viewBox="0 0 96 64">
+        <path d="M18 13h34a5 5 0 0 1 5 5v33H18zM28 24h19M28 31h19M28 38h12"/>
+        <path d="M70 13a12 12 0 1 0 11 15A12 12 0 0 1 70 13Z"/>
+        <path d="m72 40 2 4 4 2-4 2-2 4-2-4-4-2 4-2 2-4Z"/>
+      </symbol>
+      <symbol id="svc-worklog" viewBox="0 0 96 64">
+        <rect x="10" y="12" width="52" height="35" rx="4"/>
+        <path d="M18 38h9l7-9 7 5 11-14M31 55h12M37 47v8"/>
+        <circle cx="76" cy="40" r="12"/>
+        <path d="M76 33v8l5 4"/>
+      </symbol>
+      <symbol id="svc-jmatch" viewBox="0 0 96 64">
+        <rect x="11" y="19" width="45" height="31" rx="4"/>
+        <path d="m13 22 20 16 21-16M13 47l14-13M55 47 41 34"/>
+        <circle cx="75" cy="18" r="5"/><circle cx="82" cy="43" r="5"/><circle cx="66" cy="51" r="5"/>
+        <path d="m71 21 7 18M78 42l-8 7M58 35l13-14"/>
+      </symbol>
+    </defs>
+  </svg>
   <header class="bar">
     <div class="wrap bar-inner">
       <a class="brand" href="../">
@@ -1128,7 +1206,10 @@
               <span class="svc-no">SERVICE 01</span>
               <span class="svc-tag">商談・営業</span>
             </div>
-            <h3>スーパーマネージャー</h3>
+            <div class="svc-title-row">
+              <div class="svc-illustration"><svg aria-hidden="true" focusable="false"><use href="#svc-super-manager"></use></svg></div>
+              <div class="svc-title-copy"><div class="svc-title-line"><h3>スーパーマネージャー</h3><span class="svc-availability">募集中</span></div></div>
+            </div>
             <p class="catch">心配性の営業部長が、商談の前日から終わった5分後まで起きています。</p>
             <p class="desc">
               オンライン商談に同席するAIです。前日にはお客様へ「明日の商談の予告編」を送って聞きたいことを先にうかがい、商談中はいま出すべき事例や切り返しをその場で耳打ちします。15分ごとに認識のズレを止め、終わって5分後には次の一手を用意します。エース営業が商談の場でやっている判断を、AIにして全員に配るサービスです。
@@ -1157,7 +1238,10 @@
               <span class="svc-no">SERVICE 02</span>
               <span class="svc-tag">社内情報・経営</span>
             </div>
-            <h3>Elliot（エリオット）</h3>
+            <div class="svc-title-row">
+              <div class="svc-illustration"><svg aria-hidden="true" focusable="false"><use href="#svc-elliot"></use></svg></div>
+              <div class="svc-title-copy"><div class="svc-title-line"><h3>Elliot（エリオット）</h3><span class="svc-availability">募集中</span></div></div>
+            </div>
             <p class="catch">みんなが眠っているあいだに、社内のログを全部読んでおくコビトAIです。</p>
             <p class="desc">
               打ち合わせの議事録、電話の会話ログ、日報、チャット。書式がばらばらでも、すでにGoogleドライブに置かれているものをそのまま読みます。夜0時に集めて読み、朝7時には「今日、朝いちでメンバーに何と声をかけるか」まで書いた1通が届きます。月末には経営レポートが1本まとまります。社内に新しく何かを書き足していただく必要はありません。
@@ -1186,7 +1270,10 @@
               <span class="svc-no">SERVICE 03</span>
               <span class="svc-tag">業務可視化・AI化</span>
             </div>
-            <h3>ワークログ・インサイト</h3>
+            <div class="svc-title-row">
+              <div class="svc-illustration"><svg aria-hidden="true" focusable="false"><use href="#svc-worklog"></use></svg></div>
+              <div class="svc-title-copy"><div class="svc-title-line"><h3>ワークログ・インサイト</h3><span class="svc-availability">残り50台</span></div></div>
+            </div>
             <p class="catch">勘ではなく事実で、AI化する場所を決められます。</p>
             <p class="desc">
               1分に1回だけパソコンの画面を記録し、その時間が何の仕事だったかをAIが判定します。探すのはサボっている人ではありません。どの仕事に何時間かかっていて、そのうちどれをAIに任せられるのか。削減できる時間と実装のしやすさで優先順位をつけて出します。社員のみなさんに新しい入力作業は発生しません。生の記録画像は管理画面に表示せず、集計された結果をお見せします。
@@ -1215,7 +1302,10 @@
               <span class="svc-no">SERVICE 04</span>
               <span class="svc-tag">顧客フォロー・集客</span>
             </div>
-            <h3>Jマッチ・エンジン</h3>
+            <div class="svc-title-row">
+              <div class="svc-illustration"><svg aria-hidden="true" focusable="false"><use href="#svc-jmatch"></use></svg></div>
+              <div class="svc-title-copy"><div class="svc-title-line"><h3>Jマッチ・エンジン</h3><span class="svc-availability">残り10社</span></div></div>
+            </div>
             <p class="catch">御社の名前で、「使える補助金・制度」が毎週お客様に届きます。</p>
             <p class="desc">
               眠っている名刺のリストに、補助金・融資・税制優遇の情報を毎週お届けするサービスです。差出人は御社です。国や自治体の公募を毎日見にいくのも、文面を書くのも、送るのもこちらでやります。同じメールの中で、その制度で買えるものとして御社の商材が並びます。獲得したお客様は、御社のお客様です。
