@@ -104,6 +104,16 @@
       .opening-fig img, .opening-fig svg { width: 108px; }
     }
 
+    .role { margin: 0 0 10px; font-size: 13.5px; font-weight: 700; color: var(--lime); letter-spacing: .04em; }
+
+    /* プロフィール */
+    .profile { margin-top: 40px; border: 1px solid rgba(255, 255, 255, .2); border-left: 3px solid var(--lime); background: var(--navy-2); padding: 26px 30px; }
+    .profile-meta { display: grid; grid-template-columns: 92px 1fr; gap: 16px; margin: 0 0 18px; padding-bottom: 18px; border-bottom: 1px solid rgba(255, 255, 255, .16); }
+    .profile-meta dt { font-family: var(--num); font-size: 12px; font-weight: 700; letter-spacing: .16em; color: var(--lime); padding-top: 4px; }
+    .profile-meta dd { margin: 0; font-size: 15.5px; font-weight: 700; }
+    .profile-body { margin: 0; color: #b9c6d9; font-size: 14.5px; }
+    @media (max-width: 560px) { .profile-meta { grid-template-columns: 1fr; gap: 4px; } }
+
     /* offer */
     .offer { padding: 0 0 62px; }
     .offer-card { background: var(--navy); color: var(--white); padding: 36px 34px 32px; box-shadow: var(--shadow); }
@@ -392,13 +402,23 @@
     <div class="shell opening-grid">
       <div>
         <span class="kicker">先着10社・1年間0円</span>
-        <h1>はじめまして、<br>スーパーマネージャーです。</h1>
-        <p>わたしの仕事は、営業マン一人に、上司を一人つけることです。オンラインの商談に同席して、いま出すべき事例を耳打ちし、値引きの場面では黙らず、話がずれたら途中で止めます。</p>
-        <p>少し心配性です。商談の前の日から、終わった5分後まで起きています。準備はできているか、認識はずれていないか、次の一手は打てたか。ずっと気にしています。</p>
+        <p class="role">あなたの商談に同席する、ベテラン営業マネージャー</p>
+        <h1>どうも、<br>スーパーマネージャーです。</h1>
+        <p>「商談後に振り返るんじゃ遅い、商談中に動けるAIが居る」その想いで、あなたの全商談にこっそり同席しています。事例・数字・値引き防衛・時間管理・要件整理まで、今この瞬間にもっと耳打ちします。</p>
       </div>
       <figure class="opening-fig">
         <img src="assets/super-manager.png" alt="スーパーマネージャーのアイコン" width="192" height="192">
       </figure>
+    </div>
+
+    <div class="shell">
+      <div class="profile">
+        <dl class="profile-meta">
+          <dt>前職</dt>
+          <dd>営業マネージャー（プレイヤー時代は3年連続で全社10位）</dd>
+        </dl>
+        <p class="profile-body">営業畑ひと筋。プレイヤー時代は3年連続で全社10位という、派手ではないけれど落とさない堅実な成績でした。マネージャーになってからが本領発揮で、部下の商談が気になって気になって、気づいたら全員分のロープレに付き合い、商談には勝手に同席し、終わったあとのフォローメールまで下書きしてしまう。「部長、過保護です」とよく怒られました。…でも、それで受注が増えるならいいじゃないですか、ねえ？</p>
+      </div>
     </div>
   </section>
 
@@ -423,7 +443,7 @@
   <div class="shell">
     <section class="section" aria-labelledby="video-title">
       <p class="section-kicker">MOVIE</p>
-      <h2 class="section-title" id="video-title">まずは、わたしの自己紹介をさせてください。</h2>
+      <h2 class="section-title" id="video-title">動画でも、自己紹介させてください。</h2>
       <p class="section-copy">4つの基本機能のご紹介と、「心配性の営業部長」がどう生まれたかの開発秘話インタビューです。</p>
       <div class="video-frame">
         <div class="video-ratio">
