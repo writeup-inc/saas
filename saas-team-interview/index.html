@@ -123,14 +123,22 @@
     .chapter { padding-top: 84px; }
     .chapter-head { padding-bottom: 25px; border-bottom: 2px solid var(--ink); }
     .chapter h2 { margin-top: 10px; font-family: var(--serif); font-size: clamp(28px,3.8vw,43px); line-height: 1.5; letter-spacing: -.035em; }
-    .chapter-intro { margin-top: 28px; font-size: 17px; line-height: 2.08; }
-    .question { display: grid; grid-template-columns: 54px 1fr; gap: 16px; align-items: start; margin-top: 34px; }
-    .question b { display: grid; place-items: center; width: 54px; height: 34px; color: #fff; background: var(--red); font: 900 12px/1 var(--en); }
-    .question p { font-family: var(--serif); font-size: 18px; font-weight: 900; line-height: 1.8; }
-    .answer { margin: 20px 0 0 38px; padding: 27px 29px; border-left: 3px solid var(--ink); background: var(--paper); }
-    .answer-label { display: block; margin-bottom: 10px; color: var(--red); font-size: 11px; font-weight: 900; letter-spacing: .08em; }
-    .answer p { line-height: 2.05; }
-    .answer p + p { margin-top: 14px; }
+    .chapter-intro { margin-top: 28px; color: var(--muted); font-size: 14px; line-height: 1.95; }
+    .dialogue { display: grid; gap: 18px; margin-top: 34px; }
+    .speech { display: grid; grid-template-columns: 62px minmax(0,1fr); gap: 16px; align-items: start; }
+    .speech-name { padding-top: 14px; color: var(--muted); font-size: 11px; font-weight: 900; line-height: 1.5; text-align: center; }
+    .speech-name::before { content: ""; display: block; width: 34px; height: 3px; margin: 0 auto 8px; background: var(--ink); }
+    .speech-body { padding: 20px 23px; border: 1px solid var(--ink); background: var(--white); font-size: 16px; line-height: 2; }
+    .speech.interviewer .speech-body { margin-right: 76px; color: #fff; background: var(--ink); }
+    .speech.interviewer .speech-name::before { background: var(--blue); }
+    .speech.team .speech-body { margin-left: 46px; border-left: 4px solid var(--red); background: var(--paper); }
+    .speech.team .speech-name { color: var(--red); }
+    .speech.team .speech-name::before { background: var(--red); }
+    .speech-body p + p { margin-top: 12px; }
+    .story-photo { margin: 34px 0 38px; }
+    .story-photo img { width: 100%; aspect-ratio: 3/2; object-fit: cover; border: 1px solid var(--ink); }
+    .story-photo figcaption { display: flex; justify-content: space-between; gap: 18px; padding: 10px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 10px; line-height: 1.6; }
+    .story-photo figcaption b { color: var(--ink); font: 900 10px/1.6 var(--en); letter-spacing: .12em; white-space: nowrap; }
     .pull { margin: 38px 0; padding: 31px 0; border-top: 3px solid var(--ink); border-bottom: 1px solid var(--ink); font-family: var(--serif); font-size: clamp(24px,3.5vw,38px); font-weight: 900; line-height: 1.65; }
     .pull em { color: var(--red); font-style: normal; }
     .pull small { display: block; margin-top: 12px; color: var(--muted); font: 700 10px/1.6 var(--jp); }
@@ -217,6 +225,8 @@
       .flow-step:nth-child(2)::after { display: none; }
       .metric-grid { grid-template-columns: 1fr 1fr; }
       .metric:nth-child(3) { padding-left: 0; border-left: 0; }
+      .speech.interviewer .speech-body { margin-right: 34px; }
+      .speech.team .speech-body { margin-left: 24px; }
     }
     @media (max-width: 560px) {
       .wrap { width: min(var(--container), calc(100% - 32px)); }
@@ -241,11 +251,12 @@
       .digest { padding: 28px 23px; }
       .chapter { padding-top: 70px; }
       .chapter h2 { font-size: 29px; }
-      .question { grid-template-columns: 43px 1fr; gap: 11px; }
-      .question b { width: 43px; }
-      .question p { font-size: 16px; }
-      .answer { margin-left: 0; padding: 23px 20px; }
-      .answer p { font-size: 15px; }
+      .speech { grid-template-columns: 48px minmax(0,1fr); gap: 10px; }
+      .speech-name { font-size: 10px; }
+      .speech-body { padding: 17px 18px; font-size: 14px; }
+      .speech.interviewer .speech-body, .speech.team .speech-body { margin-inline: 0; }
+      .story-photo { width: calc(100% + 32px); margin-left: -16px; }
+      .story-photo figcaption { padding-inline: 16px; }
       .flow { grid-template-columns: 1fr; }
       .flow-step + .flow-step { border-left: 0; border-top: 1px solid var(--ink); }
       .flow-step:not(:last-child)::after { content: "↓"; left: 18px; right: auto; top: auto; bottom: -10px; width: 20px; }
@@ -286,7 +297,7 @@
             <span><b>話し手</b>　西村果林・木場瑛穂・小松咲</span>
             <span><b>聞き手</b>　白石崇</span>
             <span><b>収録</b>　2026年9月11日</span>
-            <span><b>読了</b>　約6分</span>
+            <span><b>読了</b>　約7分</span>
           </div>
         </div>
         <figure class="hero-figure">
@@ -360,9 +371,21 @@
 
           <section class="chapter" id="priority">
             <header class="chapter-head"><p class="chapter-no">CHAPTER 01 ／ ONE PRIORITY</p><h2>最優先を決めると、会議の言葉が変わる</h2></header>
-            <p class="chapter-intro">定例会議の冒頭で最初に確認されたのは、Jマッチエンジンを最優先に進めることでした。開発だけ、営業だけの優先順位ではありません。誰に、どう届け、どこまで反応を増やすかを、チーム全体のテーマとして置きます。</p>
-            <div class="question"><b>Q.01</b><p>なぜ、最初に優先順位を決めるのでしょう？</p></div>
-            <div class="answer"><span class="answer-label">SaaSチーム</span><p>良いアイデアは、いつも一つではありません。Elliotのモニター募集、ハウスリストの改善、新しいサービス案。全部を同じ強さで進めると、どれも顧客へ届く前に薄くなってしまいます。</p><p>だからこそ、まず一つを「今週いちばん動かすもの」として決める。そのうえで、ほかの改善も止めずに順番をつくります。</p></div>
+            <p class="chapter-intro">定例の冒頭、話はすぐに「いま最優先で動かすもの」へ向かいました。</p>
+            <div class="dialogue" aria-label="Jマッチエンジンの優先順位についての対話">
+              <div class="speech interviewer"><span class="speech-name">白石</span><div class="speech-body"><p>今日は、どこから始めましょうか。</p></div></div>
+              <div class="speech team"><span class="speech-name">SaaS<br>チーム</span><div class="speech-body"><p>まずはJマッチエンジンです。ここを最優先にします。営業も「今月だけでも100件取る」くらいの気持ちで動くので、打ち合わせもここから始めた方がいいと思います。</p></div></div>
+              <div class="speech interviewer"><span class="speech-name">白石</span><div class="speech-body"><p>モニター募集やハウスリストの改善もあります。全部、大事ですよね。</p></div></div>
+              <div class="speech team"><span class="speech-name">SaaS<br>チーム</span><div class="speech-body"><p>はい。ただ、同じ強さで全部を進めると、どれも顧客へ届く前に薄くなってしまいます。まず一つを「今週いちばん動かすもの」と決めて、ほかは止めずに順番をつくります。</p></div></div>
+            </div>
+            <figure class="story-photo">
+              <img src="assets/priority-meeting.webp" alt="付箋を囲み、優先順位を話し合う西村・木場・小松の生成ビジュアル" width="1536" height="1024" loading="lazy" decoding="async">
+              <figcaption><b>SCENE 01 ／ PRIORITY</b><span>本人写真を参照した生成ビジュアルです。実際の会議写真ではありません。</span></figcaption>
+            </figure>
+            <div class="dialogue">
+              <div class="speech interviewer"><span class="speech-name">白石</span><div class="speech-body"><p>開発の定例なのに、営業の話が最初に出るのが印象的です。</p></div></div>
+              <div class="speech team"><span class="speech-name">SaaS<br>チーム</span><div class="speech-body"><p>つくって終わりではなく、届いて、使われるところまでが開発だと考えています。営業で聞いた反応が、次のページや機能を決める材料になります。</p></div></div>
+            </div>
             <blockquote class="pull">今月、<em>本気で届ける一つ</em>を決める。<small>会議で確認された方針を、外部向けに編集</small></blockquote>
             <div class="flow" aria-label="SaaS開発の4段階の循環">
               <div class="flow-step"><b>01</b><strong>決める</strong><p>最優先のプロダクトと、届けたい相手をそろえる。</p></div>
@@ -374,9 +397,23 @@
 
           <section class="chapter" id="experience">
             <header class="chapter-head"><p class="chapter-no">CHAPTER 02 ／ TWO READERS</p><h2>社長は上から。担当者は、その続きを読む</h2></header>
-            <p class="chapter-intro">Elliotのモニター募集ページでは、情報量をただ減らすのではなく、読む人を二つに分けるという答えが出ました。最初に判断する経営者と、導入を進める現場担当者です。</p>
-            <div class="question"><b>Q.02</b><p>一枚のページで、二人の読者にどう応えるのですか？</p></div>
-            <div class="answer"><span class="answer-label">SaaSチーム</span><p>ページの上半分は、経営者が見出しを追うだけで「何ができるか」「なぜ試すのか」を判断できるようにする。数字や条件は大きく、意味がひと目で分かるようにします。</p><p>下半分は、担当者へ転送されたあとに役立つ場所です。機能一覧、導入手順、必要なもの、社内への伝え方までを順番に置き、そのまま導入マニュアルとしても使えるようにします。</p></div>
+            <p class="chapter-intro">次の議題は、Elliotのモニター募集ページ。最初の感想から、ページの役割そのものへ話が深まっていきます。</p>
+            <div class="dialogue" aria-label="Elliotのページ設計についての対話">
+              <div class="speech interviewer"><span class="speech-name">白石</span><div class="speech-body"><p>いいですね。まず、数字をもっと大きくしたいです。「1年間」「0円」のような大事な条件が、ぱっと目に入るように。</p></div></div>
+              <div class="speech team"><span class="speech-name">SaaS<br>チーム</span><div class="speech-body"><p>はい。GoogleのWebフォントも入れて、デフォルト感をなくします。アップするときの抜け漏れも、制作ルールとして残しておきます。</p></div></div>
+              <div class="speech interviewer"><span class="speech-name">白石</span><div class="speech-body"><p>下がかなり長くなっていますね。もっと短くした方がいいでしょうか。</p></div></div>
+              <div class="speech team"><span class="speech-name">SaaS<br>チーム</span><div class="speech-body"><p>文字が多いこと自体が問題ではないと思います。最初に見る経営者は、見出しだけで「いいね、やろう」と判断できる。担当者へ転送されたら、その人は下まで順番に読む。二つの読み方を一枚の中につくります。</p></div></div>
+            </div>
+            <figure class="story-photo">
+              <img src="assets/page-review.webp" alt="画面を指しながらランディングページを確認する西村・木場・小松の生成ビジュアル" width="1536" height="1024" loading="lazy" decoding="async">
+              <figcaption><b>SCENE 02 ／ PAGE REVIEW</b><span>本人写真を参照した生成ビジュアルです。実際の会議写真ではありません。</span></figcaption>
+            </figure>
+            <div class="dialogue">
+              <div class="speech interviewer"><span class="speech-name">白石</span><div class="speech-body"><p>担当者向けの下半分には、何が必要ですか。</p></div></div>
+              <div class="speech team"><span class="speech-name">SaaS<br>チーム</span><div class="speech-body"><p>機能一覧、導入に必要なもの、導入手順。それから「社内にはこう伝えると喜ばれます」という案内です。そのまま担当者向けの導入マニュアルとして使えるところまで持っていきたいです。</p></div></div>
+              <div class="speech interviewer"><span class="speech-name">白石</span><div class="speech-body"><p>なるほど。削るより、読む順番を設計するんですね。</p></div></div>
+              <div class="speech team"><span class="speech-name">SaaS<br>チーム</span><div class="speech-body"><p>はい。上半分で経営者の意思決定を助けて、下半分で担当者の実務を助ける。一枚のページに、二つの役割を持たせます。</p></div></div>
+            </div>
             <div class="two-layer" aria-label="経営者向けと担当者向けの情報設計">
               <div class="layer"><small>TOP ／ FOR EXECUTIVES</small><h3>まず、やるかを決める</h3><ul><li>何が変わるのか</li><li>大切な数字と条件</li><li>次の一歩</li></ul></div>
               <div class="layer"><small>BOTTOM ／ FOR OPERATORS</small><h3>次に、導入を進める</h3><ul><li>機能とできること</li><li>必要な準備と手順</li><li>社内への案内方法</li></ul></div>
@@ -386,9 +423,23 @@
 
           <section class="chapter" id="feedback">
             <header class="chapter-head"><p class="chapter-no">CHAPTER 03 ／ MEASURE THE NEXT MOVE</p><h2>クリックは、数字ではなく次の質問になる</h2></header>
-            <p class="chapter-intro">ハウスリスト配信では、配信数やクリック率が見えるようになりました。ただ、チームが本当に知りたいのは「何通目で反応が起きたか」「その反応は応募につながったか」です。</p>
-            <div class="question"><b>Q.03</b><p>反応を、どうすれば開発に使える情報へ変えられますか？</p></div>
-            <div class="answer"><span class="answer-label">SaaSチーム</span><p>日付とステップ番号を残します。最初の1通で反応する人もいれば、継続して届けた先で初めて動く人もいます。12通目や32通目で反応したなら、それも大切な価値です。</p><p>一日ごとの配信数、クリックした人数、応募した人数まで並べれば、件名だけではなく、届ける順番や間隔まで見直せます。</p></div>
+            <p class="chapter-intro">ハウスリストの管理画面を見ながら、チームは「数字が見える」の一歩先を話し始めました。</p>
+            <div class="dialogue" aria-label="ハウスリストの反応分析についての対話">
+              <div class="speech interviewer"><span class="speech-name">白石</span><div class="speech-body"><p>クリック数とクリック率が見えるようになったんですね。いいじゃないですか。</p></div></div>
+              <div class="speech team"><span class="speech-name">SaaS<br>チーム</span><div class="speech-body"><p>はい。ただ、日付がまだ入っていません。何通目の原稿で反応したのかも、すぐ分かるようにしたいです。</p></div></div>
+              <div class="speech interviewer"><span class="speech-name">白石</span><div class="speech-body"><p>なぜ「何通目か」が大事なんでしょう。</p></div></div>
+              <div class="speech team"><span class="speech-name">SaaS<br>チーム</span><div class="speech-body"><p>最初の1通で動く人ばかりではないからです。12通目や32通目で、ようやく反応が出るかもしれない。それなら、継続して届けたこと自体に価値があります。</p></div></div>
+            </div>
+            <figure class="story-photo">
+              <img src="assets/feedback-review.webp" alt="配信データを囲んで改善点を話す西村・木場・小松の生成ビジュアル" width="1536" height="1024" loading="lazy" decoding="async">
+              <figcaption><b>SCENE 03 ／ FEEDBACK</b><span>本人写真を参照した生成ビジュアルです。実際の会議写真ではありません。</span></figcaption>
+            </figure>
+            <div class="dialogue">
+              <div class="speech interviewer"><span class="speech-name">白石</span><div class="speech-body"><p>クリックが分かれば、それで十分ですか。</p></div></div>
+              <div class="speech team"><span class="speech-name">SaaS<br>チーム</span><div class="speech-body"><p>もう一段ほしいです。一日で何通送り、何人がクリックし、何人が応募したのか。そこまで並ぶと、件名だけでなく、送る順番や間隔まで見直せます。</p></div></div>
+              <div class="speech interviewer"><span class="speech-name">白石</span><div class="speech-body"><p>毎週、AIにその結果を読ませることもできますね。</p></div></div>
+              <div class="speech team"><span class="speech-name">SaaS<br>チーム</span><div class="speech-body"><p>できます。日々の配信結果を残して、毎週の分析へつなぐ。反応を集めるだけでなく、次に何を変えるかまで分かる状態にします。</p></div></div>
+            </div>
             <div class="metric-board" aria-label="日次で確認する4つの指標">
               <p class="module-label">DAILY FEEDBACK BOARD</p>
               <div class="metric-grid">
@@ -403,9 +454,23 @@
 
           <section class="chapter" id="knowledge">
             <header class="chapter-head"><p class="chapter-no">CHAPTER 04 ／ QUARTERLY KNOWLEDGE</p><h2>散らばった情報を、3か月ごとに編み直す</h2></header>
-            <p class="chapter-intro">SaaSが増えるほど、説明ページ、動画、Slackの会話、Google Driveの資料も増えていきます。必要な情報があるのに、見つけるまで時間がかかる。そこで出た案が、四半期ごとの「最新情報だけを集め直す」運用です。</p>
-            <div class="question"><b>Q.04</b><p>情報を一か所へ集めれば、問題は解決しますか？</p></div>
-            <div class="answer"><span class="answer-label">SaaSチーム</span><p>一度まとめても、プロダクトが変われば古くなります。だから毎月ではなく、3か月ごとに最新情報を選び直す。AIにSlackやDriveを探させ、製品ごとのフォルダへ、今使う説明・動画・手順だけを置くイメージです。</p><p>入口はSaaSのポータルにまとめる。必要な製品を選ぶと、その四半期の正しい情報へ進めるようにします。</p></div>
+            <p class="chapter-intro">導入方法を説明しようとしたとき、「必要な情報はあるのに、探しづらい」という実感が共有されました。</p>
+            <div class="dialogue" aria-label="SaaS情報の整理についての対話">
+              <div class="speech interviewer"><span class="speech-name">白石</span><div class="speech-body"><p>説明動画を撮ろうとすると、導入ページや資料がいくつかに分かれていて、探しづらいことがあります。</p></div></div>
+              <div class="speech team"><span class="speech-name">SaaS<br>チーム</span><div class="speech-body"><p>SlackにもDriveにも、必要な情報はあります。AIに徹底的に探してもらえば、今ある材料から一つの説明をつくれます。ただ、元の情報が散らばったままだと、毎回探す時間がかかります。</p></div></div>
+              <div class="speech interviewer"><span class="speech-name">白石</span><div class="speech-body"><p>それなら、一度全部まとめてしまえばいいですか。</p></div></div>
+              <div class="speech team"><span class="speech-name">SaaS<br>チーム</span><div class="speech-body"><p>一度まとめても、プロダクトが変わればまた古くなります。月次では忙しすぎるので、四半期ごとに最新情報を選び直すのがよさそうです。</p></div></div>
+            </div>
+            <figure class="story-photo">
+              <img src="assets/knowledge-review.webp" alt="資料を四半期ごとに整理する西村・木場・小松の生成ビジュアル" width="1536" height="1024" loading="lazy" decoding="async">
+              <figcaption><b>SCENE 04 ／ KNOWLEDGE</b><span>本人写真を参照した生成ビジュアルです。実際の会議写真ではありません。</span></figcaption>
+            </figure>
+            <div class="dialogue">
+              <div class="speech interviewer"><span class="speech-name">白石</span><div class="speech-body"><p>四半期のフォルダには、何を置きますか。</p></div></div>
+              <div class="speech team"><span class="speech-name">SaaS<br>チーム</span><div class="speech-body"><p>製品ごとに分けて、いま使う説明、動画、導入手順だけを置きます。入口はSaaSのポータルにまとめて、クリックすれば最新のフォルダへ進めるようにします。</p></div></div>
+              <div class="speech interviewer"><span class="speech-name">白石</span><div class="speech-body"><p>AIが全部決める運用ですか。</p></div></div>
+              <div class="speech team"><span class="speech-name">SaaS<br>チーム</span><div class="speech-body"><p>AIは探して、候補を集めるところまでです。どれを最新情報として公開するか、内容が正しいかは、人が確認します。</p></div></div>
+            </div>
             <div class="quarter"><b>EVERY THREE MONTHS</b><h3>探す → 選ぶ → 分ける → ポータルからつなぐ</h3><p>情報を永久保存するだけではなく、いま顧客へ見せる情報を定期的に選び直す。AIは探索と整理を支え、人が公開可否と正しさを確認します。</p></div>
           </section>
 
@@ -425,7 +490,7 @@
             <p>この日の会議で話されたのは、機能の数よりも、届け方と学び方でした。ライトアップのSaaSチームは、顧客へ届けるところから開発を始め、反応を受け取って、また次の形へ戻していきます。</p>
           </section>
 
-          <p class="editor-note">※ 本記事は2026年9月11日に行われたSaaSチーム定例ミーティングの記録をもとに、言い直し・重複・音声認識上の誤変換を整理し、顧客向けの編集記事として再構成したものです。話者の切り替わりが不明瞭な箇所は個人へ帰属させず、「SaaSチーム」の発言として表示しています。「AI面接」「相見積もりAI」は会議時点の検討アイデアであり、提供中のサービスや確定した仕様ではありません。掲載ビジュアルは生成イラストです。</p>
+          <p class="editor-note">※ 本記事は2026年9月11日に行われたSaaSチーム定例ミーティングの記録をもとに、言い直し・重複・音声認識上の誤変換を整理し、顧客向けの編集記事として再構成したものです。話者の切り替わりが不明瞭な箇所は個人へ帰属させず、「SaaSチーム」の発言として表示しています。「AI面接」「相見積もりAI」は会議時点の検討アイデアであり、提供中のサービスや確定した仕様ではありません。掲載ビジュアルは本人写真を参照した生成画像で、実際の会議写真ではありません。</p>
           <div class="links">
             <a class="link primary" href="../"><span>SaaS資料一覧を見る</span><b>→</b></a>
           </div>
