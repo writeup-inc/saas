@@ -241,13 +241,13 @@
     <section class="intro">
       <span class="kicker">モニター募集中</span>
       <h1>Elliotのモニターは、<br>御社に向いているでしょうか。</h1>
-      <p>Elliotは、会議の記録・商談のメモ・日報といった社内の記録を夜のうちに読み、朝に要点を届けるAIです。合う会社と、そうでない会社があります。5つの質問で確かめてください。</p>
+      <p>Elliotは、夜中の12時に現れて社内の記録を読み、朝に示唆を届ける小人のAIです。1,000社に届ける前の最初の10社さまに、1年間無料でお使いいただきます。ただし、合う会社とそうでない会社があります。6つの質問で確かめてください。</p>
     </section>
 
     <section class="quiz" id="quiz" aria-labelledby="quiz-title">
       <div class="quiz-head">
         <h2 id="quiz-title">当てはまるものを選んでください</h2>
-        <p class="quiz-count"><b id="count">0</b> / 5 件を選択中</p>
+        <p class="quiz-count"><b id="count">0</b> / 6 件を選択中</p>
       </div>
 
       <ul class="q-list">
@@ -291,6 +291,14 @@
             </span>
           </button>
         </li>
+        <li class="q-item">
+          <button class="q-button" type="button" aria-pressed="false">
+            <span class="q-box" aria-hidden="true"></span>
+            <span class="q-text">後日のインタビュー取材に協力できる
+              <span class="q-note">最初の10社さまにお願いしている条件です。公開範囲はご相談できます。</span>
+            </span>
+          </button>
+        </li>
       </ul>
 
       <div class="result" id="result" data-state="idle" role="status" aria-live="polite">
@@ -306,26 +314,26 @@
 
     <section class="section" aria-labelledby="facts-title">
       <p class="section-kicker">Terms</p>
-      <h2 class="section-title" id="facts-title">モニターの条件</h2>
-      <p class="section-copy">モニタープログラム共通の条件に沿った内容です。</p>
+      <h2 class="section-title" id="facts-title">1年間、無料で使えます。</h2>
+      <p class="section-copy">お渡しする条件です。</p>
       <div class="facts">
         <div>
-          <span>料金</span>
-          <strong>初期費用・月額料金 0円</strong>
-          <small>モニター期間中の固定費はかかりません。</small>
+          <span>募集社数</span>
+          <strong>先着10社</strong>
+          <small>1,000社に届ける前の、最初の10社です。</small>
+        </div>
+        <div>
+          <span>期間と料金</span>
+          <strong>1年間 無料</strong>
+          <small>初期費用・月額料金はかかりません。</small>
         </div>
         <div>
           <span>ご負担</span>
           <strong>API利用料などの実費のみ</strong>
-          <small>使った分の実費だけかかります。期間や上限は開始前に書面で確認します。</small>
-        </div>
-        <div>
-          <span>終了後</span>
-          <strong>継続は自動ではありません</strong>
-          <small>正式な内容と料金を見てから、続けるかお選びいただけます。</small>
+          <small>原価としてかかる分だけをご負担いただきます。</small>
         </div>
       </div>
-      <p class="facts-note">記録は御社のGoogleドライブ内に置いたまま扱います。データの取り扱いの詳細は、開始前に書面で確認します。</p>
+      <p class="facts-note">最初の10社さまには、後日のインタビュー取材へのご協力と、バグ・使いにくい点のご共有をお願いしています。1年が終わったあとの継続は自動ではありません。記録は御社のGoogleドライブ内に置いたまま扱います。</p>
     </section>
 
     <section class="section" aria-labelledby="flow-title">
@@ -337,7 +345,7 @@
         <article><b>STEP 02</b><h3>ログ連携</h3><p>記録が集まっているGoogleドライブと連携します。初期設定の打ち合わせで一緒に設定します。</p></article>
         <article><b>STEP 03</b><h3>利用開始</h3><p>設定は以上で完了です。あとは、いつもどおり記録を残していただくだけです。</p></article>
       </div>
-      <a class="more" href="../">くわしい募集要項を見る <span aria-hidden="true">→</span></a>
+      <a class="more" href="../">くわしい条件を見る <span aria-hidden="true">→</span></a>
     </section>
   </div>
 </main>
@@ -345,7 +353,7 @@
 <footer class="site-footer">
   <div class="shell footer-inner">
     <strong>株式会社ライトアップ / AIコンサル局</strong>
-    <a class="back-link" href="../">← Elliotの募集要項へ</a>
+    <a class="back-link" href="../">← Elliotのご案内へ</a>
   </div>
 </footer>
 
@@ -388,17 +396,17 @@
       high: {
         state: 'high',
         title: 'そのまま始められます。',
-        body: '必要な条件がそろっています。申込フォームを送信いただくと、担当の西村よりメールでご連絡します。まずは初期設定の打ち合わせで、設定と使い方をご案内します。',
+        body: '必要な条件がそろっています。申込フォームを送信いただくと、担当の西村よりメールでご連絡します。まずは初期設定の打ち合わせで、設定と使い方をご案内します。先着10社さまの枠ですので、お早めにどうぞ。',
         show: true,
-        primaryLabel: '申込フォームへ進む',
+        primaryLabel: '1年間無料で申し込む',
         primaryHref: APPLY_URL
       }
     };
 
     const pick = (n) => {
       if (n === 0) return verdicts.idle;
-      if (n <= 1) return verdicts.low;
-      if (n <= 3) return verdicts.mid;
+      if (n <= 2) return verdicts.low;
+      if (n <= 4) return verdicts.mid;
       return verdicts.high;
     };
 

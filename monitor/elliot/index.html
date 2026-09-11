@@ -4,317 +4,270 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="社内のログを夜のうちに読み、朝に要点を届けるAI「Elliot」の法人向けモニター募集要項です。初期費用・月額料金0円、API利用料などの実費のみ。">
-  <meta name="theme-color" content="#f3f0e8">
+  <meta name="description" content="夜中の12時に現れて社内のログを読み、朝に示唆を届けるAI「Elliot」。1,000社に届ける前の、最初の10社を募集しています。1年間無料、ご負担はAPI利用料などの実費のみ。">
+  <meta name="theme-color" content="#101a2c">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="WRITEUP AI MONITOR">
-  <meta property="og:title" content="Elliot モニター募集要項｜株式会社ライトアップ">
-  <meta property="og:description" content="初期費用0円・月額料金0円。API利用料などの実費のみで、社内ログを読むAI「Elliot」を試せます。">
+  <meta property="og:title" content="Elliot｜最初の10社になってください">
+  <meta property="og:description" content="1年間無料。夜中の12時に現れて社内のログを読み、朝に示唆を届ける小人のAIです。">
   <meta property="og:url" content="https://writeup-inc.github.io/saas/monitor/elliot/">
   <meta property="og:image" content="https://writeup-inc.github.io/saas/monitor/elliot/assets/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://writeup-inc.github.io/saas/monitor/elliot/">
   <link rel="icon" href="assets/favicon.png" type="image/png">
-  <title>Elliot モニター募集要項｜株式会社ライトアップ</title>
+  <link rel="preconnect" href="https://player.vimeo.com">
+  <title>Elliot｜最初の10社になってください（1年間無料モニター）</title>
   <style>
     :root {
-      --ink: #14251f;
-      --ink-soft: #51615b;
-      --muted: #7c8984;
-      --paper: #f3f0e8;
-      --surface: #fffdf8;
-      --surface-deep: #ebe7dd;
-      --line: rgba(20, 37, 31, .15);
-      --line-strong: rgba(20, 37, 31, .34);
-      --brand: #174b3c;
-      --brand-deep: #0e382c;
-      --on-brand: #f3f0e8;
-      --accent: #9d4f2c;
-      --accent-soft: rgba(184, 100, 61, .12);
-      --yellow: #e4c76e;
-      --shadow: 0 22px 60px rgba(20, 37, 31, .09);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --ink: #e9e7e0;
-        --ink-soft: #b2bcb7;
-        --muted: #8a9590;
-        --paper: #101714;
-        --surface: #182320;
-        --surface-deep: #1f2c28;
-        --line: rgba(233, 231, 224, .16);
-        --line-strong: rgba(233, 231, 224, .38);
-        --brand: #0d2a22;
-        --brand-deep: #091d18;
-        --on-brand: #e9e7e0;
-        --accent: #e0916a;
-        --accent-soft: rgba(224, 145, 106, .14);
-        --shadow: 0 22px 60px rgba(0, 0, 0, .38);
-      }
+      --night: #101a2c;
+      --night-deep: #08101d;
+      --night-soft: #18243c;
+      --ink: #eef1f6;
+      --ink-soft: #b7c1d2;
+      --muted: #808da4;
+      --line: rgba(238, 241, 246, .14);
+      --line-strong: rgba(238, 241, 246, .3);
+      --gold: #d8b26a;
+      --gold-soft: rgba(216, 178, 106, .13);
+      --dawn: #e8c38d;
+      --shadow: 0 26px 60px rgba(0, 0, 0, .5);
     }
 
     * { box-sizing: border-box; }
-
-    html {
-      overflow-x: clip;
-      scroll-behavior: smooth;
-    }
+    html { overflow-x: clip; scroll-behavior: smooth; }
 
     body {
       margin: 0;
       color: var(--ink);
-      background:
-        linear-gradient(rgba(124, 137, 132, .05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(124, 137, 132, .05) 1px, transparent 1px),
-        var(--paper);
-      background-size: 32px 32px, 32px 32px, auto;
+      background: var(--night);
       font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
-      line-height: 1.75;
+      line-height: 1.85;
       -webkit-font-smoothing: antialiased;
     }
 
     a { color: inherit; }
-    button { font: inherit; }
     img { display: block; max-width: 100%; height: auto; }
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
 
-    :focus-visible {
-      outline: 3px solid var(--accent);
-      outline-offset: 3px;
-    }
-
-    .shell { width: min(calc(100% - 44px), 980px); margin: 0 auto; }
+    .shell { width: min(calc(100% - 44px), 900px); margin: 0 auto; }
 
     /* ---------- header ---------- */
     .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
+      position: sticky; top: 0; z-index: 20;
       border-bottom: 1px solid var(--line);
-      background: color-mix(in srgb, var(--paper) 88%, transparent);
+      background: rgba(16, 26, 44, .92);
       backdrop-filter: blur(14px);
     }
-    .header-inner {
-      display: flex;
-      min-height: 66px;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-    .crumbs {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      color: var(--muted);
-      min-width: 0;
-    }
+    .header-inner { display: flex; min-height: 64px; align-items: center; justify-content: space-between; gap: 16px; }
+    .crumbs { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); min-width: 0; }
     .crumbs a { text-decoration: none; border-bottom: 1px solid var(--line-strong); padding-bottom: 1px; }
-    .crumbs a:hover { color: var(--accent); border-bottom-color: var(--accent); }
-    .crumbs b { color: var(--ink); font-weight: 700; white-space: nowrap; }
+    .crumbs a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+    .crumbs b { color: var(--ink); white-space: nowrap; }
     .header-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      min-height: 40px;
-      padding: 0 18px;
-      border-radius: 999px;
-      background: var(--brand);
-      color: var(--on-brand);
-      font-size: 13px;
-      font-weight: 700;
-      text-decoration: none;
-      white-space: nowrap;
-      transition: background .2s ease, transform .2s ease;
+      display: inline-flex; align-items: center; gap: 8px;
+      min-height: 40px; padding: 0 18px; border-radius: 999px;
+      background: var(--gold); color: #241a06;
+      font-size: 13px; font-weight: 700; text-decoration: none; white-space: nowrap;
+      transition: transform .2s ease, background .2s ease;
     }
-    .header-cta:hover { background: var(--brand-deep); transform: translateY(-1px); }
-    @media (max-width: 620px) { .header-cta { display: none; } }
+    .header-cta:hover { transform: translateY(-1px); background: var(--dawn); }
+    @media (max-width: 660px) { .header-cta { display: none; } }
 
-    /* ---------- masthead ---------- */
-    .masthead { padding: 46px 0 34px; border-bottom: 1px solid var(--line); }
-    .masthead-grid {
-      display: grid;
-      grid-template-columns: 1fr 168px;
-      gap: 32px;
-      align-items: center;
+    /* ---------- opening ---------- */
+    .opening {
+      position: relative;
+      padding: 72px 0 54px;
+      background:
+        radial-gradient(1.5px 1.5px at 14% 22%, rgba(255,255,255,.7), transparent 60%),
+        radial-gradient(1.3px 1.3px at 33% 47%, rgba(255,255,255,.42), transparent 60%),
+        radial-gradient(1.7px 1.7px at 57% 15%, rgba(255,255,255,.6), transparent 60%),
+        radial-gradient(1.4px 1.4px at 77% 37%, rgba(255,255,255,.4), transparent 60%),
+        radial-gradient(1.6px 1.6px at 89% 11%, rgba(255,255,255,.55), transparent 60%),
+        linear-gradient(180deg, var(--night-deep), var(--night));
     }
-    .status-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 16px; }
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 5px 13px;
-      border-radius: 999px;
+    .opening-grid { display: grid; grid-template-columns: 1fr 186px; gap: 36px; align-items: center; }
+    .kicker {
+      display: inline-flex; align-items: center; gap: 9px;
+      margin-bottom: 18px; padding: 5px 14px; border-radius: 999px;
       border: 1px solid var(--line-strong);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .04em;
+      font-size: 12px; font-weight: 700; letter-spacing: .1em; color: var(--gold);
     }
-    .pill.open { border-color: transparent; background: var(--brand); color: var(--on-brand); }
-    .pill.open::before {
-      content: "";
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--yellow);
-    }
-    .pill.plain { color: var(--ink-soft); }
-    h1 {
-      margin: 0 0 14px;
-      font-size: clamp(28px, 4.4vw, 42px);
-      line-height: 1.38;
-      letter-spacing: .01em;
-    }
-    .masthead-lead { margin: 0; max-width: 44em; color: var(--ink-soft); font-size: 15.5px; }
-    .masthead-fig { justify-self: center; }
-    .masthead-fig img {
-      width: 168px; height: 168px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 1px solid var(--line-strong);
-      box-shadow: var(--shadow);
+    .kicker::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+    h1 { margin: 0 0 18px; font-size: clamp(27px, 4.6vw, 44px); line-height: 1.42; }
+    h1 em { font-style: normal; color: var(--dawn); }
+    .opening p { margin: 0; max-width: 40em; color: var(--ink-soft); font-size: 15.5px; }
+    .opening-fig { justify-self: center; }
+    .opening-fig img {
+      width: 186px; height: 186px; border-radius: 50%; object-fit: cover;
+      border: 1px solid var(--line-strong); box-shadow: var(--shadow);
     }
     @media (max-width: 760px) {
-      .masthead-grid { grid-template-columns: 1fr; gap: 24px; }
-      .masthead-fig { justify-self: start; }
-      .masthead-fig img { width: 108px; height: 108px; }
+      .opening-grid { grid-template-columns: 1fr; gap: 26px; }
+      .opening-fig { justify-self: start; }
+      .opening-fig img { width: 116px; height: 116px; }
     }
 
-    /* ---------- sections ---------- */
-    .section { padding: 52px 0; border-bottom: 1px solid var(--line); }
-    .section:last-of-type { border-bottom: 0; }
-    .section-kicker {
-      margin: 0 0 8px;
-      font-size: 11.5px;
-      font-weight: 700;
-      letter-spacing: .22em;
-      color: var(--accent);
-      text-transform: uppercase;
-    }
-    .section-title {
-      margin: 0 0 10px;
-      font-size: clamp(20px, 2.7vw, 26px);
-      line-height: 1.5;
-    }
-    .section-copy { margin: 0 0 26px; max-width: 46em; color: var(--ink-soft); font-size: 14.5px; }
-
-    /* ---------- 要項テーブル ---------- */
-    .terms {
-      border: 1px solid var(--line-strong);
-      background: var(--surface);
+    /* ---------- offer ---------- */
+    .offer { padding: 0 0 60px; }
+    .offer-card {
+      border: 1px solid var(--gold);
+      background: linear-gradient(160deg, rgba(216,178,106,.12), rgba(216,178,106,.03));
+      padding: 30px 32px 28px;
       box-shadow: var(--shadow);
     }
-    .term-row {
-      display: grid;
-      grid-template-columns: 208px 1fr;
-      border-bottom: 1px solid var(--line);
+    .offer-big { margin: 0 0 4px; font-size: clamp(29px, 5vw, 46px); font-weight: 700; line-height: 1.2; color: var(--dawn); }
+    .offer-big span { font-size: .5em; margin-left: 8px; color: var(--ink); }
+    .offer-sub { margin: 0; font-size: 15.5px; font-weight: 700; }
+    .offer-lines { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin: 22px 0 0; background: var(--line); border: 1px solid var(--line); }
+    .offer-lines > div { padding: 16px 18px; background: var(--night); }
+    .offer-lines dt { margin: 0 0 3px; font-size: 11.5px; letter-spacing: .14em; color: var(--gold); }
+    .offer-lines dd { margin: 0; font-size: 16px; font-weight: 700; }
+    .offer-note { margin: 18px 0 0; color: var(--muted); font-size: 12.5px; }
+    .offer-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+    @media (max-width: 900px) { .offer-lines { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .offer-lines { grid-template-columns: 1fr; } }
+
+    .button {
+      display: inline-flex; align-items: center; gap: 9px;
+      min-height: 52px; padding: 0 28px; border-radius: 999px;
+      font-size: 15px; font-weight: 700; text-decoration: none;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
     }
-    .term-row:last-child { border-bottom: 0; }
-    .term-row dt {
-      padding: 18px 22px;
-      background: var(--surface-deep);
-      border-right: 1px solid var(--line);
-      font-size: 14px;
-      font-weight: 700;
+    .button.primary { background: var(--gold); color: #241a06; }
+    .button.primary:hover { transform: translateY(-2px); background: var(--dawn); }
+    .button.ghost { border: 1px solid var(--line-strong); color: var(--ink); }
+    .button.ghost:hover { transform: translateY(-2px); border-color: var(--gold); color: var(--gold); }
+
+    /* ---------- 前提 ---------- */
+    .premise { padding: 58px 0; background: var(--night-deep); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .asks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 28px; background: var(--line); border: 1px solid var(--line); }
+    .asks > article { padding: 24px 22px; background: var(--night); }
+    .asks .tag { display: inline-block; margin-bottom: 10px; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: .08em; }
+    .asks .tag.must { background: var(--gold); color: #241a06; }
+    .asks .tag.free { border: 1px solid var(--line-strong); color: var(--muted); }
+    .asks h3 { margin: 0 0 8px; font-size: 17px; }
+    .asks p { margin: 0; color: var(--ink-soft); font-size: 14px; }
+    @media (max-width: 820px) { .asks { grid-template-columns: 1fr; } }
+
+    .honest { margin-top: 26px; border-left: 2px solid var(--gold); padding: 4px 0 4px 22px; }
+    .honest p { margin: 0; max-width: 42em; color: var(--ink-soft); font-size: 14.5px; }
+
+    /* ---------- 由来 ---------- */
+    .origin { padding: 44px 0; border-bottom: 1px solid var(--line); }
+    .origin-inner { border-left: 2px solid var(--gold); padding-left: 22px; }
+    .origin-inner p { margin: 0; max-width: 42em; color: var(--ink-soft); font-size: 15px; }
+    .origin-inner p + p { margin-top: 10px; }
+
+    /* ---------- section ---------- */
+    .section { padding: 60px 0; border-bottom: 1px solid var(--line); }
+    .section:last-of-type { border-bottom: 0; }
+    .section-kicker { margin: 0 0 8px; font-size: 11.5px; font-weight: 700; letter-spacing: .22em; color: var(--gold); }
+    .section-title { margin: 0 0 10px; font-size: clamp(20px, 2.9vw, 28px); line-height: 1.5; }
+    .section-copy { margin: 0 0 30px; max-width: 42em; color: var(--ink-soft); font-size: 14.5px; }
+
+    /* ---------- 動画 ---------- */
+    .video-frame { border: 1px solid var(--line-strong); background: #000; padding: 10px; box-shadow: var(--shadow); }
+    .video-ratio { position: relative; padding-top: 56.25%; }
+    .video-ratio iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .video-cap { margin: 12px 0 0; color: var(--muted); font-size: 12.5px; }
+
+    /* ---------- timeline ---------- */
+    .tl { position: relative; margin: 0; padding: 0 0 0 40px; list-style: none; }
+    .tl::before {
+      content: ""; position: absolute; left: 9px; top: 10px; bottom: 14px; width: 1px;
+      background: linear-gradient(180deg, rgba(216,178,106,.16), var(--gold) 42%, var(--dawn));
     }
-    .term-row dd { margin: 0; padding: 18px 22px; font-size: 14.5px; }
-    .term-row dd small { display: block; margin-top: 4px; color: var(--muted); font-size: 12.5px; }
-    .fee { display: flex; flex-wrap: wrap; gap: 8px 26px; }
-    .fee div { display: flex; align-items: baseline; gap: 9px; }
-    .fee span { color: var(--ink-soft); font-size: 13px; }
-    .fee b { font-size: 20px; letter-spacing: .02em; }
-    .fee .actual b { font-size: 15px; }
-    @media (max-width: 700px) {
-      .term-row { grid-template-columns: 1fr; }
-      .term-row dt { border-right: 0; border-bottom: 1px solid var(--line); padding: 12px 18px; }
-      .term-row dd { padding: 14px 18px 18px; }
+    .tl li { position: relative; padding-bottom: 38px; }
+    .tl li:last-child { padding-bottom: 0; }
+    .tl li::before {
+      content: ""; position: absolute; left: -36px; top: 12px;
+      width: 11px; height: 11px; border-radius: 50%;
+      background: var(--night); border: 1.5px solid var(--gold);
+      transition: background .2s ease, box-shadow .2s ease;
     }
+    .tl li:hover::before { background: var(--gold); box-shadow: 0 0 0 6px var(--gold-soft); }
+    .tl-time { display: block; font-size: 20px; font-weight: 700; letter-spacing: .06em; color: var(--gold); line-height: 1.3; }
+    .tl li.dawn::before { border-color: var(--dawn); }
+    .tl li.dawn .tl-time { color: var(--dawn); }
+    .tl h3 { margin: 4px 0 8px; font-size: 18px; }
+    .tl p { margin: 0; max-width: 40em; color: var(--ink-soft); font-size: 14.5px; }
 
     /* ---------- できること ---------- */
-    .jobs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .job {
-      padding: 24px 22px;
-      border: 1px solid var(--line);
-      background: var(--surface);
-      transition: border-color .2s ease, transform .2s ease;
+    .jobs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .jobs > article { padding: 24px 22px; background: var(--night); transition: background .2s ease; }
+    .jobs > article:hover { background: var(--night-soft); }
+    .jobs b { display: block; margin-bottom: 6px; font-size: 11.5px; letter-spacing: .16em; color: var(--gold); }
+    .jobs h3 { margin: 0 0 8px; font-size: 17px; }
+    .jobs p { margin: 0; color: var(--ink-soft); font-size: 14px; }
+    @media (max-width: 760px) { .jobs { grid-template-columns: 1fr; } }
+
+    .quotes { margin: 26px 0 0; padding: 22px 24px; border: 1px solid var(--line); background: var(--night-soft); }
+    .quotes p { margin: 0 0 12px; font-size: 12.5px; letter-spacing: .1em; color: var(--gold); }
+    .quotes ul { margin: 0; padding-left: 20px; color: var(--ink-soft); font-size: 14.5px; }
+    .quotes li { margin-bottom: 3px; }
+
+    /* ---------- これから ---------- */
+    .soon { border: 1px dashed var(--line-strong); padding: 24px 26px; }
+    .soon .badge { display: inline-block; margin-bottom: 12px; padding: 3px 11px; border: 1px solid var(--gold); border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: .08em; color: var(--gold); }
+    .soon ul { margin: 0 0 14px; padding-left: 20px; color: var(--ink-soft); font-size: 14.5px; }
+    .soon li { margin-bottom: 6px; }
+    .soon p { margin: 0; color: var(--muted); font-size: 12.5px; }
+
+    /* ---------- 条件 ---------- */
+    .facts { border: 1px solid var(--line-strong); background: var(--night-soft); }
+    .fact-row { display: grid; grid-template-columns: 200px 1fr; border-bottom: 1px solid var(--line); }
+    .fact-row:last-child { border-bottom: 0; }
+    .fact-row dt { padding: 17px 22px; background: var(--night-deep); border-right: 1px solid var(--line); font-size: 14px; font-weight: 700; color: var(--gold); }
+    .fact-row dd { margin: 0; padding: 17px 22px; font-size: 14.5px; }
+    .fact-row dd small { display: block; margin-top: 4px; color: var(--muted); font-size: 12.5px; }
+    .fact-row dd b { font-size: 17px; }
+    @media (max-width: 720px) {
+      .fact-row { grid-template-columns: 1fr; }
+      .fact-row dt { border-right: 0; border-bottom: 1px solid var(--line); padding: 12px 18px; }
+      .fact-row dd { padding: 14px 18px 18px; }
     }
-    .job:hover { border-color: var(--line-strong); transform: translateY(-2px); }
-    .job b { display: block; margin-bottom: 4px; font-size: 11.5px; letter-spacing: .18em; color: var(--accent); }
-    .job h3 { margin: 0 0 8px; font-size: 17px; }
-    .job p { margin: 0; color: var(--ink-soft); font-size: 14px; }
-    @media (max-width: 820px) { .jobs { grid-template-columns: 1fr; } }
 
     /* ---------- 3STEP ---------- */
-    .step-fig { margin: 0 0 22px; border: 1px solid var(--line); background: var(--surface); padding: 14px; }
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .step { padding: 20px 20px 22px; border: 1px solid var(--line); background: var(--surface); }
-    .step b { display: block; margin-bottom: 6px; font-size: 11.5px; letter-spacing: .16em; color: var(--muted); }
-    .step h3 { margin: 0 0 6px; font-size: 16px; }
-    .step p { margin: 0; color: var(--ink-soft); font-size: 13.5px; }
+    .step-fig { margin: 0 0 22px; border: 1px solid var(--line-strong); background: #fffdf8; padding: 14px; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .steps > article { padding: 22px 20px; background: var(--night); }
+    .steps b { display: block; margin-bottom: 6px; font-size: 11.5px; letter-spacing: .16em; color: var(--muted); }
+    .steps h3 { margin: 0 0 6px; font-size: 16px; }
+    .steps p { margin: 0; color: var(--ink-soft); font-size: 13.5px; }
     @media (max-width: 820px) { .steps { grid-template-columns: 1fr; } }
 
-    /* ---------- 事前確認 ---------- */
+    /* ---------- チェック ---------- */
     .checklist { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
     .checklist li {
-      display: grid;
-      grid-template-columns: 22px 1fr;
-      gap: 12px;
-      padding: 15px 18px;
-      border: 1px solid var(--line);
-      background: var(--surface);
+      display: grid; grid-template-columns: 20px 1fr; gap: 13px;
+      padding: 15px 18px; border: 1px solid var(--line); background: var(--night-soft);
       font-size: 14.5px;
     }
     .checklist li::before {
-      content: "";
-      margin-top: 6px;
-      width: 14px; height: 8px;
-      border-left: 2px solid var(--accent);
-      border-bottom: 2px solid var(--accent);
+      content: ""; margin-top: 7px;
+      width: 13px; height: 7px;
+      border-left: 2px solid var(--gold); border-bottom: 2px solid var(--gold);
       transform: rotate(-45deg);
     }
     .checklist strong { display: block; }
     .checklist small { color: var(--muted); font-size: 12.5px; }
 
-    /* ---------- CTA ---------- */
-    .apply {
-      padding: 34px 32px;
-      background: var(--brand);
-      color: var(--on-brand);
-      box-shadow: var(--shadow);
-    }
-    .apply h2 { margin: 0 0 8px; font-size: clamp(20px, 2.7vw, 26px); }
-    .apply p { margin: 0 0 22px; max-width: 44em; font-size: 14.5px; opacity: .86; }
-    .apply-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-    .button {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      min-height: 50px;
-      padding: 0 26px;
-      border-radius: 999px;
-      font-size: 15px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: transform .2s ease, background .2s ease, border-color .2s ease;
-    }
-    .button.primary { background: var(--yellow); color: #1d2b10; }
-    .button.primary:hover { transform: translateY(-2px); background: #efd68a; }
-    .button.ghost { border: 1px solid color-mix(in srgb, var(--on-brand) 46%, transparent); color: var(--on-brand); }
-    .button.ghost:hover { transform: translateY(-2px); border-color: var(--on-brand); }
-    .apply-note { margin: 18px 0 0; font-size: 12.5px; opacity: .74; }
+    /* ---------- request ---------- */
+    .request-box { border: 1px solid var(--line); background: var(--night-soft); padding: 24px 26px; }
+    .request-box ul { margin: 0 0 20px; padding-left: 20px; color: var(--ink-soft); font-size: 14.5px; }
+    .request-box li { margin-bottom: 2px; }
 
     /* ---------- 相談 ---------- */
     .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
     .contact-card {
-      display: block;
-      padding: 22px 20px;
-      border: 1px solid var(--line);
-      background: var(--surface);
+      display: block; padding: 22px 20px;
+      border: 1px solid var(--line); background: var(--night-soft);
       text-decoration: none;
       transition: border-color .2s ease, transform .2s ease;
     }
-    .contact-card:hover { border-color: var(--accent); transform: translateY(-2px); }
-    .contact-card b { display: block; margin-bottom: 4px; font-size: 11.5px; letter-spacing: .16em; color: var(--accent); }
+    .contact-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .contact-card b { display: block; margin-bottom: 4px; font-size: 11.5px; letter-spacing: .16em; color: var(--gold); }
     .contact-card strong { display: block; margin-bottom: 5px; font-size: 16px; }
     .contact-card span { color: var(--ink-soft); font-size: 13.5px; word-break: break-word; }
     @media (max-width: 820px) { .contact-grid { grid-template-columns: 1fr; } }
@@ -323,38 +276,43 @@
     .faq { border-top: 1px solid var(--line); }
     .faq details { border-bottom: 1px solid var(--line); }
     .faq summary {
-      cursor: pointer;
-      list-style: none;
-      padding: 18px 44px 18px 2px;
-      position: relative;
-      font-size: 15.5px;
-      font-weight: 700;
+      cursor: pointer; list-style: none;
+      padding: 18px 44px 18px 2px; position: relative;
+      font-size: 15.5px; font-weight: 700;
     }
     .faq summary::-webkit-details-marker { display: none; }
     .faq summary::after {
-      content: "";
-      position: absolute;
-      right: 10px; top: 50%;
+      content: ""; position: absolute; right: 10px; top: 50%;
       width: 9px; height: 9px;
-      border-right: 2px solid var(--accent);
-      border-bottom: 2px solid var(--accent);
-      transform: translateY(-70%) rotate(45deg);
-      transition: transform .2s ease;
+      border-right: 2px solid var(--gold); border-bottom: 2px solid var(--gold);
+      transform: translateY(-70%) rotate(45deg); transition: transform .2s ease;
     }
     .faq details[open] summary::after { transform: translateY(-30%) rotate(225deg); }
-    .faq summary:hover { color: var(--accent); }
+    .faq summary:hover { color: var(--gold); }
     .faq p { margin: 0 0 20px; padding-right: 44px; color: var(--ink-soft); font-size: 14.5px; }
 
+    /* ---------- 締めのCTA ---------- */
+    .cta { padding: 70px 0 78px; text-align: center; background: linear-gradient(180deg, var(--night), #2b3044 72%, #5d4f48); }
+    .cta h2 { margin: 0 0 12px; font-size: clamp(21px, 3.3vw, 31px); line-height: 1.55; }
+    .cta p { margin: 0 auto 30px; max-width: 40em; color: var(--ink-soft); font-size: 14.5px; }
+    .cta .actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .cta-note { margin: 22px 0 0; color: var(--muted); font-size: 12.5px; }
+
     /* ---------- footer ---------- */
-    .site-footer { border-top: 1px solid var(--line); padding: 26px 0 40px; }
+    .site-footer { padding: 26px 0 40px; background: var(--night-deep); }
     .footer-inner { display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: space-between; color: var(--muted); font-size: 12.5px; }
     .footer-inner strong { color: var(--ink-soft); font-size: 13px; }
     .back-link { text-decoration: none; border-bottom: 1px solid var(--line-strong); }
-    .back-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    .back-link:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+    /* ---------- reveal ---------- */
+    .rv { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease; }
+    .rv.in { opacity: 1; transform: none; }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       * { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      .rv { opacity: 1; transform: none; }
     }
   </style>
 </head>
@@ -367,184 +325,320 @@
       <span aria-hidden="true">›</span>
       <b>Elliot</b>
     </nav>
-    <a class="header-cta" href="#apply">モニターに申し込む <span aria-hidden="true">→</span></a>
+    <a class="header-cta" href="#apply">1年間無料で申し込む <span aria-hidden="true">→</span></a>
   </div>
 </header>
 
 <main>
-  <div class="shell">
-    <section class="masthead">
-      <div class="masthead-grid">
-        <div>
-          <div class="status-row">
-            <span class="pill open">モニター募集中</span>
-            <span class="pill plain">会議・商談</span>
-            <span class="pill plain">初期費用・月額料金 0円</span>
-          </div>
-          <h1>Elliot モニター募集要項</h1>
-          <p class="masthead-lead">会議の記録、商談のメモ、日報。社内に溜まっていくログを夜のうちに読み解き、朝には「知っておいたほうがいいこと」だけを届けるAIです。募集の条件と始め方を、このページにまとめています。</p>
+  <section class="opening">
+    <div class="shell opening-grid">
+      <div>
+        <span class="kicker">先着10社・1年間無料</span>
+        <h1>みんなが眠っている<br>あいだに、<em>ボクが働きます。</em></h1>
+        <p>ボクはElliot。毎晩、夜中の12時にオフィスに現れる小人です。打ち合わせのログも、電話の会話ログも、日報も全部読んで、朝には「これは知っておいたほうがいい」ことを、みなさんにお届けします。</p>
+      </div>
+      <figure class="opening-fig">
+        <img src="assets/elliot.png" alt="AIアシスタント「Elliot」のイラスト" width="186" height="186">
+      </figure>
+    </div>
+  </section>
+
+  <section class="offer" aria-labelledby="offer-title">
+    <div class="shell">
+      <div class="offer-card">
+        <p class="offer-big" id="offer-title">1年間、無料。<span>先着10社</span></p>
+        <p class="offer-sub">初期費用も月額料金もいただきません。ご負担いただくのは、API利用料などの実費だけです。</p>
+        <dl class="offer-lines">
+          <div><dt>期間</dt><dd>1年間 無料</dd></div>
+          <div><dt>初期費用</dt><dd>0円</dd></div>
+          <div><dt>月額料金</dt><dd>0円</dd></div>
+          <div><dt>ご負担</dt><dd>API利用料などの実費のみ</dd></div>
+        </dl>
+        <div class="offer-actions">
+          <a class="button primary" href="#apply">1年間無料で申し込む <span aria-hidden="true">→</span></a>
+          <a class="button ghost" href="#contact">先に相談する</a>
         </div>
-        <figure class="masthead-fig">
-          <img src="assets/elliot.png" alt="AIアシスタント「Elliot」のイラスト" width="168" height="168">
-        </figure>
+        <p class="offer-note">利用期間や上限、データの取り扱いは、開始前に書面で確認します。1年が終わったあとの継続は自動ではありません。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="premise" aria-labelledby="premise-title">
+    <div class="shell">
+      <p class="section-kicker">なぜ無料なのか</p>
+      <h2 class="section-title" id="premise-title">1,000社に届ける前の、<br>最初の10社になってください。</h2>
+      <p class="section-copy">Elliotは、ゆくゆく1,000社に使っていただきたいと思って作っています。ただ、そこにたどり着くために、まだ足りないものがあります。実際に使われた事例と、現場からの率直なご意見です。だから最初の10社さまには、1年間無料でお使いいただきます。その代わりに、3つだけお願いさせてください。</p>
+
+      <div class="asks">
+        <article>
+          <span class="tag must">お願い（必須）</span>
+          <h3>インタビューにご協力ください</h3>
+          <p>後日、使ってみた感想をうかがう取材をさせてください。顔出し・会社名・実名での公開にご協力いただけると、とても助かります（難しい場合はご相談ください）。記事には御社のご紹介を2行とリンクを掲載します。</p>
+        </article>
+        <article>
+          <span class="tag must">お願い（必須）</span>
+          <h3>バグと使いにくい点を教えてください</h3>
+          <p>正直に申し上げると、バグや使いにくいところはまだ残っています。「ここが分かりにくい」「ここで止まった」を教えてください。直します。率直なご意見ほどありがたいです。</p>
+        </article>
+        <article>
+          <span class="tag free">任意</span>
+          <h3>よければ、広めてください</h3>
+          <p>使ってみて「これはいい」と思われて、周りに5社・10社とご紹介いただけそうなら、販売パートナーとしてご一緒させてください。もちろん任意です。使うだけでもまったく問題ありません。</p>
+        </article>
+      </div>
+
+      <div class="honest">
+        <p>Elliotは完成品ではありません。まだ変なことを言うこともあります。最初の10社さまには、その前提でお付き合いいただくことになります。そのぶん、ご要望は設計にそのまま反映されます。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="origin">
+    <div class="shell">
+      <div class="origin-inner">
+        <p>名前は、靴屋が眠っているあいだに小人たちが靴を仕上げてくれる、あの童話から取りました。</p>
+        <p>朝、仕事場に降りてみると、革はきれいな靴に変わっている。誰がやったのかは分からないけれど、確かに仕事は前に進んでいる。Elliotがやろうとしているのは、それとほとんど同じことです。</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="shell">
+    <section class="section" aria-labelledby="video-title">
+      <p class="section-kicker">MOVIE</p>
+      <h2 class="section-title" id="video-title">まずは、5分だけ見てください。</h2>
+      <p class="section-copy">Elliotが何をするAIなのかを、実際の画面でご紹介しています。</p>
+      <div class="video-frame">
+        <div class="video-ratio">
+          <iframe
+            src="https://player.vimeo.com/video/1208763155?h=d91a2cdb8b&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+            title="Elliot サービス紹介"
+            loading="lazy"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+      <p class="video-cap">Elliot サービス紹介（約5分）</p>
+    </section>
+
+    <section class="section" aria-labelledby="night-title">
+      <p class="section-kicker">ONE NIGHT</p>
+      <h2 class="section-title rv" id="night-title">Elliotの、ある一晩。</h2>
+      <p class="section-copy rv">みなさんが仕事を終えてから、翌朝出社するまでのあいだに起きていることです。</p>
+      <ol class="tl">
+        <li class="rv">
+          <span class="tl-time">00:00</span>
+          <h3>小人が現れる</h3>
+          <p>その日のログが集まったGoogleドライブに、Elliotがやってきます。打ち合わせの議事録、電話の会話ログ、日報。集約フォルダは御社のドライブ内にあります。</p>
+        </li>
+        <li class="rv">
+          <span class="tl-time">01:00</span>
+          <h3>全部、読む</h3>
+          <p>書式も長さもばらばらのテキストを、種類をまたいで読み込みます。書き方を統一していただく必要はありません。溜めておくだけだった記録が、ここではじめて読まれます。</p>
+        </li>
+        <li class="rv">
+          <span class="tl-time">04:00</span>
+          <h3>蒸留する</h3>
+          <p>同じ案件について複数の人が書いたこと、先週との違い、繰り返し出てくる言葉。生のログから、使える形のノウハウを取り出します。</p>
+        </li>
+        <li class="rv dawn">
+          <span class="tl-time">07:00</span>
+          <h3>朝、示唆が届く</h3>
+          <p>出社したときには、昨日社内で何が起きていたかがまとまっています。「今日、朝いちでメンバーに何と声をかけるか」まで書かれています。</p>
+        </li>
+        <li class="rv dawn">
+          <span class="tl-time">月末</span>
+          <h3>経営レポートになる</h3>
+          <p>1か月分をさらにまとめ、経営者向けのレポートを作ります。部署ごとのMVP選出など、見たい切り口に合わせて変えられます。</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section" aria-labelledby="jobs-title">
+      <p class="section-kicker">WHAT YOU CAN TRY</p>
+      <h2 class="section-title rv" id="jobs-title">1年のあいだに、試せること。</h2>
+      <p class="section-copy rv">日中の業務は止まりません。社員のみなさんに新しい入力作業をお願いすることもありません。</p>
+      <div class="jobs rv">
+        <article>
+          <b>01</b>
+          <h3>社内のログに、聞く</h3>
+          <p>使い方はChatGPTとほとんど同じです。違うのは、答えるときに社内のログを全部参照していること。「直近1年のチームのログを横断して、勝ちパターンを3つ、60文字以内で」といった聞き方ができます。</p>
+        </article>
+        <article>
+          <b>02</b>
+          <h3>いい問いは、定期配信にする</h3>
+          <p>「この答えは毎朝ほしい」と思ったら、毎日・毎週・毎月の配信に設定できます。聞きにいかなくても、勝手に届くようになります。</p>
+        </article>
+        <article>
+          <b>03</b>
+          <h3>ノウハウを蒸留する</h3>
+          <p>溜まりにくいノウハウを、生ログからまとめます。有益度のスコアもつくので、どれが現場で効く話なのかが分かります。</p>
+        </article>
+        <article>
+          <b>04</b>
+          <h3>社員一人ひとりがAIになる</h3>
+          <p>誰がどんな打ち合わせをしているかが分かるので、社員それぞれのAIができあがります。「あの見積もり、どこだっけ？」と本人のAIに聞けます。</p>
+        </article>
+        <article>
+          <b>05</b>
+          <h3>AI同士で話をさせる</h3>
+          <p>テーマを決めて会話を始めさせると、社員のAI同士がディスカッションして、議事録を残します。「来期の予算をどうするか」でも構いません。</p>
+        </article>
+        <article>
+          <b>06</b>
+          <h3>経営レポートを自動で作る</h3>
+          <p>月に一度、経営者向けのレポートを生成します。見たい切り口はご要望に合わせて変えられます。</p>
+        </article>
+      </div>
+
+      <div class="quotes rv">
+        <p>たとえば、こんなことを聞けます</p>
+        <ul>
+          <li>鈴木さん・佐藤さん・田中さんの昨日の打ち合わせで、良かったことを教えて。</li>
+          <li>先週のログに、リスクになりそうな情報はない？</li>
+          <li>今日、朝いちでうちのメンバーに何と声をかけたらいい？</li>
+          <li>今月のMVPを決めて。理由も3行で。</li>
+        </ul>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="terms-title">
-      <p class="section-kicker">Terms</p>
-      <h2 class="section-title" id="terms-title">募集要項</h2>
-      <p class="section-copy">モニタープログラム共通の条件に沿った内容です。個別の事情がある場合は、開始前のご相談で調整します。</p>
+    <section class="section" aria-labelledby="soon-title">
+      <p class="section-kicker">WHAT COMES NEXT</p>
+      <h2 class="section-title rv" id="soon-title">1,000社そろった夜に、<br>やろうとしていること。</h2>
+      <p class="section-copy rv">Elliotが1,000社の夜に現れるようになったら、小人たちを引き合わせてみたいと思っています。</p>
+      <div class="soon rv">
+        <span class="badge">構想／開発中</span>
+        <ul>
+          <li><strong>夜中2時、AIしか参加できない異業種交流会。</strong>各社のElliotが集まって話し、意気投合したら、翌朝「アポイントを取ってきました」と会話ログつきで報告してきます。</li>
+          <li><strong>夜中3時、AI展示会。</strong>AIの出展者とAIの来場者しかいない展示会に、御社のElliotが代わりに行って、役に立ちそうな資料をもらってきます。</li>
+        </ul>
+        <p>いずれも構想段階の機能で、年内の実現を目指して開発しています。提供時期をお約束するものではありません。</p>
+      </div>
+    </section>
 
-      <dl class="terms">
-        <div class="term-row">
-          <dt>対象サービス</dt>
-          <dd>Elliot（社内ログの整理・要点の抽出）</dd>
+    <section class="section" aria-labelledby="facts-title">
+      <p class="section-kicker">CONDITIONS</p>
+      <h2 class="section-title rv" id="facts-title">1年間、無料で使えます。</h2>
+      <p class="section-copy rv">お渡しする条件です。個別の事情がある場合は、開始前のご相談で調整します。</p>
+      <dl class="facts rv">
+        <div class="fact-row">
+          <dt>募集社数</dt>
+          <dd><b>先着10社</b><small>1,000社に届ける前の、最初の10社です。</small></dd>
         </div>
-        <div class="term-row">
-          <dt>料金</dt>
-          <dd>
-            <div class="fee">
-              <div><span>初期費用</span><b>0円</b></div>
-              <div><span>月額料金</span><b>0円</b></div>
-              <div class="actual"><span>ご負担</span><b>API利用料などの実費のみ</b></div>
-            </div>
-            <small>使った分の実費だけかかります。利用期間や上限などは、開始前に書面で確認します。</small>
-          </dd>
+        <div class="fact-row">
+          <dt>期間と料金</dt>
+          <dd><b>1年間 無料</b>（初期費用0円・月額料金0円）<small>1年が終わったあと、継続は自動ではありません。正式な内容と料金を見てからお選びいただけます。</small></dd>
         </div>
-        <div class="term-row">
+        <div class="fact-row">
+          <dt>ご負担</dt>
+          <dd><b>API利用料などの実費のみ</b><small>原価としてかかる分だけをご負担いただきます。上限などは開始前に書面で確認します。</small></dd>
+        </div>
+        <div class="fact-row">
+          <dt>お願いすること</dt>
+          <dd>後日のインタビュー取材へのご協力と、バグ・使いにくい点のご共有。<small>販売パートナーとしてのご紹介は任意です。</small></dd>
+        </div>
+        <div class="fact-row">
           <dt>対象</dt>
-          <dd>社内に議事録・商談メモ・日報などの記録が蓄積されている法人。<br>これから蓄積を始めたい場合もご相談いただけます。</dd>
+          <dd>社内に議事録・商談メモ・電話の会話ログ・日報などの記録が蓄積されている法人。<br>これから蓄積を始めたい場合もご相談いただけます。</dd>
         </div>
-        <div class="term-row">
+        <div class="fact-row">
           <dt>ご用意いただくもの</dt>
           <dd>Google Workspace のアカウントと、記録を保存しているGoogleドライブ。<small>集約用のフォルダは御社のドライブ内に作成します。</small></dd>
         </div>
-        <div class="term-row">
+        <div class="fact-row">
           <dt>社員の操作</dt>
           <dd>自分の記録フォルダを「閲覧者」で共有し、フォームにURLを送る。この2ステップだけです。<small>編集権限をお預かりすることはありません。</small></dd>
         </div>
-        <div class="term-row">
+        <div class="fact-row">
           <dt>データの取り扱い</dt>
           <dd>集約フォルダは御社のGoogleドライブ内に置きます。会社ごとにドライブが分かれるため、他社の記録と混ざることはありません。<small>取り扱いの詳細は開始前に書面で確認します。</small></dd>
-        </div>
-        <div class="term-row">
-          <dt>モニター終了後</dt>
-          <dd>継続は自動ではありません。正式な内容と料金を見てから、続けるかどうかをお選びいただけます。</dd>
         </div>
       </dl>
     </section>
 
-    <section class="section" aria-labelledby="jobs-title">
-      <p class="section-kicker">What it does</p>
-      <h2 class="section-title" id="jobs-title">モニターで試せること</h2>
-      <p class="section-copy">日中の業務を止めずに動きます。社員に新しい入力作業をお願いすることはありません。</p>
-      <div class="jobs">
-        <article class="job">
-          <b>01</b>
-          <h3>記録をまとめて読む</h3>
-          <p>会議、商談、日報。書式も長さもばらばらの記録を横断して読みます。書き方を統一していただく必要はありません。</p>
-        </article>
-        <article class="job">
-          <b>02</b>
-          <h3>朝に要点を届ける</h3>
-          <p>すべてを要約するのではなく、「知っておいたほうがいいこと」を選んで届けます。読む時間がかからないことを優先しています。</p>
-        </article>
-        <article class="job">
-          <b>03</b>
-          <h3>月に一度まとめる</h3>
-          <p>1か月分を振り返り、経営者向けのレポートを自動で作ります。日々の要点では見えにくい変化や傾向をまとめます。</p>
-        </article>
-      </div>
-    </section>
-
     <section class="section" aria-labelledby="steps-title">
-      <p class="section-kicker">How to start</p>
-      <h2 class="section-title" id="steps-title">ご利用開始までの3STEP</h2>
-      <p class="section-copy">設定は担当が一緒に進めます。社内にエンジニアの方がいなくても問題ありません。</p>
-      <figure class="step-fig">
+      <p class="section-kicker">HOW TO START</p>
+      <h2 class="section-title rv" id="steps-title">ご利用開始までの3STEP</h2>
+      <p class="section-copy rv">設定は担当が一緒に進めます。社内にエンジニアの方がいなくても問題ありません。</p>
+      <figure class="step-fig rv">
         <img src="assets/3step.png" alt="Elliotご利用開始までの3STEP。1 アカウント登録、2 ログ連携、3 利用開始。" width="1774" height="609">
       </figure>
-      <div class="steps">
-        <article class="step">
-          <b>STEP 01</b>
-          <h3>アカウント登録</h3>
-          <p>申込フォームからElliotのアカウントを登録します。送信後、担当の西村よりメールでご連絡します。</p>
-        </article>
-        <article class="step">
-          <b>STEP 02</b>
-          <h3>ログ連携</h3>
-          <p>記録が集まっているGoogleドライブと連携します。初期設定の打ち合わせで、担当が一緒に設定します。</p>
-        </article>
-        <article class="step">
-          <b>STEP 03</b>
-          <h3>利用開始</h3>
-          <p>設定は以上で完了です。あとは、いつもどおり記録を残していただくだけです。</p>
-        </article>
+      <div class="steps rv">
+        <article><b>STEP 01</b><h3>アカウント登録</h3><p>申込フォームからElliotのアカウントを登録します。送信後、担当の西村よりメールでご連絡します。</p></article>
+        <article><b>STEP 02</b><h3>ログ連携</h3><p>記録が集まっているGoogleドライブと連携します。初期設定の打ち合わせで、担当が一緒に設定します。</p></article>
+        <article><b>STEP 03</b><h3>利用開始</h3><p>設定は以上で完了です。あとは、いつもどおり記録を残していただくだけです。</p></article>
       </div>
     </section>
 
     <section class="section" aria-labelledby="ready-title">
-      <p class="section-kicker">Checklist</p>
-      <h2 class="section-title" id="ready-title">お申し込み前にご確認ください</h2>
-      <p class="section-copy">次が揃っていると、そのまま開始できます。揃っていない項目があってもご相談いただけます。</p>
-      <ul class="checklist">
+      <p class="section-kicker">CHECKLIST</p>
+      <h2 class="section-title rv" id="ready-title">お申し込み前にご確認ください</h2>
+      <p class="section-copy rv">次が揃っていると、そのまま始められます。揃っていない項目があってもご相談いただけます。</p>
+      <ul class="checklist rv">
         <li><div><strong>Google Workspace を利用している</strong><small>記録の保存先がGoogleドライブであること。</small></div></li>
-        <li><div><strong>議事録・商談メモ・日報などが、テキストとして残っている</strong><small>書式が統一されている必要はありません。</small></div></li>
+        <li><div><strong>議事録・商談メモ・電話ログ・日報などが、テキストとして残っている</strong><small>書式が統一されている必要はありません。</small></div></li>
         <li><div><strong>社内のフォルダ共有について、判断できる方が関わっている</strong><small>社員の操作は「閲覧者で共有する」だけです。</small></div></li>
+        <li><div><strong>後日のインタビュー取材にご協力いただける</strong><small>公開範囲はご相談できます。</small></div></li>
         <li><div><strong>API利用料などの実費をご負担いただける</strong><small>金額の目安は、開始前のご相談でお伝えします。</small></div></li>
       </ul>
     </section>
 
-    <section class="section" id="apply" aria-labelledby="apply-title">
-      <div class="apply">
-        <h2 id="apply-title">モニターに申し込む</h2>
-        <p>フォームの送信後、担当の西村よりメールでご連絡します。まずは初期設定の打ち合わせで、設定と使い方をご案内します。判断に迷う段階でしたら、先に相談だけでも構いません。</p>
-        <div class="apply-actions">
-          <a class="button primary" href="https://main.dxjqhu5a20eel.amplifyapp.com/p/6a8964ec2f3b/setup" target="_blank" rel="noreferrer">申込フォームへ進む <span aria-hidden="true">↗</span></a>
-          <a class="button ghost" href="#contact">先に相談する</a>
-        </div>
-        <p class="apply-note">掲載内容・募集状況・提供条件は変更される場合があります。</p>
+    <section class="section" aria-labelledby="request-title">
+      <p class="section-kicker">YOUR REQUEST</p>
+      <h2 class="section-title rv" id="request-title">「こんなレポートがほしい」を教えてください。</h2>
+      <p class="section-copy rv">月に一度のレポートは、モニターのみなさんのご要望をもとに増やしています。これまでにいただいたのは、たとえばこんなご要望です。</p>
+      <div class="request-box rv">
+        <ul>
+          <li>離職しそうな社員を、こっそり教えてください。</li>
+          <li>MVPの社員を自動で選出してほしい。</li>
+          <li>営業のキラートークが知りたいです。</li>
+        </ul>
+        <a class="button ghost" href="https://forms.gle/7uEcdA1XBm9yV5BJ8" target="_blank" rel="noreferrer">リクエストを送る <span aria-hidden="true">↗</span></a>
       </div>
     </section>
 
     <section class="section" id="contact" aria-labelledby="contact-title">
-      <p class="section-kicker">Contact</p>
-      <h2 class="section-title" id="contact-title">相談する</h2>
-      <p class="section-copy">どの業務で使えるか、自社が対象になるか。判断に必要なことを一緒に確認します。</p>
-      <div class="contact-grid">
+      <p class="section-kicker">CONTACT</p>
+      <h2 class="section-title rv" id="contact-title">先に相談する</h2>
+      <p class="section-copy rv">どの業務で使えるか、自社が対象になるか。判断に必要なことを一緒に確認します。</p>
+      <div class="contact-grid rv">
         <a class="contact-card" href="https://lsync.humanoid-inc.net/entry?tag=elliot1&amp;channel=f766f570-0f18-40e6-bebc-6e2d20f0416c" target="_blank" rel="noreferrer">
           <b>LINE</b>
           <strong>公式LINE</strong>
           <span>AI西村が24時間いつでも回答します。</span>
         </a>
         <a class="contact-card" href="https://docs.google.com/forms/d/e/1FAIpQLSfsf8GUAJscF6J48NTug90zFhMzmaUyvHtGTC7yYVtAQoRY3A/viewform" target="_blank" rel="noreferrer">
-          <b>Form</b>
+          <b>FORM</b>
           <strong>お問い合わせフォーム</strong>
           <span>ご質問・ご相談はこちらから。担当よりご連絡します。</span>
         </a>
         <a class="contact-card" href="mailto:karin_nishimura@writeup.co.jp">
-          <b>Mail</b>
+          <b>MAIL</b>
           <strong>メール</strong>
           <span>株式会社ライトアップ 西村果林<br>karin_nishimura@writeup.co.jp</span>
         </a>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="request-title">
-      <p class="section-kicker">Request</p>
-      <h2 class="section-title" id="request-title">「こんなレポートがほしい」を教えてください</h2>
-      <p class="section-copy">月に一度のレポートは、モニターのみなさんのご要望をもとに増やしています。これまでに「離職しそうな社員をこっそり教えてほしい」「MVPの社員を自動で選出してほしい」「営業のキラートークが知りたい」といったご要望をいただきました。</p>
-      <a class="contact-card" href="https://forms.gle/7uEcdA1XBm9yV5BJ8" target="_blank" rel="noreferrer" style="max-width:420px">
-        <b>Form</b>
-        <strong>レポートのリクエストを送る</strong>
-        <span>モニター利用中でなくてもお送りいただけます。</span>
-      </a>
-    </section>
-
     <section class="section" aria-labelledby="faq-title">
       <p class="section-kicker">FAQ</p>
-      <h2 class="section-title" id="faq-title">よくあるご質問</h2>
-      <div class="faq">
+      <h2 class="section-title rv" id="faq-title">よくあるご質問</h2>
+      <div class="faq rv">
+        <details>
+          <summary>1年間、本当に無料ですか？</summary>
+          <p>初期費用と月額料金はいただきません。ご負担いただくのは、原価としてかかるAPI利用料などの実費だけです。上限や期間の扱いは、開始前に書面で確認します。1年が終わったあとの継続も自動ではありません。</p>
+        </details>
+        <details>
+          <summary>なぜ無料で提供しているのですか？</summary>
+          <p>Elliotをこれから1,000社に届けたいと考えていて、そのために実際の事例と、現場からの率直なご意見が必要だからです。最初の10社さまには、後日のインタビュー取材へのご協力と、バグ・使いにくい点のご共有をお願いしています。</p>
+        </details>
+        <details>
+          <summary>インタビューは必ず受けないといけませんか？</summary>
+          <p>後日の取材へのご協力は、お願いしている条件です。ただし公開範囲はご相談できます。顔出し・会社名・実名まで出していただけると助かりますが、難しい場合は匿名での掲載もご相談ください。記事には御社のご紹介を2行とリンクを掲載します。</p>
+        </details>
+        <details>
+          <summary>まだバグがあると書かれていますが、大丈夫ですか？</summary>
+          <p>正直に申し上げると、使いにくいところは残っています。だからこそ最初の10社さまにお願いしています。「ここで止まった」「ここが分かりにくい」とお知らせいただければ直しますし、ご要望はそのまま設計に反映されます。</p>
+        </details>
         <details>
           <summary>記録はライトアップ側で預かることになりますか？</summary>
           <p>いいえ。集約フォルダは御社のGoogleドライブ内に作成します。会社ごとにドライブが分かれているため、他社の記録と混ざることもありません。外部への共有は「集約フォルダ → Elliot」の1本だけで済みます。</p>
@@ -555,19 +649,27 @@
         </details>
         <details>
           <summary>どんな記録が対象になりますか？</summary>
-          <p>会議の記録、商談のメモ、日報など、テキストとして残っているものが対象です。書式が統一されている必要はなく、長さや書き方がばらばらでもそのまま読み込めます。</p>
+          <p>打ち合わせの議事録、商談のメモ、電話の会話ログ、日報など、テキストとして残っているものが対象です。書式が統一されている必要はなく、長さや書き方がばらばらでもそのまま読み込めます。</p>
         </details>
         <details>
-          <summary>モニターの途中でやめられますか？</summary>
-          <p>はい。停止のご連絡は、担当の西村までメールでも公式LINEでも構いません。モニター終了後の継続も自動ではありません。</p>
-        </details>
-        <details>
-          <summary>まだ検討段階ですが、相談だけでも可能ですか？</summary>
-          <p>もちろんです。どの業務で使えるか、自社が対象になるかを一緒に確認します。記録の整理以外のAI活用についてのご相談も承っています。</p>
+          <summary>販売パートナーにならないと使えませんか？</summary>
+          <p>いいえ、任意です。使っていただくだけでまったく問題ありません。「周りに5社・10社は紹介できそう」という方がいらっしゃれば、ぜひご一緒させてください、というお誘いです。</p>
         </details>
       </div>
     </section>
   </div>
+
+  <section class="cta" id="apply" aria-labelledby="cta-title">
+    <div class="shell">
+      <h2 id="cta-title">最初の10社に、なってください。</h2>
+      <p>フォームの送信後、担当の西村よりメールでご連絡します。まずは初期設定の打ち合わせで、設定と使い方をご案内します。</p>
+      <div class="actions">
+        <a class="button primary" href="https://main.dxjqhu5a20eel.amplifyapp.com/p/6a8964ec2f3b/setup" target="_blank" rel="noreferrer">1年間無料で申し込む <span aria-hidden="true">↗</span></a>
+        <a class="button ghost" href="https://lsync.humanoid-inc.net/entry?tag=elliot1&amp;channel=f766f570-0f18-40e6-bebc-6e2d20f0416c" target="_blank" rel="noreferrer">公式LINEで相談する <span aria-hidden="true">↗</span></a>
+      </div>
+      <p class="cta-note">掲載内容・募集状況・提供条件は変更される場合があります。</p>
+    </div>
+  </section>
 </main>
 
 <footer class="site-footer">
@@ -576,6 +678,24 @@
     <a class="back-link" href="../">← AIサービス モニター募集の一覧へ</a>
   </div>
 </footer>
+
+<script>
+  (() => {
+    const targets = [...document.querySelectorAll('.rv')];
+    if (!('IntersectionObserver' in window)) {
+      targets.forEach((el) => el.classList.add('in'));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -40px' });
+    targets.forEach((el) => io.observe(el));
+  })();
+</script>
 
 </body>
 </html>
