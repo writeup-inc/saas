@@ -103,7 +103,7 @@
       font-size: 12px; font-weight: 700; letter-spacing: .1em; color: var(--gold);
     }
     .kicker::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
-    h1 { margin: 0 0 18px; font-size: clamp(28px, 4.8vw, 46px); font-weight: 900; line-height: 1.44; }
+    h1 { margin: 0 0 18px; font-size: clamp(28px, 4.8vw, 46px); font-weight: 900; line-height: 1.44; text-wrap: balance; }
     h1 em { font-style: normal; color: var(--dawn); }
     .opening p { margin: 0; max-width: 40em; color: var(--ink-soft); font-size: 15.5px; }
     .opening-fig { margin: 0; justify-self: center; }
@@ -160,7 +160,7 @@
     .section { padding: 58px 0; border-bottom: 1px solid var(--line); }
     .section:last-of-type { border-bottom: 0; }
     .section-kicker { margin: 0 0 8px; font-family: var(--sans); font-size: 11.5px; font-weight: 700; letter-spacing: .22em; color: var(--gold); }
-    .section-title { margin: 0 0 12px; font-size: clamp(21px, 3vw, 29px); font-weight: 900; line-height: 1.48; }
+    .section-title { margin: 0 0 12px; font-size: clamp(21px, 3vw, 29px); font-weight: 900; line-height: 1.48; text-wrap: balance; }
     .section-copy { margin: 0 0 28px; max-width: 42em; color: var(--ink-soft); font-size: 14.5px; }
 
     /* ---------- 動画 ---------- */
@@ -381,6 +381,10 @@
     .back-link:hover { color: var(--gold); border-bottom-color: var(--gold); }
 
     /* ---------- reveal ---------- */
+    @media (max-width: 560px) {
+      h1 br, .section-title br, .decide h2 br, .cta h2 br, .handover h2 br { display: none; }
+    }
+
     .rv { transition: opacity .7s ease, transform .7s ease; }
     .rv.pending { opacity: 0; transform: translateY(16px); }
 
@@ -440,7 +444,7 @@
   <div class="shell">
     <section class="section" aria-labelledby="video-title">
       <p class="section-kicker">MOVIE</p>
-      <h2 class="section-title" id="video-title">まずは、ボクの自己紹介を<br>させてください。</h2>
+      <h2 class="section-title" id="video-title">まずは、<br>ボクの自己紹介をさせてください。</h2>
       <p class="section-copy">5分あれば、ボクが毎晩なにをしているか、分かってもらえると思います。</p>
       <div class="video-frame">
         <div class="video-ratio">
@@ -471,7 +475,7 @@
   <section class="premise" aria-labelledby="premise-title">
     <div class="shell">
       <p class="section-kicker">なぜ0円なのか</p>
-      <h2 class="section-title" id="premise-title">1,000社に届ける前の、<br>最初の10社になってください。</h2>
+      <h2 class="section-title" id="premise-title">1,000社に届ける前の、<br>最初の10社になってもらえませんか？</h2>
       <p class="section-copy">1,000社に使っていただくために、まだ足りないものがあります。実際に使われた事例と、現場からの率直なご意見です。だから最初の10社さまは1年間0円。その代わり、3つだけお願いさせてください。</p>
 
       <div class="asks">
@@ -508,76 +512,100 @@
 
       <figure class="art rv">
         <div class="art-scroll">
-          <svg viewBox="0 0 880 200" role="img" aria-labelledby="arc-title">
-            <title id="arc-title">夜中0時から朝7時にかけてElliotが働き、朝に示唆が届くまでの流れ</title>
+          <svg viewBox="0 0 880 250" role="img" aria-labelledby="arc-title">
+            <title id="arc-title">夜中0時にログが集まり、Elliotが読んで蒸留し、朝7時に示唆が届き、月末に経営レポートになるまでの流れ</title>
             <defs>
-              <linearGradient id="arcLine" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#d8b26a" stop-opacity=".35"/>
-                <stop offset="55%" stop-color="#d8b26a"/>
-                <stop offset="100%" stop-color="#e8c38d"/>
-              </linearGradient>
               <linearGradient id="arcSky" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#0b1424"/>
-                <stop offset="70%" stop-color="#22283e"/>
-                <stop offset="100%" stop-color="#5a4a3d"/>
+                <stop offset="0%" stop-color="#070d19"/>
+                <stop offset="58%" stop-color="#1b2236"/>
+                <stop offset="100%" stop-color="#6b5645"/>
+              </linearGradient>
+              <linearGradient id="arcLine" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#d8b26a" stop-opacity=".4"/>
+                <stop offset="60%" stop-color="#d8b26a"/>
+                <stop offset="100%" stop-color="#e8c38d"/>
               </linearGradient>
             </defs>
 
-            <rect x="0" y="0" width="880" height="200" fill="url(#arcSky)" rx="4"/>
-            <g fill="#ffffff" opacity=".55">
-              <circle cx="96" cy="34" r="1.4"/><circle cx="178" cy="58" r="1.1"/><circle cx="250" cy="28" r="1.5"/>
-              <circle cx="326" cy="52" r="1.1"/><circle cx="404" cy="30" r="1.3"/><circle cx="486" cy="56" r="1"/>
+            <rect x="0" y="0" width="880" height="250" fill="url(#arcSky)" rx="4"/>
+            <g fill="#ffffff" opacity=".5">
+              <circle cx="120" cy="32" r="1.4"/><circle cx="230" cy="52" r="1.1"/><circle cx="350" cy="28" r="1.4"/>
+              <circle cx="470" cy="50" r="1"/><circle cx="560" cy="30" r="1.2"/>
             </g>
+            <text class="svg-note" x="30" y="34" fill="#d8b26a">夜</text>
+            <text class="svg-note" x="850" y="34" text-anchor="end" fill="#e8c38d">朝</text>
 
-            <g fill="none" stroke="#d8b26a" stroke-width="1.4" opacity=".9">
-              <path d="M64 44a13 13 0 1 0 12 17 15 15 0 0 1-12-17z"/>
-            </g>
-            <g stroke="#e8c38d" stroke-width="1.4" opacity=".95">
-              <circle cx="822" cy="50" r="10" fill="none"/>
-              <path d="M822 30v-7M822 77v-7M802 50h-7M849 50h-7M807 35l-5-5M842 70l-5-5M807 65l-5 5M842 30l-5 5" fill="none" stroke-linecap="round"/>
-            </g>
-
-            <path d="M60 118h760" stroke="url(#arcLine)" stroke-width="2" fill="none"/>
+            <path d="M76 125h736" stroke="url(#arcLine)" stroke-width="2" fill="none"/>
 
             <g>
-              <circle cx="60" cy="118" r="6.5" fill="#0b1424" stroke="#d8b26a" stroke-width="2"/>
-              <text class="svg-time" x="60" y="103" text-anchor="middle">00:00</text>
-              <text class="svg-label" x="60" y="146" text-anchor="middle">集まる</text>
-              <text class="svg-sub" x="60" y="166" text-anchor="middle">ログが揃う</text>
+              <text class="svg-time" x="76" y="68" text-anchor="middle">00:00</text>
+              <circle cx="76" cy="125" r="30" fill="#070d19" stroke="#d8b26a" stroke-width="1.8"/>
+              <g transform="translate(64,113)" fill="none" stroke="#d8b26a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 5.5h6l2 2.5h12v11H2z"/>
+              </g>
+              <text class="svg-label" x="76" y="186" text-anchor="middle">集まる</text>
+              <text class="svg-sub" x="76" y="208" text-anchor="middle">その日のログが揃う</text>
             </g>
+
             <g>
-              <circle cx="250" cy="118" r="6.5" fill="#0b1424" stroke="#d8b26a" stroke-width="2"/>
-              <text class="svg-time" x="250" y="103" text-anchor="middle">01:00</text>
-              <text class="svg-label" x="250" y="146" text-anchor="middle">読む</text>
-              <text class="svg-sub" x="250" y="166" text-anchor="middle">種類をまたいで</text>
+              <text class="svg-time" x="260" y="68" text-anchor="middle">01:00</text>
+              <circle cx="260" cy="125" r="30" fill="#0c1322" stroke="#d8b26a" stroke-width="1.8"/>
+              <g transform="translate(248,113)" fill="none" stroke="#d8b26a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1.5 12s3.6-6 10.5-6 10.5 6 10.5 6-3.6 6-10.5 6S1.5 12 1.5 12z"/>
+                <circle cx="12" cy="12" r="2.6"/>
+              </g>
+              <text class="svg-label" x="260" y="186" text-anchor="middle">読む</text>
+              <text class="svg-sub" x="260" y="208" text-anchor="middle">種類をまたいで全部</text>
             </g>
+
             <g>
-              <circle cx="440" cy="118" r="6.5" fill="#0b1424" stroke="#d8b26a" stroke-width="2"/>
-              <text class="svg-time" x="440" y="103" text-anchor="middle">04:00</text>
-              <text class="svg-label" x="440" y="146" text-anchor="middle">蒸留する</text>
-              <text class="svg-sub" x="440" y="166" text-anchor="middle">ノウハウを取り出す</text>
+              <text class="svg-time" x="444" y="68" text-anchor="middle">04:00</text>
+              <circle cx="444" cy="125" r="30" fill="#141c2e" stroke="#d8b26a" stroke-width="1.8"/>
+              <g transform="translate(432,113)" fill="none" stroke="#d8b26a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2.5 4.5h19l-7 8v8l-5 2.5v-10.5z"/>
+              </g>
+              <text class="svg-label" x="444" y="186" text-anchor="middle">蒸留する</text>
+              <text class="svg-sub" x="444" y="208" text-anchor="middle">使える形を取り出す</text>
             </g>
+
             <g>
-              <circle cx="630" cy="118" r="6.5" fill="#22283e" stroke="#e8c38d" stroke-width="2"/>
-              <text class="svg-time dawn" x="630" y="103" text-anchor="middle">07:00</text>
-              <text class="svg-label" x="630" y="146" text-anchor="middle">届く</text>
-              <text class="svg-sub" x="630" y="166" text-anchor="middle">朝、示唆が1通</text>
+              <text class="svg-time dawn" x="628" y="68" text-anchor="middle">07:00</text>
+              <circle cx="628" cy="125" r="30" fill="#33313c" stroke="#e8c38d" stroke-width="1.8"/>
+              <g transform="translate(616,113)" fill="none" stroke="#e8c38d" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1.5" y="5" width="21" height="14" rx="2"/>
+                <path d="M1.5 6.5L12 14l10.5-7.5"/>
+              </g>
+              <text class="svg-label" x="628" y="186" text-anchor="middle">届く</text>
+              <text class="svg-sub" x="628" y="208" text-anchor="middle">朝、示唆が1通</text>
             </g>
+
             <g>
-              <circle cx="820" cy="118" r="6.5" fill="#5a4a3d" stroke="#e8c38d" stroke-width="2"/>
-              <text class="svg-time dawn" x="820" y="103" text-anchor="middle">月末</text>
-              <text class="svg-label" x="820" y="146" text-anchor="middle">まとめる</text>
-              <text class="svg-sub" x="820" y="166" text-anchor="middle">経営レポート</text>
+              <text class="svg-time dawn" x="812" y="68" text-anchor="middle">月末</text>
+              <circle cx="812" cy="125" r="30" fill="#6b5645" stroke="#e8c38d" stroke-width="1.8"/>
+              <g transform="translate(800,113)" fill="none" stroke="#e8c38d" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 2.5h9l6 6v13H4z"/>
+                <path d="M13 2.5v6h6"/>
+                <path d="M7.5 18v-3M11 18v-5.5M14.5 18v-2"/>
+              </g>
+              <text class="svg-label" x="812" y="186" text-anchor="middle">まとめる</text>
+              <text class="svg-sub" x="812" y="208" text-anchor="middle">経営レポートが1本</text>
             </g>
           </svg>
         </div>
+        <figcaption>みなさんが帰ったあとから、翌朝出社するまでのあいだに起きていることです。</figcaption>
       </figure>
 
       <p class="section-copy rv">やっているのは、書式も長さもばらばらの記録を種類をまたいで読んで、先週との違いや、繰り返し出てくる言葉を拾うこと。朝にお届けする1通には、「今日、朝いちでメンバーに何と声をかけるか」まで書いておきます。</p>
 
       <div class="aside-box rv">
         <h3>「こんなレポートがほしい」も、聞かせてください</h3>
-        <p>月末のレポートは、モニターのみなさんのご要望をもとに増やしています。これまでにいただいたのは「離職しそうな社員をこっそり教えてほしい」「MVPを自動で選出してほしい」「営業のキラートークが知りたい」など。ボクが書きます。</p>
+        <p>月末のレポートは、モニターのみなさんのご要望をもとに増やしています。これまでにいただいたのは、たとえばこんなご要望です。</p>
+        <ul>
+          <li>離職しそうな社員を、こっそり教えてほしい。</li>
+          <li>MVPの社員を、自動で選出してほしい。</li>
+          <li>営業のキラートークが知りたい。</li>
+        </ul>
+        <p>書くのはボクです。思いついたら、送ってください。</p>
         <a class="button ghost small" href="https://forms.gle/7uEcdA1XBm9yV5BJ8" target="_blank" rel="noreferrer">リクエストを送る <span aria-hidden="true">↗</span></a>
       </div>
     </section>
@@ -747,7 +775,7 @@
 
     <section class="section" aria-labelledby="announce-title">
       <p class="section-kicker">ご担当者向け ／ 04</p>
-      <h2 class="section-title rv" id="announce-title">社内には、この文面を<br>そのまま流してください。</h2>
+      <h2 class="section-title rv" id="announce-title">社内には、<br>この文面をそのまま流してください。</h2>
       <p class="section-copy rv">〇〇の部分だけ差し替えてお使いください。</p>
       <details class="announce-toggle rv">
         <summary>社内告知の文例を開く</summary>
