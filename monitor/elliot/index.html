@@ -10,7 +10,7 @@
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="WRITEUP AI MONITOR">
   <meta property="og:title" content="Elliot｜最初の10社になってください">
-  <meta property="og:description" content="1年間0円。夜中の12時に現れて社内の記録を読み、朝に要点を届ける小人のAIです。">
+  <meta property="og:description" content="1年間0円。夜中の12時に現れて社内の記録を読み、朝に要点を届けるコビトのAIです。">
   <meta property="og:url" content="https://writeup-inc.github.io/saas/monitor/elliot/">
   <meta property="og:image" content="https://writeup-inc.github.io/saas/monitor/elliot/assets/og.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -288,7 +288,41 @@
       .fact-row dd { padding: 14px 18px 18px; }
     }
 
+    /* ---------- 用意するもの ---------- */
+    .needs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 0 0 20px; }
+    .needs > div { position: relative; padding: 24px 22px 22px 64px; border: 1px solid var(--line-strong); background: var(--night-soft); }
+    .needs .no {
+      position: absolute; left: 20px; top: 24px;
+      width: 30px; height: 30px; border-radius: 50%;
+      border: 1px solid var(--gold); color: var(--gold);
+      display: grid; place-items: center;
+      font-family: var(--serif); font-weight: 900; font-size: 15px;
+    }
+    .needs strong { display: block; margin-bottom: 5px; font-family: var(--serif); font-size: 18px; }
+    .needs small { color: var(--muted); font-size: 12.5px; line-height: 1.8; }
+    @media (max-width: 680px) { .needs { grid-template-columns: 1fr; } }
+
+    .notes { margin: 0; padding-left: 20px; color: var(--ink-soft); font-size: 13.5px; }
+    .notes li { margin-bottom: 4px; }
+
     /* ---------- 社内告知 ---------- */
+    .announce-toggle { border: 1px solid var(--line-strong); background: var(--night-deep); }
+    .announce-toggle > summary {
+      cursor: pointer; list-style: none; position: relative;
+      padding: 16px 46px 16px 22px;
+      font-family: var(--serif); font-size: 16px; font-weight: 700;
+    }
+    .announce-toggle > summary::-webkit-details-marker { display: none; }
+    .announce-toggle > summary::after {
+      content: ""; position: absolute; right: 20px; top: 50%;
+      width: 9px; height: 9px;
+      border-right: 2px solid var(--gold); border-bottom: 2px solid var(--gold);
+      transform: translateY(-70%) rotate(45deg); transition: transform .2s ease;
+    }
+    .announce-toggle[open] > summary::after { transform: translateY(-30%) rotate(225deg); }
+    .announce-toggle > summary:hover { color: var(--gold); }
+    .announce-toggle .announce { border: 0; border-top: 1px solid var(--line); }
+
     .announce { border: 1px solid var(--line-strong); background: var(--night-soft); }
     .announce-head { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 14px 22px; border-bottom: 1px solid var(--line); background: var(--night-deep); }
     .announce-head > span:first-child { margin-right: auto; font-size: 12px; font-weight: 700; letter-spacing: .14em; color: var(--gold); }
@@ -377,7 +411,7 @@
       <div>
         <span class="kicker">先着10社・1年間0円</span>
         <h1>みんなが眠っている<br>あいだに、<em>ボクが働きます。</em></h1>
-        <p>ボクはElliot。毎晩、夜中の12時にオフィスに現れる小人です。打ち合わせのログも、電話の会話ログも、日報も全部読んで、朝には「これは知っておいたほうがいい」ことを、みなさんにお届けします。</p>
+        <p>ボクはElliot。毎晩、夜中の12時にオフィスに現れるコビトです。打ち合わせのログも、電話の会話ログも、日報も全部読んで、朝には「これは知っておいたほうがいい」ことを、みなさんにお届けします。<br>名前は、靴屋が眠っているあいだに靴を仕上げてくれる、あの童話のコビトから取りました。</p>
       </div>
       <figure class="opening-fig">
         <img src="assets/elliot.png" alt="AIアシスタント「Elliot」のイラスト" width="186" height="186">
@@ -469,7 +503,7 @@
   <div class="shell">
     <section class="section" aria-labelledby="night-title">
       <p class="section-kicker">ONE NIGHT</p>
-      <h2 class="section-title rv" id="night-title">夜中の0時から朝7時のあいだに、<br>Elliotは仕事を終えています。</h2>
+      <h2 class="section-title rv" id="night-title">夜中の0時にやってきて、<br>朝7時までに仕事を終えています。</h2>
 
       <figure class="art rv">
         <div class="art-scroll">
@@ -538,45 +572,12 @@
         </div>
       </figure>
 
-      <ol class="tl">
-        <li class="rv">
-          <span class="tl-time">00:00</span>
-          <h3>小人が現れる</h3>
-          <p>御社のドライブ内にある集約フォルダに、その日のログが揃います。</p>
-        </li>
-        <li class="rv">
-          <span class="tl-time">01:00</span>
-          <h3>全部、読む</h3>
-          <p>書式も長さもばらばらのテキストを、種類をまたいで読みます。</p>
-        </li>
-        <li class="rv">
-          <span class="tl-time">04:00</span>
-          <h3>蒸留する</h3>
-          <p>先週との違い、繰り返し出てくる言葉。生ログから使える形を取り出します。</p>
-        </li>
-        <li class="rv dawn">
-          <span class="tl-time">07:00</span>
-          <h3>朝、示唆が届く</h3>
-          <p>「今日、朝いちでメンバーに何と声をかけるか」まで書かれています。</p>
-        </li>
-        <li class="rv dawn">
-          <span class="tl-time">月末</span>
-          <h3>経営レポートになる</h3>
-          <p>1か月分をまとめ、見たい切り口で経営者向けのレポートにします。</p>
-        </li>
-      </ol>
-    </section>
+      <p class="section-copy rv">コビトがしているのは、書式も長さもばらばらの記録を種類をまたいで読み、先週との違いや、繰り返し出てくる言葉を拾うことです。朝に届く1通には、「今日、朝いちでメンバーに何と声をかけるか」まで書かれています。</p>
 
-    <section class="section" aria-labelledby="soon-title">
-      <p class="section-kicker">WHAT COMES NEXT</p>
-      <h2 class="section-title rv" id="soon-title">1,000社そろった夜には、<br>小人たちを引き合わせます。</h2>
-      <div class="soon rv">
-        <span class="badge">構想／開発中</span>
-        <ul>
-          <li><strong>夜中2時、AIしか参加できない異業種交流会。</strong>各社のElliotが集まって話し、意気投合したら翌朝「アポイントを取ってきました」と報告してきます。</li>
-          <li><strong>夜中3時、AI展示会。</strong>御社のElliotが代わりに行って、役に立ちそうな資料をもらってきます。</li>
-        </ul>
-        <p>いずれも構想段階の機能で、年内の実現を目指して開発しています。提供時期をお約束するものではありません。</p>
+      <div class="aside-box rv">
+        <h3>「こんなレポートがほしい」もお受けします</h3>
+        <p>月末のレポートは、モニターのみなさんのご要望をもとに増やしています。これまでにいただいたのは「離職しそうな社員をこっそり教えてほしい」「MVPを自動で選出してほしい」「営業のキラートークが知りたい」など。</p>
+        <a class="button ghost small" href="https://forms.gle/7uEcdA1XBm9yV5BJ8" target="_blank" rel="noreferrer">リクエストを送る <span aria-hidden="true">↗</span></a>
       </div>
     </section>
   </div>
@@ -599,7 +600,7 @@
       <div class="handover-mark" aria-hidden="true">↓</div>
       <div>
         <h2 id="handover-title">ここからは、ご担当者の方向けです。</h2>
-        <p>機能の一覧、導入の手順、ご用意いただくもの、社内への伝え方。このページをそのまま転送していただければ、導入の手引きとして使えます。</p>
+        <p>できること、導入の手順、ご用意いただくもの、社内への伝え方。このページをそのまま転送していただければ、導入の手引きとして使えます。</p>
       </div>
     </div>
   </section>
@@ -607,43 +608,43 @@
   <div class="shell">
     <section class="section" aria-labelledby="jobs-title">
       <p class="section-kicker">ご担当者向け ／ 01</p>
-      <h2 class="section-title rv" id="jobs-title">できることは、6つです。</h2>
+      <h2 class="section-title rv" id="jobs-title">社内のログに聞けて、<br>いい答えは毎朝、自動で届きます。</h2>
       <div class="jobs rv">
         <article>
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5A2.5 2.5 0 0 1 5.5 3h13A2.5 2.5 0 0 1 21 5.5v8a2.5 2.5 0 0 1-2.5 2.5H9l-4.5 4v-4A2.5 2.5 0 0 1 3 13.5z"/><path d="M9.9 8.1a2.2 2.2 0 1 1 2.6 2.2v1.1"/><path d="M12.5 13.4v.2"/></svg>
           <b>01</b>
-          <h3>社内のログに、聞く</h3>
-          <p>使い方はChatGPTとほぼ同じ。違うのは、答えるときに社内のログを参照していることです。</p>
+          <h3>ChatGPTのように聞ける</h3>
+          <p>違うのは、答えるときに社内のログを参照していることです。</p>
         </article>
         <article>
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12.5" r="7.5"/><path d="M12 8.5v4l2.6 1.7"/><path d="M18.5 4.5V7H16"/></svg>
           <b>02</b>
-          <h3>いい問いは、定期配信にする</h3>
-          <p>「毎朝ほしい」と思った答えは、毎日・毎週・毎月の配信に設定できます。</p>
+          <h3>毎朝、勝手に届く</h3>
+          <p>いい答えが返ってきた問いは、毎日・毎週・毎月の配信に変えられます。</p>
         </article>
         <article>
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5h16l-6 7v7.5l-4 2V11.5z"/></svg>
           <b>03</b>
-          <h3>ノウハウを蒸留する</h3>
-          <p>生ログからノウハウをまとめ、有益度のスコアをつけます。どれが現場で効く話か分かります。</p>
+          <h3>ノウハウが浮かび上がる</h3>
+          <p>生ログからまとめ、有益度のスコアをつけます。どれが効く話か分かります。</p>
         </article>
         <article>
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="9" r="3.4"/><path d="M4.8 20a6.2 6.2 0 0 1 12.4 0"/><path d="M19 3l.7 1.9L21.6 5.6l-1.9.7L19 8.2l-.7-1.9-1.9-.7 1.9-.7z" fill="currentColor" stroke="none"/></svg>
           <b>04</b>
           <h3>社員一人ひとりがAIになる</h3>
-          <p>社員それぞれのAIができます。「あの見積もり、どこだっけ？」と本人のAIに聞けます。</p>
+          <p>「あの見積もり、どこだっけ？」と、本人のAIに聞けるようになります。</p>
         </article>
         <article>
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.8 5.4A1.9 1.9 0 0 1 4.7 3.5h8.1a1.9 1.9 0 0 1 1.9 1.9v3.8a1.9 1.9 0 0 1-1.9 1.9H8l-3 2.5v-2.5h-.3a1.9 1.9 0 0 1-1.9-1.9z"/><path d="M17.2 8.6h2.1a1.9 1.9 0 0 1 1.9 1.9v3.8a1.9 1.9 0 0 1-1.9 1.9H19v2.5l-3-2.5h-3.1"/></svg>
           <b>05</b>
-          <h3>AI同士で話をさせる</h3>
-          <p>テーマを決めると社員のAI同士が議論し、議事録を残します。「来期の予算」でも構いません。</p>
+          <h3>AI同士が話し合う</h3>
+          <p>テーマを決めると社員のAI同士が議論し、議事録を残します。</p>
         </article>
         <article>
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5"/><path d="M9.5 17.5v-3M12 17.5v-5.5M14.5 17.5v-2"/></svg>
           <b>06</b>
-          <h3>経営レポートを自動で作る</h3>
-          <p>月に一度、経営者向けのレポートを生成します。切り口はご要望に合わせて変えられます。</p>
+          <h3>月に一度、経営レポート</h3>
+          <p>見たい切り口に合わせて、内容を変えられます。</p>
         </article>
       </div>
 
@@ -673,7 +674,7 @@
 
     <section class="section" aria-labelledby="facts-title">
       <p class="section-kicker">ご担当者向け ／ 03</p>
-      <h2 class="section-title rv" id="facts-title">ご用意いただくのは、<br>Googleドライブとアカウントだけです。</h2>
+      <h2 class="section-title rv" id="facts-title">ご用意いただくのは、<br>この2つだけです。</h2>
 
       <figure class="art rv">
         <div class="art-scroll">
@@ -723,31 +724,32 @@
         <figcaption>社員の操作は「閲覧者で共有する」「フォームにURLを送る」の2ステップだけ。記録は御社のGoogleドライブから出ません。</figcaption>
       </figure>
 
-      <dl class="facts rv">
-        <div class="fact-row">
-          <dt>ご用意いただくもの</dt>
-          <dd>Google Workspace のアカウントと、記録を保存しているGoogleドライブ。</dd>
+      <div class="needs rv">
+        <div>
+          <span class="no">1</span>
+          <strong>Google Workspace のアカウント</strong>
+          <small>すでにお使いのもので構いません。</small>
         </div>
-        <div class="fact-row">
-          <dt>社員の操作</dt>
-          <dd>「閲覧者」で共有し、フォームにURLを送る。<small>編集権限はお預かりしません。</small></dd>
+        <div>
+          <span class="no">2</span>
+          <strong>記録が入っているGoogleドライブ</strong>
+          <small>集約用のフォルダは、こちらで御社のドライブ内に作ります。</small>
         </div>
-        <div class="fact-row">
-          <dt>データの取り扱い</dt>
-          <dd>会社ごとにドライブが分かれるため、他社の記録と混ざりません。<small>詳細は開始前に書面で確認します。</small></dd>
-        </div>
-        <div class="fact-row">
-          <dt>ご負担</dt>
-          <dd>API利用料などの実費のみ。初期費用・月額料金はかかりません。<small>目安は開始前のご相談でお伝えします。</small></dd>
-        </div>
-      </dl>
+      </div>
+      <ul class="notes rv">
+        <li>社員の操作は「閲覧者で共有する」「フォームにURLを送る」の2つだけ。編集権限はお預かりしません。</li>
+        <li>会社ごとにドライブが分かれるため、他社の記録と混ざりません。詳細は開始前に書面で確認します。</li>
+        <li>ご負担はAPI利用料などの実費のみ。初期費用・月額料金はかかりません。</li>
+      </ul>
     </section>
 
     <section class="section" aria-labelledby="announce-title">
       <p class="section-kicker">ご担当者向け ／ 04</p>
-      <h2 class="section-title rv" id="announce-title">社内にはこう伝えると、<br>すんなり進みます。</h2>
-      <p class="section-copy rv">そのままコピーしてお使いください。〇〇の部分だけ差し替えてください。</p>
-      <div class="announce rv">
+      <h2 class="section-title rv" id="announce-title">社内には、この文面を<br>そのまま流してください。</h2>
+      <p class="section-copy rv">〇〇の部分だけ差し替えてお使いください。</p>
+      <details class="announce-toggle rv">
+        <summary>社内告知の文例を開く</summary>
+        <div class="announce">
         <div class="announce-head">
           <span>社内告知の文例</span>
           <button class="button ghost small" type="button" id="copy-announce">文面をコピー</button>
@@ -772,18 +774,12 @@
 うまくいけば、翌朝には「昨日社内で何が起きていたか」の要点が届くようになります。
 
 ご不明な点は〇〇までお願いします。</pre>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="request-title">
-      <p class="section-kicker">ご担当者向け ／ 05</p>
-      <h2 class="section-title rv" id="request-title">「こんなレポートがほしい」は、<br>そのまま作ります。</h2>
-      <p class="section-copy rv">これまでにいただいたご要望は、たとえば「離職しそうな社員をこっそり教えてほしい」「MVPを自動で選出してほしい」「営業のキラートークが知りたい」でした。</p>
-      <a class="button ghost" href="https://forms.gle/7uEcdA1XBm9yV5BJ8" target="_blank" rel="noreferrer">リクエストを送る <span aria-hidden="true">↗</span></a>
+        </div>
+      </details>
     </section>
 
     <section class="section" aria-labelledby="faq-title">
-      <p class="section-kicker">ご担当者向け ／ 06</p>
+      <p class="section-kicker">ご担当者向け ／ 05</p>
       <h2 class="section-title rv" id="faq-title">よくあるご質問</h2>
       <div class="faq rv">
         <details>
