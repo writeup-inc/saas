@@ -20,6 +20,7 @@
   <meta name="twitter:title" content="出会いを、営業会社に変える。">
   <meta name="twitter:description" content="名刺を台帳化し、人脈を紹介と継続収益へ。12個のAIエージェントで始める営業代行事業。">
   <meta name="twitter:image" content="https://writeup-inc.github.io/saas/ai-sales-agency-starter/og-card.svg">
+  <link rel="preload" as="image" href="./hero-network.webp" type="image/webp" fetchpriority="high">
   <style>
     :root {
       --ink: #102219;
@@ -121,29 +122,47 @@
 
     .hero {
       position: relative;
-      min-height: 790px;
-      padding: 142px 0 94px;
+      isolation: isolate;
+      min-height: 900px;
+      display: grid;
+      padding: 132px 0 74px;
       color: white;
-      background:
-        radial-gradient(circle at 83% 18%, rgba(105,173,255,.22), transparent 27%),
-        radial-gradient(circle at 8% 88%, rgba(201,255,70,.13), transparent 30%),
-        var(--deep);
+      background-color: var(--deep);
+      background-image:
+        linear-gradient(90deg, rgba(5,17,11,.98) 0%, rgba(5,17,11,.93) 35%, rgba(5,17,11,.62) 57%, rgba(5,17,11,.1) 84%),
+        linear-gradient(0deg, rgba(5,17,11,.96) 0%, transparent 42%),
+        url("./hero-network.webp");
+      background-position: center;
+      background-size: cover;
     }
-    .hero::after { content: ""; position: absolute; inset: auto 0 0; height: 10px; background: linear-gradient(90deg,var(--lime) 0 44%,var(--blue) 44% 70%,var(--coral) 70%); }
-    .hero-grid { display: grid; grid-template-columns: minmax(0,1.06fr) minmax(400px,.94fr); gap: clamp(46px,7vw,96px); align-items: center; }
-    .eyebrow { display: flex; align-items: center; gap: 12px; margin: 0 0 24px; color: var(--lime); font-size: 12px; font-weight: 900; letter-spacing: .12em; }
-    .eyebrow::before { content: ""; width: 40px; height: 2px; background: currentColor; }
-    h1 { margin: 0; font-size: clamp(60px,7.25vw,100px); font-weight: 950; line-height: .95; letter-spacing: -.075em; }
+    .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .17; background-image: radial-gradient(rgba(255,255,255,.32) .65px,transparent .65px); background-size: 6px 6px; mix-blend-mode: soft-light; }
+    .hero::after { content: ""; position: absolute; inset: auto 0 0; height: 9px; background: linear-gradient(90deg,var(--lime) 0 44%,var(--blue) 44% 70%,var(--coral) 70%); }
+    .hero-grid { position: relative; min-height: 694px; display: flex; align-items: center; }
+    .hero-copy { position: relative; z-index: 2; width: min(640px,58%); }
+    .eyebrow { width: fit-content; display: flex; align-items: center; gap: 12px; margin: 0 0 26px; padding: 8px 13px; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; color: var(--lime); background: rgba(8,21,15,.38); backdrop-filter: blur(10px); font-size: 10px; font-weight: 900; letter-spacing: .14em; }
+    .eyebrow::before { content: ""; width: 28px; height: 2px; background: currentColor; }
+    h1 { margin: 0; font-size: clamp(60px,7.25vw,100px); font-weight: 950; line-height: .93; letter-spacing: -.075em; text-shadow: 0 8px 40px rgba(0,0,0,.28); }
     h1 em { color: var(--lime); font-style: normal; }
-    .hero-lead { max-width: 650px; margin: 28px 0 0; color: rgba(255,255,255,.72); font-size: clamp(16px,1.9vw,20px); }
+    .hero-lead { max-width: 610px; margin: 30px 0 0; color: rgba(255,255,255,.76); font-size: clamp(16px,1.75vw,19px); text-shadow: 0 2px 20px rgba(0,0,0,.42); }
     .hero-lead strong { color: white; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 32px; }
     .button-primary { color: var(--deep); background: var(--lime); }
     .button-secondary { color: white; border: 1px solid rgba(255,255,255,.34); }
     .button-secondary:hover { background: rgba(255,255,255,.08); }
     .hero-facts { display: flex; flex-wrap: wrap; gap: 10px; padding: 0; margin: 27px 0 0; list-style: none; }
-    .hero-facts li { padding: 7px 11px; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; color: rgba(255,255,255,.68); font-size: 11px; font-weight: 800; }
+    .hero-facts li { padding: 7px 11px; border: 1px solid rgba(255,255,255,.16); border-radius: 999px; color: rgba(255,255,255,.75); background: rgba(8,21,15,.36); backdrop-filter: blur(8px); font-size: 11px; font-weight: 800; }
     .hero-facts li::before { content: "●"; margin-right: 7px; color: var(--blue); }
+
+    .hero-photo-note { position: absolute; right: 0; bottom: 12px; z-index: 2; width: min(320px,30%); padding: 22px 22px 20px; border: 1px solid rgba(255,255,255,.19); border-radius: 20px; background: rgba(8,21,15,.66); box-shadow: 0 24px 80px rgba(0,0,0,.25); backdrop-filter: blur(18px); }
+    .hero-photo-note small { display: block; color: var(--lime); font-size: 9px; font-weight: 950; letter-spacing: .15em; }
+    .hero-photo-note strong { display: block; margin-top: 7px; font-family: ui-serif, "Hiragino Mincho ProN", "Yu Mincho", serif; font-size: clamp(21px,2.5vw,30px); font-weight: 700; line-height: 1.35; letter-spacing: -.025em; }
+    .hero-photo-note span { display: block; margin-top: 12px; color: rgba(255,255,255,.58); font-size: 10px; font-weight: 800; letter-spacing: .08em; }
+
+    .emotion { padding: 82px 0 86px; color: white; background: var(--deep-2); }
+    .emotion-grid { display: grid; grid-template-columns: minmax(0,1.28fr) minmax(280px,.72fr); gap: clamp(44px,8vw,108px); align-items: end; padding-top: 27px; border-top: 1px solid rgba(255,255,255,.18); }
+    .emotion-quote { margin: 0; font-family: ui-serif, "Hiragino Mincho ProN", "Yu Mincho", serif; font-size: clamp(38px,5.5vw,70px); font-weight: 700; line-height: 1.25; letter-spacing: -.045em; text-wrap: balance; }
+    .emotion-quote em { color: var(--lime); font-style: normal; }
+    .emotion-copy { margin: 0; color: rgba(255,255,255,.65); font-size: 14px; }
 
     .network-panel { position: relative; aspect-ratio: 1/1.03; overflow: hidden; border: 1px solid rgba(255,255,255,.17); border-radius: 34px; background: rgba(255,255,255,.05); box-shadow: 0 34px 100px rgba(0,0,0,.25); }
     .network-panel::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px); background-size: 34px 34px; mask-image: linear-gradient(to bottom,black,transparent); }
@@ -164,13 +183,20 @@
 
     .process { background: var(--white); }
     .process-head { max-width: 970px; }
-    .start-point { display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center; margin-top: 42px; padding: 26px 28px; border-radius: 22px; color: white; background: var(--deep); box-shadow: var(--shadow); }
-    .start-badge { width: 76px; height: 76px; display: grid; place-items: center; border-radius: 50%; color: var(--deep); background: var(--lime); font-size: 11px; font-weight: 950; letter-spacing: .1em; }
-    .start-copy strong { display: block; color: var(--lime); font-size: clamp(23px,3vw,34px); line-height: 1.2; letter-spacing: -.035em; }
-    .start-line { display: inline; }
-    .start-copy p { margin: 8px 0 0; color: rgba(255,255,255,.68); font-size: 13px; }
+    .capture-story { position: relative; display: grid; grid-template-columns: minmax(0,1.15fr) minmax(330px,.85fr); min-height: 430px; overflow: hidden; margin: 48px 0 0; border-radius: 28px; color: white; background: var(--deep); box-shadow: var(--shadow); }
+    .capture-photo { position: relative; min-height: 430px; overflow: hidden; }
+    .capture-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 48%, var(--deep) 100%), linear-gradient(0deg, rgba(8,21,15,.45), transparent 46%); }
+    .capture-photo img { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .capture-photo-label { position: absolute; left: 23px; bottom: 21px; z-index: 1; display: flex; align-items: center; gap: 9px; padding: 8px 12px; border: 1px solid rgba(255,255,255,.22); border-radius: 999px; background: rgba(8,21,15,.6); backdrop-filter: blur(10px); font-size: 9px; font-weight: 950; letter-spacing: .13em; }
+    .capture-photo-label::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 5px rgba(201,255,70,.16); }
+    .capture-copy { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center; padding: clamp(34px,5vw,58px) clamp(28px,5vw,54px) clamp(34px,5vw,58px) 10px; }
+    .start-badge { width: fit-content; display: inline-flex; align-items: center; gap: 9px; padding: 7px 11px; border-radius: 999px; color: var(--deep); background: var(--lime); font-size: 9px; font-weight: 950; letter-spacing: .12em; }
+    .start-copy strong { display: block; margin-top: 20px; color: white; font-family: ui-serif, "Hiragino Mincho ProN", "Yu Mincho", serif; font-size: clamp(28px,3.6vw,45px); font-weight: 700; line-height: 1.28; letter-spacing: -.04em; }
+    .start-line { display: block; }
+    .start-copy p { margin: 15px 0 0; color: rgba(255,255,255,.66); font-size: 13px; }
     .card-sources { display: flex; gap: 8px; }
-    .card-sources span { padding: 9px 12px; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; color: rgba(255,255,255,.78); font-size: 10px; font-weight: 850; white-space: nowrap; }
+    .capture-copy .card-sources { flex-wrap: wrap; margin-top: 22px; }
+    .card-sources span { padding: 8px 11px; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; color: rgba(255,255,255,.78); font-size: 10px; font-weight: 850; white-space: nowrap; }
     .flowchart { position: relative; display: grid; grid-template-columns: repeat(6,1fr); gap: 12px; margin-top: 22px; }
     .flowchart::before { content: ""; position: absolute; left: 6%; right: 6%; top: 38px; height: 2px; background: linear-gradient(90deg,var(--lime),var(--blue),var(--coral)); }
     .flow-step { position: relative; min-height: 224px; padding: 76px 18px 22px; border: 1px solid var(--line); border-radius: 20px; background: var(--paper); }
@@ -286,12 +312,17 @@
 
     @media (max-width: 1020px) {
       .nav { display: none; }
-      .hero { min-height: auto; }
-      .hero-grid, .sim-grid, .price-box, .asset-panel, .faq { grid-template-columns: 1fr; }
-      .hero-grid { gap: 52px; }
-      .network-panel { width: min(100%,610px); margin-inline: auto; }
-      .start-point { grid-template-columns: auto 1fr; }
-      .card-sources { grid-column: 1 / -1; padding-left: 100px; }
+      .hero { min-height: 820px; background-position: 58% center; }
+      .hero-grid { min-height: 615px; }
+      .hero-copy { width: 67%; }
+      .hero-photo-note { width: min(290px,31%); }
+      .sim-grid, .price-box, .asset-panel, .faq { grid-template-columns: 1fr; }
+      .emotion-grid { grid-template-columns: 1fr; gap: 28px; }
+      .emotion-copy { max-width: 620px; }
+      .capture-story { grid-template-columns: 1fr; }
+      .capture-photo { min-height: 390px; }
+      .capture-photo::after { background: linear-gradient(0deg,var(--deep) 0%,transparent 55%); }
+      .capture-copy { margin-top: -84px; padding: 34px clamp(26px,5vw,54px) 48px; }
       .flowchart { grid-template-columns: repeat(3,1fr); }
       .flowchart::before, .rocket::before { display: none; }
       .rocket { grid-template-columns: 1fr; }
@@ -306,20 +337,23 @@
       .brand { min-width: 44px; }
       .brand span:last-child { display: none; }
       .header-cta { min-height: 44px; padding-inline: 15px; }
-      .hero { padding: 116px 0 70px; }
+      .hero { min-height: 800px; padding: 102px 0 54px; background-image: linear-gradient(0deg,rgba(5,17,11,.99) 0%,rgba(5,17,11,.92) 49%,rgba(5,17,11,.34) 83%),url("./hero-network.webp"); background-position: 64% top; background-size: auto 100%; }
+      .hero-grid { min-height: 644px; align-items: flex-end; padding-bottom: 132px; }
+      .hero-copy { width: 100%; }
       h1 { font-size: clamp(50px,15.5vw,64px); }
       .hero-lead { margin-top: 24px; }
       .button-primary, .button-secondary { width: 100%; }
-      .network-panel { border-radius: 24px; }
-      .profile-card { width: 152px; padding: 11px; }
-      .profile-a { right: 3%; }
-      .profile-b { left: 3%; }
+      .hero-photo-note { right: auto; bottom: 2px; left: 0; width: min(100%,310px); padding: 16px 18px; }
+      .hero-photo-note strong { font-size: 21px; }
+      .emotion { padding: 62px 0 68px; }
+      .emotion-quote { font-size: clamp(34px,10.5vw,48px); }
       .section-title { font-size: clamp(38px,12vw,52px); }
       .process .section-title { font-size: 40px; }
-      .start-point { grid-template-columns: 1fr; gap: 16px; padding: 22px; }
-      .start-badge { width: 62px; height: 62px; }
-      .start-line { display: block; }
-      .card-sources { grid-column: auto; flex-wrap: wrap; padding-left: 0; }
+      .capture-story { min-height: 0; margin-top: 36px; border-radius: 22px; }
+      .capture-photo { min-height: 280px; }
+      .capture-photo img { object-position: 39% center; }
+      .capture-copy { margin-top: -52px; padding: 26px 21px 34px; }
+      .start-copy strong { font-size: 31px; }
       .flowchart { grid-template-columns: 1fr; gap: 10px; }
       .flow-step { min-height: 0; padding: 19px 18px 19px 76px; }
       .flow-no { top: 20px; left: 16px; }
@@ -353,7 +387,7 @@
   <main>
     <section class="hero" id="top">
       <div class="container hero-grid">
-        <div>
+        <div class="hero-copy">
           <p class="eyebrow">PEOPLE × CODEX × SALES</p>
           <h1><span class="title-line">出会いを、</span><span class="title-line"><em>営業会社</em>に</span><span class="title-line">変える。</span></h1>
           <p class="hero-lead"><strong>会う。残す。見つける。つなぐ。</strong> 名刺と会話をCodexに預け、相性のよい二社を見つけ、人の確認を経て紹介する。人脈を育てながら営業支援事業を始めるスターターパックです。</p>
@@ -363,17 +397,18 @@
           </div>
           <ul class="hero-facts"><li>副業・新規事業から</li><li>月5万円・年間60万円</li><li>12個のAIを毎月更新</li></ul>
         </div>
-        <div class="network-panel" aria-label="名刺から相性のよい2社を見つけ、紹介につなげるイメージ">
-          <div class="network-label"><span>RELATIONSHIP MAP</span><span>AI MATCHING</span></div>
-          <svg class="network-svg" viewBox="0 0 500 500" role="img" aria-label="あなたを中心に経営者のつながりが広がる図">
-            <line x1="250" y1="250" x2="105" y2="118"/><line x1="250" y1="250" x2="400" y2="115"/><line x1="250" y1="250" x2="110" y2="365"/><line x1="250" y1="250" x2="400" y2="370"/><line x1="105" y1="118" x2="400" y2="115"/><line x1="110" y1="365" x2="400" y2="370"/>
-            <circle class="you" cx="250" cy="250" r="55"/><circle class="person" cx="105" cy="118" r="26"/><circle class="person" cx="400" cy="115" r="30"/><circle class="match" cx="110" cy="365" r="28"/><circle class="match" cx="400" cy="370" r="34"/>
-            <text x="250" y="245" text-anchor="middle" fill="#08150f" font-size="14" font-weight="900">YOU</text><text x="250" y="265" text-anchor="middle" fill="#08150f" font-size="9" font-weight="800">SALES HUB</text>
-          </svg>
-          <div class="profile-card profile-a"><b>採用支援会社</b><span>拡販パートナーを探している</span></div>
-          <div class="profile-card profile-b"><b>地方メーカー</b><span>人材採用を強化したい</span></div>
-          <div class="match-chip">相性 92% → 紹介候補</div>
+        <div class="hero-photo-note" aria-label="名刺から紹介候補へ進む流れ">
+          <small>THE FIRST CONNECTION</small>
+          <strong>まだ名前のない仕事は、会話の中にある。</strong>
+          <span>名刺 → 台帳 → 紹介候補</span>
         </div>
+      </div>
+    </section>
+
+    <section class="emotion" aria-label="サービスコンセプト">
+      <div class="container emotion-grid">
+        <p class="emotion-quote">人脈は、名刺の枚数じゃない。<br><em>覚えて、つなぐ力</em>だ。</p>
+        <p class="emotion-copy">会った人を忘れない。必要な人を、必要な人へつなぐ。その積み重ねを12個のAIが静かに支え、あなた自身の営業代行事業へ育てます。</p>
       </div>
     </section>
 
@@ -384,11 +419,17 @@
           <h2 class="section-title"><span class="title-line">最初の仕事は、</span><span class="title-line">名刺を撮ること。</span></h2>
           <p class="section-lead">交流会でもらう新しい名刺も、これまで手元にためてきた名刺も、まず一つの台帳へ。ここからすべてが始まります。</p>
         </div>
-        <div class="start-point" aria-label="営業代行事業のスタート地点">
-          <span class="start-badge">START</span>
-          <div class="start-copy"><strong><span class="start-line">名刺をパシャッと撮って、</span><span class="start-line">台帳化。</span></strong><p>会社名、氏名、役職、会話メモを整理し、確認できた情報から登録します。</p></div>
-          <div class="card-sources"><span>いままでの名刺</span><span>交流会の新しい名刺</span></div>
-        </div>
+        <figure class="capture-story" aria-label="交流会でもらった名刺を撮影して台帳化するイメージ">
+          <div class="capture-photo">
+            <img src="./card-capture.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="交流会でもらった名刺をスマートフォンで撮影する様子">
+            <span class="capture-photo-label">ONE CARD, ONE POSSIBILITY</span>
+          </div>
+          <figcaption class="capture-copy">
+            <span class="start-badge">01 / FIRST MOVE</span>
+            <div class="start-copy"><strong><span class="start-line">交流会から帰ったら、</span><span class="start-line">名刺をパシャ。</span></strong><p>会社名、氏名、役職、会話メモを整理し、人が確認した情報から一つの台帳へ。次に会う人も、これまで会った人も、ここからつながり始めます。</p></div>
+            <div class="card-sources"><span>いままでの名刺</span><span>交流会の新しい名刺</span></div>
+          </figcaption>
+        </figure>
         <div class="flowchart" aria-label="名刺交換から営業支援事業へ育てる6段階">
           <article class="flow-step"><span class="flow-no">01</span><span class="role-chip">HUMAN</span><h3>交流会へ</h3><p>会って話し、相手の事業や困りごとを知る。</p></article>
           <article class="flow-step"><span class="flow-no">02</span><span class="role-chip">INPUT</span><h3>名刺を撮る</h3><p>新しい名刺も、手元の名刺もまとめて撮影。</p></article>
