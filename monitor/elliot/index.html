@@ -86,7 +86,7 @@
         radial-gradient(1.6px 1.6px at 89% 11%, rgba(255,255,255,.55), transparent 60%),
         linear-gradient(180deg, var(--night-deep), var(--night));
     }
-    .opening-grid { display: grid; grid-template-columns: 1fr 186px; gap: 36px; align-items: center; }
+    .opening-grid { display: grid; grid-template-columns: 1fr minmax(0, 186px); gap: 36px; align-items: center; }
     .kicker {
       display: inline-flex; align-items: center; gap: 9px;
       margin-bottom: 18px; padding: 5px 14px; border-radius: 999px;
@@ -97,15 +97,16 @@
     h1 { margin: 0 0 18px; font-size: clamp(27px, 4.6vw, 44px); line-height: 1.42; }
     h1 em { font-style: normal; color: var(--dawn); }
     .opening p { margin: 0; max-width: 40em; color: var(--ink-soft); font-size: 15.5px; }
-    .opening-fig { justify-self: center; }
+    .opening-fig { margin: 0; justify-self: center; }
     .opening-fig img {
-      width: 186px; height: 186px; border-radius: 50%; object-fit: cover;
+      width: 186px; height: auto; aspect-ratio: 1 / 1; max-width: 100%;
+      border-radius: 50%; object-fit: cover;
       border: 1px solid var(--line-strong); box-shadow: var(--shadow);
     }
     @media (max-width: 760px) {
       .opening-grid { grid-template-columns: 1fr; gap: 26px; }
       .opening-fig { justify-self: start; }
-      .opening-fig img { width: 116px; height: 116px; }
+      .opening-fig img { width: 116px; }
     }
 
     /* ---------- offer ---------- */
@@ -171,6 +172,14 @@
     .video-ratio { position: relative; padding-top: 56.25%; }
     .video-ratio iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
     .video-cap { margin: 12px 0 0; color: var(--muted); font-size: 12.5px; }
+
+    /* ---------- 補足ボックス ---------- */
+    .aside-box { margin-top: 26px; border: 1px solid var(--line); background: var(--night-soft); padding: 22px 24px; }
+    .aside-box h3 { margin: 0 0 8px; font-size: 16px; color: var(--gold); }
+    .aside-box p { margin: 0 0 12px; max-width: 42em; color: var(--ink-soft); font-size: 14px; }
+    .aside-box ul { margin: 0 0 12px; padding-left: 20px; color: var(--ink-soft); font-size: 14px; }
+    .aside-box li { margin-bottom: 2px; }
+    .aside-box p:last-child { margin-bottom: 0; }
 
     /* ---------- timeline ---------- */
     .tl { position: relative; margin: 0; padding: 0 0 0 40px; list-style: none; }
@@ -363,6 +372,37 @@
     </div>
   </section>
 
+  <div class="shell">
+    <section class="section" aria-labelledby="video-title">
+      <p class="section-kicker">MOVIE</p>
+      <h2 class="section-title" id="video-title">まずは、5分だけ見てください。</h2>
+      <p class="section-copy">Elliotが何をするAIなのかを、実際の画面でご紹介しています。</p>
+      <div class="video-frame">
+        <div class="video-ratio">
+          <iframe
+            src="https://player.vimeo.com/video/1208763155?h=d91a2cdb8b&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+            title="Elliot サービス紹介"
+            loading="lazy"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+      <p class="video-cap">Elliot サービス紹介（約5分）</p>
+
+      <div class="aside-box">
+        <h3>そもそも「ログ」とは？</h3>
+        <p>このページで「ログ」と呼んでいるのは、社内に日々残っている記録のことです。</p>
+        <ul>
+          <li>打ち合わせ・商談の議事録やメモ</li>
+          <li>電話の会話ログ</li>
+          <li>日報、週報</li>
+          <li>チャットやメールのやりとりを書き出したもの</li>
+        </ul>
+        <p>書式はばらばらで構いません。Elliotのために新しく何かを書き足していただく必要もなく、すでにGoogleドライブに置かれているものを、そのまま読みます。</p>
+      </div>
+    </section>
+  </div>
+
   <section class="premise" aria-labelledby="premise-title">
     <div class="shell">
       <p class="section-kicker">なぜ無料なのか</p>
@@ -403,23 +443,6 @@
   </section>
 
   <div class="shell">
-    <section class="section" aria-labelledby="video-title">
-      <p class="section-kicker">MOVIE</p>
-      <h2 class="section-title" id="video-title">まずは、5分だけ見てください。</h2>
-      <p class="section-copy">Elliotが何をするAIなのかを、実際の画面でご紹介しています。</p>
-      <div class="video-frame">
-        <div class="video-ratio">
-          <iframe
-            src="https://player.vimeo.com/video/1208763155?h=d91a2cdb8b&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-            title="Elliot サービス紹介"
-            loading="lazy"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowfullscreen></iframe>
-        </div>
-      </div>
-      <p class="video-cap">Elliot サービス紹介（約5分）</p>
-    </section>
-
     <section class="section" aria-labelledby="night-title">
       <p class="section-kicker">ONE NIGHT</p>
       <h2 class="section-title rv" id="night-title">Elliotの、ある一晩。</h2>
