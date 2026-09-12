@@ -47,6 +47,11 @@ header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,25
 .hlogo{font-size:14px;font-weight:900;letter-spacing:.02em;}
 .hlogo-tag{font-family:var(--en);font-size:9px;font-weight:900;letter-spacing:.1em;color:var(--navy);border:1px solid var(--navy);padding:2px 5px;margin-left:6px;vertical-align:middle;}
 .hcta{font-size:12px;font-weight:900;letter-spacing:.06em;color:var(--white);background:var(--navy);padding:9px 18px;text-decoration:none;}
+.hright{display:flex;align-items:center;gap:20px;}
+.hswitch{display:inline-flex;align-items:center;gap:5px;min-height:44px;font-size:12px;font-weight:700;letter-spacing:.02em;color:var(--gray-60);text-decoration:none;white-space:nowrap;}
+.hswitch:hover{color:var(--navy);}
+.hswitch svg{flex-shrink:0;}
+@media(max-width:560px){.hright{gap:0;}.hswitch-long{display:none;}}
 
 /* HERO＝アイコン。説明しない */
 .hero{padding:var(--pad-key) 0 var(--pad-key);margin-top:60px;}
@@ -379,7 +384,10 @@ footer{padding:56px 0 72px;border-top:1px solid var(--gray-20);}
 <header>
   <div class="wrap hbar">
     <div class="hlogo">Jマッチ・エンジン <span class="hlogo-tag">OEM</span></div>
-    <a class="hcta" href="#cta">話を聞いてみる</a>
+    <div class="hright">
+      <a class="hswitch" href="../direct/">直販<span class="hswitch-long">利用の方は</span>こちら<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a>
+      <a class="hcta" href="#cta">話を聞いてみる</a>
+    </div>
   </div>
 </header>
 
