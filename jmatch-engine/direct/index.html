@@ -530,6 +530,62 @@ footer .note{ font-size:13px; }
 .strip .sc{ border-right:1px solid var(--ln); }
 @media (min-width:1000px){ .strip .sc:nth-child(4n){ border-right:none; } }
 .strip .sth{ font-size:15.5px; max-width:46em; }
+.planpair{ display:grid; gap:22px; }
+@media (min-width:960px){ .planpair{ grid-template-columns:1.32fr 1fr; align-items:start; } }
+.pl.sub2{ background:#fff; color:var(--bk); box-shadow:inset 0 0 0 1.5px var(--ln); }
+.pl.sub2 .pn{ color:var(--g2); }
+.pl.sub2 .pp{ color:var(--ac); }
+.pl.sub2 .pu,.pl.sub2 .ptax,.pl.sub2 .pd,.pl.sub2 .plfoot{ color:var(--g1); }
+.pl.sub2 li{ color:var(--g1); }
+.pl.sub2 .plr.gy{ background:var(--ln2); color:var(--g1); }
+.advblk{ margin-top:52px; padding-top:44px; border-top:1px solid var(--ln); }
+
+/* ── 診断結果カード ── */
+.res{ display:grid; grid-template-columns:46px 1fr auto; gap:4px 16px; padding:20px 18px;
+  border-bottom:1px solid var(--ln2); align-items:start; }
+.res:last-child{ border-bottom:none; }
+.res:hover{ background:var(--pa); }
+.ricon{ grid-row:1/3; width:46px; height:46px; border:1px solid var(--ln); background:#fff;
+  display:flex; align-items:center; justify-content:center; color:var(--ac); }
+.ricon svg{ width:24px; height:24px; }
+.res .rn{ font-size:16px; font-weight:900; line-height:1.55; letter-spacing:-.01em; margin:0; align-self:center; }
+.res .rtag{ grid-column:2; margin:6px 0 0; display:flex; flex-wrap:wrap; gap:6px; }
+.res .rd{ grid-column:2/-1; font-size:13.5px; color:var(--g1); line-height:1.85; margin:8px 0 0; }
+.res .rm{ grid-column:2/-1; display:flex; flex-wrap:wrap; gap:6px 18px; font-size:12.5px;
+  color:var(--g2); margin:10px 0 0; }
+.res .rm em{ font-style:normal; color:var(--bk); font-weight:700; }
+.kind{ display:inline-flex; align-items:center; gap:5px; font-size:12px; font-weight:900;
+  letter-spacing:.02em; padding:3px 9px; border:1px solid; white-space:nowrap; }
+.kind svg{ width:12px; height:12px; flex:0 0 12px; }
+.kind.k-hj{ color:#0b2c5c; background:#eaf0f8; border-color:#b9c6da; }
+.kind.k-yu{ color:#1d6350; background:#e7f2ee; border-color:#a6cec0; }
+.kind.k-ze{ color:#7a5312; background:#f7efe0; border-color:#dcc89c; }
+@media (max-width:560px){
+  .res{ grid-template-columns:38px 1fr; padding:18px 14px; }
+  .ricon{ width:38px; height:38px; grid-row:1/2; }
+  .res .lv{ grid-column:2; justify-self:start; margin-top:8px; }
+  .res .rtag,.res .rd,.res .rm{ grid-column:1/-1; }
+}
+
+/* ── 03 3つの価値 ── */
+.fvc{ position:relative; padding-top:30px; }
+.fvc::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; background:var(--ac); }
+.fvc:nth-child(2)::before{ background:#1d6350; }
+.fvc:nth-child(3)::before{ background:#7a5312; }
+.fvh{ display:flex; align-items:center; gap:14px; margin-bottom:16px; }
+.fvi{ color:var(--ac); width:34px; height:34px; flex:0 0 34px; margin:0; }
+.fvc:nth-child(2) .fvi{ color:#1d6350; }
+.fvc:nth-child(3) .fvi{ color:#7a5312; }
+.fvn{ font-family:"Inter",sans-serif; font-weight:900; font-size:30px; line-height:1;
+  letter-spacing:-.04em; color:var(--ln); }
+.fvt{ font-size:clamp(1.06rem,1.9vw,1.32rem) !important; font-weight:900; line-height:1.55;
+  letter-spacing:-.018em; margin:0 0 14px; }
+.fvlead{ font-size:14.5px; font-weight:700; color:var(--bk); line-height:1.85; margin:0 0 14px; }
+.fvul{ list-style:none; margin:0; padding:0; border-top:1px solid var(--ln2); }
+.fvul li{ font-size:13.5px; color:var(--g1); line-height:1.7; padding:9px 0 9px 18px;
+  border-bottom:1px solid var(--ln2); position:relative; }
+.fvul li::before{ content:""; position:absolute; left:0; top:16px; width:7px; height:1.5px; background:var(--acm); }
+.fvnote{ font-size:12.5px; color:var(--g2); line-height:1.75; margin:12px 0 0; }
 .campbox{ margin-top:30px; border:2px solid var(--ac); background:var(--acl); padding:30px 30px 26px; }
 .campbox-h{ font-size:clamp(17px,2.6vw,22px); font-weight:900; color:var(--ac); line-height:1.6; margin:0 0 12px; }
 .campbox-d{ font-size:15.5px; color:var(--g1); margin:0 0 4px; line-height:1.95; }
@@ -557,7 +613,10 @@ footer .note{ font-size:13px; }
 /* 2カラム時の見出しは、左カラム318pxに収まる上限で頭打ちにする */
 .hero h1{ font-size:clamp(1.72rem,4.6vw,3.35rem) !important; }
 @media (max-width:345px){ .hero h1{ font-size:1.45rem !important; } }
-@media (min-width:900px){ .side h2{ font-size:clamp(1.15rem,2.0vw,1.5rem) !important; } }
+@media (min-width:900px){ .side h2{ font-size:clamp(1.44rem,2.5vw,2.05rem) !important; }
+.snum{ font-size:15px !important; letter-spacing:.12em; }
+.slab{ font-size:12.5px !important; letter-spacing:.22em; margin-top:6px; }
+.side h2{ margin-top:14px !important; } }
 @media (max-width:640px){ .hcta{ display:none !important; } }
 /* 主力プランカード（濃紺地）の中のCTAは白抜きにする */
 .pl.on .cta{ background:#fff; color:var(--ac); }
@@ -634,7 +693,7 @@ footer .note{ font-size:13px; }
 <section id="diag"><div class="w two">
   <div class="side">
     <span class="snum">01</span><span class="slab">J-SYSTEM AI EDITION</span>
-    <h2>会社の情報を入れると、<br>候補が<em>5〜6件</em>出ます。</h2>
+    <h2>8項目を入れると、<br>候補が<em>5〜6件</em>。</h2>
     <p class="memo">従来の補助金診断システム「Jシステム」のAI版です。Claude Code上で動く専用スキルに御社の情報を入力すると、合いそうな制度を抽出します。</p>
   </div>
   <div class="body">
@@ -654,39 +713,45 @@ footer .note{ font-size:13px; }
     </div>
 
     <div class="resw" style="margin-top:18px">
-      <div class="resh"><b>抽出された候補</b><span>5件／想定採択可能性は参考情報です</span></div>
+      <div class="resh"><b>抽出された候補</b><span>5件／色分けは制度の種別、右端は想定採択可能性（参考情報）</span></div>
 
       <div class="res">
+        <span class="ricon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M3 9l1.6-5h14.8L21 9"/><path d="M4.5 9v11h15V9"/><path d="M3 9a2.4 2.4 0 004.5 0 2.4 2.4 0 004.5 0 2.4 2.4 0 004.5 0 2.4 2.4 0 004.5 0"/><path d="M9.5 20v-6h5v6"/></svg></span>
         <p class="rn">小規模事業者持続化補助金</p>
         <span class="lv">標準的</span>
+        <p class="rtag"><span class="kind k-hj"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6 .8-4.4 4.3 1.1 6L12 16.9 6.7 19.7l1.1-6L3.4 9.4l6-.8z"/></svg>補助金</span></p>
         <p class="rd">販路開拓・生産性向上の取り組みに使える制度。設備、広報、ウェブサイト関連費などが対象になり得ます。</p>
         <p class="rm"><span>締切：<em>公募回ごと</em></span><span>対象経費：<em>機械装置・広報・ウェブ</em></span><span>次の確認：<em>商工会議所の確認書</em></span></p>
       </div>
-
       <div class="res">
+        <span class="ricon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="12.5"/><path d="M2 20h20M9.5 16.5v3.5M14.5 16.5v3.5"/><path d="M7 8.5h10M7 12h6"/></svg></span>
         <p class="rn">IT導入補助金</p>
         <span class="lv">標準的</span>
+        <p class="rtag"><span class="kind k-hj"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6 .8-4.4 4.3 1.1 6L12 16.9 6.7 19.7l1.1-6L3.4 9.4l6-.8z"/></svg>補助金</span></p>
         <p class="rd">業務システムやツールの導入に使える制度。登録されたIT導入支援事業者と組んで申請します。</p>
         <p class="rm"><span>締切：<em>締切回ごと</em></span><span>対象経費：<em>ソフトウェア・導入費</em></span><span>次の確認：<em>支援事業者の選定</em></span></p>
       </div>
-
       <div class="res">
+        <span class="ricon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.6v3M12 18.4v3M21.4 12h-3M5.6 12h-3M18.6 5.4l-2.1 2.1M7.5 16.5l-2.1 2.1M18.6 18.6l-2.1-2.1M7.5 7.5L5.4 5.4"/></svg></span>
         <p class="rn">ものづくり補助金</p>
         <span class="lv mid">やや低い</span>
+        <p class="rtag"><span class="kind k-hj"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6 .8-4.4 4.3 1.1 6L12 16.9 6.7 19.7l1.1-6L3.4 9.4l6-.8z"/></svg>補助金</span><span class="kind k-ze"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M6 19L19 6"/><circle cx="8" cy="8" r="2.6"/><circle cx="17" cy="17" r="2.6"/></svg>税制優遇</span></p>
         <p class="rd">革新的な製品・サービス開発や生産プロセス改善のための設備投資。要件が重く、事業計画の作り込みが必要です。</p>
         <p class="rm"><span>締切：<em>公募回ごと</em></span><span>対象経費：<em>機械装置・システム構築</em></span><span>次の確認：<em>賃上げ要件の充足</em></span></p>
       </div>
-
       <div class="res">
+        <span class="ricon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M12 3l9 4.5H3z"/><path d="M5 10v8M9.7 10v8M14.3 10v8M19 10v8"/><path d="M2.6 21h18.8M3.6 18h16.8"/></svg></span>
         <p class="rn">都道府県・市区町村の設備投資助成</p>
         <span class="lv">標準的</span>
+        <p class="rtag"><span class="kind k-hj"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6 .8-4.4 4.3 1.1 6L12 16.9 6.7 19.7l1.1-6L3.4 9.4l6-.8z"/></svg>補助金</span></p>
         <p class="rd">所在地の自治体が独自に設けている助成。国の制度と併用できない場合があります。</p>
         <p class="rm"><span>締切：<em>自治体ごと</em></span><span>対象経費：<em>設備・改修</em></span><span>次の確認：<em>国制度との併用可否</em></span></p>
       </div>
-
       <div class="res">
+        <span class="ricon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.4 8.6L12 13l3.6-4.4"/><path d="M12 13v5M9.2 14.2h5.6M9.2 16.4h5.6"/></svg></span>
         <p class="rn">設備資金の低利融資／信用保証付き融資</p>
         <span class="lv low">要追加確認</span>
+        <p class="rtag"><span class="kind k-yu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M3 17V9l9-5 9 5v8"/><path d="M3 20h18"/><path d="M8 17v-5M12 17v-5M16 17v-5"/></svg>融資</span></p>
         <p class="rd">補助金は多くの制度で精算払いです。先に支払う分の資金手当てとして、融資制度もあわせて候補に出します。</p>
         <p class="rm"><span>締切：<em>随時</em></span><span>対象：<em>設備資金・運転資金</em></span><span>次の確認：<em>直近2期の決算内容</em></span></p>
       </div>
@@ -704,7 +769,7 @@ footer .note{ font-size:13px; }
 <section id="why"><div class="w two">
   <div class="side">
     <span class="snum">02</span><span class="slab">WHY CONTINUOUS</span>
-    <h2>一度調べて終わり、では<br><em>間に合いません</em>。</h2>
+    <h2>一度調べて<br>終わりでは、<br><em>間に合わない</em>。</h2>
     <p class="memo">制度は年間を通じて新設・更新されます。国、都道府県、市区町村で募集の時期も違います。</p>
   </div>
   <div class="body">
@@ -765,26 +830,28 @@ footer .note{ font-size:13px; }
   <div class="fv">
 
     <div class="fvc">
-      <div class="fvh"><svg class="fvi" width="30" height="30" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="1.5" y="4.5" width="17" height="11"/><path d="M1.5 5.5l8.5 6 8.5-6"/></svg><span class="fvn">01</span></div>
-      <p class="fvt">自社に合う制度情報が、自動的に届く</p>
-      <p class="fvd">補助金・融資・税制優遇を、国と都道府県と市区町村から継続的に確認します。御社が対象になりそうなものだけを抽出し、制度名・概要・締切・対象経費が分かります。</p>
-      <p class="fvd" style="color:var(--g2)">必要になってから探すのではなく、使える可能性がある段階で把握できます。</p>
+      <div class="fvh"><svg class="fvi" width="34" height="34" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="1.5" y="4.5" width="17" height="11"/><path d="M1.5 5.5l8.5 6 8.5-6"/></svg><span class="fvn">01</span></div>
+      <p class="fvt">制度情報が、自動的に届く</p>
+      <p class="fvlead">必要になってから探すのではなく、使える可能性がある段階で把握できます。</p>
+      <ul class="fvul"><li>補助金・融資・税制優遇を継続的に確認</li><li>国だけでなく、都道府県・市区町村も対象</li><li>制度名・概要・締切・対象経費が分かる</li><li>情報収集の時間が減り、締切落ちを防ぐ</li></ul>
+      
     </div>
 
     <div class="fvc">
-      <div class="fvh"><svg class="fvi" width="30" height="30" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="4" y="1.5" width="12" height="17"/><path d="M7 6.5h6M7 10h6M7 13.5h4"/></svg><span class="fvn">02</span></div>
-      <p class="fvt">実際の事例と、専門家の解説から学べる</p>
-      <p class="fvd">採択された事業計画書の事例、申請書の見本、審査の考え方を説明した動画、専門家による書き方の解説資料。白紙から考えずに済みます。</p>
-      <p class="fvd" style="color:var(--g2)">掲載する事例は、一般公開・掲載許諾済み・匿名加工済みの資料に限ります。</p>
+      <div class="fvh"><svg class="fvi" width="34" height="34" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="4" y="1.5" width="12" height="17"/><path d="M7 6.5h6M7 10h6M7 13.5h4"/></svg><span class="fvn">02</span></div>
+      <p class="fvt">事例と専門家の解説から学べる</p>
+      <p class="fvlead">白紙から考えずに済みます。顧問の先生へ渡す整理資料にもなります。</p>
+      <ul class="fvul"><li>採択された事業計画書の事例</li><li>参考になる申請書・事業計画書の見本</li><li>制度の背景と審査の考え方を説明した動画</li><li>専門家による書き方の解説資料</li></ul>
+      <p class="fvnote">掲載する事例は、一般公開・掲載許諾済み・匿名加工済みの資料に限ります。</p>
     </div>
 
     <div class="fvc">
-      <div class="fvh"><svg class="fvi" width="30" height="30" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="1.5" y="3.5" width="5" height="5"/><rect x="7.5" y="3.5" width="5" height="5"/><rect x="13.5" y="3.5" width="5" height="5"/><rect x="1.5" y="11.5" width="5" height="5"/><rect x="7.5" y="11.5" width="5" height="5"/><rect x="13.5" y="11.5" width="5" height="5"/></svg><span class="fvn">03</span></div>
-      <p class="fvt">AIとの対話で、事業計画書の土台を作れる</p>
-      <p class="fvd">Claude CodeをベースにしたAIが順番に質問します。答えるだけで、補助金の事業計画書と融資資料の土台、強み・顧客・市場の整理、実施計画、投資効果の計算までが形になります。</p>
-      <p class="fvd" style="color:var(--g2)">白紙を渡しません。答えられる問いだけが出ます。</p>
+      <div class="fvh"><svg class="fvi" width="34" height="34" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="1.5" y="3.5" width="5" height="5"/><rect x="7.5" y="3.5" width="5" height="5"/><rect x="13.5" y="3.5" width="5" height="5"/><rect x="1.5" y="11.5" width="5" height="5"/><rect x="7.5" y="11.5" width="5" height="5"/><rect x="13.5" y="11.5" width="5" height="5"/></svg><span class="fvn">03</span></div>
+      <p class="fvt">AIとの対話で、土台を作れる</p>
+      <p class="fvlead">白紙は渡しません。答えられる問いだけが、順番に出てきます。</p>
+      <ul class="fvul"><li>補助金の事業計画書の土台</li><li>融資相談で使う事業計画の土台</li><li>強み・顧客ニーズ・市場環境の整理</li><li>実施計画と、投資効果の計算</li></ul>
+      <p class="fvnote">Claude Codeをベースに動きます。使ったことがない前提で設計しています。</p>
     </div>
-
   </div>
   <p class="memo" style="margin-top:18px">AIが正式な申請書を完成させたり、申請を代行したりするサービスではありません。御社ご自身が事業計画を作り、申請準備を進めるための支援サービスです。</p>
   <div class="hbtn" style="margin-top:22px"><a class="cta" href="https://www.writeup.jp/contact/">初期費用0円で導入を相談する</a></div>
@@ -795,7 +862,7 @@ footer .note{ font-size:13px; }
 <section id="agents"><div class="w two">
   <div class="side">
     <span class="snum">04</span><span class="slab">AI AGENTS</span>
-    <h2>白紙は埋まらない。<br>問いなら、<em>答えられる</em>。</h2>
+    <h2>白紙は埋まらない。<br>問いなら、<br><em>答えられる</em>。</h2>
     <p class="memo">「強みを書いてください」で手が止まる欄も、「その1社が他社ではなく御社を選んだ決め手は」と聞かれれば答えられます。</p>
   </div>
   <div class="body">
@@ -861,7 +928,7 @@ footer .note{ font-size:13px; }
 <section id="reuse"><div class="w two">
   <div class="side">
     <span class="snum">05</span><span class="slab">REUSE</span>
-    <h2>通らなくても、<br><em>書いたものは残ります</em>。</h2>
+    <h2>通らなくても、<br>書いたものは<br><em>残ります</em>。</h2>
     <p class="memo">聞かれることは制度が変わっても大きくは変わりません。だから成果物が残り、作る力も残ります。</p>
   </div>
   <div class="body">
@@ -911,15 +978,15 @@ footer .note{ font-size:13px; }
   </div>
 </div></section>
 
-<!-- ══ 06 料金＋キャンペーン ══ -->
+<!-- ══ 06 料金（2プラン）＋キャンペーン ══ -->
 <section id="price" class="pricesec"><div class="w">
   <div class="ph">
     <span class="snum">06</span><span class="slab">PRICE</span>
     <h2>初期登録費用10万円＋<br>月額3万円。<br><em>成功報酬なし</em>。</h2>
-    <p>この1本です。使う量や採択の有無で追加の費用はいただきません。</p>
+    <p>自社で進めるなら、この1本です。使う量や採択の有無で追加の費用はいただきません。時間がない場合は、右の士業依頼プランに切り替えられます。</p>
   </div>
 
-  <div class="plans" style="grid-template-columns:minmax(0,1fr)">
+  <div class="plans planpair">
     <div class="pl on">
       <span class="plr">主力プラン</span>
       <span class="pn">AI SELF-DRIVE</span>
@@ -943,6 +1010,83 @@ footer .note{ font-size:13px; }
       <p class="plfoot">作った土台は、翌年度の別の制度にも、金融機関に出す資料にも使い回せます。</p>
       <div class="hbtn" style="margin-top:18px"><a class="cta" href="https://www.writeup.jp/contact/">初期費用0円で導入を相談する</a></div>
     </div>
+
+    <div class="pl sub2">
+      <span class="plr gy">上位の選択肢</span>
+      <span class="pn">ADVISORY</span>
+      <p class="pw">士業依頼プラン</p>
+      <p class="ppl"><span class="pp">150,000</span><span class="pu">円／月〜</span></p>
+      <p class="ptax">税別／成功報酬 10〜20％</p>
+      <p class="pd">自社で進める時間がない場合に。書類の作成そのものを、提携する士業事務所が担当します。</p>
+      <ul>
+        <li>AI自走プランの内容をすべて含みます</li>
+        <li>補助金の申請書類の作成（提携士業）</li>
+        <li>融資の相談と、金融機関に出す書類</li>
+        <li>雇用関係の助成金（社会保険労務士が担当）</li>
+        <li>複数制度の継続的なご相談</li>
+      </ul>
+      <p class="plfoot">制度や依頼内容によって、別途着手金が発生する場合があります。正式な料金と業務範囲は、ご契約前に書面でお示しします。</p>
+    </div>
+  </div>
+
+  <div class="advblk">
+<div class="fig" style="margin-top:26px">
+      <p class="figt">FIG.4　<em>どこまでを、誰が持つか</em></p>
+      <div class="figbox">
+        <div class="rg-h"><span>見つける</span><span>学ぶ</span><span>つくる</span><span>仕上げて出す</span></div>
+        <div class="rg-r">
+          <div class="rg-t"><span class="rg-n">AI SELF-DRIVE</span><span>AI自走プラン</span><span class="rg-p">30,000円／月</span></div>
+          <div class="rg-bar"><i style="--w:75"></i><span class="rg-g"><span></span><span></span><span></span><span></span></span></div>
+        </div>
+        <div class="rg-r sub">
+          <div class="rg-t"><span class="rg-n">ADVISORY</span><span>士業依頼プラン</span><span class="rg-p">150,000円／月〜</span></div>
+          <div class="rg-bar"><i style="--w:75"></i><b style="--s:75;--w:25"></b><span class="rg-g"><span></span><span></span><span></span><span></span></span></div>
+        </div>
+        <p class="rg-note">塗り＝どちらのプランにも含まれる範囲　／　斜線＝士業依頼プランで、提携士業が担う範囲</p>
+      </div>
+      <p class="figc">差は機能の数ではなく、担当範囲です。「仕上げて出す」を御社が持つか、提携士業が持つか。</p>
+    </div>
+<div class="cmpw" style="margin-top:26px">
+      <table class="cmp">
+        <thead><tr><th>内容</th><th class="hi">AI自走プラン</th><th>士業依頼プラン</th></tr></thead>
+        <tbody>
+          <tr><th>月額</th><td class="hi" data-l="AI自走プラン">30,000円</td><td data-l="士業依頼プラン">150,000円</td></tr>
+          <tr><th>成功報酬</th><td class="hi" data-l="AI自走プラン">なし</td><td data-l="士業依頼プラン">10〜20％</td></tr>
+          <tr><th>制度情報</th><td class="hi" data-l="AI自走プラン">継続配信</td><td data-l="士業依頼プラン">継続配信</td></tr>
+          <tr><th>採択事例・動画</th><td class="hi" data-l="AI自走プラン">利用可能</td><td data-l="士業依頼プラン">利用可能</td></tr>
+          <tr><th>AIエージェント</th><td class="hi" data-l="AI自走プラン">利用可能</td><td data-l="士業依頼プラン">利用可能</td></tr>
+          <tr><th>事業計画の整理</th><td class="hi" data-l="AI自走プラン">顧客自身で進める</td><td data-l="士業依頼プラン">専門家と進める</td></tr>
+          <tr><th>申請書類の作成</th><td class="hi" data-l="AI自走プラン">顧客または顧問士業</td><td data-l="士業依頼プラン">提携士業</td></tr>
+          <tr><th>向いている企業</th><td class="hi" data-l="AI自走プラン">自社にノウハウを残したい</td><td data-l="士業依頼プラン">時間がなく専門家へ任せたい</td></tr>
+        </tbody>
+      </table>
+      <p class="figc">← 横にスクロールできます</p>
+    </div>
+
+    
+<div class="fig" style="margin-top:26px">
+      <p class="figt">FIG.5　<em>私たちが渡すものと、有資格者が担うもの</em></p>
+      <div class="figbox">
+        <div class="ln2">
+          <div class="us"><p class="h">私たちが渡すもの</p><p class="d">制度の情報／答えられる問い／事業計画の土台</p></div>
+          <div class="pro"><p class="h">有資格者が担うもの</p><p class="d">制度への提出書類の作成</p></div>
+        </div>
+        <p class="rg-note">この線は、報酬を得て提出書類を作成することが有資格者の業務と定められていることによります。</p>
+      </div>
+    </div>
+    <div class="caution" style="margin-top:20px">
+      制度への提出書類の作成は、提携する士業事務所が担当します。株式会社ライトアップが資格業務を行うことはありません。書類を作成する事務所、ご契約の相手、ご請求の相手は、ご契約前に書面でお示しします。
+    </div>
+    <!-- TODO(公開前・士業依頼プラン): 以下は未確定のため本文に断定的に書いていない。
+         ① 初期登録費用100,000円が別途発生するか
+         ② 着手金の有無と金額
+         ③ 成功報酬の計算対象（交付決定額か、入金額か、補助対象経費か）
+         ④ 成功報酬が10％になる条件と20％になる条件
+         ⑤ 月額150,000円に含まれる申請件数
+         ⑥ 月額150,000円に含まれる業務範囲
+         ⑦ 契約主体
+         ⑧ 請求主体
+         ⑨ 実際に書類を作成する士業事務所 -->
   </div>
 
   <div class="campbox">
@@ -966,7 +1110,7 @@ footer .note{ font-size:13px; }
 <section id="flow"><div class="w two">
   <div class="side">
     <span class="snum">07</span><span class="slab">FLOW</span>
-    <h2>使いはじめるまでの、<br><em>6つ</em>の手順。</h2>
+    <h2>使いはじめるまで<br><em>6つ</em>の手順。</h2>
   </div>
   <div class="body">
     <ul class="steps">
@@ -980,84 +1124,10 @@ footer .note{ font-size:13px; }
   </div>
 </div></section>
 
-<!-- ══ 08 士業依頼プラン ══ -->
-<section id="advisory"><div class="w two">
-  <div class="side">
-    <span class="snum">08</span><span class="slab">ADVISORY</span>
-    <h2>時間がない場合は、<br>提携士業へ<em>依頼できます</em>。</h2>
-    <p class="memo">AI自走プランの代わりではなく、その上に載る選択肢です。</p>
-  </div>
-  <div class="body">
-    <p class="rd lead">月額150,000円（税別）＋<br>成功報酬10〜20％。</p>
-    <p>申請準備に割ける時間がない、書類作成を有資格者へ依頼したい、雇用関係の助成金など資格者による対応が必要、複数制度を継続的に専門家へ相談したい。こうした場合は、提携する士業事務所への依頼に切り替えられます。</p>
-    <p class="memo">制度や依頼内容によって、別途着手金が発生する場合があります。正式な料金と業務範囲は、契約前に書面で提示します。</p>
-
-
-    <div class="fig" style="margin-top:26px">
-      <p class="figt">FIG.4　<em>どこまでを、誰が持つか</em></p>
-      <div class="figbox">
-        <div class="rg-h"><span>見つける</span><span>学ぶ</span><span>つくる</span><span>仕上げて出す</span></div>
-        <div class="rg-r">
-          <div class="rg-t"><span class="rg-n">AI SELF-DRIVE</span><span>AI自走プラン</span><span class="rg-p">30,000円／月</span></div>
-          <div class="rg-bar"><i style="--w:75"></i><span class="rg-g"><span></span><span></span><span></span><span></span></span></div>
-        </div>
-        <div class="rg-r sub">
-          <div class="rg-t"><span class="rg-n">ADVISORY</span><span>士業依頼プラン</span><span class="rg-p">150,000円／月〜</span></div>
-          <div class="rg-bar"><i style="--w:75"></i><b style="--s:75;--w:25"></b><span class="rg-g"><span></span><span></span><span></span><span></span></span></div>
-        </div>
-        <p class="rg-note">塗り＝どちらのプランにも含まれる範囲　／　斜線＝士業依頼プランで、提携士業が担う範囲</p>
-      </div>
-      <p class="figc">差は機能の数ではなく、担当範囲です。「仕上げて出す」を御社が持つか、提携士業が持つか。</p>
-    </div>
-
-    <div class="fig" style="margin-top:26px">
-      <p class="figt">FIG.5　<em>私たちが渡すものと、有資格者が担うもの</em></p>
-      <div class="figbox">
-        <div class="ln2">
-          <div class="us"><p class="h">私たちが渡すもの</p><p class="d">制度の情報／答えられる問い／事業計画の土台</p></div>
-          <div class="pro"><p class="h">有資格者が担うもの</p><p class="d">制度への提出書類の作成</p></div>
-        </div>
-        <p class="rg-note">この線は、報酬を得て提出書類を作成することが有資格者の業務と定められていることによります。</p>
-      </div>
-    </div>
-
-    <div class="cmpw" style="margin-top:26px">
-      <table class="cmp">
-        <thead><tr><th>内容</th><th class="hi">AI自走プラン</th><th>士業依頼プラン</th></tr></thead>
-        <tbody>
-          <tr><th>月額</th><td class="hi" data-l="AI自走プラン">30,000円</td><td data-l="士業依頼プラン">150,000円</td></tr>
-          <tr><th>成功報酬</th><td class="hi" data-l="AI自走プラン">なし</td><td data-l="士業依頼プラン">10〜20％</td></tr>
-          <tr><th>制度情報</th><td class="hi" data-l="AI自走プラン">継続配信</td><td data-l="士業依頼プラン">継続配信</td></tr>
-          <tr><th>採択事例・動画</th><td class="hi" data-l="AI自走プラン">利用可能</td><td data-l="士業依頼プラン">利用可能</td></tr>
-          <tr><th>AIエージェント</th><td class="hi" data-l="AI自走プラン">利用可能</td><td data-l="士業依頼プラン">利用可能</td></tr>
-          <tr><th>事業計画の整理</th><td class="hi" data-l="AI自走プラン">顧客自身で進める</td><td data-l="士業依頼プラン">専門家と進める</td></tr>
-          <tr><th>申請書類の作成</th><td class="hi" data-l="AI自走プラン">顧客または顧問士業</td><td data-l="士業依頼プラン">提携士業</td></tr>
-          <tr><th>向いている企業</th><td class="hi" data-l="AI自走プラン">自社にノウハウを残したい</td><td data-l="士業依頼プラン">時間がなく専門家へ任せたい</td></tr>
-        </tbody>
-      </table>
-      <p class="figc">← 横にスクロールできます</p>
-    </div>
-
-    <div class="caution" style="margin-top:20px">
-      制度への提出書類の作成は、提携する士業事務所が担当します。株式会社ライトアップが資格業務を行うことはありません。書類を作成する事務所、ご契約の相手、ご請求の相手は、ご契約前に書面でお示しします。
-    </div>
-    <!-- TODO(公開前・士業依頼プラン): 以下は未確定のため本文に断定的に書いていない。
-         ① 初期登録費用100,000円が別途発生するか
-         ② 着手金の有無と金額
-         ③ 成功報酬の計算対象（交付決定額か、入金額か、補助対象経費か）
-         ④ 成功報酬が10％になる条件と20％になる条件
-         ⑤ 月額150,000円に含まれる申請件数
-         ⑥ 月額150,000円に含まれる業務範囲
-         ⑦ 契約主体
-         ⑧ 請求主体
-         ⑨ 実際に書類を作成する士業事務所 -->
-  </div>
-</div></section>
-
-<!-- ══ 09 FAQ ══ -->
+<!-- ══ 08 FAQ ══ -->
 <section id="faq"><div class="w two">
   <div class="side">
-    <span class="snum">09</span><span class="slab">FAQ</span>
+    <span class="snum">08</span><span class="slab">FAQ</span>
     <h2>申し込む前の、<br>確認事項。</h2>
   </div>
   <div class="body"><div class="qa">
@@ -1102,9 +1172,9 @@ footer .note{ font-size:13px; }
 </div></div>
 </div></section>
 
-<!-- ══ 10 最終CTA ══ -->
+<!-- ══ 09 最終CTA ══ -->
 <section id="cta" class="fin"><div class="w">
-  <span class="snum">10</span><span class="slab">NEXT</span>
+  <span class="snum">09</span><span class="slab">NEXT</span>
   <h2>初期費用0円で、<br>はじめられます。</h2>
   <p>今月の事例協力企業10社は、初期登録費用100,000円が無料です。月額30,000円（税別）から、制度を見つけ、事例で学び、AIとの対話で事業計画の土台を作るところまで始められます。まずはご相談ください。</p>
   <div class="hbtn">
