@@ -138,8 +138,8 @@
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 28px;
+      grid-template-columns: minmax(0, 1.22fr) minmax(280px, .78fr);
+      gap: clamp(28px, 5vw, 74px);
       align-items: start;
       margin-bottom: clamp(52px, 7vw, 82px);
     }
@@ -238,11 +238,91 @@
       transform: translateY(-2px);
     }
 
-    .news-dialog {
-      width: min(calc(100% - 40px), 760px);
-      max-height: min(760px, calc(100dvh - 40px));
+    .hero-activity {
+      align-self: end;
+      min-width: 0;
+      padding: 16px 0 0 20px;
+      border-left: 2px solid var(--orange);
+    }
+
+    .hero-activity[hidden] { display: none; }
+
+    .hero-activity-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 9px;
+    }
+
+    .hero-activity-kicker {
+      color: var(--orange);
+      font-size: 9px;
+      font-weight: 850;
+      letter-spacing: .15em;
+    }
+
+    .hero-activity-window {
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      white-space: nowrap;
+    }
+
+    .hero-activity-list {
+      display: grid;
+      gap: 0;
+      margin: 0;
       padding: 0;
-      overflow: auto;
+      list-style: none;
+    }
+
+    .hero-activity-link {
+      display: grid;
+      grid-template-columns: max-content minmax(0, 1fr);
+      gap: 8px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-top: 1px solid var(--line);
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .hero-activity-kind {
+      color: var(--green);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+
+    .hero-activity-kind.updated { color: var(--orange); }
+
+    .hero-activity-title {
+      overflow: hidden;
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: -.01em;
+      line-height: 1.4;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .hero-activity-link:hover .hero-activity-title,
+    .hero-activity-link:focus-visible .hero-activity-title { text-decoration: underline; }
+
+    .hero-activity-link:focus-visible {
+      outline: 2px solid var(--orange);
+      outline-offset: 3px;
+    }
+
+    .news-dialog {
+      width: min(calc(100% - 40px), 980px);
+      max-height: calc(100dvh - 40px);
+      padding: 0;
+      overflow: hidden;
       border: 0;
       color: var(--ink);
       background: var(--surface);
@@ -302,6 +382,137 @@
       outline: 2px solid var(--orange);
       outline-offset: 2px;
     }
+
+    .news-dialog-window {
+      margin: -8px 0 20px;
+      color: var(--ink-soft);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .news-dialog-content {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr);
+      gap: 14px;
+    }
+
+    .news-group {
+      min-width: 0;
+      padding: 18px;
+      border: 1px solid var(--line);
+    }
+
+    .news-group--new {
+      background: linear-gradient(135deg, rgba(231,242,235,.94), rgba(250,249,244,.88));
+      border-color: rgba(23,75,60,.3);
+    }
+
+    .news-group--updated { background: rgba(255,255,255,.6); }
+    .news-group[hidden] { display: none; }
+
+    .news-group-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 11px;
+    }
+
+    .news-group-kicker {
+      color: var(--orange);
+      font-size: 9px;
+      font-weight: 850;
+      letter-spacing: .14em;
+    }
+
+    .news-group-title {
+      margin: 3px 0 0;
+      font-size: 20px;
+      letter-spacing: -.035em;
+      line-height: 1.3;
+    }
+
+    .news-group-count {
+      color: var(--ink-soft);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .news-activity-list {
+      display: grid;
+      gap: 7px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .news-activity-link {
+      display: grid;
+      grid-template-columns: max-content minmax(0, 1fr);
+      gap: 11px;
+      align-items: start;
+      padding: 10px 0;
+      border-top: 1px solid rgba(20,37,31,.14);
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .news-activity-list li:first-child .news-activity-link { border-top: 0; }
+
+    .news-activity-date {
+      padding-top: 3px;
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      white-space: nowrap;
+    }
+
+    .news-activity-copy { min-width: 0; }
+
+    .news-activity-title {
+      display: block;
+      font-size: 15px;
+      letter-spacing: -.02em;
+      line-height: 1.35;
+    }
+
+    .news-group--new .news-activity-title { font-size: 18px; }
+
+    .news-activity-change {
+      display: block;
+      margin-top: 3px;
+      color: var(--ink-soft);
+      font-size: 11px;
+      line-height: 1.55;
+    }
+
+    .news-activity-link:hover .news-activity-title,
+    .news-activity-link:focus-visible .news-activity-title { text-decoration: underline; }
+
+    .news-activity-link:focus-visible {
+      outline: 2px solid var(--orange);
+      outline-offset: 3px;
+    }
+
+    .news-dialog-empty {
+      margin: 0;
+      padding: 20px;
+      border: 1px solid var(--line);
+      color: var(--ink-soft);
+      font-size: 14px;
+    }
+
+    .news-dialog[data-density="compact"] .news-group { padding: 13px; }
+    .news-dialog[data-density="compact"] .news-group-title { font-size: 17px; }
+    .news-dialog[data-density="compact"] .news-activity-list { gap: 0; }
+    .news-dialog[data-density="compact"] .news-activity-link { padding: 6px 0; }
+    .news-dialog[data-density="compact"] .news-group--new .news-activity-title,
+    .news-dialog[data-density="compact"] .news-activity-title { font-size: 13px; }
+    .news-dialog[data-density="compact"] .news-activity-change { display: none; }
 
     .hero-notes {
       display: grid;
@@ -1616,6 +1827,8 @@
 
     @media (max-width: 820px) {
       .hero { grid-template-columns: 1fr; gap: 28px; }
+      .hero-activity { max-width: 620px; padding-top: 14px; }
+      .news-dialog-content { grid-template-columns: 1fr; gap: 10px; }
       .thoughts { gap: 20px; }
       .thoughts-head { grid-template-columns: 1fr; gap: 14px; align-items: start; padding-bottom: 18px; }
       .thoughts-head > div { min-width: 0; }
@@ -1647,10 +1860,19 @@
       .concept-heading { font-size: clamp(37px, 11vw, 46px); }
       .lead { margin-top: 22px; font-size: 14px; }
       .concept-manifesto { font-size: 13px; }
-      .hero-board { padding: 15px 18px 13px; }
+      .hero-activity { padding-left: 14px; }
+      .hero-activity-title { font-size: 11px; }
       .news-dialog { width: min(calc(100% - 24px), 760px); max-height: calc(100dvh - 24px); }
       .news-dialog-inner { padding: 22px 18px; }
       .news-dialog-head { gap: 14px; }
+      .news-dialog-window { margin-bottom: 13px; font-size: 11px; }
+      .news-group { padding: 13px; }
+      .news-group-title { font-size: 17px; }
+      .news-activity-list { gap: 0; }
+      .news-activity-link { padding: 6px 0; }
+      .news-group--new .news-activity-title,
+      .news-activity-title { font-size: 13px; }
+      .news-activity-change { display: none; }
       .thoughts { padding: 20px 18px; }
       .thoughts-head { gap: 10px; padding-bottom: 16px; }
       .thoughts-title { font-size: clamp(24px, 7.4vw, 32px); }
@@ -1743,34 +1965,29 @@
     <div class="news-dialog-inner">
       <div class="news-dialog-head">
         <div>
-          <span class="news-dialog-kicker">IMPORTANT / NEW</span>
-          <h2 class="news-dialog-title" id="news-dialog-title">新着・重要なお知らせ</h2>
+          <span class="news-dialog-kicker">JUST ADDED / UPDATED</span>
+          <h2 class="news-dialog-title" id="news-dialog-title">いま見るべき新着・更新</h2>
         </div>
         <button class="news-dialog-close" type="button" data-news-close aria-label="お知らせを閉じる">×</button>
       </div>
-      <div class="hero-notes" aria-label="重要なお知らせ">
-        <div class="hero-note">
-          <a class="hero-board" href="./ai-business-starter-pack/" aria-label="重要なお知らせ：AI事業スタートパックのヒーローを6本の説明会訴求へ更新しました">
-            <span class="board-meta"><b>NEW SERVICE</b><time datetime="2026-09-13">2026.09.13</time></span>
-            <strong>副業・新規事業を6本のヒーロー訴求で案内。</strong>
-            <span class="board-link">詳しく見る ↗</span>
-          </a>
-        </div>
-        <div class="hero-note">
-          <a class="hero-board" href="./jmatch-engine/" aria-label="重要なお知らせ：Jマッチエンジンの直販LPを月3万円プラン主軸に刷新しました">
-            <span class="board-meta"><b>MAJOR UPDATE</b><time datetime="2026-09-12">2026.09.12</time></span>
-            <strong>Jマッチエンジン。直販は月3万円プランを主軸に。</strong>
-            <span class="board-link">詳しく見る ↗</span>
-          </a>
-        </div>
-        <div class="hero-note">
-          <a class="hero-board" href="./ai-sales-agency-starter/" aria-label="重要なお知らせ：いい仕事を終えた夜の一杯を描く最終セクションを追加しました">
-            <span class="board-meta"><b>MAJOR UPDATE</b><time datetime="2026-09-11">2026.09.11</time></span>
-            <strong>いい仕事ができた夜。その一杯まで、物語に。</strong>
-            <span class="board-link">詳しく見る ↗</span>
-          </a>
-        </div>
+      <p class="news-dialog-window" data-news-window></p>
+      <div class="news-dialog-content">
+        <section class="news-group news-group--new" data-news-new hidden aria-labelledby="news-new-title">
+          <div class="news-group-head">
+            <div><span class="news-group-kicker">NEW</span><h3 class="news-group-title" id="news-new-title">新規に追加されたもの</h3></div>
+            <span class="news-group-count" data-news-new-count></span>
+          </div>
+          <ol class="news-activity-list" data-news-new-list></ol>
+        </section>
+        <section class="news-group news-group--updated" data-news-updated hidden aria-labelledby="news-updated-title">
+          <div class="news-group-head">
+            <div><span class="news-group-kicker">UPDATED</span><h3 class="news-group-title" id="news-updated-title">更新されたもの</h3></div>
+            <span class="news-group-count" data-news-updated-count></span>
+          </div>
+          <ol class="news-activity-list" data-news-updated-list></ol>
+        </section>
       </div>
+      <p class="news-dialog-empty" data-news-empty hidden>この時間帯に新規追加・更新されたページはありません。</p>
     </div>
   </dialog>
 
@@ -1787,8 +2004,12 @@
           <h1 class="concept-heading" id="page-title">See. Notice.<br><span>Know. Knock.</span></h1>
           <p class="concept-manifesto"><span>See what others miss. Notice what matters.</span><span>Know what works. Knock on what’s next.</span></p>
           <p class="lead">見落とされた課題を見つけ、重要な変化に気づき、機能する答えを学び、次の扉を叩く。ここでは、SaaSチームの新しいAIサービス企画と検討中のLPを公開しています。</p>
-          <button class="news-trigger" type="button" data-news-open aria-haspopup="dialog">新着・重要なお知らせを3件見る</button>
+          <button class="news-trigger" type="button" data-news-open aria-haspopup="dialog">直近の新着・更新を見る</button>
         </div>
+        <aside class="hero-activity" data-hero-activity aria-label="直近の新規追加・更新">
+          <div class="hero-activity-head"><span class="hero-activity-kicker">NOW ON DIRECTORY</span><span class="hero-activity-window" data-hero-activity-window></span></div>
+          <ol class="hero-activity-list" data-hero-activity-list></ol>
+        </aside>
       </section>
 
       <section class="thoughts" aria-labelledby="thoughts-title">
@@ -1880,9 +2101,27 @@
         <p class="filter-status" aria-live="polite"></p>
 
 
+        <article class="service-entry" id="jmatch-engine" data-published="2026-09-09T12:48:00+09:00" data-updated="2026-09-13T01:29:00+09:00" data-taka-created="true">
+        <a class="service" data-category="work" href="./jmatch-engine/">
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-work"/></svg></span><span class="number">01</span></span>
+          <div>
+            <div class="service-topline"><span class="revision-count" data-revisions="26" aria-label="公開後の改修26回"><span>REV.</span><strong>26</strong><span>回</span></span><span class="category-name">経営・社内業務</span><span class="service-type">SERVICE / BUSINESS PLANNING</span><span class="badge-slot-placeholder"></span></div>
+            <div class="service-title-row"><h2>Jマッチエンジン</h2><span class="badge-slot"></span></div>
+          </div>
+          <div class="description-wrap">
+            <p class="change-note"><span>最新の変更点</span><b>OEM提供の月額を85,000円へ一本化し、含まれる機能・還元額の計算例・4段の顧客プランを整理しました。</b></p>
+            <span class="url">writeup-inc.github.io/saas/jmatch-engine/</span>
+            <span class="author-tags"><span class="author-tag creator">初回作成：たかマスター＋Claude Code</span><span class="author-tag editor">最終更新：たかマスター＋Claude Code</span></span>
+            <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-09T12:48:00+09:00">2026.09.09 12:48</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-13T01:29:00+09:00">2026.09.13 01:29</time></span></span>
+          </div>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+        <button class="service-share" type="button" data-copy-anchor="jmatch-engine" data-service-name="Jマッチエンジン" aria-label="Jマッチエンジンの一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
+        </article>
+
         <article class="service-entry" id="ai-business-starter-pack" data-published="2026-09-12T21:43:00+09:00" data-updated="2026-09-13T01:15:00+09:00" data-taka-created="true">
         <a class="service" data-category="build" href="./ai-business-starter-pack/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">01</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">02</span></span>
           <div>
             <div class="service-topline"><span class="revision-count" data-revisions="7" aria-label="公開後の改修7回"><span>REV.</span><strong>7</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / AI BUSINESS STARTER</span><span class="badge-slot-placeholder"></span></div>
             <div class="service-title-row"><h2>AI事業<br>スタートパック</h2><span class="badge-slot"></span></div>
@@ -1898,27 +2137,45 @@
         <button class="service-share" type="button" data-copy-anchor="ai-business-starter-pack" data-service-name="AI事業スタートパック" aria-label="AI事業スタートパックの一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
         </article>
 
-        <article class="service-entry" id="jmatch-engine" data-published="2026-09-09T12:48:00+09:00" data-updated="2026-09-12T17:27:00+09:00" data-taka-created="true">
-        <a class="service" data-category="work" href="./jmatch-engine/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-work"/></svg></span><span class="number">02</span></span>
+        <article class="service-entry" id="worklog-insight" data-published="2026-09-08T19:51:00+09:00" data-updated="2026-09-12T21:13:00+09:00" data-taka-created="true">
+        <a class="service" data-category="work" href="./worklog-insight/">
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-work"/></svg></span><span class="number">03</span></span>
           <div>
-            <div class="service-topline"><span class="revision-count" data-revisions="20" aria-label="公開後の改修20回"><span>REV.</span><strong>20</strong><span>回</span></span><span class="category-name">経営・社内業務</span><span class="service-type">SERVICE / BUSINESS PLANNING</span><span class="badge-slot-placeholder"></span></div>
-            <div class="service-title-row"><h2>Jマッチエンジン</h2><span class="badge-slot"></span></div>
+            <div class="service-topline"><span class="revision-count" data-revisions="7" aria-label="公開後の改修7回"><span>REV.</span><strong>7</strong><span>回</span></span><span class="category-name">経営・社内業務</span><span class="service-type">SERVICE / WORK ANALYTICS</span><span class="badge-slot-placeholder"></span></div>
+            <div class="service-title-row"><h2>ワークログ・<br>インサイト</h2><span class="badge-slot"></span></div>
           </div>
           <div class="description-wrap">
-            <p class="change-note"><span>最新の変更点</span><b>直販LPを月額3万円プラン主軸に全面改修し、DIRECT欄を初期登録費用10万円＋月額3万円へ差し替えました。</b></p>
-            <span class="url">writeup-inc.github.io/saas/jmatch-engine/</span>
-            <span class="author-tags"><span class="author-tag creator">初回作成：たかマスター＋Claude Code</span><span class="author-tag editor">最終更新：たかマスター＋Claude Code</span></span>
-            <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-09T12:48:00+09:00">2026.09.09 12:48</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-12T17:27:00+09:00">2026.09.12 17:27</time></span></span>
+            <p class="change-note"><span>最新の変更点</span><b>蓄積・AI改善提案・過去の事実確認を、20秒ごとに切り替える3本のヒーローコピーとして追加しました。</b></p>
+            <span class="url">writeup-inc.github.io/saas/worklog-insight/</span>
+            <span class="author-tags"><span class="author-tag creator">初回作成：たかマスター</span><span class="author-tag editor">最終更新：たかマスター＋Claude Code</span></span>
+            <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-08T19:51:00+09:00">2026.09.08 19:51</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-12T21:13:00+09:00">2026.09.12 21:13</time></span></span>
           </div>
           <span class="arrow" aria-hidden="true">↗</span>
         </a>
-        <button class="service-share" type="button" data-copy-anchor="jmatch-engine" data-service-name="Jマッチエンジン" aria-label="Jマッチエンジンの一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
+        <button class="service-share" type="button" data-copy-anchor="worklog-insight" data-service-name="ワークログ・インサイト" aria-label="ワークログ・インサイトの一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
+        </article>
+
+        <article class="service-entry" id="worklog-fact-search" data-published="2026-09-12T19:32:00+09:00" data-updated="2026-09-12T19:38:00+09:00" data-taka-created="true">
+        <a class="service" data-category="work" href="./worklog-fact-search/">
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-work"/></svg></span><span class="number">04</span></span>
+          <div>
+            <div class="service-topline"><span class="revision-count" data-revisions="1" aria-label="公開後の改修1回"><span>REV.</span><strong>1</strong><span>回</span></span><span class="category-name">経営・社内業務</span><span class="service-type">SERVICE / FACT SEARCH</span><span class="badge-slot-placeholder"></span></div>
+            <div class="service-title-row"><h2>ワークログ<br>ファクトサーチ</h2><span class="badge-slot"></span></div>
+          </div>
+          <div class="description-wrap">
+            <p class="change-note"><span>最新の変更点</span><b>画面の記録から後日日本語で確認できる有料オプションとして公開し、具体的な利用場面15件を追加しました。</b></p>
+            <span class="url">writeup-inc.github.io/saas/worklog-fact-search/</span>
+            <span class="author-tags"><span class="author-tag creator">初回作成：たかマスター＋Claude Code</span><span class="author-tag editor">最終更新：たかマスター＋Claude Code</span></span>
+            <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-12T19:32:00+09:00">2026.09.12 19:32</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-12T19:38:00+09:00">2026.09.12 19:38</time></span></span>
+          </div>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+        <button class="service-share" type="button" data-copy-anchor="worklog-fact-search" data-service-name="ワークログ ファクトサーチ" aria-label="ワークログ ファクトサーチの一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
         </article>
 
         <article class="service-entry" id="ai-ad-agency-pack" data-published="2026-09-05T00:48:00+09:00" data-updated="2026-09-11T23:20:00+09:00" data-taka-created="true">
         <a class="service" data-category="build" href="./ai-ad-agency-pack/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">03</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">05</span></span>
           <div>
             <div class="service-topline"><span class="revision-count" data-revisions="2" aria-label="公開後の改修2回"><span>REV.</span><strong>2</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / ADVERTISING</span><span class="badge-slot-placeholder"></span></div>
             <div class="service-title-row"><h2>AI広告代理店<br>スタートパック</h2><span class="badge-slot"></span></div>
@@ -1936,7 +2193,7 @@
 
         <article class="service-entry" id="ai-web-chat" data-published="2026-09-05T02:54:00+09:00" data-updated="2026-09-11T23:20:00+09:00" data-taka-created="true">
         <a class="service" data-category="care" href="./ai-web-chat/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-care"/></svg></span><span class="number">04</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-care"/></svg></span><span class="number">06</span></span>
           <div>
             <div class="service-topline"><span class="revision-count" data-revisions="6" aria-label="公開後の改修6回"><span>REV.</span><strong>6</strong><span>回</span></span><span class="category-name">顧客対応・店舗</span><span class="service-type">SERVICE / WEB SALES</span><span class="badge-slot-placeholder"></span></div>
             <div class="service-title-row"><h2>AIウェブチャット<br>（仮称）</h2><span class="badge-slot"></span></div>
@@ -1954,7 +2211,7 @@
 
         <article class="service-entry" id="web-agency-kit" data-published="2026-09-05T01:04:00+09:00" data-updated="2026-09-11T23:20:00+09:00" data-taka-created="true">
         <a class="service" data-category="build" href="./web-agency-kit/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">05</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">07</span></span>
           <div>
             <div class="service-topline"><span class="revision-count" data-revisions="1" aria-label="公開後の改修1回"><span>REV.</span><strong>1</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / WEB PRODUCTION</span><span class="badge-slot-placeholder"></span></div>
             <div class="service-title-row"><h2>ホームページ制作会社<br>スタートパック</h2><span class="badge-slot"></span></div>
@@ -1972,7 +2229,7 @@
 
         <article class="service-entry" id="ai-contact-4-stages" data-published="2026-09-05T00:36:00+09:00" data-updated="2026-09-11T23:20:00+09:00" data-taka-created="false">
         <a class="service" data-category="sales" href="./ai-contact-4-stages/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-sales"/></svg></span><span class="number">06</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-sales"/></svg></span><span class="number">08</span></span>
           <div>
             <div class="service-topline"><span class="revision-count" data-revisions="1" aria-label="公開後の改修1回"><span>REV.</span><strong>1</strong><span>回</span></span><span class="category-name">集客・営業</span><span class="service-type">GUIDE / CUSTOMER CONTACT</span><span class="badge-slot-placeholder"></span></div>
             <div class="service-title-row"><h2>AI接点が深まる<br>4段階</h2><span class="badge-slot"></span></div>
@@ -1990,7 +2247,7 @@
 
         <article class="service-entry" id="shiire-ataru-lp" data-published="2026-09-04T19:55:00+09:00" data-updated="2026-09-11T23:20:00+09:00" data-taka-created="true">
         <a class="service" data-category="work" href="./shiire-ataru-lp/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-work"/></svg></span><span class="number">07</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-work"/></svg></span><span class="number">09</span></span>
           <div>
             <div class="service-topline"><span class="revision-count" data-revisions="1" aria-label="公開後の改修1回"><span>REV.</span><strong>1</strong><span>回</span></span><span class="category-name">経営・社内業務</span><span class="service-type">SERVICE / REAL ESTATE</span><span class="badge-slot-placeholder"></span></div>
             <div class="service-title-row"><h2>仕入れ担当<br>アタル（仮称）</h2><span class="badge-slot"></span></div>
@@ -2008,7 +2265,7 @@
 
         <article class="service-entry" id="ai-manager" data-published="2026-09-08T09:45:00+09:00" data-updated="2026-09-11T15:37:00+09:00" data-taka-created="true">
         <a class="service" data-category="build" href="./ai-manager/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">08</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">10</span></span>
           <div>
             <div class="service-topline"><span class="revision-count" data-revisions="21" aria-label="公開後の改修21回"><span>REV.</span><strong>21</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / AI MANAGEMENT</span><span class="badge-slot-placeholder"></span></div>
             <div class="service-title-row"><h2>御社のAI担当<br>1年間伴走募集</h2><span class="badge-slot"></span></div>
@@ -2026,7 +2283,7 @@
 
         <article class="service-entry" id="ai-sales-agency-starter" data-published="2026-09-09T13:32:00+09:00" data-updated="2026-09-11T12:38:00+09:00" data-taka-created="true">
         <a class="service" data-category="build" href="./ai-sales-agency-starter/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">09</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">11</span></span>
           <div>
             <div class="service-topline"><span class="revision-count" data-revisions="5" aria-label="公開後の改修5回"><span>REV.</span><strong>5</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / SALES AGENCY</span><span class="badge-slot-placeholder"></span></div>
             <div class="service-title-row"><h2>AI営業代行会社<br>スタートパック</h2><span class="badge-slot"></span></div>
@@ -2044,7 +2301,7 @@
 
         <article class="service-entry" id="writeup-ai-history" data-published="2026-09-10T14:56:00+09:00" data-updated="2026-09-10T16:38:00+09:00" data-taka-created="true">
         <a class="service" data-category="build" href="./writeup-ai-history/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">10</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">12</span></span>
           <div>
             <div class="service-topline"><span class="revision-count" data-revisions="0" aria-label="公開後の改修0回"><span>REV.</span><strong>0</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">COMPANY / AI HISTORY</span><span class="badge-slot-placeholder"></span></div>
             <div class="service-title-row"><h2>ライトアップ<br>AIの歴史</h2><span class="badge-slot"></span></div>
@@ -2062,7 +2319,7 @@
 
         <article class="service-entry" id="ai-training-100k-jp" data-published="2026-09-09T22:13:00+09:00" data-updated="2026-09-09T22:13:00+09:00" data-taka-created="true">
         <a class="service" data-category="build" href="./ai-training-100k-jp/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">11</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">13</span></span>
           <div>
             <div class="service-topline"><span class="revision-count" data-revisions="0" aria-label="公開後の改修0回"><span>REV.</span><strong>0</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">PROJECT / AI TRAINING</span><span class="badge-slot-placeholder"></span></div>
             <div class="service-title-row"><h2>20代10万人<br>AI研修プロジェクト</h2><span class="badge-slot"></span></div>
@@ -2080,7 +2337,7 @@
 
         <article class="service-entry" id="webinar-log-scan" data-published="2026-09-09T21:27:00+09:00" data-updated="2026-09-09T21:51:00+09:00" data-taka-created="false">
         <a class="service" data-category="build" href="./webinar-log-scan/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">12</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">14</span></span>
           <div>
             <div class="service-topline"><span class="revision-count" data-revisions="1" aria-label="公開後の改修1回"><span>REV.</span><strong>1</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">WEBINAR / LOG ANALYSIS</span><span class="badge-slot-placeholder"></span></div>
             <div class="service-title-row"><h2>ウェビナー提案<br>議事録・ログ解析</h2><span class="badge-slot"></span></div>
@@ -2098,7 +2355,7 @@
 
         <article class="service-entry" id="webinar-ai-concierge" data-published="2026-09-09T21:03:00+09:00" data-updated="2026-09-09T21:03:00+09:00" data-taka-created="false">
         <a class="service" data-category="build" href="./webinar-ai-concierge/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">13</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">15</span></span>
           <div>
             <div class="service-topline"><span class="revision-count" data-revisions="0" aria-label="公開後の改修0回"><span>REV.</span><strong>0</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">WEBINAR / AI CONCIERGE</span><span class="badge-slot-placeholder"></span></div>
             <div class="service-title-row"><h2>ウェビナー<br>AIコンシェルジュ</h2><span class="badge-slot"></span></div>
@@ -2116,7 +2373,7 @@
 
         <article class="service-entry" id="pl-bridge" data-published="2026-09-09T12:35:00+09:00" data-updated="2026-09-09T18:10:00+09:00" data-taka-created="true">
         <a class="service" data-category="sales" href="./pl-bridge/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-sales"/></svg></span><span class="number">14</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-sales"/></svg></span><span class="number">16</span></span>
           <div>
             <div class="service-topline"><span class="revision-count" data-revisions="1" aria-label="公開後の改修1回"><span>REV.</span><strong>1</strong><span>回</span></span><span class="category-name">集客・営業</span><span class="service-type">PILOT / SALES &amp; ACCOUNTING</span><span class="badge-slot-placeholder"></span></div>
             <div class="service-title-row"><h2>PL BRIDGE<br>1社実証パートナー募集</h2><span class="badge-slot"></span></div>
@@ -2136,7 +2393,7 @@
 
         <article class="service-entry" id="webinar-navi" data-published="2026-09-09T17:57:00+09:00" data-updated="2026-09-09T17:57:00+09:00" data-taka-created="false">
         <a class="service" data-category="build" href="./webinar-navi/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">15</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">17</span></span>
           <div>
             <div class="service-topline"><span class="revision-count" data-revisions="3" aria-label="公開後の改修3回"><span>REV.</span><strong>3</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">WEBINAR / DIAGNOSIS</span><span class="badge-slot-placeholder"></span></div>
             <div class="service-title-row"><h2>WEBINAR<br>NAVIGATOR</h2><span class="badge-slot"></span></div>
@@ -2154,7 +2411,7 @@
 
         <article class="service-entry" id="ai-bird-work-discovery" data-published="2026-09-09T12:22:00+09:00" data-updated="2026-09-09T14:08:00+09:00" data-taka-created="true">
         <a class="service" data-category="build" href="./ai-bird-work-discovery/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">16</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">18</span></span>
           <div>
             <div class="service-topline"><span class="revision-count" data-revisions="2" aria-label="公開後の改修2回"><span>REV.</span><strong>2</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / AI OPERATIONS</span><span class="badge-slot-placeholder"></span></div>
             <div class="service-title-row"><h2>AIバード<br>業務発見セット</h2><span class="badge-slot"></span></div>
@@ -2173,7 +2430,7 @@
 
         <article class="service-entry" id="shigyo-ai-practice-pack" data-published="2026-09-09T12:39:00+09:00" data-updated="2026-09-09T12:39:00+09:00" data-taka-created="true">
         <a class="service" data-category="work" href="./shigyo-ai-practice-pack/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-work"/></svg></span><span class="number">17</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-work"/></svg></span><span class="number">19</span></span>
           <div>
             <div class="service-topline"><span class="revision-count" data-revisions="0" aria-label="公開後の改修0回"><span>REV.</span><strong>0</strong><span>回</span></span><span class="category-name">経営・社内業務</span><span class="service-type">SERVICE / PROFESSIONAL PRACTICE AI</span><span class="badge-slot-placeholder"></span></div>
             <div class="service-title-row"><h2>士業AI実務パック</h2><span class="badge-slot"></span></div>
@@ -2188,27 +2445,9 @@
         </a>
         <button class="service-share" type="button" data-copy-anchor="shigyo-ai-practice-pack" data-service-name="士業AI実務パック" aria-label="士業AI実務パックの一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
         </article>
-        <article class="service-entry" id="worklog-insight" data-published="2026-09-08T19:51:00+09:00" data-updated="2026-09-09T11:32:00+09:00" data-taka-created="true">
-        <a class="service" data-category="work" href="./worklog-insight/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-work"/></svg></span><span class="number">18</span></span>
-          <div>
-            <div class="service-topline"><span class="revision-count" data-revisions="3" aria-label="公開後の改修3回"><span>REV.</span><strong>3</strong><span>回</span></span><span class="category-name">経営・社内業務</span><span class="service-type">SERVICE / WORK ANALYTICS</span><span class="badge-slot-placeholder"></span></div>
-            <div class="service-title-row"><h2>ワークログ・<br>インサイト</h2><span class="badge-slot"></span></div>
-          </div>
-          <div class="description-wrap">
-            <p class="change-note"><span>最新の変更点</span><b>Noto Sans JPとInterを実際に読み込む構成へ直し、見た目だけでは気づきにくい外部フォントの欠落をCIで自動検知できるようにしました。</b></p>
-            <span class="url">writeup-inc.github.io/saas/worklog-insight/</span>
-            <span class="author-tags"><span class="author-tag creator">初回作成：たかマスター</span><span class="author-tag editor">最終更新：たかマスター</span></span>
-            <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="2026-09-08T19:51:00+09:00">2026.09.08 19:51</time></span><span class="date-item"><b>最終更新</b><time datetime="2026-09-09T11:32:00+09:00">2026.09.09 11:32</time></span></span>
-          </div>
-          <span class="arrow" aria-hidden="true">↗</span>
-        </a>
-        <button class="service-share" type="button" data-copy-anchor="worklog-insight" data-service-name="ワークログ・インサイト" aria-label="ワークログ・インサイトの一覧内共有URLをコピー"><span aria-hidden="true">⌁</span><span class="service-share-label">共有URLをコピー</span></button>
-        </article>
-
         <article class="service-entry" id="ai-business-partner" data-published="2026-09-09T10:26:00+09:00" data-updated="2026-09-09T10:47:00+09:00" data-taka-created="true">
         <a class="service" data-category="build" href="./ai-business-partner/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">19</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">20</span></span>
           <div>
             <div class="service-topline"><span class="revision-count" data-revisions="2" aria-label="公開後の改修2回"><span>REV.</span><strong>2</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">PARTNER PROGRAM / AI BUSINESS</span><span class="badge-slot-placeholder"></span></div>
             <div class="service-title-row"><h2>正規パートナー募集<br>（商材供給）</h2><span class="badge-slot"></span></div>
@@ -2226,7 +2465,7 @@
 
         <article class="service-entry" id="tsubame-lead-sky" data-published="2026-09-08T18:32:00+09:00" data-updated="2026-09-08T19:03:00+09:00" data-taka-created="true">
         <a class="service" data-category="sales" href="./tsubame-lead-sky/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-sales"/></svg></span><span class="number">20</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-sales"/></svg></span><span class="number">21</span></span>
           <div>
             <div class="service-topline"><span class="revision-count" data-revisions="12" aria-label="公開後の改修12回"><span>REV.</span><strong>12</strong><span>回</span></span><span class="category-name">集客・営業</span><span class="service-type">SERVICE / FORM SALES</span><span class="badge-slot-placeholder"></span></div>
             <div class="service-title-row"><h2>つばめリード<br>skyバージョン</h2><span class="badge-slot"></span></div>
@@ -2245,7 +2484,7 @@
 
         <article class="service-entry" id="aio-consult-business" data-published="2026-09-05T18:35:00+09:00" data-updated="2026-09-08T01:00:00+09:00" data-taka-created="true">
         <a class="service" data-category="build" href="./aio-consult-business/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">21</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">22</span></span>
           <div>
             <div class="service-topline"><span class="revision-count" data-revisions="11" aria-label="公開後の改修11回"><span>REV.</span><strong>11</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / BUSINESS STARTER</span><span class="badge-slot-placeholder"></span></div>
             <div class="service-title-row"><h2>AIOコンサル事業<br>スタートパック</h2><span class="badge-slot"></span></div>
@@ -2263,7 +2502,7 @@
 
         <article class="service-entry" id="mcp-guide" data-published="2026-09-05T12:12:00+09:00" data-updated="2026-09-05T12:19:00+09:00" data-taka-created="true">
         <a class="service" data-category="build" href="./mcp-guide/">
-          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">22</span></span>
+          <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">23</span></span>
           <div>
             <div class="service-topline"><span class="revision-count" data-revisions="1" aria-label="公開後の改修1回"><span>REV.</span><strong>1</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">MEDIA / AI INFRASTRUCTURE</span><span class="badge-slot-placeholder"></span></div>
             <div class="service-title-row"><h2>MCP導入<br>ガイド</h2><span class="badge-slot"></span></div>
@@ -2329,32 +2568,18 @@
     (() => {
       const activityWindowMs = 7 * 24 * 60 * 60 * 1000;
       const newsDialog = document.querySelector('#news-dialog');
-      const newsOpenButton = document.querySelector('[data-news-open]');
+      const newsOpenButtons = [...document.querySelectorAll('[data-news-open]')];
       const newsCloseButton = document.querySelector('[data-news-close]');
-      const newsSessionKey = 'saas-important-news-2026-09-09';
 
       const openNews = () => {
         if (!newsDialog.open) newsDialog.showModal();
       };
 
-      newsOpenButton.addEventListener('click', openNews);
+      newsOpenButtons.forEach((button) => button.addEventListener('click', openNews));
       newsCloseButton.addEventListener('click', () => newsDialog.close());
       newsDialog.addEventListener('click', (event) => {
         if (event.target === newsDialog) newsDialog.close();
       });
-
-      let hasSeenNews = false;
-      try {
-        hasSeenNews = sessionStorage.getItem(newsSessionKey) === 'seen';
-        if (!hasSeenNews) sessionStorage.setItem(newsSessionKey, 'seen');
-      } catch (error) {
-        hasSeenNews = false;
-      }
-
-      if (!hasSeenNews) {
-        const delay = matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 350;
-        window.setTimeout(openNews, delay);
-      }
 
       const list = document.querySelector('.list');
       const services = [...list.querySelectorAll('.service-entry')];
@@ -2403,6 +2628,124 @@
       });
 
       services.sort((a, b) => new Date(b.dataset.updated) - new Date(a.dataset.updated));
+
+      const activityNow = Date.now();
+      const jstWeekday = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'Asia/Tokyo',
+        weekday: 'short'
+      }).format(new Date(activityNow));
+      const activityHours = jstWeekday === 'Mon' ? 72 : 24;
+      const recentSince = activityNow - activityHours * 60 * 60 * 1000;
+      const activityWindowLabel = jstWeekday === 'Mon' ? '月曜は週末を含む直近72時間' : '直近24時間';
+      const recentNew = services
+        .filter((service) => {
+          const publishedAt = new Date(service.dataset.published).getTime();
+          return publishedAt >= recentSince && publishedAt <= activityNow;
+        })
+        .sort((a, b) => new Date(b.dataset.published) - new Date(a.dataset.published));
+      const recentUpdates = services
+        .filter((service) => {
+          const publishedAt = new Date(service.dataset.published).getTime();
+          const updatedAt = new Date(service.dataset.updated).getTime();
+          return publishedAt < recentSince && updatedAt > publishedAt && updatedAt >= recentSince && updatedAt <= activityNow;
+        })
+        .sort((a, b) => new Date(b.dataset.updated) - new Date(a.dataset.updated));
+      const recentActivity = [
+        ...recentNew.map((service) => ({ service, kind: 'new', occurredAt: service.dataset.published })),
+        ...recentUpdates.map((service) => ({ service, kind: 'updated', occurredAt: service.dataset.updated }))
+      ].sort((a, b) => new Date(b.occurredAt) - new Date(a.occurredAt));
+      const formatActivityTime = (value) => new Intl.DateTimeFormat('ja-JP', {
+        timeZone: 'Asia/Tokyo',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hourCycle: 'h23'
+      }).format(new Date(value)).replaceAll('/', '.');
+      const serviceTitle = (service) => service.querySelector('h2').textContent.replace(/\s+/g, ' ').trim();
+      const serviceChange = (service) => service.querySelector('.change-note b').textContent.trim();
+      const newsNew = document.querySelector('[data-news-new]');
+      const newsUpdated = document.querySelector('[data-news-updated]');
+      const newsNewList = document.querySelector('[data-news-new-list]');
+      const newsUpdatedList = document.querySelector('[data-news-updated-list]');
+      const newsEmpty = document.querySelector('[data-news-empty]');
+      const newsWindow = document.querySelector('[data-news-window]');
+      const heroActivity = document.querySelector('[data-hero-activity]');
+      const heroActivityList = document.querySelector('[data-hero-activity-list]');
+      const heroActivityWindow = document.querySelector('[data-hero-activity-window]');
+
+      const addDialogActivity = (list, service, kind) => {
+        const item = document.createElement('li');
+        const link = document.createElement('a');
+        const date = document.createElement('time');
+        const copy = document.createElement('span');
+        const title = document.createElement('strong');
+        const change = document.createElement('span');
+        const occurredAt = kind === 'new' ? service.dataset.published : service.dataset.updated;
+        link.className = 'news-activity-link';
+        link.href = service.querySelector('.service').getAttribute('href');
+        link.setAttribute('aria-label', `${kind === 'new' ? '新規追加' : '更新'}：${serviceTitle(service)}。詳しく見る`);
+        date.className = 'news-activity-date';
+        date.dateTime = occurredAt;
+        date.textContent = formatActivityTime(occurredAt);
+        copy.className = 'news-activity-copy';
+        title.className = 'news-activity-title';
+        title.textContent = serviceTitle(service);
+        change.className = 'news-activity-change';
+        change.textContent = serviceChange(service);
+        copy.append(title, change);
+        link.append(date, copy);
+        item.appendChild(link);
+        list.appendChild(item);
+      };
+
+      recentNew.forEach((service) => addDialogActivity(newsNewList, service, 'new'));
+      recentUpdates.forEach((service) => addDialogActivity(newsUpdatedList, service, 'updated'));
+      newsNew.hidden = recentNew.length === 0;
+      newsUpdated.hidden = recentUpdates.length === 0;
+      document.querySelector('[data-news-new-count]').textContent = `${recentNew.length}件`;
+      document.querySelector('[data-news-updated-count]').textContent = `${recentUpdates.length}件`;
+      newsWindow.textContent = `${activityWindowLabel}に公開・実質更新されたページです。上段を新規、下段を更新として表示しています。`;
+      newsEmpty.hidden = recentActivity.length > 0;
+      newsDialog.dataset.density = recentActivity.length >= 8 ? 'compact' : 'relaxed';
+
+      if (recentActivity.length === 0) {
+        heroActivity.hidden = true;
+        newsOpenButtons.forEach((button) => { button.hidden = true; });
+      } else {
+        heroActivityWindow.textContent = activityHours === 72 ? '72H / MON' : '24H';
+        recentActivity.forEach(({ service, kind, occurredAt }) => {
+          const item = document.createElement('li');
+          const link = document.createElement('a');
+          const label = document.createElement('span');
+          const title = document.createElement('span');
+          link.className = 'hero-activity-link';
+          link.href = service.querySelector('.service').getAttribute('href');
+          link.setAttribute('aria-label', `${kind === 'new' ? '新規追加' : '更新'}：${serviceTitle(service)}（${formatActivityTime(occurredAt)}）`);
+          label.className = `hero-activity-kind ${kind}`;
+          label.textContent = kind === 'new' ? 'NEW' : 'UPDATE';
+          title.className = 'hero-activity-title';
+          title.textContent = serviceTitle(service);
+          link.append(label, title);
+          item.appendChild(link);
+          heroActivityList.appendChild(item);
+        });
+        newsOpenButtons.forEach((button) => {
+          button.textContent = `${activityWindowLabel}の新規${recentNew.length}件・更新${recentUpdates.length}件を見る`;
+        });
+        const newsSessionKey = `saas-activity-${activityHours}h-${recentActivity.map(({ service, kind, occurredAt }) => `${kind}-${service.id}-${occurredAt}`).join('_')}`;
+        let hasSeenNews = false;
+        try {
+          hasSeenNews = sessionStorage.getItem(newsSessionKey) === 'seen';
+          if (!hasSeenNews) sessionStorage.setItem(newsSessionKey, 'seen');
+        } catch (error) {
+          hasSeenNews = false;
+        }
+        if (!hasSeenNews) {
+          const delay = matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 350;
+          window.setTimeout(openNews, delay);
+        }
+      }
 
       const latestUpdatesList = latestUpdates.querySelector('.latest-updates-list');
       services.slice(0, 5).forEach((service) => {

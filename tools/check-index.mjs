@@ -265,11 +265,20 @@ for (const card of cards) {
   if (!serviceDirectories.includes(card.id)) error(`[${card.id}] 一覧対象ではないディレクトリのカードがあります`);
 }
 
-const heroBoards = [...html.matchAll(/<a class="hero-board" href="([^"]+)"[\s\S]*?<time datetime="([^"]+)">([^<]+)<\/time>[\s\S]*?<\/a>/g)];
-if (heroBoards.length > 3) error(`重要告知が3件を超えています: ${heroBoards.length}件`);
-for (const board of heroBoards) {
-  const match = board[1].match(/^\.\/([^/]+)\/$/);
-  if (!match || !existsSync(join(rootDir, match[1], "index.html"))) error(`重要告知のリンク先が存在しません: ${board[1]}`);
+if (!html.includes('data-hero-activity') || !html.includes('data-hero-activity-list')) {
+  error("ヒーロー右側の直近アクティビティ一覧がありません");
+}
+if (!html.includes('data-news-new-list') || !html.includes('data-news-updated-list')) {
+  error("新規・更新を分けるお知らせダイアログの一覧がありません");
+}
+if (!html.includes("const activityHours = jstWeekday === 'Mon' ? 72 : 24;")) {
+  error("月曜72時間・通常24時間の新着判定がありません");
+}
+if (!html.includes('updatedAt > publishedAt') || !html.includes('recentNew') || !html.includes('recentUpdates')) {
+  error("新規と更新を分ける直近アクティビティ判定がありません");
+}
+if (/class="hero-board"/.test(html)) {
+  error("固定の重要告知カードが残っています。直近アクティビティの自動表示へ移行してください");
 }
 
 if (historyEnabled) {
@@ -299,4 +308,4 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log(`Index check passed: ${cards.length} card(s), ${heroBoards.length} announcement(s), ${warnings.length} warning(s)`);
+console.log(`Index check passed: ${cards.length} card(s), dynamic activity announcement enabled, ${warnings.length} warning(s)`);
