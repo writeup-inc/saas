@@ -90,6 +90,16 @@ header{
   letter-spacing:.005em;
 }
 .hero h1 .b{color:var(--blue)}
+/* ヒーロー：1文字ずつのフリップ切り替え */
+.hero h1{perspective:700px;min-height:calc(1.23em * 3)}
+.hero h1 .hl{display:block}
+.hero h1 .hc{display:inline-block;opacity:0;transform:rotateX(-88deg) translateY(-.10em);transform-origin:50% 12%;backface-visibility:hidden}
+.hero h1 .hc.on{opacity:1;transform:none;transition:transform .24s cubic-bezier(.2,.85,.3,1),opacity .13s linear}
+.hero h1 .hc.off{opacity:0;transform:rotateX(84deg) translateY(.10em);transition:transform .2s cubic-bezier(.5,0,.85,.35),opacity .16s linear}
+.hero-opt{font-size:12px;font-weight:800;letter-spacing:.1em;color:var(--blue);background:var(--blue-l);padding:3px 9px}
+@media (prefers-reduced-motion:reduce){
+  .hero h1 .hc,.hero h1 .hc.on,.hero h1 .hc.off{opacity:1;transform:none;transition:none}
+}
 .hero-sub{margin-top:32px;font-size:16.5px;color:var(--gray);max-width:588px}
 .hero-actions{margin-top:42px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .hero-cta{display:inline-flex;align-items:center;gap:14px;background:var(--blue);color:#fff;font-weight:700;font-size:16px;padding:20px 42px;letter-spacing:.08em;min-height:44px;transition:background .25s}
@@ -632,7 +642,7 @@ section{padding:96px 0}
 @media (max-width:600px){
   section{padding:56px 0}
   .hero{padding:112px 0 60px}
-  .hero h1{font-size:38px;line-height:1.28}
+  .hero h1{font-size:32px;line-height:1.3}
   .hero-sub{font-size:15px;margin-top:25px}
   .hero-actions{margin-top:30px}
   .roadmap-line{grid-template-columns:1fr}
@@ -663,8 +673,8 @@ section{padding:96px 0}
 <div class="hero">
   <div class="wrap hero-inner">
     <div>
-      <div class="hero-label"><span class="sq"></span><span class="en">1 MINUTE WORKLOG &times; AI</span></div>
-      <h1>今日の仕事を、<br><span class="b">1年後の</span><br>自動化データへ。</h1>
+      <div class="hero-label"><span class="sq"></span><span class="en">1 MINUTE WORKLOG &times; AI</span><span class="hero-opt" id="heroOpt" hidden>オプション機能</span></div>
+      <h1 id="heroH1">今日の仕事を、<br><span class="b">1年後の</span><br>自動化データへ。</h1>
       <p class="hero-sub">PC上の仕事を1分ごとに記録し、AIが「誰が・何に・何時間」を整理。毎週、次に自動化すべき業務と、戻せる時間を提示します。業務効率化も、リスク管理も、その先にある全社自動化も。準備は、今日のログから始まります。</p>
       <div class="hero-actions">
         <a class="hero-cta" href="#cta">自社の業務を可視化する</a>
@@ -1391,5 +1401,92 @@ section{padding:96px 0}
 })();
 </script>
 
+<script>
+/* ヒーロー見出し：1文字ずつフリップして入れ替える */
+(function(){
+  var h1=document.getElementById('heroH1'), opt=document.getElementById('heroOpt');
+  if(!h1) return;
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var COPIES=[
+    {opt:false, lines:[['今日の仕事を、',0],['1年後の',1],['自動化データへ。',0]]},
+    {opt:false, lines:[['うちの無駄は、',0],['AIが、',1],['画面から見つける。',0]]},
+    {opt:true,  lines:[['あのときの事実は、',0],['画面に、',1],['残っている。',0]]}
+  ];
+  var HOLD=20000, IN=48, OUT=30, GAP=340;
+  var idx=0, chars=[], timers=[], running=true;
+
+  function clearTimers(){ timers.forEach(clearTimeout); timers=[]; }
+  function later(fn,ms){ var t=setTimeout(fn,ms); timers.push(t); return t; }
+
+  function plain(c){ return c.lines.map(function(l){return l[0];}).join(''); }
+
+  function build(c){
+    h1.textContent='';
+    h1.setAttribute('aria-label', plain(c));
+    chars=[];
+    c.lines.forEach(function(l){
+      var line=document.createElement('span');
+      line.className='hl';
+      if(l[1]) line.classList.add('b');
+      line.setAttribute('aria-hidden','true');
+      var cs=Array.from(l[0]), PUNCT='、。，．！？」』）';
+      for(var i=0;i<cs.length;i++){
+        var sp=document.createElement('span');
+        sp.className='hc'; sp.textContent=cs[i];
+        /* 次が句読点なら、直前の字と1組にして行頭に句読点が来ないようにする */
+        if(i+1<cs.length && PUNCT.indexOf(cs[i+1])>=0){
+          var grp=document.createElement('span');
+          grp.style.whiteSpace='nowrap';
+          var sp2=document.createElement('span');
+          sp2.className='hc'; sp2.textContent=cs[i+1];
+          grp.appendChild(sp); grp.appendChild(sp2);
+          line.appendChild(grp);
+          chars.push(sp); chars.push(sp2);
+          i++;
+        } else {
+          line.appendChild(sp);
+          chars.push(sp);
+        }
+      }
+      h1.appendChild(line);
+    });
+    if(opt) opt.hidden=!c.opt;
+  }
+
+  function showAll(){ chars.forEach(function(sp){ sp.classList.add('on'); sp.classList.remove('off'); }); }
+
+  function reveal(done){
+    chars.forEach(function(sp,i){ later(function(){ sp.classList.add('on'); }, i*IN); });
+    later(done, chars.length*IN+240);
+  }
+
+  function erase(done){
+    chars.forEach(function(sp,i){ later(function(){ sp.classList.remove('on'); sp.classList.add('off'); }, i*OUT); });
+    later(done, chars.length*OUT+220);
+  }
+
+  function cycle(){
+    if(!running) return;
+    erase(function(){
+      idx=(idx+1)%COPIES.length;
+      build(COPIES[idx]);
+      later(function(){
+        reveal(function(){ later(cycle, HOLD); });
+      }, GAP);
+    });
+  }
+
+  /* 初回 */
+  build(COPIES[0]);
+  reveal(function(){ later(cycle, HOLD); });
+
+  /* タブが隠れている間は止め、戻ったら今のコピーを出し切ってから再開 */
+  document.addEventListener('visibilitychange', function(){
+    if(document.hidden){ running=false; clearTimers(); }
+    else { running=true; clearTimers(); showAll(); later(cycle, HOLD); }
+  });
+})();
+</script>
 </body>
 </html>
