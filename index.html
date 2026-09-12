@@ -1051,19 +1051,13 @@
       justify-self: end;
     }
 
-    .service-columns .service-topline {
-      min-height: 36px;
-      gap: 8px;
-      margin-bottom: 6px;
-    }
-
     .service-columns .revision-count {
-      min-height: 36px;
+      min-height: 56px;
       padding-right: 10px;
     }
 
     .service-columns .revision-count strong {
-      font-size: clamp(28px, 2.2vw, 36px);
+      font-size: clamp(44px, 3.4vw, 58px);
     }
 
     .service-columns .service h2 {
@@ -1284,7 +1278,7 @@
 
     .service-topline {
       display: flex;
-      min-height: 24px;
+      min-height: 60px;
       align-items: center;
       gap: 9px;
       margin-bottom: 8px;
@@ -1295,7 +1289,7 @@
       display: inline-flex;
       align-items: baseline;
       gap: 3px;
-      min-height: 42px;
+      min-height: 52px;
       margin-right: 3px;
       padding-right: 12px;
       border-right: 1px solid var(--line);
@@ -1305,7 +1299,7 @@
 
     .revision-count > span {
       color: var(--muted);
-      font-size: 8px;
+      font-size: 9px;
       font-weight: 850;
       letter-spacing: .1em;
     }
@@ -1313,13 +1307,29 @@
     .revision-count strong {
       color: var(--green);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(31px, 2.45vw, 42px);
+      font-size: clamp(42px, 3.05vw, 54px);
       font-weight: 500;
       letter-spacing: -.07em;
       line-height: .8;
     }
 
+    .service-title-row {
+      display: flex;
+      min-width: 0;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .service-title-row h2 {
+      min-width: 0;
+    }
+
+    .service-title-row .badge-slot {
+      flex: 0 0 auto;
+    }
+
     .badge-slot:empty { display: none; }
+    .badge-slot-placeholder { display: none; }
 
     .activity-badge {
       display: inline-flex;
@@ -1667,9 +1677,11 @@
       }
       .service-index { gap: 7px; }
       .number { font-size: 11px; }
-      .revision-count { min-height: 34px; padding-right: 9px; }
-      .revision-count strong { font-size: 31px; }
+      .revision-count { min-height: 48px; padding-right: 9px; }
+      .revision-count strong { font-size: 44px; }
       .revision-count > span { font-size: 7px; }
+      .service-type { display: none; }
+      .service-title-row { gap: 9px; }
       .service-columns .description-wrap { grid-column: 1 / 4; padding-top: 2px; }
       .change-note { grid-template-columns: 1fr; gap: 3px; }
       .change-note b { font-size: 14px; white-space: normal; }
@@ -1872,8 +1884,8 @@
         <a class="service" data-category="work" href="./jmatch-engine/">
           <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-work"/></svg></span><span class="number">01</span></span>
           <div>
-            <div class="service-topline"><span class="revision-count" data-revisions="20" aria-label="公開後の改修20回"><span>REV.</span><strong>20</strong><span>回</span></span><span class="category-name">経営・社内業務</span><span class="service-type">SERVICE / BUSINESS PLANNING</span><span class="badge-slot"></span></div>
-            <h2>Jマッチエンジン</h2>
+            <div class="service-topline"><span class="revision-count" data-revisions="20" aria-label="公開後の改修20回"><span>REV.</span><strong>20</strong><span>回</span></span><span class="category-name">経営・社内業務</span><span class="service-type">SERVICE / BUSINESS PLANNING</span><span class="badge-slot-placeholder"></span></div>
+            <div class="service-title-row"><h2>Jマッチエンジン</h2><span class="badge-slot"></span></div>
           </div>
           <div class="description-wrap">
             <p class="change-note"><span>最新の変更点</span><b>直販LPを月額3万円プラン主軸に全面改修し、DIRECT欄を初期登録費用10万円＋月額3万円へ差し替えました。</b></p>
@@ -1890,8 +1902,8 @@
         <a class="service" data-category="build" href="./ai-ad-agency-pack/">
           <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">02</span></span>
           <div>
-            <div class="service-topline"><span class="revision-count" data-revisions="2" aria-label="公開後の改修2回"><span>REV.</span><strong>2</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / ADVERTISING</span><span class="badge-slot"></span></div>
-            <h2>AI広告代理店<br>スタートパック</h2>
+            <div class="service-topline"><span class="revision-count" data-revisions="2" aria-label="公開後の改修2回"><span>REV.</span><strong>2</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / ADVERTISING</span><span class="badge-slot-placeholder"></span></div>
+            <div class="service-title-row"><h2>AI広告代理店<br>スタートパック</h2><span class="badge-slot"></span></div>
           </div>
           <div class="description-wrap">
             <p class="change-note"><span>最新の変更点</span><b>検索エンジンにインデックスされないよう noindex を追加しました。ページの内容そのものに変更はありません。</b></p>
@@ -1908,8 +1920,8 @@
         <a class="service" data-category="care" href="./ai-web-chat/">
           <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-care"/></svg></span><span class="number">03</span></span>
           <div>
-            <div class="service-topline"><span class="revision-count" data-revisions="6" aria-label="公開後の改修6回"><span>REV.</span><strong>6</strong><span>回</span></span><span class="category-name">顧客対応・店舗</span><span class="service-type">SERVICE / WEB SALES</span><span class="badge-slot"></span></div>
-            <h2>AIウェブチャット<br>（仮称）</h2>
+            <div class="service-topline"><span class="revision-count" data-revisions="6" aria-label="公開後の改修6回"><span>REV.</span><strong>6</strong><span>回</span></span><span class="category-name">顧客対応・店舗</span><span class="service-type">SERVICE / WEB SALES</span><span class="badge-slot-placeholder"></span></div>
+            <div class="service-title-row"><h2>AIウェブチャット<br>（仮称）</h2><span class="badge-slot"></span></div>
           </div>
           <div class="description-wrap">
             <p class="change-note"><span>最新の変更点</span><b>検索エンジンにインデックスされないよう noindex を追加しました。ページの内容そのものに変更はありません。</b></p>
@@ -1926,8 +1938,8 @@
         <a class="service" data-category="build" href="./web-agency-kit/">
           <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">04</span></span>
           <div>
-            <div class="service-topline"><span class="revision-count" data-revisions="1" aria-label="公開後の改修1回"><span>REV.</span><strong>1</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / WEB PRODUCTION</span><span class="badge-slot"></span></div>
-            <h2>ホームページ制作会社<br>スタートパック</h2>
+            <div class="service-topline"><span class="revision-count" data-revisions="1" aria-label="公開後の改修1回"><span>REV.</span><strong>1</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / WEB PRODUCTION</span><span class="badge-slot-placeholder"></span></div>
+            <div class="service-title-row"><h2>ホームページ制作会社<br>スタートパック</h2><span class="badge-slot"></span></div>
           </div>
           <div class="description-wrap">
             <p class="change-note"><span>最新の変更点</span><b>検索エンジンにインデックスされないよう noindex を追加しました。ページの内容そのものに変更はありません。</b></p>
@@ -1944,8 +1956,8 @@
         <a class="service" data-category="sales" href="./ai-contact-4-stages/">
           <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-sales"/></svg></span><span class="number">05</span></span>
           <div>
-            <div class="service-topline"><span class="revision-count" data-revisions="1" aria-label="公開後の改修1回"><span>REV.</span><strong>1</strong><span>回</span></span><span class="category-name">集客・営業</span><span class="service-type">GUIDE / CUSTOMER CONTACT</span><span class="badge-slot"></span></div>
-            <h2>AI接点が深まる<br>4段階</h2>
+            <div class="service-topline"><span class="revision-count" data-revisions="1" aria-label="公開後の改修1回"><span>REV.</span><strong>1</strong><span>回</span></span><span class="category-name">集客・営業</span><span class="service-type">GUIDE / CUSTOMER CONTACT</span><span class="badge-slot-placeholder"></span></div>
+            <div class="service-title-row"><h2>AI接点が深まる<br>4段階</h2><span class="badge-slot"></span></div>
           </div>
           <div class="description-wrap">
             <p class="change-note"><span>最新の変更点</span><b>検索エンジンにインデックスされないよう noindex を追加しました。ページの内容そのものに変更はありません。</b></p>
@@ -1962,8 +1974,8 @@
         <a class="service" data-category="work" href="./shiire-ataru-lp/">
           <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-work"/></svg></span><span class="number">06</span></span>
           <div>
-            <div class="service-topline"><span class="revision-count" data-revisions="1" aria-label="公開後の改修1回"><span>REV.</span><strong>1</strong><span>回</span></span><span class="category-name">経営・社内業務</span><span class="service-type">SERVICE / REAL ESTATE</span><span class="badge-slot"></span></div>
-            <h2>仕入れ担当<br>アタル（仮称）</h2>
+            <div class="service-topline"><span class="revision-count" data-revisions="1" aria-label="公開後の改修1回"><span>REV.</span><strong>1</strong><span>回</span></span><span class="category-name">経営・社内業務</span><span class="service-type">SERVICE / REAL ESTATE</span><span class="badge-slot-placeholder"></span></div>
+            <div class="service-title-row"><h2>仕入れ担当<br>アタル（仮称）</h2><span class="badge-slot"></span></div>
           </div>
           <div class="description-wrap">
             <p class="change-note"><span>最新の変更点</span><b>検索エンジンにインデックスされないよう noindex を追加しました。ページの内容そのものに変更はありません。</b></p>
@@ -1980,8 +1992,8 @@
         <a class="service" data-category="build" href="./ai-manager/">
           <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">07</span></span>
           <div>
-            <div class="service-topline"><span class="revision-count" data-revisions="21" aria-label="公開後の改修21回"><span>REV.</span><strong>21</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / AI MANAGEMENT</span><span class="badge-slot"></span></div>
-            <h2>御社のAI担当<br>1年間伴走募集</h2>
+            <div class="service-topline"><span class="revision-count" data-revisions="21" aria-label="公開後の改修21回"><span>REV.</span><strong>21</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / AI MANAGEMENT</span><span class="badge-slot-placeholder"></span></div>
+            <div class="service-title-row"><h2>御社のAI担当<br>1年間伴走募集</h2><span class="badge-slot"></span></div>
           </div>
           <div class="description-wrap">
             <p class="change-note"><span>最新の変更点</span><b>関連する2本のインタビュー記事を「Interviews」へ移し、作成日・最終更新日・概要から一覧で選べるように整理しました。</b></p>
@@ -1998,8 +2010,8 @@
         <a class="service" data-category="build" href="./ai-sales-agency-starter/">
           <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">08</span></span>
           <div>
-            <div class="service-topline"><span class="revision-count" data-revisions="5" aria-label="公開後の改修5回"><span>REV.</span><strong>5</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / SALES AGENCY</span><span class="badge-slot"></span></div>
-            <h2>AI営業代行会社<br>スタートパック</h2>
+            <div class="service-topline"><span class="revision-count" data-revisions="5" aria-label="公開後の改修5回"><span>REV.</span><strong>5</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / SALES AGENCY</span><span class="badge-slot-placeholder"></span></div>
+            <div class="service-title-row"><h2>AI営業代行会社<br>スタートパック</h2><span class="badge-slot"></span></div>
           </div>
           <div class="description-wrap">
             <p class="change-note"><span>最新の変更点</span><b>最後に、いい仕事を終えた夜の一杯を描く写真セクションを追加。「人に会うことが仕事になる。それが幸せだ。」と、副業スタートOKのメッセージで締めくくります。</b></p>
@@ -2016,8 +2028,8 @@
         <a class="service" data-category="build" href="./writeup-ai-history/">
           <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">09</span></span>
           <div>
-            <div class="service-topline"><span class="revision-count" data-revisions="0" aria-label="公開後の改修0回"><span>REV.</span><strong>0</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">COMPANY / AI HISTORY</span><span class="badge-slot"></span></div>
-            <h2>ライトアップ<br>AIの歴史</h2>
+            <div class="service-topline"><span class="revision-count" data-revisions="0" aria-label="公開後の改修0回"><span>REV.</span><strong>0</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">COMPANY / AI HISTORY</span><span class="badge-slot-placeholder"></span></div>
+            <div class="service-title-row"><h2>ライトアップ<br>AIの歴史</h2><span class="badge-slot"></span></div>
           </div>
           <div class="description-wrap">
             <p class="change-note"><span>最新の変更点</span><b>公開URLをwriteup表記へ統一し、1997年の統計・データ解析から現在のAIエージェント事業まで、約30年の歩みを一つの資料でたどれるようにしました。</b></p>
@@ -2034,8 +2046,8 @@
         <a class="service" data-category="build" href="./ai-training-100k-jp/">
           <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">10</span></span>
           <div>
-            <div class="service-topline"><span class="revision-count" data-revisions="0" aria-label="公開後の改修0回"><span>REV.</span><strong>0</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">PROJECT / AI TRAINING</span><span class="badge-slot"></span></div>
-            <h2>20代10万人<br>AI研修プロジェクト</h2>
+            <div class="service-topline"><span class="revision-count" data-revisions="0" aria-label="公開後の改修0回"><span>REV.</span><strong>0</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">PROJECT / AI TRAINING</span><span class="badge-slot-placeholder"></span></div>
+            <div class="service-title-row"><h2>20代10万人<br>AI研修プロジェクト</h2><span class="badge-slot"></span></div>
           </div>
           <div class="description-wrap">
             <p class="change-note"><span>最新の変更点</span><b>Vercel版LPをGitHub Pages向けに移植し、画像・OGカード・共有URLを商品ディレクトリ内へ統合。どの環境から開いても同じ内容を共有できる公開構成にしました。</b></p>
@@ -2052,8 +2064,8 @@
         <a class="service" data-category="build" href="./webinar-log-scan/">
           <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">11</span></span>
           <div>
-            <div class="service-topline"><span class="revision-count" data-revisions="1" aria-label="公開後の改修1回"><span>REV.</span><strong>1</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">WEBINAR / LOG ANALYSIS</span><span class="badge-slot"></span></div>
-            <h2>ウェビナー提案<br>議事録・ログ解析</h2>
+            <div class="service-topline"><span class="revision-count" data-revisions="1" aria-label="公開後の改修1回"><span>REV.</span><strong>1</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">WEBINAR / LOG ANALYSIS</span><span class="badge-slot-placeholder"></span></div>
+            <div class="service-title-row"><h2>ウェビナー提案<br>議事録・ログ解析</h2><span class="badge-slot"></span></div>
           </div>
           <div class="description-wrap">
             <p class="change-note"><span>最新の変更点</span><b>解析結果の最上部におすすめウェビナーと申し込みボタンを置き、ログから読み取った課題は2列の短い行へ圧縮。提案理由を確認してすぐ申し込める順番に変更しました。</b></p>
@@ -2070,8 +2082,8 @@
         <a class="service" data-category="build" href="./webinar-ai-concierge/">
           <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">12</span></span>
           <div>
-            <div class="service-topline"><span class="revision-count" data-revisions="0" aria-label="公開後の改修0回"><span>REV.</span><strong>0</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">WEBINAR / AI CONCIERGE</span><span class="badge-slot"></span></div>
-            <h2>ウェビナー<br>AIコンシェルジュ</h2>
+            <div class="service-topline"><span class="revision-count" data-revisions="0" aria-label="公開後の改修0回"><span>REV.</span><strong>0</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">WEBINAR / AI CONCIERGE</span><span class="badge-slot-placeholder"></span></div>
+            <div class="service-title-row"><h2>ウェビナー<br>AIコンシェルジュ</h2><span class="badge-slot"></span></div>
           </div>
           <div class="description-wrap">
             <p class="change-note"><span>最新の変更点</span><b>仕事内容や悩みを自由入力でも選択肢でも伝えられ、開催中の4つから合うウェビナーを理由付きで提案するチャット型案内を新規公開しました。</b></p>
@@ -2088,8 +2100,8 @@
         <a class="service" data-category="sales" href="./pl-bridge/">
           <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-sales"/></svg></span><span class="number">13</span></span>
           <div>
-            <div class="service-topline"><span class="revision-count" data-revisions="1" aria-label="公開後の改修1回"><span>REV.</span><strong>1</strong><span>回</span></span><span class="category-name">集客・営業</span><span class="service-type">PILOT / SALES &amp; ACCOUNTING</span><span class="badge-slot"></span></div>
-            <h2>PL BRIDGE<br>1社実証パートナー募集</h2>
+            <div class="service-topline"><span class="revision-count" data-revisions="1" aria-label="公開後の改修1回"><span>REV.</span><strong>1</strong><span>回</span></span><span class="category-name">集客・営業</span><span class="service-type">PILOT / SALES &amp; ACCOUNTING</span><span class="badge-slot-placeholder"></span></div>
+            <div class="service-title-row"><h2>PL BRIDGE<br>1社実証パートナー募集</h2><span class="badge-slot"></span></div>
           </div>
           <div class="description-wrap">
             <p class="change-note"><span>最新の変更点</span><b>訴求コピーを刷新し、重複していた10セクションを7つへ統合。Salesforceの売上情報を税理士が月次確認する流れと、確認往復を減らすAI構想を図解で追加しました。</b></p>
@@ -2108,8 +2120,8 @@
         <a class="service" data-category="build" href="./webinar-navi/">
           <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">14</span></span>
           <div>
-            <div class="service-topline"><span class="revision-count" data-revisions="3" aria-label="公開後の改修3回"><span>REV.</span><strong>3</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">WEBINAR / DIAGNOSIS</span><span class="badge-slot"></span></div>
-            <h2>WEBINAR<br>NAVIGATOR</h2>
+            <div class="service-topline"><span class="revision-count" data-revisions="3" aria-label="公開後の改修3回"><span>REV.</span><strong>3</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">WEBINAR / DIAGNOSIS</span><span class="badge-slot-placeholder"></span></div>
+            <div class="service-title-row"><h2>WEBINAR<br>NAVIGATOR</h2><span class="badge-slot"></span></div>
           </div>
           <div class="description-wrap">
             <p class="change-note"><span>最新の変更点</span><b>AI・営業・SNS・新規事業に関する5問へ答えると、今の課題に近いウェビナーを選び、推薦理由を示して申し込みまで案内する診断を新規公開しました。</b></p>
@@ -2126,8 +2138,8 @@
         <a class="service" data-category="build" href="./ai-bird-work-discovery/">
           <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">15</span></span>
           <div>
-            <div class="service-topline"><span class="revision-count" data-revisions="2" aria-label="公開後の改修2回"><span>REV.</span><strong>2</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / AI OPERATIONS</span><span class="badge-slot"></span></div>
-            <h2>AIバード<br>業務発見セット</h2>
+            <div class="service-topline"><span class="revision-count" data-revisions="2" aria-label="公開後の改修2回"><span>REV.</span><strong>2</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / AI OPERATIONS</span><span class="badge-slot-placeholder"></span></div>
+            <div class="service-title-row"><h2>AIバード<br>業務発見セット</h2><span class="badge-slot"></span></div>
           </div>
           <div class="description-wrap">
             <p class="change-note"><span>最新の変更点</span><b>キャッチコピーを刷新し、AI化する仕事の発見からスキル実装・運用・社内定着までを4段階で整理。重複セクションを統合し、タブレットでも操作しやすい配置へ改善しました。</b></p>
@@ -2145,8 +2157,8 @@
         <a class="service" data-category="work" href="./shigyo-ai-practice-pack/">
           <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-work"/></svg></span><span class="number">16</span></span>
           <div>
-            <div class="service-topline"><span class="revision-count" data-revisions="0" aria-label="公開後の改修0回"><span>REV.</span><strong>0</strong><span>回</span></span><span class="category-name">経営・社内業務</span><span class="service-type">SERVICE / PROFESSIONAL PRACTICE AI</span><span class="badge-slot"></span></div>
-            <h2>士業AI実務パック</h2>
+            <div class="service-topline"><span class="revision-count" data-revisions="0" aria-label="公開後の改修0回"><span>REV.</span><strong>0</strong><span>回</span></span><span class="category-name">経営・社内業務</span><span class="service-type">SERVICE / PROFESSIONAL PRACTICE AI</span><span class="badge-slot-placeholder"></span></div>
+            <div class="service-title-row"><h2>士業AI実務パック</h2><span class="badge-slot"></span></div>
           </div>
           <div class="description-wrap">
             <p class="change-note"><span>最新の変更点</span><b>初回相談を実際に操作できるデモ、社労士・税理士別の24業務メニュー、申請前に資格者が最終確認する工程を追加し、AIへ任せる範囲と人が担う判断を明確にしました。</b></p>
@@ -2162,8 +2174,8 @@
         <a class="service" data-category="work" href="./worklog-insight/">
           <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-work"/></svg></span><span class="number">17</span></span>
           <div>
-            <div class="service-topline"><span class="revision-count" data-revisions="3" aria-label="公開後の改修3回"><span>REV.</span><strong>3</strong><span>回</span></span><span class="category-name">経営・社内業務</span><span class="service-type">SERVICE / WORK ANALYTICS</span><span class="badge-slot"></span></div>
-            <h2>ワークログ・<br>インサイト</h2>
+            <div class="service-topline"><span class="revision-count" data-revisions="3" aria-label="公開後の改修3回"><span>REV.</span><strong>3</strong><span>回</span></span><span class="category-name">経営・社内業務</span><span class="service-type">SERVICE / WORK ANALYTICS</span><span class="badge-slot-placeholder"></span></div>
+            <div class="service-title-row"><h2>ワークログ・<br>インサイト</h2><span class="badge-slot"></span></div>
           </div>
           <div class="description-wrap">
             <p class="change-note"><span>最新の変更点</span><b>Noto Sans JPとInterを実際に読み込む構成へ直し、見た目だけでは気づきにくい外部フォントの欠落をCIで自動検知できるようにしました。</b></p>
@@ -2180,8 +2192,8 @@
         <a class="service" data-category="build" href="./ai-business-partner/">
           <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">18</span></span>
           <div>
-            <div class="service-topline"><span class="revision-count" data-revisions="2" aria-label="公開後の改修2回"><span>REV.</span><strong>2</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">PARTNER PROGRAM / AI BUSINESS</span><span class="badge-slot"></span></div>
-            <h2>正規パートナー募集<br>（商材供給）</h2>
+            <div class="service-topline"><span class="revision-count" data-revisions="2" aria-label="公開後の改修2回"><span>REV.</span><strong>2</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">PARTNER PROGRAM / AI BUSINESS</span><span class="badge-slot-placeholder"></span></div>
+            <div class="service-title-row"><h2>正規パートナー募集<br>（商材供給）</h2><span class="badge-slot"></span></div>
           </div>
           <div class="description-wrap">
             <p class="change-note"><span>最新の変更点</span><b>ヒーローと全セクション見出しの太さを上げ、要点となる強調文も拡大。既存顧客への周回提案からAI事業部を立ち上げる流れを、流し読みでも追える階層へ整えました。</b></p>
@@ -2198,8 +2210,8 @@
         <a class="service" data-category="sales" href="./tsubame-lead-sky/">
           <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-sales"/></svg></span><span class="number">19</span></span>
           <div>
-            <div class="service-topline"><span class="revision-count" data-revisions="12" aria-label="公開後の改修12回"><span>REV.</span><strong>12</strong><span>回</span></span><span class="category-name">集客・営業</span><span class="service-type">SERVICE / FORM SALES</span><span class="badge-slot"></span></div>
-            <h2>つばめリード<br>skyバージョン</h2>
+            <div class="service-topline"><span class="revision-count" data-revisions="12" aria-label="公開後の改修12回"><span>REV.</span><strong>12</strong><span>回</span></span><span class="category-name">集客・営業</span><span class="service-type">SERVICE / FORM SALES</span><span class="badge-slot-placeholder"></span></div>
+            <div class="service-title-row"><h2>つばめリード<br>skyバージョン</h2><span class="badge-slot"></span></div>
           </div>
           <div class="description-wrap">
             <p class="change-note"><span>最新の変更点</span><b>SIMULATIONにChatGPTで質問できる導線を追加し、フォーム営業・テレアポ・広告の特徴と想定効果を同じ条件で比較しながら検討できるようにしました。</b></p>
@@ -2217,8 +2229,8 @@
         <a class="service" data-category="build" href="./aio-consult-business/">
           <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">20</span></span>
           <div>
-            <div class="service-topline"><span class="revision-count" data-revisions="11" aria-label="公開後の改修11回"><span>REV.</span><strong>11</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / BUSINESS STARTER</span><span class="badge-slot"></span></div>
-            <h2>AIOコンサル事業<br>スタートパック</h2>
+            <div class="service-topline"><span class="revision-count" data-revisions="11" aria-label="公開後の改修11回"><span>REV.</span><strong>11</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">SERVICE / BUSINESS STARTER</span><span class="badge-slot-placeholder"></span></div>
+            <div class="service-title-row"><h2>AIOコンサル事業<br>スタートパック</h2><span class="badge-slot"></span></div>
           </div>
           <div class="description-wrap">
             <p class="change-note"><span>最新の変更点</span><b>ページ内のCTAを「10分の説明動画を見る」に統一し、動画がまだ公開されていない状態では「準備中」と明示。押した先が不明な導線をなくしました。</b></p>
@@ -2235,8 +2247,8 @@
         <a class="service" data-category="build" href="./mcp-guide/">
           <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#icon-build"/></svg></span><span class="number">21</span></span>
           <div>
-            <div class="service-topline"><span class="revision-count" data-revisions="1" aria-label="公開後の改修1回"><span>REV.</span><strong>1</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">MEDIA / AI INFRASTRUCTURE</span><span class="badge-slot"></span></div>
-            <h2>MCP導入<br>ガイド</h2>
+            <div class="service-topline"><span class="revision-count" data-revisions="1" aria-label="公開後の改修1回"><span>REV.</span><strong>1</strong><span>回</span></span><span class="category-name">AI導入・事業化</span><span class="service-type">MEDIA / AI INFRASTRUCTURE</span><span class="badge-slot-placeholder"></span></div>
+            <div class="service-title-row"><h2>MCP導入<br>ガイド</h2><span class="badge-slot"></span></div>
           </div>
           <div class="description-wrap">
             <p class="change-note"><span>最新の変更点</span><b>CSS・JavaScriptなどの静的アセット参照をGitHub Pagesの公開パスへ合わせ、ガイド本文だけでなく図や操作要素も欠けずに配信できるよう修正しました。</b></p>
