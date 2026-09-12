@@ -203,6 +203,20 @@ section{padding:96px 0;border-top:1px solid var(--line)}
 .qcard .qa b{color:var(--ink)}
 .samp{margin-top:22px;font-size:12px;color:var(--gray2)}
 
+/* 03 使う場面 */
+.cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(292px,1fr));gap:20px}
+.ccase{background:#fff;border:1px solid var(--line);border-top:3px solid var(--blue);padding:24px 24px 22px}
+@media (min-width:761px){.ccase:last-child{grid-column:1/-1}}
+.ccase .ch{display:flex;align-items:center;gap:9px;font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--blue);margin-bottom:10px}
+.ccase .ch .sq{width:9px;height:9px;background:var(--blue);flex:none}
+.ccase h3{font-size:19px;font-weight:900;line-height:1.5;margin-bottom:14px}
+.ccase ul{list-style:none}
+.ccase li{position:relative;padding:11px 0 11px 20px;font-size:14.5px;line-height:1.8;font-weight:700;color:var(--ink);border-top:1px solid var(--line)}
+.ccase li::before{content:"";position:absolute;left:0;top:21px;width:8px;height:8px;background:var(--blue-l)}
+.ccase li span{display:block;margin-top:4px;font-size:13.5px;font-weight:400;color:var(--gray)}
+.case-note{margin-top:26px;background:var(--ink);color:#fff;padding:22px 26px;font-size:15.5px;font-weight:700;line-height:1.95}
+.case-note b{color:#8db4ff}
+
 /* 03 flow */
 .flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:10px;align-items:stretch}
 .fnode{background:#fff;border:1px solid var(--line);padding:24px 20px}
@@ -293,6 +307,7 @@ footer{border-top:1px solid var(--line);padding:38px 0;font-size:12.5px;color:va
     <a class="logo" href="#top"><span class="sq"></span><span class="en">WORKLOG FACT SEARCH</span><span class="opt en">OPTION</span></a>
     <nav class="hd-nav">
       <a class="l" href="#ask">聞けること</a>
+      <a class="l" href="#cases">使う場面</a>
       <a class="l" href="#how">答え方</a>
       <a class="l" href="#fact">根拠</a>
       <a class="l" href="#policy">導入方針</a>
@@ -441,11 +456,79 @@ footer{border-top:1px solid var(--line);padding:38px 0;font-size:12.5px;color:va
   </div>
 </section>
 
-<!-- ===== 03 ===== -->
-<section id="how" style="background:var(--faint)">
+<!-- ===== 03 使う場面 ===== -->
+<section id="cases">
   <div class="wrap grid2">
     <div class="lcol">
       <div class="snum en">03</div>
+      <div class="slabel"><span class="sq"></span><span class="en">WHEN YOU ACTUALLY ASK</span></div>
+      <div class="stitle">聞かれるのは、<br>だいたいこの5場面。</div>
+      <p class="snote">日常的に人を見張るための機能ではありません。何かがあったときに、事実を確かめるための機能です。</p>
+    </div>
+    <div class="rv">
+      <div class="cases">
+
+        <div class="ccase">
+          <div class="ch"><span class="sq"></span><span class="en">01　PINPOINT</span></div>
+          <h3>時点で確かめる</h3>
+          <ul>
+            <li>「10月3日15時、この社員は何をしていたか」</li>
+            <li>「データがおかしくなった時刻、誰がどの画面を触っていたか」<span>業務システムに操作ログが残らない穴を埋める</span></li>
+            <li>「この設定を最後に変更したのは、いつ・誰か」</li>
+          </ul>
+        </div>
+
+        <div class="ccase">
+          <div class="ch"><span class="sq"></span><span class="en">02　EXCHANGE</span></div>
+          <h3>相手とのやり取りを確かめる</h3>
+          <ul>
+            <li>「この顧客と、6月にどんなやり取りをしていたか」<span>言った言わないの検証</span></li>
+            <li>「仕様変更の連絡を、いつ・どの文面で送ったか」</li>
+            <li>「この見積は、どの条件で出したものか」</li>
+          </ul>
+        </div>
+
+        <div class="ccase">
+          <div class="ch"><span class="sq"></span><span class="en">03　AFTER LEAVING</span></div>
+          <h3>抜けた人の仕事をたどる</h3>
+          <ul>
+            <li>「退職前の1か月、この人が顧客データの画面で何をしていたか」<span>持ち出しの疑いが出たとき</span></li>
+            <li>「辞めた担当が抱えていた案件は、どこまで進んでいたか」</li>
+            <li>「休職した担当は、月次の締め作業をどの順でやっていたか」<span>マニュアルにない、実際の手順</span></li>
+          </ul>
+        </div>
+
+        <div class="ccase">
+          <div class="ch"><span class="sq"></span><span class="en">04　INCIDENT</span></div>
+          <h3>事故の原因をたどる</h3>
+          <ul>
+            <li>「請求書を誤送信した日の午後、送付作業で何が起きていたか」<span>原因が分からないと再発防止が書けない</span></li>
+            <li>「二重発注が起きた日、発注画面に何が表示されていたか」</li>
+            <li>「クレームになったこの納品物は、どの段階で内容が変わったか」</li>
+          </ul>
+        </div>
+
+        <div class="ccase">
+          <div class="ch"><span class="sq"></span><span class="en">05　COST</span></div>
+          <h3>お金の根拠を確かめる</h3>
+          <ul>
+            <li>「この案件、どこで工数が膨らんだか」<span>赤字の原因は、工数表には書かれない</span></li>
+            <li>「この作業は、実際のところ何時間かかっているか」<span>次の見積の単価根拠になる</span></li>
+            <li>「先方都合で増えた作業は、実際に何時間だったか」<span>追加請求の裏づけ</span></li>
+          </ul>
+        </div>
+
+      </div>
+      <p class="case-note">共通しているのは、<b>どれも過ぎたことで、もう本人に聞けないか、聞いても正確には出てこない</b>という点です。平時は誰も記録を見ません。必要になったときだけ、事実を確かめます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04 答え方 ===== -->
+<section id="how" style="background:var(--faint)">
+  <div class="wrap grid2">
+    <div class="lcol">
+      <div class="snum en">04</div>
       <div class="slabel"><span class="sq"></span><span class="en">HOW IT ANSWERS</span></div>
       <div class="stitle">探すのではなく、<br>読み直して答える。</div>
       <p class="snote">あらかじめ作っておいた要約を引き出しているのではありません。質問のたびに、AIがその期間の記録を改めて読み直します。</p>
@@ -485,11 +568,11 @@ footer{border-top:1px solid var(--line);padding:38px 0;font-size:12.5px;color:va
   </div>
 </section>
 
-<!-- ===== 04 ===== -->
+<!-- ===== 05 根拠 ===== -->
 <section id="fact">
   <div class="wrap grid2">
     <div class="lcol">
-      <div class="snum en">04</div>
+      <div class="snum en">05</div>
       <div class="slabel"><span class="sq"></span><span class="en">WHY IT IS A FACT</span></div>
       <div class="stitle">根拠は、記憶でも<br>申告でもない。</div>
       <p class="snote">同じ「先月の状況」でも、どこから持ってきた情報かで確からしさは変わります。</p>
@@ -523,11 +606,11 @@ footer{border-top:1px solid var(--line);padding:38px 0;font-size:12.5px;color:va
   </div>
 </section>
 
-<!-- ===== 05 ===== -->
+<!-- ===== 06 方針 ===== -->
 <section id="policy" class="policy">
   <div class="wrap grid2">
     <div class="lcol">
-      <div class="snum en">05</div>
+      <div class="snum en">06</div>
       <div class="slabel"><span class="sq"></span><span class="en">HOW WE USE IT</span></div>
       <div class="stitle">何を聞くために使うか、<br>先に決める。</div>
       <p class="snote">事実が引き出せるということは、使い方を誤れば人を追い詰める道具にもなります。ワークログ・インサイトと同じ方針で運用します。</p>
