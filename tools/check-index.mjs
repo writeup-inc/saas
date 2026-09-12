@@ -90,6 +90,12 @@ function latestSiteCommit(cardId) {
   return output || null;
 }
 
+function pageRevisionCount(cardId) {
+  const output = git(["rev-list", "--count", "HEAD", "--", `${cardId}/`]);
+  const commitCount = Number.parseInt(output, 10);
+  return Number.isFinite(commitCount) ? Math.max(0, commitCount - 1) : null;
+}
+
 function commitsAfterBaseline(path) {
   const output = git(["rev-list", "--reverse", `${config.historyBaseline}..HEAD`, "--", path]);
   return output ? output.split("\n") : [];
@@ -149,6 +155,7 @@ cards.forEach((card, index) => {
   const updatedDisplay = card.body.match(/<b>最終更新<\/b><time datetime="([^"]+)">([^<]+)<\/time>/);
   const creatorTag = card.body.match(/<span class="author-tag creator(?: unknown)?">初回作成：([^<]+)<\/span>/)?.[1]?.trim();
   const editorTag = card.body.match(/<span class="author-tag editor">最終更新：([^<]+)<\/span>/)?.[1]?.trim();
+  const revisionMatch = card.body.match(/<span class="revision-count" data-revisions="(\d+)" aria-label="公開後の改修(\d+)回"><span>REV\.<\/span><strong>(\d+)<\/strong><span>回<\/span><\/span>/);
 
   if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:00\+09:00$/.test(card.published)) {
     error(`${prefix} data-published は分単位の日本時間ISO 8601ではありません: ${card.published}`);
@@ -192,6 +199,14 @@ cards.forEach((card, index) => {
   } else {
     if (updatedDisplay[1] !== card.updated) error(`${prefix} 最終更新のdatetimeがdata-updatedと一致しません`);
     if (updatedDisplay[2].trim() !== formatJapaneseMinute(card.updated)) error(`${prefix} 最終更新の表示日時がdatetimeと一致しません`);
+  }
+  if (!revisionMatch) {
+    error(`${prefix} 改修回数表示がありません`);
+  } else {
+    const displayedRevisions = revisionMatch.slice(1).map(Number);
+    if (new Set(displayedRevisions).size !== 1) error(`${prefix} 改修回数のdata属性・表示・aria-labelが一致しません`);
+    const expectedRevisions = pageRevisionCount(card.id);
+    if (displayedRevisions[0] !== expectedRevisions) error(`${prefix} 改修回数がGit履歴と一致しません。期待値: ${expectedRevisions}`);
   }
   const creationCommit = firstCreationCommit(card.id);
   const latestCommit = latestSiteCommit(card.id);
