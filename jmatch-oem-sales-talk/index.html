@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jマッチエンジン OEMセールストーク｜相手の目標を決める台本</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@400;500;600;700;900&family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+/* ===== lp-base.css ===== */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] { word-break: normal; }
+}
+.nobr { white-space: nowrap; }
+:root { --fs-min: 12px; --fs-body: 16px; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+
+/* ===== 白黒グレーのみ ===== */
+:root{
+  --ink:#111111;
+  --ink2:#39393a;
+  --gray:#6f6f70;
+  --gray2:#8b8b8c;
+  --line:#e2e2e0;
+  --line2:#c9c9c6;
+  --paper:#ffffff;
+  --soft:#f5f5f3;
+  --soft2:#ebebe8;
+  --mark:#e6e6e3;
+  --talk:21px;
+  --talk-pad:20px;
+  --pivot:#c2410c;
+  --rule-lite:#ededeb;
+  --rule-num:#b4b4b2;
+  --ja-read:"BIZ UDPGothic","Noto Sans JP",system-ui,sans-serif;
+  --min:"Noto Serif JP",serif;
+  --gothic:"Noto Sans JP",system-ui,sans-serif;
+  --fixed-cta-h:0px;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --ink:#f2f2f0; --ink2:#d2d2cf; --gray:#a3a3a2; --gray2:#939392;
+    --line:#333335; --line2:#57575a; --paper:#141416; --soft:#1d1d20;
+    --soft2:#26262a; --mark:#37373c; --pivot:#ff8f4d; --rule-lite:#2a2a2d; --rule-num:#6e6e70;
+  }
+}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Noto Sans JP",system-ui,-apple-system,sans-serif;
+  font-size:17px;line-height:1.9;letter-spacing:.01em;
+  font-feature-settings:"palt" 1;
+  padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px));
+}
+a{color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:0 28px}
+.en{font-family:Inter,sans-serif}
+
+/* ===== 上部バー ===== */
+.topbar{position:sticky;top:0;z-index:60;background:var(--paper);transition:transform .32s ease}
+body.hd-hide .topbar{transform:translateY(calc(-1 * var(--hdh,54px)))}
+.hd{background:var(--paper);border-bottom:1px solid var(--rule-lite)}
+.hd-in{max-width:1280px;margin:0 auto;padding:7px 28px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.hd-ttl{font-weight:700;font-size:13px;letter-spacing:.02em;white-space:nowrap;color:var(--gray)}
+.hd-sub{font-size:12px;color:var(--rule-num);font-family:Inter,sans-serif;letter-spacing:.14em;white-space:nowrap}
+.hd-sp{flex:1}
+.tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.btn{
+  appearance:none;border:1px solid var(--rule-lite);background:var(--paper);color:var(--gray);
+  font-family:inherit;font-size:12px;font-weight:700;line-height:1;
+  padding:0 13px;height:44px;min-height:44px;border-radius:2px;cursor:pointer;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:6px;transition:border-color .15s ease,background .15s ease,color .15s ease;
+}
+.btn:hover{border-color:var(--line2);color:var(--ink)}
+.btn--lp{text-decoration:none;border-color:var(--line2);color:var(--ink);font-weight:900}
+.btn--lp span{font-size:11px;margin-left:2px;color:var(--gray2)}
+.btn--lp:hover{background:var(--soft)}
+.btn.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn.sq{width:44px;padding:0;justify-content:center;font-size:13px}
+.prog{height:2px;background:transparent}
+.prog i{display:block;height:100%;background:var(--line2);width:0}
+
+/* ===== 検索と絞り込み ===== */
+.find{background:var(--paper);border-bottom:1px solid var(--rule-lite)}
+.find-in{max-width:1280px;margin:0 auto;padding:9px 28px 10px;display:flex;align-items:center;gap:8px 14px;flex-wrap:wrap}
+.srch{position:relative;flex:1 1 300px;min-width:180px}
+.srch input{
+  width:100%;height:44px;padding:0 44px 0 40px;
+  font-family:inherit;font-size:15px;color:var(--ink);
+  background:var(--soft);border:1px solid transparent;border-radius:2px;outline:none;
+  transition:border-color .15s ease,background .15s ease;
+}
+.srch input:focus{background:var(--paper);border-color:var(--ink)}
+.srch input::placeholder{color:var(--gray2)}
+.srch .ic{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--gray2);pointer-events:none}
+.srch .clr{position:absolute;right:2px;top:50%;transform:translateY(-50%);width:44px;height:44px;border:0;background:none;cursor:pointer;color:var(--gray);font-size:19px;line-height:1;display:none}
+.srch.has .clr{display:block}
+.fchips{display:flex;flex-wrap:wrap;gap:6px;align-items:center;flex:0 1 auto}
+.fchip{
+  flex:0 0 auto;min-height:44px;padding:0 12px;border-radius:2px;
+  font-family:inherit;font-size:12.5px;font-weight:700;color:var(--ink2);
+  background:var(--paper);border:1px solid var(--line2);cursor:pointer;
+  transition:background .15s ease,color .15s ease,border-color .15s ease;
+}
+.fchip:hover{border-color:var(--ink)}
+.fchip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.fchip b{font-weight:900;margin-left:6px;opacity:.55;font-family:Inter,sans-serif}
+.hits{margin-left:4px;font-family:Inter,sans-serif;font-size:12px;font-weight:700;color:var(--rule-num);white-space:nowrap}
+
+/* ===== 表紙 ===== */
+.hero{padding:60px 0 40px;border-bottom:1px solid var(--ink)}
+.eyebrow{font-family:Inter,sans-serif;font-size:12px;letter-spacing:.22em;color:var(--gray2);margin:0 0 18px}
+h1{margin:0 0 20px;font-weight:900;line-height:1.3;letter-spacing:-.01em;font-size:clamp(20px,4.4vw,48px)}
+.pivot-note{margin:0 0 30px;font-size:14px;color:var(--gray);line-height:1.9;display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+.hero .intro{text-wrap:pretty;margin:0 0 28px;font-size:clamp(16px,1.4vw,18px);color:var(--ink2);max-width:44em;line-height:1.95}
+.meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.meta div{background:var(--paper);padding:14px 16px}
+.meta dt{font-family:Inter,sans-serif;font-size:12px;letter-spacing:.16em;color:var(--gray2);margin:0 0 5px}
+.meta dd{margin:0;font-size:15px;font-weight:700;line-height:1.6}
+.handling{margin-top:14px;font-size:12.5px;color:var(--gray);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tag-int{border:1px solid var(--ink);background:var(--ink);color:var(--paper);font-weight:900;font-size:12px;padding:3px 9px;border-radius:2px}
+
+/* ===== 数字早見（反転） ===== */
+.nums{background:var(--ink);color:var(--paper)}
+.nums-in{max-width:1280px;margin:0 auto;padding:28px 28px 30px}
+.nums-k{font-family:Inter,sans-serif;font-size:12px;font-weight:900;letter-spacing:.24em;color:var(--gray2);margin:0 0 18px}
+.nums-g{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line2);border:1px solid var(--line2)}
+.nums-g div{background:var(--ink);padding:15px 16px 17px}
+.nums-g dt{font-size:13px;font-weight:700;color:var(--gray2);margin:0 0 7px}
+.nums-g dd{margin:0;font-family:Inter,sans-serif;font-size:24px;font-weight:900;letter-spacing:-.02em;color:var(--paper)}
+.nums-g dd small{font-family:"Noto Sans JP",sans-serif;font-size:13px;font-weight:700;margin-left:5px;letter-spacing:0}
+.nums-g dd s{color:var(--gray);font-size:15px;margin-right:7px}
+.nums-n{margin:16px 0 0;font-size:13.5px;color:var(--gray2);line-height:1.9}
+@media (prefers-color-scheme: dark){
+  .pv{color:#141416}
+  .nums{background:var(--soft2)}
+  .nums-g{background:var(--line2);border-color:var(--line2)}
+  .nums-g div{background:var(--soft2)}
+  .nums-g dd,.tag-int{color:var(--ink)}
+  .tag-int{background:var(--ink);color:var(--paper)}
+}
+@media(max-width:860px){.nums-g{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:440px){.nums-g{grid-template-columns:1fr}}
+
+/* ===== 流れ図（HTMLで組む：折り返せる・文字が縮まない） ===== */
+.figure{padding:40px 0;border-bottom:1px solid var(--line)}
+.fig-ttl{font-size:15px;font-weight:900;margin:0 0 4px}
+.fig-note{font-size:13.5px;color:var(--gray);margin:0 0 20px}
+.phase{display:grid;grid-template-columns:2fr 2fr 1fr;gap:8px;margin:0 0 10px}
+.phase span{border:1px solid var(--line2);padding:9px 12px;font-size:12.5px;font-weight:700;color:var(--gray);text-align:center}
+.phase span:last-child{border-color:var(--ink);color:var(--ink)}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.fbox{border:1px solid var(--line2);padding:15px 13px;display:flex;flex-direction:column;gap:6px;min-height:104px}
+.fbox.is-key{background:var(--ink);border-color:var(--ink)}
+.fbox.is-key .fb-t,.fbox.is-key .fb-n{color:var(--paper)}
+.fbox.is-key .fb-a{color:var(--gray2)}
+.fb-n{font-family:Inter,sans-serif;font-size:12px;font-weight:900;color:var(--gray2)}
+.fb-t{font-size:15px;font-weight:900;line-height:1.5}
+.fb-a{margin-top:auto;font-size:12px;color:var(--gray)}
+@media(max-width:900px){
+  .phase{grid-template-columns:1fr}
+  .flow{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:480px){.flow{grid-template-columns:1fr}}
+.fig-concl{margin:18px 0 0;font-size:14.5px;font-weight:900;line-height:1.7}
+.fig-out{margin:12px 0 0;padding:0;list-style:none;font-size:14px;color:var(--gray);line-height:1.95}
+.fig-out li{padding-left:1em;text-indent:-1em}
+
+/* ===== レイアウト：本文が左、目次が右 ===== */
+.main{display:grid;grid-template-columns:minmax(0,1fr) 196px;gap:44px;padding:0 0 40px}
+.body{grid-column:1;grid-row:1;padding:34px 0 0;min-width:0}
+.side{grid-column:2;grid-row:1;position:sticky;top:118px;align-self:start;padding:34px 0 0}
+.side h3{font-family:Inter,sans-serif;font-size:12px;letter-spacing:.18em;color:var(--gray2);margin:0 0 10px;font-weight:700}
+.side ol{list-style:none;margin:0 0 14px;padding:0}
+.side li{border-top:1px solid var(--rule-lite)}
+.side li:last-child{border-bottom:1px solid var(--rule-lite)}
+.side a{display:flex;gap:8px;padding:8px 2px;text-decoration:none;font-size:12.5px;line-height:1.55;color:var(--gray2);transition:color .12s ease}
+.side a:hover{color:var(--ink)}
+.side a.cur{color:var(--ink);font-weight:700}
+.side a b{font-family:Inter,sans-serif;font-weight:800;font-size:12px;color:var(--rule-num);padding-top:1px;flex:0 0 auto}
+.side a.cur b{color:var(--ink)}
+.side li.is-off{display:none}
+.act-lb{font-size:12px;font-weight:700;letter-spacing:.06em;margin:14px 0 6px;color:var(--gray);display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.act-lb span{font-family:Inter,sans-serif;font-size:12px;color:var(--rule-num);letter-spacing:.1em}
+.act-lb.is-off{display:none}
+.side-tgl{display:none}
+.side-body{display:block}
+@media(max-width:1024px){
+  .main{grid-template-columns:1fr;gap:0}
+  .side{grid-column:1;grid-row:1;position:static;padding:22px 0 0}
+  .body{grid-column:1;grid-row:2}
+  .meta{grid-template-columns:repeat(2,1fr)}
+  .side-tgl{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;
+    min-height:44px;padding:0 14px;border:1px solid var(--line2);background:var(--paper);color:var(--ink);
+    font-family:inherit;font-size:13px;font-weight:700;border-radius:2px;cursor:pointer;
+  }
+  .side-tgl i{font-style:normal;font-family:Inter,sans-serif;font-size:12px;color:var(--gray2);transition:transform .2s ease}
+  .side.is-open .side-tgl i{transform:rotate(180deg)}
+  .side-body{display:none;padding-top:14px}
+  .side.is-open .side-body{display:block}
+  .side a{padding:11px 2px;font-size:13px}
+}
+
+/* ===== 章 ===== */
+.ch{padding:0 0 40px;margin:0 0 40px;border-bottom:1px solid var(--line);scroll-margin-top:132px}
+.ch:last-of-type{border-bottom:0}
+.ch.is-off{display:none}
+.ch-head{display:flex;gap:16px;align-items:flex-start;margin:0 0 20px}
+.ch-no{font-family:Inter,sans-serif;font-weight:800;font-size:13px;color:var(--paper);background:var(--ink);
+  width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;flex:0 0 30px;border-radius:2px;margin-top:4px}
+.ch-head h2{margin:0;font-size:clamp(17px,2.1vw,25px);font-weight:900;line-height:1.45;letter-spacing:-.005em;text-wrap:balance}
+.ch-goal{text-wrap:pretty;margin:7px 0 0;font-size:14px;color:var(--gray);line-height:1.8}
+
+/* 台本 */
+.talk{border-left:3px solid var(--ink);padding:2px 0 2px var(--talk-pad);margin:0 0 14px}
+.talk .lb{font-family:Inter,sans-serif;font-size:12px;letter-spacing:.18em;color:var(--gray2);display:block;margin:0 0 10px;font-weight:700}
+/* 台本の地の文：明朝（パターンB） */
+.talk p{position:relative;margin:0 0 1.05em;font-family:var(--min);font-size:var(--talk);line-height:2.1;font-weight:400;letter-spacing:.02em;color:var(--ink2)}
+/* 流れが変わる一文。オレンジはこの印だけに使う */
+.talk p.pivot::before{content:"";position:absolute;left:calc(-1 * var(--talk-pad));top:.1em;bottom:.1em;width:3px;background:var(--pivot)}
+.pv{
+  display:inline-block;vertical-align:.12em;margin-right:9px;
+  font-family:"Noto Sans JP",sans-serif;font-size:12px;font-weight:900;letter-spacing:.1em;
+  color:#fff;background:var(--pivot);padding:2px 8px;border-radius:2px;line-height:1.6;
+  white-space:nowrap;
+}
+.talk p:last-child{margin-bottom:0}
+/* 読み上げる質問：明朝・太・一段大きく（パターンC） */
+.talk .q{font-family:var(--min);font-weight:700;font-size:1.05em;color:var(--ink);line-height:2.15}
+.talk .pause{display:block;font-size:12px;letter-spacing:.14em;color:var(--gray2);font-family:Inter,sans-serif;border-top:1px dashed var(--line2);padding-top:10px;margin:18px 0 14px;font-weight:700}
+/* 芯の語：ゴシック極太・黒（パターンB） */
+.mk{font-family:var(--gothic);font-weight:900;color:var(--ink);letter-spacing:0}
+
+/* 営業メモ */
+.memo{background:var(--soft);border:1px solid var(--line);padding:16px 18px;margin:0 0 16px}
+.memo .lb{font-size:12.5px;font-weight:900;letter-spacing:.06em;margin:0 0 10px;display:block}
+.memo ul{margin:0;padding-left:1.15em}
+.memo li{font-size:14.5px;line-height:1.9;color:var(--ink2);margin:0 0 5px}
+.memo li:last-child{margin-bottom:0}
+.memo p{margin:0;font-size:14.5px;line-height:1.9;color:var(--ink2)}
+
+/* NG・要確認（赤を使わず、黒帯と破線で立てる） */
+.ng{border:1px solid var(--line);border-left:3px solid var(--ink);padding:14px 18px;margin:0 0 16px;background:var(--paper)}
+.ng .lb{font-size:12px;font-weight:900;letter-spacing:.06em;display:inline-block;margin:0 0 8px;background:var(--ink);color:var(--paper);padding:2px 9px;border-radius:2px}
+.ng p{margin:0;font-size:14.5px;line-height:1.9;color:var(--ink2)}
+.ng--todo{border-left-style:dashed}
+.todo{display:inline-block;border:1px solid var(--ink);color:var(--ink);font-size:12px;font-weight:900;padding:1px 6px;border-radius:2px;letter-spacing:.04em;vertical-align:1px;margin-right:5px}
+.ng .lb .todo{background:var(--paper);color:var(--ink)}
+
+/* ヒアリング項目 */
+.ask{border:1px solid var(--line);margin:0 0 20px}
+.ask .lb{font-size:12px;font-weight:900;letter-spacing:.06em;padding:11px 18px;border-bottom:1px solid var(--line);display:block;background:var(--soft)}
+.ask ul{list-style:none;margin:0;padding:4px 0}
+.ask li{padding:12px 18px;font-family:var(--min);font-weight:700;font-size:17.5px;color:var(--ink);line-height:1.85;letter-spacing:.02em;border-bottom:1px solid var(--line);display:flex;gap:11px;align-items:flex-start}
+.ask li:last-child{border-bottom:0}
+.ask .bx{flex:0 0 15px;height:15px;border:1.5px solid var(--line2);margin-top:6px;border-radius:1px}
+
+.memo-link{margin:10px 0 0;font-size:14px}
+.memo-link a{display:inline-block;min-height:44px;line-height:44px;font-weight:900;color:var(--ink)}
+
+/* 目標の記入欄 */
+.fill{border:1px solid var(--ink);margin:0 0 20px}
+.fill .lb{font-size:12px;font-weight:900;letter-spacing:.06em;padding:11px 18px;border-bottom:1px solid var(--ink);display:block;background:var(--ink);color:var(--paper)}
+.fill ul{list-style:none;margin:0;padding:4px 0}
+.fill li{padding:13px 18px;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;font-size:15px;color:var(--ink2);line-height:1.85}
+.fill li:last-child{border-bottom:0}
+.fill .w{flex:1 1 120px;min-width:110px;border-bottom:1.5px solid var(--line2);height:1.5em}
+.fill .u{font-weight:900;color:var(--ink);font-size:14px}
+
+/* 料金ボード */
+.price{border:1px solid var(--ink);margin:0 0 20px;overflow-x:auto}
+.price table{width:100%;border-collapse:collapse;min-width:520px}
+.price th,.price td{border-bottom:1px solid var(--line);padding:13px 16px;text-align:left;font-size:15px;vertical-align:top}
+.price thead th{background:var(--ink);color:var(--paper);font-size:14px;font-weight:900;border-bottom:0}
+.price tbody th{width:158px;font-weight:700;color:var(--gray);font-size:13.5px;background:var(--soft)}
+.price td b{font-size:17px}
+.price tr:last-child th,.price tr:last-child td{border-bottom:0}
+@media(max-width:700px){
+  .price{overflow-x:visible}
+  .price table{min-width:0}
+  .price thead{display:none}
+  .price tbody,.price tr,.price tbody th,.price td{display:block;width:auto}
+  .price tr{border-bottom:1px solid var(--line2)}
+  .price tr:last-child{border-bottom:0}
+  .price tbody th{width:auto;border-bottom:0;padding:10px 16px 8px}
+  .price td{border-bottom:0;padding:0 16px 10px}
+  .price td::before{content:attr(data-l);display:block;font-size:12px;font-weight:700;color:var(--gray);margin-bottom:2px}
+}
+
+/* 切り返し */
+.qa{border-top:1px solid var(--ink)}
+.qa details{border-bottom:1px solid var(--line)}
+.qa summary{list-style:none;cursor:pointer;padding:19px 0;font-size:17.5px;font-weight:700;line-height:1.6;display:flex;gap:12px;align-items:flex-start}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::before{content:"Q";font-family:Inter,sans-serif;font-weight:800;font-size:12px;color:var(--paper);
+  background:var(--ink);width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;flex:0 0 22px;margin-top:4px;border-radius:2px}
+.qa details[open] summary{padding-bottom:8px}
+.qa .a{padding:0 0 20px 34px}
+.qa details.is-off{display:none}
+/* 切り返しの台本：地は明朝薄め、芯はオレンジ（パターンD） */
+.qa .talk p{color:var(--gray)}
+.qa .talk .mk{color:var(--pivot)}
+.qa .talk .q{color:var(--ink)}
+@media(max-width:640px){.qa .a{padding-left:0}}
+
+/* 検索結果なし */
+.empty{padding:56px 0;text-align:center;color:var(--gray);font-size:15px;line-height:1.9}
+.empty[hidden]{display:none}
+
+/* 締め */
+.end{border-top:1px solid var(--ink);padding:56px 0;text-align:center}
+.end p{text-wrap:balance;margin:0 auto;max-width:26em;font-size:clamp(18px,2.4vw,28px);font-weight:900;line-height:1.65}
+.ft{border-top:1px solid var(--line);padding:22px 0 60px;font-size:12px;color:var(--gray2);display:flex;gap:18px;flex-wrap:wrap}
+
+/* 台本のみ表示 */
+body.only .memo,body.only .ng,body.only .figure,body.only .hideable{display:none!important}
+
+@media (max-width:640px){
+  .wrap{padding:0 18px}
+  .hd-in{padding:8px 18px;gap:10px}
+  .hd-sub{display:none}
+  .find-in{padding:9px 18px 10px}
+  .srch{flex:1 1 100%}
+  .hits{margin-left:auto}
+  .nums-in{padding:24px 18px 26px}
+  .hero{padding:38px 0 30px}
+  .talk{--talk-pad:15px}
+  .meta{grid-template-columns:1fr}
+  .side a{padding:12px 2px}
+}
+@media (max-width:520px){
+  .hd-ttl{font-size:13px;white-space:normal}
+  .hd-sp{display:none}
+  .tools{width:100%;justify-content:flex-start}
+  #printBtn{display:none}
+  .ch{scroll-margin-top:76px}
+}
+@media print{
+  .hd,.find,.side,.tools,.prog{display:none!important}
+  .main{grid-template-columns:1fr}
+  .ch{break-inside:avoid}
+  .nums{background:none;color:var(--ink);border:1px solid var(--ink)}
+  .nums-g div{background:none}
+  .nums-g dd{color:var(--ink)}
+  body{font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar" id="topbar">
+<header class="hd">
+  <div class="hd-in">
+    <div class="hd-ttl">Jマッチエンジン｜OEMセールストーク</div>
+    <div class="hd-sub en">SALES SCRIPT / OEM v1</div>
+    <div class="hd-sp"></div>
+    <div class="tools">
+      <button class="btn" id="onlyBtn" type="button">台本だけ表示</button>
+      <button class="btn sq" id="minus" type="button" aria-label="台本の文字を小さく">A−</button>
+      <button class="btn sq" id="plus" type="button" aria-label="台本の文字を大きく">A＋</button>
+      <button class="btn" id="printBtn" type="button">印刷</button>
+      <a class="btn btn--lp" href="https://writeup-inc.github.io/saas/jmatch-engine/oem/" target="_blank" rel="noopener">OEM LP<span aria-hidden="true">↗</span></a>
+      <a class="btn" href="https://writeup-inc.github.io/saas/jmatch-direct-sales-talk/" target="_blank" rel="noopener">直販の台本<span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</header>
+
+<div class="find">
+  <div class="find-in">
+    <div class="srch" id="srch">
+      <svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
+      <input id="q" type="search" placeholder="言われた言葉で探す（高い／嫌われない／商材がない）" aria-label="台本を検索">
+      <button class="clr" id="clr" type="button" aria-label="検索条件を消す">&times;</button>
+    </div>
+    <div class="fchips" role="group" aria-label="フェーズで絞り込む">
+      <button class="fchip" data-f="all" aria-pressed="true">すべて<b>15</b></button>
+      <button class="fchip" data-f="mikiwake" aria-pressed="false">見極め<b>1</b></button>
+      <button class="fchip" data-f="talk" aria-pressed="false">説明<b>6</b></button>
+      <button class="fchip" data-f="goal" aria-pressed="false">目標<b>3</b></button>
+      <button class="fchip" data-f="close" aria-pressed="false">決める<b>4</b></button>
+      <button class="fchip" data-f="qa" aria-pressed="false">切り返し<b>1</b></button>
+      <span class="hits" id="hits">15 / 15</span>
+    </div>
+  </div>
+</div>
+<div class="prog"><i id="bar"></i></div>
+</div>
+
+<div class="wrap">
+
+  <section class="hero">
+    <p class="eyebrow en">J-MATCH ENGINE ／ OEM</p>
+    <h1>リストを1,000件持つ会社には、<br>直販ではなくOEMを出す。<br>その商談の台本です。</h1>
+    <p class="intro">この資料は読み物ではありません。商談中に画面を見ながら、そのまま口に出すための台本です。太い罫線の中だけを読んでください。グレーの枠はお客様には言いません。</p>
+    <p class="pivot-note"><span class="pv">本質</span>この印が付いた一文で、話の流れが変わります。直後にくる言葉が、その章の芯です。一拍おいて読んでください。</p>
+    <p class="intro">直販と決定的に違うのは、<b>商品を説明する台本ではない</b>ことです。OEMは、相手が何社に配って何社を受注したいのかが決まらないと前に進みません。だからこの台本の山場は、07〜09の「相手に数字を言わせる3つの質問」です。</p>
+    <div class="meta">
+      <div><dt class="en">TARGET</dt><dd>BtoBで、顧客リストを<br>1,000件以上持っている<br>会社</dd></div>
+      <div><dt class="en">MAIN OFFER</dt><dd>初期20万円（9月末まで）<br>＋月額85,000円<br>（税別）</dd></div>
+      <div><dt class="en">THE PIVOT</dt><dd>07〜09で、相手に<br>3つの数字を言わせる<br>（母数・目標・収益）</dd></div>
+      <div><dt class="en">RULE</dt><dd>3つが埋まるまで、<br>料金の話に<br>入らない</dd></div>
+    </div>
+    <p class="handling"><span class="tag-int">社内限定</span> 運用注釈と要確認事項を含みます。画面をお客様に見せないでください（見せるのはOEM LPと会員プランのページです）。</p>
+  </section>
+</div>
+
+<section class="nums">
+  <div class="nums-in">
+    <p class="nums-k en">NUMBERS ／ 聞かれたら即答する数字</p>
+    <dl class="nums-g">
+      <div><dt>月額</dt><dd>85,000<small>円（税別・全機能込み）</small></dd></div>
+      <div><dt>初期費用</dt><dd><s>50万</s>20<small>万円（9月末までのご契約）</small></dd></div>
+      <div><dt>導入まで</dt><dd>最短1<small>週間（打ち合わせ1回）</small></dd></div>
+      <div><dt>御社が決めるもの</dt><dd>3<small>つ（ロゴ・色・名称）</small></dd></div>
+      <div><dt>3,000円会員のバック</dt><dd>1,000<small>円／月・1件</small></dd></div>
+      <div><dt>30,000円会員のバック</dt><dd>10,000<small>円／月・1件</small></dd></div>
+      <div><dt>前段のJ-System</dt><dd>1,125<small>社（うち自治体・地銀100以上）</small></dd></div>
+      <div><dt>Jコンサルの契約社数</dt><dd>500<small>社（人の手で提供中）</small></dd></div>
+    </dl>
+    <p class="nums-n">採択も受給額も保証しない。申請代行は行わない。「実質タダ」「相殺される」「お得です」は言わない。<br>1,125社は前段にあたるサービス「J-System」の数字。Jマッチエンジン自体の実績として話さない。</p>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="figure hideable">
+    <p class="fig-ttl">この商談の流れ</p>
+    <p class="fig-note">上の帯が場面、下の箱が話す順番です。真ん中が山場です。</p>
+    <div class="phase">
+      <span>説明</span>
+      <span>目標を決める</span>
+      <span>決める</span>
+    </div>
+    <div class="flow">
+      <div class="fbox"><span class="fb-n en">01〜04</span><span class="fb-t">リストの話から入る</span><span class="fb-a">喋らせる</span></div>
+      <div class="fbox"><span class="fb-n en">05〜06</span><span class="fb-t">4段の階段とバック</span><span class="fb-a">見せる</span></div>
+      <div class="fbox is-key"><span class="fb-n en">07〜09</span><span class="fb-t">目標を3つ決める</span><span class="fb-a">言わせる</span></div>
+      <div class="fbox"><span class="fb-n en">10</span><span class="fb-t">動いた顧客を追う</span><span class="fb-a">見せる</span></div>
+      <div class="fbox"><span class="fb-n en">11〜13</span><span class="fb-t">料金とクロージング</span><span class="fb-a">決める</span></div>
+    </div>
+    <p class="fig-concl">商品を説明する商談ではない。相手の目標を、相手の口から出させる商談。</p>
+    <ul class="fig-out">
+      <li>※ 07〜09が埋まらないまま11の料金に入ると、初期20万円が高く聞こえる。順番を入れ替えない。</li>
+      <li>図に入れていない条件：リストが1,000件未満、またはBtoCの会社には、直販（月額3万円）を出す。直販の台本を使う。</li>
+      <li>図に入れていない分岐：「売る商材がない」と言われた場合、収益は他社商材のマージンと会員の月額の3分の1だけになる（14章）。</li>
+      <li>商談の所要時間は、素材に記載がないため図に置いていない。推測で分数を書かない。</li>
+    </ul>
+  </section>
+
+  <div class="main">
+
+    <main class="body">
+      <section class="ch" data-ph="mikiwake" id="s00" data-k="事前 確認 判定 直販 OEM どちら 1000件 リスト BtoB 固定ルール 言ってはいけない NG 要確認 最低契約期間 解約 ノルマ 実測 登録率">
+        <div class="ch-head">
+          <span class="ch-no en">00</span>
+          <div>
+            <h2>商談前に決めておくこと</h2>
+            <p class="ch-goal">狙い：話し始める前に、この相手へ直販を出すかOEMを出すかを決める。</p>
+          </div>
+        </div>
+        <div class="memo">
+          <span class="lb">直販かOEMか、の判定</span>
+          <ul>
+            <li><strong>BtoBで、顧客リストを1,000件以上持っている会社</strong>なら、OEMを出す。</li>
+            <li>それ以外（リストが1,000件未満、またはBtoC）なら、直販の月額3万円を出す。直販の台本を使う。</li>
+            <li>大きい会社に月額3万円の直販を1件取りにいくより、OEMを提案したほうが早い。</li>
+            <li>迷ったら、01でリスト件数を聞いてから決めてよい。決めてから料金の話に入る。</li>
+          </ul>
+        </div>
+        <div class="memo">
+          <span class="lb">この商談の固定ルール</span>
+          <ul>
+            <li>主提案は<strong>初期20万円（9月末まで）＋月額85,000円</strong>の1本に絞る。</li>
+            <li>月額85,000円に全機能が入る。<strong>オプションという枠はない。</strong></li>
+            <li>07〜09の3つ（母数・目標・収益）が埋まるまで、料金の話に入らない。</li>
+            <li>収益の順番は、①御社の商材が売れる ②他社商材のマージン ③会員の月額の3分の1。この順を逆にしない。</li>
+            <li>1,125社は前段にあたる「J-System」の数字。必ず「前段にあたるサービスが」と付けて話す。</li>
+          </ul>
+        </div>
+        <div class="ng">
+          <span class="lb">言ってはいけないこと</span>
+          <p>「補助金の情報を配信できるサービスがありまして──」→ 補助金を扱っていない相手には1秒で他人事になる。<br>「メール配信システムです」→ 箱の話になり、他社ツールとの価格比較へ落ちる。<br>「御社のサービスを一斉配信できます」→ ただの配信ツールに聞こえ、中身を作る価値が消える。<br>「嫌なら配信停止できますから」→ 嫌われる前提に聞こえる。先に「地域と業種で分かれる」を言う。<br>「申請までうちがやります」→ 申請代行は行わない。採択も受給額も約束しない。<br>「5社出れば実質タダになります」「相殺されます」「お得です」→ 結果の断定。数字だけ置いて、判断は相手に渡す。<br>「この補助金なら通ります」「◯％くらいは戻ってきます」→ 判断するのは制度事務局。断定した瞬間に事故案件になる。</p>
+        </div>
+        <div class="ng ng--todo">
+          <span class="lb"><span class="todo">要確認</span>話す前に社内で確定させる</span>
+          <p>①最低契約期間と解約条件。／②事例掲載の確認フロー（誰が・いつ・どの書面で同意を取るか）。／③「Jコンサル」500社をJマッチエンジンへ統合するときに、既存会員の条件がどうなるか。／④OEM導入企業が自社でも無料で使えるかどうか。強い決め手になるので確認したい。／⑤OEM先に販売目標やノルマを課すのかどうか。この台本の芯に関わる。／⑥J-Systemでの実測登録率。OEM LPに「実測値をお見せします」と書いてあり、07〜08で必ず聞かれる。</p>
+        </div>
+      </section>
+
+      <!-- 01 -->
+      <section class="ch" data-ph="talk" id="s01" data-k="切り出し 入り 冒頭 顧客リスト 名刺 眠っている 1000件 2000件 いまどう使っている 古くなる">
+        <div class="ch-head">
+          <span class="ch-no en">01</span>
+          <div>
+            <h2>眠っている顧客リストの<br>話から入る</h2>
+            <p class="ch-goal">狙い：補助金から入らない。リストの現状を、相手に喋らせる。</p>
+          </div>
+        </div>
+        <div class="talk">
+          <span class="lb en">READ ALOUD</span>
+          <p>どんな会社さんでも、<br>顧客リストって1,000件とか2,000件とか、<br>お持ちですよね。</p>
+          <p>名刺の束も、どこかに眠っていませんか。</p>
+          <p class="q">あれ、いまどう使われていますか。</p>
+          <p class="pivot"><span class="pv">本質</span><span class="mk">連絡する理由は、たいてい売りたいときにしか生まれない</span>んですよね。</p>
+          <p>だから連絡するほど距離が開いて、<br>リストは静かに古くなっていきます。</p>
+        </div>
+        <div class="memo">
+          <span class="lb">営業メモ</span>
+          <ul>
+            <li>補助金から入ると「うちは補助金やってません」で1秒で終わる。必ずリストの話から入る。</li>
+            <li>ここで件数が口から出たら、メモに書き留める。07でそのまま母数に使う。</li>
+            <li>相手が喋るまで、こちらからサービスの説明を始めない。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 02 -->
+      <section class="ch" data-ph="talk" id="s02" data-k="ひとことで 商材説明 メルマガ AI 集める 書く 送る データベース 毎週 配信">
+        <div class="ch-head">
+          <span class="ch-no en">02</span>
+          <div>
+            <h2>Jマッチエンジンを、<br>ひとことで言う</h2>
+            <p class="ch-goal">狙い：機能を並べない。「集める・書く・送る」の3語で言い切る。</p>
+          </div>
+        </div>
+        <div class="talk">
+          <span class="lb en">READ ALOUD</span>
+          <p>Jマッチエンジンって、ひとことで言うと、<br>AIがメルマガを出してくれるサービスなんです。</p>
+          <p>AIが毎日、補助金・融資・節税の情報を<br>何千と集めてデータベースにしていきます。</p>
+          <p>そこから毎週、相手に合わせた原稿をAIが書く。</p>
+          <p class="pivot"><span class="pv">本質</span>書くだけじゃなくて、週1回、<span class="mk">配信までやってしまいます</span>。</p>
+        </div>
+        <div class="memo">
+          <span class="lb">営業メモ</span>
+          <p>ここで画面や機能一覧を出さない。「集める・書く・送る」で止めて、次の03へ進む。機能を並べた瞬間に、配信ツールとの比較の土俵に落ちる。</p>
+        </div>
+      </section>
+
+      <!-- 03 -->
+      <section class="ch" data-ph="talk" id="s03" data-k="中身 配信ツールとの違い 御社の名前 御社の商材 他社ツール 半額 7割引 欲しいもの 事前登録 設備 システム 人材 車両 店舗改装 使い道の提案">
+        <div class="ch-head">
+          <span class="ch-no en">03</span>
+          <div>
+            <h2>御社の名前で、<br>御社の商材が載る</h2>
+            <p class="ch-goal">狙い：箱ではなく中身を作る、が分かれ目。「欲しいものの事前登録」まで言い切る。</p>
+          </div>
+        </div>
+        <div class="talk">
+          <span class="lb en">READ ALOUD</span>
+          <p>自社のサービス案内だけを送っても、<br>効果ないじゃないですか。誰も読まない。</p>
+          <p>だから原稿には、その会社が使える<br>補助金や融資、節税の情報を入れます。</p>
+          <p>そこに、御社の商品や、<br>御社が登録した他社のAIツールを組み合わせる。</p>
+          <p>「このサービスが半額や7割引で使えます」と一緒に、<br>御社の案内が載る。この形にします。</p>
+          <p class="pivot"><span class="pv">本質</span>もうひとつ。お客様には最初に、<span class="mk">いま買えなくていいので「欲しいもの」を登録してもらいます</span>。</p>
+          <p>設備、システム、人材、車両、店舗改装。</p>
+          <p>補助金が当たった瞬間に、<br>その方が自分で「欲しい」と書いたものが戻ってくる。</p>
+          <p>売り込みではなく、使い道の提案として届きます。</p>
+        </div>
+        <div class="memo">
+          <span class="lb">営業メモ</span>
+          <ul>
+            <li>「欲しいものの事前登録」は、OEM LPに<strong>「ここが、この仕組みのすべてです」</strong>と書いてある中核。ここを飛ばすと、ただの配信ツールの説明になる。</li>
+            <li>ロゴも配色も名称も御社のもの。顧客から見れば御社のサービス。この一言を必ず添える。</li>
+            <li>並べる商材は御社が選び、承認したものだけが顧客に届く。本業と競合するものは外せる。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 04 -->
+      <section class="ch" data-ph="talk" id="s04" data-k="嫌われないか 既存客 関係 地域 業種 配信停止 ストレス 反応 怖い">
+        <div class="ch-head">
+          <span class="ch-no en">04</span>
+          <div>
+            <h2>既存のお客様に<br>嫌われないか、<br>聞かれる前に答える</h2>
+            <p class="ch-goal">狙い：導入側が一番怖いのは既存客との関係。聞かれる前にこちらから出す。</p>
+          </div>
+        </div>
+        <div class="talk">
+          <span class="lb en">READ ALOUD</span>
+          <p>お金まわりが楽になる情報って、<br>なんだかんだ、みなさん欲しいんですよ。</p>
+          <p class="pivot"><span class="pv">本質</span>届くのは、<span class="mk">その方の地域と業種に合わせた内容</span>です。</p>
+          <p>全員に同じものが行くわけじゃない。</p>
+          <p>それでも要らない方は配信停止を押されるので、<br>そこで止まります。</p>
+          <p>だから、ストレスはほとんど出ないはずです。</p>
+        </div>
+        <div class="memo">
+          <span class="lb">営業メモ</span>
+          <ul>
+            <li>順番を守る。<strong>「地域と業種で分かれる」が先、「配信停止」は後。</strong>逆にすると、嫌われる前提で話しているように聞こえる。</li>
+            <li>聞かれてから答えるのではなく、こちらから先に出す。先に出すと、相手はこの懸念を手放して目標の話に入れる。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 05 -->
+      <section class="ch" data-ph="talk" id="s05" data-k="会員 階段 4段 無料 3000円 30000円 顧問 10万 15万 プラン 売り込まない 管理画面 検索 ブックマーク エージェント6台 作業場">
+        <div class="ch-head">
+          <span class="ch-no en">05</span>
+          <div>
+            <h2>お客様が自分で<br>上がっていく、<br>4段の階段</h2>
+            <p class="ch-goal">狙い：御社が売り込まなくても、必要な人だけが自分で上がる、を見せる。</p>
+          </div>
+        </div>
+        <div class="talk">
+          <span class="lb en">READ ALOUD</span>
+          <p>メールを見て「もっと知りたい」と思った方には、<br>その先が用意してあります。</p>
+          <p class="pivot"><span class="pv">本質</span><span class="mk">御社が売り込む必要はありません。</span></p>
+          <p>無料の会員登録をすると、<br>管理画面で制度を検索できて、ブックマークもできます。</p>
+          <p>そこから先は、<br>必要になった方だけが自分で上がっていきます。</p>
+        </div>
+        <div class="price">
+          <table>
+            <thead><tr><th>段</th><th>顧客が払う月額</th><th>中身</th><th>御社に戻る額</th></tr></thead>
+            <tbody>
+              <tr><th>無料</th><td data-l="顧客が払う月額">0円</td><td data-l="中身">毎週、使える制度が届く。制度の検索とブックマーク</td><td data-l="御社に戻る額">—</td></tr>
+              <tr><th>ライト</th><td data-l="顧客が払う月額"><b>3,000円</b></td><td data-l="中身">事業計画書のたたき、依頼書の生成、申請時の注意点</td><td data-l="御社に戻る額"><b>毎月1,000円</b></td></tr>
+              <tr><th>スタンダード</th><td data-l="顧客が払う月額"><b>30,000円</b></td><td data-l="中身">AIエージェント6台との対話、公募要領の登録、作業場機能（契約12ヶ月）</td><td data-l="御社に戻る額"><b>毎月10,000円</b></td></tr>
+              <tr><th>顧問契約</th><td data-l="顧客が払う月額">10〜15万円</td><td data-l="中身">書類の作成を士業が担当。融資相談、雇用関係助成金</td><td data-l="御社に戻る額">—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="memo">
+          <span class="lb">営業メモ</span>
+          <ul>
+            <li>画面で見せるなら、お客様が見る会員プランのページを開く。</li>
+            <li>いずれも税別。顧問契約はお申し込みではなく、ご相談から。</li>
+            <li>この4段を見せずに06のバックの話に入ると、30,000円という金額の根拠がなくなる。順番を飛ばさない。</li>
+          </ul>
+          <p class="memo-link"><a href="https://writeup-inc.github.io/saas/jmatch-engine/oem-plans/" target="_blank" rel="noopener">会員プランのページを開く（別タブ）▸</a></p>
+        </div>
+      </section>
+
+      <!-- 06 -->
+      <section class="ch" data-ph="talk" id="s06" data-k="バック 戻る 1000円 10000円 3分の1 5社 50000円 10社 100000円 収益3本 本命 マージン 10%">
+        <div class="ch-head">
+          <span class="ch-no en">06</span>
+          <div>
+            <h2>有料会員が出たら、<br>毎月いくら戻るか</h2>
+            <p class="ch-goal">狙い：出ていく話ではなく、戻ってくる話にする。ただし評価はこちらがしない。</p>
+          </div>
+        </div>
+        <div class="talk">
+          <span class="lb en">READ ALOUD</span>
+          <p>もし、御社のリストの中から<br>有料会員になる方が出た場合、</p>
+          <p>3,000円のうち1,000円、<br>30,000円のうち10,000円が、<br>毎月御社に入ります。</p>
+          <p class="pivot"><span class="pv">本質</span><span class="mk">どちらも、顧客の月額の3分の1です。</span></p>
+          <p>たとえば30,000円のコースの方が5社なら、<br>10,000円×5社で月50,000円。</p>
+          <p>10社なら月100,000円です。</p>
+        </div>
+        <div class="ng">
+          <span class="lb">ここで言わないこと</span>
+          <p>「実質タダになります」「月額が相殺されます」「お得です」。数字だけを置いて、得か損かの判断は相手に渡します。<br>月額は85,000円なので、<strong>「5社で同額」は成立しません。</strong>旧版の言い回しが頭に残っている場合は、上書きしてください。</p>
+        </div>
+        <div class="memo">
+          <span class="lb">営業メモ</span>
+          <ul>
+            <li>収益は3本ある。<strong>本命は①御社の商材が売れること</strong>（売上は100%御社のもの）。②が他社商材のマージン（売れた金額の10%程度）。このバックは③で、いちばん小さい。</li>
+            <li>順番を逆にしない。バックを主役にすると、次の07〜09で本命の受注の話が小さくなる。</li>
+            <li>ほとんどの顧客は無料のまま満足する。それでいい、と言い切ってよい。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 07 -->
+      <section class="ch" data-ph="goal" id="s07" data-k="目標1 母数 リスト 何件 件数 確定 説明する時間ではない 登録率 実測 メール LINE 名刺 データ化">
+        <div class="ch-head">
+          <span class="ch-no en">07</span>
+          <div>
+            <h2>【目標①】<br>御社のリストは、<br>何件ありますか</h2>
+            <p class="ch-goal">狙い：説明を終わらせ、相手に数字を言わせる側へ回る。ここが山場の入口。</p>
+          </div>
+        </div>
+        <div class="talk">
+          <span class="lb en">READ ALOUD</span>
+          <p class="pivot"><span class="pv">本質</span><span class="mk">ここから先は、私が説明する時間ではありません。</span></p>
+          <p>御社の目標を、一緒に決めさせてください。</p>
+          <p>普通の商品は、説明すれば<br>買うかどうかが決まります。</p>
+          <p>OEMは違います。</p>
+          <p>御社が何社に配って、何社を受注したいのか。<br>そこが決まらないと、先へ進めません。</p>
+          <p class="q">まず、御社のリストは何件ありますか。</p>
+        </div>
+        <div class="fill">
+          <span class="lb">相手の口から出た数字を、その場で書く</span>
+          <ul>
+            <li>顧客リストの総件数<span class="w"></span><span class="u">件</span></li>
+            <li>うち、メール／LINEの連絡先が生きている件数<span class="w"></span><span class="u">件</span></li>
+            <li>名刺だけで、まだデータ化していない件数<span class="w"></span><span class="u">件</span></li>
+          </ul>
+        </div>
+        <div class="memo">
+          <span class="lb">営業メモ</span>
+          <ul>
+            <li>概数でよい。ただし<strong>「1,000件くらい」で止めず、「では1,000でいきましょう」と確定させる。</strong>ここが以降の母数になる。</li>
+            <li>01で件数が出ていれば、読み上げて確認するだけでよい。同じ質問を二度しない。</li>
+            <li>画面かメモに書いて、相手に見える形にする。口頭だけだと09で消える。</li>
+          </ul>
+        </div>
+        <div class="ng ng--todo">
+          <span class="lb"><span class="todo">要確認</span>ここで必ず聞かれること</span>
+          <p>「他社さんは、どのくらい登録されるんですか」。OEM LPには「J-Systemでの実測値をお見せします」と書いてあります。<strong>この実測登録率を持たずに商談へ行くと、07〜08がここで止まります。</strong>商談前に社内で取得してください。</p>
+        </div>
+      </section>
+
+      <!-- 08 -->
+      <section class="ch" data-ph="goal" id="s08" data-k="目標2 配布率 何パーセント 受注 年に何社 成功 単価 本命 有料会員 副次 0.3% 300万">
+        <div class="ch-head">
+          <span class="ch-no en">08</span>
+          <div>
+            <h2>【目標②】<br>そのうち何％に配れて、<br>年に何社受注できれば<br>成功ですか</h2>
+            <p class="ch-goal">狙い：本命は有料会員の数ではなく、御社の商材が年に何本売れるか。</p>
+          </div>
+        </div>
+        <div class="talk">
+          <span class="lb en">READ ALOUD</span>
+          <p>次に、そのうち何％に届けられそうですか。</p>
+          <p>メールが生きている先、<br>LINEでつながっている先。<br>全部でなくて構いません。</p>
+          <p class="pivot"><span class="pv">本質</span>そのうえで、いちばん大事な質問です。<span class="mk">この仕組みから、年に何社受注できれば、御社として成功ですか。</span></p>
+          <p>有料会員が何人増えるか、ではありません。</p>
+          <p>御社の商材が、年に何本売れるか。<br>そこが本命です。</p>
+          <p class="q">年に何社、受注できれば成功と言えますか。</p>
+        </div>
+        <div class="fill">
+          <span class="lb">相手の口から出た数字を、その場で書く</span>
+          <ul>
+            <li>配布できる件数（母数 × 配布率）<span class="w"></span><span class="u">件</span></li>
+            <li>御社の商材の平均単価<span class="w"></span><span class="u">円</span></li>
+            <li>年に何社、受注できれば成功か<span class="w"></span><span class="u">社</span></li>
+            <li>有料会員は、そのうち何％を見込むか<span class="w"></span><span class="u">％</span></li>
+          </ul>
+        </div>
+        <div class="memo">
+          <span class="lb">営業メモ</span>
+          <ul>
+            <li>相手が答えに詰まったら、公開しているOEM LPの例を出す。<strong>1,000社のうち0.3%＝年3社、単価100万円で年300万円。</strong>「たとえば、こういう置き方です」まで。こちらから断定しない。</li>
+            <li>有料会員の％は副次。ここを主にすると、本命の受注の話が小さくなる。</li>
+            <li>受注目標が出たら、必ず「それは御社の目標でいいですね」と一度戻して確認する。こちらが決めた数字にしない。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 09 -->
+      <section class="ch" data-ph="goal" id="s09" data-k="目標3 逆算 月いくら 収益 年額 月額 単位 合っていますか 足す">
+        <div class="ch-head">
+          <span class="ch-no en">09</span>
+          <div>
+            <h2>【目標③】<br>それは、月いくらの<br>収益になりますか</h2>
+            <p class="ch-goal">狙い：出た数字を足して、金額にする。ここまで埋めてから料金へ進む。</p>
+          </div>
+        </div>
+        <div class="talk">
+          <span class="lb en">READ ALOUD</span>
+          <p>では、いま出た数字を足してみます。</p>
+          <p>年に◯社 × 単価◯円で、<br>商材の売上が年◯円。</p>
+          <p>そこに、有料会員が◯社出れば、<br>毎月◯円が御社に入ります。</p>
+          <p class="pivot"><span class="pv">本質</span><span class="mk">この数字は、御社として合っていますか。</span></p>
+          <p class="q">この目標で、進めていいでしょうか。</p>
+        </div>
+        <div class="fill">
+          <span class="lb">3つを埋めきる</span>
+          <ul>
+            <li>商材の売上（年）<span class="w"></span><span class="u">円</span></li>
+            <li>会員のバック（月）<span class="w"></span><span class="u">円</span></li>
+            <li>他社商材のマージン（見込む場合のみ）<span class="w"></span><span class="u">円</span></li>
+          </ul>
+        </div>
+        <div class="memo">
+          <span class="lb">営業メモ</span>
+          <ul>
+            <li><strong>3つが埋まるまで、11の料金に入らない。</strong>埋まれば、初期20万円はこの数字の横に置くだけで済む。</li>
+            <li>商材の売上は年額、バックは月額。単位が混ざるので、必ず「年で◯円」「月で◯円」と言い分ける。</li>
+            <li>相手が出した数字なので、こちらが「高い」「安い」を言う必要はない。言わない。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 10 -->
+      <section class="ch" data-ph="close" id="s10" data-k="管理画面 動いた顧客 申請を検討 営業 追う 電話しない リスト全体 見える">
+        <div class="ch-head">
+          <span class="ch-no en">10</span>
+          <div>
+            <h2>動いた顧客だけを、営業が追う</h2>
+            <p class="ch-goal">狙い：目標が決まったあとの「で、うちの営業は何をするのか」に答える。</p>
+          </div>
+        </div>
+        <div class="talk">
+          <span class="lb en">READ ALOUD</span>
+          <p>配ったあと、御社の営業が<br>リスト全体に電話をかける必要はありません。</p>
+          <p class="pivot"><span class="pv">本質</span>「申請を検討する」を押した方だけが、<span class="mk">御社の管理画面に上がってきます。</span></p>
+          <p>いつ、どの顧客が、どの補助金で動いたか。</p>
+          <p>そこだけ追えば足ります。</p>
+        </div>
+        <div class="memo">
+          <span class="lb">営業メモ</span>
+          <ul>
+            <li>08で決めた受注社数に、いちばん直結する機能。ここを飛ばすと「配って終わり」に聞こえる。</li>
+            <li>OEM LPの「動いた顧客が、御社に見える」の画面を見せながら話すとよい。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 11 -->
+      <section class="ch" data-ph="close" id="s11" data-k="料金 初期費用 50万 20万 9月末 月額 85000 全機能 オプションなし 含まれるもの 人件費 1週間">
+        <div class="ch-head">
+          <span class="ch-no en">11</span>
+          <div>
+            <h2>3つが埋まってから、<br>初期費用と月額を出す</h2>
+            <p class="ch-goal">狙い：09で出た数字の横に、料金を置くだけにする。</p>
+          </div>
+        </div>
+        <div class="talk">
+          <span class="lb en">READ ALOUD</span>
+          <p>初期費用は50万円です。</p>
+          <p>ただ、9月末までにご契約いただける場合は<br>20万円でご案内しています。</p>
+          <p>月額は85,000円、<br>導入までは最短1週間です。</p>
+          <p class="pivot"><span class="pv">本質</span><span class="mk">オプションはありません。85,000円で全機能が入っています。</span></p>
+        </div>
+        <div class="price">
+          <table>
+            <thead><tr><th>項目</th><th>金額</th><th>条件</th></tr></thead>
+            <tbody>
+              <tr><th>初期費用</th><td data-l="金額"><b>50万円 → 20万円</b></td><td data-l="条件">9月末までのご契約に限る。導入時のみ</td></tr>
+              <tr><th>月額</th><td data-l="金額"><b>85,000円</b></td><td data-l="条件">全機能込み。配布数や登録数によって変わらない</td></tr>
+              <tr><th>導入まで</th><td data-l="金額"><b>最短1週間</b></td><td data-l="条件">打ち合わせ1回。稟議資料はこちらで用意する</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="memo">
+          <span class="lb">月額85,000円に含まれるもの（聞かれたら読む）</span>
+          <ul>
+            <li>補助金・助成金／融資／税制優遇のデータベースを、AIが24時間365日集め続ける</li>
+            <li>顧客一社ごとに合わせた原稿を、AIが書く</li>
+            <li>毎週、顧客の選んだ経路（メール・LINE・Slack・SMS）へ配信する</li>
+            <li>名刺リストから、顧客一社ごとのカルテをAIが自動生成する</li>
+            <li>カルテをもとにした定期メールニュースの配信</li>
+            <li>自社情報の発信と、アンケートの実施</li>
+            <li>顧客からの問い合わせは、当社のAIスタッフが一次対応する</li>
+            <li>開発・サーバー・保守</li>
+          </ul>
+        </div>
+        <div class="memo">
+          <span class="lb">営業メモ</span>
+          <ul>
+            <li>「これ以外にかかりますか」には<strong>「かかりません」と言い切ってよい。</strong></li>
+            <li>人件費に翻訳するのは「週1で顧客ごとに違う原稿を書いて配信する担当を、社内で1人置いたらいくらかかりますか」まで。<strong>具体的な給与額や相場は出さない。</strong></li>
+            <li>「これだけ入って85,000円は安い」と、こちらから断定しない。</li>
+            <li>9月末の期限は、この章で1回だけ言う。繰り返すと値引き交渉の合図になる。</li>
+          </ul>
+        </div>
+        <div class="ng ng--todo">
+          <span class="lb"><span class="todo">要確認</span>言い方に気をつける</span>
+          <p>顧客カルテの自動生成／定期メールニュースの配信／自社情報の発信とアンケートの3機能は、<strong>提供時期がまだ確定していません。</strong>「85,000円に含まれます」とは言ってよいですが、「いつから使えます」とは言わない。聞かれたら「提供時期と詳細は、打ち合わせの際にご案内します」で止める。</p>
+        </div>
+      </section>
+
+      <!-- 12 -->
+      <section class="ch" data-ph="close" id="s12" data-k="ロゴ 色 名称 3つ 決めるもの 開発 サーバー AIスタッフ 一次対応 人員 取られない 配る道具 チラシ QRコード">
+        <div class="ch-head">
+          <span class="ch-no en">12</span>
+          <div>
+            <h2>御社に決めて<br>いただくのは、<br>ロゴと色と名称だけ</h2>
+            <p class="ch-goal">狙い：導入の手間がゼロに近いことを、最後の障壁として外す。</p>
+          </div>
+        </div>
+        <div class="talk">
+          <span class="lb en">READ ALOUD</span>
+          <p>御社に決めていただくのは、<br>ロゴと、色と、名称の3つだけです。</p>
+          <p>開発も、サーバーの用意も、<br>こちらで持ちます。</p>
+          <p class="pivot"><span class="pv">本質</span>お客様からの問い合わせも、<span class="mk">当社のAIスタッフが一次対応します。</span></p>
+          <p>配った後に御社の人員が取られる、<br>ということが起きません。</p>
+        </div>
+        <div class="memo">
+          <span class="lb">営業メモ</span>
+          <ul>
+            <li>案内メールの文面、チラシ、営業が使う説明トーク、登録用のQRコードも当社が用意する。御社にお願いするのは、送ることだけ。</li>
+            <li>稟議に必要な資料もこちらで用意する、と添える。社内を通す側の不安がここで消える。</li>
+            <li>AIで解決しない問い合わせは当社が引き取る。ここも言い切ってよい。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 13 -->
+      <section class="ch" data-ph="close" id="s13" data-k="クロージング 黙る 沈黙 進めてみられますか 数字を読み上げる 持ち帰り 次回日程 判断のポイント">
+        <div class="ch-head">
+          <span class="ch-no en">13</span>
+          <div>
+            <h2>クロージング</h2>
+            <p class="ch-goal">狙い：相手が出した数字を読み上げ、その横に料金を置いて、黙る。</p>
+          </div>
+        </div>
+        <div class="talk">
+          <span class="lb en">READ ALOUD</span>
+          <p>ここまでで、御社のリストが◯件、<br>配れるのが◯件、<br>年に◯社の受注が目標、<br>という数字が出ました。</p>
+          <p class="pivot"><span class="pv">本質</span>それに対して、<span class="mk">初期20万円と、月85,000円です。</span></p>
+          <p class="q">この形で、進めてみられますか。</p>
+          <p class="pause">ここで黙る</p>
+        </div>
+        <div class="memo">
+          <span class="lb">営業メモ</span>
+          <ul>
+            <li><strong>黙る。</strong>先に喋らない。沈黙を埋めようとした側が条件を下げる。</li>
+            <li>読み上げるのは、07〜09で相手が出した数字。こちらが作った数字を混ぜない。</li>
+            <li>持ち帰りになったら、次回日程と「判断のポイント」を1つ言わせてから終わる。「検討します」だけで終わらせない。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 14 -->
+      <section class="ch" data-ph="qa" id="s14" data-k="切り返し 反論 配信ツール 他にもある 高い 85000 補助金の会社じゃない 売る商材がない エリア 独占 商圏 顧客データ 誰のもの 検討します 持ち帰り">
+        <div class="ch-head">
+          <span class="ch-no en">14</span>
+          <div>
+            <h2>切り返し集</h2>
+            <p class="ch-goal">狙い：ここだけは、商談中にタップして開く。</p>
+          </div>
+        </div>
+
+        <div class="qa">
+          <details open data-k="配信ツール 他にもある 箱 原稿 集める 書く J-System 1125社 自治体 地銀">
+            <summary>配信ツールなら、他にもありますよね。</summary>
+            <div class="a">
+              <div class="talk">
+                <span class="lb en">READ ALOUD</span>
+                <p>配信する箱は、たしかにどこにでもあります。</p>
+                <p>ただ、<span class="mk">箱があっても原稿が書けないから止まる</span>んですよね。</p>
+                <p>こちらは、毎日情報を集めるところと、<br>原稿を書くところまでが入っています。<br>そこが違いです。</p>
+                <p>前段にあたる「J-System」というサービスが、<br>累計1,125社に入っています。</p>
+                <p>そのうち100社以上が自治体と地方銀行です。<br>Jマッチエンジンは、その上位版にあたります。</p>
+              </div>
+              <div class="memo">
+                <span class="lb">営業メモ</span>
+                <p>1,125社は前身J-Systemの数字。<strong>必ず「前段にあたるサービスが」と付けて話す。</strong>Jマッチエンジン自体の実績にしない。</p>
+              </div>
+            </div>
+          </details>
+
+          <details data-k="高い 85000 月額 人件費 1人 採用 相場 給与 オプション">
+            <summary>月85,000円は高いですね。</summary>
+            <div class="a">
+              <div class="talk">
+                <span class="lb en">READ ALOUD</span>
+                <p>週1で顧客ごとに違う原稿を書いて、<br>配信までする担当を、<br>社内で1人置いたらいくらかかりますか。</p>
+                <p>情報を集めるところから配信まで含めて、<br>月85,000円です。</p>
+                <p>オプションはありません。</p>
+              </div>
+              <div class="memo">
+                <span class="lb">営業メモ</span>
+                <ul>
+                  <li>人件費と並べるところまでで止める。<strong>具体的な給与額や相場は出さない。</strong></li>
+                  <li>「これだけ入って85,000円は安い」と、こちらが断定しない。</li>
+                  <li>ツール同士の価格比較の土俵に上がらない。上がった瞬間に負ける。</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <details data-k="補助金の会社じゃない 扱っていない 主語 顧客 読んでもらうための中身">
+            <summary>うちは補助金の会社じゃないんですが。</summary>
+            <div class="a">
+              <div class="talk">
+                <span class="lb en">READ ALOUD</span>
+                <p>補助金をやってくださいという話ではないんです。</p>
+                <p>御社のお客様に、御社の名前で<br>毎週役立つ情報が届いて、<br>その中に御社の商材が載る。</p>
+                <p><span class="mk">補助金は、読んでもらうための中身</span>であって、<br>御社が扱うものではありません。</p>
+              </div>
+              <div class="memo">
+                <span class="lb">営業メモ</span>
+                <p>主語を相手の顧客に戻す。ここで補助金の説明を始めると、また他人事に戻る。</p>
+              </div>
+            </div>
+          </details>
+
+          <details data-k="売る商材がない 商材なし マージン 月額の3分の1 接点維持">
+            <summary>売る商材がないのですが、使えますか。</summary>
+            <div class="a">
+              <div class="talk">
+                <span class="lb en">READ ALOUD</span>
+                <p>使えます。</p>
+                <p>その場合の収益は、他社商材のマージンと、<br>顧客の月額の3分の1になります。</p>
+                <p>顧客との接点を保つことだけを目的に<br>導入されるケースもあります。</p>
+              </div>
+              <div class="memo">
+                <span class="lb">営業メモ</span>
+                <p>この場合、08の目標②は「年に何社受注できれば」が使えない。<strong>「何社が有料会員になれば」へ置き換えて聞く。</strong>3つの質問の骨格は変えない。</p>
+              </div>
+            </div>
+          </details>
+
+          <details data-k="エリア 同じ商圏 他社 独占 競合 提供範囲">
+            <summary>同じエリアの他社にも提供するんですか。</summary>
+            <div class="a">
+              <div class="talk">
+                <span class="lb en">READ ALOUD</span>
+                <p>エリアの扱いは、<br>打ち合わせの場で確定させます。</p>
+                <p>同一商圏での競合を避けたい場合は、<br>その旨をお伝えください。</p>
+                <p>ご要望に応じて、<br>提供範囲を限定した契約も検討します。</p>
+              </div>
+              <div class="memo">
+                <span class="lb">営業メモ</span>
+                <p>この場で「独占にできます」と約束しない。<strong>「打ち合わせで確定させる」まで。</strong>約束すると、後から社内で覆せない。</p>
+              </div>
+            </div>
+          </details>
+
+          <details data-k="顧客データ 誰のもの 直接営業 契約書 取り扱い">
+            <summary>顧客のデータは、誰のものになりますか。</summary>
+            <div class="a">
+              <div class="talk">
+                <span class="lb en">READ ALOUD</span>
+                <p>御社が獲得した顧客は、御社の顧客です。</p>
+                <p>当社が御社の顧客へ<br>直接営業することはありません。</p>
+                <p>取り扱いは、契約書に明記します。</p>
+              </div>
+              <div class="memo">
+                <span class="lb">営業メモ</span>
+                <p>並べる商材は御社が選び、承認したものだけが表示される。本業と競合するものは外せる。ここも併せて言うと、不安が2つ同時に消える。</p>
+              </div>
+            </div>
+          </details>
+
+          <details data-k="社内で検討します 持ち帰り 9月末 期限 判断のポイント 次回日程">
+            <summary>社内で検討します。</summary>
+            <div class="a">
+              <div class="talk">
+                <span class="lb en">READ ALOUD</span>
+                <p>承知しました。</p>
+                <p>ひとつだけ先に共有させてください。</p>
+                <p>初期費用を20万円でご案内できるのは、<br>9月末までのご契約が対象です。</p>
+                <p>社内でご検討いただくにあたって、<br><span class="mk">どの点が判断のポイントになりそうでしょうか</span>。</p>
+              </div>
+              <div class="memo">
+                <span class="lb">営業メモ</span>
+                <ul>
+                  <li>9月末の期限は、11章で1回、ここで1回まで。3回言うと値引き交渉の合図になる。</li>
+                  <li>判断ポイントを1つ言わせてから、次回日程に入る。</li>
+                  <li>07〜09で書いた数字のメモを、その場で相手に渡すか送る。社内を通すのはこの数字。</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <p class="empty" id="empty" hidden>その言葉に当たる台本はありません。<br>近い言葉で探すか、フェーズのボタンで戻してください。</p>
+
+    </main>
+
+    <aside class="side" id="side">
+      <button class="side-tgl" id="sideTgl" type="button" aria-expanded="false" aria-controls="sideBody">目次から探す<i>▾</i></button>
+      <div class="side-body" id="sideBody">
+      <h3 class="en">CONTENTS</h3>
+      <div class="act-lb" data-g="mikiwake">見極め</div>
+      <ol>
+        <li data-s="s00"><a href="#s00"><b>00</b>商談前に決めておくこと</a></li>
+      </ol>
+      <div class="act-lb" data-g="talk">説明</div>
+      <ol>
+        <li data-s="s01"><a href="#s01"><b>01</b>眠っているリストの話</a></li>
+        <li data-s="s02"><a href="#s02"><b>02</b>ひとことで言う</a></li>
+        <li data-s="s03"><a href="#s03"><b>03</b>御社の商材が載る</a></li>
+        <li data-s="s04"><a href="#s04"><b>04</b>嫌われないかに答える</a></li>
+        <li data-s="s05"><a href="#s05"><b>05</b>4段の階段</a></li>
+        <li data-s="s06"><a href="#s06"><b>06</b>毎月いくら戻るか</a></li>
+      </ol>
+      <div class="act-lb" data-g="goal">目標を決める <span class="en">PIVOT</span></div>
+      <ol>
+        <li data-s="s07"><a href="#s07"><b>07</b>①リストは何件ですか</a></li>
+        <li data-s="s08"><a href="#s08"><b>08</b>②年に何社受注できれば</a></li>
+        <li data-s="s09"><a href="#s09"><b>09</b>③月いくらになりますか</a></li>
+      </ol>
+      <div class="act-lb" data-g="close">決める</div>
+      <ol>
+        <li data-s="s10"><a href="#s10"><b>10</b>動いた顧客を追う</a></li>
+        <li data-s="s11"><a href="#s11"><b>11</b>初期費用と月額</a></li>
+        <li data-s="s12"><a href="#s12"><b>12</b>決めるのは3つだけ</a></li>
+        <li data-s="s13"><a href="#s13"><b>13</b>クロージング</a></li>
+      </ol>
+      <div class="act-lb" data-g="qa">切り返し</div>
+      <ol>
+        <li data-s="s14"><a href="#s14"><b>14</b>切り返し集</a></li>
+      </ol>
+      </div>
+    </aside>
+
+  </div>
+
+  <section class="end">
+    <p>説明して売る商談ではない。<br>相手の目標を、<br>相手の口から出させる商談。</p>
+  </section>
+
+  <footer class="ft">
+    <span>Jマッチエンジン OEMセールストーク v1</span>
+    <span>2026.09.13</span>
+    <span>取扱：社内限定</span>
+    <span>株式会社ライトアップ</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var body=document.body;
+
+  /* 台本だけ表示 */
+  var only=document.getElementById('onlyBtn');
+  only.addEventListener('click',function(){
+    body.classList.toggle('only');
+    only.classList.toggle('on');
+    only.textContent=body.classList.contains('only')?'メモも表示':'台本だけ表示';
+  });
+
+  /* 文字サイズ */
+  var size=19;
+  function applySize(){document.documentElement.style.setProperty('--talk',size+'px');}
+  document.getElementById('plus').addEventListener('click',function(){size=Math.min(26,size+1);applySize();});
+  document.getElementById('minus').addEventListener('click',function(){size=Math.max(15,size-1);applySize();});
+  document.getElementById('printBtn').addEventListener('click',function(){window.print();});
+
+  /* 検索と絞り込み */
+  var q=document.getElementById('q'), srch=document.getElementById('srch'), clr=document.getElementById('clr');
+  var hits=document.getElementById('hits'), empty=document.getElementById('empty');
+  var chs=[].slice.call(document.querySelectorAll('.ch'));
+  var dets=[].slice.call(document.querySelectorAll('.qa details'));
+  var lis=[].slice.call(document.querySelectorAll('.side li'));
+  var glbs=[].slice.call(document.querySelectorAll('.act-lb'));
+  var fchips=[].slice.call(document.querySelectorAll('.fchip'));
+  var ph='all';
+
+  function norm(s){return (s||'').toLowerCase();}
+
+  function apply(){
+    var term=norm(q.value).trim();
+    srch.classList.toggle('has', term.length>0);
+    var shown=0;
+
+    if(term){
+      dets.forEach(function(d){
+        var hay=norm(d.getAttribute('data-k')+' '+d.textContent);
+        var ok=hay.indexOf(term)!==-1;
+        d.classList.toggle('is-off',!ok);
+        if(ok) d.open=true;
+      });
+    } else {
+      dets.forEach(function(d){ d.classList.remove('is-off'); });
+    }
+
+    chs.forEach(function(c){
+      var okPh=(ph==='all')||(c.getAttribute('data-ph')===ph);
+      var hay=norm(c.getAttribute('data-k')+' '+c.textContent);
+      var okTerm=!term||hay.indexOf(term)!==-1;
+      if(term && c.id==='s12'){
+        okTerm=dets.some(function(d){return !d.classList.contains('is-off');});
+      }
+      var vis=okPh&&okTerm;
+      c.classList.toggle('is-off',!vis);
+      if(vis) shown++;
+      var li=document.querySelector('.side li[data-s="'+c.id+'"]');
+      if(li) li.classList.toggle('is-off',!vis);
+    });
+
+    glbs.forEach(function(g){
+      var name=g.getAttribute('data-g');
+      var any=chs.some(function(c){return c.getAttribute('data-ph')===name&&!c.classList.contains('is-off');});
+      g.classList.toggle('is-off',!any);
+    });
+
+    hits.textContent=shown+' / '+chs.length;
+    empty.hidden=shown!==0;
+  }
+
+  q.addEventListener('input',apply);
+  clr.addEventListener('click',function(){q.value='';apply();q.focus();});
+  fchips.forEach(function(ch){
+    ch.addEventListener('click',function(){
+      ph=ch.getAttribute('data-f');
+      fchips.forEach(function(o){o.setAttribute('aria-pressed',String(o===ch));});
+      apply();
+    });
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='/'&&document.activeElement!==q){e.preventDefault();q.focus();q.select();}
+    if(e.key==='Escape'){
+      q.value=''; ph='all';
+      fchips.forEach(function(o){o.setAttribute('aria-pressed',String(o.getAttribute('data-f')==='all'));});
+      apply();
+    }
+  });
+
+  /* 右メニューの開閉（1024px以下） */
+  var side=document.getElementById('side'), sideTgl=document.getElementById('sideTgl');
+  sideTgl.addEventListener('click',function(){
+    var open=side.classList.toggle('is-open');
+    sideTgl.setAttribute('aria-expanded',String(open));
+    sideTgl.childNodes[0].nodeValue=open?'目次を閉じる':'目次から探す';
+  });
+  side.addEventListener('click',function(e){
+    if(e.target.closest('a')&&window.matchMedia('(max-width:1024px)').matches){
+      side.classList.remove('is-open');
+      sideTgl.setAttribute('aria-expanded','false');
+      sideTgl.childNodes[0].nodeValue='目次から探す';
+    }
+  });
+
+  /* ヘッダーの出し入れ・進捗・現在地 */
+  var topbar=document.getElementById('topbar');
+  var hdEl=document.querySelector('.hd');
+  function setH(){document.documentElement.style.setProperty('--hdh',hdEl.offsetHeight+'px');}
+  setH(); window.addEventListener('resize',setH);
+  var lastY=window.scrollY;
+  var bar=document.getElementById('bar');
+  var links=[].slice.call(document.querySelectorAll('.side a'));
+  function onScroll(){
+    var y=window.scrollY;
+    if(y<140){ body.classList.remove('hd-hide'); }
+    else if(y>lastY+4){ body.classList.add('hd-hide'); }
+    else if(y<lastY-4){ body.classList.remove('hd-hide'); }
+    lastY=y;
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(y/h*100):0)+'%';
+    var cur=null;
+    chs.forEach(function(s){ if(!s.classList.contains('is-off')&&s.getBoundingClientRect().top<180) cur=s.id; });
+    links.forEach(function(a){ a.classList.toggle('cur', a.getAttribute('href')==='#'+cur); });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll(); apply();
+})();
+</script>
+</body>
+</html>
