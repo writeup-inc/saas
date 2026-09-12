@@ -414,17 +414,13 @@
     .thoughts {
       position: relative;
       display: grid;
-      grid-template-areas:
-        "head ideas"
-        "head footer";
-      grid-template-columns: minmax(250px, .68fr) minmax(0, 1.52fr);
-      gap: 12px clamp(24px, 3.5vw, 44px);
+      gap: clamp(20px, 2.6vw, 30px);
       margin-bottom: clamp(38px, 5vw, 58px);
       padding: clamp(26px, 3.4vw, 38px);
       overflow: hidden;
       border: 1px solid rgba(20,37,31,.14);
       background:
-        radial-gradient(circle at 94% 10%, rgba(168,102,72,.15), transparent 18rem),
+        radial-gradient(circle at 92% 14%, rgba(168,102,72,.14), transparent 22rem),
         linear-gradient(135deg, rgba(255,255,255,.94), rgba(244,242,236,.88));
       box-shadow: var(--shadow);
     }
@@ -432,11 +428,11 @@
     .thoughts::after {
       content: "CODEX / OBSERVATION LOG";
       position: absolute;
-      right: -26px;
-      bottom: 26px;
+      right: -12px;
+      bottom: 14px;
       color: rgba(20,37,31,.045);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(40px, 6vw, 78px);
+      font-size: clamp(42px, 6vw, 82px);
       font-style: italic;
       font-weight: 700;
       letter-spacing: -.04em;
@@ -448,14 +444,13 @@
     .thoughts-head {
       position: relative;
       z-index: 1;
-      grid-area: head;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 16px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(250px, .55fr);
+      gap: clamp(20px, 4vw, 52px);
+      align-items: end;
       margin: 0;
-      padding-right: clamp(22px, 3vw, 38px);
-      border-right: 1px solid var(--line);
+      padding-bottom: clamp(20px, 2.6vw, 28px);
+      border-bottom: 1px solid var(--line);
     }
 
     .thoughts-kicker {
@@ -479,11 +474,11 @@
     }
 
     .thoughts-title {
-      max-width: 720px;
+      max-width: 760px;
       margin: 0;
-      font-size: clamp(30px, 3.2vw, 42px);
+      font-size: clamp(32px, 3.25vw, 46px);
       letter-spacing: -.045em;
-      line-height: 1.2;
+      line-height: 1.15;
     }
 
     .thoughts-title em {
@@ -494,15 +489,16 @@
 
     .thoughts-disclaimer {
       margin: 0;
+      padding: 11px 0 0 14px;
+      border-left: 2px solid var(--orange);
       color: var(--ink-soft);
       font-size: 12px;
-      line-height: 1.65;
+      line-height: 1.7;
     }
 
     .thoughts-disclaimer b {
       display: inline-block;
-      margin-right: 6px;
-      margin-bottom: 0;
+      margin: 0 6px 4px 0;
       color: var(--green);
       font-size: 10px;
       letter-spacing: .12em;
@@ -511,80 +507,89 @@
     .thought-grid {
       position: relative;
       z-index: 1;
-      grid-area: ideas;
       display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 10px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
     }
 
     .thought-card {
       position: relative;
-      display: grid;
-      grid-template-columns: 34px minmax(0, 1fr);
-      column-gap: 14px;
+      display: flex;
+      min-height: 234px;
+      flex-direction: column;
+      align-items: flex-start;
       min-width: 0;
-      padding: 17px 18px 16px;
+      padding: clamp(20px, 2.2vw, 27px);
       border: 1px solid rgba(20,37,31,.11);
-      background: rgba(255,255,255,.7);
+      background: rgba(255,255,255,.74);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+
+    .thought-card:hover {
+      z-index: 1;
+      border-color: rgba(20,37,31,.24);
+      box-shadow: 0 14px 30px rgba(20,37,31,.09);
+      transform: translateY(-3px);
     }
 
     .thought-number {
-      display: block;
-      grid-row: 1 / 3;
-      margin-top: 4px;
+      display: inline-flex;
+      align-items: center;
+      min-height: 23px;
+      margin: 0 0 auto;
+      padding: 0 8px;
+      border: 1px solid rgba(168,102,72,.33);
       color: var(--orange);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 12px;
-      font-style: italic;
+      font-size: 9px;
+      font-weight: 850;
+      letter-spacing: .12em;
     }
 
     .thought-card h3 {
-      grid-column: 2;
-      margin: 0;
+      margin: 20px 0 0;
       color: var(--ink);
-      font-size: clamp(24px, 2.35vw, 31px);
+      font-size: clamp(23px, 2vw, 29px);
       letter-spacing: -.045em;
-      line-height: 1.25;
-      white-space: nowrap;
+      line-height: 1.28;
     }
 
     .thought-card p {
-      grid-column: 2;
-      margin: 6px 0 0;
+      margin: 12px 0 0;
       color: var(--ink-soft);
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 650;
       letter-spacing: -.008em;
       line-height: 1.75;
     }
 
     .thought-card small {
-      display: none;
+      display: block;
     }
 
     .thought-footer {
       position: relative;
       z-index: 1;
-      grid-area: footer;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 12px;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, .8fr);
+      gap: clamp(16px, 3vw, 34px);
       align-items: center;
-      margin-top: 0;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
     }
 
     .poison-note {
       margin: 0;
-      padding: 8px 11px;
+      padding: 0;
       border-left: 3px solid var(--orange);
       color: var(--ink-soft);
-      background: rgba(168,102,72,.075);
-      font-size: 10px;
-      line-height: 1.55;
+      background: transparent;
+      font-size: 11px;
+      line-height: 1.65;
     }
 
     .poison-note b {
-      margin-right: 8px;
+      display: block;
+      margin: 0 0 4px 11px;
       color: var(--orange);
       font-size: 9px;
       letter-spacing: .12em;
@@ -593,19 +598,18 @@
     .thought-action {
       display: flex;
       min-width: 0;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 10px;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 8px;
     }
 
     .thought-prompt {
       min-height: 1.7em;
       margin: 0;
       color: var(--green);
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 750;
-      line-height: 1.45;
-      text-align: right;
+      line-height: 1.55;
     }
 
     .thought-nudge {
@@ -615,7 +619,7 @@
       color: #fff;
       background: var(--green);
       font: inherit;
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 800;
       letter-spacing: .04em;
       cursor: pointer;
@@ -1565,14 +1569,13 @@
 
     @media (max-width: 820px) {
       .hero { grid-template-columns: 1fr; gap: 28px; }
-      .thoughts { grid-template-areas: "head" "ideas" "footer"; grid-template-columns: 1fr; gap: 14px; }
-      .thoughts-head { flex-direction: row; align-items: end; gap: 18px; padding: 0 0 14px; border-right: 0; border-bottom: 1px solid var(--line); }
+      .thoughts { gap: 20px; }
+      .thoughts-head { grid-template-columns: 1fr; gap: 14px; align-items: start; padding-bottom: 18px; }
       .thoughts-head > div { min-width: 0; }
-      .thoughts-disclaimer { max-width: 260px; }
-      .thought-grid { grid-template-columns: minmax(0, 1fr); }
+      .thoughts-disclaimer { max-width: 560px; }
+      .thought-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .thought-footer { grid-template-columns: 1fr; }
-      .thought-action { width: 100%; justify-content: space-between; }
-      .thought-prompt { text-align: left; }
+      .thought-action { width: 100%; }
       .context-title { white-space: normal; }
       .org-flow { grid-template-columns: 1fr; }
       .org-node { min-height: 0; }
@@ -1602,13 +1605,13 @@
       .news-dialog-inner { padding: 22px 18px; }
       .news-dialog-head { gap: 14px; }
       .thoughts { padding: 20px 18px; }
-      .thoughts-head { align-items: start; flex-direction: column; gap: 9px; padding-bottom: 12px; }
+      .thoughts-head { gap: 10px; padding-bottom: 16px; }
       .thoughts-title { font-size: clamp(24px, 7.4vw, 32px); }
       .thoughts-disclaimer { max-width: none; }
       .thoughts::after { display: none; }
-      .thought-grid { margin-right: 0; padding-right: 0; }
-      .thought-card { padding: 18px 16px; }
-      .thought-card h3 { font-size: 25px; white-space: normal; }
+      .thought-grid { grid-template-columns: 1fr; margin-right: 0; padding-right: 0; }
+      .thought-card { min-height: 0; padding: 22px 18px; }
+      .thought-card h3 { font-size: 25px; }
       .thought-card p { font-size: 13px; }
       .thought-action { align-items: stretch; flex-direction: column; gap: 7px; }
       .thought-nudge { width: 100%; }
@@ -1739,35 +1742,35 @@
       <section class="thoughts" aria-labelledby="thoughts-title">
         <div class="thoughts-head">
           <div>
-            <p class="thoughts-kicker">CODY'S CURRENT GUESS</p>
-            <h2 class="thoughts-title" id="thoughts-title">白石さんはいま、<br>たぶんこう考えています。</h2>
+            <p class="thoughts-kicker">CODY'S OBSERVATION</p>
+            <h2 class="thoughts-title" id="thoughts-title">いま一覧に見えている、<br>3つの方針。</h2>
           </div>
-          <p class="thoughts-disclaimer"><b>本人未確認です</b> 公開中のサービスと日々の更新から、白石さんのCodex「コーディ」が勝手に読み取った現在地です。</p>
+          <p class="thoughts-disclaimer"><b>これは作業仮説です</b>公開中のページと更新履歴を手掛かりに、コーディが整理した見立てです。白石さん本人の発言や決定を示すものではありません。</p>
         </div>
 
         <div class="thought-grid">
           <article class="thought-card">
-            <span class="thought-number">01</span>
-            <h3>まず出す。反応で育てる。</h3>
-            <p>完成を待つより、使われる形にして確かめたい。</p>
+            <span class="thought-number">OBSERVATION 01</span>
+            <h3>小さく出して、<br>反応から育てる。</h3>
+            <p>完成を待たず、仮説を見える形にして、使われ方を確かめる。</p>
           </article>
           <article class="thought-card">
-            <span class="thought-number">02</span>
-            <h3>一人でつくらない。チームで強くする。</h3>
-            <p>最初の作者に閉じず、次の人が更新できるサービスにしたい。</p>
+            <span class="thought-number">OBSERVATION 02</span>
+            <h3>一人の完成で、<br>終わらせない。</h3>
+            <p>最初の制作者に閉じず、次の人が直せる状態でチームに渡す。</p>
           </article>
           <article class="thought-card">
-            <span class="thought-number">03</span>
-            <h3>派手さより、明日ラクになるか。</h3>
-            <p>誰のどんな仕事が軽くなるのか、ひと言で説明できるものを増やしたい。</p>
+            <span class="thought-number">OBSERVATION 03</span>
+            <h3>明日の仕事が、<br>軽くなるかで決める。</h3>
+            <p>誰のどの手間が減るのかを、一言で説明できるものにする。</p>
           </article>
         </div>
 
         <div class="thought-footer">
-          <p class="poison-note"><b>コーディの邪推 12%</b> 新しい案を見た白石さん、たぶん最初にこう聞きます。「面白い。で、これは明日から誰が使うの？」</p>
+          <p class="poison-note"><b>OBSERVATION NOTE</b>新しい案は、実装の前に「明日、誰がどう使えるか」を言葉にできるかで見直します。</p>
           <div class="thought-action">
-            <p class="thought-prompt" id="thought-prompt" aria-live="polite">コーディの答え合わせ：「白石さん、いま一番つくりたいのはどれです？」</p>
-            <button class="thought-nudge" type="button" aria-describedby="thought-prompt">別の推測を出す ↻</button>
+            <p class="thought-prompt" id="thought-prompt" aria-live="polite">次の問い：いま一番、現場に見せて確かめるべきものは？</p>
+            <button class="thought-nudge" type="button" aria-describedby="thought-prompt">次の問いを見る ↻</button>
           </div>
         </div>
       </section>
@@ -2315,10 +2318,10 @@
       };
 
       const thoughtPrompts = [
-        'コーディの答え合わせ：「白石さん、いま一番つくりたいのはどれです？」',
-        'コーディからスタッフへ：「この推測、現場の感覚と合っていますか？」',
-        'コーディの観測：「次にお客さまへ見せるなら、どのサービスです？」',
-        'コーディの提案：「この中から、月曜に1つ試してみませんか？」'
+        '次の問い：いま一番、現場に見せて確かめるべきものは？',
+        '次の問い：この仮説を、誰に最初に確かめますか？',
+        '次の問い：次の一週間で、何を一つだけ試しますか？',
+        '次の問い：明日の仕事を一つ軽くするなら、どこから始めますか？'
       ];
       const thoughtNudge = document.querySelector('.thought-nudge');
       const thoughtPrompt = document.querySelector('#thought-prompt');
