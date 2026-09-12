@@ -113,6 +113,21 @@ h1 em{ font-style:normal; color:var(--navy); }
   .opt-a{ width:48px; height:48px; }
 }
 
+.gate-sub{ display:grid; grid-template-columns:1fr 1fr; }
+.gate-sub a{
+  display:flex; align-items:center; gap:7px; min-height:48px;
+  padding:12px 36px 12px 0; border-bottom:1px solid var(--gray-20);
+  font-size:13px; font-weight:700; color:var(--gray-60); text-decoration:none;
+  transition:color .2s ease, background .2s ease;
+}
+.gate-sub a:hover{ color:var(--navy); background:var(--tint); }
+.gate-sub a i{ font-style:normal; font-size:12px; color:var(--gray-40); }
+.gate-sub .blank{ border-bottom:1px solid var(--gray-20); border-left:1px solid var(--gray-20); }
+@media(max-width:900px){
+  .gate-sub{ grid-template-columns:1fr; }
+  .gate-sub .blank{ display:none; }
+  .gate-sub a{ padding:12px 4px; }
+}
 .foot-note{ margin-top:34px; font-size:13px; color:var(--gray-40); line-height:1.9; }
 footer{ position:relative; z-index:1; flex-shrink:0; border-top:1px solid var(--gray-20); padding:22px 0 36px; }
 footer .f{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; font-size:12px; color:var(--gray-40); }
@@ -126,7 +141,7 @@ footer .f{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px
   <div class="wrap">
     <p class="kicker">J-MATCH ENGINE</p>
     <h1>ご案内は、<em>2種類</em>あります。</h1>
-    <p class="desc">御社の名前でお客様へお配りいただく場合と、御社ご自身でお使いいただく場合で、ご案内の内容が分かれています。</p>
+    <p class="desc">御社の名前でお客様へお配りいただく場合と、御社ご自身でお使いいただく場合で、ご案内の内容が分かれています。配る側になる場合は、お客様に見えるページもあわせてご確認ください。</p>
 
     <div class="gate">
 
@@ -156,6 +171,11 @@ footer .f{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px
         </span>
       </a>
 
+    </div>
+
+    <div class="gate-sub">
+      <a href="./oem-plans/">OEM導入先のお客様が見る料金ページ<i>→</i></a>
+      <span class="blank"></span>
     </div>
 
     <p class="foot-note">金額はいずれも税別です。申請の代行は行っておりません。</p>
