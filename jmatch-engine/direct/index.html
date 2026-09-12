@@ -595,6 +595,15 @@ footer .note{ font-size:13px; }
 .campbox .steps li{ border-bottom-color:var(--acm); }
 .campbox .caution{ border-left-color:var(--ac); }
 @media (max-width:600px){ .campbox{ padding:22px 18px 20px; } }
+/* 事例協力の4項目：横に4枚 */
+.coop{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:24px 0 0; }
+.coop > div{ background:#fff; border:1px solid var(--acm); padding:17px 16px 19px;
+  display:flex; flex-direction:column; gap:9px; }
+.coop .n{ font-family:'Inter',sans-serif; font-weight:900; font-size:13px; color:var(--acm); letter-spacing:.08em; }
+.coop b{ font-size:15px; font-weight:900; line-height:1.65; }
+.coop p{ margin:0; font-size:13.5px; color:var(--g1); line-height:1.85; }
+@media (max-width:920px){ .coop{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:560px){ .coop{ grid-template-columns:1fr; } }
 .fvi{ color:var(--acm); display:block; margin-bottom:14px; }
 .fvh{ display:block; }
 
@@ -1034,12 +1043,12 @@ footer .note{ font-size:13px; }
   <div class="campbox">
     <p class="campbox-h">今月10社限定。導入事例へのご協力で、初期登録費用10万円が無料</p>
     <p class="campbox-d">通常の初期登録費用は100,000円（税別）です。今月の事例協力企業10社について、この初期登録費用を無料にします。</p>
-<ul class="steps">
-      <li><b>利用後の感想をお聞かせいただく</b><p>使ってみてどうだったかを、率直に教えてください。</p></li>
-      <li><b>簡単なインタビューにご協力いただく</b><p>お時間は短くて構いません。</p></li>
-      <li><b>利用状況や改善要望をお聞かせいただく</b><p>どこで詰まったかが、いちばん役に立ちます。</p></li>
-      <li><b>導入事例として掲載させていただく</b><p>掲載内容は、公開前に必ず御社にご確認いただきます。</p></li>
-    </ul>
+<div class="coop">
+      <div><span class="n">01</span><b>利用後の感想を<br>お聞かせいただく</b><p>使ってみてどうだったかを、率直に教えてください。</p></div>
+      <div><span class="n">02</span><b>簡単なインタビューに<br>ご協力いただく</b><p>お時間は短くて構いません。</p></div>
+      <div><span class="n">03</span><b>利用状況や改善要望を<br>お聞かせいただく</b><p>どこで詰まったかが、いちばん役に立ちます。</p></div>
+      <div><span class="n">04</span><b>導入事例として<br>掲載させていただく</b><p>掲載内容は、公開前に必ず御社にご確認いただきます。</p></div>
+    </div>
     <div class="caution" style="margin-top:20px">
       無料になるのは初期登録費用のみです。月額30,000円は契約開始後に発生します。料金はすべて税別です。会社名や担当者名、写真の公開範囲は個別に確認します。事例は御社の確認を得てから公開します。
     </div>
