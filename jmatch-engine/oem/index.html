@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jマッチ・エンジン｜中小企業に特化した、顧客支援システム</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0B2C5C;    /* アクセント1色。意味のある語・決め数字・CTAにのみ使う */
+  --tint:#F3F6FA;
+  --ink:#111111;
+  --white:#FFFFFF;
+  --gray-80:#3A3A3A;
+  --gray-60:#767676;
+  --gray-40:#A8A8A8;
+  --gray-20:#D9D9D9;
+  --gray-08:#EFEFEF;
+  --gray-04:#F7F7F7;
+  --line:#06C755;    /* LINEモックの実物再現のみ。ページのアクセント色ではない */
+  --line-bg:#E9EEF2;
+  --slack:#4A154B;   /* Slackモックの実物再現のみ。同上 */
+  --gmail:#EA4335;   /* Gmailモックの実物再現のみ。同上 */
+  --jp:'Noto Sans JP',sans-serif;
+  --en:'Inter',sans-serif;
+  --pad:120px;
+  --pad-key:136px;
+  --colgap:56px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--jp);background:var(--white);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.9;}
+.wrap{max-width:1150px;margin:0 auto;padding:0 32px;}
+.grid{display:grid;grid-template-columns:340px 1fr;gap:var(--colgap);}
+.grid > *{min-width:0;}
+.side{position:sticky;top:96px;align-self:start;padding-left:24px;border-left:2px solid var(--ink);}
+em{font-style:normal;color:var(--navy);font-weight:900;}
+b{font-weight:900;}
+.hit{color:var(--navy);}
+
+/* ヘッダー */
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--gray-08);}
+.hbar{display:flex;align-items:center;justify-content:space-between;height:60px;}
+.hlogo{font-size:14px;font-weight:900;letter-spacing:.02em;}
+.hlogo-tag{font-family:var(--en);font-size:9px;font-weight:900;letter-spacing:.1em;color:var(--navy);border:1px solid var(--navy);padding:2px 5px;margin-left:6px;vertical-align:middle;}
+.hcta{font-size:12px;font-weight:900;letter-spacing:.06em;color:var(--white);background:var(--navy);padding:9px 18px;text-decoration:none;}
+
+/* HERO＝アイコン。説明しない */
+.hero{padding:var(--pad-key) 0 var(--pad-key);margin-top:60px;}
+.hero-grid{display:grid;grid-template-columns:1fr 340px;gap:64px;align-items:start;}
+.hero-grid > *{min-width:0;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:0;margin-bottom:32px;border:1px solid var(--gray-20);}
+.he-mark{font-family:var(--en);font-size:11px;font-weight:900;letter-spacing:.1em;color:var(--white);background:var(--navy);padding:7px 12px;}
+.he-txt{font-size:13px;font-weight:700;letter-spacing:.02em;color:var(--gray-80);padding:0 14px;text-wrap:balance;}
+.hero-copy{font-weight:900;font-size:clamp(36px,6vw,82px);line-height:1.14;letter-spacing:-.045em;}
+.hero-copy .l{display:block;}
+.hero-sub{margin-top:34px;font-size:clamp(15px,1.3vw,17.5px);line-height:2.05;color:var(--gray-60);max-width:34em;text-wrap:balance;}
+.hero-sub b{color:var(--gray-80);}
+.hero-actions{margin-top:40px;display:flex;flex-wrap:wrap;align-items:center;gap:26px;}
+.hero-link{font-size:14px;font-weight:900;color:var(--navy);text-decoration:none;letter-spacing:.02em;display:inline-flex;align-items:center;min-height:44px;}
+.hero-flow{margin-top:52px;padding-top:32px;border-top:1px solid var(--gray-20);}
+.hf-k{font-family:var(--en);font-size:10px;font-weight:900;letter-spacing:.28em;color:var(--gray-40);margin-bottom:12px;}
+.hf-t{font-size:clamp(15px,1.4vw,18px);font-weight:900;letter-spacing:-.01em;margin-bottom:24px;}
+.hf-fig{overflow-x:auto;}
+.hf-fig svg{width:100%;min-width:780px;display:block;}
+.hf-fig text{font-family:var(--jp);}
+.hf-fig text.en{font-family:var(--en);}
+.hero-card{border:1px solid var(--ink);padding:28px 26px 30px;position:sticky;top:96px;}
+.hc-name b{display:block;font-size:19px;font-weight:900;letter-spacing:.01em;}
+.hc-name span{display:block;margin-top:8px;font-size:13px;line-height:1.7;color:var(--gray-60);}
+.hc-spec{margin-top:24px;border-top:2px solid var(--ink);}
+.hc-spec > div{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--gray-20);}
+.hc-spec dt{font-size:12px;color:var(--gray-60);letter-spacing:.02em;}
+.hc-spec dd{font-size:13.5px;font-weight:900;color:var(--ink);text-align:right;}
+
+/* セクション共通 */
+section.s{padding:var(--pad) 0;border-top:1px solid var(--gray-08);}
+.snum{font-family:var(--en);font-weight:900;font-size:15px;letter-spacing:.06em;color:var(--navy);margin-bottom:20px;}
+.snum::after{content:"";display:block;width:28px;height:2px;background:var(--navy);margin-top:14px;}
+.tick{display:none;}
+.slabel{font-family:var(--en);font-size:10px;font-weight:900;letter-spacing:.28em;color:var(--gray-60);margin-bottom:20px;}
+.stitle{font-weight:900;font-size:clamp(26px,3.1vw,40px);line-height:1.42;letter-spacing:-.025em;text-wrap:balance;}
+.snote{margin-top:18px;font-size:13.5px;line-height:1.95;color:var(--gray-60);text-wrap:balance;}
+.mk{background:linear-gradient(transparent 58%, #FFE86B 58%);padding:0 1px;}
+.keymsg{display:grid;grid-template-columns:72px 1fr;gap:34px;align-items:start;}
+.keymsg-i{width:72px;height:72px;display:block;flex:0 0 72px;}
+.keymsg-t{font-size:clamp(19px,2.1vw,27px);font-weight:900;line-height:1.85;letter-spacing:-.015em;text-wrap:balance;}
+.km-wide .keymsg-t{max-width:30em;}
+.keymsg + .body{margin-top:30px;}
+.lead{font-size:clamp(19px,2.1vw,25px);font-weight:700;line-height:1.85;letter-spacing:-.01em;text-wrap:balance;}
+.body{margin-top:22px;font-size:clamp(15.5px,1.2vw,17px);line-height:2;color:var(--gray-80);max-width:50em;text-wrap:pretty;}
+
+/* 行リスト（番号＋見出し＋説明） */
+.rows{margin-top:44px;border-top:1px solid var(--gray-20);}
+.row{display:grid;grid-template-columns:64px 1fr;gap:22px;padding:24px 0 26px;border-bottom:1px solid var(--gray-20);}
+.row-n{font-family:var(--en);font-weight:900;font-size:22px;color:var(--navy);line-height:1.3;letter-spacing:-.02em;}
+.row-t{font-weight:900;font-size:16.5px;line-height:1.7;letter-spacing:.005em;text-wrap:balance;display:flex;align-items:center;gap:12px;}
+.row-i{width:30px;height:30px;flex:0 0 30px;}
+.row-d{margin-top:8px;font-size:14.5px;line-height:1.95;color:var(--gray-60);text-wrap:balance;}
+.row-say{margin-top:12px;padding:13px 17px;background:var(--tint);font-size:14.5px;line-height:1.9;color:var(--gray-80);}
+.ph{background:var(--gray-08);padding:1px 6px;font-weight:900;color:var(--gray-60);}
+
+/* 02 山場（1カラム例外・1箇所のみ） */
+.flow{padding:var(--pad-key) 0;border-top:1px solid var(--gray-08);background:var(--gray-04);}
+.flow-title{margin-top:18px;margin-bottom:44px;font-weight:900;font-size:clamp(28px,4.2vw,58px);line-height:1.34;letter-spacing:-.035em;text-wrap:balance;}
+.flow-lead{margin-top:34px;font-size:clamp(17px,1.7vw,21px);font-weight:700;line-height:1.9;max-width:44em;text-wrap:balance;}
+.steps{margin-top:76px;border-top:2px solid var(--ink);}
+.step{display:grid;grid-template-columns:70px 1fr 290px;gap:30px;padding:42px 0 46px;border-bottom:1px solid var(--gray-20);align-items:start;}
+/* 右カラム＝画面イメージ。ブラウザウィンドウとして描き、高さを全ステップで統一する */
+.sui{border:1px solid var(--gray-20);background:var(--white);box-shadow:0 1px 0 var(--gray-08);display:flex;flex-direction:column;height:340px;overflow:hidden;}
+.sui-chrome{display:flex;align-items:center;gap:5px;padding:8px 11px;background:var(--gray-08);border-bottom:1px solid var(--gray-20);}
+.sui-chrome .dot{width:7px;height:7px;border-radius:50%;background:var(--gray-20);flex:0 0 7px;}
+.sui-url{flex:1;margin-left:6px;background:var(--white);border:1px solid var(--gray-20);border-radius:3px;padding:3px 8px;font-family:var(--en);font-size:9.5px;color:var(--gray-40);overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.sui-app{flex:1;display:flex;flex-direction:column;min-height:0;}
+.sui-nav{display:flex;align-items:center;gap:7px;padding:9px 13px;background:var(--navy);}
+.sui-brand{font-size:12px;font-weight:900;color:var(--white);letter-spacing:.02em;margin-right:auto;}
+.sui-menu{width:14px;height:2px;background:rgba(255,255,255,.45);}
+.sui-body{flex:1;padding:13px 13px 12px;min-height:0;overflow:hidden;}
+.sui-h{font-size:12.5px;font-weight:900;color:var(--ink);padding-bottom:8px;margin-bottom:9px;border-bottom:2px solid var(--ink);}
+.sui-lb{font-size:12px;color:var(--gray-40);}
+.sui-field{margin-top:6px;border:1px solid var(--gray-20);background:var(--gray-04);padding:9px 11px;font-size:12px;color:var(--gray-60);}
+.sui-btn{margin-top:11px;background:var(--navy);color:var(--white);text-align:center;padding:10px;font-size:12.5px;font-weight:900;}
+.sui-ck{position:relative;padding:6px 0 6px 25px;font-size:12.5px;color:var(--gray-60);border-bottom:1px solid var(--gray-08);}
+.sui-ck::before{content:"";position:absolute;left:0;top:8px;width:15px;height:15px;border:1px solid var(--gray-20);background:var(--white);}
+.sui-ck.on{color:var(--ink);font-weight:900;}
+.sui-ck.on::before{background:var(--navy);border-color:var(--navy);}
+.sui-ck.on::after{content:"";position:absolute;left:4px;top:12px;width:7px;height:4px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg);}
+.sui-row{display:flex;align-items:center;gap:8px;padding:8px 0;font-size:12px;color:var(--gray-80);border-bottom:1px solid var(--gray-08);}
+.sui-tag{flex:0 0 auto;font-size:12px;font-weight:900;color:var(--navy);border:1px solid var(--navy);padding:1px 7px;}
+.sui-arrow{text-align:center;font-size:12px;font-weight:900;color:var(--navy);padding:7px 0 6px;}
+.sui-card{border:2px solid var(--navy);background:var(--tint);padding:10px 12px;}
+.sui-card b{display:block;font-size:13px;font-weight:900;color:var(--navy);}
+.sui-card span{display:block;margin-top:3px;font-size:12px;color:var(--gray-60);}
+.sui-tr{display:flex;justify-content:space-between;gap:10px;padding:8px 0;font-size:12px;color:var(--gray-60);border-bottom:1px solid var(--gray-08);}
+.sui-tr em{font-style:normal;color:var(--gray-40);font-size:12px;}
+.sui-tr.hit{color:var(--ink);font-weight:900;}
+.sui-tr.hit em{color:var(--navy);font-weight:900;}
+.sui-note{margin-top:10px;font-size:12px;color:var(--gray-40);}
+.step > *{min-width:0;}
+.step-n{font-family:var(--en);font-weight:900;font-size:26px;line-height:1;letter-spacing:-.04em;color:var(--navy);}
+.step-t{font-weight:900;font-size:clamp(16px,1.35vw,18.5px);line-height:1.65;letter-spacing:-.01em;text-wrap:balance;}
+.step-d{margin-top:12px;font-size:14px;line-height:1.95;color:var(--gray-60);max-width:44em;text-wrap:balance;}
+.step.key{background:var(--white);padding-left:26px;padding-right:26px;}
+
+/* 配信モック */
+.chans-wrap{margin-top:56px;padding-top:40px;border-top:1px solid var(--gray-20);}
+.chans-h{font-size:16px;font-weight:900;letter-spacing:-.01em;margin-bottom:24px;}
+.chans{margin-top:0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.chan{border:1px solid var(--gray-20);background:var(--white);}
+.chan-h{padding:10px 14px;border-bottom:1px solid var(--gray-20);font-family:var(--en);font-size:10px;font-weight:900;letter-spacing:.24em;color:var(--navy);}
+.chan-b{padding:14px;background:var(--gray-04);min-height:180px;}
+.ch-top{font-size:11px;color:var(--gray-40);letter-spacing:.04em;padding-bottom:10px;border-bottom:1px solid var(--gray-20);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.ch-av{width:22px;height:22px;flex:0 0 22px;display:block;}
+.bub{background:var(--white);border:1px solid var(--gray-20);border-radius:12px 12px 12px 2px;padding:11px 13px 12px;}
+.bub.sq{border-radius:4px;}
+.bub b,.sl-msg b{display:block;font-size:13px;font-weight:900;color:var(--ink);line-height:1.6;}
+.chan-b p{margin-top:6px;font-size:12px;line-height:1.75;color:var(--gray-60);}
+.ch-link{margin-top:9px;font-size:12px;font-weight:900;color:var(--navy);}
+.ch-time{margin-top:8px;font-size:11px;color:var(--gray-40);}
+.sl-msg{display:grid;grid-template-columns:26px 1fr;gap:10px;}
+.sl-av{width:26px;height:26px;background:var(--slack);border-radius:4px;}
+.sl-name{font-size:11px;font-weight:900;color:var(--ink);margin-bottom:5px;}
+.sl-name span{font-weight:400;color:var(--gray-40);margin-left:6px;}
+.ml-row{display:grid;grid-template-columns:38px 1fr;gap:8px;font-size:11.5px;line-height:1.7;color:var(--ink);padding-bottom:7px;margin-bottom:7px;border-bottom:1px solid var(--gray-20);}
+.ml-row span{color:var(--gray-40);}
+.chan-h.line{color:var(--line);}
+.chan-b.line{background:var(--line-bg);}
+.chan-b.line .ch-top{border-bottom-color:#D5DCE2;}
+.chan-b.line .bub{border-color:#DDE3E8;border-radius:14px 14px 14px 3px;}
+.chan-b.line .ch-link{color:var(--line);}
+.chan-h.slack{color:var(--slack);}
+.chan-b.slack{background:var(--white);padding:0;}
+.chan-b.slack .ch-top{background:var(--slack);color:var(--white);border-bottom:none;margin:0;padding:11px 14px;font-weight:900;}
+.chan-b.slack .sl-msg{padding:14px;}
+.chan-b.slack .ch-link{color:var(--slack);}
+.chan-h.mail{color:var(--gmail);}
+.chan-b.mail{background:var(--white);}
+.chan-b.mail .ch-link{color:var(--gmail);}
+.chan-h.sms{color:var(--gray-60);}
+.chan-b.sms{background:var(--gray-08);}
+.chan-b.sms .ch-link{color:var(--gray-80);}
+.chans-cap{margin-top:18px;font-size:12.5px;line-height:1.9;color:var(--gray-60);text-wrap:balance;}
+
+/* 図版 */
+.dgm{margin-top:40px;padding:36px 34px 30px;background:var(--gray-04);overflow-x:auto;}
+.dgm svg{width:100%;min-width:620px;display:block;}
+.dgm text{font-family:var(--jp);}
+.dgm text.en{font-family:var(--en);}
+.dgm-cap{margin-top:16px;font-size:12.5px;line-height:1.85;color:var(--gray-60);text-wrap:balance;}
+.flow .dgm{background:var(--white);}
+
+/* 料金 */
+.price{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:56px;border-top:2px solid var(--ink);padding-top:30px;}
+.price-k{font-family:var(--en);font-size:10px;font-weight:900;letter-spacing:.3em;color:var(--gray-40);}
+.price-n{margin-top:12px;font-family:var(--en);font-weight:900;font-size:clamp(40px,5.4vw,68px);line-height:1;letter-spacing:-.045em;color:var(--navy);}
+.price-n small{font-family:var(--jp);font-size:15px;font-weight:900;letter-spacing:.02em;margin-left:7px;}
+.price-c{margin-top:15px;font-size:14px;line-height:1.95;color:var(--gray-60);max-width:24em;text-wrap:balance;}
+
+/* 実績 */
+.rank{display:inline-block;font-size:12px;font-weight:900;letter-spacing:.06em;color:var(--white);background:var(--navy);padding:3px 10px;margin-left:12px;vertical-align:2px;white-space:nowrap;}
+.rank.sub{color:var(--gray-60);background:transparent;border:1px solid var(--gray-20);}
+.opt-tag{display:inline-block;font-family:var(--en);font-size:10px;font-weight:900;letter-spacing:.16em;color:var(--navy);border:1px solid var(--navy);padding:2px 6px;margin-right:10px;vertical-align:2px;}
+.case{margin-top:44px;padding:30px 30px 34px;background:var(--gray-04);}
+.case-h{font-size:16px;font-weight:900;letter-spacing:-.01em;margin-bottom:24px;}
+.case-g{display:grid;grid-template-columns:1fr 34px 1fr 34px 1.05fr;gap:0;align-items:stretch;}
+.case-c{background:var(--white);border:1px solid var(--gray-20);padding:22px 20px 24px;}
+.case-c.mid{border-color:var(--ink);border-width:2px;}
+.case-c.goal{border:3px solid var(--navy);background:var(--tint);}
+.case-ar{display:flex;align-items:center;justify-content:center;color:var(--navy);font-size:15px;}
+.case-k{font-size:12px;font-weight:900;letter-spacing:.04em;color:var(--gray-60);}
+.case-c.goal .case-k{color:var(--navy);}
+.case-t{margin-top:12px;font-size:17px;font-weight:900;line-height:1.55;letter-spacing:-.02em;}
+.case-d{margin-top:12px;font-size:13.5px;line-height:1.85;color:var(--gray-60);text-wrap:balance;}
+.case-calc{margin-top:12px;font-size:13px;font-weight:900;color:var(--gray-60);letter-spacing:.01em;white-space:nowrap;}
+.case-n{margin-top:6px;font-family:var(--en);font-weight:900;font-size:clamp(30px,3.4vw,44px);line-height:1;letter-spacing:-.045em;color:var(--navy);}
+.case-n small{font-family:var(--jp);font-size:16px;font-weight:900;margin-left:5px;}
+.case-nb{display:block;margin-top:8px;font-size:12px;color:var(--gray-40);}
+.rev{margin-top:44px;}
+.rev-c{border:1px solid var(--gray-20);padding:26px 28px 28px;}
+.rev-c.main{border:2px solid var(--navy);background:var(--tint);padding:32px 30px 34px;}
+.rev-head{display:flex;align-items:center;gap:14px;}
+.rev-k{font-family:var(--en);font-size:13px;font-weight:900;letter-spacing:.1em;color:var(--gray-40);}
+.rev-c.main .rev-k{color:var(--navy);}
+.rev-badge{font-size:12px;font-weight:900;letter-spacing:.04em;color:var(--white);background:var(--navy);padding:3px 11px;}
+.rev-badge.sub{color:var(--gray-60);background:transparent;border:1px solid var(--gray-20);}
+.rev-plus{text-align:center;font-size:22px;font-weight:900;color:var(--gray-40);padding:14px 0;}
+.rev-t{margin-top:16px;font-size:clamp(19px,2vw,26px);font-weight:900;line-height:1.5;letter-spacing:-.025em;text-wrap:balance;}
+.rev-c.main .rev-t{font-size:clamp(22px,2.5vw,32px);}
+.rev-share{margin-top:20px;padding-top:16px;border-top:1px solid var(--gray-20);font-size:13px;line-height:1.7;color:var(--gray-60);}
+.rev-share b{display:block;margin-top:10px;color:var(--ink);font-size:15px;}
+.rev-c.main .rev-share b{color:var(--navy);font-size:19px;}
+.bar{display:block;height:9px;background:var(--gray-08);position:relative;}
+.bar::after{content:"";position:absolute;left:0;top:0;bottom:0;background:var(--navy);}
+.bar.full::after{width:100%;}
+.bar.p50::after{width:50%;}
+.bar.p10::after{width:10%;}
+.rev-d{margin-top:14px;font-size:13.5px;line-height:1.9;color:var(--gray-60);text-wrap:balance;}
+.rev-d b{color:var(--ink);}
+.rev-nb{display:block;margin-top:8px;font-size:12px;color:var(--gray-40);}
+.freepaid{margin-top:40px;display:grid;grid-template-columns:1.3fr 1fr;gap:20px;}
+.fp-col{background:var(--white);border:3px solid var(--navy);padding:26px 26px 28px;display:flex;flex-direction:column;}
+.fp-col.paid{background:var(--gray-04);border:1px solid var(--gray-20);}
+.fp-k{display:inline-block;font-size:14px;font-weight:900;letter-spacing:.04em;color:var(--white);background:var(--navy);padding:5px 14px;}
+.fp-k.paid{color:var(--gray-60);background:transparent;border:1px solid var(--gray-20);font-size:13px;padding:4px 12px;}
+.fp-t{margin-top:16px;font-size:16px;font-weight:900;line-height:1.65;color:var(--ink);text-wrap:balance;}
+.fp-col.paid .fp-t{font-size:14.5px;color:var(--gray-80);}
+.fp-big{margin-top:auto;padding-top:20px;font-size:clamp(17px,1.8vw,22px);font-weight:900;line-height:1.55;letter-spacing:-.02em;color:var(--navy);}
+.fp-sub{margin-top:auto;padding-top:20px;font-size:13px;line-height:1.85;color:var(--gray-60);}
+.fp-l{margin-top:12px;list-style:none;}
+.fp-l li{position:relative;padding-left:15px;margin-top:8px;font-size:13.5px;line-height:1.85;color:var(--gray-60);text-wrap:pretty;}
+.fp-l li::before{content:"";position:absolute;left:0;top:11px;width:6px;height:1.5px;background:var(--gray-40);}
+.fp-l li b{color:var(--ink);}
+.fp-note{margin-top:16px;font-size:13.5px;line-height:1.95;color:var(--gray-60);text-wrap:balance;}
+.fp-note b{color:var(--ink);}
+.optbox{margin-top:34px;padding:26px 28px 28px;background:var(--gray-04);}
+.optbox-h{font-size:14px;font-weight:900;letter-spacing:.01em;margin-bottom:6px;text-wrap:balance;}
+.optlist{list-style:none;margin-top:16px;}
+.optlist li{padding:14px 0;border-top:1px solid var(--gray-20);font-size:14px;line-height:1.95;color:var(--gray-60);text-wrap:balance;}
+.optlist li b{color:var(--ink);font-weight:900;}
+.optnb{display:inline-block;margin-left:6px;font-size:12.5px;color:var(--gray-40);white-space:nowrap;}
+.optnote{margin-top:16px;padding-top:14px;border-top:1px solid var(--gray-20);font-size:12.5px;line-height:1.9;color:var(--gray-40);text-wrap:balance;}
+.proof{margin-top:44px;padding:30px 32px 34px;background:var(--tint);}
+.proof-k{font-family:var(--en);font-size:10px;font-weight:900;letter-spacing:.24em;color:var(--gray-60);}
+.proof-g{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:44px;}
+.proof-n{font-family:var(--en);font-weight:900;font-size:clamp(34px,4.4vw,56px);line-height:1;letter-spacing:-.045em;color:var(--navy);}
+.proof-n small{font-family:var(--jp);font-size:19px;font-weight:900;letter-spacing:.02em;margin-left:6px;}
+.proof-d{margin-top:12px;font-size:14px;line-height:1.95;color:var(--gray-60);text-wrap:balance;}
+.proof-t{margin-top:26px;padding-top:20px;border-top:1px solid var(--gray-20);font-size:15.5px;font-weight:900;line-height:1.8;text-wrap:balance;}
+
+/* 箇条書き（MORE） */
+.mlist{margin-top:36px;list-style:none;border-top:1px solid var(--gray-20);}
+.mlist li{padding:16px 0;border-bottom:1px solid var(--gray-20);font-size:14.5px;line-height:1.9;color:var(--gray-60);text-wrap:balance;}
+.mlist li b{display:inline-block;color:var(--ink);font-weight:900;font-size:15px;margin-right:6px;}
+.mnote{margin-top:18px;font-size:12.5px;line-height:1.9;color:var(--gray-40);text-wrap:balance;}
+.more{margin-top:40px;border-top:1px solid var(--gray-20);}
+.more-i{padding:22px 0 24px;border-bottom:1px solid var(--gray-20);}
+.more-t{font-weight:900;font-size:16.5px;line-height:1.7;text-wrap:balance;}
+.more-d{margin-top:7px;font-size:14.5px;line-height:1.95;color:var(--gray-60);text-wrap:pretty;}
+
+/* FAQ */
+.faq{margin-top:36px;border-top:1px solid var(--gray-20);}
+.faq-i{padding:24px 0 26px;border-bottom:1px solid var(--gray-20);}
+.faq-q{display:grid;grid-template-columns:26px 1fr;gap:14px;font-weight:900;font-size:16px;line-height:1.7;text-wrap:balance;}
+.faq-q i{font-family:var(--en);font-style:normal;color:var(--navy);}
+.faq-a{margin-top:11px;display:grid;grid-template-columns:26px 1fr;gap:14px;font-size:14.5px;line-height:1.95;color:var(--gray-60);}
+.faq-a span{text-wrap:pretty;}
+.faq-a i{font-family:var(--en);font-style:normal;color:var(--gray-40);}
+
+/* CTA */
+.cta{padding:var(--pad-key) 0;border-top:1px solid var(--gray-08);}
+.cta-h{font-weight:900;font-size:clamp(28px,4vw,54px);line-height:1.3;letter-spacing:-.035em;text-wrap:balance;}
+.cta-d{margin-top:26px;font-size:16px;line-height:2;color:var(--gray-80);max-width:40em;}
+.cta-btn{margin-top:34px;display:inline-block;background:var(--navy);color:var(--white);text-decoration:none;font-weight:900;font-size:16px;letter-spacing:.04em;padding:20px 44px;}
+.cta-end{margin-top:56px;padding-top:30px;border-top:2px solid var(--ink);font-weight:900;font-size:clamp(22px,2.6vw,34px);line-height:1.45;letter-spacing:-.025em;text-wrap:balance;}
+.cta-end-sub{display:block;margin-top:12px;font-size:15px;font-weight:700;color:var(--gray-60);letter-spacing:0;}
+
+/* 市場データ・ストリップ */
+.strip{padding:92px 0 var(--pad);border-top:1px solid var(--gray-08);background:var(--gray-04);}
+.strip-h{font-family:var(--en);font-size:10px;font-weight:900;letter-spacing:.28em;color:var(--gray-40);margin-bottom:14px;}
+.strip-lead{font-size:clamp(17px,1.8vw,22px);font-weight:900;letter-spacing:-.02em;margin-bottom:40px;text-wrap:balance;}
+.strip-g{display:grid;grid-template-columns:repeat(5,1fr);}
+.strip-i{padding:0 22px;border-left:1px solid var(--gray-20);}
+.strip-i:first-child{padding-left:0;border-left:none;}
+.strip-n{font-family:var(--en);font-weight:900;font-size:clamp(30px,4vw,54px);line-height:1;letter-spacing:-.045em;color:var(--navy);}
+.strip-d{margin-top:14px;font-size:13px;line-height:1.85;color:var(--gray-80);text-wrap:balance;}
+.strip-s{margin-top:10px;font-size:11px;line-height:1.7;color:var(--gray-40);}
+
+footer{padding:56px 0 72px;border-top:1px solid var(--gray-20);}
+.fbar{display:flex;flex-wrap:wrap;gap:22px;justify-content:space-between;align-items:flex-start;}
+.fname{font-size:14px;font-weight:900;}
+.fnote{font-size:12px;color:var(--gray-40);line-height:1.9;max-width:52em;}
+
+.fade{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease;}
+.fade.in{opacity:1;transform:none;}
+
+@media(max-width:1100px){
+  .hero-copy{white-space:normal;}
+}
+@media(max-width:820px){
+  :root{--pad:64px;--pad-key:72px;--colgap:0px;}
+  .wrap{padding:0 20px;}
+  .grid{grid-template-columns:1fr;gap:34px;}
+  .side{position:static;}
+  .snum{font-size:42px;margin-bottom:10px;}
+  .hero-grid{grid-template-columns:1fr;gap:40px;}
+  .hero-card{position:static;}
+  .hero-flow{margin-top:44px;padding-top:30px;}
+  .hero-eyebrow{margin-bottom:24px;}
+  .he-txt{font-size:12px;}
+  .price{grid-template-columns:1fr;gap:32px;}
+  .freepaid{grid-template-columns:1fr;}
+  .case-g{grid-template-columns:1fr;}
+  .case-ar{padding:10px 0;transform:rotate(90deg);}
+
+  .keymsg{grid-template-columns:1fr;gap:20px;}
+  .keymsg-i{width:56px;height:56px;}
+  .pcbr{display:none;}
+  .proof-g{grid-template-columns:1fr;gap:26px;}
+  .chans{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:14px;padding-bottom:6px;}
+  .chan{flex:0 0 232px;}
+  .chans-cap::after{content:" （横にスクロールできます）";color:var(--gray-40);}
+  .step{grid-template-columns:56px 1fr;gap:16px;}
+  .step.key{padding-left:0;padding-right:0;background:transparent;}
+  .sui{grid-column:1/-1;margin-top:20px;}
+  .step-n{font-size:24px;}
+  .strip-g{grid-template-columns:1fr 1fr;gap:30px 0;}
+  .strip-i{padding:0 16px;}
+  .strip-i:nth-child(odd){padding-left:0;border-left:none;}
+  .hcta{display:none;}
+}
+@media(max-width:480px){
+  .st-br br{display:none;}
+  .strip-g{grid-template-columns:1fr;}
+  .strip-i{padding:0;border-left:none;border-top:1px solid var(--gray-20);padding-top:22px;}
+  .strip-i:first-child{border-top:none;padding-top:0;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap hbar">
+    <div class="hlogo">Jマッチ・エンジン <span class="hlogo-tag">OEM</span></div>
+    <a class="hcta" href="#cta">話を聞いてみる</a>
+  </div>
+</header>
+
+<!-- ===== HERO ＝ アイコン（OEM軸・ゼロベース） ===== -->
+<section class="hero">
+  <div class="wrap">
+   <div class="hero-grid">
+    <div class="hero-main">
+      <div class="hero-eyebrow">
+        <span class="he-mark">OEM ／ WHITE-LABEL</span>
+        <span class="he-txt">御社のブランドで、御社の顧客に。</span>
+      </div>
+      <h1 class="hero-copy">
+        <span class="l">御社の顧客を、</span>
+        <span class="l">手放さない仕組み。</span>
+      </h1>
+      <p class="hero-sub">御社が持つ顧客リストに、御社のロゴで配るだけ。開発もサーバーも問い合わせ対応も、当社が持ちます。顧客は毎週、<b>補助金・助成金／融資制度／税制優遇</b>の「使える制度」を受け取り、御社は<b>“毎週、役に立つ会社”</b>になります。</p>
+      <div class="hero-actions">
+        <a class="cta-btn" href="#cta">まずは話を聞いてみる</a>
+        <a class="hero-link" href="#flow">仕組みを見る ▸</a>
+      </div>
+    </div>
+
+    <aside class="hero-card" aria-label="サービス概要">
+      <div class="hc-name">
+        <b>Jマッチ・エンジン</b>
+        <span>中小企業に特化した顧客支援システム</span>
+      </div>
+      <dl class="hc-spec">
+        <div><dt>提供形態</dt><dd>OEM（ホワイトラベル）</dd></div>
+        <div><dt>御社が決めるもの</dt><dd>ロゴ・色・名称のみ</dd></div>
+        <div><dt>導入まで</dt><dd>最短1週間</dd></div>
+        <div><dt>費用</dt><dd>初期50万円＋月5万円</dd></div>
+        <div><dt>前身サービス実績</dt><dd>累計1,125社</dd></div>
+      </dl>
+    </aside>
+   </div>
+
+   <div class="hero-flow">
+     <div class="hf-k">HOW IT WORKS</div>
+     <div class="hf-t">なぜ、ニーズが生まれるのか。</div>
+     <div class="hf-fig">
+       <svg viewBox="0 0 1086 458" role="img" aria-label="御社の顧客データベースを中心に、左から補助金情報、右から対象経費になるサービス情報がLINE・Slack・メール・SMSで届いてニーズが顕在化し、御社の商材や他社商材が売れて収益になるまでの図">
+         <defs>
+           <marker id="hb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+             <path d="M0,0 L10,5 L0,10 z" fill="#0B2C5C"/>
+           </marker>
+         </defs>
+
+         <text x="0" y="26" font-size="12" font-weight="900" fill="#0B2C5C">「予算」をつくる情報</text>
+         <rect x="0" y="40" width="290" height="136" fill="none" stroke="#111111" stroke-width="2"/>
+         <text x="24" y="76" font-size="15" font-weight="900" fill="#111111">使える制度の情報</text>
+         <text x="24" y="100" font-size="12" fill="#767676">補助金・助成金／融資制度／税制優遇</text>
+         <text x="24" y="119" font-size="12" fill="#767676">国・都道府県・市区町村を24時間365日</text>
+         <g transform="translate(33,146) scale(0.5625) translate(-16,-16)"><circle cx="16" cy="16" r="16" fill="#06C755"/><path d="M16 8.6c-4.5 0-8.2 2.9-8.2 6.5 0 3.2 2.9 5.9 6.9 6.4.3.05.6.2.7.4.06.2.04.4 0 .6l-.1.7c-.04.2-.17.8.7.44 0 0 3.8-2.2 5.2-3.8 1-1 1.4-2.1 1.4-3.3 0-3.6-3.7-6.5-8.2-6.5z" fill="#FFFFFF"/></g>
+         <g transform="translate(57,146) scale(0.5625) translate(-16,-16)"><circle cx="16" cy="16" r="16" fill="#4A154B"/><path d="M12.5 9.5v13M19.5 9.5v13M9.5 13h13M9.5 19h13" stroke="#FFFFFF" stroke-width="2.2" fill="none" stroke-linecap="round"/></g>
+         <g transform="translate(81,146) scale(0.5625) translate(-16,-16)"><circle cx="16" cy="16" r="16" fill="#EA4335"/><path d="M8 12h16v9H8z" fill="#FFFFFF"/><path d="M8 12l8 5.4L24 12" fill="none" stroke="#EA4335" stroke-width="1.6"/></g>
+         <g transform="translate(105,146) scale(0.5625) translate(-16,-16)"><circle cx="16" cy="16" r="16" fill="#767676"/><path d="M9 12.5h14v8H16l-4 3v-3H9z" fill="#FFFFFF"/></g>
+         <text x="122" y="150" font-size="12" font-weight="900" fill="#0B2C5C">毎週、届く</text>
+
+         <path d="M290,108 H390" fill="none" stroke="#0B2C5C" stroke-width="4" marker-end="url(#hb)"/>
+
+         <rect x="398" y="40" width="290" height="136" fill="#0B2C5C"/>
+         <rect x="419" y="88" width="42" height="34" fill="#FFFFFF"/>
+         <ellipse cx="440" cy="122" rx="21" ry="7.5" fill="#FFFFFF"/>
+         <ellipse cx="440" cy="88" rx="21" ry="7.5" fill="#FFFFFF" stroke="#0B2C5C" stroke-width="1.6"/>
+         <text x="476" y="88" font-size="15" font-weight="900" fill="#FFFFFF">御社の顧客データベース</text>
+         <text x="476" y="112" font-size="12" fill="#C9D6E5">数千〜数万社</text>
+         <text x="476" y="132" font-size="12" fill="#C9D6E5">御社のロゴで、御社の名前で</text>
+
+         <path d="M796,108 H696" fill="none" stroke="#0B2C5C" stroke-width="4" marker-end="url(#hb)"/>
+
+         <text x="796" y="26" font-size="12" font-weight="900" fill="#0B2C5C">「使い道」をつくる情報</text>
+         <rect x="796" y="40" width="290" height="136" fill="none" stroke="#111111" stroke-width="2"/>
+         <text x="820" y="76" font-size="15" font-weight="900" fill="#111111">活用できるサービス情報</text>
+         <text x="820" y="100" font-size="12" fill="#767676">その補助金の対象経費になるもの</text>
+         <text x="820" y="119" font-size="12" fill="#767676">御社の商材／他社の商材</text>
+         <g transform="translate(829,146) scale(0.5625) translate(-16,-16)"><circle cx="16" cy="16" r="16" fill="#06C755"/><path d="M16 8.6c-4.5 0-8.2 2.9-8.2 6.5 0 3.2 2.9 5.9 6.9 6.4.3.05.6.2.7.4.06.2.04.4 0 .6l-.1.7c-.04.2-.17.8.7.44 0 0 3.8-2.2 5.2-3.8 1-1 1.4-2.1 1.4-3.3 0-3.6-3.7-6.5-8.2-6.5z" fill="#FFFFFF"/></g>
+         <g transform="translate(853,146) scale(0.5625) translate(-16,-16)"><circle cx="16" cy="16" r="16" fill="#4A154B"/><path d="M12.5 9.5v13M19.5 9.5v13M9.5 13h13M9.5 19h13" stroke="#FFFFFF" stroke-width="2.2" fill="none" stroke-linecap="round"/></g>
+         <g transform="translate(877,146) scale(0.5625) translate(-16,-16)"><circle cx="16" cy="16" r="16" fill="#EA4335"/><path d="M8 12h16v9H8z" fill="#FFFFFF"/><path d="M8 12l8 5.4L24 12" fill="none" stroke="#EA4335" stroke-width="1.6"/></g>
+         <g transform="translate(901,146) scale(0.5625) translate(-16,-16)"><circle cx="16" cy="16" r="16" fill="#767676"/><path d="M9 12.5h14v8H16l-4 3v-3H9z" fill="#FFFFFF"/></g>
+         <text x="918" y="150" font-size="12" font-weight="900" fill="#0B2C5C">同時に届く</text>
+
+         <path d="M543,176 V214" fill="none" stroke="#0B2C5C" stroke-width="4" marker-end="url(#hb)"/>
+
+         <rect x="293" y="222" width="500" height="62" fill="#F3F6FA"/>
+         <text x="543" y="253" font-size="16" font-weight="900" fill="#0B2C5C" text-anchor="middle">「これが欲しい」が、はっきりする</text>
+         <text x="543" y="274" font-size="12.5" font-weight="900" fill="#0B2C5C" text-anchor="middle">＝ ニーズが顕在化する</text>
+
+         <path d="M543,284 V322" fill="none" stroke="#0B2C5C" stroke-width="5" marker-end="url(#hb)"/>
+
+         <rect x="193" y="330" width="700" height="88" fill="none" stroke="#0B2C5C" stroke-width="3"/>
+         <text x="543" y="364" font-size="16" font-weight="900" fill="#0B2C5C" text-anchor="middle">売れる ── そして、御社の収益になる</text>
+         <text x="310" y="396" font-size="12.5" fill="#3A3A3A" text-anchor="middle">御社の商材 → 売上</text>
+         <text x="543" y="396" font-size="12.5" fill="#3A3A3A" text-anchor="middle">他社商材 → マージン</text>
+         <text x="776" y="396" font-size="12.5" fill="#3A3A3A" text-anchor="middle">月額3,000円 → 半分が御社</text>
+
+         <text x="0" y="448" font-size="12" fill="#767676">補助金が「予算」を、サービス情報が「使い道」を持ってきます。片方だけでは動きません。両方そろった瞬間に、はじめて顧客は動きます。</text>
+       </svg>
+     </div>
+   </div>
+  </div>
+</section>
+
+<!-- ===== 01 意義 ===== -->
+<section class="s">
+  <div class="wrap grid">
+    <div class="side">
+      <div class="snum">01</div>
+      <div class="tick"></div>
+      <div class="slabel">WHAT THIS IS</div>
+      <h2 class="stitle st-br">取引先のままか、<br>頼られる相手になるか。</h2>
+      <p class="snote">顧客をすでに持つ会社に向けた話です。</p>
+    </div>
+    <div>
+      <div class="keymsg fade">
+        <svg class="keymsg-i" viewBox="0 0 72 72" aria-hidden="true">
+          <circle cx="36" cy="36" r="34" fill="none" stroke="#0B2C5C" stroke-width="1"/>
+          <path d="M36 14a22 22 0 1 1-19.05 11" fill="none" stroke="#0B2C5C" stroke-width="3.6" stroke-linecap="round"/>
+          <circle cx="36" cy="36" r="7.5" fill="#0B2C5C"/>
+        </svg>
+        <p class="keymsg-t">これは補助金の配信システムでは<br class="pcbr">ありません。<em>御社が、顧客に選ばれ続ける<br class="pcbr">ための仕組み</em>です。</p>
+      </div>
+      <p class="body fade">手放さない、と言っても、囲い込むわけではありません。顧客の側が離れなくなる——それが狙いです。名簿は、こちらから連絡したときにしか動きません。そして連絡する理由は、たいてい売りたいときにしか生まれない。だから連絡するほど距離が開き、リストは静かに古くなっていきます。</p>
+      <p class="body fade">Jマッチ・エンジンを配ると、顧客は毎週、自社が使える制度——補助金・助成金、融資、税制優遇——を受け取り続けます。売り込みではないので、嫌われません。年に一度しか会わなかった相手にとって、御社は<b>「毎週、役に立つことを教えてくれる会社」</b>に変わります。</p>
+      <p class="body fade">そのうえで、顧客が本当に何かを買う段になったとき、いちばん近くにいるのは御社です。<em><span class="mk">最後に感謝されるのは、御社になります。</span></em></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 02 仕組み（1カラム＝山場） ===== -->
+<section class="flow" id="flow">
+  <div class="wrap">
+    <div class="fade">
+      <div class="snum">02</div>
+      <div class="tick"></div>
+      <div class="slabel">HOW IT WORKS</div>
+      <h2 class="flow-title">買う理由と、買うタイミングを、<br>同時に作る。</h2>
+      <div class="keymsg fade km-wide">
+        <svg class="keymsg-i" viewBox="0 0 72 72" aria-hidden="true">
+          <circle cx="36" cy="36" r="34" fill="none" stroke="#0B2C5C" stroke-width="1"/>
+          <circle cx="27" cy="36" r="15" fill="none" stroke="#0B2C5C" stroke-width="2.4"/>
+          <circle cx="45" cy="36" r="15" fill="none" stroke="#0B2C5C" stroke-width="2.4"/>
+          <path d="M36 24a15 15 0 0 1 0 24 15 15 0 0 1 0-24z" fill="#0B2C5C"/>
+        </svg>
+        <p class="keymsg-t">補助金は「今は予算がない」を消します。そのうえで、顧客が前もって「欲しい」と言っていたものを、いちばん買いやすい瞬間に出す。<em>これをAIが全自動で回します。</em></p>
+      </div>
+    </div>
+
+    <div class="steps fade">
+      <div class="step">
+        <div class="step-n">01</div>
+        <div>
+          <div class="step-t">顧客が、御社ブランドのページから登録する</div>
+          <div class="step-d">ロゴも配色も名称も御社のもの。顧客から見れば御社のサービスです。自社のURLを入れるだけで、業種・規模・事業内容をAIが読み取ります。長い入力で脱落させません。無料なので、断る理由もありません。</div>
+        </div>
+          <div class="sui">
+            <div class="sui-chrome">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="sui-url">marugin-bank.jp/jmatch</span>
+            </div>
+            <div class="sui-app">
+              <div class="sui-nav"><span class="sui-brand">◯◯銀行</span><span class="sui-menu"></span><span class="sui-menu"></span></div>
+              <div class="sui-body">
+                <div class="sui-h">無料ではじめる</div>
+                <div class="sui-lb">自社のホームページURL</div>
+                <div class="sui-field">https://example.co.jp</div>
+                <div class="sui-btn">登録する（無料）</div>
+                <div class="sui-note">入力は、これだけ</div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="step key">
+        <div class="step-n">02</div>
+        <div>
+          <div class="step-t">「欲しいもの・必要なもの」を登録してもらう</div>
+          <div class="step-d">設備、システム、人材、車両、店舗改装。いま買えなくて構いません。<b><span class="mk">ここが、この仕組みのすべてです。</span></b>顧客は自分のために書き、御社はそれを提案の材料として受け取ります。</div>
+        </div>
+          <div class="sui">
+            <div class="sui-chrome">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="sui-url">marugin-bank.jp/jmatch/needs</span>
+            </div>
+            <div class="sui-app">
+              <div class="sui-nav"><span class="sui-brand">◯◯銀行</span><span class="sui-menu"></span><span class="sui-menu"></span></div>
+              <div class="sui-body">
+                <div class="sui-h">欲しいもの・必要なもの</div>
+                <div class="sui-ck on">設備・機械</div>
+                <div class="sui-ck on">業務システム</div>
+                <div class="sui-ck">人材採用</div>
+                <div class="sui-ck on">店舗改装</div>
+                <div class="sui-note">いま買えなくて構いません</div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="step">
+        <div class="step-n">03</div>
+        <div>
+          <div class="step-t">毎週、使える制度が届く</div>
+          <div class="step-d">届くのは<b>補助金・助成金、融資制度、そして税制優遇</b>の3種類。「もらえる」「借りられる」「軽くなる」を、まとめて渡します。見張るのは人ではなく24時間365日動き続けるAIです。国と自治体で毎週どこかの公募が開き、どこかが締め切られます。全部を人が追うのは不可能です。</div>
+
+        </div>
+          <div class="sui">
+            <div class="sui-chrome">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="sui-url">marugin-bank.jp/jmatch/weekly</span>
+            </div>
+            <div class="sui-app">
+              <div class="sui-nav"><span class="sui-brand">◯◯銀行</span><span class="sui-menu"></span><span class="sui-menu"></span></div>
+              <div class="sui-body">
+                <div class="sui-h">今週の該当：3件</div>
+                <div class="sui-row"><span class="sui-tag">補助金</span>設備導入を支援する制度</div>
+                <div class="sui-row"><span class="sui-tag">融資</span>設備資金の低利融資</div>
+                <div class="sui-row"><span class="sui-tag">税制</span>設備投資の税額控除</div>
+                <div class="sui-note">毎週、自動で届く</div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="step key">
+        <div class="step-n">04</div>
+        <div>
+          <div class="step-t">該当したとき、御社の商材情報が同時に届く</div>
+          <div class="step-d">「この補助金が使えます」と「その対象経費に、これが使えます」が一通で届きます。売り込みではなく、<b>使い道の提案</b>として。<span class="mk">顧客が自分で「欲しい」と書いたものが、いちばん買いやすい瞬間に戻ってくる</span>——これが全自動で回り続けます。</div>
+        </div>
+          <div class="sui">
+            <div class="sui-chrome">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="sui-url">marugin-bank.jp/jmatch/detail</span>
+            </div>
+            <div class="sui-app">
+              <div class="sui-nav"><span class="sui-brand">◯◯銀行</span><span class="sui-menu"></span><span class="sui-menu"></span></div>
+              <div class="sui-body">
+                <div class="sui-h">この制度が使えます</div>
+                <div class="sui-row"><span class="sui-tag">補助金</span>設備導入を支援する制度</div>
+                <div class="sui-arrow">対象経費に使えます</div>
+                <div class="sui-card"><b>御社の商材</b><span>お見積りはこちら</span></div>
+                <div class="sui-note">同じ一通で、同時に届く</div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="step">
+        <div class="step-n">05</div>
+        <div>
+          <div class="step-t">動いた顧客が、御社に見える</div>
+          <div class="step-d">「申請を検討する」を押した顧客は、御社の管理画面に届きます。<b>いつ・どの顧客が・どの補助金で動いたか</b>が分かるので、営業はそこだけを追えば足ります。リスト全体に電話をかける必要はありません。</div>
+        </div>
+          <div class="sui">
+            <div class="sui-chrome">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="sui-url">marugin-bank.jp/jmatch/admin</span>
+            </div>
+            <div class="sui-app">
+              <div class="sui-nav"><span class="sui-brand">◯◯銀行</span><span class="sui-menu"></span><span class="sui-menu"></span></div>
+              <div class="sui-body">
+                <div class="sui-h">管理画面｜顧客の動き</div>
+                <div class="sui-tr hit"><span>株式会社△△</span><em>申請を検討</em></div>
+                <div class="sui-tr"><span>◇◇工業</span><em>閲覧のみ</em></div>
+                <div class="sui-tr"><span>□□商事</span><em>閲覧のみ</em></div>
+                <div class="sui-note">動いた顧客だけ追えば足ります</div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="chans-wrap fade">
+      <div class="chans-h">届け先は、顧客が選びます</div>
+      <div class="chans">
+            <div class="chan">
+              <div class="chan-h line">LINE</div>
+              <div class="chan-b line">
+                <div class="ch-top">
+                  <svg class="ch-av" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#06C755"/><path d="M16 8.6c-4.5 0-8.2 2.9-8.2 6.5 0 3.2 2.9 5.9 6.9 6.4.3.05.6.2.7.4.06.2.04.4 0 .6l-.1.7c-.04.2-.17.8.7.44 0 0 3.8-2.2 5.2-3.8 1-1 1.4-2.1 1.4-3.3 0-3.6-3.7-6.5-8.2-6.5z" fill="#FFFFFF"/></svg>
+                  <span>◯◯銀行</span>
+                </div>
+                <div class="bub">
+                  <b>今週の該当：3件</b>
+                  <p>御社が使えそうな補助金が見つかりました。</p>
+                  <p class="ch-link">▸ 一覧を見る</p>
+                </div>
+                <div class="ch-time">9:00</div>
+              </div>
+            </div>
+            <div class="chan">
+              <div class="chan-h slack">SLACK</div>
+              <div class="chan-b slack">
+                <div class="ch-top"># 補助金</div>
+                <div class="sl-msg">
+                  <div class="sl-av"></div>
+                  <div>
+                    <div class="sl-name">◯◯銀行 <span>9:00</span></div>
+                    <b>今週の該当：3件</b>
+                    <p>御社が使えそうな補助金が見つかりました。</p>
+                    <p class="ch-link">▸ 一覧を見る</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="chan">
+              <div class="chan-h mail">EMAIL</div>
+              <div class="chan-b mail">
+                <div class="ch-top">
+                  <svg class="ch-av" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#EA4335"/><path d="M8 12h16v9H8z" fill="#FFFFFF"/><path d="M8 12l8 5.4L24 12" fill="none" stroke="#EA4335" stroke-width="1.6"/></svg>
+                  <span>◯◯銀行</span>
+                </div>
+                <div class="ml-row"><span>件名</span>【該当3件】御社が使える制度</div>
+                <p>今週、御社が使えそうな補助金が3件見つかりました。</p>
+                <p class="ch-link">▸ 一覧を見る</p>
+              </div>
+            </div>
+            <div class="chan">
+              <div class="chan-h sms">SMS</div>
+              <div class="chan-b sms">
+                <div class="ch-top">
+                  <svg class="ch-av" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#767676"/><path d="M9 12.5h14v8H16l-4 3v-3H9z" fill="#FFFFFF"/></svg>
+                  <span>0◯◯-◯◯◯-◯◯◯◯</span>
+                </div>
+                <div class="bub sq">
+                  <p>【今週の該当3件】詳細はこちら</p>
+                  <p class="ch-link">▸ リンク</p>
+                </div>
+                <div class="ch-time">9:00</div>
+              </div>
+            </div>
+          </div>
+      <p class="chans-cap">専用アプリを開かせないことが、続く条件です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03 収益 ===== -->
+<section class="s">
+  <div class="wrap grid">
+    <div class="side">
+      <div class="snum">03</div>
+      <div class="tick"></div>
+      <div class="slabel">REVENUE</div>
+      <h2 class="stitle">顧客が動くほど、<br>御社に返る。</h2>
+      <p class="snote">配って終わり、にはしません。</p>
+    </div>
+    <div>
+      <div class="keymsg fade">
+        <svg class="keymsg-i" viewBox="0 0 72 72" aria-hidden="true">
+          <circle cx="36" cy="36" r="34" fill="none" stroke="#0B2C5C" stroke-width="1"/>
+          <path d="M13 24h20" fill="none" stroke="#0B2C5C" stroke-width="2" stroke-linecap="round"/>
+          <path d="M13 36h20" fill="none" stroke="#0B2C5C" stroke-width="3.8" stroke-linecap="round"/>
+          <path d="M13 48h20" fill="none" stroke="#0B2C5C" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="46" cy="36" r="10" fill="#0B2C5C"/>
+        </svg>
+        <p class="keymsg-t">収益は3本。<em>本命は、御社の商材が売れること</em>です。上から順に、大きい収益です。</p>
+      </div>
+
+      <div class="rev fade">
+        <div class="rev-c main">
+          <div class="rev-head">
+            <div class="rev-k">01</div>
+            <div class="rev-badge">本命</div>
+          </div>
+          <div class="rev-t">御社の商材が売れる</div>
+          <p class="rev-d">補助金という予算が立った瞬間に提案が届くので、<b>「今は予算がない」で止まりません。</b></p>
+          <div class="rev-share"><span class="bar full"></span><b>売上は、100%御社のもの</b></div>
+        </div>
+
+        <div class="rev-plus">＋</div>
+
+        <div class="rev-c">
+          <div class="rev-head">
+            <div class="rev-k">02</div>
+            <div class="rev-badge sub">2番目</div>
+          </div>
+          <div class="rev-t">他社商材のマージン</div>
+          <p class="rev-d">御社の本業以外も扱えます。並べる商材は御社が選び、承認したものだけが顧客に届きます。</p>
+          <div class="rev-share"><span class="bar p10"></span><b>売れた金額の10%程度</b><span class="rev-nb">※料率は商材ごとに設定します</span></div>
+        </div>
+
+        <div class="rev-plus">＋</div>
+
+        <div class="rev-c">
+          <div class="rev-head">
+            <div class="rev-k">03</div>
+            <div class="rev-badge sub">3番目</div>
+          </div>
+          <div class="rev-t">顧客の月額の半分</div>
+          <p class="rev-d">正直、金額は小さいです。<b>ほとんどの顧客は無料のまま満足します。</b></p>
+          <div class="rev-share"><span class="bar p50"></span><b>3,000円のうち1,500円</b></div>
+        </div>
+      </div>
+
+      <div class="case fade">
+        <div class="case-h">たとえば、1,000社の顧客がいるとして。</div>
+        <div class="case-g">
+          <div class="case-c">
+            <div class="case-k">これまで</div>
+            <p class="case-t">フォローできるのは、<br>ごく一部だけ</p>
+            <p class="case-d">残りには連絡する理由もなく、静かに離れていく。</p>
+          </div>
+          <div class="case-ar">▶</div>
+          <div class="case-c mid">
+            <div class="case-k">導入後</div>
+            <p class="case-t">1,000社すべてに、<br>毎週届き続ける</p>
+            <p class="case-d">営業の手は、一切かかりません。</p>
+          </div>
+          <div class="case-ar">▶</div>
+          <div class="case-c goal">
+            <div class="case-k">1年に3社、受注できれば</div>
+            <p class="case-calc">単価100万円 × 3社</p>
+            <p class="case-n">300<small>万円</small></p>
+            <p class="case-d">まるごと御社の売上です。<span class="case-nb">※1,000社のうち0.3%。単価は御社の商材によります</span></p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="dgm fade">
+        <svg viewBox="0 0 940 250" role="img" aria-label="顧客が欲しいものを登録し、補助金の対象経費として御社商材・他社商材が提案され、御社に売上とマージンと月額の半分が入る図">
+          <defs>
+            <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0B2C5C"/></marker>
+            <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#A8A8A8"/></marker>
+          </defs>
+          <rect x="0" y="74" width="210" height="96" fill="none" stroke="#111111" stroke-width="2"/>
+          <text x="22" y="112" font-size="15" font-weight="900" fill="#111111">顧客</text>
+          <text x="22" y="136" font-size="12" fill="#767676">欲しいものを登録済み</text>
+          <text x="22" y="156" font-size="12" fill="#767676">補助金で予算が立つ</text>
+
+          <path d="M210,122 H286" fill="none" stroke="#0B2C5C" stroke-width="5" marker-end="url(#ar)"/>
+          <text x="216" y="110" font-size="11.5" font-weight="900" fill="#0B2C5C">対象経費への提案</text>
+
+          <rect x="294" y="52" width="230" height="64" fill="#F3F6FA"/>
+          <text x="314" y="80" font-size="14" font-weight="900" fill="#0B2C5C">御社の商材</text>
+          <text x="314" y="100" font-size="11.5" fill="#0B2C5C">売上はまるごと御社へ</text>
+
+          <rect x="294" y="128" width="230" height="64" fill="none" stroke="#D9D9D9"/>
+          <text x="314" y="156" font-size="14" font-weight="900" fill="#767676">他社商材</text>
+          <text x="314" y="176" font-size="11.5" fill="#767676">ライトアップのAI等</text>
+
+          <path d="M524,84 H600" fill="none" stroke="#0B2C5C" stroke-width="5" marker-end="url(#ar)"/>
+          <path d="M524,160 H600" fill="none" stroke="#A8A8A8" stroke-width="2" marker-end="url(#ag)"/>
+
+          <rect x="608" y="52" width="230" height="140" fill="none" stroke="#0B2C5C" stroke-width="2"/>
+          <text x="630" y="84" font-size="15" font-weight="900" fill="#0B2C5C">御社の収益</text>
+          <text x="630" y="112" font-size="12" fill="#3A3A3A">01 商材の売上</text>
+          <text x="630" y="136" font-size="12" fill="#3A3A3A">02 他社商材のマージン</text>
+          <text x="630" y="160" font-size="12" fill="#3A3A3A">03 月額1,500円 ／ 社</text>
+
+          <line x1="0" y1="216" x2="940" y2="216" stroke="#D9D9D9" stroke-width="1"/>
+        </svg>
+      </div>
+
+      <div class="freepaid fade">
+        <div class="fp-col">
+          <div class="fp-k">顧客は、無料</div>
+          <p class="fp-t">ここまで全部、1円もかかりません</p>
+          <ul class="fp-l">
+            <li>毎週、使える制度が届く（補助金・融資・税制優遇）</li>
+            <li>自社が対象になりそうな制度が分かる</li>
+            <li>対象経費に使える商材の提案が見られる</li>
+            <li>申請の進め方と、相談先の案内</li>
+          </ul>
+          <p class="fp-big">ほとんどの顧客は、<br>ここで満足します。</p>
+        </div>
+        <div class="fp-col paid">
+          <div class="fp-k paid">＋ 月額3,000円</div>
+          <p class="fp-t">本気で申請を取りにいく顧客だけ</p>
+          <ul class="fp-l">
+            <li><b>事業計画書のたたきをダウンロードできる</b></li>
+            <li>顧問の税理士・社労士へ渡す依頼書の生成</li>
+            <li>申請にあたっての注意点のアドバイス</li>
+          </ul>
+          <p class="fp-sub">オプションのようなものです。<br>そのうち1,500円が御社の収益に。</p>
+        </div>
+      </div>
+      <p class="fp-note fade"><b>お金を払わせることが目的ではありません。</b>Jマッチ・エンジンは、顧客に喜ばれるためのナーチャリングツールです。無料のままでも顧客は毎週価値を受け取り、御社に感謝します。<b>収益は、その結果としてついてきます。</b></p>
+
+
+      <p class="body fade">ひとつ、はっきりさせておきます。<b>ある商材がその補助金の対象経費になるかどうかの最終判断は、制度の事務局が行います。</b>当社とAIができるのは「対象になり得る」候補を示すところまでです。御社の営業が顧客に断言しないよう、この線は最初にお伝えしています。</p>
+      <p class="body fade">顧客が月額3,000円を払う理由も、はっきりしています。<b>過去の採択事例をもとにした事業計画のたたきをAIが作り、申請にあたっての注意点を教えます。</b>申請する段になれば、顧問の税理士・社労士へ渡す依頼書が自動で生成されます。頼む相手がいない顧客には、登録している士業へ直接おつなぎします。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04 導入 ===== -->
+<section class="s">
+  <div class="wrap grid">
+    <div class="side">
+      <div class="snum">04</div>
+      <div class="tick"></div>
+      <div class="slabel">ONBOARDING</div>
+      <h2 class="stitle st-br">御社がやるのは、<br>配ることだけ。</h2>
+      <p class="snote">開発・サーバー・問い合わせ対応、そして配布の道具まで当社が持ちます。</p>
+    </div>
+    <div>
+      <div class="keymsg fade">
+        <svg class="keymsg-i" viewBox="0 0 72 72" aria-hidden="true">
+          <circle cx="36" cy="36" r="34" fill="none" stroke="#0B2C5C" stroke-width="1"/>
+          <rect x="17" y="17" width="38" height="38" fill="none" stroke="#0B2C5C" stroke-width="2.4"/>
+          <rect x="17" y="17" width="13" height="13" fill="#0B2C5C"/>
+        </svg>
+        <p class="keymsg-t">打ち合わせは<em>1回</em>。そこで不明点が解消できれば、<b>契約締結後</b><em>最短1週間</em>で御社のサービスとして立ち上がります。稟議に必要な資料は、こちらで用意します。</p>
+      </div>
+
+      <div class="rows fade">
+        <div class="row">
+          <div class="row-n">01</div>
+          <div>
+            <div class="row-t"><svg class="row-i" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="#0B2C5C" stroke-width="1.6"/><path d="M12 17h16M12 23h10" stroke="#0B2C5C" stroke-width="2.2" stroke-linecap="round"/></svg>当社担当と1回、打ち合わせをする</div>
+            <div class="row-d">聞きたいことを全部聞いてください。この場で判断できる状態にして帰ります。</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-n">02</div>
+          <div>
+            <div class="row-t"><svg class="row-i" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="#0B2C5C" stroke-width="1.6"/><rect x="11" y="11" width="18" height="18" fill="none" stroke="#0B2C5C" stroke-width="2"/><rect x="11" y="11" width="7" height="7" fill="#0B2C5C"/></svg>御社が決めるのは、ロゴ・メインカラー・名称</div>
+            <div class="row-d">それ以外の設定はすべて当社側で行います。開発も、サーバーの用意も、<span class="mk">御社側の作業はありません。</span></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-n">03</div>
+          <div>
+            <div class="row-t"><svg class="row-i" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="#0B2C5C" stroke-width="1.6"/><path d="M11 14h18v13H11z" fill="none" stroke="#0B2C5C" stroke-width="2"/><path d="M11 14l9 7 9-7" fill="none" stroke="#0B2C5C" stroke-width="2"/></svg>配るための道具も、こちらで用意します</div>
+            <div class="row-d">正直に言えば、この取り組みでいちばん手間がかかるのは「配る」ところです。<b>案内メールの文面、チラシ、営業が使う説明トーク、登録用のQRコード。すべて当社が用意します。</b>既存の顧客リストへ一斉に案内するところから始められます。<em>御社にお願いするのは、送ることだけです。</em></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-n">04</div>
+          <div>
+            <div class="row-t"><svg class="row-i" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="#0B2C5C" stroke-width="1.6"/><path d="M11 14h18v11h-9l-5 4v-4h-4z" fill="none" stroke="#0B2C5C" stroke-width="2" stroke-linejoin="round"/></svg>顧客からの問い合わせは、AIスタッフが受ける</div>
+            <div class="row-d">当社が開発したAIスタッフが基本対応します。配った後に御社の人員が取られる、ということが起きません。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="price fade">
+        <div>
+          <div class="price-k">INITIAL</div>
+          <div class="price-n">500,000<small>円</small></div>
+          <p class="price-c">初期費用。導入時のみ。</p>
+        </div>
+        <div>
+          <div class="price-k">MONTHLY</div>
+          <div class="price-n">50,000<small>円／月</small></div>
+          <p class="price-c">AI利用料・システム利用料。配布数や登録数によって変わりません。</p>
+        </div>
+      </div>
+      <div class="optbox fade">
+        <div class="optbox-h"><span class="opt-tag">OPTION</span>月額50,000円〜で追加できる3機能</div>
+        <ul class="optlist">
+          <li><b>顧客カルテの自動生成</b>　名刺リストをスプレッドシートで連携すると、AIが顧客一社ごとのカルテを作ります。業種・地域・規模から、使えそうな制度まで。</li>
+          <li><b>定期メールニュースの配信</b>　カルテをもとに、その会社に合う制度情報を毎月まとめて配信します。御社の名前とロゴで、原稿はこちらが用意します。<span class="optnb">※メール配信のみ</span></li>
+          <li><b>自社情報の発信とアンケート</b>　施工事例、セミナー案内、新サービスの告知。満足度調査やニーズ調査も同じ経路で送れます。</li>
+        </ul>
+        <p class="optnote">3つまとめて月額50,000円〜。提供時期と詳細は、打ち合わせの際にご案内します。</p>
+      </div>
+
+      <div class="proof fade">
+        <div class="proof-k">TRACK RECORD ／ J-System</div>
+        <div class="proof-g">
+          <div>
+            <div class="proof-n">1,125<small>社</small></div>
+            <p class="proof-d">前段にあたるサービス「J-System」の累計導入社数。</p>
+          </div>
+          <div>
+            <div class="proof-n">100<small>以上</small></div>
+            <p class="proof-d">うち自治体・地銀という、最も審査の固い領域での導入数。現在も数十の自治体で稼働しています。</p>
+          </div>
+        </div>
+        <p class="proof-t">Jマッチ・エンジンは、この J-System の上位版にあたります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 05 その他機能 ===== -->
+<section class="s">
+  <div class="wrap grid">
+    <div class="side">
+      <div class="snum">05</div>
+      <div class="tick"></div>
+      <div class="slabel">MORE</div>
+      <h2 class="stitle">制度の、一歩先を渡す。</h2>
+      <p class="snote">配るだけのサービスと、ここで差がつきます。</p>
+    </div>
+    <div>
+      <p class="lead fade">届けるのは、公募情報だけではありません。<em>来年どうなるか</em>を先に渡します。</p>
+      <ul class="mlist fade">
+        <li><b>自治体の類似施策レポート</b>　東京都をはじめ、自治体独自の支援策をAIが横断で拾います。</li>
+        <li><b>予算・補正予算・骨太の方針の解説</b>　発表時点で、中小企業に関係する部分だけを抜き出します。</li>
+        <li><b>同業・同規模の採択事例</b>　「自社と似た会社が去年これを買った」が分かります。</li>
+        <li><b>月1回のアンケート</b>　集めた声は、省庁や国会議員へ届け、施策検討の材料にしてもらいます（回答は任意）。</li>
+        <li><b>オンライン勉強会</b>　御社の名前で顧客向けに開催できます。</li>
+      </ul>
+      <p class="mnote fade">※アンケートの共有は、個社が特定されない形に加工して行います。詳細は打ち合わせの際にご説明します。</p>
+  </div>
+</section>
+
+<!-- ===== 06 FAQ ===== -->
+<section class="s">
+  <div class="wrap grid">
+    <div class="side">
+      <div class="snum">06</div>
+      <div class="tick"></div>
+      <div class="slabel">FAQ</div>
+      <h2 class="stitle">導入前の、確認事項。</h2>
+    </div>
+    <div>
+      <div class="faq fade">
+        <div class="faq-i">
+          <div class="faq-q"><i>Q</i><span>同じエリアの他社にも提供しますか。</span></div>
+          <div class="faq-a"><i>A</i><span>エリアの扱いは、打ち合わせの場で確定させます。同一商圏での競合を避けたい場合は、その旨をお伝えください。ご要望に応じて、提供範囲を限定した契約も検討します。</span></div>
+        </div>
+        <div class="faq-i">
+          <div class="faq-q"><i>Q</i><span>顧客のデータは、誰のものになりますか。</span></div>
+          <div class="faq-a"><i>A</i><span>御社が獲得した顧客は、御社の顧客です。当社が御社の顧客へ直接営業することはありません。取り扱いは契約書に明記します。</span></div>
+        </div>
+        <div class="faq-i">
+          <div class="faq-q"><i>Q</i><span>他社商材が並ぶのは、当社の顧客を取られませんか。</span></div>
+          <div class="faq-a"><i>A</i><span>並べる商材は御社が選び、承認したものだけが表示されます。本業と競合するものは外せます。当社から御社の顧客へ直接営業することはなく、接点は常に御社の名前とロゴのもとにあります。</span></div>
+        </div>
+        <div class="faq-i">
+          <div class="faq-q"><i>Q</i><span>解約したら、顧客はどうなりますか。</span></div>
+          <div class="faq-a"><i>A</i><span>配信は停止します。会員データの引き渡しと消去の条件は、契約時に取り決めます。</span></div>
+        </div>
+        <div class="faq-i">
+          <div class="faq-q"><i>Q</i><span>最低契約期間はありますか。途中でやめられますか。</span></div>
+          <div class="faq-a"><i>A</i><span>最低契約期間と解約予告期間は、打ち合わせの場で明示します。合わないと判断されたときに抜けられない契約にはしません。</span></div>
+        </div>
+        <div class="faq-i">
+          <div class="faq-q"><i>Q</i><span>顧客からの問い合わせは、誰が受けますか。</span></div>
+          <div class="faq-a"><i>A</i><span>当社が開発したAIスタッフが基本対応します。AIで解決しないものは当社が引き取ります。御社の人員は取られません。</span></div>
+        </div>
+        <div class="faq-i">
+          <div class="faq-q"><i>Q</i><span>補助金の申請代行はしてもらえますか。</span></div>
+          <div class="faq-a"><i>A</i><span>行いません。当社が提供するのは情報と計画のたたきまでで、申請書類の作成代行は有資格者の領域です。顧問の士業へ渡す依頼書を生成するか、登録士業へおつなぎします。</span></div>
+        </div>
+        <div class="faq-i">
+          <div class="faq-q"><i>Q</i><span>売る商材がなくても使えますか。</span></div>
+          <div class="faq-a"><i>A</i><span>使えます。その場合の収益は、他社商材のマージンと月額の半分になります。顧客との接点維持だけを目的に導入されるケースもあります。</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 07 CTA ===== -->
+<section class="cta" id="cta">
+  <div class="wrap grid">
+    <div class="side">
+      <div class="snum">07</div>
+      <div class="tick"></div>
+      <div class="slabel">NEXT</div>
+    </div>
+    <div>
+      <h2 class="cta-h fade st-br">1回の打ち合わせで、<br>判断できるようにします。</h2>
+      <p class="cta-d fade">御社の顧客数に対してどれだけの登録が見込めるか（J-Systemでの実測値をお見せします）。どの商材を「欲しいもの」の候補に置くか。初月に何をするか。ここまでをその場で一緒に決めます。<b>持ち帰って検討する材料がないまま終わらせません。</b>そのうえで、合わなければ断ってください。</p>
+      <a class="cta-btn fade" href="#cta">まずは話を聞いてみる</a>
+      <p class="cta-end fade">売り込まないほうが、<span class="hit">売れる</span>。<br><span class="cta-end-sub">その仕組みを、御社のブランドで。</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 市場データ ===== -->
+<section class="strip">
+  <div class="wrap">
+    <div class="strip-h">MARKET DATA</div>
+    <p class="strip-lead">この市場が、御社の顧客リストの先に広がっています。</p>
+    <div class="strip-g">
+      <div class="strip-i">
+        <div class="strip-n">336<small style="font-family:var(--jp);font-size:17px;margin-left:4px;">万者</small></div>
+        <p class="strip-d">日本の中小企業の数。これが、届けるべき相手の母数です。</p>
+        <p class="strip-s">中小企業庁「中小企業・小規模事業者の数」（2021年6月時点）</p>
+      </div>
+      <div class="strip-i">
+        <div class="strip-n">99.7<small style="font-family:var(--jp);font-size:17px;margin-left:2px;">%</small></div>
+        <p class="strip-d">日本の企業に占める中小企業の割合。従業者数では69.7%を占めます。</p>
+        <p class="strip-s">中小企業庁「2024年版 中小企業白書」</p>
+      </div>
+      <div class="strip-i">
+        <div class="strip-n">46.8<small style="font-family:var(--jp);font-size:17px;margin-left:2px;">%</small></div>
+        <p class="strip-d">国・都道府県・市町村が交付する補助金・助成金の認知度。半分に届いていません。</p>
+        <p class="strip-s">経済産業省「中小企業者における中小企業施策の認知度及び利用度の向上に向けた課題と広報のあり方に関するニーズ調査報告書」（平成29年度）</p>
+      </div>
+      <div class="strip-i">
+        <div class="strip-n">4.3<small style="font-family:var(--jp);font-size:17px;margin-left:4px;">万者</small></div>
+        <p class="strip-d">中小企業が1年あたりに減っている数。接点がない相手から、静かに消えていきます。</p>
+        <p class="strip-s">中小企業庁（2016年6月〜2021年6月の推移より）</p>
+      </div>
+      <div class="strip-i">
+        <div class="strip-n">26.7<small style="font-family:var(--jp);font-size:17px;margin-left:2px;">%</small></div>
+        <p class="strip-d">日本の生成AI利用経験率。米国68.8%、中国81.2%との差が、そのまま伸びしろです。</p>
+        <p class="strip-s">総務省「令和7年版 情報通信白書」（2024年度調査）</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap fbar">
+    <div class="fname">株式会社ライトアップ ／ Jマッチ・エンジン</div>
+    <div class="fnote">
+      補助金・助成金は審査を伴う制度であり、採択・受給を保証するものではありません。制度の条件および対象経費は年度ごとに変わります。<br>
+      申請書類の作成代行は行いません。掲載の金額は税別表記です。
+    </div>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.08});
+document.querySelectorAll('.fade').forEach(e=>io.observe(e));
+</script>
+</body>
+</html>
+
