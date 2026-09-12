@@ -161,10 +161,6 @@ header .w{ display:flex; align-items:center; justify-content:space-between; heig
   letter-spacing:.06em; }
 .tgs{ display:flex; gap:6px; align-items:center; }
 .tg{ font-size:12.5px; font-weight:900; letter-spacing:.01em; padding:4px 11px; white-space:nowrap; }
-.tg-free{ background:var(--ac); color:#fff; }
-.tg-light{ background:#fff; color:var(--ac); box-shadow:inset 0 0 0 1.5px var(--ac); }
-.tg-std{ background:var(--bk); color:#fff; }
-.tg-dev{ background:var(--ln2); color:var(--g2); font-weight:700; }
 .fvt{ font-weight:900; font-size:1.02rem; line-height:1.62; letter-spacing:-.012em; margin:0 0 10px; }
 .fvd{ font-size:13.5px; color:var(--g1); line-height:1.85; margin:0; }
 
@@ -198,7 +194,6 @@ section{ padding:118px 0; border-top:1px solid var(--ln); }
 .body p{ margin:0 0 1.35em; color:var(--g1); }
 .body p:last-child{ margin-bottom:0; }
 .body strong{ color:var(--bk); font-weight:700; }
-.dev{ font-size:13px; color:var(--g2); line-height:1.8; }
 
 /* 図の見出しと結論 */
 .fig{ margin:34px 0 0; }
@@ -229,7 +224,6 @@ section{ padding:118px 0; border-top:1px solid var(--ln); }
 .fn{ font-family:"Inter",sans-serif; font-weight:900; font-size:26px; color:var(--acm); line-height:1; letter-spacing:-.03em; }
 .ft{ font-weight:900; font-size:1.12rem; letter-spacing:-.015em; line-height:1.6; margin:0 0 10px; }
 .fd{ font-size:14.5px; color:var(--g1); line-height:1.95; margin:0; }
-.fdev{ font-size:12.5px; color:var(--g2); margin:10px 0 0; }
 .ui{ border:1px solid var(--ln); background:#fff; }
 .uib{ display:flex; align-items:center; gap:8px; padding:8px 12px; background:var(--pa);
   border-bottom:1px solid var(--ln); font-family:"Inter",sans-serif; font-size:12px; color:var(--g2); }
@@ -255,11 +249,6 @@ section{ padding:118px 0; border-top:1px solid var(--ln); }
 .ph h2{ font-weight:900; letter-spacing:-.03em; line-height:1.4; margin:20px 0 20px;
   font-size:clamp(1.6rem,3.4vw,2.6rem); }
 .ph p{ color:var(--g1); margin:0; font-size:15.5px; line-height:2; }
-.avail{ background:#fff; border-left:3px solid var(--ac); padding:22px 24px; margin:0 0 44px;
-  box-shadow:0 1px 2px rgba(11,44,92,.06), 0 8px 24px -8px rgba(11,44,92,.14); }
-.avail p{ margin:0 0 .8em; font-size:14.5px; color:var(--g1); line-height:1.9; }
-.avail p:last-child{ margin:0; }
-.avail strong{ color:var(--ac); }
 
 .plans{ display:grid; gap:20px; align-items:stretch; }
 @media (min-width:680px){ .plans{ grid-template-columns:1fr 1fr; } }
@@ -342,7 +331,7 @@ section{ padding:118px 0; border-top:1px solid var(--ln); }
 .sth{ font-size:15px; color:var(--g1); margin:0 0 40px; }
 .sg{ display:grid; border-top:2px solid var(--bk); }
 @media (min-width:560px){ .sg{ grid-template-columns:1fr 1fr; } }
-@media (min-width:1000px){ .sg{ grid-template-columns:repeat(5,1fr); } }
+@media (min-width:1000px){ .sg{ grid-template-columns:repeat(4,1fr); } }
 .sc{ padding:26px 20px 24px; border-right:1px solid var(--ln); border-bottom:1px solid var(--ln); }
 .sn{ font-family:"Inter",sans-serif; font-weight:900; font-size:clamp(1.9rem,3.6vw,3.1rem);
   line-height:1; letter-spacing:-.05em; color:var(--ac); }
@@ -413,6 +402,151 @@ footer .note{ color:var(--g2); }
 .steps.plain li{ grid-template-columns:1fr; }
 .steps.plain li::before{ content:none; display:none; }
 .steps li > b, .steps li > p{ grid-column:2; }
+
+/* ══ タイポグラフィ：全体を一段大きく ══ */
+body{ font-size:17px; }
+.body p:not([class]){ font-size:16.5px; line-height:2.0; }
+.body .rd{ font-size:clamp(1.2rem,1.9vw,1.62rem); line-height:1.75; }
+.hero .sub{ font-size:17px; line-height:2.05; }
+.fvt{ font-size:1.16rem; }
+.fvd{ font-size:15.5px; line-height:1.95; }
+.agt{ font-size:1.06rem; }
+.agq{ font-size:14.5px; }
+.memo{ font-size:14.5px; }
+.figc{ font-size:14.5px; }
+.figs{ font-size:13.5px; }
+.steps b{ font-size:16.5px; }
+.steps p{ font-size:14.5px; }
+.qa .q{ font-size:16.5px; }
+.qa .t{ font-size:15.5px; line-height:2.0; }
+.pd{ font-size:16px; }
+.pl ul li{ font-size:15.5px; }
+.plfoot{ font-size:14.5px; }
+.camp b{ font-size:clamp(16px,2.5vw,20px); }
+.camp span{ font-size:14px; }
+.ctanote{ font-size:14px; }
+.cta{ font-size:16px; padding:19px 36px; }
+.caution{ font-size:14.5px; }
+.res .rn{ font-size:15.5px; }
+.res .rd{ font-size:14px; }
+.res .rm{ font-size:13.5px; }
+.cmp{ font-size:15px; }
+.pnote{ font-size:14.5px; }
+footer .note{ font-size:13px; }
+
+/* ══ 図版の枠 ══ */
+.fig{ margin:34px 0 0; }
+.figt{ font-weight:900; font-size:15px; margin:0 0 14px; letter-spacing:.01em; color:var(--g2); }
+.figt em{ font-style:normal; color:var(--bk); }
+.figbox{ border:1px solid var(--ln); padding:26px 24px; background:#fff; }
+@media (max-width:600px){ .figbox{ padding:20px 16px; } }
+
+/* FIG.1 タイムライン */
+.tl-sec + .tl-sec{ margin-top:24px; padding-top:22px; border-top:1px solid var(--ln2); }
+.tl-k{ font-family:var(--en); font-size:12px; font-weight:900; letter-spacing:.2em; color:var(--g2); }
+.tl-sec.on .tl-k{ color:var(--ac); }
+.tl-r{ display:grid; grid-template-columns:78px 1fr; gap:14px; align-items:center; margin-top:12px; }
+.tl-l{ font-size:13px; color:var(--g2); }
+.tl-t{ position:relative; height:18px; background:var(--ln2); }
+.tl-b{ position:absolute; top:0; bottom:0; left:calc(var(--s) * 1%); width:calc(var(--w) * 1%); background:var(--g3); }
+.tl-sec.on .tl-b{ background:var(--ac); }
+.tl-b.mid{ background:var(--acm); }
+.tl-m{ position:absolute; top:-10px; bottom:-10px; width:2px; background:var(--bk); left:calc(var(--x) * 1%); }
+.tl-sec.on .tl-m{ background:var(--ac); }
+.tl-c{ margin-top:14px; font-size:13px; font-weight:700; }
+.tl-sec.on .tl-c{ color:var(--ac); }
+.tl-ax{ display:flex; justify-content:space-between; margin-top:18px; padding-top:12px; border-top:1px solid var(--ln); font-size:12.5px; color:var(--g2); }
+
+/* FIG.2 横フロー */
+.fw{ display:grid; grid-template-columns:1fr 30px 1fr 30px 1fr; align-items:stretch; }
+.fwb{ border:1px solid var(--ac); padding:18px 16px; background:#fff; }
+.fwb.dark{ background:var(--bk); border-color:var(--bk); }
+.fwb.tint{ background:var(--acl); }
+.fwb .k{ font-family:var(--en); font-size:12px; font-weight:900; letter-spacing:.14em; color:var(--ac); margin:0 0 8px; }
+.fwb.dark .k{ color:#9fb3cd; }
+.fwb .h{ font-size:15px; font-weight:900; margin:0 0 6px; line-height:1.55; }
+.fwb.dark .h{ color:#fff; }
+.fwb .d{ font-size:13.5px; color:var(--g1); margin:0; line-height:1.8; }
+.fwb.dark .d{ color:var(--g3); }
+.fwa{ position:relative; }
+.fwa::before{ content:""; position:absolute; top:50%; left:3px; right:3px; height:1.5px; background:var(--bk); }
+.fwa::after{ content:""; position:absolute; top:50%; right:4px; width:8px; height:8px; border-top:1.5px solid var(--bk); border-right:1.5px solid var(--bk); transform:translateY(-50%) rotate(45deg); }
+@media (max-width:760px){
+  .fw{ grid-template-columns:1fr; }
+  .fwa{ height:30px; }
+  .fwa::before{ top:3px; bottom:3px; left:50%; right:auto; width:1.5px; height:auto; }
+  .fwa::after{ top:auto; bottom:4px; right:auto; left:50%; transform:translateX(-50%) rotate(135deg); }
+}
+.fwnote{ margin-top:16px; border:1px solid var(--acm); background:var(--acl); padding:12px 16px; font-size:13.5px; font-weight:700; color:var(--ac); }
+
+/* FIG.3 INPUT / OUTPUT */
+.io{ display:grid; grid-template-columns:minmax(0,260px) 34px minmax(0,1fr); align-items:center; gap:0; }
+.io-k{ font-family:var(--en); font-size:12px; font-weight:900; letter-spacing:.18em; color:var(--ac); margin:0 0 10px; }
+.io-in{ border:1px solid var(--ac); background:var(--acl); padding:18px 16px; }
+.io-in .h{ font-size:14.5px; font-weight:900; color:var(--ac); margin:0 0 12px; }
+.io-bars{ display:grid; gap:7px; margin-bottom:12px; }
+.io-bars i{ display:block; height:11px; background:var(--ac); }
+.io-in .d{ font-size:12.5px; color:var(--ac); margin:0; line-height:1.7; }
+.io-arm{ position:relative; height:100%; min-height:120px; }
+.io-arm::before{ content:""; position:absolute; left:50%; top:12%; bottom:12%; width:1.5px; background:var(--bk); }
+.io-arm::after{ content:""; position:absolute; left:2px; right:2px; top:50%; height:1.5px; background:var(--bk); }
+.io-out{ display:grid; gap:12px; }
+.io-out div{ background:var(--bk); color:#fff; padding:15px 18px; font-size:14.5px; font-weight:700; position:relative; }
+.io-out div::before{ content:""; position:absolute; left:-12px; top:50%; width:8px; height:8px; border-top:1.5px solid var(--bk); border-right:1.5px solid var(--bk); transform:translateY(-50%) rotate(45deg); }
+@media (max-width:760px){
+  .io{ grid-template-columns:1fr; }
+  .io-arm{ min-height:28px; height:28px; }
+  .io-arm::before{ left:50%; top:2px; bottom:2px; }
+  .io-arm::after{ display:none; }
+  .io-out div::before{ display:none; }
+}
+.io-side{ margin-top:14px; font-size:13px; color:var(--g2); line-height:1.8; }
+
+/* FIG.4 担当範囲 */
+.rg-h{ display:grid; grid-template-columns:repeat(4,1fr); font-size:12.5px; font-weight:700; color:var(--g2); text-align:center; border-bottom:1.5px solid var(--bk); padding-bottom:10px; }
+.rg-r{ margin-top:18px; }
+.rg-t{ display:flex; flex-wrap:wrap; gap:8px 14px; align-items:baseline; margin-bottom:8px; }
+.rg-n{ font-family:var(--en); font-size:12.5px; font-weight:900; letter-spacing:.14em; }
+.rg-p{ font-size:13.5px; font-weight:900; margin-left:auto; }
+.rg-bar{ position:relative; height:26px; background:var(--ln2); }
+.rg-bar i{ position:absolute; top:0; bottom:0; left:0; width:calc(var(--w) * 1%); background:var(--ac); }
+.rg-bar b{ position:absolute; top:0; bottom:0; left:calc(var(--s) * 1%); width:calc(var(--w) * 1%); background:repeating-linear-gradient(45deg,var(--ac),var(--ac) 3px,#fff 3px,#fff 7px); box-shadow:inset 0 0 0 1.5px var(--ac); }
+.rg-g{ position:absolute; inset:0; display:grid; grid-template-columns:repeat(4,1fr); pointer-events:none; }
+.rg-g span{ border-right:1px solid #fff; }
+.rg-g span:last-child{ border-right:none; }
+.rg-note{ margin-top:16px; font-size:13px; color:var(--g2); }
+
+/* FIG.5 線引き */
+.ln2{ display:grid; grid-template-columns:1.6fr 1fr; }
+.ln2 div{ padding:20px 20px; }
+.ln2 .us{ background:var(--acl); border:1.5px solid var(--ac); }
+.ln2 .pro{ background:var(--bk); border:1.5px solid var(--bk); }
+.ln2 .h{ font-size:15px; font-weight:900; margin:0 0 8px; }
+.ln2 .us .h{ color:var(--ac); }
+.ln2 .pro .h{ color:#fff; }
+.ln2 .d{ font-size:13.5px; margin:0; line-height:1.8; }
+.ln2 .us .d{ color:var(--g1); }
+.ln2 .pro .d{ color:var(--g3); }
+.strip .sc{ border-right:1px solid var(--ln); }
+@media (min-width:1000px){ .strip .sc:nth-child(4n){ border-right:none; } }
+.strip .sth{ font-size:15.5px; max-width:46em; }
+.campbox{ margin-top:30px; border:2px solid var(--ac); background:var(--acl); padding:30px 30px 26px; }
+.campbox-h{ font-size:clamp(17px,2.6vw,22px); font-weight:900; color:var(--ac); line-height:1.6; margin:0 0 12px; }
+.campbox-d{ font-size:15.5px; color:var(--g1); margin:0 0 4px; line-height:1.95; }
+.campbox .steps{ border-top-color:var(--acm); }
+.campbox .steps li{ border-bottom-color:var(--acm); }
+.campbox .caution{ border-left-color:var(--ac); }
+@media (max-width:600px){ .campbox{ padding:22px 18px 20px; } }
+.fvi{ color:var(--acm); display:block; margin-bottom:14px; }
+.fvh{ display:block; }
+
+/* カードは3枚。お手本は5枚用の5カラムなので上書きする */
+@media (min-width:1000px){ .fv{ grid-template-columns:repeat(3,1fr) !important; gap:22px !important; } }
+@media (max-width:999px){ .fv{ grid-template-columns:1fr !important; gap:16px !important; } }
+.fvc{ padding:26px 26px 24px; }
+.fvleg{ font-size:15px; max-width:52em; }
+@media (max-width:700px){ .ln2{ grid-template-columns:1fr; } }
+
 .steps.plain li > b, .steps.plain li > p{ grid-column:1; }
 /* 注記（.nt は「しないこと」用の3カラムgridなので別に用意する） */
 .memo{ font-size:13.5px; color:var(--g2); line-height:1.9; }
@@ -420,9 +554,9 @@ footer .note{ color:var(--g2); }
 .body .memo{ color:var(--g2); }
 
 .todo{ display:none; }
-@media (max-width:640px){ .hero h1{ font-size:clamp(1.25rem,5.6vw,1.95rem) !important; } }
 /* 2カラム時の見出しは、左カラム318pxに収まる上限で頭打ちにする */
-.hero h1{ font-size:clamp(1.25rem,4.6vw,3.35rem) !important; }
+.hero h1{ font-size:clamp(1.72rem,4.6vw,3.35rem) !important; }
+@media (max-width:345px){ .hero h1{ font-size:1.45rem !important; } }
 @media (min-width:900px){ .side h2{ font-size:clamp(1.15rem,2.0vw,1.5rem) !important; } }
 @media (max-width:640px){ .hcta{ display:none !important; } }
 /* 主力プランカード（濃紺地）の中のCTAは白抜きにする */
@@ -447,14 +581,14 @@ footer .note{ color:var(--g2); }
   <div>
     <span class="chip">SUBSIDY ／ FINANCE ／ AI</span><span class="chipn">初期登録費用10万円＋月額3万円</span>
     <h1>使える制度を見逃さない。<br>見つけたら、<em>すぐ書ける</em>。</h1>
-    <p class="sub">補助金・融資・税制優遇の情報収集から、AIとの対話による事業計画づくりまで。短い申請期間にも対応できる会社へ。</p>
+    <p class="sub">所在地・業種・従業員数など<b>8項目</b>を入れると、使えそうな制度の候補と締切、対象経費が出ます。あとはAIの質問に答えるだけで、事業計画書の土台ができます。</p>
     <div class="camp">
       <b>今月10社限定。導入事例へのご協力で、初期登録費用10万円が無料</b>
       <span>無料になるのは初期登録費用のみです。月額30,000円（税別）は契約開始後に発生します。</span>
     </div>
     <div class="hbtn">
       <a class="cta" href="https://www.writeup.jp/contact/">初期費用0円で導入を相談する</a>
-      <a class="cta gh" href="#diag">診断の画面イメージを見る ▸</a>
+      <a class="cta gh" href="#diag">8項目を入れた結果を見る ▸</a>
     </div>
     <p class="ctanote">月額30,000円・税別／事例協力企業が対象</p>
   </div>
@@ -578,16 +712,50 @@ footer .note{ color:var(--g2); }
     <p>年間を通じて多数の制度や募集情報が発表されます。そのすべてを片手間で追い続けるのは難しく、しかも公募期間が数週間という制度もあります。気づいたときには受付が終わっている、ということが起こります。</p>
     <p>制度は毎年入れ替わります。名前が変わり、要件が変わり、去年使えたものが今年は消えています。だから「調べようと思った時点ではもう遅い」が起きます。必要なのは、継続的な情報収集と、事業計画の事前準備の2つです。</p>
 
-    <div class="strip">
-      <div class="sg">
-        <div class="ss"><p class="stt">38.7<span>%</span></p><p class="sd2">申請に進めない理由の最多は「自社に最適な補助金が分からない」。</p><p class="sc">民間調査／btobee（2026年6月実施、中小企業の経営者・役員300人。事前調査3,000人からの抽出）</p></div>
-        <div class="ss"><p class="stt">81.1<span>%</span></p><p class="sd2">補助金の活用に関心がありながら、申請手続きに至っていない経営層の割合。</p><p class="sc">民間調査／btobee（2026年6月実施、中小企業の経営者・役員300人。事前調査3,000人からの抽出）</p></div>
-        <div class="ss"><p class="stt">約2<span>割</span></p><p class="sd2">経営計画を策定していると回答した小規模事業者の割合。策定に取り組んでいる事業者は少数にとどまる。</p><p class="sc">中小企業庁「2026年版 小規模企業白書」第2-1-53図</p></div>
-        <div class="ss"><p class="stt">47.2<span>%</span></p><p class="sd2">小規模事業者持続化補助金 第19回の採択率。16,576件の申請に対し採択は7,819件。</p><p class="sc">中小企業庁 2026年7月29日発表</p></div>
+    <div class="fig">
+      <p class="figt">FIG.1　<em>同じ3つの制度を、いつ知るか</em></p>
+      <div class="figbox">
+        <div class="tl-sec">
+          <p class="tl-k">WITHOUT</p>
+          <div class="tl-r"><span class="tl-l">国の制度</span><span class="tl-t"><i class="tl-b" style="--s:0;--w:47"></i><i class="tl-m" style="--x:77"></i></span></div>
+          <div class="tl-r"><span class="tl-l">都道府県</span><span class="tl-t"><i class="tl-b" style="--s:17;--w:43"></i><i class="tl-m" style="--x:77"></i></span></div>
+          <div class="tl-r"><span class="tl-l">市区町村</span><span class="tl-t"><i class="tl-b mid" style="--s:36;--w:47"></i><i class="tl-m" style="--x:77"></i></span></div>
+          <p class="tl-c">縦線が、調べ始めた日。上の2つは、その時点で受付が終わっています。</p>
+        </div>
+        <div class="tl-sec on">
+          <p class="tl-k">WITH</p>
+          <div class="tl-r"><span class="tl-l">国の制度</span><span class="tl-t"><i class="tl-b" style="--s:0;--w:47"></i><i class="tl-m" style="--x:4"></i></span></div>
+          <div class="tl-r"><span class="tl-l">都道府県</span><span class="tl-t"><i class="tl-b" style="--s:17;--w:43"></i><i class="tl-m" style="--x:4"></i></span></div>
+          <div class="tl-r"><span class="tl-l">市区町村</span><span class="tl-t"><i class="tl-b" style="--s:36;--w:47"></i><i class="tl-m" style="--x:4"></i></span></div>
+          <p class="tl-c">継続的に届くと、3つとも準備期間が残ります。</p>
+        </div>
+        <div class="tl-ax"><span>いま</span><span>数か月後</span></div>
       </div>
+      <p class="figc">知る時点が違うだけで、出せる数が変わります。灰色は、気づいたときには締切が過ぎている制度です。</p>
+      <p class="figs">帯の長さは公募期間のイメージで、特定の制度の日数を示すものではありません。</p>
     </div>
+
   </div>
 </div></section>
+
+<!-- ══ 市場データ（全幅） ══ -->
+<section class="strip"><div class="w">
+  <p class="sth">公的統計と調査で確認できる、「届かない」「書けない」、そして出しても半分は通らないという現状です。</p>
+  <div class="sg">
+    <div class="sc"><p class="sn">38.7<i>%</i></p><p class="sd2">申請に進めない理由の最多は「自社に最適な補助金が分からない」。</p><p class="ss">民間調査／btobee（2026年6月実施、中小企業の経営者・役員300人。事前調査3,000人からの抽出）</p></div>
+    <div class="sc"><p class="sn">81.1<i>%</i></p><p class="sd2">補助金の活用に関心がありながら、申請手続きに至っていない経営層の割合。</p><p class="ss">民間調査／btobee（2026年6月実施、中小企業の経営者・役員300人。事前調査3,000人からの抽出）</p></div>
+    <div class="sc"><p class="sn">約2<i>割</i></p><p class="sd2">経営計画を策定していると回答した小規模事業者の割合。</p><p class="ss">中小企業庁「2026年版 小規模企業白書」第2-1-53図</p></div>
+    <div class="sc"><p class="sn">47.2<i>%</i></p><p class="sd2">小規模事業者持続化補助金 第19回の採択率。16,576件の申請に対し採択は7,819件。</p><p class="ss">中小企業庁 2026年7月29日発表</p></div>
+  </div>
+</div></section>
+
+
+<!-- ══ 山場 ══ -->
+<div class="peak"><div class="w">
+  <p class="big"><span>見つからない。</span><span>書けない。</span></p>
+  <div class="rule"></div>
+  <p class="after">詰まるところは、この2つです。使える制度があることを知らないまま締切が過ぎている。運よく見つけても、今度は<b>白紙の「事業計画」という欄を、埋められない。</b>月額30,000円は、この2つを同時に外すためのものです。</p>
+</div></div>
 
 <!-- ══ 03 3つの価値 ══ -->
 <div class="five" id="value"><div class="w">
@@ -597,22 +765,24 @@ footer .note{ color:var(--g2); }
   <div class="fv">
 
     <div class="fvc">
-      <div class="fvh"><span class="fvn">01</span></div>
+      <div class="fvh"><svg class="fvi" width="30" height="30" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="1.5" y="4.5" width="17" height="11"/><path d="M1.5 5.5l8.5 6 8.5-6"/></svg><span class="fvn">01</span></div>
       <p class="fvt">自社に合う制度情報が、自動的に届く</p>
-      <p class="fvd">補助金、融資、税制優遇を継続的に確認します。国だけでなく、都道府県や市区町村の制度も対象です。御社が対象になりそうなものを抽出し、制度名、概要、締切、対象経費を確認できます。必要になってから探すのではなく、使える可能性がある段階で把握できるので、情報収集の時間が減り、締め切られていたという事態を減らせます。</p>
+      <p class="fvd">補助金・融資・税制優遇を、国と都道府県と市区町村から継続的に確認します。御社が対象になりそうなものだけを抽出し、制度名・概要・締切・対象経費が分かります。</p>
+      <p class="fvd" style="color:var(--g2)">必要になってから探すのではなく、使える可能性がある段階で把握できます。</p>
     </div>
 
     <div class="fvc">
-      <div class="fvh"><span class="fvn">02</span></div>
+      <div class="fvh"><svg class="fvi" width="30" height="30" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="4" y="1.5" width="12" height="17"/><path d="M7 6.5h6M7 10h6M7 13.5h4"/></svg><span class="fvn">02</span></div>
       <p class="fvt">実際の事例と、専門家の解説から学べる</p>
-      <p class="fvd">過去に採択された事業計画書の事例、参考になる申請書や事業計画書の見本、制度の背景や審査の考え方を説明した動画、専門家による書き方の解説資料。自社の事業計画を作るときの参考になり、顧問の税理士・行政書士・社会保険労務士へ相談するときに渡せる整理資料にもなります。</p>
-      <p class="fvd" style="color:var(--g2)">掲載する事例は、一般公開されている資料、掲載許諾を得た資料、企業を特定できないよう匿名加工した資料に限ります。</p>
+      <p class="fvd">採択された事業計画書の事例、申請書の見本、審査の考え方を説明した動画、専門家による書き方の解説資料。白紙から考えずに済みます。</p>
+      <p class="fvd" style="color:var(--g2)">掲載する事例は、一般公開・掲載許諾済み・匿名加工済みの資料に限ります。</p>
     </div>
 
     <div class="fvc">
-      <div class="fvh"><span class="fvn">03</span></div>
+      <div class="fvh"><svg class="fvi" width="30" height="30" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="1.5" y="3.5" width="5" height="5"/><rect x="7.5" y="3.5" width="5" height="5"/><rect x="13.5" y="3.5" width="5" height="5"/><rect x="1.5" y="11.5" width="5" height="5"/><rect x="7.5" y="11.5" width="5" height="5"/><rect x="13.5" y="11.5" width="5" height="5"/></svg><span class="fvn">03</span></div>
       <p class="fvt">AIとの対話で、事業計画書の土台を作れる</p>
-      <p class="fvd">Claude CodeをベースにしたAIエージェントが、順番に質問します。白紙の申請書を一から書くのではなく、質問に答えることで自社の事業計画を整理します。作れるのは、補助金用の事業計画書の土台、融資相談で使う事業計画の土台、強み・顧客ニーズ・市場環境の整理、実施計画とスケジュール、売上効果や投資効果の計算、専門家へ依頼するための整理資料です。</p>
+      <p class="fvd">Claude CodeをベースにしたAIが順番に質問します。答えるだけで、補助金の事業計画書と融資資料の土台、強み・顧客・市場の整理、実施計画、投資効果の計算までが形になります。</p>
+      <p class="fvd" style="color:var(--g2)">白紙を渡しません。答えられる問いだけが出ます。</p>
     </div>
 
   </div>
@@ -644,7 +814,35 @@ footer .note{ color:var(--g2); }
       <div class="agc"><span class="agn">Q</span><p class="agt">市場や顧客に、どのような変化が起きていますか</p><p class="agq">→ 市場環境の整理へ</p></div>
     </div>
 
-    <p class="mock" style="margin-top:24px">画面イメージ</p>
+
+    <div class="fig">
+      <p class="figt">FIG.2　<em>会社の情報を入れて、AIと話すと、土台が出てくる</em></p>
+      <div class="figbox">
+        <div class="fw">
+          <div class="fwb">
+            <p class="k">INPUT</p>
+            <p class="h">公募要領と、会社の事実</p>
+            <p class="d">出したい制度が決まっていれば公募要領を登録。決まっていなければAIが最新の公募情報を検索します。</p>
+          </div>
+          <div class="fwa"></div>
+          <div class="fwb tint">
+            <p class="k">DIALOGUE</p>
+            <p class="h">AIからの問いに答える</p>
+            <p class="d">白紙の欄ではなく、答えられる問いが順番に出ます。足りない答えは聞き直されます。</p>
+          </div>
+          <div class="fwa"></div>
+          <div class="fwb dark">
+            <p class="k">OUTPUT</p>
+            <p class="h">事業計画書と融資資料の土台</p>
+            <p class="d">答えた分だけ埋まり、どこが空いているかが常に見えます。</p>
+          </div>
+        </div>
+        <p class="fwnote">エージェントの中身（スキル）は毎月更新され、制度の改定や書き方の変化に追随します。</p>
+      </div>
+      <p class="figc">御社が用意するのは、公募要領と、聞かれたことへの答えだけです。</p>
+    </div>
+
+    <p class="mock" style="margin-top:30px">画面イメージ</p>
     <div class="ui">
       <div class="uib"><span class="uid"></span><span class="uid"></span><span>AIエージェント</span></div>
       <div class="uic">
@@ -659,35 +857,48 @@ footer .note{ color:var(--g2); }
   </div>
 </div></section>
 
-<!-- ══ 05 再利用 ══ -->
+<!-- ══ 05 再利用＋残るもの ══ -->
 <section id="reuse"><div class="w two">
   <div class="side">
     <span class="snum">05</span><span class="slab">REUSE</span>
-    <h2>一度作った計画は、<br><em>使い捨てではない</em>。</h2>
-    <p class="memo">聞かれることは、制度が変わっても大きくは変わりません。だから、書いたものが残ります。</p>
+    <h2>通らなくても、<br><em>書いたものは残ります</em>。</h2>
+    <p class="memo">聞かれることは制度が変わっても大きくは変わりません。だから成果物が残り、作る力も残ります。</p>
   </div>
   <div class="body">
-    <p class="rd lead">同じ土台から、<br>行き先を変えられます。</p>
-    <ul class="steps plain">
-      <li><b>今年の補助金</b><p>いま出したい制度の事業計画書として使います。</p></li>
-      <li><b>翌年度の、別の補助金</b><p>制度ごとの様式と審査項目への書き足しは必要ですが、作り直しにはなりません。</p></li>
-      <li><b>設備投資の融資相談</b><p>補助金で聞かれることと、銀行で聞かれることは、多くが重なります。</p></li>
-      <li><b>新規事業計画／金融機関との面談</b><p>面談で必ず聞かれる「なぜその投資なのか」に、同じ土台で答えられます。</p></li>
-      <li><b>社内の経営計画／専門家への相談資料</b><p>顧問の先生に渡す整理資料として、そのまま使えます。</p></li>
-    </ul>
-    <p class="memo" style="margin-top:16px">補助金は、多くの制度で事業を実施したあとの精算払いです。先に支払う分の資金は、自己資金か借入でご用意いただくことになります。支払いの時期や条件は制度ごとに異なりますので、公募要領・交付要領をご確認ください。</p>
-  </div>
-</div></section>
+    <p class="rd lead">同じ土台から行き先を変えられて、<br>作る力が会社に残ります。</p>
 
-<!-- ══ 06 残るもの ══ -->
-<section id="remains"><div class="w two">
-  <div class="side">
-    <span class="snum">06</span><span class="slab">WHAT REMAINS</span>
-    <h2>もし採択されなくても、<br>会社に<em>残るもの</em>があります。</h2>
-  </div>
-  <div class="body">
-    <p class="rd lead">補助金や融資の結果は、<br>保証できません。</p>
-    <p>審査するのは制度の実施機関と金融機関であり、私たちではありません。それでも、次の4つは会社に残ります。</p>
+    <div class="fig" style="margin-top:26px">
+      <p class="figt">FIG.3　<em>一度書いた内容が、行き先を変える</em></p>
+      <div class="figbox">
+        <div class="io">
+          <div>
+            <p class="io-k">INPUT</p>
+            <div class="io-in">
+              <p class="h">AIとの対話で書いた、自社の計画</p>
+              <div class="io-bars"><i style="width:92%"></i><i style="width:71%"></i><i style="width:100%"></i><i style="width:80%"></i><i style="width:95%"></i><i style="width:61%"></i></div>
+              <p class="d">企業概要・顧客・市場・強み・やること・効果</p>
+            </div>
+          </div>
+          <div class="io-arm" aria-hidden="true"></div>
+          <div>
+            <p class="io-k">OUTPUT</p>
+            <div class="io-out">
+              <div>今年の補助金の事業計画書</div>
+              <div>翌年度の、別の制度</div>
+              <div>設備投資の融資相談・金融機関に出す資料</div>
+              <div>新規事業計画／社内の経営計画／専門家への相談資料</div>
+            </div>
+          </div>
+        </div>
+        <p class="io-side">制度ごとの様式と、審査項目に合わせた書き足しは、そのたびに必要になります。</p>
+      </div>
+      <p class="figc">制度ごとに書き足しは要りますが、作り直しにはなりません。今年の応募に通らなくても、書いたものは残ります。</p>
+    </div>
+
+    <p class="memo" style="margin-top:16px">補助金は、多くの制度で事業を実施したあとの精算払いです。先に支払う分の資金は、自己資金か借入でご用意いただくことになります。支払いの時期や条件は制度ごとに異なりますので、公募要領・交付要領をご確認ください。</p>
+
+    <p class="rd lead" style="margin-top:46px">補助金や融資の結果は、<br>保証できません。</p>
+<p>審査するのは制度の実施機関と金融機関であり、私たちではありません。それでも、次の4つは会社に残ります。</p>
     <ul class="steps">
       <li><b>自社で事業計画を作る力</b><p>何を聞かれ、どう答えれば伝わるのかが分かります。</p></li>
       <li><b>自社の強みを言語化する力</b><p>「選ばれた理由」を、事実として説明できるようになります。</p></li>
@@ -700,10 +911,10 @@ footer .note{ color:var(--g2); }
   </div>
 </div></section>
 
-<!-- ══ 07 料金 ══ -->
+<!-- ══ 06 料金＋キャンペーン ══ -->
 <section id="price" class="pricesec"><div class="w">
   <div class="ph">
-    <span class="snum">07</span><span class="slab">PRICE</span>
+    <span class="snum">06</span><span class="slab">PRICE</span>
     <h2>初期登録費用10万円＋<br>月額3万円。<br><em>成功報酬なし</em>。</h2>
     <p>この1本です。使う量や採択の有無で追加の費用はいただきません。</p>
   </div>
@@ -734,19 +945,10 @@ footer .note{ color:var(--g2); }
     </div>
   </div>
 
-  <p class="pnote" style="margin-top:20px">金額はすべて税別です。最低利用期間、解約の条件、返金の取り扱い、お預かりする情報の範囲と保存・削除・外部送信の有無は、ご契約前に書面でご提示します。</p>
-</div></section>
-
-<!-- ══ 08 キャンペーン ══ -->
-<section id="campaign"><div class="w two">
-  <div class="side">
-    <span class="snum">08</span><span class="slab">CAMPAIGN</span>
-    <h2>今月10社限定。<br>初期費用<em>10万円が無料</em>。</h2>
-  </div>
-  <div class="body">
-    <p class="rd lead">導入事例へのご協力が、<br>条件です。</p>
-    <p>通常の初期登録費用は100,000円（税別）です。今月の事例協力企業10社について、この初期登録費用を無料にします。</p>
-    <ul class="steps">
+  <div class="campbox">
+    <p class="campbox-h">今月10社限定。導入事例へのご協力で、初期登録費用10万円が無料</p>
+    <p class="campbox-d">通常の初期登録費用は100,000円（税別）です。今月の事例協力企業10社について、この初期登録費用を無料にします。</p>
+<ul class="steps">
       <li><b>利用後の感想をお聞かせいただく</b><p>使ってみてどうだったかを、率直に教えてください。</p></li>
       <li><b>簡単なインタビューにご協力いただく</b><p>お時間は短くて構いません。</p></li>
       <li><b>利用状況や改善要望をお聞かせいただく</b><p>どこで詰まったかが、いちばん役に立ちます。</p></li>
@@ -755,29 +957,71 @@ footer .note{ color:var(--g2); }
     <div class="caution" style="margin-top:20px">
       無料になるのは初期登録費用のみです。月額30,000円は契約開始後に発生します。料金はすべて税別です。会社名や担当者名、写真の公開範囲は個別に確認します。事例は御社の確認を得てから公開します。
     </div>
-    <div class="hbtn" style="margin-top:22px"><a class="cta" href="https://www.writeup.jp/contact/">初期費用0円で導入を相談する</a></div>
-    <!-- TODO(公開前): 「今月10社限定」は、申込数を実際に管理し10社で終了できる運用が前提。管理できない場合は人数表示をやめ「期間限定」へ差し替える。 -->
+  </div>
+  <!-- TODO(公開前): 「今月10社限定」は、申込数を実際に管理し10社で終了できる運用が前提。管理できない場合は人数表示をやめ「期間限定」へ差し替える。 -->
+  <p class="pnote" style="margin-top:24px">金額はすべて税別です。最低利用期間、解約の条件、返金の取り扱い、お預かりする情報の範囲と保存・削除・外部送信の有無は、ご契約前に書面でご提示します。</p>
+</div></section>
+
+<!-- ══ 07 利用開始までの流れ ══ -->
+<section id="flow"><div class="w two">
+  <div class="side">
+    <span class="snum">07</span><span class="slab">FLOW</span>
+    <h2>使いはじめるまでの、<br><em>6つ</em>の手順。</h2>
+  </div>
+  <div class="body">
+    <ul class="steps">
+      <li><b>お申し込み・ヒアリング</b><p>いま検討している投資、採用や賃上げの予定、これから始めたい事業を伺います。</p></li>
+      <li><b>会社情報の初期登録</b><p>所在地、業種、従業員数、売上規模などを登録します。ここまでが初期登録費用の範囲です。</p></li>
+      <li><b>Jシステム AIエディションで制度を確認</b><p>合いそうな制度の候補と、締切、対象経費を確認します。</p></li>
+      <li><b>採択事例・解説動画・AIエージェントの利用開始</b><p>事例と解説で考え方をつかみ、AIとの対話を始めます。</p></li>
+      <li><b>制度が見つかったら事業計画を作成</b><p>質問に答えて土台を作り、公募要領の様式に合わせて仕上げます。</p></li>
+      <li><b>必要に応じて士業へ相談</b><p>書類の作成そのものが必要になったら、提携士業への依頼をご案内します。</p></li>
+    </ul>
   </div>
 </div></section>
 
-<!-- ══ 09 士業依頼プラン ══ -->
+<!-- ══ 08 士業依頼プラン ══ -->
 <section id="advisory"><div class="w two">
   <div class="side">
-    <span class="snum">09</span><span class="slab">ADVISORY</span>
+    <span class="snum">08</span><span class="slab">ADVISORY</span>
     <h2>時間がない場合は、<br>提携士業へ<em>依頼できます</em>。</h2>
     <p class="memo">AI自走プランの代わりではなく、その上に載る選択肢です。</p>
   </div>
   <div class="body">
     <p class="rd lead">月額150,000円（税別）＋<br>成功報酬10〜20％。</p>
     <p>申請準備に割ける時間がない、書類作成を有資格者へ依頼したい、雇用関係の助成金など資格者による対応が必要、複数制度を継続的に専門家へ相談したい。こうした場合は、提携する士業事務所への依頼に切り替えられます。</p>
-    <ul class="steps plain">
-      <li><b>月額150,000円（税別）</b></li>
-      <li><b>成功報酬 10〜20％</b></li>
-      <li><b>制度や依頼内容によって、別途着手金が発生する場合があります</b></li>
-      <li><b>正式な料金と業務範囲は、契約前に書面で提示します</b></li>
-    </ul>
+    <p class="memo">制度や依頼内容によって、別途着手金が発生する場合があります。正式な料金と業務範囲は、契約前に書面で提示します。</p>
 
-    <div class="cmpw" style="margin-top:24px">
+
+    <div class="fig" style="margin-top:26px">
+      <p class="figt">FIG.4　<em>どこまでを、誰が持つか</em></p>
+      <div class="figbox">
+        <div class="rg-h"><span>見つける</span><span>学ぶ</span><span>つくる</span><span>仕上げて出す</span></div>
+        <div class="rg-r">
+          <div class="rg-t"><span class="rg-n">AI SELF-DRIVE</span><span>AI自走プラン</span><span class="rg-p">30,000円／月</span></div>
+          <div class="rg-bar"><i style="--w:75"></i><span class="rg-g"><span></span><span></span><span></span><span></span></span></div>
+        </div>
+        <div class="rg-r sub">
+          <div class="rg-t"><span class="rg-n">ADVISORY</span><span>士業依頼プラン</span><span class="rg-p">150,000円／月〜</span></div>
+          <div class="rg-bar"><i style="--w:75"></i><b style="--s:75;--w:25"></b><span class="rg-g"><span></span><span></span><span></span><span></span></span></div>
+        </div>
+        <p class="rg-note">塗り＝どちらのプランにも含まれる範囲　／　斜線＝士業依頼プランで、提携士業が担う範囲</p>
+      </div>
+      <p class="figc">差は機能の数ではなく、担当範囲です。「仕上げて出す」を御社が持つか、提携士業が持つか。</p>
+    </div>
+
+    <div class="fig" style="margin-top:26px">
+      <p class="figt">FIG.5　<em>私たちが渡すものと、有資格者が担うもの</em></p>
+      <div class="figbox">
+        <div class="ln2">
+          <div class="us"><p class="h">私たちが渡すもの</p><p class="d">制度の情報／答えられる問い／事業計画の土台</p></div>
+          <div class="pro"><p class="h">有資格者が担うもの</p><p class="d">制度への提出書類の作成</p></div>
+        </div>
+        <p class="rg-note">この線は、報酬を得て提出書類を作成することが有資格者の業務と定められていることによります。</p>
+      </div>
+    </div>
+
+    <div class="cmpw" style="margin-top:26px">
       <table class="cmp">
         <thead><tr><th>内容</th><th class="hi">AI自走プラン</th><th>士業依頼プラン</th></tr></thead>
         <tbody>
@@ -810,28 +1054,10 @@ footer .note{ color:var(--g2); }
   </div>
 </div></section>
 
-<!-- ══ 10 利用開始までの流れ ══ -->
-<section id="flow"><div class="w two">
-  <div class="side">
-    <span class="snum">10</span><span class="slab">FLOW</span>
-    <h2>使いはじめるまでの、<br><em>6つ</em>の手順。</h2>
-  </div>
-  <div class="body">
-    <ul class="steps">
-      <li><b>お申し込み・ヒアリング</b><p>いま検討している投資、採用や賃上げの予定、これから始めたい事業を伺います。</p></li>
-      <li><b>会社情報の初期登録</b><p>所在地、業種、従業員数、売上規模などを登録します。ここまでが初期登録費用の範囲です。</p></li>
-      <li><b>Jシステム AIエディションで制度を確認</b><p>合いそうな制度の候補と、締切、対象経費を確認します。</p></li>
-      <li><b>採択事例・解説動画・AIエージェントの利用開始</b><p>事例と解説で考え方をつかみ、AIとの対話を始めます。</p></li>
-      <li><b>制度が見つかったら事業計画を作成</b><p>質問に答えて土台を作り、公募要領の様式に合わせて仕上げます。</p></li>
-      <li><b>必要に応じて士業へ相談</b><p>書類の作成そのものが必要になったら、提携士業への依頼をご案内します。</p></li>
-    </ul>
-  </div>
-</div></section>
-
-<!-- ══ 11 FAQ ══ -->
+<!-- ══ 09 FAQ ══ -->
 <section id="faq"><div class="w two">
   <div class="side">
-    <span class="snum">11</span><span class="slab">FAQ</span>
+    <span class="snum">09</span><span class="slab">FAQ</span>
     <h2>申し込む前の、<br>確認事項。</h2>
   </div>
   <div class="body"><div class="qa">
@@ -868,26 +1094,17 @@ footer .note{ color:var(--g2); }
     <div class="r"><span class="m">Q</span><span class="q">初期登録費用が無料になる条件は何ですか。</span></div>
     <div class="r a"><span class="m">A</span><span class="t">今月の事例協力企業10社が対象です。利用後の感想、簡単なインタビュー、利用状況や改善要望のヒアリング、掲載内容を事前確認いただいたうえでの導入事例掲載にご協力いただきます。無料になるのは初期登録費用のみで、月額30,000円は契約開始後に発生します。</span></div>
 
-    <div class="r"><span class="m">Q</span><span class="q">最低利用期間はありますか。</span></div>
-    <div class="r a"><span class="m">A</span><span class="t">最低利用期間の有無と期間は、ご契約前に書面でご提示します。このページで確定した条件としてお示しできる段階ではありません。</span></div>
-
-    <div class="r"><span class="m">Q</span><span class="q">途中で解約できますか。</span></div>
-    <div class="r a"><span class="m">A</span><span class="t">解約の条件と返金の取り扱いは、ご契約前に書面でご提示します。お申し込みの前に必ずご確認いただけるようにします。</span></div>
-
-    <div class="r"><span class="m">Q</span><span class="q">入力した企業情報はどのように保存されますか。</span></div>
-    <div class="r a"><span class="m">A</span><span class="t">お預かりする情報の範囲、保存期間、削除の方法、外部送信の有無は、ご契約前に利用規約とプライバシーポリシーでご確認いただけるようにします。現時点で確定した仕様としてこのページに記載できる段階ではありません。</span></div>
+    <div class="r"><span class="m">Q</span><span class="q">最低利用期間、解約、返金、お預かりする情報の取り扱いは、どこで確認できますか。</span></div>
+    <div class="r a"><span class="m">A</span><span class="t">いずれもご契約前に、書面と利用規約・プライバシーポリシーでご提示します。お申し込みの前に必ずご確認いただけるようにします。現時点で確定条件としてお示しできる段階ではないため、このページにはあえて書いていません。</span></div>
 
     <div class="r"><span class="m">Q</span><span class="q">月額150,000円のプランとの違いは何ですか。</span></div>
-    <div class="r a"><span class="m">A</span><span class="t">事業計画の整理を御社ご自身で進めるのがAI自走プラン、提携する士業事務所と進めるのが士業依頼プランです。制度情報、採択事例・動画、AIエージェントはどちらでも使えます。申請書類そのものの作成を有資格者に任せたい場合は、士業依頼プランになります。</span></div>
-
-    <div class="r"><span class="m">Q</span><span class="q">士業依頼プランの成功報酬はどのように決まりますか。</span></div>
-    <div class="r a"><span class="m">A</span><span class="t">10〜20％の範囲でご案内していますが、計算の対象と、どの条件で何％になるかは、対象制度と依頼内容によって変わります。確定した条件は、ご契約前に書面でお示しします。この場で断定的にお答えすることはいたしません。</span></div>
-  </div></div>
+    <div class="r a"><span class="m">A</span><span class="t">事業計画の整理を御社ご自身で進めるのがAI自走プラン、提携する士業事務所と進めるのが士業依頼プランです。制度情報、採択事例・動画、AIエージェントはどちらでも使えます。申請書類そのものの作成を有資格者に任せたい場合は、士業依頼プランになります。成功報酬の計算対象や料率の条件は、対象制度と依頼内容によって変わるため、ご契約前に書面でお示しします。</span></div>
+</div></div>
 </div></section>
 
-<!-- ══ 12 最終CTA ══ -->
+<!-- ══ 10 最終CTA ══ -->
 <section id="cta" class="fin"><div class="w">
-  <span class="snum">12</span><span class="slab">NEXT</span>
+  <span class="snum">10</span><span class="slab">NEXT</span>
   <h2>初期費用0円で、<br>はじめられます。</h2>
   <p>今月の事例協力企業10社は、初期登録費用100,000円が無料です。月額30,000円（税別）から、制度を見つけ、事例で学び、AIとの対話で事業計画の土台を作るところまで始められます。まずはご相談ください。</p>
   <div class="hbtn">
