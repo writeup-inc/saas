@@ -7,7 +7,7 @@
 <title>Jマッチエンジン 直販セールストーク｜商談の台本</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@400;500;600;700;900&family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
 <style>
 /* ===== lp-base.css ===== */
 h1, h2, h3, h4, h5,
@@ -45,6 +45,8 @@ pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
   --rule-lite:#ededeb;
   --rule-num:#b4b4b2;
   --ja-read:"BIZ UDPGothic","Noto Sans JP",system-ui,sans-serif;
+  --min:"Noto Serif JP",serif;
+  --gothic:"Noto Sans JP",system-ui,sans-serif;
   --fixed-cta-h:0px;
 }
 @media (prefers-color-scheme: dark){
@@ -222,7 +224,8 @@ h1{margin:0 0 20px;font-weight:900;line-height:1.3;letter-spacing:-.01em;font-si
 /* 台本 */
 .talk{border-left:3px solid var(--ink);padding:2px 0 2px var(--talk-pad);margin:0 0 14px}
 .talk .lb{font-family:Inter,sans-serif;font-size:12px;letter-spacing:.18em;color:var(--gray2);display:block;margin:0 0 10px;font-weight:700}
-.talk p{position:relative;margin:0 0 1.05em;font-family:var(--ja-read);font-size:var(--talk);line-height:2.05;font-weight:400;letter-spacing:.025em;color:var(--ink)}
+/* 台本の地の文：明朝（パターンB） */
+.talk p{position:relative;margin:0 0 1.05em;font-family:var(--min);font-size:var(--talk);line-height:2.1;font-weight:400;letter-spacing:.02em;color:var(--ink2)}
 /* 流れが変わる一文。オレンジはこの印だけに使う */
 .talk p.pivot::before{content:"";position:absolute;left:calc(-1 * var(--talk-pad));top:.1em;bottom:.1em;width:3px;background:var(--pivot)}
 .pv{
@@ -232,9 +235,11 @@ h1{margin:0 0 20px;font-weight:900;line-height:1.3;letter-spacing:-.01em;font-si
   white-space:nowrap;
 }
 .talk p:last-child{margin-bottom:0}
-.talk .q{font-weight:700}
+/* 読み上げる質問：明朝・太・一段大きく（パターンC） */
+.talk .q{font-family:var(--min);font-weight:700;font-size:1.05em;color:var(--ink);line-height:2.15}
 .talk .pause{display:block;font-size:12px;letter-spacing:.14em;color:var(--gray2);font-family:Inter,sans-serif;border-top:1px dashed var(--line2);padding-top:10px;margin:18px 0 14px;font-weight:700}
-.mk{background:linear-gradient(transparent 56%, var(--mark) 56%);padding:0 1px}
+/* 芯の語：ゴシック極太・黒（パターンB） */
+.mk{font-family:var(--gothic);font-weight:900;color:var(--ink);letter-spacing:0}
 
 /* 営業メモ */
 .memo{background:var(--soft);border:1px solid var(--line);padding:16px 18px;margin:0 0 16px}
@@ -256,7 +261,7 @@ h1{margin:0 0 20px;font-weight:900;line-height:1.3;letter-spacing:-.01em;font-si
 .ask{border:1px solid var(--line);margin:0 0 20px}
 .ask .lb{font-size:12px;font-weight:900;letter-spacing:.06em;padding:11px 18px;border-bottom:1px solid var(--line);display:block;background:var(--soft)}
 .ask ul{list-style:none;margin:0;padding:4px 0}
-.ask li{padding:9px 18px;font-family:var(--ja-read);font-size:15.5px;line-height:1.8;letter-spacing:.02em;border-bottom:1px solid var(--line);display:flex;gap:11px;align-items:flex-start}
+.ask li{padding:10px 18px;font-family:var(--min);font-weight:700;font-size:16px;color:var(--ink);line-height:1.85;letter-spacing:.02em;border-bottom:1px solid var(--line);display:flex;gap:11px;align-items:flex-start}
 .ask li:last-child{border-bottom:0}
 .ask .bx{flex:0 0 15px;height:15px;border:1.5px solid var(--line2);margin-top:6px;border-radius:1px}
 
@@ -290,6 +295,10 @@ h1{margin:0 0 20px;font-weight:900;line-height:1.3;letter-spacing:-.01em;font-si
 .qa details[open] summary{padding-bottom:8px}
 .qa .a{padding:0 0 20px 34px}
 .qa details.is-off{display:none}
+/* 切り返しの台本：地は明朝薄め、芯はオレンジ（パターンD） */
+.qa .talk p{color:var(--gray)}
+.qa .talk .mk{color:var(--pivot)}
+.qa .talk .q{color:var(--ink)}
 @media(max-width:640px){.qa .a{padding-left:0}}
 
 /* 検索結果なし */
@@ -780,7 +789,7 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable{display:none
                 <p>こちらは月額15万円に加えて、制度や依頼内容に応じた成功報酬10〜20％がかかります。案件によっては別途着手金が発生する場合もあります。</p>
                 <p>月額3万円のプランは、AIを使いながら御社自身で進めるプランです。月額15万円のプランは、自社で進める時間がない会社が、必要な資格を持つ専門家へ依頼するためのプランです。</p>
                 <p>どこまでをご自身で進め、どこから専門家へ任せるかによってお選びいただけます。</p>
-                <p>まずAIを使って自社で進めてみるなら月額3万円、最初から専門家へ任せるなら月額15万円のプランになります。</p>
+                <p>まずAIを使って自社で進めてみるなら月額3万円、<span class="mk">最初から専門家へ任せるなら月額15万円</span>のプランになります。</p>
                 <p class="q">御社としては、どちらの進め方が合いそうでしょうか。</p>
               </div>
               <div class="ng ng--todo">
@@ -795,7 +804,7 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable{display:none
             <div class="a">
               <div class="talk">
                 <span class="lb en">READ ALOUD</span>
-                <p>そこは、私たちが保証できるところではありません。補助金は条件を満たせば必ず採択されるものではなく、審査や競争があります。最終的に判断するのは制度事務局です。</p>
+                <p>そこは、<span class="mk">私たちが保証できるところではありません</span>。補助金は条件を満たせば必ず採択されるものではなく、審査や競争があります。最終的に判断するのは制度事務局です。</p>
                 <p>画面に出ている想定採択可能性も、AIが現在確認できる情報から出した参考値です。</p>
                 <p>ですので私たちがご支援できるのは、使えそうな制度を見逃さないことと、出てきたときにすぐ事業計画を準備できる状態をつくることです。</p>
               </div>
@@ -811,7 +820,7 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable{display:none
             <div class="a">
               <div class="talk">
                 <span class="lb en">READ ALOUD</span>
-                <p class="pivot"><span class="pv">本質</span>月額3万円でご提供しているのは、情報を見られることではなく、制度が出たときに事業計画を作って動ける状態です。</p>
+                <p class="pivot"><span class="pv">本質</span>月額3万円でご提供しているのは、情報を見られることではなく、<span class="mk">制度が出たときに事業計画を作って動ける状態</span>です。</p>
                 <p>制度を探す時間と、事業計画を書く時間。この2つが足りなくて間に合わない、というのが一番多いケースですので、そこをまとめて支援するプランになっています。</p>
                 <p>仮に1年間で採択に至らなかったとしても、事業計画を作る力とAI活用のスキルは御社に残ります。</p>
                 <p>参考までに、同じ支援を人の手でやっている「Jコンサル」というサービスには、いま500社にご契約いただいています。月額3万円でご提供しているのは、そこで実際に使われている中身を、AIで回せるようにしたものです。</p>
@@ -829,7 +838,7 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable{display:none
               <div class="talk">
                 <span class="lb en">READ ALOUD</span>
                 <p>おっしゃるとおり、文章を整える部分はAIで書けます。</p>
-                <p class="pivot"><span class="pv">本質</span>ただ実際に止まるのは、書く前です。どの制度が自社に合うのか、締め切りはいつか、何に使えるのか。ここを毎週追い続けるのは、やはり手間がかかります。</p>
+                <p class="pivot"><span class="pv">本質</span>ただ実際に止まるのは、<span class="mk">書く前</span>です。どの制度が自社に合うのか、締め切りはいつか、何に使えるのか。ここを毎週追い続けるのは、やはり手間がかかります。</p>
                 <p>もうひとつが、白紙から「自社の強みを書いてください」と言われても手が止まる、という点です。Jマッチエンジンでは、答えやすい質問に分けて聞いていきます。</p>
                 <p>制度を継続的に拾うところと、答えやすい質問に分けて聞くところ。この2つをまとめてご提供するプランです。</p>
               </div>
@@ -847,7 +856,7 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable{display:none
                 <span class="lb en">READ ALOUD</span>
                 <p>承知しました。ひとつだけ先に共有させてください。今日の画面に出ていた制度のうち、◯月◯日が締め切りのものがあります。</p>
                 <p>事例協力を条件に初期費用を無料にできるのは、今月ご利用いただく10社が対象です。</p>
-                <p>社内でご検討いただくにあたって、どの点が判断のポイントになりそうでしょうか。</p>
+                <p>社内でご検討いただくにあたって、<span class="mk">どの点が判断のポイントになりそうでしょうか</span>。</p>
               </div>
               <div class="memo">
                 <span class="lb">営業メモ</span>
