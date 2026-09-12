@@ -271,8 +271,8 @@ if (!html.includes('data-hero-activity') || !html.includes('data-hero-activity-l
 if (!html.includes('data-news-new-list') || !html.includes('data-news-updated-list')) {
   error("新規・更新を分けるお知らせダイアログの一覧がありません");
 }
-if (!html.includes("const activityHours = jstWeekday === 'Mon' ? 72 : 24;")) {
-  error("月曜72時間・通常24時間の新着判定がありません");
+if (!html.includes("const activityHours = jstWeekday === 'Mon' ? 72 : jstWeekday === 'Sun' ? 48 : 24;")) {
+  error("日曜48時間・月曜72時間・通常24時間の新着判定がありません");
 }
 if (!html.includes('updatedAt > publishedAt') || !html.includes('recentNew') || !html.includes('recentUpdates')) {
   error("新規と更新を分ける直近アクティビティ判定がありません");

@@ -82,7 +82,7 @@
     }
 
     .shell {
-      width: min(calc(100% - 48px), 1160px);
+      width: min(calc(100% - 48px), 1300px);
       margin: 0 auto;
     }
 
@@ -1851,7 +1851,7 @@
     }
 
     @media (max-width: 560px) {
-      .shell { width: min(calc(100% - 32px), 1160px); }
+      .shell { width: min(calc(100% - 32px), 1300px); }
       header { min-height: 68px; }
       .brand { font-size: 11px; }
       .status { font-size: 10px; }
@@ -2634,9 +2634,13 @@
         timeZone: 'Asia/Tokyo',
         weekday: 'short'
       }).format(new Date(activityNow));
-      const activityHours = jstWeekday === 'Mon' ? 72 : 24;
+      const activityHours = jstWeekday === 'Mon' ? 72 : jstWeekday === 'Sun' ? 48 : 24;
       const recentSince = activityNow - activityHours * 60 * 60 * 1000;
-      const activityWindowLabel = jstWeekday === 'Mon' ? '月曜は週末を含む直近72時間' : '直近24時間';
+      const activityWindowLabel = jstWeekday === 'Mon'
+        ? '月曜は週末を含む直近72時間'
+        : jstWeekday === 'Sun'
+          ? '日曜は土曜分を含む直近48時間'
+          : '直近24時間';
       const recentNew = services
         .filter((service) => {
           const publishedAt = new Date(service.dataset.published).getTime();
@@ -2713,7 +2717,7 @@
         heroActivity.hidden = true;
         newsOpenButtons.forEach((button) => { button.hidden = true; });
       } else {
-        heroActivityWindow.textContent = activityHours === 72 ? '72H / MON' : '24H';
+        heroActivityWindow.textContent = `直近${activityHours}時間`;
         recentActivity.forEach(({ service, kind, occurredAt }) => {
           const item = document.createElement('li');
           const link = document.createElement('a');
