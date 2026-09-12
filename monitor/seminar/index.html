@@ -437,94 +437,6 @@
       max-width: 62ch;
     }
 
-    /* ================= message (dark) ================= */
-    .message {
-      background: var(--bg-dark);
-      color: #fff;
-    }
-    .message .eyebrow { color: #7ea0ff; }
-    .message .eyebrow::after { background: rgba(255, 255, 255, .18); }
-    .message h2.title { color: #fff; }
-
-    .change {
-      list-style: none;
-      margin: 0 0 34px;
-      padding: 0;
-      display: grid;
-      gap: 0;
-      border-top: 1px solid rgba(255, 255, 255, .14);
-      max-width: 92ch;
-    }
-    .change li {
-      padding: 18px 0 18px 46px;
-      position: relative;
-      border-bottom: 1px solid rgba(255, 255, 255, .14);
-      color: rgba(255, 255, 255, .82);
-      font-size: clamp(14.5px, 1.4vw, 16.5px);
-    }
-    .change li::before {
-      content: counter(list-item, decimal-leading-zero);
-      position: absolute;
-      left: 0;
-      top: 18px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .1em;
-      color: #7ea0ff;
-      font-variant-numeric: tabular-nums;
-    }
-    .fact {
-      margin: 0 0 40px;
-      font-size: clamp(17px, 2vw, 24px);
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: .01em;
-    }
-
-    .quote {
-      margin: 0 0 40px;
-      padding: clamp(24px, 3vw, 36px);
-      background: rgba(255, 255, 255, .05);
-      border-left: 3px solid var(--accent);
-      max-width: 92ch;
-    }
-    .quote p {
-      margin: 0 0 14px;
-      color: rgba(255, 255, 255, .88);
-      font-size: clamp(14.5px, 1.4vw, 16.5px);
-    }
-    .quote p:last-of-type { margin-bottom: 0; }
-    .quote .by {
-      display: block;
-      margin-top: 18px;
-      font-size: 12.5px;
-      color: rgba(255, 255, 255, .55);
-      letter-spacing: .03em;
-    }
-
-    .close {
-      margin: 0 0 32px;
-      font-size: clamp(18px, 2.3vw, 30px);
-      font-weight: 700;
-      line-height: 1.62;
-      letter-spacing: .005em;
-      max-width: 26em;
-    }
-    .close .hl { color: #7ea0ff; }
-    .link-out {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      font-size: 14px;
-      color: #fff;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255, 255, 255, .35);
-      padding-bottom: 4px;
-      letter-spacing: .02em;
-    }
-    .link-out:hover { border-bottom-color: #fff; }
-
     /* ================= why ================= */
     .why-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
     .why-card { padding: clamp(26px, 3vw, 36px); }
@@ -1196,9 +1108,6 @@
     html[data-design="v2"] .v2-service-rail a { flex: none; padding: 8px 20px; border-left: 1px solid rgba(255, 255, 255, .18); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; white-space: nowrap; }
     html[data-design="v2"] .v2-service-rail a:hover { background: rgba(255, 255, 255, .1); }
 
-    html[data-design="v2"] .message { background: #12151d; }
-    html[data-design="v2"] .message .quote { border-left-color: #ffb72e; background: #1f2430; border-radius: 0 20px 20px 0; }
-    html[data-design="v2"] .message .close .hl { color: #ffb72e; }
     html[data-design="v2"] #why { background: #fbfaf7; }
     html[data-design="v2"] .why-grid { gap: 14px; border: 0; background: transparent; }
     html[data-design="v2"] .why-card { border: 0; border-radius: 22px; background: #fff; box-shadow: 0 10px 28px rgba(18, 21, 29, .07); }
@@ -1379,38 +1288,6 @@
         <a href="#service-jmatch">J MATCH ENGINE</a>
       </div>
     </nav>
-
-    <!-- ============ MESSAGE ============ -->
-    <section id="message" class="message">
-      <div class="wrap">
-        <p class="eyebrow">Message</p>
-        <h2 class="title">「検討します」の1年で、<br>AIは別物になりました。</h2>
-
-        <ol class="change">
-          <li>打ち合わせの最中に、AIが横から「その論点は先に潰しておいたほうがいい」と教えてくれる。</li>
-          <li>真夜中のうちに何百件ものログを読み解き、翌朝には要点をまとめたレポートが届いている。</li>
-          <li>社員一人ひとりのパソコン操作を画像として認識し、その人の働き方に合った改善案を返してくれる。</li>
-        </ol>
-        <p class="fact">どれも、いまの技術で実際にできることです。</p>
-
-        <div class="quote">
-          <p>ある大手企業にご提案したときは、その場で「いいですね」と言っていただけました。ただ、社内の確認が必要だからと打ち合わせを重ねることになり、結局まだ導入には至っていません。</p>
-          <p>一方、社員10名の営業会社の社長さんに同じ話をしたところ、こちらが話し終えるのを待たずに「すごい。すぐ欲しい」と即決でした。</p>
-          <span class="by">— 企画担当・西村（コラム「20名未満の会社にこそ、いちばん先に使ってほしい理由」より）</span>
-        </div>
-
-        <p class="close">
-          決めたその日から動ける会社。人手が足りないぶん、AIに任せられることが山ほどある会社。<br>
-          <span class="hl">本当にAIを使いこなせるのは、むしろこちら側だと思っています。</span>
-        </p>
-
-        <a class="link-out" href="https://writeup-ai-column.vercel.app/" target="_blank" rel="noopener noreferrer">
-          なぜ0円で提供するのか、コラムに書きました
-          <span aria-hidden="true">↗</span>
-        </a>
-      </div>
-    </section>
-
     <!-- ============ WHY ============ -->
     <section id="why">
       <div class="wrap">
