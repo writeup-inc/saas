@@ -235,14 +235,6 @@ h1{margin:0 0 20px;font-weight:900;line-height:1.3;letter-spacing:-.01em;font-si
 .talk .q{font-weight:700}
 .talk .pause{display:block;font-size:12px;letter-spacing:.14em;color:var(--gray2);font-family:Inter,sans-serif;border-top:1px dashed var(--line2);padding-top:10px;margin:18px 0 14px;font-weight:700}
 .mk{background:linear-gradient(transparent 56%, var(--mark) 56%);padding:0 1px}
-.copy-row{margin:0 0 20px;padding-left:23px}
-.copy{
-  appearance:none;border:1px solid var(--line2);background:var(--paper);color:var(--gray);
-  font-family:inherit;font-size:12px;font-weight:700;height:44px;min-height:44px;padding:0 14px;
-  border-radius:2px;cursor:pointer;transition:border-color .15s ease,color .15s ease;
-}
-.copy:hover{border-color:var(--ink);color:var(--ink)}
-.copy.done{border-color:var(--ink);color:var(--ink);font-weight:900}
 
 /* 営業メモ */
 .memo{background:var(--soft);border:1px solid var(--line);padding:16px 18px;margin:0 0 16px}
@@ -310,7 +302,7 @@ h1{margin:0 0 20px;font-weight:900;line-height:1.3;letter-spacing:-.01em;font-si
 .ft{border-top:1px solid var(--line);padding:22px 0 60px;font-size:12px;color:var(--gray2);display:flex;gap:18px;flex-wrap:wrap}
 
 /* 台本のみ表示 */
-body.only .memo,body.only .ng,body.only .figure,body.only .hideable,body.only .copy-row{display:none!important}
+body.only .memo,body.only .ng,body.only .figure,body.only .hideable{display:none!important}
 
 @media (max-width:640px){
   .wrap{padding:0 18px}
@@ -320,7 +312,6 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable,body.only .c
   .nums-in{padding:24px 18px 26px}
   .hero{padding:38px 0 30px}
   .talk{--talk-pad:15px}
-  .copy-row{padding-left:18px}
   .meta{grid-template-columns:1fr}
   .side a{padding:12px 2px}
 }
@@ -332,7 +323,7 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable,body.only .c
   .ch{scroll-margin-top:76px}
 }
 @media print{
-  .hd,.find,.side,.tools,.prog,.copy-row{display:none!important}
+  .hd,.find,.side,.tools,.prog{display:none!important}
   .main{grid-template-columns:1fr}
   .ch{break-inside:avoid}
   .nums{background:none;color:var(--ink);border:1px solid var(--ink)}
@@ -488,7 +479,6 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable,body.only .c
           <p>当社には、これまで提供してきた補助金診断システム「Jシステム」のAI版、「Jシステム AIエディション」があります。</p>
           <p>今から御社の情報を入れて、どのような制度が候補になるか、一緒に確認してみましょう。</p>
         </div>
-        <p class="copy-row"><button class="copy" type="button">この台本をコピー</button></p>
         <div class="memo">
           <span class="lb">営業メモ</span>
           <p>ここで制度の中身を語り始めると、そのまま「制度説明の会」になって10分が溶けます。お礼→「見た方が早い」→画面共有、まで一気に行ってください。</p>
@@ -508,7 +498,6 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable,body.only .c
           <span class="lb en">READ ALOUD ／ ヒアリング</span>
           <p>いくつか質問しますので、分かる範囲で教えてください。</p>
         </div>
-        <p class="copy-row"><button class="copy" type="button">この台本をコピー</button></p>
         <div class="ask">
           <span class="lb">聞きながらClaude Code上のJシステム AIエディションへ入力する</span>
           <ul>
@@ -535,7 +524,6 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable,body.only .c
           <p class="pivot"><span class="pv">本質</span>これは申請できないという意味ではありません。<span class="mk">補助金は、条件を満たせば必ず採択されるものではなく、審査や競争があるためです。</span></p>
           <p>この想定採択可能性も、AIが現在確認できる情報から出した参考値です。採択や受給額を保証するものではなく、最終的には制度事務局が判断します。</p>
         </div>
-        <p class="copy-row"><button class="copy" type="button">この台本をコピー</button></p>
         <div class="memo">
           <span class="lb">営業メモ｜絞って話す5点</span>
           <ul>
@@ -564,7 +552,6 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable,body.only .c
           <p>補助金や融資を経営に役立てるためには、単発で診断するだけでは足りません。</p>
           <p><span class="mk">自社に合う制度を継続的に情報収集し、使えそうな制度が出たときに、すぐ事業計画を作って動ける状態にしておく必要があります。</span></p>
         </div>
-        <p class="copy-row"><button class="copy" type="button">この台本をコピー</button></p>
         <div class="memo">
           <span class="lb">営業メモ</span>
           <p>ここまでの実演が良いほど、お客様は「今日の結果」で満足しがちです。満足したまま帰すと受注はありません。「探す時間」と「書く時間」の2つが足りなくなる、という事実だけを置いて、次の提案につなぎます。</p>
@@ -589,7 +576,6 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable,body.only .c
           <p>Jマッチエンジンは、そこで人がやっていることを、AIに載せ替えたものです。Jコンサルをご利用中の皆さまも、順次こちらへ統合していきます。</p>
           <p>月額3万円で、主に3つの支援をご提供します。</p>
         </div>
-        <p class="copy-row"><button class="copy" type="button">この台本をコピー</button></p>
         <div class="memo">
           <span class="lb">営業メモ</span>
           <p>「情報が届くサービス」と要約された瞬間に、月3万円は高く見えます。<strong>届くのは情報、売っているのは"動ける状態"</strong>。この一文だけは原文どおり読んでください。</p><p style="margin-top:9px">500社は<strong>Jコンサル（人の手で提供中）の契約社数</strong>です。Jマッチエンジン自体の実績として言わないこと。10章で「提供を始めたばかり」と話すので、ここで取り違えると同じ商談の中で矛盾します。「中身は500社で回っている、それをAIに載せ替えた」という順番で話してください。</p>
@@ -613,7 +599,6 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable,body.only .c
           <p>制度名だけではなく、締め切り、対象になりそうな経費、確認すべき条件なども整理します。</p>
           <p>今日だけ診断して終わるのではなく、次に出てくる制度も継続的に確認できる。これが1つ目の価値です。</p>
         </div>
-        <p class="copy-row"><button class="copy" type="button">この台本をコピー</button></p>
       </section>
 
       <!-- 06 -->
@@ -632,7 +617,6 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable,body.only .c
           <p>そこで、過去に採択された事業計画書の事例や見本、制度の背景や書き方を専門家が説明した動画・資料などをご覧いただけるようにします。</p>
           <p>ゼロから考えるのではなく、実際の事例を見ながら、「どこまで具体的に書くのか」「どのように強みを説明するのか」「売上効果をどう数字で示すのか」を学べます。</p>
         </div>
-        <p class="copy-row"><button class="copy" type="button">この台本をコピー</button></p>
       </section>
 
       <!-- 07 -->
@@ -656,7 +640,6 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable,body.only .c
           <p>回答した内容をAIが整理し、補助金の事業計画書や、銀行へ提出する融資資料の土台にしていきます。</p>
           <p><span class="mk">AIが勝手に申請するサービスではありません。</span>御社自身が、自社の事業を理解しながら、自分で書けるようになるためのサービスです。</p>
         </div>
-        <p class="copy-row"><button class="copy" type="button">この台本をコピー</button></p>
         <div class="memo">
           <span class="lb">営業メモ</span>
           <p>4つの質問例は、早口で流さず、一拍おいて読んでください。ここでお客様が頭の中で自社のことを答え始めたら、この商談は前に進んでいます。</p>
@@ -680,7 +663,6 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable,body.only .c
           <p>今年の補助金で作った内容を、翌年度の別の補助金や、銀行への融資相談、新規事業の計画にも再利用できます。</p>
           <p>制度ごとに書き足しや修正は必要ですが、<span class="mk">毎回ゼロから考える必要はなくなります。</span></p>
         </div>
-        <p class="copy-row"><button class="copy" type="button">この台本をコピー</button></p>
       </section>
 
       <!-- 09 -->
@@ -702,7 +684,6 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable,body.only .c
           <p>採択されれば、もちろん大きな成果です。仮に採択されなかったとしても、事業計画を作る力とAI活用スキルは御社に残ります。</p>
           <p>まず1年間使っていただき、それでも経営に役立つ価値がないと判断された場合は、契約条件に沿って解約していただいて構いません。</p>
         </div>
-        <p class="copy-row"><button class="copy" type="button">この台本をコピー</button></p>
         <div class="ng ng--todo">
           <span class="lb"><span class="todo">要確認</span>最低契約期間・解約条件</span>
           <p>最低契約期間と解約条件が正式に確定していない場合は、<strong>「1年間の契約が必須」と受け取られる説明をしない</strong>。最後の一文は「契約条件に沿って」で必ず止め、その場で条件を作らないこと。</p>
@@ -727,7 +708,6 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable,body.only .c
           <p>事例についても、勝手に会社名や内容を公開することはありません。掲載内容と公開範囲は、必ず事前にご確認いただきます。</p>
           <p>せっかく今回お問い合わせいただき、実際にAI診断まで行いましたので、事例協力という条件で、初期費用無料で始めてみませんか。</p>
         </div>
-        <p class="copy-row"><button class="copy" type="button">この台本をコピー</button></p>
         <div class="price">
           <table>
             <thead>
@@ -774,7 +754,6 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable,body.only .c
           <p><span class="mk">この条件で始めてみませんか。</span></p>
           <span class="pause">— ここで話を続けない。黙って、お客様の回答を待つ —</span>
         </div>
-        <p class="copy-row"><button class="copy" type="button">この台本をコピー</button></p>
         <div class="memo">
           <span class="lb">営業メモ</span>
           <p>沈黙を埋めたくなったら、補足を足すのではなく、もう一度「いかがでしょうか」とだけ言う。前向きなら、その場で申込みまたはカード決済まで進めます。</p>
@@ -804,7 +783,6 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable,body.only .c
                 <p>まずAIを使って自社で進めてみるなら月額3万円、最初から専門家へ任せるなら月額15万円のプランになります。</p>
                 <p class="q">御社としては、どちらの進め方が合いそうでしょうか。</p>
               </div>
-              <p class="copy-row"><button class="copy" type="button">この台本をコピー</button></p>
               <div class="ng ng--todo">
                 <span class="lb"><span class="todo">要確認</span>士業依頼プラン</span>
                 <p>契約主体・請求主体・着手金・成功報酬の計算対象は、正式な条件を確認したうえで説明する。株式会社ライトアップが資格業務を直接行うような説明はしない。</p>
@@ -821,7 +799,6 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable,body.only .c
                 <p>画面に出ている想定採択可能性も、AIが現在確認できる情報から出した参考値です。</p>
                 <p>ですので私たちがご支援できるのは、使えそうな制度を見逃さないことと、出てきたときにすぐ事業計画を準備できる状態をつくることです。</p>
               </div>
-              <p class="copy-row"><button class="copy" type="button">この台本をコピー</button></p>
               <div class="memo">
                 <span class="lb">営業メモ</span>
                 <p>ここで少しでも色をつけると、あとで全部こちらに返ってきます。断定しないことが、そのまま信用になります。</p>
@@ -839,7 +816,6 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable,body.only .c
                 <p>仮に1年間で採択に至らなかったとしても、事業計画を作る力とAI活用のスキルは御社に残ります。</p>
                 <p>参考までに、同じ支援を人の手でやっている「Jコンサル」というサービスには、いま500社にご契約いただいています。月額3万円でご提供しているのは、そこで実際に使われている中身を、AIで回せるようにしたものです。</p>
               </div>
-              <p class="copy-row"><button class="copy" type="button">この台本をコピー</button></p>
               <div class="ng">
                 <span class="lb">禁止</span>
                 <p>無料プラン・月額3,000円プランには触れない。安い受け皿を出した瞬間、主提案は死にます。値引きもしない（初期費用無料は事例協力との交換であって、値引きではない）。</p>
@@ -857,7 +833,6 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable,body.only .c
                 <p>もうひとつが、白紙から「自社の強みを書いてください」と言われても手が止まる、という点です。Jマッチエンジンでは、答えやすい質問に分けて聞いていきます。</p>
                 <p>制度を継続的に拾うところと、答えやすい質問に分けて聞くところ。この2つをまとめてご提供するプランです。</p>
               </div>
-              <p class="copy-row"><button class="copy" type="button">この台本をコピー</button></p>
               <div class="memo">
                 <span class="lb">営業メモ</span>
                 <p>AIの性能差で勝負しない（勝てないし、来月ひっくり返る）。勝負するのは「制度の継続収集」と「質問の設計」。ここは元原稿にある事実の範囲です。</p>
@@ -874,7 +849,6 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable,body.only .c
                 <p>事例協力を条件に初期費用を無料にできるのは、今月ご利用いただく10社が対象です。</p>
                 <p>社内でご検討いただくにあたって、どの点が判断のポイントになりそうでしょうか。</p>
               </div>
-              <p class="copy-row"><button class="copy" type="button">この台本をコピー</button></p>
               <div class="memo">
                 <span class="lb">営業メモ</span>
                 <ul>
@@ -1025,35 +999,6 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable,body.only .c
       apply();
     }
   });
-
-  /* コピー */
-  document.addEventListener('click',function(e){
-    var b=e.target.closest('.copy');
-    if(!b) return;
-    var block=b.closest('.copy-row').previousElementSibling;
-    while(block&&!block.classList.contains('talk')) block=block.previousElementSibling;
-    if(!block) return;
-    var txt=[].slice.call(block.querySelectorAll('p')).map(function(p){
-      var c=p.cloneNode(true);
-      [].slice.call(c.querySelectorAll('.pv')).forEach(function(x){x.remove();});
-      return c.textContent.trim();
-    }).join('\n');
-    var done=function(){
-      var old=b.textContent; b.textContent='コピーしました'; b.classList.add('done');
-      setTimeout(function(){b.textContent=old;b.classList.remove('done');},1600);
-    };
-    if(navigator.clipboard&&navigator.clipboard.writeText){
-      navigator.clipboard.writeText(txt).then(done,function(){fb(txt,done);});
-    } else { fb(txt,done); }
-  });
-  function fb(txt,cb){
-    var ta=document.createElement('textarea');
-    ta.value=txt; ta.setAttribute('readonly','');
-    ta.style.position='fixed'; ta.style.top='-1000px';
-    document.body.appendChild(ta); ta.select();
-    try{document.execCommand('copy');cb();}catch(err){}
-    document.body.removeChild(ta);
-  }
 
   /* 右メニューの開閉（1024px以下） */
   var side=document.getElementById('side'), sideTgl=document.getElementById('sideTgl');
