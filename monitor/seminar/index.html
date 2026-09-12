@@ -1041,7 +1041,7 @@
       z-index: 45;
       top: calc(100% + 10px);
       right: max(20px, calc((100% - 1120px) / 2 + 20px));
-      display: inline-flex;
+      display: none;
       align-items: center;
       gap: 2px;
       padding: 4px;
@@ -1056,6 +1056,7 @@
     .version-switcher a { min-width: 34px; padding: 5px 8px; border-radius: 999px; color: var(--body); font-size: 11px; font-weight: 800; line-height: 1; text-align: center; text-decoration: none; transition: color .18s ease, background .18s ease; }
     .version-switcher a[aria-current="page"] { background: var(--ink); color: #fff; }
     .v2-service-rail { display: none; }
+    .monitor-flow { display: none; }
 
     /* V2: BASE, Inc.のサービス一覧のように、余白・色面・製品導線を前面へ。 */
     html[data-design="v2"] {
@@ -1065,7 +1066,7 @@
     }
     html[data-design="v2"] body { background: #fbfaf7; background-image: none; }
     html[data-design="v2"] .wrap { width: min(1200px, 100%); }
-    html[data-design="v2"] section { padding-block: clamp(72px, 9vw, 136px); }
+    html[data-design="v2"] section { padding-block: clamp(64px, 7vw, 104px); }
     html[data-design="v2"] .bar { background: rgba(251, 250, 247, .94); border-bottom-color: rgba(18, 21, 29, .12); }
     html[data-design="v2"] .brand { letter-spacing: .12em; }
     html[data-design="v2"] .brand .mark { border-radius: 50%; background: #3e60e6; }
@@ -1075,27 +1076,27 @@
     html[data-design="v2"] .version-switcher { right: max(20px, calc((100% - 1200px) / 2 + 20px)); border-color: rgba(18, 21, 29, .14); box-shadow: 0 10px 24px rgba(18, 21, 29, .12); }
     html[data-design="v2"] .version-switcher a[aria-current="page"] { background: #3e60e6; }
 
-    html[data-design="v2"] .hero { position: relative; isolation: isolate; overflow: hidden; background: #e7f0ff; border-bottom: 0; padding-block: clamp(80px, 10vw, 148px) clamp(62px, 7vw, 104px); }
+    html[data-design="v2"] .hero { position: relative; isolation: isolate; overflow: hidden; background: #e7f0ff; border-bottom: 0; padding-block: clamp(48px, 6vw, 84px) clamp(48px, 5vw, 72px); }
     html[data-design="v2"] .hero::before,
     html[data-design="v2"] .hero::after { content: ""; position: absolute; z-index: -1; border-radius: 50%; pointer-events: none; }
-    html[data-design="v2"] .hero::before { width: min(48vw, 680px); aspect-ratio: 1; right: -13%; top: -36%; background: #ffb72e; }
-    html[data-design="v2"] .hero::after { width: min(32vw, 470px); aspect-ratio: 1; left: 43%; bottom: -58%; background: #3e60e6; }
+    html[data-design="v2"] .hero::before { width: min(42vw, 560px); aspect-ratio: 1; right: -10%; top: -43%; background: #ffb72e; }
+    html[data-design="v2"] .hero::after { width: min(25vw, 360px); aspect-ratio: 1; left: 44%; bottom: -68%; background: #3e60e6; }
     html[data-design="v2"] .hero .wrap { position: relative; z-index: 1; }
-    html[data-design="v2"] .hero-flags { gap: 8px; margin-bottom: clamp(32px, 5vw, 62px); }
+    html[data-design="v2"] .hero-flags { gap: 8px; margin-bottom: clamp(24px, 3vw, 38px); }
     html[data-design="v2"] .flag { border: 1px solid rgba(18, 21, 29, .2); background: rgba(255, 255, 255, .52); color: #12151d; }
     html[data-design="v2"] .flag.hot { border-color: #ff6f3d; background: #ff6f3d; color: #fff; }
-    html[data-design="v2"] .hero-top { grid-template-columns: minmax(0, 1.3fr) minmax(270px, .7fr); align-items: stretch; gap: clamp(28px, 5vw, 86px); }
-    html[data-design="v2"] .hero h1 { max-width: 14em; font-size: clamp(38px, 5.6vw, 72px); line-height: 1.2; letter-spacing: -.04em; }
-    html[data-design="v2"] .hero h1 .small { max-width: 31em; margin-bottom: 1em; font-size: clamp(14px, 1.35vw, 18px); color: #3d4657; letter-spacing: .04em; }
+    html[data-design="v2"] .hero-top { grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr); align-items: stretch; gap: clamp(30px, 4vw, 64px); }
+    html[data-design="v2"] .hero h1 { max-width: none; font-size: clamp(38px, 5vw, 68px); line-height: 1.18; letter-spacing: -.04em; }
+    html[data-design="v2"] .hero h1 .small { max-width: 31em; margin-bottom: .78em; font-size: clamp(14px, 1.35vw, 18px); color: #3d4657; letter-spacing: .04em; }
     html[data-design="v2"] .hero h1 .u { color: #3e60e6; text-decoration-color: currentColor; }
-    html[data-design="v2"] .hero p.lead { max-width: 58ch; color: #374154; }
+    html[data-design="v2"] .hero p.lead { max-width: 53ch; color: #374154; }
     html[data-design="v2"] .hero-panel { display: flex; flex-direction: column; justify-content: center; border: 0; border-radius: 28px; overflow: hidden; background: #243fba; color: #fff; box-shadow: 0 18px 0 rgba(18, 21, 29, .12), 0 30px 48px rgba(36, 63, 186, .22); }
     html[data-design="v2"] .hero-panel .k { color: rgba(255, 255, 255, .66); border-bottom-color: rgba(255, 255, 255, .18); }
     html[data-design="v2"] .hero-panel li { border-bottom-color: rgba(255, 255, 255, .16); }
     html[data-design="v2"] .hero-panel .sq { background: #fff; border-radius: 50%; }
     html[data-design="v2"] .hero-panel li em { color: rgba(255, 255, 255, .64); }
     html[data-design="v2"] .hero-panel .foot { background: rgba(0, 0, 0, .13); color: rgba(255, 255, 255, .72); }
-    html[data-design="v2"] .stats { margin-bottom: 28px; border: 0; gap: 12px; background: transparent; }
+    html[data-design="v2"] .stats { margin-bottom: 24px; border: 0; gap: 12px; background: transparent; }
     html[data-design="v2"] .stats li { border: 1px solid rgba(18, 21, 29, .12); border-radius: 16px; background: rgba(255, 255, 255, .68); }
     html[data-design="v2"] .stats .v { color: #12151d; }
     html[data-design="v2"] .btn { border-radius: 999px; padding: 18px 32px; }
@@ -1114,25 +1115,33 @@
     html[data-design="v2"] .why-card:nth-child(2) { background: #eef1ff; }
     html[data-design="v2"] .why-card:nth-child(3) { background: #fff5df; }
     html[data-design="v2"] .why-card .n { color: #3e60e6; }
+    html[data-design="v2"] .monitor-flow { display: block; margin-top: 30px; padding: clamp(24px, 3vw, 34px); border-radius: 22px; background: #12151d; color: #fff; box-shadow: 0 12px 28px rgba(18, 21, 29, .12); }
+    html[data-design="v2"] .monitor-flow h3 { margin: 0 0 20px; font-size: clamp(18px, 2vw, 24px); line-height: 1.4; }
+    html[data-design="v2"] .monitor-flow ol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 0; padding: 0; list-style: none; counter-reset: flow; }
+    html[data-design="v2"] .monitor-flow li { position: relative; min-height: 94px; padding: 3px 24px 3px 58px; counter-increment: flow; }
+    html[data-design="v2"] .monitor-flow li + li { border-left: 1px solid rgba(255, 255, 255, .18); }
+    html[data-design="v2"] .monitor-flow li::before { content: counter(flow, decimal-leading-zero); position: absolute; top: 2px; left: 0; color: #ffcc55; font-size: 11px; font-weight: 800; letter-spacing: .12em; }
+    html[data-design="v2"] .monitor-flow strong { display: block; margin-bottom: 7px; font-size: 15px; line-height: 1.5; }
+    html[data-design="v2"] .monitor-flow p { margin: 0; color: rgba(255, 255, 255, .68); font-size: 12.5px; line-height: 1.65; }
     html[data-design="v2"] #services { background: #eef1f6; }
     html[data-design="v2"] .services { grid-template-columns: 1fr; gap: 20px; border: 0; background: transparent; }
     html[data-design="v2"] .services > * { background: transparent; }
-    html[data-design="v2"] .svc { overflow: hidden; padding: clamp(30px, 4vw, 58px); border: 0; border-radius: 30px; background: #fff; box-shadow: 0 12px 32px rgba(18, 21, 29, .08); }
+    html[data-design="v2"] .svc { overflow: hidden; padding: clamp(28px, 3.4vw, 44px); border: 0; border-radius: 30px; background: #fff; box-shadow: 0 12px 32px rgba(18, 21, 29, .08); }
     html[data-design="v2"] .svc::before { inset: 0 auto 0 0; width: min(22%, 260px); height: auto; opacity: .1; }
     html[data-design="v2"] .svc::after { content: ""; position: absolute; width: 190px; aspect-ratio: 1; right: -72px; top: -92px; border: 22px solid var(--accent-svc); border-radius: 50%; opacity: .13; pointer-events: none; }
     html[data-design="v2"] .svc > * { position: relative; z-index: 1; }
-    html[data-design="v2"] .svc-meta { margin-bottom: 24px; }
+    html[data-design="v2"] .svc-meta { margin-bottom: 18px; }
     html[data-design="v2"] .svc-no { color: var(--accent-svc); }
     html[data-design="v2"] .svc-tag { border: 0; border-radius: 999px; background: rgba(18, 21, 29, .06); color: var(--accent-svc); }
-    html[data-design="v2"] .svc-title-row { grid-template-columns: 116px minmax(0, 1fr); gap: 22px; margin-bottom: 22px; }
-    html[data-design="v2"] .svc-illustration { width: 116px; height: 92px; border: 0; border-radius: 22px; background: var(--accent-svc); color: #fff; box-shadow: 0 8px 0 rgba(18, 21, 29, .24); }
-    html[data-design="v2"] .svc-illustration svg { width: 82px; height: 62px; }
-    html[data-design="v2"] .svc h3 { font-size: clamp(26px, 3.2vw, 38px); }
+    html[data-design="v2"] .svc-title-row { grid-template-columns: 96px minmax(0, 1fr); gap: 20px; margin-bottom: 18px; }
+    html[data-design="v2"] .svc-illustration { width: 96px; height: 76px; border: 0; border-radius: 20px; background: var(--accent-svc); color: #fff; box-shadow: 0 7px 0 rgba(18, 21, 29, .24); }
+    html[data-design="v2"] .svc-illustration svg { width: 70px; height: 52px; }
+    html[data-design="v2"] .svc h3 { font-size: clamp(24px, 2.8vw, 34px); }
     html[data-design="v2"] .svc-availability { border: 0; border-radius: 999px; background: var(--accent-svc); color: #fff; padding-inline: 11px; }
     html[data-design="v2"] .svc .catch { max-width: 48ch; font-size: clamp(16px, 1.7vw, 20px); }
     html[data-design="v2"] .svc .desc { max-width: 82ch; font-size: 15px; }
-    html[data-design="v2"] .svc-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; border: 0; }
-    html[data-design="v2"] .svc-facts > div { padding: 20px; border: 0; border-radius: 16px; background: #f5f6f9; }
+    html[data-design="v2"] .svc-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; border: 0; }
+    html[data-design="v2"] .svc-facts > div { padding: 16px; border: 0; border-radius: 16px; background: #f5f6f9; }
     html[data-design="v2"] .svc-facts dt { color: var(--accent-svc); }
     html[data-design="v2"] .svc-more { color: var(--accent-svc); border-bottom-color: currentColor; }
     html[data-design="v2"] .seminar-grid { gap: 14px; border: 0; background: transparent; }
@@ -1148,6 +1157,11 @@
     html[data-design="v2"] .form-shell { border: 0; border-top: 6px solid #ffb72e; border-radius: 28px; box-shadow: 0 16px 0 rgba(5, 10, 30, .28), 0 30px 62px rgba(5, 10, 30, .38); }
     html[data-design="v2"] footer { background: #12151d; }
 
+    @media (max-width: 900px) {
+      html[data-design="v2"] .hero-top { grid-template-columns: 1fr; }
+      html[data-design="v2"] .hero-panel { display: none; }
+    }
+
     @media (max-width: 760px) {
       .version-switcher { right: 12px; top: calc(100% + 8px); }
       .version-switcher .k { display: none; }
@@ -1155,15 +1169,23 @@
       html[data-design="v2"] .hero::before { width: 260px; right: -38%; top: -11%; }
       html[data-design="v2"] .hero::after { width: 190px; left: 42%; bottom: -11%; }
       html[data-design="v2"] .hero-top { grid-template-columns: 1fr; }
-      html[data-design="v2"] .hero-panel { min-height: 0; }
+      html[data-design="v2"] .hero-panel { display: none; }
       html[data-design="v2"] .v2-service-rail .wrap { padding-inline: 0; }
       html[data-design="v2"] .v2-service-rail .label { padding-left: 20px; }
+      html[data-design="v2"] .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+      html[data-design="v2"] .stats li { display: block; padding: 13px 11px; }
+      html[data-design="v2"] .stats .k { margin-bottom: 8px; font-size: 8.5px; letter-spacing: .12em; }
+      html[data-design="v2"] .stats .v { font-size: 26px; }
       html[data-design="v2"] .svc { border-radius: 22px; }
       html[data-design="v2"] .svc::before { width: 42%; }
       html[data-design="v2"] .svc-title-row { grid-template-columns: 86px minmax(0, 1fr); gap: 16px; }
       html[data-design="v2"] .svc-illustration { width: 86px; height: 70px; border-radius: 18px; }
       html[data-design="v2"] .svc-illustration svg { width: 62px; height: 46px; }
       html[data-design="v2"] .svc-facts { grid-template-columns: 1fr; gap: 10px; }
+      html[data-design="v2"] .monitor-flow ol { grid-template-columns: 1fr; gap: 16px; }
+      html[data-design="v2"] .monitor-flow li { min-height: auto; padding: 0 0 0 54px; }
+      html[data-design="v2"] .monitor-flow li + li { border-left: 0; border-top: 1px solid rgba(255, 255, 255, .18); padding-top: 16px; }
+      html[data-design="v2"] .monitor-flow li + li::before { top: 18px; }
       html[data-design="v2"] .form-shell { border-radius: 20px; }
     }
   </style>
@@ -1236,9 +1258,8 @@
             </h1>
 
             <p class="lead">
-              商談に同席するAI。社内のログを毎朝まとめるAI。業務を可視化してAI化できる仕事を探すAI。顧客に補助金情報を毎週届けるAI。
-              ライトアップが<b>自社でも毎日使っている4つ</b>を、<b>従業員20名未満の企業さま限定で1年間0円</b>でお使いいただけます。
-              初期費用も月額料金もいただきません。ご負担は<b>API利用料などの実費のみ</b>（目安：月数千円／ご利用量により変動します）。
+              ライトアップが自社で使う4つのAIを、<b>従業員20名未満の企業さまへ1年間0円</b>でご案内します。
+              初期費用・月額料金は0円。ご負担は<b>API利用料などの実費のみ</b>です（目安：月数千円／ご利用量により変動します）。
             </p>
           </div>
 
@@ -1294,25 +1315,34 @@
         <p class="eyebrow">Why free</p>
         <h2 class="title">なぜ、0円なのか。</h2>
         <p class="section-lead">
-          本来は月額5万円から10万円をいただくサービスです。それを1年間0円で開放するのには、こちらにも理由があります。
+          最初の10社には、実際に使った声と改善のヒントをお願いしています。だから、1年間0円でお試しいただけます。
         </p>
 
         <div class="hgrid why-grid">
           <div class="why-card">
             <span class="n">01</span>
-            <h3>事例と、率直なご意見がほしい。</h3>
-            <p>1,000社に届ける前に足りていないのは、実際に使われた事例と、現場からの率直なご意見です。だから最初の10社さまは1年間0円にしました。</p>
+            <h3>実際の事例をつくりたい。</h3>
+            <p>次に届ける会社へ、机上ではない使い方をお伝えするためです。</p>
           </div>
           <div class="why-card">
             <span class="n">02</span>
-            <h3>お願いするのは、2つだけ。</h3>
-            <p>後日、使ってみた感想をうかがう取材をさせてください。そして「ここで止まった」という不具合を教えてください。いただいたご要望は、そのまま設計に反映されます。</p>
+            <h3>率直な改善点を知りたい。</h3>
+            <p>止まった場所や使いにくさを、次の改善に反映します。</p>
           </div>
           <div class="why-card">
             <span class="n">03</span>
-            <h3>1年後の継続は、自動ではありません。</h3>
-            <p>期間が終わったあとに、正式な内容と料金をご案内します。そのうえで、続けるかどうかをお選びいただけます。利用期間・上限・データの取り扱いは、開始前に書面で確認します。</p>
+            <h3>継続するかは、あとで選べる。</h3>
+            <p>1年後、正式な内容と料金を確認してからお決めいただけます。</p>
           </div>
+        </div>
+
+        <div class="monitor-flow" aria-labelledby="monitor-flow-title">
+          <h3 id="monitor-flow-title">モニター利用までの流れ</h3>
+          <ol>
+            <li><strong>無料セミナーに参加</strong><p>4サービスと利用条件を確認します。</p></li>
+            <li><strong>対象サービスを相談</strong><p>試したい業務とデータの扱いをすり合わせます。</p></li>
+            <li><strong>合意後、1年間試す</strong><p>利用上限などを開始前に書面で確認します。</p></li>
+          </ol>
         </div>
       </div>
     </section>
@@ -1338,9 +1368,7 @@
               <div class="svc-title-copy"><div class="svc-title-line"><h3>スーパーマネージャー</h3><span class="svc-availability">募集中</span></div></div>
             </div>
             <p class="catch">心配性の営業部長が、商談の前日から終わった5分後まで起きています。</p>
-            <p class="desc">
-              オンライン商談に同席するAIです。前日にはお客様へ「明日の商談の予告編」を送って聞きたいことを先にうかがい、商談中はいま出すべき事例や切り返しをその場で耳打ちします。15分ごとに認識のズレを止め、終わって5分後には次の一手を用意します。エース営業が商談の場でやっている判断を、AIにして全員に配るサービスです。
-            </p>
+            <p class="desc">商談前の準備から商談中の助言、終了後のフォローまでを支えるAIです。経験豊富な営業の判断を、チームで使いやすくします。</p>
             <dl class="svc-facts">
               <div>
                 <dt>できること</dt>
@@ -1370,9 +1398,7 @@
               <div class="svc-title-copy"><div class="svc-title-line"><h3>Elliot（エリオット）</h3><span class="svc-availability">募集中</span></div></div>
             </div>
             <p class="catch">みんなが眠っているあいだに、社内のログを全部読んでおくコビトAIです。</p>
-            <p class="desc">
-              打ち合わせの議事録、電話の会話ログ、日報、チャット。書式がばらばらでも、すでにGoogleドライブに置かれているものをそのまま読みます。夜0時に集めて読み、朝7時には「今日、朝いちでメンバーに何と声をかけるか」まで書いた1通が届きます。月末には経営レポートが1本まとまります。社内に新しく何かを書き足していただく必要はありません。
-            </p>
+            <p class="desc">議事録・電話・日報・チャットを横断し、毎朝の示唆と月次レポートをまとめるAIです。新しい記入作業は必要ありません。</p>
             <dl class="svc-facts">
               <div>
                 <dt>できること</dt>
@@ -1402,9 +1428,7 @@
               <div class="svc-title-copy"><div class="svc-title-line"><h3>ワークログ・インサイト</h3><span class="svc-availability">残り50台</span></div></div>
             </div>
             <p class="catch">勘ではなく事実で、AI化する場所を決められます。</p>
-            <p class="desc">
-              1分に1回だけパソコンの画面を記録し、その時間が何の仕事だったかをAIが判定します。探すのはサボっている人ではありません。どの仕事に何時間かかっていて、そのうちどれをAIに任せられるのか。削減できる時間と実装のしやすさで優先順位をつけて出します。社員のみなさんに新しい入力作業は発生しません。生の記録画像は管理画面に表示せず、集計された結果をお見せします。
-            </p>
+            <p class="desc">PC上の業務を把握し、AI化・自動化の候補を優先順位付きで提示します。生の記録画像は管理画面に表示しません。</p>
             <dl class="svc-facts">
               <div>
                 <dt>できること</dt>
@@ -1434,9 +1458,7 @@
               <div class="svc-title-copy"><div class="svc-title-line"><h3>Jマッチ・エンジン</h3><span class="svc-availability">残り10社</span></div></div>
             </div>
             <p class="catch">御社の名前で、「使える補助金・制度」が毎週お客様に届きます。</p>
-            <p class="desc">
-              眠っている名刺のリストに、補助金・融資・税制優遇の情報を毎週お届けするサービスです。差出人は御社です。国や自治体の公募を毎日見にいくのも、文面を書くのも、送るのもこちらでやります。同じメールの中で、その制度で買えるものとして御社の商材が並びます。獲得したお客様は、御社のお客様です。
-            </p>
+            <p class="desc">補助金・融資・税制優遇の情報と自社商材を組み合わせ、御社名義で定期的に案内します。獲得したお客様は、御社のお客様です。</p>
             <dl class="svc-facts">
               <div>
                 <dt>できること</dt>
@@ -1472,18 +1494,18 @@
         <div class="hgrid seminar-grid">
           <div class="sem-card">
             <span class="k">Part 1</span>
-            <h3>いま知っておきたい、AI活用の最前線</h3>
-            <p>（株）ライトアップ代表の白石が、この1年でAIに何ができるようになったのかを解説します。</p>
+            <h3>4つのAIで減らせる仕事</h3>
+            <p>商談・情報整理・業務可視化・顧客フォローに分けて、使いどころを解説します。</p>
           </div>
           <div class="sem-card">
             <span class="k">Part 2</span>
-            <h3>4つのAI SaaSと、無料モニターのご案内</h3>
-            <p>スーパーマネージャー／Elliot／ワークログ・インサイト／Jマッチ・エンジンを1サービスずつご紹介します。</p>
+            <h3>モニターの対象・条件</h3>
+            <p>対象サービス、1年間0円の条件、実費とデータの取り扱いを確認します。</p>
           </div>
           <div class="sem-card">
             <span class="k">Q &amp; A</span>
-            <h3>「この業務、AIにできますか？」</h3>
-            <p>お申し込みフォームにご記入いただいたご要望について、実現の可否とおおよその費用を解説します。</p>
+            <h3>相談したい業務の確認</h3>
+            <p>お申し込みフォームのご要望をもとに、実現の可否とおおよその費用を解説します。</p>
           </div>
         </div>
       </div>
