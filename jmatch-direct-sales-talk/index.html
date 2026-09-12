@@ -91,10 +91,10 @@ body.hd-hide .topbar{transform:translateY(calc(-1 * var(--hdh,54px)))}
 
 /* ===== 検索と絞り込み ===== */
 .find{background:var(--paper);border-bottom:1px solid var(--rule-lite)}
-.find-in{max-width:1280px;margin:0 auto;padding:11px 28px 13px}
-.srch{position:relative}
+.find-in{max-width:1280px;margin:0 auto;padding:9px 28px 10px;display:flex;align-items:center;gap:8px 14px;flex-wrap:wrap}
+.srch{position:relative;flex:1 1 300px;min-width:180px}
 .srch input{
-  width:100%;height:46px;padding:0 46px 0 42px;
+  width:100%;height:44px;padding:0 44px 0 40px;
   font-family:inherit;font-size:15px;color:var(--ink);
   background:var(--soft);border:1px solid transparent;border-radius:2px;outline:none;
   transition:border-color .15s ease,background .15s ease;
@@ -104,9 +104,9 @@ body.hd-hide .topbar{transform:translateY(calc(-1 * var(--hdh,54px)))}
 .srch .ic{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--gray2);pointer-events:none}
 .srch .clr{position:absolute;right:2px;top:50%;transform:translateY(-50%);width:44px;height:44px;border:0;background:none;cursor:pointer;color:var(--gray);font-size:19px;line-height:1;display:none}
 .srch.has .clr{display:block}
-.fchips{display:flex;flex-wrap:wrap;gap:8px;margin-top:11px;align-items:center}
+.fchips{display:flex;flex-wrap:wrap;gap:6px;align-items:center;flex:0 1 auto}
 .fchip{
-  flex:0 0 auto;min-height:44px;padding:0 14px;border-radius:2px;
+  flex:0 0 auto;min-height:44px;padding:0 12px;border-radius:2px;
   font-family:inherit;font-size:12.5px;font-weight:700;color:var(--ink2);
   background:var(--paper);border:1px solid var(--line2);cursor:pointer;
   transition:background .15s ease,color .15s ease,border-color .15s ease;
@@ -114,7 +114,7 @@ body.hd-hide .topbar{transform:translateY(calc(-1 * var(--hdh,54px)))}
 .fchip:hover{border-color:var(--ink)}
 .fchip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .fchip b{font-weight:900;margin-left:6px;opacity:.55;font-family:Inter,sans-serif}
-.hits{margin-left:auto;font-family:Inter,sans-serif;font-size:12px;font-weight:700;color:var(--gray2);white-space:nowrap}
+.hits{margin-left:4px;font-family:Inter,sans-serif;font-size:12px;font-weight:700;color:var(--rule-num);white-space:nowrap}
 
 /* ===== 表紙 ===== */
 .hero{padding:60px 0 40px;border-bottom:1px solid var(--ink)}
@@ -317,7 +317,9 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable{display:none
   .wrap{padding:0 18px}
   .hd-in{padding:8px 18px;gap:10px}
   .hd-sub{display:none}
-  .find-in{padding:10px 18px 12px}
+  .find-in{padding:9px 18px 10px}
+  .srch{flex:1 1 100%}
+  .hits{margin-left:auto}
   .nums-in{padding:24px 18px 26px}
   .hero{padding:38px 0 30px}
   .talk{--talk-pad:15px}
@@ -363,7 +365,7 @@ body.only .memo,body.only .ng,body.only .figure,body.only .hideable{display:none
   <div class="find-in">
     <div class="srch" id="srch">
       <svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
-      <input id="q" type="search" placeholder="言われた言葉で探す（例：高い、通りますか、検討します、ChatGPT）" aria-label="台本を検索">
+      <input id="q" type="search" placeholder="言われた言葉で探す（高い／通りますか／検討します）" aria-label="台本を検索">
       <button class="clr" id="clr" type="button" aria-label="検索条件を消す">&times;</button>
     </div>
     <div class="fchips" role="group" aria-label="フェーズで絞り込む">
