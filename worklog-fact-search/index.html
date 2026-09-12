@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ワークログ ファクトサーチ｜「3か月前のあのとき」に、答えが返ってくる。</title>
+<meta name="description" content="ワークログ・インサイトで貯まった画面の記録に、あとから日本語で質問できるオプション機能。記憶や自己申告ではなく、そのとき画面にあった事実をもとにAIが答えます。">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://writeup-inc.github.io/saas/worklog-fact-search/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ワークログ ファクトサーチ｜「3か月前のあのとき」に、答えが返ってくる。">
+<meta property="og:description" content="貯まった画面の記録に、あとから日本語のまま質問できます。ワークログ・インサイトの別途有料オプション。">
+<meta property="og:url" content="https://writeup-inc.github.io/saas/worklog-fact-search/">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;family=Noto+Sans+JP:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+/* ── lp-base.css（初期CSS：改行制御／最小文字サイズ／固定CTAの逃げ） ───── */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase],
+.stitle, .big, .qtxt, .ask-q, .close, .flow-strong, .fact-close, .hero-sub, .final-lead {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase],
+  .stitle, .big, .qtxt, .ask-q, .close, .flow-strong, .fact-close, .hero-sub, .final-lead { word-break: normal; }
+}
+.nobr { white-space: nowrap; }
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+
+/* ── ワークログ共通トークン（親LPと同一） ───────────────────── */
+:root{
+  --blue:#1a4fa0;
+  --blue-d:#123772;
+  --blue-l:#e8eef8;
+  --ink:#111318;
+  --gray:#525763;
+  --gray2:#8d93a0;
+  --line:#d9dce3;
+  --paper:#faf9f5;
+  --faint:#eef0f4;
+}
+*{margin:0;padding:0}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:clip}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.85;
+  -webkit-font-smoothing:antialiased;
+  max-width:100%;
+  overflow-x:clip;
+}
+.en{font-family:'Inter',sans-serif}
+.num{font-family:'Inter',sans-serif;font-feature-settings:"tnum"}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 28px}
+a{color:inherit;text-decoration:none}
+a:focus-visible{outline:3px solid #7ea6e8;outline-offset:4px}
+svg{display:block}
+
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* ---------- header ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  background:rgba(250,249,245,.88);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.hd{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:900;font-size:14px;letter-spacing:.08em;min-width:0}
+.logo .sq{width:12px;height:12px;background:var(--blue);flex:none}
+.logo .opt{font-family:'Inter',sans-serif;font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--blue);background:var(--blue-l);padding:3px 8px;flex:none}
+.hd-nav{display:flex;align-items:center;gap:26px}
+.hd-nav a.l{font-size:13px;font-weight:700;color:var(--gray);white-space:nowrap}
+.hd-nav a.l:hover{color:var(--blue)}
+.hd-cta{
+  font-size:13px;font-weight:700;color:#fff;background:var(--ink);
+  padding:11px 20px;letter-spacing:.06em;min-height:40px;display:inline-flex;align-items:center;
+  transition:background .25s;white-space:nowrap;
+}
+.hd-cta:hover{background:var(--blue)}
+@media (max-width:920px){.hd-nav a.l{display:none}}
+@media (max-width:400px){.logo .opt{display:none}}
+
+/* ---------- hero ---------- */
+.hero{padding:146px 0 92px;position:relative;overflow:hidden}
+.hero::before{
+  content:"";position:absolute;right:-140px;top:-120px;width:620px;height:620px;
+  background:radial-gradient(circle at center,rgba(26,79,160,.07),transparent 68%);pointer-events:none;
+}
+.hero-inner{display:grid;grid-template-columns:1fr 430px;gap:60px;align-items:center;position:relative}
+.hero-label{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--blue);margin-bottom:22px;flex-wrap:wrap}
+.hero-label .sq{width:10px;height:10px;background:var(--blue);flex:none}
+.hero-label .back{display:inline-flex;align-items:center;gap:7px;color:var(--gray);font-size:13px;font-weight:700;padding:10px 0;min-height:44px;border-bottom:1px solid var(--line)}
+.hero-label .back:hover{color:var(--blue);border-bottom-color:var(--blue)}
+.hero-label .back svg{width:14px;height:14px;flex:none}
+.hero h1{font-weight:900;font-size:clamp(32px,5.4vw,68px);line-height:1.28;letter-spacing:-.025em}
+.hero h1 .b{color:var(--blue)}
+.hero-sub{margin-top:30px;font-size:16.5px;color:var(--gray);max-width:600px}
+.hero-actions{margin-top:38px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.hero-cta{display:inline-flex;align-items:center;gap:14px;background:var(--blue);color:#fff;font-weight:700;font-size:16px;padding:20px 40px;letter-spacing:.06em;min-height:44px;transition:background .25s}
+.hero-cta:hover{background:var(--blue-d)}
+.hero-cta2{display:inline-flex;align-items:center;gap:12px;border:2px solid var(--ink);color:var(--ink);font-weight:700;font-size:15px;padding:18px 30px;min-height:44px;transition:.25s}
+.hero-cta2:hover{background:var(--ink);color:#fff}
+.trust-note{margin-top:26px;display:flex;gap:22px;flex-wrap:wrap;font-size:13px;font-weight:700;color:var(--gray)}
+.trust-note span{display:flex;align-items:center;gap:8px}
+.trust-note span::before{content:"";width:8px;height:8px;background:var(--blue);flex:none}
+@media (max-width:600px){.hero h1{font-size:33px;line-height:1.3}}
+
+/* hero mock：質問ボックス */
+.ask-mock{background:#fff;border:1px solid var(--line);box-shadow:16px 16px 0 rgba(26,79,160,.10)}
+.ask-bar{display:flex;align-items:center;gap:9px;padding:13px 16px;border-bottom:1px solid var(--line);font-size:12px;font-weight:800;letter-spacing:.1em;color:var(--gray)}
+.ask-bar .sq{width:9px;height:9px;background:var(--blue);flex:none}
+.ask-bar .badge{margin-left:auto;font-family:'Inter',sans-serif;font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--blue);background:var(--blue-l);padding:3px 9px}
+.ask-body{padding:22px 20px 24px}
+.ask-q{display:flex;gap:10px;align-items:flex-start;background:var(--blue-l);padding:14px 16px;font-size:14.5px;font-weight:700;color:var(--blue-d);line-height:1.7}
+.ask-q .ic{font-family:'Inter',sans-serif;font-size:12px;font-weight:800;color:var(--blue);flex:none;padding-top:2px}
+.ask-reading{display:flex;align-items:center;gap:10px;margin:16px 2px;font-size:12px;font-weight:700;color:var(--gray2);letter-spacing:.04em}
+.ask-reading .bar{flex:1;height:3px;background:var(--faint);position:relative;overflow:hidden}
+.ask-reading .bar i{position:absolute;left:0;top:0;bottom:0;width:62%;background:var(--blue)}
+.ask-a{border:1px solid var(--line);border-left:4px solid var(--blue);padding:16px 18px;font-size:14.5px;line-height:1.9;color:var(--ink)}
+.ask-a b{color:var(--ink)}
+.ask-src{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
+.ask-src span{font-family:'Inter',sans-serif;font-size:12px;font-weight:700;color:var(--gray);background:var(--faint);padding:5px 10px}
+.mock-note{margin-top:12px;font-size:12px;color:var(--gray2);text-align:right}
+
+/* ---------- 役割分担バー（親の .stats と同じ白地1本バー） ---------- */
+.stats2{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
+.sgrid2{display:grid;grid-template-columns:1fr 1fr}
+.sgrid2 > div{padding:30px 26px}
+.sgrid2 > div + div{border-left:1px solid var(--line)}
+.sgrid2 .on{background:var(--blue-l)}
+.sgrid2 .lb{display:block;font-family:'Inter',sans-serif;font-size:12px;font-weight:800;letter-spacing:.16em;color:var(--gray2);margin-bottom:10px}
+.sgrid2 .on .lb{color:var(--blue)}
+.sgrid2 b{display:block;font-size:clamp(18px,2.2vw,24px);font-weight:900;line-height:1.5}
+.sgrid2 .on b{color:var(--blue-d)}
+.sgrid2 small{display:block;margin-top:8px;color:var(--gray);font-size:13px;font-weight:700}
+
+/* ---------- section 共通 ---------- */
+section{padding:96px 0;border-top:1px solid var(--line)}
+.grid2{display:grid;grid-template-columns:280px minmax(0,1fr);gap:56px}
+.grid2 > *{min-width:0}
+.figscroll{max-width:100%}
+.lcol{position:sticky;top:96px;align-self:start;padding-left:24px}
+.lcol::before{content:"";position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--line)}
+.snum{font-family:'Inter',sans-serif;font-weight:900;font-size:clamp(44px,5vw,68px);color:var(--faint);line-height:1}
+.slabel{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.2em;color:var(--blue);margin:14px 0 18px}
+.slabel .sq{width:8px;height:8px;background:var(--blue);flex:none}
+.stitle{font-weight:900;font-size:clamp(24px,2.6vw,34px);line-height:1.5;letter-spacing:.02em}
+.snote{margin-top:18px;font-size:14px;color:var(--gray)}
+.body-t{color:var(--gray);font-size:16px}
+.body-t + .body-t{margin-top:1.2em}
+.big{font-weight:900;font-size:clamp(23px,3.6vw,44px);line-height:1.5;letter-spacing:.02em}
+.big .b{color:var(--blue)}
+
+/* 01 dark */
+.problem{background:var(--ink);color:#fff;border-top:none}
+.problem .lcol::before{background:#3a3f4a}
+.problem .snum{color:#23262e}
+.problem .slabel{color:#7ea6e8}
+.problem .slabel .sq{background:#7ea6e8}
+.problem .stitle{color:#fff}
+.problem .big .b{color:#7ea6e8}
+.problem .body-t{color:#b7bcc6;margin-top:28px;max-width:640px}
+.problem .close{margin-top:34px;font-size:16px;font-weight:700;color:#fff;line-height:1.9;border-left:4px solid #7ea6e8;padding-left:18px}
+.tlfig{margin-top:40px;border:1px solid #3a3f4a;padding:24px 22px 18px}
+.tlfig .ft-t{font-family:'Inter',sans-serif;font-size:12px;font-weight:800;letter-spacing:.14em;color:#8d93a0;margin-bottom:16px}
+.figscroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.figscroll svg{display:block}
+.figscroll-hint{display:none;font-size:12px;color:#8d93a0;margin-top:10px}
+@media (max-width:880px){
+  .figscroll svg{min-width:680px}
+  .figscroll-hint{display:block}
+}
+
+/* 02 質問カード */
+.qcards{display:grid;gap:20px}
+.qcard{background:#fff;border:1px solid var(--line);padding:26px 26px 24px}
+.qcard .qic{width:44px;height:44px;margin-bottom:16px}
+.qcard .qh{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:.16em;color:var(--blue);margin-bottom:12px}
+.qcard .qh .sq{width:9px;height:9px;background:var(--blue);flex:none}
+.qcard .qtxt{font-weight:900;font-size:clamp(17px,2vw,21px);line-height:1.6;letter-spacing:.01em}
+.qcard .qdesc{margin-top:12px;font-size:15px;color:var(--gray)}
+.qcard .qa{margin-top:18px;border-top:1px dashed var(--line);padding-top:16px;font-size:14.5px;line-height:1.9;color:var(--gray)}
+.qcard .qa .lb{font-family:'Inter',sans-serif;font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--gray2);display:block;margin-bottom:6px}
+.qcard .qa b{color:var(--ink)}
+.samp{margin-top:22px;font-size:12px;color:var(--gray2)}
+
+/* 03 flow */
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:10px;align-items:stretch}
+.fnode{background:#fff;border:1px solid var(--line);padding:24px 20px}
+.fnode .ic{width:44px;height:44px;margin-bottom:16px}
+.fen{font-family:'Inter',sans-serif;font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--blue);margin-bottom:8px}
+.fnode h3{font-size:17px;font-weight:900;margin-bottom:10px;line-height:1.5}
+.fnode p{font-size:14px;color:var(--gray);line-height:1.85}
+.farrow{display:flex;align-items:center;justify-content:center}
+.farrow svg{width:20px;height:20px}
+.flow-strong{margin-top:30px;background:var(--blue-l);border-left:4px solid var(--blue);padding:20px 22px;font-size:15.5px;font-weight:700;color:var(--blue-d);line-height:1.9}
+
+/* 04 3列比較 */
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.tri > div{background:#fff;padding:26px 22px}
+.tri .th{font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--gray2);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.tri .th .sq{width:9px;height:9px;background:var(--gray2);flex:none}
+.tri > div.fact{background:var(--blue-l)}
+.tri > div.fact .th{color:var(--blue)}
+.tri > div.fact .th .sq{background:var(--blue)}
+.tri h3{font-size:19px;font-weight:900;margin-bottom:12px}
+.tri li{list-style:none;position:relative;padding:8px 0 8px 18px;font-size:14.5px;color:var(--gray);border-top:1px solid var(--line)}
+.tri li::before{content:"";position:absolute;left:0;top:17px;width:7px;height:7px;background:var(--gray2)}
+.tri > div.fact li{color:var(--ink);font-weight:700;border-top-color:rgba(26,79,160,.18)}
+.tri > div.fact li::before{background:var(--blue)}
+.counts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-top:none;margin-bottom:0}
+.counts div{background:#fff;padding:22px 14px;text-align:center}
+.counts b{display:block;font-family:'Inter',sans-serif;font-size:clamp(19px,2.2vw,26px);font-weight:900;color:var(--blue);line-height:1.25}
+.counts small{display:block;margin-top:6px;color:var(--gray);font-size:12.5px;font-weight:700}
+.fact-close{margin-top:28px;font-size:17px;font-weight:900;line-height:1.8}
+
+/* 05 policy */
+.policy{background:var(--faint)}
+.pol{display:grid;gap:16px}
+.pol div{background:#fff;padding:26px 28px;border-left:4px solid var(--blue)}
+.pol h3{font-size:18px;font-weight:900;margin-bottom:10px}
+.pol p{font-size:15px;color:var(--gray)}
+
+/* final */
+.final{background:linear-gradient(160deg,#0d1c33 0%,#12305e 52%,#1a4fa0 100%);color:#fff;padding:110px 0 118px;position:relative;overflow:hidden;border-top:none}
+.final::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 78% 20%,rgba(50,112,213,.40),transparent 34%);pointer-events:none}
+.final .wrap{position:relative;z-index:1}
+.final-kicker{font-family:'Inter',sans-serif;font-size:12px;font-weight:800;letter-spacing:.22em;color:#8db4f0;margin-bottom:20px}
+.final h2{font-weight:900;font-size:clamp(28px,4.6vw,58px);line-height:1.36;letter-spacing:.015em;max-width:20em}
+.final h2 .b{color:#8db4ff}
+.final-lead{margin-top:26px;max-width:680px;font-size:16px;color:#c6d3e9;line-height:2}
+.final-thesis{margin:46px 0 0;max-width:900px;padding:34px 38px;background:#fff;color:var(--ink);border-left:8px solid var(--blue);box-shadow:16px 16px 0 rgba(32,91,183,.45)}
+.final-thesis p{font-size:16px;font-weight:700;line-height:1.95;color:var(--gray)}
+.final-thesis p b{color:var(--ink)}
+.final-actions{margin-top:46px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.final-cta{display:inline-flex;align-items:center;background:#fff;color:var(--blue);font-weight:900;font-size:16px;padding:21px 46px;letter-spacing:.06em;min-height:48px;box-shadow:8px 8px 0 rgba(13,28,51,.5);transition:.25s}
+.final-cta:hover{background:#8db4ff;color:#0b1830;transform:translate(-2px,-2px);box-shadow:12px 12px 0 rgba(13,28,51,.5)}
+.final-cta:focus-visible{outline:3px solid #8db4ff;outline-offset:5px}
+.final-cta2{display:inline-flex;align-items:center;gap:10px;border:2px solid rgba(255,255,255,.5);color:#fff;font-weight:700;font-size:15px;padding:18px 28px;min-height:48px;transition:.25s}
+.final-cta2:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.fnote{margin-top:22px;font-size:12.5px;color:#93a9c9}
+
+footer{border-top:1px solid var(--line);padding:38px 0;font-size:12.5px;color:var(--gray2)}
+.ft{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.ft .logo{color:var(--ink)}
+
+@media (max-width:1000px){
+  .hero-inner{grid-template-columns:1fr;gap:44px}
+  .hero{padding:126px 0 76px}
+  .grid2{grid-template-columns:1fr;gap:34px}
+  .lcol{position:static}
+  .flow{grid-template-columns:1fr auto 1fr;gap:10px}
+}
+@media (max-width:760px){
+  section{padding:72px 0}
+  .sgrid2{grid-template-columns:1fr}
+  .sgrid2 > div + div{border-left:none;border-top:1px solid var(--line)}
+  .tri{grid-template-columns:1fr}
+  .counts{grid-template-columns:1fr 1fr}
+  .flow{grid-template-columns:1fr}
+  .farrow{padding:2px 0}
+  .farrow svg{transform:rotate(90deg)}
+  .final{padding:80px 0 88px}
+  .final-thesis{padding:26px 22px;box-shadow:9px 9px 0 rgba(32,91,183,.45);border-left-width:5px}
+  .final-cta,.final-cta2{width:100%;justify-content:center}
+  .hero-cta,.hero-cta2{width:100%;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap hd">
+    <a class="logo" href="#top"><span class="sq"></span><span class="en">WORKLOG FACT SEARCH</span><span class="opt en">OPTION</span></a>
+    <nav class="hd-nav">
+      <a class="l" href="#ask">聞けること</a>
+      <a class="l" href="#how">答え方</a>
+      <a class="l" href="#fact">根拠</a>
+      <a class="l" href="#policy">導入方針</a>
+      <a class="hd-cta" href="#cta">導入相談</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div>
+      <div class="hero-label">
+        <span class="sq"></span>ワークログ・インサイト 追加オプション
+        <a class="back" href="https://writeup-inc.github.io/saas/worklog-insight/">本体を見る<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 10h12M11 5l5 5-5 5"/></svg></a>
+      </div>
+      <h1>「3か月前の<br>あのとき」に、<br><span class="b">答えが返ってくる。</span></h1>
+      <p class="hero-sub">週次レポートが答えるのは「来週どこを変えるか」。ファクトサーチが答えるのは、過ぎた日の事実です。1年でPC1台あたり約150,000枚まで積み上がる画面の記録に、日本語のまま質問できます。ワークログ・インサイトの別途有料オプションです。</p>
+      <div class="hero-actions">
+        <a class="hero-cta" href="#cta">ファクトサーチについて相談する</a>
+        <a class="hero-cta2" href="#ask">何が聞けるのかを見る</a>
+      </div>
+      <div class="trust-note"><span>質問は日本語のまま</span><span>現場の入力作業 0</span></div>
+    </div>
+
+    <div class="ask-mock" aria-hidden="true">
+      <div class="ask-bar"><span class="sq"></span><span class="en">FACT SEARCH</span><span class="badge en">SAMPLE</span></div>
+      <div class="ask-body">
+        <div class="ask-q"><span class="ic en">Q</span><span>3か月前のあのとき、Aプロジェクトで何をやっていたか</span></div>
+        <div class="ask-reading">
+          <span class="en">RE-READING 2026.06.08 – 06.14</span>
+          <span class="bar"><i></i></span>
+        </div>
+        <div class="ask-a">
+          この週は<b>見積書の作り直しと、先方への確認待ち</b>が中心でした。仕様変更の連絡を受けたあと、見積の修正版が複数回つくられています。週の後半からは別案件に時間が移っています。
+        </div>
+        <div class="ask-src">
+          <span>2026.06.08 – 06.14</span><span>対象 3名</span><span>画面の記録から</span>
+        </div>
+        <p class="mock-note">画面はイメージ／回答文はサンプルです</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="stats2">
+  <div class="wrap"><div class="sgrid2">
+    <div>
+      <span class="lb en">WEEKLY REPORT</span>
+      <b>来週、どこを変えるか</b>
+      <small>ワークログ・インサイト（本体）</small>
+    </div>
+    <div class="on">
+      <span class="lb en">FACT SEARCH</span>
+      <b>過ぎた日、何があったか</b>
+      <small>ファクトサーチ（本オプション）</small>
+    </div>
+  </div></div>
+</div>
+
+<!-- ===== 01 ===== -->
+<section class="problem">
+  <div class="wrap grid2">
+    <div class="lcol">
+      <div class="snum en">01</div>
+      <div class="slabel"><span class="sq"></span><span class="en">WHAT REPORTS DON'T ANSWER</span></div>
+      <div class="stitle">「あのとき」は、<br>誰も答えられない。</div>
+    </div>
+    <div class="rv">
+      <p class="big">毎週の報告は届く。<br><span class="b">過ぎた日の事実は、届かない。</span></p>
+      <p class="body-t">週次レポートが答えるのは「来週、どこを変えるか」です。けれども実務で急に必要になるのは、過ぎた一点についての事実のほうです。あの案件はどこで止まったのか。あの週、担当は何に時間を取られていたのか。手元に残っているのは記憶と、あとから書かれた報告だけ。</p>
+
+      <div class="tlfig">
+        <div class="ft-t">FIG. 記録の時間軸と、2つの答え</div>
+        <div class="figscroll">
+          <svg viewBox="0 0 700 232" role="img" aria-label="導入日より前は答えられない。今日を境に、過去はファクトサーチ、未来は週次レポートが担当する時間軸の図">
+            <!-- 導入日より前（答えられない領域） -->
+            <rect x="20" y="86" width="76" height="46" fill="#1c1f26"/>
+            <text x="58" y="150" fill="#8d93a0" font-size="13" font-family="Noto Sans JP" text-anchor="middle">導入前</text>
+            <text x="58" y="170" fill="#8d93a0" font-size="13" font-family="Noto Sans JP" text-anchor="middle">記録なし</text>
+            <!-- 軸 -->
+            <line x1="96" y1="109" x2="660" y2="109" stroke="#3a3f4a" stroke-width="2"/>
+            <!-- 導入日マーク -->
+            <line x1="96" y1="72" x2="96" y2="146" stroke="#8d93a0" stroke-width="2"/>
+            <text x="104" y="66" fill="#b7bcc6" font-size="13" font-family="Noto Sans JP" font-weight="700">導入日</text>
+            <!-- 今日マーク -->
+            <line x1="452" y1="52" x2="452" y2="176" stroke="#fff" stroke-width="2"/>
+            <circle cx="452" cy="109" r="7" fill="#fff"/>
+            <text x="452" y="42" fill="#fff" font-size="14" font-family="Noto Sans JP" font-weight="700" text-anchor="middle">今日</text>
+            <!-- 過去側：ファクトサーチ -->
+            <path d="M436 84 H150 M164 74 l-14 10 14 10" fill="none" stroke="#7ea6e8" stroke-width="2.6"/>
+            <text x="293" y="66" fill="#7ea6e8" font-size="15" font-family="Noto Sans JP" font-weight="700" text-anchor="middle">ファクトサーチ</text>
+            <text x="293" y="150" fill="#b7bcc6" font-size="13.5" font-family="Noto Sans JP" text-anchor="middle">過ぎた日、何があったか</text>
+            <text x="293" y="172" fill="#8d93a0" font-size="13" font-family="Noto Sans JP" text-anchor="middle">聞かれたときだけ答える</text>
+            <!-- 未来側：週次レポート -->
+            <path d="M468 84 H636 M622 74 l14 10 -14 10" fill="none" stroke="#8d93a0" stroke-width="2.6"/>
+            <text x="552" y="66" fill="#b7bcc6" font-size="15" font-family="Noto Sans JP" font-weight="700" text-anchor="middle">週次レポート</text>
+            <text x="552" y="150" fill="#b7bcc6" font-size="13.5" font-family="Noto Sans JP" text-anchor="middle">来週、どこを変えるか</text>
+            <text x="552" y="172" fill="#8d93a0" font-size="13" font-family="Noto Sans JP" text-anchor="middle">毎週、向こうから届く</text>
+            <!-- 注記 -->
+            <text x="20" y="216" fill="#8d93a0" font-size="13" font-family="Noto Sans JP">※ 答えられるのは、記録がある期間だけ。導入日より前にはさかのぼれません。</text>
+          </svg>
+        </div>
+        <p class="figscroll-hint">← 横にスクロールできます</p>
+      </div>
+
+      <p class="close">過ぎた日を人力で調べ直すのは、現実的ではありません。1年でPC1台あたり約150,000枚。人が1枚ずつ遡れる量ではないからです。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 02 ===== -->
+<section id="ask">
+  <div class="wrap grid2">
+    <div class="lcol">
+      <div class="snum en">02</div>
+      <div class="slabel"><span class="sq"></span><span class="en">WHAT YOU CAN ASK</span></div>
+      <div class="stitle">日本語のまま、<br>記録に聞く。</div>
+      <p class="snote">検索キーワードを考える必要はありません。知りたいことを、そのまま文章で書きます。聞き方は大きく3つです。</p>
+    </div>
+    <div class="rv">
+      <div class="qcards">
+        <div class="qcard">
+          <div class="qic"><svg viewBox="0 0 48 48" fill="none" stroke="#1a4fa0" stroke-width="2.4"><circle cx="24" cy="24" r="17"/><path d="M24 13v11l8 5"/></svg></div>
+          <div class="qh"><span class="sq"></span><span class="en">01　BY TIME</span>　時期で聞く</div>
+          <p class="qtxt">「3か月前のあのとき、何をやっていたか」</p>
+          <p class="qdesc">期間を指定して、その時期に何に時間が使われていたかを返します。</p>
+          <div class="qa"><span class="lb en">SAMPLE ANSWER</span>この時期は<b>月次の請求処理と、新規の問い合わせ対応</b>に時間が集中しています。特に月初の数日に処理が偏っていました。</div>
+        </div>
+        <div class="qcard">
+          <div class="qic"><svg viewBox="0 0 48 48" fill="none" stroke="#1a4fa0" stroke-width="2.4"><circle cx="24" cy="17" r="8"/><path d="M9 40c0-8.3 6.7-15 15-15s15 6.7 15 15"/></svg></div>
+          <div class="qh"><span class="sq"></span><span class="en">02　BY PERSON</span>　人で聞く</div>
+          <p class="qtxt">「この人は、この時間、何をやっていたか」</p>
+          <p class="qdesc">担当者と時間帯を指定して、当時の作業内容を返します。</p>
+          <div class="qa"><span class="lb en">SAMPLE ANSWER</span>その時間帯は<b>提案書の作成と、社内システムへの入力</b>が交互に続いています。同じ内容を2か所へ入力し直している箇所がありました。</div>
+        </div>
+        <div class="qcard">
+          <div class="qic"><svg viewBox="0 0 48 48" fill="none" stroke="#1a4fa0" stroke-width="2.4"><path d="M7 12h13l4 6h17v20H7z"/><line x1="7" y1="26" x2="41" y2="26"/></svg></div>
+          <div class="qh"><span class="sq"></span><span class="en">03　BY PROJECT</span>　案件で聞く</div>
+          <p class="qtxt">「この案件はどうだったか」</p>
+          <p class="qdesc">案件名や取引先名を手がかりに、関係する記録を横断して経緯を返します。</p>
+          <div class="qa"><span class="lb en">SAMPLE ANSWER</span>着手から納品までの間に<b>差し戻しが複数回</b>あり、いずれも仕様の認識違いが起点でした。確認待ちの期間が長く残っています。</div>
+        </div>
+      </div>
+      <p class="samp">※ 画面はイメージです。回答文はサンプルで、実際の内容は蓄積された記録によって変わります。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03 ===== -->
+<section id="how" style="background:var(--faint)">
+  <div class="wrap grid2">
+    <div class="lcol">
+      <div class="snum en">03</div>
+      <div class="slabel"><span class="sq"></span><span class="en">HOW IT ANSWERS</span></div>
+      <div class="stitle">探すのではなく、<br>読み直して答える。</div>
+      <p class="snote">あらかじめ作っておいた要約を引き出しているのではありません。質問のたびに、AIがその期間の記録を改めて読み直します。</p>
+    </div>
+    <div class="rv">
+      <div class="flow">
+        <div class="fnode">
+          <div class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="#1a4fa0" stroke-width="2.4"><path d="M8 10h32v22H26l-8 7v-7H8z"/><line x1="15" y1="18" x2="33" y2="18"/><line x1="15" y1="25" x2="27" y2="25"/></svg></div>
+          <div class="fen">01 &nbsp;ASK</div>
+          <h3>聞く</h3>
+          <p>知りたいことを日本語で書きます。期間・人・案件のどれから入っても構いません。</p>
+        </div>
+        <div class="farrow"><svg viewBox="0 0 20 20" fill="none" stroke="#111318" stroke-width="2.4"><path d="M3 10h12M11 5l5 5-5 5"/></svg></div>
+        <div class="fnode">
+          <div class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="#1a4fa0" stroke-width="2.4"><path d="M7 9h34L28 25v13l-8 5V25z"/></svg></div>
+          <div class="fen">02 &nbsp;NARROW</div>
+          <h3>絞る</h3>
+          <p>質問から対象の期間と範囲を決め、読むべき記録を絞り込みます。</p>
+        </div>
+        <div class="farrow"><svg viewBox="0 0 20 20" fill="none" stroke="#111318" stroke-width="2.4"><path d="M3 10h12M11 5l5 5-5 5"/></svg></div>
+        <div class="fnode">
+          <div class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="#1a4fa0" stroke-width="2.4"><rect x="7" y="9" width="24" height="18"/><rect x="15" y="19" width="24" height="18" fill="#eef0f4"/><circle cx="27" cy="28" r="4.5"/><line x1="30.5" y1="31.5" x2="34" y2="35"/></svg></div>
+          <div class="fen">03 &nbsp;RE-READ</div>
+          <h3>読み直す</h3>
+          <p>絞り込んだ画面の記録を、AIがその場で分析し直します。保存済みの要約の使い回しではありません。</p>
+        </div>
+        <div class="farrow"><svg viewBox="0 0 20 20" fill="none" stroke="#111318" stroke-width="2.4"><path d="M3 10h12M11 5l5 5-5 5"/></svg></div>
+        <div class="fnode">
+          <div class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="#1a4fa0" stroke-width="2.4"><rect x="8" y="8" width="32" height="32"/><line x1="15" y1="18" x2="33" y2="18"/><line x1="15" y1="24" x2="33" y2="24"/><line x1="15" y1="30" x2="26" y2="30"/></svg></div>
+          <div class="fen">04 &nbsp;ANSWER</div>
+          <h3>文章で返す</h3>
+          <p>分かったことを文章で返します。記録にないことは「記録にない」と返します。</p>
+        </div>
+      </div>
+      <div class="flow-strong">聞き方を変えれば、返ってくる答えも変わります。一度で完璧な答えが出るとは限りません。聞き直しながら近づけていく使い方を前提にしています。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04 ===== -->
+<section id="fact">
+  <div class="wrap grid2">
+    <div class="lcol">
+      <div class="snum en">04</div>
+      <div class="slabel"><span class="sq"></span><span class="en">WHY IT IS A FACT</span></div>
+      <div class="stitle">根拠は、記憶でも<br>申告でもない。</div>
+      <p class="snote">同じ「先月の状況」でも、どこから持ってきた情報かで確からしさは変わります。</p>
+    </div>
+    <div class="rv">
+      <div class="tri">
+        <div>
+          <div class="th"><span class="sq"></span><span class="en">MEMORY</span></div>
+          <h3>記憶</h3>
+          <ul><li>時間が経つほど曖昧になる</li><li>都合のいい部分が残りやすい</li></ul>
+        </div>
+        <div>
+          <div class="th"><span class="sq"></span><span class="en">SELF-REPORT</span></div>
+          <h3>自己申告</h3>
+          <ul><li>書く手間がかかる</li><li>書かれなかったことは残らない</li></ul>
+        </div>
+        <div class="fact">
+          <div class="th"><span class="sq"></span><span class="en">SCREEN LOG</span></div>
+          <h3>画面の記録</h3>
+          <ul><li>作業と同時に自動で残る</li><li>あとから書き換えられない</li></ul>
+        </div>
+      </div>
+      <div class="counts">
+        <div><b class="num nobr">60枚</b><small>1時間</small></div>
+        <div><b class="num nobr">600枚</b><small>1日（10時間稼働）</small></div>
+        <div><b class="num nobr">12,000枚</b><small>1か月（20営業日）</small></div>
+        <div><b class="num nobr">約150,000枚</b><small>1年・PC1台あたり</small></div>
+      </div>
+      <p class="fact-close">この枚数が、そのまま答えの裏づけになります。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 05 ===== -->
+<section id="policy" class="policy">
+  <div class="wrap grid2">
+    <div class="lcol">
+      <div class="snum en">05</div>
+      <div class="slabel"><span class="sq"></span><span class="en">HOW WE USE IT</span></div>
+      <div class="stitle">何を聞くために使うか、<br>先に決める。</div>
+      <p class="snote">事実が引き出せるということは、使い方を誤れば人を追い詰める道具にもなります。ワークログ・インサイトと同じ方針で運用します。</p>
+    </div>
+    <div class="rv">
+      <p class="big" style="margin-bottom:34px">見るのは人ではなく、<span class="b">仕事です。</span></p>
+      <div class="pol">
+        <div>
+          <h3>人ではなく、仕事に聞く</h3>
+          <p>勤務態度の評価や犯人探しには使いません。聞くのは「誰が悪かったか」ではなく「その仕事がどう進んだか」です。</p>
+        </div>
+        <div>
+          <h3>1枚ずつ人が追う運用にしない</h3>
+          <p>大量の画面記録をAIが読み、必要な部分だけを文章にして返します。人が1枚ずつ画面をたどって回る使い方は想定していません。</p>
+        </div>
+        <div>
+          <h3>使い方を先に合意する</h3>
+          <p>誰が・何を聞けるのかは、導入時に決めてから開始します。現場への説明の進め方までご一緒します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL ===== -->
+<section class="final" id="cta">
+  <div class="wrap">
+    <div class="final-kicker en">THE ANSWER STARTS TODAY</div>
+    <h2>今日から貯める。<br>1年後、<span class="b">「あのとき」に答える</span>ために。</h2>
+    <p class="final-lead">答えられるのは、記録がある期間だけです。導入前にさかのぼることはできません。1年後に「3か月前のあのとき」を聞ける会社と、聞けない会社の差は、今日ログを貯め始めたかどうかだけです。</p>
+    <div class="final-thesis">
+      <p>ワークログ・インサイトが毎週届けるのは、<b>来週の判断</b>。<br>ファクトサーチが答えるのは、<b>過ぎた日の事実</b>。<br>2つそろって、記録が資産になります。</p>
+    </div>
+    <div class="final-actions">
+      <a class="final-cta" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener noreferrer">ファクトサーチについて相談する</a>
+      <a class="final-cta2" href="https://writeup-inc.github.io/saas/worklog-insight/">ワークログ・インサイトを見る</a>
+    </div>
+    <p class="fnote">ファクトサーチは、ワークログ・インサイトの別途有料オプションです。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap ft">
+    <div class="logo"><span class="sq"></span><span class="en">WORKLOG FACT SEARCH</span></div>
+    <div>&copy; 2026 Lightup Inc.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{rootMargin:'0px 0px -12% 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
