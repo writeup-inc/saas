@@ -198,6 +198,21 @@ section.s{padding:var(--pad) 0;border-top:1px solid var(--gray-08);}
 .price-n{margin-top:12px;font-family:var(--en);font-weight:900;font-size:clamp(40px,5.4vw,68px);line-height:1;letter-spacing:-.045em;color:var(--navy);}
 .price-n small{font-family:var(--jp);font-size:15px;font-weight:900;letter-spacing:.02em;margin-left:7px;}
 .price-c{margin-top:15px;font-size:14px;line-height:1.95;color:var(--gray-60);max-width:24em;text-wrap:balance;}
+.price-was{margin-top:12px;font-family:var(--en);font-weight:900;font-size:clamp(22px,2.8vw,32px);line-height:1;letter-spacing:-.035em;color:var(--gray-40);text-decoration:line-through;text-decoration-thickness:2px;}
+.price-n--sale{margin-top:8px;}
+.price-cap{display:block;width:fit-content;background:var(--navy);color:var(--white);font-size:12px;font-weight:900;letter-spacing:.04em;padding:4px 10px;margin-bottom:10px;}
+.was{color:var(--gray-40);text-decoration-thickness:1.5px;}
+.askmark{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;margin:-15px -8px -15px -2px;vertical-align:middle;background:none;border:0;cursor:pointer;color:var(--navy);font-family:var(--jp);font-size:14px;font-weight:900;line-height:1;}
+.askmark:hover{opacity:.6;}
+.modal[hidden]{display:none;}
+.modal{position:fixed;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;padding:24px;}
+.modal-bd{position:absolute;inset:0;background:rgba(17,17,17,.55);}
+.modal-bx{position:relative;background:var(--white);max-width:520px;width:100%;padding:34px 32px;border-top:4px solid var(--navy);max-height:80vh;overflow-y:auto;}
+.modal-x{position:absolute;top:6px;right:6px;width:44px;height:44px;background:none;border:0;cursor:pointer;font-size:22px;line-height:1;color:var(--gray-60);}
+.modal-k{font-family:var(--en);font-size:12px;font-weight:900;letter-spacing:.24em;color:var(--gray-40);}
+.modal-t{margin-top:10px;font-size:22px;font-weight:900;line-height:1.5;}
+.modal-p{margin-top:16px;font-size:14.5px;line-height:1.95;color:var(--gray-80);}
+@media(max-width:560px){.modal-bx{padding:28px 22px;}.modal-t{font-size:19px;}}
 
 /* 実績 */
 .rank{display:inline-block;font-size:12px;font-weight:900;letter-spacing:.06em;color:var(--white);background:var(--navy);padding:3px 10px;margin-left:12px;vertical-align:2px;white-space:nowrap;}
@@ -397,7 +412,7 @@ footer{padding:56px 0 72px;border-top:1px solid var(--gray-20);}
         <div><dt>提供形態</dt><dd>OEM（ホワイトラベル）</dd></div>
         <div><dt>御社が決めるもの</dt><dd>ロゴ・色・名称のみ</dd></div>
         <div><dt>導入まで</dt><dd>最短1週間</dd></div>
-        <div><dt>費用</dt><dd>初期50万円＋月5万円</dd></div>
+        <div><dt>費用</dt><dd><s class="was">初期50万円</s> 9月末契約まで20万円＋月5万円</dd></div>
         <div><dt>前身サービス実績</dt><dd>累計1,125社</dd></div>
       </dl>
     </aside>
@@ -903,8 +918,9 @@ footer{padding:56px 0 72px;border-top:1px solid var(--gray-20);}
       <div class="price fade">
         <div>
           <div class="price-k">INITIAL</div>
-          <div class="price-n">500,000<small>円</small></div>
-          <p class="price-c">初期費用。導入時のみ。</p>
+          <div class="price-was">500,000円</div>
+          <div class="price-n price-n--sale">200,000<small>円</small></div>
+          <p class="price-c"><span class="price-cap">9月末までのご契約に限り</span>初期費用。導入時のみ。</p>
         </div>
         <div>
           <div class="price-k">MONTHLY</div>
@@ -927,7 +943,7 @@ footer{padding:56px 0 72px;border-top:1px solid var(--gray-20);}
         <div class="proof-g">
           <div>
             <div class="proof-n">1,125<small>社</small></div>
-            <p class="proof-d">前段にあたるサービス「J-System」の累計導入社数。</p>
+            <p class="proof-d">前段にあたるサービス「J-System」<button type="button" class="askmark" data-open="jsys" aria-label="J-Systemとは何かを見る">※</button>の累計導入社数。</p>
           </div>
           <div>
             <div class="proof-n">100<small>以上</small></div>
@@ -1076,6 +1092,31 @@ footer{padding:56px 0 72px;border-top:1px solid var(--gray-20);}
 <script>
 const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.08});
 document.querySelectorAll('.fade').forEach(e=>io.observe(e));
+</script>
+
+<div class="modal" id="jsys" hidden>
+  <div class="modal-bd" data-close></div>
+  <div class="modal-bx" role="dialog" aria-modal="true" aria-labelledby="jsys-t">
+    <button class="modal-x" type="button" data-close aria-label="閉じる">&times;</button>
+    <p class="modal-k">J-SYSTEM</p>
+    <h3 class="modal-t" id="jsys-t">前身のサービスは、何をしていたのか</h3>
+    <p class="modal-p">自分にマッチした公的支援制度 ── 補助金・融資、税制優遇 ── の情報が届く。J-Systemがしていたのは、それだけです。</p>
+    <p class="modal-p">その一点で、月額30,000円でご提供していました。累計1,125社にお使いいただき、うち100以上は自治体・地銀です。</p>
+    <p class="modal-p">Jマッチ・エンジンは、この J-System の上位版にあたります。</p>
+  </div>
+</div>
+<script>
+(function(){
+  var open=null;
+  function show(id){ var m=document.getElementById(id); if(!m) return; m.hidden=false; open=m; document.body.style.overflow='hidden'; }
+  function hide(){ if(!open) return; open.hidden=true; open=null; document.body.style.overflow=''; }
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('[data-open]');
+    if(b){ e.preventDefault(); show(b.getAttribute('data-open')); return; }
+    if(e.target.closest('[data-close]')) hide();
+  });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') hide(); });
+})();
 </script>
 </body>
 </html>

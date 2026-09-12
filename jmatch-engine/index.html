@@ -22,112 +22,124 @@ h1, h2, h3, h4, h5,
 }
 .nobr { white-space: nowrap; }
 :root { --fs-min: 12px; --fs-body: 16px; }
-body { font-size: var(--fs-body); line-height: 1.8; }
+body { font-size: var(--fs-body); line-height: 1.9; }
 small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
 h1, .hero__title { font-size: clamp(1.3rem, 5.2vw, 3.25rem); line-height: 1.35; }
 h2 { font-size: clamp(1.2rem, 3.6vw, 2.1rem); line-height: 1.45; }
 :root { --fixed-cta-h: 0px; }
-body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
 *, *::before, *::after { box-sizing: border-box; }
 img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
 main > *, section > *, .grid > *, .flex > * { min-width: 0; }
 pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
 
-/* ===== tokens ===== */
+/* ===== tokens（OEM／直販ページと同一） ===== */
 :root{
+  --navy:#0B2C5C;
+  --tint:#F3F6FA;
   --ink:#111111;
-  --red:#e60023;
-  --gray:#8a8a8a;
-  --soft:#f2f2f0;
-  --line:#e4e4e0;
+  --white:#FFFFFF;
+  --gray-80:#3A3A3A;
+  --gray-60:#767676;
+  --gray-40:#A8A8A8;
+  --gray-20:#D9D9D9;
+  --jp:'Noto Sans JP',sans-serif;
+  --en:'Inter',sans-serif;
 }
+*{margin:0;padding:0;}
 html{ -webkit-text-size-adjust:100%; }
 body{
-  margin:0; background:#fff; color:var(--ink);
-  font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN",system-ui,sans-serif;
-  letter-spacing:.01em;
-  display:flex; flex-direction:column; min-height:100vh;
+  font-family:var(--jp); background:var(--white); color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh; display:flex; flex-direction:column;
+  padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px));
 }
-.wrap{ width:100%; max-width:1000px; margin:0 auto; padding:0 28px; }
-.en{ font-family:"Inter",sans-serif; }
-.r{ color:var(--red); }
 
-main{ flex:1 0 auto; padding:96px 0 80px; }
-.kicker{ font-size:13px; font-weight:700; letter-spacing:.14em; color:var(--gray); margin:0 0 22px; }
-h1{ font-weight:900; margin:0 0 20px; letter-spacing:-.01em; }
-.desc{ font-size:16px; color:#333; margin:0 0 56px; max-width:34em; }
+/* ===== 背景のSVG ===== */
+.bg{ position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%201200%20800%27%20preserveAspectRatio%3D%27xMidYMid%20slice%27%20fill%3D%27none%27%20stroke%3D%27%230B2C5C%27%3E%3Cg%20opacity%3D%27.07%27%20stroke-width%3D%271%27%3E%3Ccircle%20cx%3D%27905%27%20cy%3D%27300%27%20r%3D%2758%27%2F%3E%3Ccircle%20cx%3D%27905%27%20cy%3D%27300%27%20r%3D%27128%27%2F%3E%3Ccircle%20cx%3D%27905%27%20cy%3D%27300%27%20r%3D%27208%27%2F%3E%3Ccircle%20cx%3D%27905%27%20cy%3D%27300%27%20r%3D%27298%27%2F%3E%3Ccircle%20cx%3D%27905%27%20cy%3D%27300%27%20r%3D%27398%27%2F%3E%3Cpath%20d%3D%27M905%20300%20L640%20150M905%20300%20L1180%20130M905%20300%20L1130%20600M905%20300%20L600%20470M905%20300%20L905%20-60M905%20300%20L520%20300M905%20300%20L820%20700%27%2F%3E%3Crect%20x%3D%27866%27%20y%3D%27278%27%20width%3D%2778%27%20height%3D%2746%27%20rx%3D%272%27%2F%3E%3Cpath%20d%3D%27M866%20278l39%2027%2039-27%27%2F%3E%3C%2Fg%3E%3Cg%20opacity%3D%27.11%27%20stroke-width%3D%271.4%27%3E%3Ccircle%20cx%3D%27640%27%20cy%3D%27150%27%20r%3D%277%27%2F%3E%3Ccircle%20cx%3D%271180%27%20cy%3D%27130%27%20r%3D%277%27%2F%3E%3Ccircle%20cx%3D%271130%27%20cy%3D%27600%27%20r%3D%277%27%2F%3E%3Ccircle%20cx%3D%27600%27%20cy%3D%27470%27%20r%3D%277%27%2F%3E%3Ccircle%20cx%3D%27520%27%20cy%3D%27300%27%20r%3D%277%27%2F%3E%3Ccircle%20cx%3D%27820%27%20cy%3D%27700%27%20r%3D%277%27%2F%3E%3C%2Fg%3E%3Cg%20opacity%3D%27.05%27%20stroke-width%3D%271%27%3E%3Cpath%20d%3D%27M60%2096h120M60%20140h190M60%20184h90M60%20660h150M60%20704h100%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  background-size:cover; background-position:center; background-repeat:no-repeat; }
 
-.choices{ display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
-@media(max-width:760px){ .choices{ grid-template-columns:1fr; } main{ padding:64px 0 56px; } }
+.wrap{ position:relative; z-index:1; width:100%; max-width:880px; margin:0 auto; padding:0 28px; }
+main{ flex:1 0 auto; display:flex; align-items:center; padding:88px 0 72px; }
+@media(max-width:760px){ main{ padding:56px 0 48px; } }
 
-.choice{
-  display:block; border:1px solid var(--ink); padding:34px 32px;
-  text-decoration:none; color:var(--ink); background:#fff;
-  transition:background .2s ease, border-color .2s ease;
+.kicker{ font-family:var(--en); font-size:12px; font-weight:900; letter-spacing:.3em; color:var(--gray-40); margin-bottom:26px; }
+h1{ font-weight:900; letter-spacing:-.01em; margin-bottom:18px; }
+h1 em{ font-style:normal; color:var(--navy); }
+.desc{ font-size:15.5px; color:var(--gray-60); max-width:30em; margin-bottom:56px; line-height:1.95; }
+@media(max-width:760px){ .desc{ margin-bottom:40px; } }
+
+/* ===== 2つの入口 ===== */
+.gate{ border-top:2px solid var(--ink); }
+.opt{
+  display:grid; grid-template-columns:1fr auto; align-items:center; gap:20px 28px;
+  border-bottom:1px solid var(--gray-20); padding:34px 4px 34px 0;
+  text-decoration:none; color:var(--ink);
+  transition:background .2s ease, padding .2s ease;
 }
-.choice:hover{ background:var(--soft); border-color:var(--red); }
-.choice .tag{
-  display:inline-block; font-family:"Inter",sans-serif; font-size:12px; font-weight:700;
-  letter-spacing:.14em; color:var(--red); border:1px solid var(--red);
-  padding:3px 10px; margin:0 0 20px;
+.opt:hover{ background:var(--tint); padding-left:20px; padding-right:20px; }
+.opt-k{ font-family:var(--en); font-size:11px; font-weight:900; letter-spacing:.26em; color:var(--navy); margin-bottom:12px; }
+.opt-t{ font-size:clamp(1.15rem,2.7vw,1.55rem) !important; font-weight:900; line-height:1.5; margin-bottom:12px; }
+.opt-d{ font-size:14px; color:var(--gray-60); line-height:1.9; max-width:30em; margin-bottom:14px; }
+.opt-f{ font-family:var(--en); font-size:14px; font-weight:900; letter-spacing:.01em; color:var(--navy); }
+.opt-f .sep{ color:var(--gray-20); margin:0 10px; }
+.opt-f s{ color:var(--gray-40); text-decoration-thickness:1.5px; margin-right:6px; }
+.opt-a{
+  flex-shrink:0; width:52px; height:52px; border:1px solid var(--navy); border-radius:50%;
+  display:flex; align-items:center; justify-content:center; color:var(--navy);
+  transition:background .2s ease, color .2s ease;
 }
-.choice h2{ font-weight:900; margin:0 0 14px; font-size:clamp(1.15rem,2.6vw,1.5rem) !important; }
-.choice .who{ font-size:14px; font-weight:700; color:var(--ink); margin:0 0 16px; }
-.choice .what{ font-size:14px; color:#333; margin:0 0 22px; line-height:1.9; }
-.choice dl{ margin:0 0 24px; border-top:1px solid var(--line); }
-.choice dl div{ display:flex; gap:14px; border-bottom:1px solid var(--line); padding:10px 0; }
-.choice dt{ flex:0 0 92px; font-size:13px; font-weight:700; color:var(--gray); }
-.choice dd{ margin:0; font-size:14px; font-weight:700; }
-.choice .go{ font-family:"Inter",sans-serif; font-size:13px; font-weight:900; letter-spacing:.1em; color:var(--red); }
+.opt:hover .opt-a{ background:var(--navy); color:var(--white); }
+@media(max-width:620px){
+  .opt{ grid-template-columns:1fr; gap:18px; padding:28px 4px; }
+  .opt:hover{ padding-left:12px; padding-right:12px; }
+  .opt-a{ width:48px; height:48px; }
+}
 
-.note-row{ margin-top:48px; border-top:1px solid var(--line); padding-top:20px; }
-.note-row p{ margin:0; font-size:13px; color:var(--gray); line-height:1.9; }
-
-footer{ flex-shrink:0; border-top:1px solid var(--line); padding:26px 0 40px; }
-footer .f{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; font-size:12px; color:var(--gray); }
+.foot-note{ margin-top:34px; font-size:13px; color:var(--gray-40); line-height:1.9; }
+footer{ position:relative; z-index:1; flex-shrink:0; border-top:1px solid var(--gray-20); padding:22px 0 36px; }
+footer .f{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; font-size:12px; color:var(--gray-40); }
 </style>
 </head>
 <body>
 
+<div class="bg" aria-hidden="true"></div>
+
 <main>
   <div class="wrap">
-    <p class="kicker en">J-MATCH ENGINE</p>
-    <h1>Jマッチエンジンの<br>ご案内は、<span class="r">2種類</span>あります。</h1>
-    <p class="desc">御社の名前でお客様へ提供いただくご案内と、御社ご自身にお使いいただくご案内で、内容が分かれています。どちらかをお選びください。</p>
+    <p class="kicker">J-MATCH ENGINE</p>
+    <h1>ご案内は、<em>2種類</em>あります。</h1>
+    <p class="desc">御社の名前でお客様へお配りいただく場合と、御社ご自身でお使いいただく場合で、ご案内の内容が分かれています。</p>
 
-    <div class="choices">
+    <div class="gate">
 
-      <a class="choice" href="./oem/">
-        <span class="tag en">OEM ／ WHITE-LABEL</span>
-        <h2>御社のブランドで、<br>御社の顧客に提供する</h2>
-        <p class="who">顧客リストをお持ちで、自社サービスとして提供したい企業さま</p>
-        <p class="what">御社のロゴ・色・名称で提供します。開発もサーバーも問い合わせ対応も当社が持ち、御社の顧客には毎週「使える制度」が届きます。</p>
-        <dl>
-          <div><dt>提供形態</dt><dd>OEM（ホワイトラベル）</dd></div>
-          <div><dt>費用</dt><dd>初期50万円＋月5万円</dd></div>
-          <div><dt>導入まで</dt><dd>最短1週間</dd></div>
-        </dl>
-        <span class="go en">OEMのご案内を見る ▸</span>
+      <a class="opt" href="./oem/">
+        <div>
+          <p class="opt-k">OEM ／ WHITE-LABEL</p>
+          <h2 class="opt-t">御社のブランドで、<br>御社の顧客に配る</h2>
+          <p class="opt-d">ロゴ・色・名称を決めるだけ。開発もサーバーも問い合わせ対応も当社が持ちます。御社の顧客には、毎週「使える制度」が届きます。</p>
+          <p class="opt-f"><s>初期50万円</s>9月末契約まで20万円<span class="sep">／</span>月5万円<span class="sep">／</span>最短1週間</p>
+        </div>
+        <span class="opt-a" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg>
+        </span>
       </a>
 
-      <a class="choice" href="./direct/">
-        <span class="tag en">DIRECT</span>
-        <h2>御社ご自身で、<br>制度を探して使う</h2>
-        <p class="who">補助金・融資の活用を、これから進めたい企業さま</p>
-        <p class="what">使える制度が毎週届きます。有料プランでは、過去の採択事例をもとにした計画のたたきや、専門家へのご相談まで進められます。</p>
-        <dl>
-          <div><dt>無料</dt><dd>制度の検索・お届け</dd></div>
-          <div><dt>ライト</dt><dd>月3,000円（探す）</dd></div>
-          <div><dt>スタンダード</dt><dd>月30,000円（書き上げる）</dd></div>
-        </dl>
-        <span class="go en">ご利用のご案内を見る ▸</span>
+      <a class="opt" href="./direct/">
+        <div>
+          <p class="opt-k">DIRECT</p>
+          <h2 class="opt-t">御社ご自身で、<br>制度を探して使う</h2>
+          <p class="opt-d">使える制度が毎週届きます。有料プランでは、過去の採択事例をもとにした計画のたたきや、専門家へのご相談まで進められます。</p>
+          <p class="opt-f">無料<span class="sep">／</span>月3,000円<span class="sep">／</span>月30,000円</p>
+        </div>
+        <span class="opt-a" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg>
+        </span>
       </a>
 
     </div>
 
-    <div class="note-row">
-      <p>金額はいずれも税別です。申請の代行は行っておりません。ご不明な点は、各ページのお問い合わせからご連絡ください。</p>
-    </div>
+    <p class="foot-note">金額はいずれも税別です。申請の代行は行っておりません。</p>
   </div>
 </main>
 
