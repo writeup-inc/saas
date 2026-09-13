@@ -1,0 +1,772 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="毎朝9時、営業リストの作成から初回メール送付までを自動で実行するAI「リストマスター」。人が毎日2〜4時間かけている作業を、出社前に終わらせます。株式会社ライトアップ提供。">
+<meta name="theme-color" content="#065f46">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="株式会社ライトアップ">
+<meta property="og:title" content="リストマスター｜営業リスト自動生成AI">
+<meta property="og:description" content="新規営業は、誰に会うかで決まる。毎朝9時にリスト作成から初回アプローチまでを自動で終わらせるAIです。">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%279%27 fill=%27%23065f46%27/%3E%3Cg fill=%27%23fff%27%3E%3Crect x=%277.5%27 y=%279%27 width=%2717%27 height=%272.4%27 rx=%271.2%27/%3E%3Crect x=%277.5%27 y=%2714.8%27 width=%2717%27 height=%272.4%27 rx=%271.2%27 opacity=%27.6%27/%3E%3Crect x=%277.5%27 y=%2720.6%27 width=%2710%27 height=%272.4%27 rx=%271.2%27 opacity=%27.35%27/%3E%3C/g%3E%3C/svg%3E">
+<style>html{color-scheme:light dark}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>リストマスター</title>
+<style>
+  :root{
+    --brand:#065f46; --brand-2:#0b7a5b; --brand-deep:#043d2d;
+    --brand-soft:#eaf3ef; --brand-line:#c5ddd3;
+    --ink:#0f1815; --body:#3f4d49; --muted:#55635e;
+    --paper:#ffffff; --ground:#f5f8f6; --line:#e2e9e6;
+    --accent:#b3261e; --accent-soft:#fbeeed;
+    --col-bg:#053a2c; --col-ink:#f0f7f4; --col-dim:#a6c8bb; --col-line:#155946;
+    --mark:#ffe36b;
+    --shadow:0 1px 2px rgba(6,40,30,.04), 0 8px 24px rgba(6,40,30,.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --brand:#63cba6; --brand-2:#7ad9b7; --brand-deep:#9ae6c9;
+      --brand-soft:#11251f; --brand-line:#2c4d43;
+      --ink:#eef4f2; --body:#c1cecb; --muted:#8fa09b;
+      --paper:#151a19; --ground:#0f1413; --line:#28322f;
+      --accent:#ff9d92; --accent-soft:#2a1715;
+      --col-bg:#0a1f19; --col-ink:#eaf4f0; --col-dim:#9cbcb0; --col-line:#20493c;
+      --mark:#ffd84d;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.28);
+    }
+  }
+  :root[data-theme="dark"]{
+    --brand:#63cba6; --brand-2:#7ad9b7; --brand-deep:#9ae6c9;
+    --brand-soft:#11251f; --brand-line:#2c4d43;
+    --ink:#eef4f2; --body:#c1cecb; --muted:#8fa09b;
+    --paper:#151a19; --ground:#0f1413; --line:#28322f;
+    --accent:#ff9d92; --accent-soft:#2a1715;
+    --col-bg:#0a1f19; --col-ink:#eaf4f0; --col-dim:#9cbcb0; --col-line:#20493c;
+    --mark:#ffd84d;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.28);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--body);
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic UI","Noto Sans JP",sans-serif;
+    font-size:16px;line-height:1.92;letter-spacing:.015em;-webkit-font-smoothing:antialiased}
+  .wrap{width:min(1060px,calc(100% - 44px));margin:0 auto}
+  .narrow{width:min(720px,calc(100% - 44px));margin:0 auto}
+  h1,h2,h3{color:var(--ink);word-break:keep-all;overflow-wrap:anywhere;letter-spacing:-.022em;margin:0}
+  .seg{display:inline-block}
+  a{color:inherit}
+  svg{display:block}
+
+  /* ─────── ヘッダー ─────── */
+  .nav{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--paper) 90%,transparent);
+    backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:13px 0}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--ink);font-size:15.5px;letter-spacing:0}
+  .logo .m{width:28px;height:28px;flex:0 0 28px}
+  .navlinks{display:flex;gap:22px;font-size:14px;color:var(--muted)}
+  .navlinks a{text-decoration:none}
+  .navlinks a:hover{color:var(--brand)}
+  @media(max-width:920px){.navlinks{display:none}}
+
+  /* ─────── ボタン ─────── */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:16px 28px;border-radius:11px;font-size:16px;font-weight:800;
+    text-decoration:none;border:1px solid transparent;line-height:1.45;transition:.15s}
+  .btn-main{background:var(--brand);color:var(--paper)}
+  .btn-main:hover{background:var(--brand-2)}
+  .btn-line{border-color:var(--line);color:var(--ink);background:var(--paper)}
+  .btn-line:hover{border-color:var(--brand);color:var(--brand)}
+  .btn-onbrand{background:var(--paper);color:var(--brand)}
+  .btn-onbrand:hover{background:var(--ground)}
+
+  /* ─────── FV ─────── */
+  .hero{background:var(--paper);border-bottom:1px solid var(--line);
+    padding:clamp(48px,7vw,84px) 0 clamp(52px,7vw,76px)}
+  .hero-grid{display:grid;grid-template-columns:1.34fr .66fr;gap:clamp(24px,4vw,56px);align-items:center}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:32px}}
+  .eyebrow{display:inline-block;color:var(--brand);font-size:14px;font-weight:800;letter-spacing:.02em;
+    border-left:3px solid var(--brand);padding-left:11px;margin-bottom:20px}
+  h1{font-size:clamp(28px,4.6vw,48px);line-height:1.24;font-weight:800}
+  .hero .lede{max-width:600px;font-size:17px;margin:24px 0 0}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+  .hero .note{font-size:14px;color:var(--muted);margin:16px 0 0}
+  .hero-art{width:100%;max-width:420px;margin-inline:auto}
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:clamp(36px,5vw,54px)}
+  .fact{background:var(--ground);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .fact b{display:block;color:var(--brand);font-size:clamp(21px,2.7vw,28px);font-weight:800;
+    line-height:1.25;letter-spacing:-.02em}
+  .fact span{display:block;font-size:14px;margin-top:7px;color:var(--muted);line-height:1.7}
+  @media(max-width:760px){.facts{grid-template-columns:1fr}}
+
+  /* ─────── セクション共通 ─────── */
+  section{padding:clamp(60px,8vw,104px) 0}
+  .label{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:800;
+    letter-spacing:.13em;color:var(--brand);margin-bottom:14px}
+  .label::before{content:"";width:26px;height:2px;background:var(--brand);display:block}
+  h2{font-size:clamp(22px,3.6vw,37px);line-height:1.38;font-weight:800}
+  .lede{max-width:640px;margin:18px 0 0;font-size:16px}
+  .grid{display:grid;gap:16px;margin-top:clamp(30px,4vw,42px)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:880px){.g2,.g3{grid-template-columns:1fr}}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:16px;
+    padding:28px;box-shadow:var(--shadow)}
+  .card .ic{width:34px;height:34px;margin-bottom:16px;color:var(--brand)}
+  .card h3{font-size:18px;margin-bottom:11px;line-height:1.55;font-weight:800}
+  .card p{margin:0;font-size:15px;line-height:1.85}
+  .card p+p{margin-top:11px}
+
+  /* ─────── コラム ─────── */
+  .column{background:var(--col-bg);color:var(--col-ink);padding:clamp(64px,9vw,116px) 0}
+  .column .label{color:var(--mark)}
+  .column .label::before{background:var(--mark)}
+  .column h2,.column h3{color:var(--col-ink)}
+  .column .lede{color:var(--col-dim)}
+  .col-item{border-top:1px solid var(--col-line);padding-top:36px;margin-top:44px}
+  .col-item h3{font-size:clamp(20px,2.8vw,28px);line-height:1.45;margin-bottom:18px;font-weight:800}
+  .col-n{display:block;font-size:13px;letter-spacing:.16em;color:var(--mark);margin-bottom:9px;font-weight:800}
+  .col-item p{margin:0;font-size:16.5px;line-height:1.95;color:var(--col-ink);opacity:.94}
+  .col-item p+p{margin-top:15px}
+  .mk{background:linear-gradient(transparent 82%,var(--mark) 82%);font-weight:800;padding:0 1px}
+  .col-close{margin-top:48px;border:1px solid var(--col-line);border-radius:16px;
+    padding:30px 32px;background:rgba(255,255,255,.05)}
+  .col-close b{display:block;font-size:clamp(18px,2.3vw,24px);line-height:1.55;margin-bottom:12px}
+  .col-close p{margin:0;font-size:15px;color:var(--col-dim)}
+  .col-src{margin-top:24px;font-size:13.5px;color:var(--col-dim);line-height:1.75}
+
+  /* ─────── 掛け算 ─────── */
+  .eq{margin-top:34px;border:1px solid var(--col-line);border-radius:16px;padding:clamp(20px,3vw,30px);
+    background:rgba(255,255,255,.05)}
+  .eq-row{display:flex;align-items:center;gap:9px;flex-wrap:wrap;font-weight:800;font-size:clamp(14px,1.9vw,18px)}
+  .eq-row+.eq-row{margin-top:16px;padding-top:16px;border-top:1px dashed var(--col-line)}
+  .eq-row em{font-style:normal;border:1px solid var(--col-line);border-radius:9px;
+    padding:9px 14px;background:rgba(0,0,0,.24)}
+  .eq-row em.hot{border-color:var(--mark);color:var(--mark)}
+  .eq-op{color:var(--col-dim);font-weight:700}
+  .eq-note{margin:20px 0 0;font-size:14.5px;color:var(--col-dim);font-weight:400;line-height:1.8}
+
+  /* ─────── コラムの図 ─────── */
+  .fig{margin-top:34px;border:1px solid var(--col-line);border-radius:16px;
+    padding:24px clamp(16px,3vw,26px) 22px;background:rgba(255,255,255,.05)}
+  .fig-t{font-size:13px;font-weight:800;letter-spacing:.1em;color:var(--mark);margin:0 0 18px}
+  .fig svg{width:100%;max-width:420px;height:auto;margin:0 auto}
+  .fig-c{margin:18px 0 0;font-size:14.5px;color:var(--col-dim);line-height:1.78}
+
+  /* ─────── 課題 ─────── */
+  .issue .ic{color:var(--accent)}
+  .issue h3{color:var(--accent)}
+  .sum{margin-top:22px;background:var(--accent-soft);border:1px solid var(--accent);
+    border-radius:16px;padding:28px 30px}
+  .sum b{display:block;color:var(--accent);font-size:clamp(18px,2.3vw,24px);line-height:1.55;margin-bottom:12px}
+  .sum p{margin:0;font-size:15px}
+
+  /* ─────── フローチャート ─────── */
+  .flow{margin-top:clamp(30px,4vw,42px);position:relative}
+  .flow-time{display:inline-flex;align-items:center;gap:9px;background:var(--brand);color:var(--paper);
+    border-radius:999px;padding:7px 18px;font-size:14px;font-weight:800;letter-spacing:.02em}
+  .flow-track{position:relative;margin:16px 0;padding-left:0}
+  .fstep{position:relative;display:grid;grid-template-columns:52px 1fr;gap:18px;align-items:start;
+    background:var(--paper);border:1px solid var(--line);border-radius:16px;
+    padding:22px 24px;box-shadow:var(--shadow)}
+  .fstep+.fstep{margin-top:0}
+  .fnum{width:52px;height:52px;border-radius:14px;background:var(--brand-soft);border:1px solid var(--brand-line);
+    display:grid;place-items:center;color:var(--brand);font-weight:800;font-size:18px}
+  .fstep h3{font-size:17.5px;margin-bottom:8px;line-height:1.5}
+  .fstep p{margin:0;font-size:15px;line-height:1.85}
+  .fjoin{display:grid;grid-template-columns:52px 1fr;gap:18px;align-items:center;padding:10px 24px}
+  .fjoin .fbar{width:52px;display:grid;place-items:center}
+  .fjoin .fbar svg{width:16px;height:26px;color:var(--brand-line)}
+  .fjoin span{font-size:13.5px;font-weight:800;color:var(--brand);letter-spacing:.04em}
+  @media(max-width:600px){
+    .fstep{grid-template-columns:44px 1fr;gap:14px;padding:20px}
+    .fnum{width:44px;height:44px;border-radius:12px;font-size:16px}
+    .fjoin{grid-template-columns:44px 1fr;gap:14px;padding:8px 20px}
+    .fjoin .fbar{width:44px}
+  }
+
+  /* ─────── 効果 ─────── */
+  .metric .tag{display:inline-block;background:var(--brand-soft);color:var(--brand);
+    border:1px solid var(--brand-line);border-radius:999px;padding:5px 13px;
+    font-size:13px;font-weight:800;margin-bottom:14px}
+  .bignum{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+  .bignum div{background:var(--brand);border-radius:16px;padding:30px 22px;text-align:center;color:var(--paper)}
+  .bignum b{display:block;font-size:clamp(25px,3.8vw,36px);font-weight:800;line-height:1.2;letter-spacing:-.022em}
+  .bignum span{display:block;font-size:14px;margin-top:9px;opacity:.92}
+  @media(max-width:760px){.bignum{grid-template-columns:1fr}}
+
+  /* ─────── CTA ─────── */
+  .cta{background:var(--brand);color:var(--paper);border-radius:22px;
+    padding:clamp(40px,6vw,62px) clamp(24px,4vw,48px);text-align:center}
+  .cta h2{color:inherit}
+  .cta p{max-width:600px;margin:20px auto 0;font-size:16px;opacity:.95}
+  .cta .btn{margin-top:32px}
+  .cta .tel{display:block;margin-top:22px;font-size:15px;opacity:.95}
+  .cta .tel a{font-weight:800}
+
+  /* ─────── FAQ ─────── */
+  details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-top:12px}
+  summary{cursor:pointer;padding:20px 24px;font-weight:800;color:var(--ink);
+    font-size:16px;line-height:1.65;list-style:none;display:flex;gap:14px;justify-content:space-between}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"＋";color:var(--brand);font-weight:800;flex:0 0 auto}
+  details[open] summary::after{content:"−"}
+  details .ans{padding:0 24px 22px;font-size:15px;margin:0;line-height:1.88}
+
+  /* ─────── フッター ─────── */
+  footer{background:var(--paper);border-top:1px solid var(--line);padding:52px 0 44px;font-size:14.5px}
+  .f-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:32px}
+  @media(max-width:760px){.f-grid{grid-template-columns:1fr}}
+  footer h4{color:var(--ink);font-size:14.5px;margin:0 0 10px;font-weight:800}
+  footer p{margin:0 0 6px;line-height:1.8}
+  .f-links{display:flex;flex-wrap:wrap;gap:20px;margin-top:28px;padding-top:24px;border-top:1px solid var(--line)}
+  .f-links a{color:var(--brand);font-weight:700}
+  .copy{margin-top:20px;color:var(--muted);font-size:13.5px}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="wrap">
+    <div class="logo">
+      <svg class="m" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="30" height="30" rx="9" fill="currentColor" opacity=".08"/>
+        <rect x="7.5" y="9" width="17" height="2.4" rx="1.2" fill="currentColor"/>
+        <rect x="7.5" y="14.8" width="17" height="2.4" rx="1.2" fill="currentColor" opacity=".55"/>
+        <rect x="7.5" y="20.6" width="10" height="2.4" rx="1.2" fill="currentColor" opacity=".3"/>
+      </svg>
+      リストマスター
+    </div>
+    <nav class="navlinks">
+      <a href="#column">営業の考え方</a>
+      <a href="#issue">課題</a>
+      <a href="#flow">1日の流れ</a>
+      <a href="#effect">効果</a>
+      <a href="#use">使い方</a>
+      <a href="#contact">相談する</a>
+    </nav>
+  </div>
+</div>
+
+<!-- ═══ FV ═══ -->
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">新規営業は、誰に会うかで決まる</span>
+        <h1><span class="seg">リスト作成も</span><span class="seg">初回メールも、</span><span class="seg">出社前に終わっている。</span></h1>
+        <p class="lede">人が毎日2〜4時間かけている「リスト調査 → 連絡先収集 → 初回メール送付」を、リストマスターが毎朝9時から自動で実行します。中小企業でも1人企業でも、毎日300〜350件の新規リストを手にした状態から一日が始まります。</p>
+        <div class="cta-row">
+          <a class="btn btn-main" href="#contact">メールで相談する</a>
+          <a class="btn btn-line" href="#column">まず営業の考え方を読む</a>
+        </div>
+        <p class="note">専門知識は不要です。スプレッドシートに地域と業種を入力するだけで動き始めます。</p>
+      </div>
+
+      <div class="hero-art">
+        <svg viewBox="0 0 420 360" fill="none" role="img" aria-label="毎朝9時に起動し、リストを作って初回メールを送るAI社員のイラスト">
+          <circle cx="348" cy="58" r="30" fill="var(--brand)" opacity=".14"/>
+          <circle cx="348" cy="58" r="17" fill="var(--brand)" opacity=".55"/>
+          <rect x="34" y="112" width="250" height="216" rx="18" fill="var(--paper)" stroke="var(--line)" stroke-width="2"/>
+          <rect x="34" y="112" width="250" height="42" rx="18" fill="var(--brand)" opacity=".1"/>
+          <rect x="34" y="140" width="250" height="14" fill="var(--paper)"/>
+          <circle cx="58" cy="133" r="5" fill="var(--brand)" opacity=".5"/>
+          <rect x="74" y="129" width="76" height="8" rx="4" fill="var(--brand)" opacity=".45"/>
+          <g fill="var(--muted)" opacity=".45">
+            <rect x="58" y="176" width="150" height="9" rx="4.5"/>
+            <rect x="58" y="200" width="196" height="9" rx="4.5"/>
+            <rect x="58" y="224" width="128" height="9" rx="4.5"/>
+            <rect x="58" y="248" width="176" height="9" rx="4.5"/>
+            <rect x="58" y="272" width="104" height="9" rx="4.5"/>
+            <rect x="58" y="296" width="160" height="9" rx="4.5"/>
+          </g>
+          <rect x="222" y="170" width="32" height="21" rx="6" fill="var(--brand)"/>
+          <rect x="222" y="194" width="32" height="21" rx="6" fill="var(--brand)" opacity=".62"/>
+          <rect x="222" y="218" width="32" height="21" rx="6" fill="var(--brand)" opacity=".34"/>
+          <g transform="translate(268,196)">
+            <rect x="0" y="26" width="112" height="104" rx="22" fill="var(--brand)" opacity=".12"/>
+            <rect x="18" y="44" width="76" height="66" rx="19" fill="var(--paper)" stroke="var(--brand)" stroke-width="3"/>
+            <circle cx="40" cy="72" r="6" fill="var(--brand)"/>
+            <circle cx="72" cy="72" r="6" fill="var(--brand)"/>
+            <path d="M42 92c5 6 23 6 28 0" stroke="var(--brand)" stroke-width="3.4" stroke-linecap="round"/>
+            <path d="M56 44V26" stroke="var(--brand)" stroke-width="3.4" stroke-linecap="round"/>
+            <circle cx="56" cy="20" r="7" fill="var(--brand)"/>
+          </g>
+          <g transform="translate(292,86)">
+            <circle cx="26" cy="26" r="25" fill="var(--paper)" stroke="var(--brand)" stroke-width="3"/>
+            <path d="M26 12v15l10 6" stroke="var(--brand)" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="facts">
+      <div class="fact"><b>毎朝9時</b><span>営業担当が出社する前に、リスト作成からメール送付まで完了</span></div>
+      <div class="fact"><b>毎日300〜350件</b><span>1人では作れない量のリストを、毎日安定して生成</span></div>
+      <div class="fact"><b>2〜4時間 → 実質ゼロ</b><span>リスト作成の時間が空き、商談準備に使える</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ コラム ═══ -->
+<section class="column" id="column">
+  <div class="narrow">
+    <span class="label">COLUMN ── 営業の考え方</span>
+    <h2><span class="seg">打率は変えられない。</span><span class="seg">変えられるのは、</span><span class="seg">母数と、誰に当たるか。</span></h2>
+    <p class="lede">ここだけはサービスの説明ではありません。私たちが営業をやってきて、いちばん効くと思っている考え方を3つ書きます。リストマスターは、この考え方から生まれた道具です。</p>
+
+    <div class="col-item">
+      <span class="col-n">01</span>
+      <h3><span class="seg">新規の売上は、</span><span class="seg">掛け算でできている</span></h3>
+      <p>新規の売上を分解すると、3つしかありません。<span class="mk">新規リードの数 × 受注率 × 単価</span>。掛け算なので、どれか1つがゼロなら、残りがどれだけ良くても売上はゼロになります。</p>
+
+      <div class="eq">
+        <div class="eq-row"><em>新規の売上</em><span class="eq-op">＝</span><em class="hot">新規リード</em><span class="eq-op">×</span><em>受注率</em><span class="eq-op">×</span><em>単価</em></div>
+        <div class="eq-row"><em class="hot">新規リード</em><span class="eq-op">＝</span><em class="hot">営業リスト</em><span class="eq-op">×</span><em>アポ率</em></div>
+        <p class="eq-note">3つとも1.5倍にすると、1.5 × 1.5 × 1.5 で3倍を超えます。倍にしろと言われると無理に感じますが、1.5倍なら手が届く数字です。</p>
+      </div>
+
+      <p>そして、いちばん左の「新規リード」を、もう一段割ることができます。<span class="mk">新規リード ＝ 営業リスト × アポ率</span>。アポ率は商品の魅力や伝え方、電話かメールかという手段で変わります。ただ、そのどれもが<b>当てる先のリストが用意されていること</b>を前提にしています。</p>
+      <p>営業フローのいちばん最初にあるのが、リストです。ここが細ければ、その先をどれだけ磨いても、掛け算の答えは大きくなりません。</p>
+
+      <div class="fig">
+        <p class="fig-t">営業フローの、いちばん最初</p>
+        <svg viewBox="0 0 340 236" fill="none" role="img" aria-label="営業フローの漏斗。上から営業リスト、アポ、商談、受注の順に細くなり、先頭の営業リストが強調されている">
+          <path d="M28 8h284l-26 50H54z" fill="var(--mark)"/>
+          <text x="170" y="40" text-anchor="middle" font-size="17" font-weight="800" fill="#08211a">営業リスト</text>
+          <path d="M54 66h232l-26 50H80z" fill="#ffffff" fill-opacity=".2"/>
+          <text x="170" y="98" text-anchor="middle" font-size="16" font-weight="700" fill="currentColor">アポ</text>
+          <path d="M80 124h180l-26 50H106z" fill="#ffffff" fill-opacity=".14"/>
+          <text x="170" y="156" text-anchor="middle" font-size="16" font-weight="700" fill="currentColor">商談</text>
+          <path d="M106 182h128l-26 46H132z" fill="#ffffff" fill-opacity=".09"/>
+          <text x="170" y="212" text-anchor="middle" font-size="16" font-weight="700" fill="currentColor">受注</text>
+        </svg>
+        <p class="fig-c">先頭が細いと、その先をどれだけ磨いても細いままです。掛け算のいちばん左が、いちばん効きます。</p>
+      </div>
+
+    </div>
+
+    <div class="col-item">
+      <span class="col-n">02</span>
+      <h3><span class="seg">打率は変えられない。</span><span class="seg">変えられるのは、</span><span class="seg">母数と、誰に当たるか</span></h3>
+      <p>トーク力や提案力は、もちろん磨いたほうがいいでしょう。研修もロープレも意味があります。ただ、100社にアプローチして実際に会えるのが数社という世界で、<span class="mk">その打率はベテランと新人でそこまで大きくは変わりません。</span>相手の予算にもタイミングにも、こちらの技術は届かないからです。</p>
+      <p>では何で差がつくのか。<b>そもそも何社に当たったか</b>と、<b>どういう相手に当たったか</b>。この2つです。どちらもリストの話で、トークの話は出てきません。</p>
+      <p>リストは作業ではなく、戦略です。今月どこに当たるかを決めた時点で、その月の数字はだいたい決まっています。決めたあとに頑張るのが営業だと思われがちですが、順番は逆で、<span class="mk">決める前のほうが、はるかに効きます。</span></p>
+
+      <div class="fig">
+        <p class="fig-t">100社に当たって、会えるのは数社</p>
+        <svg viewBox="0 0 340 340" fill="none" role="img" aria-label="100個の点のうち、色がついているのは3個だけという図">
+          <circle cx="22" cy="22" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="56" cy="22" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="90" cy="22" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="124" cy="22" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="158" cy="22" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="192" cy="22" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="226" cy="22" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="260" cy="22" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="294" cy="22" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="328" cy="22" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="22" cy="56" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="56" cy="56" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="90" cy="56" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="124" cy="56" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="158" cy="56" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="192" cy="56" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="226" cy="56" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="260" cy="56" r="11" fill="var(--mark)"/>
+          <circle cx="294" cy="56" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="328" cy="56" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="22" cy="90" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="56" cy="90" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="90" cy="90" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="124" cy="90" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="158" cy="90" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="192" cy="90" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="226" cy="90" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="260" cy="90" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="294" cy="90" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="328" cy="90" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="22" cy="124" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="56" cy="124" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="90" cy="124" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="124" cy="124" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="158" cy="124" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="192" cy="124" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="226" cy="124" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="260" cy="124" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="294" cy="124" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="328" cy="124" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="22" cy="158" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="56" cy="158" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="90" cy="158" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="124" cy="158" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="158" cy="158" r="11" fill="var(--mark)"/>
+          <circle cx="192" cy="158" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="226" cy="158" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="260" cy="158" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="294" cy="158" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="328" cy="158" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="22" cy="192" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="56" cy="192" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="90" cy="192" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="124" cy="192" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="158" cy="192" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="192" cy="192" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="226" cy="192" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="260" cy="192" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="294" cy="192" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="328" cy="192" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="22" cy="226" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="56" cy="226" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="90" cy="226" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="124" cy="226" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="158" cy="226" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="192" cy="226" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="226" cy="226" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="260" cy="226" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="294" cy="226" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="328" cy="226" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="22" cy="260" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="56" cy="260" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="90" cy="260" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="124" cy="260" r="11" fill="var(--mark)"/>
+          <circle cx="158" cy="260" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="192" cy="260" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="226" cy="260" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="260" cy="260" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="294" cy="260" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="328" cy="260" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="22" cy="294" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="56" cy="294" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="90" cy="294" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="124" cy="294" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="158" cy="294" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="192" cy="294" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="226" cy="294" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="260" cy="294" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="294" cy="294" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="328" cy="294" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="22" cy="328" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="56" cy="328" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="90" cy="328" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="124" cy="328" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="158" cy="328" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="192" cy="328" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="226" cy="328" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="260" cy="328" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="294" cy="328" r="9" fill="#ffffff" fill-opacity=".17"/>
+          <circle cx="328" cy="328" r="9" fill="#ffffff" fill-opacity=".17"/>
+        </svg>
+        <p class="fig-c">色がついているのが、実際に会えた会社です。この数は、ベテランでも新人でも、思っているほど変わりません。変えられるのは点の総数と、どの点を選ぶかです。</p>
+      </div>
+
+    </div>
+
+    <div class="col-item">
+      <span class="col-n">03</span>
+      <h3><span class="seg">人が見つける会社は、</span><span class="seg">競合も見つけている</span></h3>
+      <p>手でリストを作るとき、誰もが同じことをします。業種とエリアで検索して、上から順に見ていって、ホームページがちゃんとしている会社を残します。競合の営業も、たぶん今日それをやっています。</p>
+      <p>つまり、<span class="mk">人が一生懸命探して見つけられる会社は、競合も同じように見つけています。</span>検索の上に出てくるということは、見つけやすいということだからです。そこへ全員が行っています。だから訪問した時点でもう3社目4社目で、話を始める前から比較が始まっています。</p>
+      <p><span class="mk">価格競争は、商談で始まるのではありません。リストを作った時点で、もう始まっています。</span>同じ会社の名前を全員が持って回っているのだから、最後は条件の話になります。</p>
+      <p>逆に、検索結果の下のほうに沈んでいる会社には、まだ誰も行っていません。事業をきちんとやっていて、お金もあって、ただ発信が上手くないだけ。そういう会社が数多くあります。営業をかけられ慣れていないぶん、話も普通に聞いてもらえる相手です。ただ、人の体力では、そこまで掘れません。30社作るのに半日かかっていて、検索の10ページ目を見る人はいないからです。</p>
+
+      <div class="fig">
+        <p class="fig-t">みんなが見るのは、上のほうだけ</p>
+        <svg viewBox="0 0 340 294" fill="none" role="img" aria-label="検索結果の帯。上位3件には競合の矢印が集中し、下位4件には矢印がなく空いている">
+          <text x="4" y="16" font-size="15" font-weight="800" fill="var(--mark)">競合も、ここ</text>
+          <g fill="var(--mark)">
+            <path d="M92 30h22l-6-7h9l11 11-11 11h-9l6-7H92z"/>
+            <path d="M92 76h22l-6-7h9l11 11-11 11h-9l6-7H92z"/>
+            <path d="M92 122h22l-6-7h9l11 11-11 11h-9l6-7H92z"/>
+          </g>
+          <g fill="#ffffff">
+            <rect x="146" y="26" width="190" height="26" rx="7" fill-opacity=".5"/>
+            <rect x="146" y="72" width="190" height="26" rx="7" fill-opacity=".42"/>
+            <rect x="146" y="118" width="190" height="26" rx="7" fill-opacity=".34"/>
+          </g>
+          <g fill="#ffffff">
+            <rect x="146" y="180" width="182" height="26" rx="7" fill-opacity=".13"/>
+            <rect x="146" y="214" width="182" height="26" rx="7" fill-opacity=".11"/>
+            <rect x="146" y="248" width="182" height="26" rx="7" fill-opacity=".09"/>
+          </g>
+          <rect x="136" y="168" width="200" height="118" rx="11" fill="none"
+                stroke="var(--mark)" stroke-width="2" stroke-dasharray="7 6" opacity=".8"/>
+          <text x="4" y="220" font-size="15" font-weight="800" fill="var(--mark)">まだ誰も</text>
+          <text x="4" y="240" font-size="15" font-weight="800" fill="var(--mark)">来ていない</text>
+        </svg>
+        <p class="fig-c">上に出てくる会社は、見つけやすいから全員が行っています。競合がいないのは、人の体力では届かない下のほうです。</p>
+      </div>
+
+    </div>
+
+    <div class="col-close">
+      <b>営業でいちばん強いのは、いい提案でも安い価格でもなく、1社目であること。</b>
+      <p>相見積もりの3社目で粘るより、まだ誰も来ていないところに最初に行くほうが、ずっと楽です。そのために必要なのは、人には掘れない深さを、毎日休まず掘り続ける仕組み。それがリストマスターです。</p>
+    </div>
+
+    <p class="col-src">この考え方は、弊社の営業部門で実際に運用している判断基準です。数値目標や成果を保証するものではありません。</p>
+  </div>
+</section>
+
+<!-- ═══ 課題 ═══ -->
+<section id="issue">
+  <div class="wrap">
+    <span class="label">01 ── 課題</span>
+    <h2><span class="seg">いちばん大事な仕事が、</span><span class="seg">いちばん後回しになる</span></h2>
+    <p class="lede">リスト作成は営業の入り口なのに、最も時間がかかる作業です。しかも評価されにくい仕事です。今月リストを何件作りましたと言って褒められる会社は、ほとんどありません。</p>
+
+    <div class="grid g3">
+      <div class="card issue">
+        <svg class="ic" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="16" cy="16" r="12.5" stroke="currentColor" stroke-width="2.2"/>
+          <path d="M16 9v7.5l5 3" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>毎日2〜4時間が、検索で消える</h3>
+        <p>ターゲット企業の検索、連絡先調査、リスト整理に時間を取られます。しかも持っていかれるのは、午前中の、いちばん頭が動く時間。そこを使い切ったあとに、いい提案書は書けません。</p>
+      </div>
+      <div class="card issue">
+        <svg class="ic" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect x="4" y="8" width="24" height="17" rx="3" stroke="currentColor" stroke-width="2.2"/>
+          <path d="M5.5 10l10.5 8 10.5-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>初回アプローチまで手が回らない</h3>
+        <p>リストを作っても、メール送付やFAX配信まで手が回らず放置状態。せっかく調べた見込み客へのアプローチが、そのまま後回しになります。</p>
+      </div>
+      <div class="card issue">
+        <svg class="ic" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M5 25V15M13 25V9M21 25v-7M29 25V5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+        <h3>1人では、新規開拓の量がつくれない</h3>
+        <p>1日に対応できるリスト作成は多くても30〜50件。営業活動の母数が少ないため、商談化・成約の絶対数が増えません。</p>
+      </div>
+    </div>
+
+    <div class="sum">
+      <b>営業が止まるのは、気合いでも景気でもなく、当てる先が無くなったとき。</b>
+      <p>リスト作成が後回しになると、新規アプローチの数が減ります。商談の母数が少ないため売上が安定せず、「今月は調子が悪かった」で終わってしまいます。この土台づくりを自動化しない限り、営業活動は綱渡りのままです。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 1日の流れ ═══ -->
+<section id="flow" style="background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <span class="label">02 ── 1日の流れと仕組み</span>
+    <h2><span class="seg">新人の営業担当のように、</span><span class="seg">真面目に動くAI社員です</span></h2>
+    <p class="lede">やっている手順は、人がやるのとまったく同じです。違うのは、疲れないことと、検索結果の10ページ目まで行くこと。出社したときには、今日の分がもう終わっています。</p>
+
+    <div class="flow">
+      <span class="flow-time">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="9.2" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 6.6V12l3.6 2.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        9:00 起動
+      </span>
+
+      <div class="flow-track">
+        <div class="fstep">
+          <div class="fnum">1</div>
+          <div>
+            <h3>条件を読み込む</h3>
+            <p>あらかじめ設定したシートから、地域・業種・企業規模を読み取ります。「今日は新潟県のシステム開発会社だな」と、指示書を見るところから一日が始まります。</p>
+          </div>
+        </div>
+        <div class="fjoin"><div class="fbar"><svg viewBox="0 0 16 26" fill="none" aria-hidden="true"><path d="M8 0v20M2.5 15L8 21l5.5-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>探す</span></div>
+
+        <div class="fstep">
+          <div class="fnum">2</div>
+          <div>
+            <h3>企業を検索する</h3>
+            <p>複数のデータソースから最新の企業情報を自動収集。人が見ない検索結果の深いところまで、疲れずに掘り続けます。</p>
+          </div>
+        </div>
+        <div class="fjoin"><div class="fbar"><svg viewBox="0 0 16 26" fill="none" aria-hidden="true"><path d="M8 0v20M2.5 15L8 21l5.5-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>整える</span></div>
+
+        <div class="fstep">
+          <div class="fnum">3</div>
+          <div>
+            <h3>営業リストを生成する</h3>
+            <p>廃業企業や重複を排除し、毎朝300〜350社のリストが完成します。人が2〜4時間かけていた作業が、実質ゼロになります。</p>
+          </div>
+        </div>
+        <div class="fjoin"><div class="fbar"><svg viewBox="0 0 16 26" fill="none" aria-hidden="true"><path d="M8 0v20M2.5 15L8 21l5.5-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>送る</span></div>
+
+        <div class="fstep">
+          <div class="fnum">4</div>
+          <div>
+            <h3>メール または FAX を送る</h3>
+            <p>初回アプローチのメール・FAXを自動配信します。作って終わりではなく、一発目のノックまで済ませて帰ります。</p>
+          </div>
+        </div>
+        <div class="fjoin"><div class="fbar"><svg viewBox="0 0 16 26" fill="none" aria-hidden="true"><path d="M8 0v20M2.5 15L8 21l5.5-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>報告する</span></div>
+
+        <div class="fstep">
+          <div class="fnum">5</div>
+          <div>
+            <h3>実績レポートを届ける</h3>
+            <p>今日何件のリストを作り、何件にアプローチしたかをメールで報告します。Slack・Googleチャットにも対応可能で、進捗が可視化されます。</p>
+          </div>
+        </div>
+      </div>
+
+      <span class="flow-time">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true">
+          <path d="M4 12.5l5.5 5.5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        11:00 レポート着信
+      </span>
+    </div>
+
+    <div class="grid g2">
+      <div class="card" style="border-color:var(--brand-line);background:var(--brand-soft);box-shadow:none">
+        <h3>設計の考え方：あえて、毎日選ばせない</h3>
+        <p>「今日はどこに当てるか」を毎朝選べるようにしたほうが、一見親切に見えます。ただ、人間側にタスクを残した瞬間、この種の仕組みは止まります。毎朝5分の確認でも、忙しい日には飛ぶからです。</p>
+        <p>そして飛んだ日は、母数がゼロです。母数が止まれば、営業も止まります。だからリストマスターは、最初に条件を決めたあとは何も聞いてきません。<b>選べる楽しさより、止まらないことを優先しています。</b></p>
+      </div>
+      <div class="card">
+        <h3>大量メールの到達率と、オプション</h3>
+        <p>営業メールの配信最適化技術を活用し、大量送信でも到達率とクリック率を確保します。件名・本文はAIが最適化し、効果測定の結果をもとに改善していきます。</p>
+        <p>オプションの「ウェビナーフォローAI」を組み合わせると、問い合わせやウェビナー申込があった相手に、資料送付・リマインド・アンケートまで自動でフォローできます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 効果 ═══ -->
+<section id="effect">
+  <div class="wrap">
+    <span class="label">03 ── 効果</span>
+    <h2><span class="seg">量が増えるだけでなく、</span><span class="seg">当たる相手が変わる</span></h2>
+    <p class="lede">コラムの掛け算に戻ると、リストマスターが動かすのは「営業リスト」の一項です。ここが太くなり、なおかつ中身が変わることで、掛け算全体の答えが変わります。</p>
+
+    <div class="grid g2">
+      <div class="card metric">
+        <span class="tag">リスト件数 6〜10倍</span>
+        <h3>毎日300〜350件の新規リストを自動生成</h3>
+        <p>人手では1日30〜50件が限界だったリスト作成が、毎日300〜350件に拡大します。新規開拓の母数が増え、商談化の機会が広がります。</p>
+      </div>
+      <div class="card metric">
+        <span class="tag">誰に当たるかが変わる</span>
+        <h3>競合がまだ行っていない会社に、先に会える</h3>
+        <p>人の体力では届かない検索の深いところまで掘るため、競合と同じ会社ばかりを持ち回る状態から抜けられます。比較が始まる前に会える確率が上がります。</p>
+      </div>
+      <div class="card metric">
+        <span class="tag">作業時間 100%削減</span>
+        <h3>手作業2〜4時間 → 実質ゼロ</h3>
+        <p>毎日2〜4時間かけていたリスト作成が自動化されます。その時間を商談準備、提案書作成、既存顧客フォローに充てられます。</p>
+      </div>
+      <div class="card metric">
+        <span class="tag">初回アプローチ 100%実行</span>
+        <h3>送付が後回しにならず、接点が安定する</h3>
+        <p>リストを作っても送付が後回しになる課題を解消します。毎朝自動で送付するため、タイミングを逃さず初回接点をつくれます。</p>
+      </div>
+    </div>
+
+    <div class="bignum">
+      <div><b>300〜350件</b><span>毎日のリスト生成数</span></div>
+      <div><b>2〜4時間</b><span>削減できる作業時間</span></div>
+      <div><b>毎朝9時</b><span>出社前に完了している</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 使い方 ═══ -->
+<section id="use" style="background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <span class="label">04 ── 使い方と品質の考え方</span>
+    <h2><span class="seg">条件は、</span><span class="seg">狭くていい</span></h2>
+    <p class="lede">導入した会社がいちばんつまずくのは、条件を広げすぎることです。使い方と、品質の受け止め方を先にお伝えします。</p>
+
+    <div class="grid g3">
+      <div class="card">
+        <svg class="ic" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="14" cy="14" r="9" stroke="currentColor" stroke-width="2.2"/>
+          <circle cx="14" cy="14" r="3.4" fill="currentColor"/>
+          <path d="M20.6 20.6L28 28" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+        <h3>広げるほど、全員が持つリストに戻る</h3>
+        <p>件数を多く出したくなって業種もエリアも広げると、誰でも思いつく会社が混ざってきます。それは競合も持っているリストです。いま取れているお客さんと同じ業種・同じ規模・同じ地域から始めて、反応を見ながら少しずつずらすのが近道です。</p>
+      </div>
+      <div class="card">
+        <svg class="ic" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M4 16.5l6 6L28 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M4 25h11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity=".45"/>
+        </svg>
+        <h3>作るのはAI、確かめるのは数社だけ</h3>
+        <p>明らかに動いていない会社や重複は落としますが、精度100%のリストは世の中にありません。人が手で作っても「その部署はもうありません」は起きます。会って確かめるところは人の仕事、と割り切ったほうが結果として速く進みます。</p>
+      </div>
+      <div class="card">
+        <svg class="ic" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect x="5" y="4" width="22" height="24" rx="3" stroke="currentColor" stroke-width="2.2"/>
+          <path d="M10 12h12M10 18h12M10 24h7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+        <h3>設定はシートだけ。運用はBPOが伴走</h3>
+        <p>難しい設定は不要です。Googleスプレッドシートにターゲット条件を入力するだけで動き始めます。導入後も専任のBPOチームが、リスト品質の改善提案、設定の最適化、トラブル対応まで支援します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA + FAQ ═══ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="cta">
+      <h2><span class="seg">エリアと業種だけ、</span><span class="seg">教えてください。</span></h2>
+      <p>その場でリストをお出しします。中身を見てから決めていただければ十分です。分厚い資料を読み込む必要も、先に社内で議論する必要もありません。朝起きたら今日会う相手が決まっている状態を、一度見てみてください。</p>
+      <a class="btn btn-onbrand" href="mailto:info@writeup.co.jp?subject=%E3%83%AA%E3%82%B9%E3%83%88%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC%E3%81%AE%E7%9B%B8%E8%AB%87">メールで相談する</a>
+      <span class="tel">お電話でも承ります　<a href="tel:0357846706">03-5784-6706</a></span>
+    </div>
+  </div>
+
+  <div class="narrow" style="margin-top:clamp(56px,7vw,88px)">
+    <span class="label">05 ── よくある質問</span>
+    <h2><span class="seg">導入前の疑問に、</span><span class="seg">お答えします</span></h2>
+
+    <details><summary>本当に専門知識なしで導入できますか？</summary>
+      <p class="ans">専門知識は不要です。Googleスプレッドシートに「地域」「業種」などの条件を入力するだけで、翌日から営業リストが届き始めます。設定は弊社のBPOチームが支援します。</p></details>
+    <details><summary>導入までにどのくらいの期間がかかりますか？</summary>
+      <p class="ans">最短即日で導入可能です。通常は初回ミーティングから1週間以内に稼働できます。お急ぎの場合はご相談ください。</p></details>
+    <details><summary>毎日300〜350件のリストは本当に実現できますか？</summary>
+      <p class="ans">複数のデータソースから自動で企業情報を収集するため、人手では難しい量を毎日安定して作成できます。ただし、ターゲット条件によってリスト数が変動する場合があります。</p></details>
+    <details><summary>条件は広く設定したほうが得ですか？</summary>
+      <p class="ans">逆です。広げるほど、誰でも思いつく会社が混ざり、競合も持っているリストに近づきます。いま取れているお客さんと同じ業種・規模・地域から狭く始めて、反応を見ながら広げるのをおすすめしています。</p></details>
+    <details><summary>既存の営業活動を変える必要はありますか？</summary>
+      <p class="ans">いいえ。自動化するのは「リスト作成」と「初回アプローチ」で、商談や提案など既存のプロセスには影響しません。むしろリスト作成の時間が空くため、商談に集中できるようになります。</p></details>
+    <details><summary>費用はどのくらいかかりますか？</summary>
+      <p class="ans">導入規模やご要望により異なります。中小企業でも導入しやすい価格設定を心がけております。詳細は個別のご相談でご案内しますので、お気軽にお問い合わせください。</p></details>
+    <details><summary>メール・FAXの文面は自分で作成する必要がありますか？</summary>
+      <p class="ans">AIが最適化した文面を生成します。貴社独自のメッセージをテンプレートとして登録することも可能です。文面の効果測定も行い、反応の良い表現へ改善していきます。</p></details>
+    <details><summary>リストの品質は保証されますか？</summary>
+      <p class="ans">複数のデータソースから最新情報を取得し、廃業企業や重複データを自動で排除します。ただし100%の精度を保証するものではありません。品質に問題がある場合は、専任のBPOチームが設定を調整し、改善を支援します。</p></details>
+    <details><summary>途中で利用を停止することはできますか？</summary>
+      <p class="ans">可能です。契約期間や解約条件については個別にご相談させていただきます。小さく始めて成果を確認しながら広げられるプランをご用意しています。</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <h4>リストマスター（営業リスト自動生成AI）</h4>
+        <p>毎朝9時に営業リストと初回アプローチを完了。リスト作成から接点づくりまでを自動化します。</p>
+      </div>
+      <div>
+        <h4>提供元</h4>
+        <p>株式会社ライトアップ</p>
+        <p>東証グロース上場（証券コード：6580）</p>
+        <p>東京都渋谷区渋谷2-15-1</p>
+        <p><a href="mailto:info@writeup.co.jp">info@writeup.co.jp</a>　<a href="tel:0357846706">03-5784-6706</a></p>
+      </div>
+    </div>
+    <div class="f-links">
+      <a href="https://www.writeup.co.jp/company/">運営会社</a>
+      <a href="https://www.writeup.co.jp/privacy/">プライバシーポリシー</a>
+      <a href="https://www.writeup.co.jp/terms/">利用規約</a>
+    </div>
+    <p class="copy">© 2026 Writeup Co., Ltd. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
