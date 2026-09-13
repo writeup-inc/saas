@@ -238,6 +238,14 @@
       transform: translateY(-2px);
     }
 
+    .hero-side {
+      display: grid;
+      align-content: end;
+      align-self: end;
+      gap: 26px;
+      min-width: 0;
+    }
+
     .hero-activity {
       align-self: end;
       min-width: 0;
@@ -315,6 +323,109 @@
 
     .hero-activity-link:focus-visible {
       outline: 2px solid var(--orange);
+      outline-offset: 3px;
+    }
+
+    .hero-seminar {
+      min-width: 0;
+      padding: 16px 0 0 20px;
+      border-left: 2px solid var(--green);
+    }
+
+    .hero-seminar-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 9px;
+    }
+
+    .hero-seminar-kicker {
+      color: var(--green);
+      font-size: 9px;
+      font-weight: 850;
+      letter-spacing: .15em;
+    }
+
+    .hero-seminar-all {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .hero-seminar-all i { font-style: normal; margin-left: 3px; }
+
+    .hero-seminar-all:hover,
+    .hero-seminar-all:focus-visible { color: var(--green); text-decoration: underline; }
+
+    .hero-seminar-list {
+      display: grid;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .hero-seminar-link {
+      display: grid;
+      grid-template-columns: max-content minmax(0, 1fr);
+      gap: 2px 8px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-top: 1px solid var(--line);
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .hero-seminar-status {
+      color: var(--green);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+
+    .hero-seminar-status.soon { color: var(--orange); }
+    .hero-seminar-status.closed { color: var(--muted); }
+
+    .hero-seminar-title {
+      display: -webkit-box;
+      overflow: hidden;
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: -.01em;
+      line-height: 1.45;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      word-break: auto-phrase;
+      overflow-wrap: anywhere;
+    }
+
+    .hero-seminar-audience {
+      grid-column: 2;
+      margin-top: 1px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+
+    .hero-seminar-empty {
+      margin: 0;
+      padding-top: 8px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .hero-seminar-link:hover .hero-seminar-title,
+    .hero-seminar-link:focus-visible .hero-seminar-title { text-decoration: underline; }
+
+    .hero-seminar-link:focus-visible {
+      outline: 2px solid var(--green);
       outline-offset: 3px;
     }
 
@@ -1827,6 +1938,7 @@
 
     @media (max-width: 820px) {
       .hero { grid-template-columns: 1fr; gap: 28px; }
+      .hero-side { gap: 22px; max-width: 620px; }
       .hero-activity { max-width: 620px; padding-top: 14px; }
       .news-dialog-content { grid-template-columns: 1fr; gap: 10px; }
       .thoughts { gap: 20px; }
@@ -1862,6 +1974,8 @@
       .concept-manifesto { font-size: 13px; }
       .hero-activity { padding-left: 14px; }
       .hero-activity-title { font-size: 11px; }
+      .hero-seminar { padding-left: 14px; }
+      .hero-seminar-title { font-size: 11px; }
       .news-dialog { width: min(calc(100% - 24px), 760px); max-height: calc(100dvh - 24px); }
       .news-dialog-inner { padding: 22px 18px; }
       .news-dialog-head { gap: 14px; }
@@ -2006,10 +2120,24 @@
           <p class="lead">見落とされた課題を見つけ、重要な変化に気づき、機能する答えを学び、次の扉を叩く。ここでは、SaaSチームの新しいAIサービス企画と検討中のLPを公開しています。</p>
           <button class="news-trigger" type="button" data-news-open aria-haspopup="dialog">直近の新着・更新を見る</button>
         </div>
-        <aside class="hero-activity" data-hero-activity aria-label="直近の新規追加・更新">
-          <div class="hero-activity-head"><span class="hero-activity-kicker">NOW ON DIRECTORY</span><span class="hero-activity-window" data-hero-activity-window></span></div>
-          <ol class="hero-activity-list" data-hero-activity-list></ol>
-        </aside>
+        <div class="hero-side">
+          <aside class="hero-activity" data-hero-activity aria-label="直近の新規追加・更新">
+            <div class="hero-activity-head"><span class="hero-activity-kicker">NOW ON DIRECTORY</span><span class="hero-activity-window" data-hero-activity-window></span></div>
+            <ol class="hero-activity-list" data-hero-activity-list></ol>
+          </aside>
+          <aside class="hero-seminar" data-hero-seminar aria-labelledby="hero-seminar-title">
+            <div class="hero-seminar-head">
+              <span class="hero-seminar-kicker" id="hero-seminar-title">SEMINAR / 申し込みページ</span>
+              <a class="hero-seminar-all" href="./seminar/">一覧<i aria-hidden="true">→</i></a>
+            </div>
+            <!-- SEMINAR-LIST:START -->
+            <ul class="hero-seminar-list">
+              <li><a class="hero-seminar-link" href="./seminar/ai-katsuyo/"><span class="hero-seminar-status open">募集中</span><span class="hero-seminar-title">AI活用セミナー（1年間0円モニター）</span><span class="hero-seminar-audience">社外</span></a></li>
+              <li><a class="hero-seminar-link" href="./seminar/worklog-insight-oem/"><span class="hero-seminar-status open">募集中</span><span class="hero-seminar-title">ワークログ・インサイト OEMパートナー説明会</span><span class="hero-seminar-audience">パートナー</span></a></li>
+            </ul>
+            <!-- SEMINAR-LIST:END -->
+          </aside>
+        </div>
       </section>
 
       <section class="thoughts" aria-labelledby="thoughts-title">
