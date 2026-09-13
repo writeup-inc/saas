@@ -63,3 +63,27 @@
 - 一覧へ反映すべき実質更新のコミット本文に `Index-Update: pending` を付ける
 - 一覧日時を変えない軽微な修正のコミット本文に `Catalog-Update: no` を付ける
 - commit・push後、READMEの `LP引き継ぎ` と上記の `一覧更新の引き継ぎ` をユーザーへ返す
+
+## セミナー・説明会ページの置き場所
+
+セミナーや説明会の申し込みページは、商材ディレクトリと並べず `seminar/<slug>/` に置く。
+社内が迷わないよう、URLのルールは「セミナーは `/saas/seminar/` 配下」の1本だけにしている。
+
+新しいセミナーページを作るときは、`<head>` に次のメタを入れる。
+
+```html
+<meta name="seminar:title" content="一覧に出す短い名前">
+<meta name="seminar:summary" content="一覧に出す1行説明">
+<meta name="seminar:audience" content="社外 / パートナー / 社内 など">
+<meta name="seminar:status" content="募集中｜準備中｜終了">
+<meta name="seminar:order" content="10">
+```
+
+一覧は手で書かない。`node tools/build-seminar-index.mjs` を実行すると、
+`seminar/index.html` とルート `index.html` のヒーロー右側
+（`<!-- SEMINAR-LIST:START -->` 〜 `<!-- SEMINAR-LIST:END -->`）を同じ元データから生成する。
+main へ push すれば `sync-seminar-index` ワークフローが自動で再生成してコミットする。
+
+このルールがあるため、`seminar/` はルート index.html の商材カード対象外
+（`tools/index-check.config.json` の `excludedDirectories`）にしている。
+ページを別の場所から移してきたときは、旧URLに転送ページを残すこと。
