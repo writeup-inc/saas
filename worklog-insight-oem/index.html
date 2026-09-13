@@ -512,22 +512,37 @@ input[type=range]::-moz-range-thumb{
 .calc-row.total .cl{font-weight:700;color:var(--ink);font-size:14px;}
 .calc-row.total .cv{font-size:clamp(1.15rem,2.6vw,1.45rem);color:var(--blue);}
 
-/* ── 初年度の比較バー ───────────────── */
-.vs{margin-top:36px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:24px 22px 20px;}
-.alt .vs{background:var(--paper);}
-.vs .vt{font-size:13px;font-weight:700;color:var(--gray);margin:0 0 18px;}
-.vs-row{margin-bottom:20px;}
-.vs-row .vl{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;font-weight:700;margin-bottom:11px;gap:10px;line-height:1.4;}
-.vs-row .vl .vn{font-family:var(--en);font-size:clamp(1rem,2.2vw,1.2rem);font-weight:800;line-height:1.2;}
-.vs-bar{height:22px;border-radius:4px;background:var(--faint);overflow:hidden;}
-.vs-bar span{display:block;height:100%;}
-.vs-a span{background:var(--gray2);}
-.vs-b span{background:var(--blue);}
-.vs-diff{
-  margin-top:16px;padding-top:14px;border-top:1px solid var(--line);
-  font-size:14px;font-weight:700;color:var(--blue);text-align:right;
+/* ── 管理画面の作り込み ─────────────── */
+.build{margin-top:30px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:26px 24px 22px;}
+.alt .build{background:var(--paper);}
+.build .bh{font-size:clamp(1rem,2.2vw,1.16rem);font-weight:800;margin:0 0 8px;line-height:1.55;}
+.build .bs{font-size:14px;color:var(--gray);margin:0 0 20px;line-height:1.8;}
+.build ol{margin:0;padding:0;list-style:none;counter-reset:b;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.build li{counter-increment:b;padding-top:14px;border-top:2px solid var(--blue);}
+.build li::before{
+  content:counter(b,decimal-leading-zero);
+  font-family:var(--en);font-size:12px;font-weight:800;color:var(--blue);
+  display:block;margin-bottom:6px;letter-spacing:.08em;
 }
-.vs-diff .dn{font-family:var(--en);font-size:clamp(1.1rem,2.4vw,1.35rem);font-weight:800;margin-left:6px;}
+.build li b{display:block;font-size:14.5px;font-weight:700;margin-bottom:5px;line-height:1.55;}
+.build li span{font-size:13px;color:var(--gray);line-height:1.7;display:block;}
+@media(max-width:720px){ .build ol{grid-template-columns:1fr;gap:14px;} }
+
+/* ── 3社で埋まる ─────────────────────── */
+.three-co{
+  margin-top:30px;border:1px solid var(--line);border-radius:8px;
+  background:#fff;padding:24px;display:flex;gap:22px;align-items:center;
+}
+.alt .three-co{background:var(--paper);}
+.three-co .tn{
+  flex:none;text-align:center;line-height:1;
+  font-family:var(--en);font-weight:800;color:var(--blue);
+  font-size:clamp(2.4rem,7vw,3.4rem);
+}
+.three-co .tn em{display:block;font-family:var(--jp);font-style:normal;font-size:14px;font-weight:700;margin-top:6px;color:var(--blue-d);}
+.three-co .tb{font-size:clamp(1rem,2.2vw,1.14rem);font-weight:800;margin:0 0 7px;line-height:1.6;}
+.three-co .td{font-size:13.5px;color:var(--gray);margin:0;line-height:1.8;}
+@media(max-width:560px){ .three-co{flex-direction:column;align-items:flex-start;gap:14px;} }
 
 /* ── 自社利用ID ─────────────────────── */
 .bonus{
@@ -1010,7 +1025,7 @@ footer .fnav a:hover{color:#fff;}
    <div class="sec-grid">
     <div class="sec-head">
     <span class="sec-no">05 ／ HOW TO START</span>
-    <h2><span class="q">100万円を払うか、216万円を預けるか。</span><span class="a">1年で見ると、預けるほうが100万円多く残ります。</span></h2>
+    <h2><span class="q">100万円を払うか、216万円を預けるか。</span><span class="a">預けるほうが、作り込みぶん100万円多く残ります。</span></h2>
     </div>
     <div class="sec-body">
     <p class="lead">始め方は2つです。どちらを選んでも、卸値6,000円・取り分4,000円は変わりません。違うのは、最初に何を差し出すかだけ。そして1年で見ると、差はもっとはっきりします。</p>
@@ -1019,19 +1034,30 @@ footer .fnav a:hover{color:#fff;}
       <p>ここから先は、<strong>毎月3件ずつ、1件あたり10IDを売った場合</strong>で試算します。12か月で累計360ID、最終月の稼働は360IDというペースです。</p>
     </div>
 
+    <div class="build">
+      <p class="bh">どちらのプランでも、御社専用の管理画面を当社が作り込みます。</p>
+      <p class="bs">既製品をそのままお渡しするのではありません。御社の名前で出す画面を、御社が売る相手に合わせて組み直します。この作り込みが、初期の100万円です。</p>
+      <ol>
+        <li><b>御社の名前とデザインで</b><span>エンド顧客が触れる画面を、御社のサービスとして見える形にします。</span></li>
+        <li><b>御社が売る相手に合わせて</b><span>実際の業務ログをお預かりし、その業種で意味のあるレポートの中身と言葉に組み直します。</span></li>
+        <li><b>商談でそのまま見せられる形に</b><span>経営者・管理職・本人の3画面を、初回の商談から実物としてお見せいただけます。</span></li>
+      </ol>
+      <small class="note">作り込みの範囲、着手から公開までの期間は <span class="ph">【調整中】</span>。個別にご説明します。</small>
+    </div>
+
     <div class="plans">
       <div class="plan">
         <span class="pl">PLAN A</span>
-        <h3>初期費用を払って始める</h3>
-        <p class="pp">100<span class="u">万円（初期費用）</span></p>
+        <h3>作り込み費用を払って始める</h3>
+        <p class="pp">100<span class="u">万円（管理画面の作り込み）</span></p>
         <ul>
-          <li>お支払いいただくと、御社ブランドでの提供権を得られます</li>
+          <li>御社専用の管理画面を、当社が作り込みます</li>
           <li>在庫を先に持つ必要はありません</li>
           <li>売れた分だけ、卸値6,000円が差し引かれます</li>
         </ul>
         <div class="calc">
           <div class="calc-row">
-            <span class="cl">初期費用</span>
+            <span class="cl">管理画面の作り込み費用</span>
             <span class="cv minus">−1,000,000円</span>
           </div>
           <div class="calc-row">
@@ -1050,7 +1076,7 @@ footer .fnav a:hover{color:#fff;}
         <h3>30ID分を先に仕入れて始める</h3>
         <p class="pp">216<span class="u">万円（30ID分の卸値）</span></p>
         <ul>
-          <li>初期費用100万円は、いただきません</li>
+          <li>管理画面の作り込み100万円は、<strong>無料になります</strong></li>
           <li>先にお預かりした30ID分の売上は、<strong>100%御社にお返しします</strong></li>
           <li>最初の月に30ID売れれば、そこから毎月30万円が全額御社に入ります</li>
         </ul>
@@ -1075,20 +1101,15 @@ footer .fnav a:hover{color:#fff;}
       </div>
     </div>
 
-    <div class="vs">
-      <p class="vt">同じ売り方をした場合の、初年度に残るお金</p>
-      <div class="vs-row vs-a">
-        <span class="vl">PLAN A ／ 初期100万円<span class="vn">8,360,000円</span></span>
-        <div class="vs-bar"><span style="width:89.3%;"></span></div>
-      </div>
-      <div class="vs-row vs-b">
-        <span class="vl">PLAN B ／ 216万円を先に仕入れ<span class="vn">9,360,000円</span></span>
-        <div class="vs-bar"><span style="width:100%;"></span></div>
-      </div>
-      <p class="vs-diff">PLAN Bのほうが、初年度で<span class="dn">1,000,000円</span>多く残ります</p>
-    </div>
+    <p style="margin-top:26px;">差がちょうど100万円になるのは、偶然ではありません。<strong>Bで先に出す216万円は「仕入れ」なので、売れれば全額戻ってきます。</strong>戻らないのは、Aの作り込み費用100万円だけ。先行30IDが毎月30万円を生むため、8か月目には216万円を回収し終えます。</p>
 
-    <p style="margin-top:26px;">差がちょうど100万円になるのは、偶然ではありません。<strong>Bで先に出す216万円は「仕入れ」なので、売れれば全額戻ってきます。</strong>戻らないのは、Aの初期費用100万円だけ。先行30IDが毎月30万円を生むため、8か月目には216万円を回収し終えます。</p>
+    <div class="three-co">
+      <div class="tn">3<em>社</em></div>
+      <div>
+        <p class="tb">30IDと聞くと多く感じますが、1社10IDなら3社です。</p>
+        <p class="td">10名の会社に3社入れれば、先に仕入れた30IDは埋まります。埋まった時点から、その30ID分の売上30万円が毎月そのまま御社に入り、8か月目には216万円を回収し終えます。それ以降は、上乗せです。</p>
+      </div>
+    </div>
 
     <div class="bonus">
       <div class="bi">3ID</div>
