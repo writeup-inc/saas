@@ -6,7 +6,7 @@
 <title>ワークログ・インサイト｜OEMパートナー募集</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;500;600;700;800;900&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 /* lp-base.css — 日本語LP／HTML成果物の初期CSS
  *
@@ -79,6 +79,7 @@ pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
   --save-bg:#e6f4ed;
   --jp:'Noto Sans JP',sans-serif;
   --en:'Inter',sans-serif;
+  --mincho:'Noto Serif JP',serif;
   --pad:112px;
   --fixed-cta-h:0px;
 }
@@ -101,6 +102,9 @@ body{
 .sec-grid{display:grid;grid-template-columns:272px 1fr;gap:64px;align-items:start;}
 .sec-head{position:sticky;top:36px;}
 .sec-head h2{margin-bottom:0;font-size:clamp(1.2rem,2.3vw,1.62rem);line-height:1.5;}
+.sec-head h2 .q{display:block;font-family:var(--jp);font-weight:800;}
+.sec-head h2 .a{display:block;font-family:var(--mincho);font-weight:600;letter-spacing:.01em;margin-top:4px;}
+.final .sec-head h2 .a{color:#e6e8ee;}
 .sec-body > *:first-child{margin-top:0;}
 @media(max-width:940px){
   .sec-grid{grid-template-columns:1fr;gap:0;}
@@ -150,7 +154,22 @@ strong{font-weight:700;}
   background:#fff;
   border-bottom:1px solid var(--line);
   padding:clamp(72px,11vw,124px) 0 clamp(56px,8vw,86px);
+  position:relative;
+  overflow:hidden;
 }
+.hero .wrap{position:relative;z-index:1;}
+.hero-art{
+  position:absolute;
+  top:50%;
+  right:max(24px,calc(50% - 548px));
+  transform:translateY(-54%);
+  width:min(400px,34vw);
+  z-index:0;
+  pointer-events:none;
+}
+.hero-art svg{display:block;width:100%;height:auto;}
+@media(max-width:1080px){ .hero-art{opacity:.35;right:-40px;} }
+@media(max-width:860px){ .hero-art{display:none;} }
 .hero h1{
   font-weight:900;
   letter-spacing:-.01em;
@@ -411,6 +430,44 @@ input[type=range]::-moz-range-thumb{
 .sim-out div.main .ov{color:var(--blue);}
 .sim-out div .ov .u{font-family:var(--jp);font-size:13px;font-weight:700;color:var(--gray);margin-left:3px;}
 
+/* ── 1IDの内訳バー ───────────────────── */
+.split-bar{margin-top:34px;}
+.sb-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;gap:12px;}
+.sb-top .sbl{font-size:13px;font-weight:700;color:var(--gray);}
+.sb-top .sbv{font-family:var(--en);font-size:clamp(1.3rem,3vw,1.7rem);font-weight:800;}
+.sb-top .sbv .u{font-family:var(--jp);font-size:13px;font-weight:700;color:var(--gray);margin-left:3px;}
+.sb-track{display:flex;height:46px;border-radius:5px;overflow:hidden;border:1px solid var(--line);}
+.sb-seg{display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;}
+.sb-cost{background:var(--gray2);flex:0 0 20%;}
+.sb-us{background:#7d9ac9;flex:0 0 40%;}
+.sb-you{background:var(--blue);flex:0 0 40%;}
+.sb-legend{display:grid;grid-template-columns:20% 40% 40%;margin-top:10px;}
+.sb-legend div{padding-right:10px;}
+.sb-legend .lt{font-size:12px;color:var(--gray);display:block;line-height:1.5;}
+.sb-legend .lv{font-family:var(--en);font-size:15px;font-weight:800;display:block;margin-top:2px;}
+.sb-brace{
+  display:grid;grid-template-columns:20% 80%;margin-top:14px;
+}
+.sb-brace .bsp{}
+.sb-brace .bbr{
+  border-top:1px solid var(--blue);
+  position:relative;padding-top:12px;
+  font-size:12.5px;color:var(--blue);font-weight:700;text-align:center;
+}
+.sb-brace .bbr::before,.sb-brace .bbr::after{
+  content:"";position:absolute;top:0;width:1px;height:7px;background:var(--blue);
+}
+.sb-brace .bbr::before{left:0;}
+.sb-brace .bbr::after{right:0;}
+@media(max-width:620px){
+  .sb-seg{font-size:12px;}
+  .sb-legend{grid-template-columns:1fr;gap:8px;}
+  .sb-legend div{display:flex;align-items:baseline;gap:8px;padding-right:0;}
+  .sb-legend .lv{margin-top:0;}
+  .sb-brace{grid-template-columns:1fr;}
+  .sb-brace .bsp{display:none;}
+}
+
 /* ── 商流図 ─────────────────────────── */
 .flowfig{margin-top:34px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:28px 22px 22px;}
 .alt .flowfig{background:var(--paper);}
@@ -435,6 +492,59 @@ input[type=range]::-moz-range-thumb{
 .bar-legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:6px;font-size:12px;color:var(--gray2);}
 .bar-legend span{display:flex;align-items:center;gap:6px;}
 .bar-legend i{width:12px;height:12px;border-radius:2px;display:inline-block;}
+
+/* ── 前提の帯 ───────────────────────── */
+.assume{
+  margin-top:30px;background:var(--blue-l);border-left:3px solid var(--blue);
+  border-radius:0 5px 5px 0;padding:16px 20px;
+}
+.assume p{margin:0;font-size:14px;color:var(--blue-d);line-height:1.75;}
+.assume strong{font-weight:800;}
+
+/* ── 試算の内訳 ─────────────────────── */
+.calc{margin-top:18px;border-top:1px solid var(--line);}
+.calc-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);}
+.calc-row .cl{font-size:13px;color:var(--gray);line-height:1.6;}
+.calc-row .cl small{display:block;color:var(--gray2);font-size:12px;margin-top:2px;}
+.calc-row .cv{font-family:var(--en);font-size:15px;font-weight:800;white-space:nowrap;}
+.calc-row .cv.minus{color:var(--gray2);}
+.calc-row.total{border-bottom:none;padding-top:14px;}
+.calc-row.total .cl{font-weight:700;color:var(--ink);font-size:14px;}
+.calc-row.total .cv{font-size:clamp(1.15rem,2.6vw,1.45rem);color:var(--blue);}
+
+/* ── 初年度の比較バー ───────────────── */
+.vs{margin-top:36px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:24px 22px 20px;}
+.alt .vs{background:var(--paper);}
+.vs .vt{font-size:13px;font-weight:700;color:var(--gray);margin:0 0 18px;}
+.vs-row{margin-bottom:20px;}
+.vs-row .vl{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;font-weight:700;margin-bottom:11px;gap:10px;line-height:1.4;}
+.vs-row .vl .vn{font-family:var(--en);font-size:clamp(1rem,2.2vw,1.2rem);font-weight:800;line-height:1.2;}
+.vs-bar{height:22px;border-radius:4px;background:var(--faint);overflow:hidden;}
+.vs-bar span{display:block;height:100%;}
+.vs-a span{background:var(--gray2);}
+.vs-b span{background:var(--blue);}
+.vs-diff{
+  margin-top:16px;padding-top:14px;border-top:1px solid var(--line);
+  font-size:14px;font-weight:700;color:var(--blue);text-align:right;
+}
+.vs-diff .dn{font-family:var(--en);font-size:clamp(1.1rem,2.4vw,1.35rem);font-weight:800;margin-left:6px;}
+
+/* ── 自社利用ID ─────────────────────── */
+.bonus{
+  margin-top:34px;border:2px solid var(--blue);border-radius:8px;
+  background:var(--blue-l);padding:22px 24px;
+  display:flex;gap:18px;align-items:flex-start;
+}
+.bonus .bi{
+  flex:none;width:44px;height:44px;border-radius:50%;background:var(--blue);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-family:var(--en);font-weight:800;font-size:15px;
+}
+.bonus .bt{font-size:clamp(1rem,2.2vw,1.15rem);font-weight:800;color:var(--blue-d);margin:0 0 6px;line-height:1.55;}
+.bonus .bd{font-size:13.5px;color:var(--blue-d);margin:0;line-height:1.75;}
+@media(max-width:560px){
+  .bonus{flex-direction:column;gap:12px;}
+}
 
 /* ── プラン ─────────────────────────── */
 .plans{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:38px;}
@@ -591,6 +701,30 @@ footer .fnav a:hover{color:#fff;}
 
 <!-- ══════════ HERO ══════════ -->
 <section class="hero">
+  <div class="hero-art" aria-hidden="true">
+    <svg viewBox="0 0 400 300" fill="none">
+      <!-- 積み重なった画面の記録 -->
+      <rect x="52" y="26" width="252" height="150" rx="6" stroke="#d9dce3" stroke-width="1.5"/>
+      <rect x="66" y="38" width="252" height="150" rx="6" stroke="#c3cbda" stroke-width="1.5"/>
+      <!-- 本体のモニター -->
+      <rect x="80" y="50" width="252" height="150" rx="6" fill="#fff" stroke="#1a4fa0" stroke-width="2"/>
+      <!-- 画面内：業務名に変換された行 -->
+      <rect x="96" y="66" width="60" height="7" rx="3.5" fill="#1a4fa0" opacity=".55"/>
+      <rect x="96" y="84" width="140" height="6" rx="3" fill="#d9dce3"/>
+      <rect x="96" y="98" width="112" height="6" rx="3" fill="#d9dce3"/>
+      <rect x="96" y="112" width="156" height="6" rx="3" fill="#d9dce3"/>
+      <rect x="96" y="126" width="96" height="6" rx="3" fill="#d9dce3"/>
+      <!-- 右側：3者のレポート -->
+      <rect x="252" y="66" width="64" height="34" rx="4" fill="#e8eef8"/>
+      <rect x="252" y="106" width="64" height="26" rx="4" fill="#f1f3f7"/>
+      <rect x="252" y="138" width="64" height="26" rx="4" fill="#f1f3f7"/>
+      <!-- スタンド -->
+      <path d="M186 200v22M158 226h96" stroke="#1a4fa0" stroke-width="2" stroke-linecap="round"/>
+      <!-- 1分に1回のシャッター -->
+      <circle cx="332" cy="42" r="15" fill="#1a4fa0"/>
+      <circle cx="332" cy="42" r="5.5" fill="#fff"/>
+    </svg>
+  </div>
   <div class="wrap">
     <p class="kicker">Worklog Insight ／ OEM Partner</p>
     <h1><span id="typeText">お客様のパソコンに、御社の営業マンをインストールする。</span><span class="type-cursor" aria-hidden="true"></span></h1>
@@ -641,7 +775,7 @@ footer .fnav a:hover{color:#fff;}
    <div class="sec-grid">
     <div class="sec-head">
     <span class="sec-no">01 ／ WHY NOW</span>
-    <h2>顧客は増やせない。なら、同じリストに<br>月額10,000円を載せます。</h2>
+    <h2><span class="q">顧客は増やせない。</span><span class="a">なら、同じリストに月額10,000円を載せます。</span></h2>
     </div>
     <div class="sec-body">
     <p class="lead">新規開拓の費用は上がり続けています。一方で、御社がこれまで築いてきた取引先リストは、すでに手元にあるもの。そこへ「もう1つ売るもの」を足すほうが、新しい顧客を1社増やすより早いはずです。これは、そういうご提案です。</p>
@@ -671,7 +805,7 @@ footer .fnav a:hover{color:#fff;}
    <div class="sec-grid">
     <div class="sec-head">
     <span class="sec-no">02 ／ WHAT YOU SELL</span>
-    <h2>売るのは、1分に1回のスクリーンショット。<br>現場の入力は、ゼロです。</h2>
+    <h2><span class="q">売るのは、1分に1回のスクリーンショット。</span><span class="a">現場の入力は、ゼロです。</span></h2>
     </div>
     <div class="sec-body">
     <p class="lead">いま、自動化の話をしない経営者はいません。ところが「では、何から自動化しますか」と聞いた瞬間、ほぼ全社が止まります。誰が何にどれだけ時間を使っているか、正確には誰も知らないからです。</p>
@@ -708,7 +842,7 @@ footer .fnav a:hover{color:#fff;}
    <div class="sec-grid">
     <div class="sec-head">
     <span class="sec-no">03 ／ THE REAL VALUE</span>
-    <h2>4,000円は、入り口です。<br>その先に、御社の本業の商談があります。</h2>
+    <h2><span class="q">4,000円は、入り口です。</span><span class="a">その先に、御社の本業の商談があります。</span></h2>
     </div>
     <div class="sec-body">
     <p class="lead">1IDあたり4,000円は、契約が続いているあいだ毎月の取り分になります。ただしこのOEMで本当に大きいのは、その先です。</p>
@@ -746,28 +880,32 @@ footer .fnav a:hover{color:#fff;}
    <div class="sec-grid">
     <div class="sec-head">
     <span class="sec-no">04 ／ YOUR MARGIN</span>
-    <h2>10名の会社で毎月4万円、<br>200名の会社で毎月80万円。</h2>
+    <h2><span class="q">1社で、何十台。</span><span class="a">10名の会社で毎月4万円、200名の会社で毎月80万円。</span></h2>
     </div>
     <div class="sec-body">
     <p class="lead">1社1契約ではありません。PCの台数だけ入ります。10名の会社なら10台、200名の会社に全社導入となれば200台。大手企業に入れば、一度の商談で何百台という話になります。</p>
 
-    <div class="money">
-      <div class="mcell">
-        <span class="ml">エンド価格</span>
-        <span class="mv">10,000<span style="font-size:.5em;">円</span></span>
+    <div class="split-bar">
+      <div class="sb-top">
+        <span class="sbl">エンド価格（1ID・毎月）</span>
+        <span class="sbv">10,000<span class="u">円</span></span>
       </div>
-      <div class="mop">−</div>
-      <div class="mcell">
-        <span class="ml">御社の仕入（卸値）</span>
-        <span class="mv">6,000<span style="font-size:.5em;">円</span></span>
+      <div class="sb-track">
+        <div class="sb-seg sb-cost">20%</div>
+        <div class="sb-seg sb-us">40%</div>
+        <div class="sb-seg sb-you">40%</div>
       </div>
-      <div class="mop">=</div>
-      <div class="mcell hi">
-        <span class="ml">御社の取り分／1ID・毎月</span>
-        <span class="mv">4,000<span style="font-size:.5em;">円</span></span>
+      <div class="sb-legend">
+        <div><span class="lt">原価（AI利用料・保存）</span><span class="lv">2,000円</span></div>
+        <div><span class="lt">当社の取り分</span><span class="lv">4,000円</span></div>
+        <div><span class="lt">御社の取り分</span><span class="lv">4,000円</span></div>
+      </div>
+      <div class="sb-brace">
+        <div class="bsp"></div>
+        <div class="bbr">粗利 8,000円を、当社と御社で折半します</div>
       </div>
     </div>
-    <small class="note">金額はすべて1IDあたりの月額です。税の扱い・課金単位は <span class="ph">【調整中】</span>。</small>
+    <small class="note">御社の仕入（卸値）は、原価2,000円と当社の取り分4,000円を合わせた6,000円です。金額はすべて1IDあたりの月額。税の扱い・課金単位は <span class="ph">【調整中】</span>。</small>
 
     <div class="flowfig">
       <p class="ft">お金と役割の流れ</p>
@@ -872,49 +1010,94 @@ footer .fnav a:hover{color:#fff;}
    <div class="sec-grid">
     <div class="sec-head">
     <span class="sec-no">05 ／ HOW TO START</span>
-    <h2>初期100万円を払うか、<br>216万円を先に預けて初期0円にするか。</h2>
+    <h2><span class="q">100万円を払うか、216万円を預けるか。</span><span class="a">1年で見ると、預けるほうが100万円多く残ります。</span></h2>
     </div>
     <div class="sec-body">
-    <p class="lead">始め方は2つです。どちらを選んでも、卸値6,000円・取り分4,000円は変わりません。違うのは、最初に何を差し出すかだけです。</p>
+    <p class="lead">始め方は2つです。どちらを選んでも、卸値6,000円・取り分4,000円は変わりません。違うのは、最初に何を差し出すかだけ。そして1年で見ると、差はもっとはっきりします。</p>
+
+    <div class="assume">
+      <p>ここから先は、<strong>毎月3件ずつ、1件あたり10IDを売った場合</strong>で試算します。12か月で累計360ID、最終月の稼働は360IDというペースです。</p>
+    </div>
 
     <div class="plans">
       <div class="plan">
         <span class="pl">PLAN A</span>
-        <h3>フルOEMとして始める</h3>
-        <p class="pp">100<span class="u">万円（初期）</span></p>
+        <h3>初期費用を払って始める</h3>
+        <p class="pp">100<span class="u">万円（初期費用）</span></p>
         <ul>
-          <li>初期費用をお支払いいただき、御社ブランドでの提供権を得ます</li>
-          <li>在庫を先に持つ必要がありません</li>
-          <li>売れた分だけ、卸値6,000円が差し引かれます（在庫を持つ必要はありません）</li>
+          <li>お支払いいただくと、御社ブランドでの提供権を得られます</li>
+          <li>在庫を先に持つ必要はありません</li>
+          <li>売れた分だけ、卸値6,000円が差し引かれます</li>
         </ul>
+        <div class="calc">
+          <div class="calc-row">
+            <span class="cl">初期費用</span>
+            <span class="cv minus">−1,000,000円</span>
+          </div>
+          <div class="calc-row">
+            <span class="cl">1年間の取り分<small>4,000円 × 延べ2,340ID・月</small></span>
+            <span class="cv">+9,360,000円</span>
+          </div>
+          <div class="calc-row total">
+            <span class="cl">初年度に残るお金</span>
+            <span class="cv">8,360,000円</span>
+          </div>
+        </div>
       </div>
+
       <div class="plan pick">
         <span class="pl">PLAN B</span>
-        <h3>30ID分を先に仕入れる</h3>
+        <h3>30ID分を先に仕入れて始める</h3>
         <p class="pp">216<span class="u">万円（30ID分の卸値）</span></p>
         <ul>
           <li>初期費用100万円は、いただきません</li>
           <li>先にお預かりした30ID分の売上は、<strong>100%御社にお返しします</strong></li>
-          <li>実質、初期費用0円で始められます</li>
+          <li>最初の月に30ID売れれば、そこから毎月30万円が全額御社に入ります</li>
         </ul>
+        <div class="calc">
+          <div class="calc-row">
+            <span class="cl">30ID分の仕入れ</span>
+            <span class="cv minus">−2,160,000円</span>
+          </div>
+          <div class="calc-row">
+            <span class="cl">先行30ID分の取り分（100%）<small>10,000円 × 30ID × 12か月</small></span>
+            <span class="cv">+3,600,000円</span>
+          </div>
+          <div class="calc-row">
+            <span class="cl">残り330ID分の取り分（40%）<small>4,000円 × 延べ1,980ID・月</small></span>
+            <span class="cv">+7,920,000円</span>
+          </div>
+          <div class="calc-row total">
+            <span class="cl">初年度に残るお金</span>
+            <span class="cv">9,360,000円</span>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="bars">
-      <div class="bar-row">
-        <span class="bl">PLAN A ／ 最初に出す100万円<span class="bn">戻りなし</span></span>
-        <div class="bar-track"><div class="bar-fill" style="width:46%;"></div></div>
-        <span class="bc">提供権の対価としてお預かりします。売上とは別のお金です。</span>
+
+    <div class="vs">
+      <p class="vt">同じ売り方をした場合の、初年度に残るお金</p>
+      <div class="vs-row vs-a">
+        <span class="vl">PLAN A ／ 初期100万円<span class="vn">8,360,000円</span></span>
+        <div class="vs-bar"><span style="width:89.3%;"></span></div>
       </div>
-      <div class="bar-row">
-        <span class="bl">PLAN B ／ 最初に出す216万円<span class="bn">全額が売上として戻る</span></span>
-        <div class="bar-track"><div class="bar-back" style="width:100%;"></div></div>
-        <span class="bc">30ID分の仕入れです。この枠の売上は100%御社にお返しするため、初期費用は実質0円になります。</span>
+      <div class="vs-row vs-b">
+        <span class="vl">PLAN B ／ 216万円を先に仕入れ<span class="vn">9,360,000円</span></span>
+        <div class="vs-bar"><span style="width:100%;"></span></div>
       </div>
-      <div class="bar-legend">
-        <span><i style="background:#8d93a0;"></i>戻らないお金</span>
-        <span><i style="background:#e8eef8;border:1px solid #1a4fa0;"></i>売上として戻るお金</span>
+      <p class="vs-diff">PLAN Bのほうが、初年度で<span class="dn">1,000,000円</span>多く残ります</p>
+    </div>
+
+    <p style="margin-top:26px;">差がちょうど100万円になるのは、偶然ではありません。<strong>Bで先に出す216万円は「仕入れ」なので、売れれば全額戻ってきます。</strong>戻らないのは、Aの初期費用100万円だけ。先行30IDが毎月30万円を生むため、8か月目には216万円を回収し終えます。</p>
+
+    <div class="bonus">
+      <div class="bi">3ID</div>
+      <div>
+        <p class="bt">どちらのプランでも、御社が自社で使う3IDは無料でお付けします。</p>
+        <p class="bd">売る前に、まず御社の中で使ってみてください。自社の業務が画面の記録からどう見えるかを体験していただくのが、いちばん早い商品理解になります。そのまま商談で「うちではこう出ています」と実物をお見せいただけます。</p>
       </div>
     </div>
+
     <small class="note">返金の時期・条件、30IDに満たない場合の扱い、税の扱いは <span class="ph">【調整中】</span>。個別にご説明します。</small>
 
     <p style="margin-top:36px;">30ID入った状態で見ると、2年目以降は当社も御社も<strong>年144万円ずつ</strong>（4,000円×30ID×12か月）で並びます。最初だけ当社が多く受け取り、そこから先は対等です。長く売っていただくほど、御社の取り分が効いてきます。</p>
@@ -929,7 +1112,7 @@ footer .fnav a:hover{color:#fff;}
    <div class="sec-grid">
     <div class="sec-head">
     <span class="sec-no">06 ／ WHO DOES WHAT</span>
-    <h2>開発・サーバー・料金回収は当社。<br>御社がやるのは、販売と一次対応だけ。</h2>
+    <h2><span class="q">開発・サーバー・料金回収は当社。</span><span class="a">御社がやるのは、販売と一次対応だけ。</span></h2>
     </div>
     <div class="sec-body">
     <p class="lead">OEMで一番不安なのは「結局、自社で開発や運用を抱えるのでは」という点だと思います。そこは持ちません。</p>
@@ -991,7 +1174,7 @@ footer .fnav a:hover{color:#fff;}
    <div class="sec-grid">
     <div class="sec-head">
     <span class="sec-no" style="color:#8d93a0;">07 ／ WHY TODAY</span>
-    <h2>この記録は、<br>始めた日からしか貯まりません。</h2>
+    <h2><span class="q">この記録は、</span><span class="a">始めた日からしか貯まりません。</span></h2>
     </div>
     <div class="sec-body">
     <p class="lead">1年後、御社のお客様の社内に15万枚の画像がある状態と、ゼロの状態。そこから先にできることは、まったく違います。15万枚あれば、そのときのAIが業務の自動化を引き受けてくれるはずです。無ければ、そこから1年待つことになります。<br><br>過去に遡って撮ることは、誰にもできません。だから、始めた会社と始めていない会社の差は、二度と縮まりません。</p>
