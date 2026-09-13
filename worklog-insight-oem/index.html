@@ -731,6 +731,51 @@ input[type=range]::-moz-range-thumb{
 .faq details[open] summary::after{transform:rotate(-135deg);top:32px;}
 .faq .fa{padding:0 0 20px;font-size:14.5px;color:var(--gray);margin:0;}
 
+
+/* ── 見出し級のpも文節で折る（孤立行の予防） ── */
+.survey .rt, .risk .rh, .column .ct, .quote, .shrink .sh, .three-co .tb, .bonus .bt{
+  word-break:auto-phrase; line-break:strict; overflow-wrap:anywhere;
+}
+@supports not (word-break: auto-phrase){
+  .survey .rt, .risk .rh, .column .ct, .quote, .shrink .sh, .three-co .tb, .bonus .bt{ word-break:normal; }
+}
+
+/* ── 実測アンケート ─────────────────── */
+.survey{margin-top:38px;border:1px solid var(--line);border-radius:8px;background:#fff;padding:26px 26px 22px;}
+.alt .survey{background:var(--paper);}
+.survey p{font-size:14.5px;color:var(--gray);margin:0 0 18px;line-height:1.85;}
+.survey .vh{font-family:var(--en);font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--gray2);margin:0 0 12px;}
+.survey .rt{font-size:clamp(1.05rem,2.4vw,1.24rem);font-weight:800;color:var(--ink);margin:0 0 12px;line-height:1.6;}
+.survey-rows{border-top:2px solid var(--ink);margin-top:4px;}
+.survey-row{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid var(--line);}
+.survey-row .sl{font-size:14.5px;font-weight:600;line-height:1.6;}
+.survey-row .sv{font-family:var(--en);font-size:clamp(1.3rem,3vw,1.7rem);font-weight:800;color:var(--blue);flex:none;line-height:1.2;}
+.survey-row .sv .u{font-family:var(--jp);font-size:13px;font-weight:700;color:var(--ink);margin-left:3px;}
+.survey-row.mute .sv{color:var(--gray2);}
+.survey .sfoot{font-size:12.5px;color:var(--gray2);margin:14px 0 0;line-height:1.75;}
+.survey .sfoot strong{color:var(--gray);font-weight:800;}
+
+/* ── 売れなかった場合 ───────────────── */
+.risk{margin-top:34px;border:1px solid var(--ink);border-radius:8px;background:#fff;padding:24px 26px;}
+.alt .risk{background:var(--paper);}
+.risk .rh{font-size:clamp(1rem,2.2vw,1.14rem);font-weight:800;margin:0 0 14px;line-height:1.6;}
+.risk p{font-size:14.5px;color:var(--gray);margin:0 0 12px;line-height:1.85;}
+.risk p:last-child{margin-bottom:0;}
+.risk strong{color:var(--ink);font-weight:800;}
+
+/* ── 次の流れ ───────────────────────── */
+.flow4{display:grid;grid-template-columns:repeat(4,1fr);margin-top:38px;border-top:2px solid var(--ink);}
+.flow4 > div{padding:22px 20px 24px;border-right:1px solid var(--line);}
+.flow4 > div:last-child{border-right:none;background:var(--blue-l);}
+.flow4 .fn{font-family:var(--en);font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--blue);}
+.flow4 h3{margin-top:10px;font-size:1rem;}
+.flow4 p{font-size:14px;color:var(--gray);margin:0;}
+@media(max-width:820px){
+  .flow4{grid-template-columns:1fr;}
+  .flow4 > div{border-right:none;border-bottom:1px solid var(--line);}
+  .flow4 > div:last-child{border-bottom:none;}
+}
+
 /* ── CTA ────────────────────────────── */
 .final{background:var(--ink);color:#fff;}
 .final h2{color:#fff;}
@@ -917,7 +962,7 @@ footer .fnav a:hover{color:#fff;}
       <div class="tag">法人営業の経験がある個人<span>副業でのご参加も歓迎します</span></div>
     </div>
     <p style="margin-top:24px;">法人でなくても構いません。地方で顧問・コンサルをされている方、企業の経営者と日常的に会っている方であれば、規模は問いません。必要なのは、<strong>すでに信頼のある相手が何社あるか</strong>だけです。</p>
-    <small class="note">個人・副業でお申し込みの場合の条件は、下記プランとは別にご相談させてください（<span class="ph">【調整中】</span>）。</small>
+    <small class="note">個人・副業でお申し込みの場合の条件は、下記プランとは別にご相談させてください。</small>
     </div>
    </div>
   </div>
@@ -953,6 +998,19 @@ footer .fnav a:hover{color:#fff;}
         <h3>3者に配る</h3>
         <p>同じ記録から、経営者・管理職・本人それぞれに別のレポートが出ます。見る人によって、必要な粒度が違うからです。</p>
       </div>
+    </div>
+
+
+    <div class="survey">
+      <p class="vh">FIELD DATA ／ 2026.08.28</p>
+      <p class="rt">7名に説明して、5名が「使ってみたい」。</p>
+      <p>売り込んだのではありません。当社が主催したセミナーで、いまの3ステップをそのまま説明しただけです。そのときの回答が、これでした。</p>
+      <div class="survey-rows">
+        <div class="survey-row"><span class="sl">無料モニターを希望</span><span class="sv">5<span class="u">名</span></span></div>
+        <div class="survey-row"><span class="sl">興味あり</span><span class="sv">1<span class="u">名</span></span></div>
+        <div class="survey-row mute"><span class="sl">回答者数</span><span class="sv">7<span class="u">名</span></span></div>
+      </div>
+      <p class="sfoot">2026年8月28日に当社が開催したセミナーでの参加者アンケート（回答7名）の実測値です。母数が7名のため、市場全体の需要を示す数字ではありません。それでも、<strong>説明した相手が自分から手を挙げる商材である</strong>ことの裏づけにはなります。</p>
     </div>
 
     <div class="column">
@@ -1036,7 +1094,7 @@ footer .fnav a:hover{color:#fff;}
         <div class="bbr">粗利 8,000円を、当社と御社で折半します</div>
       </div>
     </div>
-    <small class="note">御社の仕入（卸値）は、原価2,000円と当社の取り分4,000円を合わせた6,000円です。金額はすべて1IDあたりの月額。税の扱い・課金単位は <span class="ph">【調整中】</span>。</small>
+    <small class="note">御社の仕入（卸値）は、原価2,000円と当社の取り分4,000円を合わせた6,000円です。金額はすべて1IDあたりの月額です。税の扱いと課金単位は、個別相談の場でご説明します。</small>
 
     <div class="flowfig">
       <p class="ft">お金と役割の流れ</p>
@@ -1087,7 +1145,7 @@ footer .fnav a:hover{color:#fff;}
         <text x="160" y="268" text-anchor="middle" font-size="17" font-weight="700" fill="#111318">御社</text>
         <text x="160" y="292" text-anchor="middle" font-size="14" fill="#525763">販売・一次対応／毎月入り続ける</text>
       </svg>
-      <p class="fnote">エンド顧客への請求と回収は当社が行い、御社には1IDあたり4,000円が毎月渡ります。御社が立て替える費用はありません。入金のタイミングと実務の詳細は <span class="ph">【調整中】</span>。</p>
+      <p class="fnote">エンド顧客への請求と回収は当社が行い、御社には1IDあたり4,000円が毎月渡ります。御社が立て替える費用はありません。入金のタイミングと実務の詳細は、個別相談の場でご説明します。</p>
     </div>
 
     <p style="margin-top:36px;">代理店マージンの相場は20%です。それだと1IDで2,000円にしかならず、100万円に届くまで500台必要になります。動く気になる金額ではありません。だから<strong>40%（実質50%）</strong>に置きました。</p>
@@ -1159,7 +1217,7 @@ footer .fnav a:hover{color:#fff;}
         <li><b>商談でそのまま見せられる形に</b><span>経営者・管理職・本人の3画面を、初回の商談から実物としてお見せいただけます。</span></li>
       </ol>
       <button class="exbtn" data-open-ex>たとえば、どんな画面になるのか</button>
-      <small class="note">作り込みの範囲、着手から公開までの期間は <span class="ph">【調整中】</span>。個別にご説明します。</small>
+      <small class="note">作り込みの範囲、着手から公開までの期間は、個別にご説明します。</small>
     </div>
 
     <div class="plans">
@@ -1228,6 +1286,14 @@ footer .fnav a:hover{color:#fff;}
       </div>
     </div>
 
+
+    <div class="risk">
+      <p class="rh">1社も売れなかった場合は、こうなります。</p>
+      <p>プランAは、契約時にお支払いいただく作り込み費用100万円が戻りません。ただし<strong>毎月の仕入れ義務はありません。</strong>売れなかった月に追加の支払いが発生しないので、持ち出しは契約時の100万円で止まります。</p>
+      <p>プランBは、30ID分の216万円を先にお預かりしている形です。売れなければ、その分が未回収のまま残ります。30IDを売り切れなかった場合の扱いは、個別のお打ち合わせで確認し、書面にしたうえでご契約いただきます。</p>
+      <p>都合のいい試算だけをお見せするつもりはありません。<strong>うまくいかなかったときに何がどうなるかを、先に共有しておきます。</strong></p>
+    </div>
+
     <div class="bonus">
       <div class="bi">3ID</div>
       <div>
@@ -1236,7 +1302,7 @@ footer .fnav a:hover{color:#fff;}
       </div>
     </div>
 
-    <small class="note">返金の時期・条件、30IDに満たない場合の扱い、税の扱いは <span class="ph">【調整中】</span>。個別にご説明します。</small>
+    <small class="note">返金の時期・条件、30IDに満たない場合の扱い、税の扱いは、個別にご説明します。</small>
 
     <p style="margin-top:36px;">30ID入った状態で見ると、2年目以降は当社も御社も<strong>年144万円ずつ</strong>（4,000円×30ID×12か月）で並びます。最初だけ当社が多く受け取り、そこから先は対等です。長く売っていただくほど、御社の取り分が効いてきます。</p>
     </div>
@@ -1290,7 +1356,7 @@ footer .fnav a:hover{color:#fff;}
       </details>
       <details>
         <summary>解約したら、貯めたログはどうなりますか。</summary>
-        <p class="fa">保存期間と解約後のデータの扱いは、契約条件として整理中です（<span class="ph">【調整中】</span>）。個別相談の場で、確定している範囲をそのままお伝えします。</p>
+        <p class="fa">保存期間と解約後のデータの扱いは、契約条件として整理しています。個別相談の場で、確定している範囲をそのままお伝えします。</p>
       </details>
       <details>
         <summary>1年分の画像を貯めると、保存費はどのくらいですか。</summary>
@@ -1298,7 +1364,7 @@ footer .fnav a:hover{color:#fff;}
       </details>
       <details>
         <summary>ファクトサーチとは何ですか。</summary>
-        <p class="fa">貯めたログに、日本語のまま質問できる別途有料のオプションです。「3か月前のあのとき、何をしていたか」に、AIがその期間の記録を読み直して答えます。価格は <span class="ph">【調整中】</span> です。</p>
+        <p class="fa">貯めたログに、日本語のまま質問できる別途有料のオプションです。「3か月前のあのとき、何をしていたか」に、AIがその期間の記録を読み直して答えます。価格は個別にご案内します。</p>
       </details>
     </div>
     </div>
@@ -1307,11 +1373,52 @@ footer .fnav a:hover{color:#fff;}
 </section>
 
 <!-- ══════════ 07 ══════════ -->
+<section>
+  <div class="wrap">
+   <div class="sec-grid">
+    <div class="sec-head">
+    <span class="sec-no">07 ／ WHAT HAPPENS NEXT</span>
+    <h2><span class="q">やると決めたら、</span><span class="a">何が始まるのか。</span></h2>
+    </div>
+    <div class="sec-body">
+    <p class="lead">お申し込みから販売開始までは、4つです。いちばん中身が濃いのは最初の打ち合わせで、そこで御社の顧客リストを一緒に見ながら、最初の5社を決めます。</p>
+
+    <div class="flow4">
+      <div>
+        <span class="fn">STEP 01</span>
+        <h3>個別の打ち合わせ</h3>
+        <p>顧客リストを見ながら、最初の5社を一緒に決めます。オンラインで45分程度。</p>
+      </div>
+      <div>
+        <span class="fn">STEP 02</span>
+        <h3>条件の確定と契約</h3>
+        <p>プランA／Bを選び、契約期間・解約条件・データの扱いを書面で確定します。</p>
+      </div>
+      <div>
+        <span class="fn">STEP 03</span>
+        <h3>道具をお渡し</h3>
+        <p>営業台本・管理画面・サービスLPをお渡しし、御社専用の画面の作り込みに入ります。</p>
+      </div>
+      <div>
+        <span class="fn">10 / 1</span>
+        <h3>販売開始</h3>
+        <p>正式提供の初日から売れます。それまでの時間は、リストの整理と最初の5社への当たりに使えます。</p>
+      </div>
+    </div>
+
+    <p style="margin-top:30px;">いま動いていただければ、<strong>販売開始は正式提供の初日からです。</strong>後から入っても条件は同じですが、先に入った会社から既存顧客へ話を持っていくことになります。同じ商圏・同じ業種のリストを持つ会社が重なった場合、早い順に埋まるのは避けられません。</p>
+    <small class="note">個別の打ち合わせを聞いたうえで「やっぱりやめます」で構いません。決まっていない条件を、決まったようにご説明することはしません。</small>
+    </div>
+   </div>
+  </div>
+</section>
+
+<!-- ══════════ 08 ══════════ -->
 <section class="final">
   <div class="wrap">
    <div class="sec-grid">
     <div class="sec-head">
-    <span class="sec-no" style="color:#8d93a0;">07 ／ WHY TODAY</span>
+    <span class="sec-no" style="color:#8d93a0;">08 ／ WHY TODAY</span>
     <h2><span class="q">この記録は、</span><span class="a">始めた日からしか貯まりません。</span></h2>
     </div>
     <div class="sec-body">
@@ -1333,7 +1440,7 @@ footer .fnav a:hover{color:#fff;}
       <a href="https://www.writeup.jp/privacy/" target="_blank" rel="noreferrer">個人情報保護方針 ↗</a>
       <a href="https://www.writeup.jp/contact/" target="_blank" rel="noreferrer">お問い合わせ ↗</a>
     </div>
-    <p>ワークログ・インサイト OEMパートナー募集｜掲載の金額はすべて1IDあたりの月額です。<span class="ph">【調整中】</span> と記載の項目は、個別相談の場でお伝えする内容です。<br>
+    <p>ワークログ・インサイト OEMパートナー募集｜掲載の金額はすべて1IDあたりの月額です。個別相談の場でお伝えするとした項目は、確定しだい書面でご提示します。<br>
     最低利用期間、解約の条件、保存期間と解約後のデータの取り扱い、返金の取り扱いは、ご契約前に書面でご提示します。<br>
     掲載している画面と図は画面イメージであり、実際の表示と異なる場合があります。</p>
   </div>
@@ -1400,7 +1507,7 @@ footer .fnav a:hover{color:#fff;}
     </div>
     <div class="done" id="doneArea">
       <p class="dm">ありがとうございます。</p>
-      <p>ミニセミナーの動画をこちらに表示します（<span class="ph">【調整中】</span>）。<br>個別相談をご希望の場合は、担当より2営業日以内にご連絡いたします。</p>
+      <p>ミニセミナーの動画は、準備ができしだいこちらに表示します。<br>個別相談をご希望の場合は、担当より2営業日以内にご連絡いたします。</p>
     </div>
   </div>
 </div>
@@ -1655,7 +1762,7 @@ footer .fnav a:hover{color:#fff;}
   form.addEventListener('submit', function(e){
     e.preventDefault();
     if(!form.checkValidity()){ form.reportValidity(); return; }
-    /* 送信先は未設定（【調整中】）。確定後にここへ送信処理を入れる。 */
+    /* 送信先は未設定。確定後にここへ送信処理を入れる。 */
     formArea.style.display = 'none';
     doneArea.classList.add('on');
   });
