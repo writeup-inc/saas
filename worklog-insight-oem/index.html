@@ -512,6 +512,69 @@ input[type=range]::-moz-range-thumb{
 .calc-row.total .cl{font-weight:700;color:var(--ink);font-size:14px;}
 .calc-row.total .cv{font-size:clamp(1.15rem,2.6vw,1.45rem);color:var(--blue);}
 
+/* ── 市場が縮んでいる（01） ─────────── */
+.shrink{margin-top:30px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:26px 24px 22px;}
+.shrink .sh{font-size:clamp(1rem,2.2vw,1.14rem);font-weight:800;margin:0 0 18px;line-height:1.6;}
+.shrink-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.shrink-grid div{border-top:2px solid var(--ink);padding-top:13px;}
+.shrink-grid .sn{font-family:var(--en);font-size:clamp(1.35rem,3.4vw,1.85rem);font-weight:800;color:var(--blue);display:block;line-height:1.2;}
+.shrink-grid .sn .u{font-family:var(--jp);font-size:13px;font-weight:700;color:var(--ink);margin-left:3px;}
+.shrink-grid .st{font-size:12.5px;color:var(--gray);display:block;margin-top:7px;line-height:1.65;}
+.shrink .sf{font-size:14px;color:var(--gray);margin:20px 0 0;line-height:1.85;}
+.shrink .src{font-size:12px;color:var(--gray2);margin-top:14px;line-height:1.7;display:block;}
+.shrink .src a{color:var(--gray2);}
+@media(max-width:640px){ .shrink-grid{grid-template-columns:1fr;gap:14px;} }
+
+/* ── コラム（02） ───────────────────── */
+.column{
+  max-width:560px;margin:40px auto 0;
+  background:var(--faint);border:1px solid var(--line);
+  border-radius:26px;padding:28px 30px 26px;
+}
+.alt .column{background:var(--paper);}
+.column .ck{
+  font-family:var(--en);font-size:12px;font-weight:800;letter-spacing:.16em;
+  color:var(--gray2);display:flex;align-items:center;gap:9px;margin:0 0 12px;
+}
+.column .ck::before{content:"";width:20px;height:1.5px;background:var(--gray2);}
+.column .ct{font-size:clamp(1rem,2.2vw,1.12rem);font-weight:800;margin:0 0 12px;line-height:1.6;}
+.column .cx{font-size:14px;color:var(--gray);margin:0;line-height:1.9;}
+.column .cmore{
+  margin-top:18px;background:none;border:1px solid var(--gray2);border-radius:20px;
+  padding:9px 20px;font-family:var(--jp);font-size:13px;font-weight:700;color:var(--ink);
+  cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:background .18s,border-color .18s;
+}
+.column .cmore:hover{background:#fff;border-color:var(--blue);color:var(--blue);}
+.column .cmore::after{content:"＋";font-family:var(--en);font-weight:800;}
+
+/* コラム全文モーダル */
+.modal-box.cmodal-box{max-width:720px;padding:36px 34px 32px;}
+.modal-box.cmodal-box h3{font-size:clamp(1.1rem,2.6vw,1.34rem);margin:10px 0 6px;line-height:1.6;}
+.modal-box.cmodal-box .cmk{font-family:var(--en);font-size:12px;font-weight:800;letter-spacing:.16em;color:var(--gray2);}
+.cbody h4{
+  font-size:15px;font-weight:800;margin:26px 0 8px;line-height:1.6;
+  padding-left:12px;border-left:3px solid var(--blue);
+}
+.cbody p{font-size:14px;color:var(--gray);line-height:1.95;margin:0 0 14px;}
+.cbody ol,.cbody ul{margin:0 0 14px;padding-left:0;list-style:none;}
+.cbody li{font-size:14px;color:var(--gray);line-height:1.85;padding:7px 0 7px 26px;position:relative;border-bottom:1px solid var(--line);}
+.cbody li:last-child{border-bottom:none;}
+.cbody ol{counter-reset:c;}
+.cbody ol li{counter-increment:c;}
+.cbody ol li::before{
+  content:counter(c);position:absolute;left:0;top:9px;
+  width:18px;height:18px;border-radius:50%;background:var(--blue);color:#fff;
+  font-family:var(--en);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;
+}
+.cbody ul li::before{content:"";position:absolute;left:6px;top:17px;width:6px;height:6px;border-radius:50%;background:var(--gray2);}
+.cbody .quote-box{background:var(--faint);border-radius:6px;padding:16px 18px;margin:0 0 14px;}
+.cbody .quote-box p{margin:0;font-size:13.5px;color:var(--ink);}
+.cbody .srcs{border-top:1px solid var(--line);margin-top:24px;padding-top:16px;}
+.cbody .srcs b{display:block;font-size:12.5px;font-weight:800;margin-bottom:8px;}
+.cbody .srcs li{font-size:12.5px;padding:5px 0 5px 14px;border-bottom:none;line-height:1.75;color:var(--gray2);}
+.cbody .srcs li::before{top:14px;width:5px;height:5px;}
+.cbody .srcs a{color:var(--blue);word-break:break-all;}
+
 /* ── 管理画面の作り込み ─────────────── */
 .build{margin-top:30px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:26px 24px 22px;}
 .alt .build{background:var(--paper);}
@@ -796,6 +859,26 @@ footer .fnav a:hover{color:#fff;}
     <p class="lead">新規開拓の費用は上がり続けています。一方で、御社がこれまで築いてきた取引先リストは、すでに手元にあるもの。そこへ「もう1つ売るもの」を足すほうが、新しい顧客を1社増やすより早いはずです。これは、そういうご提案です。</p>
     <p>しかも今回お渡しするのは、売り切りではなく<strong>月額のストック</strong>です。1台入れば、その1台は翌月も再来月も御社に入り続けます。解約されない限り、営業に行くのは最初の一度だけ。</p>
 
+    <div class="shrink">
+      <p class="sh">売る相手そのものが、毎年減っています。</p>
+      <div class="shrink-grid">
+        <div>
+          <span class="sn">184<span class="u">社／日</span></span>
+          <span class="st">2025年に休廃業・解散した企業は67,210件。3年連続で過去最多です。</span>
+        </div>
+        <div>
+          <span class="sn">211<span class="u">社／日</span></span>
+          <span class="st">倒産を含めると、市場からの退出は年間7万7,000件台の見通しです。</span>
+        </div>
+        <div>
+          <span class="sn">332<span class="u">人／日</span></span>
+          <span class="st">15〜64歳の人口は7,342万7千人。1年で12万1千人減りました。</span>
+        </div>
+      </div>
+      <p class="sf">名簿は毎年薄くなり、残った会社には同じ提案が何社からも届きます。この条件で新規の取引先を1社増やすのは、年々高くつきます。<strong>だから、顧客の数ではなく、1社あたりの取引を増やす。</strong>そのための1本として、月額のストックを足していただく話です。</p>
+      <small class="src">出典：東京商工リサーチ「2025年『休廃業・解散』企業動向調査」（2026年1月）／総務省統計局「人口推計」2026年2月1日現在確定値。1日あたりの数値は年間値を365で割った当社の計算です。</small>
+    </div>
+
     <h3 style="margin-top:44px;">こういう会社・こういう方が、向いています。</h3>
     <div class="tag-grid">
       <div class="tag">人材紹介・人材派遣<span>面談で現場の困りごとを聞ける</span></div>
@@ -844,6 +927,13 @@ footer .fnav a:hover{color:#fff;}
         <h3>3者に配る</h3>
         <p>同じ記録から、経営者・管理職・本人それぞれに別のレポートが出ます。見る人によって、必要な粒度が違うからです。</p>
       </div>
+    </div>
+
+    <div class="column">
+      <p class="ck">COLUMN</p>
+      <p class="ct">「それ、社員を監視するソフトですよね」と<br>必ず聞かれます。</p>
+      <p class="cx">PCのログを取るソフトは、コロナ前から存在します。キーボードの打鍵、アプリの起動、閲覧したサイトを記録し、在宅勤務中にサボっていないかを確かめる——テレワークが広がった2020年前後に、その用途で一気に知られました。<br><br>ワークログ・インサイトは、そこを目的にしていません。人を見張るためではなく、<strong>どの業務に時間が使われているかを数えるため</strong>の道具です。ただし「では監視には使えないのか」と問われると、答えは単純ではありません。管理画面の作り方しだいで、できてしまう部分があるからです。</p>
+      <button class="cmore" data-open-column>続きを読む</button>
     </div>
 
     </div>
@@ -1288,6 +1378,59 @@ footer .fnav a:hover{color:#fff;}
   </div>
 </div>
 
+<!-- ══════════ COLUMN MODAL ══════════ -->
+<div class="modal" id="cmodal" role="dialog" aria-modal="true" aria-labelledby="cmodalTitle">
+  <div class="modal-box cmodal-box">
+    <button class="modal-close" data-close-column aria-label="閉じる">×</button>
+    <span class="cmk">COLUMN</span>
+    <h3 id="cmodalTitle">「それ、社員を監視するソフトですよね」と必ず聞かれます。</h3>
+    <div class="cbody">
+      <p>商談で必ず出る質問です。ここを曖昧にしたまま進めると、決裁の直前で止まります。御社が答えられるよう、当社の整理をそのままお渡しします。</p>
+
+      <h4>PCログ管理ソフトは、コロナ前からありました</h4>
+      <p>キーボードの打鍵、アプリの起動と終了、閲覧したサイト、外部機器の接続、画面のキャプチャ。こうした記録を取るソフトは以前から販売されており、テレワークが広がった2020年前後に「在宅勤務中にきちんと働いているか」を確かめる用途で一気に知られました。いま「PCの記録を取る」と言えば、多くの経営者と社員が、まずこの種のソフトを思い浮かべます。</p>
+
+      <h4>ワークログ・インサイトの位置づけは、そこではありません</h4>
+      <p>本サービスが数えるのは、人ではなく業務です。画面の記録をAIが「見積書の作成」「求人票の入力」といった業務名に変換し、どの業務に何時間使われているかを出します。目的は、置き換えられる作業を見つけること。誰がサボっていたかを探すことではありません。本人にも本人向けの画面を返すのは、この設計だからです。</p>
+      <p>ただし正直に申し上げると、<strong>管理画面の作り方しだいで、監視に近い使い方はできてしまいます。</strong>「できない」と言い切るより、「監視として使うなら、こういう手続きが要る」と先に整理しておくほうが、商談は前に進みます。</p>
+
+      <h4>監視として使う場合に、関係すること</h4>
+      <p>個人情報保護委員会は、従業者に対する監督の一環としてモニタリングを実施する際の留意点として、次の4点を挙げています。</p>
+      <ol>
+        <li>モニタリングの目的をあらかじめ特定した上で、社内規程等に定め、従業者に明示すること</li>
+        <li>モニタリングの実施に関する責任者及びその権限を定めること</li>
+        <li>あらかじめモニタリングの実施に関するルールを策定し、その内容を運用者に徹底すること</li>
+        <li>モニタリングがあらかじめ定めたルールに従って適正に行われているか、確認を行うこと</li>
+      </ol>
+      <p>実務に落とすと、やることは次のようになります。</p>
+      <ul>
+        <li>就業規則または社内規程に、記録の目的・範囲・保存期間を書く</li>
+        <li>入社時および導入時に、その内容を本人へ明示する</li>
+        <li>責任者を決め、誰が何を見られるのかを文書にする</li>
+        <li>記録を人事評価に使うのか使わないのかを、先に決めて伝える</li>
+        <li>取らない情報（私的な通信の中身など）を、あらかじめ除外すると決めておく</li>
+      </ul>
+      <p>手続きを踏まずに黙って記録を取り、それを不利益な処分の根拠に使う。ここがいちばん危ない進め方です。逆に、目的と範囲を先に示しておけば、導入そのものが問題になることは通常ありません。</p>
+
+      <h4>本サービスで、どこまで見えるのか</h4>
+      <p>当社は、画面の画像そのものを人が閲覧しなくても成立する設計を前提にしています。AIが業務名に変換した後のレポートだけを見る、という使い方です。画像の暗号化、閲覧できる人の範囲、管理者であっても画像を開けないモードの提供については、<span class="ph">【調整中】</span>です。確定した内容は、個別相談の場でそのままお伝えします。</p>
+      <p>この点は、御社が売るときの説明に直結します。決まり次第、営業台本にも反映してお渡しします。</p>
+
+      <div class="quote-box">
+        <p><strong>商談での言い方の例：</strong>「打鍵やサイト閲覧を見張るソフトとは、目的が違います。数えているのは業務で、本人にも本人の画面が返ります。ただ、記録を取る以上は社内規程での明示が要りますので、そこは一緒に整えます。」</p>
+      </div>
+
+      <div class="srcs">
+        <b>出典</b>
+        <ul>
+          <li>個人情報保護委員会「『個人情報の保護に関する法律についてのガイドライン』に関するQ&amp;A」Q5-7<br><a href="https://www.ppc.go.jp/all_faq_index/faq1-q5-7/" target="_blank" rel="noreferrer">https://www.ppc.go.jp/all_faq_index/faq1-q5-7/</a></li>
+          <li>本コラムのうち、法令解釈にわたる部分は一般的な整理です。個別の運用については、御社の顧問弁護士または社会保険労務士にご確認ください。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
 /* ── ヒーローのタイプライター ── */
 (function(){
@@ -1367,6 +1510,28 @@ footer .fnav a:hover{color:#fff;}
   document.querySelectorAll('[data-close-modal]').forEach(function(b){ b.addEventListener('click', close); });
   modal.addEventListener('click', function(e){ if(e.target === modal) close(); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && modal.classList.contains('on')) close(); });
+
+  /* コラム全文モーダル */
+  var cm = document.getElementById('cmodal');
+  if(cm){
+    var cLast = null;
+    function cOpen(e){
+      cLast = e && e.currentTarget ? e.currentTarget : null;
+      cm.classList.add('on');
+      document.body.style.overflow = 'hidden';
+      var cb = cm.querySelector('[data-close-column]');
+      if(cb) setTimeout(function(){ cb.focus(); }, 40);
+    }
+    function cClose(){
+      cm.classList.remove('on');
+      document.body.style.overflow = '';
+      if(cLast) cLast.focus();
+    }
+    document.querySelectorAll('[data-open-column]').forEach(function(b){ b.addEventListener('click', cOpen); });
+    document.querySelectorAll('[data-close-column]').forEach(function(b){ b.addEventListener('click', cClose); });
+    cm.addEventListener('click', function(e){ if(e.target === cm) cClose(); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && cm.classList.contains('on')) cClose(); });
+  }
 
   form.addEventListener('submit', function(e){
     e.preventDefault();
