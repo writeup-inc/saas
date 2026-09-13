@@ -6,6 +6,9 @@
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta name="description" content="AIを使って新しい事業をはじめるためのスターターパック一覧。説明会、ホームページ制作、AI営業代行、AIOコンサル、広告代理店、営業トーク集へのリンク集です。">
 <title>新規事業スターターパック 一覧｜ライトアップ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Outfit:wght@600;800&display=swap" rel="stylesheet">
 <style>
 /* ── 改行制御 ───────────────────────────────────────────── */
 h1, h2, h3, h4, h5,
@@ -51,6 +54,8 @@ pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
   --accent-soft:#eef1fd;
   --radius:18px;
   --maxw:1080px;
+  --font-jp:"Noto Sans JP","Hiragino Kaku Gothic ProN","Hiragino Sans",sans-serif;
+  --font-en:"Outfit",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 @media (prefers-color-scheme: dark){
   :root{
@@ -72,29 +77,92 @@ body{
 /* ── ヒーロー ── */
 .hero{ border-bottom:1px solid var(--line); background:var(--bg); }
 .hero__inner{
-  display:grid; gap:32px; align-items:center;
-  padding:56px 0 52px;
-  grid-template-columns:1fr;
+  max-width:880px; margin:0 auto; text-align:center;
+  padding:72px 0 66px;
 }
-@media (min-width:860px){
-  .hero__inner{ grid-template-columns:1.05fr .95fr; gap:48px; padding:84px 0 78px; }
-}
+@media (min-width:860px){ .hero__inner{ padding:118px 0 104px; } }
+
 .eyebrow{
-  display:inline-flex; align-items:center; gap:8px;
-  font-size:12px; letter-spacing:.16em; font-weight:700;
-  color:var(--accent); margin:0 0 18px;
+  display:inline-flex; align-items:center; gap:12px;
+  font-family:var(--font-en);
+  font-size:12.5px; letter-spacing:.3em; font-weight:800;
+  color:var(--accent); margin:0 0 26px; text-transform:uppercase;
 }
-.eyebrow::before{ content:""; width:26px; height:1px; background:currentColor; display:block; }
-.hero__title{ margin:0 0 20px; font-weight:800; letter-spacing:.01em; }
-.hero__title .sub{ display:block; font-size:.44em; letter-spacing:.1em; color:var(--muted); font-weight:700; margin-top:14px; }
-.lead{ margin:0; color:var(--ink-2); font-size:15.5px; max-width:34em; }
-.hero__art{ margin:0; }
-.hero__art svg{ width:100%; height:auto; display:block; }
+.eyebrow::before, .eyebrow::after{ content:""; width:28px; height:1px; background:currentColor; display:block; }
+
+.hero__title{
+  font-family:var(--font-jp);
+  font-weight:900;
+  font-size:clamp(2.35rem, 8.4vw, 5.1rem);
+  line-height:1.16;
+  letter-spacing:-.025em;
+  margin:0 0 22px;
+  text-wrap:balance;
+}
+.hero__title .sub{
+  display:block; margin-top:22px;
+  font-family:var(--font-en);
+  font-size:clamp(.95rem, 2.4vw, 1.35rem);
+  font-weight:800; letter-spacing:.02em; color:var(--accent);
+  line-height:1.5;
+}
+.hero__title .sub .jp{ font-family:var(--font-jp); font-weight:900; letter-spacing:.04em; }
+.lead{
+  margin:0 auto; color:var(--ink-2); font-size:15.5px; max-width:30em;
+  text-wrap:pretty;
+}
+.hero__rule{ width:44px; height:4px; border-radius:2px; background:var(--accent); margin:0 auto 30px; }
+
+/* ── キーワード（営業トーク募集） ── */
+.talks{
+  margin:44px 0 0;
+  border:1px solid var(--line); border-radius:var(--radius);
+  background:var(--bg-2);
+  padding:34px 22px 32px;
+}
+@media (min-width:800px){ .talks{ padding:46px 44px 44px; margin-top:56px; } }
+.talks__head{ text-align:center; margin-bottom:28px; }
+.pill{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--font-en); font-size:12px; font-weight:800; letter-spacing:.12em;
+  color:var(--accent); background:var(--accent-soft);
+  border:1px solid var(--accent); border-radius:999px; padding:5px 14px;
+}
+.pill .jp{ font-family:var(--font-jp); letter-spacing:.06em; }
+.pill .dot{ width:7px; height:7px; border-radius:50%; background:var(--accent); animation:blink 1.8s ease-in-out infinite; }
+@keyframes blink{ 0%,100%{ opacity:1 } 50%{ opacity:.25 } }
+@media (prefers-reduced-motion: reduce){ .pill .dot{ animation:none } }
+.talks h2{ font-family:var(--font-jp); font-weight:900; letter-spacing:-.01em; margin:18px 0 10px; }
+.talks__lead{ margin:0; color:var(--ink-2); font-size:14.5px; }
+
+.talks__list{ list-style:none; margin:0; padding:0; display:grid; gap:14px; grid-template-columns:1fr; }
+@media (min-width:800px){ .talks__list{ grid-template-columns:1fr 1fr; gap:16px; } }
+.talks__list li{
+  display:flex; gap:14px; align-items:flex-start;
+  background:var(--bg); border:1px solid var(--line); border-radius:14px;
+  padding:16px 18px;
+}
+.talks__list svg{ width:26px; height:26px; flex:none; margin-top:2px; }
+.talks__list p{ margin:0; font-size:14.5px; line-height:1.8; font-weight:700; text-wrap:pretty; }
+
+.talks__cta{ text-align:center; margin-top:30px; }
+.btn{
+  display:inline-flex; align-items:center; gap:10px;
+  background:var(--accent); color:#fff; text-decoration:none;
+  font-weight:800; font-size:15px; letter-spacing:.02em;
+  border-radius:999px; padding:15px 30px; min-height:52px;
+  transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+.btn:hover{ transform:translateY(-2px); box-shadow:0 14px 30px -16px rgba(43,74,203,.9); filter:saturate(1.1); }
+.btn:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+.btn svg{ width:20px; height:20px; flex:none; }
+@media (prefers-color-scheme: dark){ .btn{ color:#101319; } }
+.talks__note{ margin:12px 0 0; color:var(--muted); }
 
 /* ── セクション見出し ── */
 .sec-head{ display:flex; align-items:baseline; gap:14px; margin:64px 0 8px; flex-wrap:wrap; }
-.sec-head h2{ margin:0; font-weight:800; letter-spacing:.02em; }
-.sec-head .count{ font-size:12px; color:var(--muted); letter-spacing:.14em; font-weight:700; }
+.sec-head h2{ margin:0; font-family:var(--font-jp); font-weight:900; letter-spacing:-.01em; }
+.sec-head .count{ font-family:var(--font-en); font-size:12px; color:var(--muted); letter-spacing:.2em; font-weight:800; }
 .sec-note{ margin:0 0 28px; color:var(--muted); font-size:13.5px; }
 
 /* ── カード ── */
@@ -116,11 +184,11 @@ body{
 .card__body{ padding:20px 22px 24px; display:flex; flex-direction:column; gap:10px; flex:1; }
 .card__meta{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
 .no{
-  font-size:11px; font-weight:800; letter-spacing:.12em; color:var(--accent);
+  font-family:var(--font-en); font-size:11.5px; font-weight:800; letter-spacing:.12em; color:var(--accent);
   background:var(--accent-soft); border-radius:999px; padding:4px 10px;
 }
 .tag{ font-size:12px; color:var(--muted); }
-.card h3{ margin:0; font-size:18.5px; line-height:1.5; font-weight:800; letter-spacing:.01em; }
+.card h3{ margin:0; font-family:var(--font-jp); font-size:19px; line-height:1.5; font-weight:900; letter-spacing:-.005em; }
 .card p{ margin:0; font-size:13.5px; line-height:1.85; color:var(--ink-2); }
 .go{
   margin-top:auto; padding-top:14px;
@@ -151,7 +219,7 @@ body{
 footer{ margin-top:72px; border-top:1px solid var(--line); }
 .foot{ padding:28px 0 44px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:center; }
 .foot .note{ color:var(--muted); margin:0; }
-.foot .brand{ font-size:12px; letter-spacing:.16em; font-weight:800; color:var(--muted); }
+.foot .brand{ font-family:var(--font-en); font-size:12px; letter-spacing:.22em; font-weight:800; color:var(--muted); }
 
 /* ── イラスト共通 ── */
 .ill{ overflow:visible; }
@@ -168,57 +236,49 @@ footer{ margin-top:72px; border-top:1px solid var(--line); }
 
 <header class="hero">
   <div class="wrap hero__inner">
-    <div>
-      <p class="eyebrow">BUSINESS STARTER PACKS</p>
-      <h1 class="hero__title">新規事業<span class="nobr">スターターパック</span><span class="sub">AIではじめる、次の事業。</span></h1>
-      <p class="lead">AIを使って新しい事業を立ち上げるためのパックを、種類ごとにまとめました。気になるものから開いてください。</p>
-    </div>
-
-    <figure class="hero__art">
-      <svg class="ill" viewBox="0 0 420 300" role="img" aria-label="6つのパックが1つの土台から広がっていくイラスト">
-        <ellipse cx="210" cy="262" rx="150" ry="14" class="soft"/>
-        <!-- 土台の箱 -->
-        <path class="th" d="M120 262 L120 206 L210 178 L300 206 L300 262 L210 288 Z"/>
-        <path class="st" d="M120 206 L210 234 L300 206 M210 234 L210 288"/>
-        <!-- 開いた蓋 -->
-        <path class="ac" d="M137 200 L210 176 L283 200"/>
-        <!-- 舞い上がるモジュール -->
-        <g class="st">
-          <rect x="52" y="120" width="62" height="44" rx="8"/>
-          <path d="M64 136h30M64 148h18"/>
-        </g>
-        <g class="st">
-          <rect x="306" y="120" width="62" height="44" rx="8"/>
-          <path d="M318 136h30M318 148h18"/>
-        </g>
-        <g class="st">
-          <rect x="100" y="46" width="62" height="44" rx="8"/>
-          <path d="M112 62h30M112 74h18"/>
-        </g>
-        <g class="st">
-          <rect x="258" y="46" width="62" height="44" rx="8"/>
-          <path d="M270 62h30M270 74h18"/>
-        </g>
-        <g class="ac">
-          <rect x="179" y="14" width="62" height="44" rx="8"/>
-        </g>
-        <path class="st" d="M191 30h30M191 42h18"/>
-        <!-- つながる線 -->
-        <path class="faint" d="M210 176 C176 150 140 152 114 142"/>
-        <path class="faint" d="M210 176 C244 150 280 152 306 142"/>
-        <path class="faint" d="M210 176 C186 130 160 108 146 90"/>
-        <path class="faint" d="M210 176 C234 130 260 108 274 90"/>
-        <path class="faint" d="M210 176 L210 58"/>
-        <circle cx="210" cy="176" r="5" class="acf"/>
-        <!-- きらめき -->
-        <path class="ac" d="M366 34 v14 M359 41 h14"/>
-        <path class="st" d="M60 74 v10 M55 79 h10"/>
-      </svg>
-    </figure>
+    <p class="eyebrow">Business Starter Packs</p>
+    <h1 class="hero__title">新規事業<span class="nobr">スターターパック</span><span class="sub"><span class="jp">AIではじめる、次の事業。</span></span></h1>
+    <div class="hero__rule"></div>
+    <p class="lead">AIを使って新しい事業を立ち上げるためのパックを、種類ごとにまとめました。気になるものから開いてください。</p>
   </div>
 </header>
 
 <main class="wrap">
+
+  <section class="talks" aria-labelledby="talks-title">
+    <div class="talks__head">
+      <span class="pill"><span class="dot" aria-hidden="true"></span><span class="jp">随時募集中</span></span>
+      <h2 id="talks-title">現場で刺さった<span class="nobr">ひとこと</span>を集めています</h2>
+      <p class="talks__lead">このパッケージを説明するとき、相手の表情が変わった言い回しを共有してください。使えるものは営業トーク集に反映します。</p>
+    </div>
+
+    <ul class="talks__list">
+      <li>
+        <svg class="ill" viewBox="0 0 32 32" aria-hidden="true"><path class="ac" d="M11 10c-4 0-7 3-7 7s3 6 6 6c1 0 2 0 3-1"/><path class="st" d="M4 20c0 0 1 6 7 7"/><path class="ac" d="M26 10c-4 0-7 3-7 7s3 6 6 6c1 0 2 0 3-1"/><path class="st" d="M19 20c0 0 1 6 7 7"/></svg>
+        <p>「少なくとも1年あれば、AIを自分で使える人になりますよ」</p>
+      </li>
+      <li>
+        <svg class="ill" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="5" class="st"/><path class="ac" d="M16 4v4M16 24v4M4 16h4M24 16h4"/><path class="st" d="M7.5 7.5l2.8 2.8M21.7 21.7l2.8 2.8M24.5 7.5l-2.8 2.8M10.3 21.7l-2.8 2.8"/></svg>
+        <p>「スキルは持っているだけだと古びます。手入れが続く形にしておくのが肝心で」</p>
+      </li>
+      <li>
+        <svg class="ill" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="9" width="17" height="12" rx="3" class="st"/><circle cx="9" cy="14" r="2" class="st"/><path class="st" d="M6 19a3 3 0 0 1 6 0"/><path class="ac" d="M23 10v12M17 16h12"/></svg>
+        <p>「机の引き出しで眠っている名刺を、AIに掛け算させるんです。営業代行って、思っているより身軽ですよ」</p>
+      </li>
+      <li>
+        <svg class="ill" viewBox="0 0 32 32" aria-hidden="true"><path class="st" d="M4 6h16a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-9l-6 5v-5H4a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3z" transform="translate(2,1)"/><path class="ac" d="M10 13h12M10 18h7"/></svg>
+        <p>「じつは、うちでも同じことをやろうと話しているところなんです」</p>
+      </li>
+    </ul>
+
+    <div class="talks__cta">
+      <a class="btn" href="https://slack.com/app_redirect?channel=U015EUNN7T9" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>
+        投稿はこちら
+      </a>
+      <p class="talks__note">Slackが開き、白石へのダイレクトメッセージにつながります。</p>
+    </div>
+  </section>
 
   <div class="sec-head">
     <h2>6つの<span class="nobr">スターターパック</span></h2>
