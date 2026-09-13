@@ -32,7 +32,3 @@ jobs:
 
       - name: Guard critical typography
         run: node tools/check-critical-typography.mjs --self-test
-
-      - name: Validate seminar index (pull requests)
-        if: github.event_name == 'pull_request'
-        run: node tools/build-seminar-index.mjs --check

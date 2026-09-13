@@ -64,26 +64,26 @@
 - 一覧日時を変えない軽微な修正のコミット本文に `Catalog-Update: no` を付ける
 - commit・push後、READMEの `LP引き継ぎ` と上記の `一覧更新の引き継ぎ` をユーザーへ返す
 
-## セミナー・説明会ページの置き場所
+## セミナー・説明会／インタビューは独立リポジトリ（2026-09-13〜）
 
-セミナーや説明会の申し込みページは、商材ディレクトリと並べず `seminar/<slug>/` に置く。
-社内が迷わないよう、URLのルールは「セミナーは `/saas/seminar/` 配下」の1本だけにしている。
+`monitor`・`members`・`Interviews`・`seminar` は、saasと同列の独立リポジトリに置く方針にした。
+`monitor`は`writeup-inc/monitor`、`members`は`writeup-inc/members`、
+`Interviews`は`writeup-inc/interviews`、`seminar`は`writeup-inc/seminar`。
+それぞれ自分のGitHub Pagesを持つ（例: `https://writeup-inc.github.io/seminar/`）。
 
-新しいセミナーページを作るときは、`<head>` に次のメタを入れる。
+saas側の `Interviews/` `seminar/` に残っているファイルは、旧URLからの**転送ページのみ**
+（`monitor/elliot/index.html` と同じ「移転しました」パターン）。中身を足したり戻したりしない。
+新しいインタビュー記事・セミナーページは、saasではなく各独立リポジトリ側に作る。
 
-```html
-<meta name="seminar:title" content="一覧に出す短い名前">
-<meta name="seminar:summary" content="一覧に出す1行説明">
-<meta name="seminar:audience" content="社外 / パートナー / 社内 など">
-<meta name="seminar:status" content="募集中｜準備中｜終了">
-<meta name="seminar:order" content="10">
-```
+旧セミナーの自動生成（`tools/build-seminar-index.mjs`、`seminar:title`等のメタタグ、
+`sync-seminar-index`ワークフロー）は2026-09-13に廃止した。ルート`index.html`の
+`SEMINAR-LIST`マーカーと「SITE / 関連ページ」欄の最終更新日は、当面は手で更新する。
 
-一覧は手で書かない。`node tools/build-seminar-index.mjs` を実行すると、
-`seminar/index.html` とルート `index.html` のヒーロー右側
-（`<!-- SEMINAR-LIST:START -->` 〜 `<!-- SEMINAR-LIST:END -->`）を同じ元データから生成する。
-main へ push すれば `sync-seminar-index` ワークフローが自動で再生成してコミットする。
+**未実装（次フェーズ）：** 独立リポジトリ側の更新をsaasの新着欄（ヒーロー右側・新着ダイアログ）へ
+自動連携する仕組み（各リポジトリのpushをGitHub Actionsでsaasへ`repository_dispatch`し、
+saas側がGitHub APIで最新コミットを取得してヒーローを書き換える案）。
+saasへの書き込み権限を持つトークンを各独立リポジトリのActions Secretsに登録する必要があり、
+これはユーザー本人の作業が要る。
 
-このルールがあるため、`seminar/` はルート index.html の商材カード対象外
-（`tools/index-check.config.json` の `excludedDirectories`）にしている。
-ページを別の場所から移してきたときは、旧URLに転送ページを残すこと。
+`monitor`の移行（現在はsaas内、独立リポジトリへ戻す）と`members`側の掃除（saasに残る
+古いコピーを転送ページ化）は、まだ未着手。

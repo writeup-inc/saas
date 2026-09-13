@@ -24,36 +24,22 @@
 - ルート `index.html` を変更したら `node tools/check-index.mjs --history` を実行する
 - push直前にも `git fetch origin` を行い、上流の新しい変更を取りこぼしていないことを確認する
 
-## セミナー・説明会ページの置き場所（2026-09-13 追加）
+## セミナー・説明会／インタビューは独立リポジトリ（2026-09-13 更新）
 
-セミナー・説明会の申し込みページは、商材ディレクトリと並べず `seminar/<slug>/` に置く。
-社内が覚えるURLルールを「セミナーは `/saas/seminar/` 配下」の1本にするため。
+セミナー・説明会・インタビュー記事は、saasと同列の独立リポジトリへ移した。
+`writeup-inc/interviews`（旧 `Interviews/`）と `writeup-inc/seminar`（旧 `seminar/`）。
+それぞれ独自のGitHub Pages（`https://writeup-inc.github.io/interviews/` 等）を持つ。
 
-- 既存2本は `seminar/ai-katsuyo/`（AI活用セミナー）と `seminar/worklog-insight-oem/`（ワークログOEM説明会）
-- 旧URL `monitor/seminar/` と `worklog-insight-oem-seminar/` には転送ページが残っている。消さない
-- `seminar/` はルート `index.html` の商材カード対象外（`tools/index-check.config.json` の `excludedDirectories`）
+- saas側の `Interviews/` `seminar/` は**旧URLからの転送ページのみ**残す（消さない）
+- 新しいインタビュー記事・セミナーページは、saasではなく各独立リポジトリに作る
+- `seminar:title` 等のメタタグと `tools/build-seminar-index.mjs`、`sync-seminar-index` ワークフローは
+  2026-09-13に廃止した。ルート `index.html` の旧 `SEMINAR-LIST` マーカーと
+  「SITE / 関連ページ」欄の最終更新日は、当面は手で更新する
+- `monitor`（`writeup-inc/monitor`）・`members`（`writeup-inc/members`）も同じ方針の独立リポジトリ。
+  ただし `monitor` はまだsaas内に残っており独立リポジトリへの再移行が未着手、
+  `members` はsaas側に古いコピーが残ったまま（転送ページ化も未着手）
 
-新しいセミナーページの `<head>` には次のメタを入れる。
-
-```html
-<meta name="seminar:title" content="一覧に出す短い名前">
-<meta name="seminar:summary" content="一覧に出す1行説明">
-<meta name="seminar:audience" content="社外 / パートナー / 社内 など">
-<meta name="seminar:status" content="募集中｜準備中｜終了">
-<meta name="seminar:order" content="10">
-```
-
-### 一覧は手で書かない
-
-`seminar/index.html` と、ルート `index.html` のヒーロー右側
-`<!-- SEMINAR-LIST:START -->` 〜 `<!-- SEMINAR-LIST:END -->` の中身は、
-`tools/build-seminar-index.mjs` が上記メタから生成する。
-
-- マーカーの内側を手で編集しない。次の生成で上書きされる
-- マーカーの外側（見出し、`一覧→` リンク、CSS）は手で編集してよい
-- 生成し直すコマンドは `node tools/build-seminar-index.mjs`
-- main へ push すると `sync-seminar-index` ワークフローが再生成して自動コミットする
-- pull request では `node tools/build-seminar-index.mjs --check` が差分を検出する
-
-ルート `index.html` は Codex が主担当のままだが、ヒーロー右側のこのブロックだけは
-生成物として扱う。表示を変えたいときは HTML ではなく生成スクリプト側を直す。
+**次フェーズ（未実装）：** 各独立リポジトリの更新をsaasの新着欄へ自動連携する仕組み。
+各リポジトリのpushをGitHub Actionsで`writeup-inc/saas`へ`repository_dispatch`し、
+saas側がGitHub APIで最新コミットを取得してヒーローを書き換える案。
+saasへの書き込み権限を持つトークンをActions Secretsへ登録する必要があり、ユーザー本人の作業が要る。
