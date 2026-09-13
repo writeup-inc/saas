@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="description" content="AIを使って新しい事業をはじめるためのスターターパック一覧。説明会、ホームページ制作、AI営業代行、AIOコンサル、広告代理店、営業トーク集へのリンク集です。">
+<title>新規事業スターターパック 一覧｜ライトアップ</title>
+<style>
+/* ── 改行制御 ───────────────────────────────────────────── */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] { word-break: normal; }
+}
+.nobr { white-space: nowrap; }
+
+/* ── 最小文字サイズ ─────────────────────────────────────── */
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+
+/* ── ファーストビューの見出し ───────────────────────────── */
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+
+/* ── 固定CTAの逃げ ──────────────────────────────────────── */
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+
+/* ── 横はみ出しの予防 ───────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+
+/* ══ ここから本ページ ══════════════════════════════════════ */
+:root{
+  --ink:#14171c;
+  --ink-2:#3d4450;
+  --muted:#767f8d;
+  --line:#e3e6ec;
+  --bg:#ffffff;
+  --bg-2:#f6f7fa;
+  --accent:#2b4acb;
+  --accent-soft:#eef1fd;
+  --radius:18px;
+  --maxw:1080px;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --ink:#eef1f6; --ink-2:#c3cad6; --muted:#8e97a6;
+    --line:#2a2f39; --bg:#101319; --bg-2:#161a22;
+    --accent:#8aa2ff; --accent-soft:#1b2135;
+  }
+}
+html{ -webkit-text-size-adjust:100%; }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{ max-width:var(--maxw); margin:0 auto; padding:0 20px; }
+
+/* ── ヒーロー ── */
+.hero{ border-bottom:1px solid var(--line); background:var(--bg); }
+.hero__inner{
+  display:grid; gap:32px; align-items:center;
+  padding:56px 0 52px;
+  grid-template-columns:1fr;
+}
+@media (min-width:860px){
+  .hero__inner{ grid-template-columns:1.05fr .95fr; gap:48px; padding:84px 0 78px; }
+}
+.eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:12px; letter-spacing:.16em; font-weight:700;
+  color:var(--accent); margin:0 0 18px;
+}
+.eyebrow::before{ content:""; width:26px; height:1px; background:currentColor; display:block; }
+.hero__title{ margin:0 0 20px; font-weight:800; letter-spacing:.01em; }
+.hero__title .sub{ display:block; font-size:.44em; letter-spacing:.1em; color:var(--muted); font-weight:700; margin-top:14px; }
+.lead{ margin:0; color:var(--ink-2); font-size:15.5px; max-width:34em; }
+.hero__art{ margin:0; }
+.hero__art svg{ width:100%; height:auto; display:block; }
+
+/* ── セクション見出し ── */
+.sec-head{ display:flex; align-items:baseline; gap:14px; margin:64px 0 8px; flex-wrap:wrap; }
+.sec-head h2{ margin:0; font-weight:800; letter-spacing:.02em; }
+.sec-head .count{ font-size:12px; color:var(--muted); letter-spacing:.14em; font-weight:700; }
+.sec-note{ margin:0 0 28px; color:var(--muted); font-size:13.5px; }
+
+/* ── カード ── */
+.grid{ display:grid; gap:20px; grid-template-columns:1fr; }
+@media (min-width:800px){ .grid{ grid-template-columns:1fr 1fr; gap:24px; } }
+
+.card{
+  display:flex; flex-direction:column;
+  border:1px solid var(--line); border-radius:var(--radius);
+  background:var(--bg); color:inherit; text-decoration:none;
+  overflow:hidden;
+  transition:border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+.card:hover{ border-color:var(--accent); transform:translateY(-3px); box-shadow:0 14px 36px -22px rgba(20,23,28,.5); }
+.card:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+
+.card__art{ background:var(--bg-2); border-bottom:1px solid var(--line); padding:18px 20px 0; }
+.card__art svg{ width:100%; height:auto; display:block; }
+.card__body{ padding:20px 22px 24px; display:flex; flex-direction:column; gap:10px; flex:1; }
+.card__meta{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.no{
+  font-size:11px; font-weight:800; letter-spacing:.12em; color:var(--accent);
+  background:var(--accent-soft); border-radius:999px; padding:4px 10px;
+}
+.tag{ font-size:12px; color:var(--muted); }
+.card h3{ margin:0; font-size:18.5px; line-height:1.5; font-weight:800; letter-spacing:.01em; }
+.card p{ margin:0; font-size:13.5px; line-height:1.85; color:var(--ink-2); }
+.go{
+  margin-top:auto; padding-top:14px;
+  font-size:13px; font-weight:700; color:var(--accent);
+  display:inline-flex; align-items:center; gap:7px;
+}
+.go svg{ width:16px; height:16px; flex:none; }
+.card:hover .go svg{ transform:translateX(3px); }
+.go svg{ transition:transform .18s ease; }
+
+/* ── 注目カード（横並び） ── */
+.card--feature, .card--wide{ grid-column:1 / -1; }
+@media (min-width:800px){
+  .card--feature, .card--wide{ flex-direction:row; align-items:stretch; }
+  .card--feature .card__art, .card--wide .card__art{
+    flex:0 0 42%; border-bottom:none; border-right:1px solid var(--line);
+    padding:24px 24px 24px; display:flex; align-items:center;
+  }
+  .card--feature .card__body, .card--wide .card__body{ padding:28px 30px 30px; justify-content:center; }
+}
+.badge{
+  font-size:11px; font-weight:800; letter-spacing:.1em;
+  color:#fff; background:var(--accent); border-radius:999px; padding:4px 11px;
+}
+@media (prefers-color-scheme: dark){ .badge{ color:#101319; } }
+
+/* ── フッター ── */
+footer{ margin-top:72px; border-top:1px solid var(--line); }
+.foot{ padding:28px 0 44px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:center; }
+.foot .note{ color:var(--muted); margin:0; }
+.foot .brand{ font-size:12px; letter-spacing:.16em; font-weight:800; color:var(--muted); }
+
+/* ── イラスト共通 ── */
+.ill{ overflow:visible; }
+.ill .st{ fill:none; stroke:var(--ink); stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+.ill .th{ fill:none; stroke:var(--ink); stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; }
+.ill .ac{ fill:none; stroke:var(--accent); stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; }
+.ill .acf{ fill:var(--accent); }
+.ill .soft{ fill:var(--accent-soft); stroke:none; }
+.ill .faint{ fill:none; stroke:var(--line); stroke-width:1.5; stroke-linecap:round; }
+.ill .dot{ fill:var(--ink); }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero__inner">
+    <div>
+      <p class="eyebrow">BUSINESS STARTER PACKS</p>
+      <h1 class="hero__title">新規事業<span class="nobr">スターターパック</span><span class="sub">AIではじめる、次の事業。</span></h1>
+      <p class="lead">AIを使って新しい事業を立ち上げるためのパックを、種類ごとにまとめました。気になるものから開いてください。</p>
+    </div>
+
+    <figure class="hero__art">
+      <svg class="ill" viewBox="0 0 420 300" role="img" aria-label="6つのパックが1つの土台から広がっていくイラスト">
+        <ellipse cx="210" cy="262" rx="150" ry="14" class="soft"/>
+        <!-- 土台の箱 -->
+        <path class="th" d="M120 262 L120 206 L210 178 L300 206 L300 262 L210 288 Z"/>
+        <path class="st" d="M120 206 L210 234 L300 206 M210 234 L210 288"/>
+        <!-- 開いた蓋 -->
+        <path class="ac" d="M137 200 L210 176 L283 200"/>
+        <!-- 舞い上がるモジュール -->
+        <g class="st">
+          <rect x="52" y="120" width="62" height="44" rx="8"/>
+          <path d="M64 136h30M64 148h18"/>
+        </g>
+        <g class="st">
+          <rect x="306" y="120" width="62" height="44" rx="8"/>
+          <path d="M318 136h30M318 148h18"/>
+        </g>
+        <g class="st">
+          <rect x="100" y="46" width="62" height="44" rx="8"/>
+          <path d="M112 62h30M112 74h18"/>
+        </g>
+        <g class="st">
+          <rect x="258" y="46" width="62" height="44" rx="8"/>
+          <path d="M270 62h30M270 74h18"/>
+        </g>
+        <g class="ac">
+          <rect x="179" y="14" width="62" height="44" rx="8"/>
+        </g>
+        <path class="st" d="M191 30h30M191 42h18"/>
+        <!-- つながる線 -->
+        <path class="faint" d="M210 176 C176 150 140 152 114 142"/>
+        <path class="faint" d="M210 176 C244 150 280 152 306 142"/>
+        <path class="faint" d="M210 176 C186 130 160 108 146 90"/>
+        <path class="faint" d="M210 176 C234 130 260 108 274 90"/>
+        <path class="faint" d="M210 176 L210 58"/>
+        <circle cx="210" cy="176" r="5" class="acf"/>
+        <!-- きらめき -->
+        <path class="ac" d="M366 34 v14 M359 41 h14"/>
+        <path class="st" d="M60 74 v10 M55 79 h10"/>
+      </svg>
+    </figure>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="sec-head">
+    <h2>6つの<span class="nobr">スターターパック</span></h2>
+    <span class="count">6 PACKS</span>
+  </div>
+  <p class="sec-note">まずは説明会で全体像をつかんでから、個別のパックを見るのがおすすめです。</p>
+
+  <div class="grid">
+
+    <!-- 01 説明会（注目） -->
+    <a class="card card--feature" href="https://writeup-inc.github.io/saas/ai-business-starter-pack/?design=v2">
+      <div class="card__art">
+        <svg class="ill" viewBox="0 0 320 190" role="img" aria-label="オンライン説明会の画面と参加者のイラスト">
+          <rect x="30" y="22" width="200" height="122" rx="12" class="soft"/>
+          <rect x="30" y="22" width="200" height="122" rx="12" class="th"/>
+          <path class="st" d="M30 48 h200"/>
+          <circle cx="46" cy="35" r="3.2" class="dot"/>
+          <circle cx="58" cy="35" r="3.2" class="dot"/>
+          <circle cx="70" cy="35" r="3.2" class="dot"/>
+          <!-- 登壇者 -->
+          <circle cx="82" cy="86" r="14" class="st"/>
+          <path class="st" d="M60 126 a22 22 0 0 1 44 0"/>
+          <!-- スライド -->
+          <path class="ac" d="M130 74 h72"/>
+          <path class="st" d="M130 92 h72 M130 106 h50"/>
+          <path class="ac" d="M130 122 h34"/>
+          <!-- 参加者サムネイル -->
+          <g class="st">
+            <rect x="246" y="40" width="44" height="32" rx="7"/>
+            <circle cx="268" cy="52" r="5"/>
+            <path d="M259 66 a9 9 0 0 1 18 0"/>
+          </g>
+          <g class="st">
+            <rect x="246" y="82" width="44" height="32" rx="7"/>
+            <circle cx="268" cy="94" r="5"/>
+            <path d="M259 108 a9 9 0 0 1 18 0"/>
+          </g>
+          <g class="ac">
+            <rect x="246" y="124" width="44" height="32" rx="7"/>
+          </g>
+          <circle cx="268" cy="136" r="5" class="st"/>
+          <path class="st" d="M259 150 a9 9 0 0 1 18 0"/>
+          <path class="faint" d="M230 56 h16 M230 98 h16 M230 140 h16"/>
+          <path class="ac" d="M300 26 v12 M294 32 h12"/>
+        </svg>
+      </div>
+      <div class="card__body">
+        <div class="card__meta">
+          <span class="badge">まずはここから</span>
+          <span class="no">01</span>
+          <span class="tag">小規模法人・個人事業主・副業を考える方</span>
+        </div>
+        <h3><span class="nobr">AI事業スタートパック</span>｜<span class="nobr">無料オンライン説明会</span></h3>
+        <p>小規模法人・個人事業主・副業を考える方向けの無料オンライン説明会。AIを活用してホームページ制作会社、営業代行会社、AIO代行会社を始める選択肢と、提案・制作・運用の仕組み、月2回のオンラインセミナー、月4時間の個別フォローを紹介します。参加方法を案内します。</p>
+        <span class="go">説明会ページを開く
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- 02 ホームページ制作 -->
+    <a class="card" href="https://writeup-inc.github.io/saas/web-agency-kit/">
+      <div class="card__art">
+        <svg class="ill" viewBox="0 0 320 180" role="img" aria-label="ブラウザの中にWebページを組み立てるイラスト">
+          <rect x="58" y="18" width="196" height="24" rx="8" class="faint"/>
+          <rect x="30" y="34" width="228" height="130" rx="12" class="soft"/>
+          <rect x="30" y="34" width="228" height="130" rx="12" class="th"/>
+          <path class="st" d="M30 58 h228"/>
+          <circle cx="45" cy="46" r="3.2" class="dot"/>
+          <circle cx="57" cy="46" r="3.2" class="dot"/>
+          <circle cx="69" cy="46" r="3.2" class="dot"/>
+          <rect x="46" y="72" width="196" height="34" rx="6" class="st"/>
+          <path class="ac" d="M60 84 h64 M60 96 h40"/>
+          <rect x="46" y="118" width="58" height="32" rx="6" class="st"/>
+          <rect x="115" y="118" width="58" height="32" rx="6" class="st"/>
+          <rect x="184" y="118" width="58" height="32" rx="6" class="ac"/>
+          <!-- カーソル -->
+          <path class="th" d="M252 122 l30 12 -12 4 -4 12 z" style="fill:var(--bg)"/>
+          <path class="ac" d="M292 60 v12 M286 66 h12"/>
+        </svg>
+      </div>
+      <div class="card__body">
+        <div class="card__meta">
+          <span class="no">02</span>
+          <span class="tag">既存の法人顧客を持つ企業</span>
+        </div>
+        <h3>ホームページ制作会社<span class="nobr">スタートパック</span></h3>
+        <p>既存の法人顧客を持つ企業が、Codexと12個の実務スキルを使い、Web制作未経験から自社名義で提案・制作・品質確認・納品まで進めるための事業化パッケージです。会社サイトと共感型LPを標準商品とし、スキルは不要なものを回収・新規追加しながら毎月更新。Web制作以外の相談は本部へ取り次げます。</p>
+        <span class="go">ページを開く
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- 03 AI営業代行 -->
+    <a class="card" href="https://writeup-inc.github.io/saas/ai-sales-agency-starter/">
+      <div class="card__art">
+        <svg class="ill" viewBox="0 0 320 180" role="img" aria-label="名刺が台帳になり人と人がつながるイラスト">
+          <rect x="26" y="74" width="88" height="54" rx="8" class="faint" transform="rotate(-8 70 101)"/>
+          <rect x="34" y="66" width="88" height="54" rx="8" class="soft"/>
+          <rect x="34" y="66" width="88" height="54" rx="8" class="th"/>
+          <circle cx="58" cy="86" r="8" class="st"/>
+          <path class="st" d="M48 106 a10 10 0 0 1 20 0"/>
+          <path class="ac" d="M80 84 h30"/>
+          <path class="st" d="M80 96 h30 M80 108 h18"/>
+          <path class="faint" d="M122 82 C148 66 164 48 186 40"/>
+          <path class="faint" d="M122 94 C148 94 164 94 186 94"/>
+          <path class="faint" d="M122 106 C148 124 164 142 186 148"/>
+          <g class="st">
+            <rect x="186" y="18" width="72" height="44" rx="9"/>
+            <circle cx="208" cy="34" r="7"/>
+            <path d="M198 52 a10 10 0 0 1 20 0"/>
+            <path d="M228 32 h18 M228 44 h11"/>
+          </g>
+          <g class="ac"><rect x="186" y="72" width="72" height="44" rx="9"/></g>
+          <circle cx="208" cy="88" r="7" class="st"/>
+          <path class="st" d="M198 106 a10 10 0 0 1 20 0"/>
+          <path class="ac" d="M228 86 h18"/>
+          <path class="st" d="M228 98 h11"/>
+          <g class="st">
+            <rect x="186" y="126" width="72" height="44" rx="9"/>
+            <circle cx="208" cy="142" r="7"/>
+            <path d="M198 160 a10 10 0 0 1 20 0"/>
+            <path d="M228 140 h18 M228 152 h11"/>
+          </g>
+          <path class="ac" d="M286 44 v12 M280 50 h12"/>
+          <path class="st" d="M290 112 v10 M285 117 h10"/>
+        </svg>
+      </div>
+      <div class="card__body">
+        <div class="card__meta">
+          <span class="no">03</span>
+          <span class="tag">本業を続けながらの副業向け</span>
+        </div>
+        <h3>AI営業代行会社<span class="nobr">スタートパック</span></h3>
+        <p>本業を続けながら、名刺と会話をAIで台帳化し、人脈を紹介・営業顧問へ育てる副業向けスタートパック。名刺撮影、相性検索、紹介文作成、進捗管理など12個のAIエージェントを4つの仕事にまとめ、セミナー集客・経営者マッチング・営業顧問の三段収益モデルを支援します。月額5万円、正式な提供・契約条件は要確認。</p>
+        <span class="go">ページを開く
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- 04 AIOコンサル -->
+    <a class="card" href="https://writeup-inc.github.io/saas/aio-consult-business/">
+      <div class="card__art">
+        <svg class="ill" viewBox="0 0 320 180" role="img" aria-label="AIの回答の中に自社が候補として表示されるイラスト">
+          <rect x="44" y="24" width="200" height="132" rx="14" class="soft"/>
+          <rect x="44" y="24" width="200" height="132" rx="14" class="th"/>
+          <!-- 質問バー -->
+          <rect x="62" y="42" width="164" height="26" rx="13" class="st"/>
+          <path class="st" d="M78 55 h60"/>
+          <circle cx="208" cy="55" r="7" class="st"/>
+          <path class="st" d="M213 60 l8 8"/>
+          <!-- 回答リスト -->
+          <path class="faint" d="M62 88 h164"/>
+          <circle cx="70" cy="102" r="4" class="dot"/>
+          <path class="st" d="M84 102 h120"/>
+          <rect x="58" y="112" width="172" height="22" rx="8" class="ac"/>
+          <circle cx="70" cy="123" r="4" class="acf"/>
+          <path class="ac" d="M84 123 h96"/>
+          <circle cx="70" cy="146" r="4" class="dot"/>
+          <path class="st" d="M84 146 h104"/>
+          <!-- AIのきらめき -->
+          <path class="ac" d="M268 62 c0 14 6 20 20 20 -14 0 -20 6 -20 20 0-14-6-20-20-20 14 0 20-6 20-20z"/>
+          <path class="st" d="M272 122 v12 M266 128 h12"/>
+        </svg>
+      </div>
+      <div class="card__body">
+        <div class="card__meta">
+          <span class="no">04</span>
+          <span class="tag">地方の営業会社・Web制作会社・地域コンサル</span>
+        </div>
+        <h3>AIOコンサル事業 <span class="nobr">スタートパック</span></h3>
+        <p>AIの回答に自社が候補として出る「AIO」対策を、自社の商品として提供できる事業立ち上げパック。商品はAIO MASTER（AI検索での掲載状況の調査・対策・継続確認）、売り方はClaude Codeによる営業支援、広め方は勉強会と発信。表に立つのは導入企業で、ライトアップは商品供給と後方支援に回ります。提供条件・価格は個別案内。</p>
+        <span class="go">ページを開く
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- 05 広告代理店 -->
+    <a class="card" href="https://writeup-inc.github.io/saas/ai-ad-agency-pack/">
+      <div class="card__art">
+        <svg class="ill" viewBox="0 0 320 180" role="img" aria-label="広告の配信と成果のグラフのイラスト">
+          <!-- スマホ -->
+          <rect x="40" y="22" width="92" height="140" rx="14" class="soft"/>
+          <rect x="40" y="22" width="92" height="140" rx="14" class="th"/>
+          <path class="st" d="M74 34 h24"/>
+          <rect x="54" y="50" width="64" height="40" rx="7" class="st"/>
+          <path class="ac" d="M66 104 h40"/>
+          <path class="st" d="M66 118 h52"/>
+          <rect x="54" y="130" width="64" height="20" rx="10" class="ac"/>
+          <!-- ターゲット -->
+          <circle cx="196" cy="62" r="30" class="st"/>
+          <circle cx="196" cy="62" r="18" class="faint"/>
+          <circle cx="196" cy="62" r="6" class="acf"/>
+          <path class="ac" d="M232 30 l-30 26"/>
+          <!-- グラフ -->
+          <path class="faint" d="M164 152 h124"/>
+          <rect x="172" y="128" width="18" height="24" rx="4" class="st"/>
+          <rect x="202" y="114" width="18" height="38" rx="4" class="st"/>
+          <rect x="232" y="98" width="18" height="54" rx="4" class="st"/>
+          <rect x="262" y="80" width="18" height="72" rx="4" class="ac"/>
+          <path class="ac" d="M296 44 v12 M290 50 h12"/>
+        </svg>
+      </div>
+      <div class="card__body">
+        <div class="card__meta">
+          <span class="no">05</span>
+          <span class="tag">既存の法人顧客を持つ企業</span>
+        </div>
+        <h3>広告代理店<span class="nobr">スタートパック</span></h3>
+        <p>既存の法人顧客を持つ企業が、Claude Codeを実務基盤としてMeta広告の提案・設定・入稿準備・分析・改善を自社サービスにするための導入パッケージです。広告代理店として活動するための12の実務スキルを提供し、不要なスキルの削除と新規追加を行いながら毎月更新します。</p>
+        <span class="go">ページを開く
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- 06 営業トーク集 -->
+    <a class="card card--wide" href="https://writeup-inc.github.io/saas/ai-hybrid-sales-talk/">
+      <div class="card__art">
+        <svg class="ill" viewBox="0 0 320 180" role="img" aria-label="左脳の論理と右脳の共感を並べたイラスト">
+          <!-- 左脳：直線と格子 -->
+          <path class="th" d="M152 44 C126 30 96 34 80 52 C62 56 54 76 62 92 C52 108 62 130 80 134 C96 150 128 150 152 138 Z"/>
+          <path class="faint" d="M86 62 h44 M86 82 h44 M86 102 h44 M100 56 v72 M118 56 v72"/>
+          <!-- 右脳：曲線 -->
+          <path class="ac" d="M168 44 C194 30 224 34 240 52 C258 56 266 76 258 92 C268 108 258 130 240 134 C224 150 192 150 168 138 Z"/>
+          <path class="faint" d="M186 66 c18 -10 34 6 50 -2 M186 92 c18 10 34 -8 50 2 M186 116 c18 -10 34 8 50 -2"/>
+          <path class="st" d="M160 36 v110"/>
+          <!-- 吹き出し -->
+          <g class="st">
+            <path d="M22 22 h72 a8 8 0 0 1 8 8 v30 a8 8 0 0 1 -8 8 h-52 l-14 12 v-12 h-6 a8 8 0 0 1 -8 -8 v-30 a8 8 0 0 1 8 -8z"/>
+            <path d="M34 40 h48 M34 54 h30"/>
+          </g>
+          <g class="ac">
+            <path d="M226 112 h72 a8 8 0 0 1 8 8 v30 a8 8 0 0 1 -8 8 h-52 l-14 12 v-12 h-6 a8 8 0 0 1 -8 -8 v-30 a8 8 0 0 1 8 -8z"/>
+          </g>
+          <path class="st" d="M238 130 h48 M238 144 h30"/>
+        </svg>
+      </div>
+      <div class="card__body">
+        <div class="card__meta">
+          <span class="no">06</span>
+          <span class="tag">第二営業部</span>
+        </div>
+        <h3>左脳×右脳 Web制作営業トーク集</h3>
+        <p>Web制作が改めて売れている理由から、左脳の論理サイト、右脳の共感LP、AIハイブリッド営業までを生ログ順に話せる30場面の営業トーク集です。</p>
+        <span class="go">ページを開く
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <p class="note">各ページの提供条件・価格は、それぞれのページおよび個別のご案内をご確認ください。</p>
+    <span class="brand">WRITE UP</span>
+  </div>
+</footer>
+
+</body>
+</html>
