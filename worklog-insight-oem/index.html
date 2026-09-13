@@ -94,8 +94,19 @@ body{
   line-height:1.85;
   font-feature-settings:"palt" 1;
 }
-.wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px;}
 .narrow{max-width:800px;margin:0 auto;}
+
+/* ── セクションの2段組み（左＝小見出し／右＝本文） ── */
+.sec-grid{display:grid;grid-template-columns:272px 1fr;gap:64px;align-items:start;}
+.sec-head{position:sticky;top:36px;}
+.sec-head h2{margin-bottom:0;font-size:clamp(1.2rem,2.3vw,1.62rem);line-height:1.5;}
+.sec-body > *:first-child{margin-top:0;}
+@media(max-width:940px){
+  .sec-grid{grid-template-columns:1fr;gap:0;}
+  .sec-head{position:static;margin-bottom:24px;}
+  .sec-head h2{font-size:clamp(1.3rem,3.6vw,2.1rem);}
+}
 section{padding:var(--pad) 0;}
 a{color:inherit;}
 
@@ -243,7 +254,7 @@ strong{font-weight:700;}
 
 .tag-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(3,1fr);
   gap:10px;
   margin-top:34px;
 }
@@ -507,13 +518,13 @@ input[type=range]::-moz-range-thumb{
 .faq .fa{padding:0 0 20px;font-size:14.5px;color:var(--gray);margin:0;}
 
 /* ── CTA ────────────────────────────── */
-.final{background:var(--ink);color:#fff;text-align:center;}
+.final{background:var(--ink);color:#fff;}
 .final h2{color:#fff;}
-.final .lead{color:#b9bdc7;max-width:620px;margin:0 auto 34px;}
+.final .lead{color:#b9bdc7;margin:0 0 34px;}
 .final .btn-main{background:#fff;color:var(--ink);}
 .final .btn-main:hover{background:var(--blue-l);}
 .final .min-label{color:#8d93a0;}
-.final .hero-cta{justify-content:center;}
+
 .ph{
   color:#c8801f;
   background:rgba(200,128,31,.12);
@@ -626,9 +637,13 @@ footer .fnav a:hover{color:#fff;}
 
 <!-- ══════════ 01 ══════════ -->
 <section>
-  <div class="wrap narrow">
+  <div class="wrap">
+   <div class="sec-grid">
+    <div class="sec-head">
     <span class="sec-no">01 ／ WHY NOW</span>
     <h2>顧客は増やせない。なら、同じリストに<br>月額10,000円を載せます。</h2>
+    </div>
+    <div class="sec-body">
     <p class="lead">新規開拓の費用は上がり続けています。一方で、御社がこれまで築いてきた取引先リストは、すでに手元にあるもの。そこへ「もう1つ売るもの」を足すほうが、新しい顧客を1社増やすより早いはずです。これは、そういうご提案です。</p>
     <p>しかも今回お渡しするのは、売り切りではなく<strong>月額のストック</strong>です。1台入れば、その1台は翌月も再来月も御社に入り続けます。解約されない限り、営業に行くのは最初の一度だけ。</p>
 
@@ -645,14 +660,20 @@ footer .fnav a:hover{color:#fff;}
     </div>
     <p style="margin-top:24px;">法人でなくても構いません。地方で顧問・コンサルをされている方、企業の経営者と日常的に会っている方であれば、規模は問いません。必要なのは、<strong>すでに信頼のある相手が何社あるか</strong>だけです。</p>
     <small class="note">個人・副業でお申し込みの場合の条件は、下記プランとは別にご相談させてください（<span class="ph">【調整中】</span>）。</small>
+    </div>
+   </div>
   </div>
 </section>
 
 <!-- ══════════ 02 ══════════ -->
 <section class="alt">
-  <div class="wrap narrow">
+  <div class="wrap">
+   <div class="sec-grid">
+    <div class="sec-head">
     <span class="sec-no">02 ／ WHAT YOU SELL</span>
     <h2>売るのは、1分に1回のスクリーンショット。<br>現場の入力は、ゼロです。</h2>
+    </div>
+    <div class="sec-body">
     <p class="lead">いま、自動化の話をしない経営者はいません。ところが「では、何から自動化しますか」と聞いた瞬間、ほぼ全社が止まります。誰が何にどれだけ時間を使っているか、正確には誰も知らないからです。</p>
     <p>日報は書く手間がかかり、書いた本人の記憶で歪みます。音声は会議しか拾えません。突き詰めると、実際の作業そのものが写っていて、入力の手間がなく、AIが読めるものは1つでした。<strong>画面の記録</strong>です。</p>
 
@@ -676,14 +697,20 @@ footer .fnav a:hover{color:#fff;}
       </div>
     </div>
 
+    </div>
+   </div>
   </div>
 </section>
 
 <!-- ══════════ 03 ══════════ -->
 <section>
-  <div class="wrap narrow">
+  <div class="wrap">
+   <div class="sec-grid">
+    <div class="sec-head">
     <span class="sec-no">03 ／ THE REAL VALUE</span>
     <h2>4,000円は、入り口です。<br>その先に、御社の本業の商談があります。</h2>
+    </div>
+    <div class="sec-body">
     <p class="lead">1IDあたり4,000円は、契約が続いているあいだ毎月の取り分になります。ただしこのOEMで本当に大きいのは、その先です。</p>
     <p>ワークログ・インサイトの管理画面には、記録から導いた「次にやるべきこと」が並びます。この業務は外に出せる、この部署は人が足りていない、この作業はツールで消せる——そこに<strong class="b">御社のサービスが、必要になったタイミングで並びます</strong>。</p>
     <p>人材会社であれば、人手が足りていない部署が数字で見えた瞬間に。コンサルであれば、非効率が特定された瞬間に。ツール販社であれば、その作業が何時間かかっているか出た瞬間に。<strong>売り込みではなく、記録が先に必要性を示している状態</strong>から話が始まります。</p>
@@ -708,14 +735,20 @@ footer .fnav a:hover{color:#fff;}
       </div>
     </div>
     <small class="note">観測された事実と、AIによる推測は、画面上で区別して表示します。</small>
+    </div>
+   </div>
   </div>
 </section>
 
 <!-- ══════════ 04 ══════════ -->
 <section class="alt">
-  <div class="wrap narrow">
+  <div class="wrap">
+   <div class="sec-grid">
+    <div class="sec-head">
     <span class="sec-no">04 ／ YOUR MARGIN</span>
     <h2>10名の会社で毎月4万円、<br>200名の会社で毎月80万円。</h2>
+    </div>
+    <div class="sec-body">
     <p class="lead">1社1契約ではありません。PCの台数だけ入ります。10名の会社なら10台、200名の会社に全社導入となれば200台。大手企業に入れば、一度の商談で何百台という話になります。</p>
 
     <div class="money">
@@ -828,14 +861,20 @@ footer .fnav a:hover{color:#fff;}
       <button class="btn btn-main" data-open-modal><span class="play" aria-hidden="true"></span>5分のミニセミナーを視聴する</button>
     </div>
     <p class="min-label">仕組み・儲かる構造・始め方を、5分で。視聴前に6項目、所要1分。</p>
+    </div>
+   </div>
   </div>
 </section>
 
 <!-- ══════════ 05 ══════════ -->
 <section>
-  <div class="wrap narrow">
+  <div class="wrap">
+   <div class="sec-grid">
+    <div class="sec-head">
     <span class="sec-no">05 ／ HOW TO START</span>
     <h2>初期100万円を払うか、<br>216万円を先に預けて初期0円にするか。</h2>
+    </div>
+    <div class="sec-body">
     <p class="lead">始め方は2つです。どちらを選んでも、卸値6,000円・取り分4,000円は変わりません。違うのは、最初に何を差し出すかだけです。</p>
 
     <div class="plans">
@@ -879,14 +918,20 @@ footer .fnav a:hover{color:#fff;}
     <small class="note">返金の時期・条件、30IDに満たない場合の扱い、税の扱いは <span class="ph">【調整中】</span>。個別にご説明します。</small>
 
     <p style="margin-top:36px;">30ID入った状態で見ると、2年目以降は当社も御社も<strong>年144万円ずつ</strong>（4,000円×30ID×12か月）で並びます。最初だけ当社が多く受け取り、そこから先は対等です。長く売っていただくほど、御社の取り分が効いてきます。</p>
+    </div>
+   </div>
   </div>
 </section>
 
 <!-- ══════════ 06 ══════════ -->
 <section class="alt">
-  <div class="wrap narrow">
+  <div class="wrap">
+   <div class="sec-grid">
+    <div class="sec-head">
     <span class="sec-no">06 ／ WHO DOES WHAT</span>
     <h2>開発・サーバー・料金回収は当社。<br>御社がやるのは、販売と一次対応だけ。</h2>
+    </div>
+    <div class="sec-body">
     <p class="lead">OEMで一番不安なのは「結局、自社で開発や運用を抱えるのでは」という点だと思います。そこは持ちません。</p>
 
     <div class="split">
@@ -935,19 +980,27 @@ footer .fnav a:hover{color:#fff;}
         <p class="fa">貯めたログに、日本語のまま質問できる別途有料のオプションです。「3か月前のあのとき、何をしていたか」に、AIがその期間の記録を読み直して答えます。価格は <span class="ph">【調整中】</span> です。</p>
       </details>
     </div>
+    </div>
+   </div>
   </div>
 </section>
 
 <!-- ══════════ 07 ══════════ -->
 <section class="final">
-  <div class="wrap narrow">
+  <div class="wrap">
+   <div class="sec-grid">
+    <div class="sec-head">
     <span class="sec-no" style="color:#8d93a0;">07 ／ WHY TODAY</span>
     <h2>この記録は、<br>始めた日からしか貯まりません。</h2>
+    </div>
+    <div class="sec-body">
     <p class="lead">1年後、御社のお客様の社内に15万枚の画像がある状態と、ゼロの状態。そこから先にできることは、まったく違います。15万枚あれば、そのときのAIが業務の自動化を引き受けてくれるはずです。無ければ、そこから1年待つことになります。<br><br>過去に遡って撮ることは、誰にもできません。だから、始めた会社と始めていない会社の差は、二度と縮まりません。</p>
     <div class="hero-cta">
       <button class="btn btn-main" data-open-modal><span class="play" aria-hidden="true"></span>5分のミニセミナーを視聴する</button>
     </div>
     <p class="min-label">正式提供は10月1日。今回お組みするのは10社を目標にしています。</p>
+    </div>
+   </div>
   </div>
 </section>
 
@@ -1052,7 +1105,7 @@ footer .fnav a:hover{color:#fff;}
     if(!del){
       ci++;
       el.textContent = cur.slice(0, ci);
-      if(ci >= cur.length){ del = true; return setTimeout(tick, 2400); }
+      if(ci >= cur.length){ del = true; return setTimeout(tick, 10000); }
       return setTimeout(tick, 62);
     }
     ci--;
