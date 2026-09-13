@@ -21,7 +21,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@600;700&family=Inter:wght@600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@400;600;700&family=Inter:wght@600;700;900&display=swap" rel="stylesheet">
 <style>
 
 /* lp-base.css — 日本語LP／HTML成果物の初期CSS
@@ -653,8 +653,8 @@ footer .note{ font-size:14.5px; }
   padding:3px 7px; line-height:1.2; margin-top:2px; }
 .nvb__t{ font-size:13.5px; font-weight:900; line-height:1.55; letter-spacing:.01em; }
 .nvb__t span{ display:block; font-size:12px; font-weight:400; color:var(--g2); margin-top:1px; }
-.nvb__x{ flex:none; border:0; border-left:1px solid var(--ln2); background:none; color:var(--g3);
-  font-size:15px; line-height:1; padding:0 11px; cursor:pointer; font-family:"Inter",sans-serif; }
+.nvb__x{ flex:none; min-width:44px; border:0; border-left:1px solid var(--ln2); background:none;
+  color:var(--g3); font-size:15px; line-height:1; padding:0 11px; cursor:pointer; font-family:"Inter",sans-serif; }
 .nvb__x:hover{ color:var(--g1); }
 .nvb__go:hover .nvb__t{ color:var(--ac); }
 @media (max-width:400px){ .nvb__t span{ display:none; } }
@@ -663,7 +663,7 @@ footer .note{ font-size:14.5px; }
   padding:18px; background:rgba(17,17,17,.58); }
 .nvo.on{ display:flex; }
 
-.nvask{ background:#fff; border-radius:20px; width:100%; max-width:404px; padding:30px 24px 24px;
+.nvask{ background:#fff; width:100%; max-width:404px; padding:30px 24px 24px;
   text-align:center; box-shadow:0 30px 70px rgba(0,0,0,.32); }
 .nvask p{ margin:0 0 8px; font-size:16px; font-weight:900; line-height:1.75; }
 .nvask .ss{ margin:0 0 22px; font-size:13.5px; }
@@ -674,7 +674,7 @@ footer .note{ font-size:14.5px; }
 .nvno{ background:none; border:1px solid var(--ln); color:var(--g1); padding:12px; font-size:14.5px; }
 .nvno:hover{ border-color:var(--g3); }
 
-.nvm{ background:#fff; border-radius:20px; width:100%; max-width:716px; max-height:90vh;
+.nvm{ background:#fff; width:100%; max-width:716px; max-height:90vh;
   overflow-y:auto; -webkit-overflow-scrolling:touch; box-shadow:0 30px 80px rgba(0,0,0,.34); }
 .nvm__bar{ position:sticky; top:0; z-index:3; display:flex; align-items:center; justify-content:space-between;
   gap:12px; padding:12px 14px 12px 26px; background:rgba(255,255,255,.96);
@@ -697,12 +697,25 @@ footer .note{ font-size:14.5px; }
   border-top:1px solid var(--ln2); font-size:clamp(16.5px,2.7vw,19.5px); line-height:1.65; }
 .nvm h4 i{ display:block; font-family:"Inter",sans-serif; font-style:normal; font-size:11px;
   font-weight:900; letter-spacing:.2em; color:var(--acm); margin-bottom:9px; }
-.nvm p{ font-size:16px; line-height:2.05; margin:0 0 1.15em; letter-spacing:.005em; }
+.nvm p{ font-family:"Shippori Mincho",serif; font-size:16.5px; line-height:2.1;
+  margin:0 0 1.15em; letter-spacing:.005em; }
+.nvm .mail__b p, .nvm .mail__l li, .nvm .nvm__cap, .nvm .nvfig figcaption, .nvm .nvcta__t{
+  font-family:"Noto Sans JP","Hiragino Sans",system-ui,sans-serif; }
+.nvm .nvm__cap{ font-size:13.5px; line-height:1.85; }
 .nvm p.q{ font-weight:500; }
 .nvm p:last-child{ margin-bottom:0; }
 .nvm__end{ margin-top:34px; padding-top:22px; border-top:1px solid var(--ln2); }
+.nvcta{ margin-top:30px; padding:26px 24px; background:var(--acl); text-align:center; }
+.nvcta__t{ font-size:16px!important; font-weight:900; line-height:1.7!important; margin:0 0 18px!important; }
+.nvcta .cta{ display:inline-block; font-size:16px; padding:16px 30px; }
+.nvcta .nvlink{ display:inline-block; margin-top:16px; font-size:14.5px; }
+@media (max-width:620px){
+  .nvcta{ padding:22px 16px; }
+  .nvcta .cta{ display:block; font-size:15px; padding:15px 12px; }
+  .nvcta .nvlink{ font-size:13.5px; }
+}
 
-.mail{ border:1px solid var(--ln); border-radius:10px; margin:24px 0 26px; background:#fff; overflow:hidden; }
+.mail{ border:1px solid var(--ln); margin:24px 0 26px; background:#fff; overflow:hidden; }
 .mail__h{ background:var(--acl); border-bottom:1px solid var(--ln2); padding:12px 16px; }
 .mail__r{ display:flex; gap:9px; font-size:12.5px; line-height:1.8; color:var(--g1); }
 .mail__r b{ flex:none; width:42px; color:var(--g2); font-weight:700; }
@@ -721,11 +734,16 @@ footer .note{ font-size:14.5px; }
 .nvfig svg{ min-width:480px; max-width:560px; }
 .nvb[hidden]{ display:none; }
 .nvfig figcaption{ margin-top:9px; font-size:12.5px; color:var(--g2); line-height:1.7; }
+@media (max-width:620px){
+  .nvfig__s{ display:none; }
+  .nvfig figcaption{ margin:0; padding:15px 16px; background:var(--pa);
+    font-size:14px; color:var(--g1); line-height:1.9; }
+}
 
 .nvlink{ background:none; border:0; padding:0; font-family:inherit; font-size:inherit; color:var(--ac);
   font-weight:700; cursor:pointer; text-decoration:underline; text-underline-offset:3px; }
 .nvtoast{ position:fixed; left:50%; bottom:30px; z-index:120; transform:translateX(-50%) translateY(10px);
-  background:var(--bk); color:#fff; font-size:13.5px; padding:11px 20px; border-radius:999px;
+  background:var(--bk); color:#fff; font-size:13.5px; padding:11px 20px;
   opacity:0; pointer-events:none; transition:opacity .3s ease, transform .3s ease; }
 .nvtoast.on{ opacity:1; transform:translateX(-50%); }
 body.nvlock{ overflow:hidden; }
@@ -1298,7 +1316,9 @@ body.nvlock{ overflow:hidden; }
     <a class="fnav" href="https://www.writeup.jp/privacy/" target="_blank" rel="noreferrer">個人情報保護方針 ↗</a>
     <a class="fnav" href="https://www.writeup.jp/contact/" target="_blank" rel="noreferrer">お問い合わせ ↗</a>
   </span></p>
-  <p class="note" style="margin-bottom:16px"><button class="nvlink" type="button" data-story-open>読みもの：「いつでも言えよ」と、社長が言うようになった一年（小説・約5分）</button></p>
+  <div style="border-top:1px solid var(--ln2);border-bottom:1px solid var(--ln2);padding:16px 0;margin:6px 0 20px">
+    <button class="nvlink" type="button" data-story-open>読みもの：「いつでも言えよ」と、社長が言うようになった一年（小説・約5分）</button>
+  </div>
   <p class="note">Jマッチエンジン<br>
   掲載している画面と図は画面イメージです。実際の表示と異なる場合があります。<br>
   想定採択可能性はAIが示す参考情報です。申請資格、採択、融資承認、受給額を保証するものではありません。最終的な判断は制度事務局または金融機関が行います。<br>
@@ -1316,15 +1336,15 @@ body.nvlock{ overflow:hidden; }
 <div class="nvb" id="nvBadge" hidden>
   <button class="nvb__go" id="nvOpenAsk" type="button">
     <span class="nvb__new">NEW</span>
-    <span class="nvb__t">小説：社長が変わった一年<span>社員の視点で読む、導入から1年後</span></span>
+    <span class="nvb__t">小説：社長が変わった一年<span>社員の視点で読む、導入から1年後（約5分）</span></span>
   </button>
   <button class="nvb__x" id="nvHideBadge" type="button" aria-label="このお知らせを閉じる">✕</button>
 </div>
 
-<div class="nvo" id="nvAsk" role="dialog" aria-modal="true" aria-labelledby="nvAskT">
-  <div class="nvask">
+<div class="nvo" id="nvAsk">
+  <div class="nvask" role="dialog" aria-modal="true" aria-labelledby="nvAskT">
     <p id="nvAskT">導入から1年後の会社を、<br>短い小説にしました。</p>
-    <p class="ss">社員10名の会社で働く、入社5年目・30歳の営業担当の視点です。読み終わるまで約5分。</p>
+    <p class="ss">社員10名の会社の、入社5年目・30歳の営業担当の視点。約5分で読み終わります。<br>実在の導入事例ではなく、ご利用いただいた場合のイメージとして書いた読みものです。</p>
     <div class="nvask__b">
       <button class="nvyes" id="nvYes" type="button">この小説を表示する</button>
       <button class="nvno" id="nvNo" type="button">閉じる</button>
@@ -1332,8 +1352,8 @@ body.nvlock{ overflow:hidden; }
   </div>
 </div>
 
-<div class="nvo" id="nvModal" role="dialog" aria-modal="true" aria-labelledby="nvTitle">
-  <article class="nvm" id="nvSheet">
+<div class="nvo" id="nvModal">
+  <article class="nvm" id="nvSheet" role="dialog" aria-modal="true" aria-labelledby="nvTitle">
     <div class="nvm__bar">
       <span class="nvm__lb">STORY</span>
       <span class="nvm__t">
@@ -1344,7 +1364,7 @@ body.nvlock{ overflow:hidden; }
     <div class="nvm__in">
       <h3 class="nvm__h" id="nvTitle">「いつでも言えよ」と、<br>社長が言うようになった一年</h3>
       <p class="nvm__sub">社員10名の会社で働く、入社5年目・30歳の営業担当の視点</p>
-      <p class="nvm__cap">実在の導入事例ではありません。サービスをご利用いただいた場合のイメージとして作成した読みものです。補助金の採択、融資の承認、受給額を保証するものではありません。</p>
+      <p class="nvm__cap">実在の導入事例ではありません。ご利用いただいた場合のイメージです。</p>
 
       <h4><i>01</i>「また締切か」だった頃</h4>
       <p>僕がこの会社に入って5年。30歳になった春のことだった。</p>
@@ -1356,36 +1376,6 @@ body.nvlock{ overflow:hidden; }
       <p>社長は画面を閉じて、ひとこと言った。</p>
       <p class="q">「見つけたのが、遅かったな」</p>
       <p>制度を見つけた時には、もう遅い。見つけても、何から書けばいいのか分からない。うちにとって補助金は、ずっとこの2つだった。</p>
-
-      <figure class="nvfig">
-        <div class="nvfig__s"><svg viewBox="0 0 480 118" role="img" aria-label="締切が過ぎたカレンダーと、白紙のままの事業計画の欄">
-          <text x="1" y="11" font-family="Inter,sans-serif" font-size="10" letter-spacing="1.6" fill="#b4b4b4">CALENDAR</text>
-          <text x="250" y="11" font-family="Inter,sans-serif" font-size="10" letter-spacing="1.6" fill="#b4b4b4">APPLICATION</text>
-          <g fill="none" stroke="#d9d9d9" stroke-width="1">
-            <rect x="1" y="20" width="208" height="80"/>
-            <path d="M53 20v80M105 20v80M157 20v80M1 60h208"/>
-            <rect x="250" y="20" width="229" height="80"/>
-          </g>
-          <rect x="157" y="20" width="52" height="40" fill="#0b2c5c"/>
-          <text x="183" y="45" text-anchor="middle" font-family="'Noto Sans JP',sans-serif" font-size="12.5" font-weight="700" fill="#ffffff">締切</text>
-          <g fill="#6b6b6b" font-family="'Noto Sans JP',sans-serif" font-size="12.5">
-            <text x="27" y="45" text-anchor="middle">気づく</text>
-            <text x="79" y="45" text-anchor="middle">調べる</text>
-            <text x="131" y="45" text-anchor="middle">迷う</text>
-          </g>
-          <g fill="#d9d9d9" font-family="'Noto Sans JP',sans-serif" font-size="12.5">
-            <text x="27" y="85" text-anchor="middle">—</text>
-            <text x="79" y="85" text-anchor="middle">—</text>
-            <text x="131" y="85" text-anchor="middle">—</text>
-            <text x="183" y="85" text-anchor="middle">—</text>
-          </g>
-          <text x="264" y="44" font-family="'Noto Sans JP',sans-serif" font-size="12.5" font-weight="700" fill="#111111">事業計画</text>
-          <g stroke="#efefef" stroke-width="1"><path d="M264 74h201M264 92h201"/></g>
-          <rect x="264" y="54" width="1.6" height="15" fill="#0b2c5c"/>
-          <text x="276" y="66" font-family="'Noto Sans JP',sans-serif" font-size="12" fill="#b4b4b4">（白紙のまま）</text>
-        </svg></div>
-        <figcaption>気づいた時には、締切までの日数より、白紙の欄のほうが重かった。</figcaption>
-      </figure>
 
       <h4><i>02</i>毎週、「補助金・融資・税制優遇情報」が届くようになった</h4>
       <p>変わったのは、社長がZoomの短い説明会を見た後だった。</p>
@@ -1415,6 +1405,7 @@ body.nvlock{ overflow:hidden; }
       <h4><i>03</i>任せるか、自分たちで考えるか</h4>
       <p>ある制度について、社長は士業に任せるプランの説明も聞いてきた。書類の作成そのものを、提携している事務所が担当してくれるらしい。</p>
       <p class="q">「月額は15万円からになる。通れば成功報酬もかかる。ただ、時間は買える」</p>
+      <p>いま使っているのは、月額3万円のほうだ。差額の12万円で、書類を書く手間ごと引き取ってもらえるという話だった。</p>
       <p>社長は少し考えてから、こう続けた。</p>
       <p class="q">「頼むべき時は頼む。ただ、今回はうちでやってみたい。うちの事業を一番考える人間が、うちの中に育たないと困るからな」</p>
       <p>そこで使い始めたのが、6つのAIエージェントとの対話だった。</p>
@@ -1470,13 +1461,20 @@ body.nvlock{ overflow:hidden; }
           <text x="256" y="52" font-family="'Noto Sans JP',sans-serif" font-size="13" font-weight="700" fill="#111111">「いつでも言えよ」</text>
           <text x="256" y="74" font-family="'Noto Sans JP',sans-serif" font-size="12" fill="#6b6b6b">まだ手を挙げた人はいない。それでも、置いてある。</text>
         </svg></div>
-        <figcaption>1年前は社長のスマホの中だけにあった情報が、今は会社の中に置かれている。</figcaption>
+        <figcaption>1年前、この情報は社長のスマホの中にしかなかった。</figcaption>
       </figure>
 
       <div class="nvm__end">
         <p>前なら、締切の直前に見つけて焦っていた情報が、今は会社の中に静かに置かれている。誰かが何かを言い出した時、そこには制度の情報もある。AIと一緒に整理する時間もある。</p>
         <p>補助金をもらうためではなく、会社の選択肢を増やすために。</p>
-        <p class="nvm__cap" style="margin-top:22px">この読みものは、サービスをご利用いただいた場合のイメージです。実在の企業・人物ではありません。制度への提出書類の作成は有資格者が担当し、当社が申請を代行することはありません。</p>
+
+        <div class="nvcta">
+          <p class="nvcta__t">この一年を、御社で始めるなら。</p>
+          <a class="cta" href="https://www.writeup.jp/contact/">初期費用0円で導入を相談する</a><br>
+          <button class="nvlink" type="button" data-story-goto="#price">月額30,000円の内訳を見る ▸</button>
+        </div>
+
+        <p class="nvm__cap" style="margin-top:26px">この読みものは、サービスをご利用いただいた場合のイメージです。実在の企業・人物ではありません。制度への提出書類の作成は有資格者が担当し、当社が申請を代行することはありません。</p>
       </div>
     </div>
   </article>
@@ -1499,8 +1497,16 @@ body.nvlock{ overflow:hidden; }
 
   function seen(){ try{ return sessionStorage.getItem(SEEN)==='1'; }catch(e){ return false; } }
   function markSeen(){ try{ sessionStorage.setItem(SEEN,'1'); }catch(e){} }
-  function lock(){ document.body.classList.add('nvlock'); }
-  function unlock(){ if(!ask.classList.contains('on') && !modal.classList.contains('on')) document.body.classList.remove('nvlock'); }
+  var behind = ['header','main','footer'].map(function(s){ return document.querySelector(s); }).filter(Boolean);
+  function lock(){
+    document.body.classList.add('nvlock');
+    behind.forEach(function(el){ el.setAttribute('aria-hidden','true'); el.inert = true; });
+  }
+  function unlock(){
+    if(ask.classList.contains('on') || modal.classList.contains('on')) return;
+    document.body.classList.remove('nvlock');
+    behind.forEach(function(el){ el.removeAttribute('aria-hidden'); el.inert = false; });
+  }
 
   function hideBadge(){ badge.classList.remove('on'); setTimeout(function(){ badge.hidden = true; }, 500); }
 
@@ -1537,6 +1543,15 @@ body.nvlock{ overflow:hidden; }
   /* フッターなどからの再表示リンク */
   Array.prototype.forEach.call(document.querySelectorAll('[data-story-open]'), function(el){
     el.addEventListener('click', function(){ openStory(el); });
+  });
+
+  /* モーダルを閉じて、本文の該当セクションへ送る */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-story-goto]'), function(el){
+    el.addEventListener('click', function(){
+      var t = document.querySelector(el.getAttribute('data-story-goto'));
+      closeStory();
+      if(t) setTimeout(function(){ t.scrollIntoView({behavior:'smooth'}); }, 80);
+    });
   });
 
   /* 共有：?story=1 付きURLをコピー */
