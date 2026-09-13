@@ -21,7 +21,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@400;600;700&family=Inter:wght@600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@500;700&family=Inter:wght@600;700;900&display=swap" rel="stylesheet">
 <style>
 
 /* lp-base.css — 日本語LP／HTML成果物の初期CSS
@@ -638,14 +638,17 @@ footer .note{ font-size:14.5px; }
 
 /* ══ 読みもの（小説）モーダル ══
  * 右下バッジ → 確認ダイアログ → 全文モーダル の3ステップ。
- * 固定CTA(.fx)と重ならないよう bottom は --fixed-cta-h を足す。 */
+ * 本文は読書用の別組版（明朝・34字前後・紙色）。LP本体の造形（角丸ゼロ）は踏襲する。 */
+
+/* ── 右下バッジ ── 固定CTA(.fx)と重ならないよう --fixed-cta-h を足す */
 .nvb{ position:fixed; right:18px; z-index:75; display:flex; align-items:stretch;
   bottom:calc(var(--fixed-cta-h) + 18px + env(safe-area-inset-bottom,0px));
   max-width:calc(100vw - 36px); background:#fff; border:1px solid var(--acm);
-  border-left:4px solid var(--ac); box-shadow:0 12px 34px rgba(11,44,92,.18);
+  border-left:4px solid var(--ac); box-shadow:0 14px 38px rgba(11,44,92,.20);
   opacity:0; transform:translateY(12px); pointer-events:none;
   transition:opacity .5s ease, transform .5s ease; }
 .nvb.on{ opacity:1; transform:none; pointer-events:auto; }
+.nvb[hidden]{ display:none; }
 .nvb__go{ display:flex; align-items:center; gap:11px; background:none; border:0; cursor:pointer;
   padding:12px 6px 12px 14px; font-family:inherit; color:var(--bk); text-align:left; }
 .nvb__new{ flex:none; align-self:flex-start; background:var(--ac); color:#fff;
@@ -659,85 +662,122 @@ footer .note{ font-size:14.5px; }
 .nvb__go:hover .nvb__t{ color:var(--ac); }
 @media (max-width:400px){ .nvb__t span{ display:none; } }
 
+/* ── オーバーレイ ── 背後のLPを読書の邪魔にしない深さまで沈める */
 .nvo{ position:fixed; inset:0; z-index:100; display:none; align-items:center; justify-content:center;
-  padding:18px; background:rgba(17,17,17,.58); }
-.nvo.on{ display:flex; }
+  padding:18px; background:rgba(9,14,24,.80); backdrop-filter:blur(5px); }
+.nvo.on{ display:flex; animation:nvfade .3s ease both; }
+@keyframes nvfade{ from{ opacity:0 } to{ opacity:1 } }
 
-.nvask{ background:#fff; width:100%; max-width:404px; padding:30px 24px 24px;
-  text-align:center; box-shadow:0 30px 70px rgba(0,0,0,.32); }
-.nvask p{ margin:0 0 8px; font-size:16px; font-weight:900; line-height:1.75; }
-.nvask .ss{ margin:0 0 22px; font-size:13.5px; }
+/* ── 確認ダイアログ ── */
+.nvask{ background:#fff; width:100%; max-width:412px; padding:34px 28px 26px; text-align:center;
+  box-shadow:0 34px 80px rgba(0,0,0,.4); animation:nvrise .34s cubic-bezier(.2,.7,.3,1) both; }
+@keyframes nvrise{ from{ opacity:0; transform:translateY(14px) } to{ opacity:1; transform:none } }
+.nvask__k{ font-family:"Inter",sans-serif; font-size:10.5px; font-weight:900; letter-spacing:.22em;
+  color:var(--ac); margin:0 0 14px; }
+.nvask p{ margin:0 0 10px; font-size:16.5px; font-weight:900; line-height:1.75; letter-spacing:.01em; }
+.nvask .ss{ margin:0 0 24px; font-size:13px; line-height:1.85; }
 .nvask__b{ display:grid; gap:9px; }
 .nvask__b button{ font-family:inherit; cursor:pointer; }
-.nvyes{ background:var(--ac); color:#fff; border:0; padding:15px; font-weight:900; font-size:15.5px;
-  letter-spacing:.04em; }
+.nvyes{ background:var(--ac); color:#fff; border:0; padding:16px; font-weight:900; font-size:15.5px;
+  letter-spacing:.04em; transition:background .2s; }
+.nvyes:hover{ background:#0d3670; }
 .nvno{ background:none; border:1px solid var(--ln); color:var(--g1); padding:12px; font-size:14.5px; }
 .nvno:hover{ border-color:var(--g3); }
 
-.nvm{ background:#fff; width:100%; max-width:716px; max-height:90vh;
-  overflow-y:auto; -webkit-overflow-scrolling:touch; box-shadow:0 30px 80px rgba(0,0,0,.34); }
-.nvm__bar{ position:sticky; top:0; z-index:3; display:flex; align-items:center; justify-content:space-between;
-  gap:12px; padding:12px 14px 12px 26px; background:rgba(255,255,255,.96);
-  backdrop-filter:blur(10px); border-bottom:1px solid var(--ln2); }
-.nvm__lb{ font-family:"Inter",sans-serif; font-size:11px; font-weight:900; letter-spacing:.2em; color:var(--ac); }
-.nvm__t{ display:flex; align-items:center; gap:8px; }
-.nvm__sh, .nvm__x{ font-family:inherit; cursor:pointer; background:#fff; border:1px solid var(--ln);
-  color:var(--g1); line-height:1; }
-.nvm__sh{ font-size:12.5px; font-weight:700; padding:9px 13px; white-space:nowrap; }
-.nvm__x{ font-size:17px; width:36px; height:36px; }
-.nvm__sh:hover, .nvm__x:hover{ border-color:var(--ac); color:var(--ac); }
-.nvm__in{ padding:26px 34px 38px; }
-@media (max-width:620px){ .nvm__in{ padding:22px 20px 30px; } .nvm__bar{ padding-left:20px; } }
-.nvm__h{ font-family:"Shippori Mincho",serif; font-weight:700; margin:10px 0 12px;
-  font-size:clamp(19px,3.7vw,27px); line-height:1.6; letter-spacing:.01em; }
-.nvm__sub{ margin:0; font-size:13.5px; color:var(--g2); line-height:1.85; }
-.nvm__cap{ margin:16px 0 0; padding:11px 14px; background:var(--pa); font-size:12.5px;
-  color:var(--g2); line-height:1.8; }
-.nvm h4{ font-family:"Shippori Mincho",serif; font-weight:700; margin:38px 0 16px; padding-top:24px;
-  border-top:1px solid var(--ln2); font-size:clamp(16.5px,2.7vw,19.5px); line-height:1.65; }
-.nvm h4 i{ display:block; font-family:"Inter",sans-serif; font-style:normal; font-size:11px;
-  font-weight:900; letter-spacing:.2em; color:var(--acm); margin-bottom:9px; }
-.nvm p{ font-family:"Shippori Mincho",serif; font-size:16.5px; line-height:2.1;
-  margin:0 0 1.15em; letter-spacing:.005em; }
-.nvm .mail__b p, .nvm .mail__l li, .nvm .nvm__cap, .nvm .nvfig figcaption, .nvm .nvcta__t{
-  font-family:"Noto Sans JP","Hiragino Sans",system-ui,sans-serif; }
-.nvm .nvm__cap{ font-size:13.5px; line-height:1.85; }
-.nvm p.q{ font-weight:500; }
-.nvm p:last-child{ margin-bottom:0; }
-.nvm__end{ margin-top:34px; padding-top:22px; border-top:1px solid var(--ln2); }
-.nvcta{ margin-top:30px; padding:26px 24px; background:var(--acl); text-align:center; }
-.nvcta__t{ font-size:16px!important; font-weight:900; line-height:1.7!important; margin:0 0 18px!important; }
-.nvcta .cta{ display:inline-block; font-size:16px; padding:16px 30px; }
-.nvcta .nvlink{ display:inline-block; margin-top:16px; font-size:14.5px; }
-@media (max-width:620px){
-  .nvcta{ padding:22px 16px; }
-  .nvcta .cta{ display:block; font-size:15px; padding:15px 12px; }
-  .nvcta .nvlink{ font-size:13.5px; }
-}
+/* ── 読みもの本体 ──
+ * 紙色 #fbfaf7、本文カラムは34字前後。行間より段落間を広く取って塊を見せる。 */
+.nvm{ position:relative; background:#fbfaf7; width:100%; max-width:700px; max-height:92vh;
+  overflow-y:auto; -webkit-overflow-scrolling:touch; box-shadow:0 34px 90px rgba(0,0,0,.45);
+  animation:nvrise .38s cubic-bezier(.2,.7,.3,1) both; scrollbar-width:thin; }
+.nvm::-webkit-scrollbar{ width:9px; }
+.nvm::-webkit-scrollbar-thumb{ background:#d5d2ca; }
+.nvm::-webkit-scrollbar-track{ background:#f0eee8; }
 
-.mail{ border:1px solid var(--ln); margin:24px 0 26px; background:#fff; overflow:hidden; }
-.mail__h{ background:var(--acl); border-bottom:1px solid var(--ln2); padding:12px 16px; }
+.nvm__bar{ position:sticky; top:0; z-index:4; display:flex; align-items:center;
+  justify-content:space-between; gap:12px; padding:13px 14px 13px 26px;
+  background:#fbfaf7; }
+.nvm__lb{ font-family:"Inter",sans-serif; font-size:10.5px; font-weight:900; letter-spacing:.22em;
+  color:var(--ac); }
+.nvm__t{ display:flex; align-items:center; gap:8px; }
+.nvm__sh, .nvm__x{ font-family:inherit; cursor:pointer; background:#fff; border:1px solid #ded9cf;
+  color:var(--g1); line-height:1; transition:border-color .2s, color .2s; }
+.nvm__sh{ font-size:12.5px; font-weight:700; padding:9px 13px; white-space:nowrap; }
+.nvm__x{ font-size:16px; width:38px; height:38px; }
+.nvm__sh:hover, .nvm__x:hover{ border-color:var(--ac); color:var(--ac); }
+/* 読書の進み具合 */
+.nvm__pg{ position:sticky; top:64px; z-index:4; height:2px; background:transparent; margin-bottom:-2px; }
+.nvm__pg i{ display:block; height:2px; width:0; background:var(--ac); transition:width .12s linear; }
+
+.nvm__in{ max-width:600px; margin:0 auto; padding:34px 30px 46px; color:#16181d; }
+@media (max-width:620px){ .nvm__in{ padding:24px 22px 36px; } .nvm__bar{ padding-left:22px; } }
+
+/* 扉 */
+.nvm__ttl{ padding-bottom:30px; border-bottom:1px solid #e6e2d8; margin-bottom:6px; }
+.nvm__h{ font-family:"Shippori Mincho",serif; font-weight:700; margin:14px 0 16px;
+  font-size:clamp(21px,3.9vw,30px); line-height:1.62; letter-spacing:.02em; color:#14161a; }
+.nvm__sub{ margin:0; font-size:13.5px; color:var(--g2); line-height:1.9; letter-spacing:.02em; }
+.nvm__meta{ display:flex; flex-wrap:wrap; gap:8px 18px; margin:16px 0 0;
+  font-family:"Inter",sans-serif; font-size:11px; font-weight:700; letter-spacing:.14em; color:var(--acm); }
+
+/* 章 */
+.nvm h4{ font-family:"Shippori Mincho",serif; font-weight:700; margin:60px 0 22px;
+  font-size:clamp(17px,2.8vw,20.5px); line-height:1.7; letter-spacing:.02em; color:#14161a; }
+.nvm h4 i{ display:block; font-family:"Inter",sans-serif; font-style:normal; font-size:11px;
+  font-weight:900; letter-spacing:.24em; color:var(--acm); margin-bottom:12px; }
+
+/* 本文 */
+.nvm p{ font-family:"Shippori Mincho",serif; font-weight:500; font-size:17.5px; line-height:1.95;
+  letter-spacing:.035em; margin:0 0 1.45em; color:#16181d; }
+.nvm p.q{ padding-left:1.15em; color:#0f1116; }
+.nvm p:last-child{ margin-bottom:0; }
+
+/* 作中の実物・注記・キャプションはゴシックのまま（地の文と役割を分ける） */
+.nvm .mail__b p, .nvm .mail__l li, .nvm .nvm__cap, .nvm .nvfig figcaption, .nvm .nvcta__t{
+  font-family:"Noto Sans JP","Hiragino Sans",system-ui,sans-serif; font-weight:400; letter-spacing:.01em; }
+.nvm .nvm__cap{ font-size:13px; line-height:1.85; color:var(--g2); }
+.nvm__cap{ margin:18px 0 0; padding:12px 15px; background:#f2f0ea; }
+
+/* メール */
+.mail{ border:1px solid #e2ded4; margin:30px 0 32px; background:#fff; overflow:hidden;
+  box-shadow:0 2px 10px rgba(20,22,26,.05); }
+.mail__h{ background:#f4f6f9; border-bottom:1px solid #e6e9ee; padding:13px 17px; }
 .mail__r{ display:flex; gap:9px; font-size:12.5px; line-height:1.8; color:var(--g1); }
 .mail__r b{ flex:none; width:42px; color:var(--g2); font-weight:700; }
 .mail__s{ font-size:14.5px; font-weight:900; color:var(--bk); margin-top:5px; line-height:1.6; }
-.mail__b{ padding:14px 16px; }
-.mail__b p{ font-size:14.5px!important; line-height:1.95!important; margin:0 0 .8em!important; }
+.mail__b{ padding:15px 17px; }
+.mail__b p{ font-size:14.5px!important; line-height:1.95!important; margin:0 0 .8em!important; color:var(--bk); }
 .mail__b p:last-child{ margin-bottom:0!important; }
 .mail__l{ margin:0; padding:0; list-style:none; }
 .mail__l li{ display:flex; flex-wrap:wrap; gap:4px 12px; padding:8px 0; border-bottom:1px dashed var(--ln2);
-  font-size:14px; line-height:1.7; }
+  font-size:14px; line-height:1.7; color:var(--bk); }
 .mail__l li:last-child{ border-bottom:0; padding-bottom:0; }
 .mail__l b{ font-weight:700; }
 .mail__l span{ color:var(--g2); font-size:13px; }
-.nvfig{ margin:26px 0 24px; }
+
+/* 図 */
+.nvfig{ margin:30px 0 28px; }
 .nvfig__s{ overflow-x:auto; }
 .nvfig svg{ min-width:480px; max-width:560px; }
-.nvb[hidden]{ display:none; }
-.nvfig figcaption{ margin-top:9px; font-size:12.5px; color:var(--g2); line-height:1.7; }
+.nvfig figcaption{ margin-top:10px; font-size:12.5px; color:var(--g2); line-height:1.75; }
 @media (max-width:620px){
   .nvfig__s{ display:none; }
-  .nvfig figcaption{ margin:0; padding:15px 16px; background:var(--pa);
+  .nvfig figcaption{ margin:0; padding:15px 16px; background:#f2f0ea;
     font-size:14px; color:var(--g1); line-height:1.9; }
+}
+
+/* 読了後 */
+.nvm__end{ margin-top:44px; padding-top:30px; border-top:1px solid #e6e2d8; }
+.nvcta{ margin-top:34px; padding:30px 26px; background:var(--ac); text-align:center; }
+.nvcta__t{ font-size:16.5px!important; font-weight:900!important; line-height:1.7!important;
+  margin:0 0 20px!important; color:#fff!important; }
+.nvcta .cta{ display:inline-block; background:#fff; color:var(--ac); font-size:16px; padding:16px 30px; }
+.nvcta .cta:hover{ background:var(--acl); }
+.nvcta .nvlink{ display:inline-block; margin-top:16px; font-size:14px; color:#ffffff;
+  text-decoration-color:rgba(255,255,255,.5); }
+@media (max-width:620px){
+  .nvcta{ padding:24px 16px; }
+  .nvcta .cta{ display:block; font-size:15px; padding:15px 12px; }
+  .nvcta .nvlink{ font-size:13.5px; }
 }
 
 .nvlink{ background:none; border:0; padding:0; font-family:inherit; font-size:inherit; color:var(--ac);
@@ -1343,6 +1383,7 @@ body.nvlock{ overflow:hidden; }
 
 <div class="nvo" id="nvAsk">
   <div class="nvask" role="dialog" aria-modal="true" aria-labelledby="nvAskT">
+    <p class="nvask__k">STORY</p>
     <p id="nvAskT">導入から1年後の会社を、<br>短い小説にしました。</p>
     <p class="ss">社員10名の会社の、入社5年目・30歳の営業担当の視点。約5分で読み終わります。<br>実在の導入事例ではなく、ご利用いただいた場合のイメージとして書いた読みものです。</p>
     <div class="nvask__b">
@@ -1361,9 +1402,13 @@ body.nvlock{ overflow:hidden; }
         <button class="nvm__x" id="nvClose" type="button" aria-label="閉じる">✕</button>
       </span>
     </div>
+    <div class="nvm__pg"><i id="nvBar"></i></div>
     <div class="nvm__in">
+      <div class="nvm__ttl">
       <h3 class="nvm__h" id="nvTitle">「いつでも言えよ」と、<br>社長が言うようになった一年</h3>
       <p class="nvm__sub">社員10名の会社で働く、入社5年目・30歳の営業担当の視点</p>
+      <p class="nvm__meta"><span>4 CHAPTERS</span><span>約5分</span><span>イメージストーリー</span></p>
+      </div>
       <p class="nvm__cap">実在の導入事例ではありません。ご利用いただいた場合のイメージです。</p>
 
       <h4><i>01</i>「また締切か」だった頃</h4>
@@ -1517,7 +1562,7 @@ body.nvlock{ overflow:hidden; }
     opener = from || null;
     closeAsk(); hideBadge(); markSeen();
     modal.classList.add('on'); lock();
-    sheet.scrollTop = 0;
+    sheet.scrollTop = 0; bar.style.width = '0%';
     document.getElementById('nvClose').focus();
   }
   function closeStory(){
@@ -1544,6 +1589,13 @@ body.nvlock{ overflow:hidden; }
   Array.prototype.forEach.call(document.querySelectorAll('[data-story-open]'), function(el){
     el.addEventListener('click', function(){ openStory(el); });
   });
+
+  /* 読書の進み具合 */
+  var bar = document.getElementById('nvBar');
+  sheet.addEventListener('scroll', function(){
+    var max = sheet.scrollHeight - sheet.clientHeight;
+    bar.style.width = (max > 0 ? (sheet.scrollTop / max * 100) : 0) + '%';
+  }, {passive:true});
 
   /* モーダルを閉じて、本文の該当セクションへ送る */
   Array.prototype.forEach.call(document.querySelectorAll('[data-story-goto]'), function(el){
