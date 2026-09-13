@@ -591,6 +591,32 @@ input[type=range]::-moz-range-thumb{
 .build li span{font-size:13px;color:var(--gray);line-height:1.7;display:block;}
 @media(max-width:720px){ .build ol{grid-template-columns:1fr;gap:14px;} }
 
+/* ── 「たとえば」ボタンと事例モーダル ── */
+.build .exbtn{
+  margin-top:18px;background:var(--blue);border:none;border-radius:20px;
+  padding:10px 22px;font-family:var(--jp);font-size:13px;font-weight:700;color:#fff;
+  cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:background .18s;
+}
+.build .exbtn:hover{background:var(--blue-d);}
+.build .exbtn::after{content:"→";font-family:var(--en);font-weight:800;}
+
+.modal-box.emodal-box{max-width:860px;padding:36px 34px 32px;}
+.modal-box.emodal-box .cmk{font-family:var(--en);font-size:12px;font-weight:800;letter-spacing:.16em;color:var(--gray2);}
+.modal-box.emodal-box h3{font-size:clamp(1.1rem,2.6vw,1.34rem);margin:10px 0 6px;line-height:1.6;}
+.emodal-box .elead{font-size:13.5px;color:var(--gray);margin:0 0 24px;line-height:1.85;}
+.ex-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:720px){ .ex-grid{grid-template-columns:1fr;} }
+.ex-card{border:1px solid var(--line);border-radius:8px;padding:20px 20px 18px;background:var(--paper);}
+.ex-card .exn{font-family:var(--en);font-size:12px;font-weight:800;letter-spacing:.1em;color:var(--gray2);}
+.ex-card h4{font-size:15.5px;font-weight:800;margin:7px 0 14px;line-height:1.55;}
+.ex-line{border-left:2px solid var(--line);padding:0 0 0 13px;margin-bottom:12px;}
+.ex-line b{display:block;font-size:12px;font-weight:800;color:var(--gray2);letter-spacing:.04em;margin-bottom:4px;}
+.ex-line p{font-size:13.5px;color:var(--ink);margin:0;line-height:1.75;}
+.ex-line.you{border-left-color:var(--blue);}
+.ex-line.you p{color:var(--blue-d);font-weight:700;}
+.ex-card .exf{font-size:12.5px;color:var(--gray);margin:14px 0 0;padding-top:12px;border-top:1px solid var(--line);line-height:1.75;}
+.emodal-box .enote{font-size:12px;color:var(--gray2);margin:22px 0 0;line-height:1.75;}
+
 /* ── 3社で埋まる ─────────────────────── */
 .three-co{
   margin-top:30px;border:1px solid var(--line);border-radius:8px;
@@ -1132,6 +1158,7 @@ footer .fnav a:hover{color:#fff;}
         <li><b>御社が売る相手に合わせて</b><span>実際の業務ログをお預かりし、その業種で意味のあるレポートの中身と言葉に組み直します。</span></li>
         <li><b>商談でそのまま見せられる形に</b><span>経営者・管理職・本人の3画面を、初回の商談から実物としてお見せいただけます。</span></li>
       </ol>
+      <button class="exbtn" data-open-ex>たとえば、どんな画面になるのか</button>
       <small class="note">作り込みの範囲、着手から公開までの期間は <span class="ph">【調整中】</span>。個別にご説明します。</small>
     </div>
 
@@ -1378,6 +1405,76 @@ footer .fnav a:hover{color:#fff;}
   </div>
 </div>
 
+<!-- ══════════ EXAMPLE MODAL ══════════ -->
+<div class="modal" id="emodal" role="dialog" aria-modal="true" aria-labelledby="emodalTitle">
+  <div class="modal-box emodal-box">
+    <button class="modal-close" data-close-ex aria-label="閉じる">×</button>
+    <span class="cmk">EXAMPLE</span>
+    <h3 id="emodalTitle">御社の本業が、お客様の画面に並びます。</h3>
+    <p class="elead">同じ記録を使っても、御社が何を売っているかで、画面に出す「次の一手」は変わります。当社はそこを、御社の商材に合わせて組みます。4つの例でご覧ください。</p>
+
+    <div class="ex-grid">
+      <div class="ex-card">
+        <span class="exn">CASE 01</span>
+        <h4>経営コンサルティング会社の場合</h4>
+        <div class="ex-line">
+          <b>画面が出すもの</b>
+          <p>管理部の稼働のうち、42%が転記と確認の作業に使われています。</p>
+        </div>
+        <div class="ex-line you">
+          <b>そこに並ぶ、御社の一手</b>
+          <p>この工程の見直しについて、担当コンサルタントに相談する</p>
+        </div>
+        <p class="exf">非効率が数字で出た瞬間に、御社の提案が同じ画面にあります。提案の根拠を探すところから始めなくて済みます。</p>
+      </div>
+
+      <div class="ex-card">
+        <span class="exn">CASE 02</span>
+        <h4>人事・人材紹介会社の場合</h4>
+        <div class="ex-line">
+          <b>画面が出すもの</b>
+          <p>営業部の稼働が3か月連続で全社平均を上回っています。特定の2名に業務が偏っています。</p>
+        </div>
+        <div class="ex-line you">
+          <b>そこに並ぶ、御社の一手</b>
+          <p>この業務を担える人材の登録状況を確認する／メンバーのコンディションを見る</p>
+        </div>
+        <p class="exf">増員を考え始める時期が、勘ではなく記録で分かります。どんなスキルの人が要るかまで、記録から言えます。</p>
+      </div>
+
+      <div class="ex-card">
+        <span class="exn">CASE 03</span>
+        <h4>営業代行会社の場合</h4>
+        <div class="ex-line">
+          <b>画面が出すもの</b>
+          <p>営業担当の時間配分が、先月から資料作成側へ移っています。アポイント獲得に使う時間が減っています。</p>
+        </div>
+        <div class="ex-line you">
+          <b>そこに並ぶ、御社の一手</b>
+          <p>来月の商談数の見込みを確認する／アポイント獲得を一部お任せいただく</p>
+        </div>
+        <p class="exf">商談数が落ちてから相談されるのではなく、落ちる前に画面が知らせます。御社が動く理由が、先に立ちます。</p>
+      </div>
+
+      <div class="ex-card">
+        <span class="exn">CASE 04</span>
+        <h4>研修会社の場合</h4>
+        <div class="ex-line">
+          <b>画面が出すもの</b>
+          <p>この業務を担当しているのは1名だけです。ほかのメンバーには実施の記録がありません。</p>
+        </div>
+        <div class="ex-line you">
+          <b>そこに並ぶ、御社の一手</b>
+          <p>部署のスキルマップを見る／この業務の研修プログラムを確認する</p>
+        </div>
+        <p class="exf">誰が何をできるかを、自己申告ではなく実際の作業記録から並べられます。研修の必要な箇所が、先に見えます。</p>
+      </div>
+    </div>
+
+    <p class="enote">これが、「お客様のパソコンに、御社の営業マンをインストールする」の中身です。御社は毎月レポートが届く場所を押さえ、必要になったタイミングで自社のサービスを出せます。<br>※ 画面の文言と数値は、作りの例です。実際の表示は、御社の商材と、お預かりした業務ログに合わせて組み直します。</p>
+  </div>
+</div>
+
 <!-- ══════════ COLUMN MODAL ══════════ -->
 <div class="modal" id="cmodal" role="dialog" aria-modal="true" aria-labelledby="cmodalTitle">
   <div class="modal-box cmodal-box">
@@ -1510,6 +1607,28 @@ footer .fnav a:hover{color:#fff;}
   document.querySelectorAll('[data-close-modal]').forEach(function(b){ b.addEventListener('click', close); });
   modal.addEventListener('click', function(e){ if(e.target === modal) close(); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && modal.classList.contains('on')) close(); });
+
+  /* 事例モーダル */
+  var em = document.getElementById('emodal');
+  if(em){
+    var eLast = null;
+    function eOpen(e){
+      eLast = e && e.currentTarget ? e.currentTarget : null;
+      em.classList.add('on');
+      document.body.style.overflow = 'hidden';
+      var eb = em.querySelector('[data-close-ex]');
+      if(eb) setTimeout(function(){ eb.focus(); }, 40);
+    }
+    function eClose(){
+      em.classList.remove('on');
+      document.body.style.overflow = '';
+      if(eLast) eLast.focus();
+    }
+    document.querySelectorAll('[data-open-ex]').forEach(function(b){ b.addEventListener('click', eOpen); });
+    document.querySelectorAll('[data-close-ex]').forEach(function(b){ b.addEventListener('click', eClose); });
+    em.addEventListener('click', function(e){ if(e.target === em) eClose(); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && em.classList.contains('on')) eClose(); });
+  }
 
   /* コラム全文モーダル */
   var cm = document.getElementById('cmodal');
