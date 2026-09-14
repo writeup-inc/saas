@@ -15,8 +15,25 @@
   <meta name="twitter:card" content="summary">
   <link rel="canonical" href="https://writeup-inc.github.io/saas/monitor/">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-  <title>AIサービス モニター募集｜株式会社ライトアップ</title>
+  <title>0次販売｜正式販売の前に、最初の10社へ。株式会社ライトアップ</title>
   <style>
+/* ── 改行制御（~/.claude/lp-base.css より。消さないこと） ──────────
+ * 日本語は単語区切りが無いため、既定のままだと文節の途中で折り返す。
+ * auto-phrase は文節単位で折る（Chrome 119+）。非対応環境は normal で逃がす。 */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero-lead, .section-title, .section-copy, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero-lead, .section-title, .section-copy, [data-keep-phrase] {
+    word-break: normal;
+  }
+}
+.nobr { white-space: nowrap; }
+
     :root {
       --ink: #14251f;
       --ink-soft: #51615b;
@@ -818,8 +835,8 @@
 <body>
   <header class="site-header">
     <div class="shell header-inner">
-      <a class="brand" href="#top" aria-label="AIサービス先行モニター トップへ"><span class="brand-mark">W</span>WRITEUP / AI MONITOR</a>
-      <span class="header-status"><span class="status-full">法人モニター受付中</span><span class="status-short">受付中</span></span>
+      <a class="brand" href="#top" aria-label="0次販売 トップへ"><span class="brand-mark">W</span>WRITEUP / 0次販売</a>
+      <span class="header-status"><span class="status-full">0次販売 受付中（法人のみ）</span><span class="status-short">受付中</span></span>
     </div>
   </header>
 
@@ -827,33 +844,60 @@
     <div class="shell">
       <section class="hero" aria-labelledby="page-title">
         <div>
-          <p class="eyebrow">法人向けモニター募集中</p>
-          <h1 id="page-title"><span class="title-desktop">新しいAIサービスを、<br><em>モニターで試せます。</em></span><span class="title-mobile">新しいAI<br>サービスを、<br><em>モニターで<br>試せます。</em></span></h1>
-          <p class="hero-lead"><span>ライトアップが開発している<span class="nowrap">4つのサービスを</span>お試しいただけます。</span><span>初期費用と月額料金は0円です。</span><span>API利用料など、使った分の実費だけ<span class="nowrap">ご負担ください。</span></span></p>
+          <p class="eyebrow">0次販売 ─ 一次販売の、ひとつ前</p>
+          <h1 id="page-title"><span class="title-desktop">値段は、<br><em>使ってもらってから<br>決めます。</em></span><span class="title-mobile">値段は、<br>使って<br>もらってから<br><em>決めます。</em></span></h1>
+          <p class="hero-lead"><span>株式会社ライトアップのAIコンサルティング局は、毎月あたらしい<span class="nowrap">AIサービスを</span>つくっています。</span><span>そのうちの一部を、正式販売の前にお出しするのが<span class="nowrap">0次販売です。</span></span><span>先着10社、1年間。初期費用も月額料金も0円。</span><span>ご負担は、API利用料などの<span class="nowrap">実費だけです。</span></span></p>
           <div class="hero-actions">
-            <a class="button primary" href="#services">モニター対象を見る <span aria-hidden="true">↓</span></a>
-            <a class="button secondary" href="#conditions">利用条件を確認する</a>
+            <a class="button primary" href="#zero">0次とは何かを読む <span aria-hidden="true">↓</span></a>
+            <a class="button secondary" href="#services">いま出ている4つを見る</a>
           </div>
         </div>
 
         <aside class="offer-board" aria-label="モニター料金">
-          <p class="board-label">モニター料金</p>
+          <p class="board-label">0次販売の条件</p>
           <div class="price-lines">
-            <div class="price-line"><span>初期費用</span><strong>0円</strong></div>
-            <div class="price-line"><span>月額料金</span><strong>0円</strong></div>
+            <div class="price-line"><span>募集枠（1サービス）</span><strong>10社</strong></div>
+            <div class="price-line"><span>初期費用・月額（1年間）</span><strong>0円</strong></div>
             <div class="price-line actual"><span>ご負担</span><strong>API利用料などの実費のみ</strong></div>
           </div>
-          <p class="board-note">API利用料など、使った分の実費だけかかります。利用期間や上限などは、始める前に書面で確認します。</p>
+          <p class="board-note">正式な価格と提供条件は、まだ決まっていません。利用期間・利用量の上限・データの取り扱いは、始める前に書面で確認します。</p>
         </aside>
       </section>
     </div>
 
-    <section class="condition-strip" aria-label="モニタープログラムの基本条件">
+    <div class="shell">
+      <section class="section" id="zero" aria-labelledby="zero-title">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">0次とは</p>
+            <h2 class="section-title" id="zero-title">0次とは、<br>値引きではなく、<br>正式販売の、<br>ひとつ前です。</h2>
+          </div>
+          <p class="section-copy">0円の「ゼロ」ではなく、一次販売の前、という順番の意味です。私たちは新しいAIサービスを、はじめから値段をつけて売り出すのではなく、まず数社に使っていただくところから始めています。その最初の段階が0次販売です。</p>
+        </div>
+        <div class="steps">
+          <article class="step"><b>0次</b><h3>いまここ</h3><p>価格も提供条件も決まっていない段階。先着10社に、1年間0円でお使いいただきます。</p></article>
+          <article class="step"><b>一次</b><h3>正式販売</h3><p>0次でいただいた声をもとに、正式な内容と料金を決めて販売を開始します。</p></article>
+          <article class="step"><b>その後</b><h3>継続は選べます</h3><p>0次が終わっても自動では続きません。正式な条件を見てから決められます。</p></article>
+        </div>
+      </section>
+
+      <section class="section" id="why" aria-labelledby="why-title">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">なぜ0円なのか</p>
+            <h2 class="section-title" id="why-title">価格も条件も、<br>これから決めます。<br>だから0円で<br>お出しできます。</h2>
+          </div>
+          <p class="section-copy">決まったものを安くしているのではなく、決める前にお使いいただいています。どの業務で効いて、どこが足りないのか。それを教えていただく代わりに、1年間の固定費をいただきません。値段は、使っていただいたあとに決めます。</p>
+        </div>
+      </section>
+    </div>
+
+    <section class="condition-strip" aria-label="0次販売の基本条件">
       <div class="shell condition-grid">
-        <div class="condition-intro"><span>モニターについて</span><strong>まず試してから、<br>続けるか決められます。</strong></div>
-        <div class="condition-item"><span>料金</span><strong>初期・月額0円</strong><small>モニター期間中の固定費はかかりません。</small></div>
-        <div class="condition-item"><span>実費</span><strong>API料金のみ</strong><small>利用量に応じたAPI利用料などがかかります。</small></div>
-        <div class="condition-item"><span>ご利用前</span><strong>条件を確認</strong><small>期間・上限・データの扱いなどを確認します。</small></div>
+        <div class="condition-intro"><span>0次販売の条件</span><strong>先着10社、1年間。<br>初期費用も月額も<br>いただきません。</strong></div>
+        <div class="condition-item"><span>募集枠</span><strong>1サービス10社</strong><small>サービスごとに、先着10社を受け付けます。</small></div>
+        <div class="condition-item"><span>期間と料金</span><strong>1年間 0円</strong><small>1年間、初期費用も月額料金もかかりません。</small></div>
+        <div class="condition-item"><span>ご負担</span><strong>API実費のみ</strong><small>利用量に応じたAPI利用料などの実費だけです。</small></div>
       </div>
     </section>
 
@@ -861,10 +905,10 @@
       <section class="section" id="services" aria-labelledby="services-title">
         <div class="section-head">
           <div>
-            <p class="section-kicker">対象サービス</p>
-            <h2 class="section-title" id="services-title">モニター対象は、<br>この4つです。</h2>
+            <p class="section-kicker">いま出ている0次</p>
+            <h2 class="section-title" id="services-title">お出しできるのは、<br>いま、この4つです。</h2>
           </div>
-          <p class="section-copy">気になるサービスがあれば、「モニター利用を相談」からお問い合わせください。どれが合うか分からない場合もご相談いただけます。</p>
+          <p class="section-copy">それぞれのページに、そのサービスが何をするものかを書いています。気になる1つがあれば、そこからお申し込みください。どれが合うか分からない場合もご相談いただけます。</p>
         </div>
 
         <div class="filter-wrap">
@@ -880,7 +924,7 @@
           <article class="service-card" id="elliot" data-category="sales">
             <div class="card-index"><b>01</b><span>会議・商談</span></div>
             <div class="card-copy">
-              <div class="card-meta"><span class="category">会議・商談</span><span class="open-badge">モニター募集中</span></div>
+              <div class="card-meta"><span class="category">会議・商談</span><span class="open-badge">0次 受付中</span></div>
               <h3>Elliot</h3>
             </div>
             <div class="card-detail">
@@ -888,7 +932,7 @@
               <p class="card-test"><span>試せること</span><b>ログの整理、課題の発見、次のアクションの提案</b></p>
             </div>
             <div class="card-actions">
-              <a class="card-link primary-link" href="elliot/">モニター利用を相談 <span aria-hidden="true">→</span></a>
+              <a class="card-link primary-link" href="elliot/">0次販売に申し込む <span aria-hidden="true">→</span></a>
               <a class="card-link" href="https://elliotlog.figma.site/" target="_blank" rel="noreferrer">概要を見る <span aria-hidden="true">↗</span></a>
               <button class="share-button" type="button" data-share="elliot" data-name="Elliot"><span class="share-label">共有URL</span><span aria-hidden="true">⌁</span></button>
             </div>
@@ -897,7 +941,7 @@
           <article class="service-card" id="super-manager" data-category="sales">
             <div class="card-index"><b>02</b><span>会議・商談</span></div>
             <div class="card-copy">
-              <div class="card-meta"><span class="category">営業支援</span><span class="open-badge">モニター募集中</span></div>
+              <div class="card-meta"><span class="category">営業支援</span><span class="open-badge">0次 受付中</span></div>
               <h3>スーパーマネージャー</h3>
             </div>
             <div class="card-detail">
@@ -905,7 +949,7 @@
               <p class="card-test"><span>試せること</span><b>商談中の助言、提案候補の整理、議事録と次の対応づくり</b></p>
             </div>
             <div class="card-actions">
-              <a class="card-link primary-link" href="super-manager/">モニター利用を相談 <span aria-hidden="true">→</span></a>
+              <a class="card-link primary-link" href="super-manager/">0次販売に申し込む <span aria-hidden="true">→</span></a>
               <a class="card-link" href="https://main.dizclwc6aq233.amplifyapp.com/" target="_blank" rel="noreferrer">概要を見る <span aria-hidden="true">↗</span></a>
               <button class="share-button" type="button" data-share="super-manager" data-name="スーパーマネージャー"><span class="share-label">共有URL</span><span aria-hidden="true">⌁</span></button>
             </div>
@@ -914,7 +958,7 @@
           <article class="service-card" id="worklog-insight" data-category="work">
             <div class="card-index"><b>03</b><span>業務・経営</span></div>
             <div class="card-copy">
-              <div class="card-meta"><span class="category">業務改善</span><span class="open-badge">モニター募集中</span></div>
+              <div class="card-meta"><span class="category">業務改善</span><span class="open-badge">0次 受付中</span></div>
               <h3>ワークログ・インサイト</h3>
             </div>
             <div class="card-detail">
@@ -922,7 +966,7 @@
               <p class="card-test"><span>試せること</span><b>仕事時間の見える化、自動化候補の発見、改善の優先順位づけ</b></p>
             </div>
             <div class="card-actions">
-              <a class="card-link primary-link" href="worklog-insight/">モニター利用を相談 <span aria-hidden="true">→</span></a>
+              <a class="card-link primary-link" href="worklog-insight/">0次販売に申し込む <span aria-hidden="true">→</span></a>
               <a class="card-link" href="../worklog-insight/">概要を見る <span aria-hidden="true">→</span></a>
               <button class="share-button" type="button" data-share="worklog-insight" data-name="ワークログ・インサイト"><span class="share-label">共有URL</span><span aria-hidden="true">⌁</span></button>
             </div>
@@ -931,7 +975,7 @@
           <article class="service-card" id="jmatch-engine" data-category="work">
             <div class="card-index"><b>04</b><span>業務・経営</span></div>
             <div class="card-copy">
-              <div class="card-meta"><span class="category">経営支援</span><span class="open-badge">モニター募集中</span></div>
+              <div class="card-meta"><span class="category">経営支援</span><span class="open-badge">0次 受付中</span></div>
               <h3>Jマッチエンジン</h3>
             </div>
             <div class="card-detail">
@@ -939,7 +983,7 @@
               <p class="card-test"><span>試せること</span><b>補助金探し、制度の比較、事業計画書づくり</b></p>
             </div>
             <div class="card-actions">
-              <a class="card-link primary-link" href="jmatch-engine/">モニター利用を相談 <span aria-hidden="true">→</span></a>
+              <a class="card-link primary-link" href="jmatch-engine/">0次販売に申し込む <span aria-hidden="true">→</span></a>
               <a class="card-link" href="../jmatch-engine/">概要を見る <span aria-hidden="true">→</span></a>
               <button class="share-button" type="button" data-share="jmatch-engine" data-name="Jマッチエンジン"><span class="share-label">共有URL</span><span aria-hidden="true">⌁</span></button>
             </div>
@@ -948,43 +992,63 @@
         <span id="copy-status" role="status" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)"></span>
       </section>
 
+      <section class="section" id="pipeline" aria-labelledby="pipeline-title">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">これで終わりではありません</p>
+            <h2 class="section-title" id="pipeline-title">4つで終わりでは<br>ありません。<br>商材は、すでに<br>115本あります。</h2>
+          </div>
+          <p class="section-copy">AIコンサルティング局（通称：エリオットテクノロジー）では、毎月あたらしいAIサービスが生まれています。そのすべてを0次販売に出すわけではありません。準備が整ったものから順に、この一覧へ足していきます。次に何が出るかは、公開時にこのページでお知らせします。</p>
+        </div>
+      </section>
+
       <section class="section" id="conditions" aria-labelledby="conditions-title">
         <div class="terms">
           <div>
             <p class="section-kicker">お申し込みの前に</p>
-            <h2 id="conditions-title">始める前に、<br><em>確認すること。</em></h2>
+            <h2 id="conditions-title">完成前のものを<br>入れる不安は、<br><em>書面で確認して<br>から始めます。</em></h2>
           </div>
           <ul class="terms-list">
-            <li><b>01</b><div><strong>利用内容</strong><span>試したい業務、期間、利用量の上限を開始前に書面で確認します。</span></div></li>
-            <li><b>02</b><div><strong>かかる費用</strong><span>初期費用と月額料金は0円です。API利用料などの実費のみご負担いただきます。</span></div></li>
-            <li><b>03</b><div><strong>データの取り扱い</strong><span>利用する情報、保存範囲、削除・返却の扱いを合意してから開始します。</span></div></li>
-            <li><b>04</b><div><strong>モニター終了後</strong><span>継続は自動ではありません。正式な内容と料金を見て、続けるかお選びいただけます。</span></div></li>
+            <li><b>01</b><div><strong>利用内容</strong><span>試したい業務、利用できる期間、利用量の上限を、開始前に書面で確認します。口頭の約束では始めません。</span></div></li>
+            <li><b>02</b><div><strong>かかる費用</strong><span>1年間、初期費用と月額料金は0円です。ご負担はAPI利用料などの実費のみで、その範囲も開始前にお示しします。</span></div></li>
+            <li><b>03</b><div><strong>データの取り扱い</strong><span>お預かりする情報、保存する範囲、削除・返却の扱いを合意してから開始します。</span></div></li>
+            <li><b>04</b><div><strong>開発中であること</strong><span>0次販売は正式販売の前の段階です。機能の追加や変更が入ることを前提に、ご確認のうえお使いいただきます。</span></div></li>
           </ul>
+        </div>
+      </section>
+
+      <section class="section" id="after" aria-labelledby="after-title">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">1年が終わったあと</p>
+            <h2 class="section-title" id="after-title">1年が終わっても、<br>自動では<br>続きません。</h2>
+          </div>
+          <p class="section-copy">0次販売は、そのまま有料契約に切り替わる仕組みではありません。1年のあいだに正式な内容と料金が決まりますので、それを見てから、続けるかどうかをお選びいただけます。やめる場合の手続きも、開始前の書面に書いておきます。</p>
         </div>
       </section>
 
       <section class="section" aria-labelledby="steps-title">
         <div class="section-head">
           <div>
-            <p class="section-kicker">ご利用の流れ</p>
-            <h2 class="section-title" id="steps-title">始め方は、<br>かんたんです。</h2>
+            <p class="section-kicker">お申し込み</p>
+            <h2 class="section-title" id="steps-title">気になった1つの<br>ページから、<br>お申し込みを<br>お願いします。</h2>
           </div>
-          <p class="section-copy">まずはお問い合わせください。使い方と条件を一緒に確認してからスタートします。</p>
+          <p class="section-copy">4つを一度にではなく、いまの自社に必要な1つから始められます。お申し込みいただけるのは法人のみです。</p>
         </div>
         <div class="steps">
-          <article class="step"><b>STEP 01</b><h3>サービスを選ぶ</h3><p>気になるサービス名と、困っていることをお知らせください。</p></article>
+          <article class="step"><b>STEP 01</b><h3>サービスを1つ選ぶ</h3><p>気になるサービス名と、いま困っていることをお知らせください。</p></article>
           <article class="step"><b>STEP 02</b><h3>使い方を相談する</h3><p>どの業務で、どのように使うかを一緒に確認します。</p></article>
-          <article class="step"><b>STEP 03</b><h3>条件を確認して始める</h3><p>期間・実費・データの扱いを確認したら、モニター開始です。</p></article>
+          <article class="step"><b>STEP 03</b><h3>確認して始める</h3><p>期間・上限・実費・データの扱いを書面で確認したら、0次販売の開始です。</p></article>
         </div>
       </section>
 
       <section class="final-cta" aria-labelledby="cta-title">
         <div>
-          <p class="section-kicker">モニターのお申し込み</p>
-          <h2 id="cta-title">まずは、気軽に<br>ご相談ください。</h2>
-          <p>希望するサービス名と、試してみたい業務をお知らせください。利用できる時期や条件をご案内します。</p>
+          <p class="section-kicker">0次販売のお申し込み</p>
+          <h2 id="cta-title">値段が決まる前の<br>最初の10社に<br>なってください。</h2>
+          <p>希望するサービス名と、試してみたい業務をお知らせください。空いている枠と、開始できる時期をご案内します。</p>
         </div>
-        <a class="button primary" href="https://www.writeup.jp/contact/" target="_blank" rel="noreferrer">モニター利用を相談する <span aria-hidden="true">↗</span></a>
+        <a class="button primary" href="https://www.writeup.jp/contact/" target="_blank" rel="noreferrer">0次販売について相談する <span aria-hidden="true">↗</span></a>
       </section>
     </div>
   </main>
@@ -992,7 +1056,7 @@
   <footer class="site-footer">
     <div class="shell footer-inner">
       <strong>株式会社ライトアップ / AIコンサル局</strong>
-      <span>掲載内容・募集状況・提供条件は変更される場合があります。</span>
+      <span>0次販売は正式販売の前の提供です。掲載内容・募集状況・提供条件は変更される場合があります。</span>
     </div>
   </footer>
 
