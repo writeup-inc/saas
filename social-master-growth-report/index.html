@@ -248,6 +248,14 @@ tfoot td{background:var(--bg2);font-weight:800;border-top:1px solid var(--rule)}
 .links a:hover{text-decoration:underline}
 .links a::after{content:"　↗";font-size:11px;color:var(--ink3)}
 .links p{margin-top:7px;font-family:var(--gothic);font-size:12px;color:var(--ink2);line-height:1.75}
+/* 制作者プロフィール */
+.creator{margin-top:42px;padding:28px;border:1px solid var(--line);background:#fbfaf6;display:grid;grid-template-columns:minmax(190px,260px) minmax(0,1fr);gap:28px;align-items:center}
+.creator-photo{width:100%;aspect-ratio:4 / 5;object-fit:cover;display:block}
+.creator-kicker{margin:0 0 10px;font-family:var(--gothic);font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ink3)}
+.creator h2{margin:0;font-family:var(--display);font-size:clamp(1.5rem,3vw,2rem);font-weight:900;letter-spacing:-.02em;color:var(--ink)}
+.creator-role{margin:9px 0 0;font-family:var(--gothic);font-size:14px;font-weight:800;color:var(--accent)}
+.creator-copy{margin:16px 0 0;font-family:var(--gothic);font-size:14px;font-weight:700;color:var(--ink2);line-height:2}
+.creator-note{margin:14px 0 0;font-family:var(--gothic);font-size:11px;color:var(--ink3);line-height:1.75}
 footer{padding:30px 0 60px;border-top:1px solid var(--rule)}
 footer p{font-family:var(--gothic);font-size:11.5px;color:var(--ink3);line-height:2}
 footer a{color:var(--ink3)}
@@ -272,6 +280,8 @@ footer a{color:var(--ink3)}
   th,td{padding:11px 8px}
   .t-code{margin-right:7px} .t-n{font-size:13px}
   .num{font-size:14px}
+  .creator{grid-template-columns:1fr;padding:20px;gap:20px}
+  .creator-photo{max-width:300px}
 }
 @media(max-width:860px){
   .kpis{grid-template-columns:repeat(2,1fr)}
@@ -290,7 +300,7 @@ footer a{color:var(--ink3)}
   <div class="wrap">
     <div class="hd-top">
       <p class="doclabel">株式会社ライトアップ　ソーシャルマスター　自社運用レポート</p>
-      <a class="sm-link" href="https://claude.ai/public/artifacts/0f12bc42-66d0-45b9-aa1c-c7aba4980d4a" target="_blank" rel="noopener">ソーシャルマスターとは<span class="ar">↗</span></a>
+      <a class="sm-link" href="https://social.elliot-tech.jp/lp/r/7MG3DRE5" target="_blank" rel="noopener">ソーシャルマスターとは<span class="ar">↗</span></a>
     </div>
     <h1>X 8アカウントのフォロワー推移と、<br>1年間の増加試算</h1>
     <p class="subtitle">調査期間：2026年9月1日〜9月15日（15日間）／ 対象：ソーシャルマスターで運用するX 8アカウント</p>
@@ -567,6 +577,17 @@ footer a{color:var(--ink3)}
       </ul>
       <p class="note cap">下2件は販売パートナー向けに公開している記事です。売り方の注意点まで書いてあるため、判断の材料としてそのままご覧いただけます。</p>
     </div>
+
+    <section class="creator" aria-labelledby="creator-title">
+      <img class="creator-photo" src="assets/komatsu-creator-cafe.png" alt="カフェで和菓子とお茶を楽しむ小松さんの生成ビジュアル" width="1122" height="1402">
+      <div>
+        <p class="creator-kicker">CREATED BY</p>
+        <h2 id="creator-title">小松 咲</h2>
+        <p class="creator-role">ソーシャルマスターをつくっています。</p>
+        <p class="creator-copy">モットーは、「難しいことを、続けられる形に。」。SNS運用の日々の数字を、次の改善につながるわかりやすい形にすることを大切にしています。<br>休みの日は、和スイーツのあるカフェを巡るのが最近の楽しみです。</p>
+        <p class="creator-note">掲載画像は、インタビューページ用に生成したビジュアルを本ページ用にブラッシュアップしたものです。</p>
+      </div>
+    </section>
   </div>
 </section>
 
