@@ -155,15 +155,6 @@ button, input { font: inherit; }
 .case-match-link strong { font-size: 11px; }
 .case-match-link svg { flex: 0 0 auto; width: 15px; }
 
-.explore-strip { padding-block: 21px; border-block: 1px solid var(--line); background: var(--soft); }
-.explore-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.explore-group { min-width: 0; padding: 18px 20px 16px; background: var(--paper); border: 1px solid var(--line); }
-.explore-group header { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 12px; }
-.explore-group h2 { margin: 0; color: var(--navy-deep); font-size: 13px; }
-.explore-group header span { color: var(--orange); font: 800 9px/1 Arial, sans-serif; letter-spacing: .08em; }
-.explore-links { display: flex; flex-wrap: wrap; gap: 7px; }
-.explore-links a { min-height: 38px; padding-inline: 10px; display: inline-flex; align-items: center; background: var(--soft); color: var(--navy); font-size: 10px; font-weight: 700; }
-.explore-links a:hover, .explore-links a:focus-visible { background: var(--navy); color: #fff; }
 .search-status { margin: -18px 0 30px; padding: 13px 16px; border-left: 3px solid var(--orange); background: var(--soft); color: var(--navy-deep); font-size: 12px; }
 [hidden] { display: none !important; }
 .compare-steps a.is-selected { border-color: #fff; background: #fff; color: var(--navy-deep); }
@@ -300,8 +291,6 @@ footer { background: var(--navy-deep); color: #fff; }
   .carousel-controls { left: 26px; }
   .discovery-tools { grid-template-columns: 1fr; }
   .discovery-tools-label, .discovery-shortcuts { grid-column: auto; }
-  .explore-grid { grid-template-columns: 1fr 1fr; }
-  .explore-group:last-child { grid-column: 1 / -1; }
   .masthead { grid-template-columns: 1fr; gap: 25px; align-items: start; }
   .hero-compare { width: 100%; }
   .lead-grid { grid-template-columns: 1fr; }
@@ -344,8 +333,6 @@ footer { background: var(--navy-deep); color: #fff; }
   .discovery-search button { grid-column: 1 / -1; min-height: 42px; }
   .popular-categories { grid-row: 2; }
   .popular-categories nav { grid-template-columns: 1fr 1fr; column-gap: 12px; }
-  .explore-grid { grid-template-columns: 1fr; }
-  .explore-group:last-child { grid-column: auto; }
   .masthead { min-height: 0; padding-block: 38px 32px; }
   .masthead h2 { font-size: clamp(37px, 11vw, 52px); }
   .hero-compare { padding: 21px 19px; }
@@ -437,8 +424,8 @@ footer { background: var(--navy-deep); color: #fff; }
 <nav class="shell category-nav" aria-label="カテゴリー">
 <a href="#stories">新着記事</a>
 <a href="#interviews">導入事例</a>
-<a href="#categories">業務から探す</a>
-<a href="#categories">業界から探す</a>
+<a href="#compare">業務から探す</a>
+<a href="#compare">業界から探す</a>
 <a href="#compare">AIサービス比較</a>
 <a href="#ranking">人気ランキング</a>
 </nav>
@@ -454,7 +441,7 @@ footer { background: var(--navy-deep); color: #fff; }
       <a href="#compare" data-preset="個別開発"><span class="category-mark">代</span><span>AIエージェント</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
       <a href="#compare" data-preset="経理・会計"><span class="category-mark">経</span><span>経理・会計AI</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
     </nav>
-    <a class="all-categories" href="#categories">すべてのテーマを見る →</a>
+    <a class="all-categories" href="#compare">比較条件から探す →</a>
   </aside>
   <div class="discovery-rail">
     <div class="carousel-shell" data-carousel aria-roledescription="カルーセル" aria-label="注目のAI活用事例">
@@ -511,13 +498,6 @@ footer { background: var(--navy-deep); color: #fff; }
         <a href="#stories" data-query="経理"># 経理・会計</a>
       </div>
     </div>
-  </div>
-</section>
-<section class="explore-strip" id="categories">
-  <div class="shell explore-grid">
-    <article class="explore-group"><header><h2>課題・目的から探す</h2><span>ISSUE</span></header><div class="explore-links"><a href="#compare" data-preset="営業">提案準備を短縮</a><a href="#compare" data-preset="会議・文書">議事録を活用</a><a href="#compare" data-preset="経理・会計">経理を効率化</a><a href="#guide">社内ルールを整備</a></div></article>
-    <article class="explore-group"><header><h2>部門から探す</h2><span>TEAM</span></header><div class="explore-links"><a href="#compare" data-preset="営業">営業</a><a href="#stories" data-query="採用">人事・採用</a><a href="#compare" data-preset="経理・会計">バックオフィス</a><a href="#stories" data-query="経営">経営・企画</a></div></article>
-    <article class="explore-group"><header><h2>業界から探す</h2><span>INDUSTRY</span></header><div class="explore-links"><a href="#stories" data-query="製造">製造</a><a href="#stories" data-query="税理士">士業</a><a href="#stories" data-query="営業">IT・サービス</a><a href="#stories">すべての記事</a></div></article>
   </div>
 </section>
 <section class="masthead shell">
@@ -1146,7 +1126,7 @@ footer { background: var(--navy-deep); color: #fff; }
 </div>
 <div>
 <strong>AIを探す</strong>
-<a href="#categories">業務から探す</a>
+<a href="#compare">業務から探す</a>
 <a href="#compare">AIサービス比較</a>
 <a href="#consult">AI活用診断</a>
 </div>
