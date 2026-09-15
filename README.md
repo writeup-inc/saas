@@ -42,7 +42,7 @@
 
 ## 追加のしかた
 
-1. `<商材名>-<用途>/index.html` または静的書き出し一式を配置し、`catalog/entry.template.json`を`catalog/entries/<id>.json`へコピーして、カード文言を入力する
+1. `<商材名>-<用途>/index.html` または静的書き出し一式を配置し、`catalog/entry.template.json`を`catalog/entries/<id>.json`へコピーして、カード文言を入力する。既存商材の子ページを独立カードにする場合は、重複しない`id`と実URLの相対パスを`route`へ記録する
 2. 商材ページを先にコミットし、そのコミット日時と変更内容を確認する
 3. ローカルで本体commitを作成し、まだpushしない
 4. `node tools/update-catalog-entry.mjs --id <id> --latest-change "具体的な変更を一文で"` を実行し、entryと生成済み一覧を別commitにする

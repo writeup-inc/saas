@@ -58,26 +58,26 @@ function latestMaterialCommit(id, reclassifiedCommit = null) {
   return material;
 }
 
-function firstCreationCommit(id) {
+function firstCreationCommit(id, route = id) {
   if (creationCommitCache.has(id)) return creationCommitCache.get(id);
-  const path = config.attribution.creationOrigins[id] ?? `${id}/index.html`;
+  const path = config.attribution.creationOrigins[id] ?? `${route}/index.html`;
   const output = git(["log", "--reverse", "--format=%H", "--", path]);
   const commit = output ? output.split("\n")[0] : null;
   creationCommitCache.set(id, commit);
   return commit;
 }
 
-function latestSiteCommit(id) {
-  if (latestCommitCache.has(id)) return latestCommitCache.get(id);
-  const commit = git(["log", "-1", "--format=%H", "--", `${id}/`]) || null;
-  latestCommitCache.set(id, commit);
+function latestSiteCommit(route) {
+  if (latestCommitCache.has(route)) return latestCommitCache.get(route);
+  const commit = git(["log", "-1", "--format=%H", "--", `${route}/`]) || null;
+  latestCommitCache.set(route, commit);
   return commit;
 }
 
-function revisionCount(id) {
-  if (revisionCache.has(id)) return revisionCache.get(id);
-  const count = Math.max(0, Number.parseInt(git(["rev-list", "--count", "HEAD", "--", `${id}/`]), 10) - 1);
-  revisionCache.set(id, count);
+function revisionCount(route) {
+  if (revisionCache.has(route)) return revisionCache.get(route);
+  const count = Math.max(0, Number.parseInt(git(["rev-list", "--count", "HEAD", "--", `${route}/`]), 10) - 1);
+  revisionCache.set(route, count);
   return count;
 }
 
@@ -113,6 +113,10 @@ function escapeHtml(value) {
 
 function titleHtml(lines) {
   return lines.map(escapeHtml).join("<br>");
+}
+
+function entryRoute(entry) {
+  return entry.route ?? entry.id;
 }
 
 function parseExistingCards(html) {
@@ -172,12 +176,28 @@ function loadEntries() {
     .filter(Boolean);
 }
 
+function catalogMarkedRoutes(directory = rootDir, prefix = "") {
+  const routes = [];
+  for (const item of readdirSync(directory, { withFileTypes: true })) {
+    if (!item.isDirectory() || item.name.startsWith(".")) continue;
+    const route = prefix ? `${prefix}/${item.name}` : item.name;
+    const itemPath = join(directory, item.name);
+    const pagePath = join(itemPath, "index.html");
+    if (existsSync(pagePath) && /<meta\s+name=["']catalog-card["']\s+content=["']true["']\s*\/?\s*>/i.test(readFileSync(pagePath, "utf8"))) {
+      routes.push(route);
+    }
+    routes.push(...catalogMarkedRoutes(itemPath, route));
+  }
+  return routes;
+}
+
 function renderCard(entry, index) {
   const id = entry.id;
+  const route = entryRoute(entry);
   const category = config.categories[entry.category];
-  const latest = latestMaterialCommit(id, entry.latestChangeFor);
-  const creationCommit = firstCreationCommit(id);
-  const latestCommit = latestSiteCommit(id);
+  const latest = latestMaterialCommit(route, entry.latestChangeFor);
+  const creationCommit = firstCreationCommit(id, route);
+  const latestCommit = latestSiteCommit(route);
   if (!category) fail(`[${id}] 未定義のcategoryです: ${entry.category}`);
   if (!latest) fail(`[${id}] 実質更新コミットを取得できません`);
   if (!creationCommit || !latestCommit) fail(`[${id}] Git履歴を取得できません`);
@@ -194,12 +214,12 @@ function renderCard(entry, index) {
   const takaCreated = override?.takaCreated ?? (!creationUnknown && creation.email === config.attribution.takaAuthorEmail);
   const published = isoMinute(commitInfo(creationCommit).authorDate);
   const updated = isoMinute(latest.authorDate);
-  const revision = revisionCount(id);
+  const revision = revisionCount(route);
   const number = String(index + 1).padStart(2, "0");
   const visibleName = entry.titleLines.join(" ");
 
   return `        <article class="service-entry" id="${escapeHtml(id)}" data-published="${published}" data-updated="${updated}" data-taka-created="${takaCreated}">
-        <a class="service" data-category="${escapeHtml(entry.category)}" href="./${escapeHtml(id)}/">
+        <a class="service" data-category="${escapeHtml(entry.category)}" href="./${escapeHtml(route)}/">
           <span class="service-index"><span class="category-icon" aria-hidden="true"><svg><use href="#${category.icon}"/></svg></span><span class="number">${number}</span></span>
           <div>
             <div class="service-topline"><span class="revision-count" data-revisions="${revision}" aria-label="公開後の改修${revision}回"><span>REV.</span><strong>${revision}</strong><span>回</span></span><span class="category-name">${escapeHtml(category.label)}</span><span class="service-type">${escapeHtml(entry.type)}</span><span class="badge-slot-placeholder"></span></div>
@@ -207,7 +227,7 @@ function renderCard(entry, index) {
           </div>
           <div class="description-wrap">
             <p class="change-note"><span>最新の変更点</span><b>${escapeHtml(entry.latestChange)}</b></p>
-            <span class="url">writeup-inc.github.io/saas/${escapeHtml(id)}/</span>
+            <span class="url">writeup-inc.github.io/saas/${escapeHtml(route)}/</span>
             <span class="author-tags"><span class="author-tag creator${creationUnknown ? " unknown" : ""}">初回作成：${escapeHtml(creator)}</span><span class="author-tag editor">最終更新：${escapeHtml(editor.label)}</span></span>
             <span class="dates"><span class="date-item"><b>初回公開</b><time datetime="${published}">${japaneseMinute(published)}</time></span><span class="date-item"><b>最終更新</b><time datetime="${updated}">${japaneseMinute(updated)}</time></span></span>
           </div>
@@ -220,22 +240,28 @@ function renderCard(entry, index) {
 let html = readFileSync(indexPath, "utf8");
 if (args.has("--bootstrap")) bootstrap(html);
 const entries = loadEntries();
+const markedRoutes = catalogMarkedRoutes();
 const excluded = new Set(Object.keys(config.excludedDirectories));
 const directories = readdirSync(rootDir, { withFileTypes: true })
   .filter((entry) => entry.isDirectory() && !entry.name.startsWith(".") && existsSync(join(rootDir, entry.name, "index.html")))
   .map((entry) => entry.name)
   .filter((id) => !excluded.has(id));
 const entryIds = new Set(entries.map((entry) => entry.id));
+const entryRoutes = new Set(entries.map(entryRoute));
 for (const id of directories) if (!entryIds.has(id)) fail(`[${id}] catalog/entries/${id}.json がありません`);
+for (const route of markedRoutes) if (!entryRoutes.has(route)) fail(`[${route}] catalog-card があるのに対応するcatalog entryがありません`);
 for (const entry of entries) {
+  const route = entryRoute(entry);
   if (entry.schemaVersion !== 1) fail(`[${entry.id}] schemaVersion: 1 が必要です`);
   if (entry.visibility !== "public") fail(`[${entry.id}] visibility は public だけを許可します。非商材は index-check.config.json の excludedDirectories へ記録してください`);
-  if (!directories.includes(entry.id)) fail(`[${entry.id}] 対応する商材ディレクトリがありません`);
+  if (!/^[a-z0-9][a-z0-9-]*(?:\/[a-z0-9][a-z0-9-]*)*$/.test(route)) fail(`[${entry.id}] route が不正です: ${route}`);
+  if (!existsSync(join(rootDir, route, "index.html"))) fail(`[${entry.id}] 対応する公開ページがありません: ${route}/index.html`);
+  if (entry.route && !markedRoutes.includes(route)) fail(`[${entry.id}] 子ページを独立カードにするなら ${route}/index.html にcatalog-cardメタタグが必要です`);
 }
 
-const ordered = entries.filter((entry) => directories.includes(entry.id)).sort((a, b) => {
-  const latestA = latestMaterialCommit(a.id, a.latestChangeFor)?.authorDate ?? "";
-  const latestB = latestMaterialCommit(b.id, b.latestChangeFor)?.authorDate ?? "";
+const ordered = entries.filter((entry) => existsSync(join(rootDir, entryRoute(entry), "index.html"))).sort((a, b) => {
+  const latestA = latestMaterialCommit(entryRoute(a), a.latestChangeFor)?.authorDate ?? "";
+  const latestB = latestMaterialCommit(entryRoute(b), b.latestChangeFor)?.authorDate ?? "";
   return Date.parse(latestB) - Date.parse(latestA);
 });
 const rendered = ordered.map(renderCard).join("\n\n");

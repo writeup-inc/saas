@@ -17,13 +17,20 @@ if (!id || !latestChange?.trim()) {
 }
 
 const entryPath = join(rootDir, "catalog", "entries", `${id}.json`);
-const pagePath = join(rootDir, id, "index.html");
-if (!existsSync(entryPath) || !existsSync(pagePath)) {
+if (!existsSync(entryPath)) {
   console.error(`[${id}] 商材ページまたはcatalog entryがありません`);
   process.exit(1);
 }
 
-const latestCommit = execFileSync("git", ["log", "-1", "--format=%H", "--", `${id}/`], {
+const entry = JSON.parse(readFileSync(entryPath, "utf8"));
+const route = entry.route ?? id;
+const pagePath = join(rootDir, route, "index.html");
+if (!existsSync(pagePath)) {
+  console.error(`[${id}] 商材ページまたはcatalog entryがありません`);
+  process.exit(1);
+}
+
+const latestCommit = execFileSync("git", ["log", "-1", "--format=%H", "--", `${route}/`], {
   cwd: rootDir,
   encoding: "utf8"
 }).trim();
@@ -32,7 +39,6 @@ if (!latestCommit) {
   process.exit(1);
 }
 
-const entry = JSON.parse(readFileSync(entryPath, "utf8"));
 entry.latestChange = latestChange.trim();
 entry.latestChangeFor = latestCommit;
 writeFileSync(entryPath, `${JSON.stringify(entry, null, 2)}\n`);

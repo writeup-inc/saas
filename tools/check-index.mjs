@@ -89,18 +89,19 @@ function commitPeople(commit) {
 }
 
 function firstCreationCommit(cardId) {
-  const path = config.attribution.creationOrigins[cardId] ?? `${cardId}/index.html`;
+  const route = entryRoute(catalogEntries.get(cardId));
+  const path = config.attribution.creationOrigins[cardId] ?? `${route}/index.html`;
   const output = git(["log", "--reverse", "--format=%H", "--", path]);
   return output ? output.split("\n")[0] : null;
 }
 
-function latestSiteCommit(cardId) {
-  const output = git(["log", "-1", "--format=%H", "--", `${cardId}/`]);
+function latestSiteCommit(route) {
+  const output = git(["log", "-1", "--format=%H", "--", `${route}/`]);
   return output || null;
 }
 
-function pageRevisionCount(cardId) {
-  const output = git(["rev-list", "--count", "HEAD", "--", `${cardId}/`]);
+function pageRevisionCount(route) {
+  const output = git(["rev-list", "--count", "HEAD", "--", `${route}/`]);
   const commitCount = Number.parseInt(output, 10);
   return Number.isFinite(commitCount) ? Math.max(0, commitCount - 1) : null;
 }
@@ -116,10 +117,14 @@ function commitInfo(commit) {
   return { commit, authorDate, body: bodyLines.join("\n") };
 }
 
-function latestMaterialCommit(path) {
-  const commits = commitsAfterBaseline(path).map(commitInfo).reverse();
+function entryRoute(entry) {
+  return entry?.route ?? entry?.id;
+}
+
+function latestMaterialCommit(route, entry = null) {
+  const commits = commitsAfterBaseline(route).map(commitInfo).reverse();
   let material = commits.find(({ body }) => !/^Catalog-Update:\s*no\s*$/im.test(body)) ?? null;
-  const reclassifiedSha = catalogEntries.get(path)?.latestChangeFor;
+  const reclassifiedSha = entry?.latestChangeFor;
   const reclassified = reclassifiedSha ? commitInfo(reclassifiedSha) : null;
   if (reclassified && /^Catalog-Update:\s*no\s*$/im.test(reclassified.body) && (!material || Date.parse(reclassified.authorDate) > Date.parse(material.authorDate))) {
     material = reclassified;
@@ -157,6 +162,8 @@ const copyAnchors = [];
 
 cards.forEach((card, index) => {
   const prefix = `[${card.id}]`;
+  const entry = catalogEntries.get(card.id);
+  const route = entryRoute(entry);
   const publishedTime = Date.parse(card.published);
   const updatedTime = Date.parse(card.updated);
   const expectedNumber = String(index + 1).padStart(2, "0");
@@ -193,15 +200,16 @@ cards.forEach((card, index) => {
     error(`${prefix} serviceリンクが見つかりません`);
   } else {
     hrefs.push(href);
-    if (href !== `./${card.id}/`) error(`${prefix} href がIDと一致しません: ${href}`);
+    if (!entry) error(`${prefix} catalog entryがありません`);
+    else if (href !== `./${route}/`) error(`${prefix} href がrouteと一致しません: ${href}`);
   }
   if (copyAnchor) copyAnchors.push(copyAnchor);
   if (copyAnchor !== card.id) error(`${prefix} data-copy-anchor がIDと一致しません: ${copyAnchor ?? "欠落"}`);
   const canonical = new URL(config.canonicalBaseUrl);
-  const expectedUrl = `${canonical.host}${canonical.pathname}${card.id}/`;
+  const expectedUrl = `${canonical.host}${canonical.pathname}${route}/`;
   if (urlText !== expectedUrl) error(`${prefix} 画面上のURLがIDと一致しません: ${urlText ?? "欠落"}`);
-  if (!existsSync(join(rootDir, card.id, "index.html"))) {
-    error(`${prefix} リンク先の ${card.id}/index.html がありません`);
+  if (!route || !existsSync(join(rootDir, route, "index.html"))) {
+    error(`${prefix} リンク先の ${route ?? card.id}/index.html がありません`);
   }
   if (!publishedDisplay) {
     error(`${prefix} 初回公開のtime要素がありません`);
@@ -220,11 +228,11 @@ cards.forEach((card, index) => {
   } else {
     const displayedRevisions = revisionMatch.slice(1).map(Number);
     if (new Set(displayedRevisions).size !== 1) error(`${prefix} 改修回数のdata属性・表示・aria-labelが一致しません`);
-    const expectedRevisions = pageRevisionCount(card.id);
+    const expectedRevisions = pageRevisionCount(route);
     if (displayedRevisions[0] !== expectedRevisions) error(`${prefix} 改修回数がGit履歴と一致しません。期待値: ${expectedRevisions}`);
   }
   const creationCommit = firstCreationCommit(card.id);
-  const latestCommit = latestSiteCommit(card.id);
+  const latestCommit = latestSiteCommit(route);
   if (!creationCommit) {
     error(`${prefix} 初回作成コミットを取得できません`);
   } else {
@@ -265,7 +273,7 @@ const serviceDirectories = readdirSync(rootDir, { withFileTypes: true })
   .filter((name) => !excluded.has(name));
 
 for (const directory of serviceDirectories) {
-  if (cards.some(({ id }) => id === directory)) continue;
+  if (cards.some(({ id }) => entryRoute(catalogEntries.get(id)) === directory)) continue;
   if (historyEnabled) {
     const latest = latestMaterialCommit(directory);
     if (latest && /^Index-Update:\s*pending\s*$/im.test(latest.body)) {
@@ -277,7 +285,8 @@ for (const directory of serviceDirectories) {
 }
 
 for (const card of cards) {
-  if (!serviceDirectories.includes(card.id)) error(`[${card.id}] 一覧対象ではないディレクトリのカードがあります`);
+  const route = entryRoute(catalogEntries.get(card.id));
+  if (!route || !existsSync(join(rootDir, route, "index.html"))) error(`[${card.id}] 一覧対象ではないページのカードがあります`);
 }
 
 if (!html.includes('data-hero-activity') || !html.includes('data-hero-activity-list')) {
@@ -300,7 +309,8 @@ if (historyEnabled) {
   try {
     git(["merge-base", "--is-ancestor", config.historyBaseline, "HEAD"]);
     for (const card of cards) {
-      const latest = latestMaterialCommit(card.id);
+      const entry = catalogEntries.get(card.id);
+      const latest = latestMaterialCommit(entryRoute(entry), entry);
       if (!latest) continue;
       const expected = toJapaneseIsoMinute(latest.authorDate);
       if (card.updated === expected) continue;

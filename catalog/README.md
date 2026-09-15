@@ -20,3 +20,10 @@ For a new public service, copy `catalog/entry.template.json` to
 `catalog/entries/<service-id>.json`, fill in the editorial fields, then run the
 same update command. Do not place templates in `entries/`: every JSON file in
 that directory is validated as a public card.
+
+For a public child page, make `id` a unique card anchor and add `route` with its
+repository-relative URL path (for example, `jmatch-engine/consult-comparison`).
+The generator uses that route for the card URL, Git history, timestamps, and
+revision count. Add `<meta name="catalog-card" content="true">` to that child
+page as well; CI rejects a marked page without an entry and a child-page entry
+without the marker. Top-level services can omit `route`.

@@ -12,7 +12,7 @@
 
 サービスカードは `catalog/entries/<id>.json` を正本に、`node tools/sync-catalog.mjs --write` で生成する。CodexとClaude Codeのどちらも、カードHTMLを直接編集してはならない。
 
-各担当者は自分の商材ページと対応する `catalog/entries/<id>.json` を更新できる。新規カードは`catalog/entry.template.json`をentryへコピーして作る。同期コマンドが変えるルート `index.html` は生成物であり、競合時は最新mainを取り込んでから再生成する。
+各担当者は自分の商材ページと対応する `catalog/entries/<id>.json` を更新できる。新規カードは`catalog/entry.template.json`をentryへコピーして作る。子ページを独立カードにする場合は、ページに`<meta name="catalog-card" content="true">`を置き、固有の`id`と対象URLの相対パスを`route`へ記録する。片方が欠けると同期検査は失敗する。同期コマンドが変えるルート `index.html` は生成物であり、競合時は最新mainを取り込んでから再生成する。
 
 - Claude Code が書いてよいのは、いま担当している商材ディレクトリと対応する `catalog/entries/<slug>.json`。
 - 商材ディレクトリはClaude Code専用ではない。commit・push・引き継ぎ後は、Codexが同じ商材を続けて編集してよい。逆方向も同じ

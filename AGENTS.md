@@ -7,7 +7,7 @@
 - 各商材ディレクトリは Claude Code と Codex の共同編集領域。作成者に関係なく、最新のファイルを正としてどちらも編集してよい
 - ただし、同じ商材ディレクトリを同時に編集しない。ユーザーから担当を受けてから commit・push・引き継ぎまでを作業中とし、担当交代は前の担当が終えてから行う
 - Gitは別環境の未push変更を検出できない。自分が現在の担当か不明な場合は、対象ファイルを変更する前にユーザーへ確認する
-- ルート `index.html` のサービスカードは `catalog/entries/<id>.json` から生成する。CodexもClaude CodeもカードHTMLを手編集せず、`node tools/update-catalog-entry.mjs` と `node tools/sync-catalog.mjs --write` を使う
+- ルート `index.html` のサービスカードは `catalog/entries/<id>.json` から生成する。CodexもClaude CodeもカードHTMLを手編集せず、`node tools/update-catalog-entry.mjs` と `node tools/sync-catalog.mjs --write` を使う。子ページを独立サイトとして載せる場合は、ページに `<meta name="catalog-card" content="true">` を置き、固有IDと`route`を持つentryを必ず追加する。片方が欠けると同期検査は失敗する
 - 生成物は直接編集しない。商材に生成元やビルド手順がある場合は、その生成元を更新して再生成する
 
 ## 作業開始時
