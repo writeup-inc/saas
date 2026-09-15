@@ -84,35 +84,30 @@ body{font-family:var(--mincho);color:var(--ink);background:var(--bg);-webkit-fon
 .wrap{max-width:940px;margin:0 auto;padding:0 28px}
 
 /* 表紙 */
-.masthead{border-bottom:1px solid var(--rule);padding:16px 0}
-.masthead .wrap{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
-.mh-l{font-family:var(--gothic);font-size:12px;font-weight:800;letter-spacing:.14em}
-.mh-r{font-family:var(--gothic);font-size:11px;color:var(--ink3);letter-spacing:.06em}
-
-.hd{padding:52px 0 40px}
+.hd{padding:56px 0 44px}
 .doclabel{font-family:var(--gothic);font-size:11px;font-weight:800;letter-spacing:.22em;color:var(--ink3)}
-h1{margin:18px 0 0;font-family:var(--mincho);font-weight:700;line-height:1.45;letter-spacing:.01em;font-size:clamp(1.55rem,4.3vw,2.5rem)}
+h1{margin:16px 0 0;font-family:var(--gothic);font-weight:800;line-height:1.5;letter-spacing:-.01em;font-size:clamp(1.45rem,3.9vw,2.25rem)}
 .subtitle{margin-top:14px;font-family:var(--gothic);font-size:clamp(13px,2.2vw,15px);font-weight:700;color:var(--ink2);line-height:1.8}
-.meta{margin-top:30px;display:flex;flex-wrap:wrap;border-top:1px solid var(--rule);border-bottom:1px solid var(--line)}
-.meta div{font-family:var(--gothic);font-size:12px;color:var(--ink2);padding:12px 20px 12px 0;margin-right:20px;border-right:1px solid var(--line);line-height:1.6}
-.meta div:last-child{border-right:0;margin-right:0}
+.meta{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px 36px}
+.meta div{font-family:var(--gothic);font-size:12px;color:var(--ink2);line-height:1.6}
 .meta b{display:block;font-size:10px;letter-spacing:.14em;color:var(--ink3);font-weight:800;margin-bottom:4px}
 
 /* 要旨 */
-.summary{margin-top:34px;border:1px solid var(--rule);padding:28px 26px}
-.summary h2{font-family:var(--gothic);font-size:14px;font-weight:800;letter-spacing:.14em;margin:0 0 16px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.summary{margin-top:32px;background:var(--bg2);padding:28px 26px}
+.summary h2{font-family:var(--gothic);font-size:14px;font-weight:800;letter-spacing:.1em;margin:0 0 14px}
 .summary ol{list-style:none;counter-reset:s}
 .summary li{counter-increment:s;font-size:15.5px;line-height:1.95;color:var(--ink);padding-left:2.2em;text-indent:-2.2em;margin-top:10px}
 .summary li:first-child{margin-top:0}
 .summary li::before{content:counter(s,decimal-leading-zero);font-family:var(--gothic);font-size:12px;font-weight:800;color:var(--accent);margin-right:1em}
 
 /* 目次 */
-.toc{margin-top:22px;display:flex;flex-wrap:wrap;gap:0 28px;font-family:var(--gothic);font-size:12.5px;color:var(--ink2);border-bottom:1px solid var(--line);padding-bottom:18px}
-.toc a{color:var(--ink2);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px}
-.toc a:hover{color:var(--accent);border-color:var(--accent)}
+.toc{margin-top:22px;display:flex;flex-wrap:wrap;gap:6px 26px;font-family:var(--gothic);font-size:12.5px;font-weight:700;color:var(--ink2)}
+.toc a{color:var(--ink2);text-decoration:none}
+.toc a:hover{color:var(--accent)}
 .toc b{font-weight:800;color:var(--ink3);margin-right:6px}
 
 section{padding:56px 0;border-top:1px solid var(--line)}
+#s01{border-top:0}
 .sechead{display:flex;align-items:baseline;gap:18px;border-bottom:1.5px solid var(--rule);padding-bottom:14px}
 .secno{font-family:var(--gothic);font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--accent);flex:none;padding-top:4px}
 .sectitle .label{font-family:var(--gothic);font-size:11px;font-weight:800;letter-spacing:.2em;color:var(--ink3)}
@@ -125,7 +120,7 @@ h3{font-family:var(--gothic);font-weight:800;font-size:15px;line-height:1.6;bord
 .kpi{padding:20px 18px;border-right:1px solid var(--line)}
 .kpi:last-child{border-right:0}
 .kpi dt{font-family:var(--gothic);font-size:11.5px;color:var(--ink3);font-weight:800;letter-spacing:.08em}
-.kpi dd{margin-top:10px;font-family:var(--mincho);font-size:clamp(26px,4.2vw,36px);font-weight:700;line-height:1.05;font-feature-settings:"tnum"}
+.kpi dd{margin-top:10px;font-family:var(--gothic);font-size:clamp(25px,4vw,34px);font-weight:800;line-height:1.1;letter-spacing:-.02em;font-feature-settings:"tnum"}
 .kpi dd small{font-family:var(--gothic);font-size:13px;font-weight:800;color:var(--ink2);margin-left:3px}
 .kpi .sub{margin-top:9px;font-family:var(--gothic);font-size:11.5px;color:var(--ink3);line-height:1.7}
 
@@ -148,7 +143,7 @@ thead th{font-size:11px;color:var(--ink3);font-weight:800;letter-spacing:.08em;w
 tbody tr:last-child td{border-bottom:0}
 .num{text-align:right;font-feature-settings:"tnum";font-size:15px;white-space:nowrap}
 .num--g{font-weight:800;color:var(--accent)}
-.num--big{font-family:var(--mincho);font-size:19px;font-weight:700}
+.num--big{font-size:17px;font-weight:800}
 .t-name{min-width:250px}
 .t-code{display:inline-block;font-family:var(--gothic);font-size:11px;font-weight:800;color:#fff;background:var(--accent);width:20px;height:20px;line-height:20px;text-align:center;margin-right:10px;vertical-align:1px}
 .t-n{display:inline;font-size:14px;font-weight:700}
@@ -175,7 +170,7 @@ tfoot td{background:var(--bg2);font-weight:800;border-top:1px solid var(--rule)}
 /* 結び */
 .close{border:1.5px solid var(--rule);padding:40px 32px;background:var(--bg)}
 .close .doclabel{color:var(--accent)}
-.close h2{margin:12px 0 0;font-family:var(--mincho);font-weight:700;font-size:clamp(1.4rem,3.6vw,2rem);line-height:1.5}
+.close h2{margin:12px 0 0;font-family:var(--gothic);font-weight:800;font-size:clamp(1.3rem,3.2vw,1.8rem);line-height:1.55}
 .close p{margin-top:18px;font-size:15.5px;color:var(--ink2);line-height:2.05;max-width:40em}
 .close .big{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);font-family:var(--gothic);font-size:clamp(15px,2.6vw,18px);font-weight:800;color:var(--ink);line-height:1.85}
 
@@ -209,16 +204,9 @@ footer a{color:var(--ink3)}
 </head>
 <body>
 
-<div class="masthead">
-  <div class="wrap">
-    <p class="mh-l">株式会社ライトアップ　ソーシャルマスター</p>
-    <p class="mh-r">提案書 追加資料　2026年9月15日</p>
-  </div>
-</div>
-
 <header class="hd">
   <div class="wrap">
-    <p class="doclabel">自社運用レポート</p>
+    <p class="doclabel">株式会社ライトアップ　ソーシャルマスター　自社運用レポート</p>
     <h1>X 8アカウントのフォロワー推移と、<br>1年間の増加試算</h1>
     <p class="subtitle">調査期間：2026年9月1日〜9月15日（15日間）／ 対象：ソーシャルマスターで運用するX 8アカウント</p>
 
@@ -227,6 +215,7 @@ footer a{color:var(--ink3)}
       <div><b>期間</b>2026/09/01 − 09/15（15日間）</div>
       <div><b>指標</b>フォロワー数（日次実測）</div>
       <div><b>区分</b>実測＋試算</div>
+      <div><b>作成</b>2026年9月15日</div>
     </div>
 
     <div class="summary">
@@ -268,17 +257,17 @@ footer a{color:var(--ink3)}
 
     <div class="figure">
       <svg class="chart" viewBox="0 0 960 380" role="img" aria-label="8アカウント合計フォロワー数の推移。9月1日661から9月15日827まで一貫して増加。">
-        <line x1="56" x2="940" y1="336.0" y2="336.0" class="grid"/><text x="46" y="340.0" class="ax ax--y">0</text><line x1="56" x2="940" y1="232.0" y2="232.0" class="grid"/><text x="46" y="236.0" class="ax ax--y">300</text><line x1="56" x2="940" y1="128.0" y2="128.0" class="grid"/><text x="46" y="132.0" class="ax ax--y">600</text><line x1="56" x2="940" y1="24.0" y2="24.0" class="grid"/><text x="46" y="28.0" class="ax ax--y">900</text>
-        <polygon class="area" points="56,336.0 56.0,106.9 119.1,102.3 182.3,98.5 245.4,96.8 308.6,91.6 371.7,87.4 434.9,86.1 498.0,79.5 561.1,75.0 624.3,70.8 687.4,65.6 750.6,64.6 813.7,59.7 876.9,55.2 940.0,49.3 940.0,336.0"/>
-        <polyline class="line" points="56.0,106.9 119.1,102.3 182.3,98.5 245.4,96.8 308.6,91.6 371.7,87.4 434.9,86.1 498.0,79.5 561.1,75.0 624.3,70.8 687.4,65.6 750.6,64.6 813.7,59.7 876.9,55.2 940.0,49.3"/>
-        <circle class="dot" cx="56.0" cy="106.9" r="4"/>
-        <circle class="dot" cx="940.0" cy="49.3" r="5"/>
-        <text x="64.0" y="94.9" class="ax">661</text>
-        <text x="932.0" y="35.3" class="ax" style="text-anchor:end;font-size:15px;font-weight:800;fill:var(--accent)">827</text>
+        <line x1="56" x2="940" y1="336.0" y2="336.0" class="grid"/><text x="46" y="340.0" class="ax ax--y">500</text><line x1="56" x2="940" y1="258.0" y2="258.0" class="grid"/><text x="46" y="262.0" class="ax ax--y">600</text><line x1="56" x2="940" y1="180.0" y2="180.0" class="grid"/><text x="46" y="184.0" class="ax ax--y">700</text><line x1="56" x2="940" y1="102.0" y2="102.0" class="grid"/><text x="46" y="106.0" class="ax ax--y">800</text><line x1="56" x2="940" y1="24.0" y2="24.0" class="grid"/><text x="46" y="28.0" class="ax ax--y">900</text>
+        <polygon class="area" points="56,336.0 56.0,210.4 119.1,200.3 182.3,191.7 245.4,187.8 308.6,176.1 371.7,166.7 434.9,163.6 498.0,148.8 561.1,138.7 624.3,129.3 687.4,117.6 750.6,115.3 813.7,104.3 876.9,94.2 940.0,80.9 940.0,336.0"/>
+        <polyline class="line" points="56.0,210.4 119.1,200.3 182.3,191.7 245.4,187.8 308.6,176.1 371.7,166.7 434.9,163.6 498.0,148.8 561.1,138.7 624.3,129.3 687.4,117.6 750.6,115.3 813.7,104.3 876.9,94.2 940.0,80.9"/>
+        <circle class="dot" cx="56.0" cy="210.4" r="4"/>
+        <circle class="dot" cx="940.0" cy="80.9" r="5"/>
+        <text x="64.0" y="198.4" class="ax">661</text>
+        <text x="932.0" y="66.9" class="ax" style="text-anchor:end;font-size:15px;font-weight:800;fill:var(--accent)">827</text>
         <line x1="56" x2="940" y1="336.0" y2="336.0" class="grid-l"/>
         <text x="56.0" y="360.0" class="ax ax--c">09/01</text><text x="245.4" y="360.0" class="ax ax--c">09/04</text><text x="434.9" y="360.0" class="ax ax--c">09/07</text><text x="624.3" y="360.0" class="ax ax--c">09/10</text><text x="813.7" y="360.0" class="ax ax--c">09/13</text><text x="940.0" y="360.0" class="ax ax--c">09/15</text>
       </svg>
-      <p class="note cap">図1　8アカウント合計フォロワー数の推移（縦軸は0起点）。2026/09/01〜09/15の各日の実測値を合算。</p>
+      <p class="note cap">図1　8アカウント合計フォロワー数の推移。2026/09/01〜09/15の各日の実測値を合算。縦軸は500人を下限とした目盛りで、0起点ではありません。</p>
     </div>
 
     <div class="tablebox">
