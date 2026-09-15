@@ -18,14 +18,18 @@
   <style>
     /* ── lp-base：改行制御 ───────────────────────────── */
     h1, h2, h3, h4, h5,
-    .lead, .catch, [data-keep-phrase] {
+    .lead, .catch, [data-keep-phrase],
+    .meta, .section-note, .rule-note, .lane-note, .legend,
+    ul.pages p, .staple p, footer.page p {
       word-break: auto-phrase;
       line-break: strict;
       overflow-wrap: anywhere;
     }
     @supports not (word-break: auto-phrase) {
       h1, h2, h3, h4, h5,
-      .lead, .catch, [data-keep-phrase] { word-break: normal; }
+      .lead, .catch, [data-keep-phrase],
+      .meta, .section-note, .rule-note, .lane-note, .legend,
+      ul.pages p, .staple p, footer.page p { word-break: normal; }
     }
     .nobr { white-space: nowrap; }
 
@@ -43,7 +47,7 @@
     /* ── lp-base：横はみ出しの予防 ───────────────────── */
     *, *::before, *::after { box-sizing: border-box; }
     img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
-    main > *, section > *, .grid > * { min-width: 0; }
+    main > *, section > *, .stack > * { min-width: 0; }
     pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
 
     /* ── ページ固有 ──────────────────────────────────── */
@@ -51,11 +55,15 @@
       --ink: #14251f;
       --ink-soft: #4c5d57;
       --muted: #6d7a75;
-      --paper: #f4f2ec;
-      --surface: #fbfaf6;
+      --paper: #ece8dd;
+      --surface: #fffdf8;
+      --surface-2: #f7f4ec;
       --line: rgba(20, 37, 31, .15);
+      --line-soft: rgba(20, 37, 31, .09);
       --green: #174b3c;
       --orange: #a86648;
+      --blue: #2f5570;
+      --accent: var(--green);
       --shadow: 0 18px 50px rgba(20, 37, 31, .08);
     }
 
@@ -78,7 +86,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+    .wrap { max-width: 940px; margin: 0 auto; padding: 0 20px; }
 
     /* ── ヒーロー ────────────────────────────────────── */
     header.page {
@@ -121,6 +129,79 @@
       line-height: 1.7;
     }
 
+
+    /* ── 追従ナビ：縦に長いので、3系統＋定番へいつでも飛べるようにする ── */
+    .jump {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: color-mix(in srgb, var(--paper) 88%, transparent);
+      backdrop-filter: saturate(1.4) blur(10px);
+      -webkit-backdrop-filter: saturate(1.4) blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .jump .wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-block: 10px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .jump .wrap::-webkit-scrollbar { display: none; }
+    @media (max-width: 560px) {
+      .jump-label { display: none; }
+      .jump .wrap { gap: 7px; }
+      .jump a .lg { display: none; }
+      /* 右端をぼかして、横にまだチップがあることを示す */
+      .jump .wrap {
+        -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 26px), transparent 100%);
+        mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 26px), transparent 100%);
+      }
+    }
+    .jump-label {
+      flex: none;
+      color: var(--muted);
+      font-size: var(--fs-min);
+      letter-spacing: .08em;
+      padding-right: 2px;
+    }
+    .jump a {
+      flex: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 44px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--ink-soft);
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s, background .15s;
+    }
+    .jump a::before {
+      content: "";
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .jump a:hover { color: var(--ink); border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); }
+    .jump a.is-here {
+      color: var(--accent);
+      border-color: color-mix(in srgb, var(--accent) 60%, var(--line));
+      background: color-mix(in srgb, var(--accent) 9%, var(--surface));
+    }
+    .jump a[href="#jmatch"]  { --accent: var(--orange); }
+    .jump a[href="#worklog"] { --accent: var(--green); }
+    .jump a[href="#packs"]   { --accent: var(--blue); }
+    .jump a[href="#staples"] { --accent: var(--muted); }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+    .staples { scroll-margin-top: 76px; }
+
     main { padding: 36px 0 72px; }
 
     h2.section { margin: 0 0 6px; letter-spacing: .01em; }
@@ -138,21 +219,30 @@
     }
     .rule-note b { color: var(--ink); }
 
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      align-items: start;
-    }
-    .col { display: grid; gap: 22px; }
+    .stack { display: grid; gap: 28px; }
 
     .card {
+      position: relative;
       background: var(--surface);
       border: 1px solid var(--line);
       border-radius: 14px;
       box-shadow: var(--shadow);
-      padding: 24px 22px;
+      padding: 26px 24px 24px;
+      overflow: hidden;
+      scroll-margin-top: 76px;
     }
+    /* 系統色：スクロール中もどのサービスを見ているか分かるようにする */
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: var(--accent);
+      opacity: .85;
+    }
+    .card--jmatch  { --accent: var(--orange); }
+    .card--worklog { --accent: var(--green); }
+    .card--packs   { --accent: var(--blue); }
     .card > h3 {
       margin: 0 0 4px;
       font-size: 1.22rem;
@@ -169,11 +259,12 @@
       font-size: var(--fs-min);
       line-height: 1.7;
       border: 1px solid var(--line);
-      background: rgba(23, 75, 60, .07);
-      color: var(--green);
+      background: color-mix(in srgb, var(--accent) 9%, transparent);
+      border-color: color-mix(in srgb, var(--accent) 28%, var(--line));
+      color: var(--accent);
       margin: 0 0 12px;
     }
-    .tag--new { background: rgba(168, 102, 72, .1); color: var(--orange); }
+    .tag--new { font-weight: 700; }
 
     /* ── レーン（入口／OEM／直販／営業資料） ───────────── */
     .lane { margin: 0 0 20px; }
@@ -186,7 +277,7 @@
       font-size: 13px;
       font-weight: 700;
       letter-spacing: .06em;
-      color: var(--green);
+      color: var(--accent);
     }
     .lane-n {
       display: grid;
@@ -194,34 +285,39 @@
       width: 22px; height: 22px;
       border-radius: 6px;
       font-size: var(--fs-min);
-      background: rgba(23, 75, 60, .1);
-      border: 1px solid var(--line);
-      color: var(--green);
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line));
+      color: var(--accent);
+      font-weight: 700;
     }
-    .lane-n--top { background: rgba(168, 102, 72, .12); color: var(--orange); }
+    .lane-n--top { background: var(--accent); border-color: var(--accent); color: var(--surface); }
     .lane-h .thin { font-weight: 400; color: var(--muted); letter-spacing: 0; }
     .lane-note { margin: 0 0 10px; color: var(--muted); font-size: var(--fs-min); line-height: 1.7; }
 
     .lane--inner {
-      padding: 14px 14px 14px 16px;
-      border-left: 2px solid var(--line);
-      background: rgba(20, 37, 31, .022);
+      padding: 16px 16px 16px 18px;
+      border: 1px solid var(--line-soft);
+      border-left: 2px solid color-mix(in srgb, var(--accent) 35%, var(--line));
+      background: var(--surface-2);
       border-radius: 0 10px 10px 0;
     }
-    .lane--top .lane--inner { border-left-color: var(--orange); }
-    .lane--sales .lane--inner { border-left-style: dashed; }
+    .lane--top .lane--inner { border-left-color: var(--accent); }
+    .lane--sales .lane--inner {
+      border-left-style: dashed;
+      background: transparent;
+    }
 
     ul.pages { list-style: none; margin: 0; padding: 0; }
-    ul.pages > li { padding: 13px 0; border-top: 1px solid var(--line); }
+    ul.pages > li { padding: 13px 0; border-top: 1px solid var(--line-soft); }
     ul.pages > li:first-child { border-top: 0; padding-top: 0; }
     ul.pages > li:last-child { padding-bottom: 0; }
     ul.pages a {
       color: var(--ink);
       text-decoration: none;
-      border-bottom: 1px solid rgba(23, 75, 60, .35);
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
       font-weight: 600;
     }
-    ul.pages a:hover { color: var(--green); border-bottom-color: var(--green); }
+    ul.pages a:hover { color: var(--accent); border-bottom-color: var(--accent); }
     ul.pages p { margin: 6px 0 0; color: var(--ink-soft); font-size: 14px; line-height: 1.75; }
     .flag {
       display: inline-block;
@@ -229,10 +325,18 @@
       padding: 1px 7px;
       border-radius: 4px;
       font-size: var(--fs-min);
-      background: rgba(20, 37, 31, .07);
+      background: rgba(20, 37, 31, .06);
       color: var(--ink-soft);
-      border: 1px solid var(--line);
+      border: 1px solid var(--line-soft);
       white-space: nowrap;
+      vertical-align: 2px;
+    }
+    /* 今月増えたものだけ、ひと目で拾えるようにする */
+    .flag--new {
+      background: color-mix(in srgb, var(--accent) 14%, transparent);
+      border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+      color: var(--accent);
+      font-weight: 700;
     }
 
     .staples { margin-top: 56px; }
@@ -288,7 +392,6 @@
     footer.page a { color: var(--ink-soft); }
 
     @media (max-width: 860px) {
-      .grid { grid-template-columns: 1fr; }
       .staple-grid { grid-template-columns: 1fr; }
       header.page { padding-top: 40px; }
       .hero-art { top: -34px; right: -112px; width: 320px; opacity: .32; }
@@ -299,30 +402,32 @@
         --ink: #eef1ee;
         --ink-soft: #c3cdc8;
         --muted: #98a49f;
-        --paper: #141a18;
-        --surface: #1b2220;
+        --paper: #101614;
+        --surface: #1c2422;
+        --surface-2: #232c29;
         --line: rgba(238, 241, 238, .16);
+        --line-soft: rgba(238, 241, 238, .09);
         --green: #8fd0b6;
         --orange: #e3a583;
-        --shadow: 0 18px 50px rgba(0, 0, 0, .35);
+        --blue: #9dc0d8;
+        --shadow: 0 18px 50px rgba(0, 0, 0, .45);
       }
       body {
         background:
           radial-gradient(circle at 84% 4%, rgba(227, 165, 131, .08), transparent 24rem),
-          linear-gradient(rgba(238, 241, 238, .03) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(238, 241, 238, .03) 1px, transparent 1px),
+          linear-gradient(rgba(238, 241, 238, .022) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(238, 241, 238, .022) 1px, transparent 1px),
           var(--paper);
         background-size: auto, 32px 32px, 32px 32px, auto;
       }
-      .tag { background: rgba(143, 208, 182, .12); }
-      .tag--new { background: rgba(227, 165, 131, .14); }
-      .lane-n { background: rgba(143, 208, 182, .14); }
-      .lane-n--top { background: rgba(227, 165, 131, .16); }
-      .lane--inner { background: rgba(238, 241, 238, .03); }
       .rule-note { background: rgba(143, 208, 182, .07); }
+      .flag:not(.flag--new) { background: rgba(238, 241, 238, .06); }
       .rank { background: rgba(238, 241, 238, .08); }
       .rank--s { background: rgba(143, 208, 182, .16); }
       .rank--a { background: rgba(227, 165, 131, .16); }
+      /* 暗い地では、塗りつぶしバッジの文字は地色ではなく紙色を使う */
+      .lane-n--top { color: #101614; }
+      .jump { background: color-mix(in srgb, var(--paper) 82%, transparent); }
     }
   </style>
 </head>
@@ -390,6 +495,16 @@
     </div>
   </header>
 
+  <nav class="jump" aria-label="ページ内の移動">
+    <div class="wrap">
+      <span class="jump-label">JUMP</span>
+      <a href="#jmatch"><span class="t">Jマッチ<span class="lg">・エンジン</span></span></a>
+      <a href="#worklog"><span class="t">ワークログ</span></a>
+      <a href="#packs"><span class="t">スタートパック</span></a>
+      <a href="#staples"><span class="t">定番<span class="lg">10本</span></span></a>
+    </div>
+  </nav>
+
   <main>
     <div class="wrap">
       <h2 class="section">今月の追加</h2>
@@ -399,228 +514,222 @@
         3枚とも並びは同じです。<b>入口</b>（どちらを出すか決めるページ）→ <b>① OEM</b>（他社ブランドで売ってもらう）→ <b>② 直販</b>（当社が直接売る）→ <b>③ 営業資料</b>（社内限定の台本・サンプル）。商談では上から順に開けば、相手の立場に合ったページへ進めます。
       </p>
 
-      <div class="grid">
-        <!-- 左カラム -->
-        <div class="col">
-          <section class="card">
-            <p class="tag tag--new">新規注力・優先度A</p>
-            <h3>Jマッチ・エンジン</h3>
-            <p class="sub">補助金・助成金／融資／税制優遇の「使える制度」が、毎週お客様に届きます。</p>
-            <p class="who">企画・窓口：西村　／　OEMと直販の2本立て</p>
+      <div class="stack">
+      <section class="card card--jmatch" id="jmatch">
+        <p class="tag tag--new">新規注力・優先度A</p>
+        <h3>Jマッチ・エンジン</h3>
+        <p class="sub">補助金・助成金／融資／税制優遇の「使える制度」が、毎週お客様に届きます。</p>
+        <p class="who">企画・窓口：西村　／　OEMと直販の2本立て</p>
 
-            <div class="lane lane--top">
-              <p class="lane-h"><span class="lane-n lane-n--top">0</span>入口<span class="thin">／どちらを出すか決める</span></p>
-              <div class="lane--inner">
-                <ul class="pages">
-                  <li>
-                    <a href="../jmatch-engine/">ご案内の入口（OEM／直販の分岐）</a>
-                    <p>相手の立場を選ぶと、OEMか直販のページへ分かれます。迷ったらまずここを開いてください。</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="lane">
-              <p class="lane-h"><span class="lane-n">1</span>OEM<span class="thin">／他社ブランドで売ってもらう</span></p>
-              <div class="lane--inner">
-                <ul class="pages">
-                  <li>
-                    <a href="../jmatch-engine/oem/">OEM提供のご案内</a><span class="flag">本命</span>
-                    <p>顧客リストを持つ企業向けのホワイトラベル提供。ロゴ・色・名称を決めるだけで自社サービスになり、開発・サーバー・問い合わせ対応は当社が持ちます。初期50万円（9月末契約まで20万円）＋月額85,000円、オプション枠なしの全機能込み。導入まで最短1週間。</p>
-                  </li>
-                  <li>
-                    <a href="../jmatch-engine/oem-plans/">会員プラン（OEM導入先のお客様向け）</a>
-                    <p>OEM導入した企業が、自社の顧客へ配るための案内ページ。使える制度が毎週届く無料から、月3,000円の計画たたき台、月30,000円の事業計画書AI、顧問契約150,000円〜まで4段階。申請の代行は行いません。</p>
-                  </li>
-                  <li>
-                    <a href="https://writeup-inc.github.io/seminar/jmatch-engine-oem/">OEMセミナー動画アーカイブ</a><span class="flag">今月追加</span>
-                    <p>OEMの仕組みと料金を15分にまとめた動画のアーカイブ請求ページ。商談に出られない相手や、社内で回して検討してもらいたいときに、このURLだけ送れば済みます。</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="lane">
-              <p class="lane-h"><span class="lane-n">2</span>直販<span class="thin">／当社が直接売る</span></p>
-              <div class="lane--inner">
-                <ul class="pages">
-                  <li>
-                    <a href="../jmatch-engine/direct/">直販のご案内</a>
-                    <p>AIとの対話で事業計画書の土台を自社で作る月額30,000円のAI自走プランと、提携士業へ任せる月額150,000円の士業依頼プランの2本。初期登録費用100,000円は今月の事例協力10社に限り無料。</p>
-                  </li>
-                  <li>
-                    <a href="../jmatch-engine/direct/?story=1">読みもの：経営小説「いつでも言えよ」</a><span class="flag">今月追加</span>
-                    <p>直販ページの中に入っている約5分の短編小説を、確認ダイアログを飛ばして直接開くURL。補助金そのものより「言い出せる関係」が先だ、という話です。料金の前に世界観から入りたい相手へ、このURLで送ります。</p>
-                  </li>
-                  <li>
-                    <a href="https://writeup-inc.github.io/seminar/jmatch-engine/">オンラインセミナー申し込み</a>
-                    <p>補助金・融資・税制優遇の情報をどう絞り込み、AIと次の一手を考えるかを、管理画面とともに紹介する回。直販の見込み客を集める入口として使います。</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="lane lane--sales">
-              <p class="lane-h"><span class="lane-n">3</span>営業資料<span class="thin">／社内限定の台本・サンプル</span></p>
-              <div class="lane--inner">
-                <ul class="pages">
-                  <li>
-                    <a href="../jmatch-oem-sales-talk/">OEMセールストーク</a><span class="flag">社内限定</span>
-                    <p>商談中に開いて、そのまま読み上げる台本。全15章のうち07〜09が山場で、リストの母数・年間の受注目標・月の収益の3つを相手の口から出させてから料金へ進みます。切り返し7問つき。</p>
-                  </li>
-                  <li>
-                    <a href="../jmatch-direct-sales-talk/">直販セールストーク</a><span class="flag">社内限定</span>
-                    <p>直販の台本。00〜12章で、実演5分・説明10分・クロージングまで。言われた言葉での検索、フェーズ絞り込み、数字早見、流れが変わる一文の印を備えています。</p>
-                  </li>
-                  <li>
-                    <a href="https://claude.ai/public/artifacts/61278311-569e-4836-941c-50317e2cd5e6">OEM管理者向け管理画面（デモ）</a><span class="flag">今月追加</span>
-                    <p>OEM導入した企業の担当者が見る側の画面。今週お客様へ送る内容、反応があったお客様、自分で登録したお客様、自社の売り物の一覧が並びます。OEM商談で「自分は何を見て、何をするのか」を答えるための実演用です。会社名・数字・制度名はすべて架空です。</p>
-                  </li>
-                  <li>
-                    <a href="https://jmatch-member-support-live.vercel.app/">会員向け管理画面（公開デモ）</a>
-                    <p>利用企業の会員マイページ。制度の検索・比較、会員特典、支援者・資料、イベント・セミナーを8画面で確認できます。実演で触ってもらう用です。</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
-          <section class="card">
-            <p class="tag">新規事業の立ち上げパック</p>
-            <h3>スタートパック</h3>
-            <p class="sub">既存の顧客を持っている会社に、事業をひとつ増やしてもらいます。</p>
-            <p class="who">入口は無料オンライン説明会。そこから業種別のパックへ分かれます</p>
-
-            <div class="lane lane--top">
-              <p class="lane-h"><span class="lane-n lane-n--top">0</span>入口<span class="thin">／一覧を見せてから説明会へ</span></p>
-              <div class="lane--inner">
-                <ul class="pages">
-                  <li>
-                    <a href="../business-starter-packs/">新規事業スターターパック 一覧</a><span class="flag">今月追加・ここが起点</span>
-                    <p>5つのパックと営業トーク集を1枚に並べた索引ページ。どの事業を選ぶか決まっていない相手には、業種別のページより先にここを開いてください。</p>
-                  </li>
-                  <li>
-                    <a href="../ai-business-starter-pack/?design=v2">AI事業スタートパック｜無料オンライン説明会</a>
-                    <p>小規模法人・個人事業主・副業を考える方向け。ホームページ制作会社、営業代行会社、AIO代行会社という3つの選択肢と、提案・制作・運用の仕組み、月2回のオンラインセミナーと月4時間の個別フォローまで、その場でひと通りお見せする回です。</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="lane">
-              <p class="lane-h"><span class="lane-n">1</span>業種別パック<span class="thin">／始める事業で選ぶ</span></p>
-              <div class="lane--inner">
-                <ul class="pages">
-                  <li>
-                    <a href="../web-agency-kit/">ホームページ制作会社スタートパック</a>
-                    <p>Codexと12個の実務スキルで、Web制作未経験から自社名義で提案・制作・品質確認・納品まで進める事業化パッケージ。会社サイトと共感型LPが標準商品です。スキルは毎月更新し、Web制作以外の相談は本部へ取り次げます。</p>
-                  </li>
-                  <li>
-                    <a href="../ai-sales-agency-starter/">AI営業代行会社スタートパック</a>
-                    <p>本業を続けながら、名刺と会話をAIで台帳化し、人脈を紹介・営業顧問へ育てる副業向けのパック。12個のAIエージェントを4つの仕事にまとめ、セミナー集客から経営者マッチング、営業顧問へと積み上げる三段の収益モデル。</p>
-                  </li>
-                  <li>
-                    <a href="../ai-ad-agency-pack/">広告代理店スタートパック</a>
-                    <p>Claude Codeを実務基盤に、Meta広告の提案・設定・入稿準備・分析・改善を自社サービスにする導入パッケージ。12の実務スキルは毎月更新で、使わないものは外し、新しいものを足していく運用です。</p>
-                  </li>
-                  <li>
-                    <a href="../aio-consult-business/">AIOコンサル事業スタートパック</a>
-                    <p>商品システム、営業スキル、広報・後方支援をまとめて提供します。既存顧客から始めて、地元で唯一のAIOコンサル会社になるための立ち上げパックです。</p>
-                  </li>
-                  <li>
-                    <a href="../shigyo-ai-practice-pack/">士業AI実務パック</a><span class="flag">一覧に未掲載</span>
-                    <p>社労士・税理士事務所向け。相談ヒアリング、書類ドラフト、データ整形をAIで支援します。資格者の確認を前提に、まず1業務から実演します。<strong>上の「一覧」ページには載っていないため、このパックを出すときは個別にURLを送ってください。</strong></p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="lane lane--sales">
-              <p class="lane-h"><span class="lane-n">2</span>営業資料<span class="thin">／社内限定の台本</span></p>
-              <div class="lane--inner">
-                <ul class="pages">
-                  <li>
-                    <a href="../web-agency-kit-sales-talk/">ホームページ制作会社パック 営業トーク集 Vol.2</a><span class="flag">社内限定</span>
-                    <p>Web制作パックを売るときの台本です。</p>
-                  </li>
-                  <li>
-                    <a href="../ai-hybrid-sales-talk/">左脳×右脳 Web制作営業トーク集</a><span class="flag">社内限定</span>
-                    <p>第二営業部の30場面。論理サイトと共感LPの売り分け、AIハイブリッド営業までを生ログ順に話せます。</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </section>
+        <div class="lane lane--top">
+          <p class="lane-h"><span class="lane-n lane-n--top">0</span>入口<span class="thin">／どちらを出すか決める</span></p>
+          <div class="lane--inner">
+            <ul class="pages">
+              <li>
+                <a href="../jmatch-engine/">ご案内の入口（OEM／直販の分岐）</a>
+                <p>相手の立場を選ぶと、OEMか直販のページへ分かれます。迷ったらまずここを開いてください。</p>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <!-- 右カラム -->
-        <div class="col">
-          <section class="card">
-            <p class="tag tag--new">新規注力・優先度A</p>
-            <h3>ワークログ・インサイト</h3>
-            <p class="sub">今日の仕事を、1年後の自動化データへ。日報も工数入力もいりません。</p>
-            <p class="who">企画・窓口：小松　／　開発：岡村　／　直販とOEMの2本立て</p>
-
-            <p class="lane-note">※ 入口（OEM／直販の分岐）にあたるページはまだありません。相手に合わせて①か②を直接開いてください。</p>
-
-            <div class="lane">
-              <p class="lane-h"><span class="lane-n">1</span>OEM<span class="thin">／他社ブランドで売ってもらう</span></p>
-              <div class="lane--inner">
-                <ul class="pages">
-                  <li>
-                    <a href="../worklog-insight-oem/">OEMパートナー募集</a>
-                    <p>自社ブランドで販売するパートナーの募集ページ。エンド1ID月額10,000円のうち4,000円がパートナーの取り分。開発・サーバー・料金回収は当社、販売と一次対応はパートナーが持ちます。</p>
-                  </li>
-                  <li>
-                    <a href="https://writeup-inc.github.io/seminar/worklog-insight-oem/?design=v1">OEM説明会 申し込み（V1）</a><span class="flag">今月追加</span>
-                    <p>30分・オンライン・無料の説明会へ申し込んでもらうページ。パートナー候補へ送るのはこのURLです。</p>
-                  </li>
-                  <li>
-                    <a href="https://writeup-inc.github.io/seminar/worklog-insight-oem/?design=v2">OEM説明会 申し込み（V2）</a><span class="flag">今月追加</span>
-                    <p>V1と中身は同じで、見た目だけが違う版。<strong>相手の好みで選んで送ってください。</strong>どちらを標準にするかは反応を見て決めます。</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="lane">
-              <p class="lane-h"><span class="lane-n">2</span>直販<span class="thin">／当社が直接売る</span></p>
-              <div class="lane--inner">
-                <ul class="pages">
-                  <li>
-                    <a href="../worklog-insight/">直販LP（本体）</a><span class="flag">本命</span>
-                    <p>社員のPC画面を1分に1回自動記録し、AIが「誰が・何に・何時間」を解析する業務可視化サービス。実測データからAI化すべき業務を特定し、削減時間の試算つき改善レポートを毎週経営層へ届けます。記録はまず本人の日報として還元します。監視ではなく、可視化のための仕組みです。</p>
-                  </li>
-                  <li>
-                    <a href="../worklog-fact-search/">ワークログ・ファクトサーチ（有料オプション）</a>
-                    <p>貯まった画面の記録に、あとから日本語のまま質問できる追加オプション。「3か月前のあのとき何をしていたか」にAIが記録を読み直して答えます。退職者の業務、事故の原因、案件の経緯など、記憶や自己申告では確かめられない過去の事実を確認する用途です。</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="lane lane--sales">
-              <p class="lane-h"><span class="lane-n">3</span>営業資料<span class="thin">／社内限定の台本・サンプル</span></p>
-              <div class="lane--inner">
-                <ul class="pages">
-                  <li>
-                    <a href="../worklog-insight-sales-talk/">直販セールストーク</a><span class="flag">社内限定</span>
-                    <p>商談でそのまま読み上げる台本。00〜09章。前半はサービス説明と月額1万円の伝え方、セキュリティの先回り説明。後半は「業務ログは後から遡って作れない」という蓄積の話でクロージングまで。切り返し9問つき。</p>
-                  </li>
-                  <li>
-                    <a href="../worklog-insight-taku-sample/">導入企業の管理画面サンプル</a>
-                    <p>スクリーンショットのログを、経営層・管理職・スタッフ本人それぞれの意思決定に合わせて整理した管理画面サンプル。観測事実、推測、比較、次の行動、人間による承認境界を役割別レポートで確認できます。数値・人物はOEM商談用の架空設定です。</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <p class="lane-note">※ OEM向けのセールストークはまだありません。必要なら作ります。</p>
-          </section>
+        <div class="lane">
+          <p class="lane-h"><span class="lane-n">1</span>OEM<span class="thin">／他社ブランドで売ってもらう</span></p>
+          <div class="lane--inner">
+            <ul class="pages">
+              <li>
+                <a href="../jmatch-engine/oem/">OEM提供のご案内</a><span class="flag">本命</span>
+                <p>顧客リストを持つ企業向けのホワイトラベル提供。ロゴ・色・名称を決めるだけで自社サービスになり、開発・サーバー・問い合わせ対応は当社が持ちます。初期50万円（9月末契約まで20万円）＋月額85,000円、オプション枠なしの全機能込み。導入まで最短1週間。</p>
+              </li>
+              <li>
+                <a href="../jmatch-engine/oem-plans/">会員プラン（OEM導入先のお客様向け）</a>
+                <p>OEM導入した企業が、自社の顧客へ配るための案内ページ。使える制度が毎週届く無料から、月3,000円の計画たたき台、月30,000円の事業計画書AI、顧問契約150,000円〜まで4段階。申請の代行は行いません。</p>
+              </li>
+              <li>
+                <a href="https://writeup-inc.github.io/seminar/jmatch-engine-oem/">OEMセミナー動画アーカイブ</a><span class="flag flag--new">今月追加</span>
+                <p>OEMの仕組みと料金を15分にまとめた動画のアーカイブ請求ページ。商談に出られない相手や、社内で回して検討してもらいたいときに、このURLだけ送れば済みます。</p>
+              </li>
+            </ul>
+          </div>
         </div>
+
+        <div class="lane">
+          <p class="lane-h"><span class="lane-n">2</span>直販<span class="thin">／当社が直接売る</span></p>
+          <div class="lane--inner">
+            <ul class="pages">
+              <li>
+                <a href="../jmatch-engine/direct/">直販のご案内</a>
+                <p>AIとの対話で事業計画書の土台を自社で作る月額30,000円のAI自走プランと、提携士業へ任せる月額150,000円の士業依頼プランの2本。初期登録費用100,000円は今月の事例協力10社に限り無料。</p>
+              </li>
+              <li>
+                <a href="../jmatch-engine/direct/?story=1">読みもの：経営小説「いつでも言えよ」</a><span class="flag flag--new">今月追加</span>
+                <p>直販ページの中に入っている約5分の短編小説を、確認ダイアログを飛ばして直接開くURL。補助金そのものより「言い出せる関係」が先だ、という話です。料金の前に世界観から入りたい相手へ、このURLで送ります。</p>
+              </li>
+              <li>
+                <a href="https://writeup-inc.github.io/seminar/jmatch-engine/">オンラインセミナー申し込み</a>
+                <p>補助金・融資・税制優遇の情報をどう絞り込み、AIと次の一手を考えるかを、管理画面とともに紹介する回。直販の見込み客を集める入口として使います。</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="lane lane--sales">
+          <p class="lane-h"><span class="lane-n">3</span>営業資料<span class="thin">／社内限定の台本・サンプル</span></p>
+          <div class="lane--inner">
+            <ul class="pages">
+              <li>
+                <a href="../jmatch-oem-sales-talk/">OEMセールストーク</a><span class="flag">社内限定</span>
+                <p>商談中に開いて、そのまま読み上げる台本。全15章のうち07〜09が山場で、リストの母数・年間の受注目標・月の収益の3つを相手の口から出させてから料金へ進みます。切り返し7問つき。</p>
+              </li>
+              <li>
+                <a href="../jmatch-direct-sales-talk/">直販セールストーク</a><span class="flag">社内限定</span>
+                <p>直販の台本。00〜12章で、実演5分・説明10分・クロージングまで。言われた言葉での検索、フェーズ絞り込み、数字早見、流れが変わる一文の印を備えています。</p>
+              </li>
+              <li>
+                <a href="https://claude.ai/public/artifacts/61278311-569e-4836-941c-50317e2cd5e6">OEM管理者向け管理画面（デモ）</a><span class="flag flag--new">今月追加</span>
+                <p>OEM導入した企業の担当者が見る側の画面。今週お客様へ送る内容、反応があったお客様、自分で登録したお客様、自社の売り物の一覧が並びます。OEM商談で「自分は何を見て、何をするのか」を答えるための実演用です。会社名・数字・制度名はすべて架空です。</p>
+              </li>
+              <li>
+                <a href="https://jmatch-member-support-live.vercel.app/">会員向け管理画面（公開デモ）</a>
+                <p>利用企業の会員マイページ。制度の検索・比較、会員特典、支援者・資料、イベント・セミナーを8画面で確認できます。実演で触ってもらう用です。</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="card card--worklog" id="worklog">
+        <p class="tag tag--new">新規注力・優先度A</p>
+        <h3>ワークログ・インサイト</h3>
+        <p class="sub">今日の仕事を、1年後の自動化データへ。日報も工数入力もいりません。</p>
+        <p class="who">企画・窓口：小松　／　開発：岡村　／　直販とOEMの2本立て</p>
+
+        <p class="lane-note">※ 入口（OEM／直販の分岐）にあたるページはまだありません。相手に合わせて①か②を直接開いてください。</p>
+
+        <div class="lane">
+          <p class="lane-h"><span class="lane-n">1</span>OEM<span class="thin">／他社ブランドで売ってもらう</span></p>
+          <div class="lane--inner">
+            <ul class="pages">
+              <li>
+                <a href="../worklog-insight-oem/">OEMパートナー募集</a>
+                <p>自社ブランドで販売するパートナーの募集ページ。エンド1ID月額10,000円のうち4,000円がパートナーの取り分。開発・サーバー・料金回収は当社、販売と一次対応はパートナーが持ちます。</p>
+              </li>
+              <li>
+                <a href="https://writeup-inc.github.io/seminar/worklog-insight-oem/?design=v1">OEM説明会 申し込み（V1）</a><span class="flag flag--new">今月追加</span>
+                <p>30分・オンライン・無料の説明会へ申し込んでもらうページ。パートナー候補へ送るのはこのURLです。</p>
+              </li>
+              <li>
+                <a href="https://writeup-inc.github.io/seminar/worklog-insight-oem/?design=v2">OEM説明会 申し込み（V2）</a><span class="flag flag--new">今月追加</span>
+                <p>V1と中身は同じで、見た目だけが違う版。<strong>相手の好みで選んで送ってください。</strong>どちらを標準にするかは反応を見て決めます。</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="lane">
+          <p class="lane-h"><span class="lane-n">2</span>直販<span class="thin">／当社が直接売る</span></p>
+          <div class="lane--inner">
+            <ul class="pages">
+              <li>
+                <a href="../worklog-insight/">直販LP（本体）</a><span class="flag">本命</span>
+                <p>社員のPC画面を1分に1回自動記録し、AIが「誰が・何に・何時間」を解析する業務可視化サービス。実測データからAI化すべき業務を特定し、削減時間の試算つき改善レポートを毎週経営層へ届けます。記録はまず本人の日報として還元します。監視ではなく、可視化のための仕組みです。</p>
+              </li>
+              <li>
+                <a href="../worklog-fact-search/">ワークログ・ファクトサーチ（有料オプション）</a>
+                <p>貯まった画面の記録に、あとから日本語のまま質問できる追加オプション。「3か月前のあのとき何をしていたか」にAIが記録を読み直して答えます。退職者の業務、事故の原因、案件の経緯など、記憶や自己申告では確かめられない過去の事実を確認する用途です。</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="lane lane--sales">
+          <p class="lane-h"><span class="lane-n">3</span>営業資料<span class="thin">／社内限定の台本・サンプル</span></p>
+          <div class="lane--inner">
+            <ul class="pages">
+              <li>
+                <a href="../worklog-insight-sales-talk/">直販セールストーク</a><span class="flag">社内限定</span>
+                <p>商談でそのまま読み上げる台本。00〜09章。前半はサービス説明と月額1万円の伝え方、セキュリティの先回り説明。後半は「業務ログは後から遡って作れない」という蓄積の話でクロージングまで。切り返し9問つき。</p>
+              </li>
+              <li>
+                <a href="../worklog-insight-taku-sample/">導入企業の管理画面サンプル</a>
+                <p>スクリーンショットのログを、経営層・管理職・スタッフ本人それぞれの意思決定に合わせて整理した管理画面サンプル。観測事実、推測、比較、次の行動、人間による承認境界を役割別レポートで確認できます。数値・人物はOEM商談用の架空設定です。</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="lane-note">※ OEM向けのセールストークはまだありません。必要なら作ります。</p>
+      </section>
+
+      <section class="card card--packs" id="packs">
+        <p class="tag">新規事業の立ち上げパック</p>
+        <h3>スタートパック</h3>
+        <p class="sub">既存の顧客を持っている会社に、事業をひとつ増やしてもらいます。</p>
+        <p class="who">入口は無料オンライン説明会。そこから業種別のパックへ分かれます</p>
+
+        <div class="lane lane--top">
+          <p class="lane-h"><span class="lane-n lane-n--top">0</span>入口<span class="thin">／一覧を見せてから説明会へ</span></p>
+          <div class="lane--inner">
+            <ul class="pages">
+              <li>
+                <a href="../business-starter-packs/">新規事業スターターパック 一覧</a><span class="flag flag--new">今月追加・ここが起点</span>
+                <p>5つのパックと営業トーク集を1枚に並べた索引ページ。どの事業を選ぶか決まっていない相手には、業種別のページより先にここを開いてください。</p>
+              </li>
+              <li>
+                <a href="../ai-business-starter-pack/?design=v2">AI事業スタートパック｜無料オンライン説明会</a>
+                <p>小規模法人・個人事業主・副業を考える方向け。ホームページ制作会社、営業代行会社、AIO代行会社という3つの選択肢と、提案・制作・運用の仕組み、月2回のオンラインセミナーと月4時間の個別フォローまで、その場でひと通りお見せする回です。</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="lane">
+          <p class="lane-h"><span class="lane-n">1</span>業種別パック<span class="thin">／始める事業で選ぶ</span></p>
+          <div class="lane--inner">
+            <ul class="pages">
+              <li>
+                <a href="../web-agency-kit/">ホームページ制作会社スタートパック</a>
+                <p>Codexと12個の実務スキルで、Web制作未経験から自社名義で提案・制作・品質確認・納品まで進める事業化パッケージ。会社サイトと共感型LPが標準商品です。スキルは毎月更新し、Web制作以外の相談は本部へ取り次げます。</p>
+              </li>
+              <li>
+                <a href="../ai-sales-agency-starter/">AI営業代行会社スタートパック</a>
+                <p>本業を続けながら、名刺と会話をAIで台帳化し、人脈を紹介・営業顧問へ育てる副業向けのパック。12個のAIエージェントを4つの仕事にまとめ、セミナー集客から経営者マッチング、営業顧問へと積み上げる三段の収益モデル。</p>
+              </li>
+              <li>
+                <a href="../ai-ad-agency-pack/">広告代理店スタートパック</a>
+                <p>Claude Codeを実務基盤に、Meta広告の提案・設定・入稿準備・分析・改善を自社サービスにする導入パッケージ。12の実務スキルは毎月更新で、使わないものは外し、新しいものを足していく運用です。</p>
+              </li>
+              <li>
+                <a href="../aio-consult-business/">AIOコンサル事業スタートパック</a>
+                <p>商品システム、営業スキル、広報・後方支援をまとめて提供します。既存顧客から始めて、地元で唯一のAIOコンサル会社になるための立ち上げパックです。</p>
+              </li>
+              <li>
+                <a href="../shigyo-ai-practice-pack/">士業AI実務パック</a><span class="flag">一覧に未掲載</span>
+                <p>社労士・税理士事務所向け。相談ヒアリング、書類ドラフト、データ整形をAIで支援します。資格者の確認を前提に、まず1業務から実演します。<strong>上の「一覧」ページには載っていないため、このパックを出すときは個別にURLを送ってください。</strong></p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="lane lane--sales">
+          <p class="lane-h"><span class="lane-n">2</span>営業資料<span class="thin">／社内限定の台本</span></p>
+          <div class="lane--inner">
+            <ul class="pages">
+              <li>
+                <a href="../web-agency-kit-sales-talk/">ホームページ制作会社パック 営業トーク集 Vol.2</a><span class="flag">社内限定</span>
+                <p>Web制作パックを売るときの台本です。</p>
+              </li>
+              <li>
+                <a href="../ai-hybrid-sales-talk/">左脳×右脳 Web制作営業トーク集</a><span class="flag">社内限定</span>
+                <p>第二営業部の30場面。論理サイトと共感LPの売り分け、AIハイブリッド営業までを生ログ順に話せます。</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
       </div>
 
-      <section class="staples">
+      <section class="staples" id="staples">
         <h2 class="section">定番の注力サービス（10本）</h2>
         <p class="section-note">今月の追加2本を除いた、これまでの注力サービス。並びと記号は社内の優先度に合わせています。</p>
 
@@ -718,5 +827,41 @@
       <p>料金は公開ページの表記に合わせています。値引き・例外条件は各商材の質問部屋で確認してください。</p>
     </div>
   </footer>
+
+  <script>
+  /* 追従ナビ：いま読んでいる区画のチップを光らせる。
+     区画が画面より遥かに縦長になるため、交差比ではなく「ナビ直下の線を最後に越えた区画」で判定する */
+  (function () {
+    var links = [].slice.call(document.querySelectorAll('.jump a'));
+    var items = links.map(function (a) {
+      return { link: a, el: document.querySelector(a.getAttribute('href')) };
+    }).filter(function (i) { return i.el; });
+    if (!items.length) return;
+
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var line = (document.querySelector('.jump') || {}).offsetHeight || 0;
+      line += 12;
+      var current = null;
+      items.forEach(function (i) {
+        if (i.el.getBoundingClientRect().top <= line) current = i;
+      });
+      /* 最後の区画を読み終えて余白に入っても、直前の区画を灯したままにする */
+      items.forEach(function (i) { i.link.classList.toggle('is-here', i === current); });
+    }
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll);
+    addEventListener('hashchange', onScroll);
+    /* #付きで開いた直後はまだ着地していないので、描画が落ち着いてからもう一度見る */
+    addEventListener('load', function () { onScroll(); setTimeout(update, 120); });
+    update();
+  })();
+  </script>
 </body>
 </html>
