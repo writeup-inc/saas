@@ -204,7 +204,18 @@ tfoot td{background:var(--bg2);font-weight:800;border-top:1px solid var(--rule)}
       box-shadow:0 6px 16px rgba(21,24,28,.30), 0 2px 4px rgba(21,24,28,.18);transition:box-shadow .15s ease,transform .15s ease,background .15s ease,color .15s ease}
 .fc-b:hover{background:#fff;color:var(--accent2);box-shadow:0 12px 26px rgba(21,24,28,.34), 0 3px 6px rgba(21,24,28,.20);transform:translateY(-2px)}
 .fc-b:active{box-shadow:0 3px 8px rgba(21,24,28,.26);transform:translateY(2px)}
-@media(prefers-reduced-motion:reduce){.fc-b{transition:none}.fc-b:hover,.fc-b:active{transform:none}}
+/* 画面中央に入った瞬間、ゆっくり一度だけ押された動きを見せる */
+@keyframes fcPress{
+  0%{transform:translateY(0);box-shadow:0 6px 16px rgba(21,24,28,.30), 0 2px 4px rgba(21,24,28,.18)}
+  45%{transform:translateY(4px);box-shadow:0 2px 5px rgba(21,24,28,.26)}
+  70%{transform:translateY(4px);box-shadow:0 2px 5px rgba(21,24,28,.26)}
+  100%{transform:translateY(0);box-shadow:0 6px 16px rgba(21,24,28,.30), 0 2px 4px rgba(21,24,28,.18)}
+}
+.fc-b.is-press{animation:fcPress .95s cubic-bezier(.33,0,.2,1) both}
+@media(prefers-reduced-motion:reduce){
+  .fc-b{transition:none}.fc-b:hover,.fc-b:active{transform:none}
+  .fc-b.is-press{animation:none}
+}
 
 /* 結び */
 .close{border:1.5px solid var(--rule);padding:40px 32px}
@@ -523,6 +534,34 @@ footer a{color:var(--ink3)}
     提案書 追加資料　／　株式会社ライトアップ　2026年9月15日</p>
   </div>
 </footer>
+
+<script>
+// ボタンが画面の中ほどに入ったら、一度だけ「押された」動きを見せる
+(function(){
+  var btns = document.querySelectorAll('.fc-b');
+  if (!btns.length) return;
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (!e.isIntersecting) return;
+      var el = e.target;
+      if (el.dataset.pressed) return;      // 1要素につき1回だけ
+      el.dataset.pressed = '1';
+      setTimeout(function(){
+        el.addEventListener('animationend', function(){
+          // アニメーションの最終値が残るとホバーが効かなくなるので、終わったら外す
+          el.classList.remove('is-press');
+        }, { once: true });
+        el.classList.add('is-press');
+      }, 220);
+    });
+  }, { rootMargin: '-42% 0px -42% 0px', threshold: 0 });
+
+  btns.forEach(function(b){ io.observe(b); });
+})();
+</script>
 
 </body>
 </html>
