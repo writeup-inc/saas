@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="話題のAI活用事例を、使用ツール・仕組み・再現条件まで分解。自社に合うAIサービスを比較できる法人向けガイドです。">
+  <title>AI COMPASS｜実例から探す法人向けAI活用ガイド</title>
+  <style>:root {
+  --navy: #0b2946; --navy-deep: #071d31; --ink: #17202a; --muted-ink: #63707c;
+  --paper: #ffffff; --soft: #f3f5f6; --warm: #f7f6f3; --line: #d4d9de; --orange: #a94000;
+  --background: var(--paper); --foreground: var(--ink); --primary: var(--navy); --primary-foreground: #ffffff;
+  --border: var(--line); --input: var(--line); --ring: var(--navy); --muted: var(--soft); --muted-foreground: var(--muted-ink);
+  --font-sans: "Hiragino Sans", "Yu Gothic", YuGothic, "Noto Sans JP", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-sans); text-rendering: optimizeLegibility; }
+a { color: inherit; text-decoration: none; }
+img { display: block; width: 100%; object-fit: cover; }
+button, input { font: inherit; }
+.shell { width: min(100% - 48px, 1200px); margin-inline: auto; }
+
+.topline { background: var(--navy-deep); color: #fff; }
+.topline-inner { min-height: 30px; display: flex; align-items: center; justify-content: space-between; font-size: 10px; letter-spacing: .04em; }
+.topline p { margin: 0; display: flex; align-items: center; gap: 7px; }
+.topline svg { width: 12px; }
+
+.site-header { position: sticky; top: 0; z-index: 20; background: rgb(255 255 255 / 96%); border-bottom: 1px solid var(--line); backdrop-filter: blur(12px); }
+.header-main { min-height: 76px; display: grid; grid-template-columns: auto minmax(280px, 1fr) auto; align-items: center; gap: 34px; }
+.brand { display: inline-flex; align-items: center; gap: 11px; }
+.brand-symbol { width: 38px; height: 38px; display: grid; place-items: center; position: relative; background: var(--navy); color: #fff; font: 800 21px/1 Arial, sans-serif; border-radius: 4px; }
+.brand-symbol span { position: absolute; width: 7px; height: 7px; right: -3px; top: -3px; border-radius: 50%; background: var(--orange); }
+.brand strong, .brand small { display: block; }
+.brand strong { color: var(--navy-deep); font: 800 16px/1 Arial, sans-serif; letter-spacing: .04em; }
+.brand small { margin-top: 5px; color: var(--muted-ink); font: 9px/1 Arial, sans-serif; letter-spacing: .12em; }
+.site-search { max-width: 490px; width: 100%; justify-self: center; display: grid; grid-template-columns: 18px 1fr auto; align-items: center; gap: 8px; padding-left: 14px; background: var(--soft); border: 1px solid transparent; }
+.site-search:focus-within { border-color: var(--navy); }
+.site-search svg { width: 16px; color: var(--muted-ink); }
+.site-search input { height: 40px; padding: 0; border: 0; border-radius: 0; box-shadow: none; background: transparent; }
+.site-search button { height: 40px; padding-inline: 17px; border: 0; background: var(--navy); color: #fff; font-size: 11px; cursor: pointer; }
+.header-links { display: flex; align-items: center; gap: 20px; font-size: 13px; font-weight: 700; }
+.consult-link { min-height: 40px; display: inline-flex; align-items: center; padding-inline: 18px; border: 1px solid var(--navy); }
+.category-nav { min-height: 42px; display: grid; grid-template-columns: repeat(6, 1fr); border-top: 1px solid var(--line); }
+.category-nav a { display: grid; place-items: center; border-right: 1px solid var(--line); font-size: 13px; font-weight: 700; }
+.category-nav a:first-child { border-left: 1px solid var(--line); }
+.category-nav a:hover { background: var(--soft); }
+
+.masthead { min-height: 240px; display: grid; grid-template-columns: 1.35fr .65fr; align-items: end; gap: 80px; padding-block: 58px 46px; }
+.eyebrow, .section-heading > div > p, .editorial-intro > p:first-child, .ranking-copy > p:first-child, .consult > div > p:first-child { margin: 0 0 18px; color: var(--orange); font: 800 10px/1 Arial, sans-serif; letter-spacing: .16em; }
+.masthead h1 { margin: 0; color: var(--navy-deep); font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: clamp(42px, 5vw, 70px); font-weight: 600; line-height: 1.25; letter-spacing: -.04em; }
+.masthead-copy { margin: 0 0 7px; color: var(--muted-ink); font-size: 14px; line-height: 2; }
+.hero-compare { align-self: stretch; padding: 24px 26px; border: 1px solid var(--navy); background: var(--paper); }
+.hero-compare > p { margin: 0 0 7px; color: var(--orange); font-size: 12px; font-weight: 800; letter-spacing: .08em; }
+.hero-compare h2 { margin: 0 0 18px; color: var(--navy-deep); font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: 22px; font-weight: 600; }
+.hero-compare-options { display: grid; border-top: 1px solid var(--line); }
+.hero-compare-options a { min-height: 39px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); font-size: 13px; font-weight: 700; }
+.hero-compare-options svg, .hero-compare-button svg { width: 14px; }
+.hero-compare-button { min-height: 44px; margin-top: 18px; padding-inline: 17px; display: flex; align-items: center; justify-content: space-between; background: var(--navy); color: #fff; font-size: 13px; font-weight: 700; }
+
+.lead-grid { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(310px, .75fr); gap: 38px; padding-bottom: 70px; }
+.lead-story { min-width: 0; border-bottom: 1px solid var(--ink); }
+.lead-image { height: 430px; display: block; position: relative; overflow: hidden; background: var(--soft); }
+.lead-image img { height: 100%; transition: transform .5s ease; }
+.lead-image:hover img, .card-image:hover img, .secondary-image:hover img { transform: scale(1.025); }
+.lead-image > span { position: absolute; left: 0; bottom: 0; padding: 10px 15px; background: var(--navy); color: #fff; font: 800 10px/1 Arial, sans-serif; letter-spacing: .13em; }
+.lead-body { padding: 25px 0 27px; }
+.article-category { margin: 0 0 12px; color: var(--orange); font-size: 10px; font-weight: 800; letter-spacing: .06em; }
+.lead-body h2 { max-width: 800px; margin: 0; color: var(--navy-deep); font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: clamp(26px, 3vw, 40px); font-weight: 600; line-height: 1.45; letter-spacing: -.025em; }
+.lead-body > p:not(.article-category) { max-width: 730px; margin: 17px 0 22px; color: var(--muted-ink); font-size: 13px; line-height: 1.9; }
+.person-row { display: grid; grid-template-columns: 38px 1fr auto; align-items: center; gap: 11px; }
+.person-avatar { width: 38px; height: 38px; display: grid; place-items: center; background: var(--navy); color: #fff; border-radius: 50%; font: 700 12px/1 Arial; }
+.person-row strong, .person-row small { display: block; }
+.person-row strong { font-size: 11px; }
+.person-row small { margin-top: 4px; color: var(--muted-ink); font-size: 9px; }
+.person-row > a { width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid var(--line); }
+.person-row svg { width: 15px; }
+.story-compare { margin-top: 25px; padding: 19px 20px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 24px; background: var(--soft); border-left: 3px solid var(--navy); }
+.story-compare span, .story-compare strong, .story-compare small { display: block; }
+.story-compare span { margin-bottom: 5px; color: var(--orange); font-size: 12px; font-weight: 800; }
+.story-compare strong { color: var(--navy); font-size: 14px; }
+.story-compare small { margin-top: 5px; color: var(--muted-ink); font-size: 12px; }
+.story-compare > a { min-height: 42px; padding-inline: 15px; display: flex; align-items: center; gap: 9px; border: 1px solid var(--navy); background: var(--paper); color: var(--navy); font-size: 13px; font-weight: 700; }
+.story-compare svg { width: 14px; }
+.lead-secondary { display: grid; align-content: stretch; }
+.secondary-story { min-height: 0; padding-block: 0 28px; position: relative; display: grid; grid-template-rows: 220px 1fr; border-bottom: 1px solid var(--line); }
+.secondary-story + .secondary-story { padding-block: 30px 0; border-bottom-color: var(--ink); }
+.secondary-image { overflow: hidden; background: var(--soft); }
+.secondary-image img { height: 100%; transition: transform .45s ease; }
+.secondary-story > div { padding-top: 17px; }
+.secondary-story h2 { margin: 0; padding-right: 28px; color: var(--navy-deep); font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: 19px; font-weight: 600; line-height: 1.55; }
+.secondary-story div > span { display: block; margin-top: 13px; color: var(--muted-ink); font-size: 9px; }
+.secondary-story > b { position: absolute; right: 0; bottom: 17px; color: #a7afb7; font: 400 11px/1 Arial; }
+
+.topic-strip { border-block: 1px solid var(--line); background: var(--soft); }
+.topic-inner { min-height: 96px; display: grid; grid-template-columns: 210px 1fr; align-items: center; gap: 28px; }
+.topic-inner > strong { color: var(--navy); font-size: 12px; }
+.topic-inner > div { display: grid; grid-template-columns: repeat(6, 1fr); }
+.topic-inner a { min-height: 43px; display: flex; align-items: center; justify-content: center; gap: 2px; border-left: 1px solid var(--line); background: var(--paper); font-size: 10px; font-weight: 700; }
+.topic-inner a:last-child { border-right: 1px solid var(--line); }
+.topic-inner svg { width: 12px; }
+
+.content-section { padding-block: 94px 105px; }
+.section-heading { margin-bottom: 38px; display: grid; grid-template-columns: 1fr 1fr auto; align-items: end; gap: 28px; border-bottom: 2px solid var(--navy); padding-bottom: 23px; }
+.section-heading > div > p { margin-bottom: 12px; }
+.section-heading h2, .ranking-copy h2 { margin: 0; color: var(--navy-deep); font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: 34px; font-weight: 600; }
+.section-heading > p { margin: 0; color: var(--muted-ink); font-size: 11px; line-height: 1.8; }
+.section-heading > a { display: flex; align-items: center; gap: 9px; font-size: 11px; font-weight: 700; }
+.section-heading svg { width: 14px; }
+.article-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 54px 28px; }
+.article-card { min-width: 0; border-bottom: 1px solid var(--line); }
+.card-image { height: 216px; position: relative; display: block; overflow: hidden; background: var(--soft); }
+.card-image img { height: 100%; transition: transform .45s ease; }
+.card-image span { position: absolute; left: 0; bottom: 0; padding: 8px 12px; background: var(--paper); color: var(--orange); font: 800 9px/1 Arial; letter-spacing: .1em; }
+.card-body { padding: 19px 0 20px; }
+.card-body h3 { min-height: 80px; margin: 0; color: var(--navy-deep); font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: 19px; font-weight: 600; line-height: 1.55; }
+.card-body > p:not(.article-category) { min-height: 72px; margin: 13px 0 19px; color: var(--muted-ink); font-size: 14px; line-height: 1.8; }
+.card-meta { display: flex; align-items: end; justify-content: space-between; gap: 12px; }
+.card-meta strong, .card-meta small { display: block; }
+.card-meta strong { font-size: 10px; }
+.card-meta small { margin-top: 4px; color: var(--muted-ink); font-size: 9px; }
+.card-meta svg { width: 15px; }
+.card-actions { margin-top: 17px; display: grid; grid-template-columns: .8fr 1.2fr; border-top: 1px solid var(--line); }
+.card-actions a { min-height: 42px; display: grid; place-items: center; font-size: 12px; font-weight: 700; }
+.card-actions a:first-child { border-right: 1px solid var(--line); }
+.card-actions a:last-child { color: var(--navy); }
+.card-actions a:hover { background: var(--soft); }
+.inline-compare { margin-top: 66px; padding: 38px 42px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 50px; background: var(--soft); border: 1px solid var(--line); }
+.inline-compare span { color: var(--orange); font: 800 12px/1 Arial, sans-serif; letter-spacing: .12em; }
+.inline-compare h3 { margin: 10px 0 12px; color: var(--navy-deep); font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: 26px; font-weight: 600; line-height: 1.5; }
+.inline-compare p { margin: 0; color: var(--muted-ink); font-size: 14px; }
+.inline-compare > a { min-height: 50px; padding-inline: 22px; display: flex; align-items: center; gap: 17px; background: var(--navy); color: #fff; font-size: 13px; font-weight: 700; }
+.inline-compare svg { width: 15px; }
+
+.comparison-workbench { padding-block: 92px; background: var(--navy-deep); color: #fff; }
+.compare-heading { margin-bottom: 36px; display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 60px; }
+.compare-heading p { margin: 0; color: #bdc8d1; font-size: 14px; line-height: 1.9; }
+.compare-heading > div > p { margin-bottom: 11px; color: #e6a47b; font: 800 12px/1 Arial, sans-serif; letter-spacing: .14em; }
+.compare-heading h2 { margin: 0; font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: 38px; font-weight: 600; }
+.compare-steps { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid #526579; }
+.compare-steps > div { min-width: 0; padding: 25px 23px 27px; border-right: 1px solid #526579; }
+.compare-steps > div:last-child { border-right: 0; }
+.compare-steps > div > span { color: #91a2b2; font: 12px/1 Arial, sans-serif; }
+.compare-steps > div > strong { display: block; margin: 9px 0 18px; font-size: 15px; }
+.compare-steps > div > div { display: flex; flex-wrap: wrap; gap: 8px; }
+.compare-steps a { min-height: 36px; padding-inline: 12px; display: inline-flex; align-items: center; border: 1px solid #66798b; color: #d9e1e8; font-size: 12px; }
+.compare-steps a:hover, .compare-steps a:focus-visible { border-color: #fff; background: #fff; color: var(--navy-deep); }
+.comparison-results { margin-top: 28px; padding: 28px 30px 23px; background: var(--paper); color: var(--ink); }
+.results-top { display: flex; justify-content: space-between; align-items: end; gap: 20px; }
+.results-top span { color: var(--orange); font: 800 11px/1 Arial, sans-serif; letter-spacing: .12em; }
+.results-top h3 { margin: 8px 0 0; color: var(--navy-deep); font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: 25px; font-weight: 600; }
+.results-top > a { font-size: 12px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+.comparison-table { margin-top: 22px; border-top: 2px solid var(--navy); }
+.comparison-row { min-height: 62px; display: grid; grid-template-columns: 1.1fr 1.5fr 1fr 1.1fr .65fr; align-items: center; gap: 18px; border-bottom: 1px solid var(--line); font-size: 13px; }
+.comparison-head { min-height: 43px; background: var(--soft); color: var(--muted-ink); font-size: 12px; font-weight: 700; }
+.comparison-row > :first-child { padding-left: 14px; }
+.comparison-row > a { color: var(--navy); font-weight: 800; text-decoration: underline; text-underline-offset: 4px; }
+.results-note { margin: 15px 0 0; color: var(--muted-ink); font-size: 12px; }
+
+.editorial-band { background: var(--navy-deep); color: #fff; }
+.editorial-layout { min-height: 540px; display: grid; grid-template-columns: .72fr 1.28fr; gap: 80px; align-items: center; padding-block: 70px; }
+.editorial-intro h2 { margin: 0; font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: clamp(38px, 4vw, 56px); font-weight: 600; line-height: 1.4; }
+.editorial-intro > p:not(:first-child) { max-width: 380px; margin: 25px 0; color: #c4ced7; font-size: 12px; line-height: 2; }
+.editorial-intro > a { display: inline-flex; align-items: center; gap: 10px; padding-bottom: 7px; border-bottom: 1px solid #fff; font-size: 11px; font-weight: 700; }
+.editorial-intro svg { width: 15px; }
+.guide-list { border-top: 1px solid #536575; }
+.guide-list a { min-height: 88px; display: grid; grid-template-columns: 42px 1fr 110px 20px; align-items: center; gap: 18px; border-bottom: 1px solid #536575; }
+.guide-list span { color: #91a0ad; font: 11px/1 Arial; }
+.guide-list strong { font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: 17px; font-weight: 600; }
+.guide-list small { color: #a9b5c0; font-size: 10px; }
+.guide-list svg { width: 15px; }
+
+.ranking-section { display: grid; grid-template-columns: .72fr 1.28fr; gap: 80px; border-bottom: 1px solid var(--line); }
+.ranking-copy > p:not(:first-child) { max-width: 330px; margin-top: 21px; color: var(--muted-ink); font-size: 12px; line-height: 1.9; }
+.ranking-list { margin: 0; padding: 0; list-style: none; border-top: 2px solid var(--navy); }
+.ranking-list a { min-height: 74px; display: grid; grid-template-columns: 55px 1fr 20px; align-items: center; gap: 12px; border-bottom: 1px solid var(--line); }
+.ranking-list span { color: var(--orange); font: 700 13px/1 Arial; }
+.ranking-list strong { font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: 15px; font-weight: 600; }
+.ranking-list svg { width: 14px; }
+
+.feature-detail { background: var(--warm); border-bottom: 1px solid var(--line); }
+.feature-layout { min-height: 530px; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 90px; padding-block: 80px; }
+.article-category.light { color: var(--orange); }
+.feature-layout h2 { margin: 20px 0 0; color: var(--navy-deep); font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: clamp(30px, 3.5vw, 48px); font-weight: 600; line-height: 1.55; }
+.feature-layout > div:last-child > p { color: var(--muted-ink); font-size: 13px; line-height: 2; }
+.feature-points { margin-block: 27px; border-top: 1px solid var(--line); }
+.feature-points p { margin: 0; min-height: 58px; display: grid; grid-template-columns: 130px 1fr; align-items: center; border-bottom: 1px solid var(--line); }
+.feature-points span { color: var(--muted-ink); font: 9px/1 Arial; letter-spacing: .09em; }
+.feature-points strong { color: var(--navy); font-size: 11px; }
+.feature-layout > div:last-child > a { display: inline-flex; align-items: center; gap: 9px; font-size: 11px; font-weight: 700; }
+.feature-layout svg { width: 14px; }
+
+.consult { min-height: 230px; margin-block: 92px; padding: 45px 52px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 60px; border: 1px solid var(--navy); }
+.consult h2 { margin: 0 0 12px; color: var(--navy-deep); font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: 34px; font-weight: 600; }
+.consult > div > p:last-child { margin: 0; color: var(--muted-ink); font-size: 12px; }
+.consult > a { min-height: 52px; display: inline-flex; align-items: center; gap: 20px; padding-inline: 25px; background: var(--navy); color: #fff; font-size: 12px; font-weight: 700; }
+.consult svg { width: 16px; }
+.sticky-compare { position: fixed; right: 24px; bottom: 24px; z-index: 30; min-width: 220px; min-height: 58px; padding: 10px 15px 10px 18px; display: flex; align-items: center; justify-content: space-between; gap: 20px; background: var(--navy); color: #fff; box-shadow: 0 10px 32px rgb(7 29 49 / 24%); }
+.sticky-compare small, .sticky-compare strong { display: block; }
+.sticky-compare small { margin-bottom: 3px; color: #c5d0da; font-size: 11px; }
+.sticky-compare strong { font-size: 13px; }
+.sticky-compare svg { width: 16px; }
+
+.policy { background: var(--soft); border-top: 1px solid var(--line); }
+.policy-inner { min-height: 108px; display: grid; grid-template-columns: 36px 1fr auto; align-items: center; gap: 20px; }
+.policy-inner > svg { width: 27px; color: var(--navy); }
+.policy-inner strong { font-size: 12px; }
+.policy-inner p { margin: 6px 0 0; color: var(--muted-ink); font-size: 10px; }
+.policy-inner > span { display: flex; align-items: center; gap: 6px; color: var(--navy); font-size: 10px; font-weight: 700; }
+.policy-inner > span svg { width: 13px; }
+
+footer { background: var(--navy-deep); color: #fff; }
+.footer-main { min-height: 260px; display: grid; grid-template-columns: 1fr 1.45fr; align-items: start; gap: 70px; padding-block: 58px; }
+.footer-brand strong { color: #fff; }
+.footer-brand small { color: #9caab6; }
+.footer-nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.footer-nav > div { display: grid; align-content: start; gap: 12px; }
+.footer-nav strong { margin-bottom: 6px; font-size: 11px; }
+.footer-nav a { color: #aeb9c3; font-size: 10px; }
+.footer-bottom { min-height: 58px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #405365; color: #91a0ad; font-size: 9px; }
+
+@media (max-width: 980px) {
+  .header-main { grid-template-columns: auto 1fr; gap: 14px 20px; padding-block: 12px; }
+  .site-search { grid-column: 1 / -1; grid-row: 2; max-width: none; }
+  .header-links { grid-column: 2; grid-row: 1; justify-self: end; }
+  .category-nav { grid-template-columns: repeat(3, 1fr); }
+  .category-nav a { min-height: 38px; border-bottom: 1px solid var(--line); }
+  .masthead { grid-template-columns: 1fr; gap: 25px; align-items: start; }
+  .hero-compare { width: 100%; }
+  .lead-grid { grid-template-columns: 1fr; }
+  .lead-secondary { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  .secondary-story + .secondary-story { padding-block: 0 28px; }
+  .topic-inner { grid-template-columns: 1fr; padding-block: 25px; }
+  .topic-inner > div { grid-template-columns: repeat(3, 1fr); }
+  .topic-inner a { border-bottom: 1px solid var(--line); }
+  .article-grid { grid-template-columns: repeat(2, 1fr); }
+  .compare-heading { grid-template-columns: 1fr; gap: 20px; }
+  .compare-steps { grid-template-columns: 1fr; }
+  .compare-steps > div { border-right: 0; border-bottom: 1px solid #526579; }
+  .compare-steps > div:last-child { border-bottom: 0; }
+  .comparison-table { overflow-x: auto; }
+  .comparison-row { min-width: 760px; }
+  .editorial-layout, .ranking-section, .feature-layout { grid-template-columns: 1fr; gap: 52px; }
+  .ranking-section { padding-block: 80px; }
+}
+
+@media (max-width: 640px) {
+  .shell { width: min(100% - 32px, 1200px); }
+  .topline-inner { min-height: 27px; }
+  .topline-inner p:last-child, .header-links > a:first-child, .brand small { display: none; }
+  .header-main { gap: 10px 14px; }
+  .consult-link { min-height: 36px; padding-inline: 12px; font-size: 10px; }
+  .site-search button { padding-inline: 12px; }
+  .category-nav { grid-template-columns: repeat(2, 1fr); }
+  .category-nav a { font-size: 10px; }
+  .masthead { min-height: 0; padding-block: 38px 32px; }
+  .masthead h1 { font-size: clamp(37px, 11vw, 52px); }
+  .hero-compare { padding: 21px 19px; }
+  .lead-grid { gap: 34px; padding-bottom: 48px; }
+  .lead-image { height: 270px; }
+  .lead-body h2 { font-size: 27px; }
+  .lead-secondary { grid-template-columns: 1fr; }
+  .secondary-story { grid-template-rows: 210px 1fr; }
+  .topic-inner > div { grid-template-columns: repeat(2, 1fr); }
+  .content-section { padding-block: 68px 75px; }
+  .section-heading { grid-template-columns: 1fr; align-items: start; }
+  .section-heading > a { justify-self: start; }
+  .article-grid { grid-template-columns: 1fr; gap: 43px; }
+  .story-compare { grid-template-columns: 1fr; }
+  .story-compare > a { justify-content: space-between; }
+  .inline-compare { margin-top: 48px; padding: 28px 23px; grid-template-columns: 1fr; gap: 27px; }
+  .inline-compare h3 { font-size: 22px; }
+  .inline-compare > a { justify-content: space-between; }
+  .comparison-workbench { padding-block: 67px; }
+  .compare-heading h2 { font-size: 31px; }
+  .comparison-results { padding: 23px 18px 19px; }
+  .results-top { align-items: start; flex-direction: column; }
+  .card-image { height: 235px; }
+  .card-body h3, .card-body > p:not(.article-category) { min-height: 0; }
+  .editorial-layout { min-height: 0; padding-block: 68px; }
+  .guide-list a { grid-template-columns: 34px 1fr 18px; padding-block: 17px; }
+  .guide-list small { display: none; }
+  .ranking-section { gap: 38px; }
+  .feature-layout { min-height: 0; padding-block: 67px; gap: 36px; }
+  .feature-points p { grid-template-columns: 100px 1fr; }
+  .consult { margin-block: 60px; padding: 35px 26px; grid-template-columns: 1fr; gap: 30px; }
+  .consult h2 { font-size: 29px; }
+  .consult > a { justify-content: space-between; }
+  .sticky-compare { right: 12px; bottom: 12px; left: 12px; min-width: 0; }
+  .policy-inner { padding-block: 24px; grid-template-columns: 30px 1fr; }
+  .policy-inner > span { grid-column: 2; }
+  .footer-main { grid-template-columns: 1fr; gap: 45px; }
+  .footer-nav { grid-template-columns: repeat(2, 1fr); row-gap: 35px; }
+  .footer-bottom { min-height: 78px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } img { transition: none !important; } }
+</style>
+</head>
+<body><main id="top"><div class="topline"><div class="shell topline-inner"><p>法人向けAI活用の事例と選び方</p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg> 出典・確認日を明記</p></div></div><header class="site-header"><div class="shell header-main"><a class="brand" href="#top" aria-label="AI COMPASS トップへ"><span class="brand-symbol">A<span aria-hidden="true"></span></span><span><strong>AI COMPASS</strong><small>BUSINESS AI GUIDE</small></span></a><form class="site-search" action="#stories"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search" aria-hidden="true"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg><input id="base-ui-_R_2i9i_" data-slot="input" aria-label="記事やAIサービスを検索" placeholder="記事・事例・AIサービスを検索" class="h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40" name="q"/><button type="submit">検索</button></form><div class="header-links"><a href="#guide">はじめての方へ</a><a class="consult-link" href="#compare">AIサービス比較</a></div></div><nav class="shell category-nav" aria-label="カテゴリー"><a href="#stories">新着記事</a><a href="#interviews">導入事例</a><a href="#categories">業務から探す</a><a href="#categories">業界から探す</a><a href="#compare">AIサービス比較</a><a href="#ranking">人気ランキング</a></nav></header><section class="masthead shell"><div><p class="eyebrow">AI STORIES FOR BUSINESS</p><h1>AIを、誰かの成功談で<br/>終わらせない。</h1></div><aside class="hero-compare" aria-label="AIサービス比較の入口"><p>AIサービス比較</p><h2>自社に合う候補を絞る</h2><div class="hero-compare-options"><a href="#compare">課題・業務から探す <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></a><a href="#compare">業界から探す <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></a><a href="#compare">サービスカテゴリから探す <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></a></div><a class="hero-compare-button" href="#compare">条件を選んで比較する <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></aside></section><section class="shell lead-grid" id="interviews" aria-label="注目の記事"><article class="lead-story"><a class="lead-image" href="#feature"><img src="./assets/hatakeyama.jpg" alt="ノートパソコンを前に笑顔で座る畠山謙人税理士"/><span>FEATURE INTERVIEW</span></a><div class="lead-body"><p class="article-category">会計・バックオフィス</p><h2><a href="#feature">スタッフ0人で顧問先60社。ひとり税理士がつくった「AIと人の分業」</a></h2><p>夜間はAIが仕訳候補をつくり、朝は人にしかできない判断から始める。その仕組みと線引きを聞きました。</p><div class="person-row"><span class="person-avatar">H</span><span><strong>畠山 謙人さん</strong><small>公認会計士・税理士<!-- -->　・　<!-- -->インタビュー・8分</small></span><a href="#feature" aria-label="特集インタビューを読む"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div><div class="story-compare"><div><span>この記事に関連するサービス</span><strong>会計業務の自動化・AIエージェント</strong><small>導入規模や連携条件をそろえて比較できます</small></div><a href="#compare">関連サービスを比較する <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div></div></article><div class="lead-secondary"><article class="secondary-story"><a class="secondary-image" href="#stories"><img src="./assets/sales-team.jpg" alt="テーブルを囲んで話すビジネスチーム"/></a><div><p class="article-category">営業・マーケティング</p><h2><a href="#stories">提案書をつくる前の2時間を、AIで15分に。営業チームの情報収集術</a></h2><span>ケーススタディ・6分</span></div><b aria-hidden="true">0<!-- -->2</b></article><article class="secondary-story"><a class="secondary-image" href="#stories"><img src="./assets/meeting-team.jpg" alt="パソコンを見ながら打ち合わせをするチーム"/></a><div><p class="article-category">会議・ナレッジ</p><h2><a href="#stories">議事録で終わらせない。会議の決定を次の仕事へつなぐAI運用</a></h2><span>特集・5分</span></div><b aria-hidden="true">0<!-- -->3</b></article></div></section><section class="topic-strip" id="categories"><div class="shell topic-inner"><strong>関心のあるテーマから読む</strong><div><a href="#stories">経理・会計<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></a><a href="#stories">営業<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></a><a href="#stories">人事・採用<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></a><a href="#stories">会議・文書<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></a><a href="#stories">顧客対応<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></a><a href="#stories">製造・現場<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></a></div></div></section><section class="content-section shell" id="stories"><div class="section-heading"><div><p>NEW ARTICLES</p><h2>新着の記事</h2></div><p>実例、インタビュー、選び方。<br/>仕事に持ち帰れる視点を届けます。</p><a href="#stories">記事をすべて見る <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div><div class="article-grid"><article class="article-card"><a class="card-image" href="#guide"><img src="./assets/meeting-team.jpg" alt="パソコンを見ながら打ち合わせをするチーム"/><span>EDITOR&#x27;S PICK</span></a><div class="card-body"><p class="article-category">会議・ナレッジ</p><h3><a href="#guide">議事録で終わらせない。会議の決定を次の仕事へつなぐAI運用</a></h3><p>文字起こしから担当者への共有まで。会議後に止まりがちな情報を動かす方法を整理します。</p><div class="card-meta"><span><strong>AI COMPASS編集部</strong><small>特集・5分</small></span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div><div class="card-actions"><a href="#guide">記事を読む</a><a href="#compare">関連サービスを比較</a></div></div></article><article class="article-card"><a class="card-image" href="#guide"><img src="./assets/planning.jpg" alt="資料を広げて業務を検討する人たち"/></a><div class="card-body"><p class="article-category">経営・組織</p><h3><a href="#guide">AIに任せる仕事、人が決める仕事。導入前に引く「一本の線」</a></h3><p>便利さだけで範囲を決めない。責任、データ、判断、例外対応から考える4つの視点。</p><div class="card-meta"><span><strong>AI COMPASS編集部</strong><small>読みもの・7分</small></span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div><div class="card-actions"><a href="#guide">記事を読む</a><a href="#compare">関連サービスを比較</a></div></div></article><article class="article-card"><a class="card-image" href="#guide"><img src="./assets/hr-team.jpg" alt="明るいオフィスで並んで立つチーム"/></a><div class="card-body"><p class="article-category">人事・採用</p><h3><a href="#guide">候補者との対話は人がする。採用担当がAIに預けた3つの下準備</a></h3><p>求人票、面談準備、社内共有。人と向き合う時間を増やすための小さな自動化。</p><div class="card-meta"><span><strong>AI COMPASS編集部</strong><small>ケーススタディ・5分</small></span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div><div class="card-actions"><a href="#guide">記事を読む</a><a href="#compare">関連サービスを比較</a></div></div></article><article class="article-card"><a class="card-image" href="#guide"><img src="./assets/manufacturing.jpg" alt="ノートパソコンを操作する製造現場の技術者"/></a><div class="card-body"><p class="article-category">製造・現場</p><h3><a href="#guide">ベテランの頭の中を、検索できる知識へ。現場AIの始め方</a></h3><p>いきなり全社導入を目指さず、質問が多い一工程から知識を集める進め方を紹介します。</p><div class="card-meta"><span><strong>AI COMPASS編集部</strong><small>解説・6分</small></span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div><div class="card-actions"><a href="#guide">記事を読む</a><a href="#compare">関連サービスを比較</a></div></div></article><article class="article-card"><a class="card-image" href="#guide"><img src="./assets/comparison-team.jpg" alt="パソコンを囲んで画面を確認するオフィスチーム"/></a><div class="card-body"><p class="article-category">AIサービスの選び方</p><h3><a href="#guide">機能数より先に見る。「運用できるAI」の比較ポイント7つ</a></h3><p>データの置き場所、担当者、確認工程。導入後に困らない比較軸をチェックリストにしました。</p><div class="card-meta"><span><strong>AI COMPASS編集部</strong><small>保存版・9分</small></span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div><div class="card-actions"><a href="#guide">記事を読む</a><a href="#compare">関連サービスを比較</a></div></div></article></div><div class="inline-compare"><div><span>3 QUESTIONS</span><h3>読むだけで終わらせない。<br/>自社で使えるAIサービスを絞り込む。</h3><p>業務・会社規模・導入方法を選ぶと、比較候補を整理できます。</p></div><a href="#compare">3つの質問で候補を絞る <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div></section><section class="comparison-workbench" id="compare"><div class="shell"><div class="compare-heading"><div><p>AI SERVICE COMPARISON</p><h2>自社の条件で、比較する。</h2></div><p>知名度や機能数ではなく、実際に使う業務と運用条件から候補を絞ります。</p></div><div class="compare-steps" aria-label="比較条件"><div><span>01</span><strong>改善したい業務</strong><div><a href="#comparison-results">経理・会計</a><a href="#comparison-results">営業</a><a href="#comparison-results">会議・文書</a></div></div><div><span>02</span><strong>会社・チーム規模</strong><div><a href="#comparison-results">1〜10名</a><a href="#comparison-results">11〜100名</a><a href="#comparison-results">101名以上</a></div></div><div><span>03</span><strong>導入方法</strong><div><a href="#comparison-results">すぐ使えるSaaS</a><a href="#comparison-results">個別開発</a><a href="#comparison-results">伴走支援</a></div></div></div><div class="comparison-results" id="comparison-results"><div class="results-top"><div><span>COMPARISON PREVIEW</span><h3>比較候補の例</h3></div><a href="#comparison-results">選択条件を変更</a></div><div class="comparison-table" role="table" aria-label="AIサービス比較候補の例"><div class="comparison-row comparison-head" role="row"><span role="columnheader">候補</span><span role="columnheader">得意な業務</span><span role="columnheader">導入方法</span><span role="columnheader">人の確認</span><span role="columnheader">詳細</span></div><div class="comparison-row" role="row"><strong role="cell">業務自動化型</strong><span role="cell">情報取得・整理・下書き</span><span role="cell">個別設計</span><span role="cell">承認前に必要</span><a role="cell" href="#consult">相談する</a></div><div class="comparison-row" role="row"><strong role="cell">社内ナレッジ型</strong><span role="cell">規程・資料の検索と回答</span><span role="cell">SaaS</span><span role="cell">重要回答で必要</span><a role="cell" href="#consult">相談する</a></div><div class="comparison-row" role="row"><strong role="cell">議事録・文書型</strong><span role="cell">記録・要約・文書作成</span><span role="cell">SaaS</span><span role="cell">共有前に必要</span><a role="cell" href="#consult">相談する</a></div></div><p class="results-note">※ 掲載内容は比較画面の表示例です。実サービス情報は公式情報の確認後に掲載します。</p></div></div></section><section class="editorial-band" id="guide"><div class="shell editorial-layout"><div class="editorial-intro"><p>START HERE</p><h2>AI活用を、<br/>一歩ずつ。</h2><p>導入前の整理からサービス比較まで、担当者が最初に読みたい記事を集めました。</p><a href="#consult">はじめてのAI導入ガイド <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div><div class="guide-list"><a href="#consult"><span>01</span><strong>まず、どの仕事から始めるか</strong><small>業務の選び方</small><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a href="#consult"><span>02</span><strong>AIに渡してよい情報を決める</strong><small>データと安全性</small><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a href="#consult"><span>03</span><strong>比較表の前に、運用を描く</strong><small>サービス選定</small><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a href="#consult"><span>04</span><strong>小さく試し、続け方を決める</strong><small>PoCと定着</small><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div></div></section><section class="content-section shell ranking-section" id="ranking"><div class="ranking-copy"><p>WEEKLY RANKING</p><h2>今週よく読まれた記事</h2><p>導入担当者が読んでいる記事を、毎週更新します。</p></div><ol class="ranking-list"><li><a href="#stories"><span>01</span><strong>ひとり税理士のAI経理</strong><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></li><li><a href="#stories"><span>02</span><strong>生成AIの社内ルール入門</strong><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></li><li><a href="#stories"><span>03</span><strong>AI議事録サービス比較</strong><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></li><li><a href="#stories"><span>04</span><strong>営業AI、最初の一業務</strong><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></li><li><a href="#stories"><span>05</span><strong>失敗しないPoCの進め方</strong><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></li></ol></section><section class="feature-detail" id="feature"><div class="shell feature-layout"><div><p class="article-category light">FEATURE 001 / INTERVIEW</p><h2>「スタッフを増やす前に、<br/>AIに仕事を覚えてもらった」</h2></div><div><p>AIが情報取得と仕訳候補の作成を担当し、税務判断と最終レビューは本人が担う。結果だけでなく、実際の役割分担から再現の条件を読み解きます。</p><div class="feature-points"><p><span>AI DOES</span><strong>情報取得・整理・候補作成</strong></p><p><span>HUMAN DOES</span><strong>税務判断・承認・顧客提案</strong></p><p><span>STACK</span><strong>Claude Code × freee API</strong></p></div><a href="https://adv.freee.co.jp/case/hatakeyama-2026">出典となる導入事例を見る <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div></div></section><section class="consult shell" id="consult"><div><p>AI COMPASS DIAGNOSIS</p><h2>自社では、何から始める？</h2><p>6つの質問から、試しやすい活用方法と導入前に整える条件を整理します。</p></div><a href="#compare">無料診断をはじめる <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></section><section class="policy"><div class="shell policy-inner"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open" aria-hidden="true"><path d="M12 5v16"></path><path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z"></path></svg><div><strong>AI COMPASSの編集方針</strong><p>一次情報を優先し、確認日と出典を表示。広告と記事評価を分けて掲載します。</p></div><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg> 人が確認して公開</span></div></section><a class="sticky-compare" href="#compare"><span><small>AIサービス比較</small><strong>自社に合う候補を探す</strong></span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><footer><div class="shell footer-main"><a class="brand footer-brand" href="#top"><span class="brand-symbol">A<span aria-hidden="true"></span></span><span><strong>AI COMPASS</strong><small>BUSINESS AI GUIDE</small></span></a><div class="footer-nav"><div><strong>記事を読む</strong><a href="#stories">新着記事</a><a href="#interviews">インタビュー</a><a href="#ranking">ランキング</a></div><div><strong>AIを探す</strong><a href="#categories">業務から探す</a><a href="#compare">AIサービス比較</a><a href="#consult">AI活用診断</a></div><div><strong>このサイトについて</strong><a href="#top">編集方針</a><a href="#top">運営会社</a><a href="#top">お問い合わせ</a></div></div></div><div class="shell footer-bottom"><span>© 2026 AI COMPASS</span><span>利用規約　プライバシーポリシー</span></div></footer></main></body>
+</html>
