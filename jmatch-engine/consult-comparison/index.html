@@ -49,57 +49,132 @@
     }
 
     .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
       color: var(--white);
-      background:
-        radial-gradient(circle at 88% 18%, rgba(145, 201, 255, .2), transparent 30%),
-        linear-gradient(135deg, var(--navy-950), var(--navy-800));
+      background: linear-gradient(112deg, var(--navy-950) 0%, #0a2144 55%, var(--navy-800) 100%);
+    }
+
+    .hero::before {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      content: "";
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(90deg, transparent 0%, #000 55%, #000 100%);
+    }
+
+    .hero::after {
+      position: absolute;
+      z-index: -1;
+      top: -160px;
+      right: -70px;
+      width: 540px;
+      height: 540px;
+      content: "";
+      background: linear-gradient(135deg, rgba(145,201,255,.17), transparent 62%);
+      clip-path: polygon(38% 0, 100% 0, 100% 62%);
     }
 
     .hero-inner {
       display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(420px, .92fr);
-      gap: clamp(40px, 7vw, 92px);
+      grid-template-columns: minmax(0, 1.02fr) minmax(430px, .98fr);
+      gap: clamp(38px, 6vw, 78px);
       align-items: center;
-      min-height: 430px;
-      padding-block: 58px;
+      min-height: 450px;
+      padding-block: 48px;
+    }
+
+    .hero-main {
+      padding: 12px 0 16px 28px;
+      border-left: 3px solid var(--accent);
     }
 
     .eyebrow {
-      display: inline-block;
-      margin: 0 0 18px;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin: 0 0 20px;
       color: var(--accent);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 900;
-      letter-spacing: .1em;
+      letter-spacing: .14em;
+    }
+
+    .eyebrow::after {
+      width: 52px;
+      height: 1px;
+      content: "";
+      background: rgba(145, 201, 255, .55);
     }
 
     h1, h2, p { overflow-wrap: anywhere; }
 
     h1 {
       margin: 0;
-      font-size: clamp(42px, 5.1vw, 68px);
-      line-height: 1.12;
-      letter-spacing: -.045em;
+      font-size: clamp(45px, 5vw, 67px);
+      line-height: 1.06;
+      letter-spacing: -.055em;
+    }
+
+    .hero-ai {
+      display: inline-block;
+      margin-left: .08em;
+      color: var(--accent);
+    }
+
+    .hero-human {
+      color: var(--white);
+      font-size: .76em;
+      letter-spacing: -.07em;
     }
 
     .hero-copy {
-      max-width: 670px;
-      margin: 20px 0 0;
+      max-width: 640px;
+      margin: 22px 0 0;
       color: #dbe8f7;
-      font-size: clamp(17px, 1.7vw, 21px);
+      font-size: clamp(16px, 1.55vw, 19px);
       font-weight: 700;
-      line-height: 1.8;
+      line-height: 1.75;
     }
 
     .hero-copy strong { color: var(--white); }
+
+    .hero-facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin: 24px 0 0;
+      padding: 0;
+      border-top: 1px solid rgba(255,255,255,.18);
+      border-bottom: 1px solid rgba(255,255,255,.18);
+      list-style: none;
+    }
+
+    .hero-facts li {
+      min-width: 0;
+      padding: 11px 12px;
+      border-right: 1px solid rgba(255,255,255,.18);
+      color: #dbe8f7;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.35;
+      text-align: center;
+    }
+
+    .hero-facts li:first-child { padding-left: 0; text-align: left; }
+    .hero-facts li:last-child { border-right: 0; }
 
     .jump {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       min-height: 48px;
-      margin-top: 24px;
-      padding: 0 22px;
+      margin-top: 20px;
+      padding: 0 20px;
       border-radius: 0;
       color: var(--navy-950);
       background: var(--white);
@@ -124,20 +199,22 @@
       grid-template-columns: 1fr 32px 1.12fr;
       align-items: center;
       gap: 10px;
-      padding: 22px;
+      padding: 18px;
       border: 1px solid rgba(255,255,255,.2);
+      border-top: 3px solid var(--accent);
       border-radius: 0;
-      background: rgba(255,255,255,.09);
-      box-shadow: 0 24px 60px rgba(0,0,0,.17);
-      backdrop-filter: blur(8px);
+      background: rgba(4, 18, 42, .42);
+      box-shadow: 0 28px 70px rgba(0,0,0,.2);
+      backdrop-filter: blur(5px);
     }
 
     .shift-box {
-      min-height: 155px;
+      min-height: 180px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 20px;
+      padding: 20px 18px;
+      border: 1px solid rgba(7, 22, 47, .08);
       border-radius: 0;
       color: var(--ink);
       background: rgba(255,255,255,.93);
@@ -146,25 +223,34 @@
     .shift-box.new {
       color: var(--white);
       background: var(--navy-900);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.15);
+      box-shadow: inset 0 0 0 1px rgba(145,201,255,.24);
     }
 
     .shift-box small {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
       color: var(--muted);
       font-size: 11px;
       font-weight: 800;
     }
 
+    .shift-box small span {
+      color: var(--navy-700);
+      letter-spacing: .08em;
+    }
+
     .shift-box.new small { color: #bcd1e9; }
+    .shift-box.new small span { color: var(--accent); }
 
     .shift-box b {
       display: block;
-      margin-top: 5px;
-      font-size: 20px;
+      margin-top: 11px;
+      font-size: 22px;
     }
 
     .shift-box p {
-      margin: 12px 0 0;
+      margin: 14px 0 0;
       color: var(--muted);
       font-size: 13px;
       font-weight: 700;
@@ -188,7 +274,7 @@
 
     .shift-arrow {
       color: var(--accent);
-      font-size: 27px;
+      font-size: 30px;
       font-weight: 900;
       text-align: center;
     }
@@ -401,7 +487,7 @@
       .hero-inner {
         grid-template-columns: 1fr;
         min-height: auto;
-        padding-block: 50px;
+        padding-block: 46px;
       }
 
       .shift { max-width: 650px; }
@@ -411,14 +497,19 @@
     @media (max-width: 760px) {
       .container { width: min(100% - 28px, 620px); }
 
-      .hero-inner { gap: 34px; padding-block: 42px; }
+      .hero-inner { gap: 30px; padding-block: 36px; }
+      .hero-main { padding: 5px 0 8px 17px; }
       h1 { font-size: clamp(39px, 11vw, 53px); }
       .hero-copy { font-size: 16px; }
+
+      .hero-facts { margin-top: 20px; }
+      .hero-facts li { padding: 10px 7px; font-size: 10px; }
+      .hero-facts li:first-child { padding-left: 0; }
 
       .shift {
         grid-template-columns: 1fr;
         gap: 9px;
-        padding: 16px;
+        padding: 12px;
       }
 
       .shift-box { min-height: 0; padding: 17px; }
@@ -527,25 +618,30 @@
 <body>
   <header class="hero">
     <div class="container hero-inner">
-      <div>
+      <div class="hero-main">
         <p class="eyebrow">JコンサルからJマッチへ</p>
-        <h1>今度はAI（と人）</h1>
+        <h1>今度は<span class="hero-ai">AI</span><span class="hero-human">（と人）</span></h1>
         <p class="hero-copy">
           <strong>月3万円も、手数料の割引もそのまま。</strong><br>
           情報探しと申請書づくりはAIで。必要なときは人にも相談できます。
         </p>
-        <a class="jump" href="#comparison">違いを比較する ↓</a>
+        <ul class="hero-facts" aria-label="Jマッチの特徴">
+          <li>月3万円はそのまま</li>
+          <li>手数料の割引も継続</li>
+          <li>AI＋提携士業</li>
+        </ul>
+        <a class="jump" href="#comparison">比較表を見る ↓</a>
       </div>
 
       <div class="shift" role="img" aria-label="Jコンサルから、AIと人が支援するJマッチへの変更">
         <div class="shift-box">
-          <small>2015～2026.7</small>
+          <small><span>これまで</span>2015～2026.7</small>
           <b>Jコンサル</b>
           <p>人が探す<br>人に相談する</p>
         </div>
         <div class="shift-arrow" aria-hidden="true">→</div>
         <div class="shift-box new">
-          <small>2026.8～</small>
+          <small><span>これから</span>2026.8～</small>
           <b>Jマッチ</b>
           <p>AIが探す<br>AIと作る</p>
           <em>＋ 人にも相談</em>
