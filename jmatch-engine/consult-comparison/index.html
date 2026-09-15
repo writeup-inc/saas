@@ -14,18 +14,16 @@
   <link rel="canonical" href="https://writeup-inc.github.io/saas/jmatch-engine/consult-comparison/">
   <style>
     :root {
-      --navy-950: #07162f;
-      --navy-900: #0c2852;
-      --navy-800: #153c70;
-      --navy-700: #24558d;
-      --ink: #111c2f;
-      --muted: #5d6879;
-      --line: #d8dee8;
-      --soft: #f3f6fa;
-      --pale: #eaf1f8;
-      --white: #fff;
-      --accent: #91c9ff;
-      --shadow: 0 20px 55px rgba(7, 30, 67, .12);
+      --navy: #07162f;
+      --navy-2: #102e56;
+      --blue: #7fc6ff;
+      --blue-soft: #eaf4fc;
+      --paper: #f5f3ee;
+      --white: #ffffff;
+      --ink: #111827;
+      --muted: #637083;
+      --line: #ccd4df;
+      --line-dark: rgba(255,255,255,.22);
     }
 
     * { box-sizing: border-box; }
@@ -38,130 +36,145 @@
     body {
       margin: 0;
       color: var(--ink);
-      background: var(--soft);
+      background: var(--paper);
       font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
-    .container {
+    h1, h2, p { overflow-wrap: anywhere; }
+
+    .wrap {
       width: min(1200px, calc(100% - 48px));
       margin-inline: auto;
     }
 
-    .hero {
-      position: relative;
-      isolation: isolate;
-      overflow: hidden;
-      color: var(--white);
-      background: linear-gradient(112deg, var(--navy-950) 0%, #0a2144 55%, var(--navy-800) 100%);
+    .masthead {
+      color: var(--navy);
+      background: var(--paper);
+      border-bottom: 1px solid var(--navy);
     }
 
-    .hero::before {
-      position: absolute;
-      z-index: -1;
-      inset: 0;
-      content: "";
-      background-image:
-        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
-      background-size: 42px 42px;
-      mask-image: linear-gradient(90deg, transparent 0%, #000 55%, #000 100%);
-    }
-
-    .hero::after {
-      position: absolute;
-      z-index: -1;
-      top: -160px;
-      right: -70px;
-      width: 540px;
-      height: 540px;
-      content: "";
-      background: linear-gradient(135deg, rgba(145,201,255,.17), transparent 62%);
-      clip-path: polygon(38% 0, 100% 0, 100% 62%);
-    }
-
-    .hero-inner {
-      display: grid;
-      grid-template-columns: minmax(0, 1.02fr) minmax(430px, .98fr);
-      gap: clamp(38px, 6vw, 78px);
-      align-items: center;
-      min-height: 450px;
-      padding-block: 48px;
-    }
-
-    .hero-main {
-      padding: 12px 0 16px 28px;
-      border-left: 3px solid var(--accent);
-    }
-
-    .eyebrow {
+    .masthead-inner {
+      min-height: 64px;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 13px;
-      margin: 0 0 20px;
-      color: var(--accent);
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: inherit;
+      font-size: 13px;
+      font-weight: 950;
+      letter-spacing: .12em;
+      text-decoration: none;
+    }
+
+    .brand::before {
+      width: 13px;
+      height: 13px;
+      content: "";
+      background: var(--navy);
+      box-shadow: 5px 5px 0 var(--blue);
+    }
+
+    .masthead-note {
+      margin: 0;
+      color: var(--muted);
       font-size: 12px;
-      font-weight: 900;
+      font-weight: 800;
+      letter-spacing: .06em;
+    }
+
+    .hero {
+      padding: 68px 0 72px;
+      background:
+        linear-gradient(90deg, rgba(7,22,47,.055) 1px, transparent 1px),
+        var(--paper);
+      background-size: calc((100vw - 48px) / 12) 100%;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(330px, .86fr);
+      gap: clamp(32px, 6vw, 80px);
+      align-items: center;
+    }
+
+    .kicker,
+    .section-tag {
+      margin: 0 0 20px;
+      color: var(--navy-2);
+      font-size: 12px;
+      font-weight: 950;
       letter-spacing: .14em;
     }
 
-    .eyebrow::after {
-      width: 52px;
-      height: 1px;
-      content: "";
-      background: rgba(145, 201, 255, .55);
-    }
-
-    h1, h2, p { overflow-wrap: anywhere; }
-
-    h1 {
+    .hero h1 {
       margin: 0;
-      font-size: clamp(45px, 5vw, 67px);
-      line-height: 1.06;
-      letter-spacing: -.055em;
-    }
-
-    .hero-ai {
-      display: inline-block;
-      margin-left: .08em;
-      color: var(--accent);
-    }
-
-    .hero-human {
-      color: var(--white);
-      font-size: .76em;
+      color: var(--navy);
+      line-height: .92;
       letter-spacing: -.07em;
     }
 
-    .hero-copy {
-      max-width: 640px;
-      margin: 22px 0 0;
-      color: #dbe8f7;
-      font-size: clamp(16px, 1.55vw, 19px);
-      font-weight: 700;
-      line-height: 1.75;
+    .hero-prefix {
+      display: block;
+      margin-bottom: 16px;
+      font-size: clamp(26px, 3vw, 39px);
+      letter-spacing: -.045em;
     }
 
-    .hero-copy strong { color: var(--white); }
+    .hero-mainline {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: .05em;
+      font-size: clamp(64px, 8vw, 108px);
+    }
+
+    .hero-mainline b {
+      color: var(--navy);
+      font-weight: 950;
+    }
+
+    .hero-mainline small {
+      color: var(--navy-2);
+      font-size: .46em;
+      font-weight: 900;
+      letter-spacing: -.08em;
+    }
+
+    .hero-lead {
+      max-width: 650px;
+      margin: 34px 0 0;
+      color: #34445b;
+      font-size: clamp(17px, 1.55vw, 20px);
+      font-weight: 750;
+      line-height: 1.85;
+    }
+
+    .hero-lead strong { color: var(--navy); }
 
     .hero-facts {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      margin: 24px 0 0;
+      margin: 32px 0 0;
       padding: 0;
-      border-top: 1px solid rgba(255,255,255,.18);
-      border-bottom: 1px solid rgba(255,255,255,.18);
+      border-top: 1px solid var(--navy);
+      border-bottom: 1px solid var(--navy);
       list-style: none;
     }
 
     .hero-facts li {
-      min-width: 0;
-      padding: 11px 12px;
-      border-right: 1px solid rgba(255,255,255,.18);
-      color: #dbe8f7;
+      padding: 14px 12px;
+      border-right: 1px solid var(--navy);
+      color: var(--navy);
       font-size: 12px;
-      font-weight: 800;
-      line-height: 1.35;
+      font-weight: 900;
+      line-height: 1.4;
       text-align: center;
     }
 
@@ -169,152 +182,126 @@
     .hero-facts li:last-child { border-right: 0; }
 
     .jump {
+      min-height: 52px;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      margin-top: 20px;
-      padding: 0 20px;
-      border-radius: 0;
-      color: var(--navy-950);
-      background: var(--white);
-      font-size: 15px;
+      justify-content: space-between;
+      gap: 28px;
+      margin-top: 24px;
+      padding: 0 18px;
+      border: 1px solid var(--navy);
+      color: var(--white);
+      background: var(--navy);
+      font-size: 14px;
       font-weight: 900;
       text-decoration: none;
-      transition: transform .2s ease, box-shadow .2s ease;
+      transition: color .18s ease, background .18s ease;
     }
 
-    .jump:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, .18);
-    }
+    .jump:hover { color: var(--navy); background: var(--white); }
 
     .jump:focus-visible {
-      outline: 3px solid var(--accent);
+      outline: 3px solid var(--blue);
       outline-offset: 4px;
     }
 
-    .shift {
+    .hero-art {
       display: grid;
-      grid-template-columns: 1fr 32px 1.12fr;
-      align-items: center;
-      gap: 10px;
-      padding: 18px;
-      border: 1px solid rgba(255,255,255,.2);
-      border-top: 3px solid var(--accent);
-      border-radius: 0;
-      background: rgba(4, 18, 42, .42);
-      box-shadow: 0 28px 70px rgba(0,0,0,.2);
-      backdrop-filter: blur(5px);
+      place-items: center;
+      aspect-ratio: 560 / 520;
+      background: var(--navy);
+      border-top: 6px solid var(--blue);
+      box-shadow: 24px 24px 0 rgba(7,22,47,.08);
     }
 
-    .shift-box {
-      min-height: 180px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 20px 18px;
-      border: 1px solid rgba(7, 22, 47, .08);
-      border-radius: 0;
-      color: var(--ink);
-      background: rgba(255,255,255,.93);
+    .hero-art svg {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
-    .shift-box.new {
+    .promise {
       color: var(--white);
-      background: var(--navy-900);
-      box-shadow: inset 0 0 0 1px rgba(145,201,255,.24);
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,.2);
+      border-bottom: 1px solid rgba(255,255,255,.2);
     }
 
-    .shift-box small {
+    .promise-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .promise-item {
+      min-height: 128px;
       display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 800;
+      align-items: center;
+      gap: 22px;
+      padding: 24px 0;
     }
 
-    .shift-box small span {
-      color: var(--navy-700);
+    .promise-item + .promise-item {
+      padding-left: 42px;
+      border-left: 1px solid var(--line-dark);
+    }
+
+    .promise-no {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 950;
       letter-spacing: .08em;
     }
 
-    .shift-box.new small { color: #bcd1e9; }
-    .shift-box.new small span { color: var(--accent); }
+    .promise-item p {
+      margin: 0;
+      color: #dbe8f5;
+      font-size: 14px;
+      font-weight: 750;
+      line-height: 1.6;
+    }
 
-    .shift-box b {
+    .promise-item strong {
       display: block;
-      margin-top: 11px;
-      font-size: 22px;
-    }
-
-    .shift-box p {
-      margin: 14px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
-      line-height: 1.55;
-    }
-
-    .shift-box.new p { color: #d9e7f6; }
-
-    .shift-box em {
-      display: inline-block;
-      align-self: flex-start;
-      margin-top: 9px;
-      padding: 5px 8px;
-      border-radius: 0;
-      color: var(--navy-950);
-      background: var(--accent);
-      font-size: 11px;
-      font-style: normal;
-      font-weight: 900;
-    }
-
-    .shift-arrow {
-      color: var(--accent);
-      font-size: 30px;
-      font-weight: 900;
-      text-align: center;
+      margin-bottom: 4px;
+      color: var(--white);
+      font-size: clamp(18px, 2vw, 24px);
     }
 
     .comparison {
-      padding: 64px 0 58px;
+      padding: 94px 0 86px;
+      background: var(--white);
     }
 
     .section-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 30px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, .42fr);
+      gap: 60px;
       align-items: end;
-      margin-bottom: 26px;
+      margin-bottom: 38px;
     }
 
-    .section-head h2 {
+    .section-head h2,
+    .support-copy h2 {
       margin: 0;
-      color: var(--navy-950);
-      font-size: clamp(30px, 3.4vw, 46px);
-      line-height: 1.2;
-      letter-spacing: -.035em;
+      color: var(--navy);
+      font-size: clamp(36px, 4.7vw, 64px);
+      line-height: 1.12;
+      letter-spacing: -.055em;
     }
 
-    .section-head p {
-      max-width: 470px;
+    .section-head > p {
       margin: 0;
+      padding-left: 20px;
+      border-left: 3px solid var(--blue);
       color: var(--muted);
       font-size: 15px;
-      font-weight: 700;
-      line-height: 1.7;
-      text-align: right;
+      font-weight: 750;
+      line-height: 1.75;
     }
 
     .table-wrap {
-      border: 1px solid var(--line);
-      border-radius: 0;
+      border: 1px solid var(--navy);
       overflow: hidden;
-      background: var(--white);
-      box-shadow: var(--shadow);
     }
 
     table {
@@ -323,8 +310,9 @@
       table-layout: fixed;
     }
 
-    th, td {
-      padding: 14px 18px;
+    th,
+    td {
+      padding: 17px 18px;
       border-right: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
       font-size: 15px;
@@ -333,210 +321,201 @@
       vertical-align: middle;
     }
 
-    th:last-child, td:last-child { border-right: 0; }
+    th:last-child,
+    td:last-child { border-right: 0; }
     tbody tr:last-child td { border-bottom: 0; }
 
     thead th {
-      padding-block: 16px;
-      color: #3b4657;
-      background: #e9edf3;
-      font-size: 15px;
-      font-weight: 900;
+      padding-block: 20px;
+      color: var(--navy);
+      background: var(--paper);
+      font-size: 14px;
+      font-weight: 950;
     }
 
     thead th:first-child { width: 18%; color: var(--muted); }
-    thead th:nth-child(2), thead th:nth-child(3) { width: 41%; }
-    thead th:nth-child(3) { color: var(--white); background: var(--navy-900); }
+    thead th:nth-child(2),
+    thead th:nth-child(3) { width: 41%; }
+    thead th:nth-child(3) { color: var(--white); background: var(--navy); }
 
     tbody td:first-child {
-      color: #344257;
-      background: #f0f3f7;
-      font-weight: 900;
+      color: var(--navy);
+      background: var(--paper);
+      font-size: 13px;
+      font-weight: 950;
+      letter-spacing: .04em;
     }
 
+    tbody td:nth-child(2) { color: #556273; }
+
     tbody td:nth-child(3) {
-      color: var(--navy-950);
-      background: #f8fbff;
+      color: var(--navy);
+      background: var(--blue-soft);
       font-weight: 900;
     }
 
     .check {
-      display: inline-grid;
-      place-items: center;
       width: 20px;
       height: 20px;
+      display: inline-grid;
+      place-items: center;
       margin-right: 8px;
-      border-radius: 0;
       color: var(--white);
-      background: var(--navy-800);
+      background: var(--navy);
       font-size: 11px;
-      line-height: 1;
       vertical-align: -1px;
     }
 
     .note {
       display: inline-block;
       margin-left: 7px;
-      color: #6b7687;
-      font-size: 12px;
+      color: #758093;
+      font-size: 11px;
       font-weight: 800;
     }
 
-    .note.free { color: var(--navy-700); }
+    .note.free { color: var(--navy-2); }
 
-    .conclusion {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 22px;
-      margin-top: 16px;
-      padding: 18px 22px;
-      border-left: 5px solid var(--navy-800);
-      border-radius: 0;
-      color: var(--navy-950);
-      background: var(--pale);
-      font-size: 17px;
-      font-weight: 900;
-    }
-
-    .conclusion span {
-      flex: 0 0 auto;
-      padding: 8px 13px;
-      border-radius: 0;
-      color: var(--white);
-      background: var(--navy-900);
-      font-size: 13px;
-    }
-
-    .support-panel {
+    .verdict {
       display: grid;
-      grid-template-columns: .75fr 1.25fr;
-      gap: 34px;
+      grid-template-columns: 1fr auto;
       align-items: center;
-      margin-top: 28px;
-      padding: 30px;
-      border-radius: 0;
+      gap: 30px;
+      margin-top: 22px;
+      padding: 26px 30px;
       color: var(--white);
-      background: var(--navy-950);
+      background: var(--navy);
     }
 
-    .support-panel .label {
-      margin: 0 0 7px;
-      color: var(--accent);
-      font-size: 12px;
-      font-weight: 900;
-    }
-
-    .support-panel h2 {
+    .verdict p {
       margin: 0;
-      font-size: clamp(27px, 3vw, 38px);
-      line-height: 1.25;
-      letter-spacing: -.03em;
+      color: #dce9f6;
+      font-size: clamp(16px, 2vw, 21px);
+      font-weight: 800;
+      line-height: 1.6;
     }
 
-    .support-panel .copy {
-      margin: 11px 0 0;
-      color: #c9d9eb;
-      font-size: 14px;
+    .verdict p strong { color: var(--white); }
+
+    .verdict b {
+      padding-left: 28px;
+      border-left: 1px solid var(--line-dark);
+      color: var(--blue);
+      font-size: clamp(20px, 2.5vw, 30px);
+      white-space: nowrap;
+    }
+
+    .support {
+      padding: 92px 0;
+      color: var(--white);
+      background: var(--navy-2);
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: .78fr 1.22fr;
+      gap: clamp(48px, 8vw, 110px);
+      align-items: start;
+    }
+
+    .support .section-tag { color: var(--blue); }
+    .support-copy h2 { color: var(--white); }
+
+    .support-copy > p:last-child {
+      margin: 24px 0 0;
+      color: #cbdced;
+      font-size: 16px;
       font-weight: 700;
-      line-height: 1.7;
+      line-height: 1.8;
     }
 
     .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
       margin: 0;
       padding: 0;
+      border-top: 1px solid var(--line-dark);
       list-style: none;
     }
 
     .steps li {
-      min-height: 92px;
-      padding: 15px;
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 0;
-      background: rgba(255,255,255,.07);
-      font-size: 13px;
-      font-weight: 900;
-      line-height: 1.5;
+      min-height: 100px;
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      align-items: center;
+      gap: 20px;
+      border-bottom: 1px solid var(--line-dark);
     }
 
     .steps span {
-      display: grid;
-      place-items: center;
-      width: 27px;
-      height: 27px;
-      margin-bottom: 10px;
-      border-radius: 0;
-      color: var(--navy-950);
-      background: var(--accent);
-      font-size: 12px;
+      color: var(--blue);
+      font-size: 16px;
+      font-weight: 950;
+      letter-spacing: .08em;
+    }
+
+    .steps strong {
+      color: var(--white);
+      font-size: clamp(18px, 2vw, 23px);
+      line-height: 1.5;
     }
 
     footer {
-      padding: 20px 24px;
-      color: #9eabba;
-      background: #040f22;
+      padding: 24px;
+      color: #9ba9ba;
+      background: #040e1f;
       font-size: 11px;
       line-height: 1.7;
       text-align: center;
     }
 
     @media (max-width: 960px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-        min-height: auto;
-        padding-block: 46px;
-      }
-
-      .shift { max-width: 650px; }
-      .support-panel { grid-template-columns: 1fr; gap: 22px; }
+      .support-grid { grid-template-columns: 1fr; }
+      .section-head { grid-template-columns: 1fr; gap: 22px; }
+      .section-head > p { max-width: 520px; }
     }
 
     @media (max-width: 760px) {
-      .container { width: min(100% - 28px, 620px); }
+      .wrap { width: min(100% - 28px, 620px); }
+      .masthead-inner { min-height: 56px; }
+      .masthead-note { display: none; }
 
-      .hero-inner { gap: 30px; padding-block: 36px; }
-      .hero-main { padding: 5px 0 8px 17px; }
-      h1 { font-size: clamp(39px, 11vw, 53px); }
-      .hero-copy { font-size: 16px; }
+      .hero {
+        padding: 48px 0 54px;
+        background-size: calc((100vw - 28px) / 4) 100%;
+      }
 
-      .hero-facts { margin-top: 20px; }
-      .hero-facts li { padding: 10px 7px; font-size: 10px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-grid { gap: 44px; }
+      .hero-prefix { margin-bottom: 12px; }
+      .hero-mainline { font-size: clamp(64px, 22vw, 88px); }
+      .hero-lead { margin-top: 28px; font-size: 16px; line-height: 1.8; }
+      .hero-facts { margin-top: 26px; }
+      .hero-facts li { padding: 11px 7px; font-size: 10px; }
       .hero-facts li:first-child { padding-left: 0; }
+      .jump { width: 100%; }
+      .hero-art { box-shadow: 10px 10px 0 rgba(7,22,47,.08); }
 
-      .shift {
-        grid-template-columns: 1fr;
-        gap: 9px;
-        padding: 12px;
+      .promise-grid { grid-template-columns: 1fr; }
+      .promise-item { min-height: 104px; }
+      .promise-item + .promise-item {
+        padding-left: 0;
+        border-top: 1px solid var(--line-dark);
+        border-left: 0;
       }
 
-      .shift-box { min-height: 0; padding: 17px; }
-      .shift-arrow { transform: rotate(90deg); font-size: 23px; }
+      .comparison { padding: 68px 0 62px; }
+      .section-head { margin-bottom: 28px; }
+      .section-head h2 { font-size: 40px; }
 
-      .comparison { padding: 46px 0; }
-      .section-head { display: block; margin-bottom: 20px; }
-      .section-head p { margin-top: 10px; text-align: left; }
-      .table-wrap { border: 0; overflow: visible; background: transparent; box-shadow: none; }
-
+      .table-wrap { border: 0; overflow: visible; }
       table, tbody { display: block; }
-      table { min-width: 0; }
       thead { display: none; }
-
-      tbody {
-        display: grid;
-        gap: 12px;
-      }
+      tbody { display: grid; gap: 12px; }
 
       tbody tr {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        overflow: hidden;
-        border: 1px solid var(--line);
-        border-radius: 0;
+        border: 1px solid var(--navy);
         background: var(--white);
-        box-shadow: 0 8px 24px rgba(7, 30, 67, .06);
       }
 
       tbody td {
@@ -549,10 +528,8 @@
 
       tbody td:first-child {
         grid-column: 1 / -1;
-        padding: 9px 13px;
+        padding: 9px 12px;
         border-bottom: 1px solid var(--line);
-        background: #e9edf3;
-        font-size: 13px;
       }
 
       tbody td:nth-child(2) { border-right: 1px solid var(--line); }
@@ -561,52 +538,32 @@
       tbody td:nth-child(3)::before {
         content: attr(data-label);
         display: block;
-        margin-bottom: 6px;
-        color: #707b8b;
+        margin-bottom: 7px;
+        color: #7a8595;
         font-size: 10px;
-        font-weight: 900;
+        font-weight: 950;
       }
 
-      tbody td:nth-child(3)::before { color: var(--navy-700); }
+      tbody td:nth-child(3)::before { color: var(--navy-2); }
+      .check { width: 17px; height: 17px; margin-right: 4px; font-size: 9px; }
+      .note { display: block; margin: 4px 0 0; font-size: 10px; }
 
-      .check {
-        width: 17px;
-        height: 17px;
-        margin-right: 4px;
-        font-size: 9px;
+      .verdict {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 22px 20px;
       }
 
-      .note {
-        display: block;
-        margin: 4px 0 0;
-        font-size: 10px;
+      .verdict b {
+        padding: 14px 0 0;
+        border-top: 1px solid var(--line-dark);
+        border-left: 0;
       }
 
-      .conclusion {
-        display: block;
-        padding: 16px;
-        font-size: 15px;
-        line-height: 1.55;
-        text-align: center;
-      }
-
-      .conclusion span {
-        display: inline-block;
-        margin-top: 10px;
-      }
-
-      .support-panel { margin-top: 20px; padding: 23px 18px; }
-      .steps { grid-template-columns: 1fr; }
-
-      .steps li {
-        min-height: 0;
-        display: flex;
-        align-items: center;
-        gap: 11px;
-        padding: 11px 13px;
-      }
-
-      .steps span { flex: 0 0 27px; margin: 0; }
+      .support { padding: 68px 0; }
+      .support-grid { gap: 40px; }
+      .support-copy h2 { font-size: 40px; }
+      .steps li { min-height: 84px; grid-template-columns: 44px 1fr; gap: 12px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -616,46 +573,93 @@
   </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="container hero-inner">
-      <div class="hero-main">
-        <p class="eyebrow">JコンサルからJマッチへ</p>
-        <h1>今度は<span class="hero-ai">AI</span><span class="hero-human">（と人）</span></h1>
-        <p class="hero-copy">
-          <strong>月3万円も、手数料の割引もそのまま。</strong><br>
-          情報探しと申請書づくりはAIで。必要なときは人にも相談できます。
-        </p>
-        <ul class="hero-facts" aria-label="Jマッチの特徴">
-          <li>月3万円はそのまま</li>
-          <li>手数料の割引も継続</li>
-          <li>AI＋提携士業</li>
-        </ul>
-        <a class="jump" href="#comparison">比較表を見る ↓</a>
-      </div>
-
-      <div class="shift" role="img" aria-label="Jコンサルから、AIと人が支援するJマッチへの変更">
-        <div class="shift-box">
-          <small><span>これまで</span>2015～2026.7</small>
-          <b>Jコンサル</b>
-          <p>人が探す<br>人に相談する</p>
-        </div>
-        <div class="shift-arrow" aria-hidden="true">→</div>
-        <div class="shift-box new">
-          <small><span>これから</span>2026.8～</small>
-          <b>Jマッチ</b>
-          <p>AIが探す<br>AIと作る</p>
-          <em>＋ 人にも相談</em>
-        </div>
-      </div>
+  <header class="masthead">
+    <div class="wrap masthead-inner">
+      <a class="brand" href="#" aria-label="Jマッチエンジン ページ上部へ">J MATCH ENGINE</a>
+      <p class="masthead-note">サービス移行のお知らせ　2026.8–</p>
     </div>
   </header>
 
   <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="kicker">JコンサルからJマッチへ</p>
+          <h1 id="page-title">
+            <span class="hero-prefix">今度は</span>
+            <span class="hero-mainline"><b>AI</b><small>（と人）</small></span>
+          </h1>
+          <p class="hero-lead">
+            <strong>月3万円も、手数料の割引もそのまま。</strong><br>
+            情報探しと申請書づくりはAIで。必要なときは人にも相談できます。
+          </p>
+          <ul class="hero-facts" aria-label="Jマッチの特徴">
+            <li>月3万円</li>
+            <li>割引あり</li>
+            <li>AI＋人</li>
+          </ul>
+          <a class="jump" href="#comparison"><span>違いを見る</span><span aria-hidden="true">↓</span></a>
+        </div>
+
+        <div class="hero-art">
+          <svg viewBox="0 0 560 520" role="img" aria-labelledby="art-title art-desc">
+            <title id="art-title">AIと人が支えるJマッチ</title>
+            <desc id="art-desc">多くの情報をAIが整理し、申請書づくりと専門家への相談につなげる図</desc>
+            <g fill="none" stroke="#7fc6ff" stroke-width="2">
+              <path d="M76 112H206M76 164H206M76 216H206"/>
+              <path d="M352 170H442V108"/>
+              <path d="M352 220H442V276"/>
+              <path d="M280 286V376"/>
+            </g>
+            <g fill="#7fc6ff">
+              <rect x="60" y="104" width="16" height="16"/>
+              <rect x="60" y="156" width="16" height="16"/>
+              <rect x="60" y="208" width="16" height="16"/>
+              <rect x="434" y="100" width="16" height="16"/>
+              <rect x="434" y="268" width="16" height="16"/>
+              <rect x="272" y="368" width="16" height="16"/>
+            </g>
+            <rect x="206" y="116" width="146" height="170" fill="#ffffff"/>
+            <text x="279" y="195" fill="#07162f" font-size="56" font-weight="900" text-anchor="middle">AI</text>
+            <text x="279" y="228" fill="#34526f" font-size="15" font-weight="800" text-anchor="middle">探す・整理する</text>
+            <text x="60" y="82" fill="#ffffff" font-size="17" font-weight="900">何千種類の情報</text>
+            <text x="60" y="270" fill="#a8c5df" font-size="13" font-weight="700">必要な情報を選ぶ</text>
+            <rect x="404" y="54" width="106" height="54" fill="#102e56" stroke="#7fc6ff"/>
+            <text x="457" y="87" fill="#ffffff" font-size="15" font-weight="900" text-anchor="middle">申請書</text>
+            <rect x="392" y="276" width="118" height="70" fill="#102e56" stroke="#7fc6ff"/>
+            <circle cx="451" cy="299" r="9" fill="#7fc6ff" stroke="none"/>
+            <path d="M433 327c3-12 11-18 18-18s15 6 18 18" stroke="#7fc6ff"/>
+            <text x="451" y="365" fill="#ffffff" font-size="14" font-weight="900" text-anchor="middle">提携士業</text>
+            <rect x="205" y="384" width="150" height="70" fill="#7fc6ff"/>
+            <text x="280" y="414" fill="#07162f" font-size="14" font-weight="900" text-anchor="middle">Jマッチ</text>
+            <text x="280" y="438" fill="#07162f" font-size="17" font-weight="950" text-anchor="middle">AI ＋ 人</text>
+            <text x="34" y="488" fill="#a8c5df" font-size="12" font-weight="700">AIだけでは、ありません。</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="promise" aria-label="変わらないことと増えること">
+      <div class="wrap promise-grid">
+        <div class="promise-item">
+          <span class="promise-no">01</span>
+          <p><strong>料金と割引は、そのまま。</strong>月3万円。手数料の割引も続きます。</p>
+        </div>
+        <div class="promise-item">
+          <span class="promise-no">02</span>
+          <p><strong>できることが、増えます。</strong>情報探し、申請書づくり、無料体験。</p>
+        </div>
+      </div>
+    </section>
+
     <section class="comparison" id="comparison" aria-labelledby="comparison-title">
-      <div class="container">
+      <div class="wrap">
         <div class="section-head">
-          <h2 id="comparison-title">違いは、AIがいること。</h2>
-          <p>料金と割引は変わりません。<br>できることが増えます。</p>
+          <div>
+            <p class="section-tag">01 / 比較</p>
+            <h2 id="comparison-title">何が変わる？</h2>
+          </div>
+          <p>JコンサルとJマッチを、同じ項目で比べました。</p>
         </div>
 
         <div class="table-wrap">
@@ -706,29 +710,32 @@
               <tr>
                 <td>強み</td>
                 <td data-label="Jコンサル">人と直接話せる</td>
-                <td data-label="Jマッチ"><span class="check">✓</span>早い・多い・便利<span class="note free">※人の担当もいます</span></td>
+                <td data-label="Jマッチ"><span class="check">✓</span>早い・多い・便利<span class="note">※人の担当もいます</span></td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <div class="conclusion">
-          <strong>料金も割引も同じ。Jマッチなら、AIと無料体験も付く。</strong>
-          <span>Jマッチがお得</span>
+        <div class="verdict">
+          <p><strong>月3万円も、割引も同じ。</strong><br>Jマッチなら、AIと無料体験も付く。</p>
+          <b>Jマッチがお得</b>
+        </div>
+      </div>
+    </section>
+
+    <section class="support" aria-labelledby="support-title">
+      <div class="wrap support-grid">
+        <div class="support-copy">
+          <p class="section-tag">02 / 使い方</p>
+          <h2 id="support-title">AIだけでは、<br>ありません。</h2>
+          <p>いつもの作業はAIで。人に聞きたいときは、提携士業へ。</p>
         </div>
 
-        <div class="support-panel">
-          <div>
-            <p class="label">人にも相談できます</p>
-            <h2>AIだけでは、ありません。</h2>
-            <p class="copy">いつもの作業はAIで。人に聞きたいときは、提携士業へ。</p>
-          </div>
-          <ol class="steps">
-            <li><span>1</span>まずはAIに聞く</li>
-            <li><span>2</span>AIと申請書を作る</li>
-            <li><span>3</span>必要なら専門家に相談する</li>
-          </ol>
-        </div>
+        <ol class="steps">
+          <li><span>01</span><strong>まずはAIに聞く</strong></li>
+          <li><span>02</span><strong>AIと申請書を作る</strong></li>
+          <li><span>03</span><strong>必要なら専門家に相談する</strong></li>
+        </ol>
       </div>
     </section>
   </main>
