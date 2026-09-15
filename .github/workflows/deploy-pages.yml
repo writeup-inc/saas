@@ -1,14 +1,20 @@
-name: Check service index
+name: Validate and deploy GitHub Pages
 
 on:
   push:
-  pull_request:
+    branches: [main]
 
 permissions:
   contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
 
 jobs:
-  check-index:
+  validate-and-build:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository with history
@@ -24,7 +30,7 @@ jobs:
       - name: Verify generated catalog is current
         run: node tools/sync-catalog.mjs --check
 
-      - name: Validate root index
+      - name: Validate service index
         run: node tools/check-index.mjs --history
 
       - name: Validate monitor index
@@ -35,3 +41,19 @@ jobs:
 
       - name: Guard critical typography
         run: node tools/check-critical-typography.mjs --self-test
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+  deploy:
+    needs: validate-and-build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

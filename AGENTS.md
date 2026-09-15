@@ -7,7 +7,7 @@
 - 各商材ディレクトリは Claude Code と Codex の共同編集領域。作成者に関係なく、最新のファイルを正としてどちらも編集してよい
 - ただし、同じ商材ディレクトリを同時に編集しない。ユーザーから担当を受けてから commit・push・引き継ぎまでを作業中とし、担当交代は前の担当が終えてから行う
 - Gitは別環境の未push変更を検出できない。自分が現在の担当か不明な場合は、対象ファイルを変更する前にユーザーへ確認する
-- ルート `index.html` は Codex が主担当。Claude Code から一覧更新の引き継ぎを受けたら、最新の main を取り込んでから反映する
+- ルート `index.html` のサービスカードは `catalog/entries/<id>.json` から生成する。CodexもClaude CodeもカードHTMLを手編集せず、`node tools/update-catalog-entry.mjs` と `node tools/sync-catalog.mjs --write` を使う
 - 生成物は直接編集しない。商材に生成元やビルド手順がある場合は、その生成元を更新して再生成する
 
 ## 作業開始時
@@ -21,7 +21,7 @@
 
 - 対象ページを検証し、ユーザーが依頼した範囲で commit・push する
 - 担当を交代するときは、対象、最終コミット、変更ファイル、変更内容、未完了事項、一覧更新の要否を引き継ぐ
-- ルート `index.html` を変更したら `node tools/check-index.mjs --history` を実行する
+- 商材の実質更新後は、push前に `node tools/update-catalog-entry.mjs --id <id> --latest-change "具体的な変更を一文で"`、`node tools/sync-catalog.mjs --check`、`node tools/check-index.mjs --history` を実行する
 - push直前にも `git fetch origin` を行い、上流の新しい変更を取りこぼしていないことを確認する
 
 ## セミナー・説明会／インタビューは独立リポジトリ（2026-09-13 更新）

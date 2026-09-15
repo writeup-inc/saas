@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WRITEUP SaaS catalog entry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "id", "visibility", "category", "titleLines", "type", "latestChange", "latestChangeFor"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "visibility": { "const": "public" },
+    "category": { "enum": ["sales", "people", "care", "work", "build"] },
+    "titleLines": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "type": { "type": "string", "minLength": 1 },
+    "latestChange": { "type": "string", "minLength": 1 },
+    "latestChangeFor": { "type": "string", "pattern": "^[0-9a-f]{40}$" }
+  }
+}

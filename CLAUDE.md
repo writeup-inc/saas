@@ -4,65 +4,31 @@
 
 - このリポジトリで商材ページを追加・更新するときは、READMEの「一覧ページの更新ルール」と「更新時の確認手順」を必ず実行する
 - 新サービス公開や大幅な変更では、READMEの「上部の重要告知」に従ってホワイトボードの差し替え要否を判断する
-- ルート `index.html` の更新日時、最新の変更文、並び順を、公開ページ本体のGit履歴と一致させる
+- 商材の実質更新後は、push前に `node tools/update-catalog-entry.mjs --id <id> --latest-change "具体的な変更を一文で"` を実行する。日時・改修回数・作成者・並び順はGit履歴から自動生成し、カードHTMLを手編集しない
 - 既存の未コミット変更や無関係なページを上書き・削除しない
 - commit、push、公開は、ユーザーから依頼された範囲でのみ実行する
 
-## ルート index.html の所有者
+## ルート index.html の生成規約
 
-ルート `index.html` は **Codex が主担当**。Claude Code は既定で編集しない。
+サービスカードは `catalog/entries/<id>.json` を正本に、`node tools/sync-catalog.mjs --write` で生成する。CodexとClaude Codeのどちらも、カードHTMLを直接編集してはならない。
 
-理由。この1ファイルに全商材のカードが集まっていて、書き換えの頻度が高い。
-並び順・連番・バッジは「ファイル全体を見て初めて決まる派生データ」なので、
-別々のカードを触ってテキスト競合が起きなくても、マージ後に
-どちらの意図とも違う並びになりうる。競合しないぶん誰も気づかない。
+各担当者は自分の商材ページと対応する `catalog/entries/<id>.json` を更新できる。新規カードは`catalog/entry.template.json`をentryへコピーして作る。同期コマンドが変えるルート `index.html` は生成物であり、競合時は最新mainを取り込んでから再生成する。
 
-- Claude Code が書いてよいのは、いま担当している商材ディレクトリの中だけ
-  （`<slug>/index.html`、`<slug>/og.png` など）。作成者ではなく、その時点の担当で決まる
+- Claude Code が書いてよいのは、いま担当している商材ディレクトリと対応する `catalog/entries/<slug>.json`。
 - 商材ディレクトリはClaude Code専用ではない。commit・push・引き継ぎ後は、Codexが同じ商材を続けて編集してよい。逆方向も同じ
 - 同じ商材を同時に編集しない。ユーザーから担当を受けてからcommit・push・引き継ぎまでを作業中とし、担当が不明なら編集前に確認する
 - 作業開始時は最新のmainと現在のファイル、直近のGit履歴を読み直す
-- 商材ページを更新したら、一覧は自分で直さず「引き継ぎメモ」を出して終わる
-- 「一覧も更新して」「公開まで」と明示された場合のみ、下の手順で触る
+- 商材ページの実質更新後は、ローカルで本体コミットを作成し、push前に下記の同期手順を必ず完了する
 
-### 引き継ぎメモの型
+### 必須の同期手順
 
-商材ページを更新して一覧に触らないときは、これを出して終わる。
+1. 商材ページだけをローカルでcommitする。ここではまだpushしない
+2. `node tools/update-catalog-entry.mjs --id <id> --latest-change "具体的な変更を一文で"` を実行する
+3. このコマンドが更新したentryと生成済み`index.html`を2つ目のcommitにする
+4. `node tools/sync-catalog.mjs --check` と `node tools/check-index.mjs --history` を実行する
+5. push直前にfetchし、両commitをまとめてpushする
 
-```
-一覧更新の引き継ぎ（Codex向け）
-  id            : <ディレクトリ名>
-  data-updated  : <本体コミットのAuthor Date ISO8601+09:00を分単位にした値>  ← コミットハッシュも書く
-  最新の変更     : <何を変えたかが分かる1行。「更新しました」は不可>
-  並び替え・採番 : 要 / 不要
-```
-
-### 明示指示があって index.html を触る場合の手順
-
-1. `git status --short --branch` で未コミット変更がないことを確認し、`git fetch origin` の後
-   `git log --oneline HEAD..origin/main` を必ず見る。1件でもあれば、先に `git pull --rebase` してから編集を始める
-2. 取り込んだ後の「現在の」カード構造を読み直す。前回の構造を前提にしない。
-   （実例：カードは `<a class="service">` から `<article class="service-entry">` へ移り、
-   日時属性も `<a>` から `<article>` へ移動した）
-3. 触るのは自分の商材のカード1枚と、それに伴う並び順・採番だけ
-4. 競合したら、**自分の index.html 側の変更を捨てて上流をそのまま採り、カード1枚を貼り直す**。
-   `--ours` / `--theirs` での一括解決は禁止。相手の変更を丸ごと消しても git は成功と報告する
-5. 編集スクリプトは決め打ち＋assert。構造が変わったら黙って素通りせず落とす
-6. `data-updated` は `git show -s --format='%aI %h %s' <本体コミット>` のAuthor Dateを分単位にして入れる。
-   rebaseで変動するCommitter Dateは使わない
-7. `node tools/check-index.mjs --history` を実行する
-8. 書いたらヘッドレスで描画し、並び順・連番・バッジ・日時を読み戻して検証する
-9. push直前に `git fetch origin` を行い、上流の新しい変更を確認する
-
-1 は Claude Code 側の PreToolUse フック（`~/.claude/hooks/index-guard/`）でも
-機械的に止まる。上流が進んでいる状態でこのファイルを編集しようとすると deny される。
-ローカルフックは補助であり、共通の最終判定はGitHub Actionsの `check-index` とする。
-
-## 商材ページだけを先に更新する場合
-
-- 一覧へ反映すべき実質更新のコミット本文に `Index-Update: pending` を付ける
-- 一覧日時を変えない軽微な修正のコミット本文に `Catalog-Update: no` を付ける
-- commit・push後、READMEの `LP引き継ぎ` と上記の `一覧更新の引き継ぎ` をユーザーへ返す
+軽微な変更で公開一覧を変えないときだけ、商材コミットへ `Catalog-Update: no` を付ける。`Index-Update: pending` を使って一覧反映を後回しにする運用は廃止する。
 
 ## セミナー・説明会／インタビューは独立リポジトリ（2026-09-13〜）
 

@@ -26,17 +26,7 @@
 
 公開LPの正本はこのリポジトリの `origin/main` とする。リポジトリ外にある同一HTMLの作業用コピーは生成元として扱わず、更新対象にしない。`SOURCE.md` は、実際の生成元または再生成に必要な正本が別に存在する場合だけ作成する。
 
-ルート `index.html` はCodexが主担当とする。Claude Codeは商材ページだけを更新した場合、下記の引き継ぎを残す。これは各商材の永久所有を意味せず、同時編集を避けるための役割分担である。
-
-```text
-LP引き継ぎ
-  対象            : <ディレクトリ名>/
-  最終コミット     : <コミットハッシュ>
-  変更したファイル : <ファイル名>
-  変更内容         : <具体的な1行>
-  未完了           : なし / <内容>
-  一覧更新         : 要 / 不要
-```
+ルート `index.html` のサービスカードは `catalog/entries/<id>.json` から生成する。CodexもClaude CodeもカードHTMLを直接編集しない。各担当は自分の商材ページと対応entryを更新でき、`node tools/sync-catalog.mjs --write` が生成物を更新する。
 
 ## 収録
 
@@ -52,10 +42,12 @@ LP引き継ぎ
 
 ## 追加のしかた
 
-1. `<商材名>-<用途>/index.html` または静的書き出し一式を配置する
+1. `<商材名>-<用途>/index.html` または静的書き出し一式を配置し、`catalog/entry.template.json`を`catalog/entries/<id>.json`へコピーして、カード文言を入力する
 2. 商材ページを先にコミットし、そのコミット日時と変更内容を確認する
-3. ルートの `index.html` にカードを追加し、下記の更新ルールに沿ってメタ情報を記載する
-4. push後、GitHub Pagesのビルド完了と公開URLを確認する
+3. ローカルで本体commitを作成し、まだpushしない
+4. `node tools/update-catalog-entry.mjs --id <id> --latest-change "具体的な変更を一文で"` を実行し、entryと生成済み一覧を別commitにする
+5. `node tools/sync-catalog.mjs --check` と `node tools/check-index.mjs --history` を通して、両commitをまとめてpushする
+6. push後、GitHub Pagesのビルド完了と公開URLを確認する
 
 ## 一覧ページの更新ルール
 
@@ -87,23 +79,17 @@ LP引き継ぎ
 
 ### 更新時の確認手順
 
-1. 商材ページの変更をコミットする
-2. `git show -s --format='%aI %h %s' <本体コミット>` でAuthor Dateと内容を確認し、秒を切り捨てて分単位にする
-3. ルート `index.html` の対象カードについて、`data-updated`、最終更新の `<time>`、最新の変更文を更新する
-4. 新規公開の場合は `data-published` と初回公開の `<time>` も同じ日時で設定する
-5. HTML上のカードを最終更新順に並べ、連番を振り直す
-6. `node tools/check-index.mjs --history` を実行する
-7. デスクトップとモバイルで、バッジ、背景、変更文、日時、横スクロールの有無を確認する
-8. push直前に `git fetch origin` を行い、上流の新しい変更を確認する
-9. push後、GitHub ActionsとGitHub Pagesのビルド完了、公開ページの表示内容を再確認する
+1. 商材ページの変更をローカルでcommitする（まだpushしない）
+2. `node tools/update-catalog-entry.mjs --id <id> --latest-change "具体的な変更を一文で"` を実行する
+3. entryと生成済み一覧をcommitする。日時、改修回数、作成者、順序はGit履歴から自動算出される
+4. `node tools/sync-catalog.mjs --check` と `node tools/check-index.mjs --history` を実行する
+5. デスクトップとモバイルで、バッジ、背景、変更文、日時、横スクロールの有無を確認する
+6. push直前に `git fetch origin` を行い、上流の新しい変更を確認する
+7. 両commitをまとめてpushし、GitHub ActionsとGitHub Pagesのビルド完了、公開ページの表示内容を再確認する
 
 ### 一覧を後から反映するコミット
 
-商材ページだけを先にcommit・pushし、一覧更新をCodexへ引き継ぐ実質的な変更では、コミット本文へ次のトレーラーを付ける。
-
-```text
-Index-Update: pending
-```
+商材の実質更新は、entryと生成済み一覧を同じpushへ必ず含める。`Index-Update: pending` による一覧反映の後回しは廃止する。
 
 誤字、リンク、ビルド時刻だけの差分など、一覧の「最終更新」を変えない軽微な変更では次を付ける。
 
@@ -111,11 +97,13 @@ Index-Update: pending
 Catalog-Update: no
 ```
 
-検証スクリプトは `Index-Update: pending` を一覧反映待ちの警告として許容し、それ以外の実質更新では `data-updated` とAuthor Dateの不一致をエラーにする。過去の移行履歴は `tools/index-check.config.json` の `historyBaseline` より後を検査する。
+検証スクリプトは、entryが最新の実質更新commitを指すことと、生成済み一覧がentry・Git履歴と一致することを必須にする。過去の移行履歴は `tools/index-check.config.json` の `historyBaseline` より後を検査する。
 
 ## 一覧の自動検証
 
 `node tools/check-index.mjs --history` は、並び順、連番、日時表示、リンク、共有アンカー、カテゴリ、対象ディレクトリ、重要告知、基準コミット以降のGit履歴を検査する。GitHub Actionsでも同じコマンドを実行する。
+
+`node tools/sync-catalog.mjs --check` は、各`catalog/entries/<id>.json`と生成済みカードが一致し、entryの`latestChangeFor`が本体の最新実質更新commitを指すことを検査する。GitHub Pagesは、この検査を含む全検査が成功したmainのcommitだけを公開する。
 
 `node tools/check-monitor.mjs` は、`monitor/index.html` の料金表示、事前確認事項、サービスカード、共有アンカー、連絡導線、レスポンシブ対応の必須要素を検査する。GitHub Actionsでも同じコマンドを実行する。
 
