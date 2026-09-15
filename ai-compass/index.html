@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="話題のAI活用事例を、使用ツール・仕組み・再現条件まで分解。自社に合うAIサービスを比較できる法人向けガイドです。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23071d31'/%3E%3Ctext x='32' y='45' font-family='Arial' font-size='38' font-weight='700' text-anchor='middle' fill='white'%3EA%3C/text%3E%3Ccircle cx='55' cy='9' r='5' fill='%23a94000'/%3E%3C/svg%3E">
   <title>AI COMPASS｜実例から探す法人向けAI活用ガイド</title>
   <style>:root {
   --navy: #0b2946; --navy-deep: #071d31; --ink: #17202a; --muted-ink: #63707c;
@@ -49,7 +50,7 @@ button, input { font: inherit; }
 
 .masthead { min-height: 240px; display: grid; grid-template-columns: 1.35fr .65fr; align-items: end; gap: 80px; padding-block: 58px 46px; }
 .eyebrow, .section-heading > div > p, .editorial-intro > p:first-child, .ranking-copy > p:first-child, .consult > div > p:first-child { margin: 0 0 18px; color: var(--orange); font: 800 10px/1 Arial, sans-serif; letter-spacing: .16em; }
-.masthead h1 { margin: 0; color: var(--navy-deep); font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: clamp(42px, 5vw, 70px); font-weight: 600; line-height: 1.25; letter-spacing: -.04em; }
+.masthead h2 { margin: 0; color: var(--navy-deep); font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: clamp(42px, 5vw, 70px); font-weight: 600; line-height: 1.25; letter-spacing: -.04em; }
 .masthead-copy { margin: 0 0 7px; color: var(--muted-ink); font-size: 14px; line-height: 2; }
 .hero-compare { align-self: stretch; padding: 24px 26px; border: 1px solid var(--navy); background: var(--paper); }
 .hero-compare > p { margin: 0 0 7px; color: var(--orange); font-size: 12px; font-weight: 800; letter-spacing: .08em; }
@@ -100,6 +101,58 @@ button, input { font: inherit; }
 .topic-inner a { min-height: 43px; display: flex; align-items: center; justify-content: center; gap: 2px; border-left: 1px solid var(--line); background: var(--paper); font-size: 10px; font-weight: 700; }
 .topic-inner a:last-child { border-right: 1px solid var(--line); }
 .topic-inner svg { width: 12px; }
+
+/* 比較サイトの入口を、AI COMPASSの誌面感に合わせて再構成 */
+.discovery-home { padding-block: 36px 30px; display: grid; grid-template-columns: 230px minmax(0, 1fr) 280px; gap: 22px; align-items: stretch; }
+.popular-categories, .case-match-card, .discovery-main { border: 1px solid var(--line); background: var(--paper); }
+.popular-categories { padding: 22px 18px 16px; }
+.discovery-label { margin: 0 0 15px; color: var(--navy-deep); font-size: 13px; font-weight: 800; }
+.popular-categories nav { display: grid; }
+.popular-categories nav > a { min-height: 43px; display: grid; grid-template-columns: 27px 1fr 12px; align-items: center; gap: 8px; border-top: 1px solid var(--line); font-size: 12px; font-weight: 700; }
+.popular-categories nav > a:last-child { border-bottom: 1px solid var(--line); }
+.popular-categories nav > a:hover, .popular-categories nav > a:focus-visible { background: var(--soft); }
+.category-mark { width: 24px; height: 24px; display: grid; place-items: center; background: var(--soft); color: var(--navy); font: 800 10px/1 Arial, sans-serif; border-radius: 50%; }
+.popular-categories a:first-child .category-mark { color: var(--orange); }
+.popular-categories svg { width: 12px; color: var(--muted-ink); }
+.all-categories { margin-top: 14px; display: inline-flex; align-items: center; gap: 7px; color: var(--navy); font-size: 11px; font-weight: 800; }
+
+.discovery-main { padding: 31px 34px; background: linear-gradient(135deg, #fff 0%, #fff 70%, #f5f7f8 100%); }
+.discovery-main .eyebrow { margin-bottom: 13px; }
+.discovery-main h1 { max-width: 620px; margin: 0; color: var(--navy-deep); font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: clamp(34px, 3.5vw, 50px); font-weight: 600; line-height: 1.32; letter-spacing: -.035em; }
+.discovery-copy { margin: 14px 0 22px; color: var(--muted-ink); font-size: 13px; line-height: 1.8; }
+.discovery-search { min-height: 54px; display: grid; grid-template-columns: 20px minmax(0, 1fr) auto; align-items: center; gap: 10px; padding-left: 17px; border: 2px solid var(--navy); background: var(--paper); }
+.discovery-search svg { width: 18px; color: var(--navy); }
+.discovery-search input { min-width: 0; height: 50px; border: 0; outline: 0; background: transparent; color: var(--ink); }
+.discovery-search button { align-self: stretch; min-width: 104px; border: 0; background: var(--navy); color: #fff; font-size: 12px; font-weight: 800; cursor: pointer; }
+.discovery-shortcuts { margin-top: 15px; display: flex; flex-wrap: wrap; gap: 8px; }
+.discovery-shortcuts a { min-height: 38px; padding-inline: 11px; display: inline-flex; align-items: center; border: 1px solid var(--line); background: var(--paper); color: var(--navy); font-size: 10px; font-weight: 700; }
+.discovery-shortcuts a:hover, .discovery-shortcuts a:focus-visible { border-color: var(--navy); }
+
+.case-match-card { position: relative; overflow: hidden; padding: 27px 24px; background: var(--navy-deep); color: #fff; }
+.case-match-card::before { content: ""; position: absolute; width: 74px; height: 74px; right: -30px; top: -30px; border: 1px solid rgb(255 255 255 / 28%); transform: rotate(45deg); }
+.case-match-card > p:first-child { margin: 0 0 11px; color: #e6a47b; font: 800 10px/1 Arial, sans-serif; letter-spacing: .12em; }
+.case-match-card h2 { margin: 0; font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: 24px; font-weight: 600; line-height: 1.45; }
+.case-match-card > p:not(:first-child) { margin: 13px 0 18px; color: #becad4; font-size: 11px; line-height: 1.8; }
+.match-conditions { margin: 0 0 20px; padding: 0; display: grid; list-style: none; border-top: 1px solid #4a6073; }
+.match-conditions li { min-height: 38px; display: grid; grid-template-columns: 25px 1fr; align-items: center; border-bottom: 1px solid #4a6073; color: #e7edf2; font-size: 11px; }
+.match-conditions span { color: #92a4b4; font: 10px/1 Arial, sans-serif; }
+.case-match-card > a { min-height: 43px; padding-inline: 14px; display: flex; align-items: center; justify-content: space-between; background: #fff; color: var(--navy-deep); font-size: 11px; font-weight: 800; }
+.case-match-card svg { width: 14px; }
+.prototype-note { display: block; margin-top: 10px; color: #91a2b2; font-size: 9px; }
+
+.explore-strip { padding-block: 21px; border-block: 1px solid var(--line); background: var(--soft); }
+.explore-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.explore-group { min-width: 0; padding: 18px 20px 16px; background: var(--paper); border: 1px solid var(--line); }
+.explore-group header { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 12px; }
+.explore-group h2 { margin: 0; color: var(--navy-deep); font-size: 13px; }
+.explore-group header span { color: var(--orange); font: 800 9px/1 Arial, sans-serif; letter-spacing: .08em; }
+.explore-links { display: flex; flex-wrap: wrap; gap: 7px; }
+.explore-links a { min-height: 38px; padding-inline: 10px; display: inline-flex; align-items: center; background: var(--soft); color: var(--navy); font-size: 10px; font-weight: 700; }
+.explore-links a:hover, .explore-links a:focus-visible { background: var(--navy); color: #fff; }
+.search-status { margin: -18px 0 30px; padding: 13px 16px; border-left: 3px solid var(--orange); background: var(--soft); color: var(--navy-deep); font-size: 12px; }
+[hidden] { display: none !important; }
+.compare-steps a.is-selected { border-color: #fff; background: #fff; color: var(--navy-deep); }
+.selected-summary { margin: 19px 0 0; color: #c2ced7; font-size: 12px; }
 
 .content-section { padding-block: 94px 105px; }
 .section-heading { margin-bottom: 38px; display: grid; grid-template-columns: 1fr 1fr auto; align-items: end; gap: 28px; border-bottom: 2px solid var(--navy); padding-bottom: 23px; }
@@ -226,6 +279,12 @@ footer { background: var(--navy-deep); color: #fff; }
   .header-links { grid-column: 2; grid-row: 1; justify-self: end; }
   .category-nav { grid-template-columns: repeat(3, 1fr); }
   .category-nav a { min-height: 38px; border-bottom: 1px solid var(--line); }
+  .discovery-home { grid-template-columns: 220px minmax(0, 1fr); }
+  .case-match-card { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 12px 30px; }
+  .case-match-card > p:not(:first-child), .match-conditions { margin-block: 0; }
+  .case-match-card > a, .prototype-note { grid-column: 2; }
+  .explore-grid { grid-template-columns: 1fr 1fr; }
+  .explore-group:last-child { grid-column: 1 / -1; }
   .masthead { grid-template-columns: 1fr; gap: 25px; align-items: start; }
   .hero-compare { width: 100%; }
   .lead-grid { grid-template-columns: 1fr; }
@@ -254,8 +313,23 @@ footer { background: var(--navy-deep); color: #fff; }
   .site-search button { padding-inline: 12px; }
   .category-nav { grid-template-columns: repeat(2, 1fr); }
   .category-nav a { font-size: 10px; }
+  .discovery-home { padding-block: 20px; grid-template-columns: 1fr; gap: 14px; }
+  .discovery-main { grid-row: 1; padding: 25px 20px; }
+  .discovery-main h1 { font-size: 32px; line-height: 1.42; }
+  .discovery-copy { font-size: 12px; }
+  .discovery-search { grid-template-columns: 18px minmax(0, 1fr); padding: 8px 12px 8px 14px; }
+  .discovery-search input { height: 40px; }
+  .discovery-search button { grid-column: 1 / -1; min-height: 42px; }
+  .popular-categories { grid-row: 2; }
+  .popular-categories nav { grid-template-columns: 1fr 1fr; column-gap: 12px; }
+  .case-match-card { grid-column: auto; grid-row: 3; display: block; }
+  .case-match-card > p:not(:first-child) { margin: 13px 0 18px; }
+  .match-conditions { margin-bottom: 20px; }
+  .case-match-card > a, .prototype-note { grid-column: auto; }
+  .explore-grid { grid-template-columns: 1fr; }
+  .explore-group:last-child { grid-column: auto; }
   .masthead { min-height: 0; padding-block: 38px 32px; }
-  .masthead h1 { font-size: clamp(37px, 11vw, 52px); }
+  .masthead h2 { font-size: clamp(37px, 11vw, 52px); }
   .hero-compare { padding: 21px 19px; }
   .lead-grid { gap: 34px; padding-bottom: 48px; }
   .lead-image { height: 270px; }
@@ -298,5 +372,845 @@ footer { background: var(--navy-deep); color: #fff; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } img { transition: none !important; } }
 </style>
 </head>
-<body><main id="top"><div class="topline"><div class="shell topline-inner"><p>法人向けAI活用の事例と選び方</p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg> 出典・確認日を明記</p></div></div><header class="site-header"><div class="shell header-main"><a class="brand" href="#top" aria-label="AI COMPASS トップへ"><span class="brand-symbol">A<span aria-hidden="true"></span></span><span><strong>AI COMPASS</strong><small>BUSINESS AI GUIDE</small></span></a><form class="site-search" action="#stories"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search" aria-hidden="true"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg><input id="base-ui-_R_2i9i_" data-slot="input" aria-label="記事やAIサービスを検索" placeholder="記事・事例・AIサービスを検索" class="h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40" name="q"/><button type="submit">検索</button></form><div class="header-links"><a href="#guide">はじめての方へ</a><a class="consult-link" href="#compare">AIサービス比較</a></div></div><nav class="shell category-nav" aria-label="カテゴリー"><a href="#stories">新着記事</a><a href="#interviews">導入事例</a><a href="#categories">業務から探す</a><a href="#categories">業界から探す</a><a href="#compare">AIサービス比較</a><a href="#ranking">人気ランキング</a></nav></header><section class="masthead shell"><div><p class="eyebrow">AI STORIES FOR BUSINESS</p><h1>AIを、誰かの成功談で<br/>終わらせない。</h1></div><aside class="hero-compare" aria-label="AIサービス比較の入口"><p>AIサービス比較</p><h2>自社に合う候補を絞る</h2><div class="hero-compare-options"><a href="#compare">課題・業務から探す <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></a><a href="#compare">業界から探す <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></a><a href="#compare">サービスカテゴリから探す <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></a></div><a class="hero-compare-button" href="#compare">条件を選んで比較する <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></aside></section><section class="shell lead-grid" id="interviews" aria-label="注目の記事"><article class="lead-story"><a class="lead-image" href="#feature"><img src="./assets/hatakeyama.jpg" alt="ノートパソコンを前に笑顔で座る畠山謙人税理士"/><span>FEATURE INTERVIEW</span></a><div class="lead-body"><p class="article-category">会計・バックオフィス</p><h2><a href="#feature">スタッフ0人で顧問先60社。ひとり税理士がつくった「AIと人の分業」</a></h2><p>夜間はAIが仕訳候補をつくり、朝は人にしかできない判断から始める。その仕組みと線引きを聞きました。</p><div class="person-row"><span class="person-avatar">H</span><span><strong>畠山 謙人さん</strong><small>公認会計士・税理士<!-- -->　・　<!-- -->インタビュー・8分</small></span><a href="#feature" aria-label="特集インタビューを読む"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div><div class="story-compare"><div><span>この記事に関連するサービス</span><strong>会計業務の自動化・AIエージェント</strong><small>導入規模や連携条件をそろえて比較できます</small></div><a href="#compare">関連サービスを比較する <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div></div></article><div class="lead-secondary"><article class="secondary-story"><a class="secondary-image" href="#stories"><img src="./assets/sales-team.jpg" alt="テーブルを囲んで話すビジネスチーム"/></a><div><p class="article-category">営業・マーケティング</p><h2><a href="#stories">提案書をつくる前の2時間を、AIで15分に。営業チームの情報収集術</a></h2><span>ケーススタディ・6分</span></div><b aria-hidden="true">0<!-- -->2</b></article><article class="secondary-story"><a class="secondary-image" href="#stories"><img src="./assets/meeting-team.jpg" alt="パソコンを見ながら打ち合わせをするチーム"/></a><div><p class="article-category">会議・ナレッジ</p><h2><a href="#stories">議事録で終わらせない。会議の決定を次の仕事へつなぐAI運用</a></h2><span>特集・5分</span></div><b aria-hidden="true">0<!-- -->3</b></article></div></section><section class="topic-strip" id="categories"><div class="shell topic-inner"><strong>関心のあるテーマから読む</strong><div><a href="#stories">経理・会計<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></a><a href="#stories">営業<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></a><a href="#stories">人事・採用<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></a><a href="#stories">会議・文書<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></a><a href="#stories">顧客対応<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></a><a href="#stories">製造・現場<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></a></div></div></section><section class="content-section shell" id="stories"><div class="section-heading"><div><p>NEW ARTICLES</p><h2>新着の記事</h2></div><p>実例、インタビュー、選び方。<br/>仕事に持ち帰れる視点を届けます。</p><a href="#stories">記事をすべて見る <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div><div class="article-grid"><article class="article-card"><a class="card-image" href="#guide"><img src="./assets/meeting-team.jpg" alt="パソコンを見ながら打ち合わせをするチーム"/><span>EDITOR&#x27;S PICK</span></a><div class="card-body"><p class="article-category">会議・ナレッジ</p><h3><a href="#guide">議事録で終わらせない。会議の決定を次の仕事へつなぐAI運用</a></h3><p>文字起こしから担当者への共有まで。会議後に止まりがちな情報を動かす方法を整理します。</p><div class="card-meta"><span><strong>AI COMPASS編集部</strong><small>特集・5分</small></span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div><div class="card-actions"><a href="#guide">記事を読む</a><a href="#compare">関連サービスを比較</a></div></div></article><article class="article-card"><a class="card-image" href="#guide"><img src="./assets/planning.jpg" alt="資料を広げて業務を検討する人たち"/></a><div class="card-body"><p class="article-category">経営・組織</p><h3><a href="#guide">AIに任せる仕事、人が決める仕事。導入前に引く「一本の線」</a></h3><p>便利さだけで範囲を決めない。責任、データ、判断、例外対応から考える4つの視点。</p><div class="card-meta"><span><strong>AI COMPASS編集部</strong><small>読みもの・7分</small></span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div><div class="card-actions"><a href="#guide">記事を読む</a><a href="#compare">関連サービスを比較</a></div></div></article><article class="article-card"><a class="card-image" href="#guide"><img src="./assets/hr-team.jpg" alt="明るいオフィスで並んで立つチーム"/></a><div class="card-body"><p class="article-category">人事・採用</p><h3><a href="#guide">候補者との対話は人がする。採用担当がAIに預けた3つの下準備</a></h3><p>求人票、面談準備、社内共有。人と向き合う時間を増やすための小さな自動化。</p><div class="card-meta"><span><strong>AI COMPASS編集部</strong><small>ケーススタディ・5分</small></span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div><div class="card-actions"><a href="#guide">記事を読む</a><a href="#compare">関連サービスを比較</a></div></div></article><article class="article-card"><a class="card-image" href="#guide"><img src="./assets/manufacturing.jpg" alt="ノートパソコンを操作する製造現場の技術者"/></a><div class="card-body"><p class="article-category">製造・現場</p><h3><a href="#guide">ベテランの頭の中を、検索できる知識へ。現場AIの始め方</a></h3><p>いきなり全社導入を目指さず、質問が多い一工程から知識を集める進め方を紹介します。</p><div class="card-meta"><span><strong>AI COMPASS編集部</strong><small>解説・6分</small></span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div><div class="card-actions"><a href="#guide">記事を読む</a><a href="#compare">関連サービスを比較</a></div></div></article><article class="article-card"><a class="card-image" href="#guide"><img src="./assets/comparison-team.jpg" alt="パソコンを囲んで画面を確認するオフィスチーム"/></a><div class="card-body"><p class="article-category">AIサービスの選び方</p><h3><a href="#guide">機能数より先に見る。「運用できるAI」の比較ポイント7つ</a></h3><p>データの置き場所、担当者、確認工程。導入後に困らない比較軸をチェックリストにしました。</p><div class="card-meta"><span><strong>AI COMPASS編集部</strong><small>保存版・9分</small></span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div><div class="card-actions"><a href="#guide">記事を読む</a><a href="#compare">関連サービスを比較</a></div></div></article></div><div class="inline-compare"><div><span>3 QUESTIONS</span><h3>読むだけで終わらせない。<br/>自社で使えるAIサービスを絞り込む。</h3><p>業務・会社規模・導入方法を選ぶと、比較候補を整理できます。</p></div><a href="#compare">3つの質問で候補を絞る <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div></section><section class="comparison-workbench" id="compare"><div class="shell"><div class="compare-heading"><div><p>AI SERVICE COMPARISON</p><h2>自社の条件で、比較する。</h2></div><p>知名度や機能数ではなく、実際に使う業務と運用条件から候補を絞ります。</p></div><div class="compare-steps" aria-label="比較条件"><div><span>01</span><strong>改善したい業務</strong><div><a href="#comparison-results">経理・会計</a><a href="#comparison-results">営業</a><a href="#comparison-results">会議・文書</a></div></div><div><span>02</span><strong>会社・チーム規模</strong><div><a href="#comparison-results">1〜10名</a><a href="#comparison-results">11〜100名</a><a href="#comparison-results">101名以上</a></div></div><div><span>03</span><strong>導入方法</strong><div><a href="#comparison-results">すぐ使えるSaaS</a><a href="#comparison-results">個別開発</a><a href="#comparison-results">伴走支援</a></div></div></div><div class="comparison-results" id="comparison-results"><div class="results-top"><div><span>COMPARISON PREVIEW</span><h3>比較候補の例</h3></div><a href="#comparison-results">選択条件を変更</a></div><div class="comparison-table" role="table" aria-label="AIサービス比較候補の例"><div class="comparison-row comparison-head" role="row"><span role="columnheader">候補</span><span role="columnheader">得意な業務</span><span role="columnheader">導入方法</span><span role="columnheader">人の確認</span><span role="columnheader">詳細</span></div><div class="comparison-row" role="row"><strong role="cell">業務自動化型</strong><span role="cell">情報取得・整理・下書き</span><span role="cell">個別設計</span><span role="cell">承認前に必要</span><a role="cell" href="#consult">相談する</a></div><div class="comparison-row" role="row"><strong role="cell">社内ナレッジ型</strong><span role="cell">規程・資料の検索と回答</span><span role="cell">SaaS</span><span role="cell">重要回答で必要</span><a role="cell" href="#consult">相談する</a></div><div class="comparison-row" role="row"><strong role="cell">議事録・文書型</strong><span role="cell">記録・要約・文書作成</span><span role="cell">SaaS</span><span role="cell">共有前に必要</span><a role="cell" href="#consult">相談する</a></div></div><p class="results-note">※ 掲載内容は比較画面の表示例です。実サービス情報は公式情報の確認後に掲載します。</p></div></div></section><section class="editorial-band" id="guide"><div class="shell editorial-layout"><div class="editorial-intro"><p>START HERE</p><h2>AI活用を、<br/>一歩ずつ。</h2><p>導入前の整理からサービス比較まで、担当者が最初に読みたい記事を集めました。</p><a href="#consult">はじめてのAI導入ガイド <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div><div class="guide-list"><a href="#consult"><span>01</span><strong>まず、どの仕事から始めるか</strong><small>業務の選び方</small><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a href="#consult"><span>02</span><strong>AIに渡してよい情報を決める</strong><small>データと安全性</small><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a href="#consult"><span>03</span><strong>比較表の前に、運用を描く</strong><small>サービス選定</small><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a href="#consult"><span>04</span><strong>小さく試し、続け方を決める</strong><small>PoCと定着</small><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div></div></section><section class="content-section shell ranking-section" id="ranking"><div class="ranking-copy"><p>WEEKLY RANKING</p><h2>今週よく読まれた記事</h2><p>導入担当者が読んでいる記事を、毎週更新します。</p></div><ol class="ranking-list"><li><a href="#stories"><span>01</span><strong>ひとり税理士のAI経理</strong><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></li><li><a href="#stories"><span>02</span><strong>生成AIの社内ルール入門</strong><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></li><li><a href="#stories"><span>03</span><strong>AI議事録サービス比較</strong><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></li><li><a href="#stories"><span>04</span><strong>営業AI、最初の一業務</strong><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></li><li><a href="#stories"><span>05</span><strong>失敗しないPoCの進め方</strong><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></li></ol></section><section class="feature-detail" id="feature"><div class="shell feature-layout"><div><p class="article-category light">FEATURE 001 / INTERVIEW</p><h2>「スタッフを増やす前に、<br/>AIに仕事を覚えてもらった」</h2></div><div><p>AIが情報取得と仕訳候補の作成を担当し、税務判断と最終レビューは本人が担う。結果だけでなく、実際の役割分担から再現の条件を読み解きます。</p><div class="feature-points"><p><span>AI DOES</span><strong>情報取得・整理・候補作成</strong></p><p><span>HUMAN DOES</span><strong>税務判断・承認・顧客提案</strong></p><p><span>STACK</span><strong>Claude Code × freee API</strong></p></div><a href="https://adv.freee.co.jp/case/hatakeyama-2026">出典となる導入事例を見る <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div></div></section><section class="consult shell" id="consult"><div><p>AI COMPASS DIAGNOSIS</p><h2>自社では、何から始める？</h2><p>6つの質問から、試しやすい活用方法と導入前に整える条件を整理します。</p></div><a href="#compare">無料診断をはじめる <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></section><section class="policy"><div class="shell policy-inner"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open" aria-hidden="true"><path d="M12 5v16"></path><path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z"></path></svg><div><strong>AI COMPASSの編集方針</strong><p>一次情報を優先し、確認日と出典を表示。広告と記事評価を分けて掲載します。</p></div><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg> 人が確認して公開</span></div></section><a class="sticky-compare" href="#compare"><span><small>AIサービス比較</small><strong>自社に合う候補を探す</strong></span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><footer><div class="shell footer-main"><a class="brand footer-brand" href="#top"><span class="brand-symbol">A<span aria-hidden="true"></span></span><span><strong>AI COMPASS</strong><small>BUSINESS AI GUIDE</small></span></a><div class="footer-nav"><div><strong>記事を読む</strong><a href="#stories">新着記事</a><a href="#interviews">インタビュー</a><a href="#ranking">ランキング</a></div><div><strong>AIを探す</strong><a href="#categories">業務から探す</a><a href="#compare">AIサービス比較</a><a href="#consult">AI活用診断</a></div><div><strong>このサイトについて</strong><a href="#top">編集方針</a><a href="#top">運営会社</a><a href="#top">お問い合わせ</a></div></div></div><div class="shell footer-bottom"><span>© 2026 AI COMPASS</span><span>利用規約　プライバシーポリシー</span></div></footer></main></body>
+<body>
+<main id="top">
+<div class="topline">
+<div class="shell topline-inner">
+<p>法人向けAI活用の事例と選び方</p>
+<p>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check" aria-hidden="true">
+<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z">
+</path>
+<path d="m9 12 2 2 4-4">
+</path>
+</svg> 出典・確認日を明記</p>
+</div>
+</div>
+<header class="site-header">
+<div class="shell header-main">
+<a class="brand" href="#top" aria-label="AI COMPASS トップへ">
+<span class="brand-symbol">A<span aria-hidden="true">
+</span>
+</span>
+<span>
+<strong>AI COMPASS</strong>
+<small>BUSINESS AI GUIDE</small>
+</span>
+</a>
+<form class="site-search" action="#stories">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search" aria-hidden="true">
+<path d="m21 21-4.34-4.34">
+</path>
+<circle cx="11" cy="11" r="8">
+</circle>
+</svg>
+<input id="base-ui-_R_2i9i_" data-slot="input" aria-label="記事やAIサービスを検索" placeholder="記事・事例・AIサービスを検索" class="h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40" name="q"/>
+<button type="submit">検索</button>
+</form>
+<div class="header-links">
+<a href="#guide">はじめての方へ</a>
+<a class="consult-link" href="#compare">AIサービス比較</a>
+</div>
+</div>
+<nav class="shell category-nav" aria-label="カテゴリー">
+<a href="#stories">新着記事</a>
+<a href="#interviews">導入事例</a>
+<a href="#categories">業務から探す</a>
+<a href="#categories">業界から探す</a>
+<a href="#compare">AIサービス比較</a>
+<a href="#ranking">人気ランキング</a>
+</nav>
+</header>
+<section class="discovery-home shell" aria-labelledby="discover-title">
+  <aside class="popular-categories">
+    <p class="discovery-label">人気のAIカテゴリ</p>
+    <nav aria-label="人気のAIカテゴリ">
+      <a href="#compare" data-preset="伴走支援"><span class="category-mark">導</span><span>AI導入支援</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+      <a href="#compare" data-preset="会議・文書"><span class="category-mark">議</span><span>AI議事録</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+      <a href="#compare" data-preset="営業"><span class="category-mark">営</span><span>営業AI</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+      <a href="#compare"><span class="category-mark">問</span><span>AIチャットボット</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+      <a href="#compare" data-preset="個別開発"><span class="category-mark">代</span><span>AIエージェント</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+      <a href="#compare" data-preset="経理・会計"><span class="category-mark">経</span><span>経理・会計AI</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+    </nav>
+    <a class="all-categories" href="#categories">すべてのテーマを見る →</a>
+  </aside>
+  <div class="discovery-main">
+    <p class="eyebrow">FIND AI FOR YOUR WORK</p>
+    <h1 id="discover-title">やりたいことから、<br>AIサービスを探す。</h1>
+    <p class="discovery-copy">サービス名が分からなくても大丈夫です。困っている業務や実現したいことを、そのまま入力してください。</p>
+    <form class="discovery-search" action="#stories" role="search">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+      <input name="q" aria-label="困っている業務や目的を検索" placeholder="例：提案書の下調べを短くしたい">
+      <button type="submit">事例を探す</button>
+    </form>
+    <div class="discovery-shortcuts" aria-label="検索例">
+      <a href="#stories" data-query="議事録"># 議事録を自動化</a>
+      <a href="#stories" data-query="営業"># 営業の下調べ</a>
+      <a href="#stories" data-query="採用"># 採用準備</a>
+      <a href="#stories" data-query="経理"># 経理・会計</a>
+    </div>
+  </div>
+  <aside class="case-match-card">
+    <p>AI CASE MATCH</p>
+    <h2>似た事例から、<br>相性をみる。</h2>
+    <p>会社の条件と解決したい課題を選び、比較候補を整理します。</p>
+    <ol class="match-conditions"><li><span>01</span>改善したい業務</li><li><span>02</span>会社・チーム規模</li><li><span>03</span>導入方法</li></ol>
+    <a href="#compare">3つの条件で絞り込む <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+    <small class="prototype-note">登録不要・比較画面はプロトタイプ</small>
+  </aside>
+</section>
+<section class="explore-strip" id="categories">
+  <div class="shell explore-grid">
+    <article class="explore-group"><header><h2>課題・目的から探す</h2><span>ISSUE</span></header><div class="explore-links"><a href="#compare" data-preset="営業">提案準備を短縮</a><a href="#compare" data-preset="会議・文書">議事録を活用</a><a href="#compare" data-preset="経理・会計">経理を効率化</a><a href="#guide">社内ルールを整備</a></div></article>
+    <article class="explore-group"><header><h2>部門から探す</h2><span>TEAM</span></header><div class="explore-links"><a href="#compare" data-preset="営業">営業</a><a href="#stories" data-query="採用">人事・採用</a><a href="#compare" data-preset="経理・会計">バックオフィス</a><a href="#stories" data-query="経営">経営・企画</a></div></article>
+    <article class="explore-group"><header><h2>業界から探す</h2><span>INDUSTRY</span></header><div class="explore-links"><a href="#stories" data-query="製造">製造</a><a href="#stories" data-query="税理士">士業</a><a href="#stories" data-query="営業">IT・サービス</a><a href="#stories">すべての記事</a></div></article>
+  </div>
+</section>
+<section class="masthead shell">
+<div>
+<p class="eyebrow">AI STORIES FOR BUSINESS</p>
+<h2>AIを、誰かの成功談で<br/>終わらせない。</h2>
+</div>
+<aside class="hero-compare" aria-label="AIサービス比較の入口">
+<p>AIサービス比較</p>
+<h2>自社に合う候補を絞る</h2>
+<div class="hero-compare-options">
+<a href="#compare">課題・業務から探す <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true">
+<path d="m9 18 6-6-6-6">
+</path>
+</svg>
+</a>
+<a href="#compare">業界から探す <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true">
+<path d="m9 18 6-6-6-6">
+</path>
+</svg>
+</a>
+<a href="#compare">サービスカテゴリから探す <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true">
+<path d="m9 18 6-6-6-6">
+</path>
+</svg>
+</a>
+</div>
+<a class="hero-compare-button" href="#compare">条件を選んで比較する <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true">
+<path d="M5 12h14">
+</path>
+<path d="m12 5 7 7-7 7">
+</path>
+</svg>
+</a>
+</aside>
+</section>
+<section class="shell lead-grid" id="interviews" aria-label="注目の記事">
+<article class="lead-story">
+<a class="lead-image" href="#feature">
+<img src="./assets/hatakeyama.jpg" alt="ノートパソコンを前に笑顔で座る畠山謙人税理士"/>
+<span>FEATURE INTERVIEW</span>
+</a>
+<div class="lead-body">
+<p class="article-category">会計・バックオフィス</p>
+<h2>
+<a href="#feature">スタッフ0人で顧問先60社。ひとり税理士がつくった「AIと人の分業」</a>
+</h2>
+<p>夜間はAIが仕訳候補をつくり、朝は人にしかできない判断から始める。その仕組みと線引きを聞きました。</p>
+<div class="person-row">
+<span class="person-avatar">H</span>
+<span>
+<strong>畠山 謙人さん</strong>
+<small>公認会計士・税理士<!-- -->　・　<!-- -->インタビュー・8分</small>
+</span>
+<a href="#feature" aria-label="特集インタビューを読む">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true">
+<path d="M7 7h10v10">
+</path>
+<path d="M7 17 17 7">
+</path>
+</svg>
+</a>
+</div>
+<div class="story-compare">
+<div>
+<span>この記事に関連するサービス</span>
+<strong>会計業務の自動化・AIエージェント</strong>
+<small>導入規模や連携条件をそろえて比較できます</small>
+</div>
+<a href="#compare">関連サービスを比較する <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true">
+<path d="M5 12h14">
+</path>
+<path d="m12 5 7 7-7 7">
+</path>
+</svg>
+</a>
+</div>
+</div>
+</article>
+<div class="lead-secondary">
+<article class="secondary-story">
+<a class="secondary-image" href="#stories">
+<img src="./assets/sales-team.jpg" alt="テーブルを囲んで話すビジネスチーム"/>
+</a>
+<div>
+<p class="article-category">営業・マーケティング</p>
+<h2>
+<a href="#stories">提案書をつくる前の2時間を、AIで15分に。営業チームの情報収集術</a>
+</h2>
+<span>ケーススタディ・6分</span>
+</div>
+<b aria-hidden="true">0<!-- -->2</b>
+</article>
+<article class="secondary-story">
+<a class="secondary-image" href="#stories">
+<img src="./assets/meeting-team.jpg" alt="パソコンを見ながら打ち合わせをするチーム"/>
+</a>
+<div>
+<p class="article-category">会議・ナレッジ</p>
+<h2>
+<a href="#stories">議事録で終わらせない。会議の決定を次の仕事へつなぐAI運用</a>
+</h2>
+<span>特集・5分</span>
+</div>
+<b aria-hidden="true">0<!-- -->3</b>
+</article>
+</div>
+</section>
+<section class="topic-strip" id="article-themes">
+<div class="shell topic-inner">
+<strong>関心のあるテーマから読む</strong>
+<div>
+<a href="#stories">経理・会計<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true">
+<path d="m9 18 6-6-6-6">
+</path>
+</svg>
+</a>
+<a href="#stories">営業<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true">
+<path d="m9 18 6-6-6-6">
+</path>
+</svg>
+</a>
+<a href="#stories">人事・採用<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true">
+<path d="m9 18 6-6-6-6">
+</path>
+</svg>
+</a>
+<a href="#stories">会議・文書<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true">
+<path d="m9 18 6-6-6-6">
+</path>
+</svg>
+</a>
+<a href="#stories">顧客対応<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true">
+<path d="m9 18 6-6-6-6">
+</path>
+</svg>
+</a>
+<a href="#stories">製造・現場<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" aria-hidden="true">
+<path d="m9 18 6-6-6-6">
+</path>
+</svg>
+</a>
+</div>
+</div>
+</section>
+<section class="content-section shell" id="stories">
+<div class="section-heading">
+<div>
+<p>NEW ARTICLES</p>
+<h2>新着の記事</h2>
+</div>
+<p>実例、インタビュー、選び方。<br/>仕事に持ち帰れる視点を届けます。</p>
+<a href="#stories">記事をすべて見る <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true">
+<path d="M5 12h14">
+</path>
+<path d="m12 5 7 7-7 7">
+</path>
+</svg>
+</a>
+</div>
+<p class="search-status" id="search-status" role="status" aria-live="polite" hidden></p>
+<div class="article-grid">
+<article class="article-card">
+<a class="card-image" href="#guide">
+<img src="./assets/meeting-team.jpg" alt="パソコンを見ながら打ち合わせをするチーム"/>
+<span>EDITOR&#x27;S PICK</span>
+</a>
+<div class="card-body">
+<p class="article-category">会議・ナレッジ</p>
+<h3>
+<a href="#guide">議事録で終わらせない。会議の決定を次の仕事へつなぐAI運用</a>
+</h3>
+<p>文字起こしから担当者への共有まで。会議後に止まりがちな情報を動かす方法を整理します。</p>
+<div class="card-meta">
+<span>
+<strong>AI COMPASS編集部</strong>
+<small>特集・5分</small>
+</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true">
+<path d="M7 7h10v10">
+</path>
+<path d="M7 17 17 7">
+</path>
+</svg>
+</div>
+<div class="card-actions">
+<a href="#guide">記事を読む</a>
+<a href="#compare">関連サービスを比較</a>
+</div>
+</div>
+</article>
+<article class="article-card">
+<a class="card-image" href="#guide">
+<img src="./assets/planning.jpg" alt="資料を広げて業務を検討する人たち"/>
+</a>
+<div class="card-body">
+<p class="article-category">経営・組織</p>
+<h3>
+<a href="#guide">AIに任せる仕事、人が決める仕事。導入前に引く「一本の線」</a>
+</h3>
+<p>便利さだけで範囲を決めない。責任、データ、判断、例外対応から考える4つの視点。</p>
+<div class="card-meta">
+<span>
+<strong>AI COMPASS編集部</strong>
+<small>読みもの・7分</small>
+</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true">
+<path d="M7 7h10v10">
+</path>
+<path d="M7 17 17 7">
+</path>
+</svg>
+</div>
+<div class="card-actions">
+<a href="#guide">記事を読む</a>
+<a href="#compare">関連サービスを比較</a>
+</div>
+</div>
+</article>
+<article class="article-card">
+<a class="card-image" href="#guide">
+<img src="./assets/hr-team.jpg" alt="明るいオフィスで並んで立つチーム"/>
+</a>
+<div class="card-body">
+<p class="article-category">人事・採用</p>
+<h3>
+<a href="#guide">候補者との対話は人がする。採用担当がAIに預けた3つの下準備</a>
+</h3>
+<p>求人票、面談準備、社内共有。人と向き合う時間を増やすための小さな自動化。</p>
+<div class="card-meta">
+<span>
+<strong>AI COMPASS編集部</strong>
+<small>ケーススタディ・5分</small>
+</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true">
+<path d="M7 7h10v10">
+</path>
+<path d="M7 17 17 7">
+</path>
+</svg>
+</div>
+<div class="card-actions">
+<a href="#guide">記事を読む</a>
+<a href="#compare">関連サービスを比較</a>
+</div>
+</div>
+</article>
+<article class="article-card">
+<a class="card-image" href="#guide">
+<img src="./assets/manufacturing.jpg" alt="ノートパソコンを操作する製造現場の技術者"/>
+</a>
+<div class="card-body">
+<p class="article-category">製造・現場</p>
+<h3>
+<a href="#guide">ベテランの頭の中を、検索できる知識へ。現場AIの始め方</a>
+</h3>
+<p>いきなり全社導入を目指さず、質問が多い一工程から知識を集める進め方を紹介します。</p>
+<div class="card-meta">
+<span>
+<strong>AI COMPASS編集部</strong>
+<small>解説・6分</small>
+</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true">
+<path d="M7 7h10v10">
+</path>
+<path d="M7 17 17 7">
+</path>
+</svg>
+</div>
+<div class="card-actions">
+<a href="#guide">記事を読む</a>
+<a href="#compare">関連サービスを比較</a>
+</div>
+</div>
+</article>
+<article class="article-card">
+<a class="card-image" href="#guide">
+<img src="./assets/comparison-team.jpg" alt="パソコンを囲んで画面を確認するオフィスチーム"/>
+</a>
+<div class="card-body">
+<p class="article-category">AIサービスの選び方</p>
+<h3>
+<a href="#guide">機能数より先に見る。「運用できるAI」の比較ポイント7つ</a>
+</h3>
+<p>データの置き場所、担当者、確認工程。導入後に困らない比較軸をチェックリストにしました。</p>
+<div class="card-meta">
+<span>
+<strong>AI COMPASS編集部</strong>
+<small>保存版・9分</small>
+</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true">
+<path d="M7 7h10v10">
+</path>
+<path d="M7 17 17 7">
+</path>
+</svg>
+</div>
+<div class="card-actions">
+<a href="#guide">記事を読む</a>
+<a href="#compare">関連サービスを比較</a>
+</div>
+</div>
+</article>
+</div>
+<div class="inline-compare">
+<div>
+<span>3 QUESTIONS</span>
+<h3>読むだけで終わらせない。<br/>自社で使えるAIサービスを絞り込む。</h3>
+<p>業務・会社規模・導入方法を選ぶと、比較候補を整理できます。</p>
+</div>
+<a href="#compare">3つの質問で候補を絞る <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true">
+<path d="M5 12h14">
+</path>
+<path d="m12 5 7 7-7 7">
+</path>
+</svg>
+</a>
+</div>
+</section>
+<section class="comparison-workbench" id="compare">
+<div class="shell">
+<div class="compare-heading">
+<div>
+<p>AI SERVICE COMPARISON</p>
+<h2>自社の条件で、比較する。</h2>
+</div>
+<p>知名度や機能数ではなく、実際に使う業務と運用条件から候補を絞ります。</p>
+</div>
+<div class="compare-steps" aria-label="比較条件">
+<div>
+<span>01</span>
+<strong>改善したい業務</strong>
+<div>
+<a href="#comparison-results">経理・会計</a>
+<a href="#comparison-results">営業</a>
+<a href="#comparison-results">会議・文書</a>
+</div>
+</div>
+<div>
+<span>02</span>
+<strong>会社・チーム規模</strong>
+<div>
+<a href="#comparison-results">1〜10名</a>
+<a href="#comparison-results">11〜100名</a>
+<a href="#comparison-results">101名以上</a>
+</div>
+</div>
+<div>
+<span>03</span>
+<strong>導入方法</strong>
+<div>
+<a href="#comparison-results">すぐ使えるSaaS</a>
+<a href="#comparison-results">個別開発</a>
+<a href="#comparison-results">伴走支援</a>
+</div>
+</div>
+</div>
+<p class="selected-summary" id="selected-summary" aria-live="polite">条件を1つずつ選ぶと、比較候補の見方を整理できます。</p>
+<div class="comparison-results" id="comparison-results">
+<div class="results-top">
+<div>
+<span>COMPARISON PREVIEW</span>
+<h3>比較候補の例</h3>
+</div>
+<a href="#comparison-results">選択条件を変更</a>
+</div>
+<div class="comparison-table" role="table" aria-label="AIサービス比較候補の例">
+<div class="comparison-row comparison-head" role="row">
+<span role="columnheader">候補</span>
+<span role="columnheader">得意な業務</span>
+<span role="columnheader">導入方法</span>
+<span role="columnheader">人の確認</span>
+<span role="columnheader">詳細</span>
+</div>
+<div class="comparison-row" role="row">
+<strong role="cell">業務自動化型</strong>
+<span role="cell">情報取得・整理・下書き</span>
+<span role="cell">個別設計</span>
+<span role="cell">承認前に必要</span>
+<a role="cell" href="#consult">相談する</a>
+</div>
+<div class="comparison-row" role="row">
+<strong role="cell">社内ナレッジ型</strong>
+<span role="cell">規程・資料の検索と回答</span>
+<span role="cell">SaaS</span>
+<span role="cell">重要回答で必要</span>
+<a role="cell" href="#consult">相談する</a>
+</div>
+<div class="comparison-row" role="row">
+<strong role="cell">議事録・文書型</strong>
+<span role="cell">記録・要約・文書作成</span>
+<span role="cell">SaaS</span>
+<span role="cell">共有前に必要</span>
+<a role="cell" href="#consult">相談する</a>
+</div>
+</div>
+<p class="results-note">※ 掲載内容は比較画面の表示例です。実サービス情報は公式情報の確認後に掲載します。</p>
+</div>
+</div>
+</section>
+<section class="editorial-band" id="guide">
+<div class="shell editorial-layout">
+<div class="editorial-intro">
+<p>START HERE</p>
+<h2>AI活用を、<br/>一歩ずつ。</h2>
+<p>導入前の整理からサービス比較まで、担当者が最初に読みたい記事を集めました。</p>
+<a href="#consult">はじめてのAI導入ガイド <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true">
+<path d="M5 12h14">
+</path>
+<path d="m12 5 7 7-7 7">
+</path>
+</svg>
+</a>
+</div>
+<div class="guide-list">
+<a href="#consult">
+<span>01</span>
+<strong>まず、どの仕事から始めるか</strong>
+<small>業務の選び方</small>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true">
+<path d="M7 7h10v10">
+</path>
+<path d="M7 17 17 7">
+</path>
+</svg>
+</a>
+<a href="#consult">
+<span>02</span>
+<strong>AIに渡してよい情報を決める</strong>
+<small>データと安全性</small>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true">
+<path d="M7 7h10v10">
+</path>
+<path d="M7 17 17 7">
+</path>
+</svg>
+</a>
+<a href="#consult">
+<span>03</span>
+<strong>比較表の前に、運用を描く</strong>
+<small>サービス選定</small>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true">
+<path d="M7 7h10v10">
+</path>
+<path d="M7 17 17 7">
+</path>
+</svg>
+</a>
+<a href="#consult">
+<span>04</span>
+<strong>小さく試し、続け方を決める</strong>
+<small>PoCと定着</small>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true">
+<path d="M7 7h10v10">
+</path>
+<path d="M7 17 17 7">
+</path>
+</svg>
+</a>
+</div>
+</div>
+</section>
+<section class="content-section shell ranking-section" id="ranking">
+<div class="ranking-copy">
+<p>WEEKLY RANKING</p>
+<h2>今週よく読まれた記事</h2>
+<p>導入担当者が読んでいる記事を、毎週更新します。</p>
+</div>
+<ol class="ranking-list">
+<li>
+<a href="#stories">
+<span>01</span>
+<strong>ひとり税理士のAI経理</strong>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true">
+<path d="M7 7h10v10">
+</path>
+<path d="M7 17 17 7">
+</path>
+</svg>
+</a>
+</li>
+<li>
+<a href="#stories">
+<span>02</span>
+<strong>生成AIの社内ルール入門</strong>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true">
+<path d="M7 7h10v10">
+</path>
+<path d="M7 17 17 7">
+</path>
+</svg>
+</a>
+</li>
+<li>
+<a href="#stories">
+<span>03</span>
+<strong>AI議事録サービス比較</strong>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true">
+<path d="M7 7h10v10">
+</path>
+<path d="M7 17 17 7">
+</path>
+</svg>
+</a>
+</li>
+<li>
+<a href="#stories">
+<span>04</span>
+<strong>営業AI、最初の一業務</strong>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true">
+<path d="M7 7h10v10">
+</path>
+<path d="M7 17 17 7">
+</path>
+</svg>
+</a>
+</li>
+<li>
+<a href="#stories">
+<span>05</span>
+<strong>失敗しないPoCの進め方</strong>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true">
+<path d="M7 7h10v10">
+</path>
+<path d="M7 17 17 7">
+</path>
+</svg>
+</a>
+</li>
+</ol>
+</section>
+<section class="feature-detail" id="feature">
+<div class="shell feature-layout">
+<div>
+<p class="article-category light">FEATURE 001 / INTERVIEW</p>
+<h2>「スタッフを増やす前に、<br/>AIに仕事を覚えてもらった」</h2>
+</div>
+<div>
+<p>AIが情報取得と仕訳候補の作成を担当し、税務判断と最終レビューは本人が担う。結果だけでなく、実際の役割分担から再現の条件を読み解きます。</p>
+<div class="feature-points">
+<p>
+<span>AI DOES</span>
+<strong>情報取得・整理・候補作成</strong>
+</p>
+<p>
+<span>HUMAN DOES</span>
+<strong>税務判断・承認・顧客提案</strong>
+</p>
+<p>
+<span>STACK</span>
+<strong>Claude Code × freee API</strong>
+</p>
+</div>
+<a href="https://adv.freee.co.jp/case/hatakeyama-2026">出典となる導入事例を見る <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true">
+<path d="M5 12h14">
+</path>
+<path d="m12 5 7 7-7 7">
+</path>
+</svg>
+</a>
+</div>
+</div>
+</section>
+<section class="consult shell" id="consult">
+<div>
+<p>AI COMPASS DIAGNOSIS</p>
+<h2>自社では、何から始める？</h2>
+<p>6つの質問から、試しやすい活用方法と導入前に整える条件を整理します。</p>
+</div>
+<a href="#compare">無料診断をはじめる <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true">
+<path d="M5 12h14">
+</path>
+<path d="m12 5 7 7-7 7">
+</path>
+</svg>
+</a>
+</section>
+<section class="policy">
+<div class="shell policy-inner">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open" aria-hidden="true">
+<path d="M12 5v16">
+</path>
+<path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z">
+</path>
+</svg>
+<div>
+<strong>AI COMPASSの編集方針</strong>
+<p>一次情報を優先し、確認日と出典を表示。広告と記事評価を分けて掲載します。</p>
+</div>
+<span>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check" aria-hidden="true">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg> 人が確認して公開</span>
+</div>
+</section>
+<a class="sticky-compare" href="#compare">
+<span>
+<small>AIサービス比較</small>
+<strong>自社に合う候補を探す</strong>
+</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true">
+<path d="M5 12h14">
+</path>
+<path d="m12 5 7 7-7 7">
+</path>
+</svg>
+</a>
+<footer>
+<div class="shell footer-main">
+<a class="brand footer-brand" href="#top">
+<span class="brand-symbol">A<span aria-hidden="true">
+</span>
+</span>
+<span>
+<strong>AI COMPASS</strong>
+<small>BUSINESS AI GUIDE</small>
+</span>
+</a>
+<div class="footer-nav">
+<div>
+<strong>記事を読む</strong>
+<a href="#stories">新着記事</a>
+<a href="#interviews">インタビュー</a>
+<a href="#ranking">ランキング</a>
+</div>
+<div>
+<strong>AIを探す</strong>
+<a href="#categories">業務から探す</a>
+<a href="#compare">AIサービス比較</a>
+<a href="#consult">AI活用診断</a>
+</div>
+<div>
+<strong>このサイトについて</strong>
+<a href="#top">編集方針</a>
+<a href="#top">運営会社</a>
+<a href="#top">お問い合わせ</a>
+</div>
+</div>
+</div>
+<div class="shell footer-bottom">
+<span>© 2026 AI COMPASS</span>
+<span>利用規約　プライバシーポリシー</span>
+</div>
+</footer>
+<script>
+(() => {
+  const searchForms = document.querySelectorAll('.site-search, .discovery-search');
+  const searchInputs = document.querySelectorAll('.site-search input[name="q"], .discovery-search input[name="q"]');
+  const searchable = [...document.querySelectorAll('.lead-story, .secondary-story, .article-card')];
+  const status = document.querySelector('#search-status');
+  const groups = [
+    ['営業', '提案', '下調べ', 'マーケティング'],
+    ['会議', '議事録', '文書', 'ナレッジ'],
+    ['経理', '会計', '税理士', 'バックオフィス'],
+    ['採用', '人事', '候補者'],
+    ['製造', '現場', 'ベテラン'],
+    ['比較', '選び方', '運用']
+  ];
+
+  function normalize(value) {
+    return value.trim().toLowerCase().replace(/[　\s]+/g, '');
+  }
+
+  function findTerms(query) {
+    const normalized = normalize(query);
+    const group = groups.find(words => words.some(word => normalized.includes(normalize(word))));
+    return (group || [query]).map(normalize).filter(Boolean);
+  }
+
+  function runSearch(query) {
+    const cleanQuery = query.trim();
+    searchInputs.forEach(input => { input.value = cleanQuery; });
+    if (!cleanQuery) {
+      searchable.forEach(item => { item.hidden = false; });
+      status.hidden = true;
+      document.querySelector('#stories').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+
+    const terms = findTerms(cleanQuery);
+    let count = 0;
+    let firstMatch = null;
+    searchable.forEach(item => {
+      const matched = terms.some(term => normalize(item.textContent).includes(term));
+      item.hidden = !matched;
+      if (matched) {
+        count += 1;
+        firstMatch ||= item;
+      }
+    });
+    status.textContent = count
+      ? `「${cleanQuery}」に関連する記事・事例を${count}件表示しています。`
+      : `「${cleanQuery}」に一致する記事はまだありません。下の比較条件から候補を絞れます。`;
+    status.hidden = false;
+    (firstMatch || status).scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  searchForms.forEach(form => form.addEventListener('submit', event => {
+    event.preventDefault();
+    runSearch(new FormData(form).get('q') || '');
+  }));
+  document.querySelectorAll('[data-query]').forEach(link => link.addEventListener('click', event => {
+    event.preventDefault();
+    runSearch(link.dataset.query);
+  }));
+
+  const compareGroups = [...document.querySelectorAll('.compare-steps > div')];
+  const summary = document.querySelector('#selected-summary');
+  function updateSummary() {
+    const selected = compareGroups.map(group => group.querySelector('.is-selected')?.textContent.trim()).filter(Boolean);
+    summary.textContent = selected.length
+      ? `選択中：${selected.join(' ／ ')}${selected.length === 3 ? '。下に比較候補を表示しています。' : '。続けて条件を選べます。'}`
+      : '条件を1つずつ選ぶと、比較候補の見方を整理できます。';
+  }
+  function selectChip(chip) {
+    const group = chip.closest('.compare-steps > div');
+    group.querySelectorAll('a').forEach(item => {
+      item.classList.remove('is-selected');
+      item.removeAttribute('aria-current');
+    });
+    chip.classList.add('is-selected');
+    chip.setAttribute('aria-current', 'true');
+    updateSummary();
+  }
+  document.querySelectorAll('.compare-steps a').forEach(chip => chip.addEventListener('click', event => {
+    event.preventDefault();
+    selectChip(chip);
+  }));
+  document.querySelectorAll('[data-preset]').forEach(link => link.addEventListener('click', event => {
+    const chip = [...document.querySelectorAll('.compare-steps a')].find(item => item.textContent.trim() === link.dataset.preset);
+    if (!chip) return;
+    event.preventDefault();
+    selectChip(chip);
+    document.querySelector('#compare').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }));
+  document.querySelector('.results-top > a').addEventListener('click', event => {
+    event.preventDefault();
+    document.querySelectorAll('.compare-steps a').forEach(item => {
+      item.classList.remove('is-selected');
+      item.removeAttribute('aria-current');
+    });
+    updateSummary();
+    document.querySelector('.compare-steps').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+})();
+</script>
+</main>
+</body>
 </html>
