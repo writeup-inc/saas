@@ -15,7 +15,7 @@ const checks = [
   ['monthly fee disclosure', /月額料金[\s\S]{0,180}0円/],
   ['API actual-cost disclosure', /API利用料などの実費のみ/],
   ['pre-start agreement', /開始前に書面で確認/],
-  ['post-monitor terms', /継続は自動ではありません/],
+  ['post-monitor terms', /自動では続きません/],
   ['data handling', /データの取り扱い/],
   ['reduced motion', /prefers-reduced-motion:\s*reduce/],
   ['1200px content width', /1200px/],
