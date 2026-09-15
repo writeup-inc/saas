@@ -152,6 +152,20 @@ h1 em{ font-style:normal; color:var(--blue); }
 .foot-note{ margin-top:34px; font-size:13px; color:var(--gray2); line-height:1.9; }
 footer{ position:relative; z-index:1; flex-shrink:0; border-top:1px solid var(--line); padding:22px 0 36px; }
 footer .f{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; font-size:12px; color:var(--gray2); }
+.sales-links{ border-top:1px solid var(--line); padding:28px 0 30px; }
+.sales-links h2{ margin:0 0 14px; font-size:12px; font-weight:700; letter-spacing:.12em; color:var(--gray2); }
+.sales-links ul{ display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:0; margin:0; padding:0; list-style:none; border-top:1px solid var(--line); }
+.sales-links li{ border-bottom:1px solid var(--line); }
+.sales-links li:nth-child(even){ border-left:1px solid var(--line); }
+.sales-links a{ display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:52px; padding:12px 18px 12px 0; color:var(--gray); font-size:13px; font-weight:700; line-height:1.55; text-decoration:none; transition:color .2s ease, background .2s ease; }
+.sales-links li:nth-child(even) a{ padding-left:24px; }
+.sales-links a:hover{ color:var(--blue); background:var(--blue-l); }
+.sales-links a i{ flex:0 0 auto; font-style:normal; font-size:12px; color:var(--gray2); }
+@media(max-width:900px){
+  .sales-links ul{ grid-template-columns:1fr; }
+  .sales-links li:nth-child(even){ border-left:none; }
+  .sales-links a, .sales-links li:nth-child(even) a{ padding-left:4px; padding-right:4px; }
+}
 </style>
 </head>
 <body>
@@ -207,9 +221,22 @@ footer .f{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px
 </main>
 
 <footer>
-  <div class="wrap f">
-    <span>ワークログ・インサイト</span>
-    <span>株式会社ライトアップ</span>
+  <div class="wrap">
+    <nav class="sales-links" aria-label="営業担当者向けリンク集">
+      <h2>営業担当者向けリンク集</h2>
+      <ul>
+        <li><a href="../worklog-insight-sales-talk/"><span>ワークログインサイト：直販セールストーク（社内限定）</span><i>→</i></a></li>
+        <li><a href="../worklog-insight-taku-sample/"><span>ワークログ 導入企業管理画面</span><i>→</i></a></li>
+        <li><a href="../worklog-fact-search/"><span>ワークログ ファクトサーチ</span><i>→</i></a></li>
+        <li><a href="../worklog-insight-oem/"><span>ワークログOEM セミナー資料</span><i>→</i></a></li>
+        <li><a href="https://writeup-inc.github.io/seminar/worklog-insight-oem/?design=v1"><span>ワークログ・インサイト OEM説明会（V1）</span><i>→</i></a></li>
+        <li><a href="https://writeup-inc.github.io/seminar/worklog-insight-oem/?design=v2"><span>ワークログ・インサイト OEM説明会（V2）</span><i>→</i></a></li>
+      </ul>
+    </nav>
+    <div class="f">
+      <span>ワークログ・インサイト</span>
+      <span>株式会社ライトアップ</span>
+    </div>
   </div>
 </footer>
 
