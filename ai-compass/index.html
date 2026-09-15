@@ -103,8 +103,8 @@ button, input { font: inherit; }
 .topic-inner svg { width: 12px; }
 
 /* 比較サイトの入口を、AI COMPASSの誌面感に合わせて再構成 */
-.discovery-home { padding-block: 36px 30px; display: grid; grid-template-columns: 230px minmax(0, 1fr) 280px; gap: 22px; align-items: stretch; }
-.popular-categories, .case-match-card, .discovery-main { border: 1px solid var(--line); background: var(--paper); }
+.discovery-home { padding-block: 36px 30px; display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 22px; align-items: stretch; }
+.popular-categories, .discovery-rail { border: 1px solid var(--line); background: var(--paper); }
 .popular-categories { padding: 22px 18px 16px; }
 .discovery-label { margin: 0 0 15px; color: var(--navy-deep); font-size: 13px; font-weight: 800; }
 .popular-categories nav { display: grid; }
@@ -116,29 +116,44 @@ button, input { font: inherit; }
 .popular-categories svg { width: 12px; color: var(--muted-ink); }
 .all-categories { margin-top: 14px; display: inline-flex; align-items: center; gap: 7px; color: var(--navy); font-size: 11px; font-weight: 800; }
 
-.discovery-main { padding: 31px 34px; background: linear-gradient(135deg, #fff 0%, #fff 70%, #f5f7f8 100%); }
-.discovery-main .eyebrow { margin-bottom: 13px; }
-.discovery-main h1 { max-width: 620px; margin: 0; color: var(--navy-deep); font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: clamp(34px, 3.5vw, 50px); font-weight: 600; line-height: 1.32; letter-spacing: -.035em; }
-.discovery-copy { margin: 14px 0 22px; color: var(--muted-ink); font-size: 13px; line-height: 1.8; }
+.discovery-rail { min-width: 0; overflow: hidden; }
+.carousel-shell { position: relative; border-bottom: 1px solid var(--line); background: var(--soft); }
+.carousel-viewport { overflow: hidden; }
+.carousel-track { display: flex; transition: transform .6s cubic-bezier(.22, .61, .36, 1); }
+.hero-slide { min-width: 100%; min-height: 330px; display: grid; grid-template-columns: minmax(0, .92fr) minmax(320px, 1.08fr); background: var(--paper); }
+.hero-slide-copy { padding: 32px 34px 58px; display: flex; flex-direction: column; justify-content: center; }
+.hero-slide .eyebrow { margin-bottom: 13px; }
+.hero-slide h1, .hero-slide h2 { margin: 0; color: var(--navy-deep); font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: clamp(29px, 3vw, 43px); font-weight: 600; line-height: 1.35; letter-spacing: -.035em; }
+.hero-slide p:not(.eyebrow) { margin: 15px 0 0; color: var(--muted-ink); font-size: 12px; line-height: 1.85; }
+.hero-slide-link { margin-top: 19px; display: inline-flex; align-items: center; gap: 8px; color: var(--navy); font-size: 11px; font-weight: 800; }
+.hero-slide-link svg { width: 14px; }
+.hero-slide-media { position: relative; min-height: 330px; overflow: hidden; background: #d9dee2; }
+.hero-slide-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgb(7 29 49 / 12%), transparent 45%); pointer-events: none; }
+.hero-slide-media img { width: 100%; height: 100%; object-fit: cover; }
+.hero-slide:first-child .hero-slide-media img { object-position: center 28%; }
+.carousel-controls { position: absolute; left: 34px; bottom: 20px; z-index: 2; display: flex; align-items: center; gap: 13px; }
+.carousel-arrow { width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid var(--line); background: rgb(255 255 255 / 92%); color: var(--navy); cursor: pointer; }
+.carousel-arrow:hover, .carousel-arrow:focus-visible { border-color: var(--navy); }
+.carousel-arrow svg { width: 14px; }
+.carousel-dots { display: flex; align-items: center; gap: 7px; }
+.carousel-dot { width: 22px; height: 3px; padding: 0; border: 0; background: #c8ced3; cursor: pointer; transition: background-color .25s, width .25s; }
+.carousel-dot[aria-current="true"] { width: 34px; background: var(--orange); }
+.carousel-status { min-width: 35px; color: var(--muted-ink); font: 700 9px/1 Arial, sans-serif; letter-spacing: .08em; }
+.discovery-tools { padding: 20px 22px 18px; display: grid; grid-template-columns: minmax(0, 1fr) 210px; gap: 13px 16px; align-items: stretch; }
+.discovery-tools-label { grid-column: 1 / -1; margin: 0; color: var(--navy-deep); font-size: 11px; font-weight: 800; }
 .discovery-search { min-height: 54px; display: grid; grid-template-columns: 20px minmax(0, 1fr) auto; align-items: center; gap: 10px; padding-left: 17px; border: 2px solid var(--navy); background: var(--paper); }
 .discovery-search svg { width: 18px; color: var(--navy); }
 .discovery-search input { min-width: 0; height: 50px; border: 0; outline: 0; background: transparent; color: var(--ink); }
 .discovery-search button { align-self: stretch; min-width: 104px; border: 0; background: var(--navy); color: #fff; font-size: 12px; font-weight: 800; cursor: pointer; }
-.discovery-shortcuts { margin-top: 15px; display: flex; flex-wrap: wrap; gap: 8px; }
+.discovery-shortcuts { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px; }
 .discovery-shortcuts a { min-height: 38px; padding-inline: 11px; display: inline-flex; align-items: center; border: 1px solid var(--line); background: var(--paper); color: var(--navy); font-size: 10px; font-weight: 700; }
 .discovery-shortcuts a:hover, .discovery-shortcuts a:focus-visible { border-color: var(--navy); }
 
-.case-match-card { position: relative; overflow: hidden; padding: 27px 24px; background: var(--navy-deep); color: #fff; }
-.case-match-card::before { content: ""; position: absolute; width: 74px; height: 74px; right: -30px; top: -30px; border: 1px solid rgb(255 255 255 / 28%); transform: rotate(45deg); }
-.case-match-card > p:first-child { margin: 0 0 11px; color: #e6a47b; font: 800 10px/1 Arial, sans-serif; letter-spacing: .12em; }
-.case-match-card h2 { margin: 0; font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: 24px; font-weight: 600; line-height: 1.45; }
-.case-match-card > p:not(:first-child) { margin: 13px 0 18px; color: #becad4; font-size: 11px; line-height: 1.8; }
-.match-conditions { margin: 0 0 20px; padding: 0; display: grid; list-style: none; border-top: 1px solid #4a6073; }
-.match-conditions li { min-height: 38px; display: grid; grid-template-columns: 25px 1fr; align-items: center; border-bottom: 1px solid #4a6073; color: #e7edf2; font-size: 11px; }
-.match-conditions span { color: #92a4b4; font: 10px/1 Arial, sans-serif; }
-.case-match-card > a { min-height: 43px; padding-inline: 14px; display: flex; align-items: center; justify-content: space-between; background: #fff; color: var(--navy-deep); font-size: 11px; font-weight: 800; }
-.case-match-card svg { width: 14px; }
-.prototype-note { display: block; margin-top: 10px; color: #91a2b2; font-size: 9px; }
+.case-match-link { min-height: 54px; padding-inline: 17px; display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--navy-deep); color: #fff; font-size: 11px; font-weight: 800; }
+.case-match-link > span { display: grid; gap: 3px; color: #fff; }
+.case-match-link small { color: #c5d0d9; font-size: 9px; font-weight: 500; }
+.case-match-link strong { font-size: 11px; }
+.case-match-link svg { flex: 0 0 auto; width: 15px; }
 
 .explore-strip { padding-block: 21px; border-block: 1px solid var(--line); background: var(--soft); }
 .explore-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
@@ -279,10 +294,12 @@ footer { background: var(--navy-deep); color: #fff; }
   .header-links { grid-column: 2; grid-row: 1; justify-self: end; }
   .category-nav { grid-template-columns: repeat(3, 1fr); }
   .category-nav a { min-height: 38px; border-bottom: 1px solid var(--line); }
-  .discovery-home { grid-template-columns: 220px minmax(0, 1fr); }
-  .case-match-card { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 12px 30px; }
-  .case-match-card > p:not(:first-child), .match-conditions { margin-block: 0; }
-  .case-match-card > a, .prototype-note { grid-column: 2; }
+  .discovery-home { grid-template-columns: 200px minmax(0, 1fr); }
+  .hero-slide { grid-template-columns: minmax(0, 1fr) minmax(270px, .9fr); }
+  .hero-slide-copy { padding-inline: 26px; }
+  .carousel-controls { left: 26px; }
+  .discovery-tools { grid-template-columns: 1fr; }
+  .discovery-tools-label, .discovery-shortcuts { grid-column: auto; }
   .explore-grid { grid-template-columns: 1fr 1fr; }
   .explore-group:last-child { grid-column: 1 / -1; }
   .masthead { grid-template-columns: 1fr; gap: 25px; align-items: start; }
@@ -314,18 +331,19 @@ footer { background: var(--navy-deep); color: #fff; }
   .category-nav { grid-template-columns: repeat(2, 1fr); }
   .category-nav a { font-size: 10px; }
   .discovery-home { padding-block: 20px; grid-template-columns: 1fr; gap: 14px; }
-  .discovery-main { grid-row: 1; padding: 25px 20px; }
-  .discovery-main h1 { font-size: 32px; line-height: 1.42; }
-  .discovery-copy { font-size: 12px; }
+  .discovery-rail { grid-row: 1; }
+  .hero-slide { min-height: 0; grid-template-columns: 1fr; }
+  .hero-slide-copy { min-height: 285px; padding: 27px 21px 60px; }
+  .hero-slide h1, .hero-slide h2 { font-size: 30px; line-height: 1.4; }
+  .hero-slide-media { min-height: 205px; grid-row: 1; }
+  .hero-slide:first-child .hero-slide-media img { object-position: center 23%; }
+  .carousel-controls { left: 20px; bottom: 17px; }
+  .discovery-tools { padding: 17px 16px; grid-template-columns: 1fr; }
   .discovery-search { grid-template-columns: 18px minmax(0, 1fr); padding: 8px 12px 8px 14px; }
   .discovery-search input { height: 40px; }
   .discovery-search button { grid-column: 1 / -1; min-height: 42px; }
   .popular-categories { grid-row: 2; }
   .popular-categories nav { grid-template-columns: 1fr 1fr; column-gap: 12px; }
-  .case-match-card { grid-column: auto; grid-row: 3; display: block; }
-  .case-match-card > p:not(:first-child) { margin: 13px 0 18px; }
-  .match-conditions { margin-bottom: 20px; }
-  .case-match-card > a, .prototype-note { grid-column: auto; }
   .explore-grid { grid-template-columns: 1fr; }
   .explore-group:last-child { grid-column: auto; }
   .masthead { min-height: 0; padding-block: 38px 32px; }
@@ -367,6 +385,10 @@ footer { background: var(--navy-deep); color: #fff; }
   .footer-main { grid-template-columns: 1fr; gap: 45px; }
   .footer-nav { grid-template-columns: repeat(2, 1fr); row-gap: 35px; }
   .footer-bottom { min-height: 78px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track { transition: none; }
 }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } img { transition: none !important; } }
@@ -434,30 +456,62 @@ footer { background: var(--navy-deep); color: #fff; }
     </nav>
     <a class="all-categories" href="#categories">すべてのテーマを見る →</a>
   </aside>
-  <div class="discovery-main">
-    <p class="eyebrow">FIND AI FOR YOUR WORK</p>
-    <h1 id="discover-title">やりたいことから、<br>AIサービスを探す。</h1>
-    <p class="discovery-copy">サービス名が分からなくても大丈夫です。困っている業務や実現したいことを、そのまま入力してください。</p>
-    <form class="discovery-search" action="#stories" role="search">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
-      <input name="q" aria-label="困っている業務や目的を検索" placeholder="例：提案書の下調べを短くしたい">
-      <button type="submit">事例を探す</button>
-    </form>
-    <div class="discovery-shortcuts" aria-label="検索例">
-      <a href="#stories" data-query="議事録"># 議事録を自動化</a>
-      <a href="#stories" data-query="営業"># 営業の下調べ</a>
-      <a href="#stories" data-query="採用"># 採用準備</a>
-      <a href="#stories" data-query="経理"># 経理・会計</a>
+  <div class="discovery-rail">
+    <div class="carousel-shell" data-carousel aria-roledescription="カルーセル" aria-label="注目のAI活用事例">
+      <div class="carousel-viewport">
+        <div class="carousel-track">
+          <article class="hero-slide" aria-label="1 / 3">
+            <div class="hero-slide-copy">
+              <p class="eyebrow">AI WORK STYLE / INTERVIEW</p>
+              <h1 id="discover-title">スタッフ0人で、<br>顧問先60社。</h1>
+              <p>税理士・畠山さんが、ひとりでも顧客対応の質を落とさずに働くためにAIへ任せたこと。</p>
+              <a class="hero-slide-link" href="#feature">インタビューを読む <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            </div>
+            <div class="hero-slide-media"><img src="assets/hatakeyama.jpg" alt="インタビューに答える税理士の畠山さん" width="960" height="640"></div>
+          </article>
+          <article class="hero-slide" aria-label="2 / 3" aria-hidden="true">
+            <div class="hero-slide-copy">
+              <p class="eyebrow">SALES AI / CASE STUDY</p>
+              <h2>提案前の2時間を、<br>15分に。</h2>
+              <p>営業チームが調査・仮説づくり・提案準備をAIと分担。速さだけでなく、商談の解像度も上げた事例です。</p>
+              <a class="hero-slide-link" href="#stories">営業AIの事例を見る <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            </div>
+            <div class="hero-slide-media"><img src="assets/sales-team.jpg" alt="AIを活用して提案を準備する営業チーム" width="960" height="640"></div>
+          </article>
+          <article class="hero-slide" aria-label="3 / 3" aria-hidden="true">
+            <div class="hero-slide-copy">
+              <p class="eyebrow">MEETING AI / PRACTICE</p>
+              <h2>議事録で、<br>終わらせない。</h2>
+              <p>会議の記録から決定事項と次の行動までを整理。現場で本当に使われたAI活用の工夫を紹介します。</p>
+              <a class="hero-slide-link" href="#stories">会議AIの事例を見る <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            </div>
+            <div class="hero-slide-media"><img src="assets/meeting-team.jpg" alt="会議でAIを活用するチーム" width="960" height="640"></div>
+          </article>
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-arrow carousel-prev" type="button" aria-label="前の特集"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+        <div class="carousel-dots" aria-label="特集を選ぶ"><button class="carousel-dot" type="button" aria-label="特集1" aria-current="true"></button><button class="carousel-dot" type="button" aria-label="特集2"></button><button class="carousel-dot" type="button" aria-label="特集3"></button></div>
+        <span class="carousel-status" aria-live="polite">01 / 03</span>
+        <button class="carousel-arrow carousel-next" type="button" aria-label="次の特集"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+      </div>
+    </div>
+    <div class="discovery-tools">
+      <p class="discovery-tools-label">やりたいことから、AIサービスと活用事例を探す</p>
+      <form class="discovery-search" action="#stories" role="search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        <input name="q" aria-label="困っている業務や目的を検索" placeholder="例：提案書の下調べを短くしたい">
+        <button type="submit">事例を探す</button>
+      </form>
+      <a class="case-match-link" href="#compare"><span><small>3つの条件から</small><strong>AIサービス比較</strong></span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      <div class="discovery-shortcuts" aria-label="検索例">
+        <a href="#stories" data-query="議事録"># 議事録を自動化</a>
+        <a href="#stories" data-query="営業"># 営業の下調べ</a>
+        <a href="#stories" data-query="採用"># 採用準備</a>
+        <a href="#stories" data-query="経理"># 経理・会計</a>
+      </div>
     </div>
   </div>
-  <aside class="case-match-card">
-    <p>AI CASE MATCH</p>
-    <h2>似た事例から、<br>相性をみる。</h2>
-    <p>会社の条件と解決したい課題を選び、比較候補を整理します。</p>
-    <ol class="match-conditions"><li><span>01</span>改善したい業務</li><li><span>02</span>会社・チーム規模</li><li><span>03</span>導入方法</li></ol>
-    <a href="#compare">3つの条件で絞り込む <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-    <small class="prototype-note">登録不要・現在は比較画面のプロトタイプ</small>
-  </aside>
 </section>
 <section class="explore-strip" id="categories">
   <div class="shell explore-grid">
@@ -1111,6 +1165,68 @@ footer { background: var(--navy-deep); color: #fff; }
 </footer>
 <script>
 (() => {
+  const carousel = document.querySelector('[data-carousel]');
+  if (carousel) {
+    const track = carousel.querySelector('.carousel-track');
+    const slides = [...carousel.querySelectorAll('.hero-slide')];
+    const dots = [...carousel.querySelectorAll('.carousel-dot')];
+    const statusText = carousel.querySelector('.carousel-status');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let activeIndex = 0;
+    let timer;
+    let pointerStart = null;
+
+    function showSlide(index) {
+      activeIndex = (index + slides.length) % slides.length;
+      track.style.transform = `translateX(-${activeIndex * 100}%)`;
+      slides.forEach((slide, slideIndex) => {
+        const isHidden = slideIndex !== activeIndex;
+        slide.setAttribute('aria-hidden', String(isHidden));
+        slide.inert = isHidden;
+      });
+      dots.forEach((dot, dotIndex) => {
+        if (dotIndex === activeIndex) dot.setAttribute('aria-current', 'true');
+        else dot.removeAttribute('aria-current');
+      });
+      statusText.textContent = `${String(activeIndex + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+    }
+
+    function stopAutoPlay() {
+      window.clearInterval(timer);
+    }
+
+    function startAutoPlay() {
+      stopAutoPlay();
+      if (!reducedMotion.matches && !document.hidden) timer = window.setInterval(() => showSlide(activeIndex + 1), 6000);
+    }
+
+    carousel.querySelector('.carousel-prev').addEventListener('click', () => { showSlide(activeIndex - 1); startAutoPlay(); });
+    carousel.querySelector('.carousel-next').addEventListener('click', () => { showSlide(activeIndex + 1); startAutoPlay(); });
+    dots.forEach((dot, index) => dot.addEventListener('click', () => { showSlide(index); startAutoPlay(); }));
+    carousel.addEventListener('keydown', event => {
+      if (event.key === 'ArrowLeft') { showSlide(activeIndex - 1); startAutoPlay(); }
+      if (event.key === 'ArrowRight') { showSlide(activeIndex + 1); startAutoPlay(); }
+    });
+    carousel.addEventListener('pointerdown', event => { pointerStart = event.clientX; });
+    carousel.addEventListener('pointerup', event => {
+      if (pointerStart === null) return;
+      const distance = event.clientX - pointerStart;
+      pointerStart = null;
+      if (Math.abs(distance) < 45) return;
+      showSlide(activeIndex + (distance < 0 ? 1 : -1));
+      startAutoPlay();
+    });
+    carousel.addEventListener('pointercancel', () => { pointerStart = null; });
+    carousel.addEventListener('mouseenter', stopAutoPlay);
+    carousel.addEventListener('mouseleave', startAutoPlay);
+    carousel.addEventListener('focusin', stopAutoPlay);
+    carousel.addEventListener('focusout', event => { if (!carousel.contains(event.relatedTarget)) startAutoPlay(); });
+    document.addEventListener('visibilitychange', startAutoPlay);
+    reducedMotion.addEventListener('change', startAutoPlay);
+    showSlide(0);
+    startAutoPlay();
+  }
+
   const searchForms = document.querySelectorAll('.site-search, .discovery-search');
   const searchInputs = document.querySelectorAll('.site-search input[name="q"], .discovery-search input[name="q"]');
   const searchable = [...document.querySelectorAll('.lead-story, .secondary-story, .article-card')];
