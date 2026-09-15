@@ -129,6 +129,16 @@ h1 em{ font-style:normal; color:var(--navy); }
   .gate-sub a{ padding:12px 4px; }
 }
 
+/* ===== 営業方針 ===== */
+.sales-principle{ display:flex; align-items:center; gap:18px; margin-top:58px; padding:24px 0; border-top:1px solid var(--gray-20); border-bottom:1px solid var(--gray-20); }
+.sales-principle__icon{ flex:0 0 auto; width:44px; height:44px; color:var(--navy); }
+.sales-principle__eyebrow{ font-family:var(--en); font-size:10px; font-weight:900; letter-spacing:.18em; color:var(--gray-60); margin-bottom:4px; }
+.sales-principle__quote{ font-size:clamp(1rem,2.2vw,1.25rem); font-weight:900; line-height:1.65; }
+@media(max-width:600px){
+  .sales-principle{ align-items:flex-start; gap:13px; margin-top:42px; padding:20px 0; }
+  .sales-principle__icon{ width:36px; height:36px; }
+}
+
 /* ===== 営業用リンク集 ===== */
 .sales-links{ margin-top:72px; padding-top:32px; border-top:2px solid var(--ink); }
 .sales-links__head{ display:flex; align-items:end; justify-content:space-between; gap:24px; margin-bottom:28px; }
@@ -202,6 +212,20 @@ footer .f{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px
       <a href="./oem-plans/">OEM導入先のお客様が見る料金ページ<i>→</i></a>
       <span class="blank"></span>
     </div>
+
+    <aside class="sales-principle" aria-label="営業方針">
+      <svg class="sales-principle__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M24 6v11"/>
+        <path d="M17 17h14"/>
+        <path d="M24 17v13c0 6.1-3.8 10-8.1 10-3.3 0-5.9-2.5-5.9-5.6 0-2.6 2-4.7 4.6-4.7 2 0 3.7 1.4 4.1 3.2"/>
+        <path d="M24 6c3.2 0 5.8 2.6 5.8 5.8"/>
+        <path d="M32 9.5 36 6"/>
+      </svg>
+      <div>
+        <p class="sales-principle__eyebrow">SALES PRINCIPLE</p>
+        <p class="sales-principle__quote">魚を与えるのではなく、魚の釣り方を教えよ。</p>
+      </div>
+    </aside>
 
     <section class="sales-links" aria-labelledby="sales-links-title">
       <div class="sales-links__head">
