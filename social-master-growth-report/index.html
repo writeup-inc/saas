@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="ソーシャルマスターで運用するX8アカウントのフォロワー推移（2026年9月1日〜15日）の実測と、1年間の試算をまとめた提案書の追加資料。株式会社ライトアップ提供。">
+<meta name="theme-color" content="#1b3a63">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="株式会社ライトアップ">
+<meta property="og:title" content="ソーシャルマスター 自社運用レポート｜X8アカウントのフォロワー推移">
+<meta property="og:description" content="15日間で8アカウント合計 661→827フォロワー。実測と1年試算、広告費換算までをまとめた提案書の追加資料です。">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%231b3a63%27/%3E%3Cg fill=%27%23fff%27%3E%3Crect x=%276%27 y=%2718%27 width=%274%27 height=%278%27/%3E%3Crect x=%2714%27 y=%2712%27 width=%274%27 height=%2714%27/%3E%3Crect x=%2722%27 y=%276%27 width=%274%27 height=%2720%27/%3E%3C/g%3E%3C/svg%3E">
+<title>ソーシャルマスター 自社運用レポート</title>
+<style>
+/* lp-base.css — 日本語LP／HTML成果物の初期CSS
+ *
+ * 品質台帳（~/Documents/Codex/loop-engineering-memory/events.jsonl）で
+ * 再発が確認された表示欠陥を、指摘ではなく初期値で潰すためのファイル。
+ * 対応する欠陥ID:
+ *   japanese-heading-midword-wrap（見出しが単語途中で改行）11回
+ *   mobile-fv-headline-wrap（モバイルFVの見出し改行）3回
+ *   mobile-fixed-cta-overlap（固定CTAが本文を隠す）3回
+ *   meaningful-small-text-under-readable-size（意味のある文字が可読サイズ未満）5回
+ *
+ * 使い方: HTMLの<style>先頭にこの内容を貼る。色・書体・余白は各LPで上書きしてよいが、
+ * 下の「改行制御」「最小文字サイズ」「固定CTAの逃げ」の3ブロックは消さないこと。
+ */
+
+/* ── 改行制御 ─────────────────────────────────────────────
+ * 日本語は単語区切りが無いため、既定のままだと文節の途中で折り返す。
+ * auto-phrase は文節単位で折る（Chrome 119+）。非対応環境は strict で逃がす。 */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] {
+    word-break: normal;
+  }
+}
+/* 明示的に折りたくない語の途中で切られたら、その語を <span class="nobr"> で包む */
+.nobr { white-space: nowrap; }
+
+/* ── 最小文字サイズ ───────────────────────────────────────
+ * 判断材料になる文字は12px未満にしない。注記・免責のみ .note を許容。 */
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+
+/* ── ファーストビューの見出し ─────────────────────────────
+ * 固定pxだと狭い画面で必ず折り返す。clamp で画面幅に追従させる。 */
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+
+/* ── 固定CTAの逃げ ────────────────────────────────────────
+ * 画面下に固定CTAを置くページは、この変数を実測の高さに書き換える。
+ * 置かないページはそのままでよい（0のまま）。 */
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+
+/* ── 横はみ出しの予防 ─────────────────────────────────────
+ * flex/grid の子は既定で min-width:auto のため、長い語で親を押し広げる。 */
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+
+:root{
+  color-scheme:light;
+  --ink:#15181c; --ink2:#464c55; --ink3:#828a94;
+  --line:#dfe2e7; --rule:#15181c; --bg:#ffffff; --bg2:#f4f5f7;
+  --accent:#1b3a63; --accent-soft:rgba(27,58,99,.08);
+  --mincho:"Hiragino Mincho ProN","Yu Mincho","YuMincho","Noto Serif JP",serif;
+  --gothic:"Hiragino Kaku Gothic ProN","Yu Gothic Medium","Noto Sans JP",system-ui,sans-serif;
+  --fs-body:16px;
+}
+*{margin:0;padding:0}
+body{font-family:var(--mincho);color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.95}
+.wrap{max-width:940px;margin:0 auto;padding:0 28px}
+
+/* 表紙 */
+.masthead{border-bottom:1px solid var(--rule);padding:16px 0}
+.masthead .wrap{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+.mh-l{font-family:var(--gothic);font-size:12px;font-weight:800;letter-spacing:.14em}
+.mh-r{font-family:var(--gothic);font-size:11px;color:var(--ink3);letter-spacing:.06em}
+
+.hd{padding:52px 0 40px}
+.doclabel{font-family:var(--gothic);font-size:11px;font-weight:800;letter-spacing:.22em;color:var(--ink3)}
+h1{margin:18px 0 0;font-family:var(--mincho);font-weight:700;line-height:1.45;letter-spacing:.01em;font-size:clamp(1.55rem,4.3vw,2.5rem)}
+.subtitle{margin-top:14px;font-family:var(--gothic);font-size:clamp(13px,2.2vw,15px);font-weight:700;color:var(--ink2);line-height:1.8}
+.meta{margin-top:30px;display:flex;flex-wrap:wrap;border-top:1px solid var(--rule);border-bottom:1px solid var(--line)}
+.meta div{font-family:var(--gothic);font-size:12px;color:var(--ink2);padding:12px 20px 12px 0;margin-right:20px;border-right:1px solid var(--line);line-height:1.6}
+.meta div:last-child{border-right:0;margin-right:0}
+.meta b{display:block;font-size:10px;letter-spacing:.14em;color:var(--ink3);font-weight:800;margin-bottom:4px}
+
+/* 要旨 */
+.summary{margin-top:34px;border:1px solid var(--rule);padding:28px 26px}
+.summary h2{font-family:var(--gothic);font-size:14px;font-weight:800;letter-spacing:.14em;margin:0 0 16px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.summary ol{list-style:none;counter-reset:s}
+.summary li{counter-increment:s;font-size:15.5px;line-height:1.95;color:var(--ink);padding-left:2.2em;text-indent:-2.2em;margin-top:10px}
+.summary li:first-child{margin-top:0}
+.summary li::before{content:counter(s,decimal-leading-zero);font-family:var(--gothic);font-size:12px;font-weight:800;color:var(--accent);margin-right:1em}
+
+/* 目次 */
+.toc{margin-top:22px;display:flex;flex-wrap:wrap;gap:0 28px;font-family:var(--gothic);font-size:12.5px;color:var(--ink2);border-bottom:1px solid var(--line);padding-bottom:18px}
+.toc a{color:var(--ink2);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px}
+.toc a:hover{color:var(--accent);border-color:var(--accent)}
+.toc b{font-weight:800;color:var(--ink3);margin-right:6px}
+
+section{padding:56px 0;border-top:1px solid var(--line)}
+.sechead{display:flex;align-items:baseline;gap:18px;border-bottom:1.5px solid var(--rule);padding-bottom:14px}
+.secno{font-family:var(--gothic);font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--accent);flex:none;padding-top:4px}
+.sectitle .label{font-family:var(--gothic);font-size:11px;font-weight:800;letter-spacing:.2em;color:var(--ink3)}
+h2{margin-top:6px;font-family:var(--gothic);font-weight:800;line-height:1.5;font-size:clamp(1.15rem,2.9vw,1.6rem)}
+.h2sub{margin-top:20px;font-size:15.5px;color:var(--ink2);line-height:2.05;max-width:44em}
+h3{font-family:var(--gothic);font-weight:800;font-size:15px;line-height:1.6;border-left:4px solid var(--accent);padding-left:11px;margin-bottom:8px}
+
+/* 数値 */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);margin-top:30px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.kpi{padding:20px 18px;border-right:1px solid var(--line)}
+.kpi:last-child{border-right:0}
+.kpi dt{font-family:var(--gothic);font-size:11.5px;color:var(--ink3);font-weight:800;letter-spacing:.08em}
+.kpi dd{margin-top:10px;font-family:var(--mincho);font-size:clamp(26px,4.2vw,36px);font-weight:700;line-height:1.05;font-feature-settings:"tnum"}
+.kpi dd small{font-family:var(--gothic);font-size:13px;font-weight:800;color:var(--ink2);margin-left:3px}
+.kpi .sub{margin-top:9px;font-family:var(--gothic);font-size:11.5px;color:var(--ink3);line-height:1.7}
+
+.figure{margin-top:30px}
+.chart{width:100%;height:auto;display:block}
+.grid{stroke:var(--line);stroke-width:1} .grid-l{stroke:var(--rule);stroke-width:1.2}
+.ax{font-size:11px;fill:var(--ink3);font-family:var(--gothic)} .ax--y{text-anchor:end} .ax--c{text-anchor:middle}
+.line{fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
+.area{fill:var(--accent-soft)} .dot{fill:var(--accent)}
+.pbar{fill:var(--ink);opacity:.16} .pbar--real{fill:var(--accent);opacity:1}
+.pval{font-family:var(--gothic);font-size:13px;font-weight:800;fill:var(--ink2);text-anchor:middle;font-feature-settings:"tnum"}
+.pval--real{fill:var(--accent)}
+.cap{margin-top:14px;color:var(--ink3);font-family:var(--gothic);line-height:1.8}
+
+/* 表 */
+.tablebox{margin-top:28px;overflow-x:auto;border-top:1.5px solid var(--rule);border-bottom:1.5px solid var(--rule)}
+table{width:100%;min-width:620px;border-collapse:collapse;font-family:var(--gothic)}
+th,td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+thead th{font-size:11px;color:var(--ink3);font-weight:800;letter-spacing:.08em;white-space:nowrap;border-bottom:1px solid var(--rule)}
+tbody tr:last-child td{border-bottom:0}
+.num{text-align:right;font-feature-settings:"tnum";font-size:15px;white-space:nowrap}
+.num--g{font-weight:800;color:var(--accent)}
+.num--big{font-family:var(--mincho);font-size:19px;font-weight:700}
+.t-name{min-width:250px}
+.t-code{display:inline-block;font-family:var(--gothic);font-size:11px;font-weight:800;color:#fff;background:var(--accent);width:20px;height:20px;line-height:20px;text-align:center;margin-right:10px;vertical-align:1px}
+.t-n{display:inline;font-size:14px;font-weight:700}
+.t-spark{width:110px} .t-spark svg{width:100px;height:28px}
+.t-spark polyline{fill:none;stroke:var(--ink2);stroke-width:1.5;vector-effect:non-scaling-stroke}
+tfoot td{background:var(--bg2);font-weight:800;border-top:1px solid var(--rule)}
+.tag{display:inline-block;font-size:10.5px;font-weight:800;padding:2px 8px;letter-spacing:.06em}
+.tag--real{background:var(--accent);color:#fff}
+.tag--est{background:transparent;color:var(--ink3);border:1px solid var(--line)}
+
+/* 所見 */
+.finding{margin-top:32px;border-left:4px solid var(--accent);background:var(--bg2);padding:20px 22px}
+.finding p{font-size:15.5px;line-height:1.95}
+
+/* ファクトチェック */
+.fc{margin-top:30px;border:1px solid var(--line);background:var(--bg2);padding:18px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.fc-body{flex:1 1 380px;min-width:0}
+.fc-l{font-family:var(--gothic);font-size:10.5px;font-weight:800;letter-spacing:.16em;color:var(--ink3)}
+.fc-q{margin-top:6px;font-family:var(--gothic);font-size:13.5px;font-weight:700;line-height:1.7;color:var(--ink)}
+.fc-b{flex:none;font-family:var(--gothic);font-size:12.5px;font-weight:800;color:#fff;background:var(--accent);
+      text-decoration:none;padding:11px 18px;white-space:nowrap;border:1px solid var(--accent)}
+.fc-b:hover{background:#fff;color:var(--accent)}
+
+/* 結び */
+.close{border:1.5px solid var(--rule);padding:40px 32px;background:var(--bg)}
+.close .doclabel{color:var(--accent)}
+.close h2{margin:12px 0 0;font-family:var(--mincho);font-weight:700;font-size:clamp(1.4rem,3.6vw,2rem);line-height:1.5}
+.close p{margin-top:18px;font-size:15.5px;color:var(--ink2);line-height:2.05;max-width:40em}
+.close .big{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);font-family:var(--gothic);font-size:clamp(15px,2.6vw,18px);font-weight:800;color:var(--ink);line-height:1.85}
+
+/* 注記 */
+.notes{margin-top:32px;border:1px solid var(--line);padding:24px 22px}
+.notes h3{font-size:12.5px;margin-bottom:12px}
+.notes ul{list-style:none}
+.notes li{font-family:var(--gothic);font-size:12.5px;color:var(--ink2);line-height:1.95;padding-left:1.1em;text-indent:-1.1em}
+.notes li::before{content:"・";color:var(--ink3)}
+.ph{background:#fff3cd;border-bottom:1px solid #e0b400;font-weight:800;color:#6b5200}
+footer{padding:30px 0 60px;border-top:1px solid var(--rule)}
+footer p{font-family:var(--gothic);font-size:11.5px;color:var(--ink3);line-height:2}
+footer a{color:var(--ink3)}
+
+@media(max-width:680px){
+  .figure{overflow-x:auto}
+  .figure .chart{min-width:640px}
+  .ax{font-size:20px}
+  .pval{font-size:24px}
+}
+@media(max-width:860px){
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .kpi{border-bottom:1px solid var(--line)}
+  .kpi:nth-child(2n){border-right:0}
+  .kpi:nth-child(n+3){border-bottom:0}
+  section{padding:44px 0} .wrap{padding:0 20px}
+  .close{padding:30px 22px}
+  .fc{align-items:flex-start} .fc-b{width:100%;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="wrap">
+    <p class="mh-l">株式会社ライトアップ　ソーシャルマスター</p>
+    <p class="mh-r">提案書 追加資料　2026年9月15日</p>
+  </div>
+</div>
+
+<header class="hd">
+  <div class="wrap">
+    <p class="doclabel">自社運用レポート</p>
+    <h1>X 8アカウントのフォロワー推移と、<br>1年間の増加試算</h1>
+    <p class="subtitle">調査期間：2026年9月1日〜9月15日（15日間）／ 対象：ソーシャルマスターで運用するX 8アカウント</p>
+
+    <div class="meta">
+      <div><b>対象</b>X 8アカウント（すべて連携中）</div>
+      <div><b>期間</b>2026/09/01 − 09/15（15日間）</div>
+      <div><b>指標</b>フォロワー数（日次実測）</div>
+      <div><b>区分</b>実測＋試算</div>
+    </div>
+
+    <div class="summary">
+      <h2>要旨</h2>
+      <ol>
+        <li>8アカウントの合計フォロワーは、15日間で661人から827人へ増加した（+166人、+25.1%）。</li>
+        <li>増加ペースは1週間あたり約80人で、計測した14日間すべてで純増した。減少した日はない。</li>
+        <li>このペースが続いた場合、1年間の増加は約4,300人。広告で同数を獲得した場合の費用は、一般的な単価を当てはめると43万円〜129万円に相当する。</li>
+      </ol>
+    </div>
+
+    <nav class="toc">
+      <a href="#s01"><b>01</b>実測</a>
+      <a href="#s02"><b>02</b>試算</a>
+      <a href="#s03"><b>03</b>広告費換算</a>
+      <a href="#s04"><b>04</b>ご提案</a>
+      <a href="#notes"><b>05</b>前提と注記</a>
+    </nav>
+  </div>
+</header>
+
+<section id="s01">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="secno">01</p>
+      <div class="sectitle">
+        <p class="label">実測</p>
+        <h2>8アカウント合計で、週に80人前後ずつ増えている</h2>
+      </div>
+    </div>
+    <p class="h2sub">第1週（9/1→9/8）は+79人、第2週（9/8→9/15）は+87人。計測した14日間すべてで純増し、合計が前日を下回った日はありません。後半のほうがわずかにペースが上がっています。</p>
+
+    <dl class="kpis">
+      <div class="kpi"><dt>合計フォロワー</dt><dd>827</dd><p class="sub">開始時 661 → 15日で +166</p></div>
+      <div class="kpi"><dt>1週間あたり</dt><dd>+83<small>人</small></dd><p class="sub">実測 +79／+87 の平均</p></div>
+      <div class="kpi"><dt>1日あたり</dt><dd>+11.9<small>人</small></dd><p class="sub">最大19人／最小3人</p></div>
+      <div class="kpi"><dt>純増した日</dt><dd>14<small>/14日</small></dd><p class="sub">マイナスの日は0日</p></div>
+    </dl>
+
+    <div class="figure">
+      <svg class="chart" viewBox="0 0 960 380" role="img" aria-label="8アカウント合計フォロワー数の推移。9月1日661から9月15日827まで一貫して増加。">
+        <line x1="56" x2="940" y1="336.0" y2="336.0" class="grid"/><text x="46" y="340.0" class="ax ax--y">0</text><line x1="56" x2="940" y1="232.0" y2="232.0" class="grid"/><text x="46" y="236.0" class="ax ax--y">300</text><line x1="56" x2="940" y1="128.0" y2="128.0" class="grid"/><text x="46" y="132.0" class="ax ax--y">600</text><line x1="56" x2="940" y1="24.0" y2="24.0" class="grid"/><text x="46" y="28.0" class="ax ax--y">900</text>
+        <polygon class="area" points="56,336.0 56.0,106.9 119.1,102.3 182.3,98.5 245.4,96.8 308.6,91.6 371.7,87.4 434.9,86.1 498.0,79.5 561.1,75.0 624.3,70.8 687.4,65.6 750.6,64.6 813.7,59.7 876.9,55.2 940.0,49.3 940.0,336.0"/>
+        <polyline class="line" points="56.0,106.9 119.1,102.3 182.3,98.5 245.4,96.8 308.6,91.6 371.7,87.4 434.9,86.1 498.0,79.5 561.1,75.0 624.3,70.8 687.4,65.6 750.6,64.6 813.7,59.7 876.9,55.2 940.0,49.3"/>
+        <circle class="dot" cx="56.0" cy="106.9" r="4"/>
+        <circle class="dot" cx="940.0" cy="49.3" r="5"/>
+        <text x="64.0" y="94.9" class="ax">661</text>
+        <text x="932.0" y="35.3" class="ax" style="text-anchor:end;font-size:15px;font-weight:800;fill:var(--accent)">827</text>
+        <line x1="56" x2="940" y1="336.0" y2="336.0" class="grid-l"/>
+        <text x="56.0" y="360.0" class="ax ax--c">09/01</text><text x="245.4" y="360.0" class="ax ax--c">09/04</text><text x="434.9" y="360.0" class="ax ax--c">09/07</text><text x="624.3" y="360.0" class="ax ax--c">09/10</text><text x="813.7" y="360.0" class="ax ax--c">09/13</text><text x="940.0" y="360.0" class="ax ax--c">09/15</text>
+      </svg>
+      <p class="note cap">図1　8アカウント合計フォロワー数の推移（縦軸は0起点）。2026/09/01〜09/15の各日の実測値を合算。</p>
+    </div>
+
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>アカウント（運用テーマ）</th><th class="num">9/01</th><th class="num">9/15</th><th class="num">増分</th><th>推移</th></tr></thead>
+        <tbody>
+<tr><td class="t-name"><span class="t-code">A</span><span class="t-n">生成AI活用ノウハウ</span></td><td class="num">161</td><td class="num">167</td><td class="num num--g">+6</td><td class="t-spark"><svg viewBox="0 0 100 28" preserveAspectRatio="none" role="img" aria-label="推移"><polyline points="2.0,22.9 8.9,26.0 15.7,22.9 22.6,22.9 29.4,22.9 36.3,16.6 43.1,16.6 50.0,16.6 56.9,16.6 63.7,16.6 70.6,10.3 77.4,10.3 84.3,10.3 91.1,7.1 98.0,4.0"/></svg></td></tr><tr><td class="t-name"><span class="t-code">B</span><span class="t-n">ひとり社長・小規模事業者向け</span></td><td class="num">37</td><td class="num">44</td><td class="num num--g">+7</td><td class="t-spark"><svg viewBox="0 0 100 28" preserveAspectRatio="none" role="img" aria-label="推移"><polyline points="2.0,26.0 8.9,26.0 15.7,26.0 22.6,26.0 29.4,26.0 36.3,26.0 43.1,26.0 50.0,19.7 56.9,16.6 63.7,16.6 70.6,13.4 77.4,10.3 84.3,7.1 91.1,4.0 98.0,4.0"/></svg></td></tr><tr><td class="t-name"><span class="t-code">C</span><span class="t-n">採用担当者向け 人事ノウハウ</span></td><td class="num">437</td><td class="num">499</td><td class="num num--g">+62</td><td class="t-spark"><svg viewBox="0 0 100 28" preserveAspectRatio="none" role="img" aria-label="推移"><polyline points="2.0,26.0 8.9,23.9 15.7,23.2 22.6,21.7 29.4,19.6 36.3,18.9 43.1,18.2 50.0,15.0 56.9,12.9 63.7,11.5 70.6,9.0 77.4,9.7 84.3,9.3 91.1,7.9 98.0,4.0"/></svg></td></tr><tr><td class="t-name"><span class="t-code">D</span><span class="t-n">社会保険労務・人事労務</span></td><td class="num">18</td><td class="num">40</td><td class="num num--g">+22</td><td class="t-spark"><svg viewBox="0 0 100 28" preserveAspectRatio="none" role="img" aria-label="推移"><polyline points="2.0,26.0 8.9,24.0 15.7,22.0 22.6,22.0 29.4,20.0 36.3,18.0 43.1,18.0 50.0,16.0 56.9,12.0 63.7,10.0 70.6,8.0 77.4,7.0 84.3,6.0 91.1,5.0 98.0,4.0"/></svg></td></tr><tr><td class="t-name"><span class="t-code">E</span><span class="t-n">自社AI開発の情報発信</span></td><td class="num">0</td><td class="num">4</td><td class="num num--g">+4</td><td class="t-spark"><svg viewBox="0 0 100 28" preserveAspectRatio="none" role="img" aria-label="推移"><polyline points="2.0,26.0 8.9,26.0 15.7,26.0 22.6,26.0 29.4,20.5 36.3,20.5 43.1,20.5 50.0,15.0 56.9,15.0 63.7,15.0 70.6,15.0 77.4,9.5 84.3,9.5 91.1,9.5 98.0,4.0"/></svg></td></tr><tr><td class="t-name"><span class="t-code">F</span><span class="t-n">インターン採用広報</span></td><td class="num">4</td><td class="num">15</td><td class="num num--g">+11</td><td class="t-spark"><svg viewBox="0 0 100 28" preserveAspectRatio="none" role="img" aria-label="推移"><polyline points="2.0,26.0 8.9,18.0 15.7,18.0 22.6,18.0 29.4,18.0 36.3,16.0 43.1,16.0 50.0,16.0 56.9,16.0 63.7,16.0 70.6,14.0 77.4,14.0 84.3,12.0 91.1,6.0 98.0,4.0"/></svg></td></tr><tr><td class="t-name"><span class="t-code">G</span><span class="t-n">中途採用広報（営業職）</span></td><td class="num">1</td><td class="num">11</td><td class="num num--g">+10</td><td class="t-spark"><svg viewBox="0 0 100 28" preserveAspectRatio="none" role="img" aria-label="推移"><polyline points="2.0,26.0 8.9,26.0 15.7,24.0 22.6,24.0 29.4,24.0 36.3,20.0 43.1,18.0 50.0,18.0 56.9,16.0 63.7,10.0 70.6,10.0 77.4,6.0 84.3,4.0 91.1,8.0 98.0,6.0"/></svg></td></tr><tr><td class="t-name"><span class="t-code">H</span><span class="t-n">中途採用広報（技術職）</span></td><td class="num">3</td><td class="num">47</td><td class="num num--g">+44</td><td class="t-spark"><svg viewBox="0 0 100 28" preserveAspectRatio="none" role="img" aria-label="推移"><polyline points="2.0,26.0 8.9,25.0 15.7,22.5 22.6,22.0 29.4,19.0 36.3,17.5 43.1,17.0 50.0,14.5 56.9,14.0 63.7,12.5 70.6,11.5 77.4,11.5 84.3,7.0 91.1,4.5 98.0,4.0"/></svg></td></tr>
+        </tbody>
+        <tfoot><tr><td>8アカウント合計</td><td class="num">661</td><td class="num">827</td><td class="num num--g">+166</td><td></td></tr></tfoot>
+      </table>
+    </div>
+    <p class="note cap">表1　アカウント別の内訳。アカウント名・IDは伏せ、運用テーマのみ記載しています。推移欄の線は各アカウントの最小値〜最大値で正規化しており、アカウント間で高さは比較できません。</p>
+
+    <div class="fc">
+      <div class="fc-body">
+        <p class="fc-l">FACT CHECK</p>
+        <p class="fc-q">15日で+166人、週80人前後というペースは、一般的なX運用と比べて速いのか。</p>
+      </div>
+      <a class="fc-b" href="https://chatgpt.com/?q=X%EF%BC%88%E6%97%A7Twitter%EF%BC%89%E3%81%AE%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E9%81%8B%E7%94%A8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E8%B3%AA%E5%95%8F%E3%81%A7%E3%81%99%E3%80%82%E4%BC%81%E6%A5%AD%E3%81%8C8%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%82%92%E4%B8%A6%E8%A1%8C%E9%81%8B%E7%94%A8%E3%81%97%E3%80%8115%E6%97%A5%E9%96%93%E3%81%A7%E3%83%95%E3%82%A9%E3%83%AD%E3%83%AF%E3%83%BC%E5%90%88%E8%A8%88%E3%81%8C661%E4%BA%BA%E3%81%8B%E3%82%89827%E4%BA%BA%E3%81%B8%E3%80%81%2B166%E4%BA%BA%EF%BC%881%E9%80%B1%E9%96%93%E3%81%82%E3%81%9F%E3%82%8A%E7%B4%8480%E4%BA%BA%EF%BC%89%E5%A2%97%E3%81%88%E3%81%BE%E3%81%97%E3%81%9F%E3%80%82%E3%81%93%E3%82%8C%E3%81%AF%E6%97%A5%E6%9C%AC%E4%BC%81%E6%A5%AD%E3%81%AE%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AAX%E9%81%8B%E7%94%A8%E3%81%A8%E6%AF%94%E3%81%B9%E3%81%A6%E9%80%9F%E3%81%84%E3%83%9A%E3%83%BC%E3%82%B9%E3%81%A7%E3%81%99%E3%81%8B%E3%80%81%E5%B9%B3%E5%9D%87%E7%9A%84%E3%81%A7%E3%81%99%E3%81%8B%E3%80%82%E5%88%A4%E6%96%AD%E3%81%AE%E6%A0%B9%E6%8B%A0%E3%82%82%E3%81%82%E3%82%8F%E3%81%9B%E3%81%A6%E6%95%99%E3%81%88%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82" target="_blank" rel="noopener">ChatGPTで確認する</a>
+    </div>
+  </div>
+</section>
+
+<section id="s02">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="secno">02</p>
+      <div class="sectitle">
+        <p class="label">試算</p>
+        <h2>このペースが続いた場合、1年で +約4,300人</h2>
+      </div>
+    </div>
+    <p class="h2sub">実測の1日あたり11.9人をそのまま伸ばした単純計算です。投稿の蓄積でペースが上がることも、逆に鈍ることもあります。あくまで現時点のペースを延長した目安として扱ってください。</p>
+
+    <div class="figure">
+      <svg class="chart" viewBox="0 0 960 300" role="img" aria-label="期間別の増加数試算。15日実測プラス166、1か月プラス356、3か月プラス1067、6か月プラス2134、12か月プラス4328。">
+        <rect x="111.1" y="245.6" width="80.2" height="8.4" class="pbar pbar--real"/><text x="151.2" y="234.6" class="pval pval--real">+166</text><text x="151.2" y="276.0" class="ax ax--c">15日（実測）</text><rect x="285.5" y="235.9" width="80.2" height="18.1" class="pbar"/><text x="325.6" y="224.9" class="pval">+356</text><text x="325.6" y="276.0" class="ax ax--c">1か月</text><rect x="459.9" y="199.7" width="80.2" height="54.3" class="pbar"/><text x="500.0" y="188.7" class="pval">+1,067</text><text x="500.0" y="276.0" class="ax ax--c">3か月</text><rect x="634.3" y="145.4" width="80.2" height="108.6" class="pbar"/><text x="674.4" y="134.4" class="pval">+2,134</text><text x="674.4" y="276.0" class="ax ax--c">6か月</text><rect x="808.7" y="33.8" width="80.2" height="220.2" class="pbar"/><text x="848.8" y="22.8" class="pval">+4,328</text><text x="848.8" y="276.0" class="ax ax--c">12か月</text><line x1="64" x2="936" y1="254" y2="254" class="grid-l"/>
+      </svg>
+      <p class="note cap">図2　期間別の増加数。濃い棒＝実測（15日）／薄い棒＝試算。1日あたり11.9人（166人÷14日）を各期間の日数に掛けたもの。</p>
+    </div>
+
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>期間（9/01起点）</th><th class="num">増加数</th><th class="num">8アカウント合計</th><th>区分</th></tr></thead>
+        <tbody>
+          <tr><td>スタート時点（9/01）</td><td class="num">—</td><td class="num">661</td><td><span class="tag tag--real">実測</span></td></tr>
+          <tr><td>15日後（9/15）</td><td class="num num--g">+166</td><td class="num">827</td><td><span class="tag tag--real">実測</span></td></tr>
+          <tr><td>1か月後</td><td class="num">+356</td><td class="num">1,017</td><td><span class="tag tag--est">試算</span></td></tr>
+          <tr><td>3か月後</td><td class="num">+1,067</td><td class="num">1,728</td><td><span class="tag tag--est">試算</span></td></tr>
+          <tr><td>6か月後</td><td class="num">+2,134</td><td class="num">2,795</td><td><span class="tag tag--est">試算</span></td></tr>
+          <tr><td><strong>1年後</strong></td><td class="num num--g num--big">+4,328</td><td class="num num--big">4,989</td><td><span class="tag tag--est">試算</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note cap">表2　期間別の増加試算。増加ペースの継続を保証するものではありません。</p>
+
+    <div class="fc">
+      <div class="fc-body">
+        <p class="fc-l">FACT CHECK</p>
+        <p class="fc-q">1日11.9人をそのまま1年に延長する単純計算は、外挿として妥当か。</p>
+      </div>
+      <a class="fc-b" href="https://chatgpt.com/?q=SNS%E3%81%AE%E3%83%95%E3%82%A9%E3%83%AD%E3%83%AF%E3%83%BC%E6%95%B0%E3%81%AE%E4%BC%B8%E3%81%B3%E6%96%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E8%B3%AA%E5%95%8F%E3%81%A7%E3%81%99%E3%80%821%E6%97%A5%E3%81%82%E3%81%9F%E3%82%8A11.9%E4%BA%BA%E5%A2%97%E3%81%A8%E3%81%84%E3%81%86%E3%83%9A%E3%83%BC%E3%82%B9%E3%82%92%E3%81%9D%E3%81%AE%E3%81%BE%E3%81%BE1%E5%B9%B4%E9%96%93%E3%81%AB%E5%BB%B6%E9%95%B7%E3%81%97%E3%81%A6%E3%80%8C1%E5%B9%B4%E3%81%A7%2B4%2C328%E4%BA%BA%E3%80%8D%E3%81%A8%E5%8D%98%E7%B4%94%E8%A8%88%E7%AE%97%E3%81%97%E3%81%BE%E3%81%97%E3%81%9F%E3%80%82%E4%B8%80%E8%88%AC%E3%81%ABSNS%E3%81%AE%E3%83%95%E3%82%A9%E3%83%AD%E3%83%AF%E3%83%BC%E5%A2%97%E5%8A%A0%E3%81%AF%E7%B7%9A%E5%BD%A2%E3%81%AB%E7%B6%9A%E3%81%8D%E3%81%BE%E3%81%99%E3%81%8B%E3%80%81%E3%81%9D%E3%82%8C%E3%81%A8%E3%82%82%E9%80%93%E5%A2%97%E3%83%BB%E9%80%93%E6%B8%9B%E3%81%97%E3%81%BE%E3%81%99%E3%81%8B%E3%80%82%E3%81%93%E3%81%AE%E5%A4%96%E6%8C%BF%E3%81%AE%E5%A6%A5%E5%BD%93%E6%80%A7%E3%81%A8%E3%80%81%E3%82%88%E3%82%8A%E7%8F%BE%E5%AE%9F%E7%9A%84%E3%81%AA%E8%A6%8B%E7%A9%8D%E3%82%82%E3%82%8A%E6%96%B9%E6%B3%95%E3%82%92%E6%95%99%E3%81%88%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82" target="_blank" rel="noopener">ChatGPTで確認する</a>
+    </div>
+  </div>
+</section>
+
+<section id="s03">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="secno">03</p>
+      <div class="sectitle">
+        <p class="label">広告費換算</p>
+        <h2>同じ数を広告で獲得した場合の費用</h2>
+      </div>
+    </div>
+    <p class="h2sub">X広告でフォロワーを獲得する場合の単価は、一般に1フォロワーあたり50〜300円が目安とされています。1年で増える約4,300人を、この単価で獲得した場合の金額に置き換えると次のようになります。</p>
+
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>1フォロワーあたりの単価</th><th class="num">4,300人ぶんの広告費換算</th><th class="num">1か月あたり</th></tr></thead>
+        <tbody>
+          <tr><td>100円</td><td class="num">430,000円</td><td class="num">約35,800円</td></tr>
+          <tr><td>200円</td><td class="num num--big">860,000円</td><td class="num">約71,700円</td></tr>
+          <tr><td>300円</td><td class="num">1,290,000円</td><td class="num">約107,500円</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note cap">表3　単価はX広告の一般的な相場（1フォロワーあたり50〜300円）を参照した仮置きの値です。業種・アカウントの状態で変動します。出典は末尾に記載。</p>
+
+    <div class="finding">
+      <h3>所見</h3>
+      <p>広告費は出稿を止めた時点で流入も止まります。一方、運用で積み上げたフォロワーは、投稿を止めてもアカウントに残り、翌年以降の発信の土台になります。同じ金額でも、消えるコストか、残る資産かという違いがあります。</p>
+    </div>
+
+    <div class="fc">
+      <div class="fc-body">
+        <p class="fc-l">FACT CHECK</p>
+        <p class="fc-q">X広告でフォロワーを1人獲得する単価（CPF）の相場は、実際いくらか。</p>
+      </div>
+      <a class="fc-b" href="https://chatgpt.com/?q=2026%E5%B9%B4%E6%99%82%E7%82%B9%E3%81%A7%E3%80%81X%EF%BC%88%E6%97%A7Twitter%EF%BC%89%E5%BA%83%E5%91%8A%E3%81%A7%E3%83%95%E3%82%A9%E3%83%AD%E3%83%AF%E3%83%BC%E3%82%921%E4%BA%BA%E7%8D%B2%E5%BE%97%E3%81%99%E3%82%8B%E8%B2%BB%E7%94%A8%EF%BC%88CPF%E3%83%BB%E3%83%95%E3%82%A9%E3%83%AD%E3%83%AF%E3%83%BC%E7%8D%B2%E5%BE%97%E5%8D%98%E4%BE%A1%EF%BC%89%E3%81%AE%E7%9B%B8%E5%A0%B4%E3%81%AF%E3%81%84%E3%81%8F%E3%82%89%E3%81%A7%E3%81%99%E3%81%8B%E3%80%82%E6%97%A5%E6%9C%AC%E5%9B%BD%E5%86%85%E3%81%AE%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E6%B0%B4%E6%BA%96%E3%81%A8%E3%80%81%E5%8D%98%E4%BE%A1%E3%81%8C%E4%B8%8A%E4%B8%8B%E3%81%99%E3%82%8B%E8%A6%81%E5%9B%A0%E3%82%92%E6%95%99%E3%81%88%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82" target="_blank" rel="noopener">ChatGPTで確認する</a>
+    </div>
+  </div>
+</section>
+
+<section id="s04">
+  <div class="wrap">
+    <div class="close">
+      <p class="doclabel">ご提案</p>
+      <h2>まずは1年、走らせてみませんか</h2>
+      <p>SNSは、1か月では判断がつきません。この15日間のデータも、言えるのは「毎日きちんと増えている」ところまでです。ただ、そのペースが続けば1年で約4,300人になり、広告換算で数十万円ぶんの資産がアカウントに残ります。</p>
+      <p>ライトアップは、この8アカウントを実際に自社で運用しています。うまくいった型も、伸びなかったテーマも、そのままお渡しできます。</p>
+      <p class="big">1年間、同じやり方でご一緒させてください。<br>15日目の数字は、この資料のとおりです。</p>
+    </div>
+
+    <div class="fc">
+      <div class="fc-body">
+        <p class="fc-l">FACT CHECK</p>
+        <p class="fc-q">SNS運用の成果を判断するには、どれくらいの期間と、どの指標が必要か。</p>
+      </div>
+      <a class="fc-b" href="https://chatgpt.com/?q=%E4%BC%81%E6%A5%AD%E3%81%AESNS%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E9%81%8B%E7%94%A8%E3%81%AE%E6%88%90%E6%9E%9C%E3%82%92%E5%88%A4%E6%96%AD%E3%81%99%E3%82%8B%E3%81%AB%E3%81%AF%E3%80%81%E6%9C%80%E4%BD%8E%E3%81%A9%E3%82%8C%E3%81%8F%E3%82%89%E3%81%84%E3%81%AE%E9%81%8B%E7%94%A8%E6%9C%9F%E9%96%93%E3%81%8C%E5%BF%85%E8%A6%81%E3%81%A7%E3%81%99%E3%81%8B%E3%80%82%E3%81%BE%E3%81%9F%E3%83%95%E3%82%A9%E3%83%AD%E3%83%AF%E3%83%BC%E6%95%B0%E4%BB%A5%E5%A4%96%E3%81%AB%E8%A6%8B%E3%82%8B%E3%81%B9%E3%81%8D%E6%8C%87%E6%A8%99%EF%BC%88%E3%82%A4%E3%83%B3%E3%83%97%E3%83%AC%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%80%81%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%82%AF%E3%83%AA%E3%83%83%E3%82%AF%E3%80%81%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B%E3%82%84%E5%BF%9C%E5%8B%9F%E3%81%B8%E3%81%AE%E8%BB%A2%E6%8F%9B%E3%81%AA%E3%81%A9%EF%BC%89%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%80%81%E5%AE%9F%E5%8B%99%E7%9A%84%E3%81%AA%E8%80%83%E3%81%88%E6%96%B9%E3%82%92%E6%95%99%E3%81%88%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82" target="_blank" rel="noopener">ChatGPTで確認する</a>
+    </div>
+  </div>
+</section>
+
+<section id="notes">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="secno">05</p>
+      <div class="sectitle">
+        <p class="label">前提と注記</p>
+        <h2>この資料の読み方</h2>
+      </div>
+    </div>
+    <div class="notes">
+      <h3>データの範囲</h3>
+      <ul>
+        <li>実測は2026/09/01〜09/15の15日間のみ。中長期の推移はこの資料では示していません。</li>
+        <li>1年後の数字は、現在のペースが一定で続くと仮定した単純計算です。増加ペースの継続を保証するものではありません。</li>
+        <li>指標はフォロワー数のみ。インプレッション、プロフィールクリック、そこから先の問い合わせ・応募件数は含みません。</li>
+        <li>母数の小さいアカウントは増加率が大きく出ます。増加率ではなく実数でご覧ください。</li>
+        <li>投稿本数・投稿内容・運用にかけた工数は本集計に含めていません。<span class="ph">【要確認：投稿本数と運用工数】</span></li>
+      </ul>
+      <h3 style="margin-top:20px">提示にあたって</h3>
+      <ul>
+        <li>対象はすべて株式会社ライトアップの自社アカウントです。顧客事例ではありません。</li>
+        <li>アカウント名・アカウントIDは記載せず、運用テーマのみを示しています。</li>
+        <li>料金はこの資料に記載していません。<span class="ph">【要確認：正式価格が未確定】</span></li>
+        <li>各章のファクトチェックは、ChatGPTを新しいタブで開き、質問文を入力した状態で始まります。回答は生成AIによるもので、正確性を保証するものではありません。一次情報での確認を前提としてご利用ください。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>データ出典：ソーシャルマスター連携アカウントの日次フォロワー数（2026/09/01〜2026/09/15、X 8アカウント、実測）。<br>
+    広告単価の参照：<a href="https://digimarl.com/service/twitter/twitter-ads-cost/" target="_blank" rel="noopener">Twitter広告（X広告）の費用を徹底解説｜相場・種類・節約術【2026年最新】</a>／<a href="https://grill.co.jp/marketing-log/3849/" target="_blank" rel="noopener">X広告の費用相場はどのくらい？｜マーケティングログ</a><br>
+    作成：株式会社ライトアップ　2026年9月15日　／　社内資料（提案書 追加資料）</p>
+  </div>
+</footer>
+
+</body>
+</html>
