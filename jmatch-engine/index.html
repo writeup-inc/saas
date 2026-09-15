@@ -128,6 +128,31 @@ h1 em{ font-style:normal; color:var(--navy); }
   .gate-sub .blank{ display:none; }
   .gate-sub a{ padding:12px 4px; }
 }
+
+/* ===== 営業用リンク集 ===== */
+.sales-links{ margin-top:72px; padding-top:32px; border-top:2px solid var(--ink); }
+.sales-links__head{ display:flex; align-items:end; justify-content:space-between; gap:24px; margin-bottom:28px; }
+.sales-links__kicker{ font-family:var(--en); font-size:11px; font-weight:900; letter-spacing:.26em; color:var(--navy); margin-bottom:8px; }
+.sales-links__title{ font-size:clamp(1.3rem,3vw,1.8rem); font-weight:900; line-height:1.45; }
+.sales-links__lead{ max-width:28em; font-size:13px; color:var(--gray-60); line-height:1.8; }
+.sales-links__groups{ display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:18px; }
+.sales-links__group{ border:1px solid var(--gray-20); background:rgba(255,255,255,.8); }
+.sales-links__group-title{ padding:16px 18px; border-bottom:1px solid var(--gray-20); font-size:15px; font-weight:900; color:var(--navy); }
+.sales-link{ display:block; padding:17px 18px; border-bottom:1px solid var(--gray-20); color:var(--ink); text-decoration:none; transition:background .2s ease; }
+.sales-link:last-child{ border-bottom:none; }
+.sales-link:hover{ background:var(--tint); }
+.sales-link__meta{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:6px; }
+.sales-link__label{ font-family:var(--en); font-size:10px; font-weight:900; letter-spacing:.12em; color:var(--gray-60); }
+.sales-link__internal{ display:inline-block; padding:2px 7px; font-size:10px; font-weight:900; line-height:1.5; color:var(--navy); background:var(--tint); border:1px solid var(--gray-20); }
+.sales-link__name{ display:flex; align-items:baseline; justify-content:space-between; gap:10px; font-size:14px; font-weight:900; line-height:1.6; }
+.sales-link__name span:last-child{ flex:0 0 auto; color:var(--navy); }
+.sales-link__desc{ margin-top:5px; font-size:12px; color:var(--gray-60); line-height:1.7; }
+@media(max-width:900px){ .sales-links__groups{ grid-template-columns:1fr; } }
+@media(max-width:600px){
+  .sales-links{ margin-top:52px; padding-top:26px; }
+  .sales-links__head{ display:block; margin-bottom:22px; }
+  .sales-links__lead{ margin-top:10px; }
+}
 .foot-note{ margin-top:34px; font-size:13px; color:var(--gray-40); line-height:1.9; }
 footer{ position:relative; z-index:1; flex-shrink:0; border-top:1px solid var(--gray-20); padding:22px 0 36px; }
 footer .f{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; font-size:12px; color:var(--gray-40); }
@@ -177,6 +202,85 @@ footer .f{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px
       <a href="./oem-plans/">OEM導入先のお客様が見る料金ページ<i>→</i></a>
       <span class="blank"></span>
     </div>
+
+    <section class="sales-links" aria-labelledby="sales-links-title">
+      <div class="sales-links__head">
+        <div>
+          <p class="sales-links__kicker">SALES QUICK LINKS</p>
+          <h2 class="sales-links__title" id="sales-links-title">リンク集</h2>
+        </div>
+        <p class="sales-links__lead">商談中・商談後の案内に使うページを、提案の種類ごとにまとめました。</p>
+      </div>
+
+      <div class="sales-links__groups">
+        <section class="sales-links__group" aria-labelledby="oem-links-title">
+          <h3 class="sales-links__group-title" id="oem-links-title">OEM提案</h3>
+          <a class="sales-link" href="./oem/" target="_blank" rel="noopener">
+            <span class="sales-link__meta"><span class="sales-link__label">CUSTOMER</span></span>
+            <span class="sales-link__name">Jマッチエンジン OEM提供<span aria-hidden="true">→</span></span>
+            <span class="sales-link__desc">提携先・導入検討企業への基本案内</span>
+          </a>
+          <a class="sales-link" href="https://writeup-inc.github.io/seminar/jmatch-engine-oem/" target="_blank" rel="noopener">
+            <span class="sales-link__meta"><span class="sales-link__label">CUSTOMER</span></span>
+            <span class="sales-link__name">OEM セミナー動画アーカイブ<span aria-hidden="true">→</span></span>
+            <span class="sales-link__desc">説明後に送る動画アーカイブ</span>
+          </a>
+          <a class="sales-link" href="./oem-plans/" target="_blank" rel="noopener">
+            <span class="sales-link__meta"><span class="sales-link__label">CUSTOMER</span></span>
+            <span class="sales-link__name">会員プラン<span aria-hidden="true">→</span></span>
+            <span class="sales-link__desc">OEM導入先のお客様向けの料金案内</span>
+          </a>
+          <a class="sales-link" href="https://claude.ai/public/artifacts/61278311-569e-4836-941c-50317e2cd5e6" target="_blank" rel="noopener">
+            <span class="sales-link__meta"><span class="sales-link__label">OPERATION</span></span>
+            <span class="sales-link__name">OEM管理者向け<span aria-hidden="true">→</span></span>
+            <span class="sales-link__desc">OEM導入後の運用確認用</span>
+          </a>
+          <a class="sales-link" href="https://writeup-inc.github.io/saas/jmatch-oem-sales-talk/" target="_blank" rel="noopener">
+            <span class="sales-link__meta"><span class="sales-link__label">SALES</span><span class="sales-link__internal">社内限定</span></span>
+            <span class="sales-link__name">OEMセールストーク<span aria-hidden="true">→</span></span>
+            <span class="sales-link__desc">商談前の説明準備・話法確認用</span>
+          </a>
+        </section>
+
+        <section class="sales-links__group" aria-labelledby="direct-links-title">
+          <h3 class="sales-links__group-title" id="direct-links-title">直販提案</h3>
+          <a class="sales-link" href="./direct/" target="_blank" rel="noopener">
+            <span class="sales-link__meta"><span class="sales-link__label">CUSTOMER</span></span>
+            <span class="sales-link__name">Jマッチエンジン 直販<span aria-hidden="true">→</span></span>
+            <span class="sales-link__desc">AI自走プランの基本案内</span>
+          </a>
+          <a class="sales-link" href="./direct/?story=1" target="_blank" rel="noopener">
+            <span class="sales-link__meta"><span class="sales-link__label">CUSTOMER</span></span>
+            <span class="sales-link__name">経営小説<span aria-hidden="true">→</span></span>
+            <span class="sales-link__desc">導入後の活用イメージを伝える読み物</span>
+          </a>
+          <a class="sales-link" href="./consult-comparison/" target="_blank" rel="noopener">
+            <span class="sales-link__meta"><span class="sales-link__label">CUSTOMER</span></span>
+            <span class="sales-link__name">JコンサルからJマッチへ｜サービス比較<span aria-hidden="true">→</span></span>
+            <span class="sales-link__desc">既存サービスとの違いを説明するとき</span>
+          </a>
+          <a class="sales-link" href="https://writeup-inc.github.io/seminar/jmatch-engine/" target="_blank" rel="noopener">
+            <span class="sales-link__meta"><span class="sales-link__label">CUSTOMER</span></span>
+            <span class="sales-link__name">直販セミナー申し込み<span aria-hidden="true">→</span></span>
+            <span class="sales-link__desc">説明後の次のアクションとして案内</span>
+          </a>
+          <a class="sales-link" href="https://writeup-inc.github.io/saas/jmatch-direct-sales-talk/" target="_blank" rel="noopener">
+            <span class="sales-link__meta"><span class="sales-link__label">SALES</span><span class="sales-link__internal">社内限定</span></span>
+            <span class="sales-link__name">直販セールストーク<span aria-hidden="true">→</span></span>
+            <span class="sales-link__desc">商談前の説明準備・話法確認用</span>
+          </a>
+        </section>
+
+        <section class="sales-links__group" aria-labelledby="operation-links-title">
+          <h3 class="sales-links__group-title" id="operation-links-title">管理・運用</h3>
+          <a class="sales-link" href="https://jmatch-member-support-live.vercel.app/" target="_blank" rel="noopener">
+            <span class="sales-link__meta"><span class="sales-link__label">OPERATION</span></span>
+            <span class="sales-link__name">会員向け管理画面（公開版）<span aria-hidden="true">→</span></span>
+            <span class="sales-link__desc">会員向け画面を確認・案内するとき</span>
+          </a>
+        </section>
+      </div>
+    </section>
 
     <p class="foot-note">金額はいずれも税別です。申請の代行は行っておりません。</p>
   </div>
