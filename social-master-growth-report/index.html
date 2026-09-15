@@ -160,8 +160,10 @@ h3{font-family:var(--gothic);font-weight:800;font-size:15px;line-height:1.6;bord
 .compare svg{width:100%;height:auto;display:block}
 .cmp-axis{stroke:var(--line);stroke-width:1.5}
 .cmp-stop{stroke:var(--ink3);stroke-width:1.5;stroke-dasharray:4 4}
-.cmp-ad{fill:none;stroke:var(--ink3);stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round}
-.cmp-own{fill:none;stroke:var(--accent);stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round}
+.cmp-bar-ad{fill:var(--ink3)}
+.cmp-bar-gone{fill:var(--line)}
+.cmp-bar-own{fill:var(--accent)}
+.cmp-bar-left{fill:var(--accent);opacity:.45}
 .compare figcaption{margin-top:12px;font-family:var(--gothic);font-size:13px;color:var(--ink2);line-height:1.7}
 .compare figcaption b{display:block;font-size:13px;font-weight:800;color:var(--ink);margin-bottom:3px}
 
@@ -425,22 +427,20 @@ footer a{color:var(--ink3)}
       <p>広告は、出稿を止めた時点で流入も止まります。一方、運用で積み上げたフォロワーは、投稿を止めてもアカウントに残り、翌年以降の発信の土台になります。同じ金額でも、消えるコストか、残る資産かという違いがあります。</p>
       <div class="compare">
         <figure>
-          <svg viewBox="0 0 220 110" role="img" aria-label="広告は出稿を止めた時点で流入が止まることを示す模式図">
-            <line x1="10" y1="96" x2="210" y2="96" class="cmp-axis"/>
-            <polyline class="cmp-ad" points="14,88 40,72 66,60 92,46 112,38"/>
-            <line x1="120" y1="18" x2="120" y2="96" class="cmp-stop"/>
-            <polyline class="cmp-ad" points="128,86 150,90 180,92 206,92"/>
+          <svg viewBox="0 0 240 120" role="img" aria-label="広告費は出稿している間だけ発生し、止めると何も残らないことを示す棒グラフの模式図">
+            <rect x="14" y="62" width="14" height="42" class="cmp-bar-ad"/><rect x="36" y="62" width="14" height="42" class="cmp-bar-ad"/><rect x="58" y="62" width="14" height="42" class="cmp-bar-ad"/><rect x="80" y="62" width="14" height="42" class="cmp-bar-ad"/><rect x="102" y="62" width="14" height="42" class="cmp-bar-ad"/><rect x="124" y="62" width="14" height="42" class="cmp-bar-ad"/><rect x="146" y="101" width="14" height="3" class="cmp-bar-gone"/><rect x="168" y="101" width="14" height="3" class="cmp-bar-gone"/><rect x="190" y="101" width="14" height="3" class="cmp-bar-gone"/><rect x="212" y="101" width="14" height="3" class="cmp-bar-gone"/>
+            <line x1="147" y1="14" x2="147" y2="104" class="cmp-stop"/>
+            <line x1="8" y1="104" x2="232" y2="104" class="cmp-axis"/>
           </svg>
-          <figcaption><b>広告</b>出稿を止めた時点で、流入も止まる</figcaption>
+          <figcaption><b>広告費</b>出している間だけ効き、止めれば何も残らない</figcaption>
         </figure>
         <figure>
-          <svg viewBox="0 0 220 110" role="img" aria-label="運用で積み上げたフォロワーは止めても残ることを示す模式図">
-            <line x1="10" y1="96" x2="210" y2="96" class="cmp-axis"/>
-            <polyline class="cmp-own" points="14,88 40,78 66,64 92,48 112,34"/>
-            <line x1="120" y1="18" x2="120" y2="96" class="cmp-stop"/>
-            <polyline class="cmp-own" points="128,33 150,32 180,31 206,30"/>
+          <svg viewBox="0 0 240 120" role="img" aria-label="運用で積み上げたフォロワーは毎月増え、止めても高さが残ることを示す棒グラフの模式図">
+            <rect x="14" y="94" width="14" height="10" class="cmp-bar-own"/><rect x="36" y="85" width="14" height="19" class="cmp-bar-own"/><rect x="58" y="76" width="14" height="28" class="cmp-bar-own"/><rect x="80" y="67" width="14" height="37" class="cmp-bar-own"/><rect x="102" y="58" width="14" height="46" class="cmp-bar-own"/><rect x="124" y="49" width="14" height="55" class="cmp-bar-own"/><rect x="146" y="49" width="14" height="55" class="cmp-bar-own cmp-bar-left"/><rect x="168" y="49" width="14" height="55" class="cmp-bar-own cmp-bar-left"/><rect x="190" y="49" width="14" height="55" class="cmp-bar-own cmp-bar-left"/><rect x="212" y="49" width="14" height="55" class="cmp-bar-own cmp-bar-left"/>
+            <line x1="147" y1="14" x2="147" y2="104" class="cmp-stop"/>
+            <line x1="8" y1="104" x2="232" y2="104" class="cmp-axis"/>
           </svg>
-          <figcaption><b>運用</b>積み上がった数は、止めても残る</figcaption>
+          <figcaption><b>フォロワー</b>毎月積み上がり、止めても高さは残る</figcaption>
         </figure>
       </div>
       <p class="note cap">図2　模式図です。実測値ではありません。縦の点線は、出稿または投稿を止めた時点を示します。</p>
