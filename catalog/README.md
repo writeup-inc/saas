@@ -14,6 +14,8 @@ node tools/check-index.mjs --history
 
 Then commit the entry and generated root index in a second commit, and push both commits together. A `Catalog-Update: no` trailer remains available only for changes that must not alter the public catalog.
 
+If a past substantive update was incorrectly committed with `Catalog-Update: no`, do not rewrite its history. Update that service entry's `latestChange` and `latestChangeFor` to the exact commit SHA. The synchronizer treats that explicit, newer reference as a one-service reclassification and records it in the generated card. This is a correction path, not a substitute for the normal two-commit flow.
+
 For a new public service, copy `catalog/entry.template.json` to
 `catalog/entries/<service-id>.json`, fill in the editorial fields, then run the
 same update command. Do not place templates in `entries/`: every JSON file in

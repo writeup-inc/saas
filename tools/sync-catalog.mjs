@@ -33,18 +33,28 @@ function commitInfo(commit) {
   return info;
 }
 
-function latestMaterialCommit(id) {
-  if (materialCommitCache.has(id)) return materialCommitCache.get(id);
+function isCatalogOptOut(commit) {
+  return /^Catalog-Update:\s*no\s*$/im.test(commit.body);
+}
+
+function latestMaterialCommit(id, reclassifiedCommit = null) {
+  const cacheKey = `${id}:${reclassifiedCommit ?? ""}`;
+  if (materialCommitCache.has(cacheKey)) return materialCommitCache.get(cacheKey);
   const output = git(["rev-list", "--reverse", `${config.historyBaseline}..HEAD`, "--", `${id}/`]);
   const commits = output ? output.split("\n").map(commitInfo) : [];
-  let material = commits.reverse().find(({ body }) => !/^Catalog-Update:\s*no\s*$/im.test(body));
+  const newestFirst = commits.reverse();
+  let material = newestFirst.find((commit) => !isCatalogOptOut(commit));
   if (!material) {
     const fullHistory = git(["log", "--format=%H", "--", `${id}/`]);
     material = (fullHistory ? fullHistory.split("\n") : [])
       .map(commitInfo)
-      .find(({ body }) => !/^Catalog-Update:\s*no\s*$/im.test(body)) ?? null;
+      .find((commit) => !isCatalogOptOut(commit)) ?? null;
   }
-  materialCommitCache.set(id, material);
+  const reclassified = reclassifiedCommit ? commitInfo(reclassifiedCommit) : null;
+  if (reclassified && isCatalogOptOut(reclassified) && (!material || Date.parse(reclassified.authorDate) > Date.parse(material.authorDate))) {
+    material = reclassified;
+  }
+  materialCommitCache.set(cacheKey, material);
   return material;
 }
 
@@ -165,7 +175,7 @@ function loadEntries() {
 function renderCard(entry, index) {
   const id = entry.id;
   const category = config.categories[entry.category];
-  const latest = latestMaterialCommit(id);
+  const latest = latestMaterialCommit(id, entry.latestChangeFor);
   const creationCommit = firstCreationCommit(id);
   const latestCommit = latestSiteCommit(id);
   if (!category) fail(`[${id}] 未定義のcategoryです: ${entry.category}`);
@@ -224,8 +234,8 @@ for (const entry of entries) {
 }
 
 const ordered = entries.filter((entry) => directories.includes(entry.id)).sort((a, b) => {
-  const latestA = latestMaterialCommit(a.id)?.authorDate ?? "";
-  const latestB = latestMaterialCommit(b.id)?.authorDate ?? "";
+  const latestA = latestMaterialCommit(a.id, a.latestChangeFor)?.authorDate ?? "";
+  const latestB = latestMaterialCommit(b.id, b.latestChangeFor)?.authorDate ?? "";
   return Date.parse(latestB) - Date.parse(latestA);
 });
 const rendered = ordered.map(renderCard).join("\n\n");

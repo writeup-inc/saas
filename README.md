@@ -97,6 +97,8 @@
 Catalog-Update: no
 ```
 
+過去に実質更新へ誤ってこのtrailerを付けた場合は、履歴を書き換えず、対応entryの`latestChange`と`latestChangeFor`をそのコミットSHAへ修正する。同期処理は、その明示的な参照だけを当該サービスの実質更新として再分類する。
+
 検証スクリプトは、entryが最新の実質更新commitを指すことと、生成済み一覧がentry・Git履歴と一致することを必須にする。過去の移行履歴は `tools/index-check.config.json` の `historyBaseline` より後を検査する。
 
 ## 一覧の自動検証

@@ -30,6 +30,8 @@
 
 軽微な変更で公開一覧を変えないときだけ、商材コミットへ `Catalog-Update: no` を付ける。`Index-Update: pending` を使って一覧反映を後回しにする運用は廃止する。
 
+過去に実質更新へ誤って`Catalog-Update: no`を付けた場合は、履歴を直さず、対応entryの`latestChange`と`latestChangeFor`へそのSHAを明示して再分類する。
+
 ## セミナー・説明会／インタビューは独立リポジトリ（2026-09-13〜）
 
 `monitor`・`members`・`Interviews`・`seminar` は、saasと同列の独立リポジトリに置く方針にした。

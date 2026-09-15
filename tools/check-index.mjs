@@ -9,8 +9,17 @@ const toolsDir = dirname(fileURLToPath(import.meta.url));
 const rootDir = dirname(toolsDir);
 const indexPath = join(rootDir, "index.html");
 const configPath = join(toolsDir, "index-check.config.json");
+const entriesDir = join(rootDir, "catalog", "entries");
 const html = readFileSync(indexPath, "utf8");
 const config = JSON.parse(readFileSync(configPath, "utf8"));
+const catalogEntries = new Map(
+  existsSync(entriesDir)
+    ? readdirSync(entriesDir)
+      .filter((name) => name.endsWith(".json"))
+      .map((name) => JSON.parse(readFileSync(join(entriesDir, name), "utf8")))
+      .map((entry) => [entry.id, entry])
+    : []
+);
 const historyEnabled = process.argv.includes("--history");
 const errors = [];
 const warnings = [];
@@ -108,8 +117,14 @@ function commitInfo(commit) {
 }
 
 function latestMaterialCommit(path) {
-  const commits = commitsAfterBaseline(path).map(commitInfo);
-  return commits.reverse().find(({ body }) => !/^Catalog-Update:\s*no\s*$/im.test(body)) ?? null;
+  const commits = commitsAfterBaseline(path).map(commitInfo).reverse();
+  let material = commits.find(({ body }) => !/^Catalog-Update:\s*no\s*$/im.test(body)) ?? null;
+  const reclassifiedSha = catalogEntries.get(path)?.latestChangeFor;
+  const reclassified = reclassifiedSha ? commitInfo(reclassifiedSha) : null;
+  if (reclassified && /^Catalog-Update:\s*no\s*$/im.test(reclassified.body) && (!material || Date.parse(reclassified.authorDate) > Date.parse(material.authorDate))) {
+    material = reclassified;
+  }
+  return material;
 }
 
 const listMatch = html.match(/<section class="list"[\s\S]*?<\/section>/);
