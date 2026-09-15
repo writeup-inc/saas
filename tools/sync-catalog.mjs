@@ -33,8 +33,16 @@ function commitInfo(commit) {
   return info;
 }
 
-function isCatalogOptOut(commit) {
-  return /^Catalog-Update:\s*no\s*$/im.test(commit.body);
+function isCatalogMarkerOnlyCommit(commit, route) {
+  const changedPaths = git(["diff-tree", "--no-commit-id", "--name-only", "-r", commit.commit, "--", `${route}/`]).split("\n").filter(Boolean);
+  if (changedPaths.length !== 1) return false;
+  const diff = git(["show", "--format=", "--unified=0", commit.commit, "--", changedPaths[0]]);
+  const changedLines = diff.split("\n").filter((line) => (line.startsWith("+") && !line.startsWith("+++")) || (line.startsWith("-") && !line.startsWith("---")));
+  return changedLines.length > 0 && changedLines.every((line) => /<meta\s+name=["']catalog-card["']\s+content=["']true["']\s*\/?\s*>/i.test(line));
+}
+
+function isCatalogOptOut(commit, route) {
+  return /^Catalog-Update:\s*no\s*$/im.test(commit.body) || isCatalogMarkerOnlyCommit(commit, route);
 }
 
 function latestMaterialCommit(id, reclassifiedCommit = null) {
@@ -43,15 +51,15 @@ function latestMaterialCommit(id, reclassifiedCommit = null) {
   const output = git(["rev-list", "--reverse", `${config.historyBaseline}..HEAD`, "--", `${id}/`]);
   const commits = output ? output.split("\n").map(commitInfo) : [];
   const newestFirst = commits.reverse();
-  let material = newestFirst.find((commit) => !isCatalogOptOut(commit));
+  let material = newestFirst.find((commit) => !isCatalogOptOut(commit, id));
   if (!material) {
     const fullHistory = git(["log", "--format=%H", "--", `${id}/`]);
     material = (fullHistory ? fullHistory.split("\n") : [])
       .map(commitInfo)
-      .find((commit) => !isCatalogOptOut(commit)) ?? null;
+      .find((commit) => !isCatalogOptOut(commit, id)) ?? null;
   }
   const reclassified = reclassifiedCommit ? commitInfo(reclassifiedCommit) : null;
-  if (reclassified && isCatalogOptOut(reclassified) && (!material || Date.parse(reclassified.authorDate) > Date.parse(material.authorDate))) {
+  if (reclassified && isCatalogOptOut(reclassified, id) && (!material || Date.parse(reclassified.authorDate) > Date.parse(material.authorDate))) {
     material = reclassified;
   }
   materialCommitCache.set(cacheKey, material);

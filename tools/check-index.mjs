@@ -121,12 +121,24 @@ function entryRoute(entry) {
   return entry?.route ?? entry?.id;
 }
 
+function isCatalogMarkerOnlyCommit(commit, route) {
+  const changedPaths = git(["diff-tree", "--no-commit-id", "--name-only", "-r", commit.commit, "--", `${route}/`]).split("\n").filter(Boolean);
+  if (changedPaths.length !== 1) return false;
+  const diff = git(["show", "--format=", "--unified=0", commit.commit, "--", changedPaths[0]]);
+  const changedLines = diff.split("\n").filter((line) => (line.startsWith("+") && !line.startsWith("+++")) || (line.startsWith("-") && !line.startsWith("---")));
+  return changedLines.length > 0 && changedLines.every((line) => /<meta\s+name=["']catalog-card["']\s+content=["']true["']\s*\/?\s*>/i.test(line));
+}
+
+function isCatalogOptOut(commit, route) {
+  return /^Catalog-Update:\s*no\s*$/im.test(commit.body) || isCatalogMarkerOnlyCommit(commit, route);
+}
+
 function latestMaterialCommit(route, entry = null) {
   const commits = commitsAfterBaseline(route).map(commitInfo).reverse();
-  let material = commits.find(({ body }) => !/^Catalog-Update:\s*no\s*$/im.test(body)) ?? null;
+  let material = commits.find((commit) => !isCatalogOptOut(commit, route)) ?? null;
   const reclassifiedSha = entry?.latestChangeFor;
   const reclassified = reclassifiedSha ? commitInfo(reclassifiedSha) : null;
-  if (reclassified && /^Catalog-Update:\s*no\s*$/im.test(reclassified.body) && (!material || Date.parse(reclassified.authorDate) > Date.parse(material.authorDate))) {
+  if (reclassified && isCatalogOptOut(reclassified, route) && (!material || Date.parse(reclassified.authorDate) > Date.parse(material.authorDate))) {
     material = reclassified;
   }
   return material;

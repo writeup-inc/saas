@@ -26,4 +26,5 @@ repository-relative URL path (for example, `jmatch-engine/consult-comparison`).
 The generator uses that route for the card URL, Git history, timestamps, and
 revision count. Add `<meta name="catalog-card" content="true">` to that child
 page as well; CI rejects a marked page without an entry and a child-page entry
-without the marker. Top-level services can omit `route`.
+without the marker. Adding or removing that marker alone is treated as catalog
+metadata, not a public content update. Top-level services can omit `route`.
