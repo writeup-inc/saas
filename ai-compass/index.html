@@ -115,6 +115,11 @@ button, input { font: inherit; }
 .popular-categories a:first-child .category-mark { color: var(--orange); }
 .popular-categories svg { width: 12px; color: var(--muted-ink); }
 .all-categories { margin-top: 14px; display: inline-flex; align-items: center; gap: 7px; color: var(--navy); font-size: 11px; font-weight: 800; }
+.seminar-side-banner { min-height: 142px; margin-top: 17px; padding: 18px 16px 16px; display: flex; flex-direction: column; background: var(--navy-deep); color: #fff; }
+.seminar-side-banner small { color: #e4a37a; font: 800 9px/1.4 Arial, sans-serif; letter-spacing: .1em; }
+.seminar-side-banner strong { margin-top: 10px; font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.seminar-side-banner span { margin-top: auto; padding-top: 14px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #496073; color: #fff; font-size: 10px; font-weight: 800; }
+.seminar-side-banner:hover span, .seminar-side-banner:focus-visible span { color: #f0b48e; }
 
 .discovery-rail { min-width: 0; overflow: hidden; }
 .carousel-shell { position: relative; border-bottom: 1px solid var(--line); background: var(--soft); }
@@ -130,7 +135,7 @@ button, input { font: inherit; }
 .hero-slide-media { position: relative; min-height: 330px; overflow: hidden; background: #d9dee2; }
 .hero-slide-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgb(7 29 49 / 12%), transparent 45%); pointer-events: none; }
 .hero-slide-media img { width: 100%; height: 100%; object-fit: cover; }
-.hero-slide:first-child .hero-slide-media img { object-position: center 28%; }
+.hero-slide:nth-child(2) .hero-slide-media img { object-position: center 28%; }
 .carousel-controls { position: absolute; left: 34px; bottom: 20px; z-index: 2; display: flex; align-items: center; gap: 13px; }
 .carousel-arrow { width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid var(--line); background: rgb(255 255 255 / 92%); color: var(--navy); cursor: pointer; }
 .carousel-arrow:hover, .carousel-arrow:focus-visible { border-color: var(--navy); }
@@ -325,7 +330,7 @@ footer { background: var(--navy-deep); color: #fff; }
   .hero-slide-copy { min-height: 285px; padding: 27px 21px 60px; }
   .hero-slide h1, .hero-slide h2 { font-size: 30px; line-height: 1.4; }
   .hero-slide-media { min-height: 205px; grid-row: 1; }
-  .hero-slide:first-child .hero-slide-media img { object-position: center 23%; }
+  .hero-slide:nth-child(2) .hero-slide-media img { object-position: center 23%; }
   .carousel-controls { left: 20px; bottom: 17px; }
   .discovery-tools { padding: 17px 16px; grid-template-columns: 1fr; }
   .discovery-search { grid-template-columns: 18px minmax(0, 1fr); padding: 8px 12px 8px 14px; }
@@ -442,21 +447,31 @@ footer { background: var(--navy-deep); color: #fff; }
       <a href="#compare" data-preset="経理・会計"><span class="category-mark">経</span><span>経理・会計AI</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
     </nav>
     <a class="all-categories" href="#compare">比較条件から探す →</a>
+    <a class="seminar-side-banner" href="#consult"><small>AI SEMINAR</small><strong>法人向け<br>AI活用セミナー</strong><span>参加について相談する →</span></a>
   </aside>
   <div class="discovery-rail">
     <div class="carousel-shell" data-carousel aria-roledescription="カルーセル" aria-label="注目のAI活用事例">
       <div class="carousel-viewport">
         <div class="carousel-track">
-          <article class="hero-slide" aria-label="1 / 3">
+          <article class="hero-slide" aria-label="1 / 4">
+            <div class="hero-slide-copy">
+              <p class="eyebrow">AI SEMINAR / ENTRY OPEN</p>
+              <h1 id="discover-title">法人向け<br>AI活用セミナー<br>参加受付中。</h1>
+              <p>実例をもとに、どの業務から始めるか、サービス選びと運用の考え方を整理します。</p>
+              <a class="hero-slide-link" href="#consult">参加について相談する <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            </div>
+            <div class="hero-slide-media"><img src="assets/planning.jpg" alt="ノートパソコンと資料を囲んでAI活用を検討する参加者" width="960" height="640"></div>
+          </article>
+          <article class="hero-slide" aria-label="2 / 4" aria-hidden="true">
             <div class="hero-slide-copy">
               <p class="eyebrow">AI WORK STYLE / INTERVIEW</p>
-              <h1 id="discover-title">スタッフ0人で、<br>顧問先60社。</h1>
+              <h2>スタッフ0人で、<br>顧問先60社。</h2>
               <p>税理士・畠山さんが、ひとりでも顧客対応の質を落とさずに働くためにAIへ任せたこと。</p>
               <a class="hero-slide-link" href="#feature">インタビューを読む <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
             </div>
             <div class="hero-slide-media"><img src="assets/hatakeyama.jpg" alt="インタビューに答える税理士の畠山さん" width="960" height="640"></div>
           </article>
-          <article class="hero-slide" aria-label="2 / 3" aria-hidden="true">
+          <article class="hero-slide" aria-label="3 / 4" aria-hidden="true">
             <div class="hero-slide-copy">
               <p class="eyebrow">SALES AI / CASE STUDY</p>
               <h2>提案前の2時間を、<br>15分に。</h2>
@@ -465,7 +480,7 @@ footer { background: var(--navy-deep); color: #fff; }
             </div>
             <div class="hero-slide-media"><img src="assets/sales-team.jpg" alt="AIを活用して提案を準備する営業チーム" width="960" height="640"></div>
           </article>
-          <article class="hero-slide" aria-label="3 / 3" aria-hidden="true">
+          <article class="hero-slide" aria-label="4 / 4" aria-hidden="true">
             <div class="hero-slide-copy">
               <p class="eyebrow">MEETING AI / PRACTICE</p>
               <h2>議事録で、<br>終わらせない。</h2>
@@ -478,8 +493,8 @@ footer { background: var(--navy-deep); color: #fff; }
       </div>
       <div class="carousel-controls">
         <button class="carousel-arrow carousel-prev" type="button" aria-label="前の特集"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
-        <div class="carousel-dots" aria-label="特集を選ぶ"><button class="carousel-dot" type="button" aria-label="特集1" aria-current="true"></button><button class="carousel-dot" type="button" aria-label="特集2"></button><button class="carousel-dot" type="button" aria-label="特集3"></button></div>
-        <span class="carousel-status" aria-live="polite">01 / 03</span>
+        <div class="carousel-dots" aria-label="特集を選ぶ"><button class="carousel-dot" type="button" aria-label="特集1" aria-current="true"></button><button class="carousel-dot" type="button" aria-label="特集2"></button><button class="carousel-dot" type="button" aria-label="特集3"></button><button class="carousel-dot" type="button" aria-label="特集4"></button></div>
+        <span class="carousel-status" aria-live="polite">01 / 04</span>
         <button class="carousel-arrow carousel-next" type="button" aria-label="次の特集"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
       </div>
     </div>
