@@ -150,6 +150,32 @@ h1 em{ font-style:normal; color:var(--blue); }
   .gate-sub .blank{ display:none; }
 }
 .foot-note{ margin-top:34px; font-size:13px; color:var(--gray2); line-height:1.9; }
+/* ===== 関連ページ（サイト下部のリンク集） ===== */
+.links{ margin-top:52px; padding-top:26px; border-top:2px solid var(--ink); }
+.links-k{ font-family:var(--en); font-size:11px; font-weight:900; letter-spacing:.26em; color:var(--gray2); margin-bottom:4px; }
+.links-list{ display:grid; grid-template-columns:1fr 1fr; }
+.links-list a{
+  display:flex; align-items:center; gap:12px; min-height:56px;
+  padding:14px 36px 14px 0; border-bottom:1px solid var(--line);
+  text-decoration:none; color:var(--ink);
+  transition:color .2s ease, background .2s ease;
+}
+.links-list a:nth-child(even){ border-left:1px solid var(--line); padding-left:44px; }
+.links-list a:hover{ color:var(--blue); background:var(--blue-l); }
+.links-n{ font-family:var(--en); font-size:11px; font-weight:900; letter-spacing:.1em; color:var(--gray2); flex-shrink:0; }
+.links-t{ font-size:13.5px; font-weight:700; line-height:1.7;
+  word-break:auto-phrase; line-break:strict; overflow-wrap:break-word; }
+@supports not (word-break: auto-phrase){ .links-t{ word-break:normal; } }
+.links-badge{
+  display:inline-block; margin-left:8px; padding:2px 8px;
+  font-size:11px; font-weight:700; letter-spacing:.04em;
+  color:var(--blue); background:var(--blue-l); border:1px solid var(--blue); white-space:nowrap;
+}
+.links-list a i{ font-style:normal; font-size:12px; color:var(--gray2); margin-left:auto; flex-shrink:0; }
+@media(max-width:900px){
+  .links-list{ grid-template-columns:1fr; }
+  .links-list a, .links-list a:nth-child(even){ padding:14px 4px; border-left:none; }
+}
 footer{ position:relative; z-index:1; flex-shrink:0; border-top:1px solid var(--line); padding:22px 0 36px; }
 footer .f{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; font-size:12px; color:var(--gray2); }
 .sales-links{ border-top:1px solid var(--line); padding:28px 0 30px; }
@@ -210,13 +236,48 @@ footer .f{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px
     </div>
 
     <div class="gate-sub">
-      <a href="../worklog-insight-oem-seminar/">OEMパートナー説明会資料<i>→</i></a>
       <a href="../worklog-insight-taku-sample/">管理画面サンプル（経営者・管理職・本人）<i>→</i></a>
       <a href="../worklog-fact-search/">有料オプション ワークログ ファクトサーチ<i>→</i></a>
       <span class="blank"></span>
     </div>
 
     <p class="foot-note">金額は1IDあたりの月額です。税の扱いと課金単位は、個別にご案内します。</p>
+
+    <nav class="links" aria-label="関連ページ">
+      <p class="links-k">RELATED PAGES</p>
+      <div class="links-list">
+        <a href="../worklog-insight-sales-talk/">
+          <span class="links-n">01</span>
+          <span class="links-t">ワークログインサイト：直販セールストーク<span class="links-badge">社内限定</span></span>
+          <i>→</i>
+        </a>
+        <a href="../worklog-insight-taku-sample/">
+          <span class="links-n">02</span>
+          <span class="links-t">ワークログ 導入企業管理画面</span>
+          <i>→</i>
+        </a>
+        <a href="../worklog-fact-search/">
+          <span class="links-n">03</span>
+          <span class="links-t">ワークログ ファクトサーチ</span>
+          <i>→</i>
+        </a>
+        <a href="../worklog-insight-oem/">
+          <span class="links-n">04</span>
+          <span class="links-t">ワークログOEM セミナー資料</span>
+          <i>→</i>
+        </a>
+        <a href="https://writeup-inc.github.io/seminar/worklog-insight-oem/?design=v1">
+          <span class="links-n">05</span>
+          <span class="links-t">ワークログ・インサイト OEM説明会（V1）</span>
+          <i>→</i>
+        </a>
+        <a href="https://writeup-inc.github.io/seminar/worklog-insight-oem/?design=v2">
+          <span class="links-n">06</span>
+          <span class="links-t">ワークログ・インサイト OEM説明会（V2）</span>
+          <i>→</i>
+        </a>
+      </div>
+    </nav>
   </div>
 </main>
 
