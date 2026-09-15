@@ -26,6 +26,8 @@
   --en:"Inter",sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
+img,svg,video{max-width:100%}
+h1,h2,h3,h4,.k{word-break:auto-phrase;line-break:strict}
 html{scroll-behavior:smooth}
 body{
   font-family:var(--jp);font-weight:400;
@@ -369,16 +371,18 @@ body.modal-open{overflow:hidden}
   letter-spacing:-.02em;margin-bottom:20px}
 .cta .cs{font-size:15px;color:var(--g60);margin-bottom:48px}
 .cta .sqr{justify-content:center}
-.cta .voice{max-width:600px;margin:0 auto 40px;text-align:left}
-.cta .voice p{word-break:keep-all;overflow-wrap:anywhere;text-wrap:pretty}
-.cta .vlead{font-size:13.5px;line-height:2;color:#8E8E8E;margin-bottom:14px}
-.cta .vq{font-size:17px;line-height:2.15;color:var(--paper);font-weight:700;
-  text-indent:-1em;padding-left:1em}
-.cta .vq span{display:inline}
+.cta .voice{max-width:630px;margin:0 auto 44px;text-align:left}
+.cta .vlead{font-size:13px;line-height:1.95;letter-spacing:.02em;
+  color:#8E8E8E;margin-bottom:18px;text-wrap:pretty}
+.cta .vq{font-size:17px;line-height:2.1;letter-spacing:.01em;
+  color:var(--paper);font-weight:700;padding-left:1em}
+.cta .vq .ln{display:block}
+.cta .vq .ln:first-child{text-indent:-1em}
+.cta .vq .ln>span{white-space:nowrap}
 @media(max-width:640px){
-  .cta .voice{margin-bottom:32px}
-  .cta .vq{font-size:15.5px;line-height:2.1}
-  .cta .vq span{display:inline-block}
+  .cta .voice{max-width:none;margin-bottom:34px}
+  .cta .vlead{font-size:12.5px;margin-bottom:15px}
+  .cta .vq{font-size:15.5px;line-height:2.05}
 }
 
 /* footer */
@@ -951,7 +955,7 @@ body.modal-open{overflow:hidden}
     <div class="k">私を、<br>御社のAI担当に。</div>
     <div class="voice">
       <p class="vlead">代表の白石が経営会議で小声でつぶやいた一言が今も耳に残っています。</p>
-      <p class="vq"><span>「走っている人より、</span><span>自転車のほうが</span><span>早く目的地につくじゃないですか。</span><span>AIを使うって、</span><span>そういうことだと思うんです。</span><span>ただ、これからは</span><span>みんな自転車を使うので、</span><span>早く使った人が勝ちですよね」</span></p>
+      <p class="vq"><span class="ln"><span>「走っている人より、</span><span>自転車のほうが</span><span>早く目的地につくじゃないですか。</span></span><span class="ln"><span>AIを使うって、</span><span>そういうことだと思うんです。</span></span><span class="ln"><span>ただ、これからは</span><span>みんな自転車を使うので、</span><span>早く使った人が勝ちですよね」</span></span></p>
     </div>
     <p class="cs">残り674社。この場で、次回の日程だけ決めさせてください。</p>
     <a class="btn" href="#how"><span class="sq"></span>次回の日程を決める</a>
