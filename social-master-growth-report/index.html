@@ -93,7 +93,15 @@ body{font-family:var(--mincho);color:var(--ink);background:var(--bg);-webkit-fon
 }
 
 /* 表紙 */
-.hd{padding:56px 0 44px}
+.hd{padding:34px 0 44px}
+.hd-top{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+.sm-link{flex:none;display:inline-flex;align-items:center;gap:8px;font-family:var(--gothic);font-size:12.5px;
+  font-weight:800;letter-spacing:.02em;color:#fff;text-decoration:none;padding:10px 16px;
+  background:linear-gradient(45deg,#feda75 0%,#fa7e1e 22%,#d62976 52%,#962fbf 76%,#4f5bd5 100%);
+  box-shadow:0 4px 12px rgba(214,41,118,.28);transition:box-shadow .15s ease,transform .15s ease}
+.sm-link:hover{box-shadow:0 8px 20px rgba(214,41,118,.38);transform:translateY(-1px)}
+.sm-link .ar{font-size:11px;opacity:.92}
+@media(prefers-reduced-motion:reduce){.sm-link{transition:none}.sm-link:hover{transform:none}}
 .doclabel{font-family:var(--gothic);font-size:11px;font-weight:800;letter-spacing:.22em;color:var(--ink3)}
 h1{margin:18px 0 0;font-family:var(--display);font-weight:900;line-height:1.42;letter-spacing:-.025em;font-size:clamp(2.05rem,5.6vw,3.3rem)}
 .subtitle{margin-top:16px;font-family:var(--gothic);font-size:clamp(13px,2.2vw,15px);font-weight:700;color:var(--ink2);line-height:1.8}
@@ -280,7 +288,10 @@ footer a{color:var(--ink3)}
 
 <header class="hd">
   <div class="wrap">
-    <p class="doclabel">株式会社ライトアップ　ソーシャルマスター　自社運用レポート</p>
+    <div class="hd-top">
+      <p class="doclabel">株式会社ライトアップ　ソーシャルマスター　自社運用レポート</p>
+      <a class="sm-link" href="https://claude.ai/public/artifacts/0f12bc42-66d0-45b9-aa1c-c7aba4980d4a" target="_blank" rel="noopener">ソーシャルマスターとは<span class="ar">↗</span></a>
+    </div>
     <h1>X 8アカウントのフォロワー推移と、<br>1年間の増加試算</h1>
     <p class="subtitle">調査期間：2026年9月1日〜9月15日（15日間）／ 対象：ソーシャルマスターで運用するX 8アカウント</p>
 
