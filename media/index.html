@@ -55,12 +55,12 @@
     .slider-dots button[aria-current="true"] { background:var(--orange); }
     @keyframes slide-in { from { opacity:.35; transform:translateX(12px); } to { opacity:1; transform:translateX(0); } }
     .catalog { padding:104px 0 124px; }
-    .news-strip { display:grid; grid-template-columns:110px 1fr auto; align-items:center; gap:24px; margin-bottom:82px; padding:17px 0; border-top:2px solid var(--ink); border-bottom:1px solid var(--line); }
+    .news-strip { display:grid; grid-template-columns:110px 1fr; gap:24px; margin-bottom:72px; padding-top:16px; border-top:1px solid var(--ink); }
     .news-strip .eyebrow { margin:0; }
-    .news-date { color:var(--sub); font:700 12px/1 Georgia, serif; }
-    .news-link { display:flex; align-items:center; justify-content:space-between; gap:20px; text-decoration:none; font-size:14px; font-weight:800; }
-    .news-link:hover { color:var(--orange); }
-    .news-arrow { color:var(--orange); font-size:18px; }
+    .news-list { margin:0; border-top:1px solid var(--line); }
+    .news-item { display:grid; grid-template-columns:96px 1fr; gap:16px; padding:13px 0; border-bottom:1px solid var(--line); color:var(--ink); text-decoration:none; font-size:13px; font-weight:700; line-height:1.5; }
+    .news-item time { color:var(--sub); font:700 11px/1.5 Georgia, serif; }
+    .news-item:hover span { color:var(--orange); }
     .catalog-head { display:grid; grid-template-columns:1fr minmax(280px,.8fr); align-items:end; gap:48px; padding-bottom:34px; border-bottom:2px solid var(--ink); }
     .catalog-head h2 { letter-spacing:-.055em; margin:0; font-size:clamp(34px,4.3vw,58px); line-height:1.12; }
     .catalog-head p { color:var(--sub); margin:0 0 5px; font-size:14px; font-weight:600; line-height:1.9; }
@@ -117,8 +117,8 @@
     .dialog-data dd { font-weight:650; }
     .dialog-note { color:var(--sub); margin:18px 0 0; font-size:11px; line-height:1.75; }
     @media (max-width:1080px) { .card-grid { grid-template-columns:repeat(3,1fr); } }
-    @media (max-width:820px) { .shell { width:min(calc(100% - 32px), var(--max)); } .top-nav { display:none; } .nav-status { margin-left:auto; } .hero-grid, .catalog-head, .principles-inner { grid-template-columns:1fr; gap:40px; } .hero-grid { min-height:auto; padding:64px 0 42px; } .hero h1 { max-width:650px; font-size:clamp(48px,11vw,68px); } .featured { min-height:330px; } .featured-slide { padding:23px; } .slider-controls { right:18px; bottom:15px; } .card-grid { grid-template-columns:repeat(2,1fr); } .catalog { padding:70px 0 82px; } .news-strip { margin-bottom:58px; grid-template-columns:82px 1fr; gap:14px; } .news-link { grid-column:1 / -1; } }
-    @media (max-width:520px) { .hero h1 { font-size:48px; } .hero-meta { display:grid; grid-template-columns:1fr; gap:8px; } .card-grid { grid-template-columns:1fr; } .filter-label { flex-basis:47px; } .footer-inner { display:block; } .footer-links { margin-top:24px; } .dialog-inner { padding:22px; } .dialog-data { grid-template-columns:86px 1fr; } .news-strip { margin-bottom:46px; } }
+    @media (max-width:820px) { .shell { width:min(calc(100% - 32px), var(--max)); } .top-nav { display:none; } .nav-status { margin-left:auto; } .hero-grid, .catalog-head, .principles-inner { grid-template-columns:1fr; gap:40px; } .hero-grid { min-height:auto; padding:64px 0 42px; } .hero h1 { max-width:650px; font-size:clamp(48px,11vw,68px); } .featured { min-height:330px; } .featured-slide { padding:23px; } .slider-controls { right:18px; bottom:15px; } .card-grid { grid-template-columns:repeat(2,1fr); } .catalog { padding:70px 0 82px; } .news-strip { margin-bottom:54px; grid-template-columns:1fr; gap:12px; } }
+    @media (max-width:520px) { .hero h1 { font-size:48px; } .hero-meta { display:grid; grid-template-columns:1fr; gap:8px; } .card-grid { grid-template-columns:1fr; } .filter-label { flex-basis:47px; } .footer-inner { display:block; } .footer-links { margin-top:24px; } .dialog-inner { padding:22px; } .dialog-data { grid-template-columns:86px 1fr; } .news-strip { margin-bottom:42px; } .news-item { grid-template-columns:82px 1fr; gap:10px; } }
     @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; animation:none!important; } }
   </style>
 </head>
@@ -168,7 +168,7 @@
     </section>
 
     <section class="catalog shell" id="catalog">
-      <aside class="news-strip" aria-labelledby="news-title"><p class="eyebrow" id="news-title">NEWS</p><time class="news-date" datetime="2026-09-16">2026.09.16</time><a class="news-link" href="#catalog">SaaS Media のモックサイトを公開しました。<span class="news-arrow" aria-hidden="true">↗</span></a></aside>
+      <aside class="news-strip" aria-labelledby="news-title"><p class="eyebrow" id="news-title">お知らせ</p><div class="news-list"><a class="news-item" href="#catalog"><time datetime="2026-09-16">2026.09.16</time><span>SaaS Media を公開しました。</span></a><a class="news-item" href="#catalog"><time datetime="2026-09-15">2026.09.15</time><span>インタビュー「営業の声から、プロダクトを変える。」を掲載しました。</span></a><a class="news-item" href="#catalog"><time datetime="2026-09-12">2026.09.12</time><span>セミナー「営業チームのAI活用、最初の90分」を掲載しました。</span></a><a class="news-item" href="#catalog"><time datetime="2026-09-10">2026.09.10</time><span>ワークログ・インサイトの紹介を更新しました。</span></a></div></aside>
       <div class="catalog-head"><div><p class="eyebrow">ALL STORIES</p><h2>読む目的から、<br>次の一件を選ぶ。</h2></div><p>掲載順はおすすめ順ではありません。形式とテーマを組み合わせて、いま必要な情報だけに絞り込めます。</p></div>
       <div class="filter-area" aria-label="カタログを絞り込む">
         <div class="filter-row"><div class="filter-group"><span class="filter-label">形式</span><button class="filter" data-group="kind" data-value="all" aria-pressed="true">すべて</button><button class="filter" data-group="kind" data-value="product" aria-pressed="false">商品</button><button class="filter" data-group="kind" data-value="interview" aria-pressed="false">インタビュー</button><button class="filter" data-group="kind" data-value="seminar" aria-pressed="false">セミナー</button></div><div class="filter-group"><span class="filter-label">テーマ</span><button class="filter" data-group="theme" data-value="all" aria-pressed="true">すべて</button><button class="filter" data-group="theme" data-value="業務設計" aria-pressed="false">業務設計</button><button class="filter" data-group="theme" data-value="営業" aria-pressed="false">営業</button><button class="filter" data-group="theme" data-value="開発" aria-pressed="false">開発</button><button class="filter" data-group="theme" data-value="AI導入" aria-pressed="false">AI導入</button></div></div>
