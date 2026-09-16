@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="0次販売の料金案内。1年間、初期費用と月額料金は0円。ご利用量に応じた料金だけをご請求します。商談回数・ID数・ログ件数・送信通数ごとの1か月の目安をまとめました。">
+  <meta name="theme-color" content="#f3f0e8">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="WRITEUP 0次販売">
+  <meta property="og:title" content="0次販売の料金｜株式会社ライトアップ">
+  <meta property="og:description" content="1年間、初期費用も月額料金も0円。使った分だけの料金を、利用量ごとの目安でご案内します。">
+  <meta property="og:url" content="https://writeup-inc.github.io/saas/monitor/api-price/">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://writeup-inc.github.io/saas/monitor/api-price/">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <title>0次販売の料金｜株式会社ライトアップ</title>
+  <style>
+/* ── 改行制御（~/.claude/lp-base.css より。消さないこと） ──────────
+ * 日本語は単語区切りが無いため、既定のままだと文節の途中で折り返す。
+ * auto-phrase は文節単位で折る（Chrome 119+）。非対応環境は normal で逃がす。 */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero-lead, .section-title, .section-copy, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero-lead, .section-title, .section-copy, [data-keep-phrase] {
+    word-break: normal;
+  }
+}
+
+    :root {
+      --ink: #14251f;
+      --ink-soft: #51615b;
+      --muted: #7c8984;
+      --paper: #f3f0e8;
+      --surface: #fffdf8;
+      --line: rgba(20, 37, 31, .15);
+      --line-soft: rgba(20, 37, 31, .08);
+      --green: #174b3c;
+      --green-dark: #0e382c;
+      --green-soft: rgba(23, 75, 60, .07);
+      --orange: #b8643d;
+      --shadow: 0 22px 60px rgba(20, 37, 31, .09);
+      --sans: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { overflow-x: clip; scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 92% 4%, rgba(184,100,61,.09), transparent 27rem),
+        linear-gradient(rgba(20,37,31,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(20,37,31,.025) 1px, transparent 1px),
+        var(--paper);
+      background-size: auto, 32px 32px, 32px 32px, auto;
+      font-family: var(--sans);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    :focus-visible {
+      outline: 3px solid rgba(184,100,61,.42);
+      outline-offset: 3px;
+    }
+
+    .shell { width: min(calc(100% - 44px), 1080px); margin: 0 auto; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(243,240,232,.9);
+      backdrop-filter: blur(14px);
+    }
+
+    .header-inner {
+      display: flex;
+      min-height: 68px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .crumbs {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      color: var(--ink-soft);
+    }
+
+    .crumbs a { color: var(--ink-soft); text-decoration: none; }
+    .crumbs a:hover { color: var(--green); text-decoration: underline; }
+    .crumbs b { color: var(--ink); }
+    .crumbs span { color: var(--muted); }
+
+    .header-cta {
+      display: inline-flex;
+      min-height: 40px;
+      align-items: center;
+      gap: 8px;
+      padding: 0 18px;
+      border-radius: 999px;
+      background: var(--green);
+      color: #fffdf8;
+      font-size: 12.5px;
+      font-weight: 800;
+      letter-spacing: .03em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .header-cta:hover { background: var(--green-dark); }
+
+    main { padding-bottom: 96px; }
+
+    .hero { padding: clamp(52px, 7vw, 92px) 0 clamp(36px, 5vw, 56px); }
+
+    .kicker {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 20px;
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: .19em;
+      text-transform: uppercase;
+    }
+
+    .kicker::before { content: ""; width: 30px; height: 3px; background: var(--orange); }
+
+    h1 {
+      max-width: 720px;
+      margin: 0;
+      font-size: clamp(32px, 5.2vw, 52px);
+      font-weight: 800;
+      letter-spacing: -.05em;
+      line-height: 1.2;
+    }
+
+    h1 em { color: var(--orange); font-style: normal; }
+
+    .hero-lead {
+      max-width: 640px;
+      margin: 24px 0 0;
+      color: var(--ink-soft);
+      font-size: clamp(15px, 1.5vw, 17px);
+      line-height: 1.95;
+      text-wrap: pretty;
+    }
+
+    .fee-board {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 36px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--line);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .fee-board div { padding: 22px 24px; background: var(--surface); }
+    .fee-board span { display: block; color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .06em; }
+    .fee-board strong { display: block; margin-top: 6px; font-size: clamp(20px, 2.6vw, 28px); font-weight: 800; letter-spacing: -.02em; }
+    .fee-board .accent strong { color: var(--green); font-size: clamp(16px, 1.9vw, 20px); line-height: 1.5; }
+
+    .section { padding: clamp(46px, 6vw, 72px) 0 0; }
+
+    .section-head { max-width: 760px; }
+
+    .section-kicker {
+      margin: 0 0 10px;
+      color: var(--orange);
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(23px, 3vw, 31px);
+      font-weight: 800;
+      letter-spacing: -.035em;
+      line-height: 1.4;
+    }
+
+    .section-copy {
+      margin: 14px 0 0;
+      color: var(--ink-soft);
+      font-size: 15px;
+      line-height: 1.95;
+      text-wrap: pretty;
+    }
+
+    .card {
+      margin-top: 26px;
+      padding: clamp(22px, 3vw, 32px);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .unit-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+
+    .unit {
+      flex: 1 1 220px;
+      padding: 18px 20px;
+      border: 1px solid var(--line-soft);
+      border-radius: 12px;
+      background: var(--green-soft);
+    }
+
+    .unit span { display: block; color: var(--ink-soft); font-size: 12.5px; font-weight: 700; }
+
+    .unit strong {
+      display: block;
+      margin-top: 4px;
+      color: var(--green);
+      font-size: clamp(21px, 2.6vw, 26px);
+      font-weight: 800;
+      letter-spacing: -.02em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .unit small { display: block; margin-top: 4px; color: var(--muted); font-size: 12.5px; line-height: 1.7; }
+
+    h3 {
+      margin: 0 0 4px;
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -.01em;
+    }
+
+    .table-note { margin: 0 0 14px; color: var(--muted); font-size: 13px; }
+
+    .t-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+    table {
+      width: 100%;
+      min-width: 420px;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    th {
+      padding: 10px 14px;
+      border-bottom: 2px solid var(--ink);
+      color: var(--ink-soft);
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line-soft);
+      vertical-align: middle;
+    }
+
+    tbody tr:last-child td { border-bottom: none; }
+
+    th.r, td.r { text-align: right; }
+    td.n { font-variant-numeric: tabular-nums; white-space: nowrap; }
+    td.name { font-weight: 700; }
+    td .sub { display: block; color: var(--muted); font-size: 12.5px; font-weight: 400; line-height: 1.6; }
+
+    tr.mark td { background: var(--green-soft); }
+    tr.mark td:first-child { font-weight: 800; }
+    tr.mark td.r { color: var(--green); font-weight: 800; }
+
+    .badge {
+      display: inline-block;
+      margin-left: 8px;
+      padding: 1px 8px;
+      border-radius: 999px;
+      background: var(--green);
+      color: #fffdf8;
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      vertical-align: 2px;
+    }
+
+    .note {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.9;
+      text-wrap: pretty;
+    }
+
+    .note + .note { margin-top: 6px; }
+
+    .summary td.name { font-size: 15.5px; }
+
+    .terms-list {
+      display: grid;
+      gap: 1px;
+      margin: 26px 0 0;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--line);
+      list-style: none;
+      overflow: hidden;
+    }
+
+    .terms-list li {
+      display: flex;
+      gap: 16px;
+      padding: 18px 22px;
+      background: var(--surface);
+    }
+
+    .terms-list b {
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: .06em;
+      padding-top: 3px;
+    }
+
+    .terms-list strong { display: block; font-size: 15px; }
+    .terms-list span { display: block; color: var(--ink-soft); font-size: 14px; line-height: 1.85; }
+
+    .final-cta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      margin-top: clamp(52px, 6vw, 80px);
+      padding: clamp(30px, 4vw, 46px);
+      border-radius: 18px;
+      background: var(--green);
+      color: #fffdf8;
+      box-shadow: var(--shadow);
+    }
+
+    .final-cta h2 { color: #fffdf8; }
+    .final-cta p { margin: 12px 0 0; max-width: 520px; color: rgba(255,253,248,.82); font-size: 15px; line-height: 1.9; }
+    .final-cta .section-kicker { color: rgba(255,253,248,.7); }
+
+    .button {
+      display: inline-flex;
+      min-height: 52px;
+      align-items: center;
+      gap: 10px;
+      padding: 0 28px;
+      border-radius: 999px;
+      background: #fffdf8;
+      color: var(--green-dark);
+      font-size: 15px;
+      font-weight: 800;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .button:hover { background: #f1ebdd; }
+
+    .site-footer { border-top: 1px solid var(--line); padding: 26px 0 44px; }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 12.5px;
+    }
+
+    .footer-inner strong { color: var(--ink-soft); font-size: 12.5px; }
+
+    @media (max-width: 720px) {
+      .fee-board { grid-template-columns: 1fr; }
+      .header-cta { display: none; }
+      table { font-size: 14px; }
+      th, td { padding: 11px 12px; }
+      .final-cta { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media print {
+      .site-header, .final-cta { display: none; }
+      body { background: #fff; }
+      .card { box-shadow: none; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="shell header-inner">
+    <nav class="crumbs" aria-label="パンくず">
+      <a href="../">0次販売</a>
+      <span aria-hidden="true">›</span>
+      <b>料金のご案内</b>
+    </nav>
+    <a class="header-cta" href="#contact">料金を相談する <span aria-hidden="true">→</span></a>
+  </div>
+</header>
+
+<main>
+  <div class="shell">
+
+    <section class="hero" aria-labelledby="page-title">
+      <p class="kicker">0次販売の料金</p>
+      <h1 id="page-title">使った分だけの、<br><em>わかりやすい料金です。</em></h1>
+      <p class="hero-lead">1年間、初期費用と月額料金は0円です。ご利用いただいた量に応じた料金だけをご請求します。このページでは「どれくらい使うと、いくらになるか」をサービスごとにまとめました。</p>
+      <div class="fee-board">
+        <div><span>初期費用（1年間）</span><strong>0円</strong></div>
+        <div><span>月額料金（1年間）</span><strong>0円</strong></div>
+        <div class="accent"><span>ご請求</span><strong>使った分だけ</strong></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="summary-title">
+      <div class="section-head">
+        <p class="section-kicker">まずは全体像</p>
+        <h2 id="summary-title">標準的な使い方なら、<br>1か月でこのくらいです。</h2>
+        <p class="section-copy">よくある使い方を想定した場合の、1か月あたりの料金です。サービスごとの詳しい早見表は、この下にあります。</p>
+      </div>
+      <div class="card">
+        <div class="t-wrap">
+          <table class="summary">
+            <thead>
+              <tr><th>サービス</th><th>想定する使い方</th><th class="r">1か月の料金</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="name">スーパーマネージャー</td>
+                <td>1時間の商談を月40回<span class="sub">全機能を使った場合・1名あたり</span></td>
+                <td class="n r">13,200〜14,400円</td>
+              </tr>
+              <tr>
+                <td class="name">ワークログ・インサイト</td>
+                <td>1ID<span class="sub">お使いになる方1名あたり</span></td>
+                <td class="n r">4,000円</td>
+              </tr>
+              <tr>
+                <td class="name">Elliot</td>
+                <td>月40ログ<span class="sub">1営業日あたり約2件</span></td>
+                <td class="n r">600円</td>
+              </tr>
+              <tr>
+                <td class="name">Jマッチ・エンジン</td>
+                <td>月1,000通<span class="sub">1,000社へのメール配信</span></td>
+                <td class="n r">31円</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">複数のサービスをお使いいただく場合は、それぞれの料金を合算してご請求します。</p>
+      </div>
+    </section>
+
+    <section class="section" id="super-manager" aria-labelledby="sm-title">
+      <div class="section-head">
+        <p class="section-kicker">サービス別の料金 01</p>
+        <h2 id="sm-title">スーパーマネージャー</h2>
+        <p class="section-copy">オンライン商談1回ごとの料金です。商談の回数だけ積み上がるので、商談がなかった月は料金もかかりません。</p>
+      </div>
+      <div class="card">
+        <div class="unit-row">
+          <div class="unit">
+            <span>商談同席のみ</span>
+            <strong>180〜210円</strong>
+            <small>1時間の商談1回あたり。録音・文字起こし・商談中のアドバイス・商談後のサマリーを含みます。</small>
+          </div>
+          <div class="unit">
+            <span>全機能を使う場合</span>
+            <strong>330〜360円</strong>
+            <small>1時間の商談1回あたり。同席に加えて、事前ヒアリング・中締めレポート・フォローメールを含みます。</small>
+          </div>
+        </div>
+
+        <h3>1時間の商談を、月に何回やった場合の料金</h3>
+        <p class="table-note">1回1時間の商談を想定した、お使いになる方1名あたりの1か月の料金です。</p>
+        <div class="t-wrap">
+          <table>
+            <thead>
+              <tr><th>月の商談回数</th><th class="r">同席のみ</th><th class="r">全機能</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="n">5回</td><td class="n r">900〜1,050円</td><td class="n r">1,650〜1,800円</td></tr>
+              <tr><td class="n">10回</td><td class="n r">1,800〜2,100円</td><td class="n r">3,300〜3,600円</td></tr>
+              <tr><td class="n">20回</td><td class="n r">3,600〜4,200円</td><td class="n r">6,600〜7,200円</td></tr>
+              <tr><td class="n">30回</td><td class="n r">5,400〜6,300円</td><td class="n r">9,900〜10,800円</td></tr>
+              <tr class="mark"><td class="n">40回<span class="badge">よくある使い方</span></td><td class="n r">7,200〜8,400円</td><td class="n r">13,200〜14,400円</td></tr>
+              <tr><td class="n">60回</td><td class="n r">10,800〜12,600円</td><td class="n r">19,800〜21,600円</td></tr>
+              <tr><td class="n">80回</td><td class="n r">14,400〜16,800円</td><td class="n r">26,400〜28,800円</td></tr>
+              <tr><td class="n">100回</td><td class="n r">18,000〜21,000円</td><td class="n r">33,000〜36,000円</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">金額に幅があるのは、商談の長さや発言量によって変わるためです。1時間より短い商談では、録音と文字起こしの分だけ料金が下がります。</p>
+        <p class="note">「全機能」は、事前ヒアリング・中締めレポート・フォローメールをすべての商談で使った場合の金額です。一部の商談だけで使う場合は、これより低くなります。</p>
+        <p class="note">複数の方がお使いになる場合は、人数のぶんだけ積み上がります。たとえば3名がそれぞれ月40回・全機能で使う場合は、39,600〜43,200円です。</p>
+        <p class="note">管理画面の「利用状況」で、ご利用量と料金を日ごとに確認いただけます。</p>
+      </div>
+    </section>
+
+    <section class="section" id="worklog-insight" aria-labelledby="wl-title">
+      <div class="section-head">
+        <p class="section-kicker">サービス別の料金 02</p>
+        <h2 id="wl-title">ワークログ・インサイト</h2>
+        <p class="section-copy">お使いになる方の人数（ID数）で決まります。使う量では変わらないので、毎月の金額が読みやすい料金です。</p>
+      </div>
+      <div class="card">
+        <div class="unit-row">
+          <div class="unit">
+            <span>1IDあたり</span>
+            <strong>月 4,000円</strong>
+            <small>お使いになる方1名あたりの1か月の料金です。</small>
+          </div>
+        </div>
+
+        <h3>人数別の1か月の料金</h3>
+        <div class="t-wrap">
+          <table>
+            <thead>
+              <tr><th>お使いになる人数</th><th class="r">1か月の料金</th></tr>
+            </thead>
+            <tbody>
+              <tr class="mark"><td class="n">1ID<span class="badge">よくある使い方</span></td><td class="n r">4,000円</td></tr>
+              <tr><td class="n">5ID</td><td class="n r">20,000円</td></tr>
+              <tr><td class="n">10ID</td><td class="n r">40,000円</td></tr>
+              <tr><td class="n">30ID</td><td class="n r">120,000円</td></tr>
+              <tr><td class="n">50ID</td><td class="n r">200,000円</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">月の途中で人数が増えた場合の数え方は、ご利用開始前にご相談のうえ決めさせていただきます。</p>
+      </div>
+    </section>
+
+    <section class="section" id="elliot" aria-labelledby="el-title">
+      <div class="section-head">
+        <p class="section-kicker">サービス別の料金 03</p>
+        <h2 id="el-title">Elliot</h2>
+        <p class="section-copy">取り込むログ（会議・商談・日報などの記録）1件ごとの料金です。過去の記録をまとめて取り込む場合も、同じ単価で計算します。</p>
+      </div>
+      <div class="card">
+        <div class="unit-row">
+          <div class="unit">
+            <span>ログ1件あたり</span>
+            <strong>15円</strong>
+            <small>会議・商談・日報などの記録1件の取り込みと整理を含みます。</small>
+          </div>
+        </div>
+
+        <h3>ログ件数別の1か月の料金</h3>
+        <div class="t-wrap">
+          <table>
+            <thead>
+              <tr><th>月のログ件数</th><th>1営業日あたり</th><th class="r">1か月の料金</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="n">20件</td><td class="n">約1件</td><td class="n r">300円</td></tr>
+              <tr class="mark"><td class="n">40件<span class="badge">よくある使い方</span></td><td class="n">約2件</td><td class="n r">600円</td></tr>
+              <tr><td class="n">60件</td><td class="n">約3件</td><td class="n r">900円</td></tr>
+              <tr><td class="n">100件</td><td class="n">約5件</td><td class="n r">1,500円</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 style="margin-top:30px">過去の記録をまとめて取り込む場合</h3>
+        <p class="table-note">これまでにたまっている議事録・日報などを、最初にまとめて取り込むときの料金です。</p>
+        <div class="t-wrap">
+          <table>
+            <thead>
+              <tr><th>取り込む件数</th><th class="r">料金</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="n">500件</td><td class="n r">7,500円</td></tr>
+              <tr><td class="n">1,000件</td><td class="n r">15,000円</td></tr>
+              <tr><td class="n">10,000件</td><td class="n r">150,000円</td></tr>
+              <tr><td class="n">100,000件</td><td class="n r">1,500,000円</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">まとまった件数を取り込む場合は、件数と金額を事前に確認したうえで進めます。</p>
+      </div>
+    </section>
+
+    <section class="section" id="jmatch-engine" aria-labelledby="jm-title">
+      <div class="section-head">
+        <p class="section-kicker">サービス別の料金 04</p>
+        <h2 id="jm-title">Jマッチ・エンジン</h2>
+        <p class="section-copy">お客様リストへ届けるメールの通数で決まります。文章の作成と送信を含みます。</p>
+      </div>
+      <div class="card">
+        <div class="unit-row">
+          <div class="unit">
+            <span>1,000通あたり</span>
+            <strong>31円</strong>
+            <small>メール文章の作成と送信を含みます。</small>
+          </div>
+        </div>
+
+        <h3>送信通数別の1か月の料金</h3>
+        <div class="t-wrap">
+          <table>
+            <thead>
+              <tr><th>1か月の送信通数</th><th class="r">1か月の料金</th></tr>
+            </thead>
+            <tbody>
+              <tr class="mark"><td class="n">1,000通<span class="badge">よくある使い方</span></td><td class="n r">31円</td></tr>
+              <tr><td class="n">10,000通</td><td class="n r">310円</td></tr>
+              <tr><td class="n">50,000通</td><td class="n r">1,550円</td></tr>
+              <tr><td class="n">100,000通</td><td class="n r">3,100円</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">1,000社へ毎週お届けした場合は、1か月で約4,000通・124円です。</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="terms-title">
+      <div class="section-head">
+        <p class="section-kicker">料金の前提</p>
+        <h2 id="terms-title">金額の計算に使っている、<br>4つの前提です。</h2>
+      </div>
+      <ul class="terms-list">
+        <li><b>01</b><div><strong>1か月＝21営業日で計算しています</strong><span>平日のみで数えた日数です。祝日は差し引いていません。</span></div></li>
+        <li><b>02</b><div><strong>商談は1回1時間で計算しています</strong><span>スーパーマネージャーは、商談の長さによって料金が上下します。</span></div></li>
+        <li><b>03</b><div><strong>ご請求は、実際のご利用量にもとづきます</strong><span>1年間、初期費用と月額料金はかかりません。このページの金額は目安で、お使いにならなかった分の料金もかかりません。</span></div></li>
+        <li><b>04</b><div><strong>為替によって変わる場合があります</strong><span>海外のサービスを使っている機能があるため、大きく円安が進んだ場合は金額が上下することがあります。その際は事前にご案内します。</span></div></li>
+      </ul>
+    </section>
+
+    <section class="final-cta" id="contact" aria-labelledby="cta-title">
+      <div>
+        <p class="section-kicker">料金のご相談</p>
+        <h2 id="cta-title">使い方が決まっていなくても、<br>試算できます。</h2>
+        <p>「月にこれくらい商談がある」「何人で使いたい」といったことをお知らせいただければ、想定の金額をご案内します。</p>
+      </div>
+      <a class="button" href="https://www.writeup.jp/contact/" target="_blank" rel="noreferrer">料金を相談する <span aria-hidden="true">↗</span></a>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <strong>株式会社ライトアップ / AIコンサル局</strong>
+    <span>2026年9月時点の内容です。料金・提供条件は変更される場合があります。</span>
+  </div>
+</footer>
+
+</body>
+</html>
