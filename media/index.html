@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="SaaSチームのプロダクト、開発者インタビュー、セミナーを横断して読むためのカタログサイトのモックです。">
+  <title>SaaS Media｜つくる人と、使う人のあいだに。</title>
+  <style>
+    :root { --ink:#111; --sub:#626262; --paper:#f5f5f2; --line:#d7d7d2; --orange:#f97316; --orange-dark:#c84e09; --max:1200px; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:#fff; font-family:Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif; -webkit-font-smoothing:antialiased; }
+    button, input { font:inherit; }
+    button { color:inherit; }
+    a { color:inherit; }
+    :focus-visible { outline:3px solid var(--orange); outline-offset:3px; }
+    .shell { width:min(calc(100% - 48px), var(--max)); margin-inline:auto; }
+    .site-header { position:sticky; z-index:20; top:0; border-bottom:1px solid var(--line); background:rgba(255,255,255,.94); backdrop-filter:blur(12px); }
+    .nav-inner { height:56px; display:flex; align-items:center; gap:26px; }
+    .brand { letter-spacing:-.03em; display:inline-flex; align-items:center; gap:9px; text-decoration:none; font-size:15px; font-weight:800; white-space:nowrap; }
+    .brand-mark { color:#fff; background:var(--ink); width:24px; height:24px; display:grid; place-items:center; font:800 13px/1 Georgia, serif; }
+    .top-nav { display:flex; gap:20px; margin-left:auto; align-items:center; }
+    .top-nav a { color:#444; text-decoration:none; font-size:12px; font-weight:700; }
+    .top-nav a:hover { color:var(--orange-dark); }
+    .nav-status { letter-spacing:.11em; color:var(--sub); font-size:10px; font-weight:800; }
+    .nav-status::before { content:""; width:7px; height:7px; margin-right:7px; display:inline-block; background:var(--orange); }
+    .hero { border-bottom:1px solid var(--line); background:var(--paper); overflow:hidden; }
+    .hero-grid { min-height:560px; padding:86px 0 62px; display:grid; grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr); gap:56px; align-items:end; }
+    .eyebrow { color:var(--sub); letter-spacing:.14em; margin:0 0 19px; display:flex; align-items:center; gap:10px; font-size:10px; font-weight:800; }
+    .eyebrow::before { content:""; display:block; height:2px; width:24px; background:var(--orange); }
+    h1, h2, h3, p { margin-top:0; }
+    .hero h1 { letter-spacing:-.065em; max-width:520px; margin-bottom:28px; font-size:clamp(46px,5.2vw,72px); line-height:1.02; }
+    .hero h1 em { color:var(--orange-dark); font-family:Georgia, "Yu Mincho", serif; font-style:normal; font-weight:500; }
+    .hero-lead { max-width:580px; color:#383838; margin-bottom:31px; font-size:16px; font-weight:550; line-height:1.95; }
+    .hero-meta { color:var(--sub); border-top:1px solid var(--line); max-width:620px; padding-top:15px; display:flex; gap:24px; flex-wrap:wrap; font-size:12px; font-weight:650; }
+    .hero-meta b { color:var(--ink); margin-right:8px; }
+    .featured { background:var(--ink); color:#fff; min-height:412px; position:relative; overflow:hidden; }
+    .featured-slide { isolation:isolate; display:none; height:100%; padding:28px; position:absolute; inset:0; flex-direction:column; justify-content:space-between; animation:slide-in .36s ease both; }
+    .featured-slide.is-active { display:flex; }
+    .featured-slide::after { content:""; z-index:-1; position:absolute; inset:0; background:linear-gradient(90deg, #111 0%, #111e 48%, #1114 100%); }
+    .featured-photo { z-index:-2; width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+    .featured-top { color:#d7d7d7; letter-spacing:.12em; display:flex; justify-content:space-between; font-size:10px; font-weight:800; }
+    .featured-type { color:#ffb489; }
+    .featured h2 { max-width:480px; letter-spacing:-.04em; z-index:1; margin:35px 0 10px; font-size:clamp(28px,3.15vw,43px); line-height:1.12; }
+    .featured p { color:#e1e1e1; z-index:1; max-width:435px; margin:0; font-size:13px; line-height:1.75; }
+    .featured-footer { z-index:1; border-top:1px solid #fff4; padding-top:15px; display:flex; align-items:center; justify-content:space-between; gap:16px; font-size:12px; font-weight:700; }
+    .featured-footer button { color:#fff; border:0; border-bottom:1px solid var(--orange); background:transparent; padding:0 0 4px; cursor:pointer; font-weight:800; }
+    .slider-controls { z-index:2; position:absolute; right:23px; bottom:20px; display:flex; align-items:center; gap:7px; }
+    .slider-controls button { color:#fff; border:1px solid #fff8; background:#1119; width:31px; height:31px; cursor:pointer; font-size:13px; }
+    .slider-controls .slider-pause { width:auto; padding:0 9px; font-size:10px; font-weight:800; }
+    .slider-controls button:hover { color:var(--ink); background:#fff; }
+    .slider-dots { display:flex; gap:6px; margin-right:6px; }
+    .slider-dots button { border:0; background:#fff7; width:7px; height:7px; padding:0; }
+    .slider-dots button[aria-current="true"] { background:var(--orange); }
+    @keyframes slide-in { from { opacity:.35; transform:translateX(12px); } to { opacity:1; transform:translateX(0); } }
+    .catalog { padding:104px 0 124px; }
+    .news-strip { display:grid; grid-template-columns:110px 1fr auto; align-items:center; gap:24px; margin-bottom:82px; padding:17px 0; border-top:2px solid var(--ink); border-bottom:1px solid var(--line); }
+    .news-strip .eyebrow { margin:0; }
+    .news-date { color:var(--sub); font:700 12px/1 Georgia, serif; }
+    .news-link { display:flex; align-items:center; justify-content:space-between; gap:20px; text-decoration:none; font-size:14px; font-weight:800; }
+    .news-link:hover { color:var(--orange); }
+    .news-arrow { color:var(--orange); font-size:18px; }
+    .catalog-head { display:grid; grid-template-columns:1fr minmax(280px,.8fr); align-items:end; gap:48px; padding-bottom:34px; border-bottom:2px solid var(--ink); }
+    .catalog-head h2 { letter-spacing:-.055em; margin:0; font-size:clamp(34px,4.3vw,58px); line-height:1.12; }
+    .catalog-head p { color:var(--sub); margin:0 0 5px; font-size:14px; font-weight:600; line-height:1.9; }
+    .filter-area { border-bottom:1px solid var(--line); padding:24px 0; }
+    .filter-row { display:flex; align-items:center; gap:26px; overflow:auto; scrollbar-width:thin; }
+    .filter-group { display:flex; align-items:center; gap:10px; flex:0 0 auto; }
+    .filter-label { flex:0 0 60px; color:var(--sub); letter-spacing:.08em; font-size:10px; font-weight:800; }
+    .filter { flex:0 0 auto; border:1px solid var(--line); border-radius:0; background:#fff; cursor:pointer; padding:8px 11px; font-size:12px; font-weight:700; transition:.16s ease; }
+    .filter:hover { border-color:var(--ink); }
+    .filter[aria-pressed="true"] { color:#fff; border-color:var(--ink); background:var(--ink); }
+    .result-line { color:var(--sub); padding:20px 0; display:flex; justify-content:space-between; font-size:12px; font-weight:700; }
+    .result-line b { color:var(--ink); font-family:Georgia, serif; font-size:19px; }
+    .card-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+    .story-card { min-width:0; display:flex; flex-direction:column; border:1px solid var(--line); background:#fff; transition:border-color .18s, transform .18s; }
+    .story-card:hover { border-color:#777; transform:translateY(-3px); }
+    .card-visual { isolation:isolate; color:#fff; background:#333; min-height:177px; padding:15px; display:flex; flex-direction:column; justify-content:space-between; position:relative; overflow:hidden; }
+    .card-visual::after { content:""; z-index:-1; position:absolute; inset:0; background:linear-gradient(180deg, #1112 0%, #111b 100%); }
+    .card-photo { z-index:-2; width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+    .card-no { position:relative; z-index:1; letter-spacing:.13em; font-size:10px; font-weight:800; }
+    .card-icon { z-index:1; color:#fff; width:63px; height:55px; filter:drop-shadow(0 1px 2px #0008); }
+    .card-kicker { z-index:1; letter-spacing:.12em; font-size:10px; font-weight:800; }
+    .card-body { padding:18px 17px 16px; display:flex; flex:1; flex-direction:column; }
+    .card-tags { min-height:19px; display:flex; flex-wrap:wrap; gap:5px; }
+    .card-tags span { color:#5a5a5a; border:1px solid var(--line); padding:3px 5px; font-size:9px; font-weight:800; }
+    .card-body h3 { letter-spacing:-.035em; margin:14px 0 8px; font-size:18px; line-height:1.3; }
+    .card-body p { color:var(--sub); margin-bottom:20px; font-size:12px; font-weight:550; line-height:1.75; }
+    .card-body button { border:0; border-top:1px solid var(--line); background:#fff; cursor:pointer; width:100%; margin-top:auto; padding:12px 0 0; display:flex; align-items:center; justify-content:space-between; text-align:left; font-size:11px; font-weight:800; }
+    .card-body button span { color:var(--orange-dark); font-size:16px; }
+    .empty { border:1px solid var(--line); padding:36px; display:none; font-weight:700; }
+    .empty.show { display:block; }
+    .principles { color:#fff; background:var(--ink); }
+    .principles-inner { min-height:286px; padding:58px 0; display:grid; grid-template-columns:1.05fr 1.95fr; gap:50px; align-items:center; }
+    .principles h2 { letter-spacing:-.05em; margin:0; font-size:clamp(30px,3vw,43px); line-height:1.18; }
+    .principles h2 em { color:#ff9e6b; font-family:Georgia, serif; font-style:normal; font-weight:500; }
+    .principle-list { border-top:1px solid #fff3; }
+    .principle-list article { border-bottom:1px solid #fff3; padding:15px 0; display:grid; grid-template-columns:48px 1fr; gap:14px; align-items:center; }
+    .principle-list span { color:#ff9e6b; font:500 20px Georgia, serif; }
+    .principle-list p { color:#ddd; margin:0; font-size:13px; line-height:1.7; }
+    .site-footer { border-top:1px solid var(--line); background:#fff; }
+    .footer-inner { padding:35px 0 40px; display:flex; gap:40px; justify-content:space-between; align-items:flex-start; }
+    .footer-inner p { color:var(--sub); max-width:510px; margin:12px 0 0; font-size:12px; line-height:1.75; }
+    .footer-links { display:flex; gap:18px; font-size:12px; font-weight:700; }
+    dialog { color:var(--ink); border:0; border-radius:0; box-shadow:0 24px 70px #0004; width:min(calc(100% - 32px), 690px); padding:0; }
+    dialog::backdrop { background:#111a; }
+    .dialog-inner { padding:31px; }
+    .dialog-top { border-bottom:1px solid var(--line); padding-bottom:17px; display:flex; align-items:flex-start; justify-content:space-between; gap:20px; }
+    .dialog-type { color:var(--orange-dark); letter-spacing:.12em; margin:0 0 8px; font-size:10px; font-weight:800; }
+    .dialog-title { letter-spacing:-.045em; margin:0; font-size:clamp(25px,4vw,42px); }
+    .dialog-close { border:1px solid var(--ink); background:#fff; width:34px; height:34px; cursor:pointer; font-size:18px; }
+    .dialog-summary { border-bottom:1px solid var(--line); padding:21px 0; font-size:15px; font-weight:650; line-height:1.85; }
+    .dialog-data { margin:22px 0 0; display:grid; grid-template-columns:120px 1fr; border-top:1px solid var(--line); }
+    .dialog-data dt, .dialog-data dd { border-bottom:1px solid var(--line); margin:0; padding:12px 0; font-size:12px; line-height:1.65; }
+    .dialog-data dt { color:var(--sub); font-weight:800; }
+    .dialog-data dd { font-weight:650; }
+    .dialog-note { color:var(--sub); margin:18px 0 0; font-size:11px; line-height:1.75; }
+    @media (max-width:1080px) { .card-grid { grid-template-columns:repeat(3,1fr); } }
+    @media (max-width:820px) { .shell { width:min(calc(100% - 32px), var(--max)); } .top-nav { display:none; } .nav-status { margin-left:auto; } .hero-grid, .catalog-head, .principles-inner { grid-template-columns:1fr; gap:40px; } .hero-grid { min-height:auto; padding:64px 0 42px; } .hero h1 { max-width:650px; font-size:clamp(48px,11vw,68px); } .featured { min-height:330px; } .featured-slide { padding:23px; } .slider-controls { right:18px; bottom:15px; } .card-grid { grid-template-columns:repeat(2,1fr); } .catalog { padding:70px 0 82px; } .news-strip { margin-bottom:58px; grid-template-columns:82px 1fr; gap:14px; } .news-link { grid-column:1 / -1; } }
+    @media (max-width:520px) { .hero h1 { font-size:48px; } .hero-meta { display:grid; grid-template-columns:1fr; gap:8px; } .card-grid { grid-template-columns:1fr; } .filter-label { flex-basis:47px; } .footer-inner { display:block; } .footer-links { margin-top:24px; } .dialog-inner { padding:22px; } .dialog-data { grid-template-columns:86px 1fr; } .news-strip { margin-bottom:46px; } }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; animation:none!important; } }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell nav-inner">
+      <a class="brand" href="#top" aria-label="SaaS Mediaのトップへ"><span class="brand-mark">S</span><span>SaaS Media</span></a>
+      <nav class="top-nav" aria-label="主要ナビゲーション"><a href="#catalog">カタログ</a><a href="#about">編集方針</a><a href="#footer">お問い合わせ</a></nav>
+      <span class="nav-status">MOCK EDITION</span>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <p class="eyebrow">SAAS TEAM / CATALOG MEDIA</p>
+          <h1>つくる人と、<br>使う人の<em>あいだに。</em></h1>
+          <p class="hero-lead">SaaSチームがつくる商品、開発の背景を聞くインタビュー、実務に落とすセミナー。そのまま比較し、次に読むべき一件へ進めるための編集カタログです。</p>
+          <div class="hero-meta"><span><b>FORMAT</b> 商品 / インタビュー / セミナー</span><span><b>NOTE</b> 掲載内容はモックです</span></div>
+        </div>
+        <aside class="featured" aria-label="注目のコンテンツ">
+          <article class="featured-slide is-active" data-featured-slide="0">
+            <img class="featured-photo" src="assets/hero-team.jpg" alt="静かなオフィスで仕事の記録を確認するチーム">
+            <div class="featured-top"><span>FEATURED STORY / 01</span><span class="featured-type">PRODUCT</span></div>
+            <div><h2>仕事の事実から、AI化の順番を決める。</h2><p>ワークログ・インサイトの考え方を起点に、サービスの役割、チームの意図、導入のための学びを一続きで読める構成を想定しています。</p></div>
+            <div class="featured-footer"><span>WORKLOG INSIGHT</span><button type="button" data-open="worklog">概要を見る <span aria-hidden="true">↗</span></button></div>
+          </article>
+          <article class="featured-slide" data-featured-slide="1">
+            <img class="featured-photo" src="assets/developer-interview.jpg" alt="オフィスで対話するプロダクトチーム">
+            <div class="featured-top"><span>FEATURED STORY / 02</span><span class="featured-type">INTERVIEW</span></div>
+            <div><h2>営業の声から、プロダクトを変える。</h2><p>現場の商談で聞いた言葉を、次の改善へどうつなぐのか。チームの対話と試行錯誤を聞くインタビューです。</p></div>
+            <div class="featured-footer"><span>PEOPLE / 01</span><button type="button" data-open="sales-interview">概要を見る <span aria-hidden="true">↗</span></button></div>
+          </article>
+          <article class="featured-slide" data-featured-slide="2">
+            <img class="featured-photo" src="assets/seminar-workshop.jpg" alt="少人数で行われる実務ワークショップ">
+            <div class="featured-top"><span>FEATURED STORY / 03</span><span class="featured-type">SEMINAR</span></div>
+            <div><h2>最初の90分で、業務AI化の入口をつくる。</h2><p>自社の仕事を棚卸しし、AIに任せる順番を考える。小さな実務から始めるための参加型セミナーです。</p></div>
+            <div class="featured-footer"><span>SEMINAR / 02</span><button type="button" data-open="sales-seminar">概要を見る <span aria-hidden="true">↗</span></button></div>
+          </article>
+          <div class="slider-controls" aria-label="注目のコンテンツを切り替える">
+            <div class="slider-dots"><button type="button" data-slider="0" aria-label="1枚目を表示" aria-current="true"></button><button type="button" data-slider="1" aria-label="2枚目を表示" aria-current="false"></button><button type="button" data-slider="2" aria-label="3枚目を表示" aria-current="false"></button></div>
+            <button type="button" data-slider-direction="previous" aria-label="前のコンテンツ">←</button><button class="slider-pause" type="button" data-slider-pause aria-pressed="false">停止</button><button type="button" data-slider-direction="next" aria-label="次のコンテンツ">→</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="catalog shell" id="catalog">
+      <aside class="news-strip" aria-labelledby="news-title"><p class="eyebrow" id="news-title">NEWS</p><time class="news-date" datetime="2026-09-16">2026.09.16</time><a class="news-link" href="#catalog">SaaS Media のモックサイトを公開しました。<span class="news-arrow" aria-hidden="true">↗</span></a></aside>
+      <div class="catalog-head"><div><p class="eyebrow">ALL STORIES</p><h2>読む目的から、<br>次の一件を選ぶ。</h2></div><p>掲載順はおすすめ順ではありません。形式とテーマを組み合わせて、いま必要な情報だけに絞り込めます。</p></div>
+      <div class="filter-area" aria-label="カタログを絞り込む">
+        <div class="filter-row"><div class="filter-group"><span class="filter-label">形式</span><button class="filter" data-group="kind" data-value="all" aria-pressed="true">すべて</button><button class="filter" data-group="kind" data-value="product" aria-pressed="false">商品</button><button class="filter" data-group="kind" data-value="interview" aria-pressed="false">インタビュー</button><button class="filter" data-group="kind" data-value="seminar" aria-pressed="false">セミナー</button></div><div class="filter-group"><span class="filter-label">テーマ</span><button class="filter" data-group="theme" data-value="all" aria-pressed="true">すべて</button><button class="filter" data-group="theme" data-value="業務設計" aria-pressed="false">業務設計</button><button class="filter" data-group="theme" data-value="営業" aria-pressed="false">営業</button><button class="filter" data-group="theme" data-value="開発" aria-pressed="false">開発</button><button class="filter" data-group="theme" data-value="AI導入" aria-pressed="false">AI導入</button></div></div>
+      </div>
+      <div class="result-line" aria-live="polite"><span><b id="count">8</b> 件を表示</span><span>※ すべて公開前のモックデータ</span></div>
+      <div class="card-grid" id="card-grid"></div>
+      <p class="empty" id="empty">条件に合う記事はありません。フィルターを変えてください。</p>
+    </section>
+
+    <section class="principles" id="about">
+      <div class="shell principles-inner"><div><p class="eyebrow">EDITORIAL PRINCIPLES</p><h2>宣伝だけで、<br>終わらせない。<br><em>使う判断</em>まで。</h2></div><div class="principle-list"><article><span>01</span><p>商品は「できること」と「導入時に確認すること」を分けて伝える。</p></article><article><span>02</span><p>インタビューは個人の声を残しながら、読者が自社へ持ち帰れる判断材料に編集する。</p></article><article><span>03</span><p>セミナーは予定・対象・持ち帰れることを明示し、申し込み前の不安を減らす。</p></article></div></div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="footer"><div class="shell footer-inner"><div><a class="brand" href="#top"><span class="brand-mark">S</span><span>SaaS Media</span></a><p>このページは、`/saas/media/` に置く公開用カタログサイトのモックです。商品詳細、インタビュー本文、セミナー申込先は本番設計時に接続します。</p></div><nav class="footer-links" aria-label="フッターナビゲーション"><a href="#catalog">カタログへ戻る</a><a href="#about">編集方針</a></nav></div></footer>
+
+  <dialog id="story-dialog" aria-labelledby="dialog-title"><div class="dialog-inner"><div class="dialog-top"><div><p class="dialog-type" id="dialog-type"></p><h2 class="dialog-title" id="dialog-title"></h2></div><button class="dialog-close" type="button" aria-label="閉じる">×</button></div><p class="dialog-summary" id="dialog-summary"></p><dl class="dialog-data"><dt>形式</dt><dd id="dialog-kind"></dd><dt>テーマ</dt><dd id="dialog-theme"></dd><dt>想定する次の導線</dt><dd id="dialog-next"></dd></dl><p class="dialog-note">この詳細表示はモックの操作確認用です。本番では各コンテンツの実ページまたは申込ページへ接続します。</p></div></dialog>
+
+  <script>
+    const stories = [
+      { id:'worklog', kind:'product', kindLabel:'PRODUCT', theme:['業務設計','AI導入'], title:'ワークログ・インサイト', lead:'PC上の仕事を記録し、次にAI化する業務の順番を考えるためのサービス。', visual:'WORK / AI', icon:'grid', next:'サービス概要と導入相談へ' },
+      { id:'facilitator', kind:'product', kindLabel:'PRODUCT', theme:['業務設計','AI導入'], title:'AIファシリテーター（仮）', lead:'会議や日々の検討を前に進めるための、チーム向けAI活用支援の紹介。', visual:'MEET / AI', icon:'bubble', next:'利用シーン・対象業務の詳細へ' },
+      { id:'sales-interview', kind:'interview', kindLabel:'INTERVIEW', theme:['営業','開発'], title:'営業の声から、プロダクトを変える。', lead:'現場の商談で聞いた言葉を、次の改善にどうつないでいるのかを聞く。', visual:'PEOPLE / 01', icon:'person', next:'開発者インタビュー本文へ' },
+      { id:'team-interview', kind:'interview', kindLabel:'INTERVIEW', theme:['開発','AI導入'], title:'SaaSチームが考える「使われ続ける」設計', lead:'機能を増やす前に、利用者が迷わず続けられる状態をどう考えるか。', visual:'TEAM / 02', icon:'layers', next:'チームインタビュー本文へ' },
+      { id:'intro-seminar', kind:'seminar', kindLabel:'SEMINAR', theme:['AI導入','業務設計'], title:'はじめての業務AI化セミナー', lead:'自社の仕事を棚卸しし、AIに任せる順番を考えるための入門回。', visual:'SEMINAR / 01', icon:'screen', next:'開催概要・申込ページへ' },
+      { id:'sales-seminar', kind:'seminar', kindLabel:'SEMINAR', theme:['営業','AI導入'], title:'営業チームのAI活用、最初の90分', lead:'商談準備・記録・次回アクションを、小さく見直す実践型セミナー。', visual:'SEMINAR / 02', icon:'arrow', next:'開催概要・申込ページへ' },
+      { id:'agency-product', kind:'product', kindLabel:'PRODUCT', theme:['営業','業務設計'], title:'AI営業支援パッケージ（仮）', lead:'営業活動の記録・振り返り・次の一手を、チームで扱える形に整える提案。', visual:'SALES / AI', icon:'arrow', next:'提供範囲と相談窓口へ' },
+      { id:'developer-interview', kind:'interview', kindLabel:'INTERVIEW', theme:['開発','業務設計'], title:'「作る前に聞く」を、どう続けるか。', lead:'開発者が語る、顧客の仕事に寄り添うためのヒアリングと検証の習慣。', visual:'BUILD / 03', icon:'grid', next:'開発者インタビュー本文へ' }
+    ];
+    const state = { kind:'all', theme:'all' };
+    const icons = {
+      grid:'<svg class="card-icon" viewBox="0 0 64 55" aria-hidden="true"><path d="M5 7h23v15H5zM35 7h24v15H35zM5 32h23v16H5zM35 32h24v16H35z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13 14h8M43 14h8M13 40h8" stroke="currentColor" stroke-width="2"/></svg>',
+      bubble:'<svg class="card-icon" viewBox="0 0 64 55" aria-hidden="true"><path d="M5 7h42v28H22L12 45V35H5zM21 18h16M15 26h22" fill="none" stroke="currentColor" stroke-width="2"/><path d="M52 19h8v23H45" fill="none" stroke="currentColor" stroke-width="2"/></svg>',
+      person:'<svg class="card-icon" viewBox="0 0 64 55" aria-hidden="true"><circle cx="22" cy="16" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 46c2-12 10-17 15-17s13 5 15 17M43 10h16M43 18h12M43 26h16" fill="none" stroke="currentColor" stroke-width="2"/></svg>',
+      layers:'<svg class="card-icon" viewBox="0 0 64 55" aria-hidden="true"><path d="m32 6 25 12-25 12L7 18 32 6Zm-25 25 25 12 25-12M7 40l25 12 25-12" fill="none" stroke="currentColor" stroke-width="2"/></svg>',
+      screen:'<svg class="card-icon" viewBox="0 0 64 55" aria-hidden="true"><path d="M5 7h54v34H5zM26 49h12M32 41v8M14 17h23M14 25h32" fill="none" stroke="currentColor" stroke-width="2"/><path d="m49 17 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg>',
+      arrow:'<svg class="card-icon" viewBox="0 0 64 55" aria-hidden="true"><path d="M5 38h40V16M31 6l14 10-14 10M13 10h11M5 18h13" fill="none" stroke="currentColor" stroke-width="2"/></svg>'
+    };
+    const kindNames = { product:'商品', interview:'インタビュー', seminar:'セミナー' };
+    const imageByKind = {
+      product:{src:'assets/worklog-desk.jpg',alt:'ノートとPCを使い、仕事の記録を確認する机上'},
+      interview:{src:'assets/developer-interview.jpg',alt:'オフィスで対話するプロダクトチーム'},
+      seminar:{src:'assets/seminar-workshop.jpg',alt:'少人数で行われる実務ワークショップ'}
+    };
+    const cardGrid = document.getElementById('card-grid');
+    const count = document.getElementById('count');
+    const empty = document.getElementById('empty');
+    const dialog = document.getElementById('story-dialog');
+    const featuredSlides = [...document.querySelectorAll('[data-featured-slide]')];
+    const sliderDots = [...document.querySelectorAll('[data-slider]')];
+    const sliderPause = document.querySelector('[data-slider-pause]');
+    let featuredIndex = 0;
+    let sliderPaused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (sliderPaused) {
+      sliderPause.textContent = '再生';
+      sliderPause.setAttribute('aria-pressed', 'true');
+    }
+    function showFeatured(index) { featuredIndex = (index + featuredSlides.length) % featuredSlides.length; featuredSlides.forEach((slide, position) => slide.classList.toggle('is-active', position === featuredIndex)); sliderDots.forEach((dot, position) => dot.setAttribute('aria-current', String(position === featuredIndex))); }
+    function toggleSliderPause() { sliderPaused = !sliderPaused; sliderPause.textContent = sliderPaused ? '再生' : '停止'; sliderPause.setAttribute('aria-pressed', String(sliderPaused)); }
+    function matches(story) { return (state.kind === 'all' || story.kind === state.kind) && (state.theme === 'all' || story.theme.includes(state.theme)); }
+    function render() {
+      const visible = stories.filter(matches);
+      cardGrid.innerHTML = visible.map((s, i) => { const image = imageByKind[s.kind]; return `<article class="story-card" data-kind="${s.kind}"><div class="card-visual"><img class="card-photo" src="${image.src}" alt="${image.alt}"><span class="card-no">${String(i+1).padStart(2,'0')} / ${s.visual}</span>${icons[s.icon]}<span class="card-kicker">${s.kindLabel}</span></div><div class="card-body"><div class="card-tags">${s.theme.map(t => `<span>${t}</span>`).join('')}</div><h3>${s.title}</h3><p>${s.lead}</p><button type="button" data-open="${s.id}">概要を見る <span aria-hidden="true">↗</span></button></div></article>`; }).join('');
+      count.textContent = visible.length;
+      empty.classList.toggle('show', visible.length === 0);
+    }
+    function openStory(id) {
+      const story = stories.find(item => item.id === id); if (!story) return;
+      document.getElementById('dialog-type').textContent = `MOCK / ${story.kindLabel}`;
+      document.getElementById('dialog-title').textContent = story.title;
+      document.getElementById('dialog-summary').textContent = story.lead;
+      document.getElementById('dialog-kind').textContent = kindNames[story.kind];
+      document.getElementById('dialog-theme').textContent = story.theme.join(' / ');
+      document.getElementById('dialog-next').textContent = story.next;
+      dialog.showModal();
+    }
+    document.addEventListener('click', event => {
+      const filter = event.target.closest('.filter');
+      if (filter) { const group = filter.dataset.group; state[group] = filter.dataset.value; document.querySelectorAll(`.filter[data-group="${group}"]`).forEach(btn => btn.setAttribute('aria-pressed', String(btn === filter))); render(); }
+      const opener = event.target.closest('[data-open]'); if (opener) openStory(opener.dataset.open);
+      const sliderDot = event.target.closest('[data-slider]'); if (sliderDot) { showFeatured(Number(sliderDot.dataset.slider)); }
+      const direction = event.target.closest('[data-slider-direction]'); if (direction) { showFeatured(featuredIndex + (direction.dataset.sliderDirection === 'next' ? 1 : -1)); }
+      if (event.target.closest('[data-slider-pause]')) toggleSliderPause();
+      if (event.target.closest('.dialog-close')) dialog.close();
+    });
+    dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+    setInterval(() => { if (!sliderPaused) showFeatured(featuredIndex + 1); }, 5200);
+    render();
+  </script>
+</body>
+</html>
