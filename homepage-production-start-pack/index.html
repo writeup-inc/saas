@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="理解されるための論理と、行動につながる共感。その両方を一つのホームページに設計・制作する、36万円のホームページ制作スタートパックです。" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>ホームページ制作スタートパック｜36万円</title>
+    <style>
+      :root {
+        --ink: #10202e;
+        --muted: #59646d;
+        --paper: #f6f5f1;
+        --white: #ffffff;
+        --line: #cbd0d0;
+        --accent: #e4552f;
+        --accent-dark: #bd3d1d;
+        --aqua: #b7e0da;
+        --aqua-pale: #e6f3f0;
+        --warm-pale: #f7ebe5;
+        --max: 1200px;
+        --gutter: clamp(20px, 4vw, 56px);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+        line-height: 1.75;
+        letter-spacing: .02em;
+      }
+      a { color: inherit; }
+      button, input, textarea { font: inherit; }
+      .wrap { width: calc(100% - (var(--gutter) * 2)); max-width: var(--max); margin: 0 auto; }
+      .eyebrow {
+        display: flex; align-items: center; gap: 9px; margin: 0 0 22px;
+        color: var(--accent); font-size: 12px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase;
+      }
+      .eyebrow::before { content: ""; width: 32px; height: 2px; background: currentColor; }
+      .button {
+        display: inline-flex; align-items: center; justify-content: center; gap: 22px;
+        min-height: 56px; padding: 15px 19px 15px 22px; border: 1px solid var(--ink);
+        background: var(--ink); color: var(--white); text-decoration: none; font-weight: 800;
+        transition: background .18s ease, color .18s ease, transform .18s ease;
+      }
+      .button:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-2px); }
+      .button .arrow { font-size: 21px; line-height: 1; }
+      .button--light { background: transparent; color: var(--ink); }
+      .button--light:hover { color: var(--white); }
+      .skip-link { position: absolute; left: -999px; top: auto; }
+      .skip-link:focus { left: 16px; top: 16px; z-index: 10; padding: 8px 12px; background: var(--white); }
+      :focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+
+      .site-header { border-bottom: 1px solid var(--line); background: rgba(246,245,241,.95); }
+      .header-inner { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+      .brand { font-size: 14px; font-weight: 900; text-decoration: none; letter-spacing: .07em; }
+      .brand span { color: var(--accent); }
+      .header-link { font-size: 13px; font-weight: 800; text-underline-offset: 4px; }
+
+      .hero { overflow: hidden; border-bottom: 1px solid var(--line); }
+      .hero-grid { display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(360px, .82fr); min-height: 610px; }
+      .hero-copy { padding: clamp(62px, 8vw, 108px) clamp(32px, 6vw, 78px) clamp(58px, 7vw, 92px) 0; }
+      .hero h1 { max-width: 720px; margin: 0; font-size: clamp(42px, 5vw, 70px); line-height: 1.12; letter-spacing: -.065em; }
+      .hero h1 em { color: var(--accent); font-style: normal; }
+      .hero-lead { max-width: 535px; margin: 29px 0 36px; font-size: 16px; color: #35434c; }
+      .hero-visual { position: relative; min-height: 460px; padding: clamp(32px, 5vw, 70px) 0 clamp(36px, 6vw, 82px) clamp(22px, 5vw, 56px); background: var(--ink); color: var(--white); }
+      .hero-visual::before { content: ""; position: absolute; top: 0; right: 0; width: 29%; height: 100%; background: var(--aqua); }
+      .price-sheet { position: relative; width: min(100%, 450px); padding: 30px; background: var(--white); color: var(--ink); box-shadow: 14px 14px 0 rgba(183,224,218,.85); }
+      .price-sheet small { display: block; color: var(--muted); font-weight: 800; letter-spacing: .08em; }
+      .price { display: flex; align-items: baseline; gap: 4px; margin: 10px 0 18px; font-weight: 900; line-height: 1; letter-spacing: -.06em; }
+      .price strong { font-size: clamp(62px, 7vw, 88px); }
+      .price span { font-size: 28px; }
+      .price-note { padding-top: 17px; border-top: 1px solid var(--line); font-size: 12px; color: var(--muted); line-height: 1.7; }
+      .price-row { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid #e6e7e4; font-size: 13px; }
+      .price-row b { font-weight: 800; }
+      .visual-caption { position: relative; max-width: 390px; margin: 48px 0 0; padding-left: 16px; border-left: 2px solid var(--accent); font-size: 14px; line-height: 1.8; }
+
+      .section-title { margin: 0; font-size: clamp(30px, 3.5vw, 48px); line-height: 1.3; letter-spacing: -.04em; }
+
+      .types { padding: clamp(76px, 9vw, 118px) 0; background: var(--white); border-bottom: 1px solid var(--line); }
+      .types-heading { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: clamp(32px, 7vw, 110px); margin-bottom: 46px; }
+      .types-heading p { max-width: 480px; margin: 0; color: var(--muted); font-size: 15px; }
+      .type-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+      .type-card { position: relative; min-height: 372px; padding: clamp(28px, 4vw, 46px); border: 1px solid var(--ink); background: var(--white); }
+      .type-card--right { border-color: #2c5656; background: var(--aqua-pale); }
+      .type-index { color: var(--accent); font-size: 12px; font-weight: 900; letter-spacing: .12em; }
+      .type-card h3 { margin: 20px 0 10px; font-size: clamp(27px, 3vw, 40px); line-height: 1.2; letter-spacing: -.05em; }
+      .type-tag { margin: 0; font-weight: 800; font-size: 14px; }
+      .type-card > p:not(.type-tag) { max-width: 440px; margin: 20px 0 22px; color: #394750; font-size: 15px; }
+      .type-list { margin: 0; padding: 0; list-style: none; font-size: 13px; }
+      .type-list li { position: relative; padding: 8px 0 8px 20px; border-top: 1px solid rgba(16,32,46,.2); }
+      .type-list li::before { content: "—"; position: absolute; left: 0; color: var(--accent); font-weight: 900; }
+
+      .connection { margin-top: 18px; padding: clamp(28px, 4vw, 50px); background: var(--ink); color: var(--white); }
+      .connection-header { display: flex; justify-content: space-between; gap: 32px; align-items: end; margin-bottom: 28px; }
+      .connection-header h3 { margin: 0; font-size: clamp(23px, 2.5vw, 34px); line-height: 1.3; letter-spacing: -.04em; }
+      .connection-header p { max-width: 390px; margin: 0; color: #cbd6d9; font-size: 13px; }
+      .connection-flow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      .flow-card { position: relative; padding: 24px; border: 1px solid rgba(255,255,255,.34); }
+      .flow-card--logic { background: rgba(255,255,255,.07); }
+      .flow-card--empathy { background: rgba(183,224,218,.13); }
+      .flow-label { display: block; color: var(--aqua); font-size: 11px; font-weight: 900; letter-spacing: .12em; }
+      .flow-card strong { display: block; margin: 13px 0 6px; font-size: 21px; line-height: 1.4; }
+      .flow-card p { margin: 0; color: #d8e0e2; font-size: 13px; }
+      .flow-result { grid-column: 1 / -1; position: relative; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 26px; margin-top: 20px; padding: 25px; background: var(--aqua); color: var(--ink); }
+      .flow-result::before { content: "↓"; position: absolute; top: -35px; left: calc(50% - 14px); display: grid; place-items: center; width: 28px; height: 28px; background: var(--accent); color: var(--white); font-weight: 900; }
+      .flow-result span { font-size: 12px; font-weight: 900; letter-spacing: .1em; }
+      .flow-result strong { font-size: clamp(21px, 2.5vw, 32px); line-height: 1.25; letter-spacing: -.04em; }
+      .flow-result p { max-width: 360px; margin: 0; font-size: 13px; }
+      .connection-action { display: flex; justify-content: space-between; gap: 30px; align-items: center; margin-top: 26px; }
+      .connection-action p { margin: 0; color: #cbd6d9; font-size: 13px; }
+      .connection .button { border-color: var(--aqua); background: var(--aqua); color: var(--ink); white-space: nowrap; }
+      .connection .button:hover { border-color: var(--white); background: var(--white); }
+
+      .process { padding: clamp(76px, 9vw, 112px) 0; }
+      .process-top { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(38px, 8vw, 120px); align-items: end; }
+      .process-top p { margin: 0; color: var(--muted); }
+      .steps { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 44px; border-top: 1px solid var(--ink); }
+      .step { min-height: 188px; padding: 21px 24px 18px 0; border-right: 1px solid var(--line); }
+      .step:not(:first-child) { padding-left: 24px; }
+      .step:last-child { border-right: 0; }
+      .step-num { color: var(--accent); font-size: 12px; font-weight: 900; }
+      .step h3 { margin: 24px 0 8px; font-size: 18px; line-height: 1.45; }
+      .step p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.75; }
+
+      .included { padding: clamp(76px, 9vw, 112px) 0; background: var(--ink); color: var(--white); }
+      .included-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(42px, 9vw, 144px); }
+      .included .eyebrow { color: var(--aqua); }
+      .included .section-title { max-width: 430px; }
+      .included .section-title em { color: var(--aqua); font-style: normal; }
+      .included-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid rgba(255,255,255,.45); }
+      .included-list li { display: grid; grid-template-columns: 38px 1fr; gap: 18px; padding: 19px 0; border-bottom: 1px solid rgba(255,255,255,.22); }
+      .included-list b { color: var(--aqua); font-size: 13px; }
+      .included-list span { font-size: 16px; font-weight: 700; }
+      .included-note { margin: 28px 0 0; color: #c8d1d5; font-size: 12px; line-height: 1.8; }
+
+      .faq { padding: clamp(76px, 9vw, 105px) 0; }
+      .faq-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: clamp(40px, 8vw, 130px); }
+      .faq-list { margin: 0; border-top: 1px solid var(--ink); }
+      .faq-list div { padding: 21px 0; border-bottom: 1px solid var(--line); }
+      .faq-list dt { font-weight: 900; font-size: 16px; }
+      .faq-list dt::before { content: "Q. "; color: var(--accent); }
+      .faq-list dd { margin: 12px 0 0; color: var(--muted); font-size: 14px; }
+
+      .consult { padding: clamp(76px, 9vw, 112px) 0; background: var(--accent); color: var(--white); }
+      .consult-grid { display: grid; grid-template-columns: 1fr .9fr; gap: clamp(42px, 9vw, 140px); align-items: start; }
+      .consult .eyebrow { color: var(--white); }
+      .consult .section-title { font-size: clamp(36px, 4.8vw, 64px); }
+      .consult-copy { margin: 26px 0 0; max-width: 500px; font-size: 15px; }
+      .form-note { margin: 18px 0 0; font-size: 12px; line-height: 1.8; opacity: .87; }
+      form { padding: 28px; background: var(--white); color: var(--ink); }
+      .form-status { min-height: 26px; margin: 0 0 13px; color: #a53017; font-size: 13px; font-weight: 700; }
+      label { display: block; margin: 0 0 16px; font-size: 12px; font-weight: 900; letter-spacing: .06em; }
+      input, textarea { display: block; width: 100%; margin-top: 6px; padding: 12px; border: 1px solid #7d888b; border-radius: 0; background: #fff; color: var(--ink); }
+      textarea { min-height: 106px; resize: vertical; }
+      .form-button { width: 100%; cursor: pointer; }
+      .form-button:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+      .footer { padding: 28px 0; background: var(--ink); color: #d0d7d8; }
+      .footer-inner { display: flex; justify-content: space-between; gap: 18px; font-size: 12px; }
+
+      @media (max-width: 860px) {
+        .hero-grid, .included-grid, .faq-grid, .consult-grid { grid-template-columns: 1fr; }
+        .hero-copy { padding-right: 0; }
+        .hero-visual { padding-left: var(--gutter); padding-right: var(--gutter); }
+        .types-heading, .process-top { display: block; }
+        .types-heading p, .process-top p { margin-top: 20px; }
+        .steps { grid-template-columns: repeat(2, 1fr); }
+        .step:nth-child(2) { border-right: 0; }
+        .step:nth-child(n+3) { border-top: 1px solid var(--line); }
+        .step:nth-child(3) { padding-left: 0; }
+      }
+      @media (max-width: 620px) {
+        .header-inner { min-height: 64px; gap: 8px; }
+        .brand { white-space: nowrap; font-size: 12px; letter-spacing: .04em; }
+        .header-link { white-space: nowrap; font-size: 11px; }
+        .hero h1 { font-size: clamp(40px, 12vw, 61px); }
+        .hero-copy > .button { gap: 12px; padding: 14px 15px; font-size: 14px; }
+        .hero-visual { min-height: 0; }
+        .price-sheet { padding: 24px; box-shadow: 8px 8px 0 rgba(183,224,218,.85); }
+        .type-grid { grid-template-columns: 1fr; }
+        .type-card { min-height: 0; }
+        .connection-header, .connection-action { display: block; }
+        .connection-header p, .connection-action p { margin-top: 16px; }
+        .connection-flow { grid-template-columns: 1fr; }
+        .flow-result { grid-column: auto; grid-template-columns: 1fr; }
+        .flow-result::before { left: 24px; }
+        .connection-action .button { width: 100%; margin-top: 20px; }
+        .steps { grid-template-columns: 1fr; }
+        .step, .step:not(:first-child) { min-height: 0; padding: 20px 0; border-right: 0; border-top: 1px solid var(--line); }
+        .step:first-child { border-top: 0; }
+        .footer-inner { display: block; }
+        .footer-inner p + p { margin-top: 8px; }
+      }
+      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .button { transition: none; } }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">本文へ移動</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="#top">WEB <span>START</span> PACK</a>
+        <a class="header-link" href="#consultation">まずは相談する ↗</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Homepage production / 36万円</p>
+            <h1 id="hero-title">論理で<em>納得</em>。<br />共感で<em>決断</em>。</h1>
+            <p class="hero-lead">ホームページは、会社の名刺ではなく、最初の商談です。何を提供する会社かを理解してもらい、「ここに相談したい」と思ってもらう。その両方を一つの画面に設計します。</p>
+            <a class="button" href="#balance">両方を設計する方法を見る <span class="arrow" aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-visual" aria-label="制作費と内容の概要">
+            <div class="price-sheet">
+              <small>制作費</small>
+              <div class="price"><strong>36</strong><span>万円</span></div>
+              <div class="price-row"><span>構成・原稿の整理</span><b>含む</b></div>
+              <div class="price-row"><span>デザイン・スマホ対応</span><b>含む</b></div>
+              <div class="price-row"><span>公開までの基本サポート</span><b>含む</b></div>
+              <p class="price-note">表示価格の税込・税別、および対応範囲は、お申込み前に個別のお見積書で確定します。</p>
+            </div>
+            <p class="visual-caption">左脳で「わかる」をつくり、<br />右脳で「動きたい」をつくる。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="types" id="balance" aria-labelledby="types-title">
+        <div class="wrap">
+          <div class="types-heading">
+            <div>
+              <p class="eyebrow">Both sides matter</p>
+              <h2 class="section-title" id="types-title">説明できるだけでは、<br />選ばれません。</h2>
+            </div>
+            <p>事実だけを並べても、価値が届くとは限りません。一方で、雰囲気や感情だけでは、相談する不安は消えません。理解と行動をつなぐために、論理と共感を同時に設計します。</p>
+          </div>
+          <div class="type-grid">
+            <article class="type-card">
+              <span class="type-index">LEFT BRAIN / LOGIC</span>
+              <h3>理解と信頼を<br />つくる。</h3>
+              <p class="type-tag">「何をしている会社か」を、明快にする。</p>
+              <p>事業、対象者、提供価値、根拠を整理し、はじめて訪れた人にも「自分に関係がある」と理解してもらえる状態をつくります。</p>
+              <ul class="type-list">
+                <li>事業・サービスを一言で整理する</li>
+                <li>根拠・実績・導入の流れを見せる</li>
+                <li>検討前の疑問を先回りして減らす</li>
+              </ul>
+            </article>
+            <article class="type-card type-card--right">
+              <span class="type-index">RIGHT BRAIN / EMPATHY</span>
+              <h3>共感と期待を<br />つくる。</h3>
+              <p class="type-tag">「ここに相談したい」と、思えるようにする。</p>
+              <p>相手の悩みや目指す姿に寄り添い、サービスを選ぶ意味を自分ごととして感じられる、言葉と見せ方をつくります。</p>
+              <ul class="type-list">
+                <li>いま抱える状況に、言葉で寄り添う</li>
+                <li>変化後の姿を具体的に想像してもらう</li>
+                <li>最初の相談への心理的な壁を下げる</li>
+              </ul>
+            </article>
+          </div>
+          <div class="connection" aria-label="論理と共感が相談につながる流れ">
+            <div class="connection-header">
+              <h3>左脳と右脳は、<br />ひとつの判断をつくります。</h3>
+              <p>会社サイトでもサービスLPでも、見せ方は違っても必要な設計は同じです。二つの力を、別々ではなく連動させます。</p>
+            </div>
+            <div class="connection-flow">
+              <div class="flow-card flow-card--logic">
+                <span class="flow-label">LEFT BRAIN</span>
+                <strong>わかる。<br />だから、安心できる。</strong>
+                <p>誰に何を提供するのか、なぜ任せられるのかを、迷いなく伝えます。</p>
+              </div>
+              <div class="flow-card flow-card--empathy">
+                <span class="flow-label">RIGHT BRAIN</span>
+                <strong>惹かれる。<br />だから、考えたくなる。</strong>
+                <p>相手の状況に寄り添い、変化後の姿を想像できるようにします。</p>
+              </div>
+              <div class="flow-result">
+                <div><span>LOGIC + EMPATHY</span><strong>理解が、相談という<br />次の行動につながる。</strong></div>
+                <p>無理に背中を押すのではなく、相談する理由と安心材料を画面の中に揃えます。</p>
+              </div>
+            </div>
+            <div class="connection-action">
+              <p>まずは「今のサイトで伝わっていないこと」から整理します。</p>
+              <a class="button" href="#consultation">相談して整理する <span class="arrow" aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="process" aria-labelledby="process-title">
+        <div class="wrap">
+          <div class="process-top">
+            <div>
+              <p class="eyebrow">How we make it</p>
+              <h2 class="section-title" id="process-title">考え方を、<br />画面の順番に変える。</h2>
+            </div>
+            <p>情報を集めて終わりではありません。事実を整理し、相手が理解しやすい順番をつくり、価値が届く言葉と画面に変える。ここまでを、ひとつの制作として進めます。</p>
+          </div>
+          <div class="steps">
+            <div class="step"><span class="step-num">01</span><h3>構造をつくる</h3><p>事業、顧客、強み、課題を整理し、伝えるべきことを決めます。</p></div>
+            <div class="step"><span class="step-num">02</span><h3>言葉をつくる</h3><p>理解にも共感にもつながる、掲載原稿の土台を整えます。</p></div>
+            <div class="step"><span class="step-num">03</span><h3>画面をつくる</h3><p>読みやすさと印象の両方を満たすデザインに仕上げ、公開します。</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="included" aria-labelledby="included-title">
+        <div class="wrap included-grid">
+          <div>
+            <p class="eyebrow">What's included</p>
+            <h2 class="section-title" id="included-title"><em>36万円</em>に、<br />含まれること。</h2>
+          </div>
+          <div>
+            <ol class="included-list">
+              <li><b>01</b><span>目的・ターゲット・課題の整理</span></li>
+              <li><b>02</b><span>理解されるためのサイト構成設計</span></li>
+              <li><b>03</b><span>共感が届く掲載原稿のたたき台・整理</span></li>
+              <li><b>04</b><span>デザイン制作</span></li>
+              <li><b>05</b><span>スマートフォン対応</span></li>
+              <li><b>06</b><span>お問い合わせ導線の設置</span></li>
+              <li><b>07</b><span>公開までの基本サポート</span></li>
+            </ol>
+            <p class="included-note">撮影、ロゴ制作、複雑なシステム開発、広告運用、ページ数の増加などは、必要に応じて個別にお見積りします。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq" aria-labelledby="faq-title">
+        <div class="wrap faq-grid">
+          <div>
+            <p class="eyebrow">Questions</p>
+            <h2 class="section-title" id="faq-title">よくあるご質問</h2>
+          </div>
+          <dl class="faq-list">
+            <div><dt>会社サイトとLP、どちらをつくるべきかわかりません。</dt><dd>ご安心ください。サイトの目的、見てほしい相手、最終的に起こしてほしい行動をうかがい、必要な構成をご提案します。どちらの場合も、論理と共感の両方を設計します。</dd></div>
+            <div><dt>原稿や写真がそろっていなくても相談できますか。</dt><dd>はい。今ある資料や口頭での説明をもとに、必要な情報を整理するところから進めます。必要な素材は制作内容に合わせてご案内します。</dd></div>
+            <div><dt>36万円に含まれる範囲を詳しく知りたいです。</dt><dd>ご希望のページ数、掲載内容、必要な機能を確認したうえで、対応範囲・納期・価格の内訳をお見積書でご案内します。</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="consult" id="consultation" aria-labelledby="consult-title">
+        <div class="wrap consult-grid">
+          <div>
+            <p class="eyebrow">First consultation</p>
+            <h2 class="section-title" id="consult-title">まずは、<br />今の話を<br />聞かせてください。</h2>
+            <p class="consult-copy">「会社紹介をきれいにしたい」「新サービスの良さを伝えたい」といった段階で構いません。情報整理と共感設計の両方から、制作の進め方を一緒に考えます。</p>
+            <p class="form-note">このデモでは送信先を未設定にしています。公開時は実際の問い合わせ窓口またはフォーム連携先を設定してください。</p>
+          </div>
+          <form id="contact-form" novalidate>
+            <p class="form-status" id="form-status" aria-live="polite"></p>
+            <label>ご相談のテーマ
+              <input id="interest" name="interest" value="左脳と右脳を組み合わせた制作について相談したい" readonly />
+            </label>
+            <label>お名前・会社名
+              <input name="name" autocomplete="name organization" placeholder="例）山田 太郎／株式会社〇〇" required />
+            </label>
+            <label>メールアドレス
+              <input name="email" type="email" autocomplete="email" placeholder="example@company.jp" required />
+            </label>
+            <label>ご相談内容
+              <textarea name="message" placeholder="現在の課題や、つくりたいサイトのイメージをご記入ください。" required></textarea>
+            </label>
+            <button class="button form-button" type="submit">相談内容を確認する <span class="arrow" aria-hidden="true">→</span></button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="wrap footer-inner">
+        <p>WEB START PACK</p>
+        <p>© 2026. Demo design for homepage production service.</p>
+      </div>
+    </footer>
+
+    <script>
+      const form = document.querySelector('#contact-form');
+      const status = document.querySelector('#form-status');
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (!form.checkValidity()) {
+          status.textContent = '未入力または形式をご確認ください。';
+          form.reportValidity();
+          return;
+        }
+        status.textContent = '送信先は公開時に設定します。内容は入力されています。';
+      });
+    </script>
+  </body>
+</html>
