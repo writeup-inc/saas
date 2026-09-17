@@ -26,24 +26,28 @@
     .nav-status { letter-spacing:.11em; color:var(--sub); font-size:10px; font-weight:800; }
     .nav-status::before { content:""; width:7px; height:7px; margin-right:7px; display:inline-block; background:var(--orange); }
     .hero { border-bottom:1px solid var(--line); background:var(--paper); overflow:hidden; }
-    .hero-grid { min-height:560px; padding:86px 0 62px; display:grid; grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr); gap:56px; align-items:end; }
+    .hero-grid { min-height:512px; padding:80px 0 58px; display:grid; grid-template-columns:minmax(0,1.14fr) minmax(0,.86fr); gap:52px; align-items:center; }
     .eyebrow { color:var(--sub); letter-spacing:.14em; margin:0 0 19px; display:flex; align-items:center; gap:10px; font-size:10px; font-weight:800; }
     .eyebrow::before { content:""; display:block; height:2px; width:24px; background:var(--orange); }
     h1, h2, h3, p { margin-top:0; }
-    .hero h1 { letter-spacing:-.065em; max-width:520px; margin-bottom:28px; font-size:clamp(46px,5.2vw,72px); line-height:1.02; }
+    .hero h1 { letter-spacing:-.05em; max-width:13.5em; margin-bottom:24px; font-size:clamp(42px,4.5vw,63px); line-height:1.1; }
+    .hero h1 .nobr { white-space:nowrap; }
     .hero h1 em { color:var(--orange-dark); font-family:Georgia, "Yu Mincho", serif; font-style:normal; font-weight:500; }
-    .hero-lead { max-width:580px; color:#383838; margin-bottom:31px; font-size:16px; font-weight:550; line-height:1.95; }
+    .hero-lead { max-width:30em; color:#383838; margin-bottom:28px; font-size:15.5px; font-weight:550; line-height:1.95; }
     .hero-meta { color:var(--sub); border-top:1px solid var(--line); max-width:620px; padding-top:15px; display:flex; gap:24px; flex-wrap:wrap; font-size:12px; font-weight:650; }
     .hero-meta b { color:var(--ink); margin-right:8px; }
-    .featured { background:var(--ink); color:#fff; min-height:412px; position:relative; overflow:hidden; }
+    .featured { background:var(--ink); color:#fff; min-height:458px; position:relative; overflow:hidden; }
     .featured-slide { isolation:isolate; display:none; height:100%; padding:28px; position:absolute; inset:0; flex-direction:column; justify-content:space-between; animation:slide-in .36s ease both; }
     .featured-slide.is-active { display:flex; }
-    .featured-slide::after { content:""; z-index:-1; position:absolute; inset:0; background:linear-gradient(90deg, #111 0%, #111e 48%, #1114 100%); }
-    .featured-photo { z-index:-2; width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+    .featured-slide::after { content:""; z-index:-1; position:absolute; inset:0; background:linear-gradient(180deg, rgba(17,17,17,.26) 0%, rgba(17,17,17,.60) 44%, rgba(17,17,17,.95) 100%); }
+    .featured-photo { z-index:-2; width:100%; height:100%; object-fit:cover; object-position:50% 16%; position:absolute; inset:0; }
     .featured-top { color:#d7d7d7; letter-spacing:.12em; display:flex; justify-content:space-between; font-size:10px; font-weight:800; }
     .featured-type { color:#ffb489; }
-    .featured h2 { max-width:480px; letter-spacing:-.04em; z-index:1; margin:35px 0 10px; font-size:clamp(28px,3.15vw,43px); line-height:1.12; }
-    .featured p { color:#e1e1e1; z-index:1; max-width:435px; margin:0; font-size:13px; line-height:1.75; }
+    .featured h2 { max-width:11.5em; letter-spacing:-.035em; z-index:1; margin:32px 0 11px; font-size:clamp(25px,2.45vw,34px); line-height:1.24; }
+    .featured p { color:#e1e1e1; z-index:1; max-width:24em; margin:0; font-size:12.5px; line-height:1.8; }
+    .featured-footer a { color:#fff; border-bottom:1px solid var(--orange); text-decoration:none; padding-bottom:4px; font-weight:800; white-space:nowrap; }
+    .featured-footer a:hover { color:var(--orange); }
+    .featured-who { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
     .featured-footer { z-index:1; border-top:1px solid #fff4; padding-top:15px; display:flex; align-items:center; justify-content:space-between; gap:16px; font-size:12px; font-weight:700; }
     .featured-footer button { color:#fff; border:0; border-bottom:1px solid var(--orange); background:transparent; padding:0 0 4px; cursor:pointer; font-weight:800; }
     .slider-controls { z-index:2; position:absolute; right:23px; bottom:20px; display:flex; align-items:center; gap:7px; }
@@ -79,6 +83,7 @@
     .card-visual { isolation:isolate; color:#fff; background:#333; min-height:177px; padding:15px; display:flex; flex-direction:column; justify-content:space-between; position:relative; overflow:hidden; }
     .card-visual::after { content:""; z-index:-1; position:absolute; inset:0; background:linear-gradient(180deg, #1112 0%, #111b 100%); }
     .card-photo { z-index:-2; width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+    .card-photo.is-portrait { object-position:50% 13%; }
     .card-no { position:relative; z-index:1; letter-spacing:.13em; font-size:10px; font-weight:800; }
     .card-icon { z-index:1; color:#fff; width:63px; height:55px; filter:drop-shadow(0 1px 2px #0008); }
     .card-kicker { z-index:1; letter-spacing:.12em; font-size:10px; font-weight:800; }
@@ -139,31 +144,37 @@
       <div class="shell hero-grid">
         <div>
           <p class="eyebrow">SAAS TEAM / CATALOG MEDIA</p>
-          <h1>つくる人と、<br>使う人の<em>あいだに。</em></h1>
-          <p class="hero-lead">SaaSチームがつくる商品、開発の背景を聞くインタビュー、実務に落とすセミナー。そのまま比較し、次に読むべき一件へ進めるための編集カタログです。</p>
+          <h1>つくる人と、<br><span class="nobr">使う人の<em>あいだに。</em></span></h1>
+          <p class="hero-lead">つくった人が、どこでつまずき、何を境に考えを変えたのか。商品・インタビュー・セミナーを、そのまま比較して読める編集カタログです。</p>
           <div class="hero-meta"><span><b>FORMAT</b> 商品 / インタビュー / セミナー</span><span><b>NOTE</b> 一部は掲載準備中のサンプルです</span></div>
         </div>
         <aside class="featured" aria-label="注目のコンテンツ">
           <article class="featured-slide is-active" data-featured-slide="0">
-            <img class="featured-photo" src="assets/hero-team.jpg" alt="静かなオフィスで仕事の記録を確認するチーム">
-            <div class="featured-top"><span>FEATURED STORY / 01</span><span class="featured-type">PRODUCT</span></div>
-            <div><h2>仕事の事実から、AI化の順番を決める。</h2><p>ワークログ・インサイトの考え方を起点に、サービスの役割、チームの意図、導入のための学びを一続きで読める構成を想定しています。</p></div>
-            <div class="featured-footer"><span>WORKLOG INSIGHT</span><button type="button" data-open="worklog">概要を見る <span aria-hidden="true">↗</span></button></div>
+            <img class="featured-photo" src="/interviews/ai-sales-roundtable/assets/murata.webp" alt="村田峻平">
+            <div class="featured-top"><span>FEATURED STORY / 01</span><span class="featured-type">INTERVIEW</span></div>
+            <div><h2>あの日の社長に、渡したかったもの</h2><p>保険を売っていた男が、AIを売る側に回った。届かなかった言葉と、読み違えた一日の話。</p></div>
+            <div class="featured-footer"><span class="featured-who">村田 峻平 ／ Lシンク</span><a href="https://writeup-inc.github.io/interviews/lsync-murata/">記事を読む <span aria-hidden="true">↗</span></a></div>
           </article>
           <article class="featured-slide" data-featured-slide="1">
-            <img class="featured-photo" src="assets/developer-interview.jpg" alt="オフィスで対話するプロダクトチーム">
+            <img class="featured-photo" src="/interviews/saas-team/assets/nishimura.webp" alt="西村果林">
             <div class="featured-top"><span>FEATURED STORY / 02</span><span class="featured-type">INTERVIEW</span></div>
-            <div><h2>営業の声から、プロダクトを変える。</h2><p>現場の商談で聞いた言葉を、次の改善へどうつなぐのか。チームの対話と試行錯誤を聞くインタビューです。</p></div>
-            <div class="featured-footer"><span>PEOPLE / 01</span><button type="button" data-open="sales-interview">概要を見る <span aria-hidden="true">↗</span></button></div>
+            <div><h2>1年後に、よかったと思ってもらう</h2><p>つなぐ人が、自分の担当プロダクトの限界を口にした。そこから提案の形が変わっていった。</p></div>
+            <div class="featured-footer"><span class="featured-who">西村 果林 ／ Elliot</span><a href="https://writeup-inc.github.io/interviews/elliot-nishimura/">記事を読む <span aria-hidden="true">↗</span></a></div>
           </article>
           <article class="featured-slide" data-featured-slide="2">
-            <img class="featured-photo" src="assets/seminar-workshop.jpg" alt="少人数で行われる実務ワークショップ">
-            <div class="featured-top"><span>FEATURED STORY / 03</span><span class="featured-type">SEMINAR</span></div>
-            <div><h2>最初の90分で、業務AI化の入口をつくる。</h2><p>自社の仕事を棚卸しし、AIに任せる順番を考える。小さな実務から始めるための参加型セミナーです。</p></div>
-            <div class="featured-footer"><span>SEMINAR / 02</span><button type="button" data-open="sales-seminar">概要を見る <span aria-hidden="true">↗</span></button></div>
+            <img class="featured-photo" src="/interviews/saas-team/assets/komatsu.webp" alt="小松咲">
+            <div class="featured-top"><span>FEATURED STORY / 03</span><span class="featured-type">INTERVIEW</span></div>
+            <div><h2>こばんざめ、という言葉</h2><p>投稿することが価値なのではなかった。近づいていくことが価値だった。</p></div>
+            <div class="featured-footer"><span class="featured-who">小松 咲 ／ ソーシャルマスター</span><a href="https://writeup-inc.github.io/interviews/socialmaster-komatsu/">記事を読む <span aria-hidden="true">↗</span></a></div>
+          </article>
+          <article class="featured-slide" data-featured-slide="3">
+            <img class="featured-photo" src="/interviews/saas-team/assets/kiba.webp" alt="木場瑛穂">
+            <div class="featured-top"><span>FEATURED STORY / 04</span><span class="featured-type">INTERVIEW</span></div>
+            <div><h2>繰り返し、ぶつけ続けた</h2><p>設定に消えていた時間を、企画に取り戻すまで。一度言って終わりにしなかった人の話。</p></div>
+            <div class="featured-footer"><span class="featured-who">木場 瑛穂 ／ Lシンク</span><a href="https://writeup-inc.github.io/interviews/lsync-kiba/">記事を読む <span aria-hidden="true">↗</span></a></div>
           </article>
           <div class="slider-controls" aria-label="注目のコンテンツを切り替える">
-            <div class="slider-dots"><button type="button" data-slider="0" aria-label="1枚目を表示" aria-current="true"></button><button type="button" data-slider="1" aria-label="2枚目を表示" aria-current="false"></button><button type="button" data-slider="2" aria-label="3枚目を表示" aria-current="false"></button></div>
+            <div class="slider-dots"><button type="button" data-slider="0" aria-label="1枚目を表示" aria-current="true"></button><button type="button" data-slider="1" aria-label="2枚目を表示" aria-current="false"></button><button type="button" data-slider="2" aria-label="3枚目を表示" aria-current="false"></button><button type="button" data-slider="3" aria-label="4枚目を表示" aria-current="false"></button></div>
             <button type="button" data-slider-direction="previous" aria-label="前のコンテンツ">←</button><button class="slider-pause" type="button" data-slider-pause aria-pressed="false">停止</button><button type="button" data-slider-direction="next" aria-label="次のコンテンツ">→</button>
           </div>
         </aside>
@@ -192,9 +203,10 @@
 
   <script>
     const stories = [
-      { id:'lsync-kiba', kind:'interview', kindLabel:'INTERVIEW', theme:['営業','AI導入'], title:'設定に追われた時間が、企画に戻ってきた', lead:'Lシンク担当の木場瑛穂に、一社ごとの設定に追われた日々と、企画に時間が戻るまでを聞く。', visual:'PEOPLE / 02', icon:'person', next:'記事本文へ', href:'https://writeup-inc.github.io/interviews/lsync-kiba/' },
-      { id:'socialmaster-komatsu', kind:'interview', kindLabel:'INTERVIEW', theme:['営業','業務設計'], title:'SNSを頑張らなくても、発信は止まらない', lead:'ソーシャルマスター担当の小松咲に、AIと人の比率で迷った日々と、サービスの肝に気づくまでを聞く。', visual:'PEOPLE / 03', icon:'bubble', next:'記事本文へ', href:'https://writeup-inc.github.io/interviews/socialmaster-komatsu/' },
-      { id:'elliot-nishimura', kind:'interview', kindLabel:'INTERVIEW', theme:['営業','AI導入'], title:'ログを溜め始めた時点で、AI化はもう始まっている', lead:'Elliot担当の西村果林に、提案の手前にある壁と、見方が変わった瞬間を聞く。', visual:'PEOPLE / 01', icon:'person', next:'記事本文へ', href:'https://writeup-inc.github.io/interviews/elliot-nishimura/' },
+      { id:'lsync-murata', kind:'interview', kindLabel:'INTERVIEW', theme:['営業','AI導入'], title:'あの日の社長に、渡したかったもの', lead:'保険を売っていた男が、AIを売る側に回った。届かなかった言葉と、読み違えた一日の話。', visual:'PEOPLE / 04', icon:'person', next:'記事本文へ', image:'/interviews/ai-sales-roundtable/assets/murata.webp', imageAlt:'村田峻平', href:'https://writeup-inc.github.io/interviews/lsync-murata/' },
+      { id:'lsync-kiba', kind:'interview', kindLabel:'INTERVIEW', theme:['営業','AI導入'], title:'繰り返し、ぶつけ続けた', lead:'設定に消えていた時間を、企画に取り戻すまで。一度言って終わりにしなかった人の話。', visual:'PEOPLE / 02', icon:'person', next:'記事本文へ', image:'/interviews/saas-team/assets/kiba.webp', imageAlt:'木場瑛穂', href:'https://writeup-inc.github.io/interviews/lsync-kiba/' },
+      { id:'socialmaster-komatsu', kind:'interview', kindLabel:'INTERVIEW', theme:['営業','業務設計'], title:'こばんざめ、という言葉', lead:'投稿することが価値なのではなかった。近づいていくことが価値だった。', visual:'PEOPLE / 03', icon:'person', next:'記事本文へ', image:'/interviews/saas-team/assets/komatsu.webp', imageAlt:'小松咲', href:'https://writeup-inc.github.io/interviews/socialmaster-komatsu/' },
+      { id:'elliot-nishimura', kind:'interview', kindLabel:'INTERVIEW', theme:['営業','AI導入'], title:'1年後に、よかったと思ってもらう', lead:'つなぐ人が、自分の担当プロダクトの限界を口にした。そこから提案の形が変わっていった。', visual:'PEOPLE / 01', icon:'person', next:'記事本文へ', image:'/interviews/saas-team/assets/nishimura.webp', imageAlt:'西村果林', href:'https://writeup-inc.github.io/interviews/elliot-nishimura/' },
       { id:'worklog', kind:'product', kindLabel:'PRODUCT', theme:['業務設計','AI導入'], title:'ワークログ・インサイト', lead:'PC上の仕事を記録し、次にAI化する業務の順番を考えるためのサービス。', visual:'WORK / AI', icon:'grid', next:'サービス概要と導入相談へ' },
       { id:'facilitator', kind:'product', kindLabel:'PRODUCT', theme:['業務設計','AI導入'], title:'AIファシリテーター（仮）', lead:'会議や日々の検討を前に進めるための、チーム向けAI活用支援の紹介。', visual:'MEET / AI', icon:'bubble', next:'利用シーン・対象業務の詳細へ' },
       { id:'sales-interview', kind:'interview', kindLabel:'INTERVIEW', theme:['営業','開発'], title:'営業の声から、プロダクトを変える。', lead:'現場の商談で聞いた言葉を、次の改善にどうつないでいるのかを聞く。', visual:'PEOPLE / 01', icon:'person', next:'開発者インタビュー本文へ' },
@@ -237,7 +249,7 @@
     function matches(story) { return (state.kind === 'all' || story.kind === state.kind) && (state.theme === 'all' || story.theme.includes(state.theme)); }
     function render() {
       const visible = stories.filter(matches);
-      cardGrid.innerHTML = visible.map((s, i) => { const image = imageByKind[s.kind]; return `<article class="story-card" data-kind="${s.kind}"><div class="card-visual"><img class="card-photo" src="${image.src}" alt="${image.alt}"><span class="card-no">${String(i+1).padStart(2,'0')} / ${s.visual}</span>${icons[s.icon]}<span class="card-kicker">${s.kindLabel}</span></div><div class="card-body"><div class="card-tags">${s.theme.map(t => `<span>${t}</span>`).join('')}</div><h3>${s.title}</h3><p>${s.lead}</p>${s.href ? `<a class="card-link" href="${s.href}">記事を読む <span aria-hidden="true">↗</span></a>` : `<button type="button" data-open="${s.id}">概要を見る <span aria-hidden="true">↗</span></button>`}</div></article>`; }).join('');
+      cardGrid.innerHTML = visible.map((s, i) => { const image = s.image ? { src:s.image, alt:s.imageAlt || s.title } : imageByKind[s.kind]; return `<article class="story-card" data-kind="${s.kind}"><div class="card-visual"><img class="card-photo${s.image ? ' is-portrait' : ''}" src="${image.src}" alt="${image.alt}"><span class="card-no">${String(i+1).padStart(2,'0')} / ${s.visual}</span>${icons[s.icon]}<span class="card-kicker">${s.kindLabel}</span></div><div class="card-body"><div class="card-tags">${s.theme.map(t => `<span>${t}</span>`).join('')}</div><h3>${s.title}</h3><p>${s.lead}</p>${s.href ? `<a class="card-link" href="${s.href}">記事を読む <span aria-hidden="true">↗</span></a>` : `<button type="button" data-open="${s.id}">概要を見る <span aria-hidden="true">↗</span></button>`}</div></article>`; }).join('');
       count.textContent = visible.length;
       empty.classList.toggle('show', visible.length === 0);
     }
