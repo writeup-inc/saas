@@ -512,10 +512,10 @@ input[type=range]::-moz-range-thumb{
 .calc-row.total .cl{font-weight:700;color:var(--ink);font-size:14px;}
 .calc-row.total .cv{font-size:clamp(1.15rem,2.6vw,1.45rem);color:var(--blue);}
 
-/* ── 市場が縮んでいる（01） ─────────── */
+/* ── 既存顧客への提案を積み上げる（01） ── */
 .shrink{margin-top:30px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:26px 24px 22px;}
 .shrink .sh{font-size:clamp(1rem,2.2vw,1.14rem);font-weight:800;margin:0 0 18px;line-height:1.6;}
-.shrink-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.shrink-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
 .shrink-grid div{border-top:2px solid var(--ink);padding-top:13px;}
 .shrink-grid .sn{font-family:var(--en);font-size:clamp(1.35rem,3.4vw,1.85rem);font-weight:800;color:var(--blue);display:block;line-height:1.2;}
 .shrink-grid .sn .u{font-family:var(--jp);font-size:13px;font-weight:700;color:var(--ink);margin-left:3px;}
@@ -524,6 +524,28 @@ input[type=range]::-moz-range-thumb{
 .shrink .src{font-size:12px;color:var(--gray2);margin-top:14px;line-height:1.7;display:block;}
 .shrink .src a{color:var(--gray2);}
 @media(max-width:640px){ .shrink-grid{grid-template-columns:1fr;gap:14px;} }
+
+/* ── 月額ストックの積み上げ図（01） ─── */
+.proposal-stack{margin-top:36px;padding:28px 24px 24px;background:var(--faint);border:1px solid var(--line);border-radius:8px;}
+.proposal-stack .ps-kicker{font-family:var(--en);font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--gray2);margin:0 0 7px;}
+.proposal-stack .ps-title{font-size:clamp(1rem,2.2vw,1.16rem);font-weight:800;line-height:1.6;margin:0;}
+.proposal-stack .ps-lead{font-size:13.5px;color:var(--gray);line-height:1.75;margin:9px 0 24px;}
+.stack-chart{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;align-items:end;}
+.stack-stage{min-height:224px;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;}
+.stack-stage .period{font-family:var(--en);font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--gray2);margin:0 0 7px;}
+.stack-stage .stage-title{font-size:12.5px;font-weight:700;line-height:1.55;margin:0 0 10px;min-height:40px;}
+.stack-stage .layer{min-height:36px;padding:8px 9px;display:flex;align-items:center;font-size:11.5px;font-weight:700;line-height:1.35;color:#fff;border-radius:3px;}
+.stack-stage .layer small{font-family:var(--en);font-size:10px;font-weight:800;margin-left:auto;padding-left:4px;color:inherit;white-space:nowrap;}
+.stack-stage .layer.worklog{background:var(--blue);}
+.stack-stage .layer.next-1{background:#5479b7;}
+.stack-stage .layer.next-2{background:#7f9bc8;}
+.stack-stage .layer.next-3{background:#a3b7d7;color:var(--blue-d);}
+.proposal-stack .ps-note{font-size:12px;color:var(--gray2);line-height:1.7;margin:18px 0 0;}
+@media(max-width:760px){
+  .proposal-stack{padding:24px 18px 20px;}
+  .stack-chart{grid-template-columns:1fr 1fr;gap:18px 10px;}
+  .stack-stage{min-height:190px;}
+}
 
 /* ── コラム（02） ───────────────────── */
 .column{
@@ -924,33 +946,66 @@ footer .fnav a:hover{color:#fff;}
    <div class="sec-grid">
     <div class="sec-head">
     <span class="sec-no">01 ／ WHY NOW</span>
-    <h2><span class="q">顧客は増やせない。</span><span class="a">なら、同じリストに月額10,000円を載せます。</span></h2>
+    <h2><span class="q">新規顧客を増やすより、</span><span class="a">顧客1社への提案回数を増やす。</span></h2>
     </div>
     <div class="sec-body">
-    <p class="lead">新規開拓の費用は上がり続けています。一方で、御社がこれまで築いてきた取引先リストは、すでに手元にあるもの。そこへ「もう1つ売るもの」を足すほうが、新しい顧客を1社増やすより早いはずです。これは、そういうご提案です。</p>
-    <p>しかも今回お渡しするのは、売り切りではなく<strong>月額のストック</strong>です。1台入れば、その1台は翌月も再来月も御社に入り続けます。解約されない限り、営業に行くのは最初の一度だけ。</p>
+    <p class="lead">新規開拓だけを増やし続ける前提は、年々つくりにくくなっています。だから御社が持つべきなのは、新しい見込み客を探し続ける仕組みではありません。<strong>すでにお取引のあるお客様へ、次の課題を解く商材を順番にご案内できる仕組み</strong>です。</p>
+    <p>御社には、すでにお客様との関係があります。ライトアップには、販売する商材と、その商材を売れる形にする知見があります。御社が既存顧客へご案内し、ライトアップが商材・導入設計・営業支援を担う。売れた月額は残り続け、その上に次の提案が積み上がります。</p>
 
     <div class="shrink">
-      <p class="sh">人が減り、会社が減り、売る相手そのものが毎年減っています。</p>
+      <p class="sh">新しい見込み客を増やす前に、今いるお客様との取引を深くする。</p>
       <div class="shrink-grid">
         <div>
-          <span class="sn">2,516<span class="u">人／日</span></span>
-          <span class="st">2025年の出生は67万1,236人、死亡は158万9,489人。差し引き91万8,253人の自然減です。</span>
+          <span class="sn">91.8<span class="u">万人／年</span></span>
+          <span class="st">2025年、日本人の出生と死亡の差による自然減は91万8,253人でした。</span>
         </div>
         <div>
-          <span class="sn">184<span class="u">社／日</span></span>
-          <span class="st">2025年に休廃業・解散した企業は67,210件。3年連続で過去最多です。</span>
-        </div>
-        <div>
-          <span class="sn">211<span class="u">社／日</span></span>
-          <span class="st">倒産を含めると、市場からの退出は年間7万7,000件台の見通しです。</span>
+          <span class="sn">約7.8<span class="u">万社／年</span></span>
+          <span class="st">2025年、休廃業・解散と倒産を合わせて、年間約7万7,500社が市場から退出しました。</span>
         </div>
       </div>
-      <p class="sf">名簿は毎年薄くなり、残った会社には同じ提案が何社からも届きます。この条件で新規の取引先を1社増やすのは、年々高くつきます。<strong>だから、顧客の数ではなく、1社あたりの取引を増やす。</strong>そのための1本として、月額のストックを足していただく話です。</p>
-      <small class="src">出典：厚生労働省「人口動態統計」令和7年（2025年）年計（概数）／東京商工リサーチ「2025年『休廃業・解散』企業動向調査」（2026年1月）。1日あたりの数値は、年間値を365で割った当社の計算です。</small>
+      <p class="sf">市場から退出する企業がある一方で、残った会社には同じ提案が何社からも届きます。この条件で新規の取引先を1社増やすより、<strong>顧客1社への提案回数を増やす。</strong>御社がすでに持つ信頼を、次の月額商材につなげていく話です。</p>
+      <small class="src">出典：厚生労働省「人口動態統計」令和7年（2025年）年計（概数）／東京商工リサーチ「2025年『休廃業・解散企業』動向調査」「2025年（令和7年）の全国企業倒産」。</small>
     </div>
 
-    <h3 style="margin-top:44px;">こういう会社・こういう方が、向いています。</h3>
+    <div class="proposal-stack" aria-label="既存顧客への提案を積み上げるイメージ">
+      <p class="ps-kicker">REPEATABLE PROPOSAL MODEL</p>
+      <p class="ps-title">3か月に1本ずつ、既存顧客へ次の提案をする。</p>
+      <p class="ps-lead">ご案内先を決めて、案内漏れなく一巡したら、次の商材へ。売った月額は下に残り、その上に次の商材が積み上がります。</p>
+      <div class="stack-chart" role="img" aria-label="3か月ごとに商材を提案し、導入企業が積み上がる4期のイメージ図">
+        <div class="stack-stage">
+          <p class="period">MONTH 1–3</p>
+          <p class="stage-title">ワークログ・インサイトを案内</p>
+          <div class="layer worklog">ワークログ <small>10社</small></div>
+        </div>
+        <div class="stack-stage">
+          <p class="period">MONTH 4–6</p>
+          <p class="stage-title">次の商材を案内</p>
+          <div class="layer next-1">次の商材 <small>10社</small></div>
+          <div class="layer worklog">ワークログ <small>10社</small></div>
+        </div>
+        <div class="stack-stage">
+          <p class="period">MONTH 7–9</p>
+          <p class="stage-title">さらに次の商材を案内</p>
+          <div class="layer next-2">次の商材 <small>10社</small></div>
+          <div class="layer next-1">次の商材 <small>10社</small></div>
+          <div class="layer worklog">ワークログ <small>10社</small></div>
+        </div>
+        <div class="stack-stage">
+          <p class="period">MONTH 10–12</p>
+          <p class="stage-title">また次の商材を案内</p>
+          <div class="layer next-3">次の商材 <small>10社</small></div>
+          <div class="layer next-2">次の商材 <small>10社</small></div>
+          <div class="layer next-1">次の商材 <small>10社</small></div>
+          <div class="layer worklog">ワークログ <small>10社</small></div>
+        </div>
+      </div>
+      <p class="ps-note">※ 既存顧客100社へ、3か月ごとに1商材を案内し、各商材で10社が導入した場合の試算イメージです。実績値・導入を保証するものではありません。</p>
+    </div>
+
+    <h3 style="margin-top:44px;">最初の一本に、ワークログ・インサイト。</h3>
+    <p>PCを日常業務で使う法人であれば、業種を問わず提案対象にしやすい商材です。社員に新しい入力を求めず、画面の記録から業務を見える化できる。さらに、見えた課題は人材・BPO・業務改善・AI導入といった御社の次の提案にもつながります。</p>
+    <h3 style="margin-top:36px;">こういう会社・こういう方が、向いています。</h3>
     <div class="tag-grid">
       <div class="tag">人材紹介・人材派遣<span>面談で現場の困りごとを聞ける</span></div>
       <div class="tag">経営・業務改善コンサル<span>改善提案の材料が手に入る</span></div>
