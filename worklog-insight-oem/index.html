@@ -307,6 +307,27 @@ strong{font-weight:700;}
   .step:last-child{border-bottom:none;}
 }
 
+/* ── なぜ今売れるか（02） ─────────────── */
+.reason-grid{display:grid;grid-template-columns:1fr 1fr;margin-top:36px;border-top:2px solid var(--ink);}
+.reason-card{padding:24px 26px 26px 0;}
+.reason-card + .reason-card{padding-left:26px;border-left:1px solid var(--line);}
+.reason-kicker{font-family:var(--en);font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--blue);margin:0 0 10px;}
+.reason-card h3{font-size:clamp(1.08rem,2.1vw,1.3rem);font-weight:900;line-height:1.5;margin:0 0 10px;}
+.reason-card > p:not(.reason-kicker):not(.legal-note){font-size:16px;color:var(--gray);line-height:1.82;margin:0;}
+.reason-flow{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin:18px 0 14px;}
+.reason-flow span{font-size:13px;font-weight:800;color:var(--blue-d);background:var(--blue-l);padding:6px 9px;border-radius:3px;}
+.reason-flow i{font-style:normal;color:var(--gray2);font-size:14px;}
+.labor-list{margin:17px 0 0;padding:0;list-style:none;border-top:1px solid var(--line);}
+.labor-list li{font-size:15px;line-height:1.65;color:var(--gray);padding:10px 0 10px 20px;border-bottom:1px solid var(--line);position:relative;}
+.labor-list li::before{content:"";position:absolute;left:0;top:20px;width:9px;height:2px;background:var(--blue);}
+.legal-note{font-size:12.5px!important;color:var(--gray2)!important;line-height:1.75!important;margin:16px 0 0!important;}
+.legal-note a{color:inherit;text-decoration:underline;text-underline-offset:2px;}
+@media(max-width:760px){
+  .reason-grid{grid-template-columns:1fr;}
+  .reason-card{padding-right:0;}
+  .reason-card + .reason-card{padding:24px 0 0;border-left:none;border-top:1px solid var(--line);}
+}
+
 .three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px;}
 .card{
   background:#fff;
@@ -1031,11 +1052,34 @@ footer .fnav a:hover{color:#fff;}
    <div class="sec-grid">
     <div class="sec-head">
     <span class="sec-no">02 ／ WHAT YOU SELL</span>
-    <h2><span class="q">売るのは、1分に1回のスクリーンショット。</span><span class="a">現場の入力は、ゼロです。</span></h2>
+    <h2><span class="q">なぜ今、ワークログ・インサイトが売れるのか。</span><span class="a">AI化の入口と、労務管理の土台を置けるからです。</span></h2>
     </div>
     <div class="sec-body">
-    <h3 class="section-answer">入力ゼロで、業務が見える。</h3>
-    <p class="lead">自動化を始めるには、誰が何に時間を使っているかを知る必要があります。日報や記憶ではなく、実際の作業を残すのが<strong>画面の記録</strong>です。</p>
+    <h3 class="section-answer">AI化の入口と、労務管理の土台を、月額で置ける。</h3>
+    <p class="lead">いきなり高額なAIコンサルを頼む前に、まず仕事の事実を残す。月額10,000円で、次にAI化すべき業務と、運用上の見落としを同時に見つけられます。</p>
+
+    <div class="reason-grid">
+      <div class="reason-card">
+        <p class="reason-kicker">OFFENSE ／ AI TRANSFORMATION</p>
+        <h3>AI化の前に、仕事を測れていない。</h3>
+        <p>AI化は必要でも、中小企業には業務を分解し、優先順位を決めてくれる人が近くにいないことがあります。特に地方では、相談先を探すところから始まります。</p>
+        <div class="reason-flow" aria-label="AI化への流れ"><span>仕事を記録</span><i>→</i><span>AIが業務を整理</span><i>→</i><span>次のAI化候補を提示</span></div>
+        <p>ワークログ・インサイトは、画面の記録をもとに、<strong>どの作業を、どの順番でAI化するか</strong>を提案します。現場の入力は不要です。</p>
+      </div>
+      <div class="reason-card">
+        <p class="reason-kicker">DEFENSE ／ LABOR MANAGEMENT</p>
+        <h3>問題になる前に、働き方の事実を確認できる。</h3>
+        <p>勤怠の自己申告だけでは見えない、時間外の作業や業務の偏り。勤務時間外の連絡をどう扱うかという論点も含め、労務管理は後から説明できる状態にしておく必要があります。</p>
+        <ul class="labor-list">
+          <li>自己申告の勤怠と、PCを使った実態に大きな差がないか</li>
+          <li>終業後・休日に、特定の業務が常態化していないか</li>
+          <li>深夜・早朝の作業が、特定の人に偏っていないか</li>
+        </ul>
+        <p class="legal-note">PCの記録だけで労働時間が確定するものではありません。勤怠・社内ルール・社員への説明とセットで運用します。厚生労働省は、PC使用時間などの客観的記録を始終業時刻の確認材料の一つとして示しています。<a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/roudouzikan/070614-2.html" target="_blank" rel="noopener noreferrer">ガイドラインを見る</a></p>
+      </div>
+    </div>
+
+    <h3 class="section-answer">1分の記録が、次にAI化する業務を教える。</h3>
 
     <div class="steps">
       <div class="step">
@@ -1070,8 +1114,8 @@ footer .fnav a:hover{color:#fff;}
 
     <div class="column">
       <p class="ck">COLUMN</p>
-      <p class="ct">「それ、社員を監視するソフトですよね」と<br>必ず聞かれます。</p>
-      <p class="cx">PCログは監視目的で知られてきました。ワークログ・インサイトの目的は、人を見張ることではなく、<strong>どの業務に時間が使われているかを数えること</strong>です。見せ方と運用は、導入企業ごとに設計します。</p>
+      <p class="ct">「1分ごとに、上司がそばにいるようですね」<br>と言われることがあります。</p>
+      <p class="cx">「これだけで仕事の進め方が変わりそうですね（笑）」という率直な感想が出ることもあります。ただし目的は監視ではなく、<strong>どの業務に時間が使われているかを数え、次の改善を決めること</strong>です。生産性向上を保証するものではありません。</p>
       <button class="cmore" data-open-column>続きを読む</button>
     </div>
 
@@ -1643,9 +1687,9 @@ footer .fnav a:hover{color:#fff;}
   <div class="modal-box cmodal-box">
     <button class="modal-close" data-close-column aria-label="閉じる">×</button>
     <span class="cmk">COLUMN</span>
-    <h3 id="cmodalTitle">「それ、社員を監視するソフトですよね」と必ず聞かれます。</h3>
+    <h3 id="cmodalTitle">「1分ごとに、上司がそばにいるようですね」と言われることがあります。</h3>
     <div class="cbody">
-      <p>商談で必ず出る質問です。ここを曖昧にしたまま進めると、決裁の直前で止まります。御社が答えられるよう、当社の整理をそのままお渡しします。</p>
+      <p>「これだけで仕事の進め方が変わりそうですね（笑）」という率直な感想が出ることもあります。ただし、数値の効果をお約束するものではありません。商談で誤解が起きないよう、目的と運用の考え方を先に共有します。</p>
 
       <h4>PCログ管理ソフトは、コロナ前からありました</h4>
       <p>キーボードの打鍵、アプリの起動と終了、閲覧したサイト、外部機器の接続、画面のキャプチャ。こうした記録を取るソフトは以前から販売されており、テレワークが広がった2020年前後に「在宅勤務中にきちんと働いているか」を確かめる用途で一気に知られました。いま「PCの記録を取る」と言えば、多くの経営者と社員が、まずこの種のソフトを思い浮かべます。</p>
