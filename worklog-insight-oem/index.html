@@ -91,8 +91,8 @@ body{
   font-family:var(--jp);
   color:var(--ink);
   background:var(--paper);
-  font-size:16px;
-  line-height:1.85;
+  font-size:17px;
+  line-height:1.78;
   font-feature-settings:"palt" 1;
 }
 .wrap{max-width:1140px;margin:0 auto;padding:0 24px;}
@@ -101,15 +101,17 @@ body{
 /* ── セクションの2段組み（左＝小見出し／右＝本文） ── */
 .sec-grid{display:grid;grid-template-columns:272px 1fr;gap:64px;align-items:start;}
 .sec-head{position:sticky;top:36px;}
-.sec-head h2{margin-bottom:0;font-size:clamp(1.2rem,2.3vw,1.62rem);line-height:1.5;}
+.sec-head h2{margin-bottom:0;font-size:clamp(1.5rem,2.65vw,2.05rem);line-height:1.42;}
 .sec-head h2 .q{display:block;font-family:var(--jp);font-weight:800;}
 .sec-head h2 .a{display:block;font-family:var(--mincho);font-weight:600;letter-spacing:.01em;margin-top:4px;}
 .final .sec-head h2 .a{color:#e6e8ee;}
 .sec-body > *:first-child{margin-top:0;}
+.sec-body > p:not(.note):not(.min-label){font-size:1.04rem;line-height:1.82;}
+.sec-body > h3,.section-answer{font-size:clamp(1.3rem,2.35vw,1.65rem);font-weight:900;line-height:1.45;letter-spacing:.01em;margin:48px 0 16px;}
 @media(max-width:940px){
   .sec-grid{grid-template-columns:1fr;gap:0;}
   .sec-head{position:static;margin-bottom:24px;}
-  .sec-head h2{font-size:clamp(1.3rem,3.6vw,2.1rem);}
+  .sec-head h2{font-size:clamp(1.6rem,5.8vw,2.1rem);}
 }
 section{padding:var(--pad) 0;}
 a{color:inherit;}
@@ -144,7 +146,7 @@ h3{
   line-height:1.55;
 }
 p{margin:0 0 18px;}
-.lead{font-size:clamp(.98rem,1.8vw,1.06rem);color:var(--gray);}
+.lead{font-size:clamp(1.05rem,2vw,1.17rem);line-height:1.8;color:var(--gray);}
 .b{color:var(--blue);}
 strong{font-weight:700;}
 .note{color:var(--gray2);display:block;margin-top:14px;}
@@ -264,7 +266,7 @@ strong{font-weight:700;}
 }
 .real-card:hover{border-color:var(--blue);}
 .real-card .rn{font-family:var(--en);font-size:12px;font-weight:800;color:var(--gray2);letter-spacing:.1em;}
-.real-card .rl{font-size:14.5px;font-weight:700;margin-top:6px;line-height:1.5;}
+.real-card .rl{font-size:16px;font-weight:700;margin-top:6px;line-height:1.55;}
 .real-card .ra{font-size:12.5px;color:var(--blue);margin-top:8px;font-weight:600;}
 @media(max-width:880px){.real-grid{grid-template-columns:1fr;}}
 
@@ -282,7 +284,7 @@ strong{font-weight:700;}
   border:1px solid var(--line);
   border-radius:5px;
   padding:15px 16px;
-  font-size:14px;
+  font-size:15.5px;
   font-weight:600;
   line-height:1.55;
 }
@@ -297,7 +299,7 @@ strong{font-weight:700;}
 .step:last-child{border-right:none;}
 .step .sn{font-family:var(--en);font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--blue);}
 .step h3{margin-top:10px;}
-.step p{font-size:14.5px;color:var(--gray);margin:0;}
+.step p{font-size:16px;color:var(--gray);margin:0;line-height:1.75;}
 @media(max-width:760px){
   .steps{grid-template-columns:1fr;}
   .step{border-right:none;border-bottom:1px solid var(--line);}
@@ -315,7 +317,7 @@ strong{font-weight:700;}
 .alt .card{background:var(--paper);}
 .card .cn{font-family:var(--en);font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--gray2);}
 .card h3{margin-top:10px;}
-.card p{font-size:14.5px;color:var(--gray);margin:0;}
+.card p{font-size:16px;color:var(--gray);margin:0;line-height:1.75;}
 @media(max-width:820px){.three{grid-template-columns:1fr;}}
 
 .quote br{display:none;}
@@ -528,19 +530,19 @@ input[type=range]::-moz-range-thumb{
 /* ── 月額ストックの積み上げ図（01） ─── */
 .proposal-stack{margin-top:36px;padding:28px 24px 24px;background:var(--faint);border:1px solid var(--line);border-radius:8px;}
 .proposal-stack .ps-kicker{font-family:var(--en);font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--gray2);margin:0 0 7px;}
-.proposal-stack .ps-title{font-size:clamp(1rem,2.2vw,1.16rem);font-weight:800;line-height:1.6;margin:0;}
-.proposal-stack .ps-lead{font-size:13.5px;color:var(--gray);line-height:1.75;margin:9px 0 24px;}
+.proposal-stack .ps-title{font-size:clamp(1.15rem,2.3vw,1.42rem);font-weight:900;line-height:1.5;margin:0;}
+.proposal-stack .ps-lead{font-size:15px;color:var(--gray);line-height:1.75;margin:10px 0 24px;}
 .stack-chart{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;align-items:end;}
 .stack-stage{min-height:224px;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;}
-.stack-stage .period{font-family:var(--en);font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--gray2);margin:0 0 7px;}
-.stack-stage .stage-title{font-size:12.5px;font-weight:700;line-height:1.55;margin:0 0 10px;min-height:40px;}
-.stack-stage .layer{min-height:36px;padding:8px 9px;display:flex;align-items:center;font-size:11.5px;font-weight:700;line-height:1.35;color:#fff;border-radius:3px;}
-.stack-stage .layer small{font-family:var(--en);font-size:10px;font-weight:800;margin-left:auto;padding-left:4px;color:inherit;white-space:nowrap;}
+.stack-stage .period{font-family:var(--en);font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--gray2);margin:0 0 7px;}
+.stack-stage .stage-title{font-size:14px;font-weight:800;line-height:1.55;margin:0 0 10px;min-height:44px;}
+.stack-stage .layer{min-height:40px;padding:9px 10px;display:flex;align-items:center;font-size:13px;font-weight:800;line-height:1.35;color:#fff;border-radius:3px;}
+.stack-stage .layer small{font-family:var(--en);font-size:11px;font-weight:800;margin-left:auto;padding-left:4px;color:inherit;white-space:nowrap;}
 .stack-stage .layer.worklog{background:var(--blue);}
 .stack-stage .layer.next-1{background:#5479b7;}
 .stack-stage .layer.next-2{background:#7f9bc8;}
 .stack-stage .layer.next-3{background:#a3b7d7;color:var(--blue-d);}
-.proposal-stack .ps-note{font-size:12px;color:var(--gray2);line-height:1.7;margin:18px 0 0;}
+.proposal-stack .ps-note{font-size:13px;color:var(--gray2);line-height:1.7;margin:18px 0 0;}
 @media(max-width:760px){
   .proposal-stack{padding:24px 18px 20px;}
   .stack-chart{grid-template-columns:1fr 1fr;gap:18px 10px;}
@@ -560,7 +562,7 @@ input[type=range]::-moz-range-thumb{
 }
 .column .ck::before{content:"";width:20px;height:1.5px;background:var(--gray2);}
 .column .ct{font-size:clamp(1rem,2.2vw,1.12rem);font-weight:800;margin:0 0 12px;line-height:1.6;}
-.column .cx{font-size:14px;color:var(--gray);margin:0;line-height:1.9;}
+.column .cx{font-size:16px;color:var(--gray);margin:0;line-height:1.85;}
 .column .cmore{
   margin-top:18px;background:none;border:1px solid var(--gray2);border-radius:20px;
   padding:9px 20px;font-family:var(--jp);font-size:13px;font-weight:700;color:var(--ink);
@@ -601,7 +603,7 @@ input[type=range]::-moz-range-thumb{
 .build{margin-top:30px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:26px 24px 22px;}
 .alt .build{background:var(--paper);}
 .build .bh{font-size:clamp(1rem,2.2vw,1.16rem);font-weight:800;margin:0 0 8px;line-height:1.55;}
-.build .bs{font-size:14px;color:var(--gray);margin:0 0 20px;line-height:1.8;}
+.build .bs{font-size:16px;color:var(--gray);margin:0 0 20px;line-height:1.8;}
 .build ol{margin:0;padding:0;list-style:none;counter-reset:b;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
 .build li{counter-increment:b;padding-top:14px;border-top:2px solid var(--blue);}
 .build li::before{
@@ -609,8 +611,8 @@ input[type=range]::-moz-range-thumb{
   font-family:var(--en);font-size:12px;font-weight:800;color:var(--blue);
   display:block;margin-bottom:6px;letter-spacing:.08em;
 }
-.build li b{display:block;font-size:14.5px;font-weight:700;margin-bottom:5px;line-height:1.55;}
-.build li span{font-size:13px;color:var(--gray);line-height:1.7;display:block;}
+.build li b{display:block;font-size:16px;font-weight:700;margin-bottom:5px;line-height:1.55;}
+.build li span{font-size:15px;color:var(--gray);line-height:1.7;display:block;}
 @media(max-width:720px){ .build ol{grid-template-columns:1fr;gap:14px;} }
 
 /* ── 「たとえば」ボタンと事例モーダル ── */
@@ -704,7 +706,7 @@ input[type=range]::-moz-range-thumb{
 .plan .pp .u{font-family:var(--jp);font-size:14px;font-weight:700;color:var(--gray);margin-left:4px;}
 .plan ul{margin:16px 0 0;padding:0;list-style:none;}
 .plan li{
-  font-size:14px;color:var(--gray);
+  font-size:16px;color:var(--gray);
   padding:9px 0 9px 20px;
   border-top:1px solid var(--line);
   position:relative;line-height:1.65;
@@ -727,7 +729,7 @@ input[type=range]::-moz-range-thumb{
 }
 .split .sh.w{background:var(--blue);}
 .split ul{margin:0;padding:0;list-style:none;}
-.split li{font-size:14.5px;padding:7px 0 7px 18px;position:relative;color:var(--gray);line-height:1.65;}
+.split li{font-size:16px;padding:7px 0 7px 18px;position:relative;color:var(--gray);line-height:1.7;}
 .split li::before{content:"";position:absolute;left:0;top:15px;width:8px;height:1.5px;background:var(--gray2);}
 @media(max-width:760px){
   .split{grid-template-columns:1fr;}
@@ -765,12 +767,12 @@ input[type=range]::-moz-range-thumb{
 /* ── 実測アンケート ─────────────────── */
 .survey{margin-top:38px;border:1px solid var(--line);border-radius:8px;background:#fff;padding:26px 26px 22px;}
 .alt .survey{background:var(--paper);}
-.survey p{font-size:14.5px;color:var(--gray);margin:0 0 18px;line-height:1.85;}
+.survey p{font-size:16px;color:var(--gray);margin:0 0 18px;line-height:1.85;}
 .survey .vh{font-family:var(--en);font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--gray2);margin:0 0 12px;}
 .survey .rt{font-size:clamp(1.05rem,2.4vw,1.24rem);font-weight:800;color:var(--ink);margin:0 0 12px;line-height:1.6;}
 .survey-rows{border-top:2px solid var(--ink);margin-top:4px;}
 .survey-row{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid var(--line);}
-.survey-row .sl{font-size:14.5px;font-weight:600;line-height:1.6;}
+.survey-row .sl{font-size:16px;font-weight:600;line-height:1.6;}
 .survey-row .sv{font-family:var(--en);font-size:clamp(1.3rem,3vw,1.7rem);font-weight:800;color:var(--blue);flex:none;line-height:1.2;}
 .survey-row .sv .u{font-family:var(--jp);font-size:13px;font-weight:700;color:var(--ink);margin-left:3px;}
 .survey-row.mute .sv{color:var(--gray2);}
@@ -781,7 +783,7 @@ input[type=range]::-moz-range-thumb{
 .risk{margin-top:34px;border:1px solid var(--ink);border-radius:8px;background:#fff;padding:24px 26px;}
 .alt .risk{background:var(--paper);}
 .risk .rh{font-size:clamp(1rem,2.2vw,1.14rem);font-weight:800;margin:0 0 14px;line-height:1.6;}
-.risk p{font-size:14.5px;color:var(--gray);margin:0 0 12px;line-height:1.85;}
+.risk p{font-size:16px;color:var(--gray);margin:0 0 12px;line-height:1.85;}
 .risk p:last-child{margin-bottom:0;}
 .risk strong{color:var(--ink);font-weight:800;}
 
@@ -791,7 +793,7 @@ input[type=range]::-moz-range-thumb{
 .flow4 > div:last-child{border-right:none;background:var(--blue-l);}
 .flow4 .fn{font-family:var(--en);font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--blue);}
 .flow4 h3{margin-top:10px;font-size:1rem;}
-.flow4 p{font-size:14px;color:var(--gray);margin:0;}
+.flow4 p{font-size:16px;color:var(--gray);margin:0;line-height:1.75;}
 @media(max-width:820px){
   .flow4{grid-template-columns:1fr;}
   .flow4 > div{border-right:none;border-bottom:1px solid var(--line);}
@@ -899,7 +901,7 @@ footer .fnav a:hover{color:#fff;}
   <div class="wrap">
     <p class="kicker">Worklog Insight ／ OEM Partner</p>
     <h1><span id="typeText">お客様のパソコンに、御社の営業マンをインストールする。</span><span class="type-cursor" aria-hidden="true"></span></h1>
-    <p class="lead">PCの画面を約1分に1回記録し、AIが「業務名」に変える月額サービスを、御社の名前で販売できます。エンド1ID 月額10,000円のうち、<strong class="b">4,000円が御社の取り分</strong>です。開発もサーバーも料金回収も、当社が持ちます。</p>
+    <p class="lead">PCの画面を約1分に1回記録し、AIが業務名に変える月額サービスです。御社の名前で販売でき、1ID月額10,000円のうち、<strong class="b">4,000円が御社の取り分</strong>です。</p>
     <div class="hero-cta">
       <button class="btn btn-main" data-open-modal><span class="play" aria-hidden="true"></span>5分のミニセミナーを視聴する</button>
       <a class="btn btn-sub" href="#real">実物の3画面を見る</a>
@@ -949,8 +951,8 @@ footer .fnav a:hover{color:#fff;}
     <h2><span class="q">新規顧客を増やすより、</span><span class="a">顧客1社への提案回数を増やす。</span></h2>
     </div>
     <div class="sec-body">
-    <p class="lead">新規開拓だけを増やし続ける前提は、年々つくりにくくなっています。だから御社が持つべきなのは、新しい見込み客を探し続ける仕組みではありません。<strong>すでにお取引のあるお客様へ、次の課題を解く商材を順番にご案内できる仕組み</strong>です。</p>
-    <p>御社には、すでにお客様との関係があります。ライトアップには、販売する商材と、その商材を売れる形にする知見があります。御社が既存顧客へご案内し、ライトアップが商材・導入設計・営業支援を担う。売れた月額は残り続け、その上に次の提案が積み上がります。</p>
+    <p class="lead">新規開拓だけを増やし続ける前提は、年々つくりにくくなっています。だから、<strong>すでにお取引のあるお客様へ、次の課題を解く商材を順番にご案内する</strong>。その仕組みをつくります。</p>
+    <p>御社がお客様との関係を持ち、ライトアップが商材・導入設計・営業支援を担う。売れた月額は残り、その上に次の提案が積み上がります。</p>
 
     <div class="shrink">
       <p class="sh">新しい見込み客を増やす前に、今いるお客様との取引を深くする。</p>
@@ -970,8 +972,8 @@ footer .fnav a:hover{color:#fff;}
 
     <div class="proposal-stack" aria-label="既存顧客への提案を積み上げるイメージ">
       <p class="ps-kicker">REPEATABLE PROPOSAL MODEL</p>
-      <p class="ps-title">3か月に1本ずつ、既存顧客へ次の提案をする。</p>
-      <p class="ps-lead">ご案内先を決めて、案内漏れなく一巡したら、次の商材へ。売った月額は下に残り、その上に次の商材が積み上がります。</p>
+      <p class="ps-title">既存顧客に、3か月ごとに次の提案をする。</p>
+      <p class="ps-lead">一巡したら次の商材へ。売った月額は残り続けます。</p>
       <div class="stack-chart" role="img" aria-label="3か月ごとに商材を提案し、導入企業が積み上がる4期のイメージ図">
         <div class="stack-stage">
           <p class="period">MONTH 1–3</p>
@@ -1004,7 +1006,7 @@ footer .fnav a:hover{color:#fff;}
     </div>
 
     <h3 style="margin-top:44px;">最初の一本に、ワークログ・インサイト。</h3>
-    <p>PCを日常業務で使う法人であれば、業種を問わず提案対象にしやすい商材です。社員に新しい入力を求めず、画面の記録から業務を見える化できる。さらに、見えた課題は人材・BPO・業務改善・AI導入といった御社の次の提案にもつながります。</p>
+    <p>PCを日常業務で使う法人なら、業種を問わず提案しやすい商材です。入力なしで業務を見える化し、見えた課題を御社の次の提案につなげます。</p>
     <h3 style="margin-top:36px;">こういう会社・こういう方が、向いています。</h3>
     <div class="tag-grid">
       <div class="tag">人材紹介・人材派遣<span>面談で現場の困りごとを聞ける</span></div>
@@ -1032,10 +1034,8 @@ footer .fnav a:hover{color:#fff;}
     <h2><span class="q">売るのは、1分に1回のスクリーンショット。</span><span class="a">現場の入力は、ゼロです。</span></h2>
     </div>
     <div class="sec-body">
-    <p class="lead">いま、自動化の話をしない経営者はいません。ところが「では、何から自動化しますか」と聞いた瞬間、ほぼ全社が止まります。誰が何にどれだけ時間を使っているか、正確には誰も知らないからです。</p>
-    <p>日報は書く手間がかかり、書いた本人の記憶で歪みます。音声は会議しか拾えません。突き詰めると、実際の作業そのものが写っていて、入力の手間がなく、AIが読めるものは1つでした。<strong>画面の記録</strong>です。</p>
-
-    <div class="quote">究極のログは、スクリーンショットです。</div>
+    <h3 class="section-answer">入力ゼロで、業務が見える。</h3>
+    <p class="lead">自動化を始めるには、誰が何に時間を使っているかを知る必要があります。日報や記憶ではなく、実際の作業を残すのが<strong>画面の記録</strong>です。</p>
 
     <div class="steps">
       <div class="step">
@@ -1059,19 +1059,19 @@ footer .fnav a:hover{color:#fff;}
     <div class="survey">
       <p class="vh">FIELD DATA ／ 2026.08.28</p>
       <p class="rt">7名に説明して、5名が「使ってみたい」。</p>
-      <p>売り込んだのではありません。当社が主催したセミナーで、いまの3ステップをそのまま説明しただけです。そのときの回答が、これでした。</p>
+      <p>当社セミナーで、3ステップを説明した際の回答です。</p>
       <div class="survey-rows">
         <div class="survey-row"><span class="sl">無料モニターを希望</span><span class="sv">5<span class="u">名</span></span></div>
         <div class="survey-row"><span class="sl">興味あり</span><span class="sv">1<span class="u">名</span></span></div>
         <div class="survey-row mute"><span class="sl">回答者数</span><span class="sv">7<span class="u">名</span></span></div>
       </div>
-      <p class="sfoot">2026年8月28日に当社が開催したセミナーでの参加者アンケート（回答7名）の実測値です。母数が7名のため、市場全体の需要を示す数字ではありません。それでも、<strong>説明した相手が自分から手を挙げる商材である</strong>ことの裏づけにはなります。</p>
+      <p class="sfoot">2026年8月28日の当社セミナー（回答7名）の実測値です。市場全体の需要を示すものではありません。</p>
     </div>
 
     <div class="column">
       <p class="ck">COLUMN</p>
       <p class="ct">「それ、社員を監視するソフトですよね」と<br>必ず聞かれます。</p>
-      <p class="cx">PCのログを取るソフトは、コロナ前から存在します。キーボードの打鍵、アプリの起動、閲覧したサイトを記録し、在宅勤務中にサボっていないかを確かめる——テレワークが広がった2020年前後に、その用途で一気に知られました。<br><br>ワークログ・インサイトは、そこを目的にしていません。人を見張るためではなく、<strong>どの業務に時間が使われているかを数えるため</strong>の道具です。ただし「では監視には使えないのか」と問われると、答えは単純ではありません。管理画面の作り方しだいで、できてしまう部分があるからです。</p>
+      <p class="cx">PCログは監視目的で知られてきました。ワークログ・インサイトの目的は、人を見張ることではなく、<strong>どの業務に時間が使われているかを数えること</strong>です。見せ方と運用は、導入企業ごとに設計します。</p>
       <button class="cmore" data-open-column>続きを読む</button>
     </div>
 
@@ -1089,11 +1089,8 @@ footer .fnav a:hover{color:#fff;}
     <h2><span class="q">4,000円は、入り口です。</span><span class="a">その先に、御社の本業の商談があります。</span></h2>
     </div>
     <div class="sec-body">
-    <p class="lead">1IDあたり4,000円は、契約が続いているあいだ毎月の取り分になります。ただしこのOEMで本当に大きいのは、その先です。</p>
-    <p>ワークログ・インサイトの管理画面には、記録から導いた「次にやるべきこと」が並びます。この業務は外に出せる、この部署は人が足りていない、この作業はツールで消せる——そこに<strong class="b">御社のサービスが、必要になったタイミングで並びます</strong>。</p>
-    <p>人材会社であれば、人手が足りていない部署が数字で見えた瞬間に。コンサルであれば、非効率が特定された瞬間に。ツール販社であれば、その作業が何時間かかっているか出た瞬間に。<strong>売り込みではなく、記録が先に必要性を示している状態</strong>から話が始まります。</p>
-
-    <div class="quote">1台入れるたびに、御社の本業の商談機会が、<br>お客様の社内に常駐します。</div>
+    <h3 class="section-answer">見えた課題が、御社の次の商談になる。</h3>
+    <p class="lead">1IDあたり4,000円は、契約が続くかぎり毎月の取り分です。さらに管理画面で見えた人手不足・非効率・外注候補が、<strong class="b">御社の本業を提案するタイミング</strong>になります。</p>
 
     <div class="three">
       <div class="card">
@@ -1127,7 +1124,8 @@ footer .fnav a:hover{color:#fff;}
     <h2><span class="q">1社で、何十台。</span><span class="a">10名の会社で毎月4万円、200名の会社で毎月80万円。</span></h2>
     </div>
     <div class="sec-body">
-    <p class="lead">1社1契約ではありません。PCの台数だけ入ります。10名の会社なら10台、200名の会社に全社導入となれば200台。大手企業に入れば、一度の商談で何百台という話になります。</p>
+    <h3 class="section-answer">1社の導入が、毎月の取り分になる。</h3>
+    <p class="lead">契約はPCの台数単位です。10名の会社なら10台、200名なら200台。1社の導入が、継続する月額収益になります。</p>
 
     <div class="split-bar">
       <div class="sb-top">
@@ -1149,7 +1147,7 @@ footer .fnav a:hover{color:#fff;}
         <div class="bbr">粗利 8,000円を、当社と御社で折半します</div>
       </div>
     </div>
-    <small class="note">御社の仕入（卸値）は、原価2,000円と当社の取り分4,000円を合わせた6,000円です。金額はすべて1IDあたりの月額です。税の扱いと課金単位は、個別相談の場でご説明します。</small>
+    <small class="note">御社の仕入は、原価2,000円と当社取り分4,000円を合わせた月額6,000円です。税・課金単位は個別相談でご説明します。</small>
 
     <div class="flowfig">
       <p class="ft">お金と役割の流れ</p>
@@ -1200,10 +1198,10 @@ footer .fnav a:hover{color:#fff;}
         <text x="160" y="268" text-anchor="middle" font-size="17" font-weight="700" fill="#111318">御社</text>
         <text x="160" y="292" text-anchor="middle" font-size="14" fill="#525763">販売・一次対応／毎月入り続ける</text>
       </svg>
-      <p class="fnote">エンド顧客への請求と回収は当社が行い、御社には1IDあたり4,000円が毎月渡ります。御社が立て替える費用はありません。入金のタイミングと実務の詳細は、個別相談の場でご説明します。</p>
+      <p class="fnote">請求・回収は当社が行い、御社には1IDあたり4,000円が毎月渡ります。立替費用はありません。</p>
     </div>
 
-    <p style="margin-top:36px;">代理店マージンの相場は20%です。それだと1IDで2,000円にしかならず、100万円に届くまで500台必要になります。動く気になる金額ではありません。だから<strong>40%（実質50%）</strong>に置きました。</p>
+    <p style="margin-top:36px;">一般的な代理店マージン20%では、1IDあたり2,000円です。だから御社の取り分を<strong>40%（実質50%）</strong>に置きました。</p>
 
     <!-- シミュレータ -->
     <div class="sim">
@@ -1257,7 +1255,8 @@ footer .fnav a:hover{color:#fff;}
     <h2><span class="q">100万円を払うか、216万円を預けるか。</span><span class="a">預けるほうが、作り込みぶん100万円多く残ります。</span></h2>
     </div>
     <div class="sec-body">
-    <p class="lead">始め方は2つです。どちらを選んでも、卸値6,000円・取り分4,000円は変わりません。違うのは、最初に何を差し出すかだけ。そして1年で見ると、差はもっとはっきりします。</p>
+    <h3 class="section-answer">始め方は2つ。違うのは、最初に出すものだけです。</h3>
+    <p class="lead">卸値6,000円・取り分4,000円は共通です。作り込み費用を払うか、30IDを先に仕入れるかを選びます。</p>
 
     <div class="assume">
       <p>ここから先は、<strong>毎月3件ずつ、1件あたり10IDを売った場合</strong>で試算します。12か月で累計360ID、最終月の稼働は360IDというペースです。</p>
@@ -1265,7 +1264,7 @@ footer .fnav a:hover{color:#fff;}
 
     <div class="build">
       <p class="bh">どちらのプランでも、御社専用の管理画面を当社が作り込みます。</p>
-      <p class="bs">既製品をそのままお渡しするのではありません。御社の名前で出す画面を、御社が売る相手に合わせて組み直します。この作り込みが、初期の100万円です。</p>
+      <p class="bs">御社の名前で出す画面を、売る相手に合わせて組み直します。この作り込みが初期の100万円です。</p>
       <ol>
         <li><b>御社の名前とデザインで</b><span>エンド顧客が触れる画面を、御社のサービスとして見える形にします。</span></li>
         <li><b>御社が売る相手に合わせて</b><span>実際の業務ログをお預かりし、その業種で意味のあるレポートの中身と言葉に組み直します。</span></li>
@@ -1331,13 +1330,13 @@ footer .fnav a:hover{color:#fff;}
       </div>
     </div>
 
-    <p style="margin-top:26px;">差がちょうど100万円になるのは、偶然ではありません。<strong>Bで先に出す216万円は「仕入れ」なので、売れれば全額戻ってきます。</strong>戻らないのは、Aの作り込み費用100万円だけ。先行30IDが毎月30万円を生むため、8か月目には216万円を回収し終えます。</p>
+    <p style="margin-top:26px;"><strong>Bで先に出す216万円は仕入れです。</strong>売れれば全額戻り、先行30ID分の売上が毎月残ります。</p>
 
     <div class="three-co">
       <div class="tn">3<em>社</em></div>
       <div>
         <p class="tb">30IDと聞くと多く感じますが、1社10IDなら3社です。</p>
-        <p class="td">10名の会社に3社入れれば、先に仕入れた30IDは埋まります。埋まった時点から、その30ID分の売上30万円が毎月そのまま御社に入り、8か月目には216万円を回収し終えます。それ以降は、上乗せです。</p>
+        <p class="td">10名の会社に3社入れれば、先に仕入れた30IDが埋まります。その売上30万円が毎月残ります。</p>
       </div>
     </div>
 
@@ -1353,13 +1352,13 @@ footer .fnav a:hover{color:#fff;}
       <div class="bi">3ID</div>
       <div>
         <p class="bt">どちらのプランでも、御社が自社で使う3IDは無料でお付けします。</p>
-        <p class="bd">売る前に、まず御社の中で使ってみてください。自社の業務が画面の記録からどう見えるかを体験していただくのが、いちばん早い商品理解になります。そのまま商談で「うちではこう出ています」と実物をお見せいただけます。</p>
+        <p class="bd">まず御社の中で使い、画面の記録から業務がどう見えるかを体験してください。そのまま商談で実物を見せられます。</p>
       </div>
     </div>
 
     <small class="note">返金の時期・条件、30IDに満たない場合の扱い、税の扱いは、個別にご説明します。</small>
 
-    <p style="margin-top:36px;">30ID入った状態で見ると、2年目以降は当社も御社も<strong>年144万円ずつ</strong>（4,000円×30ID×12か月）で並びます。最初だけ当社が多く受け取り、そこから先は対等です。長く売っていただくほど、御社の取り分が効いてきます。</p>
+    <p style="margin-top:36px;">30IDが入ると、2年目以降は当社も御社も<strong>年144万円ずつ</strong>で並びます。</p>
     </div>
    </div>
   </div>
@@ -1374,7 +1373,8 @@ footer .fnav a:hover{color:#fff;}
     <h2><span class="q">開発・サーバー・料金回収は当社。</span><span class="a">御社がやるのは、販売と一次対応だけ。</span></h2>
     </div>
     <div class="sec-body">
-    <p class="lead">OEMで一番不安なのは「結局、自社で開発や運用を抱えるのでは」という点だと思います。そこは持ちません。</p>
+    <h3 class="section-answer">御社は売る。ライトアップは支える。</h3>
+    <p class="lead">開発・運用を御社が抱えることはありません。役割を明確に分けます。</p>
 
     <div class="split">
       <div>
@@ -1397,7 +1397,7 @@ footer .fnav a:hover{color:#fff;}
       </div>
     </div>
 
-    <p style="margin-top:34px;"><strong>当社に直販の担当者は置きません。</strong>売るのはパートナー各社です。当社が横から同じ商品を安く売ることは、構造上ありません。</p>
+    <p style="margin-top:34px;"><strong>当社に直販担当は置きません。</strong>売るのはパートナー各社です。</p>
 
     <h3 style="margin-top:44px;">よくいただくご質問</h3>
     <div class="faq">
@@ -1436,7 +1436,8 @@ footer .fnav a:hover{color:#fff;}
     <h2><span class="q">やると決めたら、</span><span class="a">何が始まるのか。</span></h2>
     </div>
     <div class="sec-body">
-    <p class="lead">お申し込みから販売開始までは、4つです。いちばん中身が濃いのは最初の打ち合わせで、そこで御社の顧客リストを一緒に見ながら、最初の5社を決めます。</p>
+    <h3 class="section-answer">最初の5社を、いっしょに決める。</h3>
+    <p class="lead">お申し込みから販売開始までの流れは4つです。最初の打ち合わせで、顧客リストから最初の5社を決めます。</p>
 
     <div class="flow4">
       <div>
@@ -1461,7 +1462,7 @@ footer .fnav a:hover{color:#fff;}
       </div>
     </div>
 
-    <p style="margin-top:30px;">いま動いていただければ、<strong>販売開始は正式提供の初日からです。</strong>後から入っても条件は同じですが、先に入った会社から既存顧客へ話を持っていくことになります。同じ商圏・同じ業種のリストを持つ会社が重なった場合、早い順に埋まるのは避けられません。</p>
+    <p style="margin-top:30px;"><strong>販売開始は正式提供の初日からです。</strong>それまでに、リスト整理と最初の5社への提案準備を進めます。</p>
     <small class="note">個別の打ち合わせを聞いたうえで「やっぱりやめます」で構いません。決まっていない条件を、決まったようにご説明することはしません。</small>
     </div>
    </div>
@@ -1477,7 +1478,7 @@ footer .fnav a:hover{color:#fff;}
     <h2><span class="q">この記録は、</span><span class="a">始めた日からしか貯まりません。</span></h2>
     </div>
     <div class="sec-body">
-    <p class="lead">1年後、御社のお客様の社内に15万枚の画像がある状態と、ゼロの状態。そこから先にできることは、まったく違います。15万枚あれば、そのときのAIが業務の自動化を引き受けてくれるはずです。無ければ、そこから1年待つことになります。<br><br>過去に遡って撮ることは、誰にもできません。だから、始めた会社と始めていない会社の差は、二度と縮まりません。</p>
+    <p class="lead">1年後、お客様の社内に15万枚の記録がある状態と、ゼロの状態では、次にできることが違います。<strong>過去に遡って記録することはできません。</strong>だから、始める日が早いほど次の提案も早くなります。</p>
     <div class="hero-cta">
       <button class="btn btn-main" data-open-modal><span class="play" aria-hidden="true"></span>5分のミニセミナーを視聴する</button>
     </div>
