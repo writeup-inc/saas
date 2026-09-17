@@ -23,7 +23,7 @@
       }
 
       * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
+      html { scroll-behavior: smooth; scroll-padding-top: 94px; }
       body {
         margin: 0;
         background: var(--paper);
@@ -31,6 +31,8 @@
         font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
         line-height: 1.75;
         letter-spacing: .02em;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
       }
       a { color: inherit; }
       button, input, textarea { font: inherit; }
@@ -54,7 +56,7 @@
       .skip-link:focus { left: 16px; top: 16px; z-index: 10; padding: 8px 12px; background: var(--white); }
       :focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 
-      .site-header { border-bottom: 1px solid var(--line); background: rgba(246,245,241,.95); }
+      .site-header { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--line); background: rgba(246,245,241,.95); backdrop-filter: blur(12px); }
       .header-inner { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
       .brand { font-size: 14px; font-weight: 900; text-decoration: none; letter-spacing: .07em; }
       .brand span { color: var(--accent); }
@@ -93,6 +95,9 @@
       .type-list { margin: 0; padding: 0; list-style: none; font-size: 13px; }
       .type-list li { position: relative; padding: 8px 0 8px 20px; border-top: 1px solid rgba(16,32,46,.2); }
       .type-list li::before { content: "—"; position: absolute; left: 0; color: var(--accent); font-weight: 900; }
+      .model-note { display: grid; grid-template-columns: 170px 1fr; gap: 24px; margin: 18px 0; padding: 18px 22px; border-left: 3px solid var(--accent); background: var(--warm-pale); }
+      .model-note span { color: var(--accent-dark); font-size: 11px; font-weight: 900; letter-spacing: .1em; }
+      .model-note p { margin: 0; font-size: 14px; font-weight: 700; line-height: 1.8; }
 
       .connection { margin-top: 18px; padding: clamp(28px, 4vw, 50px); background: var(--ink); color: var(--white); }
       .connection-header { display: flex; justify-content: space-between; gap: 32px; align-items: end; margin-bottom: 28px; }
@@ -110,13 +115,14 @@
       .flow-result span { font-size: 12px; font-weight: 900; letter-spacing: .1em; }
       .flow-result strong { font-size: clamp(21px, 2.5vw, 32px); line-height: 1.25; letter-spacing: -.04em; }
       .flow-result p { max-width: 360px; margin: 0; font-size: 13px; }
-      .case-study-intro { margin: 32px 0 15px; color: var(--aqua); font-size: 11px; font-weight: 900; letter-spacing: .12em; }
-      .case-study-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-      .case-study-link { display: block; min-height: 154px; padding: 22px; border: 1px solid rgba(255,255,255,.34); color: var(--white); text-decoration: none; transition: background .18s ease, color .18s ease, transform .18s ease; }
+      .case-study-intro { margin: 36px 0 15px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,.25); color: var(--aqua); font-size: 11px; font-weight: 900; letter-spacing: .12em; }
+      .case-study-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(255,255,255,.34); }
+      .case-study-link { display: block; min-height: 168px; padding: 24px; background: var(--ink); color: var(--white); text-decoration: none; transition: background .18s ease, color .18s ease, transform .18s ease; }
       .case-study-link:hover { background: var(--white); color: var(--ink); transform: translateY(-2px); }
       .case-study-link span { display: block; color: var(--aqua); font-size: 11px; font-weight: 900; letter-spacing: .1em; }
       .case-study-link:hover span { color: var(--accent); }
-      .case-study-link strong { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-top: 18px; font-size: 19px; line-height: 1.35; }
+      .case-study-link strong { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-top: 18px; font-size: 20px; line-height: 1.35; }
+      .case-study-link strong b { font-size: 18px; }
       .case-study-link p { margin: 9px 0 0; color: #cbd6d9; font-size: 12px; line-height: 1.7; }
       .case-study-link:hover p { color: var(--muted); }
       .connection-action { display: flex; justify-content: space-between; gap: 30px; align-items: center; margin-top: 26px; }
@@ -140,6 +146,7 @@
       .included .eyebrow { color: var(--aqua); }
       .included .section-title { max-width: 430px; }
       .included .section-title em { color: var(--aqua); font-style: normal; }
+      .included-lead { max-width: 410px; margin: 24px 0 0; color: #c8d1d5; font-size: 14px; line-height: 1.9; }
       .included-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid rgba(255,255,255,.45); }
       .included-list li { display: grid; grid-template-columns: 38px 1fr; gap: 18px; padding: 19px 0; border-bottom: 1px solid rgba(255,255,255,.22); }
       .included-list b { color: var(--aqua); font-size: 13px; }
@@ -176,6 +183,7 @@
         .hero-visual { padding-left: var(--gutter); padding-right: var(--gutter); }
         .types-heading, .process-top { display: block; }
         .types-heading p, .process-top p { margin-top: 20px; }
+        .model-note { grid-template-columns: 1fr; gap: 8px; }
         .steps { grid-template-columns: repeat(2, 1fr); }
         .step:nth-child(2) { border-right: 0; }
         .step:nth-child(n+3) { border-top: 1px solid var(--line); }
@@ -272,10 +280,14 @@
               </ul>
             </article>
           </div>
+          <aside class="model-note" aria-label="左脳と右脳の位置づけ">
+            <span>ONE DESIGN, TWO LENSES</span>
+            <p>これは「論理型サイト」と「共感型LP」の二択ではありません。どちらのページにも、理解される順番と、相談したくなる理由の両方を置く。そのための一つの制作です。</p>
+          </aside>
           <div class="connection" aria-label="論理と共感が相談につながる流れ">
             <div class="connection-header">
-              <h3>左脳と右脳は、<br />ひとつの判断をつくります。</h3>
-              <p>会社サイトでもサービスLPでも、見せ方は違っても必要な設計は同じです。二つの力を、別々ではなく連動させます。</p>
+              <h3>読む人の中で、<br />こう進みます。</h3>
+              <p>会社サイトでもサービスLPでも、最終的に目指すのは同じです。二つの力を同じ画面の中で連動させ、判断しやすい状態をつくります。</p>
             </div>
             <div class="connection-flow">
               <div class="flow-card flow-card--logic">
@@ -289,18 +301,18 @@
                 <p>相手の状況に寄り添い、変化後の姿を想像できるようにします。</p>
               </div>
               <div class="flow-result">
-                <div><span>LOGIC + EMPATHY</span><strong>理解が、相談という<br />次の行動につながる。</strong></div>
-                <p>無理に背中を押すのではなく、相談する理由と安心材料を画面の中に揃えます。</p>
+                <div><span>LOGIC + EMPATHY</span><strong>「自分に関係がある」が、<br />相談する理由になる。</strong></div>
+                <p>無理に背中を押すのではなく、相談する理由と安心材料を、画面の中に揃えます。</p>
               </div>
             </div>
             <p class="case-study-intro">EMOTIONAL DESIGN / REFERENCE</p>
             <div class="case-study-grid" aria-label="共感設計の事例">
-              <a class="case-study-link" href="https://nakijin-architect-villa.taka2007.chatgpt.site" target="_blank" rel="noopener noreferrer">
+              <a class="case-study-link" href="https://nakijin-architect-villa.taka2007.chatgpt.site" target="_blank" rel="noopener noreferrer" aria-label="今帰仁のヴィラの事例を別タブで開く">
                 <span>OKINAWA / PRIVATE VILLA</span>
                 <strong>今帰仁のヴィラ <b aria-hidden="true">↗</b></strong>
                 <p>建築、素材、食といった滞在の背景まで含めて、訪れたい気持ちをつくる。</p>
               </a>
-              <a class="case-study-link" href="https://inasa-no-hikari-izumo-rice.vercel.app/" target="_blank" rel="noopener noreferrer">
+              <a class="case-study-link" href="https://inasa-no-hikari-izumo-rice.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="稲佐のひかりの事例を別タブで開く">
                 <span>IZUMO / RICE BRAND</span>
                 <strong>稲佐のひかり <b aria-hidden="true">↗</b></strong>
                 <p>作り手、土地、食卓へ届く時間を重ねて、米を選ぶ意味に変える。</p>
@@ -336,6 +348,7 @@
           <div>
             <p class="eyebrow">What's included</p>
             <h2 class="section-title" id="included-title"><em>36万円</em>に、<br />含まれること。</h2>
+            <p class="included-lead">デザインだけを納品するプランではありません。伝える順番をつくるところから、公開までを一つにします。</p>
           </div>
           <div>
             <ol class="included-list">
@@ -396,7 +409,7 @@
     <footer class="footer">
       <div class="wrap footer-inner">
         <p>WEB START PACK</p>
-        <p>© 2026. Demo design for homepage production service.</p>
+        <p>© 2026. HOMEPAGE PRODUCTION START PACK.</p>
       </div>
     </footer>
 
