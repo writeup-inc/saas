@@ -110,6 +110,15 @@
       .flow-result span { font-size: 12px; font-weight: 900; letter-spacing: .1em; }
       .flow-result strong { font-size: clamp(21px, 2.5vw, 32px); line-height: 1.25; letter-spacing: -.04em; }
       .flow-result p { max-width: 360px; margin: 0; font-size: 13px; }
+      .case-study-intro { margin: 32px 0 15px; color: var(--aqua); font-size: 11px; font-weight: 900; letter-spacing: .12em; }
+      .case-study-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .case-study-link { display: block; min-height: 154px; padding: 22px; border: 1px solid rgba(255,255,255,.34); color: var(--white); text-decoration: none; transition: background .18s ease, color .18s ease, transform .18s ease; }
+      .case-study-link:hover { background: var(--white); color: var(--ink); transform: translateY(-2px); }
+      .case-study-link span { display: block; color: var(--aqua); font-size: 11px; font-weight: 900; letter-spacing: .1em; }
+      .case-study-link:hover span { color: var(--accent); }
+      .case-study-link strong { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-top: 18px; font-size: 19px; line-height: 1.35; }
+      .case-study-link p { margin: 9px 0 0; color: #cbd6d9; font-size: 12px; line-height: 1.7; }
+      .case-study-link:hover p { color: var(--muted); }
       .connection-action { display: flex; justify-content: space-between; gap: 30px; align-items: center; margin-top: 26px; }
       .connection-action p { margin: 0; color: #cbd6d9; font-size: 13px; }
       .connection .button { border-color: var(--aqua); background: var(--aqua); color: var(--ink); white-space: nowrap; }
@@ -187,6 +196,7 @@
         .connection-flow { grid-template-columns: 1fr; }
         .flow-result { grid-column: auto; grid-template-columns: 1fr; }
         .flow-result::before { left: 24px; }
+        .case-study-grid { grid-template-columns: 1fr; }
         .connection-action .button { width: 100%; margin-top: 20px; }
         .steps { grid-template-columns: 1fr; }
         .step, .step:not(:first-child) { min-height: 0; padding: 20px 0; border-right: 0; border-top: 1px solid var(--line); }
@@ -282,6 +292,19 @@
                 <div><span>LOGIC + EMPATHY</span><strong>理解が、相談という<br />次の行動につながる。</strong></div>
                 <p>無理に背中を押すのではなく、相談する理由と安心材料を画面の中に揃えます。</p>
               </div>
+            </div>
+            <p class="case-study-intro">EMOTIONAL DESIGN / REFERENCE</p>
+            <div class="case-study-grid" aria-label="共感設計の事例">
+              <a class="case-study-link" href="https://nakijin-architect-villa.taka2007.chatgpt.site" target="_blank" rel="noopener noreferrer">
+                <span>OKINAWA / PRIVATE VILLA</span>
+                <strong>今帰仁のヴィラ <b aria-hidden="true">↗</b></strong>
+                <p>建築、素材、食といった滞在の背景まで含めて、訪れたい気持ちをつくる。</p>
+              </a>
+              <a class="case-study-link" href="https://inasa-no-hikari-izumo-rice.vercel.app/" target="_blank" rel="noopener noreferrer">
+                <span>IZUMO / RICE BRAND</span>
+                <strong>稲佐のひかり <b aria-hidden="true">↗</b></strong>
+                <p>作り手、土地、食卓へ届く時間を重ねて、米を選ぶ意味に変える。</p>
+              </a>
             </div>
             <div class="connection-action">
               <p>まずは「今のサイトで伝わっていないこと」から整理します。</p>
