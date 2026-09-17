@@ -178,6 +178,9 @@ strong{font-weight:700;}
   margin:0 0 26px;
   min-height:calc(1.35em * 3);
 }
+.hero-title-trigger{cursor:pointer;}
+.hero-title-trigger:hover #typeText{text-decoration:underline;text-decoration-thickness:2px;text-decoration-color:rgba(26,79,160,.28);text-underline-offset:.14em;}
+.hero-title-trigger:focus-visible{outline:2px solid var(--blue);outline-offset:6px;border-radius:3px;}
 .type-cursor{
   display:inline-block;
   width:3px;
@@ -671,6 +674,16 @@ input[type=range]::-moz-range-thumb{
 .ex-card .exf{font-size:12.5px;color:var(--gray);margin:14px 0 0;padding-top:12px;border-top:1px solid var(--line);line-height:1.75;}
 .emodal-box .enote{font-size:12px;color:var(--gray2);margin:22px 0 0;line-height:1.75;}
 
+/* ヒーローコピー一覧モーダル */
+.modal-box.hcopy-modal{max-width:760px;padding:36px 34px 32px;}
+.modal-box.hcopy-modal h3{font-size:clamp(1.1rem,2.6vw,1.34rem);margin:10px 0 6px;line-height:1.6;}
+.hcopy-modal .hcopy-lead{font-size:13.5px;color:var(--gray);margin:0 0 22px;line-height:1.85;}
+.hcopy-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);}
+.hcopy-list li{display:grid;grid-template-columns:48px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--line);align-items:start;}
+.hcopy-list .hcopy-no{font-family:var(--en);font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--blue);padding-top:4px;}
+.hcopy-list p{font-size:clamp(1rem,2vw,1.18rem);font-weight:800;line-height:1.65;margin:0;}
+@media(max-width:520px){.modal-box.hcopy-modal{padding:32px 22px 26px;}.hcopy-list li{grid-template-columns:36px 1fr;gap:10px;padding:15px 0;}}
+
 /* ── 3社で埋まる ─────────────────────── */
 .three-co{
   margin-top:30px;border:1px solid var(--line);border-radius:8px;
@@ -930,7 +943,7 @@ footer .fnav a:hover{color:#fff;}
   </div>
   <div class="wrap">
     <p class="kicker">Worklog Insight ／ OEM Partner</p>
-    <h1><span id="typeText">お客様のパソコンに、御社の営業マンをインストールする。</span><span class="type-cursor" aria-hidden="true"></span></h1>
+    <h1 id="heroCopyTrigger" class="hero-title-trigger" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="hcopyModal" aria-expanded="false" aria-label="ヒーローセクションのすべてのコピーを見る"><span id="typeText">お客様のパソコンに、御社の営業マンをインストールする。</span><span class="type-cursor" aria-hidden="true"></span></h1>
     <p class="lead">PCの画面を約1分に1回記録し、AIが業務名に変える月額サービスです。御社の名前で販売でき、1ID月額10,000円のうち、<strong class="b">4,000円が御社の取り分</strong>です。</p>
     <div class="hero-cta">
       <button class="btn btn-main" data-open-modal><span class="play" aria-hidden="true"></span>15分のミニセミナーを視聴する</button>
@@ -1619,6 +1632,17 @@ footer .fnav a:hover{color:#fff;}
   </div>
 </div>
 
+<!-- ══════════ HERO COPY MODAL ══════════ -->
+<div class="modal" id="hcopyModal" role="dialog" aria-modal="true" aria-labelledby="hcopyModalTitle">
+  <div class="modal-box hcopy-modal">
+    <button class="modal-close" data-close-hero-copy aria-label="閉じる">×</button>
+    <span class="cmk">HERO COPY</span>
+    <h3 id="hcopyModalTitle">ヒーローセクションのすべて</h3>
+    <p class="hcopy-lead">画面上で順番に切り替わるテキストを、一覧でご覧いただけます。</p>
+    <ol class="hcopy-list" id="hcopyList"></ol>
+  </div>
+</div>
+
 <!-- ══════════ EXAMPLE MODAL ══════════ -->
 <div class="modal" id="emodal" role="dialog" aria-modal="true" aria-labelledby="emodalTitle">
   <div class="modal-box emodal-box">
@@ -1752,6 +1776,43 @@ footer .fnav a:hover{color:#fff;}
   ];
   var el = document.getElementById('typeText');
   if(!el) return;
+
+  var trigger = document.getElementById('heroCopyTrigger'),
+      copyModal = document.getElementById('hcopyModal'),
+      copyList = document.getElementById('hcopyList');
+  if(trigger && copyModal && copyList){
+    lines.forEach(function(line, index){
+      var item = document.createElement('li'),
+          no = document.createElement('span'),
+          copy = document.createElement('p');
+      no.className = 'hcopy-no';
+      no.textContent = ('0' + (index + 1)).slice(-2);
+      copy.textContent = line;
+      item.appendChild(no);
+      item.appendChild(copy);
+      copyList.appendChild(item);
+    });
+    function openCopies(){
+      copyModal.classList.add('on');
+      trigger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      var closeButton = copyModal.querySelector('[data-close-hero-copy]');
+      if(closeButton) setTimeout(function(){ closeButton.focus(); }, 40);
+    }
+    function closeCopies(){
+      copyModal.classList.remove('on');
+      trigger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      trigger.focus();
+    }
+    trigger.addEventListener('click', openCopies);
+    trigger.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openCopies(); }
+    });
+    copyModal.querySelectorAll('[data-close-hero-copy]').forEach(function(button){ button.addEventListener('click', closeCopies); });
+    copyModal.addEventListener('click', function(e){ if(e.target === copyModal) closeCopies(); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && copyModal.classList.contains('on')) closeCopies(); });
+  }
 
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(reduce){ el.textContent = lines[0]; return; }
