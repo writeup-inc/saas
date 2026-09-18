@@ -313,6 +313,14 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
 .hg-card-meta{display:block;font-weight:400;font-size:12px;color:var(--text-light);line-height:1.5;}
 .hg-card-msg{font-family:"Noto Sans JP",sans-serif;font-size:14.5px;line-height:1.8;color:var(--text);}
 
+/* ---------- MOTION ---------- */
+.wave .wv{transform-box:fill-box;transform-origin:center;animation:wv 1.1s ease-in-out infinite;}
+@keyframes wv{0%,100%{transform:scaleY(.35);}50%{transform:scaleY(1);}}
+.js .rv{opacity:0;transform:translateX(-48px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);}
+.js .rv.d2{transition-delay:.12s;}
+.js .rv.in{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){.wave .wv{animation:none;}.js .rv{opacity:1;transform:none;transition:none;}}
+
 /* ---------- RESPONSIVE ---------- */
 @media(max-width:980px){
   .wrap{padding:0 24px;}
@@ -447,11 +455,11 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
         <text x="160" y="202" text-anchor="middle" font-family="Noto Sans JP, sans-serif" font-size="14" fill="#6b7280">今日の商談から再現</text>
         <path d="M30 220 H150 L160 210 L170 220 H290 A2 2 0 0 1 292 222 V272 A2 2 0 0 1 290 274 H30 A2 2 0 0 1 28 272 V222 A2 2 0 0 1 30 220Z" fill="#f8f9fb" stroke="#e5e7eb"/>
         <text x="160" y="253" text-anchor="middle" font-family="Noto Sans JP, sans-serif" font-size="17" font-weight="800" fill="#1e3a5f">「今期は予算が厳しくて」</text>
-        <g fill="#22c55e">
-          <rect x="94" y="306" width="6" height="12" rx="1"/><rect x="106" y="298" width="6" height="28" rx="1"/><rect x="118" y="292" width="6" height="40" rx="1"/>
-          <rect x="130" y="300" width="6" height="24" rx="1"/><rect x="142" y="288" width="6" height="48" rx="1"/><rect x="154" y="296" width="6" height="32" rx="1"/>
-          <rect x="166" y="290" width="6" height="44" rx="1"/><rect x="178" y="300" width="6" height="24" rx="1"/><rect x="190" y="294" width="6" height="36" rx="1"/>
-          <rect x="202" y="302" width="6" height="20" rx="1"/><rect x="214" y="306" width="6" height="12" rx="1"/>
+        <g fill="#22c55e" class="wave">
+          <rect class="wv" style="animation-delay:-0.00s" x="94" y="306" width="6" height="12" rx="1"/><rect class="wv" style="animation-delay:-0.09s" x="106" y="298" width="6" height="28" rx="1"/><rect class="wv" style="animation-delay:-0.18s" x="118" y="292" width="6" height="40" rx="1"/>
+          <rect class="wv" style="animation-delay:-0.27s" x="130" y="300" width="6" height="24" rx="1"/><rect class="wv" style="animation-delay:-0.36s" x="142" y="288" width="6" height="48" rx="1"/><rect class="wv" style="animation-delay:-0.45s" x="154" y="296" width="6" height="32" rx="1"/>
+          <rect class="wv" style="animation-delay:-0.54s" x="166" y="290" width="6" height="44" rx="1"/><rect class="wv" style="animation-delay:-0.63s" x="178" y="300" width="6" height="24" rx="1"/><rect class="wv" style="animation-delay:-0.72s" x="190" y="294" width="6" height="36" rx="1"/>
+          <rect class="wv" style="animation-delay:-0.01s" x="202" y="302" width="6" height="20" rx="1"/><rect class="wv" style="animation-delay:-0.10s" x="214" y="306" width="6" height="12" rx="1"/>
         </g>
         <text x="160" y="360" text-anchor="middle" font-family="Noto Sans JP, sans-serif" font-size="15" fill="#15803d" font-weight="800">話している：お客さま</text>
         <text x="160" y="382" text-anchor="middle" font-family="Noto Sans JP, sans-serif" font-size="13" fill="#6b7280">割って入れます（架空の例）</text>
@@ -464,8 +472,8 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
 <section class="block wrap" id="problem">
   <div class="two-col">
     <div class="two-col-left">
-      <div class="slabel">Problem</div>
-      <h2 class="two-col-title"><span class="ph">営業は、</span><span class="ph">失敗できる場所が</span><span class="ph">ないまま</span><span class="ph"><span class="mk">本番</span>に</span><span class="ph">立っている。</span><small>ロープレが大切なのは、どの会社でも分かっています。それでも現場で続かない理由は、だいたい次の3つです。</small></h2>
+      <div class="slabel rv">Problem</div>
+      <h2 class="two-col-title rv d2"><span class="ph">営業は、</span><span class="ph">失敗できる場所が</span><span class="ph">ないまま</span><span class="ph"><span class="mk">本番</span>に</span><span class="ph">立っている。</span><small>ロープレが大切なのは、どの会社でも分かっています。それでも現場で続かない理由は、だいたい次の3つです。</small></h2>
     </div>
     <div>
       <div class="tl-card">
@@ -497,8 +505,8 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
 <section class="block tint" id="how">
   <div class="wrap two-col">
     <div class="two-col-left">
-      <div class="slabel">How it works</div>
-      <h2 class="two-col-title"><span class="ph">今日のお客さまを、</span><span class="ph">商談ログから</span><span class="ph"><span class="mk">AIで再現</span>します。</span><small>商談ログを読み取ってAIがつくるのが「顧客カード」。いわば、相手役の設定書です。</small></h2>
+      <div class="slabel rv">How it works</div>
+      <h2 class="two-col-title rv d2"><span class="ph">今日のお客さまを、</span><span class="ph">商談ログから</span><span class="ph"><span class="mk">AIで再現</span>します。</span><small>商談ログを読み取ってAIがつくるのが「顧客カード」。いわば、相手役の設定書です。</small></h2>
     </div>
     <div>
       <div class="ccard" role="group" aria-label="顧客カードの画面イメージ">
@@ -531,8 +539,8 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
 <section class="block" id="features">
   <div class="wrap">
     <div class="svc-intro">
-      <div class="slabel">Difference</div>
-      <h2><span class="ph">本物に近づけるため、</span><span class="ph">お客さまの</span><span class="ph"><span class="mk">本音は営業に見せません</span>。</span></h2>
+      <div class="slabel rv">Difference</div>
+      <h2 class="rv d2"><span class="ph">本物に近づけるため、</span><span class="ph">お客さまの</span><span class="ph"><span class="mk">本音は営業に見せません</span>。</span></h2>
       <p>先輩が演じる相手役と、いちばん違うのは本音の扱いです。</p>
     </div>
     <div class="vs-wrap">
@@ -571,8 +579,8 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
 <section class="block wrap" id="flow">
   <div class="two-col">
     <div class="two-col-left">
-      <div class="slabel">Flow</div>
-      <h2 class="two-col-title"><span class="ph">ログを選び、</span><span class="ph">声で話し、</span><span class="ph">採点を見る。</span><span class="ph"><span class="mk">1回10分前後</span>です。</span><small>帰社後や、次の商談の前に。商談ログを選べば、すぐに始められます。</small></h2>
+      <div class="slabel rv">Flow</div>
+      <h2 class="two-col-title rv d2"><span class="ph">ログを選び、</span><span class="ph">声で話し、</span><span class="ph">採点を見る。</span><span class="ph"><span class="mk">1回10分前後</span>です。</span><small>帰社後や、次の商談の前に。商談ログを選べば、すぐに始められます。</small></h2>
     </div>
     <div>
       <ol class="flowchart">
@@ -590,8 +598,8 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
 <section class="block tint" id="scenario">
   <div class="wrap two-col">
     <div class="two-col-left">
-      <div class="slabel">Scenario</div>
-      <h2 class="two-col-title"><span class="ph">1人が断られた</span><span class="ph">お客さまは、</span><span class="ph"><span class="mk">チーム全員</span>の</span><span class="ph">練習相手に</span><span class="ph">なります。</span><small>たとえば、ある営業チームの1日はこうです。</small></h2>
+      <div class="slabel rv">Scenario</div>
+      <h2 class="two-col-title rv d2"><span class="ph">1人が断られた</span><span class="ph">お客さまは、</span><span class="ph"><span class="mk">チーム全員</span>の</span><span class="ph">練習相手に</span><span class="ph">なります。</span><small>たとえば、ある営業チームの1日はこうです。</small></h2>
     </div>
     <div>
       <div class="tl-phase">
@@ -640,8 +648,8 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
 <section class="block tint" id="game">
   <div class="wrap two-col">
     <div class="two-col-left">
-      <div class="slabel">Game</div>
-      <h2 class="two-col-title"><span class="ph">手強いお客さまは</span><span class="ph"><span class="mk">「ボス」</span>として、</span><span class="ph">何度でも</span><span class="ph">挑み直せます。</span><small>続けたくなる仕掛けも用意しました。いちばん見てほしいのは、昨日の自分との差です。</small></h2>
+      <div class="slabel rv">Game</div>
+      <h2 class="two-col-title rv d2"><span class="ph">手強いお客さまは</span><span class="ph"><span class="mk">「ボス」</span>として、</span><span class="ph">何度でも</span><span class="ph">挑み直せます。</span><small>続けたくなる仕掛けも用意しました。いちばん見てほしいのは、昨日の自分との差です。</small></h2>
     </div>
     <div>
       <div class="boss" role="group" aria-label="今週のボスの画面イメージ">
@@ -674,8 +682,8 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
 <section class="block wrap" id="start">
   <div class="two-col">
     <div class="two-col-left">
-      <div class="slabel">Start</div>
-      <h2 class="two-col-title"><span class="ph">スーパー</span><span class="ph">マネージャーの</span><span class="ph"><span class="mk">オプション</span>として</span><span class="ph">追加できます。</span><small>いま使っている商談ログが、そのまま練習の材料になります。</small></h2>
+      <div class="slabel rv">Start</div>
+      <h2 class="two-col-title rv d2"><span class="ph">スーパー</span><span class="ph">マネージャーの</span><span class="ph"><span class="mk">オプション</span>として</span><span class="ph">追加できます。</span><small>いま使っている商談ログが、そのまま練習の材料になります。</small></h2>
     </div>
     <div>
       <div class="start-card">
@@ -695,8 +703,8 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
 <section class="block tint" id="faq">
   <div class="wrap two-col">
     <div class="two-col-left">
-      <div class="slabel">FAQ</div>
-      <h2 class="two-col-title"><span class="ph">導入前に、</span><span class="ph">確かめて</span><span class="ph">おきたいこと。</span></h2>
+      <div class="slabel rv">FAQ</div>
+      <h2 class="two-col-title rv d2"><span class="ph">導入前に、</span><span class="ph">確かめて</span><span class="ph">おきたいこと。</span></h2>
     </div>
     <div>
       <div class="faq-item">
@@ -718,7 +726,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
 <!-- ============ FINAL CTA ============ -->
 <section class="final-cta" id="contact">
   <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">Get Started</span></div>
-  <h2>次の商談の前に、<br>今日のお客さまともう一度。</h2>
+  <h2 class="rv d2">次の商談の前に、<br>今日のお客さまともう一度。</h2>
   <div class="final-say"><svg aria-hidden="true"><use href="#boss-face"/></svg><span><em class="final-who">AI上司 スーパーマネージャー</em>「まずは御社の商談の話、聞かせてほしいんだに」</span></div>
   <p>スーパーマネージャーをお使いの方は担当者へ、ご検討中の方は<a class="final-link" href="https://writeup.jp/contact/" target="_blank" rel="noopener noreferrer">ライトアップのお問い合わせ窓口</a>へ、「スーマネRPGについて聞きたい」とお伝えください。</p>
 </section>
@@ -845,6 +853,13 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
 
 <script>
 (function(){
+  var root=document.documentElement;
+  if("IntersectionObserver" in window){
+    root.classList.add("js");
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{rootMargin:"0px 0px -12% 0px"});
+    document.querySelectorAll(".rv").forEach(function(el){io.observe(el);});
+  }
+
   document.querySelectorAll('.faq-item').forEach(function(item){
     var btn=item.querySelector('.faq-q'),a=item.querySelector('.faq-a');
     btn.addEventListener('click',function(){
