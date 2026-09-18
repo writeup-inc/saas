@@ -327,6 +327,79 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
 .final-cta .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.35);}
 .final-cta .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08);}
 
+/* ---------- REPORT MODAL ---------- */
+.rp-open{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font:inherit;font-size:14.5px;font-weight:800;color:#fff;background:var(--navy);border:0;border-radius:3px;padding:12px 20px;cursor:pointer;transition:.2s;}
+.rp-open:hover{background:var(--navy-deep);transform:translateY(-1px);}
+.rp-open-sm{margin-top:12px;padding:8px 14px;font-size:13.5px;}
+.rp-overlay{position:fixed;inset:0;z-index:210;background:rgba(21,42,71,.6);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:24px;}
+.rp-overlay.show{display:flex;}
+.rp-modal{background:#fff;width:100%;max-width:1000px;max-height:90vh;overflow-y:auto;border-radius:3px;box-shadow:0 30px 80px rgba(0,0,0,.35);}
+.rp-bar{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:16px;background:var(--navy);color:#fff;padding:16px 64px 16px 28px;}
+.rp-bar-label{display:block;font-family:"Inter",sans-serif;font-size:12px;font-weight:800;letter-spacing:.18em;color:var(--green-light);}
+.rp-title{font-weight:900;font-size:20px;line-height:1.4;color:#fff;margin:0;}
+.rp-cap{margin-left:auto;font-size:12px;opacity:.8;}
+.rp-close{position:absolute;right:14px;top:50%;transform:translateY(-50%);width:40px;height:40px;border:1px solid rgba(255,255,255,.3);border-radius:3px;background:none;color:#fff;font-size:22px;cursor:pointer;line-height:1;}
+.rp-body{padding:26px 28px 30px;}
+.rp-meta{list-style:none;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:14px;color:var(--text);padding-bottom:18px;border-bottom:1px solid var(--border-light);}
+.rp-meta b{font-size:12px;color:var(--text-light);font-weight:700;margin-right:8px;}
+.rp-k{display:block;font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--green-ink);margin-bottom:8px;}
+.rp-top{display:grid;grid-template-columns:1fr 1.5fr;gap:18px;margin-top:20px;}
+.rp-verdict,.rp-honne{border:1px solid var(--border);border-radius:3px;padding:20px 22px;}
+.rp-verdict{border-top:3px solid var(--navy);}
+.rp-v{font-weight:900;font-size:28px;line-height:1.35;color:var(--navy);}
+.rp-up{margin-top:10px;font-size:14px;font-weight:700;color:var(--green-ink);}
+.rp-up span{margin-right:6px;}
+.rp-note{margin-top:10px;font-size:13.5px;color:var(--text-light);line-height:1.8;}
+.rp-honne{border-top:3px solid var(--green);background:var(--green-subtle);}
+.rp-honne-lead{font-size:14px;color:var(--navy);font-weight:700;margin-bottom:12px;}
+.rp-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.rp-card{background:#fff;border:1px solid var(--border);border-radius:3px;padding:12px 12px 14px;display:flex;flex-direction:column;gap:6px;min-height:132px;}
+.rp-card-tag{align-self:flex-start;font-size:12px;font-weight:800;padding:1px 8px;border-radius:2px;background:#eef2f7;color:var(--text-light);}
+.rp-card.open{border:2px solid var(--green);}
+.rp-card.open .rp-card-tag{background:var(--green);color:#fff;}
+.rp-card p{font-weight:800;font-size:15px;color:var(--navy);line-height:1.6;}
+.rp-card.lock p{font-size:22px;text-align:center;margin:6px 0;opacity:.5;}
+.rp-card.lock{background:repeating-linear-gradient(135deg,#f3f5f8 0 8px,#fbfcfd 8px 16px);}
+.rp-card small{font-size:12px;color:var(--text-light);line-height:1.6;margin-top:auto;}
+.rp-sec{margin-top:28px;}
+.rp-h{font-weight:900;font-size:17px;color:var(--navy);padding-left:12px;border-left:3px solid var(--green);margin-bottom:14px;line-height:1.5;}
+.rp-h small{font-size:12px;font-weight:500;color:var(--text-light);}
+.rp-score{list-style:none;display:grid;gap:12px;}
+.rp-score li{display:grid;grid-template-columns:10em 1fr 1.3fr;gap:14px;align-items:center;}
+.rp-sn{font-size:14px;font-weight:800;color:var(--navy);}
+.rp-sb{position:relative;display:block;height:12px;background:var(--border-light);border-radius:2px;}
+.rp-sb i{position:absolute;left:0;top:0;bottom:0;width:var(--w);background:var(--green);border-radius:2px;}
+.rp-sb em{position:absolute;top:-4px;bottom:-4px;left:var(--p);width:3px;background:rgba(30,58,95,.35);}
+.rp-sp{font-size:13px;color:var(--text-light);line-height:1.6;word-break:auto-phrase;}
+.rp-track{position:relative;height:34px;margin:4px 6px 10px;}
+.rp-track::before{content:"";position:absolute;left:0;right:0;top:12px;height:6px;background:var(--border-light);border-radius:2px;}
+.rp-dot{position:absolute;left:var(--x);top:7px;width:16px;height:16px;border-radius:50%;transform:translateX(-50%);border:3px solid #fff;box-shadow:0 0 0 1px var(--border);}
+.rp-dot.ng{background:#dc6b52;}
+.rp-dot.ok{background:var(--green);}
+.rp-dot.md{background:#e0a93b;}
+.rp-t0,.rp-t1{position:absolute;top:22px;font-family:"Inter",sans-serif;font-size:12px;color:var(--text-light);}
+.rp-t0{left:0;}.rp-t1{right:0;}
+.rp-tl{list-style:none;display:grid;gap:8px;}
+.rp-tl li{position:relative;padding:10px 14px 10px 16px;border-left:3px solid;background:var(--warm);font-size:14px;line-height:1.75;border-radius:2px;}
+.rp-tl li b{font-family:"Inter",sans-serif;font-weight:800;color:var(--navy);margin-right:10px;}
+.rp-tl li.ng{border-color:#dc6b52;}
+.rp-tl li.ok{border-color:var(--green);background:var(--green-subtle);}
+.rp-tl li.md{border-color:#e0a93b;}
+.rp-advice{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.rp-adv{border:1px solid var(--border);border-top:3px solid var(--navy);border-radius:3px;padding:16px 18px 18px;background:#fff;}
+.rp-adv-k{font-family:"Inter",sans-serif;font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--green-ink);}
+.rp-adv h4{font-weight:900;font-size:16px;color:var(--navy);line-height:1.55;margin:4px 0 10px;word-break:auto-phrase;}
+.rp-adv p{font-size:14px;line-height:1.8;color:var(--text);}
+.rp-adv p b{display:inline-block;font-size:12px;font-weight:800;color:var(--text-light);margin-right:8px;}
+.rp-adv-next{margin-top:10px;padding:10px 12px;background:var(--green-subtle);border-left:3px solid var(--green);color:var(--navy)!important;font-weight:700;}
+.rp-say{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--border);border-left:3px solid var(--green);border-radius:3px;padding:18px 20px;background:#fff;}
+.rp-say svg{width:52px;height:52px;flex:none;}
+.rp-say p{font-family:"Shippori Mincho",serif;font-size:17px;line-height:1.9;color:var(--navy-deep);}
+.rp-foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:24px;padding-top:20px;border-top:1px solid var(--border-light);}
+.rp-btn{display:inline-block;font-size:14px;font-weight:800;padding:11px 18px;border-radius:3px;border:1.5px solid var(--border);color:var(--navy);background:#fff;cursor:default;}
+.rp-btn.primary{background:var(--green);border-color:var(--green);color:#fff;}
+.rp-foot small{width:100%;font-size:12px;color:var(--text-light);}
+
 /* ---------- MOTION ---------- */
 .wave .wv{transform-box:fill-box;transform-origin:center;animation:wv 1.1s ease-in-out infinite;}
 @keyframes wv{0%,100%{transform:scaleY(.35);}50%{transform:scaleY(1);}}
@@ -352,6 +425,10 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
   .svc-intro h2{font-size:28px;}
   .svc-grid{grid-template-columns:1fr;}
   .result{grid-template-columns:1fr;}
+  .rp-top{grid-template-columns:1fr;}
+  .rp-advice{grid-template-columns:1fr;}
+  .rp-score li{grid-template-columns:9em 1fr;}
+  .rp-sp{grid-column:1 / -1;}
   .game-grid{grid-template-columns:1fr;}
   .final-cta{padding:80px 24px;}
   .final-cta h2{font-size:28px;}
@@ -375,6 +452,17 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
   .final-say span{font-size:15px;}
   .fig-box{padding:22px 8px 16px;margin-left:0;}
   .demo{padding:56px 0 64px;}
+  .rp-overlay{padding:0;}
+  .rp-modal{max-height:100vh;height:100%;}
+  .rp-bar{padding:12px 60px 12px 18px;}
+  .rp-cap{display:none;}
+  .rp-body{padding:18px 16px 26px;}
+  .rp-top{grid-template-columns:1fr;}
+  .rp-cards{grid-template-columns:1fr;}
+  .rp-card{min-height:0;}
+  .rp-score li{grid-template-columns:1fr;gap:4px;}
+  .rp-advice{grid-template-columns:1fr;}
+  .rp-v{font-size:24px;}
   .demo-title{font-size:21px;}
   .play-btn{width:48px;height:48px;}
   .play-btn svg{width:20px;height:20px;}
@@ -595,12 +683,16 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
       <div class="result-main">
         <div class="result-head"><b>採点結果</b><span>画面イメージ（架空の例）</span></div>
         <ul class="bars">
-          <li><span>ヒアリングの深さ</span><i style="--w:72%"></i></li>
-          <li><span>本音に到達できたか</span><i style="--w:48%"></i></li>
-          <li><span>切り返し</span><i style="--w:64%"></i></li>
-          <li><span>次の約束</span><i style="--w:80%"></i></li>
-          <li><span>話す割合</span><i style="--w:56%"></i></li>
+          <li><span>ヒアリングの深さ</span><i style="--w:68%"></i></li>
+          <li><span>本音に到達できたか</span><i style="--w:52%"></i></li>
+          <li><span>切り返し</span><i style="--w:40%"></i></li>
+          <li><span>次の約束</span><i style="--w:36%"></i></li>
+          <li><span>話す割合</span><i style="--w:44%"></i></li>
         </ul>
+        <button type="button" class="rp-open" data-rp-open>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+          レポートを見る
+        </button>
       </div>
       <div class="result-side">
         <div class="who"><svg aria-hidden="true"><use href="#boss-face"/></svg>AI上司からの一言</div>
@@ -622,7 +714,8 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
         <li><span class="fc-num">01</span><span class="fc-actor">営業担当</span><h3 class="fc-title">ログを選ぶ</h3><p class="fc-desc">スーパーマネージャーやGoogle Meetに残った商談から、もう一度向き合いたいものをひとつ。</p></li>
         <li><span class="fc-num">02</span><span class="fc-actor ai">AI</span><h3 class="fc-title">顧客カードを作成</h3><p class="fc-desc">話し方・当日の流れ・断り文句をAIがまとめます。本音は伏せたまま、担当者が書き足すことも。</p></li>
         <li class="hi"><span class="fc-num">03</span><span class="fc-actor">営業担当 × AI</span><h3 class="fc-title">声で話す</h3><p class="fc-desc">画面の向こうのお客さまと、声で商談をやり直し。割って入れば相手は話を止めます。ヘッドセット推奨。</p></li>
-        <li><span class="fc-num">04</span><span class="fc-actor ai">AI</span><h3 class="fc-title">採点を見る</h3><p class="fc-desc">5項目の点数と、一言コメントが返ってきます。</p></li>
+        <li><span class="fc-num">04</span><span class="fc-actor ai">AI</span><h3 class="fc-title">採点を見る</h3><p class="fc-desc">5項目の点数と、一言コメントが返ってきます。どこでつまずいたかは、レポートで。</p>
+        <button type="button" class="rp-open rp-open-sm" data-rp-open>レポートを見る</button></li>
       </ol>
       <div class="fc-loop"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>採点のあとは、03から何度でも再挑戦できます</div>
     </div>
@@ -797,6 +890,128 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
   <a href="#faq" data-sec="faq" aria-label="よくある質問"></a>
 </nav>
 
+<!-- ============ REPORT MODAL ============ -->
+<div class="rp-overlay" id="rpOverlay">
+  <div class="rp-modal" role="dialog" aria-modal="true" aria-labelledby="rpTitle">
+    <div class="rp-bar">
+      <div><span class="rp-bar-label">ROLE-PLAY REPORT</span><h2 class="rp-title" id="rpTitle">ロープレレポート</h2></div>
+      <span class="rp-cap">画面イメージ（架空の例）</span>
+      <button type="button" class="rp-close" id="rpClose" aria-label="レポートを閉じる">×</button>
+    </div>
+    <div class="rp-body">
+      <ul class="rp-meta">
+        <li><b>相手</b>製造業／総務部長（今日の商談から再現）</li>
+        <li><b>所要</b>9分40秒</li>
+        <li><b>挑戦</b>この相手に3回目</li>
+      </ul>
+
+      <div class="rp-top">
+        <div class="rp-verdict">
+          <span class="rp-k">総合</span>
+          <p class="rp-v">本音まで、<br>あと一歩。</p>
+          <p class="rp-up"><span>▲</span>前回より上がった項目　3／5</p>
+          <p class="rp-note">費用の前に社内の決め方を聞けた回です。一方で、冒頭3分を機能の説明に使い、締めで次の約束を取り切れていません。</p>
+        </div>
+        <div class="rp-honne">
+          <span class="rp-k">本音カード</span>
+          <p class="rp-honne-lead">AIが伏せていた本音は3枚。今回、開けたのは1枚です。</p>
+          <div class="rp-cards">
+            <div class="rp-card open"><span class="rp-card-tag">開いた</span><p>「社長に説明できる材料がほしい」</p><small>6:40 社内の決め方を聞いた質問で開きました</small></div>
+            <div class="rp-card lock"><span class="rp-card-tag">未開封</span><p>🔒</p><small>断られた理由を、言葉にしてもらうと開きます</small></div>
+            <div class="rp-card lock"><span class="rp-card-tag">未開封</span><p>🔒</p><small>次の挑戦で</small></div>
+          </div>
+        </div>
+      </div>
+
+      <section class="rp-sec" aria-labelledby="rpS1">
+        <h3 class="rp-h" id="rpS1">5つの項目　<small>薄い印は前回の位置</small></h3>
+        <ul class="rp-score">
+          <li><span class="rp-sn">ヒアリングの深さ</span><span class="rp-sb"><i style="--w:68%"></i><em style="--p:52%"></em></span><span class="rp-sp">商談は説明の場ではない。相手の事業の話を聞いて、その場で組み替える。</span></li>
+          <li><span class="rp-sn">本音に到達できたか</span><span class="rp-sb"><i style="--w:52%"></i><em style="--p:30%"></em></span><span class="rp-sp">即決しなかったら、断られた理由を必ず言葉にしてもらう。</span></li>
+          <li><span class="rp-sn">切り返し</span><span class="rp-sb"><i style="--w:40%"></i><em style="--p:44%"></em></span><span class="rp-sp">「必要ない」は3種類。説明を足して効くのは真ん中だけ。</span></li>
+          <li><span class="rp-sn">次の約束</span><span class="rp-sb"><i style="--w:36%"></i><em style="--p:40%"></em></span><span class="rp-sp">宿題は持ち帰らない。1回で終えず、同じ相手に提案を回す。</span></li>
+          <li><span class="rp-sn">話す割合</span><span class="rp-sb"><i style="--w:44%"></i><em style="--p:38%"></em></span><span class="rp-sp">あなた62％／お客さま38％。勝負は最初の3分。</span></li>
+        </ul>
+      </section>
+
+      <section class="rp-sec" aria-labelledby="rpS2">
+        <h3 class="rp-h" id="rpS2">分かれ目のタイムライン</h3>
+        <div class="rp-track" aria-hidden="true">
+          <span class="rp-dot ng" style="--x:14%"></span>
+          <span class="rp-dot ng" style="--x:33%"></span>
+          <span class="rp-dot ng" style="--x:52%"></span>
+          <span class="rp-dot ok" style="--x:69%"></span>
+          <span class="rp-dot md" style="--x:91%"></span>
+          <span class="rp-t0">0:00</span><span class="rp-t1">9:40</span>
+        </div>
+        <ol class="rp-tl">
+          <li class="ng"><b>0:00〜3:00</b>冒頭3分を、機能の説明に使った。お客さまはまだ「やった方がいい」と思っていない。</li>
+          <li class="ng"><b>3:12</b>費用の話を先に出した → 反応が止まり、値段の土俵に乗った。</li>
+          <li class="ng"><b>5:05</b>「うちには必要ない」に、説明を3回足した。どの「必要ない」かを聞き分けていない。</li>
+          <li class="ok"><b>6:40</b>「導入はどなたが決めますか」→ 前向きに。本音カードが1枚開いた。</li>
+          <li class="md"><b>8:50</b>「後ほど資料をお送りします」で締めた。次回の日程は決まらず。</li>
+        </ol>
+      </section>
+
+      <section class="rp-sec" aria-labelledby="rpS3">
+        <h3 class="rp-h" id="rpS3">スーパーマネージャーの指摘</h3>
+        <div class="rp-advice">
+          <article class="rp-adv">
+            <span class="rp-adv-k">原理</span>
+            <h4>勝負は最初の3分。営業は最後にひっくり返すものではない。</h4>
+            <p class="rp-adv-now"><b>今回</b>冒頭3分が機能の説明でした。3分で「これはやった方がいい」と思ってもらえれば、あとは念のための説明で決まります。</p>
+            <p class="rp-adv-next"><b>次の一言</b>「細かい機能の前に、ひとつだけ。御社の営業に、今日から上司が1人つく仕組みです」</p>
+          </article>
+          <article class="rp-adv">
+            <span class="rp-adv-k">原理</span>
+            <h4>「必要ない」は3種類。説明を足して効くのは真ん中だけ。</h4>
+            <p class="rp-adv-now"><b>今回</b>5:05の「うちには必要ない」に、説明を3回重ねました。本当に要らないのか、やり方が分からないのか、気持ちが動かないのか。どれかで打ち手が変わります。</p>
+            <p class="rp-adv-next"><b>次の一言</b>「それは、使い方が分からないという意味でしょうか。それとも、今は優先度が低いという意味でしょうか」</p>
+          </article>
+          <article class="rp-adv">
+            <span class="rp-adv-k">原理</span>
+            <h4>即決しなかったら、断られた理由を必ず言葉にしてもらう。</h4>
+            <p class="rp-adv-now"><b>今回</b>「今期は予算が厳しくて」を、そのまま受け取って終わりました。未開封の本音カードは、ここで開きます。</p>
+            <p class="rp-adv-next"><b>次の一言</b>「今日決めきれないのは、費用・時期・社内の説得のうち、どれが一番大きいですか」</p>
+          </article>
+          <article class="rp-adv">
+            <span class="rp-adv-k">原理</span>
+            <h4>商談は説明の場ではない。相手の事業の話を聞いて、組み替える場。</h4>
+            <p class="rp-adv-now"><b>今回</b>話した時間の6割があなたでした。説明は資料でもできます。人が行く意味は、相手の事業の話を聞いて、その場で提案を組み替えることです。</p>
+            <p class="rp-adv-next"><b>次の一言</b>「御社はこの1年で、何をいちばん変えたいですか」</p>
+          </article>
+          <article class="rp-adv">
+            <span class="rp-adv-k">原理</span>
+            <h4>宿題は持ち帰らない。お礼と資料は、10分後に届ける。</h4>
+            <p class="rp-adv-now"><b>今回</b>「後ほどお送りします」が一番遅れます。お客さまの熱が一番高いのは、話し終えた直後です。</p>
+            <p class="rp-adv-next"><b>次の一言</b>「今お話しした内容、10分後にメールで届くようにしておきますね」</p>
+          </article>
+          <article class="rp-adv">
+            <span class="rp-adv-k">原理</span>
+            <h4>1回で終えず、同じ相手に提案を回す。</h4>
+            <p class="rp-adv-now"><b>今回</b>取れなかった回ほど、次の提案日をこの場で押さえる価値があります。1回で終えるか3回まわすかで、件数の差がいちばん開きます。</p>
+            <p class="rp-adv-next"><b>次の一言</b>「来月、別の切り口でもう一度だけ、30分いただけませんか」</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="rp-sec rp-say" aria-label="AI上司の一言">
+        <svg aria-hidden="true"><use href="#boss-face"/></svg>
+        <div><span class="rp-k">AI上司からの一言</span>
+          <p>費用の前に決め方を聞けたのは、いい順番でした。次は最初の3分で本質を言い切って、断られたら理由を言葉にしてもらいましょう。本音カードは、あと2枚あります。</p>
+        </div>
+      </section>
+
+      <div class="rp-foot">
+        <span class="rp-btn primary">もう一度挑戦する</span>
+        <span class="rp-btn">同僚にパスする</span>
+        <span class="rp-btn">次回の商談メモに残す</span>
+        <small>※ 画面イメージのため、ボタンは操作できません</small>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ============ HITORIGOTO ============ -->
 <button class="hg-badge" id="hgBadge" type="button" aria-haspopup="dialog"><span class="pulse"></span>AI上司のひとりごと</button>
 <div class="hg-dialog-overlay" id="hgDialog">
@@ -908,6 +1123,14 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
       a.style.maxHeight=open?a.scrollHeight+'px':null;
     });
   });
+
+  var rp=document.getElementById('rpOverlay'),rpLast=null;
+  function rpOpen(){rpLast=document.activeElement;rp.classList.add('show');document.body.style.overflow='hidden';document.getElementById('rpClose').focus();}
+  function rpClose(){rp.classList.remove('show');document.body.style.overflow='';if(rpLast&&rpLast.focus)rpLast.focus();}
+  document.querySelectorAll('[data-rp-open]').forEach(function(b){b.addEventListener('click',rpOpen);});
+  document.getElementById('rpClose').addEventListener('click',rpClose);
+  rp.addEventListener('click',function(e){if(e.target===rp)rpClose();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&rp.classList.contains('show'))rpClose();});
 
   var badge=document.getElementById('hgBadge'),dialog=document.getElementById('hgDialog'),overlay=document.getElementById('hgOverlay'),last=null,dismissed=false;
   setTimeout(function(){badge.classList.add('show');},3000);
