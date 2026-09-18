@@ -278,7 +278,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
 .dotnav a:hover,.dotnav a.active{background:var(--green);transform:scale(1.3);}
 
 /* ---------- HITORIGOTO ---------- */
-.hg-badge{position:fixed;right:26px;bottom:26px;z-index:110;background:var(--navy);color:#fff;font:inherit;font-size:14px;font-weight:700;padding:13px 22px;border-radius:3px;border:0;cursor:pointer;box-shadow:0 8px 24px rgba(30,58,95,.3);display:flex;align-items:center;gap:10px;opacity:0;transform:translateY(14px);pointer-events:none;transition:opacity .5s,transform .5s;}
+.hg-badge{position:fixed;right:26px;bottom:26px;z-index:110;background:var(--navy);color:#fff;font:inherit;font-size:14px;font-weight:700;padding:13px 22px;border-radius:3px;border:0;cursor:pointer;box-shadow:0 8px 24px rgba(30,58,95,.3);display:flex;align-items:center;gap:10px;opacity:0;transform:translateY(160%);pointer-events:none;transition:opacity 1.2s ease,transform 1.4s cubic-bezier(.16,1,.3,1);}
 .hg-badge.show{opacity:1;transform:translateY(0);pointer-events:auto;}
 .hg-badge .pulse{width:9px;height:9px;border-radius:50%;background:var(--green-light);animation:hgpulse 1.8s infinite;}
 @keyframes hgpulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.5);}70%{box-shadow:0 0 0 10px rgba(74,222,128,0);}100%{box-shadow:0 0 0 0 rgba(74,222,128,0);}}
@@ -328,77 +328,126 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
 .final-cta .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08);}
 
 /* ---------- REPORT MODAL ---------- */
-.rp-open{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font:inherit;font-size:14.5px;font-weight:800;color:#fff;background:var(--navy);border:0;border-radius:3px;padding:12px 20px;cursor:pointer;transition:.2s;}
-.rp-open:hover{background:var(--navy-deep);transform:translateY(-1px);}
-.rp-open-sm{margin-top:12px;padding:8px 14px;font-size:13.5px;}
-.rp-overlay{position:fixed;inset:0;z-index:210;background:rgba(21,42,71,.6);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:24px;}
+/* 起動ボタン（LP側） */
+.rp-launch{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:18px;padding:16px 18px;background:#0b1220;border-radius:3px;color:#e5edf7;}
+.rp-launch-score{display:flex;align-items:baseline;gap:4px;font-family:"Inter",sans-serif;font-variant-numeric:tabular-nums;}
+.rp-launch-score b{font-size:40px;font-weight:900;color:#fbbf24;line-height:1;}
+.rp-launch-score span{font-size:14px;color:#8ea0b8;font-weight:700;}
+.rp-launch-txt{font-size:13px;color:#8ea0b8;line-height:1.6;}
+.rp-launch-txt b{display:block;font-size:14px;color:#fbbf24;letter-spacing:.06em;font-family:"Inter",sans-serif;}
+.rp-open{margin-left:auto;display:inline-flex;align-items:center;gap:10px;font:inherit;font-size:16px;font-weight:900;color:#0b1220;background:#fbbf24;border:0;border-radius:3px;padding:14px 22px;cursor:pointer;transition:.2s;box-shadow:0 0 0 0 rgba(251,191,36,.55);animation:rpPulse 2.2s infinite;}
+.rp-open:hover{background:#fcd34d;transform:translateY(-2px);}
+.rp-open svg{flex:none;}
+@keyframes rpPulse{0%{box-shadow:0 0 0 0 rgba(251,191,36,.5);}70%{box-shadow:0 0 0 12px rgba(251,191,36,0);}100%{box-shadow:0 0 0 0 rgba(251,191,36,0);}}
+.rp-open-sm{margin:12px 0 0;font-size:14px;padding:10px 16px;}
+.hero-report{display:flex;justify-content:center;margin-top:14px;}
+.hero-report .rp-open{margin:0;font-size:14.5px;padding:11px 18px;}
+
+/* レポート本体（アプリ画面風・ダーク） */
+.rp-overlay{position:fixed;inset:0;z-index:210;background:rgba(3,7,15,.72);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:24px;}
 .rp-overlay.show{display:flex;}
-.rp-modal{background:#fff;width:100%;max-width:1000px;max-height:90vh;overflow-y:auto;border-radius:3px;box-shadow:0 30px 80px rgba(0,0,0,.35);}
-.rp-bar{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:16px;background:var(--navy);color:#fff;padding:16px 64px 16px 28px;}
-.rp-bar-label{display:block;font-family:"Inter",sans-serif;font-size:12px;font-weight:800;letter-spacing:.18em;color:var(--green-light);}
-.rp-title{font-weight:900;font-size:20px;line-height:1.4;color:#fff;margin:0;}
-.rp-cap{margin-left:auto;font-size:12px;opacity:.8;}
-.rp-close{position:absolute;right:14px;top:50%;transform:translateY(-50%);width:40px;height:40px;border:1px solid rgba(255,255,255,.3);border-radius:3px;background:none;color:#fff;font-size:22px;cursor:pointer;line-height:1;}
-.rp-body{padding:26px 28px 30px;}
-.rp-meta{list-style:none;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:14px;color:var(--text);padding-bottom:18px;border-bottom:1px solid var(--border-light);}
-.rp-meta b{font-size:12px;color:var(--text-light);font-weight:700;margin-right:8px;}
-.rp-k{display:block;font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--green-ink);margin-bottom:8px;}
-.rp-top{display:grid;grid-template-columns:1fr 1.5fr;gap:18px;margin-top:20px;}
-.rp-verdict,.rp-honne{border:1px solid var(--border);border-radius:3px;padding:20px 22px;}
-.rp-verdict{border-top:3px solid var(--navy);}
-.rp-v{font-weight:900;font-size:28px;line-height:1.35;color:var(--navy);}
-.rp-up{margin-top:10px;font-size:14px;font-weight:700;color:var(--green-ink);}
-.rp-up span{margin-right:6px;}
-.rp-note{margin-top:10px;font-size:13.5px;color:var(--text-light);line-height:1.8;}
-.rp-honne{border-top:3px solid var(--green);background:var(--green-subtle);}
-.rp-honne-lead{font-size:14px;color:var(--navy);font-weight:700;margin-bottom:12px;}
+.rp-modal{--rb:#0b1220;--rp:#111c2e;--rl:#22324a;--rt:#e5edf7;--rm:#8ea0b8;--gold:#fbbf24;--ok:#34d399;--ng:#f87171;--md:#f59e0b;
+  background:var(--rb);color:var(--rt);width:100%;max-width:1000px;max-height:90vh;overflow-y:auto;border-radius:4px;border:1px solid var(--rl);box-shadow:0 30px 80px rgba(0,0,0,.5);font-family:"Noto Sans JP",sans-serif;}
+.rp-modal b,.rp-modal strong{color:inherit;}
+.rp-bar{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:16px;background:#070d18;border-bottom:1px solid var(--rl);padding:14px 64px 14px 24px;}
+.rp-app{font-family:"Inter",sans-serif;font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--rm);}
+.rp-app b{color:var(--ok);}
+.rp-title{font-weight:900;font-size:18px;color:var(--rt);margin:0;}
+.rp-cap{margin-left:auto;font-size:12px;color:var(--rm);}
+.rp-close{position:absolute;right:12px;top:50%;transform:translateY(-50%);width:40px;height:40px;border:1px solid var(--rl);border-radius:3px;background:none;color:var(--rt);font-size:22px;cursor:pointer;line-height:1;}
+.rp-body{padding:22px 24px 28px;}
+.rp-meta{list-style:none;display:flex;flex-wrap:wrap;gap:6px 22px;font-size:14px;color:var(--rt);}
+.rp-meta b{font-size:12px;color:var(--rm);font-weight:700;margin-right:8px;}
+.rp-lbl{display:block;font-family:"Inter",sans-serif;font-size:12px;font-weight:800;letter-spacing:.16em;color:var(--rm);margin-bottom:6px;}
+.rp-hero{display:grid;grid-template-columns:1.1fr 1fr;gap:14px;margin-top:18px;}
+.rp-score-box,.rp-rec{background:var(--rp);border:1px solid var(--rl);border-radius:3px;padding:20px 22px;}
+.rp-score-box{position:relative;overflow:hidden;background:radial-gradient(circle at 20% 0%,rgba(251,191,36,.16),transparent 55%),var(--rp);}
+.rp-score{display:flex;align-items:baseline;gap:6px;font-family:"Inter",sans-serif;font-variant-numeric:tabular-nums;line-height:1;}
+.rp-num{font-size:112px;font-weight:900;color:var(--gold);letter-spacing:-.04em;text-shadow:0 0 28px rgba(251,191,36,.35);}
+.rp-of{font-size:26px;font-weight:800;color:var(--rm);}
+.rp-new{display:inline-block;margin-top:12px;font-size:13px;font-weight:900;letter-spacing:.06em;color:#0b1220;background:var(--gold);padding:4px 10px;border-radius:2px;animation:rpBlink 1.4s steps(2,start) infinite;}
+@keyframes rpBlink{to{opacity:.55;}}
+.rp-diff{margin-top:10px;font-size:14px;color:var(--rm);}
+.rp-diff b{color:var(--ok);font-family:"Inter",sans-serif;font-size:18px;}
+.rp-verdict{margin-top:4px;font-size:17px;font-weight:900;color:var(--rt);}
+.rp-rec-list{display:grid;gap:8px;}
+.rp-rec-list div{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px dashed var(--rl);padding-bottom:6px;}
+.rp-rec-list dt{font-size:13px;color:var(--rm);}
+.rp-rec-list dd{font-family:"Inter",sans-serif;font-variant-numeric:tabular-nums;font-size:26px;font-weight:900;color:var(--rt);}
+.rp-rec-list dd small{font-family:"Noto Sans JP",sans-serif;font-size:12px;font-weight:700;color:var(--rm);margin-left:4px;}
+.rp-rec-list .best dd{color:var(--gold);}
+.rp-tries{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;align-items:end;height:120px;margin-top:14px;}
+.rp-tries div{position:relative;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;}
+.rp-tries i{display:block;width:56%;height:calc(var(--h) * .75);background:#2b3d5a;border-radius:2px 2px 0 0;}
+.rp-tries .now i{background:var(--gold);}
+.rp-tries span{font-family:"Inter",sans-serif;font-size:14px;font-weight:800;margin-bottom:4px;}
+.rp-tries .now span{color:var(--gold);}
+.rp-tries em{font-style:normal;font-size:12px;color:var(--rm);margin-top:4px;}
+.rp-sec{margin-top:24px;}
+.rp-h{font-weight:900;font-size:16px;color:var(--rt);margin-bottom:12px;line-height:1.5;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;}
+.rp-h::before{content:"";width:4px;height:16px;background:var(--ok);align-self:center;}
+.rp-h small{font-size:12px;font-weight:500;color:var(--rm);}
+.rp-rank-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px 16px;}
+.rp-alltime{font-size:13px;color:var(--rm);}
+.rp-alltime b{font-family:"Inter",sans-serif;font-size:20px;color:var(--gold);}
+.rp-board{list-style:none;background:var(--rp);border:1px solid var(--rl);border-radius:3px;}
+.rp-board li{display:grid;grid-template-columns:44px 7.5em 1fr 56px;gap:12px;align-items:center;padding:10px 16px;border-top:1px solid var(--rl);font-family:"Inter","Noto Sans JP",sans-serif;font-variant-numeric:tabular-nums;}
+.rp-board li:first-child{border-top:0;}
+.rp-board .rk{font-size:20px;font-weight:900;color:var(--rm);text-align:center;}
+.rp-board li:nth-child(1) .rk{color:var(--gold);}
+.rp-board .nm{font-size:14px;font-weight:700;}
+.rp-board .nm em{font-style:normal;font-size:12px;font-weight:900;color:#0b1220;background:var(--gold);padding:0 6px;border-radius:2px;margin-left:8px;}
+.rp-board .bar{height:8px;background:#1b2940;border-radius:2px;position:relative;}
+.rp-board .bar i{position:absolute;left:0;top:0;bottom:0;width:var(--w);background:#3b5277;border-radius:2px;}
+.rp-board .sc{font-size:22px;font-weight:900;text-align:right;}
+.rp-board li.you{background:rgba(251,191,36,.1);box-shadow:inset 3px 0 0 var(--gold);}
+.rp-board li.you .bar i{background:var(--gold);}
+.rp-board li.you .sc,.rp-board li.you .rk{color:var(--gold);}
+.rp-next-rank{margin-top:10px;font-size:14px;color:var(--rt);}
+.rp-next-rank b{font-family:"Inter",sans-serif;color:var(--gold);font-size:18px;margin:0 2px;}
+.rp-items{list-style:none;display:grid;gap:12px;}
+.rp-items li{display:grid;grid-template-columns:10em 1fr 64px;grid-template-rows:auto auto;gap:4px 14px;align-items:center;}
+.rp-in{font-size:14px;font-weight:800;}
+.rp-ib{position:relative;height:10px;background:#1b2940;border-radius:2px;}
+.rp-ib i{position:absolute;left:0;top:0;bottom:0;width:var(--w);background:var(--ok);border-radius:2px;}
+.rp-items li.lo .rp-ib i{background:var(--md);}
+.rp-ib em{position:absolute;top:-4px;bottom:-4px;left:var(--p);width:2px;background:rgba(229,237,247,.55);}
+.rp-ip{font-family:"Inter",sans-serif;font-variant-numeric:tabular-nums;font-size:22px;font-weight:900;text-align:right;}
+.rp-ip small{font-size:12px;color:var(--rm);margin-left:2px;}
+.rp-ix{grid-column:1 / -1;font-size:13px;color:var(--rm);line-height:1.6;}
 .rp-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
-.rp-card{background:#fff;border:1px solid var(--border);border-radius:3px;padding:12px 12px 14px;display:flex;flex-direction:column;gap:6px;min-height:132px;}
-.rp-card-tag{align-self:flex-start;font-size:12px;font-weight:800;padding:1px 8px;border-radius:2px;background:#eef2f7;color:var(--text-light);}
-.rp-card.open{border:2px solid var(--green);}
-.rp-card.open .rp-card-tag{background:var(--green);color:#fff;}
-.rp-card p{font-weight:800;font-size:15px;color:var(--navy);line-height:1.6;}
-.rp-card.lock p{font-size:22px;text-align:center;margin:6px 0;opacity:.5;}
-.rp-card.lock{background:repeating-linear-gradient(135deg,#f3f5f8 0 8px,#fbfcfd 8px 16px);}
-.rp-card small{font-size:12px;color:var(--text-light);line-height:1.6;margin-top:auto;}
-.rp-sec{margin-top:28px;}
-.rp-h{font-weight:900;font-size:17px;color:var(--navy);padding-left:12px;border-left:3px solid var(--green);margin-bottom:14px;line-height:1.5;}
-.rp-h small{font-size:12px;font-weight:500;color:var(--text-light);}
-.rp-score{list-style:none;display:grid;gap:12px;}
-.rp-score li{display:grid;grid-template-columns:10em 1fr 1.3fr;gap:14px;align-items:center;}
-.rp-sn{font-size:14px;font-weight:800;color:var(--navy);}
-.rp-sb{position:relative;display:block;height:12px;background:var(--border-light);border-radius:2px;}
-.rp-sb i{position:absolute;left:0;top:0;bottom:0;width:var(--w);background:var(--green);border-radius:2px;}
-.rp-sb em{position:absolute;top:-4px;bottom:-4px;left:var(--p);width:3px;background:rgba(30,58,95,.35);}
-.rp-sp{font-size:13px;color:var(--text-light);line-height:1.6;word-break:auto-phrase;}
+.rp-card{background:var(--rp);border:1px solid var(--rl);border-radius:3px;padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;min-height:120px;}
+.rp-card-tag{align-self:flex-start;font-family:"Inter",sans-serif;font-size:12px;font-weight:900;letter-spacing:.08em;padding:1px 8px;border-radius:2px;background:#1b2940;color:var(--rm);}
+.rp-card.open{border-color:var(--ok);box-shadow:0 0 0 1px var(--ok) inset;}
+.rp-card.open .rp-card-tag{background:var(--ok);color:#0b1220;}
+.rp-card p{font-weight:800;font-size:15px;line-height:1.6;}
+.rp-card.lock p{font-size:22px;text-align:center;margin:4px 0;opacity:.45;}
+.rp-card small{font-size:12px;color:var(--rm);line-height:1.6;margin-top:auto;}
 .rp-track{position:relative;height:34px;margin:4px 6px 10px;}
-.rp-track::before{content:"";position:absolute;left:0;right:0;top:12px;height:6px;background:var(--border-light);border-radius:2px;}
-.rp-dot{position:absolute;left:var(--x);top:7px;width:16px;height:16px;border-radius:50%;transform:translateX(-50%);border:3px solid #fff;box-shadow:0 0 0 1px var(--border);}
-.rp-dot.ng{background:#dc6b52;}
-.rp-dot.ok{background:var(--green);}
-.rp-dot.md{background:#e0a93b;}
-.rp-t0,.rp-t1{position:absolute;top:22px;font-family:"Inter",sans-serif;font-size:12px;color:var(--text-light);}
+.rp-track::before{content:"";position:absolute;left:0;right:0;top:12px;height:6px;background:#1b2940;border-radius:2px;}
+.rp-dot{position:absolute;left:var(--x);top:7px;width:16px;height:16px;border-radius:50%;transform:translateX(-50%);border:3px solid var(--rb);}
+.rp-dot.ng{background:var(--ng);}.rp-dot.ok{background:var(--ok);}.rp-dot.md{background:var(--md);}
+.rp-t0,.rp-t1{position:absolute;top:22px;font-family:"Inter",sans-serif;font-size:12px;color:var(--rm);}
 .rp-t0{left:0;}.rp-t1{right:0;}
 .rp-tl{list-style:none;display:grid;gap:8px;}
-.rp-tl li{position:relative;padding:10px 14px 10px 16px;border-left:3px solid;background:var(--warm);font-size:14px;line-height:1.75;border-radius:2px;}
-.rp-tl li b{font-family:"Inter",sans-serif;font-weight:800;color:var(--navy);margin-right:10px;}
-.rp-tl li.ng{border-color:#dc6b52;}
-.rp-tl li.ok{border-color:var(--green);background:var(--green-subtle);}
-.rp-tl li.md{border-color:#e0a93b;}
-.rp-advice{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-.rp-adv{border:1px solid var(--border);border-top:3px solid var(--navy);border-radius:3px;padding:16px 18px 18px;background:#fff;}
-.rp-adv-k{font-family:"Inter",sans-serif;font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--green-ink);}
-.rp-adv h4{font-weight:900;font-size:16px;color:var(--navy);line-height:1.55;margin:4px 0 10px;word-break:auto-phrase;}
-.rp-adv p{font-size:14px;line-height:1.8;color:var(--text);}
-.rp-adv p b{display:inline-block;font-size:12px;font-weight:800;color:var(--text-light);margin-right:8px;}
-.rp-adv-next{margin-top:10px;padding:10px 12px;background:var(--green-subtle);border-left:3px solid var(--green);color:var(--navy)!important;font-weight:700;}
-.rp-say{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--border);border-left:3px solid var(--green);border-radius:3px;padding:18px 20px;background:#fff;}
+.rp-tl li{padding:10px 14px;border-left:3px solid;background:var(--rp);font-size:14px;line-height:1.75;border-radius:2px;}
+.rp-tl li b{font-family:"Inter",sans-serif;font-weight:800;margin-right:10px;}
+.rp-tl li.ng{border-color:var(--ng);}.rp-tl li.ok{border-color:var(--ok);}.rp-tl li.md{border-color:var(--md);}
+.rp-advice{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.rp-adv{background:var(--rp);border:1px solid var(--rl);border-radius:3px;padding:16px 18px 18px;}
+.rp-adv-k{font-family:"Inter",sans-serif;font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--ok);}
+.rp-adv h4{font-weight:900;font-size:15.5px;color:var(--rt);line-height:1.55;margin:4px 0 10px;word-break:auto-phrase;}
+.rp-adv p{font-size:14px;line-height:1.8;color:#c6d2e2;}
+.rp-adv p b{display:inline-block;font-size:12px;font-weight:800;color:var(--rm);margin-right:8px;}
+.rp-adv-next{margin-top:10px;padding:10px 12px;background:rgba(52,211,153,.1);border-left:3px solid var(--ok);color:var(--rt)!important;font-weight:700;}
+.rp-say{display:flex;gap:14px;align-items:flex-start;background:var(--rp);border:1px solid var(--rl);border-radius:3px;padding:18px 20px;}
 .rp-say svg{width:52px;height:52px;flex:none;}
-.rp-say p{font-family:"Shippori Mincho",serif;font-size:17px;line-height:1.9;color:var(--navy-deep);}
-.rp-foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:24px;padding-top:20px;border-top:1px solid var(--border-light);}
-.rp-btn{display:inline-block;font-size:14px;font-weight:800;padding:11px 18px;border-radius:3px;border:1.5px solid var(--border);color:var(--navy);background:#fff;cursor:default;}
-.rp-btn.primary{background:var(--green);border-color:var(--green);color:#fff;}
-.rp-foot small{width:100%;font-size:12px;color:var(--text-light);}
+.rp-say p{font-size:15.5px;line-height:1.9;color:var(--rt);}
+.rp-foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:22px;padding-top:18px;border-top:1px solid var(--rl);}
+.rp-btn{display:inline-block;font-size:14px;font-weight:800;padding:11px 18px;border-radius:3px;border:1px solid var(--rl);color:var(--rt);background:var(--rp);cursor:default;}
+.rp-btn.primary{background:var(--gold);border-color:var(--gold);color:#0b1220;}
+.rp-foot small{width:100%;font-size:12px;color:var(--rm);}
+@media (prefers-reduced-motion:reduce){.rp-open,.rp-new{animation:none;}}
 
 /* ---------- MOTION ---------- */
 .wave .wv{transform-box:fill-box;transform-origin:center;animation:wv 1.1s ease-in-out infinite;}
@@ -425,10 +474,8 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
   .svc-intro h2{font-size:28px;}
   .svc-grid{grid-template-columns:1fr;}
   .result{grid-template-columns:1fr;}
-  .rp-top{grid-template-columns:1fr;}
+  .rp-hero{grid-template-columns:1fr;}
   .rp-advice{grid-template-columns:1fr;}
-  .rp-score li{grid-template-columns:9em 1fr;}
-  .rp-sp{grid-column:1 / -1;}
   .game-grid{grid-template-columns:1fr;}
   .final-cta{padding:80px 24px;}
   .final-cta h2{font-size:28px;}
@@ -453,16 +500,20 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
   .fig-box{padding:22px 8px 16px;margin-left:0;}
   .demo{padding:56px 0 64px;}
   .rp-overlay{padding:0;}
-  .rp-modal{max-height:100vh;height:100%;}
-  .rp-bar{padding:12px 60px 12px 18px;}
+  .rp-modal{max-height:100vh;height:100%;border:0;}
+  .rp-bar{padding:12px 58px 12px 16px;flex-wrap:wrap;gap:2px 12px;}
   .rp-cap{display:none;}
-  .rp-body{padding:18px 16px 26px;}
-  .rp-top{grid-template-columns:1fr;}
+  .rp-body{padding:16px 14px 26px;}
+  .rp-num{font-size:88px;}
   .rp-cards{grid-template-columns:1fr;}
   .rp-card{min-height:0;}
-  .rp-score li{grid-template-columns:1fr;gap:4px;}
-  .rp-advice{grid-template-columns:1fr;}
-  .rp-v{font-size:24px;}
+  .rp-board li{grid-template-columns:30px 1fr 44px;padding:10px 12px;}
+  .rp-board .bar{display:none;}
+  .rp-items li{grid-template-columns:1fr 56px;}
+  .rp-ib{grid-column:1 / -1;grid-row:2;}
+  .rp-ix{grid-row:3;}
+  .rp-launch{gap:12px;}
+  .rp-open{margin-left:0;width:100%;justify-content:center;}
   .demo-title{font-size:21px;}
   .play-btn{width:48px;height:48px;}
   .play-btn svg{width:20px;height:20px;}
@@ -572,6 +623,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
         <text x="160" y="360" text-anchor="middle" font-family="Noto Sans JP, sans-serif" font-size="15" fill="#15803d" font-weight="800">話している：お客さま</text>
         <text x="160" y="382" text-anchor="middle" font-family="Noto Sans JP, sans-serif" font-size="13" fill="#6b7280">割って入れます（架空の例）</text>
       </svg>
+      <div class="hero-report"><button type="button" class="rp-open" data-rp-open><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>終了後のレポートを見る</button></div>
     </div>
   </div>
 </section>
@@ -683,16 +735,20 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
       <div class="result-main">
         <div class="result-head"><b>採点結果</b><span>画面イメージ（架空の例）</span></div>
         <ul class="bars">
-          <li><span>ヒアリングの深さ</span><i style="--w:68%"></i></li>
-          <li><span>本音に到達できたか</span><i style="--w:52%"></i></li>
-          <li><span>切り返し</span><i style="--w:40%"></i></li>
-          <li><span>次の約束</span><i style="--w:36%"></i></li>
-          <li><span>話す割合</span><i style="--w:44%"></i></li>
+          <li><span>ヒアリングの深さ</span><i style="--w:95%"></i></li>
+          <li><span>本音に到達できたか</span><i style="--w:85%"></i></li>
+          <li><span>切り返し</span><i style="--w:65%"></i></li>
+          <li><span>次の約束</span><i style="--w:70%"></i></li>
+          <li><span>話す割合</span><i style="--w:75%"></i></li>
         </ul>
-        <button type="button" class="rp-open" data-rp-open>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
-          レポートを見る
-        </button>
+        <div class="rp-launch">
+          <div class="rp-launch-score"><b>78</b><span>/100</span></div>
+          <div class="rp-launch-txt"><b>NEW RECORD</b>今月3位・自己ベスト更新（架空の例）</div>
+          <button type="button" class="rp-open" data-rp-open>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            レポートを見る
+          </button>
+        </div>
       </div>
       <div class="result-side">
         <div class="who"><svg aria-hidden="true"><use href="#boss-face"/></svg>AI上司からの一言</div>
@@ -715,7 +771,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
         <li><span class="fc-num">02</span><span class="fc-actor ai">AI</span><h3 class="fc-title">顧客カードを作成</h3><p class="fc-desc">話し方・当日の流れ・断り文句をAIがまとめます。本音は伏せたまま、担当者が書き足すことも。</p></li>
         <li class="hi"><span class="fc-num">03</span><span class="fc-actor">営業担当 × AI</span><h3 class="fc-title">声で話す</h3><p class="fc-desc">画面の向こうのお客さまと、声で商談をやり直し。割って入れば相手は話を止めます。ヘッドセット推奨。</p></li>
         <li><span class="fc-num">04</span><span class="fc-actor ai">AI</span><h3 class="fc-title">採点を見る</h3><p class="fc-desc">5項目の点数と、一言コメントが返ってきます。どこでつまずいたかは、レポートで。</p>
-        <button type="button" class="rp-open rp-open-sm" data-rp-open>レポートを見る</button></li>
+        <button type="button" class="rp-open rp-open-sm" data-rp-open><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>レポートを見る</button></li>
       </ol>
       <div class="fc-loop"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>採点のあとは、03から何度でも再挑戦できます</div>
     </div>
@@ -894,44 +950,74 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
 <div class="rp-overlay" id="rpOverlay">
   <div class="rp-modal" role="dialog" aria-modal="true" aria-labelledby="rpTitle">
     <div class="rp-bar">
-      <div><span class="rp-bar-label">ROLE-PLAY REPORT</span><h2 class="rp-title" id="rpTitle">ロープレレポート</h2></div>
+      <span class="rp-app">SUPER MANAGER <b>RPG</b></span>
+      <h2 class="rp-title" id="rpTitle">ロープレ結果</h2>
       <span class="rp-cap">画面イメージ（架空の例）</span>
       <button type="button" class="rp-close" id="rpClose" aria-label="レポートを閉じる">×</button>
     </div>
     <div class="rp-body">
       <ul class="rp-meta">
         <li><b>相手</b>製造業／総務部長（今日の商談から再現）</li>
-        <li><b>所要</b>9分40秒</li>
+        <li><b>所要</b>9:40</li>
         <li><b>挑戦</b>この相手に3回目</li>
       </ul>
 
-      <div class="rp-top">
-        <div class="rp-verdict">
-          <span class="rp-k">総合</span>
-          <p class="rp-v">本音まで、<br>あと一歩。</p>
-          <p class="rp-up"><span>▲</span>前回より上がった項目　3／5</p>
-          <p class="rp-note">費用の前に社内の決め方を聞けた回です。一方で、冒頭3分を機能の説明に使い、締めで次の約束を取り切れていません。</p>
+      <div class="rp-hero">
+        <div class="rp-score-box">
+          <span class="rp-lbl">SCORE</span>
+          <div class="rp-score"><span class="rp-num">78</span><span class="rp-of">/100</span></div>
+          <span class="rp-new">NEW RECORD　自己ベスト更新</span>
+          <p class="rp-diff">前回 68点 → <b>+10</b></p>
+          <p class="rp-verdict">本音まで、あと一歩。</p>
         </div>
-        <div class="rp-honne">
-          <span class="rp-k">本音カード</span>
-          <p class="rp-honne-lead">AIが伏せていた本音は3枚。今回、開けたのは1枚です。</p>
-          <div class="rp-cards">
-            <div class="rp-card open"><span class="rp-card-tag">開いた</span><p>「社長に説明できる材料がほしい」</p><small>6:40 社内の決め方を聞いた質問で開きました</small></div>
-            <div class="rp-card lock"><span class="rp-card-tag">未開封</span><p>🔒</p><small>断られた理由を、言葉にしてもらうと開きます</small></div>
-            <div class="rp-card lock"><span class="rp-card-tag">未開封</span><p>🔒</p><small>次の挑戦で</small></div>
+        <div class="rp-rec">
+          <span class="rp-lbl">MY RECORD</span>
+          <dl class="rp-rec-list">
+            <div class="best"><dt>過去最高</dt><dd>78<small>点（今回）</small></dd></div>
+            <div><dt>過去最低</dt><dd>41<small>点（1回目）</small></dd></div>
+            <div><dt>今月の順位</dt><dd>3<small>位 ／ 8人中</small></dd></div>
+          </dl>
+          <div class="rp-tries" aria-label="この相手への挑戦の推移：1回目41点、2回目68点、3回目78点">
+            <div><span>41</span><i style="--h:41%"></i><em>1回目</em></div>
+            <div><span>68</span><i style="--h:68%"></i><em>2回目</em></div>
+            <div class="now"><span>78</span><i style="--h:78%"></i><em>今回</em></div>
           </div>
         </div>
       </div>
 
+      <section class="rp-sec" aria-labelledby="rpRank">
+        <div class="rp-rank-head">
+          <h3 class="rp-h" id="rpRank">今月のハイスコア<small>この相手（総務部長）／挑戦者8人・のべ21回</small></h3>
+          <p class="rp-alltime">歴代ハイスコア <b>91</b>点（営業C・8月）</p>
+        </div>
+        <ol class="rp-board">
+          <li><span class="rk">1</span><span class="nm">営業B</span><span class="bar"><i style="--w:86%"></i></span><span class="sc">86</span></li>
+          <li><span class="rk">2</span><span class="nm">営業E</span><span class="bar"><i style="--w:81%"></i></span><span class="sc">81</span></li>
+          <li class="you"><span class="rk">3</span><span class="nm">あなた<em>NEW</em></span><span class="bar"><i style="--w:78%"></i></span><span class="sc">78</span></li>
+          <li><span class="rk">4</span><span class="nm">営業A</span><span class="bar"><i style="--w:74%"></i></span><span class="sc">74</span></li>
+          <li><span class="rk">5</span><span class="nm">営業D</span><span class="bar"><i style="--w:69%"></i></span><span class="sc">69</span></li>
+        </ol>
+        <p class="rp-next-rank">2位まで あと<b>3</b>点。1位の営業Bは、5:05の「必要ない」で聞き分けをしています。</p>
+      </section>
+
       <section class="rp-sec" aria-labelledby="rpS1">
-        <h3 class="rp-h" id="rpS1">5つの項目　<small>薄い印は前回の位置</small></h3>
-        <ul class="rp-score">
-          <li><span class="rp-sn">ヒアリングの深さ</span><span class="rp-sb"><i style="--w:68%"></i><em style="--p:52%"></em></span><span class="rp-sp">商談は説明の場ではない。相手の事業の話を聞いて、その場で組み替える。</span></li>
-          <li><span class="rp-sn">本音に到達できたか</span><span class="rp-sb"><i style="--w:52%"></i><em style="--p:30%"></em></span><span class="rp-sp">即決しなかったら、断られた理由を必ず言葉にしてもらう。</span></li>
-          <li><span class="rp-sn">切り返し</span><span class="rp-sb"><i style="--w:40%"></i><em style="--p:44%"></em></span><span class="rp-sp">「必要ない」は3種類。説明を足して効くのは真ん中だけ。</span></li>
-          <li><span class="rp-sn">次の約束</span><span class="rp-sb"><i style="--w:36%"></i><em style="--p:40%"></em></span><span class="rp-sp">宿題は持ち帰らない。1回で終えず、同じ相手に提案を回す。</span></li>
-          <li><span class="rp-sn">話す割合</span><span class="rp-sb"><i style="--w:44%"></i><em style="--p:38%"></em></span><span class="rp-sp">あなた62％／お客さま38％。勝負は最初の3分。</span></li>
+        <h3 class="rp-h" id="rpS1">5つの項目<small>各20点・細い線は前回</small></h3>
+        <ul class="rp-items">
+          <li><span class="rp-in">ヒアリングの深さ</span><span class="rp-ib"><i style="--w:95%"></i><em style="--p:75%"></em></span><span class="rp-ip">19<small>/20</small></span><span class="rp-ix">商談は説明の場ではない。相手の事業の話を聞いて、その場で組み替える。</span></li>
+          <li><span class="rp-in">本音に到達できたか</span><span class="rp-ib"><i style="--w:85%"></i><em style="--p:55%"></em></span><span class="rp-ip">17<small>/20</small></span><span class="rp-ix">即決しなかったら、断られた理由を必ず言葉にしてもらう。</span></li>
+          <li class="lo"><span class="rp-in">切り返し</span><span class="rp-ib"><i style="--w:65%"></i><em style="--p:70%"></em></span><span class="rp-ip">13<small>/20</small></span><span class="rp-ix">「必要ない」は3種類。説明を足して効くのは真ん中だけ。</span></li>
+          <li class="lo"><span class="rp-in">次の約束</span><span class="rp-ib"><i style="--w:70%"></i><em style="--p:75%"></em></span><span class="rp-ip">14<small>/20</small></span><span class="rp-ix">宿題は持ち帰らない。1回で終えず、同じ相手に提案を回す。</span></li>
+          <li><span class="rp-in">話す割合</span><span class="rp-ib"><i style="--w:75%"></i><em style="--p:65%"></em></span><span class="rp-ip">15<small>/20</small></span><span class="rp-ix">あなた62％／お客さま38％。勝負は最初の3分。</span></li>
         </ul>
+      </section>
+
+      <section class="rp-sec" aria-labelledby="rpS0">
+        <h3 class="rp-h" id="rpS0">本音カード<small>AIが伏せていた本音は3枚</small></h3>
+        <div class="rp-cards">
+          <div class="rp-card open"><span class="rp-card-tag">OPEN</span><p>「社長に説明できる材料がほしい」</p><small>6:40 社内の決め方を聞いた質問で開きました</small></div>
+          <div class="rp-card lock"><span class="rp-card-tag">LOCKED</span><p>🔒</p><small>断られた理由を、言葉にしてもらうと開きます</small></div>
+          <div class="rp-card lock"><span class="rp-card-tag">LOCKED</span><p>🔒</p><small>次の挑戦で</small></div>
+        </div>
       </section>
 
       <section class="rp-sec" aria-labelledby="rpS2">
@@ -954,7 +1040,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
       </section>
 
       <section class="rp-sec" aria-labelledby="rpS3">
-        <h3 class="rp-h" id="rpS3">スーパーマネージャーの指摘</h3>
+        <h3 class="rp-h" id="rpS3">スーパーマネージャーの指摘<small>6件</small></h3>
         <div class="rp-advice">
           <article class="rp-adv">
             <span class="rp-adv-k">原理</span>
@@ -997,8 +1083,8 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
 
       <section class="rp-sec rp-say" aria-label="AI上司の一言">
         <svg aria-hidden="true"><use href="#boss-face"/></svg>
-        <div><span class="rp-k">AI上司からの一言</span>
-          <p>費用の前に決め方を聞けたのは、いい順番でした。次は最初の3分で本質を言い切って、断られたら理由を言葉にしてもらいましょう。本音カードは、あと2枚あります。</p>
+        <div><span class="rp-lbl">AI上司からの一言</span>
+          <p>自己ベスト更新、おめでとうございます。費用の前に決め方を聞けたのは、いい順番でした。次は最初の3分で本質を言い切って、断られたら理由を言葉にしてもらいましょう。2位まで、あと3点です。</p>
         </div>
       </section>
 
@@ -1133,8 +1219,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&rp.classList.contains('show'))rpClose();});
 
   var badge=document.getElementById('hgBadge'),dialog=document.getElementById('hgDialog'),overlay=document.getElementById('hgOverlay'),last=null,dismissed=false;
-  setTimeout(function(){badge.classList.add('show');},3000);
-  setTimeout(function(){if(!dismissed&&!overlay.classList.contains('show'))dialog.classList.add('show');},6000);
+  setTimeout(function(){badge.classList.add('show');},2000);
   function openModal(){dismissed=true;dialog.classList.remove('show');last=document.activeElement;overlay.classList.add('show');document.getElementById('hgClose').focus();}
   function closeModal(){overlay.classList.remove('show');if(last&&last.focus)last.focus();}
   badge.addEventListener('click',openModal);
