@@ -161,7 +161,7 @@ section.tint{background:var(--warm);border-top:1px solid var(--border-light);}
 .cap{font-size:14px;color:var(--text-light);margin-top:16px;line-height:1.85;}
 
 /* pass figure */
-.fig-box{margin-top:28px;background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:28px 20px 22px;}
+.fig-box{margin-top:0;margin-left:8px;background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:28px 20px 22px;}
 .fig-title{font-weight:800;color:var(--navy);text-align:center;margin-bottom:14px;font-size:16px;}
 .fig-box svg{display:block;margin:0 auto;width:100%;max-width:500px;}
 .fig-concl{text-align:center;margin-top:14px;font-size:15px;color:var(--navy);font-weight:700;}
@@ -205,6 +205,21 @@ svg .head{fill:var(--text-light);}
 .result-side .who svg{width:40px;height:40px;}
 .result-side p{font-family:"Shippori Mincho",serif;font-size:17px;line-height:1.9;color:var(--navy-deep);}
 
+.vs-wrap{max-width:880px;margin:0 auto;}
+table.vs{width:100%;border-collapse:collapse;font-size:15px;background:#fff;border:1px solid var(--border);}
+.vs th,.vs td{padding:15px 20px;border-top:1px solid var(--border-light);text-align:left;vertical-align:top;line-height:1.7;word-break:auto-phrase;line-break:strict;}
+.vs thead th{border-top:0;font-size:13px;font-weight:800;color:var(--text-light);background:var(--warm);}
+.vs thead th.us-h{background:var(--navy);color:#fff;}
+.vs tbody th{width:10.5em;font-weight:700;color:var(--navy);font-size:14px;}
+.vs td{color:var(--text-light);}
+.vs td.us{background:var(--green-subtle);color:var(--navy);font-weight:800;border-left:3px solid var(--green);}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+.result-label{justify-content:center;text-align:center;}
+.spark-cap{margin-top:auto;padding-top:10px;font-size:12px;color:var(--text-light);}
+.final-who{display:block;font-style:normal;font-family:"Noto Sans JP",sans-serif;font-size:12px;font-weight:700;color:var(--green-light);letter-spacing:.04em;margin-bottom:2px;}
+.final-link{color:#fff;text-decoration:underline;text-underline-offset:3px;}
+.start-detail a{color:var(--navy);text-decoration:underline;text-underline-offset:3px;}
+
 /* ---------- GAME ---------- */
 .boss{background:var(--navy);color:#fff;border-radius:var(--radius);padding:30px 32px;margin-bottom:20px;box-shadow:0 16px 40px rgba(30,58,95,.22);}
 .boss-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px;}
@@ -216,6 +231,7 @@ svg .head{fill:var(--text-light);}
 .boss-tags span{font-size:13px;font-weight:700;border:1px solid rgba(255,255,255,.3);border-radius:3px;padding:4px 13px;}
 .boss-tags span.on{border-color:var(--green-light);color:var(--green-light);}
 .game-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.game-grid .game-item:first-child{grid-column:1 / -1;}
 .game-item{border:1px solid var(--border);border-radius:3px;padding:22px 24px;background:#fff;display:flex;flex-direction:column;}
 .game-item h3{font-weight:800;color:var(--navy);font-size:17px;margin-bottom:6px;line-height:1.5;}
 .game-item p{font-size:14.5px;color:var(--text-light);line-height:1.85;}
@@ -335,7 +351,11 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
   .hg-dialog{max-width:none;}
   .final-say{border-radius:3px;}
   .final-say span{font-size:15px;}
-  .fig-box{padding:22px 8px 16px;}
+  .fig-box{padding:22px 8px 16px;margin-left:0;}
+  .vs{font-size:14px;}
+  .vs th,.vs td{padding:12px 10px;}
+  .vs tbody th{width:6.5em;}
+  footer{padding-bottom:96px;}
   svg .ts{font-size:16px;}
   svg .t,svg .th{font-size:17px;}
   br.pc{display:none;}
@@ -384,8 +404,8 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
     </a>
     <nav class="nav" aria-label="ページ内">
       <a href="#how">しくみ</a>
-      <a href="#flow">使い方</a>
       <a href="#features">特長</a>
+      <a href="#flow">使い方</a>
       <a href="#faq">よくある質問</a>
     </nav>
     <a href="#start" class="header-cta">導入について</a>
@@ -401,7 +421,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
       <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">Super Manager ／ RPG</span></div>
       <h1><span class="ph">今日の手強い</span><span class="ph">お客さまに、</span><br><span class="accent"><span class="ph">今日のうちに</span><span class="ph">もう一度挑める。</span></span></h1>
       <div class="hero-sub">商談ログから相手を再現し、<span class="mk">声で10分前後</span>、<span class="mk">5項目で採点</span>。</div>
-      <p class="hero-desc">スーパーマネージャーの<span class="nobr">オプション機能</span>です。商談ログ（スーパーマネージャー／Google Meet）から、口ぐせも、断り文句も、<strong>口に出さなかった本音まで持った「相手役」</strong>をAIがつくります。営業担当はその相手と、声でもう一度商談に臨めます。</p>
+      <p class="hero-desc">スーパーマネージャーの<span class="nobr">オプション機能</span>です。商談ログ（スーパーマネージャー／Google Meet）から、口ぐせも、断り文句も、<strong>口に出さなかった本音まで持った「相手役」</strong>をAIがつくります。</p>
       <div class="hero-cta-row">
         <a href="#how" class="btn-primary">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
@@ -409,7 +429,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
         </a>
         <a href="#start" class="btn-ghost">導入について</a>
       </div>
-      <p class="hero-note">※ 時間は目安です。導入のご相談は、スーパーマネージャーの担当者が承ります。</p>
+      <p class="hero-note">※ 時間は目安です。導入のご相談は、ページ下部の窓口から承ります。</p>
     </div>
     <div class="hero-visual">
       <svg viewBox="0 0 320 400" role="img" aria-labelledby="hv-t hv-d">
@@ -458,7 +478,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
       <div class="tl-card">
         <span class="tl-mini"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span>
         <div>
-          <h3 class="tl-card-name">社内の相手役は、本物のお客さまのようには断らない</h3>
+          <h3 class="tl-card-name">社内の相手役は、本物ほど断らない</h3>
           <p class="tl-card-desc">先輩が演じる架空のお客さまでは、実際の言い回しや間合い、言葉にしない懸念までは出てきません。</p>
         </div>
       </div>
@@ -507,6 +527,46 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
   </div>
 </section>
 
+<!-- ============ FEATURES ============ -->
+<section class="block" id="features">
+  <div class="wrap">
+    <div class="svc-intro">
+      <div class="slabel">Difference</div>
+      <h2><span class="ph">本物に近づけるため、</span><span class="ph">お客さまの</span><span class="ph"><span class="mk">本音は営業に見せません</span>。</span></h2>
+      <p>先輩が演じる相手役と、いちばん違うのは本音の扱いです。</p>
+    </div>
+    <div class="vs-wrap">
+      <table class="vs">
+        <thead><tr><th scope="col"><span class="sr">比較項目</span></th><th scope="col">社内ロープレ</th><th scope="col" class="us-h">スーマネRPG</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">相手役</th><td>先輩・上司が演じる</td><td class="us">当日の商談から再現</td></tr>
+          <tr><th scope="row">相手の本音</th><td>演じる人の想像</td><td class="us">AIが伏せて持つ</td></tr>
+          <tr><th scope="row">相手役の手配</th><td>誰かの時間を押さえる</td><td class="us">AIが相手役</td></tr>
+          <tr><th scope="row">振り返り</th><td>口頭で振り返り</td><td class="us">5項目の採点＋一言</td></tr>
+          <tr><th scope="row">手強い客の経験</th><td>本人の反省止まり</td><td class="us">同僚へパスできる</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="result-label"><div><h3 class="svc-name">採点は、5つの項目で</h3><div class="svc-role">感覚ではなく、項目で振り返る。</div></div></div>
+    <div class="result" role="group" aria-label="採点結果の画面イメージ">
+      <div class="result-main">
+        <div class="result-head"><b>採点結果</b><span>画面イメージ（架空の例）</span></div>
+        <ul class="bars">
+          <li><span>ヒアリングの深さ</span><i style="--w:72%"></i></li>
+          <li><span>本音に到達できたか</span><i style="--w:48%"></i></li>
+          <li><span>切り返し</span><i style="--w:64%"></i></li>
+          <li><span>次の約束</span><i style="--w:80%"></i></li>
+          <li><span>話す割合</span><i style="--w:56%"></i></li>
+        </ul>
+      </div>
+      <div class="result-side">
+        <div class="who"><svg aria-hidden="true"><use href="#boss-face"/></svg>AI上司からの一言</div>
+        <p>「費用の前に、社内の決め方を聞けていました。本音まで、あと一歩です」</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ FLOW ============ -->
 <section class="block wrap" id="flow">
   <div class="two-col">
@@ -522,7 +582,6 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
         <li><span class="fc-num">04</span><span class="fc-actor ai">AI</span><h3 class="fc-title">採点を見る</h3><p class="fc-desc">5項目の点数と、一言コメントが返ってきます。</p></li>
       </ol>
       <div class="fc-loop"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>採点のあとは、03から何度でも再挑戦できます</div>
-      <div class="say"><svg aria-hidden="true"><use href="#boss-face"/></svg><span>「10分前後なら、次の商談の前にも間に合うだに」</span></div>
     </div>
   </div>
 </section>
@@ -544,8 +603,11 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
         <div class="tl-head"><span class="tl-badge">Evening ／ 夕方</span><span class="tl-phase-title">その日のうちに再挑戦</span></div>
         <div class="tl-card"><div><p class="tl-card-desc">帰社後の10分で、同じ相手にもう一度。費用の前に、社内の決め方を聞いてみる打ち方を試します。</p></div></div>
       </div>
+      <div class="tl-connector"></div>
+      <div class="tl-phase">
+        <div class="tl-head"><span class="tl-badge">Pass ／ 隣の席へ</span><span class="tl-phase-title">それでも手強ければ、同僚に渡す</span></div>
+      </div>
       <figure class="fig-box">
-        <p class="fig-title">それでも手強ければ、隣の席へ</p>
         <svg viewBox="0 0 360 310" role="img" aria-labelledby="pass-t pass-d">
           <title id="pass-t">同僚へのパスの流れ</title>
           <desc id="pass-d">営業Aが「お前もやってみ」と顧客カードを営業Bに渡し、営業Bが挑戦した会話と点数が営業Aに届き、営業Aが別の打ち方を知る流れ。</desc>
@@ -574,60 +636,12 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
   </div>
 </section>
 
-<!-- ============ FEATURES ============ -->
-<section class="block" id="features">
-  <div class="wrap">
-    <div class="svc-intro">
-      <div class="slabel">3 Features</div>
-      <h2><span class="ph">本物に近づけるため、</span><span class="ph">お客さまの</span><span class="ph"><span class="mk">本音は営業に見せません</span>。</span></h2>
-      <p>本音を隠す。声で割って入れる。5項目で振り返る。<br class="pc">本番と同じ手応えのために、この3つをそろえました。</p>
-    </div>
-    <div class="svc-grid">
-      <div class="svc-card">
-        <div class="svc-card-top">
-          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="idot"></span></div>
-          <span class="svc-num">01</span>
-        </div>
-        <h3 class="svc-name">本音を隠した顧客カード</h3>
-        <div class="svc-role">聞き出さなければ、前に進まない。</div>
-        <p class="svc-desc">本当の懸念や決め手の条件を知っているのは、AIだけ。質問で引き出せれば会話が進み、引き出せなければ、本物の商談と同じように話が止まります。</p>
-      </div>
-      <div class="svc-card">
-        <div class="svc-card-top">
-          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="1"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span class="idot"></span></div>
-          <span class="svc-num">02</span>
-        </div>
-        <h3 class="svc-name">割って入れる、声の会話</h3>
-        <div class="svc-role">話し始めれば、相手が止まる。</div>
-        <p class="svc-desc">やり取りは文字ではなく、声です。こちらが割って入れば相手は話を止めるため、実際の商談に近い間合いで練習できます。</p>
-      </div>
-    </div>
-    <div class="result-label"><span class="svc-num">03</span><div><h3 class="svc-name">5項目の採点</h3><div class="svc-role">感覚ではなく、項目で振り返る。</div></div></div>
-    <div class="result" role="group" aria-label="採点結果の画面イメージ">
-      <div class="result-main">
-        <div class="result-head"><b>採点結果</b><span>画面イメージ（架空の例）</span></div>
-        <ul class="bars">
-          <li><span>ヒアリングの深さ</span><i style="--w:72%"></i></li>
-          <li><span>本音に到達できたか</span><i style="--w:48%"></i></li>
-          <li><span>切り返し</span><i style="--w:64%"></i></li>
-          <li><span>次の約束</span><i style="--w:80%"></i></li>
-          <li><span>話す割合</span><i style="--w:56%"></i></li>
-        </ul>
-      </div>
-      <div class="result-side">
-        <div class="who"><svg aria-hidden="true"><use href="#boss-face"/></svg>一言コメント</div>
-        <p>「費用の前に、社内の決め方を聞けていました。本音まで、あと一歩です」</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ GAME ============ -->
 <section class="block tint" id="game">
   <div class="wrap two-col">
     <div class="two-col-left">
       <div class="slabel">Game</div>
-      <h2 class="two-col-title"><span class="ph">手強いお客さまは</span><span class="ph"><span class="mk">「ボス」</span>として、</span><span class="ph">何度でも</span><span class="ph">挑み直せます。</span><small>続けたくなる仕掛けも用意しました。ただし主役は、他人との比較ではなく、昨日の自分との比較です。</small></h2>
+      <h2 class="two-col-title"><span class="ph">手強いお客さまは</span><span class="ph"><span class="mk">「ボス」</span>として、</span><span class="ph">何度でも</span><span class="ph">挑み直せます。</span><small>続けたくなる仕掛けも用意しました。いちばん見てほしいのは、昨日の自分との差です。</small></h2>
     </div>
     <div>
       <div class="boss" role="group" aria-label="今週のボスの画面イメージ">
@@ -642,16 +656,14 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
           <p>同じ顧客カードに、数人が挑戦。対戦中は相手役の設定と本音を固定するので、「自分の回だけ機嫌が悪かった」はありません。</p>
         </div>
         <div class="game-item">
+          <svg class="spark" viewBox="0 0 200 56" role="img" aria-label="点数が少しずつ上がっていく折れ線の画面イメージ"><line x1="0" y1="52" x2="200" y2="52" stroke="#e5e7eb" stroke-width="1"/><polyline points="6,44 52,38 98,40 144,24 194,12" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linejoin="round"/><circle cx="194" cy="12" r="4" fill="#1e3a5f"/></svg>
           <h3>点数グラフ</h3>
           <p>日々の点数を項目ごとに記録。どこが伸びて、どこが止まっているかが自分で分かります。</p>
+          <span class="spark-cap">画面イメージ（架空の例）</span>
         </div>
         <div class="game-item">
-          <h3>週間ランキング</h3>
-          <p>順位はチーム内・週単位で出ます。</p>
-        </div>
-        <div class="game-item">
-          <h3>バッジ</h3>
-          <p>挑戦の節目に応じて、バッジが付く仕組みです。</p>
+          <h3>週間ランキングとバッジ</h3>
+          <p>順位はチーム内・週単位。挑戦の節目ごとに、バッジも。</p>
         </div>
       </div>
     </div>
@@ -672,7 +684,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
           <li><b>対象</b>：スーパーマネージャーをお使いの企業、または導入を検討中の企業</li>
           <li><b>使うもの</b>：スーパーマネージャー、またはGoogle Meetの商談ログ</li>
           <li><b>必要な機器</b>：パソコンとマイク（ヘッドセットがおすすめ）</li>
-          <li><b>始め方</b>：スーパーマネージャーの担当者へご相談ください。御社の営業体制に合わせて、始め方をご案内します</li>
+          <li><b>始め方</b>：スーパーマネージャーをお使いの方は担当者へ、ご検討中の方は<a href="https://writeup.jp/contact/" target="_blank" rel="noopener noreferrer">お問い合わせ窓口</a>へ。御社の営業体制に合わせて、始め方をご案内します</li>
         </ul>
       </div>
     </div>
@@ -707,8 +719,8 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
 <section class="final-cta" id="contact">
   <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">Get Started</span></div>
   <h2>次の商談の前に、<br>今日のお客さまともう一度。</h2>
-  <div class="final-say"><svg aria-hidden="true"><use href="#boss-face"/></svg><span>「まずは御社の商談の話、聞かせてほしいんだに」</span></div>
-  <p>いまお付き合いのあるスーパーマネージャーの担当者に、「スーマネRPGについて聞きたい」とお伝えください。</p>
+  <div class="final-say"><svg aria-hidden="true"><use href="#boss-face"/></svg><span><em class="final-who">AI上司 スーパーマネージャー</em>「まずは御社の商談の話、聞かせてほしいんだに」</span></div>
+  <p>スーパーマネージャーをお使いの方は担当者へ、ご検討中の方は<a class="final-link" href="https://writeup.jp/contact/" target="_blank" rel="noopener noreferrer">ライトアップのお問い合わせ窓口</a>へ、「スーマネRPGについて聞きたい」とお伝えください。</p>
 </section>
 
 </main>
@@ -729,9 +741,9 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center
   <a href="#hero" data-sec="hero" class="active" aria-label="トップ"></a>
   <a href="#problem" data-sec="problem" aria-label="課題"></a>
   <a href="#how" data-sec="how" aria-label="しくみ"></a>
+  <a href="#features" data-sec="features" aria-label="特長"></a>
   <a href="#flow" data-sec="flow" aria-label="使い方"></a>
   <a href="#scenario" data-sec="scenario" aria-label="使われ方"></a>
-  <a href="#features" data-sec="features" aria-label="特長"></a>
   <a href="#game" data-sec="game" aria-label="ゲーム"></a>
   <a href="#start" data-sec="start" aria-label="導入"></a>
   <a href="#faq" data-sec="faq" aria-label="よくある質問"></a>
