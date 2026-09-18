@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="スーパーマネージャー Ver.2 構想：営業の生ログを、リアルタイムの成果と将来の営業資産に変える。">
+  <link rel="icon" href="data:,">
+  <title>スーパーマネージャー Ver.2｜構想メモ</title>
+  <style>
+    :root {
+      --ink: #252525;
+      --muted: #757575;
+      --blue: #505050;
+      --accent: #cb672d;
+      --rule: #e3e3e3;
+      --margin: #d4d4d4;
+      --paper: #fffefd;
+      --canvas: #ededed;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { background: var(--canvas); }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--canvas);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 16px;
+      line-height: 2;
+      letter-spacing: .018em;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .paper {
+      position: relative;
+      width: min(100% - 40px, 1080px);
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 64px 76px 84px 116px;
+      background-color: var(--paper);
+      background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 31px, var(--rule) 32px);
+      box-shadow: 0 1px 14px rgba(28, 47, 64, .08);
+    }
+
+    .paper::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 76px;
+      width: 1px;
+      content: "";
+      background: var(--margin);
+      opacity: .72;
+    }
+
+    header {
+      position: relative;
+      margin-bottom: 54px;
+    }
+
+    .label,
+    .section-label {
+      margin: 0;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.6;
+      letter-spacing: .12em;
+    }
+
+    h1 {
+      margin: 8px 0 10px;
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.25;
+      letter-spacing: .03em;
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
+      font-weight: 700;
+    }
+
+    .lead {
+      max-width: 680px;
+      margin: 0;
+      color: #4b4b4b;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.9;
+    }
+
+    .core {
+      margin: 0 0 50px;
+      padding: 18px 0 17px 20px;
+      border-left: 4px solid var(--accent);
+      color: #2f2f2f;
+      font-size: 18px;
+      font-weight: 650;
+      line-height: 1.9;
+    }
+
+    .system-flow {
+      margin: 0 0 54px;
+      padding: 20px 0 24px;
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .diagram-title {
+      margin: 0 0 16px;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 760;
+      letter-spacing: .11em;
+    }
+
+    .flow-row,
+    .live-flow,
+    .avatar-path {
+      display: grid;
+      align-items: start;
+    }
+
+    .flow-row {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0;
+    }
+
+    .flow-step {
+      position: relative;
+      min-height: 120px;
+      padding: 4px 15px 0 0;
+    }
+
+    .flow-step:not(:last-child)::after {
+      position: absolute;
+      top: 30px;
+      right: 0;
+      width: 27px;
+      height: 1px;
+      content: "";
+      background: #8c8c8c;
+    }
+
+    .flow-step:not(:last-child)::before {
+      position: absolute;
+      top: 27px;
+      right: -1px;
+      width: 6px;
+      height: 6px;
+      content: "";
+      border-top: 1px solid #8c8c8c;
+      border-right: 1px solid #8c8c8c;
+      transform: rotate(45deg);
+    }
+
+    .flow-icon,
+    .initiative-icon,
+    .live-icon {
+      display: block;
+      color: #303030;
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .flow-icon {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 8px;
+    }
+
+    .flow-step:nth-child(1) .flow-icon circle,
+    .flow-step:nth-child(5) .flow-icon circle {
+      fill: var(--accent);
+      stroke: none;
+    }
+
+    .flow-step strong {
+      display: block;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .flow-step small {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.55;
+    }
+
+    section { margin-top: 54px; }
+
+    h2 {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin: 0 0 16px;
+      font-size: clamp(22px, 3.5vw, 29px);
+      line-height: 1.45;
+      letter-spacing: .025em;
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
+      font-weight: 700;
+    }
+
+    h2 span {
+      display: inline-block;
+      color: var(--accent);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: clamp(18px, 2vw, 22px);
+      font-weight: 900;
+      letter-spacing: .12em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .intro { margin: 0 0 19px; }
+
+    .purpose {
+      display: inline-block;
+      margin: 0 0 18px;
+      padding: 1px 10px;
+      color: var(--blue);
+      border: 1px solid #c9c9c9;
+      background: rgba(255, 255, 255, .55);
+      font-size: 12px;
+      font-weight: 760;
+      line-height: 1.8;
+      letter-spacing: .1em;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      position: relative;
+      margin: 0 0 16px;
+      padding-left: 22px;
+    }
+
+    li::before {
+      position: absolute;
+      top: 1.03em;
+      left: 2px;
+      width: 8px;
+      height: 8px;
+      content: "";
+      border: 1.5px solid var(--blue);
+      border-radius: 50%;
+    }
+
+    strong {
+      color: #252525;
+      font-weight: 750;
+    }
+
+    .status {
+      display: inline-block;
+      margin-left: 8px;
+      padding: 1px 7px 0;
+      color: #565656;
+      border: 1px solid #bdbdbd;
+      background: #f4f4f4;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.55;
+      letter-spacing: .07em;
+      vertical-align: 2px;
+      white-space: nowrap;
+    }
+
+    .note {
+      margin: 22px 0 0;
+      padding: 14px 18px;
+      color: #5d5d5d;
+      border: 1px solid #d4d4d4;
+      background: rgba(255, 255, 255, .68);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .initiative-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 34px;
+      margin-top: 25px;
+    }
+
+    .initiative {
+      padding-top: 18px;
+      border-top: 2px solid var(--blue);
+    }
+
+    .initiative-heading {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 11px;
+    }
+
+    .initiative-heading h3 { margin: 0; }
+
+    .initiative-icon {
+      flex: 0 0 auto;
+      width: 34px;
+      height: 34px;
+    }
+
+    h3 {
+      margin: 0 0 11px;
+      color: var(--blue);
+      font-size: 18px;
+      line-height: 1.5;
+      letter-spacing: .04em;
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
+      font-weight: 700;
+    }
+
+    .initiative li { margin-bottom: 14px; }
+
+    .avatar-feature {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 225px;
+      gap: 36px;
+      align-items: center;
+      margin-top: 25px;
+      padding: 28px 0 30px;
+      border-top: 2px solid var(--ink);
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .avatar-kicker {
+      margin: 0 0 7px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 760;
+      letter-spacing: .12em;
+    }
+
+    .avatar-feature h3 {
+      margin-bottom: 11px;
+      color: var(--ink);
+      font-size: clamp(27px, 4vw, 42px);
+      font-weight: 780;
+      line-height: 1.2;
+      letter-spacing: .035em;
+    }
+
+    .avatar-feature p:last-child { margin: 0; }
+
+    .reference-link {
+      display: inline-block;
+      margin-top: 14px;
+      color: #303030;
+      border-bottom: 1px solid var(--accent);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.7;
+      text-decoration: none;
+    }
+
+    .reference-link:hover,
+    .reference-link:focus-visible {
+      color: var(--accent);
+      outline: none;
+    }
+
+    .avatar-illustration {
+      width: 100%;
+      max-width: 210px;
+      justify-self: end;
+    }
+
+    .live-flow {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0;
+      margin: 24px 0 26px;
+      border-top: 1px solid #bfbfbf;
+      border-bottom: 1px solid #bfbfbf;
+    }
+
+    .live-step {
+      position: relative;
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 10px;
+      min-height: 78px;
+      padding: 14px 18px 13px 0;
+    }
+
+    .live-step + .live-step { padding-left: 18px; }
+
+    .live-step + .live-step::before {
+      position: absolute;
+      top: 18px;
+      bottom: 18px;
+      left: 0;
+      width: 1px;
+      content: "";
+      background: #d0d0d0;
+    }
+
+    .live-icon { width: 36px; height: 36px; }
+
+    .live-step strong {
+      display: block;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .live-step small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .avatar-path {
+      grid-template-columns: 1.05fr 22px 1fr 22px 1.12fr;
+      gap: 8px;
+      margin: 25px 0 0;
+      padding: 18px 0 0;
+      border-top: 1px solid #bfbfbf;
+    }
+
+    .path-step { font-size: 12px; line-height: 1.55; }
+    .path-step strong { display: block; color: var(--blue); font-size: 13px; }
+    .path-step small { display: block; color: var(--muted); font-size: 11px; }
+    .path-arrow { align-self: center; color: var(--accent); font-size: 19px; font-weight: 800; line-height: 1; }
+
+    .result {
+      margin: 26px 0 0;
+      padding-left: 18px;
+      border-left: 3px solid var(--blue);
+      color: #2f2f2f;
+      font-size: 18px;
+      font-weight: 640;
+    }
+
+    .offer {
+      margin-top: 56px;
+      padding: 30px 0 8px;
+      border-top: 2px solid var(--ink);
+    }
+
+    .price {
+      margin: 6px 0 12px;
+      color: var(--blue);
+      font-size: clamp(27px, 4vw, 38px);
+      font-weight: 760;
+      line-height: 1.35;
+      letter-spacing: .02em;
+    }
+
+    footer {
+      margin-top: 72px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+      text-align: right;
+    }
+
+    @media (max-width: 640px) {
+      body { font-size: 15px; line-height: 1.9; }
+
+      .paper {
+        width: 100%;
+        padding: 46px 24px 62px 52px;
+        background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 28px, var(--rule) 29px);
+        box-shadow: none;
+      }
+
+      .paper::before { left: 31px; }
+      header { margin-bottom: 42px; }
+      .lead, .core { font-size: 16px; }
+      section { margin-top: 43px; }
+      li { margin-bottom: 14px; }
+      .initiative-grid { grid-template-columns: 1fr; gap: 25px; }
+      .system-flow { margin-bottom: 43px; }
+      .flow-row { grid-template-columns: 1fr; gap: 0; }
+      .flow-step { display: grid; grid-template-columns: 52px 1fr; min-height: 0; padding: 8px 0 14px; }
+      .flow-step:not(:last-child)::after { top: auto; right: auto; bottom: 2px; left: 21px; width: 1px; height: 12px; }
+      .flow-step:not(:last-child)::before { top: auto; right: auto; bottom: 0; left: 19px; transform: rotate(135deg); }
+      .flow-icon { margin: 0; }
+      .live-flow { grid-template-columns: 1fr; }
+      .live-step, .live-step + .live-step { padding: 14px 0; }
+      .live-step + .live-step::before { top: 0; right: 0; bottom: auto; left: 0; width: 100%; height: 1px; }
+      .avatar-path { grid-template-columns: 1fr; gap: 6px; }
+      .path-arrow { transform: rotate(90deg); margin-left: 2px; }
+      .avatar-feature { grid-template-columns: 1fr; gap: 16px; }
+      .avatar-illustration { max-width: 150px; justify-self: start; }
+      .result { font-size: 16px; }
+    }
+
+    @media print {
+      html, body { background: #fff; }
+      .paper { width: 100%; padding-top: 34px; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="paper">
+    <header>
+      <p class="label">CONCEPT NOTE / SUPER MANAGER VER.2</p>
+      <h1>生ログを、営業力に変える。</h1>
+      <p class="lead">会話をあとから要約するだけではない。商談の生ログをリアルタイムで残し、その場の成果から、将来のAI営業担当者までを育てていく。</p>
+    </header>
+
+    <p class="core">スーパーマネージャー Ver.2の本質は、営業や打ち合わせの「生ログ」をリアルタイムで生成・蓄積できること。短期では受注率を上げ、中期では受注率向上と新規集客を仕組みにし、長期では営業の全自動AI化を実現する。</p>
+
+    <figure class="system-flow" aria-labelledby="system-flow-caption">
+      <figcaption id="system-flow-caption" class="diagram-title">生ログが、営業の仕組みになるまで</figcaption>
+      <div class="flow-row">
+        <div class="flow-step">
+          <svg class="flow-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 11h32v20H20l-8 7v-7H8z" stroke-width="1.8"/><path d="M15 19h18m-18 5h12" stroke-width="1.8"/><circle cx="39" cy="10" r="4"/></svg>
+          <strong>生ログ</strong><small>商談をリアルタイムで残す</small>
+        </div>
+        <div class="flow-step">
+          <svg class="flow-icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="11" y="8" width="25" height="32" rx="1" stroke-width="1.8"/><path d="M17 17h13m-13 6h13m-13 6h8" stroke-width="1.8"/><path d="m36 32 5-5m-1 6-6-1" stroke-width="1.8"/></svg>
+          <strong>即時支援</strong><small>助言・レポートをその場で返す</small>
+        </div>
+        <div class="flow-step">
+          <svg class="flow-icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="17" cy="18" r="6" stroke-width="1.8"/><circle cx="32" cy="14" r="4" stroke-width="1.8"/><path d="M7 37c1-8 6-12 10-12s9 4 10 12m-2-3c1-6 4-9 8-9 4 0 7 3 8 9" stroke-width="1.8"/></svg>
+          <strong>営業の型</strong><small>差分と勝ち筋を見える化する</small>
+        </div>
+        <div class="flow-step">
+          <svg class="flow-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M10 10h19v27H10zM29 15h9v23H19" stroke-width="1.8"/><path d="M15 18h9m-9 6h9m-9 6h6" stroke-width="1.8"/></svg>
+          <strong>知識・集客資産</strong><small>ナレッジ、事例、LPへ展開する</small>
+        </div>
+        <div class="flow-step">
+          <svg class="flow-icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="15" stroke-width="1.8"/><circle cx="24" cy="20" r="6" stroke-width="1.8"/><path d="M14 35c2-6 6-9 10-9s8 3 10 9M24 8V3m0 5-3-3m3 3 3-3" stroke-width="1.8"/><circle cx="39" cy="39" r="4"/></svg>
+          <strong>AI営業アバター</strong><small>会話と提案を担う完成形</small>
+        </div>
+      </div>
+    </figure>
+
+    <section aria-labelledby="short-term">
+      <p class="section-label">SHORT TERM</p>
+      <h2 id="short-term"><span>短期</span>会議中から、営業成果を高める</h2>
+      <p class="purpose">目的：受注率向上</p>
+      <p class="intro">会話が終わった後だけでなく、進行中から営業を支援する。</p>
+      <div class="live-flow" aria-label="短期のリアルタイム支援フロー">
+        <div class="live-step">
+          <svg class="live-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M5 8h30v20H17l-7 6v-6H5z" stroke-width="1.7"/><path d="M12 16h16m-16 5h10" stroke-width="1.7"/><circle cx="31" cy="11" r="2.5" fill="#cb672d" stroke="none"/></svg>
+          <div><strong>会話をつかむ</strong><small>顧客の関心・懸念を生ログ化</small></div>
+        </div>
+        <div class="live-step">
+          <svg class="live-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="m20 5 3 9 9 3-9 3-3 9-3-9-9-3 9-3z" stroke-width="1.7"/><path d="M29 27h6m-3-3v6" stroke-width="1.7"/></svg>
+          <div><strong>次の一手を出す</strong><small>聞くこと・伝えることを助言</small></div>
+        </div>
+        <div class="live-step">
+          <svg class="live-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 7h18v25H8z" stroke-width="1.7"/><path d="M13 15h9m-9 5h9" stroke-width="1.7"/><path d="m24 28 10-10m-6 0h6v6" stroke-width="1.7"/></svg>
+          <div><strong>会議を閉じる</strong><small>議事録と次の対応を整える</small></div>
+        </div>
+      </div>
+      <ul>
+        <li><strong>リアルタイムの助言</strong><span class="status">実装済み</span><br>顧客の関心や懸念を読み取り、次に確認すべきこと、伝えるべき事例、深掘りすべき論点を提示する。</li>
+        <li><strong>リアルタイムのレポート生成</strong><span class="status">実装済み</span><br>要点、顧客課題、合意事項、次回アクションを会話と同時に整理する。会議後に記憶を頼りに報告書を書く必要がなくなる。</li>
+        <li><strong>会議終了直前の議事録生成・送付</strong><br>終了前に顧客向け議事録と次の対応を整える。送付ルールと相手の同意がある案件では、すぐ送信できる状態までつくる。</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="mid-term">
+      <p class="section-label">MID TERM</p>
+      <h2 id="mid-term"><span>中期</span>受注率と、新規集客を仕組みにする</h2>
+      <p class="intro">ログがたまるほど、営業の強さと集客の強さを、同時に育てられる。</p>
+      <div class="initiative-grid">
+        <div class="initiative">
+          <div class="initiative-heading">
+            <svg class="initiative-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M6 33h28M10 29V18m10 11V12m10 17V7" stroke-width="1.8"/><path d="m25 11 5-5 5 5" stroke-width="1.8"/></svg>
+            <h3>受注率向上</h3>
+          </div>
+          <ul>
+            <li><strong>商談直後の振り返り</strong><br>良かった点、取りこぼした質問、次回改善すべき点を営業担当者へ届ける。</li>
+            <li><strong>エースとの差分分析</strong><br>質問の深さ、課題の言語化、反論への対応を日次・週次で可視化する。</li>
+            <li><strong>セールスナレッジの生成</strong><br>刺さる言い回し、事例、反論への対応を、商材ごとに更新し続ける。</li>
+          </ul>
+        </div>
+        <div class="initiative">
+          <div class="initiative-heading">
+            <svg class="initiative-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M7 21h7l12-8v18l-12-8H7zM12 29l2 6h5l-2-7M30 17h4m-4 5h5m-5 5h4" stroke-width="1.8"/></svg>
+            <h3>新規集客</h3>
+          </div>
+          <ul>
+            <li><strong>顧客インタビューの生成</strong><br>掲載許可のある顧客のログから、実名のインタビュー記事を下書きする。</li>
+            <li><strong>オウンドメディアへの展開</strong><br>現場で実際に出た課題や言葉を、検索される情報資産に変える。</li>
+            <li><strong>LPの継続改善</strong><br>新しい訴求軸を見つけ、サービスごとのLP案をつくり、承認後に公開・改善する。</li>
+          </ul>
+        </div>
+      </div>
+      <p class="note">※ 実名事例の公開、顧客への送信、LPの公開は、あらかじめ定めた同意・承認の範囲で行う。</p>
+    </section>
+
+    <section aria-labelledby="long-term">
+      <p class="section-label">LONG TERM</p>
+      <h2 id="long-term"><span>長期</span>営業の全自動AI化を達成する</h2>
+      <p class="purpose">最優先ゴール：完全AI化</p>
+      <p class="intro">生ログと整理済みデータがたまった先にある、いちばん大きな完成形。</p>
+      <div class="avatar-feature">
+        <div>
+          <p class="avatar-kicker">THE MAIN GOAL</p>
+          <h3>AI営業アバター、完成。</h3>
+          <p>商材ごとの成功パターン、顧客別の論点、反論への回答を学び、AIが顧客と会話し、説明し、提案する。半年後から品質が整った領域で始め、1年後には営業の全自動AI化を目指す。</p>
+          <a class="reference-link" href="https://www.youtube.com/watch?v=Fez2tIUCWRk" target="_blank" rel="noopener noreferrer">AI営業アバターの参考動画を見る ↗</a>
+        </div>
+        <svg class="avatar-illustration" viewBox="0 0 240 220" role="img" aria-label="AI営業アバターのイラスト">
+          <title>AI営業アバター</title>
+          <circle cx="120" cy="110" r="91" fill="#f5f5f5" stroke="#303030" stroke-width="2"/>
+          <path d="M74 151c9-30 30-44 46-44s37 14 46 44" fill="none" stroke="#303030" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="120" cy="82" r="34" fill="#fffefd" stroke="#303030" stroke-width="4"/>
+          <path d="M100 82h9m22 0h9M112 96c5 4 11 4 16 0" fill="none" stroke="#303030" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M120 42V26m0 16-8-8m8 8 8-8" fill="none" stroke="#cb672d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M166 58h30v23l9 9-9-1h-30z" fill="#fffefd" stroke="#303030" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M176 70h11m5 0h-1" fill="none" stroke="#303030" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="58" cy="70" r="5" fill="#cb672d"/>
+          <circle cx="183" cy="157" r="5" fill="#cb672d"/>
+        </svg>
+      </div>
+      <div class="avatar-path" aria-label="AI営業アバターへ進むロードマップ">
+        <div class="path-step"><strong>生ログを蓄積</strong><small>全社の商談を、再利用できる形で残す</small></div>
+        <div class="path-arrow" aria-hidden="true">→</div>
+        <div class="path-step"><strong>商材別に知識化</strong><small>勝ち筋・反論・顧客論点を整える</small></div>
+        <div class="path-arrow" aria-hidden="true">→</div>
+        <div class="path-step"><strong>AI営業アバターへ</strong><small>半年後：限定領域から開始 ／ 1年後：完全AI化を目指す</small></div>
+      </div>
+      <p class="result"><strong>結果、人は。</strong><br>重要顧客との関係構築、例外判断、提案と契約の最終責任に集中する。</p>
+    </section>
+
+    <section class="offer" aria-labelledby="offer-title">
+      <p class="section-label">THE OFFER</p>
+      <h2 id="offer-title">始めるのは、議事録ではない。</h2>
+      <p class="price">営業担当者 1人あたり 月額1万円から</p>
+      <p>会議を残し、すぐ次の行動につなげる。そこから営業の型をつくり、将来のAI営業担当者までを、一つの生ログ基盤から育てていく。</p>
+    </section>
+
+    <footer>SUPER MANAGER VER.2 / CONCEPT NOTE</footer>
+  </main>
+</body>
+</html>

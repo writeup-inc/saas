@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="REAL AFI（草の根QR紹介モニター網）の30日MVP企画">
+  <title>REAL AFI｜草の根QR紹介モニター網</title>
+  <style>
+    :root { --ink:#171717; --muted:#656565; --line:#d8d8d2; --paper:#fffefa; --subtle:#f4f4ef; --accent:#bd6326; --forest:#365549; }
+    * { box-sizing:border-box; }
+    html { background:#e9e9e3; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",YuGothic,Meiryo,sans-serif; font-size:16px; line-height:1.9; letter-spacing:.025em; }
+    main { width:min(100% - 40px, 1200px); margin:0 auto; padding:66px 62px 98px 88px; min-height:100vh; position:relative; background:repeating-linear-gradient(to bottom, transparent 0, transparent 34px, rgba(71,71,65,.065) 35px, transparent 36px); }
+    main::before { content:""; position:absolute; top:0; bottom:0; left:42px; width:1px; background:#daa28d; }
+    .eyebrow { margin:0 0 17px; color:var(--accent); font-size:11px; font-weight:700; letter-spacing:.19em; }
+    h1,h2,h3 { font-family:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP",serif; letter-spacing:.07em; line-height:1.45; }
+    h1 { margin:0; max-width:820px; font-size:clamp(35px,5.4vw,60px); font-weight:600; }
+    .title-sub { margin:13px 0 0; color:var(--forest); font-size:14px; font-weight:700; letter-spacing:.12em; }
+    .lead { max-width:760px; margin:21px 0 0; font-size:19px; line-height:1.95; }
+    .hero-board { display:grid; grid-template-columns:1.55fr repeat(3,.75fr); margin:42px 0 64px; border-top:1px solid var(--ink); border-left:1px solid var(--ink); background:rgba(255,254,250,.86); }
+    .hero-board div { min-height:112px; padding:17px 18px; border-right:1px solid var(--ink); border-bottom:1px solid var(--ink); }
+    .hero-board .statement { display:flex; align-items:center; font-size:18px; line-height:1.75; }
+    .hero-board .metric { display:flex; flex-direction:column; justify-content:space-between; }
+    .metric b { font-family:"Hiragino Mincho ProN","Yu Mincho",serif; font-size:31px; line-height:1; font-weight:500; }
+    .metric span { color:var(--muted); font-size:11px; letter-spacing:.08em; }
+    section { margin-top:64px; }
+    h2 { margin:0 0 21px; padding-bottom:10px; border-bottom:1px solid var(--ink); font-size:27px; }
+    h3 { margin:30px 0 10px; font-size:19px; }
+    p { margin:0 0 16px; }
+    .note { color:var(--muted); font-size:14px; }
+    figure { margin:24px 0 10px; }
+    .network-map { width:100%; height:auto; display:block; border:1px solid var(--ink); background:rgba(255,254,250,.9); }
+    figcaption { margin-top:9px; color:var(--muted); font-size:13px; }
+    .flow { margin:25px 0; padding:19px 22px; border-left:3px solid var(--forest); background:rgba(244,244,239,.82); }
+    .flow-row { display:flex; align-items:center; gap:14px; }
+    .flow-row + .flow-row { margin-top:6px; }
+    .arrow { color:var(--accent); font-weight:700; }
+    .flow strong { min-width:170px; font-weight:700; }
+    .table-wrap { width:100%; overflow-x:auto; border:1px solid var(--line); background:rgba(255,254,250,.86); }
+    table { width:100%; min-width:680px; border-collapse:collapse; font-size:14px; line-height:1.7; }
+    th,td { padding:13px 15px; text-align:left; vertical-align:top; border-bottom:1px solid var(--line); }
+    th { color:#30302e; background:var(--subtle); font-weight:700; }
+    tr:last-child td { border-bottom:0; }
+    .menu { display:grid; grid-template-columns:repeat(4,1fr); margin:20px 0 12px; border-top:1px solid var(--ink); border-left:1px solid var(--ink); }
+    .menu div { min-height:94px; padding:15px; display:flex; align-items:center; justify-content:center; text-align:center; border-right:1px solid var(--ink); border-bottom:1px solid var(--ink); background:rgba(255,254,250,.86); font-weight:700; }
+    ol,ul { margin:12px 0 18px; padding-left:1.4em; }
+    li + li { margin-top:5px; }
+    blockquote { margin:22px 0; padding:14px 20px; border-left:3px solid #777; color:#333; background:rgba(244,244,239,.76); }
+    .warning { margin:24px 0; padding:17px 20px; border:1px solid #bcbcb5; background:rgba(255,254,250,.9); }
+    .warning b { color:var(--accent); }
+    .horizons { display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid var(--ink); border-left:1px solid var(--ink); }
+    .horizon { padding:18px; border-right:1px solid var(--ink); border-bottom:1px solid var(--ink); background:rgba(255,254,250,.86); }
+    .horizon-label { display:block; margin-bottom:8px; color:var(--accent); font-size:12px; font-weight:700; letter-spacing:.15em; }
+    footer { margin-top:70px; padding-top:18px; border-top:1px solid var(--line); color:var(--muted); font-size:12px; }
+    a { color:inherit; text-decoration-color:var(--accent); text-underline-offset:3px; }
+    @media (max-width:820px) { .hero-board { grid-template-columns:repeat(3,1fr); } .hero-board .statement { grid-column:1 / -1; min-height:auto; } }
+    @media (max-width:720px) { body { font-size:15px; } main { width:100%; padding:42px 22px 62px 40px; } main::before { left:20px; } .lead { font-size:17px; } .hero-board { margin:31px 0 54px; grid-template-columns:repeat(3,1fr); } .hero-board div { min-height:88px; padding:13px; } .metric b { font-size:25px; } h2 { font-size:23px; } .menu,.horizons { grid-template-columns:1fr 1fr; } .flow-row { display:block; } .flow strong { display:block; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">INTERNAL CONCEPT MEMO · 2026.09.18</p>
+      <h1>紹介を、<br>次の相談の入口にする。</h1>
+      <p class="title-sub">REAL AFI ｜ 草の根QR紹介モニター網</p>
+      <p class="lead">交流会で会った人や、既存の知人が「ここに相談するといいよ」と送れるQRをつくる。採用・営業・開発の相談を、一つのLINE窓口へ集め、同意を取って人が商談化する。</p>
+    </header>
+
+    <div class="hero-board" aria-label="企画の要点">
+      <div class="statement"><b>アフィリエイトサイトではなく、紹介された本人が自分で相談を始める「紹介モニター窓口」をつくる。</b></div>
+      <div class="metric"><b>1</b><span>母艦LINE</span></div>
+      <div class="metric"><b>4</b><span>テーマ別QR</span></div>
+      <div class="metric"><b>30</b><span>日で検証</span></div>
+    </div>
+
+    <section>
+      <h2>01. 仕組みの全体像</h2>
+      <p>Lシンク公式LINEは一つだけ。人材・営業・開発でアカウントを三つに分けず、QRとリッチメニューで入口を分ける。友だち追加、相談、商談化を一つの台帳で追える。</p>
+      <figure>
+        <svg class="network-map" viewBox="0 0 1080 330" role="img" aria-labelledby="network-map-title network-map-desc">
+          <title id="network-map-title">REAL AFIの紹介から商談化までの流れ</title>
+          <desc id="network-map-desc">人材、営業、開発、モニターの四つのQRが一つのLINE窓口に集まり、本人同意の後に人が商談化して紹介元へ結果を返す図</desc>
+          <style>.n-label{font:700 15px -apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;fill:#171717}.n-small{font:13px -apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;fill:#656565}.n-line{stroke:#171717;stroke-width:1.5;fill:none}.n-box{fill:#fffefa;stroke:#171717;stroke-width:1.5}.n-hub{fill:#365549;stroke:#365549}.n-white{font:700 15px -apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;fill:#fffefa}.n-accent{fill:#bd6326}</style>
+          <text class="n-small" x="58" y="31">紹介者が送る</text><text class="n-small" x="439" y="31">相談する本人</text><text class="n-small" x="794" y="31">運営側</text>
+          <rect class="n-box" x="38" y="57" width="166" height="42"/><text class="n-label" x="66" y="83">人材の相談 QR</text>
+          <rect class="n-box" x="38" y="119" width="166" height="42"/><text class="n-label" x="61" y="145">営業の相談 QR</text>
+          <rect class="n-box" x="38" y="181" width="166" height="42"/><text class="n-label" x="61" y="207">開発の相談 QR</text>
+          <rect class="n-box" x="38" y="243" width="166" height="42"/><text class="n-label" x="51" y="269">モニター一覧 QR</text>
+          <path class="n-line" d="M204 78H318M204 140H318M204 202H318M204 264H318"/><path class="n-line" d="M318 78V264"/><path class="n-line" d="M318 171H376"/>
+          <rect class="n-hub" x="376" y="126" width="192" height="90"/><text class="n-white" x="415" y="161">紹介モニター窓口</text><text class="n-white" x="425" y="189">Lシンク公式LINE</text>
+          <path class="n-line" d="M568 171H643"/><path d="M637 165l13 6-13 6z" class="n-accent"/>
+          <rect class="n-box" x="650" y="126" width="172" height="90"/><text class="n-label" x="684" y="161">本人が選ぶ</text><text class="n-small" x="672" y="189">相談内容・共有先に同意</text>
+          <path class="n-line" d="M822 171H886"/><path d="M880 165l13 6-13 6z" class="n-accent"/>
+          <rect class="n-box" x="893" y="101" width="149" height="48"/><text class="n-label" x="918" y="131">人が確認</text>
+          <rect class="n-box" x="893" y="193" width="149" height="48"/><text class="n-label" x="911" y="223">結果を返す</text>
+          <path class="n-line" d="M968 149V193"/><path d="M962 187l6 13 6-13z" class="n-accent"/>
+        </svg>
+        <figcaption>紹介はQRを渡すところまで。本人が相談を選び、内容を共有してよいと確認してから、人が商談化する。</figcaption>
+      </figure>
+      <p class="note">外向けの名称は「紹介モニター窓口」。REAL AFI（リアルアフィ）は社内の運用名に留め、紹介先へは過度な報酬型サービスに見せない。</p>
+    </section>
+
+    <section>
+      <h2>02. 最初はQRを4枚だけ作る</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>QRに書く言葉</th><th>LINEで最初に選ばせること</th><th>主な紹介者</th></tr></thead>
+        <tbody>
+          <tr><td>人材の相談、紹介します</td><td>採用・人材紹介</td><td>人材会社、経営者</td></tr>
+          <tr><td>営業を増やす相談、紹介します</td><td>営業支援・AI営業</td><td>営業会社、交流会参加者</td></tr>
+          <tr><td>開発の相談、紹介します</td><td>AI・システム開発</td><td>開発会社、既存顧客</td></tr>
+          <tr><td>モニター、あります</td><td>提供中のモニター一覧</td><td>全員</td></tr>
+        </tbody>
+      </table></div>
+      <div class="warning"><b>表記の境界：</b>「無料」は本当に0円の枠だけに使う。原価をいただく商材は「モニター価格」と表示し、費用と条件は詳細画面で示す。</div>
+    </section>
+
+    <section>
+      <h2>03. LINEの中身</h2>
+      <blockquote>知り合いの会社に合いそうな相談先・モニターをご案内します。まず、相談したいテーマを選んでください。</blockquote>
+      <div class="menu" aria-label="リッチメニューの4分割案"><div>人材の相談</div><div>営業の相談</div><div>開発の相談</div><div>モニター一覧</div></div>
+      <h3>相談時に聞くのは、5つだけ</h3>
+      <ol><li>会社名</li><li>ご本人のお名前・連絡先</li><li>相談テーマ</li><li>相談の時期</li><li>選定した提携先へ内容を共有してよい、というチェック</li></ol>
+    </section>
+
+    <section>
+      <h2>04. ノー開発で始める。個人別計測は後から。</h2>
+      <div class="horizons">
+        <div class="horizon"><span class="horizon-label">短期 · MVP</span><b>テーマ別QRと手動台帳</b><br>リッチメニュー、フォーム、手動の商談振分けまで。</div>
+        <div class="horizon"><span class="horizon-label">中期 · 計測</span><b>QR別の流入を読む</b><br>既存Lシンク機能を確認し、不足時だけ中継フォームか短縮URLを追加。</div>
+        <div class="horizon"><span class="horizon-label">長期 · 自動化</span><b>個人別返却と配分</b><br>紹介者個人への結果返却、案件自動配分、報酬計算は個別開発。</div>
+      </div>
+      <div class="warning"><b>最重要の前提：</b> 静的な友だち追加QRだけで、紹介者個人を自動特定できる前提にはしない。初月は「人材QRから来た」などテーマ単位で計測する。個人別に追う必要が出た時だけ、紹介コードや中継フォームを導入する。</div>
+    </section>
+
+    <section>
+      <h2>05. 紹介を、責任ある運用にする</h2>
+      <blockquote>採用・営業・開発で困っている会社があれば、このQRを送ってください。本人が相談したいと選んだ場合だけ、こちらから案内します。</blockquote>
+      <p>初月は現金の紹介報酬を約束しない。紹介元に返すのは「受付済み」「商談化」「今回は対象外」の三択だけ。紹介の質、本人同意、重複紹介への対処を先に安定させる。</p>
+      <p>報酬を入れるのは、10件程度の有効相談を見てから。対象となる紹介、支払条件、重複時の優先、取消し、税務処理を規約にしてから開始する。</p>
+      <h3>同意と紹介に関するルール</h3>
+      <ul>
+        <li>紹介者は相手の連絡先だけを渡さない。本人が自分でQRから入る。</li>
+        <li>提携先へ相談内容を渡す前に、行き先を示してチェックを取る。</li>
+        <li>受注・案件紹介・報酬は保証しない。</li>
+        <li>人材紹介、開発契約、法務判断は、各社の正式な契約と責任者の判断に残す。</li>
+      </ul>
+      <p class="note">LINE公式アカウントのリッチメニューは外部URL等へ遷移でき、QRで友だち追加へ誘導できる。<a href="https://developers.line.biz/ja/docs/messaging-api/rich-menus-overview/" target="_blank" rel="noopener noreferrer">LINE Developers</a> ／ <a href="https://www.lycbiz.com/jp/manual/OfficialAccountManager/rich-menus/" target="_blank" rel="noopener noreferrer">LINEヤフー for Business</a>。個人データを提携先へ渡す設計では、本人の事前同意と提供記録を前提にする。<a href="https://www.ppc.go.jp/personalinfo/legal/guidelines_tsusoku/" target="_blank" rel="noopener noreferrer">個人情報保護委員会</a></p>
+    </section>
+
+    <section>
+      <h2>06. 最初の30日</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>週</th><th>やること</th><th>完了条件</th></tr></thead>
+        <tbody>
+          <tr><td>1週目</td><td>母艦LINE、4QR、4分割メニュー、申込・同意文、案件台帳をつくる</td><td>自分のスマホで QR → 友だち追加 → 相談受付まで通る</td></tr>
+          <tr><td>2週目</td><td>交流会・既存の知人10人へQRを渡す。テーマごとの担当を決める</td><td>QR別の受付数を台帳で読める</td></tr>
+          <tr><td>3週目</td><td>人が有効相談を確認し、モニター案内・商談化する</td><td>相談ごとに同意・担当・結果が残る</td></tr>
+          <tr><td>4週目</td><td>QR別に「追加→相談→商談」を振り返り、残すテーマを決める</td><td>有効相談5件以上、紹介元不明率10%未満を目安に判定</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section>
+      <h2>07. 次に決めること</h2>
+      <ol><li>母艦LINEの表示名を「紹介モニター窓口」でよいか</li><li>初月に出すモニター商材を、採用・営業・開発から各1つに絞るか</li><li>30日目までは紹介報酬なしで、紹介元への結果返却だけにするか</li></ol>
+    </section>
+
+    <footer>企画段階の社内メモです。LINE設定、QR発行、公開、外部共有は未実施です。</footer>
+  </main>
+</body>
+</html>

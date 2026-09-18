@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="飲食店向け受電AIをOEM提供するための追加機能整理メモ">
+  <title>受電AI｜OEM追加機能メモ</title>
+  <style>
+    :root { --ink:#20201f; --sub:#62615e; --line:#d8d6d0; --paper:#fffefb; --accent:#b65b23; }
+    * { box-sizing:border-box; }
+    html { background:#f3f2ee; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",YuGothic,sans-serif; font-size:16px; line-height:1.85; }
+    .paper { width:min(100% - 40px,1200px); min-height:100vh; margin:0 auto; padding:68px 68px 84px 94px; border-left:1px solid var(--line); border-right:1px solid var(--line); background:repeating-linear-gradient(to bottom,transparent 0,transparent 34px,rgba(90,90,85,.075) 35px,transparent 36px),var(--paper); position:relative; }
+    .paper::before { content:""; position:absolute; top:0; bottom:0; left:48px; width:1px; background:#d9a798; }
+    .eyebrow { margin:0 0 20px; color:var(--sub); font-size:12px; font-weight:700; letter-spacing:.14em; }
+    h1,h2,h3 { font-family:"Hiragino Mincho ProN","Yu Mincho",YuMincho,serif; letter-spacing:.045em; }
+    h1 { max-width:850px; margin:0 0 16px; font-size:clamp(30px,4.5vw,48px); line-height:1.35; font-weight:600; }
+    h2 { margin:0 0 16px; font-size:25px; line-height:1.5; font-weight:600; }
+    h3 { margin:0 0 7px; font-size:19px; line-height:1.55; font-weight:600; }
+    p { margin:0 0 15px; }
+    .lead { max-width:850px; margin-bottom:32px; color:var(--sub); font-size:18px; }
+    .note { margin:28px 0 42px; padding:18px 20px; border-top:2px solid var(--ink); border-bottom:1px solid var(--line); background:rgba(255,255,255,.74); }
+    .note strong { color:var(--accent); }
+    .meta { display:flex; flex-wrap:wrap; gap:8px 24px; margin-top:14px; color:var(--sub); font-size:13px; }
+    section { padding:36px 0 38px; border-top:1px solid var(--line); }
+    .section-kicker { margin:0 0 4px; color:var(--sub); font-size:12px; font-weight:700; letter-spacing:.12em; }
+    .mechanism { margin:20px 0 0; border-left:3px solid var(--ink); padding:4px 0 4px 18px; }
+    .mechanism p { margin-bottom:0; }
+    .list { margin:14px 0 0; padding-left:1.35em; }
+    .list li { margin:8px 0; padding-left:.2em; }
+    .matrix { width:100%; margin-top:18px; border-collapse:collapse; background:rgba(255,255,255,.7); font-size:15px; }
+    .matrix th,.matrix td { padding:13px 14px; border:1px solid var(--line); text-align:left; vertical-align:top; }
+    .matrix th { width:22%; background:#f5f4f0; font-weight:700; }
+    .horizon { margin-top:20px; padding-left:18px; border-left:3px solid var(--accent); }
+    .horizon-label { display:inline-block; margin-bottom:5px; color:var(--accent); font-size:12px; font-weight:800; letter-spacing:.12em; }
+    .decision { margin-top:18px; padding:18px 20px; border:1px solid var(--ink); background:#fff; }
+    .decision ul { margin-bottom:0; }
+    .small { color:var(--sub); font-size:13px; }
+    footer { padding-top:28px; color:var(--sub); font-size:12px; }
+    @media (max-width:680px) { body { font-size:15px; } .paper { width:100%; padding:44px 24px 60px 42px; border:0; } .paper::before { left:24px; } .lead { font-size:16px; } .matrix,.matrix tbody,.matrix tr,.matrix th,.matrix td { display:block; width:100%; } .matrix th { border-bottom:0; padding-bottom:5px; } .matrix td { border-top:0; padding-top:5px; } }
+  </style>
+</head>
+<body>
+  <main class="paper">
+    <p class="eyebrow">DEVELOPMENT NOTE / FOR GO</p>
+    <h1>飲食店向け受電AI<br>OEM提供に向けた追加機能メモ</h1>
+    <p class="lead">F社がスーパー管理者となり、販売パートナー経由で飲食店へ提供する前提で、現行の基本機能に足したい内容を整理したメモです。</p>
+    <div class="meta"><span>作成日：2026年9月18日</span><span>用途：開発検討</span><span>状態：会議論点の整理（仕様確定前）</span></div>
+
+    <div class="note"><strong>今回の中心論点：</strong>単なるAI電話ではなく、<b>既存番号の移行支援・OEMの販売階層・飲食店ごとの応対設計</b>までを、一連の導入体験として作る必要がある。</div>
+
+    <section>
+      <p class="section-kicker">01 / BUSINESS STRUCTURE</p>
+      <h2>まず置くべきOEMの前提</h2>
+      <div class="mechanism"><h3>F社はスーパー管理者</h3><p>顧客情報・店舗設定・請求はF社が中心で管理する。F社の下に販売パートナーを登録し、各社は自社用の申込URLと申込件数を確認できる形を想定する。</p></div>
+      <ul class="list">
+        <li>販売パートナーごとの専用申込URL</li>
+        <li>販売パートナーごとの申込件数・成果確認</li>
+        <li>顧客一覧・詳細設定・請求は原則F社側で管理</li>
+        <li>決済はカード決済、口座振替、請求書払いを選択肢として検討</li>
+      </ul>
+    </section>
+
+    <section>
+      <p class="section-kicker">02 / ONBOARDING</p>
+      <h2>電話番号発行と既存番号の移行</h2>
+      <p>飲食店は「いま使っている店舗番号を継続したい」と言う可能性が高い。そのため、新しいAI受電番号を発行するだけでなく、既存番号から転送して使う導線が必要。</p>
+      <table class="matrix">
+        <tr><th>新規番号発行</th><td>F社が申込・決済と連動してAI受電用番号を発行する。</td></tr>
+        <tr><th>ハイブリッド運用</th><td>店舗は既存番号を維持しつつ、新規AI番号へ転送して使える。</td></tr>
+        <tr><th>ボイスワープ案内</th><td>NTTへの連絡方法、必要情報、設定手順、よくある質問をまとめた説明ページを用意する。</td></tr>
+        <tr><th>時間・曜日設定</th><td>夜間のみ、土日のみ等、曜日・時間帯ごとに転送条件を変えられるようにする。</td></tr>
+      </table>
+      <p class="small">要判断：転送設定そのものを受電AI管理画面に持つか、外部サービスの設定案内に留めるか。</p>
+    </section>
+
+    <section>
+      <p class="section-kicker">03 / LISTING SUPPORT</p>
+      <h2>Google・グルメ媒体の掲載番号変更</h2>
+      <p>AI番号へ切り替える場合、Googleビジネスプロフィール、Googleマップ、食べログ、ぐるなび等の掲載番号も変更する必要がある。ここは販売時に必ず聞かれるため、導入支援の一部として扱う。</p>
+      <ul class="list">
+        <li>媒体ごとの変更手順を、画面キャプチャまたは動画で管理画面に掲載</li>
+        <li>店舗向けマニュアルと、販売担当が顧客を支援するための手順書を分ける</li>
+        <li>ログインは店舗側で必要になる可能性が高いため、完全自動化ではなく「自己作業を支える導線」が初期現実解</li>
+      </ul>
+    </section>
+
+    <section>
+      <p class="section-kicker">04 / CALL SCENARIO</p>
+      <h2>飲食店ごとの応対を、選べる設定にする</h2>
+      <p>プロンプトを自由記述するだけでなく、店舗が迷わず設定できるテンプレート画面を作りたい。</p>
+      <table class="matrix">
+        <tr><th>基本カテゴリ</th><td>予約／営業電話／その他</td></tr>
+        <tr><th>追加カテゴリ</th><td>道順、忘れ物、採用、業者連絡、宴会問い合わせなどを店舗ごとに追加できる。</td></tr>
+        <tr><th>処理方法</th><td>AIで完結／人へ転送／AI対応後にSMS送信／AI対応後に人へ引継ぎ。</td></tr>
+        <tr><th>個別シナリオ</th><td>例：道順が分からない場合はAIで案内し、解決しなければ人へ転送。希望があればGoogleマップURLをSMS送信。</td></tr>
+      </table>
+      <p>「その他」は初期状態では柔軟に受け、頻出する内容をあとから個別シナリオとして追加できるようにする。</p>
+    </section>
+
+    <section>
+      <p class="section-kicker">05 / VOICE EXPERIENCE</p>
+      <h2>AIであることの告知と、店舗本人の声</h2>
+      <ul class="list">
+        <li>冒頭で「AIが対応します」と伝えるかどうかを、店舗ごとにオン・オフできるようにする</li>
+        <li>最初の挨拶や予約確認など、一部だけオーナー・スタッフの録音音声を使えるようにする</li>
+        <li>定型音声の後からAIが会話を引き継ぐ形式を想定する</li>
+        <li>どの定型文を本人音声にするかを、複数パターンから選べるようにする</li>
+      </ul>
+    </section>
+
+    <section>
+      <p class="section-kicker">06 / KNOWLEDGE &amp; CONTROL</p>
+      <h2>店舗情報の参照と、受けたくない電話の制御</h2>
+      <div class="mechanism"><h3>スプレッドシート等のナレッジ参照</h3><p>予約状況、よくある質問、メニュー等を店舗が更新し、AIが応答に利用する。</p></div>
+      <ul class="list">
+        <li>電話番号ごとの識別：常連客、業者、迷惑営業など</li>
+        <li>予約・空席情報</li>
+        <li>営業時間、道順、設備、店舗紹介などのよくある質問</li>
+        <li>季節メニュー、料理・商品情報</li>
+      </ul>
+      <div class="mechanism"><h3>NG電話番号・営業電話ブロック</h3><p>一度判定した営業電話等をNGリストへ追加し、以降は受けない設定を可能にする。誤登録に備え、管理画面で追加・解除・確認できることが必要。</p></div>
+      <ul class="list">
+        <li>「明確な営業電話のみ」など、ブロックの厳しさを設定</li>
+        <li>自動登録と店舗確認後登録を選べる</li>
+        <li>利用料削減だけでなく、飲食店にとって分かりやすい差別化機能として扱う</li>
+      </ul>
+    </section>
+
+    <section>
+      <p class="section-kicker">07 / SMS &amp; LIMITS</p>
+      <h2>SMS送信と利用上限の考え方</h2>
+      <ul class="list">
+        <li>AI応答の後に、GoogleマップURL、メニュー、予約案内などをSMS送信できる</li>
+        <li>SMS送信はシナリオごとにオン・オフを設定できる</li>
+        <li>送信上限、原価負担、無料枠は要設計</li>
+        <li>通話量・利用料金が一定上限に達した際は、AI停止、人転送、管理者通知などの制御を検討する</li>
+      </ul>
+    </section>
+
+    <section>
+      <p class="section-kicker">08 / DELIVERY ORDER</p>
+      <h2>優先順位のたたき台</h2>
+      <div class="horizon"><span class="horizon-label">SHORT TERM / 初期版</span><h3>「売れる・導入できる」状態を先に作る</h3><p>F社スーパー管理者／販売パートナー／専用申込URL、新規番号発行、ボイスワープ設定案内、予約・営業・その他のテンプレート型応対、転送・SMS分岐、基本ナレッジ参照、NG電話番号管理。</p></div>
+      <div class="horizon"><span class="horizon-label">MID TERM / 次期</span><h3>飲食店ごとの運用を深くする</h3><p>時間・曜日別の転送条件、店舗本人の録音音声、カテゴリ追加、媒体掲載番号変更の動画マニュアル、詳細なSMS設計。</p></div>
+      <div class="horizon"><span class="horizon-label">LONG TERM / 構想</span><h3>予約連携・新たな収益化を検討する</h3><p>予約システム連携は初期版では必須にしない。営業電話を活用した提携商材の案内・逆営業は、受電AIの基本機能とは切り分け、同意、送信条件、費用負担、提携条件を別途検討する。</p></div>
+    </section>
+
+    <section>
+      <p class="section-kicker">09 / QUESTIONS FOR DEVELOPMENT</p>
+      <h2>ゴーさんに確認したい点</h2>
+      <div class="decision">
+        <ul class="list">
+          <li>電話番号発行をF社の申込・決済フローへ組み込む場合の実現方法と制約</li>
+          <li>ボイスワープの時間・曜日別転送は、受電AI側で制御できるか／外部設定に委ねるべきか</li>
+          <li>スーパー管理者・販売パートナー・店舗の権限設計と、見せるデータ範囲</li>
+          <li>スプレッドシート参照を、予約・電話番号識別・FAQ・メニューの複数用途で安全に扱う方法</li>
+          <li>SMS送信、NG電話番号管理、本人音声登録を含めた初期版の実装順・工数感</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>本メモは会議で出た機能案を整理したものです。実装可否・外部サービス連携・料金条件・運用責任は、開発確認後に仕様として確定します。</footer>
+  </main>
+</body>
+</html>
