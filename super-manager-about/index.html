@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>スーパーマネージャーとは ｜ セールスログをリアルタイムで取得・解析・蓄積</title>
+<meta name="description" content="スーパーマネージャーは、営業に特化したセールスログをリアルタイムで取得し、解析し、貯めておくツールです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800;900&family=Inter:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ===== lp-base.css ===== */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] { word-break: normal; }
+}
+.nobr { white-space: nowrap; }
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+
+/* ===== tokens ===== */
+:root{
+  --navy:#1e3a5f;
+  --navy-deep:#152a47;
+  --green:#22c55e;
+  --green-d:#15803d;
+  --green-light:#4ade80;
+  --green-subtle:#f0fdf4;
+  --green-line:#d1fae5;
+  --warm:#f8f9fb;
+  --text:#374151;
+  --text-light:#6b7280;
+  --border:#e5e7eb;
+  --border-light:#f1f3f5;
+  --radius:16px;
+}
+*{margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{font-family:"Noto Sans JP",sans-serif;color:var(--text);background:#fff;line-height:1.9;-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:inherit;text-decoration:none}
+.mk{background:linear-gradient(transparent 58%,rgba(34,197,94,.34) 58%);padding:0 .05em}
+.wrap{max-width:1120px;margin:0 auto;padding:0 40px}
+.note{color:var(--text-light)}
+
+/* header */
+header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border-light)}
+.header-inner{max-width:1120px;margin:0 auto;padding:10px 40px;display:flex;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:17px;color:var(--navy);min-height:44px;white-space:nowrap}
+.logo-mark{position:relative;width:40px;height:40px;border-radius:12px;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-mark svg{width:22px;height:22px}
+.logo-dot{position:absolute;right:-3px;bottom:-3px;width:12px;height:12px;border-radius:50%;background:var(--green);border:2px solid #fff}
+.header-cta{margin-left:auto;background:var(--navy);color:#fff;padding:11px 20px;border-radius:10px;font-size:14px;font-weight:700;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center;transition:.2s}
+.header-cta:hover{background:var(--navy-deep)}
+
+.slabel{display:inline-flex;align-items:center;gap:10px;font-family:"Inter",sans-serif;font-size:13px;font-weight:800;letter-spacing:.18em;color:var(--navy);text-transform:uppercase;margin-bottom:18px}
+.slabel::before{content:"";width:26px;height:3px;background:var(--green);border-radius:2px}
+
+/* hero / definition */
+.hero{padding:84px 0 72px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(180deg,#fbfdfc 0%,#fff 70%)}
+.hero > .wrap{position:relative;z-index:1}
+.hero::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 760' preserveAspectRatio='xMidYMid slice'%3E %3Cdefs%3E %3CradialGradient id='hgA' cx='0.12' cy='0.18' r='0.5'%3E%3Cstop offset='0' stop-color='%2322c55e' stop-opacity='.13'/%3E%3Cstop offset='1' stop-color='%2322c55e' stop-opacity='0'/%3E%3C/radialGradient%3E %3CradialGradient id='hgB' cx='0.9' cy='0.8' r='0.55'%3E%3Cstop offset='0' stop-color='%231e3a5f' stop-opacity='.09'/%3E%3Cstop offset='1' stop-color='%231e3a5f' stop-opacity='0'/%3E%3C/radialGradient%3E %3ClinearGradient id='hgW' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%231e3a5f' stop-opacity='0'/%3E%3Cstop offset='.25' stop-color='%231e3a5f' stop-opacity='.18'/%3E%3Cstop offset='.62' stop-color='%2322c55e' stop-opacity='.35'/%3E%3Cstop offset='1' stop-color='%2322c55e' stop-opacity='0'/%3E%3C/linearGradient%3E %3Cpattern id='hgDot' width='22' height='22' patternUnits='userSpaceOnUse'%3E%3Ccircle cx='2' cy='2' r='1.4' fill='%231e3a5f' opacity='.12'/%3E%3C/pattern%3E %3ClinearGradient id='hgFade' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%23fff' stop-opacity='1'/%3E%3Cstop offset='.55' stop-color='%23fff' stop-opacity='1'/%3E%3Cstop offset='1' stop-color='%23fff' stop-opacity='0'/%3E%3C/linearGradient%3E %3Cmask id='hgMask'%3E%3Crect width='1440' height='760' fill='url(%23hgFade)'/%3E%3C/mask%3E %3C/defs%3E %3Crect width='1440' height='760' fill='url(%23hgA)'/%3E %3Crect width='1440' height='760' fill='url(%23hgB)'/%3E %3Cg%3E%3Crect x='1040' y='40' width='360' height='260' fill='url(%23hgDot)'/%3E%3C/g%3E %3Cg%3E%3Crect x='40' y='470' width='300' height='230' fill='url(%23hgDot)'/%3E%3C/g%3E %3Cg%3E %3Cpath fill='none' stroke-linecap='round' stroke='url(%23hgW)' stroke-width='2.2' d='M-40 560 C 80 520, 140 600, 240 560 S 400 500, 500 555 S 660 610, 760 560 S 920 505, 1020 548 S 1180 590, 1300 552 S 1440 520, 1500 540'/%3E %3Cpath fill='none' stroke-linecap='round' stroke='url(%23hgW)' stroke-width='1.4' opacity='.75' d='M-40 590 C 90 560, 160 630, 260 596 S 420 540, 520 588 S 680 640, 780 596 S 940 545, 1040 582 S 1200 620, 1320 588 S 1440 560, 1500 575'/%3E %3Cpath fill='none' stroke-linecap='round' stroke='url(%23hgW)' stroke-width='1' opacity='.5' d='M-40 530 C 70 500, 150 560, 250 528 S 410 470, 510 520 S 670 570, 770 530 S 930 480, 1030 515 S 1190 555, 1310 520 S 1440 495, 1500 505'/%3E %3C/g%3E %3Cg fill='%2322c55e'%3E %3Ccircle cx='1180' cy='520' r='4' opacity='.35'/%3E%3Ccircle cx='1214' cy='500' r='3' opacity='.3'/%3E%3Ccircle cx='1242' cy='476' r='5' opacity='.28'/%3E %3Ccircle cx='1272' cy='452' r='3.5' opacity='.24'/%3E%3Ccircle cx='1300' cy='428' r='6' opacity='.22'/%3E%3Ccircle cx='1332' cy='404' r='4' opacity='.2'/%3E %3C/g%3E %3Cg fill='none' stroke='%231e3a5f' stroke-opacity='.16' stroke-width='2' stroke-linejoin='round'%3E %3Cpath d='M150 150h120a16 16 0 0 1 16 16v52a16 16 0 0 1-16 16h-70l-26 22v-22h-24a16 16 0 0 1-16-16v-52a16 16 0 0 1 16-16z'/%3E %3Cpath d='M178 186h64M178 206h40' stroke-linecap='round'/%3E %3Cellipse cx='1290' cy='620' rx='58' ry='18'/%3E %3Cpath d='M1232 620v60c0 10 26 18 58 18s58-8 58-18v-60M1232 650c0 10 26 18 58 18s58-8 58-18'/%3E %3C/g%3E %3Ccircle cx='286' cy='150' r='7' fill='%2322c55e' opacity='.45'/%3E %3C/svg%3E") center/cover no-repeat}
+@media(max-width:600px){.hero::before{opacity:.7;background-position:62% center}}
+.hero .slabel{justify-content:center}
+.hero h1{font-weight:900;font-size:52px;color:var(--navy);letter-spacing:-.015em;line-height:1.3}
+.def{margin:30px auto 0;max-width:820px;font-size:24px;font-weight:800;color:var(--navy-deep);line-height:1.75}
+.def .g{color:var(--green-d)}
+.def-sub{margin:18px auto 0;max-width:640px;font-size:15.5px;color:var(--text-light);line-height:2}
+
+.core{margin:52px auto 0;max-width:960px;display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;align-items:stretch}
+.cbox{border:1px solid var(--border);border-radius:14px;padding:20px 14px;background:#fff;text-align:center}
+.cbox.src{background:var(--warm)}
+.cbox.main{border:2px solid var(--green);background:var(--green-subtle)}
+.cbox .ic{width:48px;height:48px;border-radius:14px;background:var(--navy);display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+.cbox.src .ic{background:#fff;border:1px solid var(--border)}
+.cbox .ic svg{width:26px;height:26px}
+.cbox b{display:block;font-size:17px;font-weight:900;color:var(--navy)}
+.cbox span{display:block;font-size:13px;color:var(--text-light);line-height:1.6;margin-top:2px}
+.carr{display:flex;align-items:center;justify-content:center;padding:0 8px}
+.carr i{width:26px;height:26px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-style:normal;font-weight:900;font-family:"Inter",sans-serif;font-size:13px}
+.core-cap{margin-top:14px;font-size:13px;color:var(--text-light)}
+
+/* values */
+.values{background:var(--warm);border-top:1px solid var(--border-light);padding:96px 0}
+.v-intro{text-align:center;margin-bottom:48px}
+.v-intro .slabel{justify-content:center}
+.v-intro h2{font-weight:900;font-size:38px;color:var(--navy);letter-spacing:-.02em;line-height:1.45}
+.v-intro p{margin-top:14px;font-size:15.5px;color:var(--text-light)}
+.rows{max-width:1000px;margin:0 auto}
+.row{display:grid;grid-template-columns:300px 1fr;background:#fff;border:1px solid var(--border);border-radius:20px;overflow:hidden}
+.row.long{border:2px solid var(--green);box-shadow:0 16px 40px rgba(34,197,94,.14)}
+.row-vis{background:linear-gradient(160deg,#eef3f9,#f8fafc);padding:28px 26px 22px;display:flex;flex-direction:column;border-right:1px solid var(--border-light)}
+.row.long .row-vis{background:linear-gradient(160deg,#e9fbf0,#f5fdf8)}
+.row-term{display:flex;align-items:center;gap:10px;font-family:"Inter",sans-serif;font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--text-light)}
+.row-term .num{width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:0;flex:none}
+.row.long .row-term .num{background:var(--green)}
+.row-when{margin-top:10px;font-size:24px;font-weight:900;color:var(--navy);line-height:1.4}
+.ill{width:100%;height:auto;margin:auto 0;padding-top:16px;display:block}
+.row-body{padding:30px 34px 30px}
+.vgoal{display:inline-block;font-size:13px;font-weight:800;color:var(--navy);background:var(--green-subtle);border:1px solid var(--green-line);border-radius:20px;padding:3px 12px;margin-bottom:10px}
+.row-body h3{font-size:24px;font-weight:900;color:var(--navy);line-height:1.5;margin-bottom:16px;letter-spacing:-.01em}
+.row-lead{font-size:15px;line-height:1.9;margin:-6px 0 16px}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tile{background:var(--warm);border:1px solid var(--border-light);border-radius:12px;padding:14px 14px 12px}
+.tile b{display:block;font-size:15px;font-weight:800;color:var(--navy);line-height:1.5;margin-bottom:4px}
+.tile p{font-size:13.5px;color:var(--text-light);line-height:1.75}
+.row.long .tile{background:var(--green-subtle);border-color:var(--green-line)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pcard{background:var(--warm);border:1px solid var(--border-light);border-radius:12px;padding:16px 16px 14px}
+.pcard-h{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:900;color:var(--navy);margin-bottom:10px;line-height:1.5}
+.pcard-h i{font-style:normal;font-family:"Inter",sans-serif;font-size:12px;font-weight:800;color:#fff;background:var(--navy);border-radius:6px;padding:1px 7px;flex:none}
+.vlist{list-style:none;display:grid;gap:8px}
+.vlist li{position:relative;padding-left:18px;font-size:14px;line-height:1.7}
+.vlist li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--green)}
+.vnote{margin-top:12px}
+.join{position:relative;height:120px;display:flex;align-items:center;justify-content:center}
+.join::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:3px;background:repeating-linear-gradient(180deg,var(--green) 0 8px,transparent 8px 14px);transform:translateX(-1.5px)}
+.jpill{position:relative;display:flex;align-items:center;gap:14px;background:#fff;border:2px solid var(--green);border-radius:999px;padding:10px 12px 10px 12px;box-shadow:0 10px 26px rgba(34,197,94,.18)}
+.jpill .ji{width:44px;height:44px;border-radius:50%;background:var(--green-subtle);color:var(--green-d);display:flex;align-items:center;justify-content:center;flex:none}
+.jpill .ji svg{width:22px;height:22px}
+.jpill .jt{font-size:18px;font-weight:900;color:var(--navy);line-height:1.3;padding-right:4px}
+.jpill .jt small{display:block;font-family:"Inter",sans-serif;font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--green-d)}
+.jpill .ja{width:36px;height:36px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:17px;flex:none}
+.jpill.g{background:var(--navy);border-color:var(--navy);box-shadow:0 10px 26px rgba(30,58,95,.25)}
+.jpill.g .ji{background:rgba(255,255,255,.12);color:var(--green-light)}
+.jpill.g .jt{color:#fff}
+.jpill.g .jt small{color:var(--green-light)}
+.mini{position:relative;display:grid;grid-template-columns:repeat(4,1fr);margin:0 0 18px;max-width:520px}
+.mini-line{position:absolute;left:12.5%;right:12.5%;top:7px;height:2px;background:var(--navy);opacity:.25}
+.mp{position:relative;text-align:center}
+.mp i{display:block;width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid var(--navy);margin:0 auto 6px}
+.mp i.g{background:var(--green);border-color:var(--green)}
+.mp b{display:block;font-size:12.5px;color:var(--navy);line-height:1.4}
+.mp span{display:block;font-size:12px;color:var(--text-light);line-height:1.4}
+.avlink{display:flex;align-items:center;gap:14px;margin-top:16px;padding:10px;border:1px solid var(--green-line);background:#fff;border-radius:12px;transition:.2s;max-width:360px}
+.avlink:hover{border-color:var(--green)}
+.avthumb{position:relative;width:112px;flex:none;aspect-ratio:16/9;border-radius:8px;overflow:hidden;background:var(--navy-deep)}
+.avthumb img{width:100%;height:100%;object-fit:cover;display:block}
+.avthumb .p{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center}
+.avthumb .p svg{width:12px;height:12px;margin-left:2px}
+.avtx{font-size:14.5px;font-weight:800;color:var(--navy);line-height:1.5}
+.avtx small{display:block;font-family:"Inter",sans-serif;font-size:12px;letter-spacing:.12em;color:var(--green-d)}
+@media(max-width:900px){
+  .row{grid-template-columns:1fr}
+  .row-vis{display:grid;grid-template-columns:1fr 150px;align-items:center;border-right:0;border-bottom:1px solid var(--border-light);padding:20px 22px}
+  .row-vis .ill{grid-column:2;grid-row:1/3;margin:0;padding:0}
+  .row-when{font-size:21px}
+  .row-body{padding:24px 22px}
+  .tiles{grid-template-columns:1fr}
+  .pair{grid-template-columns:1fr}
+}
+@media(max-width:400px){
+  .row-vis{grid-template-columns:1fr 110px;padding:18px}
+  .row-body{padding:22px 18px}
+  .row-body h3{font-size:20px}
+  .v-intro h2{font-size:23px!important}
+}
+
+/* now */
+.now{padding:96px 0}
+.now-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.now h2{font-weight:900;font-size:36px;color:var(--navy);line-height:1.45;letter-spacing:-.02em}
+.now p{margin-top:18px;font-size:15.5px;line-height:2}
+.now-link{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-size:14.5px;font-weight:700;color:var(--navy);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--border);min-height:44px}
+.now-link:hover{text-decoration-color:var(--navy)}
+.video{position:relative;width:100%;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;background:var(--navy-deep);box-shadow:0 18px 44px rgba(30,58,95,.22)}
+.video{display:block}
+.video img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.88;transition:.2s}
+.video:hover img{opacity:1}
+.play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:78px;height:78px;border-radius:50%;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.3);transition:.2s}
+.video:hover .play{transform:translate(-50%,-50%) scale(1.06)}
+.play svg{width:28px;height:28px;margin-left:4px}
+.vfig{margin:0}
+.credit{margin-top:4px;font-size:12.5px;color:var(--text-light);line-height:1.7;text-align:right}
+.credit a{display:inline-flex;align-items:center;min-height:44px;color:var(--navy);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--border)}
+.credit a:hover{text-decoration-color:var(--navy)}
+.vbadge{position:absolute;top:14px;left:14px;background:rgba(0,0,0,.55);color:#fff;font-family:"Inter",sans-serif;font-size:12px;font-weight:700;letter-spacing:.06em;padding:5px 12px;border-radius:6px}
+
+/* cta */
+.final{position:relative;overflow:hidden;background:linear-gradient(170deg,#1e3a5f 0%,#152a47 100%);color:#fff;text-align:center;padding:110px 0}
+.final::before{content:"";position:absolute;inset:0;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1440 640%22 preserveAspectRatio=%22xMidYMid slice%22%3E%3Cdefs%3E%3CradialGradient id=%22a%22 cx=%22.5%22 cy=%22.38%22 r=%22.5%22%3E%3Cstop offset=%220%22 stop-color=%22%2322c55e%22 stop-opacity=%22.28%22/%3E%3Cstop offset=%221%22 stop-color=%22%2322c55e%22 stop-opacity=%220%22/%3E%3C/radialGradient%3E%3ClinearGradient id=%22w%22 x1=%220%22 x2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22%234ade80%22 stop-opacity=%220%22/%3E%3Cstop offset=%22.5%22 stop-color=%22%234ade80%22 stop-opacity=%22.35%22/%3E%3Cstop offset=%221%22 stop-color=%22%234ade80%22 stop-opacity=%220%22/%3E%3C/linearGradient%3E%3Cpattern id=%22d%22 width=%2224%22 height=%2224%22 patternUnits=%22userSpaceOnUse%22%3E%3Ccircle cx=%222%22 cy=%222%22 r=%221.3%22 fill=%22%23fff%22 opacity=%22.1%22/%3E%3C/pattern%3E%3C/defs%3E%3Crect width=%221440%22 height=%22640%22 fill=%22url(%23a)%22/%3E%3Crect x=%220%22 y=%220%22 width=%22360%22 height=%22640%22 fill=%22url(%23d)%22/%3E%3Crect x=%221080%22 y=%220%22 width=%22360%22 height=%22640%22 fill=%22url(%23d)%22/%3E%3Cpath d=%22M-20 520 C 120 480 220 560 360 520 S 600 470 720 515 S 960 565 1080 520 S 1320 475 1460 505%22 fill=%22none%22 stroke=%22url(%23w)%22 stroke-width=%222.5%22/%3E%3Cpath d=%22M-20 552 C 130 520 230 590 370 552 S 610 505 730 548 S 970 595 1090 552 S 1330 510 1460 538%22 fill=%22none%22 stroke=%22url(%23w)%22 stroke-width=%221.5%22/%3E%3Ccircle cx=%221220%22 cy=%22120%22 r=%2270%22 fill=%22none%22 stroke=%22%23fff%22 stroke-opacity=%22.08%22 stroke-width=%222%22/%3E%3Ccircle cx=%221220%22 cy=%22120%22 r=%22110%22 fill=%22none%22 stroke=%22%23fff%22 stroke-opacity=%22.05%22 stroke-width=%222%22/%3E%3Ccircle cx=%22210%22 cy=%22140%22 r=%226%22 fill=%22%234ade80%22 opacity=%22.5%22/%3E%3Ccircle cx=%221250%22 cy=%22470%22 r=%225%22 fill=%22%234ade80%22 opacity=%22.4%22/%3E%3C/svg%3E") center/cover no-repeat}
+.final > .wrap{position:relative;z-index:1}
+.fbox{max-width:760px;margin:0 auto;padding:56px 48px 48px;border-radius:28px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);box-shadow:0 30px 80px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.08);backdrop-filter:blur(4px)}
+.f-eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:"Inter",sans-serif;font-size:12.5px;font-weight:800;letter-spacing:.22em;color:var(--green-light);margin-bottom:20px}
+.f-eyebrow span{width:30px;height:2px;background:var(--green-light);border-radius:2px}
+.fmk{color:var(--green-light);background:linear-gradient(transparent 62%,rgba(74,222,128,.25) 62%)}
+.f-lead{margin:18px auto 30px!important}
+.fsteps{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 auto 36px;max-width:620px;counter-reset:none}
+.fsteps li{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:16px 10px 14px}
+.fsteps b{display:block;font-family:"Inter",sans-serif;font-size:13px;font-weight:900;color:var(--green-light);letter-spacing:.1em;margin-bottom:4px}
+.fsteps span{display:block;font-size:14px;font-weight:700;color:#fff;line-height:1.6}
+.btn-xl{font-size:19px;padding:22px 56px;border-radius:14px;position:relative}
+.btn-xl::after{content:"";position:absolute;inset:-6px;border-radius:18px;border:2px solid rgba(74,222,128,.45);animation:ring 2.4s ease-out infinite;pointer-events:none}
+@keyframes ring{0%{opacity:.9;transform:scale(.96)}100%{opacity:0;transform:scale(1.08)}}
+.final h2{font-weight:900;font-size:40px;line-height:1.45;letter-spacing:-.02em}
+.final p{margin:18px auto 34px;max-width:560px;font-size:16px;color:rgba(255,255,255,.78);line-height:2}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#fff;padding:18px 40px;border-radius:12px;font-size:17px;font-weight:800;box-shadow:0 6px 20px rgba(34,197,94,.4);transition:.2s;min-height:48px}
+.btn:hover{background:var(--green-d);transform:translateY(-2px)}
+.final .note{margin-top:14px;color:rgba(255,255,255,.6)}
+footer{background:var(--navy-deep);color:rgba(255,255,255,.75);text-align:center;padding:40px 24px;font-size:13px}
+.footer-links{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-bottom:8px}
+.footer-links a{min-height:44px;display:inline-flex;align-items:center}
+.footer-links a:hover{color:#fff}
+.footer-meta{font-family:"Inter",sans-serif;font-size:12px;letter-spacing:.1em;color:rgba(255,255,255,.45)}
+
+@media(max-width:980px){
+  .wrap{padding:0 24px}.header-inner{padding:10px 24px}
+  .hero h1{font-size:40px}.def{font-size:20px}
+  .core{grid-template-columns:1fr;max-width:420px;gap:0}
+  .carr{padding:8px 0;transform:rotate(90deg)}
+  .v-intro h2,.now h2{font-size:30px}.final h2{font-size:30px}
+  .now-grid{grid-template-columns:1fr;gap:32px}
+  .values,.now{padding:72px 0}
+}
+@media(max-width:600px){
+  .wrap{padding:0 18px}.header-inner{padding:8px 18px}
+  .hero{padding:56px 0 56px}
+  .hero h1{font-size:32px}.def{font-size:18px}
+  .core{grid-template-columns:1fr;max-width:none}
+  .cbox{display:grid;grid-template-columns:44px 1fr;column-gap:14px;align-items:center;text-align:left;padding:12px 16px}
+  .cbox .ic{grid-row:1/3;width:44px;height:44px;margin:0}
+  .cbox b{font-size:16px}
+  .cbox span{margin-top:0}
+  .carr{padding:6px 0}
+  .btn{width:100%;justify-content:center;padding:18px 20px}
+  .fbox{padding:40px 20px 32px;border-radius:20px}
+  .fsteps{grid-template-columns:1fr;gap:8px}
+  .fsteps li{display:flex;align-items:center;gap:12px;text-align:left;padding:12px 16px}
+  .fsteps b{margin:0}
+  .fsteps span br{display:none}
+  .jpill .jt{font-size:16px}
+  .final{padding:72px 0}
+}
+@media(max-width:400px){
+  .logo{font-size:15px}.logo-mark{width:36px;height:36px}.header-cta{padding:10px 14px;font-size:13px}
+  .hero h1{font-size:26px}
+  .v-intro h2,.now h2,.final h2{font-size:23px}
+}
+@media(max-width:360px){.logo{font-size:13px;gap:8px}.logo-mark{width:32px;height:32px}}
+@media(max-width:350px){.hero h1{font-size:22px}.row-body h3{font-size:18px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <span class="logo">
+      <span class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.2-2.8 7.5-7 9-4.2-1.5-7-4.8-7-9V6l7-3z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 12l2.3 2.3L15.5 9.5" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="logo-dot"></span>
+      </span>
+      スーパーマネージャー
+    </span>
+    <a href="https://timerex.net/s/wu/855000ff/?6858a5b2b523c_7=AI_SMTYO" target="_blank" rel="noopener" class="header-cta">問い合わせる</a>
+  </div>
+</header>
+
+<main>
+
+<!-- 定義 -->
+<section class="hero">
+  <div class="wrap">
+    <div class="slabel">What is Super Manager</div>
+    <h1>スーパーマネージャーとは</h1>
+    <p class="def">営業に特化した<span class="mk">セールスログ</span>を、<br><span class="nobr">リアルタイムで</span><span class="g"><span class="nobr">取得し、</span><span class="nobr">解析し、</span><span class="nobr">貯めておく</span></span><span class="nobr">ツールです。</span></p>
+    <p class="def-sub">Google Meetの商談に同席するだけで、会話はすべてセールスログとして残ります。この「取得・解析・蓄積」が、スーパーマネージャーのメイン機能です。</p>
+
+    <div class="core" aria-label="メイン機能の流れ">
+      <div class="cbox src">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#1e3a5f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-4 3v-3H4z"/></svg></div>
+        <b>商談</b><span>オンラインの会話</span>
+      </div>
+      <div class="carr"><i>→</i></div>
+      <div class="cbox">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
+        <b>取得</b><span>その場で記録</span>
+      </div>
+      <div class="carr"><i>→</i></div>
+      <div class="cbox">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16"/><path d="M8 15l3-4 3 2 5-6"/></svg></div>
+        <b>解析</b><span>課題と反論を整理</span>
+      </div>
+      <div class="carr"><i>→</i></div>
+      <div class="cbox main">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg></div>
+        <b>蓄積</b><span>ログとして貯める</span>
+      </div>
+    </div>
+    <p class="core-cap">Google Meetの商談に対応（Zoomは対応予定）</p>
+  </div>
+</section>
+
+<!-- 3つの価値 -->
+<section class="values" id="values">
+  <div class="wrap">
+    <div class="v-intro">
+      <div class="slabel">3 Values</div>
+      <h2>貯めたログが、<br><span class="mk">3つの価値</span>に育ちます。</h2>
+      <p>今日の商談から1年後まで。ログが増えるほど、できることも増えていく仕組みです。</p>
+    </div>
+
+    <div class="rows">
+      <!-- 01 短期 -->
+      <article class="row">
+        <div class="row-vis">
+          <div class="row-term"><span class="num">01</span><span>SHORT TERM ／ 短期</span></div>
+          <div class="row-when">今日の商談から</div>
+          <svg class="ill" viewBox="0 0 240 150" aria-hidden="true">
+            <rect x="20" y="16" width="200" height="118" rx="12" fill="#fff" stroke="#c7d2e0" stroke-width="2"/>
+            <rect x="20" y="16" width="200" height="22" rx="12" fill="#1e3a5f"/><rect x="20" y="28" width="200" height="10" fill="#1e3a5f"/>
+            <circle cx="36" cy="27" r="4" fill="#ef4444"/><rect x="46" y="24" width="30" height="6" rx="3" fill="#fff" opacity=".7"/>
+            <rect x="32" y="48" width="78" height="56" rx="8" fill="#eef2f7"/>
+            <circle cx="71" cy="68" r="11" fill="#c7d2e0"/><path d="M52 100c3-12 11-17 19-17s16 5 19 17z" fill="#c7d2e0"/>
+            <rect x="118" y="48" width="90" height="16" rx="8" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5"/>
+            <circle cx="128" cy="56" r="3.5" fill="#22c55e"/><rect x="136" y="53" width="60" height="6" rx="3" fill="#22c55e" opacity=".55"/>
+            <rect x="118" y="70" width="90" height="8" rx="4" fill="#e5e7eb"/><rect x="118" y="84" width="70" height="8" rx="4" fill="#e5e7eb"/>
+            <rect x="118" y="98" width="80" height="8" rx="4" fill="#e5e7eb"/>
+            <rect x="32" y="112" width="176" height="12" rx="6" fill="#f1f3f5"/><rect x="32" y="112" width="110" height="12" rx="6" fill="#1e3a5f" opacity=".85"/>
+          </svg>
+        </div>
+        <div class="row-body">
+          <span class="vgoal">目的：今日の受注を取りこぼさない</span>
+          <h3>その場で、商談を支えます。</h3>
+          <div class="mini" aria-label="商談の時間軸">
+            <div class="mini-line"></div>
+            <div class="mp"><i></i><b>前日</b><span>ヒアリング</span></div>
+            <div class="mp"><i></i><b>商談中</b><span>助言・中締め</span></div>
+            <div class="mp"><i></i><b>終了前</b><span>議事録</span></div>
+            <div class="mp"><i class="g"></i><b>5分後</b><span>フォロー</span></div>
+          </div>
+          <div class="tiles">
+            <div class="tile"><b>リアルタイムの助言</b><p>関心や懸念を読み取り、次に聞くことをその場で提示。</p></div>
+            <div class="tile"><b>15分ごとの中締め</b><p>要点と次に聞く3問を整理し、認識を合わせ直します。</p></div>
+            <div class="tile"><b>議事録とフォロー</b><p>終了前に議事録、終了5分後にはフォローまで。</p></div>
+          </div>
+        </div>
+      </article>
+
+      <div class="join"><div class="jpill"><span class="ji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg></span><span class="jt"><small>STEP UP</small>ログが貯まる</span><span class="ja">↓</span></div></div>
+
+      <!-- 02 中期 -->
+      <article class="row">
+        <div class="row-vis">
+          <div class="row-term"><span class="num">02</span><span>MID TERM ／ 中期</span></div>
+          <div class="row-when">ログが貯まるほど</div>
+          <svg class="ill" viewBox="0 0 240 150" aria-hidden="true">
+            <rect x="22" y="26" width="92" height="108" rx="10" fill="#fff" stroke="#c7d2e0" stroke-width="2"/>
+            <rect x="34" y="40" width="68" height="30" rx="6" fill="#eef2f7"/>
+            <rect x="34" y="78" width="68" height="6" rx="3" fill="#1e3a5f" opacity=".8"/>
+            <rect x="34" y="92" width="60" height="5" rx="2.5" fill="#e5e7eb"/><rect x="34" y="103" width="66" height="5" rx="2.5" fill="#e5e7eb"/><rect x="34" y="114" width="48" height="5" rx="2.5" fill="#e5e7eb"/>
+            <rect x="128" y="26" width="92" height="108" rx="10" fill="#fff" stroke="#c7d2e0" stroke-width="2"/>
+            <rect x="142" y="98" width="14" height="24" rx="3" fill="#c7d2e0"/><rect x="162" y="84" width="14" height="38" rx="3" fill="#94a3b8"/><rect x="182" y="64" width="14" height="58" rx="3" fill="#22c55e"/>
+            <path d="M140 76l22-14 18 6 26-24" fill="none" stroke="#1e3a5f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M198 44h8v8" fill="none" stroke="#1e3a5f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="114" cy="24" r="12" fill="#22c55e"/><path d="M109 24h10M114 19v10" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="row-body">
+          <span class="vgoal">目的：受注率アップ ＋ 集客</span>
+          <h3>営業マンの支援と、<br>集客の両輪へ。</h3>
+          <div class="pair">
+            <div class="pcard">
+              <div class="pcard-h"><i>A</i>営業マンの支援 → 受注率アップ</div>
+              <ul class="vlist">
+                <li>商談直後の振り返りを本人へ</li>
+                <li>エースとの差分を日次・週次で可視化</li>
+                <li>刺さる言い回しを、商材ごとのナレッジに</li>
+              </ul>
+            </div>
+            <div class="pcard">
+              <div class="pcard-h"><i>B</i>集客</div>
+              <ul class="vlist">
+                <li>お客様インタビュー記事が揃う</li>
+                <li>現場の言葉から、オウンドメディアの記事に</li>
+                <li>新しい訴求軸で、LPが出来上がる</li>
+              </ul>
+            </div>
+          </div>
+          <p class="note vnote">※ 実名での掲載や公開は、お客様の同意と御社の承認があるものだけ。</p>
+        </div>
+      </article>
+
+      <div class="join"><div class="jpill g"><span class="ji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg></span><span class="jt"><small>1 YEAR</small>1年分のログ</span><span class="ja">↓</span></div></div>
+
+      <!-- 03 長期 -->
+      <article class="row long">
+        <div class="row-vis">
+          <div class="row-term"><span class="num">03</span><span>LONG TERM ／ 長期</span></div>
+          <div class="row-when">1年後</div>
+          <svg class="ill" viewBox="0 0 240 150" aria-hidden="true">
+            <rect x="64" y="14" width="112" height="126" rx="12" fill="#1e3a5f"/>
+            <rect x="72" y="22" width="96" height="110" rx="8" fill="#2c4a73"/>
+            <path d="M84 132c2-24 18-34 36-34s34 10 36 34z" fill="#dbe4ef"/>
+            <path d="M112 100l8 20 8-20z" fill="#fff"/><path d="M118 104l2 16 2-16z" fill="#22c55e"/>
+            <circle cx="120" cy="68" r="20" fill="#f3dcc2"/>
+            <path d="M100 64c0-16 10-22 20-22s20 6 20 22c-4-8-10-11-20-11s-16 3-20 11z" fill="#4b3a2c"/>
+            <circle cx="113" cy="70" r="2" fill="#333"/><circle cx="127" cy="70" r="2" fill="#333"/>
+            <path d="M114 79q6 5 12 0" fill="#c77b66" stroke="#b86a55" stroke-width="1.2"/>
+            <path d="M186 54q10 16 0 32M196 46q16 24 0 48" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round"/>
+            <path d="M54 54q-10 16 0 32M44 46q-16 24 0 48" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+            <rect x="72" y="22" width="44" height="14" rx="7" fill="#22c55e"/><text x="94" y="32.5" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" font-weight="800" fill="#fff">AI</text>
+          </svg>
+        </div>
+        <div class="row-body">
+          <span class="vgoal">目的：営業のAI化</span>
+          <h3>営業マンの<br><span class="mk">アバター</span>が完成します。</h3>
+          <p class="row-lead">営業マン本人の写真が、人間と同じように喋ります。お客様と会話し、説明し、提案するところまで。</p>
+          <div class="tiles">
+            <div class="tile"><b>写真が喋る</b><p>本人の写真から生まれたアバターが、お客様と話します。</p></div>
+            <div class="tile"><b>中身は貯めたログ</b><p>勝ちパターン、論点、反論への答えが材料です。</p></div>
+            <div class="tile"><b>人は人の仕事へ</b><p>関係づくりと最終判断に、時間を使えます。</p></div>
+          </div>
+          <a class="avlink" href="#now">
+            <span class="avthumb"><img src="https://i.ytimg.com/vi/Fez2tIUCWRk/hqdefault.jpg" alt="" loading="lazy"><span class="p"><svg viewBox="0 0 24 24" fill="#1e3a5f" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+            <span class="avtx"><small>TECHNOLOGY NOW</small>今の技術は、動画で ↓</span>
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 今できていること -->
+<section class="now" id="now">
+  <div class="wrap now-grid">
+    <div>
+      <div class="slabel">Technology Now</div>
+      <h2><span class="mk">写真が喋る</span><br>アバターの技術は、<br>もうここまで。</h2>
+      <p>1年後の完成形は、遠い未来の話ではありません。写真のアバターが人と話す技術は、今の時点でもここまで来ています。</p>
+      <a class="now-link" href="https://www.youtube.com/watch?v=Fez2tIUCWRk" target="_blank" rel="noopener">YouTubeで開く ↗</a>
+    </div>
+    <figure class="vfig">
+    <a class="video" href="https://www.youtube.com/watch?v=Fez2tIUCWRk" target="_blank" rel="noopener" aria-label="動画をYouTubeで再生">
+      <img src="https://i.ytimg.com/vi/Fez2tIUCWRk/hqdefault.jpg" alt="動画「仕事の依頼をしてきた相手がAIだった」のサムネイル" loading="lazy">
+      <span class="play"><svg viewBox="0 0 24 24" fill="#1e3a5f" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="vbadge">VIDEO ／ AI AVATAR</span>
+    </a>
+    <figcaption class="credit">引用元：YouTube「<a href="https://www.youtube.com/watch?v=Fez2tIUCWRk" target="_blank" rel="noopener">仕事の依頼をしてきた相手がAIだった</a>」（<a href="https://www.youtube.com/@stepbywork" target="_blank" rel="noopener">上杉です</a>）</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="final" id="contact">
+  <div class="wrap">
+    <div class="fbox">
+      <div class="f-eyebrow"><span></span>GET STARTED<span></span></div>
+      <h2>御社の商談で、<br><span class="fmk">何が貯まるか。</span><br>詳しくご説明します。</h2>
+      <p class="f-lead">詳細を知りたい方は、こちらからお問い合わせください。</p>
+      <ol class="fsteps">
+        <li><b>01</b><span>商材と営業体制を<br>お伺いします</span></li>
+        <li><b>02</b><span>貯まるログの<br>イメージを共有</span></li>
+        <li><b>03</b><span>始める範囲を<br>ご提案します</span></li>
+      </ol>
+      <a href="https://timerex.net/s/wu/855000ff/?6858a5b2b523c_7=AI_SMTYO" target="_blank" rel="noopener" class="btn btn-xl">問い合わせる
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <p class="note">オンライン相談の予約ページが開きます。</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://smgr.elliot-tech.jp/" target="_blank" rel="noopener">各機能の詳細ページ</a>
+    <a href="https://www.writeup.co.jp/company/company.html" target="_blank" rel="noopener">運営会社</a>
+    <a href="https://www.writeup.co.jp/privacy/" target="_blank" rel="noopener">個人情報保護方針</a>
+  </div>
+  <div class="footer-meta">SUPER MANAGER SERIES ／ Powered by Writeup Co., Ltd.</div>
+</footer>
+
+</body>
+</html>
