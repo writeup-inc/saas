@@ -227,6 +227,42 @@ footer.legal ul{margin:0;padding-left:1.1em;color:var(--sub);font-size:13px;line
 footer.legal p{margin:18px 0 0;font-size:13px;color:var(--sub)}
 footer.legal a,.story a{color:var(--navy)}
 
+
+/* 営業用：ナビ・問いかけ・宛名・FAQ・次の一歩 */
+.deck-nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.deck-inner{max-width:1180px;margin:0 auto;padding:8px 16px;display:flex;align-items:center;gap:12px}
+.deck-count{font-family:Inter,sans-serif;font-weight:800;font-size:13px;color:var(--accent);white-space:nowrap;min-width:44px}
+.deck-nav ol{list-style:none;margin:0;padding:0;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1}
+.deck-nav ol::-webkit-scrollbar{display:none}
+.deck-nav a{display:block;white-space:nowrap;padding:6px 9px;border-radius:999px;font-size:13px;font-weight:700;color:var(--sub);text-decoration:none}
+.deck-nav a:hover{background:var(--gray-soft)}
+.deck-nav a[aria-current="true"]{background:var(--navy);color:#fff}
+.deck-key{font-size:12px;color:var(--sub);white-space:nowrap}
+section[id]{scroll-margin-top:52px}
+.to-name{display:inline-block;margin:0 0 18px;padding:6px 16px;border-radius:6px;background:rgba(255,255,255,.12);font-size:16px;font-weight:700;color:#fff}
+.ask-you{margin:36px 0;padding:22px 26px;border:2px solid var(--accent);border-radius:14px;background:var(--bg);display:grid;gap:6px}
+.ask-you small{font-weight:800;color:var(--accent);font-size:13px;letter-spacing:.06em}
+.ask-you p{margin:0;font-size:clamp(1.1rem,2.4vw,1.35rem);font-weight:900;line-height:1.6}
+.ask-you span{font-size:14px;color:var(--sub)}
+.faq{display:grid;gap:10px}
+.faq details{border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+.faq summary{cursor:pointer;list-style:none;padding:18px 52px 18px 22px;font-weight:700;font-size:17px;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"Q";font-family:Inter,sans-serif;font-weight:800;color:var(--accent);margin-right:10px}
+.faq summary::after{content:"＋";position:absolute;right:22px;top:17px;color:var(--sub)}
+.faq details[open] summary::after{content:"－"}
+.faq details p{margin:0;padding:0 22px 20px 44px;color:var(--sub);line-height:1.9}
+.next{list-style:none;margin:0 0 28px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:n}
+.next li{padding:24px 22px;border:1px solid var(--line);border-radius:14px;background:var(--bg);position:relative}
+.next b{display:block;font-family:Inter,sans-serif;color:var(--accent);font-size:14px;margin-bottom:8px}
+.next strong{display:block;font-size:18px;margin-bottom:8px}
+.next span{display:block;font-size:15px;color:var(--sub);line-height:1.8}
+.deadline{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:20px 26px;border-radius:14px;background:var(--accent-soft);border:2px dashed var(--accent)}
+.deadline p{margin:0;font-weight:700}
+.deadline .left{font-family:Inter,"Noto Sans JP",sans-serif;font-size:clamp(1.3rem,3vw,1.8rem);font-weight:800;color:var(--accent)}
+@media (max-width:1500px){.deck-key{display:none}}
+@media (max-width:860px){.next{grid-template-columns:1fr}}
+@media print{.deck-nav{display:none}}
 @media (max-width:860px){
   .hero-grid{grid-template-columns:1fr}
   section{padding:72px 0}
@@ -255,11 +291,13 @@ footer.legal a,.story a{color:var(--navy)}
 </style>
 </head>
 <body>
+<nav class="deck-nav" aria-label="セクション"><div class="deck-inner"><span class="deck-count" id="deckCount"></span><ol id="deckList"></ol><span class="deck-key" aria-hidden="true">← → で移動</span></div></nav>
 <main>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="top" data-nav="表紙">
   <div class="wrap hero-grid"><div>
+    <p class="to-name" id="toName" hidden></p>
     <p class="brand">J MATCH ENGINE ／ <b>AI自走プラン</b></p>
     <h1>制度は、毎週のように出ています。<br><span class="accent">探すのも、書くのも、AIで。</span></h1>
     <p class="lead">補助金を1件取ってくるサービスではありません。出てくる制度をいち早く知り、すぐに事業計画を用意できる会社にするための、月額3万円のプランです。</p>
@@ -275,7 +313,7 @@ footer.legal a,.story a{color:var(--navy)}
 </section>
 
 <!-- 1 診断 -->
-<section class="alt">
+<section class="alt" id="s-diag" data-nav="診断">
   <div class="wrap">
     <p class="num">01</p>
     <h2>8つの質問に答えると、いま使えそうな制度が5〜6件出ます。</h2>
@@ -305,7 +343,7 @@ footer.legal a,.story a{color:var(--navy)}
 </section>
 
 <!-- 2 一度では終わらない -->
-<section>
+<section id="s-flow" data-nav="一度では終わらない">
   <div class="wrap">
     <p class="num">02</p>
     <h2>でも、制度は一度調べて終わりではありません。</h2>
@@ -338,6 +376,7 @@ footer.legal a,.story a{color:var(--navy)}
       </svg>
       <p class="note">帯の長さは公募期間のイメージです。特定の制度の日数を示すものではありません。</p>
     </div>
+<aside class="ask-you"><small>御社ではいかがですか？</small><p>補助金や融資の情報は、いま、どこから入ってきていますか？</p><span>顧問の先生、銀行、商工会、ご自身での検索など</span></aside>
     <div class="stats">
       <div class="stat"><b>38.7%</b><p>申請に進めない理由の最多は「自社に最適な補助金が分からない」</p><small>民間調査／btobee（2026年6月、中小企業の経営者・役員300人）</small></div>
       <div class="stat"><b>81.1%</b><p>補助金に関心がありながら、申請に至っていない経営層</p><small>民間調査／btobee（2026年6月、中小企業の経営者・役員300人）</small></div>
@@ -346,7 +385,7 @@ footer.legal a,.story a{color:var(--navy)}
 </section>
 
 <!-- 3 人力では間に合わない -->
-<section class="alt">
+<section class="alt" id="s-time" data-nav="間に合わない">
   <div class="wrap">
     <p class="num">03</p>
     <h2>見つけたときには、締切まで<span class="nobr">1〜2か月</span>しか<span class="nobr">ないこともあります。</span>人の手で探して、人の手で書いていては間に合いません。</h2>
@@ -374,7 +413,7 @@ footer.legal a,.story a{color:var(--navy)}
 </section>
 
 <!-- 4 中心：2本柱 -->
-<section>
+<section id="s-core" data-nav="中心">
   <div class="wrap">
     <p class="num">04 ／ このサービスの中心</p>
     <h2>だから、探すのも書くのもAIで。<span class="mark">何倍も集めて、<span class="nobr">何倍も速く書きます。</span></span></h2>
@@ -399,7 +438,7 @@ footer.legal a,.story a{color:var(--navy)}
 </section>
 
 <!-- 5 探す -->
-<section class="alt">
+<section class="alt" id="s-find" data-nav="探す">
   <div class="wrap">
     <p class="num">05 ／ 探す</p>
     <h2>探すのはAI。毎週金曜の朝、御社に合う制度が届きます。</h2>
@@ -427,7 +466,7 @@ footer.legal a,.story a{color:var(--navy)}
 </section>
 
 <!-- 6 書く -->
-<section>
+<section id="s-write" data-nav="書く">
   <div class="wrap">
     <p class="num">06 ／ 書く</p>
     <h2>書くのは御社とAI。答えやすい質問に答えていくと、事業計画の土台ができます。</h2>
@@ -445,6 +484,7 @@ footer.legal a,.story a{color:var(--navy)}
       <span class="arr">→</span>
       <div class="box out"><small>事業計画の「強み」の欄へ</small><p>短納期の対応力を、具体的な事実で示せます。</p></div>
     </div>
+<aside class="ask-you"><small>御社ではいかがですか？</small><p>最近のお客様は、なぜ他社ではなく御社を選んだのでしょうか？</p><span>いまお答えいただいた内容が、そのまま「強み」の欄の土台になります</span></aside>
     <figure class="shot"><div class="bar"><i></i><i></i><i></i><span>事業計画書をつくる（AIツール）</span></div><img src="img/writer.jpg" alt="事業計画書をつくる画面。制度を選ぶ、カルテから下書き、質問に答える、書き出して確認の4段階。左に計画書の章、右にAIからの質問と下書き" width="1371" height="896" loading="lazy"></figure>
     <p class="cap"><b>制度を選ぶ → 会社の情報から下書き → 質問に答える → 書き出して確認</b>。答えた分だけ埋まり、どこが空いているかが常に見えます。</p>
     <p class="callout">事業計画書づくりに使うのは、Claude Code（AI）で動く専用ツールです。AIを使ったことがない前提でつくっており、初期設定は導入時にご案内します。なお、Claude Code の利用料は月額に含まれません。提供元（Anthropic社）の有料プランを、御社で別途ご契約ください。</p>
@@ -461,7 +501,7 @@ footer.legal a,.story a{color:var(--navy)}
 </section>
 
 <!-- 7 使い回し -->
-<section class="alt">
+<section class="alt" id="s-reuse" data-nav="使い回し">
   <div class="wrap">
     <p class="num">07</p>
     <h2>一度書いた内容は、翌年度の制度にも、融資の相談にも使えます。</h2>
@@ -481,7 +521,7 @@ footer.legal a,.story a{color:var(--navy)}
 </section>
 
 <!-- 8 釣り方が残る -->
-<section>
+<section id="s-skill" data-nav="釣り方">
   <div class="wrap">
     <p class="num">08</p>
     <h2>1匹の魚ではなく、釣り方が会社に残ります。</h2>
@@ -497,7 +537,7 @@ footer.legal a,.story a{color:var(--navy)}
 </section>
 
 <!-- 9 脇の支援 -->
-<section class="alt">
+<section class="alt" id="s-help" data-nav="人の支援">
   <div class="wrap">
     <p class="num">09 ／ 脇を固める支援</p>
     <h2>それでも迷うときは、人がいます。</h2>
@@ -516,12 +556,23 @@ footer.legal a,.story a{color:var(--navy)}
         <div class="body"><h3>AI家庭教師</h3><p>AIに詳しい講師が、御社の実際の仕事を題材にマンツーマンで教えます。依頼の前に、相性を確かめる面談つき。</p><p class="terms">ご契約中は月2時間まで追加料金なし<br>超えた分は1時間1万円（税別）</p></div>
       </div>
     </div>
+<aside class="ask-you"><small>御社ではいかがですか？</small><p>この3つの壁のうち、いちばん気になるのはどれですか？</p><span>方向性、資金繰り、AIの使い方</span></aside>
     <p class="note">金額はすべて税別です。資金調達の相談先の審査や条件を、当社が保証するものではありません。</p>
   </div>
 </section>
 
+<!-- FAQ -->
+<section id="s-faq" data-nav="よくある質問">
+  <div class="wrap">
+    <p class="num">よくあるご質問</p>
+    <h2>ここまでで、気になる点はありませんか。</h2>
+    <p class="lead">商談でよくいただく6つのご質問です。気になるものを開いてご覧ください。</p>
+    <div class="faq"><details><summary>補助金は、通りますか。いくらもらえますか。</summary><p>お約束はできません。審査するのは制度の事務局で、画面に出る想定採択可能性も参考値です。私たちが支援できるのは、使えそうな制度を見逃さないことと、出てきたときにすぐ事業計画を準備できる状態をつくることです。</p></details><details><summary>AIが、申請書を書いてくれるのですか。</summary><p>いいえ。AIがつくるのは事業計画の土台です。制度ごとの提出書類を仕上げるのは御社ご自身か、有資格者の先生で、申請の代行も行いません。</p></details><details><summary>ChatGPTでも、書けるのではありませんか。</summary><p>文章を整える部分は書けます。ただ、実際に手が止まるのは書く前です。どの制度が合うかを毎週追うことと、答えやすい質問に分けて聞くこと。この2つをまとめてご提供します。</p></details><details><summary>AIを使ったことがなくても、大丈夫ですか。</summary><p>使ったことがない前提でつくっています。初期設定は導入時にご案内し、分からないときはAI家庭教師（月2時間まで追加料金なし）に聞けます。</p></details><details><summary>月3万円は、高くありませんか。</summary><p>お支払いいただくのは情報の閲覧料ではなく、制度が出たときに事業計画をつくって動ける状態です。仮に1年間採択に至らなくても、事業計画をつくる力とAIを使う力は会社に残ります。</p></details><details><summary>作った事業計画は、融資にも使えますか。</summary><p>使えます。補助金で聞かれることと、金融機関で聞かれることの多くは共通です。同じ土台から、融資相談の資料を組み立てられます。</p></details></div>
+  </div>
+</section>
+
 <!-- 10 料金 -->
-<section>
+<section id="s-price" data-nav="料金">
   <div class="wrap">
     <p class="num">10 ／ 料金</p>
     <h2>初期登録費用10万円＋月額3万円（税別）。<br>成功報酬はいただきません。</h2>
@@ -559,15 +610,29 @@ footer.legal a,.story a{color:var(--navy)}
 </section>
 
 <!-- 11 締め -->
-<section class="close">
+<section class="close" id="s-close" data-nav="まとめ">
   <div class="wrap">
     <h2>今日の1件ではなく、<br><span class="accent">これから出る制度すべてに</span>動ける会社へ。</h2>
     <p>使えそうな制度を見逃さず、出てきたらAIと一緒に事業計画を作り、すぐ動ける状態へ。月額3万円で、そこまでご支援します。</p>
   </div>
 </section>
 
+<!-- はじめ方 -->
+<section id="s-next" data-nav="はじめ方">
+  <div class="wrap">
+    <p class="num">はじめ方</p>
+    <h2>お申し込みから使い始めるまで、3つの手順です。</h2>
+    <ol class="next">
+      <li><b>01</b><strong>お申し込み・ヒアリング</strong><span>いま検討している投資、採用や賃上げの予定、これから始めたい事業を伺います。</span></li>
+      <li><b>02</b><strong>会社情報の初期登録</strong><span>所在地・業種・従業員数などを会社カルテに登録。ここまでが初期登録費用の範囲です。</span></li>
+      <li><b>03</b><strong>配信とAIツールの利用開始</strong><span>毎週の制度配信が始まり、事例・動画・AIツールを使えるようになります。</span></li>
+    </ol>
+    <div class="deadline" id="deadline"><p>事例協力（初期登録費用0円）の受付は<strong>2026年9月30日（水）まで</strong></p><p class="left" id="daysLeft" hidden></p></div>
+  </div>
+</section>
+
 <!-- 12 余韻 -->
-<section class="story">
+<section class="story" id="s-story" data-nav="1年後">
   <div class="wrap">
     <p class="num">EPILOGUE</p>
     <h2>1年後の、ある朝。</h2>
@@ -600,5 +665,35 @@ footer.legal a,.story a{color:var(--navy)}
     <p>株式会社ライトアップ（東証グロース：6580）／東京都渋谷区渋谷2-15-1 渋谷クロスタワー32F　<a href="https://www.writeup.jp/" rel="noopener">コーポレートサイト</a>　<a href="https://www.writeup.jp/privacy/" rel="noopener">個人情報保護方針</a></p>
   </div>
 </footer>
+<script>
+(function(){
+  // 宛名：?to=会社名
+  try{
+    var to=new URLSearchParams(location.search).get('to');
+    if(to){to=to.trim().slice(0,40);var el=document.getElementById('toName');el.textContent=to+' 様　ご説明資料';el.hidden=false;document.title=to+' 様｜Jマッチエンジン ご説明資料';}
+  }catch(e){}
+  // 事例協力の残り日数（日本時間の9/30終了まで）
+  try{
+    var end=new Date('2026-09-30T23:59:59+09:00'), now=new Date();
+    var d=Math.ceil((end-now)/86400000), box=document.getElementById('deadline'), left=document.getElementById('daysLeft');
+    if(d<0){box.hidden=true;}else{left.textContent=d===0?'本日まで':'あと '+d+' 日';left.hidden=false;}
+  }catch(e){}
+  // セクションナビ
+  var secs=[].slice.call(document.querySelectorAll('section[data-nav]'));
+  var list=document.getElementById('deckList'), count=document.getElementById('deckCount');
+  var links=secs.map(function(s,i){var li=document.createElement('li'),a=document.createElement('a');a.href='#'+s.id;a.textContent=s.getAttribute('data-nav');li.appendChild(a);list.appendChild(li);return a;});
+  var cur=-1, pending=null, lastKey=0;
+  function setCur(i){if(i===cur)return;cur=i;links.forEach(function(a,j){a.setAttribute('aria-current',j===i?'true':'false');});count.textContent=(i+1)+' / '+secs.length;var a=links[i];if(a&&a.scrollIntoView){var r=a.getBoundingClientRect(),pr=list.getBoundingClientRect();if(r.left<pr.left||r.right>pr.right)list.scrollLeft+=r.left-pr.left-40;}}
+  function update(){var y=window.innerHeight*0.35,idx=0;secs.forEach(function(s,i){if(s.getBoundingClientRect().top<=y)idx=i;});setCur(idx);}
+  window.addEventListener('scroll',update,{passive:true});update();
+  document.addEventListener('keydown',function(e){
+    if(e.target.closest&&e.target.closest('input,textarea,select,summary'))return;
+    var k=e.key, n=null, base=(Date.now()-lastKey<900&&pending!==null)?pending:cur;
+    if(k==='ArrowRight'||k==='PageDown')n=Math.min(base+1,secs.length-1);
+    if(k==='ArrowLeft'||k==='PageUp')n=Math.max(base-1,0);
+    if(n!==null){e.preventDefault();pending=n;lastKey=Date.now();secs[n].scrollIntoView({behavior:'smooth'});}
+  });
+})();
+</script>
 </body>
 </html>
