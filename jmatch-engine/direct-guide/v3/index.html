@@ -82,6 +82,14 @@ body.present .slide{min-height:100vh;scroll-margin-top:0}
 .say b{color:var(--accent);font-weight:900}
 .say b.urg{color:var(--urgent)}
 
+
+/* 吹き出しは、スライドが見えたら滑らかに表示（JSが無いときは最初から表示） */
+.js .say{opacity:0;transform:translateY(18px) scale(.98);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .say .line{opacity:0;transition:opacity .9s ease .35s}
+.js .say.on{opacity:1;transform:none}
+.js .say.on .line{opacity:1}
+@media (prefers-reduced-motion:reduce){.js .say,.js .say .line{opacity:1;transform:none;transition:none}}
+@media print{.js .say,.js .say .line{opacity:1;transform:none}}
 /* キーワード */
 .keys3{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:18px 0 0;padding:0;list-style:none}
 .keys3 li{font-family:var(--maru);font-weight:900;font-size:clamp(1rem,1.9vw,1.22rem);color:var(--ink);border:2.5px solid var(--ink);border-radius:999px;padding:8px 22px;background:#fff}
@@ -121,6 +129,25 @@ body.present .slide{min-height:100vh;scroll-margin-top:0}
 .cands em{font-style:normal;font-size:16px;font-weight:700;border:2px solid var(--ink);border-radius:999px;padding:2px 12px;white-space:nowrap;color:var(--ink)}
 .cands em.low{border-color:var(--line);color:var(--sub)}
 
+
+/* 前提の確認（その場で書き込める欄） */
+.intake{display:grid;gap:12px;max-width:980px}
+.intake .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.intake .row4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.fld{display:block;border:2.5px solid var(--ink);border-radius:12px;padding:10px 16px;background:#fff;cursor:text}
+.fld small{display:block;font-family:var(--maru);font-weight:900;font-size:16px;color:var(--accent)}
+.fld span{display:block;min-height:1.6em;font-family:var(--maru);font-weight:700;font-size:clamp(1rem,1.9vw,1.2rem);color:var(--ink);outline:none}
+.fld span:empty::before{content:attr(data-ph);color:#8a8a8a}
+.fld.big{border-width:3.5px;border-color:var(--accent);background:var(--accent-soft)}
+.fld.big span{font-size:clamp(1.1rem,2.2vw,1.45rem);font-weight:900}
+/* なかなかもらえない理由 */
+.reasons{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:980px}
+.rs{border:3px solid var(--ink);border-radius:14px;padding:14px 20px;display:grid;grid-template-columns:auto 1fr;gap:2px 14px;align-items:baseline}
+.rs b{font-family:Inter,sans-serif;font-weight:900;font-size:20px;color:var(--accent);grid-row:1/3}
+.rs h3{margin:0;font-family:var(--mincho);font-weight:900;font-size:clamp(1.15rem,2.2vw,1.45rem);color:var(--ink);line-height:1.4}
+.rs p{margin:0;font-weight:700;font-size:16px;color:var(--sub);line-height:1.6}
+.rs .num{display:inline-block;margin-right:10px;font-family:var(--mincho);font-weight:900;font-size:28px;color:var(--urgent);vertical-align:-3px}
+.f-urg{fill:var(--urgent)}
 /* 図（SVG） */
 .fig svg{display:block;width:100%;height:auto}
 .fig text{font-family:var(--sans)}
@@ -239,6 +266,8 @@ body.laser-on{cursor:none}
   .qa,.steps{grid-template-columns:1fr}
   .qa .arr,.steps .arr{transform:rotate(90deg);justify-self:center}
   .dest,.powers{grid-template-columns:1fr 1fr}
+  .intake .row2,.reasons{grid-template-columns:1fr}
+  .intake .row4{grid-template-columns:1fr 1fr}
   .price .row{grid-template-columns:1fr}
   .price .row div+div{border-left:0;border-top:2px solid var(--ink)}
   .cands li{grid-template-columns:1fr auto}
@@ -272,7 +301,7 @@ body.laser-on{cursor:none}
     <p class="to-name" id="toName" hidden></p>
     <p class="brand">J MATCH ENGINE <span>／</span> AI自走プラン</p>
     <h1>制度は、毎週のように出ています。<br><span class="hl">探すのも、書くのも、AIで。</span></h1>
-    <p class="say"><span class="who">担当より</span>補助金を1件取ってくるサービスではありません。出てくる制度をいち早く知って、<b>すぐに事業計画を用意できる会社</b>になるためのプランです。</p>
+    <p class="say"><span class="who">担当より</span><span class="line">補助金を1件取ってくるサービスではありません。出てくる制度をいち早く知って、<b>すぐに事業計画を用意できる会社</b>になるためのプランです。</span></p>
     <div class="pricebar">
       <div><small>月額</small><b>30,000<i>円</i></b></div>
       <div><small>初期登録費用</small><b>100,000<i>円</i></b></div>
@@ -282,12 +311,34 @@ body.laser-on{cursor:none}
   </div>
 </section>
 
+<!-- はじめに：前提の確認 -->
+<section class="slide" id="sPre">
+  <div class="wrap">
+    <p class="no"><span>01</span>　はじめに</p>
+    <h2>まず、御社のことを<br><span class="hl">教えてください</span></h2>
+    <p class="say"><span class="who">担当より</span><span class="line">ご提案の前に、前提をそろえさせてください。伺った内容をもとに、このあと<b>使えそうな制度を一緒に調べます</b>。</span></p>
+    <div class="visual intake">
+      <div class="row2">
+        <label class="fld"><small>どちらからのご紹介ですか</small><span contenteditable="true" data-ph="例：商工会、銀行、Webで検索"></span></label>
+        <label class="fld"><small>ご希望の制度は</small><span contenteditable="true" data-ph="補助金・融資・税制優遇／制度名"></span></label>
+      </div>
+      <div class="row4">
+        <label class="fld"><small>業種</small><span contenteditable="true" data-ph="例：金属加工"></span></label>
+        <label class="fld"><small>社員数</small><span contenteditable="true" data-ph="例：12名"></span></label>
+        <label class="fld"><small>創業年</small><span contenteditable="true" data-ph="例：1998年"></span></label>
+        <label class="fld"><small>いちばん欲しいもの</small><span contenteditable="true" data-ph="資金？設備？人？"></span></label>
+      </div>
+      <label class="fld big"><small>今日いちばん聞きたいことは？</small><span contenteditable="true" data-ph="例：「この補助金、うちでももらえますか？」"></span></label>
+    </div>
+  </div>
+</section>
+
 <!-- 01 診断 -->
 <section class="slide" id="s1">
   <div class="wrap">
-    <p class="no"><span>01</span></p>
-    <h2>8つの質問で、<br>いま使える制度が<span class="hl nobr">5〜6件</span>見つかります</h2>
-    <p class="say"><span class="who">担当より</span>所在地や業種、これからの投資予定を伺うだけです。候補ごとに、<b>締切と、何に使えるか</b>まで並びます。</p>
+    <p class="no"><span>02</span></p>
+    <h2>御社が制度を使えそうか、<br><span class="hl">簡易的に調べてみます</span></h2>
+    <p class="say"><span class="who">担当より</span><span class="line">8つの質問に答えると、候補が5〜6件出ます。右端が<b>採択の見込み（参考値）</b>です。ここからが、いちばん大事なお話になります。</span></p>
     <div class="visual">
       <ul class="cands">
         <li class="hd">出てくる候補（例）</li>
@@ -301,12 +352,52 @@ body.laser-on{cursor:none}
   </div>
 </section>
 
+<!-- 正直に：なかなかもらえない -->
+<section class="slide" id="sHard">
+  <div class="wrap">
+    <p class="no"><span>03</span></p>
+    <h2>正直にお伝えします。<br><span class="hl">補助金は、なかなかもらえません</span></h2>
+    <p class="say"><span class="who">担当より</span><span class="line">「この補助金をもらえるか」への答えは、<b>1回の申請では難しいことが多い</b>、です。理由は4つあります。</span></p>
+    <div class="visual reasons">
+      <div class="rs"><b>01</b><h3>採択率は、半分以下が多い</h3><p><strong class="num">47.2%</strong>小規模事業者持続化補助金 第19回（16,576件中7,819件）</p></div>
+      <div class="rs"><b>02</b><h3>小さな会社ほど、書ける材料が少ない</h3><p>体制・実績・数字で差がつきやすく、準備の質がそのまま結果に出ます</p></div>
+      <div class="rs"><b>03</b><h3>何度も申請して、通るもの</h3><p>1回で通るとは限りません。直して再申請することも、よくあります</p></div>
+      <div class="rs"><b>04</b><h3>加点項目の準備が要る</h3><p>賃上げ計画や各種認定など、申請前に整えておくものがあります</p></div>
+    </div>
+    <p class="cap">採択率：中小企業庁 2026年7月29日発表。制度や回によって異なります。</p>
+  </div>
+</section>
+
+<!-- だから：申請し続けるフロー -->
+<section class="slide" id="sLoop">
+  <div class="wrap">
+    <p class="no"><span>04</span></p>
+    <h2>だから、1回で決めずに<br><span class="hl">何度も申請できる会社</span>になる</h2>
+    <p class="say"><span class="who">担当より</span><span class="line">たとえば年10回、申請のチャンスをつかむつもりで動きましょう。そのためには、<b>見つけるのも、書くのも速くなければ</b>回りません。</span></p>
+    <div class="visual fig">
+      <svg viewBox="0 0 960 250" role="img" aria-label="見つける、準備する、書く、申請する。結果が出たら直して次の申請へ戻る">
+        <g font-size="21" font-weight="700">
+          <rect x="0" y="40" width="200" height="70" rx="12" class="f-acc"/><text x="100" y="72" text-anchor="middle" class="t-w">見つける</text><text x="100" y="98" text-anchor="middle" class="t-w" font-size="15">AIが毎週届ける</text>
+          <rect x="250" y="40" width="200" height="70" rx="12" class="f-w s-ink" stroke-width="3"/><text x="350" y="72" text-anchor="middle" class="t-ink">準備する</text><text x="350" y="98" text-anchor="middle" class="t-sub" font-size="15">加点項目を整える</text>
+          <rect x="500" y="40" width="200" height="70" rx="12" class="f-acc"/><text x="600" y="72" text-anchor="middle" class="t-w">書く</text><text x="600" y="98" text-anchor="middle" class="t-w" font-size="15">御社がAIと書く</text>
+          <rect x="750" y="40" width="200" height="70" rx="12" class="f-w s-ink" stroke-width="3"/><text x="850" y="72" text-anchor="middle" class="t-ink">申請する</text><text x="850" y="98" text-anchor="middle" class="t-sub" font-size="15">結果を待つ</text>
+        </g>
+        <g class="s-ink" stroke-width="3" fill="none"><path d="M205 75 L243 75"/><path d="M455 75 L493 75"/><path d="M705 75 L743 75"/></g>
+        <g class="f-acc"><path d="M243 68 L243 82 L250 75 Z"/><path d="M493 68 L493 82 L500 75 Z"/><path d="M743 68 L743 82 L750 75 Z"/></g>
+        <path d="M850 115 L850 175 Q850 195 830 195 L120 195 Q100 195 100 175 L100 122" class="s-urg" stroke-width="4" fill="none" stroke-dasharray="10 7"/>
+        <path d="M92 124 L108 124 L100 112 Z" class="f-urg"/>
+        <text x="475" y="232" text-anchor="middle" class="t-urg mt" font-size="21" font-weight="900">通らなければ、直して次の申請へ。書いたものは使い回せます</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
 <!-- 02 毎週出る -->
 <section class="slide" id="s2">
   <div class="wrap">
-    <p class="no"><span>02</span></p>
+    <p class="no"><span>05</span></p>
     <h2>制度は、<span class="hl">一度調べて終わり</span>ではありません</h2>
-    <p class="say"><span class="who">担当より</span>国・都道府県・市区町村から、年間を通じて次々に出てきます。<b>必要になってから調べると、もう締切の後</b>、ということがよくあります。</p>
+    <p class="say"><span class="who">担当より</span><span class="line">国・都道府県・市区町村から、年間を通じて次々に出てきます。<b>必要になってから調べると、もう締切の後</b>、ということがよくあります。</span></p>
     <div class="visual fig">
       <svg viewBox="0 0 960 300" role="img" aria-label="必要になってから調べると、国と都道府県の制度は締切が過ぎていて、市区町村の1つしか間に合わない">
         <g font-size="22" font-weight="700" class="t-ink"><text x="0" y="62">国</text><text x="0" y="132">都道府県</text><text x="0" y="202">市区町村</text></g>
@@ -326,9 +417,9 @@ body.laser-on{cursor:none}
 <!-- 03 数字 -->
 <section class="slide" id="s3">
   <div class="wrap">
-    <p class="no"><span>03</span></p>
+    <p class="no"><span>06</span></p>
     <h2>多くの会社が、<span class="hl">見つけられずに</span>止まっています</h2>
-    <p class="say"><span class="who">担当より</span>補助金に関心はあっても、申請までたどり着けない会社がほとんどです。いちばんの理由は<b>「自社に合う補助金が分からない」</b>こと。</p>
+    <p class="say"><span class="who">担当より</span><span class="line">補助金に関心はあっても、申請までたどり着けない会社がほとんどです。いちばんの理由は<b>「自社に合う補助金が分からない」</b>こと。</span></p>
     <div class="visual bignums">
       <div><b>38.7<small>%</small></b><p>申請に進めない理由の最多<br>「自社に最適な補助金が分からない」</p><small>btobee（2026年6月、経営者・役員300人）</small></div>
       <div><b>81.1<small>%</small></b><p>関心がありながら<br>申請に至っていない経営層</p><small>btobee（2026年6月、経営者・役員300人）</small></div>
@@ -340,9 +431,9 @@ body.laser-on{cursor:none}
 <!-- 04 間に合わない -->
 <section class="slide" id="s4">
   <div class="wrap">
-    <p class="no"><span>04</span></p>
+    <p class="no"><span>07</span></p>
     <h2>人の手で探して、人の手で書いていては、<br><span class="hl nobr">間に合いません</span></h2>
-    <p class="say"><span class="who">担当より</span>見つけたときには、締切まで1〜2か月しかないこともあります。足りないのは、<span class="nobr">やる気</span>ではなく<b>「探す時間」と「書く時間」</b>です。</p>
+    <p class="say"><span class="who">担当より</span><span class="line">見つけたときには、締切まで1〜2か月しかないこともあります。足りないのは、<span class="nobr">やる気</span>ではなく<b>「探す時間」と「書く時間」</b>です。</span></p>
     <div class="visual fig">
       <svg viewBox="0 0 960 250" role="img" aria-label="人の手だと探す・書くで締切を越える。AIを使うと締切までに見直す時間が残る">
         <text x="0" y="50" class="t-sub mt" font-size="22" font-weight="900">これまで</text>
@@ -363,9 +454,9 @@ body.laser-on{cursor:none}
 <!-- 05 中心 -->
 <section class="slide" id="s5">
   <div class="wrap">
-    <p class="no"><span>05</span></p>
+    <p class="no"><span>08</span></p>
     <h2>だから、探すのも書くのもAIで。<br><span class="hl">何倍も集めて、<span class="nobr">何倍も速く書きます</span></span></h2>
-    <p class="say"><span class="who">担当より</span>中身は、人の手で500社にご契約いただいている「Jコンサル」の支援です。それを<b>AIで回せるように</b>しました。</p>
+    <p class="say"><span class="who">担当より</span><span class="line">中身は、人の手で500社にご契約いただいている「Jコンサル」の支援です。それを<b>AIで回せるように</b>しました。</span></p>
     <div class="visual pillars">
       <div class="pillar"><span class="tag">探す</span><h3>AIが、制度を集める</h3><p>毎週、向こうから届きます</p></div>
       <div class="pillar"><span class="tag">書く</span><h3>御社が、AIと書く</h3><p>質問に答えるだけで土台ができます</p></div>
@@ -376,9 +467,9 @@ body.laser-on{cursor:none}
 <!-- 06 届く -->
 <section class="slide" id="s6">
   <div class="wrap">
-    <p class="no"><span>06</span>　探す</p>
+    <p class="no"><span>09</span>　探す</p>
     <h2>毎週金曜の朝、<br><span class="hl">御社に合う制度</span>が届きます</h2>
-    <p class="say"><span class="who">担当より</span>国や自治体のサイトを見て回る必要はありません。届いたときに<b>「うちに関係あるか」</b>を考えるだけです。</p>
+    <p class="say"><span class="who">担当より</span><span class="line">国や自治体のサイトを見て回る必要はありません。届いたときに<b>「うちに関係あるか」</b>を考えるだけです。</span></p>
     <div class="visual two">
       <div class="shot"><img src="img/digest.png" alt="今週は3つの支援が見つかりました、と知らせる画面" width="1240" height="816" loading="lazy"></div>
       <ul class="keys3 col">
@@ -391,9 +482,9 @@ body.laser-on{cursor:none}
 <!-- 07 検討中 -->
 <section class="slide" id="s7">
   <div class="wrap">
-    <p class="no"><span>07</span>　探す</p>
+    <p class="no"><span>10</span>　探す</p>
     <h2>気になる制度は「検討中」へ。<br><span class="hl">締切を見逃しません</span></h2>
-    <p class="say"><span class="who">担当より</span>締切の近い順に並び、<b>「あと何日」</b>が大きく出ます。気づいたら終わっていた、はもう起きません。</p>
+    <p class="say"><span class="who">担当より</span><span class="line">締切の近い順に並び、<b>「あと何日」</b>が大きく出ます。気づいたら終わっていた、はもう起きません。</span></p>
     <div class="visual"><div class="shot"><img src="img/watch.png" alt="検討中の一覧。あと27日、あと45日と、締切までの日数が大きく表示される" width="1828" height="652" loading="lazy"></div></div>
   </div>
 </section>
@@ -401,9 +492,9 @@ body.laser-on{cursor:none}
 <!-- 08 質問 -->
 <section class="slide" id="s8">
   <div class="wrap">
-    <p class="no"><span>08</span>　書く</p>
+    <p class="no"><span>11</span>　書く</p>
     <h2>「強みを書いてください」とは、<br><span class="hl">聞きません</span></h2>
-    <p class="say"><span class="who">担当より</span>AIが答えやすい質問に分けて、順番に聞いていく形です。事実を思い出して答えると、それが<b>事業計画の土台</b>になります。</p>
+    <p class="say"><span class="who">担当より</span><span class="line">AIが答えやすい質問に分けて、順番に聞いていく形です。事実を思い出して答えると、それが<b>事業計画の土台</b>になります。</span></p>
     <div class="visual qa">
       <div><small>AIからの質問</small><p>その1社は、なぜ他社ではなく御社を選んだのですか？</p></div>
       <span class="arr">→</span>
@@ -418,9 +509,9 @@ body.laser-on{cursor:none}
 <!-- 09 ツール -->
 <section class="slide" id="s9">
   <div class="wrap">
-    <p class="no"><span>09</span>　書く</p>
+    <p class="no"><span>12</span>　書く</p>
     <h2>答えた分だけ、<br><span class="hl">計画書が埋まっていきます</span></h2>
-    <p class="say"><span class="who">担当より</span>AIを使ったことがなくても大丈夫です。初期設定は導入時にご案内します。<b>申請の代行はしません</b>。仕上げは御社か、有資格者の先生です。</p>
+    <p class="say"><span class="who">担当より</span><span class="line">AIを使ったことがなくても大丈夫です。初期設定は導入時にご案内します。<b>申請の代行はしません</b>。仕上げは御社か、有資格者の先生です。</span></p>
     <div class="visual two">
       <div class="shot"><img src="img/writer.png" alt="AIからの質問と、その答えから下書きされた計画書の文章" width="1032" height="588" loading="lazy"></div>
       <div>
@@ -434,9 +525,9 @@ body.laser-on{cursor:none}
 <!-- 10 見本 -->
 <section class="slide" id="s10">
   <div class="wrap">
-    <p class="no"><span>10</span></p>
+    <p class="no"><span>13</span></p>
     <h2>白紙からではなく、<br><span class="hl">採択された見本</span>を見ながら</h2>
-    <p class="say"><span class="who">担当より</span>採択された事業計画書や、書き方の解説動画、テンプレートをそろえました。<b>「どこまで具体的に書くか」</b>が分かります。</p>
+    <p class="say"><span class="who">担当より</span><span class="line">採択された事業計画書や、書き方の解説動画、テンプレートをそろえました。<b>「どこまで具体的に書くか」</b>が分かります。</span></p>
     <div class="visual"><div class="shot"><img src="img/library.png" alt="採択事業計画書の一覧。画像検査機の導入で検査時間を半分にする計画" width="1828" height="334" loading="lazy"></div>
       <ul class="keys3"><li>採択された計画書</li><li>書き方の解説動画</li><li>テンプレート</li></ul></div>
   </div>
@@ -445,9 +536,9 @@ body.laser-on{cursor:none}
 <!-- 11 使い回し -->
 <section class="slide" id="s11">
   <div class="wrap">
-    <p class="no"><span>11</span></p>
+    <p class="no"><span>14</span></p>
     <h2>一度書いた内容は、<br><span class="hl">何度でも使えます</span></h2>
-    <p class="say"><span class="who">担当より</span>聞かれることは、制度が変わっても大きくは変わりません。書いた内容は会社カルテに貯まり、<b>次は書き足すだけ</b>です。</p>
+    <p class="say"><span class="who">担当より</span><span class="line">聞かれることは、制度が変わっても大きくは変わりません。書いた内容は会社カルテに貯まり、<b>次は書き足すだけ</b>です。</span></p>
     <div class="visual"><div class="shot"><img src="img/profile.png" alt="会社カルテの充実度80パーセント" width="1828" height="196" loading="lazy"></div>
       <ul class="dest"><li><b>01</b>今年の補助金</li><li><b>02</b>翌年度の別の制度</li><li><b>03</b>銀行への融資相談</li><li><b>04</b>新規事業の計画</li></ul></div>
   </div>
@@ -456,9 +547,9 @@ body.laser-on{cursor:none}
 <!-- 12 釣り方 -->
 <section class="slide" id="s12">
   <div class="wrap">
-    <p class="no"><span>12</span></p>
+    <p class="no"><span>15</span></p>
     <h2>1匹の魚ではなく、<br><span class="hl">釣り方</span>が会社に残ります</h2>
-    <p class="say"><span class="who">担当より</span>採択されても、されなくても、使い続けるうちに4つの力が残るのが、このサービスの特長です。補助金の準備が、そのまま<b>AIの実地研修</b>になります。</p>
+    <p class="say"><span class="who">担当より</span><span class="line">採択されても、されなくても、使い続けるうちに4つの力が残るのが、このサービスの特長です。補助金の準備が、そのまま<b>AIの実地研修</b>になります。</span></p>
     <div class="visual fig">
       <svg viewBox="0 0 960 150" role="img" aria-label="魚をもらうと1回で終わる。釣り方を覚えると何度でも釣れる">
         <g transform="translate(20,40)"><path d="M0 30 C30 0 80 0 110 30 C80 60 30 60 0 30 Z M110 30 L140 10 L140 50 Z" class="f-line"/></g>
@@ -477,9 +568,9 @@ body.laser-on{cursor:none}
 <!-- 13 人の支援 -->
 <section class="slide" id="s13">
   <div class="wrap">
-    <p class="no"><span>13</span></p>
+    <p class="no"><span>16</span></p>
     <h2>それでも迷うときは、<span class="hl nobr">人がいます</span></h2>
-    <p class="say"><span class="who">担当より</span>主役はAIですが、進めるうちにぶつかる壁が3つあります。それぞれに<b>人の支援</b>を用意しました。</p>
+    <p class="say"><span class="who">担当より</span><span class="line">主役はAIですが、進めるうちにぶつかる壁が3つあります。それぞれに<b>人の支援</b>を用意しました。</span></p>
     <div class="visual walls">
       <div class="wall"><div class="q"><small>壁 1</small>この方向で合っている？</div><div class="a"><h3>専門家に相談</h3><p>補助金・税務・採用など。<b>初回30分無料</b></p></div></div>
       <div class="wall"><div class="q"><small>壁 2</small>採択されても、先に払うお金が要る</div><div class="a"><h3>資金調達の相談窓口</h3><p>補助金の多くは後払いです。銀行・事業ローン・ファクタリングへ</p></div></div>
@@ -492,9 +583,9 @@ body.laser-on{cursor:none}
 <!-- 14 料金 -->
 <section class="slide" id="s14">
   <div class="wrap">
-    <p class="no"><span>14</span></p>
+    <p class="no"><span>17</span></p>
     <h2>初期登録費用10万円＋<span class="nobr">月額3万円。</span><br><span class="hl">成功報酬はいただきません</span></h2>
-    <p class="say"><span class="who">担当より</span>9月30日（水）までにお申し込みで、<b class="urg">導入事例にご協力いただける10社は、初期登録費用が0円</b>です。値引きではなく、事例づくりへのご協力との交換です。</p>
+    <p class="say"><span class="who">担当より</span><span class="line">9月30日（水）までにお申し込みで、<b class="urg">導入事例にご協力いただける10社は、初期登録費用が0円</b>です。値引きではなく、事例づくりへのご協力との交換です。</span></p>
     <div class="visual price">
       <div class="row">
         <div><small>月額</small><b>30,000<i>円</i></b></div>
@@ -509,9 +600,9 @@ body.laser-on{cursor:none}
 <!-- 15 はじめ方 -->
 <section class="slide" id="s15">
   <div class="wrap">
-    <p class="no"><span>15</span></p>
+    <p class="no"><span>18</span></p>
     <h2>お申し込みから<span class="nobr">使い始めるまで</span>、<br><span class="hl">3つの手順</span>です</h2>
-    <p class="say"><span class="who">担当より</span>いま検討している投資や採用の予定を伺い、会社情報を登録すれば、<b>制度の配信とAIツールの利用</b>が始まります。</p>
+    <p class="say"><span class="who">担当より</span><span class="line">いま検討している投資や採用の予定を伺い、会社情報を登録すれば、<b>制度の配信とAIツールの利用</b>が始まります。</span></p>
     <div class="visual steps">
       <div><b>01</b><strong>お申し込み・ヒアリング</strong></div><span class="arr">→</span>
       <div><b>02</b><strong>会社情報の初期登録</strong></div><span class="arr">→</span>
@@ -524,9 +615,9 @@ body.laser-on{cursor:none}
 <!-- 16 1年後 -->
 <section class="slide" id="s16">
   <div class="wrap">
-    <p class="no"><span>16</span></p>
+    <p class="no"><span>19</span></p>
     <h2>1年後の、ある朝</h2>
-    <p class="say"><span class="who">担当より</span>ご利用いただいた場合のイメージとして書いた、短い物語の最後の場面です。社長が、届いた情報を全社員に転送するようになりました。</p>
+    <p class="say"><span class="who">担当より</span><span class="line">ご利用いただいた場合のイメージとして書いた、短い物語の最後の場面です。社長が、届いた情報を全社員に転送するようになりました。</span></p>
     <div class="mail">
       <header><span>From <b>代表取締役</b>　To 社員各位　件名：Fwd: 今週の補助金・融資・税制優遇情報</span></header>
       <div class="m"><p>今週はこれが気になりました。</p><p class="big">もし、やってみたいことと重なりそうなら、いつでも言えよ。</p><p>その時は、まずAIにも聞いてみよう。</p></div>
@@ -539,7 +630,7 @@ body.laser-on{cursor:none}
 <section class="slide closing" id="s17">
   <div class="wrap">
     <h2>今日の1件ではなく、<br><span class="hl">これから出る制度すべてに</span><br>動ける会社へ。</h2>
-    <p class="say"><span class="who">担当より</span>使えそうな制度を見逃さず、出てきたらAIと一緒に計画を作り、すぐ動ける状態へ。<b>月額3万円で、そこまでご支援します。</b></p>
+    <p class="say"><span class="who">担当より</span><span class="line">使えそうな制度を見逃さず、出てきたらAIと一緒に計画を作り、すぐ動ける状態へ。<b>月額3万円で、そこまでご支援します。</b></span></p>
   </div>
 </section>
 
@@ -578,6 +669,7 @@ body.laser-on{cursor:none}
 <div class="laser" id="laser" aria-hidden="true"></div>
 
 <script>
+document.documentElement.classList.add('js');
 (function(){
   var qs=location.search;
   try{
@@ -590,6 +682,12 @@ body.laser-on{cursor:none}
     if(d<0){box.hidden=true;}else{left.textContent=d===0?'本日まで':'あと '+d+' 日';left.hidden=false;}
   }catch(e){}
 
+  // 吹き出しの表示
+  var says=[].slice.call(document.querySelectorAll('.say'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('on');io.unobserve(en.target);}});},{threshold:.35});
+    says.forEach(function(el){io.observe(el);});
+  }else{says.forEach(function(el){el.classList.add('on');});}
   var slides=[].slice.call(document.querySelectorAll('.slide')).concat([document.getElementById('faq'),document.getElementById('legal')]);
   var pager=document.getElementById('pager'), cur=0, pending=null, last=0;
   function update(){var y=innerHeight*.4,idx=0;slides.forEach(function(s,i){if(s.getBoundingClientRect().top<=y)idx=i;});cur=idx;pager.textContent=(idx+1)+' / '+slides.length;}
@@ -604,7 +702,7 @@ body.laser-on{cursor:none}
   addEventListener('mousemove',function(e){if(body.classList.contains('laser-on')){laser.style.transform='translate('+e.clientX+'px,'+e.clientY+'px)';}},{passive:true});
 
   document.addEventListener('keydown',function(e){
-    if(e.target.closest&&e.target.closest('input,textarea,select,summary'))return;
+    if(e.target.closest&&e.target.closest('input,textarea,select,summary,[contenteditable]'))return;
     if(e.metaKey||e.ctrlKey||e.altKey)return;
     var k=e.key, base=(Date.now()-last<900&&pending!==null)?pending:cur;
     if(k==='ArrowRight'||k==='PageDown'||k===' '){e.preventDefault();go(Math.min(base+1,slides.length-1));}
