@@ -66,6 +66,9 @@ kbd{font-family:Inter,sans-serif;font-size:13px;border:1.5px solid var(--sub);bo
 /* スライド */
 .slide{min-height:calc(100vh - 48px);display:flex;align-items:center;padding:30px 0;border-bottom:1px solid var(--line);scroll-margin-top:48px}
 .slide > .wrap{width:100%}
+/* 背景は2色を交互に：白よりのグレー／薄いグレー（--bgを差し替えるので吹き出しの名札も追従） */
+main > section{background:var(--bg)}
+main > section:nth-of-type(odd){--bg:#fafaf8}
 body.present .toolbar{display:none}
 body.present .slide{min-height:100vh;scroll-margin-top:0}
 .no{margin:0 0 6px;text-align:center;font-family:Inter,sans-serif;font-weight:900;font-size:18px;letter-spacing:.12em;color:var(--ink)}
@@ -109,7 +112,6 @@ body.present .slide{min-height:100vh;scroll-margin-top:0}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center}
 
 /* 表紙 */
-.cover{background:#fff}
 .to-name{display:table;margin:0 auto 14px;padding:6px 18px;border:1.5px solid var(--ink);font-weight:700;font-size:18px;color:var(--ink)}
 .cover .brand{margin:0 0 12px;text-align:center;font-family:Inter,sans-serif;font-weight:900;letter-spacing:.2em;font-size:15px;color:var(--ink)}
 .cover .brand span{color:var(--accent)}
