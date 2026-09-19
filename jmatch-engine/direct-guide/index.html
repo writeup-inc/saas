@@ -228,6 +228,23 @@ footer.legal p{margin:18px 0 0;font-size:13px;color:var(--sub)}
 footer.legal a,.story a{color:var(--navy)}
 
 
+
+/* メリハリ：見出しの強調と山場 */
+h2{font-size:clamp(1.5rem,3.4vw,2.4rem);line-height:1.45}
+h2 em.hl{font-style:normal;color:var(--accent);background:linear-gradient(transparent 68%,var(--accent-soft) 68%);padding:0 .06em}
+.num{font-size:15px}
+.h2-pre{margin:0 0 10px;font-size:clamp(1.05rem,2.4vw,1.35rem);font-weight:700;color:var(--sub)}
+.peak h2{font-size:clamp(1.9rem,4.8vw,3.2rem);line-height:1.35;margin-bottom:26px}
+.peak .num{font-size:16px}
+.dark{background:var(--navy-deep);color:#fff;border-top:0}
+.dark h2{color:#fff}
+.dark h2 em.hl{color:#f4b067;background:none}
+.dark .lead{color:#c9d6e4}
+.dark .powers li{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18)}
+.dark .powers strong{color:#fff}
+.dark .powers span{color:#c9d6e4}
+.dark .quote{color:#fff}
+.dark .quote .accent{color:#f4b067}
 /* 営業用：ナビ・問いかけ・宛名・FAQ・次の一歩 */
 .deck-nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .deck-inner{max-width:1180px;margin:0 auto;padding:8px 16px;display:flex;align-items:center;gap:12px}
@@ -316,7 +333,7 @@ section[id]{scroll-margin-top:52px}
 <section class="alt" id="s-diag" data-nav="診断">
   <div class="wrap">
     <p class="num">01</p>
-    <h2>8つの質問に答えると、いま使えそうな制度が5〜6件出ます。</h2>
+    <h2>8つの質問に答えると、いま使えそうな制度が<em class="hl nobr">5〜6件</em>出ます。</h2>
     <p class="lead">補助金診断システム「Jシステム」のAI版（Jシステム AIエディション）です。分かる項目だけで候補を出し、締切・対象経費・次に確認することまで並べます。</p>
     <div class="diag">
       <div class="panel">
@@ -346,7 +363,7 @@ section[id]{scroll-margin-top:52px}
 <section id="s-flow" data-nav="一度では終わらない">
   <div class="wrap">
     <p class="num">02</p>
-    <h2>でも、制度は一度調べて終わりではありません。</h2>
+    <h2>でも、制度は<em class="hl nobr">一度調べて終わり</em>ではありません。</h2>
     <p class="lead">補助金・融資・税制優遇は、国・都道府県・市区町村から年間を通じて次々に出てきます。今日なかった制度が来月始まることも、去年あった制度が今年は消えていることも、珍しくありません。</p>
     <div class="fig">
       <p class="fig-title">同じ3つの制度を、いつ知るか</p>
@@ -388,7 +405,8 @@ section[id]{scroll-margin-top:52px}
 <section class="alt" id="s-time" data-nav="間に合わない">
   <div class="wrap">
     <p class="num">03</p>
-    <h2>見つけたときには、締切まで<span class="nobr">1〜2か月</span>しか<span class="nobr">ないこともあります。</span>人の手で探して、人の手で書いていては間に合いません。</h2>
+    <p class="h2-pre">見つけたときには、締切まで<span class="nobr">1〜2か月</span>しか<span class="nobr">ないこともあります。</span></p>
+    <h2>人の手で探して、人の手で書いていては、<em class="hl nobr">間に合いません。</em></h2>
     <p class="lead">制度を探すのにも、事業計画を書くのにも時間がかかります。普段の仕事を止めずに両方をこなすのは、どの会社でも簡単ではありません。</p>
     <div class="fig">
       <svg viewBox="0 0 960 260" role="img" aria-label="人の手だと探す・書くで締切を越える。AIを使うと締切前に準備が終わる">
@@ -413,10 +431,10 @@ section[id]{scroll-margin-top:52px}
 </section>
 
 <!-- 4 中心：2本柱 -->
-<section id="s-core" data-nav="中心">
+<section class="peak" id="s-core" data-nav="中心">
   <div class="wrap">
     <p class="num">04 ／ このサービスの中心</p>
-    <h2>だから、探すのも書くのもAIで。<span class="mark">何倍も集めて、<span class="nobr">何倍も速く書きます。</span></span></h2>
+    <h2>だから、探すのも書くのもAIで。<br><em class="hl">何倍も集めて、<span class="nobr">何倍も速く書きます。</span></em></h2>
     <p class="lead">補助金情報を見るだけのサービスではありません。制度を見逃さず、見つかったときに事業計画を素早く準備し、短い締切でも申請へ動ける会社をつくるサービスです。</p>
     <div class="pillars">
       <div class="pillar">
@@ -441,7 +459,7 @@ section[id]{scroll-margin-top:52px}
 <section class="alt" id="s-find" data-nav="探す">
   <div class="wrap">
     <p class="num">05 ／ 探す</p>
-    <h2>探すのはAI。毎週金曜の朝、御社に合う制度が届きます。</h2>
+    <h2>探すのはAI。<em class="hl nobr">毎週金曜の朝</em>、御社に合う制度が届きます。</h2>
     <p class="lead">御社側で、国や自治体のサイトを毎週見て回る必要はありません。届いたときに「うちに関係あるか」を考えるだけです。</p>
     <div class="steps">
       <div class="step"><span class="n">1</span><div>
@@ -469,7 +487,7 @@ section[id]{scroll-margin-top:52px}
 <section id="s-write" data-nav="書く">
   <div class="wrap">
     <p class="num">06 ／ 書く</p>
-    <h2>書くのは御社とAI。答えやすい質問に答えていくと、事業計画の土台ができます。</h2>
+    <h2>書くのは御社とAI。<em class="hl nobr">答えやすい質問</em>に答えていくと、事業計画の土台ができます。</h2>
     <p class="lead">申請書では、いきなり「自社の強みを書いてください」と聞かれます。これでは、なかなか手が動きません。Jマッチエンジンでは、AIが質問を細かく分けて、順番に聞いていきます。</p>
     <ul class="ask-list">
       <li>最近受注したお客様は、どのような会社でしたか</li>
@@ -504,7 +522,7 @@ section[id]{scroll-margin-top:52px}
 <section class="alt" id="s-reuse" data-nav="使い回し">
   <div class="wrap">
     <p class="num">07</p>
-    <h2>一度書いた内容は、翌年度の制度にも、融資の相談にも使えます。</h2>
+    <h2>一度書いた内容は、<em class="hl">翌年度の制度にも、融資の相談にも</em>使えます。</h2>
     <p class="lead">会社の概要、お客様、市場、強み、やること、効果。聞かれることは、制度が変わっても大きくは変わりません。書いた内容は会社カルテに貯まっていきます。</p>
     <div class="reuse">
       <ul class="dest">
@@ -521,10 +539,10 @@ section[id]{scroll-margin-top:52px}
 </section>
 
 <!-- 8 釣り方が残る -->
-<section id="s-skill" data-nav="釣り方">
+<section class="peak dark" id="s-skill" data-nav="釣り方">
   <div class="wrap">
     <p class="num">08</p>
-    <h2>1匹の魚ではなく、釣り方が会社に残ります。</h2>
+    <h2>1匹の魚ではなく、<br><em class="hl nobr">釣り方</em>が会社に残ります。</h2>
     <p class="lead">採択されても、されなくても。使い続けるうちに、次の4つが会社に残ります。</p>
     <ul class="powers">
       <li><b>01</b><strong>事業計画を作る力</strong><span>何を聞かれ、どう答えれば伝わるかが分かる</span></li>
@@ -540,7 +558,7 @@ section[id]{scroll-margin-top:52px}
 <section class="alt" id="s-help" data-nav="人の支援">
   <div class="wrap">
     <p class="num">09 ／ 脇を固める支援</p>
-    <h2>それでも迷うときは、人がいます。</h2>
+    <h2>それでも迷うときは、<em class="hl nobr">人がいます。</em></h2>
     <p class="lead">AIで速く集めて、速く書けても、進めるうちに壁にぶつかることがあります。よくある3つの壁と、それぞれに用意した人の支援がこちらです。</p>
     <div class="supports">
       <div class="support">
@@ -575,7 +593,7 @@ section[id]{scroll-margin-top:52px}
 <section id="s-price" data-nav="料金">
   <div class="wrap">
     <p class="num">10 ／ 料金</p>
-    <h2>初期登録費用10万円＋月額3万円（税別）。<br>成功報酬はいただきません。</h2>
+    <h2>初期登録費用10万円＋月額3万円（税別）。<br><em class="hl nobr">成功報酬はいただきません。</em></h2>
     <p class="lead">使う量や採択の有無で、追加の費用はいただきません。Claude Code の利用料だけは別途、御社で提供元とご契約いただく形です。</p>
     <div class="price">
       <div class="price-head"><small>AI SELF-DRIVE</small><h3>Jマッチエンジン AI自走プラン</h3></div>
@@ -621,7 +639,7 @@ section[id]{scroll-margin-top:52px}
 <section id="s-next" data-nav="はじめ方">
   <div class="wrap">
     <p class="num">はじめ方</p>
-    <h2>お申し込みから使い始めるまで、3つの手順です。</h2>
+    <h2>お申し込みから使い始めるまで、<em class="hl nobr">3つの手順</em>です。</h2>
     <ol class="next">
       <li><b>01</b><strong>お申し込み・ヒアリング</strong><span>いま検討している投資、採用や賃上げの予定、これから始めたい事業を伺います。</span></li>
       <li><b>02</b><strong>会社情報の初期登録</strong><span>所在地・業種・従業員数などを会社カルテに登録。ここまでが初期登録費用の範囲です。</span></li>
