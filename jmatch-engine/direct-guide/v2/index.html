@@ -7,7 +7,7 @@
 <title>Jマッチエンジン｜ご説明資料 v2</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho+B1:wght@700;800&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@900&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
 /* lp-base.css — 日本語LP／HTML成果物の初期CSS */
 h1, h2, h3, h4, h5,
@@ -68,7 +68,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:"Noto Sans JP",
 .cover{padding:56px 0 64px;border-bottom:2px solid var(--ink)}
 .to-name{display:inline-block;margin:0 0 20px;padding:4px 12px;border:1px solid var(--ink);font-size:15px;font-weight:700;color:var(--ink)}
 .cover .eyebrow{font-family:Inter,sans-serif;font-weight:800;letter-spacing:.18em;font-size:12px;color:var(--sub);margin:0 0 18px}
-.cover h1{margin:0 0 22px;font-family:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:800;font-size:clamp(2rem,5.4vw,3.6rem);line-height:1.3;color:var(--ink);letter-spacing:.01em}
+.cover h1{margin:0 0 22px;font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:900;font-size:clamp(2rem,5.4vw,3.6rem);line-height:1.3;color:var(--ink);letter-spacing:.01em}
 .cover h1 .ac{color:var(--accent)}
 .cover .lead{margin:0 0 28px;max-width:760px;font-size:clamp(1rem,2.2vw,1.2rem);color:var(--text);line-height:1.9}
 .cover dl{display:grid;grid-template-columns:repeat(4,auto);justify-content:start;gap:0;margin:0;border-top:1px solid var(--line)}
@@ -90,17 +90,21 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:"Noto Sans JP",
 .no{display:flex;align-items:baseline;gap:12px;margin:0 0 14px;font-family:Inter,sans-serif}
 .no b{font-size:18px;font-weight:800;color:var(--ink);letter-spacing:.06em}
 .no span{font-size:12px;font-weight:700;color:var(--faint);letter-spacing:.14em}
-.sec h2{margin:0 0 22px;font-family:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:800;color:var(--ink);font-size:clamp(1.75rem,4.1vw,2.95rem);line-height:1.4;letter-spacing:.02em}
-.summary{text-wrap:pretty;margin:0 0 36px;max-width:860px;padding-left:18px;border-left:3px solid var(--ink);font-size:clamp(1.02rem,2vw,1.18rem);line-height:2;color:var(--text)}
+.sec h2{margin:0 0 8px;font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:900;color:var(--ink);font-size:clamp(1.75rem,4.1vw,2.95rem);line-height:1.4;letter-spacing:.02em}
+.summary{text-wrap:pretty;position:relative;margin:26px 0 40px;max-width:900px;padding:22px 28px;border:2px solid var(--ink);border-radius:10px;background:var(--bg);font-size:clamp(1.02rem,2vw,1.18rem);line-height:2;color:var(--text)}
 .summary b{color:var(--ink)}
+.summary::before,.summary::after{content:"";position:absolute;left:42px;width:0;height:0;border-style:solid}
+.summary::before{top:-16px;border-width:0 14px 16px 14px;border-color:transparent transparent var(--ink) transparent}
+.summary::after{top:-12px;left:44px;border-width:0 12px 13px 12px;border-color:transparent transparent var(--bg) transparent}
 .body{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:44px;align-items:start}
 .body.even{grid-template-columns:1fr 1fr}
 .body.wide{grid-template-columns:minmax(0,4fr) minmax(0,8fr)}
 .points{list-style:none;margin:0;padding:0;counter-reset:pt;display:grid;gap:0}
-.points li{counter-increment:pt;display:grid;grid-template-columns:34px 1fr;gap:4px 12px;padding:16px 0;border-top:1px solid var(--line)}
+.points li{counter-increment:pt;display:grid;grid-template-columns:34px 1fr;gap:4px 12px;align-items:baseline;padding:18px 0;border-top:1px solid var(--line)}
 .points li:last-child{border-bottom:1px solid var(--line)}
 .points li::before{content:counter(pt,decimal-leading-zero);font-family:Inter,sans-serif;font-weight:800;font-size:13px;color:var(--faint);padding-top:3px}
-.points strong{display:block;color:var(--ink);font-size:17px;line-height:1.6}
+.points strong{display:block;color:var(--ink);font-size:18.5px;line-height:1.6}
+.points strong small{display:block;margin-top:2px;font-size:14px;font-weight:500;color:var(--sub);text-decoration:none}
 .points span{text-wrap:pretty;grid-column:2;display:block;font-size:14.5px;color:var(--sub);line-height:1.8}
 .points .hot strong{text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:5px}
 .note{color:var(--sub);margin:14px 0 0}
@@ -170,7 +174,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:"Noto Sans JP",
 
 /* 締め・余韻 */
 .closing{padding:80px 0;background:var(--ink);color:var(--bg);text-align:center}
-.closing h2{margin:0 0 16px;font-family:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:800;font-size:clamp(1.5rem,4vw,2.4rem);color:var(--bg)}
+.closing h2{margin:0 0 16px;font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:900;font-size:clamp(1.5rem,4vw,2.4rem);color:var(--bg)}
 .closing h2 .ac{color:var(--accent)}
 .closing p{text-wrap:pretty;margin:0 auto;max-width:720px;font-size:17px;line-height:2;opacity:.85}
 .mail{border:1px solid var(--line);background:var(--bg);border-radius:6px;overflow:hidden}
@@ -241,9 +245,9 @@ footer.legal a,.sec a{color:var(--ink)}
     <p class="summary">所在地や業種、これからの投資予定など、<b>8つの質問</b>に答えるだけで、御社で使えそうな補助金・融資の候補が5〜6件出てきます。候補ごとに、締切・対象になる経費・次に確認することまで並ぶのが特長です。</p>
     <div class="body">
       <ol class="points">
-        <li><strong>入力は8項目だけ</strong><span>分かる項目だけでも大丈夫です。</span></li>
-        <li><strong>締切と対象経費まで分かる</strong><span>「何に使えるか」「いつまでか」がひと目で分かります。</span></li>
-        <li><strong>想定採択可能性は参考値</strong><span>「やや低い」でも申請できないわけではありません。最終判断は制度の事務局です。</span></li>
+        <li><strong>入力は8項目だけ</strong></li>
+        <li><strong>締切と対象経費まで分かる</strong></li>
+        <li><strong>想定採択可能性は参考値<small>保証ではありません</small></strong></li>
       </ol>
       <figure class="visual">
         <div class="mock">
@@ -272,9 +276,9 @@ footer.legal a,.sec a{color:var(--ink)}
     <p class="summary">補助金・融資・税制優遇は、国・都道府県・市区町村から<b>年間を通じて次々に</b>出てきます。必要になってから調べると、気づいたときには締切が過ぎている、ということも珍しくありません。</p>
     <div class="body">
       <ol class="points">
-        <li><strong>国・都道府県・市区町村で時期がばらばら</strong><span>今日なかった制度が来月始まることもあります。</span></li>
-        <li><strong>去年あった制度が、今年は消えている</strong><span>名前も要件も、毎年のように変わるのが特徴です。</span></li>
-        <li class="hot"><strong>知る時点が違うだけで、出せる数が変わる</strong><span>継続して届けば、準備期間が残ります。</span></li>
+        <li><strong>国・都道府県・市区町村で時期がばらばら</strong></li>
+        <li><strong>去年あった制度が、今年は消えている</strong></li>
+        <li class="hot"><strong>知る時点が違うだけで、出せる数が変わる</strong></li>
       </ol>
       <div class="stack">
         <figure class="visual illus">
@@ -306,9 +310,9 @@ footer.legal a,.sec a{color:var(--ink)}
     <p class="summary">見つけたときには、締切まで1〜2か月しかないこともあります。制度を探すのにも、白紙から事業計画を書くのにも時間がかかり、普段の仕事を止めずに両方をこなすのは簡単ではありません。</p>
     <div class="body">
       <ol class="points">
-        <li><strong>足りないのは「探す時間」</strong><span>毎週、国や自治体のサイトを見て回る余裕はありません。</span></li>
-        <li><strong>足りないのは「書く時間」</strong><span>「自社の強みを書いてください」で手が止まります。</span></li>
-        <li class="hot"><strong>やる気ではなく、時間の問題</strong><span>だから、この2つをAIで短くします。</span></li>
+        <li><strong>足りないのは「探す時間」</strong></li>
+        <li><strong>足りないのは「書く時間」</strong></li>
+        <li class="hot"><strong>やる気ではなく、時間の問題</strong></li>
       </ol>
       <figure class="visual illus">
         <svg viewBox="0 0 560 200" role="img" aria-label="人の手だと探す・書くで締切を越える。AIを使うと締切までに見直す時間が残る">
@@ -335,9 +339,9 @@ footer.legal a,.sec a{color:var(--ink)}
     <p class="summary">探すほうは、国・都道府県・市区町村の補助金・融資・税制優遇をAIが集め、<b>毎週金曜に御社へ届けます</b>。書くほうは、AIが答えやすい質問に分けて聞き、答えが事業計画の土台になります。中身は、人の手で500社にご契約いただいている「Jコンサル」の支援です。</p>
     <div class="body">
       <ol class="points">
-        <li class="hot"><strong>探す：AIが制度を集めてくる</strong><span>必要になってから探すのではなく、毎週向こうから届く仕組みです。</span></li>
-        <li class="hot"><strong>書く：御社がAIと一緒に書く</strong><span>白紙ではなく、答えやすい質問が順番に出ます。</span></li>
-        <li><strong>中身は、500社が使う支援</strong><span>人の手で同じ支援を行う「Jコンサル」には、いま500社にご契約いただいています。その中身をAIで回せるようにしました。</span></li>
+        <li class="hot"><strong>探す：AIが制度を集めてくる</strong></li>
+        <li class="hot"><strong>書く：御社がAIと一緒に書く</strong></li>
+        <li><strong>中身は、500社が使う支援</strong></li>
       </ol>
       <figure class="visual illus">
         <svg viewBox="0 0 560 300" role="img" aria-label="探すと書くの2本柱。探すはAI、書くは御社とAI。続けるほど書いた内容が会社に貯まる">
@@ -368,9 +372,9 @@ footer.legal a,.sec a{color:var(--ink)}
     <p class="summary">御社側で、国や自治体のサイトを毎週見て回る必要はありません。<b>届いたときに「うちに関係あるか」を考えるだけ</b>です。気になった制度は「検討中」に入れておけば、締切の近い順に並び、あと何日かが大きく表示されます。</p>
     <div class="body wide">
       <ol class="points">
-        <li><strong>毎週金曜の朝に届く</strong><span>新しく見つかった制度の数と、締切が近いものの数がひと目で分かります。</span></li>
-        <li><strong>補助金・融資・税制優遇まで</strong><span>国・都道府県・市区町村の分を、まとめて確認できるのが強みです。</span></li>
-        <li class="hot"><strong>「検討中」で締切を見逃さない</strong><span>「あと27日」のように、残り日数が大きく出ます。</span></li>
+        <li><strong>毎週金曜の朝に届く</strong></li>
+        <li><strong>補助金・融資・税制優遇まで</strong></li>
+        <li class="hot"><strong>「検討中」で締切を見逃さない</strong></li>
       </ol>
       <div class="stack">
         <figure class="visual"><div class="frame"><img src="../img/digest.jpg" alt="今週は3つの支援が見つかりました、と知らせる画面" width="930" height="612" loading="lazy"></div></figure>
@@ -388,10 +392,10 @@ footer.legal a,.sec a{color:var(--ink)}
     <p class="summary">申請書では、いきなり「自社の強みを書いてください」と聞かれて手が止まります。そこでJマッチエンジンでは、AIが<b>答えやすい質問に分けて、順番に</b>聞いていく形にしました。答えた内容が、事業計画の土台になります。</p>
     <div class="body wide">
       <ol class="points">
-        <li><strong>質問は、事実を思い出すだけ</strong><span>「最近受注したお客様は？」「なぜ御社を選んだ？」「何時間短くなる？」</span></li>
-        <li><strong>答えた分だけ埋まる</strong><span>どこが空いているかも、常に見える状態です。</span></li>
-        <li><strong>AIを使ったことがなくても大丈夫</strong><span>初期設定は導入時にご案内します。Claude Code の利用料は月額に含まれず、提供元の有料プランを御社で別途ご契約ください。</span></li>
-        <li class="hot"><strong>AIが代わりに申請するのではない</strong><span>提出書類を仕上げるのは、御社ご自身か有資格者の先生です。</span></li>
+        <li><strong>質問は、事実を思い出すだけ</strong></li>
+        <li><strong>答えた分だけ埋まる</strong></li>
+        <li><strong>AI未経験でも大丈夫<small>Claude Code利用料は別途</small></strong></li>
+        <li><strong>申請の代行はしません<small>仕上げは御社か有資格者</small></strong></li>
       </ol>
         <figure class="visual"><div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="../img/writer.jpg" alt="事業計画書をつくる画面。制度を選ぶ、下書き、質問に答える、書き出しの4段階" width="1371" height="896" loading="lazy"></div></figure>
     </div>
@@ -413,9 +417,9 @@ footer.legal a,.sec a{color:var(--ink)}
     <p class="summary">採択された事業計画書の事例や見本、書き方を専門家が解説した動画、テンプレートをひとつの場所にまとめました。<b>「どこまで具体的に書くか」「売上効果をどう数字で示すか」</b>の手がかりになります。</p>
     <div class="body wide">
       <ol class="points">
-        <li><strong>採択された事業計画書</strong><span>業種・規模・制度から探せる形です。</span></li>
-        <li><strong>書き方の解説動画</strong><span>制度の背景と、審査の考え方を解説します。</span></li>
-        <li><strong>テンプレート・実務ガイド</strong><span>事業計画書や資金繰り表のひな形つき。</span></li>
+        <li><strong>採択された事業計画書</strong></li>
+        <li><strong>書き方の解説動画</strong></li>
+        <li><strong>テンプレート・実務ガイド</strong></li>
       </ol>
       <figure class="visual"><div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="../img/library.jpg" alt="ナレッジライブラリの画面" width="1920" height="1200" loading="lazy"></div>
         <figcaption>掲載する事例は、一般公開・掲載許諾済み・匿名加工済みの資料に限ります。</figcaption></figure>
@@ -434,7 +438,7 @@ footer.legal a,.sec a{color:var(--ink)}
         <li><strong>今年の補助金の事業計画書</strong></li>
         <li><strong>翌年度の、別の制度</strong></li>
         <li><strong>銀行・信用金庫への融資相談</strong></li>
-        <li><strong>新規事業の計画・顧問の先生への資料</strong><span>制度ごとの書き足しは必要ですが、作り直しにはなりません。</span></li>
+        <li><strong>新規事業の計画・顧問の先生への資料</strong></li>
       </ol>
       <figure class="visual"><div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="../img/profile.jpg" alt="会社カルテの画面。充実度と、解決したいこと、基本情報" width="1920" height="1200" loading="lazy"></div></figure>
     </div>
@@ -449,10 +453,10 @@ footer.legal a,.sec a{color:var(--ink)}
     <p class="summary">採択されても、されなくても、使い続けるうちに4つの力が会社に残ります。事業計画を作る力、強みを言葉にする力、効果を数字で示す力、そして<b>AIを実務で使う力</b>です。補助金の準備が、そのままAIの実地研修になります。</p>
     <div class="body">
       <ol class="points">
-        <li><strong>事業計画を作る力</strong><span>何を聞かれ、どう答えれば伝わるかが分かります。</span></li>
-        <li><strong>強みを言葉にする力</strong><span>「選ばれた理由」を、事実で語れるように。</span></li>
-        <li><strong>効果を数字で示す力</strong><span>投資と売上の関係を、計算式で示せます。</span></li>
-        <li class="hot"><strong>AIを実務で使う力</strong><span>補助金以外の、日々の仕事にも。</span></li>
+        <li><strong>事業計画を作る力</strong></li>
+        <li><strong>強みを言葉にする力</strong></li>
+        <li><strong>効果を数字で示す力</strong></li>
+        <li class="hot"><strong>AIを実務で使う力</strong></li>
       </ol>
       <figure class="visual illus">
         <svg viewBox="0 0 560 280" role="img" aria-label="魚をもらうと1回で終わる。釣り方を覚えると、何度でも釣れる">
@@ -476,13 +480,13 @@ footer.legal a,.sec a{color:var(--ink)}
 <section class="sec alt" id="help" data-title="迷うときは人がいる">
   <div class="wrap">
     <p class="no"><b>10</b><span>HUMAN SUPPORT</span></p>
-    <h2>それでも迷うときは、人がいます</h2>
+    <h2>それでも迷うときは、<span class="nobr">人がいます</span></h2>
     <p class="summary">進めるうちにぶつかる<b>壁は3つ</b>あり、それぞれに人の支援を用意しています。方向性に迷ったら、専門家に初回30分無料で相談。先に払うお金が要るときは、資金調達の相談窓口へ。AIで分からないときは、AI家庭教師に月2時間まで追加料金なしで聞けます。</p>
     <div class="body">
       <ol class="points">
-        <li><strong>方向性に自信がない → 専門家に相談</strong><span>補助金・税務・承継・採用・DXの専門家に、初回30分無料で相談できます。</span></li>
-        <li class="hot"><strong>先に払うお金が要る → 資金調達の相談窓口</strong><span>補助金の多くは後払いです。例えば300万円が採択されても、支払いは先です。銀行・事業ローン・ファクタリングの相談先につなぎます。</span></li>
-        <li><strong>AIで分からない → AI家庭教師</strong><span>ご契約中は月2時間まで追加料金なし。超えた分は1時間1万円（税別）。</span></li>
+        <li><strong>方向性に迷う → 専門家に相談<small>初回30分無料</small></strong></li>
+        <li class="hot"><strong>先に払うお金が要る → 資金調達の相談窓口</strong></li>
+        <li><strong>AIで分からない → AI家庭教師<small>月2時間まで追加料金なし</small></strong></li>
       </ol>
       <figure class="visual illus">
         <svg viewBox="0 0 560 250" role="img" aria-label="探す、書く、申請、採択後の支払いの流れと、3つの壁の位置">
@@ -513,9 +517,9 @@ footer.legal a,.sec a{color:var(--ink)}
     <p class="summary">料金は月額3万円と初期登録費用10万円（税別）で、採択されたときの成功報酬はいただきません。2026年9月30日（水）までにお申し込みで、<b>導入事例にご協力いただける10社は初期登録費用が0円</b>です。Claude Code の利用料は別途、御社でご契約いただきます。</p>
     <div class="body even">
       <ol class="points">
-        <li><strong>制度情報の継続配信・候補の抽出</strong><span>補助金・融資・税制優遇。締切・対象経費・想定採択可能性（参考）つき。</span></li>
+        <li><strong>制度情報の継続配信・候補の抽出</strong></li>
         <li><strong>採択事例・見本・解説動画</strong></li>
-        <li><strong>AIツールによる事業計画書・融資資料の土台づくり</strong><span>Claude Code の利用料は別途、御社で提供元とご契約いただきます。</span></li>
+        <li><strong>AIツールで事業計画書・融資資料の土台づくり<small>Claude Code利用料は別途</small></strong></li>
         <li><strong>会社カルテ・検討中、AI家庭教師 月2時間</strong></li>
       </ol>
       <div class="stack">
@@ -558,9 +562,9 @@ footer.legal a,.sec a{color:var(--ink)}
     <p class="summary">いま検討している投資や採用の予定を伺い、会社情報を登録すれば、制度の配信とAIツールの利用が始まります。<b>事例協力の受付は、2026年9月30日（水）まで</b>です。</p>
     <div class="body">
       <ol class="points">
-        <li><strong>お申し込み・ヒアリング</strong><span>検討中の投資、採用や賃上げの予定、始めたい事業を伺います。</span></li>
-        <li><strong>会社情報の初期登録</strong><span>会社カルテに登録。ここまでが初期登録費用の範囲です。</span></li>
-        <li><strong>配信とAIツールの利用開始</strong><span>毎週の制度配信と、事例・動画・AIツールが使えるようになります。</span></li>
+        <li><strong>お申し込み・ヒアリング</strong></li>
+        <li><strong>会社情報の初期登録</strong></li>
+        <li><strong>配信とAIツールの利用開始</strong></li>
       </ol>
       <div class="deadline" id="deadline"><p>事例協力（初期登録費用0円）の受付は<br>2026年9月30日（水）まで</p><p class="left" id="daysLeft" hidden></p></div>
     </div>
@@ -576,7 +580,7 @@ footer.legal a,.sec a{color:var(--ink)}
     <div class="body">
       <ol class="points">
         <li><strong>1年前、制度の情報は社長のスマホの中だけ</strong></li>
-        <li><strong>いまは、会社の中に置かれている</strong><span>誰かが何かを言い出したとき、制度の情報も、AIと整理する時間もあります。</span></li>
+        <li><strong>いまは、会社の中に置かれている</strong></li>
         <li class="hot"><strong>補助金のためではなく、会社の選択肢を増やすために</strong></li>
       </ol>
       <div class="mail">
