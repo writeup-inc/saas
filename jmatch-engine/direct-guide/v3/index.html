@@ -37,34 +37,34 @@ main > *, section > *, .grid > *, .flex > * { min-width: 0; }
 pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
 
 /* ── v3：画面共有で「くっきり読める」ことを最優先 ─────────────
-   背景は常に白（営業PCがダークモードでも切り替えない）。
+   背景はごく薄いグレー（白の眩しさを抑える。営業PCがダークモードでも切り替えない）。
    明朝＝会社としての言葉（見出し・料金・約束事）
    丸ゴシック＝営業が語りかける言葉（吹き出し・問いかけ） */
 :root{
-  --ink:#000; --text:#141414; --sub:#3d3d3d; --line:#c9c9c9; --bg:#fff; --soft:#f3f3f3;
+  --ink:#000; --text:#141414; --sub:#3d3d3d; --line:#c9c9c9; --bg:#f4f4f1; --soft:#e8e8e4;
   --accent:#0b2c5c; --accent-soft:#eaf0f8;
   --urgent:#c8520a; --urgent-soft:#fff1e6;
   --mincho:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;
   --maru:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Noto Sans JP",sans-serif;
   --sans:"Noto Sans JP","Hiragino Sans",sans-serif;
 }
-html{scroll-behavior:smooth;background:#fff}
-body{margin:0;background:#fff;color:var(--text);font-family:var(--sans);font-size:18px;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:18px;-webkit-font-smoothing:antialiased}
 .wrap{max-width:1080px;margin:0 auto;padding:0 32px}
 
 /* ツールバー（発表モードでは隠す） */
-.toolbar{position:sticky;top:0;z-index:40;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 20px;background:#fff;border-bottom:2px solid var(--ink);font-size:13px}
+.toolbar{position:sticky;top:0;z-index:40;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 20px;background:var(--bg);border-bottom:1px solid var(--line);font-size:13px}
 .toolbar .ver{display:flex;gap:2px;align-items:center}
 .toolbar .ver span{margin-right:6px;color:var(--sub);font-weight:700}
-.toolbar a{padding:3px 10px;border-radius:4px;color:var(--ink);text-decoration:none;font-family:Inter,sans-serif;font-weight:800}
+.toolbar a{padding:3px 10px;border-radius:3px;color:var(--ink);text-decoration:none;font-family:Inter,sans-serif;font-weight:800}
 .toolbar a[aria-current="page"]{background:var(--ink);color:#fff}
 .toolbar .keys{display:flex;gap:8px;align-items:center;color:var(--sub);font-weight:700}
-.toolbar button{font:inherit;font-weight:800;border:2px solid var(--ink);background:#fff;color:var(--ink);border-radius:6px;padding:3px 10px;cursor:pointer}
+.toolbar button{font:inherit;font-weight:800;border:1.5px solid var(--ink);background:transparent;color:var(--ink);border-radius:3px;padding:3px 10px;cursor:pointer}
 .toolbar button[aria-pressed="true"]{background:var(--ink);color:#fff}
 kbd{font-family:Inter,sans-serif;font-size:13px;border:1.5px solid var(--sub);border-bottom-width:3px;border-radius:4px;padding:0 5px;color:var(--ink)}
 
 /* スライド */
-.slide{min-height:calc(100vh - 48px);display:flex;align-items:center;padding:30px 0;border-bottom:2px solid var(--ink);scroll-margin-top:48px}
+.slide{min-height:calc(100vh - 48px);display:flex;align-items:center;padding:30px 0;border-bottom:1px solid var(--line);scroll-margin-top:48px}
 .slide > .wrap{width:100%}
 body.present .toolbar{display:none}
 body.present .slide{min-height:100vh;scroll-margin-top:0}
@@ -74,11 +74,11 @@ body.present .slide{min-height:100vh;scroll-margin-top:0}
 .slide h2 .hl{color:var(--accent)}
 
 /* 吹き出し（営業の声） */
-.say{position:relative;word-break:auto-phrase;margin:24px auto 20px;max-width:880px;padding:16px 30px 14px;border:3px solid var(--ink);border-radius:18px;background:#fff;font-family:var(--maru);font-weight:700;font-size:clamp(1.05rem,2vw,1.28rem);line-height:1.8;color:var(--ink);text-align:center;text-wrap:pretty}
+.say{position:relative;word-break:auto-phrase;margin:24px auto 20px;max-width:880px;padding:16px 30px 14px;border:2px solid var(--ink);border-radius:10px;background:#fff;font-family:var(--maru);font-weight:700;font-size:clamp(1.05rem,2vw,1.28rem);line-height:1.8;color:var(--ink);text-align:center;text-wrap:pretty}
 .say::before,.say::after{content:"";position:absolute;left:calc(50% - 15px);width:0;height:0;border-style:solid}
 .say::before{top:-19px;border-width:0 15px 19px 15px;border-color:transparent transparent var(--ink) transparent}
-.say::after{top:-13px;left:calc(50% - 11px);border-width:0 11px 14px 11px;border-color:transparent transparent #fff transparent}
-.say .who{position:absolute;top:-15px;left:24px;background:#fff;padding:0 8px;font-size:16px;font-weight:900;color:var(--sub);letter-spacing:.08em}
+.say::after{top:-16px;left:calc(50% - 12px);border-width:0 12px 16px 12px;border-color:transparent transparent #fff transparent}
+.say .who{position:absolute;top:-15px;left:24px;background:linear-gradient(to bottom,var(--bg) 50%,#fff 50%);padding:0 8px;font-size:16px;font-weight:900;color:var(--sub);letter-spacing:.08em}
 .say b{color:var(--accent);font-weight:900}
 .say b.urg{color:var(--urgent)}
 
@@ -97,39 +97,39 @@ body.present .slide{min-height:100vh;scroll-margin-top:0}
 .keys3 li.hot{color:var(--accent)}
 .keys3 li.hot::before{color:var(--accent)}
 .keys3.col{flex-direction:column;align-items:flex-start;gap:0;margin:0}
-.keys3.col li{padding:12px 0;border-bottom:2px solid var(--line);width:100%}
-.keys3.col li:first-child{border-top:2px solid var(--line)}
+.keys3.col li{padding:12px 0;border-bottom:1px solid var(--line);width:100%}
+.keys3.col li:first-child{border-top:1px solid var(--line)}
 
 /* ビジュアル */
 .visual{margin:0 auto;max-width:960px}
-.shot{border:2.5px solid var(--ink);border-radius:12px;overflow:hidden;background:#fff;box-shadow:8px 8px 0 var(--soft)}
+.shot{border:1.5px solid #9d9d9a;border-radius:4px;overflow:hidden;background:#fff;box-shadow:6px 6px 0 var(--soft)}
 .shot img{display:block;width:100%}
 .shot.cap-h img{max-height:40vh;width:auto;margin:0 auto}
-.cap{margin:12px 0 0;text-align:center;font-size:17px;font-weight:700;color:var(--sub)}
+.cap{margin:12px 0 0;text-align:center;font-size:16px;font-weight:500;color:var(--sub)}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center}
 
 /* 表紙 */
 .cover{background:#fff}
-.to-name{display:table;margin:0 auto 14px;padding:6px 18px;border:2.5px solid var(--ink);font-weight:700;font-size:18px;color:var(--ink)}
+.to-name{display:table;margin:0 auto 14px;padding:6px 18px;border:1.5px solid var(--ink);font-weight:700;font-size:18px;color:var(--ink)}
 .cover .brand{margin:0 0 12px;text-align:center;font-family:Inter,sans-serif;font-weight:900;letter-spacing:.2em;font-size:15px;color:var(--ink)}
 .cover .brand span{color:var(--accent)}
 .cover h1{margin:0 0 8px;text-align:center;font-family:var(--mincho);font-weight:900;color:var(--ink);font-size:clamp(2.1rem,5.4vw,3.7rem);line-height:1.26}
 .cover h1 .hl{color:var(--accent)}
 .pricebar{display:flex;justify-content:center;flex-wrap:wrap;gap:0;margin:22px auto 0;max-width:820px}
 .pricebar div{flex:1 1 180px;padding:6px 18px;text-align:center}
-.pricebar div+div{border-left:2px solid var(--line)}
+.pricebar div+div{border-left:1px solid var(--line)}
 .pricebar small{display:block;font-size:14px;font-weight:700;color:var(--sub)}
 .pricebar b{font-family:var(--mincho);font-weight:900;font-size:clamp(1.4rem,3vw,2rem);color:var(--ink)}
 .pricebar b i{font-style:normal;font-family:var(--sans);font-size:15px;margin-left:2px}
 
 /* 診断モック */
-.cands{list-style:none;margin:0;padding:0;border:2.5px solid var(--ink);border-radius:12px;overflow:hidden}
-.cands li{display:grid;grid-template-columns:1fr auto auto;gap:18px;align-items:center;padding:10px 22px;border-top:2px solid var(--line);font-size:clamp(1rem,1.8vw,1.18rem)}
+.cands{list-style:none;margin:0;padding:0;border:1.5px solid var(--sub);border-radius:4px;overflow:hidden;background:#fff}
+.cands li{display:grid;grid-template-columns:1fr auto auto;gap:18px;align-items:center;padding:10px 22px;border-top:1px solid var(--line);font-size:clamp(1rem,1.8vw,1.18rem)}
 .cands li:first-child{border-top:0}
 .cands .hd{background:var(--accent);color:#fff;font-size:16px;font-weight:700;padding:9px 22px}
 .cands strong{color:var(--ink)}
-.cands span{font-size:16px;font-weight:700;color:var(--sub);white-space:nowrap}
-.cands em{font-style:normal;font-size:16px;font-weight:700;border:2px solid var(--ink);border-radius:999px;padding:2px 12px;white-space:nowrap;color:var(--ink)}
+.cands span{font-size:16px;font-weight:500;color:var(--sub);white-space:nowrap}
+.cands em{font-style:normal;font-size:16px;font-weight:700;border:1.5px solid var(--ink);border-radius:3px;padding:2px 12px;white-space:nowrap;color:var(--ink)}
 .cands em.low{border-color:var(--line);color:var(--sub)}
 
 
@@ -137,18 +137,18 @@ body.present .slide{min-height:100vh;scroll-margin-top:0}
 .intake{display:grid;gap:12px;max-width:980px}
 .intake .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .intake .row4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.fld{display:block;border-bottom:2.5px solid var(--ink);padding:8px 4px;background:#fff;cursor:text}
+.fld{display:block;border-bottom:1.5px solid #8a8a87;padding:8px 4px;cursor:text}
 .fld small{display:block;font-family:var(--maru);font-weight:900;font-size:16px;color:var(--accent)}
 .fld span{display:block;min-height:1.6em;font-family:var(--maru);font-weight:700;font-size:clamp(1rem,1.9vw,1.2rem);color:var(--ink);outline:none}
 .fld span:empty::before{content:attr(data-ph);color:#8a8a8a}
-.fld.big{border-bottom-width:3.5px;border-color:var(--accent);background:var(--accent-soft);padding:10px 14px}
+.fld.big{border-bottom:2.5px solid var(--accent);background:#fff;padding:10px 14px}
 .fld.big span{font-size:clamp(1.1rem,2.2vw,1.45rem);font-weight:900}
 /* なかなかもらえない理由 */
 .reasons{display:grid;grid-template-columns:1fr 1fr;gap:4px 40px;max-width:980px}
-.rs{border-top:3px solid var(--ink);padding:14px 4px 10px;display:grid;grid-template-columns:auto 1fr;gap:2px 14px;align-items:baseline}
+.rs{border-top:2px solid var(--ink);padding:14px 4px 10px;display:grid;grid-template-columns:auto 1fr;gap:2px 14px;align-items:baseline}
 .rs b{font-family:Inter,sans-serif;font-weight:900;font-size:20px;color:var(--accent);grid-row:1/3}
 .rs h3{margin:0;font-family:var(--mincho);font-weight:900;font-size:clamp(1.15rem,2.2vw,1.45rem);color:var(--ink);line-height:1.4}
-.rs p{margin:0;font-weight:700;font-size:16px;color:var(--sub);line-height:1.6}
+.rs p{margin:0;font-weight:500;font-size:16px;color:var(--sub);line-height:1.6}
 .rs .num{display:inline-block;margin-right:10px;font-family:var(--mincho);font-weight:900;font-size:28px;color:var(--urgent);vertical-align:-3px}
 .f-urg{fill:var(--urgent)}
 /* 図（SVG） */
@@ -162,32 +162,33 @@ body.present .slide{min-height:100vh;scroll-margin-top:0}
 /* 数字 */
 .bignums{display:grid;grid-template-columns:1fr 1fr;gap:0}
 .bignums div{padding:10px 24px;text-align:center}
-.bignums div+div{border-left:2px solid var(--line)}
+.bignums div+div{border-left:1px solid var(--line)}
+.bignums b.key{color:var(--urgent)}
 .bignums b{display:block;font-family:Inter,sans-serif;font-weight:900;font-size:clamp(3rem,7vw,4.4rem);line-height:1;color:var(--ink)}
 .bignums p{margin:14px 0 6px;font-weight:700;font-size:clamp(1rem,1.9vw,1.2rem);color:var(--ink);line-height:1.6}
-.bignums small{font-size:15px;color:var(--sub)}
+.bignums small{font-size:15px;font-weight:500;color:var(--sub)}
 
 /* 問いかけ */
-.ask{display:flex;align-items:center;justify-content:center;gap:16px;margin:22px auto 0;max-width:860px;padding:0 4px 10px;border-bottom:2.5px solid var(--accent);font-family:var(--maru)}
-.ask small{flex:0 0 auto;font-size:14px;font-weight:900;color:#fff;background:var(--accent);border-radius:999px;padding:4px 12px}
+.ask{display:flex;align-items:center;justify-content:center;gap:16px;margin:22px auto 0;max-width:860px;padding:0 4px 10px;border-bottom:1.5px solid var(--accent);font-family:var(--maru)}
+.ask small{flex:0 0 auto;font-size:14px;font-weight:900;color:#fff;background:var(--accent);border-radius:3px;padding:4px 12px}
 .ask p{margin:0;font-weight:900;font-size:clamp(1rem,2vw,1.3rem);color:var(--ink);line-height:1.6}
 
 /* 2本柱 */
 .pillars{display:grid;grid-template-columns:1fr 1fr;gap:0}
 .pillar{padding:12px 28px;text-align:center}
-.pillar+.pillar{border-left:2px solid var(--line)}
-.pillar .tag{display:inline-block;font-family:var(--maru);font-weight:900;font-size:16px;color:#fff;background:var(--accent);border-radius:999px;padding:3px 16px;margin-bottom:10px}
+.pillar+.pillar{border-left:1px solid var(--line)}
+.pillar .tag{display:inline-block;font-family:var(--maru);font-weight:900;font-size:16px;color:#fff;background:var(--accent);border-radius:3px;padding:3px 16px;margin-bottom:10px}
 .pillar h3{margin:0 0 8px;font-family:var(--mincho);font-weight:900;font-size:clamp(1.5rem,3.4vw,2.3rem);color:var(--ink);line-height:1.3}
-.pillar p{margin:0;font-family:var(--maru);font-weight:700;font-size:clamp(1rem,1.9vw,1.2rem);color:var(--sub)}
+.pillar p{margin:0;font-family:var(--maru);font-weight:500;font-size:clamp(1rem,1.9vw,1.2rem);color:var(--sub)}
 .fish{margin:16px 0 0;text-align:center;font-family:var(--mincho);font-weight:900;font-size:clamp(1.2rem,2.8vw,1.8rem);color:var(--ink)}
 .fish span{color:var(--accent)}
 
 /* QA 3コマ */
 .qa{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;align-items:stretch}
-.qa div{border-top:3px solid var(--ink);padding:14px 6px 0;background:#fff}
-.qa div.out{border-radius:14px;padding:16px 20px}
+.qa div{border-top:1.5px solid var(--sub);padding:14px 6px 0}
+.qa div.out{border-radius:4px;padding:16px 20px}
 .qa div.out{background:var(--accent);border-color:var(--accent)}
-.qa small{display:block;font-size:14px;font-weight:700;color:var(--sub);margin-bottom:6px}
+.qa small{display:block;font-size:14px;font-weight:500;color:var(--sub);margin-bottom:6px}
 .qa div.out small{color:#ddd}
 .qa p{margin:0;font-family:var(--maru);font-weight:900;font-size:clamp(1rem,1.9vw,1.22rem);color:var(--ink);line-height:1.65}
 .qa div.out p{color:#fff}
@@ -195,50 +196,50 @@ body.present .slide{min-height:100vh;scroll-margin-top:0}
 
 /* 使い回し */
 .dest{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:22px 0 0;padding:0;list-style:none}
-.dest li{border-top:2.5px solid var(--ink);padding:12px 6px 0;text-align:center;font-family:var(--maru);font-weight:900;font-size:clamp(.98rem,1.8vw,1.15rem);color:var(--ink);line-height:1.5}
+.dest li{border-top:1.5px solid var(--sub);padding:12px 6px 0;text-align:center;font-family:var(--maru);font-weight:900;font-size:clamp(.98rem,1.8vw,1.15rem);color:var(--ink);line-height:1.5}
 .dest li b{display:block;font-family:Inter,sans-serif;color:var(--accent);font-size:14px;margin-bottom:4px}
 
 /* 4つの力 */
 .powers{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:22px 0 0;padding:0;list-style:none}
 .powers li{padding:6px 12px;text-align:center;font-family:var(--maru);font-weight:900;font-size:clamp(1rem,1.9vw,1.2rem);color:var(--ink);line-height:1.5}
-.powers li+li{border-left:2px solid var(--line)}
+.powers li+li{border-left:1px solid var(--line)}
 .powers li.hot{color:var(--accent)}
 
 /* 人の支援 */
 .walls{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:0}
 .wall{display:grid;grid-row:span 2;grid-template-rows:subgrid;padding:0 22px}
-.wall+.wall{border-left:2px solid var(--line)}
-.wall .q{padding:0 0 12px;font-family:var(--maru);font-weight:900;font-size:clamp(1rem,1.8vw,1.15rem);color:var(--sub);line-height:1.55;border-bottom:2px solid var(--ink)}
+.wall+.wall{border-left:1px solid var(--line)}
+.wall .q{padding:0 0 12px;font-family:var(--maru);font-weight:900;font-size:clamp(1rem,1.8vw,1.15rem);color:var(--sub);line-height:1.55;border-bottom:1.5px solid var(--sub)}
 .wall .q small{display:block;font-size:15px;color:var(--sub);font-weight:700}
 .wall .a{padding:12px 0 0;flex:1}
 .wall .a h3{margin:0 0 6px;font-family:var(--mincho);font-weight:900;font-size:clamp(1.2rem,2.4vw,1.55rem);color:var(--ink)}
-.wall .a p{margin:0;font-weight:700;font-size:16px;color:var(--sub);line-height:1.7}
+.wall .a p{margin:0;font-weight:500;font-size:16px;color:var(--sub);line-height:1.7}
 .wall .a p b{color:var(--accent)}
 
 /* 料金 */
-.price{border:4px solid var(--ink);border-radius:18px;overflow:hidden}
+.price{border:3px solid var(--ink);border-radius:4px;overflow:hidden;background:#fff}
 .price .row{display:grid;grid-template-columns:1fr 1.3fr 1fr}
 .price .row div{padding:24px 20px;text-align:center}
-.price .row div+div{border-left:2px solid var(--ink)}
-.price small{display:block;font-size:15px;font-weight:700;color:var(--sub);white-space:nowrap}
+.price .row div+div{border-left:1px solid var(--line)}
+.price small{display:block;font-size:15px;font-weight:500;color:var(--sub);white-space:nowrap}
 .price b{font-family:var(--mincho);font-weight:900;font-size:clamp(2rem,5vw,3.4rem);color:var(--ink);white-space:nowrap}
 .price b i{font-style:normal;font-size:.45em;margin-left:2px}
 .price .free{display:block;margin-top:8px;font-family:var(--mincho);font-weight:900;font-size:19px;color:var(--urgent)}
-.price .foot{border-top:2px solid var(--ink);padding:14px 22px;text-align:center;font-weight:700;font-size:15.5px;color:var(--ink)}
+.price .foot{border-top:1px solid var(--line);padding:14px 22px;text-align:center;font-weight:500;font-size:15.5px;color:var(--ink)}
 
 /* はじめ方 */
 .steps{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:12px;align-items:center}
-.steps div{border-top:3px solid var(--ink);padding:14px 8px 0;text-align:center}
+.steps div{border-top:1.5px solid var(--sub);padding:14px 8px 0;text-align:center}
 .steps b{display:block;font-family:Inter,sans-serif;font-weight:900;color:var(--accent);font-size:16px}
 .steps strong{display:block;font-family:var(--maru);font-weight:900;font-size:clamp(1.05rem,2vw,1.3rem);color:var(--ink);margin-top:4px}
-.steps .arr{font-family:Inter,sans-serif;font-weight:900;font-size:28px;color:var(--ink)}
-.deadline{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:6px 18px;margin:30px auto 0;max-width:820px;padding:0 4px 10px;border-bottom:2.5px solid var(--urgent)}
+.steps .arr{font-family:Inter,sans-serif;font-weight:900;font-size:28px;color:var(--sub)}
+.deadline{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:6px 18px;margin:30px auto 0;max-width:820px;padding:0 4px 10px;border-bottom:2px solid var(--urgent)}
 .deadline p{margin:0;font-family:var(--maru);font-weight:900;font-size:clamp(1rem,1.9vw,1.2rem);color:var(--ink)}
 .deadline .left{font-family:Inter,var(--maru);font-weight:900;font-size:clamp(1.5rem,3.4vw,2.2rem);color:var(--urgent)}
 
 /* 物語 */
-.mail{max-width:760px;margin:0 auto;border:3px solid var(--ink);border-radius:14px;overflow:hidden}
-.mail header{padding:12px 20px;background:var(--soft);border-bottom:2px solid var(--ink);font-size:15px;font-weight:700;color:var(--sub)}
+.mail{max-width:760px;margin:0 auto;border:1.5px solid var(--sub);border-radius:4px;overflow:hidden;background:#fff}
+.mail header{padding:12px 20px;background:#f7f7f5;border-bottom:1px solid var(--line);font-size:15px;font-weight:500;color:var(--sub)}
 .mail header b{color:var(--ink)}
 .mail .m{padding:22px 26px;font-family:var(--maru);font-weight:700;font-size:clamp(1.05rem,2vw,1.3rem);line-height:2;color:var(--ink)}
 .mail .m p{margin:0}
@@ -250,8 +251,8 @@ body.present .slide{min-height:100vh;scroll-margin-top:0}
 /* 補足 */
 .appendix{padding:60px 0 40px}
 .appendix h2{margin:0 0 20px;font-family:var(--mincho);font-weight:900;font-size:clamp(1.4rem,3vw,2rem);color:var(--ink);text-align:center}
-.faq{max-width:900px;margin:0 auto;border-top:3px solid var(--ink)}
-.faq details{border-bottom:2px solid var(--line)}
+.faq{max-width:900px;margin:0 auto;border-top:2px solid var(--ink)}
+.faq details{border-bottom:1px solid var(--line)}
 .faq summary{cursor:pointer;list-style:none;padding:16px 44px 16px 0;font-family:var(--maru);font-weight:900;font-size:18px;color:var(--ink);position:relative}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::before{content:"Q. ";font-family:Inter,sans-serif;color:var(--accent)}
@@ -263,7 +264,7 @@ body.present .slide{min-height:100vh;scroll-margin-top:0}
 .corp a,.appendix a{color:var(--ink)}
 
 /* ページ番号・レーザーポインター */
-.pager{position:fixed;right:14px;bottom:12px;z-index:30;font-family:Inter,sans-serif;font-weight:800;font-size:13px;color:var(--ink);background:#fff;border:2px solid var(--ink);border-radius:6px;padding:2px 10px}
+.pager{position:fixed;right:14px;bottom:12px;z-index:30;font-family:Inter,sans-serif;font-weight:800;font-size:13px;color:var(--sub);background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:2px 10px}
 .laser{position:fixed;left:0;top:0;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:rgba(230,30,30,.9);box-shadow:0 0 0 6px rgba(230,30,30,.25),0 0 18px rgba(230,30,30,.6);pointer-events:none;z-index:60;display:none}
 body.laser-on .laser{display:block}
 body.laser-on{cursor:none}
@@ -277,12 +278,12 @@ body.laser-on{cursor:none}
   .intake .row2,.reasons{grid-template-columns:1fr}
   .intake .row4{grid-template-columns:1fr 1fr}
   .price .row{grid-template-columns:1fr}
-  .price .row div+div{border-left:0;border-top:2px solid var(--ink)}
-  .bignums div+div,.pillar+.pillar,.wall+.wall{border-left:0;border-top:2px solid var(--line);padding-top:18px;margin-top:14px}
+  .price .row div+div{border-left:0;border-top:1px solid var(--line)}
+  .bignums div+div,.pillar+.pillar,.wall+.wall{border-left:0;border-top:1px solid var(--line);padding-top:18px;margin-top:14px}
   .walls{grid-template-rows:none}
   .wall{padding:0;grid-row:auto;grid-template-rows:auto}
   .powers li+li{border-left:0}
-  .powers li{border-top:2px solid var(--line);padding:12px 6px}
+  .powers li{border-top:1px solid var(--line);padding:12px 6px}
   .qa div{padding-bottom:4px}
   .cands li{grid-template-columns:1fr auto}
   .cands span{display:none}
@@ -352,7 +353,7 @@ body.laser-on{cursor:none}
   <div class="wrap">
     <p class="no"><span>02</span></p>
     <h2>御社が制度を使えそうか、<br><span class="hl">簡易的に調べてみます</span></h2>
-    <p class="say"><span class="who">担当より</span><span class="line">8つの質問に答えると、候補が5〜6件出ます。右端が<b>採択の見込み（参考値）</b>です。ここからが、いちばん大事なお話になります。</span></p>
+    <p class="say"><span class="who">担当より</span><span class="line">いくつかの質問に答えると、候補が5〜6件出ます。右端が<b>採択の見込み（参考値）</b>です。ここからが、いちばん大事なお話になります。</span></p>
     <div class="visual">
       <ul class="cands">
         <li class="hd">出てくる候補（例）</li>
@@ -386,15 +387,15 @@ body.laser-on{cursor:none}
 <section class="slide" id="sLoop">
   <div class="wrap">
     <p class="no"><span>04</span></p>
-    <h2>だから、1回で決めずに<br><span class="hl">何度も申請できる会社</span>になる</h2>
+    <h2>だから、1回で決めずに<br><span class="hl">何度も申請できる会社</span>になりましょう</h2>
     <p class="say"><span class="who">担当より</span><span class="line">たとえば年10回、申請のチャンスをつかむつもりで動きましょう。そのためには、<b>見つけるのも、書くのも速くなければ</b>回りません。</span></p>
     <div class="visual fig">
       <svg viewBox="0 0 960 250" role="img" aria-label="見つける、準備する、書く、申請する。結果が出たら直して次の申請へ戻る">
         <g font-size="21" font-weight="700">
-          <rect x="0" y="40" width="200" height="70" rx="12" class="f-acc"/><text x="100" y="72" text-anchor="middle" class="t-w">見つける</text><text x="100" y="98" text-anchor="middle" class="t-w" font-size="15">AIが毎週届ける</text>
-          <rect x="250" y="40" width="200" height="70" rx="12" class="f-w s-ink" stroke-width="3"/><text x="350" y="72" text-anchor="middle" class="t-ink">準備する</text><text x="350" y="98" text-anchor="middle" class="t-sub" font-size="15">加点項目を整える</text>
-          <rect x="500" y="40" width="200" height="70" rx="12" class="f-acc"/><text x="600" y="72" text-anchor="middle" class="t-w">書く</text><text x="600" y="98" text-anchor="middle" class="t-w" font-size="15">御社がAIと書く</text>
-          <rect x="750" y="40" width="200" height="70" rx="12" class="f-w s-ink" stroke-width="3"/><text x="850" y="72" text-anchor="middle" class="t-ink">申請する</text><text x="850" y="98" text-anchor="middle" class="t-sub" font-size="15">結果を待つ</text>
+          <rect x="0" y="40" width="200" height="70" rx="4" class="f-acc"/><text x="100" y="72" text-anchor="middle" class="t-w">見つける</text><text x="100" y="98" text-anchor="middle" class="t-w" font-size="15">AIが毎週届ける</text>
+          <rect x="250" y="40" width="200" height="70" rx="4" class="f-w s-ink" stroke-width="2"/><text x="350" y="72" text-anchor="middle" class="t-ink">準備する</text><text x="350" y="98" text-anchor="middle" class="t-sub" font-size="15">加点項目を整える</text>
+          <rect x="500" y="40" width="200" height="70" rx="4" class="f-acc"/><text x="600" y="72" text-anchor="middle" class="t-w">書く</text><text x="600" y="98" text-anchor="middle" class="t-w" font-size="15">御社がAIと書く</text>
+          <rect x="750" y="40" width="200" height="70" rx="4" class="f-w s-ink" stroke-width="2"/><text x="850" y="72" text-anchor="middle" class="t-ink">申請する</text><text x="850" y="98" text-anchor="middle" class="t-sub" font-size="15">結果を待つ</text>
         </g>
         <g class="s-ink" stroke-width="3" fill="none"><path d="M205 75 L243 75"/><path d="M455 75 L493 75"/><path d="M705 75 L743 75"/></g>
         <g class="f-acc"><path d="M243 68 L243 82 L250 75 Z"/><path d="M493 68 L493 82 L500 75 Z"/><path d="M743 68 L743 82 L750 75 Z"/></g>
@@ -415,9 +416,9 @@ body.laser-on{cursor:none}
     <div class="visual fig">
       <svg viewBox="0 0 960 300" role="img" aria-label="必要になってから調べると、国と都道府県の制度は締切が過ぎていて、市区町村の1つしか間に合わない">
         <g font-size="22" font-weight="700" class="t-ink"><text x="0" y="62">国</text><text x="0" y="132">都道府県</text><text x="0" y="202">市区町村</text></g>
-        <rect x="140" y="38" width="300" height="36" rx="6" class="f-line"/>
-        <rect x="210" y="108" width="320" height="36" rx="6" class="f-line"/>
-        <rect x="520" y="178" width="360" height="36" rx="6" class="f-acc"/>
+        <rect x="140" y="38" width="300" height="36" rx="3" class="f-line"/>
+        <rect x="210" y="108" width="320" height="36" rx="3" class="f-line"/>
+        <rect x="520" y="178" width="360" height="36" rx="3" class="f-acc"/>
         <text x="290" y="63" text-anchor="middle" class="t-sub" font-size="18" font-weight="700">締切を過ぎていた</text>
         <text x="370" y="133" text-anchor="middle" class="t-sub" font-size="18" font-weight="700">締切を過ぎていた</text>
         <text x="700" y="203" text-anchor="middle" class="t-w" font-size="18" font-weight="700">間に合う</text>
@@ -435,7 +436,7 @@ body.laser-on{cursor:none}
     <h2>多くの会社が、<span class="hl">見つけられずに</span>止まっています</h2>
     <p class="say"><span class="who">担当より</span><span class="line">補助金に関心はあっても、申請までたどり着けない会社がほとんどです。いちばんの理由は<b>「自社に合う補助金が分からない」</b>こと。</span></p>
     <div class="visual bignums">
-      <div><b>38.7<small>%</small></b><p>申請に進めない理由の最多<br>「自社に最適な補助金が分からない」</p><small>btobee（2026年6月、経営者・役員300人）</small></div>
+      <div><b class="key">38.7<small>%</small></b><p>申請に進めない理由の最多<br>「自社に最適な補助金が分からない」</p><small>btobee（2026年6月、経営者・役員300人）</small></div>
       <div><b>81.1<small>%</small></b><p>関心がありながら<br>申請に至っていない経営層</p><small>btobee（2026年6月、経営者・役員300人）</small></div>
     </div>
     <div class="ask"><small>御社では？</small><p>補助金や融資の情報は、いま、どこから入ってきていますか？</p></div>
@@ -451,11 +452,11 @@ body.laser-on{cursor:none}
     <div class="visual fig">
       <svg viewBox="0 0 960 250" role="img" aria-label="人の手だと探す・書くで締切を越える。AIを使うと締切までに見直す時間が残る">
         <text x="0" y="50" class="t-sub mt" font-size="22" font-weight="900">これまで</text>
-        <rect x="140" y="20" width="260" height="46" rx="8" class="f-line"/><text x="270" y="51" text-anchor="middle" class="t-ink" font-size="20" font-weight="700">人の手で探す</text>
-        <rect x="410" y="20" width="530" height="46" rx="8" class="f-line"/><text x="600" y="51" text-anchor="middle" class="t-ink" font-size="20" font-weight="700">白紙から、人の手で書く</text>
+        <rect x="140" y="20" width="260" height="46" rx="3" class="f-line"/><text x="270" y="51" text-anchor="middle" class="t-ink" font-size="20" font-weight="700">人の手で探す</text>
+        <rect x="410" y="20" width="530" height="46" rx="3" class="f-line"/><text x="600" y="51" text-anchor="middle" class="t-ink" font-size="20" font-weight="700">白紙から、人の手で書く</text>
         <text x="0" y="160" class="t-ink mt" font-size="22" font-weight="900">これから</text>
-        <rect x="140" y="130" width="130" height="46" rx="8" class="f-acc"/><text x="205" y="161" text-anchor="middle" class="t-w" font-size="20" font-weight="700">AIが探す</text>
-        <rect x="280" y="130" width="260" height="46" rx="8" class="f-acc"/><text x="410" y="161" text-anchor="middle" class="t-w" font-size="20" font-weight="700">質問に答えて書く</text>
+        <rect x="140" y="130" width="130" height="46" rx="3" class="f-acc"/><text x="205" y="161" text-anchor="middle" class="t-w" font-size="20" font-weight="700">AIが探す</text>
+        <rect x="280" y="130" width="260" height="46" rx="3" class="f-acc"/><text x="410" y="161" text-anchor="middle" class="t-w" font-size="20" font-weight="700">質問に答えて書く</text>
         <line x1="840" y1="0" x2="840" y2="200" class="s-urg" stroke-width="4" stroke-dasharray="10 8"/>
         <text x="840" y="234" text-anchor="middle" class="t-urg mt" font-size="22" font-weight="900">締切</text>
         <text x="556" y="161" class="t-acc mt" font-size="20" font-weight="900">← 見直す時間が残る</text>
@@ -469,7 +470,7 @@ body.laser-on{cursor:none}
 <section class="slide" id="s5">
   <div class="wrap">
     <p class="no"><span>08</span></p>
-    <h2>だから、探すのも書くのもAIで。<br><span class="hl">何倍も集めて、<span class="nobr">何倍も速く書きます</span></span></h2>
+    <h2>そこで、探すのも書くのもAIで。<br><span class="hl">何倍も集めて、<span class="nobr">何倍も速く書きます</span></span></h2>
     <p class="say"><span class="who">担当より</span><span class="line">中身は、人の手で500社にご契約いただいている「Jコンサル」の支援です。それを<b>AIで回せるように</b>しました。</span></p>
     <div class="visual pillars">
       <div class="pillar"><span class="tag">探す</span><h3>AIが、制度を集める</h3><p>毎週、向こうから届きます</p></div>
@@ -507,7 +508,7 @@ body.laser-on{cursor:none}
 <section class="slide" id="s8">
   <div class="wrap">
     <p class="no"><span>11</span>　書く</p>
-    <h2>「強みを書いてください」とは、<br><span class="hl">聞きません</span></h2>
+    <h2>書くときも、<br>「強みを書いてください」とは<span class="hl">聞きません</span></h2>
     <p class="say"><span class="who">担当より</span><span class="line">AIが答えやすい質問に分けて、順番に聞いていく形です。事実を思い出して答えると、それが<b>事業計画の土台</b>になります。</span></p>
     <div class="visual qa">
       <div><small>AIからの質問</small><p>その1社は、なぜ他社ではなく御社を選んだのですか？</p></div>
@@ -540,7 +541,7 @@ body.laser-on{cursor:none}
 <section class="slide" id="s10">
   <div class="wrap">
     <p class="no"><span>13</span></p>
-    <h2>白紙からではなく、<br><span class="hl">採択された見本</span>を見ながら</h2>
+    <h2>白紙からではなく、<br><span class="hl">採択された見本</span>を見ながら書けます</h2>
     <p class="say"><span class="who">担当より</span><span class="line">採択された事業計画書や、書き方の解説動画、テンプレートをそろえました。<b>「どこまで具体的に書くか」</b>が分かります。</span></p>
     <div class="visual"><div class="shot"><img src="img/library.png" alt="採択事業計画書の一覧。画像検査機の導入で検査時間を半分にする計画" width="1828" height="334" loading="lazy"></div>
       <ul class="keys3"><li>採択された計画書</li><li>書き方の解説動画</li><li>テンプレート</li></ul></div>
@@ -630,8 +631,8 @@ body.laser-on{cursor:none}
 <section class="slide" id="s16">
   <div class="wrap">
     <p class="no"><span>19</span></p>
-    <h2>1年後の、ある朝</h2>
-    <p class="say"><span class="who">担当より</span><span class="line">ご利用いただいた場合のイメージとして書いた、短い物語の最後の場面です。社長が、届いた情報を全社員に転送するようになりました。</span></p>
+    <h2>1年後の、ある朝。<br><span class="hl">社長が、全社員にメールを送りました</span></h2>
+    <p class="say"><span class="who">担当より</span><span class="line">ご利用いただいた場合のイメージとして書いた、短い物語の最後の場面です。毎週届く情報を、社長が<b>自分から社員に回す</b>ようになりました。</span></p>
     <div class="mail">
       <header><span>From <b>代表取締役</b>　To 社員各位　件名：Fwd: 今週の補助金・融資・税制優遇情報</span></header>
       <div class="m"><p>今週はこれが気になりました。</p><p class="big">もし、やってみたいことと重なりそうなら、いつでも言えよ。</p><p>その時は、まずAIにも聞いてみよう。</p></div>
