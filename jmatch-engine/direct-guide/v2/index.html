@@ -93,6 +93,12 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:"Noto Sans JP",
 .sec h2{margin:0 0 8px;font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:900;color:var(--ink);font-size:clamp(1.75rem,4.1vw,2.95rem);line-height:1.4;letter-spacing:.02em}
 .summary{text-wrap:pretty;position:relative;margin:26px 0 40px;max-width:900px;padding:22px 28px;border:2px solid var(--ink);border-radius:10px;background:var(--bg);font-size:clamp(1.02rem,2vw,1.18rem);line-height:2;color:var(--text)}
 .summary b{color:var(--ink)}
+/* 小見出しと概要をセンタリング */
+.sec .no{justify-content:center}
+.sec h2{text-align:center}
+.sec .summary{margin-left:auto;margin-right:auto;text-align:center}
+.sec .summary::before{left:calc(50% - 14px)}
+.sec .summary::after{left:calc(50% - 12px)}
 .summary::before,.summary::after{content:"";position:absolute;left:42px;width:0;height:0;border-style:solid}
 .summary::before{top:-16px;border-width:0 14px 16px 14px;border-color:transparent transparent var(--ink) transparent}
 .summary::after{top:-12px;left:44px;border-width:0 12px 13px 12px;border-color:transparent transparent var(--bg) transparent}
