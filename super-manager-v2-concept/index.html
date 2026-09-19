@@ -4,6 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="スーパーマネージャー Ver.2 構想：営業の生ログを、リアルタイムの成果と将来の営業資産に変える。">
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="スーパーマネージャー Ver.2｜構想メモ">
+  <meta property="og:description" content="営業の生ログを、リアルタイムの成果と将来の営業資産に変える構想メモです。">
+  <meta property="og:url" content="https://writeup-inc.github.io/saas/super-manager-v2-concept/">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://writeup-inc.github.io/saas/super-manager-v2-concept/">
   <link rel="icon" href="data:,">
   <title>スーパーマネージャー Ver.2｜構想メモ</title>
   <style>
@@ -449,13 +457,46 @@
       border-top: 2px solid var(--ink);
     }
 
-    .price {
-      margin: 6px 0 12px;
-      color: var(--blue);
-      font-size: clamp(27px, 4vw, 38px);
+    .offer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px 18px;
+      margin-top: 26px;
+    }
+
+    .consultation-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 44px;
+      padding: 9px 13px 8px;
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      font-size: 14px;
       font-weight: 760;
-      line-height: 1.35;
-      letter-spacing: .02em;
+      letter-spacing: .04em;
+      line-height: 1.5;
+      text-decoration: none;
+      transition: background-color .16s ease, color .16s ease;
+    }
+
+    .consultation-link:hover {
+      color: var(--paper);
+      background: var(--ink);
+    }
+
+    .consultation-link:focus-visible,
+    .reference-link:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    .consultation-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
     }
 
     footer {
@@ -635,8 +676,11 @@
     <section class="offer" aria-labelledby="offer-title">
       <p class="section-label">THE OFFER</p>
       <h2 id="offer-title">始めるのは、議事録ではない。</h2>
-      <p class="price">営業担当者 1人あたり 月額1万円から</p>
       <p>会議を残し、すぐ次の行動につなげる。そこから営業の型をつくり、将来のAI営業担当者までを、一つの生ログ基盤から育てていく。</p>
+      <div class="offer-actions">
+        <a class="consultation-link" href="https://timerex.net/s/wu/855000ff/?6858a5b2b523c_7=AI_SMTYO" target="_blank" rel="noopener noreferrer">導入について相談する <span aria-hidden="true">→</span></a>
+        <p class="consultation-note">オンライン相談の予約ページが開きます。</p>
+      </div>
     </section>
 
     <footer>SUPER MANAGER VER.2 / CONCEPT NOTE</footer>
