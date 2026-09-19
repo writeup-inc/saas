@@ -7,7 +7,7 @@
 <title>Jマッチエンジン｜ご説明資料 v2</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho+B1:wght@700;800&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
 /* lp-base.css — 日本語LP／HTML成果物の初期CSS */
 h1, h2, h3, h4, h5,
@@ -68,7 +68,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:"Noto Sans JP",
 .cover{padding:56px 0 64px;border-bottom:2px solid var(--ink)}
 .to-name{display:inline-block;margin:0 0 20px;padding:4px 12px;border:1px solid var(--ink);font-size:15px;font-weight:700;color:var(--ink)}
 .cover .eyebrow{font-family:Inter,sans-serif;font-weight:800;letter-spacing:.18em;font-size:12px;color:var(--sub);margin:0 0 18px}
-.cover h1{margin:0 0 20px;font-weight:900;color:var(--ink);letter-spacing:.01em}
+.cover h1{margin:0 0 22px;font-family:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:800;font-size:clamp(2rem,5.4vw,3.6rem);line-height:1.3;color:var(--ink);letter-spacing:.01em}
 .cover h1 .ac{color:var(--accent)}
 .cover .lead{margin:0 0 28px;max-width:760px;font-size:clamp(1rem,2.2vw,1.2rem);color:var(--text);line-height:1.9}
 .cover dl{display:grid;grid-template-columns:repeat(4,auto);justify-content:start;gap:0;margin:0;border-top:1px solid var(--line)}
@@ -87,10 +87,10 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:"Noto Sans JP",
 /* セクション共通：小見出し → 概要 → 左ポイント／右ビジュアル */
 .sec{padding:72px 0;border-bottom:1px solid var(--line);scroll-margin-top:0}
 .sec.alt{background:var(--bg2)}
-.no{display:flex;align-items:baseline;gap:12px;margin:0 0 10px;font-family:Inter,sans-serif}
-.no b{font-size:14px;font-weight:800;color:var(--ink);letter-spacing:.06em}
+.no{display:flex;align-items:baseline;gap:12px;margin:0 0 14px;font-family:Inter,sans-serif}
+.no b{font-size:18px;font-weight:800;color:var(--ink);letter-spacing:.06em}
 .no span{font-size:12px;font-weight:700;color:var(--faint);letter-spacing:.14em}
-.sec h2{margin:0 0 16px;font-weight:900;color:var(--ink);font-size:clamp(1.45rem,3.2vw,2.2rem);letter-spacing:.01em}
+.sec h2{margin:0 0 22px;font-family:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:800;color:var(--ink);font-size:clamp(1.75rem,4.1vw,2.95rem);line-height:1.4;letter-spacing:.02em}
 .summary{text-wrap:pretty;margin:0 0 36px;max-width:860px;padding-left:18px;border-left:3px solid var(--ink);font-size:clamp(1.02rem,2vw,1.18rem);line-height:2;color:var(--text)}
 .summary b{color:var(--ink)}
 .body{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:44px;align-items:start}
@@ -170,9 +170,9 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:"Noto Sans JP",
 
 /* 締め・余韻 */
 .closing{padding:80px 0;background:var(--ink);color:var(--bg);text-align:center}
-.closing h2{margin:0 0 16px;font-weight:900;font-size:clamp(1.5rem,4vw,2.4rem);color:var(--bg)}
+.closing h2{margin:0 0 16px;font-family:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:800;font-size:clamp(1.5rem,4vw,2.4rem);color:var(--bg)}
 .closing h2 .ac{color:var(--accent)}
-.closing p{margin:0 auto;max-width:720px;font-size:17px;line-height:2;opacity:.85}
+.closing p{text-wrap:pretty;margin:0 auto;max-width:720px;font-size:17px;line-height:2;opacity:.85}
 .mail{border:1px solid var(--line);background:var(--bg);border-radius:6px;overflow:hidden}
 .mail header{padding:12px 16px;background:var(--fill);font-size:13px;color:var(--sub);display:grid;gap:2px}
 .mail header b{color:var(--ink)}
@@ -204,6 +204,8 @@ footer.legal a,.sec a{color:var(--ink)}
   .toc ol{grid-template-columns:1fr}
   .nums{grid-template-columns:1fr}
   .sec{padding:56px 0}
+  .sec h2{font-size:1.5rem;letter-spacing:0}
+  .cover h1{letter-spacing:0}
   .pager{display:none}
 }
 @media print{.ver,.pager{display:none}}
@@ -235,7 +237,7 @@ footer.legal a,.sec a{color:var(--ink)}
 <section class="sec" id="diag" data-title="使える制度が見つかる">
   <div class="wrap">
     <p class="no"><b>01</b><span>DIAGNOSIS</span></p>
-    <h2>8つの質問で、いま使える制度が5〜6件見つかります</h2>
+    <h2>8つの質問で、<br>いま使える制度が<span class="nobr">5〜6件</span>見つかります</h2>
     <p class="summary">所在地や業種、これからの投資予定など、<b>8つの質問</b>に答えるだけで、御社で使えそうな補助金・融資の候補が5〜6件出てきます。候補ごとに、締切・対象になる経費・次に確認することまで並ぶのが特長です。</p>
     <div class="body">
       <ol class="points">
@@ -300,7 +302,7 @@ footer.legal a,.sec a{color:var(--ink)}
 <section class="sec" id="time" data-title="人の手では間に合わない">
   <div class="wrap">
     <p class="no"><b>03</b><span>THE PROBLEM</span></p>
-    <h2>人の手で探して、人の手で書いていては、間に合いません</h2>
+    <h2>人の手で探して、人の手で書いていては、<br><span class="nobr">間に合いません</span></h2>
     <p class="summary">見つけたときには、締切まで1〜2か月しかないこともあります。制度を探すのにも、白紙から事業計画を書くのにも時間がかかり、普段の仕事を止めずに両方をこなすのは簡単ではありません。</p>
     <div class="body">
       <ol class="points">
@@ -329,7 +331,7 @@ footer.legal a,.sec a{color:var(--ink)}
 <section class="sec alt" id="core" data-title="探すのも書くのもAIで">
   <div class="wrap">
     <p class="no"><b>04</b><span>OUR SERVICE</span></p>
-    <h2>だから、探すのも書くのもAIで。何倍も集めて、<span class="nobr">何倍も速く書きます</span></h2>
+    <h2>だから、探すのも書くのもAIで。<br>何倍も集めて、<span class="nobr">何倍も速く書きます</span></h2>
     <p class="summary">探すほうは、国・都道府県・市区町村の補助金・融資・税制優遇をAIが集め、<b>毎週金曜に御社へ届けます</b>。書くほうは、AIが答えやすい質問に分けて聞き、答えが事業計画の土台になります。中身は、人の手で500社にご契約いただいている「Jコンサル」の支援です。</p>
     <div class="body">
       <ol class="points">
@@ -362,7 +364,7 @@ footer.legal a,.sec a{color:var(--ink)}
 <section class="sec" id="find" data-title="探す：毎週届く">
   <div class="wrap">
     <p class="no"><b>05</b><span>FIND</span></p>
-    <h2>探すのはAI。毎週金曜の朝、御社に合う制度が届きます</h2>
+    <h2>探すのはAI。<br>毎週金曜の朝、御社に合う制度が届きます</h2>
     <p class="summary">御社側で、国や自治体のサイトを毎週見て回る必要はありません。<b>届いたときに「うちに関係あるか」を考えるだけ</b>です。気になった制度は「検討中」に入れておけば、締切の近い順に並び、あと何日かが大きく表示されます。</p>
     <div class="body wide">
       <ol class="points">
@@ -382,7 +384,7 @@ footer.legal a,.sec a{color:var(--ink)}
 <section class="sec alt" id="write" data-title="書く：質問に答える">
   <div class="wrap">
     <p class="no"><b>06</b><span>WRITE</span></p>
-    <h2>書くのは御社とAI。答えやすい質問に答えると、土台ができます</h2>
+    <h2>書くのは御社とAI。<br>答えやすい質問に答えると、土台ができます</h2>
     <p class="summary">申請書では、いきなり「自社の強みを書いてください」と聞かれて手が止まります。そこでJマッチエンジンでは、AIが<b>答えやすい質問に分けて、順番に</b>聞いていく形にしました。答えた内容が、事業計画の土台になります。</p>
     <div class="body wide">
       <ol class="points">
@@ -407,7 +409,7 @@ footer.legal a,.sec a{color:var(--ink)}
 <section class="sec" id="library" data-title="見本を見ながら書ける">
   <div class="wrap">
     <p class="no"><b>07</b><span>LIBRARY</span></p>
-    <h2>白紙からではなく、採択された見本を見ながら書けます</h2>
+    <h2>白紙からではなく、<br>採択された見本を見ながら書けます</h2>
     <p class="summary">採択された事業計画書の事例や見本、書き方を専門家が解説した動画、テンプレートをひとつの場所にまとめました。<b>「どこまで具体的に書くか」「売上効果をどう数字で示すか」</b>の手がかりになります。</p>
     <div class="body wide">
       <ol class="points">
@@ -425,7 +427,7 @@ footer.legal a,.sec a{color:var(--ink)}
 <section class="sec alt" id="reuse" data-title="一度書けば使い回せる">
   <div class="wrap">
     <p class="no"><b>08</b><span>REUSE</span></p>
-    <h2>一度書いた内容は、翌年度の制度にも融資の相談にも使えます</h2>
+    <h2>一度書いた内容は、<br>翌年度の制度にも<span class="nobr">融資の相談にも</span>使えます</h2>
     <p class="summary">会社の概要、お客様、市場、強み、やること、効果。聞かれることは、翌年度の別の制度でも、銀行への融資相談でも大きくは変わりません。書いた内容は<b>会社カルテに貯まり</b>、次は書き足すだけで済みます。</p>
     <div class="body wide">
       <ol class="points">
@@ -507,7 +509,7 @@ footer.legal a,.sec a{color:var(--ink)}
 <section class="sec" id="price" data-title="料金">
   <div class="wrap">
     <p class="no"><b>11</b><span>PRICE</span></p>
-    <h2>初期登録費用10万円＋月額3万円。成功報酬はいただきません</h2>
+    <h2>初期登録費用10万円＋<span class="nobr">月額3万円。</span><br>成功報酬はいただきません</h2>
     <p class="summary">料金は月額3万円と初期登録費用10万円（税別）で、採択されたときの成功報酬はいただきません。2026年9月30日（水）までにお申し込みで、<b>導入事例にご協力いただける10社は初期登録費用が0円</b>です。Claude Code の利用料は別途、御社でご契約いただきます。</p>
     <div class="body even">
       <ol class="points">
@@ -552,7 +554,7 @@ footer.legal a,.sec a{color:var(--ink)}
 <section class="sec" id="start" data-title="はじめ方">
   <div class="wrap">
     <p class="no"><b>13</b><span>HOW TO START</span></p>
-    <h2>お申し込みから使い始めるまで、3つの手順です</h2>
+    <h2>お申し込みから<span class="nobr">使い始めるまで</span>、3つの手順です</h2>
     <p class="summary">いま検討している投資や採用の予定を伺い、会社情報を登録すれば、制度の配信とAIツールの利用が始まります。<b>事例協力の受付は、2026年9月30日（水）まで</b>です。</p>
     <div class="body">
       <ol class="points">
