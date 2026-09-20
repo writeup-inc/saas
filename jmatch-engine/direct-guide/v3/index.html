@@ -74,6 +74,9 @@ body.present .slide{min-height:100vh;scroll-margin-top:0}
 .slide{position:relative}
 .no{position:absolute;top:26px;left:max(32px,calc((100% - 1080px) / 2 + 32px));margin:0;text-align:left;font-family:Inter,sans-serif;font-weight:900;font-size:18px;letter-spacing:.12em;color:var(--ink)}
 .no span{color:var(--accent)}
+.no .mark{margin-left:12px;padding:1px 8px;border:1.5px solid var(--urgent);border-radius:3px;font-family:var(--maru);font-weight:900;font-size:13px;letter-spacing:.04em;color:var(--urgent)}
+/* 商談モード：印のない補足スライドを隠す */
+body.talk .slide:not(.key),body.talk .appendix{display:none}
 .slide h2{margin:0 auto 14px;max-width:1000px;text-align:center;font-family:var(--mincho);font-weight:900;color:var(--ink);font-size:clamp(1.7rem,3.9vw,2.65rem);line-height:1.34;letter-spacing:.01em}
 .slide h2 .hl{color:var(--accent)}
 
@@ -118,12 +121,6 @@ body.present .slide{min-height:100vh;scroll-margin-top:0}
 .cover .brand span{color:var(--accent)}
 .cover h1{margin:0 0 8px;text-align:center;font-family:var(--mincho);font-weight:900;color:var(--ink);font-size:clamp(2.1rem,5.4vw,3.7rem);line-height:1.26}
 .cover h1 .hl{color:var(--accent)}
-.pricebar{display:flex;justify-content:center;flex-wrap:wrap;gap:0;margin:22px auto 0;max-width:820px}
-.pricebar div{flex:1 1 180px;padding:6px 18px;text-align:center}
-.pricebar div+div{border-left:1px solid var(--line)}
-.pricebar small{display:block;font-size:14px;font-weight:700;color:var(--sub)}
-.pricebar b{font-family:var(--mincho);font-weight:900;font-size:clamp(1.4rem,3vw,2rem);color:var(--ink)}
-.pricebar b i{font-style:normal;font-family:var(--sans);font-size:15px;margin-left:2px}
 
 /* 診断モック */
 .cands{list-style:none;margin:0;padding:0;border:1.5px solid var(--sub);border-radius:4px;overflow:hidden;background:#fff}
@@ -138,7 +135,7 @@ body.present .slide{min-height:100vh;scroll-margin-top:0}
 
 /* 前提の確認（その場で書き込める欄） */
 .intake{display:grid;gap:12px;max-width:980px}
-.intake .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.intake .row3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .intake .row4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .fld{display:block;border-bottom:1.5px solid #8a8a87;padding:8px 4px;cursor:text}
 .fld small{display:block;font-family:var(--maru);font-weight:900;font-size:16px;color:var(--accent)}
@@ -152,6 +149,7 @@ body.present .slide{min-height:100vh;scroll-margin-top:0}
 .rs b{font-family:Inter,sans-serif;font-weight:900;font-size:20px;color:var(--accent);grid-row:1/3}
 .rs h3{margin:0;font-family:var(--mincho);font-weight:900;font-size:clamp(1.15rem,2.2vw,1.45rem);color:var(--ink);line-height:1.4}
 .rs p{margin:0;font-weight:500;font-size:16px;color:var(--sub);line-height:1.6}
+.rs .ast{display:block;margin-top:6px;font-size:13.5px;color:#6b6b6b;line-height:1.55}
 .rs .num{display:inline-block;margin-right:10px;font-family:var(--mincho);font-weight:900;font-size:28px;color:var(--urgent);vertical-align:-3px}
 .f-urg{fill:var(--urgent)}
 /* 図（SVG） */
@@ -224,11 +222,13 @@ body.present .slide{min-height:100vh;scroll-margin-top:0}
 .price .row{display:grid;grid-template-columns:1fr 1.3fr 1fr}
 .price .row div{padding:24px 20px;text-align:center}
 .price .row div+div{border-left:1px solid var(--line)}
-.price small{display:block;font-size:15px;font-weight:500;color:var(--sub);white-space:nowrap}
-.price b{font-family:var(--mincho);font-weight:900;font-size:clamp(2rem,5vw,3.4rem);color:var(--ink);white-space:nowrap}
-.price b i{font-style:normal;font-size:.45em;margin-left:2px}
+.price .row small{display:block;font-size:15px;font-weight:500;color:var(--sub);white-space:nowrap}
+.price .row b{font-family:var(--mincho);font-weight:900;font-size:clamp(2rem,5vw,3.4rem);color:var(--ink);white-space:nowrap}
+.price .row b i{font-style:normal;font-size:.45em;margin-left:2px}
 .price .free{display:block;margin-top:8px;font-family:var(--mincho);font-weight:900;font-size:19px;color:var(--urgent)}
-.price .foot{border-top:1px solid var(--line);padding:14px 22px;text-align:center;font-weight:500;font-size:15.5px;color:var(--ink)}
+.price .foot{border-top:1px solid var(--line);padding:12px 22px;text-align:center;font-weight:500;font-size:16px;color:var(--ink)}
+.price .foot b{font-family:var(--sans);font-size:16px;font-weight:900;color:var(--urgent)}
+.price .foot.sub{padding-top:0;border-top:0;font-size:14.5px;color:var(--sub)}
 
 /* はじめ方 */
 .steps{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:12px;align-items:center}
@@ -278,7 +278,7 @@ body.laser-on{cursor:none}
   .qa,.steps{grid-template-columns:1fr}
   .qa .arr,.steps .arr{transform:rotate(90deg);justify-self:center}
   .dest,.powers{grid-template-columns:1fr 1fr}
-  .intake .row2,.reasons{grid-template-columns:1fr}
+  .intake .row3,.reasons{grid-template-columns:1fr}
   .intake .row4{grid-template-columns:1fr 1fr}
   .price .row{grid-template-columns:1fr}
   .price .row div+div{border-left:0;border-top:1px solid var(--line)}
@@ -310,7 +310,7 @@ body.laser-on{cursor:none}
 <body>
 <div class="toolbar">
   <nav class="ver" aria-label="表示の切り替え"><span>表示</span><a href="../" data-keep-to>v1</a><a href="../v2/" data-keep-to>v2</a><a href="./" aria-current="page" data-keep-to>v3</a></nav>
-  <div class="keys"><span><kbd>←</kbd><kbd>→</kbd> 移動</span><button type="button" id="btnPresent" aria-pressed="false">発表モード <kbd>P</kbd></button><button type="button" id="btnLaser" aria-pressed="false">ポインター <kbd>L</kbd></button></div>
+  <div class="keys"><span><kbd>←</kbd><kbd>→</kbd> 移動</span><button type="button" id="btnPresent" aria-pressed="false">発表モード <kbd>P</kbd></button><button type="button" id="btnTalk" aria-pressed="false">商談の8枚 <kbd>K</kbd></button><button type="button" id="btnLaser" aria-pressed="false">ポインター <kbd>L</kbd></button></div>
 </div>
 <main>
 
@@ -321,24 +321,19 @@ body.laser-on{cursor:none}
     <p class="brand">J MATCH ENGINE <span>／</span> AI自走プラン</p>
     <h1>制度は、毎週のように出ています。<br><span class="hl">探すのも、書くのも、AIで。</span></h1>
     <p class="say"><span class="who">担当より</span><span class="line">補助金を1件取ってくるサービスではありません。出てくる制度をいち早く知って、<b>すぐに事業計画を用意できる会社</b>になるためのプランです。</span></p>
-    <div class="pricebar">
-      <div><small>月額</small><b>30,000<i>円</i></b></div>
-      <div><small>初期登録費用</small><b>100,000<i>円</i></b></div>
-      <div><small>成功報酬</small><b>0<i>円</i></b></div>
-    </div>
-    <p class="cap">金額はすべて税別です</p>
   </div>
 </section>
 
 <!-- はじめに：前提の確認 -->
-<section class="slide" id="sPre">
+<section class="slide key" id="sPre">
   <div class="wrap">
-    <p class="no"><span>01</span>　はじめに</p>
+    <p class="no"><span>01</span>　はじめに<span class="mark">商談</span></p>
     <h2>まず、御社のことを<br><span class="hl">教えてください</span></h2>
     <p class="say"><span class="who">担当より</span><span class="line">ご提案の前に、前提をそろえさせてください。伺った内容をもとに、このあと<b>使えそうな制度を一緒に調べます</b>。</span></p>
     <div class="visual intake">
-      <div class="row2">
+      <div class="row3">
         <label class="fld"><small>どちらからのご紹介ですか</small><span contenteditable="true" data-ph="例：商工会、銀行、Webで検索"></span></label>
+        <label class="fld"><small>所在地</small><span contenteditable="true" data-ph="例：神奈川県横浜市"></span></label>
         <label class="fld"><small>ご希望の制度は</small><span contenteditable="true" data-ph="補助金・融資・税制優遇／制度名"></span></label>
       </div>
       <div class="row4">
@@ -347,15 +342,15 @@ body.laser-on{cursor:none}
         <label class="fld"><small>創業年</small><span contenteditable="true" data-ph="例：1998年"></span></label>
         <label class="fld"><small>いちばん欲しいもの</small><span contenteditable="true" data-ph="資金？設備？人？"></span></label>
       </div>
-      <label class="fld big"><small>今日いちばん聞きたいことは？</small><span contenteditable="true" data-ph="例：「この補助金、うちでももらえますか？」"></span></label>
+      <label class="fld big"><small>今日いちばん聞きたいことは？</small><span contenteditable="true" data-ph="例：この補助金、うちでももらえますか？／資金調達したいが、何が使えるか分からない／新規顧客を増やすために使える制度を知りたい"></span></label>
     </div>
   </div>
 </section>
 
 <!-- 01 診断 -->
-<section class="slide" id="s1">
+<section class="slide key" id="s1">
   <div class="wrap">
-    <p class="no"><span>02</span></p>
+    <p class="no"><span>02</span><span class="mark">商談</span></p>
     <h2>御社が制度を使えそうか、<br><span class="hl">簡易的に調べてみます</span></h2>
     <p class="say"><span class="who">担当より</span><span class="line">いくつかの質問に答えると、候補が5〜6件出ます。右端が<b>採択の見込み（参考値）</b>です。ここからが、いちばん大事なお話になります。</span></p>
     <div class="visual">
@@ -372,25 +367,25 @@ body.laser-on{cursor:none}
 </section>
 
 <!-- 正直に：なかなかもらえない -->
-<section class="slide" id="sHard">
+<section class="slide key" id="sHard">
   <div class="wrap">
-    <p class="no"><span>03</span></p>
+    <p class="no"><span>03</span><span class="mark">商談</span></p>
     <h2>正直にお伝えします。<br><span class="hl">補助金は、なかなかもらえません</span></h2>
     <p class="say"><span class="who">担当より</span><span class="line">「この補助金をもらえるか」への答えは、<b>1回の申請では難しいことが多い</b>、です。理由は4つあります。</span></p>
     <div class="visual reasons">
       <div class="rs"><b>01</b><h3>採択率は、半分以下が多い</h3><p><strong class="num">47.2%</strong>小規模事業者持続化補助金 第19回（16,576件中7,819件）</p></div>
       <div class="rs"><b>02</b><h3>小さな会社ほど、書ける材料が少ない</h3><p>体制・実績・数字で差がつきやすく、準備の質がそのまま結果に出ます</p></div>
       <div class="rs"><b>03</b><h3>何度も申請して、通るもの</h3><p>1回で通るとは限りません。直して再申請することも、よくあります</p></div>
-      <div class="rs"><b>04</b><h3>加点項目の準備が要る</h3><p>賃上げ計画や各種認定など、申請前に整えておくものがあります</p></div>
+      <div class="rs"><b>04</b><h3>加点項目の準備が要る</h3><p>賃上げ計画や各種認定など、取得に2週間〜3か月かかるものもあり、申請を決めてからでは間に合いません<span class="ast">※加点項目を1つ取ると、採択率は数％から10％程度上がるといわれます（制度・回により異なります）</span></p></div>
     </div>
     <p class="cap">採択率：中小企業庁 2026年7月29日発表。制度や回によって異なります。</p>
   </div>
 </section>
 
 <!-- だから：申請し続けるフロー -->
-<section class="slide" id="sLoop">
+<section class="slide key" id="sLoop">
   <div class="wrap">
-    <p class="no"><span>04</span></p>
+    <p class="no"><span>04</span><span class="mark">商談</span></p>
     <h2>だから、1回で決めずに<br><span class="hl">何度も申請できる会社</span>になりましょう</h2>
     <p class="say"><span class="who">担当より</span><span class="line">たとえば年10回、申請のチャンスをつかむつもりで動きましょう。そのためには、<b>見つけるのも、書くのも速くなければ</b>回りません。</span></p>
     <div class="visual fig">
@@ -471,11 +466,11 @@ body.laser-on{cursor:none}
 </section>
 
 <!-- 05 中心 -->
-<section class="slide" id="s5">
+<section class="slide key" id="s5">
   <div class="wrap">
-    <p class="no"><span>08</span></p>
+    <p class="no"><span>08</span><span class="mark">商談</span></p>
     <h2>そこで、探すのも書くのもAIで。<br><span class="hl">何倍も集めて、<span class="nobr">何倍も速く書きます</span></span></h2>
-    <p class="say"><span class="who">担当より</span><span class="line">中身は、人の手で500社にご契約いただいている「Jコンサル」の支援です。それを<b>AIで回せるように</b>しました。</span></p>
+    <p class="say"><span class="who">担当より</span><span class="line">中身は、人の手で500社にご契約いただいている「Jコンサル」の支援です。<b>15年以上ためてきた申請支援の記録をAIに読み込ませて</b>、同じことをAIで回せるようにしました。</span></p>
     <div class="visual pillars">
       <div class="pillar"><span class="tag">探す</span><h3>AIが、制度を集める</h3><p>毎週、向こうから届きます</p></div>
       <div class="pillar"><span class="tag">書く</span><h3>御社が、AIと書く</h3><p>質問に答えるだけで土台ができます</p></div>
@@ -585,9 +580,9 @@ body.laser-on{cursor:none}
 </section>
 
 <!-- 13 人の支援 -->
-<section class="slide" id="s13">
+<section class="slide key" id="s13">
   <div class="wrap">
-    <p class="no"><span>16</span></p>
+    <p class="no"><span>16</span><span class="mark">商談</span></p>
     <h2>それでも迷うときは、<span class="hl nobr">人がいます</span></h2>
     <p class="say"><span class="who">担当より</span><span class="line">主役はAIですが、進めるうちにぶつかる壁が3つあります。それぞれに<b>人の支援</b>を用意しました。</span></p>
     <div class="visual walls">
@@ -600,9 +595,9 @@ body.laser-on{cursor:none}
 </section>
 
 <!-- 14 料金 -->
-<section class="slide" id="s14">
+<section class="slide key" id="s14">
   <div class="wrap">
-    <p class="no"><span>17</span></p>
+    <p class="no"><span>17</span><span class="mark">商談</span></p>
     <h2>初期登録費用10万円＋<span class="nobr">月額3万円。</span><br><span class="hl">成功報酬はいただきません</span></h2>
     <p class="say"><span class="who">担当より</span><span class="line">9月30日（水）までにお申し込みで、<b class="urg">導入事例にご協力いただける10社は、初期登録費用が0円</b>です。値引きではなく、事例づくりへのご協力との交換です。</span></p>
     <div class="visual price">
@@ -611,15 +606,16 @@ body.laser-on{cursor:none}
         <div><small>初期登録費用</small><b>100,000<i>円</i></b><span class="free">9/30までの事例協力10社は 0円</span></div>
         <div><small>成功報酬</small><b>0<i>円</i></b></div>
       </div>
-      <p class="foot">金額はすべて税別。Claude Code の利用料は含みません（御社で提供元と別途ご契約）。</p>
+      <p class="foot"><b>月額に含まないもの：Claude Code の利用料</b>（御社で提供元と別途ご契約いただきます）</p>
+      <p class="foot sub">金額はすべて税別です。</p>
     </div>
   </div>
 </section>
 
 <!-- 15 はじめ方 -->
-<section class="slide" id="s15">
+<section class="slide key" id="s15">
   <div class="wrap">
-    <p class="no"><span>18</span></p>
+    <p class="no"><span>18</span><span class="mark">商談</span></p>
     <h2>お申し込みから<span class="nobr">使い始めるまで</span>、<br><span class="hl">3つの手順</span>です</h2>
     <p class="say"><span class="who">担当より</span><span class="line">いま検討している投資や採用の予定を伺い、会社情報を登録すれば、<b>制度の配信とAIツールの利用</b>が始まります。</span></p>
     <div class="visual steps">
@@ -663,6 +659,7 @@ body.laser-on{cursor:none}
       <details><summary>ChatGPTでも、書けるのではありませんか。</summary><p>文章を整える部分は書けます。ただ、実際に手が止まるのは書く前です。どの制度が合うかを毎週追うことと、答えやすい質問に分けて聞くこと。この2つをまとめてご提供します。</p></details>
       <details><summary>AIを使ったことがなくても、大丈夫ですか。</summary><p>使ったことがない前提でつくっています。初期設定は導入時にご案内し、分からないときはAI家庭教師（月2時間まで追加料金なし）に聞けます。</p></details>
       <details><summary>月3万円は、高くありませんか。</summary><p>お支払いいただくのは情報の閲覧料ではなく、制度が出たときに事業計画をつくって動ける状態です。仮に1年間採択に至らなくても、事業計画をつくる力とAIを使う力は会社に残ります。</p></details>
+      <details><summary>外注したほうが、安いのではありませんか。</summary><p>外注をやめてください、とは申しません。ご契約中は当社から専門家をご紹介でき、ご自身で探して依頼されるより費用を抑えられることが多いです。加えて、事業計画の土台ができていると、依頼する範囲が小さくなります。外注でうまくいくのは今回の1件で、来年また出てくる制度を追い続ける人は社外にはいません。書く材料も、御社の中にしかありません。</p></details>
       <details><summary>作った事業計画は、融資にも使えますか。</summary><p>使えます。補助金で聞かれることと、金融機関で聞かれることの多くは共通です。同じ土台から、融資相談の資料を組み立てられます。</p></details>
     </div>
   </div>
@@ -718,13 +715,17 @@ document.documentElement.classList.add('js');
     var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('on');io.unobserve(en.target);}});},{threshold:.35});
     says.forEach(function(el){io.observe(el);});
   }else{says.forEach(function(el){el.classList.add('on');});}
-  var slides=[].slice.call(document.querySelectorAll('.slide')).concat([document.getElementById('faq'),document.getElementById('legal')]);
+  var allSlides=[].slice.call(document.querySelectorAll('.slide')).concat([document.getElementById('faq'),document.getElementById('legal')]);
+  var slides=allSlides;
+  function setList(){slides=allSlides.filter(function(s){return s.offsetParent!==null||s.getClientRects().length;});}
   var pager=document.getElementById('pager'), cur=0, pending=null, last=0;
   function update(){var y=innerHeight*.4,idx=0;slides.forEach(function(s,i){if(s.getBoundingClientRect().top<=y)idx=i;});cur=idx;pager.textContent=(idx+1)+' / '+slides.length;}
   addEventListener('scroll',update,{passive:true});update();
   function go(n){pending=n;last=Date.now();slides[n].scrollIntoView({behavior:'smooth'});}
 
-  var body=document.body, bP=document.getElementById('btnPresent'), bL=document.getElementById('btnLaser'), laser=document.getElementById('laser');
+  var body=document.body, bP=document.getElementById('btnPresent'), bT=document.getElementById('btnTalk'), bL=document.getElementById('btnLaser'), laser=document.getElementById('laser');
+  function setTalk(on){body.classList.toggle('talk',on);bT.setAttribute('aria-pressed',on?'true':'false');setList();update();setTimeout(function(){if(slides[cur])slides[cur].scrollIntoView();},30);}
+  bT.addEventListener('click',function(){setTalk(!body.classList.contains('talk'));});
   function setPresent(on){body.classList.toggle('present',on);bP.setAttribute('aria-pressed',on?'true':'false');setTimeout(function(){slides[cur].scrollIntoView();},30);}
   function setLaser(on){body.classList.toggle('laser-on',on);bL.setAttribute('aria-pressed',on?'true':'false');}
   bP.addEventListener('click',function(){setPresent(!body.classList.contains('present'));});
@@ -738,8 +739,9 @@ document.documentElement.classList.add('js');
     if(k==='ArrowRight'||k==='PageDown'||k===' '){e.preventDefault();go(Math.min(base+1,slides.length-1));}
     else if(k==='ArrowLeft'||k==='PageUp'){e.preventDefault();go(Math.max(base-1,0));}
     else if(k==='p'||k==='P'){setPresent(!body.classList.contains('present'));}
+    else if(k==='k'||k==='K'){setTalk(!body.classList.contains('talk'));}
     else if(k==='l'||k==='L'){setLaser(!body.classList.contains('laser-on'));}
-    else if(k==='Escape'){setPresent(false);setLaser(false);}
+    else if(k==='Escape'){setPresent(false);setLaser(false);setTalk(false);}
   });
 })();
 </script>
