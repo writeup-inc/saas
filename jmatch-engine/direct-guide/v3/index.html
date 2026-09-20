@@ -116,7 +116,6 @@ body.talk .slide:not(.key),body.talk .appendix{display:none}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center}
 
 /* 表紙 */
-.to-name{display:block;margin:0 auto 18px;text-align:center;font-weight:700;font-size:17px;color:var(--sub)}
 .cover .brand{margin:0 0 12px;text-align:center;font-family:Inter,sans-serif;font-weight:900;letter-spacing:.2em;font-size:15px;color:var(--ink)}
 .cover .brand span{color:var(--accent)}
 .cover h1{margin:0 0 8px;text-align:center;font-family:var(--mincho);font-weight:900;color:var(--ink);font-size:clamp(2.1rem,5.4vw,3.7rem);line-height:1.26}
@@ -309,7 +308,6 @@ body.laser-on{cursor:none}
 <!-- 表紙 -->
 <section class="slide cover" id="s0">
   <div class="wrap">
-    <p class="to-name" id="toName" hidden></p>
     <p class="brand">J MATCH ENGINE <span>／</span> AI自走プラン</p>
     <h1>制度は、毎週のように出ています。<br><span class="hl">探すのも、書くのも、AIで。</span></h1>
     <p class="say"><span class="who">担当より</span><span class="line">補助金を1件取ってくるサービスではありません。出てくる制度をいち早く知って、<b>すぐに事業計画を用意できる会社</b>になるためのプランです。</span></p>
@@ -668,7 +666,7 @@ document.documentElement.classList.add('js');
   var qs=location.search;
   try{
     var to=new URLSearchParams(qs).get('to');
-    if(to){to=to.trim().slice(0,40);var el=document.getElementById('toName');el.textContent=to+' 様　ご説明資料';el.hidden=false;document.title=to+' 様｜Jマッチエンジン ご説明資料';}
+    if(to){to=to.trim().slice(0,40);document.title=to+' 様｜Jマッチエンジン ご説明資料';}
   }catch(e){}
   [].forEach.call(document.querySelectorAll('[data-keep-to]'),function(a){if(qs)a.href=a.getAttribute('href')+qs;});
   try{
