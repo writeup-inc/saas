@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>あなたに必要な支援はどれ｜創業支援パック診断</title>
+<meta name="description" content="18の質問に答えると、13の支援サービスが「いますぐ／次に／いまは不要」に並べ替わります。創業前後の方向けの診断です。">
+<style>
+:root{
+  --paper:#ffffff; --desk:#f5f4f1; --ink:#1d1d1b; --sub:#5f5f5a; --faint:#8a8a84;
+  --rule:#e2e1db; --soft:#f0efeb; --accent:#bf5a12; --accent-bg:#fdf6f0;
+  --sans:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",system-ui,sans-serif;
+  --mincho:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
+  --head-h:58px;
+  --qbg:#22201d; --qink:#f7f5f1; --qsub:#c6c2b8; --qaccent:#e9a06a;
+}
+*,*::before,*::after{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; }
+body{
+  margin:0; background:var(--desk); color:var(--ink);
+  font-family:var(--sans); font-size:16px; line-height:1.8; letter-spacing:.02em;
+  -webkit-font-smoothing:antialiased;
+}
+button{ font:inherit; color:inherit; cursor:pointer; }
+:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+
+.head{
+  position:sticky; top:0; z-index:20; height:var(--head-h); flex:none;
+  display:flex; align-items:center; gap:16px; padding:0 clamp(14px,3vw,28px);
+  background:rgba(255,255,255,.96); border-bottom:1px solid var(--rule); backdrop-filter:blur(8px);
+}
+.head h1{ margin:0; font-family:var(--mincho); font-size:clamp(14px,1.4vw,17px); font-weight:600; white-space:nowrap; }
+.head .prog{ flex:1; display:flex; align-items:center; gap:10px; min-width:0; }
+.bar{ flex:1; height:4px; background:var(--soft); border-radius:2px; overflow:hidden; min-width:40px; }
+.bar i{ display:block; height:100%; width:0; background:var(--accent); transition:width .3s ease; }
+.count{ font-size:13px; color:var(--faint); font-variant-numeric:tabular-nums; white-space:nowrap; }
+.total{ text-align:right; line-height:1.3; white-space:nowrap; min-width:0; }
+.total b{ font-size:17px; font-variant-numeric:tabular-nums; }
+.total span{ display:block; font-size:12px; color:var(--faint); max-width:420px;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+
+/* 上に質問、下に3レーン。1画面に収めてスクロールを起こさない */
+.stage{ display:flex; flex-direction:column; height:calc(100vh - var(--head-h)); overflow:hidden; }
+.qbar{
+  flex:none; padding:clamp(16px,2.2vw,24px) clamp(14px,3vw,28px) clamp(14px,1.8vw,20px);
+  background:var(--qbg); color:var(--qink); border-bottom:1px solid var(--qbg);
+}
+/* 聞かれている場所だと分かるよう、質問の帯だけ地と文字を反転させる */
+.qbar .qnum{ color:var(--qaccent); }
+.qbar .qtext{ color:var(--qink); }
+.qbar .qhint{ color:var(--qsub); }
+.qbar .moved{ color:var(--qaccent); }
+.qbar .qwhy{ border-left-color:rgba(255,255,255,.22); }
+.qbar .qwhy .lb{ color:var(--qaccent); }
+.qbar .qwhy p{ color:var(--qsub); }
+.qbar .review summary{ color:var(--qsub); }
+.qbar .review td{ color:var(--qsub); border-bottom-color:rgba(255,255,255,.14); }
+.qbar .review td:first-child{ color:var(--qink); }
+.qbar :focus-visible{ outline-color:var(--qaccent); }
+.lanes{ flex:1; min-height:0; padding:clamp(10px,1.5vw,16px) clamp(14px,3vw,28px) clamp(12px,1.6vw,18px); display:flex; }
+.lanes #lanebox{ flex:1; min-height:0; }
+
+/* 上段：質問（左）と、なぜ聞くかの解説（右）。下の4列をぶち抜く */
+.qtop{ display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:clamp(18px,3vw,44px); align-items:start; }
+.qmain{ min-width:0; }
+.qwhy{
+  min-width:0; padding-left:clamp(14px,1.6vw,20px); border-left:2px solid var(--rule);
+}
+.qwhy .lb{
+  margin:0 0 5px; font-size:12px; font-weight:700; letter-spacing:.1em; color:var(--accent);
+}
+.qwhy p{ margin:0; font-size:13.5px; line-height:1.85; color:var(--sub); }
+@media (max-width:900px){
+  .qtop{ grid-template-columns:1fr; gap:12px; }
+  .qwhy{ padding-left:12px; }
+}
+
+/* 冒頭の説明 */
+.intro{ max-width:760px; margin:0 auto; padding:clamp(28px,6vw,70px) clamp(20px,5vw,40px); }
+.intro h2{ font-family:var(--mincho); font-size:clamp(22px,3.4vw,33px); line-height:1.55; margin:0 0 14px; }
+.intro p{ color:var(--sub); font-size:15px; margin:0 0 12px; }
+.intro ul{ margin:16px 0 26px; padding-left:1.15em; color:var(--sub); font-size:14px; }
+.intro li{ margin:5px 0; }
+
+.qnum{ font-size:12px; font-weight:700; letter-spacing:.12em; color:var(--accent); }
+.qhead{ display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; }
+.qtext{
+  margin:4px 0 10px; font-family:var(--mincho); font-size:clamp(19px,2.1vw,25px);
+  font-weight:600; line-height:1.5; word-break:auto-phrase; line-break:strict;
+}
+.qhint{ margin:0 0 10px; font-size:13.5px; color:var(--sub); }
+.choices{ display:flex; flex-direction:column; gap:7px; }
+.choice{
+  display:flex; align-items:flex-start; gap:9px; width:100%; text-align:left;
+  min-height:68px; padding:12px 13px; background:var(--paper); border:1px solid var(--rule);
+  border-radius:3px; font-size:15px; line-height:1.55; transition:border-color .14s, background .14s;
+}
+.choice:hover{ border-color:var(--ink); background:#fcfbf9; }
+.choice .key{
+  flex:none; width:22px; height:22px; margin-top:2px; border:1px solid var(--rule);
+  border-radius:50%; font-size:12px; display:flex; align-items:center; justify-content:center; color:var(--faint);
+}
+.choice[aria-pressed="true"]{ border-color:var(--accent); background:var(--accent-bg); font-weight:600; }
+.choice[aria-pressed="true"] .key{ border-color:var(--accent); background:var(--accent); color:#fff; }
+
+.moved{ margin:10px 0 0; min-height:1.7em; font-size:13.5px; line-height:1.65; color:var(--accent); font-weight:600; }
+.moved:empty{ margin:0; min-height:0; }
+.qfoot{ margin-top:10px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.btn{ padding:11px 20px; border:1px solid var(--ink); background:var(--ink); color:#fff; border-radius:3px; font-size:14px; min-height:44px; }
+.btn.ghost{ background:transparent; color:var(--ink); border-color:var(--rule); }
+.btn.ghost:hover{ border-color:var(--ink); }
+.btn[disabled]{ opacity:.35; cursor:not-allowed; }
+.hintline{ font-size:12.5px; color:var(--sub); line-height:1.65; }
+
+.lanegrid{ display:grid; grid-template-columns:repeat(4,1fr); gap:13px; height:100%; }
+.lane.answers{ border-color:var(--qbg); }
+/* 回答列は、上の質問帯と地続きに見せる */
+.lane.answers .lanehead{
+  margin:-11px -11px 0; padding:11px 12px 11px;
+  background:var(--qbg); border-bottom:0; border-radius:2px 2px 0 0;
+}
+.lane.answers .lanehead .row{ align-items:center; gap:9px; }
+.lane.answers .lanehead b{ color:var(--qink); }
+.lane.answers .lanehead small{ color:var(--qsub); margin-top:4px; }
+.lane.answers .qmark{
+  flex:none; width:24px; height:24px; border-radius:50%;
+  background:var(--qaccent); color:var(--qbg);
+  font-size:15px; font-weight:700; line-height:1;
+  display:flex; align-items:center; justify-content:center;
+}
+.lane.answers .choices{ margin-top:12px; }
+.lane.answers .stack{ overflow:visible; }
+.lane.answers .choices{ display:flex; flex-direction:column; gap:7px; margin-top:9px; }
+.lane.answers .choice{ min-height:0; padding:10px 12px; font-size:14.5px; }
+.lane.answers .qfoot{ margin-top:auto; padding-top:10px; }
+.lane.answers .hintline{ font-size:12px; }
+.lane{
+  background:var(--paper); border:1px solid var(--rule); border-radius:3px;
+  padding:11px 11px 12px; display:flex; flex-direction:column; min-height:0;
+}
+.lane .stack{ overflow-y:auto; min-height:0; }
+.lane.now{ border-color:var(--ink); }
+.lanehead{ padding:0 0 8px; border-bottom:1px solid var(--rule); }
+.lanehead .row{ display:flex; align-items:baseline; gap:8px; }
+.lanehead b{ font-family:var(--mincho); font-size:17px; line-height:1.3; }
+.lanehead small{ display:block; margin-top:3px; font-size:12px; line-height:1.5; color:var(--sub); }
+.lanehead .n{ margin-left:auto; font-size:12px; color:var(--faint); font-variant-numeric:tabular-nums; }
+.lane .stack{ display:flex; flex-direction:column; gap:4px; margin-top:8px; }
+.lane .empty{ margin-top:14px; font-size:13px; color:var(--faint); }
+
+.card{ border:1px solid var(--rule); border-radius:3px; padding:6px 10px; background:var(--paper); }
+.card .tags{ font-size:12px; line-height:1.4; color:var(--sub); letter-spacing:.04em; }
+.card .ord{
+  display:inline-block; min-width:15px; margin-right:5px;
+  font-size:12px; color:var(--accent); font-weight:700; font-variant-numeric:tabular-nums;
+}
+.card .nm{ font-size:14.5px; font-weight:600; line-height:1.4; word-break:auto-phrase; line-break:strict; }
+.card .mt{ margin-top:1px; font-size:12px; color:var(--sub); line-height:1.5; }
+.lane.now .card{ border-color:var(--ink); background:var(--accent-bg); }
+.lane.next .card .nm{ color:var(--sub); }
+.lane.off .card{ border-color:var(--soft); }
+.lane.off .card .nm{ color:var(--faint); }
+.lane.off .card.ex{ border-style:dashed; }
+
+.pin{ margin-top:14px; padding:12px 14px; background:var(--paper); border:1px dashed var(--rule); border-radius:3px; font-size:13px; color:var(--sub); }
+.pin b{ color:var(--ink); }
+.note{ margin:12px 0 0; font-size:12px; color:var(--faint); line-height:1.7; }
+
+.result{ padding:clamp(20px,3vw,40px); max-width:900px; margin:0 auto; }
+.result h2{ font-family:var(--mincho); font-size:clamp(21px,2.6vw,29px); margin:0 0 6px; line-height:1.5; }
+.result .sub{ margin:0 0 24px; color:var(--sub); font-size:14px; }
+.provis{ margin:0 0 20px; padding:12px 15px; border-left:3px solid var(--accent); background:var(--accent-bg); font-size:14px; }
+.rcard{ background:var(--paper); border:1px solid var(--rule); border-radius:3px; padding:18px 20px; margin-bottom:11px; }
+.rcard.first{ border-color:var(--accent); border-width:2px; }
+.rcard .lead1{ font-size:12px; font-weight:700; letter-spacing:.1em; color:var(--accent); margin:0 0 6px; }
+.rcard .top{ display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; }
+.rcard .top b{ font-size:16px; }
+.rcard .top .pz{ margin-left:auto; font-size:13px; color:var(--sub); font-variant-numeric:tabular-nums; }
+.rcard .desc{ font-size:13px; color:var(--sub); margin:4px 0 0; }
+.rcard .bridge{ margin:8px 0 0; font-size:14px; line-height:1.85; }
+.rcard ul{ margin:9px 0 0; padding-left:1.1em; color:var(--sub); font-size:13px; line-height:1.85; }
+.rcard .when{ margin:8px 0 0; font-size:13px; color:var(--accent); }
+.sumbox{ background:var(--paper); border:1px solid var(--ink); border-radius:3px; padding:18px 20px; margin:0 0 22px; }
+.sumbox .big{ font-size:26px; font-weight:600; font-variant-numeric:tabular-nums; }
+.sumbox p{ margin:6px 0 0; font-size:12px; color:var(--faint); line-height:1.7; }
+.askbox{ background:var(--paper); border:1px solid var(--rule); border-radius:3px; padding:20px; margin-top:26px; }
+.askbox label{ display:block; font-size:14px; font-weight:600; margin-bottom:8px; }
+.askbox textarea{ width:100%; min-height:110px; padding:11px 13px; border:1px solid var(--rule); border-radius:3px; font:inherit; font-size:14px; line-height:1.8; resize:vertical; }
+details.more{ margin-top:14px; }
+details.more summary{ cursor:pointer; font-size:14px; color:var(--sub); min-height:28px; }
+details.more .rcard{ margin-top:10px; }
+ol.settled{ margin:14px 0 0; padding-left:1.4em; }
+ol.settled li{ font-size:15px; font-weight:600; line-height:1.9; }
+.review{ margin-top:18px; }
+.review summary{ cursor:pointer; font-size:13px; color:var(--sub); }
+.review table{ width:100%; border-collapse:collapse; margin-top:10px; font-size:13px; }
+.review td{ padding:5px 8px 5px 0; border-bottom:1px solid var(--soft); vertical-align:top; font-size:12.5px; }
+.review td:first-child{ color:var(--faint); width:52%; }
+.review button{ background:none; border:0; padding:0; color:var(--accent); text-decoration:underline; font-size:13px; }
+
+@media (max-width:1100px){ .lanegrid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:760px){
+  .stage{ height:auto; overflow:visible; }
+  .qbar{ position:sticky; top:var(--head-h); z-index:10; }
+  .choice{ min-height:50px; }
+  .lanes{ overflow:visible; }
+  .lanegrid{ grid-template-columns:1fr; height:auto; }
+  .lane .stack{ overflow:visible; }
+  .head h1{ display:none; }
+}
+@media (prefers-reduced-motion:reduce){ .bar i{ transition:none; } }
+@media print{
+  .head, .askbox .qfoot, .btn{ display:none !important; }
+  body{ background:#fff; }
+  .result{ max-width:none; padding:0; }
+  details.more, details.review{ display:block; }
+  details.more[open] .rcard, .rcard{ break-inside:avoid; }
+  details:not([open]) > *:not(summary){ display:block !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="head">
+  <h1>あなたに必要な支援はどれ</h1>
+  <div class="prog"><div class="bar"><i id="bar"></i></div><span class="count" id="count">はじめに</span></div>
+  <div class="total"><b id="sum">—</b><span id="sumlabel">まず1本目の月額（仮）</span></div>
+</header>
+
+<main id="app"></main>
+
+<script>
+(function(){
+"use strict";
+
+var MONTHLY = 30000, HP_ONETIME = 360000;
+
+var PRODUCTS = [
+  {id:"meishi", g:"A", n:"名刺LINEエージェント", m:"引き出しの名刺をLINEの友だちに変える", b:"名刺は、箱に入ったままでは使えません。撮って読み取り、LINEでつながる名簿づくりを代行します。"},
+  {id:"lsync",  g:"A", n:"Lシンク",             m:"集めた人をAIが毎日ナーチャリングする", b:"一度きりの接点は、放っておくと忘れられがちです。LINEでの継続的な連絡を、AIで支えます。"},
+  {id:"hp",     g:"A", n:"ホームページ制作",     m:"会社サイトと共感LPの2本立て", b:"口で説明しても、相手の手元には何も残りません。何をする人かと、なぜやるかを1つのURLにまとめます。", once:true},
+  {id:"social", g:"A", n:"ソーシャルマスター",   m:"発信して、地元の人に見つけてもらう", b:"知られていない店は、探されにくいものです。開ける前からの発信を、代わりに続けます。"},
+  {id:"aio",    g:"A", n:"AIOマスター",          m:"AI検索で候補に挙がるための対策", b:"AIに聞かれたとき候補に挙がらなければ、見つけてもらえません。掲載状況を調べ、情報の形を整えます。", when:"ホームページができてから"},
+  {id:"aiskill",g:"A", n:"AI活用スキル",         m:"自分でAIを使える状態にする", b:"何を頼めばいいか分からないと、AIは使いにくいものです。自分の仕事をAIへの依頼に置き換える練習をします。"},
+  {id:"plan",   g:"B", n:"AIとの壁打ち／事業計画書", m:"何をどう売るかを、書ける形にする", b:"頭の中にあるうちは、人に説明できません。誰に何をいくらで売るかを、書いて見せられる形にします。"},
+  {id:"jmatch", g:"B", n:"Jマッチエンジン",      m:"制度から、使えるお金と事業の種を探す", b:"制度は数が多く、自分で探すと見落としがちです。条件に合うものを絞って出します。"},
+  {id:"oem",    g:"B", n:"OEM提供",              m:"うちの商材を自社名義で売る", b:"売るものがなければ、商談は始まりません。すでにある商材を、自社の名前で扱えるようにします。", when:"売る相手の見当がついてから"},
+  {id:"web",    g:"B", n:"Web制作会社スタートパック", m:"制作事業を自分の事業にする", b:"制作の経験がなくても、型があれば進められます。提案から納品までの手順を渡します。", when:"法人の相手が見えてから"},
+  {id:"eigyo",  g:"B", n:"営業代行会社スタートパック", m:"人脈を営業の仕事に変える", b:"人に会っていても、仕事に変わらなければ収入になりません。会った人を案件につなぐ手順を渡します。", when:"人に会う機会が増えてから"},
+  {id:"tsubame",g:"B", n:"つばめリファラル",     m:"紹介から収益をつくる", b:"紹介は、頼み方が分からないと起きにくいものです。誰に何を頼むかを決める設計を支援します。", when:"紹介を頼める相手が増えてから"},
+  {id:"kimeru", g:"B", n:"商談で決める力",       m:"値段を言い切り、その場で決める練習", b:"値段を言えないと、その場では決まりにくいものです。言い切る練習と、切り返しを用意します。", when:"売るものが決まってから"}
+];
+var GJA = {A:"客を持つ", B:"売るものを持つ"};
+
+var BASE = 3;
+// 同点のときは PRODUCTS の並び順で決まる。A群を先に並べてあるのは
+// 「先に積むべきは客」という設計をタイブレークにも効かせるため。
+
+
+// 質問ごとの「なぜこれを聞くか」。診断が立っている仮説を、その場で開示する
+var QWHY = {
+  stage:"創業前と開業後では、打つべき手が変わります。まず立ち位置を確かめます。",
+  biz:"来てもらう商売か、会社を相手にする商売か。ここで、そもそも合わないサービスが外れます。商圏のある商売には、AI検索対策や法人向けの商材が効きにくいという見立てです。",
+  meishi_n:"過去に出会った人は、名刺が残っている範囲しか取り戻せません。枚数が、いちばん確実な資産の量になります。",
+  meishi_l:"名刺は、リストになっていなければ連絡できません。持っていることと、使える形であることは別だと考えています。",
+  line_n:"すぐ連絡できる相手が100人に届かないなら、集める側から手を付けます。届いているなら、その人たちを切らさない側が先になります。",
+  url:"口で説明しても、相手の手元には何も残りません。送れるURLがあるかどうかで、受け皿の要否が決まります。",
+  decided:"売上は、売れる商品と売れる営業力の掛け算です。どちらが0かをここで見ています。売るものが無いなら、客より先に売るものを渡します。",
+  money:"使えるお金が少ないほど、制度から探す価値が上がります。お金がある方にも制度は要りますが、順番が後ろになります。",
+  sns_last:"発信は、止まっていること自体が問題になります。最後の投稿が、続けられているかの目安です。",
+  followers:"すでに見てくれる人が多いなら、新しく集める手は要りません。足りないときだけ効きます。",
+  meet:"毎月たくさんの人に会っているなら、客側はもう強い。その場合に足りないのは、売るもののほうです。",
+  supporters:"紹介は、頼める相手がいて初めて起きます。人数が、紹介の仕組みが回るかの目安になります。",
+  clients:"すでに会社と取引があるなら、商材を渡すだけで売上になります。取引先を増やさず、売るものを変える形です。",
+  plandoc:"事業計画書は、融資のための書類ではなく、誰に何をどう売るかの設計図だと考えています。",
+  ai_week:"AIは、使っていない人ほど最初の一歩で止まります。頻度が、伴走の要否を分けます。",
+  ai_what:"頼み方が分からないのは、能力ではなく翻訳の問題だと見ています。ここが詰まると、道具を渡しても動きません。",
+  price:"値段を言い切れないと、その場では決まりません。集める力とは別に、決める力が要ります。",
+  kentou:"「検討します」が続くなら、足りないのは集める力ではなく、決める力のほうです。"
+};
+
+function q(id, text, hint, choices, skip){ return {id:id, text:text, hint:hint, choices:choices, skip:skip}; }
+function c(label, eff, ex, why){ return {label:label, eff:eff||{}, ex:ex||[], why:why||""}; }
+
+var QUESTIONS = [
+  q("stage","いまの状況に、いちばん近いものはどれですか",null,[
+    c("これから創業を考えている",{plan:1},[],"まだ準備の段階だから"),
+    c("準備中。辞める日が決まっている",{},[],""),
+    c("開業届を出したばかり",{},[],""),
+    c("開業して1年以内",{},[],""),
+    c("開業して1年以上たっている",{},[],"")
+  ]),
+
+  q("biz","どんな商売になりそうですか","いちばん近いものを選んでください",[
+    c("お店や教室に、来てもらう商売",{social:2},["aio","oem","web"],"来てもらう商売だから"),
+    c("会社を相手にする商売",{oem:1,web:1,aio:1},[],"会社が相手だから"),
+    c("個人に、オンラインで売る商売",{social:1,aio:1},["oem","web"],"個人にオンラインで売るから"),
+    c("人に会って、紹介でつなぐ商売",{tsubame:2,eigyo:1},[],"紹介でつなぐ商売だから"),
+    c("まだ決まっていない",{plan:2},[],"売るものがまだ決まっていないから")
+  ]),
+
+  q("meishi_n","交換した名刺は、いま手元に何枚ありますか","おおよそで結構です",[
+    c("300枚以上",{meishi:3},[],"名刺が300枚以上あるから"),
+    c("100〜299枚",{meishi:2},[],"名刺が100枚以上あるから"),
+    c("20〜99枚",{meishi:0},[],""),
+    c("0〜19枚",{meishi:-4},[],""),
+    c("数えたことがない（たぶん多い）",{meishi:2},[],"名刺がかなりありそうだから")
+  ]),
+
+  q("meishi_l","その名刺を、データのリストにしてありますか","住所録や顧客リストの形になっているか",[
+    c("全部してある",{meishi:-4},[],""),
+    c("一部だけしてある",{meishi:-1},[],""),
+    c("アプリで撮ったが、使っていない",{meishi:2},[],"名刺が使える形になっていないから"),
+    c("していない",{meishi:2},[],"名刺がリストになっていないから"),
+    c("そもそも名刺がない",{meishi:-4},[],"")
+  ], function(a){ return a.meishi_n === 3; }),
+
+  q("line_n","LINEで直接メッセージを送れる相手は、何人いますか","友だち全員ではなく、仕事の話を送っても不自然でない相手の数",[
+    c("300人以上",{lsync:0},[],""),
+    c("100〜299人",{lsync:2},[],"連絡できる相手が300人に届かないから"),
+    c("30〜99人",{lsync:3},[],"連絡できる相手が100人に届かないから"),
+    c("29人以下",{lsync:3},[],"連絡できる相手が30人に届かないから"),
+    c("分からない",{lsync:1},[],"連絡できる相手の数を把握できていないから")
+  ]),
+
+  q("url","「どこを見れば分かりますか」と聞かれたら、送れるURLがありますか",null,[
+    c("ある。自分で更新もしている",{hp:-4,aio:1},[],""),
+    c("ある。でも1年以上さわっていない",{hp:-1},[],""),
+    c("つくりかけで、公開していない",{hp:2},[],"見せられるページがまだないから"),
+    c("SNSのページだけ",{hp:3,social:1},[],"送れるのがSNSだけだから"),
+    c("何もない",{hp:3,aio:-2},[],"送れるURLが1つもないから")
+  ]),
+
+  q("decided","何を売るか、もう決まっていますか",null,[
+    c("決まっていて、「払う」と言った人もいる",{plan:-4,oem:-2,web:-2,eigyo:-1},[],""),
+    c("決まっている",{plan:-2,oem:-1},[],""),
+    c("だいたい決まっている",{plan:0},[],""),
+    c("迷っている",{plan:2,oem:1,web:1},[],"売るものを決めきれていないから"),
+    c("まったく決まっていない",{plan:3,oem:2,web:2,eigyo:1},[],"売るものがまだないから")
+  ]),
+
+  q("money","いま事業に使えるお金は、いくらありますか","自己資金と、借りられる見込みを合わせて",[
+    c("1,000万円以上",{jmatch:-1},[],""),
+    c("500〜999万円",{jmatch:0},[],""),
+    c("100〜499万円",{jmatch:1},[],"使えるお金が500万円に届かないから"),
+    c("1〜99万円",{jmatch:3},[],"使えるお金が100万円に届かないから"),
+    c("ほとんどない、または分からない",{jmatch:2},[],"資金の見通しが立っていないから")
+  ]),
+  q("sns_last","仕事のことをSNSに投稿したのは、いつが最後ですか",null,[
+    c("今週",{social:-1},[],""),
+    c("1か月以内",{social:0},[],""),
+    c("6か月以内",{social:1},[],""),
+    c("1年以内",{social:1},[],"発信が半年以上止まっているから"),
+    c("1年以上前、または投稿したことがない",{social:2},[],"発信が1年以上止まっているから")
+  ]),
+
+  q("followers","SNSのフォロワーは、合計で何人ですか","複数やっている場合は足した数で",[
+    c("3,000人以上",{social:-4},[],""),
+    c("1,000〜2,999人",{social:-3},[],""),
+    c("300〜999人",{social:0},[],""),
+    c("299人以下",{social:1},[],"見てくれる人がまだ少ないから"),
+    c("SNSをやっていない",{social:1},[],"発信の場がまだないから")
+  ]),
+
+  q("meet","交流会や飲み会で、新しく会う人は月に何人ですか",null,[
+    c("20人以上",{eigyo:3,tsubame:2,meishi:2},[],"毎月20人以上の新しい人に会っているから"),
+    c("10〜19人",{eigyo:2,tsubame:1,meishi:1},[],"毎月10人以上の新しい人に会っているから"),
+    c("5〜9人",{eigyo:0},[],""),
+    c("1〜4人",{eigyo:-2},[],""),
+    c("0人",{eigyo:-4,tsubame:-1},[],"")
+  ]),
+
+  q("supporters","「独立します」と言ったら、とりあえず会ってくれそうな人は何人いますか",null,[
+    c("10人以上",{tsubame:3},[],"紹介を頼める相手が10人以上いるから"),
+    c("5〜9人",{tsubame:1},[],"紹介を頼める相手が数人いるから"),
+    c("1〜4人",{tsubame:-2,lsync:1},[],"頼れる相手がまだ少ないから"),
+    c("0人",{tsubame:-3,lsync:1},[],"頼れる相手がいないから"),
+    c("分からない",{tsubame:-1,lsync:1},[],"頼れる相手がはっきりしないから")
+  ]),
+
+  q("clients","すでに取引のある会社（法人）は、何社ありますか",null,[
+    c("10社以上",{oem:3,web:2},[],"取引のある会社が10社以上あるから"),
+    c("5〜9社",{oem:2,web:1},[],"取引のある会社が5社以上あるから"),
+    c("1〜4社",{oem:0},[],""),
+    c("0社（これから）",{oem:-3,web:-2},[],""),
+    c("分からない",{},[],"")
+  ], function(a,ex){ return ex.oem === true; }),
+
+
+  q("plandoc","事業計画書を書いたことがありますか",null,[
+    c("何度もある",{plan:-2},[],""),
+    c("一度ある",{plan:-1},[],""),
+    c("書きかけがある",{plan:1},[],""),
+    c("ない",{plan:1,jmatch:1},[],"事業計画書を書いたことがないから"),
+    c("何を書くのか分からない",{plan:2,jmatch:1},[],"計画の書き方が分からないから")
+  ]),
+
+  q("ai_week","今週、AIに仕事を頼みましたか",null,[
+    c("毎日頼んでいる",{aiskill:-3},[],""),
+    c("何度か頼んだ",{aiskill:-1},[],""),
+    c("一度だけ",{aiskill:1},[],""),
+    c("頼んでいない",{aiskill:2},[],"AIをまだ仕事に使えていないから"),
+    c("AIを使ったことがない",{aiskill:2},[],"AIを使ったことがないから")
+  ]),
+
+  q("ai_what","AIに何を頼めばいいか分からない、と思ったことはありますか",null,[
+    c("よくある",{aiskill:1},[],"AIへの頼み方が分からないから"),
+    c("ときどきある",{aiskill:1},[],""),
+    c("どちらともいえない",{},[],""),
+    c("あまりない",{aiskill:-1},[],""),
+    c("ない",{aiskill:-2},[],"")
+  ]),
+
+  q("price","値段を伝えるとき、言いよどんでしまうことがありますか",null,[
+    c("よくある",{kimeru:2},[],"値段を言い切れないことがあるから"),
+    c("ときどきある",{kimeru:1},[],"値段を伝えるのに迷いがあるから"),
+    c("どちらともいえない",{},[],""),
+    c("あまりない",{kimeru:-2},[],""),
+    c("ない",{kimeru:-3},[],"")
+  ]),
+
+  q("kentou","「検討します」と言われて、そのままになった経験はありますか",null,[
+    c("よくある",{kimeru:1},[],"商談がその場で決まらないことが多いから"),
+    c("ときどきある",{kimeru:1},[],""),
+    c("一度ある",{},[],""),
+    c("ない",{kimeru:-2},[],""),
+    c("商談をしたことがない",{kimeru:1},[],"商談の経験がこれからだから")
+  ])
+];
+
+// 早期終了の前に、これだけは必ず答えてもらう
+var MUST = ["stage","biz","meishi_n","line_n","url","decided","money"];
+
+var screen = "intro";       // intro / quiz / result
+var idx = 0;
+var answers = {};
+var order = [];
+var lastMoved = "";
+var sigHistory = [];
+var settledSkipped = false;
+var app = document.getElementById("app");
+var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// 回答を変えた結果もう出題されない質問（例：名刺0枚ならリスト化の質問）は、
+// 採点に残さない。安定するまで繰り返し掃除する。
+function pruneAnswers(){
+  for(var pass = 0; pass < 5; pass++){
+    var st = computeRaw(), removed = false;
+    QUESTIONS.forEach(function(Q){
+      if(answers[Q.id] === undefined) return;
+      if(Q.skip && Q.skip(answers, st.ex)){
+        delete answers[Q.id];
+        var at = order.lastIndexOf(Q.id);
+        if(at >= 0){ order.splice(at,1); sigHistory.pop(); }
+        removed = true;
+      }
+    });
+    if(!removed) return;
+  }
+}
+
+function compute(){ return computeRaw(); }
+
+function computeRaw(){
+  var sc = {}, ex = {}, why = {};
+  PRODUCTS.forEach(function(p){ sc[p.id] = BASE; why[p.id] = []; });
+  order.forEach(function(qid){
+    var Q = byId(qid); if(!Q) return;
+    var ch = Q.choices[answers[qid]]; if(!ch) return;
+    Object.keys(ch.eff).forEach(function(pid){ sc[pid] = (sc[pid]||0) + ch.eff[pid]; });
+    ch.ex.forEach(function(pid){ ex[pid] = true; });
+    if(ch.why){
+      Object.keys(ch.eff).forEach(function(pid){ if(ch.eff[pid] > 0) why[pid].push(ch.why); });
+      ch.ex.forEach(function(pid){ why[pid].push(ch.why); });
+    }
+  });
+  return {sc:sc, ex:ex, why:why};
+}
+function byId(qid){ for(var i=0;i<QUESTIONS.length;i++){ if(QUESTIONS[i].id===qid) return QUESTIONS[i]; } return null; }
+
+var NOW_FLOOR = 5;
+// 「いますぐ」の枠は、答えが増えるほど狭くなる。1問目で一気に消えると壊れて見えるため。
+function nowCap(){
+  if(order.length === 0) return PRODUCTS.length;
+  // 1列目が画面に収まる数（8枚）から始めて、答えるほど絞る
+  return Math.max(NOW_FLOOR, 9 - order.length);
+}
+
+// 開始時は3レーンへランダムに散らす。意味はまだ無い（答えると正しい位置へ動く）
+var initialLanes = null;
+var flewIn = false;
+function makeInitialLanes(){
+  var a = PRODUCTS.slice();
+  for(var i = a.length - 1; i > 0; i--){
+    var j = Math.floor(Math.random() * (i + 1));
+    var t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  var g = {now:[], next:[], off:[]}, keys = ["now","next","off"];
+  a.forEach(function(p, i){ g[keys[i % 3]].push(p); });
+  return g;
+}
+
+function grouped(st){
+  if(order.length === 0){
+    if(!initialLanes) initialLanes = makeInitialLanes();
+    return {now:initialLanes.now.slice(), next:initialLanes.next.slice(), off:initialLanes.off.slice()};
+  }
+  var g = {now:[], next:[], off:[]}, cap = nowCap(), rest = [];
+  PRODUCTS.forEach(function(p){ if(st.ex[p.id]) g.off.push(p); else rest.push(p); });
+  rest.sort(function(a,b){
+    var d = (st.sc[b.id]||0) - (st.sc[a.id]||0);
+    return d !== 0 ? d : PRODUCTS.indexOf(a) - PRODUCTS.indexOf(b);
+  });
+  rest.forEach(function(p){
+    var sc = st.sc[p.id];
+    if(sc <= 1) g.off.push(p);
+    else if(g.now.length < cap) g.now.push(p);
+    else g.next.push(p);
+  });
+  g.off.sort(function(a,b){
+    var ea = st.ex[a.id]?1:0, eb = st.ex[b.id]?1:0;
+    if(ea !== eb) return ea - eb;
+    return (st.sc[b.id]||0) - (st.sc[a.id]||0);
+  });
+  return g;
+}
+function laneMap(st){
+  var g = grouped(st), m = {};
+  ["now","next","off"].forEach(function(k){ g[k].forEach(function(p){ m[p.id]=k; }); });
+  return m;
+}
+function nowSignature(st){ return grouped(st).now.map(function(p){return p.id;}).sort().join(","); }
+
+var SETTLE_RUN = 3, SETTLE_MIN = 8;
+function mustDone(){ return MUST.every(function(id){
+  var Q = byId(id); var st = compute();
+  if(Q && Q.skip && Q.skip(answers, st.ex)) return true;
+  return answers[id] !== undefined;
+}); }
+function isSettled(){
+  if(settledSkipped || !mustDone() || order.length < SETTLE_MIN) return false;
+  var n = sigHistory.length;
+  if(n < SETTLE_RUN) return false;
+  var last = sigHistory[n-1];
+  return sigHistory.slice(n-SETTLE_RUN).every(function(x){ return x === last; });
+}
+
+// まだ出題されていない質問が、どのサービスの順位を動かしうるか
+function remainingTargets(){
+  var st = compute(), ids = {};
+  QUESTIONS.forEach(function(Q){
+    if(answers[Q.id] !== undefined) return;
+    if(Q.skip && Q.skip(answers, st.ex)) return;
+    Q.choices.forEach(function(ch){
+      Object.keys(ch.eff).forEach(function(pid){ if(ch.eff[pid] !== 0 && !st.ex[pid]) ids[pid] = true; });
+      ch.ex.forEach(function(pid){ ids[pid] = true; });
+    });
+  });
+  return PRODUCTS.filter(function(p){ return ids[p.id]; }).map(function(p){ return p.n; });
+}
+
+function yen(n){ return "¥" + n.toLocaleString("ja-JP"); }
+function monthlyTotal(g){ return g.now.filter(function(p){ return !p.once; }).length * MONTHLY; }
+
+function nextIndex(from){
+  var st = compute();
+  for(var i=from;i<QUESTIONS.length;i++){
+    var Q = QUESTIONS[i];
+    if(answers[Q.id] !== undefined) continue;
+    if(Q.skip && Q.skip(answers, st.ex)) continue;
+    return i;
+  }
+  return -1;
+}
+function remaining(){
+  var st = compute(), n = 0;
+  QUESTIONS.forEach(function(Q){
+    if(answers[Q.id] !== undefined) return;
+    if(Q.skip && Q.skip(answers, st.ex)) return;
+    n++;
+  });
+  return n;
+}
+
+function flip(render){
+  if(reduce){ render(); return; }
+  var before = {};
+  document.querySelectorAll("[data-card]").forEach(function(el){
+    before[el.getAttribute("data-card")] = el.getBoundingClientRect();
+  });
+  render();
+  document.querySelectorAll("[data-card]").forEach(function(el){
+    var f = before[el.getAttribute("data-card")]; if(!f) return;
+    var l = el.getBoundingClientRect();
+    var dx = f.left-l.left, dy = f.top-l.top;
+    if(Math.abs(dx)<1 && Math.abs(dy)<1) return;
+    el.animate([{transform:"translate("+dx+"px,"+dy+"px)"},{transform:"none"}],
+      {duration:420, easing:"cubic-bezier(.2,.75,.3,1)"});
+  });
+}
+// 開始時、カードが画面の左右からランダムに1枚ずつ飛び込む
+function flyIn(){
+  if(reduce) return;
+  var cards = Array.prototype.slice.call(document.querySelectorAll("[data-card]"));
+  for(var i = cards.length - 1; i > 0; i--){
+    var j = Math.floor(Math.random() * (i + 1));
+    var t = cards[i]; cards[i] = cards[j]; cards[j] = t;
+  }
+  cards.forEach(function(el, i){
+    var dir = Math.random() < 0.5 ? -1 : 1;
+    var dist = (window.innerWidth * 0.6 + 120) * dir;
+    el.animate(
+      [{transform:"translateX(" + dist + "px)", opacity:0},
+       {transform:"none", opacity:1}],
+      {duration:460, delay:i * 85, easing:"cubic-bezier(.2,.8,.3,1)", fill:"backwards"}
+    );
+  });
+}
+
+function esc(s){ return String(s).replace(/[&<>"]/g,function(m){
+  return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]; }); }
+
+function undecided(p, st){
+  // 加点も減点もまだ入っていない＝この人については判断材料が出ていない
+  return !st.ex[p.id] && st.sc[p.id] === BASE && (st.why[p.id] || []).length === 0;
+}
+
+function cardHTML(p, key, st, n){
+  var ex = st.ex[p.id];
+  var tag = GJA[p.g] + (ex ? " ・対象外" : (undecided(p, st) ? " ・未判定" : ""));
+  return '<div class="card' + (ex?" ex":"") + '" data-card="' + p.id + '">' +
+    '<div class="tags">' + esc(tag) + '</div>' +
+    '<div class="nm">' + (n ? '<span class="ord">' + n + '</span>' : "") + esc(p.n) + '</div>' +
+
+  '</div>';
+}
+
+function choicePanel(Q, picked){
+  return '<div class="choices">' +
+      Q.choices.map(function(ch,n){
+        var on = (picked === n);
+        return '<button class="choice" data-pick="' + n + '" aria-pressed="' + (on?"true":"false") + '"' +
+          (picked !== undefined ? " disabled" : "") + '>' +
+          '<span class="key" aria-hidden="true">' + (n+1) + '</span><span>' + esc(ch.label) + '</span></button>';
+      }).join("") +
+    '</div>' +
+    '<div class="qfoot">' +
+      '<button class="btn ghost" id="back"' + (order.length ? "" : " disabled") + '>ひとつ戻る</button>' +
+      (order.length >= 4 ? '<button class="btn ghost" id="see">途中結果を見る</button>' : '') +
+      '<span class="hintline">選ぶと次へ進みます。1〜5キーでも選べます</span>' +
+    '</div>';
+}
+
+function lanesHTML(st, choicesHTML){
+  var g = grouped(st), first = order.length === 0, ready = mustDone(), done = remaining() === 0;
+  function col(key, title, sub, cls){
+    var list = g[key];
+    return '<section class="lane ' + cls + '" aria-label="' + title + '">' +
+      '<div class="lanehead"><div class="row"><b>' + title + '</b>' +
+      '<span class="n">' + list.length + '</span></div><small>' + sub + '</small></div>' +
+      (list.length
+        ? '<div class="stack">' + list.map(function(p,i){
+            return cardHTML(p, key, st, (key==="now" && !first) ? (i+1) : 0); }).join("") + '</div>'
+        : '<p class="empty">いまはありません</p>') +
+    '</section>';
+  }
+  return '<div class="lanegrid">' +
+    '<section class="lane answers" aria-label="回答">' +
+      '<div class="lanehead"><div class="row">' +
+        '<span class="qmark" aria-hidden="true">?</span><b>お答えください</b></div><small>' +
+        (order.length ? "上の質問への答えを選ぶと、右のカードが動きます" : "上の質問への答えを、ここから選びます") +
+      '</small></div>' +
+      (choicesHTML || "") +
+    '</section>' +
+    col("now",  done ? "いますぐ" : "いまの優先候補",
+        first ? "まだ判定していません" : (done ? "ここから着手する" : "答えた範囲での並び"), "now") +
+    col("next", "次に", first ? "まだ判定していません" : "上が片づいてから", "next") +
+    col("off",  "いまは見送り", first ? "まだ判定していません" : "今回の回答では優先度が低い", "off") +
+  '</div>';
+}
+
+function updateHead(st){
+  if(screen === "intro"){
+    document.getElementById("bar").style.width = "0%";
+    document.getElementById("count").textContent = "はじめに";
+    document.getElementById("sum").textContent = "—";
+    return;
+  }
+  var done = order.length, total = done + remaining();
+  document.getElementById("bar").style.width = (screen==="result" ? 100 : (total ? done/total*100 : 0)) + "%";
+  var mustLeft = MUST.filter(function(id){
+    var Q = byId(id);
+    if(Q && Q.skip && Q.skip(answers, st.ex)) return false;
+    return answers[id] === undefined;
+  }).length;
+  document.getElementById("count").textContent =
+    screen === "result" ? (done + "問 回答")
+      : (Math.min(done+1,total) + " / " + total + (mustLeft ? "（必須あと" + mustLeft + "問）" : ""));
+  var gg = grouped(st);
+  var top1 = gg.now[0];
+  var ready2 = order.length && mustDone();
+
+  document.getElementById("sum").textContent = !ready2 ? "—"
+    : (top1 ? (top1.once ? yen(HP_ONETIME) + "・都度" : yen(MONTHLY)) : "—");
+
+  var sl = document.getElementById("sumlabel");
+  if(sl){
+    if(!ready2){
+      sl.textContent = "金額は算定中";
+    } else if(!top1){
+      sl.textContent = "いま優先する候補はありません";
+    } else {
+      var hp = gg.now.some(function(p){ return p.once; });
+      sl.textContent = "まず1本目：" + top1.n
+        + "（候補" + gg.now.length + "本の参考合計 " + yen(monthlyTotal(gg)) + "／月"
+        + (hp ? "＋制作" + yen(HP_ONETIME) : "") + "）";
+    }
+  }
+}
+
+function renderIntro(){
+  app.innerHTML =
+    '<div class="intro">' +
+      '<h2>13ある支援のうち、あなたがいま始めるとよいものを絞ります。</h2>' +
+      '<p>創業前の方、開業して1年以内の方に向けた診断です。質問は最大18問です（答えによっては少なくなります）。</p>' +
+      '<ul>' +
+        '<li>答えるたびに、13のサービスが「いますぐ／次に／いまは不要」へ動きます</li>' +
+        '<li>選んだ理由は、あなたの答えを引用して最後に表示します</li>' +
+        '<li>途中でいつでも戻れます。答えを変えると結果もその場で変わります</li>' +
+        '<li>金額はすべて仮置きです。割引率は未定のため、実際のご案内額とは異なります</li>' +
+      '</ul>' +
+      '<button class="btn" id="start">はじめる</button>' +
+    '</div>';
+  updateHead(compute());
+  document.getElementById("start").addEventListener("click", function(){
+    screen = "quiz"; render(); window.scrollTo(0,0);
+  });
+}
+
+function render(){
+  if(screen === "intro"){ renderIntro(); return; }
+  if(screen === "result"){ renderResult(); return; }
+
+  var i = nextIndex(0);
+  var settled = isSettled();
+  if(i < 0){ screen = "result"; renderResult(); return; }
+  idx = i;
+  var Q = QUESTIONS[i];
+  var st = compute();
+  var g0 = grouped(st);
+  var picked = answers[Q.id];
+
+  var choicesHTML = settled
+    ? '<ol class="settled">' + g0.now.map(function(p){ return '<li>' + esc(p.n) + '</li>'; }).join("") + '</ol>' +
+      '<div class="qfoot">' +
+        '<button class="btn" id="see">結果を見る</button>' +
+        '<button class="btn ghost" id="more">もう少し答える</button>' +
+        '<button class="btn ghost" id="back">ひとつ戻る</button>' +
+      '</div>'
+    : choicePanel(Q, picked);
+
+  var topHTML = settled
+    ? '<div class="qtop"><div class="qmain">' +
+        '<div class="qhead"><span class="qnum">RESULT</span></div>' +
+        '<h2 class="qtext">ここまでで、顔ぶれは落ち着きました。</h2>' +
+        '<p class="moved" id="moved">' + esc(lastMoved) + '</p>' +
+      '</div><div class="qwhy"><p class="lb">なぜここで止めてよいか</p><p>' +
+        '必須の質問がすべて埋まり、直近3問で上位が入れ替わっていません。' + order.length +
+        '問ぶんの答えに基づく並びです。残り' + remaining() + '問に答えると変わることもあります。' +
+      '</p></div></div>'
+    : '<div class="qtop"><div class="qmain">' +
+        '<div class="qhead"><span class="qnum">QUESTION ' + (order.length + 1) + '</span>' +
+        (Q.hint ? '<span class="qhint" style="margin:0">' + esc(Q.hint) + '</span>' : '') + '</div>' +
+        '<h2 class="qtext">' + esc(Q.text) + '</h2>' +
+        '<p class="moved" id="moved" role="status" aria-live="polite">' + esc(lastMoved) + '</p>' +
+      '</div><div class="qwhy">' +
+        '<p class="lb">なぜこれを聞くか</p>' +
+        '<p>' + esc(QWHY[Q.id] || "") + '</p>' +
+        '<details class="review"><summary>13本が何をするものか、見る</summary><table>' +
+          PRODUCTS.map(function(p){
+            return '<tr><td>' + esc(p.n) + '</td><td>' + esc(p.m) + '</td></tr>'; }).join("") +
+        '</table></details>' +
+      '</div></div>';
+
+  app.innerHTML =
+    '<div class="stage">' +
+      '<div class="qbar">' + topHTML + '</div>' +
+      '<div class="lanes">' +
+        '<div id="lanebox">' + lanesHTML(st, choicesHTML) + '</div>' +
+      '</div>' +
+    '</div>';
+
+  updateHead(st);
+  var mvBox = document.getElementById("moved");
+  if(mvBox && lastMoved){ mvBox.textContent = lastMoved; }
+  if(order.length === 0 && !flewIn){ flewIn = true; flyIn(); }
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-pick]"), function(b){
+    b.addEventListener("click", function(){ pick(parseInt(b.getAttribute("data-pick"),10)); });
+  });
+  bind("back", back);
+  bind("see", function(){ screen = "result"; render(); window.scrollTo(0,0); });
+  bind("more", function(){ settledSkipped = true; lastMoved = ""; render(); });
+}
+function bind(id, fn){ var el = document.getElementById(id); if(el) el.addEventListener("click", fn); }
+
+var LANE_JA = {now:"いますぐ", next:"次に", off:"いまは不要"};
+
+function pick(n){
+  var Q = QUESTIONS[idx];
+  var beforeMap = laneMap(compute());
+  var had = answers[Q.id] !== undefined;
+  if(had){
+    var at = order.lastIndexOf(Q.id);
+    if(at >= 0) order.splice(at,1);
+    sigHistory.pop();
+  }
+  answers[Q.id] = n;
+  order.push(Q.id);
+  pruneAnswers();
+  var st = compute();
+  var afterMap = laneMap(st);
+
+  var moved = [];
+  PRODUCTS.forEach(function(p){ if(beforeMap[p.id] !== afterMap[p.id]) moved.push({n:p.n, to:afterMap[p.id]}); });
+  if(Q.id === "stage" && n === 4){
+    lastMoved = "この診断は創業前〜開業1年以内の方向けです。提供条件が異なる場合があります。";
+  } else if(moved.length === 0) lastMoved = "順番は変わりませんでした。";
+  else if(order.length === 1) lastMoved = "ここから絞り込みが始まります。" + moved.length + "本が動きました。";
+  else if(moved.length <= 2) lastMoved = moved.map(function(m){ return m.n + "が「" + LANE_JA[m.to] + "」へ"; }).join("、");
+  else lastMoved = moved[0].n + "ほか" + (moved.length-1) + "本が動きました";
+
+  sigHistory.push(nowSignature(st));
+
+  flip(function(){
+    document.getElementById("lanebox").innerHTML = lanesHTML(st, choicePanel(Q, n));
+  });
+  updateHead(st);
+  var mv = document.getElementById("moved"); if(mv) mv.textContent = lastMoved;
+  // カードが動くのを見せてから、次の質問へ進む
+  setTimeout(function(){ render(); }, reduce ? 0 : 620);
+}
+
+function back(){
+  lastMoved = "";
+  var qid = order.pop();
+  if(qid){ delete answers[qid]; sigHistory.pop(); }
+  settledSkipped = false;
+  if(order.length === 0) flewIn = true;  // 戻ったときは飛ばし直さない
+  screen = "quiz";
+  render();
+}
+
+function jumpTo(qid){
+  // 結果画面から特定の質問へ戻る。その質問以降の答えは残したまま選び直す
+  screen = "quiz";
+  for(var i=0;i<QUESTIONS.length;i++){ if(QUESTIONS[i].id === qid){ idx = i; break; } }
+  var Q = byId(qid);
+  var at = order.lastIndexOf(qid);
+  if(at >= 0){ order.splice(at,1); sigHistory.pop(); }
+  delete answers[qid];
+  settledSkipped = true;
+  lastMoved = "";
+  render(); window.scrollTo(0,0);
+}
+
+function renderResult(){
+  var st = compute(), g = grouped(st);
+  var mt = monthlyTotal(g);
+  var hasHP = g.now.some(function(p){ return p.id === "hp"; });
+  var lack = !mustDone();
+  var settledNow = isSettled();
+  var left = remaining();
+
+  function block(p, kind, n){
+    var reasons = (st.why[p.id]||[]).filter(function(v,i,a){ return a.indexOf(v)===i; }).slice(0,3);
+    return '<div class="rcard' + (kind==="first" ? " first" : "") + '">' +
+      (kind==="first" ? '<p class="lead1">まず、この1本から</p>' : "") +
+      '<div class="top"><b>' + (n ? n + ". " : "") + esc(p.n) + '</b>' +
+      '<span class="count">' + GJA[p.g] + '</span>' +
+      '<span class="pz">' + (p.once ? yen(HP_ONETIME) + "・都度" : yen(MONTHLY) + "／月") + '</span></div>' +
+      '<p class="desc">' + esc(p.m) + '</p>' +
+      (p.b ? '<p class="bridge">' + esc(p.b) + '</p>' : "") +
+      (reasons.length ? '<ul>' + reasons.map(function(r){ return "<li>" + esc(r) + "</li>"; }).join("") + '</ul>' : "") +
+      (kind==="next" && p.when ? '<p class="when">着手の目安：' + esc(p.when) + '</p>' : "") +
+    '</div>';
+  }
+
+  var reviewRows = order.map(function(qid){
+    var Q = byId(qid);
+    return '<tr><td>' + esc(Q.text) + '</td><td>' + esc(Q.choices[answers[qid]].label) +
+      ' <button data-jump="' + qid + '">変える</button></td></tr>';
+  }).join("");
+
+  app.innerHTML =
+    '<div class="result">' +
+      (answers.stage === 4
+        ? '<p class="provis">この診断は、創業前から開業1年以内の方に向けたものです。' +
+          '開業から1年以上たっている場合、提供条件が異なることがあります。</p>'
+        : "") +
+      '<h2>' + (left
+        ? '回答済みの範囲での優先候補は、' + g.now.length + '本です'
+        : 'いますぐ始めるとよいのは、' + g.now.length + '本です') + '</h2>' +
+      '<p class="sub">' + order.length + '問の答えから並べ替えました。' +
+      '順番は、<strong>いまいちばん足りていないもの</strong>から並べています。' +
+      '表示は最大5本までです。候補が少なければ、それより少なくなります。</p>' +
+
+      (lack
+        ? '<p class="provis"><strong>これは途中結果です。</strong>まだ' + left +
+          '問残っており、そのなかに結果を大きく変える質問があります。</p>'
+        : left
+          ? '<p class="provis">' +
+            (settledNow ? '直近3問では、上位の顔ぶれが入れ替わっていません。ただし残り' + left + '問あります。'
+                        : '<strong>これは途中結果です。</strong>まだ' + left + '問残っています。') +
+            (remainingTargets().length
+              ? '残りの質問が直接動かしうるのは、' + remainingTargets().join("、") +
+                'です。これらの点数が変わると、ほかのサービスの順位や上位への出入りも変わることがあります。'
+              : '') +
+            '下の「残り' + left + '問に答える」から続けられます。</p>'
+          : "") +
+
+      '<div class="sumbox">' +
+        '<div class="big">' + yen(mt) + '<span style="font-size:14px;font-weight:400">／月（仮）</span></div>' +
+        (hasHP ? '<div style="font-size:14px;margin-top:4px">＋ ホームページ制作 ' + yen(HP_ONETIME) + '（都度）</div>' : "") +
+        '<p>1サービス月3万円で計算した仮の金額です。創業支援パックの割引率は未定のため、実際のご案内額とは異なります。AIバードは料金内に含まれます。' +
+        'すべてを同時に契約する必要はありません。まず1本目から始められます。</p>' +
+      '</div>' +
+
+      (g.now.length
+        ? g.now.map(function(p,i){ return block(p, i===0 ? "first" : "now", i+1); }).join("")
+        : '<div class="rcard"><b>今回の13サービスの中には、いま優先しておすすめできるものがありませんでした。</b>' +
+          '<p class="desc">事業上の課題がないという意味ではありません。この13の中では、' +
+          'いまの答えから優先順位が付かなかった、ということです。' +
+          '下の「次に」をご覧いただくか、下の欄にご事情を書き、「結果をコピーする」でお持ちください。</p></div>') +
+
+      (g.next.length ? '<details class="more" open><summary>次に：' + g.next.length + '本（上が片づいてから）</summary>' +
+        g.next.map(function(p){ return block(p, "next", 0); }).join("") + '</details>' : "") +
+
+      (g.off.length ? '<details class="more"><summary>いまは見送り：' + g.off.length + '本（今回の回答では優先度が低いもの）</summary>' +
+        g.off.map(function(p){ return block(p, "off", 0); }).join("") + '</details>' : "") +
+
+      '<details class="review"><summary>答えた内容を確認・修正する（' + order.length + '問）</summary>' +
+        '<table>' + reviewRows + '</table></details>' +
+
+      '<div class="askbox">' +
+        '<label for="free">もう少し詳しい事情があれば、ここに書いてください（コピーに含まれます）</label>' +
+        '<textarea id="free" placeholder="例：来年4月に駅前でバーを開きたい。前職の飲食で名刺が400枚ほどある。SNSは止まったまま。"></textarea>' +
+        '<div class="qfoot" style="padding-top:14px">' +
+          '<button class="btn" id="copy">結果をコピーする</button>' +
+          (remaining() ? '<button class="btn ghost" id="resume">残り' + remaining() + '問に答える</button>' : '') +
+          '<button class="btn ghost" id="print">印刷・PDFにする</button>' +
+          '<button class="btn ghost" id="again">はじめからやり直す</button>' +
+        '</div>' +
+        '<p class="note" id="sendnote">診断結果と答えた内容をまとめてコピーできます。公開時はここに問い合わせフォームをつなぎます。</p>' +
+        '<p class="note">各サービスの提供条件・対象・料金は、窓口に確認のうえ正式にご案内します。この画面の並びと金額は、確定したご提案ではありません。</p>' +
+      '</div>' +
+    '</div>';
+
+  updateHead(st);
+  bind("print", function(){ window.print(); });
+  bind("again", function(){
+    answers = {}; order = []; lastMoved = ""; sigHistory = []; settledSkipped = false;
+    initialLanes = null; flewIn = false;
+    screen = "intro"; render(); window.scrollTo(0,0);
+  });
+  bind("resume", function(){ screen = "quiz"; settledSkipped = true; render(); window.scrollTo(0,0); });
+  bind("copy", function(){
+    var g2 = grouped(compute());
+    var lines = ["【創業支援パック 診断結果】"];
+    lines.push("いますぐ：" + (g2.now.map(function(p){ return p.n; }).join("、") || "なし"));
+    if(g2.next.length) lines.push("次に：" + g2.next.map(function(p){ return p.n; }).join("、"));
+    lines.push("月額（仮）：" + yen(monthlyTotal(g2)) + (hasHP ? "　＋ホームページ制作 " + yen(HP_ONETIME) + "（都度）" : ""));
+    lines.push("");
+    lines.push("【答えた内容】");
+    order.forEach(function(qid){
+      var Q = byId(qid);
+      lines.push("・" + Q.text + " → " + Q.choices[answers[qid]].label);
+    });
+    var free = document.getElementById("free").value.trim();
+    if(free){ lines.push(""); lines.push("【ご事情】"); lines.push(free); }
+    var text = lines.join("\n");
+    var note = document.getElementById("sendnote");
+    function done(ok){
+      note.textContent = ok
+        ? "コピーしました。メールやメッセージに貼り付けてお送りください。"
+        : "コピーできませんでした。下の内容を選択してコピーしてください。";
+      if(!ok){
+        var ta = document.createElement("textarea");
+        ta.value = text; ta.style.width = "100%"; ta.style.minHeight = "160px";
+        ta.style.marginTop = "10px"; ta.readOnly = true;
+        note.parentNode.appendChild(ta); ta.select();
+      }
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){ done(true); }, function(){ done(false); });
+    } else { done(false); }
+  });
+  Array.prototype.forEach.call(document.querySelectorAll("[data-jump]"), function(b){
+    b.addEventListener("click", function(){ jumpTo(b.getAttribute("data-jump")); });
+  });
+}
+
+document.addEventListener("keydown", function(e){
+  if(screen !== "quiz") return;
+  var t = e.target.tagName;
+  if(t === "TEXTAREA" || t === "INPUT") return;
+  if(e.key >= "1" && e.key <= "5"){
+    var b = document.querySelector('[data-pick="' + (parseInt(e.key,10)-1) + '"]');
+    if(b) b.click();
+  } else if(e.key === "Backspace"){
+    e.preventDefault(); if(order.length) back();
+  }
+});
+
+render();
+})();
+</script>
+</body>
+</html>
