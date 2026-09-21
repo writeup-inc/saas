@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="catalog-card" content="true" />
+<meta name="description" content="判断特化AI「Jev」の導入支援に関する資料の一覧。直販（A）とOEM（B）の2系統、全8点。更新のあった資料には印を付けています。">
+<title>Jevソリューション｜資料インデックス</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+/* lp-base.css — 日本語LP／HTML成果物の初期CSS
+ *
+ * 品質台帳（~/Documents/Codex/loop-engineering-memory/events.jsonl）で
+ * 再発が確認された表示欠陥を、指摘ではなく初期値で潰すためのファイル。
+ * 対応する欠陥ID:
+ *   japanese-heading-midword-wrap（見出しが単語途中で改行）11回
+ *   mobile-fv-headline-wrap（モバイルFVの見出し改行）3回
+ *   mobile-fixed-cta-overlap（固定CTAが本文を隠す）3回
+ *   meaningful-small-text-under-readable-size（意味のある文字が可読サイズ未満）5回
+ *
+ * 使い方: HTMLの<style>先頭にこの内容を貼る。色・書体・余白は各LPで上書きしてよいが、
+ * 下の「改行制御」「最小文字サイズ」「固定CTAの逃げ」の3ブロックは消さないこと。
+ */
+
+/* ── 改行制御 ─────────────────────────────────────────────
+ * 日本語は単語区切りが無いため、既定のままだと文節の途中で折り返す。
+ * auto-phrase は文節単位で折る（Chrome 119+）。非対応環境は strict で逃がす。 */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] {
+    word-break: normal;
+  }
+}
+/* 明示的に折りたくない語の途中で切られたら、その語を <span class="nobr"> で包む */
+.nobr { white-space: nowrap; }
+
+/* ── 最小文字サイズ ───────────────────────────────────────
+ * 判断材料になる文字は12px未満にしない。注記・免責のみ .note を許容。 */
+:root { --fs-min: 12.5px; --fs-body: 17px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+
+/* ── ファーストビューの見出し ─────────────────────────────
+ * 固定pxだと狭い画面で必ず折り返す。clamp で画面幅に追従させる。 */
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+
+/* ── 固定CTAの逃げ ────────────────────────────────────────
+ * 画面下に固定CTAを置くページは、この変数を実測の高さに書き換える。
+ * 置かないページはそのままでよい（0のまま）。 */
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+
+/* ── 横はみ出しの予防 ─────────────────────────────────────
+ * flex/grid の子は既定で min-width:auto のため、長い語で親を押し広げる。 */
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+
+/* ══ トークン ══ Jマッチエンジンと同系。紺#0b2c5c＋白＋黒 ══ */
+:root{
+  --ac:#0b2c5c; --acl:#f3f6fa; --acl2:#e9eef2; --acm:#b9c6da;
+  --bk:#111111; --g1:#555555; --g2:#6b6b6b; --g3:#b4b4b4;
+  --ln:#d9d9d9; --ln2:#efefef; --pa:#f7f7f7;
+  --up:#c8102e;
+  --wd:1100px; --fixed-cta-h:0px;
+  --ff-head:"Zen Kaku Gothic New","Noto Sans JP","Hiragino Sans",system-ui,sans-serif;
+  --ff-body:"Noto Sans JP","Hiragino Sans",system-ui,sans-serif;
+  --ff-en:"Outfit","Zen Kaku Gothic New",sans-serif;
+}
+h1,h2,h3,h4,.logo,.chip,.judge,.cfoot .go,.bg,.tl{ font-family:var(--ff-head); }
+html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+body{ margin:0; background:#fff; color:var(--bk);
+  font-family:var(--ff-body);
+  font-size:17px; line-height:1.9; letter-spacing:.01em; font-feature-settings:"palt" 1; }
+.w{ max-width:var(--wd); margin:0 auto; padding:0 32px; }
+@media (max-width:600px){ .w{ padding:0 20px; } }
+a{ color:inherit; }
+
+/* ── ヘッダー ── */
+header{ position:sticky; top:0; z-index:60; background:rgba(255,255,255,.95);
+  backdrop-filter:blur(12px); border-bottom:1px solid var(--ln2); }
+header .w{ display:flex; align-items:center; justify-content:space-between; height:60px; gap:16px; }
+.logo{ font-size:15.5px; font-weight:900; letter-spacing:.08em; white-space:nowrap; }
+.logo span{ color:var(--ac); }
+.logo .lsub{ color:var(--bk); }
+@media (max-width:560px){ .logo .lsub{ display:none; } }
+.hn{ display:flex; gap:22px; align-items:center; }
+.hn a{ font-size:14px; font-weight:700; color:var(--g1); text-decoration:none;
+  letter-spacing:.06em; white-space:nowrap; display:inline-block; padding:10px 2px; }
+.hn a:hover{ color:var(--ac); }
+@media (max-width:760px){ .hn a.hlast{ display:none; } .hn{ gap:16px; } }
+
+/* ══ ヒーロー ══ */
+.hero .w{ display:grid; grid-template-columns:1fr 210px; gap:40px; align-items:start;
+  padding-top:68px; padding-bottom:52px; }
+@media (max-width:1080px){ .hero .w{ grid-template-columns:1fr; gap:34px; } }
+@media (max-width:600px){ .hero .w{ padding-top:44px; padding-bottom:36px; } }
+.tally{ border:0; padding:0; align-self:end; margin-bottom:4px; }
+.trow{ display:grid; grid-template-columns:20px 1fr auto; gap:9px; align-items:center;
+  padding:3px 0; border-top:0; }
+.trow:first-child{ border-top:0; padding-top:0; }
+.tk{ font-family:var(--ff-en); font-size:11px; font-weight:800; width:20px; height:20px;
+  display:grid; place-items:center; letter-spacing:0; flex:none;
+  background:var(--ln2); color:var(--g1); }
+.tk-a, .tk-b{ background:var(--ln2); color:var(--g1); box-shadow:none; }
+.tl{ font-size:14px; font-weight:700; color:var(--g1); letter-spacing:.04em; }
+.tv{ font-family:var(--ff-en); font-size:26px; font-weight:900; line-height:1.15;
+  letter-spacing:-.03em; color:var(--g2); }
+.tv i{ font-family:var(--ff-head); font-style:normal; font-size:12px; font-weight:700;
+  color:var(--g3); margin-left:3px; letter-spacing:0; }
+.tnote{ margin:8px 0 0; font-size:12.5px; color:var(--g3); line-height:1.6;
+  border-top:1px solid var(--ln2); padding-top:8px; }
+.chip{ display:inline-block; background:var(--ac); color:#fff; font-family:var(--ff-en);
+  font-size:13px; font-weight:800; letter-spacing:.16em; padding:7px 15px; }
+.hero h1{ font-weight:900; letter-spacing:-.03em; line-height:1.28; margin:26px 0 20px;
+  font-size:clamp(1.55rem,6.2vw,3.7rem); }
+.chipn{ font-size:14px; color:var(--g1); margin-left:14px; letter-spacing:.04em; font-weight:700; }
+@media (max-width:600px){ .chipn{ display:block; margin:12px 0 0; } }
+.hero h1 em{ font-style:normal; color:var(--ac); }
+.hero .sub{ font-size:17px; color:var(--g1); max-width:36em; margin:0 0 26px; line-height:2; }
+.hero .sub b{ color:var(--bk); font-weight:700; }
+.stamp{ display:flex; flex-wrap:wrap; gap:10px 26px; align-items:center;
+  border-top:1px solid var(--ln); padding-top:18px; font-size:14.5px; color:var(--g1); }
+.stamp b{ color:var(--bk); font-weight:700; }
+
+/* ══ 今回の更新 ══ */
+.news{ background:var(--acl); border-top:3px solid var(--ac); }
+.news .w{ padding-top:34px; padding-bottom:34px; }
+.news h2{ font-size:clamp(1.35rem,4.6vw,2rem)!important; font-weight:900; margin:0 0 4px; letter-spacing:.04em;
+  display:flex; align-items:center; gap:10px; line-height:1.5; }
+.news h2::before{ content:""; width:9px; height:9px; border-radius:50%; background:var(--up);
+  flex:none; box-shadow:0 0 0 4px rgba(200,16,46,.16); }
+.news .nsub{ font-size:14.5px; color:var(--g1); margin:0 0 18px; }
+.news ul{ list-style:none; margin:0; padding:0; display:grid; gap:2px; }
+.news li{ border-top:1px solid var(--acl2); padding:13px 0; }
+.news li:last-child{ border-bottom:1px solid var(--acl2); }
+.news a{ text-decoration:none; display:grid; grid-template-columns:76px 1fr; gap:4px 16px;
+  align-items:baseline; }
+@media (max-width:600px){ .news a{ grid-template-columns:1fr; } }
+.news .nd{ font-family:var(--ff-en); font-size:13.5px; font-weight:700; color:var(--g2);
+  letter-spacing:.04em; }
+.news .nt{ font-size:18px; font-weight:700; line-height:1.7; }
+.news .nt i{ font-style:normal; color:var(--ac); text-decoration:underline;
+  text-underline-offset:3px; }
+.news .nw{ grid-column:2; font-size:15px; color:var(--g1); line-height:1.75; }
+@media (max-width:600px){ .news .nw{ grid-column:1; } }
+
+/* ══ 汎用セクション ══ */
+section.blk .w{ padding-top:64px; padding-bottom:56px; }
+@media (max-width:600px){ section.blk .w{ padding-top:46px; padding-bottom:40px; } }
+.shead{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px;
+  border-bottom:2px solid var(--bk); padding-bottom:12px; margin-bottom:8px; }
+@media (max-width:620px){ .shead{ flex-direction:column-reverse; align-items:flex-start; gap:8px; }
+  .shead .sn{ padding-bottom:0; } }
+.shead h2{ margin:0; font-weight:900; letter-spacing:-.02em; line-height:1.4;
+  font-size:clamp(1.55rem,5.6vw,2.9rem); letter-spacing:-.015em; }
+.sl{ display:flex; align-items:center; gap:14px; min-width:0; }
+.shead .sn{ font-family:var(--ff-en); font-size:13px; font-weight:700; color:var(--g2);
+  letter-spacing:.16em; white-space:nowrap; padding-bottom:5px; }
+.sdesc{ font-size:16.5px; color:var(--g1); margin:16px 0 26px; line-height:1.95; max-width:44em; }
+.sdesc b{ color:var(--bk); font-weight:700; }
+
+/* ══ 2つの提供形態 ══ */
+.two{ display:grid; grid-template-columns:1fr 1fr; gap:52px; margin-bottom:28px; }
+@media (max-width:760px){ .two{ grid-template-columns:1fr; gap:36px; } }
+.two > div{ min-width:0; }
+.two h3{ margin:0 0 6px; font-size:clamp(1.25rem,4.4vw,1.5rem)!important; font-weight:900; letter-spacing:.02em; }
+.two .en b{ font-size:13.5px; color:var(--bk); }
+.two .en{ font-family:var(--ff-en); font-size:12.5px; font-weight:700; color:var(--ac);
+  letter-spacing:.16em; display:block; margin-bottom:10px; }
+.judge{ font-size:15px; font-weight:700; color:var(--ac); margin:0 0 4px; line-height:1.7; }
+.two .tx{ font-size:16px; line-height:2; color:var(--g1); margin:12px 0 0; padding-top:14px;
+  border-top:1px solid var(--ln2); }
+
+/* ══ 凡例 ══ */
+.legend{ display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center;
+  font-size:14px; color:var(--g1); margin:0 0 22px; }
+.legend span{ display:inline-flex; align-items:center; gap:7px; }
+
+/* ══ バッジ ══ */
+.bg{ display:inline-block; font-size:13px; font-weight:700; letter-spacing:.06em;
+  padding:3px 9px; line-height:1.55; white-space:nowrap; }
+.bg.new{ background:var(--up); color:#fff; }
+.bg.upd{ background:#fff; color:var(--up); box-shadow:inset 0 0 0 1.5px var(--up); }
+.bg.soon{ background:var(--pa); color:var(--g2); box-shadow:inset 0 0 0 1px var(--ln); }
+.bg.in{ background:#fff; color:var(--g2); box-shadow:inset 0 0 0 1px var(--g3); }
+
+/* ══ カード ══ */
+.cards{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media (max-width:820px){ .cards{ grid-template-columns:1fr; } }
+.card{ position:relative; border:1px solid var(--ln); padding:22px 24px 20px; background:#fff;
+  display:flex; flex-direction:column;
+  transition:border-color .22s ease, box-shadow .22s ease, background-color .22s ease, transform .22s ease; }
+.card.lnk:hover{ border-color:var(--ac); background:var(--acl);
+  box-shadow:0 16px 38px rgba(11,44,92,.17); transform:translateY(-7px); }
+.card.lnk:hover .curl{ background:#fff; border-color:var(--acm); }
+@media (prefers-reduced-motion:reduce){ .card.lnk:hover{ transform:none; } }
+.card.flag{ border-color:var(--acm); }
+.card.off{ background:var(--pa); border-style:dashed; }
+.card.off:hover{ border-color:var(--ln); box-shadow:none; transform:none; }
+.ctop{ display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap; }
+.cno{ font-family:var(--ff-en); font-size:14px; font-weight:900; color:var(--ac);
+  letter-spacing:.12em; }
+.chead{ display:flex; align-items:center; gap:13px; margin:0 0 11px; }
+.cic{ flex:none; width:42px; height:42px; display:grid; place-items:center;
+  background:var(--acl2); color:var(--ac); transition:background .2s, color .2s; }
+.cic svg{ display:block; width:24px; height:24px; }
+.card.lnk:hover .cic{ background:var(--ac); color:#fff; }
+.card.off .cic{ background:#fff; color:var(--g3); box-shadow:inset 0 0 0 1px var(--ln); }
+.card.off:hover .cic{ background:#fff; color:var(--g3); }
+.card h3{ margin:0; font-size:clamp(1.15rem,4.6vw,1.3rem)!important; font-weight:900; line-height:1.5;
+  letter-spacing:.01em; }
+.clink{ position:absolute; inset:0; z-index:2; text-indent:-9999px; overflow:hidden; }
+.card.lnk:hover h3{ color:var(--ac); }
+.card .cd{ font-size:15px; color:var(--g1); line-height:1.85; margin:0 0 14px; flex:1; }
+.upnote{ border-left:3px solid var(--up); background:var(--pa); padding:10px 14px;
+  font-size:14.5px; line-height:1.8; margin:0 0 14px; }
+.upnote b{ font-weight:700; }
+.upnote .ud{ font-family:var(--ff-en); font-size:12.5px; color:var(--g2); font-weight:700;
+  letter-spacing:.05em; display:block; }
+.curl{ display:flex; align-items:baseline; gap:10px; background:var(--pa);
+  border:1px solid var(--ln2); padding:10px 13px; margin:0 0 13px; }
+.curl .uk{ font-family:var(--ff-en); font-size:11.5px; font-weight:800; color:var(--g2);
+  letter-spacing:.14em; flex:none; }
+.curl .uv{ font-family:ui-monospace,SFMono-Regular,Menlo,"Courier New",monospace;
+  font-size:13px; color:var(--ac); line-height:1.65; overflow-wrap:anywhere; min-width:0; }
+.card.off .curl{ background:#fff; }
+.card.off .curl .uv{ color:var(--g2); font-family:var(--ff-body); }
+.cfoot.end{ justify-content:flex-end; }
+.cfoot{ display:flex; align-items:center; justify-content:space-between; gap:12px;
+  border-top:1px solid var(--ln2); padding-top:2px; font-size:13.5px; color:var(--g2); }
+.cfoot .go{ font-weight:700; color:var(--ac); white-space:nowrap; display:inline-block; padding:11px 0; }
+.card.lnk:hover .go{ text-decoration:underline; text-underline-offset:3px; }
+.cfoot .go.mute{ color:var(--g3); pointer-events:none; }
+
+/* ══ 更新履歴 ══ */
+.hist{ border-top:1px solid var(--ln); margin-top:4px; }
+.hrow{ display:grid; grid-template-columns:100px 15em 1fr; gap:6px 18px; align-items:baseline;
+  padding:16px 0; border-bottom:1px solid var(--ln2); font-size:15px; line-height:1.85; }
+@media (max-width:700px){ .hrow{ grid-template-columns:96px 1fr; } }
+.hrow .hd{ font-family:var(--ff-en); font-size:13.5px; font-weight:700; color:var(--g2);
+  letter-spacing:.04em; }
+.hrow .ho{ font-weight:700; font-size:15px; font-family:var(--ff-head); word-break:auto-phrase; overflow-wrap:anywhere; }
+@media (max-width:700px){ .hrow .hx{ grid-column:1 / -1; color:var(--g1); } }
+
+/* ══ 脚注 ══ */
+.ph{ color:var(--g2); background:var(--acl2); padding:0 4px; font-weight:700; }
+footer{ background:var(--bk); color:#fff; margin-top:72px; }
+footer .w{ padding-top:44px; padding-bottom:44px; }
+footer h2{ font-size:20px!important; font-weight:900; margin:0 0 14px; letter-spacing:.04em; }
+footer p{ font-size:15px; color:#cfcfcf; line-height:1.95; margin:0 0 10px; max-width:48em; }
+footer .fl{ display:flex; flex-wrap:wrap; gap:8px 22px; margin-top:20px;
+  border-top:1px solid #333; padding-top:18px; font-size:13.5px; color:#9a9a9a; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="w">
+    <div class="logo">Jev<span>ソリューション</span><span class="lsub">　資料インデックス</span></div>
+    <nav class="hn">
+      <a href="#direct">直販</a>
+      <a href="#oem">OEM</a>
+      <a href="#hist" class="hlast">更新履歴</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="w">
+    <div class="hl">
+      <span class="chip">INDEX</span><span class="chipn">Jevソリューション</span>
+      <h1>判断を、仕組みにする。<br><em>Jevソリューション</em>。</h1>
+      <p class="sub">経営と現場の「これは通していいのか」を、毎回ゼロから考えない。判断特化AI <b>Jev</b> を業務に組み込む<b>A 直販</b>と、Jevを使って自社サービスをつくる<b>B OEM</b>。</p>
+      <p class="sub">関連する資料はすべてこのページからたどれます。</p>
+      <div class="stamp">
+        <span>最終更新　<b>2026年9月21日</b></span>
+      </div>
+    </div>
+    <aside class="tally">
+      <div class="trow">
+        <span class="tk tk-a">A</span><span class="tl">直販</span><span class="tv">4<i>点</i></span>
+      </div>
+      <div class="trow">
+        <span class="tk tk-b">B</span><span class="tl">OEM</span><span class="tv">4<i>点</i></span>
+      </div>
+      <p class="tnote">資料は順次公開します</p>
+    </aside>
+  </div>
+</section>
+
+<section class="blk" id="live">
+  <div class="w">
+    <div class="shead">
+      <div class="sl"><h2>公開済みのページ</h2></div>
+      <span class="sn">LIVE</span>
+    </div>
+    <p class="sdesc">いま実際に見られるページです。資料一式は下のA・Bの区分で順次公開します。</p>
+    <div class="cards">
+      <div class="card flag lnk" id="live1">
+        <a class="clink" href="../sonoba-flow/">その場フロー サービスサイトを開く</a>
+        <div class="ctop"><span class="cno">LIVE</span><span class="bg new">NEW</span></div>
+        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="6" rx="1"/><rect x="14" y="14" width="7" height="6" rx="1"/><path d="M10 7h2.5a1.5 1.5 0 0 1 1.5 1.5V17"/></svg></span><h3>その場フロー<br>サービスサイト</h3></div>
+        <p class="cd">Jevを活用した自社サービス第一弾。会議の音声から業務フロー図をリアルタイムに生成します。2026年9月24日提供開始、先着5社。</p>
+        <div class="curl"><span class="uk">URL</span><span class="uv">/saas/sonoba-flow/</span></div>
+        <div class="cfoot end"><span class="go">開く →</span></div>
+      </div>
+      <div class="card flag lnk" id="live2">
+        <a class="clink" href="https://prtimes.jp/main/html/rd/p/000000395.000042366.html">プレスリリースを開く</a>
+        <div class="ctop"><span class="cno">LIVE</span><span class="bg new">NEW</span></div>
+        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13.5h6"/><path d="M9 17h4"/></svg></span><h3>プレスリリース</h3></div>
+        <p class="cd">Jev導入支援の開始と、その場フローの提供開始をお知らせしたリリースです（2026年9月21日・PR TIMES）。</p>
+        <div class="curl"><span class="uk">URL</span><span class="uv">prtimes.jp／000000395.000042366</span></div>
+        <div class="cfoot end"><span class="go">開く →</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="news">
+  <div class="w">
+    <h2>今回の更新</h2>
+    <p class="nsub"><b>2026年9月21日</b>　更新のあったページには <span class="bg upd">更新</span> <span class="bg new">NEW</span> が付きます。次回以降は、前回のご案内からの差分をここにまとめます。</p>
+    <ul>
+      <li><a href="#live1">
+        <span class="nd">09.21</span>
+        <span class="nt"><i>その場フロー サービスサイト</i>　を公開しました</span>
+        <span class="nw">Jevを活用した自社サービス第一弾。仕組み（Jevとでの4段の処理）と、先行導入の申し込み方法を掲載しています。</span>
+      </a></li>
+      <li><a href="#live2">
+        <span class="nd">09.21</span>
+        <span class="nt"><i>プレスリリース</i>　をPR TIMESで配信しました</span>
+        <span class="nw">Jev導入支援の開始と、その場フローの提供開始（9月24日・先着5社）をお知らせしています。</span>
+      </a></li>
+      <li><a href="#direct">
+        <span class="nd">09.21</span>
+        <span class="nt"><i>このインデックス</i>　を開設しました</span>
+        <span class="nw">直販（A）とOEM（B）の資料をここから一覧できるようにしました。各資料は順次公開します。</span>
+      </a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="blk">
+  <div class="w">
+    <div class="shead">
+      <div class="sl"><h2>2つの提供のかたち</h2></div>
+      <span class="sn">OVERVIEW</span>
+    </div>
+    <p class="sdesc">同じJevですが、<b>使う会社</b>に届けるのか、<b>売る会社</b>と組むのかで、ご案内する内容が変わります。どちらに当たるかで下のブロックを選んでください。</p>
+    <div class="two">
+      <div>
+        <span class="en"><b>A</b>　DIRECT</span>
+        <h3>御社の業務に入れる</h3>
+        <p class="judge">自社で使いたい会社 → こちら</p>
+        <p class="tx">判断のばらつきや属人化に困っている事業会社へ。業務の切り出しから判定基準の設計、Jevの組み込み、運用の定着までをご一緒します。入口は導入相談会、または個別のご相談です。</p>
+      </div>
+      <div>
+        <span class="en"><b>B</b>　OEM / PARTNER</span>
+        <h3>自社サービスをつくる</h3>
+        <p class="judge">自社のお客様に売りたい会社 → こちら</p>
+        <p class="tx">既存顧客に出せる商材を増やしたい士業・制作会社・SaaS事業者へ。御社ブランドでのご提供と、判定ロジックの共同設計、販売資料のご用意までを行います。入口はパートナー説明会、または取扱条件のご相談です。</p>
+      </div>
+    </div>
+    <div class="legend">
+      <span><span class="bg new">NEW</span> 新規公開</span>
+      <span><span class="bg upd">更新</span> 内容を差し替え</span>
+      <span><span class="bg soon">準備中</span> 公開前</span>
+      <span><span class="bg in">社内</span> 社内でのみ使用</span>
+    </div>
+  </div>
+</section>
+
+<section class="blk" id="direct">
+  <div class="w">
+    <div class="shead">
+      <div class="sl"><span class="tk tk-a">A</span><h2>直販</h2></div>
+      <span class="sn">A-01 — A-04</span>
+    </div>
+
+    <p class="sdesc">Jevを<b>御社の業務に組み込む</b>ための資料です。使う会社へ直接ご提供します。</p>
+
+    <div class="cards">
+
+      <div class="card" id="c01">
+        
+        <div class="ctop"><span class="cno">A-01</span><span class="bg soon">準備中</span></div>
+        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13.5h6"/><path d="M9 17h4"/></svg></span><h3>サービス紹介ページ</h3></div>
+        <p class="cd">Jevで何ができて、どこまでやって、いくらなのか。検討中の会社にまず見ていただく1枚。</p>
+        <div class="curl"><span class="uk">URL</span><span class="uv">公開時にこのページでご案内します</span></div>
+        <div class="cfoot end"><span class="go mute">準備中</span></div>
+      </div>
+
+      <div class="card" id="c02">
+        
+        <div class="ctop"><span class="cno">A-02</span><span class="bg soon">準備中</span></div>
+        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/><path d="M8.5 21h7"/></svg></span><h3>導入相談会<br>募集ページ</h3></div>
+        <p class="cd">「自社のどの業務なら任せられるか」をその場で切り分けて持ち帰っていただく会。日程・定員・申込はこちら。</p>
+        <div class="curl"><span class="uk">URL</span><span class="uv">公開時にこのページでご案内します</span></div>
+        <div class="cfoot end"><span class="go mute">準備中</span></div>
+      </div>
+
+      <div class="card" id="c03">
+        
+        <div class="ctop"><span class="cno">A-03</span><span class="bg soon">準備中</span></div>
+        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4"/><path d="M8.5 20h7"/><path d="M8.5 12.5v-2"/><path d="M12 12.5v-4"/><path d="M15.5 12.5v-3"/></svg></span><h3>導入相談会<br>投影資料</h3></div>
+        <p class="cd">相談会当日にお見せしている資料。話す順番と補足を併記しているため、担当者が変わっても同じ内容をご説明できます。</p>
+        <div class="curl"><span class="uk">URL</span><span class="uv">公開時にこのページでご案内します</span></div>
+        <div class="cfoot end"><span class="go mute">準備中</span></div>
+      </div>
+
+      <div class="card" id="c04">
+        <div class="ctop"><span class="cno">A-04</span><span class="bg in">社内</span></div>
+        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5a2 2 0 0 1-2 2H8.5L4.5 20V6a2 2 0 0 1 2-2h11.5a2 2 0 0 1 2 2z"/><path d="M8.5 9h8"/><path d="M8.5 12.5h5"/></svg></span><h3>商談時の説明ノート</h3></div>
+        <p class="cd">よくいただくご質問と、その回答の整理。担当者ごとに説明がぶれないようにするための社内資料です。</p>
+        <div class="curl"><span class="uk">URL</span><span class="uv">社内共有のため、このページからは開けません</span></div>
+        <div class="cfoot end"><span class="go mute">社内限</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="blk" id="oem">
+  <div class="w">
+    <div class="shead">
+      <div class="sl"><span class="tk tk-b">B</span><h2>OEM</h2></div>
+      <span class="sn">B-01 — B-04</span>
+    </div>
+    <p class="sdesc">Jevを<b>御社ブランドの商材</b>として扱っていただく場合の資料です。<b>提供の有無はサービスごとに異なります。</b></p>
+
+    <div class="cards">
+
+      <div class="card" id="c05">
+        
+        <div class="ctop"><span class="cno">B-01</span><span class="bg soon">準備中</span></div>
+        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5 12 4l9 4.5-9 4.5z"/><path d="m3 13.5 9 4.5 9-4.5"/><path d="m3 17.5 9 4.5 9-4.5" opacity=".4"/></svg></span><h3>OEM提供のご案内</h3></div>
+        <p class="cd">御社がやること、弊社がやること。提供範囲と責任の分かれ目、御社側で必要になる工数を1枚にまとめています。</p>
+        <div class="curl"><span class="uk">URL</span><span class="uv">公開時にこのページでご案内します</span></div>
+        <div class="cfoot end"><span class="go mute">準備中</span></div>
+      </div>
+
+      <div class="card" id="c06">
+        
+        <div class="ctop"><span class="cno">B-02</span><span class="bg soon">準備中</span></div>
+        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/><path d="M8.5 21h7"/></svg></span><h3>パートナー説明会<br>募集ページ</h3></div>
+        <p class="cd">取り扱いを検討される会社向けの説明会。既存のお客様にどう出すか、という話を中心にしています。</p>
+        <div class="curl"><span class="uk">URL</span><span class="uv">公開時にこのページでご案内します</span></div>
+        <div class="cfoot end"><span class="go mute">準備中</span></div>
+      </div>
+
+      <div class="card off" id="c07">
+        <div class="ctop"><span class="cno">B-03</span><span class="bg soon">準備中</span></div>
+        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4"/><path d="M8.5 20h7"/><path d="M8.5 12.5v-2"/><path d="M12 12.5v-4"/><path d="M15.5 12.5v-3"/></svg></span><h3>パートナー説明会<br>投影資料</h3></div>
+        <p class="cd">説明会当日の投影資料。現在作成中です。公開予定は <span class="ph">【調整中】</span>。</p>
+        <div class="curl"><span class="uk">URL</span><span class="uv">公開時にこのページでご案内します</span></div>
+        <div class="cfoot"><span>—</span><span class="go mute">準備中</span></div>
+      </div>
+
+      <div class="card" id="c08">
+        <div class="ctop"><span class="cno">B-04</span><span class="bg in">社内</span></div>
+        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5a2 2 0 0 1-2 2H8.5L4.5 20V6a2 2 0 0 1 2-2h11.5a2 2 0 0 1 2 2z"/><path d="M8.5 9h8"/><path d="M8.5 12.5h5"/></svg></span><h3>パートナー向け<br>説明ノート</h3></div>
+        <p class="cd">取り扱いのご相談でいただくご質問の整理。御社からお客様へご説明いただく際の補足も収録しています。</p>
+        <div class="curl"><span class="uk">URL</span><span class="uv">社内共有のため、このページからは開けません</span></div>
+        <div class="cfoot end"><span class="go mute">社内限</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="blk" id="hist">
+  <div class="w">
+    <div class="shead">
+      <div class="sl"><h2>更新履歴</h2></div>
+      <span class="sn">HISTORY</span>
+    </div>
+    <p class="sdesc">直近の更新をまとめています。</p>
+    <div class="hist">
+      <div class="hrow"><span class="hd">2026.09.21</span><span class="ho">その場フロー</span><span class="hx">サービスサイトを公開。仕組みと先行導入の申し込み方法を掲載。</span></div>
+      <div class="hrow"><span class="hd">2026.09.21</span><span class="ho">プレスリリース</span><span class="hx">PR TIMESで配信。Jev導入支援の開始と、その場フローの提供開始を告知。</span></div>
+      <div class="hrow"><span class="hd">2026.09.21</span><span class="ho">このインデックス</span><span class="hx">開設。直販4点・OEM4点の構成で、順次公開していきます。</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="w">
+    <h2>このページについて</h2>
+    <p>Jevソリューションに関する資料の一覧です。各資料は随時更新されるため、お手元に保存されたものではなく、このページからお開きください。更新があった資料には印を付けて、どこが変わったかを上部にまとめています。</p>
+    <p>記載内容に関するお問い合わせは、担当までご連絡ください。</p>
+    <div class="fl">
+      <span>Jevソリューション 資料インデックス</span>
+      <span>最終更新 2026年9月21日</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
