@@ -99,7 +99,6 @@ body{ margin:0; background:var(--paper); color:var(--ink);
 .fig{ position:sticky; top:20px; }
 .fig svg{ display:block; width:100%; height:auto; background:var(--paper); }
 .fig figcaption{ margin:12px 0 0; color:var(--gray); }
-.fig .fno2{ margin-top:34px; }
 .fig .fno{ display:block; margin:0 0 10px; font-family:var(--en); font-size:11.5px;
   font-weight:900; letter-spacing:.16em; color:var(--gray2); }
 @media (max-width:900px){
@@ -124,6 +123,7 @@ body{ margin:0; background:var(--paper); color:var(--ink);
 .side{ margin:26px 0 0; }
 .side+.side{ margin-top:34px; padding-top:30px; border-top:1px solid var(--line); }
 .side h3{ margin:0 0 10px; font-family:var(--mincho); font-size:16.5px; }
+.side + p{ margin-top:32px; }
 @media (max-width:760px){ .two{ grid-template-columns:1fr; gap:22px; } }
 .two h3{ margin:0 0 10px; font-family:var(--mincho); font-size:16.5px; }
 .two p{ margin:0; font-size:15.5px; color:var(--ink2); }
@@ -150,7 +150,7 @@ body{ margin:0; background:var(--paper); color:var(--ink);
 .src{ margin:22px 0 0; padding-top:14px; border-top:1px solid var(--line2);
   font-size:12.5px; color:var(--gray2); line-height:1.8; }
 .src a{ color:var(--navy); font-weight:700; }
-@media (max-width:500px){ .go a, .mn a, .tbl a, .src a{ display:inline-block; padding:12px 0; } }
+@media (max-width:500px){ .go a, .mn a, .tbl a, .src a, .sec .rd a{ display:inline-block; padding:12px 0; } }
 
 .btns{ margin:26px 0 0; display:flex; gap:14px; flex-wrap:wrap; }
 .btn{ display:inline-block; padding:16px 26px; background:var(--navy); color:#fff;
@@ -169,7 +169,7 @@ body{ margin:0; background:var(--paper); color:var(--ink);
 .sec.solo .w{ grid-template-columns:1fr; padding-top:84px; padding-bottom:84px; }
 .solobody{ max-width:52em; margin:0 auto; }
 .sec.solo .no .nm{ color:#a9c0d6; }
-.sec.solo .no .kn{ color:#7f96ae; }
+.sec.solo .no .kn{ color:#a9c0d6; }
 .sec.solo h2{ color:#ffffff; }
 .sec.solo .rd{ color:#dce6f0; }
 .solofno{ display:block; margin:34px 0 10px; font-family:var(--en); font-size:11.5px;
@@ -181,12 +181,13 @@ body{ margin:0; background:var(--paper); color:var(--ink);
   letter-spacing:.16em; color:#a9c0d6; }
 .sec.solo .rec h3{ margin:0 0 4px; font-family:var(--mincho); font-weight:700; color:#ffffff;
   font-size:clamp(1.2rem,2.6vw,1.6rem); line-height:1.5; }
-.rec .pr{ margin:0 0 16px; font-size:14px; font-weight:700; color:#a9c0d6; letter-spacing:.04em; }
+.rec .who{ margin:0 0 16px; font-size:15px; font-weight:700; color:#ffffff; }
+.rec .pr{ margin:0 0 8px; font-size:14px; font-weight:700; color:#a9c0d6; letter-spacing:.04em; }
 .sec.solo .rec p{ margin:0 0 14px; color:#dce6f0; }
 .sec.solo .rec p:last-child{ margin-bottom:0; }
 .sec.solo .rec em{ font-style:normal; color:#ffffff; font-weight:700;
   border-bottom:2px solid rgba(255,255,255,.55); padding-bottom:2px; }
-.pledge{ margin:40px 0 0; padding:30px 28px; border:2px solid #ffffff; }
+.pledge{ margin:52px 0 0; padding:30px 28px; border:2px solid #ffffff; }
 .pledge .pl{ margin:0; font-family:var(--mincho); font-weight:700; color:#ffffff;
   font-size:clamp(1.15rem,2.6vw,1.6rem); line-height:1.7; }
 .solonote{ margin:34px 0 0; padding:22px 24px; background:rgba(255,255,255,.08);
@@ -249,12 +250,11 @@ footer .co dd{ margin:0; padding:9px 0; border-bottom:1px solid var(--line2); }
     <p class="sub">事業をやめれば、商品は消えます。<br>集めたお客様は、事業を変えても残ります。</p>
     <p class="mn">創業前の方、創業から12か月以内の方へ。何から手を付けるかの話です。</p>
     <div class="q"><p data-keep-phrase>社会人になってから今日まで、出会った全員に<span class="nobr">「LINE登録して」</span>と案内していたら——いま、何人いたと思いますか。</p></div>
-    <p class="rd">やることは山ほどありますが、順番を間違えなければ、創業してからの1年は変わります。この資料は、<b>何から手を付けるかの決め方</b>を3つの原則にまとめたものです。</p>
+    <p class="rd">やることは山ほどありますが、順番を間違えなければ、創業してからの1年は変わります。この資料は前半で、<b>何から手を付けるかの決め方</b>を3つの原則にまとめます。後半で、その順番どおりに使える弊社の<b>創業支援パック</b>をご案内します。対象は創業前の方と、創業から12か月以内の方です。</p>
     <p class="go">先に自分の順番だけ知りたい方は、最大18問の適性診断へ。　<a href="../sogyo/">適性診断を受ける →</a></p>
     </div>
     <figure class="fig">
-      <span class="fno">創業の秘訣</span>
-      <svg viewBox="0 0 320 262" role="img" aria-label="営業力が0なら売上も0になり、両方が立っていて初めて売上が立つことを示す図"><g font-family="Noto Sans JP, sans-serif"><text x="20" y="24" text-anchor="start" font-size="12.5" font-weight="700" fill="#6b6b6b">売れる営業力が0のとき</text><rect x="8" y="34" width="88" height="56" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="52" y="68" text-anchor="middle" font-size="13" font-weight="700" fill="#111111">商品あり</text><text x="107" y="69" text-anchor="middle" font-size="17" font-weight="700" fill="#6b6b6b">×</text><rect x="120" y="34" width="88" height="56" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="164" y="68" text-anchor="middle" font-size="13" font-weight="700" fill="#111111">営業力 0</text><text x="219" y="69" text-anchor="middle" font-size="17" font-weight="700" fill="#6b6b6b">＝</text><rect x="232" y="34" width="80" height="56" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="272" y="68" text-anchor="middle" font-size="14" font-weight="700" fill="#6b6b6b">売上 0</text><line x1="8" y1="118" x2="312" y2="118" stroke="#dcdcdc" stroke-width="1.2"/><text x="20" y="144" text-anchor="start" font-size="12.5" font-weight="700" fill="#6b6b6b">両方が立っているとき</text><rect x="8" y="154" width="88" height="56" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="52" y="188" text-anchor="middle" font-size="13" font-weight="700" fill="#111111">商品あり</text><text x="107" y="189" text-anchor="middle" font-size="17" font-weight="700" fill="#6b6b6b">×</text><rect x="120" y="154" width="88" height="56" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="164" y="188" text-anchor="middle" font-size="13" font-weight="700" fill="#111111">営業力あり</text><text x="219" y="189" text-anchor="middle" font-size="17" font-weight="700" fill="#6b6b6b">＝</text><rect x="232" y="154" width="80" height="56" fill="#1b3a5c" stroke="#1b3a5c" stroke-width="1.4"/><text x="272" y="188" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">売上</text><text x="160" y="250" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">掛け算なので、足し算では埋まりません</text></g></svg>
+      <svg viewBox="0 0 320 300" role="img" aria-label="売れる商品かける売れる営業力イコール売上"><g font-family="Noto Sans JP, sans-serif"><defs><marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#9aa0a6"/></marker></defs><rect x="10" y="10" width="300" height="64" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="160" y="49" text-anchor="middle" font-size="19" font-weight="700" fill="#111111">売れる商品</text><text x="160" y="105" text-anchor="middle" font-size="26" font-weight="700" fill="#6b6b6b">×</text><rect x="10" y="120" width="300" height="64" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="160" y="159" text-anchor="middle" font-size="19" font-weight="700" fill="#111111">売れる営業力</text><text x="160" y="215" text-anchor="middle" font-size="26" font-weight="700" fill="#6b6b6b">＝</text><rect x="10" y="230" width="300" height="60" fill="#1b3a5c" stroke="#1b3a5c" stroke-width="1.4"/><text x="160" y="268" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff">売上</text></g></svg>
     </figure>
   </div>
 </section>
@@ -285,7 +285,7 @@ footer .co dd{ margin:0; padding:9px 0; border-bottom:1px solid var(--line2); }
       <p class="rd">感覚の話ではありません。日本政策金融公庫が毎年行っている調査に、はっきり出ています。</p>
       <p>開業のときに苦労したことを三つまで挙げてもらうと、<b>資金繰り・資金調達が56.9％、顧客・販路の開拓が49.9％。</b>次が財務・税務・法務に関する知識の不足で36.4％です。お金と、お客様。悩みはこの2つに集まります。</p>
       <p>同じ方たちに「いま苦労していること」を聞くと、順番が入れ替わります。<b>資金繰り・資金調達は36.2％まで下がり、顧客・販路の開拓は48.8％。ほとんど下がりません。</b></p>
-      <p>お金の悩みは、事業が回り始めれば下がります。<em>お客様の悩みは、下がりません。</em>20.7ポイント下がるものと、1.1ポイントしか下がらないもの。足りないままになるのは、後のほうです。</p>
+      <p>お金の悩みは、時間がたつと下がっています。<em>お客様の悩みは、下がりません。</em>20.7ポイント下がるものと、1.1ポイントしか下がらないもの。足りないままになるのは、後のほうです。</p>
       <p class="src">出典：日本政策金融公庫総合研究所「2025年度新規開業実態調査」（2025年12月5日公表）。開業時に苦労したこと n＝2,091、現在苦労していること n＝2,078。いずれも三つまでの複数回答。<a href="https://www.jfc.go.jp/n/findings/eb_findings.html" target="_blank" rel="noopener">調査を見る</a></p>
     </div>
     <figure class="fig">
@@ -316,7 +316,7 @@ footer .co dd{ margin:0; padding:9px 0; border-bottom:1px solid var(--line2); }
     </div>
     <figure class="fig">
       <span class="fno">図 2</span>
-      <svg viewBox="0 0 320 300" role="img" aria-label="売れる商品かける売れる営業力イコール売上"><g font-family="Noto Sans JP, sans-serif"><defs><marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#9aa0a6"/></marker></defs><rect x="10" y="10" width="300" height="64" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="160" y="49" text-anchor="middle" font-size="19" font-weight="700" fill="#111111">売れる商品</text><text x="160" y="105" text-anchor="middle" font-size="26" font-weight="700" fill="#6b6b6b">×</text><rect x="10" y="120" width="300" height="64" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="160" y="159" text-anchor="middle" font-size="19" font-weight="700" fill="#111111">売れる営業力</text><text x="160" y="215" text-anchor="middle" font-size="26" font-weight="700" fill="#6b6b6b">＝</text><rect x="10" y="230" width="300" height="60" fill="#1b3a5c" stroke="#1b3a5c" stroke-width="1.4"/><text x="160" y="268" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff">売上</text></g></svg>
+      <svg viewBox="0 0 320 262" role="img" aria-label="営業力が0なら売上も0になり、両方が立っていて初めて売上が立つことを示す図"><g font-family="Noto Sans JP, sans-serif"><text x="20" y="24" text-anchor="start" font-size="12.5" font-weight="700" fill="#6b6b6b">売れる営業力が0のとき</text><rect x="8" y="34" width="88" height="56" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="52" y="68" text-anchor="middle" font-size="13" font-weight="700" fill="#111111">商品あり</text><text x="107" y="69" text-anchor="middle" font-size="17" font-weight="700" fill="#6b6b6b">×</text><rect x="120" y="34" width="88" height="56" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="164" y="68" text-anchor="middle" font-size="13" font-weight="700" fill="#111111">営業力 0</text><text x="219" y="69" text-anchor="middle" font-size="17" font-weight="700" fill="#6b6b6b">＝</text><rect x="232" y="34" width="80" height="56" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="272" y="68" text-anchor="middle" font-size="14" font-weight="700" fill="#6b6b6b">売上 0</text><line x1="8" y1="118" x2="312" y2="118" stroke="#dcdcdc" stroke-width="1.2"/><text x="20" y="144" text-anchor="start" font-size="12.5" font-weight="700" fill="#6b6b6b">両方が立っているとき</text><rect x="8" y="154" width="88" height="56" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="52" y="188" text-anchor="middle" font-size="13" font-weight="700" fill="#111111">商品あり</text><text x="107" y="189" text-anchor="middle" font-size="17" font-weight="700" fill="#6b6b6b">×</text><rect x="120" y="154" width="88" height="56" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="164" y="188" text-anchor="middle" font-size="13" font-weight="700" fill="#111111">営業力あり</text><text x="219" y="189" text-anchor="middle" font-size="17" font-weight="700" fill="#6b6b6b">＝</text><rect x="232" y="154" width="80" height="56" fill="#1b3a5c" stroke="#1b3a5c" stroke-width="1.4"/><text x="272" y="188" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">売上</text><text x="160" y="250" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">掛け算なので、足し算では埋まりません</text></g></svg>
     </figure>
   </div>
 </section>
@@ -328,13 +328,13 @@ footer .co dd{ margin:0; padding:9px 0; border-bottom:1px solid var(--line2); }
       <h2>どちらから積んでも正解です。<br>ただし商品は仕入れられて、<br>お客様は買えません。</h2>
       <p class="rd">どちらも正解ですが、手に入るまでの時間がまったく違います。ここが、どちらから始めるかを分けます。</p>
       <p><b>商品は仕入れられます。</b>代理販売なら成果報酬で、在庫も持ちません。かかるお金は小さく、時間もほとんどかかりません。</p>
-      <p><b>お客様は買えません。</b>広告で買うことはできますが、金額は非現実的なほど大きくなり、年単位の時間がかかります。商品づくりに時間がかかると思われがちですが、実際に時間がかかるのは、お客様を集めるほうです。</p>
+      <p><b>お客様は買えません。</b>買おうとすれば広告しかありませんが、その金額は非現実的なほど大きくなり、届くまでに年単位の時間がかかります。商品づくりに時間がかかると思われがちですが、実際に時間がかかるのは、お客様を集めるほうです。</p>
       <p>手に入れやすさでは、商品のほうが有利です。ところが<b>事業を変えたときだけ、有利不利が入れ替わります。</b>バーをやめれば、バーの商品力は消えます。<b>けれども、集めたお客様は事業を変えても残ります。</b>Web制作に移っても、人材紹介を始めても、そのまま持っていけます。先にお客様を積んだ方は、何度でもやり直せます。</p>
       <p><em>昔から言われる「お客様ありき」とは、このことです。</em></p>
     </div>
     <figure class="fig">
       <span class="fno">図 3</span>
-      <svg viewBox="0 0 324 428" role="img" aria-label="入手・かかる時間・かかるお金・事業を変えたときの4つの軸で商品とお客様を比べた表。商品は入手も時間もお金も有利だが、事業を変えると消える。お客様は買えず年単位で広告費も要るが、事業を変えても残る"><g font-family="Noto Sans JP, sans-serif"><text x="156.0" y="26" text-anchor="middle" font-size="14" font-weight="700" fill="#111111">商品</text><text x="264.0" y="26" text-anchor="middle" font-size="14" font-weight="700" fill="#111111">お客様</text><line x1="8" y1="36" x2="316" y2="36" stroke="#dcdcdc" stroke-width="1.2"/><text x="8" y="80.0" font-size="11.5" font-weight="700" fill="#6b6b6b">入手</text><rect x="104" y="44" width="104" height="64" fill="#e8eef6" stroke="#c9d7e6" stroke-width="1.2"/><text x="156.0" y="82.0" text-anchor="middle" font-size="14.5" font-weight="700" fill="#111111">仕入れられる</text><rect x="212" y="44" width="104" height="64" fill="#fbeaea" stroke="#e6c6c6" stroke-width="1.2"/><text x="264.0" y="82.0" text-anchor="middle" font-size="14.5" font-weight="700" fill="#111111">買えない</text><text x="8" y="150.0" font-size="11.5" font-weight="700" fill="#6b6b6b">かかる時間</text><rect x="104" y="114" width="104" height="64" fill="#e8eef6" stroke="#c9d7e6" stroke-width="1.2"/><text x="156.0" y="152.0" text-anchor="middle" font-size="14.5" font-weight="700" fill="#111111">ほぼゼロ</text><rect x="212" y="114" width="104" height="64" fill="#fbeaea" stroke="#e6c6c6" stroke-width="1.2"/><text x="264.0" y="152.0" text-anchor="middle" font-size="14.5" font-weight="700" fill="#111111">年単位</text><text x="8" y="220.0" font-size="11.5" font-weight="700" fill="#6b6b6b">かかるお金</text><rect x="104" y="184" width="104" height="64" fill="#e8eef6" stroke="#c9d7e6" stroke-width="1.2"/><text x="156.0" y="213.0" text-anchor="middle" font-size="13" font-weight="700" fill="#111111">成果報酬も</text><text x="156.0" y="233.0" text-anchor="middle" font-size="13" font-weight="700" fill="#111111">選べる</text><rect x="212" y="184" width="104" height="64" fill="#fbeaea" stroke="#e6c6c6" stroke-width="1.2"/><text x="264.0" y="222.0" text-anchor="middle" font-size="14.5" font-weight="700" fill="#111111">広告費が要る</text><text x="8" y="290.0" font-size="11.5" font-weight="700" fill="#6b6b6b">事業を変えたとき</text><rect x="104" y="254" width="104" height="64" fill="#fbeaea" stroke="#e6c6c6" stroke-width="1.2"/><text x="156.0" y="292.0" text-anchor="middle" font-size="14.5" font-weight="700" fill="#111111">消える</text><rect x="212" y="254" width="104" height="64" fill="#e8eef6" stroke="#c9d7e6" stroke-width="1.2"/><text x="264.0" y="292.0" text-anchor="middle" font-size="14.5" font-weight="700" fill="#111111">残る</text><line x1="8" y1="330" x2="316" y2="330" stroke="#dcdcdc" stroke-width="1.2"/><text x="162" y="384" text-anchor="middle" font-size="34" font-weight="700" fill="#1b3a5c" font-family="Noto Serif JP, serif" letter-spacing="2">お客様ありき</text><text x="162" y="412" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">昔から言われるとおりです</text></g></svg>
+      <svg viewBox="0 0 324 456" role="img" aria-label="入手・かかる時間・かかるお金・事業を変えたときの4つの軸で商品とお客様を比べた表。有利なマスは紺の縦線、不利なマスは赤茶の縦線で示す。商品は入手も時間もお金も有利だが事業を変えると消える。お客様は買えず年単位で広告費も要るが、事業を変えても残る"><g font-family="Noto Sans JP, sans-serif"><rect x="104" y="4" width="11" height="11" fill="#e8eef6" stroke="#1b3a5c" stroke-width="2.4"/><text x="121" y="14" font-size="11" font-weight="700" fill="#6b6b6b">有利</text><rect x="164" y="4" width="11" height="11" fill="#fbeaea" stroke="#c98b8b" stroke-width="2.4"/><text x="181" y="14" font-size="11" font-weight="700" fill="#6b6b6b">不利</text><text x="156.0" y="54" text-anchor="middle" font-size="14" font-weight="700" fill="#111111">商品</text><text x="264.0" y="54" text-anchor="middle" font-size="14" font-weight="700" fill="#111111">お客様</text><line x1="8" y1="64" x2="316" y2="64" stroke="#dcdcdc" stroke-width="1.2"/><text x="8" y="108.0" font-size="11.5" font-weight="700" fill="#6b6b6b">入手</text><rect x="104" y="72" width="104" height="64" fill="#e8eef6" stroke="#c9d7e6" stroke-width="1.2"/><rect x="104" y="72" width="4" height="64" fill="#1b3a5c"/><text x="158.0" y="110.0" text-anchor="middle" font-size="14.5" font-weight="700" fill="#111111">仕入れられる</text><rect x="212" y="72" width="104" height="64" fill="#fbeaea" stroke="#e6c6c6" stroke-width="1.2"/><rect x="212" y="72" width="4" height="64" fill="#c98b8b"/><text x="266.0" y="110.0" text-anchor="middle" font-size="14.5" font-weight="700" fill="#111111">買えない</text><text x="8" y="178.0" font-size="11.5" font-weight="700" fill="#6b6b6b">かかる時間</text><rect x="104" y="142" width="104" height="64" fill="#e8eef6" stroke="#c9d7e6" stroke-width="1.2"/><rect x="104" y="142" width="4" height="64" fill="#1b3a5c"/><text x="158.0" y="180.0" text-anchor="middle" font-size="14.5" font-weight="700" fill="#111111">ほぼゼロ</text><rect x="212" y="142" width="104" height="64" fill="#fbeaea" stroke="#e6c6c6" stroke-width="1.2"/><rect x="212" y="142" width="4" height="64" fill="#c98b8b"/><text x="266.0" y="180.0" text-anchor="middle" font-size="14.5" font-weight="700" fill="#111111">年単位</text><text x="8" y="248.0" font-size="11.5" font-weight="700" fill="#6b6b6b">かかるお金</text><rect x="104" y="212" width="104" height="64" fill="#e8eef6" stroke="#c9d7e6" stroke-width="1.2"/><rect x="104" y="212" width="4" height="64" fill="#1b3a5c"/><text x="158.0" y="241.0" text-anchor="middle" font-size="13" font-weight="700" fill="#111111">成果報酬も</text><text x="158.0" y="261.0" text-anchor="middle" font-size="13" font-weight="700" fill="#111111">選べる</text><rect x="212" y="212" width="104" height="64" fill="#fbeaea" stroke="#e6c6c6" stroke-width="1.2"/><rect x="212" y="212" width="4" height="64" fill="#c98b8b"/><text x="266.0" y="250.0" text-anchor="middle" font-size="14.5" font-weight="700" fill="#111111">広告費が要る</text><text x="8" y="318.0" font-size="11.5" font-weight="700" fill="#6b6b6b">事業を変えたとき</text><rect x="104" y="282" width="104" height="64" fill="#fbeaea" stroke="#e6c6c6" stroke-width="1.2"/><rect x="104" y="282" width="4" height="64" fill="#c98b8b"/><text x="158.0" y="320.0" text-anchor="middle" font-size="14.5" font-weight="700" fill="#111111">消える</text><rect x="212" y="282" width="104" height="64" fill="#e8eef6" stroke="#c9d7e6" stroke-width="1.2"/><rect x="212" y="282" width="4" height="64" fill="#1b3a5c"/><text x="266.0" y="320.0" text-anchor="middle" font-size="14.5" font-weight="700" fill="#111111">残る</text><line x1="8" y1="358" x2="316" y2="358" stroke="#dcdcdc" stroke-width="1.2"/><text x="162" y="412" text-anchor="middle" font-size="34" font-weight="700" fill="#1b3a5c" font-family="Noto Serif JP, serif" letter-spacing="2">お客様ありき</text><text x="162" y="440" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">昔から言われるとおりです</text></g></svg>
       <figcaption>最後の1行だけ、有利不利が入れ替わります。</figcaption>
     </figure>
   </div>
@@ -347,12 +347,12 @@ footer .co dd{ margin:0; padding:9px 0; border-bottom:1px solid var(--line2); }
       <p class="epbig">閑話休題</p>
       <h3>夢を語り続けた人の話</h3>
       <p>昔から「自分のお店をやりたい」と言い続けている女性がいました。出会う人みんなに、会うたびに言っていたそうです。</p>
-      <p>新卒で入った会社はうまくいかず、派遣社員として大手のIT企業へ移ります。そこで気に入られて正社員になり、2年間勤めました。その間も「こんなお店をやりたい」「いくつも立ち上げてみたい」と、変わらず語り続けていました。</p>
+      <p>会社は何度か変わりました。その間もずっと「こんなお店をやりたい」「いくつも立ち上げてみたい」と、会う人ごとに語り続けていました。</p>
       <p>2年後、その会社を辞めて、都内にホワイトニングのお店を開きます。オープンまでの1か月、準備の過程をInstagramで流し続けました。</p>
       <div class="epill"><svg viewBox="0 0 660 244" role="img" aria-label="夢を語り続けた人のもとへ、その話を聞いてきた人たちが開店の日に集まってくる様子の線画"><g fill="none"><line x1="16" y1="221" x2="644" y2="221" stroke="#7f96ae" stroke-width="1.4"/><rect x="336" y="116" width="268" height="105" fill="none" stroke="#ffffff" stroke-width="2"/><path d="M326 116 L614 116 L600 86 L340 86 Z" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/><line x1="340" y1="86" x2="336" y2="116" stroke="#7f96ae" stroke-width="1.3"/><line x1="385" y1="86" x2="381" y2="116" stroke="#7f96ae" stroke-width="1.3"/><line x1="430" y1="86" x2="426" y2="116" stroke="#7f96ae" stroke-width="1.3"/><line x1="475" y1="86" x2="471" y2="116" stroke="#7f96ae" stroke-width="1.3"/><line x1="520" y1="86" x2="516" y2="116" stroke="#7f96ae" stroke-width="1.3"/><line x1="565" y1="86" x2="561" y2="116" stroke="#7f96ae" stroke-width="1.3"/><rect x="392" y="52" width="156" height="26" fill="none" stroke="#7f96ae" stroke-width="1.6"/><rect x="446" y="150" width="70" height="71" fill="none" stroke="#ffffff" stroke-width="2"/><circle cx="504" cy="186" r="3.2" fill="#ffffff"/><rect x="360" y="148" width="62" height="46" fill="none" stroke="#c6d4e2" stroke-width="1.6"/><rect x="540" y="148" width="46" height="46" fill="none" stroke="#c6d4e2" stroke-width="1.6"/><circle cx="44" cy="178" r="8.5" fill="none" stroke="#c6d4e2" stroke-width="1.8"/><path d="M33.5 220 L36.4 193.2 Q44 185.6 51.6 193.2 L54.5 220 Z" fill="none" stroke="#c6d4e2" stroke-width="1.8" stroke-linejoin="round"/><circle cx="96" cy="178" r="9.5" fill="none" stroke="#c6d4e2" stroke-width="1.8"/><path d="M84.5 220 L87.6 194.8 Q96 186.4 104.4 194.8 L107.5 220 Z" fill="none" stroke="#c6d4e2" stroke-width="1.8" stroke-linejoin="round"/><circle cx="150" cy="178" r="8.1" fill="none" stroke="#c6d4e2" stroke-width="1.8"/><path d="M140.1 220 L142.8 192.4 Q150 185.2 157.2 192.4 L159.9 220 Z" fill="none" stroke="#c6d4e2" stroke-width="1.8" stroke-linejoin="round"/><circle cx="202" cy="178" r="9.0" fill="none" stroke="#c6d4e2" stroke-width="1.8"/><path d="M191.0 220 L194.0 194.0 Q202 186.0 210.0 194.0 L213.0 220 Z" fill="none" stroke="#c6d4e2" stroke-width="1.8" stroke-linejoin="round"/><circle cx="252" cy="178" r="8.3" fill="none" stroke="#c6d4e2" stroke-width="1.8"/><path d="M241.9 220 L244.6 192.7 Q252 185.4 259.4 192.7 L262.1 220 Z" fill="none" stroke="#c6d4e2" stroke-width="1.8" stroke-linejoin="round"/><circle cx="300" cy="178" r="9.2" fill="none" stroke="#c6d4e2" stroke-width="1.8"/><path d="M288.8 220 L291.8 194.3 Q300 186.2 308.2 194.3 L311.2 220 Z" fill="none" stroke="#c6d4e2" stroke-width="1.8" stroke-linejoin="round"/><path d="M84 44 H212 A8 8 0 0 1 220 52 V84 A8 8 0 0 1 212 92 H120 L104 108 V92 H84 A8 8 0 0 1 76 84 V52 A8 8 0 0 1 84 44 Z" fill="none" stroke="#c6d4e2" stroke-width="1.8" stroke-linejoin="round"/><line x1="94" y1="60" x2="202" y2="60" stroke="#7f96ae" stroke-width="1.6"/><line x1="94" y1="72" x2="180" y2="72" stroke="#7f96ae" stroke-width="1.6"/><line x1="94" y1="84" x2="164" y2="84" stroke="#7f96ae" stroke-width="1.6"/></g></svg></div>
       <p>開店の日、たくさんの人が駆けつけました。周りには競合が何軒もあります。特別に安いわけでも、珍しい機械を入れたわけでもありません。<b>集まったのは、彼女が夢を語る姿をずっと見てきた人たちでした。</b>LINEの友だち1,000人ほどと、Instagramで準備を見守っていた人たちです。</p>
       <p>いま彼女は、次のお店の話を始めています。周りはそれを楽しみにしています。</p>
-      <p>この先も、たぶんうまくいきます。<b>今日も1人、LINEの友だちが増えているからです。</b>その人たちが「次は何をやるんだろう」と見ている。だから何を始めても、お店は人で埋まります。</p>
+      <p>この先も、たぶんうまくいきます。<b>今日も1人、LINEの友だちが増えているからです。</b>その人たちが「次は何をやるんだろう」と見ている。次に何を始めても、開ける前から見ている人がいます。</p>
       <p class="epnote">実話です。</p>
       <p class="epbridge">先にお客様を積むというのは、こういうことです。では、自分は<b>お客様</b>と<b>商品</b>の、どちらから積むのか。決め方は次の章です。</p>
     </div>
@@ -374,7 +374,7 @@ footer .co dd{ margin:0; padding:9px 0; border-bottom:1px solid var(--line2); }
     </div>
     <figure class="fig">
       <span class="fno">図 4</span>
-      <svg viewBox="0 0 320 400" role="img" aria-label="会える人が多いかどうかで、商品側から始めるかお客様側から始めるかが決まる図"><g font-family="Noto Sans JP, sans-serif"><defs><marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#9aa0a6"/></marker></defs><rect x="10" y="8" width="300" height="66" fill="#1b3a5c" stroke="#1b3a5c" stroke-width="1.4"/><text x="160" y="40" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">いま、会える人は</text><text x="160" y="62" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">多いですか</text><path d="M160 78 L160 104 L85 104 L85 128" fill="none" stroke="#9aa0a6" stroke-width="1.4" marker-end="url(#a3)"/><path d="M160 78 L160 104 L235 104 L235 128" fill="none" stroke="#9aa0a6" stroke-width="1.4" marker-end="url(#a3)"/><text x="85" y="98" text-anchor="middle" font-size="13" font-weight="700" fill="#1b3a5c">はい</text><text x="235" y="98" text-anchor="middle" font-size="13" font-weight="700" fill="#1b3a5c">いいえ</text><rect x="10" y="136" width="145" height="96" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="82" y="172" text-anchor="middle" font-size="16" font-weight="700" fill="#111111">商品側から</text><text x="82" y="198" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">売るものを</text><text x="82" y="216" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">用意します</text><rect x="165" y="136" width="145" height="96" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="237" y="172" text-anchor="middle" font-size="16" font-weight="700" fill="#111111">お客様側から</text><text x="237" y="198" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">出会いを人脈に</text><text x="237" y="216" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">変えます</text><line x1="10" y1="268" x2="310" y2="268" stroke="#dcdcdc" stroke-width="1.2"/><text x="160" y="300" text-anchor="middle" font-size="14" font-weight="700" fill="#111111">強いほうは補強しない</text><text x="160" y="328" text-anchor="middle" font-size="14" font-weight="700" fill="#111111">弱いほうから埋める</text><text x="160" y="370" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">会える人が多い＝営業力が強い</text></g></svg>
+      <svg viewBox="0 0 320 400" role="img" aria-label="いま連絡が取れる相手が100人以上かどうかで、商品側から始めるかお客様側から始めるかが決まる図"><g font-family="Noto Sans JP, sans-serif"><defs><marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#9aa0a6"/></marker></defs><rect x="10" y="8" width="300" height="66" fill="#1b3a5c" stroke="#1b3a5c" stroke-width="1.4"/><text x="160" y="40" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">いま、連絡が取れる</text><text x="160" y="62" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">相手は100人以上ですか</text><path d="M160 78 L160 104 L85 104 L85 128" fill="none" stroke="#9aa0a6" stroke-width="1.4" marker-end="url(#a3)"/><path d="M160 78 L160 104 L235 104 L235 128" fill="none" stroke="#9aa0a6" stroke-width="1.4" marker-end="url(#a3)"/><text x="85" y="98" text-anchor="middle" font-size="13" font-weight="700" fill="#1b3a5c">はい</text><text x="235" y="98" text-anchor="middle" font-size="13" font-weight="700" fill="#1b3a5c">いいえ</text><rect x="10" y="136" width="145" height="96" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="82" y="172" text-anchor="middle" font-size="16" font-weight="700" fill="#111111">商品側から</text><text x="82" y="198" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">売るものを</text><text x="82" y="216" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">用意します</text><rect x="165" y="136" width="145" height="96" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="237" y="172" text-anchor="middle" font-size="16" font-weight="700" fill="#111111">お客様側から</text><text x="237" y="198" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">出会いを人脈に</text><text x="237" y="216" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">変えます</text><line x1="10" y1="268" x2="310" y2="268" stroke="#dcdcdc" stroke-width="1.2"/><text x="160" y="300" text-anchor="middle" font-size="14" font-weight="700" fill="#111111">強いほうは補強しない</text><text x="160" y="328" text-anchor="middle" font-size="14" font-weight="700" fill="#111111">弱いほうから埋める</text><text x="160" y="370" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">連絡が取れる人の多さ＝営業力の強さ</text></g></svg>
     </figure>
   </div>
 </section>
@@ -384,7 +384,7 @@ footer .co dd{ margin:0; padding:9px 0; border-bottom:1px solid var(--line2); }
     <div>
       <p class="no"><span class="nm">05</span><span class="kn">承 ── 決め方を3つに絞る</span></p>
       <h2>お客様側から始める方の<br>一手目は、<br>引き出しの名刺です。</h2>
-      <p class="rd">お客様の側から始める方の話です。商品側から始める方の一手目は、次の章でご案内します。冒頭の問いに戻ります。</p>
+      <p class="rd">ここはお客様の側から始める方の話です。商品の側から始まる方は、この章を飛ばして<a href="#s06">06</a>へお進みください。では、冒頭の問いに戻ります。</p>
       <div class="q"><p data-keep-phrase>社会人になってから今日まで、出会った全員に<span class="nobr">「LINE登録して」</span>と案内していたら——いま、何人いたと思いますか。</p></div>
       <p>その方たちが手元にいれば、駅前にバーを開いても、Web制作に移っても、人材紹介を始めても、営業はそれなりにできます。</p>
       <p>けれども、過去に出会った方は、もう取り返せません。連絡先が残っていないからです。<b>取り返せるのは、いま手元に残っている名刺とLINEとSNSだけです。</b>だから一手目は、引き出しの名刺を人脈に変えることになります。やることは2つです。<b>出会いを人脈に変えること。その人脈を、切らさずに温め続けること。</b></p>
@@ -405,7 +405,7 @@ footer .co dd{ margin:0; padding:9px 0; border-bottom:1px solid var(--line2); }
     <div>
       <p class="no"><span class="nm">06</span><span class="kn">転 ── 順番どおりに使う</span></p>
       <h2>この順番どおりに使えるよう、<br>13のサービスを<br>まとめました。</h2>
-      <p class="rd">ここからが、ライトアップの<b>創業支援パック</b>のご案内です。ここまでの順番どおりに使えるよう、13のサービスを1つにまとめました。13本から選んでいただくのではありません。13本すべてが、あなたの着手すべき順に並び替わります。商品の側から入る方にも、同じように順番があります。</p>
+      <p class="rd">ここからが、ライトアップの<b>創業支援パック</b>のご案内です。ここまでの順番どおりに使えるよう、13のサービスを1つにまとめました。13本から選んでいただくのではありません。13本すべてが、<b>いますぐ／次に／当座は不要／対象外</b>の4つに整理されます。お客様をつくる側の6本には、さらに着手する順番があります。</p>
       <div class="side">
           <h3>お客様をつくる側　6本</h3>
           <ul class="ml">
@@ -459,9 +459,8 @@ footer .co dd{ margin:0; padding:9px 0; border-bottom:1px solid var(--line2); }
         <div class="r"><dt>AIバード</dt><dd>1サービスにつき12か月で最大12時間。料金内</dd></div>
       </dl>
       <p>1本目に何を選ぶかは、3つの原則で決まります。決まらない場合は、適性診断か、資料の順番シートをお使いください。</p>
-      <h3>途中で変えられます</h3>
-      <p>始める前に、売るものも売り先もすべて決めきるのは、そもそも難しいことです。やってみて初めて分かることのほうが多くあります。</p>
-      <p>創業支援パックでは、ご契約中のサービスを別のサービスへ乗り換えられます。<b>再契約も、初期費用もいただきません。</b>お客様の側と商品の側を安く行き来できることが、このパックの中心です。</p>
+      <p>とはいえ、始める前に売るものも売り先もすべて決めきるのは、そもそも難しいことです。やってみて初めて分かることのほうが多くあります。</p>
+      <p>ですから、ご契約中のサービスは別のサービスへ乗り換えられます。<b>再契約も、初期費用もいただきません。</b>お客様の側と商品の側を、安く行き来できること。これがこのパックの中心です。</p>
       <div class="box">
         <h3>AIバードが12か月つきます</h3>
         <p>AIの家庭教師です。1サービスのご契約につき、12か月で最大12時間。料金の中に入っています。複数ご契約の場合は合算します。サービスにではなくご本人に付くので、使うサービスを変えても途切れません。12か月の起点や使い方の細かい条件は、ご契約の前にご案内します。</p>
@@ -469,8 +468,6 @@ footer .co dd{ margin:0; padding:9px 0; border-bottom:1px solid var(--line2); }
     </div>
     <figure class="fig">
       <span class="fno">図 7</span>
-      <svg viewBox="0 0 320 286" role="img" aria-label="1本目は月3万円ほど、2本目から一部割引、ホームページ制作は36万円で月額なしという料金の図"><g font-family="Noto Sans JP, sans-serif"><rect x="8" y="8" width="304" height="66" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><rect x="8" y="8" width="4" height="66" fill="#1b3a5c"/><text x="26" y="36" text-anchor="start" font-size="14" font-weight="700" fill="#111111">1本目</text><text x="26" y="58" text-anchor="start" font-size="13" font-weight="700" fill="#1b3a5c">月3万円ほど</text><rect x="8" y="84" width="304" height="66" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><rect x="8" y="84" width="4" height="66" fill="#1b3a5c"/><text x="26" y="112" text-anchor="start" font-size="14" font-weight="700" fill="#111111">2本目から</text><text x="26" y="134" text-anchor="start" font-size="13" font-weight="700" fill="#1b3a5c">一部割引あり</text><rect x="8" y="160" width="304" height="66" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><rect x="8" y="160" width="4" height="66" fill="#1b3a5c"/><text x="26" y="188" text-anchor="start" font-size="14" font-weight="700" fill="#111111">ホームページ制作</text><text x="26" y="210" text-anchor="start" font-size="13" font-weight="700" fill="#1b3a5c">36万円・月額なし</text><line x1="8" y1="240" x2="312" y2="240" stroke="#dcdcdc" stroke-width="1.2"/><text x="160" y="270" text-anchor="middle" font-size="13" font-weight="700" fill="#111111">入口は1サービスからです</text></g></svg>
-      <span class="fno fno2">図 8</span>
       <svg viewBox="0 0 320 300" role="img" aria-label="お客様をつくる側と商品をつくる側を、再契約料も初期費用もなく行き来できる図"><g font-family="Noto Sans JP, sans-serif"><defs><marker id="a6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#9aa0a6"/></marker></defs><rect x="10" y="30" width="135" height="90" fill="#f6f6f6" stroke="#dcdcdc" stroke-width="1.4"/><text x="77" y="72" text-anchor="middle" font-size="16" font-weight="700" fill="#1b3a5c">お客様</text><text x="77" y="94" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">をつくる</text><rect x="175" y="30" width="135" height="90" fill="#f6f6f6" stroke="#dcdcdc" stroke-width="1.4"/><text x="242" y="72" text-anchor="middle" font-size="16" font-weight="700" fill="#1b3a5c">商品</text><text x="242" y="94" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">をつくる</text><path d="M145 58 H168" fill="none" stroke="#1b3a5c" stroke-width="1.6" marker-end="url(#a6)"/><path d="M175 96 H152" fill="none" stroke="#1b3a5c" stroke-width="1.6" marker-end="url(#a6)"/><line x1="10" y1="152" x2="310" y2="152" stroke="#dcdcdc" stroke-width="1.2"/><text x="160" y="184" text-anchor="middle" font-size="14" font-weight="700" fill="#111111">再契約料　なし</text><text x="160" y="212" text-anchor="middle" font-size="14" font-weight="700" fill="#111111">初期費用　なし</text><line x1="10" y1="236" x2="310" y2="236" stroke="#dcdcdc" stroke-width="1.2"/><text x="160" y="266" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">AIバードは人に付くので</text><text x="160" y="286" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">乗り換えても途切れません</text></g></svg>
       <figcaption>変えても、初期費用はかかりません。</figcaption>
     </figure>
@@ -482,54 +479,56 @@ footer .co dd{ margin:0; padding:9px 0; border-bottom:1px solid var(--line2); }
     <div class="solobody">
       <p class="no"><span class="nm">08</span><span class="kn">結 ── 始めかたを決める</span></p>
       <h2>決めきれない方には、<br>この3つをおすすめします。</h2>
-      <p class="rd">3つの原則に当てはめても決まらない、という方へ。<b>ここから1本目を選んでください。</b>3本すべてを同時に始める必要はありません。ただし、この3本を並べたのには理由があります。</p>
-      <p class="fno solofno">図 9</p>
+      <p class="rd">3つの原則に当てはめても決まらない、という方へ。<b>ここから1本目を選んでください。</b>同時に3本を始める必要はありません。ただし、この3本を並べたのには理由があります。順に足していくと、下の図の形になります。</p>
+      <p class="fno solofno">図 8</p>
       <div class="soloflow"><svg viewBox="0 0 940 388" role="img" aria-label="出会う、人脈になる、伝わる、収益が立つ、の4段が循環し、お客様を集める活動そのものが収益になることを示す図"><g font-family="Noto Sans JP, sans-serif"><defs><marker id="fa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10z" fill="#c6d4e2"/></marker></defs><text x="470" y="26" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff">出会いが、そのまま収益になる形</text><rect x="0" y="70" width="205" height="104" fill="none" stroke="#ffffff" stroke-width="2"/><text x="102.5" y="114" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">① 出会う</text><text x="102.5" y="144" text-anchor="middle" font-size="14" font-weight="400" fill="#9fb4c9">人に会う・紹介される</text><line x1="211" y1="122.0" x2="237" y2="122.0" stroke="#c6d4e2" stroke-width="2" marker-end="url(#fa)"/><rect x="245" y="70" width="205" height="104" fill="none" stroke="#ffffff" stroke-width="2"/><text x="347.5" y="114" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">② 人脈になる</text><text x="347.5" y="144" text-anchor="middle" font-size="14" font-weight="400" fill="#9fb4c9">Lシンク</text><line x1="456" y1="122.0" x2="482" y2="122.0" stroke="#c6d4e2" stroke-width="2" marker-end="url(#fa)"/><rect x="490" y="70" width="205" height="104" fill="none" stroke="#ffffff" stroke-width="2"/><text x="592.5" y="114" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">③ 伝わる</text><text x="592.5" y="144" text-anchor="middle" font-size="14" font-weight="400" fill="#9fb4c9">ホームページ 2枚</text><line x1="701" y1="122.0" x2="727" y2="122.0" stroke="#c6d4e2" stroke-width="2" marker-end="url(#fa)"/><rect x="735" y="70" width="205" height="104" fill="none" stroke="#ffffff" stroke-width="2"/><text x="837.5" y="114" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">④ 収益が立つ</text><text x="837.5" y="144" text-anchor="middle" font-size="14" font-weight="400" fill="#9fb4c9">営業代行</text><path d="M837.5 174 V220 H102.5 V180" fill="none" stroke="#c6d4e2" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#fa)"/><text x="470" y="210" text-anchor="middle" font-size="14" font-weight="700" fill="#c6d4e2">稼ぎながら、また出会える</text><rect x="0" y="262" width="455" height="104" fill="none" stroke="#7f96ae" stroke-width="1.6"/><text x="227" y="298" text-anchor="middle" font-size="15" font-weight="700" fill="#9fb4c9">ふつうの創業</text><text x="227" y="330" text-anchor="middle" font-size="14" font-weight="400" fill="#9fb4c9">お客様を集める活動は、持ち出しになります</text><rect x="485" y="262" width="455" height="104" fill="none" stroke="#ffffff" stroke-width="2.4"/><text x="712" y="298" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">この3本</text><text x="712" y="330" text-anchor="middle" font-size="14.5" font-weight="700" fill="#ffffff">集めながら、その活動自体で収益が立ちます</text></g></svg></div>
       <div class="rec">
         <p class="rn">01</p>
         <h3>Lシンク</h3>
         <p class="pr">月3万円</p>
+        <p class="who">いま、LINEで連絡が取れる相手が100人に満たない方の1本目です。</p>
         <p>出会いは毎日あります。名刺を交換した、紹介された、SNSでつながった。けれどもそのほとんどは、連絡が途切れて終わります。</p>
-        <p>Lシンクは、<b>出会った人をひとり残らずLINEでつなぎとめ、AIが日々のやりとりを続けて関係を切らさないようにします。</b>囲い込む、という言い方が近いかもしれません。出会いが人脈に変わるのは、ここです。</p>
+        <p>Lシンクは、<b>出会った方をLINEでつなぎとめ、AIが日々のやりとりを続けて関係を切らさないようにします。</b>囲い込む、という言い方が近いかもしれません。出会いが人脈に変わるのは、ここです。</p>
       </div>
       <div class="rec">
         <p class="rn">02</p>
         <h3>ホームページ制作</h3>
         <p class="pr">初期36万円のみ・月額なし</p>
-        <p>つながった方は、必ず一度あなたを見に来ます。そのときに<b>やりたいことが伝わる状態</b>にしておきます。</p>
+        <p class="who">「どこを見れば分かりますか」と聞かれて、送れるURLがない方の1本目です。</p>
+        <p>つながった方は、どこかで一度あなたを見に来ます。そのときに<b>やりたいことが伝わる状態</b>にしておきます。</p>
         <p>お作りするのは2枚です。<b>何をやっている会社なのかを正確に伝える左脳型の会社サイト。</b>そして、<b>なぜやるのかを伝える右脳型の共感LP。</b>事実で信用してもらう面と、気持ちで応援してもらう面を、分けて持ちます。</p>
       </div>
       <div class="rec">
         <p class="rn">03</p>
         <h3>営業代行会社スタートパック</h3>
         <p class="pr">月3万円</p>
+        <p class="who">交流会や紹介で、毎月10人以上の新しい方に会っている方の1本目です。</p>
         <p>ここがいちばん大事なところです。創業してすぐは、本業の売上が立つまでに時間がかかります。その間、お客様を集める活動は、ふつう<b>持ち出し</b>になります。</p>
-        <p>営業代行を始めておくと、この持ち出しがなくなります。<em>お客様を集めながら、その活動自体で最低限の収益が立ちます。</em>人に会うこと、つながること、紹介すること。これまでコストだったものが、そのまま仕事になります。</p>
-        <p>本業が立ち上がるまでの時間を、赤字ではなく黒字で過ごせます。</p>
-      </div>
-      <div class="pledge">
-        <p class="pl">営業代行会社としての最初のクライアントは、<br>弊社がなります。</p>
+        <p>営業代行を始めておくと、この持ち出しを減らせます。<em>お客様を集めながら、その活動自体で最低限の収益が立ちます。</em>人に会うこと、つながること、紹介すること。これまでコストだったものが、そのまま仕事になります。</p>
+        <p>本業が立ち上がるまでの時間の重さが、変わります。報酬の条件や案件のご提供範囲は、ご契約の前にご案内します。</p>
       </div>
       <div class="solonote">
         <h3>Lシンクを選ぶ場合</h3>
         <p>引き出しに名刺が残っている方は、その前に出会いを人脈に変える工程（名刺LINEエージェント）が入ります。名刺がほとんどない方は、Lシンクから始めて構いません。</p>
       </div>
-      <p class="mn">2本目からは一部割引があります。金額はご相談のうえ決定します。</p>
+      <p class="mn">3本そろえた場合は、<b>割引前で月6万円と初期36万円</b>です。実際の金額は、割引を含めて<a href="#s07">07</a>のとおりご相談のうえ決定します。</p>
+      <div class="pledge">
+        <p class="pl">営業代行会社としての最初のクライアントは、<br>弊社がなります。</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="sec" id="s09">
+<section class="sec key" id="s09">
   <div class="w">
     <div>
       <p class="no"><span class="nm">09</span><span class="kn">結 ── 始めかたを決める</span></p>
       <h2>あとは、順番を<br>書き込むだけです。</h2>
-      <p class="rd">順番を決めるのに、お申し込みは要りません。最大18問にお答えいただくと、13本がその場で<b>いますぐ／次に／当座は不要／対象外</b>の4つに並び替わります。</p>
-      <p>書き込み式の順番シートが入った資料も用意しています。こちらはいま準備中です。</p>
+      <p class="rd">最大18問にお答えいただくと、13本がその場で<b>いますぐ／次に／当座は不要／対象外</b>の4つに並び替わります。</p>
       <div class="btns">
         <a class="btn" href="../sogyo/">いま、順番を並べ替える（最大18問）</a>
-        <a class="btn gh off" aria-disabled="true">書き込み式シートを受け取る（準備中）</a>
       </div>
+      <p class="mn">書き込み式の順番シートが入った資料も準備しています。ご用意でき次第、このページでご案内します。</p>
       <div class="flow3">
         <div><span class="fn">01</span><p>診断で順番を出す</p></div>
         <div><span class="fn">02</span><p>1本目をご相談</p></div>
@@ -538,7 +537,7 @@ footer .co dd{ margin:0; padding:9px 0; border-bottom:1px solid var(--line2); }
       <p class="mn">診断を受けても、その場でご契約にはなりません。ご相談は <a href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">writeup.jp のお問い合わせ</a> から承ります。</p>
     </div>
     <figure class="fig">
-      <span class="fno">図 10</span>
+      <span class="fno">図 9</span>
       <svg viewBox="0 0 320 330" role="img" aria-label="資料に入っている、いますぐ・次に・当座は不要・対象外の4枠に書き込む順番シートの図"><g font-family="Noto Sans JP, sans-serif"><rect x="10" y="8" width="300" height="290" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="160" y="40" text-anchor="middle" font-size="15" font-weight="700" fill="#1b3a5c">順番シート</text><line x1="30" y1="54" x2="290" y2="54" stroke="#dcdcdc" stroke-width="1.2"/><text x="46" y="84" text-anchor="start" font-size="12" font-weight="700" fill="#111111">いますぐ</text><line x1="120" y1="90" x2="290" y2="90" stroke="#dcdcdc" stroke-width="1.2"/><line x1="120" y1="122" x2="290" y2="122" stroke="#dcdcdc" stroke-width="1.2"/><text x="46" y="150" text-anchor="start" font-size="12" font-weight="700" fill="#111111">次に</text><line x1="120" y1="156" x2="290" y2="156" stroke="#dcdcdc" stroke-width="1.2"/><line x1="120" y1="188" x2="290" y2="188" stroke="#dcdcdc" stroke-width="1.2"/><text x="46" y="216" text-anchor="start" font-size="12" font-weight="700" fill="#6b6b6b">当座は不要</text><line x1="120" y1="222" x2="290" y2="222" stroke="#dcdcdc" stroke-width="1.2"/><text x="46" y="262" text-anchor="start" font-size="12" font-weight="700" fill="#9aa0a6">対象外</text><line x1="120" y1="268" x2="290" y2="268" stroke="#dcdcdc" stroke-width="1.2"/></g></svg>
       <figcaption>この4つの枠に、ご自身で書き込んでいただけます。</figcaption>
     </figure>
