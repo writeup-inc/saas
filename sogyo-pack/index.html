@@ -3,538 +3,402 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>創業支援パック｜創業してからの1年で、何から始めるかを決める</title>
-<meta name="description" content="創業前・創業12か月以内の方へ。売上は売れる商品と売れる営業力の掛け算です。弱いほうから埋めるという3つの原則で、13のサービスが着手順に並び替わります。入口は1サービス、月3万円ほどから。">
+<meta name="catalog-card" content="true" />
+<meta name="description" content="創業前・創業12か月以内の方へ。売上は売れる商品と売れる営業力の掛け算です。3つの原則で13のサービスが着手順に並び替わる考え方を、説明資料の形でまとめました。">
+<title>創業支援パック｜何から始めるかを決めるための説明資料</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700&family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@600;700;900&display=swap" rel="stylesheet">
 <style>
-/* lp-base.css — 日本語LP／HTML成果物の初期CSS
- *
- * 品質台帳（~/Documents/Codex/loop-engineering-memory/events.jsonl）で
- * 再発が確認された表示欠陥を、指摘ではなく初期値で潰すためのファイル。
- * 対応する欠陥ID:
- *   japanese-heading-midword-wrap（見出しが単語途中で改行）11回
- *   mobile-fv-headline-wrap（モバイルFVの見出し改行）3回
- *   mobile-fixed-cta-overlap（固定CTAが本文を隠す）3回
- *   meaningful-small-text-under-readable-size（意味のある文字が可読サイズ未満）5回
- *
- * 使い方: HTMLの<style>先頭にこの内容を貼る。色・書体・余白は各LPで上書きしてよいが、
- * 下の「改行制御」「最小文字サイズ」「固定CTAの逃げ」の3ブロックは消さないこと。
- */
-
-/* ── 改行制御 ─────────────────────────────────────────────
- * 日本語は単語区切りが無いため、既定のままだと文節の途中で折り返す。
- * auto-phrase は文節単位で折る（Chrome 119+）。非対応環境は strict で逃がす。 */
+/* ===== lp-base.css ===== */
 h1, h2, h3, h4, h5,
-.lead, .catch, .hero__title, [data-keep-phrase] {
+.lead, .catch, [data-keep-phrase] {
   word-break: auto-phrase;
   line-break: strict;
   overflow-wrap: anywhere;
 }
 @supports not (word-break: auto-phrase) {
   h1, h2, h3, h4, h5,
-  .lead, .catch, .hero__title, [data-keep-phrase] {
-    word-break: normal;
-  }
+  .lead, .catch, [data-keep-phrase] { word-break: normal; }
 }
-/* 明示的に折りたくない語の途中で切られたら、その語を <span class="nobr"> で包む */
 .nobr { white-space: nowrap; }
-
-/* ── 最小文字サイズ ───────────────────────────────────────
- * 判断材料になる文字は12px未満にしない。注記・免責のみ .note を許容。 */
-:root { --fs-min: 12px; --fs-body: 16px; }
-body { font-size: var(--fs-body); line-height: 1.8; }
-small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
-
-/* ── ファーストビューの見出し ─────────────────────────────
- * 固定pxだと狭い画面で必ず折り返す。clamp で画面幅に追従させる。 */
-h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
-h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
-
-/* ── 固定CTAの逃げ ────────────────────────────────────────
- * 画面下に固定CTAを置くページは、この変数を実測の高さに書き換える。
- * 置かないページはそのままでよい（0のまま）。 */
+:root { --fs-min: 12.5px; --fs-body: 16.5px; }
+body { font-size: var(--fs-body); line-height: 1.95; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.75; }
+h1 { font-size: clamp(1.9rem, 5.2vw, 3.4rem); line-height: 1.38; }
+h2 { font-size: clamp(1.2rem, 3.2vw, 2.05rem); line-height: 1.5; }
 :root { --fixed-cta-h: 0px; }
 body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
-
-/* ── 横はみ出しの予防 ─────────────────────────────────────
- * flex/grid の子は既定で min-width:auto のため、長い語で親を押し広げる。 */
 *, *::before, *::after { box-sizing: border-box; }
 img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
-main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+main > *, section > *, .grid > * { min-width: 0; }
 pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
 
+/* ===== 紙のレポート ===== */
 :root{
-  --ac:#0b2c5c; --acl:#f3f6fa; --acl2:#e9eef2; --acm:#b9c6da;
-  --bk:#111111; --g1:#555555; --g2:#6b6b6b; --g3:#b4b4b4;
-  --ln:#d9d9d9; --ln2:#efefef; --pa:#f7f7f7; --up:#c8102e;
-  --wd:1100px; --fixed-cta-h:0px;
-  --ff-head:"Zen Kaku Gothic New","Noto Sans JP","Hiragino Sans",system-ui,sans-serif;
-  --ff-body:"Noto Sans JP","Hiragino Sans",system-ui,sans-serif;
-  --ff-en:"Outfit","Zen Kaku Gothic New",sans-serif;
+  --ink:#111111; --ink2:#2b2b2b; --gray:#6b6b6b; --gray2:#9aa0a6;
+  --line:#dcdcdc; --line2:#ededed; --paper:#ffffff; --soft:#f6f6f6;
+  --navy:#1b3a5c; --navy-l:#eef2f6;
+  --mincho:"Noto Serif JP",'Hiragino Mincho ProN','Yu Mincho',serif;
+  --gothic:"Noto Sans JP",system-ui,-apple-system,sans-serif;
+  --en:Inter,sans-serif;
+  --wd:1120px;
 }
-h1,h2,h3,h4,.logo,.chip,.cta,.bg{ font-family:var(--ff-head); }
 html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
-body{ margin:0; background:#fff; color:var(--bk); font-family:var(--ff-body);
-  font-size:17px; line-height:1.95; letter-spacing:.01em; font-feature-settings:"palt" 1; }
-.w{ max-width:var(--wd); margin:0 auto; padding:0 32px; }
-@media (max-width:600px){ .w{ padding:0 20px; } }
-a{ color:inherit; }
-
-header{ position:sticky; top:0; z-index:60; background:rgba(255,255,255,.95);
-  backdrop-filter:blur(12px); border-bottom:1px solid var(--ln2); }
-header .w{ display:flex; align-items:center; justify-content:space-between; height:62px; gap:16px; }
-.logo{ font-size:16px; font-weight:900; letter-spacing:.06em; white-space:nowrap; }
-.logo span{ color:var(--ac); }
-.hn{ display:flex; gap:20px; align-items:center; }
-.hn a{ font-size:14px; font-weight:700; color:var(--g1); text-decoration:none;
-  letter-spacing:.05em; white-space:nowrap; display:inline-block; padding:10px 2px; }
-.hn a:hover{ color:var(--ac); }
-.hn .hcta{ background:var(--ac); color:#fff!important; padding:11px 18px; font-weight:900; }
-@media (max-width:820px){ .hn a:not(.hcta){ display:none; } }
-
-/* ── ヒーロー ── */
-.hero .w{ padding-top:70px; padding-bottom:60px; }
-@media (max-width:600px){ .hero .w{ padding-top:44px; padding-bottom:40px; } }
-.chip{ display:inline-block; background:var(--ac); color:#fff; font-family:var(--ff-en);
-  font-size:13px; font-weight:800; letter-spacing:.16em; padding:7px 15px; }
-.chipn{ font-size:14px; color:var(--g1); margin-left:14px; font-weight:700; letter-spacing:.04em; }
-@media (max-width:600px){ .chipn{ display:block; margin:12px 0 0; } }
-.hero h1{ font-weight:900; letter-spacing:-.03em; line-height:1.3; margin:28px 0 24px;
-  font-size:clamp(1.3rem,5.6vw,3.4rem); }
-.hero h1 em{ font-style:normal; color:var(--ac); }
-.hero .sub{ font-size:17px; color:var(--g1); max-width:37em; margin:0 0 16px; }
-.hero .sub b{ color:var(--bk); font-weight:700; }
-.hbtn{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-top:30px; }
-.cta{ display:inline-block; background:var(--ac); color:#fff; text-decoration:none;
-  padding:18px 32px; font-weight:900; font-size:16px; letter-spacing:.03em; transition:opacity .2s; }
-.cta:hover{ opacity:.86; }
-.cta.gh{ background:transparent; color:var(--ac); box-shadow:inset 0 0 0 1.5px var(--acm); }
-.cta.gh:hover{ box-shadow:inset 0 0 0 1.5px var(--ac); opacity:1; }
-.stamp{ display:flex; flex-wrap:wrap; gap:10px 26px; align-items:center;
-  border-top:1px solid var(--ln); margin-top:34px; padding-top:18px; font-size:14.5px; color:var(--g1); }
-.stamp b{ color:var(--bk); font-weight:700; }
-
-/* ── セクション ── */
-section.blk .w{ padding-top:72px; padding-bottom:64px; }
-@media (max-width:600px){ section.blk .w{ padding-top:50px; padding-bottom:44px; } }
-.tint{ background:var(--acl); }
-.shead{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px;
-  border-bottom:2px solid var(--bk); padding-bottom:12px; margin-bottom:26px; }
-@media (max-width:620px){ .shead{ flex-direction:column-reverse; align-items:flex-start; gap:8px; } }
-.shead h2{ margin:0; font-weight:900; letter-spacing:-.015em; line-height:1.4;
-  font-size:clamp(1.2rem,5vw,2.6rem); }
-.shead .sn{ font-family:var(--ff-en); font-size:13px; font-weight:700; color:var(--g2);
-  letter-spacing:.16em; white-space:nowrap; padding-bottom:6px; }
-@media (max-width:620px){ .shead .sn{ padding-bottom:0; } }
-.tx{ font-size:17px; line-height:2; margin:0 0 28px; max-width:44em; }
-.tx b{ font-weight:700; }
-.tx em{ font-style:normal; background:linear-gradient(transparent 62%, #ffe680 62%); font-weight:700; }
-
-/* ── 課題リスト ── */
-.probs{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; }
-@media (max-width:880px){ .probs{ grid-template-columns:1fr; } }
-.prob{ border-top:3px solid var(--bk); padding:18px 0 0; }
-.prob h3{ margin:0 0 8px; font-size:19px!important; font-weight:900; line-height:1.55; }
-.prob p{ margin:0; font-size:15px; color:var(--g1); line-height:1.9; }
-
-/* ── 機能 ── */
-.feats{ display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--ln2);
-  border:1px solid var(--ln2); }
-@media (max-width:760px){ .feats{ grid-template-columns:1fr; } }
-.feat{ background:#fff; padding:24px 26px; display:flex; gap:15px; align-items:flex-start; }
-.fic{ flex:none; width:40px; height:40px; display:grid; place-items:center;
-  background:var(--acl2); color:var(--ac); }
-.fic svg{ display:block; width:22px; height:22px; }
-.feat h3{ margin:0 0 6px; font-size:18px!important; font-weight:900; line-height:1.55; }
-.feat p{ margin:0; font-size:15px; color:var(--g1); line-height:1.9; }
-.feat > div{ min-width:0; }
-@media (max-width:520px){ .feat{ flex-direction:column; gap:12px; padding:22px 20px; } }
-
-/* ── 図 ── */
 figure{ margin:0; }
-.figt{ font-size:15px; font-weight:700; margin:0 0 14px; letter-spacing:.02em; }
-.figc{ border:1px solid var(--ln); background:#fff; padding:26px 22px; }
-.figc svg{ display:block; width:100%; height:auto; }
-figcaption{ font-size:13.5px; color:var(--g2); margin-top:14px; line-height:1.8; }
+body{ margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--gothic); font-feature-settings:"palt" 1; letter-spacing:.012em; }
+.w{ max-width:var(--wd); margin:0 auto; padding:0 40px; }
+@media (max-width:700px){ .w{ padding:0 20px; } }
 
-/* ── 手順リスト ── */
-.steps{ margin:26px 0 0; padding:0; list-style:none; }
-.steps li{ display:grid; grid-template-columns:54px 1fr; gap:18px; padding:20px 0;
-  border-top:1px solid var(--ln2); align-items:start; }
-@media (max-width:560px){ .steps li{ grid-template-columns:44px 1fr; gap:14px; } }
-.steps .n{ font-family:var(--ff-en); font-size:15px; font-weight:900; color:#fff;
-  background:var(--ac); width:38px; height:38px; display:grid; place-items:center; }
-.steps .who{ display:inline-block; font-size:12.5px; font-weight:700; letter-spacing:.08em;
-  padding:3px 9px; margin:0 0 7px; background:var(--acl2); color:var(--ac); }
-.steps .who.llm{ background:var(--pa); color:var(--g1); }
-.steps h3{ margin:0 0 6px; font-size:19px!important; font-weight:900; line-height:1.55; }
-.steps p{ margin:0; font-size:15.5px; color:var(--g1); line-height:1.9; }
+/* 天のバー */
+.rule{ border-bottom:1px solid var(--line); }
+.doc{ display:flex; gap:22px; flex-wrap:wrap; align-items:baseline;
+  padding:14px 0; font-size:12.5px; color:var(--gray); letter-spacing:.08em; }
+.doc b{ font-family:var(--en); font-weight:900; color:var(--navy); letter-spacing:.12em; }
 
-/* ── 用途・効果 ── */
-.cols{ display:grid; grid-template-columns:1fr 1fr; gap:44px; }
-@media (max-width:820px){ .cols{ grid-template-columns:1fr; gap:32px; } }
-.ul{ margin:0; padding:0; list-style:none; }
-.ul li{ position:relative; padding:12px 0 12px 26px; border-top:1px solid var(--ln2);
-  font-size:16px; line-height:1.9; }
-.ul li::before{ content:""; position:absolute; left:2px; top:23px; width:9px; height:9px;
-  background:var(--ac); }
-.h3s{ font-size:20px!important; font-weight:900; margin:0 0 6px; letter-spacing:.01em; }
+/* 表紙 */
+.cover .w{ padding-top:64px; padding-bottom:56px;
+  display:grid; grid-template-columns:7fr 3fr; gap:0 52px; align-items:start; }
+@media (max-width:900px){ .cover .w{ grid-template-columns:1fr; gap:34px 0; } }
+.cover h1{ margin:0; font-family:var(--mincho); font-weight:700; letter-spacing:.04em; }
+.cover .sup{ margin:0 0 20px; font-family:var(--en); font-size:13px; font-weight:700;
+  letter-spacing:.2em; color:var(--gray2); }
+.cover .sub{ margin:22px 0 0; font-family:var(--mincho); font-weight:500;
+  font-size:clamp(1rem,2.1vw,1.35rem); line-height:1.85; color:var(--ink2); max-width:30em; }
+.q{ margin:40px 0 0; padding:26px 28px; border:1px solid var(--line); border-left:4px solid var(--navy);
+  background:var(--soft); max-width:40em; }
+.q p{ margin:0; font-family:var(--mincho); font-weight:700;
+  font-size:clamp(1rem,2.1vw,1.28rem); line-height:2; }
+.rd{ margin:30px 0 0; color:var(--ink2); }
 
-/* ── Jev ── */
-.jev{ display:grid; grid-template-columns:1fr 340px; gap:48px; align-items:start; }
-@media (max-width:920px){ .jev{ grid-template-columns:1fr; gap:28px; } }
-.spec{ border:1px solid var(--ln); padding:6px 22px; }
-.spec .r{ display:grid; grid-template-columns:6.5em 1fr; gap:12px; padding:14px 0;
-  border-top:1px solid var(--ln2); font-size:14.5px; line-height:1.8; }
-.spec .r:first-child{ border-top:0; }
-.spec dt{ color:var(--g2); font-weight:700; font-size:13.5px; }
-.spec dd{ margin:0; }
-.spec dl{ margin:0; }
+/* 目次 */
+.toc .w{ padding-top:44px; padding-bottom:48px; }
+.toc h2{ margin:0 0 22px; font-family:var(--mincho); font-size:clamp(1.05rem,2vw,1.3rem); }
+.toc ol{ margin:0; padding:0; list-style:none; display:grid; gap:1px; background:var(--line2);
+  border-top:1px solid var(--line2); border-bottom:1px solid var(--line2); }
+.toc li{ background:var(--paper); }
+.toc a{ display:grid; grid-template-columns:44px 30px 1fr; gap:0 16px; align-items:baseline;
+  padding:14px 4px; text-decoration:none; color:var(--ink); }
+.toc a:hover{ background:var(--navy-l); }
+.toc .kn{ font-family:var(--mincho); font-size:13px; font-weight:700; color:var(--navy); }
+.toc .nm{ font-family:var(--en); font-size:13px; font-weight:900; color:var(--gray2); }
+.toc .tt{ font-size:15.5px; font-weight:500; }
 
-/* ── 申し込み ── */
-.apply{ background:var(--ac); color:#fff; }
-.apply .w{ padding-top:64px; padding-bottom:64px; }
-.apply h2{ font-size:clamp(1.4rem,5vw,2.4rem)!important; font-weight:900; margin:0 0 18px;
-  letter-spacing:-.015em; line-height:1.4; }
-.apply p{ font-size:16.5px; color:#dfe6f0; line-height:2; margin:0 0 10px; max-width:42em; }
-.apply p b{ color:#fff; font-weight:700; }
-.apply .cta{ background:#fff; color:var(--ac); margin-top:26px; }
-.apply .note{ font-size:13.5px; color:#a9bbd4; margin-top:20px; }
+/* 本文セクション：左7・右3 */
+.sec{ border-top:1px solid var(--line); }
+.sec .w{ padding-top:58px; padding-bottom:58px;
+  display:grid; grid-template-columns:7fr 3fr; gap:0 52px; align-items:start; }
+.sec .no{ margin:0 0 14px; display:flex; gap:12px; align-items:baseline; }
+.sec .no .nm{ font-family:var(--en); font-size:15px; font-weight:900; letter-spacing:.14em; color:var(--navy); }
+.sec .no .kn{ font-family:var(--mincho); font-size:12.5px; font-weight:700; color:var(--gray2); letter-spacing:.2em; }
+.sec h2{ margin:0 0 20px; font-family:var(--mincho); font-weight:700; letter-spacing:.01em; }
+.sec .rd{ margin:0 0 22px; }
+.sec p+p{ margin-top:18px; }
+.fig{ position:sticky; top:20px; }
+.fig svg{ display:block; width:100%; height:auto; background:var(--paper); }
+.fig figcaption{ margin:12px 0 0; color:var(--gray); }
+.fig .fno{ display:block; margin:0 0 10px; font-family:var(--en); font-size:11.5px;
+  font-weight:900; letter-spacing:.16em; color:var(--gray2); }
+@media (max-width:900px){
+  .sec .w{ grid-template-columns:1fr; gap:34px 0; }
+  .fig{ position:static; max-width:420px; }
+}
 
-/* ── フッター ── */
-footer{ background:var(--bk); color:#fff; }
-footer .w{ padding-top:48px; padding-bottom:48px; }
-footer h2{ font-size:19px!important; font-weight:900; margin:0 0 16px; letter-spacing:.03em; }
-.co{ display:grid; grid-template-columns:8.5em 1fr; gap:10px 16px; font-size:14.5px;
-  color:#cfcfcf; line-height:1.85; max-width:44em; }
-.co dt{ color:#9a9a9a; font-weight:700; font-size:13.5px; }
-.co dd{ margin:0; }
-footer .fl{ display:flex; flex-wrap:wrap; gap:8px 22px; margin-top:26px;
-  border-top:1px solid #333; padding-top:18px; font-size:13.5px; color:#9a9a9a; }
-footer a{ color:#fff; display:inline-block; padding:12px 0; }
+/* 本題だけ地を変える */
+.sec.key{ background:var(--soft); }
+.sec.key .fig svg{ background:transparent; }
+
+/* 部品 */
+.rules{ margin:24px 0 0; display:grid; gap:1px; background:var(--line); border:1px solid var(--line); }
+.rule-i{ background:var(--paper); padding:20px 22px; display:grid; grid-template-columns:44px 1fr; gap:0 14px; }
+.rule-i .rn{ font-family:var(--en); font-size:24px; font-weight:900; color:var(--navy); line-height:1.2; }
+.rule-i h3{ margin:0 0 6px; font-family:var(--mincho); font-size:16.5px; }
+.rule-i p{ margin:0; font-size:15px; color:var(--ink2); }
+@media (max-width:560px){ .rule-i{ grid-template-columns:1fr; gap:4px; } .rule-i .rn{ font-size:19px; } }
+
+.two{ margin:24px 0 0; display:grid; grid-template-columns:1fr 1fr; gap:30px; }
+.side{ margin:26px 0 0; }
+.side+.side{ margin-top:34px; padding-top:30px; border-top:1px solid var(--line); }
+.side h3{ margin:0 0 10px; font-family:var(--mincho); font-size:16.5px; }
+@media (max-width:760px){ .two{ grid-template-columns:1fr; gap:22px; } }
+.two h3{ margin:0 0 10px; font-family:var(--mincho); font-size:16.5px; }
+.two p{ margin:0; font-size:15.5px; color:var(--ink2); }
+
+.ml{ margin:12px 0 0; padding:0; list-style:none; }
+.ml li{ padding:9px 0; border-bottom:1px solid var(--line2); font-size:15px; line-height:1.8; }
+.ml li b{ font-weight:700; }
+.mn{ margin:12px 0 0; font-size:13.5px; color:var(--gray); line-height:1.85; }
+
+.tbl{ margin:24px 0 0; border-top:1px solid var(--line); }
+.tbl .r{ display:grid; grid-template-columns:9em 1fr; gap:0 18px;
+  padding:13px 0; border-bottom:1px solid var(--line2); }
+.tbl dt{ font-size:14px; font-weight:700; color:var(--gray); }
+.tbl dd{ margin:0; font-size:15.5px; }
+@media (max-width:560px){ .tbl .r{ grid-template-columns:1fr; gap:4px; } }
+
+.box{ margin:24px 0 0; padding:20px 22px; border:1px solid var(--line); background:var(--soft); }
+.sec.key .box{ background:var(--paper); }
+.box h3{ margin:0 0 8px; font-family:var(--mincho); font-size:16px; }
+.box p{ margin:0; font-size:15px; color:var(--ink2); }
+
+.go{ margin:24px 0 0; font-size:15px; }
+.go a{ color:var(--navy); font-weight:700; }
+@media (max-width:500px){ .go a{ display:inline-block; padding:12px 0; } }
+
+.btns{ margin:26px 0 0; display:flex; gap:14px; flex-wrap:wrap; }
+.btn{ display:inline-block; padding:16px 26px; background:var(--navy); color:#fff;
+  text-decoration:none; font-weight:700; font-size:15.5px; letter-spacing:.04em; }
+.btn.gh{ background:transparent; color:var(--navy); border:1px solid var(--navy); }
+.btn.off{ background:var(--line2); color:var(--gray); pointer-events:none; }
+
+footer{ border-top:3px solid var(--navy); }
+footer .w{ padding-top:44px; padding-bottom:48px; }
+footer h2{ margin:0 0 20px; font-family:var(--mincho); font-size:clamp(1.05rem,2vw,1.3rem); }
+footer .co{ margin:0; display:grid; grid-template-columns:9em 1fr; gap:0 18px; font-size:14.5px; }
+footer .co dt{ padding:9px 0; color:var(--gray); border-bottom:1px solid var(--line2); }
+footer .co dd{ margin:0; padding:9px 0; border-bottom:1px solid var(--line2); }
+@media (max-width:560px){ footer .co{ grid-template-columns:1fr; } footer .co dt{ border:0; padding-bottom:0; } }
+.fl{ margin:26px 0 0; display:flex; gap:20px; flex-wrap:wrap; font-size:13.5px; color:var(--gray); }
+.fl a{ color:var(--navy); }
+@media (max-width:500px){ .fl a{ display:inline-block; padding:12px 0; } }
 </style>
-
-<style>
-:root{ --ph-bg:#f3f6fa; }
-.shead h2{ font-size:clamp(1.2rem,3.4vw,2.1rem); }
-@media (max-width:500px){ .hero h1{ font-size:20px; line-height:1.62; } }
-@media (max-width:340px){ .hero h1{ font-size:18px; } }
-.fig{ margin:30px 0 0; }
-.figt{ font-size:13px; font-weight:700; color:var(--g2); letter-spacing:.06em; margin:0 0 14px; }
-.figc{ border:1px solid var(--ln); background:#fff; padding:24px 18px; }
-.figc svg{ display:block; width:100%; height:auto; }
-.rules{ display:grid; gap:1px; background:var(--ln); border:1px solid var(--ln); margin:30px 0 0; }
-.rule{ background:#fff; padding:24px clamp(18px,2.4vw,30px); display:grid; grid-template-columns:54px 1fr; gap:0 18px; align-items:start; }
-.rule .rn{ font-family:"Outfit",sans-serif; font-size:30px; font-weight:900; color:var(--ac); line-height:1; }
-.rule h3{ margin:0 0 8px; font-size:clamp(1.02rem,2.2vw,1.18rem); }
-.rule p{ margin:0; color:var(--g1); font-size:15px; line-height:1.85; }
-.ask{ margin:26px 0 0; padding:26px clamp(18px,2.6vw,32px); background:var(--acl); border-left:3px solid var(--ac); }
-.ask p{ margin:0; font-size:clamp(1.02rem,2.3vw,1.2rem); font-weight:700; line-height:1.9; }
-.caution{ margin:30px 0 0; padding:22px clamp(16px,2.4vw,28px); border:1px solid var(--ln); background:var(--pa); }
-.caution h3{ margin:0 0 10px; font-size:15px; }
-.caution p{ margin:0; font-size:14.5px; line-height:1.9; color:var(--g1); }
-.sublink{ margin:30px 0 0; font-size:15px; }
-.sublink a{ color:var(--ac); font-weight:700; }
-@media (max-width:500px){ .sublink a{ display:inline-block; padding:12px 0; } }
-.cta.off{ background:var(--ln2); color:var(--g2); cursor:default; pointer-events:none; }
-.mlist li b{ font-weight:700; }
-.mnote{ margin:10px 0 0; font-size:13.5px; color:var(--g2); line-height:1.8; }
-@media (max-width:560px){ .rule{ grid-template-columns:1fr; gap:6px; } .rule .rn{ font-size:22px; } }
-.blk.core .w{ border-top:3px solid var(--ac); border-bottom:3px solid var(--ac); }
-.spec .r{ grid-template-columns:8em 1fr; }
-.fig figcaption{ margin:14px 0 0; font-size:14px; color:var(--g1); line-height:1.8; }
-.dlrow{ margin-top:8px; }
-</style></head>
-
+</head>
 <body>
 
-<header>
+<div class="rule">
   <div class="w">
-    <div class="logo">創業支援<span>パック</span></div>
-    <nav class="hn">
-      <a href="#logic">考え方</a>
-      <a href="#menu">メニュー</a>
-      <a href="#price">料金</a>
-      <a class="hcta" href="#dl">資料について</a>
-    </nav>
+    <p class="doc"><b>A-01</b><span>創業支援パック　説明資料</span><span>2026年9月</span><span>株式会社ライトアップ</span></p>
   </div>
-</header>
+</div>
 
-<section class="hero">
+<section class="cover">
   <div class="w">
-    <span class="chip">SERVICE</span><span class="chipn">創業前・創業12か月以内の方へ</span>
-    <h1>社会人になってから今日まで、<br>出会った全員に<br>「LINE登録して」と<br>案内していたら——<br><em>いま、何人いたと思いますか。</em></h1>
-    <p class="sub">創業してからの売上は、<b>売れる商品</b>と、<b>売れる営業力</b>の掛け算で決まります。どちらから先に積むかで、最初の1年が変わります。</p>
-    <p class="sub">創業支援パックは、13のサービスをこの2つに割り振り、あなたの着手順に並べ替えるものです。</p>
-    <div class="hbtn">
-      <a class="cta" href="#logic">3つの原則を見る</a>
-      <a class="cta gh" href="../sogyo/">適性診断を受ける</a>
+    <div>
+    <p class="sup">FOR FOUNDERS</p>
+    <h1>創業支援パック</h1>
+    <p class="sub">何から始めるかを決めるための説明資料です。<br>創業前の方、創業から12か月以内の方へ。</p>
+    <div class="q"><p data-keep-phrase>社会人になってから今日まで、出会った全員に<span class="nobr">「LINE登録して」</span>と案内していたら——いま、何人いたと思いますか。</p></div>
+    <p class="rd">この資料は、13あるサービスのうち<b>どれを1本目にするか</b>を、あなた自身で決めるためのものです。比べるのは13本ではなく、<b>3つの原則</b>だけです。最後に、書き込み式の順番シートがあります。</p>
+    <p class="go">先に自分の順番だけ知りたい方は、最大18問の適性診断へ。　<a href="../sogyo/">適性診断を受ける →</a></p>
     </div>
-    <div class="stamp">
-      <span>収録　<b>13サービス</b></span>
-      <span>入口　<b>1サービス 月3万円ほど</b></span>
-      <span>乗り換え　<b>初期費用なし</b></span>
-    </div>
+    <figure class="fig">
+      <span class="fno">この資料の流れ</span>
+      <svg viewBox="0 0 320 374" role="img" aria-label="起承転結の4段。売上の形を知る、始める側を決める、一手目を打つ、続けられるようにする"><g font-family="Noto Sans JP, sans-serif"><rect x="8" y="6" width="304" height="74" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="30" y="40" font-size="17" font-weight="700" fill="#111111" font-family="Noto Serif JP, serif">起</text><text x="62" y="40" font-size="14.5" font-weight="700" fill="#111111">売上の形を知る</text><text x="62" y="63" font-size="11.5" font-weight="700" fill="#6b6b6b" font-family="Inter, sans-serif" letter-spacing="1.4">01 — 02</text><line x1="160" y1="80" x2="160" y2="96" stroke="#9aa0a6" stroke-width="1.4"/><path d="M160 98 l-4.5 -8 h9 z" fill="#9aa0a6"/><rect x="8" y="98" width="304" height="74" fill="#1b3a5c" stroke="#1b3a5c" stroke-width="1.4"/><text x="30" y="132" font-size="17" font-weight="700" fill="#ffffff" font-family="Noto Serif JP, serif">承</text><text x="62" y="132" font-size="14.5" font-weight="700" fill="#ffffff">始める側を決める</text><text x="62" y="155" font-size="11.5" font-weight="700" fill="#c3cedb" font-family="Inter, sans-serif" letter-spacing="1.4">03</text><line x1="160" y1="172" x2="160" y2="188" stroke="#9aa0a6" stroke-width="1.4"/><path d="M160 190 l-4.5 -8 h9 z" fill="#9aa0a6"/><rect x="8" y="190" width="304" height="74" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="30" y="224" font-size="17" font-weight="700" fill="#111111" font-family="Noto Serif JP, serif">転</text><text x="62" y="224" font-size="14.5" font-weight="700" fill="#111111">一手目を打つ</text><text x="62" y="247" font-size="11.5" font-weight="700" fill="#6b6b6b" font-family="Inter, sans-serif" letter-spacing="1.4">04 — 05</text><line x1="160" y1="264" x2="160" y2="280" stroke="#9aa0a6" stroke-width="1.4"/><path d="M160 282 l-4.5 -8 h9 z" fill="#9aa0a6"/><rect x="8" y="282" width="304" height="74" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="30" y="316" font-size="17" font-weight="700" fill="#111111" font-family="Noto Serif JP, serif">結</text><text x="62" y="316" font-size="14.5" font-weight="700" fill="#111111">続けられるようにする</text><text x="62" y="339" font-size="11.5" font-weight="700" fill="#6b6b6b" font-family="Inter, sans-serif" letter-spacing="1.4">06 — 08</text></g></svg>
+      <figcaption>全8章を、起承転結の4段に分けています。</figcaption>
+    </figure>
   </div>
 </section>
 
-<section class="blk tint" id="logic">
+<section class="toc rule">
   <div class="w">
-    <div class="shead"><h2>売上は掛け算です。<br>どちらかが0なら、<br>売上も0です。</h2><span class="sn">STRUCTURE</span></div>
-    <p class="tx">創業してからの売上は、この形で立ちます。事業への思いの強さとは、別の話です。</p>
-    <div class="fig">
-      <p class="figt">図：売上が立つ形</p>
-      <div class="figc">
-        <svg viewBox="0 0 980 120" role="img" aria-label="売れる商品かける売れる営業力イコール売上">
-          <g font-family="Noto Sans JP, sans-serif">
-            <rect x="2" y="24" width="280" height="72" fill="#fff" stroke="#d9d9d9"/>
-            <text x="142" y="68" text-anchor="middle" font-size="21" font-weight="700" fill="#111">売れる商品</text>
-            <text x="330" y="70" text-anchor="middle" font-size="30" font-weight="700" fill="#6b6b6b">×</text>
-            <rect x="378" y="24" width="280" height="72" fill="#fff" stroke="#d9d9d9"/>
-            <text x="518" y="68" text-anchor="middle" font-size="21" font-weight="700" fill="#111">売れる営業力</text>
-            <text x="706" y="70" text-anchor="middle" font-size="30" font-weight="700" fill="#6b6b6b">＝</text>
-            <rect x="754" y="24" width="224" height="72" fill="#0b2c5c"/>
-            <text x="866" y="68" text-anchor="middle" font-size="21" font-weight="700" fill="#fff">売上</text>
-          </g>
-        </svg>
-      </div>
-      <figcaption>売れる商品と売れる営業力。どちらかが0なら、掛けた答えも0になります。</figcaption>
-    </div>
-
-    <p class="tx" style="margin-top:44px">足し算ではありません。すでに強いほうをさらに強くしても、0のほうは埋まりません。<b>積み方の正解は2つあります。</b></p>
-    <div class="cols" style="margin-top:34px">
-      <div>
-        <h3 class="h3s">売れる商品をつくる</h3>
-        <p class="tx">時代に合っていて、ニーズのある商品を用意します。差別化できる商品力があるなら、これがいちばん速い道です。</p>
-      </div>
-      <div>
-        <h3 class="h3s">先にお客様を集めておく</h3>
-        <p class="tx">商品力で差がつかないご商売でも、先にお客様がいれば売上は立ちます。駅前のバーに目新しさがなくても事業が立ち上がるのは、このためです。</p>
-      </div>
-    </div>
-    <p class="tx" style="margin-top:34px">すでに売るものが決まっている方は、商品側から入って構いません。<b>どちらが正しいという話ではありません。</b></p>
+    <h2>目次</h2>
+    <ol>
+      <li><a href="#s01"><span class="kn">起</span><span class="nm">01</span><span class="tt">売上は掛け算です</span></a></li>
+      <li><a href="#s02"><span class="kn">起</span><span class="nm">02</span><span class="tt">商品は仕入れられますが、お客様は買えません</span></a></li>
+      <li><a href="#s03"><span class="kn">承</span><span class="nm">03</span><span class="tt">比べるのは13本ではなく、3つの原則だけです</span></a></li>
+      <li><a href="#s04"><span class="kn">転</span><span class="nm">04</span><span class="tt">お客様側の一手目は、引き出しの名刺です</span></a></li>
+      <li><a href="#s05"><span class="kn">転</span><span class="nm">05</span><span class="tt">13のサービスは、あなたの順番に並びます</span></a></li>
+      <li><a href="#s06"><span class="kn">結</span><span class="nm">06</span><span class="tt">方向が変わっても、乗り換えられます</span></a></li>
+      <li><a href="#s07"><span class="kn">結</span><span class="nm">07</span><span class="tt">入口は1サービス、月3万円ほどです</span></a></li>
+      <li><a href="#s08"><span class="kn">結</span><span class="nm">08</span><span class="tt">まず、あなたの順番を決めてください</span></a></li>
+    </ol>
   </div>
 </section>
 
-<section class="blk">
+<section class="sec" id="s01">
   <div class="w">
-    <div class="shead"><h2>商品は仕入れられますが、<br>お客様は買えません。</h2><span class="sn">ASYMMETRY</span></div>
-    <p class="tx">2つとも正解ですが、手に入るまでの時間がまったく違います。</p>
-    <div class="spec" style="margin-top:30px">
-      <dl>
-        <div class="r"><dt>手に入れ方</dt><dd><b>商品</b>は仕入れられます。代理販売なら成果報酬で、在庫も持ちません。<br><b>お客様</b>は広告で買うことはできます。</dd></div>
-        <div class="r"><dt>かかるお金</dt><dd><b>商品</b>は小さく済みます。<b>お客様</b>は、非現実的なほど大きくなります。</dd></div>
-        <div class="r"><dt>かかる時間</dt><dd><b>商品</b>はほぼゼロ。<b>お客様</b>は年単位です。</dd></div>
-        <div class="r"><dt>事業をやめたら</dt><dd><b>商品</b>は消えます。<b>お客様</b>は残ります。</dd></div>
-      </dl>
-    </div>
-    <p class="tx" style="margin-top:30px">商品づくりに時間がかかると思われがちですが、<b>実際に時間がかかるのは、お客様を集めるほうです。</b></p>
-    <p class="tx">もうひとつ、向きの違いがあります。バーをやめれば、バーの商品力は消えます。<em>けれども、集めたお客様は事業を変えても残ります。</em>Web制作に移っても、人材紹介を始めても、そのまま持っていけます。先にお客様を積んだ方は、何度でもやり直せます。</p>
-  </div>
-</section>
-
-<section class="blk core" id="rules">
-  <div class="w">
-    <div class="shead"><h2>比べるのは13本ではなく、<br>3つの原則だけです。</h2><span class="sn">HOW TO DECIDE</span></div>
-    <p class="tx">13あるサービスを、ひとつずつ比べる必要はありません。決め方はこれだけです。</p>
-    <div class="rules">
-      <div class="rule">
-        <span class="rn">01</span>
+    <div>
+      <p class="no"><span class="nm">01</span><span class="kn">起 ── 売上の形を知る</span></p>
+      <h2>売上は掛け算です。</h2>
+      <p class="rd">創業してからの売上は、<b>売れる商品</b>と<b>売れる営業力</b>の掛け算で決まります。事業への思いの強さとは、別の話です。</p>
+      <p>掛け算なので、どちらかが0なら、売上も0になります。足し算ではありません。<b>すでに強いほうをさらに強くしても、0のほうは埋まりません。</b></p>
+      <p>積み方の正解は2つあります。どちらから入っても構いません。</p>
+      <div class="two">
         <div>
-          <h3>強いほうは補強しません</h3>
-          <p>すでにできていることに、お金と時間をさらに足しても、売上はほとんど動きません。</p>
+          <h3>売れる商品をつくる</h3>
+          <p>時代に合っていて、ニーズのある商品を用意します。差別化できる商品力があるなら、これがいちばん速い道です。</p>
         </div>
-      </div>
-      <div class="rule">
-        <span class="rn">02</span>
         <div>
-          <h3>弱いほうから埋めます</h3>
-          <p>掛け算なので、0に近いほうを上げたときにだけ、売上が動きます。</p>
-        </div>
-      </div>
-      <div class="rule">
-        <span class="rn">03</span>
-        <div>
-          <h3>人脈が強い方は商品側が先です</h3>
-          <p>会える人がすでに多いなら、次に要るのは売るものです。会える人が少ないなら、先はお客様の側になります。</p>
+          <h3>先にお客様を集めておく</h3>
+          <p>商品力で差がつかないご商売でも、先にお客様がいれば売上は立ちます。駅前のバーに目新しさがなくても事業が立ち上がるのは、このためです。</p>
         </div>
       </div>
     </div>
-    <div class="fig accent">
-      <p class="figt">図：どちら側から始めるか</p>
-      <div class="figc">
-        <svg viewBox="0 0 960 300" role="img" aria-label="会える人が多いかどうかで、商品側から始めるかお客様側から始めるかが決まる図">
-          <defs>
-            <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-              <path d="M0 0 10 5 0 10z" fill="#b4b4b4"/>
-            </marker>
-          </defs>
-          <g font-family="Noto Sans JP, sans-serif">
-            <rect x="286" y="8" width="388" height="62" fill="#0b2c5c"/>
-            <text x="480" y="46" text-anchor="middle" font-size="19" font-weight="700" fill="#fff">いま、会える人は多いですか</text>
-
-            <path d="M480 78 L480 104 L250 104 L250 134" fill="none" stroke="#b4b4b4" stroke-width="1.5" marker-end="url(#arw)"/>
-            <path d="M480 78 L480 104 L710 104 L710 134" fill="none" stroke="#b4b4b4" stroke-width="1.5" marker-end="url(#arw)"/>
-            <text x="336" y="98" text-anchor="middle" font-size="15" font-weight="700" fill="#0b2c5c">はい</text>
-            <text x="632" y="98" text-anchor="middle" font-size="15" font-weight="700" fill="#0b2c5c">いいえ</text>
-
-            <rect x="76" y="142" width="348" height="98" fill="#fff" stroke="#d9d9d9"/>
-            <text x="250" y="180" text-anchor="middle" font-size="19" font-weight="700" fill="#111">商品側から</text>
-            <text x="250" y="210" text-anchor="middle" font-size="14" fill="#555">売るものを用意します</text>
-
-            <rect x="536" y="142" width="348" height="98" fill="#fff" stroke="#d9d9d9"/>
-            <text x="710" y="180" text-anchor="middle" font-size="19" font-weight="700" fill="#111">お客様側から</text>
-            <text x="710" y="210" text-anchor="middle" font-size="14" fill="#555">名刺をリストに変えます</text>
-
-            <text x="480" y="278" text-anchor="middle" font-size="14" fill="#6b6b6b">会える人が多い＝営業力が強い。強いほうは補強しません</text>
-          </g>
-        </svg>
-      </div>
-      <figcaption>強いほうは補強しません。弱いほうから埋めます。</figcaption>
-    </div>
-    <p class="tx" style="margin-top:34px">原則はこの3つだけです。ここから先は、どのサービスを、どの順で使うかという話になります。</p>
+    <figure class="fig">
+      <span class="fno">図 1</span>
+      <svg viewBox="0 0 320 300" role="img" aria-label="売れる商品かける売れる営業力イコール売上"><g font-family="Noto Sans JP, sans-serif"><defs><marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#9aa0a6"/></marker></defs><rect x="10" y="10" width="300" height="64" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="160" y="49" text-anchor="middle" font-size="19" font-weight="700" fill="#111111">売れる商品</text><text x="160" y="105" text-anchor="middle" font-size="26" font-weight="700" fill="#6b6b6b">×</text><rect x="10" y="120" width="300" height="64" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="160" y="159" text-anchor="middle" font-size="19" font-weight="700" fill="#111111">売れる営業力</text><text x="160" y="215" text-anchor="middle" font-size="26" font-weight="700" fill="#6b6b6b">＝</text><rect x="10" y="230" width="300" height="60" fill="#1b3a5c" stroke="#1b3a5c" stroke-width="1.4"/><text x="160" y="268" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff">売上</text></g></svg>
+      <figcaption>売上の構造</figcaption>
+    </figure>
   </div>
 </section>
 
-<section class="blk tint">
+<section class="sec" id="s02">
   <div class="w">
-    <div class="shead"><h2>お客様側の一手目は、<br>引き出しの名刺を<br>全部LINEに変えることです。</h2><span class="sn">FIRST STEP</span></div>
-    <p class="tx">お客様の側から始める方の話です。商品側から始める方の一手目は、この次の章でご案内します。冒頭の問いに戻ります。</p>
-    <div class="ask">
-      <p>社会人になってから今日まで、出会った全員に「LINE登録して」と案内していたら——いま、何人いたと思いますか。</p>
+    <div>
+      <p class="no"><span class="nm">02</span><span class="kn">起 ── 売上の形を知る</span></p>
+      <h2>商品は仕入れられますが、<br>お客様は買えません。</h2>
+      <p class="rd">2つとも正解ですが、手に入るまでの時間がまったく違います。ここが、どちらから始めるかを分けます。</p>
+      <p><b>商品は仕入れられます。</b>代理販売なら成果報酬で、在庫も持ちません。かかるお金は小さく、時間もほとんどかかりません。</p>
+      <p><b>お客様は買えません。</b>広告で買うことはできますが、金額は非現実的なほど大きくなり、年単位の時間がかかります。商品づくりに時間がかかると思われがちですが、実際に時間がかかるのは、お客様を集めるほうです。</p>
+      <p>もうひとつ、向きの違いがあります。バーをやめれば、バーの商品力は消えます。<b>けれども、集めたお客様は事業を変えても残ります。</b>Web制作に移っても、人材紹介を始めても、そのまま持っていけます。先にお客様を積んだ方は、何度でもやり直せます。</p>
     </div>
-    <p class="tx" style="margin-top:30px">その人たちが手元にいれば、駅前にバーを開いても、Web制作に移っても、人材紹介を始めても、営業はそれなりにできます。</p>
-    <p class="tx">けれども、過去に出会った人は、もう取り返せません。連絡先が残っていないからです。<b>取り返せるのは、いま手元に残っている名刺とLINEとSNSだけです。</b>だから最初の一手は、引き出しの名刺をリストに変えることになります。これを行うのが<b>名刺LINEエージェント</b>で、そのリストを切らさずに温め続けるのが<b>Lシンク</b>です。</p>
-    <div class="caution">
-      <h3>商圏のあるご商売の場合</h3>
-      <p>バー・美容室・教室のように、通える範囲のお客様で成り立つご商売では、名簿の全員がお客様になるわけではありません。数十人で足りることもあります。<b>効いてくるのは名簿の大きさではなく、つながりが切れていないことのほうです。</b></p>
-    </div>
+    <figure class="fig">
+      <span class="fno">図 2</span>
+      <svg viewBox="0 0 320 372" role="img" aria-label="入手・かかる時間・かかるお金・事業を変えたときの4つの軸で、商品とお客様を比べた表"><g font-family="Noto Sans JP, sans-serif"><rect x="8" y="8" width="304" height="300" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><rect x="118" y="8" width="97" height="300" fill="#f6f6f6"/><line x1="118" y1="8" x2="118" y2="308" stroke="#dcdcdc" stroke-width="1.2"/><line x1="215" y1="8" x2="215" y2="308" stroke="#dcdcdc" stroke-width="1.2"/><text x="166" y="34" text-anchor="middle" font-size="14.5" font-weight="700" fill="#1b3a5c">商品</text><text x="263" y="34" text-anchor="middle" font-size="14.5" font-weight="700" fill="#111111">お客様</text><line x1="8" y1="46" x2="312" y2="46" stroke="#dcdcdc" stroke-width="1.2"/><text x="20" y="84" font-size="12" font-weight="700" fill="#6b6b6b">入手</text><text x="166" y="84" text-anchor="middle" font-size="13.5" font-weight="400" fill="#111111">仕入れられる</text><text x="263" y="84" text-anchor="middle" font-size="13.5" font-weight="400" fill="#111111">買えない</text><line x1="8" y1="111" x2="312" y2="111" stroke="#dcdcdc" stroke-width="1.2"/><text x="20" y="149" font-size="12" font-weight="700" fill="#6b6b6b">かかる時間</text><text x="166" y="149" text-anchor="middle" font-size="13.5" font-weight="400" fill="#111111">ほぼゼロ</text><text x="263" y="149" text-anchor="middle" font-size="13.5" font-weight="400" fill="#111111">年単位</text><line x1="8" y1="176" x2="312" y2="176" stroke="#dcdcdc" stroke-width="1.2"/><text x="20" y="214" font-size="12" font-weight="700" fill="#6b6b6b">かかるお金</text><text x="166" y="214" text-anchor="middle" font-size="13.5" font-weight="400" fill="#111111">小さい</text><text x="263" y="214" text-anchor="middle" font-size="13.5" font-weight="400" fill="#111111">非現実的</text><line x1="8" y1="241" x2="312" y2="241" stroke="#dcdcdc" stroke-width="1.2"/><text x="20" y="279" font-size="12" font-weight="700" fill="#6b6b6b">事業を変えたとき</text><text x="166" y="279" text-anchor="middle" font-size="13.5" font-weight="700" fill="#6b6b6b">消える</text><text x="263" y="279" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1b3a5c">残る</text><text x="160" y="338" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">だから、先に積むのは</text><text x="160" y="360" text-anchor="middle" font-size="13.5" font-weight="700" fill="#111111">お客様のほうになります</text></g></svg>
+      <figcaption>商品とお客様の違い</figcaption>
+    </figure>
   </div>
 </section>
 
-<section class="blk" id="menu">
+<section class="sec key" id="s03">
   <div class="w">
-    <div class="shead"><h2>13のサービスは、<br>選ぶのではなく、<br>あなたの順番に並びます。</h2><span class="sn">MENU</span></div>
-    <p class="tx">向いていない方を外すのではありません。同じ13本が、着手すべき順に並び替わるだけです。商品の側から入る方にも、同じように順番があります。</p>
-    <div class="fig">
-      <p class="figt">図：13本が落ちる4つの枠</p>
-      <div class="figc">
-        <svg viewBox="0 0 980 196" role="img" aria-label="13のサービスが、いますぐ・次に・当座は不要・対象外の4つの枠に並び替わる図">
-          <defs>
-            <marker id="arw2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-              <path d="M0 0 10 5 0 10z" fill="#b4b4b4"/>
-            </marker>
-          </defs>
-          <g font-family="Noto Sans JP, sans-serif">
-            <rect x="2" y="56" width="212" height="66" fill="#0b2c5c"/>
-            <text x="108" y="96" text-anchor="middle" font-size="19" font-weight="700" fill="#fff">13のサービス</text>
-            <line x1="222" y1="89" x2="258" y2="89" stroke="#b4b4b4" stroke-width="1.5" marker-end="url(#arw2)"/>
-
-            <rect x="268" y="56" width="164" height="66" fill="#f3f6fa" stroke="#e9eef2"/>
-            <text x="350" y="96" text-anchor="middle" font-size="17" font-weight="700" fill="#0b2c5c">いますぐ</text>
-
-            <rect x="444" y="56" width="164" height="66" fill="#f3f6fa" stroke="#e9eef2"/>
-            <text x="526" y="96" text-anchor="middle" font-size="17" font-weight="700" fill="#0b2c5c">次に</text>
-
-            <rect x="620" y="56" width="164" height="66" fill="#fff" stroke="#d9d9d9"/>
-            <text x="702" y="96" text-anchor="middle" font-size="17" font-weight="700" fill="#555">当座は不要</text>
-
-            <rect x="796" y="56" width="180" height="66" fill="#fff" stroke="#d9d9d9" stroke-dasharray="4 4"/>
-            <text x="886" y="96" text-anchor="middle" font-size="17" font-weight="700" fill="#b4b4b4">対象外</text>
-
-            <text x="886" y="152" text-anchor="middle" font-size="13" fill="#6b6b6b">ここだけが消えます</text>
-          </g>
-        </svg>
+    <div>
+      <p class="no"><span class="nm">03</span><span class="kn">承 ── 始める側を決める</span></p>
+      <h2>比べるのは13本ではなく、<br>3つの原則だけです。</h2>
+      <p class="rd">ここが、この資料でいちばんお伝えしたいところです。13あるサービスを、ひとつずつ比べる必要はありません。決め方はこれだけです。</p>
+      <div class="rules">
+        <div class="rule-i"><span class="rn">01</span><div><h3>強いほうは補強しません</h3><p>すでにできていることに、お金と時間をさらに足しても、売上はほとんど動きません。</p></div></div>
+        <div class="rule-i"><span class="rn">02</span><div><h3>弱いほうから埋めます</h3><p>掛け算なので、0に近いほうを上げたときにだけ、売上が動きます。</p></div></div>
+        <div class="rule-i"><span class="rn">03</span><div><h3>人脈が強い方は商品側が先です</h3><p>会える人がすでに多いなら、次に要るのは売るものです。会える人が少ないなら、先はお客様の側になります。</p></div></div>
       </div>
-      <figcaption>本当に消えるのは「対象外」だけです。残りは順番が違うだけで、いずれも使えます。</figcaption>
+      <p>原則はこの3つだけです。ここから先は、どのサービスを、どの順で使うかという話になります。</p>
     </div>
-    <div class="cols" style="margin-top:34px">
-      <div>
-        <h3 class="h3s">お客様をつくる側（着手順）</h3>
-        <ul class="ul mlist">
-          <li><b>名刺LINEエージェント</b>　引き出しの名刺をリストに変えます</li>
-          <li><b>Lシンク</b>　集めた方との関係を切らさずに温めます</li>
-          <li><b>ホームページ制作</b>　発信の受け皿をつくります</li>
-          <li><b>ソーシャルマスター</b>　発信して、新しく見つけてもらいます</li>
-          <li><b>AIOマスター</b>　AI検索で候補に挙がるようにします</li>
-          <li><b>AI活用スキル</b>　ご本人がAIを使える状態にします</li>
-        </ul>
-        <p class="mnote">ホームページ制作は36万円の都度メニューです。会社サイトと、なぜやるのかを伝えるLPの2種類をお作りします。</p>
-      </div>
-      <div>
-        <h3 class="h3s">売れる商品をつくる側</h3>
-        <ul class="ul mlist">
-          <li><b>AIとの壁打ち・事業計画書</b>　融資書類ではなく、売り方の設計としてまとめます</li>
-          <li><b>Jマッチエンジン</b>　制度から、やる事業を探します</li>
-          <li><b>OEM提供</b>　他社の商材を、自社のものとして売ります</li>
-          <li><b>Web制作会社スタートパック</b>　制作事業を始めます</li>
-          <li><b>営業代行会社スタートパック</b>　営業代行を始めます</li>
-          <li><b>つばめリファラル</b>　紹介から収益をつくります</li>
-          <li><b>商談で決める力</b>　値段で言いよどまないようにします</li>
-        </ul>
-        <p class="mnote">商品側の一手目は、何を売るかが決まっているかどうかで変わります。決まっていない方は「AIとの壁打ち・事業計画書」からです。</p>
-      </div>
-    </div>
-    <p class="tx" style="margin-top:34px">消えるのは「対象外」だけで、これを決める主な軸は商圏の有無です。ただしソーシャルマスターは例外で、店舗のご商売にこそ向きます。</p>
-    <p class="sublink">最大18問に答えると、その場で13本が並び替わります。　<a href="../sogyo/">適性診断を受ける →</a></p>
+    <figure class="fig">
+      <span class="fno">図 3</span>
+      <svg viewBox="0 0 320 400" role="img" aria-label="会える人が多いかどうかで、商品側から始めるかお客様側から始めるかが決まる図"><g font-family="Noto Sans JP, sans-serif"><defs><marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#9aa0a6"/></marker></defs><rect x="10" y="8" width="300" height="66" fill="#1b3a5c" stroke="#1b3a5c" stroke-width="1.4"/><text x="160" y="40" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">いま、会える人は</text><text x="160" y="62" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">多いですか</text><path d="M160 78 L160 104 L85 104 L85 128" fill="none" stroke="#9aa0a6" stroke-width="1.4" marker-end="url(#a3)"/><path d="M160 78 L160 104 L235 104 L235 128" fill="none" stroke="#9aa0a6" stroke-width="1.4" marker-end="url(#a3)"/><text x="85" y="98" text-anchor="middle" font-size="13" font-weight="700" fill="#1b3a5c">はい</text><text x="235" y="98" text-anchor="middle" font-size="13" font-weight="700" fill="#1b3a5c">いいえ</text><rect x="10" y="136" width="145" height="96" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="82" y="172" text-anchor="middle" font-size="16" font-weight="700" fill="#111111">商品側から</text><text x="82" y="198" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">売るものを</text><text x="82" y="216" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">用意します</text><rect x="165" y="136" width="145" height="96" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="237" y="172" text-anchor="middle" font-size="16" font-weight="700" fill="#111111">お客様側から</text><text x="237" y="198" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">名刺をリストに</text><text x="237" y="216" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">変えます</text><line x1="10" y1="268" x2="310" y2="268" stroke="#dcdcdc" stroke-width="1.2"/><text x="160" y="300" text-anchor="middle" font-size="14" font-weight="700" fill="#111111">強いほうは補強しない</text><text x="160" y="328" text-anchor="middle" font-size="14" font-weight="700" fill="#111111">弱いほうから埋める</text><text x="160" y="370" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">会える人が多い＝営業力が強い</text></g></svg>
+      <figcaption>始める側の判定</figcaption>
+    </figure>
   </div>
 </section>
 
-<section class="blk tint">
+<section class="sec" id="s04">
   <div class="w">
-    <div class="shead"><h2>方向が変わっても、<br>初期費用なしで<br>別のサービスへ移れます。</h2><span class="sn">SWITCHING</span></div>
-    <p class="tx">始める前に、売るものも売り先もすべて決めきるのは、そもそも難しいことです。やってみて初めて分かることのほうが多くあります。</p>
-    <p class="tx">創業支援パックでは、ご契約中のサービスを別のサービスへ乗り換えられます。<b>再契約も、初期費用もいただきません。</b>お客様の側と商品の側を安く行き来できることが、このパックの中心です。</p>
-    <div class="feats" style="margin-top:34px">
-      <div class="feat">
-        <span class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a4 4 0 0 1 4 4v1a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4z"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0"/></svg></span>
-        <div>
-          <h3>AIバードが12か月つきます</h3>
-          <p>AIの家庭教師です。1サービスのご契約につき、12か月で最大12時間。料金の中に入っています。複数ご契約の場合は合算します。</p>
-        </div>
-      </div>
-      <div class="feat">
-        <span class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h13l-3-3"/><path d="M20 16H7l3 3"/></svg></span>
-        <div>
-          <h3>乗り換えても途切れません</h3>
-          <p>AIバードはサービスにではなく、ご本人に付きます。使うサービスを変えても、12か月のあいだ続きます。</p>
-        </div>
+    <div>
+      <p class="no"><span class="nm">04</span><span class="kn">転 ── 一手目を打つ</span></p>
+      <h2>お客様側の一手目は、<br>引き出しの名刺です。</h2>
+      <p class="rd">お客様の側から始める方の話です。商品側から始める方の一手目は、次の章でご案内します。冒頭の問いに戻ります。</p>
+      <div class="q"><p data-keep-phrase>社会人になってから今日まで、出会った全員に<span class="nobr">「LINE登録して」</span>と案内していたら——いま、何人いたと思いますか。</p></div>
+      <p>その方たちが手元にいれば、駅前にバーを開いても、Web制作に移っても、人材紹介を始めても、営業はそれなりにできます。</p>
+      <p>けれども、過去に出会った方は、もう取り返せません。連絡先が残っていないからです。<b>取り返せるのは、いま手元に残っている名刺とLINEとSNSだけです。</b>だから一手目は、引き出しの名刺をリストに変えることになります。これを行うのが<b>名刺LINEエージェント</b>で、そのリストを切らさずに温め続けるのが<b>Lシンク</b>です。</p>
+      <div class="box">
+        <h3>商圏のあるご商売の場合</h3>
+        <p>バー・美容室・教室のように、通える範囲のお客様で成り立つご商売では、名簿の全員がお客様になるわけではありません。数十人で足りることもあります。効いてくるのは名簿の大きさではなく、つながりが切れていないことのほうです。</p>
       </div>
     </div>
+    <figure class="fig">
+      <span class="fno">図 4</span>
+      <svg viewBox="0 0 320 330" role="img" aria-label="引き出しの名刺をリストに変え、切らさずに温め続ける3段の図"><g font-family="Noto Sans JP, sans-serif"><defs><marker id="a4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#9aa0a6"/></marker></defs><rect x="10" y="8" width="300" height="62" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="160" y="38" text-anchor="middle" font-size="16" font-weight="700" fill="#111111">引き出しの名刺</text><text x="160" y="58" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">／LINE／SNS</text><line x1="160" y1="72" x2="160" y2="100" stroke="#9aa0a6" stroke-width="1.4" marker-end="url(#a4)"/><rect x="10" y="108" width="300" height="62" fill="#f6f6f6" stroke="#dcdcdc" stroke-width="1.4"/><text x="160" y="138" text-anchor="middle" font-size="16" font-weight="700" fill="#1b3a5c">リストに変える</text><text x="160" y="158" text-anchor="middle" font-size="11" font-weight="400" fill="#6b6b6b">名刺LINEエージェント</text><line x1="160" y1="172" x2="160" y2="200" stroke="#9aa0a6" stroke-width="1.4" marker-end="url(#a4)"/><rect x="10" y="208" width="300" height="62" fill="#f6f6f6" stroke="#dcdcdc" stroke-width="1.4"/><text x="160" y="238" text-anchor="middle" font-size="16" font-weight="700" fill="#1b3a5c">切らさずに温める</text><text x="160" y="258" text-anchor="middle" font-size="11" font-weight="400" fill="#6b6b6b">Lシンク</text><text x="160" y="300" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">取り返せるのは、</text><text x="160" y="320" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">手元に残っているぶんだけです</text></g></svg>
+      <figcaption>一手目の流れ</figcaption>
+    </figure>
   </div>
 </section>
 
-<section class="blk" id="price">
+<section class="sec" id="s05">
   <div class="w">
-    <div class="shead"><h2>入口は1サービスです。<br>月3万円ほどからです。</h2><span class="sn">PRICE</span></div>
-    <div class="spec">
-      <dl>
+    <div>
+      <p class="no"><span class="nm">05</span><span class="kn">転 ── 一手目を打つ</span></p>
+      <h2>13のサービスは、<br>あなたの順番に並びます。</h2>
+      <p class="rd">向いていない方を外すのではありません。同じ13本が、着手すべき順に並び替わるだけです。商品の側から入る方にも、同じように順番があります。</p>
+      <div class="side">
+          <h3>お客様をつくる側　6本（着手順）</h3>
+          <ul class="ml">
+            <li><b>名刺LINEエージェント</b>　引き出しの名刺をリストに変えます</li>
+            <li><b>Lシンク</b>　集めた方との関係を切らさずに温めます</li>
+            <li><b>ホームページ制作</b>　発信の受け皿をつくります</li>
+            <li><b>ソーシャルマスター</b>　発信して、新しく見つけてもらいます</li>
+            <li><b>AIOマスター</b>　AI検索で候補に挙がるようにします</li>
+            <li><b>AI活用スキル</b>　ご本人がAIを使える状態にします</li>
+          </ul>
+          <p class="mn">ホームページ制作は36万円の都度メニューです。会社サイトと、なぜやるのかを伝えるLPの2種類をお作りします。</p>
+      </div>
+      <div class="side">
+          <h3>売れる商品をつくる側　7本</h3>
+          <ul class="ml">
+            <li><b>AIとの壁打ち・事業計画書</b>　融資書類ではなく、売り方の設計としてまとめます</li>
+            <li><b>Jマッチエンジン</b>　制度から、やる事業を探します</li>
+            <li><b>OEM提供</b>　他社の商材を、自社のものとして売ります</li>
+            <li><b>Web制作会社スタートパック</b>　制作事業を始めます</li>
+            <li><b>営業代行会社スタートパック</b>　営業代行を始めます</li>
+            <li><b>つばめリファラル</b>　紹介から収益をつくります</li>
+            <li><b>商談で決める力</b>　値段で言いよどまないようにします</li>
+          </ul>
+          <p class="mn">商品側の一手目は、何を売るかが決まっているかどうかで変わります。決まっていない方は「AIとの壁打ち・事業計画書」からです。</p>
+      </div>
+      <p>並び替えの結果は4つです。いますぐ／次に／当座は不要／対象外。消えるのは「対象外」だけで、これを決める主な軸は商圏の有無です。ただしソーシャルマスターは例外で、店舗のご商売にこそ向きます。</p>
+      <p class="go">最大18問に答えると、その場で13本が並び替わります。　<a href="../sogyo/">適性診断を受ける →</a></p>
+    </div>
+    <figure class="fig">
+      <span class="fno">図 5</span>
+      <svg viewBox="0 0 320 430" role="img" aria-label="13のサービスがお客様側6本と商品側7本に分かれ、いますぐ・次に・当座は不要・対象外の4枠に並び替わる図"><g font-family="Noto Sans JP, sans-serif"><defs><marker id="a5b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#9aa0a6"/></marker></defs><rect x="10" y="8" width="300" height="50" fill="#1b3a5c" stroke="#1b3a5c" stroke-width="1.4"/><text x="160" y="39" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">13のサービス</text><rect x="10" y="66" width="145" height="52" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="82" y="90" text-anchor="middle" font-size="12.5" fill="#6b6b6b">お客様側</text><text x="82" y="110" text-anchor="middle" font-size="16" font-weight="700" fill="#111111">6本</text><rect x="165" y="66" width="145" height="52" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="237" y="90" text-anchor="middle" font-size="12.5" fill="#6b6b6b">商品側</text><text x="237" y="110" text-anchor="middle" font-size="16" font-weight="700" fill="#111111">7本</text><line x1="160" y1="124" x2="160" y2="150" stroke="#9aa0a6" stroke-width="1.4" marker-end="url(#a5b)"/><text x="172" y="143" font-size="11.5" fill="#6b6b6b">商圏の有無で</text><rect x="10" y="158" width="300" height="52" fill="#f6f6f6" stroke="#dcdcdc" stroke-width="1.4"/><text x="160" y="190" text-anchor="middle" font-size="16" font-weight="700" fill="#1b3a5c">いますぐ</text><rect x="10" y="216" width="300" height="52" fill="#f6f6f6" stroke="#dcdcdc" stroke-width="1.4"/><text x="160" y="248" text-anchor="middle" font-size="16" font-weight="700" fill="#1b3a5c">次に</text><rect x="10" y="274" width="300" height="52" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="160" y="306" text-anchor="middle" font-size="16" font-weight="700" fill="#6b6b6b">当座は不要</text><rect x="10" y="332" width="300" height="52" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4" stroke-dasharray="4 4"/><text x="160" y="364" text-anchor="middle" font-size="16" font-weight="700" fill="#9aa0a6">対象外</text><text x="160" y="400" text-anchor="middle" font-size="12" fill="#6b6b6b">消えるのは「対象外」だけです</text><text x="160" y="420" text-anchor="middle" font-size="11.5" fill="#9aa0a6">ソーシャルマスターは店舗にこそ向きます</text></g></svg>
+      <figcaption>13本の内訳と4枠</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="sec" id="s06">
+  <div class="w">
+    <div>
+      <p class="no"><span class="nm">06</span><span class="kn">結 ── 続けられるようにする</span></p>
+      <h2>方向が変わっても、<br>乗り換えられます。</h2>
+      <p class="rd">始める前に、売るものも売り先もすべて決めきるのは、そもそも難しいことです。やってみて初めて分かることのほうが多くあります。</p>
+      <p>創業支援パックでは、ご契約中のサービスを別のサービスへ乗り換えられます。<b>再契約も、初期費用もいただきません。</b>お客様の側と商品の側を安く行き来できることが、このパックの中心です。</p>
+      <div class="box">
+        <h3>AIバードが12か月つきます</h3>
+        <p>AIの家庭教師です。1サービスのご契約につき、12か月で最大12時間。料金の中に入っています。複数ご契約の場合は合算します。サービスにではなくご本人に付くので、使うサービスを変えても途切れません。</p>
+      </div>
+    </div>
+    <figure class="fig">
+      <span class="fno">図 6</span>
+      <svg viewBox="0 0 320 300" role="img" aria-label="お客様をつくる側と商品をつくる側を、再契約料も初期費用もなく行き来できる図"><g font-family="Noto Sans JP, sans-serif"><defs><marker id="a6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#9aa0a6"/></marker></defs><rect x="10" y="30" width="135" height="90" fill="#f6f6f6" stroke="#dcdcdc" stroke-width="1.4"/><text x="77" y="72" text-anchor="middle" font-size="16" font-weight="700" fill="#1b3a5c">お客様</text><text x="77" y="94" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">をつくる</text><rect x="175" y="30" width="135" height="90" fill="#f6f6f6" stroke="#dcdcdc" stroke-width="1.4"/><text x="242" y="72" text-anchor="middle" font-size="16" font-weight="700" fill="#1b3a5c">商品</text><text x="242" y="94" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">をつくる</text><path d="M145 58 H168" fill="none" stroke="#1b3a5c" stroke-width="1.6" marker-end="url(#a6)"/><path d="M175 96 H152" fill="none" stroke="#1b3a5c" stroke-width="1.6" marker-end="url(#a6)"/><line x1="10" y1="152" x2="310" y2="152" stroke="#dcdcdc" stroke-width="1.2"/><text x="160" y="184" text-anchor="middle" font-size="14" font-weight="700" fill="#111111">再契約料　なし</text><text x="160" y="212" text-anchor="middle" font-size="14" font-weight="700" fill="#111111">初期費用　なし</text><line x1="10" y1="236" x2="310" y2="236" stroke="#dcdcdc" stroke-width="1.2"/><text x="160" y="266" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">AIバードは人に付くので</text><text x="160" y="286" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">乗り換えても途切れません</text></g></svg>
+      <figcaption>乗り換えの条件</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="sec" id="s07">
+  <div class="w">
+    <div>
+      <p class="no"><span class="nm">07</span><span class="kn">結 ── 続けられるようにする</span></p>
+      <h2>入口は1サービス、<br>月3万円ほどです。</h2>
+      <p class="rd">まず1本だけ始めていただき、必要になった順に足していく形です。</p>
+      <dl class="tbl">
         <div class="r"><dt>対象</dt><dd>創業前（おおむね1年以内に創業予定）、または創業から12か月以内の方</dd></div>
         <div class="r"><dt>確認方法</dt><dd>自己申告で結構です。書類の裏づけは求めません</dd></div>
         <div class="r"><dt>入口</dt><dd>1サービス以上のご契約</dd></div>
         <div class="r"><dt>定価</dt><dd>1サービスあたり、おおよそ月3万円</dd></div>
         <div class="r"><dt>複数契約</dt><dd>一部割引があります</dd></div>
         <div class="r"><dt>ホームページ制作</dt><dd>36万円（都度メニュー）</dd></div>
-        <div class="r"><dt>AIバード</dt><dd>1サービスにつき12か月で最大12時間。料金内</dd></div>
-        <div class="r"><dt>乗り換え</dt><dd>再契約料・初期費用なし</dd></div>
+        <div class="r"><dt>AIバードと乗り換え</dt><dd>06のとおりです（料金内／再契約料・初期費用なし）</dd></div>
       </dl>
+      <p>1本目に何を選ぶかは、3つの原則で決まります。決まらない場合は、適性診断か、資料の順番シートをお使いください。</p>
     </div>
-    <p class="tx" style="margin-top:30px">1本目に何を選ぶかは、上の3つの原則で決まります。決まらない場合は、適性診断か、資料の順番シートをお使いください。</p>
+    <figure class="fig">
+      <span class="fno">図 7</span>
+      <svg viewBox="0 0 320 262" role="img" aria-label="13本のうち、まず1本だけから始めるという図"><g font-family="Noto Sans JP, sans-serif"><rect x="10" y="10" width="62" height="46" fill="#1b3a5c" stroke="#1b3a5c" stroke-width="1.4"/><text x="41" y="39" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">1本目</text><rect x="80" y="10" width="62" height="46" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><rect x="150" y="10" width="62" height="46" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><rect x="220" y="10" width="62" height="46" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><rect x="10" y="64" width="62" height="46" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><rect x="80" y="64" width="62" height="46" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><rect x="150" y="64" width="62" height="46" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><rect x="220" y="64" width="62" height="46" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><rect x="10" y="118" width="62" height="46" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><rect x="80" y="118" width="62" height="46" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><rect x="150" y="118" width="62" height="46" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><rect x="220" y="118" width="62" height="46" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><rect x="10" y="172" width="62" height="46" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="160" y="248" text-anchor="middle" font-size="13" font-weight="700" fill="#111111">13本のうち、まず1本からです</text></g></svg>
+      <figcaption>入口は1サービス</figcaption>
+    </figure>
   </div>
 </section>
 
-<section class="apply" id="dl">
+<section class="sec" id="s08">
   <div class="w">
-    <h2>まず、あなたの順番を<br>決めてみてください。</h2>
-    <p>資料には、13本の一覧と着手の順番、そして<b>書き込み式の順番シート</b>が入っています。いますぐ／次に／当座は不要／対象外の4つの枠に、ご自身で並べていただけます。</p>
-    <p>創業前の方と、創業されたばかりの方とで、読む順番を分けてあります。</p>
-    <div class="hbtn dlrow">
-      <a class="cta off" aria-disabled="true">資料をダウンロード（準備中）</a>
-      <a class="cta gh" href="../sogyo/">先に適性診断で並べ替える</a>
+    <div>
+      <p class="no"><span class="nm">08</span><span class="kn">結 ── 続けられるようにする</span></p>
+      <h2>まず、あなたの順番を<br>決めてください。</h2>
+      <p class="rd">資料には、13本の一覧と着手の順番、そして<b>書き込み式の順番シート</b>が入っています。いますぐ／次に／当座は不要／対象外の4つの枠に、ご自身で並べていただけます。</p>
+      <p>いま何から始めるかを、1枚で決められる形にしてあります。読み終えたその日に、1本目が決まります。</p>
+      <div class="btns">
+        <a class="btn off" aria-disabled="true">資料をダウンロード（準備中）</a>
+        <a class="btn gh" href="../sogyo/">先に適性診断で並べ替える</a>
+      </div>
+      <p class="mn">お申し込みフォームの準備ができ次第、このページからお受け取りいただけるようにします。お急ぎの場合は、担当までご連絡ください。</p>
     </div>
-    <p class="note">お申し込みフォームの準備ができ次第、このページからお受け取りいただけるようにします。お急ぎの場合は、下記の担当までご連絡ください。</p>
+    <figure class="fig">
+      <span class="fno">図 8</span>
+      <svg viewBox="0 0 320 330" role="img" aria-label="資料に入っている、いますぐ・次に・当座は不要・対象外の4枠に書き込む順番シートの図"><g font-family="Noto Sans JP, sans-serif"><rect x="10" y="8" width="300" height="290" fill="#ffffff" stroke="#dcdcdc" stroke-width="1.4"/><text x="160" y="40" text-anchor="middle" font-size="15" font-weight="700" fill="#1b3a5c">順番シート</text><line x1="30" y1="54" x2="290" y2="54" stroke="#dcdcdc" stroke-width="1.2"/><text x="46" y="84" text-anchor="start" font-size="12" font-weight="700" fill="#111111">いますぐ</text><line x1="120" y1="90" x2="290" y2="90" stroke="#dcdcdc" stroke-width="1.2"/><line x1="120" y1="122" x2="290" y2="122" stroke="#dcdcdc" stroke-width="1.2"/><text x="46" y="150" text-anchor="start" font-size="12" font-weight="700" fill="#111111">次に</text><line x1="120" y1="156" x2="290" y2="156" stroke="#dcdcdc" stroke-width="1.2"/><line x1="120" y1="188" x2="290" y2="188" stroke="#dcdcdc" stroke-width="1.2"/><text x="46" y="216" text-anchor="start" font-size="12" font-weight="700" fill="#6b6b6b">当座は不要</text><line x1="120" y1="222" x2="290" y2="222" stroke="#dcdcdc" stroke-width="1.2"/><text x="46" y="262" text-anchor="start" font-size="12" font-weight="700" fill="#9aa0a6">対象外</text><line x1="120" y1="268" x2="290" y2="268" stroke="#dcdcdc" stroke-width="1.2"/><text x="160" y="324" text-anchor="middle" font-size="12" font-weight="400" fill="#6b6b6b">ご自身で書き込んでいただけます</text></g></svg>
+      <figcaption>順番シート</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -551,8 +415,9 @@ footer a{ color:#fff; display:inline-block; padding:12px 0; }
       <dt>ビジョン</dt><dd>全国、全ての中小企業を黒字にする</dd>
     </dl>
     <div class="fl">
+      <span>A-01　創業支援パック 説明資料　2026年9月</span>
       <span><a href="https://www.writeup.jp" target="_blank" rel="noopener">www.writeup.jp</a></span>
-      <span><a href="../sogyo/">創業支援パック 適性診断</a></span>
+      <span><a href="../sogyo/">適性診断</a></span>
     </div>
   </div>
 </footer>
