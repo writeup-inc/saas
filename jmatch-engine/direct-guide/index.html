@@ -311,6 +311,37 @@ section[id]{scroll-margin-top:52px}
   .fig svg{min-width:620px}
   .fig::after{content:"← 横にスクロールできます →";display:block;text-align:center;font-size:12px;color:var(--sub);margin-top:8px}
 }
+
+/* はじめに：その場で書き込めるヒアリング欄 */
+.intake{display:grid;gap:16px}
+.intake .row3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.intake .row4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.fld{display:grid;gap:6px}
+.fld small{font-weight:700;color:var(--sub);font-size:13px}
+.fld > span{display:block;min-height:48px;padding:12px 14px;border:1px solid var(--line);border-bottom:2px solid var(--navy);border-radius:10px;background:var(--bg);font-weight:700;line-height:1.7}
+.fld > span:empty::before{content:attr(data-ph);color:var(--gray);font-weight:500}
+.fld > span:focus{outline:2px solid var(--accent);outline-offset:1px}
+.fld.big > span{min-height:84px}
+.intake .ref{margin:2px 0 0;font-size:13px;color:var(--sub);line-height:1.8}
+.intake .ref b{color:var(--ink)}
+.intake .ref a{color:var(--navy)}
+
+/* なかなかもらえない4つの理由 */
+.reasons{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.rs{border:1px solid var(--line);border-radius:14px;background:var(--bg);padding:24px 22px}
+.rs > b{display:block;font-family:Inter,sans-serif;font-size:13px;letter-spacing:.1em;color:var(--accent);margin-bottom:10px}
+.rs h3{margin:0 0 10px;font-size:18px;font-weight:900;line-height:1.55}
+.rs p{margin:0;font-size:15px;color:var(--sub);line-height:1.85}
+.rs .num-big{display:block;font-family:Inter,sans-serif;font-size:clamp(2rem,5vw,2.8rem);font-weight:800;color:var(--navy);line-height:1.15;margin-bottom:4px}
+.rs .ast{display:block;margin-top:10px;font-size:13px;color:var(--sub);line-height:1.8}
+.dark .rs{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18)}
+
+/* 巻末の見出し */
+.legal-h{margin:0 0 14px;font-size:16px;font-weight:900;color:var(--ink)}
+
+@media (max-width:860px){
+  .intake .row3,.intake .row4,.reasons{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
@@ -324,7 +355,7 @@ section[id]{scroll-margin-top:52px}
     <p class="to-name" id="toName" hidden></p>
     <p class="brand">J MATCH ENGINE ／ <b>AI自走プラン</b></p>
     <h1>制度は、毎週のように出ています。<br><span class="accent">探すのも、書くのも、AIで。</span></h1>
-    <p class="lead">補助金を1件取ってくるサービスではありません。出てくる制度をいち早く知り、すぐに事業計画を用意できる会社にするための、月額3万円のプランです。</p>
+    <p class="lead">補助金を1件取ってくるサービスではありません。出てくる制度をいち早く知って、すぐに事業計画を用意できる会社になるための、月額3万円のプランです。</p>
     <ul class="facts">
       <li>月額30,000円＋初期登録費用100,000円（税別）</li>
       <li>成功報酬なし</li>
@@ -336,42 +367,96 @@ section[id]{scroll-margin-top:52px}
   </div>
 </section>
 
-<!-- 1 診断 -->
-<section class="alt" id="s-diag" data-nav="診断">
+<!-- 01 はじめに：前提の確認 -->
+<section class="alt" id="s-intake" data-nav="はじめに">
   <div class="wrap">
-    <p class="num">01</p>
-    <h2>8つの質問に答えると、いま使えそうな制度が<em class="hl nobr">5〜6件</em>出ます。</h2>
-    <p class="lead">補助金診断システム「Jシステム」のAI版（Jシステム AIエディション）です。分かる項目だけで候補を出し、締切・対象経費・次に確認することまで並べます。</p>
-    <div class="diag">
-      <div class="panel">
-        <h3>入力する8項目</h3>
-        <ul class="inputs">
-          <li>所在地</li><li>業種</li><li>従業員数</li><li>売上規模</li>
-          <li>導入したい設備・システム</li><li>採用や賃上げの予定</li><li>新しく始めたい事業</li><li>投資予定時期</li>
-        </ul>
+    <p class="num">01 ／ はじめに</p>
+    <h2>まず、御社のことを<em class="hl nobr">教えてください。</em></h2>
+    <p class="lead">ご提案の前に、前提をそろえさせてください。伺った内容をもとに、このあと使えそうな制度を一緒に調べます。（この欄は、商談中にその場で書き込めます）</p>
+    <div class="intake">
+      <div class="row3">
+        <label class="fld"><small>どちらからのご紹介ですか</small><span contenteditable="true" data-ph="例：商工会、銀行、Webで検索"></span></label>
+        <label class="fld"><small>所在地</small><span contenteditable="true" data-ph="例：神奈川県横浜市"></span></label>
+        <label class="fld"><small>ご希望の制度は</small><span contenteditable="true" data-ph="補助金・融資・税制優遇／制度名"></span></label>
       </div>
-      <div class="panel">
-        <h3>出てくる候補（例）</h3>
-        <ul class="cands">
-          <li><strong>小規模事業者持続化補助金</strong><small>販路開拓・生産性向上／次の確認：商工会議所の確認書</small><em class="hi">標準的</em></li>
-          <li><strong>IT導入補助金</strong><small>ソフトウェア・導入費／次の確認：支援事業者の選定</small><em class="hi">標準的</em></li>
-          <li><strong>ものづくり補助金</strong><small>機械装置・システム構築／次の確認：賃上げ要件</small><em>やや低い</em></li>
-          <li><strong>都道府県・市区町村の設備投資助成</strong><small>設備・改修／次の確認：国の制度との併用可否</small><em class="hi">標準的</em></li>
-          <li><strong>設備資金の低利融資</strong><small>設備資金・運転資金／次の確認：直近2期の決算</small><em>要追加確認</em></li>
-        </ul>
+      <p class="ref">※ 当社の補助金診断「Jシステム」は、<b>金融機関36・自治体29</b>に提供しています。提供先の一覧：<a href="https://prtimes.jp/main/html/rd/p/000000361.000042366.html" target="_blank" rel="noopener">自治体</a>　／　<a href="https://prtimes.jp/main/html/rd/p/000000337.000042366.html" target="_blank" rel="noopener">金融機関</a></p>
+      <div class="row4">
+        <label class="fld"><small>業種</small><span contenteditable="true" data-ph="例：金属加工"></span></label>
+        <label class="fld"><small>社員数</small><span contenteditable="true" data-ph="例：12名"></span></label>
+        <label class="fld"><small>創業年</small><span contenteditable="true" data-ph="例：1998年"></span></label>
+        <label class="fld"><small>いちばん欲しいもの</small><span contenteditable="true" data-ph="資金？設備？人？"></span></label>
       </div>
+      <label class="fld big"><small>今日いちばん聞きたいことは？</small><span contenteditable="true" data-ph="例：この補助金、うちでももらえますか？／資金調達したいが、何が使えるか分からない／新規顧客を増やすために使える制度を知りたい"></span></label>
     </div>
-    <p class="callout">「やや低い」と出ても、申請できないという意味ではありません。右端の表示は、AIが入力内容と制度情報から示す<b>参考値</b>です。採択や受給額を保証するものではなく、最終的な判断は制度の事務局が行います。</p>
-    <p class="note">制度名は例です。御社が対象になるかどうかは、各制度の公募要領と事務局の判断によります。</p>
   </div>
 </section>
 
-<!-- 2 一度では終わらない -->
-<section id="s-flow" data-nav="一度では終わらない">
+<!-- 02 診断 -->
+<section id="s-diag" data-nav="簡易診断">
   <div class="wrap">
-    <p class="num">02</p>
-    <h2>でも、制度は<em class="hl nobr">一度調べて終わり</em>ではありません。</h2>
-    <p class="lead">補助金・融資・税制優遇は、国・都道府県・市区町村から年間を通じて次々に出てきます。今日なかった制度が来月始まることも、去年あった制度が今年は消えていることも、珍しくありません。</p>
+    <p class="num">02 ／ 診断</p>
+    <h2>御社が制度を使えそうか、<em class="hl nobr">簡易的に調べてみます。</em></h2>
+    <p class="lead">いくつかの質問に答えると、候補が5〜6件出ます。補助金診断システム「Jシステム」のAI版です。右端が採択の見込み（参考値）です。ここからが、いちばん大事なお話になります。</p>
+    <div class="panel">
+      <h3>出てくる候補（例）</h3>
+      <ul class="cands">
+        <li><strong>小規模事業者持続化補助金</strong><small>販路開拓・広報</small><em class="hi">標準的</em></li>
+        <li><strong>IT導入補助金</strong><small>ソフトウェア導入</small><em class="hi">標準的</em></li>
+        <li><strong>ものづくり補助金</strong><small>設備投資</small><em>やや低い</em></li>
+        <li><strong>設備資金の低利融資</strong><small>設備・運転資金</small><em>要追加確認</em></li>
+      </ul>
+    </div>
+    <p class="note">制度名は例です。右端は参考値で、採択を保証するものではありません。御社が対象になるかどうかは、診断結果と各制度の公募要領によります。</p>
+  </div>
+</section>
+
+<!-- 03 正直に：なかなかもらえない -->
+<section class="alt peak" id="s-hard" data-nav="正直にお伝えします">
+  <div class="wrap">
+    <p class="num">03</p>
+    <h2>正直にお伝えします。<br>補助金は、<em class="hl nobr">なかなかもらえません。</em></h2>
+    <p class="lead">「この補助金をもらえるか」への答えは、1回の申請では難しいことが多い、です。理由は4つあります。</p>
+    <div class="reasons">
+      <div class="rs"><b>01</b><h3>採択率は、半分以下が多い</h3><p><span class="num-big">47.2%</span>小規模事業者持続化補助金 第19回（16,576件中7,819件）</p></div>
+      <div class="rs"><b>02</b><h3>小さな会社ほど、書ける材料が少ない</h3><p>体制・実績・数字で差がつきやすく、準備の質がそのまま結果に出ます。</p></div>
+      <div class="rs"><b>03</b><h3>何度も申請して、通るもの</h3><p>1回で通るとは限りません。直して再申請することも、よくあります。</p></div>
+      <div class="rs"><b>04</b><h3>加点項目の準備が要る</h3><p>賃上げ計画や各種認定など、取得に2週間〜3か月かかるものもあり、申請を決めてからでは間に合いません。<span class="ast">※ 加点項目を1つ取ると、採択率は数％から10％程度上がるといわれます（制度・回により異なります）。</span></p></div>
+    </div>
+    <p class="note">採択率の出典：中小企業庁 2026年7月29日発表。制度や回によって異なります。</p>
+  </div>
+</section>
+
+<!-- 04 だから、何度も申請できる会社へ -->
+<section class="peak" id="s-loop" data-nav="何度も申請できる会社へ">
+  <div class="wrap">
+    <p class="num">04 ／ このサービスの前提</p>
+    <h2>だから、1回で決めずに<br><em class="hl">何度も申請できる会社</em>になりましょう。</h2>
+    <p class="lead">たとえば年10回、申請のチャンスをつかむつもりで動きましょう。そのためには、見つけるのも、書くのも速くなければ回りません。</p>
+    <div class="fig">
+      <p class="fig-title">申請を繰り返す流れ</p>
+      <svg viewBox="0 0 960 250" role="img" aria-label="見つける、準備する、書く、申請する。結果が出たら直して次の申請へ戻る">
+        <g font-size="19" font-weight="700">
+          <rect x="0" y="40" width="200" height="70" rx="8" class="f-navy"/><text x="100" y="72" text-anchor="middle" fill="#fff">見つける</text><text x="100" y="97" text-anchor="middle" fill="#c9d6e4" font-size="14">AIが毎週届ける</text>
+          <rect x="250" y="40" width="200" height="70" rx="8" class="f-soft"/><text x="350" y="72" text-anchor="middle" class="t-ink">準備する</text><text x="350" y="97" text-anchor="middle" class="t-sub" font-size="14">加点項目を整える</text>
+          <rect x="500" y="40" width="200" height="70" rx="8" class="f-navy"/><text x="600" y="72" text-anchor="middle" fill="#fff">書く</text><text x="600" y="97" text-anchor="middle" fill="#c9d6e4" font-size="14">御社がAIと書く</text>
+          <rect x="750" y="40" width="200" height="70" rx="8" class="f-soft"/><text x="850" y="72" text-anchor="middle" class="t-ink">申請する</text><text x="850" y="97" text-anchor="middle" class="t-sub" font-size="14">結果を待つ</text>
+        </g>
+        <g class="s-ink" stroke-width="2" fill="none"><path d="M205 75 L241 75"/><path d="M455 75 L491 75"/><path d="M705 75 L741 75"/></g>
+        <g class="f-acc"><path d="M241 69 L241 81 L250 75 Z"/><path d="M491 69 L491 81 L500 75 Z"/><path d="M741 69 L741 81 L750 75 Z"/></g>
+        <path d="M850 115 L850 175 Q850 193 832 193 L118 193 Q100 193 100 175 L100 122" class="s-acc" stroke-width="3" fill="none" stroke-dasharray="9 6"/>
+        <path d="M93 124 L107 124 L100 113 Z" class="f-acc"/>
+        <text x="475" y="230" text-anchor="middle" class="t-acc" font-size="18" font-weight="800">通らなければ、直して次の申請へ。書いたものは使い回せます。</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- 05 一度では終わらない -->
+<section class="alt" id="s-flow" data-nav="一度では終わらない">
+  <div class="wrap">
+    <p class="num">05</p>
+    <h2>制度は、<em class="hl nobr">一度調べて終わり</em>ではありません。</h2>
+    <p class="lead">補助金・融資・税制優遇は、国・都道府県・市区町村から年間を通じて次々に出てきます。必要になってから調べると、もう締切の後、ということがよくあります。</p>
     <div class="fig">
       <p class="fig-title">同じ3つの制度を、いつ知るか</p>
       <svg viewBox="0 0 960 330" role="img" aria-label="必要になってから調べると3つのうち2つは締切が過ぎている。継続的に届けば3つとも準備期間が残る">
@@ -381,13 +466,11 @@ section[id]{scroll-margin-top:52px}
           <text x="0" y="74">国</text><text x="0" y="124">都道府県</text><text x="0" y="174">市区町村</text>
           <text x="500" y="74">国</text><text x="500" y="124">都道府県</text><text x="500" y="174">市区町村</text>
         </g>
-        <!-- 左：調べ始めた日 x=380 -->
         <rect x="80" y="58" width="190" height="22" rx="4" class="f-gray" opacity=".55"/>
         <rect x="120" y="108" width="210" height="22" rx="4" class="f-gray" opacity=".55"/>
         <rect x="300" y="158" width="150" height="22" rx="4" class="f-navy"/>
         <line x1="380" y1="40" x2="380" y2="200" class="s-ink" stroke-width="2" stroke-dasharray="5 5"/>
         <text x="380" y="222" text-anchor="middle" class="t-ink" font-size="13" font-weight="700">調べ始めた日</text>
-        <!-- 右：届いた日 x=600 -->
         <rect x="580" y="58" width="190" height="22" rx="4" class="f-navy"/>
         <rect x="620" y="108" width="210" height="22" rx="4" class="f-navy"/>
         <rect x="800" y="158" width="150" height="22" rx="4" class="f-navy"/>
@@ -400,21 +483,30 @@ section[id]{scroll-margin-top:52px}
       </svg>
       <p class="note">帯の長さは公募期間のイメージです。特定の制度の日数を示すものではありません。</p>
     </div>
-<aside class="ask-you"><small>御社ではいかがですか？</small><p>補助金や融資の情報は、いま、どこから入ってきていますか？</p><span>顧問の先生、銀行、商工会、ご自身での検索など</span></aside>
+  </div>
+</section>
+
+<!-- 06 見つけられずに止まっている -->
+<section id="s-stuck" data-nav="見つけられない">
+  <div class="wrap">
+    <p class="num">06</p>
+    <h2>多くの会社が、<em class="hl nobr">見つけられずに</em>止まっています。</h2>
+    <p class="lead">補助金に関心はあっても、申請までたどり着けない会社がほとんどです。いちばんの理由は「自社に合う補助金が分からない」こと。</p>
     <div class="stats">
       <div class="stat"><b>38.7%</b><p>申請に進めない理由の最多は「自社に最適な補助金が分からない」</p><small>民間調査／btobee（2026年6月、中小企業の経営者・役員300人）</small></div>
       <div class="stat"><b>81.1%</b><p>補助金に関心がありながら、申請に至っていない経営層</p><small>民間調査／btobee（2026年6月、中小企業の経営者・役員300人）</small></div>
     </div>
+    <aside class="ask-you"><small>御社ではいかがですか？</small><p>補助金や融資の情報は、いま、どこから入ってきていますか？</p><span>顧問の先生、銀行、商工会、ご自身での検索など</span></aside>
   </div>
 </section>
 
-<!-- 3 人力では間に合わない -->
+<!-- 07 人力では間に合わない -->
 <section class="alt" id="s-time" data-nav="間に合わない">
   <div class="wrap">
-    <p class="num">03</p>
+    <p class="num">07</p>
     <p class="h2-pre">見つけたときには、締切まで<span class="nobr">1〜2か月</span>しか<span class="nobr">ないこともあります。</span></p>
     <h2>人の手で探して、人の手で書いていては、<em class="hl nobr">間に合いません。</em></h2>
-    <p class="lead">制度を探すのにも、事業計画を書くのにも時間がかかります。普段の仕事を止めずに両方をこなすのは、どの会社でも簡単ではありません。</p>
+    <p class="lead">足りないのは、やる気ではなく「探す時間」と「書く時間」です。普段の仕事を止めずに両方をこなすのは、どの会社でも簡単ではありません。</p>
     <div class="fig">
       <svg viewBox="0 0 960 260" role="img" aria-label="人の手だと探す・書くで締切を越える。AIを使うと締切前に準備が終わる">
         <text x="0" y="34" class="t-sub" font-size="15" font-weight="700">これまで</text>
@@ -424,7 +516,7 @@ section[id]{scroll-margin-top:52px}
         <text x="638" y="37" text-anchor="middle" class="t-ink" font-size="15" font-weight="700">白紙から、人の手で書く</text>
         <text x="0" y="134" class="t-acc" font-size="15" font-weight="700">これから</text>
         <rect x="120" y="114" width="90" height="34" rx="6" class="f-acc"/>
-        <text x="165" y="137" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">AIが集める</text>
+        <text x="165" y="137" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">AIが探す</text>
         <rect x="218" y="114" width="230" height="34" rx="6" class="f-navy"/>
         <text x="333" y="137" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">質問に答えて、AIと書く</text>
         <text x="460" y="137" class="t-acc" font-size="14" font-weight="700">← 締切までに、見直す時間が残る</text>
@@ -437,65 +529,65 @@ section[id]{scroll-margin-top:52px}
   </div>
 </section>
 
-<!-- 4 中心：2本柱 -->
+<!-- 08 中心：2本柱 -->
 <section class="peak" id="s-core" data-nav="中心">
   <div class="wrap">
-    <p class="num">04 ／ このサービスの中心</p>
-    <h2>だから、探すのも書くのもAIで。<br><em class="hl">何倍も集めて、<span class="nobr">何倍も速く書きます。</span></em></h2>
+    <p class="num">08 ／ このサービスの中心</p>
+    <h2>そこで、探すのも書くのもAIで。<br><em class="hl">何倍も集めて、<span class="nobr">何倍も速く書きます。</span></em></h2>
     <p class="lead">補助金情報を見るだけのサービスではありません。制度を見逃さず、見つかったときに事業計画を素早く準備し、短い締切でも申請へ動ける会社をつくるサービスです。</p>
     <div class="pillars">
       <div class="pillar">
         <span class="tag">探す</span>
-        <h3>制度を集めるのは、AI。</h3>
+        <h3>AIが、制度を集める。</h3>
         <p>国・都道府県・市区町村の補助金・融資・税制優遇から、御社に合いそうなものを選んで届けます。</p>
         <div class="vs"><span>これまで：社長が、必要になってから探す</span><b>これから：毎週、向こうから届く</b></div>
       </div>
       <div class="pillar">
         <span class="tag">書く</span>
-        <h3>書くのは、御社とAIの二人三脚。</h3>
+        <h3>御社が、AIと書く。</h3>
         <p>白紙の欄ではなく、答えやすい質問が順番に出ます。答えた内容が、事業計画の土台になります。</p>
         <div class="vs"><span>これまで：白紙を前に、手が止まる</span><b>これから：質問に答えるだけで、土台ができる</b></div>
       </div>
     </div>
     <p class="fish">1匹の魚をもらうより、<span class="accent">釣り続けられる仕組み</span>を。</p>
-    <p class="proof">同じ支援を人の手で行う「Jコンサル」には、いま500社にご契約いただいています。そこで使われている中身を、AIで回せるようにしたのがJマッチエンジンです。</p>
+    <p class="proof">中身は、人の手で500社にご契約いただいている「Jコンサル」の支援です。15年以上ためてきた申請支援の記録をAIに読み込ませて、同じことをAIで回せるようにしました。</p>
   </div>
 </section>
 
-<!-- 5 探す -->
-<section class="alt" id="s-find" data-nav="探す">
+<!-- 09 探す：毎週届く -->
+<section class="alt" id="s-find" data-nav="毎週届く">
   <div class="wrap">
-    <p class="num">05 ／ 探す</p>
-    <h2>探すのはAI。<em class="hl nobr">毎週金曜の朝</em>、御社に合う制度が届きます。</h2>
-    <p class="lead">御社側で、国や自治体のサイトを毎週見て回る必要はありません。届いたときに「うちに関係あるか」を考えるだけです。</p>
-    <div class="steps">
-      <div class="step"><span class="n">1</span><div>
-        <h3>金曜の朝、今週の分が届く</h3>
-        <div class="digest-row">
-          <figure class="shot"><img src="img/digest.jpg" alt="今週は3つの支援が見つかりました、と知らせる画面。新しく見つかった制度3件、締切30日以内2件" width="930" height="612" loading="lazy"></figure>
-          <ul>
-            <li>新しく見つかった制度の数と、締切が近いものの数がひと目で分かります。</li>
-            <li>補助金だけでなく、融資や税制優遇も対象です。</li>
-            <li>届いた情報は、すべて「届いたお知らせ」に残ります。</li>
-          </ul>
-        </div>
-      </div></div>
-      <div class="step"><span class="n">2</span><div>
-        <h3>気になった制度は「検討中」へ。締切の近い順に並びます</h3>
-        <figure class="shot"><div class="bar"><i></i><i></i><i></i><span>検討中</span></div><img src="img/watch.jpg" alt="検討中の一覧。あと27日、あと45日など、締切までの日数が大きく表示される" width="1920" height="1200" loading="lazy"></figure>
-        <p class="cap">「あと何日か」が大きく出るので、<b>締切に気づいたら終わっていた</b>を防げます。</p>
-      </div></div>
+    <p class="num">09 ／ 探す</p>
+    <h2><em class="hl nobr">毎週金曜の朝</em>、御社に合う制度が届きます。</h2>
+    <p class="lead">国や自治体のサイトを見て回る必要はありません。届いたときに「うちに関係あるか」を考えるだけです。</p>
+    <div class="digest-row">
+      <figure class="shot"><img src="img/digest.jpg" alt="今週は3つの支援が見つかりました、と知らせる画面。新しく見つかった制度3件、締切30日以内2件" width="930" height="612" loading="lazy"></figure>
+      <ul>
+        <li>新しく見つかった制度の数と、締切が近いものの数がひと目で分かります。</li>
+        <li>補助金だけでなく、融資や税制優遇も対象です。</li>
+        <li>締切と対象経費まで並びます。</li>
+      </ul>
     </div>
     <ul class="chips"><li>補助金</li><li>融資</li><li>税制優遇</li><li>国</li><li>都道府県</li><li>市区町村</li><li>締切</li><li>対象経費</li><li>次に確認すること</li></ul>
   </div>
 </section>
 
-<!-- 6 書く -->
-<section id="s-write" data-nav="書く">
+<!-- 10 探す：検討中 -->
+<section id="s-watch" data-nav="検討中">
   <div class="wrap">
-    <p class="num">06 ／ 書く</p>
-    <h2>書くのは御社とAI。<em class="hl nobr">答えやすい質問</em>に答えていくと、事業計画の土台ができます。</h2>
-    <p class="lead">申請書では、いきなり「自社の強みを書いてください」と聞かれます。これでは、なかなか手が動きません。Jマッチエンジンでは、AIが質問を細かく分けて、順番に聞いていきます。</p>
+    <p class="num">10 ／ 探す</p>
+    <h2>気になる制度は「検討中」へ。<em class="hl nobr">締切を見逃しません。</em></h2>
+    <p class="lead">締切の近い順に並び、「あと何日」が大きく出ます。気づいたら終わっていた、はもう起きません。</p>
+    <figure class="shot"><div class="bar"><i></i><i></i><i></i><span>検討中</span></div><img src="img/watch.jpg" alt="検討中の一覧。あと27日、あと45日など、締切までの日数が大きく表示される" width="1920" height="1200" loading="lazy"></figure>
+  </div>
+</section>
+
+<!-- 11 書く：質問 -->
+<section class="alt" id="s-write" data-nav="強みは聞かない">
+  <div class="wrap">
+    <p class="num">11 ／ 書く</p>
+    <h2>書くときも、「強みを書いてください」とは<em class="hl nobr">聞きません。</em></h2>
+    <p class="lead">申請書では、いきなり「自社の強みを書いてください」と聞かれます。これでは、なかなか手が動きません。Jマッチエンジンでは、AIが答えやすい質問に分けて、順番に聞いていきます。事実を思い出して答えると、それが事業計画の土台になります。</p>
     <ul class="ask-list">
       <li>最近受注したお客様は、どのような会社でしたか</li>
       <li>そのお客様が、他社ではなく御社を選んだ理由は何ですか</li>
@@ -509,35 +601,50 @@ section[id]{scroll-margin-top:52px}
       <span class="arr">→</span>
       <div class="box out"><small>事業計画の「強み」の欄へ</small><p>短納期の対応力を、具体的な事実で示せます。</p></div>
     </div>
-<aside class="ask-you"><small>御社ではいかがですか？</small><p>最近のお客様は、なぜ他社ではなく御社を選んだのでしょうか？</p><span>いまお答えいただいた内容が、そのまま「強み」の欄の土台になります</span></aside>
-    <figure class="shot"><div class="bar"><i></i><i></i><i></i><span>事業計画書をつくる（AIツール）</span></div><img src="img/writer.jpg" alt="事業計画書をつくる画面。制度を選ぶ、カルテから下書き、質問に答える、書き出して確認の4段階。左に計画書の章、右にAIからの質問と下書き" width="1371" height="896" loading="lazy"></figure>
-    <p class="cap"><b>制度を選ぶ → 会社の情報から下書き → 質問に答える → 書き出して確認</b>。答えた分だけ埋まり、どこが空いているかが常に見えます。</p>
-    <p class="callout">事業計画書づくりに使うのは、Claude Code（AI）で動く専用ツールです。AIを使ったことがない前提でつくっており、初期設定は導入時にご案内します。なお、Claude Code の利用料は月額に含まれません。提供元（Anthropic社）の有料プランを、御社で別途ご契約ください。</p>
-    <div class="two mt48">
-      <div>
-        <h3 class="h3s">白紙からではなく、見本を見ながら書けます。</h3>
-        <p class="subp">採択された事業計画書の事例・見本、書き方を専門家が解説した動画、テンプレートを、ひとつの場所にまとめました。「どこまで具体的に書くのか」「売上効果をどう数字で示すのか」の手がかりになるのが、実際の採択事例です。</p>
-        <p class="note">掲載する事例は、一般公開・掲載許諾済み・匿名加工済みの資料に限ります。</p>
-      </div>
-      <figure class="shot"><div class="bar"><i></i><i></i><i></i><span>ナレッジライブラリ</span></div><img src="img/library.jpg" alt="ナレッジライブラリ。採択事業計画書、書き方動画、テンプレート、実務ガイドをカテゴリで絞り込める" width="1920" height="1200" loading="lazy"></figure>
-    </div>
-    <p class="callout">AIが代わりに申請するサービスではありません。AIがつくるのは事業計画の<b>土台</b>です。制度ごとの提出書類を仕上げるのは、御社ご自身か、有資格者の先生になります。</p>
+    <aside class="ask-you"><small>御社ではいかがですか？</small><p>最近のお客様は、なぜ他社ではなく御社を選んだのでしょうか？</p><span>いまお答えいただいた内容が、そのまま「強み」の欄の土台になります</span></aside>
   </div>
 </section>
 
-<!-- 7 使い回し -->
-<section class="alt" id="s-reuse" data-nav="使い回し">
+<!-- 12 書く：埋まっていく -->
+<section id="s-tool" data-nav="計画書が埋まる">
   <div class="wrap">
-    <p class="num">07</p>
-    <h2>一度書いた内容は、<em class="hl">翌年度の制度にも、融資の相談にも</em>使えます。</h2>
-    <p class="lead">会社の概要、お客様、市場、強み、やること、効果。聞かれることは、制度が変わっても大きくは変わりません。書いた内容は会社カルテに貯まっていきます。</p>
+    <p class="num">12 ／ 書く</p>
+    <h2>答えた分だけ、<em class="hl nobr">計画書が埋まっていきます。</em></h2>
+    <p class="lead">AIを使ったことがなくても大丈夫です。初期設定は導入時にご案内します。申請の代行はしません。仕上げは御社か、有資格者の先生です。</p>
+    <figure class="shot"><div class="bar"><i></i><i></i><i></i><span>事業計画書をつくる（AIツール）</span></div><img src="img/writer.jpg" alt="事業計画書をつくる画面。制度を選ぶ、カルテから下書き、質問に答える、書き出して確認の4段階。左に計画書の章、右にAIからの質問と下書き" width="1371" height="896" loading="lazy"></figure>
+    <p class="cap"><b>制度を選ぶ → 会社の情報から下書き → 質問に答える → 書き出して確認</b>。答えた分だけ埋まり、どこが空いているかが常に見えます。Wordで書き出せます。</p>
+    <p class="note">※ Claude Code の利用料は月額に含みません（提供元の有料プランを、御社で別途ご契約いただきます）。</p>
+  </div>
+</section>
+
+<!-- 13 見本 -->
+<section class="alt" id="s-library" data-nav="採択された見本">
+  <div class="wrap">
+    <p class="num">13</p>
+    <h2>白紙からではなく、<em class="hl nobr">採択された見本</em>を見ながら書けます。</h2>
+    <p class="lead">採択された事業計画書や、書き方の解説動画、テンプレートをそろえました。「どこまで具体的に書くか」「売上効果をどう数字で示すか」が分かります。</p>
+    <div class="two">
+      <figure class="shot"><div class="bar"><i></i><i></i><i></i><span>ナレッジライブラリ</span></div><img src="img/library.jpg" alt="ナレッジライブラリ。採択事業計画書、書き方動画、テンプレート、実務ガイドをカテゴリで絞り込める" width="1920" height="1200" loading="lazy"></figure>
+      <div>
+        <ul class="dest"><li>採択された事業計画書</li><li>書き方の解説動画</li><li>テンプレート・実務ガイド</li></ul>
+        <p class="note">掲載する事例は、一般公開・掲載許諾済み・匿名加工済みの資料に限ります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 使い回し -->
+<section id="s-reuse" data-nav="何度でも使える">
+  <div class="wrap">
+    <p class="num">14</p>
+    <h2>一度書いた内容は、<em class="hl nobr">何度でも使えます。</em></h2>
+    <p class="lead">会社の概要、お客様、市場、強み、やること、効果。聞かれることは、制度が変わっても大きくは変わりません。書いた内容は会社カルテに貯まり、次は書き足すだけです。</p>
     <div class="reuse">
       <ul class="dest">
         <li>今年の補助金の事業計画書</li>
         <li>翌年度の、別の制度</li>
-        <li>銀行・信用金庫への融資相談の資料</li>
-        <li>新規事業の計画・社内の経営計画</li>
-        <li>顧問の先生に渡す整理資料</li>
+        <li>銀行・信用金庫への融資相談</li>
+        <li>新規事業の計画</li>
       </ul>
       <figure class="shot"><div class="bar"><i></i><i></i><i></i><span>会社カルテ</span></div><img src="img/profile.jpg" alt="会社カルテ。充実度80パーセント、解決したいこと、基本情報が並ぶ" width="1920" height="1200" loading="lazy"></figure>
     </div>
@@ -545,12 +652,12 @@ section[id]{scroll-margin-top:52px}
   </div>
 </section>
 
-<!-- 8 釣り方が残る -->
+<!-- 15 釣り方が残る -->
 <section class="peak dark" id="s-skill" data-nav="釣り方">
   <div class="wrap">
-    <p class="num">08</p>
+    <p class="num">15</p>
     <h2>1匹の魚ではなく、<br><em class="hl nobr">釣り方</em>が会社に残ります。</h2>
-    <p class="lead">採択されても、されなくても。使い続けるうちに、次の4つが会社に残ります。</p>
+    <p class="lead">採択されても、されなくても。使い続けるうちに、次の4つが会社に残ります。補助金の準備が、そのままAIの実地研修になります。</p>
     <ul class="powers">
       <li><b>01</b><strong>事業計画を作る力</strong><span>何を聞かれ、どう答えれば伝わるかが分かる</span></li>
       <li><b>02</b><strong>強みを言葉にする力</strong><span>「選ばれた理由」を事実で説明できる</span></li>
@@ -561,12 +668,12 @@ section[id]{scroll-margin-top:52px}
   </div>
 </section>
 
-<!-- 9 脇の支援 -->
+<!-- 16 脇の支援 -->
 <section class="alt" id="s-help" data-nav="人の支援">
   <div class="wrap">
-    <p class="num">09 ／ 脇を固める支援</p>
+    <p class="num">16 ／ 脇を固める支援</p>
     <h2>それでも迷うときは、<em class="hl nobr">人がいます。</em></h2>
-    <p class="lead">AIで速く集めて、速く書けても、進めるうちに壁にぶつかることがあります。よくある3つの壁と、それぞれに用意した人の支援がこちらです。</p>
+    <p class="lead">主役はAIですが、進めるうちにぶつかる壁が3つあります。それぞれに人の支援を用意しました。</p>
     <div class="supports">
       <div class="support">
         <div class="worry"><small>壁 1</small><p>この方向で合っているのか、自信がない</p></div>
@@ -581,27 +688,17 @@ section[id]{scroll-margin-top:52px}
         <div class="body"><h3>AI家庭教師</h3><p>AIに詳しい講師が、御社の実際の仕事を題材にマンツーマンで教えます。依頼の前に、相性を確かめる面談つき。</p><p class="terms">ご契約中は月2時間まで追加料金なし<br>超えた分は1時間1万円（税別）</p></div>
       </div>
     </div>
-<aside class="ask-you"><small>御社ではいかがですか？</small><p>この3つの壁のうち、いちばん気になるのはどれですか？</p><span>方向性、資金繰り、AIの使い方</span></aside>
+    <aside class="ask-you"><small>御社ではいかがですか？</small><p>この3つの壁のうち、いちばん気になるのはどれですか？</p><span>方向性、資金繰り、AIの使い方</span></aside>
     <p class="note">金額はすべて税別です。資金調達の相談先の審査や条件を、当社が保証するものではありません。</p>
   </div>
 </section>
 
-<!-- FAQ -->
-<section id="s-faq" data-nav="よくある質問">
+<!-- 17 料金 -->
+<section class="peak" id="s-price" data-nav="料金">
   <div class="wrap">
-    <p class="num">よくあるご質問</p>
-    <h2>ここまでで、気になる点はありませんか。</h2>
-    <p class="lead">商談でよくいただく6つのご質問です。気になるものを開いてご覧ください。</p>
-    <div class="faq"><details><summary>補助金は、通りますか。いくらもらえますか。</summary><p>お約束はできません。審査するのは制度の事務局で、画面に出る想定採択可能性も参考値です。私たちが支援できるのは、使えそうな制度を見逃さないことと、出てきたときにすぐ事業計画を準備できる状態をつくることです。</p></details><details><summary>AIが、申請書を書いてくれるのですか。</summary><p>いいえ。AIがつくるのは事業計画の土台です。制度ごとの提出書類を仕上げるのは御社ご自身か、有資格者の先生で、申請の代行も行いません。</p></details><details><summary>ChatGPTでも、書けるのではありませんか。</summary><p>文章を整える部分は書けます。ただ、実際に手が止まるのは書く前です。どの制度が合うかを毎週追うことと、答えやすい質問に分けて聞くこと。この2つをまとめてご提供します。</p></details><details><summary>AIを使ったことがなくても、大丈夫ですか。</summary><p>使ったことがない前提でつくっています。初期設定は導入時にご案内し、分からないときはAI家庭教師（月2時間まで追加料金なし）に聞けます。</p></details><details><summary>月3万円は、高くありませんか。</summary><p>お支払いいただくのは情報の閲覧料ではなく、制度が出たときに事業計画をつくって動ける状態です。仮に1年間採択に至らなくても、事業計画をつくる力とAIを使う力は会社に残ります。</p></details><details><summary>作った事業計画は、融資にも使えますか。</summary><p>使えます。補助金で聞かれることと、金融機関で聞かれることの多くは共通です。同じ土台から、融資相談の資料を組み立てられます。</p></details></div>
-  </div>
-</section>
-
-<!-- 10 料金 -->
-<section id="s-price" data-nav="料金">
-  <div class="wrap">
-    <p class="num">10 ／ 料金</p>
-    <h2>初期登録費用10万円＋月額3万円（税別）。<br><em class="hl nobr">成功報酬はいただきません。</em></h2>
-    <p class="lead">使う量や採択の有無で、追加の費用はいただきません。Claude Code の利用料だけは別途、御社で提供元とご契約いただく形です。</p>
+    <p class="num">17 ／ 料金</p>
+    <h2>初期登録費用10万円＋<span class="nobr">月額3万円。</span><br><em class="hl">成功報酬はいただきません。</em></h2>
+    <p class="lead">使う量や採択の有無で、追加の費用はいただきません。9月30日（水）までにお申し込みで、導入事例にご協力いただける10社は、初期登録費用が0円です。値引きではなく、事例づくりへのご協力との交換です。</p>
     <div class="price">
       <div class="price-head"><small>AI SELF-DRIVE</small><h3>Jマッチエンジン AI自走プラン</h3></div>
       <div class="price-row">
@@ -614,7 +711,7 @@ section[id]{scroll-margin-top:52px}
         <li>Jシステム AIエディションによる候補の抽出</li>
         <li>締切・対象経費・想定採択可能性（参考）の表示</li>
         <li>採択事例・事業計画書の見本・解説動画</li>
-        <li>AIツールによる事業計画書・融資資料の土台づくり（Claude Code の利用料は別途）</li>
+        <li>AIツールによる事業計画書・融資資料の土台づくり</li>
         <li>会社カルテ・検討中の管理</li>
         <li>AI家庭教師 月2時間まで</li>
         <li>お問い合わせ窓口</li>
@@ -630,23 +727,16 @@ section[id]{scroll-margin-top:52px}
         <li>導入事例の掲載（掲載内容は事前にご確認いただく流れです）</li>
       </ol>
     </div>
-    <p class="note">最低利用期間・解約の条件・返金の取り扱い・お預かりする情報の範囲は、ご契約前に書面でご提示します。</p>
+    <p class="note">金額はすべて税別です。※ Claude Code の利用料は月額に含みません（提供元の有料プランを、御社で別途ご契約いただきます）。</p>
   </div>
 </section>
 
-<!-- 11 締め -->
-<section class="close" id="s-close" data-nav="まとめ">
+<!-- 18 はじめ方 -->
+<section class="alt" id="s-next" data-nav="はじめ方">
   <div class="wrap">
-    <h2>今日の1件ではなく、<br><span class="accent">これから出る制度すべてに</span>動ける会社へ。</h2>
-    <p>使えそうな制度を見逃さず、出てきたらAIと一緒に事業計画を作り、すぐ動ける状態へ。月額3万円で、そこまでご支援します。</p>
-  </div>
-</section>
-
-<!-- はじめ方 -->
-<section id="s-next" data-nav="はじめ方">
-  <div class="wrap">
-    <p class="num">はじめ方</p>
+    <p class="num">18 ／ はじめ方</p>
     <h2>お申し込みから使い始めるまで、<em class="hl nobr">3つの手順</em>です。</h2>
+    <p class="lead">いま検討している投資や採用の予定を伺い、会社情報を登録すれば、制度の配信とAIツールの利用が始まります。</p>
     <ol class="next">
       <li><b>01</b><strong>お申し込み・ヒアリング</strong><span>いま検討している投資、採用や賃上げの予定、これから始めたい事業を伺います。</span></li>
       <li><b>02</b><strong>会社情報の初期登録</strong><span>所在地・業種・従業員数などを会社カルテに登録。ここまでが初期登録費用の範囲です。</span></li>
@@ -656,22 +746,21 @@ section[id]{scroll-margin-top:52px}
   </div>
 </section>
 
-<!-- 12 余韻 -->
-<section class="story" id="s-story" data-nav="1年後">
+<!-- 締め -->
+<section class="close" id="s-close" data-nav="まとめ">
   <div class="wrap">
-    <p class="num">EPILOGUE</p>
-    <h2>1年後の、ある朝。</h2>
-    <p class="lead">社員10名の会社で、社長が全社にメールを転送してきました。（ご利用いただいた場合のイメージとして書いた短い物語の、最後の場面です）</p>
-    <div class="mail">
-      <header><span>From <b>代表取締役</b></span><span>To 社員各位</span><span>件名：Fwd: 今週の補助金・融資・税制優遇情報</span></header>
-      <div class="body">
-        <p>今週はこれが気になりました。</p>
-        <p class="big">もし、やってみたいことと重なりそうなら、いつでも言えよ。</p>
-        <p>その時は、まずAIにも聞いてみよう。</p>
-      </div>
-    </div>
-    <p class="after">1年前、制度の情報は社長のスマホの中にしかありませんでした。いまは会社の中に置かれていて、誰かが何かを言い出したとき、そこには制度の情報も、AIと一緒に整理する時間もあります。補助金をもらうためではなく、会社の選択肢を増やすために。</p>
-    <p class="note src">実在の企業・人物ではありません。全文は約5分で読めます：<a href="https://writeup-inc.github.io/saas/jmatch-engine/direct/?story=1" rel="noopener">「いつでも言えよ」と、社長が言うようになった一年</a></p>
+    <h2>今日の1件ではなく、<br><span class="accent">これから出る制度すべてに</span>動ける会社へ。</h2>
+    <p>使えそうな制度を見逃さず、出てきたらAIと一緒に事業計画を作り、すぐ動ける状態へ。月額3万円で、そこまでご支援します。</p>
+  </div>
+</section>
+
+<!-- 補足：FAQ -->
+<section id="s-faq" data-nav="補足：よくあるご質問">
+  <div class="wrap">
+    <p class="num">補足</p>
+    <h2>よくいただくご質問</h2>
+    <p class="lead">商談でよくいただく7つのご質問です。気になるものを開いてご覧ください。</p>
+    <div class="faq"><details><summary>補助金は、通りますか。いくらもらえますか。</summary><p>お約束はできません。審査するのは制度の事務局で、画面に出る想定採択可能性も参考値です。私たちが支援できるのは、使えそうな制度を見逃さないことと、出てきたときにすぐ事業計画を準備できる状態をつくることです。</p></details><details><summary>AIが、申請書を書いてくれるのですか。</summary><p>いいえ。AIがつくるのは事業計画の土台です。制度ごとの提出書類を仕上げるのは御社ご自身か、有資格者の先生で、申請の代行も行いません。</p></details><details><summary>ChatGPTでも、書けるのではありませんか。</summary><p>文章を整える部分は書けます。ただ、実際に手が止まるのは書く前です。どの制度が合うかを毎週追うことと、答えやすい質問に分けて聞くこと。この2つをまとめてご提供します。</p></details><details><summary>AIを使ったことがなくても、大丈夫ですか。</summary><p>使ったことがない前提でつくっています。初期設定は導入時にご案内し、分からないときはAI家庭教師（月2時間まで追加料金なし）に聞けます。</p></details><details><summary>月3万円は、高くありませんか。</summary><p>お支払いいただくのは情報の閲覧料ではなく、制度が出たときに事業計画をつくって動ける状態です。仮に1年間採択に至らなくても、事業計画をつくる力とAIを使う力は会社に残ります。</p></details><details><summary>外注したほうが、安いのではありませんか。</summary><p>外注をやめてください、とは申しません。ご契約中は当社から専門家をご紹介でき、ご自身で探して依頼されるより費用を抑えられることが多いです。加えて、事業計画の土台ができていると、依頼する範囲が小さくなります。外注でうまくいくのは今回の1件で、来年また出てくる制度を追い続ける人は社外にはいません。書く材料も、御社の中にしかありません。</p></details><details><summary>作った事業計画は、融資にも使えますか。</summary><p>使えます。補助金で聞かれることと、金融機関で聞かれることの多くは共通です。同じ土台から、融資相談の資料を組み立てられます。</p></details></div>
   </div>
 </section>
 
@@ -679,17 +768,19 @@ section[id]{scroll-margin-top:52px}
 
 <footer class="legal">
   <div class="wrap">
+    <p class="legal-h">ご契約前に、お伝えしておくこと</p>
     <ul>
-      <li>掲載している画面と、資料・動画・専門家の分野などの掲載内容は、開発中のイメージです。実際の表示とは異なる場合があります。会社名・人名・制度名・金融機関名は架空です。</li>
+      <li>掲載している画面と、資料・動画・専門家の分野などの掲載内容は、開発中のイメージです。会社名・人名は架空です。制度名は表示のイメージとして掲げたもので、御社が対象になるかは診断結果と公募要領によります。</li>
       <li>想定採択可能性はAIが示す参考情報です。申請資格、採択、融資承認、受給額を保証するものではありません。最終的な判断は制度事務局または金融機関が行います。</li>
       <li>申請の代行・提出書類の作成は行いません。提出書類は御社ご自身、または御社が依頼する有資格者の方が作成します。</li>
-      <li>補助金の多くは事業実施後の精算払いです。支払いの時期や条件は制度ごとに異なります。</li>
-      <li>統計の出典：btobee（2026年6月実施、中小企業の経営者・役員300人。事前調査3,000人からの抽出）。</li>
-      <li>料金はすべて税別です。Claude Code の利用料は含みません（提供元の有料プランを御社で別途ご契約いただきます）。</li>
+      <li>補助金の多くは事業実施後の精算払いです。資金調達の相談先の審査や条件を、当社が保証するものではありません。</li>
+      <li>最低利用期間・解約の条件・返金の取り扱い・お預かりする情報の範囲は、ご契約前に書面でご提示します。</li>
+      <li>統計の出典：btobee（2026年6月実施、中小企業の経営者・役員300人。事前調査3,000人からの抽出）。採択率の出典：中小企業庁 2026年7月29日発表。料金はすべて税別です。Claude Code の利用料は含みません（提供元の有料プランを御社で別途ご契約いただきます）。</li>
     </ul>
     <p>株式会社ライトアップ（東証グロース：6580）／東京都渋谷区渋谷2-15-1 渋谷クロスタワー32F　<a href="https://www.writeup.jp/" rel="noopener">コーポレートサイト</a>　<a href="https://www.writeup.jp/privacy/" rel="noopener">個人情報保護方針</a></p>
   </div>
 </footer>
+
 <script>
 (function(){
   // 宛名：?to=会社名
@@ -713,7 +804,7 @@ section[id]{scroll-margin-top:52px}
   function update(){var y=window.innerHeight*0.35,idx=0;secs.forEach(function(s,i){if(s.getBoundingClientRect().top<=y)idx=i;});setCur(idx);}
   window.addEventListener('scroll',update,{passive:true});update();
   document.addEventListener('keydown',function(e){
-    if(e.target.closest&&e.target.closest('input,textarea,select,summary'))return;
+    if(e.target.closest&&e.target.closest('input,textarea,select,summary,[contenteditable]'))return;
     var k=e.key, n=null, base=(Date.now()-lastKey<900&&pending!==null)?pending:cur;
     if(k==='ArrowRight'||k==='PageDown')n=Math.min(base+1,secs.length-1);
     if(k==='ArrowLeft'||k==='PageUp')n=Math.max(base-1,0);
