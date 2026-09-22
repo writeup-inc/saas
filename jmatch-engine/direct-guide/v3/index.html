@@ -301,20 +301,18 @@ body.laser-on{cursor:none}
 
 /* ===== 管理画面へのリンク =====
  * 実物を見せたい枚だけに置く。押すと会員向け管理画面のデモが別タブで開く。
+ * 目立たせない。話の邪魔をせず、話者が押す場所だけ分かればよい。
  * ?view= は画面を直接指定するための予約。いまのデモは未対応でホームに着地する。 */
-.screenlink{margin:18px 0 0}
+.screenlink{margin:14px 0 0}
 .screenlink a{
-  display:inline-flex;align-items:center;gap:10px;
-  min-height:44px;padding:0 16px;border:1px solid var(--line);border-radius:4px;
-  font-size:14px;font-weight:700;color:var(--ink);text-decoration:none;background:#fff;
-  transition:border-color .15s ease,background .15s ease;
+  display:inline-flex;align-items:center;gap:6px;
+  min-height:44px;                      /* 見た目は文字だけ。押せる範囲だけ確保する */
+  font-size:13px;font-weight:500;line-height:1.6;
+  color:var(--weak);text-decoration:none;
 }
-.screenlink a:hover{border-color:var(--ink);background:var(--soft,#f6f6f3)}
-.screenlink a::after{content:"↗";font-family:Inter,sans-serif;font-weight:900;color:var(--accent)}
-.screenlink span{
-  font-weight:900;color:var(--accent);
-  padding-left:10px;border-left:1px solid var(--line);
-}
+.screenlink a::after{content:"↗";font-family:Inter,sans-serif;font-size:12px}
+.screenlink a:hover{color:var(--text);text-decoration:underline;text-underline-offset:3px}
+.screenlink span{font-weight:700}
 @media print{.screenlink{display:none}}
 
 /* ===== 収録モード（R）=====
