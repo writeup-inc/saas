@@ -305,10 +305,11 @@ body.laser-on{cursor:none}
  *  ・期限と社数（9/30・10社）を隠し、収録用の言い回しに差し替える
  *  ・商談専用の枚（ヒアリング・その場の診断など）を外す
  *  ・収録専用の枚（今日話すこと／話さないこと）を出す */
-body.rec .say,
 body.rec .ask,
 body.rec .free:not([data-rec="only"]),
 body.rec #deadline { display:none !important; }
+/* 「担当より」は収録モードでも出す。出せない1枚だけ data-rec="off" で外す */
+body.rec .say[data-rec="off"] { display:none !important; }
 body.rec [data-rec="off"] { display:none !important; }
 [data-rec="only"] { display:none !important; }
 body.rec [data-rec="only"] { display:block !important; }
@@ -351,7 +352,6 @@ body.rec section[data-rec="only"] { display:flex !important; }
     <p class="brand">J MATCH ENGINE <span>／</span> AI自走プラン</p>
     <h1>制度は、毎週のように出ています。<br><span class="hl">探すのも、書くのも、AIで。</span></h1>
     <p class="say"><span class="who">担当より</span><span class="line">補助金を1件取ってくるサービスではありません。出てくる制度をいち早く知って、<b>すぐに事業計画を用意できる会社</b>になるためのプランです。</span></p>
-  <p class="reclead" data-rec="only">補助金を1件取ってくるサービスではありません。出てくる制度をいち早く知って、<b>すぐに事業計画を用意できる会社</b>になるためのプランです。</p>
   </div>
 </section>
 
@@ -657,7 +657,8 @@ body.rec section[data-rec="only"] { display:flex !important; }
   <div class="wrap">
     <p class="no"><span>17</span><span class="mark">Point</span></p>
     <h2>初期登録費用10万円＋<span class="nobr">月額3万円。</span><br><span class="hl">成功報酬はいただきません</span></h2>
-    <p class="say"><span class="who">担当より</span><span class="line">9月30日（水）までにお申し込みで、<b class="urg">導入事例にご協力いただける10社は、初期登録費用が0円</b>です。値引きではなく、事例づくりへのご協力との交換です。</span></p>
+    <p class="say" data-rec="off"><span class="who">担当より</span><span class="line">9月30日（水）までにお申し込みで、<b class="urg">導入事例にご協力いただける10社は、初期登録費用が0円</b>です。値引きではなく、事例づくりへのご協力との交換です。</span></p>
+    <p class="say" data-rec="only"><span class="who">担当より</span><span class="line">導入事例にご協力いただける会社様は、<b class="urg">初期登録費用が0円</b>になります。値引きではなく、事例づくりへのご協力との交換です。受付枠と期限は、個別のご相談の際にご案内します。</span></p>
     <div class="visual price">
       <div class="row">
         <div><small>月額</small><b>30,000<i>円</i></b></div>
@@ -773,6 +774,7 @@ document.documentElement.classList.add('js');
   function setTalk(on){body.classList.toggle('talk',on);bT.setAttribute('aria-pressed',on?'true':'false');setList();update();setTimeout(function(){if(slides[cur])slides[cur].scrollIntoView();},30);}
   function setRec(on){
     body.classList.toggle('rec',on);bR.setAttribute('aria-pressed',on?'true':'false');
+    if(on){[].forEach.call(document.querySelectorAll('.say[data-rec="only"]'),function(el){el.classList.add('on');});}
     setList();update();
     setTimeout(function(){if(slides[cur])slides[cur].scrollIntoView();},30);
   }
