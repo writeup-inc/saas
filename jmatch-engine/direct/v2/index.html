@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="所在地・業種など8項目で使えそうな制度の候補と締切が分かり、その後も御社に合う制度が毎週金曜に届きます。事業計画書はAIの質問に答えて土台を作れます。初期登録費用10万円＋月額3万円（税別）、成功報酬なし。">
+<meta name="description" content="8項目で使えそうな制度の候補と締切が分かり、その後も御社に合う制度が毎週金曜に届きます。事業計画書はAIの質問に答えて土台を作れます。初期登録費用10万円＋月額3万円（税別）、成功報酬なし。">
 <title>Jマッチエンジン｜使える制度を見逃さない。見つけたら、すぐ書ける。</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,11 +36,12 @@ main > *, section > *, .grid > *, .flex > * { min-width: 0; }
 pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
 
 /* ===== 直販LP v2 ─────────────────────────────────────────
-   v1（9/12）の構成と見た目に寄せて作り直した版。
-   ・v1から戻す：区画の並び、左に見出し・右に中身、太いゴシック見出し、数字の帯、黒の「見つからない。書けない。」、
-     8項目の診断、担当範囲の図
-   ・v1から直す：料金・条件（Claude Code利用料は別契約／「今月10社限定」をやめる／士業依頼プランは載せない）
-   ・v3（9/19〜22）から足す：毎週金曜の配信、検討中、採択された見本、会社カルテ、人の支援、実画面 */
+   方向性：読む前に分かるLP。
+   ・ストーリー（区画の並び）はv1のまま
+   ・各区画は「見出し1本＋ひと言＋ビジュアル1つ」が基本。説明文は半分以下
+   ・条件・注記・出典は小さな1行か、よくある質問に寄せる
+   ・見た目はv1の作法（左に見出し・右に中身、太いゴシック、黒の全面、数字の帯）
+   ・料金・条件はv3に合わせて修正済み（Claude Code別契約／今月限定なし／士業プランなし） */
 :root{
   --ac:#0b2c5c; --ac2:#07203f; --acl:#f3f6fa; --acl2:#e6ecf4; --acm:#b9c6da; --mark:#d6e0ee;
   --bk:#111; --text:#1d1d1d; --g1:#474747; --g2:#5f6368; --g3:#80868e;
@@ -57,6 +58,7 @@ body{margin:0;background:var(--paper);color:var(--text);font-family:var(--sans);
 a{color:var(--ac)}
 p{margin:0 0 14px}
 .en{font-family:var(--num);font-weight:800;letter-spacing:.16em}
+.ic{flex:0 0 22px;width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}
 
 /* ヘッダー */
 .hd{position:sticky;top:0;z-index:50;height:var(--header-h);background:rgba(255,255,255,.95);
@@ -76,42 +78,30 @@ p{margin:0 0 14px}
 .btn.pri{background:var(--ac);color:#fff;border:2px solid var(--ac)}
 .btn.pri:hover{background:var(--ac2);border-color:var(--ac2)}
 .btn.pri::after{content:"→";font-family:var(--num);font-weight:800}
-.btn.ghost{background:#fff;color:var(--ac);border:2px solid var(--ac)}
-.btn.ghost::after{content:"▸"}
-.btn.ghost:hover{background:var(--acl)}
 .btn.inv{background:#fff;color:var(--ac);border:2px solid #fff}
 .btn.inv::after{content:"→";font-family:var(--num);font-weight:800}
 .btn.inv:hover{background:transparent;color:#fff}
+.tlink{font-size:15.5px;font-weight:700;color:var(--ac);text-decoration:none;border-bottom:2px solid var(--acm);padding-bottom:2px}
+.tlink:hover{border-bottom-color:var(--ac)}
 
-/* ヒーロー：v1と同じく、左にコピー・右に要点カード */
-.hero .w{display:grid;grid-template-columns:minmax(0,1fr) 392px;gap:clamp(32px,4.4vw,60px);align-items:start;
-  padding-top:clamp(56px,7vw,92px);padding-bottom:clamp(56px,7vw,92px)}
-.tagline{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:0}
-.tagline .en{display:inline-block;padding:6px 12px;background:var(--ac);color:#fff;font-size:12.5px}
-.tagline span:last-child{font-size:14px;font-weight:700;color:var(--g1)}
-.hero h1{margin:28px 0 26px;font-weight:900;letter-spacing:-.035em;line-height:1.26;color:var(--bk);font-size:clamp(2rem,3.7vw,3.2rem)}
+/* ヒーロー：見出し・ひと言・ボタン・料金1行だけ。右は実画面の重ね */
+.hero{overflow:hidden}
+.hero .w{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(32px,4vw,56px);align-items:center;
+  padding-top:clamp(56px,7vw,96px);padding-bottom:clamp(64px,8vw,104px)}
+.tagline{margin:0;display:inline-block;padding:6px 12px;background:var(--ac);color:#fff;font-size:12.5px}
+.hero h1{margin:26px 0 22px;font-weight:900;letter-spacing:-.035em;line-height:1.24;color:var(--bk);font-size:clamp(2.2rem,4.3vw,3.7rem)}
 .hero h1 em{font-style:normal;color:var(--ac)}
-.hero .lead{max-width:34em;margin:0 0 26px;font-size:clamp(16.5px,1.5vw,18.5px);line-height:2;color:var(--g1)}
-.hero .lead b{color:var(--bk);background:linear-gradient(transparent 62%,var(--mark) 62%)}
-.coop-h{margin:0 0 26px;max-width:36em;padding:16px 20px;border:2px solid var(--ac);border-radius:4px;background:var(--acl)}
-.coop-h b{display:block;font-size:clamp(16px,1.5vw,18px);color:var(--ac)}
-.coop-h small{display:block;margin-top:4px;font-size:13.5px;color:var(--g2);line-height:1.75}
-.hero .btns{display:flex;flex-wrap:wrap;gap:12px}
-.hero .fine{margin:14px 0 0;font-size:14px;color:var(--g2)}
-/* 要点カード */
-.card{border:1px solid var(--ln);border-radius:6px;background:#fff;box-shadow:var(--shadow);overflow:hidden}
-.card dl{margin:0}
-.card .r{display:grid;grid-template-columns:92px 1fr;gap:12px;padding:16px 20px;border-top:1px solid var(--ln2)}
-.card .r:first-child{border-top:0;background:var(--ac);color:#fff}
-.card dt{display:flex;align-items:flex-start;gap:8px;font-size:13px;font-weight:700;color:var(--g2);letter-spacing:.04em;padding-top:2px}
-.ic{flex:0 0 18px;width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}
-.card dt .ic{color:var(--ac);margin-top:2px}
-.card .r:first-child dt .ic{color:#fff}
-.card .r:first-child dt{color:var(--acm)}
-.card dd{margin:0;font-size:15px;line-height:1.7;color:var(--g1)}
-.card dd b{display:block;font-size:16.5px;color:var(--bk)}
-.card .r:first-child dd,.card .r:first-child dd b{color:#fff}
-.card .r.neg{background:var(--pa)}
+.hero .sub{max-width:28em;margin:0 0 32px;font-size:clamp(17px,1.6vw,19.5px);line-height:1.9;color:var(--g1)}
+.hero .acts{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px}
+.hero .price{margin:28px 0 0;padding-top:20px;border-top:1px solid var(--ln);font-size:15.5px;line-height:1.8;color:var(--g1)}
+.hero .price b{color:var(--bk)}
+.chip{display:inline-block;margin-left:6px;padding:2px 10px;border-radius:99px;background:var(--acl2);color:var(--ac);font-size:13px;font-weight:700;vertical-align:1px}
+.stack{position:relative;margin:0;height:clamp(360px,36vw,500px)}
+.stack .shot{position:absolute}
+.stack .c1{top:0;right:-4%;width:100%}
+.stack .c2{left:-4%;bottom:4%;width:56%}
+.stack .c3{right:0;bottom:-2%;width:48%}
+.stack figcaption{position:absolute;left:0;right:0;bottom:-44px;text-align:center;font-size:12.5px;color:var(--g3)}
 
 /* 実績帯 */
 .proof{background:var(--ac2);color:#fff}
@@ -125,26 +115,20 @@ p{margin:0 0 14px}
 .proof .src{margin:0;font-size:13px;line-height:1.8;color:var(--acm)}
 .proof .src a{color:#fff}
 
-/* 区画：v1と同じく、左に見出し（追従）・右に中身 */
-.sec{padding:clamp(72px,9vw,120px) 0;border-top:1px solid var(--ln2)}
+/* 区画：左に見出し（追従）・右に中身 */
+.sec{padding:clamp(80px,10vw,128px) 0;border-top:1px solid var(--ln2)}
 .sec.pa{background:var(--pa);border-top:0}
-.two{display:grid;grid-template-columns:318px minmax(0,1fr);gap:clamp(32px,5vw,60px)}
-.two > *{min-width:0}
+.two{display:grid;grid-template-columns:318px minmax(0,1fr);gap:clamp(32px,5vw,64px)}
+.two > *,.body > *{min-width:0}
 .side{position:sticky;top:98px;align-self:start}
 .no{margin:0;font-family:var(--num);font-weight:900;font-size:15px;letter-spacing:.14em;color:var(--ac)}
 .no small{display:block;margin-top:8px;font-size:12.5px;font-weight:800;letter-spacing:.2em;color:var(--g2)}
-.side h2{margin:18px 0 0;font-weight:900;letter-spacing:-.028em;line-height:1.44;color:var(--bk);font-size:clamp(1.55rem,2.5vw,2.1rem)}
+.side h2{margin:18px 0 0;font-weight:900;letter-spacing:-.028em;line-height:1.44;color:var(--bk);font-size:clamp(1.6rem,2.6vw,2.2rem)}
 .side h2 em{font-style:normal;color:var(--ac)}
-#t7{font-size:clamp(1.45rem,2.2vw,1.9rem)}
-.side .snote{margin:18px 0 0;font-size:15.5px;line-height:1.9;color:var(--g2)}
-.body .lead{margin:0 0 20px;font-weight:900;letter-spacing:-.02em;line-height:1.55;color:var(--bk);font-size:clamp(1.25rem,2vw,1.6rem)}
-.body p{color:var(--g1)}
-.body p b{color:var(--bk);background:linear-gradient(transparent 62%,var(--mark) 62%)}
+.side .snote{margin:18px 0 0;font-size:16px;line-height:1.85;color:var(--g2)}
+.body .lead{margin:0 0 24px;font-weight:900;letter-spacing:-.02em;line-height:1.5;color:var(--bk);font-size:clamp(1.3rem,2.1vw,1.7rem)}
 .cap{margin:12px 0 0;font-size:13.5px;line-height:1.75;color:var(--g3)}
-.note{margin:14px 0 0;font-size:14px;line-height:1.8;color:var(--g2)}
-.box{margin:24px 0 0;padding:18px 22px;border-left:4px solid var(--ac);background:var(--acl);font-size:15.5px;line-height:1.9;color:var(--g1)}
-.box b{color:var(--bk)}
-.sec.pa .box{background:#fff}
+.sp{display:none}
 
 /* 実画面：ブラウザの枠と影 */
 .shot{position:relative;border:1px solid #d6dce5;border-radius:6px;overflow:hidden;background:#fff;padding-top:22px;box-shadow:var(--shadow)}
@@ -152,191 +136,147 @@ p{margin:0 0 14px}
 .shot::after{content:"";position:absolute;top:7px;left:12px;width:8px;height:8px;border-radius:50%;background:#cdd3dc;box-shadow:13px 0 0 #cdd3dc,26px 0 0 #cdd3dc}
 .shot img{display:block;width:100%;height:auto}
 
-/* 01 診断の模型 */
-.mock{border:1px solid var(--ln);border-radius:6px;background:#fff;overflow:hidden;box-shadow:var(--shadow)}
-.mock .bar{margin:0;padding:9px 16px;background:var(--pa);border-bottom:1px solid var(--ln2);font-size:13px;font-weight:700;color:var(--g2)}
-.mock .in{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:16px}
-.mock .in span{padding:10px 12px;border:1px solid var(--ln);border-radius:4px;font-size:14.5px;color:var(--g1)}
-.mock .inc{margin:0;padding:0 16px 14px;font-size:13.5px;color:var(--g3)}
-.mock .hd2{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;margin:0;padding:12px 16px;background:var(--ac);color:#fff;font-size:14px;font-weight:700}
-.mock .hd2 small{font-weight:500;font-size:13px;color:var(--acm)}
+/* 01 診断：入力8項目と候補（説明文は外し、名前と見込みだけ） */
+.mock{border:1px solid var(--ln);border-radius:8px;background:#fff;overflow:hidden;box-shadow:var(--shadow)}
+.mock .in{display:flex;flex-wrap:wrap;gap:8px;padding:18px}
+.mock .in span{padding:7px 14px;border:1px solid var(--ln);border-radius:99px;font-size:14.5px;color:var(--g1);background:var(--pa)}
+.mock .arrow{margin:0;padding:10px 18px;background:var(--ac);color:#fff;font-size:14.5px;font-weight:700}
+.mock .arrow span{font-family:var(--num);margin-right:8px}
 .cand{list-style:none;margin:0;padding:0}
-.cand li{padding:16px 18px;border-top:1px solid var(--ln2)}
-.cand .t{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 6px}
-.cand .t strong{font-size:17px;color:var(--bk)}
+.cand li{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:15px 18px;border-top:1px solid var(--ln2)}
+.cand li:first-child{border-top:0}
+.cand strong{font-size:17px;color:var(--bk)}
 .cand .k{padding:2px 9px;border-radius:3px;font-size:12.5px;font-weight:700;background:var(--acl2);color:var(--ac)}
 .cand .k.loan{background:#eceff3;color:var(--g1)}
-.cand .lv{margin-left:auto;padding:2px 10px;border:1px solid var(--acm);border-radius:99px;font-size:13px;font-weight:700;color:var(--ac)}
+.cand .lv{margin-left:auto;padding:2px 12px;border:1px solid var(--acm);border-radius:99px;font-size:13.5px;font-weight:700;color:var(--ac)}
 .cand .lv.low{border-color:var(--ln);color:var(--g2)}
-.cand p{margin:0 0 4px;font-size:15px;line-height:1.8;color:var(--g1)}
-.cand .m{font-size:13.5px;color:var(--g2)}
-.cand .m b{color:var(--bk);background:none}
 
 /* 02 いつ知るか（WITHOUT／WITH） */
-.fig{margin:28px 0 0;padding:22px clamp(16px,2.4vw,26px) 18px;border:1px solid var(--ln);border-radius:6px;background:#fff}
-.fig .ttl{margin:0 0 6px;font-size:14px;font-weight:700;color:var(--bk)}
-.fig .ttl .en{margin-right:10px;color:var(--ac);font-size:12.5px}
-.tl{position:relative;margin:0 0 10px;padding:14px 0 0}
-.tl + .tl{border-top:1px dashed var(--ln)}
-.tl .lb{margin:0 0 10px;font-family:var(--num);font-size:12.5px;font-weight:800;letter-spacing:.16em;color:var(--g2)}
+.fig{margin:0;padding:24px clamp(16px,2.4vw,28px) 20px;border:1px solid var(--ln);border-radius:8px;background:#fff}
+.tl{position:relative;padding:4px 0 0}
+.tl + .tl{margin-top:18px;padding-top:20px;border-top:1px dashed var(--ln)}
+.tl .lb{display:flex;justify-content:space-between;gap:10px;margin:0 0 12px;font-size:15.5px;font-weight:900;color:var(--bk)}
+.tl .lb .en{font-size:12.5px;color:var(--g2)}
 .tl .rows{position:relative}
 .tl .row{display:grid;grid-template-columns:5.5em 1fr;align-items:center;gap:10px;margin:0 0 8px}
 .tl .row > span{font-size:14.5px;font-weight:700;color:var(--bk)}
-.tl .tr{position:relative;height:30px;background:var(--pa);border-radius:4px}
+.tl .tr{position:relative;height:28px;background:var(--pa);border-radius:4px}
 .tl .b{position:absolute;top:0;bottom:0;border-radius:4px}
 .tl .b.miss{background:#d8dde4}
 .tl .b.ok{background:var(--ac)}
 .tl .now{position:absolute;top:-6px;bottom:-4px;border-left:3px dashed var(--bk)}
-.tl .now.ac{border-left-color:#1f8a5b}
-.tl .res{margin:6px 0 12px;font-size:14.5px;font-weight:700;color:var(--g1)}
+.tl .res{margin:4px 0 0;font-size:15px;font-weight:700;color:var(--g2)}
 .tl .res.good{color:var(--ac)}
-.fig .foot{margin:6px 0 0;font-size:13.5px;line-height:1.75;color:var(--g3)}
+.shots{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:18px;align-items:end;margin:26px 0 0}
+.shots > *{min-width:0}
 
 /* 数字の帯 */
-.strip{padding:clamp(56px,7vw,88px) 0;border-top:1px solid var(--ln2)}
-.strip .intro{margin:0 0 26px;font-size:16px;color:var(--g1)}
+.strip{padding:clamp(64px,8vw,96px) 0;border-top:1px solid var(--ln2)}
+.strip .intro{margin:0 0 28px;font-weight:900;font-size:clamp(1.3rem,2.2vw,1.75rem);letter-spacing:-.02em;line-height:1.5;color:var(--bk)}
 .strip .grid4{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--bk)}
-.strip .sc{padding:26px 22px 8px 0;border-right:1px solid var(--ln)}
+.strip .sc{padding:26px 22px 4px 0;border-right:1px solid var(--ln)}
 .strip .sc + .sc{padding-left:22px}
 .strip .sc:last-child{border-right:0}
-.strip .sc b{display:block;font-family:var(--num);font-weight:900;font-size:clamp(2.6rem,4.6vw,3.8rem);line-height:1;letter-spacing:-.03em;color:var(--ac)}
+.strip .sc b{display:block;font-family:var(--num);font-weight:900;font-size:clamp(2.8rem,5vw,4.2rem);line-height:1;letter-spacing:-.03em;color:var(--ac)}
 .strip .sc b small{font-size:.42em;letter-spacing:0}
-.strip .sc p{margin:14px 0 8px;font-size:15.5px;font-weight:700;line-height:1.7;color:var(--bk)}
-.strip .sc .s{margin:0;font-size:13px;line-height:1.7;color:var(--g3);font-weight:500}
+.strip .sc p{margin:14px 0 0;font-size:15.5px;font-weight:700;line-height:1.7;color:var(--bk)}
+.strip .srcs{margin:22px 0 0;font-size:12.5px;line-height:1.8;color:var(--g3)}
 
 /* 黒の全面 */
-.peak{background:var(--bk);color:#fff;padding:clamp(80px,11vw,140px) 0 clamp(76px,10vw,132px)}
+.peak{background:var(--bk);color:#fff;padding:clamp(88px,12vw,150px) 0}
 .peak .big{margin:0;color:#fff;font-weight:900;letter-spacing:-.05em;line-height:1.06;font-size:clamp(3rem,11vw,8.6rem)}
 .peak .big span{display:block}
 .peak .big span:last-child{color:#6b6b6b}
-.peak hr{margin:42px 0 36px;border:0;border-top:1px solid #333}
-.peak p{max-width:34em;margin:0;font-size:clamp(16.5px,1.5vw,18.5px);line-height:2;color:#b4b4b4}
-.peak p b{color:#fff}
+.peak p.after{margin:40px 0 0;font-size:clamp(17px,1.7vw,20px);line-height:1.9;color:#b4b4b4}
+.peak p.after b{color:#fff}
 
-/* 03 含まれる3つ：v1と同じ全幅の3枚カード */
-.head3{max-width:760px;margin:0 0 clamp(32px,4vw,48px)}
-.head3 h2{margin:18px 0 0;font-weight:900;letter-spacing:-.03em;line-height:1.4;color:var(--bk);font-size:clamp(1.7rem,3.2vw,2.4rem)}
+/* 03 含まれる3つ */
+.head3{max-width:760px;margin:0 0 clamp(36px,4vw,52px)}
+.head3 h2{margin:18px 0 0;font-weight:900;letter-spacing:-.03em;line-height:1.4;color:var(--bk);font-size:clamp(1.8rem,3.4vw,2.6rem)}
 .head3 h2 em{font-style:normal;color:var(--ac)}
-.head3 .snote{margin:16px 0 0;font-size:16px;line-height:1.9;color:var(--g2)}
 .vcards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.vc{border:1px solid var(--ln);border-top:4px solid var(--ac);border-radius:0 0 6px 6px;background:#fff;padding:24px 24px 18px}
+.vc{border:1px solid var(--ln);border-top:4px solid var(--ac);border-radius:0 0 8px 8px;background:#fff;padding:26px 26px 20px}
 .vc:nth-child(2){border-top-color:#3c5f8f}
 .vc:nth-child(3){border-top-color:#7f97b8}
-.vc .ic{width:26px;height:26px;color:var(--ac)}
-.vc .n{display:block;margin:10px 0 4px;font-family:var(--num);font-weight:900;font-size:40px;line-height:1;color:var(--acm);letter-spacing:-.03em}
-.vc h3{margin:0 0 8px;font-weight:900;font-size:clamp(1.15rem,1.7vw,1.35rem);line-height:1.45;color:var(--bk)}
-.vc .sub{margin:0 0 14px;font-size:15px;font-weight:700;line-height:1.75;color:var(--g1)}
-.vc .checks{margin:0}
-.vc .checks li{font-size:15px}
+.vc .ic{width:28px;height:28px;color:var(--ac)}
+.vc .n{display:block;margin:12px 0 6px;font-family:var(--num);font-weight:900;font-size:42px;line-height:1;color:var(--acm);letter-spacing:-.03em}
+.vc h3{margin:0 0 14px;font-weight:900;font-size:clamp(1.2rem,1.8vw,1.4rem);line-height:1.45;color:var(--bk)}
+.checks{list-style:none;margin:0;padding:0}
+.checks li{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-top:1px solid var(--ln2);font-size:16px;line-height:1.7;color:var(--bk)}
+.checks li::before{content:"";flex:0 0 20px;width:20px;height:20px;margin-top:3px;border-radius:50%;
+  background:var(--ac) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.2l2.3 2.3 4.7-4.9' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
 .lib{margin:clamp(40px,5vw,56px) 0 0}
-.lib .libh{margin:0 0 12px;font-size:15.5px;font-weight:700;color:var(--bk)}
-.shots{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;margin:28px 0 0}
-.shots > *,.lib,.body > *{min-width:0}
-.shots .one{max-width:620px}
-/* 08 の範囲の帯 */
+.midcta{margin:clamp(40px,5vw,56px) 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px}
+.midcta small{font-size:14.5px;color:var(--g2)}
+
+/* 04 問い→欄 */
+.qa2{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 28px;padding:0}
+.qa2 li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;border:1px solid var(--ln);border-radius:6px;background:#fff}
+.qa2 p{margin:0;font-size:16px;font-weight:700;line-height:1.5;color:var(--bk)}
+.qa2 p::before{content:"Q";margin-right:8px;font-family:var(--num);font-weight:900;color:var(--ac)}
+.qa2 span{flex:0 0 auto;padding:3px 10px;border-radius:3px;background:var(--acl2);font-size:13.5px;font-weight:700;color:var(--ac)}
+
+/* 05 行き先と残る力 */
+.dests{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0 0;padding:0}
+.dests li{padding:14px 14px;border:1px solid var(--ln);border-radius:6px;background:#fff;text-align:center;font-weight:700;font-size:15.5px;line-height:1.5;color:var(--bk)}
+.powers{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 0;padding:0}
+.powers li{padding:18px 16px;border-top:3px solid var(--ac);background:var(--acl);font-weight:700;font-size:16px;line-height:1.55;color:var(--bk)}
+.sub3{margin:clamp(40px,5vw,56px) 0 0;font-weight:900;font-size:clamp(1.15rem,1.8vw,1.4rem);color:var(--bk)}
+
+/* 06 人の支援 */
+.walls{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.wall{border:1px solid var(--ln);border-radius:8px;background:#fff;overflow:hidden}
+.wall .q{margin:0;padding:14px 18px;background:var(--acl);font-weight:700;font-size:15px;line-height:1.6;color:var(--g1)}
+.wall .a{padding:16px 18px 18px}
+.wall h3{margin:0 0 4px;font-size:18px;font-weight:900;color:var(--bk)}
+.wall .a p{margin:0;font-size:15.5px;line-height:1.75;color:var(--g1)}
+.wall .a p b{color:var(--ac)}
+
+/* 07 料金 */
+.plan{border:2px solid var(--ac);border-radius:8px;background:#fff;overflow:hidden;box-shadow:var(--shadow)}
+.plan .ph{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;padding:26px 28px;background:var(--ac);color:#fff}
+.plan .ph .en{display:block;font-size:12.5px;color:var(--acm)}
+.plan .ph h3{margin:6px 0 0;font-size:18px;font-weight:900}
+.plan .pr{margin:0;text-align:right}
+.plan .pr b{font-family:var(--num);font-weight:900;font-size:clamp(3rem,5.6vw,4.4rem);line-height:1;letter-spacing:-.03em}
+.plan .pr span{font-size:16px;font-weight:700;margin-left:6px}
+.plan .pr small{display:block;margin-top:6px;font-size:14px;color:#dfe6f1}
+.incl{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-bottom:1px solid var(--ln2)}
+.incl div{padding:20px 20px 18px;border-right:1px solid var(--ln2)}
+.incl div:last-child{border-right:0}
+.incl .ic{color:var(--ac)}
+.incl h4{margin:8px 0 6px;font-size:16px;font-weight:900;color:var(--bk)}
+.incl p{margin:0;font-size:14.5px;line-height:1.75;color:var(--g1)}
+.plan .ex{margin:0;padding:14px 28px;font-size:14.5px;line-height:1.8;color:var(--g1)}
+.plan .ex b{color:var(--bk)}
+.coop{margin:22px 0 0;padding:22px 24px;border:2px solid var(--ac);border-radius:8px;background:var(--acl)}
+.coop h3{margin:0 0 12px;font-size:clamp(1.1rem,1.8vw,1.3rem);font-weight:900;color:var(--ac);line-height:1.5}
+.coop ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px;padding:0}
+.coop li{padding:6px 14px;background:#fff;border:1px solid var(--ln);border-radius:99px;font-size:14.5px;font-weight:700;color:var(--bk)}
+.coop p{margin:0;font-size:14px;line-height:1.8;color:var(--g2)}
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0 0}
+.fit > div{padding:18px 20px;border:1px solid var(--ln);border-radius:8px;background:#fff}
+.fit h3{margin:0 0 8px;font-size:15.5px;font-weight:900;color:var(--bk)}
+.fit > div:first-child h3{color:var(--ac)}
+.fit ul{margin:0;padding-left:1.1em;font-size:15.5px;line-height:1.85;color:var(--g1)}
+.role{display:grid;grid-template-columns:1fr 1fr;margin:22px 0 0;border:1px solid var(--ln);border-radius:8px;overflow:hidden}
+.role > div{padding:16px 20px}
+.role > div:first-child{background:var(--ac);color:#fff}
+.role > div + div{background:var(--pa)}
+.role small{display:block;margin-bottom:4px;font-size:13px;font-weight:700;opacity:.85}
+.role p{margin:0;font-size:16px;font-weight:700;line-height:1.6}
+.note{margin:14px 0 0;font-size:13.5px;line-height:1.8;color:var(--g2)}
+
+/* 08 手順 */
 .range{display:grid;grid-template-columns:2fr 4fr;margin:0 0 18px;border-radius:4px;overflow:hidden;font-size:14px;font-weight:700;text-align:center}
 .range span{padding:10px 8px;line-height:1.5}
 .range span:first-child{background:var(--acl2);color:var(--ac)}
 .range span:last-child{background:var(--ac);color:#fff}
-.checks{list-style:none;margin:0 0 24px;padding:0}
-.checks li{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-top:1px solid var(--ln2);font-size:16px;line-height:1.7;color:var(--bk)}
-.checks li:last-child{border-bottom:1px solid var(--ln2)}
-.checks li::before{content:"";flex:0 0 20px;width:20px;height:20px;margin-top:3px;border-radius:50%;
-  background:var(--ac) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.2l2.3 2.3 4.7-4.9' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
-.midcta{margin:clamp(40px,5vw,56px) 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px}
-.midcta small{font-size:14px;color:var(--g2)}
-
-/* 04 問いの一覧 */
-.qs{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 28px;padding:0}
-.qs li{padding:16px 16px 14px;border:1px solid var(--ln);border-radius:6px;background:#fff}
-.qs li p{margin:0 0 8px;font-size:15.5px;font-weight:700;line-height:1.6;color:var(--bk)}
-.qs li p::before{content:"Q";margin-right:6px;font-family:var(--num);font-weight:900;color:var(--ac)}
-.qs li span{font-size:14px;font-weight:700;color:var(--ac)}
-.flow3{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:12px;align-items:stretch;margin:0 0 14px}
-.flow3 > div{padding:18px;border:1px solid var(--ln);border-radius:6px;background:#fff}
-.flow3 > div.out{background:var(--ac);border-color:var(--ac);color:#fff}
-.flow3 .en{display:block;font-size:12.5px;color:var(--ac)}
-.flow3 > div.out .en{color:var(--acm)}
-.flow3 h3{margin:6px 0 8px;font-size:17px;font-weight:900;line-height:1.5}
-.flow3 p{margin:0;font-size:14.5px;line-height:1.8;color:var(--g1)}
-.flow3 > div.out p{color:#dfe6f1}
-.flow3 .arr{align-self:center;font-family:var(--num);font-weight:900;font-size:22px;color:var(--acm)}
-.agent{margin:28px 0 0;border:1px solid var(--ln);border-radius:6px;background:#fff;overflow:hidden;box-shadow:var(--shadow)}
-.agent .top{margin:0;padding:10px 18px;background:var(--pa);border-bottom:1px solid var(--ln2);font-size:13.5px;font-weight:700;color:var(--g2)}
-.agent .in{padding:18px 20px}
-.agent .ai,.agent .me{margin:0 0 12px;padding:14px 16px;border-radius:6px;font-size:16px;line-height:1.8;color:var(--bk)}
-.agent .ai{background:var(--acl)}
-.agent .ai::before{content:"AI";display:block;margin-bottom:2px;font-family:var(--num);font-size:12.5px;font-weight:800;color:var(--ac)}
-.agent .me{margin-left:12%;background:#fff;border:1px solid var(--ln)}
-.agent .me::before{content:"社長";display:block;margin-bottom:2px;font-size:12.5px;font-weight:700;color:var(--g2)}
-.agent .to{margin:0;font-size:14.5px;font-weight:700;color:var(--ac)}
-
-/* 05 行き先・残る力 */
-.dests{display:grid;grid-template-columns:auto 1fr;gap:14px 18px;align-items:center;margin:26px 0 0;padding:20px;border:1px solid var(--ln);border-radius:6px;background:#fff}
-.dests .from{margin:0;padding:16px 18px;background:var(--ac);color:#fff;border-radius:6px;font-weight:700;line-height:1.6}
-.dests .from small{display:block;font-family:var(--num);font-size:12.5px;font-weight:800;letter-spacing:.16em;color:var(--acm)}
-.dests ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.dests li{padding:10px 14px;border:1px solid var(--ln);border-radius:4px;font-size:15.5px;font-weight:700;color:var(--bk);line-height:1.5}
-.powers{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0 0;padding:0}
-.powers li{padding:18px 20px;border:1px solid var(--ln);border-top:3px solid var(--ac);border-radius:0 0 6px 6px;background:#fff}
-.powers b{display:block;margin-bottom:4px;font-size:17px;color:var(--bk)}
-.powers span{font-size:15px;line-height:1.8;color:var(--g1)}
-
-/* 06 人の支援 */
-.walls{display:grid;gap:12px}
-.wall{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);border:1px solid var(--ln);border-radius:6px;overflow:hidden;background:#fff}
-.wall .q{margin:0;padding:18px 20px;background:var(--acl);font-weight:700;font-size:15.5px;line-height:1.6;color:var(--g1)}
-.wall .q small{display:block;margin-bottom:2px;font-family:var(--num);font-size:12.5px;font-weight:800;letter-spacing:.12em;color:var(--ac)}
-.wall .a{padding:18px 22px}
-.wall h3{margin:0 0 4px;font-size:18px;font-weight:900;color:var(--bk)}
-.wall .a p{margin:0;font-size:15.5px;line-height:1.8;color:var(--g1)}
-.wall .a p b{color:var(--ac);background:none}
-
-/* 07 料金 */
-.plan{border:2px solid var(--ac);border-radius:6px;background:#fff;overflow:hidden;box-shadow:var(--shadow)}
-.plan .ph{padding:22px 26px;background:var(--ac);color:#fff}
-.plan .ph .en{font-size:12.5px;color:var(--acm)}
-.plan .ph h3{margin:6px 0 10px;font-size:18px;font-weight:900}
-.plan .pr{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;margin:0;color:#fff}
-.plan .pr b{font-family:var(--num);font-weight:900;font-size:clamp(2.8rem,5.4vw,4.2rem);line-height:1;letter-spacing:-.03em;background:none;color:#fff}
-.plan .pr span{font-size:16px;font-weight:700}
-.plan .ph small{display:block;margin-top:10px;font-size:14px;color:#dfe6f1}
-.plan .pb{padding:22px 26px 24px}
-.plan ul{margin:0 0 18px;padding:0;list-style:none;columns:2;column-gap:28px}
-.plan li{break-inside:avoid;position:relative;padding:7px 0 7px 18px;font-size:15px;line-height:1.7;color:var(--bk);border-bottom:1px solid var(--ln2)}
-.plan li::before{content:"";position:absolute;left:0;top:15px;width:8px;height:8px;border-radius:50%;background:var(--ac)}
-.plan .ex{margin:0;padding:14px 16px;background:var(--pa);border-radius:4px;font-size:14.5px;line-height:1.8;color:var(--g1)}
-.plan .ex b{color:var(--bk);background:none}
-.fit{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0 0}
-.fit > div{padding:18px 20px;border:1px solid var(--ln);border-radius:6px;background:#fff}
-.fit h3{margin:0 0 8px;font-size:15.5px;font-weight:900;color:var(--bk)}
-.fit > div:first-child h3{color:var(--ac)}
-.fit ul{margin:0;padding-left:1.1em;font-size:15px;line-height:1.85;color:var(--g1)}
-.coop{margin:28px 0 0;padding:clamp(20px,2.6vw,28px);border:2px solid var(--ac);border-radius:6px;background:var(--acl)}
-.coop h3{margin:0 0 8px;font-size:clamp(1.15rem,1.9vw,1.4rem);font-weight:900;color:var(--ac);line-height:1.5}
-.coop > p{margin:0 0 18px;color:var(--g1)}
-.coop ol{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:0;padding:0}
-.coop li{padding:14px 16px;background:#fff;border:1px solid var(--ln);border-radius:4px;font-weight:700;font-size:15px;line-height:1.55;color:var(--bk)}
-.coop li b{display:block;margin-bottom:4px;font-family:var(--num);font-size:13px;color:var(--ac)}
-.coop li span{display:block;margin-top:6px;font-weight:500;font-size:13.5px;color:var(--g2)}
-.coop .fine{margin:16px 0 0;font-size:14px;line-height:1.8;color:var(--g2)}
-.role{margin:28px 0 0;border:1px solid var(--ln);border-radius:6px;background:#fff;padding:22px clamp(16px,2.4vw,26px)}
-.role .ttl{margin:0 0 14px;font-size:14px;font-weight:700;color:var(--bk)}
-.role .ttl .en{margin-right:10px;color:var(--ac);font-size:12.5px}
-.role .cols{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--ln);border-radius:4px;overflow:hidden}
-.role .cols > div{padding:16px 18px}
-.role .cols > div:first-child{background:var(--ac);color:#fff}
-.role .cols > div + div{background:var(--pa)}
-.role .cols small{display:block;margin-bottom:6px;font-size:13px;font-weight:700;opacity:.85}
-.role .cols p{margin:0;font-size:16px;font-weight:700;line-height:1.7;color:inherit}
-.role .foot{margin:12px 0 0;font-size:14px;line-height:1.8;color:var(--g2)}
-
-/* 08 手順 */
 .steps{list-style:none;counter-reset:st;margin:0;padding:0;border-top:2px solid var(--bk)}
-.steps li{counter-increment:st;display:grid;grid-template-columns:60px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--ln)}
-.steps li::before{content:counter(st,decimal-leading-zero);font-family:var(--num);font-weight:900;font-size:26px;line-height:1.2;color:var(--ac)}
-.steps b{display:block;font-size:17.5px;color:var(--bk)}
-.steps span{display:block;margin-top:4px;font-size:15.5px;line-height:1.8;color:var(--g1)}
+.steps li{counter-increment:st;display:grid;grid-template-columns:56px 1fr;gap:14px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--ln)}
+.steps li::before{content:counter(st,decimal-leading-zero);font-family:var(--num);font-weight:900;font-size:24px;line-height:1.2;color:var(--ac)}
+.steps b{font-size:17.5px;color:var(--bk)}
+.steps span{display:block;margin-top:2px;font-size:15px;line-height:1.75;color:var(--g2)}
 
 /* 09 質問 */
 .faq{border-top:2px solid var(--bk)}
@@ -349,18 +289,17 @@ p{margin:0 0 14px}
 .faq details p{margin:0 0 22px;padding-left:26px;font-size:16px;line-height:1.95;color:var(--g1)}
 
 /* 締め */
-.fin{background:var(--ac);color:#fff;padding:clamp(80px,10vw,128px) 0}
-.fin .no,.fin .no small{color:var(--acm)}
-.fin h2{margin:18px 0 22px;font-weight:900;letter-spacing:-.03em;line-height:1.35;font-size:clamp(2rem,4.6vw,3.4rem);color:#fff}
+.fin{background:var(--ac);color:#fff;padding:clamp(88px,11vw,140px) 0}
+.fin h2{margin:0 0 20px;font-weight:900;letter-spacing:-.03em;line-height:1.3;font-size:clamp(2.1rem,5vw,3.8rem);color:#fff}
 .fin h2 em{font-style:normal;color:var(--acm)}
-.fin p{max-width:38em;margin:0 0 30px;font-size:clamp(16.5px,1.5vw,18.5px);line-height:2;color:#dfe6f1}
-.fin .fine{margin:14px 0 0;font-size:14px;color:var(--acm)}
+.fin p{max-width:34em;margin:0 0 32px;font-size:clamp(17px,1.6vw,19px);line-height:1.9;color:#dfe6f1}
+.fin .fine{margin:16px 0 0;font-size:14px;color:var(--acm)}
 
 footer{padding:40px 0 56px;background:#fff}
 footer .w > p{margin:0 0 8px;font-size:14px;line-height:1.9;color:var(--g2)}
 footer .links{display:flex;flex-wrap:wrap;gap:6px 20px;margin:0 0 14px}
 footer .read{margin:0 0 16px;font-size:14.5px}
-footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13.5px;line-height:1.85;color:var(--g2)}
+footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13px;line-height:1.85;color:var(--g2)}
 
 /* スマホの固定ボタン */
 .fx{display:none}
@@ -372,36 +311,39 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13.5px;line-height:1.85;c
   .fx a{display:flex;align-items:center;justify-content:center;min-height:54px;background:var(--ac);color:#fff;font-weight:700;font-size:16px;text-decoration:none;border-radius:3px}
 }
 
-.coop li,.fit li,.steps b,.steps span,.wall .q,.dests li,.checks li,.qs li p,.card dd,.cand p,.strip .sc p,.cap,.note,.snote,.box,.fin p,.peak p{word-break:auto-phrase;line-break:strict}
-.sp{display:none}
+.checks li,.qa2 p,.dests li,.powers li,.wall .q,.wall .a p,.incl p,.fit li,.steps span,.coop p,.strip .sc p,.cap,.note,.snote,.sub,.fin p,.peak p,.hero .price{word-break:auto-phrase;line-break:strict}
 
 @media(max-width:960px){
   .hero .w{grid-template-columns:1fr}
+  .stack{height:clamp(300px,66vw,480px);margin-top:8px}
   .two{grid-template-columns:1fr;gap:30px}
   .side{position:static}
   .strip .grid4{grid-template-columns:1fr 1fr}
   .strip .sc:nth-child(2){border-right:0}
   .strip .sc:nth-child(3){padding-left:0}
   .strip .sc:nth-child(n+3){border-top:1px solid var(--ln)}
-  .qs{grid-template-columns:1fr 1fr}
-  .vcards{grid-template-columns:1fr}
+  .vcards,.walls{grid-template-columns:1fr}
+  .incl{grid-template-columns:1fr 1fr}
+  .incl div:nth-child(2){border-right:0}
+  .incl div:nth-child(-n+2){border-bottom:1px solid var(--ln2)}
 }
 @media(max-width:640px){
-  .qs,.fit,.powers,.role .cols,.coop ol{grid-template-columns:1fr}
-  .flow3{grid-template-columns:1fr}
-  .flow3 .arr{transform:rotate(90deg);justify-self:center}
-  .dests{grid-template-columns:1fr}
-  .dests ul{grid-template-columns:1fr}
-  .wall{grid-template-columns:1fr}
-  .plan ul{columns:1}
-  .cand .lv{margin-left:0}
+  .qa2,.fit,.role,.shots{grid-template-columns:1fr}
+  .dests,.powers{grid-template-columns:1fr 1fr}
   .strip .grid4{grid-template-columns:1fr}
-  .strip .sc,.strip .sc + .sc{padding:22px 0 8px;border-right:0}
+  .strip .sc,.strip .sc + .sc{padding:22px 0 4px;border-right:0}
   .strip .sc + .sc{border-top:1px solid var(--ln)}
   .tl .row{grid-template-columns:4.8em 1fr}
-  .agent .me{margin-left:0}
-  .mock .in span{font-size:13.5px;word-break:keep-all}
+  .cand .lv{margin-left:0}
+  .incl{grid-template-columns:1fr}
+  .incl div{border-right:0;border-bottom:1px solid var(--ln2)}
+  .plan .pr{text-align:left}
   .range{grid-template-columns:1fr}
+  /* スマホのヒーローは、実画面を1枚に絞って大きく見せる */
+  .stack{height:auto}
+  .stack .c1,.stack .c3{display:none}
+  .stack .c2{position:relative;left:auto;bottom:auto;width:100%}
+  .stack figcaption{position:static;margin-top:12px}
   /* 横長の実画面は、枠の中で横にスクロールして読ませる */
   .scrollshot{overflow-x:auto;-webkit-overflow-scrolling:touch}
   .scrollshot img{width:720px;max-width:none}
@@ -430,30 +372,21 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13.5px;line-height:1.85;c
 <section class="hero" aria-labelledby="h1">
   <div class="w">
     <div>
-      <p class="tagline"><span class="en">SUBSIDY ／ FINANCE ／ AI</span><span>初期登録費用10万円＋月額3万円（税別）</span></p>
+      <p class="tagline en">SUBSIDY ／ FINANCE ／ AI</p>
       <h1 id="h1"><span class="nobr">使える制度を</span><span class="nobr">見逃さない。</span><br><span class="nobr">見つけたら、</span><em class="nobr">すぐ書ける。</em></h1>
-      <p class="lead">所在地・業種・従業員数など<b>8項目</b>を入れると、使えそうな制度の候補と締切、対象経費が出ます。あとはAIの質問に答えるだけで、事業計画書の土台ができます。その後も、御社に合う制度が<b>毎週金曜の朝</b>に届く仕組みです。</p>
-      <div class="coop-h">
-        <b>導入事例へのご協力で、初期登録費用10万円が0円になる枠があります</b>
-        <small>月額30,000円（税別）は通常どおりです。受付枠と期限は、ご相談の際に個別にご案内します。</small>
-      </div>
-      <div class="btns">
+      <p class="sub">8項目で、使えそうな制度の候補と締切が分かります。その後も毎週金曜に届き、計画書はAIの質問に答えて書けます。</p>
+      <div class="acts">
         <a class="btn pri" id="heroCta" href="https://www.writeup.jp/contact/">導入について相談する</a>
-        <a class="btn ghost" href="#diag">8項目を入れた結果を見る</a>
+        <a class="tlink" href="#diag">8項目で出る候補を見る ▸</a>
       </div>
-      <p class="fine">成功報酬はありません。AIツール「Claude Code」（米Anthropic社）の利用料は、別途ご契約ください。</p>
+      <p class="price"><b>初期登録費用10万円＋月額3万円</b>（税別）・成功報酬なし<span class="chip">事例協力で初期登録費用0円の枠あり</span></p>
     </div>
-    <div class="card" aria-label="要点">
-      <dl>
-        <div class="r"><dt><svg class="ic" viewBox="0 0 20 20" aria-hidden="true"><path d="M10.5 1.5H18.5v8L9.5 18.5 1.5 10.5 10.5 1.5z"/><path d="M13.8 5.2h1.8"/></svg>料金</dt><dd><b><span class="nobr">初期登録費用100,000円</span>＋<span class="nobr">月額30,000円</span></b>いずれも税別。成功報酬はありません</dd></div>
-        <div class="r"><dt><svg class="ic" viewBox="0 0 20 20" aria-hidden="true"><rect x="1.5" y="4.5" width="17" height="11"/><path d="M1.5 5.5l8.5 6 8.5-6"/></svg>届く</dt><dd><b>自社に合いそうな制度情報</b>毎週金曜の朝。国・都道府県・市区町村</dd></div>
-        <div class="r"><dt><svg class="ic" viewBox="0 0 20 20" aria-hidden="true"><rect x="4" y="1.5" width="12" height="17"/><path d="M7 6.5h6M7 10h6M7 13.5h4"/></svg>学べる</dt><dd><b>採択事例と、専門家の解説</b>採択された計画書・見本・解説動画</dd></div>
-        <div class="r"><dt><svg class="ic" viewBox="0 0 20 20" aria-hidden="true"><rect x="1.5" y="3.5" width="5" height="5"/><rect x="7.5" y="3.5" width="5" height="5"/><rect x="13.5" y="3.5" width="5" height="5"/><rect x="1.5" y="11.5" width="5" height="5"/><rect x="7.5" y="11.5" width="5" height="5"/><rect x="13.5" y="11.5" width="5" height="5"/></svg>つくれる</dt><dd><b>AIエージェントとの対話</b>Claude Codeをベースに、質問に答えて土台を作ります</dd></div>
-        <div class="r"><dt><svg class="ic" viewBox="0 0 20 20" aria-hidden="true"><path d="M1.5 4.5h17v4a2 2 0 000 4v3h-17v-3a2 2 0 000-4v-4z"/><path d="M10 6.5v1.6M10 10.2v1.6M10 13.9v1.6"/></svg>残る</dt><dd><b>翌年度の制度と、融資の資料へ</b>会社カルテに貯まり、作り直さずに使い回せます</dd></div>
-        <div class="r"><dt><svg class="ic" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3.5h16v10H9l-4.5 3.5v-3.5H2z"/><path d="M6 8.5h8"/></svg>相談</dt><dd><b>人の支援</b>専門家相談（初回30分無料）・AI家庭教師</dd></div>
-        <div class="r neg"><dt><svg class="ic" viewBox="0 0 20 20" aria-hidden="true"><rect x="1.5" y="4.5" width="17" height="11"/><path d="M13 4.5v11"/></svg>しない</dt><dd><b>申請の代行はしません</b>採択・融資の承認・受給額を保証するものではありません</dd></div>
-      </dl>
-    </div>
+    <figure class="stack">
+      <div class="shot c1"><img src="img/home.png" alt="管理画面のホーム。御社の条件と課題から、いま確認したい支援を5件選んで表示している" width="2560" height="1120" fetchpriority="high"></div>
+      <div class="shot c2"><img src="img/digest.png" alt="週に一度届くお知らせ。今週は3つの支援が見つかりました、と表示されている" width="1240" height="816"></div>
+      <div class="shot c3"><img src="img/writer.png" alt="AIからの質問と、その答えから下書きされた事業計画書の文章" width="1032" height="588"></div>
+      <figcaption>画面は開発中のイメージです。会社名・人名は架空です。</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -475,24 +408,21 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13.5px;line-height:1.85;c
     <div class="side">
       <p class="no">01<small>J-SYSTEM AI EDITION</small></p>
       <h2 id="t1">8項目を入れると、<br>候補が<em>5〜6件</em>。</h2>
-      <p class="snote">従来の補助金診断システム「Jシステム」のAI版です。Claude Code上で動く専用スキルに御社の情報を入力すると、合いそうな制度を抽出します。</p>
+      <p class="snote">補助金診断「Jシステム」のAI版です。</p>
     </div>
     <div class="body">
-      <div class="mock">
-        <p class="bar">画面イメージ ／ 入力</p>
+      <div class="mock" aria-label="入力8項目と、抽出された候補の画面イメージ">
         <div class="in"><span>所在地</span><span>業種</span><span>従業員数</span><span>売上規模</span><span>導入したい設備・システム</span><span>採用や賃上げの予定</span><span>新しく始めたい事業</span><span>投資予定時期</span></div>
-        <p class="inc">入力は8項目。埋まっている分だけで候補を出します。</p>
-        <p class="hd2">抽出された候補<small>5件／右端は想定採択可能性（参考情報）</small></p>
+        <p class="arrow"><span>→</span>抽出された候補（右端は想定採択可能性）</p>
         <ul class="cand">
-          <li><p class="t"><strong>小規模事業者持続化補助金</strong><span class="k">補助金</span><span class="lv">標準的</span></p><p>販路開拓・生産性向上の取り組みに使える制度。設備、広報、ウェブサイト関連費などが対象になり得ます。</p><p class="m">締切：<b>公募回ごと</b>　対象経費：<b>機械装置・広報・ウェブ</b>　次の確認：<b>商工会議所の確認書</b></p></li>
-          <li><p class="t"><strong>IT導入補助金</strong><span class="k">補助金</span><span class="lv">標準的</span></p><p>業務システムやツールの導入に使える制度。登録されたIT導入支援事業者と組んで申請します。</p><p class="m">締切：<b>締切回ごと</b>　対象経費：<b>ソフトウェア・導入費</b>　次の確認：<b>支援事業者の選定</b></p></li>
-          <li><p class="t"><strong>ものづくり補助金</strong><span class="k">補助金</span><span class="lv low">やや低い</span></p><p>革新的な製品・サービス開発や生産プロセス改善のための設備投資。要件が重く、事業計画の作り込みが必要です。</p><p class="m">締切：<b>公募回ごと</b>　対象経費：<b>機械装置・システム構築</b>　次の確認：<b>賃上げ要件の充足</b></p></li>
-          <li><p class="t"><strong>都道府県・市区町村の設備投資助成</strong><span class="k">補助金</span><span class="lv">標準的</span></p><p>所在地の自治体が独自に設けている助成。国の制度と併用できない場合があります。</p><p class="m">締切：<b>自治体ごと</b>　対象経費：<b>設備・改修</b>　次の確認：<b>国制度との併用可否</b></p></li>
-          <li><p class="t"><strong>設備資金の低利融資／信用保証付き融資</strong><span class="k loan">融資</span><span class="lv low">要追加確認</span></p><p>補助金は多くの制度で精算払いです。先に支払う分の資金手当てとして、融資制度もあわせて候補に出します。</p><p class="m">締切：<b>随時</b>　対象：<b>設備資金・運転資金</b>　次の確認：<b>直近2期の決算内容</b></p></li>
+          <li><strong>小規模事業者持続化補助金</strong><span class="k">補助金</span><span class="lv">標準的</span></li>
+          <li><strong>IT導入補助金</strong><span class="k">補助金</span><span class="lv">標準的</span></li>
+          <li><strong>ものづくり補助金</strong><span class="k">補助金</span><span class="lv low">やや低い</span></li>
+          <li><strong>都道府県・市区町村の設備投資助成</strong><span class="k">補助金</span><span class="lv">標準的</span></li>
+          <li><strong>設備資金の低利融資</strong><span class="k loan">融資</span><span class="lv low">要追加確認</span></li>
         </ul>
       </div>
-      <p class="note">想定採択可能性は、入力情報と確認できる制度情報をもとにAIが示す参考情報です。申請資格、採択、融資承認、受給額を保証するものではありません。最終的な判断は、制度事務局または金融機関によるものです。</p>
-      <p class="cap">掲載している画面は、現在のデザインに合わせて作成した画面イメージです。制度名は例として挙げているもので、御社が対象になるかどうかは公募要領と事務局の判断によります。</p>
+      <p class="cap">画面イメージです。制度名は例で、想定採択可能性はAIが示す参考情報です（採択を保証するものではありません）。</p>
     </div>
   </div>
 </section>
@@ -503,38 +433,35 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13.5px;line-height:1.85;c
     <div class="side">
       <p class="no">02<small>WHY CONTINUOUS</small></p>
       <h2 id="t2">一度調べて<br>終わりでは、<br><em>間に合わない。</em></h2>
-      <p class="snote">制度は年間を通じて新設・更新されます。国・都道府県・市区町村で、募集の時期もまちまちです。</p>
+      <p class="snote">制度は1年中、国・都道府県・市区町村から出てきます。</p>
     </div>
     <div class="body">
-      <p class="lead">見つけてから事業計画を考えると、締切に届きません。</p>
-      <p>年間を通じて多数の制度や募集情報が発表されます。そのすべてを片手間で追い続けるのは難しく、公募期間が数週間という制度もあるほどです。気づいたときには受付が終わっている、ということが起こります。</p>
-      <p>制度は毎年、入れ替わるものです。名前も要件も変わり、去年使えたものが今年は消えていることもあります。だから必要なのは、<b>継続的な情報収集と、事業計画の事前準備</b>の2つです。</p>
-      <figure class="fig" aria-label="同じ3つの制度でも、調べ始めた日には2つの受付が終わっている。毎週届くと、3つとも準備期間が残る">
-        <p class="ttl"><span class="en">FIG.1</span>同じ3つの制度を、いつ知るか</p>
+      <p class="lead">毎週届けば、3つとも間に合う。</p>
+      <figure class="fig" aria-label="必要になってから調べると2つの受付が終わっている。毎週届くと3つとも間に合う">
         <div class="tl">
-          <p class="lb">WITHOUT ／ 必要になってから調べる</p>
+          <p class="lb">必要になってから調べる<span class="en">WITHOUT</span></p>
           <div class="rows">
             <div class="row"><span>国</span><div class="tr"><span class="b miss" style="left:2%;width:38%"></span></div></div>
             <div class="row"><span>都道府県</span><div class="tr"><span class="b miss" style="left:14%;width:40%"></span></div></div>
             <div class="row"><span>市区町村</span><div class="tr"><span class="b ok" style="left:50%;width:44%"></span></div></div>
             <span class="now" style="left:calc(5.5em + 10px + (100% - 5.5em - 10px) * .6)"></span>
           </div>
-          <p class="res">縦線が、調べ始めた日。上の2つは、その時点で受付が終わっています。</p>
+          <p class="res">調べ始めた日（点線）には、2つが締切後。</p>
         </div>
         <div class="tl">
-          <p class="lb">WITH ／ 毎週届く</p>
+          <p class="lb">毎週届く<span class="en">WITH</span></p>
           <div class="rows">
             <div class="row"><span>国</span><div class="tr"><span class="b ok" style="left:2%;width:38%"></span></div></div>
             <div class="row"><span>都道府県</span><div class="tr"><span class="b ok" style="left:14%;width:40%"></span></div></div>
             <div class="row"><span>市区町村</span><div class="tr"><span class="b ok" style="left:50%;width:44%"></span></div></div>
           </div>
-          <p class="res good">発表された週に届くので、3つとも準備期間が残ります。</p>
+          <p class="res good">発表された週に届くので、3つとも準備できる。</p>
         </div>
-        <p class="foot">帯の長さは公募期間のイメージで、特定の制度の日数を示すものではありません。灰色は、気づいたときには締切が過ぎている制度です。</p>
       </figure>
+      <p class="cap">帯の長さは公募期間のイメージです。</p>
       <div class="shots">
-        <div class="one"><div class="shot"><img src="img/digest.png" alt="週に一度届くお知らせ。今週は3つの支援が見つかりました、と表示されている" width="1240" height="816" loading="lazy"></div><p class="cap">毎週金曜の朝に届くお知らせ（画面イメージ）</p></div>
-        <div><div class="shot scrollshot"><img src="img/watch.png" alt="検討中の一覧。あと27日、あと45日と、締切までの日数が大きく表示される" width="1828" height="652" loading="lazy"></div><p class="cap">気になる制度は「検討中」へ。締切の近い順に「あと何日」が出ます。画面内の制度名・金額は架空の表示例です。<span class="sp">横にスクロールしてご覧ください。</span></p></div>
+        <div><div class="shot"><img src="img/digest.png" alt="週に一度届くお知らせ。今週は3つの支援が見つかりました、と表示されている" width="1240" height="816" loading="lazy"></div><p class="cap">毎週金曜の朝に届くお知らせ</p></div>
+        <div><div class="shot scrollshot"><img src="img/watch.png" alt="検討中の一覧。あと27日、あと45日と、締切までの日数が大きく表示される" width="1828" height="652" loading="lazy"></div><p class="cap">「検討中」は締切の近い順に並びます。画面内の制度名・金額は架空です。<span class="sp">横にスクロールできます。</span></p></div>
       </div>
     </div>
   </div>
@@ -543,13 +470,14 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13.5px;line-height:1.85;c
 <!-- 数字の帯 -->
 <section class="strip" aria-label="公的統計と調査">
   <div class="w">
-    <p class="intro">公的統計と調査で確認できる、「届かない」「書けない」、そして出しても半分以上は通らないという現状です。</p>
+    <p class="intro">届かない。書けない。出しても、半分以上は通らない。</p>
     <div class="grid4">
-      <div class="sc"><b>81.1<small>%</small></b><p>補助金の活用に関心がありながら、申請手続きに至っていない経営層の割合。</p><p class="s">民間調査／btobee（2026年6月実施、中小企業の経営者・役員300人。事前調査3,000人からの抽出）</p></div>
-      <div class="sc"><b>38.7<small>%</small></b><p>申請に進めない理由の最多は「自社に最適な補助金が分からない」。</p><p class="s">民間調査／btobee（同上）</p></div>
-      <div class="sc"><b>約2<small>割</small></b><p>経営計画を策定していると回答した小規模事業者の割合。</p><p class="s">中小企業庁「2026年版 小規模企業白書」第2-1-53図</p></div>
-      <div class="sc"><b>47.2<small>%</small></b><p>小規模事業者持続化補助金 <span class="nobr">第19回</span>の採択率。16,576件の申請に対し、採択は7,819件。</p><p class="s">中小企業庁 2026年7月29日発表</p></div>
+      <div class="sc"><b>81.1<small>%</small></b><p>補助金に関心はあるのに、申請していない経営層</p></div>
+      <div class="sc"><b>38.7<small>%</small></b><p>申請に進めない理由の最多「自社に合う補助金が分からない」</p></div>
+      <div class="sc"><b>約2<small>割</small></b><p>経営計画を策定している小規模事業者</p></div>
+      <div class="sc"><b>47.2<small>%</small></b><p>持続化補助金 <span class="nobr">第19回</span>の採択率（16,576件中7,819件）</p></div>
     </div>
+    <p class="srcs">出典：81.1%・38.7%は btobee（2026年6月実施、中小企業の経営者・役員300人。事前調査3,000人からの抽出）／約2割は 中小企業庁「2026年版 小規模企業白書」第2-1-53図／47.2%は 中小企業庁 2026年7月29日発表</p>
   </div>
 </section>
 
@@ -557,8 +485,7 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13.5px;line-height:1.85;c
 <section class="peak" aria-label="詰まるところ">
   <div class="w">
     <p class="big"><span>見つからない。</span><span>書けない。</span></p>
-    <hr>
-    <p>詰まるところは、この2つです。使える制度があることを知らないまま締切が過ぎている。運よく見つけても、今度は<b>白紙の「事業計画」という欄を、埋められない。</b>月額30,000円は、この2つを同時に外すためのものです。</p>
+    <p class="after">詰まるのは、この2つです。<br><b>月額3万円は、この2つを同時に外すためのもの</b>です。</p>
   </div>
 </section>
 
@@ -568,22 +495,20 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13.5px;line-height:1.85;c
     <div class="head3">
       <p class="no">03<small>VALUE</small></p>
       <h2 id="t3">月額30,000円に、<br><em>この3つ</em>が含まれます。</h2>
-      <p class="snote">制度を見つける、事例と解説で学ぶ、AIとの対話でつくる。この3つが1つの契約に入っています。</p>
     </div>
     <div class="vcards">
-      <div class="vc"><svg class="ic" viewBox="0 0 20 20" aria-hidden="true"><rect x="1.5" y="4.5" width="17" height="11"/><path d="M1.5 5.5l8.5 6 8.5-6"/></svg><span class="n">01</span><h3>毎週金曜の朝、合う制度が届く</h3><p class="sub">必要になってから探すのではなく、使える可能性がある段階で把握できます。</p>
-        <ul class="checks"><li>補助金・融資・税制優遇</li><li>国だけでなく、都道府県・市区町村も対象</li><li>制度名・概要・締切・対象経費が分かる</li><li>気になる制度は「検討中」で締切を管理</li></ul></div>
-      <div class="vc"><svg class="ic" viewBox="0 0 20 20" aria-hidden="true"><rect x="4" y="1.5" width="12" height="17"/><path d="M7 6.5h6M7 10h6M7 13.5h4"/></svg><span class="n">02</span><h3>採択された計画書と解説動画で学べる</h3><p class="sub">白紙から考えずに済みます。顧問の先生へ渡す整理資料にもなります。</p>
-        <ul class="checks"><li>採択された事業計画書の事例</li><li>参考になる申請書・事業計画書の見本</li><li>制度の背景と審査の考え方を説明した動画</li><li>専門家による書き方の解説資料</li></ul></div>
-      <div class="vc"><svg class="ic" viewBox="0 0 20 20" aria-hidden="true"><rect x="1.5" y="3.5" width="5" height="5"/><rect x="7.5" y="3.5" width="5" height="5"/><rect x="13.5" y="3.5" width="5" height="5"/><rect x="1.5" y="11.5" width="5" height="5"/><rect x="7.5" y="11.5" width="5" height="5"/><rect x="13.5" y="11.5" width="5" height="5"/></svg><span class="n">03</span><h3>AIとの対話で、土台を作れる</h3><p class="sub">白紙は渡しません。答えられる問いだけが、順番に出てきます。</p>
-        <ul class="checks"><li>補助金の事業計画書の土台</li><li>融資相談で使う事業計画の土台</li><li>強み・顧客ニーズ・市場環境の整理</li><li>実施計画と、投資効果の計算</li></ul></div>
+      <div class="vc"><svg class="ic" viewBox="0 0 20 20" aria-hidden="true"><rect x="1.5" y="4.5" width="17" height="11"/><path d="M1.5 5.5l8.5 6 8.5-6"/></svg><span class="n">01</span><h3>毎週金曜の朝、<br>合う制度が届く</h3>
+        <ul class="checks"><li>補助金・融資・税制優遇</li><li>国・都道府県・市区町村</li><li>締切順に並ぶ「検討中」</li></ul></div>
+      <div class="vc"><svg class="ic" viewBox="0 0 20 20" aria-hidden="true"><rect x="4" y="1.5" width="12" height="17"/><path d="M7 6.5h6M7 10h6M7 13.5h4"/></svg><span class="n">02</span><h3>採択された計画書で<br>学べる</h3>
+        <ul class="checks"><li>採択された事業計画書</li><li>書き方の解説動画</li><li>テンプレート</li></ul></div>
+      <div class="vc"><svg class="ic" viewBox="0 0 20 20" aria-hidden="true"><rect x="1.5" y="3.5" width="5" height="5"/><rect x="7.5" y="3.5" width="5" height="5"/><rect x="13.5" y="3.5" width="5" height="5"/><rect x="1.5" y="11.5" width="5" height="5"/><rect x="7.5" y="11.5" width="5" height="5"/><rect x="13.5" y="11.5" width="5" height="5"/></svg><span class="n">03</span><h3>AIとの対話で、<br>土台を作れる</h3>
+        <ul class="checks"><li>事業計画書の土台</li><li>融資相談の資料の土台</li><li>投資効果の計算</li></ul></div>
     </div>
     <div class="lib">
-      <p class="libh">採択された計画書の一覧（画面イメージ）</p>
       <div class="shot scrollshot"><img src="img/library.png" alt="採択事業計画書の一覧。画像検査機の導入で検査時間を半分にする計画" width="1828" height="334" loading="lazy"></div>
-      <p class="cap">画面内の会社名・制度名・金額・採択年は架空の表示例です。掲載する事例は、一般公開・掲載許諾済み・匿名加工済みの資料に限ります。<span class="sp">横にスクロールしてご覧ください。</span></p>
+      <p class="cap">採択された計画書の一覧（画面イメージ）。画面内の会社名・制度名・金額・採択年は架空です。掲載する事例は、一般公開・掲載許諾済み・匿名加工済みの資料に限ります。<span class="sp">横にスクロールできます。</span></p>
     </div>
-    <p class="midcta"><a class="btn pri" href="https://www.writeup.jp/contact/">導入について相談する</a><small>成功報酬なし・月額30,000円（税別）</small></p>
+    <p class="midcta"><a class="btn pri" href="https://www.writeup.jp/contact/">導入について相談する</a><small>申請の代行はしません。書くのは御社、AIはその手伝いです。</small></p>
   </div>
 </section>
 
@@ -593,31 +518,20 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13.5px;line-height:1.85;c
     <div class="side">
       <p class="no">04<small>AI AGENTS</small></p>
       <h2 id="t4">白紙は埋まらない。<br>問いなら、<br><em>答えられる。</em></h2>
-      <p class="snote">「強みを書いてください」で手が止まる欄も、「その1社が他社ではなく御社を選んだ決め手は」と聞かれれば答えられます。</p>
+      <p class="snote">「強みを書いてください」ではなく、答えられる問いが順番に出てきます。</p>
     </div>
     <div class="body">
-      <p class="lead">AIの質問に1つ答えるたびに、事業計画書の欄が1つ埋まります。</p>
-      <ul class="qs">
-        <li><p>最近受注した顧客は、どのような会社ですか</p><span>→ 顧客・ニーズの整理へ</span></li>
-        <li><p>顧客が他社ではなく自社を選んだ理由は何ですか</p><span>→ 自社の強みの整理へ</span></li>
-        <li><p>今回、何を導入・購入・開発しますか</p><span>→ 取組内容へ</span></li>
-        <li><p>誰が、いつまでに実行しますか</p><span>→ 実施計画とスケジュールへ</span></li>
-        <li><p>必要な経費はいくらですか</p><span>→ 経費明細へ</span></li>
-        <li><p>投資によって、売上や利益はどう増えますか</p><span>→ 投資効果へ</span></li>
-        <li><p>その効果を、どのような計算式で説明できますか</p><span>→ 効果の根拠へ</span></li>
-        <li><p>既存事業との違いは何ですか</p><span>→ 事業の新規性へ</span></li>
-        <li><p>市場や顧客に、どのような変化が起きていますか</p><span>→ 市場環境の整理へ</span></li>
+      <p class="lead">1つ答えるたびに、計画書の欄が1つ埋まります。</p>
+      <ul class="qa2">
+        <li><p>最近の顧客は、どんな会社？</p><span>顧客</span></li>
+        <li><p>なぜ他社ではなく御社を？</p><span>強み</span></li>
+        <li><p>何を導入・購入・開発する？</p><span>取組内容</span></li>
+        <li><p>必要な経費は、いくら？</p><span>経費明細</span></li>
+        <li><p>売上や利益は、どう増える？</p><span>投資効果</span></li>
+        <li><p>市場や顧客は、どう変わった？</p><span>市場環境</span></li>
       </ul>
-      <div class="flow3" aria-label="会社の情報を入れて、AIと話すと、土台が出てくる">
-        <div><span class="en">INPUT</span><h3>公募要領と、会社の事実</h3><p>出したい制度が決まっていれば公募要領を登録。決まっていなければAIが最新の公募情報を検索します。</p></div>
-        <span class="arr" aria-hidden="true">→</span>
-        <div><span class="en">DIALOGUE</span><h3>AIからの問いに答える</h3><p>白紙の欄ではなく、答えられる問いが順番に出ます。足りない答えは聞き直されます。</p></div>
-        <span class="arr" aria-hidden="true">→</span>
-        <div class="out"><span class="en">OUTPUT</span><h3>事業計画書と融資資料の土台</h3><p>答えた分だけ埋まり、どこが空いているかが常に見えます。</p></div>
-      </div>
-      <p class="cap">エージェントの中身（スキル）は毎月更新され、制度の改定や書き方の変化に追随します。御社が用意するのは、公募要領と、聞かれたことへの答えだけです。</p>
       <div class="shot"><img src="img/writer.png" alt="AIからの質問と、その答えから下書きされた事業計画書の文章" width="1032" height="588" loading="lazy"></div>
-      <p class="cap">AIからの質問と、答えから下書きされた計画書（画面イメージ）。Claude Codeをベースに動き、使ったことがない前提で設計しています。</p>
+      <p class="cap">AIの質問と、答えから下書きされた計画書（画面イメージ）。Claude Codeをベースに動きます。</p>
     </div>
   </div>
 </section>
@@ -628,26 +542,15 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13.5px;line-height:1.85;c
     <div class="side">
       <p class="no">05<small>REUSE</small></p>
       <h2 id="t5">通らなくても、<br>書いたものは<br><em>残ります。</em></h2>
-      <p class="snote">聞かれることは、制度が変わっても大きくは変わりません。だから成果物も、作る力も残る仕組みです。</p>
+      <p class="snote">聞かれることは、制度が変わっても大きくは変わりません。</p>
     </div>
     <div class="body">
-      <p class="lead">一度書いた計画は、翌年度の制度にも融資の相談にも使い回せます。</p>
+      <p class="lead">一度書いた計画を、次の申請にも、融資にも。</p>
       <div class="shot scrollshot"><img src="img/profile.png" alt="会社カルテ。登録した情報の充実度が80パーセントと表示されている" width="1828" height="196" loading="lazy"></div>
-      <p class="cap" style="margin-bottom:24px">書いた内容が貯まる「会社カルテ」（画面イメージ）。<span class="sp">横にスクロールしてご覧ください。</span></p>
-      <div class="dests" aria-label="一度書いた内容が、行き先を変える">
-        <p class="from"><small>INPUT</small>AIとの対話で書いた、自社の計画</p>
-        <ul><li>今年の補助金の事業計画書</li><li>翌年度の、別の制度</li><li>設備投資の融資相談・金融機関に出す資料</li><li>新規事業計画／社内の経営計画</li></ul>
-      </div>
-      <p class="cap">制度ごとの様式と、審査項目に合わせた書き足しは、そのたびに必要になります。</p>
-      <p>作り直しにはならないので、今年の応募に通らなくても、書いたものは残ります。</p>
-      <p class="lead" style="margin-top:40px">結果がどうであっても、会社に残る4つの力。</p>
-      <p>審査するのは制度の実施機関と金融機関であり、私たちではありません。それでも会社に残るものが、次の4つです。</p>
-      <ul class="powers">
-        <li><b>自社で事業計画を作る力</b><span>何を聞かれ、どう答えれば伝わるのかが分かります。</span></li>
-        <li><b>自社の強みを言語化する力</b><span>「選ばれた理由」を、事実として説明できるようになる。</span></li>
-        <li><b>売上効果を数字で説明する力</b><span>投資と効果を、計算式で示せるようになります。</span></li>
-        <li><b>Claude Codeなどを実務で使う<span class="nobr">AI活用スキル</span></b><span>補助金の申請に限らず、日々の業務に持ち込める使い方が身につきます。</span></li>
-      </ul>
+      <p class="cap">書いた内容が貯まる「会社カルテ」（画面イメージ）<span class="sp">。横にスクロールできます。</span></p>
+      <ul class="dests"><li>今年の補助金</li><li>翌年度の別の制度</li><li>銀行への融資相談</li><li>新規事業の計画</li></ul>
+      <p class="sub3">結果がどうであっても、会社に残る4つの力</p>
+      <ul class="powers"><li>事業計画を作る力</li><li>強みを言葉にする力</li><li>効果を数字で示す力</li><li>AIを実務で使う力</li></ul>
     </div>
   </div>
 </section>
@@ -658,15 +561,14 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13.5px;line-height:1.85;c
     <div class="side">
       <p class="no">06<small>SUPPORT</small></p>
       <h2 id="t6">迷ったときは、<br><em>人に相談できます。</em></h2>
-      <p class="snote">主役はAIですが、進めるうちにぶつかる壁が3つあります。それぞれに用意したのが、人の支援です。</p>
+      <p class="snote">主役はAI。つまずきやすい3つの壁には、人が付きます。</p>
     </div>
     <div class="body">
       <div class="walls">
-        <div class="wall"><p class="q"><small>壁 1</small>この方向で合っている？</p><div class="a"><h3>専門家に相談</h3><p>補助金・税務・採用などの専門家に相談できます。<b class="nobr">初回30分無料</b>です。</p></div></div>
-        <div class="wall"><p class="q"><small>壁 2</small>採択されても、先に払うお金が要る</p><div class="a"><h3>資金調達の相談窓口</h3><p>補助金の多くは後払いです。銀行・<span class="nobr">事業ローン</span>・<span class="nobr">ファクタリング</span>の相談先をご案内します。</p></div></div>
-        <div class="wall"><p class="q"><small>壁 3</small>AIの使い方が分からない</p><div class="a"><h3>AI家庭教師</h3><p><b>月2時間まで追加料金なし</b>。超えた分は1時間1万円（税別）です。</p></div></div>
+        <div class="wall"><p class="q">この方向で合っている？</p><div class="a"><h3>専門家に相談</h3><p><b class="nobr">初回30分無料</b></p></div></div>
+        <div class="wall"><p class="q">採択されても、先に払うお金が要る</p><div class="a"><h3>資金調達の窓口</h3><p>相談先をご案内します</p></div></div>
+        <div class="wall"><p class="q">AIの使い方が分からない</p><div class="a"><h3>AI家庭教師</h3><p><b>月2時間まで追加料金なし</b>（超過は1時間1万円・税別）</p></div></div>
       </div>
-      <p class="note">資金調達の相談先の審査や条件を、当社が保証するものではありません。</p>
     </div>
   </div>
 </section>
@@ -677,59 +579,36 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13.5px;line-height:1.85;c
     <div class="side">
       <p class="no">07<small>PRICE</small></p>
       <h2 id="t7"><span class="nobr">初期登録費用</span><br><span class="nobr">10万円＋月額3万円。</span><br><em>成功報酬なし。</em></h2>
-      <p class="snote">自社で進めるなら、この1本です。採択されても、受給額が大きくても、当社へのお支払いは増えません。（AI家庭教師の月2時間を超えた分と、Claude Code の利用料は別です）</p>
+      <p class="snote">採択されても、受給額が大きくても、お支払いは増えません。</p>
     </div>
     <div class="body">
       <div class="plan">
         <div class="ph">
-          <span class="en">AI SELF-DRIVE</span>
-          <h3>Jマッチエンジン AI自走プラン</h3>
-          <p class="pr"><b>30,000</b><span>円／月（税別）</span></p>
-          <small>初期登録費用 100,000円（税別）・成功報酬なし</small>
+          <div><span class="en">AI SELF-DRIVE</span><h3>Jマッチエンジン AI自走プラン</h3></div>
+          <p class="pr"><b>30,000</b><span>円／月（税別）</span><small>初期登録費用 100,000円（税別）・成功報酬なし</small></p>
         </div>
-        <div class="pb">
-          <p>制度を見つけ、事例と解説で学び、AIとの対話で事業計画の土台を作るところまでが含まれます。</p>
-          <ul>
-            <li>自社に合いそうな制度情報の配信（毎週金曜／補助金・融資・税制優遇）</li>
-            <li>「検討中」での締切の管理</li>
-            <li>Jシステム AIエディションによる候補の抽出</li>
-            <li>申請締切や対象経費の確認</li>
-            <li>想定採択可能性の参考表示</li>
-            <li>過去の採択事例・事業計画書の見本</li>
-            <li>専門家による解説動画・資料</li>
-            <li>Claude CodeをベースにしたAIエージェント</li>
-            <li>事業計画書・融資資料の土台作成と会社カルテ</li>
-            <li>専門家相談（初回30分無料）</li>
-            <li>AI家庭教師（月2時間まで）</li>
-            <li>資金調達の相談窓口・お問い合わせ窓口</li>
-          </ul>
-          <p class="ex"><b>月額に含まれないもの：</b>Claude Code の利用料（Claude Code は米Anthropic社のAIツールです。御社が提供元と直接ご契約ください）。また、申請の代行・提出書類の作成は行いません。</p>
+        <div class="incl" aria-label="月額に含まれるもの">
+          <div><svg class="ic" viewBox="0 0 20 20" aria-hidden="true"><rect x="1.5" y="4.5" width="17" height="11"/><path d="M1.5 5.5l8.5 6 8.5-6"/></svg><h4>探す</h4><p>毎週金曜の配信、8項目の候補抽出、検討中</p></div>
+          <div><svg class="ic" viewBox="0 0 20 20" aria-hidden="true"><rect x="4" y="1.5" width="12" height="17"/><path d="M7 6.5h6M7 10h6M7 13.5h4"/></svg><h4>学ぶ</h4><p>採択された計画書、解説動画、テンプレート</p></div>
+          <div><svg class="ic" viewBox="0 0 20 20" aria-hidden="true"><rect x="1.5" y="3.5" width="5" height="5"/><rect x="7.5" y="3.5" width="5" height="5"/><rect x="13.5" y="3.5" width="5" height="5"/><rect x="1.5" y="11.5" width="5" height="5"/><rect x="7.5" y="11.5" width="5" height="5"/><rect x="13.5" y="11.5" width="5" height="5"/></svg><h4>書く</h4><p>AIエージェント、計画書・融資資料の土台、会社カルテ</p></div>
+          <div><svg class="ic" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3.5h16v10H9l-4.5 3.5v-3.5H2z"/><path d="M6 8.5h8"/></svg><h4>相談</h4><p>専門家<span class="nobr">（初回30分無料）</span>、AI家庭教師<span class="nobr">（月2時間）</span>、資金調達の窓口</p></div>
         </div>
-      </div>
-      <div class="fit">
-        <div><h3>向いている会社</h3><ul><li>自社で事業計画を作る力を、会社に残したい</li><li>設備投資・採用・新規事業など、制度を使いたい予定がある</li><li>1回で終わらせず、出てくる制度に何度も手を挙げたい</li></ul></div>
-        <div><h3>向いていない会社</h3><ul><li>申請書類の作成まで、丸ごと任せたい（当社は申請代行をしません）</li><li>今回の1件だけ申請できれば、それでよい</li></ul></div>
+        <p class="ex"><b>含まれないもの：</b>Claude Code の利用料（米Anthropic社のAIツール。御社で直接ご契約ください）、申請の代行・提出書類の作成</p>
       </div>
       <div class="coop">
-        <h3>導入事例へのご協力で、初期登録費用10万円が0円になる枠があります</h3>
-        <p>通常の初期登録費用は100,000円（税別）です。値引きではなく、事例づくりへのご協力との交換です。受付枠と期限は、個別のご相談の際にご案内します。</p>
-        <ol>
-          <li><b>01</b>利用後の感想<span>使ってみてどうだったかを、率直にお聞かせください。</span></li>
-          <li><b>02</b>簡単なインタビュー<span>お時間は短くて構いません。</span></li>
-          <li><b>03</b>利用状況と改善要望<span>どこで詰まったかが、いちばん役に立ちます。</span></li>
-          <li><b>04</b>導入事例としての掲載<span>掲載内容は、公開前に必ず御社にご確認いただきます。</span></li>
-        </ol>
-        <p class="fine">0円になるのは初期登録費用のみで、月額30,000円は契約開始後に発生します。料金はすべて税別です。会社名や担当者名、写真の公開範囲は個別の確認事項です。</p>
+        <h3>導入事例へのご協力で、初期登録費用が0円になる枠があります</h3>
+        <ul><li>利用後の感想</li><li>簡単なインタビュー</li><li>利用状況と改善要望</li><li>導入事例としての掲載（公開前に御社が確認）</li></ul>
+        <p>値引きではなく、事例づくりへのご協力との交換です。月額30,000円（税別）は通常どおり。受付枠と期限は、ご相談の際に個別にご案内します。</p>
       </div>
-      <figure class="role" aria-label="私たちが渡すものと、御社または有資格者が担うもの">
-        <p class="ttl"><span class="en">FIG.2</span>どこまでを、誰が持つか</p>
-        <div class="cols">
-          <div><small>私たちが渡すもの</small><p>制度の情報／答えられる問い／事業計画の土台</p></div>
-          <div><small>御社、または御社が依頼する有資格者が担うもの</small><p>制度への提出書類の作成と提出</p></div>
-        </div>
-        <p class="foot">この線は、報酬を得て提出書類を作成することが有資格者の業務と定められていることによります。株式会社ライトアップが資格業務を行うことはありません。</p>
-      </figure>
-      <p class="note">金額はすべて税別です。最低利用期間、解約の条件、返金の取り扱い、お預かりする情報の範囲と保存・削除・外部送信の有無は、ご契約前に書面でご提示します。</p>
+      <div class="fit">
+        <div><h3>向いている会社</h3><ul><li>計画を作る力を、社内に残したい</li><li>設備投資・採用・新規事業の予定がある</li><li>出てくる制度に、何度も手を挙げたい</li></ul></div>
+        <div><h3>向いていない会社</h3><ul><li>申請書類の作成まで丸ごと任せたい</li><li>今回の1件だけ申請できればよい</li></ul></div>
+      </div>
+      <div class="role" aria-label="私たちが渡すものと、御社または有資格者が担うもの">
+        <div><small>私たちが渡すもの</small><p>制度の情報、答えられる問い、事業計画の土台</p></div>
+        <div><small>御社、または御社が依頼する有資格者</small><p>提出書類の作成と提出</p></div>
+      </div>
+      <p class="note">金額はすべて税別です。最低利用期間・解約・返金の条件は、ご契約前に書面でお示しします。</p>
     </div>
   </div>
 </section>
@@ -740,17 +619,16 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13.5px;line-height:1.85;c
     <div class="side">
       <p class="no">08<small>FLOW</small></p>
       <h2 id="t8">お申し込みから、<br><em>計画書づくり</em>まで。</h2>
-      <p class="snote">最初の2つが初期登録の範囲です。3つめから、配信とAIツールをお使いいただけます。</p>
     </div>
     <div class="body">
       <p class="range" aria-label="手順と料金の範囲"><span>01〜02　初期登録費用の範囲</span><span>03〜06　月額30,000円の範囲</span></p>
       <ol class="steps">
-        <li><div><b>お申し込み・ヒアリング</b><span>いま検討している投資、採用や賃上げの予定、これから始めたい事業を伺います。</span></div></li>
-        <li><div><b>会社情報の初期登録</b><span>所在地、業種、従業員数、売上規模などを登録します。</span></div></li>
-        <li><div><b>Jシステム AIエディションで制度を確認</b><span>合いそうな制度の候補と、締切、対象経費を確認。以後、毎週金曜に配信が届きます。</span></div></li>
-        <li><div><b>採択事例・解説動画・AIエージェントの利用開始</b><span>事例と解説で考え方をつかみ、AIとの対話を始めます。</span></div></li>
-        <li><div><b>制度が見つかったら事業計画を作成</b><span>質問に答えて土台を作り、公募要領の様式に合わせて仕上げていきます。</span></div></li>
-        <li><div><b>迷ったら、人に相談</b><span>方向性は専門家（初回30分無料）へ、AIの使い方はAI家庭教師へ。提出書類の作成が必要なら、御社が依頼する有資格者の方へ。</span></div></li>
+        <li><div><b>お申し込み・ヒアリング</b><span>投資・採用・新規事業の予定を伺います</span></div></li>
+        <li><div><b>会社情報の初期登録</b><span>所在地・業種・従業員数など</span></div></li>
+        <li><div><b>候補の確認と、毎週の配信開始</b><span>Jシステム AIエディションで候補と締切を確認</span></div></li>
+        <li><div><b>事例・動画・AIエージェントの利用開始</b><span>考え方をつかみ、AIとの対話を始めます</span></div></li>
+        <li><div><b>制度が見つかったら、計画書を作成</b><span>質問に答えて土台を作り、様式に合わせて仕上げ</span></div></li>
+        <li><div><b>迷ったら、人に相談</b><span>専門家・AI家庭教師・資金調達の窓口へ</span></div></li>
       </ol>
     </div>
   </div>
@@ -764,18 +642,18 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13.5px;line-height:1.85;c
       <h2 id="t9">申し込む前の、<br><em>確認事項。</em></h2>
     </div>
     <div class="body faq">
-      <details><summary>月額30,000円には何が含まれますか。</summary><p>制度情報の配信（毎週金曜）と「検討中」、Jシステム AIエディションによる候補の抽出、締切と対象経費の確認、想定採択可能性の参考表示、過去の採択事例と事業計画書の見本、専門家による解説動画・資料、AIエージェントによる事業計画書と融資資料の土台作成、会社カルテ、専門家相談（初回30分無料）、AI家庭教師（月2時間まで）、資金調達の相談窓口です。別途、初期登録費用100,000円（税別）がかかります。</p></details>
+      <details><summary>月額30,000円には何が含まれますか。</summary><p>制度情報の配信（毎週金曜）と「検討中」、Jシステム AIエディションによる候補の抽出、締切と対象経費の確認、想定採択可能性の参考表示、採択事例と事業計画書の見本、解説動画・資料、AIエージェントによる事業計画書と融資資料の土台作成、会社カルテ、専門家相談（初回30分無料）、AI家庭教師（月2時間まで）、資金調達の相談窓口です。別途、初期登録費用100,000円（税別）がかかります。</p></details>
       <details><summary>Claude Code の利用料は、月額に含まれますか。</summary><p>含まれません。Claude Code は米Anthropic社のAIツールで、AIエージェントはこの上で動きます。利用料は御社で提供元と直接ご契約ください。初期設定は導入時にご案内します。</p></details>
       <details><summary>AIが申請書を完成させてくれますか。</summary><p>いいえ。AIが作るのは事業計画の土台です。制度ごとの提出様式を埋めて仕上げるのは、御社ご自身か、有資格者の先生になります。申請の代行も行いません。</p></details>
       <details><summary>採択や融資の承認は保証されますか。</summary><p>いいえ。補助金は制度の実施機関が、融資は金融機関が判断します。採択率・受給額・承認をお約束することはありません。</p></details>
       <details><summary>想定採択可能性とは何ですか。</summary><p>入力情報と確認できる制度情報をもとに、AIが示す参考情報です。申請資格、採択、融資承認、受給額を保証するものではなく、最終的な判断は制度事務局または金融機関によるものです。精密な数値ではなく、段階での表示にしています。</p></details>
-      <details><summary>どのような採択事例を閲覧できますか。</summary><p>一般公開されている資料、掲載許諾を得ている資料、企業を特定できないよう適切に匿名加工した資料に限ってご覧いただけます。企業秘密や個人情報、掲載許諾が確認できない資料は掲載しません。</p></details>
-      <details><summary>Claude Code を使ったことがなくても利用できますか。</summary><p>使ったことがない前提で設計しています。AIから順番に質問が出るので、事実を思い出して答えていただく形です。初期設定と使い方は導入時にご案内し、分からないときはAI家庭教師（月2時間まで追加料金なし）に聞けます。</p></details>
+      <details><summary>Claude Code を使ったことがなくても利用できますか。</summary><p>使ったことがない前提で設計しています。AIから順番に質問が出るので、事実を思い出して答えていただく形です。分からないときはAI家庭教師（月2時間まで追加料金なし）に聞けます。</p></details>
       <details><summary>自社でどこまで作業する必要がありますか。</summary><p>質問への回答は御社にお願いします。会社の事実を知っているのは御社だけだからです。白紙から文章を書く作業は不要ですが、手を動かしていただく必要はあります。</p></details>
-      <details><summary>顧問の税理士や行政書士へ資料を渡せますか。</summary><p>はい。専門家へ依頼するための整理資料として出せます。すでに顧問の先生がいらっしゃる場合は、その先生に渡す資料をつくる使い方もできます。</p></details>
-      <details><summary>作った事業計画を融資にも使えますか。</summary><p>はい。補助金で聞かれることと、金融機関で聞かれることは多くが重なります。同じ土台から、融資相談で使う資料を組み立てられます。</p></details>
+      <details><summary>作った事業計画を、融資や顧問の先生への相談にも使えますか。</summary><p>はい。補助金で聞かれることと、金融機関で聞かれることは多くが重なります。顧問の税理士や行政書士に渡す整理資料としても使えます。</p></details>
+      <details><summary>補助金の入金はいつですか。</summary><p>補助金は、多くの制度で事業を実施したあとの精算払いです。先に支払う分の資金は、自己資金か借入でご用意いただく形になります。時期や条件は制度ごとに異なるため、公募要領・交付要領でご確認ください。</p></details>
+      <details><summary>どのような採択事例を閲覧できますか。</summary><p>一般公開されている資料、掲載許諾を得ている資料、企業を特定できないよう適切に匿名加工した資料に限ってご覧いただけます。企業秘密や個人情報、掲載許諾が確認できない資料は掲載しません。</p></details>
       <details><summary>初期登録費用が0円になる条件は何ですか。</summary><p>導入事例へのご協力が条件です。利用後の感想、簡単なインタビュー、利用状況や改善要望のヒアリング、掲載内容を事前確認いただいたうえでの導入事例掲載にご協力いただきます。0円になるのは初期登録費用のみで、月額30,000円（税別）は契約開始後に発生します。受付枠と期限は、個別のご相談の際にお伝えする形です。</p></details>
-      <details><summary>最低利用期間、解約、返金、お預かりする情報の取り扱いは、どこで確認できますか。</summary><p>いずれもご契約前に、書面と利用規約・プライバシーポリシーでご提示します。お申し込みの前に、必ずご確認いただけます。</p></details>
+      <details><summary>最低利用期間、解約、返金、お預かりする情報の取り扱いは？</summary><p>いずれもご契約前に、書面と利用規約・プライバシーポリシーでご提示します。お申し込みの前に、必ずご確認いただけます。</p></details>
     </div>
   </div>
 </section>
@@ -783,11 +661,10 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13.5px;line-height:1.85;c
 <!-- 締め -->
 <section class="fin" id="cta" aria-labelledby="t10">
   <div class="w">
-    <p class="no">10<small>NEXT</small></p>
     <h2 id="t10">使える制度を見逃さず、<br><em>見つけたら、すぐ書ける会社へ。</em></h2>
-    <p>初期登録費用100,000円＋月額30,000円（税別）で、制度を見つけ、事例で学び、AIとの対話で事業計画の土台を作るところまで始められます。導入事例にご協力いただける会社は、初期登録費用が0円。まずはご相談ください。</p>
+    <p>初期登録費用10万円＋月額3万円（税別）。成功報酬はありません。導入事例にご協力いただける会社は、初期登録費用が0円です。</p>
     <a class="btn inv" id="endCta" href="https://www.writeup.jp/contact/">導入について相談する</a>
-    <p class="fine">成功報酬なし・受付枠と期限は個別にご案内します</p>
+    <p class="fine">受付枠と期限は、ご相談の際に個別にご案内します</p>
   </div>
 </section>
 
@@ -801,8 +678,8 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13.5px;line-height:1.85;c
     <ul>
       <li>掲載している画面と図は画面イメージです。実際の表示と異なる場合があります。画面内の会社名・人名・制度名・金額は架空の表示例です。</li>
       <li>想定採択可能性はAIが示す参考情報です。申請資格、採択、融資承認、受給額を保証するものではありません。最終的な判断は、制度事務局または金融機関によるものです。</li>
-      <li>申請の代行は行いません。制度への提出書類の作成は、御社ご自身または御社が依頼する有資格者の方が行います。</li>
-      <li>制度の内容、支払時期、申請要件は制度ごとに異なるため、各制度の公募要領をご確認ください。</li>
+      <li>申請の代行は行いません。制度への提出書類の作成は、御社ご自身または御社が依頼する有資格者の方の業務です。</li>
+      <li>資金調達の相談先の審査や条件を、当社が保証するものではありません。制度の内容、支払時期、申請要件は制度ごとに異なるため、各制度の公募要領をご確認ください。</li>
     </ul>
   </div>
 </footer>
