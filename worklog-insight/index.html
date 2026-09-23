@@ -4,17 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ワークログ・インサイト｜ご案内の入口</title>
-<meta name="description" content="ワークログ・インサイトのご案内は、御社の商品として販売いただくOEMと、御社ご自身でお使いいただく直販の2種類に分かれています。">
+<meta name="description" content="ワークログ・インサイトの資料一覧。OEM（御社の商品として販売）と直販（御社ご自身で利用）に分けて、最新の更新内容と各ページをまとめています。">
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://writeup-inc.github.io/saas/worklog-insight/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ワークログ・インサイト｜ご案内の入口">
-<meta property="og:description" content="OEM（御社の商品として販売）と直販（御社ご自身で利用）の2つの入口。">
+<meta property="og:description" content="OEMと直販に分けた、ワークログ・インサイトの資料一覧と更新内容。">
 <meta property="og:url" content="https://writeup-inc.github.io/saas/worklog-insight/">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 /* ===== lp-base.css ===== */
 h1, h2, h3, h4, h5,
@@ -28,255 +28,283 @@ h1, h2, h3, h4, h5,
   .lead, .catch, .hero__title, [data-keep-phrase] { word-break: normal; }
 }
 .nobr { white-space: nowrap; }
-.desc, .opt-d, .opt-f, .opt-camp, .foot-note, .gate-sub a {
-  word-break: auto-phrase; line-break: strict; overflow-wrap: break-word;
-}
-@supports not (word-break: auto-phrase) {
-  .desc, .opt-d, .opt-f, .opt-camp, .foot-note, .gate-sub a { word-break: normal; }
-}
-:root { --fs-min: 13px; --fs-body: 17px; }
-body { font-size: var(--fs-body); line-height: 1.9; }
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
 small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
-h1, .hero__title { font-size: clamp(1.3rem, 5.2vw, 3.25rem); line-height: 1.35; }
-h2 { font-size: clamp(1.2rem, 3.6vw, 2.1rem); line-height: 1.45; }
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
 :root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
 *, *::before, *::after { box-sizing: border-box; }
 img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
 main > *, section > *, .grid > *, .flex > * { min-width: 0; }
 pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
 
-/* ===== tokens（OEM／直販ページと同一） ===== */
+/* ===== インデックスページ（2026-09-23 改定版のレギュレーション）─────────
+   ヒーロー＝サービス名だけを中央に大きく。その下に更新内容（OEM／直販／その他の3列）。
+   説明文は置かない。以降の資料一覧は、OEM＝緑・直販＝青・その他＝グレーで色を分ける。 */
 :root{
-  --blue:#1a4fa0;
-  --blue-d:#123772;
-  --blue-l:#e8eef8;
-  --ink:#111318;
-  --gray:#525763;
-  --gray2:#8d93a0;
-  --line:#d9dce3;
-  --paper:#faf9f5;
-  --faint:#eef0f4;
-  --jp:'Noto Sans JP',sans-serif;
-  --en:'Inter',sans-serif;
+  --ink:#10151c; --tx:#262d36; --g1:#4a525d; --g2:#626b76; --g3:#848c96;
+  --ln:#dfe3e8; --ln2:#eef1f4; --bg:#f6f7f9;
+  --oem:#0f6b56; --oem-l:#e6f3ef;
+  --dir:#1f4f9a; --dir-l:#e8eff9;
+  --etc:#4d5561; --etc-l:#eff1f3;
+  --new:#c2410c;
+  --sans:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+  --num:Inter,"Helvetica Neue",Arial,sans-serif;
 }
-*{margin:0;padding:0;}
-html{ -webkit-text-size-adjust:100%; }
-body{
-  font-family:var(--jp); background:var(--paper); color:var(--ink);
-  -webkit-font-smoothing:antialiased;
-  min-height:100vh; display:flex; flex-direction:column;
-  padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px));
-}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--tx);font-family:var(--sans);font-size:16px;line-height:1.85;
+  letter-spacing:.015em;font-feature-settings:"palt" 1;-webkit-font-smoothing:antialiased}
+.w{max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+a{color:inherit}
+p{margin:0}
+.en{font-family:var(--num);font-weight:800;letter-spacing:.18em;text-transform:uppercase}
 
-/* ===== 背景のSVG（1分ごとの記録＝画面のコマ） ===== */
-.bg{ position:fixed; inset:0; z-index:0; pointer-events:none;
-  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%201200%20800%27%20preserveAspectRatio%3D%27xMidYMid%20slice%27%20fill%3D%27none%27%20stroke%3D%27%231a4fa0%27%3E%3Cg%20opacity%3D%27.04%27%20stroke-width%3D%271%27%3E%3Crect%20x%3D%27700%27%20y%3D%27120%27%20width%3D%27132%27%20height%3D%2790%27%20rx%3D%274%27%2F%3E%3Crect%20x%3D%27860%27%20y%3D%27120%27%20width%3D%27132%27%20height%3D%2790%27%20rx%3D%274%27%2F%3E%3Crect%20x%3D%271020%27%20y%3D%27120%27%20width%3D%27132%27%20height%3D%2790%27%20rx%3D%274%27%2F%3E%3Crect%20x%3D%27700%27%20y%3D%27240%27%20width%3D%27132%27%20height%3D%2790%27%20rx%3D%274%27%2F%3E%3Crect%20x%3D%27860%27%20y%3D%27240%27%20width%3D%27132%27%20height%3D%2790%27%20rx%3D%274%27%2F%3E%3Crect%20x%3D%271020%27%20y%3D%27240%27%20width%3D%27132%27%20height%3D%2790%27%20rx%3D%274%27%2F%3E%3Crect%20x%3D%27700%27%20y%3D%27360%27%20width%3D%27132%27%20height%3D%2790%27%20rx%3D%274%27%2F%3E%3Crect%20x%3D%27860%27%20y%3D%27360%27%20width%3D%27132%27%20height%3D%2790%27%20rx%3D%274%27%2F%3E%3Crect%20x%3D%271020%27%20y%3D%27360%27%20width%3D%27132%27%20height%3D%2790%27%20rx%3D%274%27%2F%3E%3Cpath%20d%3D%27M700%20138h132M860%20138h132M1020%20138h132M700%20258h132M860%20258h132M1020%20258h132M700%20378h132M860%20378h132M1020%20378h132%27%2F%3E%3C%2Fg%3E%3Cg%20opacity%3D%27.12%27%20stroke-width%3D%271.4%27%3E%3Cpath%20d%3D%27M700%20530h452%27%2F%3E%3Cpath%20d%3D%27M700%20516v28M766%20522v16M832%20522v16M898%20516v28M964%20522v16M1030%20522v16M1096%20516v28M1152%20522v16%27%2F%3E%3C%2Fg%3E%3Cg%20opacity%3D%27.06%27%20stroke-width%3D%271%27%3E%3Cpath%20d%3D%27M60%20620h150M60%20660h210M60%20700h110%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-  background-size:cover; background-position:center; background-repeat:no-repeat; }
+/* ヒーロー：サービス名だけ */
+.hero{padding:clamp(72px,11vw,140px) 0 clamp(48px,7vw,80px);text-align:center;background:linear-gradient(180deg,#fff,var(--bg))}
+.hero .en{display:block;font-size:13px;color:var(--g3)}
+.hero h1{margin:18px 0 0;font-weight:900;letter-spacing:-.04em;line-height:1.15;color:var(--ink);font-size:clamp(2.6rem,9vw,6.4rem)}
+.hero .meta{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;margin:26px 0 0;font-size:14px;color:var(--g2)}
+.hero .meta b{font-family:var(--num);color:var(--ink)}
+.hero .meta .k{display:inline-flex;align-items:center;gap:7px}
+.hero .meta .k i{width:10px;height:10px;border-radius:3px}
 
-.wrap{ position:relative; z-index:1; width:100%; max-width:1300px; margin:0 auto; padding:0 40px; }
-@media(max-width:760px){ .wrap{ padding:0 24px; } }
-main{ flex:1 0 auto; display:flex; align-items:center; padding:88px 0 72px; }
-@media(max-width:760px){ main{ padding:56px 0 48px; } }
+/* 更新内容：OEM／直販／その他 */
+.upd{padding:0 0 clamp(64px,8vw,96px);background:var(--bg)}
+.upd h2{margin:0 0 20px;font-size:15px;font-weight:900;color:var(--ink);letter-spacing:.04em}
+.upd h2 span{margin-left:10px;font-family:var(--num);font-size:12px;font-weight:800;letter-spacing:.16em;color:var(--g3)}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start}
+.col{border-radius:16px;background:#fff;border:1px solid var(--ln);overflow:hidden}
+.col > h3{margin:0;padding:14px 20px;font-size:16px;font-weight:900;color:#fff}
+.col.oem > h3{background:var(--oem)} .col.dir > h3{background:var(--dir)} .col.etc > h3{background:var(--etc)}
+.col ul{list-style:none;margin:0;padding:6px 0}
+.col li a{display:grid;grid-template-columns:3.4em 1fr;gap:12px;padding:12px 20px;text-decoration:none;border-top:1px solid var(--ln2)}
+.col li:first-child a{border-top:0}
+.col li a:hover{background:var(--bg)}
+.col time{font-family:var(--num);font-size:13px;font-weight:700;color:var(--g2);padding-top:1px}
+.col .t{font-size:15px;line-height:1.65;color:var(--ink)}
+.col .t b{display:inline-block;margin-right:6px;padding:0 7px;border-radius:4px;font-size:12px;font-weight:700;line-height:1.7;vertical-align:1px}
+.bg-new{background:#fdebe1;color:var(--new)}
+.bg-up{background:var(--etc-l);color:var(--etc)}
+.bg-soon{background:#fff4d6;color:#8a5a00}
+.bg-in{background:#efe9f8;color:#5b3f8f}
 
-.kicker{ font-family:var(--en); font-size:13px; font-weight:900; letter-spacing:.3em; color:var(--gray2); margin-bottom:26px; }
-h1{ font-weight:900; letter-spacing:-.015em; margin-bottom:22px; font-size:clamp(1.3rem,4.7vw,4.15rem) !important; line-height:1.3; }
-h1 em{ font-style:normal; color:var(--blue); }
-.desc{ font-size:17px; color:var(--gray); max-width:34em; margin-bottom:56px; line-height:1.9; }
-@media(max-width:760px){ .desc{ margin-bottom:40px; } }
+/* 資料の区画：色で分ける */
+.blk{padding:clamp(64px,8vw,104px) 0}
+.blk + .blk{border-top:1px solid var(--ln2)}
+.bh{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px 24px;margin:0 0 24px;padding:0 0 18px;border-bottom:3px solid}
+.bh .en{display:block;font-size:12px}
+.bh h2{margin:6px 0 0;font-weight:900;letter-spacing:-.03em;line-height:1.35;color:var(--ink);font-size:clamp(1.6rem,3.2vw,2.3rem)}
+.bh p{font-size:15px;color:var(--g1)}
+.oem .bh{border-color:var(--oem)} .oem .bh .en{color:var(--oem)}
+.dir .bh{border-color:var(--dir)} .dir .bh .en{color:var(--dir)}
+.etc .bh{border-color:var(--etc)} .etc .bh .en{color:var(--etc)}
+.terms{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+.terms span{padding:6px 14px;border-radius:999px;font-size:14px;font-weight:700}
+.oem .terms span{background:var(--oem-l);color:var(--oem)}
+.dir .terms span{background:var(--dir-l);color:var(--dir)}
+.cards{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:0;padding:0}
+.cards > li{display:flex}
+.card{display:flex;flex-direction:column;width:100%;padding:20px 20px 16px;border-radius:14px;background:#fff;border:1px solid var(--ln);border-top:4px solid;text-decoration:none;color:inherit;transition:transform .18s,box-shadow .18s,background .18s}
+.oem .card{border-top-color:var(--oem)} .dir .card{border-top-color:var(--dir)} .etc .card{border-top-color:var(--etc)}
+a.card:hover{transform:translateY(-2px);box-shadow:0 16px 30px -18px rgba(16,21,28,.35)}
+.oem a.card:hover{background:var(--oem-l)} .dir a.card:hover{background:var(--dir-l)} .etc a.card:hover{background:var(--etc-l)}
+.card .top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 10px}
+.card .no{font-family:var(--num);font-size:13px;font-weight:800;letter-spacing:.08em}
+.oem .card .no{color:var(--oem)} .dir .card .no{color:var(--dir)} .etc .card .no{color:var(--etc)}
+.card .top b{padding:0 8px;border-radius:4px;font-size:12px;font-weight:700;line-height:1.8}
+.card h3{margin:0 0 6px;font-size:17px;font-weight:900;line-height:1.5;color:var(--ink)}
+.card p{font-size:14.5px;line-height:1.8;color:var(--g1)}
+.card .memo{margin:12px 0 0;padding:0 0 0 10px;border-left:3px solid var(--new);font-size:13.5px;line-height:1.7;color:var(--g1)}
+.card .url{margin-top:auto;padding-top:14px;font-family:var(--num);font-size:12px;color:var(--g3);word-break:break-all}
+.card .go{display:flex;align-items:center;justify-content:space-between;margin-top:8px;font-size:14px;font-weight:700}
+.oem .card .go{color:var(--oem)} .dir .card .go{color:var(--dir)} .etc .card .go{color:var(--etc)}
+.card .go.mute{margin-top:auto;padding-top:14px;color:var(--g3);font-weight:500}
+div.card{background:#fbfbfc}
+.fine{margin:16px 0 0;font-size:13.5px;color:var(--g2)}
 
-/* ===== 2つの入口 ===== */
-.gate{ display:grid; grid-template-columns:1fr 1fr; border-top:2px solid var(--ink); }
-.opt{
-  display:flex; flex-direction:column; gap:26px;
-  border-bottom:1px solid var(--line); padding:40px 36px 40px 0;
-  text-decoration:none; color:var(--ink);
-  transition:background .2s ease;
-  position:relative; overflow:hidden;
-}
-.opt + .opt{ border-left:1px solid var(--line); padding-left:44px; }
-.opt > div{ flex:1 1 auto; }
-.opt > *{ position:relative; z-index:1; }
-.opt::before{
-  content:""; position:absolute; z-index:0; right:-18px; bottom:-14px;
-  width:58%; max-width:270px; aspect-ratio:240/200;
-  background-repeat:no-repeat; background-position:right bottom; background-size:contain;
-  opacity:.07; transition:opacity .3s ease, transform .3s ease; pointer-events:none;
-}
-.opt:hover::before{ opacity:.2; transform:translateY(-6px); }
-.opt--oem::before{ background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20240%20200%27%20fill%3D%27none%27%20stroke%3D%27%231a4fa0%27%20stroke-width%3D%272%27%20stroke-linejoin%3D%27round%27%3E%3Crect%20x%3D%2716%27%20y%3D%2766%27%20width%3D%27116%27%20height%3D%2778%27%20rx%3D%274%27%2F%3E%3Crect%20x%3D%2728%27%20y%3D%2754%27%20width%3D%27116%27%20height%3D%2778%27%20rx%3D%274%27%2F%3E%3Crect%20x%3D%2740%27%20y%3D%2742%27%20width%3D%27116%27%20height%3D%2778%27%20rx%3D%274%27%2F%3E%3Cpath%20d%3D%27M40%2062h116%27%2F%3E%3Ccircle%20cx%3D%2752%27%20cy%3D%2752%27%20r%3D%273%27%2F%3E%3Cpath%20d%3D%27M60%2084h44M60%20100h64%27%2F%3E%3Cpath%20d%3D%27M176%2050l34%2034-34%2034z%27%2F%3E%3Ccircle%20cx%3D%27188%27%20cy%3D%2772%27%20r%3D%274%27%2F%3E%3Cpath%20d%3D%27M168%20136h48M168%20156h30%27%2F%3E%3C%2Fsvg%3E"); }
-.opt--direct::before{ background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20240%20200%27%20fill%3D%27none%27%20stroke%3D%27%231a4fa0%27%20stroke-width%3D%272%27%20stroke-linejoin%3D%27round%27%3E%3Crect%20x%3D%2716%27%20y%3D%2734%27%20width%3D%27112%27%20height%3D%2782%27%20rx%3D%274%27%2F%3E%3Cpath%20d%3D%27M16%2054h112%27%2F%3E%3Ccircle%20cx%3D%2728%27%20cy%3D%2744%27%20r%3D%273%27%2F%3E%3Cpath%20d%3D%27M34%2074h58M34%2092h40%27%2F%3E%3Cpath%20d%3D%27M72%20116v22M40%20138h64%27%2F%3E%3Cpath%20d%3D%27M148%20168v-44M182%20168v-74M216%20168v-104%27%2F%3E%3Cpath%20d%3D%27M140%2094l38-30%2038-30%27%2F%3E%3Cpath%20d%3D%27M198%2028h20v20%27%2F%3E%3C%2Fsvg%3E"); }
-.opt:hover{ background:var(--blue-l); }
-.opt-k{ font-family:var(--en); font-size:12px; font-weight:900; letter-spacing:.24em; color:var(--blue); margin-bottom:12px; }
-.opt-n{ font-family:var(--en); font-size:12px; font-weight:900; letter-spacing:.1em; color:var(--gray2); margin-right:12px; }
-.opt-k-jp{ font-family:var(--jp); font-size:13.5px; font-weight:700; letter-spacing:.04em; color:var(--gray); margin-left:12px; }
-@media(max-width:560px){ .opt-k-jp{ display:block; margin-left:0; margin-top:4px; } }
-.opt-t{ font-size:clamp(1.15rem,2.7vw,1.55rem) !important; font-weight:900; line-height:1.5; margin-bottom:12px; }
-.opt-d{ font-size:15.5px; color:var(--gray); line-height:1.85; max-width:30em; margin-bottom:14px; }
-.opt-f{ font-family:var(--en); font-size:15px; font-weight:900; letter-spacing:.01em; color:var(--blue); }
-.opt-f .sep{ color:var(--line); margin:0 10px; }
-.opt-camp{ margin-top:10px; display:inline-block; font-size:14px; font-weight:700; color:var(--blue); background:var(--blue-l); border:1px solid var(--blue); padding:5px 12px; }
-.opt-go{ margin-top:14px; font-size:15.5px; font-weight:900; color:var(--blue); text-decoration:underline; text-underline-offset:4px; }
-.opt-a{
-  flex-shrink:0; width:52px; height:52px; border:1px solid var(--blue); border-radius:50%;
-  display:flex; align-items:center; justify-content:center; color:var(--blue);
-  transition:background .2s ease, color .2s ease;
-}
-.opt:hover .opt-a{ background:var(--blue); color:#fff; }
-@media(max-width:560px){
-  .opt-f{ display:grid; gap:2px; justify-items:start; }
-  .opt-f .sep{ display:none; }
-}
-@media(max-width:900px){
-  .gate{ grid-template-columns:1fr; }
-  .opt{ gap:20px; padding:30px 4px; }
-  .opt + .opt{ border-left:none; padding-left:4px; }
-  .opt-a{ width:48px; height:48px; }
-}
+footer{padding:40px 0 56px;border-top:1px solid var(--ln2);text-align:center;font-size:13.5px;color:var(--g2)}
+footer p + p{margin-top:4px}
 
-.gate-sub{ display:grid; grid-template-columns:1fr 1fr; }
-.gate-sub a{
-  display:flex; align-items:center; gap:8px; min-height:54px;
-  padding:12px 36px 12px 0; border-bottom:1px solid var(--line);
-  font-size:14.5px; font-weight:700; color:var(--gray); text-decoration:none;
-  transition:color .2s ease, background .2s ease;
+.col .t,.card p,.card .memo,.bh p,.fine{word-break:auto-phrase;line-break:strict}
+
+@media(max-width:960px){
+  .cols{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr 1fr}
 }
-.gate-sub a:nth-child(even){ border-left:1px solid var(--line); padding-left:44px; }
-.gate-sub a:hover{ color:var(--blue); background:var(--blue-l); }
-.gate-sub a i{ font-style:normal; font-size:13px; color:var(--gray2); }
-.gate-sub .blank{ border-bottom:1px solid var(--line); border-left:1px solid var(--line); }
-@media(max-width:900px){
-  .gate-sub{ grid-template-columns:1fr; }
-  .gate-sub a, .gate-sub a:nth-child(even){ padding:12px 4px; border-left:none; }
-  .gate-sub .blank{ display:none; }
+@media(max-width:640px){
+  .cards{grid-template-columns:1fr}
 }
-.foot-note{ margin-top:34px; font-size:14px; color:var(--gray2); line-height:1.85; }
-/* ===== 関連ページ（サイト下部のリンク集） ===== */
-.links{ margin-top:52px; padding-top:26px; border-top:2px solid var(--ink); }
-.links-k{ font-family:var(--en); font-size:12.5px; font-weight:900; letter-spacing:.22em; color:var(--gray2); margin-bottom:8px; }
-.links-list{ display:grid; grid-template-columns:1fr 1fr; }
-.links-list a{
-  display:flex; align-items:center; gap:14px; min-height:64px;
-  padding:16px 36px 16px 0; border-bottom:1px solid var(--line);
-  text-decoration:none; color:var(--ink);
-  transition:color .2s ease, background .2s ease;
-}
-.links-list a:nth-child(even){ border-left:1px solid var(--line); padding-left:44px; }
-.links-list a:hover{ color:var(--blue); background:var(--blue-l); }
-.links-n{ font-family:var(--en); font-size:12.5px; font-weight:900; letter-spacing:.1em; color:var(--gray2); flex:0 0 30px; }
-.links-t{ font-size:15.5px; font-weight:700; line-height:1.6;
-  word-break:auto-phrase; line-break:strict; overflow-wrap:break-word; }
-@supports not (word-break: auto-phrase){ .links-t{ word-break:normal; } }
-.links-badge{
-  display:inline-block; margin-left:8px; padding:2px 8px;
-  font-size:12px; font-weight:700; letter-spacing:.04em;
-  color:var(--blue); background:var(--blue-l); border:1px solid var(--blue); white-space:nowrap;
-}
-.links-list a i{ font-style:normal; font-size:15px; color:var(--gray2); margin-left:auto; flex-shrink:0; }
-@media(max-width:900px){
-  .links-list{ grid-template-columns:1fr; }
-  .links-list a, .links-list a:nth-child(even){ padding:14px 4px; border-left:none; }
-}
-footer{ position:relative; z-index:1; flex-shrink:0; border-top:1px solid var(--line); padding:22px 0 36px; }
-footer .f{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; font-size:13.5px; color:var(--gray2); }
 </style>
 </head>
 <body>
 
-<div class="bg" aria-hidden="true"></div>
+<header class="hero">
+  <div class="w">
+    <span class="en">Worklog Insight</span>
+    <h1><span class="nobr">ワークログ・</span><span class="nobr">インサイト</span></h1>
+    <p class="meta">
+      <span>最終更新 <b>2026.09.23</b></span>
+      <span class="k"><i style="background:var(--oem)"></i>OEM 4点</span>
+      <span class="k"><i style="background:var(--dir)"></i>直販 4点</span>
+      <span class="k"><i style="background:var(--etc)"></i>その他 2点</span>
+    </p>
+  </div>
+</header>
 
 <main>
-  <div class="wrap">
-    <p class="kicker">WORKLOG INSIGHT</p>
-    <h1>入力ゼロで、<br><em>誰が何に何時間</em>かが出る。</h1>
-    <p class="desc">PCの画面を約1分に1回記録し、AIが業務名に変える月額サービスです。ご案内は、御社の商品としてお客様へ販売いただく場合と、御社ご自身の会社でお使いいただく場合の2種類に分かれています。</p>
 
-    <div class="gate">
-
-      <a class="opt opt--oem" href="../worklog-insight-oem/">
-        <div>
-          <p class="opt-k"><span class="opt-n">01</span>OEM<span class="opt-k-jp">お客様に売る会社の方へ</span></p>
-          <h2 class="opt-t">御社の名前で、<br>御社の顧客に売る</h2>
-          <p class="opt-d">御社の商品として、既存のお客様へ販売できます。開発もサーバーも料金の回収も当社が持つので、御社は売るところだけを担当します。</p>
-          <p class="opt-f"><span class="nobr">1ID 月10,000円</span><span class="sep">／</span><span class="nobr">御社の取り分 4,000円</span></p>
-          <p class="opt-camp"><span class="nobr">2026年10月1日 提供開始</span>／<span class="nobr">OEM先は10社が目標</span></p>
-          <p class="opt-go">OEMの条件を見る</p>
-        </div>
-        <span class="opt-a" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg>
-        </span>
-      </a>
-
-      <a class="opt opt--direct" href="./direct/">
-        <div>
-          <p class="opt-k"><span class="opt-n">02</span>DIRECT<span class="opt-k-jp">自社で使いたい会社の方へ</span></p>
-          <h2 class="opt-t">自社の仕事を測り、<br>AI化の順番を決める</h2>
-          <p class="opt-d">1分ごとの実測ログから、誰が・何に・何時間かを整理。毎週のレポートを見て、次にAI化する業務の順番を決められます。日報も工数入力も要りません。</p>
-          <p class="opt-f"><span class="nobr">現場の入力作業 0</span><span class="sep">／</span><span class="nobr">1台から開始</span><span class="sep">／</span><span class="nobr">毎週レポート</span></p>
-          <p class="opt-go">サービスの詳細を見る</p>
-        </div>
-        <span class="opt-a" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg>
-        </span>
-      </a>
-
-    </div>
-
-    <div class="gate-sub">
-      <a href="../worklog-insight-taku-sample/">管理画面サンプル（経営者・管理職・本人）<i>→</i></a>
-      <a href="../worklog-fact-search/">有料オプション ワークログ ファクトサーチ<i>→</i></a>
-      <span class="blank"></span>
-    </div>
-
-    <p class="foot-note">金額は1IDあたりの月額です。税の扱いと課金単位は、個別にご案内します。</p>
-
-    <nav class="links" aria-label="関連ページ">
-      <p class="links-k">RELATED PAGES</p>
-      <div class="links-list">
-        <a href="../worklog-insight-sales-talk/">
-          <span class="links-n">01</span>
-          <span class="links-t">ワークログインサイト：直販セールストーク<span class="links-badge">社内限定</span></span>
-          <i>→</i>
-        </a>
-        <a href="../worklog-insight-taku-sample/">
-          <span class="links-n">02</span>
-          <span class="links-t">ワークログ 導入企業管理画面</span>
-          <i>→</i>
-        </a>
-        <a href="https://worklog-insight-hiyori-recommended.vercel.app/">
-          <span class="links-n">03</span>
-          <span class="links-t">人材会社向け管理画面サンプル</span>
-          <i>→</i>
-        </a>
-        <a href="../worklog-fact-search/">
-          <span class="links-n">04</span>
-          <span class="links-t">ワークログ ファクトサーチ</span>
-          <i>→</i>
-        </a>
-        <a href="../worklog-insight-oem/">
-          <span class="links-n">05</span>
-          <span class="links-t">ワークログOEM セミナー資料</span>
-          <i>→</i>
-        </a>
-        <a href="https://writeup-inc.github.io/seminar/worklog-insight-oem/?design=v1">
-          <span class="links-n">06</span>
-          <span class="links-t">ワークログ・インサイト OEM説明会（V1）</span>
-          <i>→</i>
-        </a>
-        <a href="https://writeup-inc.github.io/seminar/worklog-insight-oem/?design=v2">
-          <span class="links-n">07</span>
-          <span class="links-t">ワークログ・インサイト OEM説明会（V2）</span>
-          <i>→</i>
-        </a>
+<!-- 更新内容 -->
+<section class="upd" aria-labelledby="upd-h">
+  <div class="w">
+    <h2 id="upd-h">更新内容<span>What's new</span></h2>
+    <div class="cols">
+      <div class="col oem">
+        <h3>OEM</h3>
+        <ul>
+          <li><a href="#b-01"><time>09.21</time><span class="t"><b class="bg-up">更新</b>募集LP：「216万円」の表記を「30IDの先行仕入れ」に統一</span></a></li>
+          <li><a href="#b-01"><time>09.17</time><span class="t"><b class="bg-up">更新</b>募集LP：提案の型、収益の試算、AIと労務の価値を追加</span></a></li>
+          <li><a href="#b-04"><time>09.16</time><span class="t"><b class="bg-new">NEW</b>人材会社向けの管理画面サンプルを公開</span></a></li>
+          <li><a href="#b-02"><time>09.14</time><span class="t"><b class="bg-new">NEW</b>説明会ページをV1・V2の2本で公開</span></a></li>
+          <li><a href="#b-01"><time>09.13</time><span class="t"><b class="bg-new">NEW</b>OEMパートナー募集LPを公開</span></a></li>
+        </ul>
       </div>
-    </nav>
+      <div class="col dir">
+        <h3>直販</h3>
+        <ul>
+          <li><a href="#a-02"><time>09.23</time><span class="t"><b class="bg-soon">準備中</b>直販LP v2（管理画面の実画面つき）を制作</span></a></li>
+          <li><a href="#a-03"><time>09.13</time><span class="t"><b class="bg-in">社内</b>直販セールストークを公開</span></a></li>
+          <li><a href="#a-01"><time>09.13</time><span class="t"><b class="bg-up">更新</b>直販LPを /direct/ に移し、入口をOEMと直販に分けた</span></a></li>
+          <li><a href="#a-04"><time>09.11</time><span class="t"><b class="bg-new">NEW</b>管理画面サンプル（経営者・管理職・本人）を公開</span></a></li>
+        </ul>
+      </div>
+      <div class="col etc">
+        <h3>その他</h3>
+        <ul>
+          <li><a href="#c-02"><time>09.14</time><span class="t"><b class="bg-up">更新</b>モニター募集を「0次販売」に組み替え</span></a></li>
+          <li><a href="#c-01"><time>09.12</time><span class="t"><b class="bg-new">NEW</b>有料オプション「ワークログ・ファクトサーチ」を公開</span></a></li>
+        </ul>
+      </div>
+    </div>
   </div>
+</section>
+
+<!-- OEM -->
+<section class="blk oem" id="oem" aria-labelledby="oem-h">
+  <div class="w">
+    <div class="bh">
+      <div><span class="en">B ／ OEM</span><h2 id="oem-h">御社の商品として、お客様へ売る</h2></div>
+      <p>お客様に売る会社の方へ</p>
+    </div>
+    <div class="terms"><span>1ID 月10,000円／御社の取り分 4,000円</span><span>2026年10月1日 提供開始</span></div>
+    <ul class="cards">
+      <li><a class="card" id="b-01" href="../worklog-insight-oem/">
+        <div class="top"><span class="no">B-01</span><b class="bg-up">更新</b></div>
+        <h3>OEMパートナー募集LP</h3>
+        <p>条件、収益の試算、導入の流れ。OEMの商談はここから。</p>
+        <p class="memo">09.21 プランBの表記を「30IDの先行仕入れ」に統一</p>
+        <span class="url">writeup-inc.github.io/saas/worklog-insight-oem/</span>
+        <span class="go">開く<span aria-hidden="true">→</span></span>
+      </a></li>
+      <li><a class="card" id="b-02" href="https://writeup-inc.github.io/seminar/worklog-insight-oem/?design=v1">
+        <div class="top"><span class="no">B-02</span></div>
+        <h3>OEM説明会（V1）</h3>
+        <p>パートナー向け説明会の申込ページ。</p>
+        <span class="url">writeup-inc.github.io/seminar/worklog-insight-oem/?design=v1</span>
+        <span class="go">開く<span aria-hidden="true">→</span></span>
+      </a></li>
+      <li><a class="card" id="b-03" href="https://writeup-inc.github.io/seminar/worklog-insight-oem/?design=v2">
+        <div class="top"><span class="no">B-03</span></div>
+        <h3>OEM説明会（V2）</h3>
+        <p>同じ説明会を、Jマッチエンジンのセミナーページに寄せたデザインにした版。</p>
+        <span class="url">writeup-inc.github.io/seminar/worklog-insight-oem/?design=v2</span>
+        <span class="go">開く<span aria-hidden="true">→</span></span>
+      </a></li>
+      <li><a class="card" id="b-04" href="https://worklog-insight-hiyori-recommended.vercel.app/">
+        <div class="top"><span class="no">B-04</span><b class="bg-new">NEW</b></div>
+        <h3>人材会社向け管理画面サンプル</h3>
+        <p>人材紹介会社のOEM商談で見せる「おすすめ人材」の画面。人物は架空です。</p>
+        <span class="url">worklog-insight-hiyori-recommended.vercel.app</span>
+        <span class="go">開く<span aria-hidden="true">→</span></span>
+      </a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 直販 -->
+<section class="blk dir" id="direct" aria-labelledby="dir-h">
+  <div class="w">
+    <div class="bh">
+      <div><span class="en">A ／ Direct</span><h2 id="dir-h">御社ご自身の会社で使う</h2></div>
+      <p>自社で使いたい会社の方へ</p>
+    </div>
+    <div class="terms"><span>1ID 月10,000円</span><span>社員の3分の1、1部署から</span></div>
+    <ul class="cards">
+      <li><a class="card" id="a-01" href="./direct/">
+        <div class="top"><span class="no">A-01</span></div>
+        <h3>直販LP</h3>
+        <p>自社の仕事を測り、AI化の順番を決める。直販の商談で見せるページ。</p>
+        <span class="url">writeup-inc.github.io/saas/worklog-insight/direct/</span>
+        <span class="go">開く<span aria-hidden="true">→</span></span>
+      </a></li>
+      <li><div class="card" id="a-02">
+        <div class="top"><span class="no">A-02</span><b class="bg-soon">準備中</b></div>
+        <h3>直販LP v2</h3>
+        <p>直販セールストークの順番で組み直し、管理画面の実画面を載せた版。</p>
+        <p class="memo">09.23 制作済み。公開前の確認中のため、まだ開けません</p>
+        <span class="go mute">公開前</span>
+      </div></li>
+      <li><a class="card" id="a-03" href="../worklog-insight-sales-talk/">
+        <div class="top"><span class="no">A-03</span><b class="bg-in">社内</b></div>
+        <h3>直販セールストーク</h3>
+        <p>商談で読み上げる台本と、切り返し9問。お客様には見せません。</p>
+        <span class="url">writeup-inc.github.io/saas/worklog-insight-sales-talk/</span>
+        <span class="go">開く<span aria-hidden="true">→</span></span>
+      </a></li>
+      <li><a class="card" id="a-04" href="../worklog-insight-taku-sample/">
+        <div class="top"><span class="no">A-04</span></div>
+        <h3>管理画面サンプル</h3>
+        <p>経営者・管理職・本人の3画面。人物・数値は架空の設定です。</p>
+        <span class="url">writeup-inc.github.io/saas/worklog-insight-taku-sample/</span>
+        <span class="go">開く<span aria-hidden="true">→</span></span>
+      </a></li>
+    </ul>
+    <p class="fine">金額は1IDあたりの月額です。税の扱いと課金単位は、個別にご案内します。</p>
+  </div>
+</section>
+
+<!-- その他 -->
+<section class="blk etc" id="etc" aria-labelledby="etc-h">
+  <div class="w">
+    <div class="bh">
+      <div><span class="en">C ／ Others</span><h2 id="etc-h">その他</h2></div>
+      <p>オプションと、募集ページ</p>
+    </div>
+    <ul class="cards">
+      <li><a class="card" id="c-01" href="../worklog-fact-search/">
+        <div class="top"><span class="no">C-01</span></div>
+        <h3>ワークログ・ファクトサーチ</h3>
+        <p>貯めた記録に、あとから日本語で質問できる有料オプション。</p>
+        <span class="url">writeup-inc.github.io/saas/worklog-fact-search/</span>
+        <span class="go">開く<span aria-hidden="true">→</span></span>
+      </a></li>
+      <li><a class="card" id="c-02" href="../monitor/worklog-insight/">
+        <div class="top"><span class="no">C-02</span></div>
+        <h3>0次販売ページ</h3>
+        <p>正式販売の前に、最初の10社を募るページ。</p>
+        <span class="url">writeup-inc.github.io/saas/monitor/worklog-insight/</span>
+        <span class="go">開く<span aria-hidden="true">→</span></span>
+      </a></li>
+    </ul>
+  </div>
+</section>
+
 </main>
 
 <footer>
-  <div class="wrap f">
-    <span>ワークログ・インサイト</span>
-    <span>株式会社ライトアップ</span>
-  </div>
+  <p>ワークログ・インサイト</p>
+  <p>株式会社ライトアップ</p>
 </footer>
 
 </body>
