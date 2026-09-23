@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://writeup-inc.github.io/saas/worklog-insight/direct/v2/">
+<meta name="description" content="社員のパソコン画面を1分に1回記録し、AIがどの業務に何時間かかっているかを分析。経営者・管理職・本人に別々のレポートを届け、楽にする方法まで提案します。月額1万円／1ID。">
+<title>ワークログ・インサイト｜社内に置く、AIの業務コンサルタント</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@600;700&family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d2a4d'/%3E%3Cpath d='M14 20l7 24 7-18 8 18 7-24' fill='none' stroke='%23fff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='50' cy='18' r='4' fill='%236fa8e8'/%3E%3C/svg%3E">
+<style>
+/* ===== lp-base.css ===== */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] { word-break: normal; }
+}
+.nobr { white-space: nowrap; }
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+
+/* ===== ワークログ・インサイト 直販LP v2（作り直し）───────────
+   論理は直販セールストーク v2。管理画面サンプルの実画面と生成写真で「何が届くか」を見せる。
+   色は管理画面サンプルの紺と青に合わせ、強調は青1色。黄土色は「業務の偏り」を指す1か所だけ。 */
+:root{
+  --ink:#0c1726; --tx:#1f2733; --g1:#454f5d; --g2:#5e6875; --g3:#7d8691;
+  --nv:#0d2a4d; --nv2:#081d37; --bl:#2463a8; --bl2:#6fa8e8; --bll:#eaf1f9; --bll2:#f4f7fb;
+  --ln:#dde2e8; --ln2:#edf0f4; --warm:#f7f5f0; --amber:#a86a12;
+  --sans:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+  --serif:"Noto Serif JP","Hiragino Mincho ProN",serif;
+  --num:Inter,"Helvetica Neue",Arial,sans-serif;
+  --sh:0 40px 80px -36px rgba(8,29,55,.45),0 12px 28px -12px rgba(8,29,55,.18);
+  --sh2:0 18px 40px -22px rgba(8,29,55,.35);
+  --wd:1200px; --header-h:64px;
+}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:var(--header-h)}
+body{margin:0;background:#fff;color:var(--tx);font-family:var(--sans);font-size:17px;line-height:1.95;
+  letter-spacing:.015em;font-feature-settings:"palt" 1;-webkit-font-smoothing:antialiased}
+.w{max-width:var(--wd);margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+a{color:var(--bl)}
+p{margin:0 0 14px}
+img{display:block}
+.en{font-family:var(--num);font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+b.m,.m{background:linear-gradient(transparent 60%,rgba(111,168,232,.35) 60%);color:var(--ink);font-weight:700}
+
+/* ── ヘッダー ── */
+.hd{position:sticky;top:0;z-index:50;height:var(--header-h);background:rgba(255,255,255,.92);
+  -webkit-backdrop-filter:saturate(1.4) blur(10px);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--ln2)}
+.hd .w{display:flex;align-items:center;justify-content:space-between;gap:16px;height:100%}
+.logo{display:inline-flex;align-items:center;gap:10px;min-height:44px;color:var(--ink);text-decoration:none;white-space:nowrap}
+.logo svg{width:28px;height:28px;flex:0 0 28px}
+.logo span{font-size:15.5px;font-weight:900;letter-spacing:.08em}
+.hd nav{display:flex;align-items:center;gap:clamp(14px,2vw,28px)}
+.hd nav a{font-size:14px;font-weight:700;color:var(--g1);text-decoration:none}
+.hd nav a:hover{color:var(--bl)}
+.hd nav .hcta{padding:10px 18px;background:var(--nv);color:#fff;border-radius:999px}
+.hd nav .hcta:hover{background:var(--bl);color:#fff}
+@media(max-width:900px){.hd nav a:not(.hcta){display:none}}
+@media(max-width:400px){.hd nav .hcta{padding:9px 13px;font-size:13px}.logo span{font-size:14px;letter-spacing:.04em}}
+
+/* ── ボタン ── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:60px;padding:0 34px;border-radius:999px;
+  font-size:16.5px;font-weight:700;text-decoration:none;transition:background .2s,color .2s,transform .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn.pri{background:var(--nv);color:#fff;box-shadow:0 14px 30px -14px rgba(13,42,77,.7)}
+.btn.pri:hover{background:var(--bl)}
+.btn.pri::after,.btn.inv::after{content:"→";font-family:var(--num);font-weight:800}
+.btn.ghost{background:#fff;color:var(--nv);border:1.5px solid var(--ln)}
+.btn.ghost:hover{border-color:var(--nv)}
+.btn.ghost::after{content:"↓";font-family:var(--num);font-weight:800}
+.btn.inv{background:#fff;color:var(--nv)}
+.btn.inv:hover{background:var(--bll)}
+
+/* ── ヒーロー ── */
+.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#fff 0%,var(--bll2) 100%)}
+.hero .w{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.06fr);gap:clamp(32px,4vw,64px);align-items:center;
+  padding-top:clamp(48px,6vw,88px);padding-bottom:clamp(64px,7vw,104px)}
+.eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:0 0 26px}
+.eyebrow .en{font-size:12px;color:var(--bl)}
+.eyebrow .chip{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border:1px solid var(--ln);border-radius:999px;background:#fff;font-size:13px;font-weight:700;color:var(--g1)}
+.eyebrow .chip i{width:7px;height:7px;border-radius:50%;background:#2f9e6e;box-shadow:0 0 0 4px rgba(47,158,110,.15)}
+.rot{display:grid}
+.rot > *{grid-area:1/1;opacity:0;visibility:hidden;transform:translateY(10px);
+  transition:opacity .7s ease,transform .7s ease,visibility 0s linear .7s}
+.rot > .on{opacity:1;visibility:visible;transform:none;transition:opacity .7s ease,transform .7s ease,visibility 0s}
+.hero h1{margin:0 0 24px;font-weight:900;letter-spacing:-.04em;line-height:1.24;color:var(--ink);font-size:clamp(2.05rem,4vw,3.45rem)}
+.hero h1 em{font-style:normal;color:var(--bl)}
+.hero .lead{max-width:31em;margin:0 0 18px;font-size:clamp(16.5px,1.4vw,18px);line-height:2;color:var(--g1)}
+.hero .lead p{margin:0}
+.dots{display:flex;align-items:center;gap:0;margin:0 0 26px}
+.dots button{position:relative;width:48px;height:44px;border:0;background:none;cursor:pointer;padding:0}
+.dots button::before{content:"";position:absolute;left:6px;right:6px;top:20px;height:3px;border-radius:2px;background:var(--ln)}
+.dots button.on::before{background:var(--nv)}
+.dots .pause{width:auto;padding:0 10px;font-size:13px;font-weight:700;color:var(--g2)}
+.dots .pause::before{display:none}
+.hero .btns{display:flex;flex-wrap:wrap;gap:12px}
+.hero .fine{margin:16px 0 0;font-size:13.5px;color:var(--g2)}
+/* 画面の重ね */
+.stage{position:relative;margin:0;padding:0 0 18% 0}
+.stage .ph{position:absolute;inset:-6% -4% 22% 14%;border-radius:28px;overflow:hidden;z-index:0}
+.stage .ph img{width:100%;height:100%;object-fit:cover;filter:saturate(.85)}
+.stage .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(13,42,77,.15),rgba(13,42,77,.55))}
+.win{position:relative;z-index:1;border-radius:12px;overflow:hidden;background:#fff;box-shadow:var(--sh);border:1px solid rgba(13,42,77,.08)}
+.win .bar{display:flex;align-items:center;gap:6px;height:28px;padding:0 12px;background:#f1f4f8;border-bottom:1px solid var(--ln2)}
+.win .bar i{width:9px;height:9px;flex:0 0 9px;border-radius:50%;background:#cfd6df}
+.win .bar span{margin-left:10px;font-size:12px;font-weight:700;color:var(--g3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.win img{width:100%;height:auto}
+.stage .win.a{width:92%;margin-top:6%}
+.crop{overflow:hidden;aspect-ratio:16/8.2}
+.crop img{width:150%;max-width:none}
+.stage .win.b{position:absolute;z-index:2;left:-6%;bottom:0;width:54%}
+.stage .tag{position:absolute;z-index:3;right:-2%;bottom:6%;max-width:15em;margin:0;padding:14px 16px;border-radius:12px;background:var(--nv);color:#fff;box-shadow:var(--sh2);font-size:14px;line-height:1.7}
+.stage .tag b{display:block;font-size:12px;letter-spacing:.06em;color:var(--bl2)}
+.stage figcaption{position:absolute;z-index:3;left:0;bottom:-34px;font-size:12px;color:var(--g3)}
+
+/* 事実の帯 */
+.facts{border-top:1px solid var(--ln2);border-bottom:1px solid var(--ln2);background:#fff}
+.facts ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);margin:0 auto;padding:0}
+.facts li{padding:24px clamp(14px,2vw,26px);border-left:1px solid var(--ln2)}
+.facts li:first-child{border-left:0}
+.facts b{display:block;font-family:var(--num);font-weight:800;font-size:clamp(1.6rem,2.6vw,2.2rem);line-height:1.1;letter-spacing:-.02em;color:var(--nv)}
+.facts b small{font-family:var(--sans);font-size:.5em;font-weight:700;letter-spacing:0;margin-left:3px}
+.facts span{display:block;margin-top:6px;font-size:14px;line-height:1.6;color:var(--g1)}
+
+/* ── 区画の共通 ── */
+.sec{padding:clamp(80px,10vw,136px) 0}
+.sec.alt{background:var(--bll2)}
+.sec.warm{background:var(--warm)}
+.kicker{display:flex;align-items:center;gap:14px;margin:0 0 18px}
+.kicker .n{font-family:var(--num);font-weight:900;font-size:14px;color:var(--bl);letter-spacing:.08em}
+.kicker .en{font-size:12px;color:var(--g2)}
+.kicker::after{content:"";flex:1;max-width:80px;height:1px;background:var(--ln)}
+.h2{margin:0;font-weight:900;letter-spacing:-.035em;line-height:1.4;color:var(--ink);font-size:clamp(1.65rem,3.1vw,2.6rem)}
+.h2 em{font-style:normal;color:var(--bl)}
+.intro{max-width:40em;margin:24px 0 0;font-size:clamp(16.5px,1.4vw,18px);line-height:2;color:var(--g1)}
+.head{max-width:860px;margin:0 0 clamp(40px,5vw,64px)}
+.head.c{margin-left:auto;margin-right:auto;text-align:center}
+.head.c .kicker{justify-content:center}
+.head.c .kicker::after{display:none}
+.head.c .intro{margin-left:auto;margin-right:auto}
+.cap{margin:14px 0 0;font-size:13px;line-height:1.75;color:var(--g3)}
+.note{margin:16px 0 0;font-size:14px;line-height:1.85;color:var(--g2)}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(36px,5vw,72px);align-items:center}
+.split.r > :first-child{order:2}
+.quote{margin:0;font-family:var(--serif);font-weight:700;font-size:clamp(1.25rem,2.1vw,1.7rem);line-height:1.7;letter-spacing:.02em;color:var(--ink)}
+.quote em{font-style:normal;color:var(--amber)}
+
+/* 写真 */
+.photo{position:relative;border-radius:20px;overflow:hidden;box-shadow:var(--sh2)}
+.photo img{width:100%;height:100%;object-fit:cover}
+.photo .gen{position:absolute;right:12px;bottom:10px;padding:3px 9px;border-radius:999px;background:rgba(8,29,55,.6);color:#fff;font-size:12px}
+
+/* 01 */
+.ba{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:stretch;margin:30px 0 0}
+.ba > div{padding:20px 22px;border-radius:14px;background:#fff;border:1px solid var(--ln)}
+.ba > div.af{background:var(--nv);border-color:var(--nv);color:#fff}
+.ba .en{display:block;font-size:12px;color:var(--g3)}
+.ba .af .en{color:var(--bl2)}
+.ba h3{margin:4px 0 10px;font-size:18px;font-weight:900;line-height:1.5}
+.ba ul{margin:0;padding:0;list-style:none}
+.ba li{padding:7px 0;border-top:1px solid var(--ln2);font-size:15px;line-height:1.6;color:var(--g1)}
+.ba .af li{border-top-color:rgba(255,255,255,.14);color:#dbe6f3}
+.ba .arr{align-self:center;font-family:var(--num);font-weight:900;font-size:22px;color:var(--bl2)}
+
+/* 02 仕組み */
+.steps3{list-style:none;counter-reset:s;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:0 0 clamp(48px,6vw,72px);padding:0}
+.steps3 li{counter-increment:s;position:relative;padding:28px 24px 24px;border-radius:18px;background:#fff;border:1px solid var(--ln)}
+.steps3 li::before{content:"0" counter(s);font-family:var(--num);font-weight:900;font-size:13px;color:var(--bl);letter-spacing:.1em}
+.steps3 svg{display:block;width:44px;height:44px;margin:14px 0 14px}
+.steps3 h3{margin:0 0 8px;font-size:19px;font-weight:900;color:var(--ink);line-height:1.5}
+.steps3 p{margin:0;font-size:15px;line-height:1.85;color:var(--g1)}
+.steps3 li:not(:last-child)::after{content:"";position:absolute;top:50%;right:-13px;width:8px;height:8px;border-top:2px solid var(--bl2);border-right:2px solid var(--bl2);transform:translateY(-50%) rotate(45deg)}
+.anno{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(28px,4vw,56px);align-items:start}
+.anno ol{list-style:none;counter-reset:a;margin:0;padding:0}
+.anno li{counter-increment:a;display:grid;grid-template-columns:34px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--ln)}
+.anno li:first-child{border-top:2px solid var(--ink)}
+.anno li::before{content:counter(a);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--nv);color:#fff;font-family:var(--num);font-weight:800;font-size:14px}
+.anno b{display:block;font-size:17px;color:var(--ink);line-height:1.5}
+.anno span{display:block;margin-top:4px;font-size:15px;line-height:1.8;color:var(--g1)}
+
+/* 03 監視ではない */
+.pull{position:relative;margin:28px 0;padding:28px 30px;border-radius:18px;background:#fff;border:1px solid var(--ln);box-shadow:var(--sh2)}
+.pull .en{display:block;margin-bottom:10px;font-size:12px;color:var(--g3);letter-spacing:.04em;text-transform:none;font-family:var(--sans);font-weight:700}
+.pull small{display:block;margin-top:12px;font-size:13px;color:var(--g3)}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0}
+.vs > div{padding:20px 22px;border-radius:14px;background:#fff;border:1px solid var(--ln)}
+.vs > div.yes{border:2px solid var(--nv)}
+.vs h3{margin:0 0 8px;font-size:15px;font-weight:900;color:var(--g2)}
+.vs .yes h3{color:var(--nv)}
+.vs ul{margin:0;padding-left:1.1em;font-size:15.5px;line-height:1.95;color:var(--g1)}
+.vs .x li{text-decoration:line-through;text-decoration-color:var(--g3)}
+.vs .yes li{color:var(--ink);font-weight:700}
+.honest{margin:26px 0 0;padding:20px 24px;border-left:4px solid var(--nv);background:var(--bll2);border-radius:0 12px 12px 0;font-size:15.5px;line-height:1.95;color:var(--g1)}
+.honest b{display:block;margin-bottom:4px;color:var(--ink)}
+
+/* 04 3つの立場（タブ） */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px}
+.tabs button{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 22px;border:1.5px solid var(--ln);border-radius:999px;background:#fff;
+  font:inherit;font-size:15.5px;font-weight:700;color:var(--g1);cursor:pointer}
+.tabs button small{font-family:var(--num);font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--g3)}
+.tabs button[aria-selected="true"]{background:var(--nv);border-color:var(--nv);color:#fff}
+.tabs button[aria-selected="true"] small{color:var(--bl2)}
+.panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.55fr);gap:clamp(28px,4vw,56px);align-items:start}
+.panel[hidden]{display:none}
+.panel h3{margin:0 0 10px;font-size:clamp(1.3rem,2vw,1.6rem);font-weight:900;line-height:1.5;color:var(--ink)}
+.panel > div > p{color:var(--g1)}
+.checks{list-style:none;margin:18px 0 0;padding:0}
+.checks li{display:flex;gap:12px;padding:11px 0;border-top:1px solid var(--ln);font-size:15.5px;line-height:1.7;color:var(--ink)}
+.checks li:last-child{border-bottom:1px solid var(--ln)}
+.checks li::before{content:"";flex:0 0 20px;width:20px;height:20px;margin-top:3px;border-radius:50%;
+  background:var(--bl) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.2l2.3 2.3 4.7-4.9' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
+.scrollwin{max-height:560px;overflow:auto;overscroll-behavior:contain}
+.scrollhint{margin:0;padding:9px 14px;border-top:1px solid var(--ln2);background:#f7f9fb;font-size:12.5px;color:var(--g3)}
+.example{margin:clamp(40px,5vw,56px) 0 0;display:grid;grid-template-columns:1fr;gap:20px 32px;align-items:center;padding:clamp(22px,3vw,34px);border-radius:18px;background:var(--nv);color:#fff}
+.example .en{font-size:12px;color:var(--bl2)}
+.example p{margin:6px 0 0;font-size:clamp(16px,1.5vw,18.5px);line-height:1.85;color:#fff;font-weight:700}
+.example .bars{display:grid;gap:10px}
+.example .bars div{display:grid;grid-template-columns:3.6em 1fr 3.6em;gap:10px;align-items:center;font-size:13px;color:#c9d7e8}
+.example .bars i{display:block;height:12px;border-radius:6px;background:rgba(255,255,255,.28)}
+.example .bars div:last-child i{background:var(--bl2)}
+.example .bars b{font-family:var(--num);font-size:15px;color:#fff;white-space:nowrap;text-align:right}
+.example small{grid-column:1 / -1;font-size:12.5px;color:#9fb3cc}
+
+/* 05 出口 */
+.exits{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:0;padding:0}
+.exits li{padding:22px 20px;border-radius:16px;background:#fff;border:1px solid var(--ln)}
+.exits svg{width:36px;height:36px;margin:0 0 12px}
+.exits b{display:block;font-size:17px;color:var(--ink);line-height:1.5}
+.exits span{display:block;margin-top:6px;font-size:14.5px;line-height:1.75;color:var(--g1)}
+.cmp-wrap{margin:clamp(48px,6vw,72px) 0 0}
+.cmp-ttl{margin:0 0 14px;font-size:17px;font-weight:900;color:var(--ink)}
+.cmp{width:100%;border-collapse:separate;border-spacing:0;background:#fff;font-size:15px;line-height:1.6;border:1px solid var(--ln);border-radius:14px;overflow:hidden}
+.cmp th,.cmp td{padding:14px 16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--ln2)}
+.cmp tr:last-child th,.cmp tr:last-child td{border-bottom:0}
+.cmp thead th{background:var(--bll2);font-size:14px;color:var(--g1)}
+.cmp thead th.me{background:var(--nv);color:#fff}
+.cmp tbody th{width:9em;font-size:14px;color:var(--g2);font-weight:700}
+.cmp td{color:var(--g1)}
+.cmp td.me{color:var(--ink);font-weight:700;background:var(--bll)}
+
+/* 06 料金 */
+.price{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);border-radius:24px;overflow:hidden;box-shadow:var(--sh);background:#fff}
+.price .l{padding:clamp(28px,4vw,48px);background:var(--nv);color:#fff}
+.price .l .en{font-size:12px;color:var(--bl2)}
+.price .amt{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 12px;margin:18px 0 10px}
+.price .amt b{font-family:var(--num);font-weight:900;font-size:clamp(3.6rem,7vw,5.6rem);line-height:1;letter-spacing:-.04em}
+.price .amt b small{font-family:var(--sans);font-size:.36em;letter-spacing:0;margin-left:2px}
+.price .amt span{font-size:17px;font-weight:700;color:#c9d7e8}
+.price .l p{margin:0;color:#c9d7e8;font-size:15.5px;line-height:1.9}
+.price .r{padding:clamp(28px,4vw,48px)}
+.price .r h3{margin:0 0 10px;font-size:15px;font-weight:900;color:var(--g2)}
+.price .r ul{list-style:none;margin:0 0 22px;padding:0}
+.price .r li{position:relative;padding:9px 0 9px 22px;border-bottom:1px solid var(--ln2);font-size:15.5px;line-height:1.7;color:var(--ink)}
+.price .r li::before{content:"";position:absolute;left:0;top:17px;width:9px;height:9px;border-radius:50%;background:var(--bl)}
+.price .ex{margin:0;padding:16px 18px;border-radius:12px;background:var(--bll2);font-size:14.5px;line-height:1.85;color:var(--g1)}
+.price .ex b{color:var(--ink)}
+.midcta{margin:clamp(36px,5vw,52px) 0 0;text-align:center}
+.vsconsult{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:26px 0 0}
+.vsconsult > div{padding:18px 22px;border-radius:14px;border:1px solid var(--ln);background:#fff}
+.vsconsult > div.me{border:2px solid var(--nv)}
+.vsconsult h3{margin:0 0 6px;font-size:15px;font-weight:900;color:var(--g2)}
+.vsconsult .me h3{color:var(--nv)}
+.vsconsult p{margin:0;font-size:15px;line-height:1.85;color:var(--g1)}
+
+/* 07 安全 */
+.route{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin:0 0 clamp(36px,5vw,52px);padding:0}
+.route li{position:relative;padding:20px 18px;border-radius:16px;background:#fff;border:1px solid var(--ln);text-align:center}
+.route svg{display:block;width:34px;height:34px;margin:0 auto 10px}
+.route b{display:block;font-size:16px;color:var(--ink);line-height:1.5}
+.route small{display:block;margin-top:4px;font-size:12.5px;color:var(--g2)}
+.route li.end{background:var(--nv);border-color:var(--nv)}
+.route li.end b{color:#fff}
+.route li.end small{color:var(--bl2)}
+.route li:not(:last-child)::after{content:"";position:absolute;top:50%;right:-18px;width:9px;height:9px;border-top:2px solid var(--bl2);border-right:2px solid var(--bl2);transform:translateY(-50%) rotate(45deg)}
+.safe{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.safe li{display:grid;grid-template-columns:8.5em 1fr;gap:14px;padding:15px 0;border-bottom:1px solid var(--ln)}
+.safe li b{font-size:15px;color:var(--bl)}
+.safe li span{font-size:15.5px;line-height:1.8;color:var(--ink)}
+.keys{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:18px 0 0;padding:0}
+.keys li{padding:16px 14px;border-radius:12px;background:#fff;border:1px solid var(--ln)}
+.keys b{display:block;font-family:var(--num);font-size:12px;color:var(--bl)}
+.keys strong{display:block;font-size:15.5px;color:var(--ink);line-height:1.5}
+.keys span{display:block;margin-top:4px;font-size:13.5px;line-height:1.7;color:var(--g2)}
+.keys-lead{margin:clamp(36px,5vw,52px) 0 0;font-weight:700;color:var(--ink)}
+
+/* 08 貯まる（明るい面に数字） */
+.archive{position:relative;padding:clamp(88px,11vw,150px) 0;background:var(--bll2)}
+.counter{display:grid;grid-template-columns:repeat(4,1fr);margin:0;border-top:2px solid var(--ink)}
+.counter div{padding:26px 20px 0 0}
+.counter div + div{padding-left:20px;border-left:1px solid var(--ln)}
+.counter small{display:block;font-family:var(--num);font-size:12px;font-weight:800;letter-spacing:.16em;color:var(--g2)}
+.counter b{display:block;margin-top:10px;font-family:var(--num);font-weight:900;font-size:clamp(1.9rem,3.8vw,3.4rem);line-height:1;letter-spacing:-.03em;white-space:nowrap;color:var(--nv)}
+.counter b span{font-family:var(--sans);font-size:.38em;letter-spacing:0;margin-left:3px;font-weight:700}
+.counter p{margin:10px 0 0;font-size:14px;color:var(--g1)}
+.counter div:last-child b{color:var(--bl)}
+.archive .cap{margin-top:28px}
+
+/* 09 遡れない */
+.peak{position:relative;background:#0a0f16;color:#fff;overflow:hidden}
+.peak .band{position:relative;height:clamp(220px,32vw,420px)}
+.peak .band img{width:100%;height:100%;object-fit:cover;opacity:.55}
+.peak .band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,15,22,0) 30%,#0a0f16 100%)}
+.peak .band .gen{position:absolute;right:16px;top:14px;z-index:1;padding:3px 9px;border-radius:999px;background:rgba(0,0,0,.45);font-size:12px;color:#ddd}
+.peak .w{position:relative;padding-bottom:clamp(80px,10vw,132px);margin-top:calc(-1 * clamp(80px,10vw,140px))}
+.peak .kicker .n{color:var(--bl2)}.peak .kicker .en{color:#8a93a0}.peak .kicker::after{background:#333}
+.peak h2{margin:0;font-weight:900;letter-spacing:-.045em;line-height:1.18;font-size:clamp(2.2rem,6vw,4.9rem)}
+.peak h2 span{display:block}
+.peak h2 span:last-child{color:#7f8894}
+.peak hr{margin:clamp(36px,5vw,52px) 0;border:0;border-top:1px solid #2a2f37}
+.peak .cols{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(28px,4vw,64px)}
+.peak p{margin:0 0 16px;font-size:clamp(16px,1.4vw,17.5px);line-height:2.05;color:#b3bac4}
+.peak p b{color:#fff}
+.two-co{display:grid;gap:12px}
+.two-co div{padding:20px 22px;border:1px solid #2a2f37;border-radius:14px}
+.two-co div.has{border-color:var(--bl2);background:rgba(111,168,232,.08)}
+.two-co small{display:block;font-size:13px;font-weight:700;color:#8a93a0}
+.two-co strong{display:block;margin:2px 0 4px;font-size:17.5px;color:#fff}
+.two-co span{font-size:14.5px;line-height:1.8;color:#b3bac4}
+.peak .opt{margin:18px 0 0;font-size:14.5px;line-height:1.8;color:#8a93a0}
+.peak .opt a{display:inline-flex;align-items:center;min-height:44px;color:#fff}
+
+/* 10・11 */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:960px}
+.fit > div{padding:22px 24px;border-radius:16px;border:1px solid var(--ln);background:#fff}
+.fit > div.ok{border:2px solid var(--nv)}
+.fit h3{margin:0 0 8px;font-size:16px;font-weight:900;color:var(--g2)}
+.fit .ok h3{color:var(--nv)}
+.fit ul{margin:0;padding-left:1.1em;font-size:15.5px;line-height:1.95;color:var(--g1)}
+.timeline{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:0;padding:14px 0 0;counter-reset:t}
+.timeline li{counter-increment:t;position:relative;padding:0 18px 0 0}
+.timeline li::before{content:"";display:block;height:3px;margin:0 0 18px;background:var(--nv)}
+.timeline li::after{content:counter(t);position:absolute;top:-13px;left:0;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--nv);color:#fff;font-family:var(--num);font-size:13px;font-weight:800}
+.timeline li:last-child::before{background:linear-gradient(90deg,var(--nv),var(--bl2))}
+.timeline li:last-child::after{background:var(--bl)}
+.timeline b{display:block;margin-top:18px;font-size:16.5px;color:var(--ink);line-height:1.5}
+.timeline span{display:block;margin-top:6px;font-size:14.5px;line-height:1.8;color:var(--g1)}
+.why3{margin:clamp(36px,5vw,52px) 0 0;display:grid;grid-template-columns:auto 1fr;gap:18px 30px;align-items:center;padding:26px 30px;border-radius:18px;background:#fff;border:1px solid var(--ln)}
+.why3 .ratio{margin:0;font-family:var(--num);font-weight:900;font-size:clamp(2.6rem,5vw,3.6rem);line-height:1;color:var(--nv);letter-spacing:-.03em}
+.why3 .ratio small{display:block;margin-top:8px;font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:0;color:var(--g2)}
+.why3 p{margin:0;color:var(--g1)}
+
+/* FAQ */
+.faq{max-width:880px;margin:0 auto;border-top:2px solid var(--ink)}
+.faq details{border-bottom:1px solid var(--ln)}
+.faq summary{cursor:pointer;list-style:none;position:relative;padding:22px 48px 22px 0;font-weight:700;font-size:17px;line-height:1.6;color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"Q";margin-right:12px;font-family:var(--num);font-weight:900;color:var(--bl)}
+.faq summary::after{content:"";position:absolute;right:10px;top:30px;width:10px;height:10px;border-right:2px solid var(--g2);border-bottom:2px solid var(--g2);transform:rotate(45deg);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(-135deg);top:34px}
+.faq details p{margin:0 0 22px;padding-left:28px;font-size:16px;line-height:1.95;color:var(--g1)}
+
+/* ファクトチェック（主CTAより弱く） */
+.fc-btn{display:inline-flex;align-items:center;flex-wrap:wrap;gap:.2em .6em;min-height:44px;margin-top:26px;padding:8px 18px;
+  border:1px solid var(--ln);border-radius:999px;background:#fff;color:var(--g1);
+  font:inherit;font-size:13.5px;font-weight:600;line-height:1.4;cursor:pointer;text-align:left}
+.fc-btn:hover{color:var(--ink);border-color:var(--g2)}
+.fc-sub{font-size:12px;font-weight:400;opacity:.75}
+.peak .fc-btn{background:transparent;border-color:#3a4049;color:#b3bac4}
+.peak .fc-btn:hover{color:#fff;border-color:#8a93a0}
+
+/* 締め */
+.fin{position:relative;padding:clamp(96px,12vw,160px) 0;color:#fff;overflow:hidden;background:var(--nv)}
+.fin .bg{position:absolute;inset:0}
+.fin .bg img{width:100%;height:100%;object-fit:cover;opacity:.3}
+.fin .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,42,77,.96) 30%,rgba(13,42,77,.6))}
+.fin .w{position:relative}
+.fin .kicker .n{color:var(--bl2)}.fin .kicker .en{color:#a9bbd2}.fin .kicker::after{background:rgba(255,255,255,.25)}
+.fin h2{margin:0 0 24px;font-weight:900;letter-spacing:-.035em;line-height:1.35;font-size:clamp(2rem,4.6vw,3.5rem);color:#fff}
+.fin h2 em{font-style:normal;color:var(--bl2)}
+.fin p{max-width:36em;margin:0 0 32px;font-size:clamp(16.5px,1.5vw,18.5px);line-height:2;color:#d3deeb}
+.fin .fine{margin:16px 0 0;font-size:14px;color:#a9bbd2}
+
+footer{padding:44px 0 60px;background:#fff;border-top:1px solid var(--ln2)}
+footer .w > p{margin:0 0 6px;font-size:14px;line-height:1.9;color:var(--g2)}
+footer .links{display:flex;flex-wrap:wrap;gap:0 22px;margin:0 0 12px}
+footer .links a{display:inline-flex;align-items:center;min-height:44px}
+footer ul{margin:10px 0 0;padding-left:1.1em;font-size:13px;line-height:1.85;color:var(--g2)}
+
+/* スマホの固定ボタン */
+.fx{display:none}
+@media(max-width:900px){
+  :root{--fixed-cta-h:76px}
+  .fx{display:block;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));
+    background:rgba(255,255,255,.96);border-top:1px solid var(--ln);transition:transform .2s ease}
+  .fx.off{transform:translateY(120%)}
+  .fx a{display:flex;align-items:center;justify-content:center;min-height:54px;background:var(--nv);color:#fff;font-weight:700;font-size:16px;text-decoration:none;border-radius:999px}
+}
+
+/* 出現の動き */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease}
+.rv.in{opacity:1;transform:none}
+
+.ba li,.steps3 p,.anno span,.vs li,.honest,.checks li,.exits span,.cmp td,.price .ex,.price .r li,.vsconsult p,.safe span,.keys span,
+.two-co span,.peak p,.fit li,.timeline span,.why3 p,.faq p,.intro,.cap,.note,.fin p,.facts span,.example p,.hero .lead p,.quote{word-break:auto-phrase;line-break:strict}
+
+@media(max-width:1024px){
+  .hero .w{grid-template-columns:1fr}
+  .stage{max-width:640px;margin:10px auto 30px}
+  .steps3{grid-template-columns:1fr}
+  .steps3 li:not(:last-child)::after{top:auto;bottom:-13px;right:50%;transform:translateX(50%) rotate(135deg)}
+  .anno{grid-template-columns:1fr}
+  .panel{grid-template-columns:1fr}
+  .exits{grid-template-columns:1fr 1fr}
+  .keys{grid-template-columns:repeat(3,1fr)}
+  .timeline{grid-template-columns:1fr;padding:0}
+  .timeline li{padding:0 0 22px 46px}
+  .timeline li::before{position:absolute;left:13px;top:0;bottom:0;width:3px;height:auto;margin:0}
+  .timeline li:last-child::before{display:none}
+  .timeline li::after{top:0}
+  .timeline b{margin-top:0}
+}
+@media(max-width:760px){
+  .split,.split.r{grid-template-columns:1fr}
+  .split.r > :first-child{order:0}
+  .facts ul{grid-template-columns:1fr 1fr}
+  .facts li:nth-child(3){border-left:0}
+  .facts li:nth-child(n+3){border-top:1px solid var(--ln2)}
+  .ba,.vs,.fit,.vsconsult{grid-template-columns:1fr}
+  .ba .arr{transform:rotate(90deg);justify-self:center}
+  .price{grid-template-columns:1fr}
+  .route{grid-template-columns:1fr 1fr;gap:12px}
+  .route li:not(:last-child)::after{display:none}
+  .keys{grid-template-columns:1fr 1fr}
+  .counter{grid-template-columns:1fr 1fr}
+  .counter div:nth-child(3){padding-left:0;border-left:0}
+  .counter div:nth-child(n+3){margin-top:22px}
+  .peak .cols{grid-template-columns:1fr}
+  .example{grid-template-columns:1fr}
+  .why3{grid-template-columns:1fr}
+  .safe li{grid-template-columns:1fr;gap:2px}
+  .cmp{font-size:13px;line-height:1.5}
+  .cmp th,.cmp td{padding:10px 7px}
+  .cmp thead th{font-size:12.5px}
+  .cmp tbody th{width:5.4em;font-size:12.5px}
+  .sec{padding:64px 0}
+  .stage{padding-bottom:26%}
+  .stage .win.b{width:58%;left:-2%}
+  .stage .tag{display:none}
+  .stage .ph{inset:-4% 0 26% 10%}
+  .counter b{font-size:clamp(1.45rem,7vw,2rem)}
+  .counter div{padding-right:10px}
+  .counter div + div{padding-left:12px}
+  .scrollwin{max-height:440px}
+}
+@media(max-width:760px){
+  .scrollwin{max-height:none;overflow:visible}
+  .scrollwin img+img,.scrollhint{display:none}
+  .route b{font-size:14.5px}
+  .route small{font-size:12px;word-break:keep-all}
+  .cmp th,.cmp td{word-break:keep-all;overflow-wrap:anywhere}
+  .steps3 li,.exits li{display:grid;grid-template-columns:40px 1fr;gap:4px 14px;padding:18px}
+  .steps3 li::before{grid-column:1/-1}
+  .steps3 svg,.exits svg{grid-row:span 2;width:36px;height:36px;margin:0}
+  .exits{grid-template-columns:1fr}
+  .hero .btn.ghost{display:none}
+  .dots{margin-bottom:16px}
+  .hero .w{padding-top:36px}
+  .stage{margin-top:0}
+}
+@media(max-width:480px){
+  .exits,.keys{grid-template-columns:1fr}
+  .tabs{flex-wrap:nowrap}
+  .tabs button{flex:1 1 0;justify-content:center;padding:0 10px;font-size:14.5px}
+  .tabs button small{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rot > *,.rv{transition:none;transform:none}
+  .rv{opacity:1}
+}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <div class="w">
+    <a class="logo" href="#top" aria-label="ワークログ・インサイト">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#0d2a4d"/><path d="M14 20l7 24 7-18 8 18 7-24" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="50" cy="18" r="4" fill="#6fa8e8"/></svg>
+      <span>ワークログ・インサイト</span>
+    </a>
+    <nav aria-label="ページ内">
+      <a href="#how">仕組み</a>
+      <a href="#report">レポート</a>
+      <a href="#price">料金</a>
+      <a href="#security">安全対策</a>
+      <a href="#faq">質問</a>
+      <a class="hcta" href="https://www.writeup.jp/contact/">導入の相談をする</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ヒーロー：H1は3案をローテーション -->
+<section class="hero" aria-labelledby="h1">
+  <div class="w">
+    <div>
+      <p class="eyebrow"><span class="en">Worklog Insight</span><span class="chip"><i></i>1分に1回の画面記録 × AIの業務分析</span></p>
+      <h1 id="h1" class="rot">
+        <span class="on"><span class="nobr">AIの業務</span><br><span class="nobr">コンサルタントを、</span><br><em class="nobr">社内に置きます。</em></span>
+        <span aria-hidden="true"><span class="nobr">どの仕事に何時間</span><br><span class="nobr">かかっているかを、</span><br><em class="nobr">AIが毎日集計。</em></span>
+        <span aria-hidden="true"><span class="nobr">今日の仕事の記録が、</span><br><em><span class="nobr">1年後のAI化の</span><br><span class="nobr">材料になります。</span></em></span>
+      </h1>
+      <div class="lead rot">
+        <p class="on">社員のパソコン画面を<b class="m">1分に1回</b>記録し、AIが「どの業務に何時間かかっているか」を分析。AIツール・研修・開発・BPOのどれで楽にできるかまで、<b class="m">レポートで提案</b>するサービスです。</p>
+        <p aria-hidden="true">探すのは「遅い社員」ではなく、<b class="m">「時間のかかる業務」</b>です。記録は自動なので、社員が新しく入力する作業は<b class="m">ありません</b>。</p>
+        <p aria-hidden="true">業務の記録は、<b class="m">あとから遡っては作れません</b>。分析と改善の提案を受けながら、記録を<b class="m">今日から</b>貯め始められます。</p>
+      </div>
+      <div class="dots" role="group" aria-label="見出しの切り替え">
+        <button type="button" class="on" aria-label="見出し1を表示" aria-pressed="true"></button>
+        <button type="button" aria-label="見出し2を表示" aria-pressed="false"></button>
+        <button type="button" aria-label="見出し3を表示" aria-pressed="false"></button>
+        <button type="button" class="pause" aria-label="自動の切り替えを止める">停止</button>
+      </div>
+      <div class="btns">
+        <a class="btn pri" id="heroCta" href="https://www.writeup.jp/contact/">導入の相談をする</a>
+        <a class="btn ghost" href="#report">届くレポートを見る</a>
+      </div>
+      <p class="fine">運営：株式会社ライトアップ（東証グロース：6580）</p>
+    </div>
+    <figure class="stage" aria-label="管理画面のサンプル。経営層向けの報告と、本人向けの振り返り">
+      <div class="ph"><img src="img/photo-desk.jpg" alt="" width="1600" height="1066"></div>
+      <div class="win a"><div class="bar"><i></i><i></i><i></i><span>経営層向け｜月次の報告</span></div><div class="crop"><img src="img/exec-top.jpg" alt="経営層向け画面のサンプル。AIコンサルタントが今月の業務を文章で報告している" width="1600" height="892"></div></div>
+      <div class="win b"><div class="bar"><i></i><i></i><i></i><span>本人向け</span></div><img src="img/staff-top.jpg" alt="本人向け画面のサンプル。今週の働き方の振り返り" width="1600" height="1453"></div>
+      <p class="tag"><b>今月の報告（サンプル）</b>「会議を減らす前に、会議後の仕事を減らす。」</p>
+      <figcaption>画面サンプル（人物・数値は架空）／写真は生成イメージ</figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="facts">
+  <ul class="w">
+    <li><b>1<small>分に1回</small></b><span>画面を自動で記録</span></li>
+    <li><b>0<small>件</small></b><span>社員が新しく入力する作業</span></li>
+    <li><b>3<small>つの立場</small></b><span>経営者・管理職・本人に別々のレポート</span></li>
+    <li><b>1<small>万円</small></b><span>月額／1IDあたり</span></li>
+  </ul>
+</div>
+
+<!-- 01 課題 -->
+<section class="sec" id="why" aria-labelledby="t1">
+  <div class="w split">
+    <div class="photo rv" style="aspect-ratio:4/3"><img src="img/photo-report.jpg" alt="" width="1400" height="933" loading="lazy"><span class="gen">生成イメージ</span></div>
+    <div class="rv">
+      <p class="kicker"><span class="n">01</span><span class="en">Before AI</span></p>
+      <h2 class="h2" id="t1">AIを入れたくても、<em class="nobr">どの仕事から</em>手をつけるかが分からない。</h2>
+      <p class="intro">AIの道具は増えました。けれど、社内の<b class="m">どの仕事に、誰が、何時間</b>使っているかを、1分単位で測れている会社は多くありません。記憶や自己申告に頼ると、目につく業務や声の大きい部署から手をつけることになり、入れたAIが思ったほど時間を減らさない、ということが起こります。</p>
+      <div class="ba">
+        <div><span class="en">Before</span><h3>印象で決める</h3><ul><li>勘と記憶</li><li>自己申告の工数</li><li>効果が読めないまま投資</li></ul></div>
+        <span class="arr" aria-hidden="true">→</span>
+        <div class="af"><span class="en">After</span><h3>事実で決める</h3><ul><li>1分ごとの実際の記録</li><li>AIが業務ごとに分類</li><li>減らせる時間で優先順位</li></ul></div>
+      </div>
+      <button class="fc-btn" type="button"
+        data-fc-section="AIを入れたくても、どの仕事から手をつけるかが分からない。"
+        data-fc-claim="中小企業では、AIを導入したくても、どの業務から着手すべきか判断できないことが多い／社内のどの仕事に誰が何時間使っているかを実測できている会社は多くない／記憶や自己申告の工数に頼った業務把握は、実際の作業時間とずれやすい">
+        ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- 02 仕組み -->
+<section class="sec alt" id="how" aria-labelledby="t2">
+  <div class="w">
+    <div class="head rv">
+      <p class="kicker"><span class="n">02</span><span class="en">How it works</span></p>
+      <h2 class="h2" id="t2">パソコン画面を<em class="nobr">1分に1回</em>記録し、AIが「誰が・どの業務に・何時間」を分析します。</h2>
+      <p class="intro">やることは、専用のソフトを入れるだけ。あとはAIの業務コンサルタントが社内に常駐して、記録を読み、報告書を書いてくれるイメージです。</p>
+    </div>
+    <ol class="steps3 rv">
+      <li>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="9" width="38" height="25" rx="3" fill="none" stroke="#0d2a4d" stroke-width="2.5"/><path d="M17 40h14M24 34v6" stroke="#0d2a4d" stroke-width="2.5" stroke-linecap="round"/><circle cx="36" cy="16" r="3.5" fill="#2463a8"/></svg>
+        <h3>記録する</h3><p>約1分に1回、画面を自動で記録します。日報や工数の入力は要りません。</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="21" cy="21" r="12" fill="none" stroke="#0d2a4d" stroke-width="2.5"/><path d="M30 30l10 10" stroke="#0d2a4d" stroke-width="2.5" stroke-linecap="round"/><path d="M15 23l4-5 4 3 4-6" fill="none" stroke="#2463a8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>AIが読み取る</h3><p>「いつ・誰が・どの業務を・何時間」やっていたかを、AIが判定して集計します。</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M12 6h18l8 8v28H12z" fill="none" stroke="#0d2a4d" stroke-width="2.5" stroke-linejoin="round"/><path d="M18 22h14M18 29h14M18 36h8" stroke="#2463a8" stroke-width="2.5" stroke-linecap="round"/></svg>
+        <h3>報告書が届く</h3><p>減らせる時間と取り組みやすさで優先順位を付け、立場ごとの報告書にしてお届け。</p>
+      </li>
+    </ol>
+    <div class="anno">
+      <figure class="win rv" style="margin:0"><div class="bar"><i></i><i></i><i></i><span>経営層向け｜経営結論</span></div><img src="img/exec-summary.jpg" alt="経営層向け画面のサンプル。経営結論、分析の信頼度、要確認アラート、改善余地の時間が並ぶ" width="1600" height="1295" loading="lazy"></figure>
+      <div class="rv">
+        <ol>
+          <li><div><b>結論から、文章で届く</b><span>グラフを読み解く作業はAIの担当です。「会議時間よりも、会議後の確認・転記に改善余地があります」のように、まず結論を書きます。</span></div></li>
+          <li><div><b>根拠の強さも一緒に出す</b><span>分析の信頼度や、推定であることを明記します。確定していないものは、確認が必要な項目として分けて出します。</span></div></li>
+          <li><div><b>次にやることまで並ぶ</b><span>改善余地の時間と、確認すべき部門・順番まで。経営会議でそのまま使える形にまとめます。</span></div></li>
+        </ol>
+        <p class="cap">画面は開発中のサンプルです。人物・数値・比較値は架空で、AIコンサルタントの人物と経歴も架空の設定です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 監視ではない -->
+<section class="sec" id="notwatch" aria-labelledby="t3">
+  <div class="w split r">
+    <figure class="win rv" style="margin:0"><div class="bar"><i></i><i></i><i></i><span>管理職向け｜チームの状態</span></div><img src="img/mgr-top.jpg" alt="管理職向け画面のサンプル。「問題は個人の速さではなく、確認依頼の偏りにありそうです」と書かれている" width="1600" height="1568" loading="lazy"></figure>
+    <div class="rv">
+      <p class="kicker"><span class="n">03</span><span class="en">Not surveillance</span></p>
+      <h2 class="h2" id="t3">探すのは「遅い人」ではなく、<em>「時間のかかる業務」</em>です。</h2>
+      <p class="intro">画面を記録する、というのはそのとおり。違いは、記録したあとに何をするかにあります。このサービスには、<b class="m">誰がサボっているかを探す画面はありません</b>。</p>
+      <div class="pull">
+        <span class="en">管理職向け画面の一文（サンプル）</span>
+        <p class="quote">問題は個人の速さではなく、<em>確認依頼の偏り</em>にありそうです。</p>
+        <small>能力・意欲・健康状態・人事評価は、判定しません。</small>
+      </div>
+      <div class="honest"><b>正直に書いておきます</b>画面の記録は、使い方しだいで監視にも使えてしまいます。だから入れる前に、何を記録し、誰が見られ、何のために使うかを決めて、社員の皆さんへ説明してから始めます（07でご説明します）。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 3つの立場 -->
+<section class="sec warm" id="report" aria-labelledby="t4">
+  <div class="w">
+    <div class="head rv">
+      <p class="kicker"><span class="n">04</span><span class="en">Reports</span></p>
+      <h2 class="h2" id="t4">レポートは、経営者・管理職・本人に、<em>別々に</em>届きます。</h2>
+      <p class="intro">同じ記録でも、経営者が知りたいことと、本人が知りたいことは違います。立場ごとに必要なことだけを取り出してお届けする仕組みです。</p>
+    </div>
+    <div class="tabs rv" role="tablist" aria-label="レポートの種類">
+      <button type="button" role="tab" id="tab-e" aria-controls="pn-e" aria-selected="true"><small>FOR</small>経営者</button>
+      <button type="button" role="tab" id="tab-m" aria-controls="pn-m" aria-selected="false" tabindex="-1"><small>FOR</small>管理職</button>
+      <button type="button" role="tab" id="tab-s" aria-controls="pn-s" aria-selected="false" tabindex="-1"><small>FOR</small>本人</button>
+    </div>
+    <div class="panel rv" id="pn-e" role="tabpanel" aria-labelledby="tab-e">
+      <div>
+        <h3>会社全体で、何に時間を使っているか。</h3>
+        <p>全社の記録から、改善の余地が大きい順に並べます。どこから手をつけ、誰が担当し、何で効果を測るかまで一覧になります。</p>
+        <ul class="checks"><li>今月の経営結論</li><li>改善する項目の優先順位と、見込みの時間</li><li>確認が必要な点（アラート）</li><li>次の経営会議で決めること</li></ul>
+      </div>
+      <figure class="win" style="margin:0"><div class="bar"><i></i><i></i><i></i><span>経営層向け｜優先して改善する項目</span></div><div class="scrollwin" tabindex="0" aria-label="画面サンプル（枠の中をスクロールできます）"><img src="img/exec-priority.jpg" alt="経営層向け画面のサンプル。改善項目を期待効果の大きい順に並べた表" width="1600" height="1050" loading="lazy"><img src="img/exec-action.jpg" alt="経営層向け画面のサンプル。経営会議で決めることと、担当・時期・確認指標" width="1600" height="1554" loading="lazy"></div><figcaption class="scrollhint">枠の中をスクロールすると続きが見られます</figcaption></figure>
+    </div>
+    <div class="panel" id="pn-m" role="tabpanel" aria-labelledby="tab-m" hidden>
+      <div>
+        <h3>チームのどこに、負担が偏っているか。</h3>
+        <p>数字で部下を評価するためではありません。良い変化を認め、早めに声をかける相手を見つけるための画面です。</p>
+        <ul class="checks"><li>チームの今週の状態</li><li>会社全体との比べ方</li><li>一人ひとりの良い変化と、気になる変化</li><li>今週、声をかけたい人と、その聞き方</li></ul>
+      </div>
+      <figure class="win" style="margin:0"><div class="bar"><i></i><i></i><i></i><span>管理職向け｜今週の状態と声かけ</span></div><div class="scrollwin" tabindex="0" aria-label="画面サンプル（枠の中をスクロールできます）"><img src="img/mgr-members.jpg" alt="管理職向け画面のサンプル。部下一人ひとりの今週の変化がカードで並ぶ" width="1600" height="1165" loading="lazy"><img src="img/mgr-checkin.jpg" alt="管理職向け画面のサンプル。今週認めたい変化と、声をかけたい3名" width="1600" height="705" loading="lazy"></div><figcaption class="scrollhint">枠の中をスクロールすると続きが見られます</figcaption></figure>
+    </div>
+    <div class="panel" id="pn-s" role="tabpanel" aria-labelledby="tab-s" hidden>
+      <div>
+        <h3>自分の働き方を、自分で振り返る。</h3>
+        <p>本人向けの画面は、評価のためのものではありません。うまくいった条件と、来週の小さな一歩を見つけるための振り返りです。日報も自動で書かれます。</p>
+        <ul class="checks"><li>今週の集中時間と、作業の切り替え回数</li><li>自分に合う働き方のタイプ</li><li>良かったこと・気をつけたいこと</li><li>来週、試してみること</li></ul>
+      </div>
+      <figure class="win" style="margin:0"><div class="bar"><i></i><i></i><i></i><span>本人向け｜今週の働き方レポート</span></div><div class="scrollwin" tabindex="0" aria-label="画面サンプル（枠の中をスクロールできます）"><img src="img/staff-top.jpg" alt="本人向け画面のサンプル。今週の集中時間と働き方のタイプ" width="1600" height="1453" loading="lazy"><img src="img/staff-next.jpg" alt="本人向け画面のサンプル。来週試すこと" width="1600" height="532" loading="lazy"></div><figcaption class="scrollhint">枠の中をスクロールすると続きが見られます</figcaption></figure>
+    </div>
+    <div class="example rv">
+      <div>
+        <span class="en">Example ／ 提案の例（説明用のサンプル）</span>
+        <p>「議事録の作成に、毎月26時間かかっています。議事録AIを使えば、約2時間まで短縮できる可能性があります。」</p>
+      </div>
+      <small>説明用のサンプルです。実際に減らせる時間は、業務の内容や利用環境によって変わります。お約束する数字ではありません。</small>
+    </div>
+  </div>
+</section>
+
+<!-- 05 出口 -->
+<section class="sec" id="exit" aria-labelledby="t5">
+  <div class="w">
+    <div class="head rv">
+      <p class="kicker"><span class="n">05</span><span class="en">From insight to action</span></p>
+      <h2 class="h2" id="t5">分かって終わりではなく、<em class="nobr">楽にする方法まで</em>提案します。</h2>
+      <p class="intro">工数を測る道具は、ほかにもあります。違うのは、測ったあと。見つかった業務ごとに、4つの打ち手から合うものを提案します。</p>
+    </div>
+    <ul class="exits rv">
+      <li><svg viewBox="0 0 36 36" aria-hidden="true"><rect x="4" y="8" width="28" height="20" rx="4" fill="none" stroke="#0d2a4d" stroke-width="2.2"/><circle cx="13" cy="18" r="2.4" fill="#2463a8"/><circle cx="23" cy="18" r="2.4" fill="#2463a8"/><path d="M18 3v5" stroke="#0d2a4d" stroke-width="2.2" stroke-linecap="round"/></svg><b>AIツールで減らす</b><span>その業務に合うAIを使って、作業そのものを短くします。</span></li>
+      <li><svg viewBox="0 0 36 36" aria-hidden="true"><rect x="4" y="7" width="28" height="19" rx="3" fill="none" stroke="#0d2a4d" stroke-width="2.2"/><path d="M15 12.5v8l7-4z" fill="#2463a8"/><path d="M11 31h14" stroke="#0d2a4d" stroke-width="2.2" stroke-linecap="round"/></svg><b>動画研修で身につける</b><span>本人が自分で効率化できるように、使い方を学びます。</span></li>
+      <li><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M12 11l-7 7 7 7M24 11l7 7-7 7" fill="none" stroke="#0d2a4d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 8l-4 20" stroke="#2463a8" stroke-width="2.2" stroke-linecap="round"/></svg><b>システム開発で自動化する</b><span>繰り返しの作業を、仕組みにして手を離します。</span></li>
+      <li><svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="11" cy="12" r="4" fill="none" stroke="#0d2a4d" stroke-width="2.2"/><circle cx="25" cy="12" r="4" fill="none" stroke="#2463a8" stroke-width="2.2"/><path d="M4 29c1-5 4-8 7-8s6 3 7 8M18 29c1-5 4-8 7-8s6 3 7 8" fill="none" stroke="#0d2a4d" stroke-width="2.2" stroke-linecap="round"/></svg><b>BPOで外に任せる</b><span>社内でやらない方が早い業務は、外に出します。</span></li>
+    </ul>
+    <div class="cmp-wrap rv">
+      <p class="cmp-ttl">従来のやり方との違い</p>
+      <table class="cmp">
+        <thead><tr><th scope="col"></th><th scope="col">自己申告の工数管理</th><th scope="col">操作ログ型の管理ソフト</th><th scope="col" class="me">ワークログ<br>インサイト</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">記録方法</th><td>社員が手で入力</td><td>操作を自動で取得</td><td class="me">画面を1分ごとに記録</td></tr>
+          <tr><th scope="row">社員の手間</th><td>毎日の入力</td><td>なし</td><td class="me">なし</td></tr>
+          <tr><th scope="row">使いみち</th><td>工数の集計</td><td>労務管理・漏えい対策</td><td class="me">業務の改善</td></tr>
+          <tr><th scope="row">記録の後</th><td>集計表</td><td>操作の記録と警告</td><td class="me">楽にする方法の提案</td></tr>
+          <tr><th scope="row">AIの材料</th><td>入力した文字</td><td>操作の記録</td><td class="me">作業の画面そのもの</td></tr>
+        </tbody>
+      </table>
+      <p class="cap">左の2列は一般的な傾向です。製品によって機能は異なります。すでに工数管理の道具をお使いなら、集計はそちらで足りています。違いは「集計のあと」と「画面そのものが残ること」の2点です。</p>
+      <button class="fc-btn" type="button"
+        data-fc-section="従来のやり方との違い（比較表）"
+        data-fc-claim="自己申告の工数管理は、社員が手で入力し、主に工数の集計に使われる／操作ログ型の管理ソフト（キー操作やアプリ利用の記録）は、主に労務管理や情報漏えい対策に使われ、記録のあとに出るのは操作の記録と警告である／画面を定期的に記録する方式は、入力した文字や操作ログに比べて、作業の中身を後から確認できる材料になる">
+        ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- 06 料金 -->
+<section class="sec alt" id="price" aria-labelledby="t6">
+  <div class="w">
+    <div class="head c rv">
+      <p class="kicker"><span class="n">06</span><span class="en">Price</span></p>
+      <h2 class="h2" id="t6">AIコンサルタントを雇う代わりに、<em class="nobr">月額1万円／1ID</em>で。</h2>
+      <p class="intro">人のコンサルタントに、継続して業務を見てもらうのは、中小企業には簡単ではありません。毎日の記録を読み続ける役目を、AIに任せます。</p>
+    </div>
+    <div class="price rv">
+      <div class="l">
+        <span class="en">Worklog Insight</span>
+        <p class="amt"><b>1<small>万円</small></b><span>／月・1ID</span></p>
+        <p>パソコン1台で、1日約600枚。その記録を、AIが毎日読みます。</p>
+      </div>
+      <div class="r">
+        <h3>月額に含まれるもの</h3>
+        <ul>
+          <li>1分に1回の画面の自動記録</li>
+          <li>AIによる業務の判定と時間の集計</li>
+          <li>経営者・管理職・本人向けのレポート</li>
+          <li>本人向けの自動の日報</li>
+          <li>AI化の候補と、楽にする方法の提案</li>
+          <li>閲覧範囲の設定（画像を開けない設定を含む）</li>
+        </ul>
+        <p class="ex">削減できる時間はお約束できません。業務の内容によって変わるためです。提案された改善策（AIツールの導入・研修・開発・BPO）を実際に行う場合は、内容に応じて<b>別途お見積り</b>です。貯めた記録にあとから質問できる「ワークログ・ファクトサーチ」は<b>別途有料のオプション</b>です。消費税の扱い、初期費用、ご契約期間は、お見積りの際に書面でご確認ください。</p>
+      </div>
+    </div>
+    <p class="midcta rv"><a class="btn pri" href="https://www.writeup.jp/contact/">導入の相談をする</a></p>
+  </div>
+</section>
+
+<!-- 07 安全対策 -->
+<section class="sec" id="security" aria-labelledby="t7">
+  <div class="w">
+    <div class="head rv">
+      <p class="kicker"><span class="n">07</span><span class="en">Security &amp; rules</span></p>
+      <h2 class="h2" id="t7">記録画像は、<em>管理者でも開けない</em>設定にできます。<br>そのうえで、5つのルールを先に決めます。</h2>
+    </div>
+    <ol class="route rv" aria-label="記録画像の行き先">
+      <li><svg viewBox="0 0 34 34" aria-hidden="true"><rect x="3" y="6" width="28" height="18" rx="2.5" fill="none" stroke="#0d2a4d" stroke-width="2.2"/><path d="M12 30h10" stroke="#0d2a4d" stroke-width="2.2" stroke-linecap="round"/></svg><b>画面を記録</b><small>約1分に1回</small></li>
+      <li><svg viewBox="0 0 34 34" aria-hidden="true"><rect x="7" y="15" width="20" height="14" rx="2.5" fill="none" stroke="#0d2a4d" stroke-width="2.2"/><path d="M11 15v-4a6 6 0 0 1 12 0v4" fill="none" stroke="#0d2a4d" stroke-width="2.2"/><circle cx="17" cy="22" r="2" fill="#2463a8"/></svg><b>暗号化して保存</b><small>クラウドに保存</small></li>
+      <li><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="15" cy="15" r="9" fill="none" stroke="#0d2a4d" stroke-width="2.2"/><path d="M22 22l7 7" stroke="#0d2a4d" stroke-width="2.2" stroke-linecap="round"/><path d="M11 16l3 3 5-6" fill="none" stroke="#2463a8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>AIが読み取る</b><small>業務と時間を判定</small></li>
+      <li class="end"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M7 5h14l6 6v18H7z" fill="none" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/><path d="M12 17h10M12 22h10" stroke="#6fa8e8" stroke-width="2.2" stroke-linecap="round"/></svg><b>人は結果だけ見る</b><small>画像を開けない設定も</small></li>
+    </ol>
+    <div class="split" style="align-items:start">
+      <div class="rv">
+        <ul class="safe">
+          <li><b>保存</b><span>記録した画像は、暗号化したうえでクラウドに保存。</span></li>
+          <li><b>見られる人</b><span>人が閲覧できる範囲は、導入する会社ごとの設定です。</span></li>
+          <li><b>開けない設定</b><span>管理者や経営者を含めて、記録画像を開けない設定を選べます。AIが解析した結果だけを見る使い方です。</span></li>
+        </ul>
+        <div class="honest"><b>リスクがないとは、言い切りません</b>どんなシステムにも、セキュリティのリスクは残ります。認証情報の漏えいや設定の誤りまで含めれば、何も起きないと言い切ることはできません。メールでファイルを送る、クラウドに業務の資料を置く、といった場合と同じ考え方です。大切なのは、見られる人をはっきりさせ、必要以上の権限を渡さないことです。</div>
+      </div>
+      <figure class="rv" style="margin:0">
+        <div class="win"><div class="bar"><i></i><i></i><i></i><span>本人向け｜この画面のデータについて</span></div><img src="img/staff-data.jpg" alt="本人向け画面のサンプル。能力・意欲・健康状態・人事評価は判定しない、と明記されている" width="1600" height="734" loading="lazy"></div>
+        <figcaption class="cap">画面の中にも「能力、意欲、健康状態、人事評価は判定しません」と明記しています（サンプル）。</figcaption>
+      </figure>
+    </div>
+    <p class="keys-lead rv">そのために、導入の前に次の5つを、会社ごとに確認して決めます。</p>
+    <ul class="keys rv">
+      <li><b>01</b><strong>取得する範囲</strong><span>どの部署・どのパソコンを記録するか</span></li>
+      <li><b>02</b><strong>閲覧権限</strong><span>誰が何を見られるか</span></li>
+      <li><b>03</b><strong>利用目的</strong><span>何のために使い、何に使わないか</span></li>
+      <li><b>04</b><strong>保存方法</strong><span>どこに、どのように保存するか</span></li>
+      <li><b>05</b><strong>私的情報の扱い</strong><span>私的な画面や機密情報をどう扱うか</span></li>
+    </ul>
+    <p class="note">人事評価に直接使わないのであれば、就業規則の改定は必要ありません。ご心配な場合は、顧問の社会保険労務士にご相談ください。</p>
+    <button class="fc-btn" type="button"
+      data-fc-section="記録画像は、管理者でも開けない設定にできます。そのうえで、5つのルールを先に決めます。"
+      data-fc-claim="クラウドに保存するシステムで、セキュリティのリスクが完全にゼロということはない／情報の保護には、暗号化に加えて閲覧できる人を絞り、必要以上の権限を与えないことが重要／従業員のパソコン画面を記録する場合、導入前に取得範囲・閲覧権限・利用目的・保存方法・私的情報の扱いを決め、社員に説明するのが望ましい／画面の記録を人事評価に直接使わない場合、就業規則の改定までは必須ではないとされることが多い。判断に迷う場合は社会保険労務士に相談するのがよい">
+      ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span>
+    </button>
+  </div>
+</section>
+
+<!-- 08 貯まる -->
+<section class="archive" id="archive" aria-labelledby="t8">
+  <div class="w">
+    <div class="head rv">
+      <p class="kicker"><span class="n">08</span><span class="en">Worklog archive</span></p>
+      <h2 class="h2" id="t8">ここからが、もう1つの価値です。<br><em>仕事の記録が、今日から貯まっていきます。</em></h2>
+      <p class="intro">パソコン1台で、1年に約15万枚。どのソフトを、どんな順番で使い、どこで手が止まっているか。社員1人分の仕事の進め方が、そのまま残ります。業務改善のレポートは、この記録の使いみちの1つです。</p>
+    </div>
+    <div class="counter" id="counter">
+      <div><small>1 Hour</small><b data-to="60">60<span>枚</span></b><p>1分に1枚</p></div>
+      <div><small>1 Day</small><b data-to="600" data-pre="約">約600<span>枚</span></b><p>1日10時間の場合</p></div>
+      <div><small>1 Month</small><b data-to="12000" data-pre="約">約12,000<span>枚</span></b><p>月20日の場合</p></div>
+      <div><small>1 Year</small><b data-to="150000" data-pre="約">約150,000<span>枚</span></b><p>パソコン1台あたり</p></div>
+    </div>
+    <p class="cap">1分に1枚・1日10時間・月20日で計算した目安です。稼働時間によって変わります。</p>
+  </div>
+</section>
+
+<!-- 09 遡れない -->
+<section class="peak" id="now" aria-labelledby="t9">
+  <div class="band"><img src="img/photo-evening.jpg" alt="" width="1600" height="900" loading="lazy"><span class="gen">生成イメージ</span></div>
+  <div class="w">
+    <p class="kicker"><span class="n">09</span><span class="en">Why today</span></p>
+    <h2 id="t9"><span>業務の記録は、</span><span>あとから遡っては作れません。</span></h2>
+    <hr>
+    <div class="cols">
+      <div>
+        <p>AIが人の仕事を理解し、自動化できる範囲は、広がり続けています。それが半年後なのか、1年後なのか、2年後なのかは、まだ誰にも分かりません。</p>
+        <p>そのときAIに<b>「うちの仕事を自動化してほしい」</b>と頼むには、手掛かりが要ります。どのソフトを使い、どんな順番で進め、どこで時間がかかり、何を繰り返しているのか。</p>
+        <p>画面の記録だけで、あらゆる業務を自動化できるとお約束するものではありません。ただ、<b>1年後に慌てて始めても、過去1年分の記録は取り戻せません。</b></p>
+      </div>
+      <div>
+        <div class="two-co">
+          <div class="has"><small>1年前に始めた会社</small><strong>1年分の仕事の記録がある</strong><span>AIに見せる材料が、手元にそろっている状態から始められます。</span></div>
+          <div><small>何も記録していない会社</small><strong>記録ゼロから始める</strong><span>AIに頼む前に、まず記録を貯めるところからです。</span></div>
+        </div>
+        <p class="opt">貯めた記録には、あとから日本語で質問することもできます。<a href="https://writeup-inc.github.io/saas/worklog-fact-search/" rel="noopener">ワークログ・ファクトサーチ</a>（別途有料のオプション）</p>
+      </div>
+    </div>
+    <button class="fc-btn" type="button"
+      data-fc-section="業務の記録は、あとから遡っては作れません。"
+      data-fc-claim="AIに業務の自動化を任せるには、どのソフトを使い、どの順番で進め、どこで時間がかかっているかといった実際の業務データが手掛かりになる／過去の業務の記録は、あとから遡って作ることはできない／画面の記録だけで、あらゆる業務を自動化できるわけではない">
+      ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span>
+    </button>
+  </div>
+</section>
+
+<!-- 10 対象 -->
+<section class="sec" id="fit" aria-labelledby="t10">
+  <div class="w">
+    <div class="head rv">
+      <p class="kicker"><span class="n">10</span><span class="en">Before you apply</span></p>
+      <h2 class="h2" id="t10">対象は<em>Windowsのパソコン</em>です。<br>お申し込みの前にご確認ください。</h2>
+      <p class="intro">パソコンを使わない社員の方が多い会社でも、パソコンで仕事をしている部署だけで始められます。全社に入れるものではありません。</p>
+    </div>
+    <div class="fit rv">
+      <div class="ok"><h3>記録できる</h3><ul><li>Windowsのパソコンで仕事をしている部署</li><li>たとえば、事務・経理・営業事務・管理部門</li></ul></div>
+      <div><h3>記録できない</h3><ul><li>Macのパソコン（対応していません）</li><li>現場や店舗など、パソコンの前にいない時間</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 始め方 -->
+<section class="sec alt" id="start" aria-labelledby="t11">
+  <div class="w">
+    <div class="head rv">
+      <p class="kicker"><span class="n">11</span><span class="en">How to start</span></p>
+      <h2 class="h2" id="t11">全社一斉ではなく、<em>社員の3分の1、1部署から</em>始めます。</h2>
+    </div>
+    <ol class="timeline rv">
+      <li><b>ご相談</b><span>対象にする部署と人数を決めます。目安は社員の3分の1くらいです。</span></li>
+      <li><b>5つのルールを決め、社員へ説明</b><span>取得する範囲・閲覧権限・利用目的・保存方法・私的情報の扱いを決めてから始めます。</span></li>
+      <li><b>ソフトを入れる</b><span>対象のWindowsパソコンに入れれば、あとは自動で記録されます。</span></li>
+      <li><b>1か月分のレポートを見る</b><span>届くのは、経営者・管理職・本人の3種類です。</span></li>
+      <li><b>広げるかどうかを決める</b><span>1か月分を見てから、対象を広げるかどうかを決めていただけます。</span></li>
+    </ol>
+    <div class="why3 rv">
+      <p class="ratio">1/3<small>から始める理由</small></p>
+      <p>いきなり全員分だと、届いたレポートを見る側が追いきれません。社員の3分の1くらいあれば、部署ごとの違いが見えて、比べられるようになります。</p>
+    </div>
+  </div>
+</section>
+
+<!-- よくある質問 -->
+<section class="sec" id="faq" aria-labelledby="tq">
+  <div class="w">
+    <div class="head c rv">
+      <p class="kicker"><span class="n">Q&amp;A</span><span class="en">Questions</span></p>
+      <h2 class="h2" id="tq">よくいただくご質問</h2>
+    </div>
+    <div class="faq rv">
+      <details><summary>要するに、社員の監視ツールではないのですか。</summary><p>画面を記録するという意味では、おっしゃるとおりです。ただ、誰がサボっているかを探す画面はありません（03）。記録画像は、管理者でも開けない設定にできます（07）。</p></details>
+      <details><summary>社員が嫌がりませんか。</summary><p>黙って入れると、監視だと受け取られます。ですので、入れる前に「何を記録するか・誰が見られるか・何に使うか」を決めて、社員の皆さんへ説明してから始めます。本人の画面には本人のための振り返りが届くので、自分の働き方を見るための道具として受け取っていただけます。</p></details>
+      <details><summary>工数管理のツールは、もう入れています。</summary><p>その場合、時間の集計はすでに出ているはずです。ワークログ・インサイトが違うのは、集計したあと。その業務はどのAIツールで減らせるのか、研修で本人ができるようになるのか、開発した方がいいのか、外に出した方がいいのかまで提案します。もう1つは、入力ではなく作業の画面そのものが残ることです。</p></details>
+      <details><summary>効果はどれくらい出ますか。</summary><p>削減できる時間をお約束することはできません。業務の内容によって変わるためです。比べていただきたいのは、業務を棚卸しして、どこを効率化できるかを人に継続して見てもらった場合の手間と費用です。</p></details>
+      <details><summary>Macでも使えますか。</summary><p>現在はWindowsのパソコンのみの対応で、Macには対応していません。</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- 締め -->
+<section class="fin" id="cta" aria-labelledby="t12">
+  <div class="bg"><img src="img/photo-desk.jpg" alt="" width="1600" height="1066" loading="lazy"></div>
+  <div class="w">
+    <p class="kicker"><span class="n">Next</span><span class="en">Start with one team</span></p>
+    <h2 id="t12">迷っている間の仕事は、記録に残りません。<br><em>まずは1部署から。</em></h2>
+    <p>全社で決める前に、1部署の数台だけ先に始めておくこともできます。対象の部署と人数から、一緒に決めましょう。</p>
+    <a class="btn inv" id="endCta" href="https://www.writeup.jp/contact/">導入の相談をする</a>
+    <p class="fine">月額1万円／1ID・Windowsのパソコンが対象です</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="w">
+    <p>株式会社ライトアップ（東証グロース：6580）／東京都渋谷区渋谷2-15-1 渋谷クロスタワー32F</p>
+    <p class="links"><a href="https://www.writeup.jp/" rel="noopener">会社概要</a><a href="https://www.writeup.jp/privacy/" rel="noopener">個人情報保護方針</a><a href="https://www.writeup.jp/contact/">お問い合わせ</a></p>
+    <ul>
+      <li>掲載している管理画面は開発中のサンプルです。人物・数値・比較値は架空で、AIコンサルタントの人物と経歴も架空の設定です。実際の表示と異なる場合があります。</li>
+      <li>写真は生成イメージです。</li>
+      <li>削減できる時間はお約束するものではありません。業務の内容や利用環境によって変わります。</li>
+      <li>記録の枚数は、1分に1枚・1日10時間・月20日で計算した目安です。</li>
+      <li>対応しているのはWindowsのパソコンのみです。Macには対応していません。</li>
+      <li>ワークログ・ファクトサーチは別途有料のオプションです。</li>
+    </ul>
+  </div>
+</footer>
+
+<div class="fx" id="fx"><a href="https://www.writeup.jp/contact/">導入の相談をする</a></div>
+
+<script>
+(function(){
+  /* ヒーローの見出し3案をローテーション。操作したら止める。動きを減らす設定なら自動では回さない */
+  var h=document.getElementById('h1');
+  var lead=document.querySelector('.hero .lead');
+  var dots=[].slice.call(document.querySelectorAll('.dots button:not(.pause)'));
+  var pause=document.querySelector('.dots .pause');
+  var i=0,timer=null,stopped=false;
+  function show(n){
+    i=n;
+    [h.children,lead.children].forEach(function(list){
+      [].forEach.call(list,function(el,k){
+        el.classList.toggle('on',k===n);
+        if(k===n)el.removeAttribute('aria-hidden');else el.setAttribute('aria-hidden','true');
+      });
+    });
+    dots.forEach(function(d,k){d.classList.toggle('on',k===n);d.setAttribute('aria-pressed',k===n?'true':'false');});
+  }
+  function start(){ if(stopped||timer)return; timer=setInterval(function(){show((i+1)%dots.length);},6500); }
+  function stop(){ clearInterval(timer); timer=null; }
+  function halt(){ stopped=true; stop(); pause.textContent='再生'; pause.setAttribute('aria-label','自動の切り替えを再開する'); }
+  dots.forEach(function(d,k){d.addEventListener('click',function(){show(k);halt();});});
+  pause.addEventListener('click',function(){
+    if(stopped){stopped=false;pause.textContent='停止';pause.setAttribute('aria-label','自動の切り替えを止める');start();}
+    else halt();
+  });
+  var hero=document.querySelector('.hero');
+  hero.addEventListener('mouseenter',stop); hero.addEventListener('mouseleave',start);
+  hero.addEventListener('focusin',stop); hero.addEventListener('focusout',start);
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){halt();}else{start();}
+})();
+
+(function(){
+  /* 04 レポートのタブ（矢印キーでも移動できる） */
+  var tabs=[].slice.call(document.querySelectorAll('[role=tab]'));
+  function sel(t){
+    tabs.forEach(function(x){
+      var on=x===t; x.setAttribute('aria-selected',on?'true':'false'); x.tabIndex=on?0:-1;
+      var p=document.getElementById(x.getAttribute('aria-controls')); p.hidden=!on; if(on)p.classList.add('in');
+    });
+  }
+  tabs.forEach(function(t,k){
+    t.addEventListener('click',function(){sel(t);});
+    t.addEventListener('keydown',function(e){
+      var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0; if(!d)return;
+      var n=tabs[(k+d+tabs.length)%tabs.length]; sel(n); n.focus(); e.preventDefault();
+    });
+  });
+})();
+
+(function(){
+  /* 出現の動きと、08の数字のカウントアップ */
+  var els=[].slice.call(document.querySelectorAll('.rv'));
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!('IntersectionObserver' in window)||reduce){els.forEach(function(e){e.classList.add('in');});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(e){io.observe(e);});
+  var c=document.getElementById('counter');
+  var co=new IntersectionObserver(function(es){
+    if(!es[0].isIntersecting)return; co.disconnect();
+    [].forEach.call(c.querySelectorAll('b[data-to]'),function(b){
+      var to=+b.dataset.to,pre=b.dataset.pre||'',unit=b.querySelector('span').outerHTML,t0=null;
+      function f(ts){ if(!t0)t0=ts; var p=Math.min(1,(ts-t0)/1400),v=Math.round(to*(1-Math.pow(1-p,3)));
+        b.innerHTML=pre+v.toLocaleString('ja-JP')+unit; if(p<1)requestAnimationFrame(f); }
+      requestAnimationFrame(f);
+    });
+  },{threshold:.4});
+  co.observe(c);
+})();
+
+(function(){
+  /* スマホの固定ボタンは、ヒーローと締めのボタンが見えている間は引っ込める */
+  var fx=document.getElementById('fx');
+  var targets=[document.getElementById('heroCta'),document.getElementById('endCta')].filter(Boolean);
+  if(!fx||!('IntersectionObserver' in window))return;
+  var seen=new Set();
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting) seen.add(e.target); else seen.delete(e.target); });
+    fx.classList.toggle('off', seen.size>0);
+  },{threshold:0.1});
+  targets.forEach(function(t){io.observe(t);});
+})();
+
+/* ChatGPTでファクトチェック：主張をそのまま埋め込んだ中立の質問を、別タブで開く */
+document.addEventListener('click', function(e){
+  var b = e.target.closest('.fc-btn'); if (!b) return;
+  var c = document.querySelector('link[rel=canonical]');
+  var url = c ? c.href : location.href;
+  var p = '次のLPの記載が事実として正しいか、第三者の立場で確認してください。\n\n' +
+    '【対象ページ】' + url + '\n【セクション】' + b.dataset.fcSection + '\n【記載内容】\n' +
+    b.dataset.fcClaim.split('／').join('\n') + '\n\n' +
+    '【確認してほしいこと】\n- 記載は一般的な事実・相場・公的情報と照らして正しいか\n- 誤り・誇張・古い情報があれば指摘する\n- 反対の見方や、読み手が注意すべき点\n- 確認できないことは「確認できない」と書き、推測で補わない';
+  window.open('https://chatgpt.com/?q=' + encodeURIComponent(p), '_blank', 'noopener,noreferrer');
+  if (navigator.clipboard) navigator.clipboard.writeText(p).catch(function(){});
+});
+</script>
+</body>
+</html>
