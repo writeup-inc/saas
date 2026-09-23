@@ -1,13 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
+
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex, nofollow">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jマッチエンジン｜ご案内の入口</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Jマッチエンジン｜資料インデックス</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 /* ===== lp-base.css ===== */
 h1, h2, h3, h4, h5,
@@ -18,398 +19,425 @@ h1, h2, h3, h4, h5,
 }
 @supports not (word-break: auto-phrase) {
   h1, h2, h3, h4, h5,
-  .lead, .catch, .hero__title, [data-keep-phrase] { word-break: normal; }
+  .lead, .catch, .hero__title, [data-keep-phrase] {
+    word-break: normal;
+  }
 }
 .nobr { white-space: nowrap; }
 :root { --fs-min: 12px; --fs-body: 16px; }
-body { font-size: var(--fs-body); line-height: 1.9; }
+body { font-size: var(--fs-body); line-height: 1.8; }
 small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
-h1, .hero__title { font-size: clamp(1.3rem, 5.2vw, 3.25rem); line-height: 1.35; }
-h2 { font-size: clamp(1.2rem, 3.6vw, 2.1rem); line-height: 1.45; }
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
 :root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
 *, *::before, *::after { box-sizing: border-box; }
 img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
 main > *, section > *, .grid > *, .flex > * { min-width: 0; }
 pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
 
-/* ===== tokens（OEM／直販ページと同一） ===== */
+/* ===== トークン ===== */
 :root{
-  --navy:#0B2C5C;
-  --tint:#F3F6FA;
-  --ink:#111111;
-  --white:#FFFFFF;
-  --gray-80:#3A3A3A;
-  --gray-60:#767676;
-  --gray-40:#A8A8A8;
-  --gray-20:#D9D9D9;
-  --red:#C62828;
-  --jp:'Noto Sans JP',sans-serif;
-  --en:'Inter',sans-serif;
+  --ink:#10151c; --tx:#262d36; --g1:#4a525d; --g2:#626b76; --g3:#848c96;
+  --ln:#e3e6ea; --ln2:#f0f2f4; --bg:#f7f8fa;
+  --oem:#0f6b56; --oem-l:#eaf4f0;
+  --dir:#1f4f9a; --dir-l:#ecf2fa;
+  --etc:#4d5561; --etc-l:#f1f2f4;
+  --new:#c2410c;
+  /* サービスの色（ヒーローだけで使う）。補助金・融資なので、公文書の朱肉と金を思わせる落ち着いた金茶 */
+  --svc:#8a6516; --svc-l:#fbf6ea;
+  --sans:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+  --num:Inter,"Helvetica Neue",Arial,sans-serif;
 }
-*{margin:0;padding:0;}
-html{ -webkit-text-size-adjust:100%; }
-body{
-  font-family:var(--jp); background:var(--white); color:var(--ink);
-  -webkit-font-smoothing:antialiased;
-  min-height:100vh; display:flex; flex-direction:column;
-  padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px));
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--tx);font-family:var(--sans);font-size:16px;line-height:1.85;
+  letter-spacing:.015em;font-feature-settings:"palt" 1;-webkit-font-smoothing:antialiased}
+.w{max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+a{color:inherit}
+p{margin:0}
+.en{font-family:var(--num);font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+
+
+/* ===== ヒーロー：サービス名＋業種を連想させるアイコン ===== */
+.hero{position:relative;overflow:hidden;padding:clamp(96px,14vw,176px) 0 clamp(80px,11vw,136px);text-align:center;
+  background:radial-gradient(ellipse 60% 70% at 50% 48%,#fff 0,#fff 38%,var(--svc-l) 100%)}
+.hero .deco{position:absolute;inset:0;pointer-events:none}
+.hero .deco svg{position:absolute;fill:none;stroke:var(--svc);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.34}
+.hero .deco svg.s{opacity:.2}
+.hero .deco .dot{position:absolute;border-radius:50%;background:var(--svc);opacity:.18}
+.hero .w{position:relative}
+.hero .en{display:block;font-size:14px;color:var(--svc)}
+.hero h1{margin:16px 0 0;font-weight:900;letter-spacing:-.04em;line-height:1.1;color:var(--ink);font-size:clamp(2.2rem,9.4vw,6.2rem);white-space:nowrap}
+.hero .rule{display:block;width:48px;height:3px;margin:28px auto 0;border-radius:2px;background:var(--svc)}
+.hero .meta{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;margin:22px 0 0;font-size:15px;color:var(--g2)}
+.hero .meta b{font-family:var(--num);color:var(--ink)}
+.hero .meta .k{display:inline-flex;align-items:center;gap:7px}
+.hero .meta .k i{width:10px;height:10px;border-radius:3px}
+@media (prefers-reduced-motion:no-preference){
+  .hero .deco svg{animation:float 9s ease-in-out infinite}
+  .hero .deco svg:nth-child(2n){animation-duration:11s;animation-delay:-3s}
+  .hero .deco svg:nth-child(3n){animation-duration:13s;animation-delay:-6s}
+  @keyframes float{0%,100%{translate:0 0}50%{translate:0 -8px}}
 }
 
-/* ===== 背景のSVG ===== */
-.bg{ position:fixed; inset:0; z-index:0; pointer-events:none;
-  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%201200%20800%27%20preserveAspectRatio%3D%27xMidYMid%20slice%27%20fill%3D%27none%27%20stroke%3D%27%230B2C5C%27%3E%3Cg%20opacity%3D%27.07%27%20stroke-width%3D%271%27%3E%3Ccircle%20cx%3D%27905%27%20cy%3D%27300%27%20r%3D%2758%27%2F%3E%3Ccircle%20cx%3D%27905%27%20cy%3D%27300%27%20r%3D%27128%27%2F%3E%3Ccircle%20cx%3D%27905%27%20cy%3D%27300%27%20r%3D%27208%27%2F%3E%3Ccircle%20cx%3D%27905%27%20cy%3D%27300%27%20r%3D%27298%27%2F%3E%3Ccircle%20cx%3D%27905%27%20cy%3D%27300%27%20r%3D%27398%27%2F%3E%3Cpath%20d%3D%27M905%20300%20L640%20150M905%20300%20L1180%20130M905%20300%20L1130%20600M905%20300%20L600%20470M905%20300%20L905%20-60M905%20300%20L520%20300M905%20300%20L820%20700%27%2F%3E%3Crect%20x%3D%27866%27%20y%3D%27278%27%20width%3D%2778%27%20height%3D%2746%27%20rx%3D%272%27%2F%3E%3Cpath%20d%3D%27M866%20278l39%2027%2039-27%27%2F%3E%3C%2Fg%3E%3Cg%20opacity%3D%27.11%27%20stroke-width%3D%271.4%27%3E%3Ccircle%20cx%3D%27640%27%20cy%3D%27150%27%20r%3D%277%27%2F%3E%3Ccircle%20cx%3D%271180%27%20cy%3D%27130%27%20r%3D%277%27%2F%3E%3Ccircle%20cx%3D%271130%27%20cy%3D%27600%27%20r%3D%277%27%2F%3E%3Ccircle%20cx%3D%27600%27%20cy%3D%27470%27%20r%3D%277%27%2F%3E%3Ccircle%20cx%3D%27520%27%20cy%3D%27300%27%20r%3D%277%27%2F%3E%3Ccircle%20cx%3D%27820%27%20cy%3D%27700%27%20r%3D%277%27%2F%3E%3C%2Fg%3E%3Cg%20opacity%3D%27.05%27%20stroke-width%3D%271%27%3E%3Cpath%20d%3D%27M60%2096h120M60%20140h190M60%20184h90M60%20660h150M60%20704h100%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-  background-size:cover; background-position:center; background-repeat:no-repeat; }
+/* ===== お知らせ：1本の時系列 ===== */
+.news{padding:clamp(36px,4.5vw,52px) 0 clamp(40px,5vw,56px)}
+.sh{display:flex;align-items:baseline;gap:12px;margin:0 0 14px}
+.sh h2{margin:0;font-size:clamp(1.4rem,2.6vw,1.8rem);font-weight:900;letter-spacing:-.02em;line-height:1.4;color:var(--ink)}
+.sh .en{font-size:13px;color:var(--g3)}
+.nl{list-style:none;margin:0;padding:0;border-top:1px solid var(--ln)}
+.nl a{display:grid;grid-template-columns:3.8em 4.8em 1fr;align-items:baseline;gap:16px;padding:12px 8px;border-bottom:1px solid var(--ln);text-decoration:none;transition:background .18s}
+.nl a:hover{background:var(--bg)}
+.nl time{font-family:var(--num);font-size:15px;font-weight:700;color:var(--g2)}
+.cat{display:inline-block;width:4.6em;padding:0;border-radius:4px;font-size:13px;font-weight:700;line-height:1.9;text-align:center;color:#fff}
+.cat.oem{background:var(--oem)} .cat.dir{background:var(--dir)} .cat.etc{background:var(--etc)}
+.nl .t{font-size:16px;line-height:1.7;color:var(--ink);word-break:auto-phrase;line-break:strict}
+.bd{display:inline-block;margin-right:8px;padding:0 7px;border-radius:4px;font-size:13px;font-weight:700;line-height:1.7;vertical-align:1px}
+.bg-new{background:#fdebe1;color:var(--new)}
+.bg-up{background:var(--etc-l);color:var(--etc)}
+.bg-soon{background:#fff4d6;color:#8a5a00}
+.bg-in{background:#efe9f8;color:#5b3f8f}
+.more{margin:0}
+.more summary{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:6px;padding:0 4px;font-size:15px;font-weight:700;color:var(--g1);cursor:pointer;list-style:none}
+.more summary::-webkit-details-marker{display:none}
+.more summary::after{content:"＋";font-weight:500}
+.more[open] summary::after{content:"－"}
+.more .nl{border-top:0}
 
-.wrap{ position:relative; z-index:1; width:100%; max-width:1300px; margin:0 auto; padding:0 40px; }
-@media(max-width:760px){ .wrap{ padding:0 24px; } }
-main{ flex:1 0 auto; display:flex; align-items:center; padding:88px 0 72px; }
-@media(max-width:760px){ main{ padding:56px 0 48px; } }
+/* ===== 資料の区画：箱に入れず、行と余白で並べる ===== */
+.blk{padding:clamp(56px,7vw,88px) 0;border-top:1px solid var(--ln2)}
+.in{display:grid;grid-template-columns:340px 1fr;gap:clamp(40px,6vw,80px);align-items:start}
+.side{position:sticky;top:40px}
+.side .en{display:block;font-size:13px}
+.side h2{margin:10px 0 0;font-weight:900;letter-spacing:-.03em;line-height:1.4;color:var(--ink);font-size:clamp(1.5rem,2.6vw,2rem)}
+.side .who{margin:10px 0 0;font-size:16px;color:var(--g1)}
+.hist{margin:20px 0 0}
+.hist-h{font-size:14px;font-weight:700;color:var(--g2)}
+.hist ol{list-style:none;margin:6px 0 0;padding:0;border-top:1px solid var(--ln)}
+.hist li{display:grid;grid-template-columns:3.4em 1fr;gap:10px;padding:10px 2px;border-bottom:1px solid var(--ln);font-size:15px;line-height:1.6;color:var(--ink)}
+.hist time{font-family:var(--num);font-size:14px;font-weight:700;color:var(--g2);padding-top:1px}
+.hist .n{margin-right:6px;font-family:var(--num);font-size:14px;font-weight:800}
+.hist .t{word-break:auto-phrase;line-break:strict}
+.oem .hist .n{color:var(--oem)} .dir .hist .n{color:var(--dir)} .etc .hist .n{color:var(--etc)}
+.side .bar{display:block;width:40px;height:3px;margin:22px 0 0;border-radius:2px}
+.terms{list-style:none;display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin:22px 0 0;padding:0}
+.terms li{padding:5px 14px;border-radius:999px;font-size:15px;font-weight:700;line-height:1.7}
+.oem .side .en{color:var(--oem)} .oem .side .bar{background:var(--oem)} .oem .terms li{background:var(--oem-l);color:var(--oem)}
+.dir .side .en{color:var(--dir)} .dir .side .bar{background:var(--dir)} .dir .terms li{background:var(--dir-l);color:var(--dir)}
+.etc .side .en{color:var(--etc)} .etc .side .bar{background:var(--etc)}
 
-.kicker{ font-family:var(--en); font-size:12px; font-weight:900; letter-spacing:.3em; color:var(--gray-40); margin-bottom:26px; }
-h1{ font-weight:900; letter-spacing:-.015em; margin-bottom:22px; font-size:clamp(1.3rem,4.7vw,4.15rem) !important; line-height:1.3; }
-h1 em{ font-style:normal; color:var(--navy); }
-.desc{ font-size:15.5px; color:var(--gray-60); max-width:34em; margin-bottom:56px; line-height:1.95; }
-@media(max-width:760px){ .desc{ margin-bottom:40px; } }
+.docs{list-style:none;margin:0;padding:0;border-top:1px solid var(--ln)}
+.doc{position:relative;display:grid;grid-template-columns:4.4em 1fr 2.4em;gap:20px;padding:30px 12px;border-bottom:1px solid var(--ln);text-decoration:none;color:inherit;transition:background .2s}
+.doc .no{font-family:var(--num);font-size:15px;font-weight:800;letter-spacing:.06em;padding-top:3px}
+.oem .doc .no,.oem .doc .arr{color:var(--oem)}
+.dir .doc .no,.dir .doc .arr{color:var(--dir)}
+.etc .doc .no,.etc .doc .arr{color:var(--etc)}
+.doc h3{margin:0;font-size:clamp(1.05rem,1.6vw,1.2rem);font-weight:900;line-height:1.55;color:var(--ink)}
+.ttl{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.ttl .bd{margin:0}
+.doc p{margin:6px 0 0;font-size:16px;line-height:1.85;color:var(--g1);word-break:auto-phrase;line-break:strict}
+.doc .memo{margin:12px 0 0;padding:0 0 0 12px;border-left:3px solid var(--new);font-size:15px;line-height:1.7}
+.urlrow{display:flex;align-items:center;gap:10px;margin:12px 0 0}
+.doc .url{min-width:0;font-family:var(--num);font-size:14px;color:var(--g2);word-break:break-all}
+.cp{position:relative;z-index:1;flex:none;min-height:44px;min-width:5.2em;padding:0 12px;border:1px solid var(--ln);border-radius:8px;background:#fff;color:var(--g1);font:inherit;font-size:14px;font-weight:700;cursor:pointer;transition:background .15s,border-color .15s}
+.cp:hover{border-color:var(--g3)}
+.cp.done{background:var(--ink);border-color:var(--ink);color:#fff}
+.doc .st{display:block;margin:10px 0 0;font-size:15px;color:var(--g3)}
+.doc .arr{align-self:center;justify-self:end;font-size:20px;font-weight:700;transition:translate .2s}
+.doc.link{display:block;padding:0}
+.doc.link .lk{display:grid;grid-template-columns:4.4em 1fr 2.4em;gap:20px;padding:30px 12px 0;text-decoration:none;color:inherit}
+.doc.link .urlrow{margin:0;padding:12px 12px 30px calc(4.4em + 32px)}
+.doc.link:hover .arr{translate:4px 0}
+.oem .doc.link:hover{background:var(--oem-l)} .dir .doc.link:hover{background:var(--dir-l)} .etc .doc.link:hover{background:var(--etc-l)}
+.doc:not(.link) h3{color:var(--g1)}
+.fine{margin:18px 0 0;font-size:15px;color:var(--g2)}
 
-/* ===== 2つの入口 ===== */
-.gate{ display:grid; grid-template-columns:1fr 1fr; border-top:2px solid var(--ink); }
-.opt{
-  display:flex; flex-direction:column; gap:26px;
-  border-bottom:1px solid var(--gray-20); padding:40px 36px 40px 0;
-  text-decoration:none; color:var(--ink);
-  transition:background .2s ease;
-}
-.opt + .opt{ border-left:1px solid var(--gray-20); padding-left:44px; }
-.opt > div{ flex:1 1 auto; }
-.opt{ position:relative; overflow:hidden; }
-.opt > *{ position:relative; z-index:1; }
-.opt::before{
-  content:""; position:absolute; z-index:0; right:-18px; bottom:-14px;
-  width:58%; max-width:270px; aspect-ratio:240/200;
-  background-repeat:no-repeat; background-position:right bottom; background-size:contain;
-  opacity:.07; transition:opacity .3s ease, transform .3s ease; pointer-events:none;
-}
-.opt:hover::before{ opacity:.2; transform:translateY(-6px); }
-.opt--oem::before{ background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20240%20200%27%20fill%3D%27none%27%20stroke%3D%27%230B2C5C%27%20stroke-width%3D%272%27%20stroke-linejoin%3D%27round%27%3E%3Crect%20x%3D%2716%27%20y%3D%2762%27%20width%3D%27112%27%20height%3D%2774%27%20rx%3D%274%27%2F%3E%3Crect%20x%3D%2728%27%20y%3D%2750%27%20width%3D%27112%27%20height%3D%2774%27%20rx%3D%274%27%2F%3E%3Crect%20x%3D%2740%27%20y%3D%2738%27%20width%3D%27112%27%20height%3D%2774%27%20rx%3D%274%27%2F%3E%3Cpath%20d%3D%27M40%2038l56%2040%2056-40%27%2F%3E%3Cpath%20d%3D%27M160%2066h32M160%2092h22M160%20118h38%27%2F%3E%3Ccircle%20cx%3D%27206%27%20cy%3D%2766%27%20r%3D%277%27%2F%3E%3Ccircle%20cx%3D%27196%27%20cy%3D%2792%27%20r%3D%277%27%2F%3E%3Ccircle%20cx%3D%27212%27%20cy%3D%27118%27%20r%3D%277%27%2F%3E%3C%2Fsvg%3E"); }
-.opt--direct::before{ background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20240%20200%27%20fill%3D%27none%27%20stroke%3D%27%230B2C5C%27%20stroke-width%3D%272%27%20stroke-linejoin%3D%27round%27%3E%3Crect%20x%3D%2718%27%20y%3D%2724%27%20width%3D%27104%27%20height%3D%27134%27%20rx%3D%274%27%2F%3E%3Cpath%20d%3D%27M40%2056h60M40%2078h60M40%20100h40%27%2F%3E%3Cpath%20d%3D%27M138%20158v-36M172%20158v-66M206%20158v-96%27%2F%3E%3Cpath%20d%3D%27M132%2096l34-34%2034-34%27%2F%3E%3Cpath%20d%3D%27M186%2022h22v22%27%2F%3E%3C%2Fsvg%3E"); }
-.opt:hover{ background:var(--tint); }
-.opt-k{ font-family:var(--en); font-size:11px; font-weight:900; letter-spacing:.26em; color:var(--navy); margin-bottom:12px; }
-.opt-t{ font-size:clamp(1.15rem,2.7vw,1.55rem) !important; font-weight:900; line-height:1.5; margin-bottom:12px; }
-.opt-d{ font-size:14px; color:var(--gray-60); line-height:1.9; max-width:30em; margin-bottom:14px; }
-.opt-f{ font-family:var(--en); font-size:14px; font-weight:900; letter-spacing:.01em; color:var(--navy); }
-.opt-f .sep{ color:var(--gray-20); margin:0 10px; }
-.opt-camp{ margin-top:10px; display:inline-block; font-size:13px; font-weight:700; color:var(--navy); background:var(--tint); border:1px solid var(--navy); padding:5px 12px; }
-.opt-go{ margin-top:14px; font-size:14px; font-weight:900; color:var(--navy); text-decoration:underline; text-underline-offset:4px; }
-.opt-f s{ color:var(--gray-40); text-decoration-thickness:1.5px; margin-right:6px; }
-.opt-a{
-  flex-shrink:0; width:52px; height:52px; border:1px solid var(--navy); border-radius:50%;
-  display:flex; align-items:center; justify-content:center; color:var(--navy);
-  transition:background .2s ease, color .2s ease;
-}
-.opt:hover .opt-a{ background:var(--navy); color:var(--white); }
+footer{padding:44px 0 60px;border-top:1px solid var(--ln2);text-align:center;font-size:14.5px;color:var(--g2)}
+footer p + p{margin-top:4px}
+
 @media(max-width:900px){
-  .gate{ grid-template-columns:1fr; }
-  .opt{ gap:20px; padding:30px 4px; }
-  .opt + .opt{ border-left:none; padding-left:4px; }
-  .opt-a{ width:48px; height:48px; }
+  .in{grid-template-columns:1fr;gap:28px}
+  .side{position:static}
+  .terms{flex-direction:row;flex-wrap:wrap}
 }
-
-.gate-sub{ display:grid; grid-template-columns:1fr 1fr; }
-.gate-sub a{
-  display:flex; align-items:center; gap:7px; min-height:48px;
-  padding:12px 36px 12px 0; border-bottom:1px solid var(--gray-20);
-  font-size:13px; font-weight:700; color:var(--gray-60); text-decoration:none;
-  transition:color .2s ease, background .2s ease;
-}
-.gate-sub a:hover{ color:var(--navy); background:var(--tint); }
-.gate-sub a i{ font-style:normal; font-size:12px; color:var(--gray-40); }
-.gate-sub .blank{ border-bottom:1px solid var(--gray-20); border-left:1px solid var(--gray-20); }
-@media(max-width:900px){
-  .gate-sub{ grid-template-columns:1fr; }
-  .gate-sub .blank{ display:none; }
-  .gate-sub a{ padding:12px 4px; }
-}
-
-/* ===== 営業方針 ===== */
-.sales-principle{ display:flex; align-items:center; gap:18px; margin-top:58px; padding:24px 0; border-top:1px solid var(--gray-20); border-bottom:1px solid var(--gray-20); }
-.sales-principle__icon{ flex:0 0 auto; width:44px; height:44px; color:var(--navy); }
-.sales-principle__eyebrow{ font-family:var(--en); font-size:10px; font-weight:900; letter-spacing:.18em; color:var(--gray-60); margin-bottom:4px; }
-.sales-principle__quote{ font-size:clamp(1rem,2.2vw,1.25rem); font-weight:900; line-height:1.65; }
 @media(max-width:600px){
-  .sales-principle{ align-items:flex-start; gap:13px; margin-top:42px; padding:20px 0; }
-  .sales-principle__icon{ width:36px; height:36px; }
+  .nl a{grid-template-columns:auto 1fr;gap:4px 12px;padding:14px 4px}
+  .nl .t{grid-column:1 / -1}
+  .doc{grid-template-columns:3.4em 1fr;gap:12px;padding:26px 4px}
+  .doc .arr{display:none}
+  .doc.link .lk{grid-template-columns:3.4em 1fr;gap:12px;padding:26px 4px 0}
+  .doc.link .urlrow{padding:12px 4px 26px calc(3.4em + 16px)}
+  .hero .deco .hm{display:none}
+  .hero .deco svg{scale:.72}
 }
 
-/* ===== 営業用リンク集 ===== */
-/* ===== お知らせ ===== */
-.news{ margin-top:58px; padding-top:30px; border-top:2px solid var(--ink); }
-.news__head{ display:flex; align-items:baseline; gap:18px; margin-bottom:16px; }
-.news__kicker{ font-family:var(--en); font-size:11px; font-weight:900; letter-spacing:.26em; color:var(--navy); }
-.news__title{ font-size:clamp(1.15rem,2.6vw,1.5rem); font-weight:900; line-height:1.45; }
-.news__list{ list-style:none; border-top:1px solid var(--gray-20); }
-.news__item{ border-bottom:1px solid var(--gray-20); }
-.news__link{ display:grid; grid-template-columns:96px auto minmax(0,1fr); align-items:baseline; gap:16px;
-  padding:16px 6px; color:var(--ink); text-decoration:none; transition:background .2s ease; }
-.news__link:hover{ background:var(--tint); }
-.news__date{ font-family:var(--en); font-size:12.5px; font-weight:700; color:var(--gray-60); }
-.news__badge{ justify-self:start; padding:2px 8px; font-family:var(--en); font-size:10px; font-weight:900;
-  letter-spacing:.1em; line-height:1.6; color:var(--white); background:var(--red); }
-.news__name{ display:block; font-size:14.5px; font-weight:900; line-height:1.65; }
-.news__name i{ font-style:normal; margin-left:6px; color:var(--navy); }
-.news__desc{ display:block; margin-top:4px; font-size:12.5px; color:var(--gray-60); line-height:1.8; }
-@media(max-width:600px){
-  .news{ margin-top:46px; padding-top:24px; }
-  .news__head{ display:block; }
-  .news__kicker{ margin-bottom:6px; }
-  .news__link{ grid-template-columns:auto minmax(0,1fr); gap:6px 12px; }
-  .news__body{ grid-column:1 / -1; }
-}
-
-/* 更新したページに付ける赤い印 */
-.sales-link__flags{ display:flex; align-items:center; gap:6px; }
-.sales-link__new{ display:inline-block; padding:2px 7px; font-family:var(--en); font-size:10px; font-weight:900;
-  letter-spacing:.1em; line-height:1.5; color:var(--white); background:var(--red); }
-
-.sales-links{ margin-top:72px; padding-top:32px; border-top:2px solid var(--ink); }
-.sales-links__head{ display:flex; align-items:end; justify-content:space-between; gap:24px; margin-bottom:28px; }
-.sales-links__kicker{ font-family:var(--en); font-size:11px; font-weight:900; letter-spacing:.26em; color:var(--navy); margin-bottom:8px; }
-.sales-links__title{ font-size:clamp(1.3rem,3vw,1.8rem); font-weight:900; line-height:1.45; }
-.sales-links__lead{ max-width:28em; font-size:13px; color:var(--gray-60); line-height:1.8; }
-.sales-links__groups{ display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:18px; }
-.sales-links__group{ align-self:start; border:1px solid var(--gray-20); background:rgba(255,255,255,.8); }
-.sales-links__group-title{ padding:16px 18px; border-bottom:1px solid var(--gray-20); font-size:15px; font-weight:900; color:var(--navy); }
-.sales-link{ display:block; padding:17px 18px; border-bottom:1px solid var(--gray-20); color:var(--ink); text-decoration:none; transition:background .2s ease; }
-.sales-link:last-child{ border-bottom:none; }
-.sales-link:hover{ background:var(--tint); }
-.sales-link__meta{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:6px; }
-.sales-link__label{ font-family:var(--en); font-size:10px; font-weight:900; letter-spacing:.12em; color:var(--gray-60); }
-.sales-link__internal{ display:inline-block; padding:2px 7px; font-size:12px; font-weight:900; line-height:1.5; color:var(--navy); background:var(--tint); border:1px solid var(--gray-20); }
-.sales-link__name{ display:flex; align-items:baseline; justify-content:space-between; gap:10px; font-size:14px; font-weight:900; line-height:1.6; }
-.sales-link__name span:last-child{ flex:0 0 auto; color:var(--navy); }
-.sales-link__desc{ margin-top:5px; font-size:12px; color:var(--gray-60); line-height:1.7; }
-@media(max-width:900px){ .sales-links__groups{ grid-template-columns:1fr; } }
-@media(max-width:600px){
-  .sales-links{ margin-top:52px; padding-top:26px; }
-  .sales-links__head{ display:block; margin-bottom:22px; }
-  .sales-links__lead{ margin-top:10px; }
-}
-.foot-note{ margin-top:34px; font-size:13px; color:var(--gray-40); line-height:1.9; }
-footer{ position:relative; z-index:1; flex-shrink:0; border-top:1px solid var(--gray-20); padding:22px 0 36px; }
-footer .f{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; font-size:12px; color:var(--gray-40); }
+.doc .ver{font-family:var(--num);font-size:14px;font-weight:800;color:var(--g2)}
+footer .motto{margin:0 0 14px;font-size:15px;color:var(--g1)}
+footer .motto b{color:var(--ink)}
+footer nav{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 20px;margin-top:10px}
+footer nav a{display:inline-flex;align-items:center;min-height:44px;color:var(--g2)}
 </style>
 </head>
 <body>
 
-<div class="bg" aria-hidden="true"></div>
+<header class="hero">
+  <div class="deco" aria-hidden="true">
+    <!-- 申請書 -->
+    <svg viewBox="0 0 48 48" style="left:8%;top:18%;width:70px;rotate:-12deg"><path d="M12 5h17l9 9v29H12z"/><path d="M29 5v9h9M18 22h14M18 29h14M18 36h9"/></svg>
+    <!-- 電卓 -->
+    <svg class="hm" viewBox="0 0 48 48" style="left:20%;top:63%;width:58px;rotate:10deg"><rect x="10" y="5" width="28" height="38" rx="3"/><rect x="15" y="10" width="18" height="8" rx="1"/><path d="M16 25h2M23 25h2M30 25h2M16 31h2M23 31h2M30 31h2M16 37h2M23 37h2M30 37h2"/></svg>
+    <!-- 円の硬貨 -->
+    <svg viewBox="0 0 48 48" style="right:9%;top:16%;width:76px;rotate:-6deg"><circle cx="24" cy="24" r="18"/><path d="M17 14l7 10 7-10M24 24v12M18 26h12M18 31h12"/></svg>
+    <!-- 銀行（融資） -->
+    <svg class="hm" viewBox="0 0 48 48" style="right:19%;top:62%;width:60px;rotate:8deg"><path d="M6 18 24 8l18 10z"/><path d="M11 22v14M19 22v14M29 22v14M37 22v14M6 40h36"/></svg>
+    <!-- 締切のカレンダー -->
+    <svg class="hm" viewBox="0 0 48 48" style="left:33%;top:8%;width:48px;rotate:-6deg"><rect x="6" y="10" width="36" height="32" rx="4"/><path d="M6 19h36M15 6v8M33 6v8M17 30l5 5 9-10"/></svg>
+    <!-- 探す虫眼鏡 -->
+    <svg class="hm" viewBox="0 0 48 48" style="right:33%;top:10%;width:44px;rotate:10deg"><circle cx="20" cy="20" r="12"/><path d="M29 29l13 13"/></svg>
+    <!-- 上向きのグラフ -->
+    <svg class="s" viewBox="0 0 48 48" style="left:4%;top:48%;width:52px"><path d="M6 42h36M10 36l9-10 7 6 14-16"/><path d="M33 16h7v7"/></svg>
+    <!-- 毎週届く封筒 -->
+    <svg class="s" viewBox="0 0 48 48" style="right:4%;top:46%;width:52px"><rect x="5" y="11" width="38" height="26" rx="3"/><path d="M5 14l19 13 19-13"/></svg>
+    <!-- 計画を書く鉛筆 -->
+    <svg class="s hm" viewBox="0 0 48 48" style="left:40%;top:78%;width:34px"><path d="M32 6l10 10-24 24H8V30z"/><path d="M27 11l10 10"/></svg>
+    <!-- はんこ -->
+    <svg class="s" viewBox="0 0 48 48" style="right:38%;top:79%;width:30px"><path d="M18 6h12v14c0 3 8 4 8 10v4H10v-4c0-6 8-7 8-10z"/><path d="M8 40h32"/></svg>
+    <span class="dot" style="left:15%;top:40%;width:8px;height:8px"></span>
+    <span class="dot" style="right:14%;top:38%;width:6px;height:6px"></span>
+    <span class="dot hm" style="left:28%;top:30%;width:5px;height:5px"></span>
+    <span class="dot hm" style="right:27%;top:84%;width:7px;height:7px"></span>
+  </div>
+  <div class="w">
+    <span class="en">J-Match Engine</span>
+    <h1>Jマッチエンジン</h1>
+    <span class="rule" aria-hidden="true"></span>
+    <p class="meta">
+      <span>最終更新 <b>2026.09.23</b></span>
+      <span class="k"><i style="background:var(--oem)"></i>OEM 5点</span>
+      <span class="k"><i style="background:var(--dir)"></i>直販 9点</span>
+      <span class="k"><i style="background:var(--etc)"></i>その他 2点</span>
+    </p>
+  </div>
+</header>
 
 <main>
-  <div class="wrap">
-    <p class="kicker">J-MATCH ENGINE</p>
-    <h1>ご案内は、<em>2種類</em>あります。</h1>
-    <p class="desc">御社の名前でお客様へお配りいただく場合と、御社ご自身でお使いいただく場合で、ご案内の内容が分かれています。配る側になる場合は、お客様に見えるページもあわせてご確認ください。</p>
 
-    <div class="gate">
-
-      <a class="opt opt--oem" href="./oem/">
-        <div>
-          <p class="opt-k">OEM ／ WHITE-LABEL</p>
-          <h2 class="opt-t">御社のブランドで、<br>御社の顧客に配る</h2>
-          <p class="opt-d">ロゴ・色・名称を決めるだけ。開発もサーバーも問い合わせ対応も当社が持ちます。御社の顧客には、毎週「使える制度」が届きます。</p>
-          <p class="opt-f"><s>初期50万円</s>9月末契約まで20万円<span class="sep">／</span>月5万円<span class="sep">／</span>最短1週間</p>
-        </div>
-        <span class="opt-a" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg>
-        </span>
-      </a>
-
-      <a class="opt opt--direct" href="./direct/">
-        <div>
-          <p class="opt-k">DIRECT</p>
-          <h2 class="opt-t">Jマッチエンジン<br>直販</h2>
-          <p class="opt-d">自社に合う補助金・融資・税制優遇を継続的に確認し、AIとの対話で事業計画を準備。短い締切にも対応できる会社へ。</p>
-          <p class="opt-f">初期登録費用10万円<span class="sep">＋</span>月額3万円</p>
-          <p class="opt-camp">事例協力企業は初期登録費用無料</p>
-          <p class="opt-go">月額3万円プランの詳細を見る</p>
-        </div>
-        <span class="opt-a" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg>
-        </span>
-      </a>
-
-    </div>
-
-    <div class="gate-sub">
-      <a href="./oem-plans/">OEM導入先のお客様が見る料金ページ<i>→</i></a>
-      <span class="blank"></span>
-    </div>
-
-    <aside class="sales-principle" aria-label="営業方針">
-      <svg class="sales-principle__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M24 6v11"/>
-        <path d="M17 17h14"/>
-        <path d="M24 17v13c0 6.1-3.8 10-8.1 10-3.3 0-5.9-2.5-5.9-5.6 0-2.6 2-4.7 4.6-4.7 2 0 3.7 1.4 4.1 3.2"/>
-        <path d="M24 6c3.2 0 5.8 2.6 5.8 5.8"/>
-        <path d="M32 9.5 36 6"/>
-      </svg>
-      <div>
-        <p class="sales-principle__eyebrow">SALES PRINCIPLE</p>
-        <p class="sales-principle__quote">魚を与えるのではなく、魚の釣り方を教えよ。</p>
-      </div>
-    </aside>
-
-    <section class="news" aria-labelledby="news-title">
-      <div class="news__head">
-        <p class="news__kicker">NEWS</p>
-        <h2 class="news__title" id="news-title">お知らせ</h2>
-      </div>
-      <ol class="news__list">
-        <li class="news__item">
-          <a class="news__link" href="./direct/v2/" target="_blank" rel="noopener">
-            <span class="news__date">2026.09.23</span>
-            <span class="news__badge">NEW</span>
-            <span class="news__body">
-              <span class="news__name">直販ページ v2 を公開（確認用）<i aria-hidden="true">→</i></span>
-              <span class="news__desc">いまの直販ページと同じストーリーのまま、ヒーローと文字量を整理した改訂版。差し替えは確認後です</span>
-            </span>
-          </a>
-        </li>
-        <li class="news__item">
-          <a class="news__link" href="./direct-guide/v4/" target="_blank" rel="noopener">
-            <span class="news__date">2026.09.23</span>
-            <span class="news__badge">NEW</span>
-            <span class="news__body">
-              <span class="news__name">直販 営業説明資料 v4 を公開<i aria-hidden="true">→</i></span>
-              <span class="news__desc">v3と同じ中身と操作のまま、オンラインで読める大きさに見た目を刷新。Rキーの収録モードもそのまま使えます</span>
-            </span>
-          </a>
-        </li>
-        <li class="news__item">
-          <a class="news__link" href="./download/" target="_blank" rel="noopener">
-            <span class="news__date">2026.09.23</span>
-            <span class="news__badge">NEW</span>
-            <span class="news__body">
-              <span class="news__name">資料請求ページ（制度100）を公開<i aria-hidden="true">→</i></span>
-              <span class="news__desc">広告・メールの着地点。右に追従する申込フォームつき。送信先はまだ確定しておらず、いまは全社問い合わせへ飛びます</span>
-            </span>
-          </a>
-        </li>
-      </ol>
-    </section>
-
-    <section class="sales-links" aria-labelledby="sales-links-title">
-      <div class="sales-links__head">
-        <div>
-          <p class="sales-links__kicker">SALES QUICK LINKS</p>
-          <h2 class="sales-links__title" id="sales-links-title">リンク集</h2>
-        </div>
-        <p class="sales-links__lead">商談中・商談後の案内に使うページを、提案の種類ごとにまとめました。</p>
-      </div>
-
-      <div class="sales-links__groups">
-        <section class="sales-links__group" aria-labelledby="oem-links-title">
-          <h3 class="sales-links__group-title" id="oem-links-title">OEM提案</h3>
-          <a class="sales-link" href="./oem/" target="_blank" rel="noopener">
-            <span class="sales-link__meta"><span class="sales-link__label">CUSTOMER</span></span>
-            <span class="sales-link__name">Jマッチエンジン OEM提供<span aria-hidden="true">→</span></span>
-            <span class="sales-link__desc">提携先・導入検討企業への基本案内</span>
-          </a>
-          <a class="sales-link" href="https://writeup-inc.github.io/seminar/jmatch-engine-oem/" target="_blank" rel="noopener">
-            <span class="sales-link__meta"><span class="sales-link__label">CUSTOMER</span></span>
-            <span class="sales-link__name">OEM セミナー動画アーカイブ<span aria-hidden="true">→</span></span>
-            <span class="sales-link__desc">説明後に送る動画アーカイブ</span>
-          </a>
-          <a class="sales-link" href="./oem-plans/" target="_blank" rel="noopener">
-            <span class="sales-link__meta"><span class="sales-link__label">CUSTOMER</span></span>
-            <span class="sales-link__name">会員プラン<span aria-hidden="true">→</span></span>
-            <span class="sales-link__desc">OEM導入先のお客様向けの料金案内</span>
-          </a>
-          <a class="sales-link" href="https://writeup-inc.github.io/saas/jmatch-oem-sales-talk/" target="_blank" rel="noopener">
-            <span class="sales-link__meta"><span class="sales-link__label">SALES</span><span class="sales-link__internal">社内限定</span></span>
-            <span class="sales-link__name">OEMセールストーク<span aria-hidden="true">→</span></span>
-            <span class="sales-link__desc">商談前の説明準備・話法確認用</span>
-          </a>
-        </section>
-
-        <section class="sales-links__group" aria-labelledby="direct-links-title">
-          <h3 class="sales-links__group-title" id="direct-links-title">直販提案</h3>
-          <a class="sales-link" href="./download/" target="_blank" rel="noopener">
-            <span class="sales-link__meta"><span class="sales-link__label">CUSTOMER</span><span class="sales-link__flags"><span class="sales-link__new">NEW</span><span class="sales-link__internal">遷移先が暫定</span></span></span>
-            <span class="sales-link__name">資料請求ページ（制度100）<span aria-hidden="true">→</span></span>
-            <span class="sales-link__desc">広告・メールの着地点。申し込みフォームは未確定のため、いまは全社問い合わせへ飛びます</span>
-          </a>
-          <a class="sales-link" href="./whitepaper-100/" target="_blank" rel="noopener">
-            <span class="sales-link__meta"><span class="sales-link__label">SALES</span><span class="sales-link__flags"><span class="sales-link__new">NEW</span><span class="sales-link__internal">社内限定・ダミー</span></span></span>
-            <span class="sales-link__name">資料DL用ホワイトペーパー（制度100）<span aria-hidden="true">→</span></span>
-            <span class="sales-link__desc">体裁確認用。制度名・金額・採択率はすべて仮の値です。お客様へ送らないでください</span>
-          </a>
-          <a class="sales-link" href="./direct/" target="_blank" rel="noopener">
-            <span class="sales-link__meta"><span class="sales-link__label">CUSTOMER</span></span>
-            <span class="sales-link__name">Jマッチエンジン 直販<span aria-hidden="true">→</span></span>
-            <span class="sales-link__desc">AI自走プランの基本案内</span>
-          </a>
-          <a class="sales-link" href="./direct/v2/" target="_blank" rel="noopener">
-            <span class="sales-link__meta"><span class="sales-link__label">CUSTOMER</span><span class="sales-link__flags"><span class="sales-link__new">NEW</span><span class="sales-link__internal">差し替え前の確認用</span></span></span>
-            <span class="sales-link__name">Jマッチエンジン 直販 v2<span aria-hidden="true">→</span></span>
-            <span class="sales-link__desc">上の直販ページを、同じストーリーのまま作り直した改訂版。毎週まわる流れを図1枚で見せ、文字量を半分以下に。お客様へ送るのは差し替えが決まってから</span>
-          </a>
-          <a class="sales-link" href="./direct/?story=1" target="_blank" rel="noopener">
-            <span class="sales-link__meta"><span class="sales-link__label">CUSTOMER</span></span>
-            <span class="sales-link__name">経営小説<span aria-hidden="true">→</span></span>
-            <span class="sales-link__desc">導入後の活用イメージを伝える読み物</span>
-          </a>
-          <a class="sales-link" href="./consult-comparison/" target="_blank" rel="noopener">
-            <span class="sales-link__meta"><span class="sales-link__label">CUSTOMER</span></span>
-            <span class="sales-link__name">JコンサルからJマッチへ｜サービス比較<span aria-hidden="true">→</span></span>
-            <span class="sales-link__desc">既存サービスとの違いを説明するとき</span>
-          </a>
-          <a class="sales-link" href="https://writeup-inc.github.io/seminar/jmatch-engine/" target="_blank" rel="noopener">
-            <span class="sales-link__meta"><span class="sales-link__label">CUSTOMER</span></span>
-            <span class="sales-link__name">直販セミナー申し込み<span aria-hidden="true">→</span></span>
-            <span class="sales-link__desc">説明後の次のアクションとして案内</span>
-          </a>
-          <a class="sales-link" href="./direct-guide/v4/" target="_blank" rel="noopener">
-            <span class="sales-link__meta"><span class="sales-link__label">SALES</span><span class="sales-link__flags"><span class="sales-link__new">NEW</span><span class="sales-link__internal">社内限定</span></span></span>
-            <span class="sales-link__name">直販 営業説明資料 v4<span aria-hidden="true">→</span></span>
-            <span class="sales-link__desc">商談で画面を見せながら説明する20枚。オンラインで読める大きさの最新版。Rキーで収録モード（お客様向けの18枚）に切り替わります</span>
-          </a>
-          <a class="sales-link" href="./direct-guide/v3/" target="_blank" rel="noopener">
-            <span class="sales-link__meta"><span class="sales-link__label">SALES</span><span class="sales-link__internal">社内限定</span></span>
-            <span class="sales-link__name">直販 営業説明資料 v3（旧デザイン）<span aria-hidden="true">→</span></span>
-            <span class="sales-link__desc">v4と同じ中身の旧デザイン版。見比べるとき用</span>
-          </a>
-          <a class="sales-link" href="https://writeup-inc.github.io/saas/jmatch-direct-sales-talk/" target="_blank" rel="noopener">
-            <span class="sales-link__meta"><span class="sales-link__label">SALES</span><span class="sales-link__internal">社内限定</span></span>
-            <span class="sales-link__name">直販セールストーク<span aria-hidden="true">→</span></span>
-            <span class="sales-link__desc">商談前の説明準備・話法確認用</span>
-          </a>
-        </section>
-
-        <section class="sales-links__group" aria-labelledby="operation-links-title">
-          <h3 class="sales-links__group-title" id="operation-links-title">管理・運用</h3>
-          <a class="sales-link" href="https://claude.ai/public/artifacts/61278311-569e-4836-941c-50317e2cd5e6" target="_blank" rel="noopener">
-            <span class="sales-link__meta"><span class="sales-link__label">OPERATION</span></span>
-            <span class="sales-link__name">OEM管理者向け<span aria-hidden="true">→</span></span>
-            <span class="sales-link__desc">OEM導入後の運用確認用</span>
-          </a>
-          <a class="sales-link" href="https://jmatch-member-support-live.vercel.app/" target="_blank" rel="noopener">
-            <span class="sales-link__meta"><span class="sales-link__label">OPERATION</span></span>
-            <span class="sales-link__name">会員向け管理画面（公開版）<span aria-hidden="true">→</span></span>
-            <span class="sales-link__desc">会員向け画面を確認・案内するとき</span>
-          </a>
-        </section>
-      </div>
-    </section>
-
-    <p class="foot-note">金額はいずれも税別です。申請の代行は行っておりません。</p>
+<!-- お知らせ -->
+<section class="news" aria-labelledby="news-h">
+  <div class="w">
+    <div class="sh"><h2 id="news-h">お知らせ</h2><span class="en">News</span></div>
+    <ul class="nl">
+      <li><a href="#a-01v2"><time>09.23</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-new">NEW</span>サービス紹介ページの v2 を、差し替え前の確認用として公開しました</span></a></li>
+      <li><a href="#a-03"><time>09.23</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-new">NEW</span>営業説明資料 v4 を公開。中身はv3のまま、オンラインで読める大きさに組み直しました</span></a></li>
+      <li><a href="#a-05"><time>09.23</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-new">NEW</span>資料請求ページを公開しました。フォームの送信先は調整中です</span></a></li>
+      <li><a href="#a-06"><time>09.22</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-new">NEW</span>資料請求用のホワイトペーパー（制度100）を追加。数値はまだ仮の値です</span></a></li>
+      <li><a href="#a-03"><time>09.22</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-up">更新</span>営業説明資料に、セミナー収録用のモード（Rキー）を追加しました</span></a></li>
+    </ul>
+    <details class="more">
+      <summary>過去のお知らせ（9件）</summary>
+      <ul class="nl">
+      <li><a href="#a-03"><time>09.20</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-up">更新</span>営業説明資料に、Jシステムの提供実績（金融機関36・自治体29）を追加しました</span></a></li>
+      <li><a href="#a-03"><time>09.19</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-new">NEW</span>商談で画面共有する営業説明資料を公開しました</span></a></li>
+      <li><a href="#a-07"><time>09.15</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-new">NEW</span>Jコンサルとの比較ページを公開しました</span></a></li>
+      <li><a href="#b-02"><time>09.13</time><span class="cat oem">OEM</span><span class="t"><span class="bd bg-new">NEW</span>OEMセミナー動画アーカイブの請求ページを公開しました</span></a></li>
+      <li><a href="#b-01"><time>09.13</time><span class="cat oem">OEM</span><span class="t"><span class="bd bg-up">更新</span>OEM提供のご案内の料金と、会員プランの段数を改めました</span></a></li>
+      <li><a href="#a-02"><time>09.13</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-new">NEW</span>直販セミナーの申込ページを公開しました</span></a></li>
+      <li><a href="#a-08"><time>09.13</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-new">NEW</span>サービス紹介ページに、経営小説を追加しました</span></a></li>
+      <li><a href="#a-01"><time>09.12</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-up">更新</span>サービス紹介ページを、月額3万円のプランを主軸に作り直しました</span></a></li>
+      <li><a href="#a-04"><time>09.12</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-in">社内</span>商談時の説明ノートを社内に配布しました</span></a></li>
+      </ul>
+    </details>
   </div>
+</section>
+
+<!-- OEM -->
+<section class="blk oem" id="oem" aria-labelledby="oem-h">
+  <div class="w in">
+    <div class="side">
+      <span class="en">B ／ OEM</span>
+      <h2 id="oem-h">貴社の名前で配る</h2>
+      <p class="who">お客様に配る会社の方へ</p>
+      <div class="hist"><p class="hist-h">この区画の更新履歴</p><ol><li><time>09.23</time><span class="t"><span class="n">B区画</span>資料インデックスへ改装し、番号を付与</span></li><li><time>09.13</time><span class="t"><span class="n">B-02</span>動画アーカイブの請求ページを公開</span></li><li><time>09.13</time><span class="t"><span class="n">B-01</span>料金と会員プランの段数を改定</span></li></ol></div>
+      <span class="bar" aria-hidden="true"></span>
+      <ul class="terms"><li>ロゴ・色・名称を決めるだけ</li><li>導入まで最短1週間</li><li>取扱条件はB-01に掲載</li></ul>
+    </div>
+    <ul class="docs">
+        <li><div class="doc link" id="b-01">
+          <a class="lk" href="./oem/"><span class="no">B-01</span>
+          <div><div class="ttl"><h3>OEM提供のご案内</h3></div>
+            <p>顧客リストを持つ会社が、自社の名前でJマッチエンジンを配るための案内です。ロゴ・色・名称を決めるだけで、開発・サーバー・問い合わせ対応は当社が持ちます。</p></div>
+          <span class="arr" aria-hidden="true">→</span></a>
+          <div class="urlrow"><span class="url">writeup-inc.github.io/saas/jmatch-engine/oem/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/jmatch-engine/oem/">コピー</button></div>
+        </div></li>
+        <li><div class="doc link" id="b-02">
+          <a class="lk" href="https://writeup-inc.github.io/seminar/jmatch-engine-oem/"><span class="no">B-02</span>
+          <div><div class="ttl"><h3>OEMセミナー動画</h3></div>
+            <p>OEMの仕組みと料金を15分にまとめた、動画アーカイブの請求ページ。商談に出られない相手や、社内で回して検討してもらうときは、このURLだけ送れば足ります。</p></div>
+          <span class="arr" aria-hidden="true">→</span></a>
+          <div class="urlrow"><span class="url">writeup-inc.github.io/seminar/jmatch-engine-oem/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/seminar/jmatch-engine-oem/">コピー</button></div>
+        </div></li>
+        <li><div class="doc" id="b-03">
+          <span class="no">B-03</span>
+          <div><div class="ttl"><h3>パートナー説明会 投影資料</h3><span class="bd bg-soon">準備中</span></div>
+            <p>説明会の当日に映す資料です。誰が話しても同じ話になるよう、話す文言を併記します。</p>
+            <span class="st">公開時にこのページでお知らせします</span></div>
+        </div></li>
+        <li><div class="doc" id="b-04">
+          <span class="no">B-04</span>
+          <div><div class="ttl"><h3>パートナー向け説明ノート</h3><span class="bd bg-in">社内</span></div>
+            <span class="st">社内共有のため、このページからは開けません</span></div>
+        </div></li>
+        <li><div class="doc link" id="b-05">
+          <a class="lk" href="./oem-plans/"><span class="no">B-05</span>
+          <div><div class="ttl"><h3>会員プラン</h3></div>
+            <p>OEMを導入した会社が、自社のお客様へ配る料金の案内。制度が毎週届く無料プランから顧問契約まで、4段階あります。</p></div>
+          <span class="arr" aria-hidden="true">→</span></a>
+          <div class="urlrow"><span class="url">writeup-inc.github.io/saas/jmatch-engine/oem-plans/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/jmatch-engine/oem-plans/">コピー</button></div>
+        </div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 直販 -->
+<section class="blk dir" id="direct" aria-labelledby="dir-h">
+  <div class="w in">
+    <div class="side">
+      <span class="en">A ／ Direct</span>
+      <h2 id="dir-h">自社で使う</h2>
+      <p class="who">使う会社の方へ</p>
+      <div class="hist"><p class="hist-h">この区画の更新履歴</p><ol><li><time>09.23</time><span class="t"><span class="n">A-01</span>v2を差し替え前の確認用として公開</span></li><li><time>09.23</time><span class="t"><span class="n">A-03</span>営業説明資料v4を公開</span></li><li><time>09.23</time><span class="t"><span class="n">A-05</span>資料請求ページを公開</span></li></ol></div>
+      <span class="bar" aria-hidden="true"></span>
+      <ul class="terms"><li>月額3万円</li><li>初期登録費用10万円</li><li>事例協力の10社は初期0円</li></ul>
+    </div>
+    <div>
+      <ul class="docs">
+        <li><div class="doc link" id="a-01">
+          <a class="lk" href="./direct/"><span class="no">A-01</span>
+          <div><div class="ttl"><h3>サービス紹介ページ</h3></div>
+            <p>補助金・融資・税制優遇を継続的に確認し、AIとの対話で事業計画の土台を自社で作るサービスの案内。直販の商談はここから始めます。</p></div>
+          <span class="arr" aria-hidden="true">→</span></a>
+          <div class="urlrow"><span class="url">writeup-inc.github.io/saas/jmatch-engine/direct/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/jmatch-engine/direct/">コピー</button></div>
+        </div></li>
+        <li><div class="doc link" id="a-01v2">
+          <a class="lk" href="./direct/v2/"><span class="no">A-01 <span class="ver">v2</span></span>
+          <div><div class="ttl"><h3>サービス紹介ページ v2</h3><span class="bd bg-new">NEW</span></div>
+            <p>A-01と同じストーリーのまま、ヒーローと文字量を整理した改訂版。毎週まわる流れを図1枚で見せます。</p>
+            <p class="memo">09.23 差し替え前の確認用。お客様へ送るのは差し替えが決まってから</p></div>
+          <span class="arr" aria-hidden="true">→</span></a>
+          <div class="urlrow"><span class="url">writeup-inc.github.io/saas/jmatch-engine/direct/v2/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/jmatch-engine/direct/v2/">コピー</button></div>
+        </div></li>
+        <li><div class="doc link" id="a-02">
+          <a class="lk" href="https://writeup-inc.github.io/seminar/jmatch-engine/"><span class="no">A-02</span>
+          <div><div class="ttl"><h3>直販セミナー 申込ページ</h3></div>
+            <p>中小企業の経営者・社員向けの15分のオンラインセミナー。管理画面での情報確認と、AIで事業計画を作る入口を紹介します。</p></div>
+          <span class="arr" aria-hidden="true">→</span></a>
+          <div class="urlrow"><span class="url">writeup-inc.github.io/seminar/jmatch-engine/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/seminar/jmatch-engine/">コピー</button></div>
+        </div></li>
+        <li><div class="doc link" id="a-03">
+          <a class="lk" href="./direct-guide/v4/"><span class="no">A-03</span>
+          <div><div class="ttl"><h3>営業説明資料</h3><span class="bd bg-new">NEW</span></div>
+            <p>商談で画面共有しながら説明する20枚。Rキーでお客様向けの収録モード（18枚）に切り替わり、セミナーの収録にも使います。</p></div>
+          <span class="arr" aria-hidden="true">→</span></a>
+          <div class="urlrow"><span class="url">writeup-inc.github.io/saas/jmatch-engine/direct-guide/v4/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/jmatch-engine/direct-guide/v4/">コピー</button></div>
+        </div></li>
+        <li><div class="doc" id="a-04">
+          <span class="no">A-04</span>
+          <div><div class="ttl"><h3>商談時の説明ノート</h3><span class="bd bg-in">社内</span></div>
+            <span class="st">社内共有のため、このページからは開けません</span></div>
+        </div></li>
+        <li><div class="doc link" id="a-05">
+          <a class="lk" href="./download/"><span class="no">A-05</span>
+          <div><div class="ttl"><h3>資料請求ページ（制度100）</h3><span class="bd bg-new">NEW</span></div>
+            <p>広告・メールから来た人の着地点。右に追従する申込フォームで、ホワイトペーパーを請求してもらいます。</p>
+            <p class="memo">09.23 フォームの送信先は調整中。いまは全社の問い合わせ窓口へつながります</p></div>
+          <span class="arr" aria-hidden="true">→</span></a>
+          <div class="urlrow"><span class="url">writeup-inc.github.io/saas/jmatch-engine/download/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/jmatch-engine/download/">コピー</button></div>
+        </div></li>
+        <li><div class="doc link" id="a-06">
+          <a class="lk" href="./whitepaper-100/"><span class="no">A-06</span>
+          <div><div class="ttl"><h3>ホワイトペーパー</h3><span class="bd bg-soon">準備中</span></div>
+            <p>資料請求ページで渡す「制度100」。制度100件と3か月ごとのAI分析4本。</p>
+            <p class="memo">制度名・金額・採択率はすべて仮の値。お客様へは送らないでください</p></div>
+          <span class="arr" aria-hidden="true">→</span></a>
+          <div class="urlrow"><span class="url">writeup-inc.github.io/saas/jmatch-engine/whitepaper-100/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/jmatch-engine/whitepaper-100/">コピー</button></div>
+        </div></li>
+        <li><div class="doc link" id="a-07">
+          <a class="lk" href="./consult-comparison/"><span class="no">A-07</span>
+          <div><div class="ttl"><h3>Jコンサルとの比較</h3></div>
+            <p>「JコンサルからJマッチへ」のサービス比較。Jコンサルをご利用だったお客様に、まず開いてもらうページ。月額・手数料・情報探し・申請書づくりなど7点で違いを並べています。</p></div>
+          <span class="arr" aria-hidden="true">→</span></a>
+          <div class="urlrow"><span class="url">writeup-inc.github.io/saas/jmatch-engine/consult-comparison/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/jmatch-engine/consult-comparison/">コピー</button></div>
+        </div></li>
+        <li><div class="doc link" id="a-08">
+          <a class="lk" href="./direct/?story=1"><span class="no">A-08</span>
+          <div><div class="ttl"><h3>読みもの：経営小説</h3></div>
+            <p>サービス紹介ページの中にある約5分の短編を、直接開くURL。料金の前に、導入後の姿から伝えたい相手へ送ります。</p></div>
+          <span class="arr" aria-hidden="true">→</span></a>
+          <div class="urlrow"><span class="url">writeup-inc.github.io/saas/jmatch-engine/direct/?story=1</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/jmatch-engine/direct/?story=1">コピー</button></div>
+        </div></li>
+      </ul>
+      <p class="fine">金額はいずれも税別です。申請の代行は行っていません。</p>
+    </div>
+  </div>
+</section>
+
+<!-- その他 -->
+<section class="blk etc" id="etc" aria-labelledby="etc-h">
+  <div class="w in">
+    <div class="side">
+      <span class="en">C ／ Demo</span>
+      <h2 id="etc-h">実演用の画面</h2>
+      <p class="who">直販にもOEMにも使う画面</p>
+      <div class="hist"><p class="hist-h">この区画の更新履歴</p><ol><li><time>09.23</time><span class="t"><span class="n">C区画</span>実演用の画面を1か所にまとめて新設</span></li><li><time>09.22</time><span class="t"><span class="n">C-01</span>営業説明資料の6枚から実画面へリンク</span></li><li><time>09.16</time><span class="t"><span class="n">C-02</span>入口のリンク集に掲載</span></li></ol></div>
+      <span class="bar" aria-hidden="true"></span>
+    </div>
+    <ul class="docs">
+        <li><div class="doc link" id="c-01">
+          <a class="lk" href="https://jmatch-member-support-live.vercel.app/"><span class="no">C-01</span>
+          <div><div class="ttl"><h3>会員向けの画面</h3></div>
+            <p>利用する会社が見るマイページの公開デモ。制度の検索・比較、会員特典、支援者・資料、イベントを8画面で確かめられます。実演で触ってもらう用です。</p></div>
+          <span class="arr" aria-hidden="true">→</span></a>
+          <div class="urlrow"><span class="url">jmatch-member-support-live.vercel.app/</span><button type="button" class="cp" data-url="https://jmatch-member-support-live.vercel.app/">コピー</button></div>
+        </div></li>
+        <li><div class="doc link" id="c-02">
+          <a class="lk" href="https://claude.ai/public/artifacts/61278311-569e-4836-941c-50317e2cd5e6"><span class="no">C-02</span>
+          <div><div class="ttl"><h3>OEM管理者の画面</h3></div>
+            <p>OEMを導入した会社の担当者が見る管理画面のデモ。今週お客様へ送る内容と、反応があったお客様が並びます。会社名・数字・制度名はすべて架空です。</p></div>
+          <span class="arr" aria-hidden="true">→</span></a>
+          <div class="urlrow"><span class="url">claude.ai/public/artifacts/61278311-569e-4836-941c-50317e2cd5e6</span><button type="button" class="cp" data-url="https://claude.ai/public/artifacts/61278311-569e-4836-941c-50317e2cd5e6">コピー</button></div>
+        </div></li>
+    </ul>
+  </div>
+</section>
+
 </main>
 
 <footer>
-  <div class="wrap f">
-    <span>Jマッチエンジン</span>
-    <span>株式会社ライトアップ</span>
-  </div>
+  <p class="motto">営業方針 <b>魚を与えるのではなく、魚の釣り方を教えよ。</b></p>
+  <p>Jマッチエンジン 資料インデックス</p>
+  <p>社内共有用の資料インデックスです。</p>
+  <nav aria-label="運営会社"><a href="https://www.writeup.jp/" rel="noopener">会社概要（株式会社ライトアップ）</a><a href="https://www.writeup.jp/privacy/" rel="noopener">個人情報保護方針</a></nav>
 </footer>
 
+<script>
+(function(){
+  function fallback(t){
+    var ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');
+    ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');}catch(e){}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll('.cp').forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.preventDefault();e.stopPropagation();
+      var u=btn.getAttribute('data-url');
+      var ok=function(){btn.textContent='コピー済み';btn.classList.add('done');
+        setTimeout(function(){btn.textContent='コピー';btn.classList.remove('done');},1600);};
+      if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){fallback(u);ok();});}
+      else{fallback(u);ok();}
+    });
+  });
+})();
+</script>
 </body>
 </html>
