@@ -9,6 +9,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
+/* ── 改行制御（lp-base.css より。2026-09-24 追加） ── */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] { word-break: normal; }
+}
+.nobr { white-space: nowrap; }
+
 :root{
   --navy:#0B2C5C;    /* アクセント1色。意味のある語・決め数字・CTAにのみ使う */
   --tint:#F3F6FA;
@@ -390,6 +403,14 @@ footer{padding:56px 0 72px;border-top:1px solid var(--gray-20);}
   .strip-i{padding:0;border-left:none;border-top:1px solid var(--gray-20);padding-top:22px;}
   .strip-i:first-child{border-top:none;padding-top:0;}
 }
+
+/* 可読の下限：判断に使う文字を12px未満にしない（2026-09-24 一括是正） */
+.hlogo-tag,.he-mark,.hf-k,.slabel,.sui-url,.chan-h,.ch-top,.ch-top span,.ch-time,.sl-name,.sl-name span,.ml-row,.ml-row span,.price-k,.opt-tag,.proof-k,.strip-h,.strip-s{font-size:12px!important}
+
+/* 最後のCTAの下に、動画請求への控えめな導線（2026-09-24） */
+.cta-sub{margin:18px 0 0}
+.cta-sub a{display:inline-flex;align-items:center;min-height:44px;color:inherit;font-size:15px;font-weight:700;text-underline-offset:4px}
+.cta-h{word-break:normal}
 </style>
 </head>
 <body>
@@ -1098,7 +1119,8 @@ footer{padding:56px 0 72px;border-top:1px solid var(--gray-20);}
     <div>
       <h2 class="cta-h fade st-br">1回の打ち合わせで、<br>判断できるようにします。</h2>
       <p class="cta-d fade">御社の顧客数に対してどれだけの登録が見込めるか（J-Systemでの実測値をお見せします）。どの商材を「欲しいもの」の候補に置くか。初月に何をするか。ここまでをその場で一緒に決めます。<b>持ち帰って検討する材料がないまま終わらせません。</b>そのうえで、合わなければ断ってください。</p>
-      <a class="cta-btn fade" href="#cta">まずは話を聞いてみる</a>
+      <a class="cta-btn fade" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">まずは話を聞いてみる</a>
+      <p class="cta-sub fade"><a href="https://writeup-inc.github.io/seminar/jmatch-engine-oem/v2/" target="_blank" rel="noopener">先に15分の説明動画で確かめる　→</a></p>
       <p class="cta-end fade">売り込まないほうが、<span class="hit">売れる</span>。<br><span class="cta-end-sub">その仕組みを、御社のブランドで。</span></p>
     </div>
   </div>

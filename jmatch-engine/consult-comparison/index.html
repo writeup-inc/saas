@@ -14,6 +14,19 @@
   <meta property="og:url" content="https://writeup-inc.github.io/saas/jmatch-engine/consult-comparison/">
   <link rel="canonical" href="https://writeup-inc.github.io/saas/jmatch-engine/consult-comparison/">
   <style>
+/* ── 改行制御（lp-base.css より。2026-09-24 追加） ── */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] { word-break: normal; }
+}
+.nobr { white-space: nowrap; }
+
     :root {
       --navy: #07162f;
       --navy-2: #102e56;
@@ -571,7 +584,10 @@
       html { scroll-behavior: auto; }
       .jump { transition: none; }
     }
-  </style>
+  
+/* 可読の下限：判断に使う文字を12px未満にしない（2026-09-24 一括是正） */
+.hero-facts li,.note,footer,footer *{font-size:12px!important}
+</style>
 </head>
 <body>
   <header class="masthead">
