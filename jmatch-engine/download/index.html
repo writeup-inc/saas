@@ -58,8 +58,26 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
   .page main .wrap{max-width:1180px;padding:0 28px}
 }
 @media(max-width:700px){.wrap{padding:0 20px}.page main .wrap{padding:0 20px}}
-section{padding:60px 0;border-top:1px solid var(--rule)}
-.kicker{margin:0 0 12px;font-size:12.5px;font-weight:700;letter-spacing:.16em;color:var(--gray)}
+section{padding:68px 0}
+.kicker{display:flex;align-items:baseline;gap:14px;margin:0 0 14px;font-size:12.5px;font-weight:700;letter-spacing:.16em;color:var(--gray)}
+.kn{font-family:var(--num);font-size:clamp(46px,5.6vw,72px);font-weight:700;line-height:.9;letter-spacing:-.03em;color:#d9e0ea}
+
+/* 地色の帯。左カラムの中にあっても画面の端まで伸ばす */
+.band{position:relative}
+.band-soft{--band:#eef2f7;background:var(--band);box-shadow:0 0 0 100vmax var(--band);clip-path:inset(0 -100vmax)}
+.band-navy{background:var(--navy);box-shadow:0 0 0 100vmax var(--navy);clip-path:inset(0 -100vmax);color:#fff}
+.band-navy h2{color:#fff}
+.band-navy .lead{color:#ccd6e6}
+.band-navy .note{color:#a9b8cf}
+.band-navy .kicker{color:#a9b8cf}
+.band-navy .kn{color:rgba(255,255,255,.16)}
+.band-soft .kn{color:#cdd6e3}
+/* 抜粋の箱は、灰色の地に置いた白い紙に見せる */
+.band-soft .ex{background:#fff;border-color:#e1e6ee;
+  box-shadow:0 1px 2px rgba(20,35,60,.05),0 10px 28px rgba(20,35,60,.07)}
+.band-soft .faq{border-top-color:#d3dbe6}
+.band-soft .faq details{border-bottom-color:#dbe2ec}
+.band-soft .promise{background:#fff}
 h2{margin:0 0 20px;font-family:var(--min);font-weight:700;line-height:1.45}
 h3{font-family:var(--min);font-weight:700}
 p{margin:0 0 15px}
@@ -68,18 +86,65 @@ p{margin:0 0 15px}
 
 /* ヒーロー */
 .hero{background:var(--navy);color:#fff;padding:0;border:0}
-.hero .wrap{padding-top:58px;padding-bottom:54px}
+.hero .wrap{padding-top:46px;padding-bottom:40px}
 .hero .tag{display:inline-block;margin:0 0 20px;padding:5px 12px;border:1px solid rgba(255,255,255,.38);
   font-size:12.5px;font-weight:700;letter-spacing:.06em}
 .hero h1{margin:0 0 22px;font-family:var(--min);font-weight:700;color:#fff}
-.hero .sub{margin:0 0 26px;font-size:clamp(15px,1.5vw,18px);line-height:1.95;color:#ccd6e6;max-width:36em}
+.hero .sub{margin:0 0 26px;font-size:clamp(15px,1.5vw,18px);line-height:1.95;color:#ccd6e6;max-width:31em;
+  word-break:auto-phrase;line-break:strict}
 .hero .sub b{color:#fff;font-weight:700}
-.heroline{display:flex;gap:1px;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.22);margin:0 0 30px}
-.heroline div{flex:1 1 0;background:var(--navy);padding:14px 16px;min-width:0}
-.heroline dt{margin:0 0 5px;font-size:12.5px;color:#a9b8cf}
-.heroline dd{margin:0;font-family:var(--num);font-size:clamp(20px,2.6vw,28px);font-weight:700;line-height:1.15;color:#fff}
-.heroline dd small{font-family:var(--sans);font-size:12.5px;margin-left:4px;color:#ccd6e6}
-@media(max-width:700px){.heroline{flex-wrap:wrap}.heroline div{flex:1 1 44%}}
+/* 左にコピー、右に資料の表紙を3枚重ねて置く */
+.hero-in{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:48px;align-items:center}
+.hero h1{font-size:clamp(1.6rem,3.3vw,2.6rem)}
+.stack{position:relative;margin:0;height:496px}
+.stack .pg{position:absolute;top:0;width:268px;height:auto;background:#fff;
+  box-shadow:0 22px 44px rgba(4,14,32,.45),0 3px 8px rgba(4,14,32,.25)}
+.stack .pg1{left:44px;top:6px;transform:rotate(-3deg);z-index:3}
+.stack .pg2{left:70px;top:26px;transform:rotate(5deg);z-index:2}
+.stack .pg3{left:0;top:44px;transform:rotate(-9deg);z-index:1}
+.stack figcaption{position:absolute;left:0;right:0;bottom:0;margin:0;text-align:center;
+  font-size:12.5px;line-height:1.7;color:#ccd6e6}
+.stack figcaption span{display:block;font-size:12px;color:#8ea2c0}
+@media(max-width:1040px){
+  .hero-in{grid-template-columns:minmax(0,1fr) 300px;gap:36px}
+  .stack{height:446px}
+  .stack .pg{width:236px}
+  .stack .pg1{left:30px}.stack .pg2{left:52px}
+}
+@media(max-width:760px){
+  .hero-in{display:block}
+  .stack{width:300px;height:424px;margin:40px auto 0}
+  .stack .pg{width:220px}
+  .stack .pg1{left:38px}.stack .pg2{left:78px}.stack .pg3{left:4px}
+}
+
+/* 3,012 → 100。一番の武器なので、数字そのものを大きく見せる */
+.bignum{border-top:1px solid rgba(255,255,255,.16);background:var(--navy2)}
+.bignum-in{display:flex;align-items:flex-end;gap:28px;padding-top:22px;padding-bottom:26px}
+.bn{display:flex;flex-direction:column;gap:4px;min-width:0}
+.bn-lbl{font-size:12.5px;font-weight:700;letter-spacing:.06em;color:#8ea2c0}
+.bn-v{display:flex;align-items:baseline;gap:6px;font-family:var(--num);font-weight:700;line-height:.95;letter-spacing:-.02em}
+.bn-u{font-family:var(--sans);font-size:15px;font-weight:700;letter-spacing:0;color:#ccd6e6}
+.bn-from .bn-n{font-size:clamp(34px,4.6vw,58px);color:#8ea2c0}
+.bn-to .bn-n{font-size:clamp(88px,11vw,148px);color:#fff}
+.bn-to .bn-u{font-size:20px;color:#fff}
+.bn-plus .bn-n{font-size:clamp(34px,4.6vw,58px);color:#fff}
+.bn-pl{font-size:.6em;color:#8ea2c0;font-weight:400}
+.bn-plus .bn-v{font-size:clamp(34px,4.6vw,58px)}
+.bn-arrow{position:relative;flex:1 1 90px;max-width:170px;min-width:60px;align-self:center;
+  height:1px;background:rgba(255,255,255,.4);margin:0 4px 0 0}
+.bn-arrow::after{content:"";position:absolute;right:-1px;top:-5px;border:5px solid transparent;
+  border-left:9px solid rgba(255,255,255,.55);border-right:0}
+.bn-arrow span{position:absolute;left:0;right:0;bottom:10px;text-align:center;font-size:12.5px;
+  font-weight:700;color:#ccd6e6;white-space:nowrap}
+.bn-to{margin-right:auto}
+@media(max-width:760px){
+  .bignum-in{display:grid;grid-template-columns:auto 1fr;align-items:end;gap:18px 18px}
+  .bn-from{grid-column:1}
+  .bn-arrow{grid-column:2;align-self:end;margin-bottom:18px;max-width:none}
+  .bn-to{grid-column:1 / -1}
+  .bn-plus{grid-column:1 / -1}
+}
 
 /* ボタン */
 .cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;
@@ -149,10 +214,11 @@ svg.sw-n{display:none !important}
 .getbox{background:var(--navy);color:#fff;padding:56px 0;border:0}
 .getbox h2{color:#fff;margin-bottom:16px}
 .getbox .kicker{color:#a9b8cf}
+.getbox .kn{color:rgba(255,255,255,.16)}
 .getbox .lead{color:#ccd6e6;max-width:38em}
 
 /* 申込フォーム */
-.formcol{min-width:0;padding:60px 0 40px}
+.formcol{min-width:0;padding:68px 0 40px}
 .fcard{position:sticky;top:24px;background:#fff;border:1px solid var(--rule2);
   box-shadow:0 1px 0 rgba(31,58,99,.04);padding:0 0 22px}
 .fcard .fhead{background:var(--navy);color:#fff;padding:18px 22px 16px}
@@ -221,20 +287,29 @@ footer a{color:var(--navy)}
 <body>
 
 <header class="hero">
-  <div class="wrap">
-    <span class="tag">2025年4月〜2026年3月</span>
-    <h1>この1年に出た、<br>補助金・融資・税制優遇 100件。</h1>
-    <p class="sub">3,012件の制度データベースから、AIが100件を選びました。
-    発表された順に並べ、1件ずつ、<b>何に使えて、補助率と上限額はいくらか</b>まで書いています。<br>
-    <b data-keep-phrase>知らなかった制度は、御社が使えなかった制度です。</b></p>
-    <dl class="heroline">
-      <div><dt>調べた母数</dt><dd>3,012<small>件</small></dd></div>
-      <div><dt>選んだ制度</dt><dd>100<small>件</small></dd></div>
-      <div><dt>対象期間</dt><dd>12<small>か月</small></dd></div>
-      <div><dt>3か月ごとの分析</dt><dd>4<small>本</small></dd></div>
-    </dl>
-    <a class="cta" href="#lead">資料を受け取る</a>
-    <p class="cta-note">ご記入は30秒ほど。費用はかかりません。</p>
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <span class="tag">2025年4月〜2026年3月</span>
+      <h1>この1年に出た、<br>補助金・融資・税制優遇 100件。</h1>
+      <p class="sub">発表された順に並べ、1件ずつ、<b>何に使えて、補助率と上限額はいくらか</b>まで書いています。<br>
+      <b data-keep-phrase>知らなかった制度は、御社が使えなかった制度です。</b></p>
+      <a class="cta" href="#lead">資料を受け取る</a>
+      <p class="cta-note">ご記入は30秒ほど。費用はかかりません。</p>
+    </div>
+    <figure class="stack">
+      <img class="pg pg3" src="./img/pg-items.jpg" alt="" width="760" height="1075" loading="eager" decoding="async">
+      <img class="pg pg2" src="./img/pg-q1.jpg" alt="" width="760" height="1075" loading="eager" decoding="async">
+      <img class="pg pg1" src="./img/pg-cover.jpg" alt="資料「AIが選んだ、この1年のベスト100」の表紙" width="760" height="1075" loading="eager" decoding="async">
+      <figcaption>資料「AIが選んだ、この1年のベスト100」<span>画面はイメージです</span></figcaption>
+    </figure>
+  </div>
+  <div class="bignum">
+    <div class="wrap bignum-in" role="img" aria-label="3,012件の制度データベースから、AIが100件を選び、3か月ごとの分析4本を添えた">
+      <div class="bn bn-from"><span class="bn-lbl">制度データベース</span><span class="bn-v"><span class="bn-n">3,012</span><span class="bn-u">件</span></span></div>
+      <div class="bn-arrow" aria-hidden="true"><span>AIが選ぶ</span></div>
+      <div class="bn bn-to"><span class="bn-lbl">この資料に載る制度</span><span class="bn-v"><span class="bn-n">100</span><span class="bn-u">件</span></span></div>
+      <div class="bn bn-plus"><span class="bn-lbl">3か月ごとの分析</span><span class="bn-v"><span class="bn-pl" aria-hidden="true">＋</span><span class="bn-n">4</span><span class="bn-u">本</span></span></div>
+    </div>
   </div>
 </header>
 
@@ -243,57 +318,10 @@ footer a{color:var(--navy)}
 
 <section>
   <div class="wrap">
-    <p class="kicker">01　中身</p>
+    <p class="kicker"><span class="kn">01</span>中身</p>
     <h2>載っているもの。</h2>
     <p class="lead">制度の一覧だけではありません。「いつ動けばよかったのか」まで分かる形にしています。</p>
 
-    <figure class="fig">
-      <svg class="sw-w" viewBox="0 0 960 118" role="img" aria-label="3,012件の制度データベースからAIが100件を選び、発表順の一覧と3か月ごとの分析4本にまとめた流れの図">
-        <g font-family="Hiragino Sans, Noto Sans JP, sans-serif">
-          <rect x="1" y="26" width="236" height="66" fill="none" stroke="#d2d2d2" stroke-width="1.5"/>
-          <text x="20" y="46" font-size="12.5" fill="#707070">制度データベース</text>
-          <text x="20" y="78" font-size="26" font-weight="700" fill="#1a1a1a" font-family="Helvetica Neue, Arial, sans-serif">3,012<tspan font-size="14" font-family="Hiragino Sans, sans-serif">件</tspan></text>
-
-          <line x1="253" y1="59" x2="323" y2="59" stroke="#949494" stroke-width="1.5"/>
-          <path d="M333 59 l-12 -6 v12 z" fill="#949494"/>
-          <text x="253" y="46" font-size="12.5" fill="#707070">AIが選ぶ</text>
-
-          <rect x="349" y="26" width="236" height="66" fill="#1f3a63"/>
-          <text x="368" y="46" font-size="12.5" fill="#a9b8cf">この資料に載る制度</text>
-          <text x="368" y="78" font-size="26" font-weight="700" fill="#ffffff" font-family="Helvetica Neue, Arial, sans-serif">100<tspan font-size="14" font-family="Hiragino Sans, sans-serif" fill="#ccd6e6">件</tspan></text>
-
-          <line x1="601" y1="59" x2="671" y2="59" stroke="#949494" stroke-width="1.5"/>
-          <path d="M681 59 l-12 -6 v12 z" fill="#949494"/>
-
-          <rect x="697" y="26" width="262" height="66" fill="none" stroke="#d2d2d2" stroke-width="1.5"/>
-          <text x="716" y="46" font-size="12.5" fill="#707070">発表順の一覧に、分析を添えて</text>
-          <text x="716" y="78" font-size="26" font-weight="700" fill="#1a1a1a" font-family="Helvetica Neue, Arial, sans-serif">4<tspan font-size="14" font-family="Hiragino Sans, sans-serif">本の分析</tspan></text>
-        </g>
-      </svg>
-      <svg class="sw-n" viewBox="0 0 320 256" role="img" aria-label="3,012件の制度データベースからAIが100件を選び、発表順の一覧と分析4本にまとめた流れの図">
-        <g font-family="Hiragino Sans, Noto Sans JP, sans-serif">
-          <rect x="0.75" y="0.75" width="318.5" height="62" fill="none" stroke="#d2d2d2" stroke-width="1.5"/>
-          <text x="16" y="25" font-size="13" fill="#707070">制度データベース</text>
-          <text x="16" y="53" font-size="24" font-weight="700" fill="#1a1a1a" font-family="Helvetica Neue, Arial, sans-serif">3,012<tspan font-size="13" font-family="Hiragino Sans, sans-serif">件</tspan></text>
-
-          <line x1="30" y1="64" x2="30" y2="84" stroke="#949494" stroke-width="1.5"/>
-          <path d="M30 94 l-6 -12 h12 z" fill="#949494"/>
-          <text x="46" y="84" font-size="13" fill="#707070">AIが選ぶ</text>
-
-          <rect x="0" y="96" width="320" height="62" fill="#1f3a63"/>
-          <text x="16" y="121" font-size="13" fill="#a9b8cf">この資料に載る制度</text>
-          <text x="16" y="149" font-size="24" font-weight="700" fill="#ffffff" font-family="Helvetica Neue, Arial, sans-serif">100<tspan font-size="13" font-family="Hiragino Sans, sans-serif" fill="#ccd6e6">件</tspan></text>
-
-          <line x1="30" y1="160" x2="30" y2="180" stroke="#949494" stroke-width="1.5"/>
-          <path d="M30 190 l-6 -12 h12 z" fill="#949494"/>
-
-          <rect x="0.75" y="192.75" width="318.5" height="62" fill="none" stroke="#d2d2d2" stroke-width="1.5"/>
-          <text x="16" y="217" font-size="13" fill="#707070">発表順の一覧に、分析を添えて</text>
-          <text x="16" y="245" font-size="24" font-weight="700" fill="#1a1a1a" font-family="Helvetica Neue, Arial, sans-serif">4<tspan font-size="13" font-family="Hiragino Sans, sans-serif">本の分析</tspan></text>
-        </g>
-      </svg>
-      <figcaption>母数の3,012件は、当社が制度情報の提供に使っているデータベースの件数です。</figcaption>
-    </figure>
 
     <dl class="gets">
       <div>
@@ -324,9 +352,9 @@ footer a{color:var(--navy)}
   </div>
 </section>
 
-<section>
+<section class="band band-soft">
   <div class="wrap">
-    <p class="kicker">02　中身の抜粋</p>
+    <p class="kicker"><span class="kn">02</span>中身の抜粋</p>
     <h2>実際の中身を、3か所だけ。</h2>
     <p class="lead">表紙だけお見せして中身が分からない、ということのないように。実際の書き方をそのまま出します。</p>
 
@@ -471,7 +499,7 @@ footer a{color:var(--navy)}
 
 <section>
   <div class="wrap">
-    <p class="kicker">03　こんな方へ</p>
+    <p class="kicker"><span class="kn">03</span>こんな方へ</p>
     <h2>こういう方に、役に立ちます。</h2>
     <p class="lead">どれか1つでも当てはまれば、読む価値があります。</p>
     <ul class="list">
@@ -482,9 +510,9 @@ footer a{color:var(--navy)}
   </div>
 </section>
 
-<section>
+<section class="band band-navy">
   <div class="wrap">
-    <p class="kicker">04　誰が作ったか</p>
+    <p class="kicker"><span class="kn">04</span>誰が作ったか</p>
     <h2>制度を毎日追っている会社です。</h2>
     <p class="lead">株式会社ライトアップは、補助金・助成金の自動診断システム「Jシステム」を、金融機関や自治体へ提供しています。
     それとは別に、人の手で制度探しから事業計画づくりまでを支援する「Jコンサル」があり、現在500社にご契約いただいています。</p>
@@ -495,7 +523,7 @@ footer a{color:var(--navy)}
 
 <section id="get">
   <div class="wrap">
-    <p class="kicker">05　お受け取り</p>
+    <p class="kicker"><span class="kn">05</span>お受け取り</p>
     <h2>受け取るまで、30秒。</h2>
     <p class="lead">お名前・会社名・メールアドレスをご記入ください。閲覧用のURLをお送りします。</p>
     <dl class="steps">
@@ -508,9 +536,9 @@ footer a{color:var(--navy)}
   </div>
 </section>
 
-<section>
+<section class="band band-soft">
   <div class="wrap">
-    <p class="kicker">06　ご請求にあたって</p>
+    <p class="kicker"><span class="kn">06</span>ご請求にあたって</p>
     <h2>ご請求の前に、ご心配な点を。</h2>
     <p class="lead">お名前とメールアドレスをいただくので、そのあと何が起きるかを先に書いておきます。</p>
     <div class="promise">
@@ -549,7 +577,7 @@ footer a{color:var(--navy)}
 
 <section>
   <div class="wrap">
-    <p class="kicker">07　おことわり</p>
+    <p class="kicker"><span class="kn">07</span>おことわり</p>
     <h2>ご確認いただきたいこと。</h2>
     <p class="lead">資料をお読みいただく前に、必ずお目通しください。</p>
     <div class="legal">
@@ -569,7 +597,7 @@ footer a{color:var(--navy)}
 
 <aside class="formcol">
   <div class="fintro">
-    <p class="kicker">08　お申し込み</p>
+    <p class="kicker"><span class="kn">08</span>お申し込み</p>
     <h2>資料を受け取る。</h2>
     <p class="lead">この1年に出た100件を、発表された順に。3か月ごとの分析4本つきで、無料でお渡しします。</p>
   </div>
@@ -606,7 +634,7 @@ footer a{color:var(--navy)}
 
 <section class="getbox">
   <div class="wrap">
-    <p class="kicker">08　お申し込み</p>
+    <p class="kicker"><span class="kn">08</span>お申し込み</p>
     <h2>資料を受け取る。</h2>
     <p class="lead">この1年に出た100件を、発表された順に。3か月ごとの分析4本つきで、無料でお渡しします。</p>
     <a class="cta" href="#lead">資料を受け取る</a>
