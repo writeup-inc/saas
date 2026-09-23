@@ -87,8 +87,10 @@ p{margin:0}
 .cat.oem{background:var(--oem)} .cat.dir{background:var(--dir)} .cat.etc{background:var(--etc)}
 .nl .t{font-size:16px;line-height:1.7;color:var(--ink);word-break:auto-phrase;line-break:strict}
 .bd{display:inline-block;margin-right:8px;padding:0 7px;border-radius:4px;font-size:13px;font-weight:700;line-height:1.7;vertical-align:1px}
-.bg-new{background:#fdebe1;color:var(--new)}
-.bg-up{background:var(--etc-l);color:var(--etc)}
+/* NEW・更新は目立たせる：大きく太く、赤で */
+.bg-new,.bg-up{padding:1px 11px;font-size:15px;font-weight:900;letter-spacing:.06em;line-height:1.7}
+.bg-new{background:var(--new);color:#fff}
+.bg-up{background:#fdebe1;color:var(--new);box-shadow:inset 0 0 0 1.5px var(--new)}
 .bg-soon{background:#fff4d6;color:#8a5a00}
 .bg-in{background:#efe9f8;color:#5b3f8f}
 .more{margin:0}
@@ -144,6 +146,10 @@ p{margin:0}
 .doc.link:hover .arr{translate:4px 0}
 .oem .doc.link:hover{background:var(--oem-l)} .dir .doc.link:hover{background:var(--dir-l)} .etc .doc.link:hover{background:var(--etc-l)}
 .doc:not(.link) h3{color:var(--g1)}
+/* 社内限の行は開けるが、背景を薄い赤にして「お客様へ送らない」と気づかせる */
+.doc.link.internal{background:#fdf0ef}
+.doc.link.internal:hover{background:#fbe2df!important}
+.doc .warn{margin:10px 0 0;font-size:15px;font-weight:700;color:#b42318}
 /* まだ開けない行（準備中・社内）は背景をグレーにして、開ける行と見分ける */
 .doc:not(.link){background:#eef0f3}
 .doc:not(.link) .st{color:var(--g2)}
@@ -214,7 +220,7 @@ footer nav a{display:inline-flex;align-items:center;min-height:44px;color:var(--
       <li><a href="#a-02"><time>09.13</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-new">NEW</span>直販セミナーの申込ページを公開しました</span></a></li>
       <li><a href="#a-08"><time>09.13</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-new">NEW</span>サービス紹介ページに、経営小説を追加しました</span></a></li>
       <li><a href="#a-01"><time>09.12</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-up">更新</span>サービス紹介ページを、月額3万円のプランを主軸に作り直しました</span></a></li>
-      <li><a href="#a-04"><time>09.12</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-in">社内</span>商談時の説明ノートを社内に配布しました</span></a></li>
+      <li><a href="#a-04"><time>09.12</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-in">社内</span>直販セールストークを社内に公開しました</span></a></li>
       </ul>
     </details>
   </div>
@@ -252,10 +258,13 @@ footer nav a{display:inline-flex;align-items:center;min-height:44px;color:var(--
             <p>パートナー説明会の当日に映す資料です。誰が話しても同じ話になるよう、話す文言を併記します。</p>
             <span class="st">公開時にこのページでお知らせします</span></div>
         </div></li>
-        <li><div class="doc" id="b-04">
-          <span class="no">B-04</span>
-          <div><div class="ttl"><h3>パートナー向け説明ノート</h3><span class="bd bg-in">社内</span></div>
-            <span class="st">社内共有のため、このページからは開けません</span></div>
+        <li><div class="doc link internal" id="b-04">
+          <a class="lk" href="https://writeup-inc.github.io/saas/jmatch-oem-sales-talk/"><span class="no">B-04</span>
+          <div><div class="ttl"><h3>OEMセールストーク</h3><span class="bd bg-in">社内</span></div>
+            <p>OEM商談中に開いて、そのまま読み上げる台本。全15章のうち07〜09が山場で、切り返し7問つきです。</p>
+            <p class="warn">社内限定です。お客様へURLを送らないでください</p></div>
+          <span class="arr" aria-hidden="true">→</span></a>
+          <div class="urlrow"><span class="url">writeup-inc.github.io/saas/jmatch-oem-sales-talk/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/jmatch-oem-sales-talk/">コピー</button></div>
         </div></li>
         <li><div class="doc link" id="b-05">
           <a class="lk" href="./oem-plans/"><span class="no">B-05</span>
@@ -310,10 +319,13 @@ footer nav a{display:inline-flex;align-items:center;min-height:44px;color:var(--
           <span class="arr" aria-hidden="true">→</span></a>
           <div class="urlrow"><span class="url">writeup-inc.github.io/saas/jmatch-engine/direct-guide/v4/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/jmatch-engine/direct-guide/v4/">コピー</button></div>
         </div></li>
-        <li><div class="doc" id="a-04">
-          <span class="no">A-04</span>
-          <div><div class="ttl"><h3>商談時の説明ノート</h3><span class="bd bg-in">社内</span></div>
-            <span class="st">社内共有のため、このページからは開けません</span></div>
+        <li><div class="doc link internal" id="a-04">
+          <a class="lk" href="https://writeup-inc.github.io/saas/jmatch-direct-sales-talk/"><span class="no">A-04</span>
+          <div><div class="ttl"><h3>直販セールストーク</h3><span class="bd bg-in">社内</span></div>
+            <p>直販商談の台本。00〜12章で、実演5分・説明10分・クロージングまでを追えます。</p>
+            <p class="warn">社内限定です。お客様へURLを送らないでください</p></div>
+          <span class="arr" aria-hidden="true">→</span></a>
+          <div class="urlrow"><span class="url">writeup-inc.github.io/saas/jmatch-direct-sales-talk/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/jmatch-direct-sales-talk/">コピー</button></div>
         </div></li>
         <li><div class="doc link" id="a-05">
           <a class="lk" href="./download/"><span class="no">A-05</span>
