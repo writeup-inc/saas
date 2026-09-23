@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>ソーシャルマスター｜資料インデックス</title>
+<meta name="description" content="ソーシャルマスターの資料を、OEM・直販・その他に分けて1か所にまとめた社内共有用のインデックスです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* ===== lp-base.css ===== */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] {
+    word-break: normal;
+  }
+}
+.nobr { white-space: nowrap; }
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+
+/* ===== トークン ===== */
+:root{
+  --ink:#10151c; --tx:#262d36; --g1:#4a525d; --g2:#626b76; --g3:#848c96;
+  --ln:#e3e6ea; --ln2:#f0f2f4; --bg:#f7f8fa;
+  --oem:#0f6b56; --oem-l:#eaf4f0;
+  --dir:#1f4f9a; --dir-l:#ecf2fa;
+  --etc:#4d5561; --etc-l:#f1f2f4;
+  --new:#c2410c;
+  /* サービスの色（ヒーローだけで使う）。紺の地に、マッチした制度を示す金 */
+  --svc:#e0b85a; --svc-l:#0b2c5c;
+  --sans:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+  --num:Inter,"Helvetica Neue",Arial,sans-serif;
+}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--tx);font-family:var(--sans);font-size:16px;line-height:1.85;
+  letter-spacing:.015em;font-feature-settings:"palt" 1;-webkit-font-smoothing:antialiased}
+.w{max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+a{color:inherit}
+p{margin:0}
+.en{font-family:var(--num);font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+
+
+
+:root{--svc:#b83a6e;--svc-l:#fcf0f5}
+
+.hero{position:relative;overflow:hidden;padding:clamp(96px,14vw,176px) 0 clamp(80px,11vw,136px);text-align:center;
+  background:radial-gradient(ellipse 60% 70% at 50% 48%,#fff 0,#fff 36%,var(--svc-l) 100%)}
+.hero .deco{position:absolute;inset:0;pointer-events:none}
+.hero .deco svg{position:absolute;fill:none;stroke:var(--svc);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.34}
+.hero .deco svg.s{opacity:.2}
+.hero .deco .dot{position:absolute;border-radius:50%;background:var(--svc);opacity:.18}
+.hero .w{position:relative}
+.hero .en{display:block;font-size:14px;color:var(--svc)}
+.hero h1{margin:16px 0 0;font-weight:900;letter-spacing:-.04em;line-height:1.1;color:var(--ink);font-size:clamp(2.2rem,8.6vw,6.2rem);white-space:nowrap}
+.hero .rule{display:block;width:48px;height:3px;margin:28px auto 0;border-radius:2px;background:var(--svc)}
+.hero .meta{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;margin:22px 0 0;font-size:15px;color:var(--g2)}
+.hero .meta b{font-family:var(--num);color:var(--ink)}
+.hero .meta .k{display:inline-flex;align-items:center;gap:7px}
+.hero .meta .k i{width:10px;height:10px;border-radius:3px}
+@media (prefers-reduced-motion:no-preference){
+  .hero .deco svg{animation:float 9s ease-in-out infinite}
+  .hero .deco svg:nth-child(2n){animation-duration:11s;animation-delay:-3s}
+  .hero .deco svg:nth-child(3n){animation-duration:13s;animation-delay:-6s}
+  @keyframes float{0%,100%{translate:0 0}50%{translate:0 -8px}}
+}
+@media(max-width:600px){.hero .deco .hm{display:none}}
+
+/* ===== お知らせ：1本の時系列 ===== */
+.news{padding:clamp(36px,4.5vw,52px) 0 clamp(40px,5vw,56px)}
+.sh{display:flex;align-items:baseline;gap:12px;margin:0 0 14px}
+.sh h2{margin:0;font-size:clamp(1.4rem,2.6vw,1.8rem);font-weight:900;letter-spacing:-.02em;line-height:1.4;color:var(--ink)}
+.sh .en{font-size:13px;color:var(--g3)}
+.nl{list-style:none;margin:0;padding:0;border-top:1px solid var(--ln)}
+.nl a{display:grid;grid-template-columns:3.8em 4.8em 1fr;align-items:baseline;gap:16px;padding:12px 8px;border-bottom:1px solid var(--ln);text-decoration:none;transition:background .18s}
+.nl a:hover{background:var(--bg)}
+.nl time{font-family:var(--num);font-size:15px;font-weight:700;color:var(--g2)}
+.cat{display:inline-block;width:4.6em;padding:0;border-radius:4px;font-size:13px;font-weight:700;line-height:1.9;text-align:center;color:#fff}
+.cat.oem{background:var(--oem)} .cat.dir{background:var(--dir)} .cat.etc{background:var(--etc)}
+.nl .t{font-size:16px;line-height:1.7;color:var(--ink);word-break:auto-phrase;line-break:strict}
+.bd{display:inline-block;margin-right:8px;padding:0 7px;border-radius:4px;font-size:13px;font-weight:700;line-height:1.7;vertical-align:1px}
+/* NEW・更新は目立たせる：大きく太く、赤で */
+.bg-new,.bg-up{padding:1px 11px;font-size:15px;font-weight:900;letter-spacing:.06em;line-height:1.7}
+.bg-new{background:var(--new);color:#fff}
+.bg-up{background:#fdebe1;color:var(--new);box-shadow:inset 0 0 0 1.5px var(--new)}
+.bg-soon{background:#fff4d6;color:#8a5a00}
+.bg-in{background:#efe9f8;color:#5b3f8f}
+.more{margin:0}
+.more summary{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:6px;padding:0 4px;font-size:15px;font-weight:700;color:var(--g1);cursor:pointer;list-style:none}
+.more summary::-webkit-details-marker{display:none}
+.more summary::after{content:"＋";font-weight:500}
+.more[open] summary::after{content:"－"}
+.more .nl{border-top:0}
+
+/* ===== 資料の区画：箱に入れず、行と余白で並べる ===== */
+.blk{padding:clamp(56px,7vw,88px) 0;border-top:1px solid var(--ln2)}
+.in{display:grid;grid-template-columns:340px 1fr;gap:clamp(40px,6vw,80px);align-items:start}
+.side{position:sticky;top:40px}
+.side .en{display:block;font-size:13px}
+.side h2{margin:10px 0 0;font-weight:900;letter-spacing:-.03em;line-height:1.4;color:var(--ink);font-size:clamp(1.5rem,2.6vw,2rem)}
+.side .who{margin:10px 0 0;font-size:16px;color:var(--g1)}
+.hist{margin:20px 0 0}
+.hist-h{font-size:14px;font-weight:700;color:var(--g2)}
+.hist ol{list-style:none;margin:6px 0 0;padding:0;border-top:1px solid var(--ln)}
+.hist li{display:grid;grid-template-columns:3.4em 1fr;gap:10px;padding:10px 2px;border-bottom:1px solid var(--ln);font-size:15px;line-height:1.6;color:var(--ink)}
+.hist time{font-family:var(--num);font-size:14px;font-weight:700;color:var(--g2);padding-top:1px}
+.hist .n{margin-right:6px;font-family:var(--num);font-size:14px;font-weight:800}
+.hist .t{word-break:auto-phrase;line-break:strict}
+.oem .hist .n{color:var(--oem)} .dir .hist .n{color:var(--dir)} .etc .hist .n{color:var(--etc)}
+.side .bar{display:block;width:40px;height:3px;margin:22px 0 0;border-radius:2px}
+.terms{list-style:none;display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin:22px 0 0;padding:0}
+.terms li{padding:5px 14px;border-radius:999px;font-size:15px;font-weight:700;line-height:1.7}
+.oem .side .en{color:var(--oem)} .oem .side .bar{background:var(--oem)} .oem .terms li{background:var(--oem-l);color:var(--oem)}
+.dir .side .en{color:var(--dir)} .dir .side .bar{background:var(--dir)} .dir .terms li{background:var(--dir-l);color:var(--dir)}
+.etc .side .en{color:var(--etc)} .etc .side .bar{background:var(--etc)}
+
+.docs{list-style:none;margin:0;padding:0;border-top:1px solid var(--ln)}
+.doc{position:relative;display:grid;grid-template-columns:4.4em 1fr 2.4em;gap:20px;padding:30px 12px;border-bottom:1px solid var(--ln);text-decoration:none;color:inherit;transition:background .2s}
+.doc .no{font-family:var(--num);font-size:15px;font-weight:800;letter-spacing:.06em;padding-top:3px}
+.oem .doc .no,.oem .doc .arr{color:var(--oem)}
+.dir .doc .no,.dir .doc .arr{color:var(--dir)}
+.etc .doc .no,.etc .doc .arr{color:var(--etc)}
+.doc h3{margin:0;font-size:clamp(1.05rem,1.6vw,1.2rem);font-weight:900;line-height:1.55;color:var(--ink)}
+.ttl{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.ttl .bd{margin:0}
+.doc p{margin:6px 0 0;font-size:16px;line-height:1.85;color:var(--g1);word-break:auto-phrase;line-break:strict}
+.doc .memo{margin:12px 0 0;padding:0 0 0 12px;border-left:3px solid var(--new);font-size:15px;line-height:1.7}
+.urlrow{display:flex;align-items:center;gap:10px;margin:12px 0 0}
+.doc .url{min-width:0;font-family:var(--num);font-size:14px;color:var(--g2);word-break:break-all}
+.cp{position:relative;z-index:1;flex:none;min-height:44px;min-width:5.2em;padding:0 12px;border:1px solid var(--ln);border-radius:8px;background:#fff;color:var(--g1);font:inherit;font-size:14px;font-weight:700;cursor:pointer;transition:background .15s,border-color .15s}
+.cp:hover{border-color:var(--g3)}
+.cp.done{background:var(--ink);border-color:var(--ink);color:#fff}
+.doc .st{display:block;margin:10px 0 0;font-size:15px;color:var(--g3)}
+.doc .arr{align-self:center;justify-self:end;font-size:20px;font-weight:700;transition:translate .2s}
+.doc.link{display:block;padding:0}
+.doc.link .lk{display:grid;grid-template-columns:4.4em 1fr 2.4em;gap:20px;padding:30px 12px 0;text-decoration:none;color:inherit}
+.doc.link .urlrow{margin:0;padding:12px 12px 30px calc(4.4em + 32px)}
+.doc.link:hover .arr{translate:4px 0}
+.oem .doc.link:hover{background:var(--oem-l)} .dir .doc.link:hover{background:var(--dir-l)} .etc .doc.link:hover{background:var(--etc-l)}
+.doc:not(.link) h3{color:var(--g1)}
+/* 社内限の行は開けるが、背景を薄い赤にして「お客様へ送らない」と気づかせる */
+.doc.link.internal{background:#fdf0ef}
+.doc.link.internal:hover{background:#fbe2df!important}
+.doc .warn{margin:10px 0 0;font-size:15px;font-weight:700;color:#b42318}
+/* まだ開けない行（準備中・社内）は背景をグレーにして、開ける行と見分ける */
+.doc:not(.link){background:#eef0f3}
+.doc:not(.link) .st{color:var(--g2)}
+.fine{margin:18px 0 0;font-size:15px;color:var(--g2)}
+
+footer{padding:44px 0 60px;border-top:1px solid var(--ln2);text-align:center;font-size:14.5px;color:var(--g2)}
+footer p + p{margin-top:4px}
+
+@media(max-width:900px){
+  .in{grid-template-columns:1fr;gap:28px}
+  .side{position:static}
+  .terms{flex-direction:row;flex-wrap:wrap}
+}
+@media(max-width:600px){
+  .nl a{grid-template-columns:auto 1fr;gap:4px 12px;padding:14px 4px}
+  .nl .t{grid-column:1 / -1}
+  .doc{grid-template-columns:3.4em 1fr;gap:12px;padding:26px 4px}
+  .doc .arr{display:none}
+  .doc:not(.link){padding:26px 8px;gap:8px}
+  .doc.link .lk{grid-template-columns:3.4em 1fr;gap:12px;padding:26px 4px 0}
+  .doc.link .urlrow{padding:12px 4px 26px calc(3.4em + 16px)}
+  }
+
+.doc .ver{font-family:var(--num);font-size:14px;font-weight:800;color:var(--g2)}
+footer .motto{margin:0 0 14px;font-size:15px;color:var(--g1)}
+footer .motto b{color:var(--ink)}
+footer nav{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 20px;margin-top:10px}
+footer nav a{display:inline-flex;align-items:center;min-height:44px;color:var(--g2)}
+
+
+/* ===== 詰めた行：業種・用途別など件数が多い一覧は、縦幅を半分にして並べる ===== */
+.subh{margin:36px 0 0;padding:0 12px 10px;border-bottom:2px solid var(--ink)}
+.subh h3{margin:0;font-size:17px;font-weight:900;color:var(--ink);line-height:1.5}
+.subh span{display:block;margin-top:2px;font-size:15px;color:var(--g2)}
+.docs.cmp{border-top:0}
+/* PCでは1行を2段に収める：URLの文字は隠し、コピーボタンを行の右に置く */
+.docs.cmp .doc.link{position:relative}
+.docs.cmp .doc.link .lk{grid-template-columns:4.4em 1fr 7.6em;gap:20px;padding:13px 12px;align-items:baseline}
+.docs.cmp .doc.link .urlrow{position:absolute;right:44px;top:50%;translate:0 -50%;margin:0;padding:0}
+.docs.cmp .doc.link .url{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.docs.cmp .doc h3{font-size:16.5px;line-height:1.5}
+.docs.cmp .doc p{margin:1px 0 0;line-height:1.65}
+.docs.cmp .doc .no{padding-top:0}
+.docs.cmp .doc .arr{align-self:center}
+.docs.cmp .doc:not(.link){grid-template-columns:4.4em 1fr;padding:13px 12px}
+.docs.cmp .doc .st{margin:2px 0 0}
+@media(max-width:600px){
+  .docs.cmp .doc.link .lk{grid-template-columns:3.4em 1fr;gap:12px;padding:13px 4px 0}
+  .docs.cmp .doc.link .urlrow{position:static;translate:none;padding:6px 4px 12px calc(3.4em + 16px)}
+  .docs.cmp .doc:not(.link){grid-template-columns:3.4em 1fr;gap:12px;padding:14px 8px}
+  .subh{padding:0 4px 10px}
+}
+
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="deco" aria-hidden="true">
+    <svg viewBox="0 0 48 48" style="left:8%;top:18%;width:72px;rotate:-14deg"><rect x="6" y="6" width="36" height="36" rx="10"/><circle cx="24" cy="24" r="8"/><circle cx="34.5" cy="13.5" r="1.5"/></svg>
+    <svg class="hm" viewBox="0 0 48 48" style="left:20%;top:64%;width:62px;rotate:12deg"><path d="M19 6l-4 36M34 6l-4 36M9 17h33M6 31h33"/></svg>
+    <svg viewBox="0 0 48 48" style="right:9%;top:16%;width:78px;rotate:-8deg"><path d="M24 40S6 29 6 17a9 9 0 0 1 18-3 9 9 0 0 1 18 3c0 12-18 23-18 23z"/></svg>
+    <svg class="hm" viewBox="0 0 48 48" style="right:19%;top:62%;width:60px;rotate:14deg"><path d="M10 24v-6h26l-5-5M38 24v6H12l5 5"/></svg>
+    <svg class="hm" viewBox="0 0 48 48" style="left:33%;top:8%;width:48px;rotate:-6deg"><rect x="6" y="10" width="36" height="32" rx="4"/><path d="M6 19h36M15 6v8M33 6v8M17 30l5 5 9-10"/></svg>
+    <svg class="hm" viewBox="0 0 48 48" style="right:33%;top:10%;width:44px;rotate:10deg"><path d="M12 34h24l-3-5V20a9 9 0 0 0-18 0v9z"/><path d="M20 38a4 4 0 0 0 8 0"/></svg>
+    <svg class="s" viewBox="0 0 48 48" style="left:4%;top:48%;width:52px"><path d="M8 10h32a4 4 0 0 1 4 4v16a4 4 0 0 1-4 4H22l-9 8v-8H8a4 4 0 0 1-4-4V14a4 4 0 0 1 4-4z"/><path d="M14 22h20"/></svg>
+    <svg class="s" viewBox="0 0 48 48" style="right:4%;top:46%;width:50px"><path d="M6 40h36M10 32l9-9 7 6 14-15"/><path d="M32 14h8v8"/></svg>
+    <svg class="s hm" viewBox="0 0 48 48" style="left:40%;top:78%;width:30px"><path d="M24 6c2 10 8 16 18 18-10 2-16 8-18 18-2-10-8-16-18-18 10-2 16-8 18-18z"/></svg>
+    <svg class="s" viewBox="0 0 48 48" style="right:38%;top:80%;width:24px"><path d="M24 6c2 10 8 16 18 18-10 2-16 8-18 18-2-10-8-16-18-18 10-2 16-8 18-18z"/></svg>
+    <span class="dot" style="left:15%;top:40%;width:8px;height:8px"></span>
+    <span class="dot" style="right:14%;top:38%;width:6px;height:6px"></span>
+    <span class="dot hm" style="left:28%;top:30%;width:5px;height:5px"></span>
+    <span class="dot hm" style="right:27%;top:84%;width:7px;height:7px"></span>
+  </div>
+  <div class="w">
+    <span class="en">Social Master</span>
+    <h1>ソーシャルマスター</h1>
+    <span class="rule" aria-hidden="true"></span>
+    <p class="meta">
+      <span>最終更新 <b>2026.09.23</b></span>
+      <span class="k"><i style="background:var(--oem)"></i>OEM 6点</span>
+      <span class="k"><i style="background:var(--dir)"></i>直販 5点</span>
+      <span class="k"><i style="background:var(--etc)"></i>その他 3点</span>
+    </p>
+  </div>
+</header>
+
+<main>
+
+<section class="news" aria-labelledby="news-h">
+  <div class="w">
+    <div class="sh"><h2 id="news-h">お知らせ</h2><span class="en">News</span></div>
+    <ul class="nl">
+<li><a href="#oem"><time>09.23</time><span class="cat etc">その他</span><span class="t"><span class="bd bg-new">NEW</span>資料インデックスを開設しました。OEMの資料4点は準備中です</span></a></li>
+<li><a href="#c-01"><time>09.17</time><span class="cat etc">その他</span><span class="t"><span class="bd bg-new">NEW</span>SaaS Mediaに、担当者3名の営業インタビューを公開しました</span></a></li>
+<li><a href="#a-05"><time>09.15</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-new">NEW</span>自社で運用するX 8アカウントの、フォロワー推移のレポートを公開しました</span></a></li>
+<li><a href="#a-01"><time>09.15</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-up">更新</span>サービス紹介ページのよくある質問で、初期費用の記載を正しい金額に直しました</span></a></li>
+<li><a href="#b-05"><time>09.10</time><span class="cat oem">OEM</span><span class="t"><span class="bd bg-new">NEW</span>パートナー向けの記事を2本公開しました</span></a></li>
+    </ul>
+    
+  </div>
+</section>
+
+<section class="blk oem" id="oem" aria-labelledby="oem-h">
+  <div class="w in">
+    <div class="side">
+      <span class="en">B ／ OEM</span>
+      <h2 id="oem-h">貴社の商材に足す</h2>
+      <p class="who">お客様に届ける会社の方へ</p>
+      <div class="hist"><p class="hist-h">この区画の更新履歴</p><ol><li><time>09.23</time><span class="t"><span class="n">B区画</span>インデックスに区画を新設</span></li><li><time>09.10</time><span class="t"><span class="n">B-05</span>初回ヒアリングの記事を公開</span></li><li><time>09.10</time><span class="t"><span class="n">B-06</span>成果を約束しない注意点の記事を公開</span></li></ol></div>
+      <span class="bar" aria-hidden="true"></span>
+    </div>
+    <div>
+<ul class="docs">
+<li><div class="doc" id="b-01">
+  <span class="no">B-01</span>
+  <div><div class="ttl"><h3>OEM提供のご案内</h3><span class="bd bg-soon">準備中</span></div>
+    <p>貴社の名前でソーシャルマスターを届けるための案内。貴社と当社の役割分担と、提供するもの一式をまとめます。</p>
+    <span class="st">公開時にこのページでお知らせします</span></div>
+</div></li>
+<li><div class="doc" id="b-02">
+  <span class="no">B-02</span>
+  <div><div class="ttl"><h3>説明会の募集ページ</h3><span class="bd bg-soon">準備中</span></div>
+    <p>パートナー向け説明会の申込ページ。会社名と取扱商材を伺います。</p>
+    <span class="st">公開時にこのページでお知らせします</span></div>
+</div></li>
+<li><div class="doc" id="b-03">
+  <span class="no">B-03</span>
+  <div><div class="ttl"><h3>説明会の投影資料</h3><span class="bd bg-soon">準備中</span></div>
+    <p>説明会の当日に映す資料。誰が話しても同じ話になるよう、話す文言を併記します。</p>
+    <span class="st">公開時にこのページでお知らせします</span></div>
+</div></li>
+<li><div class="doc" id="b-04">
+  <span class="no">B-04</span>
+  <div><div class="ttl"><h3>パートナー向け説明ノート</h3><span class="bd bg-soon">準備中</span><span class="bd bg-in">社内</span></div>
+    <p>パートナーの営業が自社のお客様へどう話すか、言い回しまで書いた台本です。</p>
+    <span class="st">公開時にこのページでお知らせします</span></div>
+</div></li>
+<li><div class="doc link" id="b-05">
+  <a class="lk" href="https://writeup-inc.github.io/saas/member/social-master-fit-questions/"><span class="no">B-05</span>
+  <div><div class="ttl"><h3>初回ヒアリングの質問</h3></div>
+    <p>提案先を「SNSが止まる理由」から見つける初回ヒアリングの記事。パートナーが最初の面談で使います。</p></div>
+  <span class="arr" aria-hidden="true">→</span></a>
+  <div class="urlrow"><span class="url">writeup-inc.github.io/saas/member/social-master-fit-questions/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/member/social-master-fit-questions/">コピー</button></div>
+</div></li>
+<li><div class="doc link" id="b-06">
+  <a class="lk" href="https://writeup-inc.github.io/saas/member/social-master-no-guarantee/"><span class="no">B-06</span>
+  <div><div class="ttl"><h3>成果を約束しない注意点</h3></div>
+    <p>投稿の自動化だけで売らず、成果保証や無人運用を約束しないための注意点をまとめた記事です。</p></div>
+  <span class="arr" aria-hidden="true">→</span></a>
+  <div class="urlrow"><span class="url">writeup-inc.github.io/saas/member/social-master-no-guarantee/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/member/social-master-no-guarantee/">コピー</button></div>
+</div></li>
+</ul>
+    </div>
+  </div>
+</section>
+<section class="blk dir" id="direct" aria-labelledby="dir-h">
+  <div class="w in">
+    <div class="side">
+      <span class="en">A ／ Direct</span>
+      <h2 id="dir-h">自社で使う</h2>
+      <p class="who">使う会社の方へ</p>
+      <div class="hist"><p class="hist-h">この区画の更新履歴</p><ol><li><time>09.23</time><span class="t"><span class="n">A区画</span>インデックスに掲載し番号を付与</span></li><li><time>09.15</time><span class="t"><span class="n">A-05</span>自社運用レポートを公開</span></li><li><time>09.15</time><span class="t"><span class="n">A-01</span>よくある質問の初期費用を修正</span></li></ol></div>
+      <span class="bar" aria-hidden="true"></span><ul class="terms"><li>Instagram・X・Threads</li><li>相談から申込みまでAIチャット</li></ul>
+    </div>
+    <div>
+<ul class="docs">
+<li><div class="doc link" id="a-01">
+  <a class="lk" href="https://social.elliot-tech.jp/lp/r/7MG3DRE5"><span class="no">A-01</span>
+  <div><div class="ttl"><h3>サービス紹介ページ</h3></div>
+    <p>Instagram・X・Threadsの自動投稿とDMの自動応答で、SNSの運用をまるごと任せられるサービスの案内。相談から申込みまでAIチャットで完結します。</p></div>
+  <span class="arr" aria-hidden="true">→</span></a>
+  <div class="urlrow"><span class="url">social.elliot-tech.jp/lp/r/7MG3DRE5</span><button type="button" class="cp" data-url="https://social.elliot-tech.jp/lp/r/7MG3DRE5">コピー</button></div>
+</div></li>
+<li><div class="doc" id="a-02">
+  <span class="no">A-02</span>
+  <div><div class="ttl"><h3>セミナーの募集ページ</h3><span class="bd bg-soon">準備中</span></div>
+    <p>使う会社向けのセミナー・相談会の申込ページです。</p>
+    <span class="st">公開時にこのページでお知らせします</span></div>
+</div></li>
+<li><div class="doc" id="a-03">
+  <span class="no">A-03</span>
+  <div><div class="ttl"><h3>セミナーの投影資料</h3><span class="bd bg-soon">準備中</span></div>
+    <p>セミナーの当日に映す資料。自社運用の実績と1年間の試算を中心に組みます。</p>
+    <span class="st">提案書の追加資料（運用実績と1年試算）の下書きがあり、これを土台にします</span></div>
+</div></li>
+<li><div class="doc" id="a-04">
+  <span class="no">A-04</span>
+  <div><div class="ttl"><h3>商談時の説明ノート</h3><span class="bd bg-soon">準備中</span><span class="bd bg-in">社内</span></div>
+    <p>30秒・3分・15分の説明と、価格の伝え方、切り返しをまとめた台本です。</p>
+    <span class="st">公開時にこのページでお知らせします</span></div>
+</div></li>
+<li><div class="doc link" id="a-05">
+  <a class="lk" href="https://writeup-inc.github.io/saas/social-master-growth-report/"><span class="no">A-05</span>
+  <div><div class="ttl"><h3>自社運用レポート</h3></div>
+    <p>当社がソーシャルマスターで運用するX 8アカウントの、9月1日〜15日のフォロワー推移の実測と1年間の試算。各章にChatGPTで確かめるボタンがあります。</p></div>
+  <span class="arr" aria-hidden="true">→</span></a>
+  <div class="urlrow"><span class="url">writeup-inc.github.io/saas/social-master-growth-report/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/social-master-growth-report/">コピー</button></div>
+</div></li>
+</ul>
+    </div>
+  </div>
+</section>
+<section class="blk etc" id="etc" aria-labelledby="etc-h">
+  <div class="w in">
+    <div class="side">
+      <span class="en">C ／ Stories</span>
+      <h2 id="etc-h">読みもの</h2>
+      <p class="who">直販にもOEMにも使う記事</p>
+      <div class="hist"><p class="hist-h">この区画の更新履歴</p><ol><li><time>09.23</time><span class="t"><span class="n">C区画</span>インタビュー3本をまとめて掲載</span></li><li><time>09.17</time><span class="t"><span class="n">C-01</span>企画担当のインタビューを公開</span></li><li><time>09.17</time><span class="t"><span class="n">C-02</span>営業担当2名のインタビューを公開</span></li></ol></div>
+      <span class="bar" aria-hidden="true"></span>
+    </div>
+    <div>
+<ul class="docs">
+<li><div class="doc link" id="c-01">
+  <a class="lk" href="https://writeup-inc.github.io/interviews/socialmaster-komatsu/"><span class="no">C-01</span>
+  <div><div class="ttl"><h3>インタビュー：企画担当</h3></div>
+    <p>企画担当が、自分の作ったサービスの肝を現場の言葉で教えられた日の話です。</p></div>
+  <span class="arr" aria-hidden="true">→</span></a>
+  <div class="urlrow"><span class="url">writeup-inc.github.io/interviews/socialmaster-komatsu/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/interviews/socialmaster-komatsu/">コピー</button></div>
+</div></li>
+<li><div class="doc link" id="c-02">
+  <a class="lk" href="https://writeup-inc.github.io/interviews/socialmaster-kanno/"><span class="no">C-02</span>
+  <div><div class="ttl"><h3>インタビュー：マネージャー</h3></div>
+    <p>SNSは発信ではなく会話だった、と気づいた営業マネージャーの話です。</p></div>
+  <span class="arr" aria-hidden="true">→</span></a>
+  <div class="urlrow"><span class="url">writeup-inc.github.io/interviews/socialmaster-kanno/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/interviews/socialmaster-kanno/">コピー</button></div>
+</div></li>
+<li><div class="doc link" id="c-03">
+  <a class="lk" href="https://writeup-inc.github.io/interviews/socialmaster-matsui/"><span class="no">C-03</span>
+  <div><div class="ttl"><h3>インタビュー：営業担当</h3></div>
+    <p>温度感はAIだけでは届かない。二年ぶりに現場へ戻った営業担当の話です。</p></div>
+  <span class="arr" aria-hidden="true">→</span></a>
+  <div class="urlrow"><span class="url">writeup-inc.github.io/interviews/socialmaster-matsui/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/interviews/socialmaster-matsui/">コピー</button></div>
+</div></li>
+</ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p class="motto">営業方針 <b>魚を与えるのではなく、魚の釣り方を教えよ。</b></p>
+  <p>ソーシャルマスター 資料インデックス</p>
+  <p>社内共有用の資料インデックスです。</p>
+  <nav aria-label="運営会社"><a href="https://www.writeup.jp/" rel="noopener">会社概要（株式会社ライトアップ）</a><a href="https://www.writeup.jp/privacy/" rel="noopener">個人情報保護方針</a></nav>
+</footer>
+
+<script>
+(function(){
+  function fallback(t){
+    var ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');
+    ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');}catch(e){}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll('.cp').forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.preventDefault();e.stopPropagation();
+      var u=btn.getAttribute('data-url');
+      var ok=function(){btn.textContent='コピー済み';btn.classList.add('done');
+        setTimeout(function(){btn.textContent='コピー';btn.classList.remove('done');},1600);};
+      if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){fallback(u);ok();});}
+      else{fallback(u);ok();}
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
