@@ -3,15 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="経験を事業の言葉に変え、最初のお客様との対話を始める。創業支援パック。">
+  <meta name="description" content="創業準備中から創業1年以内の方へ。集客と商品づくりの13サービスから、いま必要な1本を見つけて始める創業支援パック。">
   <meta name="theme-color" content="#1c382b">
   <meta name="catalog-card" content="true">
   <link rel="canonical" href="https://writeup-inc.github.io/saas/sogyo-pack/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:title" content="創業支援パック｜最初の言葉から、事業をはじめる">
-  <meta property="og:description" content="経験を事業の言葉に変え、最初のお客様との対話を始める。創業支援パック。">
+  <meta property="og:description" content="集客と商品づくりの13サービスから、いま必要な1本を見つけて始める創業支援パック。">
   <title>創業支援パック｜最初の言葉から、事業をはじめる</title>
+  <link rel="preload" as="image" href="assets/founder-wall.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;600&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
@@ -49,17 +50,18 @@
     .nav { display: flex; align-items: center; gap: 25px; font-size: 10px; font-weight: 600; letter-spacing: .13em; }
     .nav a { padding: 18px 0; opacity: .88; transition: opacity .2s ease; }
     .nav a:hover { opacity: 1; }
-    .nav-cta { display: inline-flex; align-items: center; min-height: 40px; padding: 0 17px !important; background: var(--vermilion); opacity: 1 !important; }
+    .nav-cta { display: inline-flex; align-items: center; min-height: 44px; padding: 0 17px !important; background: var(--vermilion); opacity: 1 !important; }
     .menu-toggle { display: none; border: 0; background: none; color: inherit; min-width: 44px; min-height: 44px; cursor: pointer; }
+    :focus-visible { outline: 3px solid var(--soft-vermilion); outline-offset: 4px; }
 
-    .hero { position: relative; min-height: 960px; overflow: clip; color: var(--white); background: var(--ink); }
+    .hero { position: relative; min-height: max(760px, 100svh); overflow: clip; color: var(--white); background: var(--ink); }
     .hero-media, .hero-overlay { position: absolute; inset: 0; }
-    .hero-media { background: url("assets/founder-wall.png") 66% center / cover no-repeat; transform: scale(1.005); }
+    .hero-media { background: url("assets/founder-wall.webp") 66% center / cover no-repeat; transform: scale(1.005); }
     .hero-overlay { background: linear-gradient(90deg, rgba(5,9,7,.72) 0%, rgba(5,9,7,.55) 43%, rgba(5,9,7,.22) 76%, rgba(5,9,7,.32) 100%); }
-    .hero-frame { position: relative; min-height: 960px; }
+    .hero-frame { position: relative; min-height: max(760px, 100svh); }
     .hero-rule { position: absolute; top: 73px; left: 0; right: 0; height: 1px; background: rgba(255,255,255,.42); }
     .hero-english { position: absolute; top: 96px; left: 0; color: rgba(255,255,255,.9); font-size: 10px; font-weight: 600; letter-spacing: .19em; }
-    .hero-content { position: absolute; top: 251px; left: 118px; max-width: 870px; }
+    .hero-content { position: absolute; top: clamp(165px, 25svh, 230px); left: 118px; max-width: 870px; }
     .eyebrow { margin: 0; color: var(--soft-vermilion); font-size: 11px; font-weight: 600; letter-spacing: .17em; }
     h1, h2, h3, p { margin-top: 0; }
     h1 { margin: 24px 0 0; font: 500 clamp(44px, 5.25vw, 74px)/1.27 var(--serif); letter-spacing: -.075em; }
@@ -82,7 +84,10 @@
     .thesis h2, .method h2, .system h2, .closing h2 { margin-bottom: 0; font: 500 clamp(34px, 3.55vw, 51px)/1.42 var(--serif); letter-spacing: -.055em; }
     .thesis-body { max-width: 525px; margin: 46px 0 0; color: #e8ebdb; font-size: 15px; line-height: 2; letter-spacing: .02em; }
     .thesis-quote { max-width: 520px; margin: 60px 0 0; padding-top: 19px; border-top: 1px solid rgba(191,186,166,.45); font-size: 14px; font-weight: 500; letter-spacing: .04em; }
-    .thesis-visual { position: relative; min-height: 760px; background: url("assets/conversation.png") center / cover no-repeat; }
+    .fc-btn { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; min-height: 44px; margin-top: 26px; padding: 8px 0; border: 0; border-bottom: 1px solid currentColor; background: transparent; color: inherit; font: 600 13px/1.5 var(--sans); text-align: left; cursor: pointer; }
+    .fc-btn:hover { color: var(--soft-vermilion); }
+    .fc-sub { font-size: 12px; font-weight: 400; opacity: .75; }
+    .thesis-visual { position: relative; min-height: 760px; background: url("assets/conversation.webp") center / cover no-repeat; }
     .thesis-visual::after { content: ""; position: absolute; inset: 0; background: rgba(28,56,43,.15); }
     .image-caption { position: absolute; z-index: 1; left: -72px; bottom: 66px; width: min(420px, calc(100% - 24px)); padding: 18px 22px; color: var(--moss); background: var(--paper); }
     .image-caption small { display: block; margin-bottom: 8px; color: var(--vermilion); font-size: 10px; font-weight: 600; letter-spacing: .16em; }
@@ -90,7 +95,7 @@
 
     .method { padding: 90px 0 61px; }
     .method-intro { max-width: 775px; margin: 38px 0 0 4px; color: var(--moss); font-size: 15px; line-height: 2; letter-spacing: .02em; }
-    .flow { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px; margin-top: 113px; }
+    .flow { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px; margin-top: 84px; }
     .flow::before { content: ""; position: absolute; top: 17px; left: 4%; right: 4%; border-top: 1px solid var(--line); }
     .flow-step { position: relative; }
     .flow-top { display: flex; align-items: center; gap: 14px; }
@@ -100,29 +105,32 @@
     .flow h3 { margin: 27px 0 0; font: 500 27px/1.48 var(--serif); letter-spacing: -.03em; }
     .flow p { margin: 22px 0 0; color: var(--moss); font-size: 13px; line-height: 1.9; letter-spacing: .02em; }
     .flow-end { position: absolute; top: -8px; right: 1.5%; color: var(--vermilion); font-size: 28px; }
-    .outcome { display: flex; align-items: center; gap: 28px; margin-top: 90px; padding: 18px 28px; background: var(--pale); color: var(--moss); }
+    .outcome { display: flex; align-items: center; gap: 28px; margin-top: 70px; padding: 18px 28px; background: var(--pale); color: var(--moss); }
     .outcome small { flex: 0 0 auto; color: var(--vermilion); font-size: 10px; font-weight: 600; letter-spacing: .16em; }
     .outcome strong { font-size: 15px; font-weight: 500; letter-spacing: .02em; }
 
     .system { padding: 90px 0 64px; color: var(--white); background: var(--ink); }
     .system-grid { display: grid; grid-template-columns: .95fr 1px 1.05fr; gap: 70px; }
     .system-intro { min-width: 0; }
-    .system-intro > p:not(.section-index) { max-width: 520px; margin: 54px 0 0 4px; color: #e5e8db; font-size: 15px; line-height: 2; }
-    .massive { margin: 68px 0 0; color: #2b5740; font: 500 190px/.8 var(--serif); letter-spacing: -.12em; }
+    .system-intro > p:not(.section-index):not(.massive):not(.massive-note) { max-width: 520px; margin: 54px 0 0 4px; color: #e5e8db; font-size: 15px; line-height: 2; }
+    .massive { margin: 68px 0 0; color: #417255; font: 500 190px/.8 var(--serif); letter-spacing: -.12em; }
     .massive-note { margin: 18px 0 0 10px; color: #e3e8d6; font-size: 10px; font-weight: 600; line-height: 1.55; letter-spacing: .15em; }
     .system-divider { background: rgba(184,178,161,.38); }
-    .services { display: grid; grid-template-columns: 1fr 1fr; gap: 46px; padding-top: 132px; }
+    .services { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; padding-top: 88px; }
     .service-group-kicker { margin: 0; font-size: 13px; font-weight: 600; letter-spacing: .14em; }
     .service-group-kicker.orange { color: var(--soft-vermilion); }
     .service-group-kicker.green { color: #a8d1ab; }
     .service-group-label { margin: 18px 0 0; color: #d1d6c7; font-size: 10px; font-weight: 600; letter-spacing: .16em; }
     .services h3 { margin: 21px 0 0; font: 500 26px/1.45 var(--serif); letter-spacing: -.04em; }
-    .service-list { margin: 57px 0 0; padding: 0; list-style: none; border-top: 1px solid rgba(184,178,161,.36); }
-    .service-list li { display: grid; grid-template-columns: 38px 1fr; gap: 18px; min-height: 61px; align-items: center; border-bottom: 1px solid rgba(184,178,161,.36); font-size: 13px; font-weight: 500; letter-spacing: .01em; }
-    .service-list small { color: #adb5a6; font-size: 10px; font-weight: 500; letter-spacing: .1em; }
+    .service-list { margin: 38px 0 0; padding: 0; list-style: none; border-top: 1px solid rgba(184,178,161,.36); }
+    .service-list li { display: grid; grid-template-columns: 24px minmax(0,1fr); gap: 10px; min-height: 76px; align-items: center; border-bottom: 1px solid rgba(184,178,161,.36); letter-spacing: .01em; }
+    .service-list small { align-self: start; padding-top: 22px; color: #adb5a6; font-size: 10px; font-weight: 500; letter-spacing: .1em; }
+    .service-list b { display: block; font-size: 13px; font-weight: 600; line-height: 1.5; }
+    .service-list em { display: block; margin-top: 3px; color: #cbd1c2; font-size: 11px; font-style: normal; line-height: 1.5; }
     .system-result { display: flex; align-items: center; gap: 28px; margin-top: 34px; padding: 20px 28px; color: var(--moss); background: var(--pale); }
     .system-result small { flex: 0 0 auto; color: var(--vermilion); font-size: 10px; font-weight: 600; letter-spacing: .15em; }
     .system-result span { font-size: 14px; font-weight: 500; line-height: 1.7; }
+    .system-note { margin: 18px 0 0; color: #bbc4b5; font-size: 12px; line-height: 1.8; }
 
     .closing { padding: 104px 0 0; }
     .closing-grid { display: grid; grid-template-columns: minmax(0, 1fr) 382px; gap: 72px; align-items: start; }
@@ -132,6 +140,8 @@
     .diagnostic h3 { margin: 20px 0 0; font: 500 29px/1.52 var(--serif); letter-spacing: -.03em; }
     .diagnostic p { margin: 20px 0 0; color: #e5e8db; font-size: 13px; line-height: 1.85; }
     .diagnostic .button { width: 100%; min-height: 48px; margin-top: 24px; color: var(--white); background: var(--vermilion); }
+    .diagnostic .consult-link { display: inline-block; margin-top: 18px; border-bottom: 1px solid rgba(255,255,255,.55); color: #e5e8db; font-size: 12px; line-height: 1.7; }
+    .diagnostic .consult-link:hover { color: var(--white); }
     .site-footer { display: grid; grid-template-columns: 1fr auto; gap: 30px; margin-top: 106px; padding: 34px 0 30px; border-top: 1px solid var(--line); color: var(--moss); }
     .footer-brand { margin: 0; font-size: 14px; font-weight: 600; letter-spacing: .07em; }
     .footer-copy { margin: 11px 0 0; font-size: 11px; line-height: 1.7; letter-spacing: .02em; }
@@ -145,14 +155,15 @@
       .nav a:not(.nav-cta) { display: none; }
       .hero { min-height: 820px; }
       .hero-frame { min-height: 820px; }
-      .hero-content { top: 225px; left: 90px; }
+      .hero-content { top: 205px; left: 90px; }
       .hero-rail { display: none; }
       .hero-note { right: 0; bottom: 65px; }
       .thesis-grid { grid-template-columns: 1fr 40%; }
       .thesis-copy { padding-right: 42px; }
       .image-caption { left: -100px; }
-      .system-grid { grid-template-columns: .75fr 1px 1.25fr; gap: 35px; }
-      .services { gap: 30px; }
+      .system-grid { grid-template-columns: 1fr; gap: 0; }
+      .system-divider { display: none; }
+      .services { gap: 30px; padding-top: 58px; }
       .services h3 { font-size: 22px; }
     }
 
@@ -161,7 +172,7 @@
       .site-header { height: 52px; }
       .brand { font-size: 12px; }
       .brand small { font-size: 8px; }
-      .nav-cta { min-height: 38px; padding: 0 12px !important; font-size: 9px; }
+      .nav-cta { min-height: 44px; padding: 0 12px !important; font-size: 11px; }
       .hero { min-height: 760px; }
       .hero-media { background-position: 69% center; }
       .hero-overlay { background: linear-gradient(90deg, rgba(5,9,7,.75), rgba(5,9,7,.47)); }
@@ -172,20 +183,20 @@
       h1 { font-size: clamp(32px, 9.4vw, 42px); line-height: 1.37; }
       .pc-title { display: none; }
       .sp-title { display: inline; }
-      .hero-copy { margin-top: 24px; max-width: 91%; font-size: 13px; line-height: 1.9; }
+      .hero-copy { margin-top: 24px; max-width: 94%; font-size: 14px; line-height: 1.85; }
       .button-primary { min-width: min(278px, 100%); margin-top: 27px; }
       .hero-note { right: 0; bottom: 46px; width: 190px; font-size: 9px; }
       .thesis-grid, .closing-grid { grid-template-columns: 1fr; gap: 0; }
-      .thesis-copy { min-height: 610px; padding: 66px 0 54px; }
+      .thesis-copy { padding: 66px 0 54px; }
       .section-index { margin-bottom: 21px; font-size: 9px; }
       .thesis h2, .method h2, .system h2, .closing h2 { font-size: 35px; line-height: 1.48; }
-      .thesis-body { margin-top: 32px; font-size: 13px; line-height: 1.92; }
+      .thesis-body { margin-top: 32px; font-size: 14px; line-height: 1.92; }
       .thesis-quote { margin-top: 34px; font-size: 12px; }
       .thesis-visual { min-height: 470px; }
       .image-caption { left: 18px; bottom: 28px; width: calc(100% - 36px); }
       .image-caption strong { font-size: 16px; }
       .method { padding: 66px 0 48px; }
-      .method-intro { margin-top: 31px; font-size: 13px; line-height: 1.9; }
+      .method-intro { margin-top: 31px; font-size: 14px; line-height: 1.9; }
       .flow { grid-template-columns: 1fr; gap: 0; margin-top: 58px; padding-left: 20px; }
       .flow::before { top: 10px; bottom: 10px; left: 8px; right: auto; border-top: 0; border-left: 1px solid var(--line); }
       .flow-step { padding: 0 0 42px 27px; }
@@ -193,22 +204,24 @@
       .flow-top { margin-left: -47px; }
       .dot { width: 22px; height: 22px; border-width: 4px; }
       .flow h3 { margin: 14px 0 0; font-size: 23px; }
-      .flow p { margin-top: 9px; font-size: 12px; }
+      .flow p { margin-top: 9px; font-size: 14px; }
       .flow-end { display: none; }
       .outcome, .system-result { display: block; margin-top: 48px; padding: 19px; }
       .outcome strong, .system-result span { display: block; margin-top: 10px; font-size: 12px; }
       .system { padding: 66px 0 42px; }
       .system-grid { grid-template-columns: 1fr; gap: 0; }
       .system-divider { display: none; }
-      .system-intro > p:not(.section-index) { margin-top: 34px; font-size: 13px; line-height: 1.9; }
+      .system-intro > p:not(.section-index):not(.massive):not(.massive-note) { margin-top: 34px; font-size: 14px; line-height: 1.9; }
       .massive { margin-top: 48px; font-size: 145px; }
       .services { grid-template-columns: 1fr; gap: 56px; padding-top: 58px; }
       .services h3 { font-size: 24px; }
       .service-list { margin-top: 27px; }
-      .service-list li { min-height: 53px; font-size: 12px; }
+      .service-list li { min-height: 76px; }
+      .service-list b { font-size: 14px; }
+      .service-list em { font-size: 12px; }
       .system-result { margin-top: 35px; }
       .closing { padding-top: 70px; }
-      .closing-copy { margin-top: 31px; font-size: 13px; line-height: 1.9; }
+      .closing-copy { margin-top: 31px; font-size: 14px; line-height: 1.9; }
       .diagnostic { margin-top: 48px; padding: 28px 25px; }
       .diagnostic h3 { font-size: 26px; }
       .site-footer { grid-template-columns: 1fr; gap: 26px; margin-top: 70px; padding: 27px 0; }
@@ -224,7 +237,7 @@
       <a class="brand" href="#top" aria-label="創業支援パックの先頭へ戻る">創業支援パック<small>SŌGYŌ SUPPORT PROGRAM</small></a>
       <nav class="nav" aria-label="主要ナビゲーション">
         <a href="#program">PROGRAM</a><a href="#method">METHOD</a><a href="#services">SERVICES</a>
-        <a class="nav-cta" href="https://writeup-inc.github.io/saas/sogyo/">診断する&nbsp; →</a>
+        <a class="nav-cta" href="https://writeup-inc.github.io/saas/sogyo/">適性診断へ&nbsp; →</a>
       </nav>
     </div>
   </header>
@@ -237,8 +250,8 @@
         <div class="hero-rail" aria-hidden="true"><span>01</span><span>02</span><span>03</span><span>04</span></div>
         <div class="hero-content"><p class="eyebrow">START WITH WHAT ONLY YOU CAN SAY</p>
           <h1 id="hero-title"><span class="pc-title">ホームページを作る前に、<br>何をする会社かを<br>世の中に宣言する。</span><span class="sp-title">ホームページを<br>作る前に、<br>何をする会社かを<br>世の中に宣言する。</span></h1>
-          <p class="hero-copy">創業支援パックは、あなたの経験を事業の言葉に変え、最初のお客様との対話を始めるための実装プログラムです。</p>
-          <a class="button button-primary" href="https://writeup-inc.github.io/saas/sogyo/">創業の現在地を診断する <span aria-hidden="true">→</span></a>
+          <p class="hero-copy">創業支援パックは、集客と商品づくりの13サービスから、いま必要な一手を見つけて始めるためのプログラムです。</p>
+          <a class="button button-primary" href="https://writeup-inc.github.io/saas/sogyo/">最初の1本を診断する <span aria-hidden="true">→</span></a>
         </div>
         <p class="hero-note">創業準備中〜創業1年以内の方へ</p>
       </div>
@@ -246,46 +259,54 @@
 
     <section class="thesis" id="program" aria-labelledby="thesis-title">
       <div class="container thesis-grid">
-        <div class="thesis-copy"><p class="section-index">02 / WHO TO START WITH</p>
-          <h2 id="thesis-title">事業をやめれば、<br>商品は消える。<br>集めたお客様は残る。</h2>
-          <p class="thesis-body">だから、最初に磨くべきなのは「何を売るか」だけではありません。自分の経験を、どんな人の、どんな場面に届けるか。事業はその対話から、強くなっていきます。</p>
-          <p class="thesis-quote">「売る前」に、話を聞ける場所をつくる。</p>
+        <div class="thesis-copy"><p class="section-index">02 / FIND THE MISSING SIDE</p>
+          <h2 id="thesis-title">売るものと、<br>出会う相手。<br>足りない側から始める。</h2>
+          <p class="thesis-body">事業を始めるとき、商品を整えることも、お客様との接点をつくることも大切です。すでに強い側をさらに磨く前に、いま足りない側を見つける。創業支援パックは、その順番を決めるところから始まります。</p>
+          <p class="thesis-quote">先に決めるのは、13本の契約ではなく、最初の1本。</p>
+          <a class="fc-btn" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" data-fc-section="売るものと、出会う相手。足りない側から始める。" data-fc-claim="創業初期には、提供する商品・サービスと顧客との接点の両方が重要である／すでに強い側より、いま不足している側を補うという考え方には有効な場合がある">ChatGPTでファクトチェック <span class="fc-sub">別タブで開きます</span></a>
         </div>
         <div class="thesis-visual"><div class="image-caption"><small>BEFORE YOU BUILD</small><strong>最初のお客様との対話を、<br>事業の設計図にする。</strong></div></div>
       </div>
     </section>
 
     <section class="method" id="method" aria-labelledby="method-title"><div class="container">
-      <p class="section-index">03 / THE LOOP, NOT A ONE-TIME BUILD</p><h2 id="method-title">つくって終わり、ではない。<br>市場と話しながら、事業を磨く。</h2>
-      <p class="method-intro">ホームページは完成品ではなく、仮説を外に出し、反応を受け取り、言葉を更新するための場所です。<br>創業支援パックは、その最初の循環を事業の中に残します。</p>
+      <p class="section-index">03 / FIND YOUR FIRST MOVE</p><h2 id="method-title">全部をそろえる前に、<br>最初の1本を決める。</h2>
+      <p class="method-intro">商品が先か、お客様との接点が先か。いまの状況を整理し、必要なサービスから小さく始めます。進めるうちに状況が変われば、次の一手も見直します。</p>
       <div class="flow" aria-label="創業支援パックの4ステップ"><span class="flow-end" aria-hidden="true">→</span>
-        <article class="flow-step"><div class="flow-top"><span class="dot"></span><span class="flow-no">01</span></div><h3>経験を<br>言語化する</h3><p>誰の、どんな場面に<br>役立てるかを決める。</p></article>
-        <article class="flow-step"><div class="flow-top"><span class="dot"></span><span class="flow-no">02</span></div><h3>外部へ<br>出す</h3><p>LP・サービスページとして<br>世の中に宣言する。</p></article>
-        <article class="flow-step"><div class="flow-top"><span class="dot"></span><span class="flow-no">03</span></div><h3>反応を<br>受け取る</h3><p>知人・お客様の声から<br>仮説を確かめる。</p></article>
-        <article class="flow-step"><div class="flow-top"><span class="dot"></span><span class="flow-no">04</span></div><h3>選ばれる言葉へ<br>更新する</h3><p>届いた声をもとに<br>表現と導線を育てる。</p></article>
+        <article class="flow-step"><div class="flow-top"><span class="dot"></span><span class="flow-no">01</span></div><h3>現在地を<br>知る</h3><p>最大18問の診断で<br>いまの状況を整理する。</p></article>
+        <article class="flow-step"><div class="flow-top"><span class="dot"></span><span class="flow-no">02</span></div><h3>足りない側を<br>見極める</h3><p>お客様との接点か、<br>売る商品かを考える。</p></article>
+        <article class="flow-step"><div class="flow-top"><span class="dot"></span><span class="flow-no">03</span></div><h3>最初の1本を<br>選ぶ</h3><p>優先度の高いサービスから<br>相談して始める。</p></article>
+        <article class="flow-step"><div class="flow-top"><span class="dot"></span><span class="flow-no">04</span></div><h3>必要に応じて<br>組み替える</h3><p>事業の変化に合わせて<br>次の一手を見直す。</p></article>
       </div>
-      <aside class="outcome"><small>OUTCOME</small><strong>自分で更新し続けられる、二つのホームページと事業の言葉が残る。</strong></aside>
+      <aside class="outcome"><small>OUTCOME</small><strong>「いますぐ／次に／いまは見送り」が見え、最初の1本から始められる。</strong></aside>
+      <a class="fc-btn" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" data-fc-section="全部をそろえる前に、最初の1本を決める。" data-fc-claim="創業初期に、顧客の反応や事業の状況を見ながら提供内容や進める順番を見直す方法は、仮説検証の一つである／すべての事業で同じ進め方が最適とは限らない">ChatGPTでファクトチェック <span class="fc-sub">別タブで開きます</span></a>
     </div></section>
 
     <section class="system" id="services" aria-labelledby="system-title"><div class="container">
-      <div class="system-grid"><div class="system-intro"><p class="section-index">04 / A SYSTEM, NOT A MENU</p><h2 id="system-title">最初から13本を、<br>選ばなくていい。</h2>
-        <p>創業初期に必要なのは、サービスを増やすことではなく、「誰に届くか」と「何を届けるか」をひとつの事業にすることです。</p><p class="massive">13</p><p class="massive-note">FOUNDATIONAL MOVES<br>FOR YOUR FIRST YEAR</p>
+      <div class="system-grid"><div class="system-intro"><p class="section-index">04 / THE SERVICE SYSTEM</p><h2 id="system-title">13本から、<br>いま必要な1本へ。</h2>
+        <p>創業支援パックには、お客様との接点をつくる6本と、売る商品をつくる7本があります。すべてを同時に始める必要はありません。診断で優先順位を見ながら、最初の1本を相談できます。</p><p class="massive">13</p><p class="massive-note">SERVICES, ORGANIZED<br>AROUND YOUR FIRST MOVE</p>
       </div><div class="system-divider" aria-hidden="true"></div>
-      <div class="services"><article><p class="service-group-kicker orange">A / 06</p><p class="service-group-label">CUSTOMER SIDE</p><h3>お客様と出会うための設計</h3><ol class="service-list"><li><small>01</small>経験を事業の言葉にする</li><li><small>02</small>誰に届けるかを仮説にする</li><li><small>03</small>創業ストーリーを編む</li><li><small>04</small>サービスページをつくる</li><li><small>05</small>問い合わせまでの導線を整える</li><li><small>06</small>発信を続ける型を持つ</li></ol></article>
-        <article><p class="service-group-kicker green">B / 07</p><p class="service-group-label">PRODUCT SIDE</p><h3>選ばれ続けるための設計</h3><ol class="service-list"><li><small>01</small>提供価値を絞り込む</li><li><small>02</small>サービスの形を決める</li><li><small>03</small>最初の価格を考える</li><li><small>04</small>事例の種をつくる</li><li><small>05</small>二つのHPを公開する</li><li><small>06</small>自分で更新できる状態へ</li><li><small>07</small>AIに読まれる構造へ</li></ol></article>
+      <div class="services"><article><p class="service-group-kicker orange">A / 06</p><p class="service-group-label">CUSTOMER SIDE</p><h3>お客様との接点</h3><ol class="service-list"><li><small>01</small><span><b>名刺LINEエージェント</b><em>名刺を連絡できる人脈へ</em></span></li><li><small>02</small><span><b>Lシンク</b><em>LINEで関係を温める</em></span></li><li><small>03</small><span><b>ホームページ制作</b><em>会社サイトと共感LPを用意する</em></span></li><li><small>04</small><span><b>ソーシャルマスター</b><em>発信で見つけてもらう</em></span></li><li><small>05</small><span><b>AIOマスター</b><em>AI検索に向けて情報を整える</em></span></li><li><small>06</small><span><b>AI活用スキル</b><em>AIを仕事で使えるようにする</em></span></li></ol></article>
+        <article><p class="service-group-kicker green">B / 07</p><p class="service-group-label">PRODUCT SIDE</p><h3>売る商品をつくる</h3><ol class="service-list"><li><small>01</small><span><b>AIとの壁打ち／事業計画書</b><em>何をどう売るかを言葉にする</em></span></li><li><small>02</small><span><b>Jマッチエンジン</b><em>制度と事業の種を探す</em></span></li><li><small>03</small><span><b>OEM提供</b><em>商材を自社名義で扱う</em></span></li><li><small>04</small><span><b>Web制作会社スタートパック</b><em>Web制作事業を始める</em></span></li><li><small>05</small><span><b>営業代行会社スタートパック</b><em>営業代行事業を始める</em></span></li><li><small>06</small><span><b>つばめリファラル</b><em>紹介を事業につなげる</em></span></li><li><small>07</small><span><b>商談で決める力</b><em>商談で提案を伝え切る</em></span></li></ol></article>
       </div></div>
-      <aside class="system-result"><small>WHAT REMAINS</small><span>事業の顔になるホームページと、対話を続けるホームページ。二つを公開し、育て続けられる状態まで。</span></aside>
+      <aside class="system-result"><small>YOUR NEXT MOVE</small><span>診断では、13本を「いますぐ／次に／いまは見送り」に並べ替えます。</span></aside>
+      <p class="system-note">各サービスの提供条件・料金は、ご相談時に正式にご案内します。</p>
     </div></section>
 
-    <section class="closing" aria-labelledby="closing-title"><div class="container"><div class="closing-grid"><div><p class="section-index">YOUR FIRST DECLARATION</p><h2 id="closing-title">いまの事業を、<br>最初の言葉からはじめよう。</h2><p class="closing-copy">まだサービスの名前が決まっていなくても、準備が途中でも構いません。<br>まずは、あなたが今どこにいて、何から始めるべきかを診断してください。</p></div>
-        <aside class="diagnostic"><small>START HERE</small><h3>創業の現在地を<br>診断する</h3><p>あなたの経験、届けたい相手、次に整えるべきことを見つけます。</p><a class="button" href="https://writeup-inc.github.io/saas/sogyo/">診断をはじめる <span aria-hidden="true">→</span></a></aside>
+    <section class="closing" aria-labelledby="closing-title"><div class="container"><div class="closing-grid"><div><p class="section-index">YOUR FIRST MOVE</p><h2 id="closing-title">いま必要な一手から、<br>事業をはじめよう。</h2><p class="closing-copy">まだサービスの名前が決まっていなくても、準備が途中でも構いません。<br>まずは現在地を整理して、最初の1本を見つけてください。</p></div>
+        <aside class="diagnostic"><small>START HERE</small><h3>創業の現在地を<br>診断する</h3><p>最大18問で、13サービスの優先順位を整理します。結果を見てから、1本目をご相談ください。</p><a class="button" href="https://writeup-inc.github.io/saas/sogyo/">診断をはじめる <span aria-hidden="true">→</span></a><a class="consult-link" href="https://www.writeup.jp/contact/">診断をせずに相談する →</a></aside>
       </div>
-      <footer class="site-footer"><div><p class="footer-brand">創業支援パック</p><p class="footer-copy">経験を事業に変え、世の中との対話を始めるためのプログラム。</p></div><nav class="footer-nav" aria-label="フッターナビゲーション"><a href="#program">PROGRAM</a><a href="#method">METHOD</a><a href="#services">SERVICES</a><a href="https://writeup-inc.github.io/saas/sogyo/">DIAGNOSIS</a></nav><p class="copyright">© WRITE UP INC.</p></footer>
+      <footer class="site-footer"><div><p class="footer-brand">創業支援パック</p><p class="footer-copy">提供：株式会社ライトアップ<br>いま必要な1本から始め、事業の変化に合わせて次の一手を選ぶ。</p></div><nav class="footer-nav" aria-label="フッターナビゲーション"><a href="#program">PROGRAM</a><a href="#method">METHOD</a><a href="#services">SERVICES</a><a href="https://writeup-inc.github.io/saas/sogyo/">DIAGNOSIS</a></nav><p class="copyright">© WRITE UP INC.</p></footer>
     </div></section>
   </main>
   <script>
     (() => { const header = document.getElementById('site-header'); let last = 0; const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-      addEventListener('scroll', () => { const current = scrollY; header.classList.toggle('is-scrolled', current > 18); if (!reduce) header.classList.toggle('is-hidden', current > 180 && current > last); last = current; }, { passive: true });
+      addEventListener('scroll', () => { const current = scrollY; header.classList.toggle('is-scrolled', current > 18); if (!reduce) header.classList.toggle('is-hidden', current > 180 && current > last && !header.contains(document.activeElement)); last = current; }, { passive: true });
+      header.addEventListener('focusin', () => header.classList.remove('is-hidden'));
+      document.querySelectorAll('.fc-btn').forEach((link) => {
+        const prompt = `次のLPの記載が事実として正しいか、第三者の立場で確認してください。\n\n【対象ページ】${document.querySelector('link[rel="canonical"]')?.href || location.href}\n【セクション】${link.dataset.fcSection}\n【記載内容】\n${link.dataset.fcClaim.split('／').join('\n')}\n\n【確認してほしいこと】\n- 一般的な事実や公的情報と照らして正しいか\n- 誤り・誇張・古い情報があれば指摘する\n- 反対の見方や注意点を示す\n- 確認できないことは推測で補わず「確認できない」と書く`;
+        link.href = 'https://chatgpt.com/?q=' + encodeURIComponent(prompt);
+      });
     })();
   </script>
 </body>
