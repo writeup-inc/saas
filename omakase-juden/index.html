@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <script>document.documentElement.classList.add("js")</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="おまかせ受電AIは、店舗の電話をAIか人かに振り分ける受電の仕分け役。予約は人へ、営業電話はAIへ。任せる範囲をお店で決められます。">
+  <meta name="theme-color" content="#102f2b">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="catalog-card" content="true">
+  <link rel="canonical" href="https://writeup-inc.github.io/saas/omakase-juden/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <title>おまかせ受電AI｜任せる電話を、お店が決める</title>
+  <style>
+/* lp-base.css — 日本語LP／HTML成果物の初期CSS
+ *
+ * 品質台帳（~/Documents/Codex/loop-engineering-memory/events.jsonl）で
+ * 再発が確認された表示欠陥を、指摘ではなく初期値で潰すためのファイル。
+ * 対応する欠陥ID:
+ *   japanese-heading-midword-wrap（見出しが単語途中で改行）11回
+ *   mobile-fv-headline-wrap（モバイルFVの見出し改行）3回
+ *   mobile-fixed-cta-overlap（固定CTAが本文を隠す）3回
+ *   meaningful-small-text-under-readable-size（意味のある文字が可読サイズ未満）5回
+ *
+ * 使い方: HTMLの<style>先頭にこの内容を貼る。色・書体・余白は各LPで上書きしてよいが、
+ * 下の「改行制御」「最小文字サイズ」「固定CTAの逃げ」の3ブロックは消さないこと。
+ */
+
+/* ── 改行制御 ─────────────────────────────────────────────
+ * 日本語は単語区切りが無いため、既定のままだと文節の途中で折り返す。
+ * auto-phrase は文節単位で折る（Chrome 119+）。非対応環境は strict で逃がす。 */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] {
+    word-break: normal;
+  }
+}
+/* 明示的に折りたくない語の途中で切られたら、その語を <span class="nobr"> で包む */
+.nobr { white-space: nowrap; }
+
+/* ── 最小文字サイズ ───────────────────────────────────────
+ * 判断材料になる文字は12px未満にしない。注記・免責のみ .note を許容。 */
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+
+/* ── ファーストビューの見出し ─────────────────────────────
+ * 固定pxだと狭い画面で必ず折り返す。clamp で画面幅に追従させる。 */
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+
+/* ── 固定CTAの逃げ ────────────────────────────────────────
+ * 画面下に固定CTAを置くページは、この変数を実測の高さに書き換える。
+ * 置かないページはそのままでよい（0のまま）。 */
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+
+/* ── 横はみ出しの予防 ─────────────────────────────────────
+ * flex/grid の子は既定で min-width:auto のため、長い語で親を押し広げる。 */
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+
+
+    :root{--ink:#13211f;--muted:#667570;--line:#dbe5df;--paper:#f4f7f2;--card:#fff;--deep:#102f2b;--deep-2:#0a2522;--mint:#dff5b6;--lime:#c8ed68;--orange:#f2774f;--peach:#fff0e9;--blue:#eaf2ff;--shadow:0 22px 70px rgba(16,47,43,.12);--sans:Inter,"Noto Sans JP","Hiragino Kaku Gothic ProN",system-ui,sans-serif;--max:1180px}
+    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.75;overflow-x:hidden}a{color:inherit}button,input,select{font:inherit}.wrap{width:min(var(--max),calc(100% - 48px));margin-inline:auto}.skip{position:absolute;left:16px;top:-60px;padding:10px 14px;background:var(--lime);color:var(--deep);z-index:20}.skip:focus{top:16px}
+    .eyebrow{display:flex;align-items:center;gap:9px;color:var(--orange);font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}.eyebrow:before{content:"";width:25px;height:2px;background:currentColor}.section-kicker{font-size:14px;color:var(--muted);font-weight:700;letter-spacing:.12em;text-transform:uppercase}.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:54px;padding:0 22px;border:1px solid transparent;border-radius:999px;background:var(--lime);color:var(--deep);font-weight:800;text-decoration:none;box-shadow:0 10px 22px rgba(200,237,104,.22);transition:transform .2s,box-shadow .2s}.btn:after{content:"↗";font-size:18px}.btn:hover{transform:translateY(-2px);box-shadow:0 15px 28px rgba(200,237,104,.3)}.btn.secondary{background:#fff;border-color:var(--line);box-shadow:none}.btn.secondary:hover{border-color:var(--deep)}.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+    header{position:fixed;z-index:10;inset:0 0 auto;border-bottom:1px solid rgba(219,229,223,.9);background:rgba(244,247,242,.88);backdrop-filter:blur(16px)}.nav{height:74px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:10px;color:var(--deep);font-weight:900;text-decoration:none;letter-spacing:.05em}.brand-mark{display:grid;place-items:center;width:31px;height:31px;border-radius:10px;background:var(--deep);color:var(--lime);font-size:15px;font-weight:900}.nav-links{display:flex;align-items:center;gap:26px;color:var(--muted);font-size:13px;font-weight:700}.nav-links a{text-decoration:none}.nav-links a:hover{color:var(--deep)}.nav .btn{min-height:42px;padding:0 17px;font-size:14px}
+    .hero{padding:145px 0 78px;background:radial-gradient(circle at 88% 10%,#e6f3cb 0,transparent 29%),var(--paper)}.hero-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(430px,1.1fr);gap:72px;align-items:center}.hero h1{max-width:650px;margin-top:22px;color:var(--deep);font-size:clamp(36px,4vw,52px);font-weight:900;line-height:1.18;letter-spacing:-.07em}.hero h1 span{display:inline-block;color:var(--orange)}.hero h1 .hero-line{white-space:normal}.hero h1 .hero-line-plain{color:var(--deep)}.hero-lead{max-width:570px;margin-top:25px;color:#465650;font-size:17px;line-height:2}.hero-lead strong{color:var(--deep)}.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:32px}.hero-note{font-size:14px;color:var(--muted);line-height:1.6}.hero-note b{color:var(--deep)}.hero-points{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}.pill{display:inline-flex;align-items:center;min-height:30px;padding:0 11px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.5);color:var(--muted);font-size:14px;font-weight:700}.hero-stage{position:relative;padding:24px;border-radius:28px;background:var(--deep);box-shadow:var(--shadow);overflow:hidden}.hero-stage:before{content:"";position:absolute;right:-90px;top:-100px;width:270px;height:270px;border-radius:50%;background:var(--lime)}.stage-label{position:relative;display:flex;align-items:center;justify-content:space-between;color:rgba(255,255,255,.72);font-size:13px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}.stage-live{display:flex;align-items:center;gap:6px;color:var(--lime)}.stage-live i{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 5px rgba(200,237,104,.15)}.stage-board{position:relative;margin-top:20px;padding:22px;border-radius:22px;background:#fff}.board-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.board-head small{color:var(--muted);font-size:13px}.board-head strong{display:block;color:var(--deep);font-size:17px}.status{padding:5px 9px;border-radius:999px;background:var(--mint);color:var(--deep);font-size:13px;font-weight:800}.stage-question{margin-top:18px;padding:13px 15px;border-radius:13px;background:var(--paper);color:var(--muted);font-size:14px}.stage-question b{display:block;margin-top:3px;color:var(--deep);font-size:16px}.stage-routes{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}.stage-route{min-height:95px;padding:14px 12px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--muted);font-size:13px}.stage-route b{display:block;margin-top:7px;color:var(--deep);font-size:14px}.stage-route.active{border-color:var(--orange);background:var(--peach)}.stage-route.active .route-icon{background:var(--orange);color:#fff}.route-icon{display:grid;place-items:center;width:28px;height:28px;border-radius:9px;background:var(--mint);color:var(--deep);font-weight:900}.stage-foot{position:relative;margin-top:18px;color:rgba(255,255,255,.72);font-size:14px}.stage-foot b{color:var(--lime)}
+    .assurance{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}.assurance-grid{display:grid;grid-template-columns:repeat(3,1fr)}.assurance-item{display:flex;gap:13px;align-items:center;padding:21px 22px 21px 0}.assurance-item+.assurance-item{border-left:1px solid var(--line);padding-left:22px}.assurance-icon{display:grid;place-items:center;flex:0 0 auto;width:34px;height:34px;border-radius:11px;background:var(--deep);color:var(--lime);font-weight:900}.assurance-item b{display:block;color:var(--deep);font-size:14px}.assurance-item span{display:block;color:var(--muted);font-size:13px}
+    section{padding:112px 0}.section-head{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:56px;align-items:end;margin-bottom:46px}.section-head h2{max-width:750px;margin-top:17px;color:var(--deep);font-size:clamp(30px,4.5vw,56px);font-weight:900;line-height:1.3;letter-spacing:-.06em}.section-head h2 em{color:var(--orange);font-style:normal}.section-head>p{color:var(--muted);font-size:14px;line-height:1.95}.rules{background:#fff}.rule-layout{display:grid;grid-template-columns:270px minmax(0,1fr);gap:18px;padding:15px;border:1px solid var(--line);border-radius:28px;background:var(--paper)}.rule-menu{display:grid;align-content:start;gap:6px}.rule-menu-title{padding:11px 14px 7px;color:var(--muted);font-size:13px;font-weight:800;letter-spacing:.09em}.category-btn{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:48px;padding:0 14px;border:1px solid transparent;border-radius:13px;background:transparent;color:#52605b;text-align:left;font-size:13px;font-weight:700;cursor:pointer}.category-btn:hover{background:#fff;color:var(--deep)}.category-btn[aria-selected="true"]{border-color:var(--deep);background:var(--deep);color:#fff}.category-btn small{font-size:13px;opacity:.7}.rule-panel{min-width:0;padding:30px;border-radius:22px;background:var(--deep);color:#fff}.panel-head{display:flex;align-items:start;justify-content:space-between;gap:18px}.panel-kicker{color:var(--lime);font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.panel-head h3{margin-top:5px;font-size:25px}.panel-copy{max-width:520px;margin-top:8px;color:rgba(255,255,255,.68);font-size:14px;line-height:1.8}.demo-badge{padding:6px 10px;border:1px solid rgba(255,255,255,.18);border-radius:999px;color:rgba(255,255,255,.7);font-size:13px;white-space:nowrap}.choice-label{margin-top:27px;color:rgba(255,255,255,.66);font-size:13px;font-weight:800;letter-spacing:.1em}.choice-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:9px}.choice{display:flex;align-items:center;gap:11px;min-height:57px;padding:0 15px;border:1px solid rgba(255,255,255,.2);border-radius:14px;background:rgba(255,255,255,.06);color:#fff;text-align:left;cursor:pointer}.choice:hover{border-color:var(--lime)}.choice[aria-pressed="true"]{border-color:var(--lime);background:var(--lime);color:var(--deep)}.choice-mark{display:grid;place-items:center;width:28px;height:28px;border-radius:9px;background:rgba(255,255,255,.12);font-size:13px;font-weight:900}.choice[aria-pressed="true"] .choice-mark{background:var(--deep);color:var(--lime)}.choice b{font-size:14px}.choice span{display:block;font-size:13px;opacity:.7}.choice[aria-pressed="true"] span{opacity:.85}.action-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-top:9px}.action-option{position:relative;display:flex;align-items:flex-start;gap:9px;min-height:68px;padding:12px;border:1px solid rgba(255,255,255,.16);border-radius:13px;background:rgba(255,255,255,.05);cursor:pointer}.action-option:has(input:checked){border-color:var(--lime);background:rgba(200,237,104,.1)}.action-option input{accent-color:var(--lime);margin-top:3px}.action-option b{display:block;color:#fff;font-size:14px}.action-option span{display:block;margin-top:2px;color:rgba(255,255,255,.6);font-size:13px;line-height:1.5}.template-row{display:flex;align-items:center;gap:10px;margin-top:14px}.template-row label{color:rgba(255,255,255,.66);font-size:13px;white-space:nowrap}.template-row select{min-height:40px;flex:1;padding:0 11px;border:1px solid rgba(255,255,255,.2);border-radius:10px;background:#234741;color:#fff;font-size:14px}.rule-summary{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:27px;padding:15px 17px;border-radius:14px;background:rgba(255,255,255,.09)}.rule-summary p{color:rgba(255,255,255,.65);font-size:13px}.rule-summary strong{display:block;margin-top:2px;color:var(--lime);font-size:14px}.summary-arrow{color:var(--lime);font-size:22px}.panel-note{margin-top:12px;color:rgba(255,255,255,.48);font-size:13px}.rule-hint{margin-top:15px;color:var(--muted);font-size:14px}.rule-hint b{color:var(--deep)}
+    .steps{background:var(--paper)}.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.step-card{position:relative;padding:27px 26px 25px;border:1px solid var(--line);border-radius:20px;background:#fff}.step-card:not(:last-child):after{content:"→";position:absolute;right:-25px;top:50%;color:var(--orange);font-size:23px;font-weight:800}.step-num{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--deep);color:var(--lime);font-weight:900}.step-card:nth-child(2) .step-num{background:var(--orange);color:#fff}.step-card:nth-child(3) .step-num{background:var(--lime);color:var(--deep)}.step-card h3{margin-top:22px;color:var(--deep);font-size:18px}.step-card p{margin-top:8px;color:var(--muted);font-size:13px;line-height:1.85}
+    .roles{background:var(--deep);color:#fff}.roles .section-head h2{color:#fff}.roles .section-head>p{color:rgba(255,255,255,.68)}.roles .eyebrow{color:var(--lime)}.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.role-card{padding:27px;border:1px solid rgba(255,255,255,.16);border-radius:22px;background:rgba(255,255,255,.07)}.role-card.ai{background:var(--lime);border-color:var(--lime);color:var(--deep)}.role-label{display:inline-flex;padding:5px 9px;border-radius:999px;background:rgba(255,255,255,.12);font-size:13px;font-weight:800;letter-spacing:.11em}.role-card.ai .role-label{background:var(--deep);color:var(--lime)}.role-card h3{margin-top:20px;font-size:24px}.role-card p{margin-top:8px;color:rgba(255,255,255,.67);font-size:13px;line-height:1.85}.role-card.ai p{color:#465a32}.role-list{display:grid;gap:0;margin-top:19px;border-top:1px solid rgba(255,255,255,.16);list-style:none}.role-card.ai .role-list{border-color:rgba(16,47,43,.18)}.role-list li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.16);font-size:14px}.role-card.ai .role-list li{border-color:rgba(16,47,43,.18)}.role-list li:before{content:"✓";margin-right:8px;color:var(--lime);font-weight:900}.role-card.ai .role-list li:before{color:var(--orange)}.roles-note{margin-top:17px;color:rgba(255,255,255,.56);font-size:14px}
+    .guide{background:#fff}.guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.guide-card{padding:28px;border:1px solid var(--line);border-radius:20px;background:var(--paper)}.guide-card h3{color:var(--deep);font-size:20px}.guide-card p{margin-top:8px;color:var(--muted);font-size:13px}.guide-list{display:grid;gap:9px;margin-top:21px;list-style:none}.guide-list li{display:flex;gap:9px;align-items:flex-start;font-size:13px}.guide-list li:before{content:"";flex:0 0 auto;width:8px;height:8px;margin-top:9px;border-radius:50%;background:var(--orange)}.guide-card.caution{background:#fff8f4;border-color:#f5ddd2}.guide-card.caution h3{color:#98412e}.guide-card.caution .guide-list li:before{background:#d7a994}
+    .pricing{background:var(--paper);border-top:1px solid var(--line)}.price-box{display:grid;grid-template-columns:1fr 1.2fr;gap:30px;align-items:center;padding:32px;border:1px solid var(--line);border-radius:24px;background:#fff}.price-box h3{margin-top:13px;color:var(--deep);font-size:27px;line-height:1.4}.price-box p{margin-top:10px;color:var(--muted);font-size:13px;line-height:1.9}.price-state{padding:21px;border-radius:17px;background:var(--deep);color:#fff}.price-state strong{display:block;color:var(--lime);font-size:17px}.price-state p{color:rgba(255,255,255,.68);font-size:14px}.price-state .btn{margin-top:15px;min-height:44px;padding:0 17px;font-size:14px}
+    .faq{background:#fff}.faq-list{max-width:850px;border-top:1px solid var(--line)}details{border-bottom:1px solid var(--line)}summary{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 0;color:var(--deep);font-size:16px;font-weight:800;cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}summary:after{content:"+";font-size:23px;font-weight:400;color:var(--orange)}details[open] summary:after{content:"−"}details p{max-width:720px;padding:0 44px 21px 0;color:var(--muted);font-size:13px;line-height:1.9}
+    .final{padding:110px 0;background:var(--orange);color:#fff}.final .eyebrow{color:#fff}.final h2{margin-top:18px;font-size:clamp(32px,5vw,58px);line-height:1.25;letter-spacing:-.06em}.final p{max-width:560px;margin-top:14px;color:rgba(255,255,255,.86);font-size:14px}.final .btn{margin-top:25px;background:var(--deep);color:var(--lime);box-shadow:none}.footer{padding:25px 0;background:var(--deep);color:#fff}.footer-row{display:flex;align-items:center;justify-content:space-between;gap:22px}.footer .brand{color:#fff}.footer-note{color:rgba(255,255,255,.58);font-size:13px;text-align:right;line-height:1.7}.sticky-cta{display:none}
+    @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:45px}.hero-stage{max-width:680px}.section-head{grid-template-columns:1fr;gap:18px}.section-head>p{max-width:620px}.rule-layout{grid-template-columns:210px minmax(0,1fr)}.price-box{grid-template-columns:1fr}.hero{padding-top:125px}}
+    @media(max-width:640px){.wrap{width:min(var(--max),calc(100% - 32px))}.nav{height:64px}.nav-links>a:not(.btn){display:none}.nav .btn{min-height:38px}.hero{padding:105px 0 55px}.hero h1{font-size:clamp(34px,9vw,42px);letter-spacing:-.08em}.hero h1 .hero-line{white-space:nowrap}.hero-lead{font-size:15px;line-height:1.9}.hero-actions{align-items:stretch;flex-direction:column}.hero-actions .btn{width:100%}.hero-note{text-align:center}.hero-stage{padding:15px;border-radius:21px}.stage-board{padding:17px;border-radius:17px}.stage-routes{gap:6px}.stage-route{padding:10px 8px;min-height:88px}.stage-route b{font-size:14px}.assurance-grid{grid-template-columns:1fr}.assurance-item{padding:15px 0}.assurance-item+.assurance-item{border-left:0;border-top:1px solid var(--line);padding-left:0}.section-head h2{font-size:34px}.section-head{margin-bottom:29px}section{padding:76px 0}.rule-layout{grid-template-columns:1fr;padding:9px;border-radius:21px}.rule-menu{display:flex;overflow:auto;gap:6px;padding:3px}.rule-menu-title{display:none}.category-btn{flex:0 0 auto;width:auto;min-height:39px;padding:0 12px;font-size:13px;white-space:nowrap;background:#fff;border-color:var(--line)}.category-btn[aria-selected="true"]{border-color:var(--deep)}.category-btn small{display:none}.rule-panel{padding:20px 17px;border-radius:17px}.panel-head h3{font-size:21px}.demo-badge{font-size:13px}.choice-row,.action-row{grid-template-columns:1fr}.choice{min-height:51px}.action-option{min-height:59px}.template-row{align-items:flex-start;flex-direction:column}.template-row select{width:100%}.rule-summary{align-items:flex-start}.summary-arrow{display:none}.steps-grid,.role-grid,.guide-grid{grid-template-columns:1fr}.step-card:not(:last-child):after{content:"↓";top:auto;right:50%;bottom:-28px}.step-card{padding:22px}.roles{padding-top:77px}.role-card{padding:22px}.role-card h3{font-size:22px}.price-box{padding:21px}.price-box h3{font-size:23px}.final{padding:78px 0}.footer-row{align-items:flex-start;flex-direction:column}.footer-note{text-align:left}.sticky-cta{display:block;position:fixed;z-index:9;right:14px;bottom:14px;left:14px}.sticky-cta .btn{width:100%;min-height:48px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+    .features{background:#fff;border-top:1px solid var(--line)}.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.feature-card{position:relative;min-height:300px;padding:27px;border:1px solid var(--line);border-radius:21px;background:var(--paper);overflow:hidden}.feature-card:after{content:"";position:absolute;right:-50px;bottom:-60px;width:150px;height:150px;border-radius:50%;background:var(--mint);opacity:.55}.feature-card.reservation{background:#fff6f0;border-color:#f4ddd1}.feature-card.reservation:after{background:#ffd7c8}.feature-card.absence{background:#eef4ff;border-color:#d8e4f6}.feature-card.absence:after{background:#cfe0ff}.feature-icon{position:relative;z-index:1;display:grid;place-items:center;width:48px;height:48px;border-radius:15px;background:var(--deep);color:var(--lime);font-size:15px;font-weight:900}.reservation .feature-icon{background:var(--orange);color:#fff;font-size:13px}.absence .feature-icon{background:#4874bf;color:#fff;font-size:22px}.feature-tag{position:relative;z-index:1;margin-top:22px;color:var(--orange);font-size:13px;font-weight:800;letter-spacing:.12em}.feature-card h3{position:relative;z-index:1;margin-top:8px;color:var(--deep);font-size:20px;line-height:1.45}.feature-card p{position:relative;z-index:1;margin-top:9px;color:var(--muted);font-size:13px;line-height:1.85}.feature-flow{position:relative;z-index:1;display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-top:20px;color:var(--deep);font-size:13px;font-weight:800}.feature-flow span{padding:7px 9px;border:1px solid var(--line);border-radius:9px;background:#fff}.feature-flow b{color:var(--orange)}.feature-badge{position:relative;z-index:1;display:inline-flex;margin-top:20px;padding:7px 10px;border-radius:999px;background:#fff;color:#98412e;font-size:13px;font-weight:800}.feature-note{margin-top:15px;color:var(--muted);font-size:13px}.auto-toggle{display:inline-flex;align-items:center;gap:6px;margin-left:10px;padding:5px 9px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--deep);font-size:13px;font-weight:800;cursor:pointer}.auto-toggle:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--orange)}.auto-toggle[data-running="true"]:before{background:var(--lime);box-shadow:0 0 0 3px rgba(200,237,104,.25)}@media(max-width:900px){.feature-grid{grid-template-columns:1fr 1fr}.feature-card:last-child{grid-column:span 2}}@media(max-width:640px){.feature-grid{grid-template-columns:1fr}.feature-card:last-child{grid-column:span 1}.auto-toggle{margin:9px 0 0}}
+  
+/* ===== 2026-09-24 ブラッシュアップで追加 ===== */
+body{font-family:var(--sans)}
+.hero h1{font-size:clamp(1.55rem,7.2vw,3.1rem);line-height:1.3}
+.hc{position:relative;cursor:pointer;border-radius:8px}
+.hc:focus-visible{outline:3px solid var(--lime);outline-offset:8px}
+.hero h1::after{content:"";display:inline-block;width:4px;height:.9em;margin-left:8px;vertical-align:-.08em;background:var(--orange);animation:tw-blink 1s steps(1) infinite}
+@keyframes tw-blink{50%{opacity:0}}
+.dots{display:flex;gap:4px;margin:10px 0 0 -10px}
+.dots button{position:relative;width:44px;height:44px;padding:0;border:0;background:none;cursor:pointer}
+.dots button::before{content:"";position:absolute;left:10px;right:10px;top:20px;height:4px;border-radius:2px;background:var(--line);transition:background .2s}
+.dots button[aria-current="true"]::before{background:var(--deep)}
+.hero-link{display:inline-flex;align-items:center;min-height:44px;color:var(--deep);font-size:15px;font-weight:800;text-underline-offset:5px}
+/* 悩み：写真3枚 */
+.pain{background:#fff}
+.scenes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.scenes figure{margin:0}
+.scenes img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:18px}
+.scenes figcaption{margin-top:10px;font-size:15px;font-weight:700;color:var(--ink);line-height:1.6}
+.scenes figcaption b{display:inline-block;margin-right:8px;padding:1px 10px;border-radius:999px;background:var(--mint);color:var(--deep);font-size:13px}
+/* ファクトチェック */
+.fc-btn{display:inline-flex;align-items:center;gap:.6em;min-height:44px;margin-top:24px;padding:8px 16px;border:1px solid currentColor;border-radius:999px;background:transparent;color:var(--muted);font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+.fc-btn:hover{color:var(--deep)}
+.fc-btn.on-dark{color:rgba(255,255,255,.72)}
+.fc-btn.on-dark:hover{color:#fff}
+.fc-sub{font-size:13px;font-weight:400;opacity:.8}
+/* フローチャート */
+.fc{margin:0 0 30px;padding:24px 24px 18px;border:1px solid var(--line);border-radius:22px;background:#fff}
+.fc-t{margin:0 0 12px;color:var(--deep);font-size:18px;font-weight:900}
+.fc svg{display:block;width:100%;height:auto}
+.fc .fc-sp{display:none;max-width:420px;margin:0 auto}
+.fc .n rect{fill:#fff;stroke:#b9c9c1;stroke-width:1.5}
+.fc .n text{font-family:var(--sans);font-size:16px;font-weight:800;fill:var(--ink);text-anchor:middle}
+.fc .n.ac rect{fill:var(--deep);stroke:var(--deep)}
+.fc .n.ac text{fill:var(--lime)}
+.fc .e path{fill:none;stroke:#9fb3aa;stroke-width:2}
+.fc .lb text{font-family:var(--sans);font-size:14px;font-weight:700;fill:var(--muted);paint-order:stroke;stroke:#fff;stroke-width:6px;stroke-linejoin:round}
+.fc-c{margin:12px 0 0;padding-top:12px;border-top:1px solid var(--line);color:var(--deep);font-size:16px;font-weight:900}
+/* 比較表（暗い地の上） */
+.cmp-box{margin-top:40px;padding:28px;border:1px solid rgba(255,255,255,.16);border-radius:22px;background:rgba(255,255,255,.05)}
+.cmp-box h3{color:#fff;font-size:21px}
+.cmp-wrap{overflow-x:auto;margin-top:14px}
+.cmp{width:100%;border-collapse:collapse;font-size:15px}
+.cmp th,.cmp td{padding:13px 12px;border-bottom:1px solid rgba(255,255,255,.14);text-align:left;vertical-align:top;line-height:1.7;word-break:auto-phrase}
+.cmp thead th{color:rgba(255,255,255,.62);font-size:14px;border-bottom:2px solid rgba(255,255,255,.5)}
+.cmp thead th.ours{color:var(--lime)}
+.cmp tbody th{width:24%;color:#fff}
+.cmp td{color:rgba(255,255,255,.78)}
+.cmp td.ours{color:var(--lime);font-weight:800;background:rgba(200,237,104,.07)}
+.cmp-note{margin-top:14px;color:rgba(255,255,255,.72);font-size:15px;line-height:1.85}
+/* 向いていないお店 */
+.guide-grid{grid-template-columns:repeat(3,1fr)}
+.guide-card.nofit{background:#fff;border-style:dashed}
+.guide-card.nofit h3{color:var(--muted)}
+/* 無料モニター */
+.monitor{background:#fff}
+.mon-box{display:grid;grid-template-columns:1fr 1.1fr;gap:26px;align-items:stretch}
+.mon-price{padding:32px;border-radius:24px;background:var(--deep);color:#fff}
+.mon-badge{display:inline-flex;padding:4px 14px;border-radius:999px;background:var(--lime);color:var(--deep);font-size:14px;font-weight:900}
+.mon-yen{display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px 18px;margin-top:18px}
+.mon-yen span{display:block;color:rgba(255,255,255,.7);font-size:14px;font-weight:700}
+.mon-yen b{font-family:Inter,var(--sans);font-size:clamp(52px,7vw,76px);font-weight:900;line-height:1;color:var(--lime)}
+.mon-yen i{margin-left:4px;font-style:normal;font-size:20px;font-weight:900}
+.mon-yen em{font-style:normal;font-size:28px;font-weight:900;color:rgba(255,255,255,.5);padding-bottom:10px}
+.mon-cap{margin-top:16px;color:rgba(255,255,255,.72);font-size:14px;line-height:1.8}
+.mon-price .btn{margin-top:20px}
+.mon-sub{margin-top:10px;color:rgba(255,255,255,.6);font-size:13px;line-height:1.7}
+.mon-why{padding:32px;border:1px solid var(--line);border-radius:24px;background:var(--paper)}
+.mon-why h3{color:var(--deep);font-size:21px}
+.mon-why ol{list-style:none;margin-top:14px;counter-reset:w}
+.mon-why li{position:relative;padding:14px 0 14px 46px;border-top:1px solid var(--line);font-size:15px;line-height:1.8;color:var(--muted);counter-increment:w}
+.mon-why li::before{content:"0" counter(w);position:absolute;left:0;top:14px;font-family:Inter,var(--sans);font-size:20px;font-weight:900;color:var(--orange)}
+.mon-why li b{display:block;color:var(--ink);font-size:16px}
+.mon-seminar{display:inline-flex;align-items:center;min-height:44px;margin-top:10px;color:var(--deep);font-size:15px;font-weight:800;text-underline-offset:5px}
+.final-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px;margin-top:25px}
+.final-actions .btn{margin-top:0}
+.final-link{display:inline-flex;align-items:center;min-height:44px;color:#fff;font-weight:800;text-underline-offset:5px}
+.footer-links{display:flex;gap:18px;margin-top:10px}
+.footer-links a{display:inline-flex;align-items:center;min-height:44px;color:rgba(255,255,255,.72);font-size:14px}
+/* 見出しの改行 */
+.section-head p,.hero-lead,.scenes figcaption,.guide-list li,.mon-why li,.cmp-note{word-break:auto-phrase;line-break:strict}
+/* ポップアップ */
+dialog.pop{width:min(880px,calc(100% - 32px));max-height:calc(100dvh - 48px);padding:0;border:0;border-radius:22px;box-shadow:0 40px 80px -20px rgba(0,0,0,.4);color:var(--ink)}
+dialog.pop::backdrop{background:rgba(10,37,34,.6);backdrop-filter:blur(3px)}
+.pop-h{position:sticky;top:0;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 18px 14px 28px;background:#fff;border-bottom:1px solid var(--line)}
+.pop-h p{color:var(--deep);font-size:16px;font-weight:900}
+.pop-x{flex:none;width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:#fff;font-size:20px;line-height:1;cursor:pointer;color:var(--muted)}
+.pop-b{padding:26px 28px 32px}
+.pop-lbl{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;margin:0 0 12px;font-size:15px;font-weight:700;color:var(--muted)}
+.pop-lbl .en{font-family:Inter,var(--sans);font-size:13px;letter-spacing:.14em;color:var(--orange)}
+.copies{list-style:none;border-top:1px solid var(--line)}
+.copies li{display:grid;grid-template-columns:2.6em 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+.copies .n{font-family:Inter,var(--sans);font-size:15px;font-weight:900;color:var(--orange);padding-top:6px}
+.copies .c{word-break:auto-phrase;line-break:strict;color:var(--deep);font-size:clamp(1.25rem,2.6vw,1.6rem);font-weight:900;line-height:1.5}
+.copies .s{margin-top:6px;font-size:15px;line-height:1.8;color:var(--muted)}
+.story{margin-top:30px}
+.story ol{list-style:none;counter-reset:h}
+.story li{counter-increment:h}
+.story a{display:grid;grid-template-columns:2.2em 1fr;gap:10px;padding:9px 6px;border-radius:10px;text-decoration:none;font-size:17px;line-height:1.75;word-break:auto-phrase;line-break:strict;transition:background .15s}
+.story a::before{content:counter(h,decimal-leading-zero);font-family:Inter,var(--sans);font-size:14px;font-weight:900;color:#9fb3aa;padding-top:3px}
+.story a:hover{background:var(--paper)}
+.pop-f{margin-top:22px;font-size:14px;color:var(--muted)}
+@media(max-width:900px){
+  .scenes{grid-template-columns:1fr 1fr}
+  .scenes figure:first-child{grid-column:1 / -1}
+  .guide-grid{grid-template-columns:1fr}
+  .mon-box{grid-template-columns:1fr}
+  .fc .fc-pc{display:none}
+  .fc .fc-sp{display:block}
+}
+@media(max-width:640px){
+  :root{--fixed-cta-h:76px}
+  .fc{padding:18px 12px 14px}
+  .cmp-box{padding:20px 16px}
+  .cmp thead th:first-child{display:none}
+  .cmp thead tr,.cmp tbody tr{display:grid;grid-template-columns:1fr 1fr}
+  .cmp tbody th{grid-column:1/-1;width:auto;padding:14px 10px 0;border:0;font-size:14px;color:rgba(255,255,255,.6)}
+  .mon-price,.mon-why{padding:22px}
+  .pop-b{padding:20px 18px 26px}
+  .pop-h{padding-left:18px}
+  .copies li{grid-template-columns:1fr;gap:4px}
+  .copies .n{padding-top:0}
+  .story a{font-size:16px}
+  .scenes figure:not(:first-child) figcaption b{display:block;width:max-content;margin:0 0 2px}
+}
+@media(prefers-reduced-motion:reduce){.hero h1::after{animation:none}}
+@media(min-width:901px){.hero h1{font-size:min(3.1rem,calc((min(1180px,100vw - 48px) - 72px) * .45 / 11.4))}}
+.brand{min-height:44px}
+.nav .btn{min-height:44px}
+.auto-toggle{min-height:44px;padding:5px 14px}
+@media(max-width:640px){
+  .section-head h2{font-size:clamp(1.35rem,6.6vw,2.1rem)}
+  .rule-menu{flex-wrap:wrap;overflow:visible}
+  .final h2{font-size:clamp(1.35rem,6.6vw,2.1rem)}
+  .panel-head h3{font-size:18px}
+  .category-btn{min-height:44px}
+  .nav .btn{min-height:44px}
+}
+@media(max-width:360px){
+  .panel-head{flex-wrap:wrap}
+  .demo-badge{order:-1}
+}
+
+/* ===== lp-brushup 反映（09.24） ===== */
+.step-card p,.role-card p,.guide-card p,.guide-list li,details p,.feature-card p,.panel-copy,.choice span,.action-option span{font-size:15px;line-height:1.85}
+.section-head>p{font-size:15px;color:#4f5e59}
+@media(min-width:641px){.section-head h2{font-size:clamp(28px,3.4vw,42px)}}
+.rules,.monitor{background:var(--paper)}
+.rules .rule-layout,.monitor .mon-why{background:#fff}
+.pain{padding-bottom:72px}
+:root{--orange-ink:#c9502a}
+.section-head h2 em,.eyebrow{color:var(--orange-ink)}
+.final{background:#b94a27}
+.fc-btn{flex-wrap:wrap;row-gap:0;white-space:nowrap;border-radius:18px}
+.sticky-cta{transition:transform .25s}
+.sticky-cta.is-hidden{transform:translateY(140%)}
+.step-band{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;list-style:none;margin:0 0 18px}
+.step-band li{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;background:var(--deep);color:#fff;font-size:15px;font-weight:800}
+.step-band b{font-family:Inter,var(--sans);color:var(--lime);font-size:16px}
+.line-mock{position:relative;z-index:1;margin-top:18px;padding:12px 14px;border-radius:14px;background:#fff;border:1px solid var(--line)}
+.lm-t{display:inline-block;margin-bottom:6px;font-size:13px;color:var(--muted)}
+.lm-b{padding:10px 12px;border-radius:12px 12px 12px 4px;background:#e7f7d9;font-size:14px;line-height:1.75;color:var(--ink)}
+.lm-b b{display:block;color:var(--deep)}
+.mon-flow{list-style:none;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.mon-flow li{display:grid;grid-template-columns:28px 1fr;gap:10px;padding:6px 0;font-size:15px;line-height:1.7;color:var(--ink);word-break:auto-phrase}
+.mon-flow b{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--deep);color:var(--lime);font-size:13px}
+@media(max-width:640px){.step-band{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+  <a class="skip" href="#rule-demo">設定画面へ移動</a>
+  <header><nav class="nav wrap" aria-label="メインナビゲーション"><a class="brand" href="#top" aria-label="おまかせ受電AI トップ"><span class="brand-mark">受</span><span>おまかせ受電AI</span></a><div class="nav-links"><a href="#rule-demo">受電ルール</a><a href="#rule-demo">始め方</a><a href="#monitor">料金</a><a href="#faq">FAQ</a><a class="btn" href="#monitor">無料モニター</a></div></nav></header>
+  <main id="top">
+    <section class="hero" id="hero"><div class="wrap hero-grid"><div><div class="eyebrow">店舗の電話を、最初に仕分ける</div><div class="hc" id="hc" tabindex="0" title="押すと、3つのコピーと見出しを並べて読めます"><h1 id="tw" data-keep-phrase>電話の種類ごとに、<br>AIか人かを選べます。</h1></div><div class="dots" role="group" aria-label="コピーの切り替え"><button type="button" aria-label="コピー1" aria-current="true"></button><button type="button" aria-label="コピー2" aria-current="false"></button><button type="button" aria-label="コピー3" aria-current="false"></button></div><p class="hero-lead">営業時間外の予約の電話は、<strong>24時間AIが仮受付</strong>。出られない電話は用件を聞いて、<strong>スタッフのLINEへ通知</strong>します。設定は業種のひな形から3ステップです。</p><div class="hero-actions"><a class="btn" href="#monitor">無料モニターを見る（先着30社ほど）</a><a class="hero-link" href="#rule-demo">先に受電ルールを試す ↓</a></div><div class="hero-points"><span class="pill">モニター期間 初期0円・月額0円</span><span class="pill">先着30社ほど</span><span class="pill">24時間 仮受付</span><span class="pill">不在時はLINE通知</span></div></div><div class="hero-stage" aria-label="受電ルール設定のイメージ"><div class="stage-label"><span>RECEIVING RULE</span><span class="stage-live"><i></i> 24時間 一次受け</span></div><div class="stage-board"><div class="board-head"><div><small>いま、電話がかかってきました</small><strong>ご用件を確認します</strong></div><span class="status">設定済み</span></div><div class="stage-question">店長の声でごあいさつ<b>「お電話ありがとうございます」→ AIがご用件を確認</b></div><div class="stage-routes"><div class="stage-route active"><div class="route-icon">人</div><b>人へつなぐ</b><span>予約・重要な用件</span></div><div class="stage-route"><div class="route-icon">AI</div><b>AIが受ける</b><span>営業・定型質問</span></div><div class="stage-route"><div class="route-icon">↗</div><b>通知して折り返し</b><span>判断に迷う用件</span></div></div></div><p class="stage-foot">任せる範囲は、あとから変更できます。<br><b>全部を自動化する必要はありません。</b></p></div></div></section>
+    
+    <section class="pain" id="pain"><div class="wrap"><div class="section-head"><div><div class="eyebrow">The problem</div><h2>手が離せないときに限って、<br><em>電話は鳴ります。</em></h2></div><p>調理中、施術中、レジの対応中。出られなかった電話が予約だったのか、営業電話だったのかも、あとから分かりません。</p></div>
+      <div class="scenes">
+        <figure><img src="images/store-kitchen-chef.webp" alt="混み合う店内で調理する料理人" width="1280" height="853" loading="lazy"><figcaption><b>飲食店</b>調理中に鳴る、予約の電話</figcaption></figure>
+        <figure><img src="images/store-salon.webp" alt="美容室の店内。シャンプー台とセット面" width="1280" height="854" loading="lazy"><figcaption><b>美容室</b>施術中にかかる、営業電話</figcaption></figure>
+        <figure><img src="images/store-cafe-hands.webp" alt="コーヒーを淹れるカフェの店員の手元" width="1280" height="854" loading="lazy"><figcaption><b>カフェ</b>混む時間と閉店後の問い合わせ</figcaption></figure>
+      </div>
+      <button class="fc-btn" type="button" data-fc-section="手が離せないときに限って、電話は鳴ります" data-fc-claim="飲食店・美容室などの店舗では、営業中の電話対応が調理や施術などの作業の中断になりやすい／店舗には、仕入れや広告などの営業電話が一定数かかってくる／混雑時や営業時間外の電話は、取りこぼしやすい">ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button>
+    </div></section>
+
+    <section class="rules" id="rule-demo"><div class="wrap"><div class="section-head"><div><div class="eyebrow">The main experience</div><h2>「どこまで任せるか」を、<br><em>電話の種類ごとに選ぶ。</em></h2></div><p>設定は3つだけ。業種のひな形を選び、AIか人かを決め、次の処理を選びます。AIに話させる文章を、ゼロから書く必要はありません。</p></div><ol class="step-band" id="how"><li><b>01</b>ひな形を選ぶ</li><li><b>02</b>AIか人かを決める</li><li><b>03</b>次の処理を決める</li></ol><div class="rule-layout"><div class="rule-menu" role="tablist" aria-label="受電カテゴリ"><div class="rule-menu-title">受電カテゴリ</div><button class="category-btn" role="tab" aria-selected="true" data-category="reservation">予約・予約変更 <small>人</small></button><button class="category-btn" role="tab" aria-selected="false" data-category="sales">営業電話 <small>AI</small></button><button class="category-btn" role="tab" aria-selected="false" data-category="complaint">クレーム・お困りごと <small>AI</small></button><button class="category-btn" role="tab" aria-selected="false" data-category="existing">既存のお客様 <small>人</small></button><button class="category-btn" role="tab" aria-selected="false" data-category="new">新規のお客様 <small>AI</small></button><button class="category-btn" role="tab" aria-selected="false" data-category="faq">道順・営業時間・料金 <small>AI</small></button><button class="category-btn" role="tab" aria-selected="false" data-category="availability">当日の空席・空き状況 <small>人</small></button><button class="category-btn" role="tab" aria-selected="false" data-category="other">採用・業者・その他 <small>AI</small></button></div><div class="rule-panel" id="rule-panel" role="tabpanel" aria-live="polite"><div class="panel-head"><div><div class="panel-kicker">初期設定 / 店舗テンプレート</div><h3 id="panel-title">予約・予約変更</h3><p class="panel-copy" id="panel-copy">予約の確定や変更は、スタッフが内容を確認して対応します。</p></div><span class="demo-badge">画面イメージ</span></div><div class="choice-label">用件が分かったら、誰が受けるか</div><div class="choice-row"><button class="choice" id="human-choice" type="button" aria-pressed="true"><span class="choice-mark">人</span><span><b>人へつなぐ</b><span>スタッフが電話に出る</span></span></button><button class="choice" id="ai-choice" type="button" aria-pressed="false"><span class="choice-mark">AI</span><span><b>AIが受ける</b><span>用件を聞いて一次対応</span></span></button></div><div class="choice-label">次の処理</div><div class="action-row"><label class="action-option"><input type="radio" name="next-action" value="finish" checked><span><b>その場で完結</b><span>定型の案内で終える</span></span></label><label class="action-option"><input type="radio" name="next-action" value="transfer"><span><b>スタッフへ転送</b><span>必要なとき人へつなぐ</span></span></label><label class="action-option"><input type="radio" name="next-action" value="notify"><span><b>通知して折り返し</b><span>内容を残して後で対応</span></span></label></div><div class="template-row" id="template-row"><label for="template">AIの受け答え</label><select id="template"><option>予約はスタッフへおつなぎします</option><option>用件とご連絡先を伺います</option><option>営業時間と場所をご案内します</option></select></div><div class="rule-summary"><div><p>このカテゴリの設定</p><strong id="summary-text">人へつなぐ → スタッフが対応</strong></div><div class="summary-arrow">→</div></div><p class="panel-note">※ 転送・通知・折り返しの方法は、導入前にお店の電話環境と合わせて確認します。</p></div></div><p class="rule-hint"><b>試してみる：</b>左のカテゴリを選び、「AIが受ける」に切り替えると、次の処理を選べる設定イメージを確認できます。</p></div></section>
+
+    <section class="features" id="features"><div class="wrap"><div class="section-head"><div><div class="eyebrow">Made for your store</div><h2>閉店後の予約は仮受付。<br><em>出られない電話はLINEへ。</em></h2></div><p>営業時間・料金・道順は、スプレッドシートに登録したお店の情報から、AIが答えます。</p></div><div class="fc">
+      <p class="fc-t">1本の電話が流れる道筋</p>
+      <svg class="fc-pc" viewBox="0 0 1040 330" role="img" aria-labelledby="fcA"><title id="fcA">着信するとAIが用件を聞き、予約や大切な用件は人へ、定型の質問や営業電話はAIが案内して完結する。人が出られないときはLINEに通知し、スタッフが折り返す。</title>
+        <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#9fb3aa"/></marker></defs>
+        <g class="e"><path d="M130 165H172" marker-end="url(#ah)"/><path d="M345 150C390 150 385 68 427 68" marker-end="url(#ah)"/><path d="M345 180C390 180 385 268 427 268" marker-end="url(#ah)"/><path d="M580 68H647" marker-end="url(#ah)"/><path d="M540 96C540 150 600 163 647 163" marker-end="url(#ah)"/><path d="M810 163H857" marker-end="url(#ah)"/></g>
+        <g class="lb"><text x="296" y="62">予約・大切な用件</text><text x="276" y="304">定型の質問・営業電話</text><text x="572" y="126">出られないとき</text></g>
+        <g class="n"><rect x="20" y="137" width="110" height="56" rx="12"/><text x="75" y="171">着信</text></g>
+        <g class="n ac"><rect x="175" y="137" width="170" height="56" rx="12"/><text x="260" y="171">AIが用件を聞く</text></g>
+        <g class="n"><rect x="430" y="40" width="150" height="56" rx="12"/><text x="505" y="74">人へつなぐ</text></g>
+        <g class="n"><rect x="650" y="40" width="160" height="56" rx="12"/><text x="730" y="74">スタッフが対応</text></g>
+        <g class="n"><rect x="650" y="135" width="160" height="56" rx="12"/><text x="730" y="169">LINEに通知</text></g>
+        <g class="n"><rect x="860" y="135" width="170" height="56" rx="12"/><text x="945" y="169">スタッフが折り返す</text></g>
+        <g class="n ac"><rect x="430" y="240" width="200" height="56" rx="12"/><text x="530" y="274">AIが案内して完結</text></g>
+      </svg>
+      <svg class="fc-sp" viewBox="0 0 360 460" role="img" aria-labelledby="fcB"><title id="fcB">着信するとAIが用件を聞き、予約や大切な用件は人へ、定型の質問や営業電話はAIが案内して完結する。人が出られないときはLINEに通知し、スタッフが折り返す。</title>
+        <defs><marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#9fb3aa"/></marker></defs>
+        <g class="e"><path d="M180 58V86" marker-end="url(#ah2)"/><path d="M140 142C140 170 92 160 92 196" marker-end="url(#ah2)"/><path d="M220 142C220 170 267 160 267 196" marker-end="url(#ah2)"/><path d="M60 250V296" marker-end="url(#ah2)"/><path d="M130 250V272H267V296" marker-end="url(#ah2)"/><path d="M267 350V396" marker-end="url(#ah2)"/></g>
+        <g class="lb"><text x="14" y="176">予約・大切な用件</text><text x="214" y="176">定型の質問・営業</text><text x="140" y="292">出られないとき</text></g>
+        <g class="n"><rect x="115" y="8" width="130" height="50" rx="12"/><text x="180" y="39">着信</text></g>
+        <g class="n ac"><rect x="85" y="90" width="190" height="52" rx="12"/><text x="180" y="122">AIが用件を聞く</text></g>
+        <g class="n"><rect x="10" y="200" width="165" height="50" rx="12"/><text x="92" y="231">人へつなぐ</text></g>
+        <g class="n ac"><rect x="185" y="200" width="165" height="50" rx="12"/><text x="267" y="231">AIが案内して完結</text></g>
+        <g class="n"><rect x="10" y="300" width="165" height="50" rx="12"/><text x="92" y="331">スタッフが対応</text></g>
+        <g class="n"><rect x="185" y="300" width="165" height="50" rx="12"/><text x="267" y="331">LINEに通知</text></g>
+        <g class="n"><rect x="185" y="400" width="165" height="50" rx="12"/><text x="267" y="431">スタッフが折り返す</text></g>
+      </svg>
+      <p class="fc-c">どの電話を人に残すかは、お店が電話の種類ごとに決めます。</p>
+    </div>
+<div class="feature-grid"><article class="feature-card"><div class="feature-icon">▦</div><div class="feature-tag">KNOWLEDGE</div><h3>登録した情報で回答</h3><p>スプレッドシートに登録した営業時間・料金・道順を、AIが見て案内します。</p><div class="feature-flow"><span>お店の情報</span><b>→</b><span>AIが参照</span><b>→</b><span>お客様へ</span></div></article><article class="feature-card reservation"><div class="feature-icon">24</div><div class="feature-tag">TENTATIVE RESERVATION</div><h3>24時間、予約を仮受付</h3><p>営業時間外も予約の希望を受け付け、仮予約として内容を残します。営業開始後にスタッフが確認して確定します。</p><div class="feature-badge">予約の確定はスタッフ</div></article><article class="feature-card absence"><div class="feature-icon">↗</div><div class="feature-tag">WHEN STAFF IS AWAY</div><h3>不在時は、LINEへ通知</h3><p>人が電話に出られないときは、AIが用件を伺い、スタッフのLINEへ知らせます。</p><div class="line-mock" aria-label="LINE通知の画面イメージ"><span class="lm-t">画面イメージ</span><p class="lm-b"><b>受電のお知らせ</b>用件：営業時間外の予約の希望<br>お名前：（お客様のお名前）<br>折り返し先：（お客様の電話番号）</p></div></article></div><p class="feature-note">※ AIが参照する情報の範囲、仮予約の確定のしかた、LINE通知の送り先は、導入前にお店と決めます。</p></div></section>
+
+    
+
+    <section class="roles" id="roles"><div class="wrap"><div class="section-head"><div><div class="eyebrow">Right-sized operation</div><h2>人をなくすのではなく、<br><em>人が必要な電話に戻す。</em></h2></div><p>受電代行の見直しを考えるときも、役割で比べます。AIは一次受けの整理役。最終判断や大切な会話は、人に残します。</p></div><div class="role-grid"><article class="role-card ai"><span class="role-label">AIに任せる</span><h3>一次受け・整理</h3><p>スタッフの手を止める電話を、用件ごとに受け分ける役割。</p><ul class="role-list"><li>営業電話の用件と連絡先を聞く</li><li>営業時間・道順など定型案内</li><li>不在時は用件をLINEへ通知</li></ul></article><article class="role-card"><span class="role-label">人に残す</span><h3>判断・大切な会話</h3><p>お店の判断や、お客様との関係が大切な電話。</p><ul class="role-list"><li>予約・予約変更の最終判断</li><li>仮予約の内容を確認して確定する</li><li>クレームの引き継ぎと対応</li></ul></article></div><p class="roles-note">※ AIに任せる電話の種類は、お店ごとに決めて、あとから変えられます。</p><div class="cmp-box"><h3>人の電話代行と比べると</h3>
+      <div class="cmp-wrap"><table class="cmp"><thead><tr><th scope="col">比べるところ</th><th scope="col">人の電話代行</th><th scope="col" class="ours">おまかせ受電AI</th></tr></thead><tbody>
+        <tr><th scope="row">最初に出るのは</th><td>オペレーター</td><td class="ours">AI。大切な用件はスタッフへ</td></tr>
+        <tr><th scope="row">受けられる時間</th><td>契約した時間帯</td><td class="ours">24時間。予約は仮受付</td></tr>
+        <tr><th scope="row">用件の分け方</th><td>代行会社の手順に沿う</td><td class="ours">お店が用件ごとに決める</td></tr>
+        <tr><th scope="row">大切な電話</th><td>伝言か取り次ぎ</td><td class="ours">スタッフへ転送・通知</td></tr>
+      </tbody></table></div>
+      <p class="cmp-note">人が話すこと自体に価値があるお店は、人の電話代行が向いています。電話の多くが営業電話や定型の質問なら、AIで足ります。</p>
+      <button class="fc-btn on-dark" type="button" data-fc-section="人の電話代行と比べると" data-fc-claim="電話代行サービスでは、一般にオペレーター（人）が電話に出る／電話代行の対応時間は、契約したプランの時間帯で決まることが多い／電話代行は、代行会社の応対手順に沿って受け、伝言を残すか担当者へ取り次ぐ形が一般的">ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button>
+    </div></div></section>
+
+    <section class="guide" id="guide"><div class="wrap"><div class="section-head"><div><div class="eyebrow">For first-time users</div><h2>はじめてでも、<br><em>任せすぎない。</em></h2></div><p>最初から完璧な電話対応を目指さず、今いちばん困っている電話を一つ選ぶところから始めます。</p></div><div class="guide-grid"><article class="guide-card"><h3>こんな始め方ができます</h3><p>まずはスタッフの負担が大きく、受け答えが決まっている電話から。</p><ul class="guide-list"><li>営業時間外の問い合わせだけ</li><li>営業電話・業者からの連絡だけ</li><li>営業時間や道順などの定型質問だけ</li></ul></article><article class="guide-card caution"><h3>先に確認したいこと</h3><p>導入前に、店舗の運用と提供条件をすり合わせます。</p><ul class="guide-list"><li>今の電話番号・転送方法に対応できるか</li><li>AIが聞き取った内容をどこへ通知するか</li><li>予約やクレームを誰にどう渡すか</li></ul></article><article class="guide-card nofit"><h3>向いていないお店</h3><p>正直に書きます。次のお店には、いま必要ありません。</p><ul class="guide-list"><li>電話がほとんど鳴らないお店</li><li>すべての電話に、店主が出たいお店</li><li>予約の確定までAIに任せたいお店（確定はスタッフが行う作りです）</li></ul></article></div></div></section>
+
+    <section class="monitor" id="monitor"><div class="wrap"><div class="section-head"><div><div class="eyebrow">Free monitor</div><h2>いまは、先着30社ほどの<br><em>無料モニター</em>を募集中です。</h2></div><p>サービスは始まったばかりです。一緒に育ててくださるお店を募集しています。正式な料金は調整中です。</p></div>
+      <div class="mon-box">
+        <div class="mon-price">
+          <div class="mon-badge">先着30社ほど</div>
+          <div class="mon-yen"><div><span>初期費用</span><b>0</b><i>円</i></div><em>＋</em><div><span>月額費用</span><b>0</b><i>円</i></div></div>
+          <p class="mon-cap">モニター期間中の料金です。モニター期間・通話料・対象範囲などの利用条件は、お申込み時にご案内します。</p>
+          <a class="btn" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">無料モニターについて相談する</a>
+          <p class="mon-sub">株式会社ライトアップのお問い合わせフォームが開きます。「おまかせ受電AI 無料モニター」とお書きください。</p>
+        </div>
+        <div class="mon-why">
+          <h3>無料でお願いする理由</h3>
+          <ol>
+            <li><b>本当の事例をつくりたい</b>導入後に短いインタビューをさせてください。よかった点も、合わなかった点も伺います。</li>
+            <li><b>使いにくさを教えてほしい</b>分かりにくいところや欲しい機能を、遠慮なく教えてください。</li>
+            <li><b>仲間を増やしたい</b>電話に困っているお店をご存じなら、ご紹介ください。</li>
+          </ol>
+          <ol class="mon-flow"><li><b>1</b>お問い合わせフォームに「おまかせ受電AI 無料モニター」と書いて送る</li><li><b>2</b>期間・通話料・対象範囲などの条件をご案内</li><li><b>3</b>今の番号から転送できるかを確認</li><li><b>4</b>利用開始（開始までの日数は調整中）</li></ol>
+          <a class="mon-seminar" href="https://writeup-inc.github.io/seminar/omakase-juden/">まず話を聞きたいお店は、無料相談会の案内へ →</a>
+        </div>
+      </div>
+    </div></section>
+
+    <section class="faq" id="faq"><div class="wrap"><div class="section-head"><div><div class="eyebrow">Questions before launch</div><h2>不安なところを、<br><em>先に確認。</em></h2></div><p>AI電話が初めての方に向けて、導入前に気になるポイントをまとめています。</p></div><div class="faq-list"><details open><summary>大事な予約電話まで、AIに渡すことになりませんか？</summary><p>なりません。受電カテゴリごとに「人へつなぐ」を選ぶ設計です。予約・常連のお客様・急ぎの用件は人へ、という設定から始められます。</p></details><details><summary>営業時間外も予約を受け付けられますか？</summary><p>予約の希望を24時間受け付け、仮予約として内容を残します。営業開始後にスタッフが内容を確認し、予約を確定します。</p></details><details><summary>AIが受けた電話は、その後どうなりますか？</summary><p>その場で完結、スタッフへ転送、内容を通知して折り返し、から電話の種類ごとに選びます。転送や通知の方法は、導入前にお店の電話環境と合わせて確認します。</p></details><details><summary>今の電話番号のまま使えますか？</summary><p>今の番号から転送して使う形を想定しています。回線の種類や転送の条件で変わるため、導入前に確認します。</p></details><details><summary>料金はいくらですか？</summary><p>いまは先着30社ほどの無料モニターを募集しています。モニター期間中は初期費用・月額費用とも0円です。通話料や期間などの条件はお申込み時にご案内します。正式な料金は調整中です。</p></details></div></div></section>
+
+    <section class="final" id="final"><div class="wrap"><div class="eyebrow">Start with one category</div><h2>まずは、電話を一つだけ<br>選んでみる。</h2><p>全部をAIに任せる必要はありません。いちばん困っている電話を一つ選んで、無料モニターで試してください。</p><div class="final-actions"><a class="btn" href="#monitor">無料モニターを見る（先着30社ほど）</a><a class="final-link" href="#rule-demo">受電ルールを試す ↑</a></div></div></section>
+  </main>
+  <footer class="footer"><div class="wrap footer-row"><a class="brand" href="#top"><span class="brand-mark">受</span><span>おまかせ受電AI</span></a><div class="footer-note">画面は設計のイメージです。料金・機能・提供条件は導入前にご案内します。<br>運営：株式会社ライトアップ（東証グロース 証券コード：6580）</div></div><div class="wrap footer-links"><a href="https://www.writeup.jp/company/" target="_blank" rel="noopener">運営会社</a><a href="https://www.writeup.jp/privacy/" target="_blank" rel="noopener">個人情報保護方針</a></div></footer>
+  <div class="sticky-cta is-hidden"><a class="btn" href="#monitor">無料モニターを見る（先着30社ほど）</a></div>
+  <dialog class="pop" id="pop" aria-labelledby="popT">
+    <div class="pop-h"><p id="popT">このページを、見出しだけで読む</p><button type="button" class="pop-x" id="popX" aria-label="閉じる">×</button></div>
+    <div class="pop-b">
+      <p class="pop-lbl"><span class="en">HERO COPY</span>いちばん上で切り替わっている3つのコピー</p>
+      <ol class="copies" id="copies"></ol>
+      <div class="story"><p class="pop-lbl"><span class="en">HEADLINES</span>見出しをつなげると、こういう話です</p><ol id="story"></ol></div>
+      <p class="pop-f">見出しを押すと、そのセクションへ移ります。</p>
+    </div>
+  </dialog>
+  <script>
+  (function(){
+    var COPIES=[
+      {c:'電話の種類ごとに、\nAIか人かを選べます。',s:'何ができるのか。予約は人へ、営業電話はAIへ。電話の種類ごとに、最初に受ける相手をお店が選べます。'},
+      {c:'手が離せないときの\n電話は、AIが受けます。',s:'誰のためか。調理中・施術中など、手が離せない時間の電話を、AIが先に受けて用件を聞きます。'},
+      {c:'予約は人へ。\n営業電話はAIへ。',s:'どう分けるのか。大切な予約はスタッフが受け、営業電話や定型の質問はAIが受けます。'}
+    ];
+    var TYPE_MS=55, HOLD_MS=5200, ERASE_MS=22;
+    var h1=document.getElementById('tw'), hc=document.getElementById('hc');
+    var dots=[].slice.call(document.querySelectorAll('.dots button'));
+    var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var idx=0, timer=null, paused=false;
+    function put(t){ h1.textContent=''; t.split('\n').forEach(function(line,k){ if(k) h1.appendChild(document.createElement('br')); h1.appendChild(document.createTextNode(line)); }); }
+    function reserve(){ var cur=h1.innerHTML, max=0; hc.style.minHeight=''; COPIES.forEach(function(o){ put(o.c); max=Math.max(max,h1.offsetHeight); }); h1.innerHTML=cur; hc.style.minHeight=max+'px'; }
+    function mark(i){ dots.forEach(function(d,k){ d.setAttribute('aria-current',k===i?'true':'false'); }); }
+    function clear(){ if(timer){ clearTimeout(timer); timer=null; } }
+    function show(i,typing){ clear(); idx=i; mark(i); var t=COPIES[i].c;
+      if(reduce||!typing){ put(t); schedule(); return; }
+      var n=0; (function step(){ put(t.slice(0,++n)); if(n<t.length){ timer=setTimeout(step,TYPE_MS); } else { schedule(); } })(); }
+    function erase(next){ var t=COPIES[idx].c; (function step(){ if(t.length){ t=t.slice(0,-1); put(t); timer=setTimeout(step,ERASE_MS); } else { show(next,true); } })(); }
+    function schedule(){ clear(); if(paused) return; timer=setTimeout(function(){ var next=(idx+1)%COPIES.length; if(reduce){ show(next,false); } else { erase(next); } },HOLD_MS); }
+    dots.forEach(function(d,k){ d.addEventListener('click',function(){ show(k,false); }); });
+    window.addEventListener('resize',reserve);
+    if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(reserve); }
+    reserve(); schedule();
+
+    var pop=document.getElementById('pop'), copiesEl=document.getElementById('copies'), storyEl=document.getElementById('story');
+    COPIES.forEach(function(o,k){ var li=document.createElement('li'); li.innerHTML='<span class="n">0'+(k+1)+'</span><div><p class="c"></p><p class="s"></p></div>'; li.querySelector('.c').textContent=o.c.replace(/\n/g,''); li.querySelector('.s').textContent=o.s; copiesEl.appendChild(li); });
+    document.querySelectorAll('main section h2').forEach(function(h,k){ var sec=h.closest('section'); if(!sec.id) return; if(!h.id) h.id='h2-'+k; var li=document.createElement('li'), a=document.createElement('a'); a.href='#'+sec.id; a.textContent=h.textContent; a.dataset.h=h.id; li.appendChild(a); storyEl.appendChild(li); });
+    var opener=null;
+    function openPop(e){ opener=e&&e.currentTarget; paused=true; clear(); put(COPIES[idx].c); if(pop.showModal){ pop.showModal(); } else { pop.setAttribute('open',''); } }
+    function closePop(){ if(pop.close){ pop.close(); } else { pop.removeAttribute('open'); } }
+    pop.addEventListener('close',function(){ paused=false; schedule(); if(opener&&!pop.dataset.jump){ opener.focus(); } delete pop.dataset.jump; });
+    hc.addEventListener('click',openPop);
+    hc.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openPop(e); } });
+    document.getElementById('popX').addEventListener('click',closePop);
+    pop.addEventListener('click',function(e){ if(e.target===pop) closePop(); });
+    storyEl.addEventListener('click',function(e){ var a=e.target.closest('a'); if(!a) return; e.preventDefault(); pop.dataset.jump='1'; closePop();
+      var h=document.getElementById(a.dataset.h), sec=h.closest('section'); sec.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+      h.setAttribute('tabindex','-1'); setTimeout(function(){ h.focus({preventScroll:true}); },reduce?0:450); history.replaceState(null,'',a.getAttribute('href')); });
+
+    document.addEventListener('click',function(e){ var b=e.target.closest('.fc-btn'); if(!b) return;
+      var url=(document.querySelector('link[rel=canonical]')||{}).href||location.href;
+      var p='次のLPの記載が事実として正しいか、第三者の立場で確認してください。\n\n【対象ページ】'+url+'\n【セクション】'+b.dataset.fcSection+'\n【記載内容】\n'+b.dataset.fcClaim.split('／').join('\n')+'\n\n【確認してほしいこと】\n- 記載は一般的な事実・相場・公的情報と照らして正しいか\n- 誤り・誇張・古い情報があれば指摘する\n- 反対の見方や、読み手が注意すべき点\n- 確認できないことは「確認できない」と書き、推測で補わない';
+      window.open('https://chatgpt.com/?q='+encodeURIComponent(p),'_blank','noopener,noreferrer'); if(navigator.clipboard){ navigator.clipboard.writeText(p).catch(function(){}); } });
+  })();
+  </script>
+
+  <script>
+    (()=>{
+      const data={
+        reservation:{title:'予約・予約変更',copy:'予約の確定や変更は、スタッフが内容を確認して対応します。',owner:'human',action:'transfer',template:'予約はスタッフへおつなぎします'},
+        sales:{title:'営業電話',copy:'用件と連絡先を聞き取り、スタッフの手を止めずに内容を残します。',owner:'ai',action:'notify',template:'用件とご連絡先を伺います'},
+        complaint:{title:'クレーム・お困りごと',copy:'状況と連絡先を伺い、優先度をつけてスタッフへ引き継ぐ想定です。',owner:'ai',action:'notify',template:'状況とご連絡先を伺い、担当へ通知します'},
+        existing:{title:'既存のお客様',copy:'取引状況や顧客情報の確認が必要な電話は、スタッフへつなぎます。',owner:'human',action:'transfer',template:'スタッフへおつなぎします'},
+        new:{title:'新規のお客様',copy:'定型の質問はAIが受け、相談や判断が必要な内容は人へ渡します。',owner:'ai',action:'finish',template:'営業時間とサービス内容をご案内します'},
+        faq:{title:'道順・営業時間・料金',copy:'あらかじめ決めた情報を案内し、必要に応じて問い合わせ内容を残します。',owner:'ai',action:'finish',template:'営業時間と場所をご案内します'},
+        availability:{title:'当日の空席・空き状況',copy:'リアルタイムの確認が必要なため、スタッフへの取り次ぎを基本にします。',owner:'human',action:'transfer',template:'空き状況を確認してスタッフが対応します'},
+        other:{title:'採用・業者・その他',copy:'内容を聞き取り、担当者への通知や折り返しにつなげる設定です。',owner:'ai',action:'notify',template:'用件とご連絡先を伺います'},
+        pricing:{title:'料金・プラン',copy:'登録しておいた料金情報を参照して、目安と資料の案内をAIに任せる設定です。',owner:'ai',action:'finish',template:'料金の目安と資料をご案内します'}
+      };
+      let current='reservation';
+      const featuredCategories=['reservation','sales','pricing'];
+      let autoIndex=0;
+      let autoPaused=false;
+      let autoTimer=null;
+      const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const $=s=>document.querySelector(s);
+      const faqCategory=$('[data-category="faq"]');
+      faqCategory.innerHTML='道順・営業時間 <small>AI</small>';
+      const pricingCategory=document.createElement('button');
+      pricingCategory.className='category-btn';
+      pricingCategory.type='button';
+      pricingCategory.setAttribute('role','tab');
+      pricingCategory.setAttribute('aria-selected','false');
+      pricingCategory.dataset.category='pricing';
+      pricingCategory.innerHTML='料金・プラン <small>AI</small>';
+      faqCategory.after(pricingCategory);
+      const title=$('#panel-title'),copy=$('#panel-copy'),summary=$('#summary-text'),template=$('#template'),templateRow=$('#template-row');
+      const pricingTemplate=document.createElement('option');
+      pricingTemplate.textContent='料金の目安と資料をご案内します';
+      template.append(pricingTemplate);
+      const actionLabels={finish:'その場で完結',transfer:'スタッフへ転送',notify:'通知して折り返し'};
+      const ruleHint=$('.rule-hint');
+      const autoToggle=document.createElement('button');
+      autoToggle.className='auto-toggle';
+      autoToggle.type='button';
+      autoToggle.setAttribute('aria-pressed','false');
+      autoToggle.dataset.running='true';
+      autoToggle.textContent='自動切替中';
+      ruleHint.append(autoToggle);
+      const updateAutoToggle=()=>{autoToggle.dataset.running=String(!autoPaused&&!reduceMotion);autoToggle.setAttribute('aria-pressed',String(!autoPaused&&!reduceMotion));autoToggle.textContent=reduceMotion?'自動切替なし':autoPaused?'自動切替を再開':'自動切替中';};
+      const pauseAuto=()=>{if(reduceMotion)return;autoPaused=true;clearInterval(autoTimer);updateAutoToggle();};
+      const startAuto=()=>{if(reduceMotion){autoPaused=true;updateAutoToggle();return;}autoPaused=false;clearInterval(autoTimer);autoTimer=setInterval(()=>{autoIndex=(autoIndex+1)%featuredCategories.length;setCategory(featuredCategories[autoIndex],false);},4200);updateAutoToggle();};
+      const setCategory=(category,manual=true)=>{current=category;const index=featuredCategories.indexOf(category);if(index>=0)autoIndex=index;if(manual)pauseAuto();render();};
+      const render=()=>{const d=data[current];title.textContent=d.title;copy.textContent=d.copy;template.value=d.template;document.querySelectorAll('.category-btn').forEach(b=>{const selected=b.dataset.category===current;b.setAttribute('aria-selected',String(selected));b.setAttribute('tabindex',selected?'0':'-1');});document.querySelectorAll('.choice').forEach(b=>b.setAttribute('aria-pressed',String(b.id===`${d.owner}-choice`)));document.querySelectorAll('[name="next-action"]').forEach(r=>r.checked=r.value===d.action);templateRow.hidden=d.owner!=='ai';templateRow.style.display=d.owner==='ai'?'flex':'none';updateSummary();};
+      const updateSummary=()=>{const isAi=$('#ai-choice').getAttribute('aria-pressed')==='true';const owner=isAi?'AIが受ける':'人へつなぐ';const action=document.querySelector('[name="next-action"]:checked')?.value||'finish';summary.textContent=`${owner} → ${actionLabels[action]}`;templateRow.hidden=!isAi;templateRow.style.display=isAi?'flex':'none';};
+      document.querySelectorAll('.category-btn').forEach(b=>{b.setAttribute('aria-controls','rule-panel');b.addEventListener('click',()=>setCategory(b.dataset.category,true));b.addEventListener('focus',pauseAuto);b.addEventListener('keydown',(event)=>{if(!['ArrowDown','ArrowRight','ArrowUp','ArrowLeft'].includes(event.key))return;event.preventDefault();const buttons=[...document.querySelectorAll('.category-btn')];const step=event.key==='ArrowDown'||event.key==='ArrowRight'?1:-1;const next=(buttons.indexOf(b)+step+buttons.length)%buttons.length;buttons[next].focus();buttons[next].click();});});
+      autoToggle.addEventListener('click',()=>autoPaused?startAuto():pauseAuto());
+      $('#human-choice').addEventListener('click',()=>{pauseAuto();document.querySelectorAll('.choice').forEach(b=>b.setAttribute('aria-pressed','false'));$('#human-choice').setAttribute('aria-pressed','true');updateSummary();});
+      $('#ai-choice').addEventListener('click',()=>{pauseAuto();document.querySelectorAll('.choice').forEach(b=>b.setAttribute('aria-pressed','false'));$('#ai-choice').setAttribute('aria-pressed','true');updateSummary();});
+      document.querySelectorAll('[name="next-action"]').forEach(r=>r.addEventListener('change',()=>{pauseAuto();updateSummary();}));
+      const priceFaq=document.createElement('details');
+      priceFaq.innerHTML='<summary>お店のメニューの料金を聞かれたら、AIが答えますか？</summary><p>答えます。スプレッドシートに登録しておいた料金・営業時間・道順をもとに、AIが案内します。</p>';
+      (document.querySelector('.faq-list details:nth-of-type(3)')||document.querySelector('.faq-list details')).after(priceFaq);
+      template.addEventListener('change',()=>{pauseAuto();updateSummary();});render();startAuto();
+    })();
+  </script>
+
+  <script>
+  (function(){var sc=document.querySelector('.sticky-cta');if(!sc||!('IntersectionObserver' in window)){if(sc)sc.classList.remove('is-hidden');return;}
+    var vis=new Set();var io=new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?vis.add(e.target):vis.delete(e.target);});sc.classList.toggle('is-hidden',vis.size>0);});
+    ['.hero-actions','#monitor','#final'].forEach(function(q){var el=document.querySelector(q);if(el)io.observe(el);});})();
+  </script>
+</body>
+</html>
