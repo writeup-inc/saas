@@ -9,7 +9,7 @@
 <title>つばめリード｜資料インデックス</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
 <style>
 /* lp-base.css — 日本語LP／HTML成果物の初期CSS
  *
@@ -69,14 +69,14 @@ pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
 
 /* ══ トークン ══ Jマッチエンジンと同系。紺#0b2c5c＋白＋黒 ══ */
 :root{
-  --ac:#0b2c5c; --acl:#f3f6fa; --acl2:#e9eef2; --acm:#b9c6da;
+  --ac:#111111; --acl:#f6f6f6; --acl2:#ececec; --acm:#cfcfcf; --sv:#c8412c;
   --bk:#111111; --g1:#555555; --g2:#6b6b6b; --g3:#b4b4b4;
   --ln:#d9d9d9; --ln2:#efefef; --pa:#f7f7f7;
-  --up:#c8102e;
+  --up:#c8412c;
   --wd:1100px; --fixed-cta-h:0px;
-  --ff-head:"Zen Kaku Gothic New","Noto Sans JP","Hiragino Sans",system-ui,sans-serif;
+  --ff-head:"Noto Sans JP","Hiragino Sans",system-ui,sans-serif;
   --ff-body:"Noto Sans JP","Hiragino Sans",system-ui,sans-serif;
-  --ff-en:"Outfit","Zen Kaku Gothic New",sans-serif;
+  --ff-en:"Inter","Noto Sans JP",sans-serif;
 }
 h1,h2,h3,h4,.logo,.chip,.judge,.cfoot .go,.bg,.tl{ font-family:var(--ff-head); }
 html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
@@ -135,7 +135,7 @@ header .w{ display:flex; align-items:center; justify-content:space-between; heig
 .stamp b{ color:var(--bk); font-weight:700; }
 
 /* ══ 今回の更新 ══ */
-.news{ background:var(--acl); border-top:3px solid var(--ac); }
+.news{ background:var(--acl); border-top:3px solid var(--bk); }
 .news .w{ padding-top:34px; padding-bottom:34px; }
 .news h2{ font-size:clamp(1.35rem,4.6vw,2rem)!important; font-weight:900; margin:0 0 4px; letter-spacing:.04em;
   display:flex; align-items:center; gap:10px; line-height:1.5; }
@@ -198,12 +198,14 @@ section.blk .w{ padding-top:64px; padding-bottom:56px; }
 
 /* ══ カード ══ */
 .cards{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.cards3{ grid-template-columns:repeat(3,1fr); }
+@media (max-width:1000px){ .cards3{ grid-template-columns:1fr; } }
 @media (max-width:820px){ .cards{ grid-template-columns:1fr; } }
 .card{ position:relative; border:1px solid var(--ln); padding:22px 24px 20px; background:#fff;
   display:flex; flex-direction:column;
   transition:border-color .22s ease, box-shadow .22s ease, background-color .22s ease, transform .22s ease; }
-.card.lnk:hover{ border-color:var(--ac); background:var(--acl);
-  box-shadow:0 16px 38px rgba(11,44,92,.17); transform:translateY(-7px); }
+.card.lnk:hover{ border-color:var(--sv); background:var(--acl);
+  box-shadow:0 16px 38px rgba(17,17,17,.12); transform:translateY(-7px); }
 .card.lnk:hover .curl{ background:#fff; border-color:var(--acm); }
 @media (prefers-reduced-motion:reduce){ .card.lnk:hover{ transform:none; } }
 .card.flag{ border-color:var(--acm); }
@@ -262,6 +264,23 @@ footer h2{ font-size:20px!important; font-weight:900; margin:0 0 14px; letter-sp
 footer p{ font-size:15px; color:#cfcfcf; line-height:1.95; margin:0 0 10px; max-width:48em; }
 footer .fl{ display:flex; flex-wrap:wrap; gap:8px 22px; margin-top:20px;
   border-top:1px solid #333; padding-top:18px; font-size:13.5px; color:#9a9a9a; }
+
+/* ══ ヒーロー（1カラム・中央） ══ */
+.hero .w.hero-c{ display:block; text-align:center; padding-top:88px; padding-bottom:72px; }
+@media (max-width:600px){ .hero .w.hero-c{ padding-top:56px; padding-bottom:48px; } }
+.hero-c .mark{ width:64px; height:40px; color:var(--sv); display:block; margin:0 auto 22px; }
+.hero-c .chip{ background:var(--bk); }
+.hero-c h1.svc{ font-size:clamp(2.7rem,11vw,6.4rem); font-weight:900; letter-spacing:.04em; line-height:1.1; margin:26px 0 10px; }
+.hero-c .svc-en{ font-family:var(--ff-en); font-size:14px; font-weight:800; letter-spacing:.42em; color:var(--g2); margin:0 0 30px; padding-left:.42em; }
+.hero-c .tag{ font-size:clamp(1.1rem,3.4vw,1.5rem); font-weight:700; margin:0 0 14px; line-height:1.7; }
+.hero-c .tag em{ font-style:normal; color:var(--sv); }
+.hero-c .sub{ margin:0 auto 12px; max-width:34em; }
+.hero-c .tally2{ display:flex; justify-content:center; flex-wrap:wrap; gap:10px 28px; margin:30px auto 0;
+  border-top:1px solid var(--ln); border-bottom:1px solid var(--ln); padding:16px 0; max-width:640px; }
+.hero-c .tally2 span{ display:inline-flex; align-items:baseline; gap:8px; font-size:14px; font-weight:700; color:var(--g1); }
+.hero-c .tally2 b{ font-family:var(--ff-en); font-size:26px; font-weight:900; color:var(--bk); letter-spacing:-.02em; }
+.hero-c .stamp{ justify-content:center; border-top:0; padding-top:14px; }
+.card .ver{ font-family:var(--ff-en); font-size:12.5px; font-weight:800; letter-spacing:.12em; color:var(--g2); }
 </style>
 </head>
 <body>
@@ -277,26 +296,59 @@ footer .fl{ display:flex; flex-wrap:wrap; gap:8px 22px; margin-top:20px;
   </div>
 </header>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="swallow" viewBox="0 0 64 40"><path fill="currentColor" d="M2 14c9-2 18 0 25 6 3-7 9-13 18-16 5-2 11-3 17-2-8 3-14 7-18 13 4 1 8 3 10 6-5-1-10-1-14 0l-6 9c-1 2-3 3-5 2l1-8c-7 4-15 6-24 5 6-2 11-5 14-9C14 18 8 16 2 14z"/></symbol>
+</svg>
 <section class="hero">
+  <div class="w hero-c">
+    <svg class="mark" viewBox="0 0 64 40" aria-hidden="true"><use href="#swallow"/></svg>
+    <span class="chip">INDEX</span>
+    <h1 class="svc">つばめリード</h1>
+    <p class="svc-en">TSUBAME LEAD</p>
+    <p class="tag">1通5円。送った全件を、<em>動画で残す</em>AIフォーム営業。</p>
+    <p class="sub">使う会社にお届けする<b>A 直販</b>と、自社のお客様に売っていただく<b>B OEM</b>。サービスサイトと資料は、すべてこのページからたどれます。</p>
+    <div class="tally2">
+      <span>サービスサイト<b>3</b></span>
+      <span>A 直販<b>4</b>点</span>
+      <span>B OEM<b>4</b>点</span>
+    </div>
+    <div class="stamp"><span>最終更新　<b>2026年9月23日</b></span></div>
+  </div>
+</section>
+
+<section class="blk" id="sites">
   <div class="w">
-    <div class="hl">
-      <span class="chip">INDEX</span><span class="chipn">つばめリード</span>
-      <h1>1通5円。<br>送った全件を、<br><em>動画で残します</em>。</h1>
-      <p class="sub">AIが企業ごとのお問い合わせフォームを読み、提案文を入力して送信するフォーム営業、<b>つばめリード</b>。使う会社にお届けする<b>A 直販</b>と、自社のお客様に売っていただく<b>B OEM</b>。</p>
-      <p class="sub">関連する資料はすべてこのページからたどれます。</p>
-      <div class="stamp">
-        <span>最終更新　<b>2026年9月23日</b></span>
+    <div class="shead">
+      <div class="sl"><h2>サービスサイト</h2></div>
+      <span class="sn">3 SITES</span>
+    </div>
+    <p class="sdesc">いま公開しているつばめリードのサイトは3つです。<b>ご案内には最新の第3版</b>をお使いください。</p>
+    <div class="cards cards3">
+      <div class="card flag lnk" id="site3">
+        <a class="clink" href="./a01/">つばめリード 第3版を開く</a>
+        <div class="ctop"><span class="cno">SITE 1</span><span class="bg new">最新</span><span class="ver">V3 / 2026.09</span></div>
+        <div class="chead"><span class="cic"><svg aria-hidden="true" viewBox="0 0 64 40"><use href="#swallow"/></svg></span><h3>第3版<br>送った全件を録画</h3></div>
+        <p class="cd">実際の管理画面、他社の公開価格との比較、向かない会社までを載せた版です。資料一式のA-01でもあります。</p>
+        <div class="curl"><span class="uk">URL</span><span class="uv">/saas/tsubame-lead-pack/a01/</span></div>
+        <div class="cfoot end"><span class="go">開く →</span></div>
+      </div>
+      <div class="card lnk" id="site2">
+        <a class="clink" href="../tsubame-lead-sky/">つばめリード skyバージョンを開く</a>
+        <div class="ctop"><span class="cno">SITE 2</span><span class="ver">V2 / 2026.09</span></div>
+        <div class="chead"><span class="cic"><svg aria-hidden="true" viewBox="0 0 64 40"><use href="#swallow"/></svg></span><h3>第2版<br>skyバージョン</h3></div>
+        <p class="cd">初期費用0円・成功送信1通5円・全件動画の3点を軸にした版です。送信数から送信費を試算する欄があります。</p>
+        <div class="curl"><span class="uk">URL</span><span class="uv">/saas/tsubame-lead-sky/</span></div>
+        <div class="cfoot end"><span class="go">開く →</span></div>
+      </div>
+      <div class="card lnk" id="site1">
+        <a class="clink" href="https://tsubame.figma.site/">つばめリード Figma版を開く</a>
+        <div class="ctop"><span class="cno">SITE 3</span><span class="ver">FIGMA</span></div>
+        <div class="chead"><span class="cic"><svg aria-hidden="true" viewBox="0 0 64 40"><use href="#swallow"/></svg></span><h3>Figma版<br>シリーズ立ち上げ時</h3></div>
+        <p class="cd">つばめシリーズの立ち上げ時に作ったサイトです。掲載の料金・条件は作成時点のもので、最新の条件は第3版をご覧ください。</p>
+        <div class="curl"><span class="uk">URL</span><span class="uv">tsubame.figma.site</span></div>
+        <div class="cfoot end"><span class="go">開く →</span></div>
       </div>
     </div>
-    <aside class="tally">
-      <div class="trow">
-        <span class="tk tk-a">A</span><span class="tl">直販</span><span class="tv">4<i>点</i></span>
-      </div>
-      <div class="trow">
-        <span class="tk tk-b">B</span><span class="tl">OEM</span><span class="tv">4<i>点</i></span>
-      </div>
-      <p class="tnote">社内限の2点はこのページから開けません</p>
-    </aside>
   </div>
 </section>
 
@@ -305,6 +357,11 @@ footer .fl{ display:flex; flex-wrap:wrap; gap:8px 22px; margin-top:20px;
     <h2>今回の更新</h2>
     <p class="nsub"><b>2026年9月23日</b>　更新のあったページには <span class="bg upd">更新</span> <span class="bg new">NEW</span> が付きます。次回以降の差分も、ここにまとめる予定です。</p>
     <ul>
+      <li><a href="#sites">
+        <span class="nd">09.23</span>
+        <span class="nt"><i>サービスサイト3つ</i>　を並べて掲載しました</span>
+        <span class="nw">第3版・第2版（skyバージョン）・Figma版を、このページの上から開けるようにしました。ご案内には第3版をお使いください。</span>
+      </a></li>
       <li><a href="#c01">
         <span class="nd">09.23</span>
         <span class="nt"><i>サービス紹介ページ</i>　を作り直しました</span>
@@ -443,6 +500,7 @@ footer .fl{ display:flex; flex-wrap:wrap; gap:8px 22px; margin-top:20px;
     </div>
     <p class="sdesc">直近の更新をまとめています。</p>
     <div class="hist">
+      <div class="hrow"><span class="hd">2026.09.23</span><span class="ho">サービスサイト</span><span class="hx">第3版・第2版・Figma版の3つを一覧に掲載。</span></div>
       <div class="hrow"><span class="hd">2026.09.23</span><span class="ho">資料一式</span><span class="hx">直販のA-02・A-03、OEMのB-01〜B-03を公開。社内限のA-04・B-04も用意。</span></div>
       <div class="hrow"><span class="hd">2026.09.23</span><span class="ho">サービス紹介ページ</span><span class="hx">第3版に作り直し。実際の管理画面と、向かない会社の一覧を掲載。</span></div>
       <div class="hrow"><span class="hd">2026.09.23</span><span class="ho">このインデックス</span><span class="hx">開設。直販4点・OEM4点の構成でまとめました。</span></div>
