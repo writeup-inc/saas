@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="catalog-card" content="true">
+<meta name="description" content="おまかせ受電AIをOEMパートナーとして販売する会社向けの案内です。売価と店舗窓口の持ち方、他社との違い、業種に合わせた機能の作り替えをまとめています。">
+<link rel="canonical" href="https://writeup-inc.github.io/saas/omakase-juden-oem/">
+<title>おまかせ受電AI｜OEMパートナーのご案内</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+/* lp-base.css — 日本語LP／HTML成果物の初期CSS
+ *
+ * 品質台帳（~/Documents/Codex/loop-engineering-memory/events.jsonl）で
+ * 再発が確認された表示欠陥を、指摘ではなく初期値で潰すためのファイル。
+ * 対応する欠陥ID:
+ *   japanese-heading-midword-wrap（見出しが単語途中で改行）11回
+ *   mobile-fv-headline-wrap（モバイルFVの見出し改行）3回
+ *   mobile-fixed-cta-overlap（固定CTAが本文を隠す）3回
+ *   meaningful-small-text-under-readable-size（意味のある文字が可読サイズ未満）5回
+ *
+ * 使い方: HTMLの<style>先頭にこの内容を貼る。色・書体・余白は各LPで上書きしてよいが、
+ * 下の「改行制御」「最小文字サイズ」「固定CTAの逃げ」の3ブロックは消さないこと。
+ */
+
+/* ── 改行制御 ─────────────────────────────────────────────
+ * 日本語は単語区切りが無いため、既定のままだと文節の途中で折り返す。
+ * auto-phrase は文節単位で折る（Chrome 119+）。非対応環境は strict で逃がす。 */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] {
+    word-break: normal;
+  }
+}
+/* 明示的に折りたくない語の途中で切られたら、その語を <span class="nobr"> で包む */
+.nobr { white-space: nowrap; }
+
+/* ── 最小文字サイズ ───────────────────────────────────────
+ * 判断材料になる文字は12px未満にしない。注記・免責のみ .note を許容。 */
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+
+/* ── ファーストビューの見出し ─────────────────────────────
+ * 固定pxだと狭い画面で必ず折り返す。clamp で画面幅に追従させる。 */
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+
+/* ── 固定CTAの逃げ ────────────────────────────────────────
+ * 画面下に固定CTAを置くページは、この変数を実測の高さに書き換える。
+ * 置かないページはそのままでよい（0のまま）。 */
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+
+/* ── 横はみ出しの予防 ─────────────────────────────────────
+ * flex/grid の子は既定で min-width:auto のため、長い語で親を押し広げる。 */
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+
+
+/* ===== トークン（Jマッチエンジン系の基調） ===== */
+:root{
+  --ac:#0b2c5c; --acl:#f3f6fa; --acl2:#e9eef2; --acm:#b9c6da;
+  --bk:#111111; --g1:#4f5357; --g2:#666a6f; --g3:#9ea3a8;
+  --ln:#d9d9d9; --ln2:#efefef; --pa:#f7f7f7; --up:#c8102e;
+  --hold:#8a5a00; --hold-l:#fff4d6;
+  --wd:1120px;
+  --ff-head:"Zen Kaku Gothic New","Noto Sans JP","Hiragino Sans",system-ui,sans-serif;
+  --ff-body:"Noto Sans JP","Hiragino Sans",system-ui,sans-serif;
+  --ff-en:"Outfit","Zen Kaku Gothic New",sans-serif;
+}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:#fff;color:var(--bk);font-family:var(--ff-body);font-size:17px;line-height:1.95;
+  letter-spacing:.01em;font-feature-settings:"palt" 1;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.logo,.btn{font-family:var(--ff-head)}
+p{margin:0}
+a{color:inherit}
+.w{max-width:var(--wd);margin:0 auto;padding:0 32px}
+.en{font-family:var(--ff-en);font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.tbd{display:inline-block;padding:0 7px;border-radius:4px;background:var(--hold-l);color:var(--hold);font-size:14px;font-weight:700;line-height:1.7;white-space:nowrap}
+.mk{background:linear-gradient(transparent 62%,#fff1a8 62%)}
+
+/* ===== ヘッダー ===== */
+.hd{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--ln2)}
+.hd .w{display:flex;align-items:center;justify-content:space-between;gap:16px;height:62px}
+.logo{display:inline-flex;align-items:center;min-height:44px;font-size:16px;font-weight:900;letter-spacing:.04em;text-decoration:none;white-space:nowrap}
+.logo small{margin-left:8px;padding:2px 8px;border-radius:4px;background:var(--ac);color:#fff;font-family:var(--ff-en);font-size:13px;font-weight:700;letter-spacing:.12em;vertical-align:2px}
+.hn{display:flex;align-items:center;gap:22px}
+.hn a{font-size:14px;font-weight:700;color:var(--g1);text-decoration:none;white-space:nowrap}
+.hn a:hover{color:var(--ac)}
+.hn .btn-s{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:6px;background:var(--ac);color:#fff}
+.hn .btn-s:hover{color:#fff;background:#08214a}
+@media(max-width:900px){.hn a:not(.btn-s){display:none}}
+
+/* ===== ボタン ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 28px;border-radius:8px;
+  font-size:16px;font-weight:900;letter-spacing:.04em;text-decoration:none;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.btn-p{background:var(--ac);color:#fff;border:1px solid var(--ac)}
+.btn-p:hover{background:#08214a}
+.btn-o{background:#fff;color:var(--ac);border:1px solid var(--acm);font:inherit;font-family:var(--ff-head);font-weight:900}
+.btn-o:hover{border-color:var(--ac)}
+
+/* ===== ヒーロー ===== */
+.hero{padding:clamp(48px,7vw,96px) 0 clamp(56px,7vw,96px);background:linear-gradient(180deg,#fff 0,#fff 55%,var(--acl) 100%);border-bottom:1px solid var(--ln2)}
+.hero .w{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(32px,5vw,64px);align-items:center}
+.eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 18px;font-size:15px;font-weight:700;color:var(--g1)}
+.eyebrow b{display:inline-block;padding:3px 10px;border-radius:4px;background:var(--ac);color:#fff;font-family:var(--ff-en);font-size:13px;letter-spacing:.14em}
+.hc{position:relative;cursor:pointer}
+.hero h1{margin:0;font-size:clamp(1.45rem,7vw,2.95rem);font-weight:900;line-height:1.38;letter-spacing:-.01em;color:var(--bk)}
+.hero h1::after{content:"";display:inline-block;width:3px;height:.95em;margin-left:6px;vertical-align:-.1em;background:var(--ac);animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.rot{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:18px 0 0}
+.dots{display:flex;gap:6px}
+.dots button{width:44px;height:44px;padding:0;border:0;background:none;cursor:pointer;position:relative}
+.dots button::before{content:"";position:absolute;left:10px;right:10px;top:20px;height:4px;border-radius:2px;background:var(--acm);transition:background .2s}
+.dots button[aria-current="true"]::before{background:var(--ac)}
+.rot .all{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 4px;border:0;background:none;font:inherit;font-size:15px;font-weight:700;color:var(--ac);cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+.hero .sub{margin:22px 0 0;font-size:17px;line-height:1.95;color:var(--g1)}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 0}
+.facts{display:flex;flex-wrap:wrap;gap:6px 22px;margin:26px 0 0;padding:0;list-style:none;font-size:15px;color:var(--g2)}
+.facts b{color:var(--bk)}
+
+/* 管理画面の画面イメージ */
+.mock{background:#fff;border:1px solid var(--ln);border-radius:14px;box-shadow:0 30px 60px -30px rgba(11,44,92,.35);overflow:hidden}
+.mock-top{display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--ac);color:#fff}
+.mock-logo{display:grid;place-items:center;height:30px;padding:0 6px;border:1.5px dashed rgba(255,255,255,.7);border-radius:6px;font-size:13px;font-weight:700}
+.mock-top p{font-size:15px;font-weight:700;line-height:1.4}
+.mock-top p span{display:block;font-size:13px;font-weight:500;opacity:.8}
+.mock-bd{padding:14px 16px 16px}
+.mock-h{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:var(--g2)}
+.mock ul{list-style:none;margin:8px 0 0;padding:0}
+.mock li{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--ln2);font-size:15px}
+.tg{display:inline-flex;border:1px solid var(--ln);border-radius:999px;overflow:hidden;font-size:13px;font-weight:700}
+.tg span{padding:2px 10px;color:var(--g3)}
+.tg .on{background:var(--ac);color:#fff}
+.nx{font-size:13px;color:var(--g2);white-space:nowrap}
+.mock-cap{margin:10px 0 0;font-size:14px;color:var(--g2)}
+
+/* ===== セクション共通 ===== */
+.sec{padding:clamp(72px,9vw,120px) 0;border-top:1px solid var(--ln2)}
+.sec.tint{background:var(--acl)}
+.sh{margin:0 0 clamp(28px,4vw,44px)}
+.shl{display:flex;align-items:center;gap:12px;margin:0 0 12px}
+.sh .no{font-family:var(--ff-en);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;line-height:1;color:var(--acm)}
+.sh .en{font-size:13px;color:var(--ac)}
+.sh h2{margin:0;font-weight:900;line-height:1.5;letter-spacing:-.01em;font-size:clamp(1.05rem,5.3vw,2.1rem)}
+.body{max-width:760px;font-size:17px;line-height:2;color:#262a2e}
+.body + .body{margin-top:14px}
+.note{margin:18px 0 0;font-size:15px;color:var(--g2)}
+
+/* 1 向いている会社 */
+.fit{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(28px,4vw,56px);margin-top:36px}
+.fit h3{margin:0 0 10px;font-size:17px;font-weight:900}
+.fit ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--ln)}
+.fit li{padding:14px 2px;border-bottom:1px solid var(--ln);font-size:16px;line-height:1.75}
+.fit li b{display:block;font-size:17px}
+.fit li span{color:var(--g2);font-size:15px}
+.fit .no-fit li b{color:var(--g1)}
+
+/* 2 振り分けの図 */
+.flow{margin-top:36px;border:1px solid var(--ln);border-radius:12px;background:#fff;overflow:hidden}
+.flow-h,.flow-r{display:grid;grid-template-columns:1fr 32px 1fr 32px 1.4fr;align-items:center;gap:10px;padding:0 22px}
+.flow-h{padding-top:14px;padding-bottom:10px;background:var(--pa);font-size:14px;font-weight:700;color:var(--g2)}
+.flow-r{padding-top:18px;padding-bottom:18px;border-top:1px solid var(--ln2)}
+.flow-r .k{font-size:17px;font-weight:700}
+.flow .ar{color:var(--acm);font-weight:700;text-align:center}
+.who{display:inline-flex;align-items:center;gap:8px;font-size:16px;font-weight:700}
+.who i{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;font-style:normal;font-size:14px;font-weight:700}
+.who.ai i{background:var(--ac);color:#fff}
+.who.hu i{background:#fff;color:var(--ac);border:1.5px solid var(--ac)}
+.flow-r .nxt{font-size:16px;line-height:1.7;color:#262a2e}
+.flow-h span:nth-child(2),.flow-h span:nth-child(4){visibility:hidden}
+
+/* 3 分担 */
+.split{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+.col{padding:24px 24px 20px;border-radius:12px;background:#fff;border:1px solid var(--ln)}
+.col.you{border-top:4px solid var(--ac)}
+.col.us{border-top:4px solid var(--acm)}
+.col.tbd-c{border-top:4px solid #e3c36a;background:#fffdf6}
+.col h3{margin:0;font-size:18px;font-weight:900}
+.col ul{list-style:none;margin:12px 0 0;padding:0}
+.col li{position:relative;padding:9px 0 9px 20px;border-top:1px solid var(--ln2);font-size:16px;line-height:1.7}
+.col li::before{content:"";position:absolute;left:2px;top:19px;width:8px;height:8px;border-radius:2px;background:var(--ac)}
+.col.us li::before{background:var(--acm)}
+.col.tbd-c li::before{background:#e3c36a}
+.price{margin-top:22px;display:grid;grid-template-columns:auto 1fr;gap:0;border-top:1px solid var(--ln);max-width:760px}
+.price dt,.price dd{margin:0;padding:12px 4px;border-bottom:1px solid var(--ln);font-size:16px}
+.price dt{padding-right:28px;font-weight:700}
+
+/* 4 品質 */
+.honest{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);align-items:start}
+.quote{padding:26px 28px;border-left:4px solid var(--ac);background:#fff;font-family:var(--ff-head);font-size:clamp(1.15rem,2vw,1.35rem);font-weight:900;line-height:1.7}
+.quote span{display:block;margin-top:10px;font-family:var(--ff-body);font-size:15px;font-weight:500;color:var(--g2)}
+
+/* 5 比較表 */
+.cmp{width:100%;margin-top:32px;border-collapse:collapse;font-size:16px;background:#fff}
+.cmp th,.cmp td{padding:15px 16px;border-bottom:1px solid var(--ln);text-align:left;vertical-align:top;line-height:1.7}
+.cmp thead th{font-size:15px;color:var(--g2);font-weight:700;border-bottom:2px solid var(--bk)}
+.cmp thead th.ours{color:var(--ac)}
+.cmp tbody th{font-weight:700;width:26%}
+.cmp td.ours{font-weight:700;color:var(--ac);background:var(--acl)}
+.cmp tr.same td{color:var(--g1)}
+.cmp-wrap{overflow-x:auto}
+
+/* 6 作り替え */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px}
+.tile{padding:22px 20px;border:1px solid var(--ln);border-radius:12px;background:#fff}
+.tile svg{width:36px;height:36px;fill:none;stroke:var(--ac);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.tile h3{margin:12px 0 6px;font-size:17px;font-weight:900;line-height:1.5}
+.tile p{font-size:15px;line-height:1.8;color:var(--g1)}
+.how{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.lane{padding:24px 26px;border-radius:12px;background:var(--acl)}
+.lane .en{font-size:13px;color:var(--ac)}
+.lane h3{margin:6px 0 8px;font-size:18px;font-weight:900}
+.lane p{font-size:16px;line-height:1.85;color:#262a2e}
+
+/* 7 手順 */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:34px;counter-reset:st;border-top:1px solid var(--ln)}
+.step{padding:24px 24px 24px 0;border-bottom:1px solid var(--ln)}
+.step + .step{padding-left:24px;border-left:1px solid var(--ln)}
+.step .en{font-size:14px;color:var(--ac)}
+.step h3{margin:6px 0 6px;font-size:18px;font-weight:900}
+.step p{font-size:16px;line-height:1.8;color:var(--g1)}
+.later{margin-top:34px;padding:22px 24px;border:1px dashed var(--acm);border-radius:12px}
+.later .lh{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.later h3{margin:0;font-size:17px;font-weight:900}
+.later ul{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:12px 0 0;padding:0}
+.later li{padding:4px 12px;border-radius:999px;background:var(--pa);font-size:15px;color:var(--g1)}
+
+/* 8 FAQ */
+.faq{margin-top:30px;border-top:1px solid var(--ln);max-width:860px}
+.faq details{border-bottom:1px solid var(--ln)}
+.faq summary{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px;padding:14px 4px;font-family:var(--ff-head);font-size:17px;font-weight:900;cursor:pointer;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"＋";flex:none;color:var(--ac);font-weight:700}
+.faq details[open] summary::after{content:"－"}
+.faq .a{padding:0 4px 20px;font-size:16px;line-height:1.9;color:#262a2e}
+
+/* 9 CTA */
+.last{padding:clamp(72px,9vw,112px) 0;background:var(--ac);color:#fff}
+.last h2{margin:0;font-size:clamp(1.05rem,5.3vw,2.3rem);font-weight:900;line-height:1.5}
+.last .en{font-size:13px;color:var(--acm)}
+.last p.b{margin:18px 0 0;max-width:720px;font-size:17px;line-height:2;color:#dfe6f0}
+.last ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0;padding:0}
+.last li{padding:5px 14px;border:1px solid rgba(255,255,255,.35);border-radius:999px;font-size:15px}
+.last .btn-w{margin-top:30px;background:#fff;color:var(--ac);border:1px solid #fff}
+.last .btn-w:hover{background:var(--acl)}
+.last .fine{margin:14px 0 0;font-size:14px;color:#b9c6da}
+
+/* ファクトチェック */
+.fc-btn{display:inline-flex;align-items:center;gap:.6em;min-height:44px;margin-top:22px;padding:8px 16px;border:1px solid currentColor;border-radius:999px;background:transparent;color:var(--g1);font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+.fc-btn:hover{color:var(--bk)}
+.fc-sub{font-size:13px;font-weight:400;opacity:.8}
+
+/* 会社概要 */
+.co{padding:56px 0 64px;background:#111;color:#cfd3d8}
+.co h2{margin:0 0 14px;font-size:16px;font-weight:900;color:#fff}
+.co dl{display:grid;grid-template-columns:8em 1fr;margin:0;max-width:720px;font-size:15px}
+.co dt,.co dd{margin:0;padding:8px 0;border-bottom:1px solid #2a2d31}
+.co dt{color:#8d939a}
+.co .pf{margin:22px 0 0;font-size:14px;color:#8d939a}
+
+
+/* 3 関係図 */
+.rel{display:grid;grid-template-columns:1fr 150px 1fr 150px .8fr;align-items:stretch;margin-top:36px}
+.node{padding:22px 22px 18px;border:1px solid var(--ln);border-radius:12px;background:#fff}
+.node .en{font-size:13px;color:var(--g2)}
+.node h3{margin:4px 0 8px;font-size:20px;font-weight:900}
+.node ul{list-style:none;margin:0;padding:0}
+.node li{position:relative;padding:6px 0 6px 18px;border-top:1px solid var(--ln2);font-size:15.5px;line-height:1.65}
+.node li::before{content:"";position:absolute;left:2px;top:15px;width:7px;height:7px;border-radius:2px;background:var(--acm)}
+.node.you{border:2px solid var(--ac);box-shadow:0 18px 40px -26px rgba(11,44,92,.5)}
+.node.you .en{color:var(--ac)}
+.node.you li::before{background:var(--ac)}
+.node.st{background:var(--pa)}
+.edge{position:relative;display:flex;align-items:center;justify-content:center}
+.edge::before{content:"";position:absolute;left:10px;right:14px;top:50%;height:2px;background:var(--acm)}
+.edge::after{content:"";position:absolute;right:8px;top:calc(50% - 6px);border:6px solid transparent;border-left:9px solid var(--acm)}
+.edge span{position:relative;padding:2px 8px;background:#fff;font-size:13px;font-weight:700;color:var(--ac);white-space:nowrap}
+.rel-note{margin:16px 0 0;font-family:var(--ff-head);font-size:17px;font-weight:900;color:var(--ac)}
+.undecided{margin-top:44px;max-width:760px}
+.undecided h3{margin:0 0 6px;font-size:17px;font-weight:900}
+.undecided .price{margin-top:0}
+.mid{margin:26px 0 0;font-size:16px;font-weight:700}
+.mid a{display:inline-flex;align-items:center;min-height:44px;color:var(--ac);text-underline-offset:4px}
+.later li{background:#fff;border:1px dashed var(--g3)}
+.quote,.faq summary,.fit li b,.tile h3,.lane h3,.col li,.cmp th,.cmp td,.node li,.flow-r .nxt,.rel-note{word-break:auto-phrase;line-break:strict}
+.faq summary,.fit li b{text-wrap:pretty}
+@media(max-width:960px){
+  .rel{grid-template-columns:1fr;gap:0}
+  .edge{height:56px}
+  .edge::before{left:50%;right:auto;top:6px;bottom:12px;width:2px;height:auto}
+  .edge::after{left:calc(50% - 6px);right:auto;top:auto;bottom:4px;border:6px solid transparent;border-top:9px solid var(--acm)}
+  .edge span{background:#fff}
+}
+@media(max-width:600px){
+  body,.body{font-size:16px}
+  .cmp thead th:first-child{display:none}
+  .cmp thead tr,.cmp tbody tr{display:grid;grid-template-columns:1fr 1fr}
+  .cmp tbody th{grid-column:1/-1;width:auto;padding:14px 10px 0;border:0;font-size:14px;color:var(--g2)}
+  .tile{display:grid;grid-template-columns:36px 1fr;column-gap:14px;padding:18px}
+  .tile svg{grid-row:1/3}
+  .tile h3{margin:0 0 4px}
+}
+
+/* ===== ポップアップ（3つのコピーと見出しの通読） ===== */
+dialog.pop{width:min(880px,calc(100% - 32px));max-height:calc(100dvh - 48px);padding:0;border:0;border-radius:16px;box-shadow:0 40px 80px -20px rgba(0,0,0,.4);color:var(--bk)}
+dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
+.pop-h{position:sticky;top:0;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 18px 14px 28px;background:#fff;border-bottom:1px solid var(--ln2)}
+.pop-h p{font-family:var(--ff-head);font-size:16px;font-weight:900}
+.pop-x{flex:none;width:44px;height:44px;border:1px solid var(--ln);border-radius:50%;background:#fff;font-size:20px;line-height:1;cursor:pointer;color:var(--g1)}
+.pop-b{padding:26px 28px 32px}
+.pop-lbl{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;margin:0 0 12px;font-size:15px;font-weight:700;color:var(--g2)}
+.pop-lbl .en{font-size:13px;color:var(--ac)}
+.copies{list-style:none;margin:0;padding:0;border-top:1px solid var(--ln)}
+.copies li{display:grid;grid-template-columns:2.6em 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--ln)}
+.copies .n{font-family:var(--ff-en);font-size:15px;font-weight:800;color:var(--ac);padding-top:6px}
+.copies .c{word-break:auto-phrase;line-break:strict;font-family:var(--ff-head);font-size:clamp(1.25rem,2.6vw,1.6rem);font-weight:900;line-height:1.5}
+.copies .s{margin-top:6px;font-size:15px;line-height:1.8;color:var(--g2)}
+.story{margin:30px 0 0}
+.story ol{list-style:none;margin:0;padding:0;counter-reset:h}
+.story li{counter-increment:h}
+.story a{display:grid;grid-template-columns:2.2em 1fr;gap:10px;padding:9px 6px;border-radius:6px;text-decoration:none;font-size:17px;line-height:1.75;word-break:auto-phrase;line-break:strict;transition:background .15s}
+.story a::before{content:counter(h,decimal-leading-zero);font-family:var(--ff-en);font-size:14px;font-weight:800;color:var(--acm);padding-top:3px}
+.story a:hover{background:var(--acl)}
+.pop-f{margin:22px 0 0;font-size:14px;color:var(--g2)}
+
+/* ===== レスポンシブ ===== */
+@media(max-width:1180px){
+  .tiles{grid-template-columns:1fr 1fr}
+}
+@media(min-width:961px) and (max-width:1180px){
+  .hero h1{font-size:2.6rem}
+}
+@media(max-width:960px){
+  .hero .w{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .fit,.honest,.how{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .step,.step + .step{padding:20px 0;border-left:0}
+  .flow-h{display:none}
+  .flow-r{grid-template-columns:1fr;gap:6px;padding:18px 18px}
+  .flow .ar{display:none}
+  .flow-r .k::before{content:"用件　";font-size:14px;font-weight:700;color:var(--g2)}
+  .flow-r .nxt::before{content:"→ ";color:var(--acm);font-weight:700}
+}
+@media(max-width:600px){
+  .w{padding:0 20px}
+  .tiles{grid-template-columns:1fr}
+  .cmp{font-size:15px}
+  .cmp th,.cmp td{padding:12px 10px}
+  .cmp tbody th{width:30%}
+  .co dl{grid-template-columns:1fr}
+  .co dt{padding-bottom:0;border-bottom:0}
+  .pop-b{padding:20px 18px 26px}
+  .pop-h{padding-left:18px}
+  .copies li{grid-template-columns:1fr;gap:4px}
+  .copies .n{padding-top:0}
+  .story a{font-size:16px}
+  .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero h1::after{animation:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <div class="w">
+    <a class="logo" href="#top">おまかせ受電AI<small>OEM</small></a>
+    <nav class="hn" aria-label="ページ内">
+      <a href="#s3">条件と分担</a>
+      <a href="#s4">他社との違い</a>
+      <a href="#s5">作り替え</a>
+      <a href="#s7">よくある質問</a>
+      <a class="btn-s" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">相談する</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ヒーロー -->
+<section class="hero" aria-label="おまかせ受電AI OEMパートナーのご案内">
+  <div class="w">
+    <div>
+      <p class="eyebrow"><b>OEM</b>OEMパートナー向けのご案内</p>
+      <div class="hc" id="hc" title="押すと、3つのコピーと見出しを並べて読めます">
+        <h1 id="tw" data-keep-phrase>貴社の商材に、<br>AI電話を1本足せます。</h1>
+      </div>
+      <div class="rot">
+        <div class="dots" role="group" aria-label="コピーの切り替え">
+          <button type="button" aria-label="コピー1" aria-current="true"></button>
+          <button type="button" aria-label="コピー2" aria-current="false"></button>
+          <button type="button" aria-label="コピー3" aria-current="false"></button>
+        </div>
+        <button type="button" class="all" id="openPop" aria-haspopup="dialog" aria-controls="pop">3つのコピーと見出しを並べて読む</button>
+      </div>
+      <p class="sub">店舗の電話を用件ごとにAIか人へ振り分け、一次受けするAI電話です。管理画面は貴社専用に作り、受電後のSMSや予約台帳など、業種に合わせて機能を作り替えます。</p>
+      <div class="cta">
+        <a class="btn btn-p" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">OEMパートナーについて相談する →</a>
+      </div>
+      <ul class="facts">
+        <li>売価：<b>貴社が決める</b></li>
+        <li>店舗の窓口：<b>貴社</b></li>
+        <li>個別開発：<b>数十万円程度が多い</b></li>
+      </ul>
+    </div>
+
+    <figure class="mock" style="margin:0" aria-label="貴社専用の管理画面のイメージ">
+      <div class="mock-top">
+        <span class="mock-logo" aria-hidden="true">LOGO</span>
+        <p>貴社のサービス名<span>店舗の受電ルール</span></p>
+      </div>
+      <div class="mock-bd">
+        <p class="mock-h"><span>用件</span><span>最初に受ける／次の処理</span></p>
+        <ul>
+          <li><span>予約・予約変更</span><span class="tg"><span>AI</span><span class="on">人</span></span><span class="nx">転送</span></li>
+          <li><span>営業電話</span><span class="tg"><span class="on">AI</span><span>人</span></span><span class="nx">完結</span></li>
+          <li><span>道順・営業時間</span><span class="tg"><span class="on">AI</span><span>人</span></span><span class="nx">完結</span></li>
+          <li><span>クレーム・お困りごと</span><span class="tg"><span>AI</span><span class="on">人</span></span><span class="nx">折り返し</span></li>
+        </ul>
+        <figcaption class="mock-cap">画面イメージです。ロゴ・名称・項目は貴社向けに作ります。</figcaption>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- 1 -->
+<section class="sec" id="s1" aria-labelledby="h1s">
+  <div class="w">
+    <div class="sh"><p class="shl"><span class="no">01</span><span class="en">For partners</span></p><h2 id="h1s">店舗に商材を売る会社なら、<br>次の訪問で提案できます。</h2></div>
+    <p class="body">電話は、どの店舗にもある困りごとです。予約の電話で手が止まる、営業電話に時間を取られる、営業時間外の電話を取りこぼす。すでに店舗と取引がある会社なら、既存のお客様への、もう1本の提案になります。</p>
+    <div class="fit">
+      <div>
+        <h3>向いている会社</h3>
+        <ul>
+          <li><b>店舗向けにAIやITを売っている会社</b><span>既存のお客様に、もう1本提案できる商材が増えます</span></li>
+          <li><b>通信・OA・POSの販売会社</b><span>電話回線や店舗の機器と一緒に話ができます</span></li>
+          <li><b>予約システムの販売会社</b><span>予約の電話という、隣の困りごとまで拾えます</span></li>
+          <li><b>店舗の運営を支援している会社</b><span>人手不足の相談の中で、電話の負担を減らす打ち手になります</span></li>
+        </ul>
+      </div>
+      <div class="no-fit">
+        <h3>向いていない会社</h3>
+        <ul>
+          <li><b>店舗からの問い合わせを受ける窓口を持てない会社</b><span>店舗の一次窓口は貴社にお願いしています</span></li>
+          <li><b>通話品質の高さを一番の売りにしたい会社</b><span>品質は他社と同等です。このあと正直にお話しします</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="sec tint" id="s2" aria-labelledby="h2s">
+  <div class="w">
+    <div class="sh"><p class="shl"><span class="no">02</span><span class="en">What it does</span></p><h2 id="h2s">店舗の電話を、用件ごとに<br>AIと人へ振り分けます。</h2></div>
+    <p class="body">全部の電話をAIに任せるサービスではありません。用件ごとに「最初に受けるのはAIか人か」と「そのあとどうするか」を店舗が決めます。<span class="mk">予約や大切な用件は人へ、定型の質問や営業電話はAIへ。</span>任せる範囲は、あとから変えられます。</p>
+    <div class="flow" role="table" aria-label="用件ごとの振り分けの例">
+      <div class="flow-h" role="row"><span role="columnheader">用件</span><span aria-hidden="true">→</span><span role="columnheader">最初に受ける</span><span aria-hidden="true">→</span><span role="columnheader">次の処理</span></div>
+      <div class="flow-r" role="row"><span class="k" role="cell">予約・予約変更</span><span class="ar" aria-hidden="true">→</span><span class="who hu" role="cell"><i>人</i>スタッフへつなぐ</span><span class="ar" aria-hidden="true">→</span><span class="nxt" role="cell">営業時間内はスタッフへ転送。時間外はAIが予約の希望を仮受付し、確定はスタッフが行います</span></div>
+      <div class="flow-r" role="row"><span class="k" role="cell">営業電話</span><span class="ar" aria-hidden="true">→</span><span class="who ai" role="cell"><i>AI</i>AIが受ける</span><span class="ar" aria-hidden="true">→</span><span class="nxt" role="cell">用件と連絡先を聞いて、その場で完結</span></div>
+      <div class="flow-r" role="row"><span class="k" role="cell">道順・営業時間</span><span class="ar" aria-hidden="true">→</span><span class="who ai" role="cell"><i>AI</i>AIが受ける</span><span class="ar" aria-hidden="true">→</span><span class="nxt" role="cell">登録済みの店舗情報を見て案内</span></div>
+      <div class="flow-r" role="row"><span class="k" role="cell">クレーム・お困りごと</span><span class="ar" aria-hidden="true">→</span><span class="who hu" role="cell"><i>人</i>スタッフへつなぐ</span><span class="ar" aria-hidden="true">→</span><span class="nxt" role="cell">スタッフが出られないときは、AIが用件を聞いてLINEへ通知。スタッフが折り返します</span></div>
+    </div>
+    <p class="note">用件の分け方は、業種ごとのひな形から選びます。回答に使う店舗情報は、スプレッドシートに登録したものを参照します。</p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="sec" id="s3" aria-labelledby="h3s">
+  <div class="w">
+    <div class="sh"><p class="shl"><span class="no">03</span><span class="en">Terms</span></p><h2 id="h3s">売価は貴社が決め、<br>店舗の窓口も貴社が持ちます。</h2></div>
+    <p class="body">店舗から見れば、貴社のサービスです。問い合わせもクレームも、まず貴社に届きます。弊社は表に出ず、仕組みの開発と提供を引き受けます。</p>
+    <div class="rel" role="list" aria-label="弊社・貴社・店舗の関係">
+      <div class="node us" role="listitem">
+        <span class="en">Developer</span>
+        <h3>弊社</h3>
+        <ul><li>受電AIの開発と提供</li><li>貴社専用の管理画面を作る</li><li>業種に合わせた機能の作り替え</li></ul>
+      </div>
+      <div class="edge" aria-hidden="true"><span>開発・提供</span></div>
+      <div class="node you" role="listitem">
+        <span class="en">OEM partner</span>
+        <h3>貴社</h3>
+        <ul><li>売価を決める</li><li>店舗への提案・販売</li><li>問い合わせ・クレームの一次受け</li></ul>
+      </div>
+      <div class="edge" aria-hidden="true"><span>販売・一次受け</span></div>
+      <div class="node st" role="listitem">
+        <span class="en">Store</span>
+        <h3>店舗</h3>
+        <ul><li>貴社のサービスとして使う</li></ul>
+      </div>
+    </div>
+    <p class="rel-note">店舗から見えるのは、貴社のサービスだけです。</p>
+    <div class="undecided">
+      <h3>まだ決めていない条件</h3>
+      <dl class="price">
+        <dt>仕入値・初期費用</dt><dd><span class="tbd">調整中</span></dd>
+        <dt>最低契約・解約</dt><dd><span class="tbd">調整中</span></dd>
+        <dt>申込の受付と請求</dt><dd><span class="tbd">調整中</span></dd>
+        <dt>障害時の対応</dt><dd><span class="tbd">調整中</span></dd>
+        <dt>併売・地域の扱い</dt><dd><span class="tbd">調整中</span></dd>
+      </dl>
+      <p class="note">どれも、貴社の販売のしかたを伺ったうえで決めます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="sec tint" id="s4" aria-labelledby="h4s">
+  <div class="w">
+    <div class="sh"><p class="shl"><span class="no">04</span><span class="en">Quality &amp; Difference</span></p><h2 id="h4s">通話品質は、他社と同等です。<br>違いは、原価と作り替えの幅です。</h2></div>
+    <p class="body">遜色はありません。ただ、飛び抜けて良いわけでもありません。AI電話の聞き取り、話し方、応答の速さは、どの音声AI（API）を選び、どう調整し、どう組み立てるかで決まります。各社がほぼ同じ選択肢から選んでいる領域なので、決定的な差はつきにくいと見ています。だから品質を売り文句にはしません。</p>
+    <p class="body">違いの1つ目は原価です。受電AIは、弊社1社だけで自社開発しています。そのぶん、原価は他社より少し抑えられると見ています。ただ、比べた数字はまだお出しできません。貴社の仕入値への反映は<span class="tbd">調整中</span>です。</p>
+    <p class="body">2つ目が作り替えの幅です。完成品のサービスを取り次ぐ場合と比べると、次のようになります。</p>
+    <div class="cmp-wrap">
+      <table class="cmp">
+        <thead><tr><th scope="col">項目</th><th scope="col">完成品を取り次いで売る</th><th scope="col" class="ours">おまかせ受電AIのOEM</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">売るときの名前</th><td>提供元のサービス名</td><td class="ours">貴社のサービス名</td></tr>
+          <tr><th scope="row">管理画面</th><td>提供元の画面を使う</td><td class="ours">貴社専用に作る</td></tr>
+          <tr><th scope="row">業種向けの機能</th><td>用意された機能から選ぶ</td><td class="ours">業種に合わせて作り替え</td></tr>
+          <tr><th scope="row">1社のための開発</th><td>提供元の標準機能の範囲で使う</td><td class="ours">都度お見積りで対応</td></tr>
+          <tr class="same"><th scope="row">通話品質</th><td>同等</td><td>同等</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">左の列は、完成品のサービスを販売代理として取り次ぐ場合によくある形で、特定の会社を指すものではありません。他社にも、OEMや自社ブランドでの提供に対応するサービスはあります。比べるときは、管理画面の作り替えと、1社のための開発を受けるかどうかを確かめてください。</p>
+    <button class="fc-btn" type="button"
+      data-fc-section="通話品質は、他社と同等です。違いは、原価と作り替えの幅です。"
+      data-fc-claim="AI電話応対の通話品質（聞き取り・話し方・応答の速さ）は、採用する音声認識・音声合成・対話AIの選択、調整、組み立て方で決まり、各社が近い選択肢から選ぶため決定的な差はつきにくい／完成品のAI電話サービスを販売代理として取り次ぐ場合、提供元のサービス名と提供元の管理画面をそのまま使うことが多い／完成品を取り次ぐ場合、機能は提供元の標準機能の範囲で使う形が一般的／他社にもOEMや自社ブランドでの提供に対応するAI電話サービスはある">
+      ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span>
+    </button>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="sec" id="s5" aria-labelledby="h5s">
+  <div class="w">
+    <div class="sh"><p class="shl"><span class="no">05</span><span class="en">Customize</span></p><h2 id="h5s">SMS・予約台帳・本人の声まで、<br>業種に合わせて作り替えます。</h2></div>
+    <p class="body">管理画面は貴社専用に作ります。そのうえで、既存の機能の一部を貴社のお客様に合わせて作り替えます。飲食店と美容室と士業事務所では、電話のあとにやりたいことが違うからです。たとえば次のようなものです。</p>
+    <div class="tiles">
+      <div class="tile">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="12" y="4" width="24" height="40" rx="4"/><path d="M20 38h8M17 13h14M17 19h10M17 25h12"/></svg>
+        <h3>電話のあとに自動でSMS</h3>
+        <p>承った用件の確認、地図、予約の案内などを、電話を切ったあとに送ります。</p>
+      </div>
+      <div class="tile">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="10" width="38" height="28" rx="3"/><path d="M5 13l19 13 19-13"/></svg>
+        <h3>連携してメール送信</h3>
+        <p>スプレッドシートと連携して、電話の内容に応じたメールを送ります。</p>
+      </div>
+      <div class="tile">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="3"/><path d="M6 16h36M6 26h36M6 36h36M18 6v36"/></svg>
+        <h3>予約台帳・注文管理</h3>
+        <p>スプレッドシートと連携して、受けた予約や注文を台帳に残します。</p>
+      </div>
+      <div class="tile">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="17" y="4" width="14" height="24" rx="7"/><path d="M10 22a14 14 0 0 0 28 0M24 36v8M17 44h14"/></svg>
+        <h3>店主・スタッフ本人の声</h3>
+        <p>応対の一部を、本人の録音で行います。店舗の受付なら、応対の多くを録音でまかなえると見ています。</p>
+      </div>
+    </div>
+    <div class="how">
+      <div class="lane">
+        <span class="en">Shared</span>
+        <h3>何社かで使える機能は、<br>最初にまとめて開発</h3>
+        <p>使い回せる機能は、最初にまとめて開発し、各社に提供します。</p>
+      </div>
+      <div class="lane">
+        <span class="en">Custom</span>
+        <h3>1社のための機能は、<br>都度お見積りで開発</h3>
+        <p>お客様ごとの開発は、そのつど費用がかかります。内容によりますが、数十万円程度で収まることが多いです。店舗数の多いチェーンなど、個別の対応も承ります。</p>
+      </div>
+    </div>
+    <p class="mid"><a href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">作り替えたい機能が決まっていれば、相談の場で候補をお出しします →</a></p>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="sec tint" id="s6" aria-labelledby="h6s">
+  <div class="w">
+    <div class="sh"><p class="shl"><span class="no">06</span><span class="en">Setup</span></p><h2 id="h6s">店舗の設定は、3ステップです。<br>業種・受け手・次の処理を選ぶ。</h2></div>
+    <p class="body">AIに話させる文章を、店舗がゼロから書く必要はありません。選ぶことと、短い書き足しだけで始められます。</p>
+    <div class="steps">
+      <div class="step"><span class="en">Step 01</span><h3>業種のひな形を選ぶ</h3><p>飲食店・サロンなど、よくある用件があらかじめ並んだひな形から始めます。</p></div>
+      <div class="step"><span class="en">Step 02</span><h3>AIか人かを決める</h3><p>予約は人、営業電話はAI、のように用件ごとに最初の受け手を選びます。</p></div>
+      <div class="step"><span class="en">Step 03</span><h3>次の処理を決める</h3><p>その場で完結・スタッフへ転送・通知して折り返し、から選びます。</p></div>
+    </div>
+    <div class="later">
+      <div class="lh"><h3>今後の開発候補</h3><span class="tbd">提供時期は未定</span></div>
+      <ul>
+        <li>販売会社ごとの申込URL</li>
+        <li>AI受電用の番号の発行</li>
+        <li>地図・グルメサイトの掲載番号の変更手順</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 7 -->
+<section class="sec" id="s7" aria-labelledby="h7s">
+  <div class="w">
+    <div class="sh"><p class="shl"><span class="no">07</span><span class="en">FAQ</span></p><h2 id="h7s">クレーム、予約の確定、番号。<br>よく聞かれる6つにお答えします。</h2></div>
+    <div class="faq">
+      <details><summary>店舗からのクレームは、誰が受けますか。</summary><p class="a">一次受けは貴社にお願いしています。店舗から見れば貴社のサービスだからです。AIの応答内容を見直す必要があるときの進め方は<span class="tbd">調整中</span>です。</p></details>
+      <details><summary>予約を、AIが勝手に確定しませんか。</summary><p class="a">確定しません。営業時間外の予約の希望は仮受付として残し、営業開始後にスタッフが確認して確定する作りです。</p></details>
+      <details><summary>今の店舗の電話番号のまま使えますか。</summary><p class="a">今の番号から転送して使う形を想定しています。回線の種類や転送の条件で変わるため、導入前に確認します。</p></details>
+      <details><summary>AIが出ていることを、相手に伝えますか。</summary><p class="a"><span class="tbd">検討中</span> 冒頭で伝えるかどうかを、店舗ごとに切り替えられる形を検討しています。</p></details>
+      <details><summary>解約の条件や、競合商材との併売は。</summary><p class="a">解約の条件、併売、地域の独占の扱いは<span class="tbd">調整中</span>です。ご相談の場で、貴社の販売のしかたを伺ったうえで決めます。</p></details>
+      <details><summary>業種向けの作り替えにかかる期間は。</summary><p class="a">作り替える内容で変わるため、お見積りのときに期間もあわせてお伝えします。</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- 8 -->
+<section class="last" id="s8" aria-labelledby="h8s">
+  <div class="w">
+    <span class="en">Next step</span>
+    <h2 id="h8s">まずは、販売先の業種と<br>想定店舗数をお聞かせください。</h2>
+    <p class="b">どの業種の店舗に、どれくらいの数を売る見込みか。それが分かれば、管理画面の作り方と、最初に作り替える機能の候補をお出しできます。仕入の条件も、あわせてご相談ください。</p>
+    <ul><li>販売先の業種</li><li>想定の店舗数</li><li>今お持ちの商材</li></ul>
+    <a class="btn btn-w" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">OEMパートナーについて相談する →</a>
+    <p class="fine">株式会社ライトアップのお問い合わせフォームが開きます。</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="co">
+  <div class="w">
+    <h2>会社概要</h2>
+    <dl>
+      <dt>会社名</dt><dd>株式会社ライトアップ（東証グロース 証券コード：6580）</dd>
+      <dt>所在地</dt><dd>東京都渋谷区渋谷2-15-1 渋谷クロスタワー32F</dd>
+      <dt>代表取締役</dt><dd>白石 崇</dd>
+      <dt>事業内容</dt><dd>AIソリューション事業</dd>
+    </dl>
+    <p class="pf">掲載内容は2026年9月23日時点のものです。<span class="tbd">調整中</span>・<span class="tbd">検討中</span>の項目は、決まり次第このページを更新します。</p>
+  </div>
+</footer>
+
+<!-- ポップアップ：3つのコピーと、見出しの通読 -->
+<dialog class="pop" id="pop" aria-labelledby="popT">
+  <div class="pop-h"><p id="popT">このページを、見出しだけで読む</p><button type="button" class="pop-x" id="popX" aria-label="閉じる">×</button></div>
+  <div class="pop-b">
+    <p class="pop-lbl"><span class="en">Hero copy</span>いちばん上で切り替わっている3つのコピー</p>
+    <ol class="copies" id="copies"></ol>
+    <div class="story">
+      <p class="pop-lbl"><span class="en">Headlines</span>見出しをつなげると、こういう話です</p>
+      <ol id="story"></ol>
+    </div>
+    <p class="pop-f">見出しを押すと、そのセクションへ移ります。</p>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  /* ===== ヒーロー：3つのコピーのローテーション ===== */
+  var COPIES=[
+    {c:'貴社の商材に、\nAI電話を1本足せます。',s:'何を売るのか。店舗の電話を一次受けするAIを、貴社のサービスとして売れます。'},
+    {c:'品質は他社並み。\n違いは、作り替えの幅。',s:'何が違うのか。通話品質は他社と同等です。違いは、名前と管理画面を貴社専用にでき、機能も業種に合わせて作り替えられることです。'},
+    {c:'SMSも予約台帳も、\n業種ごとに作り替え。',s:'何ができるのか。受電後のSMS、予約台帳、本人の録音音声での応対を、貴社のお客様の業種に合わせて作り替えます。'}
+  ];
+  var TYPE_MS=55, HOLD_MS=5200, ERASE_MS=22;
+  var h1=document.getElementById('tw'), hc=document.getElementById('hc');
+  var dots=[].slice.call(document.querySelectorAll('.dots button'));
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var idx=0, timer=null, paused=false;
+
+  function reserve(){ /* 一番長いコピーの高さを確保して、切り替えで下が動かないようにする */
+    var cur=h1.innerHTML, max=0;
+    hc.style.minHeight='';
+    COPIES.forEach(function(o){ put(o.c); max=Math.max(max,h1.offsetHeight); });
+    h1.innerHTML=cur; hc.style.minHeight=max+'px';
+  }
+  function put(t){ /* 改行(\n)は<br>にして描く */
+    h1.textContent=''; t.split('\n').forEach(function(line,k){ if(k) h1.appendChild(document.createElement('br')); h1.appendChild(document.createTextNode(line)); });
+  }
+  function mark(i){ dots.forEach(function(d,k){ d.setAttribute('aria-current',k===i?'true':'false'); }); }
+  function clear(){ if(timer){ clearTimeout(timer); timer=null; } }
+  function show(i,typing){
+    clear(); idx=i; mark(i);
+    var t=COPIES[i].c;
+    if(reduce||!typing){ put(t); schedule(); return; }
+    var n=0;
+    (function step(){ put(t.slice(0,++n)); if(n<t.length){ timer=setTimeout(step,TYPE_MS); } else { schedule(); } })();
+  }
+  function erase(next){
+    var t=COPIES[idx].c;
+    (function step(){ if(t.length){ t=t.slice(0,-1); put(t); timer=setTimeout(step,ERASE_MS); } else { show(next,true); } })();
+  }
+  function schedule(){
+    clear(); if(paused) return;
+    timer=setTimeout(function(){
+      var next=(idx+1)%COPIES.length;
+      if(reduce){ show(next,false); } else { erase(next); }
+    },HOLD_MS);
+  }
+  dots.forEach(function(d,k){ d.addEventListener('click',function(){ show(k,false); }); });
+  window.addEventListener('resize',function(){ reserve(); });
+  if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(reserve); } else { reserve(); }
+  reserve(); schedule();
+
+  /* ===== ポップアップ ===== */
+  var pop=document.getElementById('pop');
+  var copiesEl=document.getElementById('copies'), storyEl=document.getElementById('story');
+  COPIES.forEach(function(o,k){
+    var li=document.createElement('li');
+    li.innerHTML='<span class="n">0'+(k+1)+'</span><div><p class="c"></p><p class="s"></p></div>';
+    li.querySelector('.c').textContent=o.c.replace(/\n/g,''); li.querySelector('.s').textContent=o.s;
+    copiesEl.appendChild(li);
+  });
+  document.querySelectorAll('main section h2[id]').forEach(function(h){
+    var li=document.createElement('li'), a=document.createElement('a');
+    a.href='#'+h.closest('section').id; a.textContent=h.textContent; a.dataset.h=h.id;
+    li.appendChild(a); storyEl.appendChild(li);
+  });
+  var opener=null;
+  function openPop(e){ opener=e&&e.currentTarget; paused=true; clear(); put(COPIES[idx].c);
+    if(pop.showModal){ pop.showModal(); } else { pop.setAttribute('open',''); } }
+  function closePop(){ if(pop.close){ pop.close(); } else { pop.removeAttribute('open'); } }
+  pop.addEventListener('close',function(){ paused=false; schedule(); if(opener&&!pop.dataset.jump){ opener.focus(); } delete pop.dataset.jump; });
+  hc.addEventListener('click',openPop);
+  document.getElementById('openPop').addEventListener('click',openPop);
+  document.getElementById('popX').addEventListener('click',closePop);
+  pop.addEventListener('click',function(e){ if(e.target===pop) closePop(); });
+  storyEl.addEventListener('click',function(e){
+    var a=e.target.closest('a'); if(!a) return;
+    e.preventDefault(); pop.dataset.jump='1'; closePop();
+    var h=document.getElementById(a.dataset.h), sec=h.closest('section');
+    sec.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+    h.setAttribute('tabindex','-1'); setTimeout(function(){ h.focus({preventScroll:true}); },reduce?0:450);
+    history.replaceState(null,'',a.getAttribute('href'));
+  });
+
+  /* ===== ChatGPTでファクトチェック ===== */
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('.fc-btn'); if(!b) return;
+    var url=(document.querySelector('link[rel=canonical]')||{}).href||location.href;
+    var p='次のLPの記載が事実として正しいか、第三者の立場で確認してください。\n\n【対象ページ】'+url+'\n【セクション】'+b.dataset.fcSection+'\n【記載内容】\n'+b.dataset.fcClaim.split('／').join('\n')+'\n\n【確認してほしいこと】\n- 記載は一般的な事実・相場・公的情報と照らして正しいか\n- 誤り・誇張・古い情報があれば指摘する\n- 反対の見方や、読み手が注意すべき点\n- 確認できないことは「確認できない」と書き、推測で補わない';
+    window.open('https://chatgpt.com/?q='+encodeURIComponent(p),'_blank','noopener,noreferrer');
+    if(navigator.clipboard){ navigator.clipboard.writeText(p).catch(function(){}); }
+  });
+})();
+</script>
+</body>
+</html>
