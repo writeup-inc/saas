@@ -394,6 +394,60 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
 @media(max-width:420px){.logo{font-size:14px}.logo small{margin-left:6px;padding:2px 6px}.hn .btn-s{padding:0 12px}.hd .w{gap:8px}}
 @media(max-width:360px){.logo small{display:none}}
 @media(max-width:600px){.cmp tbody th{width:auto}}
+
+/* ===== 上部は写真と実画面で（スーパーマネージャー版で試作） ===== */
+.demo{margin:0}
+.demo-win{border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--ln);box-shadow:0 30px 60px -30px rgba(11,44,92,.45)}
+.demo-bar{display:flex;align-items:center;gap:6px;height:40px;padding:0 14px;background:var(--ac);color:#fff}
+.demo-bar i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.35)}
+.demo-bar span{margin-left:8px;font-size:14px;font-weight:700}
+.demo-bar b{margin-left:auto;padding:1px 8px;border-radius:999px;background:#fff;color:var(--ac);font-family:var(--ff-en);font-size:13px;letter-spacing:.08em}
+.demo-stage{position:relative;aspect-ratio:16/10;background:#eef1f5}
+.demo-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;opacity:0;transition:opacity .6s ease}
+.demo-stage img.on{opacity:1}
+.demo-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0 0;padding:0;list-style:none}
+.demo-steps button{position:relative;width:100%;min-height:52px;padding:6px 4px 8px;border:1px solid var(--ln);border-radius:8px;background:#fff;font:inherit;line-height:1.35;color:var(--g2);cursor:pointer;overflow:hidden}
+.demo-steps button b{display:block;font-size:14px;color:inherit}
+.demo-steps button span{display:block;font-size:13px}
+.demo-steps button[aria-selected="true"]{border-color:var(--ac);color:var(--ac)}
+.demo-steps button::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--ac)}
+.demo-steps button[aria-selected="true"]::after{animation:dprog var(--demo-ms,4000ms) linear forwards}
+.demo.paused .demo-steps button::after{animation-play-state:paused}
+@keyframes dprog{to{width:100%}}
+.demo-foot{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-top:12px}
+.demo-play{display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 18px;border:0;border-radius:999px;background:var(--bk);color:#fff;font:inherit;font-family:var(--ff-head);font-size:15px;font-weight:900;cursor:pointer}
+.demo-play i{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#fff;color:var(--bk);font-style:normal;font-size:11px}
+.demo figcaption{font-size:14px;line-height:1.6;color:var(--g2)}
+dialog.vid{position:fixed;width:min(1100px,calc(100% - 24px));padding:0;border:0;border-radius:14px;background:#000;overflow:visible}
+dialog.vid::backdrop{background:rgba(6,12,24,.78)}
+dialog.vid video{display:block;width:100%;height:auto;max-height:82dvh;border-radius:14px}
+.vid-x{position:absolute;top:-54px;right:0;width:44px;height:44px;border:0;border-radius:50%;background:#fff;color:var(--bk);font-size:20px;cursor:pointer}
+.band{position:relative;margin:34px 0 0;border-radius:16px;overflow:hidden;aspect-ratio:21/8;background:#0b1a33}
+.band img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.band figcaption{position:absolute;left:0;right:0;bottom:0;padding:56px clamp(20px,3vw,32px) clamp(18px,2.4vw,26px);background:linear-gradient(transparent,rgba(8,20,42,.82));color:#fff;font-family:var(--ff-head);font-size:clamp(1.15rem,2.4vw,1.7rem);font-weight:900;line-height:1.5}
+.scenes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:34px}
+.scene{margin:0;border:1px solid var(--ln);border-radius:14px;overflow:hidden;background:#fff}
+.scene img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.sc-b{padding:16px 18px 20px}
+.sc-b .en{font-size:13px;color:var(--ac)}
+.sc-b h3{margin:4px 0 6px;font-size:17px;font-weight:900;line-height:1.5;word-break:auto-phrase;line-break:strict}
+.sc-b p{font-size:15px;line-height:1.8;color:var(--g1);word-break:auto-phrase;line-break:strict}
+.mood{position:relative;display:grid;align-items:end;min-height:clamp(340px,44vw,560px);overflow:hidden;color:#fff;background:#0b1a33}
+.mood img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 35%}
+.mood::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,20,42,.86) 0,rgba(8,20,42,.45) 55%,rgba(8,20,42,.1) 100%)}
+.mood .w{position:relative;z-index:1;width:100%;padding-top:120px;padding-bottom:clamp(44px,6vw,76px)}
+.mood-c{font-family:var(--ff-head);font-size:clamp(1.55rem,4.2vw,2.8rem);font-weight:900;line-height:1.4;letter-spacing:-.01em;word-break:auto-phrase;line-break:strict}
+.mood-s{margin-top:12px;font-size:17px;color:#dfe6f0}
+@media(max-width:1180px){.scenes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){
+  .band{aspect-ratio:4/3}
+  .scenes{grid-template-columns:1fr}
+  .scene img{aspect-ratio:16/9}
+  .sc-b{padding:14px 16px 18px}
+  .demo-steps button{min-height:46px}
+  .demo-steps button span{display:none}
+}
+@media (prefers-reduced-motion:reduce){.demo-stage img{transition:none}.demo-steps button::after{animation:none}}
 </style>
 </head>
 <body>
@@ -431,12 +485,15 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
       <div class="cta"><a class="btn btn-p" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">OEMパートナーについて相談する →</a></div>
       <ul class="facts"><li>売価：<b>貴社が決める</b></li><li>管理画面：<b>貴社専用</b></li><li>お客様の窓口：<b>貴社</b></li></ul>
     </div>
-    <figure class="mock" style="margin:0" aria-label="貴社専用の管理画面のイメージ">
-      <div class="mock-top"><span class="mock-logo" aria-hidden="true">LOGO</span><p>貴社のサービス名<span>今日の商談</span></p></div>
-      <div class="mock-bd">
-        <p class="mock-h"><span>時間</span><span>状態</span></p>
-        <ul><li class="r4"><span class="tm">10:00</span><span>A社 事前ヒアリング</span><span class="st-b ok">回答あり</span></li><li class="r4"><span class="tm">13:00</span><span>B社 同席中・助言3件</span><span class="st-b ok">同席中</span></li><li class="r4"><span class="tm">15:30</span><span>C社 中締め</span><span class="st-b ok">次の3問</span></li><li class="r4"><span class="tm">17:00</span><span>D社 終了後のまとめ</span><span class="st-b wait">確認待ち</span></li></ul>
-        <figcaption class="mock-cap">画面イメージです。ロゴ・名称・項目は貴社向けに作ります。</figcaption>
+    <figure class="demo" id="demo" aria-label="スーパーマネージャーの実際の画面（デモ動画より）">
+      <div class="demo-win">
+        <div class="demo-bar"><i></i><i></i><i></i><span id="demoLbl">前日｜事前ヒアリング</span><b>REAL SCREEN</b></div>
+        <div class="demo-stage"><img class="on" src="assets/screen-1.webp" alt="前日にお客様へ届く、チャットの事前ヒアリング画面" width="836" height="522" decoding="async"><img src="assets/screen-2.webp" alt="Google Meetの横で、AIが営業担当へ助言している画面" width="836" height="522" decoding="async"><img src="assets/screen-3.webp" alt="商談の途中で論点を整理する、中締めの画面" width="836" height="522" decoding="async"><img src="assets/screen-4.webp" alt="商談のあとにお客様へ届く、フォローメールの画面" width="836" height="522" decoding="async"></div>
+      </div>
+      <ul class="demo-steps" role="tablist" aria-label="画面の切り替え"><li><button type="button" role="tab" aria-selected="true" data-i="0"><b>前日</b><span>事前ヒアリング</span></button></li><li><button type="button" role="tab" aria-selected="false" data-i="1"><b>商談中</b><span>同席して助言</span></button></li><li><button type="button" role="tab" aria-selected="false" data-i="2"><b>15分ごと</b><span>中締め</span></button></li><li><button type="button" role="tab" aria-selected="false" data-i="3"><b>終了後</b><span>フォローメール</span></button></li></ul>
+      <div class="demo-foot">
+        <button type="button" class="demo-play" id="playDemo" aria-haspopup="dialog"><i>▶</i>デモ動画を見る（約26分）</button>
+        <figcaption>実際の画面です（デモ動画より）。貴社版は名称・ロゴを貴社向けに作ります。</figcaption>
       </div>
     </figure>
   </div>
@@ -444,7 +501,8 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
 <section class="sec" id="s1" aria-labelledby="h1s">
   <div class="w">
     <div class="sh"><p class="shl"><span class="no">01</span><span class="en">For partners</span></p><h2 id="h1s">営業の成果を支える会社なら、<br>研修や導入の次に提案できます。</h2></div>
-    <p class="body">研修で教えた型が、現場で続かない。商談の記録は残っても、次の商談に活きない。営業の支援を仕事にしている会社なら、既存のお客様への、もう1本の提案になります。</p><div class="fit">
+    <p class="body">研修で教えた型が、現場で続かない。商談の記録は残っても、次の商談に活きない。営業の支援を仕事にしている会社なら、既存のお客様への、もう1本の提案になります。</p><figure class="band"><img src="assets/scene-training.webp" alt="研修の会場で、講師の話を聞く受講者" width="1800" height="1012" loading="lazy" decoding="async"><figcaption>研修で教えた型が、<br>毎回の商談で生きる。</figcaption></figure>
+    <div class="fit">
       <div><h3>向いている会社</h3><ul><li><b>営業研修・営業コンサルティングの会社</b><span>研修で教えた確認項目を、毎回の商談で助言として出せます</span></li><li><b>SFA・CRMの導入を支援している会社</b><span>入力の手前の、商談そのものを支える商材が増えます</span></li><li><b>営業代行の会社</b><span>自社の営業に使いながら、同じ仕組みを販売先へも出せます</span></li></ul></div>
       <div class="no-fit"><h3>向いていない会社</h3><ul><li><b>商談の録画・会話の扱いを、お客様と取り決められない会社</b><span>録画と会話の記録を使う仕組みです</span></li><li><b>確認なしで、お客様へ自動送信することを必須にしたい会社</b><span>終了後のまとめは、確認してから送る形を勧めています</span></li></ul></div>
     </div>
@@ -453,9 +511,11 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
 <section class="sec tint" id="s2" aria-labelledby="h2s">
   <div class="w">
     <div class="sh"><p class="shl"><span class="no">02</span><span class="en">What it does</span></p><h2 id="h2s">商談の前日から終了後まで、<br>4つの時点で支えます。</h2></div>
-    <p class="body">営業担当の代わりに商談をするサービスではありません。<span class="mk">前日はお客様から話を聞き、商談中は営業担当に助言し、終了後はまとめを届けます。</span>使う機能は、1つからでも選べます。</p><div class="flow" role="table" aria-label="時点ごとの働きの例"><div class="flow-h" role="row"><span role="columnheader">時点</span><span aria-hidden="true">→</span><span role="columnheader">誰に向けて</span><span aria-hidden="true">→</span><span role="columnheader">何をする</span></div><div class="flow-r" role="row"><span class="k" role="cell">商談の前日</span><span class="ar" aria-hidden="true">→</span><span class="who ai" role="cell"><i>AI</i>お客様へ</span><span class="ar" aria-hidden="true">→</span><span class="nxt" role="cell">事前フォローAIが、チャットで事前ヒアリングをします。初回の商談から、課題の話に入れるようにします</span></div><div class="flow-r" role="row"><span class="k" role="cell">商談中</span><span class="ar" aria-hidden="true">→</span><span class="who ai" role="cell"><i>AI</i>営業担当へ</span><span class="ar" aria-hidden="true">→</span><span class="nxt" role="cell">営業部長が、事例、数字の根拠、値引きへの備えなどを画面で助言します。お客様にも見せる表示があります。Google Meetに対応し、Zoomは対応予定です</span></div><div class="flow-r" role="row"><span class="k" role="cell">15分ごとの区切り</span><span class="ar" aria-hidden="true">→</span><span class="who ai" role="cell"><i>AI</i>お客様と営業担当へ</span><span class="ar" aria-hidden="true">→</span><span class="nxt" role="cell">中締めAIが「仮説・いまの理解・次に確かめる3つの質問」を出し、認識を合わせ直します</span></div><div class="flow-r" role="row"><span class="k" role="cell">商談の終了後</span><span class="ar" aria-hidden="true">→</span><span class="who hu" role="cell"><i>人</i>担当者が確認して送る</span><span class="ar" aria-hidden="true">→</span><span class="nxt" role="cell">勝手にフォローAIが、まとめと次の提案の文面を作ります。OEMでは、担当者が確認してから送る形に作り替えます</span></div></div>
+    <p class="body">営業担当の代わりに商談をするサービスではありません。<span class="mk">前日はお客様から話を聞き、商談中は営業担当に助言し、終了後はまとめを届けます。</span>使う機能は、1つからでも選べます。</p><div class="scenes"><figure class="scene"><img src="assets/scene-before.webp" alt="スマートフォンでチャットに答える人" width="900" height="600" loading="lazy" decoding="async"><figcaption class="sc-b"><span class="en">Day before</span><h3>前日、先に話を聞いておく</h3><p>事前フォローAIが、チャットでお客様に事前ヒアリングをします。</p></figcaption></figure><figure class="scene"><img src="assets/scene-during.webp" alt="ノートパソコンを囲んで商談する3人" width="900" height="600" loading="lazy" decoding="async"><figcaption class="sc-b"><span class="en">During</span><h3>商談中、となりで助言する</h3><p>AIの「営業部長」が、事例や数字の根拠を画面で助言します。</p></figcaption></figure><figure class="scene"><img src="assets/scene-midway.webp" alt="1台のノートパソコンを囲んで話し合う3人" width="900" height="600" loading="lazy" decoding="async"><figcaption class="sc-b"><span class="en">Every 15 min</span><h3>15分ごとに、論点を整える</h3><p>中締めで、仮説・いまの理解・次に確かめる3問を出します。</p></figcaption></figure><figure class="scene"><img src="assets/scene-after.webp" alt="夜のデスクでノートパソコンに向かう人" width="900" height="600" loading="lazy" decoding="async"><figcaption class="sc-b"><span class="en">After</span><h3>終了後、確認してから送る</h3><p>まとめとフォローメールを作り、担当者が確認してから送ります。</p></figcaption></figure></div>
+    <p class="note">商談中の助言はGoogle Meetに対応し、Zoomは対応予定です。お客様にも見せられる表示があります。使う機能は1つからでも選べます。</p>
   </div>
 </section>
+<section class="mood" aria-label="導入後のイメージ"><img src="assets/scene-happy.webp" alt="ノートパソコンを見ながら笑顔で話す2人" width="1800" height="1012" loading="lazy" decoding="async"><div class="w"><p class="mood-c">営業担当のとなりに、<br>いつも上司がいる。</p><p class="mood-s">その状態を、貴社のサービスとして。</p></div></section>
 <section class="sec" id="s3" aria-labelledby="h3s">
   <div class="w">
     <div class="sh"><p class="shl"><span class="no">03</span><span class="en">Terms</span></p><h2 id="h3s">売価は貴社が決め、<br>お客様の窓口も貴社が持ちます。</h2></div>
@@ -541,6 +601,8 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
     <p class="pf">掲載内容は2026年9月23日時点のものです。<span class="tbd">調整中</span>の項目は、決まり次第このページを更新します。</p>
   </div>
 </footer>
+
+<dialog class="vid" id="vid" aria-label="スーパーマネージャーのデモ動画"><button type="button" class="vid-x" id="vidX" aria-label="閉じる">×</button><video controls playsinline preload="none" poster="assets/demo-poster.webp" data-src="https://zlxekznqdbllspnbgovg.supabase.co/storage/v1/object/public/demo-videos/demo/video-406066e2-2c88-489a-a4e6-295fc9d652ed.mp4"></video></dialog>
 
 <!-- ポップアップ：3つのコピーと、見出しの通読 -->
 <dialog class="pop" id="pop" aria-labelledby="popT">
@@ -640,6 +702,27 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
     window.open('https://chatgpt.com/?q='+encodeURIComponent(p),'_blank','noopener,noreferrer');
     if(navigator.clipboard){ navigator.clipboard.writeText(p).catch(function(){}); }
   });
+})();
+</script>
+<script>
+(function(){
+  var demo=document.getElementById('demo'); if(!demo) return;
+  var imgs=[].slice.call(demo.querySelectorAll('.demo-stage img')), btns=[].slice.call(demo.querySelectorAll('.demo-steps button')), lbl=document.getElementById('demoLbl');
+  var MS=4000, i=0, t=null, reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  demo.style.setProperty('--demo-ms',MS+'ms');
+  function show(n){ i=n; imgs.forEach(function(im,k){im.classList.toggle('on',k===n);}); btns.forEach(function(b,k){b.setAttribute('aria-selected',k===n?'true':'false'); if(k===n){b.style.animation='none'; void b.offsetWidth; b.style.animation='';}});
+    lbl.textContent=btns[n].querySelector('b').textContent+'｜'+btns[n].querySelector('span').textContent; }
+  function tick(){ clearTimeout(t); if(reduce) return; t=setTimeout(function(){ show((i+1)%imgs.length); tick(); },MS); }
+  btns.forEach(function(b,k){ b.addEventListener('click',function(){ show(k); tick(); }); });
+  demo.addEventListener('mouseenter',function(){ clearTimeout(t); demo.classList.add('paused'); });
+  demo.addEventListener('mouseleave',function(){ demo.classList.remove('paused'); tick(); });
+  tick();
+  var dlg=document.getElementById('vid'), v=dlg.querySelector('video');
+  document.getElementById('playDemo').addEventListener('click',function(){ if(!v.getAttribute('src')) v.setAttribute('src',v.dataset.src); dlg.showModal?dlg.showModal():dlg.setAttribute('open',''); v.play().catch(function(){}); });
+  function close(){ v.pause(); dlg.close?dlg.close():dlg.removeAttribute('open'); }
+  document.getElementById('vidX').addEventListener('click',close);
+  dlg.addEventListener('click',function(e){ if(e.target===dlg) close(); });
+  dlg.addEventListener('close',function(){ v.pause(); });
 })();
 </script>
 </body>
