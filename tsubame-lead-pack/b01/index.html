@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>つばめリード｜OEM提供のご案内（パートナー向け）</title>
+<link rel="canonical" href="https://writeup-inc.github.io/saas/tsubame-lead-pack/b01/">
+<meta name="description" content="つばめリードを自社のお客様に販売する会社向けのご案内です。弊社と貴社の分担、決まっていること・決まっていないこと、売ってはいけない相手をまとめています。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== lp-base.css（改行制御・最小文字サイズ・固定CTAの逃げは消さない） ===== */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] { word-break: normal; }
+}
+.nobr { white-space: nowrap; }
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+
+/* ===== トークン ===== */
+:root {
+  --ink: #16213a;
+  --ink-2: #3c4760;
+  --mute: #6a7389;
+  --line: #dfe3ec;
+  --bg: #ffffff;
+  --bg-2: #f4f6fa;
+  --navy: #14254a;
+  --navy-2: #1d3566;
+  --on-navy: #ffffff;
+  --on-navy-2: #c6d0e6;
+  --accent: #c8412c;       /* ツバメの喉の朱 */
+  --accent-soft: #fbece8;
+  --ok: #1f8a5b;
+  --card: #ffffff;
+  --shadow: 0 1px 2px rgba(20,37,74,.06), 0 8px 28px rgba(20,37,74,.08);
+  --radius: 14px;
+  --wrap: 1120px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #eef1f7; --ink-2: #c9d0de; --mute: #97a0b4; --line: #2c3650;
+    --bg: #0e1526; --bg-2: #131c31; --card: #172139;
+    --navy: #0a1122; --navy-2: #16223d; --on-navy-2: #aab6d0;
+    --accent: #ff7a63; --accent-soft: #3a1f1c; --ok: #4cc38a;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"] {
+  --ink: #eef1f7; --ink-2: #c9d0de; --mute: #97a0b4; --line: #2c3650;
+  --bg: #0e1526; --bg-2: #131c31; --card: #172139;
+  --navy: #0a1122; --navy-2: #16223d; --on-navy-2: #aab6d0;
+  --accent: #ff7a63; --accent-soft: #3a1f1c; --ok: #4cc38a;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.35);
+}
+
+/* ===== 基本 ===== */
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: "Noto Sans JP", system-ui, -apple-system, "Hiragino Sans", sans-serif;
+  -webkit-font-smoothing: antialiased; font-feature-settings: "palt";
+}
+a { color: inherit; }
+.num { font-family: "Inter", "Noto Sans JP", sans-serif; font-feature-settings: "tnum"; letter-spacing: -.01em; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+@media (max-width: 600px) { .wrap { padding: 0 16px; } }
+section { padding: 104px 0; }
+@media (max-width: 760px) { section { padding: 72px 0; } }
+.sec-alt { background: var(--bg-2); }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font: 700 12px/1 "Inter", sans-serif; letter-spacing: .16em; color: var(--accent);
+  margin: 0 0 18px;
+}
+.eyebrow::before { content: ""; width: 22px; height: 2px; background: currentColor; }
+h2 { margin: 0 0 20px; font-weight: 900; letter-spacing: .01em; }
+h3 { margin: 0 0 8px; font-size: 1.12rem; line-height: 1.5; font-weight: 700; }
+p { margin: 0 0 1em; }
+.sec-lead { color: var(--ink-2); max-width: 760px; margin-bottom: 48px; }
+.note { color: var(--mute); }
+
+/* ===== ボタン ===== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 56px; padding: 0 30px; border-radius: 999px;
+  background: var(--accent); color: #fff; text-decoration: none;
+  font-weight: 700; font-size: 1.02rem; letter-spacing: .04em;
+  box-shadow: 0 6px 20px rgba(200,65,44,.28);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 10px 26px rgba(200,65,44,.34); }
+.btn svg { width: 18px; height: 18px; }
+.btn-sm { min-height: 44px; padding: 0 20px; font-size: .9rem; box-shadow: none; }
+
+/* ===== ヘッダー ===== */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(1.4) blur(10px); -webkit-backdrop-filter: saturate(1.4) blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand svg { width: 34px; height: 34px; color: var(--ink); }
+.brand-name { font-weight: 900; font-size: 1.12rem; letter-spacing: .06em; }
+.brand-sub { display: block; font: 700 10px/1 "Inter", sans-serif; letter-spacing: .22em; color: var(--mute); margin-top: 3px; }
+.nav { display: flex; gap: 26px; font-size: .9rem; color: var(--ink-2); }
+.nav a { text-decoration: none; }
+.nav a:hover { color: var(--accent); }
+@media (max-width: 900px) { .nav { display: none; } }
+
+/* ===== ヒーロー ===== */
+.hero { padding: 72px 0 0; background:
+  radial-gradient(1200px 500px at 85% -10%, color-mix(in srgb, var(--navy-2) 14%, transparent), transparent 70%), var(--bg); }
+.hero-grid { display: grid; grid-template-columns: 1fr 1.08fr; gap: 56px; align-items: center; }
+@media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; gap: 40px; } .hero { padding-top: 44px; } }
+.hero-tag {
+  display: inline-block; font-size: .82rem; font-weight: 700; color: var(--ink-2);
+  border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; margin-bottom: 22px; background: var(--card);
+}
+.hero h1 { margin: 0 0 24px; font-weight: 900; letter-spacing: .01em; }
+.hero h1 .hl { color: var(--accent); }
+.hero .hero-lead { font-size: 1.05rem; color: var(--ink-2); margin-bottom: 14px; }
+.hero .promise {
+  border-left: 3px solid var(--accent); padding: 4px 0 4px 16px; margin: 22px 0 30px;
+  font-weight: 700; color: var(--ink); line-height: 1.75;
+}
+.cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; }
+.cta-sub { font-size: .86rem; color: var(--mute); margin: 12px 0 0; }
+
+.shot {
+  position: relative; border-radius: 16px; overflow: hidden; background: var(--card);
+  border: 1px solid var(--line); box-shadow: var(--shadow);
+}
+.shot-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; border-bottom: 1px solid var(--line); background: var(--bg-2); }
+.shot-bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--line); display: block; }
+.shot-bar span { margin-left: 8px; font-size: 12px; color: var(--mute); }
+.shot img { display: block; width: 100%; }
+.shot-rec {
+  position: absolute; top: 7px; right: 12px; display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(20,37,74,.9); color: #fff; font: 700 12px/1 "Inter", sans-serif; letter-spacing: .08em;
+  padding: 7px 10px; border-radius: 6px;
+}
+.shot-rec::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #ff5a45; animation: blink 1.4s infinite; }
+@keyframes blink { 50% { opacity: .25; } }
+figcaption { margin-top: 10px; color: var(--mute); }
+
+.facts { margin-top: 64px; border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(4, 1fr); }
+.fact { padding: 26px 20px; border-right: 1px solid var(--line); }
+.fact:last-child { border-right: 0; }
+.fact b { display: block; font-size: 2.1rem; line-height: 1.1; font-weight: 800; }
+.fact b small { font-size: .95rem; font-weight: 700; margin-left: 2px; }
+.fact span { display: block; margin-top: 6px; font-size: .88rem; color: var(--ink-2); }
+.fact.is-accent b { color: var(--accent); }
+@media (max-width: 760px) {
+  .facts { grid-template-columns: repeat(2, 1fr); margin-top: 44px; }
+  .fact:nth-child(2) { border-right: 0; }
+  .fact:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .fact { padding: 20px 14px; }
+  .fact b { font-size: 1.75rem; }
+}
+
+/* ===== 1. 問題 ===== */
+.problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+@media (max-width: 860px) { .problem-grid { grid-template-columns: 1fr; gap: 28px; } }
+.report {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden;
+}
+.report-head { padding: 14px 20px; border-bottom: 1px solid var(--line); font-size: .86rem; color: var(--mute); display: flex; justify-content: space-between; gap: 8px; }
+.report-body { padding: 26px 20px 8px; }
+.report-big { font-size: 2.6rem; font-weight: 800; line-height: 1; }
+.report-big small { font-size: 1rem; margin-left: 4px; }
+.report-q { list-style: none; margin: 22px 0 0; padding: 0; border-top: 1px dashed var(--line); }
+.report-q li { display: flex; gap: 12px; align-items: baseline; padding: 14px 0; border-bottom: 1px dashed var(--line); color: var(--ink-2); }
+.report-q li:last-child { border-bottom: 0; }
+.report-q li::before { content: "?"; flex: none; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--accent-soft); color: var(--accent); font: 800 12px/1 "Inter", sans-serif; transform: translateY(2px); }
+
+/* ===== 2. 仕組み ===== */
+.flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: 0 0 48px; padding: 0; list-style: none; counter-reset: s; }
+.flow li { position: relative; padding: 22px 18px 22px 18px; background: var(--card); border: 1px solid var(--line); margin-left: -1px; }
+.flow li:first-child { border-radius: var(--radius) 0 0 var(--radius); margin-left: 0; }
+.flow li:last-child { border-radius: 0 var(--radius) var(--radius) 0; }
+.flow li b { display: block; font: 800 12px/1 "Inter", sans-serif; letter-spacing: .14em; color: var(--accent); margin-bottom: 8px; }
+.flow li strong { display: block; font-size: 1.04rem; }
+.flow li span { display: block; font-size: .86rem; color: var(--mute); margin-top: 4px; }
+.flow li:not(:last-child)::after {
+  content: ""; position: absolute; right: -9px; top: 50%; width: 16px; height: 16px; z-index: 1;
+  background: var(--card); border-top: 1px solid var(--line); border-right: 1px solid var(--line);
+  transform: translateY(-50%) rotate(45deg);
+}
+@media (max-width: 860px) {
+  .flow { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .flow li, .flow li:first-child, .flow li:last-child { border-radius: 12px; margin-left: 0; }
+  .flow li::after { display: none; }
+}
+.cards3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 860px) { .cards3 { grid-template-columns: 1fr; } }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 24px; }
+.card p { color: var(--ink-2); margin: 0; font-size: .96rem; }
+.ico { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--bg-2); color: var(--navy-2); margin-bottom: 16px; }
+.sec-alt .ico { background: var(--bg); }
+.ico svg { width: 22px; height: 22px; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ico { color: var(--on-navy-2); } }
+:root[data-theme="dark"] .ico { color: var(--on-navy-2); }
+
+/* ===== 3. 証跡 ===== */
+.evidence { display: grid; grid-template-columns: 1.35fr 1fr; gap: 48px; align-items: center; }
+@media (max-width: 960px) { .evidence { grid-template-columns: 1fr; gap: 32px; } }
+.ev-list { list-style: none; margin: 0; padding: 0; }
+.ev-list li { display: grid; grid-template-columns: 40px 1fr; gap: 14px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+.ev-list li:first-child { padding-top: 0; }
+.ev-list li:last-child { border-bottom: 0; }
+.ev-n { font: 800 1.05rem/1 "Inter", sans-serif; color: var(--accent); padding-top: 4px; }
+.ev-list p { margin: 0; color: var(--ink-2); font-size: .96rem; }
+.why-box { margin-top: 40px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: start; }
+.why-box .ico { margin: 0; background: var(--accent-soft); color: var(--accent); }
+.why-box p { margin: 0; color: var(--ink-2); }
+.why-box strong { color: var(--ink); }
+
+/* ===== 4. 料金 ===== */
+.price-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 40px; align-items: start; }
+@media (max-width: 960px) { .price-grid { grid-template-columns: 1fr; } }
+.price-card { background: var(--navy); color: var(--on-navy); border-radius: 18px; padding: 36px 32px; position: relative; overflow: hidden; }
+.price-card .label { font-size: .9rem; color: var(--on-navy-2); }
+.price-main { display: flex; align-items: baseline; gap: 6px; margin: 6px 0 4px; }
+.price-main b { font-size: clamp(4rem, 12vw, 5.6rem); line-height: 1; font-weight: 800; }
+.price-main span { font-size: 1.3rem; font-weight: 700; }
+.price-card .per { color: var(--on-navy-2); margin-bottom: 26px; }
+.price-rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(255,255,255,.16); }
+.price-rows li { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.16); font-size: .96rem; }
+.price-rows li span { color: var(--on-navy-2); }
+.price-rows li b { font-weight: 700; text-align: right; }
+.price-card .note { color: var(--on-navy-2); margin: 18px 0 0; }
+.price-card .swallow-bg { position: absolute; right: 16px; top: 16px; width: 140px; opacity: .08; color: #fff; }
+
+.cmp-wrap { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.cmp-head { padding: 18px 20px 4px; }
+.cmp-head h3 { margin: 0; }
+.cmp-head p { margin: 4px 0 0; font-size: .86rem; color: var(--mute); }
+.cmp { width: 100%; border-collapse: collapse; font-size: .92rem; }
+.cmp th, .cmp td { padding: 13px 14px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+.cmp thead th { white-space: nowrap; font-size: .8rem; color: var(--mute); font-weight: 700; background: var(--bg-2); }
+.cmp tbody th { font-weight: 700; white-space: nowrap; }
+.cmp tr.us { background: var(--accent-soft); }
+.cmp tr.us th, .cmp tr.us td { font-weight: 700; }
+.cmp tr.us td.hl { color: var(--accent); }
+.cmp-foot { padding: 14px 20px 18px; }
+.cmp-foot p { margin: 0; }
+@media (max-width: 600px) {
+  .cmp thead { display: none; }
+  .cmp, .cmp tbody, .cmp tr, .cmp th, .cmp td { display: block; width: 100%; }
+  .cmp tr { padding: 12px 20px; border-bottom: 1px solid var(--line); }
+  .cmp th, .cmp td { border: 0; padding: 3px 0; }
+  .cmp tbody th { font-size: 1rem; margin-bottom: 4px; }
+  .cmp td { display: grid; grid-template-columns: 7.5em 1fr; gap: 8px; }
+  .cmp td::before { content: attr(data-l); color: var(--mute); font-weight: 400; font-size: .84rem; }
+}
+@media (max-width: 600px) {
+  footer li a, .series-list a { display: inline-flex; align-items: center; min-height: 44px; }
+  footer li { padding: 0; }
+}
+.problem-grid h2, .series h2 { font-size: clamp(1.3rem, 2.6vw, 1.95rem); }
+
+/* ===== 5. 正直 ===== */
+.honest { background: var(--navy); color: var(--on-navy); }
+.honest .eyebrow { color: #ff9a86; }
+.honest .sec-lead { color: var(--on-navy-2); }
+.sim { display: grid; grid-template-columns: 1.1fr 1fr; gap: 0; border-radius: 18px; overflow: hidden; background: var(--navy-2); border: 1px solid rgba(255,255,255,.12); }
+@media (max-width: 860px) { .sim { grid-template-columns: 1fr; } }
+.sim-in { padding: 32px; }
+.sim-in label { display: block; font-size: .92rem; color: var(--on-navy-2); margin-bottom: 8px; }
+.sim-val { font-size: 2.6rem; font-weight: 800; line-height: 1.1; }
+.sim-val small { font-size: 1rem; margin-left: 4px; font-weight: 700; }
+input[type=range] { width: 100%; margin: 22px 0 6px; accent-color: #ff7a63; height: 28px; }
+.sim-scale { display: flex; justify-content: space-between; font-size: 12px; color: var(--on-navy-2); }
+.sim-out { padding: 32px; background: rgba(255,255,255,.05); display: grid; gap: 22px; align-content: center; }
+.sim-out div span { display: block; font-size: .88rem; color: var(--on-navy-2); }
+.sim-out div b { font-size: 2rem; font-weight: 800; line-height: 1.2; }
+.sim-out div b small { font-size: .95rem; margin-left: 3px; }
+.sim-out .assume { font-size: 12px; color: var(--on-navy-2); }
+.sim-out .assume b { font-size: 12px; }
+.honest-points { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 40px; }
+@media (max-width: 860px) { .honest-points { grid-template-columns: 1fr; } }
+.honest-points div { border-top: 2px solid #ff7a63; padding-top: 16px; }
+.honest-points h3 { color: #fff; }
+.honest-points p { color: var(--on-navy-2); margin: 0; font-size: .95rem; }
+
+/* ===== 7. 向き不向き ===== */
+.fit { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 760px) { .fit { grid-template-columns: 1fr; } }
+.fit-col { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 26px; }
+.fit-title { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.fit-title h3 { margin: 0; }
+.fit-title i { font-style: normal; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font: 800 14px/1 "Inter", sans-serif; }
+.fit-col.yes .fit-title i { background: color-mix(in srgb, var(--ok) 16%, transparent); color: var(--ok); }
+.fit-col.no .fit-title i { background: var(--accent-soft); color: var(--accent); }
+.fit-col ul { margin: 0; padding: 0; list-style: none; }
+.fit-col li { padding: 12px 0 12px 22px; border-top: 1px solid var(--line); position: relative; color: var(--ink-2); }
+.fit-col li::before { content: ""; position: absolute; left: 4px; top: 22px; width: 7px; height: 7px; border-radius: 50%; background: var(--mute); }
+.fit-col.yes li::before { background: var(--ok); }
+.fit-col.no li::before { background: var(--accent); }
+.fit-after { margin-top: 28px; color: var(--ink-2); }
+
+/* ===== 8. シリーズ ===== */
+.series { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+@media (max-width: 960px) { .series { grid-template-columns: 1fr; gap: 28px; } }
+.series-map { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 16px; }
+.series-map svg { display: block; width: 100%; height: auto; }
+.series-map .t { fill: var(--ink); font-family: "Noto Sans JP", sans-serif; }
+.series-map .s { fill: var(--mute); font-family: "Noto Sans JP", sans-serif; }
+.series-map .box { fill: var(--bg-2); stroke: var(--line); }
+.series-map .box-us { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 2; }
+.series-map .ln { stroke: var(--mute); stroke-width: 1.5; fill: none; }
+.series-map .dot-face { fill: var(--accent); opacity: .55; }
+.series-map .dot-pt { fill: var(--navy-2); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .series-map .dot-pt { fill: #9fb4e6; } }
+:root[data-theme="dark"] .series-map .dot-pt { fill: #9fb4e6; }
+.series-list { list-style: none; margin: 0; padding: 0; }
+.series-list li { padding: 18px 0; border-bottom: 1px solid var(--line); }
+.series-list li:first-child { padding-top: 0; }
+.series-list .role { font: 700 12px/1 "Inter", sans-serif; letter-spacing: .12em; color: var(--mute); display: block; margin-bottom: 6px; }
+.series-list p { margin: 4px 0 0; color: var(--ink-2); font-size: .95rem; }
+.series-list a { font-weight: 700; text-decoration-color: var(--line); text-underline-offset: 4px; }
+.series-list a:hover { color: var(--accent); }
+.series-list .us-tag { font-size: 12px; font-weight: 700; color: var(--accent); margin-left: 8px; }
+
+/* ===== 9. 締め ===== */
+.close-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+@media (max-width: 960px) { .close-grid { grid-template-columns: 1fr; gap: 32px; } }
+.checks { list-style: none; margin: 0; padding: 0; counter-reset: c; }
+.checks li { counter-increment: c; display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.checks li:first-child { padding-top: 0; }
+.checks li::before { content: "0" counter(c); font: 800 1.1rem/1.5 "Inter", sans-serif; color: var(--accent); }
+.checks h3 { margin: 0 0 2px; font-size: 1.04rem; }
+.checks p { margin: 0; color: var(--ink-2); font-size: .94rem; }
+.close-box { background: var(--navy); color: var(--on-navy); border-radius: 18px; padding: 36px 32px; }
+.close-box p { color: var(--on-navy-2); }
+.close-box .big { color: #fff; font-weight: 700; font-size: 1.1rem; line-height: 1.7; margin-bottom: 18px; }
+.close-box .btn { width: 100%; margin-top: 10px; }
+.close-box .cta-sub { color: var(--on-navy-2); text-align: center; }
+
+/* ===== フッター ===== */
+footer { background: var(--bg-2); border-top: 1px solid var(--line); padding: 48px 0 40px; font-size: .9rem; color: var(--ink-2); }
+.foot-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 32px; }
+@media (max-width: 760px) { .foot-grid { grid-template-columns: 1fr; gap: 24px; } }
+footer h4 { margin: 0 0 10px; font: 700 12px/1 "Inter", sans-serif; letter-spacing: .16em; color: var(--mute); }
+footer ul { list-style: none; margin: 0; padding: 0; }
+footer li { padding: 6px 0; }
+footer a { text-decoration: none; }
+footer a:hover { color: var(--accent); }
+.copy { margin-top: 36px; font-size: 12px; color: var(--mute); }
+
+/* ===== 飛ぶツバメ（控えめ・1回だけ） ===== */
+.fly { opacity: 0; position: absolute; top: 90px; left: 4%; width: 44px; color: var(--ink); opacity: .7; pointer-events: none;
+  animation: fly 7s cubic-bezier(.45,.05,.4,1) 1.2s 1 forwards; }
+@keyframes fly {
+  0% { transform: translate(0,0) rotate(-6deg); opacity: 0; }
+  10% { opacity: .7; }
+  70% { transform: translate(56vw,-30px) rotate(4deg); opacity: .7; }
+  100% { transform: translate(78vw,-60px) rotate(-4deg); opacity: 0; }
+}
+@media (max-width: 600px) { .fly { display: none; } }
+@media (prefers-reduced-motion: reduce) { .fly, .shot-rec::before { animation: none; } .fly { display: none; } }
+.hero { position: relative; overflow: hidden; }
+
+
+/* ===== B-01 追加 ===== */
+.brand-name, .btn-sm { white-space: nowrap; }
+@media (max-width: 480px) { .hide-s { display: none; } }
+.hero h1 { font-size: clamp(1.55rem, 4.4vw, 2.7rem); }
+@media (max-width: 1100px) { .hero-grid { grid-template-columns: 1fr; gap: 40px; } }
+.btn-ghost {
+  background: transparent; color: var(--ink); border: 1.5px solid var(--line); box-shadow: none;
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); box-shadow: none; }
+.tbd {
+  display: inline-block; font-weight: 700; color: var(--accent);
+  background: var(--accent-soft); border-radius: 6px; padding: 0 6px; font-size: .92em; line-height: 1.7;
+}
+.honest .tbd { background: rgba(255,122,99,.16); color: #ffb3a5; }
+
+/* 責任分界の表 */
+.resp-legend { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 0 0 18px; font-size: .92rem; color: var(--ink-2); }
+.resp-wrap { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.resp { width: 100%; border-collapse: collapse; font-size: .95rem; }
+.resp th, .resp td { padding: 15px 16px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+.resp thead th { font-size: .8rem; color: var(--mute); font-weight: 700; background: var(--bg-2); white-space: nowrap; }
+.resp tbody th { font-weight: 700; width: 34%; }
+.resp td.who { white-space: nowrap; font-weight: 700; }
+.resp td.memo { color: var(--ink-2); font-size: .9rem; }
+.resp tr.open { background: color-mix(in srgb, var(--accent-soft) 55%, transparent); }
+.resp tr.sep th { background: var(--bg-2); font-size: .82rem; color: var(--mute); padding: 10px 16px; width: auto; }
+.st { display: inline-block; font-size: .8rem; font-weight: 700; border-radius: 999px; padding: 2px 10px; white-space: nowrap; }
+.st.ok { color: var(--ok); background: color-mix(in srgb, var(--ok) 14%, transparent); }
+.st.ng { color: var(--accent); background: var(--accent-soft); }
+@media (max-width: 700px) {
+  .resp thead { display: none; }
+  .resp, .resp tbody, .resp tr, .resp th, .resp td { display: block; width: 100%; }
+  .resp tr { padding: 14px 18px; border-bottom: 1px solid var(--line); }
+  .resp th, .resp td { border: 0; padding: 3px 0; }
+  .resp tbody th { width: 100%; font-size: 1rem; margin-bottom: 4px; }
+  .resp td { display: grid; grid-template-columns: 4.5em 1fr; gap: 8px; }
+  .resp td::before { content: attr(data-l); color: var(--mute); font-weight: 400; font-size: .84rem; }
+  .resp td.who { white-space: normal; }
+  .resp tr.sep { padding: 8px 18px; }
+  .resp tr.sep th { padding: 0; background: none; }
+}
+
+/* 式 */
+.formula {
+  background: var(--navy); color: var(--on-navy); border-radius: 18px; padding: 32px 28px; margin-bottom: 36px;
+}
+.formula .label { font-size: .9rem; color: var(--on-navy-2); margin-bottom: 14px; }
+.eq { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 14px; font-weight: 700; font-size: 1.15rem; }
+.eq .term { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); border-radius: 12px; padding: 12px 16px; line-height: 1.4; }
+.eq .term small { display: block; font-size: 12px; font-weight: 500; color: var(--on-navy-2); margin-top: 4px; }
+.eq .term.q small { color: #ffb3a5; }
+.eq .op { font: 800 1.4rem/1 "Inter", sans-serif; color: var(--on-navy-2); }
+.formula .note { color: var(--on-navy-2); margin: 18px 0 0; }
+.rev-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 860px) { .rev-grid { grid-template-columns: 1fr; } }
+.mini-tbl { width: 100%; border-collapse: collapse; font-size: .92rem; margin-top: 12px; }
+.mini-tbl th, .mini-tbl td { padding: 9px 0; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.mini-tbl th { font-weight: 700; width: 5em; }
+.mini-tbl td { color: var(--ink-2); }
+
+/* 売ってはいけない相手 */
+.ng-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; counter-reset: ng; }
+@media (max-width: 860px) { .ng-list { grid-template-columns: 1fr; } }
+.ng-list li { counter-increment: ng; background: var(--card); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 10px; padding: 16px 18px 16px 56px; position: relative; }
+.ng-list li::before { content: counter(ng); position: absolute; left: 18px; top: 16px; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); font: 800 13px/1 "Inter", sans-serif; }
+.ng-list strong { display: block; font-size: 1rem; }
+.ng-list span { display: block; color: var(--ink-2); font-size: .9rem; margin-top: 2px; }
+.strong-box { margin-top: 28px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: start; }
+.strong-box .ico { margin: 0; background: color-mix(in srgb, var(--ok) 14%, transparent); color: var(--ok); }
+.strong-box p { margin: 0; color: var(--ink-2); }
+.strong-box strong { color: var(--ink); }
+
+/* 切り出し */
+.say { font-weight: 700; font-size: 1.12rem; line-height: 1.6; margin: 0 0 10px; color: var(--ink); }
+.say::before { content: "「"; } .say::after { content: "」"; }
+
+/* 工数 */
+.work { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 960px) { .work { grid-template-columns: 1fr; } }
+.work .fit-col h3 { margin: 0; }
+.work .tagline { font-size: .86rem; color: var(--mute); margin: 4px 0 14px; }
+.fit-col.mid .fit-title i { background: var(--accent-soft); color: var(--accent); }
+.fit-col.mid li::before { background: var(--accent); }
+.fit-col.none .fit-title i { background: var(--bg-2); color: var(--mute); }
+
+/* 一式 */
+.pending { margin-top: 24px; padding: 18px 20px; border: 1px dashed var(--line); border-radius: 12px; color: var(--ink-2); font-size: .94rem; }
+.pending p { margin: 0 0 6px; }
+.pending p:last-child { margin: 0; }
+
+/* 流れ */
+.flow5 { grid-template-columns: repeat(5, 1fr); }
+@media (max-width: 860px) { .flow5 { grid-template-columns: 1fr; } }
+
+/* FAQ */
+.faq { border-top: 1px solid var(--line); }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary {
+  list-style: none; cursor: pointer; padding: 20px 44px 20px 0; font-weight: 700; font-size: 1.02rem; position: relative; min-height: 44px;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 8px; top: 16px; font: 700 1.4rem/1 "Inter", sans-serif; color: var(--accent); }
+.faq details[open] summary::after { content: "−"; }
+.faq .a { padding: 0 0 22px; color: var(--ink-2); }
+.faq .a p:last-child { margin: 0; }
+
+.close-box .btn-ghost { color: #fff; border-color: rgba(255,255,255,.35); }
+.close-box .btn-ghost:hover { color: #fff; border-color: #fff; }
+
+/* ===== ChatGPTファクトチェック（主CTAより弱く） ===== */
+.fc-row{margin-top:28px}
+.fc-btn{display:inline-flex;align-items:center;flex-wrap:wrap;gap:.2em .6em;min-height:44px;padding:8px 18px;
+  border:1px solid currentColor;border-radius:999px;background:transparent;color:var(--ink-2,#3c4760);
+  font:inherit;font-size:13px;font-weight:700;cursor:pointer;text-align:left;line-height:1.5}
+.fc-btn:hover{color:var(--accent,#c8412c)}
+.fc-btn svg{width:16px;height:16px;flex:none}
+.fc-sub{font-size:12px;font-weight:400;opacity:.8}
+.honest .fc-btn,.dark .fc-btn{color:var(--on-navy-2,#c6d0e6)}
+.honest .fc-btn:hover{color:#fff}
+@media print{.fc-row{display:none}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="swallow" viewBox="0 0 64 40">
+    <path fill="currentColor" d="M2 14c9-2 18 0 25 6 3-7 9-13 18-16 5-2 11-3 17-2-8 3-14 7-18 13 4 1 8 3 10 6-5-1-10-1-14 0l-6 9c-1 2-3 3-5 2l1-8c-7 4-15 6-24 5 6-2 11-5 14-9C14 18 8 16 2 14z"/>
+  </symbol>
+</svg>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="つばめリード パートナー向けご案内 トップへ">
+      <svg aria-hidden="true"><use href="#swallow"/></svg>
+      <span><span class="brand-name">つばめリード</span><span class="brand-sub">FOR PARTNERS</span></span>
+    </a>
+    <nav class="nav" aria-label="ページ内">
+      <a href="#share">分担</a>
+      <a href="#revenue">収益</a>
+      <a href="#dont">売らない相手</a>
+      <a href="#faq">ご質問</a>
+    </nav>
+    <a class="btn btn-sm" href="https://timerex.net/s/wu/56608220" target="_blank" rel="noopener"><span class="hide-s">個別説明を</span>予約する</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===== HERO ===== -->
+<section class="hero" aria-labelledby="h1">
+  <svg class="fly" viewBox="0 0 64 40" aria-hidden="true"><use href="#swallow"/></svg>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="hero-tag">OEMパートナー向け｜つばめシリーズ</span>
+        <h1 id="h1" class="hero__title">貴社の商材に、<br><span class="hl">送った証拠</span>が残る<br>フォーム営業を1本。</h1>
+        <p class="hero-lead">つばめリードは、AIが企業のお問い合わせフォームを読み、その会社あての提案文を入力して送るフォーム営業です。送信の仕組みと録画、管理画面は弊社が持ちます。貴社には、自社のお客様へ提案し、販売する役をお願いする形です。</p>
+        <p class="promise">仕入値と推奨売価は、まだお出しできる段階にありません。<br>そのかわり、決まっていることと決まっていないことを分けてお見せします。</p>
+        <div class="cta-row">
+          <a class="btn" href="https://timerex.net/s/wu/56608220" target="_blank" rel="noopener">個別説明を予約する
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg></a>
+          <a class="btn btn-ghost" href="../b02/">説明の内容を見る</a>
+        </div>
+        <p class="cta-sub">取扱条件は、個別説明のあとに書面でお渡しします。</p>
+      </div>
+      <figure class="hero-fig" style="margin:0">
+        <div class="shot">
+          <div class="shot-bar"><i></i><i></i><i></i><span>シナリオ実行結果</span></div>
+          <span class="shot-rec">REC</span>
+          <img src="../a01/img/evidence-top.png" width="1080" height="350" alt="つばめリードの管理画面の一部。成功のステータスと実行開始日時、左に録画、右にURLを開く・名前を入力のステップ記録と成功のチェックが並ぶ">
+        </div>
+        <figcaption>実際の管理画面（1通分の上部）。貴社のお客様への納品報告に、この画面を使えます。送信先と入力内容は伏せた状態です。</figcaption>
+      </figure>
+    </div>
+
+    <div class="facts" role="list">
+      <div class="fact is-accent" role="listitem"><b>全件</b><span>入力から送信完了まで録画</span></div>
+      <div class="fact" role="listitem"><b class="num">60<small>日</small></b><span>録画の保存期間</span></div>
+      <div class="fact" role="listitem"><b class="num">30,000<small>通</small></b><span>月の送信上限</span></div>
+      <div class="fact" role="listitem"><b class="num">100<small>社</small></b><span>1回の選択で追加できる数</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 1. 向いている会社 ===== -->
+<section id="fit" aria-labelledby="s1">
+  <div class="wrap">
+    <p class="eyebrow">WHO SHOULD RESELL</p>
+    <h2 id="s1">法人のお客様を<br>多く抱える会社に<br>向いています。</h2>
+    <p class="sec-lead">営業代行、Web制作、広告、コンサルティング、法人向け商材の販売。業種より大事なのは、貴社のお客様の顔ぶれです。</p>
+    <div class="fit">
+      <div class="fit-col yes">
+        <div class="fit-title"><i aria-hidden="true">✓</i><h3>向いている会社</h3></div>
+        <ul>
+          <li>法人のお客様と、継続して付き合いがある</li>
+          <li>お客様に、全国の法人へ提案できるBtoB商材を持つ会社が多い</li>
+          <li>お客様から「新規のアポが取れない」「営業マンがいない」と相談される</li>
+          <li>返信が来たあとの商談に、お客様自身がすぐ対応できる</li>
+        </ul>
+      </div>
+      <div class="fit-col no">
+        <div class="fit-title"><i aria-hidden="true">−</i><h3>向いていない会社</h3></div>
+        <ul>
+          <li>お客様の多くが、地域限定の商売か、個人向けの商材</li>
+          <li>お客様の多くが、介護・医療・士業・教育・自治体向けの業界</li>
+          <li>反応数や受注を約束して売るのが、貴社の売り方の前提になっている</li>
+          <li>少ない通数で、短期間に結果を出すことを求められる</li>
+        </ul>
+      </div>
+    </div>
+    <p class="fit-after">右側に多く当てはまる場合、個別説明の場で「いまは取り扱わないほうがいい」とお伝えすることがあります。</p>
+    <div class="fc-row"><button class="fc-btn" type="button" data-fc-section="向いているパートナー" data-fc-claim="フォーム営業サービスの取り扱いは、法人顧客を多く抱え、顧客から新規開拓の相談を受ける会社（営業代行・Web制作・広告・コンサル等）に向いている"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="m8.5 11 1.8 1.8L14 9"/></svg>ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button></div>
+  </div>
+</section>
+
+<!-- ===== 2. 責任分界 ===== -->
+<section id="share" class="sec-alt" aria-labelledby="s2">
+  <div class="wrap">
+    <p class="eyebrow">WHO DOES WHAT</p>
+    <h2 id="s2">弊社がやること、<br>貴社がやること、<br>まだ決まっていないこと。</h2>
+    <p class="sec-lead">OEMの話は、ここが曖昧なまま進むと途中で止まります。確定している行と、まだ決まっていない行を、同じ表に並べました。【要確認】の行は、個別説明のあとに書面でお答えします。</p>
+    <p class="resp-legend"><span><span class="st ok">確定</span> 6行</span><span><span class="st ng">要確認</span> 6行</span></p>
+    <div class="resp-wrap">
+      <table class="resp">
+        <thead><tr><th scope="col">項目</th><th scope="col">担当</th><th scope="col">状態</th><th scope="col">補足</th></tr></thead>
+        <tbody>
+          <tr class="sep"><th colspan="4" scope="colgroup">決まっていること</th></tr>
+          <tr><th scope="row">送信の仕組み（AIによるフォーム解析・入力・送信）</th><td class="who" data-l="担当">弊社</td><td data-l="状態"><span class="st ok">確定</span></td><td class="memo" data-l="補足">クラウドで動くため、貴社側で端末を開いておく必要はありません。</td></tr>
+          <tr><th scope="row">全件の録画と、60日間の保存</th><td class="who" data-l="担当">弊社</td><td data-l="状態"><span class="st ok">確定</span></td><td class="memo" data-l="補足">ページを開くところから送信完了まで、1通ずつ録画。</td></tr>
+          <tr><th scope="row">管理画面の提供</th><td class="who" data-l="担当">弊社</td><td data-l="状態"><span class="st ok">確定</span></td><td class="memo" data-l="補足">成功の状態、録画、手順ごとの記録を1社ずつ確認できます。「フォーム送信失敗を報告」のボタン付き。</td></tr>
+          <tr><th scope="row">送信の運用原則</th><td class="who" data-l="担当">弊社</td><td data-l="状態"><span class="st ok">確定</span></td><td class="memo" data-l="補足">営業お断りのフォームと停止依頼先は、送信の対象外です。CAPTCHAなどは突破せず、送れないものは失敗として扱います。</td></tr>
+          <tr><th scope="row">お客様への説明の言い回し</th><td class="who" data-l="担当">弊社</td><td data-l="状態"><span class="st ok">確定</span></td><td class="memo" data-l="補足">お客様にどう話すかをまとめた資料を、個別説明の場でご案内します。</td></tr>
+          <tr><th scope="row">自社のお客様への提案と販売</th><td class="who" data-l="担当">貴社</td><td data-l="状態"><span class="st ok">確定</span></td><td class="memo" data-l="補足">どのお客様に出すかの判断も、貴社の役割です。</td></tr>
+          <tr class="sep"><th colspan="4" scope="colgroup">まだ決まっていないこと</th></tr>
+          <tr class="open"><th scope="row">送り先リストの選定</th><td class="who" data-l="担当"><span class="tbd">【要確認：担当】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">業種・地域・従業員規模で絞る機能は、管理画面にあります。</td></tr>
+          <tr class="open"><th scope="row">提案文の共通訴求の作成</th><td class="who" data-l="担当"><span class="tbd">【要確認：担当】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">会社ごとの一文はAIが足す仕組みです。送信者の会社名・担当・連絡先・目的の明記は必須。</td></tr>
+          <tr class="open"><th scope="row">お客様からの問い合わせ窓口</th><td class="who" data-l="担当"><span class="tbd">【要確認：担当】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">一次対応と、技術的な問い合わせの切り分けを含みます。</td></tr>
+          <tr class="open"><th scope="row">請求と料金の回収</th><td class="who" data-l="担当"><span class="tbd">【要確認：担当】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">お客様への課金の単位も、あわせて確認中。</td></tr>
+          <tr class="open"><th scope="row">送信先からの停止依頼・苦情の受付</th><td class="who" data-l="担当"><span class="tbd">【要確認：担当】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">停止依頼先を以後の送信から外す原則は、確定しています。</td></tr>
+          <tr class="open"><th scope="row">お客様との契約の当事者</th><td class="who" data-l="担当"><span class="tbd">【要確認：担当】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">利用規約をどちらの名前で結ぶかを含みます。</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="fc-row"><button class="fc-btn" type="button" data-fc-section="責任分界" data-fc-claim="OEM・再販で事前に決めるべき分担として、送信の仕組み、録画、管理画面、送り先リストの選定、提案文の作成、問い合わせ窓口、請求、停止依頼・苦情の受付、契約の当事者を挙げている／他に決めておくべき項目はあるか"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="m8.5 11 1.8 1.8L14 9"/></svg>ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button></div>
+  </div>
+</section>
+
+<!-- ===== 3. 収益モデル ===== -->
+<section id="revenue" aria-labelledby="s3">
+  <div class="wrap">
+    <p class="eyebrow">REVENUE MODEL</p>
+    <h2 id="s3">収益の数字は、<br>まだ決まっていません。<br>先に式の形をお見せします。</h2>
+    <p class="sec-lead">仕入値も推奨売価も、確定前の数字を置くと、それがひとり歩きします。ここでは計算の形と、売価を組む前に知っておいてほしい事実だけを並べました。</p>
+
+    <div class="formula">
+      <p class="label">貴社の粗利（月）の形</p>
+      <div class="eq">
+        <span class="term">成功送信数<small>管理画面で1通ずつ確認できる</small></span>
+        <span class="op">×</span>
+        <span class="op">（</span><span class="term q">貴社の売価<small>【要確認：推奨売価】</small></span>
+        <span class="op">−</span>
+        <span class="term q">仕入値<small>【要確認：仕入値】</small></span><span class="op">）</span>
+      </div>
+      <p class="note">お客様への課金を成功送信の単位にするかどうかも、<span class="nobr">【要確認：お客様への課金単位】</span>です。システム上、成功と失敗は分かれて記録されます。</p>
+    </div>
+
+    <div class="rev-grid">
+      <div class="card">
+        <h3>直販の価格は公開中</h3>
+        <p>つばめリードの直販ページでは「成功送信1通5円」と公開しています。貴社のお客様もこの価格を調べられる、という前提で売価を組んでください。上乗せする分は、貴社が担う作業の中身で説明することになります。</p>
+      </div>
+      <div class="card">
+        <h3>他社の公開単価</h3>
+        <p>2026年9月2日時点で各社が公開している価格です（社名は伏せています）。</p>
+        <table class="mini-tbl">
+          <tr><th scope="row">A社</th><td>5〜15円／件</td></tr>
+          <tr><th scope="row">B社</th><td>4.9〜11.2円／件</td></tr>
+          <tr><th scope="row">C社</th><td>月1万件で5.5万円の掲載例</td></tr>
+        </table>
+        <p class="note" style="margin-top:10px">各社とも初期費用0円の表記。単価そのものは横並びです。</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:48px">数字ではなく、<br>事実から言える売りやすさ</h3>
+    <ol class="ev-list" style="margin-top:12px">
+      <li><span class="ev-n num">01</span><div><h3>納品報告に、録画を使える</h3><p>どの会社に、どんな文面を、送信完了まで送ったか。1通ずつ画面でお見せできます。件数だけの報告で起きがちな「本当に送ったのか」という問いに、貴社が答えやすくなる点が一番の違いです。</p></div></li>
+      <li><span class="ev-n num">02</span><div><h3>成功と失敗が分かれる</h3><p>送れなかったものは失敗として記録され、手順ごとに、どこで止まったかも残ります。請求や報告の根拠を、貴社が自分で作らずに済む形です。</p></div></li>
+      <li><span class="ev-n num">03</span><div><h3>送信の人手を持たない</h3><p>送信はクラウド上で動くため、貴社に送信担当を置く必要はありません。上限は月30,000通（OEMでの数え方は【要確認：送信上限の単位】）です。</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== 4. 正直 ===== -->
+<section id="honest" class="honest" aria-labelledby="s4">
+  <div class="wrap">
+    <p class="eyebrow">HONESTLY</p>
+    <h2 id="s4">お客様に、<br>反応数を約束して<br>売らないでください。</h2>
+    <p class="sec-lead">つばめリードの反応率について、公表できる自社の実績値はまだありません。フォーム営業は送る会社が増え、反応は下がり続けています。約束できるのは送信と、その記録までです。</p>
+    <div class="honest-points">
+      <div><h3>言ってよいこと</h3><p>送った全件を、録画で見せられること。営業お断りのフォームと停止依頼先には送らないこと。送れなかった分が、成功と分かれて記録されること。</p></div>
+      <div><h3>言ってはいけないこと</h3><p>反応率、アポ数、受注の約束。「営業担当を雇うよりずっと安い」のような大きな比べ方も避けてください。約束が外れたとき、解約と一緒に貴社への信頼も失われます。</p></div>
+      <div><h3>試算を出すとき</h3><p>他社が公開している反応率0.1〜0.2%を、仮に置いた数字だと必ず添えます。5,000通なら反応の目安は5〜10件で、これは返信などの数にとどまり、商談や受注の数ではありません。</p></div>
+      <div><h3>少ない通数で決めない</h3><p>反応率の低い手法なので、数百通で良し悪しは決まりません。お客様にも、最初にそう伝えておくのが揉めない売り方です。</p></div>
+    </div>
+    <div class="fc-row"><button class="fc-btn" type="button" data-fc-section="反応数を約束して売らない" data-fc-claim="フォーム営業の反応率として、他社は0.1〜0.2%を公開している／フォーム営業を行う会社が増え、反応は年々下がる傾向にある／反応は返信などの数で、商談・受注の数ではない／5,000通送った場合の反応の目安は5〜10件（0.1〜0.2%を仮置き）"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="m8.5 11 1.8 1.8L14 9"/></svg>ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button></div>
+  </div>
+</section>
+
+<!-- ===== 5. 売ってはいけない相手 ===== -->
+<section id="dont" aria-labelledby="s5">
+  <div class="wrap">
+    <p class="eyebrow">DO NOT SELL</p>
+    <h2 id="s5">売ってはいけない<br>お客様がいます。</h2>
+    <p class="sec-lead">向かない先に売ると、反応が出ないまま解約になり、クレームが残ります。傷がつくのは、貴社とお客様の関係です。次に当たるお客様には、提案を見送ってください。</p>
+    <ol class="ng-list">
+      <li><strong>個人向け（BtoC）の商材を売っている</strong><span>送り先は法人のお問い合わせフォームです。</span></li>
+      <li><strong>商圏が狭く、地域限定で商売をしている</strong><span>送り先になる会社の数が足りません。</span></li>
+      <li><strong>単価が低く、1件の粗利が小さい</strong><span>1件の受注で、送信の費用を取り返すのは難しいはずです。</span></li>
+      <li><strong>少ない通数で、短期に良し悪しを決めたい</strong><span>反応率の低い手法なので、判断の材料がそろいません。</span></li>
+      <li><strong>相手に渡せる価値が、まだ言葉になっていない</strong><span>提案文の共通訴求が書けないまま送ることになります。</span></li>
+      <li><strong>知らない会社からは発注しない業界にいる</strong><span>受託開発、士業、地方の商流など。発注の前に信頼が要ります。</span></li>
+      <li><strong>母数が限られ、横のつながりが強い業界にいる</strong><span>介護、医療、士業、教育、自治体系。送り先が少なく、同業の間で話が伝わりやすい業界です。</span></li>
+    </ol>
+    <div class="strong-box">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg></div>
+      <p><strong>逆に強いのは、すでに売れているサービスを持つお客様です。</strong>全国の法人に提案でき、1件の受注の価値が高く、返信が来たらすぐ商談に出られる会社を指します。この3つがそろうお客様ほど、送った数が結果につながりやすい、というのが弊社の見立てです。</p>
+    </div>
+    <div class="fc-row"><button class="fc-btn" type="button" data-fc-section="売ってはいけないお客様" data-fc-claim="フォーム営業が向いている：全国の法人へ提案できるBtoB商材、1件の商談・受注の価値が高い、営業の人手が足りない、返信後すぐ商談対応できる／向いていない：商圏が狭い、単価が低い、数百通で短期判断したい、提供価値が言葉になっていない、受託開発や士業のように知らない会社からは発注しない業界／母数が有限で横のつながりが強い業界（介護・医療・教育・自治体系）やBtoC商材にも向かない"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="m8.5 11 1.8 1.8L14 9"/></svg>ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button></div>
+  </div>
+</section>
+
+<!-- ===== 6. 既存顧客への出し方 ===== -->
+<section id="offer" class="sec-alt" aria-labelledby="s6">
+  <div class="wrap">
+    <p class="eyebrow">HOW TO OFFER</p>
+    <h2 id="s6">既存のお客様には、<br>この3つの言葉から<br>切り出せます。</h2>
+    <p class="sec-lead">新しく売り込むより、お客様がすでに口にしている困りごとに答える形のほうが話は進みます。次の言葉が出たら、紹介のきっかけです。</p>
+    <div class="cards3">
+      <div class="card">
+        <p class="say">新規のアポが取れない</p>
+        <p>声をかける母数を増やす手段として紹介します。伝える順番は、反応数を約束しないこと、送った全件を録画で見せられること、の2点が先です。</p>
+      </div>
+      <div class="card">
+        <p class="say">営業マンがいない</p>
+        <p>サイトを読む、文面を書く、入力して送る、記録する、という手作業はAIが担います。返信が来たあとの商談には人が要る、という点も同時にお伝えください。</p>
+      </div>
+      <div class="card">
+        <p class="say">商圏を全国に広げたい</p>
+        <p>業種・地域・従業員規模で送り先を絞れます。全国の法人に提案できる商材かどうかを、ここで一緒に確かめます。</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:56px">提案の前に、<br>お客様と確かめる3点</h3>
+    <ol class="checks" style="margin-top:18px">
+      <li><div><h3>1件の受注あたりの粗利</h3><p>送信の費用を、受注1件で取り返せる商材か。</p></div></li>
+      <li><div><h3>すでに売れている商材か</h3><p>実績のある商材ほど、知らない会社からの連絡でも話を聞いてもらえます。</p></div></li>
+      <li><div><h3>何通送れるか</h3><p>業種・地域・規模で絞ったとき、送り先の母数がどれだけ残るか。</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== 7. 工数 ===== -->
+<section id="work" aria-labelledby="s7">
+  <div class="wrap">
+    <p class="eyebrow">YOUR WORKLOAD</p>
+    <h2 id="s7">貴社の工数は、<br>分担が決まるまで<br>確定できません。</h2>
+    <p class="sec-lead">時間の目安を先に出すと、決まっていない分担まで決まったように見えてしまいます。ここでは、必ず発生する作業と、分担しだいで増減する作業を分けました。</p>
+    <div class="work">
+      <div class="fit-col yes">
+        <div class="fit-title"><i aria-hidden="true">✓</i><h3>必ず発生する</h3></div>
+        <p class="tagline">分担がどう決まっても、貴社の仕事</p>
+        <ul>
+          <li>お客様への提案と商談</li>
+          <li>提案前の3点の確認</li>
+          <li>売ってはいけないお客様の見極め</li>
+        </ul>
+      </div>
+      <div class="fit-col mid">
+        <div class="fit-title"><i aria-hidden="true">?</i><h3>分担しだい</h3></div>
+        <p class="tagline">【要確認】の行が決まると確定</p>
+        <ul>
+          <li>送り先リストの選定</li>
+          <li>共通訴求の文面づくり</li>
+          <li>お客様からの問い合わせ対応</li>
+          <li>請求と料金の回収</li>
+          <li>停止依頼・苦情の受付</li>
+        </ul>
+      </div>
+      <div class="fit-col none">
+        <div class="fit-title"><i aria-hidden="true">−</i><h3>貴社では発生しない</h3></div>
+        <p class="tagline">仕組みの側で動くもの</p>
+        <ul>
+          <li>フォームの入力と送信の作業</li>
+          <li>送信記録の作成（録画は自動）</li>
+          <li>送信を動かす端末の用意</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 8. 提供するもの ===== -->
+<section id="kit" class="sec-alt" aria-labelledby="s8">
+  <div class="wrap">
+    <p class="eyebrow">WHAT WE PROVIDE</p>
+    <h2 id="s8">お渡しするものは、<br>この5つです。</h2>
+    <p class="sec-lead">仕組みは、直販で使っているものと同じです。貴社の手元に届くのは、次の5つになります。</p>
+    <div class="evidence">
+      <figure style="margin:0">
+        <div class="shot">
+          <div class="shot-bar"><i></i><i></i><i></i><span>シナリオ実行結果 ― 1件分</span></div>
+          <img src="../a01/img/evidence-viewer.png" width="1300" height="660" loading="lazy" alt="管理画面のシナリオ実行結果。左に録画、右にステップ記録。open_url、お名前の入力、メールアドレスの入力にそれぞれ成功のチェックが付いている">
+        </div>
+        <figcaption>管理画面のシナリオ実行結果。左が録画、右が手順ごとの記録です。送信先と入力内容は伏せています。</figcaption>
+      </figure>
+      <ol class="ev-list">
+        <li><span class="ev-n num">01</span><div><h3>送信の仕組み</h3><p>AIが相手のサイトとフォームを読み、共通の訴求にその会社あての一文を足して、入力・送信します。</p></div></li>
+        <li><span class="ev-n num">02</span><div><h3>管理画面</h3><p>成功の状態、実行開始日時、録画、手順ごとの記録。失敗を報告するボタンも付いています。</p></div></li>
+        <li><span class="ev-n num">03</span><div><h3>全件の録画</h3><p>入力から送信完了まで、1通ずつ録画が残ります。保存期間は60日です。</p></div></li>
+        <li><span class="ev-n num">04</span><div><h3>送り先の絞り込み</h3><p>業種・地域・従業員規模で選び、1回の選択で最大100社ずつ加えられます。</p></div></li>
+        <li><span class="ev-n num">05</span><div><h3>説明の言い回し</h3><p>貴社の営業が、お客様にどう話すかをまとめた資料です。個別説明の場でご案内します。</p></div></li>
+      </ol>
+    </div>
+    <div class="pending">
+      <p><strong>まだ決まっていないもの</strong></p>
+      <p>貴社の名称やロゴでの表示：<span class="tbd">【要確認：ブランド表記】</span></p>
+      <p>お客様向けの販促ページの提供範囲：<span class="tbd">【要確認：販促物の範囲】</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 9. 流れ ===== -->
+<section id="flow" aria-labelledby="s9">
+  <div class="wrap">
+    <p class="eyebrow">NEXT STEPS</p>
+    <h2 id="s9">取り扱いまでは、<br>5つの順番で進みます。</h2>
+    <p class="sec-lead">日数は、まだお示しできる段階にありません。順番だけを先にお伝えします。</p>
+    <ol class="flow flow5">
+      <li><b>STEP 1</b><strong>個別説明を予約</strong><span>予約ページから日時を選ぶ</span></li>
+      <li><b>STEP 2</b><strong>個別説明</strong><span>取扱商材と顧客層を伺う</span></li>
+      <li><b>STEP 3</b><strong>条件を書面で受け取る</strong><span>【要確認】の行への回答</span></li>
+      <li><b>STEP 4</b><strong>契約</strong><span>【要確認：契約の形】</span></li>
+      <li><b>STEP 5</b><strong>販売開始</strong><span>【要確認：開始前の準備】</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== 10. FAQ ===== -->
+<section id="faq" class="sec-alt" aria-labelledby="s10">
+  <div class="wrap">
+    <p class="eyebrow">FAQ</p>
+    <h2 id="s10">取り扱う前に、<br>確かめておきたいこと。</h2>
+    <p class="sec-lead">答えが決まっていないものは【要確認】と書いています。その場合は、個別説明のあと書面で個別にお答えします。</p>
+    <div class="faq">
+      <details>
+        <summary>解約はどうなりますか。</summary>
+        <div class="a"><p><span class="tbd">【要確認：解約条件】</span> 弊社と貴社の間の解約、貴社とお客様の間の解約。どちらの条件も、まだ確定していません。書面で個別にお答えします。</p></div>
+      </details>
+      <details>
+        <summary>同じ地域や業種で、ほかのパートナーにも出しますか。</summary>
+        <div class="a"><p><span class="tbd">【要確認：競合排他の有無】</span> 地域や業種での排他を設けるかどうかは未確定です。書面で個別にお答えします。</p></div>
+      </details>
+      <details>
+        <summary>送り先からクレームが来たら、誰が対応しますか。</summary>
+        <div class="a"><p><span class="tbd">【要確認：クレーム対応の担当と手順】</span> 受付の窓口と対応の手順は、まだ決まっていません。</p><p>確定しているのは、送り方の原則です。営業お断りのフォームには送らず、送信者の会社名・担当・連絡先・目的を明記し、CAPTCHAなどは突破しません。録画が残るため、どの文面をどう送ったかは1通ずつ確かめられます。</p></div>
+      </details>
+      <details>
+        <summary>送り先から停止の依頼が来たら、どうなりますか。</summary>
+        <div class="a"><p>停止の依頼があった送り先を、以後の送信対象から外すことは運用の原則として決まっています。</p><p>依頼の受付窓口と弊社への伝え方は、<span class="tbd">【要確認：停止依頼の受付】</span>です。</p></div>
+      </details>
+      <details>
+        <summary>お客様に、反応数の目安を伝えてもよいですか。</summary>
+        <div class="a"><p>約束としては伝えないでください。弊社にも、公表できる反応率の実績はまだありません。試算を出すなら、他社公開値0.1〜0.2%を仮に置いた数字だと添えてください。</p></div>
+      </details>
+      <details>
+        <summary>貴社の名前で売ることはできますか。</summary>
+        <div class="a"><p><span class="tbd">【要確認：ブランド表記】</span> 名称やロゴをどこまで貴社のものにできるかは未確定です。書面で個別にお答えします。</p></div>
+      </details>
+      <details>
+        <summary>最低利用数や支払時期は決まっていますか。</summary>
+        <div class="a"><p>まだです。直販でも、最低利用数と期間、消費税と支払時期、送信の対象外になるフォーム、成功送信の判定と録画の確認方法の4つは、見積の前に書面で案内する扱いにしています。OEMでも同じ4つに、<span class="tbd">【要確認：OEMの取扱条件】</span>として書面でお答えします。このページより、書面と契約書の内容が優先です。</p></div>
+      </details>
+      <details>
+        <summary>月に何通まで送れますか。</summary>
+        <div class="a"><p>直販の上限は、月30,000通です。OEMの場合に、お客様ごとに数えるのか、貴社全体で数えるのかは<span class="tbd">【要確認：送信上限の単位】</span>です。</p></div>
+      </details>
+    </div>
+    <div class="fc-row"><button class="fc-btn" type="button" data-fc-section="取り扱う前の確認事項" data-fc-claim="OEM・再販契約の前に、解約条件、競合排他の有無、クレーム対応の担当、停止依頼の受付、ブランド表記、最低利用数・支払条件を確かめるべき"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="m8.5 11 1.8 1.8L14 9"/></svg>ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button></div>
+  </div>
+</section>
+
+<!-- ===== 11. CTA ===== -->
+<section id="start" aria-labelledby="s11">
+  <div class="wrap">
+    <p class="eyebrow">START HERE</p>
+    <h2 id="s11">まず、貴社のお客様で<br>向く会社を数えてください。</h2>
+    <p class="sec-lead">取り扱うかどうかは、そのあとで決めて間に合います。個別説明でお渡しするのは、次の3つです。</p>
+    <div class="close-grid">
+      <ol class="checks">
+        <li><div><h3>責任分界の表</h3><p>このページの表を、貴社の体制に当てはめて確認します。</p></div></li>
+        <li><div><h3>売らない相手の見分け方</h3><p>貴社のお客様の顔ぶれに照らして、向く先と向かない先を分ける作業です。</p></div></li>
+        <li><div><h3>【要確認】への回答</h3><p>個別説明のあと、書面で個別にお送りします。</p></div></li>
+      </ol>
+      <div class="close-box">
+        <p class="big">貴社の取扱商材と顧客層を伺い、向くお客様がどれくらいいるかを一緒に見ていきます。それが最初の一歩です。</p>
+        <p>お話しした結果、いまは取り扱わないほうがいい、という結論になることもあります。</p>
+        <a class="btn" href="https://timerex.net/s/wu/56608220" target="_blank" rel="noopener">個別説明を予約する
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg></a>
+        <a class="btn btn-ghost" href="../b02/">説明の内容を先に見る</a>
+        <p class="cta-sub">予約ページ（TimeRex）は別のタブで開きます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top" aria-label="つばめリード パートナー向けご案内 トップへ">
+          <svg aria-hidden="true"><use href="#swallow"/></svg>
+          <span><span class="brand-name">つばめリード</span><span class="brand-sub">FOR PARTNERS</span></span>
+        </a>
+        <p style="margin:14px 0 0">OEMパートナー向けのご案内です。提供：株式会社ライトアップ</p>
+      </div>
+      <div>
+        <h4>FOR PARTNERS</h4>
+        <ul>
+          <li><a href="../b02/">パートナー個別説明</a></li>
+          <li><a href="https://timerex.net/s/wu/56608220" target="_blank" rel="noopener">個別説明の予約</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>INFORMATION</h4>
+        <ul>
+          <li><a href="https://tsubamel.elliot-tech.jp/terms" target="_blank" rel="noopener">利用規約</a></li>
+          <li><a href="https://tsubamel.elliot-tech.jp/privacy" target="_blank" rel="noopener">プライバシーポリシー</a></li>
+          <li><a href="https://tsubamel.elliot-tech.jp/tokushoho" target="_blank" rel="noopener">特定商取引法に基づく表記</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copy">© 2026 TSUBAME LEAD</p>
+  </div>
+</footer>
+<script>
+document.addEventListener('click', function (e) {
+  var b = e.target.closest && e.target.closest('.fc-btn'); if (!b) return;
+  var l = document.querySelector('link[rel=canonical]'); var url = l ? l.href : location.href;
+  var p = '次のLPの記載が事実として正しいか、第三者の立場で確認してください。\n\n【対象ページ】' + url +
+    '\n【セクション】' + b.dataset.fcSection + '\n【記載内容】\n' + b.dataset.fcClaim.split('／').join('\n') +
+    '\n\n【確認してほしいこと】\n- 記載は一般的な事実・相場・公的情報と照らして正しいか\n- 誤り・誇張・古い情報があれば指摘する\n- 反対の見方や、読み手が注意すべき点\n- 確認できないことは「確認できない」と書き、推測で補わない';
+  window.open('https://chatgpt.com/?q=' + encodeURIComponent(p), '_blank', 'noopener,noreferrer');
+  if (navigator.clipboard) navigator.clipboard.writeText(p).catch(function () {});
+});
+</script>
+</body>
+</html>
