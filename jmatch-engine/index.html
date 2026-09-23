@@ -42,6 +42,7 @@ pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
   --gray-60:#767676;
   --gray-40:#A8A8A8;
   --gray-20:#D9D9D9;
+  --red:#C62828;
   --jp:'Noto Sans JP',sans-serif;
   --en:'Inter',sans-serif;
 }
@@ -140,6 +141,35 @@ h1 em{ font-style:normal; color:var(--navy); }
 }
 
 /* ===== 営業用リンク集 ===== */
+/* ===== お知らせ ===== */
+.news{ margin-top:58px; padding-top:30px; border-top:2px solid var(--ink); }
+.news__head{ display:flex; align-items:baseline; gap:18px; margin-bottom:16px; }
+.news__kicker{ font-family:var(--en); font-size:11px; font-weight:900; letter-spacing:.26em; color:var(--navy); }
+.news__title{ font-size:clamp(1.15rem,2.6vw,1.5rem); font-weight:900; line-height:1.45; }
+.news__list{ list-style:none; border-top:1px solid var(--gray-20); }
+.news__item{ border-bottom:1px solid var(--gray-20); }
+.news__link{ display:grid; grid-template-columns:96px auto minmax(0,1fr); align-items:baseline; gap:16px;
+  padding:16px 6px; color:var(--ink); text-decoration:none; transition:background .2s ease; }
+.news__link:hover{ background:var(--tint); }
+.news__date{ font-family:var(--en); font-size:12.5px; font-weight:700; color:var(--gray-60); }
+.news__badge{ justify-self:start; padding:2px 8px; font-family:var(--en); font-size:10px; font-weight:900;
+  letter-spacing:.1em; line-height:1.6; color:var(--white); background:var(--red); }
+.news__name{ display:block; font-size:14.5px; font-weight:900; line-height:1.65; }
+.news__name i{ font-style:normal; margin-left:6px; color:var(--navy); }
+.news__desc{ display:block; margin-top:4px; font-size:12.5px; color:var(--gray-60); line-height:1.8; }
+@media(max-width:600px){
+  .news{ margin-top:46px; padding-top:24px; }
+  .news__head{ display:block; }
+  .news__kicker{ margin-bottom:6px; }
+  .news__link{ grid-template-columns:auto minmax(0,1fr); gap:6px 12px; }
+  .news__body{ grid-column:1 / -1; }
+}
+
+/* 更新したページに付ける赤い印 */
+.sales-link__flags{ display:flex; align-items:center; gap:6px; }
+.sales-link__new{ display:inline-block; padding:2px 7px; font-family:var(--en); font-size:10px; font-weight:900;
+  letter-spacing:.1em; line-height:1.5; color:var(--white); background:var(--red); }
+
 .sales-links{ margin-top:72px; padding-top:32px; border-top:2px solid var(--ink); }
 .sales-links__head{ display:flex; align-items:end; justify-content:space-between; gap:24px; margin-bottom:28px; }
 .sales-links__kicker{ font-family:var(--en); font-size:11px; font-weight:900; letter-spacing:.26em; color:var(--navy); margin-bottom:8px; }
@@ -227,6 +257,45 @@ footer .f{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px
       </div>
     </aside>
 
+    <section class="news" aria-labelledby="news-title">
+      <div class="news__head">
+        <p class="news__kicker">NEWS</p>
+        <h2 class="news__title" id="news-title">お知らせ</h2>
+      </div>
+      <ol class="news__list">
+        <li class="news__item">
+          <a class="news__link" href="./download/" target="_blank" rel="noopener">
+            <span class="news__date">2026.09.23</span>
+            <span class="news__badge">NEW</span>
+            <span class="news__body">
+              <span class="news__name">資料請求ページ（制度100）を公開<i aria-hidden="true">→</i></span>
+              <span class="news__desc">広告・メールの着地点。右に追従する申込フォームつき。送信先はまだ確定しておらず、いまは全社問い合わせへ飛びます</span>
+            </span>
+          </a>
+        </li>
+        <li class="news__item">
+          <a class="news__link" href="./whitepaper-100/" target="_blank" rel="noopener">
+            <span class="news__date">2026.09.22</span>
+            <span class="news__badge">NEW</span>
+            <span class="news__body">
+              <span class="news__name">資料DL用ホワイトペーパー（制度100）を追加<i aria-hidden="true">→</i></span>
+              <span class="news__desc">制度100件と、3か月ごとのAI分析4本。体裁確認用のため、制度名・金額・採択率はすべて仮の値です</span>
+            </span>
+          </a>
+        </li>
+        <li class="news__item">
+          <a class="news__link" href="./direct-guide/v3/" target="_blank" rel="noopener">
+            <span class="news__date">2026.09.22</span>
+            <span class="news__badge">NEW</span>
+            <span class="news__body">
+              <span class="news__name">直販 営業説明資料 v3 に収録モードを追加<i aria-hidden="true">→</i></span>
+              <span class="news__desc">Rキーで、お客様にお見せしない4枚を隠した収録用18枚へ。管理画面へのリンクも6枚に足しました</span>
+            </span>
+          </a>
+        </li>
+      </ol>
+    </section>
+
     <section class="sales-links" aria-labelledby="sales-links-title">
       <div class="sales-links__head">
         <div>
@@ -264,12 +333,12 @@ footer .f{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px
         <section class="sales-links__group" aria-labelledby="direct-links-title">
           <h3 class="sales-links__group-title" id="direct-links-title">直販提案</h3>
           <a class="sales-link" href="./download/" target="_blank" rel="noopener">
-            <span class="sales-link__meta"><span class="sales-link__label">CUSTOMER</span><span class="sales-link__internal">遷移先が暫定</span></span>
+            <span class="sales-link__meta"><span class="sales-link__label">CUSTOMER</span><span class="sales-link__flags"><span class="sales-link__new">NEW</span><span class="sales-link__internal">遷移先が暫定</span></span></span>
             <span class="sales-link__name">資料請求ページ（制度100）<span aria-hidden="true">→</span></span>
             <span class="sales-link__desc">広告・メールの着地点。申し込みフォームは未確定のため、いまは全社問い合わせへ飛びます</span>
           </a>
           <a class="sales-link" href="./whitepaper-100/" target="_blank" rel="noopener">
-            <span class="sales-link__meta"><span class="sales-link__label">SALES</span><span class="sales-link__internal">社内限定・ダミー</span></span>
+            <span class="sales-link__meta"><span class="sales-link__label">SALES</span><span class="sales-link__flags"><span class="sales-link__new">NEW</span><span class="sales-link__internal">社内限定・ダミー</span></span></span>
             <span class="sales-link__name">資料DL用ホワイトペーパー（制度100）<span aria-hidden="true">→</span></span>
             <span class="sales-link__desc">体裁確認用。制度名・金額・採択率はすべて仮の値です。お客様へ送らないでください</span>
           </a>
@@ -292,6 +361,11 @@ footer .f{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px
             <span class="sales-link__meta"><span class="sales-link__label">CUSTOMER</span></span>
             <span class="sales-link__name">直販セミナー申し込み<span aria-hidden="true">→</span></span>
             <span class="sales-link__desc">説明後の次のアクションとして案内</span>
+          </a>
+          <a class="sales-link" href="./direct-guide/v3/" target="_blank" rel="noopener">
+            <span class="sales-link__meta"><span class="sales-link__label">SALES</span><span class="sales-link__flags"><span class="sales-link__new">NEW</span><span class="sales-link__internal">社内限定</span></span></span>
+            <span class="sales-link__name">直販 営業説明資料 v3<span aria-hidden="true">→</span></span>
+            <span class="sales-link__desc">商談で画面を見せながら説明する20枚。Rキーで収録モード（お客様向けの18枚）に切り替わります</span>
           </a>
           <a class="sales-link" href="https://writeup-inc.github.io/saas/jmatch-direct-sales-talk/" target="_blank" rel="noopener">
             <span class="sales-link__meta"><span class="sales-link__label">SALES</span><span class="sales-link__internal">社内限定</span></span>
