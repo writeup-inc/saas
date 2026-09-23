@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="catalog-card" content="true">
+<meta name="description" content="おまかせ受電AIの資料一覧。直販・OEM・その他の資料を1ページからたどれます。">
+<title>おまかせ受電AI｜資料インデックス</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* ===== lp-base.css ===== */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] {
+    word-break: normal;
+  }
+}
+.nobr { white-space: nowrap; }
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+
+/* ===== トークン ===== */
+:root{
+  --ink:#10151c; --tx:#262d36; --g1:#4a525d; --g2:#626b76; --g3:#848c96;
+  --ln:#e3e6ea; --ln2:#f0f2f4; --bg:#f7f8fa;
+  --oem:#0f6b56; --oem-l:#eaf4f0;
+  --dir:#1f4f9a; --dir-l:#ecf2fa;
+  --etc:#4d5561; --etc-l:#f1f2f4;
+  --new:#c2410c;
+  /* サービスの色（ヒーローだけで使う）。お店の電話をあたたかく受けるので、落ち着いた琥珀 */
+  --svc:#9a5b1e; --svc-l:#fbf4ec;
+  --sans:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+  --num:Inter,"Helvetica Neue",Arial,sans-serif;
+}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--tx);font-family:var(--sans);font-size:16px;line-height:1.85;
+  letter-spacing:.015em;font-feature-settings:"palt" 1;-webkit-font-smoothing:antialiased}
+.w{max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+a{color:inherit}
+p{margin:0}
+.en{font-family:var(--num);font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+
+
+/* ===== ヒーロー：サービス名＋業種を連想させるアイコン ===== */
+.hero{position:relative;overflow:hidden;padding:clamp(96px,14vw,176px) 0 clamp(80px,11vw,136px);text-align:center;
+  background:radial-gradient(ellipse 60% 70% at 50% 48%,#fff 0,#fff 38%,var(--svc-l) 100%)}
+.hero .deco{position:absolute;inset:0;pointer-events:none}
+.hero .deco svg{position:absolute;fill:none;stroke:var(--svc);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.34}
+.hero .deco svg.s{opacity:.2}
+.hero .deco .dot{position:absolute;border-radius:50%;background:var(--svc);opacity:.18}
+.hero .w{position:relative}
+.hero .en{display:block;font-size:14px;color:var(--svc)}
+.hero h1{margin:16px 0 0;font-weight:900;letter-spacing:-.04em;line-height:1.1;color:var(--ink);font-size:clamp(2.2rem,9vw,6rem)}
+.hero .rule{display:block;width:48px;height:3px;margin:28px auto 0;border-radius:2px;background:var(--svc)}
+.hero .meta{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;margin:22px 0 0;font-size:15px;color:var(--g2)}
+.hero .meta b{font-family:var(--num);color:var(--ink)}
+.hero .meta .k{display:inline-flex;align-items:center;gap:7px}
+.hero .meta .k i{width:10px;height:10px;border-radius:3px}
+@media (prefers-reduced-motion:no-preference){
+  .hero .deco svg{animation:float 9s ease-in-out infinite}
+  .hero .deco svg:nth-child(2n){animation-duration:11s;animation-delay:-3s}
+  .hero .deco svg:nth-child(3n){animation-duration:13s;animation-delay:-6s}
+  @keyframes float{0%,100%{translate:0 0}50%{translate:0 -8px}}
+}
+
+/* ===== お知らせ：1本の時系列 ===== */
+.news{padding:clamp(36px,4.5vw,52px) 0 clamp(40px,5vw,56px)}
+.sh{display:flex;align-items:baseline;gap:12px;margin:0 0 14px}
+.sh h2{margin:0;font-size:clamp(1.4rem,2.6vw,1.8rem);font-weight:900;letter-spacing:-.02em;line-height:1.4;color:var(--ink)}
+.sh .en{font-size:13px;color:var(--g3)}
+.nl{list-style:none;margin:0;padding:0;border-top:1px solid var(--ln)}
+.nl a{display:grid;grid-template-columns:3.8em 4.8em 1fr;align-items:baseline;gap:16px;padding:12px 8px;border-bottom:1px solid var(--ln);text-decoration:none;transition:background .18s}
+.nl a:hover{background:var(--bg)}
+.nl time{font-family:var(--num);font-size:15px;font-weight:700;color:var(--g2)}
+.cat{display:inline-block;width:4.6em;padding:0;border-radius:4px;font-size:13px;font-weight:700;line-height:1.9;text-align:center;color:#fff}
+.cat.oem{background:var(--oem)} .cat.dir{background:var(--dir)} .cat.etc{background:var(--etc)}
+.nl .t{font-size:16px;line-height:1.7;color:var(--ink);word-break:auto-phrase;line-break:strict}
+.bd{display:inline-block;margin-right:8px;padding:0 7px;border-radius:4px;font-size:13px;font-weight:700;line-height:1.7;vertical-align:1px}
+.bg-new{background:#fdebe1;color:var(--new)}
+.bg-up{background:var(--etc-l);color:var(--etc)}
+.bg-soon{background:#fff4d6;color:#8a5a00}
+.bg-in{background:#efe9f8;color:#5b3f8f}
+.more{margin:0}
+.more summary{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:6px;padding:0 4px;font-size:15px;font-weight:700;color:var(--g1);cursor:pointer;list-style:none}
+.more summary::-webkit-details-marker{display:none}
+.more summary::after{content:"＋";font-weight:500}
+.more[open] summary::after{content:"－"}
+.more .nl{border-top:0}
+
+/* ===== 資料の区画：箱に入れず、行と余白で並べる ===== */
+.blk{padding:clamp(56px,7vw,88px) 0;border-top:1px solid var(--ln2)}
+.in{display:grid;grid-template-columns:340px 1fr;gap:clamp(40px,6vw,80px);align-items:start}
+.side{position:sticky;top:40px}
+.side .en{display:block;font-size:13px}
+.side h2{margin:10px 0 0;font-weight:900;letter-spacing:-.03em;line-height:1.4;color:var(--ink);font-size:clamp(1.5rem,2.6vw,2rem)}
+.side .who{margin:10px 0 0;font-size:16px;color:var(--g1)}
+.hist{margin:20px 0 0}
+.hist-h{font-size:14px;font-weight:700;color:var(--g2)}
+.hist ol{list-style:none;margin:6px 0 0;padding:0;border-top:1px solid var(--ln)}
+.hist li{display:grid;grid-template-columns:3.4em 1fr;gap:10px;padding:10px 2px;border-bottom:1px solid var(--ln);font-size:15px;line-height:1.6;color:var(--ink)}
+.hist time{font-family:var(--num);font-size:14px;font-weight:700;color:var(--g2);padding-top:1px}
+.hist .n{margin-right:6px;font-family:var(--num);font-size:14px;font-weight:800}
+.hist .t{word-break:auto-phrase;line-break:strict}
+.oem .hist .n{color:var(--oem)} .dir .hist .n{color:var(--dir)} .etc .hist .n{color:var(--etc)}
+.side .bar{display:block;width:40px;height:3px;margin:22px 0 0;border-radius:2px}
+.terms{list-style:none;display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin:22px 0 0;padding:0}
+.terms li{padding:5px 14px;border-radius:999px;font-size:15px;font-weight:700;line-height:1.7}
+.oem .side .en{color:var(--oem)} .oem .side .bar{background:var(--oem)} .oem .terms li{background:var(--oem-l);color:var(--oem)}
+.dir .side .en{color:var(--dir)} .dir .side .bar{background:var(--dir)} .dir .terms li{background:var(--dir-l);color:var(--dir)}
+.etc .side .en{color:var(--etc)} .etc .side .bar{background:var(--etc)}
+
+.docs{list-style:none;margin:0;padding:0;border-top:1px solid var(--ln)}
+.doc{position:relative;display:grid;grid-template-columns:4.4em 1fr 2.4em;gap:20px;padding:30px 12px;border-bottom:1px solid var(--ln);text-decoration:none;color:inherit;transition:background .2s}
+.doc .no{font-family:var(--num);font-size:15px;font-weight:800;letter-spacing:.06em;padding-top:3px}
+.oem .doc .no,.oem .doc .arr{color:var(--oem)}
+.dir .doc .no,.dir .doc .arr{color:var(--dir)}
+.etc .doc .no,.etc .doc .arr{color:var(--etc)}
+.doc h3{margin:0;font-size:clamp(1.05rem,1.6vw,1.2rem);font-weight:900;line-height:1.55;color:var(--ink)}
+.ttl{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.ttl .bd{margin:0}
+.doc p{margin:6px 0 0;font-size:16px;line-height:1.85;color:var(--g1);word-break:auto-phrase;line-break:strict}
+.doc .memo{margin:12px 0 0;padding:0 0 0 12px;border-left:3px solid var(--new);font-size:15px;line-height:1.7}
+.urlrow{display:flex;align-items:center;gap:10px;margin:12px 0 0}
+.doc .url{min-width:0;font-family:var(--num);font-size:14px;color:var(--g2);word-break:break-all}
+.cp{position:relative;z-index:1;flex:none;min-height:44px;min-width:5.2em;padding:0 12px;border:1px solid var(--ln);border-radius:8px;background:#fff;color:var(--g1);font:inherit;font-size:14px;font-weight:700;cursor:pointer;transition:background .15s,border-color .15s}
+.cp:hover{border-color:var(--g3)}
+.cp.done{background:var(--ink);border-color:var(--ink);color:#fff}
+.doc .st{display:block;margin:10px 0 0;font-size:15px;color:var(--g3)}
+.doc .arr{align-self:center;justify-self:end;font-size:20px;font-weight:700;transition:translate .2s}
+.doc.link{display:block;padding:0}
+.doc.link .lk{display:grid;grid-template-columns:4.4em 1fr 2.4em;gap:20px;padding:30px 12px 0;text-decoration:none;color:inherit}
+.doc.link .urlrow{margin:0;padding:12px 12px 30px calc(4.4em + 32px)}
+.doc.link:hover .arr{translate:4px 0}
+.oem .doc.link:hover{background:var(--oem-l)} .dir .doc.link:hover{background:var(--dir-l)} .etc .doc.link:hover{background:var(--etc-l)}
+.doc:not(.link) h3{color:var(--g1)}
+.fine{margin:18px 0 0;font-size:15px;color:var(--g2)}
+
+footer{padding:44px 0 60px;border-top:1px solid var(--ln2);text-align:center;font-size:14.5px;color:var(--g2)}
+footer p + p{margin-top:4px}
+
+@media(max-width:900px){
+  .in{grid-template-columns:1fr;gap:28px}
+  .side{position:static}
+  .terms{flex-direction:row;flex-wrap:wrap}
+}
+@media(max-width:600px){
+  .nl a{grid-template-columns:auto 1fr;gap:4px 12px;padding:14px 4px}
+  .nl .t{grid-column:1 / -1}
+  .doc{grid-template-columns:3.4em 1fr;gap:12px;padding:26px 4px}
+  .doc .arr{display:none}
+  .doc.link .lk{grid-template-columns:3.4em 1fr;gap:12px;padding:26px 4px 0}
+  .doc.link .urlrow{padding:12px 4px 26px calc(3.4em + 16px)}
+  .hero .deco .hm{display:none}
+}
+</style>
+</head>
+<body>
+
+
+<header class="hero">
+  <div class="deco" aria-hidden="true">
+    <!-- 受話器 -->
+    <svg viewBox="0 0 48 48" style="left:8%;top:18%;width:74px;rotate:-14deg"><path d="M14 6l-6 2c-3 1-4 4-3 7 4 12 13 21 25 25 3 1 6 0 7-3l2-6-9-5-4 4c-5-2-9-6-11-11l4-4z"/></svg>
+    <!-- 着信の波 -->
+    <svg class="hm" viewBox="0 0 48 48" style="left:21%;top:62%;width:56px;rotate:8deg"><path d="M16 32a12 12 0 0 1 0-16M24 38a20 20 0 0 1 0-28M8 26a4 4 0 0 1 0-4"/></svg>
+    <!-- ヘッドセット -->
+    <svg viewBox="0 0 48 48" style="right:9%;top:15%;width:78px;rotate:-6deg"><path d="M8 28v-6a16 16 0 0 1 32 0v6"/><rect x="5" y="26" width="8" height="12" rx="3"/><rect x="35" y="26" width="8" height="12" rx="3"/><path d="M39 38c0 4-5 6-11 6h-3"/></svg>
+    <!-- ショートメッセージ -->
+    <svg class="hm" viewBox="0 0 48 48" style="right:19%;top:60%;width:52px;rotate:12deg"><rect x="13" y="4" width="22" height="40" rx="4"/><path d="M21 38h6M18 13h12M18 19h9"/></svg>
+    <!-- 予約のカレンダー -->
+    <svg class="hm" viewBox="0 0 48 48" style="left:33%;top:8%;width:48px;rotate:-6deg"><rect x="6" y="10" width="36" height="32" rx="4"/><path d="M6 19h36M15 6v8M33 6v8M17 30l5 5 9-10"/></svg>
+    <!-- 店ののれん -->
+    <svg class="hm" viewBox="0 0 48 48" style="right:33%;top:9%;width:50px;rotate:8deg"><path d="M4 10h40M8 10v16M18 10v16M28 10v16M38 10v16M8 26h30M10 26v14M38 26v14M6 40h36"/></svg>
+    <!-- 吹き出し -->
+    <svg class="s" viewBox="0 0 48 48" style="left:4%;top:48%;width:52px"><path d="M8 10h32a4 4 0 0 1 4 4v16a4 4 0 0 1-4 4H22l-9 8v-8H8a4 4 0 0 1-4-4V14a4 4 0 0 1 4-4z"/><path d="M14 22h20"/></svg>
+    <!-- 24時間の時計 -->
+    <svg class="s" viewBox="0 0 48 48" style="right:4%;top:46%;width:50px"><circle cx="24" cy="24" r="18"/><path d="M24 13v11l8 5"/></svg>
+    <!-- 転送の矢印 -->
+    <svg class="s hm" viewBox="0 0 48 48" style="left:40%;top:78%;width:40px"><path d="M6 16h30l-7-7M42 32H12l7 7"/></svg>
+    <!-- 通知のベル -->
+    <svg class="s" viewBox="0 0 48 48" style="right:38%;top:79%;width:32px"><path d="M12 34h24l-3-5V20a9 9 0 0 0-18 0v9z"/><path d="M20 38a4 4 0 0 0 8 0"/></svg>
+    <span class="dot" style="left:15%;top:40%;width:8px;height:8px"></span>
+    <span class="dot" style="right:14%;top:38%;width:6px;height:6px"></span>
+    <span class="dot hm" style="left:28%;top:30%;width:5px;height:5px"></span>
+    <span class="dot hm" style="right:27%;top:84%;width:7px;height:7px"></span>
+  </div>
+  <div class="w">
+    <span class="en">Omakase Juden AI</span>
+    <h1>おまかせ受電AI</h1>
+    <span class="rule" aria-hidden="true"></span>
+    <p class="meta">
+      <span>最終更新 <b>2026.09.23</b></span>
+      <span class="k"><i style="background:var(--oem)"></i>OEM 4点</span>
+      <span class="k"><i style="background:var(--dir)"></i>直販 4点</span>
+      <span class="k"><i style="background:var(--etc)"></i>その他 2点</span>
+    </p>
+  </div>
+</header>
+
+<main>
+
+<!-- お知らせ -->
+<section class="news" aria-labelledby="news-h">
+  <div class="w">
+    <div class="sh"><h2 id="news-h">お知らせ</h2><span class="en">News</span></div>
+    <ul class="nl">
+      <li><a href="#oem"><time>09.23</time><span class="cat oem">OEM</span><span class="t"><span class="bd bg-soon">準備中</span>販売パートナー向けの資料4点を準備しています</span></a></li>
+      <li><a href="#etc"><time>09.23</time><span class="cat etc">その他</span><span class="t"><span class="bd bg-new">NEW</span>資料インデックスを公開しました。資料の公開はこのページでお知らせします</span></a></li>
+      <li><a href="#c-02"><time>09.18</time><span class="cat etc">その他</span><span class="t"><span class="bd bg-in">社内</span>OEM提供に向けた追加機能の検討メモを社内で共有しました</span></a></li>
+      <li><a href="#c-01"><time>09.18</time><span class="cat etc">その他</span><span class="t"><span class="bd bg-new">NEW</span>AI受電担当 ひよりの自己紹介ページを公開しました</span></a></li>
+      <li><a href="#direct"><time>09.17</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-up">更新</span>電話を受けるときのトークスクリプトを見直しました</span></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- OEM -->
+<section class="blk oem" id="oem" aria-labelledby="oem-h">
+  <div class="w in">
+    <div class="side">
+      <span class="en">B ／ OEM</span>
+      <h2 id="oem-h">貴社の商材として売る</h2>
+      <p class="who">お客様に売る会社の方へ</p>
+      <div class="hist"><p class="hist-h">この区画の更新履歴</p><ol><li><time>09.23</time><span class="t"><span class="n">B区画</span>新設。資料4点を準備中で掲載</span></li><li><time>09.18</time><span class="t"><span class="n">C-02</span>OEM向け追加機能の検討メモを社内共有</span></li><li><time>09.18</time><span class="t"><span class="n">C-01</span>自己紹介ページでパートナー相談の受付を開始</span></li></ol></div>
+      <span class="bar" aria-hidden="true"></span>
+      <ul class="terms"><li>飲食店向けから提供準備中</li><li>取扱条件は個別にご案内</li></ul>
+      </div>
+    <ul class="docs">
+      <li><div class="doc" id="b-01">
+        <span class="no">B-01</span>
+        <div><div class="ttl"><h3>OEM提供のご案内</h3><span class="bd bg-soon">準備中</span></div>
+          <p>貴社がやること、弊社がやることの分担と、導入までの流れをまとめます。OEMの商談はここから始めます。</p>
+          <span class="st">公開時にこのページでお知らせします</span></div>
+      </div></li>
+      <li><div class="doc" id="b-02">
+        <span class="no">B-02</span>
+        <div><div class="ttl"><h3>パートナー説明会の案内</h3><span class="bd bg-soon">準備中</span></div>
+          <p>販売パートナーを検討している会社向けの説明会の案内です。参加の際に会社名と取扱商材を伺います。</p>
+          <span class="st">日程が決まり次第、このページでお知らせします</span></div>
+      </div></li>
+      <li><div class="doc" id="b-03">
+        <span class="no">B-03</span>
+        <div><div class="ttl"><h3>パートナー説明会 投影資料</h3><span class="bd bg-soon">準備中</span></div>
+          <p>説明会の当日に映す資料です。誰が話しても同じ話になるよう、話す文言を併記します。</p>
+          <span class="st">説明会の前に公開し、このページでお知らせします</span></div>
+      </div></li>
+      <li><div class="doc" id="b-04">
+        <span class="no">B-04</span>
+        <div><div class="ttl"><h3>パートナー向け説明ノート</h3><span class="bd bg-in">社内</span></div>
+          <span class="st">社内共有のため、このページからは開けません</span></div>
+      </div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 直販 -->
+<section class="blk dir" id="direct" aria-labelledby="dir-h">
+  <div class="w in">
+    <div class="side">
+      <span class="en">A ／ Direct</span>
+      <h2 id="dir-h">自分のお店で使う</h2>
+      <p class="who">電話を受ける会社・お店の方へ</p>
+      <div class="hist"><p class="hist-h">この区画の更新履歴</p><ol><li><time>09.23</time><span class="t"><span class="n">A区画</span>新設。A-02〜A-04を準備中で掲載</span></li><li><time>09.18</time><span class="t"><span class="n">C-01</span>先着30社の無料モニター募集を開始</span></li><li><time>09.17</time><span class="t"><span class="n">受電</span>トークスクリプトを見直し</span></li></ol></div>
+      <span class="bar" aria-hidden="true"></span>
+      <ul class="terms"><li>先着30社 無料モニター募集中</li><li>通常料金【調整中】</li></ul>
+    </div>
+    <div>
+      <ul class="docs">
+        <li><div class="doc link" id="a-01">
+          <a class="lk" href="https://omakase-juden-ai.taka2007.chatgpt.site/" target="_blank" rel="noopener"><span class="no">A-01</span>
+          <div><div class="ttl"><h3>サービス紹介ページ</h3></div>
+            <p>電話の種類ごとに、AIが受けるか人へつなぐかをお店で決めるサービスです。3つの選択で、自店の受電ルールを試せます。</p></div>
+          <span class="arr" aria-hidden="true">→</span></a>
+          <div class="urlrow"><span class="url">omakase-juden-ai.taka2007.chatgpt.site/</span><button type="button" class="cp" data-url="https://omakase-juden-ai.taka2007.chatgpt.site/">コピー</button></div>
+        </div></li>
+        <li><div class="doc" id="a-02">
+          <span class="no">A-02</span>
+          <div><div class="ttl"><h3>無料相談会の案内</h3><span class="bd bg-soon">準備中</span></div>
+            <p>電話対応に困っている会社・お店向けの相談会の案内です。日程とタイムテーブルを載せます。</p>
+            <span class="st">日程が決まり次第、このページでお知らせします</span></div>
+        </div></li>
+        <li><div class="doc" id="a-03">
+          <span class="no">A-03</span>
+          <div><div class="ttl"><h3>無料相談会 投影資料</h3><span class="bd bg-soon">準備中</span></div>
+            <p>相談会の当日に映す資料です。各ページに話す文言を併記します。</p>
+            <span class="st">相談会の前に公開し、このページでお知らせします</span></div>
+        </div></li>
+        <li><div class="doc" id="a-04">
+          <span class="no">A-04</span>
+          <div><div class="ttl"><h3>商談時の説明ノート</h3><span class="bd bg-in">社内</span></div>
+            <span class="st">社内共有のため、このページからは開けません</span></div>
+        </div></li>
+      </ul>
+      <p class="fine">モニター期間・通話料・対象範囲などの利用条件は、お申込み時にご案内します。</p>
+    </div>
+  </div>
+</section>
+
+<!-- その他 -->
+<section class="blk etc" id="etc" aria-labelledby="etc-h">
+  <div class="w in">
+    <div class="side">
+      <span class="en">C ／ Others</span>
+      <h2 id="etc-h">オプション・その他</h2>
+      <p class="who">直販にもOEMにも使う資料</p>
+      <div class="hist"><p class="hist-h">この区画の更新履歴</p><ol><li><time>09.23</time><span class="t"><span class="n">C区画</span>オプション・その他の区画を新設</span></li><li><time>09.18</time><span class="t"><span class="n">C-02</span>追加機能の検討メモを社内共有</span></li><li><time>09.18</time><span class="t"><span class="n">C-01</span>ひよりの自己紹介ページを公開</span></li></ol></div>
+      <span class="bar" aria-hidden="true"></span>
+    </div>
+    <ul class="docs">
+      <li><div class="doc link" id="c-01">
+          <a class="lk" href="https://writeup-inc.github.io/saas/ai-reception-hiyori/"><span class="no">C-01</span>
+          <div><div class="ttl"><h3>ひよりの自己紹介ページ</h3><span class="bd bg-new">NEW</span></div>
+          <p>AI受電担当 ひよりが、電話のあとにショートメッセージでお客様に届けるページです。受電内容の残し方、10秒デモ、無料モニター募集を載せています。</p></div>
+          <span class="arr" aria-hidden="true">→</span></a>
+          <div class="urlrow"><span class="url">writeup-inc.github.io/saas/ai-reception-hiyori/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/ai-reception-hiyori/">コピー</button></div>
+        </div></li>
+      <li><div class="doc" id="c-02">
+        <span class="no">C-02</span>
+        <div><div class="ttl"><h3>追加機能の検討メモ</h3><span class="bd bg-in">社内</span></div>
+          <span class="st">開発検討中の内容のため、このページからは開けません</span></div>
+      </div></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>おまかせ受電AI 資料インデックス</p>
+  <p>社内共有用の資料インデックスです。</p>
+</footer>
+
+<script>
+(function(){
+  function fallback(t){
+    var ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');
+    ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');}catch(e){}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll('.cp').forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.preventDefault();e.stopPropagation();
+      var u=btn.getAttribute('data-url');
+      var ok=function(){btn.textContent='コピー済み';btn.classList.add('done');
+        setTimeout(function(){btn.textContent='コピー';btn.classList.remove('done');},1600);};
+      if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){fallback(u);ok();});}
+      else{fallback(u);ok();}
+    });
+  });
+})();
+</script>
+</body>
+</html>
