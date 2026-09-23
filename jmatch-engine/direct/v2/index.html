@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://writeup-inc.github.io/saas/jmatch-engine/direct/v2/">
 <meta name="description" content="8項目で使えそうな制度の候補と締切が分かり、その後も御社に合う制度が毎週金曜に届きます。事業計画書はAIの質問に答えて土台を作れます。初期登録費用10万円＋月額3万円（税別）、成功報酬なし。">
 <title>Jマッチエンジン｜使える制度を見逃さない。見つけたら、すぐ書ける。</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,7 +67,7 @@ p{margin:0 0 14px}
 .hd .w{display:flex;align-items:center;justify-content:space-between;gap:16px;height:100%}
 .logo{font-size:15.5px;font-weight:900;letter-spacing:.13em;color:var(--bk);text-decoration:none;white-space:nowrap}
 .hd nav{display:flex;align-items:center;gap:clamp(12px,2vw,26px)}
-.hd nav a{font-family:var(--num);font-size:13px;font-weight:800;letter-spacing:.14em;color:var(--g1);text-decoration:none}
+.hd nav a{font-size:14px;font-weight:700;letter-spacing:.04em;color:var(--g1);text-decoration:none}
 .hd nav a:hover{color:var(--ac)}
 .hd nav .hcta{font-family:var(--sans);letter-spacing:.02em;font-size:14px;padding:10px 18px;background:var(--ac);color:#fff;border-radius:3px}
 .hd nav .hcta:hover{background:var(--ac2);color:#fff}
@@ -88,7 +89,7 @@ p{margin:0 0 14px}
 .hero{overflow:hidden}
 .hero .w{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(32px,4vw,56px);align-items:center;
   padding-top:clamp(56px,7vw,96px);padding-bottom:clamp(64px,8vw,104px)}
-.tagline{margin:0;display:inline-block;padding:6px 12px;background:var(--ac);color:#fff;font-size:12.5px}
+.tagline{margin:0;display:inline-block;padding:6px 14px;background:var(--ac);color:#fff;font-size:14px;font-weight:700;letter-spacing:.08em}
 .hero h1{margin:26px 0 22px;font-weight:900;letter-spacing:-.035em;line-height:1.24;color:var(--bk);font-size:clamp(2.2rem,4.3vw,3.7rem)}
 .hero h1 em{font-style:normal;color:var(--ac)}
 .hero .sub{max-width:28em;margin:0 0 32px;font-size:clamp(17px,1.6vw,19.5px);line-height:1.9;color:var(--g1)}
@@ -114,6 +115,7 @@ p{margin:0 0 14px}
 .proof .nums span{font-size:14.5px;font-weight:700;color:var(--acm)}
 .proof .src{margin:0;font-size:13px;line-height:1.8;color:var(--acm)}
 .proof .src a{color:#fff}
+.proof .src.lbl{font-size:14px;font-weight:700;color:#fff}
 
 /* 区画：左に見出し（追従）・右に中身 */
 .sec{padding:clamp(80px,10vw,128px) 0;border-top:1px solid var(--ln2)}
@@ -168,6 +170,7 @@ p{margin:0 0 14px}
 .tl .res{margin:4px 0 0;font-size:15px;font-weight:700;color:var(--g2)}
 .tl .res.good{color:var(--ac)}
 .shots{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:18px;align-items:end;margin:26px 0 0}
+.shots.one-col{grid-template-columns:minmax(0,1fr)}
 .shots > *{min-width:0}
 
 /* 数字の帯 */
@@ -219,13 +222,10 @@ p{margin:0 0 14px}
 /* 05 行き先と残る力 */
 .dests{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0 0;padding:0}
 .dests li{padding:14px 14px;border:1px solid var(--ln);border-radius:6px;background:#fff;text-align:center;font-weight:700;font-size:15.5px;line-height:1.5;color:var(--bk)}
-.powers{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 0;padding:0}
-.powers li{padding:18px 16px;border-top:3px solid var(--ac);background:var(--acl);font-weight:700;font-size:16px;line-height:1.55;color:var(--bk)}
-.sub3{margin:clamp(40px,5vw,56px) 0 0;font-weight:900;font-size:clamp(1.15rem,1.8vw,1.4rem);color:var(--bk)}
 
 /* 06 人の支援 */
 .walls{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.wall{border:1px solid var(--ln);border-radius:8px;background:#fff;overflow:hidden}
+.wall{display:grid;grid-template-rows:auto 1fr;border:1px solid var(--ln);border-radius:8px;background:#fff;overflow:hidden}
 .wall .q{margin:0;padding:14px 18px;background:var(--acl);font-weight:700;font-size:15px;line-height:1.6;color:var(--g1)}
 .wall .a{padding:16px 18px 18px}
 .wall h3{margin:0 0 4px;font-size:18px;font-weight:900;color:var(--bk)}
@@ -259,24 +259,9 @@ p{margin:0 0 14px}
 .fit h3{margin:0 0 8px;font-size:15.5px;font-weight:900;color:var(--bk)}
 .fit > div:first-child h3{color:var(--ac)}
 .fit ul{margin:0;padding-left:1.1em;font-size:15.5px;line-height:1.85;color:var(--g1)}
-.role{display:grid;grid-template-columns:1fr 1fr;margin:22px 0 0;border:1px solid var(--ln);border-radius:8px;overflow:hidden}
-.role > div{padding:16px 20px}
-.role > div:first-child{background:var(--ac);color:#fff}
-.role > div + div{background:var(--pa)}
-.role small{display:block;margin-bottom:4px;font-size:13px;font-weight:700;opacity:.85}
-.role p{margin:0;font-size:16px;font-weight:700;line-height:1.6}
 .note{margin:14px 0 0;font-size:13.5px;line-height:1.8;color:var(--g2)}
 
 /* 08 手順 */
-.range{display:grid;grid-template-columns:2fr 4fr;margin:0 0 18px;border-radius:4px;overflow:hidden;font-size:14px;font-weight:700;text-align:center}
-.range span{padding:10px 8px;line-height:1.5}
-.range span:first-child{background:var(--acl2);color:var(--ac)}
-.range span:last-child{background:var(--ac);color:#fff}
-.steps{list-style:none;counter-reset:st;margin:0;padding:0;border-top:2px solid var(--bk)}
-.steps li{counter-increment:st;display:grid;grid-template-columns:56px 1fr;gap:14px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--ln)}
-.steps li::before{content:counter(st,decimal-leading-zero);font-family:var(--num);font-weight:900;font-size:24px;line-height:1.2;color:var(--ac)}
-.steps b{font-size:17.5px;color:var(--bk)}
-.steps span{display:block;margin-top:2px;font-size:15px;line-height:1.75;color:var(--g2)}
 
 /* 09 質問 */
 .faq{border-top:2px solid var(--bk)}
@@ -301,6 +286,43 @@ footer .links{display:flex;flex-wrap:wrap;gap:6px 20px;margin:0 0 14px}
 footer .read{margin:0 0 16px;font-size:14.5px}
 footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13px;line-height:1.85;color:var(--g2)}
 
+/* ChatGPTでファクトチェック（外で確かめられる区画だけ。主CTAより弱く） */
+.fc-btn{display:inline-flex;align-items:center;gap:.6em;min-height:44px;margin-top:22px;padding:8px 16px;
+  border:1px solid currentColor;border-radius:999px;background:transparent;color:var(--g1);
+  font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.fc-btn:hover{color:var(--bk)}
+.fc-sub{font-size:12px;font-weight:400;opacity:.75}
+
+/* 05 会社カルテ → 4つの行き先 */
+.karte{margin:26px 0 0;text-align:center}
+.karte .src{display:inline-block;padding:12px 26px;background:var(--ac);color:#fff;border-radius:6px;font-weight:900;font-size:17px}
+.karte .src small{display:block;font-weight:500;font-size:13px;color:var(--acm)}
+.karte .down{display:block;height:28px;margin:0 auto;border-left:2px solid var(--ac);width:0}
+.karte .dests{margin:0;position:relative;padding-top:18px;border-top:2px solid var(--ac)}
+.karte .dests li{position:relative;border-top:3px solid var(--ac)}
+.karte .dests li::before{content:"";position:absolute;left:50%;top:-21px;height:18px;border-left:2px solid var(--ac)}
+
+/* 08 毎週まわる流れ（循環図） */
+.cyc-h{margin:34px 0 12px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;font-weight:900;font-size:17px;color:var(--bk)}
+.cyc-h small{font-size:13.5px;font-weight:700;color:var(--ac);background:var(--acl2);padding:2px 10px;border-radius:3px}
+.cycle{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:26px;margin:0;padding:0}
+.cycle li{position:relative;padding:16px 10px;border:1px solid var(--ln);border-top:3px solid var(--ac);border-radius:0 0 6px 6px;background:#fff;text-align:center}
+.cycle li+li::before{content:"→";position:absolute;left:-21px;top:50%;transform:translateY(-50%);font-family:var(--num);font-weight:800;color:var(--ac)}
+.cycle b{display:block;font-size:15.5px;line-height:1.4;color:var(--bk)}
+.cycle span{display:block;margin-top:4px;font-size:13.5px;line-height:1.55;color:var(--g2)}
+.cycle-back{word-break:auto-phrase;line-break:strict;margin:14px 0 0;padding:10px 14px;border:1px dashed var(--acm);border-radius:6px;text-align:center;font-size:14.5px;font-weight:700;color:var(--ac)}
+.cycle-back::before{content:"↺ ";font-family:var(--num)}
+.steps2{list-style:none;counter-reset:st;margin:0;padding:0;border-top:2px solid var(--bk)}
+.steps2 li{counter-increment:st;display:grid;grid-template-columns:56px 1fr;gap:14px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--ln)}
+.steps2 li::before{content:counter(st,decimal-leading-zero);font-family:var(--num);font-weight:900;font-size:22px;color:var(--ac)}
+.steps2 b{font-size:17px;color:var(--bk)}
+.steps2 span{display:block;margin-top:2px;font-size:15px;line-height:1.7;color:var(--g2)}
+
+/* 06 アイコンつきの壁 */
+.wall .q{display:flex;align-items:center;gap:10px}
+.wall .q .ic{color:var(--ac)}
+#support{padding:clamp(64px,7vw,92px) 0}
+
 /* スマホの固定ボタン */
 .fx{display:none}
 @media(max-width:860px){
@@ -311,7 +333,7 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13px;line-height:1.85;col
   .fx a{display:flex;align-items:center;justify-content:center;min-height:54px;background:var(--ac);color:#fff;font-weight:700;font-size:16px;text-decoration:none;border-radius:3px}
 }
 
-.checks li,.qa2 p,.dests li,.powers li,.wall .q,.wall .a p,.incl p,.fit li,.steps span,.coop p,.strip .sc p,.cap,.note,.snote,.sub,.fin p,.peak p,.hero .price{word-break:auto-phrase;line-break:strict}
+.checks li,.qa2 p,.dests li,.powers li,.sub3,.coop h3,.coop li,.role p,.faq summary,.strip .intro,.cycle b,.cycle span,.wall .q,.wall .a p,.incl p,.fit li,.steps span,.coop p,.strip .sc p,.cap,.note,.snote,.sub,.fin p,.peak p,.hero .price{word-break:auto-phrase;line-break:strict}
 
 @media(max-width:960px){
   .hero .w{grid-template-columns:1fr}
@@ -327,8 +349,13 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13px;line-height:1.85;col
   .incl div:nth-child(2){border-right:0}
   .incl div:nth-child(-n+2){border-bottom:1px solid var(--ln2)}
 }
+@media(max-width:860px){
+  .cycle{grid-template-columns:1fr;gap:32px}
+  .cycle li+li::before{content:"↓";left:50%;top:-30px;transform:translateX(-50%);line-height:1}
+}
 @media(max-width:640px){
   .qa2,.fit,.role,.shots{grid-template-columns:1fr}
+  .karte .dests li::before{display:none}
   .dests,.powers{grid-template-columns:1fr 1fr}
   .strip .grid4{grid-template-columns:1fr}
   .strip .sc,.strip .sc + .sc{padding:22px 0 4px;border-right:0}
@@ -338,7 +365,6 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13px;line-height:1.85;col
   .incl{grid-template-columns:1fr}
   .incl div{border-right:0;border-bottom:1px solid var(--ln2)}
   .plan .pr{text-align:left}
-  .range{grid-template-columns:1fr}
   /* スマホのヒーローは、実画面を1枚に絞って大きく見せる */
   .stack{height:auto}
   .stack .c1,.stack .c3{display:none}
@@ -357,10 +383,10 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13px;line-height:1.85;col
   <div class="w">
     <a class="logo" href="#top">Jマッチエンジン</a>
     <nav aria-label="ページ内">
-      <a href="#diag">DIAGNOSIS</a>
-      <a href="#value">VALUE</a>
-      <a href="#price">PRICE</a>
-      <a href="#faq">FAQ</a>
+      <a href="#diag">診断</a>
+      <a href="#value">含まれるもの</a>
+      <a href="#price">料金</a>
+      <a href="#faq">質問</a>
       <a class="hcta" href="https://www.writeup.jp/contact/">導入について相談する</a>
     </nav>
   </div>
@@ -372,7 +398,7 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13px;line-height:1.85;col
 <section class="hero" aria-labelledby="h1">
   <div class="w">
     <div>
-      <p class="tagline en">SUBSIDY ／ FINANCE ／ AI</p>
+      <p class="tagline">補助金・融資 × AI</p>
       <h1 id="h1"><span class="nobr">使える制度を</span><span class="nobr">見逃さない。</span><br><span class="nobr">見つけたら、</span><em class="nobr">すぐ書ける。</em></h1>
       <p class="sub">8項目で、使えそうな制度の候補と締切が分かります。その後も毎週金曜に届き、計画書はAIの質問に答えて書けます。</p>
       <div class="acts">
@@ -394,11 +420,12 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13px;line-height:1.85;col
 <section class="proof" aria-label="運営会社の実績">
   <div class="w">
     <p class="who"><b>運営：株式会社ライトアップ</b>東証グロース：6580</p>
+    <p class="src lbl">補助金・助成金の自動診断<br>「Jシステム」の提供先</p>
     <div class="nums" role="img" aria-label="補助金・助成金の自動診断システム「Jシステム」を、金融機関36、自治体29に提供">
       <div><b>36</b><span>金融機関に提供</span></div>
       <div><b>29</b><span>自治体に提供</span></div>
     </div>
-    <p class="src">補助金・助成金の自動診断システム「Jシステム」の提供先<br>出典：<a href="https://prtimes.jp/main/html/rd/p/000000337.000042366.html" rel="noopener">金融機関</a>　／　<a href="https://prtimes.jp/main/html/rd/p/000000361.000042366.html" rel="noopener">自治体</a></p>
+    <p class="src">出典：<a href="https://prtimes.jp/main/html/rd/p/000000337.000042366.html" rel="noopener">金融機関</a>　／　<a href="https://prtimes.jp/main/html/rd/p/000000361.000042366.html" rel="noopener">自治体</a></p>
   </div>
 </section>
 
@@ -408,7 +435,7 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13px;line-height:1.85;col
     <div class="side">
       <p class="no">01<small>J-SYSTEM AI EDITION</small></p>
       <h2 id="t1">8項目を入れると、<br>候補が<em>5〜6件</em>。</h2>
-      <p class="snote">補助金診断「Jシステム」のAI版です。</p>
+      <p class="snote">金融機関36・自治体29が使う補助金診断「Jシステム」の、AI版です。</p>
     </div>
     <div class="body">
       <div class="mock" aria-label="入力8項目と、抽出された候補の画面イメージ">
@@ -459,10 +486,10 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13px;line-height:1.85;col
         </div>
       </figure>
       <p class="cap">帯の長さは公募期間のイメージです。</p>
-      <div class="shots">
-        <div><div class="shot"><img src="img/digest.png" alt="週に一度届くお知らせ。今週は3つの支援が見つかりました、と表示されている" width="1240" height="816" loading="lazy"></div><p class="cap">毎週金曜の朝に届くお知らせ</p></div>
-        <div><div class="shot scrollshot"><img src="img/watch.png" alt="検討中の一覧。あと27日、あと45日と、締切までの日数が大きく表示される" width="1828" height="652" loading="lazy"></div><p class="cap">「検討中」は締切の近い順に並びます。画面内の制度名・金額は架空です。<span class="sp">横にスクロールできます。</span></p></div>
+      <div class="shots one-col">
+        <div><div class="shot scrollshot"><img src="img/watch.png" alt="検討中の一覧。あと27日、あと45日と、締切までの日数が大きく表示される" width="1828" height="652" loading="lazy"></div><p class="cap">「検討中」は締切の近い順に並び、「あと何日」が大きく出ます。画面内の制度名・金額は架空です。<span class="sp">横にスクロールできます。</span></p></div>
       </div>
+      <button class="fc-btn" type="button" data-fc-section="一度調べて終わりでは、間に合わない" data-fc-claim="補助金・融資・税制優遇などの支援制度は、国・都道府県・市区町村がそれぞれ年間を通じて公募している／公募期間が限られているため、必要になってから調べると締切後になっていることがある">ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button>
     </div>
   </div>
 </section>
@@ -470,22 +497,23 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13px;line-height:1.85;col
 <!-- 数字の帯 -->
 <section class="strip" aria-label="公的統計と調査">
   <div class="w">
-    <p class="intro">届かない。書けない。出しても、半分以上は通らない。</p>
+    <p class="intro">関心はある。でも、申請していない経営層は81.1%。</p>
     <div class="grid4">
-      <div class="sc"><b>81.1<small>%</small></b><p>補助金に関心はあるのに、申請していない経営層</p></div>
+      <div class="sc"><b>81.1<small>%</small></b><p>補助金の活用に関心がありながら、申請手続きに至っていない経営層</p></div>
       <div class="sc"><b>38.7<small>%</small></b><p>申請に進めない理由の最多「自社に合う補助金が分からない」</p></div>
       <div class="sc"><b>約2<small>割</small></b><p>経営計画を策定している小規模事業者</p></div>
       <div class="sc"><b>47.2<small>%</small></b><p>持続化補助金 <span class="nobr">第19回</span>の採択率（16,576件中7,819件）</p></div>
     </div>
     <p class="srcs">出典：81.1%・38.7%は btobee（2026年6月実施、中小企業の経営者・役員300人。事前調査3,000人からの抽出）／約2割は 中小企業庁「2026年版 小規模企業白書」第2-1-53図／47.2%は 中小企業庁 2026年7月29日発表</p>
+    <button class="fc-btn" type="button" data-fc-section="公的統計と調査" data-fc-claim="中小企業の経営者・役員300人の調査（btobee、2026年6月実施）で、補助金の活用に関心がありながら申請手続きに至っていない経営層は81.1%、申請に進めない理由の最多は「自社に最適な補助金が分からない」38.7%／2026年版 小規模企業白書：経営計画を策定している小規模事業者は約2割／小規模事業者持続化補助金 第19回の採択率は47.2%（16,576件中7,819件、中小企業庁 2026年7月29日発表）">ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button>
   </div>
 </section>
 
 <!-- 黒の全面 -->
 <section class="peak" aria-label="詰まるところ">
   <div class="w">
-    <p class="big"><span>見つからない。</span><span>書けない。</span></p>
-    <p class="after">詰まるのは、この2つです。<br><b>月額3万円は、この2つを同時に外すためのもの</b>です。</p>
+    <h2 class="big"><span>見つからない。</span><span>書けない。</span></h2>
+    <p class="after">詰まるのは、この2つです。<br><b>だから、届ける。学べるようにする。書けるようにする。</b></p>
   </div>
 </section>
 
@@ -494,7 +522,7 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13px;line-height:1.85;col
   <div class="w">
     <div class="head3">
       <p class="no">03<small>VALUE</small></p>
-      <h2 id="t3">月額30,000円に、<br><em>この3つ</em>が含まれます。</h2>
+      <h2 id="t3">届く。学べる。書ける。<br>月額3万円に、<em>この3つ</em>。</h2>
     </div>
     <div class="vcards">
       <div class="vc"><svg class="ic" viewBox="0 0 20 20" aria-hidden="true"><rect x="1.5" y="4.5" width="17" height="11"/><path d="M1.5 5.5l8.5 6 8.5-6"/></svg><span class="n">01</span><h3>毎週金曜の朝、<br>合う制度が届く</h3>
@@ -548,9 +576,12 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13px;line-height:1.85;col
       <p class="lead">一度書いた計画を、次の申請にも、融資にも。</p>
       <div class="shot scrollshot"><img src="img/profile.png" alt="会社カルテ。登録した情報の充実度が80パーセントと表示されている" width="1828" height="196" loading="lazy"></div>
       <p class="cap">書いた内容が貯まる「会社カルテ」（画面イメージ）<span class="sp">。横にスクロールできます。</span></p>
-      <ul class="dests"><li>今年の補助金</li><li>翌年度の別の制度</li><li>銀行への融資相談</li><li>新規事業の計画</li></ul>
-      <p class="sub3">結果がどうであっても、会社に残る4つの力</p>
-      <ul class="powers"><li>事業計画を作る力</li><li>強みを言葉にする力</li><li>効果を数字で示す力</li><li>AIを実務で使う力</li></ul>
+      <div class="karte" aria-label="会社カルテから、4つの行き先へ">
+        <p class="src">会社カルテ<small>AIとの対話で書いた、自社の計画</small></p>
+        <span class="down" aria-hidden="true"></span>
+        <ul class="dests"><li>今年の補助金</li><li>翌年度の別の制度</li><li>銀行への融資相談</li><li>新規事業の計画</li></ul>
+      </div>
+      <p class="cap">制度ごとの様式に合わせた書き足しは、そのたびに必要です。作り直しにはなりません。</p>
     </div>
   </div>
 </section>
@@ -565,9 +596,9 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13px;line-height:1.85;col
     </div>
     <div class="body">
       <div class="walls">
-        <div class="wall"><p class="q">この方向で合っている？</p><div class="a"><h3>専門家に相談</h3><p><b class="nobr">初回30分無料</b></p></div></div>
-        <div class="wall"><p class="q">採択されても、先に払うお金が要る</p><div class="a"><h3>資金調達の窓口</h3><p>相談先をご案内します</p></div></div>
-        <div class="wall"><p class="q">AIの使い方が分からない</p><div class="a"><h3>AI家庭教師</h3><p><b>月2時間まで追加料金なし</b>（超過は1時間1万円・税別）</p></div></div>
+        <div class="wall"><p class="q"><svg class="ic" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="6.5" r="3.5"/><path d="M3 18c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg>この方向で合っている？</p><div class="a"><h3>専門家に相談</h3><p><b class="nobr">初回30分無料</b></p></div></div>
+        <div class="wall"><p class="q"><svg class="ic" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="M6.5 5.5 10 10l3.5-4.5M10 10v5.5M7 11.5h6M7 14h6"/></svg>採択後の先払いが重い</p><div class="a"><h3>資金調達の窓口</h3><p>相談先をご案内します</p></div></div>
+        <div class="wall"><p class="q"><svg class="ic" viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="4" width="14" height="9.5" rx="1"/><path d="M1.5 16.5h17"/></svg>AIの使い方が分からない</p><div class="a"><h3>AI家庭教師</h3><p><b>月2時間まで追加料金なし</b>（超過は1時間1万円・税別）</p></div></div>
       </div>
     </div>
   </div>
@@ -585,7 +616,7 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13px;line-height:1.85;col
       <div class="plan">
         <div class="ph">
           <div><span class="en">AI SELF-DRIVE</span><h3>Jマッチエンジン AI自走プラン</h3></div>
-          <p class="pr"><b>30,000</b><span>円／月（税別）</span><small>初期登録費用 100,000円（税別）・成功報酬なし</small></p>
+          <p class="pr"><b>30,000</b><span class="nobr">円／月（税別）</span><small>初期登録費用 100,000円（税別）・<span class="nobr">成功報酬なし</span></small></p>
         </div>
         <div class="incl" aria-label="月額に含まれるもの">
           <div><svg class="ic" viewBox="0 0 20 20" aria-hidden="true"><rect x="1.5" y="4.5" width="17" height="11"/><path d="M1.5 5.5l8.5 6 8.5-6"/></svg><h4>探す</h4><p>毎週金曜の配信、8項目の候補抽出、検討中</p></div>
@@ -597,16 +628,12 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13px;line-height:1.85;col
       </div>
       <div class="coop">
         <h3>導入事例へのご協力で、初期登録費用が0円になる枠があります</h3>
-        <ul><li>利用後の感想</li><li>簡単なインタビュー</li><li>利用状況と改善要望</li><li>導入事例としての掲載（公開前に御社が確認）</li></ul>
-        <p>値引きではなく、事例づくりへのご協力との交換です。月額30,000円（税別）は通常どおり。受付枠と期限は、ご相談の際に個別にご案内します。</p>
+        <ul><li>利用後の感想</li><li>簡単なインタビュー</li><li>利用状況と改善要望</li><li>導入事例として掲載</li></ul>
+        <p>掲載内容は、公開前に必ず御社がご確認ください。値引きではなく、事例づくりへのご協力との交換です。月額30,000円（税別）は通常どおり。受付枠と期限は、ご相談の際に個別にご案内します。</p>
       </div>
       <div class="fit">
         <div><h3>向いている会社</h3><ul><li>計画を作る力を、社内に残したい</li><li>設備投資・採用・新規事業の予定がある</li><li>出てくる制度に、何度も手を挙げたい</li></ul></div>
         <div><h3>向いていない会社</h3><ul><li>申請書類の作成まで丸ごと任せたい</li><li>今回の1件だけ申請できればよい</li></ul></div>
-      </div>
-      <div class="role" aria-label="私たちが渡すものと、御社または有資格者が担うもの">
-        <div><small>私たちが渡すもの</small><p>制度の情報、答えられる問い、事業計画の土台</p></div>
-        <div><small>御社、または御社が依頼する有資格者</small><p>提出書類の作成と提出</p></div>
       </div>
       <p class="note">金額はすべて税別です。最低利用期間・解約・返金の条件は、ご契約前に書面でお示しします。</p>
     </div>
@@ -621,15 +648,21 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13px;line-height:1.85;col
       <h2 id="t8">お申し込みから、<br><em>計画書づくり</em>まで。</h2>
     </div>
     <div class="body">
-      <p class="range" aria-label="手順と料金の範囲"><span>01〜02　初期登録費用の範囲</span><span>03〜06　月額30,000円の範囲</span></p>
-      <ol class="steps">
+      <p class="cyc-h">はじめに<small>初期登録費用の範囲</small></p>
+      <ol class="steps2">
         <li><div><b>お申し込み・ヒアリング</b><span>投資・採用・新規事業の予定を伺います</span></div></li>
-        <li><div><b>会社情報の初期登録</b><span>所在地・業種・従業員数など</span></div></li>
-        <li><div><b>候補の確認と、毎週の配信開始</b><span>Jシステム AIエディションで候補と締切を確認</span></div></li>
-        <li><div><b>事例・動画・AIエージェントの利用開始</b><span>考え方をつかみ、AIとの対話を始めます</span></div></li>
-        <li><div><b>制度が見つかったら、計画書を作成</b><span>質問に答えて土台を作り、様式に合わせて仕上げ</span></div></li>
-        <li><div><b>迷ったら、人に相談</b><span>専門家・AI家庭教師・資金調達の窓口へ</span></div></li>
+        <li><div><b>会社情報の初期登録</b><span>所在地・業種・従業員数など8項目。ここで最初の候補が出ます</span></div></li>
       </ol>
+      <p class="cyc-h">ここから毎週<small>月額3万円の範囲</small></p>
+      <ol class="cycle" aria-label="毎週まわる流れ">
+        <li><b>金曜の配信</b><span>合う制度が届く</span></li>
+        <li><b>検討中</b><span>締切の近い順</span></li>
+        <li><b>AIの問い</b><span>答えるたびに1欄</span></li>
+        <li><b>計画書の土台</b><span>様式に合わせて仕上げ</span></li>
+        <li><b>会社カルテ</b><span>書いた内容が貯まる</span></li>
+      </ol>
+      <p class="cycle-back">カルテの中身は、次の制度と融資相談でそのまま使えます</p>
+      <p class="note">どの段階でも、専門家（初回30分無料）・AI家庭教師（月2時間まで）・資金調達の窓口に相談できます。</p>
     </div>
   </div>
 </section>
@@ -642,17 +675,14 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13px;line-height:1.85;col
       <h2 id="t9">申し込む前の、<br><em>確認事項。</em></h2>
     </div>
     <div class="body faq">
-      <details><summary>月額30,000円には何が含まれますか。</summary><p>制度情報の配信（毎週金曜）と「検討中」、Jシステム AIエディションによる候補の抽出、締切と対象経費の確認、想定採択可能性の参考表示、採択事例と事業計画書の見本、解説動画・資料、AIエージェントによる事業計画書と融資資料の土台作成、会社カルテ、専門家相談（初回30分無料）、AI家庭教師（月2時間まで）、資金調達の相談窓口です。別途、初期登録費用100,000円（税別）がかかります。</p></details>
       <details><summary>Claude Code の利用料は、月額に含まれますか。</summary><p>含まれません。Claude Code は米Anthropic社のAIツールで、AIエージェントはこの上で動きます。利用料は御社で提供元と直接ご契約ください。初期設定は導入時にご案内します。</p></details>
       <details><summary>AIが申請書を完成させてくれますか。</summary><p>いいえ。AIが作るのは事業計画の土台です。制度ごとの提出様式を埋めて仕上げるのは、御社ご自身か、有資格者の先生になります。申請の代行も行いません。</p></details>
-      <details><summary>採択や融資の承認は保証されますか。</summary><p>いいえ。補助金は制度の実施機関が、融資は金融機関が判断します。採択率・受給額・承認をお約束することはありません。</p></details>
-      <details><summary>想定採択可能性とは何ですか。</summary><p>入力情報と確認できる制度情報をもとに、AIが示す参考情報です。申請資格、採択、融資承認、受給額を保証するものではなく、最終的な判断は制度事務局または金融機関によるものです。精密な数値ではなく、段階での表示にしています。</p></details>
+      <details><summary>採択や融資の承認は保証されますか。</summary><p>いいえ。補助金は制度の実施機関が、融資は金融機関が判断します。採択率・受給額・承認をお約束することはありません。画面に出る想定採択可能性も、AIが示す段階表示の参考情報です。</p></details>
       <details><summary>Claude Code を使ったことがなくても利用できますか。</summary><p>使ったことがない前提で設計しています。AIから順番に質問が出るので、事実を思い出して答えていただく形です。分からないときはAI家庭教師（月2時間まで追加料金なし）に聞けます。</p></details>
       <details><summary>自社でどこまで作業する必要がありますか。</summary><p>質問への回答は御社にお願いします。会社の事実を知っているのは御社だけだからです。白紙から文章を書く作業は不要ですが、手を動かしていただく必要はあります。</p></details>
       <details><summary>作った事業計画を、融資や顧問の先生への相談にも使えますか。</summary><p>はい。補助金で聞かれることと、金融機関で聞かれることは多くが重なります。顧問の税理士や行政書士に渡す整理資料としても使えます。</p></details>
       <details><summary>補助金の入金はいつですか。</summary><p>補助金は、多くの制度で事業を実施したあとの精算払いです。先に支払う分の資金は、自己資金か借入でご用意いただく形になります。時期や条件は制度ごとに異なるため、公募要領・交付要領でご確認ください。</p></details>
       <details><summary>どのような採択事例を閲覧できますか。</summary><p>一般公開されている資料、掲載許諾を得ている資料、企業を特定できないよう適切に匿名加工した資料に限ってご覧いただけます。企業秘密や個人情報、掲載許諾が確認できない資料は掲載しません。</p></details>
-      <details><summary>初期登録費用が0円になる条件は何ですか。</summary><p>導入事例へのご協力が条件です。利用後の感想、簡単なインタビュー、利用状況や改善要望のヒアリング、掲載内容を事前確認いただいたうえでの導入事例掲載にご協力いただきます。0円になるのは初期登録費用のみで、月額30,000円（税別）は契約開始後に発生します。受付枠と期限は、個別のご相談の際にお伝えする形です。</p></details>
       <details><summary>最低利用期間、解約、返金、お預かりする情報の取り扱いは？</summary><p>いずれもご契約前に、書面と利用規約・プライバシーポリシーでご提示します。お申し込みの前に、必ずご確認いただけます。</p></details>
     </div>
   </div>
@@ -662,7 +692,7 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13px;line-height:1.85;col
 <section class="fin" id="cta" aria-labelledby="t10">
   <div class="w">
     <h2 id="t10">使える制度を見逃さず、<br><em>見つけたら、すぐ書ける会社へ。</em></h2>
-    <p>初期登録費用10万円＋月額3万円（税別）。成功報酬はありません。導入事例にご協力いただける会社は、初期登録費用が0円です。</p>
+    <p>初期登録費用10万円＋月額3万円（税別）。成功報酬はありません。導入事例へのご協力で、初期登録費用が0円になる枠があります。</p>
     <a class="btn inv" id="endCta" href="https://www.writeup.jp/contact/">導入について相談する</a>
     <p class="fine">受付枠と期限は、ご相談の際に個別にご案内します</p>
   </div>
@@ -699,6 +729,18 @@ footer ul{margin:16px 0 0;padding-left:1.1em;font-size:13px;line-height:1.85;col
   },{threshold:0.1});
   targets.forEach(function(t){io.observe(t);});
 })();
+
+/* ChatGPTでファクトチェック：区画の主張を埋め込んで、別タブで開く */
+document.addEventListener('click', function(e){
+  var b = e.target.closest && e.target.closest('.fc-btn'); if (!b) return;
+  var link = document.querySelector('link[rel=canonical]');
+  var url = link ? link.href : location.href;
+  var p = '次のLPの記載が事実として正しいか、第三者の立場で確認してください。\n\n【対象ページ】' + url +
+    '\n【セクション】' + b.dataset.fcSection + '\n【記載内容】\n' + b.dataset.fcClaim.split('／').join('\n') +
+    '\n\n【確認してほしいこと】\n- 記載は一般的な事実・相場・公的情報と照らして正しいか\n- 誤り・誇張・古い情報があれば指摘する\n- 反対の見方や、読み手が注意すべき点\n- 確認できないことは「確認できない」と書き、推測で補わない';
+  window.open('https://chatgpt.com/?q=' + encodeURIComponent(p), '_blank', 'noopener,noreferrer');
+  if (navigator.clipboard) navigator.clipboard.writeText(p).catch(function(){});
+});
 </script>
 </body>
 </html>
