@@ -44,8 +44,8 @@ pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
   --dir:#1f4f9a; --dir-l:#ecf2fa;
   --etc:#4d5561; --etc-l:#f1f2f4;
   --new:#c2410c;
-  /* サービスの色（ヒーローだけで使う）。補助金・融資なので、公文書の朱肉と金を思わせる落ち着いた金茶 */
-  --svc:#8a6516; --svc-l:#fbf6ea;
+  /* サービスの色（ヒーローだけで使う）。紺の地に、マッチした制度を示す金 */
+  --svc:#e0b85a; --svc-l:#0b2c5c;
   --sans:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
   --num:Inter,"Helvetica Neue",Arial,sans-serif;
 }
@@ -58,27 +58,21 @@ p{margin:0}
 .en{font-family:var(--num);font-weight:800;letter-spacing:.18em;text-transform:uppercase}
 
 
-/* ===== ヒーロー：サービス名＋業種を連想させるアイコン ===== */
-.hero{position:relative;overflow:hidden;padding:clamp(96px,14vw,176px) 0 clamp(80px,11vw,136px);text-align:center;
-  background:radial-gradient(ellipse 60% 70% at 50% 48%,#fff 0,#fff 38%,var(--svc-l) 100%)}
-.hero .deco{position:absolute;inset:0;pointer-events:none}
-.hero .deco svg{position:absolute;fill:none;stroke:var(--svc);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.34}
-.hero .deco svg.s{opacity:.2}
-.hero .deco .dot{position:absolute;border-radius:50%;background:var(--svc);opacity:.18}
+/* ===== ヒーロー：紺の地に、制度の点が会社へつながるネットワーク（企業と制度を毎週マッチングする様子） ===== */
+.hero{position:relative;overflow:hidden;padding:clamp(96px,14vw,176px) 0 clamp(80px,11vw,136px);text-align:center;color:#fff;
+  background:radial-gradient(ellipse 70% 80% at 50% 46%,#123a73 0,#0b2c5c 45%,#061a38 100%)}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+  background-size:40px 40px;-webkit-mask-image:radial-gradient(ellipse at center,#000 0,transparent 75%);mask-image:radial-gradient(ellipse at center,#000 0,transparent 75%)}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:url("hero-net.svg") center/cover no-repeat}
 .hero .w{position:relative}
 .hero .en{display:block;font-size:14px;color:var(--svc)}
-.hero h1{margin:16px 0 0;font-weight:900;letter-spacing:-.04em;line-height:1.1;color:var(--ink);font-size:clamp(2.2rem,9.4vw,6.2rem);white-space:nowrap}
+.hero h1{margin:16px 0 0;font-weight:900;letter-spacing:-.04em;line-height:1.1;color:#fff;font-size:clamp(2.2rem,9.4vw,6.2rem);white-space:nowrap;text-shadow:0 2px 24px rgba(6,26,56,.6)}
 .hero .rule{display:block;width:48px;height:3px;margin:28px auto 0;border-radius:2px;background:var(--svc)}
-.hero .meta{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;margin:22px 0 0;font-size:15px;color:var(--g2)}
-.hero .meta b{font-family:var(--num);color:var(--ink)}
+.hero .meta{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;margin:22px 0 0;font-size:15px;color:#c9d5e8}
+.hero .meta b{font-family:var(--num);color:#fff}
 .hero .meta .k{display:inline-flex;align-items:center;gap:7px}
-.hero .meta .k i{width:10px;height:10px;border-radius:3px}
-@media (prefers-reduced-motion:no-preference){
-  .hero .deco svg{animation:float 9s ease-in-out infinite}
-  .hero .deco svg:nth-child(2n){animation-duration:11s;animation-delay:-3s}
-  .hero .deco svg:nth-child(3n){animation-duration:13s;animation-delay:-6s}
-  @keyframes float{0%,100%{translate:0 0}50%{translate:0 -8px}}
-}
+.hero .meta .k i{width:11px;height:11px;border-radius:3px;box-shadow:0 0 0 1.5px #fff}
 
 /* ===== お知らせ：1本の時系列 ===== */
 .news{padding:clamp(36px,4.5vw,52px) 0 clamp(40px,5vw,56px)}
@@ -150,6 +144,9 @@ p{margin:0}
 .doc.link:hover .arr{translate:4px 0}
 .oem .doc.link:hover{background:var(--oem-l)} .dir .doc.link:hover{background:var(--dir-l)} .etc .doc.link:hover{background:var(--etc-l)}
 .doc:not(.link) h3{color:var(--g1)}
+/* まだ開けない行（準備中・社内）は背景をグレーにして、開ける行と見分ける */
+.doc:not(.link){background:#eef0f3}
+.doc:not(.link) .st{color:var(--g2)}
 .fine{margin:18px 0 0;font-size:15px;color:var(--g2)}
 
 footer{padding:44px 0 60px;border-top:1px solid var(--ln2);text-align:center;font-size:14.5px;color:var(--g2)}
@@ -165,11 +162,10 @@ footer p + p{margin-top:4px}
   .nl .t{grid-column:1 / -1}
   .doc{grid-template-columns:3.4em 1fr;gap:12px;padding:26px 4px}
   .doc .arr{display:none}
+  .doc:not(.link){padding:26px 8px;gap:8px}
   .doc.link .lk{grid-template-columns:3.4em 1fr;gap:12px;padding:26px 4px 0}
   .doc.link .urlrow{padding:12px 4px 26px calc(3.4em + 16px)}
-  .hero .deco .hm{display:none}
-  .hero .deco svg{scale:.72}
-}
+  }
 
 .doc .ver{font-family:var(--num);font-size:14px;font-weight:800;color:var(--g2)}
 footer .motto{margin:0 0 14px;font-size:15px;color:var(--g1)}
@@ -181,32 +177,6 @@ footer nav a{display:inline-flex;align-items:center;min-height:44px;color:var(--
 <body>
 
 <header class="hero">
-  <div class="deco" aria-hidden="true">
-    <!-- 申請書 -->
-    <svg viewBox="0 0 48 48" style="left:8%;top:18%;width:70px;rotate:-12deg"><path d="M12 5h17l9 9v29H12z"/><path d="M29 5v9h9M18 22h14M18 29h14M18 36h9"/></svg>
-    <!-- 電卓 -->
-    <svg class="hm" viewBox="0 0 48 48" style="left:20%;top:63%;width:58px;rotate:10deg"><rect x="10" y="5" width="28" height="38" rx="3"/><rect x="15" y="10" width="18" height="8" rx="1"/><path d="M16 25h2M23 25h2M30 25h2M16 31h2M23 31h2M30 31h2M16 37h2M23 37h2M30 37h2"/></svg>
-    <!-- 円の硬貨 -->
-    <svg viewBox="0 0 48 48" style="right:9%;top:16%;width:76px;rotate:-6deg"><circle cx="24" cy="24" r="18"/><path d="M17 14l7 10 7-10M24 24v12M18 26h12M18 31h12"/></svg>
-    <!-- 銀行（融資） -->
-    <svg class="hm" viewBox="0 0 48 48" style="right:19%;top:62%;width:60px;rotate:8deg"><path d="M6 18 24 8l18 10z"/><path d="M11 22v14M19 22v14M29 22v14M37 22v14M6 40h36"/></svg>
-    <!-- 締切のカレンダー -->
-    <svg class="hm" viewBox="0 0 48 48" style="left:33%;top:8%;width:48px;rotate:-6deg"><rect x="6" y="10" width="36" height="32" rx="4"/><path d="M6 19h36M15 6v8M33 6v8M17 30l5 5 9-10"/></svg>
-    <!-- 探す虫眼鏡 -->
-    <svg class="hm" viewBox="0 0 48 48" style="right:33%;top:10%;width:44px;rotate:10deg"><circle cx="20" cy="20" r="12"/><path d="M29 29l13 13"/></svg>
-    <!-- 上向きのグラフ -->
-    <svg class="s" viewBox="0 0 48 48" style="left:4%;top:48%;width:52px"><path d="M6 42h36M10 36l9-10 7 6 14-16"/><path d="M33 16h7v7"/></svg>
-    <!-- 毎週届く封筒 -->
-    <svg class="s" viewBox="0 0 48 48" style="right:4%;top:46%;width:52px"><rect x="5" y="11" width="38" height="26" rx="3"/><path d="M5 14l19 13 19-13"/></svg>
-    <!-- 計画を書く鉛筆 -->
-    <svg class="s hm" viewBox="0 0 48 48" style="left:40%;top:78%;width:34px"><path d="M32 6l10 10-24 24H8V30z"/><path d="M27 11l10 10"/></svg>
-    <!-- はんこ -->
-    <svg class="s" viewBox="0 0 48 48" style="right:38%;top:79%;width:30px"><path d="M18 6h12v14c0 3 8 4 8 10v4H10v-4c0-6 8-7 8-10z"/><path d="M8 40h32"/></svg>
-    <span class="dot" style="left:15%;top:40%;width:8px;height:8px"></span>
-    <span class="dot" style="right:14%;top:38%;width:6px;height:6px"></span>
-    <span class="dot hm" style="left:28%;top:30%;width:5px;height:5px"></span>
-    <span class="dot hm" style="right:27%;top:84%;width:7px;height:7px"></span>
-  </div>
   <div class="w">
     <span class="en">J-Match Engine</span>
     <h1>Jマッチエンジン</h1>
@@ -278,8 +248,8 @@ footer nav a{display:inline-flex;align-items:center;min-height:44px;color:var(--
         </div></li>
         <li><div class="doc" id="b-03">
           <span class="no">B-03</span>
-          <div><div class="ttl"><h3>パートナー説明会 投影資料</h3><span class="bd bg-soon">準備中</span></div>
-            <p>説明会の当日に映す資料です。誰が話しても同じ話になるよう、話す文言を併記します。</p>
+          <div><div class="ttl"><h3>説明会の投影資料</h3><span class="bd bg-soon">準備中</span></div>
+            <p>パートナー説明会の当日に映す資料です。誰が話しても同じ話になるよう、話す文言を併記します。</p>
             <span class="st">公開時にこのページでお知らせします</span></div>
         </div></li>
         <li><div class="doc" id="b-04">
