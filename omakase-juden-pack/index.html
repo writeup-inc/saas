@@ -45,6 +45,7 @@ pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
   --dir:#1f4f9a; --dir-l:#ecf2fa;
   --etc:#4d5561; --etc-l:#f1f2f4;
   --new:#c2410c;
+  --gray-row:#eef0f3;
   /* サービスの色（ヒーローだけで使う）。お店の電話をあたたかく受けるので、落ち着いた琥珀 */
   --svc:#9a5b1e; --svc-l:#fbf4ec;
   --sans:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
@@ -151,6 +152,9 @@ p{margin:0}
 .doc.link:hover .arr{translate:4px 0}
 .oem .doc.link:hover{background:var(--oem-l)} .dir .doc.link:hover{background:var(--dir-l)} .etc .doc.link:hover{background:var(--etc-l)}
 .doc:not(.link) h3{color:var(--g1)}
+/* まだ開けない行（準備中・社内）は背景をグレーにして、開ける行と見分ける */
+.doc:not(.link){background:var(--gray-row)}
+.doc:not(.link) .st{color:var(--g2)}
 .fine{margin:18px 0 0;font-size:15px;color:var(--g2)}
 
 footer{padding:44px 0 60px;border-top:1px solid var(--ln2);text-align:center;font-size:14.5px;color:var(--g2)}
@@ -166,6 +170,7 @@ footer p + p{margin-top:4px}
   .nl .t{grid-column:1 / -1}
   .doc{grid-template-columns:3.4em 1fr;gap:12px;padding:26px 4px}
   .doc .arr{display:none}
+  .doc:not(.link){padding:26px 8px;gap:8px}
   .doc.link .lk{grid-template-columns:3.4em 1fr;gap:12px;padding:26px 4px 0}
   .doc.link .urlrow{padding:12px 4px 26px calc(3.4em + 16px)}
   .hero .deco .hm{display:none}
@@ -257,7 +262,7 @@ footer p + p{margin-top:4px}
       </div></li>
       <li><div class="doc" id="b-03">
         <span class="no">B-03</span>
-        <div><div class="ttl"><h3>パートナー説明会 投影資料</h3><span class="bd bg-soon">準備中</span></div>
+        <div><div class="ttl"><h3>説明会の投影資料</h3><span class="bd bg-soon">準備中</span></div>
           <p>説明会の当日に映す資料です。誰が話しても同じ話になるよう、話す文言を併記します。</p>
           <span class="st">説明会の前に公開し、このページでお知らせします</span></div>
       </div></li>
@@ -298,7 +303,7 @@ footer p + p{margin-top:4px}
         </div></li>
         <li><div class="doc" id="a-03">
           <span class="no">A-03</span>
-          <div><div class="ttl"><h3>無料相談会 投影資料</h3><span class="bd bg-soon">準備中</span></div>
+          <div><div class="ttl"><h3>相談会の投影資料</h3><span class="bd bg-soon">準備中</span></div>
             <p>相談会の当日に映す資料です。各ページに話す文言を併記します。</p>
             <span class="st">相談会の前に公開し、このページでお知らせします</span></div>
         </div></li>
