@@ -253,7 +253,7 @@ a{color:inherit}
 .last .en{font-size:13px;color:var(--acm)}
 .last p.b{margin:18px 0 0;max-width:720px;font-size:17px;line-height:2;color:#dfe6f0}
 .last ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0;padding:0}
-.last li{padding:5px 14px;border:1px solid rgba(255,255,255,.35);border-radius:999px;font-size:15px}
+.last ul li{padding:5px 14px;border:1px solid rgba(255,255,255,.35);border-radius:999px;font-size:15px}
 .last .btn-w{margin-top:30px;background:#fff;color:var(--ac);border:1px solid #fff}
 .last .btn-w:hover{background:var(--acl)}
 .last .fine{margin:14px 0 0;font-size:14px;color:#b9c6da}
@@ -312,6 +312,64 @@ a{color:inherit}
   .tile{display:grid;grid-template-columns:36px 1fr;column-gap:14px;padding:18px}
   .tile svg{grid-row:1/3}
   .tile h3{margin:0 0 4px}
+}
+
+
+/* 写真：店舗の場面 */
+.scenes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:32px 0 8px}
+.scenes figure{margin:0}
+.scenes img{display:block;width:100%;aspect-ratio:4/3;height:auto;object-fit:cover;border-radius:10px}
+.scenes figcaption{margin-top:8px;font-size:15px;color:var(--g1);line-height:1.6}
+.scenes figcaption b{display:inline-block;margin-right:8px;padding:0 8px;border-radius:4px;background:var(--acl2);color:var(--ac);font-size:14px}
+/* フローチャート */
+.fc{margin-top:36px;padding:26px 24px 20px;border:1px solid var(--ln);border-radius:14px;background:#fff}
+.fc-t{margin:0 0 14px;font-family:var(--ff-head);font-size:18px;font-weight:900}
+.fc svg{display:block;width:100%;height:auto}
+.fc .fc-sp{display:none;max-width:420px;margin:0 auto}
+.fc .n rect{fill:#fff;stroke:#b8c0cb;stroke-width:1.5}
+.fc .n text{font-family:var(--ff-head);font-size:16px;font-weight:700;fill:#1c232c;text-anchor:middle}
+.fc .n.ac rect{fill:var(--ac);stroke:var(--ac)}
+.fc .n.ac text{fill:#fff}
+.fc .e path{fill:none;stroke:#9aa6b8;stroke-width:2}
+.fc .lb text{font-family:var(--ff-body);font-size:14px;font-weight:700;fill:#5a6472;paint-order:stroke;stroke:#fff;stroke-width:6px;stroke-linejoin:round}
+.fc-c{margin:14px 0 0;padding-top:12px;border-top:1px solid var(--ln2);font-family:var(--ff-head);font-size:17px;font-weight:900;color:var(--ac)}
+.aside{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center;margin-top:22px}
+.but{list-style:none;margin:0;padding:0}
+.but li{position:relative;padding:8px 0 8px 22px;font-size:16px;line-height:1.75;border-bottom:1px solid var(--ln2)}
+.but li::after{content:"";position:absolute;left:4px;top:19px;width:8px;height:8px;border-radius:50%;background:var(--acm)}
+.dusk{margin:0}
+.dusk img{display:block;width:100%;aspect-ratio:16/9;height:auto;object-fit:cover;border-radius:10px}
+.dusk figcaption{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 10px;margin-top:8px;font-size:15px;color:var(--g1)}
+.dusk figcaption span{font-size:13px;color:var(--g2)}
+.ex-h{margin:40px 0 0;font-size:17px;font-weight:900}
+.ex-h + .flow{margin-top:14px}
+/* 写真の帯 */
+.band{position:relative;margin:30px 0 0;border-radius:12px;overflow:hidden}
+.band img{display:block;width:100%;height:240px;object-fit:cover}
+.band::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,44,92,.82) 0,rgba(11,44,92,.35) 60%,rgba(11,44,92,.1) 100%)}
+.band figcaption{position:absolute;left:28px;right:28px;bottom:24px;z-index:1;font-family:var(--ff-head);font-size:clamp(1.05rem,2.2vw,1.45rem);font-weight:900;color:#fff;line-height:1.5}
+/* CTA：写真を敷く＋導入の流れ */
+.last{position:relative;overflow:hidden}
+.last::before{content:"";position:absolute;inset:0;background:url(images/partner-handshake.webp) center/cover no-repeat;opacity:.22}
+.last .w{position:relative}
+.onb{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:30px 0 0;padding:0;counter-reset:o;border-top:1px solid rgba(255,255,255,.3)}
+.onb li{position:relative;padding:16px 18px 14px 0;font-size:15px;line-height:1.7;color:#dfe6f0}
+.onb li + li{padding-left:18px;border-left:1px solid rgba(255,255,255,.2)}
+.onb .en{display:block;font-size:13px;color:var(--acm)}
+.onb b{display:block;font-family:var(--ff-head);font-size:17px;color:#fff}
+.onb-n{margin:8px 0 0;font-size:14px;color:#b9c6da}
+@media(max-width:760px){
+  .scenes{grid-template-columns:1fr 1fr;gap:12px 10px}
+  .scenes figure:first-child{grid-column:1 / -1}
+  .scenes figure:not(:first-child) figcaption b{display:block;width:max-content;margin:0 0 2px}
+  .fc{padding:20px 14px 16px}
+  .fc .fc-pc{display:none}
+  .fc .fc-sp{display:block}
+  .aside{grid-template-columns:1fr}
+  .band img{height:180px}
+  .onb{grid-template-columns:1fr 1fr}
+  .onb li:nth-child(3){padding-left:0;border-left:0}
+  .onb li:nth-child(n+3){border-top:1px solid rgba(255,255,255,.2)}
 }
 
 /* ===== ポップアップ（3つのコピーと見出しの通読） ===== */
@@ -446,6 +504,11 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
   <div class="w">
     <div class="sh"><p class="shl"><span class="no">01</span><span class="en">For partners</span></p><h2 id="h1s">店舗に商材を売る会社なら、<br>次の訪問で提案できます。</h2></div>
     <p class="body">電話は、どの店舗にもある困りごとです。予約の電話で手が止まる、営業電話に時間を取られる、営業時間外の電話を取りこぼす。すでに店舗と取引がある会社なら、既存のお客様への、もう1本の提案になります。</p>
+    <div class="scenes">
+      <figure><img src="images/store-kitchen-chef.webp" alt="混み合う店内で調理する料理人" width="1280" height="853" loading="lazy"><figcaption><b>飲食店</b>調理中は、電話に出られない</figcaption></figure>
+      <figure><img src="images/store-salon.webp" alt="美容室の店内。シャンプー台とセット面" width="1280" height="854" loading="lazy"><figcaption><b>美容室</b>施術中は、手が離せない</figcaption></figure>
+      <figure><img src="images/store-cafe-hands.webp" alt="コーヒーを淹れるカフェの店員の手元" width="1280" height="854" loading="lazy"><figcaption><b>カフェ</b>注文が重なる時間に鳴る</figcaption></figure>
+    </div>
     <div class="fit">
       <div>
         <h3>向いている会社</h3>
@@ -472,6 +535,67 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
   <div class="w">
     <div class="sh"><p class="shl"><span class="no">02</span><span class="en">What it does</span></p><h2 id="h2s">店舗の電話を、用件ごとに<br>AIと人へ振り分けます。</h2></div>
     <p class="body">全部の電話をAIに任せるサービスではありません。用件ごとに「最初に受けるのはAIか人か」と「そのあとどうするか」を店舗が決めます。<span class="mk">予約や大切な用件は人へ、定型の質問や営業電話はAIへ。</span>任せる範囲は、あとから変えられます。</p>
+    <div class="fc">
+      <p class="fc-t">1本の電話が流れる道筋</p>
+      <svg class="fc-pc" viewBox="0 0 1040 330" role="img" aria-labelledby="fcA">
+        <title id="fcA">着信するとAIが用件を聞き、予約や大切な用件は人へ、定型の質問や営業電話はAIが案内して完結する。人が出られないときはLINEに通知し、スタッフが折り返す。</title>
+        <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#9aa6b8"/></marker></defs>
+        <g class="e">
+          <path d="M130 165H172" marker-end="url(#ah)"/>
+          <path d="M345 150C390 150 385 68 427 68" marker-end="url(#ah)"/>
+          <path d="M345 180C390 180 385 268 427 268" marker-end="url(#ah)"/>
+          <path d="M580 68H647" marker-end="url(#ah)"/>
+          <path d="M540 96C540 150 600 163 647 163" marker-end="url(#ah)"/>
+          <path d="M810 163H857" marker-end="url(#ah)"/>
+        </g>
+        <g class="lb">
+          <text x="296" y="62">予約・大切な用件</text>
+          <text x="276" y="304">定型の質問・営業電話</text>
+          <text x="572" y="126">出られないとき</text>
+        </g>
+        <g class="n"><rect x="20" y="137" width="110" height="56" rx="10"/><text x="75" y="171">着信</text></g>
+        <g class="n ac"><rect x="175" y="137" width="170" height="56" rx="10"/><text x="260" y="171">AIが用件を聞く</text></g>
+        <g class="n"><rect x="430" y="40" width="150" height="56" rx="10"/><text x="505" y="74">人へつなぐ</text></g>
+        <g class="n"><rect x="650" y="40" width="160" height="56" rx="10"/><text x="730" y="74">スタッフが対応</text></g>
+        <g class="n"><rect x="650" y="135" width="160" height="56" rx="10"/><text x="730" y="169">LINEに通知</text></g>
+        <g class="n"><rect x="860" y="135" width="170" height="56" rx="10"/><text x="945" y="169">スタッフが折り返す</text></g>
+        <g class="n ac"><rect x="430" y="240" width="200" height="56" rx="10"/><text x="530" y="274">AIが案内して完結</text></g>
+      </svg>
+      <svg class="fc-sp" viewBox="0 0 360 460" role="img" aria-labelledby="fcB">
+        <title id="fcB">着信するとAIが用件を聞き、予約や大切な用件は人へ、定型の質問や営業電話はAIが案内して完結する。人が出られないときはLINEに通知し、スタッフが折り返す。</title>
+        <defs><marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#9aa6b8"/></marker></defs>
+        <g class="e">
+          <path d="M180 58V86" marker-end="url(#ah2)"/>
+          <path d="M140 142C140 170 92 160 92 196" marker-end="url(#ah2)"/>
+          <path d="M220 142C220 170 267 160 267 196" marker-end="url(#ah2)"/>
+          <path d="M60 250V296" marker-end="url(#ah2)"/>
+          <path d="M130 250V272H267V296" marker-end="url(#ah2)"/>
+          <path d="M267 350V396" marker-end="url(#ah2)"/>
+        </g>
+        <g class="lb">
+          <text x="14" y="176">予約・大切な用件</text>
+          <text x="214" y="176">定型の質問・営業</text>
+          <text x="140" y="292">出られないとき</text>
+        </g>
+        <g class="n"><rect x="115" y="8" width="130" height="50" rx="10"/><text x="180" y="39">着信</text></g>
+        <g class="n ac"><rect x="85" y="90" width="190" height="52" rx="10"/><text x="180" y="122">AIが用件を聞く</text></g>
+        <g class="n"><rect x="10" y="200" width="165" height="50" rx="10"/><text x="92" y="231">人へつなぐ</text></g>
+        <g class="n ac"><rect x="185" y="200" width="165" height="50" rx="10"/><text x="267" y="231">AIが案内して完結</text></g>
+        <g class="n"><rect x="10" y="300" width="165" height="50" rx="10"/><text x="92" y="331">スタッフが対応</text></g>
+        <g class="n"><rect x="185" y="300" width="165" height="50" rx="10"/><text x="267" y="331">LINEに通知</text></g>
+        <g class="n"><rect x="185" y="400" width="165" height="50" rx="10"/><text x="267" y="431">スタッフが折り返す</text></g>
+      </svg>
+      <p class="fc-c">どの電話を人に残すかは、店舗が用件ごとに決めます。</p>
+    </div>
+    <div class="aside">
+      <ul class="but">
+        <li>営業時間外の予約の電話は、AIが希望を仮受付します。確定はスタッフが行います。</li>
+        <li>電話のあとのSMSやメールは、業種に合わせた作り替えで足せます（05で説明）。</li>
+        <li>用件の分け方は、業種ごとのひな形から選び、あとから変えられます。</li>
+      </ul>
+      <figure class="dusk"><img src="images/store-dusk.webp" alt="夕暮れの店先。明かりのついた店舗の外観" width="1600" height="900" loading="lazy"><figcaption>営業時間外の電話も、AIが一次受けします<span>生成イメージ</span></figcaption></figure>
+    </div>
+    <h3 class="ex-h">用件ごとの振り分けの例</h3>
     <div class="flow" role="table" aria-label="用件ごとの振り分けの例">
       <div class="flow-h" role="row"><span role="columnheader">用件</span><span aria-hidden="true">→</span><span role="columnheader">最初に受ける</span><span aria-hidden="true">→</span><span role="columnheader">次の処理</span></div>
       <div class="flow-r" role="row"><span class="k" role="cell">予約・予約変更</span><span class="ar" aria-hidden="true">→</span><span class="who hu" role="cell"><i>人</i>スタッフへつなぐ</span><span class="ar" aria-hidden="true">→</span><span class="nxt" role="cell">営業時間内はスタッフへ転送。時間外はAIが予約の希望を仮受付し、確定はスタッフが行います</span></div>
@@ -479,7 +603,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
       <div class="flow-r" role="row"><span class="k" role="cell">道順・営業時間</span><span class="ar" aria-hidden="true">→</span><span class="who ai" role="cell"><i>AI</i>AIが受ける</span><span class="ar" aria-hidden="true">→</span><span class="nxt" role="cell">登録済みの店舗情報を見て案内</span></div>
       <div class="flow-r" role="row"><span class="k" role="cell">クレーム・お困りごと</span><span class="ar" aria-hidden="true">→</span><span class="who hu" role="cell"><i>人</i>スタッフへつなぐ</span><span class="ar" aria-hidden="true">→</span><span class="nxt" role="cell">スタッフが出られないときは、AIが用件を聞いてLINEへ通知。スタッフが折り返します</span></div>
     </div>
-    <p class="note">用件の分け方は、業種ごとのひな形から選びます。回答に使う店舗情報は、スプレッドシートに登録したものを参照します。</p>
+    <p class="note">AIが案内に使う店舗情報は、スプレッドシートに登録したものを参照します。</p>
   </div>
 </section>
 
@@ -555,6 +679,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
   <div class="w">
     <div class="sh"><p class="shl"><span class="no">05</span><span class="en">Customize</span></p><h2 id="h5s">SMS・予約台帳・本人の声まで、<br>業種に合わせて作り替えます。</h2></div>
     <p class="body">管理画面は貴社専用に作ります。そのうえで、既存の機能の一部を貴社のお客様に合わせて作り替えます。飲食店と美容室と士業事務所では、電話のあとにやりたいことが違うからです。たとえば次のようなものです。</p>
+    <figure class="band"><img src="images/store-hands-plating.webp" alt="厨房で料理を盛り付ける手元" width="1280" height="853" loading="lazy"><figcaption>電話のあとにやりたいことは、業種ごとに違います。</figcaption></figure>
     <div class="tiles">
       <div class="tile">
         <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="12" y="4" width="24" height="40" rx="4"/><path d="M20 38h8M17 13h14M17 19h10M17 25h12"/></svg>
@@ -636,6 +761,13 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
     <h2 id="h8s">まずは、販売先の業種と<br>想定店舗数をお聞かせください。</h2>
     <p class="b">どの業種の店舗に、どれくらいの数を売る見込みか。それが分かれば、管理画面の作り方と、最初に作り替える機能の候補をお出しできます。仕入の条件も、あわせてご相談ください。</p>
     <ul><li>販売先の業種</li><li>想定の店舗数</li><li>今お持ちの商材</li></ul>
+    <ol class="onb">
+      <li><span class="en">01</span><b>ご相談</b>販売先の業種と店舗数を伺う</li>
+      <li><span class="en">02</span><b>設計</b>管理画面と作り替える機能を決める</li>
+      <li><span class="en">03</span><b>条件のすり合わせ</b>仕入値・分担・契約を決める</li>
+      <li><span class="en">04</span><b>販売開始</b>貴社のサービスとして店舗へ</li>
+    </ol>
+    <p class="onb-n">流れは目安です。各段階の期間は<span class="tbd">調整中</span>です。</p>
     <a class="btn btn-w" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">OEMパートナーについて相談する →</a>
     <p class="fine">株式会社ライトアップのお問い合わせフォームが開きます。</p>
   </div>
