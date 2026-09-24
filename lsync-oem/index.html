@@ -394,6 +394,148 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
 @media(max-width:420px){.logo{font-size:14px}.logo small{margin-left:6px;padding:2px 6px}.hn .btn-s{padding:0 12px}.hd .w{gap:8px}}
 @media(max-width:360px){.logo small{display:none}}
 @media(max-width:600px){.cmp tbody th{width:auto}}
+
+/* ===== 前半：右脳（写真・動く会話・ひと言） ===== */
+:root{--ln-g:#06c755;--y:#ffd54a}
+.hero-v{position:relative;overflow:hidden;color:#fff;background:#0b1a33;border-bottom:0;padding:clamp(56px,7vw,96px) 0 clamp(64px,7vw,104px)}
+.hero-v .hero-bg{position:absolute;inset:0}
+.hero-v .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:60% 50%;animation:kb 26s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.09)}}
+.hero-v::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(8,20,42,.93) 0,rgba(8,20,42,.78) 45%,rgba(8,20,42,.35) 100%),linear-gradient(180deg,rgba(8,20,42,.2),rgba(8,20,42,.75))}
+.hero-v .w{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,5vw,64px);align-items:center}
+.hero-v .eyebrow{color:#cfd9e8}.hero-v .eyebrow b{background:var(--y);color:#0b1a33}
+.hero-v h1{color:#fff;font-size:clamp(1.6rem,7.2vw,2.85rem)}
+.hero-v h1::after{background:var(--y)}
+.hero-v .dots button::before{background:rgba(255,255,255,.3)}.hero-v .dots button[aria-current="true"]::before{background:var(--y)}
+.hero-v .rot .all{color:#fff}
+.hero-v .sub{color:#dfe6f0}
+.hero-v .facts{color:#b9c6da}.hero-v .facts b{color:#fff}
+.btn-y{background:var(--y);color:#0b1a33;border:1px solid var(--y);box-shadow:0 0 0 6px rgba(255,213,74,.18)}
+.btn-y:hover{background:#ffe07a}
+.btn-g{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.45)}
+.btn-g:hover{border-color:#fff}
+.phone{justify-self:center;width:min(330px,100%);margin:0}
+.ph-scr{border-radius:36px;padding:10px;background:#0d0f12;box-shadow:0 40px 80px -30px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.12)}
+.ph-top{display:flex;align-items:center;gap:10px;padding:14px 14px 12px;border-radius:28px 28px 0 0;background:#223a5e;color:#fff}
+.ph-av{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1.5px dashed rgba(255,255,255,.7);font-size:11px;font-weight:700;flex:none}
+.ph-top p{font-size:15px;font-weight:700;line-height:1.35}.ph-top p span{display:block;font-size:12.5px;font-weight:500;opacity:.8}
+.ph-log{list-style:none;margin:0;padding:14px 12px 18px;height:430px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;border-radius:0 0 28px 28px;background:#9fb4d0}
+.m{max-width:84%;padding:9px 12px;border-radius:16px;font-size:14px;line-height:1.6;color:#111;word-break:auto-phrase;line-break:strict;opacity:0;transform:translateY(8px);transition:opacity .35s,transform .35s}
+.m.show{opacity:1;transform:none}
+.m.me{align-self:flex-end;background:#8be06a;border-bottom-right-radius:4px}
+.m.ai{align-self:flex-start;background:#fff;border-bottom-left-radius:4px}
+.m.sys{align-self:center;max-width:none;padding:4px 12px;border-radius:999px;background:rgba(11,26,51,.72);color:#fff;font-size:12.5px;font-weight:700}
+.m.typing{display:none;gap:4px;padding:12px 14px}
+.m.typing.show{display:flex}
+.m.typing i{width:7px;height:7px;border-radius:50%;background:#9aa4b2;animation:tp 1s infinite}
+.m.typing i:nth-child(2){animation-delay:.15s}.m.typing i:nth-child(3){animation-delay:.3s}
+@keyframes tp{0%,80%,100%{opacity:.3}40%{opacity:1}}
+.phone figcaption{margin-top:10px;text-align:center;font-size:13px;color:#b9c6da}
+.rb{padding:clamp(80px,10vw,132px) 0}
+.rb-k{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-family:var(--ff-en);font-size:13px;font-weight:700;letter-spacing:.16em;color:var(--ac)}
+.rb-k::before{content:"";width:28px;height:2px;background:var(--y)}
+.rb-h{margin:0;font-family:var(--ff-head);font-size:clamp(1.5rem,4.4vw,2.9rem);font-weight:900;line-height:1.4;letter-spacing:-.02em;color:var(--bk)}
+.rb-note{margin:22px 0 0;font-size:14px;color:var(--g2)}
+.rb-contrast{background:linear-gradient(180deg,#fff,#f3f6fa)}
+.vs{display:grid;grid-template-columns:1fr 56px 1.25fr;gap:18px;align-items:center;margin-top:clamp(36px,5vw,56px)}
+.vs-a{padding:26px;border-radius:18px;background:#eceff3;filter:grayscale(1);opacity:.85}
+.vs-b{padding:26px;border-radius:18px;background:#fff;border:2px solid var(--ac);box-shadow:0 30px 60px -34px rgba(11,44,92,.45)}
+.vs-l{margin:0 0 14px;font-family:var(--ff-head);font-size:17px;font-weight:900;color:var(--g1)}
+.vs-b .vs-l{color:var(--ac)}
+.bc{padding:12px 14px;border-radius:14px;background:#fff;font-size:15px;line-height:1.7;color:#333}
+.vs-who{list-style:none;display:flex;gap:10px;margin:14px 0 0;padding:0}
+.vs-who li{flex:1;padding:10px;border-radius:10px;background:#dfe3e8;text-align:center;font-size:14px}
+.vs-who span{display:block;font-weight:700}.vs-who em{font-style:normal;font-size:13px;color:#6b7380}
+.vs-arrow{font-size:34px;font-weight:900;color:var(--ac);text-align:center}
+.vs-rep{list-style:none;display:grid;gap:12px;margin:0;padding:0}
+.vs-rep li{display:grid;gap:6px}
+.vs-rep .tag{justify-self:start;padding:2px 10px;border-radius:999px;background:var(--acl);color:var(--ac);font-size:13px;font-weight:700}
+.vs-rep p{justify-self:start;max-width:100%;padding:10px 14px;border-radius:16px;border-bottom-left-radius:4px;background:#eef6ea;font-size:15.5px;line-height:1.65;color:#14181d;word-break:auto-phrase;line-break:strict}
+.vs-rep small{display:inline-block;margin-left:8px;padding:0 8px;border-radius:999px;background:#fff4d6;color:#8a5a00;font-size:12.5px;font-weight:700}
+.rb-ind{background:#0b1a33;color:#fff;padding-bottom:clamp(56px,6vw,80px)}
+.rb-ind .rb-h{color:#fff}.rb-ind .rb-k{color:var(--y)}.rb-ind .rb-note{color:#9fb0c8}
+.inds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:clamp(36px,5vw,56px)}
+.ind{margin:0}
+.ind-ph{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:3/4;background:#16325c}
+.ind-ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.ind:hover .ind-ph img{transform:scale(1.05)}
+.ind-ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(8,20,42,.75))}
+.ind-bub{position:absolute;left:12px;right:12px;bottom:14px;z-index:1;margin:0;padding:10px 12px;border-radius:14px;border-bottom-left-radius:4px;background:#fff;color:#14181d;font-size:14px;line-height:1.6;box-shadow:0 10px 24px -10px rgba(0,0,0,.5);word-break:auto-phrase;line-break:strict}
+.ind figcaption{margin-top:14px}
+.ind figcaption span{display:block;font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--y)}
+.img-tag{margin-left:8px;padding:0 7px;border-radius:4px;background:rgba(255,255,255,.14);color:#dfe6f0;font-style:normal;font-size:12.5px;font-weight:700;letter-spacing:0}
+.ind figcaption b{text-wrap:pretty;display:block;margin-top:4px;font-family:var(--ff-head);font-size:17px;font-weight:900;line-height:1.55;word-break:auto-phrase;line-break:strict}
+.night{position:relative;display:grid;align-items:center;min-height:clamp(420px,52vw,640px);overflow:hidden;color:#fff;background:#0b1a33}
+.night img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%}
+.night::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,20,42,.9) 0,rgba(8,20,42,.55) 55%,rgba(8,20,42,.2) 100%)}
+.night .w{position:relative;z-index:1;width:100%;padding-top:72px;padding-bottom:72px}
+.night .rb-k{color:var(--y)}
+.night-h{margin:0;font-family:var(--ff-head);font-size:clamp(1.7rem,5vw,3.4rem);font-weight:900;line-height:1.35;letter-spacing:-.02em;word-break:auto-phrase;line-break:strict}
+.night-l{list-style:none;display:grid;gap:10px;margin:30px 0 0;padding:0;max-width:520px}
+.night-l li{padding:12px 16px;border-left:3px solid var(--y);background:rgba(8,20,42,.55);font-size:16px;line-height:1.6}
+.night-l b{margin-right:10px;color:var(--y)}
+.switch{padding:clamp(56px,7vw,84px) 0;background:#fff;border-top:1px solid var(--ln2);text-align:center}
+.sw-k{margin:0;font-family:var(--ff-en);font-size:13px;font-weight:700;letter-spacing:.18em;color:var(--g2)}
+.sw-h{margin:10px 0 0;font-family:var(--ff-head);font-size:clamp(1.25rem,3.2vw,1.9rem);font-weight:900;color:var(--bk)}
+.sw-l{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:24px auto 0;padding:0;max-width:820px;counter-reset:sw}
+.sw-l li{counter-increment:sw}
+.sw-l a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border:1px solid var(--ln);border-radius:999px;font-size:15px;font-weight:700;color:var(--g1);text-decoration:none}
+.sw-l a::before{content:counter(sw,decimal-leading-zero);font-family:var(--ff-en);font-size:13px;color:var(--acm)}
+.sw-l a:hover{border-color:var(--ac);color:var(--ac)}
+.last.withphoto{position:relative;overflow:hidden}
+.last.withphoto .lp{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 40%}
+.last.withphoto::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(11,44,92,.97) 0,rgba(11,44,92,.9) 50%,rgba(11,44,92,.55) 100%)}
+.last.withphoto .w{position:relative;z-index:2}
+/* ===== Lシンク：LINEのグリーン（明るい緑は面と飾り、文字の地は深い緑） ===== */
+:root{--ac:#0b6e3a;--acl:#eef8f1;--acl2:#e0f2e6;--acm:#9ccfae;--y:#06c755;--dk:#062b17}
+.btn-p:hover,.hn .btn-s:hover{background:#08552c}
+.btn-y{color:#04260f;box-shadow:0 0 0 6px rgba(6,199,85,.2)}
+.btn-y:hover{background:#2bd873}
+.hero-v{background:var(--dk)}
+.hero-v::before{background:linear-gradient(90deg,rgba(4,30,16,.94) 0,rgba(4,30,16,.8) 45%,rgba(4,30,16,.35) 100%),linear-gradient(180deg,rgba(4,30,16,.2),rgba(4,30,16,.78))}
+.hero-v .eyebrow b{color:#04260f}
+.ph-top{background:#0b6e3a}
+.ph-log{background:#c9d8e6}
+.m.me{background:#85e249;color:#0d1a10}
+.m.sys{background:rgba(6,43,23,.8)}
+.rb-contrast{background:linear-gradient(180deg,#fff,#f1f8f3)}
+.vs-b{border-color:#06c755;box-shadow:0 30px 60px -34px rgba(6,110,58,.45)}
+.vs-rep p{background:#e7f8ee}
+.rb-ind{background:var(--dk)}
+.rb-ind .rb-note{color:#a7c4b1}
+.ind-ph{background:#0b6e3a}
+.ind-ph::after{background:linear-gradient(180deg,transparent 45%,rgba(4,30,16,.78))}
+.ind-bub{border-left:4px solid #06c755}
+.night{background:var(--dk)}
+.night::after{background:linear-gradient(90deg,rgba(4,30,16,.92) 0,rgba(4,30,16,.58) 55%,rgba(4,30,16,.2) 100%)}
+.night-l li{background:rgba(4,30,16,.6)}
+.last{background:var(--ac)}
+.last.withphoto::before{background:linear-gradient(90deg,rgba(8,90,46,.97) 0,rgba(8,90,46,.9) 50%,rgba(8,90,46,.55) 100%)}
+.last .en{color:#b8e6c8}.last p.b{color:#e3f3e8}.last .fine{color:#b8e6c8}
+.last .btn-w{color:#0b6e3a}
+.who.ai i{background:#06c755;color:#04260f}
+.cmp td.ours{background:#eef8f1}
+@media(max-width:960px){
+  .hero-v .w{grid-template-columns:1fr}
+  .phone{width:min(320px,100%)}
+  .vs{grid-template-columns:1fr}
+  .vs-arrow{transform:rotate(90deg)}
+  .inds{grid-template-columns:1fr 1fr}
+}
+@media(max-width:960px){
+  .hv-copy{display:contents}
+  .hero-v .eyebrow{order:1}.hero-v .hc{order:2}.hero-v .rot{order:3}
+  .phone{order:4}.hero-v .sub{order:5}.hero-v .cta{order:6}.hero-v .facts{order:7}
+  .hero-v .w{gap:18px}
+}
+@media(max-width:600px){
+  .ph-log{height:320px}
+  .inds{grid-template-columns:1fr}
+  .ind-ph{aspect-ratio:4/3}
+  .hero-v .cta .btn{width:100%}
+}
+@media(max-width:400px){.rb-h{font-size:1.24rem}.night-h{font-size:1.42rem}.hero-v h1{font-size:1.5rem}}
+@media (prefers-reduced-motion:reduce){.hero-v .hero-bg img{animation:none}.m{transition:none}}
 </style>
 </head>
 <body>
@@ -412,53 +554,82 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
 </header>
 
 <main id="top">
-<section class="hero" aria-label="Lシンク OEMパートナーのご案内">
+<section class="hero hero-v" aria-label="Lシンク OEMパートナーのご案内">
+  <div class="hero-bg" aria-hidden="true"><img src="assets/hero.webp" alt="" width="2000" height="1125" fetchpriority="high"></div>
   <div class="w">
-    <div>
-      <p class="eyebrow"><b>OEM</b>OEMパートナー向けのご案内</p>
-      <div class="hc" id="hc" title="押すと、3つのコピーと見出しを並べて読めます">
-        <h1 id="tw" data-keep-phrase>貴社の商材に、<br>LINEで返事するAIを1本。</h1>
-      </div>
+    <div class="hv-copy">
+      <p class="eyebrow"><b>OEM</b>パートナー向けのご案内</p>
+      <div class="hc" id="hc" title="押すと、3つのコピーと見出しを並べて読めます"><h1 id="tw" data-keep-phrase>貴社の商材に、<br>LINEで返事するAIを1本。</h1></div>
       <div class="rot">
-        <div class="dots" role="group" aria-label="コピーの切り替え">
-          <button type="button" aria-label="コピー1" aria-current="true"></button>
-          <button type="button" aria-label="コピー2" aria-current="false"></button>
-          <button type="button" aria-label="コピー3" aria-current="false"></button>
-        </div>
+        <div class="dots" role="group" aria-label="コピーの切り替え"><button type="button" aria-label="コピー1" aria-current="true"></button><button type="button" aria-label="コピー2" aria-current="false"></button><button type="button" aria-label="コピー3" aria-current="false"></button></div>
         <button type="button" class="all" id="openPop" aria-haspopup="dialog" aria-controls="pop">3つのコピーと見出しを並べて読む</button>
       </div>
-      <p class="sub">LINE公式アカウントで、AIが担当者の考え方と言い回しを学び、相手ごとに返事を作ります。面談の希望や専門的な相談は担当者へ引き継ぎます。管理画面は貴社専用に作り、顧客台帳との連携など、販売先の業種に合わせて機能を作り替えます。</p>
-      <div class="cta"><a class="btn btn-p" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">OEMパートナーについて相談する →</a></div>
+      <p class="sub">担当者の考え方と言い回しを学んだAIが、LINEで一人ひとりに返事をします。貴社の名前で、貴社の売価で。</p>
+      <div class="cta"><a class="btn btn-y" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">OEMパートナーについて相談する →</a><a class="btn btn-g" href="#terms-start">条件から読む</a></div>
       <ul class="facts"><li>売価：<b>貴社が決める</b></li><li>管理画面：<b>貴社専用</b></li><li>お客様の窓口：<b>貴社</b></li></ul>
     </div>
-    <figure class="mock" style="margin:0" aria-label="貴社専用の管理画面のイメージ">
-      <div class="mock-top"><span class="mock-logo" aria-hidden="true">LOGO</span><p>貴社のサービス名<span>お客様ごとの状況</span></p></div>
-      <div class="mock-bd">
-        <p class="mock-h"><span>お客様</span><span>いまの状態</span></p>
-        <ul><li class="r4"><span class="tm">Aさん</span><span>保険の見直しを検討中</span><span class="st-b ok">AIが返事</span></li><li class="r4"><span class="tm">Bさん</span><span>24時間返事なし</span><span class="st-b wait">再送済み</span></li><li class="r4"><span class="tm">Cさん</span><span>面談を希望</span><span class="st-b hu">担当へ通知</span></li><li class="r4"><span class="tm">Dさん</span><span>資料を請求</span><span class="st-b ok">AIが返事</span></li></ul>
-        <figcaption class="mock-cap">画面イメージです。ロゴ・名称・項目は貴社向けに作ります。</figcaption>
-      </div>
-    </figure>
+    <figure class="phone" aria-label="LINEでAIが返事をする画面イメージ（架空の会話）">
+        <div class="ph-scr">
+          <div class="ph-top"><span class="ph-av">ロゴ</span><p>貴社のサービス名<span>保険の相談窓口（例）</span></p></div>
+          <ol class="ph-log" id="phLog"><li class="m me" data-k="me">子どもが生まれたので、保険を見直したいです</li><li class="m ai" data-k="ai">ご出産おめでとうございます。前回の学資のお話も合わせて、担当者と見直しましょう。いまのご契約は、いつ頃のものですか？</li><li class="m me" data-k="me">5年前です。一度会って相談したいです</li><li class="m ai" data-k="ai">承知しました。担当者から、面談の日程をご連絡します。</li><li class="m sys" data-k="sys">面談の希望 → 担当者へ引き継ぎました</li><li class="m ai typing" id="phTyping" aria-hidden="true"><i></i><i></i><i></i></li></ol>
+        </div>
+        <figcaption>画面イメージ・架空の会話です</figcaption>
+      </figure>
   </div>
 </section>
-<section class="sec" id="s1" aria-labelledby="h1s">
+<section class="rb rb-contrast" aria-labelledby="rb1">
+  <div class="w">
+    <p class="rb-k">ONE BY ONE</p>
+    <h2 id="rb1" class="rb-h">同じ文面を全員に、ではなく。<br>ひとりずつ、違う返事を。</h2>
+    <div class="vs">
+      <div class="vs-a" aria-label="一斉配信の例">
+        <p class="vs-l">よくある一斉配信</p>
+        <div class="bc">【9月のご案内】保険の見直し相談会を開催します。ぜひご参加ください。</div>
+        <ul class="vs-who"><li><span>Aさん</span><em>同じ文面</em></li><li><span>Bさん</span><em>同じ文面</em></li><li><span>Cさん</span><em>同じ文面</em></li></ul>
+      </div>
+      <div class="vs-arrow" aria-hidden="true">→</div>
+      <div class="vs-b" aria-label="Lシンクの例（架空）">
+        <p class="vs-l">Lシンク</p>
+        <ul class="vs-rep">
+          <li><span class="tag">Aさん「前に相談した学資の続きを」</span><p>前回のお話の続きからですね。お子さまはいま何歳ですか？</p></li>
+          <li><span class="tag">Bさん「更新の案内が届きました」</span><p>更新の中身は、担当者からご説明します。ご都合のよい日はありますか？</p></li>
+          <li><span class="tag">返事がないCさんへ</span><p>先日のご質問、まだ気になっていませんか。<small>24時間後に再送</small></p></li>
+        </ul>
+      </div>
+    </div>
+    <p class="rb-note">画面の文面はすべて例です。</p>
+  </div>
+</section>
+<section class="rb rb-ind" aria-labelledby="rb2">
+  <div class="w">
+    <p class="rb-k">BY INDUSTRY</p>
+    <h2 id="rb2" class="rb-h">保険も、不動産も、人材も。<br>業種ごとに作り替える。</h2>
+    <div class="inds"><figure class="ind"><div class="ind-ph"><img src="assets/ind-insurance.webp" alt="スマートフォンを手に相談する人" width="900" height="600" loading="lazy" decoding="async"><p class="ind-bub">学資の件、続きからお話ししますね。</p></div><figcaption><span>保険代理店<em class="img-tag">活用イメージ</em></span><b>学資の話を、前回の続きから。</b></figcaption></figure><figure class="ind"><div class="ind-ph"><img src="assets/ind-realestate.webp" alt="夕方、窓に明かりがともる集合住宅" width="900" height="600" loading="lazy" decoding="async"><p class="ind-bub">ご希望の駅から近い物件を、2件ご紹介しますね。</p></div><figcaption><span>不動産の仲介・管理<em class="img-tag">活用イメージ</em></span><b>希望の駅を聞いて、近い物件をご紹介。</b></figcaption></figure><figure class="ind"><div class="ind-ph"><img src="assets/ind-hr.webp" alt="オフィスでほほえむ担当者" width="900" height="600" loading="lazy" decoding="async"><p class="ind-bub">面接は明日ですね。持ち物を一緒に確認しましょう。</p></div><figcaption><span>人材紹介・派遣<em class="img-tag">活用イメージ</em></span><b>面接の前日に、持ち物の確認まで。</b></figcaption></figure></div>
+    <p class="rb-note">写真と吹き出しは活用イメージで、実在の導入企業ではありません。業種に合わせた作り替えの中身は、後半でご説明します。</p>
+  </div>
+</section>
+<section class="night" aria-labelledby="rb3">
+  <img src="assets/night.webp" alt="" width="2000" height="1125" loading="lazy" decoding="async">
+  <div class="w">
+    <p class="rb-k">AFTER HOURS</p>
+    <h2 id="rb3" class="night-h">担当者が帰ったあとも、<br>会話は止まらない。</h2>
+    <ul class="night-l"><li><b>夜、お客様から</b>「一度、直接相談したいです」</li><li><b>その場で、AIが</b>「担当者からご連絡しますね」</li><li><b>朝、担当者には</b>面談の希望が引き継がれている</li></ul>
+  </div>
+</section>
+<div class="switch" id="terms-start"><div class="w"><p class="sw-k">FOR DECISION</p><p class="sw-h">ここから先は、条件と仕組みの話です。</p><ol class="sw-l"><li><a href="#s1">向いている会社</a></li><li><a href="#s3">売価と分担</a></li><li><a href="#s4">配信ツールとの違い</a></li><li><a href="#s5">作り替え</a></li><li><a href="#s6">導入の設定</a></li><li><a href="#s7">よくある質問</a></li></ol></div></div>
+<section class="sec tint" id="s1" aria-labelledby="h1s">
   <div class="w">
     <div class="sh"><p class="shl"><span class="no">01</span><span class="en">For partners</span></p><h2 id="h1s">保険・不動産・人材に売る会社の、<br>もう1本の商材になります。</h2></div>
-    <p class="body">LINE公式アカウントは作ったものの、返事が追いつかない、一斉配信しかしていない。そうした会社は多くあります。保険・不動産・人材のように、お客様とのやり取りが長く続く業種に商材を売っている会社なら、既存のお客様への、もう1本の提案になります。</p><div class="fit">
+    <p class="body">LINE公式アカウントを作ったあと、返事が追いつかない。一斉配信しかしていない。保険・不動産・人材のように、お客様とのやり取りが長く続く業種に商材を売っている会社なら、既存のお客様への、もう1本の提案になります。</p><div class="fit">
       <div><h3>向いている会社</h3><ul><li><b>保険代理店や、募集人を束ねる会社</b><span>見直しの相談や、契約前の質問に夜でも返事ができます</span></li><li><b>不動産の仲介・管理会社、フランチャイズの本部</b><span>物件の問い合わせに、夜や休みの日でも返事ができます</span></li><li><b>人材紹介・派遣の会社</b><span>求職者とのやり取りを、担当者が休みの日も止めずに続けられます</span></li><li><b>LINE公式アカウントの構築を請け負う会社</b><span>作ったあとの運用を、もう1本の商材にできます</span></li></ul></div>
-      <div class="no-fit"><h3>向いていない会社</h3><ul><li><b>一斉配信だけで足りる会社</b><span>LINEの配信ツールのほうが安く済みます</span></li><li><b>専門的な判断まで、確認なしで答えさせたい会社</b><span>保険の診断や法律の判断などは、担当者へつなぐ作りです</span></li></ul></div>
+      <div class="no-fit"><h3>向いていない会社</h3><ul><li><b>一斉配信だけで足りる会社</b><span>決めた文面を送るだけなら、LINEの配信ツールで足ります</span></li><li><b>専門的な判断まで、確認なしで答えさせたい会社</b><span>保険の診断や法律の判断などは、担当者へつなぐ作りです</span></li></ul></div>
     </div>
   </div>
 </section>
-<section class="sec tint" id="s2" aria-labelledby="h2s">
-  <div class="w">
-    <div class="sh"><p class="shl"><span class="no">02</span><span class="en">What it does</span></p><h2 id="h2s">お客様の状態ごとに、<br>AIが返事をし、人へつなぎます。</h2></div>
-    <p class="body">全部をAIに任せきるサービスではありません。AIは担当者の考え方や言い回しを学んだうえで返事をし、<span class="mk">面談の希望や専門的な相談は、担当者へ引き継ぎます。</span>答えない範囲は、あらかじめ決めておきます。決めておいた文面を条件で送る配信ツールとは違い、相手の質問とそれまでのやり取りを見て、そのつど返事を作ります。</p><div class="flow" role="table" aria-label="相手の状態ごとの受け手の例"><div class="flow-h" role="row"><span role="columnheader">相手</span><span aria-hidden="true">→</span><span role="columnheader">誰が受ける</span><span aria-hidden="true">→</span><span role="columnheader">次の処理</span></div><div class="flow-r" role="row"><span class="k" role="cell">友だち追加</span><span class="ar" aria-hidden="true">→</span><span class="who ai" role="cell"><i>AI</i>AIが受ける</span><span class="ar" aria-hidden="true">→</span><span class="nxt" role="cell">挨拶をして、いくつか聞き取ります。答えは顧客台帳に残します</span></div><div class="flow-r" role="row"><span class="k" role="cell">質問・相談</span><span class="ar" aria-hidden="true">→</span><span class="who ai" role="cell"><i>AI</i>AIが返事をする</span><span class="ar" aria-hidden="true">→</span><span class="nxt" role="cell">登録した情報をもとに、一人ひとりに合わせて返事を作ります。答えない範囲は事前に決めます</span></div><div class="flow-r" role="row"><span class="k" role="cell">24時間返事がない</span><span class="ar" aria-hidden="true">→</span><span class="who ai" role="cell"><i>AI</i>AIが再送する</span><span class="ar" aria-hidden="true">→</span><span class="nxt" role="cell">文面・待ち時間・回数を決めて送り直します。それでも返事がなければ配信から外せます</span></div><div class="flow-r" role="row"><span class="k" role="cell">面談の希望・専門的な相談</span><span class="ar" aria-hidden="true">→</span><span class="who hu" role="cell"><i>人</i>担当者へつなぐ</span><span class="ar" aria-hidden="true">→</span><span class="nxt" role="cell">担当者へ知らせて、やり取りを引き継ぎます</span></div></div>
-  </div>
-</section>
+
 <section class="sec" id="s3" aria-labelledby="h3s">
   <div class="w">
-    <div class="sh"><p class="shl"><span class="no">03</span><span class="en">Terms</span></p><h2 id="h3s">売価は貴社が決め、<br>お客様の窓口も貴社が持ちます。</h2></div>
+    <div class="sh"><p class="shl"><span class="no">02</span><span class="en">Terms</span></p><h2 id="h3s">売価は貴社が決め、<br>お客様の窓口も貴社が持ちます。</h2></div>
     <p class="body">導入する会社から見れば、貴社のサービスです。問い合わせもクレームも、まず貴社に届きます。弊社は表に出ず、仕組みの開発と提供を引き受けます。</p><div class="rel" role="list" aria-label="弊社・貴社・導入する会社の関係">
       <div class="node us" role="listitem"><span class="en">Developer</span><h3>弊社</h3><ul><li>返事をするAIの開発と提供</li><li>貴社専用の管理画面を作る</li><li>業種に合わせた機能の作り替え</li></ul></div>
       <div class="edge" aria-hidden="true"><span>開発・提供</span></div>
@@ -466,23 +637,13 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
       <div class="edge" aria-hidden="true"><span>販売</span></div>
       <div class="node st" role="listitem"><span class="en">Client</span><h3>導入する会社</h3><ul><li>貴社のサービスとして使う</li><li>答える範囲と担当者を決める</li></ul></div>
     </div>
-    <p class="rel-note">導入する会社から見えるのは、貴社のサービスだけです。</p>
-    <div class="undecided">
-      <h3>まだ決めていない条件</h3>
-      <dl class="price">
-        <dt>仕入値・初期費用</dt><dd><span class="tbd">調整中</span></dd>
-        <dt>最低契約・解約</dt><dd><span class="tbd">調整中</span></dd>
-        <dt>申込の受付と請求</dt><dd><span class="tbd">調整中</span></dd>
-        <dt>障害時の対応</dt><dd><span class="tbd">調整中</span></dd>
-        <dt>併売・地域の扱い</dt><dd><span class="tbd">調整中</span></dd>
-      </dl>
-      <p class="note">どれも、貴社の販売のしかたを伺ったうえで決めます。</p>
-    </div>
+    
+    <div class="undecided"><h3>これから決める条件</h3><p class="body">仕入値・初期費用、最低契約・解約、申込の受付と請求、障害時の対応、併売・地域の扱い、LINE公式アカウントの利用料の負担は<span class="tbd">調整中</span>です。貴社の販売のしかたを伺ったうえで決めます。</p></div>
   </div>
 </section>
 <section class="sec tint" id="s4" aria-labelledby="h4s">
   <div class="w">
-    <div class="sh"><p class="shl"><span class="no">04</span><span class="en">Difference</span></p><h2 id="h4s">配信ツールの取り次ぎと違い、<br>貴社の名前と画面で売れます。</h2></div>
+    <div class="sh"><p class="shl"><span class="no">03</span><span class="en">Difference</span></p><h2 id="h4s">配信ツールは、同じ文面を送る。<br>Lシンクは、相手ごとに返す。</h2></div>
     <p class="body">LINEの配信ツールの多くは、決めておいた文面やシナリオを条件に合わせて送る仕組みです。AIで返事をするLINEのサービスも、ほかにあります。</p><p class="body">そのうえでOEMとしての違いは、貴社の名前と専用の管理画面で売れること、販売先の業種に合わせて作り替えられることです。配信ツールを取り次ぐ場合と比べると、次のようになります。</p><div class="cmp-wrap">
       <table class="cmp">
         <thead><tr><th scope="col">項目</th><th scope="col">配信ツールを取り次いで売る</th><th scope="col" class="ours">LシンクのOEM</th></tr></thead>
@@ -490,12 +651,12 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
       </table>
     </div>
     <p class="note">左の列は、LINEの配信ツールを販売代理として取り次ぐ場合によくある形で、特定の会社を指すものではありません。他社にも、AIで返事をするサービスや、OEM・自社ブランドでの提供に対応するサービスはあります。比べるときは、返事の作り方と、管理画面・機能の作り替えを受けるかどうかを確かめてください。</p>
-    <button class="fc-btn" type="button" data-fc-section="配信ツールの取り次ぎと違い、貴社の名前と画面で売れます。" data-fc-claim="LINE公式アカウント向けの配信ツールの多くは、あらかじめ用意した文面やシナリオを、条件に応じて自動で送る仕組みである／AIでLINEの返事を作るサービスも他社に存在する／配信ツールを販売代理として取り次ぐ場合、提供元のサービス名と管理画面をそのまま使うことが多い">ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button>
+    <button class="fc-btn" type="button" data-fc-section="配信ツールは、同じ文面を送る。Lシンクは、相手ごとに返す。" data-fc-claim="LINE公式アカウント向けの配信ツールの多くは、あらかじめ用意した文面やシナリオを、条件に応じて自動で送る仕組みである／AIでLINEの返事を作るサービスも他社に存在する／配信ツールを販売代理として取り次ぐ場合、提供元のサービス名と管理画面をそのまま使うことが多い／配信ツールを取り次ぐ場合、業種向けの会話は提供元が用意した型の範囲で使うことが多い／1社のための個別開発は、提供元の標準機能の範囲にとどまることが多い">ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button>
   </div>
 </section>
 <section class="sec" id="s5" aria-labelledby="h5s">
   <div class="w">
-    <div class="sh"><p class="shl"><span class="no">05</span><span class="en">Customize</span></p><h2 id="h5s">顧客台帳から担当者への通知まで、<br>業種に合わせて作り替えます。</h2></div>
+    <div class="sh"><p class="shl"><span class="no">04</span><span class="en">Customize</span></p><h2 id="h5s">顧客台帳から担当者への通知まで、<br>業種に合わせて作り替えます。</h2></div>
     <p class="body">管理画面は貴社専用に作ります。そのうえで、既存の機能の一部を貴社のお客様に合わせて作り替えます。保険と不動産と人材紹介では、聞き取りたいことも、担当者へつなぐ条件も違うからです。たとえば次のようなものです。</p><div class="tiles"><div class="tile"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="17" cy="16" r="6"/><circle cx="33" cy="18" r="5"/><path d="M6 40c1-8 5-12 11-12s10 4 11 12M28 40c1-6 3-9 7-9s6 3 7 9"/></svg><h3>顧客台帳を見て返事</h3><p>スプレッドシートの顧客の属性や検討の状況を見て、返事の中身を変えます。</p></div><div class="tile"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="3"/><path d="M6 16h36M6 26h36M6 36h36M18 6v36"/></svg><h3>会話の要点を記録</h3><p>やり取りの要点と次にやることを、お客様ごとにスプレッドシートへ残します。</p></div><div class="tile"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 16l18-9 18 9v18l-18 9-18-9z"/><path d="M6 16l18 9 18-9M24 25v18"/></svg><h3>空き枠や求人を反映</h3><p>スプレッドシートの商品・求人・空き枠を更新すれば、返事にそのまま反映します。</p></div><div class="tile"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M12 34h24l-3-5V20a9 9 0 0 0-18 0v9z"/><path d="M20 38a4 4 0 0 0 8 0"/></svg><h3>要対応の人を担当者へ</h3><p>条件に合ったお客様をスプレッドシートに登録し、担当者へ知らせます。</p></div></div>
     <div class="how">
       <div class="lane"><span class="en">Shared</span><h3>何社かで使える機能は、<br>最初にまとめて開発</h3><p>使い回せる機能は、最初にまとめて開発し、各社に提供します。</p></div>
@@ -506,18 +667,19 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
 </section>
 <section class="sec tint" id="s6" aria-labelledby="h6s">
   <div class="w">
-    <div class="sh"><p class="shl"><span class="no">06</span><span class="en">Setup</span></p><h2 id="h6s">導入する会社が決めるのは3つ。<br>ひな形、答える範囲、つなぐ条件。</h2></div>
-    <p class="body">AIに話させる文章を、ゼロから書く必要はありません。選ぶことと、短い書き足しだけで始められます。</p><div class="steps"><div class="step"><span class="en">Step 01</span><h3>業種の会話ひな形を選ぶ</h3><p>保険・不動産・人材など、よくある質問と聞き取りの項目が並んだひな形から始めます。</p></div><div class="step"><span class="en">Step 02</span><h3>答える範囲を決める</h3><p>AIが答えてよいことと、答えずに担当者へ回すことを分けます。</p></div><div class="step"><span class="en">Step 03</span><h3>つなぐ条件を決める</h3><p>面談の希望など、担当者へ知らせる条件と宛先を決めます。</p></div></div>
+    <div class="sh"><p class="shl"><span class="no">05</span><span class="en">Setup</span></p><h2 id="h6s">導入する会社が決めるのは3つ。<br>ひな形、答える範囲、つなぐ条件。</h2></div>
+    <p class="body">AIに話させる文章を、ゼロから書く必要はありません。選ぶことと、短い書き足しだけで始められます。</p><div class="flow" role="table" aria-label="相手の状態ごとの受け手"><div class="flow-h" role="row"><span role="columnheader">相手</span><span aria-hidden="true">→</span><span role="columnheader">誰が受ける</span><span aria-hidden="true">→</span><span role="columnheader">次の処理</span></div><div class="flow-r" role="row"><span class="k" role="cell">質問・相談</span><span class="ar" aria-hidden="true">→</span><span class="who ai" role="cell"><i>AI</i>AIが返事をする</span><span class="ar" aria-hidden="true">→</span><span class="nxt" role="cell">登録した情報と担当者の言い回しをもとに、一人ひとりに合わせて返事を作ります</span></div><div class="flow-r" role="row"><span class="k" role="cell">24時間返事がない</span><span class="ar" aria-hidden="true">→</span><span class="who ai" role="cell"><i>AI</i>AIが再送する</span><span class="ar" aria-hidden="true">→</span><span class="nxt" role="cell">文面・待ち時間・回数を決めて送り直します。それでも返事がなければ配信から外せます</span></div><div class="flow-r" role="row"><span class="k" role="cell">面談の希望・専門的な相談</span><span class="ar" aria-hidden="true">→</span><span class="who hu" role="cell"><i>人</i>担当者へつなぐ</span><span class="ar" aria-hidden="true">→</span><span class="nxt" role="cell">担当者へ知らせて、やり取りを引き継ぎます</span></div></div>
+    <div class="steps" style="margin-top:28px"><div class="step"><span class="en">Step 01</span><h3>業種の会話ひな形を選ぶ</h3><p>保険・不動産・人材など、よくある質問と聞き取りの項目が並んだひな形から始めます。</p></div><div class="step"><span class="en">Step 02</span><h3>答える範囲を決める</h3><p>AIが答えてよいことと、答えずに担当者へ回すことを分けます。</p></div><div class="step"><span class="en">Step 03</span><h3>つなぐ条件を決める</h3><p>面談の希望など、担当者へ知らせる条件と宛先を決めます。</p></div></div>
     <div class="later"><div class="lh"><h3>今後の開発候補</h3><span class="tbd">提供時期は未定</span></div><ul><li>流入経路ごとの挨拶の出し分け</li><li>販売会社ごとの申込URL</li><li>アンケート形式の聞き取り</li></ul></div>
   </div>
 </section>
 <section class="sec" id="s7" aria-labelledby="h7s">
   <div class="w">
-    <div class="sh"><p class="shl"><span class="no">07</span><span class="en">FAQ</span></p><h2 id="h7s">学ぶもの、答える範囲、記録。<br>契約前の6つにお答えします。</h2></div>
+    <div class="sh"><p class="shl"><span class="no">06</span><span class="en">FAQ</span></p><h2 id="h7s">学ぶもの、答える範囲、記録。<br>契約前の6つにお答えします。</h2></div>
     <div class="faq"><details><summary>AIは、何を学んで返事をしますか。</summary><p class="a">登録した商品や会社の情報、顧客台帳、担当者の考え方や言い回しの例です。何を登録するかは、導入のときに一緒に決めます。</p></details><details><summary>間違ったことを答えませんか。</summary><p class="a">答えない範囲をあらかじめ決め、その範囲の質問は担当者へつなぎます。専門的な判断をAIに任せない作りです。</p></details><details><summary>返事がない人への再送は、止められますか。</summary><p class="a">止められます。再送の文面、待ち時間、回数は設定で決め、送らない設定にもできます。</p></details><details><summary>LINE公式アカウントの費用は、誰が払いますか。</summary><p class="a">LINE公式アカウントは、導入する会社のものを使います。その利用料をどちらが負担するか、弊社へのお支払いとの分け方は<span class="tbd">調整中</span>です。</p></details><details><summary>アカウントとやり取りの記録は、誰のものですか。</summary><p class="a">LINE公式アカウントとお客様は、導入する会社のものです。解約したときの記録の渡し方と、スプレッドシートを誰が見られ誰が直せるかは<span class="tbd">調整中</span>です。</p></details><details><summary>「第0次 共同販売パートナー」とは、どう違いますか。</summary><p class="a">OEMは、貴社の名前で売っていただく形です。第0次 共同販売パートナーは、条件の異なる別の募集です。内容は<a href="https://lsync-partner.vercel.app/" target="_blank" rel="noopener">共同販売パートナーの募集ページ</a>をご覧ください。どちらが合うかは、ご相談の場で一緒に決めます。</p></details></div>
   </div>
 </section>
-<section class="last" id="s8" aria-labelledby="h8s">
+<section class="last withphoto" id="s8" aria-labelledby="h8s"><img class="lp" src="assets/partner.webp" alt="" width="1800" height="1012" loading="lazy" decoding="async">
   <div class="w">
     <span class="en">Next step</span>
     <h2 id="h8s">まずは、販売先の業種と<br>導入社数をお聞かせください。</h2>
@@ -640,6 +802,27 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
     window.open('https://chatgpt.com/?q='+encodeURIComponent(p),'_blank','noopener,noreferrer');
     if(navigator.clipboard){ navigator.clipboard.writeText(p).catch(function(){}); }
   });
+})();
+</script>
+<script>
+(function(){
+  var log=document.getElementById('phLog'); if(!log) return;
+  var items=[].slice.call(log.querySelectorAll('.m:not(.typing)')), typing=document.getElementById('phTyping');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){ items.forEach(function(m){m.classList.add('show');}); return; }
+  items.forEach(function(m){ m.style.display='none'; });
+  function run(){
+    items.forEach(function(m){ m.classList.remove('show'); m.style.display='none'; });
+    var i=0;
+    (function next(){
+      if(i>=items.length){ setTimeout(run,4200); return; }
+      var m=items[i++];
+      var wait = m.dataset.k==='ai' ? 1500 : (m.dataset.k==='sys' ? 700 : 900);
+      if(m.dataset.k==='ai'){ log.appendChild(typing); typing.classList.add('show'); }
+      setTimeout(function(){ typing.classList.remove('show'); log.insertBefore(m, typing); m.style.display=''; requestAnimationFrame(function(){ m.classList.add('show'); }); setTimeout(next, m.dataset.k==='ai'?1400:700); }, wait);
+    })();
+  }
+  if('IntersectionObserver' in window){ var started=false; new IntersectionObserver(function(en){ if(en[0].isIntersecting && !started){ started=true; run(); } }).observe(log); } else run();
 })();
 </script>
 </body>
