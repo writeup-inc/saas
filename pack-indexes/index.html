@@ -89,7 +89,7 @@ a{color:inherit} p{margin:0}
 .en{font-family:var(--num);font-weight:800;letter-spacing:.18em;text-transform:uppercase}
 
 /* ===== ヒーロー ===== */
-.hero{padding:clamp(72px,11vw,136px) 0 clamp(48px,7vw,80px);text-align:center;background:radial-gradient(ellipse 60% 80% at 50% 45%,#fff 0,#fff 40%,var(--dir-l) 100%)}
+.hero{position:relative;padding:clamp(72px,11vw,136px) 0 clamp(48px,7vw,80px);text-align:center;background:radial-gradient(ellipse 60% 80% at 50% 45%,#fff 0,#fff 40%,var(--dir-l) 100%)}
 .hero .en{display:block;font-size:14px;color:var(--acc)}
 .hero h1{margin:14px 0 0;font-weight:900;letter-spacing:-.03em;line-height:1.2;color:var(--ink);font-size:clamp(2rem,7vw,4.4rem)}
 .hero .rule{display:block;width:48px;height:3px;margin:24px auto 0;border-radius:2px;background:var(--acc)}
@@ -142,10 +142,29 @@ ol.rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--ln)}
   .arr{grid-row:1;grid-column:3}
   .urlrow{padding-left:calc(2em + 20px)}
 }
+/* 共通ナビ（右上）：資料インデックス一覧・今月の注力・SaaSチーム トップ。4ページとも同じ中身。今いるページは太字＋下線でリンクにしない */
+.hubnav{position:absolute;top:0;left:0;right:0;z-index:30;font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif}
+.hubnav ul{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:2px 22px;max-width:var(--hub-w,1120px);margin:0 auto;padding:16px var(--hub-pad,clamp(20px,4vw,40px)) 0;list-style:none}
+.hubnav li{margin:0;padding:0}
+.hubnav a,.hubnav [aria-current]{display:inline-flex;align-items:center;gap:6px;padding:6px 0;font-size:13px;font-weight:500;line-height:1.5;letter-spacing:.02em;white-space:nowrap;text-decoration:none;color:var(--hub-tx,#4a525d)}
+.hubnav a::before,.hubnav [aria-current]::before{content:"▸";font-size:10px;color:var(--hub-mute,#9aa1a9)}
+.hubnav a:hover{color:var(--hub-ink,#10151c);text-decoration:underline;text-underline-offset:3px}
+.hubnav [aria-current]{color:var(--hub-ink,#10151c);font-weight:700;box-shadow:inset 0 -2px 0 currentColor}
+.hubnav [aria-current]::before{color:currentColor}
+.hubnav--flow{position:static}
+.hubnav--flow ul{max-width:none;padding:14px 0 0}
+@media(max-width:600px){.hubnav ul{justify-content:center;gap:0 10px;padding:8px 12px 0}.hubnav--flow ul{justify-content:flex-end;padding:10px 0 0}.hubnav a,.hubnav [aria-current]{gap:2px;padding:8px 0;font-size:12px;letter-spacing:0}}
 </style>
 </head>
 <body>
 <header class="hero">
+<nav class="hubnav" aria-label="SaaSチームの入口">
+  <ul>
+    <li><span aria-current="page">資料インデックス一覧</span></li>
+    <li><a href="../focus-2026-09/">9月の注力</a></li>
+    <li><a href="../">SaaSチーム トップ</a></li>
+  </ul>
+</nav>
   <div class="w">
     <span class="en">Document Index</span>
     <h1>資料インデックス一覧</h1>
