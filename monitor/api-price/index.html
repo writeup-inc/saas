@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="0次販売の料金案内。1年間、初期費用と月額料金は0円。ご利用量に応じた料金だけをご請求します。商談回数・ID数・ログ件数・送信通数ごとの1か月の目安をまとめました。">
+  <meta name="description" content="0次販売の料金案内。1年間、初期費用と月額料金は0円。ご請求は使った分のAPI利用料のみです。サービスごとに、最初の1か月の料金の目安と早見表をまとめました。">
   <meta name="theme-color" content="#f3f0e8">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="WRITEUP 0次販売">
   <meta property="og:title" content="0次販売の料金｜株式会社ライトアップ">
-  <meta property="og:description" content="1年間、初期費用も月額料金も0円。使った分だけの料金を、利用量ごとの目安でご案内します。">
+  <meta property="og:description" content="1年間、初期費用も月額料金も0円。ご請求は使った分のAPI利用料のみ。最初の1か月の目安をサービスごとにご案内します。">
   <meta property="og:url" content="https://writeup-inc.github.io/saas/monitor/api-price/">
   <meta name="twitter:card" content="summary">
   <link rel="canonical" href="https://writeup-inc.github.io/saas/monitor/api-price/">
@@ -45,13 +45,14 @@ h1, h2, h3, h4, h5,
       --green-dark: #0e382c;
       --green-soft: rgba(23, 75, 60, .07);
       --orange: #b8643d;
+      --orange-soft: rgba(184, 100, 61, .1);
       --shadow: 0 22px 60px rgba(20, 37, 31, .09);
       --sans: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
     }
 
     * { box-sizing: border-box; }
 
-    html { overflow-x: clip; scroll-behavior: smooth; }
+    html { overflow-x: clip; scroll-behavior: smooth; scroll-padding-top: 84px; }
 
     body {
       margin: 0;
@@ -74,20 +75,21 @@ h1, h2, h3, h4, h5,
       outline-offset: 3px;
     }
 
-    .shell { width: min(calc(100% - 44px), 1080px); margin: 0 auto; }
+    .shell { width: min(calc(100% - 40px), 1080px); margin: 0 auto; }
 
+    /* ヘッダー */
     .site-header {
       position: sticky;
       top: 0;
       z-index: 10;
       border-bottom: 1px solid var(--line);
-      background: rgba(243,240,232,.9);
+      background: rgba(243,240,232,.92);
       backdrop-filter: blur(14px);
     }
 
     .header-inner {
       display: flex;
-      min-height: 68px;
+      min-height: 64px;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
@@ -97,7 +99,7 @@ h1, h2, h3, h4, h5,
       display: inline-flex;
       align-items: center;
       gap: 9px;
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 700;
       letter-spacing: .04em;
       color: var(--ink-soft);
@@ -128,18 +130,18 @@ h1, h2, h3, h4, h5,
 
     main { padding-bottom: 96px; }
 
-    .hero { padding: clamp(52px, 7vw, 92px) 0 clamp(36px, 5vw, 56px); }
+    /* ヒーロー */
+    .hero { padding: clamp(48px, 7vw, 84px) 0 clamp(8px, 2vw, 16px); }
 
     .kicker {
       display: flex;
       align-items: center;
       gap: 12px;
-      margin: 0 0 20px;
+      margin: 0 0 18px;
       color: var(--green);
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 850;
-      letter-spacing: .19em;
-      text-transform: uppercase;
+      letter-spacing: .16em;
     }
 
     .kicker::before { content: ""; width: 30px; height: 3px; background: var(--orange); }
@@ -147,28 +149,27 @@ h1, h2, h3, h4, h5,
     h1 {
       max-width: 720px;
       margin: 0;
-      font-size: clamp(32px, 5.2vw, 52px);
+      font-size: clamp(31px, 5vw, 50px);
       font-weight: 800;
-      letter-spacing: -.05em;
-      line-height: 1.2;
+      letter-spacing: -.045em;
+      line-height: 1.25;
     }
 
     h1 em { color: var(--orange); font-style: normal; }
 
     .hero-lead {
-      max-width: 640px;
-      margin: 24px 0 0;
+      max-width: 660px;
+      margin: 22px 0 0;
       color: var(--ink-soft);
       font-size: clamp(15px, 1.5vw, 17px);
       line-height: 1.95;
-      text-wrap: pretty;
     }
 
     .fee-board {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: 1fr 1fr 1.4fr;
       gap: 1px;
-      margin-top: 36px;
+      margin-top: 32px;
       border: 1px solid var(--line);
       border-radius: 14px;
       background: var(--line);
@@ -176,55 +177,179 @@ h1, h2, h3, h4, h5,
       box-shadow: var(--shadow);
     }
 
-    .fee-board div { padding: 22px 24px; background: var(--surface); }
-    .fee-board span { display: block; color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .06em; }
-    .fee-board strong { display: block; margin-top: 6px; font-size: clamp(20px, 2.6vw, 28px); font-weight: 800; letter-spacing: -.02em; }
-    .fee-board .accent strong { color: var(--green); font-size: clamp(16px, 1.9vw, 20px); line-height: 1.5; }
+    .fee-board div { padding: 20px 24px; background: var(--surface); }
+    .fee-board span { display: block; color: var(--muted); font-size: 12.5px; font-weight: 700; letter-spacing: .04em; }
+    .fee-board strong { display: block; margin-top: 4px; font-size: clamp(22px, 2.6vw, 28px); font-weight: 800; letter-spacing: -.02em; }
+    .fee-board .accent { background: var(--green); }
+    .fee-board .accent span { color: rgba(255,253,248,.72); }
+    .fee-board .accent strong { color: #fffdf8; font-size: clamp(18px, 2vw, 22px); line-height: 1.5; }
+    .fee-board .accent small { display: block; margin-top: 2px; color: rgba(255,253,248,.82); font-size: 13px; font-weight: 700; }
 
-    .section { padding: clamp(46px, 6vw, 72px) 0 0; }
+    /* セクション共通 */
+    .section { padding: clamp(56px, 7vw, 88px) 0 0; }
 
     .section-head { max-width: 760px; }
 
     .section-kicker {
       margin: 0 0 10px;
       color: var(--orange);
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 850;
-      letter-spacing: .16em;
-      text-transform: uppercase;
+      letter-spacing: .12em;
     }
 
     h2 {
       margin: 0;
-      font-size: clamp(23px, 3vw, 31px);
+      font-size: clamp(24px, 3.2vw, 32px);
       font-weight: 800;
       letter-spacing: -.035em;
       line-height: 1.4;
     }
 
+    .basis {
+      display: inline-block;
+      margin-left: 10px;
+      padding: 3px 12px;
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .02em;
+      vertical-align: 5px;
+    }
+
     .section-copy {
-      margin: 14px 0 0;
+      margin: 12px 0 0;
       color: var(--ink-soft);
       font-size: 15px;
       line-height: 1.95;
-      text-wrap: pretty;
     }
 
-    .card {
-      margin-top: 26px;
-      padding: clamp(22px, 3vw, 32px);
+    /* 1か月の目安カード */
+    .plan-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .plan {
+      display: flex;
+      flex-direction: column;
+      padding: 26px 26px 22px;
       border: 1px solid var(--line);
-      border-radius: 16px;
+      border-radius: 18px;
       background: var(--surface);
       box-shadow: var(--shadow);
     }
 
-    .unit-row {
+    .plan-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+
+    .plan-name { margin: 0; font-size: 19px; font-weight: 800; letter-spacing: -.01em; }
+
+    .plan-basis {
+      padding: 2px 10px;
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .plan-case {
+      display: flex;
+      gap: 10px;
+      margin: 14px 0 0;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: var(--paper);
+      color: var(--ink-soft);
+      font-size: 13.5px;
+      line-height: 1.75;
+    }
+
+    .plan-case b {
+      flex: none;
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: .04em;
+      padding-top: 1px;
+    }
+
+    .price-line {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 26px;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 4px 14px;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line-soft);
     }
+
+    .price-line + .price-line { margin-top: 10px; }
+
+    .price-label { color: var(--ink); font-size: 14px; font-weight: 800; }
+    .price-label small { display: block; color: var(--muted); font-size: 12px; font-weight: 600; }
+
+    .price { color: var(--green); white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .price b { font-size: clamp(24px, 2.8vw, 30px); font-weight: 800; letter-spacing: -.02em; }
+    .price span { margin-left: 2px; color: var(--ink-soft); font-size: 13px; font-weight: 700; }
+
+    .plan-link {
+      align-self: flex-start;
+      margin-top: auto;
+      padding-top: 18px;
+      color: var(--green);
+      font-size: 13.5px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .plan-link:hover { text-decoration: underline; }
+
+    .summary-note { margin: 16px 0 0; color: var(--muted); font-size: 13px; }
+
+    /* サービス別の詳細 */
+    .card {
+      margin-top: 24px;
+      padding: clamp(22px, 3.4vw, 36px);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 6px;
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -.01em;
+    }
+
+    .step-no {
+      display: grid;
+      width: 26px;
+      height: 26px;
+      flex: none;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--green);
+      color: #fffdf8;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .block + .block { margin-top: 36px; padding-top: 32px; border-top: 1px solid var(--line-soft); }
+
+    .step-note { margin: 0 0 14px 36px; color: var(--muted); font-size: 13.5px; line-height: 1.8; }
+
+    .unit-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 14px; }
 
     .unit {
       flex: 1 1 220px;
@@ -234,37 +359,38 @@ h1, h2, h3, h4, h5,
       background: var(--green-soft);
     }
 
-    .unit span { display: block; color: var(--ink-soft); font-size: 12.5px; font-weight: 700; }
+    .unit-name { display: block; color: var(--ink); font-size: 14px; font-weight: 800; }
 
-    .unit strong {
-      display: block;
+    .unit-price {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 2px 8px;
       margin-top: 4px;
       color: var(--green);
-      font-size: clamp(21px, 2.6vw, 26px);
-      font-weight: 800;
-      letter-spacing: -.02em;
       font-variant-numeric: tabular-nums;
     }
 
-    .unit small { display: block; margin-top: 4px; color: var(--muted); font-size: 12.5px; line-height: 1.7; }
+    .unit-price b { font-size: clamp(22px, 2.6vw, 27px); font-weight: 800; letter-spacing: -.02em; }
+    .unit-price span { color: var(--ink-soft); font-size: 13px; font-weight: 800; }
 
-    h3 {
-      margin: 0 0 4px;
-      font-size: 17px;
-      font-weight: 800;
-      letter-spacing: -.01em;
+    .unit small { display: block; margin-top: 6px; color: var(--muted); font-size: 12.5px; line-height: 1.7; }
+
+    .rule {
+      margin: 14px 0 0;
+      padding: 12px 16px;
+      border-left: 3px solid var(--orange);
+      border-radius: 0 10px 10px 0;
+      background: var(--orange-soft);
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.8;
     }
-
-    .table-note { margin: 0 0 14px; color: var(--muted); font-size: 13px; }
 
     .t-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 
-    table {
-      width: 100%;
-      min-width: 420px;
-      border-collapse: collapse;
-      font-size: 15px;
-    }
+    table { width: 100%; min-width: 440px; border-collapse: collapse; font-size: 15px; }
 
     th {
       padding: 10px 14px;
@@ -272,27 +398,26 @@ h1, h2, h3, h4, h5,
       color: var(--ink-soft);
       font-size: 12.5px;
       font-weight: 700;
-      letter-spacing: .04em;
+      letter-spacing: .02em;
       text-align: left;
-      white-space: nowrap;
+      vertical-align: bottom;
+      line-height: 1.5;
     }
 
-    td {
-      padding: 13px 14px;
-      border-bottom: 1px solid var(--line-soft);
-      vertical-align: middle;
-    }
+    th small { display: block; color: var(--muted); font-size: 11.5px; font-weight: 600; }
+
+    td { padding: 13px 14px; border-bottom: 1px solid var(--line-soft); vertical-align: middle; }
 
     tbody tr:last-child td { border-bottom: none; }
 
     th.r, td.r { text-align: right; }
     td.n { font-variant-numeric: tabular-nums; white-space: nowrap; }
-    td.name { font-weight: 700; }
-    td .sub { display: block; color: var(--muted); font-size: 12.5px; font-weight: 400; line-height: 1.6; }
+    td .sub { display: block; color: var(--muted); font-size: 12.5px; font-weight: 400; line-height: 1.6; white-space: normal; }
 
     tr.mark td { background: var(--green-soft); }
     tr.mark td:first-child { font-weight: 800; }
     tr.mark td.r { color: var(--green); font-weight: 800; }
+    tr.total td { border-top: 2px solid var(--line); font-weight: 800; }
 
     .badge {
       display: inline-block;
@@ -307,22 +432,41 @@ h1, h2, h3, h4, h5,
       vertical-align: 2px;
     }
 
-    .note {
-      margin: 16px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.9;
-      text-wrap: pretty;
+    .tag-min {
+      display: inline-block;
+      margin-left: 6px;
+      padding: 0 7px;
+      border-radius: 4px;
+      background: var(--orange-soft);
+      color: var(--orange);
+      font-size: 11px;
+      font-weight: 800;
+      vertical-align: 1px;
     }
 
-    .note + .note { margin-top: 6px; }
+    .notes { margin: 16px 0 0; padding: 0 0 0 1.2em; color: var(--muted); font-size: 13px; line-height: 1.9; }
+    .notes li + li { margin-top: 4px; }
 
-    .summary td.name { font-size: 15.5px; }
+    details.more { margin-top: 20px; border: 1px solid var(--line-soft); border-radius: 12px; background: #fff; }
+    details.more summary {
+      padding: 14px 18px;
+      cursor: pointer;
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 800;
+      list-style: none;
+    }
+    details.more summary::-webkit-details-marker { display: none; }
+    details.more summary::before { content: "＋"; display: inline-block; width: 1.4em; }
+    details.more[open] summary::before { content: "－"; }
+    details.more .more-body { padding: 0 18px 16px; }
+    details.more .notes { margin-top: 10px; }
 
+    /* 前提 */
     .terms-list {
       display: grid;
       gap: 1px;
-      margin: 26px 0 0;
+      margin: 24px 0 0;
       padding: 0;
       border: 1px solid var(--line);
       border-radius: 14px;
@@ -331,31 +475,19 @@ h1, h2, h3, h4, h5,
       overflow: hidden;
     }
 
-    .terms-list li {
-      display: flex;
-      gap: 16px;
-      padding: 18px 22px;
-      background: var(--surface);
-    }
-
-    .terms-list b {
-      color: var(--orange);
-      font-size: 12px;
-      font-weight: 850;
-      letter-spacing: .06em;
-      padding-top: 3px;
-    }
-
+    .terms-list li { display: flex; gap: 16px; padding: 18px 22px; background: var(--surface); }
+    .terms-list b { color: var(--orange); font-size: 12px; font-weight: 850; letter-spacing: .06em; padding-top: 3px; }
     .terms-list strong { display: block; font-size: 15px; }
     .terms-list span { display: block; color: var(--ink-soft); font-size: 14px; line-height: 1.85; }
 
+    /* CTA */
     .final-cta {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       gap: 28px;
-      margin-top: clamp(52px, 6vw, 80px);
+      margin-top: clamp(56px, 7vw, 88px);
       padding: clamp(30px, 4vw, 46px);
       border-radius: 18px;
       background: var(--green);
@@ -397,18 +529,23 @@ h1, h2, h3, h4, h5,
 
     .footer-inner strong { color: var(--ink-soft); font-size: 12.5px; }
 
-    @media (max-width: 720px) {
-      .fee-board { grid-template-columns: 1fr; }
+    @media (max-width: 760px) {
+      .plan-grid { grid-template-columns: 1fr; }
+      .fee-board { grid-template-columns: 1fr 1fr; }
+      .fee-board .accent { grid-column: 1 / -1; }
       .header-cta { display: none; }
+      .basis { display: table; margin: 8px 0 0; vertical-align: 0; }
+      .step-note { margin-left: 0; }
       table { font-size: 14px; }
-      th, td { padding: 11px 12px; }
+      th, td { padding: 11px 10px; }
       .final-cta { flex-direction: column; align-items: flex-start; }
     }
 
     @media print {
       .site-header, .final-cta { display: none; }
       body { background: #fff; }
-      .card { box-shadow: none; break-inside: avoid; }
+      .card, .plan { box-shadow: none; break-inside: avoid; }
+      details.more { display: block; }
     }
   </style>
 </head>
@@ -431,285 +568,352 @@ h1, h2, h3, h4, h5,
     <section class="hero" aria-labelledby="page-title">
       <p class="kicker">0次販売の料金</p>
       <h1 id="page-title">使った分だけの、<br><em>わかりやすい料金です。</em></h1>
-      <p class="hero-lead">1年間、初期費用と月額料金は0円です。ご利用いただいた量に応じた料金だけをご請求します。このページでは「どれくらい使うと、いくらになるか」をサービスごとにまとめました。</p>
+      <p class="hero-lead">1年間、初期費用と月額料金は0円です。ご請求するのは、使った分のAPI利用料だけ。このページでは、サービスごとに「最初の1か月でどのくらいかかるか」をまとめました。</p>
       <div class="fee-board">
         <div><span>初期費用（1年間）</span><strong>0円</strong></div>
         <div><span>月額料金（1年間）</span><strong>0円</strong></div>
-        <div class="accent"><span>ご請求</span><strong>使った分だけ</strong></div>
+        <div class="accent"><span>ご請求</span><strong>使った分だけ</strong><small>（API利用料のみ）</small></div>
       </div>
     </section>
 
+    <!-- ============ 最初の1か月の目安 ============ -->
     <section class="section" aria-labelledby="summary-title">
       <div class="section-head">
-        <p class="section-kicker">まずは全体像</p>
-        <h2 id="summary-title">標準的な使い方なら、<br>1か月でこのくらいです。</h2>
-        <p class="section-copy">よくある使い方を想定した場合の、1か月あたりの料金です。サービスごとの詳しい早見表は、この下にあります。</p>
+        <p class="section-kicker">最初の1か月の目安</p>
+        <h2 id="summary-title">最初の1か月は、このくらいです。</h2>
+        <p class="section-copy">よくある使い方をした場合の、1か月あたりのAPI利用料です。使い方ごとの金額は、各サービスの「くわしい料金」でご確認いただけます。</p>
       </div>
-      <div class="card">
-        <div class="t-wrap">
-          <table class="summary">
-            <thead>
-              <tr><th>サービス</th><th>想定する使い方</th><th class="r">1か月の料金</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="name">スーパーマネージャー</td>
-                <td>1時間の商談を月40回<span class="sub">1名あたり／同席のみ〜全機能をすべて使った場合</span></td>
-                <td class="n r">約8,000〜16,000円</td>
-              </tr>
-              <tr>
-                <td class="name">ワークログ・インサイト</td>
-                <td>1ID<span class="sub">お使いになる方1名あたり</span></td>
-                <td class="n r">約4,000円</td>
-              </tr>
-              <tr>
-                <td class="name">Elliot</td>
-                <td>1日5ログ<span class="sub">毎日のメール配信と、月1回のレポート生成を含みます</span></td>
-                <td class="n r">約2,300円</td>
-              </tr>
-              <tr>
-                <td class="name">Jマッチ・エンジン</td>
-                <td>月1,000通<span class="sub">1,000社へのメール配信</span></td>
-                <td class="n r">約1,000円</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="note">複数のサービスをお使いいただく場合は、それぞれの料金を合算してご請求します。</p>
+
+      <div class="plan-grid">
+        <article class="plan">
+          <div class="plan-top">
+            <h3 class="plan-name">スーパーマネージャー</h3>
+            <span class="plan-basis">商談1回ごと</span>
+          </div>
+          <p class="plan-case"><b>想定</b><span>1名が、1時間の商談を月40回（1日2回ほど）</span></p>
+          <div class="price-line">
+            <span class="price-label">商談同席のみ<small>録音・文字起こし・アドバイス・サマリー</small></span>
+            <span class="price"><b>約8,000〜10,000</b><span>円／月</span></span>
+          </div>
+          <div class="price-line">
+            <span class="price-label">オプション付き<small>事前ヒアリング・中締めレポート・フォローまで全部</small></span>
+            <span class="price"><b>約14,000〜16,000</b><span>円／月</span></span>
+          </div>
+          <a class="plan-link" href="#super-manager">くわしい料金を見る ↓</a>
+        </article>
+
+        <article class="plan">
+          <div class="plan-top">
+            <h3 class="plan-name">ワークログ・インサイト</h3>
+            <span class="plan-basis">使う人数ごと</span>
+          </div>
+          <p class="plan-case"><b>想定</b><span>1名（1ID）で利用</span></p>
+          <div class="price-line">
+            <span class="price-label">1名あたり<small>使う量にかかわらず定額</small></span>
+            <span class="price"><b>約4,000</b><span>円／月</span></span>
+          </div>
+          <a class="plan-link" href="#worklog-insight">くわしい料金を見る ↓</a>
+        </article>
+
+        <article class="plan">
+          <div class="plan-top">
+            <h3 class="plan-name">Elliot</h3>
+            <span class="plan-basis">ログ1件ごと</span>
+          </div>
+          <p class="plan-case"><b>想定</b><span>1日5件のログを取り込み、毎日のメール配信と月1回のレポート生成</span></p>
+          <div class="price-line">
+            <span class="price-label">1社あたり<small>最低料金（1日72円）を含みます</small></span>
+            <span class="price"><b>約2,300</b><span>円／月</span></span>
+          </div>
+          <a class="plan-link" href="#elliot">くわしい料金を見る ↓</a>
+        </article>
+
+        <article class="plan">
+          <div class="plan-top">
+            <h3 class="plan-name">Jマッチ・エンジン</h3>
+            <span class="plan-basis">メール1通ごと</span>
+          </div>
+          <p class="plan-case"><b>想定</b><span>1,000社へ、月1回メールを配信（1,000通）</span></p>
+          <div class="price-line">
+            <span class="price-label">1社あたり<small>文章の作成と送信を含みます</small></span>
+            <span class="price"><b>約1,000</b><span>円／月</span></span>
+          </div>
+          <a class="plan-link" href="#jmatch-engine">くわしい料金を見る ↓</a>
+        </article>
       </div>
+      <p class="summary-note">複数のサービスをお使いいただく場合は、それぞれの金額を合算してご請求します。</p>
     </section>
 
+    <!-- ============ スーパーマネージャー ============ -->
     <section class="section" id="super-manager" aria-labelledby="sm-title">
       <div class="section-head">
-        <p class="section-kicker">サービス別の料金 01</p>
-        <h2 id="sm-title">スーパーマネージャー</h2>
-        <p class="section-copy">オンライン商談1回ごとの料金です。商談の回数だけ積み上がるので、商談がなかった月は料金もかかりません。</p>
+        <p class="section-kicker">くわしい料金</p>
+        <h2 id="sm-title">スーパーマネージャー<span class="basis">商談1回ごと</span></h2>
+        <p class="section-copy">AIが商談に同席した回数だけかかります。商談がなかった月は、料金もかかりません。</p>
       </div>
       <div class="card">
-        <div class="unit-row">
-          <div class="unit">
-            <span>商談同席のみ</span>
-            <strong>約200〜250円</strong>
-            <small>1時間の商談1回あたり。録音・文字起こし・商談中のアドバイス・商談後のサマリーを含みます。</small>
+        <div class="block">
+          <h3 class="step"><span class="step-no">1</span>1回の商談でかかる金額</h3>
+          <div class="unit-row">
+            <div class="unit">
+              <span class="unit-name">商談同席のみ</span>
+              <span class="unit-price"><b>約200〜250円</b><span>1時間の商談1回あたり</span></span>
+              <small>録音・文字起こし・商談中のアドバイス・商談後のサマリー</small>
+            </div>
+            <div class="unit">
+              <span class="unit-name">オプション付き（すべて使う場合）</span>
+              <span class="unit-price"><b>約350〜400円</b><span>1時間の商談1回あたり</span></span>
+              <small>同席のみに、下の③のオプションをすべて足した金額</small>
+            </div>
           </div>
-          <div class="unit">
-            <span>全機能を使う場合</span>
-            <strong>約350〜400円</strong>
-            <small>1時間の商談1回あたり。同席に加えて、事前ヒアリングAI・中締めレポートAI・勝手にフォローAIを1回ずつ使った場合です。</small>
+        </div>
+
+        <div class="block">
+          <h3 class="step"><span class="step-no">2</span>1か月の料金（早見表）</h3>
+          <p class="step-note">1名が、1回1時間の商談をした場合の1か月の料金です。</p>
+          <div class="t-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>月の商談回数</th>
+                  <th class="r">商談同席のみ<small>1か月の料金</small></th>
+                  <th class="r">オプション付き<small>1か月の料金</small></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="n">月10回<span class="sub">週2〜3回</span></td><td class="n r">約2,000〜2,500円</td><td class="n r">約3,500〜4,000円</td></tr>
+                <tr><td class="n">月20回<span class="sub">1日1回ほど</span></td><td class="n r">約4,000〜5,000円</td><td class="n r">約7,000〜8,000円</td></tr>
+                <tr class="mark"><td class="n">月40回<span class="badge">よくある使い方</span><span class="sub">1日2回ほど</span></td><td class="n r">約8,000〜10,000円</td><td class="n r">約14,000〜16,000円</td></tr>
+                <tr><td class="n">月60回<span class="sub">1日3回ほど</span></td><td class="n r">約12,000〜15,000円</td><td class="n r">約21,000〜24,000円</td></tr>
+                <tr><td class="n">月100回<span class="sub">1日5回ほど</span></td><td class="n r">約20,000〜25,000円</td><td class="n r">約35,000〜40,000円</td></tr>
+              </tbody>
+            </table>
           </div>
+          <ul class="notes">
+            <li>商談の長さや会話量により、多少前後します。30分の商談なら、録音と文字起こしの分が半分になります。</li>
+            <li>複数の方がお使いになる場合は、人数分を合計します。例：3名がそれぞれ月40回・オプション付きなら、約42,000〜48,000円です。</li>
+          </ul>
         </div>
 
-        <h3>機能ごとの料金</h3>
-        <p class="table-note">上の金額の内訳です。お使いにならなかった機能の料金はかかりません。</p>
-        <div class="t-wrap">
-          <table>
-            <thead>
-              <tr><th>商談に同席するときにかかるもの</th><th class="r">1時間の商談1回あたり</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>商談への同席・録音<span class="sub">商談の長さに応じてかかります</span></td><td class="n r">約110円</td></tr>
-              <tr><td>文字起こし<span class="sub">商談の長さに応じてかかります</span></td><td class="n r">約40円</td></tr>
-              <tr><td>商談中のアドバイス</td><td class="n r">約55円</td></tr>
-              <tr><td>商談後のサマリー</td><td class="n r">約5円</td></tr>
-              <tr class="mark"><td>同席のみの合計</td><td class="n r">約200〜250円</td></tr>
-            </tbody>
-          </table>
-        </div>
+        <div class="block">
+          <h3 class="step"><span class="step-no">3</span>オプションごとの料金</h3>
+          <p class="step-note">オプションは、使った分だけ「商談同席のみ」の金額に足されます。1つだけ使うこともできます。</p>
+          <div class="t-wrap">
+            <table>
+              <thead>
+                <tr><th>オプション</th><th>数え方</th><th class="r">料金</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>事前ヒアリングAI<span class="sub">商談前にお客様へ質問を送り、企業情報も下調べ</span></td><td>商談1回ごと</td><td class="n r">約20円</td></tr>
+                <tr><td>ヒアリング項目の自動チェック<span class="sub">聞けた項目・聞けていない項目を判定</span></td><td>商談1回ごと</td><td class="n r">約90円</td></tr>
+                <tr><td>中締めレポートAI<span class="sub">商談中に何度でも出せます</span></td><td>レポート1回ごと</td><td class="n r">約10円</td></tr>
+                <tr><td>勝手にフォローAI<span class="sub">フォローメールの作成と送信</span></td><td>メール1通ごと</td><td class="n r">約20円</td></tr>
+                <tr class="total"><td>すべて1回ずつ使った場合</td><td></td><td class="n r">約150円</td></tr>
+              </tbody>
+            </table>
+          </div>
 
-        <div class="t-wrap" style="margin-top:22px">
-          <table>
-            <thead>
-              <tr><th>使ったときだけ足されるもの</th><th class="r">1回あたり</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>事前ヒアリングAI<span class="sub">お客様への質問送付と、企業情報の下調べ</span></td><td class="n r">約20円</td></tr>
-              <tr><td>ヒアリング項目の自動チェック<span class="sub">聞けた項目・聞けていない項目の判定</span></td><td class="n r">約90円</td></tr>
-              <tr><td>中締めレポートAI<span class="sub">レポート1回の生成</span></td><td class="n r">約10円</td></tr>
-              <tr><td>勝手にフォローAI<span class="sub">フォローメール1通の作成</span></td><td class="n r">約20円</td></tr>
-              <tr><td>フォローメールの予約・送信<span class="sub">1通あたり</span></td><td class="n r">約2円</td></tr>
-              <tr class="mark"><td>すべて1回ずつ使った場合の合計</td><td class="n r">約150円</td></tr>
-            </tbody>
-          </table>
+          <details class="more">
+            <summary>「商談同席のみ」の内訳を見る</summary>
+            <div class="more-body">
+              <div class="t-wrap">
+                <table>
+                  <thead>
+                    <tr><th>項目</th><th class="r">1時間の商談1回あたり</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>商談への同席・録音<span class="sub">商談の長さに応じてかかります</span></td><td class="n r">約110円</td></tr>
+                    <tr><td>文字起こし<span class="sub">商談の長さに応じてかかります</span></td><td class="n r">約40円</td></tr>
+                    <tr><td>商談中のアドバイス</td><td class="n r">約55円</td></tr>
+                    <tr><td>商談後のサマリー</td><td class="n r">約5円</td></tr>
+                    <tr class="total"><td>合計</td><td class="n r">約200〜250円</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <ul class="notes">
+                <li>管理画面の「利用状況」で、ご利用量と料金を日ごとに確認いただけます。</li>
+              </ul>
+            </div>
+          </details>
         </div>
-        <p class="note">中締めレポートAIは、商談中に何度でも出せます。出した回数のぶんだけ加算されます（上の「全機能」の金額は、1回出した場合で計算しています）。</p>
-        <p class="note">フォローメールも、送る通数のぶんだけ加算されます。</p>
-
-        <h3 style="margin-top:30px">1時間の商談を、月に何回やった場合の料金</h3>
-        <p class="table-note">1回1時間の商談を想定した、お使いになる方1名あたりの1か月の料金です。</p>
-        <div class="t-wrap">
-          <table>
-            <thead>
-              <tr><th>月の商談回数</th><th class="r">同席のみ</th><th class="r">全機能</th></tr>
-            </thead>
-            <tbody>
-              <tr><td class="n">5回</td><td class="n r">約1,000〜1,250円</td><td class="n r">約1,750〜2,000円</td></tr>
-              <tr><td class="n">10回</td><td class="n r">約2,000〜2,500円</td><td class="n r">約3,500〜4,000円</td></tr>
-              <tr><td class="n">20回</td><td class="n r">約4,000〜5,000円</td><td class="n r">約7,000〜8,000円</td></tr>
-              <tr><td class="n">30回</td><td class="n r">約6,000〜7,500円</td><td class="n r">約10,500〜12,000円</td></tr>
-              <tr class="mark"><td class="n">40回<span class="badge">よくある使い方</span></td><td class="n r">約8,000〜10,000円</td><td class="n r">約14,000〜16,000円</td></tr>
-              <tr><td class="n">60回</td><td class="n r">約12,000〜15,000円</td><td class="n r">約21,000〜24,000円</td></tr>
-              <tr><td class="n">80回</td><td class="n r">約16,000〜20,000円</td><td class="n r">約28,000〜32,000円</td></tr>
-              <tr><td class="n">100回</td><td class="n r">約20,000〜25,000円</td><td class="n r">約35,000〜40,000円</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="note">1回1時間の商談を想定した目安です。商談の長さや会話量により多少前後します。録音と文字起こしは商談の長さに応じてかかるため、30分の商談ではその分が半分になります。</p>
-        <p class="note">「全機能」は、事前ヒアリング・中締めレポート・フォローメールをすべての商談で使った場合の金額です。オプションを1つだけ使う場合は、同席のみの金額に、その機能のぶん（約10〜90円）が足されます。</p>
-        <p class="note">複数の方がお使いになる場合は、人数のぶんだけ積み上がります。たとえば3名がそれぞれ月40回・全機能で使う場合は、約42,000〜48,000円です。</p>
-        <p class="note">管理画面の「利用状況」で、ご利用量と料金を日ごとに確認いただけます。</p>
       </div>
     </section>
 
+    <!-- ============ ワークログ・インサイト ============ -->
     <section class="section" id="worklog-insight" aria-labelledby="wl-title">
       <div class="section-head">
-        <p class="section-kicker">サービス別の料金 02</p>
-        <h2 id="wl-title">ワークログ・インサイト</h2>
+        <p class="section-kicker">くわしい料金</p>
+        <h2 id="wl-title">ワークログ・インサイト<span class="basis">使う人数ごと</span></h2>
         <p class="section-copy">お使いになる方の人数（ID数）で決まります。使う量では変わらないので、毎月の金額が読みやすい料金です。</p>
       </div>
       <div class="card">
-        <div class="unit-row">
-          <div class="unit">
-            <span>1IDあたり</span>
-            <strong>月 4,000円</strong>
-            <small>お使いになる方1名あたりの1か月の料金です。</small>
+        <div class="block">
+          <h3 class="step"><span class="step-no">1</span>1名でかかる金額</h3>
+          <div class="unit-row">
+            <div class="unit">
+              <span class="unit-name">1名（1ID）</span>
+              <span class="unit-price"><b>4,000円</b><span>1か月あたり</span></span>
+              <small>使う量にかかわらず、この金額です。</small>
+            </div>
           </div>
         </div>
 
-        <h3>人数別の1か月の料金</h3>
-        <div class="t-wrap">
-          <table>
-            <thead>
-              <tr><th>お使いになる人数</th><th class="r">1か月の料金</th></tr>
-            </thead>
-            <tbody>
-              <tr class="mark"><td class="n">1ID<span class="badge">よくある使い方</span></td><td class="n r">4,000円</td></tr>
-              <tr><td class="n">5ID</td><td class="n r">20,000円</td></tr>
-              <tr><td class="n">10ID</td><td class="n r">40,000円</td></tr>
-              <tr><td class="n">30ID</td><td class="n r">120,000円</td></tr>
-              <tr><td class="n">50ID</td><td class="n r">200,000円</td></tr>
-            </tbody>
-          </table>
+        <div class="block">
+          <h3 class="step"><span class="step-no">2</span>1か月の料金（早見表）</h3>
+          <div class="t-wrap">
+            <table>
+              <thead>
+                <tr><th>お使いになる人数</th><th class="r">1か月の料金</th></tr>
+              </thead>
+              <tbody>
+                <tr class="mark"><td class="n">1名<span class="badge">よくある使い方</span></td><td class="n r">4,000円</td></tr>
+                <tr><td class="n">5名</td><td class="n r">20,000円</td></tr>
+                <tr><td class="n">10名</td><td class="n r">40,000円</td></tr>
+                <tr><td class="n">30名</td><td class="n r">120,000円</td></tr>
+                <tr><td class="n">50名</td><td class="n r">200,000円</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <ul class="notes">
+            <li>月の途中で人数が増えた場合の数え方は、ご利用開始前にご相談のうえ決めさせていただきます。</li>
+          </ul>
         </div>
-        <p class="note">月の途中で人数が増えた場合の数え方は、ご利用開始前にご相談のうえ決めさせていただきます。</p>
       </div>
     </section>
 
+    <!-- ============ Elliot ============ -->
     <section class="section" id="elliot" aria-labelledby="el-title">
       <div class="section-head">
-        <p class="section-kicker">サービス別の料金 03</p>
-        <h2 id="el-title">Elliot</h2>
-        <p class="section-copy">取り込むログ（会議・商談・日報などの記録）1件ごとの料金と、ログの件数にかかわらずかかる最低料金の2つで決まります。</p>
+        <p class="section-kicker">くわしい料金</p>
+        <h2 id="el-title">Elliot<span class="basis">ログ1件ごと</span></h2>
+        <p class="section-copy">取り込んだログ（会議・商談・日報などの記録）の件数で決まります。ログが少ない月も、最低料金がかかります。</p>
       </div>
       <div class="card">
-        <div class="unit-row">
-          <div class="unit">
-            <span>ログ1件あたり</span>
-            <strong>15円</strong>
-            <small>会議・商談・日報などの記録1件の取り込みと整理を含みます。</small>
+        <div class="block">
+          <h3 class="step"><span class="step-no">1</span>料金のきまり方</h3>
+          <div class="unit-row">
+            <div class="unit">
+              <span class="unit-name">ログの取り込み</span>
+              <span class="unit-price"><b>15円</b><span>ログ1件あたり</span></span>
+              <small>記録1件の取り込みと整理を含みます。</small>
+            </div>
+            <div class="unit">
+              <span class="unit-name">最低料金</span>
+              <span class="unit-price"><b>72円</b><span>1日あたり（1か月で約2,200円）</span></span>
+              <small>毎日のメール配信と、月1回のレポート生成を含みます。ログを取り込まない日もかかります。</small>
+            </div>
           </div>
-          <div class="unit">
-            <span>最低料金</span>
-            <strong>1日 72円</strong>
-            <small>ログを取り込まない日もかかります。1か月（30日）で約2,200円です。</small>
-          </div>
+          <p class="rule">1か月の料金は、「ログ件数×15円」と「最低料金（約2,200円）」の高いほうです。両方を足すことはありません。</p>
         </div>
 
-        <h3>ログ件数別の1か月の料金</h3>
-        <p class="table-note">1日に取り込むログの件数で見た早見表です。毎日のメール配信と、月1回のレポート生成を含みます。</p>
-        <div class="t-wrap">
-          <table>
-            <thead>
-              <tr><th>1日のログ件数</th><th class="r">1か月のログ件数</th><th class="r">ログの取り込み料金</th><th class="r">1か月のご請求額</th></tr>
-            </thead>
-            <tbody>
-              <tr><td class="n">1件</td><td class="n r">30件</td><td class="n r">450円</td><td class="n r">約2,200円</td></tr>
-              <tr><td class="n">3件</td><td class="n r">90件</td><td class="n r">1,350円</td><td class="n r">約2,200円</td></tr>
-              <tr class="mark"><td class="n">5件<span class="badge">よくある使い方</span></td><td class="n r">150件</td><td class="n r">2,250円</td><td class="n r">約2,300円</td></tr>
-              <tr><td class="n">10件</td><td class="n r">300件</td><td class="n r">4,500円</td><td class="n r">約4,500円</td></tr>
-              <tr><td class="n">20件</td><td class="n r">600件</td><td class="n r">9,000円</td><td class="n r">約9,000円</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="note">1か月144件（1日あたり約4.8件）までは、取り込み料金が最低料金に届かないため、最低料金の約2,200円がご請求額になります。それを超えた月は、取り込み料金がそのままご請求額です。最低料金が上乗せされることはありません。</p>
-        <p class="note">毎日のメール配信と、月1回のレポート生成は最低料金にふくまれます。別途の料金はかかりません。</p>
+        <div class="block">
+          <h3 class="step"><span class="step-no">2</span>1か月の料金（早見表）</h3>
+          <p class="step-note">1社で、毎日同じ件数のログを取り込んだ場合です。</p>
+          <div class="t-wrap">
+            <table>
+              <thead>
+                <tr><th>1日に取り込むログ</th><th class="r">1か月のログ件数</th><th class="r">1か月の料金</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="n">1件</td><td class="n r">30件</td><td class="n r">約2,200円<span class="tag-min">最低料金</span></td></tr>
+                <tr><td class="n">3件</td><td class="n r">90件</td><td class="n r">約2,200円<span class="tag-min">最低料金</span></td></tr>
+                <tr class="mark"><td class="n">5件<span class="badge">よくある使い方</span></td><td class="n r">150件</td><td class="n r">約2,300円</td></tr>
+                <tr><td class="n">10件</td><td class="n r">300件</td><td class="n r">約4,500円</td></tr>
+                <tr><td class="n">20件</td><td class="n r">600件</td><td class="n r">約9,000円</td></tr>
+              </tbody>
+            </table>
+          </div>
 
-        <h3 style="margin-top:30px">過去の記録をまとめて取り込む場合</h3>
-        <p class="table-note">これまでにたまっている議事録・日報などを、最初にまとめて取り込むときの料金です。</p>
-        <div class="t-wrap">
-          <table>
-            <thead>
-              <tr><th>取り込む件数</th><th class="r">料金</th></tr>
-            </thead>
-            <tbody>
-              <tr><td class="n">500件</td><td class="n r">7,500円</td></tr>
-              <tr><td class="n">1,000件</td><td class="n r">15,000円</td></tr>
-              <tr><td class="n">10,000件</td><td class="n r">150,000円</td></tr>
-              <tr><td class="n">100,000件</td><td class="n r">1,500,000円</td></tr>
-            </tbody>
-          </table>
+          <details class="more">
+            <summary>過去の記録をまとめて取り込む場合</summary>
+            <div class="more-body">
+              <div class="t-wrap">
+                <table>
+                  <thead>
+                    <tr><th>まとめて取り込む件数</th><th class="r">料金</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td class="n">500件</td><td class="n r">7,500円</td></tr>
+                    <tr><td class="n">1,000件</td><td class="n r">15,000円</td></tr>
+                    <tr><td class="n">10,000件</td><td class="n r">150,000円</td></tr>
+                    <tr><td class="n">100,000件</td><td class="n r">1,500,000円</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <ul class="notes">
+                <li>これまでにたまっている議事録・日報などを、最初にまとめて取り込むときの料金です。1件15円で計算します。</li>
+                <li>まとまった件数を取り込む場合は、件数と金額を事前に確認したうえで進めます。</li>
+              </ul>
+            </div>
+          </details>
         </div>
-        <p class="note">まとまった件数を取り込む場合は、件数と金額を事前に確認したうえで進めます。</p>
       </div>
     </section>
 
+    <!-- ============ Jマッチ・エンジン ============ -->
     <section class="section" id="jmatch-engine" aria-labelledby="jm-title">
       <div class="section-head">
-        <p class="section-kicker">サービス別の料金 04</p>
-        <h2 id="jm-title">Jマッチ・エンジン</h2>
+        <p class="section-kicker">くわしい料金</p>
+        <h2 id="jm-title">Jマッチ・エンジン<span class="basis">メール1通ごと</span></h2>
         <p class="section-copy">お客様リストへ届けるメールの通数で計算します。文章の作成と送信を含み、通数が多いほど1通あたりの単価が下がります。ご案内・ご請求は「API利用料」としてまとめてお出しします。</p>
       </div>
       <div class="card">
-        <div class="unit-row">
-          <div class="unit">
-            <span>API利用料｜3,000通まで</span>
-            <strong>1通 1円</strong>
-            <small>その月に送った合計の通数で単価が決まります。</small>
+        <div class="block">
+          <h3 class="step"><span class="step-no">1</span>料金のきまり方</h3>
+          <div class="unit-row">
+            <div class="unit">
+              <span class="unit-name">月3,000通まで</span>
+              <span class="unit-price"><b>1円</b><span>1通あたり</span></span>
+            </div>
+            <div class="unit">
+              <span class="unit-name">月3,001〜10,000通</span>
+              <span class="unit-price"><b>0.5円</b><span>1通あたり</span></span>
+            </div>
+            <div class="unit">
+              <span class="unit-name">月10,001通以上</span>
+              <span class="unit-price"><b>0.2円</b><span>1通あたり</span></span>
+            </div>
           </div>
-          <div class="unit">
-            <span>API利用料｜3,001〜10,000通</span>
-            <strong>1通 0.5円</strong>
-            <small>10,000通まではこの単価です。</small>
-          </div>
-          <div class="unit">
-            <span>API利用料｜10,001通以上</span>
-            <strong>1通 0.2円</strong>
-            <small>何通送っても、この単価です。</small>
-          </div>
+          <p class="rule">その月に送った合計の通数で1通あたりの単価が決まり、すべての通数にその単価がかかります。</p>
         </div>
 
-        <h3>送信通数別の1か月のAPI利用料</h3>
-        <p class="table-note">その月に送った合計の通数で単価が決まり、全通数にその単価がかかります。</p>
-        <div class="t-wrap">
-          <table>
-            <thead>
-              <tr><th>1か月の送信通数</th><th class="r">1通あたり</th><th class="r">1か月のAPI利用料</th></tr>
-            </thead>
-            <tbody>
-              <tr><td class="n">500通</td><td class="n r">1円</td><td class="n r">500円</td></tr>
-              <tr class="mark"><td class="n">1,000通<span class="badge">よくある使い方</span></td><td class="n r">1円</td><td class="n r">1,000円</td></tr>
-              <tr><td class="n">3,000通</td><td class="n r">1円</td><td class="n r">3,000円</td></tr>
-              <tr><td class="n">5,000通</td><td class="n r">0.5円</td><td class="n r">2,500円</td></tr>
-              <tr><td class="n">10,000通</td><td class="n r">0.5円</td><td class="n r">5,000円</td></tr>
-              <tr><td class="n">20,000通</td><td class="n r">0.2円</td><td class="n r">4,000円</td></tr>
-              <tr><td class="n">50,000通</td><td class="n r">0.2円</td><td class="n r">10,000円</td></tr>
-              <tr><td class="n">100,000通</td><td class="n r">0.2円</td><td class="n r">20,000円</td></tr>
-            </tbody>
-          </table>
+        <div class="block">
+          <h3 class="step"><span class="step-no">2</span>1か月の料金（早見表）</h3>
+          <div class="t-wrap">
+            <table>
+              <thead>
+                <tr><th>1か月に送る通数</th><th class="r">1通あたり</th><th class="r">1か月の料金</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="n">500通</td><td class="n r">1円</td><td class="n r">500円</td></tr>
+                <tr class="mark"><td class="n">1,000通<span class="badge">よくある使い方</span></td><td class="n r">1円</td><td class="n r">1,000円</td></tr>
+                <tr><td class="n">3,000通</td><td class="n r">1円</td><td class="n r">3,000円</td></tr>
+                <tr><td class="n">5,000通</td><td class="n r">0.5円</td><td class="n r">2,500円</td></tr>
+                <tr><td class="n">10,000通</td><td class="n r">0.5円</td><td class="n r">5,000円</td></tr>
+                <tr><td class="n">20,000通</td><td class="n r">0.2円</td><td class="n r">4,000円</td></tr>
+                <tr><td class="n">50,000通</td><td class="n r">0.2円</td><td class="n r">10,000円</td></tr>
+                <tr><td class="n">100,000通</td><td class="n r">0.2円</td><td class="n r">20,000円</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <ul class="notes">
+            <li>単価が下がる段に入ると、たくさん送った月のほうが金額が下がることがあります（例：3,000通は3,000円、5,000通は2,500円）。</li>
+            <li>1,000社へ毎週お届けした場合は、1か月で約4,000通・約2,000円です。</li>
+          </ul>
         </div>
-        <p class="note">単価が下がる段に入ると、たくさん送った月のほうが金額が下がることがあります（例：3,000通は3,000円、5,000通は2,500円）。</p>
-        <p class="note">1,000社へ毎週お届けした場合は、1か月で約4,000通・2,000円です。</p>
       </div>
     </section>
 
+    <!-- ============ 前提 ============ -->
     <section class="section" aria-labelledby="terms-title">
       <div class="section-head">
         <p class="section-kicker">料金の前提</p>
-        <h2 id="terms-title">金額の計算に使っている、<br>4つの前提です。</h2>
+        <h2 id="terms-title">金額の計算に使っている前提です。</h2>
       </div>
       <ul class="terms-list">
-        <li><b>01</b><div><strong>1か月＝21営業日で計算しています</strong><span>平日のみで数えた日数です。祝日は差し引いていません。</span></div></li>
-        <li><b>02</b><div><strong>商談は1回1時間で計算しています</strong><span>スーパーマネージャーは、商談の長さによって料金が上下します。</span></div></li>
-        <li><b>03</b><div><strong>ご請求は、実際のご利用量にもとづきます</strong><span>1年間、初期費用と月額料金はかかりません。このページの金額は目安で、お使いにならなかった分の料金もかかりません。</span></div></li>
+        <li><b>01</b><div><strong>ご請求は、実際のご利用量にもとづきます</strong><span>このページの金額は目安です。1年間、初期費用と月額料金はかかりません。お使いにならなかった分の料金もかかりません。</span></div></li>
+        <li><b>02</b><div><strong>「1日◯回」は、平日だけで数えています</strong><span>1か月＝21営業日（祝日は差し引いていません）で計算しています。Elliotの最低料金だけは、毎日かかるため30日で計算しています。</span></div></li>
+        <li><b>03</b><div><strong>商談は1回1時間で計算しています</strong><span>スーパーマネージャーは、商談の長さや会話量によって金額が前後します。</span></div></li>
         <li><b>04</b><div><strong>為替によって変わる場合があります</strong><span>海外のサービスを使っている機能があるため、大きく円安が進んだ場合は金額が上下することがあります。その際は事前にご案内します。</span></div></li>
       </ul>
     </section>
