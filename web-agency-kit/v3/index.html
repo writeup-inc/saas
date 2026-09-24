@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ホームページ制作会社スタートパック｜1年後の自分は、ホームページを作れる。</title>
+<meta name="description" content="ホームページ作りが初めてでも大丈夫。AI家庭教師（年間最大36時間）に教わりながら、まず自分の会社のホームページを2つ作ります。料金は1年目が月10万円（税別）、2年目からは月1万円（税別）。">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://writeup-inc.github.io/saas/web-agency-kit/v3/">
+<meta property="og:title" content="ホームページ制作会社スタートパック｜1年後の自分は、ホームページを作れる。">
+<meta property="og:description" content="AI家庭教師が年間最大36時間。1年目は月10万円、2年目からは月1万円。">
+<meta property="og:image" content="https://writeup-inc.github.io/saas/web-agency-kit/og.png">
+<meta property="og:type" content="website">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho+B1:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== lp-base.css（改行制御・最小文字サイズ・固定CTAの逃げ） ===== */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] {
+    word-break: normal;
+  }
+}
+.nobr { white-space: nowrap; }
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+
+/* ===== V3：明朝のビジネススタイル（紺・生成り・金の罫線） ===== */
+:root{
+  --bg:#f6f5f1; --white:#fffffe; --navy:#12233b; --navy2:#0b1728; --navyl:#e9edf2;
+  --ink:#1b2430; --ink2:#4a5563; --line:#d9d5cc; --gold:#a8844f; --goldl:#f3ede2;
+  --serif:"Shippori Mincho B1","Noto Serif JP","Yu Mincho",serif;
+  --sans:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;
+}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:2;-webkit-font-smoothing:antialiased;counter-reset:sec}
+p{margin:0}
+a{color:inherit}
+:is(p,li,dd,td,th,summary,.ans,figcaption){word-break:auto-phrase;line-break:strict;overflow-wrap:anywhere}
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+mark{background:none;color:inherit;border-bottom:2px solid var(--gold);padding-bottom:1px}
+.ib{display:inline-block}
+.sp-only{display:none}
+@media (max-width:560px){.pc-only{display:none}.sp-only{display:inline}}
+
+/* ヘッダー */
+.hd{position:sticky;top:0;z-index:50;background:rgba(18,35,59,.97);color:#fff;border-bottom:1px solid rgba(168,132,79,.45)}
+.hd .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+.logo{display:inline-flex;align-items:center;gap:12px;min-height:44px;text-decoration:none;font-family:var(--serif);font-weight:700;font-size:16px;letter-spacing:.04em}
+.logo i{display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--gold);color:var(--gold);font-style:normal;font-family:var(--serif);font-size:13px;letter-spacing:.06em}
+.hd nav{display:flex;gap:26px}
+.hd nav a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;font-size:14px;letter-spacing:.06em;color:#cdd5df}
+.hd nav a:hover{color:#fff}
+.btn-s{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1px solid var(--gold);color:#fff;text-decoration:none;font-size:14px;letter-spacing:.06em;white-space:nowrap}
+.btn-s:hover{background:var(--gold)}
+@media (max-width:1000px){.hd nav{display:none}}
+@media (max-width:400px){.logo .logo-long{display:none}}
+@media (max-width:440px){.btn-s{padding:0 12px;font-size:13px}}
+
+/* ヒーロー（紺の地） */
+.hero{position:relative;padding:84px 0 96px;background:var(--navy);color:#fff;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,23,40,.0),rgba(11,23,40,.0));pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:64px;align-items:center}
+.eyebrow{display:flex;align-items:center;gap:14px;margin:0 0 28px;font-size:14px;letter-spacing:.12em;color:#d9c7a6}
+.eyebrow::before{content:"";width:40px;height:1px;background:var(--gold)}
+.hc{position:relative;cursor:pointer;outline-offset:8px}
+.hero h1{margin:0;font-family:var(--serif);font-weight:700;font-size:clamp(26px,3.6vw,46px);line-height:1.5;letter-spacing:.01em;color:#fff}
+.hero h1::after{content:"";display:inline-block;width:2px;height:.9em;margin-left:4px;vertical-align:-.08em;background:var(--gold);animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.rot{margin:14px 0 0 -10px}
+.dots{display:flex}
+.dots button{width:44px;height:44px;padding:0;border:0;background:none;cursor:pointer;position:relative}
+.dots button::before{content:"";position:absolute;left:10px;right:10px;top:21px;height:2px;background:rgba(255,255,255,.25)}
+.dots button[aria-current="true"]::before{background:var(--gold)}
+.hero .sub{margin:16px 0 0;max-width:30em;font-size:16px;line-height:2.1;color:#cdd5df}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);margin:36px 0 0;padding:0;list-style:none;border-top:1px solid rgba(168,132,79,.6);border-bottom:1px solid rgba(168,132,79,.6)}
+.facts li{padding:18px 16px 16px;border-right:1px solid rgba(255,255,255,.12);line-height:1.4}
+.facts li:first-child{padding-left:0}
+.facts li:last-child{border-right:0}
+.facts small{display:block;font-size:12px;letter-spacing:.1em;color:#d9c7a6}
+.facts b{display:block;margin-top:8px;font-family:var(--serif);font-weight:700;font-size:clamp(17px,1.6vw,22px);white-space:nowrap}
+.facts b em{font-style:normal;font-size:12px;margin-left:2px;color:#cdd5df}
+.cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;margin:36px 0 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:60px;padding:0 32px;background:var(--gold);color:#fff;text-decoration:none;font-weight:700;font-size:16px;letter-spacing:.08em;transition:background .2s}
+.btn::after{content:"→";font-weight:400}
+.btn:hover{background:#8f6e3f}
+.tlink{display:inline-flex;align-items:center;min-height:44px;font-size:15px;letter-spacing:.06em;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.5)}
+.hero-photo{position:relative;margin:0}
+.hero-photo::before{content:none}
+.hero-photo img{position:relative;display:block;width:100%;aspect-ratio:4/4.6;object-fit:cover;object-position:78% 50%;filter:saturate(.8)}
+.hero-photo figcaption{position:absolute;right:10px;top:10px;padding:2px 8px;background:rgba(11,23,40,.72);font-size:12px;color:#e6ebf1}
+.tutor-chip{position:absolute;left:-36px;bottom:30px;display:flex;align-items:center;gap:14px;max-width:320px;padding:16px 20px 16px 16px;background:var(--white);color:var(--ink);box-shadow:0 20px 40px -20px rgba(0,0,0,.5)}
+.tutor-chip img{width:60px;height:60px;border-radius:50%;object-fit:cover;object-position:50% 20%;flex:none}
+.tutor-chip p{font-size:13px;line-height:1.7;color:var(--ink2)}
+.tutor-chip b{display:block;font-family:var(--serif);font-size:17px;color:var(--navy)}
+@media (max-width:900px){
+  .hero{padding:52px 0 72px}
+  .hero .wrap{grid-template-columns:1fr;gap:52px}
+  .hero-photo{max-width:520px}
+  .tutor-chip{left:12px;bottom:-26px}
+}
+@media (max-width:560px){
+  .facts{grid-template-columns:1fr}
+  .facts li{display:flex;align-items:baseline;justify-content:space-between;padding:14px 0;border-right:0;border-bottom:1px solid rgba(255,255,255,.12)}
+  .facts li:last-child{border-bottom:0}
+  .facts b{margin:0}
+  .btn{width:100%}
+}
+
+/* 区画の共通：左に番号とラベル、右に見出しと本文 */
+.sec{position:relative;padding:clamp(80px,10vw,128px) 0;counter-increment:sec}
+.sec.white{background:var(--white)}
+.sec>.wrap{display:grid;grid-template-columns:220px minmax(0,1fr);column-gap:56px}
+.sec>.wrap>*{grid-column:2}
+.sec>.wrap>.q{grid-column:1;grid-row:1 / span 2;align-self:start}
+.q{margin:6px 0 0;padding-top:16px;border-top:1px solid var(--gold);font-size:14px;line-height:1.8;letter-spacing:.06em;color:var(--ink2)}
+.q::before{content:counter(sec,decimal-leading-zero);display:block;margin-bottom:6px;font-family:var(--serif);font-size:30px;font-weight:700;letter-spacing:.02em;color:var(--gold);line-height:1}
+.sec h2{margin:0;font-family:var(--serif);font-weight:700;font-size:clamp(26px,3.3vw,40px);line-height:1.55;letter-spacing:.02em;color:var(--navy)}
+.lead-p{margin:22px 0 0;max-width:40em;font-size:16px;line-height:2.1;color:var(--ink2)}
+@media (max-width:900px){
+  .sec>.wrap{grid-template-columns:1fr}
+  .sec>.wrap>*,.sec>.wrap>.q{grid-column:1;grid-row:auto}
+  .q{display:flex;align-items:baseline;gap:12px;margin:0 0 18px;padding-top:12px}
+  .q::before{display:inline;margin:0;font-size:24px}
+}
+
+/* 1年の流れ */
+.steps{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:52px 0 0;padding:0;list-style:none;border-top:1px solid var(--navy)}
+.steps li{position:relative;display:flex;flex-direction:column;padding:30px 28px 28px 0}
+.steps li+li{padding-left:28px;border-left:1px solid var(--line)}
+.steps .n{display:flex;align-items:baseline;gap:8px;font-family:var(--serif);color:var(--gold);line-height:1}
+.steps .n small{font-family:var(--sans);font-size:12px;letter-spacing:.14em}
+.steps .n b{font-size:40px;font-weight:700}
+.steps .card{flex:1;margin-top:18px}
+.steps h3{margin:0 0 10px;font-family:var(--serif);font-size:21px;font-weight:700;line-height:1.55;color:var(--navy)}
+.steps p{font-size:15px;line-height:2;color:var(--ink2)}
+.steps .who{display:inline-block;margin-top:16px;padding:3px 12px;border:1px solid var(--gold);font-size:13px;letter-spacing:.06em;color:#7d6038}
+.steps li:last-child{background:var(--navy);color:#fff;padding-right:28px}
+.steps li:last-child h3{color:#fff}
+.steps li:last-child p{color:#cdd5df}
+.steps li:last-child .who{color:#e7d6b6}
+@media (max-width:860px){
+  .steps{grid-template-columns:1fr}
+  .steps li,.steps li+li{padding:26px 0;border-left:0;border-bottom:1px solid var(--line)}
+  .steps li:last-child{padding:26px 22px}
+}
+.keymsg{margin:52px 0 0;padding:34px 0 34px 30px;border-left:2px solid var(--gold);font-family:var(--serif);font-weight:700;font-size:clamp(20px,2.4vw,27px);line-height:1.8;color:var(--navy)}
+.tools{margin:18px 0 0;font-size:14px;color:var(--ink2)}
+.keymsg .ib{word-break:auto-phrase}
+@media (max-width:600px){.keymsg .ib{display:inline}.keymsg{padding-left:20px}}
+
+/* AI家庭教師 */
+.tutor{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:52px;align-items:start;margin:44px 0 0}
+.tutor figure{margin:0}
+.tutor figure img{display:block;width:100%;aspect-ratio:4/4.6;object-fit:cover;object-position:50% 25%;filter:saturate(.85)}
+.tutor figcaption{margin-top:12px;color:var(--ink2)}
+.profile{margin:0;padding:0;border-top:1px solid var(--navy)}
+.profile div{display:grid;grid-template-columns:7.5em 1fr;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.profile dt{font-family:var(--serif);font-weight:700;color:var(--gold)}
+.profile dd{margin:0;font-size:16px}
+.asks-t{margin:34px 0 14px;font-family:var(--serif);font-weight:700;font-size:19px;color:var(--navy)}
+.asks{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line)}
+.asks li{padding:16px 12px 16px 0;border-bottom:1px solid var(--line);font-family:var(--serif);font-size:16px;line-height:1.7;color:var(--ink)}
+.asks li:nth-child(odd){padding-right:20px;border-right:1px solid var(--line)}
+.asks li:nth-child(even){padding-left:20px}
+.tutor .note2{margin:20px 0 0;font-size:13px;color:var(--ink2)}
+@media (max-width:860px){.tutor{grid-template-columns:1fr;gap:34px}.tutor figure{max-width:420px}}
+@media (max-width:520px){.asks{grid-template-columns:1fr}.asks li:nth-child(odd),.asks li:nth-child(even){padding:14px 0;border-right:0}.profile div{grid-template-columns:6em 1fr}}
+
+/* 最初に作る2つ */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:44px 0 0;border-top:1px solid var(--navy);border-bottom:1px solid var(--navy)}
+.two article{display:flex;flex-direction:column;padding:34px 34px 34px 0}
+.two article+article{padding:34px 0 34px 34px;border-left:1px solid var(--line)}
+.two .tag{align-self:flex-start;font-size:12px;letter-spacing:.14em;color:var(--gold)}
+.two h3{margin:10px 0 12px;font-family:var(--serif);font-size:26px;font-weight:700;line-height:1.5;color:var(--navy)}
+.two p{font-size:15px;line-height:2;color:var(--ink2)}
+.two ul{margin:14px 0 0;padding-left:1.1em;font-size:14px;line-height:2;color:var(--ink2)}
+.mock{margin-top:26px}
+.mock-in{border:1px solid var(--line);background:#fff}
+.mock-bar{height:20px;background:var(--bg);border-bottom:1px solid var(--line)}
+.mock-hero{padding:18px;background:var(--navy);color:#fff;font-family:var(--serif);font-weight:700;font-size:16px}
+.mock-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px}
+.mock-row span{padding:10px 4px;background:var(--navyl);text-align:center;font-size:13px;color:var(--navy)}
+.samples{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.sample{display:block;text-decoration:none;border:1px solid var(--line);background:#fff;transition:border-color .2s}
+.sample:hover{border-color:var(--gold)}
+.sample img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.sample span{display:flex;align-items:center;min-height:44px;padding:8px 12px;font-size:14px;letter-spacing:.02em}
+.sample-note{margin-top:10px;font-size:13px;color:var(--ink2)}
+.after2{margin:30px 0 0;font-family:var(--serif);font-weight:700;font-size:clamp(18px,2vw,22px);color:var(--navy)}
+@media (max-width:860px){.two{grid-template-columns:1fr}.two article,.two article+article{padding:30px 0;border-left:0}.two article+article{border-top:1px solid var(--line)}}
+@media (max-width:480px){.samples{grid-template-columns:1fr}}
+
+/* 目指す姿 */
+.goal{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:48px;align-items:center;margin:44px 0 0}
+.goal figure{margin:0}
+.goal figure img{display:block;width:100%;aspect-ratio:16/11;object-fit:cover;filter:saturate(.8)}
+.goal figcaption{margin-top:12px;color:var(--ink2)}
+.scene-t{margin:0 0 14px;font-family:var(--serif);font-weight:700;font-size:19px;color:var(--navy)}
+.scenes{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.scenes li{padding:18px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.9;color:var(--ink2)}
+.scenes b{display:block;margin-bottom:4px;font-family:var(--serif);font-size:17px;color:var(--ink)}
+.goal .note2{margin-top:16px;font-size:13px;color:var(--ink2)}
+@media (max-width:860px){.goal{grid-template-columns:1fr;gap:30px}}
+
+/* 数字 */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:44px 0 0;border-top:1px solid var(--navy)}
+.stats article{padding:28px 26px 26px 0}
+.stats article+article{padding-left:26px;border-left:1px solid var(--line)}
+.stats .big{font-family:var(--serif);font-weight:700;font-size:clamp(38px,4.2vw,52px);line-height:1.1;color:var(--navy)}
+.stats .big em{font-style:normal;font-size:.42em;margin-left:3px;color:var(--gold)}
+.stats h3{margin:14px 0 8px;font-family:var(--serif);font-size:18px;font-weight:700;color:var(--ink)}
+.stats p{font-size:14px;line-height:1.9;color:var(--ink2)}
+.stats a{display:inline-flex;align-items:center;min-height:44px;font-size:12px;color:var(--ink2);text-underline-offset:3px}
+.small-note{margin:18px 0 0;font-size:12px;color:var(--ink2)}
+.fc-btn{display:inline-flex;align-items:center;gap:10px;min-height:44px;margin-top:22px;padding:0 18px;border:1px solid var(--ink2);background:transparent;color:var(--ink2);font:inherit;font-size:13px;letter-spacing:.04em;cursor:pointer}
+.fc-btn small{font-size:12px}
+.fc-btn:hover{color:var(--navy);border-color:var(--navy)}
+@media (max-width:1100px){.stats{grid-template-columns:1fr}.stats article,.stats article+article{padding:24px 0;border-left:0;border-bottom:1px solid var(--line)}}
+
+/* 料金 */
+.prices{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;margin:44px 0 0;align-items:start}
+.price{padding:0 0 28px;background:var(--white);border:1px solid var(--line)}
+.price .when{display:block;padding:14px 28px;background:var(--navy);color:#fff;font-size:14px;letter-spacing:.12em}
+.price.y2 .when{background:var(--bg);color:var(--navy);border-bottom:1px solid var(--line)}
+.price .yen{margin:22px 28px 4px;font-family:var(--serif);font-weight:700;font-size:clamp(40px,5vw,58px);line-height:1.1;color:var(--navy)}
+.price .yen small{font-size:.3em;margin-left:6px;color:var(--gold)}
+.price .sub2{margin:0 28px;font-size:14px;color:var(--ink2)}
+.price ul{margin:20px 28px 0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.price li{position:relative;padding:12px 0 12px 22px;border-bottom:1px solid var(--line);font-size:15px;line-height:1.7}
+.price li::before{content:"";position:absolute;left:2px;top:1.25em;width:8px;height:1px;background:var(--gold)}
+.price li b{font-weight:700;color:var(--navy)}
+.price.y1{border-color:var(--navy)}
+.not-inc{margin:24px 0 0;padding:22px 26px;border:1px solid var(--line);background:var(--bg);font-size:14px;line-height:2}
+.not-inc b{display:block;margin-bottom:4px;font-family:var(--serif);color:var(--navy)}
+@media (max-width:760px){.prices{grid-template-columns:1fr}.price .when,.price .yen,.price .sub2,.price ul{margin-left:20px;margin-right:20px}.price .when{margin:0;padding:12px 20px}}
+
+/* 向き不向き */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:32px 0 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fit article{padding:24px 26px 22px 0}
+.fit article+article{padding-left:26px;border-left:1px solid var(--line)}
+.fit h3{margin:0 0 10px;font-family:var(--serif);font-size:18px;font-weight:700;color:var(--navy)}
+.fit ul{margin:0;padding-left:1.1em;font-size:15px;line-height:2;color:var(--ink2)}
+@media (max-width:760px){.fit{grid-template-columns:1fr}.fit article,.fit article+article{padding:22px 0;border-left:0}.fit article+article{border-top:1px solid var(--line)}}
+
+/* よくある質問 */
+.faq{margin:40px 0 0;border-top:1px solid var(--navy)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;min-height:64px;padding:16px 0;cursor:pointer;list-style:none;font-family:var(--serif);font-weight:700;font-size:17px;color:var(--navy)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"Q";font-family:var(--serif);font-size:22px;color:var(--gold)}
+.faq summary::after{content:"＋";font-weight:400;color:var(--gold)}
+.faq details[open] summary::after{content:"－"}
+.faq .ans{padding:0 0 24px 38px;font-size:15px;line-height:2.1;color:var(--ink2)}
+@media (max-width:560px){.faq summary{font-size:16px}.faq .ans{padding-left:0}}
+
+/* 最後の申込 */
+.final{padding:clamp(80px,10vw,120px) 0;background:var(--navy);color:#fff}
+.final .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:56px;align-items:center}
+.final h2{margin:0;font-family:var(--serif);font-weight:700;font-size:clamp(26px,3.3vw,40px);line-height:1.55;letter-spacing:.02em}
+.final p{margin:18px 0 0;font-size:16px;color:#cdd5df}
+.final .box{padding:32px;border:1px solid var(--gold)}
+.final .box b{display:block;font-family:var(--serif);font-size:21px}
+.final .box p{margin-top:8px;font-size:14px}
+.final .btn{margin-top:22px;width:100%}
+@media (max-width:860px){.final .wrap{grid-template-columns:1fr}}
+
+footer{padding:32px 0 40px;font-size:12px;letter-spacing:.04em;color:#9aa6b4;background:var(--navy2)}
+footer .wrap{display:grid;gap:4px}
+footer a{display:inline-flex;align-items:center;min-height:44px;color:inherit}
+
+/* 見出しポップアップ */
+dialog.pop{width:min(840px,calc(100% - 32px));max-height:calc(100dvh - 48px);padding:0;border:1px solid var(--gold);background:var(--white);color:var(--ink)}
+dialog.pop::backdrop{background:rgba(11,23,40,.6)}
+.pop-h{position:sticky;top:0;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 16px 12px 26px;background:var(--navy);color:#fff}
+.pop-h p{font-family:var(--serif);font-size:16px;font-weight:700;letter-spacing:.04em}
+.pop-x{width:44px;height:44px;border:1px solid var(--gold);background:transparent;font-size:20px;cursor:pointer;color:#fff}
+.pop-b{padding:22px 26px 28px}
+.pop-lbl{margin:0 0 10px;font-size:14px;letter-spacing:.04em;color:var(--ink2)}
+.copies{list-style:none;margin:0;padding:0;border-top:1px solid var(--navy)}
+.copies li{display:grid;grid-template-columns:2.4em 1fr;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
+.copies .n{font-family:var(--serif);font-weight:700;font-size:18px;color:var(--gold)}
+.copies .c{font-family:var(--serif);font-size:clamp(1.2rem,2.6vw,1.5rem);font-weight:700;line-height:1.55;color:var(--navy);word-break:auto-phrase}
+.copies .s{margin-top:6px;font-size:14px;line-height:1.9;color:var(--ink2)}
+.story{margin-top:26px}
+.story ol{list-style:none;margin:0;padding:0;counter-reset:h}
+.story li{counter-increment:h}
+.story a{display:grid;grid-template-columns:2.2em 1fr;gap:10px;padding:9px 6px;text-decoration:none;font-family:var(--serif);font-size:17px;line-height:1.8;word-break:auto-phrase}
+.story a::before{content:counter(h,decimal-leading-zero);color:var(--gold)}
+.story a:hover{background:var(--bg)}
+.pop-f{margin:18px 0 0;font-size:13px;color:var(--ink2)}
+@media (max-width:600px){.pop-b{padding:18px}.copies li{grid-template-columns:1fr;gap:2px}.story a{font-size:16px}}
+@media (max-width:430px){.steps h3{font-size:19px}}
+@media (max-width:360px){.sec h2,.final h2{font-size:21px;letter-spacing:0}.hero h1{font-size:23px;letter-spacing:0}}
+
+/* ===== レビュー反映（V3） ===== */
+:root{--gold-d:#8f6e3f;--gold-t:#7d6038}
+.btn{background:var(--gold-d)} .btn:hover{background:#7a5d33}
+.steps .n small,.two .tag,.profile dt,.price .yen small,.stats .big em{color:var(--gold-t)}
+.hero h1,.sec h2,.final h2,.steps h3,.two h3,.keymsg,.faq summary,.asks li,.copies .c{font-feature-settings:"palt";letter-spacing:.04em}
+.hero-photo figcaption{position:static;margin-top:30px;padding:0;background:none;color:#9aa6b4;text-align:right}
+@media (max-width:900px){.hero-photo img{aspect-ratio:16/10;object-position:70% 35%}}
+.fc-btn{justify-self:start}
+.hero-photo img{box-shadow:18px 18px 0 -1px var(--navy),18px 18px 0 0 var(--gold)}
+.hero-photo figcaption{margin-top:28px}
+.showcase{margin:40px 0 0}
+.showcase .samples{gap:24px}
+@media (max-width:430px){#h-market{font-size:23px;letter-spacing:0!important}}
+@media (max-width:360px){#h-market{font-size:18px}}
+@media (max-width:560px){.final .box{padding:24px 20px}.btn{padding:0 16px;font-size:15px;letter-spacing:.04em}.eyebrow{font-size:13px;letter-spacing:.04em}.eyebrow::before{display:none}}
+@media (prefers-reduced-motion:reduce){.hero h1::after{animation:none}.btn,.sample{transition:none}}
+</style>
+</head>
+<body>
+<header class="hd">
+  <div class="wrap">
+    <a class="logo" href="#top"><i aria-hidden="true">HP</i><span><span class="ib logo-long">ホームページ制作会社</span><span class="ib">スタートパック</span></span></a>
+    <nav aria-label="ページ内">
+      <a href="#what">しくみ</a>
+      <a href="#tutor">AI家庭教師</a>
+      <a href="#flow">1年の流れ</a>
+      <a href="#price">料金</a>
+      <a href="#faq">よくある質問</a>
+    </nav>
+    <a class="btn-s" href="https://writeup-inc.github.io/seminar/web-agency-kit/"><span class="pc-only">説明会に事前登録</span><span class="sp-only">説明会</span>（無料）</a>
+  </div>
+</header>
+
+<main id="main">
+  <div class="hero" id="top">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">AI家庭教師つき｜ホームページ制作の事業化支援</p>
+        <div class="hc" id="hc" title="押すと、3つのコピーと見出しを並べて読めます">
+          <h1 id="tw" data-keep-phrase>1年後の自分は、<br>ホームページを作れる。</h1>
+        </div>
+        <div class="rot"><div class="dots" role="group" aria-label="コピーの切り替え"><button type="button" aria-label="コピー1" aria-current="true"></button><button type="button" aria-label="コピー2" aria-current="false"></button><button type="button" aria-label="コピー3" aria-current="false"></button></div></div>
+        <p class="sub">ホームページ作りが初めてでも大丈夫です。AI家庭教師に教わりながら、まず自分の会社のホームページを2つ作ります。</p>
+        <ul class="facts" aria-label="料金とAI家庭教師">
+          <li><small>1年目</small><b>月10万円<em>（税別）</em></b></li>
+          <li><small>2年目から</small><b>月1万円<em>（税別）</em></b></li>
+          <li class="tu"><small>AI家庭教師</small><b>年間最大36時間</b></li>
+        </ul>
+        <div class="cta-row">
+          <a class="btn" href="https://writeup-inc.github.io/seminar/web-agency-kit/">説明会に事前登録する（無料）</a>
+          <a class="tlink" href="#what">まず、1年の流れを見る</a>
+        </div>
+      </div>
+      <figure class="hero-photo">
+        <img src="img/hero-owner.webp" alt="事務所でノートパソコンに向かい、ホームページを作る経営者のイメージ" width="1400" height="700">
+        <figcaption>写真はイメージです（生成画像）</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- 1 しくみ：FC置かない（自社の提供内容） -->
+  <section class="sec white" id="what">
+    <div class="wrap">
+      <p class="q">どんなパックですか？</p>
+      <h2 id="h-what">教わって、作って、<br>地元に届ける1年です。</h2>
+      <p class="lead-p">ホームページを代わりに作るサービスではありません。AI家庭教師に教わりながら、自分の手で作れるようになるための1年です。</p>
+      <ol class="steps" id="flow">
+        <li><span class="n"><small>STEP</small><b>1</b></span><div class="card"><h3>自分の会社の<br>ホームページ2つ</h3><p>AI家庭教師と一緒に作ります。最初のお客様は、自分の会社です。</p><span class="who">AI家庭教師と一緒に</span></div></li>
+        <li><span class="n"><small>STEP</small><b>2</b></span><div class="card"><h3>地元の会社の<br>ホームページ</h3><p>「うちのも作れる？」と聞かれたら、AI家庭教師に相談しながら仕上げる段階です。</p><span class="who">教わりながら</span></div></li>
+        <li><span class="n"><small>STEP</small><b>3</b></span><div class="card"><h3>2年目からは、<br>自分で</h3><p>AI家庭教師は外れます。月1万円（税別）で、道具と手順の更新が続きます。</p><span class="who">自分で回す</span></div></li>
+      </ol>
+      <div class="keymsg" role="note">できあがるのは、<br class="sp-only">自分の会社のホームページ2つ。<br>でも本当に手に入るのは、<br class="sp-only"><mark>作れるようになった自分</mark>です。</div>
+      <p class="tools">道具もそろっています。ホームページを作るAI「Codex」と、作業ごとの手順書にあたる12の実務スキル。手順書は毎月新しくなります。</p>
+    </div>
+  </section>
+
+  <!-- 2 AI家庭教師：FC置かない（自社の提供内容） -->
+  <section class="sec" id="tutor">
+    <div class="wrap">
+      <p class="q">だれが教えてくれるのですか？</p>
+      <h2 id="h-tutor">教えてくれるのは、<br>AI家庭教師です。</h2>
+      <p class="lead-p">AI家庭教師は、AIを使ったホームページの作り方を教えてくれる、人の講師です。</p>
+      <div class="tutor">
+        <figure>
+          <img src="img/tutor-a.webp" alt="AI家庭教師のイメージ。笑顔でこちらを向く講師" width="900" height="672" loading="lazy">
+          <figcaption>AI家庭教師のイメージです（生成画像・架空の人物）</figcaption>
+        </figure>
+        <div>
+          <dl class="profile">
+            <div><dt>だれが</dt><dd>AI研修「AIバード」の講師</dd></div>
+            <div><dt>いつ</dt><dd>1年目の12か月</dd></div>
+            <div><dt>どれくらい</dt><dd>年間で最大36時間</dd></div>
+            <div><dt>何に使える</dt><dd>自社のホームページ作り、地元の会社から来た相談、お客様に見せる前の確認など</dd></div>
+          </dl>
+          <p class="asks-t">たとえば、こんなことを聞けます</p>
+          <ul class="asks">
+            <li>「どの順番で作ればいいですか？」</li>
+            <li>「この文章で、お客様に伝わりますか？」</li>
+            <li>「AIに、どう頼めばいいですか？」</li>
+            <li>「納品の前に、一緒に見てください」</li>
+          </ul>
+          <p class="note2">36時間の配分と、使わなかった時間の扱いは、申込前に書面で決めます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 最初に作る2つ：FC置かない（自社の商品と見本） -->
+  <section class="sec white" id="make">
+    <div class="wrap">
+      <p class="q">最初に、何を作るのですか？</p>
+      <h2 id="h-make">まずは、自分の会社の<br>ホームページを2つ。</h2>
+      <p class="lead-p">会社に必要なホームページを2種類に絞りました。1つで信頼してもらい、もう1つで想いを伝えます。</p>
+      <div class="two">
+        <article>
+          <span class="tag">左脳型</span>
+          <h3>会社のことが<br>わかるページ</h3>
+          <p>何をしている会社か、実績、選ばれる理由、会社の情報。取引先や金融機関の担当者が、会社をまっすぐ理解できる1ページです。</p>
+          <ul><li>話を聞く時間は90分</li><li>スマホでも見やすく作る</li></ul>
+        </article>
+        <article>
+          <span class="tag">右脳型</span>
+          <h3>想いが<br>伝わるページ</h3>
+          <p>創業のきっかけ、仕事への想い、お客様との物語。「なぜ、この会社なのか」が伝わるもう1つの入口です。</p>
+          <ul><li>話を聞く時間は60分</li><li>写真と余白を生かして作る</li></ul>
+        </article>
+      </div>
+      <div class="showcase"><p class="scene-t">当社が作った見本（想いが伝わるページ）</p>
+<div class="samples">
+<a class="sample" href="https://nakijin-architect-villa.taka2007.chatgpt.site" target="_blank" rel="noopener"><img src="img/villa.jpg" alt="今帰仁のプライベートヴィラの見本ページ" width="1280" height="800" loading="lazy"><span>見本：今帰仁のヴィラ ↗</span></a>
+<a class="sample" href="https://inasa-no-hikari-izumo-rice.vercel.app/" target="_blank" rel="noopener"><img src="img/rice.jpg" alt="出雲の米農家「稲佐のひかり」の見本ページ" width="1280" height="800" loading="lazy"><span>見本：稲佐のひかり ↗</span></a>
+</div>
+<p class="sample-note">当社が作った見本です。稲佐のひかりは企画検討用のため、人物・商品・価格を仮に設定しています。</p></div>
+      <p class="after2">できあがった2つが、そのまま<mark>地元の会社に見せる見本</mark>。</p>
+    </div>
+  </section>
+
+
+  <!-- 5 目指す姿：FC置かない（想像の場面） -->
+  <section class="sec" id="goal">
+    <div class="wrap">
+      <p class="q">その先に、何がありますか？</p>
+      <h2 id="h-goal">目指すのは、<br>地元で頼られる人です。</h2>
+      <div class="goal">
+        <figure>
+          <img src="img/local-talk.webp" alt="店のテーブルで、地元の人たちとノートパソコンを囲んで話しているイメージ" width="1400" height="933" loading="lazy">
+          <figcaption>写真はイメージです（生成画像）</figcaption>
+        </figure>
+        <div>
+          <p class="scene-t">たとえば、こんな場面</p>
+          <ul class="scenes">
+            <li><b>取引先との雑談で</b>自分で作ったホームページを、その場でスマホから見せられます。</li>
+            <li><b>納めたあとで</b>見た人との会話が、次の相談のきっかけになることもあります。</li>
+          </ul>
+          <p class="note2">目指す姿を描いたものです。相談や受注が来ることを約束するものではありません。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 数字：FC置く（公的統計で確かめられる） -->
+  <section class="sec white" id="market">
+    <div class="wrap">
+      <p class="q">地元に、仕事はありますか？</p>
+      <h2 id="h-market">ネットを使う小さな会社の<br>22.5%にホームページがない。</h2>
+      <p class="lead-p">会社ができれば、最初のホームページが要ります。載せた情報が古くなれば、直す仕事も出てきます。</p>
+      <div class="stats">
+        <article><p class="big">22.5<em>%</em></p><h3>まだ、ホームページがない</h3><p>資本金1,000万円未満のインターネット利用企業のうち、ホームページを開設していない割合です。</p><a href="https://www.e-stat.go.jp/stat-search/files?cycle=0&amp;layout=datalist&amp;month=0&amp;page=1&amp;stat_infid=000040278555&amp;tclass1=000001228812&amp;tclass2val=0&amp;toukei=00200356&amp;tstat=000001228811&amp;year=20240" target="_blank" rel="noopener">出典：総務省「令和6年通信利用動向調査」企業編</a></article>
+        <article><p class="big">144,757<em>件</em></p><h3>毎年、会社が生まれる</h3><p>2024年の会社の設立登記の件数です。新しい会社には、最初のホームページが要ります。</p><a href="https://www.moj.go.jp/content/001447340.pdf" target="_blank" rel="noopener">出典：法務省「令和6年における登記の概況」</a></article>
+        <article><p class="big">約6<em>割</em></p><h3>作っても、止まっている</h3><p>小規模事業者のホームページなどの更新頻度は、約6割が「不定期」です。</p><a href="https://ab.jcci.or.jp/article/43509/" target="_blank" rel="noopener">出典：日本商工会議所「2016年版小規模企業白書（概要）」</a></article>
+      </div>
+      <p class="small-note">※ 調査年・対象はそれぞれ異なります。市場の大きさや売上を示すものではありません。</p>
+      <button class="fc-btn" type="button" data-fc-section="ネットを使う小さな会社の22.5%にホームページがない。" data-fc-claim="資本金1,000万円未満のインターネット利用企業のうち、ホームページ未開設は22.5%（総務省 令和6年通信利用動向調査 企業編、2024年8月末時点）／2024年の会社の設立登記は144,757件（法務省 令和6年における登記の概況）／小規模事業者のホームページ等の更新頻度は約6割が不定期（2016年版小規模企業白書の概要、日本商工会議所の記事）／これらから、中小企業のホームページ制作・更新の需要は続いていると言えるか">ChatGPTでファクトチェック ↗<small>別タブで開きます</small></button>
+    </div>
+  </section>
+
+  <!-- 7 料金：FC置かない（自社料金） -->
+  <section class="sec" id="price">
+    <div class="wrap">
+      <p class="q">いくらかかりますか？</p>
+      <h2 id="h-price">1年目は月10万円、<br>2年目からは月1万円。</h2>
+      <div class="prices">
+        <div class="price y1">
+          <span class="when">1年目（12か月）</span>
+          <p class="yen">月10万円<small>税別</small></p>
+          <p class="sub2">初期費用 0円／1年目の合計 120万円（税別）</p>
+          <ul>
+            <li><b>AI家庭教師：年間で最大36時間</b></li>
+            <li><b>自分の会社のホームページ2つを、AI家庭教師と作る</b></li>
+            <li>ホームページを作るAI「Codex」と、12の実務スキル（作業ごとの手順書）</li>
+            <li>道具と手順の毎月の更新</li>
+            <li>営業・契約・納品で使うひな形</li>
+            <li>月1回のグループ実践会</li>
+          </ul>
+        </div>
+        <div class="price y2">
+          <span class="when">2年目から</span>
+          <p class="yen">月1万円<small>税別</small></p>
+          <p class="sub2">AI家庭教師はつきません</p>
+          <ul>
+            <li>12の実務スキル（手順書）をそのまま使える</li>
+            <li>道具と手順の毎月の更新</li>
+          </ul>
+        </div>
+      </div>
+      <div class="not-inc"><b>料金に含まれないもの</b>AIの利用料（Codexなど）、ドメイン、サーバー（ホスティング）、有料の素材、撮影。36時間の配分、途中解約、税込の総額は、申込前に書面でご案内します。</div>
+      <div class="fit">
+        <article><h3>向いている人</h3><ul><li>地元に、付き合いのある会社がある</li><li>売る商品に、いまひとつ自信が持てない</li><li>自分の手で作れるようになりたい</li></ul></article>
+        <article><h3>向いていない人</h3><ul><li>運営会社から仕事を紹介してほしい</li><li>確実な売上や、すぐの回収を求める</li><li>作るのもお客様対応も、すべて任せたい</li></ul></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 FAQ：FC置かない（手続き・自社の条件） -->
+  <section class="sec white" id="faq">
+    <div class="wrap">
+      <p class="q">ほかにも気になることは？</p>
+      <h2 id="h-faq">仕事の紹介はしません。<br>ほかの疑問にも答えます。</h2>
+      <div class="faq">
+        <details><summary>パソコンが得意でなくても、始められますか？</summary><p class="ans">始められます。1年目はAI家庭教師がつき、最初は自分の会社のホームページ作りからです。お客様への提案、内容の確認、最後の確認は、御社で担っていただきます。</p></details>
+        <details><summary>AI家庭教師の36時間は、どう使えますか？</summary><p class="ans">1年目に使える時間の上限が、年間で36時間です。自社のホームページ作り、地元の会社から来た相談、納品前の確認などが使い道です。配分と、使わなかった時間の扱いは、申込前に書面で決めます。</p></details>
+        <details><summary>仕事を紹介してもらえますか？</summary><p class="ans">紹介はしません。仕事の紹介や受注を約束するサービスではありません。案件は、御社のお付き合いの中から見つけていただきます。</p></details>
+        <details><summary>どんなホームページが作れますか？</summary><p class="ans">会社のことがわかるページと、想いが伝わるページの2種類が標準です。ネットショップ、予約、会員、決済などの機能が要るものは、個別の見積もりか対象外として判断します。</p></details>
+        <details><summary>2年目からは、何が変わりますか？</summary><p class="ans">AI家庭教師は、1年目で終わりです。月1万円（税別）で、12の実務スキルの利用と、道具と手順の毎月の更新が続きます。</p></details>
+        <details><summary>ホームページ以外の相談が来たら？</summary><p class="ans">広告、AIの開発、業務のAI化、システムの連携などは、運営会社のライトアップへ相談・依頼できます。ライトアップで成約した場合は、受注金額のおよそ10%を紹介料としてお返しする設計です。対象・料率・支払時期は、案件ごとの契約で決めます。</p></details>
+        <details><summary>地元で頼られるようになりますか？</summary><p class="ans">目指す姿としてお話ししています。そうなることや、相談・受注が来ることを約束するものではありません。売上・受注・検索順位なども保証しません。</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 最後の申込：FC置かない -->
+  <section class="final" id="entry">
+    <div class="wrap">
+      <div>
+        <h2 id="h-entry">まずは無料説明会で、<br>話を聞いてみてください。</h2>
+        <p>1年の進み方、AI家庭教師のつき方、料金、向き不向きをご説明します。申し込むかどうかは、そのあとで決めてください。</p>
+      </div>
+      <div class="box">
+        <b><span class="ib">無料説明会</span><span class="ib">（事前登録受付中）</span></b>
+        <p>日時は調整中です。事前登録いただいた方に、決まり次第ご案内します。</p>
+        <a class="btn" href="https://writeup-inc.github.io/seminar/web-agency-kit/">説明会に事前登録する（無料）</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>ホームページ制作会社スタートパック｜地方の会社・個人事業主向け</p>
+    <p>売上・受注・検索順位などを保証するサービスではありません。</p>
+    <p>運営：<a href="https://www.writeup.co.jp/" target="_blank" rel="noopener">株式会社ライトアップ</a>（東証グロース：6580）　<a href="https://www.writeup.co.jp/privacy/" target="_blank" rel="noopener">個人情報保護方針</a></p>
+  </div>
+</footer>
+
+<dialog class="pop" id="pop" aria-labelledby="popT">
+  <div class="pop-h"><p id="popT">このページを、見出しだけで読む</p><button type="button" class="pop-x" id="popX" aria-label="閉じる">×</button></div>
+  <div class="pop-b">
+    <p class="pop-lbl">いちばん上で切り替わっている3つのコピー</p>
+    <ol class="copies" id="copies"></ol>
+    <div class="story"><p class="pop-lbl">見出しをつなげると、こういう話です</p><ol id="story"></ol></div>
+    <p class="pop-f">見出しを押すと、そのセクションへ移ります。</p>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  var COPIES=[
+    {c:'1年後の自分は、\nホームページを作れる。',s:'何が手に入るのか。代わりに作ってもらうのではなく、AI家庭教師に教わりながら、作れる力を身につけます。'},
+    {c:'わからない所は、\nAI家庭教師に聞ける。',s:'だれが教えるのか。AI研修「AIバード」の講師が、AI家庭教師として1年目に年間で最大36時間つきます。'},
+    {c:'月10万円で始めて、\n2年目からは月1万円。',s:'いくらかかるのか。1年目は月10万円（税別）、AI家庭教師が外れる2年目からは月1万円（税別）です。'}
+  ];
+  var TYPE_MS=60, HOLD_MS=5200, ERASE_MS=24;
+  var h1=document.getElementById('tw'), hc=document.getElementById('hc');
+  var dots=[].slice.call(document.querySelectorAll('.dots button'));
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var idx=0, timer=null, paused=false;
+  function put(t){ h1.textContent=''; t.split('\n').forEach(function(line,k){ if(k) h1.appendChild(document.createElement('br')); h1.appendChild(document.createTextNode(line)); }); }
+  function reserve(){ var cur=h1.innerHTML, max=0; hc.style.minHeight=''; COPIES.forEach(function(o){ put(o.c); max=Math.max(max,h1.offsetHeight); }); h1.innerHTML=cur; hc.style.minHeight=max+'px'; }
+  function mark(i){ dots.forEach(function(d,k){ d.setAttribute('aria-current',k===i?'true':'false'); }); }
+  function clear(){ if(timer){ clearTimeout(timer); timer=null; } }
+  function show(i,typing){ clear(); idx=i; mark(i); var t=COPIES[i].c; if(reduce||!typing){ put(t); schedule(); return; } var n=0; (function step(){ put(t.slice(0,++n)); if(n<t.length){ timer=setTimeout(step,TYPE_MS); } else { schedule(); } })(); }
+  function erase(next){ var t=COPIES[idx].c; (function step(){ if(t.length){ t=t.slice(0,-1); put(t); timer=setTimeout(step,ERASE_MS); } else { show(next,true); } })(); }
+  function schedule(){ clear(); if(paused) return; timer=setTimeout(function(){ var next=(idx+1)%COPIES.length; if(reduce){ show(next,false); } else { erase(next); } },HOLD_MS); }
+  dots.forEach(function(d,k){ d.addEventListener('click',function(){ show(k,false); }); });
+  window.addEventListener('resize',reserve);
+  if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(reserve); }
+  reserve(); schedule();
+
+  var pop=document.getElementById('pop'), copiesEl=document.getElementById('copies'), storyEl=document.getElementById('story');
+  COPIES.forEach(function(o,k){ var li=document.createElement('li'); li.innerHTML='<span class="n">0'+(k+1)+'</span><div><p class="c"></p><p class="s"></p></div>'; var cc=li.querySelector('.c'); o.c.split('\n').forEach(function(tx,k){ if(k) cc.appendChild(document.createElement('br')); cc.appendChild(document.createTextNode(tx)); }); li.querySelector('.s').textContent=o.s; copiesEl.appendChild(li); });
+  document.querySelectorAll('main section h2[id]').forEach(function(h){ var a=document.createElement('a'), li=document.createElement('li'); a.href='#'+h.closest('section').id; a.textContent=h.textContent; a.dataset.h=h.id; li.appendChild(a); storyEl.appendChild(li); });
+  var opener=null;
+  function openPop(e){ opener=e&&e.currentTarget; paused=true; clear(); put(COPIES[idx].c); if(pop.showModal){ pop.showModal(); } else { pop.setAttribute('open',''); } }
+  function closePop(){ if(pop.close){ pop.close(); } else { pop.removeAttribute('open'); } }
+  pop.addEventListener('close',function(){ paused=false; schedule(); if(opener&&!pop.dataset.jump){ opener.focus(); } delete pop.dataset.jump; });
+  hc.setAttribute('tabindex','0');
+  hc.addEventListener('click',openPop);
+  hc.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openPop(e); } });
+  document.getElementById('popX').addEventListener('click',closePop);
+  pop.addEventListener('click',function(e){ if(e.target===pop) closePop(); });
+  storyEl.addEventListener('click',function(e){ var a=e.target.closest('a'); if(!a) return; e.preventDefault(); pop.dataset.jump='1'; closePop(); var h=document.getElementById(a.dataset.h); h.closest('section').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'}); h.setAttribute('tabindex','-1'); setTimeout(function(){ h.focus({preventScroll:true}); },reduce?0:450); history.replaceState(null,'',a.getAttribute('href')); });
+
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('.fc-btn'); if(!b) return;
+    var c=document.querySelector('link[rel=canonical]'); var url=(c&&c.href)||location.href;
+    var p='次のLPの記載が事実として正しいか、第三者の立場で確認してください。\n\n【対象ページ】'+url+'\n【セクション】'+b.dataset.fcSection+'\n【記載内容】\n'+b.dataset.fcClaim.split('／').join('\n')+'\n\n【確認してほしいこと】\n- 記載は一般的な事実・相場・公的情報と照らして正しいか\n- 誤り・誇張・古い情報があれば指摘する\n- 反対の見方や、読み手が注意すべき点\n- 確認できないことは「確認できない」と書き、推測で補わない';
+    window.open('https://chatgpt.com/?q='+encodeURIComponent(p),'_blank','noopener,noreferrer');
+    if(navigator.clipboard){ navigator.clipboard.writeText(p).catch(function(){}); }
+  });
+})();
+</script>
+</body>
+</html>
