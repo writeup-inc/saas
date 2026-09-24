@@ -175,12 +175,31 @@ footer p + p{margin-top:4px}
   .doc.link .urlrow{padding:12px 4px 26px calc(3.4em + 16px)}
   .hero .deco .hm{display:none}
 }
+/* 共通ナビ（右上）：資料インデックス一覧・今月の注力・SaaSチーム トップ。4ページとも同じ中身。今いるページは太字＋下線でリンクにしない */
+.hubnav{position:absolute;top:0;left:0;right:0;z-index:30;font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif}
+.hubnav ul{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:2px 22px;max-width:var(--hub-w,1120px);margin:0 auto;padding:16px var(--hub-pad,clamp(20px,4vw,40px)) 0;list-style:none}
+.hubnav li{margin:0;padding:0}
+.hubnav a,.hubnav [aria-current]{display:inline-flex;align-items:center;gap:6px;padding:6px 0;font-size:13px;font-weight:500;line-height:1.5;letter-spacing:.02em;white-space:nowrap;text-decoration:none;color:var(--hub-tx,#4a525d)}
+.hubnav a::before,.hubnav [aria-current]::before{content:"▸";font-size:10px;color:var(--hub-mute,#9aa1a9)}
+.hubnav a:hover{color:var(--hub-ink,#10151c);text-decoration:underline;text-underline-offset:3px}
+.hubnav [aria-current]{color:var(--hub-ink,#10151c);font-weight:700;box-shadow:inset 0 -2px 0 currentColor}
+.hubnav [aria-current]::before{color:currentColor}
+.hubnav--flow{position:static}
+.hubnav--flow ul{max-width:none;padding:14px 0 0}
+@media(max-width:600px){.hubnav ul{justify-content:center;gap:0 10px;padding:8px 12px 0}.hubnav--flow ul{justify-content:flex-end;padding:10px 0 0}.hubnav a,.hubnav [aria-current]{gap:2px;padding:8px 0;font-size:12px;letter-spacing:0}}
 </style>
 </head>
 <body>
 
 
 <header class="hero">
+<nav class="hubnav" aria-label="SaaSチームの入口">
+  <ul>
+    <li><a href="../pack-indexes/">資料インデックス一覧</a></li>
+    <li><a href="../focus-2026-09/">9月の注力</a></li>
+    <li><a href="../">SaaSチーム トップ</a></li>
+  </ul>
+</nav>
   <div class="deco" aria-hidden="true">
     <!-- 受話器 -->
     <svg viewBox="0 0 48 48" style="left:8%;top:18%;width:74px;rotate:-14deg"><path d="M14 6l-6 2c-3 1-4 4-3 7 4 12 13 21 25 25 3 1 6 0 7-3l2-6-9-5-4 4c-5-2-9-6-11-11l4-4z"/></svg>
