@@ -1,32 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="catalog-card" content="true" />
-<meta name="description" content="創業支援パックに関する資料の一覧。いま開けるページと、直販（A）・OEM（B）で順次公開する資料の入口です。">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="catalog-card" content="true">
+<meta name="description" content="創業支援パックの資料一覧。直販（A）・OEM（B）・その他の資料を1ページからたどれます。">
+<link rel="canonical" href="https://writeup-inc.github.io/saas/sogyo-index/">
 <title>創業支援パック｜資料インデックス</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-/* lp-base.css — 日本語LP／HTML成果物の初期CSS
- *
- * 品質台帳（~/Documents/Codex/loop-engineering-memory/events.jsonl）で
- * 再発が確認された表示欠陥を、指摘ではなく初期値で潰すためのファイル。
- * 対応する欠陥ID:
- *   japanese-heading-midword-wrap（見出しが単語途中で改行）11回
- *   mobile-fv-headline-wrap（モバイルFVの見出し改行）3回
- *   mobile-fixed-cta-overlap（固定CTAが本文を隠す）3回
- *   meaningful-small-text-under-readable-size（意味のある文字が可読サイズ未満）5回
- *
- * 使い方: HTMLの<style>先頭にこの内容を貼る。色・書体・余白は各LPで上書きしてよいが、
- * 下の「改行制御」「最小文字サイズ」「固定CTAの逃げ」の3ブロックは消さないこと。
- */
-
-/* ── 改行制御 ─────────────────────────────────────────────
- * 日本語は単語区切りが無いため、既定のままだと文節の途中で折り返す。
- * auto-phrase は文節単位で折る（Chrome 119+）。非対応環境は strict で逃がす。 */
+/* ===== lp-base.css ===== */
 h1, h2, h3, h4, h5,
 .lead, .catch, .hero__title, [data-keep-phrase] {
   word-break: auto-phrase;
@@ -39,579 +25,423 @@ h1, h2, h3, h4, h5,
     word-break: normal;
   }
 }
-/* 明示的に折りたくない語の途中で切られたら、その語を <span class="nobr"> で包む */
 .nobr { white-space: nowrap; }
-
-/* ── 最小文字サイズ ───────────────────────────────────────
- * 判断材料になる文字は12px未満にしない。注記・免責のみ .note を許容。 */
-:root { --fs-min: 12.5px; --fs-body: 17px; }
+:root { --fs-min: 12px; --fs-body: 16px; }
 body { font-size: var(--fs-body); line-height: 1.8; }
 small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
-
-/* ── ファーストビューの見出し ─────────────────────────────
- * 固定pxだと狭い画面で必ず折り返す。clamp で画面幅に追従させる。 */
 h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
 h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
-
-/* ── 固定CTAの逃げ ────────────────────────────────────────
- * 画面下に固定CTAを置くページは、この変数を実測の高さに書き換える。
- * 置かないページはそのままでよい（0のまま）。 */
 :root { --fixed-cta-h: 0px; }
 body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
-
-/* ── 横はみ出しの予防 ─────────────────────────────────────
- * flex/grid の子は既定で min-width:auto のため、長い語で親を押し広げる。 */
 *, *::before, *::after { box-sizing: border-box; }
 img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
 main > *, section > *, .grid > *, .flex > * { min-width: 0; }
 pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
 
-/* ══ トークン ══ Jマッチエンジンと同系。紺#0b2c5c＋白＋黒 ══ */
+/* ===== トークン ===== */
 :root{
-  --ac:#0b2c5c; --acl:#f3f6fa; --acl2:#e9eef2; --acm:#b9c6da;
-  --bk:#111111; --g1:#555555; --g2:#6b6b6b; --g3:#b4b4b4;
-  --ln:#d9d9d9; --ln2:#efefef; --pa:#f7f7f7;
-  --up:#c8102e;
-  --wd:1100px; --fixed-cta-h:0px;
-  --ff-head:"Zen Kaku Gothic New","Noto Sans JP","Hiragino Sans",system-ui,sans-serif;
-  --ff-body:"Noto Sans JP","Hiragino Sans",system-ui,sans-serif;
-  --ff-en:"Outfit","Zen Kaku Gothic New",sans-serif;
+  --ink:#10151c; --tx:#262d36; --g1:#4a525d; --g2:#626b76; --g3:#848c96;
+  --ln:#e3e6ea; --ln2:#f0f2f4; --bg:#f7f8fa;
+  --oem:#0f6b56; --oem-l:#eaf4f0;
+  --dir:#1f4f9a; --dir-l:#ecf2fa;
+  --etc:#4d5561; --etc-l:#f1f2f4;
+  --new:#c2410c;
+  --gray-row:#eef0f3;
+  /* サービスの色（ヒーローだけで使う）。創業の「最初の一歩」を、A-01の差し色に寄せた焼き土色で */
+  --svc:#a24a28; --svc-l:#fbf1eb;
+  --sans:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+  --num:Inter,"Helvetica Neue",Arial,sans-serif;
 }
-h1,h2,h3,h4,.logo,.chip,.judge,.cfoot .go,.bg,.tl{ font-family:var(--ff-head); }
-html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
-body{ margin:0; background:#fff; color:var(--bk);
-  font-family:var(--ff-body);
-  font-size:17px; line-height:1.9; letter-spacing:.01em; font-feature-settings:"palt" 1; }
-.w{ max-width:var(--wd); margin:0 auto; padding:0 32px; }
-@media (max-width:600px){ .w{ padding:0 20px; } }
-a{ color:inherit; }
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--tx);font-family:var(--sans);font-size:16px;line-height:1.85;
+  letter-spacing:.015em;font-feature-settings:"palt" 1;-webkit-font-smoothing:antialiased}
+.w{max-width:1200px;margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+a{color:inherit}
+p{margin:0}
+.en{font-family:var(--num);font-weight:800;letter-spacing:.18em;text-transform:uppercase}
 
-/* ── ヘッダー ── */
-header{ position:sticky; top:0; z-index:60; background:rgba(255,255,255,.95);
-  backdrop-filter:blur(12px); border-bottom:1px solid var(--ln2); }
-header .w{ display:flex; align-items:center; justify-content:space-between; height:60px; gap:16px; }
-.logo{ font-size:15.5px; font-weight:900; letter-spacing:.08em; white-space:nowrap; }
-.logo span{ color:var(--ac); }
-.logo .lsub{ color:var(--bk); }
-@media (max-width:560px){ .logo .lsub{ display:none; } }
-.hn{ display:flex; gap:22px; align-items:center; }
-.hn a{ font-size:14px; font-weight:700; color:var(--g1); text-decoration:none;
-  letter-spacing:.06em; white-space:nowrap; display:inline-block; padding:10px 2px; }
-.hn a:hover{ color:var(--ac); }
-@media (max-width:760px){ .hn a.hlast{ display:none; } .hn{ gap:16px; } }
 
-/* ══ ヒーロー ══ */
-.hero .w{ display:grid; grid-template-columns:1fr 210px; gap:40px; align-items:start;
-  padding-top:68px; padding-bottom:52px; }
-@media (max-width:1080px){ .hero .w{ grid-template-columns:1fr; gap:34px; } }
-@media (max-width:600px){ .hero .w{ padding-top:44px; padding-bottom:36px; } }
-.tally{ border:0; padding:0; align-self:end; margin-bottom:4px; }
-.trow{ display:grid; grid-template-columns:20px 1fr auto; gap:9px; align-items:center;
-  padding:3px 0; border-top:0; }
-.trow:first-child{ border-top:0; padding-top:0; }
-.tk{ font-family:var(--ff-en); font-size:11px; font-weight:800; width:20px; height:20px;
-  display:grid; place-items:center; letter-spacing:0; flex:none;
-  background:var(--ln2); color:var(--g1); }
-.tk-a, .tk-b{ background:var(--ln2); color:var(--g1); box-shadow:none; }
-.tl{ font-size:14px; font-weight:700; color:var(--g1); letter-spacing:.04em; }
-.tv{ font-family:var(--ff-en); font-size:26px; font-weight:900; line-height:1.15;
-  letter-spacing:-.03em; color:var(--g2); }
-.tv i{ font-family:var(--ff-head); font-style:normal; font-size:12px; font-weight:700;
-  color:var(--g3); margin-left:3px; letter-spacing:0; }
-.tnote{ margin:8px 0 0; font-size:12.5px; color:var(--g3); line-height:1.6;
-  border-top:1px solid var(--ln2); padding-top:8px; }
-.chip{ display:inline-block; background:var(--ac); color:#fff; font-family:var(--ff-en);
-  font-size:13px; font-weight:800; letter-spacing:.16em; padding:7px 15px; }
-.hero h1{ font-weight:900; letter-spacing:-.03em; line-height:1.28; margin:26px 0 20px;
-  font-size:clamp(1.55rem,6.2vw,3.7rem); }
-.chipn{ font-size:14px; color:var(--g1); margin-left:14px; letter-spacing:.04em; font-weight:700; }
-@media (max-width:600px){ .chipn{ display:block; margin:12px 0 0; } }
-.hero h1 em{ font-style:normal; color:var(--ac); }
-.hero .sub{ font-size:17px; color:var(--g1); max-width:36em; margin:0 0 26px; line-height:2; }
-.hero .sub b{ color:var(--bk); font-weight:700; }
-.stamp{ display:flex; flex-wrap:wrap; gap:10px 26px; align-items:center;
-  border-top:1px solid var(--ln); padding-top:18px; font-size:14.5px; color:var(--g1); }
-.stamp b{ color:var(--bk); font-weight:700; }
+/* ===== ヒーロー：サービス名＋業種を連想させるアイコン ===== */
+.hero{position:relative;overflow:hidden;padding:clamp(96px,14vw,176px) 0 clamp(80px,11vw,136px);text-align:center;
+  background:radial-gradient(ellipse 60% 70% at 50% 48%,#fff 0,#fff 38%,var(--svc-l) 100%)}
+.hero .deco{position:absolute;inset:0;pointer-events:none}
+.hero .deco svg{position:absolute;fill:none;stroke:var(--svc);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.34}
+.hero .deco svg.s{opacity:.2}
+.hero .deco .dot{position:absolute;border-radius:50%;background:var(--svc);opacity:.18}
+.hero .w{position:relative}
+.hero .en{display:block;font-size:14px;color:var(--svc)}
+.hero h1{margin:16px 0 0;font-weight:900;letter-spacing:-.04em;line-height:1.1;color:var(--ink);font-size:clamp(2.8rem,10vw,7rem)}
+.hero .rule{display:block;width:48px;height:3px;margin:28px auto 0;border-radius:2px;background:var(--svc)}
+.hero .meta{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;margin:22px 0 0;font-size:15px;color:var(--g2)}
+.hero .meta b{font-family:var(--num);color:var(--ink)}
+.hero .meta .k{display:inline-flex;align-items:center;gap:7px}
+.hero .meta .k i{width:10px;height:10px;border-radius:3px}
+.hero .meta2{margin:8px auto 0;max-width:36em;font-size:15px;line-height:1.7;color:var(--g2)}
+.hero .meta2 b{font-family:var(--num);color:var(--ink)}
+@media (prefers-reduced-motion:no-preference){
+  .hero .deco svg{animation:float 9s ease-in-out infinite}
+  .hero .deco svg:nth-child(2n){animation-duration:11s;animation-delay:-3s}
+  .hero .deco svg:nth-child(3n){animation-duration:13s;animation-delay:-6s}
+  @keyframes float{0%,100%{translate:0 0}50%{translate:0 -8px}}
+}
 
-/* ══ 今回の更新 ══ */
-.news{ background:var(--acl); border-top:3px solid var(--ac); }
-.news .w{ padding-top:34px; padding-bottom:34px; }
-.news h2{ font-size:clamp(1.35rem,4.6vw,2rem)!important; font-weight:900; margin:0 0 4px; letter-spacing:.04em;
-  display:flex; align-items:center; gap:10px; line-height:1.5; }
-.news h2::before{ content:""; width:9px; height:9px; border-radius:50%; background:var(--up);
-  flex:none; box-shadow:0 0 0 4px rgba(200,16,46,.16); }
-.news .nsub{ font-size:14.5px; color:var(--g1); margin:0 0 18px; }
-.news ul{ list-style:none; margin:0; padding:0; display:grid; gap:2px; }
-.news li{ border-top:1px solid var(--acl2); padding:13px 0; }
-.news li:last-child{ border-bottom:1px solid var(--acl2); }
-.news a{ text-decoration:none; display:grid; grid-template-columns:76px 1fr; gap:4px 16px;
-  align-items:baseline; }
-@media (max-width:600px){ .news a{ grid-template-columns:1fr; } }
-.news .nd{ font-family:var(--ff-en); font-size:13.5px; font-weight:700; color:var(--g2);
-  letter-spacing:.04em; }
-.news .nt{ font-size:18px; font-weight:700; line-height:1.7; }
-.news .nt i{ font-style:normal; color:var(--ac); text-decoration:underline;
-  text-underline-offset:3px; }
-.news .nw{ grid-column:2; font-size:15px; color:var(--g1); line-height:1.75; }
-@media (max-width:600px){ .news .nw{ grid-column:1; } }
+/* ===== お知らせ：1本の時系列 ===== */
+.news{padding:clamp(36px,4.5vw,52px) 0 clamp(40px,5vw,56px)}
+.sh{display:flex;align-items:baseline;gap:12px;margin:0 0 14px}
+.sh h2{margin:0;font-size:clamp(1.4rem,2.6vw,1.8rem);font-weight:900;letter-spacing:-.02em;line-height:1.4;color:var(--ink)}
+.sh .en{font-size:13px;color:var(--g3)}
+.nl{list-style:none;margin:0;padding:0;border-top:1px solid var(--ln)}
+.nl a{display:grid;grid-template-columns:3.8em 4.8em 1fr;align-items:baseline;gap:16px;padding:12px 8px;border-bottom:1px solid var(--ln);text-decoration:none;transition:background .18s}
+.nl a:hover{background:var(--bg)}
+.nl time{font-family:var(--num);font-size:15px;font-weight:700;color:var(--g2)}
+.cat{display:inline-block;width:4.6em;padding:0;border-radius:4px;font-size:13px;font-weight:700;line-height:1.9;text-align:center;color:#fff}
+.cat.oem{background:var(--oem)} .cat.dir{background:var(--dir)} .cat.etc{background:var(--etc)}
+.nl .t{font-size:16px;line-height:1.7;color:var(--ink);word-break:auto-phrase;line-break:strict}
+.bd{display:inline-block;margin-right:8px;padding:0 7px;border-radius:4px;font-size:13px;font-weight:700;line-height:1.7;vertical-align:1px}
+/* NEW・更新は目立たせる：大きく太く、赤で（準備中・社内は控えめのまま） */
+.bg-new,.bg-up{padding:1px 11px;font-size:15px;font-weight:900;letter-spacing:.06em;line-height:1.7}
+.bg-new{background:var(--new);color:#fff}
+.bg-up{background:#fdebe1;color:var(--new);box-shadow:inset 0 0 0 1.5px var(--new)}
+.bg-soon{background:#fff4d6;color:#8a5a00}
+.bg-in{background:#efe9f8;color:#5b3f8f}
+.bg-pre{background:#e3e6ea;color:#3d444d}
+.more{margin:0}
+.more summary{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:6px;padding:0 4px;font-size:15px;font-weight:700;color:var(--g1);cursor:pointer;list-style:none}
+.more summary::-webkit-details-marker{display:none}
+.more summary::after{content:"＋";font-weight:500}
+.more[open] summary::after{content:"－"}
+.more .nl{border-top:0}
 
-/* ══ 汎用セクション ══ */
-section.blk .w{ padding-top:64px; padding-bottom:56px; }
-@media (max-width:600px){ section.blk .w{ padding-top:46px; padding-bottom:40px; } }
-.shead{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px;
-  border-bottom:2px solid var(--bk); padding-bottom:12px; margin-bottom:8px; }
-@media (max-width:620px){ .shead{ flex-direction:column-reverse; align-items:flex-start; gap:8px; }
-  .shead .sn{ padding-bottom:0; } }
-.shead h2{ margin:0; font-weight:900; letter-spacing:-.02em; line-height:1.4;
-  font-size:clamp(1.55rem,5.6vw,2.9rem); letter-spacing:-.015em; }
-.sl{ display:flex; align-items:center; gap:14px; min-width:0; }
-.shead .sn{ font-family:var(--ff-en); font-size:13px; font-weight:700; color:var(--g2);
-  letter-spacing:.16em; white-space:nowrap; padding-bottom:5px; }
-.sdesc{ font-size:16.5px; color:var(--g1); margin:16px 0 26px; line-height:1.95; max-width:44em; }
-.sdesc b{ color:var(--bk); font-weight:700; }
+/* ===== 資料の区画：箱に入れず、行と余白で並べる ===== */
+.blk{padding:clamp(56px,7vw,88px) 0;border-top:1px solid var(--ln2)}
+.in{display:grid;grid-template-columns:340px 1fr;gap:clamp(40px,6vw,80px);align-items:start}
+.side{position:sticky;top:40px}
+.side .en{display:block;font-size:13px}
+.side h2{margin:10px 0 0;font-weight:900;letter-spacing:-.03em;line-height:1.4;color:var(--ink);font-size:clamp(1.5rem,2.6vw,2rem)}
+.side .who{margin:10px 0 0;font-size:16px;color:var(--g1)}
+.hist{margin:20px 0 0}
+.hist-h{font-size:14px;font-weight:700;color:var(--g2)}
+.hist ol{list-style:none;margin:6px 0 0;padding:0;border-top:1px solid var(--ln)}
+.hist li{display:grid;grid-template-columns:3.4em 1fr;gap:10px;padding:10px 2px;border-bottom:1px solid var(--ln);font-size:15px;line-height:1.6;color:var(--ink)}
+.hist time{font-family:var(--num);font-size:14px;font-weight:700;color:var(--g2);padding-top:1px}
+.hist .n{margin-right:6px;font-family:var(--num);font-size:14px;font-weight:800}
+.hist .t{word-break:auto-phrase;line-break:strict}
+.oem .hist .n{color:var(--oem)} .dir .hist .n{color:var(--dir)} .etc .hist .n{color:var(--etc)}
+.side .bar{display:block;width:40px;height:3px;margin:22px 0 0;border-radius:2px}
+.terms{list-style:none;display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin:22px 0 0;padding:0}
+.terms li{padding:5px 14px;border-radius:999px;font-size:15px;font-weight:700;line-height:1.7}
+.oem .side .en{color:var(--oem)} .oem .side .bar{background:var(--oem)} .oem .terms li{background:var(--oem-l);color:var(--oem)}
+.dir .side .en{color:var(--dir)} .dir .side .bar{background:var(--dir)} .dir .terms li{background:var(--dir-l);color:var(--dir)}
+.etc .side .en{color:var(--etc)} .etc .side .bar{background:var(--etc)}
 
-/* ══ 2つの提供形態 ══ */
-.two{ display:grid; grid-template-columns:1fr 1fr; gap:52px; margin-bottom:28px; }
-@media (max-width:760px){ .two{ grid-template-columns:1fr; gap:36px; } }
-.two > div{ min-width:0; }
-.two h3{ margin:0 0 6px; font-size:clamp(1.25rem,4.4vw,1.5rem)!important; font-weight:900; letter-spacing:.02em; }
-.two .en b{ font-size:13.5px; color:var(--bk); }
-.two .en{ font-family:var(--ff-en); font-size:12.5px; font-weight:700; color:var(--ac);
-  letter-spacing:.16em; display:block; margin-bottom:10px; }
-.judge{ font-size:15px; font-weight:700; color:var(--ac); margin:0 0 4px; line-height:1.7; }
-.two .tx{ font-size:16px; line-height:2; color:var(--g1); margin:12px 0 0; padding-top:14px;
-  border-top:1px solid var(--ln2); }
+.docs{list-style:none;margin:0;padding:0;border-top:1px solid var(--ln)}
+.doc{position:relative;display:grid;grid-template-columns:4.4em 1fr 2.4em;gap:20px;padding:30px 12px;border-bottom:1px solid var(--ln);text-decoration:none;color:inherit;transition:background .2s}
+.doc .no{font-family:var(--num);font-size:15px;font-weight:800;letter-spacing:.06em;padding-top:3px}
+.oem .doc .no,.oem .doc .arr{color:var(--oem)}
+.dir .doc .no,.dir .doc .arr{color:var(--dir)}
+.etc .doc .no,.etc .doc .arr{color:var(--etc)}
+.doc h3{margin:0;font-size:clamp(1.05rem,1.6vw,1.2rem);font-weight:900;line-height:1.55;color:var(--ink)}
+.ttl{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.ttl .bd{margin:0}
+.doc p{margin:6px 0 0;font-size:16px;line-height:1.85;color:var(--g1);word-break:auto-phrase;line-break:strict}
+.doc .memo{margin:12px 0 0;padding:0 0 0 12px;border-left:3px solid var(--new);font-size:15px;line-height:1.7}
+.urlrow{display:flex;align-items:center;gap:10px;margin:12px 0 0}
+.doc .url{min-width:0;font-family:var(--num);font-size:14px;color:var(--g2);word-break:break-all}
+.cp{position:relative;z-index:1;flex:none;min-height:44px;min-width:5.2em;padding:0 12px;border:1px solid var(--ln);border-radius:8px;background:#fff;color:var(--g1);font:inherit;font-size:14px;font-weight:700;cursor:pointer;transition:background .15s,border-color .15s}
+.cp:hover{border-color:var(--g3)}
+.cp.done{background:var(--ink);border-color:var(--ink);color:#fff}
+.doc .st{display:block;margin:10px 0 0;font-size:15px;color:var(--g3)}
+.doc .arr{align-self:center;justify-self:end;font-size:20px;font-weight:700;transition:translate .2s}
+.doc.link{display:block;padding:0}
+.doc.link .lk{display:grid;grid-template-columns:4.4em 1fr 2.4em;gap:20px;padding:30px 12px 0;text-decoration:none;color:inherit}
+.doc.link .urlrow{margin:0;padding:12px 12px 30px calc(4.4em + 32px)}
+.doc.link:hover .arr{translate:4px 0}
+.oem .doc.link:hover{background:var(--oem-l)} .dir .doc.link:hover{background:var(--dir-l)} .etc .doc.link:hover{background:var(--etc-l)}
+.doc:not(.link) h3{color:var(--g1)}
+/* 社内限の行は開けるが、背景を薄い赤にして「お客様へ送らない」と気づかせる */
+.doc.link.internal{background:#fdf0ef}
+.doc.link.internal:hover{background:#fbe2df!important}
+.doc .warn{margin:10px 0 0;font-size:15px;font-weight:700;color:#b42318}
+/* まだ開けない行（準備中・社内）は背景をグレーにして、開ける行と見分ける */
+.doc:not(.link){background:var(--gray-row)}
+.doc:not(.link) .st{color:var(--g2)}
+.fine{margin:18px 0 0;font-size:15px;color:var(--g2)}
 
-/* ══ 凡例 ══ */
-.legend{ display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center;
-  font-size:14px; color:var(--g1); margin:0 0 22px; }
-.legend span{ display:inline-flex; align-items:center; gap:7px; }
+footer{padding:44px 0 60px;border-top:1px solid var(--ln2);text-align:center;font-size:14.5px;color:var(--g2)}
+footer p + p{margin-top:4px}
 
-/* ══ バッジ ══ */
-.bg{ display:inline-block; font-size:13px; font-weight:700; letter-spacing:.06em;
-  padding:3px 9px; line-height:1.55; white-space:nowrap; }
-.bg.new{ background:var(--up); color:#fff; }
-.bg.upd{ background:#fff; color:var(--up); box-shadow:inset 0 0 0 1.5px var(--up); }
-.bg.soon{ background:var(--pa); color:var(--g2); box-shadow:inset 0 0 0 1px var(--ln); }
-.bg.in{ background:#fff; color:var(--g2); box-shadow:inset 0 0 0 1px var(--g3); }
-
-/* ══ カード ══ */
-.cards{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-@media (max-width:820px){ .cards{ grid-template-columns:1fr; } }
-.card{ position:relative; border:1px solid var(--ln); padding:22px 24px 20px; background:#fff;
-  display:flex; flex-direction:column;
-  transition:border-color .22s ease, box-shadow .22s ease, background-color .22s ease, transform .22s ease; }
-.card.lnk:hover{ border-color:var(--ac); background:var(--acl);
-  box-shadow:0 16px 38px rgba(11,44,92,.17); transform:translateY(-7px); }
-.card.lnk:hover .curl{ background:#fff; border-color:var(--acm); }
-@media (prefers-reduced-motion:reduce){ .card.lnk:hover{ transform:none; } }
-.card.flag{ border-color:var(--acm); }
-.card.off{ background:var(--pa); border-style:dashed; }
-.card.off:hover{ border-color:var(--ln); box-shadow:none; transform:none; }
-.ctop{ display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap; }
-.cno{ font-family:var(--ff-en); font-size:14px; font-weight:900; color:var(--ac);
-  letter-spacing:.12em; }
-.chead{ display:flex; align-items:center; gap:13px; margin:0 0 11px; }
-.cic{ flex:none; width:42px; height:42px; display:grid; place-items:center;
-  background:var(--acl2); color:var(--ac); transition:background .2s, color .2s; }
-.cic svg{ display:block; width:24px; height:24px; }
-.card.lnk:hover .cic{ background:var(--ac); color:#fff; }
-.card.off .cic{ background:#fff; color:var(--g3); box-shadow:inset 0 0 0 1px var(--ln); }
-.card.off:hover .cic{ background:#fff; color:var(--g3); }
-.card h3{ margin:0; font-size:clamp(1.15rem,4.6vw,1.3rem)!important; font-weight:900; line-height:1.5;
-  letter-spacing:.01em; }
-.clink{ position:absolute; inset:0; z-index:2; text-indent:-9999px; overflow:hidden; }
-.card.lnk:hover h3{ color:var(--ac); }
-.card .cd{ font-size:15px; color:var(--g1); line-height:1.85; margin:0 0 14px; flex:1; }
-.upnote{ border-left:3px solid var(--up); background:var(--pa); padding:10px 14px;
-  font-size:14.5px; line-height:1.8; margin:0 0 14px; }
-.upnote b{ font-weight:700; }
-.upnote .ud{ font-family:var(--ff-en); font-size:12.5px; color:var(--g2); font-weight:700;
-  letter-spacing:.05em; display:block; }
-.curl{ display:flex; align-items:baseline; gap:10px; background:var(--pa);
-  border:1px solid var(--ln2); padding:10px 13px; margin:0 0 13px; }
-.curl .uk{ font-family:var(--ff-en); font-size:11.5px; font-weight:800; color:var(--g2);
-  letter-spacing:.14em; flex:none; }
-.curl .uv{ font-family:ui-monospace,SFMono-Regular,Menlo,"Courier New",monospace;
-  font-size:13px; color:var(--ac); line-height:1.65; overflow-wrap:anywhere; min-width:0; }
-.card.off .curl{ background:#fff; }
-.card.off .curl .uv{ color:var(--g2); font-family:var(--ff-body); }
-.cfoot.end{ justify-content:flex-end; }
-.cfoot{ display:flex; align-items:center; justify-content:space-between; gap:12px;
-  border-top:1px solid var(--ln2); padding-top:2px; font-size:13.5px; color:var(--g2); }
-.cfoot .go{ font-weight:700; color:var(--ac); white-space:nowrap; display:inline-block; padding:11px 0; }
-.card.lnk:hover .go{ text-decoration:underline; text-underline-offset:3px; }
-.cfoot .go.mute{ color:var(--g3); pointer-events:none; }
-
-/* ══ 更新履歴 ══ */
-.hist{ border-top:1px solid var(--ln); margin-top:4px; }
-.hrow{ display:grid; grid-template-columns:100px 15em 1fr; gap:6px 18px; align-items:baseline;
-  padding:16px 0; border-bottom:1px solid var(--ln2); font-size:15px; line-height:1.85; }
-@media (max-width:700px){ .hrow{ grid-template-columns:96px 1fr; } }
-.hrow .hd{ font-family:var(--ff-en); font-size:13.5px; font-weight:700; color:var(--g2);
-  letter-spacing:.04em; }
-.hrow .ho{ font-weight:700; font-size:15px; font-family:var(--ff-head); word-break:auto-phrase; overflow-wrap:anywhere; }
-@media (max-width:700px){ .hrow .hx{ grid-column:1 / -1; color:var(--g1); } }
-
-/* ══ 脚注 ══ */
-.ph{ color:var(--g2); background:var(--acl2); padding:0 4px; font-weight:700; }
-footer{ background:var(--bk); color:#fff; margin-top:72px; }
-footer .w{ padding-top:44px; padding-bottom:44px; }
-footer h2{ font-size:20px!important; font-weight:900; margin:0 0 14px; letter-spacing:.04em; }
-footer p{ font-size:15px; color:#cfcfcf; line-height:1.95; margin:0 0 10px; max-width:48em; }
-footer .fl{ display:flex; flex-wrap:wrap; gap:8px 22px; margin-top:20px;
-  border-top:1px solid #333; padding-top:18px; font-size:13.5px; color:#9a9a9a; }
-</style>
-
-<style>
-.tk-c{ background:var(--ln2); color:var(--g1); box-shadow:none; }
-.cards.one{ grid-template-columns:1fr; }
-@media (max-width:420px){ .hn{ gap:12px; } .hn a{ font-size:12.5px; letter-spacing:.02em; } }
-@media (max-width:360px){ .hero h1{ font-size:21px; } }
-@media (max-width:500px){ .sdesc a{ display:inline-block; padding:10px 0; } }
-.news{ padding:48px 0 44px; }
-.sdesc{ margin:16px 0 34px; }
-footer{ margin-top:40px; }
-.fig{ margin:8px 0 0; }
-.figt{ font-size:13px; font-weight:700; color:var(--g2); letter-spacing:.06em; margin:0 0 14px; }
-.figc{ border:1px solid var(--ln); background:#fff; padding:22px 18px; }
-.figc svg{ display:block; width:100%; height:auto; }
-.figk{ font-size:14px; color:var(--g1); margin:14px 0 0; }
+@media(max-width:900px){
+  .in{grid-template-columns:1fr;gap:28px}
+  .side{position:static}
+  .terms{flex-direction:row;flex-wrap:wrap}
+}
+@media(max-width:600px){
+  .nl a{grid-template-columns:auto 1fr;gap:4px 12px;padding:14px 4px}
+  .nl .t{grid-column:1 / -1}
+  .doc{grid-template-columns:3.4em 1fr;gap:12px;padding:26px 4px}
+  .doc .arr{display:none}
+  .doc:not(.link){padding:26px 8px;gap:8px}
+  .doc.link .lk{grid-template-columns:3.4em 1fr;gap:12px;padding:26px 4px 0}
+  .doc.link .urlrow{padding:12px 4px 26px calc(3.4em + 16px)}
+  .hero .deco .hm{display:none}
+}
+@media(max-width:360px){
+  .hero h1{font-size:2.25rem}
+}
 </style>
 </head>
-
 <body>
 
-<header>
+<header class="hero">
+  <div class="deco" aria-hidden="true">
+    <!-- 旗 -->
+    <svg viewBox="0 0 48 48" style="left:8%;top:18%;width:70px;rotate:-10deg"><path d="M12 44V6"/><path d="M12 8h24l-5 8 5 8H12"/></svg>
+    <!-- 芽 -->
+    <svg class="hm" viewBox="0 0 48 48" style="left:20%;top:64%;width:62px;rotate:6deg"><path d="M24 42V22"/><path d="M24 26c0-8-6-13-15-13 0 8 6 13 15 13z"/><path d="M24 22c0-7 5-11 13-11 0 7-5 11-13 11z"/><path d="M14 42h20"/></svg>
+    <!-- 電球 -->
+    <svg viewBox="0 0 48 48" style="right:9%;top:16%;width:72px;rotate:8deg"><path d="M17 30a12 12 0 1 1 14 0v5H17z"/><path d="M18 40h12M20 44h8"/><path d="M24 20v8"/></svg>
+    <!-- 名刺 -->
+    <svg class="hm" viewBox="0 0 48 48" style="right:19%;top:62%;width:62px;rotate:-12deg"><rect x="5" y="12" width="38" height="24" rx="3"/><circle cx="15" cy="22" r="4"/><path d="M11 31h8M25 20h12M25 26h12M25 31h7"/></svg>
+    <!-- 店の軒先 -->
+    <svg class="hm" viewBox="0 0 48 48" style="left:33%;top:8%;width:50px;rotate:-6deg"><path d="M6 18 10 8h28l4 10"/><path d="M6 18c0 3 2.5 5 5.5 5s5.5-2 5.5-5c0 3 2.5 5 5.5 5h2c3 0 5.5-2 5.5-5 0 3 2.5 5 5.5 5s5.5-2 5.5-5"/><path d="M9 23v19h30V23"/><path d="M20 42V31h8v11"/></svg>
+    <!-- 階段 -->
+    <svg class="hm" viewBox="0 0 48 48" style="right:33%;top:10%;width:46px;rotate:4deg"><path d="M6 40h9v-9h9v-9h9v-9h9"/><path d="M36 6l6 7-7 2"/></svg>
+    <!-- 吹き出し -->
+    <svg class="s" viewBox="0 0 48 48" style="left:4%;top:48%;width:52px"><path d="M8 10h32a4 4 0 0 1 4 4v16a4 4 0 0 1-4 4H22l-9 8v-8H8a4 4 0 0 1-4-4V14a4 4 0 0 1 4-4z"/><path d="M14 22h20"/></svg>
+    <!-- 鍵 -->
+    <svg class="s" viewBox="0 0 48 48" style="right:4%;top:46%;width:50px;rotate:-20deg"><circle cx="15" cy="24" r="8"/><path d="M23 24h20M37 24v6M42 24v4"/></svg>
+    <!-- ノート -->
+    <svg class="s hm" viewBox="0 0 48 48" style="left:40%;top:78%;width:34px"><rect x="10" y="6" width="28" height="36" rx="3"/><path d="M16 16h16M16 23h16M16 30h10"/></svg>
+    <svg class="s" viewBox="0 0 48 48" style="right:38%;top:80%;width:24px"><path d="M24 6c2 10 8 16 18 18-10 2-16 8-18 18-2-10-8-16-18-18 10-2 16-8 18-18z"/></svg>
+    <span class="dot" style="left:15%;top:40%;width:8px;height:8px"></span>
+    <span class="dot" style="right:14%;top:38%;width:6px;height:6px"></span>
+    <span class="dot hm" style="left:28%;top:30%;width:5px;height:5px"></span>
+    <span class="dot hm" style="right:27%;top:84%;width:7px;height:7px"></span>
+  </div>
   <div class="w">
-    <div class="logo">創業支援<span>パック</span><span class="lsub">　資料インデックス</span></div>
-    <nav class="hn">
-      <a href="#live">いま開ける</a>
-      <a href="#direct">直販</a>
-      <a href="#oem">OEM</a>
-    </nav>
+    <span class="en">Startup Support Pack</span>
+    <h1>創業支援パック</h1>
+    <span class="rule" aria-hidden="true"></span>
+    <p class="meta">
+      <span>最終更新 <b>2026.09.24</b></span>
+      <span class="k"><i style="background:var(--oem)"></i><span>OEM 開ける<b>0</b>点／4点</span></span>
+      <span class="k"><i style="background:var(--dir)"></i><span>直販 開ける<b>1</b>点／4点</span></span>
+      <span class="k"><i style="background:var(--etc)"></i><span>その他 <b>8</b>点</span></span>
+    </p>
+    <p class="meta2">パック全<b>9</b>点（このページ＋直販4点＋OEM4点）のうち、いま開けるのは<span class="nobr">このページとA-01の<b>2</b>点です</span></p>
   </div>
 </header>
 
-<section class="hero">
+<main>
+
+<!-- お知らせ -->
+<section class="news" aria-labelledby="news-h">
   <div class="w">
-    <div class="hl">
-      <span class="chip">INDEX</span><span class="chipn">創業支援パック</span>
-      <h1><em>売れる商品</em>と<em>売れる営業力</em>。<br>どちらかが0なら、<br>売上も0。</h1>
-      <p class="sub">創業支援パックは、<b>お客様をつくる側</b>と<b>商品をつくる側</b>を、途中で行き来しながら使っていただける会員型のパック群です。対象は、創業前から創業12か月以内の方です。</p>
-      <div class="stamp">
-        <span>このページは資料の一覧です</span>
-        <span>最終更新　<b>2026年9月23日</b></span>
-      </div>
-    </div>
-    <aside class="tally">
-      <div class="trow">
-        <span class="tk tk-a">1</span><span class="tl">いま開ける</span><span class="tv">9<i>点</i></span>
-      </div>
-      <div class="trow">
-        <span class="tk tk-b">2</span><span class="tl">準備中</span><span class="tv">5<i>点</i></span>
-      </div>
-      <div class="trow">
-        <span class="tk tk-c">3</span><span class="tl">作成前</span><span class="tv">2<i>点</i></span>
-      </div>
-      <p class="tnote">公開ぶんは、このページで順に増やします</p>
-    </aside>
+    <div class="sh"><h2 id="news-h">お知らせ</h2><span class="en">News</span></div>
+    <ul class="nl">
+      <li><a href="#oem"><time>09.24</time><span class="cat etc">その他</span><span class="t"><span class="bd bg-up">更新</span>この資料インデックスを、OEM・直販・その他の3区画に組み直しました</span></a></li>
+      <li><a href="#a-01"><time>09.23</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-up">更新</span>サービス紹介ページに、13のサービスと適性診断から最初の1本を選ぶ流れを明示しました</span></a></li>
+      <li><a href="#c-07"><time>09.23</time><span class="cat etc">その他</span><span class="t"><span class="bd bg-new">NEW</span>読み物「創業の秘訣」を、サービス紹介ページとは別のURLで公開しました</span></a></li>
+      <li><a href="#a-01"><time>09.23</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-up">更新</span>サービス紹介ページを、写真を使った新しいページに差し替えました</span></a></li>
+      <li><a href="#c-04"><time>09.23</time><span class="cat etc">その他</span><span class="t"><span class="bd bg-in">社内</span>案内ページの指示書、解説動画の指示書と台本を追加しました</span></a></li>
+    </ul>
+    <details class="more">
+      <summary>過去のお知らせ（4件）</summary>
+      <ul class="nl">
+        <li><a href="#a-01"><time>09.22</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-new">NEW</span>サービス紹介ページを公開しました（このときの内容は、いまの「創業の秘訣」です）</span></a></li>
+        <li><a href="#c-01"><time>09.22</time><span class="cat etc">その他</span><span class="t"><span class="bd bg-in">社内</span>企画メモ・商品仕様・適合マトリクスを開けるようにしました</span></a></li>
+        <li><a href="#direct"><time>09.22</time><span class="cat etc">その他</span><span class="t"><span class="bd bg-new">NEW</span>この資料インデックスを開設しました</span></a></li>
+        <li><a href="#c-08"><time>09.21</time><span class="cat etc">その他</span><span class="t"><span class="bd bg-new">NEW</span>適性診断を公開しました</span></a></li>
+      </ul>
+    </details>
   </div>
 </section>
 
-<section class="blk" id="live">
-  <div class="w">
-    <div class="shead">
-      <div class="sl"><h2>いま開けるページ</h2></div>
-      <span class="sn">LIVE</span>
+<!-- OEM -->
+<section class="blk oem" id="oem" aria-labelledby="oem-h">
+  <div class="w in">
+    <div class="side">
+      <span class="en">B ／ OEM</span>
+      <h2 id="oem-h">貴社の商材として扱う</h2>
+      <p class="who">創業前後のお客様と接している会社の方へ</p>
+      <div class="hist"><p class="hist-h">この区画の更新履歴</p><ol><li><time>09.24</time><span class="t"><span class="n">B区画</span>B-01〜B-04の公開状況を掲載し直し</span></li><li><time>09.22</time><span class="t"><span class="n">B区画</span>OEMの区画を新設</span></li></ol></div>
+      <span class="bar" aria-hidden="true"></span>
+      <ul class="terms"><li>取扱条件は個別にご相談</li></ul>
     </div>
-    <p class="sdesc">このパックで、いまお客様にお見せできるページです。</p>
-    <div class="cards">
-      <div class="card flag lnk" id="live0">
-        <a class="clink" href="../sogyo-pack/">サービス紹介ページを開く</a>
-        <div class="ctop"><span class="cno">LIVE</span><span class="bg new">NEW</span></div>
-        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13.5h6"/><path d="M9 17h4"/></svg></span><h3>サービス紹介ページ<br>（入口）</h3></div>
-        <p class="cd">経験を事業の言葉に変え、最初のお客様との対話を始めるための創業支援LPです。写真を使ったブランド寄りの構成で、最後に適性診断へつながります。</p>
-        <div class="cfoot"><span>/saas/sogyo-pack/</span><span class="go">開く →</span></div>
-      </div>
-      <div class="card flag lnk" id="live2">
-        <a class="clink" href="../sogyo-hiketsu/">創業の秘訣を開く</a>
-        <div class="ctop"><span class="cno">LIVE</span><span class="bg new">NEW</span></div>
-        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H16l3 3v13.5A1.5 1.5 0 0 1 17.5 21h-11A1.5 1.5 0 0 1 5 19.5z"/><path d="M8.5 9h7"/><path d="M8.5 12.5h7"/><path d="M8.5 16h4"/></svg></span><h3>創業の秘訣<br>（読み物）</h3></div>
-        <p class="cd">何から手を付けるかの決め方を3つの原則にまとめた説明資料です。公庫調査のデータから入り、実話のコラムを挟んで、後半で13のサービスとおすすめ3本をご案内します。10分解説動画の前半は、このページを流します。</p>
-        <div class="cfoot"><span>/saas/sogyo-hiketsu/</span><span class="go">開く →</span></div>
-      </div>
-      <div class="card flag lnk" id="live1">
-        <a class="clink" href="../sogyo/">創業支援パック 適性診断を開く</a>
-        <div class="ctop"><span class="cno">LIVE</span><span class="bg new">NEW</span></div>
-        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4h6a1 1 0 0 1 1 1v1H8V5a1 1 0 0 1 1-1z"/><path d="M16 5.5h2a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5H6A1.5 1.5 0 0 1 4.5 19V7A1.5 1.5 0 0 1 6 5.5h2"/><path d="m9 13 2 2 4-4"/></svg></span><h3>創業支援パック<br>適性診断</h3></div>
-        <p class="cd">最大18問に答えると、13の支援サービスが「いますぐ／次に／いまは見送り」に並べ替わります。向いていない方を外すのではなく、いま手を付けるものから順にお出しします。</p>
-        <div class="cfoot"><span>/saas/sogyo/</span><span class="go">開く →</span></div>
-      </div>
-    </div>
+    <ul class="docs">
+      <li><div class="doc" id="b-01">
+        <span class="no">B-01</span>
+        <div><div class="ttl"><h3>OEM提供のご案内</h3><span class="bd bg-soon">準備中</span></div>
+          <p>貴社がやること、弊社がやることの分担と、導入までの流れをまとめるページです。</p>
+          <span class="st">まだ公開していません。公開したら、このページでお知らせします</span></div>
+      </div></li>
+      <li><div class="doc" id="b-02">
+        <span class="no">B-02</span>
+        <div><div class="ttl"><h3>説明会の募集ページ</h3><span class="bd bg-soon">準備中</span></div>
+          <p>取り扱いを検討される会社向けの、パートナー説明会の案内です。</p>
+          <span class="st">まだ公開していません。公開したら、このページでお知らせします</span></div>
+      </div></li>
+      <li><div class="doc" id="b-03">
+        <span class="no">B-03</span>
+        <div><div class="ttl"><h3>説明会の投影資料</h3><span class="bd bg-soon">準備中</span></div>
+          <p>説明会の当日に映す資料です。話す文言を併記します。</p>
+          <span class="st">まだ公開していません。公開したら、このページでお知らせします</span></div>
+      </div></li>
+      <li><div class="doc" id="b-04">
+        <span class="no">B-04</span>
+        <div><div class="ttl"><h3>パートナー向けノート</h3><span class="bd bg-pre">作成前</span><span class="bd bg-in">社内</span></div>
+          <p>パートナーの営業が、自社のお客様へ説明するときの言い回しをまとめる社内資料です。</p>
+          <span class="st">作成前です。実物と閲覧の制限を確かめてから、リンクを載せます</span></div>
+      </div></li>
+    </ul>
   </div>
 </section>
 
-<section class="news" id="news">
-  <div class="w">
-    <h2>今回の更新</h2>
-    <p class="nsub"><b>2026年9月23日</b>　更新のあったページには <span class="bg new">NEW</span> が付きます。次回以降は、前回のご案内からの差分をここにまとめます。</p>
-    <ul>
-      <li><a href="#live0">
-        <span class="nd">09.23</span>
-        <span class="nt"><i>サービス紹介ページ（A-01）</i>　を新しいLPに差し替えました</span>
-        <span class="nw">経験を事業の言葉に変え、最初のお客様との対話を始めるための構成です。これまでの説明資料は、読み物「創業の秘訣」として別のURLに移しました。</span>
-      </a></li>
-      <li><a href="#live2">
-        <span class="nd">09.23</span>
-        <span class="nt"><i>創業の秘訣</i>　を読み物として別のURLで公開しました</span>
-        <span class="nw">10分解説動画の前半はこのページを流します。最終章の見出しを「あとは、順番を決めるだけです。」に改めました。</span>
-      </a></li>
-      <li><a href="#ref">
-        <span class="nd">09.23</span>
-        <span class="nt"><i>案内ページの指示書・解説動画の指示書と台本</i>　を追加しました</span>
-        <span class="nw">「13のサービスを随時入れ替えて使える」を一点にした案内ページと、そのCTAになる10分解説動画。指示書2本と収録台本を社内資料に加えています。</span>
-      </a></li>
-      <li><a href="#live2">
-        <span class="nd">09.22</span>
-        <span class="nt"><i>読み物「創業の秘訣」</i>　を作りました（当時はサービス紹介ページとして公開）</span>
-        <span class="nw">紙のレポートの体裁で全9章。公庫「2025年度新規開業実態調査」のデータから入り、3つの原則で始める側を決め、後半で創業支援パックとおすすめ3本をご案内します。途中に実話のコラムを1本挟んでいます。</span>
-      </a></li>
-      <li><a href="#live1">
-        <span class="nd">09.22</span>
-        <span class="nt"><i>適性診断</i>　との区分の呼び方をそろえました</span>
-        <span class="nw">資料側の4区分（いますぐ／次に／当座は不要／対象外）と、診断側の3区分（いますぐ／次に／いまは見送り）の関係を、資料に明記しました。</span>
-      </a></li>
-      <li><a href="#ref">
-        <span class="nd">09.22</span>
-        <span class="nt"><i>企画メモ・商品仕様・適合マトリクス</i>　を開けるようにしました</span>
-        <span class="nw">社内で使う3点を1か所にまとめました。検索には出ない設定です。顧客への提示には使えません。</span>
-      </a></li>
-      <li><a href="#direct">
-        <span class="nd">09.22</span>
-        <span class="nt"><i>このインデックス</i>　を開設しました</span>
-        <span class="nw">直販（A）とOEM（B）の資料を、ここから一覧できるようにしました。各資料は順次公開します。</span>
-      </a></li>
-      <li><a href="#live1">
-        <span class="nd">09.21</span>
-        <span class="nt"><i>創業支援パック 適性診断</i>　を公開しました</span>
-        <span class="nw">最大18問に答えると、13の支援サービスが「いますぐ／次に／いまは見送り」に並べ替わります。判定の考え方は「弱いほうから埋める」です。</span>
-      </a></li>
-</ul>
+<!-- 直販 -->
+<section class="blk dir" id="direct" aria-labelledby="dir-h">
+  <div class="w in">
+    <div class="side">
+      <span class="en">A ／ Direct</span>
+      <h2 id="dir-h">創業するご本人へ</h2>
+      <p class="who">創業準備中から創業1年以内の方へ</p>
+      <div class="hist"><p class="hist-h">この区画の更新履歴</p><ol><li><time>09.23</time><span class="t"><span class="n">A-01</span>13のサービスから最初の1本を選ぶ流れを明示</span></li><li><time>09.23</time><span class="t"><span class="n">A-01</span>写真を使った新しいページに差し替え</span></li><li><time>09.22</time><span class="t"><span class="n">A-01</span>サービス紹介ページを公開</span></li></ol></div>
+      <span class="bar" aria-hidden="true"></span>
+      <ul class="terms"><li>13のサービスから選ぶ</li><li>入口は適性診断</li></ul>
+    </div>
+    <ul class="docs">
+      <li><div class="doc link" id="a-01">
+        <a class="lk" href="https://writeup-inc.github.io/saas/sogyo-pack/"><span class="no">A-01</span>
+        <div><div class="ttl"><h3>サービス紹介ページ</h3><span class="bd bg-up">更新</span></div>
+          <p>お客様との接点づくりと、売る商品づくり。13のサービスから、いま必要な最初の1本を選ぶためのページです。最後に適性診断へつながります。</p>
+          <p class="memo">09.23 13のサービスと適性診断から、最初の1本を選ぶ流れを明示しました</p></div>
+        <span class="arr" aria-hidden="true">→</span></a>
+        <div class="urlrow"><span class="url">writeup-inc.github.io/saas/sogyo-pack/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/sogyo-pack/">コピー</button></div>
+      </div></li>
+      <li><div class="doc" id="a-02">
+        <span class="no">A-02</span>
+        <div><div class="ttl"><h3>相談会の募集ページ</h3><span class="bd bg-soon">準備中</span></div>
+          <p>創業される方向けの、相談会・セミナーの案内です。</p>
+          <span class="st">まだ公開していません。公開したら、このページでお知らせします</span></div>
+      </div></li>
+      <li><div class="doc" id="a-03">
+        <span class="no">A-03</span>
+        <div><div class="ttl"><h3>相談会の投影資料</h3><span class="bd bg-soon">準備中</span></div>
+          <p>相談会の当日に映す資料です。話す文言を併記します。</p>
+          <span class="st">まだ公開していません。公開したら、このページでお知らせします</span></div>
+      </div></li>
+      <li><div class="doc" id="a-04">
+        <span class="no">A-04</span>
+        <div><div class="ttl"><h3>商談時の説明ノート</h3><span class="bd bg-pre">作成前</span><span class="bd bg-in">社内</span></div>
+          <p>担当者ごとに説明がぶれないよう、商談で話す内容をまとめる社内資料です。</p>
+          <span class="st">作成前です。実物と閲覧の制限を確かめてから、リンクを載せます</span></div>
+      </div></li>
+    </ul>
   </div>
 </section>
 
-<section class="blk">
-  <div class="w">
-    <div class="shead">
-      <div class="sl"><h2>2つの提供のかたち</h2></div>
-      <span class="sn">OVERVIEW</span>
+<!-- その他 -->
+<section class="blk etc" id="etc" aria-labelledby="etc-h">
+  <div class="w in">
+    <div class="side">
+      <span class="en">C ／ Others</span>
+      <h2 id="etc-h">読み物・診断・社内資料</h2>
+      <p class="who">直販にもOEMにも使う資料</p>
+      <div class="hist"><p class="hist-h">この区画の更新履歴</p><ol><li><time>09.23</time><span class="t"><span class="n">C-07</span>「創業の秘訣」を別のURLで公開</span></li><li><time>09.23</time><span class="t"><span class="n">C-04</span>指示書2本と収録台本を追加</span></li><li><time>09.22</time><span class="t"><span class="n">C-01</span>社内資料3点を開けるように</span></li></ol></div>
+      <span class="bar" aria-hidden="true"></span>
     </div>
-    <p class="sdesc">同じ創業支援パックですが、<b>創業される方ご本人</b>にお届けするのか、<b>創業される方と日常的に接している会社</b>と組むのかで、ご案内する内容が変わります。どちらに当たるかで下のブロックを選んでください。</p>
-    <div class="fig">
-      <p class="figt">図：このパックが支える2つの側</p>
-      <div class="figc">
-        <svg viewBox="0 0 1000 268" role="img" aria-label="売れる商品と売れる営業力の掛け算が売上になり、その両側のメニューを行き来できることを示す図">
-          <defs>
-            <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-              <path d="M0 0 10 5 0 10z" fill="#b4b4b4"/>
-            </marker>
-          </defs>
-          <g font-family="Noto Sans JP, sans-serif">
-            <rect x="96" y="14" width="228" height="62" fill="#fff" stroke="#d9d9d9"/>
-            <text x="210" y="52" text-anchor="middle" font-size="19" font-weight="700" fill="#111">売れる商品</text>
-            <text x="360" y="54" text-anchor="middle" font-size="26" font-weight="700" fill="#6b6b6b">×</text>
-            <rect x="396" y="14" width="228" height="62" fill="#fff" stroke="#d9d9d9"/>
-            <text x="510" y="52" text-anchor="middle" font-size="19" font-weight="700" fill="#111">売れる営業力</text>
-            <text x="660" y="54" text-anchor="middle" font-size="26" font-weight="700" fill="#6b6b6b">＝</text>
-            <rect x="696" y="14" width="208" height="62" fill="#0b2c5c"/>
-            <text x="800" y="52" text-anchor="middle" font-size="19" font-weight="700" fill="#fff">売上</text>
-
-            <line x1="210" y1="84" x2="210" y2="126" stroke="#b4b4b4" stroke-width="1.5" marker-end="url(#ar2)"/>
-            <line x1="510" y1="84" x2="510" y2="126" stroke="#b4b4b4" stroke-width="1.5" marker-end="url(#ar2)"/>
-
-            <rect x="96" y="134" width="228" height="74" fill="#f3f6fa" stroke="#e9eef2"/>
-            <text x="210" y="166" text-anchor="middle" font-size="17" font-weight="700" fill="#0b2c5c">商品をつくる側</text>
-            <text x="210" y="190" text-anchor="middle" font-size="13" fill="#555">売るものを持つ</text>
-
-            <rect x="396" y="134" width="228" height="74" fill="#f3f6fa" stroke="#e9eef2"/>
-            <text x="510" y="166" text-anchor="middle" font-size="17" font-weight="700" fill="#0b2c5c">お客様をつくる側</text>
-            <text x="510" y="190" text-anchor="middle" font-size="13" fill="#555">先にお客様を積む</text>
-
-            <line x1="334" y1="160" x2="386" y2="160" stroke="#0b2c5c" stroke-width="1.5" marker-end="url(#ar2)"/>
-            <line x1="386" y1="184" x2="334" y2="184" stroke="#0b2c5c" stroke-width="1.5" marker-end="url(#ar2)"/>
-            <text x="360" y="230" text-anchor="middle" font-size="13" font-weight="700" fill="#0b2c5c">行き来できる</text>
-
-            <text x="800" y="160" text-anchor="middle" font-size="13" fill="#6b6b6b">どちらかが0なら</text>
-            <text x="800" y="184" text-anchor="middle" font-size="17" font-weight="700" fill="#111">売上も0</text>
-          </g>
-        </svg>
-      </div>
-      <p class="figk">弱いほうから埋めます。どちらが弱いかは、適性診断でお出しします。</p>
-    </div>
-    <div class="two" style="margin-top:38px">
-      <div>
-        <span class="en"><b>A</b>　DIRECT</span>
-        <h3>これから事業を始める方へ</h3>
-        <p class="judge">ご自身が創業される方 → こちら</p>
-        <p class="tx">創業前、または創業されて12か月以内の方へ。お客様をつくる側のメニューと、商品をつくる側のメニューを、必要な順に組み合わせてお使いいただきます。入口は適性診断、または個別のご相談です。</p>
-      </div>
-      <div>
-        <span class="en"><b>B</b>　OEM / PARTNER</span>
-        <h3>創業を支えている会社へ</h3>
-        <p class="judge">創業予定のお客様を抱えている会社 → こちら</p>
-        <p class="tx">士業事務所、創業スクール、地域の支援機関など、創業前後の方と接点をお持ちの会社へ。御社ブランドでのご提供と、ご案内に使う資料一式をご用意します。入口はパートナー説明会、または取扱条件のご相談です。</p>
-      </div>
-    </div>
+    <ul class="docs">
+      <li><div class="doc link" id="c-07">
+        <a class="lk" href="https://writeup-inc.github.io/saas/sogyo-hiketsu/"><span class="no">C-07</span>
+        <div><div class="ttl"><h3>読み物「創業の秘訣」</h3></div>
+          <p>何から手を付けるかの決め方を、3つの原則にまとめた読み物です。公庫の調査から入り、後半で13のサービスとおすすめ3本をご案内します。</p></div>
+        <span class="arr" aria-hidden="true">→</span></a>
+        <div class="urlrow"><span class="url">writeup-inc.github.io/saas/sogyo-hiketsu/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/sogyo-hiketsu/">コピー</button></div>
+      </div></li>
+      <li><div class="doc link" id="c-08">
+        <a class="lk" href="https://writeup-inc.github.io/saas/sogyo/"><span class="no">C-08</span>
+        <div><div class="ttl"><h3>適性診断</h3></div>
+          <p>最大18問に答えると、13の支援サービスが「いますぐ」「次に」などの順に並び替わります。A-01の最後からもつながります。</p></div>
+        <span class="arr" aria-hidden="true">→</span></a>
+        <div class="urlrow"><span class="url">writeup-inc.github.io/saas/sogyo/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/sogyo/">コピー</button></div>
+      </div></li>
+      <li><div class="doc link internal" id="c-01">
+        <a class="lk" href="https://deploy-sogyo-memo.vercel.app/memo"><span class="no">C-01</span>
+        <div><div class="ttl"><h3>企画メモ</h3><span class="bd bg-in">社内</span></div>
+          <p>パックの考え方を1本の流れで書いたものです。</p>
+          <p class="warn">社内限定です。お客様へURLを送らないでください</p></div>
+        <span class="arr" aria-hidden="true">→</span></a>
+        <div class="urlrow"><span class="url">deploy-sogyo-memo.vercel.app/memo</span><button type="button" class="cp" data-url="https://deploy-sogyo-memo.vercel.app/memo">コピー</button></div>
+      </div></li>
+      <li><div class="doc link internal" id="c-02">
+        <a class="lk" href="https://deploy-sogyo-memo.vercel.app/spec"><span class="no">C-02</span>
+        <div><div class="ttl"><h3>商品仕様</h3><span class="bd bg-in">社内</span></div>
+          <p>対象となる方、メニューの区分、これから決める項目の一覧です。</p>
+          <p class="warn">社内限定です。お客様へURLを送らないでください</p></div>
+        <span class="arr" aria-hidden="true">→</span></a>
+        <div class="urlrow"><span class="url">deploy-sogyo-memo.vercel.app/spec</span><button type="button" class="cp" data-url="https://deploy-sogyo-memo.vercel.app/spec">コピー</button></div>
+      </div></li>
+      <li><div class="doc link internal" id="c-03">
+        <a class="lk" href="https://deploy-sogyo-memo.vercel.app/matrix"><span class="no">C-03</span>
+        <div><div class="ttl"><h3>適合マトリクス</h3><span class="bd bg-in">社内</span></div>
+          <p>適性診断の判定条件の正本です。13のサービスの振り分け条件を定義しています。</p>
+          <p class="warn">社内限定です。お客様へURLを送らないでください</p></div>
+        <span class="arr" aria-hidden="true">→</span></a>
+        <div class="urlrow"><span class="url">deploy-sogyo-memo.vercel.app/matrix</span><button type="button" class="cp" data-url="https://deploy-sogyo-memo.vercel.app/matrix">コピー</button></div>
+      </div></li>
+      <li><div class="doc link internal" id="c-04">
+        <a class="lk" href="https://deploy-sogyo-memo.vercel.app/brief-page"><span class="no">C-04</span>
+        <div><div class="ttl"><h3>案内ページの指示書</h3><span class="bd bg-in">社内</span></div>
+          <p>「13のサービスを随時入れ替えて使える」を一点にした案内ページの、デザイン指示書です。</p>
+          <p class="warn">社内限定です。お客様へURLを送らないでください</p></div>
+        <span class="arr" aria-hidden="true">→</span></a>
+        <div class="urlrow"><span class="url">deploy-sogyo-memo.vercel.app/brief-page</span><button type="button" class="cp" data-url="https://deploy-sogyo-memo.vercel.app/brief-page">コピー</button></div>
+      </div></li>
+      <li><div class="doc link internal" id="c-05">
+        <a class="lk" href="https://deploy-sogyo-memo.vercel.app/brief-video"><span class="no">C-05</span>
+        <div><div class="ttl"><h3>解説動画の指示書</h3><span class="bd bg-in">社内</span></div>
+          <p>10分解説動画の構成、使ってよい数字と出典、収録前に確認する点をまとめた制作指示書です。</p>
+          <p class="warn">社内限定です。お客様へURLを送らないでください</p></div>
+        <span class="arr" aria-hidden="true">→</span></a>
+        <div class="urlrow"><span class="url">deploy-sogyo-memo.vercel.app/brief-video</span><button type="button" class="cp" data-url="https://deploy-sogyo-memo.vercel.app/brief-video">コピー</button></div>
+      </div></li>
+      <li><div class="doc link internal" id="c-06">
+        <a class="lk" href="https://deploy-sogyo-memo.vercel.app/script"><span class="no">C-06</span>
+        <div><div class="ttl"><h3>解説動画の収録台本</h3><span class="bd bg-in">社内</span></div>
+          <p>10分解説動画の読み上げ原稿と画面指示です（v3）。</p>
+          <p class="warn">社内限定です。お客様へURLを送らないでください</p></div>
+        <span class="arr" aria-hidden="true">→</span></a>
+        <div class="urlrow"><span class="url">deploy-sogyo-memo.vercel.app/script</span><button type="button" class="cp" data-url="https://deploy-sogyo-memo.vercel.app/script">コピー</button></div>
+      </div></li>
+    </ul>
   </div>
 </section>
 
-<section class="blk" id="direct">
-  <div class="w">
-    <div class="shead">
-      <div class="sl"><span class="tk tk-a">A</span><h2>直販</h2></div>
-      <span class="sn">A-01 — A-04</span>
-    </div>
-    <div class="legend">
-      <span><span class="bg new">NEW</span> 新規公開</span>
-      <span><span class="bg soon">準備中</span> 公開前</span>
-      <span><span class="bg in">社内</span> 社内でのみ使用</span>
-    </div>
-    <p class="sdesc">創業される<b>ご本人</b>へ直接お届けする資料です。</p>
-
-    <div class="cards">
-      <div class="card flag lnk" id="c01">
-        <a class="clink" href="../sogyo-pack/">サービス紹介ページを開く</a>
-        <div class="ctop"><span class="cno">A-01</span><span class="bg new">NEW</span></div>
-        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13.5h6"/><path d="M9 17h4"/></svg></span><h3>サービス紹介ページ</h3></div>
-        <p class="cd">経験を事業の言葉に変え、最初のお客様との対話を始めるための創業支援LPです。写真を使ったブランド寄りの構成で、最後に適性診断へつながります。あわせて読み物「創業の秘訣」を公開しています（上の「いま開けるページ」から）。</p>
-        <div class="cfoot"><span>/saas/sogyo-pack/</span><span class="go">開く →</span></div>
-      </div>
-      <div class="card" id="c02">
-        <div class="ctop"><span class="cno">A-02</span><span class="bg soon">準備中</span></div>
-        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/><path d="M8.5 21h7"/></svg></span><h3>創業相談会<br>募集ページ</h3></div>
-        <p class="cd">「自分はどこから手を付けるべきか」をその場で切り分けて持ち帰っていただく会です。日程・定員・申込はこちら。</p>
-        <div class="cfoot"><span>公開時にこのページでご案内します</span><span class="go mute">準備中</span></div>
-      </div>
-      <div class="card" id="c03">
-        <div class="ctop"><span class="cno">A-03</span><span class="bg soon">準備中</span></div>
-        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4"/><path d="M8.5 20h7"/><path d="M8.5 12.5v-2"/><path d="M12 12.5v-4"/><path d="M15.5 12.5v-3"/></svg></span><h3>創業相談会<br>投影資料</h3></div>
-        <p class="cd">相談会当日にお見せする資料です。話す順番と補足を併記するため、担当者が変わっても同じ内容をご説明できます。</p>
-        <div class="cfoot"><span>公開時にこのページでご案内します</span><span class="go mute">準備中</span></div>
-      </div>
-      <div class="card" id="c04">
-        <div class="ctop"><span class="cno">A-04</span><span class="bg in">社内</span></div>
-        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5a2 2 0 0 1-2 2H8.5L4.5 20V6a2 2 0 0 1 2-2h11.5a2 2 0 0 1 2 2z"/><path d="M8.5 9h8"/><path d="M8.5 12.5h5"/></svg></span><h3>商談時の説明ノート</h3></div>
-        <p class="cd">よくいただくご質問と、その回答の整理です。担当者ごとに説明がぶれないようにするための社内資料です。</p>
-        <div class="cfoot"><span>これから作成します</span><span class="go mute">作成前</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="blk" id="oem">
-  <div class="w">
-    <div class="shead">
-      <div class="sl"><span class="tk tk-b">B</span><h2>OEM</h2></div>
-      <span class="sn">B-01 — B-04</span>
-    </div>
-    <p class="sdesc">創業支援パックを<b>御社の商材として</b>扱っていただく場合の資料です。<b>取扱条件はご相談のうえ決定します。</b></p>
-
-    <div class="cards">
-      <div class="card" id="c05">
-        <div class="ctop"><span class="cno">B-01</span><span class="bg soon">準備中</span></div>
-        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5 12 4l9 4.5-9 4.5z"/><path d="m3 13.5 9 4.5 9-4.5"/><path d="m3 17.5 9 4.5 9-4.5" opacity=".4"/></svg></span><h3>OEM提供のご案内</h3></div>
-        <p class="cd">御社がやること、弊社がやること。提供範囲と責任の分かれ目、御社側で必要になる工数を1枚にまとめます。</p>
-        <div class="cfoot"><span>公開時にこのページでご案内します</span><span class="go mute">準備中</span></div>
-      </div>
-      <div class="card" id="c06">
-        <div class="ctop"><span class="cno">B-02</span><span class="bg soon">準備中</span></div>
-        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V6.5L12 3v18"/><path d="M12 10h7.5V21"/><path d="M7 9h2"/><path d="M7 13h2"/><path d="M7 17h2"/><path d="M15 14h2"/><path d="M15 18h2"/></svg></span><h3>パートナー説明会<br>募集ページ</h3></div>
-        <p class="cd">取り扱いを検討される会社向けの説明会です。既存のお客様にどう出すか、という話を中心にしています。</p>
-        <div class="cfoot"><span>公開時にこのページでご案内します</span><span class="go mute">準備中</span></div>
-      </div>
-      <div class="card" id="c07">
-        <div class="ctop"><span class="cno">B-03</span><span class="bg soon">準備中</span></div>
-        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="13" height="9.5" rx="1.2"/><path d="M9 14.5v3"/><path d="M6 17.5h6"/><path d="M18 9v12"/><path d="M18 9l3.2 1.6V21"/><path d="M2.5 21h19"/></svg></span><h3>パートナー説明会<br>投影資料</h3></div>
-        <p class="cd">説明会当日の投影資料です。話す順番と補足を併記します。</p>
-        <div class="cfoot"><span>公開時にこのページでご案内します</span><span class="go mute">準備中</span></div>
-      </div>
-      <div class="card" id="c08">
-        <div class="ctop"><span class="cno">B-04</span><span class="bg in">社内</span></div>
-        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 13a2 2 0 0 1-2 2h-7l-4 3.5V6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2z"/><path d="M12 8h5"/><path d="M12 11h3"/><path d="M4 10v9"/><path d="M4 19h4"/></svg></span><h3>パートナー向け<br>説明ノート</h3></div>
-        <p class="cd">取り扱いのご相談でいただくご質問の整理です。御社からお客様へご説明いただく際の補足も収録します。</p>
-        <div class="cfoot"><span>これから作成します</span><span class="go mute">作成前</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="blk" id="ref">
-  <div class="w">
-    <div class="shead">
-      <div class="sl"><span class="tk tk-c">C</span><h2>企画・社内資料</h2></div>
-      <span class="sn">C-01 — C-06</span>
-    </div>
-    <p class="sdesc">パックの考え方、適性診断の判定条件、そして案内ページと解説動画の指示書・台本です。<b>社内でのみ使うもので、検索には出ない設定にしています。</b>3点まとめた目次は <a href="https://deploy-sogyo-memo.vercel.app/">deploy-sogyo-memo.vercel.app</a> です。</p>
-
-    <div class="cards">
-      <div class="card flag lnk" id="c09">
-        <a class="clink" href="https://deploy-sogyo-memo.vercel.app/memo">企画メモを開く</a>
-        <div class="ctop"><span class="cno">C-01</span><span class="bg in">社内</span></div>
-        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H16l3 3v13.5A1.5 1.5 0 0 1 17.5 21h-11A1.5 1.5 0 0 1 5 19.5z"/><path d="M8.5 9h7"/><path d="M8.5 12.5h7"/><path d="M8.5 16h4"/></svg></span><h3>企画メモ</h3></div>
-        <p class="cd">パックの考え方を1本の流れで書いたものです。売上の式と、お客様をつくる側・商品をつくる側を行き来する考え方を収録しています。</p>
-        <div class="cfoot"><span>deploy-sogyo-memo.vercel.app／memo</span><span class="go">開く →</span></div>
-      </div>
-      <div class="card flag lnk" id="c10">
-        <a class="clink" href="https://deploy-sogyo-memo.vercel.app/spec">商品仕様を開く</a>
-        <div class="ctop"><span class="cno">C-02</span><span class="bg in">社内</span></div>
-        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13.5h6"/><path d="M9 17h4"/></svg></span><h3>商品仕様</h3></div>
-        <p class="cd">対象となる方、メニューの区分、これから決める項目の一覧です。未確定の項目は印を付けて残しています。</p>
-        <div class="cfoot"><span>deploy-sogyo-memo.vercel.app／spec</span><span class="go">開く →</span></div>
-      </div>
-      <div class="card flag lnk" id="c11">
-        <a class="clink" href="https://deploy-sogyo-memo.vercel.app/matrix">適合マトリクスを開く</a>
-        <div class="ctop"><span class="cno">C-03</span><span class="bg in">社内</span></div>
-        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="1.5"/><path d="M3.5 9.5h17"/><path d="M3.5 15h17"/><path d="M9.5 3.5v17"/></svg></span><h3>適合マトリクス</h3></div>
-        <p class="cd">適性診断の判定条件の正本です。13のサービスを「いますぐ／次に／当座は不要／対象外」へ振り分ける条件を定義しています。</p>
-        <div class="cfoot"><span>deploy-sogyo-memo.vercel.app／matrix</span><span class="go">開く →</span></div>
-      </div>
-      <div class="card flag lnk" id="c12">
-        <a class="clink" href="https://deploy-sogyo-memo.vercel.app/brief-page">案内ページ デザイン指示書を開く</a>
-        <div class="ctop"><span class="cno">C-04</span><span class="bg new">NEW</span> <span class="bg in">社内</span></div>
-        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H16l3 3v13.5A1.5 1.5 0 0 1 17.5 21h-11A1.5 1.5 0 0 1 5 19.5z"/><path d="M8.5 9h7"/><path d="M8.5 12.5h7"/><path d="M8.5 16h4"/></svg></span><h3>案内ページ<br>デザイン指示書</h3></div>
-        <p class="cd">「13のサービスを随時入れ替えて使える」を一点にした案内ページを、別のClaudeにデザインしてもらうための指示書です。</p>
-        <div class="cfoot"><span>deploy-sogyo-memo.vercel.app／brief-page</span><span class="go">開く →</span></div>
-      </div>
-      <div class="card flag lnk" id="c13">
-        <a class="clink" href="https://deploy-sogyo-memo.vercel.app/brief-video">10分解説動画 制作指示書を開く</a>
-        <div class="ctop"><span class="cno">C-05</span><span class="bg new">NEW</span> <span class="bg in">社内</span></div>
-        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4"/><path d="M8.5 20h7"/><path d="M8.5 12.5v-2"/><path d="M12 12.5v-4"/><path d="M15.5 12.5v-3"/></svg></span><h3>10分解説動画<br>制作指示書</h3></div>
-        <p class="cd">案内ページのCTAである解説動画の構成、使ってよい数字と出典、収録前に確認する4点をまとめています。</p>
-        <div class="cfoot"><span>deploy-sogyo-memo.vercel.app／brief-video</span><span class="go">開く →</span></div>
-      </div>
-      <div class="card flag lnk" id="c14">
-        <a class="clink" href="https://deploy-sogyo-memo.vercel.app/script">解説動画 収録台本を開く</a>
-        <div class="ctop"><span class="cno">C-06</span><span class="bg new">NEW</span> <span class="bg in">社内</span></div>
-        <div class="chead"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5a2 2 0 0 1-2 2H8.5L4.5 20V6a2 2 0 0 1 2-2h11.5a2 2 0 0 1 2 2z"/><path d="M8.5 9h8"/><path d="M8.5 12.5h5"/></svg></span><h3>解説動画<br>収録台本 v3</h3></div>
-        <p class="cd">読み上げ原稿、画面指示、なぜそう言うのかの解説。顧客のために言いにくいことも言う版です。読み上げ3,801字・約11分30秒。</p>
-        <div class="cfoot"><span>deploy-sogyo-memo.vercel.app／script</span><span class="go">開く →</span></div>
-      </div>
-    </div>
-  </div>
-</section>
+</main>
 
 <footer>
-  <div class="w">
-    <h2>このページについて</h2>
-    <p>創業支援パックに関する資料の一覧です。各資料は随時更新されるため、お手元に保存されたものではなく、このページからお開きください。更新があった資料には印を付けて、どこが変わったかを上部にまとめています。</p>
-    <p>記載内容に関するお問い合わせは、担当までご連絡ください。</p>
-    <div class="fl">
-      <span>創業支援パック 資料インデックス</span>
-      <span>最終更新 2026年9月22日</span>
-    </div>
-  </div>
+  <p>創業支援パック 資料インデックス</p>
+  <p>社内共有用の資料インデックスです。</p>
 </footer>
 
+<script>
+(function(){
+  function fallback(t){
+    var ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');
+    ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');}catch(e){}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll('.cp').forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.preventDefault();e.stopPropagation();
+      var u=btn.getAttribute('data-url');
+      var ok=function(){btn.textContent='コピー済み';btn.classList.add('done');
+        setTimeout(function(){btn.textContent='コピー';btn.classList.remove('done');},1600);};
+      if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){fallback(u);ok();});}
+      else{fallback(u);ok();}
+    });
+  });
+})();
+</script>
 </body>
 </html>
