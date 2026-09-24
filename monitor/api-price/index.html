@@ -541,7 +541,84 @@ h1, h2, h3, h4, h5,
       .final-cta { flex-direction: column; align-items: flex-start; }
     }
 
+    /* 社内用の計算メモ（?memo を付けたときだけボタンを表示） */
+    .memo-open {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 20;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 0 18px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--orange);
+      color: #fffdf8;
+      font: inherit;
+      font-size: 13.5px;
+      font-weight: 800;
+      box-shadow: 0 10px 30px rgba(20,37,31,.25);
+      cursor: pointer;
+    }
+
+    .memo-open[hidden] { display: none; }
+    .memo-open:hover { filter: brightness(.95); }
+
+    dialog.memo {
+      width: min(720px, calc(100% - 32px));
+      max-height: calc(100vh - 48px);
+      padding: 0;
+      border: 0;
+      border-radius: 16px;
+      background: var(--surface);
+      color: var(--ink);
+      box-shadow: 0 30px 80px rgba(20,37,31,.35);
+    }
+
+    dialog.memo::backdrop { background: rgba(20,37,31,.45); }
+
+    .memo-head {
+      position: sticky;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 22px;
+      border-bottom: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .memo-head h2 { font-size: 18px; letter-spacing: -.01em; }
+    .memo-head p { margin: 2px 0 0; color: var(--orange); font-size: 12px; font-weight: 800; }
+
+    .memo-close {
+      flex: none;
+      min-height: 36px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .memo-body { padding: 6px 22px 24px; font-size: 14px; }
+    .memo-body h3 { margin: 22px 0 8px; font-size: 15px; font-weight: 800; }
+    .memo-body h3 span { margin-left: 8px; padding: 1px 8px; border-radius: 4px; background: var(--green-soft); color: var(--green); font-size: 11.5px; }
+    .memo-body h3 span.x1 { background: var(--orange-soft); color: var(--orange); }
+    .memo-body table { min-width: 0; font-size: 13.5px; }
+    .memo-body th, .memo-body td { padding: 8px 10px; }
+    .memo-body ul { margin: 8px 0 0; padding-left: 1.2em; color: var(--ink-soft); line-height: 1.85; }
+    .memo-body .todo li { color: var(--ink); }
+
     @media print {
+      .memo-open, dialog.memo { display: none !important; }
       .site-header, .final-cta { display: none; }
       body { background: #fff; }
       .card, .plan { box-shadow: none; break-inside: avoid; }
@@ -918,6 +995,104 @@ h1, h2, h3, h4, h5,
     <span>2026年9月時点の内容です。料金・提供条件は変更される場合があります。</span>
   </div>
 </footer>
+
+<!-- 社内用の計算メモ。URLに ?memo を付けたときだけ右下にボタンが出る。お客様向けの表示には出さない -->
+<button class="memo-open" type="button" id="memo-open" hidden>計算メモ</button>
+
+<dialog class="memo" id="memo" aria-labelledby="memo-title">
+  <div class="memo-head">
+    <div>
+      <h2 id="memo-title">いまの料金の計算メモ</h2>
+      <p>社内用（2026年9月24日時点）</p>
+    </div>
+    <button class="memo-close" type="button" id="memo-close">閉じる</button>
+  </div>
+  <div class="memo-body">
+
+    <h3>共通の前提</h3>
+    <ul>
+      <li>1か月＝21営業日（平日のみ・祝日は差し引かない）。Elliotの最低料金だけ30日</li>
+      <li>スーパーマネージャーは1商談1時間・1ドル155円換算</li>
+      <li>ページの金額は「約」を付けてキリよく丸めている</li>
+    </ul>
+
+    <h3>スーパーマネージャー<span>原価×2</span></h3>
+    <div class="t-wrap">
+      <table>
+        <thead><tr><th>項目</th><th class="r">原価</th><th class="r">×2</th><th class="r">ページの表示</th></tr></thead>
+        <tbody>
+          <tr><td>録音ボット（9/20にMeetStreamへ切替）</td><td class="n r">54円／時間</td><td class="n r">108円</td><td class="n r">約110円</td></tr>
+          <tr><td>文字起こし（9/13に切替）</td><td class="n r">19円／時間</td><td class="n r">38円</td><td class="n r">約40円</td></tr>
+          <tr><td>商談中のAIアドバイス</td><td class="n r">28円</td><td class="n r">56円</td><td class="n r">約55円</td></tr>
+          <tr><td>商談後サマリー</td><td class="n r">2円</td><td class="n r">4円</td><td class="n r">約5円</td></tr>
+          <tr class="total"><td>同席のみ 合計</td><td class="n r">103円</td><td class="n r">206円</td><td class="n r">約200〜250円</td></tr>
+          <tr><td>ヒアリングチェック自動判定</td><td class="n r">46円／時間</td><td class="n r">92円</td><td class="n r">約90円</td></tr>
+          <tr><td>事前ヒアリング一式</td><td class="n r">11円</td><td class="n r">22円</td><td class="n r">約20円</td></tr>
+          <tr><td>中締めレポート（1回）</td><td class="n r">5円</td><td class="n r">10円</td><td class="n r">約10円</td></tr>
+          <tr><td>勝手にフォロー（1通・推計）＋予約・送信</td><td class="n r">11円</td><td class="n r">22円</td><td class="n r">約20円</td></tr>
+          <tr class="total"><td>オプション 合計</td><td class="n r">73円</td><td class="n r">146円</td><td class="n r">約150円</td></tr>
+          <tr class="total"><td>オプション付き（全機能）</td><td class="n r">176円</td><td class="n r">352円</td><td class="n r">約350〜400円</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul>
+      <li>1商談の表示は、×2の金額を下の端にして50円の幅を付けている（上の端は原価の約2.3〜2.4倍）</li>
+      <li>1か月の表示は「1商談の幅 × 回数」。例：月40回・同席のみ＝200〜250円×40＝約8,000〜10,000円</li>
+    </ul>
+
+    <h3>ワークログ・インサイト<span>原価×2</span></h3>
+    <ul>
+      <li>原価2,000円／ID × 2 ＝ 4,000円／ID・月</li>
+    </ul>
+
+    <h3>Elliot<span class="x1">倍率なし（売価そのまま）</span></h3>
+    <ul>
+      <li>ログ1件15円：元資料の見積の売価（実績換算は10〜13円）。原価は未確認</li>
+      <li>最低料金1日72円：売価として受領。30日で2,160円 → 表示は約2,200円</li>
+      <li>1か月の料金 ＝「ログ件数×15円」と「2,160円」の高いほう（足し算ではない前提）</li>
+      <li>標準の想定：1日5ログ×30日＝150件＝2,250円 → 表示は約2,300円</li>
+      <li>毎日のメール配信・月1回のレポート生成は、最低料金に含む前提</li>
+    </ul>
+
+    <h3>Jマッチ・エンジン<span class="x1">倍率なし（通数単価ルール）</span></h3>
+    <div class="t-wrap">
+      <table>
+        <thead><tr><th>その月の合計通数</th><th class="r">1通あたり</th></tr></thead>
+        <tbody>
+          <tr><td>3,000通まで</td><td class="n r">1円</td></tr>
+          <tr><td>3,001〜10,000通</td><td class="n r">0.5円</td></tr>
+          <tr><td>10,001通以上</td><td class="n r">0.2円</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul>
+      <li>合計通数で単価を決め、全通数にその単価をかける（段階ごとの積み上げではない）</li>
+      <li>境目の3,000通・10,000通は上の段（1円・0.5円）に含める</li>
+      <li>ページには単価を出さず、「◯通でAPI利用料 約◯円」だけを表示</li>
+      <li>参考：原価は1通 約0.0155円（1,000通で15.5円）</li>
+    </ul>
+
+    <h3>未確認のこと</h3>
+    <ul class="todo">
+      <li>Elliot：ログ1件15円の原価</li>
+      <li>Elliot：最低料金は「高いほう」か「基本料金＋ログ料金」か</li>
+      <li>Elliot：メール配信・レポート生成に別の料金がかかるか</li>
+      <li>Jマッチ：3,000通→5,000通などで金額が下がる逆転をそのままにするか</li>
+    </ul>
+  </div>
+</dialog>
+
+<script>
+  (() => {
+    if (!new URLSearchParams(location.search).has('memo')) return;
+    const open = document.getElementById('memo-open');
+    const dialog = document.getElementById('memo');
+    open.hidden = false;
+    open.addEventListener('click', () => dialog.showModal());
+    document.getElementById('memo-close').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+  })();
+</script>
 
 </body>
 </html>
