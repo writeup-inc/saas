@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<!-- 資料インデックスの一覧（service-pack の各商材インデックスへの入口）。数字は 2026-09-24 時点の各インデックスから集計 -->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>資料インデックス一覧｜10商材</title>
+<meta name="description" content="商材ごとの資料インデックス10本を1ページにまとめた一覧。直販・OEM・その他の資料へ、ここから入れます。">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://writeup-inc.github.io/saas/pack-indexes/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="資料インデックス一覧｜10商材">
+<meta property="og:description" content="商材ごとの資料インデックス10本の入口。">
+<meta property="og:url" content="https://writeup-inc.github.io/saas/pack-indexes/">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* lp-base.css — 日本語LP／HTML成果物の初期CSS
+ *
+ * 品質台帳（~/Documents/Codex/loop-engineering-memory/events.jsonl）で
+ * 再発が確認された表示欠陥を、指摘ではなく初期値で潰すためのファイル。
+ * 対応する欠陥ID:
+ *   japanese-heading-midword-wrap（見出しが単語途中で改行）11回
+ *   mobile-fv-headline-wrap（モバイルFVの見出し改行）3回
+ *   mobile-fixed-cta-overlap（固定CTAが本文を隠す）3回
+ *   meaningful-small-text-under-readable-size（意味のある文字が可読サイズ未満）5回
+ *
+ * 使い方: HTMLの<style>先頭にこの内容を貼る。色・書体・余白は各LPで上書きしてよいが、
+ * 下の「改行制御」「最小文字サイズ」「固定CTAの逃げ」の3ブロックは消さないこと。
+ */
+
+/* ── 改行制御 ─────────────────────────────────────────────
+ * 日本語は単語区切りが無いため、既定のままだと文節の途中で折り返す。
+ * auto-phrase は文節単位で折る（Chrome 119+）。非対応環境は strict で逃がす。 */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] {
+    word-break: normal;
+  }
+}
+/* 明示的に折りたくない語の途中で切られたら、その語を <span class="nobr"> で包む */
+.nobr { white-space: nowrap; }
+
+/* ── 最小文字サイズ ───────────────────────────────────────
+ * 判断材料になる文字は12px未満にしない。注記・免責のみ .note を許容。 */
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+
+/* ── ファーストビューの見出し ─────────────────────────────
+ * 固定pxだと狭い画面で必ず折り返す。clamp で画面幅に追従させる。 */
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+
+/* ── 固定CTAの逃げ ────────────────────────────────────────
+ * 画面下に固定CTAを置くページは、この変数を実測の高さに書き換える。
+ * 置かないページはそのままでよい（0のまま）。 */
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+
+/* ── 横はみ出しの予防 ─────────────────────────────────────
+ * flex/grid の子は既定で min-width:auto のため、長い語で親を押し広げる。 */
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+
+/* ===== トークン（各資料インデックスと同じ） ===== */
+:root{
+  --ink:#10151c; --tx:#262d36; --g1:#4a525d; --g2:#626b76; --g3:#848c96;
+  --ln:#e3e6ea; --ln2:#f0f2f4; --bg:#f7f8fa;
+  --oem:#0f6b56; --oem-l:#eaf4f0; --dir:#1f4f9a; --dir-l:#ecf2fa; --etc:#4d5561; --etc-l:#f1f2f4;
+  --acc:#1f4f9a;
+  --sans:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+  --num:Inter,"Helvetica Neue",Arial,sans-serif;
+}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:var(--tx);font-family:var(--sans);line-height:1.85;letter-spacing:.015em;font-feature-settings:"palt" 1;-webkit-font-smoothing:antialiased}
+.w{max-width:1040px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+a{color:inherit} p{margin:0}
+.en{font-family:var(--num);font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+
+/* ===== ヒーロー ===== */
+.hero{padding:clamp(72px,11vw,136px) 0 clamp(48px,7vw,80px);text-align:center;background:radial-gradient(ellipse 60% 80% at 50% 45%,#fff 0,#fff 40%,var(--dir-l) 100%)}
+.hero .en{display:block;font-size:14px;color:var(--acc)}
+.hero h1{margin:14px 0 0;font-weight:900;letter-spacing:-.03em;line-height:1.2;color:var(--ink);font-size:clamp(2rem,7vw,4.4rem)}
+.hero .rule{display:block;width:48px;height:3px;margin:24px auto 0;border-radius:2px;background:var(--acc)}
+.hero .meta{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 22px;margin:20px 0 0;font-size:15px;color:var(--g2)}
+.hero .meta b{font-family:var(--num);font-size:17px;color:var(--ink)}
+
+/* ===== 読み方 ===== */
+.how{padding:clamp(32px,4vw,44px) 0 8px}
+.keys{display:flex;flex-wrap:wrap;gap:10px 22px;margin:0;padding:0;list-style:none;font-size:15px;color:var(--g1)}
+.keys li{display:inline-flex;align-items:center;gap:8px}
+.cat{display:inline-block;min-width:3.2em;padding:0 8px;border-radius:4px;font-family:var(--num);font-size:13px;font-weight:800;line-height:1.9;text-align:center;color:#fff}
+.cat.a{background:var(--dir)} .cat.b{background:var(--oem)} .cat.c{background:var(--etc)}
+.how p{margin-top:10px;font-size:15px;color:var(--g2)}
+
+/* ===== 一覧 ===== */
+.list{padding:clamp(20px,3vw,32px) 0 clamp(56px,7vw,88px)}
+.tools{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin:0 0 12px}
+.tools h2{margin:0;font-size:clamp(1.3rem,2.4vw,1.6rem);font-weight:900;color:var(--ink)}
+.all{min-height:44px;padding:0 18px;border:1.5px solid var(--acc);border-radius:999px;background:#fff;color:var(--acc);font:700 15px/1 var(--sans);cursor:pointer;transition:background .18s,color .18s}
+.all:hover,.all.ok{background:var(--acc);color:#fff}
+ol.rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--ln)}
+.row{border-bottom:1px solid var(--ln)}
+.lk{display:grid;grid-template-columns:2.4em minmax(0,1fr) 220px 6.5em 1.2em;align-items:center;gap:18px;padding:18px 8px 6px;text-decoration:none;transition:background .18s}
+.lk:hover{background:var(--bg)}
+.lk:hover .arr{translate:4px 0}
+.no{font-family:var(--num);font-size:15px;font-weight:800;color:var(--g3)}
+.main{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
+.nm{font-size:clamp(1.1rem,2vw,1.3rem);font-weight:900;color:var(--ink);line-height:1.5}
+.g{font-size:14px;font-weight:700;color:var(--g2)}
+.st{display:flex;flex-direction:column;gap:4px}
+.bar{display:block;height:6px;border-radius:3px;background:var(--ln2);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:3px;background:var(--oem)}
+.cnt{font-size:14px;color:var(--g2)}
+.cnt b{font-family:var(--num);font-size:16px;color:var(--ink)}
+.dt{font-size:14px;color:var(--g2);text-align:right}
+.dt time{font-family:var(--num);font-weight:700;color:var(--g1)}
+.arr{font-weight:700;color:var(--acc);transition:translate .18s}
+.urlrow{display:flex;align-items:center;gap:10px;padding:0 8px 14px calc(2.4em + 26px)}
+.url{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--num);font-size:13px;color:var(--g3)}
+.cp{flex:none;min-height:36px;min-width:64px;padding:0 12px;border:1px solid var(--ln);border-radius:6px;background:#fff;color:var(--g1);font:700 13px/1 var(--sans);cursor:pointer}
+.cp:hover{border-color:var(--g3)}
+.cp.ok{border-color:var(--oem);color:var(--oem)}
+.foot{padding:28px 0 48px;border-top:1px solid var(--ln2);font-size:13px;color:var(--g3)}
+.foot a{color:var(--g1)}
+
+@media (max-width:760px){
+  .lk{grid-template-columns:2em minmax(0,1fr) 1em;gap:4px 12px;padding-top:16px}
+  .st{grid-column:2/3;margin-top:6px}
+  .dt{grid-column:2/3;text-align:left}
+  .arr{grid-row:1;grid-column:3}
+  .urlrow{padding-left:calc(2em + 20px)}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="w">
+    <span class="en">Document Index</span>
+    <h1>資料インデックス一覧</h1>
+    <span class="rule" aria-hidden="true"></span>
+    <p class="meta"><span>商材 <b>10</b></span><span>資料 <b>149</b>点</span><span>いま開ける <b>104</b>点</span><span><b>09.24</b> 時点</span></p>
+  </div>
+</header>
+
+<main>
+  <section class="how" aria-label="記号の読み方">
+    <div class="w">
+      <ul class="keys">
+        <li><span class="cat a">A</span>直販（使う会社へ）</li>
+        <li><span class="cat b">B</span>OEM（売る会社へ）</li>
+        <li><span class="cat c">C</span>その他</li>
+      </ul>
+      <p>各インデックスの中は、この3つの区画に分かれています。「開ける」は、いまリンクから開ける資料の数です。残りは準備中か、社内限定です。</p>
+    </div>
+  </section>
+
+  <section class="list" aria-labelledby="list-h">
+    <div class="w">
+      <div class="tools">
+        <h2 id="list-h">商材ごとの入口</h2>
+        <button type="button" class="all" id="copyAll">10本のURLをまとめてコピー</button>
+      </div>
+      <ol class="rows">
+    <li class="row">
+      <a class="lk" href="https://writeup-inc.github.io/saas/aio-master-pack/"><span class="no">01</span>
+        <span class="main"><span class="nm">AIOマスター</span><span class="g">AI検索対策</span></span>
+        <span class="st"><span class="bar" aria-hidden="true"><i style="width:55%"></i></span><span class="cnt">開ける <b>6</b> / 11点</span></span>
+        <span class="dt"><time>09.24</time> 更新</span>
+        <span class="arr" aria-hidden="true">→</span></a>
+      <div class="urlrow"><span class="url">writeup-inc.github.io/saas/aio-master-pack/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/aio-master-pack/" data-name="AIOマスター">コピー</button></div>
+    </li>
+    <li class="row">
+      <a class="lk" href="https://writeup-inc.github.io/saas/sogyo-index/"><span class="no">02</span>
+        <span class="main"><span class="nm">創業支援パック</span><span class="g">創業支援</span></span>
+        <span class="st"><span class="bar" aria-hidden="true"><i style="width:56%"></i></span><span class="cnt">開ける <b>9</b> / 16点</span></span>
+        <span class="dt"><time>09.24</time> 更新</span>
+        <span class="arr" aria-hidden="true">→</span></a>
+      <div class="urlrow"><span class="url">writeup-inc.github.io/saas/sogyo-index/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/sogyo-index/" data-name="創業支援パック">コピー</button></div>
+    </li>
+    <li class="row">
+      <a class="lk" href="https://writeup-inc.github.io/saas/omakase-juden-pack/"><span class="no">03</span>
+        <span class="main"><span class="nm">おまかせ受電AI</span><span class="g">電話受付</span></span>
+        <span class="st"><span class="bar" aria-hidden="true"><i style="width:40%"></i></span><span class="cnt">開ける <b>4</b> / 10点</span></span>
+        <span class="dt"><time>09.24</time> 更新</span>
+        <span class="arr" aria-hidden="true">→</span></a>
+      <div class="urlrow"><span class="url">writeup-inc.github.io/saas/omakase-juden-pack/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/omakase-juden-pack/" data-name="おまかせ受電AI">コピー</button></div>
+    </li>
+    <li class="row">
+      <a class="lk" href="https://writeup-inc.github.io/saas/jmatch-engine/"><span class="no">04</span>
+        <span class="main"><span class="nm">Jマッチエンジン</span><span class="g">事業計画</span></span>
+        <span class="st"><span class="bar" aria-hidden="true"><i style="width:94%"></i></span><span class="cnt">開ける <b>17</b> / 18点</span></span>
+        <span class="dt"><time>09.24</time> 更新</span>
+        <span class="arr" aria-hidden="true">→</span></a>
+      <div class="urlrow"><span class="url">writeup-inc.github.io/saas/jmatch-engine/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/jmatch-engine/" data-name="Jマッチエンジン">コピー</button></div>
+    </li>
+    <li class="row">
+      <a class="lk" href="https://writeup-inc.github.io/saas/worklog-insight/"><span class="no">05</span>
+        <span class="main"><span class="nm">ワークログ・インサイト</span><span class="g">業務分析</span></span>
+        <span class="st"><span class="bar" aria-hidden="true"><i style="width:91%"></i></span><span class="cnt">開ける <b>10</b> / 11点</span></span>
+        <span class="dt"><time>09.24</time> 更新</span>
+        <span class="arr" aria-hidden="true">→</span></a>
+      <div class="urlrow"><span class="url">writeup-inc.github.io/saas/worklog-insight/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/worklog-insight/" data-name="ワークログ・インサイト">コピー</button></div>
+    </li>
+    <li class="row">
+      <a class="lk" href="https://writeup-inc.github.io/saas/lsync-pack/"><span class="no">06</span>
+        <span class="main"><span class="nm">Lシンク</span><span class="g">LINE AI</span></span>
+        <span class="st"><span class="bar" aria-hidden="true"><i style="width:84%"></i></span><span class="cnt">開ける <b>21</b> / 25点</span></span>
+        <span class="dt"><time>09.24</time> 更新</span>
+        <span class="arr" aria-hidden="true">→</span></a>
+      <div class="urlrow"><span class="url">writeup-inc.github.io/saas/lsync-pack/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/lsync-pack/" data-name="Lシンク">コピー</button></div>
+    </li>
+    <li class="row">
+      <a class="lk" href="https://writeup-inc.github.io/saas/social-master-pack/"><span class="no">07</span>
+        <span class="main"><span class="nm">ソーシャルマスター</span><span class="g">SNS運用</span></span>
+        <span class="st"><span class="bar" aria-hidden="true"><i style="width:64%"></i></span><span class="cnt">開ける <b>9</b> / 14点</span></span>
+        <span class="dt"><time>09.24</time> 更新</span>
+        <span class="arr" aria-hidden="true">→</span></a>
+      <div class="urlrow"><span class="url">writeup-inc.github.io/saas/social-master-pack/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/social-master-pack/" data-name="ソーシャルマスター">コピー</button></div>
+    </li>
+    <li class="row">
+      <a class="lk" href="https://writeup-inc.github.io/saas/super-manager-pack/"><span class="no">08</span>
+        <span class="main"><span class="nm">スーパーマネージャー</span><span class="g">営業AI</span></span>
+        <span class="st"><span class="bar" aria-hidden="true"><i style="width:74%"></i></span><span class="cnt">開ける <b>17</b> / 23点</span></span>
+        <span class="dt"><time>09.24</time> 更新</span>
+        <span class="arr" aria-hidden="true">→</span></a>
+      <div class="urlrow"><span class="url">writeup-inc.github.io/saas/super-manager-pack/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/super-manager-pack/" data-name="スーパーマネージャー">コピー</button></div>
+    </li>
+    <li class="row">
+      <a class="lk" href="https://writeup-inc.github.io/saas/tsubame-lead-pack/"><span class="no">09</span>
+        <span class="main"><span class="nm">つばめリード</span><span class="g">フォーム営業</span></span>
+        <span class="st"><span class="bar" aria-hidden="true"><i style="width:85%"></i></span><span class="cnt">開ける <b>11</b> / 13点</span></span>
+        <span class="dt"><time>09.23</time> 更新</span>
+        <span class="arr" aria-hidden="true">→</span></a>
+      <div class="urlrow"><span class="url">writeup-inc.github.io/saas/tsubame-lead-pack/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/tsubame-lead-pack/" data-name="つばめリード">コピー</button></div>
+    </li>
+    <li class="row">
+      <a class="lk" href="https://writeup-inc.github.io/saas/jev-solution/"><span class="no">10</span>
+        <span class="main"><span class="nm">Jevソリューション</span><span class="g">判断特化AI</span></span>
+        <span class="st"><span class="bar" aria-hidden="true"><i style="width:0%"></i></span><span class="cnt">開ける <b>0</b> / 8点</span></span>
+        <span class="dt"><time>09.21</time> 更新</span>
+        <span class="arr" aria-hidden="true">→</span></a>
+      <div class="urlrow"><span class="url">writeup-inc.github.io/saas/jev-solution/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/jev-solution/" data-name="Jevソリューション">コピー</button></div>
+    </li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="w">
+    <p>並びは最終更新の新しい順です。資料の追加や公開は、各インデックスのお知らせ欄に載ります。<a href="../">商材一覧へ</a></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  function copy(text, btn, done){
+    function ok(){ var t=btn.textContent; btn.textContent=done; btn.classList.add('ok'); setTimeout(function(){btn.textContent=t; btn.classList.remove('ok');},1600); }
+    if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(ok,function(){fallback();}); } else { fallback(); }
+    function fallback(){ var ta=document.createElement('textarea'); ta.value=text; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy'); ok();}catch(e){} document.body.removeChild(ta); }
+  }
+  document.querySelectorAll('.cp').forEach(function(b){ b.addEventListener('click',function(){ copy(b.dataset.url,b,'済み'); }); });
+  var all=document.getElementById('copyAll');
+  all.addEventListener('click',function(){
+    var lines=['資料インデックス一覧 '+location.href.split('#')[0]+' ',''];
+    document.querySelectorAll('.cp').forEach(function(b){ lines.push(b.dataset.name+'：'+b.dataset.url+' '); });
+    copy(lines.join('\n'),all,'コピーしました');
+  });
+})();
+</script>
+</body>
+</html>
