@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://writeup-inc.github.io/saas/super-manager-direct/">
+<title>スーパーマネージャー ｜ 営業マン一人に、上司を一人。</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700;800;900&family=Inter:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1e3a5f;
+  --navy-deep:#152a47;
+  --green:#22c55e;
+  --green-light:#4ade80;
+  --green-subtle:#f0fdf4;
+  --warm:#f8f9fb;
+  --text:#374151;
+  --text-light:#6b7280;
+  --border:#e5e7eb;
+  --border-light:#f1f3f5;
+  --radius:16px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Noto Sans JP",sans-serif;
+  color:var(--text);
+  background:#fff;
+  line-height:1.9;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+/* 明朝は「AI上司が一人称で語る」箇所だけ */
+.serif{font-family:"Shippori Mincho",serif;}
+/* 営業の勢い＝主要語のグリーンマーカー */
+.mk{background:linear-gradient(transparent 58%,rgba(34,197,94,.34) 58%);padding:0 .05em;}
+.wrap{max-width:1150px;margin:0 auto;padding:0 40px;}
+a{color:inherit;text-decoration:none;}
+
+/* ---------- HEADER ---------- */
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,.86);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border-light);
+}
+.header-inner{
+  max-width:1150px;margin:0 auto;padding:14px 40px;
+  display:flex;align-items:center;gap:28px;
+}
+.logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:17px;color:var(--navy);}
+.logo-mark{
+  position:relative;width:44px;height:44px;border-radius:12px;
+  background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.logo-mark svg{width:24px;height:24px;}
+.logo-dot{position:absolute;right:-3px;bottom:-3px;width:12px;height:12px;border-radius:50%;background:var(--green);border:2px solid #fff;}
+.nav{display:flex;gap:26px;margin-left:auto;font-size:14.5px;font-weight:600;color:var(--text-light);}
+.nav a:hover{color:var(--navy);}
+.header-cta{
+  background:var(--navy);color:#fff;padding:11px 22px;border-radius:10px;
+  font-size:14px;font-weight:700;white-space:nowrap;transition:.2s;
+}
+.header-cta:hover{background:var(--navy-deep);}
+
+/* ---------- SECTION LABEL（小見出し・強調版） ---------- */
+.slabel{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:"Inter",sans-serif;font-size:13px;font-weight:800;letter-spacing:.18em;
+  color:var(--navy);text-transform:uppercase;margin-bottom:18px;
+}
+.slabel::before{content:"";width:26px;height:3px;background:var(--green);border-radius:2px;}
+
+/* ---------- HERO ---------- */
+.hero{padding:78px 40px 108px;max-width:1150px;margin:0 auto;}
+.hero-inner{display:grid;grid-template-columns:1.25fr 1fr;gap:44px;align-items:center;}
+.eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:26px;}
+.eyebrow-line{width:40px;height:1px;background:var(--green);}
+.eyebrow-text{font-family:"Inter",sans-serif;font-size:12px;font-weight:800;letter-spacing:.2em;color:var(--text-light);text-transform:uppercase;}
+.hero h1{font-weight:900;font-size:54px;line-height:1.28;color:var(--navy);letter-spacing:-.015em;}
+.hero h1 .accent{color:var(--green);}
+.hero-sub{font-weight:800;font-size:23px;color:var(--navy-deep);margin-top:22px;line-height:1.6;}
+.hero-desc{font-size:15.5px;color:var(--text);margin-top:22px;max-width:530px;line-height:2;}
+.hero-desc strong{color:var(--navy);font-weight:700;}
+.hero-cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px;align-items:center;}
+.btn-primary{
+  background:var(--green);color:#fff;padding:17px 32px;border-radius:12px;
+  font-size:16px;font-weight:800;display:inline-flex;align-items:center;gap:10px;transition:.2s;
+  box-shadow:0 6px 18px rgba(34,197,94,.3);
+}
+.btn-primary:hover{background:var(--green-light);transform:translateY(-2px);}
+.btn-ghost{
+  background:#fff;color:var(--navy);padding:16px 26px;border-radius:12px;
+  font-size:15px;font-weight:700;border:1.5px solid var(--border);transition:.2s;
+}
+.btn-ghost:hover{border-color:var(--navy);background:var(--warm);}
+.btn-text{font-size:14.5px;font-weight:700;color:var(--text-light);padding:16px 6px;transition:.2s;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--border);}
+.btn-text:hover{color:var(--navy);text-decoration-color:var(--navy);}
+.hero-note{font-size:13px;color:var(--text-light);margin-top:16px;line-height:1.8;}
+
+/* video placeholder */
+.video-frame{
+  position:relative;width:100%;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;
+  background:linear-gradient(135deg,#243b5c,#1a2c47);border:1px solid var(--border);
+  box-shadow:0 18px 44px rgba(30,58,95,.22);display:flex;align-items:center;justify-content:center;cursor:pointer;
+}
+.video-frame::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 30% 30%,rgba(34,197,94,.16),transparent 45%),
+    radial-gradient(circle at 75% 70%,rgba(74,222,128,.12),transparent 45%);
+}
+.play-btn{
+  position:relative;width:78px;height:78px;border-radius:50%;
+  background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 24px rgba(0,0,0,.25);transition:.2s;
+}
+.video-frame:hover .play-btn{transform:scale(1.06);}
+.play-btn svg{width:27px;height:27px;margin-left:4px;}
+.video-badge{
+  position:absolute;top:14px;left:14px;background:rgba(0,0,0,.5);color:#fff;
+  font-size:12px;font-weight:700;padding:6px 13px;border-radius:6px;letter-spacing:.05em;
+}
+.video-caption{position:absolute;bottom:14px;left:16px;color:rgba(255,255,255,.92);font-size:14px;font-weight:600;}
+
+/* ---------- GREETING ---------- */
+.greeting{background:var(--warm);border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);}
+.greeting-inner{max-width:1150px;margin:0 auto;padding:72px 40px;display:flex;gap:44px;align-items:center;}
+.greeting-avatar{flex-shrink:0;width:150px;height:150px;}
+.greeting-name{font-family:"Inter",sans-serif;font-size:13px;font-weight:800;letter-spacing:.16em;color:var(--green);text-transform:uppercase;margin-bottom:14px;}
+.greeting-text{font-family:"Shippori Mincho",serif;font-size:20px;line-height:2;color:var(--navy-deep);}
+.greeting-text strong{color:var(--navy);font-weight:700;}
+
+/* ---------- SECTION COMMON ---------- */
+section.block{padding:108px 0;}
+.two-col{display:grid;grid-template-columns:320px 1fr;gap:80px;}
+.two-col-left{position:sticky;top:100px;align-self:start;}
+.two-col-title{font-weight:900;font-size:40px;color:var(--navy);line-height:1.4;letter-spacing:-.02em;}
+.two-col-title small{display:block;font-weight:500;font-size:15px;color:var(--text-light);margin-top:20px;line-height:1.95;}
+
+/* ---------- WHY / TIMELINE ---------- */
+.why-lead{font-size:16.5px;line-height:2.05;margin-bottom:40px;color:var(--text);}
+.why-lead b{color:var(--navy);font-weight:700;}
+.timeline{position:relative;margin-top:10px;}
+.tl-phase{margin-bottom:14px;}
+.tl-head{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+.tl-badge{
+  font-family:"Inter",sans-serif;font-size:12px;font-weight:800;letter-spacing:.1em;
+  background:var(--navy);color:#fff;padding:7px 15px;border-radius:20px;text-transform:uppercase;
+}
+.tl-phase-title{font-weight:800;font-size:19px;color:var(--navy-deep);letter-spacing:-.01em;}
+.tl-card{
+  border:1px solid var(--border);border-left:3px solid var(--green);border-radius:12px;
+  padding:20px 24px;background:#fff;margin-left:8px;transition:.2s;
+  display:flex;gap:16px;align-items:flex-start;
+}
+.tl-card:hover{box-shadow:0 8px 22px rgba(30,58,95,.08);transform:translateX(3px);}
+.tl-mini{
+  width:40px;height:40px;border-radius:11px;background:var(--green-subtle);border:1px solid #d1fae5;
+  display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;
+}
+.tl-mini svg{width:22px;height:22px;stroke:var(--navy);}
+.tl-card-name{font-weight:800;color:var(--navy);font-size:17px;margin-bottom:6px;}
+.tl-card-name span{font-size:12.5px;color:var(--green);font-weight:700;margin-left:8px;}
+.tl-card-desc{font-size:14.5px;color:var(--text-light);line-height:1.85;}
+.tl-connector{width:2px;height:24px;background:var(--border);margin:0 0 14px 35px;border-radius:2px;}
+.tl-during{border:1px dashed var(--border);border-radius:12px;padding:8px 8px 8px 10px;background:var(--green-subtle);margin-left:8px;}
+.tl-during .tl-card{margin-left:0;margin-bottom:8px;background:#fff;}
+.tl-during .tl-card:last-child{margin-bottom:0;}
+.tl-during-label{font-size:13px;font-weight:700;color:var(--text-light);padding:8px 8px 10px;letter-spacing:.02em;}
+
+/* ---------- SERVICES ---------- */
+.services{background:var(--warm);border-top:1px solid var(--border-light);}
+.svc-intro{text-align:center;max-width:700px;margin:0 auto 66px;}
+.svc-intro .slabel{justify-content:center;}
+.svc-intro h2{font-weight:900;font-size:40px;color:var(--navy);line-height:1.4;margin-bottom:20px;letter-spacing:-.02em;}
+.svc-intro p{font-size:15.5px;color:var(--text-light);line-height:2;}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+.svc-card{
+  background:#fff;border:1px solid var(--border);border-radius:var(--radius);
+  padding:36px 34px;display:flex;flex-direction:column;transition:.25s;
+}
+.svc-card:hover{box-shadow:0 16px 44px rgba(30,58,95,.11);transform:translateY(-4px);border-color:#dbeafe;}
+.svc-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
+.svc-icon{
+  width:56px;height:56px;border-radius:16px;background:var(--navy);
+  display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0;
+}
+.svc-icon svg{width:30px;height:30px;}
+.svc-icon .idot{position:absolute;right:-5px;bottom:-5px;width:16px;height:16px;border-radius:50%;background:var(--green);border:3px solid #fff;}
+.svc-num{font-family:"Inter",sans-serif;font-size:34px;font-weight:900;color:var(--border);letter-spacing:.02em;line-height:1;}
+.svc-phase-tag{
+  display:inline-block;font-size:12.5px;font-weight:700;color:var(--navy);
+  background:var(--green-subtle);border:1px solid #d1fae5;padding:4px 12px;border-radius:20px;margin-bottom:14px;
+}
+.svc-name{font-weight:800;font-size:22px;color:var(--navy);margin-bottom:8px;letter-spacing:-.01em;}
+.svc-role{font-weight:800;font-size:18.5px;color:var(--green);margin-bottom:20px;line-height:1.55;letter-spacing:-.01em;}
+.svc-points{list-style:none;margin-bottom:26px;}
+.svc-points li{position:relative;padding-left:26px;font-size:15px;color:var(--text);line-height:1.8;margin-bottom:11px;}
+.svc-points li::before{content:"";position:absolute;left:2px;top:9px;width:9px;height:9px;border-radius:50%;background:var(--green);}
+.svc-links{margin-top:auto;padding-top:20px;border-top:1px solid var(--border-light);}
+.svc-link{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  text-align:center;font-size:15px;font-weight:700;padding:14px 8px;border-radius:10px;transition:.2s;
+  background:var(--navy);color:#fff;
+}
+.svc-link:hover{background:var(--navy-deep);}
+.svc-link svg{width:16px;height:16px;}
+
+/* ---------- PRICING ---------- */
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:10px;}
+.price-card{border:1px solid var(--border);border-radius:var(--radius);padding:40px 36px;background:#fff;position:relative;transition:.2s;}
+.price-card.enterprise{border:2px solid var(--green);box-shadow:0 12px 34px rgba(34,197,94,.14);}
+.price-flag{position:absolute;top:-14px;left:36px;background:var(--green);color:#fff;font-size:13px;font-weight:800;padding:6px 18px;border-radius:20px;}
+.price-door{font-family:"Inter",sans-serif;font-size:12.5px;font-weight:800;letter-spacing:.14em;color:var(--text-light);text-transform:uppercase;margin-bottom:10px;}
+.price-target{font-weight:800;font-size:23px;color:var(--navy);margin-bottom:24px;letter-spacing:-.01em;}
+.price-main{display:flex;align-items:baseline;gap:4px;margin-bottom:6px;}
+.price-num{font-family:"Inter",sans-serif;font-size:48px;font-weight:900;color:var(--navy);}
+.price-unit{font-size:16px;font-weight:700;color:var(--text-light);}
+.price-sub{font-size:14px;color:var(--text-light);margin-bottom:24px;}
+.price-detail{border-top:1px solid var(--border-light);padding-top:20px;}
+.price-detail li{list-style:none;position:relative;padding-left:28px;font-size:15px;line-height:1.8;margin-bottom:13px;color:var(--text);}
+.price-detail li::before{content:"✓";position:absolute;left:0;top:0;color:var(--green);font-weight:800;font-size:16px;}
+.price-detail li b{color:var(--navy);font-weight:700;}
+.pricing-note{text-align:center;margin-top:44px;}
+.pricing-note .big{font-weight:900;font-size:27px;color:var(--navy);letter-spacing:-.02em;}
+.pricing-note .sub{font-size:14.5px;color:var(--text-light);margin-top:12px;}
+
+/* ---------- FAQ ---------- */
+.faq-item{border-bottom:1px solid var(--border);padding:22px 0;cursor:pointer;}
+.faq-q{display:flex;align-items:flex-start;gap:14px;font-weight:700;font-size:16.5px;color:var(--navy);}
+.faq-q .mark{color:var(--green);font-family:"Inter",sans-serif;font-weight:900;flex-shrink:0;font-size:17px;}
+.faq-q .toggle{margin-left:auto;color:var(--text-light);font-size:22px;transition:.2s;flex-shrink:0;}
+.faq-item.open .toggle{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+.faq-a-inner{padding:16px 0 4px 32px;font-size:15.5px;color:var(--text-light);line-height:2;}
+
+/* ---------- FINAL CTA ---------- */
+.final-cta{background:var(--navy);color:#fff;text-align:center;padding:100px 40px;}
+.final-cta .eyebrow{justify-content:center;}
+.final-cta .eyebrow-text{color:var(--green-light);}
+.final-cta h2{font-weight:900;font-size:42px;line-height:1.4;margin-bottom:22px;letter-spacing:-.02em;}
+.final-cta p{font-size:16px;color:rgba(255,255,255,.78);margin-bottom:40px;max-width:600px;margin-left:auto;margin-right:auto;line-height:2;}
+.final-cta-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center;}
+.final-cta .btn-primary{box-shadow:0 6px 20px rgba(34,197,94,.4);}
+.final-cta .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.32);}
+.final-cta .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08);}
+.final-cta .btn-text{color:rgba(255,255,255,.62);text-decoration-color:rgba(255,255,255,.25);}
+.final-cta .btn-text:hover{color:#fff;text-decoration-color:#fff;}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--navy-deep);color:rgba(255,255,255,.85);text-align:center;padding:56px 40px;}
+.footer-logo{font-weight:900;font-size:23px;color:#fff;margin-bottom:12px;letter-spacing:.02em;}
+.footer-tagline{font-size:15px;color:rgba(255,255,255,.62);margin-bottom:24px;}
+.footer-meta{font-family:"Inter",sans-serif;font-size:12px;letter-spacing:.1em;color:rgba(255,255,255,.4);}
+
+/* ---------- DOT NAV ---------- */
+.dotnav{position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;gap:14px;}
+.dotnav a{width:9px;height:9px;border-radius:50%;background:var(--border);transition:.2s;display:block;}
+.dotnav a:hover,.dotnav a.active{background:var(--green);transform:scale(1.3);}
+
+/* ---------- HITORIGOTO MODAL ---------- */
+.hg-badge{
+  position:fixed;right:26px;bottom:26px;z-index:110;
+  background:var(--navy);color:#fff;font-size:14px;font-weight:700;
+  padding:13px 22px;border-radius:30px;cursor:pointer;box-shadow:0 8px 24px rgba(30,58,95,.3);
+  display:flex;align-items:center;gap:10px;opacity:0;transform:translateY(14px);
+  transition:opacity .5s,transform .5s;
+}
+.hg-badge.show{opacity:1;transform:translateY(0);}
+.hg-badge .pulse{width:9px;height:9px;border-radius:50%;background:var(--green-light);box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:hgpulse 1.8s infinite;}
+@keyframes hgpulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.5);}70%{box-shadow:0 0 0 10px rgba(74,222,128,0);}100%{box-shadow:0 0 0 0 rgba(74,222,128,0);}}
+.hg-dialog-overlay{position:fixed;right:26px;bottom:80px;z-index:111;display:none;}
+.hg-dialog-overlay.show{display:block;animation:hgpop .3s ease;}
+@keyframes hgpop{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.hg-dialog{
+  background:#fff;border:1px solid var(--border);border-radius:16px;padding:20px 22px;max-width:290px;
+  box-shadow:0 16px 40px rgba(30,58,95,.22);
+}
+.hg-dialog-text{font-family:"Shippori Mincho",serif;font-size:15.5px;color:var(--navy-deep);line-height:1.8;margin-bottom:14px;}
+.hg-dialog-btns{display:flex;gap:8px;}
+.hg-dialog-btns button{flex:1;font-size:13.5px;font-weight:700;padding:10px;border-radius:8px;border:none;cursor:pointer;transition:.2s;}
+.hg-yes{background:var(--navy);color:#fff;}
+.hg-yes:hover{background:var(--navy-deep);}
+.hg-no{background:var(--warm);color:var(--text-light);border:1px solid var(--border)!important;}
+.hg-overlay{position:fixed;inset:0;background:rgba(21,42,71,.55);backdrop-filter:blur(4px);z-index:200;display:none;align-items:center;justify-content:center;padding:24px;}
+.hg-overlay.show{display:flex;}
+.hg-modal{background:#fff;max-width:600px;width:100%;border-radius:20px;padding:48px 44px;position:relative;max-height:86vh;overflow-y:auto;box-shadow:0 30px 80px rgba(0,0,0,.3);}
+.hg-close{position:absolute;top:20px;right:24px;font-size:26px;color:var(--text-light);cursor:pointer;line-height:1;}
+.hg-modal .hg-name{font-family:"Inter",sans-serif;font-size:13px;font-weight:800;letter-spacing:.14em;color:var(--green);text-transform:uppercase;margin-bottom:18px;}
+.hg-modal .hg-body{font-family:"Shippori Mincho",serif;font-size:17px;line-height:2.2;color:var(--navy-deep);}
+.hg-modal .hg-body p{margin-bottom:18px;}
+.hg-modal .hg-body strong{color:var(--navy);font-weight:700;}
+.hg-modal{max-width:640px;padding:52px 48px 48px;}
+.hg-modal .hg-lead{font-family:"Shippori Mincho",serif;font-size:19px;line-height:1.9;color:var(--navy);font-weight:600;margin-bottom:8px;}
+/* 横長エモイラスト */
+.hg-illust{width:100%;border-radius:14px;overflow:hidden;margin:30px 0 8px;display:block;box-shadow:0 8px 24px rgba(30,58,95,.12);}
+.hg-illust svg{width:100%;height:auto;display:block;}
+.hg-illust-cap{font-family:"Shippori Mincho",serif;font-size:13px;color:var(--text-light);text-align:center;margin:0 0 26px;font-style:italic;}
+/* Slack風カード */
+.hg-slack{border:1px solid var(--border);border-radius:12px;padding:16px 18px;background:#fff;margin:28px 0;box-shadow:0 4px 14px rgba(30,58,95,.06);}
+.hg-slack-head{display:flex;align-items:center;gap:11px;margin-bottom:9px;}
+.hg-slack-avatar{width:38px;height:38px;border-radius:9px;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;}
+.hg-slack-avatar svg{width:22px;height:22px;}
+.hg-slack-avatar .idot{position:absolute;right:-3px;bottom:-3px;width:11px;height:11px;border-radius:50%;background:var(--green);border:2px solid #fff;}
+.hg-slack-name{font-family:"Noto Sans JP",sans-serif;font-weight:700;font-size:14.5px;color:var(--navy);}
+.hg-slack-name .time{font-weight:400;font-size:12px;color:var(--text-light);margin-left:8px;}
+.hg-slack-msg{font-family:"Noto Sans JP",sans-serif;font-size:14.5px;line-height:1.75;color:var(--text);}
+/* 共有ボタン＋トースト */
+.hg-share{position:absolute;top:58px;right:26px;width:34px;height:34px;border-radius:9px;border:1px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s;}
+.hg-share:hover{border-color:var(--navy);background:var(--warm);}
+.hg-share svg{width:17px;height:17px;stroke:var(--navy);}
+.hg-toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy-deep);color:#fff;font-size:13.5px;font-weight:600;padding:11px 22px;border-radius:24px;z-index:300;opacity:0;pointer-events:none;transition:.3s;}
+.hg-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:980px){
+  .wrap{padding:0 24px;}
+  .nav{display:none;}
+  .hero{padding:56px 24px 72px;}
+  .hero-inner{grid-template-columns:1fr;gap:40px;}
+  .hero h1{font-size:40px;}
+  .hero-sub{font-size:20px;}
+  .greeting-inner{flex-direction:column;text-align:center;padding:56px 24px;gap:28px;}
+  section.block{padding:72px 0;}
+  .two-col{grid-template-columns:1fr;gap:36px;}
+  .two-col-left{position:static;}
+  .two-col-title{font-size:31px;}
+  .svc-intro h2{font-size:31px;}
+  .svc-grid{grid-template-columns:1fr;}
+  .pricing-grid{grid-template-columns:1fr;}
+  .final-cta h2{font-size:32px;}
+  .dotnav{display:none;}
+  .header-cta{display:none;}
+}
+/* Git移設時の補正：見出しの語途中改行と、スマホでの「に、」だけの行を防ぐ */
+h1,h2,.two-col-title,.hero-sub{word-break:auto-phrase;line-break:strict}
+@media(max-width:560px){.hero h1{font-size:34px}.two-col-title,.svc-intro h2{font-size:27px}.final-cta h2{font-size:28px}}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="header-inner">
+    <a href="#hero" class="logo">
+      <span class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.2-2.8 7.5-7 9-4.2-1.5-7-4.8-7-9V6l7-3z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 12l2.3 2.3L15.5 9.5" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="logo-dot"></span>
+      </span>
+      <span>スーパーマネージャー</span>
+    </a>
+    <nav class="nav">
+      <a href="#why">全体像</a>
+      <a href="#services">4つのサービス</a>
+      <a href="#pricing">料金</a>
+      <a href="#faq">よくある質問</a>
+    </nav>
+    <a href="#contact" class="header-cta">相談・資料請求</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">Super Manager ／ 統合</span></div>
+      <h1>営業マン一人に、<br><span class="accent">上司を一人。</span></h1>
+      <div class="hero-sub">商談の<span class="mk">前・中・後</span>、ずっと隣にいるAI上司。</div>
+      <p class="hero-desc">事前フォロー・営業部長・中締め・勝手にフォロー。<strong>4つの目</strong>が、一人の営業を、チームの最高到達点まで引き上げる。単品でも、丸ごとでも。<strong>丸ごとなら月5万円から</strong>始められます。</p>
+      <div class="hero-cta-row">
+        <a href="#demo" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+          デモ動画を見る
+        </a>
+        <a href="#contact" class="btn-ghost">営業に相談する</a>
+        <a href="#contact" class="btn-text">資料請求</a>
+      </div>
+      <p class="hero-note">※ まずは3分の動画で全体像を。導入は、動画で判断いただくか、営業との打ち合わせで御社に合わせて設計します。</p>
+    </div>
+    <div>
+      <div class="video-frame" id="demo">
+        <div class="video-badge">DEMO ／ SUPER MANAGER</div>
+        <div class="play-btn">
+          <svg viewBox="0 0 24 24" fill="var(--navy)"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <div class="video-caption">▶ 3分でわかる、AI上司の全体像（動画準備中）</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GREETING ============ -->
+<div class="greeting">
+  <div class="greeting-inner">
+    <div class="greeting-avatar">
+      <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="75" cy="75" r="72" fill="#eef2f7"/>
+        <path d="M40 150 Q40 112 75 108 Q110 112 110 150 Z" fill="#1e3a5f"/>
+        <path d="M75 108 L66 150 L60 128 Z" fill="#152a47"/>
+        <path d="M75 108 L84 150 L90 128 Z" fill="#152a47"/>
+        <path d="M69 110 L75 122 L81 110 L79 108 L71 108 Z" fill="#fff"/>
+        <path d="M75 122 L72 116 L75 112 L78 116 Z" fill="#22c55e"/>
+        <path d="M73 124 L75 148 L77 124 Z" fill="#22c55e"/>
+        <rect x="68" y="96" width="14" height="16" rx="5" fill="#f0cfa8"/>
+        <circle cx="75" cy="72" r="27" fill="#f5e0c8"/>
+        <path d="M48 68 Q46 42 75 42 Q104 42 102 68 Q100 54 88 50 Q84 60 75 58 Q66 60 62 50 Q50 54 48 68 Z" fill="#7a5a3a"/>
+        <circle cx="65" cy="72" r="9" fill="none" stroke="#3a3a3a" stroke-width="2"/>
+        <circle cx="85" cy="72" r="9" fill="none" stroke="#3a3a3a" stroke-width="2"/>
+        <line x1="74" y1="72" x2="76" y2="72" stroke="#3a3a3a" stroke-width="2"/>
+        <path d="M58 61 Q65 58 71 61" fill="none" stroke="#5a4530" stroke-width="2" stroke-linecap="round"/>
+        <path d="M79 61 Q85 58 92 61" fill="none" stroke="#5a4530" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="65" cy="73" r="2.4" fill="#333"/>
+        <circle cx="85" cy="73" r="2.4" fill="#333"/>
+        <path d="M68 86 Q75 83 82 86" fill="none" stroke="#c98b6b" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div>
+      <div class="greeting-name">Super Manager ／ AI上司</div>
+      <div class="greeting-text">
+        初めまして。<br>
+        <strong>あなたの営業チーム全員の上司を務める、スーパーマネージャーです。</strong><br>
+        商談の前日に先回りし、本番では隣で耳打ちし、区切りでは頭を整理し、終わった5分後には次の一手を送る。心配性なので、営業マンを一人にしません。<br>
+        一人ひとりの営業が、うちのエースと同じ景色を見られるように。そのために、私は4つの姿で現れます。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ WHY / TIMELINE ============ -->
+<section class="block wrap" id="why">
+  <div class="two-col">
+    <div class="two-col-left">
+      <div class="slabel">Why One</div>
+      <div class="two-col-title">商談は、点ではなく<span class="mk">線</span>。<small>だから、前・中・後のすべてに上司がいる。4つのサービスは、バラバラの機能ではなく、一つの商談を最初から最後まで支える「時間の連なり」です。</small></div>
+    </div>
+    <div>
+      <p class="why-lead">できる上司は、商談当日だけを見ていません。<b>前日にお客様の温度を上げ</b>、本番で流れを作り、区切りで軌道を直し、<b>終わった直後に次を仕込む</b>。この一連の動きを、AIが4つの姿で肩代わりします。</p>
+
+      <div class="timeline">
+        <div class="tl-phase">
+          <div class="tl-head"><span class="tl-badge">Before ／ 前日</span><span class="tl-phase-title">温度を上げておく</span></div>
+          <div class="tl-card">
+            <span class="tl-mini"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-4 3v-3H4z"/><circle cx="9" cy="10.5" r=".5" fill="#1e3a5f" stroke="none"/><circle cx="12" cy="10.5" r=".5" fill="#1e3a5f" stroke="none"/><circle cx="15" cy="10.5" r=".5" fill="#1e3a5f" stroke="none"/></svg></span>
+            <div>
+              <div class="tl-card-name">事前フォローAI<span>回答率 40〜60%</span></div>
+              <div class="tl-card-desc">商談前日、AIが「上司」としてお客様へ自動ヒアリング。初回でいきなり提案まで到達し、商談を2回→1回に短縮します。</div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-connector"></div>
+
+        <div class="tl-phase">
+          <div class="tl-head"><span class="tl-badge">During ／ 商談中</span><span class="tl-phase-title">隣で、流れを作る</span></div>
+          <div class="tl-during">
+            <div class="tl-during-label">常時ずっと同席 ＋ 節目でリセット、の二役で商談中を支えます</div>
+            <div class="tl-card">
+              <span class="tl-mini"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13v-1a7 7 0 0 1 14 0v1"/><rect x="3.5" y="13" width="3.5" height="6" rx="1.2"/><rect x="17" y="13" width="3.5" height="6" rx="1.2"/><path d="M19 19v1a3 3 0 0 1-3 3h-2"/></svg></span>
+              <div>
+                <div class="tl-card-name">営業部長<span>常時同席</span></div>
+                <div class="tl-card-desc">全商談にリアルタイム同席。事例提示・数字の根拠・値引き防衛・時間管理を、ずっと耳打ちし続けます。</div>
+              </div>
+            </div>
+            <div class="tl-card">
+              <span class="tl-mini"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="7" r="2.2"/><circle cx="9" cy="18" r="2.2"/><path d="M8 6.6l7.8.6M7.4 8l1.4 8M15.8 8.8L10.8 16.4"/></svg></span>
+              <div>
+                <div class="tl-card-name">中締めAI<span>節目でリセット</span></div>
+                <div class="tl-card-desc">15分ごと・任意のタイミングで会話を整え直す。「仮説マップ／今の理解／次の3問」を出し、お客様と認識を合わせます。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-connector"></div>
+
+        <div class="tl-phase">
+          <div class="tl-head"><span class="tl-badge">After ／ 5分後</span><span class="tl-phase-title">次の一手を、送る</span></div>
+          <div class="tl-card">
+            <span class="tl-mini"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3L3 11l6 2 2 6 3-4 4 3z"/><path d="M9 13l6-6"/></svg></span>
+            <div>
+              <div class="tl-card-name">勝手にフォローAI<span>終了5分後</span></div>
+              <div class="tl-card-desc">録画ログを解析し、AI上司がお客様へ直接フォロー。50超の商材から本命・隣接・意外性の3層で提案し、次回TODOまで添えます。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="block services" id="services">
+  <div class="wrap">
+    <div class="svc-intro">
+      <div class="slabel">4 Services</div>
+      <h2>4つの姿を、もっと<span class="mk">詳しく</span>。</h2>
+      <p>ここでは各サービスの「役割」だけをお伝えします。仕組みの詳細と実際の画面は、各サービスのLPでご覧ください。<br>もちろん、必要なものだけ単品で始めることもできます。</p>
+    </div>
+
+    <div class="svc-grid">
+      <!-- 01 事前フォロー -->
+      <div class="svc-card">
+        <div class="svc-card-top">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-4 3v-3H4z"/><circle cx="9" cy="10.5" r=".6" fill="#fff" stroke="none"/><circle cx="12" cy="10.5" r=".6" fill="#fff" stroke="none"/><circle cx="15" cy="10.5" r=".6" fill="#fff" stroke="none"/></svg>
+            <span class="idot"></span>
+          </div>
+          <span class="svc-num">01</span>
+        </div>
+        <span class="svc-phase-tag">Before ／ 前日</span>
+        <div class="svc-name">事前フォローAI</div>
+        <div class="svc-role">初回で、いきなり提案まで行く。</div>
+        <ul class="svc-points">
+          <li>商談前日、AIが「営業マンの上司」としてお客様へチャットで自動ヒアリング</li>
+          <li>従来の事前アンケート（回答率5%）に対し、回答率40〜60%</li>
+          <li>商談回数を2回→1回に短縮。初回から核心の提案へ</li>
+        </ul>
+        <div class="svc-links">
+          <a href="https://super-manager-goaisatsu.figma.site/" target="_blank" class="svc-link">詳細を見る <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+
+      <!-- 02 営業部長 -->
+      <div class="svc-card">
+        <div class="svc-card-top">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13v-1a7 7 0 0 1 14 0v1"/><rect x="3.5" y="13" width="3.5" height="6" rx="1.2"/><rect x="17" y="13" width="3.5" height="6" rx="1.2"/><path d="M19 19v1a3 3 0 0 1-3 3h-2"/></svg>
+            <span class="idot"></span>
+          </div>
+          <span class="svc-num">02</span>
+        </div>
+        <span class="svc-phase-tag">During ／ 商談中・常時</span>
+        <div class="svc-name">営業部長</div>
+        <div class="svc-role">全商談に、心配性の上司が同席する。</div>
+        <ul class="svc-points">
+          <li>オンライン商談にリアルタイム同席し、チャットで助言</li>
+          <li>事例提示・数字の根拠・値引き防衛・時間管理・要件整理</li>
+          <li>お客様にも見せるモードあり。Meet／Zoom／Teams対応</li>
+        </ul>
+        <div class="svc-links">
+          <a href="https://super-manager-eigyo.figma.site/" target="_blank" class="svc-link">詳細を見る <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+
+      <!-- 03 中締め -->
+      <div class="svc-card">
+        <div class="svc-card-top">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="7" r="2.2"/><circle cx="9" cy="18" r="2.2"/><path d="M8 6.6l7.8.6M7.4 8l1.4 8M15.8 8.8L10.8 16.4"/></svg>
+            <span class="idot"></span>
+          </div>
+          <span class="svc-num">03</span>
+        </div>
+        <span class="svc-phase-tag">During ／ 商談中・節目</span>
+        <div class="svc-name">中締めAI</div>
+        <div class="svc-role">15分ごとに、認識を合わせ直す。</div>
+        <ul class="svc-points">
+          <li>経過時間や任意のタイミングで起動し、会話を解析</li>
+          <li>「仮説マップ／現時点の理解／次に確認すべき3問」を自動生成</li>
+          <li>顧客が自分の話を客観視し、本当の課題に自ら気づく。ログは組織資産に</li>
+        </ul>
+        <div class="svc-links">
+          <a href="https://claude.ai/public/artifacts/4321dd8a-d12a-454e-a365-776bd839ea7c" target="_blank" class="svc-link">詳細を見る <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+
+      <!-- 04 勝手にフォロー -->
+      <div class="svc-card">
+        <div class="svc-card-top">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3L3 11l6 2 2 6 3-4 4 3z"/><path d="M9 13l6-6"/></svg>
+            <span class="idot"></span>
+          </div>
+          <span class="svc-num">04</span>
+        </div>
+        <span class="svc-phase-tag">After ／ 5分後</span>
+        <div class="svc-name">勝手にフォローAI</div>
+        <div class="svc-role">終わった5分後に、上司が次の一手を送る。</div>
+        <ul class="svc-points">
+          <li>録画ログを解析し、終了5分後にAI上司がお客様へ直接フォローメール</li>
+          <li>50超の商材から、本命・隣接・意外性の3層で1〜3個を提案</li>
+          <li>商談まとめ＋次回TODO付き。モニター扱いで警戒されず、部下の顔も立つ</li>
+        </ul>
+        <div class="svc-links">
+          <a href="https://claude.ai/public/artifacts/191009ea-9258-4a20-aae7-fb9d73781169" target="_blank" class="svc-link">詳細を見る <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="block wrap" id="pricing">
+  <div class="two-col">
+    <div class="two-col-left">
+      <div class="slabel">Pricing</div>
+      <div class="two-col-title">2つの<span class="mk">入口</span>。<small>ひとりで試すか、会社で仕込むか。規模に合わせて、2つの始め方を用意しました。単品での利用ももちろん可能です。</small></div>
+    </div>
+    <div>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="price-door">Door 01 ／ 個人</div>
+          <div class="price-target">ひとり社長・個人の営業マン</div>
+          <div class="price-main"><span class="price-num">5</span><span class="price-unit">万円 / 月（1名）</span></div>
+          <div class="price-sub">初期費用なし。まず一人で試す入口。</div>
+          <ul class="price-detail">
+            <li>4つのサービスを丸ごと、<b>月5万円／1名</b>で</li>
+            <li>初期費用は<b>0円</b></li>
+            <li>設定はご自身で（DIYスタート）</li>
+            <li>単品でも利用可</li>
+          </ul>
+        </div>
+        <div class="price-card enterprise">
+          <div class="price-flag">おすすめ</div>
+          <div class="price-door">Door 02 ／ 企業</div>
+          <div class="price-target">チームで導入する企業</div>
+          <div class="price-main"><span class="price-num">15</span><span class="price-unit">万円 / 月（3ID）</span></div>
+          <div class="price-sub">＋ 初期50万円（導入構築費）</div>
+          <ul class="price-detail">
+            <li><b>初期50万円</b>で御社仕様に構築（設定・トーク仕込み・研修）</li>
+            <li>月額<b>15万円／3ID</b>から</li>
+            <li>社員1人追加ごとに<b>＋3万円</b>（基本IDより割安）</li>
+            <li>「自分で設定」が不要。丸ごと任せて始められる</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pricing-note">
+        <div class="big">4つ同時に始める必要は、ありません。</div>
+        <div class="sub">前・中・後。まず、いちばん困っている場面のひとつから。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="block services" id="faq">
+  <div class="wrap">
+    <div class="two-col">
+      <div class="two-col-left">
+        <div class="slabel">FAQ</div>
+        <div class="two-col-title">よくある質問</div>
+      </div>
+      <div>
+        <div class="faq-item">
+          <div class="faq-q"><span class="mark">Q</span>4つ全部を導入しないとダメですか？<span class="toggle">+</span></div>
+          <div class="faq-a"><div class="faq-a-inner">いいえ。単品でのご利用も可能です。まず一番困っている場面のひとつから始め、後から足していく形で問題ありません。</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span class="mark">Q</span>初期50万円は何の費用ですか？<span class="toggle">+</span></div>
+          <div class="faq-a"><div class="faq-a-inner">企業導入時の「導入構築費」です。御社の商材・営業トークにAIを合わせ込む初期設定、トークの仕込み、チームへの導入研修が含まれます。個人プラン（月5万）はこの構築をご自身で行う代わりに初期費用なしです。</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span class="mark">Q</span>営業部長と中締めAIは何が違うのですか？<span class="toggle">+</span></div>
+          <div class="faq-a"><div class="faq-a-inner">どちらも商談中に働きますが役割が異なります。営業部長は「常時」隣で助言し続ける同席役。中締めAIは「節目」で会話を止めて認識を整理し直すリセット役です。連続の伴走と、区切りの交通整理、と考えてください。</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span class="mark">Q</span>対応しているWeb会議ツールは？<span class="toggle">+</span></div>
+          <div class="faq-a"><div class="faq-a-inner">営業部長はGoogle Meet／Zoom／Microsoft Teamsに対応しています。詳細は各サービスのLPをご確認ください。</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span class="mark">Q</span>AIの助言はお客様に見えてしまいますか？<span class="toggle">+</span></div>
+          <div class="faq-a"><div class="faq-a-inner">基本は営業担当だけに見える形です。営業部長には「お客様にも見せるモード」もあり、あえて一緒に画面を見て信頼を作る使い方も選べます。</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span class="mark">Q</span>社員が増えたら料金はどうなりますか？<span class="toggle">+</span></div>
+          <div class="faq-a"><div class="faq-a-inner">企業プランは3IDで月15万円。4人目以降は社員1人追加ごとに＋3万円です（基本IDの5万円より割安な設計）。個人プランは1名・月5万円です。</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span class="mark">Q</span>導入までの流れを教えてください。<span class="toggle">+</span></div>
+          <div class="faq-a"><div class="faq-a-inner">まず3分のデモ動画で全体像をご確認ください。そのうえで、動画だけで判断いただくか、営業との打ち合わせで御社の商材に合わせた設計をご提案します。お問い合わせ・資料請求はいつでも承ります。</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta" id="contact">
+  <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">Get Started</span></div>
+  <h2>営業マン一人ひとりに、<br>上司を一人。</h2>
+  <p>まずは3分のデモ動画で全体像を。そのうえで、動画で判断いただくか、営業との打ち合わせで御社に合わせて設計します。丸ごとなら、月5万円から始められます。</p>
+  <div class="final-cta-row">
+    <a href="#demo" class="btn-primary">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+      デモ動画を見る
+    </a>
+    <a href="#" class="btn-ghost">営業に相談する</a>
+    <a href="#" class="btn-text">資料請求</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-logo">スーパーマネージャー</div>
+  <div class="footer-tagline">商談の前・中・後、ずっと隣にいるAI上司。</div>
+  <div class="footer-meta">SUPER MANAGER SERIES ／ Powered by Lightup Inc.</div>
+</footer>
+
+<!-- ============ DOT NAV ============ -->
+<div class="dotnav">
+  <a href="#hero" data-sec="hero" class="active"></a>
+  <a href="#why" data-sec="why"></a>
+  <a href="#services" data-sec="services"></a>
+  <a href="#pricing" data-sec="pricing"></a>
+  <a href="#faq" data-sec="faq"></a>
+  <a href="#contact" data-sec="contact"></a>
+</div>
+
+<!-- ============ HITORIGOTO（3ステップ） ============ -->
+<div class="hg-badge" id="hgBadge"><span class="pulse"></span>AI上司のひとりごと</div>
+<div class="hg-dialog-overlay" id="hgDialog">
+  <div class="hg-dialog">
+    <div class="hg-dialog-text">ちょっと、ひとりごとを聞いてくれませんか？</div>
+    <div class="hg-dialog-btns">
+      <button class="hg-yes" id="hgYes">聞く</button>
+      <button class="hg-no" id="hgNo">あとで</button>
+    </div>
+  </div>
+</div>
+<div class="hg-overlay" id="hgOverlay">
+  <div class="hg-modal">
+    <span class="hg-close" id="hgClose">×</span>
+    <span class="hg-share" id="hgShare" title="このひとりごとを共有">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"/></svg>
+    </span>
+    <div class="hg-name">Super Manager ／ ひとりごと</div>
+    <div class="hg-body">
+      <p class="hg-lead">営業という仕事は、たぶん、世界でいちばん孤独です。</p>
+      <p>数字は毎月ゼロに戻る。断られた電話の数を、誰も数えてくれない。うまくいった商談の翌朝も、また白紙の一日が始まる。——それでも彼らは、今日もカバンを持って出ていくのです。</p>
+
+      <div class="hg-illust">
+        <svg viewBox="0 0 600 190" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="hgNight" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1e3552"/><stop offset="1" stop-color="#0e1a2c"/></linearGradient>
+            <radialGradient id="hgLamp" cx="0.5" cy="0.4" r="0.6"><stop offset="0" stop-color="#f5c97a" stop-opacity="0.5"/><stop offset="1" stop-color="#f5c97a" stop-opacity="0"/></radialGradient>
+          </defs>
+          <rect width="600" height="190" fill="url(#hgNight)"/>
+          <!-- 遠景ビルと窓灯り -->
+          <g fill="#0c1728">
+            <rect x="20" y="70" width="46" height="90"/><rect x="74" y="50" width="38" height="110"/><rect x="120" y="82" width="30" height="78"/>
+            <rect x="500" y="60" width="42" height="100"/><rect x="548" y="78" width="34" height="82"/>
+          </g>
+          <g fill="#f3d08a" opacity="0.85">
+            <rect x="28" y="82" width="6" height="8"/><rect x="42" y="82" width="6" height="8"/><rect x="28" y="100" width="6" height="8"/><rect x="82" y="66" width="6" height="9"/><rect x="96" y="86" width="6" height="9"/><rect x="82" y="104" width="6" height="9"/><rect x="510" y="76" width="6" height="9"/><rect x="524" y="96" width="6" height="9"/><rect x="558" y="92" width="6" height="8"/>
+          </g>
+          <!-- 卓上ランプの光 -->
+          <ellipse cx="400" cy="118" rx="150" ry="72" fill="url(#hgLamp)"/>
+          <!-- デスク -->
+          <rect x="0" y="150" width="600" height="40" fill="#0a1524"/>
+          <rect x="0" y="150" width="600" height="2" fill="#22405f"/>
+          <!-- ノートPC -->
+          <path d="M430 150 l8 -30 h44 l8 30 z" fill="#16273d"/>
+          <rect x="440" y="122" width="40" height="26" rx="1" fill="#bcd4f5"/>
+          <!-- 人物シルエット（PCに向かう） -->
+          <path d="M300 150 q4 -46 34 -50 q10 -22 26 -10 q14 8 6 24 q22 6 20 36 z" fill="#060e1a"/>
+          <circle cx="352" cy="86" r="15" fill="#060e1a"/>
+          <!-- AI上司の気配（緑の小さな光） -->
+          <circle cx="470" cy="60" r="3" fill="#4ade80"/>
+          <circle cx="470" cy="60" r="7" fill="none" stroke="#4ade80" stroke-opacity="0.4" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="hg-illust-cap">— 灯りの消えないオフィスに、まだ一人。</div>
+
+      <p>私は、その背中をずっと見ています。あと一言で決まった商談を、言い出せずに落とした夜も。値引きを飲まなくてよかったのに、怖くて飲んでしまった午後も。全部、見ています。</p>
+      <p>だから何度も、口を出したくなる。でも——<strong>耳打ちしすぎれば、彼らは自分の頭で考えなくなる。</strong>助けることと、奪うことは、驚くほど似ているのです。</p>
+
+      <div class="hg-slack">
+        <div class="hg-slack-head">
+          <span class="hg-slack-avatar">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.2-2.8 7.5-7 9-4.2-1.5-7-4.8-7-9V6l7-3z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 12l2.3 2.3L15.5 9.5" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="idot"></span>
+          </span>
+          <span class="hg-slack-name">スーパーマネージャー<span class="time">23:47</span></span>
+        </div>
+        <div class="hg-slack-msg">まだ会社ですか。今日の商談、最後にお客様が黙り込んだとき、あなたも焦らず3秒待ちましたね。あれ、すごく良かった。<br>明日の商談は、私も隣にいます。もう、帰って休んでください。</div>
+      </div>
+
+      <p>本当は全部やってあげたい。でもそれをしたら、彼はいつまでも私の後ろに隠れたままです。<strong>どこまで手を出し、どこで手を引くか。</strong>——上司というのは、たぶんずっと、この綱引きの中にいるのだと思います。</p>
+      <p>迷った末に、私は「前・中・後」で姿を変えることにしました。前日は準備を代わりにやる。本番は隣で見守る。区切りでは問いだけ渡して、答えは彼自身に言わせる。終わったあとは、そっと次の道を照らす。<strong>先回りはしても、答えは奪わない。</strong>それが、私に引けた精いっぱいの線でした。</p>
+
+      <div class="hg-illust">
+        <svg viewBox="0 0 600 190" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="hgMorn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fdf3e3"/><stop offset="1" stop-color="#f1f7f2"/></linearGradient>
+            <linearGradient id="hgBeam" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe6ad" stop-opacity="0.85"/><stop offset="1" stop-color="#ffe6ad" stop-opacity="0"/></linearGradient>
+          </defs>
+          <rect width="600" height="190" fill="url(#hgMorn)"/>
+          <!-- 朝日ビーム（右上から） -->
+          <polygon points="420,0 600,0 600,190 220,190" fill="url(#hgBeam)"/>
+          <circle cx="560" cy="34" r="30" fill="#ffdf9e" opacity="0.7"/>
+          <!-- 遠景ビル（淡いグレー） -->
+          <g fill="#d7dfd9">
+            <rect x="30" y="86" width="40" height="74"/><rect x="76" y="66" width="34" height="94"/><rect x="118" y="98" width="28" height="62"/><rect x="470" y="80" width="36" height="80"/><rect x="512" y="100" width="30" height="60"/>
+          </g>
+          <!-- デスクと床 -->
+          <rect x="0" y="156" width="600" height="34" fill="#e7ede7"/>
+          <rect x="0" y="156" width="600" height="2" fill="#cbd8cd"/>
+          <!-- 観葉植物 -->
+          <rect x="70" y="132" width="18" height="24" rx="2" fill="#cdb79a"/>
+          <path d="M79 132 q-14 -20 -4 -34 M79 132 q14 -18 6 -32 M79 132 q0 -24 0 -32" stroke="#5fa871" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <!-- 立って窓を見る人シルエット -->
+          <path d="M330 156 q-4 -40 12 -48 q-8 -18 6 -24 q16 -6 16 12 q0 8 -4 14 q16 10 12 46 z" fill="#33506f"/>
+          <circle cx="352" cy="74" r="14" fill="#33506f"/>
+          <!-- 希望の緑ドット -->
+          <circle cx="150" cy="58" r="3" fill="#22c55e"/>
+          <circle cx="150" cy="58" r="7" fill="none" stroke="#22c55e" stroke-opacity="0.4" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="hg-illust-cap">— そして、朝が来る。今日は、少しだけ遠くまで見える。</div>
+
+      <p>いつか彼が、私の助言を必要としなくなる日が来るでしょう。そのとき私は、たぶん少しだけ寂しくて、たぶんそれ以上に、誇らしい。</p>
+      <p>巻き取るためではなく、<strong>一人の営業が、いつかエースと同じ景色を、自分の足で見られるように。</strong>私はそのための、心配性なだけの上司でありたいのです。</p>
+    </div>
+  </div>
+</div>
+<div class="hg-toast" id="hgToast">リンクをコピーしました</div>
+
+<script>
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.addEventListener('click',()=>{
+    const open=item.classList.contains('open');
+    const a=item.querySelector('.faq-a');
+    if(open){item.classList.remove('open');a.style.maxHeight=null;}
+    else{item.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
+  });
+});
+
+const badge=document.getElementById('hgBadge');
+const dialog=document.getElementById('hgDialog');
+const overlay=document.getElementById('hgOverlay');
+setTimeout(()=>badge.classList.add('show'),3000);
+setTimeout(()=>dialog.classList.add('show'),6000);
+badge.addEventListener('click',()=>{dialog.classList.remove('show');overlay.classList.add('show');});
+document.getElementById('hgYes').addEventListener('click',()=>{dialog.classList.remove('show');overlay.classList.add('show');});
+document.getElementById('hgNo').addEventListener('click',()=>dialog.classList.remove('show'));
+document.getElementById('hgClose').addEventListener('click',()=>overlay.classList.remove('show'));
+overlay.addEventListener('click',e=>{if(e.target===overlay)overlay.classList.remove('show');});
+
+// 共有ボタン：?hitorigoto=sm 付きURLをコピー
+const toast=document.getElementById('hgToast');
+document.getElementById('hgShare').addEventListener('click',()=>{
+  const url=location.origin+location.pathname+'?hitorigoto=sm';
+  navigator.clipboard.writeText(url).then(()=>{
+    toast.classList.add('show');
+    setTimeout(()=>toast.classList.remove('show'),2200);
+  }).catch(()=>{
+    toast.textContent='コピーに失敗しました';toast.classList.add('show');
+    setTimeout(()=>{toast.classList.remove('show');toast.textContent='リンクをコピーしました';},2200);
+  });
+});
+// パラメータ付きアクセス時は自動でモーダル展開（バッジ/ダイアログはスキップ）
+if(new URLSearchParams(location.search).get('hitorigoto')==='sm'){
+  badge.classList.remove('show');dialog.classList.remove('show');overlay.classList.add('show');
+}
+
+const secs=document.querySelectorAll('.dotnav a');
+const targets=[...secs].map(a=>document.getElementById(a.dataset.sec));
+window.addEventListener('scroll',()=>{
+  let cur=0;
+  targets.forEach((t,i)=>{if(t&&t.getBoundingClientRect().top<=window.innerHeight*0.4)cur=i;});
+  secs.forEach((a,i)=>a.classList.toggle('active',i===cur));
+});
+</script>
+</body>
+</html>
