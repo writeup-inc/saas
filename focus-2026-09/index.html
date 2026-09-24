@@ -419,6 +419,54 @@
     }
     footer.page a { color: var(--ink-soft); }
 
+
+    /* ── 1段目：まとめ（今月、何を・誰に・どこから出すか） ── */
+    .tier {
+      display: flex; align-items: center; flex-wrap: wrap; gap: 4px 10px;
+      margin: 0 0 14px;
+      font-size: var(--fs-label); font-weight: 900; letter-spacing: .1em; color: var(--ink-soft);
+    }
+    .tier-n {
+      display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%;
+      background: var(--ink); color: var(--paper);
+      font-family: "Inter", sans-serif; font-size: var(--fs-min); letter-spacing: 0;
+    }
+    .tier-c { font-weight: 400; color: var(--muted); letter-spacing: .02em; }
+    .summary { padding: 32px 0 40px; scroll-margin-top: 76px; }
+    .summary h2 { margin: 0 0 6px; letter-spacing: .01em; }
+    .sum-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 18px 0 0; }
+    .sum {
+      --accent: var(--green);
+      display: flex; flex-direction: column;
+      background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--accent);
+      border-radius: 12px; padding: 18px 18px 16px;
+    }
+    .sum--jmatch  { --accent: var(--orange); }
+    .sum--worklog { --accent: var(--green); }
+    .sum--packs   { --accent: var(--blue); }
+    .sum .tag { margin: 0 0 8px; align-self: flex-start; }
+    .sum h3 { margin: 0 0 4px; font-size: var(--fs-lead); line-height: 1.45; }
+    .sum .one { margin: 0 0 12px; color: var(--ink-soft); line-height: 1.75; }
+    .sum dl { margin: 0; display: grid; gap: 10px; }
+    .sum dt { font-size: var(--fs-min); font-weight: 700; letter-spacing: .08em; color: var(--accent); line-height: 1.6; }
+    .sum dd { margin: 0; line-height: 1.75; }
+    .sum dd a { color: var(--ink); font-weight: 700; text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--accent) 55%, transparent); }
+    .sum dd a:hover { color: var(--accent); }
+    .sum .more { margin: auto 0 0; padding-top: 14px; font-size: var(--fs-label); }
+    .sum .more a { color: var(--ink-soft); }
+    .sum-staples {
+      margin: 16px 0 0; padding: 16px 18px;
+      background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    }
+    .sum-staples h3 { margin: 0 0 8px; font-size: var(--fs-lead); line-height: 1.45; }
+    .sum-staples ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+    .sum-staples li { display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: baseline; line-height: 1.75; }
+    .sum-staples .r { font-family: "Inter", sans-serif; font-weight: 800; color: var(--ink-soft); text-align: center; }
+    .sum-staples .more { margin: 10px 0 0; font-size: var(--fs-label); }
+    .sum-staples .more a { color: var(--ink-soft); }
+    .links-head { margin: 0 0 18px; padding-top: 4px; }
+    @media (max-width: 860px) { .sum-grid { grid-template-columns: 1fr; } }
+
     @media (max-width: 560px) {
       /* 1行が短いので、行間は少し詰めても読みやすさは落ちない */
       .lead { font-size: 16px; line-height: 1.8; }
@@ -466,10 +514,30 @@
       .lane-n--top { color: #101614; }
       .jump { background: color-mix(in srgb, var(--paper) 82%, transparent); }
     }
-  </style>
+  /* 共通ナビ（右上）：資料インデックス一覧・今月の注力・SaaSチーム トップ。4ページとも同じ中身。今いるページは太字＋下線でリンクにしない */
+.hubnav{position:absolute;top:0;left:0;right:0;z-index:30;font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif}
+.hubnav ul{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:2px 22px;max-width:var(--hub-w,1120px);margin:0 auto;padding:16px var(--hub-pad,clamp(20px,4vw,40px)) 0;list-style:none}
+.hubnav li{margin:0;padding:0}
+.hubnav a,.hubnav [aria-current]{display:inline-flex;align-items:center;gap:6px;padding:6px 0;font-size:13px;font-weight:500;line-height:1.5;letter-spacing:.02em;white-space:nowrap;text-decoration:none;color:var(--hub-tx,#4a525d)}
+.hubnav a::before,.hubnav [aria-current]::before{content:"▸";font-size:10px;color:var(--hub-mute,#9aa1a9)}
+.hubnav a:hover{color:var(--hub-ink,#10151c);text-decoration:underline;text-underline-offset:3px}
+.hubnav [aria-current]{color:var(--hub-ink,#10151c);font-weight:700;box-shadow:inset 0 -2px 0 currentColor}
+.hubnav [aria-current]::before{color:currentColor}
+.hubnav--flow{position:static}
+.hubnav--flow ul{max-width:none;padding:14px 0 0}
+@media(max-width:600px){.hubnav ul{justify-content:center;gap:0 10px;padding:8px 12px 0}.hubnav--flow ul{justify-content:flex-end;padding:10px 0 0}.hubnav a,.hubnav [aria-current]{gap:2px;padding:8px 0;font-size:12px;letter-spacing:0}}
+@media(max-width:600px){header.page{padding-top:60px}}
+</style>
 </head>
 <body>
   <header class="page">
+<nav class="hubnav" aria-label="SaaSチームの入口" style="--hub-w:940px;--hub-pad:20px;--hub-tx:var(--ink-soft);--hub-ink:var(--ink);--hub-mute:var(--muted)">
+  <ul>
+    <li><a href="../pack-indexes/">資料インデックス一覧</a></li>
+    <li><span aria-current="page">9月の注力</span></li>
+    <li><a href="../">SaaSチーム トップ</a></li>
+  </ul>
+</nav>
     <!-- 装飾：一点へ集まる同心円。意味は本文が持つため読み上げ対象から外す -->
     <svg class="hero-art" viewBox="0 0 420 420" aria-hidden="true" focusable="false">
       <defs>
@@ -527,14 +595,74 @@
     <div class="wrap">
       <p class="kicker">WRITEUP / AIコンサル局 SaaSチーム</p>
       <h1>2026年9月 注力サービス</h1>
-      <p class="lead">今月から注力する2サービス（Jマッチ・エンジン／ワークログ・インサイト）と、新規事業のスタートパック、そして定番の注力10サービスを1枚にまとめました。商談でそのまま開けるよう、タイトル・概要・リンクだけを並べています。</p>
-      <p class="meta">作成：2026年9月13日　／　最終更新：2026年9月23日　／　「社内限定」と書かれたページは営業の台本です。お客様の画面には出さないでください。</p>
+      <p class="lead">今月から注力する2サービス（Jマッチ・エンジン／ワークログ・インサイト）と、新規事業のスタートパック、そして定番の注力10サービスを1枚にまとめました。上の「まとめ」で今月の要点を、下の「リンク集」で商談で開くページを並べています。</p>
+      <p class="meta">作成：2026年9月13日　／　最終更新：2026年9月24日　／　「社内限定」と書かれたページは営業の台本です。お客様の画面には出さないでください。</p>
     </div>
   </header>
+
+  <!-- 1段目：まとめ。商談前にここだけ読めば、どれを誰にどのURLで出すかが分かる -->
+  <section class="summary" id="summary" aria-labelledby="summary-title">
+    <div class="wrap">
+      <p class="tier"><span class="tier-n">1</span>まとめ<span class="tier-c">ここだけ読めば、今月どれを誰に出すか分かります</span></p>
+      <h2 id="summary-title">今月は、この3つを押す</h2>
+      <p class="section-note">新しく注力に入った2サービスと、スタートパック。どれも「まず開く」のページから入れば、相手に合った資料へ進めます。</p>
+
+      <div class="sum-grid">
+        <article class="sum sum--jmatch">
+          <p class="tag">新規注力・優先度A</p>
+          <h3>Jマッチ・エンジン</h3>
+          <p class="one">補助金・融資・税制優遇の「使える制度」が、毎週お客様に届く。</p>
+          <dl>
+            <div><dt>誰に</dt><dd>OEMは顧客リストを持つ企業。直販は中小企業の経営者</dd></div>
+            <div><dt>まず開く</dt><dd><a href="../jmatch-engine/">ご案内の入口</a>（OEM／直販の分岐）</dd></div>
+            <div><dt>今月だけ</dt><dd>OEMの初期50万円が、9月末契約まで20万円。直販の初期登録10万円は、事例協力10社まで無料</dd></div>
+            <div><dt>旧Jコンサルのお客様</dt><dd><a href="../jmatch-engine/consult-comparison/">サービス比較</a>から</dd></div>
+          </dl>
+          <p class="more"><a href="#jmatch">リンク一式（13本）へ ↓</a></p>
+        </article>
+
+        <article class="sum sum--worklog">
+          <p class="tag">新規注力・優先度A</p>
+          <h3>ワークログ・インサイト</h3>
+          <p class="one">PC画面の自動記録から、AI化すべき業務と削減時間を出す。</p>
+          <dl>
+            <div><dt>誰に</dt><dd>直販は業務を見える化したい経営層（1ID月額10,000円）。OEMは販売パートナー（1IDあたり4,000円が取り分）</dd></div>
+            <div><dt>まず開く</dt><dd>直販は<a href="../worklog-insight/">直販LP</a>。パートナー候補には<a href="https://writeup-inc.github.io/seminar/worklog-insight-oem/?design=v3">OEM説明会 V3</a></dd></div>
+            <div><dt>まだ無い</dt><dd>OEM／直販の入口ページと、OEM向けのセールストーク</dd></div>
+          </dl>
+          <p class="more"><a href="#worklog">リンク一式（8本）へ ↓</a></p>
+        </article>
+
+        <article class="sum sum--packs">
+          <p class="tag">新規事業の立ち上げパック</p>
+          <h3>スタートパック</h3>
+          <p class="one">既存の顧客を持っている会社に、事業をひとつ増やしてもらう。</p>
+          <dl>
+            <div><dt>誰に</dt><dd>小規模法人・個人事業主・副業を考える方</dd></div>
+            <div><dt>まず開く</dt><dd><a href="../business-starter-packs/">スターターパック一覧</a>を見せてから、無料オンライン説明会へ</dd></div>
+            <div><dt>注意</dt><dd>士業AI実務パックは一覧に載っていない。出すときは個別にURLを送る</dd></div>
+          </dl>
+          <p class="more"><a href="#packs">リンク一式（9本）へ ↓</a></p>
+        </article>
+      </div>
+
+      <div class="sum-staples">
+        <h3>定番の注力サービス（10本）</h3>
+        <ul>
+          <li><span class="r">S</span><span>AIOマスター・Lシンク</span></li>
+          <li><span class="r">A</span><span>ソーシャルマスター・おまかせ受電AI・Elliot・スーパーマネージャー</span></li>
+          <li><span class="r">B</span><span>名刺LINEエージェント・つばめリード・リストマスター</span></li>
+          <li><span class="r">C</span><span>初回相談AI（士業向け）</span></li>
+        </ul>
+        <p class="more"><a href="#staples">各サービスの説明とリンクへ ↓</a></p>
+      </div>
+    </div>
+  </section>
 
   <nav class="jump" aria-label="ページ内の移動">
     <div class="wrap">
       <span class="jump-label">JUMP</span>
+      <a href="#summary"><span class="t">まとめ</span></a>
       <a href="#jmatch"><span class="t">Jマッチ<span class="lg">・エンジン</span></span></a>
       <a href="#worklog"><span class="t">ワークログ</span></a>
       <a href="#packs"><span class="t">スタートパック</span></a>
@@ -544,6 +672,7 @@
 
   <main>
     <div class="wrap">
+      <p class="tier links-head"><span class="tier-n">2</span>リンク集<span class="tier-c">商談で開くページを、説明つきで全部並べています</span></p>
       <h2 class="section">今月の追加</h2>
       <p class="section-note">新しく注力に入った2サービスと、事業ごと立ち上げてもらうスタートパック。</p>
 
