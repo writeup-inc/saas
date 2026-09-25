@@ -200,7 +200,11 @@
     .picks-note small { color: var(--vermilion); font-size: 12px; font-weight: 600; letter-spacing: .08em; line-height: 1.8; white-space: nowrap; }
     .picks-note p { margin: 0; font-size: 14px; line-height: 1.85; }
     .picks-total { margin: 22px 0 0 4px; color: var(--moss); font-size: 14px; line-height: 1.85; }
-    .picks-declare { margin-top: 56px; padding: 40px 44px; color: var(--white); background: var(--ink); }
+    .picks-declare { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 28px 48px; align-items: center; margin-top: 56px; padding: 40px 44px; color: var(--white); background: var(--ink); }
+    .declare-cta { min-width: 300px; color: var(--white); background: var(--vermilion); }
+    .declare-cta:hover { background: #a82514; }
+    .pick p.body.note { margin-top: 10px; color: #6b7168; font-size: 12px; line-height: 1.7; }
+    .pick.is-key p.body.note { color: #bfc6b8; }
     .picks-declare small { display: block; color: var(--soft-vermilion); font-size: 11px; font-weight: 600; letter-spacing: .17em; }
     .picks-declare strong { display: block; margin-top: 16px; font: 500 clamp(26px, 2.6vw, 36px)/1.55 var(--serif); letter-spacing: -.04em; }
 
@@ -228,6 +232,8 @@
       .loop-steps b { font-size: 18px; }
       .loop-compare { grid-template-columns: 1fr; gap: 12px; }
       .picks-grid { grid-template-columns: 1fr; gap: 20px; }
+      .picks-declare { grid-template-columns: 1fr; }
+      .declare-cta { justify-self: start; }
     }
 
     @media (max-width: 680px) {
@@ -304,7 +310,8 @@
       .pick { padding: 26px 22px 24px; }
       .pick h3 { font-size: 23px; }
       .picks-note { grid-template-columns: 1fr; gap: 6px; padding: 16px 18px; }
-      .picks-declare { margin-top: 40px; padding: 30px 22px; }
+      .picks-declare { grid-template-columns: 1fr; margin-top: 40px; padding: 30px 22px; }
+      .declare-cta { min-width: 0; width: 100%; }
       .picks-declare strong { font-size: 24px; }
       .closing { padding-top: 70px; }
       .closing-copy { margin-top: 31px; font-size: 14px; line-height: 1.9; }
@@ -401,23 +408,20 @@
 
       <div class="picks-grid">
         <article class="pick"><p class="pick-no">01 / 人脈になる</p><h3>Lシンク</h3><p class="pick-price">月3万円</p>
-          <p class="pick-for">いま、LINEで連絡が取れる相手が100人に満たない方の1本目です。</p>
-          <p class="body">出会いは毎日あります。名刺を交換した、紹介された、SNSでつながった。けれどもそのほとんどは、連絡が途切れて終わります。</p>
-          <p class="body">Lシンクは、出会った方をLINEでつなぎとめ、AIが日々のやりとりを続けて関係を切らさないようにします。囲い込む、という言い方が近いかもしれません。<strong>出会いが人脈に変わるのは、ここです。</strong></p>
+          <p class="pick-for">LINEで連絡が取れる相手が、100人に満たない方の1本目です。</p>
+          <p class="body">名刺交換や紹介の出会いは、ほとんどが連絡が途切れて終わります。Lシンクは出会った方をLINEでつなぎとめ、AIがやりとりを続けます。<strong>出会いが人脈に変わるのは、ここです。</strong></p>
           <p class="pick-link-wrap"><a class="pick-link" href="https://lsync.figma.site/" target="_blank" rel="noopener">Lシンクを詳しく見る <span aria-hidden="true">↗</span></a></p>
         </article>
         <article class="pick"><p class="pick-no">02 / 伝わる</p><h3>ホームページ制作会社<br>スタートパック</h3><p class="pick-price">1年目 月10万円・<span class="nw">2年目から月1万円（税別）</span></p>
           <p class="pick-for">「どこを見れば分かりますか」と聞かれて、送れるURLがない方の1本目です。</p>
-          <p class="body">つながった方は、どこかで一度あなたを見に来ます。そのときにやりたいことが伝わる状態にしておきます。</p>
-          <p class="body">作ってもらうのではなく、AI家庭教師に教わりながら自分で作れるようになるパックです。最初に作るのは自分の会社の2枚。何をやっている会社なのかを正確に伝える左脳型の会社サイトと、なぜやるのかを伝える右脳型の共感LPです。</p>
-          <p class="body"><strong>一度作れるようになれば、事業が増えても、キャンペーンを打つときも、ホームページは作り放題です。</strong>AIの利用料やドメイン・サーバー代は別にかかります。</p>
+          <p class="body">AI家庭教師に教わりながら、会社サイトと共感LPの2枚を自分で作ります。<strong>一度作れるようになれば、ホームページは作り放題です。</strong></p>
+          <p class="body note">AIの利用料、ドメイン・サーバー代は別にかかります。</p>
           <p class="pick-link-wrap"><a class="pick-link" href="https://writeup-inc.github.io/saas/web-agency-kit/v3/" target="_blank" rel="noopener">スタートパックを詳しく見る <span aria-hidden="true">↗</span></a><span class="pick-sublinks">以前の版：<a href="https://writeup-inc.github.io/saas/web-agency-kit/" target="_blank" rel="noopener">v1</a> ／ <a href="https://writeup-inc.github.io/saas/web-agency-kit/v2/" target="_blank" rel="noopener">v2</a></span></p>
         </article>
         <article class="pick is-key"><p class="pick-no">03 / 収益が立つ</p><h3>営業代行会社<br>スタートパック</h3><p class="pick-price">月3万円</p>
           <p class="pick-for">交流会や紹介で、毎月10人以上の新しい方に会っている方の1本目です。</p>
-          <p class="body">ここがいちばん大事なところです。創業してすぐは、本業の売上が立つまでに時間がかかります。その間、お客様を集める活動は、ふつう持ち出しになります。</p>
-          <p class="body">営業代行を始めておくと、この持ち出しを減らせます。<strong>お客様を集めながら、その活動自体で最低限の収益が立ちます。</strong>人に会うこと、つながること、紹介すること。これまでコストだったものが、そのまま仕事になります。</p>
-          <p class="body">本業が立ち上がるまでの時間の重さが、変わります。報酬の条件や案件のご提供範囲は、ご契約の前にご案内します。</p>
+          <p class="body">創業直後、お客様を集める活動はふつう持ち出しです。営業代行を始めておくと、<strong>集めながら、その活動自体で最低限の収益が立ちます。</strong>人に会うことが、そのまま仕事になります。</p>
+          <p class="body note">報酬の条件や案件の範囲は、ご契約の前にご案内します。</p>
           <p class="pick-link-wrap"><a class="pick-link" href="https://writeup-inc.github.io/saas/ai-sales-agency-starter/" target="_blank" rel="noopener">営業代行スタートパックを詳しく見る <span aria-hidden="true">↗</span></a></p>
         </article>
       </div>
@@ -425,7 +429,7 @@
       <aside class="picks-note"><small>Lシンクを選ぶ場合</small><p>引き出しに名刺が残っている方は、その前に出会いを人脈に変える工程（名刺LINEエージェント）が入ります。名刺がほとんどない方は、Lシンクから始めて構いません。</p></aside>
       <p class="picks-total">3本そろえた場合は、割引前で1年目が月16万円、2年目からは月7万円です。実際の金額は、割引を含めてご相談のうえ決定します。</p>
 
-      <div class="picks-declare"><small>OUR COMMITMENT</small><strong>営業代行会社としての<br>最初のクライアントは、<br>弊社がなります。</strong></div>
+      <div class="picks-declare"><div><small>OUR COMMITMENT</small><strong>営業代行会社としての<br>最初のクライアントは、<br>弊社がなります。</strong></div><a class="button declare-cta" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">営業代行について相談する <span aria-hidden="true">→</span></a></div>
     </div></section>
 
     <section class="closing" aria-labelledby="closing-title"><div class="container"><div class="closing-grid"><div><p class="section-index">YOUR FIRST MOVE</p><h2 id="closing-title">いま必要な<br class="sp-br">一手から、<br>事業をはじめよう。</h2><p class="closing-copy">まだサービスの名前が決まっていなくても、準備が途中でも構いません。<br>まずは現在地を整理して、最初の1本を見つけてください。</p></div>
