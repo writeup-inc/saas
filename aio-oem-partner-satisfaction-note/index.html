@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="canonical" href="https://writeup-inc.github.io/saas/aio-oem-partner-satisfaction-note/">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="パートナーさんとの打ち合わせ用。AIO OEMで60IDの価値を実感してもらうための成果、施策、確認事項を整理した大学ノート風メモ。">
+  <title>AIO OEM｜60IDの価値設計・打ち合わせメモ</title>
+  <style>
+    :root { color-scheme: light; --ink:#202020; --sub:#575757; --muted:#777; --rule:#f3f3f3; --line:#d0d0d0; --red:#a93436; }
+    * { box-sizing:border-box; }
+    html { background:#ededed; }
+    body { margin:0; color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",Meiryo,sans-serif; line-height:1.82; font-size:15px; }
+    .paper { width:min(100% - 40px, 1120px); min-height:100vh; margin:28px auto 48px; padding:54px 64px 74px 114px; background:repeating-linear-gradient(to bottom,#fff 0,#fff 42px,var(--rule) 43px,#fff 44px); border:1px solid #e2e2e2; position:relative; }
+    .paper::before { content:""; position:absolute; top:0; bottom:0; left:78px; border-left:1px solid #d7bcbc; }
+    .eyebrow { display:flex; flex-wrap:wrap; gap:8px 20px; color:var(--muted); font-size:12px; letter-spacing:.11em; }
+    h1,h2,h3 { font-family:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP",serif; font-weight:600; line-height:1.48; }
+    h1 { font-size:clamp(33px,3.8vw,47px); letter-spacing:.02em; margin:18px 0 16px; max-width:860px; }
+    .headline-payoff { display:block; margin-top:6px; font-size:clamp(40px,4.7vw,59px); font-weight:700; line-height:1.28; letter-spacing:.012em; }
+    .lead { margin:0; max-width:760px; color:var(--sub); font-size:16px; line-height:1.9; }
+    .thesis { margin:30px 0 0; padding:13px 0 13px 18px; border-left:3px solid #333; font-size:17px; font-weight:650; line-height:1.8; background:rgba(255,255,255,.88); }
+    .section { margin-top:76px; }
+    .section-head { display:flex; align-items:end; justify-content:space-between; gap:20px; border-bottom:1px solid #b5b5b5; padding-bottom:11px; margin-bottom:20px; }
+    h2 { font-size:28px; font-weight:700; line-height:1.38; margin:0; }
+    .section h2 { display:flex; align-items:baseline; }
+    .section-letter { flex:0 0 1.1em; margin-right:10px; color:#555; font-family:Georgia,serif; font-size:.88em; font-weight:700; line-height:1.15; }
+    .section-kicker { color:#555; font-size:12px; letter-spacing:.08em; white-space:nowrap; }
+    .row { display:grid; grid-template-columns:minmax(170px,1fr) minmax(0,3fr); gap:16px 26px; padding:17px 4px 19px; border-bottom:1px solid #e1e1e1; background:rgba(255,255,255,.78); }
+    .row:last-child { border-bottom:0; }
+    .row h3 { font-size:19px; margin:0 0 3px; }
+    .row .number { display:block; font-family:Georgia,serif; font-size:12px; color:#777; letter-spacing:.12em; line-height:1.1; margin-bottom:4px; }
+    .row p { margin:0 0 7px; }
+    .row .outcome { font-weight:650; }
+    .measure { color:var(--sub); font-size:13px; }
+    .measure::before { content:"見る数字  "; color:#777; font-weight:600; }
+    .margin-note { display:flex; align-items:center; gap:0; color:var(--red); font-family:"Klee","YuKyokasho",cursive; font-size:20px; font-weight:600; letter-spacing:.045em; white-space:nowrap; transform:rotate(-3deg); margin-bottom:4px; }
+    .margin-note svg { width:66px; height:36px; overflow:visible; flex:none; }
+    .hand-underline { position:relative; display:inline-block; white-space:nowrap; }
+    .hand-underline svg { position:absolute; left:-4%; bottom:-3px; width:108%; height:14px; overflow:visible; pointer-events:none; }
+    .hand-underline path,.margin-note path { fill:none; stroke:var(--red); stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
+    .hand-underline path { stroke-width:3; opacity:.94; }
+    .quick-note { margin:22px 0 0; padding:12px 16px; background:#f5f5f5; border-left:1px solid #777; color:#3d3d3d; font-size:13px; }
+    .quick-note strong { font-weight:700; }
+    .decision-list { counter-reset:decision; list-style:none; margin:10px 0 0; padding:0; }
+    .decision-list li { counter-increment:decision; display:grid; grid-template-columns:34px 1fr; gap:10px; padding:13px 0; border-bottom:1px solid #e0e0e0; background:rgba(255,255,255,.76); }
+    .decision-list li::before { content:counter(decision, decimal-leading-zero); color:#777; font-family:Georgia,serif; font-size:15px; }
+    .decision-list li:last-child { border-bottom:0; }
+    .decision-list strong { display:block; font-weight:700; }
+    .decision-list span { color:#555; font-size:13px; }
+    .map-intro { margin:0 0 17px; color:var(--sub); font-size:14px; }
+    .xy-map { margin:0; padding:0 0 0 38px; position:relative; }
+    .axis-y { position:absolute; left:0; top:0; bottom:26px; width:30px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; color:#444; font-size:12px; font-weight:650; letter-spacing:.04em; }
+    .axis-y-label { writing-mode:vertical-rl; }
+    .axis-y-arrow { font-size:15px; line-height:1; }
+    .map-grid { display:grid; grid-template-columns:1fr 1fr; border:1px solid #999; background:rgba(255,255,255,.84); }
+    .quadrant { min-height:278px; padding:16px 18px 15px; }
+    .quadrant:nth-child(odd) { border-right:1px dashed #c7c7c7; }
+    .quadrant:nth-child(-n+2) { border-bottom:1px dashed #c7c7c7; }
+    .quadrant h3 { margin:0 0 9px; font-size:18px; }
+    .quadrant ul { list-style:none; margin:0; padding:0; position:relative; height:230px; }
+    .quadrant li { position:absolute; left:var(--x); top:var(--y); padding-left:16px; font-size:16px; font-weight:500; line-height:1.45; max-width:calc(100% - var(--x) - 4px); background:rgba(255,255,255,.92); }
+    .quadrant li::before { content:""; position:absolute; left:0; top:.56em; width:6px; height:6px; border:1px solid #555; border-radius:50%; background:#fff; }
+    .quadrant:nth-child(2) li:nth-child(-n+2)::before { border-color:var(--red); }
+    .quadrant li:last-child { margin-bottom:0; }
+    .asset-tag { color:#555; white-space:nowrap; font-size:13px; font-weight:400; }
+    .axis-x { text-align:right; color:#444; font-size:12px; font-weight:650; letter-spacing:.04em; padding-top:6px; }
+    .map-note { margin:10px 0 0 38px; color:#666; font-size:12px; }
+    .small-print { margin:34px 0 0; color:#666; font-size:11px; border-top:1px solid #e1e1e1; padding-top:12px; line-height:1.7; }
+    .hero-note { display:inline-block; color:var(--red); font-family:"Klee","HanziPen SC",cursive; font-size:15px; transform:rotate(-3deg); margin:13px 0 0 17px; }
+    .flow { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px; margin-top:17px; }
+    .flow-step { position:relative; padding:10px 8px 12px; background:rgba(255,255,255,.78); min-height:112px; }
+    .flow-step:not(:last-child)::after { content:"→"; position:absolute; right:-18px; top:29px; font-size:18px; color:#777; z-index:1; }
+    .flow-no { display:block; color:#777; font-family:Georgia,serif; font-size:12px; letter-spacing:.1em; margin-bottom:6px; }
+    .flow-step strong { display:block; font-size:16px; line-height:1.45; }
+    .flow-step p { margin:5px 0 0; color:#555; font-size:12px; line-height:1.65; }
+    .flow-caption { margin:9px 0 0; color:#666; font-size:12px; }
+    .guardrail-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+    .guardrail { padding:10px 10px 13px; background:rgba(255,255,255,.78); }
+    .guardrail h3 { margin:0 0 9px; font-size:18px; }
+    .guardrail p { margin:0; font-size:13px; line-height:1.75; }
+    .guardrail .number { display:block; font-family:Georgia,serif; font-size:12px; color:#777; letter-spacing:.1em; margin-bottom:4px; }
+    .guardrail .measure { display:block; margin-top:10px; font-size:12px; }
+    .meeting-section { margin-top:76px; padding:23px 25px 24px; border:1px solid #c4c4c4; background:rgba(255,255,255,.92); }
+    .meeting-section .section-head { margin-bottom:5px; }
+    .meeting-section h2 { font-size:28px; }
+    a { color:inherit; text-underline-offset:3px; }
+    @media (max-width:720px) {
+      .paper { width:100%; margin:0; padding:30px 20px 52px 39px; border:0; }
+      .paper::before { left:19px; }
+      .eyebrow { font-size:10px; gap:4px 10px; }
+      h1 { font-size:29px; }
+      .headline-payoff { font-size:32px; line-height:1.34; margin-top:7px; }
+      .lead { font-size:14px; }
+      .thesis { font-size:16px; margin:24px 0 0; padding-left:13px; }
+      .section { margin-top:56px; }
+      .section-head { align-items:start; flex-direction:column; gap:0; }
+      h2 { font-size:24px; }
+      .section-kicker { white-space:normal; }
+      .row { grid-template-columns:1fr; gap:4px; padding:11px 0 13px; }
+      .row h3 { font-size:18px; }
+      .margin-note { font-size:17px; align-self:end; }
+      .margin-note svg { width:58px; height:32px; }
+      .xy-map { padding-left:23px; }
+      .axis-y { width:20px; font-size:10px; }
+      .quadrant { min-height:0; padding:11px 8px 12px; }
+      .quadrant h3 { font-size:16px; margin-bottom:8px; }
+      .quadrant ul { height:auto; }
+      .quadrant li { position:relative; left:auto; top:auto; max-width:none; font-size:14px; padding-left:11px; line-height:1.5; margin-bottom:10px; }
+      .asset-tag { font-size:12px; }
+      .quadrant li::before { top:.5em; width:5px; height:5px; }
+      .map-note { margin-left:23px; }
+      .flow { grid-template-columns:1fr; gap:0; }
+      .flow-step { min-height:0; padding:10px 3px 12px; }
+      .flow-step + .flow-step { border-top:1px solid #ededed; }
+      .flow-step::after { display:none; }
+      .flow-step p { font-size:13px; }
+      .guardrail-grid { grid-template-columns:1fr; gap:0; }
+      .guardrail { padding:14px 1px; }
+      .guardrail + .guardrail { border-top:1px solid #ededed; }
+      .meeting-section { margin-top:56px; padding:17px 14px; }
+      .meeting-section h2 { font-size:24px; }
+    }
+    @media print {
+      html { background:#fff; }
+      body { font-size:12px; }
+      .paper { width:100%; min-height:0; margin:0; padding:25mm 15mm 18mm 25mm; border:0; }
+      .paper::before { left:18mm; }
+      .section,.row,.decision-list li { break-inside:avoid; }
+      a { text-decoration:none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="paper">
+    <div class="eyebrow"><span>DISCUSSION NOTE / AIO OEM</span><span>パートナーさんとの打ち合わせ用・試案</span></div>
+    <h1>仕入れた<span class="hand-underline">60ID<svg viewBox="0 0 160 14" preserveAspectRatio="none" aria-hidden="true"><path d="M5 8 Q43 7 79 8 Q116 8 154 7"/></svg></span>の購入投資を、<span class="headline-payoff">売れる事業に変える。</span></h1>
+    <p class="lead">パートナーさんは、AIOの60ID・1年分をすでに仕入れている。これから問うのは、何を追加で渡すかではなく、販売を進め、仕入れ費用を回収し、本業にも力を残せるか。</p>
+    <p class="thesis">パートナー満足の軸は、<strong>「売れる」「回収できる」「力が残る」。</strong><br>仕入れ後の1年間で、この3つをどう作るか。</p>
+
+    <section class="section" aria-labelledby="flow-title">
+      <div class="section-head"><h2 id="flow-title"><span class="section-letter">A</span>購入後に回したい、ひとつの循環</h2><span class="section-kicker">60IDを寝かせないための道筋</span></div>
+      <div class="flow" role="list" aria-label="需要発見から費用回収までの流れ">
+        <div class="flow-step" role="listitem"><span class="flow-no">01</span><strong>売り先を見つける</strong><p>既存顧客と地域の候補を絞り、需要の根拠を持つ。</p></div>
+        <div class="flow-step" role="listitem"><span class="flow-no">02</span><strong>最初の受注を作る</strong><p>顧客別提案と初回商談を共同で進める。</p></div>
+        <div class="flow-step" role="listitem"><span class="flow-no">03</span><strong>顧客成果を示す</strong><p>導入後の計測・改善で継続と紹介につなぐ。</p></div>
+        <div class="flow-step" role="listitem"><span class="flow-no">04</span><strong>回収と自走へ</strong><p>実現利益と残る技能を別々に確かめる。</p></div>
+      </div>
+      <p class="flow-caption">これは目標の流れ。受注件数・効果・回収を保証するものではない。</p>
+    </section>
+
+    <section class="section" aria-labelledby="results-title">
+      <div class="section-head"><h2 id="results-title"><span class="section-letter">B</span>満足を判断する、3つの成果</h2><div class="margin-note"><svg viewBox="0 0 70 36" aria-hidden="true"><path d="M68 18C48 15 22 19 6 28m0 0 13-2M6 28l7-11"/></svg><span>売上だけではない</span></div></div>
+      <div class="row"><div><span class="number">01</span><h3>AIOが売れる</h3></div><div><p class="outcome">初受注の後も、月ごとの提案・受注が続く。</p><p>需要情報を「今週、誰に何を提案するか」に変え、顧客別提案と初回商談を支える。</p><p class="measure">初受注までの日数／月間提案・商談・受注数／利用ID数</p></div></div>
+      <div class="row"><div><span class="number">02</span><h3>費用を回収できる</h3></div><div><p class="outcome">AIOと関連案件の実現利益で、仕入れ費用との差を縮める。</p><p>開発・Web制作・人材案件の紹介は追加の回収経路。ただし、紹介条件と報酬が決まった案件だけを計上する。</p><p class="measure">実現利益の累計／仕入れ費用との差額</p></div></div>
+      <div class="row"><div><span class="number">03</span><h3>本業に力が残る</h3></div><div><p class="outcome">AIを使った営業・見積り・Web制作が、自社で回る。</p><p>Claude Codeのスキルを実案件で使い、担当者の技能と再利用できる提案・制作の型を残す。</p><p class="measure">自力で提案・制作できる人数／実案件での利用数</p></div></div>
+    </section>
+
+    <section class="section" aria-labelledby="map-title">
+      <div class="section-head"><h2 id="map-title"><span class="section-letter">C</span>どの施策から動かすか</h2><div class="margin-note"><svg viewBox="0 0 70 36" aria-hidden="true"><path d="M68 18C48 15 22 19 6 28m0 0 13-2M6 28l7-11"/></svg><span>まず右上</span></div></div>
+      <p class="map-intro">購入後の優先順位を話すための仮配置。右ほどAIO受注に、上ほど仕入れ費用の金銭回収に直接つながりやすい。</p>
+      <figure class="xy-map" aria-labelledby="map-title" aria-describedby="map-desc">
+        <div class="axis-y"><span class="axis-y-arrow" aria-hidden="true">↑</span><span class="axis-y-label">費用回収への直結度</span></div>
+        <div class="map-grid">
+          <div class="quadrant"><h3>回収を補う</h3><ul>
+            <li style="--x:12%;--y:15%">開発案件の紹介・報酬</li>
+            <li style="--x:33%;--y:46%">人材案件の紹介・報酬</li>
+            <li style="--x:18%;--y:78%">概算見積りスキル <span class="asset-tag">［資産］</span></li>
+          </ul></div>
+          <div class="quadrant"><h3>最優先でつくる</h3><ul>
+            <li style="--x:36%;--y:9%">既存顧客への個別提案</li>
+            <li style="--x:18%;--y:35%">初回商談への同席</li>
+            <li style="--x:45%;--y:60%">月次の案件レビュー</li>
+            <li style="--x:13%;--y:84%">導入後の顧客成果改善</li>
+          </ul></div>
+          <div class="quadrant"><h3>時間をかけて育てる</h3><ul>
+            <li style="--x:12%;--y:15%">パートナーのオウンドメディア</li>
+            <li style="--x:35%;--y:47%">AIO勉強会＋交流会</li>
+            <li style="--x:17%;--y:79%">ホームページ制作スキル <span class="asset-tag">［資産］</span></li>
+          </ul></div>
+          <div class="quadrant"><h3>受注の土台をつくる</h3><ul>
+            <li style="--x:31%;--y:10%">AIO営業スキル <span class="asset-tag">［資産］</span></li>
+            <li style="--x:7%;--y:37%">名刺情報から顧客別営業メール</li>
+            <li style="--x:30%;--y:63%">パートナー名義のメルマガ</li>
+            <li style="--x:12%;--y:85%">需要情報＋効果試算</li>
+          </ul></div>
+        </div>
+        <div class="axis-x">AIO受注への直結度 →</div>
+      </figure>
+      <p class="map-note" id="map-desc">［資産］は、技能や制作力が社内に残る施策。位置は実績値ではなく、打ち合わせで見直すための仮説。</p>
+    </section>
+
+    <section class="section" aria-labelledby="conditions-title">
+      <div class="section-head"><h2 id="conditions-title"><span class="section-letter">D</span>売れ始めても、外せない3つの条件</h2><span class="section-kicker">ここが崩れると満足は続かない</span></div>
+      <div class="guardrail-grid">
+        <div class="guardrail"><span class="number">01</span><h3>顧客の成果</h3><p>導入後の計測・改善・説明の担当を決める。AI検索での掲載や売上を保証せず、改善履歴を示す。</p><span class="measure">顧客継続率／改善実施率／解約理由</span></div>
+        <div class="guardrail"><span class="number">02</span><h3>商売の公平さ</h3><p>地域・業種の重複、直販との競合、リード配分、価格裁量、顧客情報と制作物の扱いを明示する。</p><span class="measure">案件配分の記録／権利トラブル</span></div>
+        <div class="guardrail"><span class="number">03</span><h3>売れない時の支援</h3><p>定例で停滞箇所を見つけ、次の対象顧客と支援行動を決める。研修や情報配信だけで終わらせない。</p><span class="measure">定例実施率／支援実行率／停滞期間</span></div>
+      </div>
+      <p class="quick-note"><strong>費用回収の見方：</strong>売上ではなく、原価・紹介料などを引いた実現利益で見る。AIスキルや制作力は別の価値として示し、金額に換算して回収済みとは扱わない。</p>
+    </section>
+
+    <section class="meeting-section" aria-labelledby="meeting-title">
+      <div class="section-head"><h2 id="meeting-title">パートナーさんとの打ち合わせで決めたいこと</h2><span class="section-kicker">購入後の実行に落とす</span></div>
+      <ol class="decision-list">
+        <li><div><strong>最初のAIO受注を、誰がいつまでにどう支援するか。</strong><span>対象顧客の選定、個別提案、初回商談への同席、支援可能な社数を確認。</span></div></li>
+        <li><div><strong>仕入れ済みの60IDを、どう活用・管理するか。</strong><span>利用期限、割当・消化の条件、未使用IDの扱いを契約で確認し、追う数字を決める。</span></div></li>
+        <li><div><strong>AIO以外の回収経路を、どこまで用意できるか。</strong><span>開発・制作・人材案件の紹介条件、報酬の発生条件、過去の供給実績を確認。</span></div></li>
+        <li><div><strong>売った後の責任と、パートナーの権利をどう守るか。</strong><span>顧客成果の説明、地域・直販競合、顧客情報・制作物の扱いを確認。</span></div></li>
+      </ol>
+    </section>
+
+    <p class="small-print">前提：パートナーさんは60IDの1年分を仕入れ済み。IDの利用・期限・未使用時の扱いは契約で要確認。このメモは議論用の試案であり、紹介案件の供給、受注件数、返金・補填を約束するものではない。AI検索での掲載は保証されない：<a href="https://developers.google.com/search/docs/appearance/ai-features" target="_blank" rel="noopener noreferrer">Google Search Central「AI features and your website」</a>。</p>
+  </main>
+</body>
+</html>
