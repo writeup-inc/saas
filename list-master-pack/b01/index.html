@@ -1051,6 +1051,12 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
 :root[data-theme="dark"] .hx-veil{background:linear-gradient(90deg,rgba(16,26,46,.95) 0%,rgba(16,26,46,.88) 45%,rgba(16,26,46,.7) 100%)}
 @media (max-width:1040px){.hx-veil{background:rgba(255,248,238,.9)}}
 @media (max-width:1040px) and (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hx-veil{background:rgba(16,26,46,.9)}}
+
+/* ヘッダー：下スクロールで隠し、上スクロールで出す（header-autohide.md） */
+.site-header{transition:transform .32s cubic-bezier(.2,.7,.2,1)}
+.site-header.is-hidden{transform:translateY(-100%)}
+@media (prefers-reduced-motion:reduce){.site-header{transition:none}}
+html{scroll-padding-top:72px}
 </style>
 </head>
 <body>
@@ -1804,6 +1810,22 @@ document.addEventListener('click', function (e) {
     function(){}
   ];
   var i=0; (function tick(){ steps[i](); i=(i+1)%steps.length; setTimeout(tick,i===0?2200:1300); })();
+})();
+</script>
+<script>
+(function(){
+  var hd=document.querySelector('.site-header'); if(!hd) return;
+  var last=window.scrollY, ticking=false, TH=8, TOP=120;
+  function upd(){
+    var y=window.scrollY, d=y-last;
+    if(y<TOP||hd.contains(document.activeElement)){ hd.classList.remove('is-hidden'); }
+    else if(d>TH){ hd.classList.add('is-hidden'); }
+    else if(d<-TH){ hd.classList.remove('is-hidden'); }
+    if(Math.abs(d)>TH) last=y;
+    ticking=false;
+  }
+  window.addEventListener('scroll',function(){ if(!ticking){ ticking=true; requestAnimationFrame(upd); } },{passive:true});
+  hd.addEventListener('focusin',function(){ hd.classList.remove('is-hidden'); });
 })();
 </script>
 </body>

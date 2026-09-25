@@ -834,6 +834,12 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
 .done a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; color: var(--accent); }
 .form-note { margin: 14px 0 0; font-size: 13px; color: var(--mute); }
 .close-box .tel { display: inline-flex; align-items: center; min-height: 44px; font: 800 1.4rem/1 "Inter", sans-serif; color: #fff; text-decoration: none; }
+
+/* ヘッダー：下スクロールで隠し、上スクロールで出す（header-autohide.md） */
+.site-header{transition:transform .32s cubic-bezier(.2,.7,.2,1)}
+.site-header.is-hidden{transform:translateY(-100%)}
+@media (prefers-reduced-motion:reduce){.site-header{transition:none}}
+html{scroll-padding-top:72px}
 </style>
 </head>
 <body>
@@ -1190,6 +1196,22 @@ document.addEventListener('click', function (e) {
     if(!check()) return;
     location.href='mailto:info@writeup.co.jp?subject='+encodeURIComponent('リストマスター パートナー個別説明の申込')+'&body='+encodeURIComponent(text());
   });
+})();
+</script>
+<script>
+(function(){
+  var hd=document.querySelector('.site-header'); if(!hd) return;
+  var last=window.scrollY, ticking=false, TH=8, TOP=120;
+  function upd(){
+    var y=window.scrollY, d=y-last;
+    if(y<TOP||hd.contains(document.activeElement)){ hd.classList.remove('is-hidden'); }
+    else if(d>TH){ hd.classList.add('is-hidden'); }
+    else if(d<-TH){ hd.classList.remove('is-hidden'); }
+    if(Math.abs(d)>TH) last=y;
+    ticking=false;
+  }
+  window.addEventListener('scroll',function(){ if(!ticking){ ticking=true; requestAnimationFrame(upd); } },{passive:true});
+  hd.addEventListener('focusin',function(){ hd.classList.remove('is-hidden'); });
 })();
 </script>
 </body>
