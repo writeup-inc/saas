@@ -155,40 +155,47 @@
 
     .picks { padding: 96px 0 92px; background: var(--pale); color: var(--ink); }
     .picks h2 { margin-bottom: 0; font: 500 clamp(34px, 3.55vw, 51px)/1.42 var(--serif); letter-spacing: -.055em; }
+    .picks h2 em { font-style: normal; color: var(--vermilion); }
     .sp-br { display: none; }
     .nw { white-space: nowrap; }
-    .picks-intro { max-width: 760px; margin: 38px 0 0 4px; color: var(--moss); font-size: 15px; line-height: 2; letter-spacing: .02em; }
-    .loop { margin: 64px 0 0; padding: 40px 44px 36px; background: var(--white); border: 1px solid var(--line); }
-    .loop-title { margin: 0; color: var(--moss); font: 500 22px/1.5 var(--serif); letter-spacing: -.02em; }
-    .loop-steps { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 34px; margin: 30px 0 0; padding: 0; list-style: none; }
-    .loop-steps li { position: relative; z-index: 1; min-height: 116px; padding: 18px 20px; border: 1px solid var(--moss); background: var(--white); }
-    .loop-steps li:not(:last-child)::after { content: "→"; position: absolute; top: 50%; right: -27px; transform: translateY(-50%); color: var(--moss); font-size: 18px; }
-    .loop-steps li.is-goal { border-color: var(--vermilion); box-shadow: inset 0 0 0 1px var(--vermilion); }
-    .loop-steps small { display: block; color: var(--vermilion); font-size: 11px; font-weight: 600; letter-spacing: .14em; }
-    .loop-steps b { display: block; margin-top: 8px; font: 500 21px/1.4 var(--serif); letter-spacing: -.02em; }
-    .loop-steps em { display: block; margin-top: 6px; color: var(--moss); font-size: 13px; font-style: normal; line-height: 1.5; }
-    .loop-return { position: relative; height: 44px; margin: 0 12.5%; border: 1.5px dashed var(--vermilion); border-top: 0; }
-    .loop-return::before { content: "▲"; position: absolute; top: -9px; left: -7px; color: var(--vermilion); font-size: 12px; line-height: 1; }
-    .loop-return span { position: absolute; left: 50%; bottom: -13px; transform: translateX(-50%); padding: 0 14px; background: var(--white); color: var(--vermilion); font-size: 14px; font-weight: 600; white-space: nowrap; letter-spacing: .03em; }
-    .loop-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 42px; }
-    .loop-compare div { padding: 18px 22px; border: 1px solid var(--line); color: #5b6259; }
-    .loop-compare div.is-ours { border-color: var(--moss); background: var(--moss); color: var(--white); }
-    .loop-compare small { display: block; font-size: 12px; font-weight: 600; letter-spacing: .1em; }
-    .loop-compare span { display: block; margin-top: 6px; font-size: 15px; font-weight: 500; line-height: 1.7; }
-    .picks-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
-    .pick { display: flex; flex-direction: column; padding: 32px 30px 30px; background: var(--white); border-top: 3px solid var(--moss); }
+    .picks-intro { max-width: 760px; margin: 34px 0 0 4px; color: var(--moss); font-size: 15px; line-height: 2; letter-spacing: .02em; }
+    .contrast { margin: 52px 0 0; background: var(--white); border: 1px solid var(--line); }
+    .contrast-row { display: grid; grid-template-columns: 180px minmax(0, 1fr) minmax(0, 1fr); }
+    .contrast-row > div { padding: 18px 26px; border-top: 1px solid var(--line); font-size: 15px; line-height: 1.7; }
+    .contrast-row:first-child > div { border-top: 0; }
+    .contrast-head > div { padding-block: 14px; font-size: 12px; font-weight: 600; letter-spacing: .1em; }
+    .c-act { color: var(--moss); font-weight: 600; }
+    .c-plain { color: #6b7168; }
+    .c-ours { color: var(--white); background: var(--moss); border-top-color: rgba(255,255,255,.16) !important; font-weight: 500; }
+    .c-ours em { display: block; margin-top: 2px; color: #a8d1ab; font-size: 12px; font-style: normal; font-weight: 500; }
+    .contrast-head .c-ours { color: #a8d1ab; }
+    .contrast-sum > div { padding-block: 26px; }
+    .contrast-sum .c-act { align-self: stretch; display: flex; align-items: center; }
+    .contrast-sum .c-plain, .contrast-sum .c-ours { font: 500 clamp(22px, 2.2vw, 30px)/1.45 var(--serif); letter-spacing: -.03em; }
+    .contrast-sum .c-plain { color: #8a8f86; }
+    .contrast-sum .c-ours { background: var(--ink); box-shadow: inset 4px 0 0 var(--vermilion); }
+    .contrast-note { margin: 12px 0 0 4px; color: #5b6259; font-size: 12px; line-height: 1.7; }
+    .picks-grid { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; margin-top: 64px; }
+    .pick { position: relative; display: flex; flex-direction: column; padding: 30px 30px 30px; background: var(--white); border-top: 3px solid var(--moss); }
+    .pick:not(:last-child)::after { content: "→"; position: absolute; top: 44px; right: -28px; color: var(--moss); font-size: 20px; line-height: 1; }
     .pick.is-key { color: var(--white); background: var(--moss); border-top-color: var(--vermilion); }
-    .pick-no { margin: 0; color: var(--vermilion); font-size: 11px; font-weight: 600; letter-spacing: .16em; }
+    .pick-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .pick-head svg { flex: 0 0 auto; width: 32px; height: 32px; color: var(--moss); }
+    .pick.is-key .pick-head svg { color: var(--soft-vermilion); }
+    .pick-no { margin: 0; color: var(--vermilion); font-size: 12px; font-weight: 600; letter-spacing: .14em; }
     .pick.is-key .pick-no { color: var(--soft-vermilion); }
-    .pick h3 { margin: 14px 0 0; font: 500 25px/1.45 var(--serif); letter-spacing: -.03em; }
+    .pick h3 { margin: 12px 0 0; font: 500 25px/1.45 var(--serif); letter-spacing: -.03em; }
     .pick-price { margin: 8px 0 0; font-size: 15px; font-weight: 600; letter-spacing: .03em; }
-    .pick-for { margin: 20px 0 0; padding: 14px 0; border-block: 1px solid var(--line); color: var(--moss); font-size: 14px; font-weight: 600; line-height: 1.75; }
+    .pick-for { margin: 18px 0 0; padding: 14px 0; border-block: 1px solid var(--line); color: var(--moss); font-size: 14px; font-weight: 600; line-height: 1.75; }
     .pick.is-key .pick-for { color: var(--white); border-color: rgba(255,255,255,.3); }
     .pick p.body { margin: 16px 0 0; color: #3a4038; font-size: 14px; line-height: 1.95; }
     .pick.is-key p.body { color: #e5e8db; }
     .pick p.body strong { font-weight: 600; color: var(--ink); }
     .pick.is-key p.body strong { color: var(--white); }
-    .pick-link { display: inline-flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 48px; margin-top: auto; padding: 0 18px; border: 1px solid var(--moss); color: var(--moss); font-size: 14px; font-weight: 600; letter-spacing: .03em; transition: background .2s ease, color .2s ease; }
+    .pick p.body.note { margin-top: 10px; color: #6b7168; font-size: 12px; line-height: 1.7; }
+    .pick.is-key p.body.note { color: #bfc6b8; }
+    .pick p.first-client { margin: 16px 0 0; padding: 10px 14px; background: rgba(255,255,255,.08); border-left: 3px solid var(--soft-vermilion); color: var(--white); font-size: 14px; font-weight: 600; line-height: 1.6; }
+    .pick-link { display: inline-flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 48px; padding: 0 18px; border: 1px solid var(--moss); color: var(--moss); font-size: 14px; font-weight: 600; letter-spacing: .03em; transition: background .2s ease, color .2s ease; }
     .pick-link:hover { background: var(--moss); color: var(--white); }
     .pick .pick-link-wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin: auto 0 0; padding-top: 24px; }
     .pick-sublinks { color: #5b6259; font-size: 13px; line-height: 1.7; white-space: nowrap; }
@@ -196,15 +203,18 @@
     .pick.is-key .pick-link { border-color: var(--vermilion); background: var(--vermilion); color: var(--white); }
     .pick.is-key .pick-link:hover { background: #a82514; }
     @media (min-width: 901px) { .pick .pick-link-wrap { min-height: 104px; align-content: flex-start; } }
-    .picks-note { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: start; margin-top: 32px; padding: 20px 26px; background: var(--white); border-left: 3px solid var(--vermilion); color: var(--moss); }
-    .picks-note small { color: var(--vermilion); font-size: 12px; font-weight: 600; letter-spacing: .08em; line-height: 1.8; white-space: nowrap; }
-    .picks-note p { margin: 0; font-size: 14px; line-height: 1.85; }
-    .picks-total { margin: 22px 0 0 4px; color: var(--moss); font-size: 14px; line-height: 1.85; }
-    .picks-declare { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 28px 48px; align-items: center; margin-top: 56px; padding: 40px 44px; color: var(--white); background: var(--ink); }
+    .picks-return { position: relative; height: 40px; margin-bottom: 0; margin: 0 16.6%; border: 1.5px dashed var(--vermilion); border-top: 0; }
+    .picks-return::before { content: "▲"; position: absolute; top: -9px; left: -7px; color: var(--vermilion); font-size: 12px; line-height: 1; }
+    .picks-return span { position: absolute; left: 50%; bottom: -12px; transform: translateX(-50%); padding: 0 14px; background: var(--pale); color: var(--vermilion); font-size: 14px; font-weight: 600; white-space: nowrap; letter-spacing: .03em; }
+    .picks-sum { margin-top: 52px; padding: 22px 28px; background: var(--white); border: 1px solid var(--line); }
+    .sum-row { margin: 0; display: grid; grid-template-columns: 96px minmax(0, 1fr) auto; gap: 16px; align-items: baseline; padding: 10px 0; color: var(--moss); font-size: 14px; }
+    .sum-row + .sum-row { border-top: 1px solid var(--pale); }
+    .sum-row small { color: var(--vermilion); font-size: 12px; font-weight: 600; letter-spacing: .08em; }
+    .sum-row b { font: 500 26px/1.2 var(--serif); letter-spacing: -.02em; color: var(--ink); white-space: nowrap; }
+    .sum-note { margin: 8px 0 0; color: #5b6259; font-size: 12px; line-height: 1.7; }
+    .picks-declare { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 28px 48px; align-items: center; margin-top: 40px; padding: 40px 44px; color: var(--white); background: var(--ink); }
     .declare-cta { min-width: 300px; color: var(--white); background: var(--vermilion); }
     .declare-cta:hover { background: #a82514; }
-    .pick p.body.note { margin-top: 10px; color: #6b7168; font-size: 12px; line-height: 1.7; }
-    .pick.is-key p.body.note { color: #bfc6b8; }
     .picks-declare small { display: block; color: var(--soft-vermilion); font-size: 11px; font-weight: 600; letter-spacing: .17em; }
     .picks-declare strong { display: block; margin-top: 16px; font: 500 clamp(26px, 2.6vw, 36px)/1.55 var(--serif); letter-spacing: -.04em; }
 
@@ -225,13 +235,13 @@
       .system-divider { display: none; }
       .services { gap: 30px; padding-top: 58px; }
       .services h3 { font-size: 22px; }
-      .loop { padding: 34px 30px 30px; }
-      .loop-steps { gap: 26px; }
-      .loop-steps li { padding: 16px 14px; }
-      .loop-steps li:not(:last-child)::after { right: -21px; }
-      .loop-steps b { font-size: 18px; }
-      .loop-compare { grid-template-columns: 1fr; gap: 12px; }
-      .picks-grid { grid-template-columns: 1fr; gap: 20px; }
+      .contrast-row { grid-template-columns: 120px minmax(0, 1fr) minmax(0, 1fr); }
+      .contrast-row > div { padding: 16px 16px; font-size: 14px; }
+      .picks-grid { grid-template-columns: 1fr; gap: 40px; }
+      .pick:not(:last-child)::after { content: "↓"; top: auto; right: auto; bottom: -31px; left: 50%; transform: translateX(-50%); }
+      .picks-return { height: auto; margin: 18px 0 0; padding: 12px 14px; border: 1.5px dashed var(--vermilion); text-align: center; }
+      .picks-return::before { content: none; }
+      .picks-return span { position: static; transform: none; padding: 0; background: none; white-space: normal; font-size: 13px; }
       .picks-declare { grid-template-columns: 1fr; }
       .declare-cta { justify-self: start; }
     }
@@ -290,27 +300,29 @@
       .service-list em { font-size: 12px; }
       .system-result { margin-top: 35px; }
       .picks { padding: 66px 0 60px; }
-      .picks h2 { font-size: 33px; line-height: 1.48; }
+      .picks h2 { font-size: 32px; line-height: 1.48; }
       .sp-br { display: inline; }
-      .picks-intro { margin-top: 31px; font-size: 14px; line-height: 1.9; }
-      .loop { margin-top: 44px; padding: 26px 18px 22px; }
-      .loop-title { font-size: 19px; }
-      .loop-steps { grid-template-columns: 1fr; gap: 28px; margin-top: 22px; }
-      .loop-steps li { display: grid; grid-template-columns: 30px auto 1fr; align-items: baseline; gap: 4px 10px; min-height: 0; padding: 13px 16px; }
-      .loop-steps li:not(:last-child)::after { content: "↓"; top: auto; bottom: -25px; right: auto; left: 50%; transform: translateX(-50%); font-size: 16px; }
-      .loop-steps b { margin-top: 0; font-size: 18px; }
-      .loop-steps em { margin-top: 0; font-size: 12px; text-align: right; }
-      .loop-return { height: auto; margin: 14px 0 0; padding: 10px 12px; border: 1.5px dashed var(--vermilion); text-align: center; }
-      .loop-return::before { content: none; }
-      .loop-return span { position: static; transform: none; padding: 0; white-space: normal; font-size: 13px; }
-      .loop-compare { grid-template-columns: 1fr; gap: 12px; margin-top: 22px; }
-      .loop-compare div { padding: 14px 16px; }
-      .loop-compare span { font-size: 14px; }
-      .picks-grid { margin-top: 40px; gap: 16px; }
+      .picks-intro { margin-top: 28px; font-size: 14px; line-height: 1.9; }
+      .contrast { margin-top: 40px; }
+      .contrast-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+      .contrast-row > div { padding: 12px 14px; font-size: 13px; line-height: 1.6; }
+      .contrast-row .c-act { grid-column: 1 / -1; padding: 10px 14px 0; border-top: 1px solid var(--line); background: var(--white); font-size: 12px; letter-spacing: .06em; }
+      .contrast-head > div:first-child { display: none; }
+      .contrast-head > div { padding-block: 10px; font-size: 11px; }
+      .contrast-row .c-plain { border-top: 0; }
+      .contrast-row .c-ours { border-top: 0; }
+      .c-ours em { font-size: 11px; }
+      .contrast-sum > div { padding-block: 14px; }
+      .contrast-sum .c-plain, .contrast-sum .c-ours { font-size: 19px; }
+      .picks-grid { margin-top: 44px; }
       .pick { padding: 26px 22px 24px; }
       .pick h3 { font-size: 23px; }
-      .picks-note { grid-template-columns: 1fr; gap: 6px; padding: 16px 18px; }
-      .picks-declare { grid-template-columns: 1fr; margin-top: 40px; padding: 30px 22px; }
+      .picks-sum { margin-top: 40px; padding: 16px 18px; }
+      .sum-row { grid-template-columns: 1fr auto; gap: 4px 12px; }
+      .sum-row small { grid-column: 1 / -1; }
+      .sum-row span { font-size: 12px; }
+      .sum-row b { font-size: 22px; }
+      .picks-declare { grid-template-columns: 1fr; margin-top: 32px; padding: 30px 22px; }
       .declare-cta { min-width: 0; width: 100%; }
       .picks-declare strong { font-size: 24px; }
       .closing { padding-top: 70px; }
@@ -388,48 +400,48 @@
 
     <section class="picks" id="picks" aria-labelledby="picks-title"><div class="container">
       <p class="section-index">05 / IF YOU CAN'T DECIDE</p>
-      <h2 id="picks-title">13本を前に<br class="sp-br">決めきれないなら、<br>この3本から。</h2>
-      <p class="picks-intro">診断を受けても決まらない、どれも必要に見えて手が止まっている、という方へ。ここから1本目を選んでください。同時に3本を始める必要はありません。ただし、この3本を並べたのには理由があります。順に足していくと、下の形になります。</p>
+      <h2 id="picks-title">お客様を集めながら、<br><em>利益も出す。</em><br>迷ったら、この3本。</h2>
+      <p class="picks-intro">13本を前に手が止まっている方へ。ふつうの創業では、人に会う・自社を伝える・人を紹介する、といったお客様集めはすべて持ち出しです。この3本は、その同じ活動を利益を生む仕事に変える順番で並べました。</p>
 
-      <figure class="loop" aria-label="出会う、人脈になる、伝わる、収益が立つ、の4段が循環し、お客様を集める活動そのものが収益になることを示す図">
-        <figcaption class="loop-title">出会いが、そのまま収益になる形</figcaption>
-        <ol class="loop-steps">
-          <li><small>01</small><b>出会う</b><em>人に会う・<span class="nw">紹介される</span></em></li>
-          <li><small>02</small><b>人脈になる</b><em>Lシンク</em></li>
-          <li><small>03</small><b>伝わる</b><em>ホームページを自分で</em></li>
-          <li class="is-goal"><small>04</small><b>収益が立つ</b><em>営業代行</em></li>
-        </ol>
-        <p class="loop-return"><span>04から01へ。稼ぎながら、また出会える</span></p>
-        <div class="loop-compare">
-          <div><small>ふつうの創業</small><span>お客様を集める活動は、<br class="sp-br">持ち出しになります</span></div>
-          <div class="is-ours"><small>この3本</small><span>集めながら、<br class="sp-br">その活動自体で収益が立ちます</span></div>
-        </div>
-      </figure>
+      <div class="contrast" role="table" aria-label="ふつうの創業と、この3本を足した創業の比較">
+        <div class="contrast-row contrast-head" role="row"><div role="columnheader"></div><div class="c-plain" role="columnheader">ふつうの創業</div><div class="c-ours" role="columnheader">この3本を足した創業</div></div>
+        <div class="contrast-row" role="row"><div class="c-act" role="rowheader">人に会う</div><div class="c-plain" role="cell">名刺が引き出しに残る</div><div class="c-ours" role="cell">出会った方がLINEに残る<em>01 Lシンク</em></div></div>
+        <div class="contrast-row" role="row"><div class="c-act" role="rowheader">自社を伝える</div><div class="c-plain" role="cell">作るたびに外注する</div><div class="c-ours" role="cell">自分で作ったURLを送れる<em>02 ホームページ制作会社スタートパック</em></div></div>
+        <div class="contrast-row" role="row"><div class="c-act" role="rowheader">人を紹介する</div><div class="c-plain" role="cell">お礼を言って終わる</div><div class="c-ours" role="cell">営業代行の仕事になる<em>03 営業代行会社スタートパック</em></div></div>
+        <div class="contrast-row contrast-sum" role="row"><div class="c-act" role="rowheader">お客様集めは</div><div class="c-plain" role="cell">集めるほど、<br>出ていく。</div><div class="c-ours" role="cell">集めながら、<br>利益も出す。</div></div>
+      </div>
+      <p class="contrast-note">利益は、会う人数や紹介の中身によって変わります。一定の金額をお約束するものではありません。</p>
 
       <div class="picks-grid">
-        <article class="pick"><p class="pick-no">01 / 人脈になる</p><h3>Lシンク</h3><p class="pick-price">月3万円</p>
+        <article class="pick"><div class="pick-head"><p class="pick-no">01 / つなぐ</p><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 7h22v14H14l-6 5v-5H5z" stroke-linejoin="round"/><path d="M10 12h12M10 16h8" stroke-linecap="round"/></svg></div><h3>Lシンク</h3><p class="pick-price">月3万円</p>
           <p class="pick-for">LINEで連絡が取れる相手が、100人に満たない方の1本目です。</p>
           <p class="body">名刺交換や紹介の出会いは、ほとんどが連絡が途切れて終わります。Lシンクは出会った方をLINEでつなぎとめ、AIがやりとりを続けます。<strong>出会いが人脈に変わるのは、ここです。</strong></p>
+          <p class="body note">名刺が引き出しに残っている方は、Lシンクの前に名刺LINEエージェントから始めます。</p>
           <p class="pick-link-wrap"><a class="pick-link" href="https://lsync.figma.site/" target="_blank" rel="noopener">Lシンクを詳しく見る <span aria-hidden="true">↗</span></a></p>
         </article>
-        <article class="pick"><p class="pick-no">02 / 伝わる</p><h3>ホームページ制作会社<br>スタートパック</h3><p class="pick-price">1年目 月10万円・<span class="nw">2年目から月1万円（税別）</span></p>
+        <article class="pick"><div class="pick-head"><p class="pick-no">02 / 伝える</p><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="6" width="24" height="20" rx="1.5"/><path d="M4 11h24"/><circle cx="7.5" cy="8.5" r=".6" fill="currentColor"/><circle cx="10" cy="8.5" r=".6" fill="currentColor"/><path d="M9 16h9M9 20h14" stroke-linecap="round"/></svg></div><h3>ホームページ制作会社<br>スタートパック</h3><p class="pick-price">1年目 月10万円・<span class="nw">2年目から月1万円（税別）</span></p>
           <p class="pick-for">「どこを見れば分かりますか」と聞かれて、送れるURLがない方の1本目です。</p>
           <p class="body">AI家庭教師に教わりながら、会社サイトと共感LPの2枚を自分で作ります。<strong>一度作れるようになれば、ホームページは作り放題です。</strong></p>
           <p class="body note">AIの利用料、ドメイン・サーバー代は別にかかります。</p>
           <p class="pick-link-wrap"><a class="pick-link" href="https://writeup-inc.github.io/saas/web-agency-kit/v3/" target="_blank" rel="noopener">スタートパックを詳しく見る <span aria-hidden="true">↗</span></a><span class="pick-sublinks">以前の版：<a href="https://writeup-inc.github.io/saas/web-agency-kit/" target="_blank" rel="noopener">v1</a> ／ <a href="https://writeup-inc.github.io/saas/web-agency-kit/v2/" target="_blank" rel="noopener">v2</a></span></p>
         </article>
-        <article class="pick is-key"><p class="pick-no">03 / 収益が立つ</p><h3>営業代行会社<br>スタートパック</h3><p class="pick-price">月3万円</p>
+        <article class="pick is-key"><div class="pick-head"><p class="pick-no">03 / 稼ぐ</p><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="16" cy="16" r="11"/><path d="M11.5 10l4.5 6 4.5-6M16 16v7M12 17.5h8M12 20.5h8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>営業代行会社<br>スタートパック</h3><p class="pick-price">月3万円</p>
           <p class="pick-for">交流会や紹介で、毎月10人以上の新しい方に会っている方の1本目です。</p>
-          <p class="body">創業直後、お客様を集める活動はふつう持ち出しです。営業代行を始めておくと、<strong>集めながら、その活動自体で最低限の収益が立ちます。</strong>人に会うことが、そのまま仕事になります。</p>
+          <p class="body">交流会や紹介で会った方に、営業代行として商材をご紹介できます。<strong>人に会う時間が、経費ではなく、利益を生む仕事の時間になります。</strong></p>
+          <p class="first-client">最初のクライアントは、<span class="nw">ライトアップです。</span></p>
           <p class="body note">報酬の条件や案件の範囲は、ご契約の前にご案内します。</p>
-          <p class="pick-link-wrap"><a class="pick-link" href="https://writeup-inc.github.io/saas/ai-sales-agency-starter/" target="_blank" rel="noopener">営業代行スタートパックを詳しく見る <span aria-hidden="true">↗</span></a></p>
+          <p class="pick-link-wrap"><a class="pick-link" href="https://writeup-inc.github.io/saas/ai-sales-agency-starter/" target="_blank" rel="noopener">営業代行パックを詳しく見る <span aria-hidden="true">↗</span></a></p>
         </article>
       </div>
+      <p class="picks-return"><span>営業代行で会った方が、また次の出会いになる</span></p>
 
-      <aside class="picks-note"><small>Lシンクを選ぶ場合</small><p>引き出しに名刺が残っている方は、その前に出会いを人脈に変える工程（名刺LINEエージェント）が入ります。名刺がほとんどない方は、Lシンクから始めて構いません。</p></aside>
-      <p class="picks-total">3本そろえた場合は、割引前で1年目が月16万円、2年目からは月7万円です。実際の金額は、割引を含めてご相談のうえ決定します。</p>
+      <div class="picks-sum" aria-label="3本そろえた場合の月額">
+        <p class="sum-row"><small>1年目</small><span>Lシンク 月3万円 ＋ ホームページ 月10万円 ＋ 営業代行 月3万円</span><b>月16万円</b></p>
+        <p class="sum-row"><small>2年目から</small><span>月3万円 ＋ 月1万円 ＋ 月3万円</span><b>月7万円</b></p>
+      </div>
+      <p class="sum-note">いずれも割引前です。実際の金額は、割引を含めてご相談のうえ決定します。</p>
 
-      <div class="picks-declare"><div><small>OUR COMMITMENT</small><strong>営業代行会社としての<br>最初のクライアントは、<br>弊社がなります。</strong></div><a class="button declare-cta" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">営業代行について相談する <span aria-hidden="true">→</span></a></div>
+      <div class="picks-declare"><div><small>OUR COMMITMENT</small><strong>営業代行会社としての<br>最初のクライアントには、<br>ライトアップがなります。</strong></div><a class="button declare-cta" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">営業代行について相談する <span aria-hidden="true">→</span></a></div>
     </div></section>
 
     <section class="closing" aria-labelledby="closing-title"><div class="container"><div class="closing-grid"><div><p class="section-index">YOUR FIRST MOVE</p><h2 id="closing-title">いま必要な<br class="sp-br">一手から、<br>事業をはじめよう。</h2><p class="closing-copy">まだサービスの名前が決まっていなくても、準備が途中でも構いません。<br>まずは現在地を整理して、最初の1本を見つけてください。</p></div>
