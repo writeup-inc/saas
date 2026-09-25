@@ -937,6 +937,112 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
 #brand.brandband{padding:clamp(56px,6vw,88px) 0}
 #why{padding-top:clamp(64px,7vw,96px)}
 .sec-head{align-items:start}
+
+/* ===== HERO（ゼロベース .hx）：明るい朝の地、貴社ブランドに入れ替わるアプリが9時から動く ===== */
+.hx{position:relative;overflow:hidden;padding:clamp(48px,6vw,88px) 0 clamp(56px,6vw,88px);
+  background:linear-gradient(160deg,#fff8ee 0%,#fdf3e3 38%,#eef7f2 100%);color:var(--ink)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hx{background:linear-gradient(160deg,#101a2e 0%,#132238 50%,#0f2a24 100%)}}
+:root[data-theme="dark"] .hx{background:linear-gradient(160deg,#101a2e 0%,#132238 50%,#0f2a24 100%)}
+.hx-sky{position:absolute;inset:0;pointer-events:none}
+.hx-sky .sun{position:absolute;right:-8%;top:-30%;width:62vw;max-width:880px;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,196,120,.55) 0%,rgba(255,214,160,.28) 35%,rgba(255,230,200,0) 68%)}
+.hx-sky .grid{position:absolute;inset:0;opacity:.5;
+  background-image:linear-gradient(rgba(14,122,90,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(14,122,90,.07) 1px,transparent 1px);
+  background-size:56px 36px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 55%,#000 100%);mask-image:linear-gradient(90deg,transparent 0,#000 55%,#000 100%)}
+.hx-grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.02fr);gap:clamp(32px,5vw,72px);align-items:center}
+@media (max-width:1040px){.hx-grid{grid-template-columns:1fr}}
+.hx-chip{display:inline-flex;align-items:center;gap:10px;margin:0 0 22px;padding:7px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:14px;font-weight:700;color:var(--ink-2);box-shadow:0 4px 14px -8px rgba(20,37,74,.25)}
+.hx-chip .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.hx-chip .sep{width:1px;height:14px;background:var(--line)}
+.hx h1{margin:0;font-size:clamp(1.7rem,4.2vw,3.1rem);font-weight:900;line-height:1.34;letter-spacing:-.01em;color:var(--ink)}
+.hx h1::after{content:"";display:inline-block;width:4px;height:.9em;margin-left:8px;vertical-align:-.08em;background:var(--accent);animation:blinkc 1s steps(1) infinite}
+.hx .hc{cursor:pointer;border-radius:6px}
+.hx .hc:focus-visible{outline:3px solid var(--accent);outline-offset:8px}
+.hx .dots{margin:10px 0 0 -10px}
+.hx .dots button::before{background:rgba(22,33,58,.16)}
+.hx .dots button[aria-current="true"]::before{background:var(--accent)}
+.hx-lead{max-width:30em;margin:14px 0 0;font-size:1.06rem;line-height:1.9;color:var(--ink-2)}
+.hx-cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px;margin:26px 0 0}
+.hx-lnk{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-weight:700;color:var(--ink);text-underline-offset:5px}
+.hx-lnk::after{content:"↓";color:var(--accent)}
+.hx-facts{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:30px 0 0;padding:0}
+.hx-facts li{padding:10px 16px;border-radius:12px;background:color-mix(in srgb,var(--card) 82%,transparent);border:1px solid var(--line)}
+.hx-facts b{display:block;font-size:1rem;color:var(--ink)}
+.hx-facts span{display:block;font-size:13px;color:var(--mute)}
+.hx-by{margin:16px 0 0;font-size:13px;color:var(--mute)}
+.hx-note{position:absolute;right:16px;bottom:10px;margin:0;font-size:12px;color:var(--mute)}
+/* ステージ */
+.hx-stage{position:relative;min-height:470px;padding:34px 0 40px 44px}
+@media (max-width:1040px){.hx-stage{max-width:620px;width:100%;margin:0 auto}}
+@media (max-width:560px){.hx-stage{min-height:0;padding:28px 0 64px 0}}
+.hx-sheet{position:absolute;left:0;top:0;z-index:1;width:210px;padding:12px 14px;border-radius:12px;background:var(--card);border:1px solid var(--line);box-shadow:0 18px 40px -22px rgba(20,37,74,.45);transform:rotate(-3deg)}
+.hx-sheet .t{margin:0 0 8px;font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--accent)}
+.hx-sheet .row{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-top:1px dashed var(--line);font-size:13px}
+.hx-sheet .row span{color:var(--mute)} .hx-sheet .row b{color:var(--ink)}
+@media (max-width:560px){.hx-sheet{display:none}}
+.hx-app{position:relative;z-index:2;border-radius:18px;background:var(--card);border:1px solid var(--line);box-shadow:0 40px 80px -36px rgba(20,37,74,.5),0 2px 0 rgba(255,255,255,.6) inset;overflow:hidden}
+.hx-bar{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,var(--card),var(--bg-2))}
+.hx-logo{position:relative;flex:none;width:42px;height:42px;border-radius:11px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;transition:background .4s}
+.hx-logo svg{width:24px;height:24px;transition:opacity .35s,transform .35s}
+.hx-logo em{position:absolute;inset:0;display:grid;place-items:center;font:800 10px/1.1 "Inter","Noto Sans JP",sans-serif;font-style:normal;text-align:center;color:var(--accent);opacity:0;transform:scale(.7);transition:opacity .35s,transform .35s}
+.hx-app.swap .hx-logo{background:transparent;outline:2px dashed var(--accent);outline-offset:-2px}
+.hx-app.swap .hx-logo svg{opacity:0;transform:scale(.6)}
+.hx-app.swap .hx-logo em{opacity:1;transform:scale(1)}
+.hx-name b{display:block;font-size:1.05rem;font-weight:900;color:var(--ink);transition:opacity .3s}
+.hx-name b.fade{opacity:0}
+.hx-name small{display:block;font-size:12px;color:var(--mute)}
+.hx-live{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--accent);white-space:nowrap}
+.hx-live i{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 1.8s ease-out infinite}
+.hx-body{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:20px 18px 22px}
+@media (max-width:560px){.hx-body{grid-template-columns:1fr;justify-items:stretch}.hx-clock{justify-self:center}}
+.hx-clock{position:relative;width:140px;height:140px}
+.hx-clock svg{width:100%;height:100%;transform:rotate(-90deg)}
+.hx-clock .trk{fill:none;stroke:var(--bg-2);stroke-width:10}
+.hx-clock .prg{fill:none;stroke:var(--accent);stroke-width:10;stroke-linecap:round;stroke-dasharray:327;stroke-dashoffset:327;transition:stroke-dashoffset .9s ease}
+.hx-time{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.hx-time b{font:800 2rem/1 "Inter",sans-serif;color:var(--ink)}
+.hx-time span{margin-top:6px;font-size:13px;font-weight:700;color:var(--accent)}
+.hx-rows{list-style:none;margin:0;padding:0;display:grid;gap:8px;align-content:start}
+.hx-rows li{display:grid;grid-template-columns:1fr auto;grid-template-areas:"co st" "tg st";gap:4px 10px;align-items:center;padding:10px 12px;border-radius:10px;background:var(--bg-2);transition:opacity .4s,transform .4s}
+.hx-rows .co{grid-area:co;display:flex;gap:6px}
+.hx-rows .co i{display:block;height:9px;border-radius:5px;background:color-mix(in srgb,var(--ink) 22%,transparent)}
+.hx-rows .co i:first-child{width:46%}.hx-rows .co i:last-child{width:22%}
+.hx-rows .tg{grid-area:tg;font-size:12px;color:var(--mute)}
+.hx-rows .st{grid-area:st;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:800;white-space:nowrap;background:var(--accent-soft);color:var(--accent)}
+.js .hx-rows li{opacity:.25;transform:translateY(6px)}
+.js .hx-rows li.on{opacity:1;transform:none}
+.js .hx-rows li .st{opacity:0;transition:opacity .3s}
+.js .hx-rows li.sent .st{opacity:1}
+.hx-toast{position:absolute;z-index:3;left:8px;bottom:0;display:flex;align-items:center;gap:12px;max-width:330px;padding:12px 16px;border-radius:14px;background:var(--ink);color:var(--bg);box-shadow:0 24px 48px -20px rgba(0,0,0,.5);font-size:13px;line-height:1.5}
+.hx-toast b{display:block;font-size:14px}
+.hx-toast .ic{flex:none;display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:var(--accent);color:#fff}
+.hx-toast .ic svg{width:20px;height:20px}
+.js .hx-toast{opacity:0;transform:translateY(10px);transition:opacity .5s,transform .5s}
+.js .hx-toast.on{opacity:1;transform:none}
+@media (max-width:560px){.hx-toast{left:10px;right:10px;max-width:none}}
+.hx-tag{position:absolute;z-index:3;right:-6px;top:6px;padding:6px 12px;border-radius:999px;background:var(--accent);color:#fff;font-size:12px;font-weight:800;box-shadow:0 10px 24px -10px rgba(14,122,90,.7);transform:rotate(3deg)}
+@media (max-width:560px){.hx-tag{right:6px;top:0}}
+@media (prefers-reduced-motion:reduce){.js .hx-rows li,.js .hx-rows li .st,.js .hx-toast{opacity:1;transform:none}.hx h1::after,.hx-live i{animation:none}}
+
+.hx-cond{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:10px 18px;border-bottom:1px solid var(--line);font-size:13px}
+.hx-cond small{font-size:12px;color:var(--mute);margin-right:2px}
+.hx-cond span{padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:700}
+.hx-stage{padding:34px 0 44px 0}
+@media (max-width:560px){
+  .hx-body{grid-template-columns:96px 1fr;gap:12px;padding:14px 14px 16px}
+  .hx-clock{width:96px;height:96px;justify-self:start}
+  .hx-time b{font-size:1.35rem}.hx-time span{font-size:11px;margin-top:3px}
+  .hx-rows li:nth-child(n+4){display:none}
+  .hx-rows li{padding:8px 10px}
+  .hx-bar{padding:12px 14px}.hx-cond{padding:8px 14px}
+}
+
+.hx-sky{background:radial-gradient(ellipse 48% 70% at 88% 8%,rgba(255,196,120,.5) 0%,rgba(255,214,160,.22) 45%,rgba(255,230,200,0) 72%)}
+.hx-logo{width:48px;height:48px}
+.hx-logo em{font-size:12px;line-height:1.05}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hx .dots button::before{background:rgba(255,255,255,.22)}}
+:root[data-theme="dark"] .hx .dots button::before{background:rgba(255,255,255,.22)}
+.hx .dots button[aria-current="true"]::before{background:var(--accent)!important}
 </style>
 </head>
 <body>
@@ -969,55 +1075,65 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
 
 <main id="top">
 
-<!-- ===== HERO ===== -->
-<section class="hero" aria-label="リストマスター OEMパートナーのご案内">
-  <div class="hero-bg" aria-hidden="true"><img src="img/hero-morning.webp" alt="" width="1280" height="854"></div>
-  <div class="wrap">
-    <div class="hero-grid">
-      <div>
-        <p class="hero-tag"><span class="live"><i></i>OEM PARTNER</span>OEMパートナー募集｜サービス名・ロゴを貴社名に</p>
-        <div class="hc" id="hc" title="押すと、3つのコピーと見出しを並べて読めます">
-          <h1 id="tw" class="hero__title" data-keep-phrase>リスト作りから送付まで、<br>貴社の名前で売れます。</h1>
-        </div>
-        <div class="dots" role="group" aria-label="コピーの切り替え">
-          <button type="button" aria-label="コピー1" aria-current="true"></button>
-          <button type="button" aria-label="コピー2" aria-current="false"></button>
-          <button type="button" aria-label="コピー3" aria-current="false"></button>
-        </div>
-        <p class="hero-lead">条件を決めれば、<b>毎朝9時に営業リストを作り、初回のメールかFAXまで</b>送るAI。その名前とロゴを、貴社のものに変えて販売できます。</p>
-        <div class="cta-row">
-          <a class="btn" href="../b02/">個別説明を申し込む
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg></a>
-          <a class="lnk" href="#morning">毎朝の姿を先に見る ↓</a>
-        </div>
+<!-- ===== HERO（ゼロベース：朝の光の中で、貴社ブランドのAIが動き出す） ===== -->
+<section class="hx" aria-label="リストマスター OEMパートナーのご案内">
+  <div class="hx-sky" aria-hidden="true"><span class="grid"></span></div>
+  <div class="wrap hx-grid">
+    <div class="hx-copy">
+      <p class="hx-chip"><span class="dot"></span>OEMパートナー募集<span class="sep"></span>名前とロゴを貴社名に</p>
+      <div class="hc" id="hc" title="押すと、3つのコピーと見出しを並べて読めます">
+        <h1 id="tw" class="hero__title" data-keep-phrase>リスト作りから送付まで、<br>貴社の名前で売れます。</h1>
       </div>
-      <figure class="con" aria-label="毎朝の実行ログの画面イメージ">
-        <div class="con-top"><span class="con-t"><span class="bn" id="bn">リストマスター</span>今朝の実行ログ</span><span class="con-rep" style="color:#0e7a5a">自動で実行中</span></div>
-        <div class="run-cond"><small>今日の条件</small><span>新潟県</span><span>システム開発</span><span>従業員10〜50名</span></div>
-        <div class="con-body one">
-          <div class="con-steps"><p class="con-l">今日の手順</p>
-            <ol id="steps" class="run-steps">
-              <li><span class="ck" aria-hidden="true"></span><span class="tm">9:00</span><div><code>read_sheet</code><p>シートの条件を読み込む</p></div></li>
-              <li><span class="ck" aria-hidden="true"></span><span class="tm"></span><div><code>search</code><p>複数のデータソースで企業を探す</p></div></li>
-              <li><span class="ck" aria-hidden="true"></span><span class="tm"></span><div><code>clean</code><p>廃業・重複を除いてリストにする</p></div></li>
-              <li><span class="ck" aria-hidden="true"></span><span class="tm"></span><div><code>verify</code><p>送る前に宛先が届くか確かめる</p></div></li>
-              <li><span class="ck" aria-hidden="true"></span><span class="tm"></span><div><code>send</code><p>初回のメールかFAXを送る</p></div></li>
-              <li><span class="ck" aria-hidden="true"></span><span class="tm"></span><div><code>report</code><p>今日の実績をメールで報告する</p></div></li>
-            </ol>
-          </div>
-        </div>
-        <figcaption>毎朝の手順を説明するための画面イメージです。左上の名前は、貴社のサービス名に置き換えた場合の例。条件も例です。</figcaption>
-      </figure>
+      <div class="dots" role="group" aria-label="コピーの切り替え">
+        <button type="button" aria-label="コピー1" aria-current="true"></button>
+        <button type="button" aria-label="コピー2" aria-current="false"></button>
+        <button type="button" aria-label="コピー3" aria-current="false"></button>
+      </div>
+      <p class="hx-lead">毎朝9時に営業リストを作り、初回のメールかFAXまで送るAI。その名前とロゴを、貴社のものに変えて販売できます。</p>
+      <div class="hx-cta">
+        <a class="btn" href="../b02/">個別説明を申し込む
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg></a>
+        <a class="hx-lnk" href="#morning">毎朝の姿を見る</a>
+      </div>
+      <ul class="hx-facts">
+        <li><b>毎朝9時</b><span>自動で起動</span></li>
+        <li><b>メール・FAX</b><span>初回の連絡まで</span></li>
+        <li><b>月額</b><span>従量課金なし</span></li>
+      </ul>
+      <p class="hx-by">提供：株式会社ライトアップ（東証グロース 6580）</p>
     </div>
 
-    <ul class="hfacts">
-      <li><span>サービス名・ロゴ</span><b>貴社名に変更可</b></li>
-      <li><span>起動する時刻</span><b>毎朝9時</b></li>
-      <li><span>運用実績</span><b>弊社営業部門で毎日</b></li>
-      <li><span>直販の公開価格</span><b>初期50万円＋月3万円</b></li>
-    </ul>
+    <div class="hx-stage" id="hxStage" aria-label="貴社の名前に変えたアプリが、朝9時から動く様子の画面イメージ" role="img">
+
+      <div class="hx-app" aria-hidden="true">
+        <div class="hx-bar">
+          <span class="hx-logo" id="hxLogo"><svg viewBox="0 0 40 40"><use href="#mark"/></svg><em>貴社<br>LOGO</em></span>
+          <span class="hx-name"><b id="hxName">リストマスター</b><small>営業リストAI</small></span>
+          <span class="hx-live"><i></i>自動で実行中</span>
+        </div>
+        <div class="hx-cond"><small>今日の条件</small><span>新潟県</span><span>システム開発</span><span>10〜50名</span></div>
+        <div class="hx-body">
+          <div class="hx-clock">
+            <svg viewBox="0 0 120 120"><circle class="trk" cx="60" cy="60" r="52"/><circle class="prg" id="hxRing" cx="60" cy="60" r="52"/></svg>
+            <div class="hx-time"><b>9:00</b><span id="hxPhase">起動</span></div>
+          </div>
+          <ol class="hx-rows" id="hxRows">
+            <li><span class="co"><i></i><i></i></span><span class="tg">新潟県・システム開発</span><span class="st">送付済み</span></li>
+            <li><span class="co"><i></i><i></i></span><span class="tg">新潟県・システム開発</span><span class="st">送付済み</span></li>
+            <li><span class="co"><i></i><i></i></span><span class="tg">新潟県・システム開発</span><span class="st">送付済み</span></li>
+            <li><span class="co"><i></i><i></i></span><span class="tg">新潟県・システム開発</span><span class="st">送付済み</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="hx-toast" id="hxToast" aria-hidden="true">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+        <span><b id="hxToastName">リストマスター</b>本日の実行報告が届きました</span>
+      </div>
+      <span class="hx-tag" aria-hidden="true">名前とロゴは、貴社のものに</span>
+    </div>
   </div>
-  <p class="gen">背景はイメージです</p>
+  <p class="hx-note">アプリの画面は、動きを説明するためのイメージです。</p>
 </section>
 
 <!-- ===== R1. 毎朝の姿（右脳） ===== -->
@@ -1647,6 +1763,30 @@ document.addEventListener('click', function (e) {
 (function(){ var d=document.querySelector('.desk'); if(!d) return;
   if(!('IntersectionObserver' in window)){ d.classList.add('on'); return; }
   var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ d.classList.add('on'); io.disconnect(); } }); },{threshold:.35}); io.observe(d); })();
+</script>
+<script>
+(function(){
+  var app=document.querySelector('.hx-app'); if(!app) return;
+  var rows=[].slice.call(document.querySelectorAll('#hxRows li')), ring=document.getElementById('hxRing'),
+      phase=document.getElementById('hxPhase'), toast=document.getElementById('hxToast'),
+      nm=document.getElementById('hxName'), tn=document.getElementById('hxToastName');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches, C=327;
+  function brand(on){ app.classList.toggle('swap',on); nm.classList.add('fade');
+    setTimeout(function(){ nm.textContent=on?'貴社のサービス名':'リストマスター'; tn.textContent=nm.textContent; nm.classList.remove('fade'); },300); }
+  function prog(p){ ring.style.strokeDashoffset=String(C*(1-p)); }
+  if(reduce){ rows.forEach(function(r){ r.classList.add('on','sent'); }); prog(1); phase.textContent='報告済み'; toast.classList.add('on'); brand(true); return; }
+  var steps=[
+    function(){ rows.forEach(function(r){ r.classList.remove('on','sent'); }); toast.classList.remove('on'); prog(.08); phase.textContent='起動'; },
+    function(){ prog(.3); phase.textContent='企業を探す'; rows[0].classList.add('on'); rows[1].classList.add('on'); },
+    function(){ prog(.5); phase.textContent='宛先を確認'; rows[2].classList.add('on'); rows[3].classList.add('on'); },
+    function(){ prog(.75); phase.textContent='初回を送付'; rows[0].classList.add('sent'); rows[1].classList.add('sent'); },
+    function(){ rows[2].classList.add('sent'); rows[3].classList.add('sent'); },
+    function(){ prog(1); phase.textContent='報告済み'; toast.classList.add('on'); },
+    function(){ brand(!app.classList.contains('swap')); },
+    function(){}
+  ];
+  var i=0; (function tick(){ steps[i](); i=(i+1)%steps.length; setTimeout(tick,i===0?2200:1300); })();
+})();
 </script>
 </body>
 </html>
