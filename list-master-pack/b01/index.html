@@ -1043,6 +1043,14 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hx .dots button::before{background:rgba(255,255,255,.22)}}
 :root[data-theme="dark"] .hx .dots button::before{background:rgba(255,255,255,.22)}
 .hx .dots button[aria-current="true"]::before{background:var(--accent)!important}
+
+/* 背景：朝の街の写真（明るい朝色のベールで沈める）2026-09-26 採用 */
+.hx-photo{position:absolute;inset:0;background:url(img/city.webp) center 40%/cover no-repeat;filter:saturate(.5) blur(4px)}
+.hx-veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,248,238,.95) 0%,rgba(255,246,232,.9) 42%,rgba(253,243,227,.72) 70%,rgba(238,247,242,.6) 100%)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hx-veil{background:linear-gradient(90deg,rgba(16,26,46,.95) 0%,rgba(16,26,46,.88) 45%,rgba(16,26,46,.7) 100%)}}
+:root[data-theme="dark"] .hx-veil{background:linear-gradient(90deg,rgba(16,26,46,.95) 0%,rgba(16,26,46,.88) 45%,rgba(16,26,46,.7) 100%)}
+@media (max-width:1040px){.hx-veil{background:rgba(255,248,238,.9)}}
+@media (max-width:1040px) and (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hx-veil{background:rgba(16,26,46,.9)}}
 </style>
 </head>
 <body>
@@ -1077,7 +1085,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
 
 <!-- ===== HERO（ゼロベース：朝の光の中で、貴社ブランドのAIが動き出す） ===== -->
 <section class="hx" aria-label="リストマスター OEMパートナーのご案内">
-  <div class="hx-sky" aria-hidden="true"><span class="grid"></span></div>
+  <div class="hx-sky" aria-hidden="true"><span class="hx-photo"></span><span class="hx-veil"></span></div>
   <div class="wrap hx-grid">
     <div class="hx-copy">
       <p class="hx-chip"><span class="dot"></span>OEMパートナー募集<span class="sep"></span>名前とロゴを貴社名に</p>
@@ -1133,7 +1141,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
       <span class="hx-tag" aria-hidden="true">名前とロゴは、貴社のものに</span>
     </div>
   </div>
-  <p class="hx-note">アプリの画面は、動きを説明するためのイメージです。</p>
+  <p class="hx-note">背景の写真はイメージ。アプリの画面は、動きを説明するためのイメージです。</p>
 </section>
 
 <!-- ===== R1. 毎朝の姿（右脳） ===== -->
@@ -1271,7 +1279,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
         <table class="cmp cmp4 cmpx">
           <thead><tr><th scope="col">サービス</th><th scope="col">初期費用</th><th scope="col">月額・従量</th><th scope="col">送付の手段</th><th scope="col">毎日の自動化</th><th scope="col">契約期間</th><th scope="col">名前を変えた再販</th></tr></thead>
           <tbody>
-            <tr class="us"><th scope="row">リストマスター</th><td data-l="初期費用">500,000円（税区分【要確認】）</td><td data-l="月額・従量" class="hl">月30,000円（税区分【要確認】）・従量課金なし</td><td data-l="送付の手段" class="hl">メール・FAX</td><td data-l="毎日の自動化" class="hl">毎朝、リスト作成から初回送付・報告まで</td><td data-l="契約期間">12か月</td><td data-l="名前を変えた再販" class="hl">名前とロゴを変えて再販できる</td></tr>
+            <tr class="us"><th scope="row">リストマスター</th><td data-l="初期費用">直販500,000円（税別）。OEMでは貴社が自由に設定</td><td data-l="月額・従量" class="hl">月30,000円（税別）・従量課金なし</td><td data-l="送付の手段" class="hl">メール・FAX</td><td data-l="毎日の自動化" class="hl">毎朝、リスト作成から初回送付・報告まで</td><td data-l="契約期間">12か月</td><td data-l="名前を変えた再販" class="hl">名前とロゴを変えて再販できる</td></tr>
             <tr><th scope="row">Musubu</th><td data-l="初期費用">0円</td><td data-l="月額・従量">6か月契約 月20万円、12か月契約 月16万円（税別）。CSV出力などはクレジット制（追加1クレジット10円）</td><td data-l="送付の手段" class="no">公式トップで確認できず</td><td data-l="毎日の自動化" class="no">確認できず</td><td data-l="契約期間">6か月／12か月</td><td data-l="名前を変えた再販">営業代行向けの設定代行プランあり。再販・OEMの記載なし</td></tr>
             <tr><th scope="row">Urizo</th><td data-l="初期費用">5,500円</td><td data-l="月額・従量">月9,900〜44,000円（収集上限 月5千〜5万件）</td><td data-l="送付の手段">ツール内の送信は確認できず（FAXDMの発送代行は別サービス）</td><td data-l="毎日の自動化" class="no">確認できず</td><td data-l="契約期間">カード払いは1か月、振込は6か月単位</td><td data-l="名前を変えた再販" class="no">記載なし</td></tr>
             <tr><th scope="row">リストル</th><td data-l="初期費用">3,300円（税込）</td><td data-l="月額・従量">月6,800〜16,800円（税込）。従量課金なし</td><td data-l="送付の手段">フォーム送信ツール（有料契約の特典。送信成功率は約20〜30%と明記）</td><td data-l="毎日の自動化">時刻指定の自動収集オプションあり（月3,300〜8,800円）。自動送付は確認できず</td><td data-l="契約期間">縛りなし</td><td data-l="名前を変えた再販" class="no">記載なし</td></tr>
@@ -1288,7 +1296,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
         <li>従量課金なし。名前を変えた再販の制度は、4社の公式サイトに記載なし</li>
       </ul></div>
       <div class="minus"><h3>リストマスターが不利な点</h3><ul>
-        <li>初期費用500,000円は突出して高い（他社は0〜5,500円、Sales Crowdは確認できず）</li>
+        <li>直販の初期費用500,000円は突出して高い（他社は0〜5,500円、Sales Crowdは確認できず）。OEMでは、初期費用を貴社が自由に設定できる</li>
         <li>12か月の契約期間あり。リストルは縛りなし、Urizoはカード払いなら1か月単位</li>
         <li>リストを作るだけなら、リストルの月6,800円〜という選択肢も。データ量はMusubuが1,200万件をうたう</li>
       </ul></div>
@@ -1296,7 +1304,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
     <div class="ai-box">
       <span class="ai-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="m8.5 11 1.8 1.8L14 9"/></svg></span>
       <p><b>この比較が正しいか、AIに確かめさせてください</b>各社の最新の公開情報をChatGPTに調べさせ、表の正しさと、どういう会社にどのサービスが向くかを中立に説明させます。</p>
-      <button class="fc-btn" type="button" data-fc-section="営業リスト作成・新規開拓の自動化サービスの比較（2026年9月25日確認）" data-fc-claim="リストマスター：初期費用500,000円、月30,000円（いずれも税区分は未記載）、従量課金なし、メール・FAXで初回送付、毎朝リスト作成から送付・報告まで自動、契約12か月、名前とロゴを変えて再販できる／Musubu：初期0円、6か月契約 月20万円・12か月契約 月16万円（税別）、CSV出力などはクレジット制（追加1クレジット10円）／Urizo：初期5,500円、月9,900〜44,000円（収集上限 月5千〜5万件）、支払い方法で1か月または6か月単位／リストル：初期3,300円（税込）、月6,800〜16,800円（税込）、従量課金なし、フォーム送信ツールあり（成功率約20〜30%と明記）、契約の縛りなし／Sales Crowd：最低月10万円〜、メールDM・FAX・手紙に対応" data-fc-ask="各社の記載は、いま公式サイトで確認できる情報と一致するか／この表で、リストマスターが有利に見えすぎている行・不利な行はどれか／どういう会社にはどのサービスが向くか、中立の立場で">ChatGPTで比較を確かめる<span class="fc-sub">別タブで開きます</span></button>
+      <button class="fc-btn" type="button" data-fc-section="営業リスト作成・新規開拓の自動化サービスの比較（2026年9月25日確認）" data-fc-claim="リストマスター：直販の初期費用500,000円、月30,000円（いずれも税別。OEMでは初期費用を販売会社が自由に設定できる）、従量課金なし、メール・FAXで初回送付、毎朝リスト作成から送付・報告まで自動、契約12か月、名前とロゴを変えて再販できる／Musubu：初期0円、6か月契約 月20万円・12か月契約 月16万円（税別）、CSV出力などはクレジット制（追加1クレジット10円）／Urizo：初期5,500円、月9,900〜44,000円（収集上限 月5千〜5万件）、支払い方法で1か月または6か月単位／リストル：初期3,300円（税込）、月6,800〜16,800円（税込）、従量課金なし、フォーム送信ツールあり（成功率約20〜30%と明記）、契約の縛りなし／Sales Crowd：最低月10万円〜、メールDM・FAX・手紙に対応" data-fc-ask="各社の記載は、いま公式サイトで確認できる情報と一致するか／この表で、リストマスターが有利に見えすぎている行・不利な行はどれか／どういう会社にはどのサービスが向くか、中立の立場で">ChatGPTで比較を確かめる<span class="fc-sub">別タブで開きます</span></button>
     </div>
   </div>
 </section>
@@ -1359,15 +1367,16 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
     </div>
     <div class="price-grid">
       <div class="price-card">
-        <p class="label">直販の公開価格（スタンダードプラン）</p>
+        <p class="label">直販の公開価格（スタンダードプラン・税別）</p>
         <div class="price-main"><b class="num">30,000</b><span>円／月</span></div>
         <p class="per">従量課金はありません</p>
         <ul class="price-rows">
-          <li><span>初期費用</span><b class="num">500,000円</b></li>
+          <li><span>初期費用（直販）</span><b class="num">500,000円</b></li>
+          <li><span>初期費用（OEM）</span><b>貴社が自由に設定</b></li>
           <li><span>契約期間</span><b>12か月</b></li>
-          <li><span>税の扱い</span><b><span class="tbd">【要確認】</span></b></li>
+          <li><span>税の扱い</span><b>税別</b></li>
         </ul>
-        <p class="note">料金は直販の申込ページに掲載中。貴社のお客様もこの価格を調べられる、という前提で売価を組んでください。</p>
+        <p class="note">料金は税別で、直販の申込ページに掲載中。貴社のお客様もこの価格を調べられる、という前提で売価を組んでください。</p>
       </div>
       <div>
         <div class="formula">
@@ -1379,12 +1388,12 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
             <span class="op">−</span>
             <span class="term q">卸値<small>【調整中】</small></span><span class="op">）</span>
             <span class="op">＋</span>
-            <span class="term q">初期費用の貴社取り分<small>【調整中】</small></span>
+            <span class="term">貴社が設定する初期費用<small>自由に設定可能</small></span>
           </div>
-          <p class="note">直販価格で見ると、1年目は初期費用500,000円が月額12か月分（360,000円）を上回ります。1年目の収益を最も左右するのは、初期費用の分け方です。</p>
+          <p class="note">初期費用は、貴社が自由に設定できます。直販の初期費用500,000円は月額12か月分（360,000円）を上回るので、設定しだいで1年目の収益が大きく変わります。金額はすべて税別。</p>
         </div>
         <ul class="feat">
-          <li><b>紹介URLごとに料金を設定できます</b>販売会社ごとの紹介URLを発行し、URLごとに料金を分ける仕組み。貴社が設定できる範囲は【要確認】です。</li>
+          <li><b>紹介URLごとに料金を設定できます</b>販売会社ごとの紹介URLを発行し、URLごとに料金を分ける仕組み。初期費用は自由に設定でき、月額の設定範囲は【要確認】です。</li>
           <li><b>代理店ごとのクーポンを発行できます</b>値引きできるのは初期費用だけ。月額は値引きの対象外です。</li>
         </ul>
       </div>
@@ -1392,20 +1401,20 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
     <div class="sim2" id="sim">
       <div class="sim2-h">
         <h3>月額の積み上げを、<br>貴社の見込みで確かめる</h3>
-        <p>入力した数字で計算するだけの道具で、弊社が約束する数字ではありません。解約なしの前提です。</p>
+        <p>入力した数字で計算するだけの道具で、弊社が約束する数字ではありません。解約なし・金額はすべて税別の前提です。</p>
       </div>
       <div class="sim2-b">
         <div>
           <div class="fld"><label for="sm-n">毎月、新しく増えるお客様</label><span class="val"><span id="sm-nv">2</span><small>社／月</small></span><input id="sm-n" type="range" min="1" max="10" step="1" value="2" aria-describedby="sm-nh"><span class="hint" id="sm-nh">1〜10社で動かせます</span></div>
-          <div class="fld"><label for="sm-p">貴社がお客様に出す月額（1社あたり）</label><input id="sm-p" type="number" inputmode="numeric" min="0" step="1000" value="30000"><span class="hint">初期値は直販の公開価格（月30,000円）</span></div>
+          <div class="fld"><label for="sm-p">貴社がお客様に出す月額（1社あたり）</label><input id="sm-p" type="number" inputmode="numeric" min="0" step="1000" value="30000"><span class="hint">初期値は直販の公開価格（月30,000円・税別）</span></div>
           <div class="fld"><label for="sm-w">卸値（1社あたり・月額）</label><input id="sm-w" type="number" inputmode="numeric" min="0" step="1000" placeholder="決まったら入力"><span class="hint">卸値は【調整中】。決まったら入れてください</span></div>
-          <div class="fld"><label for="sm-i">初期費用の貴社取り分（1社あたり）</label><input id="sm-i" type="number" inputmode="numeric" min="0" step="10000" placeholder="空欄なら0円"><span class="hint">初期費用の分け方は【調整中】</span></div>
+          <div class="fld"><label for="sm-i">貴社が設定する初期費用（1社あたり）</label><input id="sm-i" type="number" inputmode="numeric" min="0" step="10000" placeholder="空欄なら0円"><span class="hint">初期費用は自由に設定できます。弊社への支払いの有無は【要確認】</span></div>
         </div>
         <div>
           <div class="sim2-out" aria-live="polite">
             <div><span>12か月後の契約数</span><b id="sm-c">24社</b></div>
             <div><span>12か月目の月額</span><b id="sm-m">720,000円</b></div>
-            <div><span>1年間の初期費用の取り分</span><b id="sm-ii">0円</b></div>
+            <div><span>1年間の初期費用の売上</span><b id="sm-ii">0円</b></div>
             <div><span>1年間の月額売上の合計</span><b id="sm-ms">—</b></div>
             <div class="gp"><span id="sm-gl">1年間の粗利（卸値を入れると出ます）</span><b id="sm-g">—</b></div>
           </div>
@@ -1442,7 +1451,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
       <li><span class="tagn">SITE</span><b>直販のサービスサイト</b><span>商品の中身を説明するときの参考に。<a href="https://writeup-inc.github.io/saas/list-master/" target="_blank" rel="noopener">サイトを見る</a></span></li>
       <li><span class="tagn">SUPPORT</span><b>立ち上げの支援</b><span>条件決めや文面づくりを、弊社の運用チームがどこまで支えるかは【要確認】です。</span></li>
     </ul>
-    <p class="resp-legend"><span><span class="st ok">確定</span> 6行</span><span><span class="st ng">要確認</span> 7行</span></p>
+    <p class="resp-legend"><span><span class="st ok">確定</span> 7行</span><span><span class="st ng">要確認</span> 7行</span></p>
     <div class="resp-wrap">
       <table class="resp">
         <thead><tr><th scope="col">項目</th><th scope="col">担当</th><th scope="col">状態</th><th scope="col">補足</th></tr></thead>
@@ -1454,10 +1463,11 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
           <tr><th scope="row">自社のお客様への提案と販売</th><td class="who" data-l="担当">貴社</td><td data-l="状態"><span class="st ok">確定</span></td><td class="memo" data-l="補足">どのお客様に出すかの判断も、貴社が担います。</td></tr>
           <tr><th scope="row">紹介URLをお客様に案内する</th><td class="who" data-l="担当">貴社</td><td data-l="状態"><span class="st ok">確定</span></td><td class="memo" data-l="補足">申込の入口は、紹介URLです。</td></tr>
           <tr><th scope="row">サービス名とロゴを貴社の名前に変える</th><td class="who" data-l="担当">貴社が決める</td><td data-l="状態"><span class="st ok">確定</span></td><td class="memo" data-l="補足">名前もロゴも、貴社の名前に自由に変えられます。</td></tr>
+          <tr><th scope="row">お客様に出す初期費用の金額</th><td class="who" data-l="担当">貴社が決める</td><td data-l="状態"><span class="st ok">確定</span></td><td class="memo" data-l="補足">初期費用は、貴社が自由に設定できます（税別）。</td></tr>
           <tr class="sep"><th colspan="4" scope="colgroup">まだ決まっていないこと</th></tr>
           <tr class="open"><th scope="row">立ち上げ時の条件決めと文面の支援</th><td class="who" data-l="担当"><span class="tbd">【要確認：担当】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">弊社の運用チームが、どこまで伴走するかを含みます。</td></tr>
           <tr class="open"><th scope="row">お客様からの問い合わせの一次受け</th><td class="who" data-l="担当"><span class="tbd">【要確認：担当】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">技術的な問い合わせの切り分けも対象。</td></tr>
-          <tr class="open"><th scope="row">請求と料金の回収</th><td class="who" data-l="担当"><span class="tbd">【要確認：担当】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">初期費用の分け方も、あわせて確認中です。</td></tr>
+          <tr class="open"><th scope="row">請求と料金の回収</th><td class="who" data-l="担当"><span class="tbd">【要確認：担当】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">弊社への初期費用の支払いの有無も、あわせて確認中。</td></tr>
           <tr class="open"><th scope="row">送信先からの配信停止依頼・苦情の受付</th><td class="who" data-l="担当"><span class="tbd">【要確認：担当】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">メールの配信停止リンクとNGリストは、すでにあります。</td></tr>
           <tr class="open"><th scope="row">送信者として表示する名義</th><td class="who" data-l="担当"><span class="tbd">【要確認：名義】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">お客様・貴社・弊社のどの名前で送るか。</td></tr>
           <tr class="open"><th scope="row">お客様との契約の当事者</th><td class="who" data-l="担当"><span class="tbd">【要確認：担当】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">利用規約をどちらの名前で結ぶかを含みます。</td></tr>
@@ -1514,6 +1524,14 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
       <details>
         <summary>弊社の「つばめリード」とは何が違いますか。</summary>
         <div class="a"><p>つばめリードは、企業の問い合わせフォームから提案文を送るサービスで、直販は成功送信1通5円の従量課金です。リストマスターは、毎朝のリスト作成とメールかFAXでの初回の連絡を月額で回します。どちらも取り扱えるので、お客様の営業のやり方で勧め分けてください。<a class="inlk" href="https://writeup-inc.github.io/saas/tsubame-lead-pack/b01/" target="_blank" rel="noopener">つばめリードのOEM提供のご案内</a></p></div>
+      </details>
+      <details>
+        <summary>料金は税込ですか、税別ですか。</summary>
+        <div class="a"><p>販売料金は、すべて税別です。</p></div>
+      </details>
+      <details>
+        <summary>お客様に出す初期費用は決められますか。</summary>
+        <div class="a"><p>自由に設定できます。直販の初期費用は500,000円（税別）ですが、OEMでは貴社がお客様ごとの事情に合わせて金額を決められます。弊社への初期費用の支払いの有無は【要確認】です。</p></div>
       </details>
       <details>
         <summary>1日に何件のリストができますか。</summary>
@@ -1751,7 +1769,7 @@ document.addEventListener('click', function (e) {
     var iv=ini&&ini.value!==''?Math.max(0,+ini.value||0):0; document.getElementById('sm-ii').textContent=yen(per*12*iv); document.getElementById('sm-ms').textContent=yen(p*sum);
     var gl=document.getElementById('sm-gl'), g=document.getElementById('sm-g');
     if(w===null){ gl.textContent='1年間の粗利（卸値を入れると出ます）'; g.textContent='—'; }
-    else { gl.textContent='1年間の粗利（月額の粗利＋初期費用の取り分）'; g.textContent=yen((p-w)*sum+per*12*iv); }
+    else { gl.textContent='1年間の粗利（月額の粗利＋初期費用の売上。初期費用の仕入れは0円と仮定）'; g.textContent=yen((p-w)*sum+per*12*iv); }
     draw(vals);
   }
   [n,pr,wh,ini].forEach(function(e){ if(e) e.addEventListener('input',calc); });
