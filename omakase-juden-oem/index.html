@@ -6,7 +6,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <meta name="catalog-card" content="true">
-<meta name="description" content="おまかせ受電AIをOEMパートナーとして販売する会社向けの案内です。売価と店舗窓口の持ち方、他社との違い、業種に合わせた機能の作り替えをまとめています。">
+<meta name="lp-type" content="両脳/資料/I興味">
+<meta name="description" content="おまかせ受電AIを、貴社の名前とロゴで店舗へ販売するOEMパートナー向けの案内です。店舗の電話の場面、名前の替え方、分担、作り替え、収益の試算、募集要項をまとめています。">
 <link rel="canonical" href="https://writeup-inc.github.io/saas/omakase-juden-oem/">
 <title>おまかせ受電AI｜OEMパートナーのご案内</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,14 +70,21 @@ img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
 main > *, section > *, .grid > *, .flex > * { min-width: 0; }
 pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
 
+/* ── コンテンツ幅（2026-09-24 たかマスター決定） ───────────────
+ * 主コンテナは最大1200px。1120px・1300pxなど別の値にしない（案件で明示されたときだけ例外）。
+ * 例: .wrap{width:min(var(--lp-max),100% - 40px);margin-inline:auto}
+ * 本文・リードの1行は日本語35〜40字まで（max-width:38em 前後）。 */
+:root { --lp-max: 1200px; }
 
-/* ===== トークン（Jマッチエンジン系の基調） ===== */
+
+/* ===== トークン（Jマッチエンジン系の基調：紺×黄） ===== */
 :root{
   --ac:#0b2c5c; --acl:#f3f6fa; --acl2:#e9eef2; --acm:#b9c6da;
   --bk:#111111; --g1:#4f5357; --g2:#666a6f; --g3:#9ea3a8;
-  --ln:#d9d9d9; --ln2:#efefef; --pa:#f7f7f7; --up:#c8102e;
+  --ln:#d9d9d9; --ln2:#efefef; --pa:#f7f7f7;
+  --y:#ffd54a; --yl:#fff6d1; --yln:#ecd684;
   --hold:#8a5a00; --hold-l:#fff4d6;
-  --wd:1120px;
+  --wd:var(--lp-max);
   --ff-head:"Zen Kaku Gothic New","Noto Sans JP","Hiragino Sans",system-ui,sans-serif;
   --ff-body:"Noto Sans JP","Hiragino Sans",system-ui,sans-serif;
   --ff-en:"Outfit","Zen Kaku Gothic New",sans-serif;
@@ -92,8 +100,9 @@ a{color:inherit}
 .tbd{display:inline-block;padding:0 7px;border-radius:4px;background:var(--hold-l);color:var(--hold);font-size:14px;font-weight:700;line-height:1.7;white-space:nowrap}
 .mk{background:linear-gradient(transparent 62%,#fff1a8 62%)}
 
-/* ===== ヘッダー ===== */
-.hd{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--ln2)}
+/* ===== ヘッダー（下へスクロールで隠し、上へで出す） ===== */
+.hd{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--ln2);transition:transform .32s cubic-bezier(.2,.7,.2,1)}
+.hd.is-hidden{transform:translateY(-100%)}
 .hd .w{display:flex;align-items:center;justify-content:space-between;gap:16px;height:62px}
 .logo{display:inline-flex;align-items:center;min-height:44px;font-size:16px;font-weight:900;letter-spacing:.04em;text-decoration:none;white-space:nowrap}
 .logo small{margin-left:8px;padding:2px 8px;border-radius:4px;background:var(--ac);color:#fff;font-family:var(--ff-en);font-size:13px;font-weight:700;letter-spacing:.12em;vertical-align:2px}
@@ -102,53 +111,54 @@ a{color:inherit}
 .hn a:hover{color:var(--ac)}
 .hn .btn-s{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:6px;background:var(--ac);color:#fff}
 .hn .btn-s:hover{color:#fff;background:#08214a}
-@media(max-width:900px){.hn a:not(.btn-s){display:none}}
+@media(max-width:960px){.hn a:not(.btn-s){display:none}}
 
 /* ===== ボタン ===== */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 28px;border-radius:8px;
   font-size:16px;font-weight:900;letter-spacing:.04em;text-decoration:none;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.btn-y{background:var(--y);color:#0b1a33;border:1px solid var(--y);box-shadow:0 0 0 6px rgba(255,213,74,.16)}
+.btn-y:hover{background:#ffe07a}
 .btn-p{background:var(--ac);color:#fff;border:1px solid var(--ac)}
 .btn-p:hover{background:#08214a}
-.btn-o{background:#fff;color:var(--ac);border:1px solid var(--acm);font:inherit;font-family:var(--ff-head);font-weight:900}
-.btn-o:hover{border-color:var(--ac)}
+.sub-l{display:inline-flex;align-items:center;min-height:44px;font-size:15px;font-weight:700;color:var(--ac);text-underline-offset:5px}
 
-/* ===== ヒーロー（写真を敷いた紺の全面。右に受電ログ） ===== */
+/* ===== ヒーロー（人の写真を敷いた紺の全面。右に受電ログ） ===== */
 .hero{position:relative;overflow:hidden;color:#fff;background:#0b1a33;padding:clamp(56px,7vw,100px) 0 0}
 .hero-bg{position:absolute;inset:0;z-index:0}
-.hero-bg img{display:block;width:100%;height:100%;object-fit:cover}
+.hero-bg img{display:block;width:100%;height:100%;object-fit:cover;object-position:60% 40%}
 .hero::before{content:"";position:absolute;inset:0;z-index:1;
-  background:linear-gradient(90deg,rgba(8,20,42,.94) 0,rgba(8,20,42,.8) 42%,rgba(8,20,42,.42) 100%),
-             linear-gradient(180deg,rgba(8,20,42,.35) 0,rgba(8,20,42,.05) 45%,rgba(8,20,42,.9) 100%)}
+  background:linear-gradient(90deg,rgba(8,20,42,.95) 0,rgba(8,20,42,.84) 45%,rgba(8,20,42,.5) 100%),
+             linear-gradient(180deg,rgba(8,20,42,.35) 0,rgba(8,20,42,.05) 45%,rgba(8,20,42,.92) 100%)}
 .hero::after{content:"";position:absolute;right:-10%;bottom:-30%;z-index:1;width:60%;height:80%;background:radial-gradient(closest-side,rgba(255,213,74,.16),transparent);pointer-events:none}
 .hero .w{position:relative;z-index:2}
-.hero-in{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(32px,5vw,72px);align-items:center}
+.hero-in{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(32px,5vw,72px);align-items:center}
 .eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:0 0 20px;font-size:15px;font-weight:700;color:#c9d4e4}
-.live{display:inline-flex;align-items:center;gap:8px;padding:4px 12px;border:1px solid rgba(255,213,74,.55);border-radius:999px;font-family:var(--ff-en);font-size:13px;letter-spacing:.16em;color:#ffd54a}
-.live i{width:8px;height:8px;border-radius:50%;background:#ffd54a;box-shadow:0 0 0 0 rgba(255,213,74,.6);animation:pulse 1.8s ease-out infinite}
+.live{display:inline-flex;align-items:center;gap:8px;padding:4px 12px;border:1px solid rgba(255,213,74,.55);border-radius:999px;font-family:var(--ff-en);font-size:13px;letter-spacing:.16em;color:var(--y)}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--y);box-shadow:0 0 0 0 rgba(255,213,74,.6);animation:pulse 1.8s ease-out infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,213,74,.6)}100%{box-shadow:0 0 0 10px rgba(255,213,74,0)}}
 .hc{position:relative;cursor:pointer;border-radius:6px}
 .hc:focus-visible{outline:3px solid rgba(255,213,74,.7);outline-offset:8px}
-.hero h1{margin:0;font-size:clamp(1.45rem,7vw,2.95rem);font-weight:900;line-height:1.38;letter-spacing:-.01em;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.35)}
-.hero h1::after{content:"";display:inline-block;width:4px;height:.92em;margin-left:8px;vertical-align:-.1em;background:#ffd54a;animation:blink 1s steps(1) infinite}
+.hero h1{margin:0;font-size:clamp(1.3rem,6vw,2.6rem);font-weight:900;line-height:1.4;letter-spacing:-.01em;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.hero h1::after{content:"";display:inline-block;width:4px;height:.92em;margin-left:8px;vertical-align:-.1em;background:var(--y);animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 .dots{display:flex;gap:4px;margin:14px 0 0 -10px}
 .dots button{width:44px;height:44px;padding:0;border:0;background:none;cursor:pointer;position:relative}
 .dots button::before{content:"";position:absolute;left:10px;right:10px;top:20px;height:4px;border-radius:2px;background:rgba(255,255,255,.28);transition:background .2s}
-.dots button[aria-current="true"]::before{background:#ffd54a}
+.dots button[aria-current="true"]::before{background:var(--y)}
 .hero .sub{margin:14px 0 0;max-width:34em;font-size:17px;line-height:1.95;color:#d3dcea}
 .hero .sub b{color:#fff}
 .hero .cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin:30px 0 0}
-.btn-y{background:#ffd54a;color:#0b1a33;border:1px solid #ffd54a;box-shadow:0 0 0 6px rgba(255,213,74,.16)}
-.btn-y:hover{background:#ffe07a}
 .lnk{display:inline-flex;align-items:center;min-height:44px;font-size:15px;font-weight:700;color:#fff;text-underline-offset:5px}
 /* 受電ログの画面イメージ */
 .log{margin:0;background:#fff;color:var(--bk);border-radius:16px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.08)}
 .log-top{display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--ac);color:#fff}
 .mock-logo{display:grid;place-items:center;height:30px;padding:0 6px;border:1.5px dashed rgba(255,255,255,.7);border-radius:6px;font-size:13px;font-weight:700}
-.log-top p{flex:1;font-size:15px;font-weight:700;line-height:1.4}
+.log-top p{flex:1;min-width:0;line-height:1.4}
+.log-top p b{display:block;font-size:15px;min-height:1.4em}
+.log-top p b.is-typing::after{content:"";display:inline-block;width:2px;height:1em;margin-left:2px;vertical-align:-.12em;background:var(--y);animation:blink .8s steps(1) infinite}
 .log-top p span{display:block;font-size:13px;font-weight:500;opacity:.8}
-.rec{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#ffd54a;white-space:nowrap}
-.rec i{width:7px;height:7px;border-radius:50%;background:#ffd54a;animation:blink 1.2s steps(1) infinite}
+.rec{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--y);white-space:nowrap}
+.rec i{width:7px;height:7px;border-radius:50%;background:var(--y);animation:blink 1.2s steps(1) infinite}
 .log-l{list-style:none;margin:0;padding:6px 16px 4px}
 .log-l li{display:grid;grid-template-columns:3.2em 1fr;gap:2px 12px;padding:11px 0;border-bottom:1px solid var(--ln2);transition:opacity .45s,transform .45s}
 .log-l li:last-child{border-bottom:0}
@@ -167,147 +177,75 @@ a{color:inherit}
 .hfacts li + li{padding-left:18px;border-left:1px solid rgba(255,255,255,.12)}
 .hfacts span{display:block;font-size:14px;color:#9fb0c8}
 .hfacts b{word-break:auto-phrase;display:block;margin-top:2px;font-family:var(--ff-head);font-size:clamp(1rem,1.6vw,1.2rem);font-weight:900;color:#fff}
-.hero .gen{position:absolute;right:16px;top:10px;z-index:2;margin:0;font-size:13px;color:rgba(255,255,255,.55)}
 
 /* ===== セクション共通 ===== */
 .sec{padding:clamp(72px,9vw,120px) 0;border-top:1px solid var(--ln2)}
 .sec.tint{background:var(--acl)}
-.sh{margin:0 0 clamp(28px,4vw,44px)}
+.sh{margin:0 0 clamp(24px,3.4vw,40px)}
 .shl{display:flex;align-items:center;gap:12px;margin:0 0 12px}
 .sh .no{font-family:var(--ff-en);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;line-height:1;color:var(--acm)}
 .sh .en{font-size:13px;color:var(--ac)}
-.sh h2{margin:0;font-weight:900;line-height:1.5;letter-spacing:-.01em;font-size:clamp(1.05rem,5.3vw,2.1rem)}
-.body{max-width:760px;font-size:17px;line-height:2;color:#262a2e}
+.sh h2{margin:0;font-weight:900;line-height:1.5;letter-spacing:-.01em;font-size:clamp(1.15rem,5.2vw,2.1rem)}
+.body{max-width:38em;font-size:17px;line-height:2;color:#262a2e}
 .body + .body{margin-top:14px}
 .note{margin:18px 0 0;font-size:15px;color:var(--g2)}
+.inlk{color:var(--ac);font-weight:700;text-underline-offset:4px}
 
-/* 1 向いている会社 */
-.fit{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(28px,4vw,56px);margin-top:36px}
-.fit h3{margin:0 0 10px;font-size:17px;font-weight:900}
-.fit ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--ln)}
-.fit li{padding:14px 2px;border-bottom:1px solid var(--ln);font-size:16px;line-height:1.75}
-.fit li b{display:block;font-size:17px}
-.fit li span{color:var(--g2);font-size:15px}
-.fit .no-fit li b{color:var(--g1)}
+/* 01 場面の写真 */
+.scenes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:34px 0 0}
+.scenes figure{margin:0;position:relative;border-radius:12px;overflow:hidden}
+.scenes img{display:block;width:100%;aspect-ratio:4/5;height:auto;object-fit:cover}
+.scenes figure::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(8,20,42,.85) 100%)}
+.scenes figcaption{position:absolute;left:18px;right:18px;bottom:16px;z-index:1;color:#fff;font-size:15px;line-height:1.6}
+.scenes figcaption b{display:block;font-family:var(--ff-head);font-size:clamp(1.05rem,1.8vw,1.3rem);font-weight:900}
+.scenes .ring{position:absolute;right:14px;top:14px;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:999px;background:rgba(255,255,255,.94);color:var(--ac);font-size:13px;font-weight:700}
+.scenes .ring i{width:8px;height:8px;border-radius:50%;background:#d23a2a;animation:blink 1s steps(1) infinite}
 
-/* 2 振り分けの図 */
-.flow{margin-top:36px;border:1px solid var(--ln);border-radius:12px;background:#fff;overflow:hidden}
-.flow-h,.flow-r{display:grid;grid-template-columns:1fr 32px 1fr 32px 1.4fr;align-items:center;gap:10px;padding:0 22px}
-.flow-h{padding-top:14px;padding-bottom:10px;background:var(--pa);font-size:14px;font-weight:700;color:var(--g2)}
-.flow-r{padding-top:18px;padding-bottom:18px;border-top:1px solid var(--ln2)}
-.flow-r .k{font-size:17px;font-weight:700}
-.flow .ar{color:var(--acm);font-weight:700;text-align:center}
-.who{display:inline-flex;align-items:center;gap:8px;font-size:16px;font-weight:700}
-.who i{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;font-style:normal;font-size:14px;font-weight:700}
-.who.ai i{background:var(--ac);color:#fff}
-.who.hu i{background:#fff;color:var(--ac);border:1.5px solid var(--ac)}
-.flow-r .nxt{font-size:16px;line-height:1.7;color:#262a2e}
-.flow-h span:nth-child(2),.flow-h span:nth-child(4){visibility:hidden}
+/* 02 振り分けの図 */
+.fc{margin-top:34px;padding:26px 24px 20px;border:1px solid var(--ln);border-radius:14px;background:#fff}
+.fc-t{margin:0 0 14px;font-family:var(--ff-head);font-size:18px;font-weight:900}
+.fc svg{display:block;width:100%;height:auto}
+.fc .fc-sp{display:none;max-width:420px;margin:0 auto}
+.fc .n rect{fill:#fff;stroke:#b8c0cb;stroke-width:1.5}
+.fc .n text{font-family:var(--ff-head);font-size:16px;font-weight:700;fill:#1c232c;text-anchor:middle}
+.fc .n.ac rect{fill:var(--ac);stroke:var(--ac)}
+.fc .n.ac text{fill:#fff}
+.fc .e path{fill:none;stroke:#9aa6b8;stroke-width:2}
+.fc .lb text{font-family:var(--ff-body);font-size:14px;font-weight:700;fill:#5a6472;paint-order:stroke;stroke:#fff;stroke-width:6px;stroke-linejoin:round}
+.fc-c{margin:14px 0 0;padding-top:12px;border-top:1px solid var(--ln2);font-family:var(--ff-head);font-size:17px;font-weight:900;color:var(--ac)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;list-style:none;margin:22px 0 0;padding:0}
+.steps li{padding:18px 20px;border-radius:12px;background:#fff;border:1px solid var(--ln)}
+.steps .en{display:block;font-size:13px;color:var(--ac)}
+.steps b{display:block;margin:2px 0 4px;font-family:var(--ff-head);font-size:17px;font-weight:900}
+.steps span{font-size:15px;line-height:1.75;color:var(--g1)}
 
-/* 3 分担 */
-.split{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
-.col{padding:24px 24px 20px;border-radius:12px;background:#fff;border:1px solid var(--ln)}
-.col.you{border-top:4px solid var(--ac)}
-.col.us{border-top:4px solid var(--acm)}
-.col.tbd-c{border-top:4px solid #e3c36a;background:#fffdf6}
-.col h3{margin:0;font-size:18px;font-weight:900}
-.col ul{list-style:none;margin:12px 0 0;padding:0}
-.col li{position:relative;padding:9px 0 9px 20px;border-top:1px solid var(--ln2);font-size:16px;line-height:1.7}
-.col li::before{content:"";position:absolute;left:2px;top:19px;width:8px;height:8px;border-radius:2px;background:var(--ac)}
-.col.us li::before{background:var(--acm)}
-.col.tbd-c li::before{background:#e3c36a}
-.price{margin-top:22px;display:grid;grid-template-columns:auto 1fr;gap:0;border-top:1px solid var(--ln);max-width:760px}
-.price dt,.price dd{margin:0;padding:12px 4px;border-bottom:1px solid var(--ln);font-size:16px}
-.price dt{padding-right:28px;font-weight:700}
+/* 03 名前とロゴの前後 */
+.bb{display:grid;grid-template-columns:minmax(0,1fr) 64px minmax(0,1fr);align-items:center;margin-top:34px}
+.bb-card{border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--ln);box-shadow:0 24px 50px -34px rgba(11,44,92,.45)}
+.bb-card .bar{display:flex;align-items:center;gap:10px;padding:12px 16px;background:#5c6878;color:#fff}
+.bb-card.you{border:2px solid var(--ac)}
+.bb-card.you .bar{background:var(--ac)}
+.bb-card .lg{display:grid;place-items:center;flex:none;height:30px;padding:0 8px;border-radius:6px;background:rgba(255,255,255,.16);font-size:13px;font-weight:700}
+.bb-card.you .lg{border:1.5px dashed rgba(255,255,255,.75);background:none}
+.bb-card .nm{flex:1;min-width:0;font-size:16px;font-weight:700;line-height:1.35}
+.bb-card .nm small{display:block;font-size:13px;font-weight:500;opacity:.8}
+.bb-card .tag{flex:none;padding:2px 10px;border-radius:999px;background:rgba(255,255,255,.18);font-size:13px;font-weight:700}
+.bb-card.you .tag{background:var(--y);color:#0b1a33}
+.bb-l{list-style:none;margin:0;padding:4px 16px 8px}
+.bb-l li{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 10px;padding:10px 0;border-bottom:1px solid var(--ln2);font-size:15px}
+.bb-l li:last-child{border-bottom:0}
+.bb-arrow{display:grid;place-items:center;font-size:28px;font-weight:900;color:var(--ac)}
+.bb-note{margin:16px 0 0;font-size:15px;color:var(--g2)}
 
-/* 4 品質 */
-.honest{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);align-items:start}
-.quote{padding:26px 28px;border-left:4px solid var(--ac);background:#fff;font-family:var(--ff-head);font-size:clamp(1.15rem,2vw,1.35rem);font-weight:900;line-height:1.7}
-.quote span{display:block;margin-top:10px;font-family:var(--ff-body);font-size:15px;font-weight:500;color:var(--g2)}
+/* 切り替えの帯 */
+.switch{padding:34px 0;background:var(--yl);border-top:1px solid var(--yln);border-bottom:1px solid var(--yln)}
+.sw-h{font-family:var(--ff-head);font-size:clamp(1.1rem,2.6vw,1.5rem);font-weight:900;line-height:1.5;color:var(--ac)}
+.sw-l{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:14px 0 0;padding:0}
+.sw-l a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;background:#fff;border:1px solid var(--yln);font-size:15px;font-weight:700;color:var(--ac);text-decoration:none}
+.sw-l a:hover{border-color:var(--ac)}
 
-/* 5 比較表 */
-.cmp{width:100%;margin-top:32px;border-collapse:collapse;font-size:16px;background:#fff}
-.cmp th,.cmp td{padding:15px 16px;border-bottom:1px solid var(--ln);text-align:left;vertical-align:top;line-height:1.7}
-.cmp thead th{font-size:15px;color:var(--g2);font-weight:700;border-bottom:2px solid var(--bk)}
-.cmp thead th.ours{color:var(--ac)}
-.cmp tbody th{font-weight:700;width:26%}
-.cmp td.ours{font-weight:700;color:var(--ac);background:var(--acl)}
-.cmp tr.same td{color:var(--g1)}
-.cmp-wrap{overflow-x:auto}
-/* 募集要項 */
-.req{margin:32px 0 0;border-top:2px solid var(--bk);display:grid;grid-template-columns:13em 1fr}
-.req dt,.req dd{margin:0;padding:16px 16px 16px 0;border-bottom:1px solid var(--ln);font-size:16px;line-height:1.8}
-.req dt{font-weight:700;color:var(--bk)}
-.req dd{color:var(--g1)}
-.req dd ul{margin:0;padding:0 0 0 1.1em}
-.req dd a{color:var(--ac);font-weight:700;text-underline-offset:4px}
-.req-cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin:30px 0 0}
-.req-cta .btn{background:var(--ac);color:#fff;border:1px solid var(--ac)}
-.req-cta .sub-l{display:inline-flex;align-items:center;min-height:44px;font-size:15px;font-weight:700;color:var(--ac);text-underline-offset:5px}
-@media(max-width:700px){.req{grid-template-columns:1fr}.req dt{padding:16px 0 0;border-bottom:0}.req dd{padding:4px 0 16px}}
-.last .sub-l{display:inline-flex;align-items:center;min-height:44px;margin:12px 0 0;font-size:15px;font-weight:700;color:#fff;text-underline-offset:5px}
-
-/* 6 作り替え */
-.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px}
-.tile{padding:22px 20px;border:1px solid var(--ln);border-radius:12px;background:#fff}
-.tile svg{width:36px;height:36px;fill:none;stroke:var(--ac);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.tile h3{margin:12px 0 6px;font-size:17px;font-weight:900;line-height:1.5}
-.tile p{font-size:15px;line-height:1.8;color:var(--g1)}
-.how{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
-.lane{padding:24px 26px;border-radius:12px;background:var(--acl)}
-.lane .en{font-size:13px;color:var(--ac)}
-.lane h3{margin:6px 0 8px;font-size:18px;font-weight:900}
-.lane p{font-size:16px;line-height:1.85;color:#262a2e}
-
-/* 7 手順 */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:34px;counter-reset:st;border-top:1px solid var(--ln)}
-.step{padding:24px 24px 24px 0;border-bottom:1px solid var(--ln)}
-.step + .step{padding-left:24px;border-left:1px solid var(--ln)}
-.step .en{font-size:14px;color:var(--ac)}
-.step h3{margin:6px 0 6px;font-size:18px;font-weight:900}
-.step p{font-size:16px;line-height:1.8;color:var(--g1)}
-.later{margin-top:34px;padding:22px 24px;border:1px dashed var(--acm);border-radius:12px}
-.later .lh{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
-.later h3{margin:0;font-size:17px;font-weight:900}
-.later ul{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:12px 0 0;padding:0}
-.later li{padding:4px 12px;border-radius:999px;background:var(--pa);font-size:15px;color:var(--g1)}
-
-/* 8 FAQ */
-.faq{margin-top:30px;border-top:1px solid var(--ln);max-width:860px}
-.faq details{border-bottom:1px solid var(--ln)}
-.faq summary{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px;padding:14px 4px;font-family:var(--ff-head);font-size:17px;font-weight:900;cursor:pointer;list-style:none}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"＋";flex:none;color:var(--ac);font-weight:700}
-.faq details[open] summary::after{content:"－"}
-.faq .a{padding:0 4px 20px;font-size:16px;line-height:1.9;color:#262a2e}
-
-/* 9 CTA */
-.last{padding:clamp(72px,9vw,112px) 0;background:var(--ac);color:#fff}
-.last h2{margin:0;font-size:clamp(1.05rem,5.3vw,2.3rem);font-weight:900;line-height:1.5}
-.last .en{font-size:13px;color:var(--acm)}
-.last p.b{margin:18px 0 0;max-width:720px;font-size:17px;line-height:2;color:#dfe6f0}
-.last ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0;padding:0}
-.last ul li{padding:5px 14px;border:1px solid rgba(255,255,255,.35);border-radius:999px;font-size:15px}
-.last .btn-w{margin-top:30px;background:#fff;color:var(--ac);border:1px solid #fff}
-.last .btn-w:hover{background:var(--acl)}
-.last .fine{margin:14px 0 0;font-size:14px;color:#b9c6da}
-
-/* ファクトチェック */
-.fc-btn{display:inline-flex;align-items:center;gap:.6em;min-height:44px;margin-top:22px;padding:8px 16px;border:1px solid currentColor;border-radius:999px;background:transparent;color:var(--g1);font:inherit;font-size:14px;font-weight:700;cursor:pointer}
-.fc-btn:hover{color:var(--bk)}
-.fc-sub{font-size:13px;font-weight:400;opacity:.8}
-
-/* 会社概要 */
-.co{padding:56px 0 64px;background:#111;color:#cfd3d8}
-.co h2{margin:0 0 14px;font-size:16px;font-weight:900;color:#fff}
-.co dl{display:grid;grid-template-columns:8em 1fr;margin:0;max-width:720px;font-size:15px}
-.co dt,.co dd{margin:0;padding:8px 0;border-bottom:1px solid #2a2d31}
-.co dt{color:#8d939a}
-.co .pf{margin:22px 0 0;font-size:14px;color:#8d939a}
-
-
-/* 3 関係図 */
-.rel{display:grid;grid-template-columns:1fr 150px 1fr 150px .8fr;align-items:stretch;margin-top:36px}
+/* 04 分担 */
+.rel{display:grid;grid-template-columns:1fr 150px 1fr 150px .8fr;align-items:stretch;margin-top:34px}
 .node{padding:22px 22px 18px;border:1px solid var(--ln);border-radius:12px;background:#fff}
 .node .en{font-size:13px;color:var(--g2)}
 .node h3{margin:4px 0 8px;font-size:20px;font-weight:900}
@@ -321,90 +259,144 @@ a{color:inherit}
 .edge{position:relative;display:flex;align-items:center;justify-content:center}
 .edge::before{content:"";position:absolute;left:10px;right:14px;top:50%;height:2px;background:var(--acm)}
 .edge::after{content:"";position:absolute;right:8px;top:calc(50% - 6px);border:6px solid transparent;border-left:9px solid var(--acm)}
-.edge span{position:relative;padding:2px 8px;background:#fff;font-size:13px;font-weight:700;color:var(--ac);white-space:nowrap}
+.edge span{position:relative;padding:2px 8px;background:var(--acl);font-size:13px;font-weight:700;color:var(--ac);white-space:nowrap}
 .rel-note{margin:16px 0 0;font-family:var(--ff-head);font-size:17px;font-weight:900;color:var(--ac)}
-.undecided{margin-top:44px;max-width:760px}
-.undecided h3{margin:0 0 6px;font-size:17px;font-weight:900}
-.undecided .price{margin-top:0}
-.mid{margin:26px 0 0;font-size:16px;font-weight:700}
-.mid a{display:inline-flex;align-items:center;min-height:44px;color:var(--ac);text-underline-offset:4px}
-.later li{background:#fff;border:1px dashed var(--g3)}
-.quote,.faq summary,.fit li b,.tile h3,.lane h3,.col li,.cmp th,.cmp td,.node li,.flow-r .nxt,.rel-note{word-break:auto-phrase;line-break:strict}
-.faq summary,.fit li b{text-wrap:pretty}
-@media(max-width:960px){
-  .rel{grid-template-columns:1fr;gap:0}
-  .edge{height:56px}
-  .edge::before{left:50%;right:auto;top:6px;bottom:12px;width:2px;height:auto}
-  .edge::after{left:calc(50% - 6px);right:auto;top:auto;bottom:4px;border:6px solid transparent;border-top:9px solid var(--acm)}
-  .edge span{background:#fff}
-}
-@media(max-width:600px){
-  body,.body{font-size:16px}
-  .cmp thead th:first-child{display:none}
-  .cmp thead tr,.cmp tbody tr{display:grid;grid-template-columns:1fr 1fr}
-  .cmp tbody th{grid-column:1/-1;width:auto;padding:14px 10px 0;border:0;font-size:14px;color:var(--g2)}
-  .tile{display:grid;grid-template-columns:36px 1fr;column-gap:14px;padding:18px}
-  .tile svg{grid-row:1/3}
-  .tile h3{margin:0 0 4px}
-}
 
+/* 05 品質と違い */
+.quote{margin:0;padding:26px 28px;border-left:4px solid var(--ac);background:var(--acl);font-family:var(--ff-head);font-size:clamp(1.15rem,2vw,1.35rem);font-weight:900;line-height:1.7}
+.quote span{display:block;margin-top:10px;font-family:var(--ff-body);font-size:15px;font-weight:500;color:var(--g2)}
+.diff{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.dcard{display:grid;grid-template-columns:48px 1fr;gap:4px 16px;padding:24px;border:1px solid var(--ln);border-radius:12px;background:#fff}
+.dcard svg{grid-row:1 / 4;width:44px;height:44px;fill:none;stroke:var(--ac);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.dcard .en{font-size:13px;color:var(--ac)}
+.dcard h3{margin:0;font-size:19px;font-weight:900;line-height:1.5}
+.dcard p{font-size:15.5px;line-height:1.85;color:#262a2e}
 
-/* 写真：店舗の場面 */
-.scenes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:32px 0 8px}
-.scenes figure{margin:0}
-.scenes img{display:block;width:100%;aspect-ratio:4/3;height:auto;object-fit:cover;border-radius:10px}
-.scenes figcaption{margin-top:8px;font-size:15px;color:var(--g1);line-height:1.6}
-.scenes figcaption b{display:inline-block;margin-right:8px;padding:0 8px;border-radius:4px;background:var(--acl2);color:var(--ac);font-size:14px}
-/* フローチャート */
-.fc{margin-top:36px;padding:26px 24px 20px;border:1px solid var(--ln);border-radius:14px;background:#fff}
-.fc-t{margin:0 0 14px;font-family:var(--ff-head);font-size:18px;font-weight:900}
-.fc svg{display:block;width:100%;height:auto}
-.fc .fc-sp{display:none;max-width:420px;margin:0 auto}
-.fc .n rect{fill:#fff;stroke:#b8c0cb;stroke-width:1.5}
-.fc .n text{font-family:var(--ff-head);font-size:16px;font-weight:700;fill:#1c232c;text-anchor:middle}
-.fc .n.ac rect{fill:var(--ac);stroke:var(--ac)}
-.fc .n.ac text{fill:#fff}
-.fc .e path{fill:none;stroke:#9aa6b8;stroke-width:2}
-.fc .lb text{font-family:var(--ff-body);font-size:14px;font-weight:700;fill:#5a6472;paint-order:stroke;stroke:#fff;stroke-width:6px;stroke-linejoin:round}
-.fc-c{margin:14px 0 0;padding-top:12px;border-top:1px solid var(--ln2);font-family:var(--ff-head);font-size:17px;font-weight:900;color:var(--ac)}
-.aside{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center;margin-top:22px}
-.but{list-style:none;margin:0;padding:0}
-.but li{position:relative;padding:8px 0 8px 22px;font-size:16px;line-height:1.75;border-bottom:1px solid var(--ln2)}
-.but li::after{content:"";position:absolute;left:4px;top:19px;width:8px;height:8px;border-radius:50%;background:var(--acm)}
-.dusk{margin:0}
-.dusk img{display:block;width:100%;aspect-ratio:16/9;height:auto;object-fit:cover;border-radius:10px}
-.dusk figcaption{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 10px;margin-top:8px;font-size:15px;color:var(--g1)}
-.dusk figcaption span{font-size:13px;color:var(--g2)}
-.ex-h{margin:40px 0 0;font-size:17px;font-weight:900}
-.ex-h + .flow{margin-top:14px}
-/* 写真の帯 */
-.band{position:relative;margin:30px 0 0;border-radius:12px;overflow:hidden}
-.band img{display:block;width:100%;height:240px;object-fit:cover}
-.band::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,44,92,.82) 0,rgba(11,44,92,.35) 60%,rgba(11,44,92,.1) 100%)}
-.band figcaption{position:absolute;left:28px;right:28px;bottom:24px;z-index:1;font-family:var(--ff-head);font-size:clamp(1.05rem,2.2vw,1.45rem);font-weight:900;color:#fff;line-height:1.5}
-/* CTA：写真を敷く＋導入の流れ */
-.last{position:relative;overflow:hidden}
-.last::before{content:"";position:absolute;inset:0;background:url(images/partner-handshake.webp) center/cover no-repeat;opacity:.22}
+/* 06 作り替え */
+.aft{margin:30px 0 0;padding:24px;border:1px solid var(--ln);border-radius:14px;background:#fff}
+.aft-t{margin:0 0 16px;font-family:var(--ff-head);font-size:18px;font-weight:900}
+.aft-f{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;list-style:none;margin:0;padding:0}
+.aft-f li{position:relative;padding:16px 16px;border-radius:10px;background:var(--acl);border:1px solid var(--acm);font-family:var(--ff-head);font-size:17px;font-weight:900;line-height:1.5}
+.aft-f li small{display:block;margin-top:4px;font-family:var(--ff-body);font-size:14px;font-weight:500;color:var(--g1)}
+.aft-f li.st{background:var(--ac);border-color:var(--ac);color:#fff}
+.aft-f li.st small{color:#d3dcea}
+.aft-f li + li::before{content:"";position:absolute;left:-22px;top:50%;border:7px solid transparent;border-left:10px solid var(--acm);transform:translateY(-50%)}
+.aft-c{margin:14px 0 0;padding-top:12px;border-top:1px solid var(--ln2);font-family:var(--ff-head);font-size:16px;font-weight:900;color:var(--ac)}
+@media(max-width:760px){.aft{padding:18px}.aft-f{grid-template-columns:1fr;gap:22px}.aft-f li + li::before{left:50%;top:-20px;border:7px solid transparent;border-top:10px solid var(--acm);transform:translateX(-50%)}}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
+.tile{padding:22px 20px;border:1px solid var(--ln);border-radius:12px;background:#fff}
+.tile svg{width:36px;height:36px;fill:none;stroke:var(--ac);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.tile h3{margin:12px 0 6px;font-size:17px;font-weight:900;line-height:1.5}
+.tile p{font-size:15px;line-height:1.8;color:var(--g1)}
+.how{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}
+.lane{padding:24px 26px;border-radius:12px;background:#fff;border:1px solid var(--ln)}
+.lane .en{font-size:13px;color:var(--ac)}
+.lane h3{margin:6px 0 8px;font-size:18px;font-weight:900}
+.lane p{font-size:16px;line-height:1.85;color:#262a2e}
+
+/* 07 収益の計算機 */
+.formula{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin:26px 0 0;padding:18px 22px;border-radius:12px;background:var(--acl);font-family:var(--ff-head);font-weight:900}
+.formula .t{padding:6px 14px;border-radius:8px;background:#fff;border:1px solid var(--acm);font-size:16px;line-height:1.5}
+.formula .t small{display:block;font-family:var(--ff-body);font-size:13px;font-weight:700;color:var(--hold)}
+.formula .o{font-size:20px;color:var(--ac)}
+.sim{margin-top:22px;border:1px solid var(--ln);border-radius:14px;background:#fff;overflow:hidden}
+.sim-h{padding:18px 24px;background:var(--pa);border-bottom:1px solid var(--ln2)}
+.sim-h h3{margin:0;font-size:18px;font-weight:900}
+.sim-h p{margin-top:4px;font-size:15px;line-height:1.75;color:var(--g1)}
+.sim-b{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:30px;padding:24px}
+.fld{margin:0 0 20px}
+.fld label{display:block;font-size:15px;font-weight:700;line-height:1.6}
+.fld .row{display:flex;align-items:center;gap:10px;margin-top:6px}
+.fld input[type=number]{width:100%;min-height:48px;padding:0 12px;border:1px solid var(--acm);border-radius:8px;font:inherit;font-size:17px;background:#fff;color:var(--bk)}
+.fld input[type=number]:focus-visible,.fld input[type=range]:focus-visible{outline:3px solid rgba(11,44,92,.35);outline-offset:2px}
+.fld .u{flex:none;font-size:15px;font-weight:700;color:var(--g1)}
+.fld input[type=range]{width:100%;height:44px;accent-color:var(--ac)}
+.fld .val{font-family:var(--ff-en);font-size:26px;font-weight:800;color:var(--ac)}
+.fld .val small{margin-left:4px;font-family:var(--ff-body);font-size:14px;font-weight:700;color:var(--g1)}
+.fld .hint{display:block;margin-top:4px;font-size:13px;line-height:1.6;color:var(--g2)}
+.out{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 16px}
+.out div{padding:12px 14px;border-radius:10px;background:var(--acl)}
+.out span{display:block;font-size:13px;line-height:1.5;font-weight:700;color:var(--g1)}
+.out b{display:block;margin-top:2px;font-family:var(--ff-en);font-size:clamp(1.1rem,2vw,1.4rem);font-weight:800;color:var(--ac);white-space:nowrap}
+.out b.ph{font-family:var(--ff-body);font-size:14px;font-weight:700;color:var(--g2);white-space:normal;line-height:1.6}
+.chart{position:relative}
+.chart svg{display:block;width:100%;height:auto}
+.chart .gl{stroke:#e6e9ee;stroke-width:1}
+.chart .ax{font-family:var(--ff-en);font-size:12px;fill:#666a6f}
+.chart .bar{fill:var(--ac)}
+.chart .bar.cnt{fill:var(--acm)}
+.chart .lbl{font-family:var(--ff-en);font-size:13px;font-weight:700;fill:var(--ac)}
+.chart-c{margin-top:6px;font-size:14px;line-height:1.7;color:var(--g2)}
+.sim-f{padding:14px 24px 18px;border-top:1px solid var(--ln2);font-size:14px;line-height:1.8;color:var(--g2)}
+
+/* 08 募集要項 */
+.req{margin:0;border-top:2px solid var(--bk);display:grid;grid-template-columns:13em 1fr}
+.req dt,.req dd{margin:0;padding:16px 16px 16px 0;border-bottom:1px solid var(--ln);font-size:16px;line-height:1.8}
+.req dt{font-weight:700;color:var(--bk)}
+.req dd{color:var(--g1)}
+.req dd ul{margin:0;padding:0 0 0 1.1em}
+.req dd a{color:var(--ac);font-weight:700;text-underline-offset:4px}
+.req .tbd-l{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0;margin:0 0 6px}
+.req-cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin:30px 0 0}
+
+/* 09 FAQ */
+.faq{margin-top:8px;border-top:1px solid var(--ln);max-width:860px}
+.faq details{border-bottom:1px solid var(--ln)}
+.faq summary{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px;padding:14px 4px;font-family:var(--ff-head);font-size:17px;font-weight:900;cursor:pointer;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"＋";flex:none;color:var(--ac);font-weight:700}
+.faq details[open] summary::after{content:"－"}
+.faq .a{padding:0 4px 20px;font-size:16px;line-height:1.9;color:#262a2e}
+
+/* 最終CTA（写真を敷く＋導入の流れ） */
+.last{position:relative;overflow:hidden;padding:clamp(72px,9vw,112px) 0;background:var(--ac);color:#fff}
+.last::before{content:"";position:absolute;inset:0;background:url(images/store-cafe-hands.webp) center 40%/cover no-repeat;opacity:.2}
 .last .w{position:relative}
-.onb{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:30px 0 0;padding:0;counter-reset:o;border-top:1px solid rgba(255,255,255,.3)}
+.last h2{margin:0;font-size:clamp(1.15rem,5.2vw,2.3rem);font-weight:900;line-height:1.5}
+.last .en{font-size:13px;color:var(--acm)}
+.last p.b{margin:18px 0 0;max-width:38em;font-size:17px;line-height:2;color:#dfe6f0}
+.onb{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:30px 0 0;padding:0;border-top:1px solid rgba(255,255,255,.3)}
 .onb li{position:relative;padding:16px 18px 14px 0;font-size:15px;line-height:1.7;color:#dfe6f0}
 .onb li + li{padding-left:18px;border-left:1px solid rgba(255,255,255,.2)}
 .onb .en{display:block;font-size:13px;color:var(--acm)}
 .onb b{display:block;font-family:var(--ff-head);font-size:17px;color:#fff}
 .onb-n{margin:8px 0 0;font-size:14px;color:#b9c6da}
-@media(max-width:760px){
-  .scenes{grid-template-columns:1fr 1fr;gap:12px 10px}
-  .scenes figure:first-child{grid-column:1 / -1}
-  .scenes figure:not(:first-child) figcaption b{display:block;width:max-content;margin:0 0 2px}
-  .fc{padding:20px 14px 16px}
-  .fc .fc-pc{display:none}
-  .fc .fc-sp{display:block}
-  .aside{grid-template-columns:1fr}
-  .band img{height:180px}
-  .onb{grid-template-columns:1fr 1fr}
-  .onb li:nth-child(3){padding-left:0;border-left:0}
-  .onb li:nth-child(n+3){border-top:1px solid rgba(255,255,255,.2)}
-}
+.last .btn{margin-top:30px}
+.last .sub-l{margin:12px 0 0;color:#fff}
+.last .fine{margin:14px 0 0;font-size:14px;color:#b9c6da}
+
+/* 市場データ（フッター直前） */
+.mkt{padding:96px 0;background:var(--pa);border-top:1px solid var(--ln)}
+.mkt-eb{font-family:var(--ff-en);font-size:13px;font-weight:800;letter-spacing:.2em;color:var(--ac);margin-bottom:10px}
+.mkt-h{font-weight:900;font-size:clamp(1.15rem,2.6vw,1.9rem);line-height:1.5;margin:0 0 40px}
+.mkt-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--ln)}
+.mkt-c{display:flex;flex-direction:column;padding:28px 20px 4px;border-left:1px solid var(--ln)}
+.mkt-c:first-child{border-left:none;padding-left:0}
+.mkt-no{font-family:var(--ff-en);font-size:13px;font-weight:700;letter-spacing:.12em;color:var(--g2);margin-bottom:12px}
+.mkt-n{display:block;font-family:var(--ff-en);font-weight:800;font-size:clamp(32px,4vw,54px);line-height:1;letter-spacing:-.03em;color:var(--ac);white-space:nowrap}
+.mkt-n i{font-style:normal;font-family:var(--ff-head);font-size:.44em;margin-left:2px;letter-spacing:0}
+.mkt-d{font-size:14px;line-height:1.8;color:var(--bk);margin:14px 0 12px}
+.mkt-src{display:block;margin-top:auto;min-height:44px;padding:6px 0;font-size:12px;line-height:1.6;color:var(--g2);text-decoration:none}
+.mkt-src::after{content:"↗";margin-left:.25em;white-space:nowrap}
+.mkt-src:hover,.mkt-src:focus-visible{color:var(--bk);text-decoration:underline;text-underline-offset:3px}
+.mkt-bridge{margin-top:36px;font-size:16px;font-weight:700;line-height:1.8}
+
+/* ファクトチェック */
+.fc-btn{display:inline-flex;align-items:center;flex-wrap:wrap;gap:.2em .6em;min-height:44px;margin-top:22px;padding:8px 16px;border:1px solid currentColor;border-radius:999px;background:transparent;color:var(--g1);font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+.fc-btn:hover{color:var(--bk)}
+.fc-sub{font-size:13px;font-weight:400;opacity:.8}
+
+/* 会社概要 */
+.co{padding:56px 0 64px;background:#111;color:#cfd3d8}
+.co h2{margin:0 0 14px;font-size:16px;font-weight:900;color:#fff}
+.co dl{display:grid;grid-template-columns:8em 1fr;margin:0;max-width:720px;font-size:15px}
+.co dt,.co dd{margin:0;padding:8px 0;border-bottom:1px solid #2a2d31}
+.co dt{color:#8d939a}
+.co .pf{margin:22px 0 0;font-size:14px;color:#8d939a}
+.co .pf a{color:#cfd3d8}
+
+.quote,.faq summary,.tile h3,.lane h3,.node li,.rel-note,.dcard h3,.steps b,.aft-f li,.sw-h,.mkt-d{word-break:auto-phrase;line-break:strict}
+.faq summary{text-wrap:pretty}
 
 /* ===== ポップアップ（3つのコピーと見出しの通読） ===== */
 dialog.pop{width:min(880px,calc(100% - 32px));max-height:calc(100dvh - 48px);padding:0;border:0;border-radius:16px;box-shadow:0 40px 80px -20px rgba(0,0,0,.4);color:var(--bk)}
@@ -433,31 +425,52 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
   .tiles{grid-template-columns:1fr 1fr}
 }
 @media(min-width:961px) and (max-width:1180px){
-  .hero h1{font-size:2.6rem}
+  .hero h1{font-size:2.2rem}
 }
 @media(max-width:960px){
   .hero-in{grid-template-columns:1fr}
   .hfacts{grid-template-columns:1fr 1fr}
   .hfacts li:nth-child(3){padding-left:0;border-left:0}
   .hfacts li:nth-child(n+3){border-top:1px solid rgba(255,255,255,.12)}
-  .split{grid-template-columns:1fr}
+  .rel{grid-template-columns:1fr;gap:0}
+  .edge{height:56px}
+  .edge::before{left:50%;right:auto;top:6px;bottom:12px;width:2px;height:auto}
+  .edge::after{left:calc(50% - 6px);right:auto;top:auto;bottom:4px;border:6px solid transparent;border-top:9px solid var(--acm)}
+  .sim-b{grid-template-columns:1fr}
+  .bb{grid-template-columns:1fr}
+  .bb-arrow{height:48px;transform:rotate(90deg)}
+}
+@media(max-width:900px){
+  .mkt{padding:72px 0}
+  .mkt-grid{grid-template-columns:1fr}
+  .mkt-c{border-left:none;border-bottom:1px solid var(--ln);padding:24px 0}
+  .mkt-n{font-size:44px}
 }
 @media(max-width:760px){
-  .fit,.honest,.how{grid-template-columns:1fr}
-  .steps{grid-template-columns:1fr}
-  .step,.step + .step{padding:20px 0;border-left:0}
-  .flow-h{display:none}
-  .flow-r{grid-template-columns:1fr;gap:6px;padding:18px 18px}
-  .flow .ar{display:none}
-  .flow-r .k::before{content:"用件　";font-size:14px;font-weight:700;color:var(--g2)}
-  .flow-r .nxt::before{content:"→ ";color:var(--acm);font-weight:700}
+  .scenes{grid-template-columns:1fr;gap:12px}
+  .scenes img{aspect-ratio:16/10}
+  .fc{padding:20px 14px 16px}
+  .fc .fc-pc{display:none}
+  .fc .fc-sp{display:block}
+  .steps,.diff,.how{grid-template-columns:1fr}
+  .req{grid-template-columns:1fr}
+  .req dt{padding:16px 0 0;border-bottom:0}
+  .req dd{padding:4px 0 16px}
+  .onb{grid-template-columns:1fr 1fr}
+  .onb li:nth-child(3){padding-left:0;border-left:0}
+  .onb li:nth-child(n+3){border-top:1px solid rgba(255,255,255,.2)}
+  .out{grid-template-columns:1fr}
 }
 @media(max-width:600px){
+  body,.body{font-size:16px}
   .w{padding:0 20px}
   .tiles{grid-template-columns:1fr}
-  .cmp{font-size:15px}
-  .cmp th,.cmp td{padding:12px 10px}
-  .cmp tbody th{width:30%}
+  .tile{display:grid;grid-template-columns:36px 1fr;column-gap:14px;padding:18px}
+  .tile svg{grid-row:1/3}
+  .tile h3{margin:0 0 4px}
+  .dcard{grid-template-columns:1fr;padding:20px}
+  .dcard svg{grid-row:auto}
+  .sim-b{padding:18px}
   .co dl{grid-template-columns:1fr}
   .co dt{padding-bottom:0;border-bottom:0}
   .pop-b{padding:20px 18px 26px}
@@ -465,11 +478,12 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
   .copies li{grid-template-columns:1fr;gap:4px}
   .copies .n{padding-top:0}
   .story a{font-size:16px}
-  .btn{width:100%}
+  .btn{width:100%;padding:0 16px;font-size:15px;letter-spacing:.02em}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .hero h1::after,.live i,.rec i{animation:none}
+  .hd{transition:none}
+  .hero h1::after,.live i,.rec i,.scenes .ring i,.log-top p b.is-typing::after{animation:none}
   .js .log-l li{opacity:1;transform:none}
 }
 </style>
@@ -480,11 +494,12 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
   <div class="w">
     <a class="logo" href="#top">おまかせ受電AI<small>OEM</small></a>
     <nav class="hn" aria-label="ページ内">
-      <a href="#s3">条件と分担</a>
-      <a href="#s4">他社との違い</a>
-      <a href="#s5">作り替え</a>
-      <a href="#s9">募集要項</a>
-      <a href="#s7">よくある質問</a>
+      <a href="#s2">しくみ</a>
+      <a href="#s4">分担</a>
+      <a href="#s6">作り替え</a>
+      <a href="#s7">収益の試算</a>
+      <a href="#s8">募集要項</a>
+      <a href="#s9">よくある質問</a>
       <a class="btn-s" href="https://writeup-inc.github.io/seminar/omakase-juden-oem/">事前登録</a>
     </nav>
   </div>
@@ -494,83 +509,69 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
 
 <!-- ヒーロー -->
 <section class="hero" aria-label="おまかせ受電AI OEMパートナーのご案内">
-  <div class="hero-bg" aria-hidden="true"><img src="images/store-dusk.webp" alt="" width="1600" height="900"></div>
+  <div class="hero-bg" aria-hidden="true"><img src="images/store-kitchen-chef.webp" alt="" width="1280" height="853"></div>
   <div class="w hero-in">
     <div>
       <p class="eyebrow"><span class="live"><i></i>OEM PARTNER</span>OEMパートナー募集｜おまかせ受電AI</p>
       <div class="hc" id="hc" tabindex="0" title="押すと、3つのコピーと見出しを並べて読めます">
-        <h1 id="tw" data-keep-phrase>貴社の商材に、<br>AI電話を1本足せます。</h1>
+        <h1 id="tw" data-keep-phrase>名前とロゴを替えて、<br>そのまま売れるAI電話。</h1>
       </div>
       <div class="dots" role="group" aria-label="コピーの切り替え">
         <button type="button" aria-label="コピー1" aria-current="true"></button>
         <button type="button" aria-label="コピー2" aria-current="false"></button>
         <button type="button" aria-label="コピー3" aria-current="false"></button>
       </div>
-      <p class="sub">店舗の電話を用件ごとにAIと人へ振り分ける受電AIを、<b>貴社のサービス名で</b>販売できます。管理画面は貴社専用。機能は、貴社のお客様の業種に合わせて作り替えます。</p>
+      <p class="sub">店舗の電話を、予約は人へ、営業電話はAIへと振り分ける受電AIです。<b>貴社のサービス名とロゴで</b>、売価も貴社が決めて販売できます。</p>
       <div class="cta">
         <a class="btn btn-y" href="https://writeup-inc.github.io/seminar/omakase-juden-oem/">説明会の案内を受け取る（事前登録）→</a>
-        <a class="lnk" href="#s9">募集要項を先に見る ↓</a>
+        <a class="lnk" href="#s8">募集要項を先に見る ↓</a>
       </div>
     </div>
-    <figure class="log" aria-label="貴社専用の受電ログのイメージ">
-      <div class="log-top"><span class="mock-logo" aria-hidden="true">LOGO</span><p>貴社のサービス名<span>店舗の受電ログ</span></p><span class="rec"><i></i>受付中</span></div>
+    <figure class="log" aria-label="貴社のサービス名で表示する、店舗の受電ログの画面イメージ">
+      <div class="log-top"><span class="mock-logo" aria-hidden="true">LOGO</span><p><b id="logName">貴社のサービス名</b><span>店舗の受電ログ</span></p><span class="rec"><i></i>受付中</span></div>
       <ol class="log-l" id="logL">
         <li><time>11:52</time><b>予約の電話</b><span class="to hu">スタッフへ転送</span></li>
         <li><time>12:10</time><b>営業電話</b><span class="to ai">AIが用件を聞いて完結</span></li>
         <li><time>14:31</time><b>道順の問い合わせ</b><span class="to ai">AIが案内</span></li>
-        <li><time>15:05</time><b>お困りごとの電話</b><span class="to nt">LINEに通知・スタッフが折り返し</span></li>
+        <li><time>15:05</time><b>予約の電話（接客中で出られない）</b><span class="to nt">LINEに通知・スタッフが折り返し</span></li>
         <li><time>21:40</time><b>予約の希望（営業時間外）</b><span class="to ai">AIが仮受付</span></li>
       </ol>
-      <figcaption>画面イメージ。名称・ロゴ・項目は貴社向けに作ります。</figcaption>
+      <figcaption>画面イメージ。表示名とロゴは、貴社のものに替えられます。</figcaption>
     </figure>
   </div>
   <div class="w">
     <ul class="hfacts">
       <li><span>店舗への売価</span><b>貴社が決める</b></li>
-      <li><span>店舗の窓口</span><b>貴社</b></li>
+      <li><span>名前とロゴ</span><b>貴社のものに替えられる</b></li>
       <li><span>管理画面</span><b>貴社専用に作る</b></li>
-      <li><span>個別開発の多くは</span><b>数十万円程度</b></li>
+      <li><span>最初の業種</span><b>飲食店向けから準備中</b></li>
     </ul>
   </div>
-  <p class="gen">背景は生成イメージです</p>
 </section>
 
-<!-- 1 -->
+<!-- 01 場面 -->
 <section class="sec" id="s1" aria-labelledby="h1s">
   <div class="w">
-    <div class="sh"><p class="shl"><span class="no">01</span><span class="en">For partners</span></p><h2 id="h1s">店舗に商材を売る会社なら、<br>次の訪問で提案できます。</h2></div>
-    <p class="body">電話は、どの店舗にもある困りごとです。予約の電話で手が止まり、営業電話に時間を取られ、営業時間外の電話は取りこぼしてしまいます。すでに店舗と取引がある会社なら、既存のお客様への、もう1本の提案になります。</p>
+    <div class="sh"><p class="shl"><span class="no">01</span><span class="en">In the store</span></p><h2 id="h1s">店舗の電話は、<br>手が離せないときに鳴ります。</h2></div>
+    <p class="body">調理中、施術中、注文が重なる時間。電話に出るのは、目の前の仕事をしている同じ人です。予約の電話で手が止まり、営業電話に時間を取られ、閉店後の電話は取りこぼします。貴社が訪問している店舗でも、同じことが起きていないでしょうか。</p>
     <div class="scenes">
-      <figure><img src="images/store-kitchen-chef.webp" alt="混み合う店内で調理する料理人" width="1280" height="853" loading="lazy"><figcaption><b>飲食店</b>調理中は、電話に出られない</figcaption></figure>
-      <figure><img src="images/store-salon.webp" alt="美容室の店内。シャンプー台とセット面" width="1280" height="854" loading="lazy"><figcaption><b>美容室</b>施術中は、手が離せない</figcaption></figure>
-      <figure><img src="images/store-cafe-hands.webp" alt="コーヒーを淹れるカフェの店員の手元" width="1280" height="854" loading="lazy"><figcaption><b>カフェ</b>注文が重なる時間に鳴る</figcaption></figure>
+      <figure><img src="images/store-kitchen-chef.webp" alt="混み合う店内で調理する料理人" width="1280" height="853" loading="lazy"><span class="ring"><i></i>着信中</span><figcaption><b>飲食店</b>調理中は、電話に出られない</figcaption></figure>
+      <figure><img src="images/store-salon.webp" alt="美容室の店内。シャンプー台とセット面" width="1280" height="854" loading="lazy"><span class="ring"><i></i>着信中</span><figcaption><b>美容室</b>施術中は、手が離せない</figcaption></figure>
+      <figure><img src="images/store-cafe-hands.webp" alt="コーヒーを淹れるカフェの店員の手元" width="1280" height="854" loading="lazy"><span class="ring"><i></i>着信中</span><figcaption><b>カフェ</b>注文が重なる時間と、閉店後に鳴る</figcaption></figure>
     </div>
-    <div class="fit">
-      <div>
-        <h3>向いている会社</h3>
-        <ul>
-          <li><b>店舗向けにAIやITを売っている会社</b><span>既存のお客様に、もう1本提案できる商材が増えます</span></li>
-          <li><b>通信・OA・POSの販売会社</b><span>電話回線や店舗の機器と一緒に話ができます</span></li>
-          <li><b>予約システムの販売会社</b><span>予約の電話という、隣の困りごとまで拾えます</span></li>
-          <li><b>店舗の運営を支援している会社</b><span>人手不足の相談の中で、電話の負担を減らす打ち手になります</span></li>
-        </ul>
-      </div>
-      <div class="no-fit">
-        <h3>向いていない会社</h3>
-        <ul>
-          <li><b>店舗からの問い合わせを受ける窓口を持てない会社</b><span>店舗の一次窓口は貴社にお願いしています</span></li>
-          <li><b>通話品質の高さを一番の売りにしたい会社</b><span>品質は他社と同等です。このあと正直にお話しします</span></li>
-        </ul>
-      </div>
-    </div>
+    <button class="fc-btn" type="button"
+      data-fc-section="店舗の電話は、手が離せないときに鳴ります。"
+      data-fc-claim="飲食店の調理中、美容室の施術中など、店舗では手が離せない時間に電話が鳴り、出られないことがある／店舗の電話に出るのは、接客や作業をしている同じスタッフであることが多い／店舗の電話の悩みには、予約の電話で手が止まる、営業電話に時間を取られる、営業時間外の電話を取りこぼす、がある">
+      ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span>
+    </button>
   </div>
 </section>
 
-<!-- 2 -->
+<!-- 02 振り分け -->
 <section class="sec tint" id="s2" aria-labelledby="h2s">
   <div class="w">
-    <div class="sh"><p class="shl"><span class="no">02</span><span class="en">What it does</span></p><h2 id="h2s">店舗の電話を、用件ごとに<br>AIと人へ振り分けます。</h2></div>
-    <p class="body">全部の電話をAIに任せるサービスではありません。用件ごとに「最初に受けるのはAIか人か」と「そのあとどうするか」を店舗が決めます。<span class="mk">予約や大切な用件は人へ、定型の質問や営業電話はAIへ。</span>任せる範囲は、あとから変えられます。</p>
+    <div class="sh"><p class="shl"><span class="no">02</span><span class="en">How it works</span></p><h2 id="h2s">予約は人へ、営業電話はAIへ。<br>店舗が用件ごとに決めます。</h2></div>
+    <p class="body">全部の電話をAIに任せるサービスではありません。着信するとAIが用件を聞き、<span class="mk">予約や大切な用件は人へ、営業電話や道順の質問はAIが対応します。</span>営業時間外の予約の希望は仮受付として残し、確定はスタッフが行います。</p>
     <div class="fc">
       <p class="fc-t">1本の電話が流れる道筋</p>
       <svg class="fc-pc" viewBox="0 0 1040 330" role="img" aria-labelledby="fcA">
@@ -623,31 +624,50 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
       </svg>
       <p class="fc-c">どの電話を人に残すかを、用件ごとに決めるのは店舗です。</p>
     </div>
-    <div class="aside">
-      <ul class="but">
-        <li>営業時間外の予約の電話は、AIが希望を仮受付します。確定は、スタッフの役目です。</li>
-        <li>電話のあとのSMSやメールは、業種に合わせた作り替えで足せます（05で説明）。</li>
-        <li>用件の分け方は、業種ごとのひな形から選び、あとから変えられます。</li>
-      </ul>
-      <figure class="dusk"><img src="images/store-dusk.webp" alt="夕暮れの店先。明かりのついた店舗の外観" width="1600" height="900" loading="lazy"><figcaption>営業時間外の電話も、AIが一次受けします<span>生成イメージ</span></figcaption></figure>
-    </div>
-    <h3 class="ex-h">用件ごとの振り分けの例</h3>
-    <div class="flow" role="table" aria-label="用件ごとの振り分けの例">
-      <div class="flow-h" role="row"><span role="columnheader">用件</span><span aria-hidden="true">→</span><span role="columnheader">最初に受ける</span><span aria-hidden="true">→</span><span role="columnheader">次の処理</span></div>
-      <div class="flow-r" role="row"><span class="k" role="cell">予約・予約変更</span><span class="ar" aria-hidden="true">→</span><span class="who hu" role="cell"><i>人</i>スタッフへつなぐ</span><span class="ar" aria-hidden="true">→</span><span class="nxt" role="cell">営業時間内はスタッフへ転送。時間外はAIが予約の希望を仮受付し、確定はスタッフが行います</span></div>
-      <div class="flow-r" role="row"><span class="k" role="cell">営業電話</span><span class="ar" aria-hidden="true">→</span><span class="who ai" role="cell"><i>AI</i>AIが受ける</span><span class="ar" aria-hidden="true">→</span><span class="nxt" role="cell">用件と連絡先を聞いて、その場で完結</span></div>
-      <div class="flow-r" role="row"><span class="k" role="cell">道順・営業時間</span><span class="ar" aria-hidden="true">→</span><span class="who ai" role="cell"><i>AI</i>AIが受ける</span><span class="ar" aria-hidden="true">→</span><span class="nxt" role="cell">登録済みの店舗情報を見て案内</span></div>
-      <div class="flow-r" role="row"><span class="k" role="cell">クレーム・お困りごと</span><span class="ar" aria-hidden="true">→</span><span class="who hu" role="cell"><i>人</i>スタッフへつなぐ</span><span class="ar" aria-hidden="true">→</span><span class="nxt" role="cell">スタッフが出られないときは、AIが用件を聞いてLINEへ通知。スタッフが折り返します</span></div>
-    </div>
-    <p class="note">AIが案内に使う店舗情報は、スプレッドシートに登録したものを参照します。</p>
+    <ol class="steps" aria-label="店舗の設定の3ステップ">
+      <li><span class="en">Step 01</span><b>業種のひな形を選ぶ</b><span>飲食店・サロンなど、よくある用件が並んだひな形が出発点です。</span></li>
+      <li><span class="en">Step 02</span><b>AIか人かを決める</b><span>予約は人、営業電話はAI、のように最初の受け手を選びます。</span></li>
+      <li><span class="en">Step 03</span><b>次の処理を決める</b><span>その場で完結・スタッフへ転送・通知して折り返し、の3つから選ぶだけです。</span></li>
+    </ol>
+    <p class="note">AIが案内に使う店舗情報は、スプレッドシートに登録したものです。電話は、今の番号から転送して使う形を想定しています。</p>
   </div>
 </section>
 
-<!-- 3 -->
+<!-- 03 名前とロゴ -->
 <section class="sec" id="s3" aria-labelledby="h3s">
   <div class="w">
-    <div class="sh"><p class="shl"><span class="no">03</span><span class="en">Terms</span></p><h2 id="h3s">売価は貴社が決め、<br>店舗の窓口も貴社が持ちます。</h2></div>
-    <p class="body">店舗から見れば、貴社のサービスです。問い合わせもクレームも、まず貴社に届きます。弊社は表に出ず、仕組みの開発と提供を引き受けます。</p>
+    <div class="sh"><p class="shl"><span class="no">03</span><span class="en">Your brand</span></p><h2 id="h3s">名前もロゴも、<br>貴社のものにして売れます。</h2></div>
+    <p class="body">中身は同じ受電AIで、替わるのは表に出る名前とロゴです。いまお付き合いのある店舗には、貴社の新しいサービスとしてご案内ください。</p>
+    <div class="bb">
+      <div class="bb-card" aria-label="弊社が直販するときの表示のイメージ">
+        <div class="bar"><span class="lg" aria-hidden="true">受</span><span class="nm">おまかせ受電AI<small>店舗の受電ログ</small></span><span class="tag">弊社の直販</span></div>
+        <ul class="bb-l"><li>予約の電話<span class="to hu">スタッフへ転送</span></li><li>営業電話<span class="to ai">AIが完結</span></li><li>予約の希望（時間外）<span class="to ai">AIが仮受付</span></li></ul>
+      </div>
+      <span class="bb-arrow" aria-hidden="true">→</span>
+      <div class="bb-card you" aria-label="貴社が売るときの表示のイメージ">
+        <div class="bar"><span class="lg" aria-hidden="true">LOGO</span><span class="nm">貴社のサービス名<small>店舗の受電ログ</small></span><span class="tag">貴社が売るとき</span></div>
+        <ul class="bb-l"><li>予約の電話<span class="to hu">スタッフへ転送</span></li><li>営業電話<span class="to ai">AIが完結</span></li><li>予約の希望（時間外）<span class="to ai">AIが仮受付</span></li></ul>
+      </div>
+    </div>
+    <p class="bb-note">中身は同じで、名前が変わる、という考え方を示した画面イメージです。</p>
+  </div>
+</section>
+
+<!-- 切り替えの帯 -->
+<div class="switch" role="note" aria-label="ここから条件の話">
+  <div class="w">
+    <p class="sw-h">ここからは、売る側の条件の話です。</p>
+    <ul class="sw-l">
+      <li><a href="#s4">分担</a></li><li><a href="#s5">品質と違い</a></li><li><a href="#s6">作り替え</a></li><li><a href="#s7">収益の試算</a></li><li><a href="#s8">募集要項</a></li><li><a href="#s9">よくある質問</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- 04 分担 -->
+<section class="sec tint" id="s4" aria-labelledby="h4s">
+  <div class="w">
+    <div class="sh"><p class="shl"><span class="no">04</span><span class="en">Roles</span></p><h2 id="h4s">売価は貴社が決め、<br>店舗の窓口も貴社が持ちます。</h2></div>
+    <p class="body">問い合わせもクレームも、最初に届く先は貴社です。弊社は表に出ず、仕組みの開発と提供を引き受けます。</p>
     <div class="rel" role="list" aria-label="弊社・貴社・店舗の関係">
       <div class="node us" role="listitem">
         <span class="en">Developer</span>
@@ -668,177 +688,235 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
       </div>
     </div>
     <p class="rel-note">店舗から見えるのは、貴社のサービスだけです。</p>
-    <div class="undecided">
-      <h3>まだ決めていない条件</h3>
-      <dl class="price">
-        <dt>仕入値・初期費用</dt><dd><span class="tbd">調整中</span></dd>
-        <dt>最低契約・解約</dt><dd><span class="tbd">調整中</span></dd>
-        <dt>申込の受付と請求</dt><dd><span class="tbd">調整中</span></dd>
-        <dt>障害時の対応</dt><dd><span class="tbd">調整中</span></dd>
-        <dt>併売・地域の扱い</dt><dd><span class="tbd">調整中</span></dd>
-      </dl>
-      <p class="note">どれも、貴社の販売のしかたを伺ったうえで決めます。</p>
-    </div>
   </div>
 </section>
 
-<!-- 4 -->
-<section class="sec tint" id="s4" aria-labelledby="h4s">
+<!-- 05 品質と違い -->
+<section class="sec" id="s5" aria-labelledby="h5s">
   <div class="w">
-    <div class="sh"><p class="shl"><span class="no">04</span><span class="en">Quality &amp; Difference</span></p><h2 id="h4s">通話品質は、他社と同等です。<br>違いは、原価と作り替えの幅です。</h2></div>
-    <p class="body">遜色はありません。ただ、飛び抜けて良いわけでもありません。AI電話の聞き取り、話し方、応答の速さは、どの音声AI（API）を選び、どう調整し、どう組み立てるかで決まります。各社がほぼ同じ選択肢から選んでいる領域なので、決定的な差はつきにくいと見ています。だから品質を売り文句にはしません。</p>
-    <p class="body">違いの1つ目は原価です。受電AIは、弊社1社だけで自社開発しています。そのぶん、原価は他社より少し抑えられると見ています。ただ、比べた数字はまだお出しできません。貴社の仕入値への反映は<span class="tbd">調整中</span>です。</p>
-    <p class="body">2つ目が作り替えの幅です。完成品のサービスを取り次ぐ場合と比べると、次のようになります。</p>
-    <div class="cmp-wrap">
-      <table class="cmp">
-        <thead><tr><th scope="col">項目</th><th scope="col">完成品を取り次いで売る</th><th scope="col" class="ours">おまかせ受電AIのOEM</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">売るときの名前</th><td>提供元のサービス名</td><td class="ours">貴社のサービス名</td></tr>
-          <tr><th scope="row">管理画面</th><td>提供元の画面を使う</td><td class="ours">貴社専用に作る</td></tr>
-          <tr><th scope="row">業種向けの機能</th><td>用意された機能から選ぶ</td><td class="ours">業種に合わせて作り替え</td></tr>
-          <tr><th scope="row">1社のための開発</th><td>提供元の標準機能の範囲で使う</td><td class="ours">都度お見積りで対応</td></tr>
-          <tr class="same"><th scope="row">通話品質</th><td>同等</td><td>同等</td></tr>
-        </tbody>
-      </table>
+    <div class="sh"><p class="shl"><span class="no">05</span><span class="en">Quality &amp; Difference</span></p><h2 id="h5s">通話品質は他社と同等。<br>違いは原価と作り替えの幅です。</h2></div>
+    <blockquote class="quote">遜色はありません。ただ、飛び抜けて良いわけでもありません。<span>AI電話の聞き取り、話し方、応答の速さは、どの音声AIを選び、どう調整し、どう組み立てるかで決まります。だから、品質を売り文句にはしません。</span></blockquote>
+    <div class="diff">
+      <div class="dcard">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="18"/><path d="M24 13v22M30 17.5c-1.5-2-3.6-2.8-6-2.8-3.3 0-6 1.8-6 4.6 0 6.5 12 3.3 12 9.8 0 2.8-2.7 4.7-6 4.7-2.6 0-4.9-1-6.3-3"/></svg>
+        <span class="en">Difference 01</span>
+        <h3>原価</h3>
+        <p>受電AIは、弊社1社で自社開発しています。そのぶん、原価は少し抑えられると見ています。ただ、比べた数字はまだお出しできません。貴社の仕入値への反映は<span class="tbd">調整中</span>です。</p>
+      </div>
+      <div class="dcard">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M28 8l12 12-20 20H8V28z"/><path d="M24 12l12 12"/></svg>
+        <span class="en">Difference 02</span>
+        <h3>作り替えの幅</h3>
+        <p>名前と管理画面を貴社専用にしたうえで、電話のあとの動きを、貴社のお客様の業種に合わせて作り替えます。中身は、次の06のとおりです。</p>
+      </div>
     </div>
-    <p class="note">左の列は、完成品のサービスを販売代理として取り次ぐ場合によくある形で、特定の会社を指すものではありません。他社にも、OEMや自社ブランドでの提供に対応するサービスはあります。比べるときは、管理画面の作り替えと、1社のための開発を受けるかどうかを確かめてください。</p>
     <button class="fc-btn" type="button"
-      data-fc-section="通話品質は、他社と同等です。違いは、原価と作り替えの幅です。"
-      data-fc-claim="AI電話応対の通話品質（聞き取り・話し方・応答の速さ）は、採用する音声認識・音声合成・対話AIの選択、調整、組み立て方で決まり、各社が近い選択肢から選ぶため決定的な差はつきにくい／完成品のAI電話サービスを販売代理として取り次ぐ場合、提供元のサービス名と提供元の管理画面をそのまま使うことが多い／完成品を取り次ぐ場合、機能は提供元の標準機能の範囲で使う形が一般的／他社にもOEMや自社ブランドでの提供に対応するAI電話サービスはある">
+      data-fc-section="通話品質は他社と同等。違いは原価と作り替えの幅です。"
+      data-fc-claim="AI電話応対の通話品質（聞き取り・話し方・応答の速さ）は、採用する音声認識・音声合成・対話AIの選択、調整、組み立て方で決まる">
       ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span>
     </button>
   </div>
 </section>
 
-<!-- 5 -->
-<section class="sec" id="s5" aria-labelledby="h5s">
+<!-- 06 作り替え -->
+<section class="sec tint" id="s6" aria-labelledby="h6s">
   <div class="w">
-    <div class="sh"><p class="shl"><span class="no">05</span><span class="en">Customize</span></p><h2 id="h5s">SMS・予約台帳・本人の声まで、<br>業種に合わせて作り替えます。</h2></div>
-    <p class="body">管理画面は、貴社専用のもの。そのうえで、既存の機能の一部を、貴社のお客様に合わせて作り替えます。飲食店と美容室と士業事務所では、電話のあとにやりたいことが違うからです。たとえば、次のようなものがあります。</p>
-    <figure class="band"><img src="images/store-hands-plating.webp" alt="厨房で料理を盛り付ける手元" width="1280" height="853" loading="lazy"><figcaption>電話のあとにやりたいことは、業種ごとに違います。</figcaption></figure>
+    <div class="sh"><p class="shl"><span class="no">06</span><span class="en">Customize</span></p><h2 id="h6s">電話のあとのSMSや予約台帳も、<br>業種に合わせて作れます。</h2></div>
+    <p class="body">既存の機能の一部を、貴社のお客様に合わせて作り替えます。飲食店と美容室では、電話のあとにやりたいことが違うからです。たとえば、次の4つです。</p>
+    <div class="aft" role="img" aria-label="飲食店の例：電話が終わったあと、確認のSMS、内容に応じたメール、予約台帳への記録へ進む流れ">
+      <p class="aft-t">飲食店の例：電話を切ったあとの動き</p>
+      <ol class="aft-f">
+        <li class="st">電話が終わる<small>AIが用件を聞き終えた</small></li>
+        <li>確認のSMS<small>予約の案内・地図</small></li>
+        <li>メールを送信<small>電話の内容に応じて</small></li>
+        <li>予約台帳へ記録<small>スプレッドシートと連携</small></li>
+      </ol>
+      <p class="aft-c">どこまで足すかは、業種ごとの相談で決めます。</p>
+    </div>
     <div class="tiles">
       <div class="tile">
         <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="12" y="4" width="24" height="40" rx="4"/><path d="M20 38h8M17 13h14M17 19h10M17 25h12"/></svg>
         <h3>電話のあとに自動でSMS</h3>
-        <p>承った用件の確認、地図、予約の案内などを、電話を切ったあとに送信。</p>
+        <p>承った用件の確認、地図、予約の案内などを、電話を切ったあとに自動で送信</p>
       </div>
       <div class="tile">
         <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="10" width="38" height="28" rx="3"/><path d="M5 13l19 13 19-13"/></svg>
         <h3>連携してメール送信</h3>
-        <p>スプレッドシートと連携して、電話の内容に応じたメールを送ります。</p>
+        <p>スプレッドシートと連携し、電話の内容に応じたメールを送信</p>
       </div>
       <div class="tile">
         <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="3"/><path d="M6 16h36M6 26h36M6 36h36M18 6v36"/></svg>
         <h3>予約台帳・注文管理</h3>
-        <p>スプレッドシートと連携して、受けた予約や注文を台帳へ記録。</p>
+        <p>スプレッドシートと連携し、受けた予約や注文を台帳へ記録</p>
       </div>
       <div class="tile">
         <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="17" y="4" width="14" height="24" rx="7"/><path d="M10 22a14 14 0 0 0 28 0M24 36v8M17 44h14"/></svg>
         <h3>店主・スタッフ本人の声</h3>
-        <p>応対の一部を、本人の録音で行います。店舗の受付なら、応対の多くを録音でまかなえると見ています。</p>
+        <p>応対の一部は、店主やスタッフ本人の録音です。店舗の受付なら、応対の多くを録音でまかなえると見ています。</p>
       </div>
     </div>
     <div class="how">
       <div class="lane">
         <span class="en">Shared</span>
         <h3>何社かで使える機能は、<br>最初にまとめて開発</h3>
-        <p>使い回せる機能は、最初にまとめて開発して、各社へ提供。</p>
+        <p>使い回せる機能は、最初にまとめて開発して、各社へ提供します。</p>
       </div>
       <div class="lane">
         <span class="en">Custom</span>
         <h3>1社のための機能は、<br>都度お見積りで開発</h3>
-        <p>お客様ごとの開発は、そのつど費用がかかります。内容によりますが、数十万円程度で収まることが多いです。店舗数の多いチェーンなど、個別の対応も承ります。</p>
+        <p>内容によりますが、数十万円程度で収まることが多いです。店舗数の多いチェーンなど、個別の対応も承ります。</p>
       </div>
     </div>
-    <p class="mid"><a href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">作り替えたい機能が決まっていれば、相談の場で候補をお出しします →</a></p>
   </div>
 </section>
 
-<!-- 6 -->
-<section class="sec tint" id="s6" aria-labelledby="h6s">
+<!-- 07 収益の試算 -->
+<section class="sec" id="s7" aria-labelledby="h7s">
   <div class="w">
-    <div class="sh"><p class="shl"><span class="no">06</span><span class="en">Setup</span></p><h2 id="h6s">店舗の設定は、3ステップです。<br>業種・受け手・次の処理を選ぶ</h2></div>
-    <p class="body">AIに話させる文章を、店舗がゼロから書く必要はありません。選ぶことと、短い書き足しだけで始められます。</p>
-    <div class="steps">
-      <div class="step"><span class="en">Step 01</span><h3>業種のひな形を選ぶ</h3><p>飲食店・サロンなど、よくある用件があらかじめ並んだひな形からスタート。</p></div>
-      <div class="step"><span class="en">Step 02</span><h3>AIか人かを決める</h3><p>予約は人、営業電話はAI、のように用件ごとに最初の受け手を選びます。</p></div>
-      <div class="step"><span class="en">Step 03</span><h3>次の処理を決める</h3><p>その場で完結・スタッフへ転送・通知して折り返し、から選びます。</p></div>
+    <div class="sh"><p class="shl"><span class="no">07</span><span class="en">Revenue</span></p><h2 id="h7s">売価と店舗数を入れて、<br>月の差額を試せます。</h2></div>
+    <p class="body">売価を決めるのは貴社です。仕入値は、金額も課金の単位もまだ決まっていません。下の計算機に、貴社の見込みを入れて形を確かめてください。</p>
+    <div class="formula" aria-label="貴社の月の差額の式">
+      <span class="o">（</span><span class="t">貴社の売価<small>貴社が決める</small></span><span class="o">−</span><span class="t">仕入値<small>調整中</small></span><span class="o">）</span><span class="o">×</span><span class="t">契約している店舗数</span>
     </div>
-    <div class="later">
-      <div class="lh"><h3>今後の開発候補</h3><span class="tbd">提供時期は未定</span></div>
-      <ul>
-        <li>販売会社ごとの申込URL</li>
-        <li>AI受電用の番号の発行</li>
-        <li>地図・グルメサイトの掲載番号の変更手順</li>
-      </ul>
+    <div class="sim" id="sim">
+      <div class="sim-h">
+        <h3>1年間の積み上がりを、<br>貴社の見込みで試す</h3>
+        <p>入れた数字で計算するだけの道具です。弊社が約束する数字ではありません。</p>
+      </div>
+      <div class="sim-b">
+        <div>
+          <div class="fld"><label for="sm-n">毎月、新しく契約する店舗</label><span class="val"><span id="sm-nv">3</span><small>店舗／月</small></span><input id="sm-n" type="range" min="1" max="30" step="1" value="3"><span class="hint">1〜30店舗で動かせます</span></div>
+          <div class="fld"><label for="sm-p">貴社の売価（1店舗あたり・月額）</label><div class="row"><input id="sm-p" type="number" inputmode="numeric" min="0" step="1000" placeholder="貴社の見込みを入力"><span class="u">円</span></div><span class="hint">売価は貴社が決めます</span></div>
+          <div class="fld"><label for="sm-w">仕入値（1店舗あたり・月額）</label><div class="row"><input id="sm-w" type="number" inputmode="numeric" min="0" step="1000" placeholder="仮の値を入力"><span class="u">円</span></div><span class="hint">仕入値は<span class="tbd">調整中</span>。1店舗・月額で決まった場合の形です</span></div>
+        </div>
+        <div>
+          <div class="out" aria-live="polite">
+            <div><span>12か月後の店舗数</span><b id="sm-c">36店舗</b></div>
+            <div><span>12か月目の月の差額</span><b id="sm-m" class="ph">売価と仕入値を入れると表示</b></div>
+            <div><span>1年間の差額の合計</span><b id="sm-s" class="ph">売価と仕入値を入れると表示</b></div>
+          </div>
+          <div class="chart" id="sm-chart" role="img" aria-label="月ごとの積み上がりのグラフ"></div>
+          <p class="chart-c" id="sm-cap">横軸は契約を始めてからの月数。棒は、各月に契約している店舗数です。売価と仕入値を入れると、月の差額に変わります。</p>
+        </div>
+      </div>
+      <p class="sim-f">前提は、解約なし・初期費用を含まない計算です。仕入値の単位が「1店舗・月額」でなければ、この式は使えません。入力した数字は、この画面の外へは送りません。</p>
     </div>
   </div>
 </section>
 
-<!-- 7 -->
-<section class="sec" id="s9" aria-labelledby="h9s">
+<!-- 08 募集要項 -->
+<section class="sec tint" id="s8" aria-labelledby="h8s">
   <div class="w">
-    <div class="sh"><p class="shl"><span class="no">07</span><span class="en">Recruitment</span></p><h2 id="h9s">OEMパートナーの募集要項です。<br>未定の条件も載せています。</h2></div>
+    <div class="sh"><p class="shl"><span class="no">08</span><span class="en">Recruitment</span></p><h2 id="h8s">決まっていることも、<br>未定のことも載せました。</h2></div>
     <dl class="req">
       <dt>募集するもの</dt>
       <dd>おまかせ受電AIを、貴社のサービス名で店舗へ販売するOEMパートナー</dd>
       <dt>向いている会社</dt>
       <dd><ul><li>店舗向けにAIやITを売っている会社</li><li>通信・OA・POSの販売会社</li><li>予約システムの販売会社</li><li>店舗の運営を支援している会社</li></ul></dd>
+      <dt>向いていない会社</dt>
+      <dd><ul><li>店舗からの問い合わせを受ける窓口を持てない会社（一次受けを貴社にお願いする作りのため）</li><li>通話品質の高さを一番の売りにしたい会社（品質は他社と同等のため）</li></ul></dd>
       <dt>貴社にお願いすること</dt>
       <dd>売価を決める／店舗への提案・販売／問い合わせ・クレームの一次受け</dd>
       <dt>弊社が用意するもの</dt>
       <dd>受電AIの開発と提供／貴社専用の管理画面／業種に合わせた機能の作り替え。1社のための開発は都度お見積りで、数十万円程度で収まることが多いです</dd>
       <dt>最初に提供する業種</dt>
       <dd>飲食店向けから提供を準備しています</dd>
-      <dt>取扱条件</dt>
-      <dd>仕入値・初期費用、最低契約・解約、申込の受付と請求、障害時の対応、併売・地域の扱いは<span class="tbd">調整中</span>。貴社の販売のしかたを伺ったうえで決めます</dd>
+      <dt>まだ決まっていない条件</dt>
+      <dd><ul class="tbd-l"><li><span class="tbd">仕入値・初期費用</span></li><li><span class="tbd">最低契約・解約</span></li><li><span class="tbd">申込の受付と請求</span></li><li><span class="tbd">障害時の対応</span></li><li><span class="tbd">併売・地域の扱い</span></li></ul>どれも調整中です。貴社の販売のしかたを伺ったうえで決めます</dd>
       <dt>説明会</dt>
       <dd>日時・形式・定員は<span class="tbd">調整中</span>です。いまは事前登録を受け付けています</dd>
+      <dt>今後の開発候補</dt>
+      <dd>販売会社ごとの申込URL／AI受電用の番号の発行／地図・グルメサイトの掲載番号の変更手順。<span class="tbd">提供時期は未定</span></dd>
       <dt>応募のしかた</dt>
-      <dd>説明会の事前登録か、お問い合わせフォームからの個別のご相談。どちらも取扱商材を伺います</dd>
+      <dd>説明会の事前登録か、お問い合わせフォームからの個別のご相談。どちらも取扱商材と想定の店舗数を伺います</dd>
     </dl>
     <div class="req-cta">
-      <a class="btn" href="https://writeup-inc.github.io/seminar/omakase-juden-oem/">説明会の案内を受け取る（事前登録）→</a>
+      <a class="btn btn-p" href="https://writeup-inc.github.io/seminar/omakase-juden-oem/">説明会の案内を受け取る（事前登録）→</a>
       <a class="sub-l" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">日程を待たずに個別に相談する →</a>
     </div>
   </div>
 </section>
 
-<section class="sec tint" id="s7" aria-labelledby="h7s">
+<!-- 09 FAQ -->
+<section class="sec" id="s9" aria-labelledby="h9s">
   <div class="w">
-    <div class="sh"><p class="shl"><span class="no">08</span><span class="en">FAQ</span></p><h2 id="h7s">クレーム、予約の確定、番号。<br>よく聞かれる6つにお答えします。</h2></div>
+    <div class="sh"><p class="shl"><span class="no">09</span><span class="en">FAQ</span></p><h2 id="h9s">店舗に聞かれそうなことに、<br>先にお答えします。</h2></div>
     <div class="faq">
-      <details><summary>店舗からのクレームは、誰が受けますか。</summary><p class="a">一次受けは貴社にお願いしています。店舗から見れば貴社のサービスだからです。AIの応答内容を見直す必要があるときの進め方は<span class="tbd">調整中</span>です。</p></details>
       <details><summary>予約を、AIが勝手に確定しませんか。</summary><p class="a">確定しません。営業時間外の予約の希望は仮受付として残し、営業開始後にスタッフが確認して確定する作りです。</p></details>
       <details><summary>今の店舗の電話番号のまま使えますか。</summary><p class="a">今の番号から転送して使う形を想定しています。回線の種類や転送の条件で変わるため、導入前に確認します。</p></details>
       <details><summary>AIが出ていることを、相手に伝えますか。</summary><p class="a"><span class="tbd">検討中</span> 冒頭で伝えるかどうかを、店舗ごとに切り替えられる形を検討しています。</p></details>
-      <details><summary>解約の条件や、競合商材との併売は。</summary><p class="a">解約の条件、併売、地域の独占の扱いは<span class="tbd">調整中</span>です。ご相談の場で、貴社の販売のしかたを伺ったうえで決めます。</p></details>
+      <details><summary>AIの応答内容を直したいときは。</summary><p class="a">店舗からの一次受けは貴社にお願いしています。AIの応答内容を見直す必要があるときの進め方は<span class="tbd">調整中</span>です。</p></details>
       <details><summary>業種向けの作り替えにかかる期間は。</summary><p class="a">作り替える内容で変わるため、お見積りのときに期間もあわせてお伝えします。</p></details>
     </div>
   </div>
 </section>
 
-<!-- 8 -->
-<section class="last" id="s8" aria-labelledby="h8s">
+<!-- 最終CTA -->
+<section class="last" id="s10" aria-labelledby="h10s">
   <div class="w">
     <span class="en">Next step</span>
-    <h2 id="h8s">まずは、販売先の業種と<br>想定店舗数をお聞かせください。</h2>
-    <p class="b">どの業種の店舗に、どれくらいの数を売る見込みか。それが分かれば、管理画面の作り方と、最初に作り替える機能の候補をお出しできます。仕入の条件も、あわせてご相談ください。</p>
-    <ul><li>販売先の業種</li><li>想定の店舗数</li><li>今お持ちの商材</li></ul>
+    <h2 id="h10s">まずは説明会の案内を、<br>事前登録で受け取ってください。</h2>
+    <p class="b">登録のときに、取扱商材と想定の店舗数を伺います。それをもとに、管理画面の作り方と、最初に作り替える機能を一緒に考えます。</p>
     <ol class="onb">
-      <li><span class="en">01</span><b>登録・ご相談</b>説明会の事前登録か個別のご相談で、業種と店舗数を伺う</li>
+      <li><span class="en">01</span><b>登録・ご相談</b>取扱商材と店舗数を伺う</li>
       <li><span class="en">02</span><b>設計</b>管理画面と作り替える機能を決める</li>
-      <li><span class="en">03</span><b>条件のすり合わせ</b>仕入値・分担・契約を決める</li>
+      <li><span class="en">03</span><b>条件のすり合わせ</b>仕入値・契約・障害時の対応を決める</li>
       <li><span class="en">04</span><b>販売開始</b>貴社のサービスとして店舗へ</li>
     </ol>
     <p class="onb-n">流れは目安です。各段階の期間は<span class="tbd">調整中</span>です。</p>
-    <a class="btn btn-w" href="https://writeup-inc.github.io/seminar/omakase-juden-oem/">説明会の案内を受け取る（事前登録）→</a>
+    <a class="btn btn-y" href="https://writeup-inc.github.io/seminar/omakase-juden-oem/">説明会の案内を受け取る（事前登録）→</a><br>
     <a class="sub-l" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">日程を待たずに個別に相談する →</a>
     <p class="fine">個別のご相談は、株式会社ライトアップのお問い合わせフォームが開きます。</p>
   </div>
 </section>
 
 </main>
+
+<!-- 市場データ（フッター直前） -->
+<section class="mkt" aria-labelledby="mkt-h">
+  <div class="w">
+    <p class="mkt-eb">MARKET DATA</p>
+    <h2 class="mkt-h" id="mkt-h">電話AIの市場は伸び、<br>店舗は人手が足りず、<br>人件費も上がっています。</h2>
+    <ol class="mkt-grid">
+      <li class="mkt-c">
+        <span class="mkt-no">01</span>
+        <b class="mkt-n">88<i>億円</i></b>
+        <p class="mkt-d">国内のボイスボット（電話の自動応答AI）市場の、2027年度の予測。2022年度は19億円。</p>
+        <a class="mkt-src" href="https://www.itr.co.jp/topics/pr-20230822-1" target="_blank" rel="noopener">アイ・ティ・アール「ボイスボット市場規模推移および予測」2023年8月</a>
+      </li>
+      <li class="mkt-c">
+        <span class="mkt-no">02</span>
+        <b class="mkt-n">57.7<i>%</i></b>
+        <p class="mkt-d">非正社員が足りないと答えた飲食店の割合。全業種の中で最も高い値です。</p>
+        <a class="mkt-src" href="https://www.tdb.co.jp/report/economic/20260817-laborshortage202607/" target="_blank" rel="noopener">帝国データバンク「人手不足に対する企業の動向調査（2026年7月）」n=10,518</a>
+      </li>
+      <li class="mkt-c">
+        <span class="mkt-no">03</span>
+        <b class="mkt-n">56<i>円</i></b>
+        <p class="mkt-d">2026年度の最低賃金（全国加重平均）の引き上げ額。改定後は1,177円です。</p>
+        <a class="mkt-src" href="https://www.mhlw.go.jp/stf/newpage_75950.html" target="_blank" rel="noopener">厚生労働省「地域別最低賃金の改定額の答申」2026年9月</a>
+      </li>
+      <li class="mkt-c">
+        <span class="mkt-no">04</span>
+        <b class="mkt-n">61.6<i>%</i></b>
+        <p class="mkt-d">生成AIがもたらす影響として「業務の効率化」を挙げた日本企業の割合。回答の中で最も多い項目です。</p>
+        <a class="mkt-src" href="https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r08/html/nd121150.html" target="_blank" rel="noopener">総務省「令和8年版 情報通信白書」図表Ⅰ-2-1-10（2026年1〜2月調査）</a>
+      </li>
+      <li class="mkt-c">
+        <span class="mkt-no">05</span>
+        <b class="mkt-n">58.1<i>%</i></b>
+        <p class="mkt-d">生成AIを活用する方針と答えた中小企業の割合（調査した中小企業のうち）。大企業は74.0%。</p>
+        <a class="mkt-src" href="https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r08/html/nd121110.html" target="_blank" rel="noopener">総務省「令和8年版 情報通信白書」図表Ⅰ-2-1-2（2026年1〜2月調査）</a>
+      </li>
+    </ol>
+    <p class="mkt-bridge">だから、店舗の電話をAIと人へ振り分ける仕組みを、貴社のサービス名で売れる形にしました。</p>
+    <button class="fc-btn" type="button"
+      data-fc-section="市場データ"
+      data-fc-claim="国内のボイスボット市場は2027年度に88億円の予測、2022年度は19億円（アイ・ティ・アール 2023年8月）／非正社員が不足していると答えた飲食店は57.7%で全業種で最も高い（帝国データバンク 人手不足に対する企業の動向調査 2026年7月）／2026年度の最低賃金の全国加重平均は56円引き上げの1,177円（厚生労働省 2026年9月）／生成AIの影響として業務の効率化を挙げた日本企業は61.6%（総務省 令和8年版情報通信白書）／生成AIを活用する方針の中小企業は58.1%、大企業は74.0%（総務省 令和8年版情報通信白書）">
+      ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span>
+    </button>
+  </div>
+</section>
 
 <footer class="co">
   <div class="w">
@@ -849,7 +927,8 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
       <dt>代表取締役</dt><dd>白石 崇</dd>
       <dt>事業内容</dt><dd>AIソリューション事業</dd>
     </dl>
-    <p class="pf">掲載内容は2026年9月23日時点のものです。<span class="tbd">調整中</span>・<span class="tbd">検討中</span>の項目は、決まり次第このページを更新します。</p>
+    <p class="pf"><a class="sub-l" style="color:#cfd3d8" href="https://www.writeup.jp/privacy/" target="_blank" rel="noopener">個人情報保護方針（株式会社ライトアップ）</a></p>
+    <p class="pf">掲載内容は2026年9月26日時点のものです。<span class="tbd">調整中</span>・<span class="tbd">検討中</span>の項目は、決まり次第このページに反映する予定です。写真はPixabayのものを使っています。</p>
   </div>
 </footer>
 
@@ -869,16 +948,33 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
 
 <script>
 (function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ===== ヘッダー：下へスクロールで隠し、上へで出す ===== */
+  (function(){
+    var hd=document.querySelector('.hd'); if(!hd) return;
+    var last=window.scrollY, ticking=false, TH=8, TOP=120;
+    function upd(){
+      var y=window.scrollY, d=y-last;
+      if(y<TOP||hd.contains(document.activeElement)){ hd.classList.remove('is-hidden'); }
+      else if(d>TH){ hd.classList.add('is-hidden'); }
+      else if(d<-TH){ hd.classList.remove('is-hidden'); }
+      if(Math.abs(d)>TH) last=y;
+      ticking=false;
+    }
+    window.addEventListener('scroll',function(){ if(!ticking){ ticking=true; requestAnimationFrame(upd); } },{passive:true});
+    hd.addEventListener('focusin',function(){ hd.classList.remove('is-hidden'); });
+  })();
+
   /* ===== ヒーロー：3つのコピーのローテーション ===== */
   var COPIES=[
-    {c:'貴社の商材に、\nAI電話を1本足せます。',s:'何を売るのか。店舗の電話を一次受けするAIを、貴社のサービスとして売れます。'},
-    {c:'品質は他社並み。\n違いは、作り替えの幅。',s:'何が違うのか。通話品質は他社と同等です。違いは、名前と管理画面を貴社専用にでき、機能も業種に合わせて作り替えられることです。'},
-    {c:'SMSも予約台帳も、\n業種ごとに作り替え。',s:'何ができるのか。受電後のSMS、予約台帳、本人の録音音声での応対を、貴社のお客様の業種に合わせて作り替えます。'}
+    {c:'名前とロゴを替えて、\nそのまま売れるAI電話。',s:'何を売るのか。店舗の電話を用件ごとにAIと人へ振り分ける受電AIです。名前とロゴを貴社のものにして、貴社のサービスとして売れます。'},
+    {c:'訪問先の店舗で、\n電話の話をしてみませんか。',s:'どこで売るのか。予約の電話や営業電話の困りごとは、業種を問わず店舗にあります。いまお付き合いのある店舗への、話の入口になります。'},
+    {c:'今のお客様に、\nもう1つ売れる物を。',s:'誰に売るのか。新しい売り先を探す前に、いま取引のある店舗へ提案できる商材です。売価は貴社が決めます。'}
   ];
   var TYPE_MS=55, HOLD_MS=5200, ERASE_MS=22;
   var h1=document.getElementById('tw'), hc=document.getElementById('hc');
   var dots=[].slice.call(document.querySelectorAll('.dots button'));
-  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var idx=0, timer=null, paused=false;
 
   function reserve(){ /* 一番長いコピーの高さを確保して、切り替えで下が動かないようにする */
@@ -915,7 +1011,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
   if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(reserve); } else { reserve(); }
   reserve(); schedule();
 
-  /* ===== 受電ログ：1件ずつ流れる ===== */
+  /* ===== 受電ログ：1件ずつ流れる。表示名を「貴社のサービス名」へ打ち替える ===== */
   var logs=[].slice.call(document.querySelectorAll('#logL li'));
   if(!reduce&&logs.length){
     var li=0;
@@ -924,6 +1020,18 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
       else { setTimeout(function(){ logs.forEach(function(l){ l.classList.remove('on'); }); li=0; setTimeout(tick,700); },5200); }
     })();
   } else { logs.forEach(function(l){ l.classList.add('on'); }); }
+  var nm=document.getElementById('logName'), NAME_FROM='おまかせ受電AI', NAME_TO='貴社のサービス名';
+  if(nm&&!reduce){
+    nm.textContent=NAME_FROM;
+    setTimeout(function(){
+      var t=NAME_FROM; nm.classList.add('is-typing');
+      (function del(){
+        if(t.length){ t=t.slice(0,-1); nm.textContent=t; setTimeout(del,70); return; }
+        var n=0;
+        (function type(){ nm.textContent=NAME_TO.slice(0,++n); if(n<NAME_TO.length){ setTimeout(type,110); } else { setTimeout(function(){ nm.classList.remove('is-typing'); },1200); } })();
+      })();
+    },2400);
+  }
 
   /* ===== ポップアップ ===== */
   var pop=document.getElementById('pop');
@@ -956,6 +1064,41 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
     h.setAttribute('tabindex','-1'); setTimeout(function(){ h.focus({preventScroll:true}); },reduce?0:450);
     history.replaceState(null,'',a.getAttribute('href'));
   });
+
+  /* ===== 収益の計算機 ===== */
+  (function(){
+    var n=document.getElementById('sm-n'); if(!n) return;
+    var pr=document.getElementById('sm-p'), wh=document.getElementById('sm-w'), box=document.getElementById('sm-chart'), cap=document.getElementById('sm-cap');
+    function yen(v){ return (v<0?'−':'')+Math.round(Math.abs(v)).toLocaleString('ja-JP')+'円'; }
+    function man(v){ return v>=10000?(Math.round(v/1000)/10).toLocaleString('ja-JP')+'万':String(v); }
+    function num(el){ return el.value===''?null:Math.max(0,+el.value||0); }
+    function draw(vals,isCnt){
+      var W=Math.max(280,Math.round(box.clientWidth)||560), narrow=W<460, H=narrow?210:230, L=narrow?38:48, B=28, T=22, R=8;
+      var max=Math.max.apply(null,vals.map(function(v){return Math.max(0,v);}))||1;
+      var step=Math.pow(10,Math.floor(Math.log10(max))), top=Math.ceil(max/step)*step; if(top/step<3){ step/=2; top=Math.ceil(max/step)*step; }
+      var bw=(W-L-R)/vals.length, pad=narrow?2:4, g='';
+      for(var y=0;y<=top+1e-6;y+=step){ var yy=H-B-(H-B-T)*y/top; g+='<line class="gl" x1="'+L+'" x2="'+(W-R)+'" y1="'+yy+'" y2="'+yy+'"/><text class="ax" x="'+(L-6)+'" y="'+(yy+4)+'" text-anchor="end">'+(isCnt?y:man(y))+'</text>'; }
+      vals.forEach(function(v,i){ var h=(H-B-T)*Math.max(0,v)/top, x=L+i*bw+pad, w=bw-pad*2, yb=H-B-h;
+        g+='<path class="bar'+(isCnt?' cnt':'')+'" d="M'+x+','+(H-B)+'V'+(yb+Math.min(4,h))+'q0,-'+Math.min(4,h)+' '+Math.min(4,w/2)+',-'+Math.min(4,h)+'h'+Math.max(0,w-8)+'q'+Math.min(4,w/2)+',0 '+Math.min(4,w/2)+','+Math.min(4,h)+'V'+(H-B)+'Z"/>';
+        if(!narrow||i%2===1) g+='<text class="ax" x="'+(x+w/2)+'" y="'+(H-8)+'" text-anchor="middle">'+(i+1)+'</text>'; });
+      var li=vals.length-1, lx=L+li*bw+bw/2, ly=H-B-(H-B-T)*Math.max(0,vals[li])/top-6;
+      g+='<text class="lbl" x="'+lx+'" y="'+ly+'" text-anchor="end">'+(isCnt?vals[li]+'店舗':man(vals[li])+'円')+'</text>';
+      box.innerHTML='<svg viewBox="0 0 '+W+' '+H+'" aria-hidden="true">'+g+'</svg>';
+    }
+    function calc(){
+      var per=+n.value, p=num(pr), w=num(wh), cnt=[], vals=[], sum=0, both=(p!==null&&w!==null);
+      document.getElementById('sm-nv').textContent=per;
+      for(var i=1;i<=12;i++){ cnt.push(per*i); if(both){ vals.push(per*i*(p-w)); sum+=per*i*(p-w); } }
+      document.getElementById('sm-c').textContent=(per*12)+'店舗';
+      ['sm-m','sm-s'].forEach(function(id,k){ var el=document.getElementById(id); el.textContent=both?yen(k?sum:per*12*(p-w)):'売価と仕入値を入れると表示'; el.classList.toggle('ph',!both); });
+      if(both&&w>p){ cap.textContent='仕入値が売価を上回っています。この条件では差額が出ません。'; draw(cnt,true); }
+      else if(both){ cap.textContent='横軸は契約を始めてからの月数。棒は、各月の差額（売価−仕入値）×その月の店舗数です。'; draw(vals,false); }
+      else { cap.textContent='横軸は契約を始めてからの月数。棒は、各月に契約している店舗数です。売価と仕入値を入れると、月の差額に変わります。'; draw(cnt,true); }
+    }
+    [n,pr,wh].forEach(function(e){ e.addEventListener('input',calc); });
+    var rt; window.addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(calc,150); });
+    calc();
+  })();
 
   /* ===== ChatGPTでファクトチェック ===== */
   document.addEventListener('click',function(e){
