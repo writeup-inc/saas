@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="catalog-card" content="true">
+<meta name="description" content="営業リスト自動生成AI「リストマスター」の資料一覧。OEM・直販・関連サービスの資料を1ページからたどれます。">
+<title>リストマスター｜資料インデックス</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* ===== lp-base.css ===== */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] {
+    word-break: normal;
+  }
+}
+.nobr { white-space: nowrap; }
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+
+/* ===== トークン ===== */
+:root{
+  --ink:#10151c; --tx:#262d36; --g1:#4a525d; --g2:#626b76; --g3:#848c96;
+  --ln:#e3e6ea; --ln2:#f0f2f4; --bg:#f7f8fa;
+  --oem:#0f6b56; --oem-l:#eaf4f0;
+  --dir:#1f4f9a; --dir-l:#ecf2fa;
+  --etc:#4d5561; --etc-l:#f1f2f4;
+  --new:#c2410c;
+  --gray-row:#eef0f3;
+  /* サービスごとに差し替える色（ヒーローだけで使う）。美容室なので落ち着いたローズ */
+  --svc:#a8640f; --svc-l:#fbf3e6;
+  --sans:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+  --num:Inter,"Helvetica Neue",Arial,sans-serif;
+}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--tx);font-family:var(--sans);font-size:16px;line-height:1.85;
+  letter-spacing:.015em;font-feature-settings:"palt" 1;-webkit-font-smoothing:antialiased}
+.w{max-width:1200px;margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+a{color:inherit}
+p{margin:0}
+.en{font-family:var(--num);font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+
+
+/* ===== ヒーロー：サービス名＋業種を連想させるアイコン ===== */
+.hero{position:relative;overflow:hidden;padding:clamp(96px,14vw,176px) 0 clamp(80px,11vw,136px);text-align:center;
+  background:radial-gradient(ellipse 60% 70% at 50% 48%,#fff 0,#fff 38%,var(--svc-l) 100%)}
+.hero .deco{position:absolute;inset:0;pointer-events:none}
+.hero .deco svg{position:absolute;fill:none;stroke:var(--svc);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.34}
+.hero .deco svg.s{opacity:.2}
+.hero .deco .dot{position:absolute;border-radius:50%;background:var(--svc);opacity:.18}
+.hero .w{position:relative}
+.hero .en{display:block;font-size:14px;color:var(--svc)}
+.hero h1{margin:16px 0 0;font-weight:900;letter-spacing:-.04em;line-height:1.1;color:var(--ink);font-size:clamp(2.8rem,10vw,7rem)}
+.hero .rule{display:block;width:48px;height:3px;margin:28px auto 0;border-radius:2px;background:var(--svc)}
+.hero .meta{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;margin:22px 0 0;font-size:15px;color:var(--g2)}
+.hero .meta b{font-family:var(--num);color:var(--ink)}
+.hero .meta .k{display:inline-flex;align-items:center;gap:7px}
+.hero .meta .k i{width:10px;height:10px;border-radius:3px}
+@media (prefers-reduced-motion:no-preference){
+  .hero .deco svg{animation:float 9s ease-in-out infinite}
+  .hero .deco svg:nth-child(2n){animation-duration:11s;animation-delay:-3s}
+  .hero .deco svg:nth-child(3n){animation-duration:13s;animation-delay:-6s}
+  @keyframes float{0%,100%{translate:0 0}50%{translate:0 -8px}}
+}
+
+/* ===== お知らせ：1本の時系列 ===== */
+.news{padding:clamp(36px,4.5vw,52px) 0 clamp(40px,5vw,56px)}
+.sh{display:flex;align-items:baseline;gap:12px;margin:0 0 14px}
+.sh h2{margin:0;font-size:clamp(1.4rem,2.6vw,1.8rem);font-weight:900;letter-spacing:-.02em;line-height:1.4;color:var(--ink)}
+.sh .en{font-size:13px;color:var(--g3)}
+.nl{list-style:none;margin:0;padding:0;border-top:1px solid var(--ln)}
+.nl a{display:grid;grid-template-columns:3.8em 4.8em 1fr;align-items:baseline;gap:16px;padding:12px 8px;border-bottom:1px solid var(--ln);text-decoration:none;transition:background .18s}
+.nl a:hover{background:var(--bg)}
+.nl time{font-family:var(--num);font-size:15px;font-weight:700;color:var(--g2)}
+.cat{display:inline-block;width:4.6em;padding:0;border-radius:4px;font-size:13px;font-weight:700;line-height:1.9;text-align:center;color:#fff}
+.cat.oem{background:var(--oem)} .cat.dir{background:var(--dir)} .cat.etc{background:var(--etc)}
+.nl .t{font-size:16px;line-height:1.7;color:var(--ink);word-break:auto-phrase;line-break:strict}
+.bd{display:inline-block;margin-right:8px;padding:0 7px;border-radius:4px;font-size:13px;font-weight:700;line-height:1.7;vertical-align:1px}
+/* NEW・更新は目立たせる：大きく太く、赤で（準備中・社内は控えめのまま） */
+.bg-new,.bg-up{padding:1px 11px;font-size:15px;font-weight:900;letter-spacing:.06em;line-height:1.7}
+.bg-new{background:var(--new);color:#fff}
+.bg-up{background:#fdebe1;color:var(--new);box-shadow:inset 0 0 0 1.5px var(--new)}
+.bg-soon{background:#fff4d6;color:#8a5a00}
+.bg-in{background:#efe9f8;color:#5b3f8f}
+.more{margin:0}
+.more summary{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:6px;padding:0 4px;font-size:15px;font-weight:700;color:var(--g1);cursor:pointer;list-style:none}
+.more summary::-webkit-details-marker{display:none}
+.more summary::after{content:"＋";font-weight:500}
+.more[open] summary::after{content:"－"}
+.more .nl{border-top:0}
+
+/* ===== 資料の区画：箱に入れず、行と余白で並べる ===== */
+.blk{padding:clamp(56px,7vw,88px) 0;border-top:1px solid var(--ln2)}
+.in{display:grid;grid-template-columns:340px 1fr;gap:clamp(40px,6vw,80px);align-items:start}
+.side{position:sticky;top:40px}
+.side .en{display:block;font-size:13px}
+.side h2{margin:10px 0 0;font-weight:900;letter-spacing:-.03em;line-height:1.4;color:var(--ink);font-size:clamp(1.5rem,2.6vw,2rem)}
+.side .who{margin:10px 0 0;font-size:16px;color:var(--g1)}
+.hist{margin:20px 0 0}
+.hist-h{font-size:14px;font-weight:700;color:var(--g2)}
+.hist ol{list-style:none;margin:6px 0 0;padding:0;border-top:1px solid var(--ln)}
+.hist li{display:grid;grid-template-columns:3.4em 1fr;gap:10px;padding:10px 2px;border-bottom:1px solid var(--ln);font-size:15px;line-height:1.6;color:var(--ink)}
+.hist time{font-family:var(--num);font-size:14px;font-weight:700;color:var(--g2);padding-top:1px}
+.hist .n{margin-right:6px;font-family:var(--num);font-size:14px;font-weight:800}
+.hist .t{word-break:auto-phrase;line-break:strict}
+.oem .hist .n{color:var(--oem)} .dir .hist .n{color:var(--dir)} .etc .hist .n{color:var(--etc)}
+.side .bar{display:block;width:40px;height:3px;margin:22px 0 0;border-radius:2px}
+.terms{list-style:none;display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin:22px 0 0;padding:0}
+.terms li{padding:5px 14px;border-radius:999px;font-size:15px;font-weight:700;line-height:1.7}
+.oem .side .en{color:var(--oem)} .oem .side .bar{background:var(--oem)} .oem .terms li{background:var(--oem-l);color:var(--oem)}
+.dir .side .en{color:var(--dir)} .dir .side .bar{background:var(--dir)} .dir .terms li{background:var(--dir-l);color:var(--dir)}
+.etc .side .en{color:var(--etc)} .etc .side .bar{background:var(--etc)}
+
+.docs{list-style:none;margin:0;padding:0;border-top:1px solid var(--ln)}
+.doc{position:relative;display:grid;grid-template-columns:4.4em 1fr 2.4em;gap:20px;padding:30px 12px;border-bottom:1px solid var(--ln);text-decoration:none;color:inherit;transition:background .2s}
+.doc .no{font-family:var(--num);font-size:15px;font-weight:800;letter-spacing:.06em;padding-top:3px}
+.oem .doc .no,.oem .doc .arr{color:var(--oem)}
+.dir .doc .no,.dir .doc .arr{color:var(--dir)}
+.etc .doc .no,.etc .doc .arr{color:var(--etc)}
+.doc h3{margin:0;font-size:clamp(1.05rem,1.6vw,1.2rem);font-weight:900;line-height:1.55;color:var(--ink)}
+.ttl{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.ttl .bd{margin:0}
+.doc p{margin:6px 0 0;font-size:16px;line-height:1.85;color:var(--g1);word-break:auto-phrase;line-break:strict}
+.doc .memo{margin:12px 0 0;padding:0 0 0 12px;border-left:3px solid var(--new);font-size:15px;line-height:1.7}
+.urlrow{display:flex;align-items:center;gap:10px;margin:12px 0 0}
+.doc .url{min-width:0;font-family:var(--num);font-size:14px;color:var(--g2);word-break:break-all}
+.cp{position:relative;z-index:1;flex:none;min-height:44px;min-width:5.2em;padding:0 12px;border:1px solid var(--ln);border-radius:8px;background:#fff;color:var(--g1);font:inherit;font-size:14px;font-weight:700;cursor:pointer;transition:background .15s,border-color .15s}
+.cp:hover{border-color:var(--g3)}
+.cp.done{background:var(--ink);border-color:var(--ink);color:#fff}
+.doc .st{display:block;margin:10px 0 0;font-size:15px;color:var(--g3)}
+.doc .arr{align-self:center;justify-self:end;font-size:20px;font-weight:700;transition:translate .2s}
+.doc.link{display:block;padding:0}
+.doc.link .lk{display:grid;grid-template-columns:4.4em 1fr 2.4em;gap:20px;padding:30px 12px 0;text-decoration:none;color:inherit}
+.doc.link .urlrow{margin:0;padding:12px 12px 30px calc(4.4em + 32px)}
+.doc.link:hover .arr{translate:4px 0}
+.oem .doc.link:hover{background:var(--oem-l)} .dir .doc.link:hover{background:var(--dir-l)} .etc .doc.link:hover{background:var(--etc-l)}
+.doc:not(.link) h3{color:var(--g1)}
+/* 社内限の行は開けるが、背景を薄い赤にして「お客様へ送らない」と気づかせる */
+.doc.link.internal{background:#fdf0ef}
+.doc.link.internal:hover{background:#fbe2df!important}
+.doc .warn{margin:10px 0 0;font-size:15px;font-weight:700;color:#b42318}
+/* まだ開けない行（準備中・社内）は背景をグレーにして、開ける行と見分ける */
+.doc:not(.link){background:var(--gray-row)}
+.doc:not(.link) .st{color:var(--g2)}
+.fine{margin:18px 0 0;font-size:15px;color:var(--g2)}
+
+footer{padding:44px 0 60px;border-top:1px solid var(--ln2);text-align:center;font-size:14.5px;color:var(--g2)}
+footer p + p{margin-top:4px}
+
+@media(max-width:900px){
+  .in{grid-template-columns:1fr;gap:28px}
+  .side{position:static}
+  .terms{flex-direction:row;flex-wrap:wrap}
+}
+@media(max-width:600px){
+  .nl a{grid-template-columns:auto 1fr;gap:4px 12px;padding:14px 4px}
+  .nl .t{grid-column:1 / -1}
+  .doc{grid-template-columns:3.4em 1fr;gap:12px;padding:26px 4px}
+  .doc .arr{display:none}
+  .doc:not(.link){padding:26px 8px;gap:8px}
+  .doc.link .lk{grid-template-columns:3.4em 1fr;gap:12px;padding:26px 4px 0}
+  .doc.link .urlrow{padding:12px 4px 26px calc(3.4em + 16px)}
+  .hero .deco .hm{display:none}
+}
+/* 共通ナビ（右上）：資料インデックス一覧・今月の注力・SaaSチーム トップ。4ページとも同じ中身。今いるページは太字＋下線でリンクにしない */
+.hubnav{position:absolute;top:0;left:0;right:0;z-index:30;font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif}
+.hubnav ul{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:0 22px;max-width:var(--hub-w,1120px);margin:0 auto;padding:8px var(--hub-pad,clamp(20px,4vw,40px)) 0;list-style:none}
+.hubnav li{margin:0;padding:0}
+.hubnav a,.hubnav [aria-current]{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:6px 0;font-size:13px;font-weight:500;line-height:1.5;letter-spacing:.02em;white-space:nowrap;text-decoration:none;color:var(--hub-tx,#4a525d)}
+.hubnav a::before,.hubnav [aria-current]::before{content:"▸";font-size:10px;color:var(--hub-mute,#9aa1a9)}
+.hubnav a:hover{color:var(--hub-ink,#10151c);text-decoration:underline;text-underline-offset:3px}
+.hubnav [aria-current]{color:var(--hub-ink,#10151c);font-weight:700;box-shadow:inset 0 -2px 0 currentColor}
+.hubnav [aria-current]::before{color:currentColor}
+.hubnav--flow{position:static}
+.hubnav--flow ul{max-width:none;padding:14px 0 0}
+@media(max-width:600px){.hubnav ul{justify-content:center;gap:0 10px;padding:8px 12px 0}.hubnav--flow ul{justify-content:flex-end;padding:10px 0 0}.hubnav a,.hubnav [aria-current]{gap:2px;padding:8px 0;font-size:12px;letter-spacing:0}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+<nav class="hubnav" aria-label="SaaSチームの入口">
+  <ul>
+    <li><a href="../pack-indexes/">資料インデックス一覧</a></li>
+    <li><a href="../focus-2026-09/">9月の注力</a></li>
+    <li><a href="../">SaaSチーム トップ</a></li>
+  </ul>
+</nav>
+  <div class="deco" aria-hidden="true">
+    <!-- 朝日（毎朝9時に起動） -->
+    <svg viewBox="0 0 48 48" style="left:8%;top:18%;width:72px;rotate:-8deg"><path d="M6 34h36M12 34a12 12 0 0 1 24 0"/><path d="M24 10v6M10 18l4 4M38 18l-4 4M4 28h4M40 28h4"/></svg>
+    <!-- 表（スプレッドシート） -->
+    <svg class="hm" viewBox="0 0 48 48" style="left:20%;top:64%;width:64px;rotate:8deg"><rect x="6" y="8" width="36" height="32" rx="3"/><path d="M6 17h36M6 26h36M6 34h36M18 8v32M30 8v32"/></svg>
+    <!-- 虫めがね（検索） -->
+    <svg viewBox="0 0 48 48" style="right:9%;top:16%;width:80px;rotate:-6deg"><circle cx="20" cy="20" r="12"/><path d="m29 29 13 13"/><path d="M14 20h12M20 14v12" opacity=".5"/></svg>
+    <!-- FAX -->
+    <svg class="hm" viewBox="0 0 48 48" style="right:19%;top:62%;width:60px;rotate:10deg"><rect x="6" y="18" width="36" height="22" rx="3"/><path d="M14 18V6h20v12M14 26h8M14 32h8"/><circle cx="33" cy="29" r="4"/></svg>
+    <!-- 封筒（初回メール） -->
+    <svg class="hm" viewBox="0 0 48 48" style="left:33%;top:8%;width:48px;rotate:-6deg"><rect x="5" y="11" width="38" height="26" rx="3"/><path d="m6 13 18 13 18-13"/></svg>
+    <!-- 会社のビル -->
+    <svg class="hm" viewBox="0 0 48 48" style="right:33%;top:10%;width:44px;rotate:6deg"><path d="M9 43V9h18v34M27 19h12v24M5 43h38"/><path d="M14 16h3M20 16h3M14 23h3M20 23h3M14 30h3M20 30h3M32 26h3M32 33h3"/></svg>
+    <!-- リスト（チェックの並び） -->
+    <svg class="s" viewBox="0 0 48 48" style="left:4%;top:48%;width:52px"><path d="m8 12 3 3 6-6M8 25l3 3 6-6M8 38l3 3 6-6M22 12h18M22 25h18M22 38h18"/></svg>
+    <!-- 時計（9:00） -->
+    <svg class="s" viewBox="0 0 48 48" style="right:4%;top:46%;width:50px"><circle cx="24" cy="24" r="18"/><path d="M24 12v12h-10"/></svg>
+    <!-- 地図の目印（地域） -->
+    <svg class="s hm" viewBox="0 0 48 48" style="left:40%;top:78%;width:40px"><path d="M24 44s-13-13-13-23a13 13 0 0 1 26 0c0 10-13 23-13 23z"/><circle cx="24" cy="21" r="5"/></svg>
+    <!-- 報告（棒グラフ） -->
+    <svg class="s" viewBox="0 0 48 48" style="right:38%;top:80%;width:36px"><path d="M6 42h36M12 42V28M22 42V18M32 42V24M40 42V10"/></svg>
+    <span class="dot" style="left:15%;top:40%;width:8px;height:8px"></span>
+    <span class="dot" style="right:14%;top:38%;width:6px;height:6px"></span>
+    <span class="dot hm" style="left:28%;top:30%;width:5px;height:5px"></span>
+    <span class="dot hm" style="right:27%;top:84%;width:7px;height:7px"></span>
+  </div>
+  <div class="w">
+    <span class="en">List Master</span>
+    <h1>リストマスター</h1>
+    <span class="rule" aria-hidden="true"></span>
+    <p class="meta">
+      <span>最終更新 <b>2026.09.25</b></span>
+      <span class="k"><i style="background:var(--oem)"></i>OEM 4点</span>
+      <span class="k"><i style="background:var(--dir)"></i>直販 5点</span>
+      <span class="k"><i style="background:var(--etc)"></i>その他 1点</span>
+    </p>
+  </div>
+</header>
+
+<main>
+
+<!-- お知らせ -->
+<section class="news" aria-labelledby="news-h">
+  <div class="w">
+    <div class="sh"><h2 id="news-h">お知らせ</h2><span class="en">News</span></div>
+    <ul class="nl">
+      <li><a href="#b-01"><time>09.25</time><span class="cat oem">OEM</span><span class="t"><span class="bd bg-new">NEW</span>OEM提供のご案内を公開しました</span></a></li>
+      <li><a href="#b-02"><time>09.25</time><span class="cat oem">OEM</span><span class="t"><span class="bd bg-new">NEW</span>パートナー個別説明の案内ページと投影資料を公開しました</span></a></li>
+      <li><a href="#b-04"><time>09.25</time><span class="cat oem">OEM</span><span class="t"><span class="bd bg-in">社内</span>パートナー向け説明ノート（孫トークつき）を社内に用意しました</span></a></li>
+      <li><a href="#direct"><time>09.25</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-new">NEW</span>直販の資料を1か所にまとめ、この資料インデックスを新設しました</span></a></li>
+      <li><a href="#c-01"><time>09.25</time><span class="cat etc">その他</span><span class="t"><span class="bd bg-new">NEW</span>姉妹商材のつばめリードを掲載しました</span></a></li>
+    </ul>
+    <details class="more">
+      <summary>過去のお知らせ（1件）</summary>
+      <ul class="nl">
+        <li><a href="#a-01"><time>09.13</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-up">更新</span>サービスサイトをSaaSチームの一覧へ移設しました</span></a></li>
+      </ul>
+    </details>
+  </div>
+</section>
+
+<!-- OEM -->
+<section class="blk oem" id="oem" aria-labelledby="oem-h">
+  <div class="w in">
+    <div class="side">
+      <span class="en">B ／ OEM</span>
+      <h2 id="oem-h">貴社の商材として売る</h2>
+      <p class="who">中小企業のお客様を持つ会社の方へ</p>
+      <div class="hist"><p class="hist-h">この区画の更新履歴</p><ol><li><time>09.25</time><span class="t"><span class="n">B-01</span>OEM提供のご案内を公開</span></li><li><time>09.25</time><span class="t"><span class="n">B-02</span>個別説明の案内と投影資料を公開</span></li><li><time>09.25</time><span class="t"><span class="n">B-04</span>説明ノートを社内に用意</span></li></ol></div>
+      <span class="bar" aria-hidden="true"></span>
+      <ul class="terms"><li>月額課金の積み上げ型</li><li>取扱条件は書面で個別にご案内</li><li>分担は個別説明で決定</li></ul>
+    </div>
+    <ul class="docs">
+      <li><div class="doc link" id="b-01">
+          <a class="lk" href="./b01/"><span class="no">B-01</span>
+          <div><div class="ttl"><h3>OEM提供のご案内</h3><span class="bd bg-new">NEW</span></div>
+          <p>弊社がやること、貴社がやること、まだ決まっていないことを1つの表にまとめています。売ってはいけないお客様と、約束してはいけないことも載せました。</p></div>
+          <span class="arr" aria-hidden="true">→</span></a>
+          <div class="urlrow"><span class="url">writeup-inc.github.io/saas/list-master-pack/b01/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/list-master-pack/b01/">コピー</button></div>
+        </div></li>
+      <li><div class="doc link" id="b-02">
+          <a class="lk" href="./b02/"><span class="no">B-02</span>
+          <div><div class="ttl"><h3>パートナー個別説明の案内</h3><span class="bd bg-new">NEW</span></div>
+          <p>取り扱いを検討される会社向けの、1社ずつの説明です。会社名と取扱商材を伺い、貴社のお客様に向くかを一緒に確かめます。</p></div>
+          <span class="arr" aria-hidden="true">→</span></a>
+          <div class="urlrow"><span class="url">writeup-inc.github.io/saas/list-master-pack/b02/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/list-master-pack/b02/">コピー</button></div>
+        </div></li>
+      <li><div class="doc link" id="b-03">
+          <a class="lk" href="./b03/"><span class="no">B-03</span>
+          <div><div class="ttl"><h3>個別説明の投影資料</h3><span class="bd bg-new">NEW</span></div>
+          <p>個別説明で映す資料です。誰が話しても同じ話になるよう、各ページに話す文言を併記しています。</p></div>
+          <span class="arr" aria-hidden="true">→</span></a>
+          <div class="urlrow"><span class="url">writeup-inc.github.io/saas/list-master-pack/b03/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/list-master-pack/b03/">コピー</button></div>
+        </div></li>
+      <li><div class="doc link internal" id="b-04">
+          <a class="lk" href="./b04/"><span class="no">B-04</span>
+          <div><div class="ttl"><h3>パートナー向け説明ノート</h3><span class="bd bg-in">社内</span></div>
+          <p>パートナーの営業が、自社のお客様へ説明するときの言い回し（孫トーク）と、切り返し・言ってはいけないことをまとめた台本。</p>
+          <p class="warn">社内限定です。お客様へURLを送らないでください</p></div>
+          <span class="arr" aria-hidden="true">→</span></a>
+          <div class="urlrow"><span class="url">writeup-inc.github.io/saas/list-master-pack/b04/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/list-master-pack/b04/">コピー</button></div>
+        </div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 直販 -->
+<section class="blk dir" id="direct" aria-labelledby="dir-h">
+  <div class="w in">
+    <div class="side">
+      <span class="en">A ／ Direct</span>
+      <h2 id="dir-h">自社の新規開拓に使う</h2>
+      <p class="who">使う会社の方へ</p>
+      <div class="hist"><p class="hist-h">この区画の更新履歴</p><ol><li><time>09.25</time><span class="t"><span class="n">A-01</span>申込・管理画面側のページを掲載</span></li><li><time>09.25</time><span class="t"><span class="n">A区画</span>直販の資料をこの区画に集約</span></li><li><time>09.13</time><span class="t"><span class="n">A-01</span>サービスサイトを一覧へ移設</span></li></ol></div>
+      <span class="bar" aria-hidden="true"></span>
+      <ul class="terms"><li>毎朝9時に自動で起動</li><li>条件はスプレッドシートで指定</li><li>メール・FAXで初回の接点</li></ul>
+    </div>
+    <div>
+      <ul class="docs">
+        <li><div class="doc link" id="a-01">
+          <a class="lk" href="../list-master/"><span class="no">A-01</span>
+          <div><div class="ttl"><h3>サービスサイト（最新）</h3></div>
+            <p>営業の考え方（打率より母数と誰に当たるか）から、1日の流れ、使い方、よくある質問までを載せた直販のページです。ご案内にはこの版をお使いください。</p></div>
+          <span class="arr" aria-hidden="true">→</span></a>
+          <div class="urlrow"><span class="url">writeup-inc.github.io/saas/list-master/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/list-master/">コピー</button></div>
+        </div></li>
+        <li><div class="doc link" id="a-01-app">
+          <a class="lk" href="https://list.elliot-tech.jp/lp" target="_blank" rel="noopener"><span class="no">A-01<br>申込</span>
+          <div><div class="ttl"><h3>申込・管理画面側のページ</h3><span class="bd bg-new">NEW</span></div>
+            <p>管理画面と同じドメインにあるページです。料金プランを掲載しています。</p></div>
+          <span class="arr" aria-hidden="true">→</span></a>
+          <div class="urlrow"><span class="url">list.elliot-tech.jp/lp</span><button type="button" class="cp" data-url="https://list.elliot-tech.jp/lp">コピー</button></div>
+        </div></li>
+        <li><div class="doc" id="a-02">
+          <span class="no">A-02</span>
+          <div><div class="ttl"><h3>個別相談の案内</h3><span class="bd bg-soon">準備中</span></div>
+            <span class="st">公開時にこのページでお知らせします</span></div>
+        </div></li>
+        <li><div class="doc" id="a-03">
+          <span class="no">A-03</span>
+          <div><div class="ttl"><h3>個別相談の投影資料</h3><span class="bd bg-soon">準備中</span></div>
+            <span class="st">公開時にこのページでお知らせします</span></div>
+        </div></li>
+        <li><div class="doc" id="a-04">
+          <span class="no">A-04</span>
+          <div><div class="ttl"><h3>商談時の説明ノート</h3><span class="bd bg-soon">準備中</span></div>
+            <span class="st">社内向け。用意でき次第このページでお知らせします</span></div>
+        </div></li>
+      </ul>
+      <p class="fine">契約期間・支払条件・消費税の扱いは、ご相談時に書面でご案内します。</p>
+    </div>
+  </div>
+</section>
+
+<!-- その他 -->
+<section class="blk etc" id="etc" aria-labelledby="etc-h">
+  <div class="w in">
+    <div class="side">
+      <span class="en">C ／ Others</span>
+      <h2 id="etc-h">組み合わせる<br>関連サービス</h2>
+      <p class="who">新規開拓の手段を増やす方へ</p>
+      <div class="hist"><p class="hist-h">この区画の更新履歴</p><ol><li><time>09.25</time><span class="t"><span class="n">C-01</span>つばめリードを掲載</span></li><li><time>09.25</time><span class="t"><span class="n">C区画</span>関連サービスの区画を新設</span></li><li><time>09.13</time><span class="t"><span class="n">A-01</span>直販サイトの移設にあわせて整理</span></li></ol></div>
+      <span class="bar" aria-hidden="true"></span>
+    </div>
+    <ul class="docs">
+      <li><div class="doc link" id="c-01">
+          <a class="lk" href="../tsubame-lead-pack/"><span class="no">C-01</span>
+          <div><div class="ttl"><h3>つばめリード</h3><span class="bd bg-new">NEW</span></div>
+          <p>問い合わせフォームから送るAIフォーム営業です。送った数で払う従量課金。リストマスターは、毎朝のリスト作成とメール・FAXでの初回接点を月額で回します。</p></div>
+          <span class="arr" aria-hidden="true">→</span></a>
+          <div class="urlrow"><span class="url">writeup-inc.github.io/saas/tsubame-lead-pack/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/tsubame-lead-pack/">コピー</button></div>
+        </div></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>リストマスター 資料インデックス</p>
+  <p>社内共有用の資料インデックス。提供元：株式会社ライトアップ ／ <a href="https://www.writeup.co.jp/company/" target="_blank" rel="noopener" style="display:inline-block;padding:10px 4px">会社概要</a> ／ <a href="https://www.writeup.co.jp/privacy/" target="_blank" rel="noopener" style="display:inline-block;padding:10px 4px">個人情報保護方針</a></p>
+</footer>
+
+<script>
+(function(){
+  function fallback(t){
+    var ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');
+    ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');}catch(e){}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll('.cp').forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.preventDefault();e.stopPropagation();
+      var u=btn.getAttribute('data-url');
+      var ok=function(){btn.textContent='コピー済み';btn.classList.add('done');
+        setTimeout(function(){btn.textContent='コピー';btn.classList.remove('done');},1600);};
+      if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){fallback(u);ok();});}
+      else{fallback(u);ok();}
+    });
+  });
+})();
+</script>
+</body>
+</html>

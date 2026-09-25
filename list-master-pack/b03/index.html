@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="lp-type" content="左脳/資料/D欲求">
+<title>リストマスター｜パートナー個別説明 投影資料</title>
+<link rel="canonical" href="https://writeup-inc.github.io/saas/list-master-pack/b03/">
+<meta name="description" content="リストマスターのOEMパートナー候補向け個別説明で投影する13枚のスライドです。各スライドに話す言葉を併記しています。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== lp-base.css（改行制御・最小文字サイズ・固定CTAの逃げは消さない） ===== */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] { word-break: normal; }
+}
+.nobr { white-space: nowrap; }
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+
+/* ===== トークン ===== */
+:root {
+  --ink: #16213a;
+  --ink-2: #3c4760;
+  --mute: #6a7389;
+  --line: #dfe3ec;
+  --bg: #ffffff;
+  --bg-2: #f4f6fa;
+  --navy: #14254a;
+  --navy-2: #1d3566;
+  --on-navy: #ffffff;
+  --on-navy-2: #c6d0e6;
+  --accent: #0e7a5a;       /* 朝の森の緑（リストマスターのブランド色） */
+  --accent-soft: #e3f2ec;
+  --accent-on-dark: #7fe0bb;
+  --card: #ffffff;
+  --shadow: 0 1px 2px rgba(20,37,74,.06), 0 8px 28px rgba(20,37,74,.08);
+  --radius: 14px;
+  --lp-max: 1200px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #eef1f7; --ink-2: #c9d0de; --mute: #97a0b4; --line: #2c3650;
+    --bg: #0e1526; --bg-2: #131c31; --card: #172139;
+    --navy: #0a1122; --navy-2: #16223d; --on-navy-2: #aab6d0;
+    --accent: #3fcf9b; --accent-soft: #15352b;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"] {
+  --ink: #eef1f7; --ink-2: #c9d0de; --mute: #97a0b4; --line: #2c3650;
+  --bg: #0e1526; --bg-2: #131c31; --card: #172139;
+  --navy: #0a1122; --navy-2: #16223d; --on-navy-2: #aab6d0;
+  --accent: #3fcf9b; --accent-soft: #15352b;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.35);
+}
+
+/* ===== 基本 ===== */
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bg-2); color: var(--ink);
+  font-family: "Noto Sans JP", system-ui, -apple-system, "Hiragino Sans", sans-serif;
+  -webkit-font-smoothing: antialiased; font-feature-settings: "palt";
+}
+a { color: inherit; }
+.num { font-family: "Inter", "Noto Sans JP", sans-serif; font-feature-settings: "tnum"; letter-spacing: -.01em; }
+p { margin: 0 0 1em; }
+
+/* ===== ボタン ===== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 56px; padding: 0 30px; border-radius: 999px;
+  background: var(--accent); color: #fff; text-decoration: none;
+  font-weight: 700; font-size: 1.02rem; letter-spacing: .04em;
+  box-shadow: 0 6px 20px rgba(14,122,90,.28);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 10px 26px rgba(14,122,90,.34); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn { color: #0a1122; } }
+:root[data-theme="dark"] .btn { color: #0a1122; }
+
+/* ===== ブランド ===== */
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; min-height: 44px; }
+.brand svg { width: 32px; height: 32px; color: var(--accent); flex: none; }
+.brand-name { font-weight: 900; font-size: 1.12rem; letter-spacing: .06em; }
+.brand-sub { display: block; font: 700 12px/1 "Inter", sans-serif; letter-spacing: .2em; color: var(--mute); margin-top: 3px; }
+
+/* ===== B-03 スライド ===== */
+:root { --fixed-cta-h: 76px; }
+.deck-head { max-width: calc(var(--lp-max) + 32px); margin: 0 auto; padding: 28px 16px 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; }
+.deck-head p { margin: 0; font-size: .9rem; color: var(--ink-2); }
+.deck { max-width: calc(var(--lp-max) + 32px); margin: 0 auto; padding: 8px 16px 40px; }
+@media (max-width: 600px) { .deck { padding: 8px 12px 32px; } .deck-head { padding: 20px 12px 4px; } }
+section.slide-wrap { padding: 0; margin: 0 0 36px; scroll-margin-top: 12px; }
+.slide {
+  position: relative; aspect-ratio: 16 / 9; background: var(--card); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow);
+  padding: clamp(18px, 4vw, 48px) clamp(16px, 4.4vw, 56px) clamp(14px, 2vw, 22px);
+  display: flex; flex-direction: column; cursor: pointer;
+}
+@media (max-width: 900px) { .slide { aspect-ratio: auto; min-height: 56.25vw; } }
+.slide > * { min-width: 0; }
+.s-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: clamp(10px, 2vw, 22px); }
+.s-no { font: 800 12px/1 "Inter", sans-serif; letter-spacing: .16em; color: var(--accent); }
+.s-kicker { font-size: 12px; color: var(--mute); font-weight: 700; text-align: right; }
+.slide h1 { font-size: clamp(1.55rem, 4.4vw, 3rem); line-height: 1.35; margin: 0 0 18px; font-weight: 900; }
+.slide h2 { font-size: clamp(1.15rem, 2.9vw, 2.05rem); line-height: 1.4; margin: 0 0 clamp(12px, 2.2vw, 26px); font-weight: 900; }
+.slide h3 { font-size: clamp(1rem, 1.6vw, 1.12rem); line-height: 1.5; margin: 0 0 6px; }
+.slide p { font-size: clamp(.92rem, 1.45vw, 1rem); color: var(--ink-2); margin: 0 0 .6em; line-height: 1.75; }
+.slide .hl { color: var(--accent); }
+.s-body { flex: 1 0 auto; display: flex; flex-direction: column; justify-content: center; }
+.s-foot { margin-top: clamp(12px, 1.8vw, 20px); display: flex; flex-wrap: wrap; gap: 4px 16px; justify-content: space-between; align-items: center; font-size: 12px; color: var(--mute); }
+.s-foot span { display: inline-flex; align-items: center; gap: 6px; }
+.s-foot svg { width: 16px; height: 16px; color: var(--mute); }
+.tbd { display: inline-block; font-weight: 700; color: var(--accent); background: var(--accent-soft); border-radius: 6px; padding: 0 6px; font-size: .92em; line-height: 1.7; }
+
+/* 表紙・締め（紺） */
+.slide.dark { background: var(--navy); color: var(--on-navy); border-color: transparent; }
+.slide.dark p, .slide.dark .s-foot, .slide.dark .s-kicker { color: var(--on-navy-2); }
+.slide.dark .s-no { color: var(--accent-on-dark); }
+.slide.dark .s-foot svg { color: var(--on-navy-2); }
+.cover-mark { position: absolute; right: 6%; top: 14%; width: 20%; max-width: 200px; color: #fff; opacity: .08; }
+.cover-tag { display: inline-block; font-size: .86rem; font-weight: 700; color: var(--accent-on-dark); border: 1px solid rgba(127,224,187,.45); border-radius: 999px; padding: 4px 14px; margin-bottom: 18px; align-self: flex-start; }
+
+/* グリッド */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px, 2.4vw, 28px); align-items: start; }
+.g3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(10px, 2vw, 22px); }
+.g2w { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(14px, 3vw, 36px); align-items: center; }
+@media (max-width: 760px) { .g2, .g3, .g2w { grid-template-columns: 1fr; } }
+.box { background: var(--bg-2); border-radius: 12px; padding: clamp(14px, 2vw, 20px); }
+.box p { margin: 0; font-size: clamp(.9rem, 1.4vw, .98rem); }
+.box .k { display: block; font: 800 12px/1 "Inter", sans-serif; letter-spacing: .14em; color: var(--accent); margin-bottom: 8px; }
+
+/* 式 */
+.eq { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; font-weight: 700; font-size: clamp(1rem, 1.8vw, 1.2rem); margin-bottom: clamp(12px, 2vw, 22px); }
+.eq .term { background: var(--bg-2); border: 1px solid var(--line); border-radius: 12px; padding: 9px 14px; line-height: 1.4; }
+.eq .term small { display: block; font-size: 12px; font-weight: 500; color: var(--mute); margin-top: 3px; }
+.eq .term.q { border-color: var(--accent); background: var(--accent-soft); }
+.eq .term.q small { color: var(--accent); font-weight: 700; }
+.eq .op { font: 800 1.3rem/1 "Inter", sans-serif; color: var(--mute); }
+
+/* 深さ */
+.depth { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.depth li { display: grid; grid-template-columns: 4.2em 1fr auto; gap: 10px; align-items: center; padding: 8px 14px; border-bottom: 1px solid var(--line); font-size: clamp(.86rem, 1.35vw, .95rem); color: var(--ink-2); }
+.depth li:last-child { border-bottom: 0; }
+.depth .r { font: 800 .9rem/1 "Inter", "Noto Sans JP", sans-serif; color: var(--mute); }
+.depth .t { font-size: 12px; font-weight: 700; color: var(--mute); border: 1px solid var(--line); border-radius: 999px; padding: 1px 9px; white-space: nowrap; }
+.depth li.gap { justify-content: center; color: var(--mute); font-size: 12px; display: block; text-align: center; padding: 4px 14px; background: var(--bg-2); }
+.depth li.deep { background: var(--accent-soft); color: var(--ink); font-weight: 700; }
+.depth li.deep .r, .depth li.deep .t { color: var(--accent); border-color: var(--accent); }
+
+/* 引用 */
+.quotes { list-style: none; margin: 0 0 clamp(12px, 2vw, 22px); padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(10px, 2vw, 20px); }
+@media (max-width: 760px) { .quotes { grid-template-columns: 1fr; } }
+.quotes li { border-left: 3px solid var(--accent); padding: 6px 0 6px 14px; font-weight: 900; font-size: clamp(1.02rem, 2vw, 1.4rem); line-height: 1.5; }
+.after { border-top: 1px solid var(--line); padding-top: clamp(10px, 1.6vw, 16px); }
+
+/* 手順 */
+.steps { list-style: none; margin: 0; padding: 0; counter-reset: st; }
+.steps li { counter-increment: st; display: grid; grid-template-columns: 34px 1fr; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--line); font-size: clamp(.92rem, 1.45vw, 1rem); line-height: 1.6; }
+.steps li:last-child { border-bottom: 0; }
+.steps li::before { content: counter(st, decimal-leading-zero); font: 800 .95rem/1.6 "Inter", sans-serif; color: var(--accent); }
+.steps li b { display: block; }
+.steps li span { color: var(--mute); font-size: .88em; }
+.minifacts { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 10px 0 0; font-size: .86rem; color: var(--ink-2); }
+.minifacts b { color: var(--ink); }
+
+/* 実行ログ（画面イメージ） */
+.log { background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); }
+.log-bar { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 9px 14px; background: var(--bg-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--mute); font-weight: 700; }
+.log-bar .live { color: var(--accent); }
+.log-cond { padding: 10px 14px; border-bottom: 1px dashed var(--line); font-size: 12px; color: var(--mute); }
+.log-cond b { display: block; font-size: .92rem; color: var(--ink); margin-top: 2px; }
+.log ol { list-style: none; margin: 0; padding: 6px 14px 10px; }
+.log li { display: grid; grid-template-columns: 3.2em 5.6em 1fr; gap: 8px; padding: 5px 0; font-size: 12px; color: var(--ink-2); align-items: baseline; }
+.log li code { font: 700 12px/1.4 "Inter", ui-monospace, monospace; color: var(--accent); }
+.log li .tm { font: 700 12px/1.4 "Inter", sans-serif; color: var(--mute); }
+
+/* 表 */
+.tbl { width: 100%; border-collapse: collapse; font-size: clamp(.86rem, 1.35vw, .96rem); }
+.tbl th, .tbl td { text-align: left; padding: clamp(7px, 1.1vw, 11px) 10px; border-bottom: 1px solid var(--line); vertical-align: top; line-height: 1.55; }
+.tbl thead th { font-size: .8rem; color: var(--mute); background: var(--bg-2); white-space: nowrap; }
+.tbl tbody th { white-space: nowrap; }
+.tbl tr.us { background: var(--accent-soft); font-weight: 700; }
+.tbl tr.us th, .tbl tr.us td { color: var(--accent); }
+@media (max-width: 600px) {
+  .tbl.stack thead { display: none; }
+  .tbl.stack, .tbl.stack tbody, .tbl.stack tr, .tbl.stack th, .tbl.stack td { display: block; width: 100%; }
+  .tbl.stack tr { padding: 10px 12px; border-bottom: 1px solid var(--line); }
+  .tbl.stack th, .tbl.stack td { border: 0; padding: 2px 0; }
+  .tbl.stack tbody th { font-size: 1rem; margin-bottom: 4px; }
+  .tbl.stack td { display: grid; grid-template-columns: 7.5em 1fr; gap: 8px; }
+  .tbl.stack td::before { content: attr(data-l); color: var(--mute); font-weight: 400; font-size: .84rem; }
+}
+
+/* 分担 */
+.col { border: 1px solid var(--line); border-radius: 12px; padding: clamp(12px, 1.8vw, 18px); }
+.col-head { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+.col-head h3 { margin: 0; }
+.col ul { margin: 0; padding: 0; list-style: none; }
+.col li { font-size: clamp(.86rem, 1.3vw, .94rem); padding: 4px 0 4px 16px; position: relative; color: var(--ink-2); line-height: 1.6; }
+.col li::before { content: ""; position: absolute; left: 2px; top: 14px; width: 6px; height: 6px; border-radius: 50%; background: var(--mute); }
+.col li .who { display: inline-block; font-size: 12px; font-weight: 700; color: var(--ink); border: 1px solid var(--line); border-radius: 6px; padding: 0 6px; margin-right: 6px; line-height: 1.6; }
+.col.ok { background: var(--card); }
+.col.open { border-style: dashed; border-color: var(--accent); background: color-mix(in srgb, var(--accent-soft) 50%, transparent); }
+.col.open li::before { background: var(--accent); }
+.col.open ul.two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+@media (max-width: 900px) { .col.open ul.two { grid-template-columns: 1fr; } }
+.share { grid-template-columns: .85fr 1.15fr; }
+@media (max-width: 760px) { .share { grid-template-columns: 1fr; } }
+.st { display: inline-block; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 1px 9px; }
+.st.ok { color: var(--ink-2); background: var(--bg-2); border: 1px solid var(--line); }
+.st.ng { color: var(--accent); background: var(--accent-soft); }
+
+/* 価格 */
+.pcard { background: var(--navy); color: var(--on-navy); border-radius: 14px; padding: clamp(16px, 2.4vw, 26px); }
+.pcard .label { font-size: .86rem; color: var(--on-navy-2); display: block; }
+.pmain { display: flex; align-items: baseline; gap: 6px; margin: 4px 0 2px; }
+.pmain b { font: 800 clamp(2.4rem, 5.4vw, 3.6rem)/1 "Inter", sans-serif; }
+.pmain span { font-size: 1.1rem; font-weight: 700; }
+.prows { list-style: none; margin: 12px 0 0; padding: 0; border-top: 1px solid rgba(255,255,255,.16); }
+.prows li { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.16); font-size: .92rem; }
+.prows li span { color: var(--on-navy-2); }
+.prows li b { font-weight: 700; text-align: right; }
+.prows .tbd { background: rgba(127,224,187,.16); color: var(--accent-on-dark); }
+.mech { list-style: none; margin: 0 0 12px; padding: 0; }
+.mech li { padding: 8px 0; border-bottom: 1px solid var(--line); }
+.mech li b { display: block; font-size: clamp(.94rem, 1.45vw, 1.02rem); }
+.mech li > span { display: block; font-size: clamp(.86rem, 1.3vw, .92rem); color: var(--ink-2); }
+.mech.open-list li { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 6px 0; }
+.mech.open-list li:last-child { border-bottom: 0; }
+.open-line { font-size: clamp(.88rem, 1.35vw, .96rem); color: var(--ink-2); line-height: 1.9; margin: 0; }
+
+/* 約束しないこと */
+.nglist { list-style: none; margin: 0; padding: 0; }
+.nglist li { padding: 6px 0 6px 18px; border-bottom: 1px solid var(--line); position: relative; font-size: clamp(.88rem, 1.35vw, .96rem); color: var(--ink-2); line-height: 1.6; }
+.nglist li:last-child { border-bottom: 0; }
+.nglist li::before { content: ""; position: absolute; left: 2px; top: 16px; width: 8px; height: 2px; background: var(--accent); }
+.nglist li b { color: var(--ink); display: block; }
+.nglist li span { font-size: .9em; color: var(--mute); }
+
+/* 商材の違い */
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px, 2.4vw, 24px); }
+@media (max-width: 760px) { .pair { grid-template-columns: 1fr; } }
+.prod { border: 1px solid var(--line); border-radius: 12px; padding: clamp(14px, 2vw, 20px); }
+.prod.us { border: 2px solid var(--accent); background: color-mix(in srgb, var(--accent-soft) 45%, transparent); }
+.prod h3 { margin-bottom: 8px; }
+.prod.us h3 { color: var(--accent); }
+.prod dl { margin: 0; display: grid; grid-template-columns: 6.5em 1fr; gap: 6px 10px; font-size: clamp(.86rem, 1.35vw, .95rem); }
+.prod dt { color: var(--mute); font-weight: 700; }
+.prod dd { margin: 0; color: var(--ink-2); line-height: 1.6; }
+.link-row { margin-top: clamp(10px, 1.6vw, 16px); }
+.link-row a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; color: var(--accent); text-underline-offset: 4px; }
+
+/* 条件 */
+.chips { list-style: none; margin: 0 0 clamp(12px, 2vw, 18px); padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+@media (max-width: 900px) { .chips { grid-template-columns: repeat(2, 1fr); } }
+.chips li { border: 1px dashed var(--accent); border-radius: 10px; padding: 8px 12px; font-size: clamp(.86rem, 1.3vw, .94rem); font-weight: 700; background: color-mix(in srgb, var(--accent-soft) 50%, transparent); line-height: 1.5; }
+.chips li small { display: block; font-size: 12px; color: var(--accent); font-weight: 700; margin-top: 2px; }
+
+/* 次の一歩 */
+.next3 { list-style: none; margin: 0 0 clamp(14px, 2.4vw, 26px); padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(10px, 2vw, 20px); counter-reset: x; }
+@media (max-width: 760px) { .next3 { grid-template-columns: 1fr; } }
+.next3 li { counter-increment: x; border-top: 2px solid #3fcf9b; padding-top: 12px; }
+.next3 li::before { content: "0" counter(x); display: block; font: 800 12px/1 "Inter", sans-serif; letter-spacing: .14em; color: var(--accent-on-dark); margin-bottom: 8px; }
+.next3 b { display: block; color: #fff; font-size: clamp(1rem, 1.7vw, 1.1rem); }
+.next3 span { display: block; color: var(--on-navy-2); font-size: .92rem; margin-top: 4px; }
+.slide .btn { align-self: flex-start; }
+.slide.dark .btn { background: #3fcf9b; color: #0a1122; box-shadow: none; }
+
+/* ノート */
+.note-box { margin-top: 12px; background: var(--card); border: 1px dashed var(--line); border-radius: 12px; padding: 14px 18px; }
+.note-box .nl { display: block; font: 700 12px/1 "Inter", "Noto Sans JP", sans-serif; letter-spacing: .12em; color: var(--mute); margin-bottom: 8px; }
+.note-box p { margin: 0 0 .5em; font-size: .96rem; color: var(--ink); line-height: 1.85; }
+.note-box p:last-child { margin: 0; }
+body.hide-notes .note-box { display: none; }
+
+/* 操作バー */
+.bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.bar-in { max-width: calc(var(--lp-max) + 32px); margin: 0 auto; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.bar-grp { display: flex; align-items: center; gap: 8px; }
+.bar button { min-height: 44px; min-width: 44px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--ink); font: 700 .88rem/1 "Noto Sans JP", sans-serif; cursor: pointer; }
+.bar button:hover { border-color: var(--accent); color: var(--accent); }
+.bar .count { font: 700 .9rem/1 "Inter", sans-serif; color: var(--ink-2); min-width: 4.5em; text-align: center; }
+.bar .hint { font-size: 12px; color: var(--mute); }
+@media (max-width: 700px) { .bar .hint { display: none; } }
+.bar button { white-space: nowrap; }
+@media (max-width: 420px) { .bar-in { padding: 12px; } .bar-grp { gap: 6px; } .bar button { padding: 0 12px; font-size: .84rem; } .bar .count { min-width: 3.8em; } #print { display: none; } }
+
+/* フッター */
+.deck-foot { max-width: calc(var(--lp-max) + 32px); margin: 0 auto; padding: 8px 16px 40px; text-align: center; font-size: 13px; color: var(--mute); }
+.deck-foot p { margin: 0 0 4px; }
+.deck-foot a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 10px; color: var(--ink-2); }
+
+/* 印刷：1枚1ページ、ノートと操作バーは出さない */
+@media print {
+  @page { size: 297mm 167mm; margin: 0; }
+  body { background: #fff; padding: 0; }
+  .bar, .deck-head, .note-box, .deck-foot { display: none !important; }
+  .deck { max-width: none; padding: 0; margin: 0; }
+  section.slide-wrap { margin: 0; break-after: page; page-break-after: always; }
+  .slide { width: 297mm; height: 167mm; aspect-ratio: auto; border: 0; border-radius: 0; box-shadow: none; padding: 12mm 14mm 14mm; }
+  .slide h1 { font-size: 30pt; } .slide h2 { font-size: 22pt; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+/* ===== ChatGPTファクトチェック（主CTAより弱く） ===== */
+.fc-row{margin-top:12px}
+.fc-btn{display:inline-flex;align-items:center;flex-wrap:wrap;gap:.2em .6em;min-height:44px;padding:8px 18px;
+  border:1px solid currentColor;border-radius:999px;background:transparent;color:var(--ink-2,#3c4760);
+  font:inherit;font-size:13px;font-weight:700;cursor:pointer;text-align:left;line-height:1.5}
+.fc-btn:hover{color:var(--accent,#0e7a5a)}
+.fc-btn svg{width:16px;height:16px;flex:none}
+.fc-sub{font-size:12px;font-weight:400;opacity:.8}
+@media print{.fc-row{display:none}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 40 40">
+    <rect x="4" y="6" width="32" height="28" rx="5" fill="none" stroke="currentColor" stroke-width="3"/>
+    <path d="M10 15l2.5 2.5L17 13M21 15h9M10 25l2.5 2.5L17 23M21 25h9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+</svg>
+
+<div class="deck-head">
+  <a class="brand" href="#s01" aria-label="1枚目へ">
+    <svg aria-hidden="true"><use href="#mark"/></svg>
+    <span><span class="brand-name">リストマスター</span><span class="brand-sub">PARTNER BRIEFING</span></span>
+  </a>
+  <p>パートナー個別説明の投影資料（全13枚）。各スライドの下が「話す言葉」です。</p>
+</div>
+
+<main class="deck" id="deck">
+
+<!-- 01 表紙 -->
+<section class="slide-wrap" id="s01" aria-labelledby="t01">
+  <div class="slide dark">
+    <svg class="cover-mark" viewBox="0 0 40 40" aria-hidden="true"><use href="#mark"/></svg>
+    <div class="s-top"><span class="s-no">01 / 13</span><span class="s-kicker">OEMパートナー向け個別説明</span></div>
+    <div class="s-body">
+      <span class="cover-tag">営業リスト自動生成AI</span>
+      <h1 id="t01">貴社の商材に、<br>営業リストAIを<br>足せます。</h1>
+      <p>リストマスター　OEMパートナー向けのご説明</p>
+    </div>
+    <div class="s-foot"><span><svg aria-hidden="true"><use href="#mark"/></svg>LIST MASTER</span><span>株式会社ライトアップ（東証グロース 6580）</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>本日は、営業リスト自動生成AI「リストマスター」を、貴社のお客様へ販売していただく形についてご説明します。</p>
+    <p>最初にお伝えしておくと、卸値や一次受けの担当など、まだ決まっていない条件もあるのが現状です。決まっていることと決まっていないことを分けてお話しし、未確定の部分は書面でお答えします。</p>
+  </aside>
+</section>
+
+<!-- 02 市場の変化 -->
+<section class="slide-wrap" id="s02" aria-labelledby="t02">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">02 / 13</span><span class="s-kicker">市場の変化</span></div>
+    <div class="s-body">
+      <h2 id="t02">上位の会社には、<br>競合も当たっています。</h2>
+      <div class="eq" aria-label="新規の売上の式">
+        <span class="term q">営業リスト<small>母数と当てる先</small></span>
+        <span class="op">×</span>
+        <span class="term">アポ率</span>
+        <span class="op">×</span>
+        <span class="term">受注率</span>
+        <span class="op">×</span>
+        <span class="term">単価</span>
+      </div>
+      <div class="g2">
+        <div>
+          <p>掛け算なので、いちばん左が細いと、その先をどれだけ磨いても答えは大きくなりません。変えやすいのは「何社に当たるか」と「どういう会社に当たるか」です。</p>
+          <p>人が見つけられる会社は、競合も同じように見つけています。深い所にいる会社には、まだ誰も来ていません。</p>
+        </div>
+        <ul class="depth" aria-label="業種と地域で検索したときの見え方">
+          <li><span class="r">1位</span><span>見つけやすい会社</span><span class="t">競合も行く</span></li>
+          <li><span class="r">2位</span><span>見つけやすい会社</span><span class="t">競合も行く</span></li>
+          <li><span class="r">3位</span><span>見つけやすい会社</span><span class="t">競合も行く</span></li>
+          <li class="gap">……検索の深い所</li>
+          <li class="deep"><span class="r">深い所</span><span>上位に出てこない会社</span><span class="t">まだ誰も来ていない</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="s-foot"><span><svg aria-hidden="true"><use href="#mark"/></svg>LIST MASTER</span><span>考え方の整理です。数値の出典はありません</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>新規の売上は、営業リスト、アポ率、受注率、単価の掛け算に分けられます。このうち変えやすいのは、何社に当たるかと、どういう会社に当たるかです。</p>
+    <p>業種と地域で検索して上位に出る会社は、競合も同じように見つけて営業をかけています。検索結果の深い所にいる会社には、まだ誰も来ていないことが多く、1社目として当たれることが強みになります。</p>
+  </aside>
+  <div class="fc-row"><button class="fc-btn" type="button" data-fc-section="市場の変化" data-fc-claim="BtoBの新規売上は、営業リスト×アポ率×受注率×単価に分解して考えられる／検索の上位に出る企業は見つけやすいため、複数の会社から営業を受けやすい／新規開拓で変えやすいのは、当たる母数と当たる先の選び方である／この考え方は、BtoB営業の一般的な理解と照らして妥当か。反対の見方も"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="m8.5 11 1.8 1.8L14 9"/></svg>ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button></div>
+</section>
+
+<!-- 03 貴社の顧客が困っていること -->
+<section class="slide-wrap" id="s03" aria-labelledby="t03">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">03 / 13</span><span class="s-kicker">貴社のお客様の困りごと</span></div>
+    <div class="s-body">
+      <h2 id="t03">貴社のお客様は、<br>こう言っていませんか。</h2>
+      <ul class="quotes">
+        <li>「新規が<br>取れない」</li>
+        <li>「営業に人を<br>割けない」</li>
+        <li>「作ったサイトから<br>問い合わせが来ない」</li>
+      </ul>
+      <p class="after">どれも、<strong>こちらから当てる先が足りない</strong>という話です。相談を受けたその場で出せる答えを持っているかどうかが、貴社が売るときの分かれ目になります。</p>
+    </div>
+    <div class="s-foot"><span><svg aria-hidden="true"><use href="#mark"/></svg>LIST MASTER</span><span>紹介のきっかけになる3つの言葉</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>貴社のお客様から、この3つの言葉を聞いたことはないでしょうか。どれも、リストマスターを紹介するきっかけになる言葉です。</p>
+    <p>新しく売り込むより、お客様がすでに口にしている困りごとに答える形のほうが、話は進みます。その場で出せる答えを1つ持っておく、というのが今回のご提案です。</p>
+  </aside>
+</section>
+
+<!-- 04 経済合理性 -->
+<section class="slide-wrap" id="s04" aria-labelledby="t04">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">04 / 13</span><span class="s-kicker">商材を足す理由</span></div>
+    <div class="s-body">
+      <h2 id="t04">売り切りではなく、<br>月額で積み上がります。</h2>
+      <div class="eq" aria-label="貴社の月の収益の式">
+        <span class="term">続けている<br>お客様の数</span>
+        <span class="op">×</span>
+        <span class="op">（</span><span class="term q">貴社の月額売価<small>【調整中：推奨売価】</small></span>
+        <span class="op">−</span>
+        <span class="term q">卸値<small>【調整中：卸値】</small></span><span class="op">）</span>
+        <span class="op">=</span>
+        <span class="term">貴社の月の収益</span>
+      </div>
+      <div class="g3">
+        <div class="box"><span class="k">REASON 1</span><h3>続くかぎり毎月</h3><p>月額のサービスなので、お客様が続けるかぎり毎月の収益になります</p></div>
+        <div class="box"><span class="k">REASON 2</span><h3>従量課金がない</h3><p>直販は従量課金なし。お客様にとって月々の費用が読みやすい形です</p></div>
+        <div class="box"><span class="k">REASON 3</span><h3>仕組みは弊社</h3><p>検索・送信・報告は弊社のシステムが動かします。貴社は提案と販売に集中</p></div>
+      </div>
+    </div>
+    <div class="s-foot"><span><svg aria-hidden="true"><use href="#mark"/></svg>LIST MASTER</span><span>試算の金額は、条件が書面で決まってから</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>商材を足す理由を、式の形でお話しします。貴社の月の収益は、続けているお客様の数に、売価と卸値の差を掛けたものです。</p>
+    <p>卸値と推奨売価はまだ調整中のため、金額の試算は書面で条件が決まってからお出しします。数字を先に置くとひとり歩きするので、本日お見せするのは、形だけです。</p>
+  </aside>
+</section>
+
+<!-- 05 商品説明 -->
+<section class="slide-wrap" id="s05" aria-labelledby="t05">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">05 / 13</span><span class="s-kicker">リストマスターとは</span></div>
+    <div class="s-body">
+      <h2 id="t05">毎朝9時に、リストを作り<br>初回の連絡まで送ります。</h2>
+      <div class="g2w">
+        <div>
+          <ol class="steps">
+            <li><div><b>条件を読む</b><span>スプレッドシートの地域・業種・規模</span></div></li>
+            <li><div><b>探す</b><span>複数のデータソースで企業を検索</span></div></li>
+            <li><div><b>除く</b><span>廃業・重複を外してリストに</span></div></li>
+            <li><div><b>送る</b><span>受信できないドメイン（約5%）を外し、初回のメールかFAX</span></div></li>
+            <li><div><b>報告する</b><span>実績をメールで（Slack・Googleチャット可）</span></div></li>
+          </ol>
+        </div>
+        <div class="log" aria-label="今朝の実行ログの画面イメージ">
+          <div class="log-bar"><span>今朝の実行ログ</span><span class="live">自動で実行中</span></div>
+          <div class="log-cond">今日の条件（例）<b>新潟県 システム開発 従業員10〜50名</b></div>
+          <ol>
+            <li><span class="tm">9:00</span><code>read_sheet</code><span>条件を読み込む</span></li>
+            <li><span class="tm">9:01</span><code>search</code><span>企業を探す</span></li>
+            <li><span class="tm"></span><code>clean</code><span>廃業・重複を除く</span></li>
+            <li><span class="tm"></span><code>verify</code><span>宛先が届くか確かめる</span></li>
+            <li><span class="tm"></span><code>send</code><span>初回のメールかFAX</span></li>
+            <li><span class="tm"></span><code>report</code><span>実績をメールで報告</span></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="s-foot"><span><svg aria-hidden="true"><use href="#mark"/></svg>LIST MASTER</span><span>右は説明用の画面イメージです。実際の表示とは異なります</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>お客様が最初に決めるのは、地域・業種・規模の条件と、送る文面です。文面はAIが用意し、独自のひな形の登録も可能。返信が来たあとは、お客様の側で話を進めます。あとは毎朝9時に、企業を探し、廃業や重複を除き、宛先を確かめてから初回のメールかFAXを送り、実績をメールで報告します。</p>
+    <p>毎朝「今日はどこに当てるか」を人に選ばせない設計です。確認の手間を残すと忙しい日に止まるため、条件を決めたら止まらないことを優先しています。</p>
+  </aside>
+</section>
+
+<!-- 06 従来のやり方との比較 -->
+<section class="slide-wrap" id="s06" aria-labelledby="t06">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">06 / 13</span><span class="s-kicker">従来のやり方との比較</span></div>
+    <div class="s-body">
+      <h2 id="t06">買ったリストは古くなります。<br>毎朝探し直す仕組みです。</h2>
+      <table class="tbl stack">
+        <thead><tr><th scope="col">やり方</th><th scope="col">当てる先の決め方</th><th scope="col">毎日の手間</th><th scope="col">情報の新しさ</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">リストを買う</th><td data-l="当てる先">業者の区分から選ぶ</td><td data-l="毎日の手間">購入時のみ</td><td data-l="情報の新しさ">購入した時点のまま</td></tr>
+          <tr><th scope="row">自社で手作業</th><td data-l="当てる先">担当者が検索して選ぶ</td><td data-l="毎日の手間">担当者が毎回検索し整理する</td><td data-l="情報の新しさ">作った時点</td></tr>
+          <tr><th scope="row">営業代行に任せる</th><td data-l="当てる先">代行会社と相談して決める</td><td data-l="毎日の手間">打ち合わせと報告の確認</td><td data-l="情報の新しさ">代行会社しだい</td></tr>
+          <tr class="us"><th scope="row">リストマスター</th><td data-l="当てる先">シートの条件で毎朝探す</td><td data-l="毎日の手間">条件を決めたあとは報告メールを読む</td><td data-l="情報の新しさ">毎朝検索し直す</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="s-foot"><span><svg aria-hidden="true"><use href="#mark"/></svg>LIST MASTER</span><span>一般的な傾向の整理。他社の名前と価格は出していません</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>お客様がいまやっている3つのやり方と並べました。違いは、当てる先を毎朝検索し直すことと、条件を決めたあとは人の手間がかからないことです。</p>
+    <p>条件を広げると、誰でも持っているリストに戻ってしまうため、条件は狭くていい、というのが弊社の考え方です。ただしリストマスターも精度100%ではなく、会って確かめるのは人の仕事だとお伝えください。</p>
+  </aside>
+  <div class="fc-row"><button class="fc-btn" type="button" data-fc-section="従来のやり方との比較" data-fc-claim="営業リストの用意には、リストを買う・自社で手作業で作る・営業代行に任せる、という従来のやり方がある／購入リストは購入時点の情報のままである／手作業は検索と整理に担当者の手間がかかる／営業代行は当てる先を代行会社と相談して決める／条件を広く取るほど、競合も持っているリストに近づく／この比較は一般的な実態と照らして正確か"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="m8.5 11 1.8 1.8L14 9"/></svg>ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button></div>
+</section>
+
+<!-- 07 責任分界 -->
+<section class="slide-wrap" id="s07" aria-labelledby="t07">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">07 / 13</span><span class="s-kicker">責任分界</span></div>
+    <div class="s-body">
+      <h2 id="t07">分担は、<br>確定5行と要確認8行。</h2>
+      <div class="g2 share">
+        <div class="col ok"><div class="col-head"><h3>決まっていること</h3><span class="st ok">確定 5行</span></div>
+          <ul>
+            <li><span class="who">弊社</span>毎朝の検索・リスト作成・送信・報告の仕組み</li>
+            <li><span class="who">弊社</span>送信前の宛先確認・配信停止リンク・NGリスト</li>
+            <li><span class="who">弊社</span>紹介URL・URLごとの料金・代理店別クーポン</li>
+            <li><span class="who">貴社</span>自社のお客様への提案と販売</li>
+            <li><span class="who">貴社</span>紹介URLをお客様に案内する</li>
+          </ul></div>
+        <div class="col open"><div class="col-head"><h3>まだ決まっていないこと</h3><span class="st ng">要確認 8行</span></div>
+          <ul class="two">
+            <li>立ち上げ時の条件決めと文面の支援</li>
+            <li>お客様からの問い合わせの一次受け</li>
+            <li>請求と料金の回収</li>
+            <li>配信停止依頼・苦情の受付</li>
+            <li>送信者として表示する名義</li>
+            <li>お客様との契約の当事者</li>
+            <li>貴社の名称やロゴでの表示</li>
+            <li>お客様向け販促物の提供範囲</li>
+          </ul></div>
+      </div>
+    </div>
+    <div class="s-foot"><span><svg aria-hidden="true"><use href="#mark"/></svg>LIST MASTER</span><span>要確認の8行は、個別説明のあと書面で回答</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>OEMの話で一番大事なのが、この表です。弊社が持つのは毎朝の仕組みと、宛先確認や配信停止の機能、紹介URLとクーポンの仕組み。貴社にお願いするのは、自社のお客様への提案と販売、紹介URLのご案内です。</p>
+    <p>右の8行は、まだ担当が決まっていません。メールの配信停止リンクと、送りたくない相手を登録するNGリストはありますが、停止依頼や苦情を誰が受けるかは未定です。決まったように話さず、書面でお答えするとお伝えください。</p>
+  </aside>
+</section>
+
+<!-- 08 収益の形 -->
+<section class="slide-wrap" id="s08" aria-labelledby="t08">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">08 / 13</span><span class="s-kicker">収益の形</span></div>
+    <div class="s-body">
+      <h2 id="t08">直販の価格は公開、<br>卸値は調整中です。</h2>
+      <div class="g2">
+        <div class="pcard">
+          <span class="label">直販の公開価格（スタンダードプラン）</span>
+          <div class="pmain"><b>30,000</b><span>円／月</span></div>
+          <ul class="prows">
+            <li><span>初期費用</span><b class="num">500,000円</b></li>
+            <li><span>契約期間</span><b>12か月</b></li>
+            <li><span>従量課金</span><b>なし</b></li>
+            <li><span>税の扱い</span><b><span class="tbd">【要確認】</span></b></li>
+          </ul>
+        </div>
+        <div>
+          <ul class="mech">
+            <li><b>紹介URLごとに料金を設定できる</b><span>販売会社ごとに紹介URLを発行。貴社が設定できる範囲は<span class="tbd">【要確認】</span></span></li>
+            <li><b>代理店ごとのクーポンを発行できる</b><span>値引きできるのは初期費用だけ。月額は対象外です</span></li>
+          </ul>
+          <ul class="mech open-list">
+            <li><b>卸値</b><span class="tbd">【調整中：卸値】</span></li>
+            <li><b>推奨売価</b><span class="tbd">【調整中：推奨売価】</span></li>
+            <li><b>初期費用の分け方</b><span class="tbd">【調整中】</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="s-foot"><span><svg aria-hidden="true"><use href="#mark"/></svg>LIST MASTER</span><span>直販の料金は申込ページ list.elliot-tech.jp/lp に掲載</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>直販の価格は公開しています。初期費用500,000円、月額30,000円、契約期間12か月で、従量課金はありません。税込か税抜かは確認中です。</p>
+    <p>貴社のお客様もこの価格を調べられる、という前提で売価を組んでいただく必要があります。卸値、推奨売価、初期費用の分け方は調整中のため、書面でお出しします。</p>
+  </aside>
+</section>
+
+<!-- 09 先行パートナー -->
+<section class="slide-wrap" id="s09" aria-labelledby="t09">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">09 / 13</span><span class="s-kicker">導入実績</span></div>
+    <div class="s-body">
+      <h2 id="t09">社名を出せる外部事例は、<br>まだありません。</h2>
+      <p>リストマスターは、弊社の営業部門で日々の新規開拓に使っています（社内利用が中心）。公表できる反応率やアポ率の実績値も、まだありません。代わりにお見せできるのは、次の3つです。</p>
+      <div class="g3">
+        <div class="box"><span class="k">01</span><p>毎朝の手順と、実績を報告するメール</p></div>
+        <div class="box"><span class="k">02</span><p>送る前と後の仕組み（宛先確認・配信停止リンク・NGリスト）</p></div>
+        <div class="box"><span class="k">03</span><p>決まっていない行も含めた分担の表</p></div>
+      </div>
+    </div>
+    <div class="s-foot"><span><svg aria-hidden="true"><use href="#mark"/></svg>LIST MASTER</span><span>事例ができたら、この1枚を差し替え</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>ここは正直にお伝えします。リストマスターは弊社の営業部門で日々運用していますが、社名を出してご紹介できる外部の導入事例は、まだありません。</p>
+    <p>そのかわり、毎朝の動きと送る前後の仕組み、分担の表はすべてお見せできます。事例がないことを隠して話を進めるより、このほうが後で揉めない、というのが弊社の考えです。</p>
+  </aside>
+</section>
+
+<!-- 10 約束しないこと・売らないでほしい相手 -->
+<section class="slide-wrap" id="s10" aria-labelledby="t10">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">10 / 13</span><span class="s-kicker">約束しないこと</span></div>
+    <div class="s-body">
+      <h2 id="t10">反応数は約束しません。<br>売らない相手もいます。</h2>
+      <div class="g2">
+        <div class="col">
+          <div class="col-head"><h3>約束しないこと</h3></div>
+          <ul class="nglist">
+            <li><b>反応数・アポ数・売上</b><span>約束できるのは、毎朝リストを作り初回を送るところまで</span></li>
+            <li><b>1日の件数</b><span>件数は条件と設定で変わります</span></li>
+            <li><b>「法令に対応済みだから安心」</b><span>言えるのは、送信者表示と配信停止の仕組みがあること</span></li>
+            <li><b>精度100%のリスト</b><span>会って確かめるのは人の仕事</span></li>
+          </ul>
+        </div>
+        <div class="col open">
+          <div class="col-head"><h3>売らないでほしいお客様</h3></div>
+          <ul class="nglist">
+            <li><b>数週間で成果を求めている</b><span>月額で続けて、当てる先をずらしていく道具です</span></li>
+            <li><b>商圏に当てる先の会社がほとんどない</b><span>条件を狭めると、探す先が残りません</span></li>
+            <li><b>個人向けの商材を売っている</b><span>当てる先は法人です</span></li>
+            <li><b>返信が来ても対応する人がいない</b><span>初回の連絡のあとは、人が話を進めます</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="s-foot"><span><svg aria-hidden="true"><use href="#mark"/></svg>LIST MASTER</span><span>向かない先に売ると、解約と不信が残る</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>このスライドは、必ずお伝えしている内容です。反応数やアポ数、1日の件数は約束しません。件数は条件と設定しだいで変わるためです。</p>
+    <p>右の4つに当たるお客様には、売らないでください。向かない先に売ると、成果が出ないまま解約になり、傷がつくのは貴社とお客様の関係のほうです。</p>
+  </aside>
+  <div class="fc-row"><button class="fc-btn" type="button" data-fc-section="約束しないこと" data-fc-claim="営業メールには送信者の名称と連絡先を表示し、配信停止の受付先を入れる／配信停止を依頼した相手とNGリストの相手には送らない／反応数・アポ数・売上を約束して営業リスト作成サービスを売ることは避けるべき"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="m8.5 11 1.8 1.8L14 9"/></svg>ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button></div>
+</section>
+
+<!-- 11 つばめリードとの違い -->
+<section class="slide-wrap" id="s11" aria-labelledby="t11">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">11 / 13</span><span class="s-kicker">つばめリードとの違い</span></div>
+    <div class="s-body">
+      <h2 id="t11">月額で回すリストマスター、<br>1通5円のつばめリード。</h2>
+      <div class="pair">
+        <div class="prod us">
+          <h3>リストマスター</h3>
+          <dl>
+            <dt>やること</dt><dd>毎朝のリスト作成と、メールかFAXでの初回の連絡</dd>
+            <dt>費用の形</dt><dd>月額（直販は初期費用＋月額30,000円）</dd>
+            <dt>向くお客様</dt><dd>当てる先を狭く決めて、毎日途切れずに当て続けたい</dd>
+          </dl>
+        </div>
+        <div class="prod">
+          <h3>つばめリード</h3>
+          <dl>
+            <dt>やること</dt><dd>企業の問い合わせフォームから提案文を送る</dd>
+            <dt>費用の形</dt><dd>従量課金（直販は成功送信1通5円）</dd>
+            <dt>向くお客様</dt><dd>問い合わせフォームから、成功送信の数だけ払う形で当てたい</dd>
+          </dl>
+        </div>
+      </div>
+      <p class="link-row"><a href="https://writeup-inc.github.io/saas/tsubame-lead-pack/b01/" target="_blank" rel="noopener">つばめリードのOEM提供のご案内 ↗</a></p>
+    </div>
+    <div class="s-foot"><span><svg aria-hidden="true"><use href="#mark"/></svg>LIST MASTER</span><span>どちらも取り扱い可能。お客様の営業のやり方で勧め分け</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>弊社には、新規開拓の最初の接点をつくる商材が2つあります。リストマスターは月額でリストを作り、メールかFAXで初回の連絡を送ります。つばめリードは問い合わせフォームから送り、成功送信1通5円の従量課金です。</p>
+    <p>どちらも取り扱えますので、お客様の営業のやり方に合わせて勧め分けてください。</p>
+  </aside>
+</section>
+
+<!-- 12 取扱条件 -->
+<section class="slide-wrap" id="s12" aria-labelledby="t12">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">12 / 13</span><span class="s-kicker">取扱条件</span></div>
+    <div class="s-body">
+      <h2 id="t12">取扱条件は、<br>書面で個別にお答えします。</h2>
+      <ul class="chips">
+        <li>卸値・取り分<small>【調整中】</small></li>
+        <li>推奨売価<small>【調整中】</small></li>
+        <li>初期費用の分け方<small>【調整中】</small></li>
+        <li>ブランド表記<small>【要確認】</small></li>
+        <li>送信者の表示名義<small>【要確認】</small></li>
+        <li>契約の当事者<small>【要確認】</small></li>
+        <li>一次受け・請求<small>【要確認】</small></li>
+        <li>最低契約・解約<small>【要確認】</small></li>
+        <li>地域・業種の排他<small>【要確認】</small></li>
+        <li>FAXの費用と上限<small>【要確認】</small></li>
+        <li>送信上限の単位<small>【要確認】</small></li>
+        <li>運用チームの伴走範囲<small>【要確認】</small></li>
+      </ul>
+      <p>書面と契約書の内容が、この資料より優先です。</p>
+    </div>
+    <div class="s-foot"><span><svg aria-hidden="true"><use href="#mark"/></svg>LIST MASTER</span><span>OEMの最低契約・解約は、書面でお答えします</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>取扱条件は、ここに並べた12項目がまだ確定していません。口頭で仮の数字を言うことはせず、個別説明のあと書面でお答えします。</p>
+    <p>書面と契約書の内容が、この資料より優先されるという点も、あわせてお伝えください。</p>
+  </aside>
+  <div class="fc-row"><button class="fc-btn" type="button" data-fc-section="取扱条件" data-fc-claim="OEM・再販契約の前に、卸値・推奨売価、初期費用の分け方、ブランド表記、送信者の名義、契約の当事者、問い合わせの一次受けと請求、最低契約期間と解約、地域・業種の排他、送信上限を確かめるべき"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="m8.5 11 1.8 1.8L14 9"/></svg>ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button></div>
+</section>
+
+<!-- 13 次の一歩 -->
+<section class="slide-wrap" id="s13" aria-labelledby="t13">
+  <div class="slide dark">
+    <div class="s-top"><span class="s-no">13 / 13</span><span class="s-kicker">次の一歩</span></div>
+    <div class="s-body">
+      <h2 id="t13">まず、貴社のお客様で<br>向く会社を数えます。</h2>
+      <ol class="next3">
+        <li><b>向くお客様を数える</b><span>条件を狭く言えて、返信に対応できるお客様</span></li>
+        <li><b>条件を書面で受け取る</b><span>要確認・調整中の項目への回答</span></li>
+        <li><b>取り扱うかを決める</b><span>見送るという結論も含めて</span></li>
+      </ol>
+      <a class="btn" href="mailto:info@writeup.co.jp?subject=%E3%83%AA%E3%82%B9%E3%83%88%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC%20OEM%E6%9D%A1%E4%BB%B6%E3%81%AE%E6%9B%B8%E9%9D%A2%E4%BE%9D%E9%A0%BC">条件の書面を依頼する</a>
+    </div>
+    <div class="s-foot"><span><svg aria-hidden="true"><use href="#mark"/></svg>LIST MASTER</span><span>info@writeup.co.jp ／ 03-5784-6706</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>次の一歩は、貴社のお客様の中で、条件を狭く言えて返信に対応できる会社がどれくらいあるかを数えることです。条件の書面は、そのあとでお受け取りいただいて間に合います。</p>
+    <p>数えてみて向くお客様が少なければ、いまは取り扱わない、という判断でかまいません。本日はありがとうございました。</p>
+  </aside>
+</section>
+
+</main>
+
+<footer class="deck-foot">
+  <p>提供：株式会社ライトアップ（東証グロース 6580）</p>
+  <a href="mailto:info@writeup.co.jp">info@writeup.co.jp</a><a href="tel:0357846706">03-5784-6706</a><a href="../">資料インデックス</a><a href="https://www.writeup.co.jp/company/" target="_blank" rel="noopener">会社概要</a><a href="https://www.writeup.co.jp/privacy/" target="_blank" rel="noopener">個人情報保護方針</a>
+</footer>
+
+<nav class="bar" aria-label="スライド操作">
+  <div class="bar-in">
+    <div class="bar-grp">
+      <button type="button" id="prev" aria-label="前のスライド">←</button>
+      <span class="count" id="count" aria-live="polite">1 / 13</span>
+      <button type="button" id="next" aria-label="次のスライド">→</button>
+      <span class="hint">←→キー・クリックで送る／Nでノート</span>
+    </div>
+    <div class="bar-grp">
+      <button type="button" id="notes" aria-pressed="true">ノートを隠す</button>
+      <button type="button" id="print">印刷</button>
+    </div>
+  </div>
+</nav>
+
+<script>
+(function () {
+  var wraps = Array.prototype.slice.call(document.querySelectorAll('.slide-wrap'));
+  var count = document.getElementById('count');
+  var cur = 0;
+  function nearest() {
+    var best = 0, bestD = Infinity;
+    wraps.forEach(function (w, i) {
+      var d = Math.abs(w.getBoundingClientRect().top - 12);
+      if (d < bestD) { bestD = d; best = i; }
+    });
+    return best;
+  }
+  function show() { count.textContent = (cur + 1) + ' / ' + wraps.length; }
+  function go(i) {
+    cur = Math.max(0, Math.min(wraps.length - 1, i));
+    wraps[cur].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    show();
+  }
+  window.addEventListener('scroll', function () { cur = nearest(); show(); }, { passive: true });
+  document.getElementById('prev').addEventListener('click', function () { go(nearest() - 1); });
+  document.getElementById('next').addEventListener('click', function () { go(nearest() + 1); });
+  wraps.forEach(function (w, i) {
+    w.querySelector('.slide').addEventListener('click', function (e) {
+      if (e.target.closest('a,button')) return;
+      if (window.getSelection && String(window.getSelection())) return;
+      go(i + 1);
+    });
+  });
+  var nb = document.getElementById('notes');
+  function setNotes(hide) {
+    document.body.classList.toggle('hide-notes', hide);
+    nb.textContent = hide ? 'ノートを表示' : 'ノートを隠す';
+    nb.setAttribute('aria-pressed', hide ? 'false' : 'true');
+    try { localStorage.setItem('listmaster-b03-hide-notes', hide ? '1' : '0'); } catch (e) {}
+  }
+  try { if (localStorage.getItem('listmaster-b03-hide-notes') === '1') setNotes(true); } catch (e) {}
+  nb.addEventListener('click', function () { setNotes(!document.body.classList.contains('hide-notes')); });
+  document.getElementById('print').addEventListener('click', function () { window.print(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.target.closest && e.target.closest('input,textarea,select')) return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    var k = e.key;
+    if (k === 'ArrowRight' || k === 'PageDown') { e.preventDefault(); go(nearest() + 1); }
+    else if (k === 'ArrowLeft' || k === 'PageUp') { e.preventDefault(); go(nearest() - 1); }
+    else if (k === 'Home') { e.preventDefault(); go(0); }
+    else if (k === 'End') { e.preventDefault(); go(wraps.length - 1); }
+    else if (k === 'n' || k === 'N') { setNotes(!document.body.classList.contains('hide-notes')); }
+  });
+  show();
+})();
+</script>
+<script>
+document.addEventListener('click', function (e) {
+  var b = e.target.closest && e.target.closest('.fc-btn'); if (!b) return;
+  var l = document.querySelector('link[rel=canonical]'); var url = l ? l.href : location.href;
+  var p = '次のLPの記載が事実として正しいか、第三者の立場で確認してください。\n\n【対象ページ】' + url +
+    '\n【セクション】' + b.dataset.fcSection + '\n【記載内容】\n' + b.dataset.fcClaim.split('／').join('\n') +
+    '\n\n【確認してほしいこと】\n- 記載は一般的な事実・相場・公的情報と照らして正しいか\n- 誤り・誇張・古い情報があれば指摘する\n- 反対の見方や、読み手が注意すべき点\n- 確認できないことは「確認できない」と書き、推測で補わない';
+  window.open('https://chatgpt.com/?q=' + encodeURIComponent(p), '_blank', 'noopener,noreferrer');
+  if (navigator.clipboard) navigator.clipboard.writeText(p).catch(function () {});
+});
+</script>
+</body>
+</html>

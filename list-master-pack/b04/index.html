@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>リストマスター｜パートナー向け説明ノート（社内限）</title>
+<link rel="canonical" href="https://writeup-inc.github.io/saas/list-master-pack/b04/">
+<meta name="description" content="社内限定。リストマスターをOEMパートナー候補へ説明するとき、パートナーの営業が自社のお客様へ説明するときの言い回し、価格の伝え方、切り返し、言ってはいけない言い方、未決事項をまとめたノートです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+/* lp-base.css — 日本語LP／HTML成果物の初期CSS
+ * 「改行制御」「最小文字サイズ」「固定CTAの逃げ」の3ブロックは消さないこと。 */
+
+/* ── 改行制御 ───────────────────────────────────────────── */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] {
+    word-break: normal;
+  }
+}
+.nobr { white-space: nowrap; }
+
+/* ── 最小文字サイズ ─────────────────────────────────────── */
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+
+/* ── ファーストビューの見出し ───────────────────────────── */
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+
+/* ── 固定CTAの逃げ ──────────────────────────────────────── */
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+
+/* ── 横はみ出しの予防 ───────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+
+/* ── コンテンツ幅 ───────────────────────────────────────── */
+:root { --lp-max: 1200px; }
+
+/* ===== トークン（B-01と共通） ===== */
+:root {
+  --ink: #16213a;
+  --ink-2: #3c4760;
+  --mute: #5f6880;
+  --line: #dfe3ec;
+  --bg: #ffffff;
+  --bg-2: #f4f6fa;
+  --navy: #14254a;
+  --navy-2: #1d3566;
+  --on-navy: #ffffff;
+  --on-navy-2: #c6d0e6;
+  --accent: #0e7a5a;
+  --accent-soft: #e3f2ec;
+  --ng: #b42318;
+  --ng-soft: #fdecea;
+  --card: #ffffff;
+  --shadow: 0 1px 2px rgba(20,37,74,.06), 0 8px 28px rgba(20,37,74,.07);
+  --radius: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #eef1f7; --ink-2: #c9d0de; --mute: #9ea7ba; --line: #2c3650;
+    --bg: #0e1526; --bg-2: #131c31; --card: #172139;
+    --navy: #0a1122; --navy-2: #16223d; --on-navy-2: #aab6d0;
+    --accent: #3fcf9b; --accent-soft: #15352b;
+    --ng: #ff8a80; --ng-soft: #3a1b1b;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"] {
+  --ink: #eef1f7; --ink-2: #c9d0de; --mute: #9ea7ba; --line: #2c3650;
+  --bg: #0e1526; --bg-2: #131c31; --card: #172139;
+  --navy: #0a1122; --navy-2: #16223d; --on-navy-2: #aab6d0;
+  --accent: #3fcf9b; --accent-soft: #15352b;
+  --ng: #ff8a80; --ng-soft: #3a1b1b;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.35);
+}
+
+/* ===== 基本 ===== */
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: "Noto Sans JP", system-ui, -apple-system, "Hiragino Sans", sans-serif;
+  -webkit-font-smoothing: antialiased; font-feature-settings: "palt";
+  font-size: 16.5px;
+}
+a { color: inherit; }
+p { margin: 0 0 1em; }
+.num { font-family: "Inter", "Noto Sans JP", sans-serif; font-feature-settings: "tnum"; letter-spacing: -.01em; }
+.wrap { max-width: 1248px; margin: 0 auto; padding: 0 24px; }
+@media (max-width: 600px) { .wrap { padding: 0 16px; } }
+
+/* ===== 社内限の帯（最上部） ===== */
+.confidential {
+  background: #fef3f2; color: #b42318; border-bottom: 2px solid #b42318;
+  font-size: 15px; font-weight: 700; line-height: 1.6; text-align: center;
+  padding: 10px 16px; letter-spacing: .02em;
+}
+.confidential .ib { display: inline-block; }
+
+/* ===== ヘッダー ===== */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  backdrop-filter: saturate(1.4) blur(10px); -webkit-backdrop-filter: saturate(1.4) blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.brand svg { width: 30px; height: 30px; flex: none; color: var(--ink); }
+.brand-name { font-weight: 900; font-size: 1.05rem; letter-spacing: .06em; white-space: nowrap; }
+.brand-sub { display: block; font: 700 12px/1 "Inter", "Noto Sans JP", sans-serif; letter-spacing: .12em; color: var(--mute); margin-top: 4px; white-space: nowrap; }
+.pill-ng {
+  flex: none; font-size: 13px; font-weight: 700; color: #b42318; background: #fef3f2;
+  border: 1.5px solid #b42318; border-radius: 999px; padding: 4px 12px; white-space: nowrap;
+}
+
+/* ===== レイアウト：左に目次、右にノート ===== */
+.layout { display: grid; grid-template-columns: 220px minmax(0, 760px); grid-template-areas: "toc head" "toc main"; column-gap: 56px; justify-content: center; padding-top: 48px; }
+.toc { grid-area: toc; } .doc-head { grid-area: head; } .layout > main { grid-area: main; min-width: 0; }
+@media (max-width: 1099px) { .layout { grid-template-columns: minmax(0, 760px); grid-template-areas: "head" "toc" "main"; column-gap: 0; padding-top: 32px; } }
+.toc { position: sticky; top: 84px; align-self: start; max-height: calc(100vh - 100px); overflow: auto; }
+.toc-title { font: 700 12px/1 "Inter", sans-serif; letter-spacing: .16em; color: var(--mute); margin: 0 0 10px; }
+.toc ol { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); }
+.toc a {
+  display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 4px 0 4px 14px; margin-left: -2px;
+  border-left: 2px solid transparent; text-decoration: none; font-size: .9rem; color: var(--ink-2); line-height: 1.4;
+}
+.toc a:hover { color: var(--accent); border-left-color: var(--accent); }
+.toc a b { font: 800 12px/1 "Inter", sans-serif; color: var(--accent); min-width: 18px; }
+@media (max-width: 1099px) {
+  .toc { position: static; max-height: none; overflow: visible; margin: 28px 0 8px; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 18px 10px; }
+  .toc ol { border-left: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+  .toc a { padding-left: 0; margin-left: 0; border-left: 0; border-bottom: 1px dashed var(--line); }
+}
+@media (max-width: 520px) { .toc ol { grid-template-columns: 1fr; } }
+
+/* ===== ノート本体 ===== */
+.doc-head { padding: 0 0 36px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font: 700 12px/1.4 "Inter", "Noto Sans JP", sans-serif; letter-spacing: .14em; color: var(--accent);
+  margin: 0 0 14px;
+}
+.eyebrow::before { content: ""; width: 22px; height: 2px; background: currentColor; flex: none; }
+.doc-head h1 { margin: 0 0 18px; font-weight: 900; letter-spacing: .01em; font-size: clamp(1.55rem, 4.2vw, 2.6rem); }
+.doc-meta { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: .88rem; color: var(--mute); margin: 0 0 22px; }
+.doc-intro { color: var(--ink-2); font-size: 1.02rem; }
+
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: var(--radius); margin: 26px 0 0; overflow: hidden; background: var(--card); }
+.fact { padding: 16px 16px 14px; border-right: 1px solid var(--line); }
+.fact:last-child { border-right: 0; }
+.fact b { display: block; font-size: 1.45rem; line-height: 1.2; font-weight: 800; }
+.fact b small { font-size: .85rem; font-weight: 700; margin-left: 2px; }
+.fact span { display: block; margin-top: 4px; font-size: .84rem; color: var(--ink-2); line-height: 1.5; }
+@media (max-width: 640px) {
+  .facts { grid-template-columns: 1fr 1fr; }
+  .fact:nth-child(2) { border-right: 0; }
+  .fact:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+}
+.facts-note { margin: 10px 0 0; color: var(--mute); font-size: .86rem; }
+
+main section { padding: 56px 0 8px; border-bottom: 1px solid var(--line); }
+main section:last-of-type { border-bottom: 0; }
+main h2 { margin: 0 0 14px; font-weight: 900; letter-spacing: .01em; font-size: clamp(1.3rem, 2.8vw, 1.75rem); }
+main h3 { margin: 34px 0 10px; font-size: 1.12rem; line-height: 1.5; font-weight: 700; }
+.sec-lead { color: var(--ink-2); margin-bottom: 26px; }
+.muted { color: var(--mute); font-size: .9rem; }
+
+.tbd {
+  display: inline-block; font-weight: 700; color: var(--accent);
+  background: var(--accent-soft); border-radius: 6px; padding: 0 6px; font-size: .92em; line-height: 1.7;
+}
+
+/* 使い方の箇条 */
+.rules { list-style: none; margin: 0; padding: 0; }
+.rules li { position: relative; padding: 12px 0 12px 26px; border-bottom: 1px dashed var(--line); color: var(--ink-2); }
+.rules li:last-child { border-bottom: 0; }
+.rules li::before { content: ""; position: absolute; left: 6px; top: 24px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.rules strong { color: var(--ink); }
+
+/* 話す言葉のボックス */
+.say {
+  position: relative; margin: 12px 0 18px; padding: 22px 22px 20px;
+  background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0; box-shadow: var(--shadow);
+  font-size: 1.04rem; line-height: 1.95; color: var(--ink);
+}
+.say p:last-child { margin-bottom: 0; }
+.say-label { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .08em; color: var(--accent); background: var(--accent-soft); border-radius: 4px; padding: 2px 8px; margin: 0 0 10px; }
+.say.to-customer { border-left-color: var(--navy-2); }
+.say.to-customer .say-label { color: var(--on-navy); background: var(--navy-2); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .say.to-customer { border-left-color: #8fa6dc; } }
+:root[data-theme="dark"] .say.to-customer { border-left-color: #8fa6dc; }
+@media (max-width: 600px) { .say { padding: 18px 16px 16px; } }
+
+/* 拍（3分版の区切り） */
+.beats { list-style: none; margin: 12px 0 18px; padding: 0; }
+.beats > li { display: grid; grid-template-columns: 76px 1fr; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.beats > li:first-child { padding-top: 4px; }
+.beats > li:last-child { border-bottom: 0; }
+.beat-t { font: 800 .86rem/1.5 "Inter", "Noto Sans JP", sans-serif; color: var(--accent); padding-top: 3px; }
+.beat-t small { display: block; font-size: 12px; font-weight: 700; color: var(--mute); font-family: "Noto Sans JP", sans-serif; }
+.beat-b > strong { display: block; margin-bottom: 4px; }
+.beat-b p { margin: 0; color: var(--ink-2); }
+.beat-b .q { color: var(--ink); }
+@media (max-width: 520px) { .beats > li { grid-template-columns: 1fr; gap: 4px; } }
+
+/* 表（汎用） */
+.tbl-wrap { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--card); margin: 12px 0 18px; }
+.tbl { width: 100%; border-collapse: collapse; font-size: .94rem; }
+.tbl th, .tbl td { padding: 13px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.tbl tbody tr:last-child th, .tbl tbody tr:last-child td { border-bottom: 0; }
+.tbl thead th { font-size: .8rem; color: var(--mute); font-weight: 700; background: var(--bg-2); white-space: nowrap; }
+.tbl tbody th { font-weight: 700; }
+.tbl td { color: var(--ink-2); }
+.tbl .t-time { white-space: nowrap; font-family: "Inter", "Noto Sans JP", sans-serif; font-weight: 700; color: var(--accent); }
+@media (max-width: 640px) {
+  .tbl thead { display: none; }
+  .tbl, .tbl tbody, .tbl tr, .tbl th, .tbl td { display: block; width: 100%; }
+  .tbl tr { padding: 14px 16px; border-bottom: 1px solid var(--line); }
+  .tbl tbody tr:last-child { border-bottom: 0; }
+  .tbl th, .tbl td { border: 0; padding: 3px 0; }
+  .tbl td[data-l]::before { content: attr(data-l); display: block; color: var(--mute); font-size: .8rem; font-weight: 700; margin-top: 6px; }
+}
+
+/* 切り出しカード */
+.opener { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 22px 18px; margin: 14px 0; }
+.opener h3 { margin: 0 0 4px; }
+.opener .when { color: var(--mute); font-size: .88rem; margin: 0 0 12px; }
+.opener dl { margin: 0; }
+.opener dt { font-size: .82rem; font-weight: 700; color: var(--accent); margin-top: 12px; }
+.opener dd { margin: 2px 0 0; color: var(--ink-2); }
+.opener dd.q { color: var(--ink); font-weight: 500; }
+.opener dd.warn { color: var(--ng); }
+@media (max-width: 600px) { .opener { padding: 18px 16px 14px; } }
+
+/* 価格 */
+.price-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 8px; }
+@media (max-width: 700px) { .price-2 { grid-template-columns: 1fr; } }
+.pbox { border-radius: var(--radius); padding: 22px 20px; }
+.pbox.ok { background: var(--navy); color: var(--on-navy); }
+.pbox.wait { background: var(--card); border: 1.5px dashed var(--line); }
+.pbox-t { font-size: .86rem; font-weight: 700; margin: 0 0 10px; }
+.pbox.ok .pbox-t { color: var(--on-navy-2); }
+.pbox.wait .pbox-t { color: var(--mute); }
+.pbox ul { list-style: none; margin: 0; padding: 0; }
+.pbox li { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.pbox.ok li { border-bottom-color: rgba(255,255,255,.16); }
+.pbox li:last-child { border-bottom: 0; }
+.pbox li span { color: var(--ink-2); }
+.pbox.ok li span { color: var(--on-navy-2); }
+.pbox li b { text-align: right; }
+.pbox .foot { margin: 12px 0 0; font-size: .86rem; }
+.pbox.ok .foot { color: var(--on-navy-2); }
+.pbox.wait .foot { color: var(--ink-2); }
+
+/* 切り返し */
+.qa { list-style: none; margin: 8px 0 0; padding: 0; counter-reset: qa; }
+.qa > li { counter-increment: qa; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px 18px; margin: 0 0 14px; }
+.qa-meta { display: flex; align-items: center; gap: 10px; margin: 0 0 4px; }
+.qa-meta::before { content: counter(qa, decimal-leading-zero); font: 800 .95rem/1 "Inter", sans-serif; color: var(--accent); }
+.who { font-size: 12px; font-weight: 700; border-radius: 999px; padding: 2px 10px; border: 1px solid var(--line); color: var(--ink-2); }
+.qa h3 { margin: 0 0 10px; }
+.qa .ans { margin: 0; color: var(--ink); line-height: 1.9; }
+.qa .ans2 { margin: 10px 0 0; padding: 10px 0 0; border-top: 1px dashed var(--line); color: var(--ink-2); font-size: .95rem; }
+.qa .ans2 b { color: var(--ink); }
+@media (max-width: 600px) { .qa > li { padding: 18px 16px 16px; } }
+
+/* NG表 */
+.ng-list { list-style: none; margin: 12px 0 0; padding: 0; }
+.ng-list li { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin: 0 0 12px; background: var(--card); }
+.ng-list .bad, .ng-list .good { padding: 14px 16px; }
+.ng-list .bad { background: var(--ng-soft); color: var(--ink); }
+.ng-list .bad::before, .ng-list .good::before { display: block; font-size: 12px; font-weight: 700; margin-bottom: 4px; }
+.ng-list .bad::before { content: "言わない"; color: var(--ng); }
+.ng-list .good::before { content: "こう言う"; color: var(--accent); }
+.ng-list .good { color: var(--ink-2); border-left: 1px solid var(--line); }
+@media (max-width: 600px) {
+  .ng-list li { grid-template-columns: 1fr; }
+  .ng-list .good { border-left: 0; border-top: 1px solid var(--line); }
+}
+
+/* 売らない相手・3点 */
+.stop { list-style: none; margin: 10px 0 0; padding: 0; }
+.stop li { padding: 14px 0 14px 30px; border-bottom: 1px solid var(--line); position: relative; }
+.stop li:last-child { border-bottom: 0; }
+.stop li::before { content: "×"; position: absolute; left: 4px; top: 13px; font-weight: 800; color: var(--ng); }
+.stop strong { display: block; }
+.stop span { color: var(--ink-2); font-size: .95rem; }
+.checks3 { list-style: none; margin: 10px 0 0; padding: 0; counter-reset: c3; }
+.checks3 li { counter-increment: c3; display: grid; grid-template-columns: 40px 1fr; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.checks3 li:last-child { border-bottom: 0; }
+.checks3 li::before { content: "0" counter(c3); font: 800 1.05rem/1.6 "Inter", sans-serif; color: var(--accent); }
+.checks3 strong { display: block; }
+.checks3 p { margin: 2px 0 0; color: var(--ink-2); font-size: .95rem; }
+.checks3 .ask { color: var(--ink); }
+
+/* 流れ */
+.steps { list-style: none; margin: 12px 0 18px; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.steps li { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 12px 10px; }
+.steps b { display: block; font: 800 12px/1 "Inter", sans-serif; letter-spacing: .12em; color: var(--accent); margin-bottom: 6px; }
+.steps strong { display: block; font-size: .95rem; line-height: 1.45; }
+.steps span { display: block; font-size: .82rem; color: var(--mute); margin-top: 4px; line-height: 1.5; }
+@media (max-width: 760px) { .steps { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 420px) { .steps { grid-template-columns: 1fr; } }
+
+/* 状態チップ */
+.st { display: inline-block; font-size: .8rem; font-weight: 700; border-radius: 999px; padding: 2px 10px; white-space: nowrap; color: var(--accent); background: var(--accent-soft); }
+.st.adj { color: var(--ink-2); background: var(--bg-2); border: 1px solid var(--line); }
+
+/* ボタン */
+.btn-row { display: flex; flex-wrap: wrap; gap: 10px 12px; margin: 16px 0 0; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; padding: 0 22px; border-radius: 999px;
+  background: var(--accent); color: #fff; text-decoration: none; font-weight: 700; font-size: .95rem;
+}
+.btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn:not(.btn-ghost) { color: #06231a; } }
+:root[data-theme="dark"] .btn:not(.btn-ghost) { color: #06231a; }
+
+/* フッター */
+footer { margin-top: 64px; background: var(--bg-2); border-top: 1px solid var(--line); padding: 40px 0 36px; font-size: .92rem; color: var(--ink-2); }
+.foot-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; }
+@media (max-width: 760px) { .foot-grid { grid-template-columns: 1fr; } }
+footer h4 { margin: 0 0 8px; font: 700 12px/1 "Inter", sans-serif; letter-spacing: .16em; color: var(--mute); }
+footer ul { list-style: none; margin: 0; padding: 0; }
+footer li a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
+footer li a:hover { color: var(--accent); }
+.foot-warn { color: #b42318; font-weight: 700; margin: 0 0 10px; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .foot-warn { color: #ff8a80; } }
+:root[data-theme="dark"] .foot-warn { color: #ff8a80; }
+.copyright { margin-top: 24px; font-size: 12px; color: var(--mute); }
+
+@media print {
+  .site-header, .toc { display: none; }
+  .layout { display: block; }
+  .say, .qa > li, .opener { box-shadow: none; break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<div class="confidential" role="note"><span class="ib">社内限定です。</span><span class="ib">お客様へURLを送らないでください</span></div>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="brand">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="3" y="5" width="26" height="22" rx="4" stroke="currentColor" stroke-width="2"/><path d="M9 12h14M9 17h14M9 22h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="22" r="2.4" fill="#0e7a5a"/></svg>
+      <div>
+        <span class="brand-name">リストマスター</span>
+        <span class="brand-sub">B-04 説明ノート</span>
+      </div>
+    </div>
+    <span class="pill-ng">社内限</span>
+  </div>
+</header>
+
+<div class="wrap layout">
+
+  <nav class="toc" aria-label="目次">
+    <p class="toc-title">CONTENTS</p>
+    <ol>
+      <li><a href="#use"><b>00</b>使い方</a></li>
+      <li><a href="#pitch"><b>01</b>パートナー候補に話す</a></li>
+      <li><a href="#mago"><b>02</b>お客様に話す（孫トーク）</a></li>
+      <li><a href="#price"><b>03</b>価格の伝え方</a></li>
+      <li><a href="#qa"><b>04</b>切り返し10本</a></li>
+      <li><a href="#ng"><b>05</b>言ってはいけない</a></li>
+      <li><a href="#stop"><b>06</b>売らない相手</a></li>
+      <li><a href="#close"><b>07</b>締めと次回アポ</a></li>
+      <li><a href="#open"><b>08</b>未決事項</a></li>
+    </ol>
+  </nav>
+
+  <header class="doc-head">
+      <p class="eyebrow">B-04 PARTNER NOTE｜社内限</p>
+      <h1>リストマスター<br>説明ノート</h1>
+      <p class="doc-meta"><span>更新 <span class="num">2026-09-25</span></span><span>読み手：弊社の営業担当／OEMパートナーの営業担当</span></p>
+      <p class="doc-intro">営業リスト自動生成AI「リストマスター」を、誰が話しても同じ中身で説明するためのノート。前半はパートナー候補へ弊社が話す言葉、後半はパートナーの営業が自社のお客様へ話す言葉です。</p>
+      <div class="facts">
+        <div class="fact"><b class="num">9:00</b><span>毎朝、自動で起動</span></div>
+        <div class="fact"><b class="num">500,000<small>円</small></b><span>直販の初期費用</span></div>
+        <div class="fact"><b class="num">30,000<small>円</small></b><span>直販の月額</span></div>
+        <div class="fact"><b class="num">12<small>か月</small></b><span>直販の契約期間</span></div>
+      </div>
+      <p class="facts-note">直販の公開価格（申込ページ list.elliot-tech.jp/lp に掲載）。従量課金なし。税込か税抜かは<span class="tbd">【要確認】</span>。</p>
+  </header>
+
+  <main>
+
+    <!-- 00 -->
+    <section id="use" aria-labelledby="h-use">
+      <p class="eyebrow">00 HOW TO USE</p>
+      <h2 id="h-use">このノートの使い方</h2>
+      <ul class="rules">
+        <li><strong>数字は、このノートにあるものだけ。</strong>件数・反応数・社名・卸値は、聞かれても作らない。</li>
+        <li><strong>【調整中】【要確認】は、その場で埋めない。</strong>「確認して書面でお答えします」と言い切る。あいまいに濁すより信用される。</li>
+        <li><strong>02の孫トークでは「OEM」「卸値」「粗利」を使わない。</strong>お客様にとっては関係のない言葉で、不信のもとになる。</li>
+        <li><strong>このノートは、弊社の営業と、取り扱いが決まったOEMパートナーの営業だけが読む。</strong>検討中の候補とお客様には送らない（候補に渡すのはB-01とB-02）。</li>
+        <li><strong>このノートより、書面と契約書が優先。</strong>条件が決まったら、08の表と本文の【】を書き換える。</li>
+      </ul>
+    </section>
+
+    <!-- 01 -->
+    <section id="pitch" aria-labelledby="h-pitch">
+      <p class="eyebrow">01 FOR PARTNER CANDIDATES</p>
+      <h2 id="h-pitch">パートナー候補に話す</h2>
+      <p class="sec-lead">弊社の営業が、取り扱いを検討している会社へ話す版です。時間に合わせて3つの長さを使い分けます。</p>
+
+      <h3>30秒版</h3>
+      <p class="muted">立ち話・電話・別件の商談の最後に。</p>
+      <div class="say">
+        <span class="say-label">話す言葉</span>
+        <p>営業リスト自動生成AIの「リストマスター」を、貴社のお客様向けに取り扱っていただけないか、というご相談です。お客様がスプレッドシートに地域・業種・規模の条件を入れておくと、毎朝9時に企業を探してリストにし、初回のメールかFAXまで送ります。月額で続くサービスなので、貴社の収益も月ごとに積み上がる形です。卸値など、まだ決まっていない条件もあるので、まず個別説明で一つずつ確かめさせてください。</p>
+      </div>
+
+      <h3>3分版</h3>
+      <p class="muted">初回の打ち合わせの冒頭に。5つの区切りで話すのが基本形です。</p>
+      <ol class="beats">
+        <li>
+          <div class="beat-t">〜0:30<small>困りごと</small></div>
+          <div class="beat-b"><strong>変えやすいのはリスト</strong><p class="q">「新規の売上は、営業リスト×アポ率×受注率×単価に分けられます。トークや提案は磨けば効きますが、変えやすいのは『何社に当たるか』と『どういう会社に当たるか』、つまりリストのほうです」</p></div>
+        </li>
+        <li>
+          <div class="beat-t">〜1:30<small>何をするか</small></div>
+          <div class="beat-b"><strong>毎朝の動き</strong><p class="q">「毎朝9時に起動して、シートの条件を読み、複数のデータソースで企業を探します。廃業や重複を除いてリストにし、送る前に宛先が実在するかを確かめる。ここまでが自動です。受信できないドメインは約5%あって、それは送信前に外す対象です。そのうえで初回のメール（ステップ配信）かFAXを送り、実績をメールで報告します。SlackやGoogleチャットへの通知にも対応できます」</p></div>
+        </li>
+        <li>
+          <div class="beat-t">〜2:00<small>なぜ効くか</small></div>
+          <div class="beat-b"><strong>深い所の会社に1社目で</strong><p class="q">「検索の上位に出る会社には、競合も行きます。深い所の会社には、まだ誰も来ていません。1社目であることが強いんです。だから条件は狭くていい。広げると、誰でも持っているリストに戻ります」</p></div>
+        </li>
+        <li>
+          <div class="beat-t">〜2:40<small>貴社の収益</small></div>
+          <div class="beat-b"><strong>月額の積み上げ</strong><p class="q">「直販は初期費用50万円、月額3万円、契約12か月で公開しています。従量課金はありません。販売会社ごとの紹介URL、URLごとの料金設定、代理店別のクーポンは、仕組みとしてもう入っています。卸値と推奨売価は調整中なので、書面でお出しします」</p></div>
+        </li>
+        <li>
+          <div class="beat-t">〜3:00<small>次の一手</small></div>
+          <div class="beat-b"><strong>個別説明へ</strong><p class="q">「まだ決まっていないことも、決まっていることと同じ表でお見せします。一度、個別説明で貴社のお客様の顔ぶれを伺わせてください」</p></div>
+        </li>
+      </ol>
+
+      <h3>15分版</h3>
+      <p class="muted">個別説明の本編。B-03（投影資料・13枚）を映しながら進めます。</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>時間</th><th>話すこと</th><th>見せるもの・確かめること</th></tr></thead>
+          <tbody>
+            <tr><td class="t-time" data-l="時間">0〜2分</td><td data-l="話すこと">先に聞く。お客様は中小企業が多いか。「新規が取れない」「営業に人を割けない」と相談されるか。</td><td data-l="見せるもの・確かめること">B-03の1・3枚目。聞いた内容を、06の3点確認にそのまま使う。</td></tr>
+            <tr><td class="t-time" data-l="時間">2〜4分</td><td data-l="話すこと">売上の式と、検索上位の会社は競合も行く話。</td><td data-l="見せるもの・確かめること">B-03の2枚目</td></tr>
+            <tr><td class="t-time" data-l="時間">4〜7分</td><td data-l="話すこと">毎朝の5つの手順。送る前の宛先確認、配信停止リンク、NGリスト。</td><td data-l="見せるもの・確かめること">B-03の5枚目。毎朝の作業は自動。人が要るのは条件決めと返信への対応、と伝える。</td></tr>
+            <tr><td class="t-time" data-l="時間">7〜9分</td><td data-l="話すこと">リストを買う・手作業・営業代行との違い。つばめリードとの勧め分け。</td><td data-l="見せるもの・確かめること">B-03の6・11枚目。精度100%ではない、と先に言う。</td></tr>
+            <tr><td class="t-time" data-l="時間">9〜11分</td><td data-l="話すこと">収益の形。直販の公開価格と、収益の式の形だけ。</td><td data-l="見せるもの・確かめること">B-03の4・8枚目。卸値は【調整中】。値引きは初期費用だけ（代理店別クーポン）。</td></tr>
+            <tr><td class="t-time" data-l="時間">11〜13分</td><td data-l="話すこと">弊社・貴社・未決の分担。</td><td data-l="見せるもの・確かめること">B-03の7・12枚目。【要確認】の行のうち、貴社が持てる行を聞く。</td></tr>
+            <tr><td class="t-time" data-l="時間">13〜15分</td><td data-l="話すこと">売らないでほしい相手を先に伝え、次の一手を決める。</td><td data-l="見せるもの・確かめること">B-03の10・13枚目と07の締め。答えられなかった質問は書面で返すと約束する。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 02 -->
+    <section id="mago" aria-labelledby="h-mago">
+      <p class="eyebrow">02 FOR END CUSTOMERS｜最重要</p>
+      <h2 id="h-mago">お客様に話す孫トーク</h2>
+      <p class="sec-lead">パートナーの営業が、自社のお客様（中小企業の経営者）へ話す言い回しです。お客様向けなので「OEM」「卸値」「粗利」は使いません。料金は、貴社で決めた金額でお伝えください（推奨売価は<span class="tbd">【調整中】</span>）。商品名をどう名乗るかも<span class="tbd">【要確認】</span>のため、ここでは「リストマスター」で書いています。</p>
+
+      <h3>孫トーク30秒版</h3>
+      <p class="muted">定例の雑談、契約更新の場、電話の最後に。</p>
+      <div class="say to-customer">
+        <span class="say-label">お客様に話す言葉</span>
+        <p>社長、新規のお客さんは、いまどうやって探していますか。（答えを聞く）いま取れているお客さんと似た業種・地域・規模を最初に決めておくと、毎朝9時にAIがその条件で会社を探して、最初のご挨拶のメールかFAXまで送る仕組みがあります。検索の上に出る会社には競合も行きますが、奥のほうの会社は、まだ手つかずのことが多い。そこへ一番乗りで当たる道具です。</p>
+      </div>
+
+      <h3>孫トーク3分版</h3>
+      <p class="muted">「ちょっと詳しく聞かせて」と言われたら。聞く→分ける→仕組み→正直に→次、の順です。</p>
+      <ol class="beats">
+        <li>
+          <div class="beat-t">〜0:30<small>聞く</small></div>
+          <div class="beat-b"><strong>いまのやり方を聞く</strong><p class="q">「新規のお客さんには、いま月に何社くらい声をかけていますか。リストは、どなたが、どうやって作っていますか」</p></div>
+        </li>
+        <li>
+          <div class="beat-t">〜1:00<small>分ける</small></div>
+          <div class="beat-b"><strong>掛け算の左端</strong><p class="q">「新規の売上は、当たる会社の数×アポになる割合×決まる割合×単価の掛け算です。トークを磨くのも大事ですが、いちばん変えやすいのは『どこに、何社当たるか』のほうなんです」</p></div>
+        </li>
+        <li>
+          <div class="beat-t">〜2:00<small>仕組み</small></div>
+          <div class="beat-b"><strong>最初に決めるのは条件と文面</strong><p class="q">「最初にスプレッドシートへ、地域・業種・規模を入れていただきます。あとは毎朝9時に、AIがいくつかのデータから会社を探して、廃業や重複を外してリストにします。送る前に、そのアドレスに本当に届くかの確認もあるんです。届かない宛先は5%ほどあって、送る前に外します。そのうえで最初のメールかFAXを送り、その日の結果をメールでお知らせします。文面はAIが用意しますし、御社のひな形を使うこともできます」</p></div>
+        </li>
+        <li>
+          <div class="beat-t">〜2:40<small>正直に</small></div>
+          <div class="beat-b"><strong>約束しないこと</strong><p class="q">「ただ、リストの精度は100%ではありません。最後に確かめるのは人です。返事が来たあとの商談も、御社の方にお願いすることになります。何件返事が来るかは条件と設定しだいなので、お約束はできません。メールには配信停止のリンクが入り、止めた相手や、送りたくない相手には送りません」</p></div>
+        </li>
+        <li>
+          <div class="beat-t">〜3:00<small>次</small></div>
+          <div class="beat-b"><strong>条件を一緒に書き出す</strong><p class="q">「条件は狭くていいんです。まず、いま取れているお客さんの業種・地域・規模を、一緒に書き出してみませんか」</p></div>
+        </li>
+      </ol>
+
+      <h3>切り出し3パターン</h3>
+      <p class="muted">新しく売り込むより、お客様がすでに口にしている困りごとに答える形のほうが話は進みます。</p>
+
+      <div class="opener">
+        <h3>新規が取れない</h3>
+        <p class="when">相談を受けた、その場で。</p>
+        <dl>
+          <dt>最初の一言</dt>
+          <dd class="q">「新規は、どこに当たるかでだいぶ変わるんです。いま取れているお客さんは、どんな業種で、どのあたりの、何人くらいの会社が多いですか」</dd>
+          <dt>続け方</dt>
+          <dd>答えを一緒に条件の言葉にしてから、「その条件で、毎朝AIが会社を探して、最初のメールまで送る仕組みがあります」とつなぐ。条件を先に聞くと、道具の紹介ではなく提案に聞こえる。</dd>
+          <dt>気をつけること</dt>
+          <dd class="warn">「月に何件アポが取れる」とは言わない。</dd>
+        </dl>
+      </div>
+
+      <div class="opener">
+        <h3>営業に人を割けない</h3>
+        <p class="when">定例や契約更新の場で。</p>
+        <dl>
+          <dt>最初の一言</dt>
+          <dd class="q">「リストを作って、最初の連絡を送るところまでは、毎朝自動で進められます。人の手が要るのは、返事が来てからです」</dd>
+          <dt>続け方</dt>
+          <dd>すぐに「返事が来たら、どなたが対応されますか」と聞く。ここが空欄なら、いまは勧めない（06の3点確認）。</dd>
+          <dt>気をつけること</dt>
+          <dd class="warn">「営業がいらなくなる」とは言わない。商談には人が要る。</dd>
+        </dl>
+      </div>
+
+      <div class="opener">
+        <h3>問い合わせが来ない</h3>
+        <p class="when">「作ったサイトから問い合わせが来ない」と言われたとき。Web制作・広告の話の流れで。</p>
+        <dl>
+          <dt>最初の一言</dt>
+          <dd class="q">「サイトは、来てくれた人に見てもらう場所です。そこに、こちらから声をかける手を一つ足しませんか」</dd>
+          <dt>続け方</dt>
+          <dd>待つ集客はそのままに、条件を決めれば毎朝こちらから初回を送る接点を足す、と説明する。サイトの改善提案とぶつけない。</dd>
+          <dt>気をつけること</dt>
+          <dd class="warn">精度100%のリストは無い。中身を確かめるのは人、と先に伝えておく。</dd>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 03 -->
+    <section id="price" aria-labelledby="h-price">
+      <p class="eyebrow">03 PRICING</p>
+      <h2 id="h-price">価格の伝え方</h2>
+      <p class="sec-lead">直販の価格は公開されていて、お客様も調べられます。その前提で話します。言える数字と、まだ言えない数字を混ぜないことがいちばん大事です。</p>
+
+      <div class="price-2">
+        <div class="pbox ok">
+          <p class="pbox-t">言える数字（直販の公開価格）</p>
+          <ul>
+            <li><span>初期費用</span><b class="num">500,000円</b></li>
+            <li><span>月額</span><b class="num">30,000円</b></li>
+            <li><span>契約期間</span><b class="num">12か月</b></li>
+            <li><span>従量課金</span><b>なし</b></li>
+          </ul>
+          <p class="foot">掲載先：list.elliot-tech.jp/lp。税込か税抜かは【要確認】。聞かれたら「確認してお伝えします」。</p>
+        </div>
+        <div class="pbox wait">
+          <p class="pbox-t">まだ言えない数字</p>
+          <ul>
+            <li><span>卸値</span><b class="tbd">【調整中】</b></li>
+            <li><span>推奨売価</span><b class="tbd">【調整中】</b></li>
+            <li><span>パートナー取り分</span><b class="tbd">【調整中】</b></li>
+            <li><span>初期費用の分け方</span><b class="tbd">【調整中】</b></li>
+          </ul>
+          <p class="foot">個別説明で取扱商材と顧客層を伺ったうえで、書面でお出しする、とだけ言う。</p>
+        </div>
+      </div>
+
+      <h3>値引きは初期費用だけ</h3>
+      <p>値引きできるのは初期費用だけです。代理店別のクーポンで行い、月額は値引きの対象になりません。紹介URLごとに料金を分ける仕組みもありますが、貴社が設定できる範囲は<span class="tbd">【要確認】</span>です。</p>
+
+      <h3>聞かれ方ごとの返し方</h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>聞かれた場面</th><th>返す言葉</th><th>次の一手</th></tr></thead>
+          <tbody>
+            <tr><th>候補から「いくらで卸すの？」</th><td data-l="返す言葉">「卸値は調整中で、個別説明のあと書面でお出しします。直販は初期50万円・月額3万円で公開しています」</td><td data-l="次の一手">収益の形（続けているお客様の数×〈売価−卸値〉）だけ見せる。数字は入れない。</td></tr>
+            <tr><th>候補から「いくら儲かる？」</th><td data-l="返す言葉">「試算の金額は、条件が書面で決まってからお出しします」</td><td data-l="次の一手">反応数やアポ数を置いた試算を口頭でしない。</td></tr>
+            <tr><th>お客様から「いくら？」</th><td data-l="返す言葉">貴社で決めた金額で答える。月額で続くサービスで、初期費用がかかる、と先に構造を言う。</td><td data-l="次の一手">推奨売価は【調整中】。決まるまでは、弊社に確認してから答える。</td></tr>
+            <tr><th>お客様から「安くならない？」</th><td data-l="返す言葉">「初期費用は、値引きできるか確認してお返事します。月額は値引きの対象外です」</td><td data-l="次の一手">クーポンの範囲を確認する。月額の値引きは約束しない。</td></tr>
+            <tr><th>「税込？税抜？」</th><td data-l="返す言葉">「確認してお伝えします」</td><td data-l="次の一手">【要確認】。推測で答えない。</td></tr>
+            <tr><th>「高い」</th><td data-l="返す言葉">04の切り返し06へ。</td><td data-l="次の一手">値段の話の前に、いまリストづくりに誰が何時間かけているかを聞く。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 04 -->
+    <section id="qa" aria-labelledby="h-qa">
+      <p class="eyebrow">04 OBJECTIONS</p>
+      <h2 id="h-qa">切り返し10本</h2>
+      <p class="sec-lead">答えはこのノートにある事実の範囲だけです。決まっていないものは<span class="tbd">【要確認】</span>と言い切り、書面で返します。「候補から」はパートナー候補、「お客様から」はパートナーのお客様からの質問です。</p>
+
+      <ol class="qa">
+        <li>
+          <p class="qa-meta"><span class="who">候補から・お客様から</span></p>
+          <h3>リストの精度は？</h3>
+          <p class="ans">「100%ではありません。廃業や重複は外し、送る前に宛先に届くかも確かめます。受信できない宛先は約5%あり、送る前に外します。それでも、会って確かめるのは人の仕事です」</p>
+        </li>
+        <li>
+          <p class="qa-meta"><span class="who">候補から・お客様から</span></p>
+          <h3>1日に何件？</h3>
+          <p class="ans">「条件と設定しだいです。条件を狭くするほど、1日に見つかる数は減ります。件数はお約束していません」</p>
+          <p class="ans2"><b>補足</b>　送信数には上限の設定があり、お客様ごとに数えるのか貴社全体で数えるのかは【要確認】。件数を約束しない。</p>
+        </li>
+        <li>
+          <p class="qa-meta"><span class="who">お客様から</span></p>
+          <h3>メールは迷惑にならない？</h3>
+          <p class="ans">「送るのは、最初に決めた条件に合う会社だけです。メールには配信停止のリンクが入り、止めた相手と、送りたくない相手として登録した会社には、以後送りません。文面はAIが用意しますし、御社のひな形も使えます」</p>
+          <p class="ans2"><b>補足</b>　「迷惑にならない」と断定しない。仕組みがある、までを話す。</p>
+        </li>
+        <li>
+          <p class="qa-meta"><span class="who">候補から・お客様から</span></p>
+          <h3>法律は大丈夫？</h3>
+          <p class="ans">「送信者の表示と、配信停止の仕組みは入っています。ただ、送信者をどの名義で出すかや、苦情の受付先は確認中です。確認して書面でお答えします」</p>
+          <p class="ans2"><b>補足</b>　「法令に対応済みだから安心」とは言わない。送信者名義・苦情の受付先は【要確認】。</p>
+        </li>
+        <li>
+          <p class="qa-meta"><span class="who">候補から</span></p>
+          <h3>つばめリードと何が違う？</h3>
+          <p class="ans">「リストマスターは月額で、毎朝リストを作り、メールかFAXで初回を送ります。つばめリードは企業の問い合わせフォームから送る仕組みで、直販は成功送信1通5円の従量課金です。当てる先を狭く決めて毎日続けたいお客様にはリストマスター、送った数だけ払いたいお客様にはつばめリード、と勧め分けてください」</p>
+        </li>
+        <li>
+          <p class="qa-meta"><span class="who">お客様から</span></p>
+          <h3>高い</h3>
+          <p class="ans">「月額で、リストづくりから最初の連絡までが毎朝止まらずに続く料金です。いま、どなたがどれくらいの時間をかけてリストを作っているか、一度並べてみませんか」</p>
+          <p class="ans2"><b>補足</b>　値引きは初期費用だけ（クーポンの範囲）。数週間で成果を求めるお客様なら、無理に勧めない。</p>
+        </li>
+        <li>
+          <p class="qa-meta"><span class="who">お客様から</span></p>
+          <h3>うちの商圏は狭い</h3>
+          <p class="ans">「条件は狭くていいんです。広げると、誰でも持っているリストに戻ってしまうんですよ。ただ、商圏に当たる先の会社がほとんどない場合は、毎朝探す先が残らないので、お勧めしません」</p>
+        </li>
+        <li>
+          <p class="qa-meta"><span class="who">候補から・お客様から</span></p>
+          <h3>実績は？</h3>
+          <p class="ans">「弊社（ライトアップ）の営業部門が、日々の新規開拓に使っている道具です。社名を出してご紹介できる外部の導入事例は、まだありません」</p>
+          <p class="ans2"><b>お客様には</b>　「開発した会社が、自社の営業で毎日使っています。名前を出せる導入先は、まだありません」</p>
+        </li>
+        <li>
+          <p class="qa-meta"><span class="who">候補から・お客様から</span></p>
+          <h3>解約できる？</h3>
+          <p class="ans">「直販は契約期間12か月です。弊社と貴社の間、貴社とお客様の間の最低契約期間と解約の条件は確認中なので、書面でお答えします」</p>
+          <p class="ans2"><b>補足</b>　最低契約・解約（OEM）は【要確認】。お客様への答えも、決まるまで「確認してお伝えします」。</p>
+        </li>
+        <li>
+          <p class="qa-meta"><span class="who">候補から</span></p>
+          <h3>自社の名前で売れる？</h3>
+          <p class="ans">「確認中です。管理画面や報告メールをどこまで貴社の名前にできるか、送信者として表示する名義も含めて、書面でお答えします」</p>
+          <p class="ans2"><b>補足</b>　ブランド差し替え・送信者名義は【要確認】。「できます」と言わない。</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- 05 -->
+    <section id="ng" aria-labelledby="h-ng">
+      <p class="eyebrow">05 DON'T SAY</p>
+      <h2 id="h-ng">言ってはいけない言い方</h2>
+      <p class="sec-lead">一度言うと、あとで取り消せません。左は弊社の営業もパートナーの営業も使わない言い方です。</p>
+      <ul class="ng-list">
+        <li><div class="bad">「1日300〜350件送れます」など、件数の断定</div><div class="good">「件数は条件と設定しだいです。条件を狭くするほど減ります」</div></li>
+        <li><div class="bad">「月に◯件アポが取れます」「反応率は◯%です」</div><div class="good">「お約束できるのは、毎朝リストを作り、最初の連絡を送るところまでです」</div></li>
+        <li><div class="bad">「法令に対応済みなので安心です」</div><div class="good">「送信者の表示と配信停止の仕組みは、備えています。名義などは確認中です」</div></li>
+        <li><div class="bad">「◯◯社さんも使っています」と社名で実績を出す</div><div class="good">「開発元の営業部門が、日々使っている道具です。社名を出せる外部事例はまだありません」</div></li>
+        <li><div class="bad">卸値や原価を、書面より先に口にする</div><div class="good">「卸値は、個別説明のあと書面でお出しします」</div></li>
+        <li><div class="bad">お客様の前で「OEM」「卸値」「粗利」と言う</div><div class="good">お客様には、サービスの中身と貴社の料金だけを話す</div></li>
+        <li><div class="bad">「販売パートナー」と呼ぶ</div><div class="good">「OEMパートナー」と呼ぶ</div></li>
+      </ul>
+    </section>
+
+    <!-- 06 -->
+    <section id="stop" aria-labelledby="h-stop">
+      <p class="eyebrow">06 WHO NOT TO SELL</p>
+      <h2 id="h-stop">売らない相手と3点確認</h2>
+      <p class="sec-lead">合わないお客様に売ると、解約とクレームで貴社の信用が減ります。先に断るほうが、結局は長続きする売り方です。</p>
+
+      <h3>売らないでほしい相手</h3>
+      <ul class="stop">
+        <li><strong>数週間で成果を求めている</strong><span>月額で続けて、当てる先を少しずつずらしていく道具です。</span></li>
+        <li><strong>商圏に、当てる先の会社がほとんどない</strong><span>条件を狭めると、毎朝探す先が残りません。</span></li>
+        <li><strong>個人向けの商材を売っている</strong><span>当てる先は法人です。</span></li>
+        <li><strong>返信が来ても、対応する人がいない</strong><span>初回の連絡のあとは、人が話を進めます。</span></li>
+      </ul>
+
+      <h3>提案前に確かめる3点</h3>
+      <ol class="checks3">
+        <li><div><strong>条件を狭く言えるか</strong><p class="ask">聞く：「いま取れているお客さんは、どんな業種・規模・地域ですか」</p><p>言葉にできないなら、条件を一緒に決めるところから。</p></div></li>
+        <li><div><strong>返信に出る人がいるか</strong><p class="ask">聞く：「返事が来たら、どなたが対応されますか」</p><p>初回の連絡のあとは、人が話を進める段階です。</p></div></li>
+        <li><div><strong>月額で続けられるか</strong><p class="ask">聞く：「数か月続けて、当てる先を調整していく使い方で大丈夫ですか」</p><p>数週間で良し悪しを決める使い方には向きません。</p></div></li>
+      </ol>
+      <p class="muted">どれかが「いいえ」なら、その場では勧めず、条件がそろってから出してください。</p>
+    </section>
+
+    <!-- 07 -->
+    <section id="close" aria-labelledby="h-close">
+      <p class="eyebrow">07 CLOSING</p>
+      <h2 id="h-close">締めと次回アポ</h2>
+
+      <h3>パートナー候補との締め</h3>
+      <div class="say">
+        <span class="say-label">話す言葉</span>
+        <p>取り扱うかどうかは、条件を書面で確かめてから決めていただいて間に合います。まず個別説明で、貴社のお客様の顔ぶれと、分担表の【要確認】の行を一緒に確かめさせてください。今日お答えできなかったご質問は、個別説明のあと書面でお返しします。お話しした結果、いまは取り扱わないほうがいい、という結論になることもあります。</p>
+      </div>
+
+      <h3>次回アポの取り方</h3>
+      <ul class="rules">
+        <li><strong>その場で日程を決める。</strong>候補日を2つ出し、B-02（パートナー個別説明の申込）を開いてもらう。申込では会社名と取扱商材を伺う。</li>
+        <li><strong>答えられなかった質問を控える。</strong>【要確認】の項目は、質問した人の言葉のまま残し、個別説明のあと書面で回答する。</li>
+        <li><strong>取り扱いまでの流れを見せる。</strong>下の5つの順で進むことを、最後に一度だけ伝える。</li>
+      </ul>
+      <ol class="steps">
+        <li><b>STEP 1</b><strong>個別説明</strong><span>取扱商材と顧客層を伺う</span></li>
+        <li><b>STEP 2</b><strong>条件を書面で</strong><span>【要確認】の行への回答</span></li>
+        <li><b>STEP 3</b><strong>契約</strong><span>契約の形は【要確認】</span></li>
+        <li><b>STEP 4</b><strong>紹介URLの発行</strong><span>貴社専用のURL</span></li>
+        <li><b>STEP 5</b><strong>販売開始</strong><span>開始前の準備は【要確認】</span></li>
+      </ol>
+
+      <h3>お客様との締め</h3>
+      <div class="say to-customer">
+        <span class="say-label">お客様に話す言葉</span>
+        <p>まず、いま取れているお客さんの業種・地域・規模を、一緒に書き出してみましょう。条件がはっきり言えたら、そこから始められます。返事が来たときに対応される方も、あわせて決めておいてください。</p>
+      </div>
+      <p class="muted">お客様の申し込み方法は【要確認】です（紹介URLの仕組みはあります）。条件を書き出せなかった、返信に出る人がいない、という場合は、その日は申し込みを勧めません。</p>
+
+      <div class="btn-row">
+        <a class="btn" href="https://writeup-inc.github.io/saas/list-master-pack/b02/">B-02 個別説明の申込</a>
+        <a class="btn btn-ghost" href="https://writeup-inc.github.io/saas/list-master-pack/b01/">B-01 OEM提供のご案内</a>
+      </div>
+    </section>
+
+    <!-- 08 -->
+    <section id="open" aria-labelledby="h-open">
+      <p class="eyebrow">08 OPEN ITEMS</p>
+      <h2 id="h-open">未決事項の一覧</h2>
+      <p class="sec-lead">いずれも担当に確認中です。聞かれたら右の列のとおりに答え、推測で埋めないでください。決まった行は、この表から外し、本文の【】を書き換えます。</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>項目</th><th>聞かれたら</th><th>状態</th></tr></thead>
+          <tbody>
+            <tr><th>卸値・推奨売価・パートナー取り分</th><td data-l="聞かれたら">個別説明のあと、書面でお出しします。</td><td data-l="状態"><span class="st adj">調整中</span></td></tr>
+            <tr><th>初期費用の分け方</th><td data-l="聞かれたら">卸値とあわせて書面で回答。</td><td data-l="状態"><span class="st adj">調整中</span></td></tr>
+            <tr><th>税込・税抜の扱い（直販価格）</th><td data-l="聞かれたら">確認してお伝えします。</td><td data-l="状態"><span class="st">要確認</span></td></tr>
+            <tr><th>貴社ブランドへの差し替え</th><td data-l="聞かれたら">管理画面や報告メールをどこまで貴社名にできるか、確認中です。</td><td data-l="状態"><span class="st">要確認</span></td></tr>
+            <tr><th>送信者の表示名義</th><td data-l="聞かれたら">お客様・貴社・弊社のどの名前で送るかを確認している段階。</td><td data-l="状態"><span class="st">要確認</span></td></tr>
+            <tr><th>契約当事者</th><td data-l="聞かれたら">お客様との契約をどちらの名前で結ぶか、確認中です。</td><td data-l="状態"><span class="st">要確認</span></td></tr>
+            <tr><th>問い合わせ・苦情・配信停止依頼の一次受け</th><td data-l="聞かれたら">受付の担当は未定。メールの配信停止リンクとNGリストは、すでにあります。</td><td data-l="状態"><span class="st">要確認</span></td></tr>
+            <tr><th>請求（料金の回収）</th><td data-l="聞かれたら">誰が請求するかは確認中です。</td><td data-l="状態"><span class="st">要確認</span></td></tr>
+            <tr><th>最低契約期間・解約（OEM）</th><td data-l="聞かれたら">直販は12か月です。OEMの条件は書面でお答えします。</td><td data-l="状態"><span class="st">要確認</span></td></tr>
+            <tr><th>地域・業種の排他</th><td data-l="聞かれたら">排他を設けるかどうかは未確定です。</td><td data-l="状態"><span class="st">要確認</span></td></tr>
+            <tr><th>FAXの費用と上限</th><td data-l="聞かれたら">書面でお答えします。</td><td data-l="状態"><span class="st">要確認</span></td></tr>
+            <tr><th>送信上限の単位</th><td data-l="聞かれたら">お客様ごとか、貴社全体かを確認中です。</td><td data-l="状態"><span class="st">要確認</span></td></tr>
+            <tr><th>弊社運用チーム（BPO）の伴走範囲</th><td data-l="聞かれたら">立ち上げの条件決めや文面づくりを、どこまで支えるか。確認中。</td><td data-l="状態"><span class="st">要確認</span></td></tr>
+            <tr><th>お客様向け販促物の提供範囲</th><td data-l="聞かれたら">直販のサービスサイトを案内に使えるかを含めて確認中です。</td><td data-l="状態"><span class="st">要確認</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p class="foot-warn">社内限定です。お客様へURLを送らないでください</p>
+        <p>リストマスター B-04 パートナー向け説明ノート。提供：株式会社ライトアップ（東証グロース 6580）。このノートより、書面と契約書の内容が優先です。</p>
+        <p>連絡先：info@writeup.co.jp／03-5784-6706</p>
+      </div>
+      <div>
+        <h4>PACK</h4>
+        <ul>
+          <li><a href="https://writeup-inc.github.io/saas/list-master-pack/">資料インデックス</a></li>
+          <li><a href="https://writeup-inc.github.io/saas/list-master-pack/b01/">B-01 OEM提供のご案内</a></li>
+          <li><a href="https://writeup-inc.github.io/saas/list-master-pack/b02/">B-02 パートナー個別説明の申込</a></li>
+          <li><a href="https://writeup-inc.github.io/saas/list-master/">直販サービスサイト</a></li>
+          <li><a href="https://www.writeup.co.jp/company/" target="_blank" rel="noopener">会社概要</a></li>
+          <li><a href="https://www.writeup.co.jp/privacy/" target="_blank" rel="noopener">個人情報保護方針</a></li>
+          <li><a href="https://list.elliot-tech.jp/lp">料金を載せた申込ページ</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copyright">© 2026 Writeup Co., Ltd.</p>
+  </div>
+</footer>
+
+</body>
+</html>
