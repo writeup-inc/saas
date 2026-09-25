@@ -234,6 +234,18 @@ a{color:inherit}
 .cmp td.ours{font-weight:700;color:var(--ac);background:var(--acl)}
 .cmp tr.same td{color:var(--g1)}
 .cmp-wrap{overflow-x:auto}
+/* 募集要項 */
+.req{margin:32px 0 0;border-top:2px solid var(--bk);display:grid;grid-template-columns:13em 1fr}
+.req dt,.req dd{margin:0;padding:16px 16px 16px 0;border-bottom:1px solid var(--ln);font-size:16px;line-height:1.8}
+.req dt{font-weight:700;color:var(--bk)}
+.req dd{color:var(--g1)}
+.req dd ul{margin:0;padding:0 0 0 1.1em}
+.req dd a{color:var(--ac);font-weight:700;text-underline-offset:4px}
+.req-cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin:30px 0 0}
+.req-cta .btn{background:var(--ac);color:#fff;border:1px solid var(--ac)}
+.req-cta .sub-l{display:inline-flex;align-items:center;min-height:44px;font-size:15px;font-weight:700;color:var(--ac);text-underline-offset:5px}
+@media(max-width:700px){.req{grid-template-columns:1fr}.req dt{padding:16px 0 0;border-bottom:0}.req dd{padding:4px 0 16px}}
+.last .sub-l{display:inline-flex;align-items:center;min-height:44px;margin:12px 0 0;font-size:15px;font-weight:700;color:#fff;text-underline-offset:5px}
 
 /* 6 作り替え */
 .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px}
@@ -471,8 +483,9 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
       <a href="#s3">条件と分担</a>
       <a href="#s4">他社との違い</a>
       <a href="#s5">作り替え</a>
+      <a href="#s9">募集要項</a>
       <a href="#s7">よくある質問</a>
-      <a class="btn-s" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">相談する</a>
+      <a class="btn-s" href="https://writeup-inc.github.io/seminar/omakase-juden-oem/">事前登録</a>
     </nav>
   </div>
 </header>
@@ -495,8 +508,8 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
       </div>
       <p class="sub">店舗の電話を用件ごとにAIと人へ振り分ける受電AIを、<b>貴社のサービス名で</b>販売できます。管理画面は貴社専用。機能は、貴社のお客様の業種に合わせて作り替えます。</p>
       <div class="cta">
-        <a class="btn btn-y" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">OEMパートナーについて相談する →</a>
-        <a class="lnk" href="#s3">売価と分担を先に見る ↓</a>
+        <a class="btn btn-y" href="https://writeup-inc.github.io/seminar/omakase-juden-oem/">説明会の案内を受け取る（事前登録）→</a>
+        <a class="lnk" href="#s9">募集要項を先に見る ↓</a>
       </div>
     </div>
     <figure class="log" aria-label="貴社専用の受電ログのイメージ">
@@ -526,7 +539,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
 <section class="sec" id="s1" aria-labelledby="h1s">
   <div class="w">
     <div class="sh"><p class="shl"><span class="no">01</span><span class="en">For partners</span></p><h2 id="h1s">店舗に商材を売る会社なら、<br>次の訪問で提案できます。</h2></div>
-    <p class="body">電話は、どの店舗にもある困りごとです。予約の電話で手が止まる、営業電話に時間を取られる、営業時間外の電話を取りこぼす。すでに店舗と取引がある会社なら、既存のお客様への、もう1本の提案になります。</p>
+    <p class="body">電話は、どの店舗にもある困りごとです。予約の電話で手が止まり、営業電話に時間を取られ、営業時間外の電話は取りこぼしてしまいます。すでに店舗と取引がある会社なら、既存のお客様への、もう1本の提案になります。</p>
     <div class="scenes">
       <figure><img src="images/store-kitchen-chef.webp" alt="混み合う店内で調理する料理人" width="1280" height="853" loading="lazy"><figcaption><b>飲食店</b>調理中は、電話に出られない</figcaption></figure>
       <figure><img src="images/store-salon.webp" alt="美容室の店内。シャンプー台とセット面" width="1280" height="854" loading="lazy"><figcaption><b>美容室</b>施術中は、手が離せない</figcaption></figure>
@@ -561,7 +574,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
     <div class="fc">
       <p class="fc-t">1本の電話が流れる道筋</p>
       <svg class="fc-pc" viewBox="0 0 1040 330" role="img" aria-labelledby="fcA">
-        <title id="fcA">着信するとAIが用件を聞き、予約や大切な用件は人へ、定型の質問や営業電話はAIが案内して完結する。人が出られないときはLINEに通知し、スタッフが折り返す。</title>
+        <title id="fcA">着信するとAIが用件を聞き、予約や大切な用件は人へ、定型の質問や営業電話は、AIの案内で完結。人が出られないときはLINEに通知し、スタッフが折り返します。</title>
         <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#9aa6b8"/></marker></defs>
         <g class="e">
           <path d="M130 165H172" marker-end="url(#ah)"/>
@@ -585,7 +598,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
         <g class="n ac"><rect x="430" y="240" width="200" height="56" rx="10"/><text x="530" y="274">AIが案内して完結</text></g>
       </svg>
       <svg class="fc-sp" viewBox="0 0 360 460" role="img" aria-labelledby="fcB">
-        <title id="fcB">着信するとAIが用件を聞き、予約や大切な用件は人へ、定型の質問や営業電話はAIが案内して完結する。人が出られないときはLINEに通知し、スタッフが折り返す。</title>
+        <title id="fcB">着信するとAIが用件を聞き、予約や大切な用件は人へ、定型の質問や営業電話は、AIの案内で完結。人が出られないときはLINEに通知し、スタッフが折り返します。</title>
         <defs><marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#9aa6b8"/></marker></defs>
         <g class="e">
           <path d="M180 58V86" marker-end="url(#ah2)"/>
@@ -608,11 +621,11 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
         <g class="n"><rect x="185" y="300" width="165" height="50" rx="10"/><text x="267" y="331">LINEに通知</text></g>
         <g class="n"><rect x="185" y="400" width="165" height="50" rx="10"/><text x="267" y="431">スタッフが折り返す</text></g>
       </svg>
-      <p class="fc-c">どの電話を人に残すかは、店舗が用件ごとに決めます。</p>
+      <p class="fc-c">どの電話を人に残すかを、用件ごとに決めるのは店舗です。</p>
     </div>
     <div class="aside">
       <ul class="but">
-        <li>営業時間外の予約の電話は、AIが希望を仮受付します。確定はスタッフが行います。</li>
+        <li>営業時間外の予約の電話は、AIが希望を仮受付します。確定は、スタッフの役目です。</li>
         <li>電話のあとのSMSやメールは、業種に合わせた作り替えで足せます（05で説明）。</li>
         <li>用件の分け方は、業種ごとのひな形から選び、あとから変えられます。</li>
       </ul>
@@ -701,13 +714,13 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
 <section class="sec" id="s5" aria-labelledby="h5s">
   <div class="w">
     <div class="sh"><p class="shl"><span class="no">05</span><span class="en">Customize</span></p><h2 id="h5s">SMS・予約台帳・本人の声まで、<br>業種に合わせて作り替えます。</h2></div>
-    <p class="body">管理画面は貴社専用に作ります。そのうえで、既存の機能の一部を貴社のお客様に合わせて作り替えます。飲食店と美容室と士業事務所では、電話のあとにやりたいことが違うからです。たとえば次のようなものです。</p>
+    <p class="body">管理画面は、貴社専用のもの。そのうえで、既存の機能の一部を、貴社のお客様に合わせて作り替えます。飲食店と美容室と士業事務所では、電話のあとにやりたいことが違うからです。たとえば、次のようなものがあります。</p>
     <figure class="band"><img src="images/store-hands-plating.webp" alt="厨房で料理を盛り付ける手元" width="1280" height="853" loading="lazy"><figcaption>電話のあとにやりたいことは、業種ごとに違います。</figcaption></figure>
     <div class="tiles">
       <div class="tile">
         <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="12" y="4" width="24" height="40" rx="4"/><path d="M20 38h8M17 13h14M17 19h10M17 25h12"/></svg>
         <h3>電話のあとに自動でSMS</h3>
-        <p>承った用件の確認、地図、予約の案内などを、電話を切ったあとに送ります。</p>
+        <p>承った用件の確認、地図、予約の案内などを、電話を切ったあとに送信。</p>
       </div>
       <div class="tile">
         <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="10" width="38" height="28" rx="3"/><path d="M5 13l19 13 19-13"/></svg>
@@ -717,7 +730,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
       <div class="tile">
         <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="3"/><path d="M6 16h36M6 26h36M6 36h36M18 6v36"/></svg>
         <h3>予約台帳・注文管理</h3>
-        <p>スプレッドシートと連携して、受けた予約や注文を台帳に残します。</p>
+        <p>スプレッドシートと連携して、受けた予約や注文を台帳へ記録。</p>
       </div>
       <div class="tile">
         <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="17" y="4" width="14" height="24" rx="7"/><path d="M10 22a14 14 0 0 0 28 0M24 36v8M17 44h14"/></svg>
@@ -729,7 +742,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
       <div class="lane">
         <span class="en">Shared</span>
         <h3>何社かで使える機能は、<br>最初にまとめて開発</h3>
-        <p>使い回せる機能は、最初にまとめて開発し、各社に提供します。</p>
+        <p>使い回せる機能は、最初にまとめて開発して、各社へ提供。</p>
       </div>
       <div class="lane">
         <span class="en">Custom</span>
@@ -744,10 +757,10 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
 <!-- 6 -->
 <section class="sec tint" id="s6" aria-labelledby="h6s">
   <div class="w">
-    <div class="sh"><p class="shl"><span class="no">06</span><span class="en">Setup</span></p><h2 id="h6s">店舗の設定は、3ステップです。<br>業種・受け手・次の処理を選ぶ。</h2></div>
+    <div class="sh"><p class="shl"><span class="no">06</span><span class="en">Setup</span></p><h2 id="h6s">店舗の設定は、3ステップです。<br>業種・受け手・次の処理を選ぶ</h2></div>
     <p class="body">AIに話させる文章を、店舗がゼロから書く必要はありません。選ぶことと、短い書き足しだけで始められます。</p>
     <div class="steps">
-      <div class="step"><span class="en">Step 01</span><h3>業種のひな形を選ぶ</h3><p>飲食店・サロンなど、よくある用件があらかじめ並んだひな形から始めます。</p></div>
+      <div class="step"><span class="en">Step 01</span><h3>業種のひな形を選ぶ</h3><p>飲食店・サロンなど、よくある用件があらかじめ並んだひな形からスタート。</p></div>
       <div class="step"><span class="en">Step 02</span><h3>AIか人かを決める</h3><p>予約は人、営業電話はAI、のように用件ごとに最初の受け手を選びます。</p></div>
       <div class="step"><span class="en">Step 03</span><h3>次の処理を決める</h3><p>その場で完結・スタッフへ転送・通知して折り返し、から選びます。</p></div>
     </div>
@@ -763,9 +776,37 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
 </section>
 
 <!-- 7 -->
-<section class="sec" id="s7" aria-labelledby="h7s">
+<section class="sec" id="s9" aria-labelledby="h9s">
   <div class="w">
-    <div class="sh"><p class="shl"><span class="no">07</span><span class="en">FAQ</span></p><h2 id="h7s">クレーム、予約の確定、番号。<br>よく聞かれる6つにお答えします。</h2></div>
+    <div class="sh"><p class="shl"><span class="no">07</span><span class="en">Recruitment</span></p><h2 id="h9s">OEMパートナーの募集要項です。<br>未定の条件も載せています。</h2></div>
+    <dl class="req">
+      <dt>募集するもの</dt>
+      <dd>おまかせ受電AIを、貴社のサービス名で店舗へ販売するOEMパートナー</dd>
+      <dt>向いている会社</dt>
+      <dd><ul><li>店舗向けにAIやITを売っている会社</li><li>通信・OA・POSの販売会社</li><li>予約システムの販売会社</li><li>店舗の運営を支援している会社</li></ul></dd>
+      <dt>貴社にお願いすること</dt>
+      <dd>売価を決める／店舗への提案・販売／問い合わせ・クレームの一次受け</dd>
+      <dt>弊社が用意するもの</dt>
+      <dd>受電AIの開発と提供／貴社専用の管理画面／業種に合わせた機能の作り替え。1社のための開発は都度お見積りで、数十万円程度で収まることが多いです</dd>
+      <dt>最初に提供する業種</dt>
+      <dd>飲食店向けから提供を準備しています</dd>
+      <dt>取扱条件</dt>
+      <dd>仕入値・初期費用、最低契約・解約、申込の受付と請求、障害時の対応、併売・地域の扱いは<span class="tbd">調整中</span>。貴社の販売のしかたを伺ったうえで決めます</dd>
+      <dt>説明会</dt>
+      <dd>日時・形式・定員は<span class="tbd">調整中</span>です。いまは事前登録を受け付けています</dd>
+      <dt>応募のしかた</dt>
+      <dd>説明会の事前登録か、お問い合わせフォームからの個別のご相談。どちらも取扱商材を伺います</dd>
+    </dl>
+    <div class="req-cta">
+      <a class="btn" href="https://writeup-inc.github.io/seminar/omakase-juden-oem/">説明会の案内を受け取る（事前登録）→</a>
+      <a class="sub-l" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">日程を待たずに個別に相談する →</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec tint" id="s7" aria-labelledby="h7s">
+  <div class="w">
+    <div class="sh"><p class="shl"><span class="no">08</span><span class="en">FAQ</span></p><h2 id="h7s">クレーム、予約の確定、番号。<br>よく聞かれる6つにお答えします。</h2></div>
     <div class="faq">
       <details><summary>店舗からのクレームは、誰が受けますか。</summary><p class="a">一次受けは貴社にお願いしています。店舗から見れば貴社のサービスだからです。AIの応答内容を見直す必要があるときの進め方は<span class="tbd">調整中</span>です。</p></details>
       <details><summary>予約を、AIが勝手に確定しませんか。</summary><p class="a">確定しません。営業時間外の予約の希望は仮受付として残し、営業開始後にスタッフが確認して確定する作りです。</p></details>
@@ -785,14 +826,15 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
     <p class="b">どの業種の店舗に、どれくらいの数を売る見込みか。それが分かれば、管理画面の作り方と、最初に作り替える機能の候補をお出しできます。仕入の条件も、あわせてご相談ください。</p>
     <ul><li>販売先の業種</li><li>想定の店舗数</li><li>今お持ちの商材</li></ul>
     <ol class="onb">
-      <li><span class="en">01</span><b>ご相談</b>販売先の業種と店舗数を伺う</li>
+      <li><span class="en">01</span><b>登録・ご相談</b>説明会の事前登録か個別のご相談で、業種と店舗数を伺う</li>
       <li><span class="en">02</span><b>設計</b>管理画面と作り替える機能を決める</li>
       <li><span class="en">03</span><b>条件のすり合わせ</b>仕入値・分担・契約を決める</li>
       <li><span class="en">04</span><b>販売開始</b>貴社のサービスとして店舗へ</li>
     </ol>
     <p class="onb-n">流れは目安です。各段階の期間は<span class="tbd">調整中</span>です。</p>
-    <a class="btn btn-w" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">OEMパートナーについて相談する →</a>
-    <p class="fine">株式会社ライトアップのお問い合わせフォームが開きます。</p>
+    <a class="btn btn-w" href="https://writeup-inc.github.io/seminar/omakase-juden-oem/">説明会の案内を受け取る（事前登録）→</a>
+    <a class="sub-l" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">日程を待たずに個別に相談する →</a>
+    <p class="fine">個別のご相談は、株式会社ライトアップのお問い合わせフォームが開きます。</p>
   </div>
 </section>
 
