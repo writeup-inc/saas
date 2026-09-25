@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="0次販売の料金案内。1年間、初期費用と月額料金は0円。ご請求は使った分のAPI利用料のみです。サービスごとに、最初の1か月の料金の目安と早見表をまとめました。">
+  <meta name="description" content="0次販売の料金案内。1年間、初期費用と月額料金は0円。ご請求は使った分のAPI利用料のみです。サービスごとの料金を、ひとことで分かる形と早見表でまとめました。">
   <meta name="theme-color" content="#f3f0e8">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="WRITEUP 0次販売">
   <meta property="og:title" content="0次販売の料金｜株式会社ライトアップ">
-  <meta property="og:description" content="1年間、初期費用も月額料金も0円。ご請求は使った分のAPI利用料のみ。最初の1か月の目安をサービスごとにご案内します。">
+  <meta property="og:description" content="1年間、初期費用も月額料金も0円。ご請求は使った分のAPI利用料のみ。サービスごとの料金をひとことでご案内します。">
   <meta property="og:url" content="https://writeup-inc.github.io/saas/monitor/api-price/">
   <meta name="twitter:card" content="summary">
   <link rel="canonical" href="https://writeup-inc.github.io/saas/monitor/api-price/">
@@ -311,6 +311,50 @@ h1, h2, h3, h4, h5,
     .plan-link:hover { text-decoration: underline; }
 
     .summary-note { margin: 16px 0 0; color: var(--muted); font-size: 13px; }
+
+    /* ひとことで言うとカード */
+    .say-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .say {
+      display: flex;
+      flex-direction: column;
+      padding: 26px 28px 22px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      color: inherit;
+      text-decoration: none;
+      transition: border-color .15s, transform .15s;
+    }
+
+    .say:hover { border-color: rgba(23,75,60,.4); transform: translateY(-2px); }
+
+    .say-name { color: var(--green); font-size: 13px; font-weight: 800; letter-spacing: .04em; }
+
+    .say-main {
+      margin: 10px 0 0;
+      font-size: clamp(19px, 2.2vw, 23px);
+      font-weight: 800;
+      letter-spacing: -.01em;
+      line-height: 1.6;
+      word-break: auto-phrase;
+    }
+
+    .say-main em { color: var(--green); font-style: normal; font-size: 1.12em; font-variant-numeric: tabular-nums; }
+
+    .say-sub { margin: 10px 0 0; color: var(--ink-soft); font-size: 14px; line-height: 1.8; }
+
+    .say-link { margin-top: auto; padding-top: 16px; color: var(--green); font-size: 13.5px; font-weight: 800; }
+
+    @media (max-width: 760px) {
+      .say-grid { grid-template-columns: 1fr; }
+    }
 
     /* サービス別の詳細 */
     .card {
@@ -645,7 +689,7 @@ h1, h2, h3, h4, h5,
     <section class="hero" aria-labelledby="page-title">
       <p class="kicker">0次販売の料金</p>
       <h1 id="page-title">使った分だけの、<br><em>わかりやすい料金です。</em></h1>
-      <p class="hero-lead">1年間、初期費用と月額料金は0円です。ご請求するのは、使った分のAPI利用料だけ。このページでは、サービスごとに「最初の1か月でどのくらいかかるか」をまとめました。</p>
+      <p class="hero-lead">1年間、初期費用と月額料金は0円です。ご請求するのは、使った分のAPI利用料だけ。このページでは、サービスごとの料金を、ひとことで分かる形と早見表でまとめました。</p>
       <div class="fee-board">
         <div><span>初期費用（1年間）</span><strong>0円</strong></div>
         <div><span>月額料金（1年間）</span><strong>0円</strong></div>
@@ -653,78 +697,42 @@ h1, h2, h3, h4, h5,
       </div>
     </section>
 
-    <!-- ============ 最初の1か月の目安 ============ -->
+    <!-- ============ ひとことで言うと ============ -->
     <section class="section" aria-labelledby="summary-title">
       <div class="section-head">
-        <p class="section-kicker">最初の1か月の目安</p>
-        <h2 id="summary-title">最初の1か月は、このくらいです。</h2>
-        <p class="section-copy">よくある使い方をした場合の、1か月あたりのAPI利用料です。使い方ごとの金額は、各サービスの「くわしい料金」でご確認いただけます。</p>
+        <p class="section-kicker">料金のポイント</p>
+        <h2 id="summary-title">ひとことで言うと、こんな料金です。</h2>
+        <p class="section-copy">4つのサービスの料金を、いちばん分かりやすい単位でまとめました。くわしい金額は、各サービスの早見表でご確認いただけます。</p>
       </div>
 
-      <div class="plan-grid">
-        <article class="plan">
-          <div class="plan-top">
-            <h3 class="plan-name">スーパーマネージャー</h3>
-            <span class="plan-basis">商談1回ごと</span>
-          </div>
-          <p class="plan-case"><b>想定</b><span>1名が、1時間の商談を月40回（1日2回ほど）</span></p>
-          <div class="price-line">
-            <span class="price-label">商談同席のみ<small>録音・文字起こし・アドバイス・サマリー</small></span>
-            <span class="price"><b>約8,000〜10,000</b><span>円／月</span></span>
-          </div>
-          <div class="price-line">
-            <span class="price-label">オプション付き<small>事前ヒアリング・中締めレポート・フォローまで全部</small></span>
-            <span class="price"><b>約14,000〜16,000</b><span>円／月</span></span>
-          </div>
-          <a class="plan-link" href="#super-manager">くわしい料金を見る ↓</a>
-        </article>
+      <div class="say-grid">
+        <a class="say" href="#super-manager">
+          <span class="say-name">スーパーマネージャー</span>
+          <p class="say-main">商談にAIが1回同席するごとに、<em>約200円</em></p>
+          <p class="say-sub">商談がなければ0円です。事前ヒアリングなどのオプションをすべて付けても、1回約350〜400円です。</p>
+          <span class="say-link">くわしい料金を見る ↓</span>
+        </a>
 
-        <article class="plan">
-          <div class="plan-top">
-            <h3 class="plan-name">ワークログ・インサイト</h3>
-            <span class="plan-basis">使う人数ごと</span>
-          </div>
-          <p class="plan-case"><b>想定</b><span>1名（1ID）で利用</span></p>
-          <div class="price-line">
-            <span class="price-label">1名あたり<small>ChatGPTの有料プランと同じくらいです</small></span>
-            <span class="price"><b>約3,000〜4,000</b><span>円／月</span></span>
-          </div>
-          <a class="plan-link" href="#worklog-insight">くわしい料金を見る ↓</a>
-        </article>
+        <a class="say" href="#worklog-insight">
+          <span class="say-name">ワークログ・インサイト</span>
+          <p class="say-main">使う方1名につき、<em>月3,000〜4,000円</em></p>
+          <p class="say-sub">ChatGPTの有料プランと同じくらいの金額です。</p>
+          <span class="say-link">くわしい料金を見る ↓</span>
+        </a>
 
-        <article class="plan">
-          <div class="plan-top">
-            <h3 class="plan-name">Elliot</h3>
-            <span class="plan-basis">基本料金＋使う人数ごと</span>
-          </div>
-          <p class="plan-case"><b>想定</b><span>1名あたり1日5件ほどログを取り込み、毎日メールを受け取る。月1回Elliot総研でレポートを作る</span></p>
-          <div class="price-line">
-            <span class="price-label">基本料金＋Elliot総研<small>会社ごと・使わない日もかかります</small></span>
-            <span class="price"><b>約4,000</b><span>円／月</span></span>
-          </div>
-          <div class="price-line">
-            <span class="price-label">使う方1名あたり<small>ログの量によって変わります</small></span>
-            <span class="price"><b>＋約1,000</b><span>円／月</span></span>
-          </div>
-          <a class="plan-link" href="#elliot">くわしい料金を見る ↓</a>
-        </article>
+        <a class="say" href="#elliot">
+          <span class="say-name">Elliot</span>
+          <p class="say-main">使う方1名につき<em>月約1,000円</em>＋会社ごとに<em>1日128円</em></p>
+          <p class="say-sub">たとえば10名で使うと、月約14,000円（1名あたり約1,400円）です。</p>
+          <span class="say-link">くわしい料金を見る ↓</span>
+        </a>
 
-        <article class="plan">
-          <div class="plan-top">
-            <h3 class="plan-name">Jマッチ・エンジン</h3>
-            <span class="plan-basis">AIクローラー＋送る通数</span>
-          </div>
-          <p class="plan-case"><b>想定</b><span>1,000社へ、月1回メールを配信（1,000通）</span></p>
-          <div class="price-line">
-            <span class="price-label">AIクローラー<small>会社ごと・1日50円（メールを送らない月もかかります）</small></span>
-            <span class="price"><b>約1,500</b><span>円／月</span></span>
-          </div>
-          <div class="price-line">
-            <span class="price-label">メールの配信<small>1,000社へ月1回の場合</small></span>
-            <span class="price"><b>＋約1,000</b><span>円／月</span></span>
-          </div>
-          <a class="plan-link" href="#jmatch-engine">くわしい料金を見る ↓</a>
-        </article>
+        <a class="say" href="#jmatch-engine">
+          <span class="say-name">Jマッチ・エンジン</span>
+          <p class="say-main">AIクローラーの日給<em>1日50円</em>＋メール1,000通で<em>約1,000円</em></p>
+          <p class="say-sub">1,000社へ月1回メールを送ると、月約2,500円です。</p>
+          <span class="say-link">くわしい料金を見る ↓</span>
+        </a>
       </div>
       <p class="summary-note">複数のサービスをお使いいただく場合は、それぞれの金額を合算してご請求します。</p>
     </section>
