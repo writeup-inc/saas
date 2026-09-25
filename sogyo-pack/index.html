@@ -17,6 +17,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;600&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
   <style>
+    /* 改行制御（~/.claude/lp-base.css） */
+    h1, h2, h3, h4, h5, [data-keep-phrase] { word-break: auto-phrase; line-break: strict; overflow-wrap: anywhere; }
+    @supports not (word-break: auto-phrase) { h1, h2, h3, h4, h5, [data-keep-phrase] { word-break: normal; } }
+    .nobr { white-space: nowrap; }
+
     :root {
       --paper: #f6f3ec;
       --ink: #131713;
@@ -148,6 +153,54 @@
     .footer-nav { display: flex; gap: 20px; align-items: start; font-size: 10px; font-weight: 600; letter-spacing: .13em; }
     .copyright { grid-column: 1 / -1; margin: 9px 0 0; font-size: 9px; font-weight: 500; letter-spacing: .16em; }
 
+    .picks { padding: 96px 0 92px; background: var(--pale); color: var(--ink); }
+    .picks h2 { margin-bottom: 0; font: 500 clamp(34px, 3.55vw, 51px)/1.42 var(--serif); letter-spacing: -.055em; }
+    .sp-br { display: none; }
+    .nw { white-space: nowrap; }
+    .picks-intro { max-width: 760px; margin: 38px 0 0 4px; color: var(--moss); font-size: 15px; line-height: 2; letter-spacing: .02em; }
+    .loop { margin: 64px 0 0; padding: 40px 44px 36px; background: var(--white); border: 1px solid var(--line); }
+    .loop-title { margin: 0; color: var(--moss); font: 500 22px/1.5 var(--serif); letter-spacing: -.02em; }
+    .loop-steps { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 34px; margin: 30px 0 0; padding: 0; list-style: none; }
+    .loop-steps li { position: relative; z-index: 1; min-height: 116px; padding: 18px 20px; border: 1px solid var(--moss); background: var(--white); }
+    .loop-steps li:not(:last-child)::after { content: "→"; position: absolute; top: 50%; right: -27px; transform: translateY(-50%); color: var(--moss); font-size: 18px; }
+    .loop-steps li.is-goal { border-color: var(--vermilion); box-shadow: inset 0 0 0 1px var(--vermilion); }
+    .loop-steps small { display: block; color: var(--vermilion); font-size: 11px; font-weight: 600; letter-spacing: .14em; }
+    .loop-steps b { display: block; margin-top: 8px; font: 500 21px/1.4 var(--serif); letter-spacing: -.02em; }
+    .loop-steps em { display: block; margin-top: 6px; color: var(--moss); font-size: 13px; font-style: normal; line-height: 1.5; }
+    .loop-return { position: relative; height: 44px; margin: 0 12.5%; border: 1.5px dashed var(--vermilion); border-top: 0; }
+    .loop-return::before { content: "▲"; position: absolute; top: -9px; left: -7px; color: var(--vermilion); font-size: 12px; line-height: 1; }
+    .loop-return span { position: absolute; left: 50%; bottom: -13px; transform: translateX(-50%); padding: 0 14px; background: var(--white); color: var(--vermilion); font-size: 14px; font-weight: 600; white-space: nowrap; letter-spacing: .03em; }
+    .loop-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 42px; }
+    .loop-compare div { padding: 18px 22px; border: 1px solid var(--line); color: #5b6259; }
+    .loop-compare div.is-ours { border-color: var(--moss); background: var(--moss); color: var(--white); }
+    .loop-compare small { display: block; font-size: 12px; font-weight: 600; letter-spacing: .1em; }
+    .loop-compare span { display: block; margin-top: 6px; font-size: 15px; font-weight: 500; line-height: 1.7; }
+    .picks-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+    .pick { display: flex; flex-direction: column; padding: 32px 30px 30px; background: var(--white); border-top: 3px solid var(--moss); }
+    .pick.is-key { color: var(--white); background: var(--moss); border-top-color: var(--vermilion); }
+    .pick-no { margin: 0; color: var(--vermilion); font-size: 11px; font-weight: 600; letter-spacing: .16em; }
+    .pick.is-key .pick-no { color: var(--soft-vermilion); }
+    .pick h3 { margin: 14px 0 0; font: 500 25px/1.45 var(--serif); letter-spacing: -.03em; }
+    .pick-price { margin: 8px 0 0; font-size: 15px; font-weight: 600; letter-spacing: .03em; }
+    .pick-for { margin: 20px 0 0; padding: 14px 0; border-block: 1px solid var(--line); color: var(--moss); font-size: 14px; font-weight: 600; line-height: 1.75; }
+    .pick.is-key .pick-for { color: var(--white); border-color: rgba(255,255,255,.3); }
+    .pick p.body { margin: 16px 0 0; color: #3a4038; font-size: 14px; line-height: 1.95; }
+    .pick.is-key p.body { color: #e5e8db; }
+    .pick p.body strong { font-weight: 600; color: var(--ink); }
+    .pick.is-key p.body strong { color: var(--white); }
+    .pick-link { display: inline-flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 48px; margin-top: auto; padding: 0 18px; border: 1px solid var(--moss); color: var(--moss); font-size: 14px; font-weight: 600; letter-spacing: .03em; transition: background .2s ease, color .2s ease; }
+    .pick-link:hover { background: var(--moss); color: var(--white); }
+    .pick .pick-link-wrap { margin: auto 0 0; padding-top: 24px; }
+    .pick.is-key .pick-link { border-color: var(--vermilion); background: var(--vermilion); color: var(--white); }
+    .pick.is-key .pick-link:hover { background: #a82514; }
+    .picks-note { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: start; margin-top: 32px; padding: 20px 26px; background: var(--white); border-left: 3px solid var(--vermilion); color: var(--moss); }
+    .picks-note small { color: var(--vermilion); font-size: 12px; font-weight: 600; letter-spacing: .08em; line-height: 1.8; white-space: nowrap; }
+    .picks-note p { margin: 0; font-size: 14px; line-height: 1.85; }
+    .picks-total { margin: 22px 0 0 4px; color: var(--moss); font-size: 14px; line-height: 1.85; }
+    .picks-declare { margin-top: 56px; padding: 40px 44px; color: var(--white); background: var(--ink); }
+    .picks-declare small { display: block; color: var(--soft-vermilion); font-size: 11px; font-weight: 600; letter-spacing: .17em; }
+    .picks-declare strong { display: block; margin-top: 16px; font: 500 clamp(26px, 2.6vw, 36px)/1.55 var(--serif); letter-spacing: -.04em; }
+
     @media (max-width: 900px) {
       .container { width: min(100% - 48px, 1200px); }
       .header-inner { width: min(100% - 48px, 1272px); }
@@ -165,6 +218,13 @@
       .system-divider { display: none; }
       .services { gap: 30px; padding-top: 58px; }
       .services h3 { font-size: 22px; }
+      .loop { padding: 34px 30px 30px; }
+      .loop-steps { gap: 26px; }
+      .loop-steps li { padding: 16px 14px; }
+      .loop-steps li:not(:last-child)::after { right: -21px; }
+      .loop-steps b { font-size: 18px; }
+      .loop-compare { grid-template-columns: 1fr; gap: 12px; }
+      .picks-grid { grid-template-columns: 1fr; gap: 20px; }
     }
 
     @media (max-width: 680px) {
@@ -220,6 +280,29 @@
       .service-list b { font-size: 14px; }
       .service-list em { font-size: 12px; }
       .system-result { margin-top: 35px; }
+      .picks { padding: 66px 0 60px; }
+      .picks h2 { font-size: 33px; line-height: 1.48; }
+      .sp-br { display: inline; }
+      .picks-intro { margin-top: 31px; font-size: 14px; line-height: 1.9; }
+      .loop { margin-top: 44px; padding: 26px 18px 22px; }
+      .loop-title { font-size: 19px; }
+      .loop-steps { grid-template-columns: 1fr; gap: 28px; margin-top: 22px; }
+      .loop-steps li { display: grid; grid-template-columns: 30px auto 1fr; align-items: baseline; gap: 4px 10px; min-height: 0; padding: 13px 16px; }
+      .loop-steps li:not(:last-child)::after { content: "↓"; top: auto; bottom: -25px; right: auto; left: 50%; transform: translateX(-50%); font-size: 16px; }
+      .loop-steps b { margin-top: 0; font-size: 18px; }
+      .loop-steps em { margin-top: 0; font-size: 12px; text-align: right; }
+      .loop-return { height: auto; margin: 14px 0 0; padding: 10px 12px; border: 1.5px dashed var(--vermilion); text-align: center; }
+      .loop-return::before { content: none; }
+      .loop-return span { position: static; transform: none; padding: 0; white-space: normal; font-size: 13px; }
+      .loop-compare { grid-template-columns: 1fr; gap: 12px; margin-top: 22px; }
+      .loop-compare div { padding: 14px 16px; }
+      .loop-compare span { font-size: 14px; }
+      .picks-grid { margin-top: 40px; gap: 16px; }
+      .pick { padding: 26px 22px 24px; }
+      .pick h3 { font-size: 23px; }
+      .picks-note { grid-template-columns: 1fr; gap: 6px; padding: 16px 18px; }
+      .picks-declare { margin-top: 40px; padding: 30px 22px; }
+      .picks-declare strong { font-size: 24px; }
       .closing { padding-top: 70px; }
       .closing-copy { margin-top: 31px; font-size: 14px; line-height: 1.9; }
       .diagnostic { margin-top: 48px; padding: 28px 25px; }
@@ -236,7 +319,7 @@
     <div class="header-inner">
       <a class="brand" href="#top" aria-label="創業支援パックの先頭へ戻る">創業支援パック<small>SŌGYŌ SUPPORT PROGRAM</small></a>
       <nav class="nav" aria-label="主要ナビゲーション">
-        <a href="#program">PROGRAM</a><a href="#method">METHOD</a><a href="#services">SERVICES</a>
+        <a href="#program">PROGRAM</a><a href="#method">METHOD</a><a href="#services">SERVICES</a><a href="#picks">PICKS</a>
         <a class="nav-cta" href="https://writeup-inc.github.io/saas/sogyo/">適性診断へ&nbsp; →</a>
       </nav>
     </div>
@@ -293,10 +376,58 @@
       <p class="system-note">各サービスの提供条件・料金は、ご相談時に正式にご案内します。</p>
     </div></section>
 
-    <section class="closing" aria-labelledby="closing-title"><div class="container"><div class="closing-grid"><div><p class="section-index">YOUR FIRST MOVE</p><h2 id="closing-title">いま必要な一手から、<br>事業をはじめよう。</h2><p class="closing-copy">まだサービスの名前が決まっていなくても、準備が途中でも構いません。<br>まずは現在地を整理して、最初の1本を見つけてください。</p></div>
+    <section class="picks" id="picks" aria-labelledby="picks-title"><div class="container">
+      <p class="section-index">05 / IF YOU CAN'T DECIDE</p>
+      <h2 id="picks-title">13本を前に<br class="sp-br">決めきれないなら、<br>この3本から。</h2>
+      <p class="picks-intro">診断を受けても決まらない、どれも必要に見えて手が止まっている、という方へ。ここから1本目を選んでください。同時に3本を始める必要はありません。ただし、この3本を並べたのには理由があります。順に足していくと、下の形になります。</p>
+
+      <figure class="loop" aria-label="出会う、人脈になる、伝わる、収益が立つ、の4段が循環し、お客様を集める活動そのものが収益になることを示す図">
+        <figcaption class="loop-title">出会いが、そのまま収益になる形</figcaption>
+        <ol class="loop-steps">
+          <li><small>01</small><b>出会う</b><em>人に会う・<span class="nw">紹介される</span></em></li>
+          <li><small>02</small><b>人脈になる</b><em>Lシンク</em></li>
+          <li><small>03</small><b>伝わる</b><em>ホームページ 2枚</em></li>
+          <li class="is-goal"><small>04</small><b>収益が立つ</b><em>営業代行</em></li>
+        </ol>
+        <p class="loop-return"><span>04から01へ。稼ぎながら、また出会える</span></p>
+        <div class="loop-compare">
+          <div><small>ふつうの創業</small><span>お客様を集める活動は、<br class="sp-br">持ち出しになります</span></div>
+          <div class="is-ours"><small>この3本</small><span>集めながら、<br class="sp-br">その活動自体で収益が立ちます</span></div>
+        </div>
+      </figure>
+
+      <div class="picks-grid">
+        <article class="pick"><p class="pick-no">01 / 人脈になる</p><h3>Lシンク</h3><p class="pick-price">月3万円</p>
+          <p class="pick-for">いま、LINEで連絡が取れる相手が100人に満たない方の1本目です。</p>
+          <p class="body">出会いは毎日あります。名刺を交換した、紹介された、SNSでつながった。けれどもそのほとんどは、連絡が途切れて終わります。</p>
+          <p class="body">Lシンクは、出会った方をLINEでつなぎとめ、AIが日々のやりとりを続けて関係を切らさないようにします。囲い込む、という言い方が近いかもしれません。<strong>出会いが人脈に変わるのは、ここです。</strong></p>
+          <p class="pick-link-wrap"><a class="pick-link" href="https://lsync.figma.site/" target="_blank" rel="noopener">Lシンクを詳しく見る <span aria-hidden="true">↗</span></a></p>
+        </article>
+        <article class="pick"><p class="pick-no">02 / 伝わる</p><h3>ホームページ制作</h3><p class="pick-price">初期36万円のみ・月額なし</p>
+          <p class="pick-for">「どこを見れば分かりますか」と聞かれて、送れるURLがない方の1本目です。</p>
+          <p class="body">つながった方は、どこかで一度あなたを見に来ます。そのときにやりたいことが伝わる状態にしておきます。</p>
+          <p class="body">お作りするのは2枚です。何をやっている会社なのかを正確に伝える左脳型の会社サイト。そして、なぜやるのかを伝える右脳型の共感LP。<strong>事実で信用してもらう面と、気持ちで応援してもらう面を、分けて持ちます。</strong></p>
+          <p class="pick-link-wrap"><a class="pick-link" href="https://writeup-inc.github.io/saas/homepage-production-start-pack/" target="_blank" rel="noopener">ホームページ制作を詳しく見る <span aria-hidden="true">↗</span></a></p>
+        </article>
+        <article class="pick is-key"><p class="pick-no">03 / 収益が立つ</p><h3>営業代行会社<br>スタートパック</h3><p class="pick-price">月3万円</p>
+          <p class="pick-for">交流会や紹介で、毎月10人以上の新しい方に会っている方の1本目です。</p>
+          <p class="body">ここがいちばん大事なところです。創業してすぐは、本業の売上が立つまでに時間がかかります。その間、お客様を集める活動は、ふつう持ち出しになります。</p>
+          <p class="body">営業代行を始めておくと、この持ち出しを減らせます。<strong>お客様を集めながら、その活動自体で最低限の収益が立ちます。</strong>人に会うこと、つながること、紹介すること。これまでコストだったものが、そのまま仕事になります。</p>
+          <p class="body">本業が立ち上がるまでの時間の重さが、変わります。報酬の条件や案件のご提供範囲は、ご契約の前にご案内します。</p>
+          <p class="pick-link-wrap"><a class="pick-link" href="https://writeup-inc.github.io/saas/ai-sales-agency-starter/" target="_blank" rel="noopener">営業代行スタートパックを詳しく見る <span aria-hidden="true">↗</span></a></p>
+        </article>
+      </div>
+
+      <aside class="picks-note"><small>Lシンクを選ぶ場合</small><p>引き出しに名刺が残っている方は、その前に出会いを人脈に変える工程（名刺LINEエージェント）が入ります。名刺がほとんどない方は、Lシンクから始めて構いません。</p></aside>
+      <p class="picks-total">3本そろえた場合は、割引前で月6万円と初期36万円です。実際の金額は、割引を含めてご相談のうえ決定します。</p>
+
+      <div class="picks-declare"><small>OUR COMMITMENT</small><strong>営業代行会社としての<br>最初のクライアントは、<br>弊社がなります。</strong></div>
+    </div></section>
+
+    <section class="closing" aria-labelledby="closing-title"><div class="container"><div class="closing-grid"><div><p class="section-index">YOUR FIRST MOVE</p><h2 id="closing-title">いま必要な<br class="sp-br">一手から、<br>事業をはじめよう。</h2><p class="closing-copy">まだサービスの名前が決まっていなくても、準備が途中でも構いません。<br>まずは現在地を整理して、最初の1本を見つけてください。</p></div>
         <aside class="diagnostic"><small>START HERE</small><h3>創業の現在地を<br>診断する</h3><p>最大18問で、13サービスの優先順位を整理します。結果を見てから、1本目をご相談ください。</p><a class="button" href="https://writeup-inc.github.io/saas/sogyo/">診断をはじめる <span aria-hidden="true">→</span></a><a class="consult-link" href="https://www.writeup.jp/contact/">診断をせずに相談する →</a></aside>
       </div>
-      <footer class="site-footer"><div><p class="footer-brand">創業支援パック</p><p class="footer-copy">提供：株式会社ライトアップ<br>いま必要な1本から始め、事業の変化に合わせて次の一手を選ぶ。</p></div><nav class="footer-nav" aria-label="フッターナビゲーション"><a href="#program">PROGRAM</a><a href="#method">METHOD</a><a href="#services">SERVICES</a><a href="https://writeup-inc.github.io/saas/sogyo/">DIAGNOSIS</a></nav><p class="copyright">© WRITE UP INC.</p></footer>
+      <footer class="site-footer"><div><p class="footer-brand">創業支援パック</p><p class="footer-copy">提供：株式会社ライトアップ<br>いま必要な1本から始め、事業の変化に合わせて次の一手を選ぶ。</p></div><nav class="footer-nav" aria-label="フッターナビゲーション"><a href="#program">PROGRAM</a><a href="#method">METHOD</a><a href="#services">SERVICES</a><a href="#picks">PICKS</a><a href="https://writeup-inc.github.io/saas/sogyo/">DIAGNOSIS</a></nav><p class="copyright">© WRITE UP INC.</p></footer>
     </div></section>
   </main>
   <script>
