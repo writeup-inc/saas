@@ -775,6 +775,68 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
   .cmp4 td{display:grid;grid-template-columns:7.5em 1fr;gap:8px}
   .cmp4 td::before{content:attr(data-l);color:var(--mute);font-weight:400;font-size:.84rem}
 }
+
+/* ===== 品質改訂（白ラベル・計算機・渡すもの） ===== */
+.con-t .bn{display:inline-block;min-width:8.5em;padding:2px 10px;margin-right:8px;border-radius:6px;background:#eef6f2;color:#0b5d46;font-size:13px;font-weight:900;transition:opacity .35s}
+.con-t .bn.swap{background:#16213a;color:#fff}
+.con-t .bn.fade{opacity:0}
+.brandband{padding:72px 0;background:var(--bg)}
+.brandband .bb-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:28px;align-items:center;margin-top:28px}
+@media (max-width:860px){.brandband .bb-grid{grid-template-columns:1fr;gap:14px}.bb-arrow{transform:rotate(90deg);justify-self:center}}
+.bb-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end}
+@media (max-width:860px){.bb-head{grid-template-columns:1fr;gap:12px}}
+.bb-title{margin:0;font-size:clamp(1.3rem,3.2vw,2rem);font-weight:900;line-height:1.45;color:var(--ink)}
+.bb-lead{margin:0;color:var(--ink-2)}
+.bb-card{border:1px solid var(--line);border-radius:16px;background:var(--card);box-shadow:var(--shadow);overflow:hidden}
+.bb-card .bar{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.bb-card .logo{display:grid;place-items:center;width:36px;height:36px;border-radius:9px;background:var(--accent-soft);color:var(--accent)}
+.bb-card .logo svg{width:22px;height:22px}
+.bb-card .nm{font-weight:900;font-size:1.05rem}
+.bb-card .lb{margin-left:auto;font-size:12px;font-weight:700;color:var(--mute)}
+.bb-card .rows{padding:14px 18px 18px;display:grid;gap:8px}
+.bb-card .rows i{display:block;height:10px;border-radius:5px;background:var(--bg-2)}
+.bb-card .rows i:nth-child(2){width:82%}.bb-card .rows i:nth-child(3){width:64%}
+.bb-card.you{border:2px solid var(--accent)}
+.bb-card.you .logo{background:none;border:2px dashed var(--accent);font:800 11px/1.1 "Inter",sans-serif;text-align:center}
+.bb-arrow{font:800 1.6rem/1 "Inter",sans-serif;color:var(--accent)}
+.bb-note{margin:20px 0 0;font-size:.92rem;color:var(--ink-2)}
+.sim2{margin-top:44px;border:1px solid var(--line);border-radius:18px;background:var(--card);box-shadow:var(--shadow);overflow:hidden}
+.sim2-h{padding:20px 24px 0}
+.sim2-h h3{margin:0 0 4px}
+.sim2-h p{margin:0;font-size:.9rem;color:var(--mute)}
+.sim2-b{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;padding:20px 24px 24px}
+@media (max-width:900px){.sim2-b{grid-template-columns:1fr}}
+.sim2 label{display:block;margin:0 0 6px;font-size:.92rem;font-weight:700;color:var(--ink)}
+.sim2 .fld{margin:0 0 18px}
+.sim2 input[type=range]{width:100%;height:32px;accent-color:var(--accent)}
+.sim2 .val{font:800 1.5rem/1.2 "Inter","Noto Sans JP",sans-serif;color:var(--ink)}
+.sim2 .val small{font-size:.9rem;font-weight:700;margin-left:3px}
+.sim2 input[type=number]{width:100%;min-height:48px;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:700 16px "Inter","Noto Sans JP",sans-serif}
+.sim2 .hint{display:block;margin-top:4px;font-size:13px;color:var(--mute)}
+.sim2-out{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 16px}
+.sim2-out div{padding:12px 14px;border-radius:12px;background:var(--bg-2)}
+.sim2-out span{display:block;font-size:13px;color:var(--ink-2)}
+.sim2-out b{display:block;font:800 1.25rem/1.3 "Inter","Noto Sans JP",sans-serif;color:var(--ink)}
+.sim2-out .gp{grid-column:1/-1;background:var(--accent-soft)}
+.sim2-out .gp b{color:var(--accent)}
+.chart{position:relative}
+.chart svg{display:block;width:100%;height:auto}
+.chart .ax{font:500 12px "Inter",sans-serif;fill:var(--mute)}
+.chart .gl{stroke:var(--line);stroke-width:1}
+.chart .bar{fill:var(--accent);opacity:.85}
+.chart .bar:hover,.chart .bar.on{opacity:1}
+.chart .lbl{font:700 12px "Inter",sans-serif;fill:var(--ink)}
+.chart .tip{position:absolute;pointer-events:none;padding:6px 10px;border-radius:8px;background:var(--ink);color:var(--bg);font-size:13px;font-weight:700;white-space:nowrap;transform:translate(-50%,-110%);opacity:0;transition:opacity .12s}
+.chart .tip.on{opacity:1}
+.sim2-f{margin:10px 0 0;font-size:13px;color:var(--mute)}
+.give{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px;list-style:none;padding:0}
+@media (max-width:900px){.give{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.give{grid-template-columns:1fr}}
+.give li{padding:18px 18px 16px;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+.give b{display:block;font-size:1rem;color:var(--ink);margin-bottom:4px}
+.give span{display:block;font-size:.92rem;color:var(--ink-2)}
+.give a{display:inline-flex;align-items:center;min-height:44px;font-weight:700;color:var(--accent)}
+.give .tagn{display:inline-block;margin-bottom:8px;font:800 12px/1 "Inter",sans-serif;letter-spacing:.12em;color:var(--accent)}
 .inlk{display:inline-flex;align-items:center;min-height:44px}
 .close-grid.one{grid-template-columns:1fr;max-width:720px}
 .vs-foot a{display:inline-flex;align-items:center;min-height:44px}
@@ -837,16 +899,16 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <p class="hero-tag"><span class="live"><i></i>OEM PARTNER</span>OEMパートナー募集｜営業リスト自動生成AI</p>
+        <p class="hero-tag"><span class="live"><i></i>OEM PARTNER</span>OEMパートナー募集｜サービス名・ロゴを貴社名に</p>
         <div class="hc" id="hc" title="押すと、3つのコピーと見出しを並べて読めます">
-          <h1 id="tw" class="hero__title" data-keep-phrase>貴社の商材に、<br>営業リストAIを足せます。</h1>
+          <h1 id="tw" class="hero__title" data-keep-phrase>貴社の名前とロゴで、<br>営業リストAIを売れます。</h1>
         </div>
         <div class="dots" role="group" aria-label="コピーの切り替え">
           <button type="button" aria-label="コピー1" aria-current="true"></button>
           <button type="button" aria-label="コピー2" aria-current="false"></button>
           <button type="button" aria-label="コピー3" aria-current="false"></button>
         </div>
-        <p class="hero-lead">「リストマスター」は、条件を決めれば<b>毎朝9時に営業リストを作り、初回のメールかFAXまで</b>送ります。月額のサービスなので、貴社の収益は月ごとの積み上げです。</p>
+        <p class="hero-lead">サービス名とロゴは、<b>貴社の名前へ自由に変更可能</b>。中身の「リストマスター」は、条件を決めれば<b>毎朝9時に営業リストを作り、初回のメールかFAXまで</b>送ります。月額のサービスなので、貴社の収益は月ごとの積み上げです。</p>
         <p class="promise">卸値や一次受けなど、まだ決まっていないことも隠さず、決まっていることと同じ表に並べてお見せします。</p>
         <div class="cta-row">
           <a class="btn" href="../b02/">個別説明を申し込む
@@ -855,7 +917,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
         </div>
       </div>
       <figure class="con" aria-label="毎朝の実行ログの画面イメージ">
-        <div class="con-top"><span class="con-t">今朝の実行ログ</span><span class="con-rep" style="color:#0e7a5a">自動で実行中</span></div>
+        <div class="con-top"><span class="con-t"><span class="bn" id="bn">リストマスター</span>今朝の実行ログ</span><span class="con-rep" style="color:#0e7a5a">自動で実行中</span></div>
         <div class="run-cond"><small>今日の条件</small><span>新潟県</span><span>システム開発</span><span>従業員10〜50名</span></div>
         <div class="con-body one">
           <div class="con-steps"><p class="con-l">今日の手順</p>
@@ -869,19 +931,35 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
             </ol>
           </div>
         </div>
-        <figcaption>毎朝の手順を説明するための画面イメージです。条件は例で、実際の画面とは表示が異なります。</figcaption>
+        <figcaption>毎朝の手順を説明するための画面イメージです。左上の名前は、貴社のサービス名に置き換えた場合の例。条件も例です。</figcaption>
       </figure>
     </div>
 
     <ul class="hfacts">
+      <li><span>サービス名・ロゴ</span><b>貴社名に変更可</b></li>
       <li><span>起動する時刻</span><b>毎朝9時</b></li>
       <li><span>運用実績</span><b>弊社営業部門で毎日</b></li>
-      <li><span>初回の連絡</span><b>メール・FAX</b></li>
-      <li><span>直販の公開価格</span><b>初期50万円＋月3万円</b></li>
+            <li><span>直販の公開価格</span><b>初期50万円＋月3万円</b></li>
     </ul>
   </div>
   <p class="gen">背景はイメージです</p>
 </section>
+
+<!-- ===== 白ラベル ===== -->
+<div class="brandband" aria-label="サービス名とロゴの差し替え">
+  <div class="wrap">
+    <div class="bb-head">
+      <p class="bb-title">サービス名もロゴも、<br>貴社のものに変えて売れます。</p>
+      <p class="bb-lead">中身はリストマスターのまま、お客様に見せる名前とロゴを貴社の名前に自由に変えられます。既存のお客様には、貴社の新しいサービスとして案内してください。</p>
+    </div>
+    <div class="bb-grid">
+      <div class="bb-card"><div class="bar"><span class="logo"><svg aria-hidden="true"><use href="#mark"/></svg></span><span class="nm">リストマスター</span><span class="lb">弊社の直販</span></div><div class="rows"><i></i><i></i><i></i></div></div>
+      <span class="bb-arrow" aria-hidden="true">→</span>
+      <div class="bb-card you"><div class="bar"><span class="logo">貴社<br>LOGO</span><span class="nm">貴社のサービス名</span><span class="lb">貴社が売るとき</span></div><div class="rows"><i></i><i></i><i></i></div></div>
+    </div>
+    <p class="bb-note">図は差し替えの考え方を示したイメージです。名前とロゴをどの画面・どの通知に反映するかの細部は、個別説明でご案内します。</p>
+  </div>
+</div>
 
 <!-- ===== 1. 問題 ===== -->
 <section id="why" aria-labelledby="s1">
@@ -1011,7 +1089,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
       <p class="eyebrow">REVENUE MODEL</p>
       <h2 id="s5">収益は売り切りでなく、<br>月額の積み上げで考える。</h2>
     </div>
-      <p class="sec-lead">リストマスターは従量課金のない月額のサービスです。お客様が続けるかぎり、毎月の収益になります。卸値と推奨売価は確定前です。数字を先に置くとひとり歩きするため、ここでは直販の公開価格と、収益の式の形だけを並べます。</p>
+      <p class="sec-lead">リストマスターは従量課金のない月額のサービスです。お客様が続けるかぎり、毎月の収益になります。卸値と推奨売価は確定前なので、弊社からの試算は書面で条件が決まってからお出しします。下の計算機には、貴社の見込みを入れて形だけ確かめてください。</p>
     </div>
     <div class="price-grid">
       <div class="price-card">
@@ -1043,6 +1121,28 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
           <li><b>紹介URLごとに料金を設定できます</b>販売会社ごとの紹介URLを発行し、URLごとに料金を分ける仕組みがあります。貴社が設定できる範囲は<span class="nobr">【要確認】</span>です。</li>
           <li><b>代理店ごとのクーポンを発行できます</b>値引きできるのは初期費用だけです。月額は値引きの対象になりません。</li>
         </ul>
+      </div>
+    </div>
+    <div class="sim2" id="sim">
+      <div class="sim2-h">
+        <h3>月額の積み上げを、<br>貴社の見込みで確かめる</h3>
+        <p>入力した数字で計算するだけの道具です。弊社が約束する数字ではありません。解約なし・初期費用なしの前提で計算しています。</p>
+      </div>
+      <div class="sim2-b">
+        <div>
+          <div class="fld"><label for="sm-n">毎月、新しく増えるお客様</label><span class="val"><span id="sm-nv">2</span><small>社／月</small></span><input id="sm-n" type="range" min="1" max="10" step="1" value="2" aria-describedby="sm-nh"><span class="hint" id="sm-nh">1〜10社で動かせます</span></div>
+          <div class="fld"><label for="sm-p">貴社がお客様に出す月額（1社あたり）</label><input id="sm-p" type="number" inputmode="numeric" min="0" step="1000" value="30000"><span class="hint">初期値は直販の公開価格（月30,000円）</span></div>
+          <div class="fld"><label for="sm-w">卸値（1社あたり・月額）</label><input id="sm-w" type="number" inputmode="numeric" min="0" step="1000" placeholder="決まったら入力"><span class="hint">卸値は【調整中】です。書面を受け取ったら入れてください</span></div>
+        </div>
+        <div>
+          <div class="sim2-out" aria-live="polite">
+            <div><span>12か月後の契約数</span><b id="sm-c">24社</b></div>
+            <div><span>12か月目の月額</span><b id="sm-m">720,000円</b></div>
+            <div class="gp"><span id="sm-gl">1年間の粗利（卸値を入れると出ます）</span><b id="sm-g">—</b></div>
+          </div>
+          <div class="chart" id="sm-chart" role="img" aria-label="月ごとの月額売上の積み上げ"><div class="tip" id="sm-tip"></div></div>
+          <p class="sim2-f">棒は各月の月額売上（貴社の売価ベース）。お客様が増えるほど、翌月以降も続けて積み上がります。</p>
+        </div>
       </div>
     </div>
     <p class="sell-h">お客様が申し込むまでの流れ</p>
@@ -1122,6 +1222,15 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
         </ul>
       </div>
     </div>
+    <p class="sell-h">立ち上げのために、弊社が渡すもの</p>
+    <ul class="give">
+      <li><span class="tagn">BRAND</span><b>名前とロゴの差し替え</b><span>サービス名とロゴを、貴社の名前に自由に変えられます。</span></li>
+      <li><span class="tagn">URL</span><b>紹介URLとクーポン</b><span>貴社専用の紹介URLと、代理店ごとのクーポン（値引きは初期費用だけ）。</span></li>
+      <li><span class="tagn">SLIDES</span><b>個別説明の投影資料</b><span>13枚。各ページに話す言葉つき。<a href="../b03/">B-03を見る</a></span></li>
+      <li><span class="tagn">TALK</span><b>お客様への話し方</b><span>貴社の営業がお客様に話す言い回しと切り返し。取り扱いが決まった会社にお渡しします。</span></li>
+      <li><span class="tagn">SITE</span><b>直販のサービスサイト</b><span>商品の中身を説明するときの参考に。<a href="https://writeup-inc.github.io/saas/list-master/" target="_blank" rel="noopener">サイトを見る</a></span></li>
+      <li><span class="tagn">SUPPORT</span><b>立ち上げの支援</b><span>条件決めや文面づくりを、弊社の運用チームがどこまで支えるかは【要確認】です。</span></li>
+    </ul>
   </div>
 </section>
 
@@ -1134,7 +1243,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
     </div>
       <p class="sec-lead">OEMの話は、ここが曖昧なまま進むと途中で止まります。確定している行と、まだ決まっていない行を、同じ表に並べました。【要確認】の行は、個別説明のあとに書面でお答えします。</p>
     </div>
-    <p class="resp-legend"><span><span class="st ok">確定</span> 5行</span><span><span class="st ng">要確認</span> 8行</span></p>
+    <p class="resp-legend"><span><span class="st ok">確定</span> 6行</span><span><span class="st ng">要確認</span> 7行</span></p>
     <div class="resp-wrap">
       <table class="resp">
         <thead><tr><th scope="col">項目</th><th scope="col">担当</th><th scope="col">状態</th><th scope="col">補足</th></tr></thead>
@@ -1145,6 +1254,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
           <tr><th scope="row">紹介URL・URLごとの料金・代理店別クーポンの仕組み</th><td class="who" data-l="担当">弊社</td><td data-l="状態"><span class="st ok">確定</span></td><td class="memo" data-l="補足">クーポンで値引きできるのは初期費用だけです。</td></tr>
           <tr><th scope="row">自社のお客様への提案と販売</th><td class="who" data-l="担当">貴社</td><td data-l="状態"><span class="st ok">確定</span></td><td class="memo" data-l="補足">どのお客様に出すかの判断も、貴社が担います。</td></tr>
           <tr><th scope="row">紹介URLをお客様に案内する</th><td class="who" data-l="担当">貴社</td><td data-l="状態"><span class="st ok">確定</span></td><td class="memo" data-l="補足">申込の入口は、紹介URLです。</td></tr>
+          <tr><th scope="row">サービス名とロゴを貴社の名前に変える</th><td class="who" data-l="担当">貴社が決める</td><td data-l="状態"><span class="st ok">確定</span></td><td class="memo" data-l="補足">名前もロゴも、貴社の名前に自由に変えられます。</td></tr>
           <tr class="sep"><th colspan="4" scope="colgroup">まだ決まっていないこと</th></tr>
           <tr class="open"><th scope="row">立ち上げ時の条件決めと文面の支援</th><td class="who" data-l="担当"><span class="tbd">【要確認：担当】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">弊社の運用チームが、どこまで伴走するかを含みます。</td></tr>
           <tr class="open"><th scope="row">お客様からの問い合わせの一次受け</th><td class="who" data-l="担当"><span class="tbd">【要確認：担当】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">技術的な問い合わせの切り分けも対象。</td></tr>
@@ -1152,7 +1262,6 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
           <tr class="open"><th scope="row">送信先からの配信停止依頼・苦情の受付</th><td class="who" data-l="担当"><span class="tbd">【要確認：担当】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">停止した相手に以後送らない仕組みは、確定しています。</td></tr>
           <tr class="open"><th scope="row">送信者として表示する名義</th><td class="who" data-l="担当"><span class="tbd">【要確認：名義】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">お客様・貴社・弊社のどの名前で送るか。</td></tr>
           <tr class="open"><th scope="row">お客様との契約の当事者</th><td class="who" data-l="担当"><span class="tbd">【要確認：担当】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">利用規約をどちらの名前で結ぶかを含みます。</td></tr>
-          <tr class="open"><th scope="row">貴社の名称やロゴでの表示</th><td class="who" data-l="担当"><span class="tbd">【要確認：ブランド表記】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">管理画面や報告メールを、どこまで貴社の名前にできるか。</td></tr>
           <tr class="open"><th scope="row">お客様向け販促物の提供範囲</th><td class="who" data-l="担当"><span class="tbd">【要確認：販促物の範囲】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">直販のサービスサイトを、そのまま案内に使えるかを含みます。</td></tr>
         </tbody>
       </table>
@@ -1240,7 +1349,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
       </details>
       <details>
         <summary>貴社の名前で売ることはできますか。</summary>
-        <div class="a"><p><span class="tbd">【要確認：ブランド表記】</span> 管理画面や報告メールを、どこまで貴社の名前にできるかは未確定です。書面で個別にお答えします。</p></div>
+        <div class="a"><p>できます。サービス名とロゴの変更は、貴社の自由です。どの画面・どの通知に反映するかの細部は、個別説明でご案内します。</p></div>
       </details>
       <details>
         <summary>同じ地域や業種で、ほかのパートナーにも出しますか。</summary>
@@ -1354,7 +1463,7 @@ document.documentElement.classList.add('js');
 (function(){
   /* ===== ヒーロー：3つのコピーのローテーション ===== */
   var COPIES=[
-    {c:'貴社の商材に、\n営業リストAIを足せます。',s:'何を売るのか。お客様が毎朝の営業リスト作りから初回の連絡までを任せられる、月額のAIです。'},
+    {c:'貴社の名前とロゴで、\n営業リストAIを売れます。',s:'何を売るのか。毎朝の営業リスト作りから初回の連絡までを任せられる月額のAIを、サービス名もロゴも貴社のものに変えて販売できます。'},
     {c:'顧客を、競合より\n先に着く1社目に。',s:'何が違うのか。検索の上位に出る会社には競合も行っています。条件を狭く決め、競合と重なりにくい先に毎朝当てにいきます。'},
     {c:'「新規が取れない」と\n言われたら、何を出すか。',s:'誰のための話か。お客様から新規開拓の相談を受けても、いま出せる答えがない会社に向けたページです。'}
   ];
@@ -1432,6 +1541,53 @@ document.addEventListener('click', function (e) {
   window.open('https://chatgpt.com/?q=' + encodeURIComponent(p), '_blank', 'noopener,noreferrer');
   if (navigator.clipboard) navigator.clipboard.writeText(p).catch(function () {});
 });
+</script>
+
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* 画面イメージ左上の名前：直販名 ⇄ 貴社のサービス名 */
+  var bn=document.getElementById('bn');
+  if(bn&&!reduce){ var names=['リストマスター','貴社のサービス名'],k=0;
+    setInterval(function(){ bn.classList.add('fade'); setTimeout(function(){ k=1-k; bn.textContent=names[k]; bn.classList.toggle('swap',k===1); bn.classList.remove('fade'); },350); },3200); }
+  /* 計算機 */
+  var n=document.getElementById('sm-n'); if(!n) return;
+  var pr=document.getElementById('sm-p'), wh=document.getElementById('sm-w'), box=document.getElementById('sm-chart'), tip=document.getElementById('sm-tip');
+  function yen(v){ return Math.round(v).toLocaleString('ja-JP')+'円'; }
+  function man(v){ return v>=10000? (Math.round(v/1000)/10).toLocaleString('ja-JP')+'万' : String(v); }
+  function draw(vals){
+    var W=Math.max(300,Math.round(box.clientWidth)||560),H=W<460?220:230,L=W<460?40:48,B=28,T=18,R=8,narrow=W<460,max=Math.max.apply(null,vals)||1;
+    var step=Math.pow(10,Math.floor(Math.log10(max))); var top=Math.ceil(max/step)*step; if(top/step<3) { step/=2; top=Math.ceil(max/step)*step; }
+    var bw=(W-L-R)/vals.length, g='', pad=narrow?2:4;
+    for(var y=0;y<=top+1e-6;y+=step){ var yy=H-B-(H-B-T)*y/top; g+='<line class="gl" x1="'+L+'" x2="'+(W-R)+'" y1="'+yy+'" y2="'+yy+'"/><text class="ax" x="'+(L-6)+'" y="'+(yy+4)+'" text-anchor="end">'+man(y)+'</text>'; }
+    vals.forEach(function(v,i){ var h=(H-B-T)*v/top, x=L+i*bw+pad, w=bw-pad*2, y=H-B-h;
+      g+='<path class="bar" data-i="'+i+'" d="M'+x+','+(H-B)+'V'+(y+4)+'q0,-4 4,-4h'+(w-8)+'q4,0 4,4V'+(H-B)+'Z"/>';
+      if(!narrow||i%2===1) g+='<text class="ax" x="'+(x+w/2)+'" y="'+(H-8)+'" text-anchor="middle">'+(i+1)+(narrow?'月':'月目')+'</text>'; });
+    var li=vals.length-1, lx=L+li*bw+bw/2, ly=H-B-(H-B-T)*vals[li]/top-6;
+    g+='<text class="lbl" x="'+lx+'" y="'+ly+'" text-anchor="end">'+man(vals[li])+'円</text>';
+    box.querySelectorAll('svg').forEach(function(e){e.remove();});
+    box.insertAdjacentHTML('afterbegin','<svg viewBox="0 0 '+W+' '+H+'" aria-hidden="true">'+g+'</svg>');
+    box.querySelectorAll('.bar').forEach(function(b){
+      b.addEventListener('mouseenter',function(){ var i=+b.dataset.i, r=b.getBoundingClientRect(), br=box.getBoundingClientRect();
+        tip.textContent=(i+1)+'月目：'+yen(vals[i])+'（'+(+n.value*(i+1))+'社）'; tip.style.left=(r.left-br.left+r.width/2)+'px'; tip.style.top=(r.top-br.top)+'px'; tip.classList.add('on'); b.classList.add('on'); });
+      b.addEventListener('mouseleave',function(){ tip.classList.remove('on'); b.classList.remove('on'); });
+    });
+  }
+  function calc(){
+    var per=+n.value, p=Math.max(0,+pr.value||0), w=wh.value===''?null:Math.max(0,+wh.value||0);
+    document.getElementById('sm-nv').textContent=per;
+    var vals=[],sum=0; for(var i=1;i<=12;i++){ vals.push(per*i*p); sum+=per*i; }
+    document.getElementById('sm-c').textContent=(per*12)+'社';
+    document.getElementById('sm-m').textContent=yen(per*12*p);
+    var gl=document.getElementById('sm-gl'), g=document.getElementById('sm-g');
+    if(w===null){ gl.textContent='1年間の粗利（卸値を入れると出ます）'; g.textContent='—'; }
+    else { gl.textContent='1年間の粗利（月額×契約数の合計 − 卸値分）'; g.textContent=yen((p-w)*sum); }
+    draw(vals);
+  }
+  [n,pr,wh].forEach(function(e){ e.addEventListener('input',calc); });
+  var rt; window.addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(calc,150); });
+  calc();
+})();
 </script>
 </body>
 </html>
