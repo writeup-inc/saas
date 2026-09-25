@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>広告と補助金の順番</title>
-<meta name="description" content="「広告を半額補助で出したい」という相談に、補助金より先に1人あたりの集客単価と損益分岐を話す、という考え方を口述ログから整理した社内ノート。AIで広告を出す仕組みの価格検討と、事例・インタビュー・比較資料の見せ方を含む。">
+<meta name="description" content="補助金の相談を受けた商談で、補助金より先に1人あたりの集客単価の上限（LTV×受注率）を計算し、同意をもらってから補助金を後乗せする5手の順番と、「本当に半額になるの？」への答え方をまとめた経コン営業チーム向けノート。">
 <style>
 /* ── lp-base.css（改行制御・最小文字サイズ・固定CTAの逃げ） ── */
 h1, h2, h3, h4, h5, .lead, .catch, [data-keep-phrase] {
@@ -96,8 +96,8 @@ li::marker { color: var(--sub); }
 
 /* 中心の一文 */
 .core { margin: 28px 0 8px; padding: 22px 26px; border: 1.5px solid var(--ink); background: var(--card); }
-.core .label { font-size: 13px; color: var(--sub); letter-spacing: .12em; margin: 0 0 6px; font-weight: 600; }
-.core .catch { font-family: var(--serif); font-size: clamp(1.2rem, 3vw, 1.6rem); line-height: 1.6; margin: 0 0 10px; }
+.core .label { font-size: 13px; color: var(--accent); letter-spacing: .12em; margin: 0 0 6px; font-weight: 700; }
+.core .catch { font-family: var(--serif); font-size: clamp(1.15rem, 2.8vw, 1.5rem); line-height: 1.65; margin: 0 0 10px; }
 .core p:last-child { margin: 0; color: var(--sub); font-size: 15px; }
 
 /* 計算式 */
@@ -107,13 +107,44 @@ li::marker { color: var(--sub); }
 .calc .eq + .eq { margin-top: 4px; }
 .calc .note { margin: 8px 0 0; font-size: 13px; }
 
+/* 図 */
+figure.fig { margin: 20px 0 24px; padding: 16px 18px 12px; border: 1px solid var(--line); background: var(--card); }
+figure.fig .ttl { font-family: var(--serif); font-size: 15px; font-weight: 600; margin: 0 0 12px; line-height: 1.6 !important; }
+figure.fig figcaption { margin: 12px 0 0; padding-top: 8px; border-top: 1px dashed var(--line); font-size: 14.5px; font-weight: 600; color: var(--ink); line-height: 1.7; }
+figure.fig .src { font-size: 12px; color: var(--sub); font-weight: 400; display: block; margin-top: 2px; }
+
+/* 棒グラフ（HTMLで描く。文字は実寸のまま） */
+.bars { position: relative; margin: 4px 0 0; padding: 0; list-style: none; }
+.bars li { display: grid; grid-template-columns: 11.5em 1fr; gap: 12px; align-items: center; margin: 0 0 10px; line-height: 1.5 !important; }
+.bars .lb { font-size: 14px; color: var(--ink); }
+.bars .tr { position: relative; height: 22px; }
+.bars .b { display: block; height: 100%; background: var(--line); }
+.bars li.win .b { background: var(--ink); }
+.bars li.win .lb { font-weight: 700; }
+.bars .th { position: absolute; top: -6px; bottom: -6px; left: var(--th); border-left: 2px dashed var(--accent); }
+.bars-legend { display: grid; grid-template-columns: 11.5em 1fr; gap: 12px; margin: 4px 0 10px; min-height: 20px; line-height: 1.6 !important; }
+.bars-legend span:last-child { position: relative; font-size: 12px; color: var(--accent); font-weight: 700; }
+.bars-legend em { position: absolute; left: var(--th); transform: translateX(-50%); font-style: normal; white-space: nowrap; }
+
+/* フロー図（SVG） */
+.flow svg { display: block; width: 100%; height: auto; margin: 0 auto; }
+.flow .tall { display: none; max-width: 320px; }
+.flow .box { fill: var(--card); stroke: var(--line); stroke-width: 1.5; }
+.flow .box.hot { stroke: var(--accent); stroke-width: 2; }
+.flow .t { fill: var(--ink); font-family: var(--sans); font-size: 15px; font-weight: 600; }
+.flow .n { fill: var(--sub); font-family: var(--sans); font-size: 12px; font-weight: 700; }
+.flow .n.hot { fill: var(--accent); }
+.flow .ar { stroke: var(--sub); stroke-width: 1.5; fill: none; }
+.flow .ah { fill: var(--sub); }
+
 /* 話す順番 */
 .steps { margin: 12px 0 14px; padding-left: 1.9em; }
-.steps li { margin: 0 0 16px; }
-.steps li b { display: block; font-family: var(--serif); font-weight: 600; font-size: 1.06rem; line-height: 1.7; }
-.steps li span { display: block; font-size: 15px; color: var(--sub); line-height: 1.8; }
-.steps li::marker { color: var(--ink); font-weight: 700; }
-.steps .key { display: inline-block; font-family: var(--sans); font-size: 12px; font-weight: 700; color: var(--accent); border: 1px solid var(--accent); padding: 0 6px; margin-right: 6px; line-height: 1.7; vertical-align: 2px; }
+.steps > li { margin: 0 0 22px; }
+.steps > li > b { display: block; font-family: var(--serif); font-weight: 600; font-size: 1.06rem; line-height: 1.7; }
+.steps > li::marker { color: var(--ink); font-weight: 700; }
+.steps .say { margin: 6px 0 4px; }
+.steps .aside { display: block; font-size: 14px; color: var(--sub); line-height: 1.8; }
+.key { display: inline-block; font-family: var(--sans); font-size: 12px; font-weight: 700; color: var(--accent); border: 1px solid var(--accent); padding: 0 6px; margin-right: 6px; line-height: 1.7; vertical-align: 2px; }
 
 /* 比較 */
 .pair { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); margin: 12px 0 18px; background: var(--card); }
@@ -129,16 +160,22 @@ th, td { border-bottom: 1px solid var(--line); padding: 10px 12px; text-align: l
 th { font-weight: 600; font-size: 13px; color: var(--sub); border-bottom: 1px solid var(--ink); white-space: nowrap; }
 td:first-child { font-weight: 600; width: 34%; }
 td { word-break: auto-phrase; line-break: strict; }
+td.tbd { color: var(--sub); white-space: nowrap; width: 6em; }
 
 main.paper p, main.paper li { line-height: 32px; }
-.say p, .core p, .calc p, .pair li, .steps li, .foot p, .foot li, td { line-height: 1.8 !important; }
+.say p, .core p, .calc p, .pair li, .steps li, .foot p, .foot li, td, figure li { line-height: 1.8 !important; }
 
 .foot { margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13px; color: var(--sub); }
-.foot h3 { font-size: 14px; margin: 12px 0 6px; color: var(--sub); }
-.foot ul { margin: 6px 0 0; }
-.foot table { font-size: 13px; }
-.foot td:first-child { width: 30%; }
+.foot p { margin: 0 0 10px; }
+.foot details { border: 1px solid var(--line); background: var(--card); padding: 8px 14px; }
+.foot summary { cursor: pointer; font-size: 13px; font-weight: 600; color: var(--sub); }
+.foot table { font-size: 13px; margin-top: 8px; }
+.foot td:first-child { width: 36%; }
 
+@media (max-width: 1000px) {
+  .flow .wide { display: none; }
+  .flow .tall { display: block; }
+}
 @media (max-width: 760px) {
   .paper { margin: 0; border: 0; padding: 32px 16px 56px 30px; }
   .paper::before { left: 16px; }
@@ -151,36 +188,113 @@ main.paper p, main.paper li { line-height: 32px; }
   table.stack tr { border-bottom: 1px solid var(--line); padding: 8px 0; }
   table.stack td { border: 0; padding: 2px 10px; }
   table.stack td:first-child { width: 100%; }
+  table.stack td.tbd { width: 100%; font-size: 13px; }
+  figure.fig { padding: 14px 12px 10px; }
+  .flow .wide { display: none; }
+  .flow .tall { display: block; }
+  .bars li, .bars-legend { grid-template-columns: 1fr; gap: 4px; }
+  .bars-legend span:first-child { display: none; }
+  .bars li { margin-bottom: 12px; }
 }
 </style>
 </head>
 <body>
 <main class="paper">
 
-<p class="kicker">社内ノート ｜ 口述ログからの整理</p>
-<h1>補助金は目的ではない。<br>1人いくらで集客できるかが本題</h1>
-<p class="meta">2026年9月25日 ／ 社内限</p>
+<p class="kicker">社内ノート ｜ 補助金の相談を受けた商談の前に読む</p>
+<h1>補助金の話は4手目。<br>先に、1人いくらまで<br>出せるかを計算する</h1>
+<p class="meta">2026年9月25日 ／ 経コン営業チーム向け</p>
 <p class="lead">「広告を半額補助で出したい」という相談は多い。けれど相手が本当に欲しいのは、150万円・100万円の補助そのものではなく、<span class="mk">できるだけ安く1人を集客すること</span>。まずそれを思い出してもらい、補助金はその後に置く。</p>
 
 <div class="core">
-  <p class="label">この話の芯</p>
-  <p class="catch">補助金を使っても使わなくても、<br>損益分岐より安く広告を出す。<br>そのやり方を覚えるほうが本質。</p>
+  <p class="label">3手目で必ずもらう一言</p>
+  <p class="catch">「補助金を使っても使わなくても、損益分岐以下で広告を出すやり方を覚えるほうが、御社のためですよね」</p>
   <p>補助金は、効く広告を半額にしてくれる割引にすぎない。効かない広告を半額にしても赤字は赤字。</p>
 </div>
 
-<!-- 1 -->
-<h2><span class="no">01</span>欲しいのは補助金ではなく、安い1人あたり集客</h2>
+<!-- 01 -->
+<h2><span class="no">01</span>お客様が欲しいのは補助金ではなく、1人あたりの安い集客</h2>
 <p>1人あたりいくらまでなら集客にかけてよいかは、LTVと受注率を掛ければ出る。これが損益分岐点になる。</p>
 <div class="calc">
   <p class="eq">1人の見込み客にかけてよい上限 ＝ <b>LTV × 受注率</b></p>
   <p class="eq">実際の集客単価がこれを<b>下回れば</b>、広告を出してよい</p>
-  <p class="note">補足（整理時に追加）：LTVは売上ではなく粗利で見ると、損益分岐を甘く見積もらずに済む。</p>
+  <p class="note">整理者の補足（ログ外）：LTVは売上ではなく粗利で見ると、損益分岐を甘く見積もらずに済む。</p>
 </div>
+
+<figure class="fig" aria-labelledby="bars-ttl">
+  <p class="ttl" id="bars-ttl">1人あたりの集客単価（点線が上限）</p>
+  <ul class="bars" style="--th:38%">
+    <li><span class="lb">いまの出し方</span><span class="tr"><span class="b" style="width:100%"></span><span class="th"></span></span></li>
+    <li><span class="lb">補助金で半額</span><span class="tr"><span class="b" style="width:50%"></span><span class="th"></span></span></li>
+    <li class="win"><span class="lb">出し方を変える</span><span class="tr"><span class="b" style="width:16%"></span><span class="th"></span></span></li>
+    <li class="win"><span class="lb">出し方＋補助金</span><span class="tr"><span class="b" style="width:8%"></span><span class="th"></span></span></li>
+  </ul>
+  <p class="bars-legend" style="--th:38%" aria-hidden="true"><span></span><span><em>上限＝LTV×受注率</em></span></p>
+  <figcaption>半額にしても上限を超えることがある。出し方を変えれば下回れる。<span class="src">比率を示すための例。数字は口述の「効果は5〜10倍変わる」をもとにした目安で、実測値ではない。</span></figcaption>
+</figure>
+
 <ul>
-  <li>補助金を使えば、この集客単価が<strong>機械的に半額</strong>になる。だから使えるなら使えばいい。</li>
-  <li>ただし、ちゃんとした広告を出さないと、そもそも損益分岐を下回れるかが分からない。</li>
+  <li>補助金を使えば、集客単価は<strong>機械的に半額</strong>になる。使えるなら使えばいい。</li>
+  <li>ただし、ちゃんとした広告を出さないと、そもそも上限を下回れるかが分からない。</li>
   <li>広告の出し方次第で効果は<span class="mk">5倍にも10倍にも変わる</span>。半額の差よりずっと大きい。</li>
 </ul>
+
+<!-- 02 -->
+<h2><span class="no">02</span>商談は5手。補助金の話は4手目に回す</h2>
+<figure class="fig flow" aria-labelledby="flow-ttl">
+  <p class="ttl" id="flow-ttl">補助金の相談を受けたときの話す順番</p>
+  <svg class="wide" viewBox="0 0 900 96" role="img" aria-labelledby="flow-t1">
+    <title id="flow-t1">欲しいもの確認、上限を計算、同意をもらう、補助金は後乗せ、似た事例で受注、の5手</title>
+    <defs><marker id="ah1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+    <g>
+      <rect class="box" x="2" y="16" width="148" height="64"/><text class="n" x="76" y="38" text-anchor="middle">1</text><text class="t" x="76" y="62" text-anchor="middle">欲しいもの確認</text>
+      <rect class="box" x="189" y="16" width="148" height="64"/><text class="n" x="263" y="38" text-anchor="middle">2</text><text class="t" x="263" y="62" text-anchor="middle">上限を計算</text>
+      <rect class="box hot" x="376" y="16" width="148" height="64"/><text class="n hot" x="450" y="38" text-anchor="middle">3</text><text class="t" x="450" y="62" text-anchor="middle">同意をもらう</text>
+      <rect class="box" x="563" y="16" width="148" height="64"/><text class="n" x="637" y="38" text-anchor="middle">4</text><text class="t" x="637" y="62" text-anchor="middle">補助金は後乗せ</text>
+      <rect class="box hot" x="750" y="16" width="148" height="64"/><text class="n hot" x="824" y="38" text-anchor="middle">5</text><text class="t" x="824" y="62" text-anchor="middle">似た事例で受注</text>
+      <path class="ar" d="M152,48 H186" marker-end="url(#ah1)"/>
+      <path class="ar" d="M339,48 H373" marker-end="url(#ah1)"/>
+      <path class="ar" d="M526,48 H560" marker-end="url(#ah1)"/>
+      <path class="ar" d="M713,48 H747" marker-end="url(#ah1)"/>
+    </g>
+  </svg>
+  <svg class="tall" viewBox="0 0 320 404" role="img" aria-labelledby="flow-t2">
+    <title id="flow-t2">欲しいもの確認、上限を計算、同意をもらう、補助金は後乗せ、似た事例で受注、の5手</title>
+    <defs><marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+    <g>
+      <rect class="box" x="30" y="2" width="260" height="56"/><text class="n" x="52" y="35">1</text><text class="t" x="160" y="36" text-anchor="middle">欲しいもの確認</text>
+      <rect class="box" x="30" y="88" width="260" height="56"/><text class="n" x="52" y="121">2</text><text class="t" x="160" y="122" text-anchor="middle">上限を計算</text>
+      <rect class="box hot" x="30" y="174" width="260" height="56"/><text class="n hot" x="52" y="207">3</text><text class="t" x="160" y="208" text-anchor="middle">同意をもらう</text>
+      <rect class="box" x="30" y="260" width="260" height="56"/><text class="n" x="52" y="293">4</text><text class="t" x="160" y="294" text-anchor="middle">補助金は後乗せ</text>
+      <rect class="box hot" x="30" y="346" width="260" height="56"/><text class="n hot" x="52" y="379">5</text><text class="t" x="160" y="380" text-anchor="middle">似た事例で受注</text>
+      <path class="ar" d="M160,60 V85" marker-end="url(#ah2)"/>
+      <path class="ar" d="M160,146 V171" marker-end="url(#ah2)"/>
+      <path class="ar" d="M160,232 V257" marker-end="url(#ah2)"/>
+      <path class="ar" d="M160,318 V343" marker-end="url(#ah2)"/>
+    </g>
+  </svg>
+  <figcaption>外せないのは3と5。同意をもらってから補助金、事例で決める。</figcaption>
+</figure>
+
+<ol class="steps">
+  <li><b>欲しいものを思い出してもらう</b>
+    <div class="say"><p>「補助金が欲しいのではなく、1人あたりをできるだけ安く集客したい、ということですよね」</p></div></li>
+  <li><b>1人いくらまでなら合うかを一緒に計算する</b>
+    <span class="aside">LTV×受注率で、御社の上限となる集客単価を出す。</span></li>
+  <li><b><em class="key">同意</em>本質の問いを投げる</b>
+    <div class="say"><p>「補助金を使っても使わなくても、損益分岐以下で広告を出すやり方を覚えるほうが、御社のためですよね」</p></div>
+    <span class="aside">ここで「はい」をもらってから4へ進む。</span></li>
+  <li><b>補助金は「その上でラッキー」と置く</b>
+    <div class="say"><p>「その上で補助金が使えたらラッキーですよね。持続化補助金など毎年いろいろあるので、申請書はAIで出します」</p></div></li>
+  <li><b><em class="key">受注</em>似た会社の事例を出す</b>
+    <div class="say"><p>「広告の話だけで言うと、御社と似た事例がこうです」</p></div>
+    <span class="aside">相手が腹落ちしたところで事例を出すと決まる。事例の選び方は04。</span></li>
+</ol>
+
+<!-- 03 -->
+<h2><span class="no">03</span>「本当に半額になるの？」には、理屈で答える</h2>
+<p>AIを使えば、補助金がなくても集客単価を下げられる。聞き返されたら、次の順で答える。</p>
+
 <h3>同じ「半額」でも、残るものが違う</h3>
 <div class="pair">
   <div>
@@ -194,94 +308,62 @@ main.paper p, main.paper li { line-height: 32px; }
     <p class="h">AIで半額</p>
     <ul>
       <li>一生使えるスキルとして社内に残る</li>
-      <li>広告は何年も、一年中出したほうがコスパがいい。だから毎回効く</li>
+      <li>広告は一年中出すほどコスパが上がる。覚えたやり方はその全部に効く</li>
     </ul>
   </div>
 </div>
-<p>だから、<span class="mk">AIを使って半額にする方法を学んだほうがいい</span>。</p>
 
-<!-- 2 -->
-<h2><span class="no">02</span>商談では、この順番で話す</h2>
-<ol class="steps">
-  <li><b>欲しいものを思い出してもらう</b><span>「補助金が欲しいのではなく、1人あたりをできるだけ安く集客したい、ということですよね」</span></li>
-  <li><b>1人いくらまでなら合うかを一緒に計算する</b><span>LTV×受注率で、御社の損益分岐となる集客単価を出す。</span></li>
-  <li><b><em class="key">同意</em>本質の問いを投げる</b><span>「補助金を使っても使わなくても、損益分岐以下で広告を出すやり方を覚えるほうが、御社のためになりますよね」──ここにノーと言う人はいない。</span></li>
-  <li><b>補助金は「その上でラッキー」と置く</b><span>小規模事業者持続化補助金など、毎年いろいろある。使えるなら使えばいい。申請書はAIに出させる。</span></li>
-  <li><b><em class="key">受注</em>似た会社の事例を出す</b><span>「広告の話だけで言うと、御社と似た事例がこうです」。相手が腹落ちしたところで事例を出すと決まる。</span></li>
-</ol>
-<h3>「本当に半額になるの？」と聞かれたら</h3>
-<ul>
-  <li><strong>事例で答える。</strong>「うちもそうでした」と、当社自身の事例を出すのがいちばん早い（04章のセミナー集客）。</li>
-  <li><strong>理屈で答えるなら。</strong>広告で重要なのはクリエイティブで、お金がかかるのもそこ。代理店に頼んでも成果が出ると決まっているわけではないなら、自社で0円でやるほうが費用対効果は良くなる可能性が高い。</li>
-</ul>
-
-<!-- 3 -->
-<h2><span class="no">03</span>事例は業種を絞る。まずはカフェで1本</h2>
-<ul>
-  <li>単価が違うと説明が変わる。事例は業種を細かく具体的に言う。</li>
-  <li>問い合わせで多いのは、お弁当・カフェあたり（ログ上の発言）。まずは<strong>カフェの集客事例</strong>を話せるようにする。</li>
-  <li>どの業種が一番多いかは、代理店に聞いて確かめてもいい。</li>
-</ul>
-
-<!-- 4 -->
-<h2><span class="no">04</span>うちの武器は、AIで広告を出す仕組み</h2>
-<div class="say">
-  <p class="who">背景</p>
-  <p>札幌に移ったAIエンジニアで、今も広告代理店で広告出稿の仕事をしている人が、副業でClaude Codeの広告出稿スキルを作ってくれている。本人の見立てでは、Meta広告で当社のAIセミナーは<strong>1人2,000円前後</strong>で集客できそう。</p>
-</div>
+<h3>お金がかかるのは、広告費ではなくクリエイティブ</h3>
 <div class="pair">
   <div>
-    <p class="h">これまで</p>
+    <p class="h">代理店に頼むと</p>
     <ul>
-      <li>バナーなどをA〜Gまで何パターンも作ってテストする必要があった</li>
-      <li>代理店に頼むと、企画費・制作費が広告費そのものより高くなる（Meta広告に3万円出すのに、制作はそれ以上かかる）</li>
-      <li>自分でやると成果が出にくい</li>
+      <li>バナーなどをA〜Gまで何パターンも作ってテストする</li>
+      <li>企画費・制作費が広告費より高くなる（Meta広告に3万円出すのに、制作はそれ以上かかる）</li>
+      <li>それでも成果が出ると決まっているわけではない</li>
     </ul>
   </div>
   <div class="after">
     <p class="h">AIに任せると</p>
     <ul>
       <li>パターン出しはClaudeが全部やる</li>
-      <li>企画・制作のコストがほぼゼロになる</li>
-      <li>その仕組みを、もう当社が持っている</li>
+      <li>代理店に払う企画・制作費を0円にできる（効果が保証されるわけではない）</li>
+      <li>自社で0円でやるほうが、費用対効果は良くなる可能性が高い</li>
     </ul>
   </div>
 </div>
-<h3>当社のセミナー集客が、そのまま事例になる</h3>
+<p class="note">自分たちだけでやると成果が出にくい。だからAIに任せる。</p>
+
+<h3>当社のセミナー集客（いまは見立ての段階）</h3>
 <table class="stack">
-  <thead><tr><th>頼み方</th><th>1人あたりの集客単価（言われた金額）</th></tr></thead>
+  <thead><tr><th>頼み方</th><th>1人あたりの集客単価</th></tr></thead>
   <tbody>
     <tr><td>以前、広告の相談をしたとき</td><td>1万円はかかる、と言われた</td></tr>
-    <tr><td>いまAIで出稿している人の見立て</td><td>2,000円くらい</td></tr>
+    <tr><td>AIで出稿する場合の見立て</td><td>Meta広告で2,000円くらい</td></tr>
   </tbody>
 </table>
 <ul>
-  <li>安くなる理由は2つ。AIが役に立つことと、そもそも広告代理店が間に入っていないこと。</li>
-  <li>差の正体はほぼ人件費。人件費だけで30万円くらい変わる。</li>
-  <li>知っている人には当たり前の話。<span class="mk">知らない人が多いだけ</span>。</li>
+  <li>見立てを出したのは、広告代理店で出稿業務をしているAIエンジニア。副業でClaude Codeの出稿スキルを当社向けに作っている。</li>
+  <li>安くなる理由は2つ。AIが使えることと、そもそも代理店が間に入らないこと。差の多くは人件費で、人件費だけで30万円くらい変わる（1回あたりか月額かは未確認）。</li>
+  <li>知っている人には当たり前の話。知らない人が多いだけ。</li>
 </ul>
-<p>見立て：<span class="mk">みんな補助金より、こっちが欲しいのではないか。</span></p>
-<p><span class="tag">未決</span> 提供価格。ログでは「月5,000円」「月8万500円」と聞こえる箇所があるが、音声の桁が崩れていて確定できない。いくらで売るかは検討中。</p>
+<p><span class="tag">いまの言い方</span> 実数が出るまでは、上の2つの理屈で答える。当社のセミナー集客で実数が取れたら「うちもそうでした」に切り替える。</p>
+<p><span class="tag">未決</span> AIで広告を出す仕組みの提供価格。商談で金額を聞かれても答えず、「決まり次第ご案内します」と返す。</p>
 
-<!-- 5 -->
-<h2><span class="no">05</span>分け方を「補助金軸」から「したいこと軸」へ</h2>
-<p>サービスや顧客を分けたとき、まだ補助金を軸に分けていた、という気づきが出た。補助金の話をするにしても、その前に「そもそも効果が出る対策を打ち、それを半額でやる」という順番がある。</p>
-<div class="pair">
-  <div>
-    <p class="h">これまでの分け方</p>
-    <ul>
-      <li>「補助金が欲しい人」として分けた</li>
-      <li>補助金の話から入る</li>
-    </ul>
-  </div>
-  <div class="after">
-    <p class="h">これからの分け方</p>
-    <ul>
-      <li>お客様が何をしたいか（例：集客単価を下げたい）で分ける</li>
-      <li>効く施策 → それを補助金で半額に、の順で話す</li>
-    </ul>
-  </div>
-</div>
+<!-- 04 -->
+<h2><span class="no">04</span>事例は業種で選ぶ。まずカフェで1本</h2>
+<ul>
+  <li>単価が違うと説明が変わる。事例は業種を細かく具体的に言う。</li>
+  <li>問い合わせで多いのは、お弁当・カフェあたり。まずは<strong>カフェの集客事例</strong>を話せるようにする。</li>
+  <li>どの業種が一番多いかは、代理店に聞いて確かめてもいい。</li>
+</ul>
+<h3>本人に語ってもらうインタビュー</h3>
+<p>タイトル案は「補助金、いらないっすね」。探すのは、こう話せるお客様。</p>
+<div class="say"><p>「補助金が欲しかったのではなく、1人いくらで集客できるかを知りたかった」</p></div>
+<p><span class="warn">注意</span> 実在のお客様に、本人の言葉で語ってもらうものに限る。言葉をこちらで書かない。</p>
+
+<!-- 05 -->
+<h2><span class="no">05</span>士業は補助金の話だけ。当社は広告の出し方と補助金の両方</h2>
 <table class="stack">
   <thead><tr><th>頼む先</th><th>出てくる話</th></tr></thead>
   <tbody>
@@ -289,61 +371,41 @@ main.paper p, main.paper li { line-height: 32px; }
     <tr><td>当社に頼むと</td><td>効く広告の出し方と、補助金の両方</td></tr>
   </tbody>
 </table>
-<p class="note">儲かればいい、は資本主義の原理原則。補助金はそのための手段の一つ。</p>
-<p>分け方はこの週末にもう一度やり直す。お客様がしたいことで分け、いちばん多いのが広告なら、この章までの話で解決する。シンプル。次に多い「設備」についても同じ形で整理する（ログはここで途切れている）。</p>
+<p>この比較を資料にして、商談の前に「最初に必ず見てほしい」と添えて送っておく。</p>
 
-<!-- 6 -->
-<h2><span class="no">06</span>見せる素材は、事例・本人の声・比較資料</h2>
-<h3>他社事例</h3>
-<p>今回の考え方そのものを、他社事例として見せる。</p>
-<h3>お客様インタビュー</h3>
-<div class="say">
-  <p class="who">タイトル案</p>
-  <p>「補助金、いらないっすね」</p>
-  <p>補助金が欲しかったのではなく、1顧客5,000円で集客できるフローが知りたかっただけ。それが分からなかったから、とりあえず補助金に頼ろうとしていた、と気づいた──という本人の話。</p>
-</div>
-<p><span class="warn">注意</span> ログでも「捏造になっちゃう」と出ている。<strong>実在のお客様に、本人の言葉で語ってもらう</strong>ものに限る。創作した声を事例として出さない。</p>
-<h3>士業との比較資料<span class="guess">推測を含む</span></h3>
-<p>「なぜ士業に頼むと負けるのか」が分かる比較資料を作り、商談の前に「最初に必ず見てほしい」と添えて送っておく。</p>
-
-<!-- 7 -->
-<h2><span class="no">07</span>次にやること</h2>
+<!-- 06 -->
+<h2><span class="no">06</span>次にやること</h2>
 <table class="stack">
-  <thead><tr><th>やること</th><th>中身</th></tr></thead>
+  <thead><tr><th>やること</th><th>中身</th><th>担当・期日</th></tr></thead>
   <tbody>
-    <tr><td>カフェの集客事例を用意する</td><td>業種を絞った事例を1本、商談で話せる形にする</td></tr>
-    <tr><td>多い業種を代理店に確認する</td><td>お弁当・カフェが本当に最多かを確かめる</td></tr>
-    <tr><td>AI広告出稿の価格を決める</td><td>ログの数字の桁を確認したうえで決める</td></tr>
-    <tr><td>分け方を作り直す</td><td>週末に、補助金軸 → お客様がしたいこと軸へ。広告の次は設備</td></tr>
-    <tr><td>当社のセミナー集客を事例にまとめる</td><td>1万円と言われた → AIで2,000円前後、の実数を取って「うちもそうでした」と言える形に</td></tr>
-    <tr><td>本人インタビューを依頼する</td><td>実在のお客様に「補助金いらなかった」話を語ってもらう</td></tr>
-    <tr><td>士業との比較資料を作る</td><td>商談前に送る事前資料にする</td></tr>
+    <tr><td>当社セミナー集客の実数を取る</td><td>出稿額・集客人数・1人あたり単価。取れたら03の言い方を切り替える</td><td class="tbd">未定</td></tr>
+    <tr><td>カフェの集客事例を用意する</td><td>業種を絞った事例を1本、商談で話せる形にする</td><td class="tbd">未定</td></tr>
+    <tr><td>多い業種を代理店に確認する</td><td>お弁当・カフェが本当に最多かを確かめる</td><td class="tbd">未定</td></tr>
+    <tr><td>AI広告出稿の価格を決める</td><td>決まるまで商談では金額を出さない</td><td class="tbd">未定</td></tr>
+    <tr><td>顧客の分け方を作り直す</td><td>補助金軸から、お客様がしたいこと軸へ。広告の次は設備</td><td class="tbd">今週末</td></tr>
+    <tr><td>本人インタビューを依頼する</td><td>「補助金いらなかった」と話せる実在のお客様を探す</td><td class="tbd">未定</td></tr>
+    <tr><td>士業との比較資料を作る</td><td>商談前に送る事前資料にする</td><td class="tbd">未定</td></tr>
   </tbody>
 </table>
-<p class="note">担当者と期日はログに出ていないため空けている。</p>
 
 <div class="foot">
-  <h3>音声入力の読み替え</h3>
-  <table class="stack">
-    <thead><tr><th>ログの表記</th><th>このノートでの読み</th></tr></thead>
-    <tbody>
-      <tr><td>広告出向</td><td>広告出稿</td></tr>
-      <tr><td>資業</td><td>士業</td></tr>
-      <tr><td>字例・時代</td><td>事例</td></tr>
-      <tr><td>他者事例</td><td>他社事例</td></tr>
-      <tr><td>自動補助金</td><td>持続化補助金（推測）</td></tr>
-      <tr><td>基地顧客 5000円</td><td>1顧客5,000円（推測）</td></tr>
-      <tr><td>罰投ぎ</td><td>補助金に頼る、の意と解釈（推測）</td></tr>
-      <tr><td>相手が頭冷える</td><td>腹落ちする、の意と解釈（推測）</td></tr>
-      <tr><td>打者資料紙</td><td>他社との比較資料（推測）</td></tr>
-      <tr><td>札幌に引っ越した「かさん」／「菅さん」</td><td>氏名は聞き取れず。「札幌に移ったAIエンジニア」と記載</td></tr>
-      <tr><td>AAで半額</td><td>AIで半額</td></tr>
-      <tr><td>著者事例</td><td>当社の事例（推測）</td></tr>
-      <tr><td>23週ぐらいに言われた</td><td>時期は聞き取れず。「以前」と記載</td></tr>
-      <tr><td>浜分け方</td><td>今の分け方（推測）</td></tr>
-    </tbody>
-  </table>
-  <p>数字（1万円・2,000円・3万円・30万円・5,000円・5倍〜10倍）は口述の発言をそのまま載せたもので、実績値として確認したものではない。</p>
+  <p>このノートの数字（1万円・2,000円・3万円・30万円・5倍〜10倍）は、会議での発言をそのまま載せたもので、実績値として確かめたものではない。</p>
+  <details>
+    <summary>作成メモ：音声入力の読み替え</summary>
+    <table class="stack">
+      <thead><tr><th>ログの表記</th><th>このノートでの読み</th></tr></thead>
+      <tbody>
+        <tr><td>広告出向</td><td>広告出稿</td></tr>
+        <tr><td>資業</td><td>士業</td></tr>
+        <tr><td>字例・時代・他者事例</td><td>事例・他社事例</td></tr>
+        <tr><td>自動補助金</td><td>持続化補助金（推測）</td></tr>
+        <tr><td>AAで半額</td><td>AIで半額</td></tr>
+        <tr><td>罰投ぎ・頭冷える</td><td>補助金に頼る・腹落ちする、の意と解釈（推測）</td></tr>
+        <tr><td>打者資料紙</td><td>他社との比較資料（推測）</td></tr>
+        <tr><td>札幌の「かさん」「菅さん」</td><td>氏名は聞き取れず、書いていない</td></tr>
+      </tbody>
+    </table>
+  </details>
 </div>
 
 </main>
