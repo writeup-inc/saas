@@ -190,9 +190,12 @@
     .pick.is-key p.body strong { color: var(--white); }
     .pick-link { display: inline-flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 48px; margin-top: auto; padding: 0 18px; border: 1px solid var(--moss); color: var(--moss); font-size: 14px; font-weight: 600; letter-spacing: .03em; transition: background .2s ease, color .2s ease; }
     .pick-link:hover { background: var(--moss); color: var(--white); }
-    .pick .pick-link-wrap { margin: auto 0 0; padding-top: 24px; }
+    .pick .pick-link-wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin: auto 0 0; padding-top: 24px; }
+    .pick-sublinks { color: #5b6259; font-size: 13px; line-height: 1.7; white-space: nowrap; }
+    .pick-sublinks a { margin: 0 2px; padding: 4px 2px; border-bottom: 1px solid currentColor; color: var(--moss); font-weight: 600; }
     .pick.is-key .pick-link { border-color: var(--vermilion); background: var(--vermilion); color: var(--white); }
     .pick.is-key .pick-link:hover { background: #a82514; }
+    @media (min-width: 901px) { .pick .pick-link-wrap { min-height: 104px; align-content: flex-start; } }
     .picks-note { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: start; margin-top: 32px; padding: 20px 26px; background: var(--white); border-left: 3px solid var(--vermilion); color: var(--moss); }
     .picks-note small { color: var(--vermilion); font-size: 12px; font-weight: 600; letter-spacing: .08em; line-height: 1.8; white-space: nowrap; }
     .picks-note p { margin: 0; font-size: 14px; line-height: 1.85; }
@@ -386,7 +389,7 @@
         <ol class="loop-steps">
           <li><small>01</small><b>出会う</b><em>人に会う・<span class="nw">紹介される</span></em></li>
           <li><small>02</small><b>人脈になる</b><em>Lシンク</em></li>
-          <li><small>03</small><b>伝わる</b><em>ホームページ 2枚</em></li>
+          <li><small>03</small><b>伝わる</b><em>ホームページを自分で</em></li>
           <li class="is-goal"><small>04</small><b>収益が立つ</b><em>営業代行</em></li>
         </ol>
         <p class="loop-return"><span>04から01へ。稼ぎながら、また出会える</span></p>
@@ -403,11 +406,12 @@
           <p class="body">Lシンクは、出会った方をLINEでつなぎとめ、AIが日々のやりとりを続けて関係を切らさないようにします。囲い込む、という言い方が近いかもしれません。<strong>出会いが人脈に変わるのは、ここです。</strong></p>
           <p class="pick-link-wrap"><a class="pick-link" href="https://lsync.figma.site/" target="_blank" rel="noopener">Lシンクを詳しく見る <span aria-hidden="true">↗</span></a></p>
         </article>
-        <article class="pick"><p class="pick-no">02 / 伝わる</p><h3>ホームページ制作</h3><p class="pick-price">初期36万円のみ・月額なし</p>
+        <article class="pick"><p class="pick-no">02 / 伝わる</p><h3>ホームページ制作会社<br>スタートパック</h3><p class="pick-price">1年目 月10万円・<span class="nw">2年目から月1万円（税別）</span></p>
           <p class="pick-for">「どこを見れば分かりますか」と聞かれて、送れるURLがない方の1本目です。</p>
           <p class="body">つながった方は、どこかで一度あなたを見に来ます。そのときにやりたいことが伝わる状態にしておきます。</p>
-          <p class="body">お作りするのは2枚です。何をやっている会社なのかを正確に伝える左脳型の会社サイト。そして、なぜやるのかを伝える右脳型の共感LP。<strong>事実で信用してもらう面と、気持ちで応援してもらう面を、分けて持ちます。</strong></p>
-          <p class="pick-link-wrap"><a class="pick-link" href="https://writeup-inc.github.io/saas/homepage-production-start-pack/" target="_blank" rel="noopener">ホームページ制作を詳しく見る <span aria-hidden="true">↗</span></a></p>
+          <p class="body">作ってもらうのではなく、AI家庭教師に教わりながら自分で作れるようになるパックです。最初に作るのは自分の会社の2枚。何をやっている会社なのかを正確に伝える左脳型の会社サイトと、なぜやるのかを伝える右脳型の共感LPです。</p>
+          <p class="body"><strong>一度作れるようになれば、事業が増えても、キャンペーンを打つときも、ホームページは作り放題です。</strong>AIの利用料やドメイン・サーバー代は別にかかります。</p>
+          <p class="pick-link-wrap"><a class="pick-link" href="https://writeup-inc.github.io/saas/web-agency-kit/v3/" target="_blank" rel="noopener">スタートパックを詳しく見る <span aria-hidden="true">↗</span></a><span class="pick-sublinks">以前の版：<a href="https://writeup-inc.github.io/saas/web-agency-kit/" target="_blank" rel="noopener">v1</a> ／ <a href="https://writeup-inc.github.io/saas/web-agency-kit/v2/" target="_blank" rel="noopener">v2</a></span></p>
         </article>
         <article class="pick is-key"><p class="pick-no">03 / 収益が立つ</p><h3>営業代行会社<br>スタートパック</h3><p class="pick-price">月3万円</p>
           <p class="pick-for">交流会や紹介で、毎月10人以上の新しい方に会っている方の1本目です。</p>
@@ -419,7 +423,7 @@
       </div>
 
       <aside class="picks-note"><small>Lシンクを選ぶ場合</small><p>引き出しに名刺が残っている方は、その前に出会いを人脈に変える工程（名刺LINEエージェント）が入ります。名刺がほとんどない方は、Lシンクから始めて構いません。</p></aside>
-      <p class="picks-total">3本そろえた場合は、割引前で月6万円と初期36万円です。実際の金額は、割引を含めてご相談のうえ決定します。</p>
+      <p class="picks-total">3本そろえた場合は、割引前で1年目が月16万円、2年目からは月7万円です。実際の金額は、割引を含めてご相談のうえ決定します。</p>
 
       <div class="picks-declare"><small>OUR COMMITMENT</small><strong>営業代行会社としての<br>最初のクライアントは、<br>弊社がなります。</strong></div>
     </div></section>
