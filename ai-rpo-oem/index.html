@@ -892,6 +892,32 @@ h1,h2,h3,.logo,.btn{font-family:var(--ff-head)}
 }
 .hfacts li{min-width:0}.hfacts b,.hfacts span{overflow-wrap:anywhere}
 .co-l{display:flex;flex-wrap:wrap;gap:4px 22px;margin:18px 0 0}.co-l a{display:inline-flex;align-items:center;min-height:44px;font-size:15px;color:#fff;text-underline-offset:4px}
+
+/* ===== 05：他社との比較表（2026-09-25） ===== */
+.vs-wrap{margin-top:28px;border-radius:22px;background:var(--acl);padding:8px 18px}
+.vs{width:100%;border-collapse:collapse;font-size:15px}
+.vs th,.vs td{padding:14px 12px;border-bottom:1px solid #dfe2e6;text-align:left;vertical-align:top;line-height:1.6;word-break:auto-phrase;line-break:strict}
+.vs thead th{font-size:16px;font-weight:800;border-bottom:1px solid var(--ink)}
+.vs thead th small{display:block;font-size:13px;font-weight:500;color:var(--g2)}
+.vs thead th.ours{color:var(--hold)}
+.vs tbody th{width:15%;font-weight:700}
+.vs td.ours{background:#fff;font-weight:700}
+.vs td.lose{color:var(--g1);font-weight:500}
+.vs td.win{background:var(--amb-l);color:var(--hold)}
+.vs tbody tr:last-child th,.vs tbody tr:last-child td{border-bottom:0}
+.note a{display:inline-flex;align-items:center;min-height:44px;padding:0 2px;color:var(--ink);text-underline-offset:3px}
+.fc-vs{border-color:var(--ink);color:var(--ink)}
+@media(max-width:900px){
+  .vs-wrap{padding:0;background:transparent}
+  .vs thead{display:none}
+  .vs,.vs tbody,.vs tr,.vs th,.vs td{display:block;width:auto}
+  .vs tr{margin:0 0 12px;border-radius:14px;background:var(--acl);overflow:hidden}
+  .vs tbody th{width:auto;padding:12px 14px 8px;font-size:16px;border-bottom:1px solid #dfe2e6}
+  .vs td{display:grid;grid-template-columns:7.5em 1fr;gap:8px;padding:9px 14px;border-bottom:1px solid rgba(16,22,31,.06)}
+  .vs td::before{content:attr(data-l);font-size:13px;font-weight:700;color:var(--g2)}
+  .vs td.ours::before{color:var(--hold)}
+  .vs td:last-child{border-bottom:0}
+}
 </style>
 </head>
 <body>
@@ -901,7 +927,7 @@ h1,h2,h3,.logo,.btn{font-family:var(--ff-head)}
     <nav class="hn" aria-label="ページ内">
       <a href="#s3">6つの工程</a>
       <a href="#s4">担当の分け方</a>
-      <a href="#s5">従来との比較</a>
+      <a href="#s5">他社との比較</a>
       <a href="#s7">条件</a>
       <a href="#s9">よくある質問</a>
       <a class="btn-s" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">相談する</a>
@@ -1057,20 +1083,24 @@ h1,h2,h3,.logo,.btn{font-family:var(--ff-head)}
 <!-- 05 -->
 <section class="sec" id="s5" aria-labelledby="h5s">
   <div class="w">
-    <div class="sh"><p class="shl"><span class="no">05</span><span class="en">Compare</span></p><h2 id="h5s">手作業の運用と比べて、<br>変わるのは、直す手間と漏れ。</h2></div>
-    <div class="cmp-wrap">
-      <table class="cmp">
-        <thead><tr><th scope="col">場面</th><th scope="col">人の手だけで回す場合</th><th scope="col" class="ours">AI RPOを使う場合</th></tr></thead>
+    <div class="sh"><p class="shl"><span class="no">05</span><span class="en">Compare</span></p><h2 id="h5s">他社と比べると、違いは<br>貴社の商品にできること。</h2></div>
+    <p class="body">採用の現場でよく使われる3つのサービスと並べました。料金の公開や実績では、こちらが及ばない行もあります。</p>
+    <div class="vs-wrap">
+      <table class="vs">
+        <thead><tr><th scope="col">比べる点</th><th scope="col" class="ours">AI RPO<small>このページ</small></th><th scope="col">HeaR<small>AI RPO（AI採用代行）</small></th><th scope="col">HERP Hire<small>採用管理システム</small></th><th scope="col">ジョブカン採用管理<small>採用管理システム</small></th></tr></thead>
         <tbody>
-          <tr><th scope="row">採用基準が変わったとき</th><td>担当者が書類を1つずつ直す</td><td class="ours">関係する書類の直し案をAIがそろえ、担当者が確認する</td></tr>
-          <tr><th scope="row">候補者への連絡</th><td>担当者が1通ずつ書いて返す</td><td class="ours">AIが下書きと定型の連絡を用意し、担当者が確認する</td></tr>
-          <tr><th scope="row">面接の前</th><td>担当者が経歴と希望を読み、要点をまとめる</td><td class="ours">0.5次面接の要約を前もって読める</td></tr>
-          <tr><th scope="row">週次レポート</th><td>記録を集めて一から作る</td><td class="ours">記録から下書きを作り、担当者が仕上げる</td></tr>
+          <tr><th scope="row">形</th><td class="ours" data-l="AI RPO">AIサービス群を貴社が運用し、お客様へ提供</td><td data-l="HeaR">HeaRが採用を代行</td><td data-l="HERP Hire">採用企業が自社で使う</td><td data-l="ジョブカン">採用企業が自社で使う</td></tr>
+          <tr><th scope="row">AIが担う範囲</th><td class="ours" data-l="AI RPO">6工程のうち5つが中心</td><td data-l="HeaR">スカウト文面・書類の一次評価・日程調整</td><td data-l="HERP Hire">書類の一次レビュー・面接の記録・分析の支援</td><td data-l="ジョブカン">AI面接（オプション・近日リリース予定）</td></tr>
+          <tr><th scope="row">人が担う範囲</th><td class="ours" data-l="AI RPO">面接・合否</td><td data-l="HeaR">ターゲティングの判断・面接・改善の判断</td><td data-l="HERP Hire">採用企業の担当者と現場</td><td data-l="ジョブカン">採用企業の担当者</td></tr>
+          <tr><th scope="row">料金の公開</th><td class="ours lose" data-l="AI RPO">調整中（未公開）</td><td data-l="HeaR">月額固定制（金額は非公開）</td><td data-l="HERP Hire">年間応募300名以下は無料。有料は料金表の請求制</td><td data-l="ジョブカン">無料プランあり。LITE 月8,500円〜、初期0円</td></tr>
+          <tr><th scope="row">導入実績（公開）</th><td class="ours lose" data-l="AI RPO">公開できる実績なし</td><td data-l="HeaR">金額・社数の記載なし</td><td data-l="HERP Hire">3,000社以上</td><td data-l="ジョブカン">シリーズ累計30万社以上</td></tr>
+          <tr><th scope="row">すぐ使い始められるか</th><td class="ours lose" data-l="AI RPO">相談から</td><td data-l="HeaR">相談から</td><td data-l="HERP Hire">無料プランあり</td><td data-l="ジョブカン">30日間の無料お試し</td></tr>
+          <tr><th scope="row">貴社のサービスとして提供</th><td class="ours win" data-l="AI RPO">前提（範囲は調整中）</td><td data-l="HeaR">記載なし</td><td data-l="HERP Hire">記載なし（パートナープログラムあり）</td><td data-l="ジョブカン">記載なし</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="note">AIの出力は、貴社が確認してから使います。確認の手間はゼロにはなりません。</p>
-    <button class="fc-btn" type="button" data-fc-section="手作業の採用代行運用との比較" data-fc-claim="人の手だけで回す採用代行の運用では、採用基準が変わると担当者が求人票などを1つずつ直す／AIを使うと、書類の直し案・候補者への連絡の下書き・面接前の要約・週次レポートの下書きをAIが作り、担当者が確認する形にできる">ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button>
+    <p class="note">各社公式サイトの公開情報（2026年9月25日確認）：<a href="https://www.hear.co.jp/recruit/ai-rpo" target="_blank" rel="noopener">HeaR</a>／<a href="https://lp.herp.cloud/" target="_blank" rel="noopener">HERP Hire</a>／<a href="https://ats.jobcan.ne.jp/" target="_blank" rel="noopener">ジョブカン採用管理</a>。料金・機能は変わることがあります。</p>
+    <button class="fc-btn fc-vs" type="button" data-fc-mode="vs" data-fc-section="他社との比較" data-fc-claim="AI RPO（このページ）：AIサービス群を採用代行の事業者が運用してお客様へ提供／AIは6工程のうち5つが中心、人は面接・合否／料金は調整中で未公開、公開できる導入実績なし、貴社のサービスとして提供するのが前提（範囲は調整中）／HeaR AI RPO：HeaRが採用を代行。AIはスカウト文面・書類の一次評価・日程調整、人はターゲティングの判断・面接・改善の判断。月額固定制で金額は非公開／HERP Hire：採用管理システム。AIが書類の一次レビュー・面接の記録・分析を支援。年間応募300名以下は無料、有料は料金表の請求制。導入3,000社以上。パートナープログラムあり／ジョブカン採用管理：採用管理システム。無料プランあり、LITE 月8,500円〜、初期費用0円、30日間の無料お試し。AI面接はオプションで近日リリース予定。シリーズ累計30万社以上">ChatGPTで、この比較が正確か確かめる<span class="fc-sub">別タブで開きます</span></button>
   </div>
 </section>
 
@@ -1302,7 +1332,14 @@ h1,h2,h3,.logo,.btn{font-family:var(--ff-head)}
   document.addEventListener('click',function(e){
     var b=e.target.closest('.fc-btn'); if(!b) return;
     var url=(document.querySelector('link[rel=canonical]')||{}).href||location.href;
-    var p='次のLPの記載が事実として正しいか、第三者の立場で確認してください。\n\n【対象ページ】'+url+'\n【セクション】'+b.dataset.fcSection+'\n【記載内容】\n'+b.dataset.fcClaim.split('／').join('\n')+'\n\n【確認してほしいこと】\n- 記載は一般的な事実・相場・公的情報と照らして正しいか\n- 誤り・誇張・古い情報があれば指摘する\n- 反対の見方や、読み手が注意すべき点\n- 確認できないことは「確認できない」と書き、推測で補わない';
+    var p;
+    if(b.dataset.fcMode==='vs'){
+      p='次の比較表が、各サービスの公開情報と照らして正確か、第三者の立場で確認してください。\n\n【対象ページ】'+url+'\n【比較表】\n'+b.dataset.fcClaim.split('／').join('\n')+'\n【出典】各社公式サイト（2026年9月25日時点）\n\n【確認してほしいこと】\n- 各社の記載は、いま公式サイトで確認できる情報と一致するか\n- この表で、AI RPOが有利に見えすぎている行・不利な行はどれか\n- どういう会社にはどのサービスが向くか、中立の立場で\n- 確認できないことは「確認できない」と書き、推測で補わない';
+      window.open('https://chatgpt.com/?q='+encodeURIComponent(p),'_blank','noopener,noreferrer');
+      if(navigator.clipboard){ navigator.clipboard.writeText(p).catch(function(){}); }
+      return;
+    }
+    p='次のLPの記載が事実として正しいか、第三者の立場で確認してください。\n\n【対象ページ】'+url+'\n【セクション】'+b.dataset.fcSection+'\n【記載内容】\n'+b.dataset.fcClaim.split('／').join('\n')+'\n\n【確認してほしいこと】\n- 記載は一般的な事実・相場・公的情報と照らして正しいか\n- 誤り・誇張・古い情報があれば指摘する\n- 反対の見方や、読み手が注意すべき点\n- 確認できないことは「確認できない」と書き、推測で補わない';
     window.open('https://chatgpt.com/?q='+encodeURIComponent(p),'_blank','noopener,noreferrer');
     if(navigator.clipboard){ navigator.clipboard.writeText(p).catch(function(){}); }
   });
