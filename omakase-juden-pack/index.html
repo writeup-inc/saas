@@ -95,8 +95,10 @@ p{margin:0}
 .cat.oem{background:var(--oem)} .cat.dir{background:var(--dir)} .cat.etc{background:var(--etc)}
 .nl .t{font-size:16px;line-height:1.7;color:var(--ink);word-break:auto-phrase;line-break:strict}
 .bd{display:inline-block;margin-right:8px;padding:0 7px;border-radius:4px;font-size:13px;font-weight:700;line-height:1.7;vertical-align:1px}
-.bg-new{background:#fdebe1;color:var(--new)}
-.bg-up{background:var(--etc-l);color:var(--etc)}
+/* NEW・更新は目立たせる：大きく太く、赤で（準備中・社内は控えめのまま） */
+.bg-new,.bg-up{padding:1px 11px;font-size:15px;font-weight:900;letter-spacing:.06em;line-height:1.7}
+.bg-new{background:var(--new);color:#fff}
+.bg-up{background:#fdebe1;color:var(--new);box-shadow:inset 0 0 0 1.5px var(--new)}
 .bg-soon{background:#fff4d6;color:#8a5a00}
 .bg-in{background:#efe9f8;color:#5b3f8f}
 .more{margin:0}
@@ -156,6 +158,10 @@ p{margin:0}
 .doc:not(.link){background:var(--gray-row)}
 .doc:not(.link) .st{color:var(--g2)}
 .fine{margin:18px 0 0;font-size:15px;color:var(--g2)}
+/* 社内限（開けるが、お客様へ送らない）は薄い赤 */
+.doc.link.internal{background:#fdf0ef}
+.doc.link.internal:hover{background:#fbe2df!important}
+.doc .warn{margin:10px 0 0;font-size:15px;font-weight:700;color:#b42318}
 
 footer{padding:44px 0 60px;border-top:1px solid var(--ln2);text-align:center;font-size:14.5px;color:var(--g2)}
 footer p + p{margin-top:4px}
@@ -186,7 +192,7 @@ footer p + p{margin-top:4px}
 .hubnav [aria-current]::before{color:currentColor}
 .hubnav--flow{position:static}
 .hubnav--flow ul{max-width:none;padding:14px 0 0}
-@media(max-width:600px){.hubnav ul{justify-content:center;gap:0 10px;padding:8px 12px 0}.hubnav--flow ul{justify-content:flex-end;padding:10px 0 0}.hubnav a,.hubnav [aria-current]{gap:2px;padding:8px 0;font-size:12px;letter-spacing:0}}
+@media(max-width:600px){.hubnav ul{justify-content:center;gap:0 10px;padding:8px 12px 0}.hubnav--flow ul{justify-content:flex-end;padding:10px 0 0}.hubnav a,.hubnav [aria-current]{gap:2px;min-height:44px;padding:0;font-size:13px;letter-spacing:0}}
 </style>
 </head>
 <body>
@@ -231,7 +237,7 @@ footer p + p{margin-top:4px}
     <h1>おまかせ受電AI</h1>
     <span class="rule" aria-hidden="true"></span>
     <p class="meta">
-      <span>最終更新 <b>2026.09.24</b></span>
+      <span>最終更新 <b>2026.09.25</b></span>
       <span class="k"><i style="background:var(--oem)"></i>OEM 4点</span>
       <span class="k"><i style="background:var(--dir)"></i>直販 4点</span>
       <span class="k"><i style="background:var(--etc)"></i>その他 2点</span>
@@ -246,15 +252,16 @@ footer p + p{margin-top:4px}
   <div class="w">
     <div class="sh"><h2 id="news-h">お知らせ</h2><span class="en">News</span></div>
     <ul class="nl">
+      <li><a href="#c-02"><time>09.25</time><span class="cat etc">その他</span><span class="t"><span class="bd bg-up">更新</span>追加機能の検討メモに9月23日の決定との対応を追記し、このページから開けるようにしました（社内限）</span></a></li>
       <li><a href="#a-02"><time>09.24</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-new">NEW</span>店舗向けの無料相談会の案内を公開しました（事前登録）</span></a></li>
       <li><a href="#a-01"><time>09.24</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-up">更新</span>サービス紹介ページを作り直し、無料モニターの条件と電話代行との比べ方を載せました</span></a></li>
       <li><a href="#b-01"><time>09.23</time><span class="cat oem">OEM</span><span class="t"><span class="bd bg-new">NEW</span>OEMパートナーのご案内を公開しました</span></a></li>
       <li><a href="#etc"><time>09.23</time><span class="cat etc">その他</span><span class="t"><span class="bd bg-new">NEW</span>資料インデックスを公開しました。資料の公開はこのページでお知らせします</span></a></li>
-      <li><a href="#c-02"><time>09.18</time><span class="cat etc">その他</span><span class="t"><span class="bd bg-in">社内</span>OEM提供に向けた追加機能の検討メモを社内で共有しました</span></a></li>
     </ul>
     <details class="more">
-      <summary>過去のお知らせ（2件）</summary>
+      <summary>過去のお知らせ（3件）</summary>
       <ul class="nl">
+      <li><a href="#c-02"><time>09.18</time><span class="cat etc">その他</span><span class="t"><span class="bd bg-in">社内</span>OEM提供に向けた追加機能の検討メモを社内で共有しました</span></a></li>
       <li><a href="#c-01"><time>09.18</time><span class="cat etc">その他</span><span class="t"><span class="bd bg-new">NEW</span>AI受電担当 ひよりの自己紹介ページを公開しました</span></a></li>
       <li><a href="#direct"><time>09.17</time><span class="cat dir">直販</span><span class="t"><span class="bd bg-up">更新</span>電話を受けるときのトークスクリプトを見直しました</span></a></li>
     </ul>
@@ -276,7 +283,7 @@ footer p + p{margin-top:4px}
     <ul class="docs">
       <li><div class="doc link" id="b-01">
           <a class="lk" href="https://writeup-inc.github.io/saas/omakase-juden-oem/"><span class="no">B-01</span>
-          <div><div class="ttl"><h3>OEMパートナーのご案内</h3><span class="bd bg-new">NEW</span></div>
+          <div><div class="ttl"><h3>OEMパートナーのご案内</h3></div>
           <p>売価と店舗窓口の持ち方、他社との違い、業種に合わせた機能の作り替えをまとめています。OEMの商談はここから始めます。</p></div>
           <span class="arr" aria-hidden="true">→</span></a>
           <div class="urlrow"><span class="url">writeup-inc.github.io/saas/omakase-juden-oem/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/omakase-juden-oem/">コピー</button></div>
@@ -317,15 +324,14 @@ footer p + p{margin-top:4px}
       <ul class="docs">
         <li><div class="doc link" id="a-01">
           <a class="lk" href="https://writeup-inc.github.io/saas/omakase-juden/"><span class="no">A-01</span>
-          <div><div class="ttl"><h3>サービス紹介ページ</h3><span class="bd bg-up">更新</span></div>
-            <p>電話の種類ごとに、AIが受けるか人へつなぐかをお店が決めるサービスです。受電ルールを試せる画面と、無料モニターの条件を載せています。</p>
-            <p class="memo">09.24 作り直しました。電話代行との比べ方と、向いていないお店を追加しています</p></div>
+          <div><div class="ttl"><h3>サービス紹介ページ</h3></div>
+            <p>電話の種類ごとに、AIが受けるか人へつなぐかをお店が決めるサービスです。受電ルールを試せる画面と、無料モニターの条件を載せています。</p></div>
           <span class="arr" aria-hidden="true">→</span></a>
           <div class="urlrow"><span class="url">writeup-inc.github.io/saas/omakase-juden/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/omakase-juden/">コピー</button></div>
         </div></li>
         <li><div class="doc link" id="a-02">
           <a class="lk" href="https://writeup-inc.github.io/seminar/omakase-juden/"><span class="no">A-02</span>
-          <div><div class="ttl"><h3>無料相談会の案内</h3><span class="bd bg-new">NEW</span></div>
+          <div><div class="ttl"><h3>無料相談会の案内</h3></div>
             <p>店舗の経営者向けの無料相談会です。日時が決まる前の事前登録を受け付けています。</p></div>
           <span class="arr" aria-hidden="true">→</span></a>
           <div class="urlrow"><span class="url">writeup-inc.github.io/seminar/omakase-juden/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/seminar/omakase-juden/">コピー</button></div>
@@ -354,22 +360,26 @@ footer p + p{margin-top:4px}
       <span class="en">C ／ Others</span>
       <h2 id="etc-h">オプション・その他</h2>
       <p class="who">直販にもOEMにも使う資料</p>
-      <div class="hist"><p class="hist-h">この区画の更新履歴</p><ol><li><time>09.23</time><span class="t"><span class="n">C区画</span>オプション・その他の区画を新設</span></li><li><time>09.18</time><span class="t"><span class="n">C-02</span>追加機能の検討メモを社内共有</span></li><li><time>09.18</time><span class="t"><span class="n">C-01</span>ひよりの自己紹介ページを公開</span></li></ol></div>
+      <div class="hist"><p class="hist-h">この区画の更新履歴</p><ol><li><time>09.25</time><span class="t"><span class="n">C-02</span>9/23の決定との対応を追記、開ける行に</span></li><li><time>09.23</time><span class="t"><span class="n">C区画</span>オプション・その他の区画を新設</span></li><li><time>09.18</time><span class="t"><span class="n">C-01</span>ひよりの自己紹介ページを公開</span></li></ol></div>
       <span class="bar" aria-hidden="true"></span>
     </div>
     <ul class="docs">
       <li><div class="doc link" id="c-01">
           <a class="lk" href="https://writeup-inc.github.io/saas/ai-reception-hiyori/"><span class="no">C-01</span>
-          <div><div class="ttl"><h3>ひよりの自己紹介ページ</h3><span class="bd bg-new">NEW</span></div>
+          <div><div class="ttl"><h3>ひよりの自己紹介ページ</h3></div>
           <p>AI受電担当 ひよりが、電話のあとにショートメッセージでお客様に届けるページです。受電内容の残し方、10秒デモ、無料モニター募集を載せています。</p></div>
           <span class="arr" aria-hidden="true">→</span></a>
           <div class="urlrow"><span class="url">writeup-inc.github.io/saas/ai-reception-hiyori/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/ai-reception-hiyori/">コピー</button></div>
         </div></li>
-      <li><div class="doc" id="c-02">
-        <span class="no">C-02</span>
-        <div><div class="ttl"><h3>追加機能の検討メモ</h3><span class="bd bg-in">社内</span></div>
-          <span class="st">開発検討中の内容のため、このページからは開けません</span></div>
-      </div></li>
+      <li><div class="doc link internal" id="c-02">
+          <a class="lk" href="https://writeup-inc.github.io/saas/ai-reception-oem-features/"><span class="no">C-02</span>
+          <div><div class="ttl"><h3>追加機能の検討メモ</h3><span class="bd bg-in">社内</span><span class="bd bg-up">更新</span></div>
+          <p>OEM提供に向けて足したい機能（今の番号からの移行、応対の選び方、本人の声、受けたくない電話の制御など）と、開発に確認したい点をまとめたメモです。</p>
+          <p class="memo">09.25 9月23日に決まった売価・店舗の窓口・呼び方との対応を追記しました</p>
+          <p class="warn">社内限定です。お客様へURLを送らないでください</p></div>
+          <span class="arr" aria-hidden="true">→</span></a>
+          <div class="urlrow"><span class="url">writeup-inc.github.io/saas/ai-reception-oem-features/</span><button type="button" class="cp" data-url="https://writeup-inc.github.io/saas/ai-reception-oem-features/">コピー</button></div>
+        </div></li>
     </ul>
   </div>
 </section>

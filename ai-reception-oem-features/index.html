@@ -3,27 +3,92 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="飲食店向け受電AIをOEM提供するための追加機能整理メモ">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="社内限定。おまかせ受電AI（飲食店向け受電AI）をOEM提供するための追加機能整理メモ">
+  <link rel="canonical" href="https://writeup-inc.github.io/saas/ai-reception-oem-features/">
   <title>受電AI｜OEM追加機能メモ</title>
   <style>
+/* lp-base.css — 日本語LP／HTML成果物の初期CSS
+ *
+ * 品質台帳（~/Documents/Codex/loop-engineering-memory/events.jsonl）で
+ * 再発が確認された表示欠陥を、指摘ではなく初期値で潰すためのファイル。
+ * 対応する欠陥ID:
+ *   japanese-heading-midword-wrap（見出しが単語途中で改行）11回
+ *   mobile-fv-headline-wrap（モバイルFVの見出し改行）3回
+ *   mobile-fixed-cta-overlap（固定CTAが本文を隠す）3回
+ *   meaningful-small-text-under-readable-size（意味のある文字が可読サイズ未満）5回
+ *
+ * 使い方: HTMLの<style>先頭にこの内容を貼る。色・書体・余白は各LPで上書きしてよいが、
+ * 下の「改行制御」「最小文字サイズ」「固定CTAの逃げ」の3ブロックは消さないこと。
+ */
+
+/* ── 改行制御 ─────────────────────────────────────────────
+ * 日本語は単語区切りが無いため、既定のままだと文節の途中で折り返す。
+ * auto-phrase は文節単位で折る（Chrome 119+）。非対応環境は strict で逃がす。 */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] {
+    word-break: normal;
+  }
+}
+/* 明示的に折りたくない語の途中で切られたら、その語を <span class="nobr"> で包む */
+.nobr { white-space: nowrap; }
+
+/* ── 最小文字サイズ ───────────────────────────────────────
+ * 判断材料になる文字は12px未満にしない。注記・免責のみ .note を許容。 */
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+
+/* ── ファーストビューの見出し ─────────────────────────────
+ * 固定pxだと狭い画面で必ず折り返す。clamp で画面幅に追従させる。 */
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+
+/* ── 固定CTAの逃げ ────────────────────────────────────────
+ * 画面下に固定CTAを置くページは、この変数を実測の高さに書き換える。
+ * 置かないページはそのままでよい（0のまま）。 */
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+
+/* ── 横はみ出しの予防 ─────────────────────────────────────
+ * flex/grid の子は既定で min-width:auto のため、長い語で親を押し広げる。 */
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+
+/* ── コンテンツ幅（2026-09-24 たかマスター決定） ───────────────
+ * 主コンテナは最大1200px。1120px・1300pxなど別の値にしない（案件で明示されたときだけ例外）。
+ * 例: .wrap{width:min(var(--lp-max),100% - 40px);margin-inline:auto}
+ * 本文・リードの1行は日本語35〜40字まで（max-width:38em 前後）。 */
+:root { --lp-max: 1200px; }
+
+    /* ===== ここからページ固有 ===== */
     :root { --ink:#20201f; --sub:#62615e; --line:#d8d6d0; --paper:#fffefb; --accent:#b65b23; }
     * { box-sizing:border-box; }
     html { background:#f3f2ee; }
     body { margin:0; color:var(--ink); background:var(--paper); font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",YuGothic,sans-serif; font-size:16px; line-height:1.85; }
     .paper { width:min(100% - 40px,1200px); min-height:100vh; margin:0 auto; padding:68px 68px 84px 94px; border-left:1px solid var(--line); border-right:1px solid var(--line); background:repeating-linear-gradient(to bottom,transparent 0,transparent 34px,rgba(90,90,85,.075) 35px,transparent 36px),var(--paper); position:relative; }
     .paper::before { content:""; position:absolute; top:0; bottom:0; left:48px; width:1px; background:#d9a798; }
-    .eyebrow { margin:0 0 20px; color:var(--sub); font-size:12px; font-weight:700; letter-spacing:.14em; }
+    .eyebrow { margin:0 0 20px; color:var(--sub); font-size:13px; font-weight:700; letter-spacing:.14em; }
     h1,h2,h3 { font-family:"Hiragino Mincho ProN","Yu Mincho",YuMincho,serif; letter-spacing:.045em; }
     h1 { max-width:850px; margin:0 0 16px; font-size:clamp(30px,4.5vw,48px); line-height:1.35; font-weight:600; }
     h2 { margin:0 0 16px; font-size:25px; line-height:1.5; font-weight:600; }
     h3 { margin:0 0 7px; font-size:19px; line-height:1.55; font-weight:600; }
     p { margin:0 0 15px; }
-    .lead { max-width:850px; margin-bottom:32px; color:var(--sub); font-size:18px; }
+    .intro { max-width:850px; margin-bottom:32px; color:var(--sub); font-size:18px; }
     .note { margin:28px 0 42px; padding:18px 20px; border-top:2px solid var(--ink); border-bottom:1px solid var(--line); background:rgba(255,255,255,.74); }
     .note strong { color:var(--accent); }
     .meta { display:flex; flex-wrap:wrap; gap:8px 24px; margin-top:14px; color:var(--sub); font-size:13px; }
     section { padding:36px 0 38px; border-top:1px solid var(--line); }
-    .section-kicker { margin:0 0 4px; color:var(--sub); font-size:12px; font-weight:700; letter-spacing:.12em; }
+    .section-kicker { margin:0 0 4px; color:var(--sub); font-size:13px; font-weight:700; letter-spacing:.12em; }
     .mechanism { margin:20px 0 0; border-left:3px solid var(--ink); padding:4px 0 4px 18px; }
     .mechanism p { margin-bottom:0; }
     .list { margin:14px 0 0; padding-left:1.35em; }
@@ -32,22 +97,42 @@
     .matrix th,.matrix td { padding:13px 14px; border:1px solid var(--line); text-align:left; vertical-align:top; }
     .matrix th { width:22%; background:#f5f4f0; font-weight:700; }
     .horizon { margin-top:20px; padding-left:18px; border-left:3px solid var(--accent); }
-    .horizon-label { display:inline-block; margin-bottom:5px; color:var(--accent); font-size:12px; font-weight:800; letter-spacing:.12em; }
+    .horizon-label { display:inline-block; margin-bottom:5px; color:var(--accent); font-size:13px; font-weight:800; letter-spacing:.12em; }
     .decision { margin-top:18px; padding:18px 20px; border:1px solid var(--ink); background:#fff; }
     .decision ul { margin-bottom:0; }
-    .small { color:var(--sub); font-size:13px; }
-    footer { padding-top:28px; color:var(--sub); font-size:12px; }
-    @media (max-width:680px) { body { font-size:15px; } .paper { width:100%; padding:44px 24px 60px 42px; border:0; } .paper::before { left:24px; } .lead { font-size:16px; } .matrix,.matrix tbody,.matrix tr,.matrix th,.matrix td { display:block; width:100%; } .matrix th { border-bottom:0; padding-bottom:5px; } .matrix td { border-top:0; padding-top:5px; } }
+    .small { color:var(--sub); font-size:14px; }
+    footer { padding-top:28px; color:var(--sub); font-size:14px; }
+    .confidential { margin:0; padding:12px 20px; background:#fdf0ef; border-bottom:1px solid #f3c9c4; color:#b42318; font-size:15px; font-weight:700; line-height:1.6; text-align:center; }
+    .confidential .ib { display:inline-block; }
+    .update { margin:0 0 42px; padding:18px 20px 12px; border:1px solid #d6c7b4; border-left:4px solid var(--accent); background:#fff; }
+    .update-h { margin:0 0 6px; color:var(--accent); font-size:14px; font-weight:800; letter-spacing:.08em; }
+    .update .list { margin-top:6px; }
+    .update .list li { margin:6px 0; }
+    @media (max-width:680px) { body { font-size:15px; } .paper { width:100%; padding:44px 24px 60px 42px; border:0; } .paper::before { left:24px; } .intro { font-size:16px; } h1 { font-size:clamp(24px,6.6vw,34px); } h2 { font-size:clamp(19px,5.6vw,25px); } h3 { font-size:clamp(16px,4.6vw,19px); } .matrix,.matrix tbody,.matrix tr,.matrix th,.matrix td { display:block; width:100%; } .matrix th { border-bottom:0; padding-bottom:5px; } .matrix td { border-top:0; padding-top:5px; } }
   </style>
 </head>
 <body>
+  <p class="confidential" role="note"><span class="ib">社内限定です。</span><span class="ib">お客様へURLを送らないでください</span></p>
   <main class="paper">
-    <p class="eyebrow">DEVELOPMENT NOTE / FOR GO</p>
-    <h1>飲食店向け受電AI<br>OEM提供に向けた追加機能メモ</h1>
-    <p class="lead">F社がスーパー管理者となり、販売パートナー経由で飲食店へ提供する前提で、現行の基本機能に足したい内容を整理したメモです。</p>
-    <div class="meta"><span>作成日：2026年9月18日</span><span>用途：開発検討</span><span>状態：会議論点の整理（仕様確定前）</span></div>
+    <p class="eyebrow">DEVELOPMENT NOTE / 郷さん確認用</p>
+    <h1>飲食店向け受電AI<br>OEM提供に向けた<br>追加機能メモ</h1>
+    <p class="intro">F社がスーパー管理者となり、販売パートナー経由で飲食店へ提供する前提で、現行の基本機能に足したい内容を整理したメモです。</p>
+    <div class="meta"><span>作成日：2026年9月18日</span><span>用途：開発検討</span><span>状態：会議論点の整理（仕様確定前）</span><span>追記：2026年9月25日</span><span>現在のサービス名：おまかせ受電AI</span></div>
 
     <div class="note"><strong>今回の中心論点：</strong>単なるAI電話ではなく、<b>既存番号の移行支援・OEMの販売階層・飲食店ごとの応対設計</b>までを、一連の導入体験として作る必要がある。</div>
+
+    <div class="update">
+      <p class="update-h">09.25 追記：9月23日に決まったこととの対応</p>
+      <p>このメモのあと、OEMパートナーのご案内（B-01）を作るときに次の条件が決まった。本文の案はこの条件の範囲で読む。</p>
+      <ul class="list">
+        <li><b>用語：</b>本文の「F社」はOEMパートナー（OEM先）にあたる。「販売パートナー」はOEMパートナーの下で販売する会社を指す。OEM先そのものを「販売パートナー」とは呼ばない</li>
+        <li><b>売価：</b>店舗への売価はOEMパートナーが決める</li>
+        <li><b>店舗の窓口：</b>店舗からの問い合わせ・クレームの一次受けはOEMパートナー。店舗から見ればOEMパートナーのサービスで、弊社へ直接問い合わせが来る形にしない（01の「F社が中心で管理」と同じ向き）</li>
+        <li><b>本人の声（05）：</b>応対の一部を本人の録音で行う。店舗の受付なら、応対の多くを録音でまかなえると見ている</li>
+        <li><b>個別開発：</b>1社のための開発は都度見積り。内容によるが、数十万円程度で収まることが多い</li>
+        <li><b>まだ決まっていない：</b>仕入値・初期費用、最低契約・解約、申込の受付と請求（01の決済手段を含む）、障害時の対応、併売・地域の扱い</li>
+      </ul>
+    </div>
 
     <section>
       <p class="section-kicker">01 / BUSINESS STRUCTURE</p>
@@ -63,7 +148,7 @@
 
     <section>
       <p class="section-kicker">02 / ONBOARDING</p>
-      <h2>電話番号発行と既存番号の移行</h2>
+      <h2>電話番号発行と<br>既存番号の移行</h2>
       <p>飲食店は「いま使っている店舗番号を継続したい」と言う可能性が高い。そのため、新しいAI受電番号を発行するだけでなく、既存番号から転送して使う導線が必要。</p>
       <table class="matrix">
         <tr><th>新規番号発行</th><td>F社が申込・決済と連動してAI受電用番号を発行する。</td></tr>
@@ -76,7 +161,7 @@
 
     <section>
       <p class="section-kicker">03 / LISTING SUPPORT</p>
-      <h2>Google・グルメ媒体の掲載番号変更</h2>
+      <h2>Google・グルメ媒体の<br>掲載番号変更</h2>
       <p>AI番号へ切り替える場合、Googleビジネスプロフィール、Googleマップ、食べログ、ぐるなび等の掲載番号も変更する必要がある。ここは販売時に必ず聞かれるため、導入支援の一部として扱う。</p>
       <ul class="list">
         <li>媒体ごとの変更手順を、画面キャプチャまたは動画で管理画面に掲載</li>
@@ -87,7 +172,7 @@
 
     <section>
       <p class="section-kicker">04 / CALL SCENARIO</p>
-      <h2>飲食店ごとの応対を、選べる設定にする</h2>
+      <h2>飲食店ごとの応対を、<br>選べる設定にする</h2>
       <p>プロンプトを自由記述するだけでなく、店舗が迷わず設定できるテンプレート画面を作りたい。</p>
       <table class="matrix">
         <tr><th>基本カテゴリ</th><td>予約／営業電話／その他</td></tr>
@@ -100,7 +185,7 @@
 
     <section>
       <p class="section-kicker">05 / VOICE EXPERIENCE</p>
-      <h2>AIであることの告知と、店舗本人の声</h2>
+      <h2>AIであることの告知と、<br>店舗本人の声</h2>
       <ul class="list">
         <li>冒頭で「AIが対応します」と伝えるかどうかを、店舗ごとにオン・オフできるようにする</li>
         <li>最初の挨拶や予約確認など、一部だけオーナー・スタッフの録音音声を使えるようにする</li>
@@ -111,15 +196,15 @@
 
     <section>
       <p class="section-kicker">06 / KNOWLEDGE &amp; CONTROL</p>
-      <h2>店舗情報の参照と、受けたくない電話の制御</h2>
-      <div class="mechanism"><h3>スプレッドシート等のナレッジ参照</h3><p>予約状況、よくある質問、メニュー等を店舗が更新し、AIが応答に利用する。</p></div>
+      <h2>店舗情報の参照と、<br>受けたくない電話の制御</h2>
+      <div class="mechanism"><h3>スプレッドシート等の<br>ナレッジ参照</h3><p>予約状況、よくある質問、メニュー等を店舗が更新し、AIが応答に利用する。</p></div>
       <ul class="list">
         <li>電話番号ごとの識別：常連客、業者、迷惑営業など</li>
         <li>予約・空席情報</li>
         <li>営業時間、道順、設備、店舗紹介などのよくある質問</li>
         <li>季節メニュー、料理・商品情報</li>
       </ul>
-      <div class="mechanism"><h3>NG電話番号・営業電話ブロック</h3><p>一度判定した営業電話等をNGリストへ追加し、以降は受けない設定を可能にする。誤登録に備え、管理画面で追加・解除・確認できることが必要。</p></div>
+      <div class="mechanism"><h3>NG電話番号・<br>営業電話ブロック</h3><p>一度判定した営業電話等をNGリストへ追加し、以降は受けない設定を可能にする。誤登録に備え、管理画面で追加・解除・確認できることが必要。</p></div>
       <ul class="list">
         <li>「明確な営業電話のみ」など、ブロックの厳しさを設定</li>
         <li>自動登録と店舗確認後登録を選べる</li>
@@ -129,7 +214,7 @@
 
     <section>
       <p class="section-kicker">07 / SMS &amp; LIMITS</p>
-      <h2>SMS送信と利用上限の考え方</h2>
+      <h2>SMS送信と<br>利用上限の考え方</h2>
       <ul class="list">
         <li>AI応答の後に、GoogleマップURL、メニュー、予約案内などをSMS送信できる</li>
         <li>SMS送信はシナリオごとにオン・オフを設定できる</li>
@@ -141,14 +226,14 @@
     <section>
       <p class="section-kicker">08 / DELIVERY ORDER</p>
       <h2>優先順位のたたき台</h2>
-      <div class="horizon"><span class="horizon-label">SHORT TERM / 初期版</span><h3>「売れる・導入できる」状態を先に作る</h3><p>F社スーパー管理者／販売パートナー／専用申込URL、新規番号発行、ボイスワープ設定案内、予約・営業・その他のテンプレート型応対、転送・SMS分岐、基本ナレッジ参照、NG電話番号管理。</p></div>
+      <div class="horizon"><span class="horizon-label">SHORT TERM / 初期版</span><h3>「売れる・導入できる」<br>状態を先に作る</h3><p>F社スーパー管理者／販売パートナー／専用申込URL、新規番号発行、ボイスワープ設定案内、予約・営業・その他のテンプレート型応対、転送・SMS分岐、基本ナレッジ参照、NG電話番号管理。</p></div>
       <div class="horizon"><span class="horizon-label">MID TERM / 次期</span><h3>飲食店ごとの運用を深くする</h3><p>時間・曜日別の転送条件、店舗本人の録音音声、カテゴリ追加、媒体掲載番号変更の動画マニュアル、詳細なSMS設計。</p></div>
-      <div class="horizon"><span class="horizon-label">LONG TERM / 構想</span><h3>予約連携・新たな収益化を検討する</h3><p>予約システム連携は初期版では必須にしない。営業電話を活用した提携商材の案内・逆営業は、受電AIの基本機能とは切り分け、同意、送信条件、費用負担、提携条件を別途検討する。</p></div>
+      <div class="horizon"><span class="horizon-label">LONG TERM / 構想</span><h3>予約連携・<br>新たな収益化を検討する</h3><p>予約システム連携は初期版では必須にしない。営業電話を活用した提携商材の案内・逆営業は、受電AIの基本機能とは切り分け、同意、送信条件、費用負担、提携条件を別途検討する。</p></div>
     </section>
 
     <section>
       <p class="section-kicker">09 / QUESTIONS FOR DEVELOPMENT</p>
-      <h2>ゴーさんに確認したい点</h2>
+      <h2>郷さんに確認したい点</h2>
       <div class="decision">
         <ul class="list">
           <li>電話番号発行をF社の申込・決済フローへ組み込む場合の実現方法と制約</li>
