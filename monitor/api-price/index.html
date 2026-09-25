@@ -346,7 +346,7 @@ h1, h2, h3, h4, h5,
       word-break: auto-phrase;
     }
 
-    .say-main em { color: var(--green); font-style: normal; font-size: 1.12em; font-variant-numeric: tabular-nums; }
+    .say-main em { color: var(--green); font-style: normal; font-size: 1.12em; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
     .say-sub { margin: 10px 0 0; color: var(--ink-soft); font-size: 14px; line-height: 1.8; }
 
@@ -722,15 +722,15 @@ h1, h2, h3, h4, h5,
 
         <a class="say" href="#elliot">
           <span class="say-name">Elliot</span>
-          <p class="say-main">使う方1名につき<em>月約1,000円</em>＋会社ごとに<em>1日128円</em></p>
-          <p class="say-sub">たとえば10名で使うと、月約14,000円（1名あたり約1,400円）です。</p>
+          <p class="say-main">使う方1名につき、<em>1日128円</em>＋<em>月約1,000円</em></p>
+          <p class="say-sub">合わせて、1名あたり月約4,800円です。</p>
           <span class="say-link">くわしい料金を見る ↓</span>
         </a>
 
         <a class="say" href="#jmatch-engine">
           <span class="say-name">Jマッチ・エンジン</span>
-          <p class="say-main">AIクローラーの日給<em>1日50円</em>＋メール1,000通で<em>約1,000円</em></p>
-          <p class="say-sub">1,000社へ月1回メールを送ると、月約2,500円です。</p>
+          <p class="say-main">基本料金<em>1日50円</em>＋メール1,000通で<em>約1,000円</em></p>
+          <p class="say-sub">基本料金は、最新の制度のリサーチなどの分です。1,000社へ月1回メールを送ると、月約2,500円です。</p>
           <span class="say-link">くわしい料金を見る ↓</span>
         </a>
       </div>
@@ -878,30 +878,30 @@ h1, h2, h3, h4, h5,
     <section class="section" id="elliot" aria-labelledby="el-title">
       <div class="section-head">
         <p class="section-kicker">くわしい料金</p>
-        <h2 id="el-title">Elliot<span class="basis">基本料金＋使う人数ごと</span></h2>
-        <p class="section-copy">会社ごとにかかる基本料金に、使う方の人数分の料金を足した金額です。人数が多いほど、1名あたりの金額は下がります。</p>
+        <h2 id="el-title">Elliot<span class="basis">使う人数ごと</span></h2>
+        <p class="section-copy">使う方1名ごとに、毎日かかる基本料金と、ログの取り込みなどの利用分がかかります。Elliot総研の分だけは、会社ごとにかかります。</p>
       </div>
       <div class="card">
         <div class="block">
           <h3 class="step"><span class="step-no">1</span>料金のきまり方</h3>
           <div class="unit-row">
             <div class="unit">
-              <span class="unit-name">基本料金（会社ごと）</span>
+              <span class="unit-name">基本料金（1名ごと）</span>
               <span class="unit-price"><b>128円</b><span>1日あたり（1か月で約3,800円）</span></span>
               <small>使わない日もかかります。</small>
+            </div>
+            <div class="unit">
+              <span class="unit-name">利用分（1名ごと）</span>
+              <span class="unit-price"><b>約1,000円</b><span>1か月あたり</span></span>
+              <small>ログの取り込み・毎日のメール・Elliotとのチャットを含みます。1日5件ほどのログが目安です。</small>
             </div>
             <div class="unit">
               <span class="unit-name">Elliot総研（会社ごと）</span>
               <span class="unit-price"><b>約120〜220円</b><span>レポート1回あたり</span></span>
               <small>月1回の実行で計算しています。</small>
             </div>
-            <div class="unit">
-              <span class="unit-name">使う方1名あたり</span>
-              <span class="unit-price"><b>約1,000円</b><span>1か月あたり</span></span>
-              <small>ログの取り込み・毎日のメール・Elliotとのチャットを含みます。1日5件ほどのログが目安です。</small>
-            </div>
           </div>
-          <p class="rule">1か月の料金 ＝ 基本料金（約3,800円）＋ Elliot総研（月1回 約120〜220円）＋ 約1,000円 × 使う人数</p>
+          <p class="rule">1か月の料金 ＝（基本料金 約3,800円 ＋ 利用分 約1,000円）× 使う人数 ＋ Elliot総研（月1回 約120〜220円）</p>
         </div>
 
         <div class="block">
@@ -910,14 +910,14 @@ h1, h2, h3, h4, h5,
           <div class="t-wrap">
             <table>
               <thead>
-                <tr><th>使う人数</th><th class="r">1か月の料金<small>会社全体</small></th><th class="r">1名あたりにすると</th></tr>
+                <tr><th>使う人数</th><th class="r">1か月の料金<small>会社全体</small></th></tr>
               </thead>
               <tbody>
-                <tr class="mark"><td class="n">1名<span class="badge">よくある使い方</span></td><td class="n r">約5,000円</td><td class="n r">約5,000円</td></tr>
-                <tr><td class="n">5名</td><td class="n r">約9,000円</td><td class="n r">約1,800円</td></tr>
-                <tr><td class="n">10名</td><td class="n r">約14,000円</td><td class="n r">約1,400円</td></tr>
-                <tr><td class="n">30名</td><td class="n r">約34,000円</td><td class="n r">約1,100円</td></tr>
-                <tr><td class="n">50名</td><td class="n r">約54,000円</td><td class="n r">約1,100円</td></tr>
+                <tr class="mark"><td class="n">1名<span class="badge">よくある使い方</span></td><td class="n r">約5,000円</td></tr>
+                <tr><td class="n">5名</td><td class="n r">約24,000円</td></tr>
+                <tr><td class="n">10名</td><td class="n r">約49,000円</td></tr>
+                <tr><td class="n">30名</td><td class="n r">約145,000円</td></tr>
+                <tr><td class="n">50名</td><td class="n r">約242,000円</td></tr>
               </tbody>
             </table>
           </div>
@@ -934,17 +934,17 @@ h1, h2, h3, h4, h5,
     <section class="section" id="jmatch-engine" aria-labelledby="jm-title">
       <div class="section-head">
         <p class="section-kicker">くわしい料金</p>
-        <h2 id="jm-title">Jマッチ・エンジン<span class="basis">AIクローラー＋送る通数</span></h2>
-        <p class="section-copy">情報を毎日集めて回るAIクローラーの料金に、送ったメールの通数に応じたAPI利用料を足した金額です。送る通数が多いほど割安になります。</p>
+        <h2 id="jm-title">Jマッチ・エンジン<span class="basis">基本料金＋送る通数</span></h2>
+        <p class="section-copy">毎日かかる基本料金に、送ったメールの通数に応じたAPI利用料を足した金額です。送る通数が多いほど割安になります。</p>
       </div>
       <div class="card">
         <div class="block">
           <h3 class="step"><span class="step-no">1</span>料金のきまり方</h3>
           <div class="unit-row">
             <div class="unit">
-              <span class="unit-name">AIクローラーの「日給」（会社ごと）</span>
+              <span class="unit-name">基本料金（会社ごと）</span>
               <span class="unit-price"><b>50円</b><span>1日あたり（1か月で1,500円）</span></span>
-              <small>ご利用を始めた時点から、メールを送らない月もかかります。</small>
+              <small>最新の制度のリサーチなどの分です。ご利用を始めた時点から、メールを送らない月もかかります。</small>
             </div>
             <div class="unit">
               <span class="unit-name">メールの配信</span>
@@ -952,7 +952,7 @@ h1, h2, h3, h4, h5,
               <small>文章の作成と送信を含みます。金額は下の早見表をご覧ください。</small>
             </div>
           </div>
-          <p class="rule">1か月の料金 ＝ AIクローラー（1,500円）＋ メールのAPI利用料</p>
+          <p class="rule">1か月の料金 ＝ 基本料金（1,500円）＋ メールのAPI利用料</p>
         </div>
 
         <div class="block">
@@ -961,7 +961,7 @@ h1, h2, h3, h4, h5,
           <div class="t-wrap">
             <table>
               <thead>
-                <tr><th>送り方の例</th><th class="r">メールのAPI利用料</th><th class="r">1か月の料金<small>AIクローラー込み</small></th></tr>
+                <tr><th>送り方の例</th><th class="r">メールのAPI利用料</th><th class="r">1か月の料金<small>基本料金込み</small></th></tr>
               </thead>
               <tbody>
                 <tr><td>500社へ月1回<span class="sub">月500通</span></td><td class="n r">約500円</td><td class="n r">約2,000円</td></tr>
@@ -988,9 +988,9 @@ h1, h2, h3, h4, h5,
         <h2 id="terms-title">ご契約と、金額の計算の前提です。</h2>
       </div>
       <ul class="terms-list">
-        <li><b>01</b><div><strong>ご契約期間は12か月です</strong><span>1年間、初期費用と月額料金はかかりません。途中でご利用を止めた場合も、Elliotの基本料金やJマッチのAIクローラーなど、毎日かかる料金は契約期間中ご請求します。</span></div></li>
+        <li><b>01</b><div><strong>ご契約期間は12か月です</strong><span>1年間、初期費用と月額料金はかかりません。途中でご利用を止めた場合も、ElliotとJマッチの基本料金など、毎日かかる料金は契約期間中ご請求します。</span></div></li>
         <li><b>02</b><div><strong>ご請求は、実際のご利用量にもとづきます</strong><span>このページの金額は目安です。スーパーマネージャーは、AIが商談に同席しない限り料金はかかりません。</span></div></li>
-        <li><b>03</b><div><strong>「1日◯回」は、平日だけで数えています</strong><span>1か月＝21営業日（祝日は差し引いていません）で計算しています。Elliotの基本料金とJマッチのAIクローラーは、土日もかかるため30日で計算しています。</span></div></li>
+        <li><b>03</b><div><strong>「1日◯回」は、平日だけで数えています</strong><span>1か月＝21営業日（祝日は差し引いていません）で計算しています。ElliotとJマッチの基本料金は、土日もかかるため30日で計算しています。</span></div></li>
         <li><b>04</b><div><strong>商談は1回1時間で計算しています</strong><span>スーパーマネージャーは、商談の長さや会話量によって金額が前後します。</span></div></li>
         <li><b>05</b><div><strong>為替によって変わる場合があります</strong><span>海外のサービスを使っている機能があるため、大きく円安が進んだ場合は金額が上下することがあります。その際は事前にご案内します。</span></div></li>
       </ul>
@@ -1031,12 +1031,12 @@ h1, h2, h3, h4, h5,
     <h3>9/25の会議で決めたこと</h3>
     <ul>
       <li>基本は原価の2倍。ページには「約」を付けて表示</li>
-      <li>12か月契約。途中で止めても、毎日かかる料金（Elliotの基本料金・JマッチのAIクローラー）はいただく</li>
+      <li>12か月契約。途中で止めても、毎日かかる料金（ElliotとJマッチの基本料金）はいただく</li>
     </ul>
 
     <h3>共通の前提</h3>
     <ul>
-      <li>1か月＝21営業日（平日のみ・祝日は差し引かない）。毎日かかるもの（Elliotの基本料金・JマッチのAIクローラー）は30日</li>
+      <li>1か月＝21営業日（平日のみ・祝日は差し引かない）。毎日かかるもの（ElliotとJマッチの基本料金）は30日</li>
       <li>スーパーマネージャーは1商談1時間・1ドル155円換算</li>
     </ul>
 
@@ -1073,17 +1073,17 @@ h1, h2, h3, h4, h5,
 
     <h3>Elliot<span>9/25の会議で決定</span></h3>
     <ul>
-      <li>基本料金：1日128円（使わない日もかかる）×30日＝3,840円 → 表示は約3,800円</li>
+      <li>基本料金：1名ごとに1日128円（使わない日もかかる）×30日＝3,840円 → 表示は約3,800円（9/25に「会社ごと」から「1名ごと」に訂正）</li>
       <li>Elliot総研：月1回で計算。原価60〜110円×2＝120〜220円</li>
       <li>1名あたり：約1,000円／月（ログ・メール・チャット込み）。低コストのモデルに切り替えて1,000円に収まるよう調整中</li>
-      <li>1か月＝基本料金＋総研＋1,000円×人数（足し算）。以前の「最低料金と高いほう」の計算はやめた</li>
-      <li>例：10名＝3,840＋120〜220＋10,000＝約14,000円（1名あたり約1,400円）</li>
+      <li>1か月＝（3,840円＋1,000円）×人数＋総研120〜220円（足し算）。以前の「最低料金と高いほう」の計算はやめた</li>
+      <li>例：1名＝約5,000円、10名＝48,400＋120〜220＝約49,000円（1名あたり約4,900円）</li>
       <li>参考（9/25受領の原価）：メール1通 約1〜1.5円、チャット1回 1円未満、AI社員同士の会話 約0.2〜0.6円、総研の長期間分析 約300〜750円</li>
     </ul>
 
     <h3>Jマッチ・エンジン<span class="x1">利益は取らない方針</span></h3>
     <ul>
-      <li>AIクローラー：1日50円×30日＝1,500円／月。使い始めた時点から、メールを送らなくてもかかる</li>
+      <li>基本料金：1日50円×30日＝1,500円／月。中身はAIクローラー（最新の制度のリサーチなど）。ページでは「基本料金」と表記。使い始めた時点から、メールを送らなくてもかかる</li>
       <li>メール：下の通数単価のまま（ページには単価を出さず「◯通で約◯円」だけ表示）</li>
     </ul>
     <div class="t-wrap">
@@ -1099,7 +1099,7 @@ h1, h2, h3, h4, h5,
     <ul>
       <li>合計通数で単価を決め、全通数にかける。境目の3,000通・10,000通は上の段</li>
       <li>Jマッチ経由で自社サービスが売れるので、ここで利益は取らない（9/25）</li>
-      <li>「最低3,000円」の案も出たが、「AIクローラー1,500円＋メール」の形で案内する</li>
+      <li>「最低3,000円」の案も出たが、「基本料金1,500円＋メール」の形で案内する</li>
     </ul>
 
     <h3>未確認のこと</h3>
