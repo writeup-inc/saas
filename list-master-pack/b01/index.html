@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<meta name="lp-type" content="左脳/資料/I興味">
+<meta name="lp-type" content="両脳/資料/I興味">
 <title>リストマスター｜OEM提供のご案内（パートナー向け）</title>
 <link rel="canonical" href="https://writeup-inc.github.io/saas/list-master-pack/b01/">
 <meta name="description" content="営業リスト自動生成AI「リストマスター」を自社のお客様に販売する会社向けのご案内です。収益の形、弊社と貴社の分担、決まっていないこと、売らないでほしい相手をまとめています。">
@@ -862,6 +862,81 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
 .honest .ng-list strong{color:#fff}
 .honest .ng-list span{color:var(--on-navy-2)}
 .honest .sell-h{color:#fff}
+
+/* ===== v3：前半は右脳（場面・名前とロゴ・当てる先）、帯で切り替え、後半は左脳 ===== */
+.scene{padding:clamp(72px,9vw,120px) 0;background:linear-gradient(180deg,#fbf7f1 0,#fff 100%)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .scene{background:var(--bg)}}
+:root[data-theme="dark"] .scene{background:var(--bg)}
+.scene-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,5vw,64px);align-items:center}
+@media (max-width:960px){.scene-grid{grid-template-columns:1fr}}
+.scene h2{font-size:clamp(1.5rem,3.4vw,2.3rem);line-height:1.45;margin:0 0 18px}
+.scene-lead{font-size:1.06rem;line-height:1.95;color:var(--ink-2);max-width:30em;margin:0 0 26px}
+.day{list-style:none;margin:0;padding:0;border-left:2px solid var(--accent)}
+.day li{position:relative;padding:0 0 16px 22px}
+.day li:last-child{padding-bottom:0}
+.day li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--card);border:2px solid var(--accent)}
+.day b{display:block;font-size:.92rem;color:var(--accent)}
+.day span{display:block;color:var(--ink)}
+.desk{position:relative;margin:0;border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(20,37,74,.45)}
+.desk img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
+.desk .mail{position:absolute;left:44%;top:9%;width:min(330px,46%);background:#fff;color:#16213a;border-radius:10px;box-shadow:0 18px 40px -12px rgba(0,0,0,.35);padding:14px 16px 12px;transform:rotate(-1.5deg)}
+.mail-from{display:flex;align-items:center;gap:10px;margin:0 0 10px;padding:0 0 10px;border-bottom:1px solid #e6e9f0}
+.mail-logo{flex:none;display:grid;place-items:center;width:38px;height:38px;border:2px dashed #0e7a5a;border-radius:8px;font:800 10px/1 "Inter",sans-serif;color:#0e7a5a}
+.mail-from b{display:block;font-size:14px}
+.mail-from small{display:block;font-size:12px;color:#5b647a}
+.mail dl{margin:0;display:grid;gap:4px}
+.mail dl div{display:flex;justify-content:space-between;gap:10px;font-size:13px}
+.mail dt{color:#5b647a}
+.mail dd{margin:0;font-weight:700}
+.mail dd.ok{color:#0e7a5a}
+.mail dd.ok::before{content:"✓ "}
+.mail-f{margin:10px 0 0;font-size:12px;color:#5b647a}
+.desk figcaption{position:absolute;right:10px;bottom:8px;margin:0;font-size:12px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.7)}
+@media (max-width:600px){.desk .mail{position:static;width:auto;margin:-40px 14px 14px;transform:none}.desk{background:var(--bg-2)}.desk figcaption{position:static;padding:0 14px 12px;color:var(--mute);text-shadow:none}}
+.js .desk .mail{opacity:0;translate:0 14px;transition:opacity .6s,translate .6s}
+.js .desk.on .mail{opacity:1;translate:0 0}
+@media (prefers-reduced-motion:reduce){.js .desk .mail{opacity:1;translate:none}}
+#brand.brandband{padding:clamp(64px,8vw,104px) 0}
+#brand .bb-title{margin:0}
+.switch{padding:44px 0;background:var(--accent-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sw-h{margin:0;font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:900;line-height:1.6;color:var(--ink);text-align:center}
+.sw-links{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 10px;list-style:none;margin:16px 0 0;padding:0}
+.sw-links a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid var(--line);border-radius:999px;background:var(--card);font-size:14px;font-weight:700;text-decoration:none;color:var(--ink)}
+.sw-links a:hover{border-color:var(--accent);color:var(--accent)}
+.fit-note{margin:14px 0 0;font-size:.92rem;color:var(--ink-2)}
+.give{margin-bottom:36px}
+.cmpx td,.cmpx th{font-size:.9rem}
+.cmpx .yes{color:var(--ok);font-weight:700}
+.cmpx .no{color:var(--mute)}
+.cmp-src{margin:0;padding:12px 20px 16px;font-size:13px;color:var(--mute)}
+.cmp-src a{display:inline-flex;align-items:center;min-height:44px;margin-right:12px;color:var(--ink-2)}
+.ai-box{margin-top:22px;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;padding:20px 22px;border:1px solid var(--accent);border-radius:14px;background:var(--card)}
+@media (max-width:760px){.ai-box{grid-template-columns:1fr}}
+.ai-box .ai-ico{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--accent-soft);color:var(--accent)}
+.ai-box .ai-ico svg{width:24px;height:24px}
+.ai-box p{margin:0;color:var(--ink-2);font-size:.95rem}
+.ai-box b{display:block;color:var(--ink);font-size:1rem;margin-bottom:2px}
+.ai-box .fc-btn{margin:0}
+.adv{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}
+@media (max-width:760px){.adv{grid-template-columns:1fr}}
+.adv div{padding:18px 20px;border-radius:14px;border:1px solid var(--line);background:var(--card)}
+.adv h3{margin:0 0 8px;font-size:1rem}
+.adv ul{margin:0;padding-left:1.2em;color:var(--ink-2);font-size:.95rem}
+.adv li{margin:4px 0}
+.adv .plus h3{color:var(--ok)}
+.adv .minus h3{color:var(--accent)}
+.cmpx tbody th{white-space:nowrap}
+.bb-card .nm small{display:block;font-size:12px;font-weight:500;color:var(--mute)}
+.bb-card dl.rep{margin:0;padding:12px 18px 16px;display:grid;gap:6px}
+.bb-card dl.rep div{display:flex;justify-content:space-between;gap:10px;font-size:13px}
+.bb-card dl.rep dt{color:var(--mute)}
+.bb-card dl.rep dd{margin:0;font-weight:700;color:var(--ink)}
+.bb-card dl.rep dd.ok{color:var(--ok)}
+.bb-card dl.rep dd.ok::before{content:"✓ "}
+.scene{padding:clamp(64px,7vw,96px) 0}
+#brand.brandband{padding:clamp(56px,6vw,88px) 0}
+#why{padding-top:clamp(64px,7vw,96px)}
+.sec-head{align-items:start}
 </style>
 </head>
 <body>
@@ -873,6 +948,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
   </symbol>
 </svg>
 
+
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="リストマスター パートナー向けご案内 トップへ">
@@ -880,12 +956,12 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
       <span><span class="brand-name">リストマスター</span><span class="brand-sub">FOR PARTNERS</span></span>
     </a>
     <nav class="nav" aria-label="ページ内">
-      <a href="#how">毎朝の動き</a>
+      <a href="#morning">毎朝の姿</a>
+      <a href="#brand">名前とロゴ</a>
+      <a href="#compare">比較</a>
       <a href="#revenue">収益</a>
       <a href="#share">分担</a>
-      <a href="#honest">約束しないこと</a>
       <a href="#faq">ご質問</a>
-      <a href="https://writeup-inc.github.io/saas/list-master/" target="_blank" rel="noopener">直販サイト ↗</a>
     </nav>
     <a class="btn btn-sm" href="../b02/"><span class="hide-s">個別説明を</span>申し込む</a>
   </div>
@@ -901,19 +977,18 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
       <div>
         <p class="hero-tag"><span class="live"><i></i>OEM PARTNER</span>OEMパートナー募集｜サービス名・ロゴを貴社名に</p>
         <div class="hc" id="hc" title="押すと、3つのコピーと見出しを並べて読めます">
-          <h1 id="tw" class="hero__title" data-keep-phrase>貴社の名前とロゴで、<br>営業リストAIを売れます。</h1>
+          <h1 id="tw" class="hero__title" data-keep-phrase>リスト作りから送付まで、<br>貴社の名前で売れます。</h1>
         </div>
         <div class="dots" role="group" aria-label="コピーの切り替え">
           <button type="button" aria-label="コピー1" aria-current="true"></button>
           <button type="button" aria-label="コピー2" aria-current="false"></button>
           <button type="button" aria-label="コピー3" aria-current="false"></button>
         </div>
-        <p class="hero-lead">サービス名とロゴは、<b>貴社の名前へ自由に変更可能</b>。中身の「リストマスター」は、条件を決めれば<b>毎朝9時に営業リストを作り、初回のメールかFAXまで</b>送ります。月額のサービスなので、貴社の収益は月ごとの積み上げです。</p>
-        <p class="promise">卸値や一次受けなど、まだ決まっていないことも隠さず、決まっていることと同じ表に並べてお見せします。</p>
+        <p class="hero-lead">条件を決めれば、<b>毎朝9時に営業リストを作り、初回のメールかFAXまで</b>送るAI。その名前とロゴを、貴社のものに変えて販売できます。</p>
         <div class="cta-row">
           <a class="btn" href="../b02/">個別説明を申し込む
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg></a>
-          <a class="lnk" href="#how">毎朝の動きを先に見る ↓</a>
+          <a class="lnk" href="#morning">毎朝の姿を先に見る ↓</a>
         </div>
       </div>
       <figure class="con" aria-label="毎朝の実行ログの画面イメージ">
@@ -939,126 +1014,186 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
       <li><span>サービス名・ロゴ</span><b>貴社名に変更可</b></li>
       <li><span>起動する時刻</span><b>毎朝9時</b></li>
       <li><span>運用実績</span><b>弊社営業部門で毎日</b></li>
-            <li><span>直販の公開価格</span><b>初期50万円＋月3万円</b></li>
+      <li><span>直販の公開価格</span><b>初期50万円＋月3万円</b></li>
     </ul>
   </div>
   <p class="gen">背景はイメージです</p>
 </section>
 
-<!-- ===== 白ラベル ===== -->
-<div class="brandband" aria-label="サービス名とロゴの差し替え">
+<!-- ===== R1. 毎朝の姿（右脳） ===== -->
+<section id="morning" class="scene" aria-labelledby="s1">
+  <div class="wrap">
+    <div class="scene-grid">
+      <div class="scene-copy">
+        <p class="eyebrow">EVERY MORNING</p>
+        <h2 id="s1">朝9時、<br>今日の当て先探しが<br>人の手を離れて始まります。</h2>
+        <p class="scene-lead">9時になると、条件を読み、企業を探し、宛先を確かめ、初回の連絡を送って報告するところまで、人が手を出さずに進みます。今日どこに当てるかを、誰も選ばなくていい朝です。</p>
+        <ol class="day">
+          <li><b>9:00</b><span>シートの条件を読み、企業を探してリストにする</span></li>
+          <li><b>続けて</b><span>宛先を確かめ、初回のメールかFAXを送る</span></li>
+          <li><b>送り終えたら</b><span>今日の実績を報告メールで届ける</span></li>
+        </ol>
+      </div>
+      <figure class="desk" aria-label="朝の机に、今朝の報告メールが届いている画面イメージ">
+        <img src="img/morning-desk.webp" alt="" width="1280" height="853" loading="lazy">
+        <div class="mail" id="mail">
+          <p class="mail-from"><span class="mail-logo" aria-hidden="true">LOGO</span><span><b>貴社のサービス名</b><small>本日の実行報告</small></span></p>
+          <dl>
+            <div><dt>今日の条件</dt><dd>新潟県／システム開発</dd></div>
+            <div><dt>リスト作成</dt><dd class="ok">完了</dd></div>
+            <div><dt>宛先の確認</dt><dd class="ok">完了</dd></div>
+            <div><dt>初回の連絡</dt><dd class="ok">送付済み</dd></div>
+          </dl>
+          <p class="mail-f">明日も9時に、同じ条件で動きます。</p>
+        </div>
+        <figcaption>報告メールの中身を説明するための画面イメージ。どこに貴社のサービス名を出せるかは、個別説明でご案内します。</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== R2. 名前とロゴ（右脳） ===== -->
+<section id="brand" class="brandband" aria-labelledby="s2">
   <div class="wrap">
     <div class="bb-head">
-      <p class="bb-title">サービス名もロゴも、<br>貴社のものに変えて売れます。</p>
-      <p class="bb-lead">中身はリストマスターのまま、お客様に見せる名前とロゴを貴社の名前に自由に変えられます。既存のお客様には、貴社の新しいサービスとして案内してください。</p>
+      <div><p class="eyebrow">YOUR BRAND</p>
+      <h2 id="s2" class="bb-title">名前もロゴも、<br>貴社のものに変えて売れます。</h2></div>
+      <p class="bb-lead">中身はリストマスターのまま、お客様に見せる名前とロゴを、貴社の名前へ自由に変更可能。既存のお客様には、貴社の新しいサービスとして案内してください。</p>
     </div>
     <div class="bb-grid">
-      <div class="bb-card"><div class="bar"><span class="logo"><svg aria-hidden="true"><use href="#mark"/></svg></span><span class="nm">リストマスター</span><span class="lb">弊社の直販</span></div><div class="rows"><i></i><i></i><i></i></div></div>
+      <div class="bb-card"><div class="bar"><span class="logo"><svg aria-hidden="true"><use href="#mark"/></svg></span><span class="nm">リストマスター<small>本日の実行報告</small></span><span class="lb">弊社の直販</span></div><dl class="rep"><div><dt>今日の条件</dt><dd>新潟県／システム開発</dd></div><div><dt>リスト作成</dt><dd class="ok">完了</dd></div><div><dt>初回の連絡</dt><dd class="ok">送付済み</dd></div></dl></div>
       <span class="bb-arrow" aria-hidden="true">→</span>
-      <div class="bb-card you"><div class="bar"><span class="logo">貴社<br>LOGO</span><span class="nm">貴社のサービス名</span><span class="lb">貴社が売るとき</span></div><div class="rows"><i></i><i></i><i></i></div></div>
+      <div class="bb-card you"><div class="bar"><span class="logo">貴社<br>LOGO</span><span class="nm">貴社のサービス名<small>本日の実行報告</small></span><span class="lb">貴社が売るとき</span></div><dl class="rep"><div><dt>今日の条件</dt><dd>新潟県／システム開発</dd></div><div><dt>リスト作成</dt><dd class="ok">完了</dd></div><div><dt>初回の連絡</dt><dd class="ok">送付済み</dd></div></dl></div>
     </div>
-    <p class="bb-note">図は差し替えの考え方を示したイメージです。名前とロゴをどの画面・どの通知に反映するかの細部は、個別説明でご案内します。</p>
+    <p class="bb-note">中身は同じで、名前だけが変わる、という考え方を示したイメージ。名前とロゴをどの画面・どの通知に反映するかの細部は、個別説明でご案内します。</p>
   </div>
-</div>
+</section>
 
-<!-- ===== 1. 問題 ===== -->
-<section id="why" aria-labelledby="s1">
+<!-- ===== R3. 当てる先（右脳） ===== -->
+<section id="why" aria-labelledby="s3">
   <div class="wrap">
     <div class="sec-head"><div>
       <p class="eyebrow">WHY IT STALLS</p>
-      <h2 id="s1">新規開拓が詰まるのは、<br>腕より当てる先の問題。</h2>
+      <h2 id="s3">新規開拓が詰まるのは、<br>腕より当てる先の<br>問題です。</h2>
     </div>
-      <p class="sec-lead">トーク力や提案力は、磨けば効きます。ただ、変えやすいのは「何社に当たるか」と「どういう会社に当たるか」のほうです。どちらもリストの話で、営業の流れのいちばん最初にあります。</p>
+      <p class="sec-lead">変えやすいのは「何社に当たるか」と「どういう会社に当たるか」。どちらもリストの話で、営業の流れのいちばん最初にあります。</p>
     </div>
     <div class="eqbox">
-      <div class="eq-l">
-        <p class="label">新規の売上を分けると</p>
-        <div class="row"><span class="t us">営業リスト</span><span class="o">×</span><span class="t">アポ率</span><span class="o">×</span><span class="t">受注率</span><span class="o">×</span><span class="t">単価</span></div>
-        <p class="cap">掛け算なので、いちばん左が細いと、その先をどれだけ磨いても答えは大きくなりません。リストマスターが動かすのは、左端の「営業リスト」です。</p>
-      </div>
       <div class="serp">
         <p class="h">業種と地域で検索すると</p>
         <ol>
           <li><b>1位</b><span>見つけやすい会社</span><i>競合も行く</i></li>
           <li><b>2位</b><span>見つけやすい会社</span><i>競合も行く</i></li>
           <li><b>3位</b><span>見つけやすい会社</span><i>競合も行く</i></li>
-          <li class="gap">……検索結果のずっと先</li>
-          <li class="deep"><b>深い所</b><span>発信が上手くないだけの会社</span><i>まだ誰も来ていない</i></li>
+          <li class="gap">……検索のずっと先</li>
+          <li class="deep"><b>深い所</b><span>上位に出てこない会社</span><i>まだ手つかずが多い</i></li>
         </ol>
-        <p class="cap">人が見つけられる会社は、競合も同じように見つけています。人の体力では深い所まで掘れません。</p>
+        <p class="cap">人が見つけられる会社は、競合も同じように見つけています。</p>
+      </div>
+      <div class="eq-l">
+        <p class="label">新規の売上を分けると</p>
+        <div class="row"><span class="t us">営業リスト</span><span class="o">×</span><span class="t">アポ率</span><span class="o">×</span><span class="t">受注率</span><span class="o">×</span><span class="t">単価</span></div>
+        <p class="cap">掛け算のいちばん左が細いと、その先を磨いても答えは大きくなりません。リストマスターが動かすのは、左端の「営業リスト」です。</p>
       </div>
     </div>
     <div class="fc-row"><button class="fc-btn" type="button" data-fc-section="新規開拓が詰まる理由" data-fc-claim="BtoBの新規売上は、営業リスト×アポ率×受注率×単価に分解して考えられる／検索の上位に出る企業は見つけやすいため、複数の会社から営業を受けやすい／新規開拓で変えやすいのは、当たる母数と当たる先の選び方である"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="m8.5 11 1.8 1.8L14 9"/></svg>ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button></div>
   </div>
 </section>
 
-<!-- ===== 2. 仕組み ===== -->
-<section id="how" class="sec-alt" aria-labelledby="s2">
+<!-- ===== 切り替えの帯 ===== -->
+<div class="switch" role="note" aria-label="ここから条件の話">
+  <div class="wrap">
+    <p class="sw-h">ここからは、取り扱うかを決めるための<br>条件の話です。</p>
+    <ul class="sw-links">
+      <li><a href="#how">仕組み</a></li><li><a href="#compare">他社との比較</a></li><li><a href="#revenue">収益の形</a></li><li><a href="#share">分担</a></li><li><a href="#honest">約束しないこと</a></li><li><a href="#faq">ご質問</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===== L1. 仕組み ===== -->
+<section id="how" class="sec-alt" aria-labelledby="s4">
   <div class="wrap">
     <div class="sec-head"><div>
-      <p class="eyebrow">EVERY MORNING</p>
-      <h2 id="s2">リストマスターは毎朝9時、<br>当てる先を探して初回を送る。</h2>
+      <p class="eyebrow">HOW IT WORKS</p>
+      <h2 id="s4">毎朝9時に、<br>当てる先を探して<br>初回の連絡まで送ります。</h2>
     </div>
-      <p class="sec-lead">お客様がやるのは、最初にスプレッドシートへ地域・業種・規模の条件を入れることだけです。毎朝「今日はどこに当てるか」を人に選ばせない設計にしています。確認の手間を残すと、忙しい日に止まるからです。</p>
+      <p class="sec-lead">お客様が最初に決めるのは、スプレッドシートの地域・業種・規模の条件と、送る文面。毎朝「今日はどこに当てるか」を人に選ばせない設計です。確認の手間を残すと、忙しい日に止まってしまいます。</p>
     </div>
     <ol class="flow flow5">
       <li><b>STEP 1</b><strong>条件を読む</strong><span>シートの地域・業種・規模</span></li>
       <li><b>STEP 2</b><strong>探す</strong><span>複数のデータソースで企業を検索</span></li>
-      <li><b>STEP 3</b><strong>除く・確かめる</strong><span>廃業・重複と、届かない宛先（約5%）を外す</span></li>
+      <li><b>STEP 3</b><strong>除く・確かめる</strong><span>廃業・重複と、受信できないドメイン（約5%）を外す</span></li>
       <li><b>STEP 4</b><strong>送る</strong><span>初回のメールかFAX</span></li>
       <li><b>STEP 5</b><strong>報告する</strong><span>今日の実績をメールで</span></li>
     </ol>
     <div class="rules">
       <p class="rules-h">送る前と送ったあとの仕組み（弊社のシステムが持つ機能）</p>
       <ul>
-        <li>送る前に宛先が受信できるかを確かめます。受信できないドメインは約5%あり、送信前に外します</li>
-        <li>メールには配信停止のリンクを入れ、停止した相手とNGリストの相手には送りません</li>
-        <li>報告はメールで届きます。SlackやGoogleチャットへの通知にも対応できます</li>
+        <li>メールには配信停止のリンクを入れ、停止した相手とNGリストの相手には送らない</li>
+        <li>文面はAIが用意し、お客様独自のひな形の登録も可能</li>
+        <li>報告はメールで届き、SlackやGoogleチャットへの通知にも対応</li>
       </ul>
     </div>
-        <p class="sites"><span class="sites-h">お客様向けの説明は直販のページにもあります</span><a href="https://writeup-inc.github.io/saas/list-master/" target="_blank" rel="noopener">サービスサイト</a><a href="https://list.elliot-tech.jp/lp" target="_blank" rel="noopener">料金を載せた申込ページ</a></p>
   </div>
 </section>
 
-<!-- ===== 3. 比較 ===== -->
-<section id="compare" aria-labelledby="s3">
+<!-- ===== L2. 競合比較 ===== -->
+<section id="compare" aria-labelledby="s5">
   <div class="wrap">
     <div class="sec-head"><div>
       <p class="eyebrow">COMPARED TO</p>
-      <h2 id="s3">買うリストと違い、<br>条件を狭めるほど<br>競合と重なりにくい。</h2>
+      <h2 id="s5">他社と並べて違うのは、<br>毎朝の自動送付と<br>名前を変えた再販です。</h2>
     </div>
-      <p class="sec-lead">お客様が今やっている3つのやり方と並べました。他社の名前と価格は出していません。条件を広げると、誰でも持っているリストに戻ります。条件は狭くていい、というのが弊社の考え方です。</p>
+      <p class="sec-lead">営業リストの作成や新規開拓の自動化で、貴社のお客様が比べそうな4社を選びました。各社の公式サイトで確かめた公開情報だけを載せ、リストマスターが不利な行も残しました。表の中身は、下のボタンからChatGPTに確かめさせてください。</p>
     </div>
     <div class="cmp-wrap">
       <div class="cmp-head">
-        <h3>従来のやり方との比較</h3>
-        <p>一般的な傾向をまとめたものです。個々のサービスや体制によって異なります。</p>
+        <h3>営業リスト作成・<br>新規開拓の自動化の比較</h3>
+        <p>各社公式サイトの公開情報（2026年9月25日確認）。「確認できず」は、公式サイトに記載が見つからなかった項目です。</p>
       </div>
       <div class="scroll-x">
-        <table class="cmp cmp4">
-          <thead><tr><th scope="col">やり方</th><th scope="col">当てる先の決め方</th><th scope="col">毎日の手間</th><th scope="col">情報の新しさ</th><th scope="col">初回の連絡</th><th scope="col">費用の形</th><th scope="col">競合との重なり</th></tr></thead>
+        <table class="cmp cmp4 cmpx">
+          <thead><tr><th scope="col">サービス</th><th scope="col">初期費用</th><th scope="col">月額・従量</th><th scope="col">送付の手段</th><th scope="col">毎日の自動化</th><th scope="col">契約期間</th><th scope="col">名前を変えた再販</th></tr></thead>
           <tbody>
-            <tr><th scope="row">リストを買う</th><td data-l="当てる先">業者の区分から選ぶ</td><td data-l="毎日の手間">購入時のみ</td><td data-l="新しさ">購入した時点のまま</td><td data-l="初回の連絡">別に用意する</td><td data-l="費用の形">件数ごとの買い切りが多い</td><td data-l="競合との重なり">同じリストを他社も買える</td></tr>
-            <tr><th scope="row">自社で手作業</th><td data-l="当てる先">担当者が検索して選ぶ</td><td data-l="毎日の手間">検索と整理を毎回人が行う</td><td data-l="新しさ">作った時点</td><td data-l="初回の連絡">後回しになりやすい</td><td data-l="費用の形">担当者の人件費</td><td data-l="競合との重なり">検索の上位に寄りやすい</td></tr>
-            <tr><th scope="row">営業代行に任せる</th><td data-l="当てる先">代行会社と相談して決める</td><td data-l="毎日の手間">打ち合わせと報告の確認</td><td data-l="新しさ">代行会社しだい</td><td data-l="初回の連絡">代行会社が行う</td><td data-l="費用の形">月額固定や成果報酬</td><td data-l="競合との重なり">代行会社しだい</td></tr>
-            <tr class="us"><th scope="row">リストマスター</th><td data-l="当てる先" class="hl">シートの条件で毎朝探す</td><td data-l="毎日の手間" class="hl">条件を決めたあとは不要</td><td data-l="新しさ">毎朝検索し直す</td><td data-l="初回の連絡">メールかFAXを自動で</td><td data-l="費用の形">月額（直販は初期費用＋月額）</td><td data-l="競合との重なり" class="hl">条件を狭めるほど重なりにくい</td></tr>
+            <tr class="us"><th scope="row">リストマスター</th><td data-l="初期費用">500,000円（税区分【要確認】）</td><td data-l="月額・従量" class="hl">月30,000円（税区分【要確認】）・従量課金なし</td><td data-l="送付の手段" class="hl">メール・FAX</td><td data-l="毎日の自動化" class="hl">毎朝、リスト作成から初回送付・報告まで</td><td data-l="契約期間">12か月</td><td data-l="名前を変えた再販" class="hl">名前とロゴを変えて再販できる</td></tr>
+            <tr><th scope="row">Musubu</th><td data-l="初期費用">0円</td><td data-l="月額・従量">6か月契約 月20万円、12か月契約 月16万円（税別）。CSV出力などはクレジット制（追加1クレジット10円）</td><td data-l="送付の手段" class="no">公式トップで確認できず</td><td data-l="毎日の自動化" class="no">確認できず</td><td data-l="契約期間">6か月／12か月</td><td data-l="名前を変えた再販">営業代行向けの設定代行プランあり。再販・OEMの記載なし</td></tr>
+            <tr><th scope="row">Urizo</th><td data-l="初期費用">5,500円</td><td data-l="月額・従量">月9,900〜44,000円（収集上限 月5千〜5万件）</td><td data-l="送付の手段">ツール内の送信は確認できず（FAXDMの発送代行は別サービス）</td><td data-l="毎日の自動化" class="no">確認できず</td><td data-l="契約期間">カード払いは1か月、振込は6か月単位</td><td data-l="名前を変えた再販" class="no">記載なし</td></tr>
+            <tr><th scope="row">リストル</th><td data-l="初期費用">3,300円（税込）</td><td data-l="月額・従量">月6,800〜16,800円（税込）。従量課金なし</td><td data-l="送付の手段">フォーム送信ツール（有料契約の特典。送信成功率は約20〜30%と明記）</td><td data-l="毎日の自動化">時刻指定の自動収集オプションあり（月3,300〜8,800円）。自動送付は確認できず</td><td data-l="契約期間">縛りなし</td><td data-l="名前を変えた再販" class="no">記載なし</td></tr>
+            <tr><th scope="row">Sales Crowd</th><td data-l="初期費用" class="no">確認できず</td><td data-l="月額・従量">最低月10万円〜（リスト 月1千〜5千件）</td><td data-l="送付の手段">メールDM・FAX・手紙</td><td data-l="毎日の自動化">「自動ナーチャリング」の記載あり。毎日の自動送付は確認できず</td><td data-l="契約期間" class="no">確認できず</td><td data-l="名前を変えた再販" class="no">記載なし</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="cmp-foot"><p class="note">リストマスターも精度100%ではありません。明らかに動いていない会社や重複は落としますが、会って確かめるのは人の仕事です。</p></div>
+      <p class="cmp-src">出典：<a href="https://business.musubu.in/" target="_blank" rel="noopener">Musubu</a><a href="https://urizo.jp/price" target="_blank" rel="noopener">Urizo</a><a href="https://www.listoru.com/price.html" target="_blank" rel="noopener">リストル</a><a href="https://www.aidma-hd.jp/sales/sales-crowd/" target="_blank" rel="noopener">Sales Crowd</a><a href="https://list.elliot-tech.jp/lp" target="_blank" rel="noopener">リストマスター</a></p>
     </div>
-    <div class="fc-row"><button class="fc-btn" type="button" data-fc-section="従来のやり方との比較" data-fc-claim="営業リストの用意には、リストを買う・自社で手作業で作る・営業代行に任せる、という従来のやり方がある／購入リストは購入時点の情報のままで、件数ごとの買い切りが多い／手作業は毎回人が検索・整理する必要があり、初回の連絡が後回しになりやすい／営業代行は月額固定や成果報酬が一般的／購入リストは同じものを他社も買える／条件を広く取るほど、競合も持っているリストに近づく"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="m8.5 11 1.8 1.8L14 9"/></svg>ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button></div>
+    <div class="adv">
+      <div class="plus"><h3>リストマスターが有利な点</h3><ul>
+        <li>毎朝のリスト作成から初回の送付、報告までを一続きで自動で回す、と公式に書いているのは4社の中に見当たらない</li>
+        <li>ツールの中からFAXまで送れるのは、Sales Crowdとリストマスターの2つ（UrizoのFAXDMは別サービスの発送代行）。月額はSales Crowdの最低月10万円に対して月30,000円。ただし初期費用500,000円がかかる点に注意</li>
+        <li>従量課金なし。名前を変えた再販の制度は、4社の公式サイトに記載なし</li>
+      </ul></div>
+      <div class="minus"><h3>リストマスターが不利な点</h3><ul>
+        <li>初期費用500,000円は突出して高い（他社は0〜5,500円、Sales Crowdは確認できず）</li>
+        <li>12か月の契約期間あり。リストルは縛りなし、Urizoはカード払いなら1か月単位</li>
+        <li>リストを作るだけなら、リストルの月6,800円〜という選択肢も。データ量はMusubuが1,200万件をうたう</li>
+      </ul></div>
+    </div>
+    <div class="ai-box">
+      <span class="ai-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="m8.5 11 1.8 1.8L14 9"/></svg></span>
+      <p><b>この比較が正しいか、AIに確かめさせてください</b>各社の最新の公開情報をChatGPTに調べさせ、表の正しさと、どういう会社にどのサービスが向くかを中立に説明させます。</p>
+      <button class="fc-btn" type="button" data-fc-section="営業リスト作成・新規開拓の自動化サービスの比較（2026年9月25日確認）" data-fc-claim="リストマスター：初期費用500,000円、月30,000円（いずれも税区分は未記載）、従量課金なし、メール・FAXで初回送付、毎朝リスト作成から送付・報告まで自動、契約12か月、名前とロゴを変えて再販できる／Musubu：初期0円、6か月契約 月20万円・12か月契約 月16万円（税別）、CSV出力などはクレジット制（追加1クレジット10円）／Urizo：初期5,500円、月9,900〜44,000円（収集上限 月5千〜5万件）、支払い方法で1か月または6か月単位／リストル：初期3,300円（税込）、月6,800〜16,800円（税込）、従量課金なし、フォーム送信ツールあり（成功率約20〜30%と明記）、契約の縛りなし／Sales Crowd：最低月10万円〜、メールDM・FAX・手紙に対応" data-fc-ask="各社の記載は、いま公式サイトで確認できる情報と一致するか／この表で、リストマスターが有利に見えすぎている行・不利な行はどれか／どういう会社にはどのサービスが向くか、中立の立場で">ChatGPTで比較を確かめる<span class="fc-sub">別タブで開きます</span></button>
+    </div>
   </div>
 </section>
 
-<!-- ===== 4. 向いている会社 ===== -->
-<section id="fit" class="sec-alt" aria-labelledby="s4">
+
+<!-- ===== L3. 向いている会社 ===== -->
+<section id="fit" class="sec-alt" aria-labelledby="s6">
   <div class="wrap">
     <div class="sec-head"><div>
       <p class="eyebrow">WHO SHOULD RESELL</p>
-      <h2 id="s4">向いているのは、新規開拓の<br>相談を受けている会社。</h2>
+      <h2 id="s6">向いているのは、<br>新規開拓の相談を<br>受けている会社です。</h2>
     </div>
-      <p class="sec-lead">営業代行、Web制作、広告、経営コンサルティング、BPO、ITの販売。業種より大事なのは、貴社のお客様の顔ぶれと、お客様との付き合い方です。</p>
+      <p class="sec-lead">営業代行、Web制作、広告、経営コンサルティング。業種より大事なのは、貴社のお客様の顔ぶれと、お客様との付き合い方です。</p>
     </div>
     <div class="fit">
       <div class="fit-col yes">
@@ -1067,29 +1202,44 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
           <li>中小企業のお客様が多く、定期的に顔を合わせている</li>
           <li>お客様から「新規が取れない」「営業に人を割けない」と相談される</li>
           <li>月額のサービスを売り、続けてもらう売り方に慣れている</li>
-          <li>営業支援や集客の話を、すでにお客様としている</li>
+          <li>自社ブランドの商材を増やしたい</li>
         </ul>
       </div>
       <div class="fit-col no">
         <div class="fit-title"><i aria-hidden="true">−</i><h3>向いていない会社</h3></div>
         <ul>
-          <li>反応数やアポ数を約束して売るのが、貴社の売り方の前提になっている</li>
+          <li>反応数やアポ数を約束して売るのが、売り方の前提になっている</li>
           <li>売り切りだけで、導入後にお客様と話す機会がない</li>
         </ul>
+        <p class="fit-note">売らないでほしいお客様の条件は、<a class="inlk" href="#honest">「約束しないこと」の区画</a>にまとめています。</p>
       </div>
     </div>
-    <p class="fit-after">右側に多く当てはまる場合、個別説明の場で「いまは取り扱わないほうがいい」とお伝えすることがあります。</p>
+    <p class="sell-h">既存のお客様には、この3つの言葉から切り出せます</p>
+    <div class="cards3">
+      <div class="card">
+        <p class="say">新規が取れない</p>
+        <p>最初に伝えるのは「条件は狭くていい」こと。いま取れているお客さんと同じ業種・規模・地域から始める、と話すと、プロの提案に聞こえます。</p>
+      </div>
+      <div class="card">
+        <p class="say">営業に人を割けない</p>
+        <p>定例や契約更新の場が、切り出しどころ。リスト作りと初回の連絡は毎朝自動で進み、返信が来たあとの商談には人が要る、と同時に伝えてください。</p>
+      </div>
+      <div class="card">
+        <p class="say">作ったサイトから問い合わせが来ない</p>
+        <p>貴社のサービスと組める場面です。待つ集客に、こちらから声をかける手を1つ足す形で紹介します。</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ===== 5. 収益 ===== -->
-<section id="revenue" aria-labelledby="s5">
+<!-- ===== L4. 収益 ===== -->
+<section id="revenue" aria-labelledby="s7">
   <div class="wrap">
     <div class="sec-head"><div>
       <p class="eyebrow">REVENUE MODEL</p>
-      <h2 id="s5">収益は売り切りでなく、<br>月額の積み上げで考える。</h2>
+      <h2 id="s7">収益は売り切りでなく、<br>月額の積み上げで<br>考えます。</h2>
     </div>
-      <p class="sec-lead">リストマスターは従量課金のない月額のサービスです。お客様が続けるかぎり、毎月の収益になります。卸値と推奨売価は確定前なので、弊社からの試算は書面で条件が決まってからお出しします。下の計算機には、貴社の見込みを入れて形だけ確かめてください。</p>
+      <p class="sec-lead">リストマスターは従量課金のない月額のサービス。お客様が続けるかぎり、毎月の収益になります。卸値と推奨売価は確定前なので、下の計算機に貴社の見込みを入れて形を確かめてください。</p>
     </div>
     <div class="price-grid">
       <div class="price-card">
@@ -1101,7 +1251,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
           <li><span>契約期間</span><b>12か月</b></li>
           <li><span>税の扱い</span><b><span class="tbd">【要確認】</span></b></li>
         </ul>
-        <p class="note">料金は直販の申込ページに掲載しています。貴社のお客様もこの価格を調べられる、という前提で売価を組んでください。</p>
+        <p class="note">料金は直販の申込ページに掲載中。貴社のお客様もこの価格を調べられる、という前提で売価を組んでください。</p>
       </div>
       <div>
         <div class="formula">
@@ -1109,140 +1259,73 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
           <div class="eq">
             <span class="term">続けている<br>お客様の数</span>
             <span class="op">×</span>
-            <span class="op">（</span><span class="term q">貴社の月額売価<small>【調整中：推奨売価】</small></span>
+            <span class="op">（</span><span class="term q">貴社の月額売価<small>【仮：再販型】</small></span>
             <span class="op">−</span>
-            <span class="term q">卸値<small>【調整中：卸値】</small></span><span class="op">）</span>
+            <span class="term q">卸値<small>【調整中】</small></span><span class="op">）</span>
             <span class="op">＋</span>
-            <span class="term q">新規のお客様の数 × 初期費用の貴社取り分<small>【調整中】</small></span>
+            <span class="term q">初期費用の貴社取り分<small>【調整中】</small></span>
           </div>
-          <p class="note">直販価格で見ると、1年目は初期費用500,000円が月額12か月分（360,000円）を上回ります。1年目の収益を最も左右するのは、初期費用の分け方<span class="nobr">【調整中】</span>です。試算は条件が書面で決まってからお出しします。</p>
+          <p class="note">直販価格で見ると、1年目は初期費用500,000円が月額12か月分（360,000円）を上回ります。1年目の収益を最も左右するのは、初期費用の分け方です。</p>
         </div>
         <ul class="feat">
-          <li><b>紹介URLごとに料金を設定できます</b>販売会社ごとの紹介URLを発行し、URLごとに料金を分ける仕組みがあります。貴社が設定できる範囲は<span class="nobr">【要確認】</span>です。</li>
-          <li><b>代理店ごとのクーポンを発行できます</b>値引きできるのは初期費用だけです。月額は値引きの対象になりません。</li>
+          <li><b>紹介URLごとに料金を設定できます</b>販売会社ごとの紹介URLを発行し、URLごとに料金を分ける仕組み。貴社が設定できる範囲は【要確認】です。</li>
+          <li><b>代理店ごとのクーポンを発行できます</b>値引きできるのは初期費用だけ。月額は値引きの対象外です。</li>
         </ul>
       </div>
     </div>
     <div class="sim2" id="sim">
       <div class="sim2-h">
         <h3>月額の積み上げを、<br>貴社の見込みで確かめる</h3>
-        <p>入力した数字で計算するだけの道具です。弊社が約束する数字ではありません。解約なし・初期費用なしの前提で計算しています。</p>
+        <p>入力した数字で計算するだけの道具で、弊社が約束する数字ではありません。解約なしの前提です。</p>
       </div>
       <div class="sim2-b">
         <div>
           <div class="fld"><label for="sm-n">毎月、新しく増えるお客様</label><span class="val"><span id="sm-nv">2</span><small>社／月</small></span><input id="sm-n" type="range" min="1" max="10" step="1" value="2" aria-describedby="sm-nh"><span class="hint" id="sm-nh">1〜10社で動かせます</span></div>
           <div class="fld"><label for="sm-p">貴社がお客様に出す月額（1社あたり）</label><input id="sm-p" type="number" inputmode="numeric" min="0" step="1000" value="30000"><span class="hint">初期値は直販の公開価格（月30,000円）</span></div>
-          <div class="fld"><label for="sm-w">卸値（1社あたり・月額）</label><input id="sm-w" type="number" inputmode="numeric" min="0" step="1000" placeholder="決まったら入力"><span class="hint">卸値は【調整中】です。書面を受け取ったら入れてください</span></div>
+          <div class="fld"><label for="sm-w">卸値（1社あたり・月額）</label><input id="sm-w" type="number" inputmode="numeric" min="0" step="1000" placeholder="決まったら入力"><span class="hint">卸値は【調整中】。決まったら入れてください</span></div>
+          <div class="fld"><label for="sm-i">初期費用の貴社取り分（1社あたり）</label><input id="sm-i" type="number" inputmode="numeric" min="0" step="10000" placeholder="空欄なら0円"><span class="hint">初期費用の分け方は【調整中】</span></div>
         </div>
         <div>
           <div class="sim2-out" aria-live="polite">
             <div><span>12か月後の契約数</span><b id="sm-c">24社</b></div>
             <div><span>12か月目の月額</span><b id="sm-m">720,000円</b></div>
+            <div><span>1年間の初期費用の取り分</span><b id="sm-ii">0円</b></div>
+            <div><span>1年間の月額売上の合計</span><b id="sm-ms">—</b></div>
             <div class="gp"><span id="sm-gl">1年間の粗利（卸値を入れると出ます）</span><b id="sm-g">—</b></div>
           </div>
           <div class="chart" id="sm-chart" role="img" aria-label="月ごとの月額売上の積み上げ"><div class="tip" id="sm-tip"></div></div>
-          <p class="sim2-f">棒は各月の月額売上（貴社の売価ベース）。お客様が増えるほど、翌月以降も続けて積み上がります。</p>
+          <p class="sim2-f">棒は各月の月額売上（貴社の売価ベース）。お客様が増えるほど、翌月以降も続けて積み上がる形です。</p>
         </div>
       </div>
     </div>
     <p class="sell-h">お客様が申し込むまでの流れ</p>
     <ol class="flow">
       <li><b>01</b><strong>紹介URLを渡す</strong><span>貴社専用のURL</span></li>
-      <li><b>02</b><strong>URLから申し込む</strong><span>お客様が手続き</span></li>
-      <li><b>03</b><strong>料金とクーポン</strong><span>URLごとの料金、値引きは初期費用だけ</span></li>
+      <li><b>02</b><strong>URLから申し込む</strong><span>お客様が手続き【仮】</span></li>
+      <li><b>03</b><strong>料金</strong><span>URLごとに設定した料金で申し込む</span></li>
       <li><b>04</b><strong>毎朝9時に稼働</strong><span>条件を決めたら自動で</span></li>
     </ol>
   </div>
 </section>
 
-<!-- ===== 6. 切り出し方 ===== -->
-<section id="offer" class="sec-alt" aria-labelledby="s6">
-  <div class="wrap">
-    <div class="offer-top">
-      <div>
-        <p class="eyebrow">HOW TO OFFER</p>
-        <h2 id="s6">「新規が取れない」と<br>相談されたその場で<br>出せる答えになる。</h2>
-        <p class="sec-lead">新しく売り込むより、お客様がすでに口にしている困りごとに答える形のほうが話は進みます。次の3つの場面が、紹介のきっかけです。</p>
-      </div>
-      <figure class="photo"><img src="img/meeting.webp" width="1280" height="853" loading="lazy" alt="ノートパソコンを囲んで打ち合わせをする人たち"><figcaption>イメージ</figcaption></figure>
-    </div>
-    <div class="cards3">
-      <div class="card">
-        <p class="say">新規が取れない</p>
-        <p>相談を受けたその場で出せます。最初に伝えるのは「条件は狭くていい」こと。いま取れているお客さんと同じ業種・規模・地域から始める、と話すと、プロの提案に聞こえます。</p>
-      </div>
-      <div class="card">
-        <p class="say">営業に人を割けない</p>
-        <p>定例や契約更新の場が、切り出しどころです。リストを作って初回を送るところまでは、毎朝自動で進みます。返信が来たあとの商談には人が要る、という点も同時にお伝えください。</p>
-      </div>
-      <div class="card">
-        <p class="say">作ったサイトから問い合わせが来ない</p>
-        <p>貴社のサービスと組める場面です。待つ集客に、こちらから当たる接点を足す形で紹介します。精度100%のリストは無いので、中身を確かめるのは人、と先に伝えておきます。</p>
-      </div>
-    </div>
-    <p class="fit-after">提案してよいかの目安は、下の<a class="inlk" href="#honest">「売らないでほしいお客様」4項目</a>です。</p>
-  </div>
-</section>
 
-<!-- ===== 7. 工数 ===== -->
-<section id="work" aria-labelledby="s7">
-  <div class="wrap">
-    <div class="sec-head"><div>
-      <p class="eyebrow">YOUR WORKLOAD</p>
-      <h2 id="s7">毎朝の運用は自動で回り、<br>貴社の手間は<br>立ち上げに集まる。</h2>
-    </div>
-      <p class="sec-lead">条件が決まったあとの毎朝の作業は、システムの側で動きます。貴社の手間が出るのは、販売と立ち上げです。立ち上げを弊社の運用チームがどこまで支えるかは、まだ決まっていません。</p>
-    </div>
-    <div class="work">
-      <div class="fit-col yes">
-        <div class="fit-title"><i aria-hidden="true">✓</i><h3>必ず発生する</h3></div>
-        <p class="tagline">分担がどう決まっても、貴社の仕事</p>
-        <ul>
-          <li>お客様への提案と商談</li>
-          <li>紹介URLをお客様に渡す</li>
-          <li>向かないお客様の見極め</li>
-        </ul>
-      </div>
-      <div class="fit-col mid">
-        <div class="fit-title"><i aria-hidden="true">?</i><h3>分担しだい</h3></div>
-        <p class="tagline">【要確認】の行が決まると確定</p>
-        <ul>
-          <li>立ち上げの支援、問い合わせ、請求、配信停止・苦情の受付など5項目</li>
-          <li>担当は、下の<a class="inlk" href="#share">分担表</a>で確認できます</li>
-        </ul>
-      </div>
-      <div class="fit-col none">
-        <div class="fit-title"><i aria-hidden="true">−</i><h3>貴社では発生しない</h3></div>
-        <p class="tagline">毎朝、仕組みの側で動くもの</p>
-        <ul>
-          <li>企業の検索とリストづくり</li>
-          <li>廃業・重複の除外と宛先の確認</li>
-          <li>メール・FAXの送信</li>
-          <li>毎日の実績の報告</li>
-        </ul>
-      </div>
-    </div>
-    <p class="sell-h">立ち上げのために、弊社が渡すもの</p>
-    <ul class="give">
-      <li><span class="tagn">BRAND</span><b>名前とロゴの差し替え</b><span>サービス名とロゴを、貴社の名前に自由に変えられます。</span></li>
-      <li><span class="tagn">URL</span><b>紹介URLとクーポン</b><span>貴社専用の紹介URLと、代理店ごとのクーポン（値引きは初期費用だけ）。</span></li>
-      <li><span class="tagn">SLIDES</span><b>個別説明の投影資料</b><span>13枚。各ページに話す言葉つき。<a href="../b03/">B-03を見る</a></span></li>
-      <li><span class="tagn">TALK</span><b>お客様への話し方</b><span>貴社の営業がお客様に話す言い回しと切り返し。取り扱いが決まった会社にお渡しします。</span></li>
-      <li><span class="tagn">SITE</span><b>直販のサービスサイト</b><span>商品の中身を説明するときの参考に。<a href="https://writeup-inc.github.io/saas/list-master/" target="_blank" rel="noopener">サイトを見る</a></span></li>
-      <li><span class="tagn">SUPPORT</span><b>立ち上げの支援</b><span>条件決めや文面づくりを、弊社の運用チームがどこまで支えるかは【要確認】です。</span></li>
-    </ul>
-  </div>
-</section>
 
-<!-- ===== 8. 責任分界 ===== -->
-<section id="share" class="sec-alt" aria-labelledby="s8">
+<section id="share" class="sec-alt" aria-labelledby="s10">
   <div class="wrap">
     <div class="sec-head"><div>
       <p class="eyebrow">WHO DOES WHAT</p>
-      <h2 id="s8">弊社・貴社・未決を、<br>1枚の表に分けました。</h2>
+      <h2 id="s10">毎朝の仕組みは弊社、<br>販売は貴社。<br>問い合わせ・請求・名義は<br>まだ決まっていません。</h2>
     </div>
-      <p class="sec-lead">OEMの話は、ここが曖昧なまま進むと途中で止まります。確定している行と、まだ決まっていない行を、同じ表に並べました。【要確認】の行は、個別説明のあとに書面でお答えします。</p>
+      <p class="sec-lead">OEMの話は、ここが曖昧なまま進むと途中で止まります。確定している行と、まだ決まっていない行を、同じ表に並べました。毎朝の作業は仕組みの側で動くので、貴社の手間は販売と立ち上げに集まります。</p>
     </div>
+    <p class="sell-h">立ち上げのために、弊社が渡すもの</p>
+    <ul class="give">
+      <li><span class="tagn">URL</span><b>紹介URLとクーポン</b><span>貴社専用の紹介URLと、代理店ごとのクーポン。</span></li>
+      <li><span class="tagn">SLIDES</span><b>個別説明の投影資料</b><span>13枚。各ページに話す言葉つき。<a href="../b03/">B-03を見る</a></span></li>
+      <li><span class="tagn">TALK</span><b>お客様への話し方</b><span>貴社の営業がお客様に話すときの言い回しを、個別説明でお伝えします。</span></li>
+      <li><span class="tagn">SITE</span><b>直販のサービスサイト</b><span>商品の中身を説明するときの参考に。<a href="https://writeup-inc.github.io/saas/list-master/" target="_blank" rel="noopener">サイトを見る</a></span></li>
+      <li><span class="tagn">SUPPORT</span><b>立ち上げの支援</b><span>条件決めや文面づくりを、弊社の運用チームがどこまで支えるかは【要確認】です。</span></li>
+    </ul>
     <p class="resp-legend"><span><span class="st ok">確定</span> 6行</span><span><span class="st ng">要確認</span> 7行</span></p>
     <div class="resp-wrap">
       <table class="resp">
@@ -1259,7 +1342,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
           <tr class="open"><th scope="row">立ち上げ時の条件決めと文面の支援</th><td class="who" data-l="担当"><span class="tbd">【要確認：担当】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">弊社の運用チームが、どこまで伴走するかを含みます。</td></tr>
           <tr class="open"><th scope="row">お客様からの問い合わせの一次受け</th><td class="who" data-l="担当"><span class="tbd">【要確認：担当】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">技術的な問い合わせの切り分けも対象。</td></tr>
           <tr class="open"><th scope="row">請求と料金の回収</th><td class="who" data-l="担当"><span class="tbd">【要確認：担当】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">初期費用の分け方も、あわせて確認中です。</td></tr>
-          <tr class="open"><th scope="row">送信先からの配信停止依頼・苦情の受付</th><td class="who" data-l="担当"><span class="tbd">【要確認：担当】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">停止した相手に以後送らない仕組みは、確定しています。</td></tr>
+          <tr class="open"><th scope="row">送信先からの配信停止依頼・苦情の受付</th><td class="who" data-l="担当"><span class="tbd">【要確認：担当】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">メールの配信停止リンクとNGリストは、すでにあります。</td></tr>
           <tr class="open"><th scope="row">送信者として表示する名義</th><td class="who" data-l="担当"><span class="tbd">【要確認：名義】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">お客様・貴社・弊社のどの名前で送るか。</td></tr>
           <tr class="open"><th scope="row">お客様との契約の当事者</th><td class="who" data-l="担当"><span class="tbd">【要確認：担当】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">利用規約をどちらの名前で結ぶかを含みます。</td></tr>
           <tr class="open"><th scope="row">お客様向け販促物の提供範囲</th><td class="who" data-l="担当"><span class="tbd">【要確認：販促物の範囲】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">直販のサービスサイトを、そのまま案内に使えるかを含みます。</td></tr>
@@ -1269,18 +1352,19 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
   </div>
 </section>
 
-<!-- ===== 9. 約束しないこと ===== -->
-<section id="honest" class="honest" aria-labelledby="s9">
+
+<!-- ===== L8. 約束しないこと ===== -->
+<section id="honest" class="honest" aria-labelledby="s11">
   <div class="wrap">
     <div class="sec-head"><div>
       <p class="eyebrow">HONESTLY</p>
-      <h2 id="s9">反応数は約束しません。<br>売らないでほしい<br>相手もいます。</h2>
+      <h2 id="s11">反応数は約束しません。<br>売らないでほしい<br>相手もいます。</h2>
     </div>
-      <p class="sec-lead">リストマスターには、公表できる反応率やアポ率の実績値がまだありません。弊社が約束できるのは、毎朝リストを作り、初回の連絡を送るところまでです。</p>
+      <p class="sec-lead">リストマスターには、公表できる反応率やアポ率の実績値がまだありません。弊社が約束できるのは、毎朝リストを作り、初回の連絡を送るところまで。</p>
     </div>
     <div class="honest-points">
       <div><h3>言ってよいこと</h3><p>毎朝9時に自動で動き、条件を決めたあとは人が選ばなくていいこと。送る前に宛先を確かめ、配信停止のリンクとNGリストがあること。条件は狭いほうが、競合と重なりにくいこと。</p></div>
-      <div><h3>言ってはいけないこと</h3><p>反応数・アポ数・売上の約束。「1日に何百件」といった件数の断定（件数は条件と設定しだいです）。「法令に対応済みだから安心」という言い方。</p></div>
+      <div><h3>言ってはいけないこと</h3><p>反応数・アポ数・売上の約束。「1日に何百件」といった件数の断定（件数は条件と設定しだい）。「法令に対応済みだから安心」という言い方。</p></div>
     </div>
     <h3 class="sell-h">売らないでほしいお客様</h3>
     <ol class="ng-list">
@@ -1292,64 +1376,32 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
     <div class="honest-rules">
       <p class="h">送るときのルール</p>
       <ul>
-        <li>メールには、送信者の名称と連絡先を表示し、配信停止の受付先を入れます</li>
-        <li>配信停止の依頼があった相手と、NGリストの相手には送りません</li>
-        <li>FAXの停止依頼の扱いは<span class="tbd">【要確認】</span>です</li>
-        <li>送信者の名義と、苦情の受付先は<span class="tbd">【要確認】</span>です。決まるまで、法令上の扱いを断定して説明しないでください</li>
+        <li>メールには、送信者の名称と連絡先を表示し、配信停止の受付先を入れる</li>
+        <li>配信停止の依頼があった相手と、NGリストの相手には送らない</li>
+        <li>FAXの停止依頼の扱いは<span class="tbd">【要確認】</span></li>
+        <li>送信者の名義と、苦情の受付先は<span class="tbd">【要確認】</span>。決まるまで、法令上の扱いを断定して説明しない</li>
       </ul>
     </div>
-    <div class="fc-row"><button class="fc-btn" type="button" data-fc-section="営業メール・FAXの送り方のルール" data-fc-claim="営業メールには送信者の名称と連絡先を表示し、配信停止の受付先を入れる／配信停止を依頼した相手とNGリストの相手には送らない／反応数・アポ数・売上を約束して営業リスト作成サービスを売ることは避けるべき"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="m8.5 11 1.8 1.8L14 9"/></svg>ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button></div>
+    <div class="fc-row"><button class="fc-btn" type="button" data-fc-section="営業メール・FAXの送り方のルール" data-fc-claim="営業メールには送信者の名称と連絡先を表示し、配信停止の受付先を入れる／配信停止を依頼した相手とNGリストの相手には送らない" data-fc-ask="特定電子メール法と特定商取引法（FAX広告）で、営業メールとFAXに求められる表示・配信停止の要件と照らして、この記載に不足はないか"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="m8.5 11 1.8 1.8L14 9"/></svg>ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button></div>
   </div>
 </section>
 
-<!-- ===== 10. つばめリードとの違い ===== -->
-<section id="vs" aria-labelledby="s10">
-  <div class="wrap">
-    <div class="sec-head"><div>
-      <p class="eyebrow">WITHIN OUR LINEUP</p>
-      <h2 id="s10">月額で回すならリストマスター、<br>1通5円ならつばめリード。</h2>
-    </div>
-      <p class="sec-lead">弊社には、新規開拓の最初の接点をつくる商材が2つあります。どちらも取り扱えるので、お客様の営業のやり方で勧め分けてください。</p>
-    </div>
-    <div class="vs">
-      <div class="fit-col us">
-        <div class="fit-title"><h3>リストマスター</h3></div>
-        <dl>
-          <div><dt>やること</dt><dd>毎朝のリスト作成と、メールかFAXでの初回の連絡</dd></div>
-          <div><dt>費用の形</dt><dd>月額（直販は初期費用＋月額30,000円）</dd></div>
-          <div><dt>向くお客様</dt><dd>当てる先を狭く決めて、毎日途切れずに当て続けたい</dd></div>
-        </dl>
-      </div>
-      <div class="fit-col">
-        <div class="fit-title"><h3>つばめリード</h3></div>
-        <dl>
-          <div><dt>やること</dt><dd>企業の問い合わせフォームから提案文を送る</dd></div>
-          <div><dt>費用の形</dt><dd>従量課金（直販は成功送信1通5円）</dd></div>
-          <div><dt>向くお客様</dt><dd>全国の法人へ、送った数だけ払う形で当てたい</dd></div>
-        </dl>
-      </div>
-    </div>
-    <p class="vs-foot">つばめリードのOEM条件は、<a href="https://writeup-inc.github.io/saas/tsubame-lead-pack/b01/" target="_blank" rel="noopener">つばめリードのOEM提供のご案内</a>にまとめています。</p>
-  </div>
-</section>
-
-<!-- ===== 11. FAQ ===== -->
-<section id="faq" class="sec-alt" aria-labelledby="s11">
+<section id="faq" class="sec-alt" aria-labelledby="s12">
   <div class="wrap">
     <div class="sec-head"><div>
       <p class="eyebrow">FAQ</p>
-      <h2 id="s11">件数・ブランド・排他の質問に、<br>先に答えます。</h2>
+      <h2 id="s12">件数・名義・排他の質問に、<br>先に答えます。</h2>
     </div>
-      <p class="sec-lead">【要確認】は、答えがまだ決まっていない項目の印です。その場合は、個別説明のあと書面で個別にお答えします。</p>
+      <p class="sec-lead">【要確認】は、答えがまだ決まっていない項目の印です。その場合は、個別説明で個別にお答えします。</p>
     </div>
     <div class="faq">
       <details>
-        <summary>1日に何件のリストができますか。</summary>
-        <div class="a"><p>条件と設定しだいです。条件を狭くするほど、1日に見つかる数は減ります。送信数には上限の設定があり、OEMでお客様ごとに数えるのか、貴社全体で数えるのかは<span class="tbd">【要確認：上限の単位】</span>です。件数を約束して売らないでください。</p></div>
+        <summary>弊社の「つばめリード」とは何が違いますか。</summary>
+        <div class="a"><p>つばめリードは、企業の問い合わせフォームから提案文を送るサービスで、直販は成功送信1通5円の従量課金です。リストマスターは、毎朝のリスト作成とメールかFAXでの初回の連絡を月額で回します。どちらも取り扱えるので、お客様の営業のやり方で勧め分けてください。<a class="inlk" href="https://writeup-inc.github.io/saas/tsubame-lead-pack/b01/" target="_blank" rel="noopener">つばめリードのOEM提供のご案内</a></p></div>
       </details>
       <details>
-        <summary>貴社の名前で売ることはできますか。</summary>
-        <div class="a"><p>できます。サービス名とロゴの変更は、貴社の自由です。どの画面・どの通知に反映するかの細部は、個別説明でご案内します。</p></div>
+        <summary>1日に何件のリストができますか。</summary>
+        <div class="a"><p>条件と設定しだいです。条件を狭くするほど、1日に見つかる数は減ります。送信数には上限の設定があり、OEMでお客様ごとに数えるのか、貴社全体で数えるのかは<span class="tbd">【要確認：上限の単位】</span>です。件数を約束して売らないでください。</p></div>
       </details>
       <details>
         <summary>同じ地域や業種で、ほかのパートナーにも出しますか。</summary>
@@ -1373,31 +1425,32 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
       </details>
       <details>
         <summary>卸値はいつ分かりますか。</summary>
-        <div class="a"><p>個別説明で貴社の取扱商材と顧客層を伺ったうえで、書面でお出しします。このページより、書面と契約書の内容が優先です。</p></div>
+        <div class="a"><p>個別説明で貴社の取扱商材と顧客層を伺ったうえでお示しします。条件は、このページより契約書の内容が優先です。</p></div>
       </details>
     </div>
   </div>
 </section>
 
-<!-- ===== 12. CTA ===== -->
-<section id="start" aria-labelledby="s12">
+
+<!-- ===== CTA ===== -->
+<section id="start" class="sec-alt" aria-labelledby="s13">
   <div class="wrap">
     <div class="sec-head"><div>
       <p class="eyebrow">START HERE</p>
-      <h2 id="s12">まずは個別説明で、<br>条件を一つずつ<br>確かめてください。</h2>
+      <h2 id="s13">まずは個別説明で、<br>条件を一つずつ<br>確かめてください。</h2>
     </div>
       <p class="sec-lead">取り扱うかどうかは、そのあとで決めて間に合います。取り扱いまでの順番は、次のとおりです。</p>
     </div>
     <ol class="flow flow5">
       <li><b>STEP 1</b><strong>個別説明</strong><span>取扱商材と、向くお客様の数を一緒に確かめる</span></li>
-      <li><b>STEP 2</b><strong>条件を書面で</strong><span>【要確認】の行への回答</span></li>
-      <li><b>STEP 3</b><strong>契約</strong><span>書面の条件に合意したら</span></li>
-      <li><b>STEP 4</b><strong>紹介URLの発行</strong><span>貴社専用のURLとクーポン</span></li>
+      <li><b>STEP 2</b><strong>条件を受け取る</strong><span>【要確認】の行への回答</span></li>
+      <li><b>STEP 3</b><strong>契約</strong><span>条件に合意したら</span></li>
+      <li><b>STEP 4</b><strong>名前とロゴを決める</strong><span>貴社のサービス名で準備</span></li>
       <li><b>STEP 5</b><strong>販売開始</strong><span>紹介URLをお客様へ案内</span></li>
     </ol>
     <div class="close-grid one">
       <div class="close-box">
-        <p class="big">個別説明のあと、卸値・分担・契約条件を書面でお送りします。取り扱うかは、その書面を見てから決めてください。</p>
+        <p class="big">卸値・分担・契約条件は、個別説明で貴社の取扱商材と顧客層を伺ってからお示しします。取り扱うかは、その条件を見てから決めてください。</p>
         <p>お話しした結果、いまは取り扱わないほうがいい、という結論になることもあります。</p>
         <a class="btn" href="../b02/">個別説明を申し込む
           <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg></a>
@@ -1430,7 +1483,6 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
         <h4>SERVICE SITE</h4>
         <ul>
           <li><a href="https://writeup-inc.github.io/saas/list-master/" target="_blank" rel="noopener">直販サービスサイト</a></li>
-          <li><a href="https://list.elliot-tech.jp/lp" target="_blank" rel="noopener">料金を載せた申込ページ</a></li>
         </ul>
       </div>
       <div>
@@ -1446,6 +1498,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
     <p class="copy">© 2026 Writeup Co., Ltd.</p>
   </div>
 </footer>
+
 <dialog class="pop" id="pop" aria-labelledby="popT">
   <div class="pop-h"><p id="popT">このページを、見出しだけで読む</p><button type="button" class="pop-x" id="popX" aria-label="閉じる">×</button></div>
   <div class="pop-b">
@@ -1463,8 +1516,8 @@ document.documentElement.classList.add('js');
 (function(){
   /* ===== ヒーロー：3つのコピーのローテーション ===== */
   var COPIES=[
-    {c:'貴社の名前とロゴで、\n営業リストAIを売れます。',s:'何を売るのか。毎朝の営業リスト作りから初回の連絡までを任せられる月額のAIを、サービス名もロゴも貴社のものに変えて販売できます。'},
-    {c:'顧客を、競合より\n先に着く1社目に。',s:'何が違うのか。検索の上位に出る会社には競合も行っています。条件を狭く決め、競合と重なりにくい先に毎朝当てにいきます。'},
+    {c:'リスト作りから送付まで、\n貴社の名前で売れます。',s:'何を売るのか。毎朝の営業リスト作りから初回の連絡までを任せられる月額のAIを、サービス名もロゴも貴社のものに変えて販売できます。'},
+    {c:'朝9時、貴社のお客様の\n新規開拓が動き出す。',s:'どんな毎日になるのか。毎朝9時に動き出し、リスト作り・宛先の確認・初回の連絡・実績の報告までを、人が選ばずに進めます。'},
     {c:'「新規が取れない」と\n言われたら、何を出すか。',s:'誰のための話か。お客様から新規開拓の相談を受けても、いま出せる答えがない会社に向けたページです。'}
   ];
   var TYPE_MS=55, HOLD_MS=5200, ERASE_MS=22;
@@ -1537,7 +1590,7 @@ document.addEventListener('click', function (e) {
   var l = document.querySelector('link[rel=canonical]'); var url = l ? l.href : location.href;
   var p = '次のLPの記載が事実として正しいか、第三者の立場で確認してください。\n\n【対象ページ】' + url +
     '\n【セクション】' + b.dataset.fcSection + '\n【記載内容】\n' + b.dataset.fcClaim.split('／').join('\n') +
-    '\n\n【確認してほしいこと】\n- 記載は一般的な事実・相場・公的情報と照らして正しいか\n- 誤り・誇張・古い情報があれば指摘する\n- 反対の見方や、読み手が注意すべき点\n- 確認できないことは「確認できない」と書き、推測で補わない';
+    '\n\n【確認してほしいこと】\n' + (b.dataset.fcAsk ? b.dataset.fcAsk.split('／').map(function(x){return '- '+x;}).join('\n') + '\n' : '- 記載は一般的な事実・相場・公的情報と照らして正しいか\n- 誤り・誇張・古い情報があれば指摘する\n- 反対の見方や、読み手が注意すべき点\n') + '- 確認できないことは「確認できない」と書き、推測で補わない';
   window.open('https://chatgpt.com/?q=' + encodeURIComponent(p), '_blank', 'noopener,noreferrer');
   if (navigator.clipboard) navigator.clipboard.writeText(p).catch(function () {});
 });
@@ -1552,7 +1605,7 @@ document.addEventListener('click', function (e) {
     setInterval(function(){ bn.classList.add('fade'); setTimeout(function(){ k=1-k; bn.textContent=names[k]; bn.classList.toggle('swap',k===1); bn.classList.remove('fade'); },350); },3200); }
   /* 計算機 */
   var n=document.getElementById('sm-n'); if(!n) return;
-  var pr=document.getElementById('sm-p'), wh=document.getElementById('sm-w'), box=document.getElementById('sm-chart'), tip=document.getElementById('sm-tip');
+  var pr=document.getElementById('sm-p'), wh=document.getElementById('sm-w'), ini=document.getElementById('sm-i'), box=document.getElementById('sm-chart'), tip=document.getElementById('sm-tip');
   function yen(v){ return Math.round(v).toLocaleString('ja-JP')+'円'; }
   function man(v){ return v>=10000? (Math.round(v/1000)/10).toLocaleString('ja-JP')+'万' : String(v); }
   function draw(vals){
@@ -1579,15 +1632,21 @@ document.addEventListener('click', function (e) {
     var vals=[],sum=0; for(var i=1;i<=12;i++){ vals.push(per*i*p); sum+=per*i; }
     document.getElementById('sm-c').textContent=(per*12)+'社';
     document.getElementById('sm-m').textContent=yen(per*12*p);
+    var iv=ini&&ini.value!==''?Math.max(0,+ini.value||0):0; document.getElementById('sm-ii').textContent=yen(per*12*iv); document.getElementById('sm-ms').textContent=yen(p*sum);
     var gl=document.getElementById('sm-gl'), g=document.getElementById('sm-g');
     if(w===null){ gl.textContent='1年間の粗利（卸値を入れると出ます）'; g.textContent='—'; }
-    else { gl.textContent='1年間の粗利（月額×契約数の合計 − 卸値分）'; g.textContent=yen((p-w)*sum); }
+    else { gl.textContent='1年間の粗利（月額の粗利＋初期費用の取り分）'; g.textContent=yen((p-w)*sum+per*12*iv); }
     draw(vals);
   }
-  [n,pr,wh].forEach(function(e){ e.addEventListener('input',calc); });
+  [n,pr,wh,ini].forEach(function(e){ if(e) e.addEventListener('input',calc); });
   var rt; window.addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(calc,150); });
   calc();
 })();
+</script>
+<script>
+(function(){ var d=document.querySelector('.desk'); if(!d) return;
+  if(!('IntersectionObserver' in window)){ d.classList.add('on'); return; }
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ d.classList.add('on'); io.disconnect(); } }); },{threshold:.35}); io.observe(d); })();
 </script>
 </body>
 </html>
