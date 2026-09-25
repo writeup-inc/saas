@@ -832,6 +832,65 @@ h1,h2,h3,.logo,.btn{font-family:var(--ff-head)}
 .scene .ln{display:block;font-family:var(--ff-head);font-size:clamp(1.25rem,3.4vw,2.4rem);font-weight:800;line-height:1.45;text-shadow:0 2px 20px rgba(0,0,0,.4);word-break:auto-phrase;line-break:strict}
 @media(max-width:600px){.scene figcaption{padding:0 20px}.scene .ln br{display:none}}
 .scene.night img{filter:brightness(.5) saturate(.65) contrast(1.08)}
+
+/* ===== ヘッダー：下へスクロールで隠し、上へスクロールで出す（2026-09-25） ===== */
+.hd{transition:transform .32s cubic-bezier(.2,.7,.2,1)}
+.hd.is-hidden{transform:translateY(calc(-100% - 12px))}
+@media (prefers-reduced-motion:reduce){.hd{transition:none}}
+
+/* ===== ブラッシュアップ2（2026-09-25）：見出しの主従・6工程の流れ図・一言カード・3段フロー ===== */
+.sh .en{font-size:clamp(1.5rem,4.2vw,3rem);letter-spacing:-.02em;color:var(--g3)}
+.sh h2{font-size:clamp(1.2rem,5.9vw,2.5rem);line-height:1.45}
+.last .w > .en{font-size:clamp(1.5rem,4.2vw,3rem);color:#6b7480}
+.last h2{font-size:clamp(1.2rem,5.9vw,2.5rem)}
+.fit li span,.note{font-size:16px}
+.fit li{padding:16px 2px}
+.flow6{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;list-style:none;margin:34px 0 0;padding:0}
+.flow6 li{position:relative;display:flex;flex-direction:column;padding:18px 16px;border-radius:20px;background:var(--acl);border:1.5px solid transparent}
+.flow6 li.ai{border-color:rgba(229,161,58,.55)}
+.flow6 li.hu{background:var(--ink);color:#fff}
+.flow6 li.mx{border-color:var(--ink)}
+.flow6 li + li::before{content:"";position:absolute;left:-10px;top:34px;width:8px;height:2px;background:var(--g3)}
+.f-no{display:flex;align-items:center;justify-content:space-between;gap:6px;margin:0}
+.f-no span{font-family:var(--ff-en);font-size:14px;font-weight:800;color:var(--g2)}
+.flow6 li.hu .f-no span{color:#8d96a3}
+.flow6 .tg{margin:0;padding:1px 9px;border:1px solid currentColor;border-radius:999px;font-style:normal;font-size:13px;font-weight:700;color:var(--hold)}
+.flow6 li.hu .tg{color:var(--amb)}
+.flow6 li.mx .tg{color:var(--ink)}
+.f-k{margin:10px 0 12px;font-family:var(--ff-head);font-size:18px;font-weight:800;line-height:1.4;word-break:auto-phrase;line-break:strict}
+.flow6 dl{margin:0;flex:1}
+.flow6 dt{font-size:13px;font-weight:700;color:var(--g2)}
+.flow6 li.hu dt{color:#aab3c0}
+.flow6 dd{margin:2px 0 10px;font-size:15px;line-height:1.6}
+.f-sv{margin:0;padding-top:10px;border-top:1px solid rgba(16,22,31,.1);font-size:13px;font-weight:700;line-height:1.6;color:var(--g1);overflow-wrap:anywhere}
+.flow6 li.hu .f-sv{border-top-color:rgba(255,255,255,.18);color:#dfe3e8}
+.f-loop{display:flex;align-items:center;gap:10px;margin:18px 0 0;font-size:16px;font-weight:700}
+.f-loop span{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--amb-l);color:var(--hold)}
+.rt td.nil{color:var(--g3)}
+.say-l{margin:28px 0 12px;font-size:14px;font-weight:700;letter-spacing:.06em;color:var(--hold)}
+.says{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.say{padding:24px;border-radius:22px;background:#fff}
+.say svg{width:34px;height:34px;fill:none;stroke:var(--amb);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.say h3{margin:12px 0 8px;font-size:17px;font-weight:800}
+.say p{font-size:16px;line-height:1.8;color:var(--g1)}
+.chips6{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:14px 0 0;padding:0}
+.chips6 li{padding:6px 14px;border-radius:999px;background:var(--acl);font-size:16px;font-weight:700}
+.onb3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px;list-style:none;margin:34px 0 0;padding:0}
+.onb3 li{position:relative;padding:20px 22px;border-radius:18px;background:rgba(255,255,255,.07);font-size:15px;line-height:1.7;color:#dfe6f0}
+.onb3 li + li::before{content:"→";position:absolute;left:-26px;top:50%;transform:translateY(-50%);font-weight:700;color:var(--amb)}
+.onb3 .en{display:block;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--amb)}
+.onb3 b{display:block;margin:2px 0 4px;font-family:var(--ff-head);font-size:18px;color:#fff}
+@media(max-width:1100px){.flow6{grid-template-columns:repeat(3,minmax(0,1fr))}.flow6 li:nth-child(4)::before{display:none}}
+@media(max-width:760px){
+  .flow6{grid-template-columns:1fr}
+  .flow6 li + li::before{left:32px;top:-10px;width:2px;height:8px}
+  .flow6 li:nth-child(4)::before{display:block}
+  .says,.onb3{grid-template-columns:1fr}
+  .onb3{gap:28px}
+  .onb3 li + li::before{content:"↓";left:24px;top:-24px;transform:none}
+  .rt td.nil{display:none}
+}
+.hfacts li{min-width:0}.hfacts b,.hfacts span{overflow-wrap:anywhere}
 </style>
 </head>
 <body>
@@ -865,7 +924,7 @@ h1,h2,h3,.logo,.btn{font-family:var(--ff-head)}
         <button type="button" aria-label="コピー2" aria-current="false"></button>
         <button type="button" aria-label="コピー3" aria-current="false"></button>
       </div>
-      <p class="sub">採用代行の6工程のうち、人が決めるのは面接と合否の1つだけ。残りの5つはAIが中心で進めます。このAIサービス群を、<b>貴社のサービスとしてお客様へ</b>提供するためのご案内です。提供範囲と条件は、いま個別に詰めています。</p>
+      <p class="sub">人が決めるのは、面接と合否の1つだけ。残る5工程をAIが下ごしらえするサービス群を、<b>貴社のサービスとして</b>提供するOEMのご案内です。</p>
       <div class="cta">
         <a class="btn btn-y" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">OEM提供の条件を相談する →</a>
         <a class="lnk" href="#s4">担当の分け方を先に見る ↓</a>
@@ -881,40 +940,39 @@ h1,h2,h3,.logo,.btn{font-family:var(--ff-head)}
         <li><span class="n">06</span><span class="k">改善</span><span class="w">AI+人</span></li>
       </ol>
       <svg class="fc-line" viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true"><path d="M10 20 C 110 4, 160 36, 260 20 S 420 4, 520 20 S 590 30, 590 20"/></svg>
-      <p class="fc-cap"><b>AIが5工程</b>・人が1工程。06で学んだことは01へ戻します</p>
+      <p class="fc-cap"><b>AI中心は5工程</b>。人が決めるのは05だけです</p>
     </div>
   </div>
   <div class="w">
     <ul class="hfacts">
       <li><span>お客様の窓口</span><b>貴社</b></li>
       <li><span>合否を決めるのは</span><b>お客様（人）</b></li>
-      <li><span>契約先</span><b>株式会社ライトアップ<br>（東証グロース 6580）</b></li>
-      <li><span>料金・売価</span><b>個別に調整中</b></li>
+      <li><span>契約先（東証グロース）</span><b>株式会社ライトアップ</b></li>
+      <li><span>導入のしかた</span><b>一括導入を前提にしません</b></li>
     </ul>
   </div>
   <p class="gen">背景は生成イメージです</p>
 </section>
 
-<!-- 1 向いている会社 -->
+<!-- 01 -->
 <section class="sec has-scene" id="s1" aria-labelledby="h1s">
-  <figure class="scene"><img src="images/sec1-desk-notes.webp" alt="机でメモを取りながらノートPCに向かう人の手元" width="1280" height="757"><figcaption><span class="tm">9:00 — Monday</span><span class="ln">今日も、5社ぶんの採用を<br>1人で回す。</span></figcaption></figure>
+  <figure class="scene"><img src="images/sec1-desk-notes.webp" alt="机でメモを取りながらノートPCに向かう人の手元" width="1280" height="757"><figcaption><span class="tm">9:00 — Monday</span><span class="ln">候補者と話す時間だけは、<br>減らしたくない。</span></figcaption></figure>
   <div class="w">
     <div class="sh"><p class="shl"><span class="no">01</span><span class="en">For partners</span></p><h2 id="h1s">少人数で採用代行を<br>受けている会社向けです。</h2></div>
-    <p class="body">想定しているのは、1人〜数名で中小企業の採用代行を受けている事業者さまです。お客様と定例で採用基準を話し合い、候補者と直接やり取りしている。その仕事の「下ごしらえ」の部分を、AIに移すためのサービスです。</p>
     <div class="fit">
       <div>
         <h3>向いている会社</h3>
         <ul>
-          <li><b>1人〜数名で採用代行を受託している</b><span>担当社数を増やしたいが、今のお客様を待たせたくない</span></li>
-          <li><b>お客様ごとに採用基準が変わる案件を持っている</b><span>打ち合わせのたびに、求人票やスカウト文を直している</span></li>
-          <li><b>面接や口説きは、自分たちでやりたい</b><span>人が決める工程は、貴社とお客様に残す設計です</span></li>
-          <li><b>求人広告・人材紹介・社労士で、採用運用まで受けている</b><span>受けている業務の範囲を伺って、個別にご相談します</span></li>
+          <li><b>1人〜数名で採用代行を受託している</b></li>
+          <li><b>お客様ごとに採用基準が変わる案件を持っている</b></li>
+          <li><b>面接や口説きは、自分たちでやりたい</b></li>
+          <li><b>求人広告・人材紹介・社労士で、採用運用まで受けている</b></li>
         </ul>
       </div>
       <div class="no-fit">
         <h3>向いていない会社</h3>
         <ul>
-          <li><b>合否までAIに任せたい会社</b><span>合否と条件は人が決める前提です</span></li>
+          <li><b>合否までAIに任せたい会社</b></li>
           <li><b>ATSの入れ替えが一番の目的の会社</b><span>既存システムとの接続は、接続先ごとの個別判断です</span></li>
           <li><b>候補者データの扱いのルールを作れない会社</b><span>本番の前に、三者でルールを決めていただきます</span></li>
         </ul>
@@ -923,12 +981,12 @@ h1,h2,h3,.logo,.btn{font-family:var(--ff-head)}
   </div>
 </section>
 
-<!-- 2 壁 -->
+<!-- 02 -->
 <section class="sec has-scene tint" id="s2" aria-labelledby="h2s">
   <figure class="scene night"><img src="images/sec2-busy-table.webp" alt="書類とノートPCとカップが散らかった打ち合わせの机" width="1280" height="853" loading="lazy"><figcaption><span class="tm">23:48 — Night</span><span class="ln">採用基準が変わった会社の書類を、<br>まだ直している。</span></figcaption></figure>
   <div class="w">
     <div class="sh"><p class="shl"><span class="no">02</span><span class="en">The wall</span></p><h2 id="h2s">担当社数が増えるほど、<br>変わる基準を追えなくなります。</h2></div>
-    <p class="body">採用代行で難しいのは、作業の量よりも、<span class="mk">お客様ごとの採用基準が少しずつ変わり続けること</span>です。面接をしてみて人物像の優先順位が変わる。給与や入社時期が変わる。変わるたびに、関係する書類と連絡をすべて同じ基準にそろえ直す必要があります。</p>
+    <p class="body">面接をしてみて、人物像が変わる。給与や入社時期が変わる。そのたびに、次の7か所をそろえ直します。</p>
     <div class="fan" role="img" aria-label="採用基準が1つ変わると、7か所をそろえ直す必要がある図">
       <div class="fan-src"><span class="en">1 change</span><b>採用基準が1つ変わる</b><small>例：必須経験を3年から1年に</small></div>
       <div class="fan-ar" aria-hidden="true"></div>
@@ -936,7 +994,7 @@ h1,h2,h3,.logo,.btn{font-family:var(--ff-head)}
         <li>求人票</li><li>スカウト文</li><li>候補者への説明</li><li>紹介会社への依頼</li><li>面接の質問</li><li>評価メモ</li><li>週次レポート</li>
       </ul>
     </div>
-    <p class="body">1社なら頭で覚えられても、担当が増えると、どの会社の何が変わったかを1人で最新に保つのは難しくなります。返信が翌日になる、古い基準で候補者を案内してしまう。<span class="mk">能力が足りないのではなく、管理の仕組みが足りない</span>、というのが私たちの見立てです。</p>
+    <p class="body"><span class="mk">足りないのは能力ではなく、変更を追う仕組みです。</span></p>
     <div class="mkt">
       <h3>採用代行の出番は増えています</h3>
       <ul>
@@ -949,123 +1007,56 @@ h1,h2,h3,.logo,.btn{font-family:var(--ff-head)}
   </div>
 </section>
 
-<!-- 3 6工程 -->
+<!-- 03 -->
 <section class="sec has-scene" id="s3" aria-labelledby="h3s">
   <figure class="scene"><img src="images/sec3-calm-laptop.webp" alt="グラフの映るノートPCとコーヒーが置かれた落ち着いた机" width="1280" height="853" loading="lazy"><figcaption><span class="tm">8:30 — Next morning</span><span class="ln">7か所の直し案は、<br>もうそろっている。</span></figcaption></figure>
   <div class="w">
-    <div class="sh"><p class="shl"><span class="no">03</span><span class="en">6 process</span></p><h2 id="h3s">そこで、5つの工程はAIが、<br>人は1つに集中します。</h2></div>
-    <p class="body">AIが受け持つのは、判断のための材料をそろえるところまでです。<span class="mk">評価や合否をAIが決めることはありません。</span>工程ごとに、用意する情報、作るもの、人が確認すること、使うサービスを並べました。どのサービスを使うかは、お客様の業務を伺ってから決めます。</p>
-    <div class="ov">
-      <p class="ov-h"><span class="en">Overview</span>サービスは、採用の流れに沿って順番につながります</p>
-      <p class="ov-s">前のサービスで作った情報を、次のサービスで使います。</p>
-      <ol class="ov-f">
-        <li><p class="ov-k">設計と原稿</p><ul><li><b>AI採用戦略システム</b>採用方針を作る</li><li><b>AI求人票作成システム</b>求人票・スカウト文を作る</li></ul></li>
-        <li><p class="ov-k">候補者を集める</p><ul><li><b>ソーシャルマスター</b>SNSから接点を作る</li><li><b>リクルーティングパートナーAI</b>紹介会社から提案を集める</li><li><b>Lマッチ</b>求人と候補者を照らし合わせる</li></ul></li>
-        <li><p class="ov-k">候補者をまとめる</p><ul><li><b>採用Lシンク</b>候補者・連絡・選考状況をまとめて管理</li></ul></li>
-        <li><p class="ov-k">話を聞き、判断する</p><ul><li><b>初回相談AI</b>経歴と希望を聞く</li><li><b>LINE AI面接</b>面接前の回答を整理する</li><li class="hu"><b>担当者＋AI面接メモ</b>人が面接し、記録を残す</li></ul></li>
-        <li><p class="ov-k">振り返って改善する</p><ul><li><b>エリオット</b>採用の記録を分析する</li><li><b>ワークログAI</b>担当者の仕事を整理する</li><li class="hu"><b>入社後フォロー</b>本人と現場の状況を確かめる</li></ul></li>
-      </ol>
-      <div class="ov-loop"><span class="ic" aria-hidden="true">↺</span><div><p class="en">Loop</p><p class="ov-lt">エリオットの分析結果を、次の採用方針と求人原稿へ戻します。</p></div><p class="ov-ld">結果を見ながら、次の採用方針と原稿を更新します。</p></div>
-    </div>
-    <div class="pks">
-    <article class="pk">
-      <div class="pk-l">
-        <p class="pk-no"><span>01–02</span>Strategy / Job content<em class="tg ai">AI中心</em></p>
-        <h3>採用方針・求人原稿</h3>
-        <p class="pk-sub">採用方針から求人票・スカウト文まで、まとめて作ります</p>
-        <p class="pk-b">会社情報と採用条件を入れると、採用ターゲット、必要人数、KPI、選考フロー、求人票、スカウト文のたたき台を一度に作ります。媒体ごとの文字数や表現にも合わせます。</p>
-        <p class="pl">用意する情報</p><ul class="chips"><li>事業計画・採用課題</li><li>採用人数・採用時期</li><li>仕事内容・必須条件</li><li>給与・雇用形態・勤務地</li><li>現場責任者へのヒアリング内容</li></ul><p class="pl">この工程で作るもの</p><ul class="chips"><li>採用ターゲット</li><li>採用人数・KPI</li><li>選考フロー</li><li>求人票</li><li>スカウト文</li><li>候補者向け説明文</li></ul>
-        <div class="pk-chk"><p class="pl">人が確認すること</p><p>事業計画、採用人数、雇用形態、給与、勤務地、勤務時間、仕事内容、必須条件、選考担当者に誤りがないかを確認します。</p></div>
-      </div>
-      <div class="pk-r"><p class="pk-rh">この工程で使うサービス（提供候補）</p><ol class="svc"><li><span class="sn">01</span><div><p class="st-n">AI採用戦略システム</p><p class="st-t">採用方針をまとめて作成</p></div><p class="st-d">会社情報と採用条件から、採用ターゲット・人数・KPI・選考フローのたたき台を作ります。</p></li><li><span class="sn">02</span><div><p class="st-n">AI求人票作成システム</p><p class="st-t">求人票・スカウト文を作成</p></div><p class="st-d">採用方針と現場の情報から原稿を作ります。条件を変えたときは、求人票やスカウト文の直し案をまとめて出します。</p></li></ol></div>
-    </article>
-    <article class="pk">
-      <div class="pk-l">
-        <p class="pk-no"><span>03</span>Attraction<em class="tg ai">AI中心</em></p>
-        <h3>母集団の形成</h3>
-        <p class="pk-sub">SNS・紹介会社・マッチングで、候補者との接点を増やします</p>
-        <p class="pk-b">求人媒体だけに頼らず、SNSでの発信、紹介会社との連携、求人と候補者の照合を組み合わせます。</p>
-        <p class="pl">この工程で作るもの</p><ul class="chips"><li>採用SNSの投稿</li><li>紹介会社の進捗一覧</li><li>候補者の候補</li></ul>
-        <div class="pk-chk"><p class="pl">人が確認すること</p><p>誰に、どの内容で連絡するかを、担当者が確認します。</p></div>
-      </div>
-      <div class="pk-r"><p class="pk-rh">この工程で使うサービス（提供候補）</p><ol class="svc"><li><span class="sn">01</span><div><p class="st-n">ソーシャルマスター</p><p class="st-t">採用情報をSNSで発信</p></div><p class="st-d">会社や仕事の魅力をSNSで続けて発信し、将来の候補者との接点を作ります。</p></li><li><span class="sn">02</span><div><p class="st-n">リクルーティングパートナーAI</p><p class="st-t">紹介会社との連携を管理</p></div><p class="st-d">求人に合う紹介会社の選定、連絡、候補者提案の進み具合の確認を支えます。</p></li><li><span class="sn">03</span><div><p class="st-n">Lマッチ</p><p class="st-t">求人と候補者を照合</p></div><p class="st-d">求人の要件と候補者の情報を照らし合わせ、担当者が確認する候補者を見つけやすくします。</p></li></ol></div>
-    </article>
-    <article class="pk">
-      <div class="pk-l">
-        <p class="pk-no"><span>04</span>Nurturing / 0.5 interview<em class="tg ai">AI中心</em></p>
-        <h3>連絡・0.5次面接</h3>
-        <p class="pk-sub">連絡を続けながら、面接の前に読める形へまとめます</p>
-        <p class="pk-b">候補者との連絡を続けながら、経歴、希望、転職理由などを聞き、面接前に確認できる形にまとめます。</p>
-        <p class="pl">この工程で作るもの</p><ul class="chips"><li>候補者プール</li><li>経歴・希望の要約</li><li>面接前の確認資料</li></ul>
-        <div class="pk-chk"><p class="pl">人が確認すること</p><p>AIがまとめた内容を担当者が読み、次の面接や連絡の内容を決めます。</p></div>
-      </div>
-      <div class="pk-r"><p class="pk-rh">この工程で使うサービス（提供候補）</p><ol class="svc"><li><span class="sn">01</span><div><p class="st-n">採用Lシンク</p><p class="st-t">候補者との連絡と進み具合を管理</p></div><p class="st-d">LINEで候補者への継続連絡、候補者プール、選考の進み具合をまとめて管理します。</p></li><li><span class="sn">02</span><div><p class="st-n">初回相談AI</p><p class="st-t">経歴や希望を聞いて整理</p></div><p class="st-d">経歴、希望条件、転職理由などを聞き、担当者が確認しやすい形にまとめます。</p></li><li><span class="sn">03</span><div><p class="st-n">LINE AI面接</p><p class="st-t">面接前の質問と回答を整理</p></div><p class="st-d">LINE上で質問し、回答と候補者の要約を作って、面接の準備を支えます。</p></li></ol></div>
-    </article>
-    <article class="pk">
-      <div class="pk-l">
-        <p class="pk-no"><span>05</span>Human decision<em class="tg hu">人が中心</em></p>
-        <h3>面接・採用判断</h3>
-        <p class="pk-sub">面接・見極め・条件交渉・合否は、人が担当します</p>
-        <p class="pk-b">候補者と直接話し、会社の魅力を伝え、採用基準に照らして合否や条件を判断します。ここにはAIを置きません。</p>
-        <p class="pl">この工程で作るもの</p><ul class="chips"><li>面接記録</li><li>候補者への説明</li><li>条件交渉・合否</li></ul>
-        <div class="pk-chk"><p class="pl">人が確認すること</p><p>採用基準、候補者の評価、条件交渉、合否の最終判断は人が行います。</p></div>
-      </div>
-      <div class="pk-r"><p class="pk-rh">この工程で使うサービス（提供候補）</p><ol class="svc"><li><span class="sn">01</span><div><p class="st-n">採用担当者</p><p class="st-t">候補者との面接と採用判断</p></div><p class="st-d">貴社とお客様の担当者が、面接、見極め、会社の魅力の説明、条件交渉、合否判断を担います。</p></li><li><span class="sn">02</span><div><p class="st-n">AI面接メモ</p><p class="st-t">面接の内容を記録</p></div><p class="st-d">面接記録や評価項目の整理を支えます。合否をAIが自動で決めるものではありません。</p></li></ol></div>
-    </article>
-    <article class="pk">
-      <div class="pk-l">
-        <p class="pk-no"><span>06</span>Analytics / Onboarding<em class="tg mx">AIと人</em></p>
-        <h3>分析・入社後フォロー</h3>
-        <p class="pk-sub">選考の記録と入社後の様子を、次の採用に生かします</p>
-        <p class="pk-b">選考中の記録と入社後の状況を確かめ、うまくいった点と直す点を、次の採用計画に反映します。</p>
-        <p class="pl">この工程で作るもの</p><ul class="chips"><li>選考ログのまとめ</li><li>業務の改善項目</li><li>入社後の確認内容</li></ul>
-        <div class="pk-chk"><p class="pl">人が確認すること</p><p>分析の結果だけで判断せず、本人や現場に確かめたうえで、直す内容を決めます。</p></div>
-      </div>
-      <div class="pk-r"><p class="pk-rh">この工程で使うサービス（提供候補）</p><ol class="svc"><li><span class="sn">01</span><div><p class="st-n">エリオット</p><p class="st-t">採用に関する記録を分析</p></div><p class="st-d">面接、候補者対応、日報などの記録から、次に確かめる点と改善の候補をまとめます。</p></li><li><span class="sn">02</span><div><p class="st-n">ワークログAI</p><p class="st-t">担当者の業務を整理</p></div><p class="st-d">担当者の業務記録から、作業の負荷、対応の遅れ、改善できる業務を整理します。</p></li><li><span class="sn">03</span><div><p class="st-n">入社後フォロー（運用）</p><p class="st-t">入社後の様子を確認</p></div><p class="st-d">入社後の本人と現場の状況を人が確かめ、その内容を次の採用計画に反映します。</p></li></ol></div>
-    </article>
-    </div>
-    <p class="note">各サービスの提供範囲・接続方式・利用条件は、ご提供の前に個別に確認します。すべてが最初から1つにつながっている、という意味ではありません。</p>
+    <div class="sh"><p class="shl"><span class="no">03</span><span class="en">6 steps</span></p><h2 id="h3s">そこで、5つの工程はAIが、<br>人は1つに集中します。</h2></div>
+    <p class="body">AIがそろえるのは、判断の材料までです。評価と合否は人が決めます。</p>
+    <ol class="flow6" aria-label="採用の6工程。01から04と06はAIが中心、05だけ人が担う">
+      <li class="ai"><p class="f-no"><span>01</span><em class="tg ai">AI</em></p><p class="f-k">採用戦略</p><dl><dt>AIが作る</dt><dd>ターゲット・人数・KPI・選考フローのたたき台</dd><dt>人が確認</dt><dd>人数・給与・条件に誤りがないか</dd></dl><p class="f-sv">AI採用戦略システム</p></li>
+      <li class="ai"><p class="f-no"><span>02</span><em class="tg ai">AI</em></p><p class="f-k">求人票</p><dl><dt>AIが作る</dt><dd>求人票・スカウト文と、基準が変わったときの直し案</dd><dt>人が確認</dt><dd>公開前の最終確認</dd></dl><p class="f-sv">AI求人票作成システム</p></li>
+      <li class="ai"><p class="f-no"><span>03</span><em class="tg ai">AI</em></p><p class="f-k">母集団形成</p><dl><dt>AIが作る</dt><dd>SNSの投稿、紹介会社の進み具合、候補者の候補</dd><dt>人が確認</dt><dd>誰に、何を連絡するか</dd></dl><p class="f-sv">ソーシャルマスター／リクルーティングパートナーAI／Lマッチ</p></li>
+      <li class="ai"><p class="f-no"><span>04</span><em class="tg ai">AI</em></p><p class="f-k">連絡・0.5次面接</p><dl><dt>AIが作る</dt><dd>継続の連絡と、経歴・希望の要約</dd><dt>人が確認</dt><dd>要約を読み、次の対応を決める</dd></dl><p class="f-sv">採用Lシンク／初回相談AI／LINE AI面接</p></li>
+      <li class="hu"><p class="f-no"><span>05</span><em class="tg hu">人</em></p><p class="f-k">面接・合否</p><dl><dt>AIが作る</dt><dd>面接の記録</dd><dt>人が確認</dt><dd>見極め・条件交渉・合否</dd></dl><p class="f-sv">担当者（記録にAI面接メモ）</p></li>
+      <li class="mx"><p class="f-no"><span>06</span><em class="tg mx">AI+人</em></p><p class="f-k">分析・入社後</p><dl><dt>AIが作る</dt><dd>選考の記録と業務の分析</dd><dt>人が確認</dt><dd>本人と現場に確かめ、直す点を決める</dd></dl><p class="f-sv">エリオット／ワークログAI</p></li>
+    </ol>
+    <p class="f-loop"><span aria-hidden="true">↺</span>06で分かったことは、次の採用方針に反映します。</p>
+    <p class="note">提供範囲とサービス同士の連携は、組み合わせごとに個別に確認します。</p>
     <p class="mid"><a href="https://elliot-airpo-inside.vercel.app/" target="_blank" rel="noopener">各サービスの画面と中身を見る（パッケージの中身）↗</a></p>
   </div>
 </section>
 
-<!-- 4 三者の分担 -->
+<!-- 04 -->
 <section class="sec has-scene tint" id="s4" aria-labelledby="h4s">
   <figure class="scene"><img src="images/sec4-meeting.jpg" alt="窓際のテーブルで3人が打ち合わせをしている場面" width="1600" height="1066" loading="lazy"><figcaption><span class="tm">Weekly meeting</span><span class="ln">決めるのはお客様。回すのは貴社。<br>支えるのは弊社。</span></figcaption></figure>
   <div class="w">
     <div class="sh"><p class="shl"><span class="no">04</span><span class="en">Who does what</span></p><h2 id="h4s">担当は、貴社・お客様・弊社の<br>三者でこう分けます。</h2></div>
-    <p class="body">OEMで一番こじれやすいのは「それは誰の仕事か」です。お客様（採用企業）の決める権限と、貴社の運用と、弊社のシステムを分けて書きました。<span class="tbd">協議</span>は、契約の前に一緒に決める項目です。</p>
-    <ol class="tri" aria-label="提携の仕組み">
-      <li class="us"><p class="tl">提供</p><p class="tn">弊社</p><p class="td">エリオットテクノロジー（株式会社ライトアップ）が、AIサービスを提供・保守します</p></li>
-      <li class="you"><p class="tl">OEMで販売・運用</p><p class="tn">貴社</p><p class="td">採用代行の事業者として、貴社のサービスとしてお客様へ提供し、運用します</p></li>
-      <li class="cl"><p class="tl">採用</p><p class="tn">お客様</p><p class="td">採用企業として、採用基準と合否を決めます</p></li>
-    </ol>
+    <p class="body">「それは誰の仕事か」を、契約の前にこの表で決めます。<span class="tbd">協議</span>は、契約前に一緒に決める項目です。</p>
     <div class="rt-wrap">
       <table class="rt">
         <thead><tr><th scope="col">業務</th><th scope="col" class="you">貴社<small>採用代行の事業者</small></th><th scope="col">お客様<small>採用企業</small></th><th scope="col">弊社<small>ライトアップ</small></th></tr></thead>
         <tbody>
-          <tr><th scope="row">提案・契約・一次窓口</th><td data-l="貴社" class="you">担当</td><td data-l="お客様">—</td><td data-l="弊社">提案資料と質問への回答 <span class="tbd">協議</span></td></tr>
+          <tr><th scope="row">提案・契約・一次窓口</th><td data-l="貴社" class="you">担当</td><td data-l="お客様" class="nil">—</td><td data-l="弊社">提案資料と質問への回答 <span class="tbd">協議</span></td></tr>
           <tr><th scope="row">採用戦略・採用基準</th><td data-l="貴社" class="you">案をまとめる</td><td data-l="お客様"><b>決める</b></td><td data-l="弊社">AIがたたき台を作る</td></tr>
           <tr><th scope="row">求人票・スカウト文</th><td data-l="貴社" class="you">最終確認</td><td data-l="お客様">承認する</td><td data-l="弊社">AIが下書きと直し案を作る</td></tr>
-          <tr><th scope="row">候補者への連絡・日程調整</th><td data-l="貴社" class="you">担当（AIの下書きを確認）</td><td data-l="お客様">—</td><td data-l="弊社">仕組みを提供</td></tr>
+          <tr><th scope="row">候補者への連絡・日程調整</th><td data-l="貴社" class="you">担当（AIの下書きを確認）</td><td data-l="お客様" class="nil">—</td><td data-l="弊社">仕組みを提供</td></tr>
           <tr><th scope="row">0.5次面接の要約</th><td data-l="貴社" class="you">読んで次の対応を決める</td><td data-l="お客様">必要に応じて確認</td><td data-l="弊社">AIが要約を作る</td></tr>
-          <tr><th scope="row">面接・合否・条件の決定</th><td data-l="貴社" class="you">面接の担当または同席、見立てを伝える</td><td data-l="お客様"><b>決める</b></td><td data-l="弊社">—</td></tr>
-          <tr><th scope="row">AIの出力の確認</th><td data-l="貴社" class="you">使う前に確認する</td><td data-l="お客様">—</td><td data-l="弊社">誤りの報告を受けて改善</td></tr>
-          <tr><th scope="row">システムの保守・障害対応</th><td data-l="貴社" class="you">弊社へ連絡</td><td data-l="お客様">—</td><td data-l="弊社">担当</td></tr>
+          <tr><th scope="row">面接・合否・条件の決定</th><td data-l="貴社" class="you">面接の担当または同席、見立てを伝える</td><td data-l="お客様"><b>決める</b></td><td data-l="弊社" class="nil">—</td></tr>
+          <tr><th scope="row">AIの出力の確認</th><td data-l="貴社" class="you">使う前に確認する</td><td data-l="お客様" class="nil">—</td><td data-l="弊社">誤りの報告を受けて改善</td></tr>
+          <tr><th scope="row">システムの保守・障害対応</th><td data-l="貴社" class="you">弊社へ連絡</td><td data-l="お客様" class="nil">—</td><td data-l="弊社">担当 <span class="tbd">協議</span></td></tr>
           <tr><th scope="row">候補者データの保管・削除</th><td data-l="貴社" class="you">決めたルールで運用</td><td data-l="お客様">同意の取り方を決める <span class="tbd">協議</span></td><td data-l="弊社">技術的な管理 <span class="tbd">協議</span></td></tr>
           <tr><th scope="row">月次の振り返り</th><td data-l="貴社" class="you">担当</td><td data-l="お客様">参加</td><td data-l="弊社">記録の分析を提供</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="note">現時点の想定です。正式な分担は、お客様の業務と貴社の体制を伺ったうえで、契約前に決めます。</p>
   </div>
 </section>
 
-<!-- 5 比較 -->
+<!-- 05 -->
 <section class="sec" id="s5" aria-labelledby="h5s">
   <div class="w">
-    <div class="sh"><p class="shl"><span class="no">05</span><span class="en">Compare</span></p><h2 id="h5s">手作業の運用と比べて、<br>変わるのは直す手間と漏れです。</h2></div>
-    <p class="body">人が決める部分は変わりません。変わるのは、その手前の「そろえる」「まとめる」「思い出す」作業です。</p>
+    <div class="sh"><p class="shl"><span class="no">05</span><span class="en">Compare</span></p><h2 id="h5s">手作業の運用と比べて、<br>変わるのは、直す手間と漏れ。</h2></div>
     <div class="cmp-wrap">
       <table class="cmp">
         <thead><tr><th scope="col">場面</th><th scope="col">人の手だけで回す場合</th><th scope="col" class="ours">AI RPOを使う場合</th></tr></thead>
@@ -1074,40 +1065,38 @@ h1,h2,h3,.logo,.btn{font-family:var(--ff-head)}
           <tr><th scope="row">候補者への連絡</th><td>担当者が1通ずつ書いて返す</td><td class="ours">AIが下書きと定型の連絡を用意し、担当者が確認する</td></tr>
           <tr><th scope="row">面接の前</th><td>担当者が経歴と希望を読み、要点をまとめる</td><td class="ours">0.5次面接の要約を前もって読める</td></tr>
           <tr><th scope="row">週次レポート</th><td>記録を集めて一から作る</td><td class="ours">記録から下書きを作り、担当者が仕上げる</td></tr>
-          <tr class="same"><th scope="row">面接・合否</th><td>人が決める</td><td>人が決める（変わりません）</td></tr>
-          <tr><th scope="row">担当できる社数の上限</th><td>担当者の手の数で決まる</td><td class="ours">仕組みで広げる余地がある（社数は保証しません）</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="note">AIの出力は、そのまま外に出さず、貴社が確認してから使う前提です。確認の手間はゼロにはなりません。</p>
-    <button class="fc-btn" type="button" data-fc-section="手作業の採用代行運用との比較" data-fc-claim="人の手だけで回す採用代行の運用では、採用基準が変わると担当者が求人票などを1つずつ直す／AIを使うと、書類の直し案・候補者への連絡の下書き・面接前の要約・週次レポートの下書きをAIが作り、担当者が確認する形にできる／面接と合否は人が決める点は変わらない／担当できる社数は仕組みで広げる余地があるが保証はない">ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button>
+    <p class="note">AIの出力は、貴社が確認してから使います。確認の手間はゼロにはなりません。</p>
+    <button class="fc-btn" type="button" data-fc-section="手作業の採用代行運用との比較" data-fc-claim="人の手だけで回す採用代行の運用では、採用基準が変わると担当者が求人票などを1つずつ直す／AIを使うと、書類の直し案・候補者への連絡の下書き・面接前の要約・週次レポートの下書きをAIが作り、担当者が確認する形にできる">ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button>
   </div>
 </section>
 
-<!-- 7 出し方 -->
-<section class="sec" id="s6" aria-labelledby="h6s">
+<!-- 06 -->
+<section class="sec tint" id="s6" aria-labelledby="h6s">
   <div class="w">
     <div class="sh"><p class="shl"><span class="no">06</span><span class="en">How to offer</span></p><h2 id="h6s">今のお客様へは、<br>手間の多い工程から。</h2></div>
-    <p class="body">6工程を一度に入れることは前提にしていません。繰り返しが多く、効果と安全性を確かめやすい工程から入れる想定です。入れる工程は、お客様の今の困りごとから決めます。切り出し方は、たとえば次の3つです。</p>
-    <div class="steps">
-      <div class="step"><p class="en">Case 1</p><h3>求人票を作り直すとき</h3><p>「採用基準が変わったら、求人票とスカウト文の直し案をAIでそろえ、私たちが確認してお出しします」と、次の打ち合わせで話せます。</p></div>
-      <div class="step"><p class="en">Case 2</p><h3>返信が遅れがちなとき</h3><p>「定型の連絡と日程の調整は下書きが先に出るので、候補者を待たせる時間を減らします」と提案できます。</p></div>
-      <div class="step"><p class="en">Case 3</p><h3>報告を厚くしたいとき</h3><p>「応募から面接までの記録を、毎週の報告にまとめてお出しします」と、報告の質で差をつけられます。</p></div>
+    <p class="body">6工程を一度に入れる必要はありません。今のお客様の困りごとに合う工程から始めます。</p>
+    <p class="say-l">お客様への一言</p>
+    <div class="says">
+      <div class="say"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg><h3>求人票を作り直すとき</h3><p>「基準が変わったら、直し案をAIでそろえ、私たちが確認してお出しします」</p></div>
+      <div class="say"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h8M8 13h5"/></svg><h3>返信が遅れがちなとき</h3><p>「定型の連絡と日程調整は、下書きが先に出ます。候補者を待たせる時間を減らします」</p></div>
+      <div class="say"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/></svg><h3>報告を厚くしたいとき</h3><p>「応募から面接までの記録を、毎週の報告にまとめてお出しします」</p></div>
     </div>
   </div>
 </section>
 
-<!-- 8 条件 -->
-<section class="sec tint" id="s7" aria-labelledby="h7s">
+<!-- 07 -->
+<section class="sec" id="s7" aria-labelledby="h7s">
   <div class="w">
     <div class="sh"><p class="shl"><span class="no">07</span><span class="en">Terms</span></p><h2 id="h7s">仕入れ値と売価は、<br>まだ数字を出していません。</h2></div>
-    <p class="body">OEMの条件は、まだ確定していません。決まっていることと、調整中のことを分けてお伝えします。<span class="mk">数字を先に出して、あとで変えることはしません。</span></p>
+    <p class="body">決まっていることと、調整中のことを分けて書きます。</p>
     <div class="terms">
       <div class="col us">
         <h3>決まっていること</h3>
         <ul>
           <li>提携の契約先は株式会社ライトアップです</li>
-          <li>面接・合否・条件の決定は人が行います</li>
           <li>6工程を一度に入れることは前提にしません</li>
           <li>相談と検証の段階では、候補者の実データを入れません</li>
         </ul>
@@ -1124,64 +1113,56 @@ h1,h2,h3,.logo,.btn{font-family:var(--ff-head)}
         </ul>
       </div>
     </div>
-    <p class="note">条件はご相談のうえ、個別にご案内します。決まり次第、このページも更新します。</p>
   </div>
 </section>
 
-<!-- 9 データと法令 -->
-<section class="sec" id="s8" aria-labelledby="h8s">
+<!-- 08 -->
+<section class="sec tint" id="s8" aria-labelledby="h8s">
   <div class="w">
     <div class="sh"><p class="shl"><span class="no">08</span><span class="en">Data &amp; law</span></p><h2 id="h8s">候補者データと法令は、<br>本番の前に三者で確かめます。</h2></div>
     <div class="honest">
       <div>
-        <p class="body">採用代行は、候補者の経歴や評価という、扱いに注意がいる情報を預かる仕事です。相談と検証の段階では、実在の候補者のデータは入れず、架空のデータで動きを確かめます。</p>
-        <p class="body">本番で使う前に、利用目的、同意の取り方、閲覧できる人、保存場所、保管期間、削除の方法を、貴社・お客様・弊社の三者で決めます。</p>
+        <p class="body">本番で使う前に、次の6点を三者で決めます。</p>
+        <ul class="chips6"><li>利用目的</li><li>同意の取り方</li><li>閲覧できる人</li><li>保存場所</li><li>保管期間</li><li>削除の方法</li></ul>
       </div>
       <div class="law">
         <h3>法令について</h3>
-        <p>採用代行は、どの業務を誰が担うかによって、職業安定法上の許可や届出が関わる場合があります。業務の分担を決める段階で、貴社の業態と合わせて確認します。</p>
-        <p class="law-n">弊社は、貴社に代わって法的な判断を行うものではありません。必要に応じて、専門家への確認をお願いします。</p>
+        <p>担う業務によって、職業安定法上の許可や届出が関わる場合があります。分担を決める段階で、貴社の業態と合わせて確認します。</p>
+        <p class="law-n">弊社は法的な判断を代行しません。必要に応じて専門家にご確認ください。</p>
       </div>
     </div>
     <button class="fc-btn" type="button" data-fc-section="候補者データと法令" data-fc-claim="採用代行は、担う業務によって職業安定法上の許可や届出が関わる場合がある／採用代行で候補者の個人情報を扱う場合、利用目的・同意・閲覧権限・保存場所・保管期間・削除方法を事前に決める必要がある">ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button>
   </div>
 </section>
 
-<!-- 10 FAQ -->
-<section class="sec tint" id="s9" aria-labelledby="h9s">
+<!-- 09 -->
+<section class="sec" id="s9" aria-labelledby="h9s">
   <div class="w">
-    <div class="sh"><p class="shl"><span class="no">09</span><span class="en">FAQ</span></p><h2 id="h9s">契約前に確かめたい7つに、<br>いまの時点でお答えします。</h2></div>
+    <div class="sh"><p class="shl"><span class="no">09</span><span class="en">FAQ</span></p><h2 id="h9s">契約前に確かめたい4つに、<br>いまの時点でお答えします。</h2></div>
     <div class="faq">
-      <details><summary>AIが合否を決めることはありますか。</summary><p class="a">ありません。AIは情報の整理と、判断の材料を出すところまでです。採用基準の承認、見極め、合否、条件交渉は人が行う前提です。</p></details>
-      <details><summary>30社を担当できるようになりますか。</summary><p class="a">約束はできません。30社は、1人で担当できる範囲を仕組みで広げるときの目標として置いている数字です。実際の社数は、業務の範囲、採用の難しさ、お客様ごとの対応量によって変わります。</p></details>
-      <details><summary>お客様からクレームが来たら、誰が対応しますか。</summary><p class="a">一次窓口は貴社です。原因がシステムにある場合は、弊社が調べて対応します。どこまでを誰が受け持つかは、契約の前に決めます。</p></details>
-      <details><summary>同じ地域の競合にも提供しますか。</summary><p class="a">地域や業種の排他は、いま調整中です。ご希望があれば、ご相談の際にお聞かせください。</p></details>
-      <details><summary>やめるとき、お客様と候補者のデータはどうなりますか。</summary><p class="a">保管期間と削除の方法は、本番で使い始める前に三者で決めます。解約時の扱いもそこで定めます。詳しい条件は調整中です。</p></details>
-      <details><summary>今使っているATSや求人媒体とつながりますか。</summary><p class="a">接続先、APIの有無、契約の条件、データの形式によって変わります。お使いの環境を伺ってから、つなげるかどうかを個別に判断します。</p></details>
-      <details><summary>AIの開発経験は必要ですか。</summary><p class="a">専門的な開発経験を前提にしない進め方を予定しています。必要な設定は、提携の中で一緒に行います。</p></details>
+      <details><summary>お客様からクレームが来たら、誰が対応しますか。</summary><p class="a">一次窓口は貴社です。原因がシステムにある場合の調査と対応の分担は、契約の前に決めます。</p></details>
+      <details><summary>やめるとき、お客様と候補者のデータはどうなりますか。</summary><p class="a">保管期間と削除の方法は本番の前に三者で決め、解約時の扱いもそこで定めます。</p></details>
+      <details><summary>今使っているATSや求人媒体とつながりますか。</summary><p class="a">接続先、APIの有無、データの形式によります。お使いの環境を伺って個別に判断します。</p></details>
+      <details><summary>AIの開発経験は必要ですか。</summary><p class="a">専門的な開発経験は前提にしません。設定をどこまで弊社が受け持つかは、ご相談の中で決めます。</p></details>
     </div>
   </div>
 </section>
 
-<!-- 11 CTA -->
+<!-- 10 CTA -->
 <section class="last" id="s10" aria-labelledby="h10s">
   <div class="w">
     <p class="en">Partner contact</p>
     <h2 id="h10s">まずは、今の受託社数と、<br>多い職種をお聞かせください。</h2>
-    <p class="b">伺った内容から、貴社に合う工程と提供の形をご提案します。相談したからといって、契約が必要になることはありません。</p>
-    <p class="b4">ご記入いただきたい4点</p>
+    <ol class="onb3" aria-label="相談からの流れ">
+      <li><span class="en">Step 1</span><b>相談</b>貴社の体制とご希望を伺います</li>
+      <li><span class="en">Step 2</span><b>工程を選ぶ</b>入れる工程と、人が確認する範囲を決めます</li>
+      <li><span class="en">Step 3</span><b>架空データで確かめる</b>実データは入れずに動きを見ます</li>
+    </ol>
+    <p class="how2">フォームの内容欄の最初に「AI RPO OEM」と書き、次の4点をお書きください。</p>
     <ul>
       <li>今の受託社数</li><li>多い職種</li><li>受けている工程</li><li>お使いの求人媒体・ATS</li>
     </ul>
-    <ol class="onb">
-      <li><span class="en">Step 1</span><b>提携内容を確認</b>貴社の体制と、ご希望を伺います</li>
-      <li><span class="en">Step 2</span><b>お客様の業務を整理</b>入れる工程と、人が確認する範囲を決めます</li>
-      <li><span class="en">Step 3</span><b>サービスを設定</b>使うサービスを、貴社向けに設定します</li>
-      <li><span class="en">Step 4</span><b>提供を開始</b>架空データで確かめてから始めます</li>
-    </ol>
-    <p class="how2">お問い合わせフォームの内容欄の最初に「AI RPO OEM」とご記入のうえ、上の4点をお書きください。</p>
     <a class="btn btn-w" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">OEM提供の条件を相談する →</a>
-    <p class="fine">相談の内容をもとに、条件を個別にご案内します。</p>
   </div>
 </section>
 
@@ -1217,9 +1198,9 @@ h1,h2,h3,.logo,.btn{font-family:var(--ff-head)}
 (function(){
   /* ===== ヒーロー：3つのコピーのローテーション ===== */
   var COPIES=[
-    {c:'6工程のうち5つは、\nAIが中心で進めます。',s:'何を売るのか。採用戦略、求人票、母集団形成、候補者への連絡、分析。採用代行の6工程のうち5つをAIが中心で進めるAIサービス群を、貴社のサービスとしてお客様へ提供できます。'},
-    {c:'人が決める工程は、\n6つのうち1つだけ。',s:'何が違うのか。人が受け持つのは、面接・見極め・条件交渉・合否の1工程です。ほかの工程の下ごしらえはAIが進めるので、貴社の担当者は人にしかできない仕事に時間を使えます。'},
-    {c:'基準が変わっても、\n7か所はAIがそろえる。',s:'何が起きるのか。採用基準が1つ変わると、求人票、スカウト文、候補者への説明、紹介会社への依頼、面接の質問、評価メモ、週次レポートの7か所の直し案をAIがそろえます。担当者は確認してから使います。'}
+    {c:'6工程のうち5つは、\nAIが中心で進めます。',s:'採用代行の大部分を、AIが下ごしらえします。'},
+    {c:'人が決める工程は、\n6つのうち1つだけ。',s:'人が受け持つのは、面接と合否だけです。'},
+    {c:'基準が1つ変われば、\n直し案は7か所ぶん。',s:'求人票から週次報告まで、直し案がそろいます。'}
   ];
   var TYPE_MS=55, HOLD_MS=5200, ERASE_MS=22;
   var h1=document.getElementById('tw'), hc=document.getElementById('hc');
@@ -1261,23 +1242,28 @@ h1,h2,h3,.logo,.btn{font-family:var(--ff-head)}
   if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(reserve); } else { reserve(); }
   reserve(); schedule();
 
-  /* ===== 受電ログ：1件ずつ流れる ===== */
-  var logs=[].slice.call(document.querySelectorAll('#logL li'));
-  if(!reduce&&logs.length){
-    var li=0;
-    (function tick(){
-      if(li<logs.length){ logs[li].classList.add('on'); li++; setTimeout(tick,1300); }
-      else { setTimeout(function(){ logs.forEach(function(l){ l.classList.remove('on'); }); li=0; setTimeout(tick,700); },5200); }
-    })();
-  } else { logs.forEach(function(l){ l.classList.add('on'); }); }
-
-
   /* ===== ヒーロー：工程カードを順に光らせる ===== */
   var fcs=[].slice.call(document.querySelectorAll('#fc li'));
   if(fcs.length){
     if(reduce){ fcs.forEach(function(l){ l.classList.add('on'); }); }
     else { var fi=0; setInterval(function(){ fcs.forEach(function(l,k){ l.classList.toggle('on',k===fi); }); fi=(fi+1)%fcs.length; },1100); }
   }
+
+  /* ===== ヘッダー：下へスクロールで隠し、上へスクロールで出す ===== */
+  (function(){
+    var hd=document.querySelector('.hd'); if(!hd) return;
+    var last=window.scrollY, ticking=false, TH=8, TOP=120;
+    function upd(){
+      var y=window.scrollY, d=y-last;
+      if(y<TOP||hd.contains(document.activeElement)){ hd.classList.remove('is-hidden'); }
+      else if(d>TH){ hd.classList.add('is-hidden'); }
+      else if(d<-TH){ hd.classList.remove('is-hidden'); }
+      if(Math.abs(d)>TH) last=y;
+      ticking=false;
+    }
+    window.addEventListener('scroll',function(){ if(!ticking){ ticking=true; requestAnimationFrame(upd); } },{passive:true});
+    hd.addEventListener('focusin',function(){ hd.classList.remove('is-hidden'); });
+  })();
   /* ===== ポップアップ ===== */
   var pop=document.getElementById('pop');
   var copiesEl=document.getElementById('copies'), storyEl=document.getElementById('story');
