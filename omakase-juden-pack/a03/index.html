@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="lp-type" content="右脳/資料/I興味">
+<title>おまかせ受電AI｜無料相談会 投影資料</title>
+<link rel="canonical" href="https://writeup-inc.github.io/saas/omakase-juden-pack/a03/">
+<meta name="description" content="おまかせ受電AIの無料相談会で投影する11枚のスライドです。各スライドの下に、話す言葉を併記しています。Pキーで投影モードに切り替わります。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ===== lp-base.css（改行制御・最小文字サイズ・固定CTAの逃げは消さない） ===== */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] { word-break: normal; }
+}
+.nobr { white-space: nowrap; }
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+:root { --lp-max: 1200px; }
+
+/* ===== トークン（A-01・A-02と同じ深緑×ライム） ===== */
+:root {
+  --ink: #13211f;
+  --ink-2: #3d4b47;
+  --mute: #667570;
+  --line: #dbe5df;
+  --bg: #ffffff;
+  --bg-2: #f4f7f2;
+  --deep: #102f2b;
+  --deep-2: #0a2522;
+  --on-deep: #ffffff;
+  --on-deep-2: #c3d3cc;
+  --lime: #c8ed68;
+  --accent: #102f2b;
+  --accent-soft: #dff5b6;
+  --card: #ffffff;
+  --shadow: 0 1px 2px rgba(16,47,43,.06), 0 8px 28px rgba(16,47,43,.09);
+  --radius: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #e8f0ec; --ink-2: #c6d4ce; --mute: #97a8a1; --line: #264039;
+    --bg: #0a1614; --bg-2: #0d1c19; --card: #122722;
+    --deep: #163d37; --deep-2: #0f2c28; --on-deep-2: #b4c8c0;
+    --accent: #c8ed68; --accent-soft: #22381f;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"] {
+  --ink: #e8f0ec; --ink-2: #c6d4ce; --mute: #97a8a1; --line: #264039;
+  --bg: #0a1614; --bg-2: #0d1c19; --card: #122722;
+  --deep: #163d37; --deep-2: #0f2c28; --on-deep-2: #b4c8c0;
+  --accent: #c8ed68; --accent-soft: #22381f;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.35);
+}
+
+/* ===== 基本 ===== */
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bg-2); color: var(--ink);
+  font-family: "Noto Sans JP", system-ui, -apple-system, "Hiragino Sans", sans-serif;
+  -webkit-font-smoothing: antialiased; font-feature-settings: "palt";
+}
+a { color: inherit; }
+p { margin: 0 0 1em; }
+p, li, td, th, figcaption, .say, .note-box p { word-break: auto-phrase; text-wrap: pretty; }
+.en { font-family: "Inter", "Noto Sans JP", sans-serif; }
+
+/* ===== ボタン ===== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 56px; padding: 0 30px; border-radius: 999px;
+  background: var(--lime); color: #102f2b; text-decoration: none;
+  font-weight: 800; font-size: 1.06rem; letter-spacing: .04em;
+  transition: transform .15s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn::after { content: "↗"; font-size: 1.1em; }
+
+/* ===== ブランド ===== */
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; min-height: 44px; }
+.brand-mark { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: #102f2b; color: #c8ed68; font-weight: 900; font-size: 16px; flex: none; }
+.brand-name { font-weight: 900; font-size: 1.12rem; letter-spacing: .06em; }
+.brand-sub { display: block; font: 700 14px/1 "Inter", sans-serif; letter-spacing: .2em; color: var(--mute); margin-top: 3px; }
+
+/* ===== スライド（通常表示） ===== */
+/* 操作バーの高さ。1280×720でもスライドの下端がバーに隠れないよう、デッキの幅を画面の高さから逆算する */
+:root { --fixed-cta-h: 76px; }
+.deck-head { max-width: calc(var(--lp-max) + 32px); margin: 0 auto; padding: 28px 16px 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; }
+.deck-head p { margin: 0; font-size: 1rem; color: var(--ink-2); }
+.deck {
+  max-width: min(calc(var(--lp-max) + 32px), max(640px, calc((100vh - var(--fixed-cta-h) - 40px) * 1.7778 + 32px)));
+  margin: 0 auto; padding: 8px 16px 40px; container-type: inline-size;
+}
+@media (max-width: 600px) { .deck { padding: 8px 12px 32px; } .deck-head { padding: 20px 12px 4px; } }
+section.slide-wrap { padding: 0; margin: 0 0 36px; scroll-margin-top: 12px; }
+.slide {
+  position: relative; min-height: calc(100cqw * .5625); background: var(--card); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow);
+  padding: clamp(18px, 3.4vw, 40px) clamp(16px, 4vw, 50px) clamp(14px, 1.8vw, 20px);
+  display: flex; flex-direction: column; cursor: pointer; overflow: hidden;
+}
+.slide > * { min-width: 0; position: relative; }
+.s-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px 12px; margin-bottom: clamp(10px, 1.6vw, 18px); }
+.s-no { font: 800 14px/1 "Inter", sans-serif; letter-spacing: .16em; color: var(--accent); }
+.s-kicker { font-size: 14px; color: var(--mute); font-weight: 700; text-align: right; display: inline-flex; align-items: center; flex-wrap: wrap; gap: 6px 10px; justify-content: flex-end; }
+.stp { display: inline-flex; gap: 4px; }
+.stp span { font: 800 14px/1 "Inter", sans-serif; letter-spacing: .06em; padding: 5px 8px; border-radius: 6px; color: var(--mute); border: 1px solid var(--line); }
+.stp span.on { background: #102f2b; color: #c8ed68; border-color: #102f2b; }
+.slide h1 { font-size: clamp(1.6rem, 4.6vw, 3.2rem); line-height: 1.32; margin: 0 0 18px; font-weight: 900; letter-spacing: -.01em; }
+.slide h2 { font-size: clamp(1.3rem, 2.8vw, 2rem); line-height: 1.4; margin: 0 0 clamp(12px, 1.8vw, 22px); font-weight: 900; color: var(--accent); }
+.slide h3 { font-size: clamp(1.06rem, 1.6vw, 1.14rem); line-height: 1.5; margin: 0 0 6px; }
+.slide p { font-size: clamp(1rem, 1.45vw, 1.06rem); color: var(--ink-2); margin: 0 0 .6em; line-height: 1.7; }
+.s-body { flex: 1 0 auto; display: flex; flex-direction: column; justify-content: center; }
+.s-foot { margin-top: clamp(10px, 1.4vw, 16px); display: flex; flex-wrap: wrap; gap: 4px 16px; justify-content: space-between; align-items: center; font-size: 14px; color: var(--mute); }
+.s-foot .bm { display: inline-flex; align-items: center; gap: 8px; font: 800 14px/1 "Inter", sans-serif; letter-spacing: .14em; }
+.s-foot .bm i { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 6px; background: var(--deep); color: var(--lime); font-style: normal; font-size: 14px; font-weight: 900; }
+.img-note { font-size: 14px; color: var(--mute); margin-top: 8px; }
+
+/* 表紙・締め（深緑×ライム） */
+.slide.dark { background: #102f2b; color: #fff; border-color: transparent; }
+.slide.dark h1, .slide.dark h2 { color: #fff; }
+.slide.dark h1 em, .slide.dark h2 em { font-style: normal; color: #c8ed68; }
+.slide.dark p, .slide.dark .s-foot, .slide.dark .s-kicker { color: #c3d3cc; }
+.slide.dark .s-no { color: #c8ed68; }
+.slide.dark .s-foot .bm i { background: #c8ed68; color: #102f2b; }
+.slide.dark.disc { --r: clamp(96px, 17vw, 240px); background: radial-gradient(circle at 94% 0%, #c8ed68 0, #c8ed68 var(--r), transparent calc(var(--r) + 1px)) no-repeat, #102f2b; }
+.slide.dark.disc .s-kicker { color: #102f2b; }
+.cover-glyph { position: absolute; right: 5%; top: 3%; font-weight: 900; font-size: clamp(3.4rem, 9vw, 7.5rem); line-height: 1; color: #102f2b; z-index: 0; }
+.cover-tag { display: inline-block; font-size: 1rem; font-weight: 700; color: #c8ed68; border: 1px solid rgba(200,237,104,.5); border-radius: 999px; padding: 4px 14px; margin-bottom: 18px; align-self: flex-start; }
+.slide.dark .cover-sub { color: #e3ece8; font-size: clamp(1.02rem, 1.7vw, 1.2rem); max-width: 34em; }
+.cover-facts { list-style: none; margin: clamp(14px, 2.2vw, 24px) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 10px; }
+.cover-facts li { border: 1px solid rgba(255,255,255,.22); border-radius: 999px; padding: 5px 14px; font-size: 1rem; color: #fff; }
+.cover-facts b { color: #c8ed68; margin-right: 6px; }
+@media (max-width: 760px) { .cover-glyph { font-size: 3.4rem; right: 4%; top: 2%; } }
+
+/* グリッド */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px, 2.4vw, 28px); align-items: start; }
+.g2w { display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(14px, 2.6vw, 32px); align-items: center; }
+@media (max-width: 760px) { .g2, .g2w { grid-template-columns: 1fr; } }
+.say { border-left: 3px solid var(--lime); padding: 4px 0 4px 14px; font-weight: 700; color: var(--ink); font-size: clamp(1.02rem, 1.6vw, 1.12rem); line-height: 1.6; margin: clamp(10px, 1.8vw, 18px) 0 0; }
+.slide .say { color: var(--ink); }
+
+/* 02 進め方の帯 */
+.work { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(10px, 1.4vw, 14px); counter-reset: w; }
+@media (max-width: 900px) { .work { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .work { grid-template-columns: 1fr; } }
+.work li { counter-increment: w; position: relative; border-top: 3px solid #102f2b; background: var(--bg-2); border-radius: 0 0 12px 12px; padding: 12px 14px 14px; }
+.work li::before { content: "0" counter(w); display: block; font: 900 clamp(1.4rem, 2.4vw, 1.9rem)/1 "Inter", sans-serif; color: var(--accent); margin-bottom: 8px; }
+.work b { display: block; font-size: clamp(1.02rem, 1.5vw, 1.08rem); line-height: 1.5; }
+.work span { display: block; font-size: 1rem; color: var(--ink-2); margin-top: 6px; line-height: 1.6; }
+.work .half { display: block; font: 800 14px/1.4 "Inter", "Noto Sans JP", sans-serif; color: var(--mute); margin-top: 10px; }
+@media (min-width: 901px) {
+  .work li:not(:last-child)::after { content: ""; position: absolute; right: -11px; top: -9px; width: 0; height: 0; border-top: 7px solid transparent; border-bottom: 7px solid transparent; border-left: 8px solid #102f2b; z-index: 1; }
+}
+
+/* 03 現場の写真 */
+.scenes { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(10px, 1.8vw, 18px); margin: 0 0 clamp(10px, 1.4vw, 14px); }
+.scenes figure { margin: 0; }
+.scenes img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; }
+.scenes figcaption { margin-top: 8px; font-size: clamp(1rem, 1.4vw, 1.04rem); font-weight: 700; color: var(--ink); line-height: 1.5; }
+.scenes figcaption b { display: inline-block; margin-right: 6px; padding: 0 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-size: 14px; }
+.scenes .pt { display: block; margin-top: 4px; font-weight: 400; color: var(--ink-2); font-size: 1rem; line-height: 1.6; }
+@media (max-width: 760px) { .scenes { grid-template-columns: 1fr; } .scenes img { aspect-ratio: 16 / 8; } }
+
+/* 04 比べ方 */
+.cmp-wrap { display: grid; grid-template-columns: .8fr 2fr; gap: clamp(12px, 2.4vw, 26px); align-items: start; }
+@media (max-width: 900px) { .cmp-wrap { grid-template-columns: 1fr; } }
+.tbl { width: 100%; border-collapse: collapse; font-size: 1rem; }
+.tbl th, .tbl td { text-align: left; padding: clamp(6px, .9vw, 9px) 10px; border-bottom: 1px solid var(--line); vertical-align: top; line-height: 1.5; }
+.tbl thead th { font-size: 14px; color: var(--mute); background: var(--bg-2); white-space: nowrap; }
+.tbl tbody th { white-space: nowrap; color: var(--ink); }
+.tbl td.us, .tbl th.us { background: color-mix(in srgb, var(--accent-soft) 60%, transparent); font-weight: 700; color: var(--ink); }
+@media (max-width: 600px) {
+  .tbl.stack thead { display: none; }
+  .tbl.stack, .tbl.stack tbody, .tbl.stack tr, .tbl.stack th, .tbl.stack td { display: block; width: 100%; }
+  .tbl.stack tr { padding: 10px 12px; border-bottom: 1px solid var(--line); }
+  .tbl.stack th, .tbl.stack td { border: 0; padding: 2px 0; }
+  .tbl.stack tbody th { font-size: 1rem; margin-bottom: 4px; white-space: normal; }
+  .tbl.stack td { display: grid; grid-template-columns: 7em 1fr; gap: 8px; background: none; }
+  .tbl.stack td::before { content: attr(data-l); color: var(--mute); font-weight: 400; font-size: 14px; }
+}
+.vm { border: 1px dashed var(--line); border-radius: 12px; padding: clamp(12px, 1.8vw, 18px); }
+.vm h3 { margin-bottom: 6px; }
+.vm p { font-size: 1rem; margin: 0; }
+
+/* 05 1本の電話の道筋 */
+.flow { display: grid; grid-template-columns: minmax(150px, .7fr) 2.3fr; gap: clamp(12px, 2vw, 22px); align-items: center; }
+@media (max-width: 760px) { .flow { grid-template-columns: 1fr; } }
+.start { display: grid; gap: 8px; justify-items: stretch; }
+.node { border-radius: 10px; padding: 8px 12px; font-weight: 700; font-size: 1rem; line-height: 1.45; text-align: center; }
+.node.in { background: var(--bg-2); border: 1px solid var(--line); color: var(--ink); }
+.node.ai { background: #102f2b; color: #c8ed68; }
+.node.hu { background: var(--card); border: 1.5px solid var(--ink); color: var(--ink); }
+.node.done { background: var(--accent-soft); color: var(--accent); }
+.down { text-align: center; color: var(--mute); font: 800 1.1rem/1 "Inter", sans-serif; }
+.lanes { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.lane { display: grid; grid-template-columns: 11em 1fr; gap: 10px; align-items: center; border-bottom: 1px dashed var(--line); padding-bottom: 8px; }
+.lane:last-child { border-bottom: 0; padding-bottom: 0; }
+.lane .cond { font-size: 1rem; font-weight: 700; color: var(--ink-2); }
+.lane .path { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
+.lane .path .node { flex: 0 1 auto; }
+.arr { color: var(--mute); font: 800 1rem/1 "Inter", sans-serif; }
+@media (max-width: 760px) { .lane { grid-template-columns: 1fr; gap: 6px; } }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: clamp(10px, 1.4vw, 14px); font-size: 14px; color: var(--mute); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 14px; height: 14px; border-radius: 4px; display: inline-block; }
+.legend .l-ai { background: #102f2b; }
+.legend .l-hu { border: 1.5px solid var(--ink); }
+.legend .l-done { background: var(--accent-soft); }
+
+/* 06 画面イメージ */
+.ui { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--card); box-shadow: var(--shadow); }
+.ui-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 7px 14px; background: #102f2b; color: #c8ed68; font: 800 14px/1.4 "Inter", sans-serif; letter-spacing: .1em; }
+.ui-top span:last-child { color: #c3d3cc; font-family: "Noto Sans JP", sans-serif; letter-spacing: 0; font-weight: 700; }
+.ui-nav { display: flex; flex-wrap: wrap; gap: 4px 14px; padding: 7px 14px 0; font-size: 14px; color: var(--mute); border-bottom: 1px solid var(--line); }
+.ui-nav span { padding-bottom: 6px; }
+.ui-nav .on { color: var(--ink); font-weight: 700; border-bottom: 2px solid var(--ink); }
+.ui-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 9px 14px 4px; }
+.ui-head b { font-size: 1rem; }
+.ui-head > span { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--ink); font-weight: 700; border: 1px solid var(--line); border-radius: 8px; padding: 2px 8px; }
+.ui-rows { list-style: none; margin: 0; padding: 0 14px 8px; }
+.ui-rows li { display: grid; grid-template-columns: 1.3fr 5em 1.5fr; gap: 10px; align-items: center; padding: 4px 0; border-bottom: 1px solid var(--line); font-size: 1rem; color: var(--ink-2); line-height: 1.4; }
+.ui-rows li:last-child { border-bottom: 0; }
+.ui-rows li.h { font-size: 14px; color: var(--ink); font-weight: 700; padding: 4px 0; }
+.ui-rows li.h > span { display: inline-flex; align-items: center; gap: 5px; }
+.ui-rows .what { color: var(--ink); font-weight: 700; }
+.who { justify-self: start; font: 800 14px/1.6 "Inter", "Noto Sans JP", sans-serif; border-radius: 999px; padding: 0 9px; }
+.who.ai { background: #c8ed68; color: #102f2b; }
+.who.hu { border: 1.5px solid var(--ink); color: var(--ink); }
+.mk { display: inline-grid; place-items: center; width: 1.6em; height: 1.6em; border-radius: 50%; background: #c8ed68; color: #102f2b; font: 900 14px/1 "Noto Sans JP", sans-serif; font-style: normal; flex: none; box-shadow: 0 0 0 2px #102f2b; }
+.how3 { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 8px; }
+.how3 li { display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; align-items: center; border-bottom: 1px solid var(--line); padding: 0 0 8px; }
+.how3 li:last-child { border-bottom: 0; }
+.how3 .mk { grid-row: span 2; font-size: 16px; }
+.how3 b { font-size: clamp(1.02rem, 1.5vw, 1.08rem); line-height: 1.45; }
+.how3 span { font-size: 1rem; color: var(--ink-2); line-height: 1.5; }
+.sc { border: 1px solid var(--line); border-radius: 12px; padding: clamp(10px, 1.4vw, 14px) clamp(12px, 1.6vw, 16px); background: var(--bg-2); }
+.sc h3 { margin-bottom: 2px; }
+.sc p { font-size: 1rem; margin: 0; }
+.sc a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; font-size: 1rem; color: var(--accent); text-underline-offset: 4px; }
+
+/* 07 書き出しシート */
+.sheet th:nth-child(1) { width: 26%; }
+.sheet td.blank { color: var(--mute); }
+.sheet .line { display: block; border-bottom: 1.5px dashed var(--line); min-height: 1.5em; }
+.sheet .opts { display: flex; flex-wrap: wrap; gap: 4px 6px; }
+.sheet .opts span { font-size: 14px; border: 1px solid var(--line); border-radius: 999px; padding: 0 9px; color: var(--ink-2); white-space: nowrap; }
+.sheet tr.fixed th, .sheet tr.fixed td { background: var(--bg-2); }
+.sheet tr.fixed th { white-space: normal; }
+.sheet .fx { display: inline-block; font-size: 14px; font-weight: 800; border-radius: 6px; padding: 1px 9px; background: #102f2b; color: #c8ed68; white-space: nowrap; }
+.sheet .fxn { display: block; font-size: 14px; color: var(--mute); font-weight: 700; margin-top: 2px; }
+@media (max-width: 600px) { .sheet .fx { white-space: normal; } }
+.sheet .lock { display: block; font-size: 14px; color: var(--mute); font-weight: 700; }
+
+/* 08 向き不向き */
+.fit { border-radius: 12px; padding: clamp(12px, 1.8vw, 18px); }
+.fit.yes { background: var(--bg-2); }
+.fit.no { border: 2px solid var(--ink); }
+.fit .ft { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+.fit .ft h3 { margin: 0; }
+.fit ul { list-style: none; margin: 0; padding: 0; }
+.fit li { padding: 7px 0 7px 18px; border-bottom: 1px solid var(--line); position: relative; font-size: clamp(1rem, 1.4vw, 1.04rem); line-height: 1.55; color: var(--ink); }
+.fit li:last-child { border-bottom: 0; }
+.fit li::before { content: ""; position: absolute; left: 2px; top: 19px; width: 8px; height: 2px; background: var(--mute); }
+.fit.no li::before { background: var(--ink); }
+.fit li small { display: block; font-size: 1rem; color: var(--mute); }
+.fit.no li b { font-weight: 900; }
+.pill { display: inline-block; font: 800 14px/1.6 "Inter", "Noto Sans JP", sans-serif; border-radius: 999px; padding: 1px 10px; }
+.pill.ai { background: #c8ed68; color: #102f2b; }
+.pill.hu { background: var(--card); color: var(--ink); border: 1px solid var(--line); }
+
+/* 09 番号と通知先の経路 */
+.route { list-style: none; margin: 0 0 clamp(12px, 1.8vw, 18px); padding: 0; display: flex; align-items: stretch; gap: 0; }
+.route .rn { flex: 1 1 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; text-align: center; border-radius: 12px; padding: 14px 10px; font-weight: 800; font-size: clamp(1rem, 1.5vw, 1.08rem); line-height: 1.4; background: var(--bg-2); border: 1px solid var(--line); color: var(--ink); position: relative; }
+.route .rn.ai { background: #102f2b; color: #c8ed68; border-color: #102f2b; }
+.route .rn.chk { border: 2px solid #102f2b; }
+.route .ra { flex: 0 0 auto; min-width: 5.4em; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 0 4px; color: var(--mute); }
+.route .ra .ar { font: 800 1.3rem/1 "Inter", sans-serif; color: var(--ink-2); }
+.route .rv { font-size: 14px; font-weight: 700; color: var(--ink-2); }
+.ck { display: inline-block; font: 800 14px/1.5 "Inter", sans-serif; letter-spacing: .1em; padding: 0 8px; border-radius: 6px; background: #c8ed68; color: #102f2b; box-shadow: 0 0 0 1.5px #102f2b; }
+@media (max-width: 760px) {
+  .route { flex-direction: column; }
+  .route .ra { flex-direction: row; min-width: 0; padding: 6px 0; gap: 8px; }
+  .route .ra .ar { transform: rotate(90deg); }
+}
+.rchk { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(10px, 1.8vw, 18px); }
+@media (max-width: 760px) { .rchk { grid-template-columns: 1fr; } }
+.rchk > div { border-top: 1px solid var(--line); padding-top: 10px; }
+.rchk .rh { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
+.rchk .rh h3 { margin: 0; }
+.rchk p { margin: 0; }
+
+/* 10 料金と、無料でお願いする理由 */
+.pcard { background: #102f2b; color: #fff; border-radius: 14px; padding: clamp(16px, 2.2vw, 24px); }
+.pcard .label { font-size: 1rem; color: #c3d3cc; display: block; }
+.ptier { margin: 10px 0 4px; display: grid; gap: 4px; }
+.ptier > div { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; border-bottom: 1px solid rgba(255,255,255,.16); padding: 2px 0 6px; }
+.ptier dt { font-size: 1.06rem; font-weight: 700; color: #fff; }
+.ptier dd { margin: 0; font: 900 clamp(1.9rem, 4vw, 2.8rem)/1.1 "Inter", "Noto Sans JP", sans-serif; color: #c8ed68; }
+.prows { list-style: none; margin: 8px 0 0; padding: 0; }
+.prows li { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2px 16px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,.16); font-size: 1rem; }
+.prows li:last-child { border-bottom: 0; }
+.prows li span { color: #c3d3cc; }
+.prows li b { font-weight: 700; text-align: right; }
+.why { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: y; }
+.why li { counter-increment: y; display: grid; grid-template-columns: auto 1fr; gap: 0 10px; border-bottom: 1px solid var(--line); padding: 8px 0; }
+.why li:last-child { border-bottom: 0; }
+.why li::before { content: "0" counter(y); grid-row: span 2; font: 800 14px/1.9 "Inter", sans-serif; color: var(--accent); letter-spacing: .1em; }
+.why b { display: block; font-size: clamp(1.02rem, 1.5vw, 1.08rem); line-height: 1.5; }
+.why span { display: block; font-size: 1rem; color: var(--ink-2); margin-top: 2px; line-height: 1.55; }
+.slide p.case-line { font-weight: 700; color: var(--ink); border-left: 3px solid var(--lime); padding-left: 12px; margin: 6px 0 4px; }
+
+/* 11 次の一歩 */
+.next3 { list-style: none; margin: 0 0 clamp(14px, 2.2vw, 22px); padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(10px, 2vw, 20px); counter-reset: x; }
+@media (max-width: 760px) { .next3 { grid-template-columns: 1fr; } }
+.next3 li { counter-increment: x; border-top: 2px solid #c8ed68; padding-top: 12px; }
+.next3 li::before { content: "0" counter(x); display: block; font: 800 14px/1 "Inter", sans-serif; letter-spacing: .14em; color: #c8ed68; margin-bottom: 8px; }
+.next3 b { display: block; color: #fff; font-size: clamp(1.04rem, 1.7vw, 1.12rem); line-height: 1.5; }
+.next3 span { display: block; color: #c3d3cc; font-size: 1rem; margin-top: 4px; line-height: 1.6; }
+.cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px clamp(18px, 3vw, 36px); }
+.cta-url { min-width: 0; }
+.cta-url .u { display: inline-flex; align-items: center; min-height: 44px; font: 800 clamp(1.5rem, 3.2vw, 2.3rem)/1.2 "Inter", sans-serif; color: #c8ed68; letter-spacing: .01em; text-decoration: none; border-bottom: 2px solid rgba(200,237,104,.45); }
+.slide.dark .cta-url p { margin: 6px 0 0; color: #e3ece8; font-size: 1rem; }
+
+/* ノート */
+.note-box { margin-top: 12px; background: var(--card); border: 1px dashed var(--line); border-radius: 12px; padding: 14px 18px; }
+.note-box .nl { display: block; font: 700 14px/1 "Inter", "Noto Sans JP", sans-serif; letter-spacing: .12em; color: var(--mute); margin-bottom: 8px; }
+.note-box p { margin: 0 0 .5em; font-size: 1rem; color: var(--ink); line-height: 1.85; }
+.note-box p:last-child { margin: 0; }
+.note-box p.stage { font-size: 14px; color: var(--mute); line-height: 1.7; }
+body.hide-notes .note-box { display: none; }
+
+/* 操作バー */
+.bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.bar-in { max-width: calc(var(--lp-max) + 32px); margin: 0 auto; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.bar-grp { display: flex; align-items: center; gap: 8px; }
+.bar button { min-height: 44px; min-width: 44px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--ink); font: 700 .92rem/1 "Noto Sans JP", sans-serif; cursor: pointer; white-space: nowrap; }
+.bar button:hover { border-color: var(--ink); }
+.bar button#present { background: #102f2b; color: #c8ed68; border-color: #102f2b; }
+.bar .count { font: 700 .95rem/1 "Inter", sans-serif; color: var(--ink-2); min-width: 4.5em; text-align: center; }
+.bar .hint { font-size: 14px; color: var(--mute); }
+@media (max-width: 860px) { .bar .hint { display: none; } }
+@media (max-width: 400px) { #present { display: none; } }
+@media (max-width: 359px) { .slide { padding-left: 14px; padding-right: 14px; } .slide h2 { font-size: 1.08rem; } }
+@media (max-width: 460px) { .bar-in { padding: 12px; } .bar-grp { gap: 6px; } .bar button { padding: 0 11px; font-size: .88rem; } .bar .count { min-width: 3.6em; } #print { display: none; } }
+
+/* フッター */
+.deck-foot { max-width: calc(var(--lp-max) + 32px); margin: 0 auto; padding: 8px 16px 40px; text-align: center; font-size: 14px; color: var(--mute); }
+.deck-foot p { margin: 0 0 4px; }
+.deck-foot a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 10px; color: var(--ink-2); }
+
+/* ===== 投影モード（Pキー／「投影」ボタン）：1枚を16:9のまま画面いっぱいに ===== */
+body.present { background: #000; padding: 0; overflow: hidden; }
+body.present .deck-head, body.present .bar, body.present .note-box, body.present .fc-row, body.present .deck-foot { display: none !important; }
+body.present .deck { max-width: none; padding: 0; margin: 0; container-type: normal; }
+body.present section.slide-wrap { display: none; margin: 0; }
+body.present section.slide-wrap.cur { display: grid; place-items: center; position: fixed; inset: 0; background: #000; z-index: 80; }
+body.present .slide {
+  --pw: min(100vw, 177.78vh);
+  width: min(100vw, 177.78vh); height: min(56.25vw, 100vh); min-height: 0;
+  container-type: inline-size; border: 0; border-radius: 0; box-shadow: none;
+  padding: calc(var(--pw) * .034) calc(var(--pw) * .044) calc(var(--pw) * .018);
+}
+body.present .slide.dark.disc { --r: calc(min(100vw, 177.78vh) * .15); }
+/* 本文 ≒1.85cqw */
+body.present .slide p, body.present .scenes figcaption, body.present .scenes .pt, body.present .tbl, body.present .vm p,
+body.present .node, body.present .lane .cond, body.present .ui-rows li, body.present .ui-head b, body.present .how3 span, body.present .sc p, body.present .sc a,
+body.present .work span, body.present .fit li, body.present .fit li small, body.present .route .rn, body.present .why span, body.present .next3 span,
+body.present .prows li, body.present .pcard .label, body.present .cover-facts li, body.present .cover-tag, body.present .slide.dark .cta-url p { font-size: 1.85cqw; }
+/* 見出し */
+body.present .slide h1 { font-size: 4.7cqw; margin-bottom: 1.4cqw; }
+body.present .slide h2 { font-size: 3.3cqw; margin-bottom: 1.5cqw; }
+body.present .slide h3 { font-size: 2.05cqw; }
+body.present .work b, body.present .how3 b, body.present .why b, body.present .next3 b, body.present .say { font-size: 2cqw; }
+body.present .slide.dark .cover-sub { font-size: 2.2cqw; }
+body.present .work li::before { font-size: 2.6cqw; }
+body.present .ptier dt { font-size: 2cqw; }
+body.present .ptier dd { font-size: 4cqw; }
+body.present .cta-url .u { font-size: 3.4cqw; }
+body.present .btn { font-size: 1.9cqw; min-height: 4.4cqw; padding: 0 2.4cqw; }
+body.present .cover-glyph { font-size: 9cqw; }
+/* 補足 ≒1.35cqw */
+body.present .s-no, body.present .s-kicker, body.present .stp span, body.present .s-foot, body.present .s-foot .bm, body.present .s-foot .bm i,
+body.present .img-note, body.present .legend, body.present .tbl thead th, body.present .ui-top, body.present .ui-nav, body.present .ui-head > span,
+body.present .ui-rows li.h, body.present .who, body.present .mk, body.present .sheet .opts span, body.present .sheet .fx, body.present .sheet .fxn, body.present .sheet .lock,
+body.present .pill, body.present .scenes figcaption b, body.present .work .half, body.present .route .rv, body.present .ck,
+body.present .why li::before, body.present .next3 li::before { font-size: 1.35cqw; }
+body.present .how3 .mk { font-size: 1.6cqw; }
+body.present .s-foot .bm i { width: 1.9cqw; height: 1.9cqw; }
+/* 余白もスライド幅に合わせる */
+body.present .s-top { margin-bottom: 1.3cqw; }
+body.present .s-foot { margin-top: 1cqw; }
+body.present .g2, body.present .g2w, body.present .cmp-wrap, body.present .scenes, body.present .work, body.present .rchk, body.present .next3 { gap: 1.8cqw; }
+body.present .tbl th, body.present .tbl td { padding: .55cqw .8cqw; }
+body.present .work li { padding: 1cqw 1.2cqw 1.2cqw; }
+body.present .vm, body.present .fit, body.present .pcard { padding: 1.4cqw; }
+body.present .fit li { padding: .5cqw 0 .5cqw 1.5cqw; }
+body.present .fit li::before { top: 1.7cqw; }
+body.present .node { padding: .6cqw 1cqw; }
+body.present .lanes { gap: .6cqw; }
+body.present .lane { padding-bottom: .6cqw; grid-template-columns: 12em 1fr; }
+body.present .ui-rows li { padding: .35cqw 0; }
+body.present .ui-top { padding: .5cqw 1.1cqw; }
+body.present .ui-head { padding: .7cqw 1.1cqw .3cqw; }
+body.present .ui-rows { padding: 0 1.1cqw .6cqw; }
+body.present .ui-nav { padding: .5cqw 1.1cqw 0; }
+body.present .route .rn { padding: 1.2cqw .8cqw; }
+body.present .route .ra .ar { font-size: 2.2cqw; }
+body.present .scenes figcaption { margin-top: .6cqw; }
+body.present .sc { padding: 1cqw 1.2cqw; }
+body.present .sc a { min-height: 0; margin-top: .4cqw; }
+body.present .how3 { gap: .5cqw; margin-bottom: .7cqw; }
+body.present .ui-rows li { line-height: 1.32; }
+body.present .how3 li { padding-bottom: .6cqw; }
+body.present .why li { padding: .6cqw 0; }
+body.present .next3 li { padding-top: 1cqw; }
+body.present .say { margin-top: 1.3cqw; }
+
+/* 印刷：1枚1ページ、ノートと操作バーは出さない */
+@media print {
+  @page { size: 297mm 167mm; margin: 0; }
+  body { background: #fff; padding: 0; }
+  .bar, .deck-head, .note-box, .deck-foot, .fc-row { display: none !important; }
+  .deck { max-width: none; padding: 0; margin: 0; container-type: normal; }
+  section.slide-wrap { margin: 0; break-after: page; page-break-after: always; }
+  .slide { width: 297mm; height: 167mm; min-height: 0; aspect-ratio: auto; border: 0; border-radius: 0; box-shadow: none; padding: 10mm 13mm 10mm; }
+  .slide h1 { font-size: 30pt; } .slide h2 { font-size: 21pt; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+/* ===== ChatGPTファクトチェック（主CTAより弱く） ===== */
+.fc-row { margin-top: 12px; }
+.fc-btn { display: inline-flex; align-items: center; flex-wrap: wrap; gap: .2em .6em; min-height: 44px; padding: 8px 18px;
+  border: 1px solid currentColor; border-radius: 999px; background: transparent; color: var(--ink-2);
+  font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; text-align: left; line-height: 1.5; }
+.fc-btn:hover { color: var(--ink); }
+.fc-btn svg { width: 16px; height: 16px; flex: none; }
+.fc-sub { font-size: 14px; font-weight: 400; opacity: .8; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } }
+</style>
+</head>
+<body>
+
+<div class="deck-head">
+  <a class="brand" href="#s01" aria-label="1枚目へ">
+    <span class="brand-mark" aria-hidden="true">受</span>
+    <span><span class="brand-name">おまかせ受電AI</span><span class="brand-sub">FREE CONSULTATION</span></span>
+  </a>
+  <p>無料相談会の投影資料（全11枚）。各スライドの下が「話す言葉」で、Pキーで投影モードに切り替わります。</p>
+</div>
+
+<main class="deck" id="deck">
+
+<!-- 01 表紙 -->
+<section class="slide-wrap" id="s01" aria-labelledby="t01">
+  <div class="slide dark disc">
+    <span class="cover-glyph" aria-hidden="true">受</span>
+    <div class="s-top"><span class="s-no">01 / 11</span></div>
+    <div class="s-body">
+      <span class="cover-tag">おまかせ受電AI　無料相談会</span>
+      <h1 id="t01">手が離せない時間の<br>電話、<em>どうしてますか。</em></h1>
+      <p class="cover-sub">自店の電話を用件ごとに書き出し、AIに任せる電話と人に残す電話を、この場で決めます。</p>
+      <ul class="cover-facts">
+        <li><b>用件ごと</b>AIか人かを選ぶ</li>
+        <li><b>24時間</b>予約の希望を仮受付</li>
+        <li><b>不在時</b>LINEへ通知</li>
+      </ul>
+    </div>
+    <div class="s-foot"><span class="bm"><i>受</i>OMAKASE JUDEN AI</span><span>株式会社ライトアップ（東証グロース 証券コード6580）</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>本日はお越しいただき、ありがとうございます。今日は製品の説明を聞いていただく場というより、皆さんのお店にかかってくる電話を一緒に書き出して、どこまで任せられるかを決めていく時間です。</p>
+    <p>最初に一つだけ、お伝えさせてください。全部の電話をAIに任せましょう、というお話ではありません。人が出たほうがいい電話は、人に残します。その線をどこに引くかを、お店ごとに決めていきましょう。</p>
+  </aside>
+</section>
+
+<!-- 02 今日の進め方 -->
+<section class="slide-wrap" id="s02" aria-labelledby="t02">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">02 / 11</span><span class="s-kicker">今日の進め方</span></div>
+    <div class="s-body">
+      <h2 id="t02">今日は、自店の電話を<br>4つの順で整理します。</h2>
+      <ol class="work">
+        <li><b>かかってくる電話を用件ごとに分ける</b><span>予約、営業時間や道順の問い合わせ、営業電話、取引先からの連絡。自店にどんな電話が来ているかを書き出します。</span></li>
+        <li><b>AIに任せる電話と、人に残す電話を決める</b><span>用件ごとに、AIが受けるか、スタッフにつなぐかを決めます。迷う電話は人に残す、という決め方で構いません。</span></li>
+        <li><b>今の番号のまま使えるか、通知先はどこかを確かめる</b><span>お使いの電話番号で使えるかどうかと、出られなかった電話をどこへ知らせるか（LINEなど）を確認します。</span></li>
+        <li><b>無料モニターの条件を知る</b><span>先着30社ほどの無料モニターについて、モニター期間の費用と、申込時にご案内する条件をお伝えします。</span></li>
+      </ol>
+      <p class="say">製品の説明を聞くだけの場ではありません。</p>
+    </div>
+    <div class="s-foot"><span class="bm"><i>受</i>OMAKASE JUDEN AI</span><span>前半は仕組み、後半は書き出し</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>今日は4つの順で進めます。前半で仕組みをご覧いただき、後半で皆さんのお店の電話を書き出します。</p>
+    <p>最初は、かかってくる電話を用件ごとに書き出す作業です。次に、それぞれをAIに任せるか人に残すかを決めて、今の電話番号のまま使えるかと、出られなかった電話をどこに知らせるかを確かめましょう。最後に、無料モニターの条件をお伝えします。正解はありませんので、気楽に聞いてください。</p>
+  </aside>
+</section>
+
+<!-- 03 現場で起きていること -->
+<section class="slide-wrap" id="s03" aria-labelledby="t03">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">03 / 11</span><span class="s-kicker">現場で起きていること</span></div>
+    <div class="s-body">
+      <h2 id="t03">調理中も、施術中も、<br>レジの最中も、電話は鳴ります。</h2>
+      <div class="scenes">
+        <figure><img src="../../omakase-juden/images/store-kitchen-chef.webp" alt="混み合う店内で調理する料理人" width="1280" height="853" loading="lazy"><figcaption><b>飲食店</b>調理中に鳴る<span class="pt">1人で接客も会計も電話も受け持つ時間帯が、ありませんか。</span></figcaption></figure>
+        <figure><img src="../../omakase-juden/images/store-salon.webp" alt="美容室の店内。シャンプー台とセット面" width="1280" height="854" loading="lazy"><figcaption><b>美容室</b>施術中に鳴る<span class="pt">ネット予約があっても、電話でかけてくるお客様は今もいます。</span></figcaption></figure>
+        <figure><img src="../../omakase-juden/images/store-cafe-hands.webp" alt="コーヒーを淹れるカフェの店員の手元" width="1280" height="854" loading="lazy"><figcaption><b>カフェ</b>レジと提供の最中に鳴る<span class="pt">お客様の電話と営業電話は、出てみるまで区別がつきません。</span></figcaption></figure>
+      </div>
+      <p class="say">出られなかった電話が予約だったのか、営業電話だったのか。あとからでは分かりません。</p>
+    </div>
+    <div class="s-foot"><span class="bm"><i>受</i>OMAKASE JUDEN AI</span><span>写真はイメージです</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>人を増やしたくても増やせないお店が、多いと思います。1人で接客もレジも電話も、という時間帯はありませんか。それでも、電話は減っていません。ネット予約を入れていても、電話でかけてこられるお客様はいらっしゃいます。</p>
+    <p>しかも鳴るのは、たいてい調理中や施術中、レジの対応中です。出ようとすれば目の前のお客様を待たせますし、出なければ、その電話が予約だったのか営業電話だったのかも分からないまま。折り返すべきかどうかも決められません。</p>
+    <p>皆さんのお店では、1日に何回くらい電話が鳴りますか。どの時間帯に鳴るのがいちばんつらいかも、後半のワークで使うので覚えておいてください。</p>
+  </aside>
+  <div class="fc-row"><button class="fc-btn" type="button" data-fc-section="課題提起（店舗の電話の現状）" data-fc-claim="少人数で営業する飲食店・美容室・カフェなどでは、1人が接客・会計・電話を受け持つ時間帯がある／ネット予約が広がっても、予約や問い合わせを電話でかけるお客様は今もいる／お客様の電話と営業電話は同じ回線にかかり、出てみるまで区別がつかない／調理・施術・レジ対応の最中に電話が鳴って出られず、その用件（予約か営業電話か）があとから分からないことがある／この認識は、店舗の電話対応の一般的な実態と照らして妥当か。反対の見方も"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="m8.5 11 1.8 1.8L14 9"/></svg>ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button></div>
+</section>
+
+<!-- 04 これまでのやり方 -->
+<section class="slide-wrap" id="s04" aria-labelledby="t04">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">04 / 11</span><span class="s-kicker">これまでのやり方</span></div>
+    <div class="s-body">
+      <h2 id="t04">留守電も電話代行も、<br>向き不向きがあります。</h2>
+      <div class="cmp-wrap">
+        <div class="vm">
+          <h3>留守番電話</h3>
+          <p>用件を残すかどうかは、かけた人しだいです。残らなければ、何の電話だったかは分かりません。</p>
+        </div>
+        <table class="tbl stack">
+          <thead><tr><th scope="col">比べるところ</th><th scope="col">人の電話代行</th><th scope="col" class="us">おまかせ受電AI</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">最初に出るのは</th><td data-l="電話代行">オペレーター</td><td data-l="受電AI" class="us">AI。大切な用件はスタッフへ</td></tr>
+            <tr><th scope="row">受けられる時間</th><td data-l="電話代行">契約した時間帯</td><td data-l="受電AI" class="us">24時間。予約は仮受付</td></tr>
+            <tr><th scope="row">用件の分け方</th><td data-l="電話代行">代行会社の手順に沿う</td><td data-l="受電AI" class="us">お店が用件ごとに決める</td></tr>
+            <tr><th scope="row">大切な電話</th><td data-l="電話代行">伝言か取り次ぎ</td><td data-l="受電AI" class="us">スタッフへ転送・通知</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="say">人が話すこと自体に価値があるお店は、人の電話代行が向いています。電話の多くが営業電話や定型の質問なら、AIで足ります。</p>
+    </div>
+    <div class="s-foot"><span class="bm"><i>受</i>OMAKASE JUDEN AI</span><span>一般的な電話代行サービスとの比べ方です</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>これまでの手としては、留守番電話と、人の電話代行の2つです。留守電は、相手がメッセージを残してくれなければそれまでです。電話代行はオペレーターが出てくれますが、受けられるのは契約した時間帯で、用件の分け方は代行会社の手順に沿います。</p>
+    <p>ここは、正直にお話しさせてください。常連さんとの会話そのものがお店の価値になっているなら、人の電話代行のほうが向いています。逆に、かかってくる電話の多くが営業電話や、営業時間・道順のような決まった質問なら、AIで足りるはずです。どちらが合うかは、お店によって違うでしょう。</p>
+  </aside>
+  <div class="fc-row"><button class="fc-btn" type="button" data-fc-section="これまでのやり方（留守番電話・人の電話代行）" data-fc-claim="留守番電話は、かけた人が用件を残さなければ、何の電話だったか分からない／人の電話代行は、契約した時間帯にオペレーターが受け、代行会社の手順に沿って用件を分け、大切な電話は伝言か取り次ぎになる／人が話すこと自体に価値があるお店は人の電話代行が向き、営業電話や定型の質問が多いお店は自動応答で足りる、という見方は妥当か"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="m8.5 11 1.8 1.8L14 9"/></svg>ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button></div>
+</section>
+
+<!-- 05 1本の電話の道筋 -->
+<section class="slide-wrap" id="s05" aria-labelledby="t05">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">05 / 11</span><span class="s-kicker">1本の電話が流れる道筋</span></div>
+    <div class="s-body">
+      <h2 id="t05">まずAIが用件を聞き、<br>4つの道に分けます。</h2>
+      <div class="flow" role="img" aria-label="着信するとAIが用件を聞き、予約や大切な用件は人へ、定型の質問や営業電話はAIが案内して完結、人が出られないときはLINEに通知してスタッフが折り返し、営業時間外の予約はAIが仮受付してスタッフが確定する流れ">
+        <div class="start">
+          <div class="node in">着信</div>
+          <div class="down">↓</div>
+          <div class="node ai">AIが用件を聞く</div>
+        </div>
+        <ul class="lanes">
+          <li class="lane"><span class="cond">予約・大切な用件</span><span class="path"><span class="node hu">人へつなぐ</span><span class="arr">→</span><span class="node hu">スタッフが対応</span></span></li>
+          <li class="lane"><span class="cond">定型の質問・営業電話</span><span class="path"><span class="node ai">AIが案内</span><span class="arr">→</span><span class="node done">その場で完結</span></span></li>
+          <li class="lane"><span class="cond">人が出られないとき</span><span class="path"><span class="node ai">LINEに通知</span><span class="arr">→</span><span class="node hu">スタッフが折り返す</span></span></li>
+          <li class="lane"><span class="cond">営業時間外の予約</span><span class="path"><span class="node ai">AIが仮受付</span><span class="arr">→</span><span class="node hu">スタッフが確定</span></span></li>
+        </ul>
+      </div>
+      <div class="legend" aria-hidden="true"><span><i class="l-ai"></i>AIがやること</span><span><i class="l-hu"></i>人がやること</span><span><i class="l-done"></i>AIで完結</span></div>
+    </div>
+    <div class="s-foot"><span class="bm"><i>受</i>OMAKASE JUDEN AI</span><span>どの電話を人に残すかは、お店が電話の種類ごとに決めます</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>電話が1本かかってきたときの流れです。まずAIが出て、ご用件を伺います。予約や大切な用件なら、人へつなぐ設定です。営業時間や道順のような質問、それから営業電話は、AIが案内してその場で終わります。</p>
+    <p>スタッフが出られないときは、AIが用件を聞いて、スタッフのLINEへ知らせます。閉店後の予約の希望は、AIが仮受付として内容を残しておき、営業が始まってからスタッフが確認して確定する作りです。予約をAIが勝手に確定することはありません。</p>
+    <p>人をなくすのではなく、人が必要な電話に戻すのが、この仕組みの狙いです。</p>
+  </aside>
+</section>
+
+<!-- 06 お店が決める表 -->
+<section class="slide-wrap" id="s06" aria-labelledby="t06">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">06 / 11</span><span class="s-kicker">設定のイメージ</span></div>
+    <div class="s-body">
+      <h2 id="t06">お店が決めるのは、<br>この1枚の表です。</h2>
+      <div class="g2w">
+        <div>
+          <div class="ui" role="img" aria-label="受電ルールの設定画面のイメージ。①業種は美容室、②用件ごとの受け手（AIか人か）、③次の処理を並べた表">
+            <div class="ui-top"><span>OMAKASE JUDEN AI</span><span>画面イメージ</span></div>
+            <div class="ui-nav" aria-hidden="true"><span class="on">受電ルール</span><span>お店の情報</span><span>通知先</span><span>通話の記録</span></div>
+            <div class="ui-head"><b>受電ルール</b><span><i class="mk">①</i>業種：美容室</span></div>
+            <ul class="ui-rows">
+              <li class="h"><span>用件</span><span><i class="mk">②</i>受け手</span><span><i class="mk">③</i>次の処理</span></li>
+              <li><span class="what">予約の希望</span><span class="who hu">人</span><span>出られないときはLINEへ通知</span></li>
+              <li><span class="what">営業時間・道順・料金</span><span class="who ai">AI</span><span>お店の情報で案内</span></li>
+              <li><span class="what">営業電話</span><span class="who ai">AI</span><span>スタッフにはつながない</span></li>
+              <li><span class="what">用件が分からない電話</span><span class="who hu">人</span><span>迷ったら人へ</span></li>
+              <li><span class="what">営業時間外の予約</span><span class="who ai">AI</span><span>仮受付。確定はスタッフ</span></li>
+            </ul>
+          </div>
+          <p class="img-note">※ 画面はイメージです。実際の画面とは異なります。</p>
+        </div>
+        <div>
+          <ol class="how3">
+            <li><i class="mk">①</i><b>業種のひな形を選ぶ</b><span>話す文章をゼロから書かなくてよい</span></li>
+            <li><i class="mk">②</i><b>AIか人かを決める</b><span>用件ごとに受け手を選ぶ</span></li>
+            <li><i class="mk">③</i><b>次の処理を決める</b><span>完結・転送・通知して折り返し</span></li>
+          </ol>
+          <div class="sc">
+            <h3>AI受電担当「ひより」の10秒デモ</h3>
+            <p>顔写真を押すと、お店の方がAIに受電ルールを教えている画面が動きます。</p>
+            <a href="https://writeup-inc.github.io/saas/ai-reception-hiyori/" target="_blank" rel="noopener">ひよりのページを開く ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="s-foot"><span class="bm"><i>受</i>OMAKASE JUDEN AI</span><span>営業時間・料金・道順は、スプレッドシートに登録したお店の情報からAIが答えます</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>実際にお店が触るのは、この表です。設定は3つだけで、①業種のひな形を選び、②用件ごとにAIか人かを決め、③そのあとの処理を選びます。AIに話させる文章を、ゼロから書く必要はありません。</p>
+    <p>美容室なら、予約の希望は人、営業時間や道順はAI、営業電話はAIが受けてスタッフにはつながない、という分け方になります。用件が分からない電話を「迷ったら人へ」にしておけば、安心でしょう。</p>
+    <p>ここで、AI受電担当「ひより」のページを開きます。顔写真を押すと、お店の方がAIに受電ルールを教えている画面が10秒ほど動きます。このページは、考え方をつかんでいただくためのデモです。実際の設定画面とは違います。</p>
+    <p class="stage">【演出】ひよりのページを別タブで開き、顔写真を押して10秒デモを再生。電話のあとに届くショートメッセージの例も、同じページで見せられる</p>
+  </aside>
+</section>
+
+<!-- 07 書き出し -->
+<section class="slide-wrap" id="s07" aria-labelledby="t07">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">07 / 11</span><span class="s-kicker">今日の順<span class="stp" aria-label="4つの順のうち01と02"><span class="on">01</span><span class="on">02</span><span>03</span><span>04</span></span></span></div>
+    <div class="s-body">
+      <h2 id="t07">用件を書き出して、<br>受け手を決めていきます。</h2>
+      <table class="tbl stack sheet">
+        <thead><tr><th scope="col">用件（例）</th><th scope="col">いま困っていること</th><th scope="col">受け手</th><th scope="col">次の処理</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">予約・予約変更</th><td data-l="困りごと" class="blank"><span class="line"></span></td><td data-l="受け手"><span class="opts"><span>AI</span><span>人</span></span></td><td data-l="次の処理"><span class="opts"><span>完結</span><span>転送</span><span>通知して折り返し</span></span></td></tr>
+          <tr class="fixed"><th scope="row">営業時間外の予約の希望<span class="lock">選ぶ欄ではありません</span></th><td data-l="困りごと" class="blank">―</td><td data-l="受け手"><span class="fx">AI</span><span class="fxn">（決まっています）</span></td><td data-l="次の処理"><span class="fx">仮受付 → 確定はスタッフ</span><span class="fxn">（決まっています）</span></td></tr>
+          <tr><th scope="row">営業時間・道順・料金</th><td data-l="困りごと" class="blank"><span class="line"></span></td><td data-l="受け手"><span class="opts"><span>AI</span><span>人</span></span></td><td data-l="次の処理"><span class="opts"><span>完結</span><span>転送</span><span>通知して折り返し</span></span></td></tr>
+          <tr><th scope="row">営業電話</th><td data-l="困りごと" class="blank"><span class="line"></span></td><td data-l="受け手"><span class="opts"><span>AI</span><span>人</span></span></td><td data-l="次の処理"><span class="opts"><span>完結</span><span>転送</span><span>通知して折り返し</span></span></td></tr>
+          <tr><th scope="row">取引先・業者からの連絡</th><td data-l="困りごと" class="blank"><span class="line"></span></td><td data-l="受け手"><span class="opts"><span>AI</span><span>人</span></span></td><td data-l="次の処理"><span class="opts"><span>完結</span><span>転送</span><span>通知して折り返し</span></span></td></tr>
+          <tr><th scope="row">自店だけの電話</th><td data-l="困りごと" class="blank"><span class="line"></span></td><td data-l="受け手"><span class="opts"><span>AI</span><span>人</span></span></td><td data-l="次の処理"><span class="opts"><span>完結</span><span>転送</span><span>通知して折り返し</span></span></td></tr>
+        </tbody>
+      </table>
+      <p class="say">お手元のメモに、同じ表を書いてみてください。迷う電話は人に残す、それで構いません。</p>
+    </div>
+    <div class="s-foot"><span class="bm"><i>受</i>OMAKASE JUDEN AI</span><span>完結＝定型の案内で終える／転送＝人へつなぐ／通知して折り返し＝内容を残して後で対応</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>ここからは、皆さんのお店の話です。この表を一緒に埋めていきましょう。左の用件は例なので、お店に合わせて足したり消したりしてください。いちばん下の「自店だけの電話」には、そのお店ならではの電話を書きます。</p>
+    <p>2行目の「営業時間外の予約の希望」だけは、最初から決まっています。AIが仮受付をして、確定はスタッフが行う作りなので、ここは選ぶ欄ではありません。</p>
+    <p>ほかの行は、一つずつ、AIか人かを選びます。迷ったら人で十分です。次の処理は、定型の案内で終える「完結」、人へつなぐ「転送」、内容を残して後で対応する「通知して折り返し」の3つから選ぶ形です。最初から全部を埋めなくて大丈夫ですよ。</p>
+  </aside>
+</section>
+
+<!-- 08 向いていないお店 -->
+<section class="slide-wrap" id="s08" aria-labelledby="t08">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">08 / 11</span><span class="s-kicker">向いていないお店</span></div>
+    <div class="s-body">
+      <h2 id="t08">次のお店には、<br>いま必要ありません。</h2>
+      <div class="g2">
+        <div class="fit no"><div class="ft"><span class="pill hu">NOT FIT</span><h3>向いていないお店</h3></div>
+          <ul>
+            <li><b>電話がほとんど鳴らない</b></li>
+            <li><b>すべての電話に、店主が自分で出たい</b></li>
+            <li><b>予約の確定までAIに任せたい</b><small>確定はスタッフが行う作りのためです</small></li>
+          </ul></div>
+        <div class="fit yes"><div class="ft"><span class="pill ai">FIT</span><h3>向いているお店</h3></div>
+          <ul>
+            <li>営業中に電話が鳴ると、手が止まる</li>
+            <li>営業電話が多く、そのたびに出ている</li>
+            <li>営業時間外の予約の電話を取りこぼしている</li>
+          </ul></div>
+      </div>
+    </div>
+    <div class="s-foot"><span class="bm"><i>受</i>OMAKASE JUDEN AI</span><span>向いていないお店に、無理におすすめはしません</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>ここまで書き出してみて、左に当てはまったお店には、いまは必要ないはずです。電話がほとんど鳴らないお店、すべての電話に店主さんが自分で出たいお店、それから予約の確定までAIに任せたいお店。予約の確定は、スタッフの方が行う作りになっています。</p>
+    <p>無理におすすめはしません。右の3つのどれかに当てはまるなら、次の、番号と通知先の確認に進みましょう。</p>
+  </aside>
+</section>
+
+<!-- 09 番号と通知先 -->
+<section class="slide-wrap" id="s09" aria-labelledby="t09">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">09 / 11</span><span class="s-kicker">今日の順<span class="stp" aria-label="4つの順のうち03"><span>01</span><span>02</span><span class="on">03</span><span>04</span></span></span></div>
+    <div class="s-body">
+      <h2 id="t09">今の番号のままで使えるか、<br>通知先はどこかを確かめます。</h2>
+      <ol class="route" aria-label="電話の経路。お客様が今の番号にかけ、転送でAIが用件を聞き、通知でスタッフのLINEへ届く。転送と通知先が確認するところ">
+        <li class="rn">お客様</li>
+        <li class="ra" aria-hidden="true"><span class="rv">電話</span><span class="ar">→</span></li>
+        <li class="rn">今の番号</li>
+        <li class="ra"><span class="ck">CHECK</span><span class="rv">転送</span><span class="ar" aria-hidden="true">→</span></li>
+        <li class="rn ai">AIが用件を聞く</li>
+        <li class="ra" aria-hidden="true"><span class="rv">通知</span><span class="ar">→</span></li>
+        <li class="rn chk"><span class="ck">CHECK</span>スタッフのLINE</li>
+      </ol>
+      <div class="rchk">
+        <div><div class="rh"><span class="ck">CHECK</span><h3>転送</h3></div><p>今の番号から転送して使う形を想定しています。回線の種類や転送の条件で変わるため、導入前の確認が必要です。</p></div>
+        <div><div class="rh"><span class="ck">CHECK</span><h3>通知先</h3></div><p>AIが聞き取った内容を、どこへ知らせるか。送り先は、導入前にお店と決めます。</p></div>
+      </div>
+      <p class="say">この場で分からないことは、持ち帰って確認します。</p>
+    </div>
+    <div class="s-foot"><span class="bm"><i>受</i>OMAKASE JUDEN AI</span><span>転送・通知・折り返しの方法は、お店の電話環境と合わせて確認します</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>次は、仕組みの側の確認です。いまお使いの電話番号から転送して使う形を想定していますが、回線の種類や転送の条件によって変わります。この場で分からなければ、持ち帰って確認しますのでご安心ください。</p>
+    <p>もう一つは、出られなかった電話をどこへ知らせるか。通知先はLINEを想定していますが、誰のLINEに送るかはお店ごとに違います。予約やクレームを誰が受け取るか、仮予約を誰が確定するかも、ここで決めておきましょう。</p>
+    <p>なお、開始までの日数は、まだ決まっていません。</p>
+  </aside>
+</section>
+
+<!-- 10 無料モニター -->
+<section class="slide-wrap" id="s10" aria-labelledby="t10">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">10 / 11</span><span class="s-kicker">今日の順<span class="stp" aria-label="4つの順のうち04"><span>01</span><span>02</span><span>03</span><span class="on">04</span></span></span></div>
+    <div class="s-body">
+      <h2 id="t10">いまは、先着30社ほどの<br>無料モニターを募集中です。</h2>
+      <div class="g2">
+        <div class="pcard">
+          <span class="label">モニター期間中の料金（先着30社ほど）</span>
+          <dl class="ptier">
+            <div><dt>初期費用</dt><dd>0円</dd></div>
+            <div><dt>月額</dt><dd>0円</dd></div>
+          </dl>
+          <ul class="prows">
+            <li><span>通話料・期間・対象範囲</span><b>お申込み時にご案内</b></li>
+            <li><span>正式な料金</span><b>調整中</b></li>
+          </ul>
+        </div>
+        <div>
+          <h3>無料でお願いする理由</h3>
+          <ol class="why">
+            <li><b>本当の事例をつくりたい</b><span>導入後に、短いインタビューをお願いします</span></li>
+            <li><b>使いにくさを教えてほしい</b><span>分かりにくいところや欲しい機能を、遠慮なく</span></li>
+            <li><b>仲間を増やしたい</b><span>電話に困っているお店をご存じなら、ご紹介を</span></li>
+          </ol>
+          <p class="case-line">事例は、これから皆さんと一緒につくります。</p>
+        </div>
+      </div>
+    </div>
+    <div class="s-foot"><span class="bm"><i>受</i>OMAKASE JUDEN AI</span><span>一緒に育ててくださるお店を募集しています</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>料金です。いまは先着30社ほどの無料モニターを募集していて、モニター期間中は初期費用も月額も0円になります。通話料や期間、対象範囲などの条件は、お申込みのときにご案内します。正式な料金は、まだ調整中です。決まっていない数字を口にすると、あとで話が食い違うので、この場では申し上げられません。</p>
+    <p>それから、正直にお話しします。社名や数字を出してご紹介できる導入事例は、まだありません。本当の事例をつくるために、無料モニターを募集している段階です。</p>
+    <p>無料でお願いする代わりに、3つお願いがあります。使ってみた感想を、短いインタビューで聞かせてください。よかった点だけでなく、合わなかった点もうかがいたいのです。使いにくいところも、遠慮なく教えていただければと思います。電話に困っているお店をご存じなら、ご紹介いただけるとうれしいです。</p>
+  </aside>
+</section>
+
+<!-- 11 次の一歩 -->
+<section class="slide-wrap" id="s11" aria-labelledby="t11">
+  <div class="slide dark disc">
+    <div class="s-top"><span class="s-no">11 / 11</span><span class="s-kicker">次の一歩</span></div>
+    <div class="s-body">
+      <h2 id="t11">まず、いちばん困っている電話を<br><em>一つ</em>選んでください。</h2>
+      <ol class="next3">
+        <li><b>書き出した表で、その電話に印を付ける</b><span>全部をAIに任せる必要はありません</span></li>
+        <li><b>無料モニターを申し込む</b><span>お問い合わせフォームに「おまかせ受電AI 無料モニター」と書いて送る</span></li>
+        <li><b>条件を見て、試すかを決める</b><span>見送るという結論も含めて</span></li>
+      </ol>
+      <div class="cta-row">
+        <a class="btn" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">無料モニターを申し込む</a>
+        <div class="cta-url">
+          <a class="u" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">writeup.jp/contact</a>
+          <p>お問い合わせ内容に「おまかせ受電AI 無料モニター」とお書きください。</p>
+        </div>
+      </div>
+    </div>
+    <div class="s-foot"><span class="bm"><i>受</i>OMAKASE JUDEN AI</span><span>株式会社ライトアップ（東証グロース 証券コード6580）</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>最後に、次の一歩です。今日書き出した表の中から、いちばん困っている電話を一つだけ選んで、印を付けてください。営業時間外の問い合わせだけ、営業電話だけ、定型の質問だけ、という始め方で構いません。</p>
+    <p>試してみたいと思われたら、画面のアドレスからライトアップのお問い合わせフォームを開き、「おまかせ受電AI 無料モニター」と書いて送ってください。条件をご案内しますので、それを見てから決めていただければ大丈夫です。本日はありがとうございました。</p>
+  </aside>
+</section>
+
+</main>
+
+<footer class="deck-foot">
+  <p>提供：株式会社ライトアップ（東証グロース 証券コード6580）</p>
+  <p>写真：Pixabay（binmassam／Michelle-Maria／20926038）</p>
+  <a href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">お問い合わせ</a><a href="../">資料インデックス</a><a href="https://writeup-inc.github.io/saas/omakase-juden/" target="_blank" rel="noopener">サービスページ</a><a href="https://www.writeup.jp/company/" target="_blank" rel="noopener">運営会社</a><a href="https://www.writeup.jp/privacy/" target="_blank" rel="noopener">個人情報保護方針</a>
+</footer>
+
+<nav class="bar" aria-label="スライド操作">
+  <div class="bar-in">
+    <div class="bar-grp">
+      <button type="button" id="prev" aria-label="前のスライド">←</button>
+      <span class="count" id="count" aria-live="polite">1 / 11</span>
+      <button type="button" id="next" aria-label="次のスライド">→</button>
+      <span class="hint">←→キー・クリックで送る／Nでノート／Pで投影</span>
+    </div>
+    <div class="bar-grp">
+      <button type="button" id="present" aria-label="投影モード（Pキー）">投影</button>
+      <button type="button" id="notes" aria-pressed="true">ノートを隠す</button>
+      <button type="button" id="print">印刷</button>
+    </div>
+  </div>
+</nav>
+
+<script>
+(function () {
+  var wraps = Array.prototype.slice.call(document.querySelectorAll('.slide-wrap'));
+  var count = document.getElementById('count');
+  var cur = 0;
+  var present = false;
+  function nearest() {
+    var best = 0, bestD = Infinity;
+    wraps.forEach(function (w, i) {
+      var d = Math.abs(w.getBoundingClientRect().top - 12);
+      if (d < bestD) { bestD = d; best = i; }
+    });
+    return best;
+  }
+  function show() { count.textContent = (cur + 1) + ' / ' + wraps.length; }
+  function go(i) {
+    cur = Math.max(0, Math.min(wraps.length - 1, i));
+    wraps[cur].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    show();
+  }
+  window.addEventListener('scroll', function () { if (present) return; cur = nearest(); show(); }, { passive: true });
+  document.getElementById('prev').addEventListener('click', function () { go(nearest() - 1); });
+  document.getElementById('next').addEventListener('click', function () { go(nearest() + 1); });
+
+  /* 投影モード */
+  function pshow(i) {
+    cur = Math.max(0, Math.min(wraps.length - 1, i));
+    wraps.forEach(function (w, j) { w.classList.toggle('cur', j === cur); });
+    show();
+  }
+  function enterPresent() {
+    if (present) return;
+    present = true;
+    var i = nearest();
+    document.body.classList.add('present');
+    pshow(i);
+    var el = document.documentElement;
+    if (el.requestFullscreen && !document.fullscreenElement) {
+      try { var r = el.requestFullscreen(); if (r && r.catch) r.catch(function () {}); } catch (e) {}
+    }
+  }
+  function exitPresent() {
+    if (!present) return;
+    present = false;
+    document.body.classList.remove('present');
+    wraps.forEach(function (w) { w.classList.remove('cur'); });
+    if (document.fullscreenElement && document.exitFullscreen) {
+      try { var r = document.exitFullscreen(); if (r && r.catch) r.catch(function () {}); } catch (e) {}
+    }
+    var keep = cur;
+    wraps[keep].scrollIntoView({ behavior: 'instant', block: 'start' });
+    cur = keep; show();
+  }
+  document.addEventListener('fullscreenchange', function () { if (!document.fullscreenElement && present) exitPresent(); });
+  document.getElementById('present').addEventListener('click', enterPresent);
+
+  wraps.forEach(function (w, i) {
+    w.querySelector('.slide').addEventListener('click', function (e) {
+      if (e.target.closest('a,button')) return;
+      if (window.getSelection && String(window.getSelection())) return;
+      if (present) { pshow(cur + 1); return; }
+      go(i + 1);
+    });
+  });
+  var nb = document.getElementById('notes');
+  function setNotes(hide) {
+    document.body.classList.toggle('hide-notes', hide);
+    nb.textContent = hide ? 'ノートを表示' : 'ノートを隠す';
+    nb.setAttribute('aria-pressed', hide ? 'false' : 'true');
+    try { localStorage.setItem('omakase-a03-hide-notes', hide ? '1' : '0'); } catch (e) {}
+  }
+  try { if (localStorage.getItem('omakase-a03-hide-notes') === '1') setNotes(true); } catch (e) {}
+  nb.addEventListener('click', function () { setNotes(!document.body.classList.contains('hide-notes')); });
+  document.getElementById('print').addEventListener('click', function () { window.print(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.target.closest && e.target.closest('input,textarea,select')) return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    var k = e.key;
+    if (present) {
+      if (k === 'ArrowRight' || k === 'PageDown' || k === ' ' || k === 'Enter') { e.preventDefault(); pshow(cur + 1); }
+      else if (k === 'ArrowLeft' || k === 'PageUp' || k === 'Backspace') { e.preventDefault(); pshow(cur - 1); }
+      else if (k === 'Home') { e.preventDefault(); pshow(0); }
+      else if (k === 'End') { e.preventDefault(); pshow(wraps.length - 1); }
+      else if (k === 'Escape' || k === 'p' || k === 'P') { e.preventDefault(); exitPresent(); }
+      return;
+    }
+    if (k === 'ArrowRight' || k === 'PageDown') { e.preventDefault(); go(nearest() + 1); }
+    else if (k === 'ArrowLeft' || k === 'PageUp') { e.preventDefault(); go(nearest() - 1); }
+    else if (k === 'Home') { e.preventDefault(); go(0); }
+    else if (k === 'End') { e.preventDefault(); go(wraps.length - 1); }
+    else if (k === 'n' || k === 'N') { setNotes(!document.body.classList.contains('hide-notes')); }
+    else if (k === 'p' || k === 'P') { e.preventDefault(); enterPresent(); }
+  });
+  show();
+})();
+</script>
+<script>
+document.addEventListener('click', function (e) {
+  var b = e.target.closest && e.target.closest('.fc-btn'); if (!b) return;
+  var l = document.querySelector('link[rel=canonical]'); var url = l ? l.href : location.href;
+  var p = '次の資料の記載が事実として正しいか、第三者の立場で確認してください。\n\n【対象ページ】' + url +
+    '\n【セクション】' + b.dataset.fcSection + '\n【記載内容】\n' + b.dataset.fcClaim.split('／').join('\n') +
+    '\n\n【確認してほしいこと】\n- 記載は一般的な事実・相場・公的情報と照らして正しいか\n- 誤り・誇張・古い情報があれば指摘する\n- 反対の見方や、読み手が注意すべき点\n- 確認できないことは「確認できない」と書き、推測で補わない';
+  window.open('https://chatgpt.com/?q=' + encodeURIComponent(p), '_blank', 'noopener,noreferrer');
+  if (navigator.clipboard) navigator.clipboard.writeText(p).catch(function () {});
+});
+</script>
+</body>
+</html>

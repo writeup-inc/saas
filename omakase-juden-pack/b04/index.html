@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>おまかせ受電AI｜パートナー向け説明ノート（社内限）</title>
+<link rel="canonical" href="https://writeup-inc.github.io/saas/omakase-juden-pack/b04/">
+<meta name="description" content="社内限定。おまかせ受電AIをOEMパートナー候補へ説明するとき、OEMパートナーの営業が自社の店舗客へ説明するときの言い回し、価格の伝え方、切り返し、言ってはいけない言い方、未決事項をまとめたノートです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+/* lp-base.css — 日本語LP／HTML成果物の初期CSS
+ * 「改行制御」「最小文字サイズ」「固定CTAの逃げ」の3ブロックは消さないこと。 */
+
+/* ── 改行制御 ───────────────────────────────────────────── */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] {
+    word-break: normal;
+  }
+}
+.nobr { white-space: nowrap; }
+
+/* ── 最小文字サイズ ─────────────────────────────────────── */
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+
+/* ── ファーストビューの見出し ───────────────────────────── */
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+
+/* ── 固定CTAの逃げ ──────────────────────────────────────── */
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+
+/* ── 横はみ出しの予防 ───────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+
+/* ── コンテンツ幅 ───────────────────────────────────────── */
+:root { --lp-max: 1200px; }
+
+/* ===== トークン（B-01と同じ紺系） ===== */
+:root {
+  --ink: #111111;
+  --ink-2: #4f5357;
+  --mute: #666a6f;
+  --line: #d9d9d9;
+  --line-2: #efefef;
+  --bg: #ffffff;
+  --bg-2: #f3f6fa;
+  --paper: #f7f7f7;
+  --card: #ffffff;
+  --navy: #0b2c5c;
+  --navy-soft: #e9eef2;
+  --navy-mid: #b9c6da;
+  --on-navy: #ffffff;
+  --on-navy-2: #c9d4e6;
+  --accent: #0b2c5c;
+  --accent-soft: #e9eef2;
+  --ng: #c8102e;
+  --ng-soft: #fdf0f2;
+  --hold: #8a5a00;
+  --hold-l: #fff4d6;
+  --shadow: 0 1px 2px rgba(11,44,92,.06), 0 8px 28px rgba(11,44,92,.07);
+  --radius: 12px;
+  --ff-head: "Zen Kaku Gothic New", "Noto Sans JP", "Hiragino Sans", system-ui, sans-serif;
+  --ff-body: "Noto Sans JP", "Hiragino Sans", system-ui, sans-serif;
+  --ff-en: "Outfit", "Zen Kaku Gothic New", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #eef1f7; --ink-2: #c9d0de; --mute: #a3acbf; --line: #2c3650; --line-2: #222b40;
+    --bg: #0c1322; --bg-2: #121b2e; --paper: #121b2e; --card: #162038;
+    --navy: #0a1a36; --navy-soft: #1a2a48; --navy-mid: #3d5580; --on-navy-2: #b3c0d8;
+    --accent: #a9c2ee; --accent-soft: #1a2a48;
+    --ng: #ff8a80; --ng-soft: #3a1b1f;
+    --hold: #ffd27a; --hold-l: #3a2c0a;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"] {
+  --ink: #eef1f7; --ink-2: #c9d0de; --mute: #a3acbf; --line: #2c3650; --line-2: #222b40;
+  --bg: #0c1322; --bg-2: #121b2e; --paper: #121b2e; --card: #162038;
+  --navy: #0a1a36; --navy-soft: #1a2a48; --navy-mid: #3d5580; --on-navy-2: #b3c0d8;
+  --accent: #a9c2ee; --accent-soft: #1a2a48;
+  --ng: #ff8a80; --ng-soft: #3a1b1f;
+  --hold: #ffd27a; --hold-l: #3a2c0a;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.35);
+}
+
+/* ===== 基本 ===== */
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 76px; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--ff-body);
+  -webkit-font-smoothing: antialiased; font-feature-settings: "palt";
+  font-size: 16.5px;
+}
+h1, h2, h3 { font-family: var(--ff-head); }
+p, li, dd, td { word-break: auto-phrase; text-wrap: pretty; }
+a { color: inherit; }
+p { margin: 0 0 1em; }
+.num { font-family: var(--ff-en); font-feature-settings: "tnum"; letter-spacing: .01em; }
+.wrap { max-width: var(--lp-max); margin: 0 auto; padding: 0 24px; }
+@media (max-width: 600px) { .wrap { padding: 0 16px; } }
+
+/* ===== 社内限の帯（最上部） ===== */
+.confidential {
+  background: #fdf0f2; color: #c8102e; border-bottom: 2px solid #c8102e;
+  font-size: 15px; font-weight: 700; line-height: 1.6; text-align: center;
+  padding: 10px 16px; letter-spacing: .02em;
+}
+.confidential .ib { display: inline-block; }
+
+/* ===== ヘッダー ===== */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: saturate(1.4) blur(10px); -webkit-backdrop-filter: saturate(1.4) blur(10px);
+  border-bottom: 1px solid var(--line-2);
+}
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.brand svg { width: 30px; height: 30px; flex: none; color: var(--accent); }
+.brand-name { font-family: var(--ff-head); font-weight: 900; font-size: 1.05rem; letter-spacing: .04em; white-space: nowrap; }
+.brand-sub { display: block; font: 700 13px/1 var(--ff-en); letter-spacing: .1em; color: var(--mute); margin-top: 4px; white-space: nowrap; }
+.pill-ng {
+  flex: none; font-size: 13px; font-weight: 700; color: #c8102e; background: #fdf0f2;
+  border: 1.5px solid #c8102e; border-radius: 999px; padding: 4px 12px; white-space: nowrap;
+}
+
+/* ===== レイアウト：左に目次、右にノート ===== */
+.layout { display: grid; grid-template-columns: 220px minmax(0, 780px); grid-template-areas: "toc head" "toc main"; column-gap: 56px; justify-content: center; padding-top: 48px; }
+.toc { grid-area: toc; } .doc-head { grid-area: head; } .layout > main { grid-area: main; min-width: 0; }
+@media (max-width: 1099px) { .layout { grid-template-columns: minmax(0, 780px); grid-template-areas: "head" "toc" "main"; column-gap: 0; padding-top: 32px; } }
+.toc { position: sticky; top: 84px; align-self: start; max-height: calc(100vh - 100px); overflow: auto; }
+.toc > summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  min-height: 52px; padding: 0 18px; cursor: pointer; list-style: none;
+  font-family: var(--ff-head); font-weight: 700; font-size: 1rem; color: var(--ink);
+}
+.toc > summary::-webkit-details-marker { display: none; }
+.toc > summary::after { content: ""; width: 9px; height: 9px; border-right: 2px solid var(--accent); border-bottom: 2px solid var(--accent); transform: rotate(45deg); margin-top: -4px; flex: none; transition: transform .2s; }
+.toc[open] > summary::after { transform: rotate(-135deg); margin-top: 4px; }
+.toc-group { font-size: 13px; font-weight: 700; letter-spacing: .04em; color: var(--mute); margin: 18px 0 4px; line-height: 1.5; }
+.toc-group:first-of-type { margin-top: 0; }
+.toc ol { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); }
+.toc a {
+  display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 4px 0 4px 14px; margin-left: -2px;
+  border-left: 2px solid transparent; text-decoration: none; font-size: .9rem; color: var(--ink-2); line-height: 1.4;
+}
+.toc a:hover { color: var(--accent); border-left-color: var(--accent); }
+.toc a b { font: 800 13px/1 var(--ff-en); color: var(--accent); min-width: 20px; }
+@media (min-width: 1100px) {
+  .js .toc > summary { display: none; }
+}
+@media (max-width: 1099px) {
+  .toc { position: static; max-height: none; overflow: visible; margin: 28px 0 8px; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 0; }
+  .toc-body { padding: 4px 18px 12px; border-top: 1px solid var(--line); }
+  .toc-group, .toc-group:first-of-type { margin-top: 14px; }
+  .toc ol { border-left: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+  .toc a { padding-left: 0; margin-left: 0; border-left: 0; border-bottom: 1px dashed var(--line); }
+}
+@media (max-width: 520px) { .toc ol { grid-template-columns: 1fr; } }
+
+/* ===== 電話の振り分け（02冒頭の図） ===== */
+.flow { margin: 4px 0 30px; padding: 22px 20px 18px; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); }
+.flow-title { margin: 0 0 16px; font-family: var(--ff-head); font-weight: 700; font-size: 1rem; color: var(--ink); text-align: center; }
+.flow-trunk { display: flex; flex-direction: column; align-items: center; }
+.flow-node { min-width: min(240px, 100%); padding: 10px 18px; border-radius: 10px; text-align: center; font-weight: 700; line-height: 1.5; background: var(--card); border: 1.5px solid var(--navy-mid); color: var(--ink); }
+.flow-node.ai { background: #0b2c5c; border-color: #0b2c5c; color: #fff; }
+.flow-down { position: relative; width: 2px; height: 26px; background: var(--navy-mid); margin: 0 auto 6px; }
+.flow-down::after { content: ""; position: absolute; left: 50%; bottom: -6px; transform: translateX(-50%); border: 6px solid transparent; border-top-color: var(--navy-mid); border-bottom: 0; }
+.flow-branches { list-style: none; margin: 0; padding: 26px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; position: relative; }
+.flow-branches::before { content: ""; position: absolute; top: 0; left: calc(100% / 6); right: calc(100% / 6); height: 2px; background: var(--navy-mid); }
+.flow-branches > li { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 12px 12px; display: flex; flex-direction: column; align-items: stretch; gap: 6px; text-align: center; }
+.flow-branches > li::before { content: ""; position: absolute; top: -26px; left: 50%; width: 2px; height: 26px; background: var(--navy-mid); transform: translateX(-50%); }
+.flow-cond { font-size: .88rem; font-weight: 700; color: var(--mute); line-height: 1.5; }
+.flow-step { font-weight: 700; line-height: 1.5; color: var(--ink); padding: 6px 8px; border-radius: 8px; background: var(--accent-soft); }
+.flow-step.staff { background: transparent; border: 1.5px solid var(--accent); color: var(--accent); }
+.flow-to { display: block; height: 16px; position: relative; }
+.flow-to::after { content: ""; position: absolute; left: 50%; top: 3px; transform: translateX(-50%); border: 6px solid transparent; border-top-color: var(--navy-mid); border-bottom: 0; }
+.flow-note { margin: 14px 0 0; font-size: .9rem; color: var(--ink-2); text-align: center; }
+.flow-note b { color: var(--ink); }
+.flow-split-label { display: none; margin: 0 0 8px; font-size: .88rem; font-weight: 700; color: var(--mute); text-align: center; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .flow-node.ai { background: #1d3a6b; border-color: #3d5580; } }
+:root[data-theme="dark"] .flow-node.ai { background: #1d3a6b; border-color: #3d5580; }
+@media (max-width: 640px) {
+  .flow { padding: 18px 14px 16px; }
+  .flow-branches { grid-template-columns: 1fr; padding-top: 0; gap: 10px; }
+  .flow-branches::before, .flow-branches > li::before { display: none; }
+  .flow-branches > li { text-align: left; }
+  .flow-to { height: 14px; }
+  .flow-to::after { left: 18px; transform: none; }
+  .flow-split-label { display: block; }
+}
+
+/* ===== ノート本体 ===== */
+.doc-head { padding: 0 0 36px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font: 700 13px/1.4 var(--ff-en); letter-spacing: .14em; color: var(--accent);
+  margin: 0 0 14px;
+}
+.eyebrow::before { content: ""; width: 22px; height: 2px; background: currentColor; flex: none; }
+.doc-head h1 { margin: 0 0 18px; font-weight: 900; letter-spacing: .01em; font-size: clamp(1.55rem, 4.2vw, 2.6rem); }
+.doc-meta { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: .88rem; color: var(--mute); margin: 0 0 22px; }
+.doc-intro { color: var(--ink-2); font-size: 1.02rem; }
+
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: var(--radius); margin: 26px 0 0; overflow: hidden; background: var(--card); }
+.fact { padding: 16px 16px 14px; border-right: 1px solid var(--line); }
+.fact:last-child { border-right: 0; }
+.fact span { display: block; font-size: .84rem; color: var(--mute); line-height: 1.5; }
+.fact b { word-break: auto-phrase; display: block; margin-top: 4px; font-family: var(--ff-head); font-size: 1.15rem; line-height: 1.35; font-weight: 900; color: var(--accent); }
+@media (max-width: 900px) {
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fact:nth-child(2) { border-right: 0; }
+  .fact:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+}
+@media (max-width: 520px) {
+  .facts { grid-template-columns: 1fr; }
+  .fact, .fact:nth-child(2) { border-right: 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding: 12px 16px; }
+  .fact:last-child { border-bottom: 0; }
+  .fact span { flex: none; }
+  .fact b { margin-top: 0; text-align: right; font-size: 1.05rem; }
+}
+.facts-note { margin: 10px 0 0; color: var(--mute); font-size: .86rem; }
+
+main section { padding: 56px 0 8px; border-bottom: 1px solid var(--line); }
+main section:last-of-type { border-bottom: 0; }
+main h2 { margin: 0 0 14px; font-weight: 900; letter-spacing: .01em; font-size: clamp(1.3rem, 2.8vw, 1.75rem); }
+main h3 { margin: 34px 0 10px; font-size: 1.12rem; line-height: 1.5; font-weight: 700; }
+.sec-lead { color: var(--ink-2); margin-bottom: 26px; }
+.muted { color: var(--mute); font-size: .9rem; }
+
+.tbd {
+  display: inline-block; font-weight: 700; color: var(--hold);
+  background: var(--hold-l); border-radius: 4px; padding: 0 6px; font-size: max(13px, .92em); line-height: 1.7; white-space: nowrap;
+}
+
+/* 使い方の箇条 */
+.rules { list-style: none; margin: 0; padding: 0; }
+.rules li { position: relative; padding: 12px 0 12px 26px; border-bottom: 1px dashed var(--line); color: var(--ink-2); }
+.rules li:last-child { border-bottom: 0; }
+.rules li::before { content: ""; position: absolute; left: 6px; top: 24px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.rules strong { color: var(--ink); }
+
+/* 話す言葉のボックス */
+.say {
+  position: relative; margin: 12px 0 18px; padding: 22px 22px 20px;
+  background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--navy-mid);
+  border-radius: 0 var(--radius) var(--radius) 0; box-shadow: var(--shadow);
+  font-size: 1.04rem; line-height: 1.95; color: var(--ink);
+}
+.say p:last-child { margin-bottom: 0; }
+.say-label { display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .06em; color: var(--accent); background: var(--accent-soft); border-radius: 4px; padding: 2px 8px; margin: 0 0 10px; }
+.say.to-customer { background: var(--bg-2); border-left-color: var(--navy); }
+.say.to-customer .say-label { color: #fff; background: #0b2c5c; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .say.to-customer { border-left-color: #8fa6dc; } }
+:root[data-theme="dark"] .say.to-customer { border-left-color: #8fa6dc; }
+@media (max-width: 600px) { .say { padding: 18px 16px 16px; } }
+
+/* 拍（3分版の区切り） */
+.beats { list-style: none; margin: 12px 0 18px; padding: 0; }
+.beats > li { display: grid; grid-template-columns: 84px 1fr; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.beats > li:first-child { padding-top: 4px; }
+.beats > li:last-child { border-bottom: 0; }
+.beat-t { font: 800 .9rem/1.5 var(--ff-en); color: var(--accent); padding-top: 3px; }
+.beat-t small { display: block; font-size: 13px; font-weight: 700; color: var(--mute); font-family: var(--ff-body); }
+.beat-b > strong { display: block; margin-bottom: 4px; }
+.beat-b p { margin: 0; color: var(--ink-2); }
+.beat-b .q { color: var(--ink); }
+@media (max-width: 520px) { .beats > li { grid-template-columns: 1fr; gap: 4px; } }
+
+/* 表（汎用） */
+.tbl-wrap { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--card); margin: 12px 0 18px; }
+.tbl { width: 100%; border-collapse: collapse; font-size: .94rem; }
+.tbl th, .tbl td { padding: 13px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.tbl tbody tr:last-child th, .tbl tbody tr:last-child td { border-bottom: 0; }
+.tbl thead th { font-size: .82rem; color: var(--mute); font-weight: 700; background: var(--bg-2); white-space: nowrap; }
+.tbl tbody th { font-weight: 700; }
+.tbl td { color: var(--ink-2); }
+.tbl .t-time { white-space: nowrap; font-family: var(--ff-en); font-weight: 700; color: var(--accent); }
+.tbl .slide { display: inline; font-weight: 700; color: var(--ink); }
+@media (max-width: 640px) {
+  .tbl thead { display: none; }
+  .tbl, .tbl tbody, .tbl tr, .tbl th, .tbl td { display: block; width: 100%; }
+  .tbl tr { padding: 14px 16px; border-bottom: 1px solid var(--line); }
+  .tbl tbody tr:last-child { border-bottom: 0; }
+  .tbl th, .tbl td { border: 0; padding: 3px 0; }
+  .tbl td[data-l]::before { content: attr(data-l); display: block; color: var(--mute); font-size: .82rem; font-weight: 700; margin-top: 6px; }
+}
+
+/* 切り出しカード */
+.opener { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 22px 18px; margin: 14px 0; }
+.opener h3 { margin: 0 0 4px; }
+.opener .when { color: var(--mute); font-size: .9rem; margin: 0 0 12px; }
+.opener dl { margin: 0; }
+.opener dt { font-size: .84rem; font-weight: 700; color: var(--accent); margin-top: 12px; }
+.opener dd { margin: 2px 0 0; color: var(--ink-2); }
+.opener dd.q { color: var(--ink); font-weight: 500; }
+.opener dd.warn { color: var(--ng); }
+@media (max-width: 600px) { .opener { padding: 18px 16px 14px; } }
+
+/* 価格 */
+.price-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 8px; }
+@media (max-width: 700px) { .price-2 { grid-template-columns: 1fr; } }
+.pbox { border-radius: var(--radius); padding: 22px 20px; }
+.pbox.ok { background: var(--navy); color: var(--on-navy); }
+.pbox.wait { background: var(--card); border: 1.5px dashed var(--line); }
+.pbox-t { font-size: .9rem; font-weight: 700; margin: 0 0 8px; }
+.pbox.ok .pbox-t { color: var(--on-navy-2); }
+.pbox.wait .pbox-t { color: var(--mute); }
+.pbox ul { list-style: none; margin: 0; padding: 0; }
+.pbox li { padding: 10px 0; border-bottom: 1px solid var(--line); }
+.pbox.ok li { border-bottom-color: rgba(255,255,255,.16); }
+.pbox li:last-child { border-bottom: 0; }
+.pbox li span { display: block; font-size: .86rem; color: var(--ink-2); }
+.pbox.ok li span { color: var(--on-navy-2); }
+.pbox li b { display: block; font-weight: 700; line-height: 1.6; }
+.pbox .foot { margin: 12px 0 0; font-size: .88rem; }
+.pbox.ok .foot { color: var(--on-navy-2); }
+.pbox.wait .foot { color: var(--ink-2); }
+
+/* 切り返し */
+.qa { list-style: none; margin: 8px 0 0; padding: 0; counter-reset: qa; }
+.qa > li { counter-increment: qa; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px 18px; margin: 0 0 14px; }
+.qa-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 10px; margin: 0 0 4px; }
+.qa-meta::before { content: counter(qa, decimal-leading-zero); font: 800 .95rem/1 var(--ff-en); color: var(--accent); }
+.who { font-size: 13px; font-weight: 700; border-radius: 999px; padding: 2px 10px; border: 1px solid var(--line); color: var(--ink-2); }
+.who.c { border-color: var(--navy-mid); background: var(--navy-soft); color: var(--accent); }
+.qa h3 { margin: 0 0 10px; }
+.qa .ans { margin: 0; color: var(--ink); line-height: 1.9; }
+.qa .ans2 { margin: 10px 0 0; padding: 10px 0 0; border-top: 1px dashed var(--line); color: var(--ink-2); font-size: .95rem; }
+.qa .ans2 b { color: var(--ink); }
+.qa .tbl-wrap { margin: 12px 0 10px; }
+@media (max-width: 600px) { .qa > li { padding: 18px 16px 16px; } }
+
+/* NG表 */
+.ng-list { list-style: none; margin: 12px 0 0; padding: 0; }
+.ng-list li { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin: 0 0 12px; background: var(--card); }
+.ng-list .bad, .ng-list .good { padding: 14px 16px; }
+.ng-list .bad { background: var(--ng-soft); color: var(--ink); }
+.ng-list .bad::before, .ng-list .good::before { display: block; font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+.ng-list .bad::before { content: "言わない"; color: var(--ng); }
+.ng-list .good::before { content: "こう言う"; color: var(--accent); }
+.ng-list .good { color: var(--ink-2); border-left: 1px solid var(--line); }
+@media (max-width: 600px) {
+  .ng-list li { grid-template-columns: 1fr; }
+  .ng-list .good { border-left: 0; border-top: 1px solid var(--line); }
+}
+
+/* 売らない相手・3点 */
+.stop { list-style: none; margin: 10px 0 0; padding: 0; }
+.stop li { padding: 14px 0 14px 30px; border-bottom: 1px solid var(--line); position: relative; }
+.stop li:last-child { border-bottom: 0; }
+.stop li::before { content: "×"; position: absolute; left: 4px; top: 13px; font-weight: 800; color: var(--ng); }
+.stop strong { display: block; }
+.stop span { color: var(--ink-2); font-size: .95rem; }
+.checks3 { list-style: none; margin: 10px 0 0; padding: 0; counter-reset: c3; }
+.checks3 li { counter-increment: c3; display: grid; grid-template-columns: 40px 1fr; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.checks3 li:last-child { border-bottom: 0; }
+.checks3 li::before { content: "0" counter(c3); font: 800 1.05rem/1.6 var(--ff-en); color: var(--accent); }
+.checks3 strong { display: block; }
+.checks3 p { margin: 2px 0 0; color: var(--ink-2); font-size: .95rem; }
+.checks3 .ask { color: var(--ink); }
+
+/* 流れ */
+.steps { list-style: none; margin: 12px 0 10px; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.steps li { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 12px 10px; }
+.steps b { display: block; font: 800 13px/1 var(--ff-en); letter-spacing: .1em; color: var(--accent); margin-bottom: 6px; }
+.steps strong { display: block; font-size: .96rem; line-height: 1.45; }
+.steps span { display: block; font-size: .86rem; color: var(--mute); margin-top: 4px; line-height: 1.5; }
+@media (max-width: 760px) { .steps { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 420px) { .steps { grid-template-columns: 1fr; } }
+
+/* 状態チップ */
+.st { display: inline-block; font-size: .82rem; font-weight: 700; border-radius: 999px; padding: 2px 10px; white-space: nowrap; color: var(--hold); background: var(--hold-l); }
+.st.consider { color: var(--accent); background: var(--accent-soft); }
+.st.undecided { color: var(--ink-2); background: var(--bg-2); border: 1px solid var(--line); }
+
+/* ボタン */
+.btn-row { display: flex; flex-wrap: wrap; gap: 10px 12px; margin: 18px 0 0; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; padding: 0 22px; border-radius: 8px;
+  background: #0b2c5c; color: #fff; text-decoration: none; font-weight: 700; font-size: .95rem; font-family: var(--ff-head);
+}
+.btn:hover { background: #08214a; }
+.btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+.btn-ghost:hover { background: transparent; border-color: var(--accent); color: var(--accent); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn:not(.btn-ghost) { background: #a9c2ee; color: #0a1a36; } }
+:root[data-theme="dark"] .btn:not(.btn-ghost) { background: #a9c2ee; color: #0a1a36; }
+
+/* フッター */
+footer { margin-top: 64px; background: var(--bg-2); border-top: 1px solid var(--line); padding: 40px 0 36px; font-size: .92rem; color: var(--ink-2); }
+.foot-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; }
+@media (max-width: 760px) { .foot-grid { grid-template-columns: 1fr; } }
+footer h4 { margin: 0 0 8px; font: 700 13px/1 var(--ff-en); letter-spacing: .16em; color: var(--mute); }
+footer ul { list-style: none; margin: 0; padding: 0; }
+footer li a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
+footer li a:hover { color: var(--accent); }
+.foot-warn { color: #c8102e; font-weight: 700; margin: 0 0 10px; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .foot-warn { color: #ff8a80; } }
+:root[data-theme="dark"] .foot-warn { color: #ff8a80; }
+.copyright { margin-top: 24px; font-size: 13px; color: var(--mute); }
+
+/* 03 まだ言えない条件の1行 */
+.price-1 { margin: 12px 0 10px; }
+.hold-line { margin: 4px 0 8px; padding: 12px 16px; border-radius: 10px; background: var(--hold-l); color: var(--ink); font-size: .96rem; }
+.hold-line b { color: var(--hold); }
+
+@media print {
+  .site-header, .toc { display: none; }
+  .layout { display: block; }
+  .say, .qa > li, .opener { box-shadow: none; break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<div class="confidential" role="note"><span class="ib">社内限定です。</span><span class="ib">店舗やパートナー候補へURLを送らないでください</span></div>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="brand">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="3" y="4" width="26" height="24" rx="5" stroke="currentColor" stroke-width="2"/><path d="M11.2 9.5c.6-.4 1.4-.2 1.8.4l1.3 2.1c.3.6.2 1.3-.3 1.7l-.9.7c.7 1.7 2 3.1 3.6 3.9l.8-.9c.4-.5 1.1-.6 1.7-.2l2.1 1.2c.6.4.8 1.2.4 1.8l-.6 1c-.6.9-1.7 1.3-2.7 1-4.1-1.2-7.2-4.4-8.3-8.5-.3-1 .1-2.1 1-2.7z" fill="currentColor"/></svg>
+      <div>
+        <span class="brand-name">おまかせ受電AI</span>
+        <span class="brand-sub">B-04 説明ノート</span>
+      </div>
+    </div>
+    <span class="pill-ng">社内限</span>
+  </div>
+</header>
+
+<div class="wrap layout">
+
+  <details class="toc" id="toc">
+    <summary>目次（9項目）</summary>
+    <nav class="toc-body" aria-label="目次">
+      <p class="toc-group">ライトアップの営業が使う</p>
+      <ol>
+        <li><a href="#pitch"><b>01</b>パートナー候補に話す</a></li>
+        <li><a href="#price"><b>03</b>価格の伝え方</a></li>
+        <li><a href="#open"><b>08</b>未決事項</a></li>
+      </ol>
+      <p class="toc-group">OEMパートナーの営業が使う</p>
+      <ol>
+        <li><a href="#mago"><b>02</b>店舗に話す言葉</a></li>
+        <li><a href="#ng"><b>05</b>言ってはいけない</a></li>
+      </ol>
+      <p class="toc-group">共通</p>
+      <ol>
+        <li><a href="#use"><b>00</b>使い方</a></li>
+        <li><a href="#qa"><b>04</b>切り返し8本</a></li>
+        <li><a href="#stop"><b>06</b>売らない相手</a></li>
+        <li><a href="#close"><b>07</b>締めと次回アポ</a></li>
+      </ol>
+    </nav>
+  </details>
+  <script>
+  (function(){
+    var d=document.getElementById('toc'); if(!d||!window.matchMedia) return;
+    var mq=window.matchMedia('(min-width: 1100px)');
+    function sync(){ d.open = mq.matches; }
+    sync();
+    if (mq.addEventListener) mq.addEventListener('change', sync); else if (mq.addListener) mq.addListener(sync);
+    d.addEventListener('click', function(e){ if(e.target.closest('a') && !mq.matches){ d.open=false; } });
+  })();
+  </script>
+
+  <header class="doc-head">
+      <p class="eyebrow">B-04 PARTNER NOTE｜社内限</p>
+      <h1>おまかせ受電AI<br>説明ノート</h1>
+      <p class="doc-meta"><span>更新 <span class="num">2026-09-25</span></span><span>読み手：ライトアップの営業担当／取り扱いが決まったOEMパートナーの営業担当</span></p>
+      <p class="doc-intro">店舗の電話を用件ごとにAIと人へ振り分ける「おまかせ受電AI」を、誰が話しても同じ中身で説明するためのノートです。ライトアップの営業は01・03・07前半・08を、OEMパートナーの営業は02・04（店舗から）・05・06（店舗）・07後半を使います。<strong>OEMパートナーの営業の方は、まず02へ。</strong></p>
+      <div class="facts">
+        <div class="fact"><span>店舗への売価</span><b>OEMパートナーが決める</b></div>
+        <div class="fact"><span>店舗の窓口</span><b>OEMパートナー</b></div>
+        <div class="fact"><span>管理画面</span><b>OEMパートナー専用に作る</b></div>
+        <div class="fact"><span>1社のための開発</span><b>多くは数十万円程度</b></div>
+      </div>
+      <p class="facts-note">B-01（OEMパートナーのご案内）の冒頭と同じ4点です。仕入値・初期費用は<span class="tbd">【調整中】</span>。</p>
+  </header>
+
+  <main>
+
+    <!-- 00 -->
+    <section id="use" aria-labelledby="h-use">
+      <p class="eyebrow">00 HOW TO USE</p>
+      <h2 id="h-use">このノートの使い方</h2>
+      <ul class="rules">
+        <li><strong>数字は、このノートにあるものだけ。</strong>仕入値・導入社数・削減できる時間・通話の件数は、聞かれても作らない。</li>
+        <li><strong>【調整中】は、その場で埋めない。</strong>「確認して書面でお答えします」と言い切る。あいまいに濁すより信用される。</li>
+        <li><strong>02の孫トークでは「OEM」「仕入値」「粗利」を使わない。</strong>店舗から見ればOEMパートナーのサービスなので、ライトアップの名前も出さない。</li>
+        <li><strong>呼び方は「OEMパートナー」。</strong>「販売パートナー」は、OEMパートナーの下の階層を指す言葉なので使わない。</li>
+        <li><strong>このノートは、ライトアップの営業と、取り扱いが決まったOEMパートナーの営業だけが読む。</strong>検討中のパートナー候補と店舗には送らない。候補に渡すのはB-01とB-02。</li>
+        <li><strong>このノートより、書面と契約書が優先。</strong>条件が決まったら、08の表と本文の【】を書き換える。</li>
+      </ul>
+    </section>
+
+    <!-- 01 -->
+    <section id="pitch" aria-labelledby="h-pitch">
+      <p class="eyebrow">01 FOR PARTNER CANDIDATES</p>
+      <h2 id="h-pitch">パートナー候補に話す</h2>
+      <p class="sec-lead">ライトアップの営業が、取り扱いを検討している会社へ話す版です。相手は店舗に商材を売っている会社。時間に合わせて3つの長さを使い分けます。</p>
+
+      <h3>30秒版</h3>
+      <p class="muted">立ち話・電話・別件の商談の最後に。</p>
+      <div class="say">
+        <span class="say-label">話す言葉</span>
+        <p>今お付き合いのある店舗に、もう1本お持ちいただける商材のご相談です。店舗の電話を用件ごとにAIと人へ振り分ける受電AIを、貴社のサービス名で売っていただけます。売価は貴社が決め、店舗の窓口も貴社。管理画面は貴社専用に作り、機能は販売先の業種に合わせて作り替えます。まず、販売先の業種と想定の店舗数を伺えますか。</p>
+      </div>
+
+      <h3>3分版</h3>
+      <p class="muted">初回の打ち合わせの冒頭に。5つの区切りで話すのが基本形です。</p>
+      <ol class="beats">
+        <li>
+          <div class="beat-t">〜0:30<small>困りごと</small></div>
+          <div class="beat-b"><strong>どの店舗にもある電話</strong><p class="q">「電話は、どの店舗にもある困りごとです。予約の電話で手が止まる、営業電話に時間を取られる、営業時間外の電話を取りこぼす。すでに店舗と取引がある貴社なら、既存のお客様への、もう1本の提案になります」</p></div>
+        </li>
+        <li>
+          <div class="beat-t">〜1:20<small>何をするか</small></div>
+          <div class="beat-b"><strong>用件ごとに振り分ける</strong><p class="q">「全部の電話をAIに任せるサービスではありません。着信するとAIが用件を聞き、予約や大切な用件は人へ、定型の質問や営業電話はAIが案内して終えます。人が出られないときはLINEに通知して、スタッフが折り返す。営業時間外の予約の希望はAIが仮受付し、確定はスタッフです。店舗の設定は、業種のひな形、AIか人か、次の処理を選ぶ3ステップです」</p></div>
+        </li>
+        <li>
+          <div class="beat-t">〜2:00<small>分担</small></div>
+          <div class="beat-b"><strong>売価と窓口はOEMパートナー</strong><p class="q">「売価は貴社が決め、問い合わせやクレームの一次受けも貴社にお願いしています。弊社は表に出ず、「受電AIの開発と提供」「貴社専用の管理画面を作る」「業種に合わせた機能の作り替え」を引き受けます。店舗から見えるのは、貴社のサービスだけです」</p></div>
+        </li>
+        <li>
+          <div class="beat-t">〜2:40<small>違い</small></div>
+          <div class="beat-b"><strong>品質は同等、違いは2つ</strong><p class="q">「先に言っておくと、通話品質は他社と同等です。遜色はありませんが、飛び抜けてもいません。違いの1つ目は原価で、弊社1社で自社開発しているぶん少し抑えられると見ています。比べた数字はまだ出せません。2つ目は作り替えの幅です。電話のあとのSMS、予約台帳、店主本人の声などを、業種に合わせて作り替えます。1社のための開発は都度お見積りで、内容によりますが数十万円程度で収まることが多いです」</p></div>
+        </li>
+        <li>
+          <div class="beat-t">〜3:00<small>次の一手</small></div>
+          <div class="beat-b"><strong>業種と店舗数を聞く</strong><p class="q">「仕入値や契約の条件は、貴社の販売のしかたを伺ってから決めます。販売先の業種と想定の店舗数、今お持ちの商材が分かれば、管理画面の作り方と、最初に作り替える機能の候補をお出しできます」</p></div>
+        </li>
+      </ol>
+
+      <h3>分担はB-01のとおり</h3>
+      <p class="muted">分担は言い換えない。候補にもOEMパートナーの営業にも、この中身のまま話す。</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>だれが</th><th>何をするか</th></tr></thead>
+          <tbody>
+            <tr><th>ライトアップ（開発・提供）</th><td data-l="何をするか">受電AIの開発と提供／OEMパートナー専用の管理画面を作る／業種に合わせた機能の作り替え</td></tr>
+            <tr><th>OEMパートナー（販売・一次受け）</th><td data-l="何をするか">売価を決める／店舗への提案・販売／問い合わせ・クレームの一次受け</td></tr>
+            <tr><th>店舗</th><td data-l="何をするか">OEMパートナーのサービスとして使う</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>話すときは「店舗から見えるのは、貴社のサービスだけです」と結ぶ。</strong></p>
+
+      <h3>15分版</h3>
+      <p class="muted">個別の相談の本編。B-03（投影資料・全13枚）を映しながら進めます。スライドは、B-03の番号と各スライド上部のラベルで書いています。</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>時間</th><th>話すこと</th><th>見せるもの・確かめること</th></tr></thead>
+          <tbody>
+            <tr><td class="t-time" data-l="時間">0〜2分</td><td data-l="話すこと">先に06の3点を聞く。一次窓口を持てるか、販売先の業種と店舗数、何を売りにするか。</td><td data-l="見せるもの・確かめること"><span class="slide">01「表紙」</span>。聞いた内容は、そのまま06の判断に使う。</td></tr>
+            <tr><td class="t-time" data-l="時間">2〜4分</td><td data-l="話すこと">店舗の電話の困りごと。調理中・施術中に鳴る電話、営業電話、営業時間外の取りこぼし。数字は出さない。</td><td data-l="見せるもの・確かめること"><span class="slide">02「市場の変化」、03「貴社のお客様（店舗）の困りごと」</span></td></tr>
+            <tr><td class="t-time" data-l="時間">4〜5分</td><td data-l="話すこと">既存の取引先（店舗）への、もう1本の提案になること。</td><td data-l="見せるもの・確かめること"><span class="slide">04「商材を足す理由」</span>。収益の数字はここでは言わない。</td></tr>
+            <tr><td class="t-time" data-l="時間">5〜8分</td><td data-l="話すこと">用件ごとの振り分けと、店舗の設定3ステップ。予約はAIが確定せず、仮受付まで。</td><td data-l="見せるもの・確かめること"><span class="slide">05「商品説明① 何をするか」、06「商品説明② 店舗の設定」</span>。動きを見せたいときは、C-01ひよりの10秒デモの画面を開く。</td></tr>
+            <tr><td class="t-time" data-l="時間">8〜10分</td><td data-l="話すこと">ライトアップ・OEMパートナー・店舗の分担。品質の話し方は04の1本目のとおり。</td><td data-l="見せるもの・確かめること"><span class="slide">07「責任分界」、08「品質と違い」</span>。品質の話は、こちらから先に出す。</td></tr>
+            <tr><td class="t-time" data-l="時間">10〜12分</td><td data-l="話すこと">業種に合わせた作り替えと、収益の形。</td><td data-l="見せるもの・確かめること"><span class="slide">09「作り替え」、10「収益シミュレーション」</span>。仕入値は【調整中】なので、式の形だけ。個別開発は数十万円程度が多い、まで。</td></tr>
+            <tr><td class="t-time" data-l="時間">12〜13分</td><td data-l="話すこと">先行パートナーの動き。</td><td data-l="見せるもの・確かめること"><span class="slide">11「先行パートナーの動き」</span>は【調整中】。社名や社数を口にしない。</td></tr>
+            <tr><td class="t-time" data-l="時間">13〜15分</td><td data-l="話すこと">まだ決めていない条件を先に見せ、次の一手を決める。</td><td data-l="見せるもの・確かめること"><span class="slide">12「取扱条件」、13「次の一歩」</span>と07の締め。答えられなかった質問は、書面で返すと約束する。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 02 -->
+    <section id="mago" aria-labelledby="h-mago">
+      <p class="eyebrow">02 FOR STORE CUSTOMERS｜最重要</p>
+      <h2 id="h-mago">店舗に話す言葉（孫トーク）</h2>
+      <p class="sec-lead">OEMパートナーの営業が、自社の店舗客（飲食店・美容室・カフェなど）へ話す言い回しです。店舗から見れば、これはOEMパートナー自身のサービスです。料金とサービス名は、各社が決めたものに置き換えて話します。「OEM」「仕入値」「粗利」も、ライトアップの名前も出さないでください。台本では、名前を「（貴社のサービス名）」、料金を「（貴社の料金）」と書いています。</p>
+
+      <div class="flow" role="group" aria-labelledby="flow-t">
+        <p class="flow-title" id="flow-t">電話が鳴ったときの流れ（店舗から見た動き）</p>
+        <div class="flow-trunk">
+          <div class="flow-node">着信</div>
+          <div class="flow-down" aria-hidden="true"></div>
+          <div class="flow-node ai">AIが用件を聞く</div>
+          <div class="flow-down" aria-hidden="true"></div>
+        </div>
+        <p class="flow-split-label">用件によって、3つに分かれる</p>
+        <ol class="flow-branches">
+          <li><span class="flow-cond">予約・大切な用件</span><span class="flow-to" aria-hidden="true"></span><span class="flow-step staff">スタッフへつなぐ</span></li>
+          <li><span class="flow-cond">営業電話・道順の質問</span><span class="flow-to" aria-hidden="true"></span><span class="flow-step">AIが案内して完結</span></li>
+          <li><span class="flow-cond">スタッフが出られない</span><span class="flow-to" aria-hidden="true"></span><span class="flow-step">LINEに通知</span><span class="flow-to" aria-hidden="true"></span><span class="flow-step staff">スタッフが折り返す</span></li>
+        </ol>
+        <p class="flow-note"><b>営業時間外の予約</b>は、AIが仮受付として残し、確定はスタッフが行う</p>
+      </div>
+
+      <h3>30秒版</h3>
+      <p class="muted">訪問の雑談、定例の打ち合わせ、電話の最後に。</p>
+      <div class="say to-customer">
+        <span class="say-label">店舗に話す言葉</span>
+        <p>店長、営業中にかかってくる電話は、どうされていますか。（答えを聞く）電話が鳴ると、AIが先に用件を聞いてくれる仕組みがあるんです。「（貴社のサービス名）」といいます。予約や大事な電話はスタッフさんへ回して、営業電話や道順の質問はAIが受けます。任せる電話は、お店が選べるんです。全部をAIに任せる必要はないので、いちばん困っている電話を一つ選ぶところから始められます。</p>
+      </div>
+
+      <h3>3分版</h3>
+      <p class="muted">「ちょっと詳しく聞かせて」と言われたら。聞く→分ける→仕組み→正直に→次、の順です。</p>
+      <ol class="beats">
+        <li>
+          <div class="beat-t">〜0:30<small>聞く</small></div>
+          <div class="beat-b"><strong>いまの電話の受け方を聞く</strong><p class="q">「調理中や施術中に鳴った電話は、どうしていますか。出られなかった電話が予約だったのか、営業電話だったのか、あとから分かりますか」</p></div>
+        </li>
+        <li>
+          <div class="beat-t">〜1:00<small>分ける</small></div>
+          <div class="beat-b"><strong>電話を用件で分ける</strong><p class="q">「かかってくる電話を、用件で分けてみませんか。予約、営業時間や道順の問い合わせ、営業電話、お困りごと。この中で、手を止めてまで出たくない電話はどれでしょう」</p></div>
+        </li>
+        <li>
+          <div class="beat-t">〜2:00<small>仕組み</small></div>
+          <div class="beat-b"><strong>AIが先に用件を聞く</strong><p class="q">「電話が鳴ると、まずAIが用件を聞く仕組みです。予約や大切な用件はスタッフへつなぎ、営業電話はAIが用件と連絡先を聞いて終えます。営業時間や道順も、お店の情報を登録しておけば、AIが案内できますよ。出られなかった電話はLINEでお知らせするので、あとから折り返せます。設定は、業種のひな形を選んで、電話の種類ごとにAIか人かを決めて、そのあとの処理を選ぶだけです。今の番号から転送して使う形なので、使えるかどうかは始める前に確かめます」</p></div>
+        </li>
+        <li>
+          <div class="beat-t">〜2:40<small>正直に</small></div>
+          <div class="beat-b"><strong>できないこと、要らないお店</strong><p class="q">「予約は、AIが確定しません。営業時間外の予約の希望はAIが仮受付として残して、確定はお店の方にお願いします。それから、全部の電話をAIに任せる必要はありません。人をなくすのではなく、人が必要な電話に戻すための仕組みです。電話がほとんど鳴らないお店や、すべての電話に店長ご自身が出たいお店には、正直、いまは要らないと思います」</p></div>
+        </li>
+        <li>
+          <div class="beat-t">〜3:00<small>次</small></div>
+          <div class="beat-b"><strong>一つだけ選ぶ</strong><p class="q">「まずは、いちばん困っている電話を一つだけ選んでみませんか。任せる範囲は、あとから変えられます。料金は（貴社の料金）です」</p></div>
+        </li>
+      </ol>
+
+      <h3>切り出し3パターン</h3>
+      <p class="muted">新しく売り込むより、店舗がすでに口にしている困りごとに答える形のほうが話は進みます。</p>
+
+      <div class="opener">
+        <h3>電話に出られない</h3>
+        <p class="when">「忙しい時間に電話が鳴って困る」と言われたとき。</p>
+        <dl>
+          <dt>最初の一言</dt>
+          <dd class="q">「手が離せないときに限って、電話は鳴りますよね。いちばん困るのは、どの電話ですか」</dd>
+          <dt>続け方</dt>
+          <dd>用件を一緒に書き出し、その電話だけAIが受ける形を提案する。「どこまで任せるかは、お店が決められます。迷う電話は人に残せます」と添える。</dd>
+          <dt>気をつけること</dt>
+          <dd class="warn">「電話対応がなくなる」とは言わない。予約の確定と大切な電話は、人に残る。</dd>
+        </dl>
+      </div>
+
+      <div class="opener">
+        <h3>営業電話が多い</h3>
+        <p class="when">営業電話のたびに手を止めている、という話が出たとき。</p>
+        <dl>
+          <dt>最初の一言</dt>
+          <dd class="q">「営業電話だけ、AIが用件と連絡先を聞いて終える、という使い方ができます。ほかの電話は、これまでどおりスタッフの方が出られます」</dd>
+          <dt>続け方</dt>
+          <dd>任せる範囲はあとから変えられる、と伝える。用件が分からない電話は人へ回す設定から始めてよい。</dd>
+          <dt>気をつけること</dt>
+          <dd class="warn">「営業電話を完全に止められる」とは言わない。AIが受けて用件を聞く、までを話す。</dd>
+        </dl>
+      </div>
+
+      <div class="opener">
+        <h3>閉店後の予約の電話</h3>
+        <p class="when">「閉店後にかかってきた電話に、朝気づく」と言われたとき。</p>
+        <dl>
+          <dt>最初の一言</dt>
+          <dd class="q">「閉店後にかかってきた予約の電話は、AIが仮受付として残しておきます。確定は、次に開店したときにお店の方が確認して行います」</dd>
+          <dt>続け方</dt>
+          <dd>出られなかった電話はLINEで知らせるので、あとから折り返せる、とつなぐ。通知先をどこにするかは、始める前に決める。</dd>
+          <dt>気をつけること</dt>
+          <dd class="warn">「24時間予約が取れます」「AIが予約を確定します」とは言わない。仮受付まで。</dd>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 03 -->
+    <section id="price" aria-labelledby="h-price">
+      <p class="eyebrow">03 PRICING</p>
+      <h2 id="h-price">価格の伝え方</h2>
+      <p class="sec-lead">仕入値も初期費用も、まだ出せない段階です。言えることと、まだ言えないことを混ぜないのがいちばん大事です。</p>
+
+      <div class="price-1">
+        <div class="pbox ok">
+          <p class="pbox-t">言えること</p>
+          <ul>
+            <li><span>店舗への売価</span><b>OEMパートナーが決める</b></li>
+            <li><span>1社のための個別開発</span><b>内容によるが、数十万円程度で収まることが多い（都度お見積り）</b></li>
+            <li><span>何社かで使える機能</span><b>最初にまとめて開発し、各社に提供</b></li>
+            <li><span>直販</span><b>先着30社ほどの無料モニター中。モニター期間は初期費用0円・月額0円</b></li>
+          </ul>
+          <p class="foot">直販の通話料・期間・対象範囲はお申込み時に案内。正式な料金は調整中。</p>
+        </div>
+      </div>
+      <p class="hold-line"><b>まだ言えない条件は08の表のとおり。</b>聞かれたら「書面でお出しします」とだけ言う。</p>
+
+      <h3>原価の話は、方向だけ</h3>
+      <p>受電AIはライトアップ1社で自社開発しているので、原価は他社より少し抑えられると見ています。ただ、比べた数字はまだ出せず、OEMパートナーの仕入値への反映も調整中です。「他社より安く卸せます」とは言わず、「少し抑えられる見込み」までにとどめます。</p>
+
+      <h3>聞かれ方ごとの返し方</h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>聞かれた場面</th><th>返す言葉</th><th>次の一手</th></tr></thead>
+          <tbody>
+            <tr><th>候補から「仕入値はいくら？」</th><td data-l="返す言葉">「仕入値と初期費用は調整中です。販売先の業種と想定の店舗数を伺ったうえで、書面でお出しします」</td><td data-l="次の一手">販売のしかたを聞く。仮の数字を口にしない。</td></tr>
+            <tr><th>候補から「いくら儲かる？」</th><td data-l="返す言葉">「売価は貴社が決めるので、仕入値が決まれば一緒に試算できます。条件が書面で決まってから計算させてください」</td><td data-l="次の一手">B-03の10「収益シミュレーション」は式の形だけ見せる。</td></tr>
+            <tr><th>候補から「直販はいくら？」</th><td data-l="返す言葉">「いまは先着30社ほどの無料モニター中で、モニター期間は初期費用0円・月額0円です。通話料・期間・対象範囲はお申込み時にご案内しています。正式な料金は調整中です」</td><td data-l="次の一手">直販との住み分けを聞かれたら、併売・地域の扱いと同じく【調整中】（08）。</td></tr>
+            <tr><th>候補から「個別開発はいくら？」</th><td data-l="返す言葉">「内容によりますが、数十万円程度で収まることが多いです。1社のための機能は都度お見積り、何社かで使える機能は最初にまとめて開発して各社に提供します」</td><td data-l="次の一手">作り替えたい機能を聞く。期間はお見積りのときに伝える。</td></tr>
+            <tr><th>店舗から「いくら？」</th><td data-l="返す言葉">OEMパートナーが決めた金額で答える。</td><td data-l="次の一手">決まるまでは「確認してお伝えします」。ライトアップの直販の料金や無料モニターを、OEMパートナーの料金として伝えない。</td></tr>
+            <tr><th>店舗から「安くならない？」</th><td data-l="返す言葉">売価はOEMパートナーが決めるので、その判断で答える。</td><td data-l="次の一手">仕入値が【調整中】のうちは、値引きを約束しない。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 04 -->
+    <section id="qa" aria-labelledby="h-qa">
+      <p class="eyebrow">04 OBJECTIONS</p>
+      <h2 id="h-qa">切り返し8本</h2>
+      <p class="sec-lead">答えはこのノートにある事実の範囲だけです。決まっていないものは<span class="tbd">【調整中】</span>と言い切り、書面で返します。「候補から」はOEMパートナー候補、「店舗から」はOEMパートナーの店舗客からの質問です。</p>
+
+      <ol class="qa">
+        <li>
+          <p class="qa-meta"><span class="who">候補から</span></p>
+          <h3>品質は他社より良い？</h3>
+          <p class="ans">「同等です。遜色はありませんが、飛び抜けて良いわけでもありません。聞き取りや話し方、応答の速さは、どの音声AIを選び、どう調整し、どう組み立てるかで決まります。各社がほぼ同じ選択肢から選んでいる領域なので、品質は売り文句にしていません。違いは原価と作り替えの幅です」</p>
+          <p class="ans2"><b>補足</b>　ライトアップの見立てとして話す。業界全体の話に広げない。ほかの箇所で品質を聞かれたときも、この1本目のとおりに話す。</p>
+        </li>
+        <li>
+          <p class="qa-meta"><span class="who">候補から</span></p>
+          <h3>他社のOEMと何が違う？</h3>
+          <p class="ans">「他社にも、OEMや自社ブランドでの提供に対応するサービスはあります。比べるときは、管理画面の作り替えと、1社のための開発を受けるかどうかを確かめてください。弊社は管理画面を貴社専用に作り、業種に合わせて機能を作り替えます。1社のための開発は都度お見積りで、数十万円程度で収まることが多いです」</p>
+          <p class="ans2"><b>補足</b>　原価の話は「少し抑えられる見込み。比べた数字はまだ出せない」まで。</p>
+        </li>
+        <li>
+          <p class="qa-meta"><span class="who">候補から</span></p>
+          <h3>クレームは誰が受ける？<br>ライトアップに直接来る？</h3>
+          <p class="ans">「一次受けは貴社にお願いしています。店舗から見えるのは貴社のサービスだけなので、問い合わせもクレームも、まず貴社に届きます。弊社は表に出ず、仕組みの開発と提供を引き受ける形です。AIの応答内容を見直す必要があるときの進め方は、調整中です」</p>
+          <p class="ans2"><b>補足</b>　障害時の窓口と時間帯も【調整中】。「弊社がすべて受けます」とは言わない。管理画面の名称・ロゴ・項目は、OEMパートナー向けに作る。</p>
+        </li>
+        <li>
+          <p class="qa-meta"><span class="who">候補から</span><span class="who c">店舗から</span></p>
+          <h3>電話代行と何が違う？</h3>
+          <p class="ans">「最初に電話に出るのが、オペレーターかAIか、の違いです。役割で比べると、こうなります」</p>
+          <div class="tbl-wrap">
+            <table class="tbl">
+              <thead><tr><th>比べるところ</th><th>人の電話代行</th><th>（貴社のサービス名）</th></tr></thead>
+              <tbody>
+                <tr><th>最初に出るのは</th><td data-l="人の電話代行">オペレーター</td><td data-l="（貴社のサービス名）">AI。大切な用件はスタッフへ</td></tr>
+                <tr><th>受けられる時間</th><td data-l="人の電話代行">契約した時間帯</td><td data-l="（貴社のサービス名）">24時間。予約は仮受付</td></tr>
+                <tr><th>用件の分け方</th><td data-l="人の電話代行">代行会社の手順に沿う</td><td data-l="（貴社のサービス名）">お店が用件ごとに決める</td></tr>
+                <tr><th>大切な電話</th><td data-l="人の電話代行">伝言か取り次ぎ</td><td data-l="（貴社のサービス名）">スタッフへ転送・通知</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="ans">「人が話すこと自体に価値があるお店は、人の電話代行が向いています。電話の多くが営業電話や定型の質問なら、AIで足ります」</p>
+          <p class="ans2"><b>補足</b>　代行をやめさせる前提で話さない。表は直販LP（A-01）と同じ比べ方。</p>
+        </li>
+        <li>
+          <p class="qa-meta"><span class="who c">店舗から</span></p>
+          <h3>AIが出たら、<br>お客さんが嫌がらない？</h3>
+          <p class="ans">「予約や大切な用件は、AIが用件を聞いたうえでスタッフへつなぎます。どの電話をAIに任せるかはお店が決められるので、大切な電話は人に残せます」</p>
+          <p class="ans2"><b>補足</b>　AIであることを冒頭で伝えるかは検討中（08）。決まるまでは「確認してお伝えします」。</p>
+        </li>
+        <li>
+          <p class="qa-meta"><span class="who c">店舗から</span></p>
+          <h3>予約をAIが勝手に確定しない？</h3>
+          <p class="ans">「確定しません。営業時間外の予約の希望はAIが仮受付として残し、営業開始後にスタッフの方が確認して確定する作りです。予約の電話を最初から人へつなぐ設定にもできます」</p>
+          <p class="ans2"><b>補足</b>　予約の確定までAIに任せたいお店は、向いていない（06）。</p>
+        </li>
+        <li>
+          <p class="qa-meta"><span class="who">候補から</span><span class="who c">店舗から</span></p>
+          <h3>今の電話番号のまま使える？</h3>
+          <p class="ans">「今の番号から転送して使う形を想定しています。回線の種類や転送の条件で変わるため、導入前に確認します」</p>
+          <p class="ans2"><b>補足</b>　AI受電用の番号の発行と、地図・グルメサイトの掲載番号の変更手順は、今後の開発候補（提供時期は未定）。今あるように話さない。</p>
+        </li>
+        <li>
+          <p class="qa-meta"><span class="who">候補から</span><span class="who c">店舗から</span></p>
+          <h3>実績は？</h3>
+          <p class="ans">「サービスは始まったばかりで、社名や数を出してご紹介できる導入事例は、まだありません。本当の事例をつくるために、いま直販で先着30社ほどの無料モニターを募集している段階です」</p>
+          <p class="ans2"><b>店舗には</b>　「始まったばかりのサービスで、ご紹介できる事例はまだありません」。ライトアップの直販のモニター募集は、店舗客には案内しない。</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- 05 -->
+    <section id="ng" aria-labelledby="h-ng">
+      <p class="eyebrow">05 DON'T SAY</p>
+      <h2 id="h-ng">言ってはいけない言い方</h2>
+      <p class="sec-lead">一度言うと、あとで取り消せません。左は、ライトアップの営業もOEMパートナーの営業も使わない言い方です。</p>
+      <ul class="ng-list">
+        <li><div class="bad">「販売パートナー」と呼ぶ</div><div class="good">「OEMパートナー」と呼ぶ</div></li>
+        <li><div class="bad">「AI電話は、どこも品質差は小さいです」と業界全体の話にする</div><div class="good">04の1本目のとおり、ライトアップの見立てとして話す</div></li>
+        <li><div class="bad">「他社はOEMに対応していません」</div><div class="good">「他社にも、OEMや自社ブランドでの提供に対応するサービスはあります。管理画面の作り替えと、1社のための開発を受けるかで比べてください」</div></li>
+        <li><div class="bad">「◯社導入済み」「◯◯さんも使っています」</div><div class="good">「本当の事例をつくるために、無料モニターを募集している段階です」</div></li>
+        <li><div class="bad">仕入値・初期費用を書面より先に口にする／「他社より安く卸せます」</div><div class="good">「仕入値は、販売のしかたを伺ったうえで書面でお出しします」</div></li>
+        <li><div class="bad">店舗の前で「OEM」「仕入値」「粗利」と言う、ライトアップの名前を出す</div><div class="good">店舗には、（貴社のサービス名）の中身と、OEMパートナーが決めた料金だけを話す</div></li>
+        <li><div class="bad">「予約もAIが確定します」「24時間予約が取れます」</div><div class="good">「営業時間外の予約の希望は、AIが仮受付します。確定はスタッフの方です」</div></li>
+        <li><div class="bad">「電話番がいらなくなります」「全部AIに任せられます」</div><div class="good">「人をなくすのではなく、人が必要な電話に戻す仕組みです。任せる電話は、お店が選びます」</div></li>
+        <li><div class="bad">「今の番号で必ず使えます」「AI用の番号もすぐ出せます」</div><div class="good">「今の番号から転送して使う形を想定しています。使えるかは導入前に確認します」</div></li>
+      </ul>
+    </section>
+
+    <!-- 06 -->
+    <section id="stop" aria-labelledby="h-stop">
+      <p class="eyebrow">06 WHO NOT TO SELL</p>
+      <h2 id="h-stop">売らない相手と、<br>先に確かめること</h2>
+      <p class="sec-lead">合わない相手に売ると、クレームの一次受けを持つOEMパートナーの負担になります。先に断るほうが、結局は長続きする売り方です。</p>
+
+      <h3>取り扱いを勧めない会社（候補）</h3>
+      <ul class="stop">
+        <li><strong>店舗からの問い合わせを受ける窓口を持てない会社</strong><span>店舗の一次窓口は、OEMパートナーにお願いしています。</span></li>
+        <li><strong>通話品質の高さを一番の売りにしたい会社</strong><span>品質は04の1本目のとおりで、売りにできるほどの差はありません。</span></li>
+      </ul>
+
+      <h3>勧めないお店（店舗）</h3>
+      <ul class="stop">
+        <li><strong>電話がほとんど鳴らないお店</strong><span>振り分ける電話が、そもそもありません。</span></li>
+        <li><strong>すべての電話に、店主が自分で出たいお店</strong><span>AIが最初に受ける電話がなくなります。</span></li>
+        <li><strong>予約の確定までAIに任せたいお店</strong><span>確定はスタッフが行う作りのためです。</span></li>
+      </ul>
+      <p class="muted">人が話すこと自体に価値があるお店は、人の電話代行のほうが向いています。そう伝えてかまいません。</p>
+
+      <h3>候補に確かめる3点</h3>
+      <ol class="checks3">
+        <li><div><strong>一次窓口を持てるか</strong><p class="ask">聞く：「店舗からの問い合わせやクレームを、貴社で受けられますか」</p><p>持てないなら、いまは取り扱いを勧めない。</p></div></li>
+        <li><div><strong>販売先の業種と店舗数</strong><p class="ask">聞く：「どの業種の店舗に、どれくらいの数を売る見込みですか」</p><p>管理画面の作り方と、最初に作り替える機能の候補がここで決まる。</p></div></li>
+        <li><div><strong>何を売りにするか</strong><p class="ask">聞く：「店舗には、何をいちばんの売りにして話す予定ですか」</p><p>通話品質を一番の売りにしたいなら、合わない。</p></div></li>
+      </ol>
+
+      <h3>店舗に確かめる3点</h3>
+      <ol class="checks3">
+        <li><div><strong>今の電話番号・転送方法に対応できるか</strong><p class="ask">聞く：「いまの電話は、どの回線で受けていますか」</p><p>回線の種類や転送の条件で変わるため、導入前に確認する。</p></div></li>
+        <li><div><strong>AIが聞き取った内容を、どこへ通知するか</strong><p class="ask">聞く：「出られなかった電話は、どなたのLINEに知らせるのがいいですか」</p><p>通知先が決まらないと、折り返しが止まる。</p></div></li>
+        <li><div><strong>予約やクレームを、誰にどう渡すか</strong><p class="ask">聞く：「予約の確定と、お困りごとの電話は、どなたが対応されますか」</p><p>仮受付を確定する人がいないなら、その日は勧めない。</p></div></li>
+      </ol>
+    </section>
+
+    <!-- 07 -->
+    <section id="close" aria-labelledby="h-close">
+      <p class="eyebrow">07 CLOSING</p>
+      <h2 id="h-close">締めと次回アポ</h2>
+
+      <h3>パートナー候補との締め</h3>
+      <div class="say">
+        <span class="say-label">話す言葉</span>
+        <p>取り扱うかどうかは、条件を書面で確かめてから決めていただいて間に合います。まず、店舗からの問い合わせを貴社で受けられるか、販売先の業種と想定の店舗数、店舗に何をいちばんの売りにして話すご予定かを聞かせてください。それが分かれば、管理画面の作り方と、最初に作り替える機能の候補をお出しできます。仕入の条件も、あわせてご相談ください。今日お答えできなかったご質問は、書面でお返しします。</p>
+      </div>
+
+      <h3>次回アポの取り方</h3>
+      <ul class="rules">
+        <li><strong>すぐ個別に進めるなら、06の3点を聞く。</strong>相談の窓口は、B-01の「OEMパートナーについて相談する」（ライトアップのお問い合わせフォーム）。</li>
+        <li><strong>まず全体を聞きたい候補には、B-02を案内する。</strong>パートナー説明会の事前登録。日時・形式・定員は<span class="tbd">【調整中】</span>で、登録した会社へ決まり次第案内が届く形。</li>
+        <li><strong>答えられなかった質問を控える。</strong>【調整中】の項目は、質問した人の言葉のまま残し、書面で回答する。</li>
+        <li><strong>取り扱いまでの流れを見せる。</strong>下の4つの順で進むことを、最後に一度だけ伝える。各段階の期間は【調整中】。</li>
+      </ul>
+      <ol class="steps">
+        <li><b>01</b><strong>ご相談</strong><span>販売先の業種と店舗数を伺う</span></li>
+        <li><b>02</b><strong>設計</strong><span>管理画面と作り替える機能を決める</span></li>
+        <li><b>03</b><strong>条件のすり合わせ</strong><span>仕入値・分担・契約を決める</span></li>
+        <li><b>04</b><strong>販売開始</strong><span>OEMパートナーのサービスとして店舗へ</span></li>
+      </ol>
+      <p class="muted">流れは目安です（B-01と同じ）。</p>
+
+      <h3>店舗との締め</h3>
+      <div class="say to-customer">
+        <span class="say-label">店舗に話す言葉</span>
+        <p>まずは、いちばん困っている電話を一つだけ選んでみませんか。その電話だけAIが受ける形から始めて、任せる範囲はあとから変えられます。今の電話番号から転送できるか、出られなかった電話をどこへ知らせるかは、始める前に一緒に確かめます。</p>
+      </div>
+      <p class="muted">店舗の申し込み方法（申込受付と請求の流れ）は【調整中】です。販売会社ごとの申込URLは今後の開発候補（提供時期は未定）。06の店舗に確かめる3点がそろわない日は、申し込みを勧めません。</p>
+
+      <div class="btn-row">
+        <a class="btn" href="https://writeup-inc.github.io/seminar/omakase-juden-oem/">B-02 説明会の事前登録</a>
+        <a class="btn btn-ghost" href="https://writeup-inc.github.io/saas/omakase-juden-oem/">B-01 OEMパートナーのご案内</a>
+        <a class="btn btn-ghost" href="../b03/">B-03 投影資料</a>
+      </div>
+    </section>
+
+    <!-- 08 -->
+    <section id="open" aria-labelledby="h-open">
+      <p class="eyebrow">08 OPEN ITEMS</p>
+      <h2 id="h-open">未決事項の一覧</h2>
+      <p class="sec-lead">いずれも確認中です。聞かれたら中央の列のとおりに答え、推測で埋めないでください。決まった行はこの表から外し、本文の【】も書き換えてください。</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>項目</th><th>聞かれたら</th><th>状態</th></tr></thead>
+          <tbody>
+            <tr><th>仕入値・初期費用（OEM）</th><td data-l="聞かれたら">貴社の販売のしかたを伺ったうえで、書面でお出しします。</td><td data-l="状態"><span class="st">調整中</span></td></tr>
+            <tr><th>最低契約期間・解約の条件</th><td data-l="聞かれたら">契約の条件とあわせて、書面でお答えする予定です。</td><td data-l="状態"><span class="st">調整中</span></td></tr>
+            <tr><th>申込受付と請求の流れ</th><td data-l="聞かれたら">店舗の申し込み方法と、誰が請求するかは、いま確認しています。</td><td data-l="状態"><span class="st">調整中</span></td></tr>
+            <tr><th>障害時の対応（窓口と時間帯）</th><td data-l="聞かれたら">確認中です。決まり次第お伝えします。</td><td data-l="状態"><span class="st">調整中</span></td></tr>
+            <tr><th>併売・地域排他</th><td data-l="聞かれたら">貴社の販売のしかたを伺ったうえで決めます。</td><td data-l="状態"><span class="st">調整中</span></td></tr>
+            <tr><th>AIの応答内容を見直すときの進め方</th><td data-l="聞かれたら">一次受けは貴社です。見直しの進め方は、いま確認しています。</td><td data-l="状態"><span class="st">調整中</span></td></tr>
+            <tr><th>AIであることの告知</th><td data-l="聞かれたら">冒頭で伝えるかどうかは、店舗ごとに切り替えられる形を検討中です。</td><td data-l="状態"><span class="st consider">検討中</span></td></tr>
+            <tr><th>業種向け作り替えの期間</th><td data-l="聞かれたら">作り替える内容で変わるため、お見積りのときに期間もあわせてお伝えします。</td><td data-l="状態"><span class="st">調整中</span></td></tr>
+            <tr><th>利用開始までの日数</th><td data-l="聞かれたら">いまは確認中です。決まり次第お伝えします。</td><td data-l="状態"><span class="st">調整中</span></td></tr>
+            <tr><th>パートナー説明会（B-02）の日時・形式・定員</th><td data-l="聞かれたら">事前登録いただければ、決まり次第ご案内します。</td><td data-l="状態"><span class="st">調整中</span></td></tr>
+            <tr><th>原価を他社と比べた数字</th><td data-l="聞かれたら">少し抑えられる見込みです。比べた数字はまだお出しできません。</td><td data-l="状態"><span class="st">調整中</span></td></tr>
+            <tr><th>直販の正式料金</th><td data-l="聞かれたら">先着30社ほどの無料モニター中で、正式な料金は調整中です。</td><td data-l="状態"><span class="st">調整中</span></td></tr>
+            <tr><th>先行パートナーの動き・導入事例</th><td data-l="聞かれたら">社名も社数も出さない。事例をつくるための無料モニターの段階、と言う。</td><td data-l="状態"><span class="st">調整中</span></td></tr>
+            <tr><th>今後の開発候補（販売会社ごとの申込URL／AI受電用の番号の発行／地図・グルメサイトの掲載番号の変更手順）</th><td data-l="聞かれたら">提供時期は未定です。今あるものとして話さない。</td><td data-l="状態"><span class="st undecided">時期未定</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p class="foot-warn">社内限定です。店舗やパートナー候補へURLを送らないでください</p>
+        <p>おまかせ受電AI B-04 パートナー向け説明ノート。提供：株式会社ライトアップ（東証グロース 証券コード6580）。このノートより、書面と契約書の内容が優先です。</p>
+      </div>
+      <div>
+        <h4>PACK</h4>
+        <ul>
+          <li><a href="https://writeup-inc.github.io/saas/omakase-juden-pack/">資料インデックス</a></li>
+          <li><a href="https://writeup-inc.github.io/saas/omakase-juden-oem/">B-01 OEMパートナーのご案内</a></li>
+          <li><a href="https://writeup-inc.github.io/seminar/omakase-juden-oem/">B-02 パートナー説明会の事前登録</a></li>
+          <li><a href="../b03/">B-03 投影資料</a></li>
+          <li><a href="https://writeup-inc.github.io/saas/omakase-juden/">A-01 直販のサービスページ</a></li>
+          <li><a href="https://writeup-inc.github.io/saas/ai-reception-hiyori/">C-01 ひよりの自己紹介（10秒デモ）</a></li>
+          <li><a href="https://www.writeup.jp/company/" target="_blank" rel="noopener">運営会社</a></li>
+          <li><a href="https://www.writeup.jp/privacy/" target="_blank" rel="noopener">個人情報保護方針</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copyright">© 2026 Writeup Co., Ltd.</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="lp-type" content="左脳/資料/D欲求">
+<title>おまかせ受電AI｜パートナー説明会 投影資料</title>
+<link rel="canonical" href="https://writeup-inc.github.io/saas/omakase-juden-pack/b03/">
+<meta name="description" content="おまかせ受電AIのOEMパートナー候補向け説明会で投影する13枚のスライドです。各スライドの下に、話す言葉を併記しています。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== lp-base.css（改行制御・最小文字サイズ・固定CTAの逃げは消さない） ===== */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] { word-break: normal; }
+}
+.nobr { white-space: nowrap; }
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+:root { --lp-max: 1200px; }
+
+/* ===== トークン（B-01と同じ紺） ===== */
+:root {
+  --ink: #111111;
+  --ink-2: #4f5357;
+  --mute: #666a6f;
+  --line: #d9d9d9;
+  --line-2: #efefef;
+  --bg: #ffffff;
+  --bg-2: #f3f6fa;
+  --paper: #f7f7f7;
+  --card: #ffffff;
+  --ac: #0b2c5c;          /* 紺（塗り・強調） */
+  --ac-t: #0b2c5c;        /* 紺（文字） */
+  --ac-soft: #e9eef2;
+  --ac-mid: #b9c6da;
+  --navy: #0b2c5c;
+  --on-navy: #ffffff;
+  --on-navy-2: #c9d4e4;
+  --hi: #ffd54a;          /* 紺の地の上だけで使う黄 */
+  --hold: #8a5a00;
+  --hold-bg: #fff4d6;
+  --shadow: 0 1px 2px rgba(11,44,92,.06), 0 8px 28px rgba(11,44,92,.08);
+  --ff-head: "Zen Kaku Gothic New", "Noto Sans JP", "Hiragino Sans", system-ui, sans-serif;
+  --ff-body: "Noto Sans JP", "Hiragino Sans", system-ui, sans-serif;
+  --ff-en: "Outfit", "Zen Kaku Gothic New", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #eef1f7; --ink-2: #c9d0de; --mute: #9ea7b8; --line: #2c3650; --line-2: #222b40;
+    --bg: #0c1424; --bg-2: #111a2e; --paper: #141e34; --card: #16203a;
+    --ac: #3b6fb8; --ac-t: #a9c3ec; --ac-soft: #1b2a47; --ac-mid: #4a5f84;
+    --navy: #081a38; --on-navy-2: #b3c1d8;
+    --hold: #ffd98a; --hold-bg: #3a2c0a;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"] {
+  --ink: #eef1f7; --ink-2: #c9d0de; --mute: #9ea7b8; --line: #2c3650; --line-2: #222b40;
+  --bg: #0c1424; --bg-2: #111a2e; --paper: #141e34; --card: #16203a;
+  --ac: #3b6fb8; --ac-t: #a9c3ec; --ac-soft: #1b2a47; --ac-mid: #4a5f84;
+  --navy: #081a38; --on-navy-2: #b3c1d8;
+  --hold: #ffd98a; --hold-bg: #3a2c0a;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.35);
+}
+
+/* ===== 基本 ===== */
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg-2); color: var(--ink);
+  font-family: var(--ff-body);
+  -webkit-font-smoothing: antialiased; font-feature-settings: "palt";
+}
+h1, h2, h3 { font-family: var(--ff-head); }
+a { color: inherit; }
+.num { font-family: var(--ff-en); font-feature-settings: "tnum"; }
+p { margin: 0 0 1em; }
+p, li, td, th, dd { word-break: auto-phrase; line-break: strict; text-wrap: pretty; }
+
+/* ===== ボタン ===== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 54px; padding: 0 28px; border-radius: 8px;
+  background: var(--ac); color: #fff; text-decoration: none;
+  font-family: var(--ff-head); font-weight: 900; font-size: 1rem; letter-spacing: .04em;
+}
+
+/* ===== ブランド ===== */
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; min-height: 44px; }
+.brand svg { width: 32px; height: 32px; color: var(--ac-t); flex: none; }
+.brand-name { font-family: var(--ff-head); font-weight: 900; font-size: 1.12rem; letter-spacing: .04em; }
+.brand-sub { display: block; font: 700 12px/1 var(--ff-en); letter-spacing: .2em; color: var(--mute); margin-top: 3px; }
+
+/* ===== スライド ===== */
+:root { --fixed-cta-h: 76px; }
+.deck-head { max-width: calc(var(--lp-max) + 32px); margin: 0 auto; padding: 28px 16px 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; }
+.deck-head p { margin: 0; font-size: .9rem; color: var(--ink-2); }
+.deck { max-width: calc(var(--lp-max) + 32px); margin: 0 auto; padding: 8px 16px 40px; }
+@media (max-width: 600px) { .deck { padding: 8px 12px 32px; } .deck-head { padding: 20px 12px 4px; } }
+section.slide-wrap { padding: 0; margin: 0 0 36px; scroll-margin-top: 12px; }
+/* 通常表示：1280×720など背の低い画面でも、スライドの下端が操作バーに隠れない幅にする */
+@media (min-width: 901px) {
+  .deck, .deck-head { max-width: min(calc(var(--lp-max) + 32px), calc((100vh - var(--fixed-cta-h) - 28px) * 16 / 9 + 32px)); }
+}
+/* 最後のスライド（とノート）の下に、操作バーぶんの余白 */
+.deck { padding-bottom: calc(var(--fixed-cta-h) + 24px); }
+.slide {
+  position: relative; aspect-ratio: 16 / 9; background: var(--card); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow);
+  padding: clamp(18px, 3.6vw, 44px) clamp(16px, 4.2vw, 54px) clamp(14px, 2vw, 22px);
+  display: flex; flex-direction: column; cursor: pointer;
+}
+@media (max-width: 900px) { .slide { aspect-ratio: auto; min-height: 56.25vw; } }
+.slide > * { min-width: 0; }
+.s-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: clamp(8px, 1.6vw, 18px); }
+.s-no { font: 800 14px/1 var(--ff-en); letter-spacing: .16em; color: var(--ac-t); }
+.s-kicker { font-size: 14px; color: var(--mute); font-weight: 700; text-align: right; }
+.slide h1 { font-size: clamp(1.6rem, 4.4vw, 3.1rem); line-height: 1.38; margin: 0 0 18px; font-weight: 900; }
+.slide h2 { font-size: clamp(1.15rem, 2.7vw, 1.95rem); line-height: 1.42; margin: 0 0 clamp(10px, 1.8vw, 20px); font-weight: 900; }
+.slide h3 { font-size: clamp(1rem, 1.55vw, 1.1rem); line-height: 1.5; margin: 0 0 6px; font-weight: 900; }
+.slide p { font-size: 1rem; color: var(--ink-2); margin: 0 0 .6em; line-height: 1.75; }
+.slide .hl { color: var(--ac-t); }
+@media (max-width: 400px) {
+  .slide { padding-left: 12px; padding-right: 12px; }
+  .slide h2 { font-size: clamp(16px, calc((100vw - 52px) / 18), 18.4px); }
+}
+@media (max-width: 340px) {
+  .deck { padding-left: 8px; padding-right: 8px; }
+  .slide { padding-left: 10px; padding-right: 10px; }
+  .slide h1 { font-size: 1.4rem; }
+  .slide h2 { font-size: 1rem; }
+}
+.s-body { flex: 1 0 auto; display: flex; flex-direction: column; justify-content: center; }
+.s-foot { margin-top: clamp(10px, 1.6vw, 18px); display: flex; flex-wrap: wrap; gap: 4px 16px; justify-content: space-between; align-items: center; font-size: 14px; color: var(--mute); }
+.s-foot span { display: inline-flex; align-items: center; gap: 6px; }
+.s-foot svg { width: 16px; height: 16px; color: var(--mute); }
+.tbd { display: inline-block; font-weight: 700; color: var(--hold); background: var(--hold-bg); border-radius: 4px; padding: 0 7px; font-size: .9em; line-height: 1.7; white-space: nowrap; }
+
+/* 背の低い画面・幅の狭い画面では、スライドの余白を詰めて16:9に収める */
+@media (min-width: 901px) and (max-height: 780px), (min-width: 901px) and (max-width: 1180px) {
+  .slide { padding: 24px 36px 14px; }
+  .s-top { margin-bottom: 10px; }
+  .slide h2 { font-size: 1.7rem; margin-bottom: 12px; }
+  .s-foot { margin-top: 8px; }
+}
+
+/* 表紙・締め（紺の地） */
+.slide.dark { background: var(--navy); color: var(--on-navy); border-color: transparent; }
+.slide.dark p, .slide.dark .s-foot, .slide.dark .s-kicker { color: var(--on-navy-2); }
+.slide.dark .s-no { color: var(--hi); }
+.slide.dark .s-foot svg { color: var(--on-navy-2); }
+.slide.dark .tbd { background: rgba(255,213,74,.16); color: var(--hi); }
+.cover-mark { position: absolute; right: 5%; top: 16%; width: 22%; max-width: 220px; color: #fff; opacity: .07; }
+.cover-tag { display: inline-flex; align-items: center; gap: 8px; font-size: .9rem; font-weight: 700; color: var(--hi); border: 1px solid rgba(255,213,74,.5); border-radius: 999px; padding: 4px 14px; margin-bottom: 18px; align-self: flex-start; }
+.cover-facts { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 12px; }
+.cover-facts li { border: 1px solid rgba(255,255,255,.22); border-radius: 8px; padding: 8px 14px; font-size: 1rem; color: #fff; line-height: 1.5; }
+.cover-facts li span { display: block; font-size: 14px; color: var(--on-navy-2); }
+
+/* グリッド */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px, 2.4vw, 28px); align-items: start; }
+.g3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(10px, 2vw, 22px); }
+.g4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(10px, 1.6vw, 18px); }
+.g2w { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(14px, 3vw, 36px); align-items: start; }
+@media (max-width: 1000px) { .g4 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 760px) { .g2, .g3, .g2w { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .g4 { grid-template-columns: 1fr; } }
+.box { background: var(--bg-2); border-radius: 12px; padding: clamp(14px, 1.8vw, 18px); }
+.box p { margin: 0; font-size: 1rem; }
+.box .k { display: block; font: 800 14px/1 var(--ff-en); letter-spacing: .14em; color: var(--ac-t); margin-bottom: 8px; }
+
+/* 02 市場 */
+.shift { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(10px, 2vw, 22px); }
+@media (max-width: 760px) { .shift { grid-template-columns: 1fr; } }
+.shift li { border-top: 3px solid var(--ac); padding-top: 12px; }
+.shift b { display: block; font-family: var(--ff-head); font-size: clamp(1.02rem, 1.8vw, 1.25rem); line-height: 1.45; margin-bottom: 6px; }
+.shift li > span { display: block; font-size: 1rem; color: var(--ink-2); line-height: 1.7; }
+.slide .bridge2 { margin: 0; }
+.slide .bridge { margin-top: clamp(14px, 2.2vw, 26px); padding-top: clamp(10px, 1.6vw, 16px); border-top: 1px solid var(--line); }
+
+/* 03 店舗の困りごと */
+.quotes { list-style: none; margin: 0 0 clamp(12px, 2vw, 20px); padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(10px, 2vw, 20px); }
+@media (max-width: 760px) { .quotes { grid-template-columns: 1fr; } }
+.quotes li { border-left: 3px solid var(--ac); padding: 4px 0 4px 14px; }
+.quotes li small { display: inline-block; font-size: 14px; font-weight: 700; color: var(--ac-t); background: var(--ac-soft); border-radius: 4px; padding: 0 8px; margin-bottom: 6px; }
+.quotes li b { display: block; font-family: var(--ff-head); font-weight: 900; font-size: clamp(1.05rem, 2vw, 1.4rem); line-height: 1.5; }
+.pains { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+@media (max-width: 760px) { .pains { grid-template-columns: 1fr; } }
+.pains li { background: var(--bg-2); border-radius: 10px; padding: 10px 14px; font-weight: 700; font-size: 1rem; line-height: 1.55; }
+.pains li > span { display: block; font: 800 14px/1 var(--ff-en); letter-spacing: .14em; color: var(--ac-t); margin-bottom: 6px; }
+
+/* 04 向いている会社 */
+.fit { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px clamp(12px, 2vw, 22px); }
+@media (max-width: 760px) { .fit { grid-template-columns: 1fr; } }
+.fit li { border: 1px solid var(--line); border-radius: 12px; padding: clamp(10px, 1.4vw, 14px) clamp(12px, 1.6vw, 18px); }
+.fit li b { display: block; font-family: var(--ff-head); font-size: clamp(1rem, 1.5vw, 1.08rem); line-height: 1.5; }
+.fit li > span { display: block; font-size: 1rem; color: var(--ink-2); line-height: 1.65; margin-top: 2px; }
+.notfit { margin-top: clamp(10px, 1.6vw, 16px); display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 1rem; color: var(--ink-2); }
+.notfit b { color: var(--ink); }
+
+/* 05 流れ */
+.slide .route-lead { font-size: clamp(1rem, 1.5vw, 1.08rem); color: var(--ink); font-weight: 700; margin: 0 0 clamp(10px, 1.6vw, 16px); }
+.flow { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--card); }
+.flow-h, .flow-r { display: grid; grid-template-columns: 1fr 1fr 2fr; align-items: center; gap: 12px; padding: 0 18px; }
+.flow-h { padding-top: 9px; padding-bottom: 7px; background: var(--paper); font-size: 14px; font-weight: 700; color: var(--mute); }
+.flow-r { padding-top: clamp(8px, 1.1vw, 12px); padding-bottom: clamp(8px, 1.1vw, 12px); border-top: 1px solid var(--line-2); }
+.flow-r .k { font-weight: 700; font-size: 1rem; }
+.who { display: inline-flex; align-items: center; gap: 8px; font-size: 1rem; font-weight: 700; }
+.who i { display: grid; place-items: center; width: 28px; height: 28px; flex: none; border-radius: 50%; font-style: normal; font-size: 14px; font-weight: 700; }
+.who.ai i { background: var(--ac); color: #fff; }
+.who.hu i { background: var(--card); color: var(--ac-t); border: 1.5px solid var(--ac-t); }
+.flow-r .nxt { font-size: 1rem; line-height: 1.6; color: var(--ink-2); }
+@media (max-width: 760px) {
+  .flow-h { display: none; }
+  .flow-r { grid-template-columns: 1fr; gap: 4px; padding: 12px 14px; }
+  .flow-r .nxt::before { content: "→ "; color: var(--ac-mid); font-weight: 700; }
+}
+.fine { margin-top: 8px !important; font-size: 1rem !important; color: var(--mute) !important; }
+
+/* 06 設定 */
+.steps3 { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(10px, 2vw, 20px); }
+@media (max-width: 760px) { .steps3 { grid-template-columns: 1fr; } }
+.steps3 li { border: 1px solid var(--line); border-radius: 12px; padding: clamp(12px, 1.8vw, 18px); background: var(--card); }
+.steps3 .en { display: block; font: 800 14px/1 var(--ff-en); letter-spacing: .14em; color: var(--ac-t); margin-bottom: 8px; }
+.steps3 p { margin: 0 0 8px; font-size: 1rem; }
+.opts { display: flex; flex-wrap: wrap; gap: 6px; }
+.opts span { font-size: 14px; font-weight: 700; color: var(--ac-t); background: var(--ac-soft); border-radius: 999px; padding: 2px 10px; line-height: 1.6; }
+
+/* 07 責任分界（B-01と同じ文言） */
+.rel { display: grid; grid-template-columns: 1fr 136px 1fr 136px .8fr; align-items: stretch; }
+.node { padding: clamp(12px, 1.6vw, 18px); border: 1px solid var(--line); border-radius: 12px; background: var(--card); }
+.node .en { font: 700 14px/1 var(--ff-en); letter-spacing: .14em; text-transform: uppercase; color: var(--mute); }
+.node h3 { margin: 6px 0 6px; font-size: clamp(1.02rem, 1.6vw, 1.15rem); }
+.node ul { list-style: none; margin: 0; padding: 0; }
+.node li { position: relative; padding: 5px 0 5px 16px; border-top: 1px solid var(--line-2); font-size: 1rem; line-height: 1.55; }
+.node li::before { content: ""; position: absolute; left: 2px; top: 13px; width: 7px; height: 7px; border-radius: 2px; background: var(--ac-mid); }
+.node.you { border: 2px solid var(--ac); }
+.node.you .en { color: var(--ac-t); }
+.node.you li::before { background: var(--ac); }
+.node.st { background: var(--paper); }
+.edge { position: relative; display: flex; align-items: center; justify-content: center; }
+.edge::before { content: ""; position: absolute; left: 8px; right: 12px; top: 50%; height: 2px; background: var(--ac-mid); }
+.edge::after { content: ""; position: absolute; right: 6px; top: calc(50% - 6px); border: 6px solid transparent; border-left: 9px solid var(--ac-mid); }
+.edge span { position: relative; padding: 2px 6px; background: var(--card); font-size: 14px; font-weight: 700; color: var(--ac-t); white-space: nowrap; }
+.slide .rel-note { margin: 10px 0 0; font-family: var(--ff-head); font-size: clamp(1rem, 1.6vw, 1.1rem); font-weight: 900; color: var(--ac-t); }
+@media (max-width: 900px) {
+  .rel { grid-template-columns: 1fr; }
+  .edge { height: 48px; }
+  .edge::before { left: 50%; right: auto; top: 4px; bottom: 12px; width: 2px; height: auto; }
+  .edge::after { left: calc(50% - 6px); right: auto; top: auto; bottom: 2px; border: 6px solid transparent; border-top: 9px solid var(--ac-mid); }
+}
+.undec { margin-top: clamp(10px, 1.6vw, 16px); border: 1px dashed var(--ac-mid); border-radius: 12px; padding: 10px 14px; }
+.undec-h { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 12px; margin-bottom: 6px; }
+.undec-h h3 { margin: 0; font-size: 1rem; }
+.undec-h span { font-size: 1rem; color: var(--mute); }
+.undec ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px 12px; }
+@media (max-width: 900px) { .undec ul { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 420px) { .undec ul { grid-template-columns: 1fr; } }
+.undec li { font-size: 1rem; font-weight: 700; line-height: 1.5; }
+.undec li .tbd { display: block; width: max-content; margin-top: 2px; font-size: 14px; }
+
+/* 08 品質と比較表 */
+.diffs { list-style: none; margin: 0; padding: 0; }
+.diffs li:first-child { border-top: 0; padding-top: 0; }
+.diffs li { padding: 8px 0; border-top: 1px solid var(--line); }
+.diffs li b { display: block; font-size: 1rem; }
+.diffs li > span { display: block; font-size: 1rem; color: var(--ink-2); line-height: 1.65; }
+.cmp { width: 100%; border-collapse: collapse; font-size: 1rem; background: var(--card); }
+.cmp th, .cmp td { padding: clamp(7px, 1vw, 10px) 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; line-height: 1.55; }
+.cmp thead th { font-size: 14px; color: var(--mute); font-weight: 700; border-bottom: 2px solid var(--ink); }
+.cmp thead th.ours { color: var(--ac-t); }
+.cmp tbody th { font-weight: 700; width: 26%; }
+.cmp td.ours { font-weight: 700; color: var(--ac-t); background: var(--ac-soft); }
+.cmp tr.same td { color: var(--ink-2); }
+.slide .cmp-note { margin: 8px 0 0; font-size: 1rem; color: var(--mute); line-height: 1.65; }
+@media (max-width: 600px) {
+  .cmp thead th:first-child { display: none; }
+  .cmp thead tr, .cmp tbody tr { display: grid; grid-template-columns: 1fr 1fr; }
+  .cmp tbody th { grid-column: 1 / -1; width: auto; padding: 12px 10px 0; border: 0; font-size: 14px; color: var(--mute); }
+}
+
+/* 09 作り替え */
+.tile { border: 1px solid var(--line); border-radius: 12px; padding: clamp(12px, 1.6vw, 16px); background: var(--card); }
+.tile svg { width: 30px; height: 30px; fill: none; stroke: var(--ac-t); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 6px; }
+.tile p { margin: 0; font-size: 1rem; }
+.lanes { margin-top: clamp(10px, 1.6vw, 16px); display: grid; grid-template-columns: 1fr 1fr; gap: clamp(10px, 2vw, 20px); }
+@media (max-width: 760px) { .lanes { grid-template-columns: 1fr; } }
+.lane { background: var(--bg-2); border-radius: 12px; padding: clamp(12px, 1.6vw, 16px); }
+.lane .en { display: block; font: 800 14px/1 var(--ff-en); letter-spacing: .16em; text-transform: uppercase; color: var(--ac-t); margin-bottom: 6px; }
+.lane p { margin: 0; font-size: 1rem; }
+
+/* 10 収益の式 */
+.eq { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 10px; font-weight: 700; font-size: clamp(1rem, 1.7vw, 1.15rem); margin-bottom: clamp(12px, 2vw, 20px); }
+.eq .term { background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; line-height: 1.4; }
+.eq .term small { display: block; font-size: 14px; font-weight: 700; color: var(--mute); margin-top: 3px; }
+.eq .term.q { border: 1px dashed var(--hold); background: var(--hold-bg); }
+.eq .term.q small { color: var(--hold); }
+.eq .op { font: 800 1.25rem/1 var(--ff-en); color: var(--mute); }
+.calc { border: 1px solid var(--line); border-radius: 12px; padding: clamp(12px, 1.6vw, 16px); background: var(--card); cursor: auto; }
+.calc h3 { margin: 0 0 6px; font-size: 1rem; }
+.g2-calc { grid-template-columns: 1fr 1.15fr; align-items: center; }
+@media (max-width: 760px) { .g2-calc { grid-template-columns: 1fr; } }
+.g2-calc .eq { margin-bottom: 0; }
+.calc label { display: grid; grid-template-columns: 1fr 9.5em 1.6em; align-items: center; gap: 8px; padding: 4px 0; font-size: 1rem; font-weight: 700; }
+.calc label small { display: block; font-size: 14px; font-weight: 500; color: var(--mute); line-height: 1.4; }
+.calc input { width: 100%; min-height: 44px; padding: 0 10px; border: 1px solid var(--ac-mid); border-radius: 8px; background: var(--bg); color: var(--ink); font: 700 1rem var(--ff-en); text-align: right; }
+.calc input:focus { outline: 2px solid var(--ac); outline-offset: 1px; }
+.calc .u { font-size: 14px; color: var(--mute); }
+.calc output { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 10px; margin-top: 8px; padding-top: 10px; border-top: 2px solid var(--ink); font-weight: 700; }
+.calc output span { font-size: 1rem; }
+.calc output b { font: 800 clamp(1.3rem, 2.6vw, 1.7rem)/1.2 var(--ff-en); color: var(--ac-t); }
+.calc output b.wait { font: 700 1rem/1.5 var(--ff-body); color: var(--mute); }
+.slide .calc .fine { margin-bottom: 0 !important; }
+@media (max-width: 420px) { .calc label { grid-template-columns: 1fr 1.6em; } .calc label > span:first-child { grid-column: 1 / -1; } }
+
+/* 11 先行パートナー */
+.pending { border: 1px dashed var(--hold); background: var(--hold-bg); border-radius: 12px; padding: clamp(12px, 1.8vw, 18px); margin-bottom: clamp(12px, 2vw, 20px); }
+.pending b { display: block; color: var(--hold); font-size: clamp(1rem, 1.5vw, 1.08rem); margin-bottom: 4px; }
+.slide .pending p { margin: 0; color: var(--ink); }
+
+/* 12 取扱条件 */
+.col { border: 1px solid var(--line); border-radius: 12px; padding: clamp(12px, 1.6vw, 16px); }
+.col-head { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; flex-wrap: wrap; }
+.col-head h3 { margin: 0; }
+.col ul { margin: 0; padding: 0; list-style: none; }
+.col li { font-size: 1rem; padding: 4px 0 4px 16px; position: relative; color: var(--ink-2); line-height: 1.55; }
+.col li::before { content: ""; position: absolute; left: 2px; top: 12px; width: 6px; height: 6px; border-radius: 50%; background: var(--ac); }
+.col li b { color: var(--ink); }
+.col.open { border-style: dashed; border-color: var(--hold); }
+.col.open li::before { background: var(--hold); }
+.col.open ul.two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+@media (max-width: 900px) { .col.open ul.two { grid-template-columns: 1fr; } }
+.pill { display: inline-block; font-size: 14px; font-weight: 700; border-radius: 999px; padding: 1px 10px; }
+.pill.ok { color: var(--ac-t); background: var(--ac-soft); }
+.pill.ng { color: var(--hold); background: var(--hold-bg); }
+.later { margin-top: clamp(10px, 1.6vw, 14px); display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 1rem; color: var(--ink-2); }
+.later b { color: var(--ink); }
+.later span.c { border: 1px dashed var(--line); border-radius: 999px; padding: 2px 10px; background: var(--card); }
+
+/* 13 次の一歩 */
+.next4 { list-style: none; margin: 0 0 clamp(8px, 1.4vw, 12px); padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(10px, 1.8vw, 18px); }
+@media (max-width: 760px) { .next4 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 420px) { .next4 { grid-template-columns: 1fr; } }
+.next4 li { border-top: 2px solid var(--hi); padding-top: 10px; }
+.next4 .en { display: block; font: 800 14px/1 var(--ff-en); letter-spacing: .14em; color: var(--hi); margin-bottom: 6px; }
+.next4 b { display: block; color: #fff; font-size: clamp(1rem, 1.6vw, 1.08rem); }
+.next4 span.d { display: block; color: var(--on-navy-2); font-size: 1rem; margin-top: 2px; line-height: 1.6; }
+.cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; margin-top: clamp(10px, 1.6vw, 16px); }
+.slide.dark .btn { background: var(--hi); color: #0b2c5c; }
+.slide.dark .cta-row p { margin: 0; font-size: 1rem; }
+
+/* ノート */
+.note-box { margin-top: 12px; background: var(--card); border: 1px dashed var(--line); border-radius: 12px; padding: 14px 18px; }
+.note-box .nl { display: block; font: 700 13px/1 var(--ff-body); letter-spacing: .12em; color: var(--mute); margin-bottom: 8px; }
+.note-box p { margin: 0 0 .5em; font-size: 1rem; color: var(--ink); line-height: 1.85; }
+.note-box p:last-child { margin: 0; }
+body.hide-notes .note-box { display: none; }
+
+/* 操作バー */
+.bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.bar-in { max-width: calc(var(--lp-max) + 32px); margin: 0 auto; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.bar-grp { display: flex; align-items: center; gap: 8px; }
+.bar button { min-height: 44px; min-width: 44px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--ink); font: 700 .88rem/1 var(--ff-body); cursor: pointer; white-space: nowrap; }
+.bar button:hover { border-color: var(--ac-t); color: var(--ac-t); }
+.bar .count { font: 700 .92rem/1 var(--ff-en); color: var(--ink-2); min-width: 4.5em; text-align: center; }
+.bar .hint { font-size: 13px; color: var(--mute); }
+@media (max-width: 700px) { .bar .hint { display: none; } }
+@media (max-width: 760px) { #present { display: none; } }
+@media (max-width: 420px) { .bar-in { padding: 12px; } .bar-grp { gap: 6px; } .bar button { padding: 0 12px; font-size: .86rem; } .bar .count { min-width: 3.8em; } #print { display: none; } }
+
+/* フッター */
+.deck-foot { max-width: calc(var(--lp-max) + 32px); margin: 0 auto; padding: 8px 16px 40px; text-align: center; font-size: 13px; color: var(--mute); }
+.deck-foot p { margin: 0 0 4px; }
+.deck-foot a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 10px; color: var(--ink-2); }
+
+/* 投影モード：P キー／「投影」ボタン。1枚だけを16:9のまま画面いっぱいに */
+body.present { overflow: hidden; background: #000; padding: 0; }
+body.present .deck-head, body.present .note-box, body.present .fc-row,
+body.present .bar, body.present .deck-foot { display: none !important; }
+body.present .deck { max-width: none; margin: 0; padding: 0; }
+body.present section.slide-wrap { display: none; margin: 0; }
+body.present section.slide-wrap.is-cur { display: block; position: fixed; inset: 0; z-index: 70; background: #000; cursor: pointer; }
+body.present .slide-wrap.is-cur .slide {
+  position: absolute; left: 50%; top: 50%; width: 1200px; height: 675px; min-height: 0; aspect-ratio: auto;
+  transform: translate(-50%, -50%) scale(var(--ps, 1)); transform-origin: center;
+  border: 0; border-radius: 0; box-shadow: none; overflow: hidden;
+}
+
+/* 印刷：1枚1ページ、ノートと操作バーは出さない */
+@media print {
+  @page { size: 297mm 167mm; margin: 0; }
+  body { background: #fff; padding: 0; }
+  .bar, .deck-head, .note-box, .deck-foot { display: none !important; }
+  .deck { max-width: none; padding: 0; margin: 0; }
+  section.slide-wrap { margin: 0; break-after: page; page-break-after: always; }
+  .slide { width: 297mm; height: 167mm; aspect-ratio: auto; border: 0; border-radius: 0; box-shadow: none; padding: 10mm 13mm 11mm; }
+  .slide h1 { font-size: 30pt; } .slide h2 { font-size: 21pt; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+/* ===== ChatGPTファクトチェック（主CTAより弱く） ===== */
+.fc-row { margin-top: 12px; }
+.fc-btn { display: inline-flex; align-items: center; flex-wrap: wrap; gap: .2em .6em; min-height: 44px; padding: 8px 18px;
+  border: 1px solid currentColor; border-radius: 999px; background: transparent; color: var(--ink-2);
+  font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; text-align: left; line-height: 1.5; }
+.fc-btn:hover { color: var(--ac-t); }
+.fc-btn svg { width: 16px; height: 16px; flex: none; }
+.fc-sub { font-size: 13px; font-weight: 400; opacity: .8; }
+@media print { .fc-row { display: none; } }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 40 40">
+    <path d="M13 6.5c1-.6 2.3-.3 2.9.7l2.6 4.6c.5.9.3 2-.5 2.7l-2.3 1.9c1.4 3 3.8 5.4 6.8 6.8l1.9-2.3c.7-.8 1.8-1 2.7-.5l4.6 2.6c1 .6 1.3 1.9.7 2.9l-1.7 2.8c-.9 1.5-2.7 2.2-4.4 1.7C16.8 27.6 12.4 23.2 10.6 12.2c-.5-1.7.2-3.5 1.7-4.4z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
+    <path d="M26 5.5h8M26 11h5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
+<div class="deck-head">
+  <a class="brand" href="#s01" aria-label="1枚目へ">
+    <svg aria-hidden="true"><use href="#mark"/></svg>
+    <span><span class="brand-name">おまかせ受電AI</span><span class="brand-sub">OEM PARTNER BRIEFING</span></span>
+  </a>
+  <p>パートナー説明会の投影資料（全13枚）。各スライドの下が「話す言葉」です。スライドだけを全画面で出すときは、投影ボタンかPキーを使ってください。</p>
+</div>
+
+<main class="deck" id="deck">
+
+<!-- 01 表紙 -->
+<section class="slide-wrap" id="s01" aria-labelledby="t01">
+  <div class="slide dark">
+    <svg class="cover-mark" viewBox="0 0 40 40" aria-hidden="true"><use href="#mark"/></svg>
+    <div class="s-top"><span class="s-no">01 / 13</span><span class="s-kicker">OEMパートナー説明会</span></div>
+    <div class="s-body">
+      <span class="cover-tag">店舗向けの受電AI　OEM提供</span>
+      <h1 id="t01">貴社の商材に、<br>AI電話を1本足せます。</h1>
+      <p>店舗の電話を用件ごとにAIと人へ振り分ける「おまかせ受電AI」を、貴社のサービス名で販売できます。</p>
+      <ul class="cover-facts">
+        <li><span>店舗への売価</span>貴社が決める</li>
+        <li><span>店舗の窓口</span>貴社</li>
+        <li><span>管理画面</span>貴社専用に作る</li>
+      </ul>
+    </div>
+    <div class="s-foot"><span><svg aria-hidden="true"><use href="#mark"/></svg>おまかせ受電AI</span><span>株式会社ライトアップ（東証グロース 6580）</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>本日のテーマは、店舗の電話を用件ごとにAIと人へ振り分ける「おまかせ受電AI」を、貴社のサービス名で販売していただく形です。</p>
+    <p>決まっていることは、3つです。売価は貴社が決め、店舗の窓口も貴社が持ち、管理画面は貴社専用に作ります。まだ決めていない条件は、12枚目の一覧のとおりです。仮の数字を、この場で申し上げることはしません。</p>
+  </aside>
+</section>
+
+<!-- 02 市場の変化 -->
+<section class="slide-wrap" id="s02" aria-labelledby="t02">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">02 / 13</span><span class="s-kicker">市場の変化</span></div>
+    <div class="s-body">
+      <h2 id="t02">人手が足りない店舗で、<br>電話の受け方が増えています。</h2>
+      <ul class="shift">
+        <li><b>少ない人数で、店を回す</b><span>店舗を持つ業種では人手不足が続き、1人が何役も受け持つ時間が長くなっています。</span></li>
+        <li><b>電話は、ほかの仕事と重なる</b><span>電話に出るのは、接客や作業をしている同じ人です。出るたびに、目の前の仕事が止まります。</span></li>
+        <li><b>一次受けを、任せる選択肢</b><span>人の電話代行や、AIの自動応答。電話の最初の受け手を店の外に置く方法も、広がってきました。</span></li>
+      </ul>
+      <p class="bridge">電話を誰が受けるかは、店舗の側でも見直せる項目になりつつあります。</p>
+    </div>
+    <div class="s-foot"><span><svg aria-hidden="true"><use href="#mark"/></svg>おまかせ受電AI</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>まず、店舗の側で起きている変化です。店舗を持つ業種では人手不足が続き、少ない人数で店を回す時間が長くなっています。電話に出るのも、接客や作業をしている同じ人です。</p>
+    <p>そのため、電話の最初の受け手を店の外に置く方法として、人の電話代行やAIの自動応答が使われ始めました。具体的な場面は、次の枚でお見せします。</p>
+  </aside>
+  <div class="fc-row"><button class="fc-btn" type="button" data-fc-section="市場の変化" data-fc-claim="店舗を持つ業種では人手不足が続き、1人が何役も受け持つ時間が長くなっている／店舗では、電話に出る人と接客や作業をする人が同じで、電話のたびに目の前の仕事が止まる／人の電話代行やAIの自動応答など、店舗の電話の一次受けを店の外に任せる方法が広がってきている"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="m8.5 11 1.8 1.8L14 9"/></svg>ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button></div>
+</section>
+
+<!-- 03 貴社の顧客（店舗）が困っていること -->
+<section class="slide-wrap" id="s03" aria-labelledby="t03">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">03 / 13</span><span class="s-kicker">貴社のお客様（店舗）の困りごと</span></div>
+    <div class="s-body">
+      <h2 id="t03">手が離せないときに限って、<br>店舗の電話は鳴ります。</h2>
+      <ul class="quotes">
+        <li><small>飲食店</small><b>調理中は、<br>電話に出られない</b></li>
+        <li><small>美容室</small><b>施術中は、<br>手が離せない</b></li>
+        <li><small>カフェ</small><b>注文が重なる時間と、<br>閉店後に鳴る</b></li>
+      </ul>
+      <ul class="pains" aria-label="電話の困りごと3つ">
+        <li><span>01</span>予約の電話で、手が止まる</li>
+        <li><span>02</span>営業電話に、時間を取られる</li>
+        <li><span>03</span>営業時間外の電話を、取りこぼす</li>
+      </ul>
+    </div>
+    <div class="s-foot"><span><svg aria-hidden="true"><use href="#mark"/></svg>おまかせ受電AI</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>貴社のお客様である店舗で、電話が鳴る場面を思い浮かべてみてください。飲食店なら調理中、美容室なら施術中です。カフェなら、注文が重なる時間や閉店後にも鳴ります。</p>
+    <p>困りごとは、大きく3つに分けられます。予約の電話で手が止まること、営業電話に時間を取られること、営業時間外の電話を取りこぼすことです。電話はどの店舗にもある困りごとなので、業種を問わず話の入口になります。</p>
+  </aside>
+</section>
+
+<!-- 04 商材を足す経済合理性 -->
+<section class="slide-wrap" id="s04" aria-labelledby="t04">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">04 / 13</span><span class="s-kicker">商材を足す理由</span></div>
+    <div class="s-body">
+      <h2 id="t04">既存のお客様への、<br>もう1本の提案になります。</h2>
+      <ul class="fit" aria-label="向いている会社と、その理由">
+        <li><b>店舗向けにAIやITを売っている会社</b><span>既存のお客様に、もう1本提案できる商材が増えます</span></li>
+        <li><b>通信・OA・POSの販売会社</b><span>電話回線や店舗の機器と一緒に話ができます</span></li>
+        <li><b>予約システムの販売会社</b><span>予約の電話という、隣の困りごとまで拾えます</span></li>
+        <li><b>店舗の運営を支援している会社</b><span>人手不足の相談の中で、電話の負担を減らす打ち手になります</span></li>
+      </ul>
+      <p class="notfit"><b>向いていない会社</b><span>店舗からの問い合わせを受ける窓口を持てない会社</span><span>通話品質の高さを一番の売りにしたい会社</span></p>
+    </div>
+    <div class="s-foot"><span><svg aria-hidden="true"><use href="#mark"/></svg>おまかせ受電AI</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>商材を足す理由は、新しい見込み客を探さなくても、いま取引のある店舗にそのまま提案できることです。すでに店舗と取引がある会社なら、次の訪問で話を出せます。</p>
+    <p>向いているのは、この4種類の会社です。通信やPOSの会社なら回線や機器と一緒に、予約システムの会社なら予約の電話という隣の困りごととして話ができます。逆に、店舗からの問い合わせを受ける窓口を持てない会社には向きません。一次受けを貴社にお願いする作りだからです。</p>
+  </aside>
+</section>
+
+<!-- 05 商品説明① 振り分け -->
+<section class="slide-wrap" id="s05" aria-labelledby="t05">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">05 / 13</span><span class="s-kicker">商品説明① 何をするか</span></div>
+    <div class="s-body">
+      <h2 id="t05">店舗の電話を、用件ごとに<br>AIと人へ振り分けます。</h2>
+      <p class="route-lead">着信すると、まずAIが用件を聞きます。人に残す電話は、店舗が用件ごとに決める作りです。</p>
+      <div class="flow" role="table" aria-label="用件ごとの振り分けの例">
+        <div class="flow-h" role="row"><span role="columnheader">用件</span><span role="columnheader">最初に受ける</span><span role="columnheader">次の処理</span></div>
+        <div class="flow-r" role="row"><span class="k" role="cell">予約・予約変更</span><span class="who hu" role="cell"><i>人</i>スタッフへつなぐ</span><span class="nxt" role="cell">営業時間内はスタッフへ転送。時間外はAIが予約の希望を仮受付し、確定はスタッフが行います</span></div>
+        <div class="flow-r" role="row"><span class="k" role="cell">営業電話</span><span class="who ai" role="cell"><i>AI</i>AIが受ける</span><span class="nxt" role="cell">用件と連絡先を聞いて、その場で完結</span></div>
+        <div class="flow-r" role="row"><span class="k" role="cell">道順・営業時間</span><span class="who ai" role="cell"><i>AI</i>AIが受ける</span><span class="nxt" role="cell">登録済みの店舗情報を見て案内</span></div>
+        <div class="flow-r" role="row"><span class="k" role="cell">クレーム・お困りごと</span><span class="who hu" role="cell"><i>人</i>スタッフへつなぐ</span><span class="nxt" role="cell">スタッフが出られないときは、AIが用件を聞いてLINEへ通知。スタッフが折り返します</span></div>
+      </div>
+      <p class="fine">AIが案内に使う店舗情報は、スプレッドシートに登録したものを参照します。</p>
+    </div>
+    <div class="s-foot"><span><svg aria-hidden="true"><use href="#mark"/></svg>おまかせ受電AI</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>全部の電話をAIに任せるサービスではありません。着信するとAIが用件を聞き、予約や大切な用件は人へ、定型の質問や営業電話はAIが案内して終えます。人が出られないときは、AIが聞いた用件をLINEに通知し、スタッフが折り返します。</p>
+    <p>表は、振り分けの例です。予約はAIが確定しません。営業時間外の予約の希望はAIが仮受付として残し、確定はスタッフが行います。店舗に説明するときは「人をなくすのではなく、人が必要な電話に戻す」とお伝えください。</p>
+  </aside>
+</section>
+
+<!-- 06 商品説明② 設定 -->
+<section class="slide-wrap" id="s06" aria-labelledby="t06">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">06 / 13</span><span class="s-kicker">商品説明② 店舗の設定</span></div>
+    <div class="s-body">
+      <h2 id="t06">店舗の設定は、選ぶだけの3ステップ。<br>今の番号から転送する想定です。</h2>
+      <ol class="steps3">
+        <li><span class="en">STEP 01</span><h3>業種のひな形を選ぶ</h3><p>飲食店・サロンなど、よくある用件があらかじめ並んだひな形から始めます。</p><div class="opts"><span>飲食店</span><span>サロン</span></div></li>
+        <li><span class="en">STEP 02</span><h3>AIか人かを決める</h3><p>予約は人、営業電話はAI、のように用件ごとに最初の受け手を選びます。</p><div class="opts"><span>人へつなぐ</span><span>AIが受ける</span></div></li>
+        <li><span class="en">STEP 03</span><h3>次の処理を決める</h3><p>電話を受けたあとの動きは、3つのうちから選ぶだけです。</p><div class="opts"><span>その場で完結</span><span>スタッフへ転送</span><span>通知して折り返し</span></div></li>
+      </ol>
+      <p class="bridge">今の番号から転送して使う形を想定しています。回線の種類や転送の条件で変わるため、導入前に確認します。</p>
+      <p class="bridge2">AIに話させる文章を、店舗がゼロから書く必要はありません。任せる範囲は、あとから変えられます。</p>
+    </div>
+    <div class="s-foot"><span><svg aria-hidden="true"><use href="#mark"/></svg>おまかせ受電AI</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>店舗の設定は3つだけです。業種のひな形を選び、用件ごとにAIか人かを決め、そのあとの処理を選びます。選ぶことと短い書き足しだけで始められるので、店舗の手間は大きくありません。電話は、今の番号から転送して使う想定です。</p>
+    <p>店舗への勧め方のコツは、全部をAIに任せようとしないことです。いちばん困っている電話を一つ選び、そこから始めてもらいます。任せる範囲は、あとから広げていけば十分です。</p>
+  </aside>
+</section>
+
+<!-- 07 責任分界 -->
+<section class="slide-wrap" id="s07" aria-labelledby="t07">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">07 / 13</span><span class="s-kicker">責任分界</span></div>
+    <div class="s-body">
+      <h2 id="t07">売価は貴社が決め、<br>店舗の窓口も貴社が持ちます。</h2>
+      <div class="rel" role="list" aria-label="弊社・貴社・店舗の関係">
+        <div class="node us" role="listitem">
+          <span class="en">Developer</span>
+          <h3>弊社</h3>
+          <ul><li>受電AIの開発と提供</li><li>貴社専用の管理画面を作る</li><li>業種に合わせた機能の作り替え</li></ul>
+        </div>
+        <div class="edge" aria-hidden="true"><span>開発・提供</span></div>
+        <div class="node you" role="listitem">
+          <span class="en">OEM partner</span>
+          <h3>貴社</h3>
+          <ul><li>売価を決める</li><li>店舗への提案・販売</li><li>問い合わせ・クレームの一次受け</li></ul>
+        </div>
+        <div class="edge" aria-hidden="true"><span>販売・一次受け</span></div>
+        <div class="node st" role="listitem">
+          <span class="en">Store</span>
+          <h3>店舗</h3>
+          <ul><li>貴社のサービスとして使う</li></ul>
+        </div>
+      </div>
+      <p class="rel-note">店舗から見えるのは、貴社のサービスだけです。</p>
+      <div class="undec">
+        <div class="undec-h"><h3>まだ決めていない条件</h3><span>どれも、貴社の販売のしかたを伺ったうえで決めます。</span></div>
+        <ul>
+          <li>仕入値・初期費用<span class="tbd">調整中</span></li>
+          <li>最低契約・解約<span class="tbd">調整中</span></li>
+          <li>申込の受付と請求<span class="tbd">調整中</span></li>
+          <li>障害時の対応<span class="tbd">調整中</span></li>
+          <li>併売・地域の扱い<span class="tbd">調整中</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="s-foot"><span><svg aria-hidden="true"><use href="#mark"/></svg>おまかせ受電AI</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>OEMの話でいちばん大事なのが、この分担です。弊社は受電AIの開発と提供、貴社専用の管理画面づくり、業種に合わせた機能の作り替えを受け持ちます。貴社には、売価を決めること、店舗への提案と販売、そして問い合わせやクレームの一次受けをお願いしています。</p>
+    <p>店舗から見れば貴社のサービスなので、弊社は表に出ません。下の5つの条件はまだ決めておらず、12枚目の一覧にもまとめています。店舗へのご説明でも、決まったようには話さないでください。</p>
+  </aside>
+</section>
+
+<!-- 08 品質と違い -->
+<section class="slide-wrap" id="s08" aria-labelledby="t08">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">08 / 13</span><span class="s-kicker">品質と違い</span></div>
+    <div class="s-body">
+      <h2 id="t08">違いは、原価と作り替えの幅。<br>通話品質は、他社と同等です。</h2>
+      <div class="g2w">
+        <ul class="diffs">
+          <li><b>違い① 原価</b><span>受電AIを弊社1社で自社開発しています。比べた数字は出せません。仕入値への反映は<span class="tbd">調整中</span></span></li>
+          <li><b>違い② 作り替えの幅</b><span>完成品を取り次ぐ場合との違いは、右の表のとおりです</span></li>
+        </ul>
+        <div>
+          <table class="cmp">
+            <thead><tr><th scope="col">項目</th><th scope="col">完成品を取り次いで売る</th><th scope="col" class="ours">おまかせ受電AIのOEM</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">売るときの名前</th><td>提供元のサービス名</td><td class="ours">貴社のサービス名</td></tr>
+              <tr><th scope="row">管理画面</th><td>提供元の画面を使う</td><td class="ours">貴社専用に作る</td></tr>
+              <tr><th scope="row">業種向けの機能</th><td>用意された機能から選ぶ</td><td class="ours">業種に合わせて作り替え</td></tr>
+              <tr><th scope="row">1社のための開発</th><td>提供元の標準機能の範囲で使う</td><td class="ours">都度お見積りで対応</td></tr>
+              <tr class="same"><th scope="row">通話品質</th><td>同等</td><td>同等</td></tr>
+            </tbody>
+          </table>
+          <p class="cmp-note">左の列は、完成品を取り次ぐ場合によくある形で、特定の会社を指すものではありません。他社にも、OEMや自社ブランドでの提供に対応するサービスはあります。</p>
+        </div>
+      </div>
+    </div>
+    <div class="s-foot"><span><svg aria-hidden="true"><use href="#mark"/></svg>おまかせ受電AI</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>違いは2つあります。1つ目は原価です。弊社1社だけで自社開発しているぶん、少し抑えられると見ています。ただ、比べた数字はまだ出せません。2つ目が作り替えの幅で、右の表のとおりです。</p>
+    <p>通話品質は、正直に申し上げて他社と同等です。遜色はありませんが、飛び抜けて良いわけでもありません。AI電話の聞き取りや話し方、応答の速さは、どの音声AIを選び、どう調整し、どう組み立てるかで決まるため、品質を売り文句にはしない方針です。</p>
+    <p>表の左の列は、完成品のサービスを販売代理として取り次ぐ場合によくある形で、特定の会社を指すものではありません。他社にもOEMに対応するサービスはあります。比べるときは、管理画面の作り替えと、1社のための開発を受けるかどうかを確かめてください。</p>
+  </aside>
+  <div class="fc-row"><button class="fc-btn" type="button" data-fc-section="違いは、原価と作り替えの幅。通話品質は、他社と同等です。" data-fc-claim="完成品のAI電話サービスを取り次いで売る場合、提供元のサービス名と提供元の管理画面を使う形がよくある／完成品を取り次ぐ場合、業種向けの機能は用意された機能から選び、1社のための開発はせず提供元の標準機能の範囲で使う形がよくある／他社にも、OEMや自社ブランドでの提供に対応するAI電話サービスはある"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="m8.5 11 1.8 1.8L14 9"/></svg>ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button></div>
+</section>
+
+<!-- 09 作り替え -->
+<section class="slide-wrap" id="s09" aria-labelledby="t09">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">09 / 13</span><span class="s-kicker">作り替え</span></div>
+    <div class="s-body">
+      <h2 id="t09">SMS・予約台帳・本人の声まで、<br>業種に合わせて作り替えます。</h2>
+      <div class="g4">
+        <div class="tile"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="12" y="4" width="24" height="40" rx="4"/><path d="M20 38h8M17 13h14M17 19h10M17 25h12"/></svg><h3>電話のあとに自動でSMS</h3><p>承った用件の確認、地図、予約の案内などを、電話を切ったあとに送ります。</p></div>
+        <div class="tile"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="10" width="38" height="28" rx="3"/><path d="M5 13l19 13 19-13"/></svg><h3>連携してメール送信</h3><p>スプレッドシートと連携し、電話の内容に応じたメールを送る機能です。</p></div>
+        <div class="tile"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="3"/><path d="M6 16h36M6 26h36M6 36h36M18 6v36"/></svg><h3>予約台帳・注文管理</h3><p>スプレッドシートと連携して、受けた予約や注文を台帳に残します。</p></div>
+        <div class="tile"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="17" y="4" width="14" height="24" rx="7"/><path d="M10 22a14 14 0 0 0 28 0M24 36v8M17 44h14"/></svg><h3>店主・スタッフ本人の声</h3><p>応対の一部は、本人の録音です。店舗の受付なら、応対の多くを録音でまかなえると見ています。</p></div>
+      </div>
+      <div class="lanes">
+        <div class="lane"><span class="en">Shared</span><h3>何社かで使える機能は、<br>最初にまとめて開発</h3><p>使い回せる機能は、最初にまとめて開発し、各社に提供します。</p></div>
+        <div class="lane"><span class="en">Custom</span><h3>1社のための機能は、<br>都度お見積りで開発</h3><p>内容によりますが、数十万円程度で収まることが多いです。</p></div>
+      </div>
+    </div>
+    <div class="s-foot"><span><svg aria-hidden="true"><use href="#mark"/></svg>おまかせ受電AI</span><span>作り替えにかかる期間は、お見積りのときにお伝えします</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>管理画面は貴社専用に作り、そのうえで機能の一部を貴社のお客様に合わせて作り替えます。飲食店と美容室と士業事務所では、電話のあとにやりたいことが違うからです。SMSやメールの送信、予約台帳や注文管理との連携、店主やスタッフ本人の声での応対が、その例になります。</p>
+    <p>本人の声は応対の一部です。すべてを録音で話すわけではありません。何社かで使える機能は最初にまとめて開発し、1社のための機能は都度お見積りです。内容しだいですが、数十万円程度で収まることが多いとお伝えしています。</p>
+  </aside>
+</section>
+
+<!-- 10 収益シミュレーション -->
+<section class="slide-wrap" id="s10" aria-labelledby="t10">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">10 / 13</span><span class="s-kicker">収益シミュレーション</span></div>
+    <div class="s-body">
+      <h2 id="t10">貴社の粗利は、<br>（売価−仕入値）×店舗数です。</h2>
+      <div class="g2 g2-calc">
+        <div class="eq" aria-label="1店舗あたりの差額の内訳">
+          <span class="term">貴社の売価<small>貴社が決める</small></span>
+          <span class="op">−</span>
+          <span class="term q">仕入値<small>【調整中】金額と課金の単位</small></span>
+          <span class="op">±</span>
+          <span class="term q">初期費用<small>【調整中】</small></span>
+        </div>
+        <div class="calc" role="group" aria-labelledby="calcT">
+          <h3 id="calcT">仮の試算（仕入値が<br>1店舗・月額で決まった場合）</h3>
+          <label><span>契約店舗数</span><input type="number" inputmode="numeric" min="0" step="1" id="cN" aria-label="契約店舗数"><span class="u">店</span></label>
+          <label><span>貴社の月額売価<small>1店舗あたり</small></span><input type="number" inputmode="numeric" min="0" step="1" id="cP" aria-label="貴社の月額売価（1店舗あたり）"><span class="u">円</span></label>
+          <label><span>仕入値<small>1店舗あたり・月</small></span><input type="number" inputmode="numeric" min="0" step="1" id="cC" aria-label="仕入値（1店舗あたり・月）"><span class="u">円</span></label>
+          <output id="cOut" for="cN cP cC"><span>月の差額（初期費用は含まない）</span><b class="wait" id="cRes">3つとも入れると計算します</b></output>
+          <p class="fine">仕入値の単位が店舗・月でなければ、この式は使えません。入れた数字で計算するだけで、弊社の約束ではありません。</p>
+        </div>
+      </div>
+    </div>
+    <div class="s-foot"><span><svg aria-hidden="true"><use href="#mark"/></svg>おまかせ受電AI</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>貴社の粗利は、売価と仕入値の差に、契約店舗数を掛けたものです。売価は貴社が決めます。仕入値は、金額だけでなく課金の単位もまだ決まっていません。初期費用の扱いも含め、決まっていない条件は12枚目の一覧のとおりです。</p>
+    <p>そのため、本日は金額の例をお見せしません。仮の数字を置くと、その数字だけが社内で回ってしまうからです。右の欄は空欄から始まるので、仕入値が1店舗・月額で決まった場合の形を確かめる用途にお使いください。入力した数字は、この画面の外へは送りません。</p>
+  </aside>
+</section>
+
+<!-- 11 先行パートナーの動き -->
+<section class="slide-wrap" id="s11" aria-labelledby="t11">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">11 / 13</span><span class="s-kicker">先行パートナーの動き</span></div>
+    <div class="s-body">
+      <h2 id="t11">先行パートナーの動きは、<br>決まり次第お伝えします。</h2>
+      <div class="pending"><b>【調整中】</b><p>先行パートナーの社名・店舗数・反応は、決まり次第この枚を差し替えます。</p></div>
+      <p class="later"><b>いま決まっていること</b><span class="c">売価は貴社</span><span class="c">窓口は貴社</span><span class="c">管理画面は貴社専用</span><span class="c">1社のための開発は都度お見積り</span></p>
+    </div>
+    <div class="s-foot"><span><svg aria-hidden="true"><use href="#mark"/></svg>おまかせ受電AI</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>先行パートナーの社名や店舗数、反応は、まだお出しできる段階ではありません。決まり次第、この枚を差し替えます。</p>
+    <p>いま決まっているのは、売価と窓口が貴社であること、管理画面を貴社専用に作ること、1社のための開発を都度お見積りで受けることの4つです。数字のない枚を残しておくのは、あとで食い違いが起きないようにするためです。</p>
+  </aside>
+</section>
+
+<!-- 12 取扱条件 -->
+<section class="slide-wrap" id="s12" aria-labelledby="t12">
+  <div class="slide">
+    <div class="s-top"><span class="s-no">12 / 13</span><span class="s-kicker">取扱条件</span></div>
+    <div class="s-body">
+      <h2 id="t12">決まっていることと、<br>まだ決めていないこと。</h2>
+      <div class="g2">
+        <div class="col"><div class="col-head"><h3>決まっていること</h3><span class="pill ok">確定</span></div>
+          <ul>
+            <li><b>売価</b>は貴社が決める</li>
+            <li>店舗からの問い合わせ・クレームの<b>一次受け</b>は貴社</li>
+            <li><b>管理画面</b>は貴社専用に作る</li>
+            <li>1社のための<b>個別開発</b>は都度お見積り（数十万円程度で収まることが多い）</li>
+            <li>予約はAIが確定しない（時間外は仮受付、確定はスタッフ）</li>
+          </ul></div>
+        <div class="col open"><div class="col-head"><h3>まだ決めていないこと</h3><span class="pill ng">調整中</span></div>
+          <ul class="two">
+            <li>仕入値・初期費用</li>
+            <li>最低契約・解約</li>
+            <li>申込の受付と請求</li>
+            <li>障害時の対応</li>
+            <li>併売・地域の扱い</li>
+            <li>利用開始までの日数</li>
+            <li>AIが出ていることを冒頭で伝えるか（検討中）</li>
+            <li>先行パートナーの動き</li>
+            <li>各段階の期間</li>
+          </ul></div>
+      </div>
+      <p class="later"><b>今後の開発候補</b><span class="tbd">提供時期は未定</span><span class="c">販売会社ごとの申込URL</span><span class="c">AI受電用の番号の発行</span><span class="c">地図・グルメサイトの掲載番号の変更手順</span></p>
+    </div>
+    <div class="s-foot"><span><svg aria-hidden="true"><use href="#mark"/></svg>おまかせ受電AI</span><span>調整中の項目は、貴社の販売のしかたを伺って決めます</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>取扱条件を、決まっていることと決まっていないことに分けました。左の5つは確定です。売価は貴社、一次受けも貴社、管理画面は貴社専用、個別開発は都度お見積り。予約をAIが確定しない作りも、変わりません。</p>
+    <p>右の9つは、まだ決めていません。先行パートナーの動きや各段階の期間も、ここに含めています。AIが出ていることを冒頭で伝えるかは、店舗ごとに切り替えられる形を検討中です。下の3つは今後の開発候補で、提供時期は未定のため、お約束はできません。</p>
+  </aside>
+</section>
+
+<!-- 13 次の一歩 -->
+<section class="slide-wrap" id="s13" aria-labelledby="t13">
+  <div class="slide dark">
+    <div class="s-top"><span class="s-no">13 / 13</span><span class="s-kicker">次の一歩</span></div>
+    <div class="s-body">
+      <h2 id="t13">まずは、販売先の業種と<br>想定店舗数をお聞かせください。</h2>
+      <ol class="next4">
+        <li><span class="en">01</span><b>ご相談</b><span class="d">業種・店舗数・今の商材を伺う</span></li>
+        <li><span class="en">02</span><b>設計</b><span class="d">管理画面と作り替える機能を決める</span></li>
+        <li><span class="en">03</span><b>条件のすり合わせ</b><span class="d">仕入値・分担・契約を決める</span></li>
+        <li><span class="en">04</span><b>販売開始</b><span class="d">貴社のサービスとして店舗へ</span></li>
+      </ol>
+      <p>流れは目安です。各段階の期間は<span class="tbd">調整中</span>です。</p>
+      <div class="cta-row">
+        <a class="btn" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">OEMパートナーについて相談する →</a>
+        <p>株式会社ライトアップのお問い合わせフォームが開きます</p>
+      </div>
+    </div>
+    <div class="s-foot"><span><svg aria-hidden="true"><use href="#mark"/></svg>おまかせ受電AI</span><span>ご相談：writeup.jp/contact</span></div>
+  </div>
+  <aside class="note-box" aria-label="話す言葉"><span class="nl">話す言葉</span>
+    <p>次の一歩として、販売先の業種と想定の店舗数、いまお持ちの商材を伺わせてください。それが分かれば、管理画面の作り方と、最初に作り替える機能の候補をお出しできます。</p>
+    <p>そのあと、設計、条件のすり合わせを経て、貴社のサービスとして店舗へ販売を始めていただく流れです。各段階の期間は調整中なので、目安としてご覧ください。ご相談は、ライトアップのお問い合わせフォームから承ります。本日はありがとうございました。</p>
+  </aside>
+</section>
+
+</main>
+
+<footer class="deck-foot">
+  <p>提供：株式会社ライトアップ（東証グロース 6580）</p>
+  <a href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">お問い合わせ</a><a href="https://writeup-inc.github.io/saas/omakase-juden-oem/" target="_blank" rel="noopener">OEMパートナーのご案内</a><a href="../">資料インデックス</a><a href="https://www.writeup.jp/company/" target="_blank" rel="noopener">会社概要</a><a href="https://www.writeup.jp/privacy/" target="_blank" rel="noopener">個人情報保護方針</a>
+</footer>
+
+<nav class="bar" aria-label="スライド操作">
+  <div class="bar-in">
+    <div class="bar-grp">
+      <button type="button" id="prev" aria-label="前のスライド">←</button>
+      <span class="count" id="count" aria-live="polite">1 / 13</span>
+      <button type="button" id="next" aria-label="次のスライド">→</button>
+      <span class="hint">←→・クリックで送る／Nでノート／Pで投影</span>
+    </div>
+    <div class="bar-grp">
+      <button type="button" id="present" aria-pressed="false">投影</button>
+      <button type="button" id="notes" aria-pressed="true">ノートを隠す</button>
+      <button type="button" id="print">印刷</button>
+    </div>
+  </div>
+</nav>
+
+<script>
+(function () {
+  var wraps = Array.prototype.slice.call(document.querySelectorAll('.slide-wrap'));
+  var count = document.getElementById('count');
+  var cur = 0;
+  var presenting = false, ownFs = false;
+  function nearest() {
+    if (presenting) return cur;
+    var best = 0, bestD = Infinity;
+    wraps.forEach(function (w, i) {
+      var d = Math.abs(w.getBoundingClientRect().top - 12);
+      if (d < bestD) { bestD = d; best = i; }
+    });
+    return best;
+  }
+  function show() { count.textContent = (cur + 1) + ' / ' + wraps.length; }
+  function go(i) {
+    cur = Math.max(0, Math.min(wraps.length - 1, i));
+    if (presenting) { mark(); } else { wraps[cur].scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    show();
+  }
+  window.addEventListener('scroll', function () { if (presenting) return; cur = nearest(); show(); }, { passive: true });
+
+  /* 投影モード：ノート・見出し・操作バーを隠し、今の1枚を16:9のまま画面いっぱいに出す */
+  var pb = document.getElementById('present');
+  function fit() {
+    var s = Math.min(window.innerWidth / 1200, window.innerHeight / 675);
+    document.body.style.setProperty('--ps', String(s));
+  }
+  function mark() { wraps.forEach(function (w, j) { w.classList.toggle('is-cur', presenting && j === cur); }); }
+  function setPresent(on) {
+    if (on === presenting) return;
+    if (on) cur = nearest();
+    presenting = on;
+    document.body.classList.toggle('present', on);
+    pb.setAttribute('aria-pressed', on ? 'true' : 'false');
+    fit(); mark(); show();
+    var de = document.documentElement;
+    if (on) {
+      if (de.requestFullscreen && !document.fullscreenElement) {
+        try { de.requestFullscreen().then(function () { ownFs = true; }, function () {}); } catch (e) {}
+      }
+    } else {
+      if (ownFs && document.fullscreenElement && document.exitFullscreen) { try { document.exitFullscreen().catch(function () {}); } catch (e) {} }
+      ownFs = false;
+      wraps[cur].scrollIntoView({ block: 'start', behavior: 'instant' });
+    }
+  }
+  window.addEventListener('resize', fit);
+  document.addEventListener('fullscreenchange', function () {
+    if (!document.fullscreenElement && ownFs && presenting) { ownFs = false; setPresent(false); }
+  });
+  pb.addEventListener('click', function () { setPresent(!presenting); });
+  wraps.forEach(function (w, i) {
+    w.addEventListener('click', function (e) {
+      if (!presenting || e.target !== w) return;
+      go(cur + 1);
+    });
+  });
+  document.getElementById('prev').addEventListener('click', function () { go(nearest() - 1); });
+  document.getElementById('next').addEventListener('click', function () { go(nearest() + 1); });
+  wraps.forEach(function (w, i) {
+    w.querySelector('.slide').addEventListener('click', function (e) {
+      if (e.target.closest('a,button,input,label,.calc')) return;
+      if (window.getSelection && String(window.getSelection())) return;
+      go(i + 1);
+    });
+  });
+  var nb = document.getElementById('notes');
+  function setNotes(hide) {
+    document.body.classList.toggle('hide-notes', hide);
+    nb.textContent = hide ? 'ノートを表示' : 'ノートを隠す';
+    nb.setAttribute('aria-pressed', hide ? 'false' : 'true');
+    try { localStorage.setItem('omakase-juden-b03-hide-notes', hide ? '1' : '0'); } catch (e) {}
+  }
+  try { if (localStorage.getItem('omakase-juden-b03-hide-notes') === '1') setNotes(true); } catch (e) {}
+  nb.addEventListener('click', function () { setNotes(!document.body.classList.contains('hide-notes')); });
+  document.getElementById('print').addEventListener('click', function () { window.print(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.target.closest && e.target.closest('input,textarea,select')) return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    var k = e.key;
+    if (k === 'ArrowRight' || k === 'PageDown') { e.preventDefault(); go(nearest() + 1); }
+    else if (k === 'ArrowLeft' || k === 'PageUp') { e.preventDefault(); go(nearest() - 1); }
+    else if (k === 'Home') { e.preventDefault(); go(0); }
+    else if (k === 'End') { e.preventDefault(); go(wraps.length - 1); }
+    else if (k === 'n' || k === 'N') { if (!presenting) setNotes(!document.body.classList.contains('hide-notes')); }
+    else if (k === 'p' || k === 'P') { e.preventDefault(); setPresent(!presenting); }
+    else if (k === 'Escape' && presenting) { setPresent(false); }
+  });
+  show();
+
+  /* 10 試算の欄：既定値なし。3つそろったときだけ計算する */
+  var cN = document.getElementById('cN'), cP = document.getElementById('cP'), cC = document.getElementById('cC'), res = document.getElementById('cRes');
+  function calc() {
+    var n = cN.value, p = cP.value, c = cC.value;
+    if (n === '' || p === '' || c === '') { res.className = 'wait'; res.textContent = '3つとも入れると計算します'; return; }
+    var v = Number(n) * (Number(p) - Number(c));
+    if (!isFinite(v)) { res.className = 'wait'; res.textContent = '数字を入れてください'; return; }
+    res.className = 'num';
+    res.textContent = Math.round(v).toLocaleString('ja-JP') + ' 円／月';
+  }
+  [cN, cP, cC].forEach(function (el) { el.addEventListener('input', calc); });
+})();
+</script>
+<script>
+document.addEventListener('click', function (e) {
+  var b = e.target.closest && e.target.closest('.fc-btn'); if (!b) return;
+  var l = document.querySelector('link[rel=canonical]'); var url = l ? l.href : location.href;
+  var p = '次の資料の記載が事実として正しいか、第三者の立場で確認してください。\n\n【対象ページ】' + url +
+    '\n【セクション】' + b.dataset.fcSection + '\n【記載内容】\n' + b.dataset.fcClaim.split('／').join('\n') +
+    '\n\n【確認してほしいこと】\n- 記載は一般的な事実・相場・公的情報と照らして正しいか\n- 誤り・誇張・古い情報があれば指摘する\n- 反対の見方や、読み手が注意すべき点\n- 確認できないことは「確認できない」と書き、推測で補わない';
+  window.open('https://chatgpt.com/?q=' + encodeURIComponent(p), '_blank', 'noopener,noreferrer');
+  if (navigator.clipboard) navigator.clipboard.writeText(p).catch(function () {});
+});
+</script>
+</body>
+</html>

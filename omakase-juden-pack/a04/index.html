@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>おまかせ受電AI｜商談時の説明ノート（社内限）</title>
+<link rel="canonical" href="https://writeup-inc.github.io/saas/omakase-juden-pack/a04/">
+<meta name="description" content="社内限定。おまかせ受電AIを店舗の経営者へ直販で説明するときの台本（30秒・3分・15分）、切り出し、勧めないお店と先に聞く3点、料金の伝え方、切り返し、言ってはいけない言い方、未決事項をまとめたノートです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+/* lp-base.css — 日本語LP／HTML成果物の初期CSS
+ * 「改行制御」「最小文字サイズ」「固定CTAの逃げ」の3ブロックは消さないこと。 */
+
+/* ── 改行制御 ───────────────────────────────────────────── */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] {
+    word-break: normal;
+  }
+}
+.nobr { white-space: nowrap; }
+
+/* ── 最小文字サイズ ─────────────────────────────────────── */
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+
+/* ── ファーストビューの見出し ───────────────────────────── */
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+
+/* ── 固定CTAの逃げ ──────────────────────────────────────── */
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+
+/* ── 横はみ出しの予防 ───────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+
+/* ── コンテンツ幅 ───────────────────────────────────────── */
+:root { --lp-max: 1200px; }
+
+/* 本文の日本語も文節で折る */
+p, li, dd, td, th { word-break: auto-phrase; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+
+/* ===== トークン（A-01・A-02と共通の深緑×ライム） ===== */
+:root {
+  --ink: #13211f;
+  --ink-2: #33443f;
+  --mute: #667570;
+  --line: #dbe5df;
+  --bg: #ffffff;
+  --bg-2: #f4f7f2;
+  --card: #ffffff;
+  --deep: #102f2b;
+  --deep-2: #0a2522;
+  --on-deep: #ffffff;
+  --on-deep-2: #c5d8cf;
+  --lime: #c8ed68;
+  --mint: #dff5b6;
+  --accent: #2c6a3c;
+  --accent-soft: #e6f6c8;
+  --btn-bg: #102f2b;
+  --btn-fg: #c8ed68;
+  --hold: #7a5200;
+  --hold-soft: #fff4d6;
+  --ng: #b42318;
+  --ng-soft: #fdecea;
+  --shadow: 0 1px 2px rgba(16,47,43,.06), 0 8px 28px rgba(16,47,43,.08);
+  --radius: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #e9f0ec; --ink-2: #c3d1cb; --mute: #98aba3; --line: #27403b;
+    --bg: #0b1816; --bg-2: #10211e; --card: #142926;
+    --deep: #0a2320; --deep-2: #071a17; --on-deep-2: #a9c2b8;
+    --accent: #c8ed68; --accent-soft: #24381a;
+    --btn-bg: #c8ed68; --btn-fg: #102f2b;
+    --hold: #ffd98a; --hold-soft: #3a2e10;
+    --ng: #ff8a80; --ng-soft: #3a1b1b;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"] {
+  --ink: #e9f0ec; --ink-2: #c3d1cb; --mute: #98aba3; --line: #27403b;
+  --bg: #0b1816; --bg-2: #10211e; --card: #142926;
+  --deep: #0a2320; --deep-2: #071a17; --on-deep-2: #a9c2b8;
+  --accent: #c8ed68; --accent-soft: #24381a;
+  --btn-bg: #c8ed68; --btn-fg: #102f2b;
+  --hold: #ffd98a; --hold-soft: #3a2e10;
+  --ng: #ff8a80; --ng-soft: #3a1b1b;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.35);
+}
+
+/* ===== 基本 ===== */
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+@media (max-width: 1099px) { html { scroll-padding-top: 128px; } }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: "Noto Sans JP", system-ui, -apple-system, "Hiragino Sans", sans-serif;
+  -webkit-font-smoothing: antialiased; font-feature-settings: "palt";
+  font-size: 16.5px;
+}
+a { color: inherit; }
+p { margin: 0 0 1em; }
+.num { font-family: "Inter", "Noto Sans JP", sans-serif; font-feature-settings: "tnum"; letter-spacing: -.01em; }
+:root { --gut: 24px; }
+@media (max-width: 600px) { :root { --gut: 16px; } }
+.wrap { max-width: 1248px; margin: 0 auto; padding: 0 var(--gut); }
+
+/* ===== 社内限の帯（最上部） ===== */
+.confidential {
+  background: #fef3f2; color: #b42318; border-bottom: 2px solid #b42318;
+  font-size: 15px; font-weight: 700; line-height: 1.6; text-align: center;
+  padding: 10px 16px; letter-spacing: .02em;
+}
+.confidential .ib { display: inline-block; }
+
+/* ===== ヘッダー ===== */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  backdrop-filter: saturate(1.4) blur(10px); -webkit-backdrop-filter: saturate(1.4) blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.brand svg { width: 30px; height: 30px; flex: none; }
+.brand-name { font-weight: 900; font-size: 1.05rem; letter-spacing: .04em; white-space: nowrap; }
+.brand-sub { display: block; font: 700 12px/1 "Inter", "Noto Sans JP", sans-serif; letter-spacing: .12em; color: var(--mute); margin-top: 4px; white-space: nowrap; }
+.pill-ng {
+  flex: none; font-size: 13px; font-weight: 700; color: #b42318; background: #fef3f2;
+  border: 1.5px solid #b42318; border-radius: 999px; padding: 4px 12px; white-space: nowrap;
+}
+
+/* ===== レイアウト：左に目次、右にノート ===== */
+.layout { display: grid; grid-template-columns: 220px minmax(0, 760px); grid-template-areas: "toc head" "toc main"; column-gap: 56px; justify-content: center; padding-top: 48px; }
+.toc { grid-area: toc; } .doc-head { grid-area: head; } .layout > main { grid-area: main; min-width: 0; }
+.toc { position: sticky; top: 84px; align-self: start; max-height: calc(100vh - 100px); overflow: auto; }
+.toc-title { font: 700 12px/1 "Inter", sans-serif; letter-spacing: .16em; color: var(--mute); margin: 0 0 10px; }
+.toc ol { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); }
+.toc a {
+  display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 4px 0 4px 14px; margin-left: -2px;
+  border-left: 2px solid transparent; text-decoration: none; font-size: .9rem; color: var(--ink-2); line-height: 1.4;
+}
+.toc a:hover, .toc a[aria-current="true"] { color: var(--accent); border-left-color: var(--accent); }
+.toc a b { font: 800 12px/1 "Inter", sans-serif; color: var(--accent); min-width: 18px; }
+.toc .ts { display: none; }
+/* スマホ・タブレット：ヘッダー直下に横スクロールの目次を固定 */
+@media (max-width: 1099px) {
+  .layout { display: block; padding-top: 0; }
+  .layout > .doc-head, .layout > main { max-width: 760px; margin-left: auto; margin-right: auto; }
+  .doc-head { padding-top: 32px; }
+  .toc {
+    position: sticky; top: 60px; z-index: 40; max-height: none; overflow: hidden;
+    margin: 0 calc(-1 * var(--gut)); padding: 0;
+    background: color-mix(in srgb, var(--bg) 94%, transparent);
+    backdrop-filter: saturate(1.4) blur(10px); -webkit-backdrop-filter: saturate(1.4) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .toc-title { display: none; }
+  .toc ol {
+    display: flex; border-left: 0; padding: 0 calc(var(--gut) - 10px);
+    overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  .toc ol::-webkit-scrollbar { display: none; }
+  .toc li { flex: none; }
+  .toc li.t0 { display: none; }
+  .toc a {
+    min-height: 48px; padding: 0 12px; margin: 0; gap: 0; white-space: nowrap;
+    border-left: 0; border-bottom: 2px solid transparent; font-size: .95rem; font-weight: 700;
+  }
+  .toc a:hover, .toc a[aria-current="true"] { border-bottom-color: var(--accent); }
+  .toc a b, .toc .tl { display: none; }
+  .toc .ts { display: inline; }
+}
+
+/* ===== ノート本体 ===== */
+.doc-head { padding: 0 0 36px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font: 700 12px/1.4 "Inter", "Noto Sans JP", sans-serif; letter-spacing: .14em; color: var(--accent);
+  margin: 0 0 14px;
+}
+.eyebrow::before { content: ""; width: 22px; height: 2px; background: currentColor; flex: none; }
+.doc-head h1 { margin: 0 0 18px; font-weight: 900; letter-spacing: .01em; font-size: clamp(1.55rem, 4.2vw, 2.6rem); }
+.doc-meta { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: .88rem; color: var(--mute); margin: 0 0 22px; }
+.doc-intro { color: var(--ink-2); font-size: 1.02rem; }
+
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); border-radius: var(--radius); margin: 26px 0 0; overflow: hidden; background: var(--deep); color: var(--on-deep); }
+.fact { padding: 16px 16px 14px; border-right: 1px solid rgba(255,255,255,.14); }
+.fact:last-child { border-right: 0; }
+.fact b { display: block; font-size: 1.45rem; line-height: 1.2; font-weight: 800; color: var(--lime); }
+.fact b small { font-size: .85rem; font-weight: 700; margin-left: 2px; }
+.fact span { display: block; margin-top: 4px; font-size: .84rem; color: var(--on-deep-2); line-height: 1.5; }
+@media (max-width: 640px) {
+  .facts { grid-template-columns: 1fr 1fr; }
+  .fact:nth-child(2) { border-right: 0; }
+  .fact:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,.14); }
+}
+.facts-note { margin: 10px 0 0; color: var(--mute); font-size: .86rem; }
+
+main section { padding: 56px 0 48px; border-bottom: 1px solid var(--line); }
+main section:last-of-type { border-bottom: 0; }
+main h2 { margin: 0 0 14px; font-weight: 900; letter-spacing: .01em; font-size: clamp(1.3rem, 2.8vw, 1.75rem); }
+@media (max-width: 374px) { main h2 { font-size: 1.125rem; } }
+main h3 { margin: 34px 0 10px; font-size: 1.12rem; line-height: 1.5; font-weight: 700; }
+.sec-lead { color: var(--ink-2); margin-bottom: 26px; }
+.muted { color: var(--mute); font-size: .9rem; }
+
+.tbd {
+  display: inline-block; font-weight: 700; color: var(--hold);
+  background: var(--hold-soft); border-radius: 6px; padding: 0 6px; font-size: .92em; line-height: 1.7;
+}
+
+/* 使い方の箇条 */
+.rules { list-style: none; margin: 0; padding: 0; }
+.rules li { position: relative; padding: 12px 0 12px 26px; border-bottom: 1px dashed var(--line); color: var(--ink-2); }
+.rules li:last-child { border-bottom: 0; }
+.rules li::before { content: ""; position: absolute; left: 6px; top: 24px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.rules strong { color: var(--ink); }
+
+/* 話す言葉のボックス */
+.say {
+  position: relative; margin: 12px 0 18px; padding: 22px 22px 20px;
+  background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--deep);
+  border-radius: 0 var(--radius) var(--radius) 0; box-shadow: var(--shadow);
+  font-size: 1.04rem; line-height: 1.95; color: var(--ink);
+}
+.say p:last-child { margin-bottom: 0; }
+.say-label { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .08em; color: var(--lime); background: var(--deep); border-radius: 4px; padding: 2px 8px; margin: 0 0 10px; }
+.say .aside { color: var(--mute); font-size: .92rem; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .say { border-left-color: var(--lime); } }
+:root[data-theme="dark"] .say { border-left-color: var(--lime); }
+@media (max-width: 600px) { .say { padding: 18px 16px 16px; } }
+
+/* 拍（3分版の区切り） */
+.beats { list-style: none; margin: 12px 0 18px; padding: 0; }
+.beats > li { display: grid; grid-template-columns: 76px 1fr; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.beats > li:first-child { padding-top: 4px; }
+.beats > li:last-child { border-bottom: 0; }
+.beat-t { font: 800 .86rem/1.5 "Inter", "Noto Sans JP", sans-serif; color: var(--accent); padding-top: 3px; }
+.beat-t small { display: block; font-size: 12px; font-weight: 700; color: var(--mute); font-family: "Noto Sans JP", sans-serif; }
+.beat-b > strong { display: block; margin-bottom: 4px; }
+.beat-b p { margin: 0; color: var(--ink-2); }
+.beat-b .q { color: var(--ink); }
+@media (max-width: 520px) { .beats > li { grid-template-columns: 1fr; gap: 4px; } }
+
+/* 表（汎用） */
+.tbl-wrap { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--card); margin: 12px 0 18px; }
+.tbl { width: 100%; border-collapse: collapse; font-size: .94rem; }
+.tbl th, .tbl td { padding: 13px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.tbl tbody tr:last-child th, .tbl tbody tr:last-child td { border-bottom: 0; }
+.tbl thead th { font-size: .8rem; color: var(--mute); font-weight: 700; background: var(--bg-2); white-space: nowrap; }
+.tbl tbody th { font-weight: 700; }
+.tbl td { color: var(--ink-2); }
+.tbl .t-time { white-space: nowrap; font-family: "Inter", "Noto Sans JP", sans-serif; font-weight: 700; color: var(--accent); }
+.tbl .show { display: inline-block; font-size: .82rem; font-weight: 700; color: var(--deep); background: var(--mint); border-radius: 4px; padding: 0 6px; margin: 0 4px 2px 0; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .tbl .show { color: var(--lime); background: #24381a; } }
+:root[data-theme="dark"] .tbl .show { color: var(--lime); background: #24381a; }
+@media (max-width: 640px) {
+  .tbl thead { display: none; }
+  .tbl, .tbl tbody, .tbl tr, .tbl th, .tbl td { display: block; width: 100%; }
+  .tbl tr { padding: 14px 16px; border-bottom: 1px solid var(--line); }
+  .tbl tbody tr:last-child { border-bottom: 0; }
+  .tbl th, .tbl td { border: 0; padding: 3px 0; }
+  .tbl td[data-l]::before { content: attr(data-l); display: block; color: var(--mute); font-size: .8rem; font-weight: 700; margin-top: 6px; }
+}
+
+/* 切り出しカード */
+.opener { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 22px 18px; margin: 14px 0; }
+.opener h3 { margin: 0 0 4px; }
+.opener .when { color: var(--mute); font-size: .88rem; margin: 0 0 12px; }
+.opener dl { margin: 0; }
+.opener dt { font-size: .82rem; font-weight: 700; color: var(--accent); margin-top: 12px; }
+.opener dd { margin: 2px 0 0; color: var(--ink-2); }
+.opener dd.q { color: var(--ink); font-weight: 500; }
+.opener dd.warn { color: var(--ng); }
+@media (max-width: 600px) { .opener { padding: 18px 16px 14px; } }
+
+/* 価格 */
+.price-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 8px; }
+@media (max-width: 700px) { .price-2 { grid-template-columns: 1fr; } }
+.pbox { border-radius: var(--radius); padding: 22px 20px; }
+.pbox.ok { background: var(--deep); color: var(--on-deep); }
+.pbox.wait { background: var(--card); border: 1.5px dashed var(--line); }
+.pbox-t { font-size: .86rem; font-weight: 700; margin: 0 0 10px; }
+.pbox.ok .pbox-t { color: var(--lime); }
+.pbox.wait .pbox-t { color: var(--mute); }
+.pbox ul { list-style: none; margin: 0; padding: 0; }
+.pbox li { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.pbox.ok li { border-bottom-color: rgba(255,255,255,.16); }
+.pbox li:last-child { border-bottom: 0; }
+.pbox li span { color: var(--ink-2); }
+.pbox.ok li span { color: var(--on-deep-2); }
+.pbox li b { text-align: right; }
+.pbox .foot { margin: 12px 0 0; font-size: .86rem; }
+.pbox.ok .foot { color: var(--on-deep-2); }
+.pbox.wait .foot { color: var(--ink-2); }
+
+/* 切り返し */
+.qa { list-style: none; margin: 8px 0 0; padding: 0; counter-reset: qa; }
+.qa > li { counter-increment: qa; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px 18px; margin: 0 0 14px; }
+.qa-meta { display: flex; align-items: center; gap: 10px; margin: 0 0 4px; }
+.qa-meta::before { content: counter(qa, decimal-leading-zero); font: 800 .95rem/1 "Inter", sans-serif; color: var(--accent); }
+.who { font-size: 12px; font-weight: 700; border-radius: 999px; padding: 2px 10px; border: 1px solid var(--line); color: var(--ink-2); }
+.qa h3 { margin: 0 0 10px; }
+.qa .ans { margin: 0; color: var(--ink); line-height: 1.9; }
+.qa .ans2 { margin: 10px 0 0; padding: 10px 0 0; border-top: 1px dashed var(--line); color: var(--ink-2); font-size: .95rem; }
+.qa .ans2 b { color: var(--ink); }
+.qa .aside { color: var(--mute); font-size: .92rem; }
+@media (max-width: 600px) { .qa > li { padding: 18px 16px 16px; } }
+
+/* NG表 */
+.ng-list { list-style: none; margin: 12px 0 0; padding: 0; }
+.ng-list li { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin: 0 0 12px; background: var(--card); }
+.ng-list .bad, .ng-list .good { padding: 14px 16px; }
+.ng-list .bad { background: var(--ng-soft); color: var(--ink); }
+.ng-list .bad::before, .ng-list .good::before { display: block; font-size: 12px; font-weight: 700; margin-bottom: 4px; }
+.ng-list .bad::before { content: "言わない"; color: var(--ng); }
+.ng-list .good::before { content: "こう言う"; color: var(--accent); }
+.ng-list .good { color: var(--ink-2); border-left: 1px solid var(--line); }
+@media (max-width: 600px) {
+  .ng-list li { grid-template-columns: 1fr; }
+  .ng-list .good { border-left: 0; border-top: 1px solid var(--line); }
+}
+
+/* 電話1本の流れ（図） */
+.callflow { margin: 14px 0 8px; padding: 20px 20px 16px; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); }
+.cf-title { margin: 0 0 14px; font-weight: 700; font-size: .95rem; color: var(--ink); }
+.flow { display: grid; grid-template-columns: 148px 22px minmax(0, 1fr); gap: 10px; align-items: center; }
+.flow .start { display: grid; gap: 6px; }
+.flow .down, .flow .to { text-align: center; color: var(--mute); font: 800 1rem/1 "Inter", sans-serif; }
+.node { border-radius: 10px; padding: 9px 12px; font-weight: 700; font-size: .95rem; line-height: 1.45; text-align: center; border: 1.5px solid transparent; }
+.node.in { background: var(--card); border-color: var(--line); color: var(--ink); }
+.node.ai { background: #102f2b; color: #c8ed68; }
+.node.hu { background: var(--card); border-color: var(--ink); color: var(--ink); }
+.node.done { background: var(--accent-soft); color: var(--accent); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .node.ai { border-color: rgba(200,237,104,.45); } }
+:root[data-theme="dark"] .node.ai { border-color: rgba(200,237,104,.45); }
+.lanes { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.lane { display: grid; grid-template-columns: 10.5em minmax(0, 1fr); gap: 10px; align-items: center; border-bottom: 1px dashed var(--line); padding-bottom: 10px; }
+.lane:last-child { border-bottom: 0; padding-bottom: 0; }
+.lane .cond { font-size: .92rem; font-weight: 700; color: var(--ink-2); line-height: 1.5; }
+.lane .path { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
+.lane .arr { color: var(--mute); font: 800 1rem/1 "Inter", sans-serif; }
+.cf-note { margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--line); font-size: .92rem; color: var(--ink-2); }
+@media (max-width: 640px) {
+  .callflow { padding: 16px 14px 14px; }
+  .flow { grid-template-columns: minmax(0, 1fr); }
+  .flow .to::before { content: "↓"; }
+  .flow .to span { display: none; }
+  .lane { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+}
+@media (max-width: 359px) {
+  .lane .path { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .lane .arr { transform: rotate(90deg); margin-left: 14px; }
+}
+
+/* 勧めないお店・3点 */
+.stop { list-style: none; margin: 10px 0 0; padding: 0; }
+.stop li { padding: 14px 0 14px 30px; border-bottom: 1px solid var(--line); position: relative; }
+.stop li:last-child { border-bottom: 0; }
+.stop li::before { content: "×"; position: absolute; left: 4px; top: 13px; font-weight: 800; color: var(--ng); }
+.stop strong { display: block; }
+.stop span { color: var(--ink-2); font-size: .95rem; }
+.checks3 { list-style: none; margin: 10px 0 0; padding: 0; counter-reset: c3; }
+.checks3 li { counter-increment: c3; display: grid; grid-template-columns: 40px 1fr; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.checks3 li:last-child { border-bottom: 0; }
+.checks3 li::before { content: "0" counter(c3); font: 800 1.05rem/1.6 "Inter", sans-serif; color: var(--accent); }
+.checks3 strong { display: block; }
+.checks3 p { margin: 2px 0 0; color: var(--ink-2); font-size: .95rem; }
+.checks3 .ask { color: var(--ink); }
+
+/* 流れ */
+.steps { list-style: none; margin: 12px 0 18px; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.steps li { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 12px 10px; }
+.steps b { display: block; font: 800 12px/1 "Inter", sans-serif; letter-spacing: .12em; color: var(--accent); margin-bottom: 6px; }
+.steps strong { display: block; font-size: .95rem; line-height: 1.45; }
+.steps span { display: block; font-size: .82rem; color: var(--mute); margin-top: 4px; line-height: 1.5; }
+@media (max-width: 760px) { .steps { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 420px) { .steps { grid-template-columns: 1fr; } }
+
+/* 状態チップ */
+.st { display: inline-block; font-size: .8rem; font-weight: 700; border-radius: 999px; padding: 2px 10px; white-space: nowrap; color: var(--hold); background: var(--hold-soft); }
+.st.adj { color: var(--ink-2); background: var(--bg-2); border: 1px solid var(--line); }
+
+/* ボタン */
+.btn-row { display: flex; flex-wrap: wrap; gap: 10px 12px; margin: 16px 0 0; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; padding: 0 22px; border-radius: 999px;
+  background: var(--btn-bg); color: var(--btn-fg); text-decoration: none; font-weight: 700; font-size: .95rem;
+}
+.btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+/* フッター */
+footer { margin-top: 64px; background: var(--bg-2); border-top: 1px solid var(--line); padding: 40px 0 36px; font-size: .92rem; color: var(--ink-2); }
+.foot-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; }
+@media (max-width: 760px) { .foot-grid { grid-template-columns: 1fr; } }
+footer h4 { margin: 0 0 8px; font: 700 12px/1 "Inter", sans-serif; letter-spacing: .16em; color: var(--mute); }
+footer ul { list-style: none; margin: 0; padding: 0; }
+footer li a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
+footer li a:hover { color: var(--accent); }
+.foot-warn { color: #b42318; font-weight: 700; margin: 0 0 10px; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .foot-warn { color: #ff8a80; } }
+:root[data-theme="dark"] .foot-warn { color: #ff8a80; }
+.copyright { margin-top: 24px; font-size: 12px; color: var(--mute); }
+
+@media print {
+  .site-header, .toc { display: none; }
+  .layout { display: block; }
+  .say, .qa > li, .opener { box-shadow: none; break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<div class="confidential" role="note"><span class="ib">社内限定です。</span><span class="ib">お客様へURLを送らないでください</span></div>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="brand">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="8" fill="#102f2b"/><path d="M11.2 9.5c.6-.6 1.6-.6 2.1.1l1.4 1.9c.4.6.4 1.4-.1 1.9l-.9.9c.8 1.7 2.1 3 3.8 3.8l.9-.9c.5-.5 1.3-.6 1.9-.1l1.9 1.4c.7.5.8 1.5.1 2.1l-1 1c-1 1-2.6 1.3-3.9.6-3.2-1.6-5.7-4.1-7.3-7.3-.7-1.3-.4-2.9.6-3.9z" fill="#c8ed68"/></svg>
+      <div>
+        <span class="brand-name">おまかせ受電AI</span>
+        <span class="brand-sub">A-04 説明ノート</span>
+      </div>
+    </div>
+    <span class="pill-ng">社内限</span>
+  </div>
+</header>
+
+<div class="wrap layout">
+
+  <nav class="toc" aria-label="目次">
+    <p class="toc-title">CONTENTS</p>
+    <ol>
+      <li class="t0"><a href="#use"><b>00</b><span class="tl">商談の前に</span></a></li>
+      <li><a href="#talk"><b>01</b><span class="tl">時間別の台本</span><span class="ts">台本</span></a></li>
+      <li><a href="#open3"><b>02</b><span class="tl">切り出し3パターン</span><span class="ts">切り出し</span></a></li>
+      <li><a href="#stop"><b>03</b><span class="tl">勧めないお店と3点</span><span class="ts">3点</span></a></li>
+      <li><a href="#price"><b>04</b><span class="tl">料金の伝え方</span><span class="ts">料金</span></a></li>
+      <li><a href="#qa"><b>05</b><span class="tl">切り返し10本</span><span class="ts">切り返し</span></a></li>
+      <li><a href="#ng"><b>06</b><span class="tl">言ってはいけない</span><span class="ts">NG</span></a></li>
+      <li><a href="#close"><b>07</b><span class="tl">締めと次回アポ</span><span class="ts">締め</span></a></li>
+      <li><a href="#pending"><b>08</b><span class="tl">未決事項</span><span class="ts">未決</span></a></li>
+    </ol>
+  </nav>
+
+  <header class="doc-head">
+      <p class="eyebrow">A-04 SALES NOTE｜社内限</p>
+      <h1>おまかせ受電AI<br>商談時の説明ノート</h1>
+      <p class="doc-meta"><span>更新 <span class="num">2026-09-25</span></span><span>読み手：ライトアップの営業担当（直販）</span></p>
+      <p class="doc-intro">店舗の経営者へ直販で説明するときの台本です。数字はこのノートにあるものだけ使います。</p>
+      <div class="facts">
+        <div class="fact"><b class="num">30<small>社ほど</small></b><span>無料モニターの先着枠</span></div>
+        <div class="fact"><b class="num">0<small>円</small></b><span>モニター初期費用</span></div>
+        <div class="fact"><b class="num">0<small>円</small></b><span>モニター月額費用</span></div>
+        <div class="fact"><b class="num">24<small>時間</small></b><span>予約の希望を仮受付（確定はスタッフ）</span></div>
+      </div>
+      <p class="facts-note">モニター期間・通話料・対象範囲などの条件は、お申込み時に案内。正式な料金は<span class="tbd">【調整中】</span>。</p>
+  </header>
+
+  <main>
+
+    <!-- 00 -->
+    <section id="use" aria-labelledby="h-use">
+      <p class="eyebrow">00 BEFORE YOU TALK</p>
+      <h2 id="h-use">商談の前に、この4つだけ</h2>
+      <ul class="rules">
+        <li><strong>任せる範囲はお店が決める。</strong>予約と大事な電話は人に残す。</li>
+        <li><strong>予約はAIが仮受付まで。</strong>確定はスタッフ。</li>
+        <li><strong>言える数字は、先着30社ほど・モニター期間の初期費用0円・月額0円だけ。</strong>ほかは「確認してお伝えします」。</li>
+        <li><strong>お客様に渡すのはA-01・A-02・C-01だけ。</strong>このURLは送らない。</li>
+      </ul>
+    </section>
+
+    <!-- 01 -->
+    <section id="talk" aria-labelledby="h-talk">
+      <p class="eyebrow">01 TALK SCRIPT</p>
+      <h2 id="h-talk">時間別の台本｜30秒・3分・15分</h2>
+      <p class="sec-lead">立ち話なら30秒、詳しく聞かれたら3分、商談の本編は15分。</p>
+
+      <h3>30秒版</h3>
+      <p class="muted">立ち話・電話・別件の話の最後に。</p>
+      <div class="say">
+        <span class="say-label">お客様に話す言葉</span>
+        <p>店長さん、営業中の電話って、どうされてますか。<span class="aside">（答えを聞く）</span>電話の種類ごとに、AIが出るか、スタッフさんにつなぐかを、お店で決められるサービスがあるんです。予約は人に残して、営業電話や道順の質問はAIが受けます。いま先着30社ほどで無料モニターを募集しているので、一度、お店にかかってくる電話を一緒に書き出させてください。</p>
+      </div>
+
+      <h3>電話1本の流れ</h3>
+      <div class="callflow">
+        <p class="cf-title">着信から、誰が受けて、どこで終わるか</p>
+        <div class="flow" role="img" aria-label="着信するとAIが用件を聞く。予約や大切な用件は人へつなぐ。定型の質問や営業電話はAIが案内して完結する。出られないときはLINEに通知し、スタッフが折り返す。">
+          <div class="start">
+            <div class="node in">着信</div>
+            <div class="down" aria-hidden="true">↓</div>
+            <div class="node ai">AIが用件を聞く</div>
+          </div>
+          <div class="to" aria-hidden="true"><span>→</span></div>
+          <ul class="lanes">
+            <li class="lane"><span class="cond">予約・大切な用件</span><span class="path"><span class="node hu">人へつなぐ</span></span></li>
+            <li class="lane"><span class="cond">定型の質問・営業電話</span><span class="path"><span class="node done">AIが案内して完結</span></span></li>
+            <li class="lane"><span class="cond">出られないとき</span><span class="path"><span class="node ai">LINEに通知</span><span class="arr" aria-hidden="true">→</span><span class="node hu">スタッフが折り返す</span></span></li>
+          </ul>
+        </div>
+        <p class="cf-note">営業時間外の予約はAIが仮受付まで。確定はスタッフがします。</p>
+      </div>
+
+      <h3>3分版</h3>
+      <p class="muted">「ちょっと詳しく聞かせて」と言われたら。聞く→分ける→仕組み→正直に→次、の5つの区切りで話します。</p>
+      <ol class="beats">
+        <li>
+          <div class="beat-t">〜0:30<small>聞く</small></div>
+          <div class="beat-b"><strong>出られない電話を聞く</strong><p class="q">「一日の中で、電話に出られなくて困る時間はありますか。出られなかった電話が、予約だったのか営業電話だったのか、あとから分かりますか」</p></div>
+        </li>
+        <li>
+          <div class="beat-t">〜1:00<small>分ける</small></div>
+          <div class="beat-b"><strong>任せる範囲はお店が決める</strong><p class="q">「お店の電話って、予約、営業時間や道順の問い合わせ、営業電話、取引先からの連絡と、いろいろありますよね。この受電AIは、その種類ごとに、AIが受けるか人につなぐかを選べるんです。どこまで任せるかは、お店が決めます」</p></div>
+        </li>
+        <li>
+          <div class="beat-t">〜2:00<small>仕組み</small></div>
+          <div class="beat-b"><strong>設定は3つ、あとはLINEへ</strong><p class="q">「設定は3つだけです。美容室なら美容室用のひな形を選んで、電話の種類ごとにAIか人かを決めて、そのあとどうするかを選ぶ。出られない電話は、AIが用件を聞いて、スタッフさんのLINEにお知らせします」</p></div>
+        </li>
+        <li>
+          <div class="beat-t">〜2:40<small>正直に</small></div>
+          <div class="beat-b"><strong>予約の確定はしない</strong><p class="q">「ただ、予約の確定はAIではやりません。閉店後の予約の希望はAIが仮受付して、営業が始まったらスタッフさんが確認して確定します。それから、電話がほとんど鳴らないお店や、全部の電話に店長さんが自分で出たいお店には、いまは必要ないと思います」</p></div>
+        </li>
+        <li>
+          <div class="beat-t">〜3:00<small>次</small></div>
+          <div class="beat-b"><strong>困っている電話を一つ選ぶ</strong><p class="q">「全部をAIに任せる必要はないんです。いちばん困っている電話を一つ選んで、無料モニターで試してみませんか。先着30社ほどで、モニター期間は初期費用も月額も0円です」</p></div>
+        </li>
+      </ol>
+
+      <h3>15分版</h3>
+      <p class="muted">訪問・オンラインの商談の本編。画面を見せながら進めます。</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>時間</th><th>話すこと</th><th>見せるもの・確かめること</th></tr></thead>
+          <tbody>
+            <tr><td class="t-time" data-l="時間">0〜2分</td><td data-l="話すこと">先に聞く。業種、電話に出られない時間帯、営業電話の多さ、営業時間外の予約の電話があるか。</td><td data-l="見せるもの・確かめること"><span class="show">A-03</span>01『手が離せない時間の電話、どうしてますか』と、02『今日は、自店の電話を4つの順で整理します』を映したまま聞く。聞いた答えで、02の切り出しのどれを使うかを決める。</td></tr>
+            <tr><td class="t-time" data-l="時間">2〜4分</td><td data-l="話すこと">手が離せないときに限って電話が鳴る。出られなかった電話が予約か営業かも、あとから分からない。</td><td data-l="見せるもの・確かめること"><span class="show">A-03</span>03『調理中も、施術中も、レジの最中も、電話は鳴ります』。</td></tr>
+            <tr><td class="t-time" data-l="時間">4〜7分</td><td data-l="話すこと">「どこまで任せるか」を電話の種類ごとに決める。設定は3ステップ（ひな形→AIか人か→次の処理）。営業時間・料金・道順は、スプレッドシートに登録したお店の情報からAIが答える。</td><td data-l="見せるもの・確かめること"><span class="show">A-03</span>06『お店が決めるのは、この1枚の表です』（①ひな形②AIか人か③次の処理）。<br><span class="show">A-01</span>受電ルールの画面を一緒に触る。カテゴリを選んで「AIが受ける」に切り替えると、次の処理を選べる。予約・予約変更は「人」のまま見せる。</td></tr>
+            <tr><td class="t-time" data-l="時間">7〜9分</td><td data-l="話すこと">閉店後の予約は仮受付、確定はスタッフ。出られない電話は用件を聞いてLINEへ通知し、スタッフが折り返す。</td><td data-l="見せるもの・確かめること"><span class="show">A-03</span>05『まずAIが用件を聞き、4つの道に分けます』。<br><span class="show">C-01</span>ひよりの10秒デモ。顔写真を押すと、受電ルールを教える管理画面が動く。「私が答える電話」と「人へつなぐ電話」を分けている様子を見せる。</td></tr>
+            <tr><td class="t-time" data-l="時間">9〜11分</td><td data-l="話すこと">人の電話代行との違い。人をなくすのではなく、人が必要な電話に戻す。</td><td data-l="見せるもの・確かめること"><span class="show">A-03</span>04『留守電も電話代行も、向き不向きがあります』。<br><span class="show">A-01</span>「人の電話代行と比べると」の表でもよい。「人が話すこと自体に価値があるお店は、電話代行が向いています」まで言う。</td></tr>
+            <tr><td class="t-time" data-l="時間">11〜13分</td><td data-l="話すこと">向いていないお店を正直に伝え、導入前に確かめる3点を聞く。</td><td data-l="見せるもの・確かめること"><span class="show">A-03</span>08『次のお店には、いま必要ありません』と、09『今の番号のままで使えるか、通知先はどこかを確かめます』。03の3点（今の番号と転送方法／通知先／予約やクレームを誰に渡すか）をその場で控える。</td></tr>
+            <tr><td class="t-time" data-l="時間">13〜15分</td><td data-l="話すこと">無料モニターの条件と、次の一手を決める。</td><td data-l="見せるもの・確かめること"><span class="show">A-03</span>10『いまは、先着30社ほどの無料モニターを募集中です』から、11『まず、いちばん困っている電話を一つ選んでください』へ。事例を聞かれたら、10の右側（無料でお願いする理由）で答える。正式な料金と開始までの日数は【調整中】と言い切る（04・07）。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-ghost" href="../a03/">A-03 投影資料</a>
+        <a class="btn btn-ghost" href="https://writeup-inc.github.io/saas/omakase-juden/" target="_blank" rel="noopener">A-01 受電ルールの画面</a>
+        <a class="btn btn-ghost" href="https://writeup-inc.github.io/saas/ai-reception-hiyori/" target="_blank" rel="noopener">C-01 ひよりの10秒デモ</a>
+      </div>
+    </section>
+
+    <!-- 02 -->
+    <section id="open3" aria-labelledby="h-open3">
+      <p class="eyebrow">02 OPENERS</p>
+      <h2 id="h-open3">切り出し3パターン</h2>
+      <p class="sec-lead">A-02で「向いているお店」に挙げている3つの困りごとです。新しく売り込むより、店長さんがすでに口にしている困りごとに答える形のほうが話は進みます。</p>
+
+      <div class="opener">
+        <h3>営業中の電話で手が止まる</h3>
+        <p class="when">調理中・施術中・レジの対応中に電話が鳴った場面や、「電話がね…」とこぼされたときに。</p>
+        <dl>
+          <dt>最初の一言</dt>
+          <dd class="q">「手が離せないときに限って、電話って鳴りますよね。出られなかった電話が予約だったのか営業電話だったのか、あとから分かりますか」</dd>
+          <dt>続け方</dt>
+          <dd>答えを聞いてから、「電話の種類ごとに、AIが受けるか人につなぐかを選べるんです。予約は人、営業時間や道順の質問はAI、と分けられます」とつなぐ。出られないときは用件をLINEへ通知して、手が空いたら折り返す流れまで話す。</dd>
+          <dt>気をつけること</dt>
+          <dd class="warn">「電話対応がなくなります」は使わない（→06）</dd>
+        </dl>
+      </div>
+
+      <div class="opener">
+        <h3>営業電話が多い</h3>
+        <p class="when">「出たら営業だった」「業者からの電話ばかり」と言われたときに。</p>
+        <dl>
+          <dt>最初の一言</dt>
+          <dd class="q">「営業の電話、多くないですか。出てみたら営業だった、というのが一日に何本かあると、そのたびに手が止まりますよね」</dd>
+          <dt>続け方</dt>
+          <dd>「営業電話はAIが受けて、スタッフさんにはつながない、という設定ができます。用件と連絡先はAIが聞いて残しておきます」と話す。始め方の例として「営業電話・業者からの連絡だけ」をAIに任せる形を出す。</dd>
+          <dt>気をつけること</dt>
+          <dd class="warn">「営業電話を必ず見分けます」は使わない（→06）</dd>
+        </dl>
+      </div>
+
+      <div class="opener">
+        <h3>営業時間外の予約を取りこぼす</h3>
+        <p class="when">閉店後・定休日の電話、留守番電話の話が出たときに。</p>
+        <dl>
+          <dt>最初の一言</dt>
+          <dd class="q">「閉店後や定休日にかかってきた予約の電話って、どうされていますか」</dd>
+          <dt>続け方</dt>
+          <dd>「営業時間外の予約の希望は、AIが24時間仮受付して、内容を残しておきます。営業が始まったら、スタッフさんが確認して確定します」と話す。仮予約の確定のしかたは、導入前にお店と決めると添える。</dd>
+          <dt>気をつけること</dt>
+          <dd class="warn">「予約もAIが取ります」は使わない（→06）</dd>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 03 -->
+    <section id="stop" aria-labelledby="h-stop">
+      <p class="eyebrow">03 WHO NOT TO PITCH</p>
+      <h2 id="h-stop">勧めないお店3つと、先に聞く3点</h2>
+      <p class="sec-lead">合わないお店に勧めると、モニターの事例にもならず、お店の信用も失います。先に「いまは必要ないと思います」と言えるほうが、話を聞いてもらえます。</p>
+
+      <h3>勧めないお店</h3>
+      <ul class="stop">
+        <li><strong>電話がほとんど鳴らないお店</strong><span>AIに任せる電話が残りません。</span></li>
+        <li><strong>すべての電話に、店長さんが自分で出たいお店</strong><span>AIが最初に受けること自体が合いません。</span></li>
+        <li><strong>予約の確定までAIに任せたいお店</strong><span>確定はスタッフが行う作りで、AIは仮受付までです。</span></li>
+      </ul>
+      <p class="muted">人が話すこと自体に価値があるお店には、人の電話代行を勧めてかまいません。</p>
+
+      <h3>先に聞く3点</h3>
+      <ol class="checks3">
+        <li><div><strong>今の電話番号と転送方法</strong><p class="ask">聞く：「お店の電話は、どこの回線をお使いですか。いま転送や留守番電話は使っていますか」</p><p>今の番号から転送して使う想定です。回線の種類や転送の条件で変わるので、控えて持ち帰ります。</p></div></li>
+        <li><div><strong>通知先</strong><p class="ask">聞く：「出られなかった電話のお知らせは、どなたのLINEに届くとよいですか」</p><p>送り先が決まらないと、AIが聞き取った内容を誰も受け取れません。</p></div></li>
+        <li><div><strong>予約やクレームを誰に渡すか</strong><p class="ask">聞く：「予約の確定と、お困りごとの電話は、どなたが受けますか」</p><p>受け手が決まっていないと、AIが受けたあとの電話が宙に浮きます。</p></div></li>
+      </ol>
+      <p class="muted">どれかが決まらなければ、その場では申込を勧めず、決めるところから一緒にやります。まず話を聞きたいお店には、A-02の相談会を案内してください。</p>
+    </section>
+
+    <!-- 04 -->
+    <section id="price" aria-labelledby="h-price">
+      <p class="eyebrow">04 PRICING</p>
+      <h2 id="h-price">料金の伝え方と分岐</h2>
+      <p class="sec-lead">直販の正式な料金は、まだ決まっていません。言えるのは無料モニターの条件だけです。言えることと、まだ言えないことを混ぜないのがいちばん大事になります。</p>
+
+      <div class="price-2">
+        <div class="pbox ok">
+          <p class="pbox-t">言えること（無料モニター）</p>
+          <ul>
+            <li><span>募集の枠</span><b>先着30社ほど</b></li>
+            <li><span>モニター初期費用</span><b class="num">0円</b></li>
+            <li><span>モニター月額費用</span><b class="num">0円</b></li>
+            <li><span>通話料・期間・対象範囲</span><b>申込時に案内</b></li>
+          </ul>
+          <p class="foot">A-01・A-02・C-01に同じ内容を載せています。お客様が見ても食い違いません。</p>
+        </div>
+        <div class="pbox wait">
+          <p class="pbox-t">まだ言えないこと</p>
+          <ul>
+            <li><span>正式な料金</span><b class="tbd">【調整中】</b></li>
+            <li><span>モニターのあとの料金</span><b class="tbd">【調整中】</b></li>
+            <li><span>利用開始までの日数</span><b class="tbd">【調整中】</b></li>
+            <li><span>最低契約期間・解約の条件</span><b class="tbd">【調整中】</b></li>
+          </ul>
+          <p class="foot">「正式な料金は調整中です。決まり次第、確認してお伝えします」とだけ言う。</p>
+        </div>
+      </div>
+
+      <h3>聞かれ方ごとの返し方</h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>聞かれたこと</th><th>返す言葉</th><th>次の一手</th></tr></thead>
+          <tbody>
+            <tr><th>「いくら？」</th><td data-l="返す言葉">「いまは先着30社ほどの無料モニターを募集していて、モニター期間は初期費用も月額も0円です。通話料や期間などの条件は、お申込みのときにご案内します。正式な料金は調整中です」</td><td data-l="次の一手">条件の中身は申込時の案内に任せる。金額を推測で言わない。</td></tr>
+            <tr><th>「モニターが終わったら、いくら？」</th><td data-l="返す言葉">「正式な料金は調整中です。決まったら、確認してお伝えします」</td><td data-l="次の一手">相場や「月◯円くらい」を口にしない。</td></tr>
+            <tr><th>「通話料はかかる？」</th><td data-l="返す言葉">「通話料を含めた条件は、お申込みのときにご案内します」</td><td data-l="次の一手">無料かどうか、いくらかを言い切らない。</td></tr>
+            <tr><th>「なんで無料なの？」</th><td data-l="返す言葉">「サービスが始まったばかりで、本当の事例をつくりたいんです。導入後に短いインタビューをさせてください。よかった点も、合わなかった点も伺います。使いにくいところも、遠慮なく教えてください」</td><td data-l="次の一手">無料でお願いする理由の3つ目（困っているお店の紹介）も、押しつけずに添える。</td></tr>
+            <tr><th>「いつから使える？」</th><td data-l="返す言葉">「今の番号から転送できるかを確認してからになります。開始までの日数は調整中なので、確認してお伝えします」</td><td data-l="次の一手">03の3点のうち、番号と転送方法をその場で聞く。</td></tr>
+            <tr><th>「電話代行より安い？」</th><td data-l="返す言葉">「正式な料金が決まっていないので、比べる数字はまだ出せません。まずは役割で比べてみてください」</td><td data-l="次の一手">05の切り返し01（電話代行との違い）へ。</td></tr>
+            <tr><th>「高い」</th><td data-l="返す言葉">「お値段の前に、いま一番困っている電話を教えてください。出られない時間帯と、営業電話にとられている手間から伺わせてください」</td><td data-l="次の一手">そのうえで「いまは無料モニター中で、モニター期間は初期費用も月額も0円です。正式な料金は調整中です」と伝える。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 05 -->
+    <section id="qa" aria-labelledby="h-qa">
+      <p class="eyebrow">05 OBJECTIONS</p>
+      <h2 id="h-qa">切り返し10本</h2>
+      <p class="sec-lead">答えはこのノートにある事実の範囲だけです。決まっていないことは「確認してお伝えします」と言い切り、持ち帰ります。料金の聞かれ方は04にまとめました。</p>
+
+      <ol class="qa">
+        <li>
+          <p class="qa-meta"><span class="who">比べ方</span></p>
+          <h3>電話代行と何が違う？</h3>
+          <p class="ans">「いちばんの違いは、最初に電話に出るのがオペレーターさんかAIか、です。こちらは24時間受けられて、どの電話をAIが受けて、どれをスタッフさんに回すかを、お店が決めます。細かい違いは、この表で見てください」<span class="aside">（A-01の比較表を見せる）</span></p>
+          <p class="ans2"><b>必ず続けて言う</b>　「人が話すこと自体に価値があるお店は、人の電話代行が向いています。電話の多くが営業電話や定型の質問なら、AIで足ります」。料金での比較はしない（正式な料金が【調整中】）。</p>
+        </li>
+        <li>
+          <p class="qa-meta"><span class="who">向き不向き</span></p>
+          <h3>うちは向いている？</h3>
+          <p class="ans">「正直にお話しすると、向いていないお店が3つあります。電話がほとんど鳴らないお店。すべての電話に、店長さんが自分で出たいお店。それから、予約の確定までAIに任せたいお店です。確定はスタッフさんが行う作りなので。逆に、営業中の電話で手が止まる、営業電話が多い、営業時間外の予約を取りこぼしている、のどれか一つでも当てはまれば、一緒に整理できます」</p>
+          <p class="ans2"><b>補足</b>　向いていないと分かったら、その場では勧めない（→03）。</p>
+        </li>
+        <li>
+          <p class="qa-meta"><span class="who">予約</span></p>
+          <h3>予約をAIが勝手に確定しない？</h3>
+          <p class="ans">「確定しません。営業時間外の予約の希望は、AIが仮受付として内容を残して、営業が始まったらスタッフさんが確認して確定します。予約や常連のお客様、急ぎの用件は人へつなぐ、という設定から始めることもできます」</p>
+        </li>
+        <li>
+          <p class="qa-meta"><span class="who">番号</span></p>
+          <h3>今の番号のまま使える？</h3>
+          <p class="ans">「今の番号から転送して使う形を想定しています。回線の種類や転送の条件で変わるので、導入前に確認させてください」</p>
+          <p class="ans2"><b>補足</b>　回線の種類と今の転送のしかたを控えて持ち帰る。言い切らない言い方は→06。</p>
+        </li>
+        <li>
+          <p class="qa-meta"><span class="who">AIの名乗り</span></p>
+          <h3>AIだと相手にバレる？失礼では？</h3>
+          <p class="ans">「AIが出ていることを最初にお伝えするかどうかは、いま検討中です。決まったら、確認してお伝えします」</p>
+          <p class="ans2"><b>補足</b>　検討中、とだけ答える（→06）。気にされるなら、次の切り返し06へつなぐ。</p>
+        </li>
+        <li>
+          <p class="qa-meta"><span class="who">お客様の反応</span></p>
+          <h3>AIが出たら、<br>お客さんが嫌がらない？</h3>
+          <p class="ans">「予約や常連さんの電話は、これまでどおりスタッフさんにつなぐ設定にできます。AIが受けるのは、お店が決めた電話だけです」</p>
+          <p class="ans2"><b>補足</b>　AIであることを冒頭で伝えるかは、検討中。</p>
+        </li>
+        <li>
+          <p class="qa-meta"><span class="who">任せる範囲</span></p>
+          <h3>全部AIに任せるのは不安</h3>
+          <p class="ans">「全部をAIに任せる必要はないんです。いちばん困っている電話を一つ選ぶところから始めます。たとえば、営業時間外の問い合わせだけ、営業電話や業者からの連絡だけ、営業時間や道順の質問だけ、という始め方です。任せる範囲は、あとから変えられます」</p>
+        </li>
+        <li>
+          <p class="qa-meta"><span class="who">設定</span></p>
+          <h3>設定が難しそう</h3>
+          <p class="ans">「設定は3ステップです。まず業種のひな形を選ぶ。次に、電話の種類ごとにAIか人かを決める。最後に、そのあとの処理を、その場で完結・スタッフへ転送・通知して折り返し、から選ぶ。AIに話させる文章を、ゼロから書く必要はありません」</p>
+          <p class="ans2"><b>補足</b>　A-01の受電ルールの画面を、その場で一緒に触ると早い。</p>
+        </li>
+        <li>
+          <p class="qa-meta"><span class="who">実績</span></p>
+          <h3>実績は？</h3>
+          <p class="ans">「サービスは始まったばかりで、お見せできる導入事例はまだありません。本当の事例をつくるために、先着30社ほどの無料モニターを募集しているところです。導入後に短いインタビューをさせていただいて、よかった点も、合わなかった点も伺います」</p>
+          <p class="ans2"><b>補足</b>　導入社数・店名・「◯本の電話を受けた」は作らない。</p>
+        </li>
+        <li>
+          <p class="qa-meta"><span class="who">不在時</span></p>
+          <h3>出られない電話はどうなる？</h3>
+          <p class="ans">「スタッフさんが出られないときは、AIが用件を伺って、スタッフさんのLINEにお知らせします。用件とお名前、折り返し先が届くので、手が空いたときに折り返せます。通知の送り先は、導入前にお店と決めます」</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- 06 -->
+    <section id="ng" aria-labelledby="h-ng">
+      <p class="eyebrow">06 DON'T SAY</p>
+      <h2 id="h-ng">言ってはいけない言い方</h2>
+      <p class="sec-lead">一度言うと、あとで取り消せません。左は使わず、右に言い換えます。</p>
+      <ul class="ng-list">
+        <li><div class="bad">「全部AIに任せられます」</div><div class="good">「全部を任せる必要はありません。いちばん困っている電話を一つ選ぶところから始めます」</div></li>
+        <li><div class="bad">「人がいらなくなります」「スタッフを減らせます」「電話対応がなくなります」</div><div class="good">「予約や常連さんの電話は、これまでどおりスタッフさんが出ます。AIが受けるのは、お店が決めた電話だけです」</div></li>
+        <li><div class="bad">「予約もAIが取ります」</div><div class="good">「営業時間外の予約の希望は、AIが仮受付します。確定はスタッフさんです」</div></li>
+        <li><div class="bad">「営業電話を必ず見分けます」</div><div class="good">「迷う電話は人に残すか、用件を聞いて通知し、折り返す設定にできます」</div></li>
+        <li><div class="bad">「他社より品質が高いです」「受け答えがいちばん自然です」</div><div class="good">「違いは、どこまで任せるかを、お店が電話の種類ごとに決められるところです」</div></li>
+        <li><div class="bad">「◯社が導入済みです」「◯◯さんのお店も使っています」</div><div class="good">「本当の事例をつくるために、無料モニターを募集している段階です」</div></li>
+        <li><div class="bad">「料金は月◯円です」「モニターのあとも安いです」</div><div class="good">「正式な料金は調整中です。確認してお伝えします」</div></li>
+        <li><div class="bad">「今の番号でそのまま使えます」</div><div class="good">「今の番号から転送して使う形を想定しています。回線の種類で変わるので、導入前に確認します」</div></li>
+        <li><div class="bad">「AIだとバレません」「人と区別がつきません」</div><div class="good">「AIが出ていることを最初にお伝えするかどうかは、検討中です」</div></li>
+        <li><div class="bad">「すぐ使えます」「◯日で始められます」</div><div class="good">「開始までの日数は調整中です。番号の確認のあとにご案内します」</div></li>
+        <li><div class="bad">「電話代行はもう古いです」</div><div class="good">「人が話すこと自体に価値があるお店は、人の電話代行が向いています」</div></li>
+      </ul>
+    </section>
+
+    <!-- 07 -->
+    <section id="close" aria-labelledby="h-close">
+      <p class="eyebrow">07 CLOSING</p>
+      <h2 id="h-close">締めと次回アポ</h2>
+      <p class="sec-lead">最後は「今日お答えできなかったことは、確認してお伝えしますね」の一言で締めます。</p>
+
+      <h3>申込と次回アポの取り方</h3>
+      <ul class="rules">
+        <li><strong>申込は、ライトアップのお問い合わせフォームから。</strong>お問い合わせ内容に「おまかせ受電AI 無料モニター」と書いて送ってもらう。</li>
+        <li><strong>まず話を聞きたいお店は、A-02の相談会へ。</strong>同じフォームに「相談会の事前登録」と書き、店名・業種・困っている電話の3つを添えてもらう。日時・形式・定員は<span class="tbd">【調整中】</span>で、決まり次第ご案内する。</li>
+        <li><strong>答えられなかった質問を控える。</strong>店長さんの言葉のまま残し、確認して返すと約束する。</li>
+        <li><strong>申込からの流れを見せる。</strong>下の4つの順で進むことを、最後に一度だけ伝える。</li>
+      </ul>
+      <ol class="steps">
+        <li><b>STEP 1</b><strong>フォームで申込</strong><span>「おまかせ受電AI 無料モニター」と書いて送る</span></li>
+        <li><b>STEP 2</b><strong>条件のご案内</strong><span>期間・通話料・対象範囲など</span></li>
+        <li><b>STEP 3</b><strong>番号の確認</strong><span>今の番号から転送できるか</span></li>
+        <li><b>STEP 4</b><strong>利用開始</strong><span>開始までの日数は【調整中】</span></li>
+      </ol>
+
+      <div class="btn-row">
+        <a class="btn" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">お問い合わせフォーム</a>
+        <a class="btn btn-ghost" href="https://writeup-inc.github.io/saas/omakase-juden/" target="_blank" rel="noopener">A-01 サービス紹介</a>
+        <a class="btn btn-ghost" href="https://writeup-inc.github.io/seminar/omakase-juden/" target="_blank" rel="noopener">A-02 相談会の案内</a>
+      </div>
+    </section>
+
+    <!-- 08 -->
+    <section id="pending" aria-labelledby="h-pending">
+      <p class="eyebrow">08 OPEN ITEMS</p>
+      <h2 id="h-pending">未決事項の一覧</h2>
+      <p class="sec-lead">聞かれたら中央の列のとおりに答え、決まった行は表から外して本文の【】も書き換えます。</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>項目</th><th>聞かれたら</th><th>状態</th></tr></thead>
+          <tbody>
+            <tr><th>正式な料金（モニターのあと）</th><td data-l="聞かれたら">正式な料金は調整中です。決まり次第ご案内します。</td><td data-l="状態"><span class="st">調整中</span></td></tr>
+            <tr><th>モニター期間・通話料・対象範囲</th><td data-l="聞かれたら">お申込みのときにご案内します。</td><td data-l="状態"><span class="st adj">申込時に案内</span></td></tr>
+            <tr><th>利用開始までの日数</th><td data-l="聞かれたら">今の番号から転送できるかを確認してからです。日数は確認してお伝えします。</td><td data-l="状態"><span class="st">調整中</span></td></tr>
+            <tr><th>最低契約期間・解約の条件</th><td data-l="聞かれたら">確認してお伝えします。</td><td data-l="状態"><span class="st">調整中</span></td></tr>
+            <tr><th>AIが出ていることを冒頭で伝えるか</th><td data-l="聞かれたら">検討中です。決まったらお伝えします。</td><td data-l="状態"><span class="st">検討中</span></td></tr>
+            <tr><th>相談会（A-02）の日時・形式・定員</th><td data-l="聞かれたら">事前登録いただいたお店に、決まり次第ご案内する予定です。</td><td data-l="状態"><span class="st">調整中</span></td></tr>
+            <tr><th>障害時の窓口と時間帯</th><td data-l="聞かれたら">確認してお伝えします。</td><td data-l="状態"><span class="st">調整中</span></td></tr>
+            <tr><th>導入事例・導入社数</th><td data-l="聞かれたら">本当の事例をつくるために、無料モニターを募集している段階です。</td><td data-l="状態"><span class="st adj">モニター募集中</span></td></tr>
+            <tr><th>AI受電用の番号の発行、地図・グルメサイトの掲載番号の変更手順</th><td data-l="聞かれたら">今後の開発候補で、提供時期は未定です。いまは今の番号から転送して使う形になります。</td><td data-l="状態"><span class="st">時期未定</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p class="foot-warn">社内限定です。お客様へURLを送らないでください</p>
+        <p>おまかせ受電AI A-04 商談時の説明ノート。運営：株式会社ライトアップ（東証グロース 証券コード6580）。</p>
+        <p>このノートより、A-01・A-02に載っている正式な案内が優先します。台本の呼びかけは「店長さん」なので、オーナー・院長・先生など、ふだんの呼び方に置き換えてください。</p>
+      </div>
+      <div>
+        <h4>PACK</h4>
+        <ul>
+          <li><a href="https://writeup-inc.github.io/saas/omakase-juden-pack/">資料インデックス</a></li>
+          <li><a href="https://writeup-inc.github.io/saas/omakase-juden/">A-01 サービス紹介</a></li>
+          <li><a href="https://writeup-inc.github.io/seminar/omakase-juden/">A-02 無料相談会の案内</a></li>
+          <li><a href="../a03/">A-03 相談会の投影資料</a></li>
+          <li><a href="https://writeup-inc.github.io/saas/ai-reception-hiyori/">C-01 ひよりの自己紹介</a></li>
+          <li><a href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">お問い合わせフォーム</a></li>
+          <li><a href="https://www.writeup.jp/company/" target="_blank" rel="noopener">運営会社</a></li>
+          <li><a href="https://www.writeup.jp/privacy/" target="_blank" rel="noopener">個人情報保護方針</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copyright">© 2026 Writeup Co., Ltd.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var toc = document.querySelector('.toc'); if (!toc || !('IntersectionObserver' in window)) return;
+  var list = toc.querySelector('ol'); var links = {};
+  toc.querySelectorAll('a[href^="#"]').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
+  function mark(id) {
+    var a = links[id]; if (!a) return;
+    Object.keys(links).forEach(function (k) { links[k].removeAttribute('aria-current'); });
+    a.setAttribute('aria-current', 'true');
+    if (list.scrollWidth > list.clientWidth + 1) {
+      var d = a.getBoundingClientRect().left - list.getBoundingClientRect().left - 12;
+      list.scrollBy({ left: d, behavior: 'smooth' });
+    }
+  }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) mark(e.target.id); });
+  }, { rootMargin: '-130px 0px -60% 0px' });
+  document.querySelectorAll('main section[id]').forEach(function (s) { io.observe(s); });
+})();
+</script>
+
+</body>
+</html>
