@@ -450,13 +450,15 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
   <div class="w hero-in">
     <div>
       <p class="eyebrow"><span class="live"><i></i>OEM PARTNER</span>OEMパートナー募集｜おまかせ受電AI</p>
-      <div class="hc" id="hc" tabindex="0" title="押すと、3つのコピーと見出しを並べて読めます">
+      <div class="hc" id="hc" tabindex="0" title="押すと、5つのコピーと見出しを並べて読めます">
         <h1 id="tw" data-keep-phrase>名前とロゴを替えて、<br>そのまま売れるAI電話。</h1>
       </div>
       <div class="dots" role="group" aria-label="コピーの切り替え">
         <button type="button" aria-label="コピー1" aria-current="true"></button>
         <button type="button" aria-label="コピー2" aria-current="false"></button>
         <button type="button" aria-label="コピー3" aria-current="false"></button>
+        <button type="button" aria-label="コピー4" aria-current="false"></button>
+        <button type="button" aria-label="コピー5" aria-current="false"></button>
       </div>
       <p class="sub">店舗の電話を、予約は人へ、営業電話はAIへと振り分ける受電AIです。<b>貴社のサービス名とロゴで</b>、売価も貴社が決めて販売できます。</p>
       <div class="cta">
@@ -731,7 +733,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
       <li class="mkt-c">
         <span class="mkt-no">01</span>
         <b class="mkt-n">88<i>億円</i></b>
-        <p class="mkt-d">国内のボイスボット（電話の自動応答AI）市場の、2027年度の予測。2022年度は19億円。</p>
+        <p class="mkt-d">国内のボイスボット（電話の自動応答AI）市場の、2027年度の予測。2022年度の19億円から5年で約4.6倍。</p>
         <a class="mkt-src" href="https://www.itr.co.jp/topics/pr-20230822-1" target="_blank" rel="noopener">アイ・ティ・アール「ボイスボット市場規模推移および予測」2023年8月</a>
       </li>
       <li class="mkt-c">
@@ -762,7 +764,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
     <p class="mkt-bridge">だから、店舗の電話をAIと人へ振り分ける仕組みを、貴社のサービス名で売れる形にしました。</p>
     <button class="fc-btn" type="button"
       data-fc-section="市場データ"
-      data-fc-claim="国内のボイスボット市場は2027年度に88億円の予測、2022年度は19億円（アイ・ティ・アール 2023年8月）／非正社員が不足していると答えた飲食店は57.7%で全業種で最も高い（帝国データバンク 人手不足に対する企業の動向調査 2026年7月）／2026年度の最低賃金の全国加重平均は56円引き上げの1,177円（厚生労働省 2026年9月）／生成AIの影響として業務の効率化を挙げた日本企業は61.6%（総務省 令和8年版情報通信白書）／生成AIを活用する方針の中小企業は58.1%、大企業は74.0%（総務省 令和8年版情報通信白書）">
+      data-fc-claim="国内のボイスボット市場は2027年度に88億円の予測、2022年度は19億円で5年で約4.6倍（アイ・ティ・アール 2023年8月）／非正社員が不足していると答えた飲食店は57.7%で全業種で最も高い（帝国データバンク 人手不足に対する企業の動向調査 2026年7月）／2026年度の最低賃金の全国加重平均は56円引き上げの1,177円（厚生労働省 2026年9月）／生成AIの影響として業務の効率化を挙げた日本企業は61.6%（総務省 令和8年版情報通信白書）／生成AIを活用する方針の中小企業は58.1%、大企業は74.0%（総務省 令和8年版情報通信白書）">
       ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span>
     </button>
   </div>
@@ -786,7 +788,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
 <dialog class="pop" id="pop" aria-labelledby="popT">
   <div class="pop-h"><p id="popT">このページを、見出しだけで読む</p><button type="button" class="pop-x" id="popX" aria-label="閉じる">×</button></div>
   <div class="pop-b">
-    <p class="pop-lbl"><span class="en">Hero copy</span>いちばん上で切り替わっている3つのコピー</p>
+    <p class="pop-lbl"><span class="en">Hero copy</span>いちばん上で切り替わっている5つのコピー</p>
     <ol class="copies" id="copies"></ol>
     <div class="story">
       <p class="pop-lbl"><span class="en">Headlines</span>見出しをつなげると、こういう話です</p>
@@ -819,6 +821,8 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
   /* ===== ヒーロー：3つのコピーのローテーション ===== */
   var COPIES=[
     {c:'名前とロゴを替えて、\nそのまま売れるAI電話。',s:'何を売るのか。店舗の電話を用件ごとにAIと人へ振り分ける受電AIです。名前とロゴを貴社のものにして、貴社のサービスとして売れます。'},
+    {c:'電話AIの市場は、\n5年で約4.6倍の予測。',s:'どれだけ伸びるのか。電話の自動応答AI（ボイスボット）の国内市場は、2022年度の19億円から2027年度に88億円へ伸びると予測されています（ITR、2023年8月）。'},
+    {c:'ランチどきの営業電話に、\nもう手を止めさせない。',s:'何を解決するのか。一番忙しい時間にかかってくる営業電話は、AIが用件と連絡先を聞いてその場で終えます。予約の電話は、スタッフへつなぎます。'},
     {c:'訪問先の店舗で、\n電話の話をしてみませんか。',s:'どこで売るのか。予約の電話や営業電話の困りごとは、業種を問わず店舗にあります。いまお付き合いのある店舗への、話の入口になります。'},
     {c:'今のお客様に、\nもう1つ売れる物を。',s:'誰に売るのか。新しい売り先を探す前に、いま取引のある店舗へ提案できる商材です。売価は貴社が決めます。'}
   ];
