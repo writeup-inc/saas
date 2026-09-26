@@ -221,6 +221,16 @@ a{color:inherit}
 /* 05 品質と違い */
 .quote{margin:0;padding:26px 28px;border-left:4px solid var(--ac);background:var(--acl);font-family:var(--ff-head);font-size:clamp(1.15rem,2vw,1.35rem);font-weight:900;line-height:1.7}
 .quote span{display:block;margin-top:10px;font-family:var(--ff-body);font-size:15px;font-weight:500;color:var(--g2)}
+.kiki{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:22px 0 0;border:1px solid var(--ln);border-radius:14px;background:#fff;overflow:hidden}
+.kiki-c{display:flex;flex-direction:column;gap:6px;padding:20px 18px;border-left:1px solid var(--ln2)}
+.kiki-c:first-child{border-left:0}
+.kiki-l{font-size:14px;font-weight:700;color:var(--g1);line-height:1.5;word-break:auto-phrase}
+.kiki-n{font-family:var(--ff-en);font-size:clamp(34px,4vw,48px);font-weight:800;line-height:1;color:var(--ac);white-space:nowrap}
+.kiki-n i{margin-left:3px;font-family:var(--ff-head);font-size:.42em;font-style:normal}
+.kiki-ja{font-family:var(--ff-head);font-size:clamp(28px,3.2vw,38px)}
+.kiki-o{font-size:13px;line-height:1.6;color:var(--g2);word-break:auto-phrase}
+@media(max-width:960px){.kiki{grid-template-columns:1fr 1fr}.kiki-c:nth-child(3){border-left:0}.kiki-c:nth-child(n+3){border-top:1px solid var(--ln2)}}
+@media(max-width:600px){.kiki{grid-template-columns:1fr}.kiki-c{border-left:0;border-top:1px solid var(--ln2)}.kiki-c:first-child{border-top:0}}
 .diff1{margin-top:22px}
 .sub-eb{margin:44px 0 2px;font-size:13px;color:var(--ac)}
 .sub-h{margin:0 0 6px;font-size:clamp(1.05rem,2vw,1.25rem);font-weight:900;line-height:1.6}
@@ -594,8 +604,15 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
 <!-- 04 品質と作り替え -->
 <section class="sec tint" id="s4" aria-labelledby="h4s">
   <div class="w">
-    <div class="sh"><p class="shl"><span class="no">04</span><span class="en">Quality &amp; Customize</span></p><h2 id="h4s">通話品質は他社と同等。<br>違いは原価と作り替えの幅です。</h2></div>
-    <blockquote class="quote">遜色はありません。<br>ただ、飛び抜けて良いわけでもありません。<span>AI電話の聞き取り、話し方、応答の速さは、どの音声AIを選び、どう調整し、どう組み立てるかで決まります。だから、品質を売り文句にはしません。</span></blockquote>
+    <div class="sh"><p class="shl"><span class="no">04</span><span class="en">Quality &amp; Customize</span></p><h2 id="h4s">通話品質は他社と遜色なし。<br>違いは原価と作り替えの幅です。</h2></div>
+    <blockquote class="quote">7つのAI電話を、同じ質問で聞き比べました。<span>応答のそろい方と、話し始めるまでの短さは、録音した6サービスの中でいちばんでした。AI電話の聞き取りや話し方、応答の速さは、使う音声AIとその調整・組み立て方に大きく左右され、電話回線や通信環境も影響します。</span></blockquote>
+    <div class="kiki" role="group" aria-label="7つのAI電話の聞き比べ（受電AIの計測値）">
+      <div class="kiki-c"><span class="kiki-l">応答までの時間（中央値）</span><b class="kiki-n">2.3<i>秒</i></b><span class="kiki-o">他社 1.2〜3.7秒（6サービス中2番目）</span></div>
+      <div class="kiki-c"><span class="kiki-l">応答のばらつき</span><b class="kiki-n">0.3<i>秒</i></b><span class="kiki-o">他社 0.5〜5.3秒（いちばん小さい）</span></div>
+      <div class="kiki-c"><span class="kiki-l">最初の案内の長さ</span><b class="kiki-n">11.2<i>秒</i></b><span class="kiki-o">他社 12.4〜69.0秒（いちばん短い）。発信者が話し始めるまでの時間</span></div>
+      <div class="kiki-c"><span class="kiki-l">話す番の合図音</span><b class="kiki-n kiki-ja">なし</b><span class="kiki-o">他社は5サービス中2つで鳴る</span></div>
+    </div>
+    <p class="note">弊社（株式会社ライトアップ）が2026年9月25日に、国内の7サービスへ同じ質問で電話をかけて比べた結果です。計測値は各サービス1回の通話録音から得た目安で、設定やシナリオで結果は変わります。受電AIの通話は3往復で、比べた応答の数は少なめです。1サービスは公式動画で確認したため、計測値は6サービスで比べています。他社名は伏せて掲載。</p>
     <div class="diff1">
       <div class="dcard">
         <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="18"/><path d="M24 13v22M30 17.5c-1.5-2-3.6-2.8-6-2.8-3.3 0-6 1.8-6 4.6 0 6.5 12 3.3 12 9.8 0 2.8-2.7 4.7-6 4.7-2.6 0-4.9-1-6.3-3"/></svg>
@@ -631,8 +648,8 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
     </div>
     <p class="note">どこまで足すかは、業種ごとの相談で決めるのが基本。何社かで使える機能は、最初にまとめて開発して各社へ提供します。1社のための開発は都度お見積りで、数十万円程度で収まることが多いです。</p>
     <button class="fc-btn" type="button"
-      data-fc-section="通話品質は他社と同等。違いは原価と作り替えの幅です。"
-      data-fc-claim="AI電話応対の通話品質（聞き取り・話し方・応答の速さ）は、採用する音声認識・音声合成・対話AIの選択、調整、組み立て方で決まる">
+      data-fc-section="通話品質は他社と遜色なし。違いは原価と作り替えの幅です。"
+      data-fc-claim="AI電話の聞き取り・話し方・応答の速さは、採用する音声認識・音声合成・対話AIの選択と、その調整・組み立て方に大きく左右され、電話回線や通信環境も影響する">
       ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span>
     </button>
   </div>
@@ -682,7 +699,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
       <dt>向いている会社</dt>
       <dd><ul><li>店舗向けにAIやITを売っている会社</li><li>通信・OA・POSの販売会社</li><li>予約システムの販売会社</li><li>店舗の運営を支援している会社</li></ul></dd>
       <dt>向いていない会社</dt>
-      <dd><ul><li>店舗からの問い合わせを受ける窓口を持てない会社（一次受けを貴社にお願いする作りのため）</li><li>通話品質の高さを一番の売りにしたい会社（品質は他社と同等のため）</li></ul></dd>
+      <dd><ul><li>店舗からの問い合わせを受ける窓口を持てない会社（一次受けを貴社にお願いする作りのため）</li><li>通話品質の高さを一番の売りにしたい会社（品質は他社と遜色ない水準で、品質だけで差をつける商材ではないため）</li></ul></dd>
       <dt>最初に提供する業種</dt>
       <dd>飲食店向けから提供を準備しています</dd>
       <dt>まだ決まっていない条件</dt>
