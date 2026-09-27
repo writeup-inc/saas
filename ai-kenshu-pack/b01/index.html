@@ -783,7 +783,6 @@ table.cmp{width:100%;min-width:980px;border-collapse:separate;border-spacing:0;f
   pop.addEventListener('click',function(e){ if(e.target===pop) closePop(); });
   storyEl.addEventListener('click',function(e){ var a=e.target.closest('a'); if(!a) return; e.preventDefault(); pop.dataset.jump='1'; closePop(); var sec=document.getElementById(a.dataset.sec), h=sec.querySelector('h2'); sec.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'}); h.setAttribute('tabindex','-1'); setTimeout(function(){ h.focus({preventScroll:true}); },reduce?0:450); history.replaceState(null,'',a.getAttribute('href')); });
 
-  /* 新着の研修（画面イメージ）：上から1件ずつ足す */
   // 公式問い合わせフォームの必須項目に、資料請求の用件をあらかじめ設定する。
   var requestForm=document.querySelector('#request form[data-mautic-form]');
   if(requestForm){
