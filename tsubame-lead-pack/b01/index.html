@@ -7,7 +7,7 @@
 <meta name="lp-type" content="左脳/資料/I興味">
 <title>つばめリード｜OEM提供のご案内（パートナー向け）</title>
 <link rel="canonical" href="https://writeup-inc.github.io/saas/tsubame-lead-pack/b01/">
-<meta name="description" content="つばめリードを自社のお客様に販売する会社向けのご案内です。弊社と貴社の分担、決まっていること・決まっていないこと、売ってはいけない相手をまとめています。">
+<meta name="description" content="つばめリードを自社のお客様に販売する会社向けのご案内です。仕入れは1通3.5円（最初に60万通）、売価は自由。同じ会社に間隔を空けて送り直す設計、弊社と貴社の分担、売ってはいけない相手をまとめています。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
@@ -437,6 +437,56 @@ footer a:hover { color: var(--accent); }
 .eq .op { font: 800 1.4rem/1 "Inter", sans-serif; color: var(--on-navy-2); }
 .formula .note { color: var(--on-navy-2); margin: 18px 0 0; }
 .rev-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+/* 卸の条件 */
+.terms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
+@media (max-width: 760px) { .terms { grid-template-columns: 1fr; } }
+.term-c { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 22px 18px; }
+.term-c span { display: block; font-size: .9rem; color: var(--mute); }
+.term-c b { display: block; margin-top: 6px; font-size: 2.4rem; line-height: 1.1; font-weight: 900; }
+.term-c b small { font-size: 1rem; margin-left: 2px; }
+.term-c p { margin: 10px 0 0; font-size: .92rem; color: var(--ink-2); }
+.term-c.is-accent { border-color: var(--accent); background: var(--accent-soft); }
+.term-c.is-accent b { color: var(--accent); }
+.formula .scroll-x { margin-top: 22px; }
+.cmp.gp caption { caption-side: top; text-align: left; font-size: .9rem; color: var(--on-navy-2); padding-bottom: 8px; }
+.cmp.gp th, .cmp.gp td { border-bottom-color: rgba(255,255,255,.14); color: var(--on-navy); }
+.cmp.gp thead th { background: rgba(255,255,255,.06); color: var(--on-navy-2); }
+.cmp.gp tr.us { background: rgba(255,122,99,.14); }
+.cmp.gp tr.us td.hl { color: #ffb3a5; }
+@media (max-width: 760px) { .cmp.gp tr { padding: 12px 4px; border-bottom-color: rgba(255,255,255,.14); } .cmp.gp td::before { color: var(--on-navy-2); } }
+/* 繰り返し送る */
+.rp-top { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+@media (max-width: 860px) { .rp-top { grid-template-columns: 1fr; } }
+.rp-c { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px 22px 20px; }
+.rp-c span { display: block; font-size: .9rem; color: var(--mute); }
+.rp-c b { display: block; margin-top: 6px; font-size: 2.3rem; line-height: 1.1; font-weight: 900; color: var(--accent); }
+.rp-c b small { font-size: 1rem; margin-left: 2px; color: var(--ink); }
+.rp-c h3 { margin: 12px 0 6px; font-size: 1.05rem; }
+.rp-c p { margin: 0; font-size: .93rem; color: var(--ink-2); }
+.rp-use { margin: 40px 0 0; }
+.rp-use h3 { margin: 0 0 6px; }
+.rp-use > p { margin: 0 0 16px; color: var(--ink-2); font-size: .95rem; }
+.bars { display: grid; gap: 12px; }
+.bar-row { display: grid; grid-template-columns: 14em 1fr; gap: 14px; align-items: center; }
+@media (max-width: 600px) { .bar-row { grid-template-columns: 1fr; gap: 6px; } }
+.bar-row > span { font-size: .92rem; font-weight: 700; }
+.bar { position: relative; height: 34px; border-radius: 8px; background: var(--bg-2); border: 1px solid var(--line); overflow: hidden; }
+.sec-alt .bar { background: var(--bg); }
+.bar i { position: absolute; inset: 0 auto 0 0; background: var(--navy-2); }
+.bar i.acc { background: var(--accent); }
+.bar em { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-style: normal; font-size: .86rem; font-weight: 700; color: #fff; white-space: nowrap; }
+.bar em.out { color: var(--ink); }
+.rp-plan { margin-top: 40px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; align-items: start; }
+@media (max-width: 860px) { .rp-plan { grid-template-columns: 1fr; } }
+.rp-plan .cmp-wrap h3 { margin: 0; }
+.rp-rules { background: var(--navy); color: var(--on-navy); border-radius: var(--radius); padding: 24px 24px 18px; }
+.rp-rules h3 { color: #fff; margin: 0 0 12px; }
+.rp-rules ol { margin: 0; padding: 0; list-style: none; counter-reset: r; }
+.rp-rules li { counter-increment: r; display: grid; grid-template-columns: 2em 1fr; gap: 8px; padding: 10px 0; border-top: 1px solid rgba(255,255,255,.14); font-size: .95rem; color: var(--on-navy-2); }
+.rp-rules li::before { content: "0" counter(r); font: 800 .95rem/1.6 "Inter", sans-serif; color: #ff9a86; }
+.rp-rules li b { color: #fff; }
+.rp-note { margin: 24px 0 0; font-size: .9rem; color: var(--mute); }
+.memo a, .faq .a a, figcaption a { display: inline-block; padding: 10px 0; margin: -10px 0; min-height: 44px; line-height: 24px; }
 @media (max-width: 860px) { .rev-grid { grid-template-columns: 1fr; } }
 .mini-tbl { width: 100%; border-collapse: collapse; font-size: .92rem; margin-top: 12px; }
 .mini-tbl th, .mini-tbl td { padding: 9px 0; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
@@ -675,7 +725,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
 @media (max-width:860px){#revenue .ev-list{grid-template-columns:1fr}}
 .price-note{grid-template-columns:1fr}
 
-.offer-top{grid-template-columns:1fr 1.05fr;align-items:end}
+@media (min-width:861px){.offer-top{grid-template-columns:1fr 1.05fr;align-items:end}}
 .offer-top .photo img{aspect-ratio:16/9}
 .sell-h{margin:56px 0 16px;font-size:clamp(1.15rem,2.2vw,1.4rem);font-weight:900;line-height:1.5}
 .checks3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -754,7 +804,8 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
     <nav class="nav" aria-label="ページ内">
       <a href="#console">管理画面</a>
       <a href="#share">分担</a>
-      <a href="#revenue">収益</a>
+      <a href="#revenue">卸条件</a>
+      <a href="#repeat">送り方</a>
       <a href="#dont">売らない相手</a>
       <a href="#faq">ご質問</a>
       <a href="https://writeup-inc.github.io/saas/tsubame-lead-pack/a01/" target="_blank" rel="noopener">直販サイト ↗</a>
@@ -782,7 +833,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
           <button type="button" aria-label="コピー3" aria-current="false"></button>
         </div>
         <p class="hero-lead">AIが相手企業のサイトを読み、その会社あての一文を足して、問い合わせフォームから送ります。<b>送信・録画・管理画面は弊社</b>、お客様への提案と販売は貴社の担当です。</p>
-        <p class="promise">決まっている6項目と、まだ決まっていない8項目を、<br>1枚の表に並べてお見せします。</p>
+        <p class="promise">仕入れは1通3.5円。最初のご購入は60万通（210万円）です。<br>売価は、貴社が自由に決めてください。</p>
         <div class="cta-row">
           <a class="btn" href="https://timerex.net/s/wu/56608220" target="_blank" rel="noopener">個別説明を予約する
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg></a>
@@ -808,10 +859,10 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
     </div>
 
     <ul class="hfacts">
+      <li><span>仕入れ（1通あたり）</span><b class="num">3.5円</b></li>
+      <li><span>最初のご購入</span><b class="num">60万通</b></li>
+      <li><span>貴社の売価</span><b>自由</b></li>
       <li><span>入力から送信完了まで</span><b>全件を録画</b></li>
-      <li><span>録画の保存期間</span><b class="num">60日</b></li>
-      <li><span>月の送信上限</span><b class="num">30,000通</b></li>
-      <li><span>1回の選択で追加できる数</span><b class="num">100社</b></li>
     </ul>
   </div>
   <p class="gen">背景は生成イメージです</p>
@@ -924,7 +975,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
     </div>
       <p class="sec-lead">OEMの話は、ここが曖昧なまま進むと途中で止まります。確定している行と、まだ決まっていない行を、同じ表に並べました。【要確認】の行は、個別説明のあとに書面でお答えします。</p>
     </div>
-    <p class="resp-legend"><span><span class="st ok">確定</span> 6行</span><span><span class="st ng">要確認</span> 8行</span></p>
+    <p class="resp-legend"><span><span class="st ok">確定</span> 9行</span><span><span class="st ng">要確認</span> 9行</span></p>
     <div class="resp-wrap">
       <table class="resp">
         <thead><tr><th scope="col">項目</th><th scope="col">担当</th><th scope="col">状態</th><th scope="col">補足</th></tr></thead>
@@ -935,8 +986,12 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
           <tr><th scope="row">管理画面の提供</th><td class="who" data-l="担当">弊社</td><td data-l="状態"><span class="st ok">確定</span></td><td class="memo" data-l="補足">成功の状態、録画、手順ごとの記録を1社ずつ確認できます。「フォーム送信失敗を報告」のボタン付き。<a href="#console">画面を見る</a></td></tr>
           <tr><th scope="row">送信の運用原則</th><td class="who" data-l="担当">弊社</td><td data-l="状態"><span class="st ok">確定</span></td><td class="memo" data-l="補足">営業お断りのフォームと停止依頼先は、送信の対象外です。CAPTCHAなどは突破せず、送れないものは失敗として扱います。</td></tr>
           <tr><th scope="row">お客様への説明の言い回し</th><td class="who" data-l="担当">弊社</td><td data-l="状態"><span class="st ok">確定</span></td><td class="memo" data-l="補足">お客様にどう話すかをまとめた資料を、個別説明の場でご案内します。</td></tr>
+          <tr><th scope="row">送り先のデータベース</th><td class="who" data-l="担当">弊社</td><td data-l="状態"><span class="st ok">確定</span></td><td class="memo" data-l="補足">現在約14万社。3〜6か月かけて約20万社まで増やす予定です。<a href="#repeat">増やし方を見る</a></td></tr>
+          <tr><th scope="row">仕入れの条件</th><td class="who" data-l="担当">弊社と貴社</td><td data-l="状態"><span class="st ok">確定</span></td><td class="memo" data-l="補足">最初に60万通分をまとめてご購入いただき、1通3.5円でお渡しします。<a href="#revenue">条件を見る</a></td></tr>
+          <tr><th scope="row">お客様への売価</th><td class="who" data-l="担当">貴社</td><td data-l="状態"><span class="st ok">確定</span></td><td class="memo" data-l="補足">いくらで売るかは自由です。弊社から推奨売価の縛りは設けません。</td></tr>
           <tr><th scope="row">自社のお客様への提案と販売</th><td class="who" data-l="担当">貴社</td><td data-l="状態"><span class="st ok">確定</span></td><td class="memo" data-l="補足">どのお客様に出すかの判断も、貴社の役割です。</td></tr>
           <tr class="sep"><th colspan="4" scope="colgroup">まだ決まっていないこと</th></tr>
+          <tr class="open"><th scope="row">60万通の支払時期と使用期限</th><td class="who" data-l="担当"><span class="tbd">【要確認：支払と期限】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">消費税の扱いと、成功送信で数えるかどうかを含めて書面でお答えします。</td></tr>
           <tr class="open"><th scope="row">送り先リストの選定</th><td class="who" data-l="担当"><span class="tbd">【要確認：担当】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">業種・地域・従業員規模で絞る機能は、管理画面にあります。</td></tr>
           <tr class="open"><th scope="row">提案文の共通訴求の作成</th><td class="who" data-l="担当"><span class="tbd">【要確認：担当】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">会社ごとの一文はAIが足す仕組みです。送信者の会社名・担当・連絡先・目的の明記は必須。</td></tr>
           <tr class="open"><th scope="row">お客様からの問い合わせ窓口</th><td class="who" data-l="担当"><span class="tbd">【要確認：担当】</span></td><td data-l="状態"><span class="st ng">要確認</span></td><td class="memo" data-l="補足">一次対応と、技術的な問い合わせの切り分けを含みます。</td></tr>
@@ -956,27 +1011,44 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
 <section id="revenue" aria-labelledby="s3">
   <div class="wrap">
     <div class="sec-head"><div>
-      <p class="eyebrow">REVENUE MODEL</p>
-      <h2 id="s3">粗利は、送った数と<br>売価・仕入値の差で決まります。</h2>
+      <p class="eyebrow">WHOLESALE TERMS</p>
+      <h2 id="s3">仕入れは1通3.5円。<br>売価は、貴社が<br>決めてください。</h2>
     </div>
-      <p class="sec-lead">仕入値と推奨売価は確定前で、数字は書面でお出しします。先に置くとひとり歩きするため、ここでは式の形と、売価を組む前に知っておいてほしい直販と他社の公開価格を並べます。</p>
+      <p class="sec-lead">最初に60万通分をまとめてご購入いただき、1通3.5円でお渡しします。売価の縛りはありません。お客様に売り切れなかった分は、貴社自身の新規開拓にそのまま使えます。</p>
+    </div>
+
+    <div class="terms">
+      <div class="term-c"><span>仕入れ（1通あたり）</span><b class="num">3.5<small>円</small></b><p>直販の公開価格は1通5円です。</p></div>
+      <div class="term-c"><span>最初のご購入</span><b class="num">60<small>万通</small></b><p>60万通×3.5円＝210万円。消費税と支払時期は<span class="nobr">【要確認】</span>。</p></div>
+      <div class="term-c is-accent"><span>貴社の売価</span><b>自由</b><p>推奨売価は設けません。</p></div>
     </div>
 
     <div class="formula">
-      <p class="label">貴社の粗利（月）の形</p>
+      <p class="label">貴社の粗利の形</p>
       <div class="eq">
         <span class="term">成功送信数<small>管理画面で1通ずつ確認できる</small></span>
         <span class="op">×</span>
-        <span class="op">（</span><span class="term q">貴社の売価<small>【要確認：推奨売価】</small></span>
+        <span class="op">（</span><span class="term">貴社の売価<small>自由に決める</small></span>
         <span class="op">−</span>
-        <span class="term q">仕入値<small>【要確認：仕入値】</small></span><span class="op">）</span>
+        <span class="term">仕入値<small>1通3.5円</small></span><span class="op">）</span>
       </div>
-      <p class="note">お客様への課金を成功送信の単位にするかどうかも、<span class="nobr">【要確認：お客様への課金単位】</span>です。システム上、成功と失敗は分かれて記録されます。</p>
+      <div class="scroll-x">
+        <table class="cmp gp">
+          <caption>60万通を使い切った場合の粗利（送信費用だけで売る場合。消費税の扱いは【要確認】）</caption>
+          <thead><tr><th scope="col">貴社の売価</th><th scope="col">1通の粗利</th><th scope="col">60万通の粗利</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">5円（直販と同じ）</th><td data-l="1通の粗利">1.5円</td><td data-l="60万通の粗利">90万円</td></tr>
+            <tr><th scope="row">7円</th><td data-l="1通の粗利">3.5円</td><td data-l="60万通の粗利">210万円</td></tr>
+            <tr class="us"><th scope="row">10円</th><td data-l="1通の粗利" class="hl">6.5円</td><td data-l="60万通の粗利" class="hl">390万円</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">210万円は、売価5円なら42万通、7円なら30万通を売ったところで回収できます。お客様への課金を成功送信の単位にするかどうかは、<span class="nobr">【要確認：お客様への課金単位】</span>です。システム上、成功と失敗は分かれて記録されます。</p>
     </div>
 
     <div class="cmp-wrap">
       <div class="cmp-head">
-        <h3>貴社のお客様が比べる、他社の公開価格</h3>
+        <h3>貴社のお客様が比べる、<span class="nobr">他社の公開価格</span></h3>
         <p>2026年9月2日時点の各社公式サイトの公開情報。社名は伏せています。つばめリードは直販の公開価格です。</p>
       </div>
       <div class="scroll-x">
@@ -992,7 +1064,7 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
       </div>
       <div class="cmp-foot"><p class="note">単価はほぼ横並びです。差が出るのは、送ったことをどこまで見せられるか、の欄です。他社の「件」が成功送信だけを数えるかどうかは、各社の規約によります。</p></div>
     </div>
-    <div class="fc-row"><button class="fc-btn" type="button" data-fc-section="他社の公開価格との比較" data-fc-claim="日本のフォーム営業（問い合わせフォーム自動送信）サービスの公開価格は、1件あたりおおむね4.9〜15円で、初期費用0円のプランが多い（2026年9月2日時点）／送信の記録は、成功・失敗のリスト、送信前後のスクリーンショット、配信レポートといった形が見られる／つばめリードは初期費用0円、成功送信1通5円、全件を録画して60日保存／この価格と記録の方式は、一般的なフォーム営業サービスの水準と比べて正確な位置づけか"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="m8.5 11 1.8 1.8L14 9"/></svg>ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button></div>
+    <div class="fc-row"><button class="fc-btn" type="button" data-fc-section="他社の公開価格との比較" data-fc-claim="日本のフォーム営業（問い合わせフォーム自動送信）サービスの公開価格は、1件あたりおおむね4.9〜15円で、初期費用0円のプランが多い（2026年9月2日時点）／送信の記録は、成功・失敗のリスト、送信前後のスクリーンショット、配信レポートといった形が見られる／つばめリードは初期費用0円、成功送信1通5円、全件を録画して60日保存／OEMでは最初に60万通を1通3.5円で仕入れ、売価は再販側が自由に決める／この価格と記録の方式、卸の条件は、一般的なフォーム営業サービスの水準と比べて正確な位置づけか"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="m8.5 11 1.8 1.8L14 9"/></svg>ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button></div>
 
     <div class="price-note">
       <div>
@@ -1002,6 +1074,64 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
       <p class="sites"><span class="sites-h">価格を載せている直販サイト</span><a href="https://writeup-inc.github.io/saas/tsubame-lead-pack/a01/" target="_blank" rel="noopener">第3版（最新）</a><a href="https://writeup-inc.github.io/saas/tsubame-lead-sky/" target="_blank" rel="noopener">第2版（sky）</a><a href="https://tsubame.figma.site/" target="_blank" rel="noopener">第1版（Figma）</a><span class="sites-n">お客様にお見せするのは第3版です。第1版・第2版の料金と条件は作成時点のものです。</span></p>
     </div>
 
+  </div>
+</section>
+
+<!-- ===== 3b. 繰り返し送る設計 ===== -->
+<section id="repeat" class="sec-alt" aria-labelledby="s3b">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <p class="eyebrow">SEND AGAIN</p>
+      <h2 id="s3b">60万通は、同じ会社に<br>間隔を空けて送り直す<br>前提の量です。</h2>
+    </div>
+      <p class="sec-lead">法人向けサービスの多くは、相手に必要が生まれた時期に届いたかどうかで決まる、タイミングの商材です。1回目に反応がなかった会社が、半年後には困っている。だから1社に1回送って終わりにせず、月をまたいで送り直す設計をおすすめしています。</p>
+    </div>
+
+    <div class="rp-top">
+      <div class="rp-c"><span>送り先のデータベース</span><b class="num">約14<small>万社</small></b><h3>3〜6か月で、約20万社へ</h3><p>一気には増やしません。質の低い送り先を混ぜると、届かないフォームが増えるためです。</p></div>
+      <div class="rp-c"><span>まず検証する1セット</span><b class="num">3〜5<small>回</small></b><h3>1社に、間隔を空けて</h3><p>1か月後などの送信を、予約して設定できます。3〜5回目で一度区切って、結果を見ます。</p></div>
+      <div class="rp-c"><span>1社に5回送っても</span><b class="num">25<small>円</small></b><h3>直販価格で5円×5回</h3><p>月1回・1年続けても60円。紙のDMは、定形郵便の切手代だけで1通110円かかります。</p></div>
+    </div>
+
+    <div class="rp-use">
+      <h3>1社1回では、<span class="nobr">60万通の3分の1まで</span></h3>
+      <p>業種や地域で絞れば、送り先はさらに数千社まで減ります。送り直す前提で、はじめて使い切れる量です。</p>
+      <div class="bars" role="img" aria-label="60万通に対する使用量。約14万社に1回ずつなら14万通で約23%。約20万社に1回ずつなら20万通で約33%。500社に6回ずつ送る提案をお客様200社に出せば60万通で100%">
+        <div class="bar-row"><span>約14万社に1回ずつ</span><div class="bar"><i style="width:23%"></i><em class="out" style="left:calc(23% + 10px)">14万通（約23%）</em></div></div>
+        <div class="bar-row"><span>約20万社に1回ずつ</span><div class="bar"><i style="width:33%"></i><em class="out" style="left:calc(33% + 10px)">20万通（約33%）</em></div></div>
+        <div class="bar-row"><span>500社×6回をお客様200社に</span><div class="bar"><i class="acc" style="width:100%"></i><em>60万通（100%）</em></div></div>
+      </div>
+    </div>
+
+    <div class="rp-plan">
+      <div class="cmp-wrap">
+        <div class="cmp-head"><h3>提案の例：<span class="nobr">500社に月1回・半年</span></h3><p>切り口は例です。お客様の商材に合わせて決めます。</p></div>
+        <div class="scroll-x">
+          <table class="cmp">
+            <thead><tr><th scope="col">回</th><th scope="col">時期</th><th scope="col">切り口の例</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">1回目</th><td data-l="時期">1か月目</td><td data-l="切り口の例">サービスの紹介</td></tr>
+              <tr><th scope="row">2回目</th><td data-l="時期">2か月目</td><td data-l="切り口の例">導入した会社の事例</td></tr>
+              <tr><th scope="row">3回目</th><td data-l="時期">3か月目</td><td data-l="切り口の例">季節や制度に合わせた話題</td></tr>
+              <tr class="us"><th scope="row">ここで区切る</th><td data-l="時期">3か月目の終わり</td><td data-l="切り口の例" class="hl">反応を見て、続けるか決める</td></tr>
+              <tr><th scope="row">4〜6回目</th><td data-l="時期">4〜6か月目</td><td data-l="切り口の例">反応の出た切り口を軸に</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="cmp-foot"><p class="note">500社×6回＝3,000通。貴社の仕入れは10,500円です。</p></div>
+      </div>
+      <div class="rp-rules">
+        <h3>嫌がらせにしないための約束</h3>
+        <ol>
+          <li><span><b>間隔は1か月以上</b>空けます。同じ月に同じ会社へ2度は送りません。</span></li>
+          <li><span><b>毎回、切り口を変えます。</b>同じ文面の繰り返しは、しつこさだけが残ります。</span></li>
+          <li><span><b>停止の依頼があった会社</b>は、以後の送信からすべて外します。</span></li>
+          <li><span><b>営業お断りのフォーム</b>には、1回目から送りません。</span></li>
+        </ol>
+      </div>
+    </div>
+    <p class="rp-note">繰り返し送った場合の反応率について、つばめリードに公表できる実績値はまだありません。3〜5回を1セットにして、お客様と一緒に確かめる形をおすすめしているのはそのためです。</p>
+    <div class="fc-row"><button class="fc-btn" type="button" data-fc-section="同じ会社に繰り返し送る設計" data-fc-claim="フォーム営業は、同じ会社に1回送って終わりにするより、間隔を空けて繰り返し送るほうが反応が増えると聞いた。本当か／法人向けサービスの多くは、相手に必要が生まれる時期が読めないタイミング商材なので、繰り返しの接触が有効／まずは3〜5回を1セットにして検証し、間隔は1か月以上空け、毎回切り口を変える／停止依頼があった会社は以後の送信から外す／定形郵便（25g以内）の料金は110円／こうした回数・間隔・注意点は妥当か、しつこい営業と受け取られないために足りない点はあるか"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="m8.5 11 1.8 1.8L14 9"/></svg>ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button></div>
   </div>
 </section>
 
@@ -1194,15 +1324,23 @@ dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
         <div class="a"><p><span class="tbd">【要確認：ブランド表記】</span> 名称やロゴをどこまで貴社のものにできるかは未確定です。書面で個別にお答えします。</p></div>
       </details>
       <details>
-        <summary>最低利用数や支払時期は決まっていますか。</summary>
-        <div class="a"><p>まだです。直販と同じく、次の4つを見積の前に書面でお出しします。最低利用数と期間、消費税と支払時期、送信の対象外になるフォーム、成功送信の判定と録画の確認方法です。OEMでの中身は<span class="tbd">【要確認：OEMの取扱条件】</span>です。このページより、書面と契約書の内容が優先です。</p></div>
+        <summary>最初にいくら必要ですか。支払時期は決まっていますか。</summary>
+        <div class="a"><p>最初のご購入は60万通、1通3.5円で210万円です。売価は貴社が自由に決められます。</p><p>消費税の扱い、支払時期、60万通の使用期限、成功送信の単位で数えるかどうかは<span class="tbd">【要確認：支払と期限】</span>です。送信の対象外になるフォームと、録画の確認方法とあわせて、見積の前に書面でお出しします。このページより、書面と契約書の内容が優先です。</p></div>
+      </details>
+      <details>
+        <summary>同じ会社に何度も送って、嫌がられませんか。</summary>
+        <div class="a"><p>送り方しだいです。間隔は1か月以上空け、毎回切り口を変え、停止の依頼があった会社は以後すべて外します。営業お断りのフォームには1回目から送りません。</p><p>反応のない会社に何年も送り続けるのではなく、3〜5回で一度区切って結果を見る形をおすすめしています。<a href="#repeat">送り方を見る</a></p></div>
+      </details>
+      <details>
+        <summary>送り先は何社ありますか。</summary>
+        <div class="a"><p>現在約14万社です。3〜6か月かけて、約20万社まで増やす予定です。</p><p>一気に増やさないのは、質の低い送り先を混ぜると、届かないフォームが増えるためです。数より、届く送り先であることを優先しています。</p></div>
       </details>
       <details>
         <summary>月に何通まで送れますか。</summary>
         <div class="a"><p>直販の上限は、月30,000通です。OEMの場合に、お客様ごとに数えるのか、貴社全体で数えるのかは<span class="tbd">【要確認：送信上限の単位】</span>です。</p></div>
       </details>
     </div>
-    <div class="fc-row"><button class="fc-btn" type="button" data-fc-section="取り扱う前の確認事項" data-fc-claim="OEM・再販契約の前に、解約条件、競合排他の有無、クレーム対応の担当、停止依頼の受付、ブランド表記、最低利用数・支払条件を確かめるべき"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="m8.5 11 1.8 1.8L14 9"/></svg>ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button></div>
+    <div class="fc-row"><button class="fc-btn" type="button" data-fc-section="取り扱う前の確認事項" data-fc-claim="OEM・再販契約の前に、解約条件、競合排他の有無、クレーム対応の担当、停止依頼の受付、ブランド表記、最低購入数・支払時期・使用期限を確かめるべき／フォーム営業で同じ会社に送り直すときは、間隔を1か月以上空け、切り口を変え、停止依頼先を外すのが妥当か"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="m8.5 11 1.8 1.8L14 9"/></svg>ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button></div>
   </div>
 </section>
 

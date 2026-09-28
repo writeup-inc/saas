@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex">
 <title>つばめリード｜パートナー個別説明（予約制）</title>
 <link rel="canonical" href="https://writeup-inc.github.io/saas/tsubame-lead-pack/b02/">
-<meta name="description" content="つばめリードを自社のお客様に販売するかどうか、決める前に聞いていただく個別説明です。予約制。分担の表、売らない相手の見分け方、お客様への話し方をお持ち帰りいただけます。">
+<meta name="description" content="つばめリードを自社のお客様に販売するかどうか、決める前に聞いていただく個別説明です。予約制。仕入れは1通3.5円（最初に60万通）、売価は自由。卸の条件と分担の表、売らない相手の見分け方、同じ会社に送り直す提案の組み方をお持ち帰りいただけます。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
@@ -408,6 +408,20 @@ footer a:hover { color: var(--accent); }
 .close-box .btn-ghost { color: #fff; border-color: rgba(255,255,255,.35); margin-top: 12px; }
 .close-box .btn-ghost:hover { color: #fff; border-color: #fff; }
 
+/* 卸の条件 */
+.tm { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+@media (max-width: 860px) { .tm { grid-template-columns: 1fr; } }
+.tm-c { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px 22px 20px; }
+.tm-c span { display: block; font-size: .9rem; color: var(--mute); }
+.tm-c b { display: block; margin-top: 6px; font: 900 2.4rem/1.1 "Inter", "Noto Sans JP", sans-serif; color: var(--accent); }
+.tm-c b small { font-size: 1rem; margin-left: 2px; color: var(--ink); font-family: "Noto Sans JP", sans-serif; }
+.tm-c p { margin: 10px 0 0; font-size: .93rem; color: var(--ink-2); }
+.tm-rule { margin-top: 24px; background: var(--navy); color: var(--on-navy); border-radius: var(--radius); padding: 26px 26px 20px; }
+.tm-h { margin: 0 0 10px; color: #fff; font-weight: 800; font-size: 1.08rem; }
+.tm-rule ul { margin: 0; padding: 0; list-style: none; }
+.tm-rule li { position: relative; padding: 9px 0 9px 20px; border-top: 1px solid rgba(255,255,255,.14); color: var(--on-navy-2); font-size: .95rem; }
+.tm-rule li::before { content: ""; position: absolute; left: 2px; top: 20px; width: 8px; height: 2px; background: #ff9a86; }
+.tm-n { margin: 12px 0 0; font-size: .86rem; color: var(--on-navy-2); }
 /* ===== ChatGPTファクトチェック（主CTAより弱く） ===== */
 .fc-row{margin-top:28px}
 .fc-btn{display:inline-flex;align-items:center;flex-wrap:wrap;gap:.2em .6em;min-height:44px;padding:8px 18px;
@@ -436,6 +450,7 @@ footer a:hover { color: var(--accent); }
       <span><span class="brand-name">つばめリード</span><span class="brand-sub">FOR PARTNERS</span></span>
     </a>
     <nav class="nav" aria-label="ページ内">
+      <a href="#terms">卸の条件</a>
       <a href="#take">持ち帰れること</a>
       <a href="#flow">当日の流れ</a>
       <a href="#notes">注意事項</a>
@@ -463,12 +478,38 @@ footer a:hover { color: var(--accent); }
         <p class="cta-sub">予約ページ（TimeRex）が別のタブで開きます。</p>
       </div>
       <dl class="info">
+        <div><dt>卸の条件</dt><dd>1通3.5円、最初に60万通から<span>売価は貴社が自由に決めます。60万通×3.5円＝210万円。</span></dd></div>
         <div><dt>形式</dt><dd>個別説明（予約制）<span>1社ずつ、貴社の顧客層に合わせた内容です。</span></dd></div>
         <div><dt>予約</dt><dd>予約ページから日時を選択<span>ページ名は「つばめリードMTG」と表示されます。</span></dd></div>
         <div><dt>対象</dt><dd>法人のお客様に商材を販売している会社<span>営業代行、Web制作、広告、コンサルティング、法人向け商材の販売など。</span></dd></div>
         <div><dt>予約の際に</dt><dd>会社名と取扱商材をお知らせください<span>詳しくは、ページ下の注意事項をご覧ください。</span></dd></div>
       </dl>
     </div>
+  </div>
+</section>
+
+<!-- ===== 0. 卸の条件 ===== -->
+<section id="terms" aria-labelledby="s0">
+  <div class="wrap">
+    <p class="eyebrow">WHOLESALE</p>
+    <h2 id="s0">仕入れは1通3.5円。<br>60万通は、間隔を空けた<br>送り直しまで含めた量です。</h2>
+    <p class="sec-lead">最初に60万通分をまとめてご購入いただき、売価は貴社が決めます。送り先のデータベースは約14万社なので、1社に1回ずつでは使い切れません。法人向けの商材は相手に必要が生まれた時期がすべてなので、間隔を空けて送り直す提案をおすすめしています。</p>
+    <div class="tm">
+      <div class="tm-c"><span>仕入れ（1通あたり）</span><b>3.5<small>円</small></b><p>直販の公開価格は1通5円。売価は自由です。</p></div>
+      <div class="tm-c"><span>最初のご購入</span><b>60<small>万通</small></b><p>60万通×3.5円＝210万円。売価5円なら42万通の販売で回収できます。</p></div>
+      <div class="tm-c"><span>送り先のデータベース</span><b>約14<small>万社</small></b><p>3〜6か月で約20万社へ。質を保つため、一気には増やしません。</p></div>
+    </div>
+    <div class="tm-rule">
+      <p class="tm-h">送り直しは、3〜5回を1セットで確かめます</p>
+      <ul>
+        <li>間隔は1か月以上。予約送信で1か月後の送信を設定できます</li>
+        <li>毎回、切り口を変えます（紹介 → 事例 → 季節の話題 など）</li>
+        <li>停止の依頼があった会社は、以後すべて外します</li>
+        <li>1社に5回送っても直販価格で25円、月1回・1年でも60円。紙のDMは切手代だけで1通110円です</li>
+      </ul>
+      <p class="tm-n">繰り返し送った場合の反応率について、公表できる実績値はまだありません。支払時期・消費税・60万通の使用期限は未確定で、書面でお答えします。</p>
+    </div>
+    <div class="fc-row"><button class="fc-btn" type="button" data-fc-section="卸の条件と、同じ会社に送り直す設計" data-fc-claim="フォーム営業は、同じ会社に1回送って終わりにするより、間隔を空けて繰り返し送るほうが反応が増えると聞いた。本当か／法人向けサービスの多くは、相手に必要が生まれる時期が読めないタイミング商材なので、繰り返しの接触が有効／まずは3〜5回を1セットにして検証し、間隔は1か月以上空け、毎回切り口を変える／定形郵便（25g以内）の料金は110円／フォーム営業の公開価格は1通あたりおおむね5円前後で、再販の仕入れ1通3.5円は一般的な水準と比べてどうか"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="m8.5 11 1.8 1.8L14 9"/></svg>ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button></div>
   </div>
 </section>
 
@@ -481,18 +522,18 @@ footer a:hover { color: var(--accent); }
     <div class="cards3">
       <div class="card">
         <span class="num-badge">01</span>
-        <h3>責任分界の表</h3>
-        <p>弊社と貴社の分担のうち、確定している6行と、まだ決まっていない6行。決まっていない行には、あとから書面で個別にお答えします。</p>
+        <h3>卸の条件と分担の表</h3>
+        <p>仕入れ・売価・送り先の数を含め、確定している9行と、まだ決まっていない9行。決まっていない行には、あとから書面で個別にお答えします。</p>
       </div>
       <div class="card">
         <span class="num-badge">02</span>
         <h3>売らない相手の見分け方</h3>
-        <p>売ってはいけないお客様の7つの条件と、提案の前に確かめる3点。貴社の顧客層に当てはめて、その場で一緒に見ていきます。</p>
+        <p>売ってはいけないお客様の6つの条件と、提案の前に確かめる3点。貴社の顧客層に当てはめて、その場で一緒に見ていきます。</p>
       </div>
       <div class="card">
         <span class="num-badge">03</span>
-        <h3>お客様への話し方</h3>
-        <p>貴社の営業が、自社のお客様にどう説明するか。その言い回しをまとめた資料をご案内します。</p>
+        <h3>送り直す提案の組み方</h3>
+        <p>「500社に月1回・半年」のように、同じ会社へ間隔を空けて送る提案の例と、お客様への言い回しをまとめた資料をご案内します。</p>
       </div>
     </div>
   </div>
@@ -536,8 +577,8 @@ footer a:hover { color: var(--accent); }
     <ol class="flow flow5">
       <li><b>01</b><strong>貴社のことを伺う</strong><span>取扱商材と、お客様の顔ぶれ</span></li>
       <li><b>02</b><strong>仕組みと管理画面</strong><span>送信から録画までの実際の画面</span></li>
-      <li><b>03</b><strong>分担と取扱条件</strong><span>確定している範囲と、未確定の範囲</span></li>
-      <li><b>04</b><strong>売らない相手</strong><span>貴社のお客様に当てはめる</span></li>
+      <li><b>03</b><strong>卸の条件と送り方</strong><span>1通3.5円・60万通の使い切り方</span></li>
+      <li><b>04</b><strong>分担と売らない相手</strong><span>貴社のお客様に当てはめる</span></li>
       <li><b>05</b><strong>次の一歩</strong><span>進める・書面を待つ・見送る</span></li>
     </ol>
   </div>
@@ -556,7 +597,7 @@ footer a:hover { color: var(--accent); }
       </ol>
       <div class="close-box">
         <p class="big">まず貴社のお客様の中に、向く会社がどれくらいいるか。そこを一緒に数えるところから始めます。</p>
-        <p>仕入値や推奨売価など、まだ決まっていない条件は、あとから書面でお答えする形です。</p>
+        <p>支払時期や使用期限など、まだ決まっていない条件は、あとから書面でお答えする形です。</p>
         <a class="btn" href="https://timerex.net/s/wu/56608220" target="_blank" rel="noopener">個別説明を予約する
           <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg></a>
         <a class="btn btn-ghost" href="../b01/" style="width:100%">先にOEMのご案内を読む</a>
@@ -573,7 +614,7 @@ footer a:hover { color: var(--accent); }
     <h2 id="s5">ご予約の前に、<br>お読みください。</h2>
     <ul class="notes">
       <li><strong>「会社名」と「取扱商材」をお知らせください。</strong>予約ページの入力項目は、弊社で決めているものではありません。備考などの欄があればそこへ、欄がなければ当日の冒頭で伺います。</li>
-      <li>仕入値、推奨売価、契約の条件は、まだ確定していません。説明の場では確定している範囲をお話しし、未確定の項目には書面で個別にお答えします。</li>
+      <li>仕入れ（1通3.5円・最初に60万通）と、売価を貴社が自由に決めることは確定しています。支払時期、消費税の扱い、60万通の使用期限、契約の条件はまだ確定していません。未確定の項目には書面で個別にお答えします。</li>
       <li>お話しした結果、「いまは取り扱わないほうがいい」とお伝えすることがあります。</li>
       <li>条件については、書面と契約書の内容がこのページより優先です。</li>
       <li>予約ページ（TimeRex）は外部のサービスで、別のタブで開きます。</li>
