@@ -138,7 +138,7 @@ section.s{padding:112px 0}
 .fig svg{display:block;width:100%;height:auto}
 .fig-foot{margin:18px 0 0;padding-top:16px;border-top:1px solid var(--ink);font-weight:700}
 .fig .fig-sp{display:none}
-.use{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start;margin-top:64px}
+.use{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:start;margin-top:64px}
 .use h3{margin:0;font-size:20px;line-height:1.6;font-weight:900}
 .steps{margin:22px 0 0;padding:0;list-style:none;counter-reset:st}
 .steps li{counter-increment:st;display:grid;grid-template-columns:34px 1fr;gap:12px;padding:14px 0;border-top:1px solid var(--line2);font-size:17px;line-height:1.75}
@@ -149,6 +149,30 @@ section.s{padding:112px 0}
 .card-demo .row:first-child{border-top:0}
 .card-demo dt{color:var(--mute);font-size:13px;padding-top:2px}
 .card-demo dd{margin:0;font-weight:700}
+/* 判断カード */
+.jcard{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:22px 24px 20px;box-shadow:0 18px 40px -24px rgba(21,23,27,.35)}
+.jc-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--line2);font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--mute)}
+.jc-kind{font-family:"Noto Sans JP",sans-serif;letter-spacing:.02em;padding:2px 10px;border-radius:999px;background:var(--paper);color:var(--gray);font-weight:500}
+.jc-q{margin:14px 0 0;font-size:17px;font-weight:700;line-height:1.6}
+.jc-verdict{display:flex;align-items:baseline;gap:12px;margin:12px 0 0;padding:10px 14px;border-radius:10px;background:var(--accent-soft)}
+.jc-verdict small{font-size:12px;color:var(--gray);white-space:nowrap}
+.jc-verdict strong{font-size:20px;font-weight:900;color:var(--accent)}
+.jc-calc{margin:14px 0 0;padding:12px 14px;border:1px dashed var(--line);border-radius:10px}
+.jc-calc-lbl{display:block;font-size:12px;color:var(--mute)}
+.jc-eq{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;margin-top:2px;font-size:15px}
+.jc-eq i{font-style:normal;color:var(--mute)}
+.jc-eq .hl{color:var(--ink);background:linear-gradient(transparent 62%,#ffd9cc 62%);white-space:nowrap}
+.jc-lbl{margin:16px 0 0;font-size:13px;font-weight:700;color:var(--gray)}
+.jc-cond{margin:8px 0 0;padding:0;list-style:none;counter-reset:c}
+.jc-cond li{counter-increment:c;display:grid;grid-template-columns:26px 1fr;gap:8px;padding:8px 0;border-top:1px solid var(--line2);font-size:15px;font-weight:700;line-height:1.6}
+.jc-cond li::before{content:counter(c);display:grid;place-items:center;width:22px;height:22px;margin-top:1px;border-radius:50%;background:var(--ink);color:#fff;font-family:var(--mono);font-size:12px}
+.jc-warn{display:flex;gap:10px;align-items:baseline;margin:10px 0 0;padding:10px 12px;border-radius:10px;background:#fff6dc;font-size:14px;line-height:1.6}
+.jc-warn b{flex:0 0 auto;font-size:12px;color:#9a6a00}
+.jc-meta{margin:12px 0 0;display:grid;gap:4px}
+.jc-meta div{display:grid;grid-template-columns:7em 1fr;gap:8px;font-size:13px;line-height:1.6}
+.jc-meta dt{color:var(--mute)}
+.jc-meta dd{margin:0;color:var(--ink2)}
+@media (max-width:640px){.jcard{padding:18px 16px}.jc-meta div{grid-template-columns:1fr;gap:0}}
 .card-cap{margin:10px 0 0;color:var(--mute);font-size:12px}
 .aside-list{margin:40px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 40px}
 .aside-list li{position:relative;padding-left:18px;color:var(--gray);font-size:15px;line-height:1.8}
@@ -310,7 +334,7 @@ footer.site a{color:var(--on-dark);text-underline-offset:3px;display:inline-bloc
                   <div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
                   <span>話しています</span>
                 </div>
-                <p class="said">「<b>条件付きでいい。</b>件数をしっかり入れてくれる代理店なら進めて。回収は代理店側で。」</p>
+                <p class="said">「<b>条件付きでいい。</b>3か月で10件以上入る見込みがあるなら進めて。回収は代理店持ち。原価割れだけ気をつけて。」</p>
                 <div class="saved"><span class="chip">条件付き Yes</span>判断カードに保存</div>
               </div>
 
@@ -421,13 +445,27 @@ footer.site a{color:var(--on-dark);text-underline-offset:3px;display:inline-bloc
             </ol>
           </div>
           <div>
-            <dl class="card-demo" aria-label="判断カードの例">
-              <div class="row"><dt>相談</dt><dd>代理店の請求書払いを認めるか</dd></div>
-              <div class="row"><dt>推定</dt><dd>条件付き Yes</dd></div>
-              <div class="row"><dt>条件</dt><dd>取引件数が一定以上／回収は代理店側</dd></div>
-              <div class="row"><dt>確認先</dt><dd>社長</dd></div>
-            </dl>
-            <p class="card-cap">判断カードの例です。実際の項目は開発中です。</p>
+            <article class="jcard" aria-label="判断カードの例">
+              <div class="jc-head"><span>判断カード</span><span class="jc-kind">例外承認・支払い条件</span></div>
+              <p class="jc-q">代理店から「請求書払いにしたい」と相談。認めるか。</p>
+              <p class="jc-verdict"><small>社長の答え</small><strong>条件付き Yes</strong></p>
+              <div class="jc-calc" aria-label="判断の前提になった計算">
+                <span class="jc-calc-lbl">前提</span>
+                <span class="jc-eq"><b>月額3万円</b><i>×</i><b>12か月</b><i>×</i><b>粗利70%</b><i>＝</i><b class="hl">1契約 年間約25万円</b></span>
+              </div>
+              <p class="jc-lbl">条件（すべて満たせば、社長に聞かずに進めてよい）</p>
+              <ol class="jc-cond">
+                <li>3か月で10件以上の受注見込みがある</li>
+                <li>回収責任は代理店が負う</li>
+                <li>見込みと条件のやりとりを、担当者とテキストで残す</li>
+              </ol>
+              <p class="jc-warn"><b>注意</b>原価割れしない価格か、契約前に確かめる</p>
+              <dl class="jc-meta">
+                <div><dt>満たさないとき</dt><dd>社長に相談する（相談は社長の画面に並ぶ）</dd></div>
+                <div><dt>元の発言</dt><dd>朝の問いに、社長が声で答えた内容</dd></div>
+              </dl>
+            </article>
+            <p class="card-cap">過去の判断をもとに作った例です。実際の項目は開発中です。</p>
           </div>
         </div>
 
@@ -461,8 +499,10 @@ footer.site a{color:var(--on-dark);text-underline-offset:3px;display:inline-bloc
                 <p class="ai-topic">いまの論点<strong>代理店の請求書払いを認めるか</strong></p>
                 <p class="ai-verdict"><small>社長の基準では</small><strong>条件付き Yes</strong></p>
                 <ul class="ai-list">
-                  <li><span class="ok">✓</span><span>取引件数が一定以上の代理店か</span></li>
-                  <li><span class="ask">？</span><span>回収を代理店側で持つと合意できるか</span></li>
+                  <li><span class="ok">✓</span><span>3か月で10件以上の受注見込みがある</span></li>
+                  <li><span class="ok">✓</span><span>回収責任は代理店が負う</span></li>
+                  <li><span class="ok">✓</span><span>やりとりを担当者とテキストで残す</span></li>
+                  <li><span class="ask">？</span><span>原価割れしない価格か</span></li>
                 </ul>
                 <div class="ai-foot"><span>根拠：社長が朝に声で答えた判断カード</span><span class="btnish">社長に送る</span></div>
               </div>
@@ -475,7 +515,7 @@ footer.site a{color:var(--on-dark);text-underline-offset:3px;display:inline-bloc
           <div class="story-text">
             <p>議題は、代理店からの「請求書払いにしたい」という相談だった。前なら、ここで誰かが言う。<span class="said-line">「一度、社長に確認します」。</span>そして話は、次の週へ持ち越された。</p>
             <p>その日は、テーブルのノートPCに社長AIを出していた。画面には、社長が数日前の朝に声で答えた「条件付きでいい」と、その条件が並んでいた。</p>
-            <p>条件に当てはまるかを、その場で確かめた。足りなかったのは1点だけ。会議の中で決まり、社長の画面には相談が1件並んだだけだった。</p>
+            <p>条件に当てはまるかを、その場で確かめた。受注の見込みも、回収の持ち方も条件どおり。残っていた原価割れの確認は、その場で計算して片づいた。会議の中で決まり、社長の画面には相談が1件並んだだけだった。</p>
           </div>
           <blockquote class="quote">
             <p>社長はいないのに、<br>社長と話して<br>決めた気がした。</p>
