@@ -907,36 +907,49 @@ footer .fnav a:hover{color:#fff;}
 @media(max-width:460px){.f2{grid-template-columns:1fr;}}
 .modal .btn{width:100%;margin-top:8px;}
 .modal .priv{font-size:12px;color:var(--gray2);margin:14px 0 0;line-height:1.7;text-align:center;}
-.oem-case-teaser{margin-top:36px;padding:27px 30px;background:#fff;border:1px solid var(--line);border-left:4px solid var(--blue);}
-.oem-case-teaser__label{margin:0 0 8px;font-size:12px;font-weight:800;letter-spacing:.1em;color:var(--blue);}
-.oem-case-teaser p{margin:0 0 10px;font-size:16px;line-height:1.7;}
-.oem-case-teaser strong{color:var(--ink);}
-.oem-case-teaser__source{display:block;margin:0 0 18px;font-size:12px;color:var(--gray);}
-.oem-case-teaser__link{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:10px 24px;background:var(--blue);color:#fff;font-size:15px;font-weight:800;text-decoration:none;}
-.oem-case-teaser__link:hover{background:var(--blue-d);}
-.oem-case-dialog{width:min(760px,calc(100% - 32px));max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);margin:auto;padding:clamp(24px,5vw,46px);overflow-y:auto;overscroll-behavior:contain;border:0;border-radius:10px;background:#fff;color:var(--ink);box-shadow:0 24px 80px rgba(4,22,49,.35);}
+.oem-case-teaser{position:relative;isolation:isolate;overflow:hidden;margin-top:36px;padding:clamp(23px,3vw,32px);border-radius:12px;background:linear-gradient(128deg,#0d2a55,#17457d);color:#fff;box-shadow:0 16px 34px rgba(8,36,78,.15);}
+.oem-case-teaser::before{content:'';position:absolute;z-index:-1;top:-88px;right:-74px;width:240px;height:240px;border:1px solid rgba(255,255,255,.13);border-radius:50%;box-shadow:0 0 0 46px rgba(255,255,255,.035),0 0 0 96px rgba(255,255,255,.025);}
+.oem-case-teaser .oem-case-teaser__label{display:flex;align-items:center;gap:11px;margin:0 0 17px;color:#f7d77e;font-size:11px;font-weight:800;letter-spacing:.17em;line-height:1.4;}
+.oem-case-teaser__label::before{content:'';width:19px;height:1px;background:currentColor;}
+.oem-case-teaser p{margin:0 0 14px;color:rgba(255,255,255,.82);font-size:14px;line-height:1.75;}
+.oem-case-teaser .oem-case-teaser__headline{max-width:540px;margin-bottom:10px;color:#fff;font-size:clamp(17px,2vw,20px);font-weight:800;line-height:1.55;}
+.oem-case-teaser__source{display:block;margin:0 0 18px;font-size:12px;line-height:1.6;color:rgba(255,255,255,.72);}
+.oem-case-teaser__link{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:10px 24px;border:1px solid #fff;border-radius:4px;background:#fff;color:var(--blue-d);font-size:14px;font-weight:800;text-decoration:none;}
+.oem-case-teaser__link::after{content:'↗';margin-left:16px;font-size:17px;font-weight:400;}
+.oem-case-teaser__link:hover{border-color:#f7d77e;background:#f7d77e;}
+.oem-case-dialog{width:min(760px,calc(100% - 32px));max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);margin:auto;padding:0;overflow-y:auto;overscroll-behavior:contain;border:0;border-radius:14px;background:#fff;color:var(--ink);box-shadow:0 24px 80px rgba(4,22,49,.35);}
 .oem-case-dialog::backdrop{background:rgba(7,21,44,.72);}
-.oem-case-dialog__close{display:block;min-width:64px;min-height:44px;margin:-10px -10px 12px auto;padding:8px 12px;border:0;background:transparent;color:var(--blue-d);font:inherit;font-weight:800;cursor:pointer;}
-.oem-case-dialog__close:hover{text-decoration:underline;}
-.oem-case-dialog__label{margin:0 0 12px;color:var(--blue);font-size:12px;font-weight:800;line-height:1.5;}
-.oem-case-dialog h2{margin:0 0 24px;font-size:clamp(24px,4vw,32px);line-height:1.4;}
+.oem-case-dialog__close{position:absolute;z-index:2;top:12px;right:14px;display:block;min-width:70px;min-height:44px;padding:8px 13px;border:1px solid rgba(255,255,255,.55);border-radius:24px;background:#fff;color:var(--blue-d);font:inherit;font-weight:800;box-shadow:0 4px 14px rgba(0,0,0,.12);cursor:pointer;}
+.oem-case-dialog__close:hover{background:#f7d77e;}
+.oem-case-dialog__hero{position:relative;overflow:hidden;padding:58px clamp(24px,6vw,46px) 29px;background:linear-gradient(128deg,#0d2a55,#17457d);color:#fff;}
+.oem-case-dialog .oem-case-dialog__label{margin:0 0 13px;color:#f7d77e;font-size:12px;font-weight:800;line-height:1.6;letter-spacing:.03em;}
+.oem-case-dialog h2{max-width:610px;margin:0;color:#fff;font-size:clamp(24px,4vw,32px);line-height:1.45;}
+.oem-case-dialog__facts{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:25px;padding-top:17px;border-top:1px solid rgba(255,255,255,.23);}
+.oem-case-dialog__facts div{min-width:0;}
+.oem-case-dialog__facts strong{display:block;color:#fff;font-size:clamp(27px,5vw,36px);font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums;}
+.oem-case-dialog__facts strong span{margin-left:3px;font-size:.47em;}
+.oem-case-dialog__facts small{display:block;margin-top:5px;color:rgba(255,255,255,.78);font-size:12px;line-height:1.5;}
+.oem-case-dialog__body{padding:30px clamp(24px,6vw,46px) 42px;}
 .oem-case-dialog h3{margin:28px 0 12px;font-size:18px;line-height:1.5;}
 .oem-case-dialog p,.oem-case-dialog li{font-size:15px;line-height:1.85;overflow-wrap:anywhere;}
 .oem-case-dialog p{margin:0 0 18px;}
-.oem-case-dialog ul{margin:0 0 24px;padding-left:1.5em;}
-.oem-case-dialog li+li{margin-top:8px;}
-.oem-case-dialog__visual{margin:28px 0;}
+.oem-case-dialog ul{margin:0 0 26px;padding:0;list-style:none;counter-reset:case-point;}
+.oem-case-dialog li{position:relative;min-height:49px;padding:10px 0 10px 34px;border-top:1px solid var(--line);counter-increment:case-point;}
+.oem-case-dialog li:last-child{border-bottom:1px solid var(--line);}
+.oem-case-dialog li::before{content:'0' counter(case-point);position:absolute;left:0;top:13px;color:var(--blue);font-size:12px;font-weight:800;}
+.oem-case-dialog__visual{margin:30px 0;}
 .oem-case-dialog__visual img{display:block;width:100%;height:auto;border-radius:10px;}
 .oem-case-dialog__visual figcaption{margin-top:10px;color:var(--gray);font-size:13px;line-height:1.7;}
-.oem-case-dialog .oem-case-dialog__record{margin:22px 0;padding:17px 20px;border-left:3px solid #e6bb45;background:#fff8e5;font-size:14px;}
-.oem-case-dialog__record strong{display:block;margin-bottom:4px;color:var(--blue-d);}
+.oem-case-dialog .oem-case-dialog__record{margin:26px 0;padding:18px 20px;border-left:2px solid #d1aa47;background:#f8f6f0;font-size:13px;}
+.oem-case-dialog__record strong{display:block;margin-bottom:4px;color:var(--blue-d);font-size:14px;}
 .oem-case-dialog .oem-case-dialog__note{padding-top:16px;border-top:1px solid var(--line);color:var(--gray);font-size:13px;}
 .oem-case-dialog__cta{display:flex;align-items:center;justify-content:center;min-height:48px;padding:10px 18px;background:var(--blue);color:#fff;font-size:15px;font-weight:800;text-decoration:none;text-align:center;}
 .oem-case-dialog__cta:hover{background:var(--blue-d);}
 .oem-case-teaser__link:focus-visible,.oem-case-dialog__close:focus-visible,.oem-case-dialog__cta:focus-visible{outline:3px solid #f5c82e;outline-offset:3px;}
 body.oem-case-open{overflow:hidden;}
 html:not([data-oem-case-ready]) .oem-case-dialog{position:static;display:block;max-height:none;margin:32px auto;border:1px solid var(--line);box-shadow:none;}
-@media(max-width:620px){.oem-case-teaser{padding:23px 20px;}.oem-case-teaser__link{width:100%;}}
+@media(max-width:620px){.oem-case-teaser__link{width:100%;}}
+@media(max-width:520px){.oem-case-dialog__hero{padding-top:63px;}.oem-case-dialog__facts{gap:10px;}}
 .done{display:none;text-align:center;padding:14px 0 6px;}
 .done.on{display:block;}
 .done .dm{font-size:15px;font-weight:700;margin-bottom:10px;}
@@ -1333,9 +1346,10 @@ html:not([data-oem-case-ready]) .oem-case-dialog{position:static;display:block;m
     </div>
 
     <aside class="oem-case-teaser" aria-label="OEMパートナーの先行事例">
-      <p class="oem-case-teaser__label">PARTNER STORY</p>
-      <p><strong>営業代行会社が、セミナー参加後に30IDを導入。連休明けには3社を受注。</strong><br>OEM販売を自社事業とどう組み合わせたのか、先行事例をご紹介します。</p>
-      <small class="oem-case-teaser__source">3社受注はエルシャからの報告です。社名は仮称です。</small>
+      <p class="oem-case-teaser__label">PARTNER STORY&nbsp; / &nbsp;01</p>
+      <p class="oem-case-teaser__headline">営業代行会社が、セミナー参加後に30IDを導入。連休明けには3社を受注。</p>
+      <p>OEM販売を自社事業とどう組み合わせたのか、先行事例をご紹介します。</p>
+      <small class="oem-case-teaser__source">3社受注はL社からの報告です。</small>
       <a class="oem-case-teaser__link" id="oem-case-open" href="#oem-case-dialog" aria-haspopup="dialog">先行事例を見る</a>
     </aside>
 
@@ -1604,10 +1618,14 @@ html:not([data-oem-case-ready]) .oem-case-dialog{position:static;display:block;m
 </footer>
 
 <dialog class="oem-case-dialog" id="oem-case-dialog" aria-labelledby="oem-case-title" aria-describedby="oem-case-label">
-  <button class="oem-case-dialog__close" id="oem-case-close" type="button" aria-label="先行事例を閉じる">閉じる</button>
-  <p class="oem-case-dialog__label" id="oem-case-label">ワークログインサイト OEMパートナーの先行事例｜エルシャ（仮称）</p>
-  <h2 id="oem-case-title">営業代行会社が30IDを導入し、連休明けに3社を受注した事例</h2>
-  <p>エルシャ（仮称）は、テレアポから商談までを支援する営業代行・営業BPOの会社です。同社から2人がワークログインサイトのOEMセミナーに参加しました。</p>
+  <div class="oem-case-dialog__hero">
+    <button class="oem-case-dialog__close" id="oem-case-close" type="button" aria-label="先行事例を閉じる">閉じる</button>
+    <p class="oem-case-dialog__label" id="oem-case-label">ワークログインサイト OEMパートナーの先行事例｜L社</p>
+    <h2 id="oem-case-title">営業代行会社が30IDを導入し、連休明けに3社を受注した事例</h2>
+    <div class="oem-case-dialog__facts" aria-label="事例の主な数字"><div><strong>30<span>ID</span></strong><small>セミナー後に購入</small></div><div><strong>3<span>社</span></strong><small>連休明けに受注との報告</small></div></div>
+  </div>
+  <div class="oem-case-dialog__body">
+  <p>L社は、テレアポから商談までを支援する営業代行・営業BPOの会社です。同社から2人がワークログインサイトのOEMセミナーに参加しました。</p>
   <p>セミナー後、同社は<strong>30IDを216万円で購入</strong>。購入したのはシルバーウィークに入る直前で、連休明けには<strong>3社を受注した</strong>との報告がありました。</p>
   <p class="oem-case-dialog__record"><strong>2026年9月現在、当社が把握するOEMパートナー事例では、30IDの購入から連休明けの3社受注報告までが過去最短。いわば「ギネス記録」級のスピードです。</strong>この表現は比喩であり、ギネス世界記録の公式認定を指すものではありません。</p>
   <figure class="oem-case-dialog__visual"><img src="session/images/case-flow.svg" alt="ID販売から顧客課題の把握へ進み、必要に応じた営業BPOの提案へつなげる流れの図。最後は可能性を示す点線で描いています。" width="960" height="260" loading="lazy"><figcaption>OEM商品を届ける → 顧客の課題を知る → 必要に応じて営業BPOを提案する</figcaption></figure>
@@ -1620,6 +1638,7 @@ html:not([data-oem-case-ready]) .oem-case-dialog{position:static;display:block;m
   </ul>
   <p class="oem-case-dialog__note">2026年9月時点で当社が把握している個別事例です。3社への受注ID数、売上額、利益額および営業BPOの追加受注実績は確認中です。同様の成果を保証するものではありません。</p>
   <a class="oem-case-dialog__cta" id="oem-case-entry" href="session/#entry">OEMセミナーに申し込む</a>
+  </div>
 </dialog>
 
 <!-- ══════════ MODAL ══════════ -->
