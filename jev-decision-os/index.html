@@ -32,15 +32,18 @@ pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
 /* ===== このページ ===== */
 :root{
   --ink:#15171b; --ink2:#2b2f36; --gray:#5b6069; --mute:#6f747d; --line:#dcd8cd; --line2:#ebe8e0;
-  --paper:#f4f2ec; --white:#fff; --accent:#d9481f; --accent-soft:#fbe9e2; --on-dark:#f4f2ec; --dark-mute:#a9adb4;
+  --paper:#f4f2ec; --soft:#fafaf8; --white:#fff; --accent:#d9481f; --accent-soft:#fbe9e2; --on-dark:#f4f2ec; --dark-mute:#a9adb4;
+  --warm:#17130f; --warm2:#241d17; --glow:#ff7a52;
   --mono:"IBM Plex Mono",ui-monospace,monospace;
 }
+@media (min-width:901px){:root{--fs-body:17px}}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;font-feature-settings:"palt" 1;letter-spacing:.02em}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 .wrap{width:min(var(--lp-max),100% - 48px);margin-inline:auto}
 .mono{font-family:var(--mono);letter-spacing:.06em}
 .tag{display:inline-block;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.12em;color:var(--accent)}
+.sp-br{display:none}
 
 /* top bar */
 .bar{background:var(--ink);color:var(--on-dark);border-bottom:1px solid #2b2e34}
@@ -55,7 +58,7 @@ a{color:inherit}
 .hero{background:var(--ink);color:var(--on-dark);padding:76px 0 88px;overflow:hidden}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:64px;align-items:center}
 .hero h1{margin:18px 0 0;font-weight:900;font-size:clamp(1.5rem,4.2vw,2.9rem);line-height:1.34;letter-spacing:-.01em}
-.hero h1 em{font-style:normal;color:#ff7a52}
+.hero h1 em{font-style:normal;color:var(--glow)}
 .hero .hero-lead{margin:26px 0 0;max-width:34em;font-size:17px;line-height:1.95;color:#d6d8dc}
 .hero-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
 .btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;border-radius:999px;font-size:14px;font-weight:700;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
@@ -67,7 +70,7 @@ a{color:inherit}
 
 /* phone mock */
 .phone-wrap{margin:0}
-.phone{justify-self:center;width:100%;max-width:372px;margin-inline:auto;border-radius:34px;padding:12px;background:#24272d;box-shadow:0 30px 60px rgba(0,0,0,.45),inset 0 0 0 1px #3a3e46}
+.phone{width:100%;max-width:372px;margin-inline:auto;border-radius:34px;padding:12px;background:#24272d;box-shadow:0 30px 60px rgba(0,0,0,.45),inset 0 0 0 1px #3a3e46}
 .screen{border-radius:24px;background:#f7f6f2;color:var(--ink);padding:18px 16px 16px}
 .sc-top{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12px;color:var(--mute)}
 .sc-head{margin:14px 0 4px;font-weight:900;font-size:19px;letter-spacing:.01em}
@@ -93,95 +96,190 @@ a{color:inherit}
 
 /* sections */
 section.s{padding:112px 0}
-.s-head{max-width:760px}
+.s-head{max-width:780px}
 .s-head h2{margin:14px 0 0;font-weight:900;letter-spacing:-.005em}
 .s-head p{margin:18px 0 0;color:var(--gray);max-width:38em;font-size:17px}
+.s-head p strong{color:var(--ink)}
 
-/* loop diagram */
-.loop{background:var(--white);border-top:1px solid var(--line)}
-.fig{margin:56px 0 0}
-.sp-br{display:none}
-.fig-title{margin:0 0 16px;font-weight:700;font-size:15px}
-.fig svg{display:block;width:100%;height:auto}
-.fig-foot{margin:18px 0 0;padding-top:16px;border-top:1px solid var(--ink);font-weight:700}
-.fig .fig-sp{display:none}
-.aside-list{margin:28px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 40px}
-.aside-list li{position:relative;padding-left:18px;color:var(--gray);font-size:15px;line-height:1.8}
-.aside-list li::before{content:"";position:absolute;left:0;top:.8em;width:8px;height:1px;background:var(--mute)}
+/* materials */
+.mats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;margin-top:52px}
+.track-top{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding-bottom:14px;border-bottom:2px solid var(--ink)}
+.track .tag{margin:0 0 6px}
+.track h3{margin:0;font-size:22px;font-weight:900;line-height:1.4}
+.route{flex:0 0 auto;width:auto;height:44px;color:var(--gray)}
+.track-sub{margin:10px 0 6px;color:var(--gray);font-size:14px}
+.mat{display:grid;grid-template-columns:3.6em 28px 1fr auto;gap:14px;align-items:start;padding:18px 6px;border-bottom:1px solid var(--line);text-decoration:none;transition:background .15s}
+a.mat:hover{background:var(--white)}
+.mat .code{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--accent);letter-spacing:.06em;padding-top:4px}
+.mat .ico{width:26px;height:26px;color:var(--ink2);margin-top:1px}
+.mat strong{display:block;font-size:18px;line-height:1.55}
+.mat .desc{display:block;color:var(--gray);font-size:15px;line-height:1.6;margin-top:2px}
+.ver{display:inline-block;margin-left:6px;padding:0 8px;border:1px solid var(--line);border-radius:999px;font-size:12px;color:var(--mute);vertical-align:1px;white-space:nowrap}
+.mat .go{font-size:13px;font-weight:700;white-space:nowrap;padding-top:4px}
+a.mat .go::after{content:" →"}
+.mat.lock{color:var(--mute)}
+.mat.lock .code,.mat.lock .ico{color:var(--mute)}
+.mat.lock .go{font-weight:500}
 
-/* use */
-.use{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start;margin-top:64px}
-.use h3{margin:0;font-size:20px;line-height:1.6;font-weight:900}
-.steps{margin:22px 0 0;padding:0;list-style:none;counter-reset:st}
-.steps li{counter-increment:st;display:grid;grid-template-columns:34px 1fr;gap:12px;padding:14px 0;border-top:1px solid var(--line2);font-size:16px;line-height:1.75}
-.steps li::before{content:counter(st,decimal-leading-zero);font-family:var(--mono);font-size:13px;font-weight:600;color:var(--accent);padding-top:2px}
-.steps li span{display:block;color:var(--gray);font-size:14px;margin-top:2px}
-.card-demo{margin:0;border-radius:14px;background:var(--paper);border:1px solid var(--line);padding:20px 22px;font-size:15px}
-.card-demo .row{display:grid;grid-template-columns:5em 1fr;gap:10px;padding:7px 0;border-top:1px dashed var(--line)}
-.card-demo .row:first-child{border-top:0}
-.card-demo dt{color:var(--mute);font-size:12px;padding-top:2px}
-.card-demo dd{margin:0;font-weight:700}
-.card-cap{margin:10px 0 0;color:var(--mute);font-size:12px}
-
-/* caution */
-.caution{margin:40px 0 0;padding:22px 26px;background:var(--white);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:4px 12px 12px 4px}
+.caution{margin:44px 0 0;padding:22px 26px;background:var(--white);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:4px 12px 12px 4px}
 .caution h3{margin:0;font-size:17px;font-weight:900}
 .caution ul{margin:12px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 32px}
 .caution li{position:relative;padding-left:16px;font-size:15px}
 .caution li::before{content:"";position:absolute;left:0;top:.75em;width:6px;height:6px;border-radius:50%;background:var(--accent)}
-.caution p{margin:12px 0 0;padding-top:12px;border-top:1px dashed var(--line);color:var(--gray);font-size:14px}
 
-/* materials */
-.mats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px;margin-top:48px}
-.track .tag{margin:0 0 6px}
-.track h3{margin:0;padding-bottom:14px;border-bottom:2px solid var(--ink);font-size:22px;font-weight:900}
-.track > p{margin:10px 0 6px;color:var(--gray);font-size:14px}
-.mat{display:grid;grid-template-columns:4.6em 1fr auto;gap:14px;align-items:center;padding:18px 6px;border-bottom:1px solid var(--line);text-decoration:none;transition:background .15s}
-a.mat:hover{background:var(--white)}
-.mat .code{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--accent);letter-spacing:.06em}
-.mat strong{display:block;font-size:16px;line-height:1.55}
-.mat .desc{display:block;color:var(--gray);font-size:14px;line-height:1.6}
-.mat .go{font-size:13px;font-weight:700;white-space:nowrap}
-a.mat .go::after{content:" →"}
-.mat.lock{color:var(--mute)}
-.mat.lock .code{color:var(--mute)}
-.mat.lock .go{font-weight:500}
+/* loop */
+.loop{background:var(--soft);border-top:1px solid var(--line)}
+.fig{margin:56px 0 0}
+.fig-title{margin:0 0 16px;font-weight:700;font-size:17px}
+.fig svg{display:block;width:100%;height:auto}
+.fig-foot{margin:18px 0 0;padding-top:16px;border-top:1px solid var(--ink);font-weight:700}
+.fig .fig-sp{display:none}
+.use{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start;margin-top:64px}
+.use h3{margin:0;font-size:20px;line-height:1.6;font-weight:900}
+.steps{margin:22px 0 0;padding:0;list-style:none;counter-reset:st}
+.steps li{counter-increment:st;display:grid;grid-template-columns:34px 1fr;gap:12px;padding:14px 0;border-top:1px solid var(--line2);font-size:17px;line-height:1.75}
+.steps li::before{content:counter(st,decimal-leading-zero);font-family:var(--mono);font-size:13px;font-weight:600;color:var(--accent);padding-top:3px}
+.steps li span{display:block;color:var(--gray);font-size:14px;margin-top:2px}
+.card-demo{margin:0;border-radius:14px;background:var(--white);border:1px solid var(--line);padding:20px 22px;font-size:15px}
+.card-demo .row{display:grid;grid-template-columns:5em 1fr;gap:10px;padding:7px 0;border-top:1px dashed var(--line)}
+.card-demo .row:first-child{border-top:0}
+.card-demo dt{color:var(--mute);font-size:13px;padding-top:2px}
+.card-demo dd{margin:0;font-weight:700}
+.card-cap{margin:10px 0 0;color:var(--mute);font-size:12px}
+.aside-list{margin:40px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 40px}
+.aside-list li{position:relative;padding-left:18px;color:var(--gray);font-size:15px;line-height:1.8}
+.aside-list li::before{content:"";position:absolute;left:0;top:.8em;width:8px;height:1px;background:var(--mute)}
 
-footer{background:var(--ink);color:var(--dark-mute);padding:40px 0 48px;font-size:13px}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 28px}
-footer b{color:var(--on-dark)}
-footer .mono{white-space:nowrap}
-footer a{color:var(--on-dark);text-underline-offset:3px;display:inline-block;padding:10px 0}
+/* scene（会議が変わった日） */
+.scene-sec{background:var(--warm);color:var(--on-dark);padding:120px 0 104px;overflow:hidden}
+.scene-sec .tag{color:var(--glow)}
+.scene-sec .s-head h2{font-size:clamp(1.5rem,4vw,2.6rem);line-height:1.45}
+.scene-sec .s-head p{color:#cdbfb3}
+.scene{position:relative;margin-top:56px}
+.scene-photo{position:relative;margin:0;border-radius:18px;overflow:hidden;aspect-ratio:16/9;background:#2a221b}
+.scene-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.scene-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,19,15,0) 55%,rgba(23,19,15,.55) 100%)}
+.pin{position:absolute;left:43%;top:48%;width:54px;height:54px;margin:-27px 0 0 -27px;border:2px solid var(--glow);border-radius:50%;z-index:2;box-shadow:0 0 0 6px rgba(255,122,82,.18)}
+.pin::after{content:"";position:absolute;inset:-12px;border:1px solid rgba(255,122,82,.5);border-radius:50%;animation:ping 2.4s ease-out infinite}
+@keyframes ping{0%{transform:scale(.7);opacity:1}100%{transform:scale(1.35);opacity:0}}
+.leader{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+.photo-cap{position:absolute;left:20px;bottom:16px;z-index:2;color:#e9ddd2;font-size:12px}
+.laptop{position:absolute;right:36px;bottom:-64px;width:min(470px,44%);z-index:3}
+.lid{background:#1e1f23;border-radius:14px 14px 4px 4px;padding:10px;box-shadow:0 30px 60px rgba(0,0,0,.55),inset 0 0 0 1px #3a3c42}
+.base{height:12px;margin:0 -18px;background:linear-gradient(#c9c6c0,#9d9a94);border-radius:0 0 12px 12px}
+.ai{background:#fbfaf7;color:var(--ink);border-radius:6px;padding:14px 16px 14px;font-size:13px}
+.ai-top{display:flex;justify-content:space-between;align-items:center;gap:8px;padding-bottom:10px;border-bottom:1px solid var(--line2)}
+.ai-top b{font-size:14px;font-weight:900}
+.ai-top b span{color:var(--accent)}
+.live{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--gray)}
+.live::before{content:"";width:8px;height:8px;border-radius:50%;background:#2f9e5b;box-shadow:0 0 0 3px rgba(47,158,91,.18)}
+.ai-topic{margin:10px 0 0;font-size:12px;color:var(--mute)}
+.ai-topic strong{display:block;color:var(--ink);font-size:15px;line-height:1.5}
+.ai-verdict{display:flex;align-items:baseline;gap:10px;margin:10px 0 0;padding:10px 12px;border-radius:10px;background:var(--accent-soft)}
+.ai-verdict small{color:var(--gray);font-size:12px;white-space:nowrap}
+.ai-verdict strong{font-size:18px;font-weight:900;color:var(--accent)}
+.ai-list{margin:10px 0 0;padding:0;list-style:none}
+.ai-list li{display:grid;grid-template-columns:20px 1fr;gap:6px;padding:4px 0;font-size:13px;line-height:1.6}
+.ok{color:#2f9e5b;font-weight:900}.ask{color:#c58a00;font-weight:900}
+.ai-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line2);font-size:12px;color:var(--gray)}
+.ai-foot span.btnish{flex:0 0 auto;padding:4px 10px;border-radius:999px;background:var(--ink);color:#fff;font-weight:700}
 
+.story{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:64px;align-items:center;margin-top:128px}
+.story-text p{margin:0 0 18px;color:#e2d8cf;font-size:17px;line-height:2}
+.story-text p:last-child{margin-bottom:0}
+.story-text .said-line{color:#fff;font-weight:700}
+.quote{margin:0;padding:0 0 0 28px;border-left:3px solid var(--glow)}
+.quote p{margin:0;font-weight:900;font-size:clamp(1.45rem,3vw,2.2rem);line-height:1.55;color:#fff}
+.quote footer{margin-top:16px;padding:0;background:none;color:#bfb1a4;font-size:14px}
+
+.change{margin-top:88px;border-top:1px solid #3b3129}
+.change-row{display:grid;grid-template-columns:7em minmax(0,1fr) 36px minmax(0,1fr) 36px minmax(0,1fr);align-items:center;gap:10px;padding:22px 0;border-bottom:1px solid #3b3129}
+.change-row > b{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:#a8998b}
+.node{padding:12px 14px;border-radius:12px;border:1px solid #4a3e34;background:var(--warm2);font-size:15px;line-height:1.5;text-align:center}
+.arr{height:1px;background:#6b5b4e;position:relative}
+.arr::after{content:"";position:absolute;right:0;top:-4px;border:4px solid transparent;border-left:7px solid #6b5b4e;border-right:0}
+.change-row.before .node:last-child{color:#a8998b;border-style:dashed}
+.change-row.after .node.hl{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.change-row.after .node:last-child{background:#fff;color:var(--ink);font-weight:900;border-color:#fff}
+.change-row.after .arr,.change-row.after .arr::after{background:var(--glow);border-left-color:var(--glow)}
+.change-row.after .arr::after{background:none}
+
+.close{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 40px;align-items:center;margin-top:72px;padding:32px 36px;border-radius:18px;background:var(--warm2);border:1px solid #3b3129}
+.close p{margin:0;font-size:19px;font-weight:700;line-height:1.6}
+.close p small{display:block;margin-top:4px;color:#bfb1a4;font-size:14px;font-weight:400}
+.close .btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn-glow{background:var(--glow);color:#1a120c}
+.btn-glow:hover{background:#ff9570}
+.btn-warm{border:1px solid #6b5b4e;color:var(--on-dark)}
+.btn-warm:hover{border-color:var(--on-dark)}
+.scene-note{margin:22px 0 0;color:#a8998b;font-size:12px}
+
+footer.site{background:var(--ink);color:var(--dark-mute);padding:40px 0 48px;font-size:13px;border-top:1px solid #2b2e34}
+footer.site .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 28px}
+footer.site b{color:var(--on-dark)}
+footer.site .mono{white-space:nowrap}
+footer.site a{color:var(--on-dark);text-underline-offset:3px;display:inline-block;padding:10px 0}
+
+@media (max-width:1180px){.sp-br{display:inline}}
 @media (max-width:900px){
-  .sp-br{display:inline}
   .hero-grid{grid-template-columns:1fr;gap:52px}
-  .use,.mats{grid-template-columns:1fr}
-  .caution ul{grid-template-columns:1fr}
+  .use,.mats,.story{grid-template-columns:1fr}
   .aside-list{grid-template-columns:1fr}
+  .sp-br{display:inline}
+  .laptop{position:relative;right:auto;bottom:auto;width:min(470px,92%);margin:-36px auto 0}
+  .leader{display:none}
+  .story{margin-top:64px;gap:40px}
+  .change-row{grid-template-columns:1fr;gap:8px}
+  .change-row .arr{width:1px;height:18px;margin:0 auto}
+  .change-row .arr::after{right:-4px;top:auto;bottom:0;border:4px solid transparent;border-top:7px solid #6b5b4e;border-bottom:0}
+  .change-row.after .arr::after{border-top-color:var(--glow);border-left-color:transparent}
+  .close{grid-template-columns:1fr}
 }
 @media (max-width:640px){
   .wrap{width:min(var(--lp-max),100% - 32px)}
   .bar nav{display:none}
-  .hero{padding:52px 0 64px}
+  .hero{padding:52px 0 60px}
+  .hero-grid{gap:36px}
   .hero .hero-lead{font-size:16px}
+  .pc-only{display:none}
+  .q:not(.active){display:none}
+  .phone{max-width:320px}
   section.s{padding:76px 0}
+  .caution{padding:20px}
+  .caution ul{grid-template-columns:1fr}
   .fig .fig-pc{display:none}
   .fig .fig-sp{display:block}
-  .sp-br{display:inline}
-  .mat{grid-template-columns:3.8em 1fr;gap:4px 12px}
-  .mat .go{grid-column:2}
+  .mat{grid-template-columns:3.4em 24px 1fr;gap:4px 10px}
+  .mat .ico{width:22px;height:22px}
+  .mat .go{grid-column:3}
+  .scene-sec{padding:80px 0 72px}
+  .scene-photo{aspect-ratio:4/3}
+  .scene-photo img{object-position:42% 50%}
+  .pin{width:40px;height:40px;margin:-20px 0 0 -20px}
+  .photo-cap{left:12px;bottom:10px}
+  .story-text p{font-size:16px}
+  .close{padding:24px 20px}
 }
-@media (prefers-reduced-motion:reduce){.wave i{animation:none;height:60%}}
+@media (prefers-reduced-motion:reduce){.wave i{animation:none;height:60%}.pin::after{animation:none}}
   </style>
 </head>
 <body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-lp" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 8.5h19" stroke="currentColor" stroke-width="1.6"/><circle cx="5.5" cy="6.3" r=".8" fill="currentColor"/><circle cx="8" cy="6.3" r=".8" fill="currentColor"/><circle cx="10.5" cy="6.3" r=".8" fill="currentColor"/></symbol>
+      <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 3v4M16 3v4M3 10h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M10.5 12.8v5l4-2.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+      <symbol id="i-deck" viewBox="0 0 24 24"><rect x="6" y="3.5" width="15.5" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="2.5" y="8" width="15.5" height="11" rx="2" fill="#fff" stroke="currentColor" stroke-width="1.6"/><path d="M6 19v2.5M14.5 19v2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+      <symbol id="i-note" viewBox="0 0 24 24"><rect x="5" y="3" width="12" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 7h3M3.5 12h3M3.5 17h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="14.5" y="14" width="7" height="6" rx="1.2" fill="#fff" stroke="currentColor" stroke-width="1.6"/><path d="M16 14v-1.6a2 2 0 0 1 4 0V14" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    </defs>
+  </svg>
+
   <header class="bar">
     <div class="wrap">
       <a class="brand" href="./">SECOND / Jev Edition<span>資料パック</span></a>
       <nav aria-label="ページ内">
         <a href="#materials">資料</a>
         <a href="#loop">しくみ</a>
+        <a href="#scene">会議が変わる</a>
       </nav>
     </div>
   </header>
@@ -190,14 +288,14 @@ footer a{color:var(--on-dark);text-underline-offset:3px;display:inline-block;pad
     <section class="hero" aria-labelledby="hero-title">
       <div class="wrap hero-grid">
         <div>
-          <span class="tag">経営判断OS ／ 資料パック</span>
+          <span class="tag">営業担当・OEMパートナー向け ／ 資料パック</span>
           <h1 id="hero-title">社長は、歩きながら<br><em>声で答える</em>だけ。<br>それが会社の<br class="sp-br"><span class="nobr">判断基準になる。</span></h1>
-          <p class="hero-lead">会議の録画から、AIが判断の要りそうな案件を選んで社長に届けます。社長はイヤホンで聞いて、声で答えるだけ。「条件付きでいい」は条件ごと判断カードに残り、社員の相談には判断特化モデルのJevがその基準で返します。</p>
+          <p class="hero-lead">会議の録画から、AIが判断の要りそうな案件を選んで社長に届けます。社長はイヤホンで聞いて、声で答えるだけ。<span class="pc-only">「条件付きでいい」は条件ごと判断カードに残り、社員の相談には判断特化モデルのJevがその基準で返します。</span></p>
           <div class="hero-links">
-            <a class="btn btn-solid" href="#materials">資料を開く <span aria-hidden="true">↓</span></a>
+            <a class="btn btn-solid" href="#materials">資料8点を見る <span aria-hidden="true">↓</span></a>
             <a class="btn btn-line" href="#loop">しくみを見る</a>
           </div>
-          <p class="hero-note">2026年9月時点の構想です。価格・提供時期・届け先は未確定です。</p>
+          <p class="hero-note">2026年9月時点の構想。価格・提供時期・届け先は未確定です。</p>
         </div>
 
         <figure class="phone-wrap">
@@ -209,7 +307,7 @@ footer a{color:var(--on-dark);text-underline-offset:3px;display:inline-block;pad
 
               <div class="q done">
                 <div class="q-meta"><span>Q1 ・ 営業会議</span><span>回答済</span></div>
-                <p>新規の問い合わせ、担当を分けるか。</p>
+                <p>展示会、今年も出すか。</p>
               </div>
 
               <div class="q active">
@@ -225,22 +323,63 @@ footer a{color:var(--on-dark);text-underline-offset:3px;display:inline-block;pad
               </div>
 
               <div class="q">
-                <div class="q-meta"><span>Q3 ・ 開発会議</span><span>未回答</span></div>
-                <p>会員画面の特典、どれを先に出すか。</p>
+                <div class="q-meta"><span>Q3 ・ 採用会議</span><span>未回答</span></div>
+                <p>採用の最終面接に、社長も出るか。</p>
               </div>
             </div>
           </div>
-          <figcaption class="mock-cap">画面は説明用のイメージです（開発中）。問いの数と内容は例です。</figcaption>
+          <figcaption class="mock-cap">開発中の画面イメージです。問いの数と内容は例です。</figcaption>
         </figure>
       </div>
     </section>
 
-    <section class="s mats-sec" id="materials" aria-labelledby="mat-title">
+    <section class="s" id="materials" aria-labelledby="mat-title">
       <div class="wrap">
         <div class="s-head">
           <span class="tag">01 ／ 資料</span>
-          <h2 id="mat-title">資料は、直販とOEMの2系統・8点。</h2>
-          <p>社長に直接提案するときは直販用（A）、自社の顧客へ提供する会社はOEM用（B）を使います。A-04・B-04は社内限定です。</p>
+          <h2 id="mat-title">最初に開くのは、<br>直販ならA-01、OEMならB-01。</h2>
+          <p>直販4点・OEM4点の計8点です。社長に直接提案するならA、自社の顧客へ提供するならB。A-04・B-04は社内限定です。<br><strong>A-01〜B-03は、会議中に判断カードを返す流れで書いた版です。社長が声で答える流れは、まだ入っていません。</strong></p>
+        </div>
+
+        <div class="mats">
+          <div class="track" id="direct">
+            <div class="track-top">
+              <div><p class="tag">A ／ DIRECT</p><h3>直販用</h3></div>
+              <svg class="route" viewBox="0 0 150 44" role="img" aria-label="当社から社長へ直接届ける">
+                <circle cx="14" cy="14" r="7" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M26 14h82" stroke="currentColor" stroke-width="1.6"/><path d="M106 10l6 4-6 4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                <circle cx="126" cy="14" r="7" fill="#d9481f"/>
+                <text x="14" y="40" text-anchor="middle" font-size="12" fill="currentColor" font-family="Noto Sans JP, sans-serif">当社</text>
+                <text x="126" y="40" text-anchor="middle" font-size="12" fill="currentColor" font-family="Noto Sans JP, sans-serif">社長</text>
+              </svg>
+            </div>
+            <p class="track-sub">社長に直接提案するとき</p>
+            <a class="mat" href="../second-jev-edition/"><span class="code">A-01</span><svg class="ico" aria-hidden="true"><use href="#i-lp"/></svg><span><strong>サービス紹介LP</strong><span class="desc">最初の提案で社長に見せる1枚。判断カードの実例つき<span class="ver">声の流れは未反映</span></span></span><span class="go">開く</span></a>
+            <a class="mat" href="./direct-demo/"><span class="code">A-02</span><svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg><span><strong>デモ・相談会のご案内</strong><span class="desc">日時・申込先は調整中<span class="ver">声の流れは未反映</span></span></span><span class="go">開く</span></a>
+            <a class="mat" href="./direct-deck/"><span class="code">A-03</span><svg class="ico" aria-hidden="true"><use href="#i-deck"/></svg><span><strong>直販説明デッキ</strong><span class="desc">商談で画面に映す5枚。各スライドに話すことつき<span class="ver">声の流れは未反映</span></span></span><span class="go">開く</span></a>
+            <div class="mat lock"><span class="code">A-04</span><svg class="ico" aria-hidden="true"><use href="#i-note"/></svg><span><strong>直販営業ノート</strong><span class="desc">営業担当向け</span></span><span class="go">社内限定</span></div>
+          </div>
+
+          <div class="track" id="oem">
+            <div class="track-top">
+              <div><p class="tag">B ／ OEM</p><h3>OEM用</h3></div>
+              <svg class="route" viewBox="0 0 196 44" role="img" aria-label="当社からパートナーを通して、パートナーの顧客へ届ける">
+                <circle cx="14" cy="14" r="7" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M26 14h50" stroke="currentColor" stroke-width="1.6"/><path d="M74 10l6 4-6 4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                <circle cx="96" cy="14" r="7" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M108 14h50" stroke="currentColor" stroke-width="1.6"/><path d="M156 10l6 4-6 4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                <circle cx="178" cy="14" r="7" fill="#d9481f"/>
+                <text x="14" y="40" text-anchor="middle" font-size="12" fill="currentColor" font-family="Noto Sans JP, sans-serif">当社</text>
+                <text x="96" y="40" text-anchor="middle" font-size="12" fill="currentColor" font-family="Noto Sans JP, sans-serif">パートナー</text>
+                <text x="178" y="40" text-anchor="middle" font-size="12" fill="currentColor" font-family="Noto Sans JP, sans-serif">顧客</text>
+              </svg>
+            </div>
+            <p class="track-sub">自社の顧客へ提供する会社向け</p>
+            <a class="mat" href="./oem/"><span class="code">B-01</span><svg class="ico" aria-hidden="true"><use href="#i-lp"/></svg><span><strong>OEM提供のご案内</strong><span class="desc">パートナーと提供側の役割を、4つの場面で分けた表<span class="ver">声の流れは未反映</span></span></span><span class="go">開く</span></a>
+            <a class="mat" href="./oem-briefing/"><span class="code">B-02</span><svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg><span><strong>パートナー説明会</strong><span class="desc">日時・申込先は調整中<span class="ver">声の流れは未反映</span></span></span><span class="go">開く</span></a>
+            <a class="mat" href="./oem-deck/"><span class="code">B-03</span><svg class="ico" aria-hidden="true"><use href="#i-deck"/></svg><span><strong>OEM説明デッキ</strong><span class="desc">パートナー社内での共有に使う4枚。話すことつき<span class="ver">声の流れは未反映</span></span></span><span class="go">開く</span></a>
+            <div class="mat lock"><span class="code">B-04</span><svg class="ico" aria-hidden="true"><use href="#i-note"/></svg><span><strong>パートナー営業ノート</strong><span class="desc">パートナー営業向け</span></span><span class="go">社内限定</span></div>
+          </div>
         </div>
 
         <aside class="caution" aria-labelledby="caution-title">
@@ -251,28 +390,7 @@ footer a{color:var(--on-dark);text-underline-offset:3px;display:inline-block;pad
             <li>届け先（Slack／LINE）と1日の問いの数</li>
             <li>デモ・説明会の日時と申込先</li>
           </ul>
-          <p>各資料は、会議中に判断カードを返す部分を中心に説明しています。社長が声で答える流れは、順次資料へ反映します。</p>
         </aside>
-
-        <div class="mats">
-          <div class="track" id="direct">
-            <p class="tag">A ／ DIRECT</p><h3>直販用</h3>
-            <p>社長に直接提案するとき</p>
-            <a class="mat" href="../second-jev-edition/"><span class="code">A-01</span><span><strong>サービス紹介LP</strong><span class="desc">最初の提案で社長に見せる1枚。判断カードの実例つき</span></span><span class="go">開く</span></a>
-            <a class="mat" href="./direct-demo/"><span class="code">A-02</span><span><strong>デモ・相談会のご案内</strong><span class="desc">日時・申込先は調整中</span></span><span class="go">開く</span></a>
-            <a class="mat" href="./direct-deck/"><span class="code">A-03</span><span><strong>直販説明デッキ</strong><span class="desc">商談で画面に映す5枚。各スライドに話すことつき</span></span><span class="go">開く</span></a>
-            <div class="mat lock"><span class="code">A-04</span><span><strong>直販営業ノート</strong><span class="desc">営業担当向け</span></span><span class="go">社内限定</span></div>
-          </div>
-
-          <div class="track" id="oem">
-            <p class="tag">B ／ OEM</p><h3>OEM用</h3>
-            <p>自社の顧客へ提供する会社向け</p>
-            <a class="mat" href="./oem/"><span class="code">B-01</span><span><strong>OEM提供のご案内</strong><span class="desc">パートナーと提供側の役割を、4つの場面で分けた表</span></span><span class="go">開く</span></a>
-            <a class="mat" href="./oem-briefing/"><span class="code">B-02</span><span><strong>パートナー説明会</strong><span class="desc">日時・申込先は調整中</span></span><span class="go">開く</span></a>
-            <a class="mat" href="./oem-deck/"><span class="code">B-03</span><span><strong>OEM説明デッキ</strong><span class="desc">パートナー社内での共有に使う4枚。話すことつき</span></span><span class="go">開く</span></a>
-            <div class="mat lock"><span class="code">B-04</span><span><strong>パートナー営業ノート</strong><span class="desc">パートナー営業向け</span></span><span class="go">社内限定</span></div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -286,31 +404,31 @@ footer a{color:var(--on-dark);text-underline-offset:3px;display:inline-block;pad
 
         <figure class="fig">
           <p class="fig-title">会議の録画が、社長の判断基準になるまで</p>
-          <svg class="fig-pc" viewBox="0 0 1200 320" role="img" aria-label="会議の録画、AIが問いを選ぶ、社長が声で答える、判断カード、社員の相談にJevが返す、の循環">
+          <svg class="fig-pc" viewBox="0 0 1200 270" role="img" aria-label="会議の録画、AIが問いを選ぶ、社長が声で答える、判断カード、社員の相談にJevが返す、の循環">
             <defs>
               <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6f747d"/></marker>
               <marker id="aha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#d9481f"/></marker>
             </defs>
             <g font-family="Noto Sans JP, sans-serif">
-              <rect x="1" y="40" width="190" height="96" rx="12" fill="#f4f2ec" stroke="#dcd8cd"/>
+              <rect x="1" y="40" width="190" height="96" rx="12" fill="#fff" stroke="#dcd8cd"/>
               <text x="96" y="80" text-anchor="middle" font-size="17" font-weight="700" fill="#15171b">会議の録画</text>
-              <text x="96" y="108" text-anchor="middle" font-size="13" fill="#5b6069">1か所に集める</text>
+              <text x="96" y="108" text-anchor="middle" font-size="13" fill="#5b6069">Meetの録画を1フォルダへ</text>
 
-              <rect x="250" y="40" width="190" height="96" rx="12" fill="#f4f2ec" stroke="#dcd8cd"/>
+              <rect x="250" y="40" width="190" height="96" rx="12" fill="#fff" stroke="#dcd8cd"/>
               <text x="345" y="80" text-anchor="middle" font-size="17" font-weight="700" fill="#15171b">AIが問いを選ぶ</text>
-              <text x="345" y="108" text-anchor="middle" font-size="13" fill="#5b6069">判断が要る案件を選ぶ</text>
+              <text x="345" y="108" text-anchor="middle" font-size="13" fill="#5b6069">1日10件前後の要点から</text>
 
               <rect x="500" y="30" width="210" height="116" rx="14" fill="#d9481f"/>
               <text x="605" y="80" text-anchor="middle" font-size="19" font-weight="900" fill="#fff">社長が声で答える</text>
-              <text x="605" y="110" text-anchor="middle" font-size="13" fill="#fff">リンクを押して話す</text>
+              <text x="605" y="110" text-anchor="middle" font-size="13" fill="#fff">イヤホンで聞き、声で答える</text>
 
-              <rect x="770" y="40" width="190" height="96" rx="12" fill="#f4f2ec" stroke="#dcd8cd"/>
+              <rect x="770" y="40" width="190" height="96" rx="12" fill="#fff" stroke="#dcd8cd"/>
               <text x="865" y="80" text-anchor="middle" font-size="17" font-weight="700" fill="#15171b">判断カード</text>
               <text x="865" y="108" text-anchor="middle" font-size="13" fill="#5b6069">条件と例外ごと残す</text>
 
               <rect x="1009" y="40" width="190" height="96" rx="12" fill="#15171b"/>
               <text x="1104" y="80" text-anchor="middle" font-size="17" font-weight="700" fill="#fff">社員の相談</text>
-              <text x="1104" y="108" text-anchor="middle" font-size="13" fill="#d6d8dc">Jevが基準で返す</text>
+              <text x="1104" y="108" text-anchor="middle" font-size="13" fill="#d6d8dc">Jevが推定と条件を返す</text>
 
               <line x1="193" y1="88" x2="246" y2="88" stroke="#6f747d" stroke-width="1.6" marker-end="url(#ah)"/>
               <line x1="442" y1="88" x2="496" y2="88" stroke="#6f747d" stroke-width="1.6" marker-end="url(#ah)"/>
@@ -318,48 +436,47 @@ footer a{color:var(--on-dark);text-underline-offset:3px;display:inline-block;pad
               <line x1="962" y1="88" x2="1005" y2="88" stroke="#6f747d" stroke-width="1.6" marker-end="url(#ah)"/>
 
               <path d="M1104 138 V240 H605 V152" fill="none" stroke="#d9481f" stroke-width="1.8" stroke-dasharray="6 5" marker-end="url(#aha)"/>
-              <rect x="720" y="222" width="270" height="36" rx="18" fill="#fff" stroke="#d9481f"/>
+              <rect x="720" y="222" width="270" height="36" rx="18" fill="#fafaf8" stroke="#d9481f"/>
               <text x="855" y="246" text-anchor="middle" font-size="14" font-weight="700" fill="#d9481f">相談が社長の画面に並ぶ</text>
-              <text x="605" y="290" text-anchor="middle" font-size="13" fill="#6f747d">答えるほど、カードが育つ</text>
             </g>
           </svg>
 
-          <svg class="fig-sp" viewBox="0 0 360 560" role="img" aria-label="会議の録画、AIが問いを選ぶ、社長が声で答える、判断カード、社員の相談にJevが返す、の循環">
+          <svg class="fig-sp" viewBox="0 0 360 520" role="img" aria-label="会議の録画、AIが問いを選ぶ、社長が声で答える、判断カード、社員の相談にJevが返す、の循環">
             <defs>
               <marker id="ahs" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6f747d"/></marker>
               <marker id="ahsa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#d9481f"/></marker>
             </defs>
             <g font-family="Noto Sans JP, sans-serif">
-              <rect x="10" y="1" width="260" height="70" rx="12" fill="#f4f2ec" stroke="#dcd8cd"/>
-              <text x="140" y="33" text-anchor="middle" font-size="18" font-weight="700" fill="#15171b">会議の録画</text>
-              <text x="140" y="56" text-anchor="middle" font-size="14" fill="#5b6069">1か所に集める</text>
-              <line x1="140" y1="73" x2="140" y2="104" stroke="#6f747d" stroke-width="1.6" marker-end="url(#ahs)"/>
+              <rect x="10" y="1" width="250" height="70" rx="12" fill="#fff" stroke="#dcd8cd"/>
+              <text x="135" y="33" text-anchor="middle" font-size="18" font-weight="700" fill="#15171b">会議の録画</text>
+              <text x="135" y="56" text-anchor="middle" font-size="14" fill="#5b6069">Meetの録画を1フォルダへ</text>
+              <line x1="135" y1="73" x2="135" y2="104" stroke="#6f747d" stroke-width="1.6" marker-end="url(#ahs)"/>
 
-              <rect x="10" y="108" width="260" height="70" rx="12" fill="#f4f2ec" stroke="#dcd8cd"/>
-              <text x="140" y="140" text-anchor="middle" font-size="18" font-weight="700" fill="#15171b">AIが問いを選ぶ</text>
-              <text x="140" y="163" text-anchor="middle" font-size="14" fill="#5b6069">判断が要る案件を選ぶ</text>
-              <line x1="140" y1="180" x2="140" y2="212" stroke="#6f747d" stroke-width="1.6" marker-end="url(#ahs)"/>
+              <rect x="10" y="108" width="250" height="70" rx="12" fill="#fff" stroke="#dcd8cd"/>
+              <text x="135" y="140" text-anchor="middle" font-size="18" font-weight="700" fill="#15171b">AIが問いを選ぶ</text>
+              <text x="135" y="163" text-anchor="middle" font-size="14" fill="#5b6069">1日10件前後の要点から</text>
+              <line x1="135" y1="180" x2="135" y2="212" stroke="#6f747d" stroke-width="1.6" marker-end="url(#ahs)"/>
 
-              <rect x="10" y="216" width="260" height="78" rx="14" fill="#d9481f"/>
-              <text x="140" y="252" text-anchor="middle" font-size="19" font-weight="900" fill="#fff">社長が声で答える</text>
-              <text x="140" y="277" text-anchor="middle" font-size="14" fill="#fff">リンクを押して話す</text>
-              <line x1="140" y1="296" x2="140" y2="328" stroke="#6f747d" stroke-width="1.6" marker-end="url(#ahs)"/>
+              <rect x="10" y="216" width="250" height="78" rx="14" fill="#d9481f"/>
+              <text x="135" y="252" text-anchor="middle" font-size="19" font-weight="900" fill="#fff">社長が声で答える</text>
+              <text x="135" y="277" text-anchor="middle" font-size="14" fill="#fff">イヤホンで聞き、声で答える</text>
+              <line x1="135" y1="296" x2="135" y2="328" stroke="#6f747d" stroke-width="1.6" marker-end="url(#ahs)"/>
 
-              <rect x="10" y="332" width="260" height="70" rx="12" fill="#f4f2ec" stroke="#dcd8cd"/>
-              <text x="140" y="364" text-anchor="middle" font-size="18" font-weight="700" fill="#15171b">判断カード</text>
-              <text x="140" y="387" text-anchor="middle" font-size="14" fill="#5b6069">条件と例外ごと残す</text>
-              <line x1="140" y1="404" x2="140" y2="436" stroke="#6f747d" stroke-width="1.6" marker-end="url(#ahs)"/>
+              <rect x="10" y="332" width="250" height="70" rx="12" fill="#fff" stroke="#dcd8cd"/>
+              <text x="135" y="364" text-anchor="middle" font-size="18" font-weight="700" fill="#15171b">判断カード</text>
+              <text x="135" y="387" text-anchor="middle" font-size="14" fill="#5b6069">条件と例外ごと残す</text>
+              <line x1="135" y1="404" x2="135" y2="436" stroke="#6f747d" stroke-width="1.6" marker-end="url(#ahs)"/>
 
-              <rect x="10" y="440" width="260" height="70" rx="12" fill="#15171b"/>
-              <text x="140" y="472" text-anchor="middle" font-size="18" font-weight="700" fill="#fff">社員の相談</text>
-              <text x="140" y="495" text-anchor="middle" font-size="14" fill="#d6d8dc">Jevが基準で返す</text>
+              <rect x="10" y="440" width="250" height="70" rx="12" fill="#15171b"/>
+              <text x="135" y="472" text-anchor="middle" font-size="18" font-weight="700" fill="#fff">社員の相談</text>
+              <text x="135" y="495" text-anchor="middle" font-size="14" fill="#d6d8dc">Jevが推定と条件を返す</text>
 
-              <path d="M272 475 H318 V255 H276" fill="none" stroke="#d9481f" stroke-width="1.8" stroke-dasharray="6 5" marker-end="url(#ahsa)"/>
-              <text x="336" y="365" text-anchor="middle" font-size="14" font-weight="700" fill="#d9481f" transform="rotate(90 336 365)">相談が社長の画面に並ぶ</text>
-              <text x="140" y="545" text-anchor="middle" font-size="14" fill="#6f747d">答えるほど、カードが育つ</text>
+              <path d="M262 475 H336 V255 H266" fill="none" stroke="#d9481f" stroke-width="1.8" stroke-dasharray="6 5" marker-end="url(#ahsa)"/>
+              <rect x="180" y="302" width="176" height="28" rx="14" fill="#fafaf8" stroke="#d9481f"/>
+              <text x="268" y="321" text-anchor="middle" font-size="13" font-weight="700" fill="#d9481f">相談が社長の画面に並ぶ</text>
             </g>
           </svg>
-          <p class="fig-foot">会議に出なくても、社長の答えは判断カードに貯まり、社員の相談に返ります。</p>
+          <p class="fig-foot">社長が答えるほど、社員が社長に聞く前に確かめられる範囲が広がる。</p>
         </figure>
 
         <div class="use">
@@ -368,7 +485,7 @@ footer a{color:var(--on-dark);text-underline-offset:3px;display:inline-block;pad
             <ol class="steps">
               <li><div>迷った案件を相談する<span>Jevが過去の判断カードに当てはめます</span></div></li>
               <li><div>推定・条件・足りない情報が返る<span>そのまま進めてよい範囲と、確認が要る範囲が分かります</span></div></li>
-              <li><div>相談は社長の画面にも並ぶ<span>社長はそれを見て答え、判断カードが育ちます</span></div></li>
+              <li><div>社長が答えると、判断カードが1枚増える<span>次に同じ相談が来たら、そのカードで返ります</span></div></li>
             </ol>
           </div>
           <div>
@@ -376,23 +493,92 @@ footer a{color:var(--on-dark);text-underline-offset:3px;display:inline-block;pad
               <div class="row"><dt>相談</dt><dd>代理店の請求書払いを認めるか</dd></div>
               <div class="row"><dt>推定</dt><dd>条件付き Yes</dd></div>
               <div class="row"><dt>条件</dt><dd>取引件数が一定以上／回収は代理店側</dd></div>
-              <div class="row"><dt>確認先</dt><dd>社長（相談は社長の画面に並ぶ）</dd></div>
+              <div class="row"><dt>確認先</dt><dd>社長</dd></div>
             </dl>
             <p class="card-cap">判断カードの例です。実際の項目は開発中です。</p>
           </div>
         </div>
 
         <ul class="aside-list" aria-label="図に入れなかった条件">
-          <li>録画はGoogle Meetの録画を1つのフォルダへ集める形で準備を進めています。</li>
-          <li>会議からの要点は1日10件前後にまとめ、そこから数件を問いにする想定です。数は運用しながら決めます。</li>
-          <li>問いの届け先はSlackを先に検討中。LINEも候補ですが未定です。</li>
-          <li>AIが出すのは判断の推定と材料です。正式な判断は、社長など権限を持つ人が確定します。</li>
+          <li>AIが出すのは判断の推定と材料。正式な判断は、社長など権限を持つ人が確定します。</li>
+          <li>1日に届く問いの数は、運用しながら決めます。</li>
         </ul>
+      </div>
+    </section>
+
+    <section class="scene-sec" id="scene" aria-labelledby="scene-title">
+      <div class="wrap">
+        <div class="s-head">
+          <span class="tag">03 ／ ある月曜の会議（想定シーン）</span>
+          <h2 id="scene-title">「社長に確認します」で<br>終わらない会議になった。</h2>
+          <p>社長のいない社内会議で、テーブルのノートPCに「社長AI」を出しておく。スタッフの目線で、その1時間を描きました。</p>
+        </div>
+
+        <div class="scene">
+          <figure class="scene-photo">
+            <img src="./images/meeting-staff-view.jpg" alt="夕方の会議室で、スタッフ3人がテーブルのノートPCを囲んで話している様子（生成イメージ）" width="1800" height="1199" decoding="async">
+            <span class="pin" aria-hidden="true"></span>
+            <svg class="leader" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M45.4 50.5 L58 60" stroke="#ff7a52" stroke-width="1.5" vector-effect="non-scaling-stroke" stroke-dasharray="5 4" fill="none"/></svg>
+            <figcaption class="photo-cap">生成イメージ</figcaption>
+          </figure>
+
+          <div class="laptop" role="img" aria-label="会議中のノートPCに表示された社長AIの画面イメージ。いまの論点、社長の基準での推定、条件の確認状況が並ぶ">
+            <div class="lid">
+              <div class="ai">
+                <div class="ai-top"><b>SECOND <span>社長AI</span></b><span class="live">会議を聞いています</span></div>
+                <p class="ai-topic">いまの論点<strong>代理店の請求書払いを認めるか</strong></p>
+                <p class="ai-verdict"><small>社長の基準では</small><strong>条件付き Yes</strong></p>
+                <ul class="ai-list">
+                  <li><span class="ok">✓</span><span>取引件数が一定以上の代理店か</span></li>
+                  <li><span class="ask">？</span><span>回収を代理店側で持つと合意できるか</span></li>
+                </ul>
+                <div class="ai-foot"><span>根拠：社長が朝に声で答えた判断カード</span><span class="btnish">社長に送る</span></div>
+              </div>
+            </div>
+            <div class="base"></div>
+          </div>
+        </div>
+
+        <div class="story">
+          <div class="story-text">
+            <p>議題は、代理店からの「請求書払いにしたい」という相談だった。前なら、ここで誰かが言う。<span class="said-line">「一度、社長に確認します」。</span>そして話は、次の週へ持ち越された。</p>
+            <p>その日は、テーブルのノートPCに社長AIを出していた。画面には、社長が数日前の朝に声で答えた「条件付きでいい」と、その条件が並んでいた。</p>
+            <p>条件に当てはまるかを、その場で確かめた。足りなかったのは1点だけ。会議の中で決まり、社長の画面には相談が1件並んだだけだった。</p>
+          </div>
+          <blockquote class="quote">
+            <p>社長はいないのに、<br>社長と話して<br>決めた気がした。</p>
+            <footer>― 会議に出ていた営業担当（想定）</footer>
+          </blockquote>
+        </div>
+
+        <div class="change" role="group" aria-label="会議の流れの変化">
+          <div class="change-row before">
+            <b>BEFORE</b>
+            <div class="node">論点が出る</div><span class="arr" aria-hidden="true"></span>
+            <div class="node">「社長に確認します」</div><span class="arr" aria-hidden="true"></span>
+            <div class="node">次の週へ持ち越し</div>
+          </div>
+          <div class="change-row after">
+            <b>AFTER</b>
+            <div class="node">論点が出る</div><span class="arr" aria-hidden="true"></span>
+            <div class="node hl">社長AIで基準を確かめる</div><span class="arr" aria-hidden="true"></span>
+            <div class="node">会議の中で決まる</div>
+          </div>
+        </div>
+
+        <div class="close">
+          <p>この会議を、提案先の会社にも。<small>最初に開くのは、直販ならA-01、OEMならB-01。</small></p>
+          <div class="btns">
+            <a class="btn btn-glow" href="../second-jev-edition/">A-01 直販LPを開く</a>
+            <a class="btn btn-warm" href="./oem/">B-01 OEM案内を開く</a>
+          </div>
+        </div>
+        <p class="scene-note">想定シーンです。実在の会社・人物の話ではありません。写真は生成イメージ、画面は開発中のイメージです。最終判断は権限を持つ人が行います。</p>
       </div>
     </section>
   </main>
 
-  <footer>
+  <footer class="site">
     <div class="wrap">
       <span><b>SECOND / Jev Edition</b>　経営判断OS 資料パック</span>
       <span>Jevは判断材料を整えます。最終判断は権限を持つ人が行います。</span>
