@@ -77,8 +77,23 @@ p{margin:0}
 .btn:hover{filter:brightness(1.08)}
 .tl{display:inline-flex;align-items:center;min-height:44px;font-size:15px;font-weight:700;color:#fff;text-underline-offset:5px}
 
-/* ヒーロー右：既存の公式問い合わせフォームを資料請求用に表示 */
+/* ヒーロー右：役割を短く示し、資料請求へつなぐ */
+.hero-summary{background:var(--bg1);color:var(--bk);border-radius:10px;padding:clamp(28px,3vw,40px);box-shadow:0 22px 60px rgba(0,0,0,.23)}
+.hero-summary__eyebrow{margin:0 0 18px;color:var(--ac);font-family:var(--ff-en);font-size:12px;font-weight:800;letter-spacing:.16em}
+.hero-summary h2{margin:0 0 24px;font-family:var(--ff-serif);font-size:clamp(24px,2.35vw,32px);line-height:1.45}
+.hero-summary__roles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0 0 20px}
+.hero-summary__roles p{padding:16px;background:#e9e8e2;border-radius:5px;font-size:14px;line-height:1.5}
+.hero-summary__roles strong{display:block;margin:0 0 5px;color:var(--ac);font-size:13px}
+.hero-summary__share{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:15px 0;border-top:1px solid var(--ln);border-bottom:1px solid var(--ln);font-size:14px;font-weight:700}
+.hero-summary__share strong{font-family:var(--ff-en);font-size:clamp(28px,3vw,40px);line-height:1;color:var(--ac)}
+.hero-summary__cta{display:flex;align-items:center;justify-content:center;min-height:52px;margin:24px 0 0;border-radius:5px;background:var(--ac);color:#fff;font-size:15px;font-weight:700;text-decoration:none}
+.hero-summary__cta:hover{filter:brightness(1.08)}
+.hero-summary__cta:focus-visible{outline:3px solid #9FB0C8;outline-offset:3px}
+
+/* 資料請求フォーム */
+.request-section{padding:76px 20px;background:var(--bg2)}
 .request-form{background:var(--bg1);color:var(--bk);border-radius:10px;padding:clamp(24px,3vw,38px);box-shadow:0 22px 60px rgba(0,0,0,.23)}
+.request-section .request-form{max-width:760px;margin-inline:auto}
 .request-form__eyebrow{color:var(--ac);font-size:13px;font-weight:800;letter-spacing:.1em}
 .request-form h2{margin:8px 0 8px;font-family:var(--ff-serif);font-size:clamp(23px,2.2vw,30px);line-height:1.4}
 .request-form__intro{font-size:15px;line-height:1.8;color:var(--g1)}
@@ -433,14 +448,16 @@ table.cmp{width:100%;min-width:980px;border-collapse:separate;border-spacing:0;f
         </div>
       </div>
 
-      <div class="request-form" id="request" aria-labelledby="request-title">
-        <p class="request-form__eyebrow">AI活用研修 OEMパートナー向け</p>
-        <h2 id="request-title">資料を請求する</h2>
-        <p class="request-form__intro">会社名・お名前・連絡先をご入力ください。担当者から資料をお送りします。</p>
-        <script src="https://writeup.ma.geniee.jp/form/generate.js?id=27"></script>
-        <p class="request-form__fallback" hidden>フォームを読み込めませんでした。<a href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">公式お問い合わせフォーム</a>をご利用ください。</p>
-        <noscript><p class="request-form__fallback">フォームの表示にはJavaScriptが必要です。<a href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">公式お問い合わせフォーム</a>をご利用ください。</p></noscript>
-      </div>
+      <aside class="hero-summary" aria-labelledby="hero-summary-title">
+        <p class="hero-summary__eyebrow">PARTNERSHIP</p>
+        <h2 id="hero-summary-title">届けるのは貴社。<br>研修は弊社が作ります。</h2>
+        <div class="hero-summary__roles">
+          <p><strong>貴社</strong>地域の会社へ対面で提案</p>
+          <p><strong>弊社</strong>研修を開発・更新</p>
+        </div>
+        <p class="hero-summary__share"><span>売上の分け方</span><strong>5 : 5</strong></p>
+        <a class="hero-summary__cta" href="#request">詳しい資料を請求する ↓</a>
+      </aside>
     </div>
 
     <div class="wrap terms-band">
@@ -450,6 +467,17 @@ table.cmp{width:100%;min-width:980px;border-collapse:separate;border-spacing:0;f
         <li><span class="k">開発・更新</span><span class="v">弊社が負担</span></li>
         <li><span class="k">売上</span><span class="v"><em>5:5</em>で分ける</span></li>
       </ul>
+    </div>
+  </section>
+
+  <section class="request-section" aria-labelledby="request-title">
+    <div class="request-form" id="request">
+        <p class="request-form__eyebrow">AI活用研修 OEMパートナー向け</p>
+        <h2 id="request-title">資料を請求する</h2>
+        <p class="request-form__intro">会社名・お名前・連絡先をご入力ください。担当者から資料をお送りします。</p>
+        <script src="https://writeup.ma.geniee.jp/form/generate.js?id=27"></script>
+        <p class="request-form__fallback" hidden>フォームを読み込めませんでした。<a href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">公式お問い合わせフォーム</a>をご利用ください。</p>
+        <noscript><p class="request-form__fallback">フォームの表示にはJavaScriptが必要です。<a href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">公式お問い合わせフォーム</a>をご利用ください。</p></noscript>
     </div>
   </section>
 
