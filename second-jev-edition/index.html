@@ -55,7 +55,7 @@ a{color:inherit}
 .bar nav a:hover{color:var(--on-dark)}
 
 /* hero */
-.hero{background:var(--ink);color:var(--on-dark);padding:76px 0 88px;overflow:hidden}
+.hero{background:var(--ink);color:var(--on-dark);padding:64px 0 76px;overflow:hidden}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:64px;align-items:center}
 .hc{position:relative;cursor:pointer;margin-top:18px}
 .hc:focus-visible{outline:3px solid var(--glow);outline-offset:6px;border-radius:6px}
@@ -100,16 +100,19 @@ dialog.pop::backdrop{background:rgba(15,17,21,.6);backdrop-filter:blur(3px)}
 
 /* phone mock */
 .phone-wrap{margin:0}
-.phone{width:100%;max-width:372px;margin-inline:auto;border-radius:34px;padding:12px;background:#24272d;box-shadow:0 30px 60px rgba(0,0,0,.45),inset 0 0 0 1px #3a3e46}
-.screen{border-radius:24px;background:#f7f6f2;color:var(--ink);padding:18px 16px 16px}
+.phone{width:100%;max-width:400px;margin-inline:auto;border-radius:34px;padding:12px;background:#24272d;box-shadow:0 30px 60px rgba(0,0,0,.45),inset 0 0 0 1px #3a3e46}
+.screen{border-radius:24px;background:#f7f6f2;color:var(--ink);padding:14px 16px 14px}
 .sc-top{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12px;color:var(--mute)}
-.sc-head{margin:14px 0 4px;font-weight:900;font-size:19px;letter-spacing:.01em}
-.sc-sub{margin:0 0 14px;color:var(--gray);font-size:12px}
+.sc-head{margin:8px 0 2px;font-weight:900;font-size:19px;letter-spacing:.01em}
+.sc-sub{margin:0 0 6px;color:var(--gray);font-size:12px}
 .q{border:1px solid var(--line);background:#fff;border-radius:14px;padding:12px 14px;margin-top:10px}
 .q-meta{display:flex;justify-content:space-between;gap:8px;font-family:var(--mono);font-size:12px;color:var(--mute)}
 .q p{margin:4px 0 0;font-size:14px;font-weight:700;line-height:1.6}
 .q.active{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
 .q.done{opacity:.6}
+.q.mini{display:flex;align-items:center;gap:10px;padding:8px 12px;margin-top:8px}
+.q.mini .st{flex:0 0 auto;padding:0 8px;border:1px solid var(--line);border-radius:999px;font-size:12px;color:var(--mute);line-height:1.7}
+.q.mini p{margin:0;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .voice{display:flex;align-items:center;gap:10px;margin-top:10px;padding:10px 12px;border-radius:12px;background:var(--ink);color:var(--on-dark)}
 .mic{flex:0 0 30px;height:30px;border-radius:50%;background:var(--accent);display:grid;place-items:center}
 .mic svg{width:14px;height:14px}
@@ -192,7 +195,7 @@ section.s{padding:112px 0}
 @keyframes ping{0%{transform:scale(.7);opacity:1}100%{transform:scale(1.35);opacity:0}}
 .leader{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
 .photo-cap{position:absolute;left:20px;bottom:16px;z-index:2;color:#e9ddd2;font-size:12px}
-.laptop{position:absolute;right:36px;bottom:-64px;width:min(470px,44%);z-index:3}
+.laptop{position:absolute;right:28px;bottom:-110px;width:min(500px,46%);z-index:3}
 .lid{background:#1e1f23;border-radius:14px 14px 4px 4px;padding:10px;box-shadow:0 30px 60px rgba(0,0,0,.55),inset 0 0 0 1px #3a3c42}
 .base{height:12px;margin:0 -18px;background:linear-gradient(#c9c6c0,#9d9a94);border-radius:0 0 12px 12px}
 .ai{background:#fbfaf7;color:var(--ink);border-radius:6px;padding:14px 16px 14px;font-size:13px}
@@ -201,6 +204,18 @@ section.s{padding:112px 0}
 .ai-top b span{color:var(--accent)}
 .live{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--gray)}
 .live::before{content:"";width:8px;height:8px;border-radius:50%;background:#2f9e5b;box-shadow:0 0 0 3px rgba(47,158,91,.18)}
+.avatar-tile{display:grid;grid-template-columns:118px 1fr;gap:12px;margin:10px 0 0;padding:8px;border-radius:12px;background:#15171b;color:#f4f2ec}
+.av-face{position:relative;border-radius:8px;overflow:hidden;aspect-ratio:1/1;background:#2a2c31}
+.av-face img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 12%;transform:scale(1.9);transform-origin:50% 12%}
+.av-face::after{content:"";position:absolute;inset:0;border-radius:8px;box-shadow:inset 0 0 0 2px #ff7a52;animation:talk 1.4s ease-in-out infinite}
+@keyframes talk{0%,100%{box-shadow:inset 0 0 0 2px rgba(255,122,82,.9)}50%{box-shadow:inset 0 0 0 2px rgba(255,122,82,.25)}}
+.av-badge{position:absolute;left:6px;bottom:6px;z-index:1;padding:0 6px;border-radius:4px;background:rgba(21,23,27,.78);font-size:12px;line-height:1.7}
+.av-talk{display:flex;flex-direction:column;justify-content:center;min-width:0}
+.av-wave{display:flex;align-items:center;gap:3px;height:18px}
+.av-wave i{display:block;width:3px;border-radius:2px;background:#ff9b7c;height:40%;animation:w 1.05s ease-in-out infinite}
+.av-wave i:nth-child(2n){animation-delay:.12s}.av-wave i:nth-child(3n){animation-delay:.27s}.av-wave i:nth-child(4n){animation-delay:.4s}
+.av-sub{margin:6px 0 0;font-size:13px;line-height:1.6;color:#fff}
+.av-note{margin-top:4px;font-size:12px;color:#a9adb4}
 .ai-topic{margin:10px 0 0;font-size:12px;color:var(--mute)}
 .ai-topic strong{display:block;color:var(--ink);font-size:15px;line-height:1.5}
 .ai-verdict{display:flex;align-items:baseline;gap:10px;margin:10px 0 0;padding:10px 12px;border-radius:10px;background:var(--accent-soft)}
@@ -212,7 +227,7 @@ section.s{padding:112px 0}
 .ai-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line2);font-size:12px;color:var(--gray)}
 .ai-foot span.btnish{flex:0 0 auto;padding:4px 10px;border-radius:999px;background:var(--ink);color:#fff;font-weight:700}
 
-.story{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:64px;align-items:center;margin-top:128px}
+.story{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:64px;align-items:center;margin-top:176px}
 .story-text p{margin:0 0 18px;color:#e2d8cf;font-size:17px;line-height:2}
 .story-text p:last-child{margin-bottom:0}
 .story-text .said-line{color:#fff;font-weight:700}
@@ -282,8 +297,10 @@ footer.site a{color:var(--on-dark);text-underline-offset:3px;display:inline-bloc
   .photo-cap{left:12px;bottom:10px}
   .story-text p{font-size:16px}
   .close{padding:24px 20px}
+  .avatar-tile{grid-template-columns:88px 1fr;gap:10px}
+  .av-sub{font-size:12px}
 }
-@media (prefers-reduced-motion:reduce){.wave i{animation:none;height:60%}.pin::after{animation:none}.hero h1::after{animation:none}}
+@media (prefers-reduced-motion:reduce){.av-wave i,.av-face::after{animation:none}.wave i{animation:none;height:60%}.pin::after{animation:none}.hero h1::after{animation:none}}
   </style>
 </head>
 <body>
@@ -321,14 +338,11 @@ footer.site a{color:var(--on-dark);text-underline-offset:3px;display:inline-bloc
               <p class="sc-head">今日の問い</p>
               <p class="sc-sub">昨日の会議から、判断が要りそうな話を選びました</p>
 
-              <div class="q done">
-                <div class="q-meta"><span>Q1 ・ 営業会議</span><span>回答済</span></div>
-                <p>展示会、今年も出すか。</p>
-              </div>
+              <div class="q mini done"><span class="st">回答済</span><p>展示会、今年も出すか。</p></div>
 
               <div class="q active">
                 <div class="q-meta"><span>Q2 ・ 経営会議</span><span>回答中</span></div>
-                <p>代理店から「請求書払いにしたい」と相談。認めるか。</p>
+                <p>代理店から「請求書払いにしたい」と相談。<span class="nobr">認めるか。</span></p>
                 <div class="voice">
                   <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
                   <div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
@@ -338,10 +352,7 @@ footer.site a{color:var(--on-dark);text-underline-offset:3px;display:inline-bloc
                 <div class="saved"><span class="chip">条件付き Yes</span>判断カードに保存</div>
               </div>
 
-              <div class="q">
-                <div class="q-meta"><span>Q3 ・ 採用会議</span><span>未回答</span></div>
-                <p>採用の最終面接に、社長も出るか。</p>
-              </div>
+              <div class="q mini"><span class="st">未回答</span><p>採用の最終面接に、社長も出るか。</p></div>
             </div>
           </div>
           <figcaption class="mock-cap">開発中の画面イメージです。問いの数と内容は例です。</figcaption>
@@ -481,14 +492,14 @@ footer.site a{color:var(--on-dark);text-underline-offset:3px;display:inline-bloc
         <div class="s-head">
           <span class="tag">02 ／ ある月曜の会議（想定シーン）</span>
           <h2 id="scene-title">「社長に確認します」で<br>終わらない会議になった。</h2>
-          <p>社長のいない社内会議で、テーブルのノートPCに「社長AI」を出しておく。スタッフの目線で、その1時間を描きました。</p>
+          <p>社長のいない社内会議で、テーブルのノートPCに「社長AI」を出しておく。画面の文字だけでなく、社長のアバターが声で答えることもできます。スタッフの目線で、その1時間を描きました。</p>
         </div>
 
         <div class="scene">
           <figure class="scene-photo">
             <img src="./images/meeting-staff-view.jpg" alt="夕方の会議室で、スタッフ3人がテーブルのノートPCを囲んで話している様子（生成イメージ）" width="1800" height="1199" decoding="async">
             <span class="pin" aria-hidden="true"></span>
-            <svg class="leader" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M45.4 50.5 L58 60" stroke="#ff7a52" stroke-width="1.5" vector-effect="non-scaling-stroke" stroke-dasharray="5 4" fill="none"/></svg>
+            <svg class="leader" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M45.4 49.5 L56 42" stroke="#ff7a52" stroke-width="1.5" vector-effect="non-scaling-stroke" stroke-dasharray="5 4" fill="none"/></svg>
             <figcaption class="photo-cap">生成イメージ</figcaption>
           </figure>
 
@@ -496,6 +507,14 @@ footer.site a{color:var(--on-dark);text-underline-offset:3px;display:inline-bloc
             <div class="lid">
               <div class="ai">
                 <div class="ai-top"><b>SECOND <span>社長AI</span></b><span class="live">会議を聞いています</span></div>
+                <div class="avatar-tile">
+                  <div class="av-face"><img src="./images/ceo-avatar.jpg" alt="" width="800" height="597" decoding="async"><span class="av-badge">社長アバター</span></div>
+                  <div class="av-talk">
+                    <div class="av-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                    <p class="av-sub">「条件付きでいいよ。3か月で10件以上入る見込みがあるなら進めて。原価割れだけは気をつけて」</p>
+                    <span class="av-note">声で回答中</span>
+                  </div>
+                </div>
                 <p class="ai-topic">いまの論点<strong>代理店の請求書払いを認めるか</strong></p>
                 <p class="ai-verdict"><small>社長の基準では</small><strong>条件付き Yes</strong></p>
                 <ul class="ai-list">
@@ -514,7 +533,7 @@ footer.site a{color:var(--on-dark);text-underline-offset:3px;display:inline-bloc
         <div class="story">
           <div class="story-text">
             <p>議題は、代理店からの「請求書払いにしたい」という相談だった。前なら、ここで誰かが言う。<span class="said-line">「一度、社長に確認します」。</span>そして話は、次の週へ持ち越された。</p>
-            <p>その日は、テーブルのノートPCに社長AIを出していた。画面には、社長が数日前の朝に声で答えた「条件付きでいい」と、その条件が並んでいた。</p>
+            <p>その日は、テーブルのノートPCに社長AIを出していた。論点を読み上げると、画面の中の社長アバターが口を開いた。「条件付きでいいよ」。社長が数日前の朝に声で答えた基準が、そのまま返ってきた。</p>
             <p>条件に当てはまるかを、その場で確かめた。受注の見込みも、回収の持ち方も条件どおり。残っていた原価割れの確認は、その場で計算して片づいた。会議の中で決まり、社長の画面には相談が1件並んだだけだった。</p>
           </div>
           <blockquote class="quote">
@@ -544,7 +563,7 @@ footer.site a{color:var(--on-dark);text-underline-offset:3px;display:inline-bloc
             <a class="btn btn-glow" href="../jev-decision-os/direct-demo/">デモ・相談会の案内を見る →</a>
           </div>
         </div>
-        <p class="scene-note">想定シーンです。実在の会社・人物の話ではありません。写真は生成イメージ、画面は開発中のイメージです。最終判断は権限を持つ人が行います。</p>
+        <p class="scene-note">想定シーンです。実在の会社・人物の話ではありません。写真は生成イメージ、社長アバターは架空の人物（生成イメージ）、画面は開発中のイメージです。最終判断は権限を持つ人が行います。</p>
       </div>
     </section>
   </main>
