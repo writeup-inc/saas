@@ -89,7 +89,7 @@
     .partner-guide{top:76px;right:14px;bottom:auto;width:280px;height:auto;max-height:calc(100vh - 90px);overflow:auto;padding:0;border:1px solid #d5dddf;border-radius:17px;background:#fff;box-shadow:0 17px 54px rgba(12,28,42,.18);scrollbar-width:thin}
     .guide-stage{position:relative;height:296px;overflow:hidden;background:linear-gradient(160deg,#154578,#102547);border-radius:16px 16px 0 0}
     .guide-stage:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,18,42,.08) 20%,rgba(3,19,43,.3) 56%,rgba(5,20,43,.83));pointer-events:none}
-    .guide-stage>img{width:100%;height:100%;object-fit:cover;object-position:center 22%;filter:saturate(.85)}
+    .guide-stage>video,.guide-stage>video img{width:100%;height:100%;object-fit:cover;object-position:center 22%;filter:saturate(.85)}
     .guide-stage-tag{position:absolute;z-index:1;left:16px;top:15px;color:#fff;font:800 10px/1.3 system-ui,sans-serif;letter-spacing:.15em;text-shadow:0 1px 8px #0b2440}
     .guide-minimize{position:absolute;z-index:2;top:10px;right:10px;width:28px;height:28px;border:0;border-radius:50%;background:rgba(5,23,52,.66);color:#fff;font-size:18px;line-height:1}
     .guide-speak{position:absolute;z-index:2;left:50%;bottom:25px;transform:translateX(-50%);width:max-content;max-width:calc(100% - 24px);min-height:42px;padding:8px 14px;border:0;border-radius:28px;background:#e77f36;color:#fff;box-shadow:0 5px 15px rgba(0,0,0,.2);font-size:12px;font-weight:900}
@@ -100,6 +100,10 @@
     @media(min-width:760px) and (max-width:1119px){.partner-guide{top:72px;right:0;width:180px;border-radius:11px 0 0 11px}.guide-stage{height:185px;border-radius:10px 0 0 0}.guide-stage-tag{font-size:8px}.guide-speak{bottom:14px;min-height:35px;padding:6px 8px;font-size:9px}.guide-body{padding:9px}.guide-lines{font-size:11px}.guide-note{font-size:9px}.partner-chat{right:187px;width:min(310px,calc(100vw - 200px));top:72px}}
     @media(max-width:759px){.partner-guide{top:auto;right:8px;bottom:8px;width:180px;max-height:calc(100vh - 70px);border-radius:13px}.guide-stage{height:105px;border-radius:12px 12px 0 0}.guide-stage-tag{top:8px;left:9px;font-size:8px}.guide-speak{bottom:8px;min-height:31px;padding:5px 8px;font-size:9px}.guide-body{padding:7px}.guide-modes button{min-height:29px}.guide-label,.guide-route{font-size:9px}.guide-copy{margin:6px 0 0}.guide-lines{font-size:10px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.guide-note{display:none}.guide-chat-trigger{min-height:30px;font-size:9px}.guide-disclose{font-size:8px}.partner-chat{top:auto;right:8px;bottom:8px;width:min(340px,calc(100% - 16px));height:min(560px,75vh)}.partner-chat.is-open{display:flex}}
     @media(max-width:759px){.guide-stage{height:76px}.guide-speak{bottom:5px;min-height:26px;padding:3px 8px}.guide-body{padding:6px}.guide-modes button{min-height:26px}.guide-copy{margin-top:4px}.guide-route,.guide-disclose{display:none}.guide-lines{font-size:9px;line-height:1.3;-webkit-line-clamp:2}.guide-chat-trigger{min-height:27px;margin-top:4px}.partner-guide.is-minimized .guide-stage{height:66px}}
+    /* Quiet right-hand surface gives the guide its own space without another photograph. */
+    @media(min-width:760px){body::before{content:"";position:fixed;z-index:0;right:0;top:0;bottom:0;width:180px;border-left:1px solid #d8e3e9;background:repeating-linear-gradient(135deg,rgba(36,73,104,.028) 0 1px,transparent 1px 19px),radial-gradient(circle at 78% 9%,#f9fbfd,#e9f1f6 76%);pointer-events:none}}
+    @media(min-width:1120px){body::before{width:300px}}
+    @media(prefers-reduced-motion:reduce){.guide-stage>video{display:none}.guide-stage{background:#e8eef1 url('assets/avatar.png') center 22%/cover no-repeat}}
   </style>
 </head>
 <body>
@@ -147,10 +151,10 @@
   </main>
   <footer class="site-footer"><div class="container footer-inner"><div><strong>株式会社ライトアップ</strong><small>AIアバター共同事業パートナー募集｜企画検討用プレビュー</small></div><nav aria-label="会社情報"><a href="https://www.writeup.jp/company/" target="_blank" rel="noopener">会社概要</a><a href="https://www.writeup.jp/privacy/" target="_blank" rel="noopener">個人情報保護方針</a><a href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">公式お問い合わせ</a></nav></div></footer>
   <aside class="partner-guide" id="partnerGuide" aria-label="閲覧区画に合わせた案内">
-    <div class="guide-stage"><img src="assets/avatar.png" alt="共同事業の案内役アバター"><span class="guide-stage-tag">AI AVATAR GUIDE</span><button class="guide-minimize" id="guideMinimize" type="button" aria-label="小さく表示">−</button><button class="guide-speak" id="guideSpeak" type="button">▶ 声で説明を聞く</button></div>
+    <div class="guide-stage"><video id="guideVideo" autoplay muted loop playsinline preload="metadata" poster="assets/avatar.png" aria-label="共同事業の案内役アバターの無音ループ動画"><source src="assets/avatar-guide-loop.mp4" type="video/mp4"><img src="assets/avatar.png" alt="共同事業の案内役アバター"></video><span class="guide-stage-tag">AI AVATAR GUIDE</span><button class="guide-minimize" id="guideMinimize" type="button" aria-label="小さく表示">−</button><button class="guide-speak" id="guideSpeak" type="button">▶ 声で説明を聞く</button></div>
     <div class="guide-body"><div class="guide-modes" role="group" aria-label="話し方"><button type="button" data-rail-mode="haiku" aria-pressed="false">575</button><button type="button" data-rail-mode="normal" aria-pressed="true">ふつう</button></div>
       <div class="guide-copy" id="guideCopy" role="status" aria-live="polite"><span class="guide-label" id="guideLabel">閲覧中の説明</span><span class="guide-route" id="guideRoute">固定ルート：説明する</span><div class="guide-lines" id="guideLines">読んでいる内容をご案内します。</div></div>
-      <p class="guide-note">ページを読み進めると、いま見ている内容をご案内します。音声はボタンを押した後だけ再生します。</p><button class="guide-chat-trigger" id="guideOpen" type="button">文字で質問する <span aria-hidden="true">↗</span></button><small class="guide-disclose">Jev API未接続・固定シナリオ</small>
+      <p class="guide-note">ページを読み進めると、いま見ている内容をご案内します。音声はボタンを押した後だけ再生します。</p><button class="guide-chat-trigger" id="guideOpen" type="button">文字で質問する <span aria-hidden="true">↗</span></button><small class="guide-disclose">Jev API未接続・映像は無音ループ（音声とは非同期）</small>
     </div>
   </aside>
   <aside class="partner-chat" id="partnerChat" aria-label="共同事業の案内チャット">
@@ -173,6 +177,7 @@
     function openModal(){paused=true;clearTimeout(timer);renderTitle(active,fullLen(active));modal.showModal()}titleButton.addEventListener('click',openModal);document.getElementById('modalClose').addEventListener('click',()=>modal.close());modal.addEventListener('close',()=>{paused=false;schedule()});modal.addEventListener('click',e=>{if(e.target===modal)modal.close()});document.getElementById('modalStory').addEventListener('click',e=>{if(e.target.closest('a'))modal.close()});schedule();
     const header=document.getElementById('siteHeader');let last=scrollY,ticking=false;function updateHeader(){const y=scrollY,d=y-last;if(y<120||header.contains(document.activeElement))header.classList.remove('is-hidden');else if(d>8)header.classList.add('is-hidden');else if(d< -8)header.classList.remove('is-hidden');if(Math.abs(d)>8)last=y;ticking=false}addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(updateHeader)}},{passive:true});header.addEventListener('focusin',()=>header.classList.remove('is-hidden'));
     const guide=document.getElementById('partnerGuide'),chat=document.getElementById('partnerChat'),guideCopy=document.getElementById('guideCopy'),guideLines=document.getElementById('guideLines'),chatLog=document.getElementById('chatLog');
+    const guideVideo=document.getElementById('guideVideo');function syncGuideVideo(){if(reduce||document.hidden){guideVideo.pause();return}guideVideo.play().catch(()=>{})}document.addEventListener('visibilitychange',syncGuideVideo);syncGuideVideo();
     const sectionCopy={
       top:{label:'共同事業の入口',route:'説明する',normal:'御社の知見を誰に届けるか。AIアバターを使った新事業を一緒に考えます。',haiku:['そのちえを','だれにとどける','ともにとく']},
       opportunity:{label:'私たちが作りたいこと',route:'説明する',normal:'人が持つ説明や考え方を、必要な相手に届けるサービスを構想しています。',haiku:['ひとのちえ','つぎのせってん','つくりだす']},
