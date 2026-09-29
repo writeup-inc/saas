@@ -100,10 +100,14 @@
     @media(min-width:760px) and (max-width:1119px){.partner-guide{top:72px;right:0;width:180px;border-radius:11px 0 0 11px}.guide-stage{height:185px;border-radius:10px 0 0 0}.guide-stage-tag{font-size:8px}.guide-speak{bottom:14px;min-height:35px;padding:6px 8px;font-size:9px}.guide-body{padding:9px}.guide-lines{font-size:11px}.guide-note{font-size:9px}.partner-chat{right:187px;width:min(310px,calc(100vw - 200px));top:72px}}
     @media(max-width:759px){.partner-guide{top:auto;right:8px;bottom:8px;width:180px;max-height:calc(100vh - 70px);border-radius:13px}.guide-stage{height:105px;border-radius:12px 12px 0 0}.guide-stage-tag{top:8px;left:9px;font-size:8px}.guide-speak{bottom:8px;min-height:31px;padding:5px 8px;font-size:9px}.guide-body{padding:7px}.guide-modes button{min-height:29px}.guide-label,.guide-route{font-size:9px}.guide-copy{margin:6px 0 0}.guide-lines{font-size:10px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.guide-note{display:none}.guide-chat-trigger{min-height:30px;font-size:9px}.guide-disclose{font-size:8px}.partner-chat{top:auto;right:8px;bottom:8px;width:min(340px,calc(100% - 16px));height:min(560px,75vh)}.partner-chat.is-open{display:flex}}
     @media(max-width:759px){.guide-stage{height:76px}.guide-speak{bottom:5px;min-height:26px;padding:3px 8px}.guide-body{padding:6px}.guide-modes button{min-height:26px}.guide-copy{margin-top:4px}.guide-route,.guide-disclose{display:none}.guide-lines{font-size:9px;line-height:1.3;-webkit-line-clamp:2}.guide-chat-trigger{min-height:27px;margin-top:4px}.partner-guide.is-minimized .guide-stage{height:66px}}
+    .guide-copy.is-haiku{text-align:center}
+    .guide-copy.is-haiku .guide-lines{display:block;overflow:visible;-webkit-line-clamp:unset;animation:haikuCycle 3s ease-in-out 5;white-space:pre-line}
+    .decision-msg.is-haiku .decision-answer{text-align:center;white-space:pre-line}
+    @keyframes haikuCycle{0%{opacity:.35;transform:translateY(4px)}20%,75%{opacity:1;transform:translateY(0)}100%{opacity:.35;transform:translateY(-2px)}}
     /* Quiet right-hand surface gives the guide its own space without another photograph. */
     @media(min-width:760px){body::before{content:"";position:fixed;z-index:0;right:0;top:0;bottom:0;width:180px;border-left:1px solid #d8e3e9;background:repeating-linear-gradient(135deg,rgba(36,73,104,.028) 0 1px,transparent 1px 19px),radial-gradient(circle at 78% 9%,#f9fbfd,#e9f1f6 76%);pointer-events:none}}
     @media(min-width:1120px){body::before{width:300px}}
-    @media(prefers-reduced-motion:reduce){.guide-stage>video{display:none}.guide-stage{background:#e8eef1 url('assets/avatar.png') center 22%/cover no-repeat}}
+    @media(prefers-reduced-motion:reduce){.guide-stage>video{display:none}.guide-stage{background:#e8eef1 url('assets/avatar.png') center 22%/cover no-repeat}.guide-copy.is-haiku .guide-lines{animation:none}}
     /* The opening story floats across the hero and the first editorial section. */
     .prologue-bridge{position:relative;z-index:2;margin-top:-84px;margin-bottom:-96px}.prologue-card{position:relative;max-width:990px;margin-inline:auto;padding:54px 80px 51px;border:1px solid #e5d5bf;border-radius:23px;background:linear-gradient(155deg,#fffefa 0%,#faf6ef 100%);box-shadow:0 28px 65px rgba(11,30,42,.2),0 5px 14px rgba(11,30,42,.08);text-align:center;overflow:hidden}.prologue-card:before{content:"";position:absolute;inset:0 0 auto;height:5px;background:linear-gradient(90deg,#b1814a,#e7c397,#b1814a)}.prologue-kicker{display:flex;align-items:center;justify-content:center;gap:13px;margin:0 0 18px;color:#8d663a;font:800 11px/1.3 system-ui,sans-serif;letter-spacing:.17em}.prologue-kicker span+span:before{content:"";display:inline-block;width:23px;height:1px;margin:0 13px 3px 0;background:#c6ad8d}.prologue-card h2{margin:0 auto 25px;font-size:clamp(31px,3.25vw,44px);line-height:1.4}.prologue-origin,.prologue-text{max-width:48em;margin:0 auto;color:#43525a;font-size:16px;line-height:1.9}.prologue-question{max-width:28em;margin:19px auto;color:#815b30;font-size:clamp(20px,2.25vw,27px);font-weight:850;line-height:1.5}.prologue-text{max-width:47em}.opportunity{position:relative;z-index:1;padding-top:170px}
     @media(max-width:900px){.prologue-card{padding:43px 38px 42px}.prologue-bridge{margin-top:-65px;margin-bottom:-78px}.opportunity{padding-top:143px}}
@@ -185,21 +189,40 @@
     const guide=document.getElementById('partnerGuide'),chat=document.getElementById('partnerChat'),guideCopy=document.getElementById('guideCopy'),guideLines=document.getElementById('guideLines'),chatLog=document.getElementById('chatLog');
     const guideVideo=document.getElementById('guideVideo');function syncGuideVideo(){if(reduce||document.hidden){guideVideo.pause();return}guideVideo.play().catch(()=>{})}document.addEventListener('visibilitychange',syncGuideVideo);syncGuideVideo();
     const sectionCopy={
-      top:{label:'共同事業の入口',route:'説明する',normal:'御社の知見を誰に届けるか。AIアバターを使った新事業を一緒に考えます。',haiku:['そのちえを','だれにとどける','ともにとく']},
-      prologue:{label:'事業を始めた理由',route:'説明する',normal:'ライトアップAIラボが開発したエンジンを、御社の知見と顧客接点に合わせた新事業で使ってほしいと考えています。',haiku:['えんじんを','しごとでつかう','そのちえで']},
-      opportunity:{label:'私たちが作りたいこと',route:'説明する',normal:'人が持つ説明や考え方を、必要な相手に届けるサービスを構想しています。',haiku:['ひとのちえ','つぎのせってん','つくりだす']},
-      possibilities:{label:'6つの活用領域',route:'用途を選ぶ',normal:'営業、Web接客、社内支援、育成、採用、顧客サポート。御社に合う用途から検討します。',haiku:['むつのあん','ぎょうかいにあう','ぶんしんを']},
-      experience:{label:'Jevの判断構想',route:'対応を選ぶ',normal:'質問に応じて「説明・追加確認・人へ」の対応を選ぶ構想です。この画面は固定ルールで動いています。',haiku:['えらぶだけ','かいわをためす','ここでみる']},
-      bring:{label:'持ち寄る強み',route:'説明する',normal:'御社の知見と顧客接点に、ライトアップの試作・運用設計を組み合わせて検討します。',haiku:['もちよって','ちえをかたちに','ともにつく']},
-      models:{label:'提携の形',route:'条件を確認',normal:'共同販売、自社ブランド、既存サービスへの組み込みなど、条件は個別に協議します。',haiku:['くみかたは','あわせてきめる','そうだんで']},
-      process:{label:'進め方',route:'説明する',normal:'用途と素材を整理し、小さく試作して顧客に確かめてから販売条件を決めます。',haiku:['まずはきく','ちいさくためす','ともにゆく']},
-      faq:{label:'よくある確認事項',route:'条件を確認',normal:'費用、顔・声の利用、OEM条件はまだ確定していません。用途に応じて相談します。',haiku:['ふあんには','じょうけんたしかめ','ともにみる']},
-      contact:{label:'共同事業の相談',route:'人につなぐ',normal:'完成した企画書は不要です。御社の強みと届けたい相手を、公式窓口で教えてください。',haiku:['そのちえを','つぎのしごとへ','はなそうよ']},
-      market:{label:'市場調査の数字',route:'数字の範囲を説明',normal:'掲載数値は世界のAI活用調査です。この事業の成果や国内需要を示す数字ではありません。',haiku:['すうじだけ','こたえはでない','ともにみる']}
+      top:{label:'共同事業の入口',route:'説明する',normal:'御社の知見を誰に届けるか。AIアバターを使った新事業を一緒に考えます。',haiku:['その知恵を','誰に届ける','共に解く'],haikuReading:['そのちえを','だれにとどける','ともにとく']},
+      prologue:{label:'事業を始めた理由',route:'説明する',normal:'ライトアップAIラボが開発したエンジンを、御社の知見と顧客接点に合わせた新事業で使ってほしいと考えています。',haiku:['エンジンを','仕事で使う','その知恵で'],haikuReading:['えんじんを','しごとでつかう','そのちえで']},
+      opportunity:{label:'私たちが作りたいこと',route:'説明する',normal:'人が持つ説明や考え方を、必要な相手に届けるサービスを構想しています。',haiku:['人の知恵','次の接点','作り出す'],haikuReading:['ひとのちえ','つぎのせってん','つくりだす']},
+      possibilities:{label:'6つの活用領域',route:'用途を選ぶ',normal:'営業、Web接客、社内支援、育成、採用、顧客サポート。御社に合う用途から検討します。',haiku:['六つの案','業界に合う','分身を'],haikuReading:['むつのあん','ぎょうかいにあう','ぶんしんを']},
+      experience:{label:'Jevの判断構想',route:'対応を選ぶ',normal:'質問に応じて「説明・追加確認・人へ」の対応を選ぶ構想です。この画面は固定ルールで動いています。',haiku:['選ぶだけ','会話を試す','ここで見る'],haikuReading:['えらぶだけ','かいわをためす','ここでみる']},
+      bring:{label:'持ち寄る強み',route:'説明する',normal:'御社の知見と顧客接点に、ライトアップの試作・運用設計を組み合わせて検討します。',haiku:['持ち寄って','知恵を形に','共に作る'],haikuReading:['もちよって','ちえをかたちに','ともにつく']},
+      models:{label:'提携の形',route:'条件を確認',normal:'共同販売、自社ブランド、既存サービスへの組み込みなど、条件は個別に協議します。',haiku:['組み方は','合わせて決める','相談で'],haikuReading:['くみかたは','あわせてきめる','そうだんで']},
+      process:{label:'進め方',route:'説明する',normal:'用途と素材を整理し、小さく試作して顧客に確かめてから販売条件を決めます。',haiku:['まずは聞く','小さく試す','共に行く'],haikuReading:['まずはきく','ちいさくためす','ともにゆく']},
+      faq:{label:'よくある確認事項',route:'条件を確認',normal:'費用、顔・声の利用、OEM条件はまだ確定していません。用途に応じて相談します。',haiku:['不安には','条件確かめ','共に見る'],haikuReading:['ふあんには','じょうけんたしかめ','ともにみる']},
+      contact:{label:'共同事業の相談',route:'人につなぐ',normal:'完成した企画書は不要です。御社の強みと届けたい相手を、公式窓口で教えてください。',haiku:['その知恵を','次の仕事へ','話そうよ'],haikuReading:['そのちえを','つぎのしごとへ','はなそうよ']},
+      market:{label:'市場調査の数字',route:'数字の範囲を説明',normal:'掲載数値は世界のAI活用調査です。この事業の成果や国内需要を示す数字ではありません。',haiku:['数字だけ','答えは出ない','共に見る'],haikuReading:['すうじだけ','こたえはでない','ともにみる']}
     };
     const sections=[...document.querySelectorAll('main section[id]')];let mode='normal',activeSection=null,verseTimer=null,scrollFrame=null,lastAnswer='',voiceOn=false;
     function moraCount(line){return [...line].reduce((n,c)=>n+(/[ぁぃぅぇぉゃゅょゎァィゥェォャュョヮ]/.test(c)?0:1),0)}
-    function renderGuidance(){if(!activeSection)return;clearTimeout(verseTimer);const item=sectionCopy[activeSection];guideCopy.classList.remove('is-expired');document.getElementById('guideLabel').textContent=item.label;document.getElementById('guideRoute').textContent='固定ルート：'+item.route;guideLines.replaceChildren();if(mode==='normal'){guideLines.classList.remove('is-extra');guideLines.textContent=item.normal;return}const beats=[5,7,5],extra=item.haiku.some((line,i)=>moraCount(line)>beats[i]);guideLines.classList.toggle('is-extra',extra);guideLines.textContent=item.haiku.join('\n');if(extra){const mark=document.createElement('span');mark.className='guide-extra';mark.textContent='（字余り）';guideLines.append(mark)}verseTimer=setTimeout(()=>guideCopy.classList.add('is-expired'),15000)}
+    function renderGuidance(){
+      if(!activeSection)return;
+      clearTimeout(verseTimer);
+      const item=sectionCopy[activeSection],haiku=mode==='haiku';
+      guideCopy.classList.remove('is-expired');
+      guideCopy.classList.toggle('is-haiku',haiku);
+      document.getElementById('guideLabel').textContent=item.label;
+      document.getElementById('guideRoute').textContent='固定ルート：'+item.route;
+      guideLines.replaceChildren();
+      guideLines.style.animation='none';
+      if(!haiku){guideLines.classList.remove('is-extra');guideLines.textContent=item.normal;return}
+      const beats=[5,7,5],extra=item.haikuReading.some((line,i)=>moraCount(line)>beats[i]);
+      guideLines.classList.toggle('is-extra',extra);
+      guideLines.textContent=item.haiku.join('\n');
+      if(extra){const mark=document.createElement('span');mark.className='guide-extra';mark.textContent='（字余り）';guideLines.append(mark)}
+      // Reset the five 3-second cycles whenever the viewed section changes.
+      void guideLines.offsetWidth;
+      guideLines.style.animation='';
+      verseTimer=setTimeout(()=>guideCopy.classList.add('is-expired'),15000);
+    }
     function setMode(next){if(!['normal','haiku'].includes(next))return;mode=next;document.querySelectorAll('[data-rail-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.railMode===next)));renderGuidance();if(voiceOn)speakGuide()}
     document.querySelectorAll('[data-rail-mode]').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.railMode)));
     function visibleSection(){const y=innerHeight*.48;return sections.find(s=>{const r=s.getBoundingClientRect();return r.top<=y&&r.bottom>=y})?.id||null}
@@ -213,13 +236,13 @@
     document.getElementById('guideMinimize').addEventListener('click',e=>{const small=guide.classList.toggle('is-minimized');e.currentTarget.setAttribute('aria-label',small?'大きく表示':'小さく表示');e.currentTarget.textContent=small?'+':'−'});
     document.getElementById('guideOpen').addEventListener('click',openChat);document.getElementById('openSample').addEventListener('click',openChat);document.getElementById('closeChat').addEventListener('click',closeChat);
     function addMessage(value,user=false){const el=document.createElement('div');el.className='chat-msg'+(user?' user':'');el.textContent=value;chatLog.append(el);chatLog.scrollTop=chatLog.scrollHeight;return el}
-    function addDecision(choice,answer,verse){const haiku=mode==='haiku',reply=document.createElement('div'),badge=document.createElement('span'),body=document.createElement('span');reply.className='chat-msg decision-msg';badge.className='decision-badge';badge.textContent='固定ルート / '+choice;body.className='decision-answer';body.textContent=haiku?verse.join('\n'):answer;reply.append(badge,body);if(choice==='人につなぐ'){const a=document.createElement('a');a.href='https://www.writeup.jp/contact/';a.target='_blank';a.rel='noopener';a.textContent='公式窓口へ ↗';reply.append(a)}chatLog.append(reply);chatLog.scrollTop=chatLog.scrollHeight;lastAnswer=haiku?verse.join('、'):answer;if(haiku)setTimeout(()=>reply.remove(),15000)}
+    function addDecision(choice,answer,verse){const haiku=mode==='haiku',reply=document.createElement('div'),badge=document.createElement('span'),body=document.createElement('span');reply.className='chat-msg decision-msg'+(haiku?' is-haiku':'');badge.className='decision-badge';badge.textContent='固定ルート / '+choice;body.className='decision-answer';body.textContent=haiku?verse.join('\n'):answer;reply.append(badge,body);if(choice==='人につなぐ'){const a=document.createElement('a');a.href='https://www.writeup.jp/contact/';a.target='_blank';a.rel='noopener';a.textContent='公式窓口へ ↗';reply.append(a)}chatLog.append(reply);chatLog.scrollTop=chatLog.scrollHeight;lastAnswer=haiku?verse.join('、'):answer;if(haiku)setTimeout(()=>reply.remove(),15000)}
     function respond(raw){const q=raw.trim();if(!q)return;addMessage(q,true);let choice,answer,verse;
-      if(/費用|価格|料金|収益|OEM|契約|顔|声|データ|個人情報/.test(q)){choice='人につなぐ';answer='費用・契約・人物やデータの利用条件は個別協議です。この場では確約せず、公式窓口へご相談ください。';verse=['ひようなど','こべつにきめる','ひとへつぐ']}
-      else if(/営業|商談|販売/.test(q)){choice='説明する';answer='営業・商談なら、商品の説明が得意な担当者の知見から始められそうです。誰に、どの質問まで答えるかを一緒に整理しましょう。';verse=['えいぎょうの','ちえをとどける','そのさきへ']}
-      else if(/Web|サイト|接客|LP|ページ/i.test(q)){choice='説明する';answer='Web接客なら、訪問者が迷う区画と質問を先に洗い出し、人に渡す条件を決めます。';verse=['そのぺーじ','まようひとへと','みちしるべ']}
-      else if(/育成|採用|面接|研修/.test(q)){choice='説明する';answer='育成・採用では、会話の目的と評価に使う範囲を先に定めます。人物の顔や声を使う場合は、本人の許諾を確認します。';verse=['まなびあう','たいわでそだつ','ちからかな']}
-      else{choice='追加で聞く';answer='まだ用途を決めなくて大丈夫です。御社が持つ知見と、届けたい相手を一つずつ教えてください。';verse=['まずはきく','ちえのありかを','ともにみる']}
+      if(/費用|価格|料金|収益|OEM|契約|顔|声|データ|個人情報/.test(q)){choice='人につなぐ';answer='費用・契約・人物やデータの利用条件は個別協議です。この場では確約せず、公式窓口へご相談ください。';verse=['費用など','個別に決める','人へ継ぐ']}
+      else if(/営業|商談|販売/.test(q)){choice='説明する';answer='営業・商談なら、商品の説明が得意な担当者の知見から始められそうです。誰に、どの質問まで答えるかを一緒に整理しましょう。';verse=['営業の','知恵を届ける','その先へ']}
+      else if(/Web|サイト|接客|LP|ページ/i.test(q)){choice='説明する';answer='Web接客なら、訪問者が迷う区画と質問を先に洗い出し、人に渡す条件を決めます。';verse=['そのページ','迷う人へと','道しるべ']}
+      else if(/育成|採用|面接|研修/.test(q)){choice='説明する';answer='育成・採用では、会話の目的と評価に使う範囲を先に定めます。人物の顔や声を使う場合は、本人の許諾を確認します。';verse=['学び合う','対話で育つ','力かな']}
+      else{choice='追加で聞く';answer='まだ用途を決めなくて大丈夫です。御社が持つ知見と、届けたい相手を一つずつ教えてください。';verse=['まずは聞く','知恵のありかを','共に見る']}
       addDecision(choice,answer,verse);document.getElementById('chatText').value=''
     }
     document.querySelectorAll('[data-demo-prompt]').forEach(b=>b.addEventListener('click',()=>{openChat();respond(b.dataset.demoPrompt)}));
