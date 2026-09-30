@@ -370,6 +370,16 @@ export default function Home() {
               </button>
             ))}
           </div>
+          <a
+            className="consultant-link"
+            href="https://worklog-insight-hiyori-recommended.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span>08</span>
+            <strong>人材</strong>
+            <small>紹介会社向け ↗</small>
+          </a>
         </div>
 
         <div className="switcher-section audience-section">
