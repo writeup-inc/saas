@@ -153,6 +153,14 @@ p{margin:0}
 .oem .doc.link:hover{background:var(--oem-l)} .dir .doc.link:hover{background:var(--dir-l)} .etc .doc.link:hover{background:var(--etc-l)}
 .doc:not(.link) h3{color:var(--g1)}
 .fine{margin:18px 0 0;font-size:15px;color:var(--g2)}
+.oem-preview{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);align-items:center;gap:20px;margin:0 0 24px;padding:16px;border:1px solid #d7e9e1;border-radius:16px;background:var(--oem-l)}
+.oem-preview video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:10px;background:#fff}
+.oem-preview .eyebrow{display:block;font-size:12px;color:var(--oem)}
+.oem-preview h3{margin:8px 0 0;font-size:clamp(1.05rem,1.8vw,1.3rem);line-height:1.5;color:var(--ink)}
+.oem-preview p{margin:9px 0 0;font-size:14px;line-height:1.75;color:var(--g1)}
+.oem-preview .jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.oem-preview .jump a{display:inline-flex;align-items:center;min-height:40px;padding:6px 12px;border:1px solid var(--oem);border-radius:7px;color:var(--oem);font-size:13px;font-weight:700;text-decoration:none;background:#fff}
+.oem-preview .jump a:hover{background:var(--oem);color:#fff}
 
 footer{padding:44px 0 60px;border-top:1px solid var(--ln2);text-align:center;font-size:14.5px;color:var(--g2)}
 footer p + p{margin-top:4px}
@@ -163,6 +171,7 @@ footer p + p{margin-top:4px}
   .terms{flex-direction:row;flex-wrap:wrap}
 }
 @media(max-width:600px){
+  .oem-preview{grid-template-columns:1fr;gap:14px;padding:12px}
   .nl a{grid-template-columns:auto 1fr;gap:4px 12px;padding:14px 4px}
   .nl .t{grid-column:1 / -1}
   .doc{grid-template-columns:3.4em 1fr;gap:12px;padding:26px 4px}
@@ -274,6 +283,19 @@ footer p + p{margin-top:4px}
       <span class="bar" aria-hidden="true"></span>
       <ul class="terms"><li>取扱条件は書面で個別にご案内</li><li>分担は個別説明で決定</li></ul>
     </div>
+    <div>
+      <div class="oem-preview" aria-label="ライトアップ版の新しい実画面プレビュー">
+        <video controls playsinline preload="none" poster="./assets/v3/lightup-form-start.jpg" aria-label="株式会社ライトアップ名義のフォーム入力を記録した動画">
+          <source src="./assets/v3/lightup-form-entry.mp4" type="video/mp4">
+          お使いのブラウザでは動画を再生できません。
+        </video>
+        <div>
+          <span class="eyebrow en">New footage / 09.30</span>
+          <h3>ライトアップ版の実画面に更新</h3>
+          <p>9月30日に共有された新しい録画から、フォーム入力の様子を掲載。B-01・B-02には、同じ録画から切り出した画面写真も載せています。</p>
+          <nav class="jump" aria-label="新しいOEMページへ"><a href="./b01/">OEM提供を見る →</a><a href="./b02/">説明会を見る →</a></nav>
+        </div>
+      </div>
     <ul class="docs">
       <li><div class="doc link" id="b-01">
           <a class="lk" href="./b01/"><span class="no">B-01</span>
@@ -302,6 +324,7 @@ footer p + p{margin-top:4px}
           <span class="st">社内共有のため、このページからは開けません</span></div>
       </div></li>
     </ul>
+    </div>
   </div>
 </section>
 
