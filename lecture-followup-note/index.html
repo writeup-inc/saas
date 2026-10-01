@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="9月30日の講演でお話しした、無料のご提供・ご提案・サービス一覧を、大学ノートのスタイルでまとめたメモです。">
+<title>無料のご提供とご提案</title>
+<style>
+/* lp-base.css — 日本語LP／HTML成果物の初期CSS
+ *
+ * 品質台帳（~/Documents/Codex/loop-engineering-memory/events.jsonl）で
+ * 再発が確認された表示欠陥を、指摘ではなく初期値で潰すためのファイル。
+ * 対応する欠陥ID:
+ *   japanese-heading-midword-wrap（見出しが単語途中で改行）11回
+ *   mobile-fv-headline-wrap（モバイルFVの見出し改行）3回
+ *   mobile-fixed-cta-overlap（固定CTAが本文を隠す）3回
+ *   meaningful-small-text-under-readable-size（意味のある文字が可読サイズ未満）5回
+ *
+ * 使い方: HTMLの<style>先頭にこの内容を貼る。色・書体・余白は各LPで上書きしてよいが、
+ * 下の「改行制御」「最小文字サイズ」「固定CTAの逃げ」の3ブロックは消さないこと。
+ */
+
+/* ── 改行制御 ─────────────────────────────────────────────
+ * 日本語は単語区切りが無いため、既定のままだと文節の途中で折り返す。
+ * auto-phrase は文節単位で折る（Chrome 119+）。非対応環境は strict で逃がす。 */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] {
+    word-break: normal;
+  }
+}
+/* 明示的に折りたくない語の途中で切られたら、その語を <span class="nobr"> で包む */
+.nobr { white-space: nowrap; }
+
+/* ── 最小文字サイズ ───────────────────────────────────────
+ * 判断材料になる文字は12px未満にしない。注記・免責のみ .note を許容。 */
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+
+/* ── ファーストビューの見出し ─────────────────────────────
+ * 固定pxだと狭い画面で必ず折り返す。clamp で画面幅に追従させる。 */
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+
+/* ── 固定CTAの逃げ ────────────────────────────────────────
+ * 画面下に固定CTAを置くページは、この変数を実測の高さに書き換える。
+ * 置かないページはそのままでよい（0のまま）。 */
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+
+/* ── 横はみ出しの予防 ─────────────────────────────────────
+ * flex/grid の子は既定で min-width:auto のため、長い語で親を押し広げる。 */
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+
+/* ── コンテンツ幅（2026-09-24 たかマスター決定） ───────────────
+ * 主コンテナは最大1200px。1120px・1300pxなど別の値にしない（案件で明示されたときだけ例外）。
+ * 例: .wrap{width:min(var(--lp-max),100% - 40px);margin-inline:auto}
+ * 本文・リードの1行は日本語35〜40字まで（max-width:38em 前後）。 */
+:root { --lp-max: 1200px; }
+
+
+:root{
+  --paper:#fffef9; --ink:#1d1d1b; --muted:#5f5f5a; --rule:#e2e1da; --line:#9a9992; --accent:#d8641d;
+  --serif:"Hiragino Mincho ProN","Yu Mincho","YuMincho","Noto Serif JP","MS PMincho",serif;
+  --sans:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif;
+}
+html{background:#efeee8;color-scheme:light}
+body{margin:0;background:#efeee8;color:var(--ink);font-family:var(--sans);font-size:17px;line-height:2}
+h1,h2,h3{font-family:var(--serif);font-weight:700;color:var(--ink)}
+.sheet{width:min(var(--lp-max),100% - 24px);margin:24px auto 56px;background:var(--paper);border:1px solid #d6d5cd;position:relative;
+  background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 33px,var(--rule) 33px,var(--rule) 34px);
+  padding:56px 56px 40px 112px}
+.sheet::before{content:"";position:absolute;top:0;bottom:0;left:76px;width:2px;background:var(--line);opacity:.7}
+.sheet::after{content:"";position:absolute;left:22px;top:90px;width:22px;height:22px;border-radius:50%;background:#efeee8;border:1px solid #d6d5cd;
+  box-shadow:0 160px 0 -1px #efeee8,0 160px 0 0 #d6d5cd,0 320px 0 -1px #efeee8,0 320px 0 0 #d6d5cd}
+@media (max-width:760px){
+  body{font-size:16px}
+  .sheet{padding:28px 16px 28px 34px;margin:12px auto 32px}
+  .sheet::before{left:22px}
+  .sheet::after{display:none}
+  .sheet{background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 31px,var(--rule) 31px,var(--rule) 32px)}
+}
+.eyebrow{margin:0 0 6px;font-size:13px;color:var(--muted);letter-spacing:.06em}
+h1{margin:0 0 10px;font-size:clamp(1.7rem,5.6vw,2.7rem);line-height:1.5}
+.lead{max-width:38em;margin:0 0 8px;color:var(--ink)}
+.date{margin:0;font-size:14px;color:var(--muted)}
+.hero-ill{display:flex;flex-wrap:wrap;gap:6px 30px;margin:22px 0 4px;padding:14px 0 8px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.hero-ill figure{margin:0;text-align:center;font-size:13px;line-height:1.5;color:var(--muted);width:92px}
+.hero-ill svg{width:64px;height:64px;display:block;margin:0 auto 4px}
+.ic{fill:none;stroke:var(--ink);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+.idea{margin:26px 0 0;padding:14px 20px;border:1.5px solid var(--ink);background:var(--paper);position:relative;max-width:42em}
+.idea b{display:inline-block;margin-right:.5em;font-family:var(--serif);color:var(--accent)}
+.idea p{margin:0;line-height:1.9}
+
+.notice{margin:18px 0 0;padding:10px 18px;border:1.5px dashed var(--ink);background:var(--paper);max-width:42em}
+.notice p{margin:0;line-height:1.9;font-size:15.5px}
+.notice b{display:inline-block;margin-right:.6em;font-family:var(--serif);color:var(--accent)}
+.toc{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:30px 0 0;padding:0;list-style:none}
+.toc a{display:block;padding:14px 16px;border:1.5px solid var(--ink);color:var(--ink);text-decoration:none;background:var(--paper);height:100%}
+.toc a:hover{background:#f4f2ea}
+.toc .n{font-family:var(--serif);font-size:1.6rem;line-height:1;color:var(--accent)}
+.toc .t{display:block;font-family:var(--serif);font-weight:700;font-size:1.1rem;margin:4px 0 2px}
+.toc .s{display:block;font-size:14px;line-height:1.7;color:var(--muted)}
+@media (max-width:760px){.toc{grid-template-columns:1fr}}
+
+section{padding-top:56px}
+h2{margin:0 0 4px;font-size:clamp(1.5rem,4.6vw,2rem);line-height:1.5;display:flex;align-items:baseline;gap:14px;padding-bottom:6px;border-bottom:2px solid var(--ink)}
+h2 .n{font-size:1.3em;color:var(--accent)}
+.intro{margin:12px 0 20px;max-width:40em}
+h3{margin:0;font-size:clamp(1.15rem,3.4vw,1.4rem);line-height:1.6}
+
+.entry{display:grid;grid-template-columns:76px 1fr;gap:6px 20px;margin:26px 0 0;padding:20px 0 6px;border-top:1px solid var(--line)}
+.entry .ill svg{width:72px;height:72px;display:block}
+.entry .body{min-width:0}
+@media (max-width:760px){
+  .entry{grid-template-columns:1fr;gap:4px}
+  .entry .ill svg{width:56px;height:56px}
+}
+.entry p{margin:0 0 6px}
+.cond{margin:8px 0 6px;padding:0;list-style:none;border:1px solid var(--line);background:var(--paper)}
+.cond li{padding:7px 14px 7px 14px;border-bottom:1px solid var(--rule);font-size:15.5px;line-height:1.8;display:grid;grid-template-columns:8.5em 1fr;gap:4px 14px}
+.cond li:last-child{border-bottom:0}
+.cond b{font-family:var(--sans);font-weight:700;color:var(--muted);font-size:14px}
+@media (max-width:760px){.cond li{grid-template-columns:1fr;gap:0}}
+.tag{display:inline-block;font-size:12px;line-height:1;padding:4px 8px;border:1px solid var(--line);color:var(--muted);margin-left:8px;vertical-align:middle;font-family:var(--sans);font-weight:500}
+.tag.hot{border-color:var(--accent);color:var(--accent)}
+.more{font-size:14px;color:var(--muted)}
+.more a{color:var(--ink)}
+
+/* フローチャート */
+.flow{display:flex;align-items:stretch;gap:0;margin:12px 0 10px;padding:0;list-style:none;counter-reset:s}
+.flow>li{flex:1;border:1.5px solid var(--ink);background:#fff;padding:9px 12px 10px;font-size:15px;line-height:1.7;position:relative;min-width:0;counter-increment:s}
+.flow>li::before{content:counter(s);display:block;font-family:var(--serif);font-size:.95rem;line-height:1;color:var(--accent);margin-bottom:3px}
+.flow>li.arr{flex:0 0 30px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;counter-increment:none;font-size:20px}
+.flow>li.arr::before{content:none}
+.flow .branch{display:flex;flex-direction:column;gap:8px;flex:1.3;border:0;padding:0;background:transparent;counter-increment:s}
+.flow .branch::before{content:none}
+.flow .branch>div{border:1.5px solid var(--ink);background:#fff;padding:9px 12px;font-size:15px;line-height:1.7}
+.flow .branch>div.alt{border-style:dashed}
+.flow small{display:block;font-size:14px;color:var(--muted);line-height:1.6}
+.flow>li.done{border-style:double;border-width:4px}
+@media (max-width:760px){
+  .flow{flex-direction:column}
+  .flow>li.arr{flex:0 0 26px;transform:rotate(90deg);width:auto;height:26px}
+}
+.cap{font-size:13px;color:var(--muted);margin:0 0 8px}
+
+/* ミルフィーユ図 */
+.mille{margin:14px 0 8px;max-width:520px}
+.mille .layer{display:flex;justify-content:space-between;align-items:center;gap:12px;border:1.5px solid var(--ink);background:#fff;padding:5px 14px;margin-top:-1.5px;font-size:15px;line-height:1.7}
+.mille .layer span:last-child{font-size:13px;color:var(--muted);white-space:nowrap}
+.mille .layer:nth-child(1){margin-left:0}
+.mille .layer:nth-child(2){background:#f7f6ef}
+.mille .layer:nth-child(3){background:#efede3}
+.mille .layer:nth-child(4){background:#e7e4d8}
+.mille .base{border:0;border-top:2px solid var(--ink);margin-top:2px;padding:4px 2px;background:none;font-size:14px;color:var(--muted);justify-content:center}
+
+/* 分担図 */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:14px 0 8px;border:1.5px solid var(--ink);background:#fff}
+.split>div{padding:12px 16px}
+.split>div+div{border-left:1.5px dashed var(--ink)}
+.split h4{margin:0 0 4px;font-family:var(--serif);font-size:1.05rem;line-height:1.6}
+.split ul{margin:0;padding-left:1.2em;font-size:15.5px;line-height:1.85}
+@media (max-width:760px){.split{grid-template-columns:1fr}.split>div+div{border-left:0;border-top:1.5px dashed var(--ink)}}
+
+/* OEM表 */
+.tbl{width:100%;border-collapse:collapse;margin:12px 0 6px;background:#fff;font-size:15px;line-height:1.75}
+.tbl th,.tbl td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+.tbl thead th{background:#f1efe6;font-family:var(--serif);font-size:14px}
+.tbl tbody th{width:10em;font-family:var(--serif)}
+@media (max-width:760px){
+  .tbl,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:auto}
+  .tbl thead{display:none}
+  .tbl tr{border:1px solid var(--line);margin-bottom:10px}
+  .tbl th,.tbl td{border:0;border-bottom:1px solid var(--rule)}
+  .tbl td::before{content:attr(data-label);display:block;font-size:12.5px;color:var(--muted);font-weight:700}
+  .tbl tbody th{background:#f1efe6;width:auto}
+}
+.note{margin:10px 0 0;padding:6px 14px;border-left:3px solid var(--accent);font-size:15px;max-width:40em}
+footer{margin-top:56px;padding-top:14px;border-top:2px solid var(--ink);font-size:14px;color:var(--muted);line-height:1.9}
+footer b{color:var(--ink)}
+a{color:var(--ink);text-underline-offset:3px}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-phone" viewBox="0 0 48 48"><rect x="13" y="4" width="20" height="38" rx="4"/><path d="M20 37h6"/><path d="M36 10c4 1 7 4 8 8M37 16c2 1 3 2 3 4" style="stroke:var(--accent)"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 48 48"><rect x="4" y="7" width="40" height="27" rx="2"/><path d="M17 42h14M24 34v8"/><path d="M10 14h9v7h-9zM22 14h9v7h-9z"/><path d="M34 14h4v7h-4z" style="stroke:var(--accent)"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 48 48"><path d="M26 6a17 17 0 1 0 17 25A15 15 0 0 1 26 6z"/><path d="M38 8v7M34.5 11.5h7" style="stroke:var(--accent)"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 48 48"><rect x="7" y="5" width="27" height="37" rx="2"/><path d="M13 15h15M13 22h15M13 29h8"/><path d="M33 35l9-9 3 3-9 9-4 1z" style="stroke:var(--accent)"/></symbol>
+    <symbol id="i-people" viewBox="0 0 48 48"><circle cx="17" cy="15" r="6"/><path d="M5 40c0-8 5-13 12-13s12 5 12 13"/><circle cx="34" cy="17" r="5"/><path d="M33 28c6 0 10 4 10 11" style="stroke:var(--accent)"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 48 48"><path d="M24 6l19 9-19 9-19-9z"/><path d="M5 24l19 9 19-9"/><path d="M5 33l19 9 19-9" style="stroke:var(--accent)"/></symbol>
+    <symbol id="i-scale" viewBox="0 0 48 48"><path d="M24 6v35M13 41h22M9 13h30"/><path d="M9 13L3 27h12zM39 13l-6 14h12z"/><circle cx="24" cy="6" r="2" style="stroke:var(--accent)"/></symbol>
+    <symbol id="i-book" viewBox="0 0 48 48"><path d="M5 11c7-3 13-3 19 2 6-5 12-5 19-2v27c-7-3-13-3-19 2-6-5-12-5-19-2z"/><path d="M24 13v27" style="stroke:var(--accent)"/></symbol>
+    <symbol id="i-search" viewBox="0 0 48 48"><circle cx="20" cy="20" r="13"/><path d="M30 30l13 13" style="stroke:var(--accent)"/><path d="M14 18h12M14 24h8"/></symbol>
+    <symbol id="i-link" viewBox="0 0 48 48"><circle cx="17" cy="24" r="11"/><circle cx="31" cy="24" r="11" style="stroke:var(--accent)"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 48 48"><path d="M6 8h36v24H20l-9 8v-8H6z"/><path d="M14 17h20M14 24h12" style="stroke:var(--accent)"/></symbol>
+  </defs>
+</svg>
+
+<main class="sheet">
+
+<header>
+  <p class="eyebrow">株式会社ライトアップ ／ ご紹介メモ</p>
+  <h1>無料のご提供・ご提案・<br>サービス一覧</h1>
+  <p class="lead">9月30日の講演でお話しした内容を、1冊のノートにまとめました。1ページ目が無料のご提供、2ページ目がご提案、3ページ目がサービスの一覧です。</p>
+  <p class="date">2026年10月1日</p>
+  <div class="notice" role="note">
+    <p><b>ご利用について</b>この資料は、打ち合わせの場でのご説明用です。メールやチャットなどでの送付、第三者への共有はご遠慮ください。</p>
+  </div>
+
+  <div class="hero-ill" role="group" aria-label="紹介するサービスのイラスト">
+    <figure><svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><use href="#i-phone"/></svg>電話の対応</figure>
+    <figure><svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><use href="#i-monitor"/></svg>仕事の見える化</figure>
+    <figure><svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><use href="#i-moon"/></svg>夜に読み、朝に届ける</figure>
+    <figure><svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><use href="#i-people"/></svg>営業の支援</figure>
+    <figure><svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><use href="#i-layers"/></svg>3か月ごとに1商材</figure>
+  </div>
+
+  <ol class="toc" aria-label="もくじ">
+    <li><a href="#free"><span class="n">1</span><span class="t">無料のご提供</span><span class="s">おまかせ受電AIの無料モニターと、Elliot</span></a></li>
+    <li><a href="#offer"><span class="n">2</span><span class="t">ご提案</span><span class="s">共同開発と、OEM（3か月に1商材）</span></a></li>
+    <li><a href="#list"><span class="n">3</span><span class="t">サービス一覧</span><span class="s">8つのサービスの流れと条件</span></a></li>
+  </ol>
+</header>
+
+<!-- ===== 1 無料のご提供 ===== -->
+<section id="free">
+  <h2><span class="n">1</span>無料のご提供</h2>
+  <p class="intro">講演でお話しした、無料でお試しいただけるものを2つ並べました。まず使っていただき、合うものだけ先へ進めます。</p>
+
+  <article class="entry">
+    <div class="ill"><svg class="ic" viewBox="0 0 48 48" role="img" aria-label="電話のイラスト"><use href="#i-phone"/></svg></div>
+    <div class="body">
+    <h3>おまかせ受電AI 無料モニター<span class="tag hot">先着30社ほど</span></h3>
+    <p>電話に出られないときの一次対応と、予約の受付をAIが担当します。モニター期間中は、初期費用・月額ともに0円です。</p>
+    <ul class="cond">
+      <li><b>費用</b><span>初期費用 0円・月額 0円（モニター期間中）。期間・通話料・対象範囲は、ご利用開始のときにご案内します</span></li>
+      <li><b>お問い合わせ</b><span>枠の状況は、会社のお問い合わせフォームに「おまかせ受電AI 無料モニター」とご記入のうえお尋ねください</span></li>
+    </ul>
+    <p class="more">しくみは3ページ目の「おまかせ受電AI」にあります。</p>
+  </div>
+  </article>
+
+  <article class="entry">
+    <div class="ill"><svg class="ic" viewBox="0 0 48 48" role="img" aria-label="月のイラスト"><use href="#i-moon"/></svg></div>
+    <div class="body">
+    <h3>Elliot（エリオット）</h3>
+    <p>会議や商談の記録を、夜のうちにAIが読み、翌朝に「気づき」を届けます。Elliot自体の利用料は0円です。かかるのは、AIの利用料（API料金）の実費だけです。</p>
+    <ol class="flow" aria-label="Elliotの流れ">
+      <li><b>昼</b><small>会議・商談の記録がGoogleドライブにたまる</small></li>
+      <li class="arr" aria-hidden="true">→</li>
+      <li><b>夜</b><small>Elliotが、その日の記録をまとめて読む</small></li>
+      <li class="arr" aria-hidden="true">→</li>
+      <li><b>朝</b><small>気づきがSlack・LINE・メールに届く</small></li>
+    </ol>
+    <ul class="cond">
+      <li><b>準備</b><span>Googleドライブの設定のみ。AIの利用料（API料金）は、実費でご負担いただきます</span></li>
+      <li><b>向いている会社</b><span>会議や商談を録画・文字起こしして、記録がたまっている会社</span></li>
+    </ul>
+    <p class="more"><a href="https://elliotlog.figma.site/" target="_blank" rel="noopener noreferrer">Elliotの公開ページを見る</a></p>
+  </div>
+  </article>
+
+    </section>
+
+<!-- ===== 2 ご提案 ===== -->
+<section id="offer">
+  <h2><span class="n">2</span>ご提案</h2>
+  <p class="intro">講演の最後にお話しした、一緒に取り組む2つの形です。共同開発は案件ごとに、OEMはサービスごとに条件を決めています。</p>
+
+  <div class="idea">
+    <p><b>考え方</b>新しいお客様を探し続けるより、いまのお客様に、3か月ごとにひとつずつ新しい商材をご提案する。そのための道具を、まとめてご用意しています。</p>
+  </div>
+
+  <article class="entry">
+    <div class="ill"><svg class="ic" viewBox="0 0 48 48" role="img" aria-label="つながる輪のイラスト"><use href="#i-link"/></svg></div>
+    <div class="body">
+    <h3>提案A　共同開発</h3>
+    <p>「10社に売れて、月3万円ほどお支払いいただけそうだ」というサービスの案を、お持ちください。弊社が開発し、貴社が営業します。</p>
+    <ol class="flow" aria-label="共同開発の流れ">
+      <li><b>貴社の案</b><small>10社×月3万円ほどが目安</small></li>
+      <li class="arr" aria-hidden="true">→</li>
+      <li><b>弊社が開発</b><small>つくる・更新する</small></li>
+      <li class="arr" aria-hidden="true">→</li>
+      <li><b>貴社が営業</b><small>お客様への提案と対応</small></li>
+      <li class="arr" aria-hidden="true">→</li>
+      <li class="done"><b>貴社の商材に</b><small>取り分は案件ごとにご相談</small></li>
+    </ol>
+    <p class="more">取り分や費用の分け方は、案件ごとにご相談します。</p>
+  </div>
+  </article>
+
+  <article class="entry">
+    <div class="ill"><svg class="ic" viewBox="0 0 48 48" role="img" aria-label="重なった層のイラスト"><use href="#i-layers"/></svg></div>
+    <div class="body">
+    <h3>提案B　OEM（3か月に1商材）</h3>
+    <p>弊社のサービスを、貴社のサービスとして取引先にご提案いただく形です。新規開拓ではなく、いまの取引先への2つめ・3つめのご提案に使っていただく形です。</p>
+    <div class="mille" role="img" aria-label="3か月ごとに商材を1つずつ重ねる図">
+      <div class="layer"><span>4つめの商材</span><span>第4期</span></div>
+      <div class="layer"><span>3つめの商材</span><span>第3期</span></div>
+      <div class="layer"><span>2つめの商材</span><span>第2期</span></div>
+      <div class="layer"><span>1つめの商材</span><span>第1期</span></div>
+      <div class="layer base"><span>同じ取引先に、順番に提案（たとえば300社）</span></div>
+    </div>
+    <p class="cap">1期は3か月、4期で1年・4商材です。図は考え方のイメージで、商材の数や時期は、貴社に合わせて組み替えます。</p>
+    <div class="split">
+      <div><h4>弊社</h4><ul><li>開発と更新</li><li>専用の管理画面</li></ul></div>
+      <div><h4>貴社</h4><ul><li>営業とお客様への対応</li><li>取引先へのご提案</li><li>サービスごとの売価（下の表）</li></ul></div>
+    </div>
+
+    <h3 style="margin-top:22px">OEMの条件</h3>
+    <table class="tbl">
+      <thead><tr><th>サービス</th><th>売価</th><th>取り分・仕入れ</th><th>貴社のご負担（初期）</th></tr></thead>
+      <tbody>
+        <tr><th>ワークログ・インサイト</th><td data-label="売価">定価は月1万円／1ID</td><td data-label="取り分・仕入れ">仕入れは月6,000円／1ID。貴社の取り分は月4,000円／1ID</td><td data-label="貴社のご負担（初期）">100万円。または、30ID分（12か月分）を先に仕入れていただく形なら0円です。開始まで2週間〜1か月</td></tr>
+        <tr><th>おまかせ受電AI</th><td data-label="売価">お客様への売価・初期費用は、貴社が決めます。お問い合わせの一次受けも貴社です</td><td data-label="取り分・仕入れ">個別にご案内します。個別開発は数十万円程度で収まることが多いです</td><td data-label="貴社のご負担（初期）">個別にご案内します</td></tr>
+        <tr><th>AI活用研修</th><td data-label="売価">ご相談のうえで決めます</td><td data-label="取り分・仕入れ">販売額を5:5で分けます。開発と更新は弊社、営業の費用は貴社が負担します</td><td data-label="貴社のご負担（初期）">個別にご案内します。対面の研修は別途です</td></tr>
+      </tbody>
+    </table>
+    <p class="cap">スーパーマネージャー・Jevも、OEMでお取り扱いできます。条件は個別にご案内します。記載の金額はすべて税別です。</p>
+  </div>
+  </article>
+</section>
+
+<!-- ===== 3 サービス一覧 ===== -->
+<section id="list">
+  <h2><span class="n">3</span>サービス一覧</h2>
+  <p class="intro">講演でご紹介した8つのサービスです。まず一覧で全体を見て、そのあと流れの図と条件をご覧ください。Elliotは1ページ目に載せています。</p>
+  <table class="tbl" aria-label="サービス一覧">
+    <thead><tr><th>サービス</th><th>何をするか</th><th>直販</th><th>OEM</th></tr></thead>
+    <tbody>
+      <tr><th>おまかせ受電AI</th><td data-label="何をするか">電話の一次対応と予約受付</td><td data-label="直販">無料モニター（先着30社ほど）</td><td data-label="OEM">貴社の名前で提供できます</td></tr>
+      <tr><th>ワークログ・インサイト</th><td data-label="何をするか">画面から業務ごとの時間を集計</td><td data-label="直販">月1万円／1ID</td><td data-label="OEM">ご提案の表のとおり</td></tr>
+      <tr><th>ワークログ・ファクトサーチ</th><td data-label="何をするか">過去の記録に、あとから質問</td><td data-label="直販">インサイトの追加オプション</td><td data-label="OEM">個別にご案内します</td></tr>
+      <tr><th>Elliot</th><td data-label="何をするか">夜に読み、朝に気づきを届ける</td><td data-label="直販">利用料0円（API料金は実費）</td><td data-label="OEM">1ページ目をご覧ください</td></tr>
+      <tr><th>スーパーマネージャー</th><td data-label="何をするか">商談の前から後までを支援</td><td data-label="直販">個別にご案内します</td><td data-label="OEM">個別にご案内します</td></tr>
+      <tr><th>Jev</th><td data-label="何をするか">状況に対して判断だけを返す</td><td data-label="直販">個別にご案内します</td><td data-label="OEM">個別にご案内します</td></tr>
+      <tr><th>AI活用研修</th><td data-label="何をするか">自分の業務をAIで自動化</td><td data-label="直販">お見積りします</td><td data-label="OEM">販売額を5:5で分けます</td></tr>
+      <tr><th>名刺には、書けないこと</th><td data-label="何をするか">営業担当の自己紹介ページ</td><td data-label="直販">自社メディアで公開中</td><td data-label="OEM">—</td></tr>
+    </tbody>
+  </table>
+
+  <article class="entry">
+    <div class="ill"><svg class="ic" viewBox="0 0 48 48" role="img" aria-label="電話のイラスト"><use href="#i-phone"/></svg></div>
+    <div class="body">
+    <h3>おまかせ受電AI</h3>
+    <p>電話の一次対応と、予約の受付をAIが行います。通話の記録が残るので、あとから内容を確かめられます。</p>
+    <ol class="flow" aria-label="受電AIの流れ">
+      <li><b>電話が鳴る</b><small>お客様から着信</small></li>
+      <li class="arr" aria-hidden="true">→</li>
+      <li><b>AIが一次対応</b><small>まずAIが電話に出る</small></li>
+      <li class="arr" aria-hidden="true">→</li>
+      <li class="branch"><div>予約・よくある質問<small>AIがその場で対応</small></div><div class="alt">想定外の電話<small>担当者へ転送</small></div></li>
+      <li class="arr" aria-hidden="true">→</li>
+      <li class="done"><b>全通話を記録</b><small>あとから確認できる</small></li>
+    </ol>
+    <ul class="cond">
+      <li><b>直販</b><span>無料モニターを先着30社ほどで募集（1ページ目）</span></li>
+      <li><b>OEM</b><span>売価・お客様への一次対応は貴社です。条件は「ご提案」のOEMの表のとおり</span></li>
+      <li><b>向いている会社</b><span>電話の多くが、予約・営業電話・決まった問い合わせの会社</span></li>
+      <li><b>向かない会社</b><span>電話がほとんど鳴らない会社。毎回、高度な専門判断が必要な電話が中心の会社</span></li>
+    </ul>
+  </div>
+  </article>
+
+  <article class="entry">
+    <div class="ill"><svg class="ic" viewBox="0 0 48 48" role="img" aria-label="パソコン画面のイラスト"><use href="#i-monitor"/></svg></div>
+    <div class="body">
+    <h3>ワークログ・インサイト</h3>
+    <p>パソコンの画面を約1分に1回記録し、AIが「どの業務に何時間かかっているか」を集計して、楽にする方法まで提案します。</p>
+    <ol class="flow" aria-label="ワークログ・インサイトの流れ">
+      <li><b>記録</b><small>画面を約1分に1回、自動で保存</small></li>
+      <li class="arr" aria-hidden="true">→</li>
+      <li><b>判定</b><small>いつ・誰が・どの業務かをAIが判定</small></li>
+      <li class="arr" aria-hidden="true">→</li>
+      <li><b>集計</b><small>業務ごとの時間を一覧に</small></li>
+      <li class="arr" aria-hidden="true">→</li>
+      <li class="done"><b>改善案</b><small>AIツール・研修・開発・外部委託から提案</small></li>
+    </ol>
+    <ul class="cond">
+      <li><b>直販</b><span>月額1万円／1ID。対象はWindowsのパソコン（Macは未対応）</span></li>
+      <li><b>はじめ方</b><span>全社一斉ではなく、1部署の数台からでも始められます</span></li>
+      <li><b>お見積り</b><span>初期費用・契約期間は、お見積りの際に書面でご確認いただきます（金額は税別）</span></li>
+      <li><b>OEM</b><span>「ご提案」のOEMの表のとおり</span></li>
+    </ul>
+    <p class="more">画面の記録は、1台あたり1年で約15万枚（目安）たまります。</p>
+  </div>
+  </article>
+
+  <article class="entry">
+    <div class="ill"><svg class="ic" viewBox="0 0 48 48" role="img" aria-label="虫めがねのイラスト"><use href="#i-search"/></svg></div>
+    <div class="body">
+    <h3>ワークログ・ファクトサーチ</h3>
+    <p>インサイトで貯めた画面の記録に、あとから日本語で質問して、過去の事実を確かめます。インサイトが「解釈」を毎週届けるのに対し、こちらは「事実」を、聞いたときに答えます。</p>
+    <ol class="flow" aria-label="ファクトサーチの流れ">
+      <li><b>質問する</b><small>「あの案件はどうなっていた？」</small></li>
+      <li class="arr" aria-hidden="true">→</li>
+      <li><b>AIが調べる</b><small>貯めた記録をさかのぼる</small></li>
+      <li class="arr" aria-hidden="true">→</li>
+      <li class="done"><b>事実を答える</b><small>いつ・何が起きたか</small></li>
+    </ol>
+    <ul class="cond">
+      <li><b>提供の形</b><span>インサイトの追加オプション（別途有料）</span></li>
+      <li><b>はじめ方</b><span>誰が何を質問できるかは、導入時に決めてから始めます</span></li>
+      <li><b>料金</b><span>ご利用の規模に合わせて、お見積りします</span></li>
+    </ul>
+  </div>
+  </article>
+
+    <article class="entry">
+    <div class="ill"><svg class="ic" viewBox="0 0 48 48" role="img" aria-label="人物のイラスト"><use href="#i-people"/></svg></div>
+    <div class="body">
+    <h3>スーパーマネージャー</h3>
+    <p>オンライン商談の前日から終わったあとまで、営業担当のとなりにAIの上司がつきます。会話はすべて記録として残ります。</p>
+    <ol class="flow" aria-label="スーパーマネージャーの流れ">
+      <li><b>前日</b><small>お客様に事前にお話を聞いておく</small></li>
+      <li class="arr" aria-hidden="true">→</li>
+      <li><b>商談中</b><small>営業担当だけに見える画面で助言</small></li>
+      <li class="arr" aria-hidden="true">→</li>
+      <li><b>15分ごと</b><small>今の理解と、次に確かめる質問を整理</small></li>
+      <li class="arr" aria-hidden="true">→</li>
+      <li class="done"><b>終了後</b><small>まとめと、次の提案のメール案</small></li>
+    </ol>
+    <ul class="cond">
+      <li><b>対象</b><span>オンライン商談が多い営業チーム。商談中の助言はGoogle Meetでご利用いただけます</span></li>
+      <li><b>ロープレ機能</b><span>商談の記録から失注の理由カードをつくり、お客様役のAIと練習できます（オプション）</span></li>
+      <li><b>フォローメール</b><span>人が確認してから送る形をおすすめしています</span></li>
+      <li><b>料金</b><span>ご利用の規模に合わせて、ご案内します</span></li>
+    </ul>
+  </div>
+  </article>
+
+  <article class="entry">
+    <div class="ill"><svg class="ic" viewBox="0 0 48 48" role="img" aria-label="はかりのイラスト"><use href="#i-scale"/></svg></div>
+    <div class="body">
+    <h3>Jev（ジェブ）</h3>
+    <p>文章を書くのではなく、渡された状況に対して「どれを選ぶか」だけを返すAIです。電話の振り分け、見込み客の選別、営業記録の緊急度の判定などに向いています。</p>
+    <ol class="flow" aria-label="Jevの流れ">
+      <li><b>状態を渡す</b><small>たとえば、電話の内容</small></li>
+      <li class="arr" aria-hidden="true">→</li>
+      <li><b>Jevが判断</b><small>選択肢と、確信の度合い</small></li>
+      <li class="arr" aria-hidden="true">→</li>
+      <li class="done"><b>業務が進む</b><small>転送・優先づけなど</small></li>
+    </ol>
+    <ul class="cond">
+      <li><b>提供の形</b><span>使う会社への導入支援と、貴社ブランドでのOEM</span></li>
+      <li><b>条件</b><span>個別にご相談のうえ、ご案内します</span></li>
+    </ul>
+  </div>
+  </article>
+
+  <article class="entry">
+    <div class="ill"><svg class="ic" viewBox="0 0 48 48" role="img" aria-label="本のイラスト"><use href="#i-book"/></svg></div>
+    <div class="body">
+    <h3>AI活用研修（eラーニング）</h3>
+    <p>社長や社員が、社内の業務をできるだけ自分で自動化・効率化できるようになる研修です。</p>
+    <ol class="flow" aria-label="AI活用研修の流れ">
+      <li><b>学ぶ</b><small>eラーニングで基本を身につける</small></li>
+      <li class="arr" aria-hidden="true">→</li>
+      <li><b>自分で自動化</b><small>自分の業務にAIを当てはめる</small></li>
+      <li class="arr" aria-hidden="true">→</li>
+      <li class="done"><b>対面で深める</b><small>必要な会社には訪問（別途）</small></li>
+    </ol>
+    <ul class="cond">
+      <li><b>OEM</b><span>条件は「ご提案」のOEMの表のとおり。地方の会社へ対面でお届けする形です</span></li>
+      <li><b>直販</b><span>ご利用の人数に合わせて、お見積りします</span></li>
+    </ul>
+  </div>
+  </article>
+
+  </section>
+
+<section id="next">
+  <h2>次の一歩</h2>
+  <p class="intro">MTGでは、気になるところから、次のどれかをご選択ください。</p>
+  <ol class="flow" aria-label="次の一歩">
+    <li><b>試す</b><small>おまかせ受電AIの無料モニター、またはElliotを使ってみる</small></li>
+    <li class="arr" aria-hidden="true">→</li>
+    <li><b>知る</b><small>気になるサービスの条件を、担当から詳しくご案内</small></li>
+    <li class="arr" aria-hidden="true">→</li>
+    <li class="done"><b>一緒に進める</b><small>OEMまたは共同開発のご相談</small></li>
+  </ol>
+</section>
+
+<footer>
+  <b>株式会社ライトアップ</b>（WriteUp!）<br>
+  ご不明な点は、会社のお問い合わせフォームから、または担当までお気軽にご連絡ください。記載の金額はすべて税別です。<br>
+  本資料は打ち合わせ内でのご説明用です。送付・第三者への共有はご遠慮ください。
+</footer>
+
+</main>
+</body>
+</html>
