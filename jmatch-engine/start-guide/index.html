@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Jマッチ・エンジン はじめかたガイド</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;
+  --ink:#1f2933;
+  --sub:#5f6b7a;
+  --line:#e3e7ec;
+  --soft:#f5f7fa;
+  --navy:#1f4e79;
+  --accent:#d9452b;
+  --hl:#fff4c2;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;
+  font-size:15px;line-height:1.85;font-feature-settings:"palt";
+}
+.doc{max-width:960px;margin:0 auto;padding:0 32px 72px}
+
+/* ヘッダー */
+.doc-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:18px 0;border-bottom:1px solid var(--line);font-size:13px;color:var(--sub)}
+.doc-bar b{color:var(--navy);font-size:14px}
+header{padding:40px 0 8px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--navy)}
+h1{font-size:30px;line-height:1.45;margin:6px 0 12px;font-weight:700}
+.lead{margin:0;color:var(--sub)}
+.meta{display:flex;flex-wrap:wrap;gap:8px 28px;margin:20px 0 0;padding:14px 18px;background:var(--soft);border-radius:6px;font-size:13px}
+.meta div{display:flex;gap:10px}
+.meta dt{color:var(--sub)}
+.meta dd{margin:0;font-weight:700}
+
+/* 目次 */
+.toc{margin:28px 0 0;border:1px solid var(--line);border-radius:6px}
+.toc p{margin:0;padding:10px 18px;border-bottom:1px solid var(--line);font-size:13px;font-weight:700;color:var(--sub)}
+.toc ol{margin:0;padding:8px 18px 12px;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px 24px}
+.toc a{color:var(--ink);text-decoration:none;display:flex;gap:10px;padding:4px 0}
+.toc a:hover{color:var(--navy)}
+.toc b{color:var(--navy);min-width:52px;font-size:13px}
+
+/* セクション */
+section{padding-top:56px}
+.step-head{display:flex;align-items:center;gap:14px;padding-bottom:12px;border-bottom:2px solid var(--navy)}
+.num{flex:none;background:var(--navy);color:#fff;font-size:12px;font-weight:700;letter-spacing:.08em;
+  padding:4px 10px;border-radius:4px;line-height:1.5}
+.num.plain{background:#fff;color:var(--navy);border:1px solid var(--navy)}
+h2{font-size:21px;margin:0;line-height:1.4}
+.why{margin:14px 0 0;color:var(--sub)}
+
+ol.todo{margin:18px 0 0;padding:0;list-style:none;counter-reset:t;border-top:1px solid var(--line)}
+ol.todo li{counter-increment:t;position:relative;padding:10px 0 10px 40px;border-bottom:1px solid var(--line)}
+ol.todo li::before{
+  content:counter(t);position:absolute;left:4px;top:13px;width:22px;height:22px;border-radius:50%;
+  border:1.5px solid var(--navy);color:var(--navy);font-size:12px;font-weight:700;display:grid;place-items:center;line-height:1;
+}
+.mk{font-weight:700;background:linear-gradient(transparent 62%,var(--hl) 62%)}
+.btn{display:inline-block;padding:0 8px;margin:0 2px;border:1px solid #c3ccd7;border-radius:3px;background:var(--soft);
+  font-size:13px;line-height:1.75;font-weight:700;color:var(--navy);white-space:nowrap}
+
+.url{margin:18px 0 0;display:grid;grid-template-columns:auto 1fr;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.url dt,.url dd{padding:10px 16px;border-bottom:1px solid var(--line)}
+.url dt:last-of-type,.url dd:last-of-type{border-bottom:0}
+.url dt{background:var(--soft);font-size:13px;color:var(--sub);font-weight:700;white-space:nowrap}
+.url dd{margin:0;font-weight:700;word-break:break-all}
+.url a{color:var(--navy)}
+.fill{background:var(--hl);border:1px dashed #d6b94a;border-radius:3px;padding:0 8px;color:#7a5f00;font-weight:500}
+
+.memo{margin:20px 0 0;padding:12px 16px;border-left:3px solid var(--navy);background:var(--soft);font-size:14px}
+.memo b{color:var(--navy);margin-right:6px}
+
+/* スクショ */
+.shots{display:grid;gap:24px;margin-top:24px}
+.shots.two{grid-template-columns:1fr 1fr;align-items:start}
+figure{margin:0;min-width:0}
+.shots>*,.extra>*{min-width:0}
+.shot{position:relative;border:1px solid var(--line);border-radius:4px;background:#fff;overflow:visible}
+.shot img{display:block;width:100%;height:auto;border-radius:4px}
+.mark{
+  position:absolute;z-index:3;
+  left:calc(var(--x) / var(--W) * 100%);top:calc(var(--y) / var(--H) * 100%);
+  width:calc(var(--w) / var(--W) * 100%);height:calc(var(--h) / var(--H) * 100%);
+  border:2.5px solid var(--accent);border-radius:4px;
+}
+.mark[data-l]::after{
+  content:attr(data-l);position:absolute;top:-12px;right:-10px;
+  background:var(--accent);color:#fff;font-size:11px;font-weight:700;line-height:1;
+  padding:5px 7px;border-radius:3px;white-space:nowrap;
+}
+.mark.l-left[data-l]::after{right:auto;left:-10px}
+.mark.l-below[data-l]::after{top:auto;bottom:-28px;right:auto;left:50%;transform:translateX(-50%)}
+figcaption{font-size:12px;color:var(--sub);margin-top:8px;line-height:1.6}
+
+.extra{display:grid;grid-template-columns:150px 1fr;gap:24px;align-items:start;margin-top:20px}
+.extra p{margin:0}
+footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:13px;color:var(--sub)}
+footer b{color:var(--ink)}
+
+@media (max-width:720px){
+  .doc{padding:0 16px 48px}
+  h1{font-size:24px}
+  h2{font-size:18px}
+  .shots.two,.extra{grid-template-columns:1fr}
+  .extra figure{max-width:180px}
+}
+@media print{
+  section{break-inside:avoid-page}
+  .toc a{color:var(--ink)}
+}
+</style>
+</head>
+<body>
+<div class="doc">
+<div class="doc-bar"><b>Jマッチ・エンジン</b><span>ご利用マニュアル</span></div>
+<main>
+
+<header>
+  <div class="eyebrow">GETTING STARTED</div>
+  <h1>はじめかたガイド<br>会員登録から初期設定まで</h1>
+  <p class="lead">5つの手順で、御社に合う補助金・助成金・融資などの情報が届くようになります。</p>
+  <dl class="meta">
+    <div><dt>対象</dt><dd>はじめてご利用になる方</dd></div>
+    <div><dt>所要時間</dt><dd>約10分</dd></div>
+    <div><dt>最終更新</dt><dd>2026年10月1日</dd></div>
+  </dl>
+
+  <nav class="toc" aria-label="目次">
+    <p>目次</p>
+    <ol>
+      <li><a href="#s1"><b>STEP 1</b>ログイン・新規登録</a></li>
+      <li><a href="#s2"><b>STEP 2</b>会社カルテを登録</a></li>
+      <li><a href="#s3"><b>STEP 3</b>制度をさがす</a></li>
+      <li><a href="#s4"><b>STEP 4</b>「気になる」で保存</a></li>
+      <li><a href="#s5"><b>STEP 5</b>使えるか相談</a></li>
+      <li><a href="#s6"><b>INFO</b>そのほか</a></li>
+    </ol>
+  </nav>
+</header>
+
+<!-- STEP 1 -->
+<section id="s1">
+  <div class="step-head">
+    <div class="num">STEP 1</div>
+    <h2>ログイン・新規登録</h2>
+  </div>
+
+  <dl class="url">
+    <dt>新規登録</dt>
+    <dd><span class="fill">ご案内メールに記載の登録URL</span></dd>
+    <dt>ログイン</dt>
+    <dd><a href="https://user.ai.jmatch.jp/m/login">https://user.ai.jmatch.jp/m/login</a></dd>
+  </dl>
+
+  <ol class="todo">
+    <li>はじめての方は<span class="mk">新規登録URL</span>を開きます。</li>
+    <li><span class="mk">メールアドレス</span>と<span class="mk">パスワード</span>（8文字以上）を入力し、<span class="btn">この内容で登録する</span>を押します。</li>
+    <li>登録が終わると、そのままマイページ（ホーム）が開きます。</li>
+    <li>2回目からは<span class="mk">ログインURL</span>で、ID（登録したメールアドレス）とパスワードを入れてログインします。</li>
+  </ol>
+
+  <div class="shots two">
+    <figure>
+      <div class="shot" style="--W:615;--H:800">
+        <img src="img/02-signup.jpg" alt="新規登録画面。メールアドレスとパスワードを入力する欄" loading="lazy">
+        <span class="mark l-left" style="--x:44;--y:197;--w:526;--h:80" data-l="①"></span>
+        <span class="mark l-left" style="--x:44;--y:393;--w:526;--h:80" data-l="②"></span>
+        <span class="mark" style="--x:44;--y:688;--w:526;--h:85" data-l="③"></span>
+      </div>
+      <figcaption>新規登録：①メールアドレス ②パスワード ③「この内容で登録する」</figcaption>
+    </figure>
+    <figure>
+      <div class="shot" style="--W:520;--H:820">
+        <img src="img/01-login.jpg" alt="ログイン画面。IDとパスワードを入力する欄" loading="lazy">
+        <span class="mark" style="--x:78;--y:340;--w:364;--h:166" data-l="ID・パスワード"></span>
+        <span class="mark" style="--x:78;--y:543;--w:364;--h:67" data-l="ログイン"></span>
+      </div>
+      <figcaption>ログイン：IDは登録したメールアドレスです</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- STEP 2 -->
+<section id="s2">
+  <div class="step-head">
+    <div class="num">STEP 2</div>
+    <h2>会社カルテを登録</h2>
+  </div>
+  <p class="why">ここで入れた内容に合わせて、<span class="mk">御社に合う制度が届くようになります。</span>最初に一度、登録をお願いします。</p>
+
+  <ol class="todo">
+    <li>左メニューの<span class="btn">会社カルテ</span>を開きます。</li>
+    <li><span class="mk">会社情報</span>（所在地・業種・従業員数など）を入力します。とくに業種・所在地・従業員数で、届く制度が大きく変わります。</li>
+    <li>下にある<span class="mk">お困りごと</span>から、当てはまるものにチェックを入れます（3つ以上がおすすめです）。</li>
+    <li>最後に<span class="btn">保存する</span>を押します。内容はあとからいつでも変えられます。</li>
+  </ol>
+
+  <div class="shots">
+    <figure>
+      <div class="shot" style="--W:1660;--H:820">
+        <img src="img/03-karte.jpg" alt="会社カルテの画面。登録の充実度と会社情報" loading="lazy">
+        <span class="mark l-left" style="--x:4;--y:566;--w:268;--h:62" data-l="ここ"></span>
+        <span class="mark" style="--x:405;--y:224;--w:1158;--h:304" data-l="入力の進み具合"></span>
+      </div>
+      <figcaption>「カルテの充実度」で、あと何を入れればよいかが分かります</figcaption>
+    </figure>
+    <figure>
+      <div class="shot" style="--W:1660;--H:820">
+        <img src="img/04-komarigoto.jpg" alt="お困りごとの登録画面。当てはまる項目にチェックを入れる" loading="lazy">
+        <span class="mark" style="--x:410;--y:416;--w:556;--h:64" data-l="チェック"></span>
+        <span class="mark" style="--x:410;--y:634;--w:556;--h:64" data-l="チェック"></span>
+      </div>
+      <figcaption>お困りごと：当てはまるものにチェック → ページ下の「保存する」</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- STEP 3 -->
+<section id="s3">
+  <div class="step-head">
+    <div class="num">STEP 3</div>
+    <h2>制度をさがす</h2>
+  </div>
+  <p class="why">新しく出た制度も含めて、補助金・助成金・融資・税の優遇をまとめて探せます。</p>
+
+  <ol class="todo">
+    <li>左メニューの<span class="btn">制度をさがす</span>を開きます。</li>
+    <li>キーワードを入れて<span class="btn">検索</span>。お困りごとや「もらえる／借りられる／税金が安く」でも絞り込めます。</li>
+    <li>気になるものがあれば、まず<span class="btn">詳細を見る</span>を押して中身を確認します。</li>
+  </ol>
+
+  <div class="shots">
+    <figure>
+      <div class="shot" style="--W:1900;--H:820">
+        <img src="img/05-search.jpg" alt="制度をさがす画面。検索欄と絞り込み" loading="lazy">
+        <span class="mark l-left" style="--x:4;--y:385;--w:268;--h:62" data-l="①"></span>
+        <span class="mark" style="--x:426;--y:310;--w:1344;--h:158" data-l="② 検索・絞り込み"></span>
+      </div>
+    </figure>
+    <figure>
+      <div class="shot" style="--W:1900;--H:820">
+        <img src="img/06-list.jpg" alt="制度の一覧。各制度に詳細を見るボタン" loading="lazy">
+        <span class="mark l-below" style="--x:1606;--y:420;--w:122;--h:42" data-l="③"></span>
+        <span class="mark" style="--x:1606;--y:708;--w:122;--h:42"></span>
+      </div>
+      <figcaption>③ 気になる制度の「詳細を見る」を押します</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- STEP 4 -->
+<section id="s4">
+  <div class="step-head">
+    <div class="num">STEP 4</div>
+    <h2>「気になる」で保存</h2>
+  </div>
+  <p class="why">あとで見返したい制度は、ブックマークしておけます。</p>
+
+  <ol class="todo">
+    <li>詳細の右上にある<span class="btn">☆ 気になる</span>を押します。</li>
+    <li>押した制度は、左メニューの<span class="mk">「検討中」</span>にたまっていきます。</li>
+    <li>「検討中」では、気になる制度を締切の近い順に一覧で確認できます。</li>
+  </ol>
+
+  <div class="shots">
+    <figure>
+      <div class="shot" style="--W:1900;--H:820">
+        <img src="img/07-modal.jpg" alt="制度の詳細。右上に気になるボタン" loading="lazy">
+        <span class="mark l-below" style="--x:1058;--y:138;--w:128;--h:50" data-l="ここを押す"></span>
+      </div>
+      <figcaption>詳細の右上「☆ 気になる」</figcaption>
+    </figure>
+    <figure>
+      <div class="shot" style="--W:1900;--H:820">
+        <img src="img/08-kentou.jpg" alt="検討中の画面。気になるを押した制度の一覧" loading="lazy">
+        <span class="mark l-left" style="--x:4;--y:273;--w:268;--h:62" data-l="検討中"></span>
+        <span class="mark" style="--x:405;--y:288;--w:1384;--h:132"></span>
+      </div>
+      <figcaption>左メニュー「検討中」に、保存した制度がまとまります</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- STEP 5 -->
+<section id="s5">
+  <div class="step-head">
+    <div class="num">STEP 5</div>
+    <h2>使えるか相談</h2>
+  </div>
+  <p class="why">「うちでも使える？」と思ったら、そのまま担当者に相談できます。</p>
+
+  <ol class="todo">
+    <li>相談したい制度で<span class="btn">使えるか相談 →</span>を押します（一覧・詳細のどちらからでも押せます）。</li>
+    <li>ライトアップの担当者に通知が届きます。</li>
+    <li><span class="mk">担当者から御社へご連絡します。</span>連絡をお待ちください。</li>
+  </ol>
+
+  <div class="shots">
+    <figure>
+      <div class="shot" style="--W:1900;--H:820">
+        <img src="img/07-modal.jpg" alt="制度の詳細。左下に使えるか相談ボタン" loading="lazy">
+        <span class="mark l-below" style="--x:687;--y:632;--w:170;--h:66" data-l="使えるか相談"></span>
+        <span class="mark" style="--x:1566;--y:516;--w:170;--h:66"></span>
+      </div>
+      <figcaption>詳細（左）からでも、一覧（右）からでも押せます</figcaption>
+    </figure>
+  </div>
+</section>
+
+
+<!-- そのほか -->
+<section id="s6">
+  <div class="step-head">
+    <div class="num plain">INFO</div>
+    <h2>そのほか</h2>
+  </div>
+  <div class="extra">
+    <figure>
+      <div class="shot" style="--W:310;--H:590">
+        <img src="img/09-menu.jpg" alt="左メニュー。会員特典、専門家に相談、特集・セミナー" loading="lazy">
+        <span class="mark" style="--x:4;--y:345;--w:268;--h:182"></span>
+      </div>
+    </figure>
+    <div>
+      <p style="margin-top:0">左メニューの<span class="btn">会員特典</span><span class="btn">特集・セミナー</span>などは、<span class="mk">内容を随時追加していく予定です。</span>新しいものが入ったら、ホームや「届いたお知らせ」でご案内します。</p>
+      <div class="memo"><b>ポイント</b>まずは STEP 2 の会社カルテだけでも登録しておくと、合う制度が届きはじめます。</div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer><span>ご不明点は、担当者までお気軽にお問い合わせください。</span><span><b>Jマッチ・エンジン</b>　株式会社ライトアップ</span></footer>
+</div>
+</body>
+</html>
