@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useState, useSyncExternalStore, type ReactNode } from 'react';
 
 type Audience = 'executive' | 'manager' | 'staff';
 type EmployeeSort = 'attention' | 'load' | 'focus' | 'change';
@@ -331,9 +331,24 @@ const reports = {
   },
 };
 
+function subscribeToReportLink(onChange: () => void) {
+  window.addEventListener('hashchange', onChange);
+  window.addEventListener('popstate', onChange);
+  return () => {
+    window.removeEventListener('hashchange', onChange);
+    window.removeEventListener('popstate', onChange);
+  };
+}
+
+function isStaffReportLink() {
+  return window.location.hash.startsWith('#staff-');
+}
+
 export default function Home() {
   const [consultantId, setConsultantId] = useState('taku');
-  const [audience, setAudience] = useState<Audience>('executive');
+  const [selectedAudience, setAudience] = useState<Audience | null>(null);
+  const linkedStaff = useSyncExternalStore(subscribeToReportLink, isStaffReportLink, () => false);
+  const audience = selectedAudience ?? (linkedStaff ? 'staff' : 'executive');
   const consultant = consultants.find((item) => item.id === consultantId) ?? consultants[1];
 
   function changeAudience(next: Audience) {
@@ -1521,6 +1536,57 @@ function HiyoriSelfComparisonRow({ label, self, department, company, selfWidth, 
   );
 }
 
+const staffAiOpportunities = [
+  {
+    id: 'minutes', task: '議事録作成・共有', hours: '6時間20分', count: '会議4件 × 95分',
+    observation: '会議後の記録整理・要約・共有文の作成に時間がかかっています。',
+    tool: '議事録AI', toolFunction: '文字起こし・要約',
+    toolAction: 'AIで議事録を作る方法',
+    steps: ['社内で利用を許可された会議記録を用意する。', 'AIに「決定事項・担当者・期限・未決事項」を整理させる。', '発言内容と照合し、名前・数字・期限を確認してから共有する。'],
+    training: '議事録のAI活用', trainingCopy: '要約の頼み方と、議事録の確認方法を学びましょう。',
+    topics: '記録の扱い方／要約の指示／決定事項・担当・期限の抽出／誤りの確認',
+    firstTry: '次の会議1件で、作成・確認・共有にかかった合計時間を記録しましょう。',
+  },
+  {
+    id: 'documents', task: '提案書・報告書の下書き', hours: '4時間10分', count: '文書5件 × 50分',
+    observation: '構成を考え、過去資料を探し、書き出す工程が繰り返されています。',
+    tool: '文書作成AI', toolFunction: '構成・下書き',
+    toolAction: 'AIで文書の下書きを作る方法',
+    steps: ['読み手・目的・確認済みの事実を整理する。', 'AIに構成案を出させ、選んだ構成で下書きを作る。', '数字・出典・顧客への約束を確認し、自分の言葉で仕上げる。'],
+    training: '提案書・報告書のAI活用', trainingCopy: '自分の仕事に合う構成と指示の出し方を学びましょう。',
+    topics: '目的・読み手の指定／構成の比較／下書きの改善／数字・出典の確認',
+    firstTry: '次の報告書1件で、構成づくりだけをAIに頼んでみましょう。',
+  },
+  {
+    id: 'messages', task: '定型メール・社内連絡', hours: '2時間30分', count: '連絡15件 × 10分',
+    observation: '似た内容の依頼・返信を、その都度ゼロから書いています。',
+    tool: '文書作成AI', toolFunction: '返信の下書き',
+    toolAction: 'AIで返信の下書きを作る方法',
+    steps: ['宛先・要件・期限・伝えたい事実を整理する。', 'AIに短い下書きと、繰り返し使えるひな形を作らせる。', '宛先・日付・表現を人が確認し、普段の連絡手段で送る。'],
+    training: 'メール・社内連絡のAI活用', trainingCopy: '伝わる文面の作り方と、ひな形の使い方を学びましょう。',
+    topics: '要件の整理／相手に合う文体／ひな形づくり／送信前の確認',
+    firstTry: '毎週送る連絡1件を選び、確認しやすいひな形を作りましょう。',
+  },
+];
+
+function StaffAiActions() {
+  return (
+    <section className="staff-ai" id="staff-ai-actions" aria-labelledby="staff-ai-title">
+      <header className="staff-section-head"><div><p className="section-index">02 / AI FOR YOUR WORK</p><h2 id="staff-ai-title">その作業、AIで軽くできそうです。</h2><small>時間がかかっている仕事から、使うAIと学ぶテーマを選びましょう。</small></div><span>本人向けの提案</span></header>
+      <p className="staff-ai-context"><strong>2026.08.25 — 08.31 ／ 1週間</strong><span>以下は本人の推定作業時間を示す架空のデモです。実測値ではありません。</span></p>
+      <div className="staff-ai-flow" aria-hidden="true"><span>時間のかかる仕事</span><span>AIツールを使う</span><span>AI研修で学ぶ</span></div>
+      {staffAiOpportunities.map((item, index) => (
+        <article className="staff-ai-row" key={item.id} aria-labelledby={`staff-ai-${item.id}`}>
+          <div className="staff-ai-work"><span className="staff-ai-label">{String(index + 1).padStart(2, '0')} ／ 今週の作業時間</span><h3 id={`staff-ai-${item.id}`}>{item.task}</h3><strong className="staff-ai-hours">{item.hours}<small> / 週</small></strong><span className="staff-ai-count">{item.count}（作成・確認・共有を含む）</span><p>{item.observation}</p></div>
+          <div className="staff-ai-path"><span className="staff-ai-label">おすすめのAIツール</span><h4>{item.tool}</h4><span className="staff-ai-function">{item.toolFunction}</span><p>まず1件、下書きづくりをAIに任せてみましょう。</p><details><summary>{item.toolAction}</summary><ol>{item.steps.map((step) => <li key={step}>{step}</li>)}</ol><p className="staff-ai-first">{item.firstTry}</p></details></div>
+          <div className="staff-ai-path staff-ai-learning"><span className="staff-ai-label">使い方から学びたいなら</span><h4>{item.training}</h4><span className="staff-ai-function">おすすめの研修テーマ</span><p>{item.trainingCopy}</p><details><summary>{item.training}を学ぶ</summary><p><strong>実践テーマ例</strong><br />{item.topics}</p><p>この業務を題材に、学ぶ内容と受講方法を相談できます。講座内容・日程は個別に確認します。</p><a href="https://writeup-inc.github.io/saas/ai-kenshu-pack/a01/" target="_blank" rel="noopener noreferrer">AI研修の案内を見る ↗</a></details></div>
+        </article>
+      ))}
+      <p className="staff-ai-note">AIの名称は機能カテゴリの例です。社内承認済みのツールで試し、利用可能な製品・研修を確認してください。この画面ではAI実行・受講登録は行いません。削減効果は、試した後の時間と手戻りで確かめます。</p>
+    </section>
+  );
+}
+
 function StaffReport() {
   const report = reports.staff;
   const [feedback, setFeedback] = useState<'yes' | 'partly' | 'context' | null>(null);
@@ -1541,17 +1607,18 @@ function StaffReport() {
 
       <nav className="report-toc staff-toc" aria-label="本人向けレポート内メニュー">
         <a href="#staff-summary"><span>01</span>今週</a>
-        <a href="#staff-type"><span>02</span>タイプ</a>
-        <a href="#staff-comparison"><span>03</span>部署・全社</a>
-        <a href="#staff-good"><span>04</span>良かったこと</a>
-        <a href="#staff-care"><span>05</span>気をつけること</a>
-        <a href="#staff-next"><span>06</span>来週</a>
+        <a href="#staff-ai-actions"><span>02</span>AI活用</a>
+        <a href="#staff-type"><span>03</span>タイプ</a>
+        <a href="#staff-comparison"><span>04</span>部署・全社</a>
+        <a href="#staff-good"><span>05</span>良かったこと</a>
+        <a href="#staff-care"><span>06</span>気をつけること</a>
+        <a href="#staff-next"><span>07</span>来週</a>
         <a href="#staff-data"><span>A</span>データ</a>
       </nav>
 
       <section className="taku-intro staff-intro">
         <TakuAvatar />
-        <div><span>YOUR WORK ADVISOR</span><h2>拓です。今週の働き方を一緒に振り返ります。</h2><p>今週は、長く働くのではなく、午前に仕事をまとめることで集中のリズムを作れていました。良し悪しを決めつけず、来週も再現できそうな条件を見ていきましょう。</p></div>
+        <div><span>YOUR WORK ADVISOR</span><h2>拓です。今週の仕事を、もう少し軽くしましょう。</h2><p>午前に集中のリズムを作れたことは、来週も続けたい強みです。一方、議事録作成・共有には週6時間20分かかっています（デモ値）。その仕事に合うAIツールや研修から、次の一歩を選んでみましょう。</p></div>
       </section>
 
       <section className="staff-hero" id="staff-summary">
@@ -1561,6 +1628,7 @@ function StaffReport() {
           <h2>午前に集中をつくる<br /><em>「リズム先行型」</em></h2>
           <p>集中時間は前週より3時間12分増え、作業切り替えは18回減りました。火曜・木曜の午前にまとまった時間を確保できたことが、変化と関連している可能性があります。</p>
           <small>※今週のログから見える傾向です。性格・能力・成果を判定するものではありません。</small>
+          <a className="staff-ai-jump" href="#staff-ai-actions">議事録に週6時間20分。AIの使い方を見る →</a>
         </div>
         <div className="staff-kpis" aria-label="今週の主な変化">
           <div><span>集中時間</span><strong>12:40</strong><b className="is-positive">前週より +3:12</b></div>
@@ -1569,8 +1637,10 @@ function StaffReport() {
         </div>
       </section>
 
+      <StaffAiActions />
+
       <section className="staff-type" id="staff-type">
-        <header className="staff-section-head"><div><p className="section-index">02 / YOUR STYLE</p><h2>あなたは、こんな働き方が合うタイプ</h2></div><span>今週の傾向</span></header>
+        <header className="staff-section-head"><div><p className="section-index">03 / YOUR STYLE</p><h2>あなたは、こんな働き方が合うタイプ</h2></div><span>今週の傾向</span></header>
         <div className="staff-type-grid">
           <div className="staff-type-main">
             <strong>リズム先行型</strong>
@@ -1592,7 +1662,7 @@ function StaffReport() {
       </section>
 
       <section className="staff-comparison" id="staff-comparison">
-        <header className="staff-section-head"><div><p className="section-index">03 / TEAM &amp; COMPANY</p><h2>所属部署・全社と比べた、今週のあなた</h2><small>個人名や順位ではなく、匿名化した平均との違いから自分の特徴を見ます。</small></div><span>デモ集計</span></header>
+        <header className="staff-section-head"><div><p className="section-index">04 / TEAM &amp; COMPANY</p><h2>所属部署・全社と比べた、今週のあなた</h2><small>個人名や順位ではなく、匿名化した平均との違いから自分の特徴を見ます。</small></div><span>デモ集計</span></header>
         <div className="staff-comparison-list">
           <StaffComparisonRow label="集中時間の割合" self="33.0%" department="29.1%" company="27.0%" selfWidth={100} departmentWidth={88} companyWidth={82} note="部署・全社平均より高く、まとまった作業時間を作れています。" />
           <StaffComparisonRow label="作業切り替え" self="164回" department="176回" company="190回" selfWidth={86} departmentWidth={93} companyWidth={100} note="部署・全社平均より少なく、今週は中断を比較的抑えられています。" />
@@ -1603,7 +1673,7 @@ function StaffReport() {
 
       <div className="staff-reflection-grid">
         <section className="staff-reflection staff-good" id="staff-good">
-          <header><p className="section-index">04 / GOOD</p><h2>今週、良かったこと</h2></header>
+          <header><p className="section-index">05 / GOOD</p><h2>今週、良かったこと</h2></header>
           <ol>
             <li><span>01</span><div><strong>集中できる時間を増やせた</strong><p>勤務時間を増やさず、集中時間は前週より3時間12分増えました。</p></div></li>
             <li><span>02</span><div><strong>切り替えを18回減らせた</strong><p>作業をまとめたことで、細かな中断から戻る回数を抑えられています。</p></div></li>
@@ -1612,7 +1682,7 @@ function StaffReport() {
         </section>
 
         <section className="staff-reflection staff-care" id="staff-care">
-          <header><p className="section-index">05 / CARE</p><h2>少し気をつけたいこと</h2></header>
+          <header><p className="section-index">06 / CARE</p><h2>少し気をつけたいこと</h2></header>
           <ol>
             <li><span>01</span><div><strong>水曜日は切り替えが多め</strong><p>42回と今週最多で、集中時間も1.6時間に留まりました。午後の確認依頼が影響した可能性があります。</p></div></li>
             <li><span>02</span><div><strong>金曜日はレビュー対応が増加</strong><p>自分の仕事と依頼対応を交互に進めています。返信する時間を決めると、ペースを守りやすくなりそうです。</p></div></li>
@@ -1629,11 +1699,11 @@ function StaffReport() {
       </section>
 
       <section className="staff-next" id="staff-next">
-        <div className="staff-next-lead"><p className="section-index">06 / NEXT WEEK</p><span>来週は、これだけ</span><h2>火曜・木曜の9〜11時を<br />先に予定へ入れてみましょう。</h2><p>緊急でないチャット確認は、この時間の前後にまとめます。全部を変えず、まず1週間だけ試して、金曜日に自分の実感と照らし合わせれば十分です。</p></div>
+        <div className="staff-next-lead"><p className="section-index">07 / NEXT WEEK</p><span>来週は、これだけ</span><h2>まず、次の会議1件で<br />AI議事録を試しましょう。</h2><p>社内で利用できるAIで下書きを作り、内容を確認して共有します。作成・確認・共有の合計時間と手戻りを記録し、普段の進め方と比べましょう。使い方が分からなければ、先に議事録のAI活用を学ぶ方法を選べます。午前の集中時間も引き続き守りましょう。</p><a className="staff-ai-next-link" href="#staff-ai-actions">AIの使い方・研修テーマを確認する →</a></div>
         <div className="staff-next-steps">
-          <div><span>1</span><strong>予定を確保</strong><small>火・木 9:00–11:00</small></div>
-          <div><span>2</span><strong>通知をまとめる</strong><small>緊急連絡は除く</small></div>
-          <div><span>3</span><strong>自分で振り返る</strong><small>金曜に5分だけ</small></div>
+          <div><span>1</span><strong>使えるAIを確認</strong><small>社内承認済みツールと記録の扱い</small></div>
+          <div><span>2</span><strong>1件だけ試す</strong><small>AIで下書き → 人が事実確認</small></div>
+          <div><span>3</span><strong>効果を振り返る</strong><small>合計時間・手戻り・自分の実感</small></div>
         </div>
       </section>
 
