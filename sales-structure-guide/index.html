@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="lp-type" content="左脳/資料/I興味">
+<meta name="description" content="AIコンサルティング局に入った営業系メンバー向け。6つの営業チームの稼ぎ方・数字・しんどいところ・相談先を、そのまま書いた社内向けガイド。">
+<title>営業体制ガイド｜AIコンサルティング局</title>
+<style>
+/* lp-base.css 改行制御 */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] { word-break: normal; }
+}
+.nobr { white-space: nowrap; }
+/* 本文も文節単位で折る */
+p, li, td, .fn, .q { word-break: auto-phrase; line-break: strict; overflow-wrap: anywhere; }
+@supports not (word-break: auto-phrase) { p, li, td, .fn, .q { word-break: normal; } }
+
+/* lp-base.css 最小文字サイズ */
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+@media (min-width: 900px) { body { font-size: 17px; } }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+
+/* lp-base.css 固定CTAの逃げ（固定CTAなし） */
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+
+/* lp-base.css 横はみ出しの予防 */
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+:root { --lp-max: 1200px; }
+
+/* ── 色（強調1色＋グレー。ライト／ダーク両対応） ── */
+:root {
+  --bg: #fafaf8;
+  --card: #ffffff;
+  --ink: #1c1f24;
+  --sub: #565b63;
+  --line: #d9dbd8;
+  --soft: #f1f1ee;
+  --accent: #1a56db;
+  --accent-soft: #e8efff;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14161a; --card: #1c1f24; --ink: #eceef1; --sub: #a3a8b0;
+    --line: #353a42; --soft: #1a1d22; --accent: #7aa2ff; --accent-soft: #1d2740;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14161a; --card: #1c1f24; --ink: #eceef1; --sub: #a3a8b0;
+  --line: #353a42; --soft: #1a1d22; --accent: #7aa2ff; --accent-soft: #1d2740;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", system-ui, sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+.wrap { width: min(var(--lp-max), 100% - 32px); margin-inline: auto; }
+a { color: var(--accent); }
+
+/* ── 上のナビ ── */
+.nav { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.nav .wrap { display: flex; gap: 8px; padding: 10px 0; overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+.nav a { font-size: 14px; text-decoration: none; color: var(--ink); border: 1px solid var(--line); background: var(--card); padding: 5px 12px; border-radius: 999px; flex: none; }
+.nav a:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── ヒーロー ── */
+.hero { padding: clamp(36px, 7vw, 80px) 0 clamp(28px, 4vw, 44px); border-bottom: 1px solid var(--line); }
+.tag { display: inline-block; font-size: 13px; letter-spacing: .06em; color: var(--accent); border: 1px solid var(--accent); padding: 2px 10px; border-radius: 999px; margin-bottom: 18px; }
+.hero h1 { margin: 0 0 8px; font-weight: 800; letter-spacing: .01em; }
+.hero__sub { margin: 0 0 22px; color: var(--sub); font-size: clamp(1rem, 2.4vw, 1.2rem); font-weight: 600; }
+.lead { font-size: clamp(1rem, 2.2vw, 1.12rem); max-width: 38em; margin: 0; }
+
+/* ── セクション共通 ── */
+section { padding: clamp(40px, 6vw, 76px) 0; border-bottom: 1px solid var(--line); }
+section.alt { background: var(--soft); }
+section > .wrap > h2 { margin: 0 0 14px; font-weight: 800; max-width: 24em; }
+.eyebrow { font-size: 15px; font-weight: 800; color: var(--accent); letter-spacing: .03em; margin: 0 0 10px; }
+.sec-lead { max-width: 38em; margin: 0 0 22px; }
+section[id] { scroll-margin-top: 56px; }
+
+/* ── 概念図 ── */
+.mapfig { margin: 24px 0 0; }
+.mapfig svg { display: block; width: 100%; max-width: 620px; margin-inline: auto; }
+.mapfig figcaption { max-width: 38em; margin: 12px auto 0; color: var(--sub); font-size: 13px; }
+.node rect { fill: var(--card); stroke: var(--line); stroke-width: 1.5; }
+.node a { cursor: pointer; }
+.node a:hover rect, .node a:focus rect { stroke: var(--accent); stroke-width: 2.5; }
+.node.pending rect { stroke-dasharray: 6 5; stroke: var(--sub); }
+.node .nm { fill: var(--ink); font-size: 22px; font-weight: 800; }
+.node .sb { fill: var(--sub); font-size: 22px; }
+.colhead { fill: var(--accent); font-size: 22px; font-weight: 800; }
+.axis { stroke: var(--line); stroke-width: 1.5; }
+.axis-t { fill: var(--sub); font-size: 21px; }
+
+/* ── 表 ── */
+.tbl { margin-top: 8px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; line-height: 1.65; }
+th { font-size: 13px; color: var(--sub); font-weight: 700; background: var(--soft); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-weight: 800; white-space: nowrap; }
+td .sub { display: block; font-size: 13px; color: var(--sub); }
+td.how { color: var(--accent); font-weight: 700; }
+.note { color: var(--sub); margin: 12px 0 0; max-width: 46em; font-size: 13px; }
+
+/* ── チーム章 ── */
+.kpis { display: grid; grid-template-columns: repeat(3, 1fr); margin: 26px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.kpi { padding: 16px 20px; border-left: 1px solid var(--line); }
+.kpi:first-child { border-left: 0; padding-left: 0; }
+.kpi .k { font-size: 13px; color: var(--sub); margin: 0 0 4px; font-weight: 700; }
+.kpi .v { font-size: clamp(1.15rem, 3vw, 1.55rem); font-weight: 800; line-height: 1.35; margin: 0; }
+.kpi .v em { font-style: normal; color: var(--accent); }
+.kpi .s { font-size: 14px; color: var(--sub); margin: 4px 0 0; line-height: 1.55; }
+
+.flowbox { border: 1px solid var(--line); background: var(--card); border-radius: 12px; padding: 18px; margin: 0 0 26px; }
+.flowbox h3 { font-size: 15px; margin: 0 0 14px; color: var(--sub); font-weight: 700; }
+.flow { display: flex; align-items: stretch; flex-wrap: wrap; gap: 10px 0; }
+.flow + .flow { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line); }
+.fn { flex: 1 1 110px; border: 1.5px solid var(--ink); border-radius: 10px; padding: 10px 12px; text-align: center; font-weight: 700; font-size: 15px; line-height: 1.5; background: var(--bg); display: flex; flex-direction: column; justify-content: center; }
+.fn small { display: block; font-weight: 400; color: var(--sub); font-size: 13px; }
+.fn.hl { border-color: var(--accent); background: var(--accent-soft); }
+.fn.dim { border-color: var(--line); color: var(--sub); }
+.fa { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 8px; min-width: 64px; color: var(--accent); font-size: 13px; font-weight: 700; }
+.fa i { font-style: normal; font-size: 18px; line-height: 1; }
+.flowcap { font-size: 14px; color: var(--sub); margin: 12px 0 0; }
+
+.real { border-left: 4px solid var(--accent); background: var(--card); border-radius: 0 12px 12px 0; padding: 18px 20px; margin: 0; }
+.real h3 { margin: 0 0 10px; font-size: 1.05rem; }
+.real ul { margin: 0; padding-left: 1.2em; max-width: 42em; }
+.real li { margin: 0 0 8px; }
+.real li:last-child { margin-bottom: 0; }
+
+/* ── 9/30の内訳バー ── */
+.bar { display: flex; height: 44px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); }
+.bar span { display: flex; align-items: center; justify-content: center; min-width: 44px; font-size: 13px; font-weight: 700; color: var(--ink); border-right: 1px solid var(--bg); white-space: nowrap; }
+.bar span:last-child { border-right: 0; }
+.bar .win { background: var(--accent); color: #fff; }
+.bar .yomi { background: #d7dade; color: #1c1f24; }
+.bar .lose { background: var(--soft); color: var(--sub); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .bar .yomi { background: #3a4048; color: #eceef1; } }
+.barlegend { font-size: 14px; color: var(--sub); margin: 8px 0 0; }
+
+/* ── チーム選びの判断フロー ── */
+.dq { display: grid; gap: 10px; margin: 8px 0 18px; max-width: 760px; }
+.dr { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; border: 1px solid var(--line); background: var(--card); border-radius: 12px; padding: 12px 14px; }
+.dr .q { font-weight: 700; }
+.dr .q small { display: block; font-weight: 400; color: var(--sub); font-size: 13px; }
+.dr .yes { font-size: 14px; font-weight: 800; color: var(--accent); background: var(--accent-soft); padding: 5px 12px; border-radius: 999px; white-space: nowrap; text-decoration: none; }
+.dr .no { grid-column: 1 / -1; font-size: 13px; color: var(--sub); }
+.dr.last { border-style: dashed; }
+
+footer { padding: 40px 0 72px; color: var(--sub); font-size: 14px; }
+footer p { margin: 0 0 8px; max-width: 46em; }
+
+@media (max-width: 720px) {
+  .kpis { grid-template-columns: 1fr; }
+  .kpi { border-left: 0; border-top: 1px solid var(--line); padding: 14px 0; }
+  .kpi:first-child { border-top: 0; }
+  .flow { flex-direction: column; }
+  .fa { flex-direction: row; gap: 8px; padding: 4px 0; min-width: 0; }
+  .fa i { transform: rotate(90deg); }
+  .fn { flex: none; padding: 8px 12px; }
+  .real { padding: 16px; }
+}
+@media (max-width: 960px) {
+  /* 表は1チーム1枚のカードに組み替える */
+  .tbl { border: 0; background: transparent; overflow: visible; }
+  .tbl table, .tbl thead, .tbl tbody, .tbl tr, .tbl td { display: block; }
+  .tbl thead { display: none; }
+  .tbl tr { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; margin-bottom: 10px; }
+  .tbl td { border: 0; padding: 3px 0; display: grid; grid-template-columns: 6.6em 1fr; gap: 8px; }
+  .tbl td::before { content: attr(data-label); font-size: 13px; color: var(--sub); font-weight: 700; }
+  .tbl td:first-child { display: block; font-size: 17px; white-space: normal; padding-bottom: 6px; }
+  .tbl td:first-child::before { content: none; }
+  .tbl tr:last-child td { border: 0; }
+  .tbl td .sub { display: block; grid-column: 2; margin-top: -2px; }
+}
+@media print { .nav { display: none; } }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="ページ内の移動">
+  <div class="wrap">
+    <a href="#map">全体図</a>
+    <a href="#numbers">数字の作り方</a>
+    <a href="#t1">第1営業部</a>
+    <a href="#t2">第2営業部</a>
+    <a href="#t3">第3営業部</a>
+    <a href="#t4">研修バード</a>
+    <a href="#t5">AIインパクト</a>
+    <a href="#t6">旧経コン</a>
+    <a href="#pick">チーム選び・相談先</a>
+    <a href="#link">つながり</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="tag">社内限定　2026年10月2日時点</span>
+    <h1>営業の稼ぎ方は、<span class="nobr">6通りあります。</span></h1>
+    <p class="hero__sub">AIコンサルティング局　営業体制ガイド</p>
+    <p class="lead">新しく仲間になった方へ。6つのチームが、何を・誰に・どうやって売っているのか。数字も、しんどいところも、そのまま書きました。読み終わる頃には、自分がどこで一番力を出せそうか、見当がつくはずです。</p>
+  </div>
+</header>
+
+<main>
+
+<!-- ───────── 全体図 ───────── -->
+<section id="map">
+  <div class="wrap">
+    <p class="eyebrow">全体図</p>
+    <h2>6チームを分けるのは、「誰が売るか」と「1件の大きさ」</h2>
+    <p class="sec-lead">横は誰が売るか、縦は1件あたりの金額で並べました。同じAIを扱っていても、売り方が違えば、仕事の中身も、数字の作り方も変わります。箱を押すと、そのチームの章へ飛びます。</p>
+
+    <figure class="mapfig">
+      <svg viewBox="0 0 580 600" role="img" aria-labelledby="mapT mapD">
+        <title id="mapT">6つの営業チームの位置関係</title>
+        <desc id="mapD">横軸は誰が売るか（人・パートナー・AI）、縦軸は1件あたりの金額。大型は上、小口は下。</desc>
+
+        <text class="colhead" x="125" y="34" text-anchor="middle">人が売る</text>
+        <text class="colhead" x="290" y="34" text-anchor="middle">パートナーと売る</text>
+        <text class="colhead" x="455" y="34" text-anchor="middle">AIが売る</text>
+        <line class="axis" x1="40" y1="52" x2="560" y2="52"/>
+        <line class="axis" x1="207" y1="66" x2="207" y2="580" stroke-dasharray="4 6"/>
+        <line class="axis" x1="373" y1="66" x2="373" y2="580" stroke-dasharray="4 6"/>
+        <line class="axis" x1="24" y1="580" x2="24" y2="84"/>
+        <path class="axis" d="M17 96 L24 82 L31 96" fill="none"/>
+        <text class="axis-t" transform="translate(14 330) rotate(-90)" text-anchor="middle">1件の大きさ（上ほど大きい）</text>
+
+        <g class="node"><a href="#t5">
+          <rect x="50" y="85" width="150" height="90" rx="12"/>
+          <text class="nm" x="125" y="121" text-anchor="middle">AIインパクト</text>
+          <text class="sb" x="125" y="153" text-anchor="middle">1,000万円〜</text>
+        </a></g>
+        <g class="node"><a href="#t1">
+          <rect x="50" y="255" width="150" height="90" rx="12"/>
+          <text class="nm" x="125" y="291" text-anchor="middle">第1営業部</text>
+          <text class="sb" x="125" y="323" text-anchor="middle">100万円/件</text>
+        </a></g>
+        <g class="node"><a href="#t6">
+          <rect x="50" y="425" width="150" height="90" rx="12"/>
+          <text class="nm" x="125" y="461" text-anchor="middle">旧経コン</text>
+          <text class="sb" x="125" y="493" text-anchor="middle">月3万円</text>
+        </a></g>
+        <g class="node"><a href="#t2">
+          <rect x="215" y="170" width="150" height="90" rx="12"/>
+          <text class="nm" x="290" y="206" text-anchor="middle">第2営業部</text>
+          <text class="sb" x="290" y="238" text-anchor="middle">1社432万円</text>
+        </a></g>
+        <g class="node pending"><a href="#t4">
+          <rect x="215" y="340" width="150" height="90" rx="12"/>
+          <text class="nm" x="290" y="376" text-anchor="middle">研修バード</text>
+          <text class="sb" x="290" y="408" text-anchor="middle">研修＋バード</text>
+        </a></g>
+        <g class="node pending"><a href="#t3">
+          <rect x="380" y="395" width="150" height="90" rx="12"/>
+          <text class="nm" x="455" y="425" text-anchor="middle">第3営業部</text>
+          <text class="sb" x="455" y="452" text-anchor="middle">100集客で</text>
+          <text class="sb" x="455" y="476" text-anchor="middle">20〜30件受注</text>
+        </a></g>
+      </svg>
+      <figcaption>位置は目安です。破線の2チームは、1件あたりの金額が一つに決まっていないので仮置き。第2営業部の432万円はAIOマスターの場合で、商材によって変わります。</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ───────── 数字 ───────── -->
+<section id="numbers" class="alt">
+  <div class="wrap">
+    <p class="eyebrow">数字の作り方</p>
+    <h2>同じ1億円でも、作り方がまったく違います</h2>
+    <p class="sec-lead">100万円を100件で作るチームもあれば、1件で月の数字が動くチームもあるほどです。数字の大きさより、作り方に注目してください。</p>
+    <div class="tbl scroll-x">
+      <table>
+        <thead>
+          <tr><th>チーム</th><th>誰が売る</th><th>1件の大きさ</th><th>数字の作り方</th><th>いまの水準</th><th>12月の目標</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>第1営業部</td>
+            <td data-label="誰が売る">人が主体</td>
+            <td data-label="1件の大きさ">100万円前後</td>
+            <td class="how" data-label="数字の作り方">100万円×100件</td>
+            <td data-label="いまの水準">月1億円が目標</td>
+            <td data-label="12月の目標">2億円</td>
+          </tr>
+          <tr>
+            <td>第2営業部</td>
+            <td data-label="誰が売る">人×代理店</td>
+            <td data-label="1件の大きさ">AIOで1社432万円</td>
+            <td class="how" data-label="数字の作り方">432万円×24社</td>
+            <td data-label="いまの水準">10月は1億円の見込み<span class="sub">8月7,000万円／9月5,000万円</span></td>
+            <td data-label="12月の目標">—</td>
+          </tr>
+          <tr>
+            <td>第3営業部</td>
+            <td data-label="誰が売る">AIのみ</td>
+            <td data-label="1件の大きさ">商材ごとに違う</td>
+            <td class="how" data-label="数字の作り方">100集客×20〜30%</td>
+            <td data-label="いまの水準">—</td>
+            <td data-label="12月の目標">—</td>
+          </tr>
+          <tr>
+            <td>研修バード</td>
+            <td data-label="誰が売る">人×研修・バード</td>
+            <td data-label="1件の大きさ">—</td>
+            <td class="how" data-label="数字の作り方">研修＋バードのセット</td>
+            <td data-label="いまの水準">約3,000万円</td>
+            <td data-label="12月の目標">5,000万円以上</td>
+          </tr>
+          <tr>
+            <td>AIインパクト</td>
+            <td data-label="誰が売る">人（大型案件）</td>
+            <td data-label="1件の大きさ">1,000万円以上</td>
+            <td class="how" data-label="数字の作り方">四半期3億円を目標に積む</td>
+            <td data-label="いまの水準">2,000〜3,000万円<span class="sub">2.5億円規模の案件がほぼ受注で、月1億円規模</span></td>
+            <td data-label="12月の目標">—</td>
+          </tr>
+          <tr>
+            <td>旧経コン</td>
+            <td data-label="誰が売る">人×架電</td>
+            <td data-label="1件の大きさ">月3万円のAI SaaS</td>
+            <td class="how" data-label="数字の作り方">1日2〜3件を維持</td>
+            <td data-label="いまの水準">月3,000万円</td>
+            <td data-label="12月の目標">1億円</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">金額は受注額の目安です。2026年10月2日時点の体制メモと、各チームのSlack報告・メンバー一覧シートで確認できた数字をもとにしています。「—」は、このガイドを作った時点で数字が共有されていない欄です。</p>
+  </div>
+</section>
+
+<!-- ───────── 第1営業部 ───────── -->
+<section id="t1">
+  <div class="wrap">
+    <p class="eyebrow">1　人が主体</p>
+    <h2>第1営業部は、100万円を100件。決まらなかった理由まで残す</h2>
+    <p class="sec-lead">中小企業に、顧客単価100万円前後のAI SaaSを提案して売るチームです。さらに、100件分の「どう提案して、どう決まったか」を残し、第2・第3営業部も使える型にしていく役目もあります。</p>
+
+    <div class="kpis">
+      <div class="kpi"><p class="k">目標</p><p class="v"><em>1億円</em></p><p class="s">100万円規模×100件</p></div>
+      <div class="kpi"><p class="k">12月</p><p class="v"><em>2億円</em></p><p class="s">体制メモの目標</p></div>
+      <div class="kpi"><p class="k">主に扱う商材</p><p class="v">Lシンク／ソーシャルマスター／AIO</p><p class="s">個人目標に書かれている商材</p></div>
+    </div>
+
+    <div class="flowbox">
+      <h3>勝ち方を残すループ</h3>
+      <div class="flow">
+        <div class="fn">提案<small>5社</small></div>
+        <div class="fa"><span>絞る</span><i>→</i></div>
+        <div class="fn hl">受注<small>1社</small></div>
+        <div class="fa"><span>育てる</span><i>→</i></div>
+        <div class="fn">A+のお客様<small>紹介してくれる</small></div>
+      </div>
+      <div class="flow">
+        <div class="fn dim">決まらない<small>4社</small></div>
+        <div class="fa"><span>聞く</span><i>→</i></div>
+        <div class="fn">失注台帳<small>タケルが記録</small></div>
+        <div class="fa"><span>戻す</span><i>→</i></div>
+        <div class="fn hl">次の提案</div>
+      </div>
+      <p class="flowcap">「提案5社で受注1社」は、メンバーの個人目標に書かれた目安にあたります。</p>
+    </div>
+
+    <div class="real">
+      <h3>正直なところ</h3>
+      <ul>
+        <li>提案5社に対して、受注は1社。残りの4社は決まりません。ここは隠さず、最初から前提にしています。</li>
+        <li>だから、平日の12:30と19:00に、AIの相棒社員「タケル」がSlackのDMで聞きに来ます。午前・午後の商談で決まらなかった1件を、愚痴でいいので話すだけです。</li>
+        <li>たとえば先日は、港運業の管理部の方から「省人化ではなく省力化なら雇用が守れる」という本音を聞けました。こうした言葉が失注台帳に残り、次の提案の型になります。</li>
+        <li>体制は、100件チームが5人＋バッファ1人、大型案件チームが3人程度、という案を詰めている最中です。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── 第2営業部 ───────── -->
+<section id="t2" class="alt">
+  <div class="wrap">
+    <p class="eyebrow">2　人×代理店</p>
+    <h2>第2営業部は、売ってくれる会社を増やす（AIOなら1社432万円）</h2>
+    <p class="sec-lead">代理店・OEMパートナーと組んで売る営業部です。自分で売り切るのではなく、売ってくれる会社を増やします。1社の契約が大きいので、月ごとの数字は上下します。</p>
+
+    <div class="kpis">
+      <div class="kpi"><p class="k">10月の見込み</p><p class="v"><em>1億円</em></p><p class="s">8月7,000万円／9月5,000万円</p></div>
+      <div class="kpi"><p class="k">1社あたり</p><p class="v"><em>432万円</em></p><p class="s">AIOマスターの場合。24社で月1億円</p></div>
+      <div class="kpi"><p class="k">9月のAIO OEM受注</p><p class="v"><em>10社</em></p><p class="s">ワークログ・インサイトのOEMも初受注</p></div>
+    </div>
+
+    <div class="flowbox">
+      <h3>パートナーと一緒に売るまで</h3>
+      <div class="flow">
+        <div class="fn">パートナー候補<small>Jマッチエンジンで探す</small></div>
+        <div class="fa"><span>メール</span><i>→</i></div>
+        <div class="fn">返信</div>
+        <div class="fa"><span>会う</span><i>→</i></div>
+        <div class="fn hl">契約<small>AIOは1社432万円</small></div>
+        <div class="fa"><span>同席</span><i>→</i></div>
+        <div class="fn">共同商談</div>
+        <div class="fa"><span>閉じる</span><i>→</i></div>
+        <div class="fn hl">受注</div>
+      </div>
+    </div>
+
+    <div class="real">
+      <h3>正直なところ</h3>
+      <ul>
+        <li>ワークログ・インサイトのOEMは、9月に初受注が出ました（1社216万円＝6,000円×30ID×12か月）。AIOに続く、2本目のOEM卸モデルです。</li>
+        <li>10月の方針は一言で、「ワークログで稼ぎ、Jマッチエンジンでリストを取る」。</li>
+        <li>AIOは、電話では追いません。AIで、週2回以上パートナーにメールが届く形にします。ネタは、「第1営業部が売った話」か「パートナー発の案件を、菅野さん・降旗さんが閉じた話」。実際に決まった話しか使いません。</li>
+        <li>毎朝の「商談号外」で現場の学びを1本配信し、昼と夜の2回、商談のふりかえりを投稿します。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── 第3営業部 ───────── -->
+<section id="t3">
+  <div class="wrap">
+    <p class="eyebrow">3　AIのみ</p>
+    <h2>第3営業部は、AIだけで、100集客から20〜30件を受注する</h2>
+    <p class="sec-lead">SaaSチームが8月17日に生まれ変わった営業部です。人が1社ずつ説得するのではなく、AIサービスと、そこへ連れてくる導線そのものを作って売ります。旗は「毎月100件売れるAI SaaSを、10サービス作る」です。</p>
+
+    <div class="kpis">
+      <div class="kpi"><p class="k">受注の見込み</p><p class="v"><em>100集客</em>で<em>20〜30件</em></p><p class="s">人が説得しない売り方</p></div>
+      <div class="kpi"><p class="k">旗</p><p class="v">月100件×<em>10</em>サービス</p><p class="s">月1,000件を続けて売る土台</p></div>
+      <div class="kpi"><p class="k">メンバー</p><p class="v">SaaSチームの3名</p><p class="s">木場さん・西村さん・小松さん</p></div>
+    </div>
+
+    <div class="flowbox">
+      <h3>人が張りつかない売り方の流れ</h3>
+      <div class="flow">
+        <div class="fn">集客</div>
+        <div class="fa"><span>見せる</span><i>→</i></div>
+        <div class="fn">紹介動画<small>A4提案書・利用画面</small></div>
+        <div class="fa"><span>誘う</span><i>→</i></div>
+        <div class="fn">オンライン説明会</div>
+        <div class="fa"><span>その場で</span><i>→</i></div>
+        <div class="fn hl">申込</div>
+        <div class="fa"><span>導入</span><i>→</i></div>
+        <div class="fn">継続利用</div>
+      </div>
+      <p class="flowcap">各サービスに「標準販売セット」を用意して、営業担当が毎回ゼロから説明しなくていい形にします。</p>
+    </div>
+
+    <div class="real">
+      <h3>正直なところ</h3>
+      <ul>
+        <li>10サービスの候補は、Lシンク／AIOマスター／ソーシャルマスター／受電AI／ワークログ／Elliot／つばめリード／リファラル／AI一次面接・採用支援／新規枠。全部が完成しているわけではありません。</li>
+        <li>8月17日以降、サービスごとに設計書を作り直しています。「誰の、どんな課題か」「価格と契約条件」「集客方法と販売コスト」「KPI」まで、全部書いてから売ります。</li>
+        <li>いまの仕事は、サービス同士の導線つなぎです。たとえば、アポが失注した企業へのメール、LINEの友だち追加時の特典メッセージ。毎日のTAV（その日の学び）の共有も、メンバー全員で続けています。</li>
+        <li>広告費や営業代行費も、必要なら使う方針。ただし、採算が合って繰り返せる形かどうかは、常に見ています。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── 研修バード ───────── -->
+<section id="t4" class="alt">
+  <div class="wrap">
+    <p class="eyebrow">4　AI研修＋AIバード</p>
+    <h2>研修バードは、AI研修で入り、AIバードを月3,000時間動かす</h2>
+    <p class="sec-lead">AI研修と、AIバード（AI導入・運用の代行、伴走支援）をセットで売るチームです。研修だけ、バードだけでなく、「研修＋バード」で売る形をめざしています。</p>
+
+    <div class="kpis">
+      <div class="kpi"><p class="k">いま</p><p class="v"><em>約3,000万円</em></p><p class="s">研修＋バードの合計</p></div>
+      <div class="kpi"><p class="k">12月</p><p class="v"><em>5,000万円以上</em></p><p class="s">体制メモの目標</p></div>
+      <div class="kpi"><p class="k">バードの稼働</p><p class="v"><em>月3,000時間</em></p><p class="s">A級バードを月30名採用する計画</p></div>
+    </div>
+
+    <div class="flowbox">
+      <h3>入口は2本、出口は1本</h3>
+      <div class="flow">
+        <div class="fn">ウェビナー<small>月500名以上のリード</small></div>
+        <div class="fa"><span>申込</span><i>→</i></div>
+        <div class="fn hl">AI研修</div>
+        <div class="fa"><span>つなぐ</span><i>→</i></div>
+        <div class="fn hl">AIバード</div>
+        <div class="fa"><span>稼働</span><i>→</i></div>
+        <div class="fn">月3,000時間</div>
+      </div>
+      <div class="flow">
+        <div class="fn dim">休眠代理店</div>
+        <div class="fa"><span>掘り起こす</span><i>→</i></div>
+        <div class="fn">代理店経由で販売</div>
+        <div class="fa"><span>研修を</span><i>→</i></div>
+        <div class="fn hl">AI研修</div>
+      </div>
+    </div>
+
+    <div class="real">
+      <h3>正直なところ</h3>
+      <ul>
+        <li>入口は、AI TOWNとウェビナーでリードを集めることと、眠っている代理店を掘り起こして研修を売ってもらうこと。この2本です。</li>
+        <li>バードは人が動く仕事なので、人が足りなければ売れません。そこで、A級バードを月30名自動で採用し、月3,000時間の稼働をめざします。採用も、営業の一部です。</li>
+        <li>企画・運用の担当と営業が同じチームにいます。研修動画の納品管理や事務局の窓口まで、チームの中で完結するのが強みです。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── AIインパクト ───────── -->
+<section id="t5">
+  <div class="wrap">
+    <p class="eyebrow">5　大型案件</p>
+    <h2>AIインパクトは、1件1,000万円以上。目標は月ではなく四半期3億円</h2>
+    <p class="sec-lead">顧客単価1,000万円以上の、コンサル・受託開発といった大型案件を扱うチームです。いまは、2.5億円規模の案件がほぼ受注できていて、月1億円規模の数字が見えています。上下が激しいのは、この仕事の性質です。</p>
+
+    <div class="kpis">
+      <div class="kpi"><p class="k">通常の月</p><p class="v"><em>2,000〜3,000万円</em></p><p class="s">案件が決まると1億円規模</p></div>
+      <div class="kpi"><p class="k">1件の単価</p><p class="v"><em>1,000万円以上</em></p><p class="s">コンサル・受託開発など</p></div>
+      <div class="kpi"><p class="k">チーム目標</p><p class="v"><em>四半期3億円</em></p><p class="s">メンバー一覧シートの記載</p></div>
+    </div>
+
+    <div class="flowbox">
+      <h3>大型案件の進め方</h3>
+      <div class="flow">
+        <div class="fn">リスト<small>まっさらな状態から</small></div>
+        <div class="fa"><span>絞る</span><i>→</i></div>
+        <div class="fn">リード</div>
+        <div class="fa"><span>会う</span><i>→</i></div>
+        <div class="fn">提案<small>お客様ごとに設計</small></div>
+        <div class="fa"><span>詰める</span><i>→</i></div>
+        <div class="fn hl">受注<small>1,000万円〜</small></div>
+        <div class="fa"><span>広げる</span><i>→</i></div>
+        <div class="fn">アップセル</div>
+      </div>
+    </div>
+
+    <div class="real">
+      <h3>正直なところ</h3>
+      <ul>
+        <li>1件にかける時間が長いので、決まる月と決まらない月の差がはっきり出ます。だから目標は、月ではなく四半期で見る形にしました。</li>
+        <li>リーダーの個人目標は「受注率100%」という掲げ方。数を打つより、出した提案を一件ずつ丁寧に詰める姿勢です。</li>
+        <li>ゼロから作っている部分も多いチームです。まっさらなリストからのリード獲得戦略、アップセルまで考えた特定業界向けのパッケージ。勝ちパターンは、探りながら作っています。</li>
+        <li>仲間は増えたばかりです。8月に梅沢さん、10月1日にも2名が入りました。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── 旧経コン ───────── -->
+<section id="t6" class="alt">
+  <div class="wrap">
+    <p class="eyebrow">6　人×架電</p>
+    <h2>旧経コンは、月3万円のAI SaaSを、1日2〜3件積み上げる</h2>
+    <p class="sec-lead">もとは経営コンサルティング局の営業チームで、補助金・助成金まわりの顧客基盤があります。いまは、月3万円のAI SaaSの支援を軸に、1日2〜3件の受注を維持することが目標です。</p>
+
+    <div class="kpis">
+      <div class="kpi"><p class="k">いま</p><p class="v"><em>月3,000万円</em></p><p class="s">体制メモの目標</p></div>
+      <div class="kpi"><p class="k">12月</p><p class="v"><em>1億円</em></p><p class="s">体制メモの目標</p></div>
+      <div class="kpi"><p class="k">ペース</p><p class="v">1日<em>2〜3件</em></p><p class="s">月3万円のAI SaaSを受注</p></div>
+    </div>
+
+    <div class="flowbox">
+      <h3>架電から受注まで</h3>
+      <div class="flow">
+        <div class="fn">架電<small>問い合わせ・診断リスト</small></div>
+        <div class="fa"><span>つなぐ</span><i>→</i></div>
+        <div class="fn">アポ</div>
+        <div class="fa"><span>会う</span><i>→</i></div>
+        <div class="fn">商談</div>
+        <div class="fa"><span>仕分ける</span><i>→</i></div>
+        <div class="fn">A・B・Cヨミ<small>チームの基準で仕分け</small></div>
+        <div class="fa"><span>詰める</span><i>→</i></div>
+        <div class="fn hl">受注</div>
+      </div>
+    </div>
+
+    <div class="flowbox">
+      <h3>9月30日の商談11件の内訳</h3>
+      <div class="bar" role="img" aria-label="受注1件、Aヨミ2件、Bヨミ1件、Cヨミ3件、失注4件">
+        <span class="win" style="flex:1">受注 1</span>
+        <span class="yomi" style="flex:2">A 2</span>
+        <span class="yomi" style="flex:1">B 1</span>
+        <span class="yomi" style="flex:3">C 3</span>
+        <span class="lose" style="flex:4">失注 4</span>
+      </div>
+      <p class="barlegend">11件のうち、受注1件・A 2件・B 1件・C 3件・失注4件。A・B・Cは、チームの基準によるヨミ（受注見込み）の区分です。</p>
+    </div>
+
+    <div class="real">
+      <h3>正直なところ</h3>
+      <ul>
+        <li>毎日の商談結果が、そのまま全員に見える形で残ります。自分の伸びを、毎日数字で確かめられるチームです。</li>
+        <li>失注や持ち帰りの理由は、「決めきれない」「コスト」「多忙」に集まっています。理由が揃ってきたので、打ち手を絞り込める段階です。</li>
+        <li>管理表の「担当・ヨミ・初回商談日・商材」に空欄があると、毎朝担当ごとの件数が通知され、その日のうちに埋めます。ここを丁寧にやるチームです。</li>
+        <li>商談では、Jマッチエンジンの資料とミーティング動画を使っています。反応は良かったと共有されています。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── チーム選び・相談先 ───────── -->
+<section id="pick">
+  <div class="wrap">
+    <p class="eyebrow">チーム選び・相談先</p>
+    <h2>向いている働き方から、6チームを選ぶ</h2>
+    <p class="sec-lead">上から順に「はい」か「いいえ」で答えてみてください。最初に「はい」になったところが、一番楽しめそうなチームの目安。</p>
+
+    <div class="dq">
+      <div class="dr"><div class="q">1社と深く、長く付き合って、提案の設計から考えたい？</div><a class="yes" href="#t5">はい → AIインパクト</a><div class="no">いいえ → 次へ</div></div>
+      <div class="dr"><div class="q">売るのは自分より、仕組みとAIに任せたい？</div><a class="yes" href="#t3">はい → 第3営業部</a><div class="no">いいえ → 次へ</div></div>
+      <div class="dr"><div class="q">売って終わりにせず、研修や運用の現場まで見届けたい？</div><a class="yes" href="#t4">はい → 研修バード</a><div class="no">いいえ → 次へ</div></div>
+      <div class="dr"><div class="q">自分で売るより、売ってくれる会社を増やしたい？</div><a class="yes" href="#t2">はい → 第2営業部</a><div class="no">いいえ → 次へ</div></div>
+      <div class="dr"><div class="q">1件100万円規模を、提案で決めにいきたい？</div><a class="yes" href="#t1">はい → 第1営業部</a><div class="no">いいえ → 次へ</div></div>
+      <div class="dr last"><div class="q">ここまで全部「いいえ」なら<small>電話と商談の数をこなしながら、型を磨く仕事です。</small></div><a class="yes" href="#t6">旧経コン</a></div>
+    </div>
+    <p class="note">ざっくりとした目安です。質問の中身は、各チームの体制メモと報告から作成者が整理したもの。迷ったら、下の人に聞いてください。</p>
+
+    <div class="tbl scroll-x" style="margin-top:26px">
+      <table>
+        <thead><tr><th>チーム</th><th>最初に聞く人</th></tr></thead>
+        <tbody>
+          <tr><td>第1営業部</td><td data-label="最初に聞く人">浦嶋 剛志さん（マネージャー）／土屋 慧介さん（リーダー）</td></tr>
+          <tr><td>第2営業部</td><td data-label="最初に聞く人">菅野 秀平さん（マネージャー）／降旗 一也さん・松井 友美さん（リーダー）</td></tr>
+          <tr><td>第3営業部</td><td data-label="最初に聞く人">木場 瑛穂さん／西村 果林さん／小松 咲さん</td></tr>
+          <tr><td>研修バード</td><td data-label="最初に聞く人">川上 元さん（マネージャー）</td></tr>
+          <tr><td>AIインパクト</td><td data-label="最初に聞く人">相澤 祥治郎さん／梅沢 勇貴さん（どちらもリーダー）</td></tr>
+          <tr><td>旧経コン</td><td data-label="最初に聞く人">塩崎 万朔さん／杉山 正勝さん（経営コンサルティング局マネージャー）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">肩書きは、メンバー一覧シート（2026年10月2日時点）に基づいています。</p>
+  </div>
+</section>
+
+<!-- ───────── つながり ───────── -->
+<section id="link" class="alt">
+  <div class="wrap">
+    <p class="eyebrow">つながり</p>
+    <h2>どこかで決まった話が、隣のチームの武器になる</h2>
+    <p class="sec-lead">自分のチームだけでなく、隣のチームの「決まった話」も読んでみてください。会議では、全員のTAV（持ち帰る学び）を一人ずつ聞くのが決まりです。</p>
+
+    <div class="flowbox">
+      <h3>型とネタが、チームをまたいで流れる</h3>
+      <div class="flow">
+        <div class="fn hl">第1営業部<small>100件で型を作る</small></div>
+        <div class="fa"><span>展開</span><i>→</i></div>
+        <div class="fn">第2・第3営業部<small>型を使う</small></div>
+        <div class="fa"><span>ネタにする</span><i>→</i></div>
+        <div class="fn">パートナーへのメール<small>売れた話を載せる</small></div>
+      </div>
+      <p class="flowcap">同じAIOでも、第1営業部は企業に直接、第2営業部はパートナー経由で売ります。第1営業部が育てた「A+（紹介してくれるお客様）」の先には、一緒に売るOEMパートナー「S」という段階があります。</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>社内限定の資料です。社外には出さないでください。</p>
+    <p>数字と体制は、2026年10月2日時点の体制メモと、各営業部のSlack報告、メンバー一覧シートをもとにしています。チームの数字は月ごとに変わります。</p>
+  </div>
+</footer>
+
+</body>
+</html>
