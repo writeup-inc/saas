@@ -220,6 +220,11 @@ section.s{padding:var(--pad) 0;border-top:1px solid var(--gray-08);}
 .price-n--sale{margin-top:8px;}
 .price-cap{display:block;width:fit-content;background:var(--navy);color:var(--white);font-size:12px;font-weight:900;letter-spacing:.04em;padding:4px 10px;margin-bottom:10px;}
 .was{color:var(--gray-40);text-decoration-thickness:1.5px;}
+.price-q{margin-top:14px;font-size:clamp(26px,3.4vw,40px);font-weight:900;line-height:1.3;letter-spacing:-.02em;color:var(--navy);word-break:keep-all;}
+.price-act{display:flex;flex-direction:column;justify-content:center;}
+.price-btn{margin-top:0;align-self:flex-start;white-space:nowrap;}
+.hc-spec dt{white-space:nowrap;}
+.hc-ask{display:inline-block;color:var(--navy);font-weight:900;text-decoration:underline;text-underline-offset:3px;padding:6px 0;}
 .askmark{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;margin:-15px -8px -15px -2px;vertical-align:middle;background:none;border:0;cursor:pointer;color:var(--navy);font-family:var(--jp);font-size:14px;font-weight:900;line-height:1;}
 .askmark:hover{opacity:.6;}
 .modal[hidden]{display:none;}
@@ -454,7 +459,7 @@ footer{padding:56px 0 72px;border-top:1px solid var(--gray-20);}
         <div><dt>提供形態</dt><dd>OEM（ホワイトラベル）</dd></div>
         <div><dt>御社が決めるもの</dt><dd>ロゴ・色・名称のみ</dd></div>
         <div><dt>導入まで</dt><dd>最短1週間</dd></div>
-        <div><dt>費用</dt><dd><s class="was">初期50万円</s> 9月末契約まで20万円＋月85,000円</dd></div>
+        <div><dt>費用</dt><dd>個別見積もり<br><a class="hc-ask" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">金額を問い合わせる ▸</a></dd></div>
         <div><dt>前身サービス実績</dt><dd>累計1,125社</dd></div>
       </dl>
     </aside>
@@ -981,21 +986,19 @@ footer{padding:56px 0 72px;border-top:1px solid var(--gray-20);}
         </div>
       </div>
 
-      <div class="price fade">
+      <div class="price price--quote fade">
         <div>
-          <div class="price-k">INITIAL</div>
-          <div class="price-was">500,000円</div>
-          <div class="price-n price-n--sale">200,000<small>円</small></div>
-          <p class="price-c"><span class="price-cap">9月末までのご契約に限り</span>初期費用。導入時のみ。</p>
+          <div class="price-k">PRICE</div>
+          <div class="price-q">個別にお見積もりします</div>
+          <p class="price-c">初期費用・月額とも、御社の顧客数と配り方に合わせて、個別にお見積もりします。月額にはすべての機能を含み、AI利用料・システム利用料も込みです。</p>
         </div>
-        <div>
-          <div class="price-k">MONTHLY</div>
-          <div class="price-n">85,000<small>円／月</small></div>
-          <p class="price-c">すべての機能を含みます。AI利用料・システム利用料込み。配布数や登録数によって変わりません。</p>
+        <div class="price-act">
+          <a class="cta-btn price-btn" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">金額を問い合わせる</a>
+          <p class="price-c">お問い合わせ窓口へ移ります。<br>「Jマッチエンジンの見積もり」と<br>お書き添えください。</p>
         </div>
       </div>
       <div class="incl fade">
-        <div class="incl-h">月額85,000円に含まれるもの</div>
+        <div class="incl-h">月額に含まれるもの</div>
         <ul class="incl-l">
           <li>補助金・助成金／融資／税制優遇のデータベースを、AIが24時間365日集め続ける</li>
           <li>顧客一社ごとに合わせた原稿を、AIが書く</li>
@@ -1006,10 +1009,10 @@ footer{padding:56px 0 72px;border-top:1px solid var(--gray-20);}
           <li>顧客からの問い合わせは、当社のAIスタッフが一次対応する</li>
           <li>開発・サーバー・保守</li>
         </ul>
-        <p class="incl-n">週に1度、顧客ごとに違う原稿を書いて配信する担当を、社内で1人置いたらいくらかかるか。情報を集めるところから配信まで含めて、月85,000円です。</p>
+        <p class="incl-n">週に1度、顧客ごとに違う原稿を書いて配信する担当を、社内で1人置いたらいくらかかるか。情報を集めるところから配信まで、この月額ひとつで引き受けます。</p>
       </div>
       <div class="optbox fade">
-        <div class="optbox-h"><span class="opt-tag">INCLUDED</span>月額85,000円に、この3機能も含まれます</div>
+        <div class="optbox-h"><span class="opt-tag">INCLUDED</span>月額に、この3機能も含まれます</div>
         <ul class="optlist">
           <li><b>顧客カルテの自動生成</b>　名刺リストをスプレッドシートで連携すると、AIが顧客一社ごとのカルテを作ります。業種・地域・規模から、使えそうな制度まで。</li>
           <li><b>定期メールニュースの配信</b>　カルテをもとに、その会社に合う制度情報を毎月まとめて配信します。御社の名前とロゴで、原稿はこちらが用意します。<span class="optnb">※メール配信のみ</span></li>
