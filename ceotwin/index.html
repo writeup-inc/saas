@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://writeup-inc.github.io/saas/ceotwin/">
+<meta name="lp-type" content="右脳/問い合わせ/A注意">
+<title>CEOTwin｜社長の知恵を預かる、ツイン銀行。</title>
+<meta name="description" content="社長の知恵を預かる、ツイン銀行。写真・声・経験を預け、蓄えた知識をセミナー・採用・顧客対応・営業説明で使うCEOTwinの構想プレビュー。料金・機能は検討案。">
+<style>
+/* ===== lp-base.css（~/.claude/lp-base.css より。改行制御・最小文字サイズ・固定CTAの逃げは削除しない） ===== */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] { word-break: normal; }
+}
+.nobr { white-space: nowrap; }
+:root { --fs-min: 12px; --fs-body: 17px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+:root { --lp-max: 1200px; }
+
+/* ===== CEOTwin トークン ===== */
+:root{
+  --ink:#0B0B0A;
+  --ink-2:#2A2A26;
+  --ink-3:#6B6B62;
+  --paper:#F7F6F2;
+  --paper-2:#EFEDE6;
+  --line:#D9D6CB;
+  --line-strong:#B9B5A6;
+  --lime:#C9F23A;
+  --lime-ink:#1C2600;
+  --onlime:#0B0B0A;
+  --maxw:1200px;
+  --gut:clamp(20px, 5vw, 48px);
+  --sans: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
+}
+@media (max-width:600px){ :root{ --fs-body:16px; } }
+
+html{ -webkit-text-size-adjust:100%; scroll-behavior:auto; }
+body{
+  margin:0; font-family:var(--sans); color:var(--ink);
+  background:var(--paper);
+  overflow-x:hidden;
+  font-feature-settings:"palt" 1;
+}
+@media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+
+.wrap{ width:min(var(--maxw), 100% - calc(var(--gut) * 2)); margin-inline:auto; }
+.measure{ max-width:38em; }
+
+a{ color:inherit; }
+.linkline{ color:var(--ink); text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1px; }
+.linkline:hover{ text-decoration-thickness:2px; }
+
+/* ===== ヘッダー ===== */
+.hdr{
+  position:fixed; inset:0 0 auto 0; z-index:60;
+  background:rgba(247,246,242,.88);
+  backdrop-filter:saturate(140%) blur(10px);
+  border-bottom:1px solid var(--line);
+  transform:translateY(0); transition:transform .22s ease;
+}
+.hdr[data-hidden="true"]{ transform:translateY(-104%); }
+@media (prefers-reduced-motion: reduce){ .hdr{ transition:none; } }
+.hdr__in{ display:flex; align-items:center; gap:clamp(12px,3vw,32px); min-height:60px; }
+.brand{ font-weight:800; letter-spacing:.04em; font-size:1rem; text-decoration:none; white-space:nowrap; }
+.brand b{ font-weight:800; }
+.brand span{ display:block; font-size:12px; color:var(--ink-3); letter-spacing:.14em; font-weight:600; }
+.hdr nav{ margin-left:auto; display:flex; align-items:center; gap:clamp(8px,2vw,22px); flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; }
+.hdr nav::-webkit-scrollbar{ display:none; }
+.hdr nav a, .hdr nav button{
+  font:inherit; font-size:14px; font-weight:700; color:var(--ink-2);
+  background:none; border:0; padding:6px 2px; cursor:pointer; text-decoration:none; white-space:nowrap;
+}
+.hdr nav a:hover, .hdr nav button:hover{ color:var(--ink); }
+.hdr nav .btn-nav{
+  background:var(--ink); color:var(--paper); border-radius:999px; padding:9px 18px;
+}
+.hdr nav .btn-nav:hover{ color:var(--paper); background:var(--ink-2); }
+
+/* ===== 共通見出し ===== */
+.sec{ padding:clamp(64px,9vw,128px) 0; }
+.eyebrow{
+  display:inline-flex; align-items:baseline; gap:10px;
+  font-size:12px; font-weight:800; letter-spacing:.18em; color:var(--ink-3); margin:0 0 18px;
+}
+.eyebrow i{ font-style:normal; font-size:12px; color:var(--ink); border-bottom:2px solid var(--lime); padding-bottom:2px; }
+h2{ margin:0 0 .6em; font-weight:800; letter-spacing:-.01em; }
+h3{ font-size:1.0625rem; margin:0 0 .5em; font-weight:800; letter-spacing:.01em; }
+.lead{ font-size:clamp(1rem,1.9vw,1.1875rem); line-height:1.95; color:var(--ink-2); }
+.note{ color:var(--ink-3); margin:.6em 0 0; }
+.note a{ color:var(--ink-3); }
+.rule{ border:0; border-top:1px solid var(--line); margin:0; }
+
+/* ===== バッジ・サンプル注記 ===== */
+.badge{
+  display:inline-block; font-size:12px; font-weight:800; letter-spacing:.1em;
+  border:1px solid var(--line-strong); border-radius:999px; padding:5px 12px; color:var(--ink-2);
+  background:rgba(255,255,255,.6);
+}
+.badge--lime{ background:var(--lime); border-color:var(--lime); color:var(--lime-ink); }
+.badge--dark{ background:var(--ink); border-color:var(--ink); color:var(--paper); }
+.sample-tag{
+  display:inline-flex; align-items:center; gap:7px;
+  font-size:12px; font-weight:800; letter-spacing:.08em; color:var(--ink-3);
+}
+.sample-tag::before{ content:""; width:7px; height:7px; border-radius:50%; background:var(--lime); border:1px solid var(--line-strong); }
+
+/* ===== ボタン ===== */
+.btn{
+  font:inherit; font-size:15px; font-weight:800; cursor:pointer;
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  padding:16px 26px; border-radius:999px; border:1px solid var(--ink); text-decoration:none;
+  background:var(--ink); color:var(--paper); line-height:1.3;
+}
+.btn:hover{ background:var(--ink-2); }
+.btn--lime{ background:var(--lime); border-color:var(--lime); color:var(--lime-ink); }
+.btn--lime:hover{ background:#D6F95C; border-color:#D6F95C; }
+.btn--ghost{ background:transparent; color:var(--ink); }
+.btn--ghost:hover{ background:rgba(11,11,10,.06); }
+.btn--onDark{ background:var(--paper); border-color:var(--paper); color:var(--ink); }
+.btn--onDark:hover{ background:#fff; border-color:#fff; }
+.btn--ghostDark{ background:transparent; border-color:rgba(247,246,242,.5); color:var(--paper); }
+.btn--ghostDark:hover{ background:rgba(247,246,242,.12); }
+.btn-row{ display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+
+.fc{
+  font:inherit; font-size:12px; font-weight:800; letter-spacing:.02em;
+  display:inline-flex; align-items:center; gap:8px;
+  padding:9px 15px; border:1px dashed var(--line-strong); border-radius:999px;
+  color:var(--ink-3); background:transparent; text-decoration:none;
+}
+.fc:hover{ color:var(--ink); border-color:var(--ink); border-style:solid; }
+.fc::before{ content:"↗"; font-size:12px; }
+
+/* ===== HERO ===== */
+.hero{
+  position:relative; isolation:isolate; overflow:hidden;
+  padding:calc(60px + clamp(52px,8vw,104px)) 0 clamp(44px,7vw,96px);
+  background:var(--paper);
+}
+.hero__bg{
+  position:absolute; inset:0; z-index:-2;
+  background-image:
+    radial-gradient(90% 70% at 78% 18%, rgba(201,242,58,.20), transparent 62%),
+    radial-gradient(70% 60% at 8% 92%, rgba(11,11,10,.10), transparent 60%),
+    linear-gradient(180deg, rgba(238,235,226,.75) 0%, rgba(247,246,242,.87) 58%, #F7F6F2 100%),
+    url("images/ceo-portrait.png");
+  background-size:cover, cover, cover, cover;
+  background-position:center, center, center, 70% 30%;
+  opacity:.9;
+}
+.hero__veil{
+  position:absolute; inset:0; z-index:-1;
+  background:linear-gradient(180deg, rgba(247,246,242,.72) 0%, rgba(247,246,242,.86) 48%, rgba(247,246,242,.97) 100%);
+}
+.hero__grid{
+  display:grid; grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+  gap:clamp(24px,4vw,56px); align-items:end;
+}
+.hero__copy{ min-width:0; }
+.hero__title{
+  margin:16px 0 0; font-weight:800; letter-spacing:-.025em;
+  font-size:clamp(2rem, 6.6vw, 4.25rem); line-height:1.24;
+}
+.ttl-stage{ display:block; min-height:calc(2 * 1.24em); }
+.ttl-line{ display:block; }
+.ttl-line:empty::after{ content:"\200b"; }
+.caret{
+  display:inline-block; width:.055em; height:.86em; vertical-align:-.08em;
+  background:var(--ink); margin-left:.06em;
+}
+.caret[data-blink="true"]{ animation:blink 1s steps(1,end) infinite; }
+@keyframes blink{ 50%{ opacity:0; } }
+@media (prefers-reduced-motion: reduce){ .caret{ display:none; } }
+.ttl-hint{
+  display:inline-flex; align-items:center; gap:8px; margin-top:14px;
+  font-size:12px; font-weight:800; color:var(--ink-3);
+  background:none; border:0; border-bottom:1px solid var(--line-strong); padding:0 0 3px; cursor:pointer;
+}
+.ttl-hint:hover{ color:var(--ink); border-color:var(--ink); }
+.hero__lead{ margin:22px 0 0; max-width:34em; }
+.hero__inputs{
+  list-style:none; margin:22px 0 0; padding:0;
+  display:flex; flex-wrap:wrap; gap:0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+}
+.hero__inputs li{
+  flex:1 1 128px; min-width:0; padding:14px 16px 14px 0;
+}
+.hero__inputs li + li{ border-left:1px solid var(--line); padding-left:16px; }
+.hero__inputs b{ display:block; font-size:1rem; letter-spacing:.02em; }
+.hero__inputs span{ display:block; font-size:12px; color:var(--ink-3); margin-top:2px; }
+.hero__cta{ margin-top:26px; }
+
+/* HERO右：ポートレート＋浮遊Twin UI */
+.hero__art{ position:relative; min-width:0; }
+.portrait{
+  position:relative; margin:0;
+  border:1px solid var(--line-strong);
+  background:
+    repeating-linear-gradient(135deg, rgba(11,11,10,.045) 0 2px, transparent 2px 7px),
+    linear-gradient(170deg, #E6E3D9, #D2CFC2);
+  aspect-ratio:4 / 5; overflow:hidden;
+}
+.portrait img{ width:100%; height:100%; object-fit:cover; object-position:center 18%; display:block; }
+.portrait__ph{
+  position:absolute; inset:0; display:grid; place-content:center; text-align:center; gap:8px; padding:24px;
+}
+.portrait__ph b{ font-size:13px; letter-spacing:.14em; color:var(--ink-2); }
+.portrait__ph span{ font-size:12px; color:var(--ink-3); }
+.portrait[data-has-image="true"] .portrait__ph{ display:none; }
+.portrait figcaption{
+  position:absolute; left:0; right:0; bottom:0; padding:9px 12px;
+  background:rgba(11,11,10,.78); color:var(--paper); font-size:12px; letter-spacing:.04em;
+}
+.twinui{
+  position:absolute; left:clamp(-18px,-2vw,0px); bottom:clamp(44px,8vw,92px);
+  width:min(300px, 86%);
+  background:rgba(255,255,255,.96); border:1px solid var(--line-strong);
+  box-shadow:0 18px 44px -24px rgba(11,11,10,.45);
+  padding:13px 14px 12px;
+  animation:float 7s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce){ .twinui{ animation:none; } }
+@keyframes float{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-9px); } }
+.twinui__hd{
+  display:flex; align-items:center; gap:8px; font-size:12px; font-weight:800; color:var(--ink-3);
+  border-bottom:1px solid var(--line); padding-bottom:8px; margin-bottom:9px; letter-spacing:.06em;
+}
+.twinui__hd b{ color:var(--ink); letter-spacing:.02em; }
+.twinui__dot{ width:7px; height:7px; border-radius:50%; background:var(--lime); border:1px solid var(--line-strong); }
+.bub{ font-size:12.5px; line-height:1.7; padding:8px 11px; margin:0 0 7px; }
+.bub--q{ background:var(--paper-2); border:1px solid var(--line); }
+.bub--a{ background:var(--ink); color:var(--paper); }
+.twinui__ft{ font-size:12px; color:var(--ink-3); border-top:1px dashed var(--line-strong); padding-top:8px; }
+
+@media (max-width:900px){
+  .hero__grid{ grid-template-columns:1fr; align-items:start; }
+  .hero__art{ max-width:420px; margin-top:8px; }
+  .twinui{ left:auto; right:-6px; bottom:-14px; width:min(280px,92%); }
+}
+@media (max-width:420px){
+  .twinui{ position:static; width:100%; margin-top:14px; box-shadow:none; }
+}
+
+/* ===== 仕組み（3入力→Twin） ===== */
+.flow3{
+  display:grid; grid-template-columns:repeat(3, minmax(0,1fr)) auto minmax(0,1.25fr);
+  gap:0; align-items:stretch; border-top:2px solid var(--ink); margin-top:34px;
+}
+.flow3 .cell{ padding:22px 18px 24px; border-right:1px solid var(--line); min-width:0; }
+.flow3 .cell:first-child{ padding-left:0; }
+.flow3 .num{
+  display:block; font-size:12px; font-weight:800; letter-spacing:.2em; color:var(--ink-3); margin-bottom:10px;
+}
+.flow3 .cell p{ margin:.4em 0 0; font-size:13.5px; color:var(--ink-2); line-height:1.75; }
+.flow3 .arrow{
+  display:grid; place-content:center; padding:0 14px; border-right:1px solid var(--line);
+  font-size:20px; color:var(--ink-3);
+}
+.flow3 .out{
+  background:var(--ink); color:var(--paper); padding:24px 22px; border-right:0;
+}
+.flow3 .out .num{ color:rgba(247,246,242,.6); }
+.flow3 .out h3{ color:var(--paper); }
+.flow3 .out p{ color:rgba(247,246,242,.82); }
+.flow3 .out ul{ margin:12px 0 0; padding-left:1.1em; font-size:13px; color:rgba(247,246,242,.82); }
+.flow3 .out li{ margin:.25em 0; }
+@media (max-width:900px){
+  .flow3{ grid-template-columns:1fr; }
+  .flow3 .cell{ border-right:0; border-bottom:1px solid var(--line); padding-left:0; padding-right:0; }
+  .flow3 .arrow{ border-right:0; padding:10px 0; place-content:start; transform:rotate(90deg); width:2em; }
+  .flow3 .out{ padding:24px; }
+}
+.consent{
+  margin-top:26px; border-left:3px solid var(--lime); padding:4px 0 4px 16px;
+}
+.consent p{ margin:0; font-size:13.5px; color:var(--ink-2); }
+.consent p + p{ margin-top:.5em; }
+
+/* ===== 用途タブ ===== */
+.tabs{ margin-top:30px; border-top:2px solid var(--ink); }
+.tablist{ display:flex; flex-wrap:wrap; gap:0; }
+.tablist [role="tab"]{
+  font:inherit; font-size:14px; font-weight:800; cursor:pointer;
+  background:none; border:0; border-bottom:3px solid transparent;
+  padding:16px 20px 14px; color:var(--ink-3); flex:1 1 auto; min-width:0; white-space:nowrap;
+}
+.tablist [role="tab"]:hover{ color:var(--ink); }
+.tablist [role="tab"][aria-selected="true"]{ color:var(--ink); border-bottom-color:var(--lime); }
+.tablist [role="tab"] small{ display:block; font-size:12px; font-weight:700; color:var(--ink-3); margin-top:3px; }
+.tabpanel{ padding-top:30px; border-top:1px solid var(--line); }
+.tabpanel[hidden]{ display:none; }
+.tabgrid{ display:grid; grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr); gap:clamp(22px,4vw,48px); }
+@media (max-width:900px){ .tabgrid{ grid-template-columns:1fr; } }
+.tabgrid h3{ font-size:clamp(1.0625rem,2.4vw,1.375rem); }
+.tabgrid .handoff{
+  margin-top:20px; border:1px solid var(--line-strong); background:#fff; padding:16px 18px;
+}
+.tabgrid .handoff b{ display:block; font-size:12px; letter-spacing:.12em; color:var(--ink-3); margin-bottom:6px; }
+.tabgrid .handoff p{ margin:0; font-size:13.5px; }
+.screen{
+  border:1px solid var(--ink); background:#fff; box-shadow:14px 14px 0 -1px var(--paper-2);
+}
+.screen__bar{
+  display:flex; align-items:center; gap:8px; padding:10px 13px;
+  border-bottom:1px solid var(--line); font-size:12px; font-weight:800; letter-spacing:.06em; color:var(--ink-3);
+}
+.screen__bar b{ color:var(--ink); }
+.screen__body{ padding:16px 15px 14px; }
+.screen__body .bub{ font-size:13.5px; }
+.screen__body .bub--a{ background:var(--ink); color:var(--paper); }
+.screen__ft{
+  border-top:1px dashed var(--line-strong); padding:10px 15px; font-size:12px; color:var(--ink-3);
+}
+.etc{ margin-top:34px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+.etc span{ font-size:12px; font-weight:800; color:var(--ink-3); letter-spacing:.1em; }
+
+/* ===== 差別化（濃色1） ===== */
+.sec--dark{ background:var(--ink); color:var(--paper); }
+.sec--dark h2{ color:var(--paper); }
+.sec--dark .lead{ color:rgba(247,246,242,.84); }
+.sec--dark .eyebrow{ color:rgba(247,246,242,.6); }
+.sec--dark .eyebrow i{ color:var(--paper); border-color:var(--lime); }
+.sec--dark .note{ color:rgba(247,246,242,.62); }
+.sec--dark .note a{ color:rgba(247,246,242,.62); }
+.steps{
+  counter-reset:s; list-style:none; margin:36px 0 0; padding:0;
+  display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); gap:0;
+  border-top:1px solid rgba(247,246,242,.28);
+}
+.steps li{
+  counter-increment:s; padding:20px 16px 22px; border-right:1px solid rgba(247,246,242,.18); min-width:0;
+}
+.steps li:first-child{ padding-left:0; }
+.steps li:last-child{ border-right:0; }
+.steps li::before{
+  content:"0" counter(s); display:block; font-size:22px; font-weight:800; color:var(--lime);
+  letter-spacing:-.02em; margin-bottom:10px;
+}
+.steps b{ display:block; font-size:15px; letter-spacing:.01em; }
+.steps p{ margin:.5em 0 0; font-size:13px; color:rgba(247,246,242,.78); line-height:1.75; }
+@media (max-width:900px){
+  .steps{ grid-template-columns:1fr 1fr; }
+  .steps li{ border-right:1px solid rgba(247,246,242,.18); border-bottom:1px solid rgba(247,246,242,.18); padding-left:16px; }
+  .steps li:first-child{ padding-left:16px; }
+  .steps li:nth-child(2n){ border-right:0; }
+}
+@media (max-width:480px){
+  .steps{ grid-template-columns:1fr; }
+  .steps li{ border-right:0; padding-left:0; }
+  .steps li:first-child{ padding-left:0; }
+}
+.guard{
+  margin-top:40px; display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px;
+  background:rgba(247,246,242,.2);
+}
+.guard div{ background:var(--ink); padding:20px 18px; min-width:0; }
+.guard b{ display:block; font-size:13px; letter-spacing:.1em; color:var(--lime); margin-bottom:8px; }
+.guard p{ margin:0; font-size:13.5px; color:rgba(247,246,242,.84); }
+@media (max-width:760px){ .guard{ grid-template-columns:1fr; } }
+
+/* ===== 比較 ===== */
+.cmp{ width:100%; border-collapse:collapse; margin-top:30px; font-size:14px; }
+.cmp caption{ text-align:left; font-size:12px; color:var(--ink-3); padding-bottom:12px; }
+.cmp th, .cmp td{ text-align:left; vertical-align:top; padding:16px 14px; border-bottom:1px solid var(--line); }
+.cmp thead th{
+  font-size:12px; letter-spacing:.14em; color:var(--ink-3); border-bottom:2px solid var(--ink); white-space:nowrap;
+}
+.cmp tbody th{ font-size:15px; font-weight:800; width:21%; }
+.cmp tbody th small{ display:block; font-size:12px; font-weight:700; color:var(--ink-3); margin-top:4px; }
+.cmp tbody tr[data-own="true"]{ background:#fff; }
+.cmp tbody tr[data-own="true"] th{ box-shadow:inset 3px 0 0 var(--lime); padding-left:17px; }
+.cmp .price{ font-size:14px; line-height:1.7; }
+.cmp .price em{ font-style:normal; font-weight:800; }
+.cmp .src{ display:block; font-size:12px; margin-top:7px; color:var(--ink-3); word-break:break-all; }
+.cmp .minus{ display:block; margin-top:8px; font-size:12.5px; font-weight:800; color:var(--ink); border-top:1px dotted var(--line-strong); padding-top:7px; }
+@media (max-width:900px){
+  .cmp, .cmp tbody, .cmp tr, .cmp td, .cmp th{ display:block; width:auto; }
+  .cmp thead{ display:none; }
+  .cmp tbody tr{ border:1px solid var(--line); border-top:2px solid var(--ink); margin-bottom:18px; padding:4px 14px 10px; background:rgba(255,255,255,.5); }
+  .cmp tbody th{ width:auto; padding:14px 0 10px; border-bottom:1px solid var(--line); }
+  .cmp tbody tr[data-own="true"] th{ padding-left:0; box-shadow:none; }
+  .cmp tbody tr[data-own="true"]{ border-top-color:var(--lime); border-top-width:4px; }
+  .cmp td{ padding:12px 0; border-bottom:1px dashed var(--line); }
+  .cmp td:last-child{ border-bottom:0; }
+  .cmp td::before{
+    content:attr(data-label); display:block; font-size:12px; font-weight:800; letter-spacing:.12em; color:var(--ink-3); margin-bottom:5px;
+  }
+}
+.cmp-notes{ margin-top:22px; padding-left:1.15em; }
+.cmp-notes li{ font-size:12px; color:var(--ink-3); line-height:1.75; margin:.3em 0; }
+
+/* ===== 仮料金 ===== */
+.plans{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; background:var(--line); margin-top:32px; border-top:2px solid var(--ink); }
+.plans > div{ background:var(--paper); padding:26px 22px 28px; min-width:0; display:flex; flex-direction:column; }
+.plans > div[data-main="true"]{ background:#fff; }
+.plan__tag{ font-size:12px; font-weight:800; letter-spacing:.16em; color:var(--ink-3); }
+.plan__name{ font-size:1.375rem; font-weight:800; margin:8px 0 0; letter-spacing:.01em; }
+.plan__price{ margin:16px 0 0; border-top:1px solid var(--line); padding-top:14px; }
+.plan__price dt{ font-size:12px; font-weight:800; letter-spacing:.12em; color:var(--ink-3); }
+.plan__price dd{ margin:2px 0 10px; font-size:1.5rem; font-weight:800; letter-spacing:-.02em; }
+.plan__price dd small{ font-size:12px; font-weight:700; color:var(--ink-3); margin-left:4px; }
+.plans ul{ margin:6px 0 0; padding-left:1.1em; font-size:13px; color:var(--ink-2); }
+.plans li{ margin:.35em 0; }
+.plans .plan__foot{ margin-top:auto; padding-top:18px; font-size:11.5px; color:var(--ink-3); }
+@media (max-width:900px){ .plans{ grid-template-columns:1fr; } }
+.kari{
+  display:flex; flex-wrap:wrap; gap:12px; align-items:center;
+  border:2px solid var(--ink); background:var(--lime); padding:14px 18px; margin-top:30px;
+}
+.kari b{ font-size:15px; letter-spacing:.04em; color:var(--lime-ink); }
+.kari span{ font-size:13px; color:var(--lime-ink); }
+
+/* ===== 試算 ===== */
+.sim{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,.85fr); gap:clamp(22px,4vw,48px); margin-top:30px; align-items:start; }
+@media (max-width:860px){ .sim{ grid-template-columns:1fr; } }
+.field{ margin:0 0 24px; }
+.field label{ display:block; font-size:13px; font-weight:800; letter-spacing:.04em; margin-bottom:10px; }
+.field output{ font-weight:800; }
+input[type="range"]{ width:100%; accent-color:var(--ink); }
+select{
+  font:inherit; font-size:15px; padding:11px 13px; border:1px solid var(--ink); background:#fff; color:var(--ink);
+  border-radius:0; width:100%; max-width:280px;
+}
+.simout{ border:2px solid var(--ink); background:#fff; padding:26px 24px; }
+.simout dt{ font-size:12px; font-weight:800; letter-spacing:.14em; color:var(--ink-3); }
+.simout dd{ margin:6px 0 0; }
+.simout .big{ font-size:clamp(2.4rem,8vw,3.6rem); font-weight:800; letter-spacing:-.03em; line-height:1.05; }
+.simout .big small{ font-size:1rem; font-weight:800; margin-left:6px; }
+
+/* ===== FAQ ===== */
+.faq{ margin-top:28px; border-top:2px solid var(--ink); }
+.faq details{ border-bottom:1px solid var(--line); }
+.faq summary{
+  cursor:pointer; list-style:none; padding:20px 44px 20px 0; position:relative;
+  font-size:1rem; font-weight:800; letter-spacing:.01em;
+}
+.faq summary::-webkit-details-marker{ display:none; }
+.faq summary::after{
+  content:"＋"; position:absolute; right:4px; top:19px; font-size:16px; color:var(--ink-3); font-weight:700;
+}
+.faq details[open] summary::after{ content:"－"; }
+.faq .ans{ padding:0 0 22px; max-width:48em; }
+.faq .ans p{ margin:0 0 .6em; font-size:14.5px; color:var(--ink-2); }
+.faq .ans p:last-child{ margin-bottom:0; }
+
+/* ===== 締めCTA（濃色2） ===== */
+.close{ background:var(--ink); color:var(--paper); padding:clamp(72px,11vw,148px) 0; text-align:left; }
+.close h2{
+  color:var(--paper); font-size:clamp(1.75rem,5.6vw,3.5rem); letter-spacing:-.025em; line-height:1.3; margin:0;
+  max-width:22em;
+}
+.close p{ color:rgba(247,246,242,.8); margin:22px 0 0; max-width:34em; }
+.close .btn-row{ margin-top:34px; }
+
+/* ===== 市場統計 strip ===== */
+.stats{ border-top:2px solid var(--ink); border-bottom:1px solid var(--line); }
+.stats__grid{ display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); gap:0; }
+.stats__grid > div{ padding:26px 16px 28px; border-right:1px solid var(--line); min-width:0; }
+.stats__grid > div:first-child{ padding-left:0; }
+.stats__grid > div:last-child{ border-right:0; }
+.stats__n{ display:block; font-size:clamp(1.75rem,3.4vw,2.375rem); font-weight:800; letter-spacing:-.03em; line-height:1.1; }
+.stats__m{ display:block; font-size:13px; font-weight:800; margin-top:10px; line-height:1.6; }
+.stats__d{ display:block; font-size:12px; color:var(--ink-3); margin-top:8px; line-height:1.65; }
+.stats__d a{ color:var(--ink-3); word-break:break-all; }
+@media (max-width:900px){
+  .stats__grid{ grid-template-columns:1fr; }
+  .stats__grid > div{ border-right:0; border-bottom:1px solid var(--line); padding-left:0; }
+  .stats__grid > div:last-child{ border-bottom:0; }
+}
+
+/* ===== footer ===== */
+.ft{ padding:48px 0 60px; font-size:13px; color:var(--ink-3); }
+.ft__top{ display:flex; flex-wrap:wrap; gap:18px 32px; align-items:baseline; }
+.ft__brand{ font-size:1rem; font-weight:800; color:var(--ink); letter-spacing:.04em; }
+.ft nav{ display:flex; flex-wrap:wrap; gap:8px 22px; }
+.ft p{ margin:20px 0 0; max-width:46em; }
+
+/* ===== dialog ===== */
+dialog{
+  border:2px solid var(--ink); background:var(--paper); color:var(--ink);
+  padding:0; max-width:min(680px, calc(100vw - 32px)); width:100%;
+  max-height:min(86vh, 860px); overflow:auto;
+}
+dialog::backdrop{ background:rgba(11,11,10,.62); }
+.dlg__hd{
+  position:sticky; top:0; background:var(--paper); border-bottom:1px solid var(--line);
+  display:flex; align-items:flex-start; gap:14px; padding:20px clamp(18px,4vw,28px) 16px;
+}
+.dlg__hd h2{ font-size:1.125rem; margin:0; letter-spacing:.01em; }
+.dlg__hd p{ margin:6px 0 0; font-size:12px; color:var(--ink-3); }
+.dlg__x{
+  margin-left:auto; font:inherit; font-size:13px; font-weight:800; cursor:pointer;
+  background:none; border:1px solid var(--line-strong); border-radius:999px; padding:7px 14px; color:var(--ink-2);
+  white-space:nowrap;
+}
+.dlg__x:hover{ border-color:var(--ink); color:var(--ink); }
+.dlg__bd{ padding:22px clamp(18px,4vw,28px) 28px; }
+.dlg h3{ font-size:13px; letter-spacing:.12em; color:var(--ink-3); margin:0 0 12px; }
+.hv{ list-style:none; margin:0 0 26px; padding:0; counter-reset:h; }
+.hv li{ counter-increment:h; border-top:1px solid var(--line); padding:14px 0 15px; }
+.hv li::before{ content:"案 0" counter(h); display:block; font-size:12px; font-weight:800; letter-spacing:.14em; color:var(--ink-3); margin-bottom:6px; }
+.hv b{ font-size:1.0625rem; font-weight:800; line-height:1.5; display:block; }
+.toc{ list-style:none; margin:0; padding:0; counter-reset:t; }
+.toc li{ counter-increment:t; border-top:1px solid var(--line); padding:12px 0; font-size:14px; display:flex; gap:12px; }
+.toc li::before{ content:counter(t); font-size:12px; font-weight:800; color:var(--ink-3); padding-top:4px; }
+.toc a{ text-decoration:none; font-weight:700; }
+.toc a:hover{ text-decoration:underline; }
+
+fieldset{ border:0; padding:0; margin:0 0 24px; }
+legend{ font-size:13px; letter-spacing:.12em; color:var(--ink-3); padding:0; margin-bottom:12px; font-weight:800; }
+.checks{ display:grid; gap:0; border-top:1px solid var(--line); }
+.checks label{
+  display:flex; gap:11px; align-items:flex-start; padding:12px 2px; border-bottom:1px solid var(--line); font-size:14px; cursor:pointer;
+}
+.checks input{ margin:5px 0 0; accent-color:var(--ink); width:17px; height:17px; flex:0 0 auto; }
+.checks span small{ display:block; color:var(--ink-3); margin-top:2px; }
+.memo{
+  width:100%; min-height:190px; font:inherit; font-size:13px; line-height:1.8;
+  border:1px solid var(--ink); background:#fff; padding:14px; color:var(--ink); resize:vertical;
+}
+.memo-wrap[hidden]{ display:none; }
+.dlg-note{
+  border-left:3px solid var(--lime); padding:4px 0 4px 14px; margin:0 0 22px;
+}
+.dlg-note p{ margin:0; font-size:12.5px; color:var(--ink-2); }
+.dlg-note p + p{ margin-top:.4em; }
+.copied{ font-size:12px; font-weight:800; color:var(--ink); margin-left:10px; }
+/* 仕上げ: 海外プロダクトの余白と、Twinの視覚的な手触り */
+.hero__grid { align-items:center; }
+.brand {font-size:24px;letter-spacing:-.045em;}
+.brand span {font-size:12px;letter-spacing:.12em;}
+.hero__lead {font-size:19px;line-height:1.85;max-width:30em;}
+.hero__title {font-size:clamp(2rem,4.75vw,4.15rem);font-weight:750;letter-spacing:-.055em;}
+.ttl-line {white-space:nowrap;}
+.badge--dark {background:transparent;color:var(--ink-3);border-color:var(--line);border-radius:3px;letter-spacing:.10em;font-size:12px;}
+.hero__art::before {content:"01 / YOUR TWIN";position:absolute;top:-30px;left:0;font-size:12px;font-weight:600;letter-spacing:.18em;color:var(--ink-3);}
+.portrait {border-radius:6px;}
+.voice-tag {position:absolute;right:-10px;top:32px;padding:16px 18px;background:var(--lime);border:1px solid var(--ink);box-shadow:4px 4px 0 var(--ink);transform:rotate(4deg);max-width:180px;}
+.voice-tag > span {font-size:12px;font-weight:800;letter-spacing:.14em;display:block;}
+.voice-tag small {font-size:12px;}
+.voice-wave {display:flex;align-items:center;gap:4px;height:37px;margin:7px 0;}
+.voice-wave i {display:block;width:5px;background:var(--ink);height:12px;border-radius:2px;}
+.voice-wave i:nth-child(3n) {height:26px;} .voice-wave i:nth-child(4n) {height:36px;} .voice-wave i:nth-child(5n) {height:18px;}
+.twinui {border-radius:6px;width:min(320px,86%);}
+.twinui__ft {margin-bottom:0;}
+.sec h2 {max-width:25em;}
+:focus-visible {outline:3px solid #7b970c;outline-offset:5px;}
+section[id] {scroll-margin-top:90px;}
+@media(max-width:900px) {.hero__art{max-width:100%;width:min(520px,100%);margin:35px auto 0;} .hero__grid{gap:20px;} .hero__lead{font-size:18px;} .voice-tag{right:12px;}}
+@media(max-width:600px) {.hero__title{font-size:clamp(1.8rem,7.8vw,2.8rem);} .hero__lead{font-size:16px;} .brand{font-size:21px;} .brand span{font-size:10px;} .hdr nav a:nth-child(2),.hdr nav a:nth-child(3){display:none;} .hdr nav{gap:13px;} .hdr nav a,.hdr nav button{font-size:12px;} .hdr nav .btn-nav{padding:8px 13px;} .voice-tag{top:16px;transform:rotate(3deg);padding:10px 12px;} .hero__inputs li{flex-basis:30%;} .hero__inputs li+li{padding-left:10px;} .hero__cta .btn{padding:15px 20px;} }
+@media(max-width:600px) {
+ .hero{padding-top:104px;}
+ .hero__grid{display:flex;flex-direction:column;align-items:stretch;gap:0;}
+ .hero__copy{display:contents;}
+ .hero__copy > p:first-child{order:0;}
+ .hero__title{order:1;margin-top:18px;}
+ .ttl-hint{order:2;align-self:flex-start;}
+ .hero__lead{order:3;margin:22px 0 0;}
+ .hero__art{order:4;margin:40px auto 0;width:100%;}
+ .portrait{aspect-ratio:1.15/1;}
+ .portrait img{object-position:center 31%;}
+ .voice-tag{max-width:155px;}
+ .voice-wave{height:30px;}
+ .hero__inputs{order:5;margin-top:20px;}
+ .hero__cta{order:6;margin-top:20px;}
+ .hero__copy > .note{order:7;}
+ .twinui{position:static;width:100%;margin:10px 0 0;padding:10px 12px;animation:none;}
+ .twinui .bub--q{display:none;}
+ .twinui .bub--a{margin-top:8px;}
+}
+@media(max-width:600px){
+ .voice-tag{top:auto;bottom:42px;right:12px;width:145px;transform:rotate(2deg);}
+ .voice-tag small{display:none;}
+ .voice-wave{height:24px;margin:5px 0 0;}
+ .voice-wave i:nth-child(3n){height:20px;}.voice-wave i:nth-child(4n){height:24px;}
+}
+ .portrait .voice-tag{right:18px;top:auto;bottom:50px;}
+@media(max-width:900px){.cmp caption{display:block;width:100%;min-width:0;max-width:none;} }
+@media(max-width:600px){.portrait .voice-tag{right:12px;bottom:42px;top:auto;} }
+ .flow3 .cell p,.flow3 .cell li,.tabgrid .handoff p,.guard p,.plans ul{font-size:16px;}
+.steps p{font-size:15px;}.steps b{font-size:17px;}.cmp{font-size:15px;}.cmp .price{font-size:15px;}.plans .plan__foot{font-size:12px;}.screen__body .bub{font-size:15px;}
+
+/* ツイン銀行: 知恵を預かり、仕事へ届けるコンセプト */
+.hero__title{font-size:clamp(2rem,4.35vw,3.7rem);}
+.bank-cycle{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding:0;margin:36px 0 0;border-top:2px solid var(--ink);border-bottom:1px solid var(--line);}
+.bank-cycle li{padding:26px 22px 26px 0;min-width:0;}
+.bank-cycle li+li{border-left:1px solid var(--line);padding-left:22px;}
+.bank-cycle span{font-size:12px;letter-spacing:.1em;color:var(--ink-3);font-weight:700;}
+.bank-cycle h3{font-size:26px;letter-spacing:-.035em;margin:12px 0;}
+.bank-cycle p{font-size:16px;line-height:1.8;margin:0;}
+.deposit-title{font-size:20px;margin:48px 0 0;}
+@media(max-width:900px){.bank-cycle{grid-template-columns:repeat(2,minmax(0,1fr));}.bank-cycle li{padding:24px 20px;}.bank-cycle li+li{padding-left:20px;}.bank-cycle li:nth-child(3){border-left:0;}.bank-cycle li:nth-child(n+3){border-top:1px solid var(--line);}}
+@media(max-width:600px){.hero__title{font-size:clamp(1.65rem,7.4vw,2.8rem);}.badge--dark{font-size:10px;letter-spacing:.06em;}.bank-cycle{grid-template-columns:1fr;}.bank-cycle li,.bank-cycle li+li{padding:24px 0;border-left:0;}.bank-cycle li+li{border-top:1px solid var(--line);}.deposit-title{margin-top:32px;}}
+</style>
+</head>
+<body>
+
+<!-- ===== ヘッダー ===== -->
+<header class="hdr" id="hdr">
+  <div class="wrap hdr__in">
+    <a class="brand" href="#top"><b>CEOTwin</b><span>CONCEPT PREVIEW</span></a>
+    <nav aria-label="ページ内メニュー">
+      <a href="#yoto">用途</a>
+      <a href="#shikumi">仕組み</a>
+      <a href="#hikaku">比較</a>
+      <a href="#kakaku">仮料金</a>
+      <button type="button" class="btn-nav" data-open-soudan>相談</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="hero__veil" aria-hidden="true"></div>
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <p style="margin:0;"><span class="badge badge--dark">A BANK FOR YOUR KNOWLEDGE · 構想プレビュー</span></p>
+      <h1 class="hero__title" id="heroTitle"
+          aria-label="社長の知恵を預かる、ツイン銀行。／預けた知恵を、もう一人の社長へ。／社長が話すほど、会社に知恵が残る。（3つのコピー案を順番に表示しています）">
+        <span class="ttl-stage" aria-hidden="true">
+          <span class="ttl-line" id="ttl1"></span>
+          <span class="ttl-line" id="ttl2"></span>
+        </span>
+      </h1>
+      <button type="button" class="ttl-hint" id="heroTitleBtn" aria-haspopup="dialog">
+        見出しの3案と、ページの目次を見る ↗
+      </button>
+
+      <p class="lead hero__lead">
+        写真と声、これまでの経験を預ける。<br>
+        セミナー、採用説明、顧客対応、営業説明。<br>必要な場面に、もう一人の社長を送り出す。
+      </p>
+
+      <ul class="hero__inputs">
+        <li><b>預ける</b><span>写真・声・経験</span></li>
+        <li><b>蓄える</b><span>事例・考え・回答</span></li>
+        <li><b>引き出す</b><span>仕事に合うTwin</span></li>
+      </ul>
+
+      <div class="btn-row hero__cta">
+        <a class="btn btn--lime" href="#yoto">Twinの使い方を見る ↗</a>
+        <button type="button" class="btn btn--ghost" data-open-soudan>預ける準備を確認する</button>
+      </div>
+      <p class="note">
+        サービス構想のプレビューです。画面はサンプルで、AI対話・申し込み受付は未接続です。
+      </p>
+    </div>
+
+    <div class="hero__art">
+      <figure class="portrait" id="portrait">
+        <img src="images/ceo-portrait.png" alt="CEOTwinの表示イメージ。社長のポートレート（生成イメージ・サンプル）" id="portraitImg" width="800" height="1000">
+        <div class="portrait__ph" aria-hidden="true">
+          <b>PORTRAIT PLACEHOLDER</b>
+          <span>images/ceo-portrait.png を配置すると表示されます</span>
+        </div>
+        <div class="voice-tag" aria-hidden="true"><span>YOUR VOICE</span><div class="voice-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><small>声のプロフィール</small></div>
+        <figcaption>架空人物の生成イメージ</figcaption>
+      </figure>
+
+      
+      <div class="twinui" aria-label="Twinの画面イメージ（サンプル・AI未接続）">
+        <div class="twinui__hd"><span class="twinui__dot" aria-hidden="true"></span><b>CEOTwin</b><span>画面イメージ</span></div>
+        <p class="bub bub--q">預けた知恵は、何に使えますか。</p>
+        <p class="bub bub--a">承認した知識を、セミナーや営業説明へ。新しい経験も加えて、使えるTwinへ育てる構想です。</p>
+        <p class="twinui__ft">固定サンプル文です。AIは接続していません。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ===== 仕組み ===== -->
+<section class="sec" id="shikumi">
+  <div class="wrap">
+    <p class="eyebrow"><i>01</i> 仕組み</p>
+    <h2>預ける。蓄える。引き出す。使い方を管理する。</h2>
+    <p class="lead measure">
+      写真・声・資料からTwinをつくり、日々の経験を加えていく。
+      社長が話したことを、次の説明にも使える知識として会社に残す設計です。
+    </p>
+
+
+    <ol class="bank-cycle" aria-label="ツイン銀行の4つの仕事">
+      <li><span>01 / DEPOSIT</span><h3>預ける</h3><p>写真・声・資料と、社長への取材から。すでにある知恵を預かり、Twinの土台をつくります。</p></li>
+      <li><span>02 / GROW</span><h3>蓄える</h3><p>新しい事例や考え、よく聞かれる質問を追加。同じ説明のために、毎回ゼロから準備する手間を減らします。</p></li>
+      <li><span>03 / USE</span><h3>引き出す</h3><p>セミナー、採用、顧客対応、営業。その場に合う動画や回答として、預けた知恵を使います。</p></li>
+      <li><span>04 / CONTROL</span><h3>管理する</h3><p>誰に、どこまで話してよいか。本人の承認と公開範囲を決めて、知識の使い方を管理します。</p></li>
+    </ol>
+    <h3 class="deposit-title">最初にお預かりするもの</h3>
+    <div class="flow3">
+      <div class="cell">
+        <span class="num">INPUT 01</span>
+        <h3>写真</h3>
+        <p>本人許諾のある顔写真。表情・画角の条件は採用するエンジンによって変わります。</p>
+      </div>
+      <div class="cell">
+        <span class="num">INPUT 02</span>
+        <h3>声</h3>
+        <p>本人が収録した音声。社名・商品名・数字の読み方は発音辞書として整えます。</p>
+      </div>
+      <div class="cell">
+        <span class="num">INPUT 03</span>
+        <h3>ナレッジ</h3>
+        <p>会社・商品資料、承認済みFAQ、過去のセミナー。足りない部分は短い取材で補います。</p>
+      </div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="cell out">
+        <span class="num">OUTPUT</span>
+        <h3>CEOTwin</h3>
+        <p>用途に合わせて、2つの形で届けます。動画と質問対応は、分けて設計します。</p>
+        <ul>
+          <li><b>承認済みの動画</b>：原稿を本人が承認してから制作。繰り返し再生できます。</li>
+          <li><b>質問への回答</b>：承認した資料の範囲で答えます。まずテキストから。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="consent">
+      <p><b>本人の同意が前提です。</b>写真・声・知識はいずれも本人と会社の許諾があるものだけを預かります。許諾のない人物の素材は使いません。</p>
+      <p>写真だけで始められるエンジンもありますが、高品質な本人再現に<b>追加の動画収録や同意映像が必要かは、エンジン選定時に確認します</b>。現時点では確定していません。</p>
+      <p>顔と声を伴うリアルタイム対話は<b>拡張の設計案</b>です。最初はテキストでの質問対応から精度と引き継ぎを確認します。</p>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ===== 用途タブ ===== -->
+<section class="sec" id="yoto">
+  <div class="wrap">
+    <p class="eyebrow"><i>02</i> 用途</p>
+    <h2>預けた知恵を、4つの仕事で引き出す。</h2>
+    <p class="lead measure">
+      どの場面でも、答える範囲は承認済みの内容まで。そこから先は人が受け取ります。
+      下の画面はすべて固定サンプルで、AIには接続していません。
+    </p>
+
+    <div class="tabs">
+      <div class="tablist" role="tablist" aria-label="用途の切り替え">
+        <button type="button" role="tab" id="tab-seminar" aria-controls="panel-seminar" aria-selected="true" tabindex="0">セミナー<small>承認原稿から動画</small></button>
+        <button type="button" role="tab" id="tab-sales" aria-controls="panel-sales" aria-selected="false" tabindex="-1">営業説明<small>説明＋質問の受付</small></button>
+        <button type="button" role="tab" id="tab-saiyo" aria-controls="panel-saiyo" aria-selected="false" tabindex="-1">採用説明<small>理念と仕事内容</small></button>
+        <button type="button" role="tab" id="tab-cs" aria-controls="panel-cs" aria-selected="false" tabindex="-1">顧客一次対応<small>公開範囲の回答</small></button>
+      </div>
+
+      <div class="tabpanel" role="tabpanel" id="panel-seminar" aria-labelledby="tab-seminar" tabindex="0">
+        <div class="tabgrid">
+          <div>
+            <h3>講演の本編を、社長の顔と声で何度でも。</h3>
+            <p class="lead">承認した原稿と資料から説明動画を制作します。会場や日程に左右されず、同じ内容を同じ品質で届けられる状態を目指します。</p>
+            <div class="handoff">
+              <b>人が受け取るところ</b>
+              <p>質疑応答はTwinの動画では完結させません。公開FAQでの受け付け、または担当者への引き継ぎに切り替えます。</p>
+            </div>
+            <p class="note">動画の制作と、質問への回答は別の機能・別の枠として設計します。</p>
+          </div>
+          <div class="screen">
+            <div class="screen__bar"><b>SEMINAR</b><span>画面イメージ / AI未接続</span></div>
+            <div class="screen__body">
+              <p class="bub bub--q">質問：社長が撮影する時間を、どう減らすのですか。</p>
+              <p class="bub bub--a">固定サンプル回答：写真・音声・過去の説明資料をもとに、承認原稿から動画を作る設計です。新しいテーマは取材で補い、公開前に社長が確認します。</p>
+            </div>
+            <div class="screen__ft">固定サンプル文です。実際の回答内容ではありません。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tabpanel" role="tabpanel" id="panel-sales" aria-labelledby="tab-sales" tabindex="0" hidden>
+        <div class="tabgrid">
+          <div>
+            <h3>商談の前に、社長の説明を先に済ませておく。</h3>
+            <p class="lead">サービスの説明動画と公開範囲のFAQを置き、関心と質問を担当者へ渡します。初回商談が「説明」から「相談」に変わる状態を目指します。</p>
+            <div class="handoff">
+              <b>人が受け取るところ</b>
+              <p>価格の特別承認、契約の締結、返金の確約は、いずれもTwinでは行いません。人の判断に戻します。</p>
+            </div>
+            <p class="note">予約や問い合わせは既存の窓口へつなぐ設計です。このページでは送信しません。</p>
+          </div>
+          <div class="screen">
+            <div class="screen__bar"><b>SALES</b><span>画面イメージ / AI未接続</span></div>
+            <div class="screen__body">
+              <p class="bub bub--q">質問：動画と、質問に答えるTwinの違いは？</p>
+              <p class="bub bub--a">固定サンプル回答：動画は承認した原稿を繰り返し再生します。FAQは資料から質問に答える方式です。まず動画とテキストFAQから始め、顔と声の対話は拡張を想定しています。</p>
+            </div>
+            <div class="screen__ft">固定サンプル文です。実際の回答内容ではありません。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tabpanel" role="tabpanel" id="panel-saiyo" aria-labelledby="tab-saiyo" tabindex="0" hidden>
+        <div class="tabgrid">
+          <div>
+            <h3>理念は、社長の口から聞きたい。何回でも。</h3>
+            <p class="lead">会社の考え方、仕事の内容、求める人物像を社長の言葉で説明します。会社説明会の日程に入れない候補者にも同じ内容を届けられる状態を目指します。</p>
+            <div class="handoff">
+              <b>人が受け取るところ</b>
+              <p>採否の判断、個別の条件、選考の連絡は人が行います。Twinは説明と、公開している範囲の質問受付までです。</p>
+            </div>
+            <p class="note">公開してよい内容と社内限定の内容は、知識として分けて持ちます。</p>
+          </div>
+          <div class="screen">
+            <div class="screen__bar"><b>RECRUIT</b><span>画面イメージ / AI未接続</span></div>
+            <div class="screen__body">
+              <p class="bub bub--q">質問：会社の考え方も伝えられますか？</p>
+              <p class="bub bub--a">固定サンプル回答：理念や経営者の考えを、顔・声と承認した資料から説明する構想です。採用の条件や選考判断は、担当者が個別にご案内します。</p>
+            </div>
+            <div class="screen__ft">固定サンプル文です。実際の回答内容ではありません。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tabpanel" role="tabpanel" id="panel-cs" aria-labelledby="tab-cs" tabindex="0" hidden>
+        <div class="tabgrid">
+          <div>
+            <h3>最初の一往復だけ、先に引き受ける。</h3>
+            <p class="lead">商品の内容、導入の手順、サポートの範囲を、承認済みの資料の範囲で説明します。一次説明と質問の受け付けまでが担当範囲です。</p>
+            <div class="handoff">
+              <b>人が受け取るところ</b>
+              <p>資料にない質問は、推測で答えずに保留します。そのまま担当者へ引き継ぎ、誰に渡したかを記録します。</p>
+            </div>
+            <p class="note">「社長の判断を完全に再現する」とは訴求しません。</p>
+          </div>
+          <div class="screen">
+            <div class="screen__bar"><b>SUPPORT</b><span>画面イメージ / AI未接続</span></div>
+            <div class="screen__body">
+              <p class="bub bub--q">質問：最初に何を用意すればよいですか？</p>
+              <p class="bub bub--a">固定サンプル回答：本人の許諾がある写真と音声、会社・商品の資料をご用意ください。FAQやセミナーの録画も活用する想定です。追加の収録条件は、利用するエンジンに合わせて確認します。</p>
+            </div>
+            <div class="screen__ft">固定サンプル文です。実際の回答内容ではありません。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="etc">
+      <span>この4つ以外の想定</span>
+      <span class="badge">社員研修</span>
+      <span class="badge">社内FAQ</span>
+      <span class="badge">SNS・短尺発信</span>
+    </div>
+    <p class="note">いずれも提供設計案です。現時点で納品済みの動画・FAQはありません。</p>
+  </div>
+</section>
+
+<!-- ===== 差別化（濃色 1/2） ===== -->
+<section class="sec sec--dark" id="unyo">
+  <div class="wrap">
+    <p class="eyebrow"><i>03</i> 運用</p>
+    <h2>社長が話すほど、会社に使える知恵が蓄積する。</h2>
+    <p class="lead measure">
+      一度預けて終わりにせず、新しい経験や方針を加えていく。
+      CEOTwinが目指すのは、取材・整理・本人承認・更新を引き受け、蓄えた知恵を仕事で使い続けられる状態を保つことです。
+    </p>
+
+    <ol class="steps">
+      <li><b>定期取材</b><p>社長への短い取材を毎月。新しい事例、変わった方針、よく聞かれた質問を拾います。</p></li>
+      <li><b>知識整理</b><p>出典・更新日・社外に出してよいかを付けて整理。古い価格は失効させます。</p></li>
+      <li><b>本人承認</b><p>公開前に本人が内容・声・読み方を確認。誰が何を認めたかを記録します。</p></li>
+      <li><b>予約・担当者へ</b><p>関心と質問を、既存の問い合わせ先・予約先・担当者へつなぎます。</p></li>
+      <li><b>月次改善</b><p>質問ログから、次の営業説明・次のセミナー・追加FAQをつくります。</p></li>
+    </ol>
+
+    <div class="guard">
+      <div>
+        <b>社外と社内を分ける</b>
+        <p>公開してよい商品情報と、社内限定の判断・ルールは別の知識として持ちます。社外の回答に内部情報を混ぜないよう、公開範囲を分けて設計・検証します。</p>
+      </div>
+      <div>
+        <b>わからない質問は人へ</b>
+        <p>資料に根拠がない質問は推測で答えず保留し、担当者へ引き継ぎます。架空の確約はしない設計です。</p>
+      </div>
+      <div>
+        <b>契約・返金・特別価格は人の判断</b>
+        <p>契約の締結、返金の確約、価格の特別承認、採否の判断はTwinの範囲外です。必ず人が決めます。</p>
+      </div>
+    </div>
+
+    <p class="note">
+      ここに書いた優位性は仮説で、競合との差はまだ実証していません。独占技術・品質優位・成果実績は主張しません。
+      四半期に数本の動画で足りる会社には、毎月の課金は割高になる可能性があります。
+    </p>
+  </div>
+</section>
+
+<!-- ===== 比較 ===== -->
+<section class="sec" id="hikaku">
+  <div class="wrap">
+    <p class="eyebrow"><i>04</i> 比較</p>
+    <h2>つくるツールか。運用まで任せるサービスか。</h2>
+    <p class="lead measure">
+      生成ツール、知識を使う対話サービス、本人動画の制作サービス。
+      どこまで自社で運用したいかで、合う選択肢は変わります。
+      各社の料金は2026年10月2日に公式ページで確認した表示です。
+    </p>
+
+    <div class="scroll-x">
+      <table class="cmp">
+        <caption>料金は2026年10月2日時点の公式ページ表示。USDは米ドルで、税・為替・決済費用を含む日本での請求額ではありません。</caption>
+        <thead>
+          <tr>
+            <th scope="col">サービス</th>
+            <th scope="col">主な役割</th>
+            <th scope="col">公開料金（2026-10-02 確認）</th>
+            <th scope="col">向く使い方</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">HeyGen<small>海外・ツール</small></th>
+            <td data-label="主な役割">本人アバターと声で説明動画をつくるツール。制作は利用者自身。</td>
+            <td data-label="公開料金" class="price">
+              <em>Creator 29USD／月</em>・600クレジット
+              <span class="src">出典：<a class="linkline" href="https://www.heygen.com/pricing" target="_blank" rel="noopener">https://www.heygen.com/pricing</a></span>
+            </td>
+            <td data-label="向く使い方">自分で台本を書き、動画を数多くつくりたい。</td>
+          </tr>
+          <tr>
+            <th scope="row">Delphi<small>海外・ツール</small></th>
+            <td data-label="主な役割">本人の知識と口調を使う対話。音声対話、サイト埋め込み。</td>
+            <td data-label="公開料金" class="price">
+              <em>Builder 99USD／月</em>（月払い表示）
+              <span class="src">出典：<a class="linkline" href="https://www.delphi.ai/pricing" target="_blank" rel="noopener">https://www.delphi.ai/pricing</a></span>
+            </td>
+            <td data-label="向く使い方">自分の知識を自分で入れ、対話で使いたい。本人映像のリアルタイム対話の条件は、公開料金表からは確定できません。</td>
+          </tr>
+          <tr>
+            <th scope="row">Tavus<small>海外・ツール</small></th>
+            <td data-label="主な役割">本人の顔・声で対話。資料の参照、外部ツール連携、開発者向けAPI。</td>
+            <td data-label="公開料金" class="price">
+              <em>Builder 59USD／月</em>・対話175分・同時3接続
+              <span class="src">出典：<a class="linkline" href="https://www.tavus.io/pricing" target="_blank" rel="noopener">https://www.tavus.io/pricing</a></span>
+            </td>
+            <td data-label="向く使い方">自社のサービスや画面へ、対話機能を組み込みたい。</td>
+          </tr>
+          <tr>
+            <th scope="row">AvaTwin（グラッドキューブ）<small>国内・制作</small></th>
+            <td data-label="主な役割">本人動画の制作。資料をもとに答えるチャットボットは別メニュー。</td>
+            <td data-label="公開料金" class="price">
+              <em>スポット20万円／本</em>（税抜・1本30分以内）、<em>年4本64万円</em>
+              <span class="src">出典：<a class="linkline" href="https://www.glad-cube.com/service/avatwin-ir/" target="_blank" rel="noopener">https://www.glad-cube.com/service/avatwin-ir/</a></span>
+            </td>
+            <td data-label="向く使い方">年に数本の本人動画を、外注で制作したい。</td>
+          </tr>
+          <tr data-own="true">
+            <th scope="row">CEOTwin（当社）<small>提供設計案・未公開</small></th>
+            <td data-label="主な役割">知識の整理、台本の下書き、本人承認、毎月の更新までを含む運用サービス（設計案）。</td>
+            <td data-label="公開料金" class="price">
+              <em>仮・税別：初期19.8万円／月4.98万円〜</em>（未確定）
+              <span class="src">社内の価格たたき台です。公開された販売価格ではありません。</span>
+            </td>
+            <td data-label="向く使い方">
+              台本を書く時間がなく、毎月の更新まで任せたい。
+              <span class="minus">自社が負ける点：ツールを自分で使って制作・運用できる方には割高です。生成品質は採用するエンジンに依存します。</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ul class="cmp-notes">
+      <li>海外3社の掲載額はツール利用料、AvaTwinは動画制作費、CEOTwinは導入・制作・運用の仮料金で、<b>提供範囲が異なります</b>。同じ条件の比較ではありません。</li>
+      <li>クレジット・対話分数・同時接続数など、料金の単位も各社で異なります。</li>
+      <li>掲載した各社は<b>比較対象であり、当社の提携先・採用エンジンではありません</b>。</li>
+      <li>料金・機能は改定される可能性があります。検討時は各社の公式ページで最新の表示をご確認ください。</li>
+    </ul>
+
+    <p class="btn-row" style="margin-top:22px;">
+      <a class="fc" href="https://chatgpt.com/" target="_blank" rel="noopener" data-fc="以下の4社の料金表示が2026年10月2日時点で正しいか、公式ページを確認して検証してください。(1)HeyGen Creator 29USD/月・600クレジット https://www.heygen.com/pricing (2)Delphi Builder 99USD/月（月払い） https://www.delphi.ai/pricing (3)Tavus Builder 59USD/月・対話175分・同時3接続 https://www.tavus.io/pricing (4)AvaTwin（グラッドキューブ）スポット20万円/本・税抜・1本30分以内、年4本64万円 https://www.glad-cube.com/service/avatwin-ir/ 。変更があれば現在の価格と、クレジットや対話分数などの単位の違いも指摘してください。">ChatGPTで比較を確認</a>
+    </p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ===== 仮料金 ===== -->
+<section class="sec" id="kakaku">
+  <div class="wrap">
+    <p class="eyebrow"><i>05</i> 料金</p>
+    <h2>預けた知恵の使い方に合わせて、3つのプラン。</h2>
+    <p class="lead measure">
+      動画で届ける。質問に答える。顔と声で対話する。
+      月額の案には、知識を整え、更新し、仕事に使える状態を保つ運用を含めます。料金・提供範囲は実証後に確定します。
+    </p>
+
+    <div class="kari">
+      <b>仮・提供設計案</b>
+      <span>すべて税別。実証後に確定します。このページから購入・申込はできません。</span>
+    </div>
+
+    <div class="plans">
+      <div>
+        <span class="plan__tag">PLAN 01</span>
+        <p class="plan__name">発信</p>
+        <dl class="plan__price">
+          <dt>初期費用（仮）</dt><dd>19.8万円<small>税別</small></dd>
+          <dt>月額（仮）</dt><dd>4.98万円<small>税別</small></dd>
+        </dl>
+        <ul>
+          <li>本人1名のアバター・音声</li>
+          <li>初期の資料整理</li>
+          <li>承認原稿からの動画：完成20分以内・4本以内／月</li>
+          <li>月1回の原稿更新</li>
+        </ul>
+        <p class="plan__foot">枠は完成尺での上限（仮）。撮影訪問、翻訳、配信代行は別見積。</p>
+      </div>
+      <div data-main="true">
+        <span class="plan__tag">PLAN 02 ／ 中心に検証する案</span>
+        <p class="plan__name">営業・FAQ</p>
+        <dl class="plan__price">
+          <dt>初期費用（仮）</dt><dd>39.8万円<small>税別</small></dd>
+          <dt>月額（仮）</dt><dd>9.8万円<small>税別</small></dd>
+        </dl>
+        <ul>
+          <li>「発信」の範囲すべて</li>
+          <li>公開用ナレッジの整理</li>
+          <li>テキストでの質問対応：1,000回答以内／月</li>
+          <li>問い合わせ・予約先への導線 1件</li>
+          <li>月次の回答改善</li>
+        </ul>
+        <p class="plan__foot">まず販売を検証する主力案。初回の実証は動画＋テキストFAQの最小構成から。</p>
+      </div>
+      <div>
+        <span class="plan__tag">PLAN 03 ／ 拡張予定</span>
+        <p class="plan__name">対話</p>
+        <dl class="plan__price">
+          <dt>初期費用（仮）</dt><dd>49.8万円<small>税別</small></dd>
+          <dt>月額（仮）</dt><dd>19.8万円<small>税別</small></dd>
+        </dl>
+        <ul>
+          <li>「営業・FAQ」の範囲すべて</li>
+          <li>本人の映像と声でのリアルタイム対話：300接続分以内／月</li>
+          <li>1回あたり最大10分</li>
+          <li>月次の利用レポート</li>
+        </ul>
+        <p class="plan__foot">品質と原価を測ってから販売条件を決める拡張案。超過単価は未決定で、上限到達時は担当者へのご案内に切り替えます。</p>
+      </div>
+    </div>
+
+    <p class="note">
+      無制限の利用はお約束しません。生成し直し、追加制作、CRMへの書き込み、個別開発は別枠です。
+    </p>
+    <p class="btn-row" style="margin-top:22px;">
+      <button type="button" class="btn btn--lime" data-open-soudan>預ける準備を確認する</button>
+    </p>
+    <p class="note">相談ボタンはローカルの検討メモを作るだけです。送信も申込受付も行いません。</p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ===== 試算 ===== -->
+<section class="sec" id="shisan">
+  <div class="wrap">
+    <p class="eyebrow"><i>06</i> 試算</p>
+    <h2>繰り返しの説明に、何時間使っていますか。</h2>
+    <p class="lead measure">
+      社長が同じ説明を繰り返している回数と1回の長さを入れると、月あたりの時間が出ます。
+      判断材料として、まず現状の量を把握するための計算です。
+    </p>
+
+    <div class="sim">
+      <div>
+        <p class="field">
+          <label for="simCount">同じ説明を繰り返す回数（月）：<output id="simCountOut" for="simCount">12</output> 回</label>
+          <input type="range" id="simCount" min="0" max="60" step="1" value="12">
+        </p>
+        <p class="field">
+          <label for="simMin">1回あたりの時間</label>
+          <select id="simMin">
+            <option value="5">5分</option>
+            <option value="10">10分</option>
+            <option value="15">15分</option>
+            <option value="20">20分</option>
+            <option value="30" selected>30分</option>
+            <option value="45">45分</option>
+            <option value="60">60分</option>
+            <option value="90">90分</option>
+          </select>
+        </p>
+        <p class="note">
+          回数 × 1回の分数 ÷ 60 で計算しています。
+        </p>
+      </div>
+      <dl class="simout">
+        <dt>繰り返しの説明に使っている時間（月）</dt>
+        <dd class="big"><span id="simHours">6.0</span><small>時間／月</small></dd>
+        <dd class="note" style="margin-top:16px;">
+          これは<b>すべてTwinに置き換えられたと仮定した場合の上限</b>です。実際にどれだけ減るかは内容と相手によって変わります。
+          成果を保証するものではなく、削減効果の実績でもありません。
+        </dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ===== FAQ ===== -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <p class="eyebrow"><i>07</i> 質問</p>
+    <h2>導入前に、確認したいこと。</h2>
+
+    <div class="faq">
+      <details>
+        <summary>「ツイン銀行」とは、どんなサービスですか。</summary>
+        <div class="ans"><p>社長の写真・声・知識を預かり、蓄積し、動画や質問対応で使う仕組みを「銀行」にたとえています。CEOTwinのサービスコンセプトで、金融の預金や運用を扱うものではありません。</p><p>知識を残すことに加え、セミナーや営業など、実際の仕事で使える状態に整えることを目指します。</p></div>
+      </details>
+      <details>
+        <summary>預けた知識は、誰が使えますか。</summary>
+        <div class="ans"><p>本人と会社が認めた範囲で使う設計です。社外に出してよい知識と社内限定の知識を分け、用途ごとの承認と、担当者への引き継ぎを決めます。</p><p>保存先、利用権限、契約終了時の返却・削除の条件は未確定です。正式提供に向けて決める事項として扱います。</p></div>
+      </details>
+
+      <details>
+        <summary>何を預ければ始められますか。</summary>
+        <div class="ans">
+          <p>本人許諾のある写真、本人が収録した音声、会社・商品の資料、承認済みFAQ、過去のセミナー動画があれば検討を始められます。足りない部分は短い取材で補います。</p>
+          <p>写真だけで開始できるエンジンもありますが、高品質な本人再現に追加の動画収録や同意映像が必要かは、エンジン選定時に確認します。</p>
+        </div>
+      </details>
+      <details>
+        <summary>社長の判断まで再現できますか。</summary>
+        <div class="ans">
+          <p>できません。Twinが扱うのは、承認した資料とFAQの範囲の説明と回答までです。「社長の判断を完全に再現する」とは訴求しません。</p>
+          <p>契約の締結、返金の確約、価格の特別承認、採否の判断は人が決めます。</p>
+        </div>
+      </details>
+      <details>
+        <summary>公開前の承認はどうなりますか。</summary>
+        <div class="ans">
+          <p>原稿・声・読み方・内容を本人が確認してから公開する設計です。誰がどの内容を認めたかを記録し、古くなった価格や方針は失効させます。</p>
+          <p>公開してよい社外向けの知識と、社内限定の判断・ルールは分けて持ちます。</p>
+        </div>
+      </details>
+      <details>
+        <summary>資料にない質問を聞かれたら、どうなりますか。</summary>
+        <div class="ans">
+          <p>推測で答えずに保留し、担当者へ引き継ぎます。架空の実績や確約を作らない設計を前提にしています。</p>
+          <p>ただし、誤回答が起きないことを保証するものではありません。公開範囲と禁止する回答を事前に決め、試験で確認してから使います。</p>
+        </div>
+      </details>
+      <details>
+        <summary>いま申し込めますか。</summary>
+        <div class="ans">
+          <p>まだです。CEOTwinは提供設計案の段階で、<b>正式な受付は開始していません</b>。このページは社内検討用のローカルサンプルです。</p>
+          <p>相談ボタンもローカルの検討メモを作るだけで、入力内容はどこにも送信されません。写真や音声のアップロードもできません。</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 締めCTA（濃色 2/2） ===== -->
+<section class="close" id="cta">
+  <div class="wrap">
+    <h2>あなたの知恵を、<br>会社のこれからに預けよう。</h2>
+    <p>
+      社長の写真・声・経験を預かり、必要な場面にもう一人の社長を送り出す。
+      CEOTwinは、会社に知恵を蓄えて使う「ツイン銀行」の構想です。提供内容・料金・開始時期は未確定です。
+    </p>
+    <p class="btn-row">
+      <button type="button" class="btn btn--onDark" data-open-soudan>預ける準備を確認する</button>
+      <a class="btn btn--ghostDark" href="#hikaku">他社との違いをもう一度見る</a>
+    </p>
+    <p class="note">ボタンは画面イメージとローカルの検討メモのみ。送信・申込受付は行いません。</p>
+  </div>
+</section>
+
+<!-- ===== 市場統計 strip ===== -->
+<section class="stats" aria-labelledby="statsH">
+  <div class="wrap" style="padding-top:clamp(40px,6vw,64px);">
+    <h2 id="statsH" style="font-size:clamp(1.0625rem,2.2vw,1.25rem);">参考：市場・環境のデータ</h2>
+    <p class="note" style="margin-bottom:26px;">
+      いずれも第三者調査の数値で、<b>CEOTwinの導入成果ではありません</b>。母集団・時期・定義が異なるため、合算や比較はできません。
+    </p>
+  </div>
+  <div class="wrap">
+    <div class="stats__grid">
+      <div>
+        <span class="stats__n">88%</span>
+        <span class="stats__m">業務のうち1機能以上でAIを定期的に利用していると回答</span>
+        <span class="stats__d">母集団：105か国・1,993回答（2025年6月25日〜7月29日実施、11月5日公表）／McKinsey 2025年調査<br><a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2025" target="_blank" rel="noopener">mckinsey.com</a></span>
+      </div>
+      <div>
+        <span class="stats__n">39%</span>
+        <span class="stats__m">企業全体のEBITへの影響があったと報告</span>
+        <span class="stats__d">母集団：同上（105か国・1,993回答）／McKinsey 2025年調査<br><a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2025" target="_blank" rel="noopener">mckinsey.com</a></span>
+      </div>
+      <div>
+        <span class="stats__n">23%</span>
+        <span class="stats__m">少なくとも1機能でAIエージェントの展開を拡大中と回答</span>
+        <span class="stats__d">母集団：同上（105か国・1,993回答）／McKinsey 2025年調査<br><a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2025" target="_blank" rel="noopener">mckinsey.com</a></span>
+      </div>
+      <div>
+        <span class="stats__n">51.4%</span>
+        <span class="stats__m">正社員が不足していると回答した企業の割合</span>
+        <span class="stats__d">母集団：有効回答10,735社（2025年4月16〜30日調査）／帝国データバンク<br><a href="https://www.tdb.co.jp/report/economic/20250519-laborshortage202504/" target="_blank" rel="noopener">tdb.co.jp</a></span>
+      </div>
+      <div>
+        <span class="stats__n">15%</span>
+        <span class="stats__m">AI支援を受けた有人サポートで、1時間あたり解決件数の平均増加</span>
+        <span class="stats__d">母集団：担当者5,172名の研究（2025年）。自律アバターの効果ではありません／Generative AI at Work, QJE 2025<br><a href="https://doi.org/10.1093/qje/qjae044" target="_blank" rel="noopener">doi.org/10.1093/qje/qjae044</a>／<a href="https://digitaleconomy.stanford.edu/publication/generative-ai-at-work/" target="_blank" rel="noopener">stanford.edu</a></span>
+      </div>
+    </div>
+    <p class="btn-row" style="margin:24px 0 clamp(40px,6vw,64px);">
+      <a class="fc" href="https://chatgpt.com/" target="_blank" rel="noopener" data-fc="次の市場データの数値・母集団・時期・出典が正しいか、一次資料を確認して検証してください。(1)88%が業務の1機能以上でAIを定期利用、39%が企業全体のEBITへの影響を報告、23%が少なくとも1機能でAIエージェントの展開を拡大中。いずれもMcKinsey 2025年調査、105か国1,993回答、2025年6月25日〜7月29日実施、11月5日公表 https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2025 (2)正社員が不足している企業51.4%、帝国データバンク2025年4月16〜30日調査、有効回答10,735社 https://www.tdb.co.jp/report/economic/20250519-laborshortage202504/ (3)AI支援を受けた有人サポートで1時間あたり解決件数が平均15%増加、担当者5,172名の研究、Generative AI at Work, QJE 2025 https://doi.org/10.1093/qje/qjae044 。数値の取り違えや、文脈を無視した一般化があれば指摘してください。">ChatGPTで市場データを確認</a>
+    </p>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== footer ===== -->
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__top">
+      <span class="ft__brand">CEOTwin</span>
+      <nav aria-label="会社情報">
+        <a class="linkline" href="https://www.writeup.co.jp/company/" target="_blank" rel="noopener">会社概要</a>
+        <a class="linkline" href="https://www.writeup.co.jp/privacy/" target="_blank" rel="noopener">プライバシーポリシー</a>
+      </nav>
+    </div>
+    <p>
+      本ページはCEOTwinの構想プレビューです。
+      実サービスの公開・申込受付は行っていません。記載の機能・料金・提供範囲・開始時期はすべて未確定です。
+      掲載した他社名・料金は2026年10月2日時点の公式ページ表示にもとづく比較情報で、提携関係を示すものではありません。
+      市場データは第三者調査の引用で、CEOTwinの導入成果ではありません。ポートレートは生成イメージのサンプルです。
+    </p>
+    <p>作成日：2026年10月2日</p>
+  </div>
+</footer>
+
+<!-- ===== dialog: ヒーロー3案＋目次 ===== -->
+<dialog id="heroDialog" aria-labelledby="heroDialogH">
+  <div class="dlg__hd">
+    <div>
+      <h2 id="heroDialogH">見出しの3案と、このページの読みどころ</h2>
+      <p>ヒーローの見出しは3案を順番に表示しています。開いている間は切り替えを止めます。</p>
+    </div>
+    <button type="button" class="dlg__x" data-close-dialog>閉じる</button>
+  </div>
+  <div class="dlg__bd">
+    <h3>見出し 3案</h3>
+    <ul class="hv">
+      <li><b>社長の知恵を預かる、ツイン銀行。</b></li>
+      <li><b>預けた知恵を、もう一人の社長へ。</b></li>
+      <li><b>社長が話すほど、会社に知恵が残る。</b></li>
+    </ul>
+    <h3>このページの見出しを上から</h3>
+    <ol class="toc">
+      <li><a href="#shikumi" data-close-dialog>預ける。蓄える。引き出す。使い方を管理する。</a></li>
+      <li><a href="#yoto" data-close-dialog>預けた知恵を、4つの仕事で引き出す。</a></li>
+      <li><a href="#unyo" data-close-dialog>社長が話すほど、会社に使える知恵が蓄積する。</a></li>
+      <li><a href="#hikaku" data-close-dialog>つくるツールか。運用まで任せるサービスか。</a></li>
+      <li><a href="#kakaku" data-close-dialog>預けた知恵の使い方に合わせて、3つのプラン。</a></li>
+      <li><a href="#shisan" data-close-dialog>繰り返しの説明に、何時間使っていますか。</a></li>
+      <li><a href="#faq" data-close-dialog>導入前に、確認したいこと。</a></li>
+    </ol>
+  </div>
+</dialog>
+
+<!-- ===== dialog: 導入相談イメージ ===== -->
+<dialog id="soudanDialog" aria-labelledby="soudanDialogH">
+  <div class="dlg__hd">
+    <div>
+      <h2 id="soudanDialogH">ツイン銀行に預ける準備</h2>
+      <p>預ける素材と、使いたい仕事を整理します。サンプル画面のため、内容は送信されません。</p>
+    </div>
+    <button type="button" class="dlg__x" data-close-dialog>閉じる</button>
+  </div>
+  <div class="dlg__bd">
+    <div class="dlg-note">
+      <p><b>正式な受付は開始していません。</b>これは画面イメージです。</p>
+      <p>お名前・メールアドレスなどの連絡先は入力項目を置いていません。写真・音声のアップロードもできません。入力内容はどこにも送信されず、ページを閉じれば残りません。</p>
+    </div>
+
+    <p class="field">
+      <label for="sdUse">いちばん試したい用途</label>
+      <select id="sdUse">
+        <option value="セミナー">セミナー</option>
+        <option value="営業説明" selected>営業説明</option>
+        <option value="採用説明">採用説明</option>
+        <option value="顧客一次対応">顧客一次対応</option>
+        <option value="社員研修">社員研修</option>
+        <option value="社内FAQ">社内FAQ</option>
+        <option value="まだ決めていない">まだ決めていない</option>
+      </select>
+    </p>
+
+    <fieldset>
+      <legend>いま預けられる素材</legend>
+      <div class="checks">
+        <label><input type="checkbox" data-sd-item value="会社・商品の資料"><span>会社・商品の資料<small>サービス紹介、提案書、価格表など</small></span></label>
+        <label><input type="checkbox" data-sd-item value="承認済みのFAQ"><span>承認済みのFAQ<small>社外に出してよいと決まっている回答</small></span></label>
+        <label><input type="checkbox" data-sd-item value="過去のセミナー動画・原稿"><span>過去のセミナー動画・原稿<small>録画、台本、投影資料</small></span></label>
+        <label><input type="checkbox" data-sd-item value="本人許諾のある写真"><span>本人許諾のある写真<small>アップロードはできません。有無の確認だけです</small></span></label>
+        <label><input type="checkbox" data-sd-item value="本人が収録した音声"><span>本人が収録した音声<small>アップロードはできません。有無の確認だけです</small></span></label>
+      </div>
+    </fieldset>
+
+    <p class="btn-row">
+      <button type="button" class="btn btn--lime" id="sdMake">選んだ内容をローカル検討メモにする</button>
+      <span class="copied" id="sdMsg" role="status" aria-live="polite"></span>
+    </p>
+
+    <div class="memo-wrap" id="sdMemoWrap" hidden>
+      <p class="field" style="margin-top:22px;">
+        <label for="sdMemo">ローカル検討メモ（この端末の画面内だけ。送信されません）</label>
+        <textarea class="memo" id="sdMemo" readonly></textarea>
+      </p>
+      <p class="btn-row">
+        <button type="button" class="btn btn--ghost" id="sdCopy">メモを選択してコピー</button>
+      </p>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  'use strict';
+  var reduce = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+  function prefersReduce() { return !!(reduce && reduce.matches); }
+
+  /* ---------- 1. ヘッダー autohide（passive + rAF） ---------- */
+  (function header() {
+    var hdr = document.getElementById('hdr');
+    if (!hdr) return;
+    var last = window.pageYOffset || 0;
+    var acc = 0;
+    var ticking = false;
+
+    function apply() {
+      ticking = false;
+      var y = window.pageYOffset || 0;
+      var d = y - last;
+      last = y;
+      if (y <= 120) { acc = 0; hdr.setAttribute('data-hidden', 'false'); return; }
+      if (d > 0) {
+        acc = acc > 0 ? acc + d : d;
+        if (acc >= 8) hdr.setAttribute('data-hidden', 'true');
+      } else if (d < 0) {
+        acc = 0;
+        hdr.setAttribute('data-hidden', 'false');
+      }
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; window.requestAnimationFrame(apply); }
+    }, { passive: true });
+    hdr.addEventListener('focusin', function () { hdr.setAttribute('data-hidden', 'false'); });
+    document.addEventListener('focusin', function (e) {
+      if (hdr.contains(e.target)) hdr.setAttribute('data-hidden', 'false');
+    });
+  })();
+
+  /* ---------- 2. ポートレート画像の有無 ---------- */
+  (function portrait() {
+    var fig = document.getElementById('portrait');
+    var img = document.getElementById('portraitImg');
+    if (!fig || !img) return;
+    function ok() { fig.setAttribute('data-has-image', 'true'); }
+    function ng() { fig.setAttribute('data-has-image', 'false'); img.style.display = 'none'; }
+    img.addEventListener('load', ok);
+    img.addEventListener('error', ng);
+    if (img.complete) { (img.naturalWidth > 0 ? ok : ng)(); }
+  })();
+
+  /* ---------- 3. ヒーロー見出しの3案ローテーション ---------- */
+  var rotation = (function () {
+    var l1 = document.getElementById('ttl1');
+    var l2 = document.getElementById('ttl2');
+    if (!l1 || !l2) return { pause: function () {}, resume: function () {} };
+
+    var VARIANTS = [
+      ['社長の知恵を預かる、', 'ツイン銀行。'],
+      ['預けた知恵を、', 'もう一人の社長へ。'],
+      ['社長が話すほど、', '会社に知恵が残る。']
+    ];
+    var TYPE = 55, HOLD = 5000, ERASE = 22;
+
+    var caret = document.createElement('span');
+    caret.className = 'caret';
+    caret.setAttribute('aria-hidden', 'true');
+    caret.setAttribute('data-blink', 'true');
+
+    var idx = 0, timer = null, paused = false, stopped = false;
+
+    function render(a, b, withCaret, caretOnSecond) {
+      l1.textContent = a;
+      l2.textContent = b;
+      if (withCaret) (caretOnSecond ? l2 : l1).appendChild(caret);
+      else if (caret.parentNode) caret.parentNode.removeChild(caret);
+    }
+
+    function later(fn, ms) {
+      timer = window.setTimeout(function () {
+        timer = null;
+        if (stopped) return;
+        if (paused) { later(fn, 160); return; }
+        fn();
+      }, ms);
+    }
+
+    function typeIn() {
+      var v = VARIANTS[idx];
+      var full = v[0] + v[1];
+      var n = 0;
+      (function step() {
+        if (stopped) return;
+        n += 1;
+        var a = full.slice(0, Math.min(n, v[0].length));
+        var b = n > v[0].length ? v[1].slice(0, n - v[0].length) : '';
+        render(a, b, true, n > v[0].length);
+        if (n >= full.length) { later(eraseOut, HOLD); return; }
+        later(step, TYPE);
+      })();
+    }
+
+    function eraseOut() {
+      var v = VARIANTS[idx];
+      var full = v[0] + v[1];
+      var n = full.length;
+      (function step() {
+        if (stopped) return;
+        n -= 1;
+        var a = full.slice(0, Math.min(n, v[0].length));
+        var b = n > v[0].length ? v[1].slice(0, n - v[0].length) : '';
+        render(a, b, true, n > v[0].length);
+        if (n <= 0) {
+          idx = (idx + 1) % VARIANTS.length;
+          later(typeIn, 260);
+          return;
+        }
+        later(step, ERASE);
+      })();
+    }
+
+    function start() {
+      if (prefersReduce()) {
+        stopped = true;
+        render(VARIANTS[0][0], VARIANTS[0][1], false, false);
+        return;
+      }
+      stopped = false;
+      render(VARIANTS[idx][0], VARIANTS[idx][1], true, true);
+      later(eraseOut, HOLD);
+    }
+
+    if (reduce && reduce.addEventListener) {
+      reduce.addEventListener('change', function () {
+        if (timer) { window.clearTimeout(timer); timer = null; }
+        stopped = true;
+        window.setTimeout(start, 30);
+      });
+    }
+    start();
+
+    return {
+      pause: function () { paused = true; },
+      resume: function () { paused = false; }
+    };
+  })();
+
+  /* ---------- 4. native dialog の共通処理 ---------- */
+  var lastFocus = null;
+
+  function openDialog(dlg) {
+    if (!dlg) return;
+    lastFocus = document.activeElement;
+    rotation.pause();
+    if (typeof dlg.showModal === 'function') dlg.showModal();
+    else dlg.setAttribute('open', '');
+    var f = dlg.querySelector('select, button, [href], textarea, input');
+    if (f && f.focus) { try { f.focus(); } catch (e) {} }
+  }
+
+  function closeDialog(dlg) {
+    if (!dlg) return;
+    if (typeof dlg.close === 'function' && dlg.open) dlg.close();
+    else dlg.removeAttribute('open');
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('dialog'), function (dlg) {
+    dlg.addEventListener('click', function (e) {
+      if (e.target === dlg) closeDialog(dlg); /* backdrop */
+    });
+    dlg.addEventListener('close', function () {
+      rotation.resume();
+      if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch (e) {} }
+      lastFocus = null;
+    });
+    dlg.addEventListener('cancel', function () { /* Escape は既定で close へ */ });
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-close-dialog]'), function (btn) {
+    btn.addEventListener('click', function () {
+      var dlg = btn.closest ? btn.closest('dialog') : null;
+      closeDialog(dlg);
+    });
+  });
+
+  var heroDialog = document.getElementById('heroDialog');
+  var heroBtn = document.getElementById('heroTitleBtn');
+  var heroTitle = document.getElementById('heroTitle');
+  if (heroBtn) heroBtn.addEventListener('click', function () { openDialog(heroDialog); });
+  if (heroTitle) {
+    heroTitle.style.cursor = 'pointer';
+    heroTitle.addEventListener('click', function () { openDialog(heroDialog); });
+  }
+
+  var soudanDialog = document.getElementById('soudanDialog');
+  Array.prototype.forEach.call(document.querySelectorAll('[data-open-soudan]'), function (btn) {
+    btn.addEventListener('click', function () { openDialog(soudanDialog); });
+  });
+
+  /* ---------- 5. 用途タブ ---------- */
+  (function tabs() {
+    var list = document.querySelector('[role="tablist"]');
+    if (!list) return;
+    var tabs = Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
+
+    function select(tab, focus) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.setAttribute('tabindex', on ? '0' : '-1');
+        var panel = document.getElementById(t.getAttribute('aria-controls'));
+        if (panel) { if (on) panel.removeAttribute('hidden'); else panel.setAttribute('hidden', ''); }
+      });
+      if (focus && tab.focus) tab.focus();
+    }
+
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { select(t, false); });
+      t.addEventListener('keydown', function (e) {
+        var k = e.key;
+        var n = null;
+        if (k === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
+        else if (k === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
+        else if (k === 'Home') n = tabs[0];
+        else if (k === 'End') n = tabs[tabs.length - 1];
+        if (n) { e.preventDefault(); select(n, true); }
+      });
+    });
+  })();
+
+  /* ---------- 6. 試算 ---------- */
+  (function sim() {
+    var count = document.getElementById('simCount');
+    var out = document.getElementById('simCountOut');
+    var min = document.getElementById('simMin');
+    var hours = document.getElementById('simHours');
+    if (!count || !min || !hours || !out) return;
+
+    function calc() {
+      var c = parseInt(count.value, 10) || 0;
+      var m = parseInt(min.value, 10) || 0;
+      out.textContent = String(c);
+      hours.textContent = (c * m / 60).toFixed(1);
+    }
+    count.addEventListener('input', calc);
+    min.addEventListener('change', calc);
+    calc();
+  })();
+
+  /* ---------- 7. 相談ダイアログ：ローカル検討メモ ---------- */
+  (function soudan() {
+    var make = document.getElementById('sdMake');
+    var wrap = document.getElementById('sdMemoWrap');
+    var memo = document.getElementById('sdMemo');
+    var use = document.getElementById('sdUse');
+    var msg = document.getElementById('sdMsg');
+    var copy = document.getElementById('sdCopy');
+    if (!make || !wrap || !memo || !use) return;
+
+    function build() {
+      var items = Array.prototype.slice.call(document.querySelectorAll('[data-sd-item]'))
+        .filter(function (c) { return c.checked; })
+        .map(function (c) { return '・' + c.value; });
+      var lines = [];
+      lines.push('CEOTwin ツイン銀行に預ける準備メモ');
+      lines.push('（送信されていません。CEOTwinは提供設計案で、正式な受付は開始していません）');
+      lines.push('');
+      lines.push('■ 試したい用途');
+      lines.push('・' + use.value);
+      lines.push('');
+      lines.push('■ いま預けられる素材');
+      lines.push(items.length ? items.join('\n') : '・（選択なし）');
+      lines.push('');
+      lines.push('■ 次に社内で決めること');
+      lines.push('・本人（社長）の写真・声・知識の利用について、本人と会社の許諾を確認する');
+      lines.push('・社外に出してよい知識と、社内限定の知識を分ける');
+      lines.push('・わからない質問を引き継ぐ担当者と、予約・問い合わせ先を決める');
+      lines.push('');
+      lines.push('■ 注意');
+      lines.push('・料金はすべて仮・税別で、確定した販売価格ではありません');
+      lines.push('・ページ内のTwin画面は固定サンプルで、AIには接続していません');
+      lines.push('・写真・音声のアップロードはできません');
+      return lines.join('\n');
+    }
+
+    make.addEventListener('click', function () {
+      memo.value = build();
+      wrap.removeAttribute('hidden');
+      if (msg) msg.textContent = 'メモを作りました（送信していません）';
+      try { memo.focus(); } catch (e) {}
+    });
+
+    if (copy) {
+      copy.addEventListener('click', function () {
+        try { memo.select(); } catch (e) {}
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(memo.value).then(function () {
+            if (msg) msg.textContent = 'コピーしました';
+          }, function () {
+            if (msg) msg.textContent = 'メモを選択しました。手動でコピーしてください';
+          });
+        } else if (msg) {
+          msg.textContent = 'メモを選択しました。手動でコピーしてください';
+        }
+      });
+    }
+  })();
+
+  /* ---------- 8. ChatGPT ファクトチェックリンク ---------- */
+  (function factcheck() {
+    Array.prototype.forEach.call(document.querySelectorAll('[data-fc]'), function (a) {
+      var q = a.getAttribute('data-fc') || '';
+      a.href = 'https://chatgpt.com/?q=' + encodeURIComponent(q);
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noopener');
+    });
+  })();
+})();
+</script>
+</body>
+</html>
