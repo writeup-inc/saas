@@ -169,6 +169,61 @@ td.how { color: var(--accent); font-weight: 700; }
 footer { padding: 40px 0 72px; color: var(--sub); font-size: 14px; }
 footer p { margin: 0 0 8px; max-width: 46em; }
 
+
+/* ── ヒーロー2カラム（全体図を第一画面に） ── */
+.hero-grid { display: grid; gap: 28px; align-items: center; }
+.hero-note { margin: 18px 0 0; max-width: 34em; color: var(--sub); font-size: 15px; }
+.hero .mapfig { margin: 0; }
+@media (min-width: 960px) {
+  .hero { padding-block: 40px 40px; }
+  .hero-grid { grid-template-columns: 1fr 520px; gap: 48px; }
+  .hero .mapfig svg { max-width: 520px; }
+}
+
+/* ── 章の見出し（番号＋アイコン） ── */
+.eyebrow { display: flex; align-items: center; gap: 10px; }
+.eyebrow .no { font-size: 2.1rem; font-weight: 800; line-height: 1; letter-spacing: -.02em; }
+.eyebrow .ic { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+/* ── 流れ図と「正直なところ」を2カラムに ── */
+.cols { display: grid; gap: 22px; }
+.colL .flowbox { margin-bottom: 18px; }
+.colL .flowbox:last-child { margin-bottom: 0; }
+@media (min-width: 1000px) {
+  .cols { grid-template-columns: 1fr 1.3fr; gap: 28px; align-items: start; }
+  .cols .real { height: auto; }
+  .colR .flowbox { margin: 18px 0 0; }
+  /* 狭い左カラムでは、流れ図を縦に並べる */
+  .colL .flow { flex-direction: column; align-items: stretch; }
+  .colL .fa { flex-direction: row; gap: 8px; padding: 3px 0; min-width: 0; }
+  .colL .fa i { transform: rotate(90deg); }
+  .colL .fn { flex: none; padding: 8px 12px; width: min(100%, 360px); margin-inline: auto; }
+}
+
+/* ── 数字の棒グラフ ── */
+.chart { border: 1px solid var(--line); background: var(--card); border-radius: 12px; padding: 18px 20px; margin: 0 0 24px; }
+.crow { display: grid; gap: 6px 14px; align-items: center; padding: 8px 0; }
+.crow + .crow { border-top: 1px dashed var(--line); }
+.cl { font-weight: 800; font-size: 15px; }
+.ct { display: grid; gap: 4px; }
+.ct i { display: block; height: 10px; border-radius: 5px; }
+.ct .b0 { background: #b9bec6; }
+.ct .b0.rg { background: repeating-linear-gradient(90deg, #b9bec6 0 8px, #d7dade 8px 12px); }
+.ct .b1 { background: var(--accent); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ct .b0 { background: #5a616b; } }
+.crow { grid-template-columns: 1fr; }
+.cv { font-size: 14px; color: var(--sub); margin-top: -2px; }
+.cv b { color: var(--ink); font-weight: 800; margin-right: 4px; }
+.cv em { font-style: normal; color: var(--accent); font-weight: 800; }
+.clegend { margin: 12px 0 0; font-size: 13px; color: var(--sub); }
+.clegend span { display: inline-block; width: 22px; height: 8px; border-radius: 4px; margin-right: 6px; vertical-align: middle; }
+.clegend .k0 { background: #b9bec6; }
+.clegend .k1 { background: var(--accent); margin-left: 4px; }
+@media (min-width: 721px) {
+  .crow { grid-template-columns: 7.2em minmax(0, 1fr) 17em; }
+  .cv { margin-top: 0; }
+}
+
 @media (max-width: 720px) {
   .kpis { grid-template-columns: 1fr; }
   .kpi { border-left: 0; border-top: 1px solid var(--line); padding: 14px 0; }
@@ -197,6 +252,15 @@ footer p { margin: 0 0 8px; max-width: 46em; }
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-4 3-6.5 7-6.5s7 2.5 7 6.5"/></symbol>
+  <symbol id="i-partners" viewBox="0 0 24 24"><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l2.2 6.3L21 12l-6.8 2.7L12 21l-2.2-6.3L3 12l6.8-2.7z"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4z"/><path d="M20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".8" fill="currentColor"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+</svg>
+
 <nav class="nav" aria-label="ページ内の移動">
   <div class="wrap">
     <a href="#map">全体図</a>
@@ -207,29 +271,20 @@ footer p { margin: 0 0 8px; max-width: 46em; }
     <a href="#t4">研修バード</a>
     <a href="#t5">AIインパクト</a>
     <a href="#t6">旧経コン</a>
-    <a href="#pick">チーム選び・相談先</a>
     <a href="#link">つながり</a>
+    <a href="#pick">チーム選び・相談先</a>
   </div>
 </nav>
 
-<header class="hero">
-  <div class="wrap">
-    <span class="tag">社内限定　2026年10月2日時点</span>
-    <h1>営業の稼ぎ方は、<span class="nobr">6通りあります。</span></h1>
-    <p class="hero__sub">AIコンサルティング局　営業体制ガイド</p>
-    <p class="lead">新しく仲間になった方へ。6つのチームが、何を・誰に・どうやって売っているのか。数字も、しんどいところも、そのまま書きました。読み終わる頃には、自分がどこで一番力を出せそうか、見当がつくはずです。</p>
-  </div>
-</header>
-
-<main>
-
-<!-- ───────── 全体図 ───────── -->
-<section id="map">
-  <div class="wrap">
-    <p class="eyebrow">全体図</p>
-    <h2>6チームを分けるのは、「誰が売るか」と「1件の大きさ」</h2>
-    <p class="sec-lead">横は誰が売るか、縦は1件あたりの金額で並べました。同じAIを扱っていても、売り方が違えば、仕事の中身も、数字の作り方も変わります。箱を押すと、そのチームの章へ飛びます。</p>
-
+<header class="hero" id="map">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="tag">社内限定　2026年10月2日時点</span>
+      <h1>営業の稼ぎ方は、<span class="nobr">6通りあります。</span></h1>
+      <p class="hero__sub">AIコンサルティング局　営業体制ガイド</p>
+      <p class="lead">新しく仲間になった方へ。6つのチームが、何を・誰に・どうやって売っているのか。数字も、しんどいところも、そのまま書きました。読み終わる頃には、自分がどこで一番力を出せそうか、見当がつくはずです。</p>
+      <p class="hero-note">同じAIを扱っていても、売り方が違えば、仕事の中身も数字の作り方も変わります。まずは図で、6チームの位置を見てください。</p>
+    </div>
     <figure class="mapfig">
       <svg viewBox="0 0 580 600" role="img" aria-labelledby="mapT mapD">
         <title id="mapT">6つの営業チームの位置関係</title>
@@ -277,10 +332,13 @@ footer p { margin: 0 0 8px; max-width: 46em; }
           <text class="sb" x="455" y="476" text-anchor="middle">20〜30件受注</text>
         </a></g>
       </svg>
-      <figcaption>位置は目安です。破線の2チームは、1件あたりの金額が一つに決まっていないので仮置き。第2営業部の432万円はAIOマスターの場合で、商材によって変わります。</figcaption>
+      <figcaption>横は誰が売るか、縦は1件あたりの金額。箱を押すと、そのチームの章へ飛びます。位置は目安です。破線の2チームは、1件あたりの金額が一つに決まっていないので仮置き。第2営業部の432万円はAIOマスターの場合で、商材によって変わります。</figcaption>
     </figure>
   </div>
-</section>
+</header>
+
+<main>
+
 
 <!-- ───────── 数字 ───────── -->
 <section id="numbers" class="alt">
@@ -288,10 +346,18 @@ footer p { margin: 0 0 8px; max-width: 46em; }
     <p class="eyebrow">数字の作り方</p>
     <h2>同じ1億円でも、作り方がまったく違います</h2>
     <p class="sec-lead">100万円を100件で作るチームもあれば、1件で月の数字が動くチームもあるほどです。数字の大きさより、作り方に注目してください。</p>
+    <div class="chart" role="img" aria-label="各チームの数字の規模。第1営業部は目標1億円から12月2億円、第2営業部は10月の見込み1億円、研修バードは約3,000万円から5,000万円以上、AIインパクトは2,000〜3,000万円、旧経コンは3,000万円から1億円。">
+      <div class="crow"><span class="cl">第1営業部</span><div class="ct"><i class="b0" style="width:50%"></i><i class="b1" style="width:100%"></i></div><span class="cv"><b>1億円</b>→ <em>2億円</em></span></div>
+      <div class="crow"><span class="cl">第2営業部</span><div class="ct"><i class="b0" style="width:50%"></i></div><span class="cv"><b>1億円</b>（10月の見込み。8月7,000万円／9月5,000万円）</span></div>
+      <div class="crow"><span class="cl">研修バード</span><div class="ct"><i class="b0" style="width:15%"></i><i class="b1" style="width:25%"></i></div><span class="cv"><b>約3,000万円</b>→ <em>5,000万円以上</em></span></div>
+      <div class="crow"><span class="cl">AIインパクト</span><div class="ct"><i class="b0 rg" style="width:15%"></i></div><span class="cv"><b>2,000〜3,000万円</b>（決まる月は1億円規模）</span></div>
+      <div class="crow"><span class="cl">旧経コン</span><div class="ct"><i class="b0" style="width:15%"></i><i class="b1" style="width:50%"></i></div><span class="cv"><b>3,000万円</b>→ <em>1億円</em></span></div>
+      <p class="clegend"><span class="k0"></span>いまの水準（第1営業部は目標、第2営業部は10月の見込み）　<span class="k1"></span>12月の目標　※第3営業部は件数で見るため、このグラフに入れていません。</p>
+    </div>
     <div class="tbl scroll-x">
       <table>
         <thead>
-          <tr><th>チーム</th><th>誰が売る</th><th>1件の大きさ</th><th>数字の作り方</th><th>いまの水準</th><th>12月の目標</th></tr>
+          <tr><th>チーム</th><th>誰が売る</th><th>1件の大きさ</th><th>数字の作り方</th></tr>
         </thead>
         <tbody>
           <tr>
@@ -299,60 +365,48 @@ footer p { margin: 0 0 8px; max-width: 46em; }
             <td data-label="誰が売る">人が主体</td>
             <td data-label="1件の大きさ">100万円前後</td>
             <td class="how" data-label="数字の作り方">100万円×100件</td>
-            <td data-label="いまの水準">月1億円が目標</td>
-            <td data-label="12月の目標">2億円</td>
           </tr>
           <tr>
             <td>第2営業部</td>
             <td data-label="誰が売る">人×代理店</td>
             <td data-label="1件の大きさ">AIOで1社432万円</td>
             <td class="how" data-label="数字の作り方">432万円×24社</td>
-            <td data-label="いまの水準">10月は1億円の見込み<span class="sub">8月7,000万円／9月5,000万円</span></td>
-            <td data-label="12月の目標">—</td>
           </tr>
           <tr>
             <td>第3営業部</td>
             <td data-label="誰が売る">AIのみ</td>
             <td data-label="1件の大きさ">商材ごとに違う</td>
             <td class="how" data-label="数字の作り方">100集客×20〜30%</td>
-            <td data-label="いまの水準">—</td>
-            <td data-label="12月の目標">—</td>
           </tr>
           <tr>
             <td>研修バード</td>
             <td data-label="誰が売る">人×研修・バード</td>
             <td data-label="1件の大きさ">—</td>
             <td class="how" data-label="数字の作り方">研修＋バードのセット</td>
-            <td data-label="いまの水準">約3,000万円</td>
-            <td data-label="12月の目標">5,000万円以上</td>
           </tr>
           <tr>
             <td>AIインパクト</td>
             <td data-label="誰が売る">人（大型案件）</td>
             <td data-label="1件の大きさ">1,000万円以上</td>
             <td class="how" data-label="数字の作り方">四半期3億円を目標に積む</td>
-            <td data-label="いまの水準">2,000〜3,000万円<span class="sub">2.5億円規模の案件がほぼ受注で、月1億円規模</span></td>
-            <td data-label="12月の目標">—</td>
           </tr>
           <tr>
             <td>旧経コン</td>
             <td data-label="誰が売る">人×架電</td>
             <td data-label="1件の大きさ">月3万円のAI SaaS</td>
             <td class="how" data-label="数字の作り方">1日2〜3件を維持</td>
-            <td data-label="いまの水準">月3,000万円</td>
-            <td data-label="12月の目標">1億円</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <p class="note">金額は受注額の目安です。2026年10月2日時点の体制メモと、各チームのSlack報告・メンバー一覧シートで確認できた数字をもとにしています。「—」は、このガイドを作った時点で数字が共有されていない欄です。</p>
+    <p class="note">金額は受注額の目安です。2026年10月2日時点の体制メモと、各チームのSlack報告・メンバー一覧シートで確認できた数字をもとにしています。「—」は、1件の大きさが一つに決まっていない欄です。</p>
   </div>
 </section>
 
 <!-- ───────── 第1営業部 ───────── -->
 <section id="t1">
   <div class="wrap">
-    <p class="eyebrow">1　人が主体</p>
+    <p class="eyebrow"><span class="no">01</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-person"/></svg><span>人が主体</span></p>
     <h2>第1営業部は、100万円を100件。決まらなかった理由まで残す</h2>
     <p class="sec-lead">中小企業に、顧客単価100万円前後のAI SaaSを提案して売るチームです。さらに、100件分の「どう提案して、どう決まったか」を残し、第2・第3営業部も使える型にしていく役目もあります。</p>
 
@@ -362,7 +416,7 @@ footer p { margin: 0 0 8px; max-width: 46em; }
       <div class="kpi"><p class="k">主に扱う商材</p><p class="v">Lシンク／ソーシャルマスター／AIO</p><p class="s">個人目標に書かれている商材</p></div>
     </div>
 
-    <div class="flowbox">
+    <div class="cols"><div class="colL"><div class="flowbox">
       <h3>勝ち方を残すループ</h3>
       <div class="flow">
         <div class="fn">提案<small>5社</small></div>
@@ -378,26 +432,25 @@ footer p { margin: 0 0 8px; max-width: 46em; }
         <div class="fa"><span>戻す</span><i>→</i></div>
         <div class="fn hl">次の提案</div>
       </div>
-      <p class="flowcap">「提案5社で受注1社」は、メンバーの個人目標に書かれた目安にあたります。</p>
     </div>
 
-    <div class="real">
+    </div><div class="colR"><div class="real">
       <h3>正直なところ</h3>
       <ul>
-        <li>提案5社に対して、受注は1社。残りの4社は決まりません。ここは隠さず、最初から前提にしています。</li>
+        <li>提案5社に対して、受注は1社（メンバーの個人目標の目安）。残りの4社は決まりません。ここは隠さず、最初から前提にしています。</li>
         <li>だから、平日の12:30と19:00に、AIの相棒社員「タケル」がSlackのDMで聞きに来ます。午前・午後の商談で決まらなかった1件を、愚痴でいいので話すだけです。</li>
         <li>たとえば先日は、港運業の管理部の方から「省人化ではなく省力化なら雇用が守れる」という本音を聞けました。こうした言葉が失注台帳に残り、次の提案の型になります。</li>
-        <li>体制は、100件チームが5人＋バッファ1人、大型案件チームが3人程度、という案を詰めている最中です。</li>
       </ul>
     </div>
+    </div></div>
   </div>
 </section>
 
 <!-- ───────── 第2営業部 ───────── -->
 <section id="t2" class="alt">
   <div class="wrap">
-    <p class="eyebrow">2　人×代理店</p>
-    <h2>第2営業部は、売ってくれる会社を増やす（AIOなら1社432万円）</h2>
+    <p class="eyebrow"><span class="no">02</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-partners"/></svg><span>人×代理店</span></p>
+    <h2>第2営業部は、売ってくれる会社を増やす<span class="nobr">（AIOなら1社432万円）</span></h2>
     <p class="sec-lead">代理店・OEMパートナーと組んで売る営業部です。自分で売り切るのではなく、売ってくれる会社を増やします。1社の契約が大きいので、月ごとの数字は上下します。</p>
 
     <div class="kpis">
@@ -406,7 +459,7 @@ footer p { margin: 0 0 8px; max-width: 46em; }
       <div class="kpi"><p class="k">9月のAIO OEM受注</p><p class="v"><em>10社</em></p><p class="s">ワークログ・インサイトのOEMも初受注</p></div>
     </div>
 
-    <div class="flowbox">
+    <div class="cols"><div class="colL"><div class="flowbox">
       <h3>パートナーと一緒に売るまで</h3>
       <div class="flow">
         <div class="fn">パートナー候補<small>Jマッチエンジンで探す</small></div>
@@ -421,7 +474,7 @@ footer p { margin: 0 0 8px; max-width: 46em; }
       </div>
     </div>
 
-    <div class="real">
+    </div><div class="colR"><div class="real">
       <h3>正直なところ</h3>
       <ul>
         <li>ワークログ・インサイトのOEMは、9月に初受注が出ました（1社216万円＝6,000円×30ID×12か月）。AIOに続く、2本目のOEM卸モデルです。</li>
@@ -430,13 +483,14 @@ footer p { margin: 0 0 8px; max-width: 46em; }
         <li>毎朝の「商談号外」で現場の学びを1本配信し、昼と夜の2回、商談のふりかえりを投稿します。</li>
       </ul>
     </div>
+    </div></div>
   </div>
 </section>
 
 <!-- ───────── 第3営業部 ───────── -->
 <section id="t3">
   <div class="wrap">
-    <p class="eyebrow">3　AIのみ</p>
+    <p class="eyebrow"><span class="no">03</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-spark"/></svg><span>AIのみ</span></p>
     <h2>第3営業部は、AIだけで、100集客から20〜30件を受注する</h2>
     <p class="sec-lead">SaaSチームが8月17日に生まれ変わった営業部です。人が1社ずつ説得するのではなく、AIサービスと、そこへ連れてくる導線そのものを作って売ります。旗は「毎月100件売れるAI SaaSを、10サービス作る」です。</p>
 
@@ -446,7 +500,7 @@ footer p { margin: 0 0 8px; max-width: 46em; }
       <div class="kpi"><p class="k">メンバー</p><p class="v">SaaSチームの3名</p><p class="s">木場さん・西村さん・小松さん</p></div>
     </div>
 
-    <div class="flowbox">
+    <div class="cols"><div class="colL"><div class="flowbox">
       <h3>人が張りつかない売り方の流れ</h3>
       <div class="flow">
         <div class="fn">集客</div>
@@ -462,22 +516,22 @@ footer p { margin: 0 0 8px; max-width: 46em; }
       <p class="flowcap">各サービスに「標準販売セット」を用意して、営業担当が毎回ゼロから説明しなくていい形にします。</p>
     </div>
 
-    <div class="real">
+    </div><div class="colR"><div class="real">
       <h3>正直なところ</h3>
       <ul>
         <li>10サービスの候補は、Lシンク／AIOマスター／ソーシャルマスター／受電AI／ワークログ／Elliot／つばめリード／リファラル／AI一次面接・採用支援／新規枠。全部が完成しているわけではありません。</li>
         <li>8月17日以降、サービスごとに設計書を作り直しています。「誰の、どんな課題か」「価格と契約条件」「集客方法と販売コスト」「KPI」まで、全部書いてから売ります。</li>
         <li>いまの仕事は、サービス同士の導線つなぎです。たとえば、アポが失注した企業へのメール、LINEの友だち追加時の特典メッセージ。毎日のTAV（その日の学び）の共有も、メンバー全員で続けています。</li>
-        <li>広告費や営業代行費も、必要なら使う方針。ただし、採算が合って繰り返せる形かどうかは、常に見ています。</li>
       </ul>
     </div>
+    </div></div>
   </div>
 </section>
 
 <!-- ───────── 研修バード ───────── -->
 <section id="t4" class="alt">
   <div class="wrap">
-    <p class="eyebrow">4　AI研修＋AIバード</p>
+    <p class="eyebrow"><span class="no">04</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg><span>AI研修＋AIバード</span></p>
     <h2>研修バードは、AI研修で入り、AIバードを月3,000時間動かす</h2>
     <p class="sec-lead">AI研修と、AIバード（AI導入・運用の代行、伴走支援）をセットで売るチームです。研修だけ、バードだけでなく、「研修＋バード」で売る形をめざしています。</p>
 
@@ -487,7 +541,7 @@ footer p { margin: 0 0 8px; max-width: 46em; }
       <div class="kpi"><p class="k">バードの稼働</p><p class="v"><em>月3,000時間</em></p><p class="s">A級バードを月30名採用する計画</p></div>
     </div>
 
-    <div class="flowbox">
+    <div class="cols"><div class="colL"><div class="flowbox">
       <h3>入口は2本、出口は1本</h3>
       <div class="flow">
         <div class="fn">ウェビナー<small>月500名以上のリード</small></div>
@@ -507,7 +561,7 @@ footer p { margin: 0 0 8px; max-width: 46em; }
       </div>
     </div>
 
-    <div class="real">
+    </div><div class="colR"><div class="real">
       <h3>正直なところ</h3>
       <ul>
         <li>入口は、AI TOWNとウェビナーでリードを集めることと、眠っている代理店を掘り起こして研修を売ってもらうこと。この2本です。</li>
@@ -515,13 +569,14 @@ footer p { margin: 0 0 8px; max-width: 46em; }
         <li>企画・運用の担当と営業が同じチームにいます。研修動画の納品管理や事務局の窓口まで、チームの中で完結するのが強みです。</li>
       </ul>
     </div>
+    </div></div>
   </div>
 </section>
 
 <!-- ───────── AIインパクト ───────── -->
 <section id="t5">
   <div class="wrap">
-    <p class="eyebrow">5　大型案件</p>
+    <p class="eyebrow"><span class="no">05</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg><span>大型案件</span></p>
     <h2>AIインパクトは、1件1,000万円以上。目標は月ではなく四半期3億円</h2>
     <p class="sec-lead">顧客単価1,000万円以上の、コンサル・受託開発といった大型案件を扱うチームです。いまは、2.5億円規模の案件がほぼ受注できていて、月1億円規模の数字が見えています。上下が激しいのは、この仕事の性質です。</p>
 
@@ -531,7 +586,7 @@ footer p { margin: 0 0 8px; max-width: 46em; }
       <div class="kpi"><p class="k">チーム目標</p><p class="v"><em>四半期3億円</em></p><p class="s">メンバー一覧シートの記載</p></div>
     </div>
 
-    <div class="flowbox">
+    <div class="cols"><div class="colL"><div class="flowbox">
       <h3>大型案件の進め方</h3>
       <div class="flow">
         <div class="fn">リスト<small>まっさらな状態から</small></div>
@@ -546,7 +601,7 @@ footer p { margin: 0 0 8px; max-width: 46em; }
       </div>
     </div>
 
-    <div class="real">
+    </div><div class="colR"><div class="real">
       <h3>正直なところ</h3>
       <ul>
         <li>1件にかける時間が長いので、決まる月と決まらない月の差がはっきり出ます。だから目標は、月ではなく四半期で見る形にしました。</li>
@@ -555,14 +610,15 @@ footer p { margin: 0 0 8px; max-width: 46em; }
         <li>仲間は増えたばかりです。8月に梅沢さん、10月1日にも2名が入りました。</li>
       </ul>
     </div>
+    </div></div>
   </div>
 </section>
 
 <!-- ───────── 旧経コン ───────── -->
 <section id="t6" class="alt">
   <div class="wrap">
-    <p class="eyebrow">6　人×架電</p>
-    <h2>旧経コンは、月3万円のAI SaaSを、1日2〜3件積み上げる</h2>
+    <p class="eyebrow"><span class="no">06</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-phone"/></svg><span>人×架電</span></p>
+    <h2>旧経コンは、月3万円のAI SaaSを、<span class="nobr">1日2〜3件</span>積み上げる</h2>
     <p class="sec-lead">もとは経営コンサルティング局の営業チームで、補助金・助成金まわりの顧客基盤があります。いまは、月3万円のAI SaaSの支援を軸に、1日2〜3件の受注を維持することが目標です。</p>
 
     <div class="kpis">
@@ -571,7 +627,7 @@ footer p { margin: 0 0 8px; max-width: 46em; }
       <div class="kpi"><p class="k">ペース</p><p class="v">1日<em>2〜3件</em></p><p class="s">月3万円のAI SaaSを受注</p></div>
     </div>
 
-    <div class="flowbox">
+    <div class="cols"><div class="colL"><div class="flowbox">
       <h3>架電から受注まで</h3>
       <div class="flow">
         <div class="fn">架電<small>問い合わせ・診断リスト</small></div>
@@ -586,6 +642,17 @@ footer p { margin: 0 0 8px; max-width: 46em; }
       </div>
     </div>
 
+    
+
+    </div><div class="colR"><div class="real">
+      <h3>正直なところ</h3>
+      <ul>
+        <li>毎日の商談結果が、そのまま全員に見える形で残ります。自分の伸びを、毎日数字で確かめられるチームです。</li>
+        <li>失注や持ち帰りの理由は、「決めきれない」「コスト」「多忙」に集まっています。理由が揃ってきたので、打ち手を絞り込める段階です。</li>
+        <li>管理表の「担当・ヨミ・初回商談日・商材」に空欄があると、毎朝担当ごとの件数が通知され、その日のうちに埋めます。ここを丁寧にやるチームです。</li>
+        <li>商談では、Jマッチエンジンの資料とミーティング動画を使っています。反応は良かったと共有されています。</li>
+      </ul>
+    </div>
     <div class="flowbox">
       <h3>9月30日の商談11件の内訳</h3>
       <div class="bar" role="img" aria-label="受注1件、Aヨミ2件、Bヨミ1件、Cヨミ3件、失注4件">
@@ -597,21 +664,34 @@ footer p { margin: 0 0 8px; max-width: 46em; }
       </div>
       <p class="barlegend">11件のうち、受注1件・A 2件・B 1件・C 3件・失注4件。A・B・Cは、チームの基準によるヨミ（受注見込み）の区分です。</p>
     </div>
+    </div></div>
+  </div>
+</section>
 
-    <div class="real">
-      <h3>正直なところ</h3>
-      <ul>
-        <li>毎日の商談結果が、そのまま全員に見える形で残ります。自分の伸びを、毎日数字で確かめられるチームです。</li>
-        <li>失注や持ち帰りの理由は、「決めきれない」「コスト」「多忙」に集まっています。理由が揃ってきたので、打ち手を絞り込める段階です。</li>
-        <li>管理表の「担当・ヨミ・初回商談日・商材」に空欄があると、毎朝担当ごとの件数が通知され、その日のうちに埋めます。ここを丁寧にやるチームです。</li>
-        <li>商談では、Jマッチエンジンの資料とミーティング動画を使っています。反応は良かったと共有されています。</li>
-      </ul>
+
+<!-- ───────── つながり ───────── -->
+<section id="link">
+  <div class="wrap">
+    <p class="eyebrow">つながり</p>
+    <h2>どこかで決まった話が、隣のチームの武器になる</h2>
+    <p class="sec-lead">自分のチームだけでなく、隣のチームの「決まった話」も読んでみてください。会議では、全員のTAV（持ち帰る学び）を一人ずつ聞くのが決まりです。</p>
+
+    <div class="flowbox">
+      <h3>型とネタが、チームをまたいで流れる</h3>
+      <div class="flow">
+        <div class="fn hl">第1営業部<small>100件で型を作る</small></div>
+        <div class="fa"><span>展開</span><i>→</i></div>
+        <div class="fn">第2・第3営業部<small>型を使う</small></div>
+        <div class="fa"><span>ネタにする</span><i>→</i></div>
+        <div class="fn">パートナーへのメール<small>売れた話を載せる</small></div>
+      </div>
+      <p class="flowcap">同じAIOでも、第1営業部は企業に直接、第2営業部はパートナー経由で売ります。第1営業部が育てた「A+（紹介してくれるお客様）」の先には、一緒に売るOEMパートナー「S」という段階があります。</p>
     </div>
   </div>
 </section>
 
 <!-- ───────── チーム選び・相談先 ───────── -->
-<section id="pick">
+<section id="pick" class="alt">
   <div class="wrap">
     <p class="eyebrow">チーム選び・相談先</p>
     <h2>向いている働き方から、6チームを選ぶ</h2>
@@ -641,27 +721,6 @@ footer p { margin: 0 0 8px; max-width: 46em; }
       </table>
     </div>
     <p class="note">肩書きは、メンバー一覧シート（2026年10月2日時点）に基づいています。</p>
-  </div>
-</section>
-
-<!-- ───────── つながり ───────── -->
-<section id="link" class="alt">
-  <div class="wrap">
-    <p class="eyebrow">つながり</p>
-    <h2>どこかで決まった話が、隣のチームの武器になる</h2>
-    <p class="sec-lead">自分のチームだけでなく、隣のチームの「決まった話」も読んでみてください。会議では、全員のTAV（持ち帰る学び）を一人ずつ聞くのが決まりです。</p>
-
-    <div class="flowbox">
-      <h3>型とネタが、チームをまたいで流れる</h3>
-      <div class="flow">
-        <div class="fn hl">第1営業部<small>100件で型を作る</small></div>
-        <div class="fa"><span>展開</span><i>→</i></div>
-        <div class="fn">第2・第3営業部<small>型を使う</small></div>
-        <div class="fa"><span>ネタにする</span><i>→</i></div>
-        <div class="fn">パートナーへのメール<small>売れた話を載せる</small></div>
-      </div>
-      <p class="flowcap">同じAIOでも、第1営業部は企業に直接、第2営業部はパートナー経由で売ります。第1営業部が育てた「A+（紹介してくれるお客様）」の先には、一緒に売るOEMパートナー「S」という段階があります。</p>
-    </div>
   </div>
 </section>
 
