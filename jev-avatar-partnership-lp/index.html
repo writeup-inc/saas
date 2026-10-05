@@ -108,7 +108,7 @@
     /* Quiet right-hand surface gives the guide its own space without another photograph. */
     @media(min-width:760px){body::before{content:"";position:fixed;z-index:0;right:0;top:0;bottom:0;width:180px;border-left:1px solid #d8e3e9;background:repeating-linear-gradient(135deg,rgba(36,73,104,.028) 0 1px,transparent 1px 19px),radial-gradient(circle at 78% 9%,#f9fbfd,#e9f1f6 76%);pointer-events:none}}
     @media(min-width:1120px){body::before{width:300px}}
-    @media(prefers-reduced-motion:reduce){.guide-stage>video{display:none}.guide-stage{background:#e8eef1 url('assets/avatar.png') center 22%/cover no-repeat}.guide-copy.is-haiku .guide-lines{animation:none}}
+    @media(prefers-reduced-motion:reduce){#guideVideo{display:none}.guide-stage{background:#e8eef1 url('assets/avatar.png') center 22%/cover no-repeat}.guide-copy.is-haiku .guide-lines{animation:none}}
     /* The opening story floats across the hero and the first editorial section. */
     .prologue-bridge{position:relative;z-index:2;margin-top:-84px;margin-bottom:-96px}.prologue-card{position:relative;max-width:990px;margin-inline:auto;padding:54px 80px 51px;border:1px solid #e5d5bf;border-radius:23px;background:linear-gradient(155deg,#fffefa 0%,#faf6ef 100%);box-shadow:0 28px 65px rgba(11,30,42,.2),0 5px 14px rgba(11,30,42,.08);text-align:center;overflow:hidden}.prologue-card:before{content:"";position:absolute;inset:0 0 auto;height:5px;background:linear-gradient(90deg,#b1814a,#e7c397,#b1814a)}.prologue-kicker{display:flex;align-items:center;justify-content:center;gap:13px;margin:0 0 18px;color:#8d663a;font:800 11px/1.3 system-ui,sans-serif;letter-spacing:.17em}.prologue-kicker span:first-child{color:#78532e;font-size:13px;letter-spacing:.2em}.prologue-kicker span+span:before{content:"";display:inline-block;width:23px;height:1px;margin:0 13px 3px 0;background:#c6ad8d}.prologue-card h2{margin:0 auto 25px;font-size:clamp(31px,3.25vw,44px);line-height:1.4}.prologue-origin,.prologue-story,.prologue-text{max-width:48em;margin:0 auto;color:#43525a;font-size:16px;line-height:1.9}.prologue-question{max-width:28em;margin:19px auto;color:#815b30;font-size:clamp(20px,2.25vw,27px);font-weight:850;line-height:1.5}.prologue-story{max-width:47em}.prologue-text{max-width:47em;margin-top:13px}.prologue-signoff{margin:22px 0 0;color:#85633e;font-size:12px;font-weight:800;letter-spacing:.08em}.opportunity{position:relative;z-index:1;padding-top:170px}
     @media(max-width:900px){.prologue-card{padding:43px 38px 42px}.prologue-bridge{margin-top:-65px;margin-bottom:-78px}.opportunity{padding-top:143px}}
@@ -161,11 +161,11 @@
 
   </main>
   <footer class="site-footer"><div class="container footer-inner"><div><strong>株式会社ライトアップ</strong><small>AIアバター共同事業パートナー募集｜企画検討用プレビュー</small></div><nav aria-label="会社情報"><a href="https://www.writeup.jp/company/" target="_blank" rel="noopener">会社概要</a><a href="https://www.writeup.jp/privacy/" target="_blank" rel="noopener">個人情報保護方針</a><a href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">公式お問い合わせ</a></nav></div></footer>
-  <aside class="partner-guide" id="partnerGuide" aria-label="閲覧区画に合わせた案内">
-    <div class="guide-stage"><video id="guideVideo" autoplay muted loop playsinline preload="metadata" poster="assets/avatar.png" aria-label="共同事業の案内役アバターの無音ループ動画"><source src="assets/avatar-guide-loop.mp4" type="video/mp4"><img src="assets/avatar.png" alt="共同事業の案内役アバター"></video><span class="guide-stage-tag">AI AVATAR GUIDE</span><button class="guide-minimize" id="guideMinimize" type="button" aria-label="小さく表示">−</button><button class="guide-speak" id="guideSpeak" type="button">▶ 声で説明を聞く</button></div>
+  <aside class="partner-guide" id="partnerGuide" aria-label="閲覧区画に合わせた案内" data-avatar-api="https://aio.elliot-tech.jp/api/lp/partner-avatar/token">
+    <div class="guide-stage"><video id="guideVideo" autoplay muted loop playsinline preload="metadata" poster="assets/avatar.png" aria-label="共同事業の案内役アバターの無音ループ動画"><source src="assets/avatar-guide-loop.mp4" type="video/mp4"><img src="assets/avatar.png" alt="共同事業の案内役アバター"></video><video id="guideLive" playsinline hidden aria-label="共同事業の案内役アバターの映像"></video><span class="guide-stage-tag">AI AVATAR GUIDE</span><button class="guide-minimize" id="guideMinimize" type="button" aria-label="小さく表示">−</button><button class="guide-speak" id="guideSpeak" type="button">▶ 声で説明を聞く</button></div>
     <div class="guide-body"><div class="guide-modes" role="group" aria-label="話し方"><button type="button" data-rail-mode="haiku" aria-pressed="false">575</button><button type="button" data-rail-mode="normal" aria-pressed="true">ふつう</button></div>
       <div class="guide-copy" id="guideCopy" role="status" aria-live="polite"><span class="guide-label" id="guideLabel">閲覧中の説明</span><span class="guide-route" id="guideRoute">固定ルート：説明する</span><div class="guide-lines" id="guideLines">読んでいる内容をご案内します。</div></div>
-      <p class="guide-note">ページを読み進めると、いま見ている内容をご案内します。音声はボタンを押した後だけ再生します。</p><button class="guide-chat-trigger" id="guideOpen" type="button">文字で質問する <span aria-hidden="true">↗</span></button><small class="guide-disclose">Jev API未接続・映像は無音ループ（音声とは非同期）</small>
+      <p class="guide-note">ページを読み進めると、いま見ている内容をご案内します。音声は「声で説明を聞く」を押すか、チャットで質問した後だけ再生します。</p><button class="guide-chat-trigger" id="guideOpen" type="button">文字で質問する <span aria-hidden="true">↗</span></button><small class="guide-disclose" id="guideDisclose">Jev API未接続・声は押した後だけ</small>
     </div>
   </aside>
   <aside class="partner-chat" id="partnerChat" aria-label="共同事業の案内チャット">
@@ -188,7 +188,7 @@
     function openModal(){paused=true;clearTimeout(timer);renderTitle(active,fullLen(active));modal.showModal()}titleButton.addEventListener('click',openModal);document.getElementById('modalClose').addEventListener('click',()=>modal.close());modal.addEventListener('close',()=>{paused=false;schedule()});modal.addEventListener('click',e=>{if(e.target===modal)modal.close()});document.getElementById('modalStory').addEventListener('click',e=>{if(e.target.closest('a'))modal.close()});schedule();
     const header=document.getElementById('siteHeader');let last=scrollY,ticking=false;function updateHeader(){const y=scrollY,d=y-last;if(y<120||header.contains(document.activeElement))header.classList.remove('is-hidden');else if(d>8)header.classList.add('is-hidden');else if(d< -8)header.classList.remove('is-hidden');if(Math.abs(d)>8)last=y;ticking=false}addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(updateHeader)}},{passive:true});header.addEventListener('focusin',()=>header.classList.remove('is-hidden'));
     const guide=document.getElementById('partnerGuide'),chat=document.getElementById('partnerChat'),guideCopy=document.getElementById('guideCopy'),guideLines=document.getElementById('guideLines'),chatLog=document.getElementById('chatLog');
-    const guideVideo=document.getElementById('guideVideo');function syncGuideVideo(){if(reduce||document.hidden){guideVideo.pause();return}guideVideo.play().catch(()=>{})}document.addEventListener('visibilitychange',syncGuideVideo);syncGuideVideo();
+    const guideVideo=document.getElementById('guideVideo'),guideLive=document.getElementById('guideLive'),guideDisclose=document.getElementById('guideDisclose');let avatar=null,avatarCtx=null,avatarConnecting=false,avatarGen=0,avatarFailedAt=0,avatarPending='',avatarTimer=null,answerHoldUntil=0;function syncGuideVideo(){if(reduce||document.hidden||avatar){guideVideo.pause();return}guideVideo.play().catch(()=>{})}document.addEventListener('visibilitychange',syncGuideVideo);syncGuideVideo();
     const sectionCopy={
       top:{label:'共同事業の入口',route:'説明する',normal:'御社の知見を誰に届けるか。AIアバターを使った新事業を一緒に考えます。',haiku:['その知恵を','誰に届ける','共に解く'],haikuReading:['そのちえを','だれにとどける','ともにとく']},
       prologue:{label:'事業を始めた理由',route:'説明する',normal:'試行錯誤を重ねて完成させたエンジンを、御社の現場で使っていただきたい。知見を掛け合わせ、新しい事業を一緒に育てます。',haiku:['エンジンを','仕事で使う','その知恵で'],haikuReading:['えんじんを','しごとでつかう','そのちえで']},
@@ -231,9 +231,59 @@
     function scheduleSection(){if(scrollFrame===null)scrollFrame=requestAnimationFrame(updateSection)}
     addEventListener('scroll',scheduleSection,{passive:true});addEventListener('resize',scheduleSection);document.addEventListener('visibilitychange',scheduleSection);scheduleSection();
     function openChat(){chat.classList.add('is-open');document.getElementById('chatText').focus()}
-    function closeChat(){chat.classList.remove('is-open');if('speechSynthesis'in window)speechSynthesis.cancel()}
-    function speakGuide(){if(!voiceOn||!activeSection||!('speechSynthesis'in window))return;speechSynthesis.cancel();const item=sectionCopy[activeSection],utterance=new SpeechSynthesisUtterance(mode==='haiku'?item.haiku.join('、'):item.normal);utterance.lang='ja-JP';utterance.rate=.96;speechSynthesis.speak(utterance)}
-    const guideSpeak=document.getElementById('guideSpeak');guideSpeak.addEventListener('click',()=>{if(!('speechSynthesis'in window)){guideSpeak.textContent='音声非対応';return}voiceOn=!voiceOn;guideSpeak.textContent=voiceOn?'■ 音声案内を停止':'▶ 声で説明を聞く';if(voiceOn)speakGuide();else speechSynthesis.cancel()});
+    function closeChat(){chat.classList.remove('is-open');hushVoice()}
+    // Anam avatar (ADR 0181 in aio-master): AIO issues the session token; the avatar only reads the fixed text below via talk().
+    const AVATAR_SDK='https://cdn.jsdelivr.net/npm/@anam-ai/js-sdk@4.27.1/+esm',AVATAR_PATH='/api/lp/partner-avatar/token',AVATAR_MAX_MS=600000,AVATAR_RETRY_MS=60000,ANSWER_HOLD_MS=12000;
+    const discloseText={idle:'Jev API未接続・声は押した後だけ',connecting:'アバターに接続しています…',live:'アバターが固定文を読み上げ中（最長10分）',fallback:'アバターにつながらないため端末の音声で読み上げ中'};
+    function setDisclose(state){guideDisclose.textContent=discloseText[state]}
+    // ?avatarApi= is for testing only; only the origin is used and it must be AIO, an AIO branch build, or localhost.
+    function avatarEndpoint(){try{const q=new URLSearchParams(location.search).get('avatarApi');if(q){const o=new URL(q).origin;if(o==='https://aio.elliot-tech.jp'||/^https:\/\/[a-z0-9-]+\.do9kd4ht7lupn\.amplifyapp\.com$/.test(o)||/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(o))return o+AVATAR_PATH}}catch{}return guide.dataset.avatarApi}
+    function visitorToken(){try{let t=localStorage.getItem('partnerAvatarVisitor');if(!t){t=crypto.randomUUID();localStorage.setItem('partnerAvatarVisitor',t)}return t}catch{return 'v'+Math.random().toString(36).slice(2)+Date.now().toString(36)}}
+    function browserSay(text){if(!('speechSynthesis'in window))return;speechSynthesis.cancel();const utterance=new SpeechSynthesisUtterance(text);utterance.lang='ja-JP';utterance.rate=.96;speechSynthesis.speak(utterance)}
+    function say(text){if(!text)return;if(avatar){try{avatar.interruptPersona()}catch{}avatar.talk(text).catch(e=>console.warn('[partner-avatar] talk failed',e));return}if(avatarConnecting){avatarPending=text;return}browserSay(text)}
+    function hushVoice(){if(avatar){try{avatar.interruptPersona()}catch{}}if('speechSynthesis'in window)speechSynthesis.cancel()}
+    async function startAvatar(){
+      if(avatar||avatarConnecting||Date.now()-avatarFailedAt<AVATAR_RETRY_MS)return;
+      const gen=++avatarGen;avatarConnecting=true;setDisclose('connecting');
+      let ctx=null,client=null;
+      try{
+        // Create the AudioContext inside the click (before any await) so Safari does not leave it suspended. Its silent stream is the avatar's only input.
+        const AC=window.AudioContext||window.webkitAudioContext;ctx=new AC();ctx.resume().catch(()=>{});const silent=ctx.createMediaStreamDestination().stream;
+        const res=await fetch(avatarEndpoint(),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({visitorToken:visitorToken()})});
+        const json=await res.json().catch(()=>({}));
+        if(!res.ok||!json.sessionToken)throw new Error(json.error||'token '+res.status);
+        if(gen!==avatarGen)throw new Error('cancelled');
+        const sdk=await import(AVATAR_SDK);
+        if(gen!==avatarGen)throw new Error('cancelled');
+        client=sdk.createClient(json.sessionToken);
+        const ready=new Promise((resolve,reject)=>{const t=setTimeout(()=>reject(new Error('ready timeout')),20000);client.addListener(sdk.AnamEvent.SESSION_READY,()=>{clearTimeout(t);resolve()})});
+        client.addListener(sdk.AnamEvent.CONNECTION_CLOSED,reason=>{if(avatar!==client)return;console.warn('[partner-avatar] closed',reason);stopAvatar();avatarFailedAt=Date.now();if(voiceOn)setDisclose('fallback')});
+        await client.streamToVideoElement('guideLive',silent);
+        await ready;
+        if(gen!==avatarGen)throw new Error('cancelled');
+        avatar=client;avatarCtx=ctx;avatarConnecting=false;
+        guideLive.hidden=false;guideVideo.hidden=true;guideVideo.pause();setDisclose('live');
+        avatarTimer=setTimeout(()=>setVoice(false),AVATAR_MAX_MS);
+        if('speechSynthesis'in window)speechSynthesis.cancel();
+        const line=avatarPending;avatarPending='';say(line);
+      }catch(e){
+        if(client)client.stopStreaming().catch(()=>{});
+        if(ctx)ctx.close().catch(()=>{});
+        if(gen!==avatarGen)return;
+        avatarConnecting=false;avatarFailedAt=Date.now();console.warn('[partner-avatar] using browser voice',e);
+        const line=avatarPending;avatarPending='';
+        if(voiceOn){setDisclose('fallback');browserSay(line)}else setDisclose('idle');
+      }
+    }
+    function stopAvatar(){avatarGen++;avatarConnecting=false;avatarPending='';clearTimeout(avatarTimer);const client=avatar;avatar=null;if(client)client.stopStreaming().catch(()=>{});if(avatarCtx){avatarCtx.close().catch(()=>{});avatarCtx=null}guideLive.hidden=true;guideVideo.hidden=false;syncGuideVideo();setDisclose('idle')}
+    addEventListener('pagehide',stopAvatar);
+    function guideText(){const item=sectionCopy[activeSection];return mode==='haiku'?item.haiku.join('、'):item.normal}
+    // A chat answer being read is not talked over by the section narration for 12 seconds.
+    function speakGuide(){if(!voiceOn||!activeSection||Date.now()<answerHoldUntil)return;say(guideText())}
+    const guideSpeak=document.getElementById('guideSpeak');
+    function setVoice(on){voiceOn=on;guideSpeak.textContent=on?'■ 声を止める':'▶ 声で説明を聞く';if(on){startAvatar();return}stopAvatar();if('speechSynthesis'in window)speechSynthesis.cancel()}
+    function speakAnswer(text){if(!text)return;answerHoldUntil=Date.now()+ANSWER_HOLD_MS;if(!voiceOn)setVoice(true);else startAvatar();say(text)}
+    guideSpeak.addEventListener('click',()=>{if(voiceOn){setVoice(false);return}setVoice(true);speakGuide()});
     document.getElementById('guideMinimize').addEventListener('click',e=>{const small=guide.classList.toggle('is-minimized');e.currentTarget.setAttribute('aria-label',small?'大きく表示':'小さく表示');e.currentTarget.textContent=small?'+':'−'});
     document.getElementById('guideOpen').addEventListener('click',openChat);document.getElementById('openSample').addEventListener('click',openChat);document.getElementById('closeChat').addEventListener('click',closeChat);
     function addMessage(value,user=false){const el=document.createElement('div');el.className='chat-msg'+(user?' user':'');el.textContent=value;chatLog.append(el);chatLog.scrollTop=chatLog.scrollHeight;return el}
@@ -244,13 +294,13 @@
       else if(/Web|サイト|接客|LP|ページ/i.test(q)){choice='説明する';answer='Web接客なら、訪問者が迷う区画と質問を先に洗い出し、人に渡す条件を決めます。';verse=['そのページ','迷う人へと','道しるべ']}
       else if(/育成|採用|面接|研修/.test(q)){choice='説明する';answer='育成・採用では、会話の目的と評価に使う範囲を先に定めます。人物の顔や声を使う場合は、本人の許諾を確認します。';verse=['学び合う','対話で育つ','力かな']}
       else{choice='追加で聞く';answer='まだ用途を決めなくて大丈夫です。御社が持つ知見と、届けたい相手を一つずつ教えてください。';verse=['まずは聞く','知恵のありかを','共に見る']}
-      addDecision(choice,answer,verse);document.getElementById('chatText').value=''
+      addDecision(choice,answer,verse);document.getElementById('chatText').value='';speakAnswer(lastAnswer)
     }
     document.querySelectorAll('[data-demo-prompt]').forEach(b=>b.addEventListener('click',()=>{openChat();respond(b.dataset.demoPrompt)}));
     document.querySelectorAll('[data-chat-prompt]').forEach(b=>b.addEventListener('click',()=>respond(b.dataset.chatPrompt)));
     document.getElementById('chatForm').addEventListener('submit',e=>{e.preventDefault();respond(document.getElementById('chatText').value)});
     document.getElementById('chatVoiceInput').addEventListener('click',()=>{const Recognition=window.SpeechRecognition||window.webkitSpeechRecognition;if(!Recognition){addMessage('このブラウザは音声入力に対応していません。文字で質問してください。');return}const rec=new Recognition();rec.lang='ja-JP';rec.onresult=e=>respond(e.results[0][0].transcript);rec.onerror=()=>addMessage('音声を聞き取れませんでした。文字でも質問できます。');rec.start()});
-    document.getElementById('chatVoiceOutput').addEventListener('click',()=>{if(!lastAnswer){addMessage('先に質問を選ぶか入力してください。');return}if(!('speechSynthesis'in window)){addMessage('このブラウザは読み上げに対応していません。');return}speechSynthesis.cancel();const utterance=new SpeechSynthesisUtterance(lastAnswer);utterance.lang='ja-JP';speechSynthesis.speak(utterance)});
+    document.getElementById('chatVoiceOutput').addEventListener('click',()=>{if(!lastAnswer){addMessage('先に質問を選ぶか入力してください。');return}speakAnswer(lastAnswer)});
     const form=document.getElementById('inquiryForm');form.addEventListener('submit',e=>e.preventDefault());document.getElementById('copyInquiry').addEventListener('click',async()=>{const data=new FormData(form),labels={company:'会社名',person:'お名前',email:'会社メール',website:'会社URL',usecase:'考えている用途',assets:'持ち込める知見や顧客との接点',model:'希望する提携形態',message:'補足・相談したいこと'},out=['AIアバター共同事業の相談'];Object.entries(labels).forEach(([k,label])=>out.push(label+'：'+(String(data.get(k)||'').trim()||'未記入')));const value=out.join('\n');const status=document.getElementById('copyStatus');try{await navigator.clipboard.writeText(value);status.textContent='入力内容をコピーしました。公式お問い合わせへ貼り付けてください。'}catch{const t=document.createElement('textarea');t.value=value;t.style.position='fixed';t.style.opacity='0';document.body.append(t);t.select();const ok=document.execCommand('copy');t.remove();status.textContent=ok?'入力内容をコピーしました。公式お問い合わせへ貼り付けてください。':'コピーできませんでした。入力内容を手動でコピーしてください。'}});
     document.getElementById('factCheck').addEventListener('click',()=>{const prompt='McKinsey & Company「The state of AI in 2026: On the road to ROI」（2026年8月25日）を一次資料で確認し、次の記載が正しいか中立的に検証してください。44%が全社でAIを拡大、年商10億ドル未満の企業では22%がAIエージェントを拡大、37%がAIのEBITへのプラスの寄与を報告、AI高成果層は6%、60%が翌年のAI投資増加を予想。数字の調査対象と定義、誤解を招く表現を指摘し、国内アバター市場や特定商材の成果への一般化はしないでください。';window.open('https://chatgpt.com/?q='+encodeURIComponent(prompt),'_blank','noopener,noreferrer')});
   })();
