@@ -89,7 +89,7 @@
     .partner-guide{top:76px;right:14px;bottom:auto;width:280px;height:auto;max-height:calc(100vh - 90px);overflow:auto;padding:0;border:1px solid #d5dddf;border-radius:17px;background:#fff;box-shadow:0 17px 54px rgba(12,28,42,.18);scrollbar-width:thin}
     .guide-stage{position:relative;height:296px;overflow:hidden;background:linear-gradient(160deg,#154578,#102547);border-radius:16px 16px 0 0}
     .guide-stage:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,18,42,.08) 20%,rgba(3,19,43,.3) 56%,rgba(5,20,43,.83));pointer-events:none}
-    .guide-stage>video,.guide-stage>video img{width:100%;height:100%;object-fit:cover;object-position:center 22%;filter:saturate(.85)}
+    .guide-stage>video,.guide-stage>video img{width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:saturate(.85)}
     .guide-stage-tag{position:absolute;z-index:1;left:16px;top:15px;color:#fff;font:800 10px/1.3 system-ui,sans-serif;letter-spacing:.15em;text-shadow:0 1px 8px #0b2440}
     .guide-minimize{position:absolute;z-index:2;top:10px;right:10px;width:28px;height:28px;border:0;border-radius:50%;background:rgba(5,23,52,.66);color:#fff;font-size:18px;line-height:1}
     .guide-speak{position:absolute;z-index:2;left:50%;bottom:25px;transform:translateX(-50%);width:max-content;max-width:calc(100% - 24px);min-height:42px;padding:8px 14px;border:0;border-radius:28px;background:#e77f36;color:#fff;box-shadow:0 5px 15px rgba(0,0,0,.2);font-size:12px;font-weight:900}
@@ -108,7 +108,7 @@
     /* Quiet right-hand surface gives the guide its own space without another photograph. */
     @media(min-width:760px){body::before{content:"";position:fixed;z-index:0;right:0;top:0;bottom:0;width:180px;border-left:1px solid #d8e3e9;background:repeating-linear-gradient(135deg,rgba(36,73,104,.028) 0 1px,transparent 1px 19px),radial-gradient(circle at 78% 9%,#f9fbfd,#e9f1f6 76%);pointer-events:none}}
     @media(min-width:1120px){body::before{width:300px}}
-    @media(prefers-reduced-motion:reduce){#guideVideo{display:none}.guide-stage{background:#e8eef1 url('assets/avatar.png') center 22%/cover no-repeat}.guide-copy.is-haiku .guide-lines{animation:none}}
+    @media(prefers-reduced-motion:reduce){#guideVideo{display:none}.guide-stage{background:#e8eef1 url('assets/kiba-avatar.jpg') center 30%/cover no-repeat}.guide-copy.is-haiku .guide-lines{animation:none}}
     /* The opening story floats across the hero and the first editorial section. */
     .prologue-bridge{position:relative;z-index:2;margin-top:-84px;margin-bottom:-96px}.prologue-card{position:relative;max-width:990px;margin-inline:auto;padding:54px 80px 51px;border:1px solid #e5d5bf;border-radius:23px;background:linear-gradient(155deg,#fffefa 0%,#faf6ef 100%);box-shadow:0 28px 65px rgba(11,30,42,.2),0 5px 14px rgba(11,30,42,.08);text-align:center;overflow:hidden}.prologue-card:before{content:"";position:absolute;inset:0 0 auto;height:5px;background:linear-gradient(90deg,#b1814a,#e7c397,#b1814a)}.prologue-kicker{display:flex;align-items:center;justify-content:center;gap:13px;margin:0 0 18px;color:#8d663a;font:800 11px/1.3 system-ui,sans-serif;letter-spacing:.17em}.prologue-kicker span:first-child{color:#78532e;font-size:13px;letter-spacing:.2em}.prologue-kicker span+span:before{content:"";display:inline-block;width:23px;height:1px;margin:0 13px 3px 0;background:#c6ad8d}.prologue-card h2{margin:0 auto 25px;font-size:clamp(31px,3.25vw,44px);line-height:1.4}.prologue-origin,.prologue-story,.prologue-text{max-width:48em;margin:0 auto;color:#43525a;font-size:16px;line-height:1.9}.prologue-question{max-width:28em;margin:19px auto;color:#815b30;font-size:clamp(20px,2.25vw,27px);font-weight:850;line-height:1.5}.prologue-story{max-width:47em}.prologue-text{max-width:47em;margin-top:13px}.prologue-signoff{margin:22px 0 0;color:#85633e;font-size:12px;font-weight:800;letter-spacing:.08em}.opportunity{position:relative;z-index:1;padding-top:170px}
     @media(max-width:900px){.prologue-card{padding:43px 38px 42px}.prologue-bridge{margin-top:-65px;margin-bottom:-78px}.opportunity{padding-top:143px}}
@@ -162,14 +162,14 @@
   </main>
   <footer class="site-footer"><div class="container footer-inner"><div><strong>株式会社ライトアップ</strong><small>AIアバター共同事業パートナー募集｜企画検討用プレビュー</small></div><nav aria-label="会社情報"><a href="https://www.writeup.jp/company/" target="_blank" rel="noopener">会社概要</a><a href="https://www.writeup.jp/privacy/" target="_blank" rel="noopener">個人情報保護方針</a><a href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">公式お問い合わせ</a></nav></div></footer>
   <aside class="partner-guide" id="partnerGuide" aria-label="閲覧区画に合わせた案内" data-avatar-api="https://aio.elliot-tech.jp/api/lp/partner-avatar/token">
-    <div class="guide-stage"><video id="guideVideo" autoplay muted loop playsinline preload="metadata" poster="assets/avatar.png" aria-label="共同事業の案内役アバターの無音ループ動画"><source src="assets/avatar-guide-loop.mp4" type="video/mp4"><img src="assets/avatar.png" alt="共同事業の案内役アバター"></video><video id="guideLive" playsinline hidden aria-label="共同事業の案内役アバターの映像"></video><span class="guide-stage-tag">AI AVATAR GUIDE</span><button class="guide-minimize" id="guideMinimize" type="button" aria-label="小さく表示">−</button><button class="guide-speak" id="guideSpeak" type="button">▶ 声で説明を聞く</button></div>
+    <div class="guide-stage"><video id="guideVideo" autoplay muted loop playsinline preload="metadata" poster="assets/kiba-avatar.jpg" aria-label="共同事業の案内役アバターの無音ループ動画"><source src="assets/kiba-guide-loop.mp4" type="video/mp4"><img src="assets/kiba-avatar.jpg" alt="共同事業の案内役アバター"></video><video id="guideLive" autoplay playsinline hidden aria-label="共同事業の案内役アバターの映像"></video><span class="guide-stage-tag">AI AVATAR GUIDE</span><button class="guide-minimize" id="guideMinimize" type="button" aria-label="小さく表示">−</button><button class="guide-speak" id="guideSpeak" type="button">▶ 声で説明を聞く</button></div>
     <div class="guide-body"><div class="guide-modes" role="group" aria-label="話し方"><button type="button" data-rail-mode="haiku" aria-pressed="false">575</button><button type="button" data-rail-mode="normal" aria-pressed="true">ふつう</button></div>
       <div class="guide-copy" id="guideCopy" role="status" aria-live="polite"><span class="guide-label" id="guideLabel">閲覧中の説明</span><span class="guide-route" id="guideRoute">固定ルート：説明する</span><div class="guide-lines" id="guideLines">読んでいる内容をご案内します。</div></div>
       <p class="guide-note">ページを読み進めると、いま見ている内容をご案内します。音声は「声で説明を聞く」を押すか、チャットで質問した後だけ再生します。</p><button class="guide-chat-trigger" id="guideOpen" type="button">文字で質問する <span aria-hidden="true">↗</span></button><small class="guide-disclose" id="guideDisclose">Jev API未接続・声は押した後だけ</small>
     </div>
   </aside>
   <aside class="partner-chat" id="partnerChat" aria-label="共同事業の案内チャット">
-    <div class="chat-top"><img src="assets/avatar.png" alt=""><strong>共同事業の案内役</strong><button id="closeChat" type="button" aria-label="閉じる">×</button></div>
+    <div class="chat-top"><img src="assets/kiba-avatar.jpg" alt=""><strong>共同事業の案内役</strong><button id="closeChat" type="button" aria-label="閉じる">×</button></div>
     <div class="guide-modes chat-modes" role="group" aria-label="回答形式"><button type="button" data-rail-mode="normal" aria-pressed="true">通常</button><button type="button" data-rail-mode="haiku" aria-pressed="false">五七五</button></div>
     <div class="chat-log" id="chatLog" role="log" aria-live="polite"><div class="chat-msg">こんにちは。御社の知見をどう届けるか、一緒に考えましょう。</div></div>
     <div class="chat-choices"><button type="button" data-chat-prompt="営業・商談">営業・商談</button><button type="button" data-chat-prompt="Web接客">Web接客</button><button type="button" data-chat-prompt="用途がまだ未定です">用途は未定</button><button type="button" data-chat-prompt="費用と契約条件は？">費用・契約</button></div>
@@ -262,7 +262,7 @@
         await ready;
         if(gen!==avatarGen)throw new Error('cancelled');
         avatar=client;avatarCtx=ctx;avatarConnecting=false;
-        guideLive.hidden=false;guideVideo.hidden=true;guideVideo.pause();setDisclose('live');
+        guideLive.hidden=false;guideVideo.hidden=true;guideVideo.pause();guideLive.play().catch(e=>console.warn('[partner-avatar] play failed',e));setDisclose('live');
         avatarTimer=setTimeout(()=>setVoice(false),AVATAR_MAX_MS);
         if('speechSynthesis'in window)speechSynthesis.cancel();
         const line=avatarPending;avatarPending='';say(line);
