@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>ワークログ・インサイト 活用事例</title>
+<style>
+:root{
+  --ink:#1c1f24;
+  --ink-soft:#4a5158;
+  --ink-mute:#7b838c;
+  --line:#e3e7ec;
+  --paper:#ffffff;
+  --bg:#fbfbf9;
+  --accent:#1f6feb;
+  --accent-soft:#eef4ff;
+  --hl:#fff3c4;
+  --soft:#fafbfc;
+  --chip:#f2f4f7;
+  --well:#f7f9fb;
+  --on-ink:#ffffff;
+  --radius:10px;
+  --maxw:860px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){--ink:#e6e9ee;--ink-soft:#b9c0c8;--ink-mute:#8b939c;--line:#2c323a;--paper:#171a1f;--bg:#111317;--accent:#6ea8ff;--accent-soft:#1a2740;--hl:#5a4a12;--soft:#1c2026;--chip:#232830;--well:#1c2026;--on-ink:#111317;color-scheme:dark} }
+:root[data-theme="dark"]{--ink:#e6e9ee;--ink-soft:#b9c0c8;--ink-mute:#8b939c;--line:#2c323a;--paper:#171a1f;--bg:#111317;--accent:#6ea8ff;--accent-soft:#1a2740;--hl:#5a4a12;--soft:#1c2026;--chip:#232830;--well:#1c2026;--on-ink:#111317;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic UI","Yu Gothic",Meiryo,system-ui,sans-serif;
+  font-size:16px;line-height:1.95;letter-spacing:.01em;
+}
+.sheet{max-width:var(--maxw);margin:0 auto;background:var(--paper);border-left:1px solid var(--line);border-right:1px solid var(--line);padding:0 16px 96px}
+@media (min-width:720px){ .sheet{padding:0 56px 120px} }
+
+header{padding:56px 0 28px;border-bottom:2px solid var(--ink);margin-bottom:36px}
+.eyebrow{font-size:12px;letter-spacing:.18em;color:var(--ink-mute);margin:0 0 10px}
+.eyebrow .back{color:inherit;text-decoration:none;border-bottom:1px solid var(--line)}
+.eyebrow .back:hover{color:var(--ink)}
+h1{font-size:28px;line-height:1.45;margin:0 0 18px;font-weight:700}
+@media (min-width:720px){ h1{font-size:34px} }
+.lead p{margin:0 0 12px;color:var(--ink-soft);font-size:15.5px}
+.byline{font-size:13px;color:var(--ink-mute);margin:0 0 14px}
+
+/* 目次＋ハイライト */
+.summary{display:grid;grid-template-columns:1fr;gap:10px;margin:0 0 56px;padding:0;list-style:none}
+@media (min-width:640px){ .summary{grid-template-columns:1fr 1fr} }
+.summary a{display:flex;gap:14px;align-items:center;padding:14px 16px;border:1px solid var(--line);border-radius:var(--radius);text-decoration:none;color:var(--ink);background:var(--soft)}
+.summary a:hover{border-color:var(--ink-mute)}
+.summary .num{font-size:22px;font-weight:700;white-space:nowrap;min-width:84px;font-variant-numeric:tabular-nums}
+.summary .num small{font-size:12px;font-weight:400;color:var(--ink-mute);margin-left:2px}
+.summary .lbl{font-size:13px;line-height:1.6;color:var(--ink-soft)}
+.summary .lbl b{display:block;font-size:11px;letter-spacing:.12em;color:var(--ink-mute);font-weight:400}
+
+section{margin:0 0 72px;scroll-margin-top:20px}
+.case-no{display:inline-block;font-size:12px;letter-spacing:.16em;color:var(--on-ink);background:var(--ink);border-radius:4px;padding:2px 10px;margin:0 0 12px}
+.case-no span{opacity:.7;margin-left:8px}
+h2{font-size:22px;line-height:1.55;margin:0 0 22px;font-weight:700;padding-bottom:14px;border-bottom:1px solid var(--ink)}
+@media (min-width:720px){ h2{font-size:25px} }
+h3{font-size:16px;margin:36px 0 12px;font-weight:700;padding-left:12px;border-left:3px solid var(--ink)}
+p{margin:0 0 14px}
+mark{background:linear-gradient(transparent 55%,var(--hl) 55%);color:inherit;font-weight:700}
+a{color:var(--accent)}
+
+figure{margin:16px 0 24px}
+figure a{display:block;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--well);line-height:0}
+figure img{width:100%;height:auto;display:block}
+figure.narrow{max-width:480px}
+figure.tall{max-width:380px}
+figcaption{font-size:12.5px;color:var(--ink-mute);margin-top:8px;line-height:1.7}
+.pair{display:grid;grid-template-columns:1fr;gap:14px;align-items:start}
+@media (min-width:640px){ .pair{grid-template-columns:1fr 1fr} .pair figure{margin:0} }
+.pair + p, .pair + h3{margin-top:22px}
+
+.quote{border-left:3px solid var(--ink);background:var(--soft);padding:12px 18px;margin:18px 0;font-size:15.5px}
+
+/* インタビュー */
+.qa{margin:8px 0 0}
+.qa dt{font-weight:700;margin:22px 0 6px;display:flex;gap:10px}
+.qa dd{margin:0;display:flex;gap:10px;color:var(--ink-soft)}
+.who{flex:0 0 auto;font-size:11px;line-height:1;padding:6px 7px;border-radius:4px;margin-top:6px;height:fit-content;font-weight:700}
+.who.q{background:var(--ink);color:var(--on-ink)}
+.who.a{background:var(--chip);color:var(--ink-soft);border:1px solid var(--line)}
+
+/* 数字 */
+.stat{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:6px 0 20px}
+.stat .big{font-size:40px;font-weight:700;line-height:1.2;font-variant-numeric:tabular-nums}
+.stat .arrow{color:var(--ink-mute);font-size:22px}
+.stat .diff{font-size:15px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:2px 12px}
+
+.chart{border:1px solid var(--line);border-radius:var(--radius);padding:14px 10px 6px;margin:12px 0 10px}
+.chart svg{width:100%;height:auto;display:block}
+.chart .grid{stroke:var(--line);stroke-width:1}
+.chart .axis{fill:var(--ink-mute);font-size:11px}
+.chart .line{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.chart .area{fill:var(--accent);opacity:.08}
+.chart .dot{fill:var(--accent)}
+.chart .end{fill:var(--ink);font-size:12px;font-weight:700}
+
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0 18px}
+th,td{border-bottom:1px solid var(--line);padding:10px 8px;text-align:left;vertical-align:top}
+th{font-size:12.5px;color:var(--ink-mute);font-weight:400;letter-spacing:.06em;border-bottom:1px solid var(--ink)}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+td small{display:block;color:var(--ink-mute);font-size:12px}
+.scroll{overflow-x:auto}
+
+details{border:1px solid var(--line);border-radius:var(--radius);margin:8px 0 20px;overflow:hidden}
+details>summary{cursor:pointer;padding:10px 16px;font-size:13.5px;color:var(--ink-soft);list-style:none}
+details>summary::before{content:"＋";margin-right:8px}
+details[open]>summary::before{content:"－"}
+details .scroll{padding:0 12px 4px}
+details table{font-size:13px;min-width:520px}
+details td,details th{padding:6px 6px;text-align:center}
+
+.setting{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:4px 18px;margin:12px 0 18px}
+.setting dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:0}
+.setting dt,.setting dd{padding:10px 0;border-top:1px dashed var(--line);margin:0;font-size:14.5px}
+.setting dt{font-weight:700;padding-right:18px;white-space:nowrap}
+.setting dt:first-of-type,.setting dd:first-of-type{border-top:0}
+
+footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
+.note{font-size:13px;color:var(--ink-mute)}
+
+.stage{display:inline-block;font-size:11.5px;line-height:1.6;padding:1px 9px;border-radius:999px;border:1px solid var(--line);white-space:nowrap;color:var(--ink-soft);background:var(--soft)}
+.stage.won{color:var(--accent);background:var(--accent-soft);border-color:transparent;font-weight:700}
+.voices{list-style:none;margin:10px 0 18px;padding:0;display:grid;gap:10px}
+.voices li{border-left:3px solid var(--ink);background:var(--soft);padding:10px 16px;font-size:15px}
+.voices small{display:block;color:var(--ink-mute);font-size:12px;margin-top:2px}
+.flow{list-style:none;margin:10px 0 18px;padding:0;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.flow li{border:1px solid var(--line);border-radius:var(--radius);padding:8px 14px;font-size:14px;background:var(--soft)}
+.flow li.arrow{border:0;background:none;padding:0;color:var(--ink-mute)}
+.flow li b{display:block;font-size:20px;font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<header>
+  <p class="eyebrow"><a class="back" href="../">CASE STUDY</a> ／ ワークログ・インサイト</p>
+  <h1>連休明けに、3社の受注。<br>ワークログ・インサイトの活用事例</h1>
+  <div class="lead">
+    <p>ワークログ・インサイトは、パソコンでの仕事の記録から業務の進め方や課題を見えるようにするサービスです。</p>
+    <p>ここでは、自社の商品として扱い始めたパートナー企業の動きと、説明会での反応、社内で試したことをまとめています。</p>
+  </div>
+</header>
+
+<ul class="summary">
+  <li><a href="#case01"><span class="num">3社受注</span><span class="lbl"><b>CASE 01｜営業代行会社</b>OEMで先に導入し、連休明けに受注</span></a></li>
+  <li><a href="#case02"><span class="num">7人中5人</span><span class="lbl"><b>CASE 02｜説明会</b>無料モニターを希望</span></a></li>
+  <li><a href="#case03"><span class="num">社内PC</span><span class="lbl"><b>CASE 03｜社内テスト</b>まず自分たちで入れてみた</span></a></li>
+</ul>
+
+<!-- CASE 01 -->
+<section id="case01">
+  <span class="case-no">CASE 01<span>営業代行・営業BPO</span></span>
+  <h2>説明会に参加した営業代行会社が、連休明けに3社を受注</h2>
+  <p>テレアポから商談までを代行している営業支援の会社です。2名がOEM（自社の商品として販売する形）の説明会に参加し、そこから一気に動きました。</p>
+  <ul class="flow">
+    <li><b>2名</b>説明会に参加</li>
+    <li class="arrow">→</li>
+    <li><b>30ID</b>連休前に先行導入</li>
+    <li class="arrow">→</li>
+    <li><b>3社</b>連休明けに受注</li>
+  </ul>
+  <h3>どう売っているか</h3>
+  <p>ワークログ・インサイトを自社のお客様に提供し、そこで見えてきた業務の課題を入口にして、本業の営業支援の提案につなげる、という使い方です。ツールの販売だけで終わらせず、次の提案のきっかけにしているのがポイントです。</p>
+  <p class="note">※ 受注数は先方からの報告です。同じ成果を約束するものではありません。</p>
+</section>
+
+<!-- CASE 02 -->
+<section id="case02">
+  <span class="case-no">CASE 02<span>説明会</span></span>
+  <h2>説明を聞いた7人のうち、5人が無料モニターを希望</h2>
+  <p>ライトアップが開いた説明会の終了後アンケート（回答7人）では、5人が無料モニターを希望し、1人が「興味あり」と答えました。実際の画面を見て、自社の業務に当てはめたイメージが持てた方が多かったようです。</p>
+</section>
+
+<!-- CASE 03 -->
+<section id="case03">
+  <span class="case-no">CASE 03<span>社内テスト</span></span>
+  <h2>まず自分たちのパソコンに入れてみた</h2>
+  <p>お客様に提案する前に、担当の小松が社内のパソコンに導入しました。どんな記録が集まるのか、管理画面で何が見えるのか、導入時にどこでつまずきやすいのかを、先に自分たちで確かめています。関心を持ったパートナー企業にも、実機で試してもらう予定です。</p>
+</section>
+
+<footer class="close">
+  <p class="note">※ 企業名は記載していません。業種・規模は特定できない範囲で記載しています。</p>
+  <p><a href="../">← SaaS活用事例の一覧へ</a></p>
+</footer>
+
+</div>
+</body>
+</html>

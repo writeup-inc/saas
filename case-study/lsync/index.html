@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Lシンク 活用事例</title>
+<style>
+:root{
+  --ink:#1c1f24;
+  --ink-soft:#4a5158;
+  --ink-mute:#7b838c;
+  --line:#e3e7ec;
+  --paper:#ffffff;
+  --bg:#fbfbf9;
+  --accent:#1f6feb;
+  --accent-soft:#eef4ff;
+  --hl:#fff3c4;
+  --soft:#fafbfc;
+  --chip:#f2f4f7;
+  --well:#f7f9fb;
+  --on-ink:#ffffff;
+  --radius:10px;
+  --maxw:860px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){--ink:#e6e9ee;--ink-soft:#b9c0c8;--ink-mute:#8b939c;--line:#2c323a;--paper:#171a1f;--bg:#111317;--accent:#6ea8ff;--accent-soft:#1a2740;--hl:#5a4a12;--soft:#1c2026;--chip:#232830;--well:#1c2026;--on-ink:#111317;color-scheme:dark} }
+:root[data-theme="dark"]{--ink:#e6e9ee;--ink-soft:#b9c0c8;--ink-mute:#8b939c;--line:#2c323a;--paper:#171a1f;--bg:#111317;--accent:#6ea8ff;--accent-soft:#1a2740;--hl:#5a4a12;--soft:#1c2026;--chip:#232830;--well:#1c2026;--on-ink:#111317;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic UI","Yu Gothic",Meiryo,system-ui,sans-serif;
+  font-size:16px;line-height:1.95;letter-spacing:.01em;
+}
+.sheet{max-width:var(--maxw);margin:0 auto;background:var(--paper);border-left:1px solid var(--line);border-right:1px solid var(--line);padding:0 16px 96px}
+@media (min-width:720px){ .sheet{padding:0 56px 120px} }
+
+header{padding:56px 0 28px;border-bottom:2px solid var(--ink);margin-bottom:36px}
+.eyebrow{font-size:12px;letter-spacing:.18em;color:var(--ink-mute);margin:0 0 10px}
+.eyebrow .back{color:inherit;text-decoration:none;border-bottom:1px solid var(--line)}
+.eyebrow .back:hover{color:var(--ink)}
+h1{font-size:28px;line-height:1.45;margin:0 0 18px;font-weight:700}
+@media (min-width:720px){ h1{font-size:34px} }
+.lead p{margin:0 0 12px;color:var(--ink-soft);font-size:15.5px}
+.byline{font-size:13px;color:var(--ink-mute);margin:0 0 14px}
+
+/* 目次＋ハイライト */
+.summary{display:grid;grid-template-columns:1fr;gap:10px;margin:0 0 56px;padding:0;list-style:none}
+@media (min-width:640px){ .summary{grid-template-columns:1fr 1fr} }
+.summary a{display:flex;gap:14px;align-items:center;padding:14px 16px;border:1px solid var(--line);border-radius:var(--radius);text-decoration:none;color:var(--ink);background:var(--soft)}
+.summary a:hover{border-color:var(--ink-mute)}
+.summary .num{font-size:22px;font-weight:700;white-space:nowrap;min-width:84px;font-variant-numeric:tabular-nums}
+.summary .num small{font-size:12px;font-weight:400;color:var(--ink-mute);margin-left:2px}
+.summary .lbl{font-size:13px;line-height:1.6;color:var(--ink-soft)}
+.summary .lbl b{display:block;font-size:11px;letter-spacing:.12em;color:var(--ink-mute);font-weight:400}
+
+section{margin:0 0 72px;scroll-margin-top:20px}
+.case-no{display:inline-block;font-size:12px;letter-spacing:.16em;color:var(--on-ink);background:var(--ink);border-radius:4px;padding:2px 10px;margin:0 0 12px}
+.case-no span{opacity:.7;margin-left:8px}
+h2{font-size:22px;line-height:1.55;margin:0 0 22px;font-weight:700;padding-bottom:14px;border-bottom:1px solid var(--ink)}
+@media (min-width:720px){ h2{font-size:25px} }
+h3{font-size:16px;margin:36px 0 12px;font-weight:700;padding-left:12px;border-left:3px solid var(--ink)}
+p{margin:0 0 14px}
+mark{background:linear-gradient(transparent 55%,var(--hl) 55%);color:inherit;font-weight:700}
+a{color:var(--accent)}
+
+figure{margin:16px 0 24px}
+figure a{display:block;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--well);line-height:0}
+figure img{width:100%;height:auto;display:block}
+figure.narrow{max-width:480px}
+figure.tall{max-width:380px}
+figcaption{font-size:12.5px;color:var(--ink-mute);margin-top:8px;line-height:1.7}
+.pair{display:grid;grid-template-columns:1fr;gap:14px;align-items:start}
+@media (min-width:640px){ .pair{grid-template-columns:1fr 1fr} .pair figure{margin:0} }
+.pair + p, .pair + h3{margin-top:22px}
+
+.quote{border-left:3px solid var(--ink);background:var(--soft);padding:12px 18px;margin:18px 0;font-size:15.5px}
+
+/* インタビュー */
+.qa{margin:8px 0 0}
+.qa dt{font-weight:700;margin:22px 0 6px;display:flex;gap:10px}
+.qa dd{margin:0;display:flex;gap:10px;color:var(--ink-soft)}
+.who{flex:0 0 auto;font-size:11px;line-height:1;padding:6px 7px;border-radius:4px;margin-top:6px;height:fit-content;font-weight:700}
+.who.q{background:var(--ink);color:var(--on-ink)}
+.who.a{background:var(--chip);color:var(--ink-soft);border:1px solid var(--line)}
+
+/* 数字 */
+.stat{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:6px 0 20px}
+.stat .big{font-size:40px;font-weight:700;line-height:1.2;font-variant-numeric:tabular-nums}
+.stat .arrow{color:var(--ink-mute);font-size:22px}
+.stat .diff{font-size:15px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:2px 12px}
+
+.chart{border:1px solid var(--line);border-radius:var(--radius);padding:14px 10px 6px;margin:12px 0 10px}
+.chart svg{width:100%;height:auto;display:block}
+.chart .grid{stroke:var(--line);stroke-width:1}
+.chart .axis{fill:var(--ink-mute);font-size:11px}
+.chart .line{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.chart .area{fill:var(--accent);opacity:.08}
+.chart .dot{fill:var(--accent)}
+.chart .end{fill:var(--ink);font-size:12px;font-weight:700}
+
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0 18px}
+th,td{border-bottom:1px solid var(--line);padding:10px 8px;text-align:left;vertical-align:top}
+th{font-size:12.5px;color:var(--ink-mute);font-weight:400;letter-spacing:.06em;border-bottom:1px solid var(--ink)}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+td small{display:block;color:var(--ink-mute);font-size:12px}
+.scroll{overflow-x:auto}
+
+details{border:1px solid var(--line);border-radius:var(--radius);margin:8px 0 20px;overflow:hidden}
+details>summary{cursor:pointer;padding:10px 16px;font-size:13.5px;color:var(--ink-soft);list-style:none}
+details>summary::before{content:"＋";margin-right:8px}
+details[open]>summary::before{content:"－"}
+details .scroll{padding:0 12px 4px}
+details table{font-size:13px;min-width:520px}
+details td,details th{padding:6px 6px;text-align:center}
+
+.setting{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:4px 18px;margin:12px 0 18px}
+.setting dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:0}
+.setting dt,.setting dd{padding:10px 0;border-top:1px dashed var(--line);margin:0;font-size:14.5px}
+.setting dt{font-weight:700;padding-right:18px;white-space:nowrap}
+.setting dt:first-of-type,.setting dd:first-of-type{border-top:0}
+
+footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
+.note{font-size:13px;color:var(--ink-mute)}
+
+.stage{display:inline-block;font-size:11.5px;line-height:1.6;padding:1px 9px;border-radius:999px;border:1px solid var(--line);white-space:nowrap;color:var(--ink-soft);background:var(--soft)}
+.stage.won{color:var(--accent);background:var(--accent-soft);border-color:transparent;font-weight:700}
+.voices{list-style:none;margin:10px 0 18px;padding:0;display:grid;gap:10px}
+.voices li{border-left:3px solid var(--ink);background:var(--soft);padding:10px 16px;font-size:15px}
+.voices small{display:block;color:var(--ink-mute);font-size:12px;margin-top:2px}
+.flow{list-style:none;margin:10px 0 18px;padding:0;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.flow li{border:1px solid var(--line);border-radius:var(--radius);padding:8px 14px;font-size:14px;background:var(--soft)}
+.flow li.arrow{border:0;background:none;padding:0;color:var(--ink-mute)}
+.flow li b{display:block;font-size:20px;font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<header>
+  <p class="eyebrow"><a class="back" href="../">CASE STUDY</a> ／ Lシンク</p>
+  <h1>LINEに、営業マンの分身を置く。<br>Lシンクの現場から</h1>
+  <div class="lead">
+    <p>Lシンクは、営業担当者の考え方や言い回しを学んだAIが、公式LINE上でその人の分身として24時間お客様に対応するサービスです。</p>
+    <p>ここでは、実際に受注・導入・提案している案件と、商談の現場で聞いたお客様の声をまとめています。成果の数字が出そろっている段階ではないので、どの案件がどこまで進んでいるかもそのまま書いています。</p>
+  </div>
+</header>
+
+<ul class="summary">
+  <li><a href="#case01"><span class="num">6業種</span><span class="lbl"><b>CASE 01｜案件一覧</b>実際に受注・提案している使い方</span></a></li>
+  <li><a href="#case02"><span class="num">提案中</span><span class="lbl"><b>CASE 02｜製造・卸売</b>専任のいない問い合わせ窓口をLINEへ</span></a></li>
+  <li><a href="#case03"><span class="num">導入合意</span><span class="lbl"><b>CASE 03｜IT・Web制作</b>Webサイトを、24時間の営業担当に</span></a></li>
+  <li><a href="#case04"><span class="num">深夜3時</span><span class="lbl"><b>CASE 04｜エピソード</b>AIが日程まで押さえていた</span></a></li>
+</ul>
+
+<!-- CASE 01 -->
+<section id="case01">
+  <span class="case-no">CASE 01<span>案件一覧</span></span>
+  <h2>どんな会社が、どう使っているか</h2>
+  <p>業種はばらばらですが、共通しているのは「人が追いかけきれないお客様とのやり取り」をLINEに任せたい、という点です。</p>
+  <div class="scroll">
+    <table>
+      <tr><th>業種・規模</th><th>使い方</th><th>段階</th></tr>
+      <tr><td>医療法人のクリニック</td><td>LINEでの受付・案内の仕組み</td><td><span class="stage won">受注済み</span></td></tr>
+      <tr><td>名刺LINEエージェントと同時に導入した法人</td><td>自社の資料をAIの知識として読み込ませ、問い合わせに答える</td><td><span class="stage won">受注済み</span></td></tr>
+      <tr><td>IT・Web制作の個人事業</td><td>Webサイトからの問い合わせ対応と、見込み客を育てる配信</td><td><span class="stage won">導入合意</span></td></tr>
+      <tr><td>法人向けの製造・卸売の中小企業</td><td>問い合わせ窓口の一次対応</td><td><span class="stage">提案中</span></td></tr>
+      <tr><td>牛乳などの宅配販売店</td><td>イベントに来た見込み客やその家族へのフォロー、メニューから商品案内</td><td><span class="stage">提案中</span></td></tr>
+      <tr><td>地方の介護事業者</td><td>ご本人には電話、ご家族にはLINEと、相手によって窓口を分ける</td><td><span class="stage">相談中</span></td></tr>
+    </table>
+  </div>
+  <p>ライトアップ社内でも、営業担当者の分身AIとして使っています。</p>
+</section>
+
+<!-- CASE 02 -->
+<section id="case02">
+  <span class="case-no">CASE 02<span>製造・卸売</span></span>
+  <h2>専任のいない問い合わせ窓口を、LINEに任せる</h2>
+  <p>法人向けに製品をつくって卸している中小企業です。問い合わせの専任担当がおらず、決まった質問が来るたびに担当者の手が止まっていました。</p>
+
+  <h3>提案した使い方</h3>
+  <div class="setting"><dl>
+    <dt>AIに任せる</dt><dd>商品データと対応ルールを学ばせ、決まった質問にはAIが答える</dd>
+    <dt>人が受ける</dt><dd>相談や判断が必要なものだけを、担当者に引き継ぐ</dd>
+    <dt>体験</dt><dd>商談の場で公式LINEのQRコードを読んでもらい、その場でAIとやり取りしてもらった</dd>
+  </dl></div>
+
+  <h3>出てきた不安と、その場での答え</h3>
+  <dl class="qa">
+    <dt><span class="who q">お客様</span>導入したあと、何が変わるのかが見えない</dt>
+    <dd><span class="who a">提案</span><span>いきなり全部を切り替えず、1か月の小さなテストから始める。</span></dd>
+    <dt><span class="who q">お客様</span>いまのメール対応と、どうつなげるのか</dt>
+    <dd><span class="who a">提案</span><span>AIが受けて、必要なものは人に渡す。やり取りがどこかに埋もれることはない。</span></dd>
+  </dl>
+  <p>フリーダイヤルを残すか、LINEに移すかは、先方の社内で検討が続いています。</p>
+</section>
+
+<!-- CASE 03 -->
+<section id="case03">
+  <span class="case-no">CASE 03<span>IT・Web制作</span></span>
+  <h2>Webサイトを、24時間の営業担当に</h2>
+  <p>パソコン修理などの仕事は回っているものの、それ以外の案件が増えないという個人のIT・Web制作事業者です。まず自社でLシンクを使って仕組みを理解し、そのうえで販売代理店にもなる、という順番で進めています。</p>
+  <div class="setting"><dl>
+    <dt>入口</dt><dd>WebサイトにQRコードを置き、問い合わせフォームまでは来ない人にもAIが24時間対応する</dd>
+    <dt>配信</dt><dd>興味を少しずつ高める5ステップの配信を設計</dd>
+    <dt>記録</dt><dd>会話の中から相手のニーズを読み取り、タグを付けて残す</dd>
+  </dl></div>
+  <p>いまは設計を終えた段階で、成果はこれからです。</p>
+</section>
+
+<!-- CASE 04 -->
+<section id="case04">
+  <span class="case-no">CASE 04<span>エピソード</span></span>
+  <h2>深夜3時、AIが日程まで押さえていた</h2>
+  <p>ある導入先で、深夜3時にお客様からLINEが届き、AIがそのまま会話して商談の日程まで押さえていました。翌朝、そのお客様からは「こんな時間にすみません」とひと言。相手は人と話していると思っていたそうです。</p>
+  <p>共有されたのは1件のエピソードです。ただ、人なら返せない時間帯にこそ問い合わせが来る、ということはよく表しています。</p>
+
+  <h3>商談の現場で聞いた声</h3>
+  <p>導入を検討している方から、営業担当が実際に聞いた言葉です。</p>
+  <ul class="voices">
+    <li>一度話したお客さんを、その後ずっと追いかけるのは人では無理</li>
+    <li>LINEはあるけど、ほとんど活用できていない</li>
+    <li>まずお客さま向けで使って、うまくいったら社内でも使いたい</li>
+    <li>言った言わないになって、個人のLINEを遡って経緯を確認したことがある</li>
+    <li>うちはマンパワーがないから、AIに頼るしかない</li>
+  </ul>
+  <p>一方で、金融商品を扱う会社からは「AIから発信すると、お客さんが怖がる」という声もありました。こちらから売り込む配信よりも、お客様から来た問い合わせに答える使い方のほうが向いている業種もあります。</p>
+</section>
+
+<footer class="close">
+  <p class="note">※ 業種・規模は特定できない範囲で記載しています。ここに載せた内容は個別の事例で、同じ成果を約束するものではありません。</p>
+  <p><a href="../">← SaaS活用事例の一覧へ</a></p>
+</footer>
+
+</div>
+</body>
+</html>
