@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>ソーシャルマスター 社内活用事例</title>
+<style>
+:root{
+  --ink:#1c1f24;
+  --ink-soft:#4a5158;
+  --ink-mute:#7b838c;
+  --line:#e3e7ec;
+  --paper:#ffffff;
+  --bg:#fbfbf9;
+  --accent:#1f6feb;
+  --accent-soft:#eef4ff;
+  --hl:#fff3c4;
+  --soft:#fafbfc;
+  --chip:#f2f4f7;
+  --well:#f7f9fb;
+  --on-ink:#ffffff;
+  --radius:10px;
+  --maxw:860px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){--ink:#e6e9ee;--ink-soft:#b9c0c8;--ink-mute:#8b939c;--line:#2c323a;--paper:#171a1f;--bg:#111317;--accent:#6ea8ff;--accent-soft:#1a2740;--hl:#5a4a12;--soft:#1c2026;--chip:#232830;--well:#1c2026;--on-ink:#111317;color-scheme:dark} }
+:root[data-theme="dark"]{--ink:#e6e9ee;--ink-soft:#b9c0c8;--ink-mute:#8b939c;--line:#2c323a;--paper:#171a1f;--bg:#111317;--accent:#6ea8ff;--accent-soft:#1a2740;--hl:#5a4a12;--soft:#1c2026;--chip:#232830;--well:#1c2026;--on-ink:#111317;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic UI","Yu Gothic",Meiryo,system-ui,sans-serif;
+  font-size:16px;line-height:1.95;letter-spacing:.01em;
+}
+.sheet{max-width:var(--maxw);margin:0 auto;background:var(--paper);border-left:1px solid var(--line);border-right:1px solid var(--line);padding:0 16px 96px}
+@media (min-width:720px){ .sheet{padding:0 56px 120px} }
+
+header{padding:56px 0 28px;border-bottom:2px solid var(--ink);margin-bottom:36px}
+.eyebrow{font-size:12px;letter-spacing:.18em;color:var(--ink-mute);margin:0 0 10px}
+.eyebrow .back{color:inherit;text-decoration:none;border-bottom:1px solid var(--line)}
+.eyebrow .back:hover{color:var(--ink)}
+h1{font-size:28px;line-height:1.45;margin:0 0 18px;font-weight:700}
+@media (min-width:720px){ h1{font-size:34px} }
+.lead p{margin:0 0 12px;color:var(--ink-soft);font-size:15.5px}
+.byline{font-size:13px;color:var(--ink-mute);margin:0 0 14px}
+
+/* 目次＋ハイライト */
+.summary{display:grid;grid-template-columns:1fr;gap:10px;margin:0 0 56px;padding:0;list-style:none}
+@media (min-width:640px){ .summary{grid-template-columns:1fr 1fr} }
+.summary a{display:flex;gap:14px;align-items:center;padding:14px 16px;border:1px solid var(--line);border-radius:var(--radius);text-decoration:none;color:var(--ink);background:var(--soft)}
+.summary a:hover{border-color:var(--ink-mute)}
+.summary .num{font-size:22px;font-weight:700;white-space:nowrap;min-width:84px;font-variant-numeric:tabular-nums}
+.summary .num small{font-size:12px;font-weight:400;color:var(--ink-mute);margin-left:2px}
+.summary .lbl{font-size:13px;line-height:1.6;color:var(--ink-soft)}
+.summary .lbl b{display:block;font-size:11px;letter-spacing:.12em;color:var(--ink-mute);font-weight:400}
+
+section{margin:0 0 72px;scroll-margin-top:20px}
+.case-no{display:inline-block;font-size:12px;letter-spacing:.16em;color:var(--on-ink);background:var(--ink);border-radius:4px;padding:2px 10px;margin:0 0 12px}
+.case-no span{opacity:.7;margin-left:8px}
+h2{font-size:22px;line-height:1.55;margin:0 0 22px;font-weight:700;padding-bottom:14px;border-bottom:1px solid var(--ink)}
+@media (min-width:720px){ h2{font-size:25px} }
+h3{font-size:16px;margin:36px 0 12px;font-weight:700;padding-left:12px;border-left:3px solid var(--ink)}
+p{margin:0 0 14px}
+mark{background:linear-gradient(transparent 55%,var(--hl) 55%);color:inherit;font-weight:700}
+a{color:var(--accent)}
+
+figure{margin:16px 0 24px}
+figure a{display:block;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--well);line-height:0}
+figure img{width:100%;height:auto;display:block}
+figure.narrow{max-width:480px}
+figure.tall{max-width:380px}
+figcaption{font-size:12.5px;color:var(--ink-mute);margin-top:8px;line-height:1.7}
+.pair{display:grid;grid-template-columns:1fr;gap:14px;align-items:start}
+@media (min-width:640px){ .pair{grid-template-columns:1fr 1fr} .pair figure{margin:0} }
+.pair + p, .pair + h3{margin-top:22px}
+
+.quote{border-left:3px solid var(--ink);background:var(--soft);padding:12px 18px;margin:18px 0;font-size:15.5px}
+
+/* インタビュー */
+.qa{margin:8px 0 0}
+.qa dt{font-weight:700;margin:22px 0 6px;display:flex;gap:10px}
+.qa dd{margin:0;display:flex;gap:10px;color:var(--ink-soft)}
+.who{flex:0 0 auto;font-size:11px;line-height:1;padding:6px 7px;border-radius:4px;margin-top:6px;height:fit-content;font-weight:700}
+.who.q{background:var(--ink);color:var(--on-ink)}
+.who.a{background:var(--chip);color:var(--ink-soft);border:1px solid var(--line)}
+
+/* 数字 */
+.stat{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:6px 0 20px}
+.stat .big{font-size:40px;font-weight:700;line-height:1.2;font-variant-numeric:tabular-nums}
+.stat .arrow{color:var(--ink-mute);font-size:22px}
+.stat .diff{font-size:15px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:2px 12px}
+
+.chart{border:1px solid var(--line);border-radius:var(--radius);padding:14px 10px 6px;margin:12px 0 10px}
+.chart svg{width:100%;height:auto;display:block}
+.chart .grid{stroke:var(--line);stroke-width:1}
+.chart .axis{fill:var(--ink-mute);font-size:11px}
+.chart .line{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.chart .area{fill:var(--accent);opacity:.08}
+.chart .dot{fill:var(--accent)}
+.chart .end{fill:var(--ink);font-size:12px;font-weight:700}
+
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0 18px}
+th,td{border-bottom:1px solid var(--line);padding:10px 8px;text-align:left;vertical-align:top}
+th{font-size:12.5px;color:var(--ink-mute);font-weight:400;letter-spacing:.06em;border-bottom:1px solid var(--ink)}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+td small{display:block;color:var(--ink-mute);font-size:12px}
+.scroll{overflow-x:auto}
+
+details{border:1px solid var(--line);border-radius:var(--radius);margin:8px 0 20px;overflow:hidden}
+details>summary{cursor:pointer;padding:10px 16px;font-size:13.5px;color:var(--ink-soft);list-style:none}
+details>summary::before{content:"＋";margin-right:8px}
+details[open]>summary::before{content:"－"}
+details .scroll{padding:0 12px 4px}
+details table{font-size:13px;min-width:520px}
+details td,details th{padding:6px 6px;text-align:center}
+
+.setting{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:4px 18px;margin:12px 0 18px}
+.setting dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:0}
+.setting dt,.setting dd{padding:10px 0;border-top:1px dashed var(--line);margin:0;font-size:14.5px}
+.setting dt{font-weight:700;padding-right:18px;white-space:nowrap}
+.setting dt:first-of-type,.setting dd:first-of-type{border-top:0}
+
+footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
+.note{font-size:13px;color:var(--ink-mute)}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<header>
+  <p class="eyebrow"><a class="back" href="../">CASE STUDY</a> ／ ソーシャルマスター</p>
+  <h1>フォロワー5人でも、商談は来た。<br>ソーシャルマスター社内活用事例</h1>
+  <p class="byline">ソーシャルマスター担当 小松</p>
+  <div class="lead">
+    <p>「AIが毎日投稿してくれるのはわかったけど、実際のところどのくらい効果が出るの？」——お客様から一番よく聞かれる質問です。うまく答えられなかったので、まずは自分たちで試してみることにしました。</p>
+    <p>ライトアップの社内アカウントで1ヶ月ほど回してみたところ、正直こちらが驚く結果になったので、そのまま共有します。数字は盛っていません。伸びなかった期間も、そのまま載せています。</p>
+  </div>
+</header>
+
+<ul class="summary">
+  <li><a href="#case01"><span class="num">商談1件</span><span class="lbl"><b>CASE 01｜Instagram</b>フォロワー5人のアカウントに企業からDM</span></a></li>
+  <li><a href="#case02"><span class="num">＋39<small>人</small></span><span class="lbl"><b>CASE 02｜X 採用担当</b>3週間で393人→432人</span></a></li>
+  <li><a href="#case03"><span class="num">＋58<small>人</small></span><span class="lbl"><b>CASE 03｜X AI情報発信</b>テーマ違いのアカウントも同時に伸長</span></a></li>
+  <li><a href="#case04"><span class="num">50<small>いいね</small></span><span class="lbl"><b>CASE 04｜Threads</b>フォロワー1人の投稿で</span></a></li>
+  <li><a href="#case05"><span class="num">引用RT</span><span class="lbl"><b>CASE 05｜X 一人社長向け</b>フォロワー4万人の著名人の目に留まる</span></a></li>
+</ul>
+
+<!-- CASE 01 -->
+<section id="case01">
+  <span class="case-no">CASE 01<span>Instagram</span></span>
+  <h2>フォロワー5人のアカウントに、企業から商談の打診が届いた</h2>
+
+  <p>これが一番びっくりした事例です。開設して間もない、フォロワーが5人しかいないInstagramアカウント。そこにある日、伝統工芸を手がける企業から直接DMが届きました。</p>
+  <p>しかも返信したのは人間ではなくAIです。<mark>日程調整からLINE登録まで、社内の誰も手を動かさないうちに、商談が1件決まっていました。</mark></p>
+  <p>実際のやり取りが、こちらです。</p>
+
+  <figure><a href="images/01-ig-dm-1.png" target="_blank"><img src="images/01-ig-dm-1.png" alt="InstagramのDMのやり取り（1通目）" loading="lazy" width="1411" height="741"></a></figure>
+  <figure><a href="images/02-ig-dm-2.png" target="_blank"><img src="images/02-ig-dm-2.png" alt="InstagramのDMのやり取り（2通目）" loading="lazy" width="1395" height="660"></a></figure>
+
+  <p>2通目の途中、「本人ではなくAIのLINEですか？」と聞かれています。AIはそこで隠さず「そうです、私はAIのアシスタントです」と答えました。それでも先方は離れず、こう続けてくださっています。</p>
+  <p class="quote">「違和感ありますが分かりました。今後LINEでやり取りしますね」</p>
+
+  <h3>運用していた降旗に聞きました</h3>
+  <dl class="qa">
+    <dt><span class="who q">小松</span>先方はなぜ、フォロワー5人のアカウントにDMを送ってきたんでしょう？</dt>
+    <dd><span class="who a">降旗</span><span>売り込みではなかったんですよ。「日本の伝統を語った投稿」に共感した、という入り方でした。組める相手を探していて情報交換がしたい、という趣旨です。フォロワー数はたぶん見ていないと思います。</span></dd>
+
+    <dt><span class="who q">小松</span>どんな会社だったんですか？</dt>
+    <dd><span class="who a">降旗</span><span>伝統工芸の産地プロデュースとブランド事業を、22年以上やられている方でした。扱っているのは江戸革扇子。1本3万円、厚みが0.5mmで、ローリングストーンズに納めた実績もあるそうです。職人さんが1人なので、年間3,000〜4,500本しか作れない。</span></dd>
+
+    <dt><span class="who q">小松</span>商談はどうでした？</dt>
+    <dd><span class="who a">降旗</span><span>先方の一番の課題は、商品を仕入れて売ってくれる販売パートナー——バイヤーさんや百貨店、法人ギフト会社の開拓でした。過去に営業代行も使われたそうなんですが、商品のストーリーを語れなくて全滅したと。そこが最大の悩みだとおっしゃっていました。</span></dd>
+
+    <dt><span class="who q">小松</span>それで、うちからは何をご提案したんですか？</dt>
+    <dd><span class="who a">降旗</span><span>名刺の掘り起こしと、LINEでのAI対応です。関心を持っていただけたので、いまも継続してやり取りしています。</span></dd>
+
+    <dt><span class="who q">小松</span>AIが返信していたことは、結果的にマイナスにならなかった？</dt>
+    <dd><span class="who a">降旗</span><span>ならなかったです。むしろそこが一番の発見でした。正直に答えても関係は切れないし、相手からしてもレスポンスが速いほうが助かる。人が出ていったのは商談当日だけで、そこまでの導線は全部AIが引いてくれました。</span></dd>
+  </dl>
+
+  <h3>運用しているアカウント</h3>
+  <div class="pair">
+    <figure><a href="images/03-ig-profile.png" target="_blank"><img src="images/03-ig-profile.png" alt="Instagramプロフィール（投稿66件・フォロワー5人）" loading="lazy" width="1170" height="1747"></a><figcaption>投稿は66件。フォロワーは5人です。それでも商談は来ました。</figcaption></figure>
+    <figure><a href="images/04-ig-grid.png" target="_blank"><img src="images/04-ig-grid.png" alt="Instagramの投稿一覧" loading="lazy" width="1170" height="2532"></a><figcaption>画像もキャプションも、すべてAIが自動生成。</figcaption></figure>
+  </div>
+  <p>並べて見るとトーンが揃っているのがわかると思います。<mark>この「世界観」がフィルターになって、共感した人だけが向こうから近づいてくる</mark>、というのが今回わかったことでした。</p>
+  <figure class="narrow"><a href="images/05-ig-post.png" target="_blank"><img src="images/05-ig-post.png" alt="AIが生成したInstagram投稿の例" loading="lazy" width="1032" height="799"></a></figure>
+</section>
+
+<!-- CASE 02 -->
+<section id="case02">
+  <span class="case-no">CASE 02<span>X（採用担当アカウント）</span></span>
+  <h2>3週間で、39人増えました</h2>
+
+  <p>新卒採用の担当者を想定して運用しているXアカウントです（<a href="https://x.com/saiyou_karin" target="_blank" rel="noopener">@saiyou_karin</a>）。それまでは横ばい、というより少しずつ減っていました。</p>
+  <p>8月8日から1日3投稿と自動フォローを走らせたところ、そこから毎日1〜2人ずつ積み上がっていきました。</p>
+
+  <div class="stat"><span class="big">393</span><span class="arrow">→</span><span class="big">432</span><span class="diff">＋39人／3週間</span></div>
+
+  <h3>フォロワーの推移</h3>
+  <div class="chart">
+    <svg viewBox="0 0 660 215" role="img" aria-label="8月8日の393人から8月28日の432人まで、ほぼ毎日増加">
+      <line class="grid" x1="40" y1="152.2" x2="640" y2="152.2"/>
+      <line class="grid" x1="40" y1="114.4" x2="640" y2="114.4"/>
+      <line class="grid" x1="40" y1="76.7" x2="640" y2="76.7"/>
+      <line class="grid" x1="40" y1="38.9" x2="640" y2="38.9"/>
+      <text class="axis" x="32" y="156" text-anchor="end">400</text>
+      <text class="axis" x="32" y="118" text-anchor="end">410</text>
+      <text class="axis" x="32" y="80" text-anchor="end">420</text>
+      <text class="axis" x="32" y="43" text-anchor="end">430</text>
+      <polygon class="area" points="40,190 40,178.7 69,178.7 98,167.3 127,163.6 156,156 185,140.9 214,140.9 243,137.1 272,137.1 301,129.6 330,122 359,114.4 388,106.9 417,103.1 446,95.6 475,88 504,80.4 533,72.9 562,61.6 591,46.4 620,31.3 620,190"/>
+      <polyline class="line" points="40,178.7 69,178.7 98,167.3 127,163.6 156,156 185,140.9 214,140.9 243,137.1 272,137.1 301,129.6 330,122 359,114.4 388,106.9 417,103.1 446,95.6 475,88 504,80.4 533,72.9 562,61.6 591,46.4 620,31.3"/>
+      <circle class="dot" cx="40" cy="178.7" r="4"/>
+      <circle class="dot" cx="620" cy="31.3" r="5"/>
+      <text class="end" x="620" y="20" text-anchor="end">432人</text>
+      <text class="end" x="48" y="200">393人</text>
+      <text class="axis" x="40" y="212" text-anchor="middle">8/8</text>
+      <text class="axis" x="243" y="212" text-anchor="middle">8/15</text>
+      <text class="axis" x="446" y="212" text-anchor="middle">8/22</text>
+      <text class="axis" x="620" y="212" text-anchor="middle">8/28</text>
+    </svg>
+  </div>
+  <details>
+    <summary>日ごとの数値を見る</summary>
+    <div class="scroll">
+      <table>
+        <tr><th>日付</th><th>8/8</th><th>8/9</th><th>8/10</th><th>8/11</th><th>8/12</th><th>8/13</th><th>8/14</th><th>8/15</th><th>8/16</th><th>8/17</th><th>8/18</th></tr>
+        <tr><td>人</td><td>393</td><td>393</td><td>396</td><td>397</td><td>399</td><td>403</td><td>403</td><td>404</td><td>404</td><td>406</td><td>408</td></tr>
+        <tr><th>日付</th><th>8/19</th><th>8/20</th><th>8/21</th><th>8/22</th><th>8/23</th><th>8/24</th><th>8/25</th><th>8/26</th><th>8/27</th><th>8/28</th><th></th></tr>
+        <tr><td>人</td><td>410</td><td>412</td><td>413</td><td>415</td><td>417</td><td>419</td><td>421</td><td>424</td><td>428</td><td><b>432</b></td><td></td></tr>
+      </table>
+    </div>
+  </details>
+
+  <h3>フォロワー以外からも、反応が届くようになりました</h3>
+  <figure class="narrow"><a href="images/06-x-saiyou-reaction.png" target="_blank"><img src="images/06-x-saiyou-reaction.png" alt="採用アカウントへのリプライ・いいね" loading="lazy" width="688" height="598"></a></figure>
+  <p>フォローされていない人からのいいねやリプライが増えてきました。投稿が「届く範囲の外」に出はじめたサインだと思っています。</p>
+
+  <h3>どう設定したか</h3>
+  <div class="setting"><dl>
+    <dt>投稿</dt><dd>1日3本。朝はあいさつと就活生への応援、昼は「今日は何の日」に絡めた就活の体験談、夜は一日のねぎらいと明日への応援。</dd>
+    <dt>フォロー</dt><dd>1日30アカウント。「採用担当」の検索結果から10、「#29卒」から10、「#新卒採用」から10。</dd>
+  </dl></div>
+  <p>採用担当者の生活リズムを、そのまま設定に落とし込んだ形です。届けたい相手がはっきりしているアカウントほど、この設定は効きます。</p>
+</section>
+
+<!-- CASE 03 -->
+<section id="case03">
+  <span class="case-no">CASE 03<span>X（AI情報発信アカウント）</span></span>
+  <h2>同じやり方で、他のアカウントも同時に伸びました</h2>
+
+  <p>採用アカウントだけがたまたま伸びたのでは意味がないので、テーマの違うアカウントでも並行して回しました。結果はこちらです。</p>
+  <div class="scroll">
+    <table>
+      <tr><th>アカウント</th><th>期間</th><th>フォロワー</th><th>増加</th></tr>
+      <tr><td>JSaaS｜補助金・AI活用<small>@writeup_jp</small></td><td class="n">8/1 → 8/25</td><td class="n">340 → 398</td><td class="n"><b>＋58人</b></td></tr>
+      <tr><td>かんの｜中小企業AI活用応援<small>@Writeup_kanno</small></td><td class="n">8/1 → 8/25</td><td class="n">62 → 72</td><td class="n"><b>＋10人</b></td></tr>
+      <tr><td>かりん｜生成AI活用術<small>@aikatsuyou_girl</small></td><td class="n">8/8 → 8/17</td><td class="n">—</td><td class="n"><b>＋7人</b></td></tr>
+    </table>
+  </div>
+  <p>とくに補助金・AI活用のアカウントは、24日間で58人。<mark>1日2人以上のペースで増え続けています。</mark></p>
+
+  <h3>リプライや引用リポストも、複数ついています</h3>
+  <div class="pair">
+    <figure><a href="images/07-x-ai-reaction-1.png" target="_blank"><img src="images/07-x-ai-reaction-1.png" alt="AI情報アカウントへの反応1" loading="lazy" width="683" height="456"></a></figure>
+    <figure><a href="images/08-x-ai-reaction-2.png" target="_blank"><img src="images/08-x-ai-reaction-2.png" alt="AI情報アカウントへの反応2" loading="lazy" width="673" height="386"></a></figure>
+  </div>
+  <figure class="narrow"><a href="images/09-x-ai-reaction-3.png" target="_blank"><img src="images/09-x-ai-reaction-3.png" alt="AI情報アカウントへの反応3" loading="lazy" width="678" height="413"></a></figure>
+
+  <h3>どう設定したか</h3>
+  <div class="setting"><dl>
+    <dt>投稿</dt><dd>1日3本。朝はあいさつと応援メッセージ、昼と夜は最新のAI情報。</dd>
+    <dt>フォロー</dt><dd>1日10アカウントと少なめ。AI情報を発信している大きめのアカウント（<a href="https://x.com/SuguruKun_ai" target="_blank" rel="noopener">@SuguruKun_ai</a>）のフォロワーだけを対象に。</dd>
+  </dl></div>
+  <p>すでにその分野に関心がある人にだけ届けにいく、という考え方です。</p>
+
+  <h3>ゼロから立ち上げたアカウントも</h3>
+  <p>新規で開設した「小松菜｜一人社長応援隊（@SOaPSXXO1M8090）」は、8月16日の29人から8月28日の38人へ、<mark>12日間で9人増えました。</mark>これから始めるお客様には、立ち上がりのイメージとしてこちらのほうが近いかもしれません。</p>
+</section>
+
+<!-- CASE 04 -->
+<section id="case04">
+  <span class="case-no">CASE 04<span>Threads</span></span>
+  <h2>フォロワー1人の投稿に、50いいねがつきました</h2>
+
+  <p>最後にThreadsです。フォロワーが<b>1人</b>のアカウント（<a href="https://www.threads.com/@careersaccount" target="_blank" rel="noopener">@careersaccount</a>）で、毎日投稿を続けてもらいました。</p>
+  <figure class="narrow"><a href="images/10-threads-post.png" target="_blank"><img src="images/10-threads-post.png" alt="50いいねがついたThreadsの投稿" loading="lazy" width="1018" height="478"></a><figcaption>8月24日の投稿に、50いいね。占いをテーマにした、ごく普通の投稿です。</figcaption></figure>
+  <figure class="narrow"><a href="images/11-threads-profile.png" target="_blank"><img src="images/11-threads-profile.png" alt="Threadsのプロフィール（フォロワー1人・閲覧数1,963回）" loading="lazy" width="765" height="766"></a></figure>
+  <p>プロフィールを見ると、フォロワーは1人なのに直近の閲覧数は1,963回。Threadsはフォロワー数と関係なく投稿が広がる仕組みなので、<mark>開設した直後でも反応が取れます。</mark></p>
+  <p>「まずはThreadsから始めて、手応えを見ながらInstagramとXに広げる」という進め方もできると思っています。</p>
+</section>
+
+<!-- CASE 05 -->
+<section id="case05">
+  <span class="case-no">CASE 05<span>X（一人社長向け情報アカウント）</span></span>
+  <h2>一本の投稿が、フォロワー4万人の著名な方の目に留まり、引用ツイートへ</h2>
+  <p>フォロワー37名だったものの、とあるツイートをきっかけに、音楽業界で活躍されている著名な方の目に留まり、一気に投稿のインプレッションが伸びました。</p>
+  <figure><a href="images/12-x-quote.png" target="_blank"><img src="images/12-x-quote.png" alt="著名な方による引用ツイート" loading="lazy" width="1161" height="501"></a></figure>
+</section>
+
+<footer class="close">
+  <p>以上が、ライトアップ社内で実際に起きたことです。</p>
+  <p>「フォロワーが少ないうちはSNSをやっても意味がない」と言われることが多いのですが、少なくとも私たちの検証では、<mark>フォロワー5人でも商談は来ました。</mark>まずは1媒体からでも、試してみる価値はあると思っています。</p>
+  <p class="note">※ フォロワー数はソーシャルマスターの管理画面から自動で取得したものを、そのまま載せています（CASE 02の8月17日以降は暫定値で、確定しだい差し替えます）。</p>
+  <p><a href="../">← SaaS活用事例の一覧へ</a></p>
+</footer>
+
+</div>
+</body>
+</html>
