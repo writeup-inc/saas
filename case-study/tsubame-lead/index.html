@@ -159,162 +159,174 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
 .acards .a-use{font-size:13.5px;color:var(--ink-soft);line-height:1.7;margin:0}
 .acards .a-partner{font-size:11px;color:var(--ink-mute);border:1px dashed var(--line);border-radius:4px;padding:0 6px;justify-self:start}
 
-/*MOCK*/
-:root{--navy:#1a3553;--navy-d:#0f2238;--navy-l:#2d527c;--navy-s:#eef2f7;--gold:#b08d3c;--gold-l:#cdaf6e;--gold-d:#8b6d24;
---ink:#0a0f17;--text:#2a3340;--mid:#4b5563;--light:#6b7280;--border:#dde2e8;--soft:#f7f8fa;--cream:#faf7f0;--paper:#ffffff;--bg:#f7f8fa;
---ink-soft:#4b5563;--ink-mute:#6b7280;--line:#dde2e8;--accent:#1a3553;--accent-soft:#eef2f7;--brand:#1d8fd6;
---t:#1a3553;--t-soft:#eef2f7;--t-soft2:#f3ead6;
---ok:#2f6b4f;--ok-soft:#e8f2ec;--go:#1a3553;--go-soft:#eef2f7;--wait:#8b6d24;--wait-soft:#f7f0de}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--navy:#9db8d8;--navy-d:#c9d8ea;--navy-l:#7c9cc4;--navy-s:#1a2533;--gold:#cdaf6e;--gold-l:#e0c891;--gold-d:#d8bc7c;
---ink:#f2efe8;--text:#d9dde3;--mid:#b3bac4;--light:#8d96a2;--border:#2a3644;--soft:#141c26;--cream:#1d1a12;--paper:#111821;--bg:#0b1118;
---ink-soft:#b3bac4;--ink-mute:#8d96a2;--line:#2a3644;--accent:#9db8d8;--accent-soft:#1a2533;
---t:#9db8d8;--t-soft:#1a2533;--t-soft2:#2a2416;--ok:#8fd0ad;--ok-soft:#14261d;--go:#9db8d8;--go-soft:#1a2533;--wait:#e0c891;--wait-soft:#2a2416;color-scheme:dark}}
-:root[data-theme="dark"]{--navy:#9db8d8;--navy-d:#c9d8ea;--navy-l:#7c9cc4;--navy-s:#1a2533;--gold:#cdaf6e;--gold-l:#e0c891;--gold-d:#d8bc7c;
---ink:#f2efe8;--text:#d9dde3;--mid:#b3bac4;--light:#8d96a2;--border:#2a3644;--soft:#141c26;--cream:#1d1a12;--paper:#111821;--bg:#0b1118;
---ink-soft:#b3bac4;--ink-mute:#8d96a2;--line:#2a3644;--accent:#9db8d8;--accent-soft:#1a2533;
---t:#9db8d8;--t-soft:#1a2533;--t-soft2:#2a2416;--ok:#8fd0ad;--ok-soft:#14261d;--go:#9db8d8;--go-soft:#1a2533;--wait:#e0c891;--wait-soft:#2a2416;color-scheme:dark}
+/*EDIT*/
+:root{--ground:#f6f6f3;--paper:#ffffff;--ink:#141a22;--text:#2a3340;--muted:#5b6570;--light:#7a838d;--line:#e2e4e0;
+--accent:#1a3553;--accent-soft:#eef2f7;--gold:#a8853a;--gold-d:#8b6d24;--marker:#efe2b8;
+--soft:#f6f6f3;--ink-soft:#5b6570;--ink-mute:#7a838d;--accent-ink:#1a3553;--t:#1a3553;--t-soft:#eef2f7;--t-soft2:#f1e8d3;
+--ok:#2f6b4f;--ok-soft:#e8f2ec;--go:#1a3553;--go-soft:#eef2f7;--wait:#8b6d24;--wait-soft:#f6efdd;--navy:#1a3553;--navy-s:#eef2f7;--border:#e2e4e0;--cream:#faf7f0}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--ground:#0f1419;--paper:#161d25;--ink:#eef0f2;--text:#d4d9df;--muted:#a3adb8;--light:#8a94a0;--line:#2a333d;
+--accent:#a9c1dd;--accent-soft:#1c2733;--gold:#d2b46f;--gold-d:#d2b46f;--marker:#4a3f1e;--soft:#121920;--ink-soft:#a3adb8;--ink-mute:#8a94a0;
+--t:#a9c1dd;--t-soft:#1c2733;--t-soft2:#2a2416;--ok:#8fd0ad;--ok-soft:#15271e;--go:#a9c1dd;--go-soft:#1c2733;--wait:#e0c891;--wait-soft:#2a2416;
+--navy:#a9c1dd;--navy-s:#1c2733;--border:#2a333d;--cream:#1d1a12;color-scheme:dark}}
+:root[data-theme="dark"]{--ground:#0f1419;--paper:#161d25;--ink:#eef0f2;--text:#d4d9df;--muted:#a3adb8;--light:#8a94a0;--line:#2a333d;
+--accent:#a9c1dd;--accent-soft:#1c2733;--gold:#d2b46f;--gold-d:#d2b46f;--marker:#4a3f1e;--soft:#121920;--ink-soft:#a3adb8;--ink-mute:#8a94a0;
+--t:#a9c1dd;--t-soft:#1c2733;--t-soft2:#2a2416;--ok:#8fd0ad;--ok-soft:#15271e;--go:#a9c1dd;--go-soft:#1c2733;--wait:#e0c891;--wait-soft:#2a2416;
+--navy:#a9c1dd;--navy-s:#1c2733;--border:#2a333d;--cream:#1d1a12;color-scheme:dark}
 html,body{overflow-x:clip}
-body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic UI',Meiryo,sans-serif;letter-spacing:.02em;-webkit-font-smoothing:antialiased}
-.sheet{max-width:1040px;background:transparent;background-image:none;border:0;padding:0 16px 96px}
-@media (min-width:720px){.sheet{padding:0 28px 120px}}
+body{background:var(--ground);color:var(--text);font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic UI',Meiryo,sans-serif;font-size:16px;line-height:1.95;letter-spacing:.02em;-webkit-font-smoothing:antialiased}
+.sheet{max-width:760px;margin:0 auto;background:transparent;background-image:none;border:0;padding:0 18px 80px}
+a{color:var(--accent)}
+mark{background:linear-gradient(transparent 62%,var(--marker) 62%);color:inherit;font-weight:700}
 
-/* ===== hero ===== */
-header{position:relative;margin:0 calc(50% - 50vw) 0;padding:64px max(16px,calc(50vw - 492px)) 112px;border:0;color:var(--text);
-  background:var(--cream);border-bottom:1px solid var(--border);display:grid;gap:6px;overflow:hidden}
-header::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--navy)}
-header::after{content:"";position:absolute;top:4px;left:0;right:0;height:1px;background:var(--gold)}
-header>*{position:relative;z-index:1}
-@media (min-width:860px){header{grid-template-columns:minmax(0,1fr) 280px;column-gap:64px;align-items:center} header>*{grid-column:1} header .hero-ill{grid-column:2;grid-row:1 / span 8}}
-header .eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:'Cormorant Garamond','Times New Roman',serif;font-size:13px;letter-spacing:.38em;color:var(--gold-d);font-weight:600;text-transform:uppercase;margin:0 0 14px}
-header .eyebrow::before{content:"";width:28px;height:1px;background:var(--gold)}
-header .eyebrow::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--brand);margin-left:2px}
+/* header: plain editorial */
+header{margin:0;padding:52px 0 8px;background:none;border:0;display:flex;flex-direction:column;color:var(--text)}
+header>*{order:1}
+header .hero-ill{order:9}
+header::before,header::after{content:none}
+header .eyebrow{font-family:'Cormorant Garamond','Times New Roman',serif;font-size:13px;letter-spacing:.2em;color:var(--gold-d);font-weight:700;margin:0 0 10px;text-transform:none}
+header .eyebrow::before,header .eyebrow::after{content:none}
 header .eyebrow a,header .eyebrow .back{color:var(--gold-d);border:0;text-decoration:none}
-header h1{font-family:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif;font-weight:800;color:var(--ink);font-size:clamp(28px,4.2vw,42px);line-height:1.55;letter-spacing:.04em;margin:0 0 20px;text-wrap:balance}
-header h1::after{content:"";display:block;width:44px;height:1px;background:var(--gold);margin:22px 0 0 9px;box-shadow:-9px 0 0 -0px transparent}
-header .lead p,header .lead{font-family:'Noto Serif JP','Hiragino Mincho ProN','Yu Mincho',serif;color:var(--mid);font-size:14.5px;line-height:2;max-width:40em}
-header .byline{color:var(--light);font-size:12.5px}
-.hero-ill{width:100%;max-width:280px;background:var(--paper);border:1px solid var(--border);border-radius:4px;padding:22px 18px 16px;
-  box-shadow:0 20px 44px -14px rgba(15,34,56,.18);position:relative}
-.hero-ill{--paper:#fff;--ink:#0f2238;--line:#dde2e8;--t:#1a3553;--t-soft2:#f3ead6}
-@media (max-width:859px){.hero-ill{max-width:200px;order:-1;justify-self:start;margin-bottom:12px}}
+header h1{font-family:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif;font-weight:800;color:var(--ink);font-size:clamp(27px,5vw,40px);line-height:1.5;letter-spacing:.03em;margin:8px 0 16px;text-wrap:balance}
+header h1::after{content:none}
+header .lead p,header .lead{font-family:'Noto Serif JP','Hiragino Mincho ProN','Yu Mincho',serif;color:var(--muted);font-size:15.5px;line-height:2}
+header .byline{color:var(--muted);font-size:13.5px}
+.hero-ill{display:block;width:100%;max-width:none;height:260px;margin:26px 0 6px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:20px 12% 12px;
+  box-shadow:0 14px 34px -22px rgba(20,30,45,.45);transform:none}
+.hero-ill{--paper:#fff;--ink:#141a22;--line:#e2e4e0;--t:#1a3553;--t-soft2:#f1e8d3}
 
-/* ===== summary cards ===== */
-ul.summary{position:relative;z-index:2;margin:-64px 0 56px;gap:12px}
-@media (min-width:720px){ul.summary{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}}
-.summary a{background:var(--paper);border:1px solid var(--border);border-radius:4px;padding:18px 20px;box-shadow:0 1px 2px rgba(15,34,56,.04);position:relative;overflow:hidden;transition:.25s}
-.summary a::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);opacity:0;transition:.3s;width:auto}
-.summary a:hover{border-color:var(--navy);box-shadow:0 10px 28px rgba(15,34,56,.1);transform:translateY(-3px)}
-.summary a:hover::before{opacity:1}
-.summary .num{font-family:'Cormorant Garamond','Times New Roman',serif;font-size:30px;font-weight:700;color:var(--navy);min-width:72px;font-style:italic}
-.summary .lbl b{font-family:'Cormorant Garamond','Times New Roman',serif;letter-spacing:.22em;color:var(--gold-d);font-weight:600;font-size:11px}
+/* at a glance (summary list) */
+ul.summary{display:block;list-style:none;margin:28px 0 8px;padding:20px 20px 6px;background:var(--paper);border:1px solid var(--line);border-radius:14px;position:static}
+ul.summary::before{content:"この記事でわかること";display:block;font-family:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif;font-weight:800;font-size:19px;color:var(--ink);margin:0 0 8px}
+.summary li{margin:0}
+.summary a{display:grid;grid-template-columns:96px 1fr;gap:14px;align-items:start;padding:13px 0;border:0;border-top:1px solid var(--line);border-radius:0;background:none;box-shadow:none;color:inherit;text-decoration:none;transform:none!important}
+.summary a::before{content:none}
+.summary .num{font-family:'Cormorant Garamond','Times New Roman',serif;font-weight:700;font-size:24px;line-height:1.2;color:var(--accent);font-style:normal;min-width:0;font-variant-numeric:lining-nums;font-feature-settings:"lnum"}
+.summary .lbl{font-family:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif;font-size:15.5px;font-weight:700;color:var(--ink);line-height:1.6}
+.summary .lbl b{display:block;font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic UI',Meiryo,sans-serif;font-size:12px;font-weight:500;color:var(--muted);letter-spacing:.04em;margin-bottom:2px}
+.summary a:hover .lbl{color:var(--accent)}
+.summary a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
 
-/* ===== sections as cards with navy+gold top rule ===== */
-section{background:var(--paper);border:1px solid var(--border);border-radius:4px;box-shadow:0 20px 44px -24px rgba(15,34,56,.16);
-  padding:30px 20px;margin:0 0 28px;position:relative;overflow:hidden}
-section::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--navy)}
-section::after{content:"";position:absolute;top:4px;left:0;right:0;height:1px;background:var(--gold)}
-@media (min-width:720px){section{padding:48px 56px}}
-.case-no{background:none!important;box-shadow:none!important;padding:0;border-radius:0;color:var(--gold-d)!important;font-family:'Cormorant Garamond','Times New Roman',serif;font-style:italic;font-weight:700;font-size:22px;letter-spacing:.06em;display:flex;align-items:baseline;gap:14px;margin:0 0 6px}
-.case-no span{font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic UI',Meiryo,sans-serif;font-style:normal;font-size:11.5px;font-weight:700;letter-spacing:.18em;color:var(--light);opacity:1;margin:0}
-section h2{font-family:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif;font-weight:800;color:var(--ink);font-size:clamp(21px,2.6vw,27px);line-height:1.6;letter-spacing:.04em;
-  border:0;border-bottom:2px solid var(--ink);padding:0 0 16px;margin:6px 0 26px;position:relative;text-wrap:balance}
-section h2::after{content:"";position:absolute;bottom:-4px;left:0;width:70px;height:1px;background:var(--gold);margin:0;border-radius:0}
-section h3{font-family:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif;font-weight:700;color:var(--navy);font-size:16px;letter-spacing:.08em;border:0;padding:0;margin:34px 0 12px;display:flex;align-items:center;gap:10px}
-section h3::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);flex:0 0 auto;margin:0}
-section h3::after{content:"";flex:1;height:1px;background:var(--border)}
-section>p{font-size:15.5px;line-height:2.05;color:var(--text);max-width:44em}
-.byline-s{display:flex;gap:14px;flex-wrap:wrap;margin:-12px 0 22px;font-size:12.5px;color:var(--light)}
-.byline-s b{font-family:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif;color:var(--ink);font-weight:700}
-.setting{background:var(--soft);border:1px solid var(--border);border-left:3px solid var(--navy);border-radius:2px;padding:4px 22px}
-.setting dt{font-family:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif;color:var(--navy)}
-.status{display:flex;gap:12px;align-items:baseline;background:var(--cream);border:1px solid var(--border);border-radius:2px;padding:12px 16px;font-family:'Noto Serif JP','Hiragino Mincho ProN','Yu Mincho',serif;color:var(--mid)}
-mark{background:linear-gradient(transparent 62%,#f1e4c2 62%);color:inherit}
+/* sections: flowing article */
+section{background:none;border:0;border-radius:0;box-shadow:none;padding:0;margin:64px 0 0;overflow:visible;scroll-margin-top:16px}
+section::before,section::after{content:none}
+.case-no{display:block;background:none!important;box-shadow:none!important;padding:0;color:var(--gold-d)!important;font-family:'Cormorant Garamond','Times New Roman',serif;font-style:normal;font-weight:700;font-size:13px;letter-spacing:.2em;margin:0 0 4px}
+.case-no span{font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic UI',Meiryo,sans-serif;font-weight:500;letter-spacing:.06em;color:var(--muted);margin-left:10px;font-size:12.5px}
+section h2{font-family:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif;font-weight:800;color:var(--ink);font-size:clamp(21px,3.6vw,27px);line-height:1.5;letter-spacing:.03em;border:0;padding:0;margin:4px 0 12px;text-wrap:balance}
+section h2::after{content:none}
+section h3{font-family:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif;font-weight:700;color:var(--ink);font-size:17px;letter-spacing:.04em;border:0;padding:0;margin:28px 0 8px;display:block}
+section h3::before,section h3::after{content:none}
+section>p{font-size:16px;line-height:1.95;color:var(--text);max-width:none}
+.byline-s{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:13.5px;color:var(--muted);margin:0 0 14px}
+.byline-s b{font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic UI',Meiryo,sans-serif;font-weight:700;color:var(--ink)}
+.av{width:30px;height:30px;border-radius:50%;display:inline-grid;place-items:center;font-family:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif;font-weight:800;font-size:13px;color:#fff;flex:none;background:var(--accent)}
 
-/* stage chips */
-.stage{font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic UI',Meiryo,sans-serif;font-weight:700;border:1px solid currentColor;border-radius:2px;padding:0 9px;font-size:11.5px;letter-spacing:.06em;background:transparent;color:var(--light)}
-.stage.won{color:var(--go);background:var(--go-soft);border-color:transparent}
-.stage.s-run{color:var(--ok);background:var(--ok-soft);border-color:transparent}
-.stage.s-set{color:var(--wait);background:var(--wait-soft);border-color:transparent}
+/* point box (setting) */
+.setting{background:var(--accent-soft);border:0;border-radius:10px;padding:6px 18px;margin:16px 0}
+.setting dl{grid-template-columns:auto 1fr}
+.setting dt{font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic UI',Meiryo,sans-serif;font-weight:700;color:var(--accent);font-size:14px}
+.setting dd{font-size:14.5px;line-height:1.75}
+.setting dt,.setting dd{border-top:1px solid color-mix(in srgb,var(--accent) 14%,transparent)}
 
 /* quotes */
-p.quote,.quote{font-family:'Noto Serif JP','Hiragino Mincho ProN','Yu Mincho',serif;font-size:15.5px;line-height:1.95;color:var(--ink);background:var(--cream);border:0;border-left:3px solid var(--gold);
-  border-radius:0;box-shadow:none;margin:12px 0;padding:14px 18px 14px 20px}
+p.quote,.quote{font-family:'Noto Serif JP','Hiragino Mincho ProN','Yu Mincho',serif;font-size:15.5px;line-height:1.85;color:var(--ink);background:none;border:0;border-left:3px solid var(--accent);border-radius:0;box-shadow:none;margin:14px 0;padding:0 0 0 14px}
 p.quote::before{content:none}
-.voices li{font-family:'Noto Serif JP','Hiragino Mincho ProN','Yu Mincho',serif;background:var(--cream);border-left:3px solid var(--gold);border-radius:0;box-shadow:none}
+p.quote::after{content:"お客様";display:block;font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic UI',Meiryo,sans-serif;font-size:12px;color:var(--muted);margin-top:2px}
+.voices{list-style:none;padding:0;margin:0 0 16px;display:grid;gap:10px}
+.voices li{font-family:'Noto Serif JP','Hiragino Mincho ProN','Yu Mincho',serif;background:none;border:0;border-left:3px solid var(--accent);border-radius:0;box-shadow:none;padding:0 0 0 14px}
 
-/* figures / tables */
-figure a{border-radius:4px;border:1px solid var(--border);box-shadow:0 10px 24px -16px rgba(15,34,56,.25)}
-table{border-radius:0}
-th{font-family:'Cormorant Garamond','Times New Roman',serif;font-size:12px;letter-spacing:.2em;color:var(--gold-d);font-weight:700;background:transparent;border-bottom:2px solid var(--ink)}
-td.n,.stat .big,.chart .end{font-family:'Cormorant Garamond','Times New Roman',serif}
-.stat .big{font-size:52px;font-weight:700;color:var(--navy)}
-.stat .diff{background:var(--cream);color:var(--gold-d);border:1px solid var(--gold-l);border-radius:2px}
+/* status / stage */
+.status{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;background:var(--paper);border:1px dashed var(--line);border-radius:10px;padding:10px 14px;font-size:14.5px;color:var(--muted);font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic UI',Meiryo,sans-serif}
+.stage{font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic UI',Meiryo,sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.04em;border:0;border-radius:99px;padding:1px 10px;background:var(--soft);color:var(--muted)}
+.stage.won{color:var(--go);background:var(--go-soft)}
+.stage.s-run{color:var(--ok);background:var(--ok-soft)}
+.stage.s-set{color:var(--wait);background:var(--wait-soft)}
 
-/* ===== industry map ===== */
-section.imap{background:var(--paper)}
-.imap-head .big{font-family:'Cormorant Garamond','Times New Roman',serif;font-weight:700;color:var(--navy);font-size:clamp(56px,8vw,84px);line-height:1;background:none;-webkit-text-fill-color:currentColor}
-.imap-head .big small{font-family:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif;font-size:18px;color:var(--ink);font-weight:800;margin:0 18px 0 6px}
-.imap-sub{font-family:'Noto Serif JP','Hiragino Mincho ProN','Yu Mincho',serif;color:var(--mid)}
-.tiles{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
-.tiles li{background:var(--paper);border:1px solid var(--border);border-radius:4px;padding:16px;box-shadow:none;position:relative;overflow:hidden;transition:.25s}
-.tiles li::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);opacity:0;transition:.3s}
-.tiles li:hover{border-color:var(--navy);box-shadow:0 10px 28px rgba(15,34,56,.1);transform:translateY(-3px)}
-.tiles li:hover::before{opacity:1}
-.tiles li{display:grid;grid-template-columns:auto 1fr;column-gap:12px;row-gap:6px;align-items:center}
-.tiles .t-ic{width:42px;height:42px;padding:9px;grid-row:span 2;fill:none;stroke:var(--navy);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;background:var(--navy-s);border-radius:50%;border:1px solid var(--gold-l);box-shadow:none}
-.tiles .t-name{align-self:end;line-height:1.45}
-.tiles .t-bar{grid-column:1 / -1}
-.summary .num,.imap-head .big,.tiles .t-num,.stat .big,.case .facts b,td.n,.chart .end{font-variant-numeric:lining-nums tabular-nums;font-feature-settings:"lnum","tnum"}
-.tiles .t-name{font-family:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif;color:var(--ink);font-weight:700}
-.tiles .t-num{font-family:'Cormorant Garamond','Times New Roman',serif;color:var(--navy);font-size:34px;font-weight:700}
-.tiles .t-bar{background:var(--border);height:2px}
+/* figures, tables, stats from the social page */
+figure a{border-radius:10px;border:1px solid var(--line);box-shadow:0 14px 34px -22px rgba(20,30,45,.45)}
+.pair{gap:14px}
+th{font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic UI',Meiryo,sans-serif;font-size:12px;letter-spacing:.06em;color:var(--muted);font-weight:700;background:none;border-bottom:1px solid var(--ink)}
+.stat .big,.chart .end,td.n{font-family:'Cormorant Garamond','Times New Roman',serif;font-variant-numeric:lining-nums;font-feature-settings:"lnum"}
+.stat .big{font-size:44px;color:var(--accent)}
+.stat .diff{background:var(--accent-soft);color:var(--accent);border:0;border-radius:99px}
+.chart{background:var(--paper);border-radius:12px}
+.qa dt{font-family:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif}
+
+/* industry map */
+section.imap{background:none}
+.imap-head .big{font-family:'Cormorant Garamond','Times New Roman',serif;font-weight:700;color:var(--accent);font-size:clamp(48px,9vw,72px);line-height:1;background:none;-webkit-text-fill-color:currentColor;font-variant-numeric:lining-nums;font-feature-settings:"lnum"}
+.imap-head .big small{font-family:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif;font-size:17px;color:var(--ink);font-weight:800;margin:0 16px 0 6px}
+.imap-sub{font-size:13px;color:var(--muted)}
+.tiles{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.tiles li{display:grid;grid-template-columns:auto 1fr;column-gap:10px;row-gap:4px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px;box-shadow:none;transition:.2s}
+.tiles li::before{content:none}
+.tiles li:hover{border-color:var(--accent);transform:translateY(-2px)}
+.tiles .t-ic{width:36px;height:36px;padding:8px;grid-row:span 2;fill:none;stroke:var(--accent);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;background:var(--accent-soft);border-radius:50%;border:0;box-shadow:none}
+.tiles .t-name{font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic UI',Meiryo,sans-serif;font-size:13px;font-weight:700;color:var(--ink);align-self:end;line-height:1.45}
+.tiles .t-num{font-family:'Cormorant Garamond','Times New Roman',serif;font-size:28px;font-weight:700;color:var(--accent);line-height:1;font-variant-numeric:lining-nums;font-feature-settings:"lnum"}
+.tiles .t-num small{font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic UI',Meiryo,sans-serif;font-size:11px;color:var(--muted)}
+.tiles .t-bar{grid-column:1 / -1;height:3px;background:var(--line);border-radius:2px}
 .tiles .t-bar span{background:var(--gold)}
 
-/* ===== adopter cards ===== */
-.chips button{font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic UI',Meiryo,sans-serif;border-radius:2px;border:1px solid var(--border);background:var(--paper);color:var(--mid);padding:6px 14px;transition:.2s}
-.chips button:hover{border-color:var(--navy);color:var(--navy);transform:translateY(-1px)}
-.chips button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
-.acards li{border:1px solid var(--border);border-radius:4px;box-shadow:none;padding:18px;position:relative;overflow:hidden;transition:.25s;background:var(--paper)}
-.acards li::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);opacity:0;transition:.3s}
-.acards li:hover{border-color:var(--navy);box-shadow:0 10px 28px rgba(15,34,56,.1);transform:translateY(-3px)}
-.acards li:hover::before{opacity:1}
-.acards .a-cat{font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic UI',Meiryo,sans-serif;color:var(--gold-d);font-weight:700;letter-spacing:.12em}
-.acards .a-ind{font-family:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif;color:var(--ink);font-weight:800;font-size:16px}
+/* adopter cards */
+.chips button{font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic UI',Meiryo,sans-serif;border-radius:99px;border:1px solid var(--line);background:var(--paper);color:var(--muted);padding:5px 14px;font-size:13px}
+.chips button:hover{border-color:var(--accent);color:var(--accent)}
+.chips button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.acards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.acards li{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:none;transition:.2s}
+.acards li::before{content:none}
+.acards li:hover{border-color:var(--accent);box-shadow:0 14px 34px -24px rgba(20,30,45,.5)}
+.acards .a-cat{font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic UI',Meiryo,sans-serif;font-size:11.5px;color:var(--gold-d);font-weight:700;letter-spacing:.06em}
+.acards .a-ind{font-family:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif;font-weight:800;font-size:15.5px;color:var(--ink)}
+.acards .a-use{font-size:13.5px}
 
-/* ===== hub ===== */
-.cases{margin-top:-64px;position:relative;z-index:2;gap:16px}
-.case{background:var(--paper);border:1px solid var(--border)!important;border-radius:4px;box-shadow:0 20px 44px -24px rgba(15,34,56,.16);padding:28px 30px 24px;position:relative;overflow:hidden;transition:.25s}
-.case::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;width:auto;background:var(--navy)}
-.case::after{content:"";position:absolute;top:4px;left:0;right:0;height:1px;background:var(--gold)}
-.case:hover{transform:translateY(-3px);box-shadow:0 24px 48px -20px rgba(15,34,56,.28)}
-.case .saas{background:transparent!important;color:var(--navy)!important;border:1px solid var(--navy);border-radius:2px;font-weight:700;letter-spacing:.14em;position:relative;padding:2px 10px 2px 22px}
-.case .saas::before{content:"";position:absolute;left:9px;top:50%;width:6px;height:6px;border-radius:50%;background:var(--t);transform:translateY(-50%)}
-.case h2{font-family:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif;font-weight:800;color:var(--ink);font-size:21px;border:0;padding:0;margin:12px 0 8px}
-.case h2::after{content:none}
-.case p{font-family:'Noto Serif JP','Hiragino Mincho ProN','Yu Mincho',serif;color:var(--mid)}
-.case .facts li{border-radius:2px;background:var(--cream);border-color:var(--border)}
-.case .facts b{font-family:'Cormorant Garamond','Times New Roman',serif;font-size:15px;color:var(--navy)}
-.case .more{color:var(--navy)!important;font-family:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif}
-.next{background:var(--paper);border:1px dashed var(--gold-l);border-radius:4px;font-family:'Noto Serif JP','Hiragino Mincho ProN','Yu Mincho',serif}
+/* hub */
+.cases{margin-top:28px;display:block;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:6px 20px}
+.cases>li{border-top:1px solid var(--line)}
+.cases>li:first-child{border-top:0}
+.case{display:block;background:none;border:0!important;border-radius:0;box-shadow:none;padding:18px 0;color:inherit;text-decoration:none;transform:none!important}
+.case::before,.case::after{content:none}
+.case .saas{background:none!important;color:var(--gold-d)!important;border:0;padding:0;font-family:'Cormorant Garamond','Times New Roman',serif;font-size:13px;font-weight:700;letter-spacing:.14em}
+.case .saas::before{content:none}
+.case h2{font-family:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif;font-weight:800;color:var(--ink);font-size:19px;line-height:1.55;margin:4px 0 6px;border:0;padding:0}
+.case:hover h2{color:var(--accent)}
+.case p{font-size:14px;color:var(--muted);margin:0 0 8px}
+.case .facts li{background:var(--accent-soft);border:0;border-radius:99px;font-size:12.5px;color:var(--accent)}
+.case .facts b{font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic UI',Meiryo,sans-serif;color:var(--accent)}
+.case .more{display:none}
+.next{background:none;border:0;padding:12px 0;color:var(--muted);font-size:13.5px}
 
-footer.close{background:var(--paper);border:1px solid var(--border);border-top:2px solid var(--ink);border-radius:4px;padding:26px 30px;font-family:'Noto Serif JP','Hiragino Mincho ProN','Yu Mincho',serif}
-footer.close a{color:var(--navy);font-family:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif;font-weight:700}
-a{color:var(--navy)}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;transform:none!important}}
-@media (max-width:680px){header{padding-top:40px;padding-bottom:96px} section{padding:28px 18px} .summary .num{font-size:24px;min-width:56px}}
-/*/MOCK*/
+footer.close{background:var(--accent);color:#fff;border:0;border-radius:16px;padding:26px 24px;margin-top:64px}
+footer.close p,footer.close .note{color:rgba(255,255,255,.82)}
+footer.close a{display:inline-block;margin-top:6px;background:#fff;color:var(--accent);font-weight:700;padding:9px 20px;border-radius:99px;text-decoration:none}
+@media (max-width:600px){.summary a{grid-template-columns:72px 1fr} body{font-size:15.5px}}
+/*/EDIT*/
+
+/*COVER*/
+.cover{order:9;margin:28px 0 6px;background:#0f2238;color:#fff;border-radius:12px;padding:30px 28px 26px;position:relative;overflow:hidden;
+  box-shadow:0 18px 40px -24px rgba(10,20,35,.6)}
+.cover::before{content:"";position:absolute;inset:14px;border:1px solid rgba(205,175,110,.35);border-radius:6px;pointer-events:none}
+.cover .c-en{font-family:'Cormorant Garamond','Times New Roman',serif;font-size:12px;letter-spacing:.42em;color:#cdaf6e;font-weight:700}
+.cover .c-name{font-family:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif;font-size:clamp(22px,4vw,30px);font-weight:800;letter-spacing:.06em;margin:6px 0 18px;color:#fff}
+.cover .c-stats{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid rgba(205,175,110,.45);padding-top:16px}
+.cover .c-stat{flex:1 1 140px;padding:4px 18px 4px 0;margin-right:18px;border-right:1px solid rgba(255,255,255,.14)}
+.cover .c-stat:last-child{border-right:0;margin-right:0}
+.cover .c-num{display:block;font-family:'Cormorant Garamond','Times New Roman',serif;font-weight:700;font-size:clamp(36px,6vw,50px);line-height:1;color:#fff;font-variant-numeric:lining-nums;font-feature-settings:"lnum"}
+.cover .c-lbl{display:block;font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic UI',Meiryo,sans-serif;font-size:12.5px;color:rgba(255,255,255,.72);margin-top:6px;letter-spacing:.04em}
+@media (max-width:600px){.cover{padding:26px 22px 22px} .cover .c-stat{flex-basis:100%;border-right:0;border-bottom:1px solid rgba(255,255,255,.14);padding:8px 0;margin:0} .cover .c-stat:last-child{border-bottom:0}}
+/*/COVER*/
+
+/*SQUARE*/
+*,*::before,*::after{border-radius:0!important}
+.av,.tiles .t-ic{border-radius:50%!important}
+/*/SQUARE*/
 </style>
 </head>
 <body>
 <div class="sheet">
 
 <header>
-  <svg class="hero-ill" viewBox="0 0 240 170" role="img" aria-hidden="true">
-<circle cx="190" cy="34" r="20" fill="var(--t-soft2)"/>
-<path d="M20 140 q60 -10 110 -60" stroke="var(--t)" stroke-width="3" stroke-dasharray="6 7" fill="none" stroke-linecap="round"/>
-<g transform="translate(118 30)"><path d="M0 40 q30 -6 52 -30 q-8 26 -2 40 q-20 -8 -50 -10z" fill="var(--t)"/><path d="M50 10 l26 -14 -12 22z" fill="var(--t)"/><path d="M8 40 l-22 18 30 -8z" fill="var(--ink)"/><circle cx="56" cy="16" r="2.5" fill="var(--paper)"/></g>
-<g transform="translate(24 96)"><rect width="56" height="38" rx="5" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.5"/><path d="M2 3 l26 20 26 -20" stroke="var(--ink)" stroke-width="2.5" fill="none" stroke-linejoin="round"/></g>
-<g transform="translate(170 110)"><rect width="56" height="40" rx="6" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.5"/><rect x="8" y="9" width="40" height="5" rx="2.5" fill="var(--line)"/><rect x="8" y="19" width="40" height="5" rx="2.5" fill="var(--line)"/><rect x="26" y="29" width="22" height="7" rx="3" fill="var(--t)"/></g></svg>
+  <div class="cover" aria-label="つばめリードの概要"><div class="c-en">TSUBAME LEAD</div><div class="c-name">つばめリード</div><div class="c-stats"><div class="c-stat"><span class="c-num">14</span><span class="c-lbl">社の導入先</span></div><div class="c-stat"><span class="c-num">3</span><span class="c-lbl">本の事例記事</span></div></div></div>
+  
   <p class="eyebrow"><a class="back" href="../">CASE STUDY</a> ／ つばめリード</p>
   <h1>人手をかけずに、フォーム営業を。<br>つばめリードの導入事例</h1>
   <div class="lead">
@@ -334,7 +346,7 @@ a{color:var(--navy)}
 <section id="case01">
   <span class="case-no">CASE 01<span>特注家具の製作｜東京都</span></span>
   <h2>営業に人を割かず、建設・住宅業者へ月5,000通のフォーム営業</h2>
-  <p class="byline-s">担当：<b>降旗</b> ｜ 2026年6月〜</p>
+  <p class="byline-s"><span class="av" style="background:#1a3553" aria-hidden="true">降</span>担当：<b>降旗</b> ｜ 2026年6月〜</p>
   <p>商業施設やオフィス、注文住宅の収納などの特注家具を、協力会社約4社と連携して製作する会社です。案件は、元請けからの紹介やWebからの問い合わせに頼っていました。</p>
   <p>案件を安定させ、大型の案件も取りたい一方で、営業に人やリソースを割けませんでした。代表自身の稼働をかけずに営業を進められる点を評価し、2026年6月の打ち合わせで導入を決めました。</p>
   <p>対象は、1都3県の建設業・ハウスメーカー・不動産・内装業者など約4〜5万件です。月5,000通の問い合わせフォーム営業を行います。原稿と送信先リストはライトアップ側で作り、反応があった企業だけを代表に引き継ぎます。</p>
@@ -349,7 +361,7 @@ a{color:var(--navy)}
 <section id="case02">
   <span class="case-no">CASE 02<span>社内規程・就業規則関連のクラウドサービス提供</span></span>
   <h2>手作業のフォーム営業を自動化し、文面を変えながら反応を探る</h2>
-  <p class="byline-s">担当：<b>村田・小松</b> ｜ 2026年7月〜</p>
+  <p class="byline-s"><span class="av" style="background:#2d527c" aria-hidden="true">村</span>担当：<b>村田・小松</b> ｜ 2026年7月〜</p>
   <p>社内規程や就業規則の整備を支えるクラウドサービスを提供する会社です。これまで問い合わせフォーム営業を手作業で行っており、負担が非常に大きいものでした。将来、送信先がなくならないかも気にしていました。</p>
   <p>2026年7月の打ち合わせで、文面のABテストや送信の記録といった分析の機能を見て導入を決めました。8月のキックオフでは、原稿の文字数、返信先の書き方、自社リストの取り込み、送信を分けて行う手順を確認しました。</p>
   <p>送信先は業種・地域・規模で絞り込み、自社のリストも取り込みます。未送信の企業だけを選べる絞り込みと、NGリストで重複送信を防ぎます。週1回の定例で結果を見ながら改善します。</p>
@@ -365,7 +377,7 @@ a{color:var(--navy)}
 <section id="case03">
   <span class="case-no">CASE 03<span>広告・プロモーション制作</span></span>
   <h2>条件を指定するだけで、大手企業向けの送信リストができる</h2>
-  <p class="byline-s">担当：<b>川畑</b> ｜ 2026年6月〜</p>
+  <p class="byline-s"><span class="av" style="background:#3a4a3e" aria-hidden="true">川</span>担当：<b>川畑</b> ｜ 2026年6月〜</p>
   <p>Web・メディア・イベントのプロモーション案件を手がける会社です。これまではビジネスマッチングのサービスで案件を獲得しており、問い合わせフォーム営業は初めてでした。大手企業の宣伝・広報部門から、Webプロモーションの案件を取りたいと考えていました。</p>
   <p>申し込みとアカウント登録は済んでいたものの、初期設定が終わっていない状態でした。2026年6月に、画面を一緒に操作しながらレクチャーを行い、原稿の作成から送信先リストの作成まで、実際の流れに沿って進めました。</p>
   <p>原稿を作り、AIによるおまかせ送信でリストを作りました。業種や従業員1,000人以上などの条件で絞り込むと、条件に合う企業は約9万6千件ありました。まずテスト用に334社の送信リストを作りました。</p>
