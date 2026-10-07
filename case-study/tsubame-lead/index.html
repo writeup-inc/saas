@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>つばめリード 活用事例</title>
+<style>
+:root{
+  --ink:#1c1f24;
+  --ink-soft:#4a5158;
+  --ink-mute:#7b838c;
+  --line:#e3e7ec;
+  --paper:#ffffff;
+  --bg:#fbfbf9;
+  --accent:#1f6feb;
+  --accent-soft:#eef4ff;
+  --hl:#fff3c4;
+  --soft:#fafbfc;
+  --chip:#f2f4f7;
+  --well:#f7f9fb;
+  --on-ink:#ffffff;
+  --radius:10px;
+  --maxw:860px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){--ink:#e6e9ee;--ink-soft:#b9c0c8;--ink-mute:#8b939c;--line:#2c323a;--paper:#171a1f;--bg:#111317;--accent:#6ea8ff;--accent-soft:#1a2740;--hl:#5a4a12;--soft:#1c2026;--chip:#232830;--well:#1c2026;--on-ink:#111317;color-scheme:dark} }
+:root[data-theme="dark"]{--ink:#e6e9ee;--ink-soft:#b9c0c8;--ink-mute:#8b939c;--line:#2c323a;--paper:#171a1f;--bg:#111317;--accent:#6ea8ff;--accent-soft:#1a2740;--hl:#5a4a12;--soft:#1c2026;--chip:#232830;--well:#1c2026;--on-ink:#111317;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic UI","Yu Gothic",Meiryo,system-ui,sans-serif;
+  font-size:16px;line-height:1.95;letter-spacing:.01em;
+}
+.sheet{max-width:var(--maxw);margin:0 auto;background:var(--paper);border-left:1px solid var(--line);border-right:1px solid var(--line);padding:0 16px 96px}
+@media (min-width:720px){ .sheet{padding:0 56px 120px} }
+
+header{padding:56px 0 28px;border-bottom:2px solid var(--ink);margin-bottom:36px}
+.eyebrow{font-size:12px;letter-spacing:.18em;color:var(--ink-mute);margin:0 0 10px}
+.eyebrow .back{color:inherit;text-decoration:none;border-bottom:1px solid var(--line)}
+.eyebrow .back:hover{color:var(--ink)}
+h1{font-size:28px;line-height:1.45;margin:0 0 18px;font-weight:700}
+@media (min-width:720px){ h1{font-size:34px} }
+.lead p{margin:0 0 12px;color:var(--ink-soft);font-size:15.5px}
+.byline{font-size:13px;color:var(--ink-mute);margin:0 0 14px}
+
+/* 目次＋ハイライト */
+.summary{display:grid;grid-template-columns:1fr;gap:10px;margin:0 0 56px;padding:0;list-style:none}
+@media (min-width:640px){ .summary{grid-template-columns:1fr 1fr} }
+.summary a{display:flex;gap:14px;align-items:center;padding:14px 16px;border:1px solid var(--line);border-radius:var(--radius);text-decoration:none;color:var(--ink);background:var(--soft)}
+.summary a:hover{border-color:var(--ink-mute)}
+.summary .num{font-size:22px;font-weight:700;white-space:nowrap;min-width:84px;font-variant-numeric:tabular-nums}
+.summary .num small{font-size:12px;font-weight:400;color:var(--ink-mute);margin-left:2px}
+.summary .lbl{font-size:13px;line-height:1.6;color:var(--ink-soft)}
+.summary .lbl b{display:block;font-size:11px;letter-spacing:.12em;color:var(--ink-mute);font-weight:400}
+
+section{margin:0 0 72px;scroll-margin-top:20px}
+.case-no{display:inline-block;font-size:12px;letter-spacing:.16em;color:var(--on-ink);background:var(--ink);border-radius:4px;padding:2px 10px;margin:0 0 12px}
+.case-no span{opacity:.7;margin-left:8px}
+h2{font-size:22px;line-height:1.55;margin:0 0 22px;font-weight:700;padding-bottom:14px;border-bottom:1px solid var(--ink)}
+@media (min-width:720px){ h2{font-size:25px} }
+h3{font-size:16px;margin:36px 0 12px;font-weight:700;padding-left:12px;border-left:3px solid var(--ink)}
+p{margin:0 0 14px}
+mark{background:linear-gradient(transparent 55%,var(--hl) 55%);color:inherit;font-weight:700}
+a{color:var(--accent)}
+
+figure{margin:16px 0 24px}
+figure a{display:block;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--well);line-height:0}
+figure img{width:100%;height:auto;display:block}
+figure.narrow{max-width:480px}
+figure.tall{max-width:380px}
+figcaption{font-size:12.5px;color:var(--ink-mute);margin-top:8px;line-height:1.7}
+.pair{display:grid;grid-template-columns:1fr;gap:14px;align-items:start}
+@media (min-width:640px){ .pair{grid-template-columns:1fr 1fr} .pair figure{margin:0} }
+.pair + p, .pair + h3{margin-top:22px}
+
+.quote{border-left:3px solid var(--ink);background:var(--soft);padding:12px 18px;margin:18px 0;font-size:15.5px}
+
+/* インタビュー */
+.qa{margin:8px 0 0}
+.qa dt{font-weight:700;margin:22px 0 6px;display:flex;gap:10px}
+.qa dd{margin:0;display:flex;gap:10px;color:var(--ink-soft)}
+.who{flex:0 0 auto;font-size:11px;line-height:1;padding:6px 7px;border-radius:4px;margin-top:6px;height:fit-content;font-weight:700}
+.who.q{background:var(--ink);color:var(--on-ink)}
+.who.a{background:var(--chip);color:var(--ink-soft);border:1px solid var(--line)}
+
+/* 数字 */
+.stat{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:6px 0 20px}
+.stat .big{font-size:40px;font-weight:700;line-height:1.2;font-variant-numeric:tabular-nums}
+.stat .arrow{color:var(--ink-mute);font-size:22px}
+.stat .diff{font-size:15px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:2px 12px}
+
+.chart{border:1px solid var(--line);border-radius:var(--radius);padding:14px 10px 6px;margin:12px 0 10px}
+.chart svg{width:100%;height:auto;display:block}
+.chart .grid{stroke:var(--line);stroke-width:1}
+.chart .axis{fill:var(--ink-mute);font-size:11px}
+.chart .line{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.chart .area{fill:var(--accent);opacity:.08}
+.chart .dot{fill:var(--accent)}
+.chart .end{fill:var(--ink);font-size:12px;font-weight:700}
+
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0 18px}
+th,td{border-bottom:1px solid var(--line);padding:10px 8px;text-align:left;vertical-align:top}
+th{font-size:12.5px;color:var(--ink-mute);font-weight:400;letter-spacing:.06em;border-bottom:1px solid var(--ink)}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+td small{display:block;color:var(--ink-mute);font-size:12px}
+.scroll{overflow-x:auto}
+
+details{border:1px solid var(--line);border-radius:var(--radius);margin:8px 0 20px;overflow:hidden}
+details>summary{cursor:pointer;padding:10px 16px;font-size:13.5px;color:var(--ink-soft);list-style:none}
+details>summary::before{content:"＋";margin-right:8px}
+details[open]>summary::before{content:"－"}
+details .scroll{padding:0 12px 4px}
+details table{font-size:13px;min-width:520px}
+details td,details th{padding:6px 6px;text-align:center}
+
+.setting{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:4px 18px;margin:12px 0 18px}
+.setting dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:0}
+.setting dt,.setting dd{padding:10px 0;border-top:1px dashed var(--line);margin:0;font-size:14.5px}
+.setting dt{font-weight:700;padding-right:18px;white-space:nowrap}
+.setting dt:first-of-type,.setting dd:first-of-type{border-top:0}
+
+footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
+.note{font-size:13px;color:var(--ink-mute)}
+
+.stage{display:inline-block;font-size:11.5px;line-height:1.6;padding:1px 9px;border-radius:999px;border:1px solid var(--line);white-space:nowrap;color:var(--ink-soft);background:var(--soft)}
+.stage.won{color:var(--accent);background:var(--accent-soft);border-color:transparent;font-weight:700}
+.voices{list-style:none;margin:10px 0 18px;padding:0;display:grid;gap:10px}
+.voices li{border-left:3px solid var(--ink);background:var(--soft);padding:10px 16px;font-size:15px}
+.voices small{display:block;color:var(--ink-mute);font-size:12px;margin-top:2px}
+.flow{list-style:none;margin:10px 0 18px;padding:0;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.flow li{border:1px solid var(--line);border-radius:var(--radius);padding:8px 14px;font-size:14px;background:var(--soft)}
+.flow li.arrow{border:0;background:none;padding:0;color:var(--ink-mute)}
+ul.plain{margin:6px 0 14px;padding-left:1.15em}
+ul.plain li{margin-bottom:6px}
+.flow li b{display:block;font-size:20px;font-variant-numeric:tabular-nums}
+.adopters td:nth-child(3){white-space:nowrap}
+.adopters td:nth-child(2){min-width:6em}
+.adopters td:nth-child(4){min-width:14em}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<header>
+  <p class="eyebrow"><a class="back" href="../">CASE STUDY</a> ／ つばめリード</p>
+  <h1>人手をかけずに、フォーム営業を。<br>つばめリードの導入事例</h1>
+  <div class="lead">
+    <p>つばめリードは、企業のお問い合わせフォームへ営業の連絡を自動で送るサービスです。</p>
+    <p>実際に導入を決めた・運用している会社と、その使い方をまとめています。反応の数字はまだ集計中のものが多いため、使い方を中心に載せています。</p>
+  </div>
+</header>
+
+<ul class="summary">
+  <li><a href="#case01"><span class="num">14社</span><span class="lbl"><b>CASE 01｜導入先一覧</b>業種・規模・使い方</span></a></li>
+  <li><a href="#case02"><span class="num">導入決定</span><span class="lbl"><b>CASE 02｜特注家具の製作</b>営業人員を割かずに建設・住宅業者へ月5,000通</span></a></li>
+  <li><a href="#case03"><span class="num">設定中</span><span class="lbl"><b>CASE 03｜社内規程・就業規則関連のクラ</b>手作業のフォーム営業を自動化しABテストで改善</span></a></li>
+  <li><a href="#case04"><span class="num">設定中</span><span class="lbl"><b>CASE 04｜広告・プロモーション制作</b>条件を指定するだけで大手企業向けの送信リストを作成</span></a></li>
+</ul>
+
+<section id="case01">
+  <span class="case-no">CASE 01<span>導入先一覧</span></span>
+  <h2>実際に導入・設定を進めている14社</h2>
+  <p>営業担当が少ない会社が、新規開拓の入口として使うケースが中心です。</p>
+<div class="scroll">
+  <table class="adopters">
+    <tr><th>業種</th><th>規模</th><th>地域</th><th>使い方</th><th>段階</th></tr>
+    <tr><td>営業代行</td><td>—</td><td>—</td><td>営業代行先の見込み客（介護施設など）を業界・地域・規模で抽出し、送信状況を動画で確認しながらアプローチする</td><td><span class="stage won">導入決定</span></td></tr>
+    <tr><td>雇用助成金サポート・採用コンサルティング</td><td>—</td><td>—</td><td>採用課題のある企業に向けて、訴求軸を検証しながら問い合わせフォーム営業を小さく始める</td><td><span class="stage won">導入決定</span></td></tr>
+    <tr><td>養蜂・はちみつの製造販売</td><td>—</td><td>—</td><td>卸売の新しい取引先を開拓するため、問い合わせフォーム営業でテストマーケティングを行う</td><td><span class="stage won">導入決定</span></td></tr>
+    <tr><td>りんご飴店のフランチャイズ本部</td><td>—</td><td>—</td><td>フォーム営業とLINEのAI、人によるテレアポを組み合わせ、加盟オーナーの獲得を進める</td><td><span class="stage won">導入決定</span></td></tr>
+    <tr><td>特注家具の製作</td><td>協力会社約4社</td><td>東京都</td><td>1都3県の建設・住宅・不動産・内装業者へ月5,000通を送り、反応があった企業だけを代表に引き継ぐ</td><td><span class="stage won">導入決定</span></td></tr>
+    <tr><td>障害福祉サービス（就労継続支援B型）</td><td>—</td><td>—</td><td>福祉サービスの新規開拓に向けて問い合わせフォーム営業を始め、反響を確かめながら運用する</td><td><span class="stage won">導入決定</span></td></tr>
+    <tr><td>社内規程・就業規則関連のクラウドサービス提供</td><td>—</td><td>—</td><td>業種・地域・規模で絞ったリストに問い合わせフォーム営業を行い、文面のABテストと送信ログを見ながら改善する</td><td><span class="stage">設定中</span></td></tr>
+    <tr><td>広告・プロモーション制作</td><td>—</td><td>—</td><td>業種や従業員規模を指定してAIで送信リストを作成し、大手企業の宣伝・広報部門からの案件獲得を狙う</td><td><span class="stage">設定中</span></td></tr>
+    <tr><td>不動産</td><td>—</td><td>埼玉県</td><td>キーワードと地域から自動生成した営業リストを使い、問い合わせフォームへの自動投稿で新規開拓を行う</td><td><span class="stage">設定中</span></td></tr>
+    <tr><td>保険代理店向けの営業支援<small>販売パートナー</small></td><td>—</td><td>—</td><td>パートナー自身がフォーム営業を運用し、送ったメールへの返信など見込み客の反応を確かめている</td><td><span class="stage won">運用中</span></td></tr>
+    <tr><td>採用代行<small>販売パートナー</small></td><td>—</td><td>神奈川県</td><td>自社での利用と代理販売の両面で申し込み、採用代行サービスの直接顧客の開拓に活用する</td><td><span class="stage won">導入決定</span></td></tr>
+    <tr><td>営業代行・コンサルティング<small>販売パートナー</small></td><td>—</td><td>静岡県</td><td>自社の顧客（中古車買取関連の会社）向けに、フォーム営業を自社ブランドの商材として提供する</td><td><span class="stage won">導入決定</span></td></tr>
+    <tr><td>補助金情報・支援サービス<small>販売パートナー</small></td><td>—</td><td>—</td><td>自社で原稿を用意してフォーム営業を開始し、送信リストの設定を進めながら自社ブランドでの販売も検討する</td><td><span class="stage">設定中</span></td></tr>
+    <tr><td>広告クリエイティブ制作<small>販売パートナー</small></td><td>1人会社</td><td>—</td><td>業種・地域・規模で絞り込み、1日200通程度の配信を想定してフォーム営業を再開する</td><td><span class="stage">設定中</span></td></tr>
+  </table>
+</div>
+  <p class="note">※ 2026年3月〜9月の商談・打ち合わせの記録から、申込以降に進んだ会社を載せています。「設定中」は初期設定を進めている段階です。</p>
+</section>
+
+<section id="case02">
+  <span class="case-no">CASE 02<span>特注家具の製作・協力会社約4社・東京都</span></span>
+  <h2>営業人員を割かずに建設・住宅業者へ月5,000通</h2>
+  <p>案件が元請けからの紹介やWebの問い合わせ頼みで、安定化と大型案件の獲得をしたいが、営業に人やリソースを割けなかった。</p>
+  <h3>使い方</h3>
+  <ul class="plain"><li>1都3県の建設業・ハウスメーカー・不動産・内装業者など約4〜5万件を対象に設定</li><li>月5,000通の問い合わせフォーム営業を実施</li><li>反応があった企業のみ代表に引き継ぎ、代表はクロージングに集中</li></ul>
+  <p><span class="stage won">導入決定</span>　契約し、翌月から配信を開始する段階。成果はこれから。</p>
+  <ul class="voices"><li>自分の稼働をかけずに営業を進められる点を評価<small>お客様の声</small></li></ul>
+</section>
+
+<section id="case03">
+  <span class="case-no">CASE 03<span>社内規程・就業規則関連のクラウドサービス提供</span></span>
+  <h2>手作業のフォーム営業を自動化しABテストで改善</h2>
+  <p>これまで手動でフォーム営業をしており負担が非常に大きかった。将来、送信先が枯渇しないかも気にしていた。</p>
+  <h3>使い方</h3>
+  <ul class="plain"><li>業種・地域・規模で絞ったリストに送信し、自社リストも取り込み</li><li>文面のABテストと送信の録画ログで効果を確認</li><li>未送信企業だけの絞り込みとNGリストで重複送信を防止</li></ul>
+  <p><span class="stage">設定中</span>　設定を終えて運用開始の段階。週次の定例で改善を進める。成果はこれから。</p>
+  <ul class="voices"><li>手動でフォーム営業していたが、めちゃくちゃ大変だった<small>お客様の声</small></li></ul>
+</section>
+
+<section id="case04">
+  <span class="case-no">CASE 04<span>広告・プロモーション制作</span></span>
+  <h2>条件を指定するだけで大手企業向けの送信リストを作成</h2>
+  <p>これまでビジネスマッチングで案件を獲得しており、問い合わせフォーム営業は未経験。大手企業の宣伝・広報部門からWebプロモーション案件を取りたかった。</p>
+  <h3>使い方</h3>
+  <ul class="plain"><li>原稿を作成し、AIによるおまかせ送信でリストを生成</li><li>業種や従業員1,000人以上などの条件で対象を絞り込み</li><li>まずテスト用に334社の送信リストを作成</li></ul>
+  <p><span class="stage">設定中</span>　操作レクチャーを受けて設定中。成果はこれから。</p>
+  <ul class="voices"><li>（条件に合うリストが約9万6千件出て）すごい便利ですね<small>お客様の声</small></li></ul>
+</section>
+
+<footer class="close">
+  <p class="note">※ 会社名は記載していません。業種・規模・地域は特定できない範囲で記載しています。ここに載せた内容は個別の事例で、同じ成果を約束するものではありません。</p>
+  <p><a href="../">← SaaS活用事例の一覧へ</a></p>
+</footer>
+
+</div>
+</body>
+</html>
