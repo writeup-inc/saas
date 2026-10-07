@@ -125,18 +125,38 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
 
 .stage{display:inline-block;font-size:11.5px;line-height:1.6;padding:1px 9px;border-radius:999px;border:1px solid var(--line);white-space:nowrap;color:var(--ink-soft);background:var(--soft)}
 .stage.won{color:var(--accent);background:var(--accent-soft);border-color:transparent;font-weight:700}
-.voices{list-style:none;margin:10px 0 18px;padding:0;display:grid;gap:10px}
-.voices li{border-left:3px solid var(--ink);background:var(--soft);padding:10px 16px;font-size:15px}
-.voices small{display:block;color:var(--ink-mute);font-size:12px;margin-top:2px}
-.flow{list-style:none;margin:10px 0 18px;padding:0;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.flow li{border:1px solid var(--line);border-radius:var(--radius);padding:8px 14px;font-size:14px;background:var(--soft)}
-.flow li.arrow{border:0;background:none;padding:0;color:var(--ink-mute)}
-ul.plain{margin:6px 0 14px;padding-left:1.15em}
-ul.plain li{margin-bottom:6px}
-.flow li b{display:block;font-size:20px;font-variant-numeric:tabular-nums}
+.byline-s{font-size:13px;color:var(--ink-mute);margin:-10px 0 18px}
+.byline-s b{color:var(--ink-soft);font-weight:700}
+.status{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin:14px 0 0;font-size:14.5px;color:var(--ink-soft)}
 .adopters td:nth-child(3){white-space:nowrap}
 .adopters td:nth-child(2){min-width:6em}
 .adopters td:nth-child(4){min-width:14em}
+/* industry map */
+.imap{margin:0 0 56px}
+.imap-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:0 0 6px}
+.imap-head .big{font-size:44px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums}
+.imap-head .big small{font-size:16px;font-weight:700;margin:0 6px 0 2px}
+.imap-sub{font-size:13px;color:var(--ink-mute);margin:0 0 18px}
+.tiles{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.tiles li{border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;background:var(--soft);display:grid;gap:6px;min-width:0}
+.tiles .t-name{font-size:13.5px;font-weight:700;line-height:1.5}
+.tiles .t-num{font-size:24px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.tiles .t-num small{font-size:12px;font-weight:400;color:var(--ink-mute);margin-left:2px}
+.tiles .t-bar{height:4px;border-radius:2px;background:var(--line);overflow:hidden}
+.tiles .t-bar span{display:block;height:100%;background:var(--accent)}
+/* adopter cards */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px;padding:0;list-style:none}
+.chips button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--paper);color:var(--ink-soft);border-radius:999px;padding:4px 14px;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--on-ink);border-color:var(--ink)}
+.chips button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.acards{list-style:none;margin:0 0 12px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.acards li{border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;background:var(--paper);display:grid;gap:8px;align-content:start;min-width:0}
+.acards .a-top{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.acards .a-cat{font-size:11.5px;letter-spacing:.06em;color:var(--ink-mute)}
+.acards .a-ind{font-size:15px;font-weight:700;line-height:1.5}
+.acards .a-meta{font-size:12.5px;color:var(--ink-mute)}
+.acards .a-use{font-size:13.5px;color:var(--ink-soft);line-height:1.7;margin:0}
+.acards .a-partner{font-size:11px;color:var(--ink-mute);border:1px dashed var(--line);border-radius:4px;padding:0 6px;justify-self:start}
 </style>
 </head>
 <body>
@@ -146,21 +166,71 @@ ul.plain li{margin-bottom:6px}
   <p class="eyebrow"><a class="back" href="../">CASE STUDY</a> ／ 名刺LINEエージェント</p>
   <h1>眠っている名刺を、次の商談に。<br>名刺LINEエージェントの導入事例</h1>
   <div class="lead">
-    <p>名刺LINEエージェントは、名刺を撮影するだけでリストにし、AIがお礼やフォローの連絡を送って、公式LINEでのやり取りにつなげるサービスです。</p>
-    <p>実際に使い始めている会社と、その使い方をまとめています。</p>
+    <p>名刺LINEエージェントは、名刺をLINEで撮影するだけでリストにし、その後のフォローまでつなげるサービスです。読み取った内容はスプレッドシートに入り、相手企業の情報も自動で補われます。AIで作った文面でお礼メールを送り、タグ別やステップでの配信も行えます。</p>
+    <p>このページでは、たまった名刺を営業に生かせていなかった会社や個人の事例を紹介します。導入を決めたばかりのものから、名刺を取り込み始めたものまで段階はさまざまです。</p>
+    <p>取り込みの手軽さについての声はいただいていますが、商談や売上につながったかどうかの成果はまだこれからです。</p>
   </div>
 </header>
 
 <ul class="summary">
-  <li><a href="#case01"><span class="num">8社</span><span class="lbl"><b>CASE 01｜導入先一覧</b>業種・規模・使い方</span></a></li>
-  <li><a href="#case02"><span class="num">導入決定</span><span class="lbl"><b>CASE 02｜青果流通</b>約1,950枚の名刺を自動フォローにつなげる青果流通</span></a></li>
-  <li><a href="#case03"><span class="num">設定中</span><span class="lbl"><b>CASE 03｜解体工事業</b>手打ちの挨拶メールを名刺撮影だけで自動化</span></a></li>
-  <li><a href="#case04"><span class="num">運用中</span><span class="lbl"><b>CASE 04｜営業コンサルティング（個人事</b>約100枚の名刺があっという間にリストに</span></a></li>
+  <li><a href="#case01"><span class="num">導入決定</span><span class="lbl"><b>CASE 01｜青果流通</b>約1,950枚の名刺を、撮影だけで自動フォローにつなげる青果流通</span></a></li>
+  <li><a href="#case02"><span class="num">運用中</span><span class="lbl"><b>CASE 02｜解体業</b>手打ちだった挨拶メールを、名刺の撮影だけで送れるようにする</span></a></li>
+  <li><a href="#case03"><span class="num">運用中</span><span class="lbl"><b>CASE 03｜営業コンサルティング（個人事</b>約100枚の名刺が短時間でリストに。交流会のあとのフォローを支える</span></a></li>
+  <li><a href="#case04"><span class="num">8社</span><span class="lbl"><b>CASE 04｜導入先一覧</b>業種・規模・使い方</span></a></li>
 </ul>
 
 <section id="case01">
-  <span class="case-no">CASE 01<span>導入先一覧</span></span>
-  <h2>実際に導入・設定を進めている8社</h2>
+  <span class="case-no">CASE 01<span>青果流通</span></span>
+  <h2>約1,950枚の名刺を、撮影だけで自動フォローにつなげる青果流通</h2>
+  <p class="byline-s">担当：<b>土屋</b> ｜ 2026年6月〜</p>
+  <p>農家や市場、スーパーなどと取引する青果流通の会社です。約1,950枚の名刺を表計算ソフトで管理していましたが、営業のフォローには生かせていませんでした。受注のFAXを目で見て手入力する作業も抱えていました。</p>
+  <p>営業を若手に任せ始めたこともあり、継続して連絡する仕組みが必要でした。2〜3週間に1回メールを送るフォローを自動でできればと考え、2026年6月の打ち合わせで導入を決めました。</p>
+  <p>名刺をLINEで撮影すると、自動でお礼メールを送ります。AIが相手企業のホームページを読み取り、相手に合わせた文面を作ります。取引先の種別ごとに、ステップ配信と一斉配信を使い分けます。現在は導入に向けた準備中で、成果はこれからです。</p>
+  <h3>設定の中身</h3>
+  <div class="setting"><dl><dt>入口</dt><dd>名刺をLINEで撮影</dd><dt>AIの役割</dt><dd>相手企業のホームページを解析し、お礼メールの文面を作成</dd><dt>配信</dt><dd>取引先の種別ごとにステップ配信・一斉配信</dd></dl></div>
+  <h3>お客様の声</h3>
+  <p class="quote">「思いっきり前向きです」</p>
+  <p class="quote">「営業を下の子に任せ始めたので、2〜3週間に1回メールを送ってフォローすることが自動でできたら楽」</p>
+  <p class="status"><span class="stage won">導入決定</span>導入に向けて準備中です。</p>
+</section>
+
+<section id="case02">
+  <span class="case-no">CASE 02<span>解体業｜愛知県</span></span>
+  <h2>手打ちだった挨拶メールを、名刺の撮影だけで送れるようにする</h2>
+  <p class="byline-s">担当：<b>浦嶋</b> ｜ 2026年7月〜</p>
+  <p>愛知県の解体業の会社です。代表が名刺交換をする機会が多く、数百枚規模の名刺を管理しきれていませんでした。出会った相手へのフォローができず、挨拶メールは毎回手で打っていました。</p>
+  <p>2026年7月中旬に、同席して初期設定を行いました。LINEの友だち追加、管理画面とスプレッドシートの連携、送信元メールの認証を進め、名刺1枚を読み取ってスプレッドシートに入ることを確かめました。</p>
+  <p>読み取った名刺は、ネット検索で企業情報も補われます。挨拶メールは社名や氏名を差し込むテンプレートで作り、AIでの文面作成も使えます。タグ別配信やステップ配信で、続けて連絡することもできます。</p>
+  <p>設定の説明では理解が追いつかない部分があり、説明動画がほしいという声をいただきました。マニュアルや動画は後から送りました。7月下旬の打ち合わせでは、まだ多くはないものの、名刺のフォローが動いている状態と話されています。</p>
+  <h3>設定の中身</h3>
+  <div class="setting"><dl><dt>入口</dt><dd>名刺をLINEで撮影</dd><dt>自動化</dt><dd>スプレッドシートへの登録と、ネット検索による企業情報の補完</dd><dt>配信</dt><dd>社名・氏名を差し込む挨拶テンプレート、タグ別・ステップ配信</dd></dl></div>
+  <h3>お客様の声</h3>
+  <p class="quote">「あとは実際に使っていかないと分からない。何通か送ってみる」</p>
+  <p class="quote">「個人的に名刺交換する場合が多く、フォローができなかったので名刺は後付けで導入した」</p>
+  <p class="quote">「名刺は前回説明を受けて、まだそんなにやってないけど、それなりに今動いている状態」</p>
+  <p class="status"><span class="stage won">運用中</span>初期設定を終え、名刺のフォローを動かし始めています。</p>
+</section>
+
+<section id="case03">
+  <span class="case-no">CASE 03<span>営業コンサルティング（個人事業・販売パートナー）</span></span>
+  <h2>約100枚の名刺が短時間でリストに。交流会のあとのフォローを支える</h2>
+  <p class="byline-s">担当：<b>江田</b> ｜ 2026年6月〜</p>
+  <p>営業コンサルティングを個人で営み、研修講師も務める方です。異業種交流会で名刺を交換しても関係が続かず、2回目・3回目のアプローチが難しいと感じていました。ライトアップの販売パートナーとして、名刺LINEエージェントを試しています。</p>
+  <p>2026年6月の初期設定では、ご自身の名刺でテストしました。写真を送るだけでどこまで正確にデータになるかが疑問でしたが、会社名や代表者の経歴までスプレッドシートに入ることを確かめました。</p>
+  <p>7月までに約100枚の名刺を取り込み、企業名・社員数・創業年・代表者の経歴まで自動で付きました。管理画面のメモ欄で相手ごとの情報を残し、お礼や情報提供など目的に合わせてAIでメール文面を作れます。読み取りの誤字は手で直す必要がありました。</p>
+  <p>ご自身は、一斉配信は自分の考えに合わないため使わず、研修やコンサルの場でツールを紹介する方針です。名刺を配って挨拶して終わりになっている人には向いている、という評価でした。</p>
+  <h3>設定の中身</h3>
+  <div class="setting"><dl><dt>入口</dt><dd>名刺をLINEで撮影</dd><dt>自動で付く情報</dt><dd>企業名・社員数・創業年・代表者の経歴</dd><dt>人の役割</dt><dd>メモ欄での管理と、読み取りの誤字の修正</dd></dl></div>
+  <h3>お客様の声</h3>
+  <p class="quote">「100枚ちょっとやったら、あっという間にリストになる。名刺を配って挨拶して終わりの人には受けると思う」</p>
+  <p class="quote">「スプレッドシートに自動でずらっと出てくるのは非常に価値がある」</p>
+  <p class="quote">「AIで整理はできても、最終的には人が地道にアプローチするしかない」</p>
+  <p class="status"><span class="stage won">運用中</span>約100枚の名刺をリスト化済みです。ご自身の営業での一斉配信は行わず、研修などで紹介しています。</p>
+</section>
+
+<section id="case04">
+  <span class="case-no">CASE 04<span>導入先一覧</span></span>
+  <h2>名刺LINEエージェントを使い始めている8社</h2>
   <p>交流会や展示会で名刺がたまっていく会社や個人事業主が中心です。</p>
 <div class="scroll">
   <table class="adopters">
@@ -178,41 +248,12 @@ ul.plain li{margin-bottom:6px}
   <p class="note">※ 2026年3月〜9月の商談・打ち合わせの記録から、申込以降に進んだ会社を載せています。「設定中」は初期設定を進めている段階です。</p>
 </section>
 
-<section id="case02">
-  <span class="case-no">CASE 02<span>青果流通・名刺約1,950枚</span></span>
-  <h2>約1,950枚の名刺を自動フォローにつなげる青果流通</h2>
-  <p>約1,950枚の名刺を表計算ソフトで管理していたが営業フォローに活かせていなかった。営業を若手に任せ始め、継続的に連絡する仕組みが必要だった。</p>
-  <h3>使い方</h3>
-  <ul class="plain"><li>名刺をLINEで撮影すると自動でお礼メールを送信</li><li>AIが相手企業のホームページを解析し、個別の文面を作成</li><li>取引先の種別ごとにステップ配信・一斉配信</li></ul>
-  <p><span class="stage won">導入決定</span>　契約し、導入準備中。成果はこれから。</p>
-  <ul class="voices"><li>営業を下の子に任せ始めたので、2〜3週間に1回メールを送ってフォローすることが自動でできたら楽<small>お客様の声</small></li></ul>
-</section>
-
-<section id="case03">
-  <span class="case-no">CASE 03<span>解体工事業</span></span>
-  <h2>手打ちの挨拶メールを名刺撮影だけで自動化</h2>
-  <p>数百枚規模の名刺を管理しきれず、出会った相手へのフォローができていなかった。挨拶メールは毎回手打ちしていた。</p>
-  <h3>使い方</h3>
-  <ul class="plain"><li>名刺を撮影するとスプレッドシートに反映され、ネット検索で企業情報も補完</li><li>社名・氏名を差し込む挨拶テンプレート（AIでの文面生成も可）</li><li>タグ別配信・ステップ配信で継続的にフォロー</li></ul>
-  <p><span class="stage">設定中</span>　同席での初期設定を完了し、試しに送信を始める段階。成果はこれから。</p>
-  <ul class="voices"><li>あとは実際に使っていかないと分からない。何通か送ってみる<small>お客様の声</small></li></ul>
-</section>
-
-<section id="case04">
-  <span class="case-no">CASE 04<span>営業コンサルティング（個人事業）・名刺約100枚</span></span>
-  <h2>約100枚の名刺があっという間にリストに</h2>
-  <p>異業種交流会で名刺交換しても関係が続かず、2回目・3回目のアプローチが難しかった。</p>
-  <h3>使い方</h3>
-  <ul class="plain"><li>名刺約100枚を取り込み、企業名・社員数・創業年・代表者の経歴まで自動で付与</li><li>管理画面のメモ欄で相手ごとの情報を管理</li><li>お礼・情報提供など目的別にAIでメール文面を作成</li></ul>
-  <p><span class="stage won">運用中</span>　約100枚の名刺が短時間でリスト化された。読み取りの誤字は手で修正が必要。</p>
-  <ul class="voices"><li>100枚ちょっとやったら、あっという間にリストになる。名刺を配って挨拶して終わりの人には受けると思う<small>お客様の声</small></li></ul>
-</section>
-
 <footer class="close">
   <p class="note">※ 会社名は記載していません。業種・規模・地域は特定できない範囲で記載しています。ここに載せた内容は個別の事例で、同じ成果を約束するものではありません。</p>
   <p><a href="../">← SaaS活用事例の一覧へ</a></p>
 </footer>
 
 </div>
+
 </body>
 </html>

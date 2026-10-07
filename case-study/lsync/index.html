@@ -125,18 +125,38 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
 
 .stage{display:inline-block;font-size:11.5px;line-height:1.6;padding:1px 9px;border-radius:999px;border:1px solid var(--line);white-space:nowrap;color:var(--ink-soft);background:var(--soft)}
 .stage.won{color:var(--accent);background:var(--accent-soft);border-color:transparent;font-weight:700}
-.voices{list-style:none;margin:10px 0 18px;padding:0;display:grid;gap:10px}
-.voices li{border-left:3px solid var(--ink);background:var(--soft);padding:10px 16px;font-size:15px}
-.voices small{display:block;color:var(--ink-mute);font-size:12px;margin-top:2px}
-.flow{list-style:none;margin:10px 0 18px;padding:0;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.flow li{border:1px solid var(--line);border-radius:var(--radius);padding:8px 14px;font-size:14px;background:var(--soft)}
-.flow li.arrow{border:0;background:none;padding:0;color:var(--ink-mute)}
-ul.plain{margin:6px 0 14px;padding-left:1.15em}
-ul.plain li{margin-bottom:6px}
-.flow li b{display:block;font-size:20px;font-variant-numeric:tabular-nums}
+.byline-s{font-size:13px;color:var(--ink-mute);margin:-10px 0 18px}
+.byline-s b{color:var(--ink-soft);font-weight:700}
+.status{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin:14px 0 0;font-size:14.5px;color:var(--ink-soft)}
 .adopters td:nth-child(3){white-space:nowrap}
 .adopters td:nth-child(2){min-width:6em}
 .adopters td:nth-child(4){min-width:14em}
+/* industry map */
+.imap{margin:0 0 56px}
+.imap-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:0 0 6px}
+.imap-head .big{font-size:44px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums}
+.imap-head .big small{font-size:16px;font-weight:700;margin:0 6px 0 2px}
+.imap-sub{font-size:13px;color:var(--ink-mute);margin:0 0 18px}
+.tiles{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.tiles li{border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;background:var(--soft);display:grid;gap:6px;min-width:0}
+.tiles .t-name{font-size:13.5px;font-weight:700;line-height:1.5}
+.tiles .t-num{font-size:24px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.tiles .t-num small{font-size:12px;font-weight:400;color:var(--ink-mute);margin-left:2px}
+.tiles .t-bar{height:4px;border-radius:2px;background:var(--line);overflow:hidden}
+.tiles .t-bar span{display:block;height:100%;background:var(--accent)}
+/* adopter cards */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px;padding:0;list-style:none}
+.chips button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--paper);color:var(--ink-soft);border-radius:999px;padding:4px 14px;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--on-ink);border-color:var(--ink)}
+.chips button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.acards{list-style:none;margin:0 0 12px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.acards li{border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;background:var(--paper);display:grid;gap:8px;align-content:start;min-width:0}
+.acards .a-top{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.acards .a-cat{font-size:11.5px;letter-spacing:.06em;color:var(--ink-mute)}
+.acards .a-ind{font-size:15px;font-weight:700;line-height:1.5}
+.acards .a-meta{font-size:12.5px;color:var(--ink-mute)}
+.acards .a-use{font-size:13.5px;color:var(--ink-soft);line-height:1.7;margin:0}
+.acards .a-partner{font-size:11px;color:var(--ink-mute);border:1px dashed var(--line);border-radius:4px;padding:0 6px;justify-self:start}
 </style>
 </head>
 <body>
@@ -144,93 +164,142 @@ ul.plain li{margin-bottom:6px}
 
 <header>
   <p class="eyebrow"><a class="back" href="../">CASE STUDY</a> ／ Lシンク</p>
-  <h1>LINEに、営業マンの分身を置く。<br>Lシンクの導入事例</h1>
+  <h1>14業種・126社が選んだ、<br>LINEに置くAIの分身</h1>
   <div class="lead">
-    <p>Lシンクは、営業担当者や代表の考え方・言い回しを学んだAIが、公式LINE上でその人の分身として24時間お客様に対応するサービスです。</p>
-    <p>実際に導入を決めた・設定を進めている会社と、その使い方をまとめています。多くはまだ使い始めたばかりで、成果の数字はこれからです。</p>
+    <p>Lシンクは、LINE公式アカウントにAIを組み込み、問い合わせへの返信、予約、アンケート、配信などをLINEの中でまとめて動かすサービスです。お店や会社の情報を覚えたAIが24時間一次対応し、人が対応すべきものは担当者へつなぎます。</p>
+    <p>このページでは、商談や設定の打ち合わせの記録をもとに、業種ごとの使い方を紹介します。各記事の「設定の中身」で、AIに任せたことと人が受け持つことの分け方を確認できます。</p>
+    <p>掲載している事例の多くは、設定中や運用を始めたばかりの段階です。成果の数字はこれから出てくるものが多いため、記事では「何に困り、どう設定したか」を中心にお伝えしています。</p>
   </div>
 </header>
 
 <ul class="summary">
-  <li><a href="#case01"><span class="num">20社</span><span class="lbl"><b>CASE 01｜導入先一覧</b>業種・規模・使い方</span></a></li>
-  <li><a href="#case02"><span class="num">設定中</span><span class="lbl"><b>CASE 02｜温泉旅館</b>電話で多い道案内の問い合わせをLINEのAIが24時間対応</span></a></li>
-  <li><a href="#case03"><span class="num">設定中</span><span class="lbl"><b>CASE 03｜飲食店（会員制・ワンオペ運営</b>ワンオペの飲食店が予約・会員管理をLINEに集約</span></a></li>
-  <li><a href="#case04"><span class="num">設定中</span><span class="lbl"><b>CASE 04｜経営者団体の事務局運営</b>会員組織の出欠確認と問い合わせ対応をAIが代行</span></a></li>
-  <li><a href="#case05"><span class="num">導入決定</span><span class="lbl"><b>CASE 05｜エステサロン（個人経営）</b>営業時間外のLINE返信をAIに任せる個人エステサロン</span></a></li>
-  <li><a href="#case06"><span class="num">導入</span><span class="lbl"><b>CASE 06</b>LINEを名刺・ホームページ代わりに</span></a></li>
-  <li><a href="#case07"><span class="num">深夜3時</span><span class="lbl"><b>CASE 07</b>AIが日程まで押さえていた</span></a></li>
+  <li><a href="#industries"><span class="num">14業種</span><span class="lbl"><b>INDUSTRY MAP</b>126社の業種の内訳</span></a></li>
+  <li><a href="#case01"><span class="num">20社</span><span class="lbl"><b>CASE 01｜導入先一覧</b>業種で絞り込めます</span></a></li>
+  <li><a href="#case02"><span class="num">設定中</span><span class="lbl"><b>CASE 02｜温泉旅館</b>電話で多い道案内の問い合わせを、LINEのAIが24時間引き受ける</span></a></li>
+  <li><a href="#case03"><span class="num">設定中</span><span class="lbl"><b>CASE 03｜飲食店（会員制・ワンオペ運営</b>1人で営む飲食店が、予約と会員管理をLINEにまとめる</span></a></li>
+  <li><a href="#case04"><span class="num">設定中</span><span class="lbl"><b>CASE 04｜経営者団体の事務局運営</b>会員組織の出欠確認と問い合わせ対応を、LINEのAIが引き受ける</span></a></li>
+  <li><a href="#case05"><span class="num">導入決定</span><span class="lbl"><b>CASE 05｜エステサロン（個人経営）</b>施術中に返せないLINEを、AIが24時間受け持つ個人サロン</span></a></li>
+  <li><a href="#case06"><span class="num">導入</span><span class="lbl"><b>CASE 06｜ビル清掃</b>LINEを名刺・ホームページ代わりに</span></a></li>
+  <li><a href="#case07"><span class="num">深夜3時</span><span class="lbl"><b>CASE 07｜エピソード</b>AIが日程まで押さえていた</span></a></li>
 </ul>
+
+<section class="imap" id="industries">
+  <span class="case-no">INDUSTRY MAP<span>導入業種</span></span>
+  <div class="imap-head"><span class="big">14<small>業種</small>126<small>社</small></span></div>
+  <p class="imap-sub">2026年3月〜9月の商談・打ち合わせの記録で、申込以降（設定中・運用中を含む）に進んだ会社を業種ごとに数えました。</p>
+  <ul class="tiles">
+    <li><span class="t-name">IT・Web・通信</span><span class="t-num">17<small>社</small></span><span class="t-bar"><span style="width:77%"></span></span></li>
+    <li><span class="t-name">人材・採用</span><span class="t-num">11<small>社</small></span><span class="t-bar"><span style="width:50%"></span></span></li>
+    <li><span class="t-name">美容・サロン・健康</span><span class="t-num">11<small>社</small></span><span class="t-bar"><span style="width:50%"></span></span></li>
+    <li><span class="t-name">飲食・食品</span><span class="t-num">11<small>社</small></span><span class="t-bar"><span style="width:50%"></span></span></li>
+    <li><span class="t-name">団体・コミュニティ</span><span class="t-num">10<small>社</small></span><span class="t-bar"><span style="width:45%"></span></span></li>
+    <li><span class="t-name">士業・コンサル</span><span class="t-num">9<small>社</small></span><span class="t-bar"><span style="width:41%"></span></span></li>
+    <li><span class="t-name">教育・スクール</span><span class="t-num">8<small>社</small></span><span class="t-bar"><span style="width:36%"></span></span></li>
+    <li><span class="t-name">住宅・不動産・設備</span><span class="t-num">8<small>社</small></span><span class="t-bar"><span style="width:36%"></span></span></li>
+    <li><span class="t-name">小売・EC・物販</span><span class="t-num">7<small>社</small></span><span class="t-bar"><span style="width:32%"></span></span></li>
+    <li><span class="t-name">保険・金融</span><span class="t-num">5<small>社</small></span><span class="t-bar"><span style="width:23%"></span></span></li>
+    <li><span class="t-name">撮影・デザイン</span><span class="t-num">4<small>社</small></span><span class="t-bar"><span style="width:18%"></span></span></li>
+    <li><span class="t-name">医療・介護・福祉</span><span class="t-num">2<small>社</small></span><span class="t-bar"><span style="width:9%"></span></span></li>
+    <li><span class="t-name">宿泊・観光</span><span class="t-num">1<small>社</small></span><span class="t-bar"><span style="width:5%"></span></span></li>
+    <li><span class="t-name">販売パートナー（代理店）</span><span class="t-num">22<small>社</small></span><span class="t-bar"><span style="width:100%"></span></span></li>
+  </ul>
+</section>
 
 <section id="case01">
   <span class="case-no">CASE 01<span>導入先一覧</span></span>
-  <h2>実際に導入・設定を進めている20社</h2>
-  <p>士業、サロン、飲食、教育、住宅設備など、業種はさまざまです。共通しているのは、人が対応しきれない問い合わせや、追いかけきれないお客様とのやり取りをLINEに任せたい、という点です。</p>
-<div class="scroll">
-  <table class="adopters">
-    <tr><th>業種</th><th>規模</th><th>地域</th><th>使い方</th><th>段階</th></tr>
-    <tr><td>生命保険の乗合代理店</td><td>—</td><td>茨城県</td><td>友だち登録時のアンケートで顧客情報を管理シートに集約し、AIの一次返信・面談予約・各種変更手続き・誕生日等の自動配信を行う</td><td><span class="stage won">導入決定</span></td></tr>
-    <tr><td>行政書士事務所（相続手続き）</td><td>代表1名</td><td>山梨県</td><td>公式LINEのAIが相続の基本情報や不安を事前にヒアリングして可視化し、面談の日程調整から長期フォローまでを担う</td><td><span class="stage won">導入決定</span></td></tr>
-    <tr><td>エステサロン（個人経営）</td><td>オーナー1名・LINE友だち約150名</td><td>—</td><td>既存の公式LINEにAIをつなぎ、施術中や営業時間外の問い合わせに24時間対応。事前カルテや日程調整もLINEで行う</td><td><span class="stage won">導入決定</span></td></tr>
-    <tr><td>トータルビューティーサロン</td><td>スタッフ6名・LINE友だち1,000人超</td><td>—</td><td>公式LINEにAIチャットを組み込んで一般的な質問を自動回答し、予約変更などはスタッフ対応に切り分ける</td><td><span class="stage won">導入決定</span></td></tr>
-    <tr><td>マンション向け光回線の販売・工事受付</td><td>代表中心の少人数体制</td><td>—</td><td>既存の公式LINEにAIを連携し、FAQや各通信会社の案内文を学習させて、日々の個別問い合わせに自動で応答する</td><td><span class="stage won">導入決定</span></td></tr>
-    <tr><td>養蜂・はちみつの製造販売</td><td>—</td><td>—</td><td>催事や店舗ごとに専用のQRコードを用意し、LINE登録時のアンケートで顧客情報を取得。紙のDMからLINE配信へ移行する</td><td><span class="stage won">導入決定</span></td></tr>
-    <tr><td>特定技能外国人の支援・人材紹介／電気工事業</td><td>—</td><td>—</td><td>事業ごとの公式LINEでAIが問い合わせに自動応答し、スプレッドシート連携で見積もりの叩き台づくりにも活用する</td><td><span class="stage won">導入決定</span></td></tr>
-    <tr><td>パーソナルジム・ダイエット指導</td><td>LINE友だち約1,500名</td><td>—</td><td>既存の配信ツールと役割を分け、AIによる反応分析・タグ管理・属性別の配信の最適化を任せる</td><td><span class="stage won">導入決定</span></td></tr>
-    <tr><td>社会保険労務士事務所（障害年金の申請代行）</td><td>—</td><td>—</td><td>初診日や通院先などの基本情報を選択式のチャットで集め、必要書類も写真で受け取って面談前の聞き取り負担を減らす</td><td><span class="stage">設定中</span></td></tr>
-    <tr><td>温泉旅館</td><td>—</td><td>静岡県</td><td>ホームページのQ&amp;AをスプレッドシートにしてAIが24時間回答。アクセス案内は電車・車で分岐し、予約ページへ直接誘導する</td><td><span class="stage">設定中</span></td></tr>
-    <tr><td>飲食店（会員制・ワンオペ運営）</td><td>代表1名で運営</td><td>—</td><td>LINE上で席予約・前金決済・会員証の表示まで完結させ、予約が入ると店舗のグループLINEへ自動で通知する</td><td><span class="stage">設定中</span></td></tr>
-    <tr><td>学習塾・幼児教育</td><td>—</td><td>—</td><td>代表の教育ノウハウを学習したAIが保護者の相談窓口として回答し、診断コンテンツや教え子のエピソードを配信する</td><td><span class="stage">設定中</span></td></tr>
-    <tr><td>店舗の地図検索対策（MEO）サービス</td><td>—</td><td>—</td><td>顧客店舗向けの公式LINEで、投稿記事・画像の作成から投稿予約、未活用顧客へのリマインドまでをボタン操作で行う</td><td><span class="stage">設定中</span></td></tr>
-    <tr><td>ガス機器販売・住宅設備リフォーム</td><td>—</td><td>愛知県</td><td>新設した公式LINEでカタログを学習したAIが質問に答え、施工事例やFAQを見てもらいながら現地調査の予約へつなげる</td><td><span class="stage">設定中</span></td></tr>
-    <tr><td>撮影スタジオ</td><td>LINE友だち47名</td><td>—</td><td>撮影内容をボタンで絞り込んでもらい、サービス情報とFAQをAIが回答して、問い合わせ前の離脱を減らす</td><td><span class="stage">設定中</span></td></tr>
-    <tr><td>経営者団体の事務局運営</td><td>—</td><td>東京都</td><td>会長の人格を持たせたAIが会員の質問に回答し、月例会などの出欠取得と未回答者への自動リマインドを行う</td><td><span class="stage">設定中</span></td></tr>
-    <tr><td>子ども向けスクール</td><td>定員20名のクラス運営</td><td>長崎県</td><td>公式LINEを常時AIの自動応答で運用し、登録時アンケートで未契約者をタグ付けしてセグメント配信を行う</td><td><span class="stage">設定中</span></td></tr>
-    <tr><td>保険代理店向けの営業支援<small>販売パートナー</small></td><td>—</td><td>—</td><td>保険代理店向けに、面談予約・契約後の手続き案内・記念日の配信などを組み込んだテンプレートで導入を支援している</td><td><span class="stage won">運用中</span></td></tr>
-    <tr><td>生成AIを活用したシステム開発<small>販売パートナー</small></td><td>—</td><td>秋田県</td><td>自社の集客窓口として運用し、AIが最初の会話で相手の課題を聞き取り、解決策や関連サービスの案内へ分岐させる</td><td><span class="stage won">運用中</span></td></tr>
-    <tr><td>採用代行<small>販売パートナー</small></td><td>—</td><td>神奈川県</td><td>自社に導入して使い方を学びながら、採用代行の顧客に向けて応募者フォローでの活用を提案している</td><td><span class="stage">設定中</span></td></tr>
-  </table>
-</div>
-  <p class="note">※ 2026年3月〜9月の商談・打ち合わせの記録から、申込以降に進んだ会社を載せています。「設定中」は初期設定を進めている段階です。</p>
+  <h2>業種ごとの使い方を、20社分ならべました</h2>
+  <p>業種を選ぶと、その業種の会社だけを表示します。同じLシンクでも、予約の受付、問い合わせの一次対応、会員の連絡、相続の聞き取りなど、使い方は業種によって大きく変わります。</p>
+  <ul class="chips" aria-label="業種で絞り込む"><li><button type="button" data-f="all" aria-pressed="true">すべて</button></li><li><button type="button" data-f="保険・金融" aria-pressed="false">保険・金融</button></li><li><button type="button" data-f="士業・コンサル" aria-pressed="false">士業・コンサル</button></li><li><button type="button" data-f="美容・サロン・健康" aria-pressed="false">美容・サロン・健康</button></li><li><button type="button" data-f="IT・Web・通信" aria-pressed="false">IT・Web・通信</button></li><li><button type="button" data-f="飲食・食品" aria-pressed="false">飲食・食品</button></li><li><button type="button" data-f="人材・採用" aria-pressed="false">人材・採用</button></li><li><button type="button" data-f="宿泊・観光" aria-pressed="false">宿泊・観光</button></li><li><button type="button" data-f="教育・スクール" aria-pressed="false">教育・スクール</button></li><li><button type="button" data-f="住宅・不動産・設備" aria-pressed="false">住宅・不動産・設備</button></li><li><button type="button" data-f="撮影・デザイン" aria-pressed="false">撮影・デザイン</button></li><li><button type="button" data-f="団体・コミュニティ" aria-pressed="false">団体・コミュニティ</button></li><li><button type="button" data-f="販売パートナー（代理店）" aria-pressed="false">販売パートナー（代理店）</button></li></ul>
+  <ul class="acards">
+    <li data-cat="保険・金融"><div class="a-top"><span class="a-cat">保険・金融</span><span class="stage won">導入決定</span></div><span class="a-ind">生命保険の乗合代理店</span><span class="a-meta">茨城県</span><p class="a-use">友だち登録時のアンケートで顧客情報を管理シートに集約し、AIの一次返信・面談予約・各種変更手続き・誕生日等の自動配信を行う</p></li>
+    <li data-cat="士業・コンサル"><div class="a-top"><span class="a-cat">士業・コンサル</span><span class="stage won">導入決定</span></div><span class="a-ind">行政書士事務所（相続手続き）</span><span class="a-meta">代表1名・山梨県</span><p class="a-use">公式LINEのAIが相続の基本情報や不安を事前にヒアリングして可視化し、面談の日程調整から長期フォローまでを担う</p></li>
+    <li data-cat="美容・サロン・健康"><div class="a-top"><span class="a-cat">美容・サロン・健康</span><span class="stage won">導入決定</span></div><span class="a-ind">エステサロン（個人経営）</span><span class="a-meta">オーナー1名・LINE友だち約150名</span><p class="a-use">既存の公式LINEにAIをつなぎ、施術中や営業時間外の問い合わせに24時間対応。事前カルテや日程調整もLINEで行う</p></li>
+    <li data-cat="美容・サロン・健康"><div class="a-top"><span class="a-cat">美容・サロン・健康</span><span class="stage won">導入決定</span></div><span class="a-ind">トータルビューティーサロン</span><span class="a-meta">スタッフ6名・LINE友だち1,000人超</span><p class="a-use">公式LINEにAIチャットを組み込んで一般的な質問を自動回答し、予約変更などはスタッフ対応に切り分ける</p></li>
+    <li data-cat="IT・Web・通信"><div class="a-top"><span class="a-cat">IT・Web・通信</span><span class="stage won">導入決定</span></div><span class="a-ind">マンション向け光回線の販売・工事受付</span><span class="a-meta">代表中心の少人数体制</span><p class="a-use">既存の公式LINEにAIを連携し、FAQや各通信会社の案内文を学習させて、日々の個別問い合わせに自動で応答する</p></li>
+    <li data-cat="飲食・食品"><div class="a-top"><span class="a-cat">飲食・食品</span><span class="stage won">導入決定</span></div><span class="a-ind">養蜂・はちみつの製造販売</span><span class="a-meta">—</span><p class="a-use">催事や店舗ごとに専用のQRコードを用意し、LINE登録時のアンケートで顧客情報を取得。紙のDMからLINE配信へ移行する</p></li>
+    <li data-cat="人材・採用"><div class="a-top"><span class="a-cat">人材・採用</span><span class="stage won">導入決定</span></div><span class="a-ind">特定技能外国人の支援・人材紹介／電気工事業</span><span class="a-meta">—</span><p class="a-use">事業ごとの公式LINEでAIが問い合わせに自動応答し、スプレッドシート連携で見積もりの叩き台づくりにも活用する</p></li>
+    <li data-cat="美容・サロン・健康"><div class="a-top"><span class="a-cat">美容・サロン・健康</span><span class="stage won">導入決定</span></div><span class="a-ind">パーソナルジム・ダイエット指導</span><span class="a-meta">LINE友だち約1,500名</span><p class="a-use">既存の配信ツールと役割を分け、AIによる反応分析・タグ管理・属性別の配信の最適化を任せる</p></li>
+    <li data-cat="士業・コンサル"><div class="a-top"><span class="a-cat">士業・コンサル</span><span class="stage">設定中</span></div><span class="a-ind">社会保険労務士事務所（障害年金の申請代行）</span><span class="a-meta">—</span><p class="a-use">初診日や通院先などの基本情報を選択式のチャットで集め、必要書類も写真で受け取って面談前の聞き取り負担を減らす</p></li>
+    <li data-cat="宿泊・観光"><div class="a-top"><span class="a-cat">宿泊・観光</span><span class="stage">設定中</span></div><span class="a-ind">温泉旅館</span><span class="a-meta">静岡県</span><p class="a-use">ホームページのQ&amp;AをスプレッドシートにしてAIが24時間回答。アクセス案内は電車・車で分岐し、予約ページへ直接誘導する</p></li>
+    <li data-cat="飲食・食品"><div class="a-top"><span class="a-cat">飲食・食品</span><span class="stage">設定中</span></div><span class="a-ind">飲食店（会員制・ワンオペ運営）</span><span class="a-meta">代表1名で運営</span><p class="a-use">LINE上で席予約・前金決済・会員証の表示まで完結させ、予約が入ると店舗のグループLINEへ自動で通知する</p></li>
+    <li data-cat="教育・スクール"><div class="a-top"><span class="a-cat">教育・スクール</span><span class="stage">設定中</span></div><span class="a-ind">学習塾・幼児教育</span><span class="a-meta">—</span><p class="a-use">代表の教育ノウハウを学習したAIが保護者の相談窓口として回答し、診断コンテンツや教え子のエピソードを配信する</p></li>
+    <li data-cat="IT・Web・通信"><div class="a-top"><span class="a-cat">IT・Web・通信</span><span class="stage">設定中</span></div><span class="a-ind">店舗の地図検索対策（MEO）サービス</span><span class="a-meta">—</span><p class="a-use">顧客店舗向けの公式LINEで、投稿記事・画像の作成から投稿予約、未活用顧客へのリマインドまでをボタン操作で行う</p></li>
+    <li data-cat="住宅・不動産・設備"><div class="a-top"><span class="a-cat">住宅・不動産・設備</span><span class="stage">設定中</span></div><span class="a-ind">ガス機器販売・住宅設備リフォーム</span><span class="a-meta">愛知県</span><p class="a-use">新設した公式LINEでカタログを学習したAIが質問に答え、施工事例やFAQを見てもらいながら現地調査の予約へつなげる</p></li>
+    <li data-cat="撮影・デザイン"><div class="a-top"><span class="a-cat">撮影・デザイン</span><span class="stage">設定中</span></div><span class="a-ind">撮影スタジオ</span><span class="a-meta">LINE友だち47名</span><p class="a-use">撮影内容をボタンで絞り込んでもらい、サービス情報とFAQをAIが回答して、問い合わせ前の離脱を減らす</p></li>
+    <li data-cat="団体・コミュニティ"><div class="a-top"><span class="a-cat">団体・コミュニティ</span><span class="stage">設定中</span></div><span class="a-ind">経営者団体の事務局運営</span><span class="a-meta">東京都</span><p class="a-use">会長の人格を持たせたAIが会員の質問に回答し、月例会などの出欠取得と未回答者への自動リマインドを行う</p></li>
+    <li data-cat="教育・スクール"><div class="a-top"><span class="a-cat">教育・スクール</span><span class="stage">設定中</span></div><span class="a-ind">子ども向けスクール</span><span class="a-meta">定員20名のクラス運営・長崎県</span><p class="a-use">公式LINEを常時AIの自動応答で運用し、登録時アンケートで未契約者をタグ付けしてセグメント配信を行う</p></li>
+    <li data-cat="販売パートナー（代理店）"><div class="a-top"><span class="a-cat">販売パートナー（代理店）</span><span class="stage won">運用中</span></div><span class="a-ind">保険代理店向けの営業支援</span><span class="a-meta">—</span><p class="a-use">保険代理店向けに、面談予約・契約後の手続き案内・記念日の配信などを組み込んだテンプレートで導入を支援している</p><span class="a-partner">販売パートナーとしての利用</span></li>
+    <li data-cat="販売パートナー（代理店）"><div class="a-top"><span class="a-cat">販売パートナー（代理店）</span><span class="stage won">運用中</span></div><span class="a-ind">生成AIを活用したシステム開発</span><span class="a-meta">秋田県</span><p class="a-use">自社の集客窓口として運用し、AIが最初の会話で相手の課題を聞き取り、解決策や関連サービスの案内へ分岐させる</p><span class="a-partner">販売パートナーとしての利用</span></li>
+    <li data-cat="販売パートナー（代理店）"><div class="a-top"><span class="a-cat">販売パートナー（代理店）</span><span class="stage">設定中</span></div><span class="a-ind">採用代行</span><span class="a-meta">神奈川県</span><p class="a-use">自社に導入して使い方を学びながら、採用代行の顧客に向けて応募者フォローでの活用を提案している</p><span class="a-partner">販売パートナーとしての利用</span></li>
+  </ul>
+  <p class="note">※ 業種・規模・地域は特定できない範囲で記載しています。「設定中」は初期設定を進めている段階です。</p>
 </section>
 
 <section id="case02">
-  <span class="case-no">CASE 02<span>温泉旅館・静岡県</span></span>
-  <h2>電話で多い道案内の問い合わせをLINEのAIが24時間対応</h2>
-  <p>年配客を中心に、ホームページを見ずに送迎やアクセスを電話で尋ねる問い合わせが多い。Q&amp;Aは項目が多く探しにくいうえ、古い情報が残っていることもあった。</p>
-  <h3>使い方</h3>
-  <ul class="plain"><li>ホームページのQ&amp;Aをスプレッドシートにまとめ、10分ごとの同期でAIが回答</li><li>アクセス案内は電車・車で分岐し、予約ボタンから予約ページへ直接案内</li><li>アレルギーやバリアフリーはAIが一次回答し、詳細は電話へつなぐ</li></ul>
-  <p><span class="stage">設定中</span>　初回構築の確認を終え、運用開始に向けて準備中。成果はこれから。</p>
-  <ul class="voices"><li>スプレッドシートを直すだけで反映されるのはいい。宿の情報は変わったり、古い情報が残ったりするので<small>お客様の声</small></li></ul>
+  <span class="case-no">CASE 02<span>温泉旅館｜静岡県</span></span>
+  <h2>電話で多い道案内の問い合わせを、LINEのAIが24時間引き受ける</h2>
+  <p class="byline-s">担当：<b>木場</b> ｜ 2026年7月〜</p>
+  <p>静岡県の温泉旅館では、ホームページを見ずに送迎や道順を電話で尋ねるお客様が多くいました。電車で来る年配の方が中心ですが、30代のお客様からも道を聞く電話があるそうです。既存の公式LINEは、人手不足で動かせていませんでした。</p>
+  <p>ホームページにはQ&amp;Aを載せていましたが、項目が多くて探しにくいと感じられていました。古い情報が残っていることもありました。そこで、休眠していた公式LINEにLシンクをつなぎ、よくある質問にAIが24時間答える形で構築を始めました。</p>
+  <p>設定では、ホームページのQ&amp;Aをスプレッドシートにまとめ、10分ごとに同期してAIが答えるようにしました。アクセス案内は電車と車で分け、予約ボタンからは予約ページへ直接移動します。アレルギーとバリアフリーは、AIが一次回答をして、詳細は電話で受ける形にしました。</p>
+  <p>2026年8月には初回構築の確認を行い、Q&amp;Aの内容のずれも一緒に見直しました。今後は、赤ちゃん連れやアレルギーなどの言葉でタグを付け、通知や案内に生かす予定です。運用開始に向けて準備中で、成果はこれからです。</p>
+  <h3>設定の中身</h3>
+  <div class="setting"><dl><dt>入口</dt><dd>休眠していた既存の公式LINE（リッチメニュー6項目）</dd><dt>AIの役割</dt><dd>Q&amp;Aのスプレッドシートをもとに、アクセスや館内の質問へ24時間回答</dd><dt>人の役割</dt><dd>アレルギー・バリアフリーの詳細は電話で対応</dd></dl></div>
+  <h3>お客様の声</h3>
+  <p class="quote">「スプレッドシートを直すだけで反映されるのはいい。宿の情報は変わったり古い情報が残ったりするので」</p>
+  <p class="quote">「Q&amp;Aの項目が多くちょこちょこ違っていた。見てもらって指摘してもらえて助かった」</p>
+  <p class="quote">「アレルギーとバリアフリーはセンシティブなので、効率を重視しすぎると痛い目にあう。建前部分だけAIで、あとは電話で」</p>
+  <p class="status"><span class="stage">設定中</span>初回構築の確認を終え、運用開始に向けて準備中です。</p>
 </section>
 
 <section id="case03">
-  <span class="case-no">CASE 03<span>飲食店（会員制・ワンオペ運営）・代表1名で運営</span></span>
-  <h2>ワンオペの飲食店が予約・会員管理をLINEに集約</h2>
-  <p>予約ツールがなく、電話などの予約と別々に管理していた。1人で運営するため手間は増やしたくない一方、会員への誘導や貸切席のキャンセル対策が必要だった。</p>
-  <h3>使い方</h3>
-  <ul class="plain"><li>席予約と前金決済、会員証の表示までLINE上で完結</li><li>予約が入ると店舗のグループLINEへ自動通知し、そのまま返信</li><li>前日のリマインドを自動配信</li></ul>
-  <p><span class="stage">設定中</span>　構築の途中でInstagramにLINEを掲載したところ、思ったより友だちが増え、チャットのやり取りも動き始めている（数値は未集計）。</p>
-  <ul class="voices"><li>Instagramに貼ってしまったら、思ったより友だちが増えてしまった<small>お客様の声</small></li></ul>
+  <span class="case-no">CASE 03<span>飲食店（会員制・ワンオペ運営）</span></span>
+  <h2>1人で営む飲食店が、予約と会員管理をLINEにまとめる</h2>
+  <p class="byline-s">担当：<b>木場</b> ｜ 2026年5月〜</p>
+  <p>代表1人で運営する会員制の飲食店です。2026年5月の時点では開業前で、予約の受け付け、会員の管理、集客を1人で回す必要がありました。公式LINEは運用の手間が心配で、まだ作っていませんでした。</p>
+  <p>Instagramでは独自の会員制度を作り、すでに66名が集まっていました。外部の予約の仕組みを別に入れるより、Lシンクにまとめた方が効率的かもしれないと考え、導入を決めました。手間を増やさないことが前提でした。</p>
+  <p>設定では、カウンター席と2階の貸切席の予約、予約時の前金の決済、会員証の表示をLINE上で完結させました。予約が入ると店舗スタッフのグループLINEに通知が届き、そのままお客様に返信できます。前日にはリマインドを自動で送ります。</p>
+  <p>途中で、要対応の問い合わせに通知が来ず返信が遅れたことがあり、通知の設定を見直しました。構築の途中でInstagramにLINEを載せたところ、思ったより友だちが増えたそうです（数値は未集計）。2026年9月に設定を終え、運用を始める段階です。</p>
+  <h3>設定の中身</h3>
+  <div class="setting"><dl><dt>入口</dt><dd>InstagramやQRコードから公式LINEへ</dd><dt>LINEでできること</dt><dd>席の予約、前金の決済、会員証の表示、前日のリマインド</dd><dt>人の役割</dt><dd>予約の通知を店舗のグループLINEで受け、メニューの相談などに返信</dd></dl></div>
+  <h3>お客様の声</h3>
+  <p class="quote">「Instagramに貼ってしまったら思ったより友だちが増えてしまった」</p>
+  <p class="quote">「前金を人数分先にもらっておけば従業員への申し送りがしやすい」</p>
+  <p class="quote">「一旦運用を進めて、困るところが出てきたらまた相談したい」</p>
+  <p class="status"><span class="stage">設定中</span>設定を終え、運用を始める段階です。</p>
 </section>
 
 <section id="case04">
-  <span class="case-no">CASE 04<span>経営者団体の事務局運営・東京都</span></span>
-  <h2>会員組織の出欠確認と問い合わせ対応をAIが代行</h2>
-  <p>月例会や行事の出欠回答が集まらず、規約やFAQへの問い合わせ対応、会員プロフィールの管理も手作業になっていた。</p>
-  <h3>使い方</h3>
-  <ul class="plain"><li>会長の人格を持たせたAIが、規約やFAQをもとに会員の質問へ回答</li><li>アンケートで出欠を取り、未回答者には自動でリマインド</li><li>マイページで出欠履歴やプロフィールを管理し、共通点のある会員を紹介</li></ul>
-  <p><span class="stage">設定中</span>　運用説明・設定会の時点で友だち登録56名。</p>
-  <ul class="voices"><li>だいぶイメージがつきました。まず使えるところまで行ってもらって<small>お客様の声</small></li></ul>
+  <span class="case-no">CASE 04<span>経営者団体の事務局運営｜東京都</span></span>
+  <h2>会員組織の出欠確認と問い合わせ対応を、LINEのAIが引き受ける</h2>
+  <p class="byline-s">担当：<b>菅野</b> ｜ 2026年6月〜</p>
+  <p>経営者団体の事務局では、イベントの出欠確認のたびにスタッフが何度も督促していました。会員は連絡を見落としがちで、連絡手段もLINEとメール（秘書経由）に分かれていました。以前の仕組みは、運用までたどり着いていませんでした。</p>
+  <p>情報を共有していたSNSのグループは検索しにくく、過去の連絡を探すのにも苦労していました。そこで、出欠の回収と規約・FAQへの問い合わせ対応を公式LINEにまとめる形で、Lシンクでの構築を進めました。</p>
+  <p>AIには会長の人格を持たせ、規約やFAQ、公式サイトの情報をもとに会員の質問へ答えるようにしました。出欠はアンケートで集め、未回答の人には自動でリマインドします。マイページでは出欠の履歴やプロフィールを確認でき、共通点のある会員を紹介する機能も入れました。</p>
+  <p>2026年7月の運用説明・設定会の時点で、友だち登録は56名です。運営担当者にも管理画面のログインを用意しました。使い始めてからの修正依頼の決め方を整えたいという要望もあり、約1か月後にフォローアップを予定しています。</p>
+  <h3>設定の中身</h3>
+  <div class="setting"><dl><dt>入口</dt><dd>会員向けの公式LINE（リッチメニュー6項目＋マイページ）</dd><dt>AIの役割</dt><dd>会長の人格で、規約・FAQをもとに会員の質問へ回答</dd><dt>自動化</dt><dd>出欠アンケートと、未回答者への自動リマインド</dd><dt>人の役割</dt><dd>運営担当者が管理画面で配信や設定を確認</dd></dl></div>
+  <h3>お客様の声</h3>
+  <p class="quote">「出欠確認がとにかく面倒で、みんな見落として連絡しない」</p>
+  <p class="quote">「返事が来るまでAIがどんどんトーンを上げて督促してくれればいい」</p>
+  <p class="quote">「だいぶイメージがつきました。まず使えるところまで行ってもらって」</p>
+  <p class="status"><span class="stage">設定中</span>運用説明を終え、本格的な運用に向けて調整しています。</p>
 </section>
 
 <section id="case05">
-  <span class="case-no">CASE 05<span>エステサロン（個人経営）・オーナー1名・LINE友だち約150名</span></span>
-  <h2>営業時間外のLINE返信をAIに任せる個人エステサロン</h2>
-  <p>1人で施術しながら育児もあり、LINEの返信が深夜や早朝になってしまう。予約サイト頼みから、公式LINEを中心にした集客の流れに切り替えたかった。</p>
-  <h3>使い方</h3>
-  <ul class="plain"><li>既存の公式LINEにAIを接続し、24時間対応</li><li>会話から自動でタグ付けし、ステップ配信もAIで作成</li><li>事前カルテのアンケートと日程調整をLINEで完結</li></ul>
-  <p><span class="stage won">導入決定</span>　利用開始を決定し、アカウント準備中。成果はこれから。</p>
-  <ul class="voices"><li>LINEをお客様に返信する時間が基本なく、朝早くか夜遅くにしか返せていなかった<small>お客様の声</small></li></ul>
+  <span class="case-no">CASE 05<span>エステサロン（個人経営）</span></span>
+  <h2>施術中に返せないLINEを、AIが24時間受け持つ個人サロン</h2>
+  <p class="byline-s">担当：<b>菅野</b> ｜ 2026年5月〜</p>
+  <p>オーナー1人で施術する、個人経営のエステサロンです。平日の日中に営業し、育児もあるため、LINEの返信は朝早くか夜遅くになっていました。以前に作ったステップ配信にも、納得できていませんでした。</p>
+  <p>予約サイト頼みの集客から、公式LINEを中心にした流れに切り替えたいと考えていました。体質診断から来店、事前カルテ、来店後のフォロー、リピートまでをLINEでつなぐ構想です。2026年5月の商談の中で、Lシンクの利用開始を決めました。</p>
+  <p>友だち約150名の既存の公式LINEにLシンクを接続します。サロンのプロフィールやメニュー資料を覚えたAIが24時間対応し、会話の内容から自動でタグを付けます。ステップ配信の文面もAIで作り、事前カルテのアンケートと日程調整をLINEで完結させる予定です。</p>
+  <p>既存の友だちには、AIでの対応を始めることを案内し、反応した方から管理画面に反映していきます。商談の時点ではアカウント情報の準備を待っている段階で、成果はこれからです。</p>
+  <h3>設定の中身</h3>
+  <div class="setting"><dl><dt>入口</dt><dd>既存の公式LINE（友だち約150名）</dd><dt>AIの役割</dt><dd>24時間の返信、会話からの自動タグ付け、ステップ配信の文面作成</dd><dt>LINEでできること</dt><dd>事前カルテのアンケートと日程調整</dd></dl></div>
+  <h3>お客様の声</h3>
+  <p class="quote">「LINEをお客様に返信する時間が基本ない。朝早くか夜遅くしかできず非常識な人になっている」</p>
+  <p class="quote">「機能としては何も不足はない」</p>
+  <p class="status"><span class="stage won">導入決定</span>利用開始を決め、アカウントの準備を進めています。</p>
 </section>
 
 <section id="case06">
@@ -269,5 +338,15 @@ ul.plain li{margin-bottom:6px}
 </footer>
 
 </div>
+<script>
+(function(){
+  var btns=document.querySelectorAll('.chips button'),cards=document.querySelectorAll('.acards li');
+  btns.forEach(function(b){b.addEventListener('click',function(){
+    var f=b.getAttribute('data-f');
+    btns.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+    cards.forEach(function(c){c.hidden=!(f==='all'||c.getAttribute('data-cat')===f);});
+  });});
+})();
+</script>
 </body>
 </html>

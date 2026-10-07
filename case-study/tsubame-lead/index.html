@@ -125,18 +125,38 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
 
 .stage{display:inline-block;font-size:11.5px;line-height:1.6;padding:1px 9px;border-radius:999px;border:1px solid var(--line);white-space:nowrap;color:var(--ink-soft);background:var(--soft)}
 .stage.won{color:var(--accent);background:var(--accent-soft);border-color:transparent;font-weight:700}
-.voices{list-style:none;margin:10px 0 18px;padding:0;display:grid;gap:10px}
-.voices li{border-left:3px solid var(--ink);background:var(--soft);padding:10px 16px;font-size:15px}
-.voices small{display:block;color:var(--ink-mute);font-size:12px;margin-top:2px}
-.flow{list-style:none;margin:10px 0 18px;padding:0;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.flow li{border:1px solid var(--line);border-radius:var(--radius);padding:8px 14px;font-size:14px;background:var(--soft)}
-.flow li.arrow{border:0;background:none;padding:0;color:var(--ink-mute)}
-ul.plain{margin:6px 0 14px;padding-left:1.15em}
-ul.plain li{margin-bottom:6px}
-.flow li b{display:block;font-size:20px;font-variant-numeric:tabular-nums}
+.byline-s{font-size:13px;color:var(--ink-mute);margin:-10px 0 18px}
+.byline-s b{color:var(--ink-soft);font-weight:700}
+.status{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin:14px 0 0;font-size:14.5px;color:var(--ink-soft)}
 .adopters td:nth-child(3){white-space:nowrap}
 .adopters td:nth-child(2){min-width:6em}
 .adopters td:nth-child(4){min-width:14em}
+/* industry map */
+.imap{margin:0 0 56px}
+.imap-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:0 0 6px}
+.imap-head .big{font-size:44px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums}
+.imap-head .big small{font-size:16px;font-weight:700;margin:0 6px 0 2px}
+.imap-sub{font-size:13px;color:var(--ink-mute);margin:0 0 18px}
+.tiles{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.tiles li{border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;background:var(--soft);display:grid;gap:6px;min-width:0}
+.tiles .t-name{font-size:13.5px;font-weight:700;line-height:1.5}
+.tiles .t-num{font-size:24px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.tiles .t-num small{font-size:12px;font-weight:400;color:var(--ink-mute);margin-left:2px}
+.tiles .t-bar{height:4px;border-radius:2px;background:var(--line);overflow:hidden}
+.tiles .t-bar span{display:block;height:100%;background:var(--accent)}
+/* adopter cards */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px;padding:0;list-style:none}
+.chips button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--paper);color:var(--ink-soft);border-radius:999px;padding:4px 14px;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--on-ink);border-color:var(--ink)}
+.chips button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.acards{list-style:none;margin:0 0 12px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.acards li{border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;background:var(--paper);display:grid;gap:8px;align-content:start;min-width:0}
+.acards .a-top{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.acards .a-cat{font-size:11.5px;letter-spacing:.06em;color:var(--ink-mute)}
+.acards .a-ind{font-size:15px;font-weight:700;line-height:1.5}
+.acards .a-meta{font-size:12.5px;color:var(--ink-mute)}
+.acards .a-use{font-size:13.5px;color:var(--ink-soft);line-height:1.7;margin:0}
+.acards .a-partner{font-size:11px;color:var(--ink-mute);border:1px dashed var(--line);border-radius:4px;padding:0 6px;justify-self:start}
 </style>
 </head>
 <body>
@@ -146,21 +166,69 @@ ul.plain li{margin-bottom:6px}
   <p class="eyebrow"><a class="back" href="../">CASE STUDY</a> ／ つばめリード</p>
   <h1>人手をかけずに、フォーム営業を。<br>つばめリードの導入事例</h1>
   <div class="lead">
-    <p>つばめリードは、企業のお問い合わせフォームへ営業の連絡を自動で送るサービスです。</p>
-    <p>実際に導入を決めた・運用している会社と、その使い方をまとめています。反応の数字はまだ集計中のものが多いため、使い方を中心に載せています。</p>
+    <p>つばめリードは、企業の問い合わせフォームへの営業を自動化するサービスです。業種・地域・規模などの条件で送信先のリストを作り、原稿を送ります。文面のABテストや送信の記録を見ながら、送り方を改善できます。</p>
+    <p>このページでは、営業に人を割けない会社や、手作業のフォーム営業に限界を感じていた会社の事例を紹介します。条件の決め方や、人が引き受ける範囲をどう分けたかを中心にお伝えします。</p>
+    <p>多くは配信を始める前後の段階です。反応が出始めた事例でも、文面や送り方を見直しながら進めている途中です。</p>
   </div>
 </header>
 
 <ul class="summary">
-  <li><a href="#case01"><span class="num">14社</span><span class="lbl"><b>CASE 01｜導入先一覧</b>業種・規模・使い方</span></a></li>
-  <li><a href="#case02"><span class="num">導入決定</span><span class="lbl"><b>CASE 02｜特注家具の製作</b>営業人員を割かずに建設・住宅業者へ月5,000通</span></a></li>
-  <li><a href="#case03"><span class="num">設定中</span><span class="lbl"><b>CASE 03｜社内規程・就業規則関連のクラ</b>手作業のフォーム営業を自動化しABテストで改善</span></a></li>
-  <li><a href="#case04"><span class="num">設定中</span><span class="lbl"><b>CASE 04｜広告・プロモーション制作</b>条件を指定するだけで大手企業向けの送信リストを作成</span></a></li>
+  <li><a href="#case01"><span class="num">導入決定</span><span class="lbl"><b>CASE 01｜特注家具の製作</b>営業に人を割かず、建設・住宅業者へ月5,000通のフォーム営業</span></a></li>
+  <li><a href="#case02"><span class="num">運用中</span><span class="lbl"><b>CASE 02｜社内規程・就業規則関連のクラ</b>手作業のフォーム営業を自動化し、文面を変えながら反応を探る</span></a></li>
+  <li><a href="#case03"><span class="num">設定中</span><span class="lbl"><b>CASE 03｜広告・プロモーション制作</b>条件を指定するだけで、大手企業向けの送信リストができる</span></a></li>
+  <li><a href="#case04"><span class="num">14社</span><span class="lbl"><b>CASE 04｜導入先一覧</b>業種・規模・使い方</span></a></li>
 </ul>
 
 <section id="case01">
-  <span class="case-no">CASE 01<span>導入先一覧</span></span>
-  <h2>実際に導入・設定を進めている14社</h2>
+  <span class="case-no">CASE 01<span>特注家具の製作｜東京都</span></span>
+  <h2>営業に人を割かず、建設・住宅業者へ月5,000通のフォーム営業</h2>
+  <p class="byline-s">担当：<b>降旗</b> ｜ 2026年6月〜</p>
+  <p>商業施設やオフィス、注文住宅の収納などの特注家具を、協力会社約4社と連携して製作する会社です。案件は、元請けからの紹介やWebからの問い合わせに頼っていました。</p>
+  <p>案件を安定させ、大型の案件も取りたい一方で、営業に人やリソースを割けませんでした。代表自身の稼働をかけずに営業を進められる点を評価し、2026年6月の打ち合わせで導入を決めました。</p>
+  <p>対象は、1都3県の建設業・ハウスメーカー・不動産・内装業者など約4〜5万件です。月5,000通の問い合わせフォーム営業を行います。原稿と送信先リストはライトアップ側で作り、反応があった企業だけを代表に引き継ぎます。</p>
+  <p>代表は、反応があった企業との商談とクロージングに集中します。配信は翌月から始め、運用開始後は反応の状況を見ながら原稿や対象を改善していく予定です。成果はこれからです。</p>
+  <h3>設定の中身</h3>
+  <div class="setting"><dl><dt>送信先</dt><dd>1都3県の建設業・ハウスメーカー・不動産・内装業者など約4〜5万件</dd><dt>送信</dt><dd>月5,000通の問い合わせフォーム営業</dd><dt>人の役割</dt><dd>反応があった企業のみ代表が対応し、クロージングに集中</dd></dl></div>
+  <h3>お客様の声</h3>
+  <p class="quote">「自分の稼働をかけずに営業を進められる」</p>
+  <p class="status"><span class="stage won">導入決定</span>翌月からの配信開始に向けて準備中です。</p>
+</section>
+
+<section id="case02">
+  <span class="case-no">CASE 02<span>社内規程・就業規則関連のクラウドサービス提供</span></span>
+  <h2>手作業のフォーム営業を自動化し、文面を変えながら反応を探る</h2>
+  <p class="byline-s">担当：<b>村田・小松</b> ｜ 2026年7月〜</p>
+  <p>社内規程や就業規則の整備を支えるクラウドサービスを提供する会社です。これまで問い合わせフォーム営業を手作業で行っており、負担が非常に大きいものでした。将来、送信先がなくならないかも気にしていました。</p>
+  <p>2026年7月の打ち合わせで、文面のABテストや送信の記録といった分析の機能を見て導入を決めました。8月のキックオフでは、原稿の文字数、返信先の書き方、自社リストの取り込み、送信を分けて行う手順を確認しました。</p>
+  <p>送信先は業種・地域・規模で絞り込み、自社のリストも取り込みます。未送信の企業だけを選べる絞り込みと、NGリストで重複送信を防ぎます。週1回の定例で結果を見ながら改善します。</p>
+  <h3>設定の中身</h3>
+  <div class="setting"><dl><dt>送信先</dt><dd>業種・地域・規模で絞ったリストと自社のリスト</dd><dt>改善</dt><dd>文面のABテストと送信の録画ログで効果を確認</dd><dt>重複防止</dt><dd>未送信企業の絞り込みとNGリスト</dd></dl></div>
+  <h3>お客様の声</h3>
+  <p class="quote">「手動でフォーム営業していたが、めちゃくちゃ大変だった」</p>
+  <p class="quote">「（ABテスト・分析機能に）痒いところに手が届きすぎる」</p>
+  <p class="quote">「お任せAI送信はめちゃくちゃ楽」</p>
+  <p class="status"><span class="stage won">運用中</span>文面を見直しながら送信を続けています。</p>
+</section>
+
+<section id="case03">
+  <span class="case-no">CASE 03<span>広告・プロモーション制作</span></span>
+  <h2>条件を指定するだけで、大手企業向けの送信リストができる</h2>
+  <p class="byline-s">担当：<b>川畑</b> ｜ 2026年6月〜</p>
+  <p>Web・メディア・イベントのプロモーション案件を手がける会社です。これまではビジネスマッチングのサービスで案件を獲得しており、問い合わせフォーム営業は初めてでした。大手企業の宣伝・広報部門から、Webプロモーションの案件を取りたいと考えていました。</p>
+  <p>申し込みとアカウント登録は済んでいたものの、初期設定が終わっていない状態でした。2026年6月に、画面を一緒に操作しながらレクチャーを行い、原稿の作成から送信先リストの作成まで、実際の流れに沿って進めました。</p>
+  <p>原稿を作り、AIによるおまかせ送信でリストを作りました。業種や従業員1,000人以上などの条件で絞り込むと、条件に合う企業は約9万6千件ありました。まずテスト用に334社の送信リストを作りました。</p>
+  <p>どのような文面が反応を得やすいかも教えてほしいという要望があり、運用の中で確かめていく予定です。原稿は外部のAIツールで作る予定です。現在は設定を進めている段階で、成果はこれからです。</p>
+  <h3>設定の中身</h3>
+  <div class="setting"><dl><dt>原稿</dt><dd>自社で作成した原稿を登録</dd><dt>リスト</dt><dd>業種・従業員規模などの条件でAIがリストを生成</dd><dt>テスト</dt><dd>まず334社に絞って送信リストを作成</dd></dl></div>
+  <h3>お客様の声</h3>
+  <p class="quote">「すごい便利ですね」</p>
+  <p class="quote">「どんなものがリアクションが取りやすいのかも含めて教えて欲しい」</p>
+  <p class="status"><span class="stage">設定中</span>操作レクチャーを受け、テスト送信の準備を進めています。</p>
+</section>
+
+<section id="case04">
+  <span class="case-no">CASE 04<span>導入先一覧</span></span>
+  <h2>つばめリードを導入・運用している14社</h2>
   <p>営業担当が少ない会社が、新規開拓の入口として使うケースが中心です。</p>
 <div class="scroll">
   <table class="adopters">
@@ -184,41 +252,12 @@ ul.plain li{margin-bottom:6px}
   <p class="note">※ 2026年3月〜9月の商談・打ち合わせの記録から、申込以降に進んだ会社を載せています。「設定中」は初期設定を進めている段階です。</p>
 </section>
 
-<section id="case02">
-  <span class="case-no">CASE 02<span>特注家具の製作・協力会社約4社・東京都</span></span>
-  <h2>営業人員を割かずに建設・住宅業者へ月5,000通</h2>
-  <p>案件が元請けからの紹介やWebの問い合わせ頼みで、安定化と大型案件の獲得をしたいが、営業に人やリソースを割けなかった。</p>
-  <h3>使い方</h3>
-  <ul class="plain"><li>1都3県の建設業・ハウスメーカー・不動産・内装業者など約4〜5万件を対象に設定</li><li>月5,000通の問い合わせフォーム営業を実施</li><li>反応があった企業のみ代表に引き継ぎ、代表はクロージングに集中</li></ul>
-  <p><span class="stage won">導入決定</span>　契約し、翌月から配信を開始する段階。成果はこれから。</p>
-  <ul class="voices"><li>自分の稼働をかけずに営業を進められる点を評価<small>お客様の声</small></li></ul>
-</section>
-
-<section id="case03">
-  <span class="case-no">CASE 03<span>社内規程・就業規則関連のクラウドサービス提供</span></span>
-  <h2>手作業のフォーム営業を自動化しABテストで改善</h2>
-  <p>これまで手動でフォーム営業をしており負担が非常に大きかった。将来、送信先が枯渇しないかも気にしていた。</p>
-  <h3>使い方</h3>
-  <ul class="plain"><li>業種・地域・規模で絞ったリストに送信し、自社リストも取り込み</li><li>文面のABテストと送信の録画ログで効果を確認</li><li>未送信企業だけの絞り込みとNGリストで重複送信を防止</li></ul>
-  <p><span class="stage">設定中</span>　設定を終えて運用開始の段階。週次の定例で改善を進める。成果はこれから。</p>
-  <ul class="voices"><li>手動でフォーム営業していたが、めちゃくちゃ大変だった<small>お客様の声</small></li></ul>
-</section>
-
-<section id="case04">
-  <span class="case-no">CASE 04<span>広告・プロモーション制作</span></span>
-  <h2>条件を指定するだけで大手企業向けの送信リストを作成</h2>
-  <p>これまでビジネスマッチングで案件を獲得しており、問い合わせフォーム営業は未経験。大手企業の宣伝・広報部門からWebプロモーション案件を取りたかった。</p>
-  <h3>使い方</h3>
-  <ul class="plain"><li>原稿を作成し、AIによるおまかせ送信でリストを生成</li><li>業種や従業員1,000人以上などの条件で対象を絞り込み</li><li>まずテスト用に334社の送信リストを作成</li></ul>
-  <p><span class="stage">設定中</span>　操作レクチャーを受けて設定中。成果はこれから。</p>
-  <ul class="voices"><li>（条件に合うリストが約9万6千件出て）すごい便利ですね<small>お客様の声</small></li></ul>
-</section>
-
 <footer class="close">
   <p class="note">※ 会社名は記載していません。業種・規模・地域は特定できない範囲で記載しています。ここに載せた内容は個別の事例で、同じ成果を約束するものではありません。</p>
   <p><a href="../">← SaaS活用事例の一覧へ</a></p>
 </footer>
 
 </div>
+
 </body>
 </html>

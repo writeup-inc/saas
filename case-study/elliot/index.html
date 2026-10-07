@@ -125,18 +125,38 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
 
 .stage{display:inline-block;font-size:11.5px;line-height:1.6;padding:1px 9px;border-radius:999px;border:1px solid var(--line);white-space:nowrap;color:var(--ink-soft);background:var(--soft)}
 .stage.won{color:var(--accent);background:var(--accent-soft);border-color:transparent;font-weight:700}
-.voices{list-style:none;margin:10px 0 18px;padding:0;display:grid;gap:10px}
-.voices li{border-left:3px solid var(--ink);background:var(--soft);padding:10px 16px;font-size:15px}
-.voices small{display:block;color:var(--ink-mute);font-size:12px;margin-top:2px}
-.flow{list-style:none;margin:10px 0 18px;padding:0;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.flow li{border:1px solid var(--line);border-radius:var(--radius);padding:8px 14px;font-size:14px;background:var(--soft)}
-.flow li.arrow{border:0;background:none;padding:0;color:var(--ink-mute)}
-ul.plain{margin:6px 0 14px;padding-left:1.15em}
-ul.plain li{margin-bottom:6px}
-.flow li b{display:block;font-size:20px;font-variant-numeric:tabular-nums}
+.byline-s{font-size:13px;color:var(--ink-mute);margin:-10px 0 18px}
+.byline-s b{color:var(--ink-soft);font-weight:700}
+.status{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin:14px 0 0;font-size:14.5px;color:var(--ink-soft)}
 .adopters td:nth-child(3){white-space:nowrap}
 .adopters td:nth-child(2){min-width:6em}
 .adopters td:nth-child(4){min-width:14em}
+/* industry map */
+.imap{margin:0 0 56px}
+.imap-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:0 0 6px}
+.imap-head .big{font-size:44px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums}
+.imap-head .big small{font-size:16px;font-weight:700;margin:0 6px 0 2px}
+.imap-sub{font-size:13px;color:var(--ink-mute);margin:0 0 18px}
+.tiles{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.tiles li{border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;background:var(--soft);display:grid;gap:6px;min-width:0}
+.tiles .t-name{font-size:13.5px;font-weight:700;line-height:1.5}
+.tiles .t-num{font-size:24px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.tiles .t-num small{font-size:12px;font-weight:400;color:var(--ink-mute);margin-left:2px}
+.tiles .t-bar{height:4px;border-radius:2px;background:var(--line);overflow:hidden}
+.tiles .t-bar span{display:block;height:100%;background:var(--accent)}
+/* adopter cards */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px;padding:0;list-style:none}
+.chips button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--paper);color:var(--ink-soft);border-radius:999px;padding:4px 14px;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--on-ink);border-color:var(--ink)}
+.chips button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.acards{list-style:none;margin:0 0 12px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.acards li{border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;background:var(--paper);display:grid;gap:8px;align-content:start;min-width:0}
+.acards .a-top{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.acards .a-cat{font-size:11.5px;letter-spacing:.06em;color:var(--ink-mute)}
+.acards .a-ind{font-size:15px;font-weight:700;line-height:1.5}
+.acards .a-meta{font-size:12.5px;color:var(--ink-mute)}
+.acards .a-use{font-size:13.5px;color:var(--ink-soft);line-height:1.7;margin:0}
+.acards .a-partner{font-size:11px;color:var(--ink-mute);border:1px dashed var(--line);border-radius:4px;padding:0 6px;justify-self:start}
 </style>
 </head>
 <body>
@@ -146,20 +166,52 @@ ul.plain li{margin-bottom:6px}
   <p class="eyebrow"><a class="back" href="../">CASE STUDY</a> ／ Elliot</p>
   <h1>社内の情報から、毎朝ヒントを。<br>Elliotの導入事例</h1>
   <div class="lead">
-    <p>Elliotは、会議の記録など社内に散らばった情報をAIが読み込み、社員の役割ごとに気づきや提案を届けるサービスです。</p>
-    <p>導入を決めた会社と、その使い方をまとめています。</p>
+    <p>Elliotは、会議や商談の文字起こしログを蓄積し、AIが分析して役割ごとに示唆やアラートを届けるサービスです。散らばりがちな社内の情報を1か所に集め、報告を人に頼らなくても状況が見える状態を目指します。</p>
+    <p>このページで紹介する2件は、試験導入やモニターとして始めたばかりの事例です。ログの集め方や初期設定で何が論点になったかを中心にまとめています。成果はこれからです。</p>
   </div>
 </header>
 
 <ul class="summary">
-  <li><a href="#case01"><span class="num">3社</span><span class="lbl"><b>CASE 01｜導入先一覧</b>業種・規模・使い方</span></a></li>
-  <li><a href="#case02"><span class="num">導入決定</span><span class="lbl"><b>CASE 02｜食品関連の輸入業</b>散らばった社内情報をAIが分析し役割ごとに示唆</span></a></li>
-  <li><a href="#case03"><span class="num">設定中</span><span class="lbl"><b>CASE 03｜キャリアコンサルティング・中</b>面談品質の標準化にAIを生かすキャリア支援</span></a></li>
+  <li><a href="#case01"><span class="num">導入決定</span><span class="lbl"><b>CASE 01｜食品関連の輸入業（8〜10名</b>散らばった社内情報をAIが分析し、役割ごとに示唆を届ける</span></a></li>
+  <li><a href="#case02"><span class="num">設定中</span><span class="lbl"><b>CASE 02｜キャリアコンサルティング・中</b>面談品質の標準化に向け、会議ログを1か所に集めるところから始める</span></a></li>
+  <li><a href="#case03"><span class="num">3社</span><span class="lbl"><b>CASE 03｜導入先一覧</b>業種・規模・使い方</span></a></li>
 </ul>
 
 <section id="case01">
-  <span class="case-no">CASE 01<span>導入先一覧</span></span>
-  <h2>実際に導入・設定を進めている3社</h2>
+  <span class="case-no">CASE 01<span>食品関連の輸入業（8〜10名程度）｜兵庫県</span></span>
+  <h2>散らばった社内情報をAIが分析し、役割ごとに示唆を届ける</h2>
+  <p class="byline-s">担当：<b>菅野</b> ｜ 2026年8月〜</p>
+  <p>食品関連の輸入を手がける、8〜10名ほどの会社です。社内の情報が分散し、報告は人頼みになっていました。営業や経営層が作業に追われ、考える時間を取れないことも課題でした。</p>
+  <p>きっかけは、2026年8月に商工会議所が主催したイベントでの講演です。紹介した商材の中で、Elliotが一番面白そうだと感じたそうで、その場で登録して試験導入を始めました。</p>
+  <p>使い方は、会議や営業の文字起こしログを蓄積し、AIが分析して役割ごとに示唆やアラートを自動で送るものです。まずは小さく始め、社内で使うデータの保存先と連携する予定です。社員ごとのAIを作る構想もあります。試験導入を始めた段階で、成果はこれからです。</p>
+  <h3>設定の中身</h3>
+  <div class="setting"><dl><dt>集めるもの</dt><dd>会議や営業の文字起こしログ</dd><dt>AIの役割</dt><dd>ログを分析し、役割ごとに示唆やアラートを自動送信</dd><dt>始め方</dt><dd>まず小さく始め、社内のデータ保存先と連携予定</dd></dl></div>
+  <h3>お客様の声</h3>
+  <p class="quote">「エリオットが一番面白そうだと思った」</p>
+  <p class="quote">「AI活用は好き嫌いではなく生き残りに必須」</p>
+  <p class="quote">「中小企業はオーダーメイドではなく標準ツールに業務を合わせるべき」</p>
+  <p class="status"><span class="stage won">導入決定</span>試験導入を開始しています。</p>
+</section>
+
+<section id="case02">
+  <span class="case-no">CASE 02<span>キャリアコンサルティング・中小企業の組織開発</span></span>
+  <h2>面談品質の標準化に向け、会議ログを1か所に集めるところから始める</h2>
+  <p class="byline-s">担当：<b>松井</b> ｜ 2026年9月〜</p>
+  <p>キャリアコンサルティングと中小企業の組織開発を手がける会社です。代表は、キャリアコンサルタントの面談の質をそろえたいと考えていました。ご自身がAIを使いこなし、中小企業の経営者の手本になりたいという思いもあります。</p>
+  <p>Elliotはモニターとして利用を始めました。ただ、Web会議の文字起こしの保存先が、Elliotが前提とする保存先と分かれていたため、ログの集め方を整える必要がありました。</p>
+  <p>2026年9月の打ち合わせでは、ログインを終え、文字起こしを自動で1か所に集めるツールを受け取ってから設定を進めることにしました。面談品質の標準化にElliotを生かす案も話し合いました。</p>
+  <p>初期設定の打ち合わせでは、導入の目的や全体像の説明が足りなかったという指摘もいただいています。面談中にリアルタイムで助言する仕組みを作れないかという要望も出ています。現在は初期設定を進めている段階で、成果はこれからです。</p>
+  <h3>設定の中身</h3>
+  <div class="setting"><dl><dt>集めるもの</dt><dd>会議・面談の文字起こしログ（保存先を1か所に集約）</dd><dt>活用の方向</dt><dd>キャリアコンサルタントの面談品質の標準化</dd><dt>現在</dt><dd>モニターとして初期設定を進行</dd></dl></div>
+  <h3>お客様の声</h3>
+  <p class="quote">「自分がAIを使いこなすことで中小企業経営者の模範・広告塔になりたい」</p>
+  <p class="quote">「初期設定の打合せで導入目的や全体像の説明が足りなかった」</p>
+  <p class="status"><span class="stage">設定中</span>モニターとして初期設定を進めています。</p>
+</section>
+
+<section id="case03">
+  <span class="case-no">CASE 03<span>導入先一覧</span></span>
+  <h2>Elliotを導入している3社</h2>
   <p>まずは小さく試して、効果を見ながら広げていく会社が中心です。</p>
 <div class="scroll">
   <table class="adopters">
@@ -172,31 +224,12 @@ ul.plain li{margin-bottom:6px}
   <p class="note">※ 2026年3月〜9月の商談・打ち合わせの記録から、申込以降に進んだ会社を載せています。「設定中」は初期設定を進めている段階です。</p>
 </section>
 
-<section id="case02">
-  <span class="case-no">CASE 02<span>食品関連の輸入業・8〜10名程度・兵庫県</span></span>
-  <h2>散らばった社内情報をAIが分析し役割ごとに示唆</h2>
-  <p>社内の情報が分散し、報告が人頼みになっていた。営業や経営層が作業に追われ、考える時間が取れなかった。</p>
-  <h3>使い方</h3>
-  <ul class="plain"><li>会議や営業の文字起こしログを蓄積</li><li>AIが分析し、役割ごとに示唆やアラートを自動送信</li><li>まず小さく始め、社内のデータ保存先と連携予定</li></ul>
-  <p><span class="stage won">導入決定</span>　講演をきっかけにその場で登録し、試験導入を開始。成果はこれから。</p>
-  <ul class="voices"><li>AI活用は好き嫌いではなく、生き残りに必須<small>お客様の声</small></li></ul>
-</section>
-
-<section id="case03">
-  <span class="case-no">CASE 03<span>キャリアコンサルティング・中小企業の組織開発</span></span>
-  <h2>面談品質の標準化にAIを生かすキャリア支援</h2>
-  <p>キャリアコンサルタントの面談品質を標準化したい。一方で会議の文字起こしの保存先が分かれており、ログの集め方を整える必要があった。</p>
-  <h3>使い方</h3>
-  <ul class="plain"><li>会議・面談のログを1か所に集約して連携</li><li>キャリアコンサルタントの面談品質の標準化への活用を検討</li><li>モニターとして初期設定を進行</li></ul>
-  <p><span class="stage">設定中</span>　初期設定中。成果はこれから。</p>
-  <ul class="voices"><li>自分がAIを使いこなすことで、中小企業経営者の模範・広告塔になりたい<small>お客様の声</small></li></ul>
-</section>
-
 <footer class="close">
   <p class="note">※ 会社名は記載していません。業種・規模・地域は特定できない範囲で記載しています。ここに載せた内容は個別の事例で、同じ成果を約束するものではありません。</p>
   <p><a href="../">← SaaS活用事例の一覧へ</a></p>
 </footer>
 
 </div>
+
 </body>
 </html>

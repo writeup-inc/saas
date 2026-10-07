@@ -137,6 +137,41 @@ ul.plain li{margin-bottom:6px}
 .adopters td:nth-child(3){white-space:nowrap}
 .adopters td:nth-child(2){min-width:6em}
 .adopters td:nth-child(4){min-width:14em}
+
+.stage{display:inline-block;font-size:11.5px;line-height:1.6;padding:1px 9px;border-radius:999px;border:1px solid var(--line);white-space:nowrap;color:var(--ink-soft);background:var(--soft)}
+.stage.won{color:var(--accent);background:var(--accent-soft);border-color:transparent;font-weight:700}
+.byline-s{font-size:13px;color:var(--ink-mute);margin:-10px 0 18px}
+.byline-s b{color:var(--ink-soft);font-weight:700}
+.status{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin:14px 0 0;font-size:14.5px;color:var(--ink-soft)}
+.adopters td:nth-child(3){white-space:nowrap}
+.adopters td:nth-child(2){min-width:6em}
+.adopters td:nth-child(4){min-width:14em}
+/* industry map */
+.imap{margin:0 0 56px}
+.imap-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:0 0 6px}
+.imap-head .big{font-size:44px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums}
+.imap-head .big small{font-size:16px;font-weight:700;margin:0 6px 0 2px}
+.imap-sub{font-size:13px;color:var(--ink-mute);margin:0 0 18px}
+.tiles{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.tiles li{border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;background:var(--soft);display:grid;gap:6px;min-width:0}
+.tiles .t-name{font-size:13.5px;font-weight:700;line-height:1.5}
+.tiles .t-num{font-size:24px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.tiles .t-num small{font-size:12px;font-weight:400;color:var(--ink-mute);margin-left:2px}
+.tiles .t-bar{height:4px;border-radius:2px;background:var(--line);overflow:hidden}
+.tiles .t-bar span{display:block;height:100%;background:var(--accent)}
+/* adopter cards */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px;padding:0;list-style:none}
+.chips button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--paper);color:var(--ink-soft);border-radius:999px;padding:4px 14px;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--on-ink);border-color:var(--ink)}
+.chips button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.acards{list-style:none;margin:0 0 12px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.acards li{border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;background:var(--paper);display:grid;gap:8px;align-content:start;min-width:0}
+.acards .a-top{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.acards .a-cat{font-size:11.5px;letter-spacing:.06em;color:var(--ink-mute)}
+.acards .a-ind{font-size:15px;font-weight:700;line-height:1.5}
+.acards .a-meta{font-size:12.5px;color:var(--ink-mute)}
+.acards .a-use{font-size:13.5px;color:var(--ink-soft);line-height:1.7;margin:0}
+.acards .a-partner{font-size:11px;color:var(--ink-mute);border:1px dashed var(--line);border-radius:4px;padding:0 6px;justify-self:start}
 </style>
 </head>
 <body>
@@ -155,10 +190,10 @@ ul.plain li{margin-bottom:6px}
   <li><a href="#case01"><span class="num">1週間</span><span class="lbl"><b>CASE 01｜立ち上がり</b>パートナー参加から初受注まで</span></a></li>
   <li><a href="#case02"><span class="num">約30社</span><span class="lbl"><b>CASE 02｜パートナー数</b>9月までに扱い始めた会社</span></a></li>
   <li><a href="#case03"><span class="num">4つの型</span><span class="lbl"><b>CASE 03｜売り方</b>パートナーの組み合わせ方</span></a></li>
-  <li><a href="#case04"><span class="num">5社</span><span class="lbl"><b>CASE 04｜販売パートナー一覧</b>業種・規模・使い方</span></a></li>
-  <li><a href="#case05"><span class="num">設定中</span><span class="lbl"><b>CASE 05｜PR・コンサルティング</b>初期設定は5分程度。自社サイトのAI掲載状況を診断</span></a></li>
-  <li><a href="#case06"><span class="num">導入決定</span><span class="lbl"><b>CASE 06｜地図検索対策・SNS運用など</b>地図検索対策にAI検索対策を組み込み付加価値に</span></a></li>
-  <li><a href="#case07"><span class="num">導入決定</span><span class="lbl"><b>CASE 07｜BPO・歯科医院向け集客支援</b>歯科医院向けの入口商材としてAI検索対策を提案</span></a></li>
+  <li><a href="#case04"><span class="num">5社</span><span class="lbl"><b>CASE 04｜導入先一覧</b>業種・規模・使い方</span></a></li>
+  <li><a href="#case05"><span class="num">設定中</span><span class="lbl"><b>CASE 05｜PR・コンサルティング（販売</b>代理店の初期設定は5分ほど。まず自社サイトのAI掲載状況を診断</span></a></li>
+  <li><a href="#case06"><span class="num">導入決定</span><span class="lbl"><b>CASE 06｜地図検索対策・SNS運用など</b>地図検索対策にAI検索対策を組み込み、既存サービスの価値を高める</span></a></li>
+  <li><a href="#case07"><span class="num">導入決定</span><span class="lbl"><b>CASE 07｜BPO・歯科医院向け集客支援</b>歯科医院への最初の提案に、AI検索の診断を使う集客支援会社</span></a></li>
 </ul>
 
 <!-- CASE 01 -->
@@ -199,8 +234,8 @@ ul.plain li{margin-bottom:6px}
 </section>
 
 <section id="case04">
-  <span class="case-no">CASE 04<span>販売パートナー一覧</span></span>
-  <h2>実際に導入・設定を進めている5社</h2>
+  <span class="case-no">CASE 04<span>導入先一覧</span></span>
+  <h2>AIOマスターを扱う販売パートナー 5社</h2>
   <p>AIOマスターは、地図検索対策やWeb制作などを手がける会社が、自社のお客様に提供する形で広がっています。</p>
 <div class="scroll">
   <table class="adopters">
@@ -216,33 +251,53 @@ ul.plain li{margin-bottom:6px}
 </section>
 
 <section id="case05">
-  <span class="case-no">CASE 05<span>PR・コンサルティング</span></span>
-  <h2>初期設定は5分程度。自社サイトのAI掲載状況を診断</h2>
-  <p>代理店として扱うにあたり、自動運用とはいえ初期設定やFAQ作成に人手がかかるのではと懸念していた。</p>
-  <h3>使い方</h3>
-  <ul class="plain"><li>AI検索での掲載状況を測る質問50問を作成</li><li>管理画面のスキャンで自社サイトの掲載状況を診断</li><li>改善指示書をもとにFAQや定義文を追加</li></ul>
-  <p><span class="stage">設定中</span>　設定作業は想定より負荷が低く、5分程度で完了した（本人談）。</p>
-  <ul class="voices"><li>実際にやってみると想定より負荷は低く、5分程度で完了した<small>お客様の声</small></li></ul>
+  <span class="case-no">CASE 05<span>PR・コンサルティング（販売パートナー）</span></span>
+  <h2>代理店の初期設定は5分ほど。まず自社サイトのAI掲載状況を診断</h2>
+  <p class="byline-s">担当：<b>松井</b> ｜ 2026年9月〜</p>
+  <p>PRやコンサルティングを手がける会社で、AIOマスターを代理店として扱う準備を進めています。2026年6月には、取引先に向けたSNS投稿の仕組みについても打ち合わせをしていました。</p>
+  <p>代理店として扱うにあたり、自動で運用できるとはいえ、初期設定やFAQ作成に人手がかかるのではと懸念していました。そこで、まず自社サイトで実際に設定と診断を試すことにしました。</p>
+  <p>AI検索での掲載状況を測るための質問を50問作り、管理画面のスキャンで自社サイトを診断しました。改善指示書も管理画面から作り、それをもとにFAQや定義文を自社サイトに追加していきます。</p>
+  <p>2026年9月の打ち合わせでは、実際にやってみると設定の負荷は想定より低く、5分ほどで終わったと話されていました（本人談）。今後は複数の代理店での共同販売も検討しています。</p>
+  <h3>設定の中身</h3>
+  <div class="setting"><dl><dt>準備</dt><dd>AI検索での掲載状況を測る質問50問</dd><dt>診断</dt><dd>管理画面のスキャンで自社サイトの掲載状況を確認</dd><dt>改善</dt><dd>改善指示書をもとにFAQや定義文を追加</dd></dl></div>
+  <h3>お客様の声</h3>
+  <p class="quote">「自動運用とはいえ初期設定やFAQ作成など人手が必要な作業がある」</p>
+  <p class="quote">「実際にやってみると想定より負荷は低く、5分程度で完了した」</p>
+  <p class="quote">「関係性の深い企業へは同席してもらえると信頼感が上がる」</p>
+  <p class="status"><span class="stage">設定中</span>自社サイトでの初期設定を終え、販売の準備を進めています。</p>
 </section>
 
 <section id="case06">
-  <span class="case-no">CASE 06<span>地図検索対策・SNS運用などのWeb集客支援</span></span>
-  <h2>地図検索対策にAI検索対策を組み込み付加価値に</h2>
-  <p>既存の地図検索対策サービスだけでは差別化が難しく、AI検索対策を組み込んで新規獲得につなげたかった。</p>
-  <h3>使い方</h3>
-  <ul class="plain"><li>代理店の管理画面で顧客ごとの申込ページを発行</li><li>診断デモで顧客サイトのAI掲載状況を提示</li><li>顧客用ダッシュボードとレポートを自社で運用</li></ul>
-  <p><span class="stage won">導入決定</span>　販売開始に向けた準備段階。成果はこれから。</p>
-  <ul class="voices"><li>実際に計測してログが残るので、エビデンスとして出せるのはいい<small>お客様の声</small></li></ul>
+  <span class="case-no">CASE 06<span>地図検索対策・SNS運用などのWeb集客支援（販売パートナー）</span></span>
+  <h2>地図検索対策にAI検索対策を組み込み、既存サービスの価値を高める</h2>
+  <p class="byline-s">担当：<b>菅野</b> ｜ 2026年8月〜</p>
+  <p>地図検索対策やInstagram運用などのWeb集客支援を行う会社です。営業は役員と業務委託が中心の少人数体制で、既存の顧客にはクリニックなどがあります。今回、AIOマスターを代理店として扱うことになりました。</p>
+  <p>既存の地図検索対策だけでは差別化が難しく、AI検索対策を組み込んで新しい顧客の獲得につなげたいと考えていました。実際に計測してログが残り、顧客にエビデンスとして示せる点を評価いただきました。</p>
+  <p>代理店の管理画面から、顧客ごとの申し込みページを発行します。商談では診断デモで顧客サイトのAI掲載状況を見せ、導入後は顧客用のダッシュボードとレポートを自社で運用する形です。</p>
+  <p>2026年8月の打ち合わせで、代理店としての取り扱いに合意しました。翌週ごろから販売を始めたいという意向で、現在は販売開始に向けた準備段階です。成果はこれからです。</p>
+  <h3>設定の中身</h3>
+  <div class="setting"><dl><dt>提案</dt><dd>診断デモで顧客サイトのAI掲載状況を提示</dd><dt>申し込み</dt><dd>代理店の管理画面で顧客ごとの申込ページを発行</dd><dt>運用</dt><dd>顧客用ダッシュボードとレポートを代理店が運用</dd></dl></div>
+  <h3>お客様の声</h3>
+  <p class="quote">「APIで実際に計測しログが残るのでエビデンスとして出せるのはいい」</p>
+  <p class="quote">「既存のMEOにAIO対策を組み込めば単なるMEO以上の価値を出せる」</p>
+  <p class="status"><span class="stage won">導入決定</span>販売開始に向けて準備中です。</p>
 </section>
 
 <section id="case07">
-  <span class="case-no">CASE 07<span>BPO・歯科医院向け集客支援・東京都</span></span>
-  <h2>歯科医院向けの入口商材としてAI検索対策を提案</h2>
-  <p>歯科医院向け集客支援の受注は月1〜2件で、最初の接点になる商材やアップセル商材が欲しかった。</p>
-  <h3>使い方</h3>
-  <ul class="plain"><li>診断スキャンでAI検索での露出状況を提示</li><li>歯科医院向けの最初の提案商材として活用</li><li>既存顧客や二次代理店へも展開</li></ul>
-  <p><span class="stage won">導入決定</span>　代理店としての取り扱いに合意し、戦略会議を予定。成果はこれから。</p>
-  <ul class="voices"><li>率直にうちのクライアントにも刺さりやすい。歯医者さんにはかなり刺さるのでは<small>お客様の声</small></li></ul>
+  <span class="case-no">CASE 07<span>BPO・歯科医院向け集客支援｜東京都</span></span>
+  <h2>歯科医院への最初の提案に、AI検索の診断を使う集客支援会社</h2>
+  <p class="byline-s">担当：<b>菅野</b> ｜ 2026年8月〜</p>
+  <p>約4,000名のフリーランスを生かしたBPOと、歯科医院向けの集客支援を手がける会社です。集客支援の受注は月1〜2件で、最初の接点になる商材や、追加で提案できる商材を探していました。</p>
+  <p>打ち合わせで診断スキャンを見て、自社のクライアントにも響きやすく、特に歯科医院には響くのではという反応でした。一方で、AI検索は変化が速く、1年後に状況が大きく変わっている可能性への不安も話されていました。</p>
+  <p>使い方は、診断スキャンで歯科医院のAI検索での露出状況を示し、最初の提案商材として活用するものです。既存の顧客には全国展開する企業も含まれており、二次代理店への展開も視野に入れています。</p>
+  <p>2026年8月に代理店としての取り扱いに合意し、申請フォームから申請を進めました。今後は戦略会議で販売の進め方を詰める予定です。顧客への提案はこれからで、成果もこれからです。</p>
+  <h3>設定の中身</h3>
+  <div class="setting"><dl><dt>提案</dt><dd>診断スキャンで歯科医院のAI検索での露出状況を提示</dd><dt>位置づけ</dt><dd>歯科医院向けの最初の提案商材</dd><dt>展開</dt><dd>既存顧客や二次代理店へも案内</dd></dl></div>
+  <h3>お客様の声</h3>
+  <p class="quote">「率直にうちのクライアントにも刺さりやすい。歯医者さんにはかなり刺さるのでは」</p>
+  <p class="quote">「ドアノック商材としても使えそう」</p>
+  <p class="quote">「AIOは日進月歩なので1年後に全く違う世界になっている可能性が怖い」</p>
+  <p class="status"><span class="stage won">導入決定</span>代理店としての取り扱いに合意し、戦略会議を予定しています。</p>
 </section>
 
 <footer class="close">

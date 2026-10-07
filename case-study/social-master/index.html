@@ -132,6 +132,41 @@ ul.plain li{margin-bottom:6px}
 .adopters td:nth-child(3){white-space:nowrap}
 .adopters td:nth-child(2){min-width:6em}
 .adopters td:nth-child(4){min-width:14em}
+
+.stage{display:inline-block;font-size:11.5px;line-height:1.6;padding:1px 9px;border-radius:999px;border:1px solid var(--line);white-space:nowrap;color:var(--ink-soft);background:var(--soft)}
+.stage.won{color:var(--accent);background:var(--accent-soft);border-color:transparent;font-weight:700}
+.byline-s{font-size:13px;color:var(--ink-mute);margin:-10px 0 18px}
+.byline-s b{color:var(--ink-soft);font-weight:700}
+.status{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin:14px 0 0;font-size:14.5px;color:var(--ink-soft)}
+.adopters td:nth-child(3){white-space:nowrap}
+.adopters td:nth-child(2){min-width:6em}
+.adopters td:nth-child(4){min-width:14em}
+/* industry map */
+.imap{margin:0 0 56px}
+.imap-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:0 0 6px}
+.imap-head .big{font-size:44px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums}
+.imap-head .big small{font-size:16px;font-weight:700;margin:0 6px 0 2px}
+.imap-sub{font-size:13px;color:var(--ink-mute);margin:0 0 18px}
+.tiles{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.tiles li{border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;background:var(--soft);display:grid;gap:6px;min-width:0}
+.tiles .t-name{font-size:13.5px;font-weight:700;line-height:1.5}
+.tiles .t-num{font-size:24px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.tiles .t-num small{font-size:12px;font-weight:400;color:var(--ink-mute);margin-left:2px}
+.tiles .t-bar{height:4px;border-radius:2px;background:var(--line);overflow:hidden}
+.tiles .t-bar span{display:block;height:100%;background:var(--accent)}
+/* adopter cards */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px;padding:0;list-style:none}
+.chips button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--paper);color:var(--ink-soft);border-radius:999px;padding:4px 14px;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--on-ink);border-color:var(--ink)}
+.chips button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.acards{list-style:none;margin:0 0 12px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.acards li{border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;background:var(--paper);display:grid;gap:8px;align-content:start;min-width:0}
+.acards .a-top{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.acards .a-cat{font-size:11.5px;letter-spacing:.06em;color:var(--ink-mute)}
+.acards .a-ind{font-size:15px;font-weight:700;line-height:1.5}
+.acards .a-meta{font-size:12.5px;color:var(--ink-mute)}
+.acards .a-use{font-size:13.5px;color:var(--ink-soft);line-height:1.7;margin:0}
+.acards .a-partner{font-size:11px;color:var(--ink-mute);border:1px dashed var(--line);border-radius:4px;padding:0 6px;justify-self:start}
 </style>
 </head>
 <body>
@@ -153,10 +188,10 @@ ul.plain li{margin-bottom:6px}
   <li><a href="#case03"><span class="num">＋58<small>人</small></span><span class="lbl"><b>CASE 03｜X AI情報発信</b>テーマ違いのアカウントも同時に伸長</span></a></li>
   <li><a href="#case04"><span class="num">50<small>いいね</small></span><span class="lbl"><b>CASE 04｜Threads</b>フォロワー1人の投稿で</span></a></li>
   <li><a href="#case05"><span class="num">引用RT</span><span class="lbl"><b>CASE 05｜X 一人社長向け</b>フォロワー4万人の著名人の目に留まる</span></a></li>
-  <li><a href="#case06"><span class="num">9社</span><span class="lbl"><b>CASE 06｜お客様の導入先</b>業種・規模・使い方</span></a></li>
-  <li><a href="#case07"><span class="num">設定中</span><span class="lbl"><b>CASE 07｜注文住宅・リフォームの工務店</b>1人運用の工務店がSNSからLINEへ見込み客をためる</span></a></li>
-  <li><a href="#case08"><span class="num">設定中</span><span class="lbl"><b>CASE 08｜飲食店（ラーメン店・唐揚げ店</b>店長任せだった飲食店のSNS投稿をAIで自動化</span></a></li>
-  <li><a href="#case09"><span class="num">導入決定</span><span class="lbl"><b>CASE 09｜トータルビューティーサロン</b>毎日投稿が難しいサロンがSNSとLINEをAIで運用</span></a></li>
+  <li><a href="#case06"><span class="num">9社</span><span class="lbl"><b>CASE 06｜導入先一覧</b>業種・規模・使い方</span></a></li>
+  <li><a href="#case07"><span class="num">設定中</span><span class="lbl"><b>CASE 07｜注文住宅・リフォームの工務店</b>1人運用の工務店が、SNSから公式LINEへ見込み客をためる</span></a></li>
+  <li><a href="#case08"><span class="num">設定中</span><span class="lbl"><b>CASE 08｜飲食店（ラーメン店・唐揚げ店</b>店長任せだった3店舗のSNS投稿を、AIの自動投稿に切り替える</span></a></li>
+  <li><a href="#case09"><span class="num">導入決定</span><span class="lbl"><b>CASE 09｜トータルビューティーサロン（</b>毎日の投稿が難しいサロンが、SNSとLINEの運用をAIに任せる</span></a></li>
 </ul>
 
 <!-- CASE 01 -->
@@ -313,8 +348,8 @@ ul.plain li{margin-bottom:6px}
 </section>
 
 <section id="case06">
-  <span class="case-no">CASE 06<span>お客様の導入先</span></span>
-  <h2>実際に導入・設定を進めている9社</h2>
+  <span class="case-no">CASE 06<span>導入先一覧</span></span>
+  <h2>お客様の導入先 9社</h2>
   <p>ここまでは社内アカウントでの検証でした。ここからは、実際にお客様が導入を決めた・設定を進めている事例です。</p>
 <div class="scroll">
   <table class="adopters">
@@ -334,33 +369,54 @@ ul.plain li{margin-bottom:6px}
 </section>
 
 <section id="case07">
-  <span class="case-no">CASE 07<span>注文住宅・リフォームの工務店・代表1名で運用・愛知県</span></span>
-  <h2>1人運用の工務店がSNSからLINEへ見込み客をためる</h2>
-  <p>競合の多い地域でオンライン集客が必要だが、以前のSNS運用代行では成果が出ず、見込み客のリストもない。代表1人で運用できるかが不安だった。</p>
-  <h3>使い方</h3>
-  <ul class="plain"><li>Instagram・X・Threadsへの投稿を予約で自動化</li><li>DMの自動返信は施工エリアを限定したルールで対応</li><li>各SNSから公式LINEへ誘導し、流入元タグで見込み客リストを構築</li></ul>
-  <p><span class="stage">設定中</span>　初期設定中（X連携済み）。当初は下書きを確認してから投稿する承認制で始める方針。成果はこれから。</p>
-  <ul class="voices"><li>お客さんをがっかりさせたくない。イメージが悪くならないようにルールはちゃんと決めたい<small>お客様の声</small></li></ul>
+  <span class="case-no">CASE 07<span>注文住宅・リフォームの工務店｜愛知県</span></span>
+  <h2>1人運用の工務店が、SNSから公式LINEへ見込み客をためる</h2>
+  <p class="byline-s">担当：<b>土屋</b> ｜ 2026年7月〜</p>
+  <p>愛知県で注文住宅とリフォームを手がける工務店です。競合の多い地域でオンライン集客が必要でしたが、以前のSNS運用代行では成果が出ず、見込み客のリストもありませんでした。運用は代表1人で、続けられるかが不安でした。</p>
+  <p>打ち合わせでは、SNSを入口にして、公式LINEで見込み客をためる流れを話し合いました。ガレージや趣味部屋といった入口から、注文住宅の相談へつなぐ考え方です。代表は2026年7月の打ち合わせの場で導入を決めました。</p>
+  <p>Instagram・X・Threadsへの投稿は予約で自動化します。DMの自動返信は、施工エリアを限ったルールで対応します。各SNSから公式LINEへ誘導し、どのSNSから来たかをタグで分けて見込み客のリストを作ります。6か月間、月2回の打ち合わせで一緒に進めます。</p>
+  <p>2026年8月の初期設定では、Xの連携を終え、Instagramは連携作業中でした。最初は下書きを確認してから投稿する承認制で、週1回ほど、施工事例の写真をもとに投稿する方針です。成果はこれからです。</p>
+  <h3>設定の中身</h3>
+  <div class="setting"><dl><dt>投稿先</dt><dd>Instagram・X・Threads（予約投稿）</dd><dt>AIの役割</dt><dd>設定したキャラクターに沿って投稿文を作成し、DMには施工エリアのルールで返信</dd><dt>人の役割</dt><dd>当初は下書きを確認してから投稿（承認制）</dd><dt>その先</dt><dd>SNSから公式LINEへ誘導し、流入元のタグで見込み客を管理</dd></dl></div>
+  <h3>お客様の声</h3>
+  <p class="quote">「1人でやれるかな」</p>
+  <p class="quote">「お客さんをがっかりさせたくない、イメージが悪くならないようにルールはちゃんと決めたい」</p>
+  <p class="quote">「じゃあやってみますか」</p>
+  <p class="status"><span class="stage">設定中</span>Xの連携を終え、初期設定を進めています。</p>
 </section>
 
 <section id="case08">
-  <span class="case-no">CASE 08<span>飲食店（ラーメン店・唐揚げ店・居酒屋）・3店舗・大分県</span></span>
-  <h2>店長任せだった飲食店のSNS投稿をAIで自動化</h2>
-  <p>店長が仕込みの合間に毎日似たような簡単な投稿をしており、内容が弱く効果も分からなかった。</p>
-  <h3>使い方</h3>
-  <ul class="plain"><li>3店舗のアカウントを連携し、提案した投稿内容・時間帯でAIが自動投稿</li><li>居酒屋は週末や宴会シーズンの予約訴求、客足の弱い曜日の配信を強化</li><li>月1回の店長面談で強みを言語化し、データを見て改善</li></ul>
-  <p><span class="stage">設定中</span>　アカウント連携と投稿設計を進めている段階。成果はこれから。</p>
-  <ul class="voices"><li>結局データが全て。どの時間帯のどういう投稿が有効かを毎月見て、戦略的に投稿につなげたい<small>お客様の声</small></li></ul>
+  <span class="case-no">CASE 08<span>飲食店（ラーメン店・唐揚げ店・居酒屋）｜大分県</span></span>
+  <h2>店長任せだった3店舗のSNS投稿を、AIの自動投稿に切り替える</h2>
+  <p class="byline-s">担当：<b>村田</b> ｜ 2026年8月〜</p>
+  <p>大分県でラーメン店、唐揚げ・惣菜の店、居酒屋を営む会社です。SNSは店長が仕込みの合間に毎日投稿していましたが、営業の告知のような似た内容が多く、効果も分かりませんでした。PCやSNSに慣れていないスタッフも多くいます。</p>
+  <p>2026年8月の商談で、提案された投稿内容と時間帯をもとにAIで自動投稿する形に申し込みました。月1回の店長面談で店舗ごとの強みを言葉にし、データを見ながら投稿を直していく進め方です。</p>
+  <p>9月には店舗ごとにヒアリングを行いました。惣菜の店は昼前に弁当、夕方に惣菜を伝え、分かりにくい場所の案内も載せます。ラーメン店は味の特徴と夜のアルコールを打ち出します。居酒屋は週末や宴会シーズンの予約と、客足の弱い木曜日の発信を強めます。</p>
+  <p>現在は3店舗のアカウント連携と投稿設計を進めていて、まずラーメン店のアカウントから設定を始めます。1か月ほどデータをためたあと、毎月の振り返りで改善していく予定です。成果はこれからです。</p>
+  <h3>設定の中身</h3>
+  <div class="setting"><dl><dt>投稿先</dt><dd>3店舗のInstagram・X・Threads</dd><dt>AIの役割</dt><dd>店舗ごとの強み・客層・時間帯に合わせて投稿を作り、自動投稿</dd><dt>人の役割</dt><dd>月1回の店長面談で強みを言葉にし、写真を撮りためる</dd></dl></div>
+  <h3>お客様の声</h3>
+  <p class="quote">「結局データが全て。どの時間帯のどういう投稿が有効かを毎月見て戦略的に投稿につなげたい」</p>
+  <p class="quote">「毎日投稿しているが、本当に効果的なのかどうかが分からない」</p>
+  <p class="quote">「種類が豊富なので常連でもまだ食べたことのない商品がある。投稿で少しずつPRできたら」</p>
+  <p class="status"><span class="stage">設定中</span>アカウント連携と投稿設計を進めています。</p>
 </section>
 
 <section id="case09">
-  <span class="case-no">CASE 09<span>トータルビューティーサロン・スタッフ6名</span></span>
-  <h2>毎日投稿が難しいサロンがSNSとLINEをAIで運用</h2>
-  <p>InstagramやLINEの運用が担当者ごとの手作業で続かず、メニュー別の発信ルールもなかった。新規の入口を広げ、既存客には別メニューも案内したい。</p>
-  <h3>使い方</h3>
-  <ul class="plain"><li>メニュー別の専門アカウントで3つのSNSへAI自動投稿</li><li>Instagramの自動DMでフォロワーを獲得</li><li>公式LINEのAIが一般的な質問に回答し、予約変更はスタッフが対応</li></ul>
-  <p><span class="stage won">導入決定</span>　導入を決定し、本格稼働に向けて準備中。成果はこれから。</p>
-  <ul class="voices"><li>スタッフによる毎日投稿は現実的に難しい<small>お客様の声</small></li></ul>
+  <span class="case-no">CASE 09<span>トータルビューティーサロン（スタッフ6名）</span></span>
+  <h2>毎日の投稿が難しいサロンが、SNSとLINEの運用をAIに任せる</h2>
+  <p class="byline-s">担当：<b>土屋</b> ｜ 2026年7月〜</p>
+  <p>ヘア、ヘッドスパ、アイブロウ、ハンドセラピーを提供する、スタッフ6名のサロンです。InstagramやLINEの運用は担当者ごとの手作業で、続けられていませんでした。メニュー別の発信ルールもありませんでした。</p>
+  <p>新しいお客様の入口を広げつつ、既存のお客様には別のメニューも案内したいと考えていました。公式LINEの友だち1,000人超のうち、約3分の2は長年の固定客です。2026年7月の打ち合わせで導入を決めました。</p>
+  <p>SNSはメニュー別の専門アカウントを作り、Instagram・Threads・XへAIで自動投稿します。写真中心の投稿から、専門技術や資格の情報を伝える発信へ切り替えます。Instagramでは自動DMでフォロワーを増やします。</p>
+  <p>公式LINEにはAIチャットを組み込み、一般的な質問はAIが答え、予約の変更などはスタッフが対応します。利用履歴に合わせたメニューの提案や、口コミの促進も予定しています。2026年9月からの本格稼働に向けて準備中で、成果はこれからです。</p>
+  <h3>設定の中身</h3>
+  <div class="setting"><dl><dt>投稿先</dt><dd>メニュー別の専門アカウント（Instagram・Threads・X）</dd><dt>AIの役割</dt><dd>投稿の作成と自動投稿、Instagramの自動DM、LINEでの一般的な質問への回答</dd><dt>人の役割</dt><dd>予約の変更などはスタッフが対応</dd></dl></div>
+  <h3>お客様の声</h3>
+  <p class="quote">「スタッフによる毎日投稿は現実的に難しい」</p>
+  <p class="quote">「写真中心の投稿から脱却し、専門技術や認定資格の情報を発信して付加価値を伝えたい」</p>
+  <p class="quote">「LINE友だち1000人のうち約3分の2は長年の固定客で、既存顧客へのアプローチを重視したい」</p>
+  <p class="status"><span class="stage won">導入決定</span>本格稼働に向けて準備中です。</p>
 </section>
 
 <footer class="close">

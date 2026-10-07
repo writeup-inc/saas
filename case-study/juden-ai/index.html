@@ -125,18 +125,38 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
 
 .stage{display:inline-block;font-size:11.5px;line-height:1.6;padding:1px 9px;border-radius:999px;border:1px solid var(--line);white-space:nowrap;color:var(--ink-soft);background:var(--soft)}
 .stage.won{color:var(--accent);background:var(--accent-soft);border-color:transparent;font-weight:700}
-.voices{list-style:none;margin:10px 0 18px;padding:0;display:grid;gap:10px}
-.voices li{border-left:3px solid var(--ink);background:var(--soft);padding:10px 16px;font-size:15px}
-.voices small{display:block;color:var(--ink-mute);font-size:12px;margin-top:2px}
-.flow{list-style:none;margin:10px 0 18px;padding:0;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.flow li{border:1px solid var(--line);border-radius:var(--radius);padding:8px 14px;font-size:14px;background:var(--soft)}
-.flow li.arrow{border:0;background:none;padding:0;color:var(--ink-mute)}
-ul.plain{margin:6px 0 14px;padding-left:1.15em}
-ul.plain li{margin-bottom:6px}
-.flow li b{display:block;font-size:20px;font-variant-numeric:tabular-nums}
+.byline-s{font-size:13px;color:var(--ink-mute);margin:-10px 0 18px}
+.byline-s b{color:var(--ink-soft);font-weight:700}
+.status{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin:14px 0 0;font-size:14.5px;color:var(--ink-soft)}
 .adopters td:nth-child(3){white-space:nowrap}
 .adopters td:nth-child(2){min-width:6em}
 .adopters td:nth-child(4){min-width:14em}
+/* industry map */
+.imap{margin:0 0 56px}
+.imap-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:0 0 6px}
+.imap-head .big{font-size:44px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums}
+.imap-head .big small{font-size:16px;font-weight:700;margin:0 6px 0 2px}
+.imap-sub{font-size:13px;color:var(--ink-mute);margin:0 0 18px}
+.tiles{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.tiles li{border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;background:var(--soft);display:grid;gap:6px;min-width:0}
+.tiles .t-name{font-size:13.5px;font-weight:700;line-height:1.5}
+.tiles .t-num{font-size:24px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.tiles .t-num small{font-size:12px;font-weight:400;color:var(--ink-mute);margin-left:2px}
+.tiles .t-bar{height:4px;border-radius:2px;background:var(--line);overflow:hidden}
+.tiles .t-bar span{display:block;height:100%;background:var(--accent)}
+/* adopter cards */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px;padding:0;list-style:none}
+.chips button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--paper);color:var(--ink-soft);border-radius:999px;padding:4px 14px;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--on-ink);border-color:var(--ink)}
+.chips button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.acards{list-style:none;margin:0 0 12px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.acards li{border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;background:var(--paper);display:grid;gap:8px;align-content:start;min-width:0}
+.acards .a-top{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.acards .a-cat{font-size:11.5px;letter-spacing:.06em;color:var(--ink-mute)}
+.acards .a-ind{font-size:15px;font-weight:700;line-height:1.5}
+.acards .a-meta{font-size:12.5px;color:var(--ink-mute)}
+.acards .a-use{font-size:13.5px;color:var(--ink-soft);line-height:1.7;margin:0}
+.acards .a-partner{font-size:11px;color:var(--ink-mute);border:1px dashed var(--line);border-radius:4px;padding:0 6px;justify-self:start}
 </style>
 </head>
 <body>
@@ -146,21 +166,73 @@ ul.plain li{margin-bottom:6px}
   <p class="eyebrow"><a class="back" href="../">CASE STUDY</a> ／ 受電AI</p>
   <h1>電話の一次受付を、AIに。<br>受電AIの導入事例</h1>
   <div class="lead">
-    <p>受電AIは、かかってきた電話にAIが応対し、用件の聞き取りや予約の受付、営業電話の振り分けなどを行うサービスです。</p>
-    <p>実際に導入を決めた・設定を進めている会社と、その使い方をまとめています。多くはまだ使い始めたばかりで、成果の数字はこれからです。</p>
+    <p>受電AIは、かかってきた電話にAIが一次対応するサービスです。用件や連絡先を聞き取り、内容に応じて担当者への転送、SMSでの通知、予定の登録などを行います。営業電話の振り分けにも使えます。</p>
+    <p>このページでは、少人数の会社の電話受付に加え、業界に合わせて仕組みを作り込んだ事例や、販売パートナーが店舗に届ける事例を紹介します。記事では、AIに聞き取らせる項目と、人に戻す用件の分け方を中心にお伝えします。</p>
+    <p>いずれも構築中や準備中の段階で、成果はこれからです。</p>
   </div>
 </header>
 
 <ul class="summary">
-  <li><a href="#case01"><span class="num">6社</span><span class="lbl"><b>CASE 01｜導入先一覧</b>業種・規模・使い方</span></a></li>
-  <li><a href="#case02"><span class="num">設定中</span><span class="lbl"><b>CASE 02｜住宅リフォーム（給湯器・水回</b>2名体制のリフォーム会社が電話受付と予定登録をAI化</span></a></li>
-  <li><a href="#case03"><span class="num">設定中</span><span class="lbl"><b>CASE 03｜警備業（施設警備・交通誘導）</b>警備会社の出退勤と現場連絡を電話AIで仕組み化</span></a></li>
-  <li><a href="#case04"><span class="num">設定中</span><span class="lbl"><b>CASE 04｜飲食店向けの営業代理（販売パ</b>飲食店の予約電話と営業電話をAIが振り分け</span></a></li>
+  <li><a href="#case01"><span class="num">設定中</span><span class="lbl"><b>CASE 01｜住宅リフォーム（給湯器・水回</b>2名体制のリフォーム会社が、電話の受付と予定の登録をAIに任せる</span></a></li>
+  <li><a href="#case02"><span class="num">設定中</span><span class="lbl"><b>CASE 02｜警備業（施設警備・交通誘導）</b>警備会社の出退勤報告と現場連絡を、電話のAIで仕組みにする</span></a></li>
+  <li><a href="#case03"><span class="num">設定中</span><span class="lbl"><b>CASE 03｜飲食店向けの営業代理（販売パ</b>飲食店の予約電話と営業電話を、AIが振り分けて店舗を守る</span></a></li>
+  <li><a href="#case04"><span class="num">6社</span><span class="lbl"><b>CASE 04｜導入先一覧</b>業種・規模・使い方</span></a></li>
 </ul>
 
 <section id="case01">
-  <span class="case-no">CASE 01<span>導入先一覧</span></span>
-  <h2>実際に導入・設定を進めている6社</h2>
+  <span class="case-no">CASE 01<span>住宅リフォーム（給湯器・水回りなど）｜2名体制</span></span>
+  <h2>2名体制のリフォーム会社が、電話の受付と予定の登録をAIに任せる</h2>
+  <p class="byline-s">担当：<b>村田</b> ｜ 2026年8月〜</p>
+  <p>給湯器やトイレなどの交換・修理を手がける、2名体制のリフォーム会社です。作業中に電話で手が止まることや、休日の電話当番が負担でした。予定表はスプレッドシートで作っていて使いづらく、顧客情報や施工履歴、現場写真もまとめて管理したいと考えていました。</p>
+  <p>2026年8月上旬の最初の打ち合わせでは、電話をAIで受け、聞き取った内容を業務の記録につなげる構成を話し合いました。同じ月の下旬には、電話の受付から予定の登録までをAIに任せる形で申し込みました。</p>
+  <p>AIは電話で、氏名・住所・依頼内容・交換か修理か・駐車スペースの有無などを聞き取ります。カレンダーの空きを見て、重ならないように予定を登録します。見積もりに関わる質問には答えず、担当者からの折り返しに回します。</p>
+  <p>顧客情報と工事案件はスプレッドシートで番号を分けて紐づけ、写真や手書きの見積書はクラウドのフォルダで管理します。2026年9月にヒアリング項目を確定し、11月の本格稼働を目標に構築中です。成果はこれからです。</p>
+  <h3>設定の中身</h3>
+  <div class="setting"><dl><dt>入口</dt><dd>会社の電話（AIが女性の声で受付）</dd><dt>AIの役割</dt><dd>依頼内容や現場の条件を聞き取り、カレンダーの空きに予定を登録</dd><dt>人の役割</dt><dd>見積もりの相談は担当者が折り返して対応</dd></dl></div>
+  <h3>お客様の声</h3>
+  <p class="quote">「電話で受け付けて、カレンダーの予定まで取って、お客様情報と要望を聞いてくれるだけでもめちゃくちゃ助かる」</p>
+  <p class="quote">「完全に自動化できなくても手間が減るだけで相当助かる」</p>
+  <p class="quote">「女性の声の方が『あくまで受付担当で、担当者から折り返します』に説得力がある」</p>
+  <p class="status"><span class="stage">設定中</span>ヒアリング項目を確定し、本格稼働に向けて構築中です。</p>
+</section>
+
+<section id="case02">
+  <span class="case-no">CASE 02<span>警備業（施設警備・交通誘導）｜岡山県</span></span>
+  <h2>警備会社の出退勤報告と現場連絡を、電話のAIで仕組みにする</h2>
+  <p class="byline-s">担当：<b>菅野</b> ｜ 2026年7月〜</p>
+  <p>岡山県で施設警備や交通誘導を行う、警備スタッフ約60名の会社です。管理職が複雑な給与計算や勤怠管理を兼務しながら、現場にも出ていました。警備員の出退勤は内勤者が電話で確認し、手作業で管理していました。</p>
+  <p>スタッフは年配の方が多く、スマートフォンが苦手な人もいます。以前ほかのシステムを入れた際は、24時間勤務などに対応できず使い続けられなかった経験もありました。そこで、受電AIをもとに、警備会社向けに作り込んだ仕組みを作ることにしました。</p>
+  <p>出退勤は、電話で番号を選ぶだけで記録できるようにしました。声での入力は取れたり取れなかったりするため、年配のスタッフに合わせた形です。管理画面で従業員と現場を登録し、現場の地図や指示書のリンクをSMSでまとめて送る機能も加えます。</p>
+  <p>2026年7月下旬の打ち合わせでは、代表が試験用の番号で実際に試しました。給与計算の自動化も視野に入れつつ、まず20名で2週間のパイロット運用を予定しています。成果はこれからです。</p>
+  <h3>設定の中身</h3>
+  <div class="setting"><dl><dt>入口</dt><dd>固定の電話番号に警備スタッフが電話</dd><dt>AIの役割</dt><dd>番号の選択で出勤・退勤を記録</dd><dt>連絡</dt><dd>現場の地図や指示書のリンクをSMSで一括送信</dd><dt>人の役割</dt><dd>管理画面で従業員と現場を登録</dd></dl></div>
+  <h3>お客様の声</h3>
+  <p class="quote">「1番で出勤・2番で退勤のように番号だけでいい。警備スタッフは年配が多い」</p>
+  <p class="quote">「現場の地図がショートメールで飛ぶのは結構強い」</p>
+  <p class="quote">「給与計算の負担がなくなれば、その管理職は営業に回るなど現場をもう1つ取れるようになる」</p>
+  <p class="status"><span class="stage">設定中</span>20名で2週間のパイロット運用を予定しています。</p>
+</section>
+
+<section id="case03">
+  <span class="case-no">CASE 03<span>飲食店向けの営業代理（販売パートナー）</span></span>
+  <h2>飲食店の予約電話と営業電話を、AIが振り分けて店舗を守る</h2>
+  <p class="byline-s">担当：<b>菅野</b> ｜ 2026年6月〜</p>
+  <p>飲食店にフードデリバリーの導入などを提案する営業会社で、受電AIを飲食店に届ける販売パートナーです。2026年5月に、テレアポ業務の効率化について話し合ったことが、やり取りの始まりでした。</p>
+  <p>飲食店にかかってくる電話は、大半が営業電話です。店舗は電話番号を変えたがらないため、今の番号のまま使える仕組みが必要でした。取引先の飲食店を、他社の営業電話から守る手段も探していました。</p>
+  <p>2026年6月のデモ通話では、予約が決まるとSMSで店舗に通知が届く流れを確認しました。設定では、今の番号から転送してAIが一次対応します。営業電話は自動で断り、仕入れ先などは登録しておけば店舗へ直接つなぎます。</p>
+  <p>2026年8月の打ち合わせで、飲食店への展開の進め方を固めました。既存の取引先と新規の店舗の両方に案内する予定です。店舗への導入はこれからで、成果もこれからです。</p>
+  <h3>設定の中身</h3>
+  <div class="setting"><dl><dt>入口</dt><dd>今の店舗番号からAIへ転送</dd><dt>AIの役割</dt><dd>予約を受け付けてSMSで店舗に通知し、営業電話は自動でお断り</dd><dt>人の役割</dt><dd>登録した取引先からの電話は店舗が直接受ける</dd></dl></div>
+  <h3>お客様の声</h3>
+  <p class="quote">「予想以上にナチュラルでロボットっぽくなかった」</p>
+  <p class="quote">「予約まで決まった瞬間にSMSが来る、すごい」</p>
+  <p class="quote">「登録した番号だけ弾かれない仕組みが組めれば、クライアントを守ることができるのでめっちゃ助かる」</p>
+  <p class="status"><span class="stage">設定中</span>飲食店への展開に向けて準備中です。</p>
+</section>
+
+<section id="case04">
+  <span class="case-no">CASE 04<span>導入先一覧</span></span>
+  <h2>受電AIを導入・設定している6社</h2>
   <p>少人数で電話に出られない会社や、店舗をたくさん抱える会社が中心です。</p>
 <div class="scroll">
   <table class="adopters">
@@ -176,41 +248,12 @@ ul.plain li{margin-bottom:6px}
   <p class="note">※ 2026年3月〜9月の商談・打ち合わせの記録から、申込以降に進んだ会社を載せています。「設定中」は初期設定を進めている段階です。</p>
 </section>
 
-<section id="case02">
-  <span class="case-no">CASE 02<span>住宅リフォーム（給湯器・水回りなど）・2名体制</span></span>
-  <h2>2名体制のリフォーム会社が電話受付と予定登録をAI化</h2>
-  <p>電話の一次対応と予定調整に手が回らず、予定表も使いづらいスプレッドシート頼み。顧客情報・施工履歴・現場写真も紐づけて管理したかった。</p>
-  <h3>使い方</h3>
-  <ul class="plain"><li>AIが電話で氏名・住所・依頼内容・駐車スペースの有無などを聞き取り</li><li>カレンダーの空きを見てダブルブッキングなく予定を登録</li><li>金額の質問には答えず、担当者からの折り返しに回す</li></ul>
-  <p><span class="stage">設定中</span>　ヒアリング項目を確定し、本格稼働に向けて構築中。成果はこれから。</p>
-  <ul class="voices"><li>電話で受け付けてカレンダーの予定まで取り、お客様情報と要望を聞いてくれるだけでもめちゃくちゃ助かる<small>お客様の声</small></li></ul>
-</section>
-
-<section id="case03">
-  <span class="case-no">CASE 03<span>警備業（施設警備・交通誘導）・警備スタッフ約60名・岡山県</span></span>
-  <h2>警備会社の出退勤と現場連絡を電話AIで仕組み化</h2>
-  <p>管理職が複雑な給与計算や勤怠管理を兼務しながら現場にも出ている。現場の指示書は紙で配り、事務所に呼んで説明していた。</p>
-  <h3>使い方</h3>
-  <ul class="plain"><li>電話で番号を選ぶだけで出勤・退勤を記録（年配のスタッフにも配慮）</li><li>管理画面で従業員と現場を登録</li><li>現場の地図や指示書のリンクをSMSで一括送信</li></ul>
-  <p><span class="stage">設定中</span>　まず20名で2週間のパイロット運用を予定。成果はこれから。</p>
-  <ul class="voices"><li>給与計算の負担がなくなれば、その管理職は営業に回るなど、現場をもう1つ取れるようになる<small>お客様の声</small></li></ul>
-</section>
-
-<section id="case04">
-  <span class="case-no">CASE 04<span>飲食店向けの営業代理（販売パートナー）</span></span>
-  <h2>飲食店の予約電話と営業電話をAIが振り分け</h2>
-  <p>飲食店にかかる電話の大半が営業電話で、店舗は電話番号を変えたがらない。顧客の飲食店を他社の営業から守る手段が欲しかった。</p>
-  <h3>使い方</h3>
-  <ul class="plain"><li>既存の番号のまま転送設定でAIが一次対応</li><li>営業電話は自動で遮断し、取引先は登録して店舗へ直接転送</li><li>予約が決まるとSMSで店舗に通知</li></ul>
-  <p><span class="stage">設定中</span>　飲食店への展開に向けて準備中。成果はこれから。</p>
-  <ul class="voices"><li>予想以上にナチュラルで、ロボットっぽくなかった<small>お客様の声</small></li></ul>
-</section>
-
 <footer class="close">
   <p class="note">※ 会社名は記載していません。業種・規模・地域は特定できない範囲で記載しています。ここに載せた内容は個別の事例で、同じ成果を約束するものではありません。</p>
   <p><a href="../">← SaaS活用事例の一覧へ</a></p>
 </footer>
 
 </div>
+
 </body>
 </html>
