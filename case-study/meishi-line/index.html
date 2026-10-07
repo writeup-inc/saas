@@ -157,12 +157,65 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
 .acards .a-meta{font-size:12.5px;color:var(--ink-mute)}
 .acards .a-use{font-size:13.5px;color:var(--ink-soft);line-height:1.7;margin:0}
 .acards .a-partner{font-size:11px;color:var(--ink-mute);border:1px dashed var(--line);border-radius:4px;padding:0 6px;justify-self:start}
+
+/*DECOR*/
+:root{--t:#0f9488;--t-soft:#e3f6f4;--t-soft2:#e3f6f4;--ok:#0f8a3c;--ok-soft:#e5f6ea;--go:#1f6feb;--go-soft:#eaf1ff;--wait:#a66300;--wait-soft:#fff4dc}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--t:#3fd1c3;--t-soft:#0f2f2c;--t-soft2:#0f2f2c;--ok:#3ddc84;--ok-soft:#12301f;--go:#6ea8ff;--go-soft:#1a2740;--wait:#f2c94c;--wait-soft:#332b0c}}
+:root[data-theme="dark"]{--t:#3fd1c3;--t-soft:#0f2f2c;--t-soft2:#0f2f2c;--ok:#3ddc84;--ok-soft:#12301f;--go:#6ea8ff;--go-soft:#1a2740;--wait:#f2c94c;--wait-soft:#332b0c}
+header{position:relative;background:var(--t-soft);margin:0 -16px 40px;padding:40px 16px 28px;border-bottom:4px solid var(--t);display:grid;gap:8px}
+@media (min-width:720px){header{margin:0 -56px 44px;padding:52px 56px 32px;grid-template-columns:minmax(0,1fr) 220px;column-gap:24px;align-items:center} header>*{grid-column:1} header .hero-ill{grid-column:2;grid-row:1 / span 6}}
+.hero-ill{width:100%;max-width:240px;height:auto;justify-self:center}
+@media (max-width:719px){.hero-ill{max-width:180px;order:-1;justify-self:start}}
+header .eyebrow{color:var(--t);font-weight:700}
+header h1{text-wrap:balance}
+.case-no{background:var(--t);color:var(--on-ink, #fff)}
+.case-no{color:#fff}
+h3{border-left-color:var(--t)}
+h2{border-bottom-color:var(--t)}
+.summary a{border-top:3px solid var(--t)}
+.summary .num{color:var(--t)}
+mark{background:linear-gradient(transparent 55%,var(--t-soft) 55%)}
+.setting{background:var(--t-soft);border-color:transparent}
+.setting dt{color:var(--t)}
+.stage{font-weight:700;border-color:transparent}
+.stage.won{color:var(--go);background:var(--go-soft)}
+.stage.s-run{color:var(--ok);background:var(--ok-soft)}
+.stage.s-set{color:var(--wait);background:var(--wait-soft)}
+.status{background:var(--soft);border-radius:var(--radius);padding:10px 14px}
+/* chat-bubble voices */
+p.quote{position:relative;border:0;background:var(--paper);margin:12px 0 12px 52px;padding:12px 16px;border-radius:4px 16px 16px 16px;box-shadow:0 0 0 1.5px var(--t) inset}
+p.quote::before{content:"客";position:absolute;left:-52px;top:0;width:38px;height:38px;border-radius:50%;background:var(--t-soft);color:var(--t);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
+.voices li{border-left:0;box-shadow:0 0 0 1.5px var(--t) inset;border-radius:4px 16px 16px 16px;background:var(--paper)}
+/* industry tiles */
+.tiles li:nth-child(10n+1){--tile:#e7f7ee;--tile-ink:#06a24a}.tiles li:nth-child(10n+2){--tile:#fff1e3;--tile-ink:#e8730c}.tiles li:nth-child(10n+3){--tile:#e6f3fc;--tile-ink:#1d8fd6}.tiles li:nth-child(10n+4){--tile:#fdeaf1;--tile-ink:#e0457b}.tiles li:nth-child(10n+5){--tile:#ecebff;--tile-ink:#4f46e5}.tiles li:nth-child(10n+6){--tile:#e3f6f4;--tile-ink:#0f9488}.tiles li:nth-child(10n+7){--tile:#f3eafc;--tile-ink:#8b3fd1}.tiles li:nth-child(10n+8){--tile:#fff7d6;--tile-ink:#b8860b}.tiles li:nth-child(10n+9){--tile:#fdeee6;--tile-ink:#c2410c}.tiles li:nth-child(10n+10){--tile:#eef4ff;--tile-ink:#1f6feb}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tiles li:nth-child(10n+1){--tile:#12301f;--tile-ink:#3ddc84}:root:not([data-theme="light"]) .tiles li:nth-child(10n+2){--tile:#3a2410;--tile-ink:#ffa24d}:root:not([data-theme="light"]) .tiles li:nth-child(10n+3){--tile:#0f2738;--tile-ink:#5bb8f0}:root:not([data-theme="light"]) .tiles li:nth-child(10n+4){--tile:#3a1624;--tile-ink:#ff7aa8}:root:not([data-theme="light"]) .tiles li:nth-child(10n+5){--tile:#1e1c45;--tile-ink:#8b85ff}:root:not([data-theme="light"]) .tiles li:nth-child(10n+6){--tile:#0f2f2c;--tile-ink:#3fd1c3}:root:not([data-theme="light"]) .tiles li:nth-child(10n+7){--tile:#2b1840;--tile-ink:#bf8cf0}:root:not([data-theme="light"]) .tiles li:nth-child(10n+8){--tile:#332b0c;--tile-ink:#f2c94c}:root:not([data-theme="light"]) .tiles li:nth-child(10n+9){--tile:#3a1a0e;--tile-ink:#ff8a57}:root:not([data-theme="light"]) .tiles li:nth-child(10n+10){--tile:#1a2740;--tile-ink:#6ea8ff}}
+:root[data-theme="dark"] .tiles li:nth-child(10n+1){--tile:#12301f;--tile-ink:#3ddc84}:root[data-theme="dark"] .tiles li:nth-child(10n+2){--tile:#3a2410;--tile-ink:#ffa24d}:root[data-theme="dark"] .tiles li:nth-child(10n+3){--tile:#0f2738;--tile-ink:#5bb8f0}:root[data-theme="dark"] .tiles li:nth-child(10n+4){--tile:#3a1624;--tile-ink:#ff7aa8}:root[data-theme="dark"] .tiles li:nth-child(10n+5){--tile:#1e1c45;--tile-ink:#8b85ff}:root[data-theme="dark"] .tiles li:nth-child(10n+6){--tile:#0f2f2c;--tile-ink:#3fd1c3}:root[data-theme="dark"] .tiles li:nth-child(10n+7){--tile:#2b1840;--tile-ink:#bf8cf0}:root[data-theme="dark"] .tiles li:nth-child(10n+8){--tile:#332b0c;--tile-ink:#f2c94c}:root[data-theme="dark"] .tiles li:nth-child(10n+9){--tile:#3a1a0e;--tile-ink:#ff8a57}:root[data-theme="dark"] .tiles li:nth-child(10n+10){--tile:#1a2740;--tile-ink:#6ea8ff}
+.tiles li{background:var(--tile,var(--soft));border-color:transparent;grid-template-columns:auto 1fr;column-gap:10px;align-items:center}
+.tiles .t-ic{width:34px;height:34px;padding:7px;border-radius:10px;background:var(--paper);stroke:var(--tile-ink,var(--t));fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;grid-row:span 2}
+.tiles .t-name{align-self:end}
+.tiles .t-num{color:var(--tile-ink,var(--t))}
+.tiles .t-bar{grid-column:1 / -1}
+.tiles .t-bar span{background:var(--tile-ink,var(--t))}
+.imap-head .big{color:var(--t)}
+.chips button[aria-pressed="true"]{background:var(--t);border-color:var(--t);color:#fff}
+.acards li{border-top:3px solid var(--t)}
+.acards .a-cat{color:var(--t);font-weight:700}
+@media (prefers-reduced-motion:no-preference){.acards li,.summary a{transition:transform .15s} .acards li:hover,.summary a:hover{transform:translateY(-2px)}}
+/*/DECOR*/
 </style>
 </head>
 <body>
 <div class="sheet">
 
 <header>
+  <svg class="hero-ill" viewBox="0 0 240 170" role="img" aria-hidden="true">
+<g transform="rotate(-10 70 90)"><rect x="18" y="60" width="104" height="62" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.5"/></g>
+<g transform="rotate(-3 80 90)"><rect x="26" y="56" width="104" height="62" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.5"/></g>
+<rect x="34" y="52" width="104" height="62" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.5"/>
+<circle cx="56" cy="76" r="9" fill="var(--t-soft2)"/><rect x="72" y="70" width="52" height="6" rx="3" fill="var(--ink)"/><rect x="72" y="82" width="38" height="5" rx="2.5" fill="var(--t)"/><rect x="46" y="96" width="78" height="4" rx="2" fill="var(--line)"/>
+<path d="M146 84 h24" stroke="var(--t)" stroke-width="4" stroke-linecap="round"/><path d="M164 76 l10 8 -10 8" stroke="var(--t)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(180 56)"><rect width="50" height="56" rx="14" fill="var(--t)"/><rect x="10" y="14" width="30" height="5" rx="2.5" fill="var(--paper)"/><rect x="10" y="25" width="22" height="5" rx="2.5" fill="var(--paper)"/><rect x="10" y="36" width="26" height="5" rx="2.5" fill="var(--paper)"/></g>
+<circle cx="200" cy="30" r="12" fill="var(--t-soft2)"/><circle cx="30" cy="30" r="8" fill="var(--t-soft2)"/></svg>
   <p class="eyebrow"><a class="back" href="../">CASE STUDY</a> ／ 名刺LINEエージェント</p>
   <h1>眠っている名刺を、次の商談に。<br>名刺LINEエージェントの導入事例</h1>
   <div class="lead">
@@ -208,7 +261,7 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
   <p class="quote">「あとは実際に使っていかないと分からない。何通か送ってみる」</p>
   <p class="quote">「個人的に名刺交換する場合が多く、フォローができなかったので名刺は後付けで導入した」</p>
   <p class="quote">「名刺は前回説明を受けて、まだそんなにやってないけど、それなりに今動いている状態」</p>
-  <p class="status"><span class="stage won">運用中</span>初期設定を終え、名刺のフォローを動かし始めています。</p>
+  <p class="status"><span class="stage s-run">運用中</span>初期設定を終え、名刺のフォローを動かし始めています。</p>
 </section>
 
 <section id="case03">
@@ -225,7 +278,7 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
   <p class="quote">「100枚ちょっとやったら、あっという間にリストになる。名刺を配って挨拶して終わりの人には受けると思う」</p>
   <p class="quote">「スプレッドシートに自動でずらっと出てくるのは非常に価値がある」</p>
   <p class="quote">「AIで整理はできても、最終的には人が地道にアプローチするしかない」</p>
-  <p class="status"><span class="stage won">運用中</span>約100枚の名刺をリスト化済みです。ご自身の営業での一斉配信は行わず、研修などで紹介しています。</p>
+  <p class="status"><span class="stage s-run">運用中</span>約100枚の名刺をリスト化済みです。ご自身の営業での一斉配信は行わず、研修などで紹介しています。</p>
 </section>
 
 <section id="case04">
@@ -237,12 +290,12 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
     <tr><th>業種</th><th>規模</th><th>地域</th><th>使い方</th><th>段階</th></tr>
     <tr><td>青果流通</td><td>名刺約1,950枚</td><td>—</td><td>LINEで名刺を撮影すると自動でお礼メールを送り、取引先の種別ごとのステップ配信で継続的にフォローする</td><td><span class="stage won">導入決定</span></td></tr>
     <tr><td>美容・金融系の紹介型ビジネス（個人事業）</td><td>名刺約500枚</td><td>—</td><td>異業種交流会で集めた名刺を撮影してリスト化し、AIのフォローメールから本人専用のAI公式LINEへつなぐ</td><td><span class="stage won">導入決定</span></td></tr>
-    <tr><td>解体工事業</td><td>—</td><td>—</td><td>名刺を撮影してスプレッドシートに登録し、ネット検索で企業情報を補ったうえで挨拶メールやタグ別の配信を行う</td><td><span class="stage">設定中</span></td></tr>
-    <tr><td>営業コンサルティング（個人事業）<small>販売パートナー</small></td><td>名刺約100枚</td><td>—</td><td>名刺を取り込み、企業規模や代表者の経歴まで自動で付いたリストを作成し、自身の研修・コンサルの場でも紹介している</td><td><span class="stage won">運用中</span></td></tr>
-    <tr><td>オフィス・店舗向けの観葉植物レンタル<small>販売パートナー</small></td><td>—</td><td>—</td><td>名刺交換相手に近況報告とAI公式LINEの案内を2段構成でメール配信し、登録者とのやり取りをLINEで確認する</td><td><span class="stage won">運用中</span></td></tr>
-    <tr><td>人材紹介・採用支援<small>販売パートナー</small></td><td>名刺114件を登録</td><td>—</td><td>登録した名刺に向けて配信テンプレートを自社の言葉で書き直し、1日30通程度のペースでメール配信を始める</td><td><span class="stage">設定中</span></td></tr>
-    <tr><td>パソコン教室<small>販売パートナー</small></td><td>—</td><td>—</td><td>LINEのカメラで名刺を撮影して自動登録し、紹介専用のAI公式LINEへ誘導するメールを配信する仕組みを準備中</td><td><span class="stage">設定中</span></td></tr>
-    <tr><td>医療・介護福祉業界向けの採用・定着支援<small>販売パートナー</small></td><td>名刺約1,000枚</td><td>—</td><td>既存の名刺データをシートに移し、久しぶりのフォローメールと採用向けAI公式LINEの体験案内を送る計画</td><td><span class="stage">設定中</span></td></tr>
+    <tr><td>解体工事業</td><td>—</td><td>—</td><td>名刺を撮影してスプレッドシートに登録し、ネット検索で企業情報を補ったうえで挨拶メールやタグ別の配信を行う</td><td><span class="stage s-set">設定中</span></td></tr>
+    <tr><td>営業コンサルティング（個人事業）<small>販売パートナー</small></td><td>名刺約100枚</td><td>—</td><td>名刺を取り込み、企業規模や代表者の経歴まで自動で付いたリストを作成し、自身の研修・コンサルの場でも紹介している</td><td><span class="stage s-run">運用中</span></td></tr>
+    <tr><td>オフィス・店舗向けの観葉植物レンタル<small>販売パートナー</small></td><td>—</td><td>—</td><td>名刺交換相手に近況報告とAI公式LINEの案内を2段構成でメール配信し、登録者とのやり取りをLINEで確認する</td><td><span class="stage s-run">運用中</span></td></tr>
+    <tr><td>人材紹介・採用支援<small>販売パートナー</small></td><td>名刺114件を登録</td><td>—</td><td>登録した名刺に向けて配信テンプレートを自社の言葉で書き直し、1日30通程度のペースでメール配信を始める</td><td><span class="stage s-set">設定中</span></td></tr>
+    <tr><td>パソコン教室<small>販売パートナー</small></td><td>—</td><td>—</td><td>LINEのカメラで名刺を撮影して自動登録し、紹介専用のAI公式LINEへ誘導するメールを配信する仕組みを準備中</td><td><span class="stage s-set">設定中</span></td></tr>
+    <tr><td>医療・介護福祉業界向けの採用・定着支援<small>販売パートナー</small></td><td>名刺約1,000枚</td><td>—</td><td>既存の名刺データをシートに移し、久しぶりのフォローメールと採用向けAI公式LINEの体験案内を送る計画</td><td><span class="stage s-set">設定中</span></td></tr>
   </table>
 </div>
   <p class="note">※ 2026年3月〜9月の商談・打ち合わせの記録から、申込以降に進んだ会社を載せています。「設定中」は初期設定を進めている段階です。</p>

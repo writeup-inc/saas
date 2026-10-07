@@ -157,12 +157,68 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
 .acards .a-meta{font-size:12.5px;color:var(--ink-mute)}
 .acards .a-use{font-size:13.5px;color:var(--ink-soft);line-height:1.7;margin:0}
 .acards .a-partner{font-size:11px;color:var(--ink-mute);border:1px dashed var(--line);border-radius:4px;padding:0 6px;justify-self:start}
+
+/*DECOR*/
+:root{--t:#06a24a;--t-soft:#e7f7ee;--t-soft2:#e7f7ee;--ok:#0f8a3c;--ok-soft:#e5f6ea;--go:#1f6feb;--go-soft:#eaf1ff;--wait:#a66300;--wait-soft:#fff4dc}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--t:#3ddc84;--t-soft:#12301f;--t-soft2:#12301f;--ok:#3ddc84;--ok-soft:#12301f;--go:#6ea8ff;--go-soft:#1a2740;--wait:#f2c94c;--wait-soft:#332b0c}}
+:root[data-theme="dark"]{--t:#3ddc84;--t-soft:#12301f;--t-soft2:#12301f;--ok:#3ddc84;--ok-soft:#12301f;--go:#6ea8ff;--go-soft:#1a2740;--wait:#f2c94c;--wait-soft:#332b0c}
+header{position:relative;background:var(--t-soft);margin:0 -16px 40px;padding:40px 16px 28px;border-bottom:4px solid var(--t);display:grid;gap:8px}
+@media (min-width:720px){header{margin:0 -56px 44px;padding:52px 56px 32px;grid-template-columns:minmax(0,1fr) 220px;column-gap:24px;align-items:center} header>*{grid-column:1} header .hero-ill{grid-column:2;grid-row:1 / span 6}}
+.hero-ill{width:100%;max-width:240px;height:auto;justify-self:center}
+@media (max-width:719px){.hero-ill{max-width:180px;order:-1;justify-self:start}}
+header .eyebrow{color:var(--t);font-weight:700}
+header h1{text-wrap:balance}
+.case-no{background:var(--t);color:var(--on-ink, #fff)}
+.case-no{color:#fff}
+h3{border-left-color:var(--t)}
+h2{border-bottom-color:var(--t)}
+.summary a{border-top:3px solid var(--t)}
+.summary .num{color:var(--t)}
+mark{background:linear-gradient(transparent 55%,var(--t-soft) 55%)}
+.setting{background:var(--t-soft);border-color:transparent}
+.setting dt{color:var(--t)}
+.stage{font-weight:700;border-color:transparent}
+.stage.won{color:var(--go);background:var(--go-soft)}
+.stage.s-run{color:var(--ok);background:var(--ok-soft)}
+.stage.s-set{color:var(--wait);background:var(--wait-soft)}
+.status{background:var(--soft);border-radius:var(--radius);padding:10px 14px}
+/* chat-bubble voices */
+p.quote{position:relative;border:0;background:var(--paper);margin:12px 0 12px 52px;padding:12px 16px;border-radius:4px 16px 16px 16px;box-shadow:0 0 0 1.5px var(--t) inset}
+p.quote::before{content:"客";position:absolute;left:-52px;top:0;width:38px;height:38px;border-radius:50%;background:var(--t-soft);color:var(--t);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
+.voices li{border-left:0;box-shadow:0 0 0 1.5px var(--t) inset;border-radius:4px 16px 16px 16px;background:var(--paper)}
+/* industry tiles */
+.tiles li:nth-child(10n+1){--tile:#e7f7ee;--tile-ink:#06a24a}.tiles li:nth-child(10n+2){--tile:#fff1e3;--tile-ink:#e8730c}.tiles li:nth-child(10n+3){--tile:#e6f3fc;--tile-ink:#1d8fd6}.tiles li:nth-child(10n+4){--tile:#fdeaf1;--tile-ink:#e0457b}.tiles li:nth-child(10n+5){--tile:#ecebff;--tile-ink:#4f46e5}.tiles li:nth-child(10n+6){--tile:#e3f6f4;--tile-ink:#0f9488}.tiles li:nth-child(10n+7){--tile:#f3eafc;--tile-ink:#8b3fd1}.tiles li:nth-child(10n+8){--tile:#fff7d6;--tile-ink:#b8860b}.tiles li:nth-child(10n+9){--tile:#fdeee6;--tile-ink:#c2410c}.tiles li:nth-child(10n+10){--tile:#eef4ff;--tile-ink:#1f6feb}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tiles li:nth-child(10n+1){--tile:#12301f;--tile-ink:#3ddc84}:root:not([data-theme="light"]) .tiles li:nth-child(10n+2){--tile:#3a2410;--tile-ink:#ffa24d}:root:not([data-theme="light"]) .tiles li:nth-child(10n+3){--tile:#0f2738;--tile-ink:#5bb8f0}:root:not([data-theme="light"]) .tiles li:nth-child(10n+4){--tile:#3a1624;--tile-ink:#ff7aa8}:root:not([data-theme="light"]) .tiles li:nth-child(10n+5){--tile:#1e1c45;--tile-ink:#8b85ff}:root:not([data-theme="light"]) .tiles li:nth-child(10n+6){--tile:#0f2f2c;--tile-ink:#3fd1c3}:root:not([data-theme="light"]) .tiles li:nth-child(10n+7){--tile:#2b1840;--tile-ink:#bf8cf0}:root:not([data-theme="light"]) .tiles li:nth-child(10n+8){--tile:#332b0c;--tile-ink:#f2c94c}:root:not([data-theme="light"]) .tiles li:nth-child(10n+9){--tile:#3a1a0e;--tile-ink:#ff8a57}:root:not([data-theme="light"]) .tiles li:nth-child(10n+10){--tile:#1a2740;--tile-ink:#6ea8ff}}
+:root[data-theme="dark"] .tiles li:nth-child(10n+1){--tile:#12301f;--tile-ink:#3ddc84}:root[data-theme="dark"] .tiles li:nth-child(10n+2){--tile:#3a2410;--tile-ink:#ffa24d}:root[data-theme="dark"] .tiles li:nth-child(10n+3){--tile:#0f2738;--tile-ink:#5bb8f0}:root[data-theme="dark"] .tiles li:nth-child(10n+4){--tile:#3a1624;--tile-ink:#ff7aa8}:root[data-theme="dark"] .tiles li:nth-child(10n+5){--tile:#1e1c45;--tile-ink:#8b85ff}:root[data-theme="dark"] .tiles li:nth-child(10n+6){--tile:#0f2f2c;--tile-ink:#3fd1c3}:root[data-theme="dark"] .tiles li:nth-child(10n+7){--tile:#2b1840;--tile-ink:#bf8cf0}:root[data-theme="dark"] .tiles li:nth-child(10n+8){--tile:#332b0c;--tile-ink:#f2c94c}:root[data-theme="dark"] .tiles li:nth-child(10n+9){--tile:#3a1a0e;--tile-ink:#ff8a57}:root[data-theme="dark"] .tiles li:nth-child(10n+10){--tile:#1a2740;--tile-ink:#6ea8ff}
+.tiles li{background:var(--tile,var(--soft));border-color:transparent;grid-template-columns:auto 1fr;column-gap:10px;align-items:center}
+.tiles .t-ic{width:34px;height:34px;padding:7px;border-radius:10px;background:var(--paper);stroke:var(--tile-ink,var(--t));fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;grid-row:span 2}
+.tiles .t-name{align-self:end}
+.tiles .t-num{color:var(--tile-ink,var(--t))}
+.tiles .t-bar{grid-column:1 / -1}
+.tiles .t-bar span{background:var(--tile-ink,var(--t))}
+.imap-head .big{color:var(--t)}
+.chips button[aria-pressed="true"]{background:var(--t);border-color:var(--t);color:#fff}
+.acards li{border-top:3px solid var(--t)}
+.acards .a-cat{color:var(--t);font-weight:700}
+@media (prefers-reduced-motion:no-preference){.acards li,.summary a{transition:transform .15s} .acards li:hover,.summary a:hover{transform:translateY(-2px)}}
+/*/DECOR*/
 </style>
 </head>
 <body>
 <div class="sheet">
 
 <header>
+  <svg class="hero-ill" viewBox="0 0 240 170" role="img" aria-hidden="true">
+<circle cx="182" cy="40" r="26" fill="var(--t-soft2)"/><circle cx="40" cy="138" r="18" fill="var(--t-soft2)"/>
+<rect x="78" y="14" width="88" height="148" rx="16" fill="var(--paper)" stroke="var(--ink)" stroke-width="3"/>
+<rect x="108" y="22" width="28" height="5" rx="2.5" fill="var(--ink)"/>
+<rect x="88" y="40" width="54" height="20" rx="10" fill="var(--t-soft2)"/>
+<rect x="104" y="68" width="54" height="20" rx="10" fill="var(--t)"/>
+<rect x="88" y="96" width="44" height="20" rx="10" fill="var(--t-soft2)"/>
+<rect x="110" y="124" width="48" height="20" rx="10" fill="var(--t)"/>
+<g transform="translate(176 92)"><rect x="0" y="0" width="46" height="40" rx="12" fill="var(--t)"/><circle cx="15" cy="18" r="4" fill="var(--paper)"/><circle cx="31" cy="18" r="4" fill="var(--paper)"/><rect x="14" y="27" width="18" height="4" rx="2" fill="var(--paper)"/><rect x="21" y="-9" width="4" height="10" fill="var(--t)"/><circle cx="23" cy="-11" r="4" fill="var(--t)"/></g>
+<text x="199" y="152" text-anchor="middle" font-size="12" font-weight="700" fill="var(--t)">24h</text>
+<path d="M30 60 q12 -14 24 0" stroke="var(--t)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M24 50 q18 -22 36 0" stroke="var(--t)" stroke-width="3" fill="none" stroke-linecap="round" opacity=".5"/></svg>
   <p class="eyebrow"><a class="back" href="../">CASE STUDY</a> ／ Lシンク</p>
   <h1>14業種・126社が選んだ、<br>LINEに置くAIの分身</h1>
   <div class="lead">
@@ -188,20 +244,20 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
   <div class="imap-head"><span class="big">14<small>業種</small>126<small>社</small></span></div>
   <p class="imap-sub">2026年3月〜9月の商談・打ち合わせの記録で、申込以降（設定中・運用中を含む）に進んだ会社を業種ごとに数えました。</p>
   <ul class="tiles">
-    <li><span class="t-name">IT・Web・通信</span><span class="t-num">17<small>社</small></span><span class="t-bar"><span style="width:77%"></span></span></li>
-    <li><span class="t-name">人材・採用</span><span class="t-num">11<small>社</small></span><span class="t-bar"><span style="width:50%"></span></span></li>
-    <li><span class="t-name">美容・サロン・健康</span><span class="t-num">11<small>社</small></span><span class="t-bar"><span style="width:50%"></span></span></li>
-    <li><span class="t-name">飲食・食品</span><span class="t-num">11<small>社</small></span><span class="t-bar"><span style="width:50%"></span></span></li>
-    <li><span class="t-name">団体・コミュニティ</span><span class="t-num">10<small>社</small></span><span class="t-bar"><span style="width:45%"></span></span></li>
-    <li><span class="t-name">士業・コンサル</span><span class="t-num">9<small>社</small></span><span class="t-bar"><span style="width:41%"></span></span></li>
-    <li><span class="t-name">教育・スクール</span><span class="t-num">8<small>社</small></span><span class="t-bar"><span style="width:36%"></span></span></li>
-    <li><span class="t-name">住宅・不動産・設備</span><span class="t-num">8<small>社</small></span><span class="t-bar"><span style="width:36%"></span></span></li>
-    <li><span class="t-name">小売・EC・物販</span><span class="t-num">7<small>社</small></span><span class="t-bar"><span style="width:32%"></span></span></li>
-    <li><span class="t-name">保険・金融</span><span class="t-num">5<small>社</small></span><span class="t-bar"><span style="width:23%"></span></span></li>
-    <li><span class="t-name">撮影・デザイン</span><span class="t-num">4<small>社</small></span><span class="t-bar"><span style="width:18%"></span></span></li>
-    <li><span class="t-name">医療・介護・福祉</span><span class="t-num">2<small>社</small></span><span class="t-bar"><span style="width:9%"></span></span></li>
-    <li><span class="t-name">宿泊・観光</span><span class="t-num">1<small>社</small></span><span class="t-bar"><span style="width:5%"></span></span></li>
-    <li><span class="t-name">販売パートナー（代理店）</span><span class="t-num">22<small>社</small></span><span class="t-bar"><span style="width:100%"></span></span></li>
+    <li><svg class="t-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M9 20h6M12 16v4M8 10l-2 0M10 8l4 4"/></svg><span class="t-name">IT・Web・通信</span><span class="t-num">17<small>社</small></span><span class="t-bar"><span style="width:77%"></span></span></li>
+    <li><svg class="t-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-4 3-6 6-6s6 2 6 6M15 14c3 0 6 2 6 5"/></svg><span class="t-name">人材・採用</span><span class="t-num">11<small>社</small></span><span class="t-bar"><span style="width:50%"></span></span></li>
+    <li><svg class="t-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9l4.2-1.4z"/><path d="M18 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg><span class="t-name">美容・サロン・健康</span><span class="t-num">11<small>社</small></span><span class="t-bar"><span style="width:50%"></span></span></li>
+    <li><svg class="t-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18a9 9 0 0 1-18 0z"/><path d="M8 8c0-2 2-2 2-4M13 8c0-2 2-2 2-4"/></svg><span class="t-name">飲食・食品</span><span class="t-num">11<small>社</small></span><span class="t-bar"><span style="width:50%"></span></span></li>
+    <li><svg class="t-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="2.5"/><circle cx="5" cy="11" r="2"/><circle cx="19" cy="11" r="2"/><path d="M7 20c0-3 2-5 5-5s5 2 5 5M1.5 18c0-2 1.5-3.5 3.5-3.5M22.5 18c0-2-1.5-3.5-3.5-3.5"/></svg><span class="t-name">団体・コミュニティ</span><span class="t-num">10<small>社</small></span><span class="t-bar"><span style="width:45%"></span></span></li>
+    <li><svg class="t-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M5 7h14M7 7l-3 7h6zM17 7l-3 7h6zM8 21h8"/></svg><span class="t-name">士業・コンサル</span><span class="t-num">9<small>社</small></span><span class="t-bar"><span style="width:41%"></span></span></li>
+    <li><svg class="t-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg><span class="t-name">教育・スクール</span><span class="t-num">8<small>社</small></span><span class="t-bar"><span style="width:36%"></span></span></li>
+    <li><svg class="t-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg><span class="t-name">住宅・不動産・設備</span><span class="t-num">8<small>社</small></span><span class="t-bar"><span style="width:36%"></span></span></li>
+    <li><svg class="t-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg><span class="t-name">小売・EC・物販</span><span class="t-num">7<small>社</small></span><span class="t-bar"><span style="width:32%"></span></span></li>
+    <li><svg class="t-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg><span class="t-name">保険・金融</span><span class="t-num">5<small>社</small></span><span class="t-bar"><span style="width:23%"></span></span></li>
+    <li><svg class="t-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="3"/><circle cx="12" cy="13.5" r="3.5"/><path d="M9 7l1.5-3h3L15 7"/></svg><span class="t-name">撮影・デザイン</span><span class="t-num">4<small>社</small></span><span class="t-bar"><span style="width:18%"></span></span></li>
+    <li><svg class="t-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M12 8v8M8 12h8"/></svg><span class="t-name">医療・介護・福祉</span><span class="t-num">2<small>社</small></span><span class="t-bar"><span style="width:9%"></span></span></li>
+    <li><svg class="t-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18V8M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="2"/></svg><span class="t-name">宿泊・観光</span><span class="t-num">1<small>社</small></span><span class="t-bar"><span style="width:5%"></span></span></li>
+    <li><svg class="t-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12l4-4 5 3 5-3 4 4"/><path d="M7 8l5 7 5-7M9 18l3 2 3-2"/></svg><span class="t-name">販売パートナー（代理店）</span><span class="t-num">22<small>社</small></span><span class="t-bar"><span style="width:100%"></span></span></li>
   </ul>
 </section>
 
@@ -219,18 +275,18 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
     <li data-cat="飲食・食品"><div class="a-top"><span class="a-cat">飲食・食品</span><span class="stage won">導入決定</span></div><span class="a-ind">養蜂・はちみつの製造販売</span><span class="a-meta">—</span><p class="a-use">催事や店舗ごとに専用のQRコードを用意し、LINE登録時のアンケートで顧客情報を取得。紙のDMからLINE配信へ移行する</p></li>
     <li data-cat="人材・採用"><div class="a-top"><span class="a-cat">人材・採用</span><span class="stage won">導入決定</span></div><span class="a-ind">特定技能外国人の支援・人材紹介／電気工事業</span><span class="a-meta">—</span><p class="a-use">事業ごとの公式LINEでAIが問い合わせに自動応答し、スプレッドシート連携で見積もりの叩き台づくりにも活用する</p></li>
     <li data-cat="美容・サロン・健康"><div class="a-top"><span class="a-cat">美容・サロン・健康</span><span class="stage won">導入決定</span></div><span class="a-ind">パーソナルジム・ダイエット指導</span><span class="a-meta">LINE友だち約1,500名</span><p class="a-use">既存の配信ツールと役割を分け、AIによる反応分析・タグ管理・属性別の配信の最適化を任せる</p></li>
-    <li data-cat="士業・コンサル"><div class="a-top"><span class="a-cat">士業・コンサル</span><span class="stage">設定中</span></div><span class="a-ind">社会保険労務士事務所（障害年金の申請代行）</span><span class="a-meta">—</span><p class="a-use">初診日や通院先などの基本情報を選択式のチャットで集め、必要書類も写真で受け取って面談前の聞き取り負担を減らす</p></li>
-    <li data-cat="宿泊・観光"><div class="a-top"><span class="a-cat">宿泊・観光</span><span class="stage">設定中</span></div><span class="a-ind">温泉旅館</span><span class="a-meta">静岡県</span><p class="a-use">ホームページのQ&amp;AをスプレッドシートにしてAIが24時間回答。アクセス案内は電車・車で分岐し、予約ページへ直接誘導する</p></li>
-    <li data-cat="飲食・食品"><div class="a-top"><span class="a-cat">飲食・食品</span><span class="stage">設定中</span></div><span class="a-ind">飲食店（会員制・ワンオペ運営）</span><span class="a-meta">代表1名で運営</span><p class="a-use">LINE上で席予約・前金決済・会員証の表示まで完結させ、予約が入ると店舗のグループLINEへ自動で通知する</p></li>
-    <li data-cat="教育・スクール"><div class="a-top"><span class="a-cat">教育・スクール</span><span class="stage">設定中</span></div><span class="a-ind">学習塾・幼児教育</span><span class="a-meta">—</span><p class="a-use">代表の教育ノウハウを学習したAIが保護者の相談窓口として回答し、診断コンテンツや教え子のエピソードを配信する</p></li>
-    <li data-cat="IT・Web・通信"><div class="a-top"><span class="a-cat">IT・Web・通信</span><span class="stage">設定中</span></div><span class="a-ind">店舗の地図検索対策（MEO）サービス</span><span class="a-meta">—</span><p class="a-use">顧客店舗向けの公式LINEで、投稿記事・画像の作成から投稿予約、未活用顧客へのリマインドまでをボタン操作で行う</p></li>
-    <li data-cat="住宅・不動産・設備"><div class="a-top"><span class="a-cat">住宅・不動産・設備</span><span class="stage">設定中</span></div><span class="a-ind">ガス機器販売・住宅設備リフォーム</span><span class="a-meta">愛知県</span><p class="a-use">新設した公式LINEでカタログを学習したAIが質問に答え、施工事例やFAQを見てもらいながら現地調査の予約へつなげる</p></li>
-    <li data-cat="撮影・デザイン"><div class="a-top"><span class="a-cat">撮影・デザイン</span><span class="stage">設定中</span></div><span class="a-ind">撮影スタジオ</span><span class="a-meta">LINE友だち47名</span><p class="a-use">撮影内容をボタンで絞り込んでもらい、サービス情報とFAQをAIが回答して、問い合わせ前の離脱を減らす</p></li>
-    <li data-cat="団体・コミュニティ"><div class="a-top"><span class="a-cat">団体・コミュニティ</span><span class="stage">設定中</span></div><span class="a-ind">経営者団体の事務局運営</span><span class="a-meta">東京都</span><p class="a-use">会長の人格を持たせたAIが会員の質問に回答し、月例会などの出欠取得と未回答者への自動リマインドを行う</p></li>
-    <li data-cat="教育・スクール"><div class="a-top"><span class="a-cat">教育・スクール</span><span class="stage">設定中</span></div><span class="a-ind">子ども向けスクール</span><span class="a-meta">定員20名のクラス運営・長崎県</span><p class="a-use">公式LINEを常時AIの自動応答で運用し、登録時アンケートで未契約者をタグ付けしてセグメント配信を行う</p></li>
-    <li data-cat="販売パートナー（代理店）"><div class="a-top"><span class="a-cat">販売パートナー（代理店）</span><span class="stage won">運用中</span></div><span class="a-ind">保険代理店向けの営業支援</span><span class="a-meta">—</span><p class="a-use">保険代理店向けに、面談予約・契約後の手続き案内・記念日の配信などを組み込んだテンプレートで導入を支援している</p><span class="a-partner">販売パートナーとしての利用</span></li>
-    <li data-cat="販売パートナー（代理店）"><div class="a-top"><span class="a-cat">販売パートナー（代理店）</span><span class="stage won">運用中</span></div><span class="a-ind">生成AIを活用したシステム開発</span><span class="a-meta">秋田県</span><p class="a-use">自社の集客窓口として運用し、AIが最初の会話で相手の課題を聞き取り、解決策や関連サービスの案内へ分岐させる</p><span class="a-partner">販売パートナーとしての利用</span></li>
-    <li data-cat="販売パートナー（代理店）"><div class="a-top"><span class="a-cat">販売パートナー（代理店）</span><span class="stage">設定中</span></div><span class="a-ind">採用代行</span><span class="a-meta">神奈川県</span><p class="a-use">自社に導入して使い方を学びながら、採用代行の顧客に向けて応募者フォローでの活用を提案している</p><span class="a-partner">販売パートナーとしての利用</span></li>
+    <li data-cat="士業・コンサル"><div class="a-top"><span class="a-cat">士業・コンサル</span><span class="stage s-set">設定中</span></div><span class="a-ind">社会保険労務士事務所（障害年金の申請代行）</span><span class="a-meta">—</span><p class="a-use">初診日や通院先などの基本情報を選択式のチャットで集め、必要書類も写真で受け取って面談前の聞き取り負担を減らす</p></li>
+    <li data-cat="宿泊・観光"><div class="a-top"><span class="a-cat">宿泊・観光</span><span class="stage s-set">設定中</span></div><span class="a-ind">温泉旅館</span><span class="a-meta">静岡県</span><p class="a-use">ホームページのQ&amp;AをスプレッドシートにしてAIが24時間回答。アクセス案内は電車・車で分岐し、予約ページへ直接誘導する</p></li>
+    <li data-cat="飲食・食品"><div class="a-top"><span class="a-cat">飲食・食品</span><span class="stage s-set">設定中</span></div><span class="a-ind">飲食店（会員制・ワンオペ運営）</span><span class="a-meta">代表1名で運営</span><p class="a-use">LINE上で席予約・前金決済・会員証の表示まで完結させ、予約が入ると店舗のグループLINEへ自動で通知する</p></li>
+    <li data-cat="教育・スクール"><div class="a-top"><span class="a-cat">教育・スクール</span><span class="stage s-set">設定中</span></div><span class="a-ind">学習塾・幼児教育</span><span class="a-meta">—</span><p class="a-use">代表の教育ノウハウを学習したAIが保護者の相談窓口として回答し、診断コンテンツや教え子のエピソードを配信する</p></li>
+    <li data-cat="IT・Web・通信"><div class="a-top"><span class="a-cat">IT・Web・通信</span><span class="stage s-set">設定中</span></div><span class="a-ind">店舗の地図検索対策（MEO）サービス</span><span class="a-meta">—</span><p class="a-use">顧客店舗向けの公式LINEで、投稿記事・画像の作成から投稿予約、未活用顧客へのリマインドまでをボタン操作で行う</p></li>
+    <li data-cat="住宅・不動産・設備"><div class="a-top"><span class="a-cat">住宅・不動産・設備</span><span class="stage s-set">設定中</span></div><span class="a-ind">ガス機器販売・住宅設備リフォーム</span><span class="a-meta">愛知県</span><p class="a-use">新設した公式LINEでカタログを学習したAIが質問に答え、施工事例やFAQを見てもらいながら現地調査の予約へつなげる</p></li>
+    <li data-cat="撮影・デザイン"><div class="a-top"><span class="a-cat">撮影・デザイン</span><span class="stage s-set">設定中</span></div><span class="a-ind">撮影スタジオ</span><span class="a-meta">LINE友だち47名</span><p class="a-use">撮影内容をボタンで絞り込んでもらい、サービス情報とFAQをAIが回答して、問い合わせ前の離脱を減らす</p></li>
+    <li data-cat="団体・コミュニティ"><div class="a-top"><span class="a-cat">団体・コミュニティ</span><span class="stage s-set">設定中</span></div><span class="a-ind">経営者団体の事務局運営</span><span class="a-meta">東京都</span><p class="a-use">会長の人格を持たせたAIが会員の質問に回答し、月例会などの出欠取得と未回答者への自動リマインドを行う</p></li>
+    <li data-cat="教育・スクール"><div class="a-top"><span class="a-cat">教育・スクール</span><span class="stage s-set">設定中</span></div><span class="a-ind">子ども向けスクール</span><span class="a-meta">定員20名のクラス運営・長崎県</span><p class="a-use">公式LINEを常時AIの自動応答で運用し、登録時アンケートで未契約者をタグ付けしてセグメント配信を行う</p></li>
+    <li data-cat="販売パートナー（代理店）"><div class="a-top"><span class="a-cat">販売パートナー（代理店）</span><span class="stage s-run">運用中</span></div><span class="a-ind">保険代理店向けの営業支援</span><span class="a-meta">—</span><p class="a-use">保険代理店向けに、面談予約・契約後の手続き案内・記念日の配信などを組み込んだテンプレートで導入を支援している</p><span class="a-partner">販売パートナーとしての利用</span></li>
+    <li data-cat="販売パートナー（代理店）"><div class="a-top"><span class="a-cat">販売パートナー（代理店）</span><span class="stage s-run">運用中</span></div><span class="a-ind">生成AIを活用したシステム開発</span><span class="a-meta">秋田県</span><p class="a-use">自社の集客窓口として運用し、AIが最初の会話で相手の課題を聞き取り、解決策や関連サービスの案内へ分岐させる</p><span class="a-partner">販売パートナーとしての利用</span></li>
+    <li data-cat="販売パートナー（代理店）"><div class="a-top"><span class="a-cat">販売パートナー（代理店）</span><span class="stage s-set">設定中</span></div><span class="a-ind">採用代行</span><span class="a-meta">神奈川県</span><p class="a-use">自社に導入して使い方を学びながら、採用代行の顧客に向けて応募者フォローでの活用を提案している</p><span class="a-partner">販売パートナーとしての利用</span></li>
   </ul>
   <p class="note">※ 業種・規模・地域は特定できない範囲で記載しています。「設定中」は初期設定を進めている段階です。</p>
 </section>
@@ -249,7 +305,7 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
   <p class="quote">「スプレッドシートを直すだけで反映されるのはいい。宿の情報は変わったり古い情報が残ったりするので」</p>
   <p class="quote">「Q&amp;Aの項目が多くちょこちょこ違っていた。見てもらって指摘してもらえて助かった」</p>
   <p class="quote">「アレルギーとバリアフリーはセンシティブなので、効率を重視しすぎると痛い目にあう。建前部分だけAIで、あとは電話で」</p>
-  <p class="status"><span class="stage">設定中</span>初回構築の確認を終え、運用開始に向けて準備中です。</p>
+  <p class="status"><span class="stage s-set">設定中</span>初回構築の確認を終え、運用開始に向けて準備中です。</p>
 </section>
 
 <section id="case03">
@@ -266,7 +322,7 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
   <p class="quote">「Instagramに貼ってしまったら思ったより友だちが増えてしまった」</p>
   <p class="quote">「前金を人数分先にもらっておけば従業員への申し送りがしやすい」</p>
   <p class="quote">「一旦運用を進めて、困るところが出てきたらまた相談したい」</p>
-  <p class="status"><span class="stage">設定中</span>設定を終え、運用を始める段階です。</p>
+  <p class="status"><span class="stage s-set">設定中</span>設定を終え、運用を始める段階です。</p>
 </section>
 
 <section id="case04">
@@ -283,7 +339,7 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
   <p class="quote">「出欠確認がとにかく面倒で、みんな見落として連絡しない」</p>
   <p class="quote">「返事が来るまでAIがどんどんトーンを上げて督促してくれればいい」</p>
   <p class="quote">「だいぶイメージがつきました。まず使えるところまで行ってもらって」</p>
-  <p class="status"><span class="stage">設定中</span>運用説明を終え、本格的な運用に向けて調整しています。</p>
+  <p class="status"><span class="stage s-set">設定中</span>運用説明を終え、本格的な運用に向けて調整しています。</p>
 </section>
 
 <section id="case05">

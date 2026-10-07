@@ -172,12 +172,63 @@ ul.plain li{margin-bottom:6px}
 .acards .a-meta{font-size:12.5px;color:var(--ink-mute)}
 .acards .a-use{font-size:13.5px;color:var(--ink-soft);line-height:1.7;margin:0}
 .acards .a-partner{font-size:11px;color:var(--ink-mute);border:1px dashed var(--line);border-radius:4px;padding:0 6px;justify-self:start}
+
+/*DECOR*/
+:root{--t:#4f46e5;--t-soft:#ecebff;--t-soft2:#ecebff;--ok:#0f8a3c;--ok-soft:#e5f6ea;--go:#1f6feb;--go-soft:#eaf1ff;--wait:#a66300;--wait-soft:#fff4dc}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--t:#8b85ff;--t-soft:#1e1c45;--t-soft2:#1e1c45;--ok:#3ddc84;--ok-soft:#12301f;--go:#6ea8ff;--go-soft:#1a2740;--wait:#f2c94c;--wait-soft:#332b0c}}
+:root[data-theme="dark"]{--t:#8b85ff;--t-soft:#1e1c45;--t-soft2:#1e1c45;--ok:#3ddc84;--ok-soft:#12301f;--go:#6ea8ff;--go-soft:#1a2740;--wait:#f2c94c;--wait-soft:#332b0c}
+header{position:relative;background:var(--t-soft);margin:0 -16px 40px;padding:40px 16px 28px;border-bottom:4px solid var(--t);display:grid;gap:8px}
+@media (min-width:720px){header{margin:0 -56px 44px;padding:52px 56px 32px;grid-template-columns:minmax(0,1fr) 220px;column-gap:24px;align-items:center} header>*{grid-column:1} header .hero-ill{grid-column:2;grid-row:1 / span 6}}
+.hero-ill{width:100%;max-width:240px;height:auto;justify-self:center}
+@media (max-width:719px){.hero-ill{max-width:180px;order:-1;justify-self:start}}
+header .eyebrow{color:var(--t);font-weight:700}
+header h1{text-wrap:balance}
+.case-no{background:var(--t);color:var(--on-ink, #fff)}
+.case-no{color:#fff}
+h3{border-left-color:var(--t)}
+h2{border-bottom-color:var(--t)}
+.summary a{border-top:3px solid var(--t)}
+.summary .num{color:var(--t)}
+mark{background:linear-gradient(transparent 55%,var(--t-soft) 55%)}
+.setting{background:var(--t-soft);border-color:transparent}
+.setting dt{color:var(--t)}
+.stage{font-weight:700;border-color:transparent}
+.stage.won{color:var(--go);background:var(--go-soft)}
+.stage.s-run{color:var(--ok);background:var(--ok-soft)}
+.stage.s-set{color:var(--wait);background:var(--wait-soft)}
+.status{background:var(--soft);border-radius:var(--radius);padding:10px 14px}
+/* chat-bubble voices */
+p.quote{position:relative;border:0;background:var(--paper);margin:12px 0 12px 52px;padding:12px 16px;border-radius:4px 16px 16px 16px;box-shadow:0 0 0 1.5px var(--t) inset}
+p.quote::before{content:"客";position:absolute;left:-52px;top:0;width:38px;height:38px;border-radius:50%;background:var(--t-soft);color:var(--t);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
+.voices li{border-left:0;box-shadow:0 0 0 1.5px var(--t) inset;border-radius:4px 16px 16px 16px;background:var(--paper)}
+/* industry tiles */
+.tiles li:nth-child(10n+1){--tile:#e7f7ee;--tile-ink:#06a24a}.tiles li:nth-child(10n+2){--tile:#fff1e3;--tile-ink:#e8730c}.tiles li:nth-child(10n+3){--tile:#e6f3fc;--tile-ink:#1d8fd6}.tiles li:nth-child(10n+4){--tile:#fdeaf1;--tile-ink:#e0457b}.tiles li:nth-child(10n+5){--tile:#ecebff;--tile-ink:#4f46e5}.tiles li:nth-child(10n+6){--tile:#e3f6f4;--tile-ink:#0f9488}.tiles li:nth-child(10n+7){--tile:#f3eafc;--tile-ink:#8b3fd1}.tiles li:nth-child(10n+8){--tile:#fff7d6;--tile-ink:#b8860b}.tiles li:nth-child(10n+9){--tile:#fdeee6;--tile-ink:#c2410c}.tiles li:nth-child(10n+10){--tile:#eef4ff;--tile-ink:#1f6feb}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tiles li:nth-child(10n+1){--tile:#12301f;--tile-ink:#3ddc84}:root:not([data-theme="light"]) .tiles li:nth-child(10n+2){--tile:#3a2410;--tile-ink:#ffa24d}:root:not([data-theme="light"]) .tiles li:nth-child(10n+3){--tile:#0f2738;--tile-ink:#5bb8f0}:root:not([data-theme="light"]) .tiles li:nth-child(10n+4){--tile:#3a1624;--tile-ink:#ff7aa8}:root:not([data-theme="light"]) .tiles li:nth-child(10n+5){--tile:#1e1c45;--tile-ink:#8b85ff}:root:not([data-theme="light"]) .tiles li:nth-child(10n+6){--tile:#0f2f2c;--tile-ink:#3fd1c3}:root:not([data-theme="light"]) .tiles li:nth-child(10n+7){--tile:#2b1840;--tile-ink:#bf8cf0}:root:not([data-theme="light"]) .tiles li:nth-child(10n+8){--tile:#332b0c;--tile-ink:#f2c94c}:root:not([data-theme="light"]) .tiles li:nth-child(10n+9){--tile:#3a1a0e;--tile-ink:#ff8a57}:root:not([data-theme="light"]) .tiles li:nth-child(10n+10){--tile:#1a2740;--tile-ink:#6ea8ff}}
+:root[data-theme="dark"] .tiles li:nth-child(10n+1){--tile:#12301f;--tile-ink:#3ddc84}:root[data-theme="dark"] .tiles li:nth-child(10n+2){--tile:#3a2410;--tile-ink:#ffa24d}:root[data-theme="dark"] .tiles li:nth-child(10n+3){--tile:#0f2738;--tile-ink:#5bb8f0}:root[data-theme="dark"] .tiles li:nth-child(10n+4){--tile:#3a1624;--tile-ink:#ff7aa8}:root[data-theme="dark"] .tiles li:nth-child(10n+5){--tile:#1e1c45;--tile-ink:#8b85ff}:root[data-theme="dark"] .tiles li:nth-child(10n+6){--tile:#0f2f2c;--tile-ink:#3fd1c3}:root[data-theme="dark"] .tiles li:nth-child(10n+7){--tile:#2b1840;--tile-ink:#bf8cf0}:root[data-theme="dark"] .tiles li:nth-child(10n+8){--tile:#332b0c;--tile-ink:#f2c94c}:root[data-theme="dark"] .tiles li:nth-child(10n+9){--tile:#3a1a0e;--tile-ink:#ff8a57}:root[data-theme="dark"] .tiles li:nth-child(10n+10){--tile:#1a2740;--tile-ink:#6ea8ff}
+.tiles li{background:var(--tile,var(--soft));border-color:transparent;grid-template-columns:auto 1fr;column-gap:10px;align-items:center}
+.tiles .t-ic{width:34px;height:34px;padding:7px;border-radius:10px;background:var(--paper);stroke:var(--tile-ink,var(--t));fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;grid-row:span 2}
+.tiles .t-name{align-self:end}
+.tiles .t-num{color:var(--tile-ink,var(--t))}
+.tiles .t-bar{grid-column:1 / -1}
+.tiles .t-bar span{background:var(--tile-ink,var(--t))}
+.imap-head .big{color:var(--t)}
+.chips button[aria-pressed="true"]{background:var(--t);border-color:var(--t);color:#fff}
+.acards li{border-top:3px solid var(--t)}
+.acards .a-cat{color:var(--t);font-weight:700}
+@media (prefers-reduced-motion:no-preference){.acards li,.summary a{transition:transform .15s} .acards li:hover,.summary a:hover{transform:translateY(-2px)}}
+/*/DECOR*/
 </style>
 </head>
 <body>
 <div class="sheet">
 
 <header>
+  <svg class="hero-ill" viewBox="0 0 240 170" role="img" aria-hidden="true">
+<rect x="20" y="22" width="150" height="112" rx="14" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.5"/>
+<rect x="34" y="38" width="88" height="8" rx="4" fill="var(--ink)"/><rect x="34" y="56" width="120" height="6" rx="3" fill="var(--line)"/><rect x="34" y="70" width="106" height="6" rx="3" fill="var(--line)"/>
+<rect x="34" y="88" width="76" height="22" rx="11" fill="var(--t)"/><text x="72" y="103" text-anchor="middle" font-size="11" font-weight="700" fill="var(--paper)">おすすめ</text>
+<circle cx="172" cy="112" r="30" fill="var(--t-soft2)" stroke="var(--t)" stroke-width="6"/><path d="M194 134 l22 22" stroke="var(--t)" stroke-width="10" stroke-linecap="round"/>
+<path d="M200 30 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4z" fill="var(--t)"/><path d="M222 64 l2.5 6 6 2.5 -6 2.5 -2.5 6 -2.5 -6 -6 -2.5 6 -2.5z" fill="var(--t)" opacity=".6"/></svg>
   <p class="eyebrow"><a class="back" href="../">CASE STUDY</a> ／ AIOマスター</p>
   <h1>パートナーになって1週間で、初受注。<br>AIOマスターの販売事例</h1>
   <div class="lead">
@@ -244,7 +295,7 @@ ul.plain li{margin-bottom:6px}
     <tr><td>地図検索対策・SNS運用などのWeb集客支援<small>販売パートナー</small></td><td>—</td><td>—</td><td>既存の地図検索対策サービスにAI検索対策を組み込み、計測ログをエビデンスとして顧客に示しながら販売する</td><td><span class="stage won">導入決定</span></td></tr>
     <tr><td>BPO・歯科医院向け集客支援<small>販売パートナー</small></td><td>—</td><td>東京都</td><td>歯科医院向けの最初の提案商材として、診断スキャンでAI検索での露出状況を示しながら提案する</td><td><span class="stage won">導入決定</span></td></tr>
     <tr><td>地域の観光事務局運営・店舗向け訪問営業<small>販売パートナー</small></td><td>店舗ネットワーク約350店</td><td>静岡県</td><td>店舗を訪問した際にアンケートで課題を拾い、その場のAI診断デモでAI検索対策を提案する</td><td><span class="stage won">導入決定</span></td></tr>
-    <tr><td>PR・コンサルティング<small>販売パートナー</small></td><td>—</td><td>—</td><td>計測用の質問50問を作成して自社サイトのAI掲載状況を診断し、改善指示書をもとにFAQや定義文を追加した</td><td><span class="stage">設定中</span></td></tr>
+    <tr><td>PR・コンサルティング<small>販売パートナー</small></td><td>—</td><td>—</td><td>計測用の質問50問を作成して自社サイトのAI掲載状況を診断し、改善指示書をもとにFAQや定義文を追加した</td><td><span class="stage s-set">設定中</span></td></tr>
   </table>
 </div>
   <p class="note">※ 2026年3月〜9月の商談・打ち合わせの記録から、申込以降に進んだ会社を載せています。「設定中」は初期設定を進めている段階です。</p>
@@ -264,7 +315,7 @@ ul.plain li{margin-bottom:6px}
   <p class="quote">「自動運用とはいえ初期設定やFAQ作成など人手が必要な作業がある」</p>
   <p class="quote">「実際にやってみると想定より負荷は低く、5分程度で完了した」</p>
   <p class="quote">「関係性の深い企業へは同席してもらえると信頼感が上がる」</p>
-  <p class="status"><span class="stage">設定中</span>自社サイトでの初期設定を終え、販売の準備を進めています。</p>
+  <p class="status"><span class="stage s-set">設定中</span>自社サイトでの初期設定を終え、販売の準備を進めています。</p>
 </section>
 
 <section id="case06">

@@ -157,12 +157,63 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
 .acards .a-meta{font-size:12.5px;color:var(--ink-mute)}
 .acards .a-use{font-size:13.5px;color:var(--ink-soft);line-height:1.7;margin:0}
 .acards .a-partner{font-size:11px;color:var(--ink-mute);border:1px dashed var(--line);border-radius:4px;padding:0 6px;justify-self:start}
+
+/*DECOR*/
+:root{--t:#1d8fd6;--t-soft:#e6f3fc;--t-soft2:#e6f3fc;--ok:#0f8a3c;--ok-soft:#e5f6ea;--go:#1f6feb;--go-soft:#eaf1ff;--wait:#a66300;--wait-soft:#fff4dc}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--t:#5bb8f0;--t-soft:#0f2738;--t-soft2:#0f2738;--ok:#3ddc84;--ok-soft:#12301f;--go:#6ea8ff;--go-soft:#1a2740;--wait:#f2c94c;--wait-soft:#332b0c}}
+:root[data-theme="dark"]{--t:#5bb8f0;--t-soft:#0f2738;--t-soft2:#0f2738;--ok:#3ddc84;--ok-soft:#12301f;--go:#6ea8ff;--go-soft:#1a2740;--wait:#f2c94c;--wait-soft:#332b0c}
+header{position:relative;background:var(--t-soft);margin:0 -16px 40px;padding:40px 16px 28px;border-bottom:4px solid var(--t);display:grid;gap:8px}
+@media (min-width:720px){header{margin:0 -56px 44px;padding:52px 56px 32px;grid-template-columns:minmax(0,1fr) 220px;column-gap:24px;align-items:center} header>*{grid-column:1} header .hero-ill{grid-column:2;grid-row:1 / span 6}}
+.hero-ill{width:100%;max-width:240px;height:auto;justify-self:center}
+@media (max-width:719px){.hero-ill{max-width:180px;order:-1;justify-self:start}}
+header .eyebrow{color:var(--t);font-weight:700}
+header h1{text-wrap:balance}
+.case-no{background:var(--t);color:var(--on-ink, #fff)}
+.case-no{color:#fff}
+h3{border-left-color:var(--t)}
+h2{border-bottom-color:var(--t)}
+.summary a{border-top:3px solid var(--t)}
+.summary .num{color:var(--t)}
+mark{background:linear-gradient(transparent 55%,var(--t-soft) 55%)}
+.setting{background:var(--t-soft);border-color:transparent}
+.setting dt{color:var(--t)}
+.stage{font-weight:700;border-color:transparent}
+.stage.won{color:var(--go);background:var(--go-soft)}
+.stage.s-run{color:var(--ok);background:var(--ok-soft)}
+.stage.s-set{color:var(--wait);background:var(--wait-soft)}
+.status{background:var(--soft);border-radius:var(--radius);padding:10px 14px}
+/* chat-bubble voices */
+p.quote{position:relative;border:0;background:var(--paper);margin:12px 0 12px 52px;padding:12px 16px;border-radius:4px 16px 16px 16px;box-shadow:0 0 0 1.5px var(--t) inset}
+p.quote::before{content:"客";position:absolute;left:-52px;top:0;width:38px;height:38px;border-radius:50%;background:var(--t-soft);color:var(--t);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
+.voices li{border-left:0;box-shadow:0 0 0 1.5px var(--t) inset;border-radius:4px 16px 16px 16px;background:var(--paper)}
+/* industry tiles */
+.tiles li:nth-child(10n+1){--tile:#e7f7ee;--tile-ink:#06a24a}.tiles li:nth-child(10n+2){--tile:#fff1e3;--tile-ink:#e8730c}.tiles li:nth-child(10n+3){--tile:#e6f3fc;--tile-ink:#1d8fd6}.tiles li:nth-child(10n+4){--tile:#fdeaf1;--tile-ink:#e0457b}.tiles li:nth-child(10n+5){--tile:#ecebff;--tile-ink:#4f46e5}.tiles li:nth-child(10n+6){--tile:#e3f6f4;--tile-ink:#0f9488}.tiles li:nth-child(10n+7){--tile:#f3eafc;--tile-ink:#8b3fd1}.tiles li:nth-child(10n+8){--tile:#fff7d6;--tile-ink:#b8860b}.tiles li:nth-child(10n+9){--tile:#fdeee6;--tile-ink:#c2410c}.tiles li:nth-child(10n+10){--tile:#eef4ff;--tile-ink:#1f6feb}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tiles li:nth-child(10n+1){--tile:#12301f;--tile-ink:#3ddc84}:root:not([data-theme="light"]) .tiles li:nth-child(10n+2){--tile:#3a2410;--tile-ink:#ffa24d}:root:not([data-theme="light"]) .tiles li:nth-child(10n+3){--tile:#0f2738;--tile-ink:#5bb8f0}:root:not([data-theme="light"]) .tiles li:nth-child(10n+4){--tile:#3a1624;--tile-ink:#ff7aa8}:root:not([data-theme="light"]) .tiles li:nth-child(10n+5){--tile:#1e1c45;--tile-ink:#8b85ff}:root:not([data-theme="light"]) .tiles li:nth-child(10n+6){--tile:#0f2f2c;--tile-ink:#3fd1c3}:root:not([data-theme="light"]) .tiles li:nth-child(10n+7){--tile:#2b1840;--tile-ink:#bf8cf0}:root:not([data-theme="light"]) .tiles li:nth-child(10n+8){--tile:#332b0c;--tile-ink:#f2c94c}:root:not([data-theme="light"]) .tiles li:nth-child(10n+9){--tile:#3a1a0e;--tile-ink:#ff8a57}:root:not([data-theme="light"]) .tiles li:nth-child(10n+10){--tile:#1a2740;--tile-ink:#6ea8ff}}
+:root[data-theme="dark"] .tiles li:nth-child(10n+1){--tile:#12301f;--tile-ink:#3ddc84}:root[data-theme="dark"] .tiles li:nth-child(10n+2){--tile:#3a2410;--tile-ink:#ffa24d}:root[data-theme="dark"] .tiles li:nth-child(10n+3){--tile:#0f2738;--tile-ink:#5bb8f0}:root[data-theme="dark"] .tiles li:nth-child(10n+4){--tile:#3a1624;--tile-ink:#ff7aa8}:root[data-theme="dark"] .tiles li:nth-child(10n+5){--tile:#1e1c45;--tile-ink:#8b85ff}:root[data-theme="dark"] .tiles li:nth-child(10n+6){--tile:#0f2f2c;--tile-ink:#3fd1c3}:root[data-theme="dark"] .tiles li:nth-child(10n+7){--tile:#2b1840;--tile-ink:#bf8cf0}:root[data-theme="dark"] .tiles li:nth-child(10n+8){--tile:#332b0c;--tile-ink:#f2c94c}:root[data-theme="dark"] .tiles li:nth-child(10n+9){--tile:#3a1a0e;--tile-ink:#ff8a57}:root[data-theme="dark"] .tiles li:nth-child(10n+10){--tile:#1a2740;--tile-ink:#6ea8ff}
+.tiles li{background:var(--tile,var(--soft));border-color:transparent;grid-template-columns:auto 1fr;column-gap:10px;align-items:center}
+.tiles .t-ic{width:34px;height:34px;padding:7px;border-radius:10px;background:var(--paper);stroke:var(--tile-ink,var(--t));fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;grid-row:span 2}
+.tiles .t-name{align-self:end}
+.tiles .t-num{color:var(--tile-ink,var(--t))}
+.tiles .t-bar{grid-column:1 / -1}
+.tiles .t-bar span{background:var(--tile-ink,var(--t))}
+.imap-head .big{color:var(--t)}
+.chips button[aria-pressed="true"]{background:var(--t);border-color:var(--t);color:#fff}
+.acards li{border-top:3px solid var(--t)}
+.acards .a-cat{color:var(--t);font-weight:700}
+@media (prefers-reduced-motion:no-preference){.acards li,.summary a{transition:transform .15s} .acards li:hover,.summary a:hover{transform:translateY(-2px)}}
+/*/DECOR*/
 </style>
 </head>
 <body>
 <div class="sheet">
 
 <header>
+  <svg class="hero-ill" viewBox="0 0 240 170" role="img" aria-hidden="true">
+<circle cx="190" cy="34" r="20" fill="var(--t-soft2)"/>
+<path d="M20 140 q60 -10 110 -60" stroke="var(--t)" stroke-width="3" stroke-dasharray="6 7" fill="none" stroke-linecap="round"/>
+<g transform="translate(118 30)"><path d="M0 40 q30 -6 52 -30 q-8 26 -2 40 q-20 -8 -50 -10z" fill="var(--t)"/><path d="M50 10 l26 -14 -12 22z" fill="var(--t)"/><path d="M8 40 l-22 18 30 -8z" fill="var(--ink)"/><circle cx="56" cy="16" r="2.5" fill="var(--paper)"/></g>
+<g transform="translate(24 96)"><rect width="56" height="38" rx="5" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.5"/><path d="M2 3 l26 20 26 -20" stroke="var(--ink)" stroke-width="2.5" fill="none" stroke-linejoin="round"/></g>
+<g transform="translate(170 110)"><rect width="56" height="40" rx="6" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.5"/><rect x="8" y="9" width="40" height="5" rx="2.5" fill="var(--line)"/><rect x="8" y="19" width="40" height="5" rx="2.5" fill="var(--line)"/><rect x="26" y="29" width="22" height="7" rx="3" fill="var(--t)"/></g></svg>
   <p class="eyebrow"><a class="back" href="../">CASE STUDY</a> ／ つばめリード</p>
   <h1>人手をかけずに、フォーム営業を。<br>つばめリードの導入事例</h1>
   <div class="lead">
@@ -207,7 +258,7 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
   <p class="quote">「手動でフォーム営業していたが、めちゃくちゃ大変だった」</p>
   <p class="quote">「（ABテスト・分析機能に）痒いところに手が届きすぎる」</p>
   <p class="quote">「お任せAI送信はめちゃくちゃ楽」</p>
-  <p class="status"><span class="stage won">運用中</span>文面を見直しながら送信を続けています。</p>
+  <p class="status"><span class="stage s-run">運用中</span>文面を見直しながら送信を続けています。</p>
 </section>
 
 <section id="case03">
@@ -223,7 +274,7 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
   <h3>お客様の声</h3>
   <p class="quote">「すごい便利ですね」</p>
   <p class="quote">「どんなものがリアクションが取りやすいのかも含めて教えて欲しい」</p>
-  <p class="status"><span class="stage">設定中</span>操作レクチャーを受け、テスト送信の準備を進めています。</p>
+  <p class="status"><span class="stage s-set">設定中</span>操作レクチャーを受け、テスト送信の準備を進めています。</p>
 </section>
 
 <section id="case04">
@@ -239,14 +290,14 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
     <tr><td>りんご飴店のフランチャイズ本部</td><td>—</td><td>—</td><td>フォーム営業とLINEのAI、人によるテレアポを組み合わせ、加盟オーナーの獲得を進める</td><td><span class="stage won">導入決定</span></td></tr>
     <tr><td>特注家具の製作</td><td>協力会社約4社</td><td>東京都</td><td>1都3県の建設・住宅・不動産・内装業者へ月5,000通を送り、反応があった企業だけを代表に引き継ぐ</td><td><span class="stage won">導入決定</span></td></tr>
     <tr><td>障害福祉サービス（就労継続支援B型）</td><td>—</td><td>—</td><td>福祉サービスの新規開拓に向けて問い合わせフォーム営業を始め、反響を確かめながら運用する</td><td><span class="stage won">導入決定</span></td></tr>
-    <tr><td>社内規程・就業規則関連のクラウドサービス提供</td><td>—</td><td>—</td><td>業種・地域・規模で絞ったリストに問い合わせフォーム営業を行い、文面のABテストと送信ログを見ながら改善する</td><td><span class="stage">設定中</span></td></tr>
-    <tr><td>広告・プロモーション制作</td><td>—</td><td>—</td><td>業種や従業員規模を指定してAIで送信リストを作成し、大手企業の宣伝・広報部門からの案件獲得を狙う</td><td><span class="stage">設定中</span></td></tr>
-    <tr><td>不動産</td><td>—</td><td>埼玉県</td><td>キーワードと地域から自動生成した営業リストを使い、問い合わせフォームへの自動投稿で新規開拓を行う</td><td><span class="stage">設定中</span></td></tr>
-    <tr><td>保険代理店向けの営業支援<small>販売パートナー</small></td><td>—</td><td>—</td><td>パートナー自身がフォーム営業を運用し、送ったメールへの返信など見込み客の反応を確かめている</td><td><span class="stage won">運用中</span></td></tr>
+    <tr><td>社内規程・就業規則関連のクラウドサービス提供</td><td>—</td><td>—</td><td>業種・地域・規模で絞ったリストに問い合わせフォーム営業を行い、文面のABテストと送信ログを見ながら改善する</td><td><span class="stage s-set">設定中</span></td></tr>
+    <tr><td>広告・プロモーション制作</td><td>—</td><td>—</td><td>業種や従業員規模を指定してAIで送信リストを作成し、大手企業の宣伝・広報部門からの案件獲得を狙う</td><td><span class="stage s-set">設定中</span></td></tr>
+    <tr><td>不動産</td><td>—</td><td>埼玉県</td><td>キーワードと地域から自動生成した営業リストを使い、問い合わせフォームへの自動投稿で新規開拓を行う</td><td><span class="stage s-set">設定中</span></td></tr>
+    <tr><td>保険代理店向けの営業支援<small>販売パートナー</small></td><td>—</td><td>—</td><td>パートナー自身がフォーム営業を運用し、送ったメールへの返信など見込み客の反応を確かめている</td><td><span class="stage s-run">運用中</span></td></tr>
     <tr><td>採用代行<small>販売パートナー</small></td><td>—</td><td>神奈川県</td><td>自社での利用と代理販売の両面で申し込み、採用代行サービスの直接顧客の開拓に活用する</td><td><span class="stage won">導入決定</span></td></tr>
     <tr><td>営業代行・コンサルティング<small>販売パートナー</small></td><td>—</td><td>静岡県</td><td>自社の顧客（中古車買取関連の会社）向けに、フォーム営業を自社ブランドの商材として提供する</td><td><span class="stage won">導入決定</span></td></tr>
-    <tr><td>補助金情報・支援サービス<small>販売パートナー</small></td><td>—</td><td>—</td><td>自社で原稿を用意してフォーム営業を開始し、送信リストの設定を進めながら自社ブランドでの販売も検討する</td><td><span class="stage">設定中</span></td></tr>
-    <tr><td>広告クリエイティブ制作<small>販売パートナー</small></td><td>1人会社</td><td>—</td><td>業種・地域・規模で絞り込み、1日200通程度の配信を想定してフォーム営業を再開する</td><td><span class="stage">設定中</span></td></tr>
+    <tr><td>補助金情報・支援サービス<small>販売パートナー</small></td><td>—</td><td>—</td><td>自社で原稿を用意してフォーム営業を開始し、送信リストの設定を進めながら自社ブランドでの販売も検討する</td><td><span class="stage s-set">設定中</span></td></tr>
+    <tr><td>広告クリエイティブ制作<small>販売パートナー</small></td><td>1人会社</td><td>—</td><td>業種・地域・規模で絞り込み、1日200通程度の配信を想定してフォーム営業を再開する</td><td><span class="stage s-set">設定中</span></td></tr>
   </table>
 </div>
   <p class="note">※ 2026年3月〜9月の商談・打ち合わせの記録から、申込以降に進んだ会社を載せています。「設定中」は初期設定を進めている段階です。</p>

@@ -157,12 +157,63 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
 .acards .a-meta{font-size:12.5px;color:var(--ink-mute)}
 .acards .a-use{font-size:13.5px;color:var(--ink-soft);line-height:1.7;margin:0}
 .acards .a-partner{font-size:11px;color:var(--ink-mute);border:1px dashed var(--line);border-radius:4px;padding:0 6px;justify-self:start}
+
+/*DECOR*/
+:root{--t:#e8730c;--t-soft:#fff1e3;--t-soft2:#fff1e3;--ok:#0f8a3c;--ok-soft:#e5f6ea;--go:#1f6feb;--go-soft:#eaf1ff;--wait:#a66300;--wait-soft:#fff4dc}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--t:#ffa24d;--t-soft:#3a2410;--t-soft2:#3a2410;--ok:#3ddc84;--ok-soft:#12301f;--go:#6ea8ff;--go-soft:#1a2740;--wait:#f2c94c;--wait-soft:#332b0c}}
+:root[data-theme="dark"]{--t:#ffa24d;--t-soft:#3a2410;--t-soft2:#3a2410;--ok:#3ddc84;--ok-soft:#12301f;--go:#6ea8ff;--go-soft:#1a2740;--wait:#f2c94c;--wait-soft:#332b0c}
+header{position:relative;background:var(--t-soft);margin:0 -16px 40px;padding:40px 16px 28px;border-bottom:4px solid var(--t);display:grid;gap:8px}
+@media (min-width:720px){header{margin:0 -56px 44px;padding:52px 56px 32px;grid-template-columns:minmax(0,1fr) 220px;column-gap:24px;align-items:center} header>*{grid-column:1} header .hero-ill{grid-column:2;grid-row:1 / span 6}}
+.hero-ill{width:100%;max-width:240px;height:auto;justify-self:center}
+@media (max-width:719px){.hero-ill{max-width:180px;order:-1;justify-self:start}}
+header .eyebrow{color:var(--t);font-weight:700}
+header h1{text-wrap:balance}
+.case-no{background:var(--t);color:var(--on-ink, #fff)}
+.case-no{color:#fff}
+h3{border-left-color:var(--t)}
+h2{border-bottom-color:var(--t)}
+.summary a{border-top:3px solid var(--t)}
+.summary .num{color:var(--t)}
+mark{background:linear-gradient(transparent 55%,var(--t-soft) 55%)}
+.setting{background:var(--t-soft);border-color:transparent}
+.setting dt{color:var(--t)}
+.stage{font-weight:700;border-color:transparent}
+.stage.won{color:var(--go);background:var(--go-soft)}
+.stage.s-run{color:var(--ok);background:var(--ok-soft)}
+.stage.s-set{color:var(--wait);background:var(--wait-soft)}
+.status{background:var(--soft);border-radius:var(--radius);padding:10px 14px}
+/* chat-bubble voices */
+p.quote{position:relative;border:0;background:var(--paper);margin:12px 0 12px 52px;padding:12px 16px;border-radius:4px 16px 16px 16px;box-shadow:0 0 0 1.5px var(--t) inset}
+p.quote::before{content:"客";position:absolute;left:-52px;top:0;width:38px;height:38px;border-radius:50%;background:var(--t-soft);color:var(--t);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
+.voices li{border-left:0;box-shadow:0 0 0 1.5px var(--t) inset;border-radius:4px 16px 16px 16px;background:var(--paper)}
+/* industry tiles */
+.tiles li:nth-child(10n+1){--tile:#e7f7ee;--tile-ink:#06a24a}.tiles li:nth-child(10n+2){--tile:#fff1e3;--tile-ink:#e8730c}.tiles li:nth-child(10n+3){--tile:#e6f3fc;--tile-ink:#1d8fd6}.tiles li:nth-child(10n+4){--tile:#fdeaf1;--tile-ink:#e0457b}.tiles li:nth-child(10n+5){--tile:#ecebff;--tile-ink:#4f46e5}.tiles li:nth-child(10n+6){--tile:#e3f6f4;--tile-ink:#0f9488}.tiles li:nth-child(10n+7){--tile:#f3eafc;--tile-ink:#8b3fd1}.tiles li:nth-child(10n+8){--tile:#fff7d6;--tile-ink:#b8860b}.tiles li:nth-child(10n+9){--tile:#fdeee6;--tile-ink:#c2410c}.tiles li:nth-child(10n+10){--tile:#eef4ff;--tile-ink:#1f6feb}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tiles li:nth-child(10n+1){--tile:#12301f;--tile-ink:#3ddc84}:root:not([data-theme="light"]) .tiles li:nth-child(10n+2){--tile:#3a2410;--tile-ink:#ffa24d}:root:not([data-theme="light"]) .tiles li:nth-child(10n+3){--tile:#0f2738;--tile-ink:#5bb8f0}:root:not([data-theme="light"]) .tiles li:nth-child(10n+4){--tile:#3a1624;--tile-ink:#ff7aa8}:root:not([data-theme="light"]) .tiles li:nth-child(10n+5){--tile:#1e1c45;--tile-ink:#8b85ff}:root:not([data-theme="light"]) .tiles li:nth-child(10n+6){--tile:#0f2f2c;--tile-ink:#3fd1c3}:root:not([data-theme="light"]) .tiles li:nth-child(10n+7){--tile:#2b1840;--tile-ink:#bf8cf0}:root:not([data-theme="light"]) .tiles li:nth-child(10n+8){--tile:#332b0c;--tile-ink:#f2c94c}:root:not([data-theme="light"]) .tiles li:nth-child(10n+9){--tile:#3a1a0e;--tile-ink:#ff8a57}:root:not([data-theme="light"]) .tiles li:nth-child(10n+10){--tile:#1a2740;--tile-ink:#6ea8ff}}
+:root[data-theme="dark"] .tiles li:nth-child(10n+1){--tile:#12301f;--tile-ink:#3ddc84}:root[data-theme="dark"] .tiles li:nth-child(10n+2){--tile:#3a2410;--tile-ink:#ffa24d}:root[data-theme="dark"] .tiles li:nth-child(10n+3){--tile:#0f2738;--tile-ink:#5bb8f0}:root[data-theme="dark"] .tiles li:nth-child(10n+4){--tile:#3a1624;--tile-ink:#ff7aa8}:root[data-theme="dark"] .tiles li:nth-child(10n+5){--tile:#1e1c45;--tile-ink:#8b85ff}:root[data-theme="dark"] .tiles li:nth-child(10n+6){--tile:#0f2f2c;--tile-ink:#3fd1c3}:root[data-theme="dark"] .tiles li:nth-child(10n+7){--tile:#2b1840;--tile-ink:#bf8cf0}:root[data-theme="dark"] .tiles li:nth-child(10n+8){--tile:#332b0c;--tile-ink:#f2c94c}:root[data-theme="dark"] .tiles li:nth-child(10n+9){--tile:#3a1a0e;--tile-ink:#ff8a57}:root[data-theme="dark"] .tiles li:nth-child(10n+10){--tile:#1a2740;--tile-ink:#6ea8ff}
+.tiles li{background:var(--tile,var(--soft));border-color:transparent;grid-template-columns:auto 1fr;column-gap:10px;align-items:center}
+.tiles .t-ic{width:34px;height:34px;padding:7px;border-radius:10px;background:var(--paper);stroke:var(--tile-ink,var(--t));fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;grid-row:span 2}
+.tiles .t-name{align-self:end}
+.tiles .t-num{color:var(--tile-ink,var(--t))}
+.tiles .t-bar{grid-column:1 / -1}
+.tiles .t-bar span{background:var(--tile-ink,var(--t))}
+.imap-head .big{color:var(--t)}
+.chips button[aria-pressed="true"]{background:var(--t);border-color:var(--t);color:#fff}
+.acards li{border-top:3px solid var(--t)}
+.acards .a-cat{color:var(--t);font-weight:700}
+@media (prefers-reduced-motion:no-preference){.acards li,.summary a{transition:transform .15s} .acards li:hover,.summary a:hover{transform:translateY(-2px)}}
+/*/DECOR*/
 </style>
 </head>
 <body>
 <div class="sheet">
 
 <header>
+  <svg class="hero-ill" viewBox="0 0 240 170" role="img" aria-hidden="true">
+<circle cx="120" cy="88" r="62" fill="var(--t-soft2)"/>
+<path d="M88 54 c-8 8 -8 30 14 52 s44 22 52 14 l-14 -16 c-4 -4 -10 -3 -14 1 l-4 4 c-8 -4 -18 -14 -22 -22 l4 -4 c4 -4 5 -10 1 -14z" fill="var(--t)"/>
+<path d="M150 46 q16 10 16 30" stroke="var(--t)" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M156 30 q26 16 26 48" stroke="var(--t)" stroke-width="4" fill="none" stroke-linecap="round" opacity=".55"/>
+<g transform="translate(16 18)"><rect width="66" height="34" rx="12" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.5"/><text x="33" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">ご予約は…</text></g>
+<g transform="translate(150 120)"><rect width="74" height="34" rx="12" fill="var(--t)"/><text x="37" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="var(--paper)">承りました</text></g></svg>
   <p class="eyebrow"><a class="back" href="../">CASE STUDY</a> ／ 受電AI</p>
   <h1>電話の一次受付を、AIに。<br>受電AIの導入事例</h1>
   <div class="lead">
@@ -193,7 +244,7 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
   <p class="quote">「電話で受け付けて、カレンダーの予定まで取って、お客様情報と要望を聞いてくれるだけでもめちゃくちゃ助かる」</p>
   <p class="quote">「完全に自動化できなくても手間が減るだけで相当助かる」</p>
   <p class="quote">「女性の声の方が『あくまで受付担当で、担当者から折り返します』に説得力がある」</p>
-  <p class="status"><span class="stage">設定中</span>ヒアリング項目を確定し、本格稼働に向けて構築中です。</p>
+  <p class="status"><span class="stage s-set">設定中</span>ヒアリング項目を確定し、本格稼働に向けて構築中です。</p>
 </section>
 
 <section id="case02">
@@ -210,7 +261,7 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
   <p class="quote">「1番で出勤・2番で退勤のように番号だけでいい。警備スタッフは年配が多い」</p>
   <p class="quote">「現場の地図がショートメールで飛ぶのは結構強い」</p>
   <p class="quote">「給与計算の負担がなくなれば、その管理職は営業に回るなど現場をもう1つ取れるようになる」</p>
-  <p class="status"><span class="stage">設定中</span>20名で2週間のパイロット運用を予定しています。</p>
+  <p class="status"><span class="stage s-set">設定中</span>20名で2週間のパイロット運用を予定しています。</p>
 </section>
 
 <section id="case03">
@@ -227,7 +278,7 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
   <p class="quote">「予想以上にナチュラルでロボットっぽくなかった」</p>
   <p class="quote">「予約まで決まった瞬間にSMSが来る、すごい」</p>
   <p class="quote">「登録した番号だけ弾かれない仕組みが組めれば、クライアントを守ることができるのでめっちゃ助かる」</p>
-  <p class="status"><span class="stage">設定中</span>飲食店への展開に向けて準備中です。</p>
+  <p class="status"><span class="stage s-set">設定中</span>飲食店への展開に向けて準備中です。</p>
 </section>
 
 <section id="case04">
@@ -238,11 +289,11 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
   <table class="adopters">
     <tr><th>業種</th><th>規模</th><th>地域</th><th>使い方</th><th>段階</th></tr>
     <tr><td>クリーニング店チェーン</td><td>約40店舗</td><td>東京都・神奈川県</td><td>まず本部の代表電話をAIに転送して営業電話や土日の受付に対応し、精度を確かめたうえで店舗への展開を検討する</td><td><span class="stage won">導入決定</span></td></tr>
-    <tr><td>住宅リフォーム（給湯器・水回りなど）</td><td>2名体制</td><td>—</td><td>AIが電話で氏名・住所・依頼内容などを聞き取り、カレンダーの空きを見て予定の登録まで行う</td><td><span class="stage">設定中</span></td></tr>
-    <tr><td>警備業（施設警備・交通誘導）</td><td>警備スタッフ約60名</td><td>岡山県</td><td>受電AIをもとに、電話の番号選択で出退勤を記録し、現場の地図や指示書をSMSで一括送信する仕組みを構築中</td><td><span class="stage">設定中</span></td></tr>
+    <tr><td>住宅リフォーム（給湯器・水回りなど）</td><td>2名体制</td><td>—</td><td>AIが電話で氏名・住所・依頼内容などを聞き取り、カレンダーの空きを見て予定の登録まで行う</td><td><span class="stage s-set">設定中</span></td></tr>
+    <tr><td>警備業（施設警備・交通誘導）</td><td>警備スタッフ約60名</td><td>岡山県</td><td>受電AIをもとに、電話の番号選択で出退勤を記録し、現場の地図や指示書をSMSで一括送信する仕組みを構築中</td><td><span class="stage s-set">設定中</span></td></tr>
     <tr><td>地域の観光事務局運営・店舗向け訪問営業<small>販売パートナー</small></td><td>—</td><td>静岡県</td><td>訪問先の店舗に、営業電話を遮断して予約の電話だけを店舗へ転送する電話AIを提案していく</td><td><span class="stage won">導入決定</span></td></tr>
-    <tr><td>飲食店向け営業支援・テレアポ（自社でも飲食店を運営）<small>販売パートナー</small></td><td>—</td><td>東京都</td><td>飲食店の電話を、予約など重要なものは人に転送し営業電話は弾く流れで検証し、自社ブランドでの販売を準備する</td><td><span class="stage">設定中</span></td></tr>
-    <tr><td>飲食店向けの営業代理<small>販売パートナー</small></td><td>—</td><td>—</td><td>既存の番号のまま転送設定でAIが一次対応し、営業電話の遮断と取引先の直接転送で顧客の飲食店を守る提案を行う</td><td><span class="stage">設定中</span></td></tr>
+    <tr><td>飲食店向け営業支援・テレアポ（自社でも飲食店を運営）<small>販売パートナー</small></td><td>—</td><td>東京都</td><td>飲食店の電話を、予約など重要なものは人に転送し営業電話は弾く流れで検証し、自社ブランドでの販売を準備する</td><td><span class="stage s-set">設定中</span></td></tr>
+    <tr><td>飲食店向けの営業代理<small>販売パートナー</small></td><td>—</td><td>—</td><td>既存の番号のまま転送設定でAIが一次対応し、営業電話の遮断と取引先の直接転送で顧客の飲食店を守る提案を行う</td><td><span class="stage s-set">設定中</span></td></tr>
   </table>
 </div>
   <p class="note">※ 2026年3月〜9月の商談・打ち合わせの記録から、申込以降に進んだ会社を載せています。「設定中」は初期設定を進めている段階です。</p>

@@ -157,12 +157,63 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
 .acards .a-meta{font-size:12.5px;color:var(--ink-mute)}
 .acards .a-use{font-size:13.5px;color:var(--ink-soft);line-height:1.7;margin:0}
 .acards .a-partner{font-size:11px;color:var(--ink-mute);border:1px dashed var(--line);border-radius:4px;padding:0 6px;justify-self:start}
+
+/*DECOR*/
+:root{--t:#8b3fd1;--t-soft:#f3eafc;--t-soft2:#f3eafc;--ok:#0f8a3c;--ok-soft:#e5f6ea;--go:#1f6feb;--go-soft:#eaf1ff;--wait:#a66300;--wait-soft:#fff4dc}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--t:#bf8cf0;--t-soft:#2b1840;--t-soft2:#2b1840;--ok:#3ddc84;--ok-soft:#12301f;--go:#6ea8ff;--go-soft:#1a2740;--wait:#f2c94c;--wait-soft:#332b0c}}
+:root[data-theme="dark"]{--t:#bf8cf0;--t-soft:#2b1840;--t-soft2:#2b1840;--ok:#3ddc84;--ok-soft:#12301f;--go:#6ea8ff;--go-soft:#1a2740;--wait:#f2c94c;--wait-soft:#332b0c}
+header{position:relative;background:var(--t-soft);margin:0 -16px 40px;padding:40px 16px 28px;border-bottom:4px solid var(--t);display:grid;gap:8px}
+@media (min-width:720px){header{margin:0 -56px 44px;padding:52px 56px 32px;grid-template-columns:minmax(0,1fr) 220px;column-gap:24px;align-items:center} header>*{grid-column:1} header .hero-ill{grid-column:2;grid-row:1 / span 6}}
+.hero-ill{width:100%;max-width:240px;height:auto;justify-self:center}
+@media (max-width:719px){.hero-ill{max-width:180px;order:-1;justify-self:start}}
+header .eyebrow{color:var(--t);font-weight:700}
+header h1{text-wrap:balance}
+.case-no{background:var(--t);color:var(--on-ink, #fff)}
+.case-no{color:#fff}
+h3{border-left-color:var(--t)}
+h2{border-bottom-color:var(--t)}
+.summary a{border-top:3px solid var(--t)}
+.summary .num{color:var(--t)}
+mark{background:linear-gradient(transparent 55%,var(--t-soft) 55%)}
+.setting{background:var(--t-soft);border-color:transparent}
+.setting dt{color:var(--t)}
+.stage{font-weight:700;border-color:transparent}
+.stage.won{color:var(--go);background:var(--go-soft)}
+.stage.s-run{color:var(--ok);background:var(--ok-soft)}
+.stage.s-set{color:var(--wait);background:var(--wait-soft)}
+.status{background:var(--soft);border-radius:var(--radius);padding:10px 14px}
+/* chat-bubble voices */
+p.quote{position:relative;border:0;background:var(--paper);margin:12px 0 12px 52px;padding:12px 16px;border-radius:4px 16px 16px 16px;box-shadow:0 0 0 1.5px var(--t) inset}
+p.quote::before{content:"客";position:absolute;left:-52px;top:0;width:38px;height:38px;border-radius:50%;background:var(--t-soft);color:var(--t);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
+.voices li{border-left:0;box-shadow:0 0 0 1.5px var(--t) inset;border-radius:4px 16px 16px 16px;background:var(--paper)}
+/* industry tiles */
+.tiles li:nth-child(10n+1){--tile:#e7f7ee;--tile-ink:#06a24a}.tiles li:nth-child(10n+2){--tile:#fff1e3;--tile-ink:#e8730c}.tiles li:nth-child(10n+3){--tile:#e6f3fc;--tile-ink:#1d8fd6}.tiles li:nth-child(10n+4){--tile:#fdeaf1;--tile-ink:#e0457b}.tiles li:nth-child(10n+5){--tile:#ecebff;--tile-ink:#4f46e5}.tiles li:nth-child(10n+6){--tile:#e3f6f4;--tile-ink:#0f9488}.tiles li:nth-child(10n+7){--tile:#f3eafc;--tile-ink:#8b3fd1}.tiles li:nth-child(10n+8){--tile:#fff7d6;--tile-ink:#b8860b}.tiles li:nth-child(10n+9){--tile:#fdeee6;--tile-ink:#c2410c}.tiles li:nth-child(10n+10){--tile:#eef4ff;--tile-ink:#1f6feb}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tiles li:nth-child(10n+1){--tile:#12301f;--tile-ink:#3ddc84}:root:not([data-theme="light"]) .tiles li:nth-child(10n+2){--tile:#3a2410;--tile-ink:#ffa24d}:root:not([data-theme="light"]) .tiles li:nth-child(10n+3){--tile:#0f2738;--tile-ink:#5bb8f0}:root:not([data-theme="light"]) .tiles li:nth-child(10n+4){--tile:#3a1624;--tile-ink:#ff7aa8}:root:not([data-theme="light"]) .tiles li:nth-child(10n+5){--tile:#1e1c45;--tile-ink:#8b85ff}:root:not([data-theme="light"]) .tiles li:nth-child(10n+6){--tile:#0f2f2c;--tile-ink:#3fd1c3}:root:not([data-theme="light"]) .tiles li:nth-child(10n+7){--tile:#2b1840;--tile-ink:#bf8cf0}:root:not([data-theme="light"]) .tiles li:nth-child(10n+8){--tile:#332b0c;--tile-ink:#f2c94c}:root:not([data-theme="light"]) .tiles li:nth-child(10n+9){--tile:#3a1a0e;--tile-ink:#ff8a57}:root:not([data-theme="light"]) .tiles li:nth-child(10n+10){--tile:#1a2740;--tile-ink:#6ea8ff}}
+:root[data-theme="dark"] .tiles li:nth-child(10n+1){--tile:#12301f;--tile-ink:#3ddc84}:root[data-theme="dark"] .tiles li:nth-child(10n+2){--tile:#3a2410;--tile-ink:#ffa24d}:root[data-theme="dark"] .tiles li:nth-child(10n+3){--tile:#0f2738;--tile-ink:#5bb8f0}:root[data-theme="dark"] .tiles li:nth-child(10n+4){--tile:#3a1624;--tile-ink:#ff7aa8}:root[data-theme="dark"] .tiles li:nth-child(10n+5){--tile:#1e1c45;--tile-ink:#8b85ff}:root[data-theme="dark"] .tiles li:nth-child(10n+6){--tile:#0f2f2c;--tile-ink:#3fd1c3}:root[data-theme="dark"] .tiles li:nth-child(10n+7){--tile:#2b1840;--tile-ink:#bf8cf0}:root[data-theme="dark"] .tiles li:nth-child(10n+8){--tile:#332b0c;--tile-ink:#f2c94c}:root[data-theme="dark"] .tiles li:nth-child(10n+9){--tile:#3a1a0e;--tile-ink:#ff8a57}:root[data-theme="dark"] .tiles li:nth-child(10n+10){--tile:#1a2740;--tile-ink:#6ea8ff}
+.tiles li{background:var(--tile,var(--soft));border-color:transparent;grid-template-columns:auto 1fr;column-gap:10px;align-items:center}
+.tiles .t-ic{width:34px;height:34px;padding:7px;border-radius:10px;background:var(--paper);stroke:var(--tile-ink,var(--t));fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;grid-row:span 2}
+.tiles .t-name{align-self:end}
+.tiles .t-num{color:var(--tile-ink,var(--t))}
+.tiles .t-bar{grid-column:1 / -1}
+.tiles .t-bar span{background:var(--tile-ink,var(--t))}
+.imap-head .big{color:var(--t)}
+.chips button[aria-pressed="true"]{background:var(--t);border-color:var(--t);color:#fff}
+.acards li{border-top:3px solid var(--t)}
+.acards .a-cat{color:var(--t);font-weight:700}
+@media (prefers-reduced-motion:no-preference){.acards li,.summary a{transition:transform .15s} .acards li:hover,.summary a:hover{transform:translateY(-2px)}}
+/*/DECOR*/
 </style>
 </head>
 <body>
 <div class="sheet">
 
 <header>
+  <svg class="hero-ill" viewBox="0 0 240 170" role="img" aria-hidden="true">
+<circle cx="120" cy="120" r="54" fill="var(--t-soft2)"/><rect x="0" y="120" width="240" height="50" fill="var(--paper)"/>
+<path d="M30 120 h180" stroke="var(--ink)" stroke-width="2.5"/>
+<g stroke="var(--t)" stroke-width="4" stroke-linecap="round"><path d="M120 44 v-16"/><path d="M76 62 l-11 -11"/><path d="M164 62 l11 -11"/></g>
+<g transform="translate(78 92)"><rect width="84" height="56" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.5"/><path d="M3 4 l39 28 39 -28" stroke="var(--ink)" stroke-width="2.5" fill="none" stroke-linejoin="round"/></g>
+<g transform="translate(150 70)"><circle r="16" cx="16" cy="16" fill="var(--t)"/><path d="M9 16 l5 5 10 -11" stroke="var(--paper)" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g></svg>
   <p class="eyebrow"><a class="back" href="../">CASE STUDY</a> ／ Elliot</p>
   <h1>社内の情報から、毎朝ヒントを。<br>Elliotの導入事例</h1>
   <div class="lead">
@@ -206,7 +257,7 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
   <h3>お客様の声</h3>
   <p class="quote">「自分がAIを使いこなすことで中小企業経営者の模範・広告塔になりたい」</p>
   <p class="quote">「初期設定の打合せで導入目的や全体像の説明が足りなかった」</p>
-  <p class="status"><span class="stage">設定中</span>モニターとして初期設定を進めています。</p>
+  <p class="status"><span class="stage s-set">設定中</span>モニターとして初期設定を進めています。</p>
 </section>
 
 <section id="case03">
@@ -217,8 +268,8 @@ footer.close{border-top:2px solid var(--ink);padding-top:28px;margin-top:24px}
   <table class="adopters">
     <tr><th>業種</th><th>規模</th><th>地域</th><th>使い方</th><th>段階</th></tr>
     <tr><td>食品関連の輸入業</td><td>8〜10名程度</td><td>兵庫県</td><td>会議や営業の文字起こしログを蓄積し、AIが分析して役割ごとに示唆やアラートを自動で届ける仕組みを小さく始める</td><td><span class="stage won">導入決定</span></td></tr>
-    <tr><td>人材紹介・採用代行（外国人材の紹介を含む）</td><td>約20名</td><td>—</td><td>本人プロフィールの登録とログの保存先の連携を進め、面談ログの確認やフィードバックに活用する予定</td><td><span class="stage">設定中</span></td></tr>
-    <tr><td>キャリアコンサルティング・中小企業の組織開発<small>販売パートナー</small></td><td>—</td><td>—</td><td>面談ログを集約し、キャリアコンサルタントの面談品質の標準化に生かす案のもとで初期設定を進めている</td><td><span class="stage">設定中</span></td></tr>
+    <tr><td>人材紹介・採用代行（外国人材の紹介を含む）</td><td>約20名</td><td>—</td><td>本人プロフィールの登録とログの保存先の連携を進め、面談ログの確認やフィードバックに活用する予定</td><td><span class="stage s-set">設定中</span></td></tr>
+    <tr><td>キャリアコンサルティング・中小企業の組織開発<small>販売パートナー</small></td><td>—</td><td>—</td><td>面談ログを集約し、キャリアコンサルタントの面談品質の標準化に生かす案のもとで初期設定を進めている</td><td><span class="stage s-set">設定中</span></td></tr>
   </table>
 </div>
   <p class="note">※ 2026年3月〜9月の商談・打ち合わせの記録から、申込以降に進んだ会社を載せています。「設定中」は初期設定を進めている段階です。</p>

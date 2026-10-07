@@ -167,12 +167,64 @@ ul.plain li{margin-bottom:6px}
 .acards .a-meta{font-size:12.5px;color:var(--ink-mute)}
 .acards .a-use{font-size:13.5px;color:var(--ink-soft);line-height:1.7;margin:0}
 .acards .a-partner{font-size:11px;color:var(--ink-mute);border:1px dashed var(--line);border-radius:4px;padding:0 6px;justify-self:start}
+
+/*DECOR*/
+:root{--t:#e0457b;--t-soft:#fdeaf1;--t-soft2:#fdeaf1;--ok:#0f8a3c;--ok-soft:#e5f6ea;--go:#1f6feb;--go-soft:#eaf1ff;--wait:#a66300;--wait-soft:#fff4dc}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--t:#ff7aa8;--t-soft:#3a1624;--t-soft2:#3a1624;--ok:#3ddc84;--ok-soft:#12301f;--go:#6ea8ff;--go-soft:#1a2740;--wait:#f2c94c;--wait-soft:#332b0c}}
+:root[data-theme="dark"]{--t:#ff7aa8;--t-soft:#3a1624;--t-soft2:#3a1624;--ok:#3ddc84;--ok-soft:#12301f;--go:#6ea8ff;--go-soft:#1a2740;--wait:#f2c94c;--wait-soft:#332b0c}
+header{position:relative;background:var(--t-soft);margin:0 -16px 40px;padding:40px 16px 28px;border-bottom:4px solid var(--t);display:grid;gap:8px}
+@media (min-width:720px){header{margin:0 -56px 44px;padding:52px 56px 32px;grid-template-columns:minmax(0,1fr) 220px;column-gap:24px;align-items:center} header>*{grid-column:1} header .hero-ill{grid-column:2;grid-row:1 / span 6}}
+.hero-ill{width:100%;max-width:240px;height:auto;justify-self:center}
+@media (max-width:719px){.hero-ill{max-width:180px;order:-1;justify-self:start}}
+header .eyebrow{color:var(--t);font-weight:700}
+header h1{text-wrap:balance}
+.case-no{background:var(--t);color:var(--on-ink, #fff)}
+.case-no{color:#fff}
+h3{border-left-color:var(--t)}
+h2{border-bottom-color:var(--t)}
+.summary a{border-top:3px solid var(--t)}
+.summary .num{color:var(--t)}
+mark{background:linear-gradient(transparent 55%,var(--t-soft) 55%)}
+.setting{background:var(--t-soft);border-color:transparent}
+.setting dt{color:var(--t)}
+.stage{font-weight:700;border-color:transparent}
+.stage.won{color:var(--go);background:var(--go-soft)}
+.stage.s-run{color:var(--ok);background:var(--ok-soft)}
+.stage.s-set{color:var(--wait);background:var(--wait-soft)}
+.status{background:var(--soft);border-radius:var(--radius);padding:10px 14px}
+/* chat-bubble voices */
+p.quote{position:relative;border:0;background:var(--paper);margin:12px 0 12px 52px;padding:12px 16px;border-radius:4px 16px 16px 16px;box-shadow:0 0 0 1.5px var(--t) inset}
+p.quote::before{content:"客";position:absolute;left:-52px;top:0;width:38px;height:38px;border-radius:50%;background:var(--t-soft);color:var(--t);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
+.voices li{border-left:0;box-shadow:0 0 0 1.5px var(--t) inset;border-radius:4px 16px 16px 16px;background:var(--paper)}
+/* industry tiles */
+.tiles li:nth-child(10n+1){--tile:#e7f7ee;--tile-ink:#06a24a}.tiles li:nth-child(10n+2){--tile:#fff1e3;--tile-ink:#e8730c}.tiles li:nth-child(10n+3){--tile:#e6f3fc;--tile-ink:#1d8fd6}.tiles li:nth-child(10n+4){--tile:#fdeaf1;--tile-ink:#e0457b}.tiles li:nth-child(10n+5){--tile:#ecebff;--tile-ink:#4f46e5}.tiles li:nth-child(10n+6){--tile:#e3f6f4;--tile-ink:#0f9488}.tiles li:nth-child(10n+7){--tile:#f3eafc;--tile-ink:#8b3fd1}.tiles li:nth-child(10n+8){--tile:#fff7d6;--tile-ink:#b8860b}.tiles li:nth-child(10n+9){--tile:#fdeee6;--tile-ink:#c2410c}.tiles li:nth-child(10n+10){--tile:#eef4ff;--tile-ink:#1f6feb}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tiles li:nth-child(10n+1){--tile:#12301f;--tile-ink:#3ddc84}:root:not([data-theme="light"]) .tiles li:nth-child(10n+2){--tile:#3a2410;--tile-ink:#ffa24d}:root:not([data-theme="light"]) .tiles li:nth-child(10n+3){--tile:#0f2738;--tile-ink:#5bb8f0}:root:not([data-theme="light"]) .tiles li:nth-child(10n+4){--tile:#3a1624;--tile-ink:#ff7aa8}:root:not([data-theme="light"]) .tiles li:nth-child(10n+5){--tile:#1e1c45;--tile-ink:#8b85ff}:root:not([data-theme="light"]) .tiles li:nth-child(10n+6){--tile:#0f2f2c;--tile-ink:#3fd1c3}:root:not([data-theme="light"]) .tiles li:nth-child(10n+7){--tile:#2b1840;--tile-ink:#bf8cf0}:root:not([data-theme="light"]) .tiles li:nth-child(10n+8){--tile:#332b0c;--tile-ink:#f2c94c}:root:not([data-theme="light"]) .tiles li:nth-child(10n+9){--tile:#3a1a0e;--tile-ink:#ff8a57}:root:not([data-theme="light"]) .tiles li:nth-child(10n+10){--tile:#1a2740;--tile-ink:#6ea8ff}}
+:root[data-theme="dark"] .tiles li:nth-child(10n+1){--tile:#12301f;--tile-ink:#3ddc84}:root[data-theme="dark"] .tiles li:nth-child(10n+2){--tile:#3a2410;--tile-ink:#ffa24d}:root[data-theme="dark"] .tiles li:nth-child(10n+3){--tile:#0f2738;--tile-ink:#5bb8f0}:root[data-theme="dark"] .tiles li:nth-child(10n+4){--tile:#3a1624;--tile-ink:#ff7aa8}:root[data-theme="dark"] .tiles li:nth-child(10n+5){--tile:#1e1c45;--tile-ink:#8b85ff}:root[data-theme="dark"] .tiles li:nth-child(10n+6){--tile:#0f2f2c;--tile-ink:#3fd1c3}:root[data-theme="dark"] .tiles li:nth-child(10n+7){--tile:#2b1840;--tile-ink:#bf8cf0}:root[data-theme="dark"] .tiles li:nth-child(10n+8){--tile:#332b0c;--tile-ink:#f2c94c}:root[data-theme="dark"] .tiles li:nth-child(10n+9){--tile:#3a1a0e;--tile-ink:#ff8a57}:root[data-theme="dark"] .tiles li:nth-child(10n+10){--tile:#1a2740;--tile-ink:#6ea8ff}
+.tiles li{background:var(--tile,var(--soft));border-color:transparent;grid-template-columns:auto 1fr;column-gap:10px;align-items:center}
+.tiles .t-ic{width:34px;height:34px;padding:7px;border-radius:10px;background:var(--paper);stroke:var(--tile-ink,var(--t));fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;grid-row:span 2}
+.tiles .t-name{align-self:end}
+.tiles .t-num{color:var(--tile-ink,var(--t))}
+.tiles .t-bar{grid-column:1 / -1}
+.tiles .t-bar span{background:var(--tile-ink,var(--t))}
+.imap-head .big{color:var(--t)}
+.chips button[aria-pressed="true"]{background:var(--t);border-color:var(--t);color:#fff}
+.acards li{border-top:3px solid var(--t)}
+.acards .a-cat{color:var(--t);font-weight:700}
+@media (prefers-reduced-motion:no-preference){.acards li,.summary a{transition:transform .15s} .acards li:hover,.summary a:hover{transform:translateY(-2px)}}
+/*/DECOR*/
 </style>
 </head>
 <body>
 <div class="sheet">
 
 <header>
+  <svg class="hero-ill" viewBox="0 0 240 170" role="img" aria-hidden="true">
+<rect x="64" y="14" width="112" height="142" rx="16" fill="var(--paper)" stroke="var(--ink)" stroke-width="3"/>
+<rect x="76" y="30" width="88" height="64" rx="8" fill="var(--t-soft2)"/><circle cx="104" cy="56" r="10" fill="var(--t)"/><path d="M80 90 l26 -20 18 14 14 -10 22 16z" fill="var(--t)" opacity=".7"/>
+<rect x="76" y="104" width="70" height="6" rx="3" fill="var(--ink)"/><rect x="76" y="116" width="54" height="5" rx="2.5" fill="var(--line)"/>
+<g transform="translate(176 40)"><rect width="50" height="30" rx="15" fill="var(--t)"/><path d="M25 22 c-8 -6 -12 -9 -12 -13 a5 5 0 0 1 12 -2 a5 5 0 0 1 12 2 c0 4 -4 7 -12 13z" fill="var(--paper)"/></g>
+<g transform="translate(14 96)"><rect width="50" height="30" rx="15" fill="var(--paper)" stroke="var(--t)" stroke-width="2.5"/><text x="25" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="var(--t)">+39</text></g>
+<circle cx="200" cy="130" r="14" fill="var(--t-soft2)"/></svg>
   <p class="eyebrow"><a class="back" href="../">CASE STUDY</a> ／ ソーシャルマスター</p>
   <h1>フォロワー5人でも、商談は来た。<br>ソーシャルマスター社内活用事例</h1>
   <p class="byline">ソーシャルマスター担当 小松</p>
@@ -356,13 +408,13 @@ ul.plain li{margin-bottom:6px}
     <tr><th>業種</th><th>規模</th><th>地域</th><th>使い方</th><th>段階</th></tr>
     <tr><td>トータルビューティーサロン</td><td>スタッフ6名</td><td>—</td><td>メニュー別の専門アカウントでInstagram・Threads・Xへ自動投稿し、Instagramの自動DMでフォロワー獲得も狙う</td><td><span class="stage won">導入決定</span></td></tr>
     <tr><td>MLBグッズ・アパレルの小売（EC）</td><td>—</td><td>—</td><td>XとThreadsで入荷速報などを自動投稿して拡散し、Instagramの商品カタログやECモールの販売ページへ誘導する</td><td><span class="stage won">導入決定</span></td></tr>
-    <tr><td>障害福祉サービス（就労継続支援B型）</td><td>—</td><td>—</td><td>新たに立ち上げる障害者雇用支援事業の企業向け集客に向けて、X・Instagram・ThreadsでAI自動投稿を始める</td><td><span class="stage">設定中</span></td></tr>
-    <tr><td>注文住宅・リフォームの工務店</td><td>代表1名で運用</td><td>愛知県</td><td>施工事例の写真をもとに3つのSNSへ予約投稿し、DMは施工エリアを限定したルールで自動返信、公式LINEへ誘導する</td><td><span class="stage">設定中</span></td></tr>
-    <tr><td>飲食店（ラーメン店・唐揚げ店・居酒屋）</td><td>3店舗</td><td>大分県</td><td>店長面談で店舗ごとの強みを言語化してAIに反映し、時間帯に合わせた投稿を自動化。毎月データを見て改善する</td><td><span class="stage">設定中</span></td></tr>
+    <tr><td>障害福祉サービス（就労継続支援B型）</td><td>—</td><td>—</td><td>新たに立ち上げる障害者雇用支援事業の企業向け集客に向けて、X・Instagram・ThreadsでAI自動投稿を始める</td><td><span class="stage s-set">設定中</span></td></tr>
+    <tr><td>注文住宅・リフォームの工務店</td><td>代表1名で運用</td><td>愛知県</td><td>施工事例の写真をもとに3つのSNSへ予約投稿し、DMは施工エリアを限定したルールで自動返信、公式LINEへ誘導する</td><td><span class="stage s-set">設定中</span></td></tr>
+    <tr><td>飲食店（ラーメン店・唐揚げ店・居酒屋）</td><td>3店舗</td><td>大分県</td><td>店長面談で店舗ごとの強みを言語化してAIに反映し、時間帯に合わせた投稿を自動化。毎月データを見て改善する</td><td><span class="stage s-set">設定中</span></td></tr>
     <tr><td>ファイナンシャルプランナー事務所<small>販売パートナー</small></td><td>—</td><td>北海道</td><td>SNS運用の人材がいない建設・飲食などの企業向けに、自動投稿とDM自動返信による解決策として提案・販売する</td><td><span class="stage won">導入決定</span></td></tr>
     <tr><td>システム開発会社<small>販売パートナー</small></td><td>—</td><td>—</td><td>不動産・物販・メーカーなど既存の顧客にAI関連の商品として紹介し、リード紹介と商談の連携で販売を進める</td><td><span class="stage won">導入決定</span></td></tr>
-    <tr><td>SES・受託開発・Webマーケティング<small>販売パートナー</small></td><td>—</td><td>東京都</td><td>まず自社で利用・検証し、ホテル・運送・製造業などのクライアントに向けてSNS運用代行と組み合わせた提案を行う</td><td><span class="stage">設定中</span></td></tr>
-    <tr><td>紹介営業を行う販売パートナー<small>販売パートナー</small></td><td>—</td><td>—</td><td>LINEのAIツールと並ぶ主力商材として紹介営業に取り組み、自社の運用をデモとして見せながら提案している</td><td><span class="stage">設定中</span></td></tr>
+    <tr><td>SES・受託開発・Webマーケティング<small>販売パートナー</small></td><td>—</td><td>東京都</td><td>まず自社で利用・検証し、ホテル・運送・製造業などのクライアントに向けてSNS運用代行と組み合わせた提案を行う</td><td><span class="stage s-set">設定中</span></td></tr>
+    <tr><td>紹介営業を行う販売パートナー<small>販売パートナー</small></td><td>—</td><td>—</td><td>LINEのAIツールと並ぶ主力商材として紹介営業に取り組み、自社の運用をデモとして見せながら提案している</td><td><span class="stage s-set">設定中</span></td></tr>
   </table>
 </div>
   <p class="note">※ 2026年3月〜9月の商談・打ち合わせの記録から、申込以降に進んだ会社を載せています。「設定中」は初期設定を進めている段階です。</p>
@@ -382,7 +434,7 @@ ul.plain li{margin-bottom:6px}
   <p class="quote">「1人でやれるかな」</p>
   <p class="quote">「お客さんをがっかりさせたくない、イメージが悪くならないようにルールはちゃんと決めたい」</p>
   <p class="quote">「じゃあやってみますか」</p>
-  <p class="status"><span class="stage">設定中</span>Xの連携を終え、初期設定を進めています。</p>
+  <p class="status"><span class="stage s-set">設定中</span>Xの連携を終え、初期設定を進めています。</p>
 </section>
 
 <section id="case08">
@@ -399,7 +451,7 @@ ul.plain li{margin-bottom:6px}
   <p class="quote">「結局データが全て。どの時間帯のどういう投稿が有効かを毎月見て戦略的に投稿につなげたい」</p>
   <p class="quote">「毎日投稿しているが、本当に効果的なのかどうかが分からない」</p>
   <p class="quote">「種類が豊富なので常連でもまだ食べたことのない商品がある。投稿で少しずつPRできたら」</p>
-  <p class="status"><span class="stage">設定中</span>アカウント連携と投稿設計を進めています。</p>
+  <p class="status"><span class="stage s-set">設定中</span>アカウント連携と投稿設計を進めています。</p>
 </section>
 
 <section id="case09">
