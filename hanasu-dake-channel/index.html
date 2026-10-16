@@ -1,0 +1,1114 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="catalog-card" content="true">
+<meta name="lp-type" content="両脳/資料兼LP/I興味">
+<link rel="canonical" href="https://writeup-inc.github.io/saas/hanasu-dake-channel/">
+<meta name="description" content="話すだけチャンネル（仮称）。社長がスマホに話した声から、AIが資料と解説動画を作り、会社のYouTubeとSNSへ届けます。社長がするのは、話すことと公開前の確認だけ。月15万円から（税別・仮）。">
+<title>話すだけチャンネル（仮称）｜社長の声から、動画とSNS告知まで</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* ===== lp-base.css（改行制御・最小文字サイズ・固定CTAの逃げ） ===== */
+h1, h2, h3, h4, h5, .lead, .catch, .hero__title, [data-keep-phrase] { word-break: auto-phrase; line-break: strict; overflow-wrap: anywhere; }
+@supports not (word-break: auto-phrase) { h1, h2, h3, h4, h5, .lead, .catch, .hero__title, [data-keep-phrase] { word-break: normal; } }
+.nobr { white-space: nowrap; }
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+:root { --lp-max: 1200px; }
+
+/* ===== このページ ===== */
+:root{
+  --ink:#15171b; --ink2:#2b2f36; --gray:#565b64; --mute:#6c717a; --line:#dcd9d0; --line2:#e9e6de;
+  --paper:#f6f5f1; --alt:#eeece6; --white:#fff;
+  --ac:#cf4a1c; --ac-soft:#fbe8df; --glow:#ff7b4f; --on-dark:#f4f2ec; --dark-mute:#a8adb5;
+  --good:#e3eef9; --good-ink:#1f4f86; --bad:#fbe6e3; --bad-ink:#8f2c1d;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (min-width:901px){:root{--fs-body:17px}}
+html{scroll-padding-top:72px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;font-feature-settings:"palt" 1;letter-spacing:.02em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ac);outline-offset:3px}
+.wrap{width:min(var(--lp-max),100% - 48px);margin-inline:auto}
+.mono{font-family:var(--mono);letter-spacing:.06em}
+.tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--ac)}
+.tag svg{width:18px;height:18px;flex:none}
+.kari{display:inline-block;margin-left:2px;padding:0 5px;border-radius:4px;background:#fff3c9;color:#7a5600;font-size:.72em;font-weight:700;letter-spacing:0;vertical-align:.12em;line-height:1.6;white-space:nowrap}
+
+/* header（下で隠れ・上で出る） */
+.hd{position:sticky;top:0;z-index:50;background:rgba(21,23,27,.94);backdrop-filter:blur(8px);color:var(--on-dark);border-bottom:1px solid #2b2e34;transition:transform .32s cubic-bezier(.2,.7,.2,1)}
+.hd.is-hidden{transform:translateY(-100%)}
+@media (prefers-reduced-motion:reduce){.hd{transition:none}}
+.hd .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px}
+.brand{display:inline-flex;align-items:center;gap:10px;min-height:44px;font-weight:900;font-size:16px;letter-spacing:.04em;text-decoration:none}
+.brand i{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--glow)}
+.brand i svg{width:15px;height:15px}
+.brand small{color:var(--dark-mute);font-weight:500;font-size:12px}
+.hd nav{display:flex;align-items:center;gap:22px;font-size:14px}
+.hd nav a{text-decoration:none;color:var(--dark-mute);padding:10px 0}
+.hd nav a:hover{color:var(--on-dark)}
+.hd nav .hd-cta{color:var(--ink);background:var(--on-dark);padding:8px 16px;border-radius:999px;font-weight:700}
+
+/* hero */
+.hero{position:relative;isolation:isolate;background:var(--ink);color:var(--on-dark);padding:84px 0 0;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:-1}
+.hero-bg img{display:block;width:100%;height:100%;object-fit:cover;object-position:70% 35%}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(21,23,27,.95) 0%,rgba(21,23,27,.86) 40%,rgba(21,23,27,.35) 70%,rgba(21,23,27,.5) 100%),linear-gradient(180deg,rgba(21,23,27,.3) 0%,rgba(21,23,27,0) 30%,rgba(21,23,27,.85) 92%)}
+.hero-bg-cap{position:absolute;right:16px;top:12px;z-index:1;color:rgba(244,242,236,.62);font-size:12px}
+.hero-in{max-width:640px}
+.eyebrow{margin:0;font-size:14px;font-weight:700;color:#d8dade;letter-spacing:.06em}
+.eyebrow b{color:var(--glow);white-space:nowrap}
+@media (max-width:640px){.eyebrow b{display:block;margin-top:2px}}
+.hc{position:relative;cursor:pointer;margin-top:20px;border-radius:6px}
+.hc:focus-visible{outline:3px solid var(--glow);outline-offset:6px}
+.hero h1{margin:0;font-weight:900;font-size:clamp(1.75rem,7.4vw,3.6rem);line-height:1.34;letter-spacing:-.01em}
+.hero h1::after{content:"";display:inline-block;width:3px;height:.95em;margin-left:6px;vertical-align:-.1em;background:var(--glow);animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.rot{display:flex;align-items:center;margin:8px 0 0}
+.dots{display:flex;gap:2px;margin-left:-10px}
+.dots button{width:44px;height:44px;padding:0;border:0;background:none;cursor:pointer;position:relative}
+.dots button::before{content:"";position:absolute;left:10px;right:10px;top:20px;height:4px;border-radius:2px;background:#4a4e56;transition:background .2s}
+.dots button[aria-current="true"]::before{background:var(--glow)}
+.hero-lead{margin:18px 0 0;max-width:33em;font-size:17px;line-height:1.95;color:#dcdee2}
+.hero-lead strong{color:#fff}
+.hero-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font-size:15px;font-weight:700;text-decoration:none;white-space:nowrap;transition:background .15s,color .15s,border-color .15s}
+.btn svg{width:16px;height:16px;flex:none}
+.btn-glow{background:var(--glow);color:#1b120c}
+.btn-glow:hover{background:#ff9670}
+.btn-line{border:1px solid #5a5f68;color:var(--on-dark)}
+.btn-line:hover{border-color:var(--on-dark)}
+.btn-ink{background:var(--ink);color:#fff}
+.btn-ink:hover{background:#2b2f36}
+.btn-out{border:1px solid var(--ink);color:var(--ink)}
+.btn-out:hover{background:var(--ink);color:#fff}
+.hero-note{margin:16px 0 0;color:var(--dark-mute);font-size:13px}
+
+/* 動く画面（5段の流れ） */
+.flow{margin:64px 0 0;padding:0 0 40px}
+.flow-cap{display:flex;justify-content:space-between;gap:12px;margin:0 0 12px;font-size:12px;color:var(--dark-mute)}
+.flow-cap b{font-family:var(--mono);letter-spacing:.12em;color:#cfd2d7;font-weight:600}
+.flow ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.fs{position:relative;padding:16px 16px 14px;border-radius:14px;background:rgba(36,39,45,.86);border:1px solid #3a3e46;transition:border-color .35s,background .35s,transform .35s}
+.fs.on{border-color:var(--glow);background:rgba(44,36,32,.92);transform:translateY(-3px)}
+.fs.done{border-color:#4f5560}
+.fs-top{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12px;color:var(--dark-mute)}
+.fs-top em{font-style:normal;color:var(--glow);opacity:0;transition:opacity .3s}
+.fs.done .fs-top em,.fs.on .fs-top em{opacity:1}
+.fs h3{margin:6px 0 10px;font-size:16px;font-weight:900;line-height:1.4}
+.fs-body{min-height:72px;font-size:12px;line-height:1.6;color:#c9ccd2}
+.wave{display:flex;align-items:center;gap:3px;height:28px}
+.wave i{display:block;width:3px;border-radius:2px;background:#ff9b7c;height:30%}
+.fs.on .wave i{animation:w 1s ease-in-out infinite}
+.wave i:nth-child(2n){animation-delay:.15s}.wave i:nth-child(3n){animation-delay:.3s}.wave i:nth-child(4n){animation-delay:.45s}
+@keyframes w{0%,100%{height:25%}50%{height:100%}}
+.txl{display:block;height:6px;margin:6px 0;border-radius:3px;background:#555a63}
+.slides{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.slides span{aspect-ratio:16/10;border-radius:3px;background:#eceae4;position:relative}
+.slides span::before{content:"";position:absolute;left:12%;top:20%;width:60%;height:12%;background:#9a9ea6;border-radius:1px}
+.slides span::after{content:"";position:absolute;left:12%;top:48%;width:76%;height:30%;background:#d7d4cc;border-radius:1px}
+.vid{position:relative;aspect-ratio:16/9;border-radius:6px;background:#eceae4;overflow:hidden}
+.vid::before{content:"";position:absolute;left:8%;top:14%;width:52%;height:10%;background:#9a9ea6}
+.vid .wipe{position:absolute;right:6%;bottom:16%;width:28%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 38%,#d9b9a3 0 22%,transparent 23%),radial-gradient(ellipse at 50% 100%,#2b3340 0 46%,transparent 47%),#c8ccd3;border:2px solid #fff}
+.vid .sub{position:absolute;left:8%;right:8%;bottom:5%;height:9%;border-radius:2px;background:rgba(21,23,27,.75)}
+.dest{margin:0;padding:0;list-style:none;display:grid;gap:3px}
+.dest li{display:flex;justify-content:space-between;gap:6px}
+.dest li b{font-weight:500}
+.dest li span{font-family:var(--mono);color:#7d828b}
+.fs.on .dest li span,.fs.done .dest li span{color:#8fd3a8}
+@media (prefers-reduced-motion:reduce){.fs{transition:none}.fs.on .wave i{animation:none}}
+
+/* popup（H1を押すと3案と見出し） */
+dialog.pop{width:min(880px,calc(100% - 32px));max-height:calc(100dvh - 48px);padding:0;border:0;border-radius:16px;box-shadow:0 40px 80px -20px rgba(0,0,0,.4);color:var(--ink)}
+dialog.pop::backdrop{background:rgba(15,17,21,.6);backdrop-filter:blur(3px)}
+.pop-h{position:sticky;top:0;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 18px 14px 28px;background:#fff;border-bottom:1px solid var(--line2)}
+.pop-h p{margin:0;font-size:16px;font-weight:900}
+.pop-x{flex:none;width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:#fff;font-size:20px;line-height:1;cursor:pointer;color:var(--gray)}
+.pop-b{padding:26px 28px 32px}
+.pop-lbl{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;margin:0 0 12px;font-size:15px;font-weight:700;color:var(--gray)}
+.pop-lbl .en{font-family:var(--mono);font-size:13px;color:var(--ac)}
+.copies{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.copies li{display:grid;grid-template-columns:2.6em 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+.copies .n{font-family:var(--mono);font-size:15px;font-weight:600;color:var(--ac);padding-top:6px}
+.copies .c{margin:0;word-break:auto-phrase;line-break:strict;font-size:clamp(1.25rem,2.6vw,1.6rem);font-weight:900;line-height:1.5}
+.copies .s{margin:6px 0 0;font-size:15px;line-height:1.8;color:var(--gray)}
+.pop-story{margin:30px 0 0}
+.pop-story ol{list-style:none;margin:0;padding:0;counter-reset:h}
+.pop-story li{counter-increment:h}
+.pop-story a{display:grid;grid-template-columns:2.2em 1fr;gap:10px;padding:9px 6px;border-radius:6px;text-decoration:none;font-size:17px;line-height:1.75;word-break:auto-phrase;line-break:strict;transition:background .15s}
+.pop-story a::before{content:counter(h,decimal-leading-zero);font-family:var(--mono);font-size:14px;font-weight:600;color:var(--ac);padding-top:3px}
+.pop-story a:hover{background:var(--ac-soft)}
+.pop-f{margin:22px 0 0;font-size:14px;color:var(--gray)}
+@media(max-width:600px){.pop-b{padding:20px 18px 26px}.pop-h{padding-left:18px}.copies li{grid-template-columns:1fr;gap:4px}.copies .n{padding-top:0}.pop-story a{font-size:16px}}
+
+/* sections */
+section.s{padding:112px 0}
+section.s.alt{background:var(--alt)}
+.s-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 64px;align-items:end}
+.s-head h2{margin:12px 0 0;font-weight:900;font-size:clamp(1.5rem,3.4vw,2.4rem);line-height:1.42;letter-spacing:-.005em}
+.s-head p{margin:0;color:var(--gray);max-width:36em;font-size:17px;line-height:1.95}
+.s-head p strong{color:var(--ink)}
+.s-head.one{grid-template-columns:1fr}
+.s-head.one p{margin-top:18px}
+.no{font-family:var(--mono);font-size:13px;color:var(--mute);margin-right:6px}
+
+/* 写真＋場面 */
+.scene{position:relative;margin:0 0 56px;border-radius:18px;overflow:hidden;aspect-ratio:21/8;background:#2a2c31}
+.scene img{display:block;width:100%;height:100%;object-fit:cover}
+.scene::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(17,18,21,.78) 0%,rgba(17,18,21,.35) 55%,rgba(17,18,21,0) 80%)}
+.scene figcaption{position:absolute;left:clamp(20px,4vw,48px);bottom:clamp(18px,3.4vw,40px);z-index:1;max-width:min(560px,80%);color:#fff;font-size:inherit}
+.scene .time{display:block;font-family:var(--mono);font-size:14px;letter-spacing:.1em;color:var(--glow);margin-bottom:6px}
+.scene .line{display:block;font-size:clamp(1.15rem,2.4vw,1.6rem);font-weight:900;line-height:1.55;text-shadow:0 2px 12px rgba(0,0,0,.35)}
+.scene .im{position:absolute;right:14px;top:10px;z-index:1;color:rgba(255,255,255,.7);font-size:12px}
+
+/* 01 話したいこと */
+.topics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:56px 0 0;border-top:1px solid var(--ink)}
+.topics li{list-style:none;padding:22px 22px 6px 0}
+.topics li+li{padding-left:22px;border-left:1px solid var(--line)}
+.topics svg{width:28px;height:28px;color:var(--ac)}
+.topics h3{margin:10px 0 6px;font-size:18px;font-weight:900}
+.topics p{margin:0;color:var(--gray);font-size:15px;line-height:1.85}
+.topics ul{margin:0;padding:0}
+
+/* 02 工程 */
+.steps6{list-style:none;margin:56px 0 0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;counter-reset:s}
+.steps6 li{counter-increment:s;position:relative;padding:20px 16px 18px;border-top:3px solid var(--ink)}
+.steps6 li+li{border-left:1px solid var(--line)}
+.steps6 li::before{content:counter(s,decimal-leading-zero);display:block;font-family:var(--mono);font-size:12px;color:var(--mute)}
+.steps6 b{display:block;margin-top:4px;font-size:18px;font-weight:900}
+.steps6 span{display:block;margin-top:6px;font-size:14px;color:var(--gray);line-height:1.75}
+.steps6 .stop{margin-top:10px;display:inline-block;padding:1px 8px;border-radius:999px;background:var(--bad);color:var(--bad-ink);font-size:12px;font-weight:700}
+.big-line{margin:44px 0 0;font-size:clamp(1.2rem,2.4vw,1.55rem);font-weight:900;line-height:1.6}
+.big-line em{font-style:normal;color:var(--ac)}
+
+/* 03 担当の分け方 */
+.split{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:0;margin:56px 0 0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--white)}
+.split > div{padding:30px 32px}
+.split .me{background:var(--ink);color:var(--on-dark)}
+.split h3{display:flex;align-items:center;gap:10px;margin:0 0 6px;font-size:19px;font-weight:900}
+.split h3 svg{width:22px;height:22px;flex:none}
+.split .me h3 svg{color:var(--glow)}
+.split .us h3 svg{color:var(--ac)}
+.split .sub{margin:0 0 16px;font-size:14px;color:var(--mute)}
+.split .me .sub{color:var(--dark-mute)}
+.split ol{list-style:none;margin:0;padding:0}
+.split li{display:grid;grid-template-columns:2.4em 1fr;gap:8px;padding:12px 0;border-top:1px solid var(--line2);font-size:16px;line-height:1.7}
+.split .me li{border-top-color:#353941}
+.split li i{font-style:normal;font-family:var(--mono);font-size:13px;color:var(--mute);padding-top:2px}
+.split .me li i{color:var(--glow)}
+.split li small{display:block;color:var(--mute);font-size:13px}
+.split .me li small{color:var(--dark-mute)}
+.split .me .big{font-size:21px;font-weight:900}
+.split .us ol{columns:2;column-gap:32px}
+.split .us li{break-inside:avoid}
+
+/* 確認画面の見本 */
+.approve{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:center;margin:72px 0 0}
+.approve h3{margin:0;font-size:22px;font-weight:900;line-height:1.55}
+.approve p{margin:14px 0 0;color:var(--gray);font-size:16px;line-height:1.9}
+.ui{background:var(--white);border:1px solid var(--line);border-radius:16px;box-shadow:0 24px 50px -28px rgba(21,23,27,.4);overflow:hidden;font-size:14px}
+.ui-top{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 18px;border-bottom:1px solid var(--line2);font-family:var(--mono);font-size:12px;color:var(--mute)}
+.ui-top b{font-family:"Noto Sans JP",sans-serif;font-size:14px;color:var(--ink)}
+.ui-list{margin:0;padding:6px 18px;list-style:none}
+.ui-list li{display:grid;grid-template-columns:76px 1fr auto;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--line2)}
+.ui-list li:first-child{border-top:0}
+.thumb{aspect-ratio:16/9;border-radius:6px;background:#e7e4dc;position:relative;overflow:hidden}
+.thumb.v::after{content:"";position:absolute;right:8%;bottom:12%;width:30%;aspect-ratio:1;border-radius:50%;background:#bfc4cc;border:2px solid #fff}
+.thumb.sh{aspect-ratio:9/16;width:34px;justify-self:center;background:#d9d6cd}
+.thumb.tx{background:none;border:1px dashed var(--line);display:grid;place-items:center;font-family:var(--mono);font-size:12px;color:var(--mute)}
+.ui-list b{display:block;font-size:14px;line-height:1.5}
+.ui-list small{display:block;color:var(--mute);font-size:12px}
+.chk{font-family:var(--mono);font-size:12px;color:#2f8a55;white-space:nowrap}
+.ui-foot{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px;padding:14px 18px;background:var(--paper);border-top:1px solid var(--line2)}
+.ui-foot span{display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--line);font-weight:700;font-size:14px;background:#fff}
+.ui-foot span.go{background:var(--ac);border-color:var(--ac);color:#fff}
+.ui-cap{margin:10px 0 0;color:var(--mute);font-size:12px}
+
+/* 04 1回の話から */
+.demo{display:grid;grid-template-columns:minmax(0,.85fr) 56px minmax(0,1.15fr);gap:0;align-items:stretch;margin:56px 0 0}
+.voice{padding:26px 26px;border-radius:16px;background:var(--ink);color:var(--on-dark)}
+.voice-h{display:flex;align-items:center;gap:12px;margin:0 0 14px}
+.mic{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--glow)}
+.mic svg{width:18px;height:18px}
+.voice-h b{display:block;font-size:16px}
+.voice-h small{display:block;color:var(--dark-mute);font-size:12px;font-family:var(--mono)}
+.voice blockquote{margin:0;padding:14px 0 0;border-top:1px solid #353941;font-size:15px;line-height:2;color:#e2e4e8}
+.voice blockquote span{background:linear-gradient(transparent 60%,rgba(255,123,79,.35) 60%)}
+.voice .vnote{margin:14px 0 0;color:var(--dark-mute);font-size:12px}
+.arrow{display:grid;place-items:center;color:var(--ac)}
+.arrow svg{width:32px;height:32px}
+.outs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.outs li{padding:18px 18px 16px;border-radius:14px;background:var(--white);border:1px solid var(--line)}
+.outs .k{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-family:var(--mono);font-size:12px;color:var(--mute)}
+.outs .k b{color:var(--ac);font-size:13px}
+.outs h3{margin:6px 0 8px;font-size:17px;font-weight:900;line-height:1.45}
+.outs p{margin:0;font-size:14px;line-height:1.8;color:var(--gray)}
+.post{margin-top:8px;padding:10px 12px;border-radius:10px;background:var(--paper);font-size:13px;line-height:1.75;color:var(--ink2)}
+.honest{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;margin:40px 0 0;padding:22px 26px;border-left:4px solid var(--ac);background:var(--white);border-radius:0 14px 14px 0}
+.honest svg{width:24px;height:24px;color:var(--ac);margin-top:4px}
+.honest p{margin:0;font-size:17px;line-height:1.85;font-weight:700}
+.honest p small{display:block;margin-top:4px;font-size:14px;font-weight:400;color:var(--gray)}
+.faces{margin:72px 0 0}
+.faces h3{margin:0 0 6px;font-size:20px;font-weight:900}
+.faces > p{margin:0;color:var(--gray);font-size:15px}
+.faces ul{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--ink)}
+.faces li{padding:20px 22px 4px 0}
+.faces li+li{padding-left:22px;border-left:1px solid var(--line)}
+.faces b{display:block;font-size:17px}
+.faces span{display:block;margin-top:6px;color:var(--gray);font-size:15px;line-height:1.8}
+.faces span.kari{display:inline-block;margin:0 0 0 4px;font-size:.72em;color:#7a5600;line-height:1.6}
+.sample-cta{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 40px;align-items:center;margin:72px 0 0;padding:30px 34px;border-radius:18px;background:var(--white);border:1px solid var(--line)}
+.sample-cta p{margin:0;font-size:18px;font-weight:700;line-height:1.65}
+.sample-cta p small{display:block;margin-top:6px;font-size:14px;font-weight:400;color:var(--gray)}
+
+/* 切り替えの帯 */
+.switch{background:var(--ink);color:var(--on-dark);padding:30px 0}
+.switch .wrap{display:flex;align-items:center;gap:18px}
+.switch svg{width:26px;height:26px;color:var(--glow);flex:none}
+.switch p{margin:0;font-size:clamp(1.05rem,2vw,1.3rem);font-weight:900}
+.switch small{display:block;margin-top:2px;color:var(--dark-mute);font-size:14px;font-weight:400}
+
+/* 比較表 */
+.cmp-wrap{margin:56px 0 0;overflow-x:auto}
+table.cmp{width:100%;min-width:900px;border-collapse:separate;border-spacing:0;font-size:14px;line-height:1.65;background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.cmp th,.cmp td{padding:14px 14px;vertical-align:top;text-align:left;border-bottom:1px solid var(--line2)}
+.cmp thead th{background:var(--paper);font-size:14px;font-weight:900;line-height:1.5}
+.cmp thead th small{display:block;font-weight:500;color:var(--mute);font-size:12px}
+.cmp tbody th{width:11em;font-weight:700;color:var(--ink2);background:var(--paper)}
+.cmp .me{background:#fff7f2}
+.cmp thead .me{background:var(--ac);color:#fff}
+.cmp thead .me small{color:#ffe1d3}
+.cmp td.g{background:var(--good);color:var(--good-ink)}
+.cmp td.b{background:var(--bad);color:var(--bad-ink)}
+.cmp td.me.g{background:#dde9f6}
+.cmp tr:last-child th,.cmp tr:last-child td{border-bottom:0}
+.cmp-legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin:14px 0 0;font-size:13px;color:var(--gray)}
+.cmp-legend i{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:6px}
+.cmp-src{margin:8px 0 0;font-size:12px;color:var(--mute);line-height:1.8}
+.cmp-src a{color:var(--gray)}
+.verdict{margin:36px 0 0;font-size:clamp(1.25rem,2.6vw,1.75rem);font-weight:900;line-height:1.55}
+.verdict em{font-style:normal;color:var(--ac)}
+
+/* 料金 */
+.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:56px 0 0}
+.plan{display:flex;flex-direction:column;padding:28px 26px 24px;border-radius:18px;background:var(--white);border:1px solid var(--line)}
+.plan.mid{border:2px solid var(--ink)}
+.plan .pn{font-size:15px;font-weight:700;color:var(--gray)}
+.plan .pp{margin:8px 0 2px;font-family:var(--mono);font-weight:600;font-size:clamp(2.2rem,4vw,3rem);line-height:1;letter-spacing:-.02em}
+.plan .pp i{font-style:normal;font-family:"Noto Sans JP",sans-serif;font-size:.42em;font-weight:700;margin-left:4px;letter-spacing:0}
+.plan .tax{font-size:13px;color:var(--mute)}
+.plan .for{margin:14px 0 0;padding:12px 0;border-top:1px solid var(--line2);border-bottom:1px solid var(--line2);font-size:15px;font-weight:700;line-height:1.7}
+.plan dl{margin:12px 0 0;display:grid;gap:0}
+.plan dl div{display:grid;grid-template-columns:6.6em 1fr;gap:8px;padding:8px 0;border-bottom:1px dashed var(--line2);font-size:14px;line-height:1.6}
+.plan dt{color:var(--mute)}
+.plan dd{margin:0;font-weight:700}
+.plan dd.off{font-weight:400;color:var(--mute)}
+.price-note{margin:22px 0 0;font-size:13px;color:var(--gray);line-height:1.9}
+.price-tip{margin:28px 0 0;font-size:18px;font-weight:900;line-height:1.6}
+.price-cta{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 0}
+
+/* 08 自動にできない所 */
+.limits{list-style:none;margin:56px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid var(--ink)}
+.limits li{display:grid;grid-template-columns:36px 1fr;gap:12px;padding:24px 28px 22px 0;border-bottom:1px solid var(--line)}
+.limits li:nth-child(2n){padding-left:28px;border-left:1px solid var(--line)}
+.limits svg{width:26px;height:26px;color:var(--ac);margin-top:2px}
+.limits h3{margin:0 0 6px;font-size:18px;font-weight:900;line-height:1.5}
+.limits p{margin:0;color:var(--gray);font-size:15px;line-height:1.85}
+
+/* 09 向かない */
+.notfor{list-style:none;margin:48px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 40px}
+.notfor li{display:grid;grid-template-columns:22px 1fr;gap:12px;padding:16px 0;border-top:1px solid var(--line);font-size:16px;line-height:1.8}
+.notfor li::before{content:"";width:14px;height:2px;margin-top:.9em;background:var(--ink)}
+.notfor li span{display:block;font-size:14px;color:var(--gray)}
+.notfor-last{margin:36px 0 0;padding:22px 26px;border-radius:14px;background:var(--ink);color:var(--on-dark);font-size:17px;font-weight:700;line-height:1.8}
+
+/* FAQ */
+.faq{margin:48px 0 0;border-top:1px solid var(--ink)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{display:grid;grid-template-columns:2.2em 1fr 24px;gap:8px;align-items:start;padding:20px 0;cursor:pointer;list-style:none;font-size:17px;font-weight:700;line-height:1.6}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"Q";font-family:var(--mono);color:var(--ac);font-weight:600}
+.faq summary::after{content:"+";font-family:var(--mono);font-size:22px;line-height:1.1;color:var(--mute);text-align:right}
+.faq details[open] summary::after{content:"−"}
+.faq .a{padding:0 32px 22px 2.6em;color:var(--ink2);font-size:16px;line-height:1.95}
+.faq .a p{margin:0 0 10px}
+
+/* 最終CTA */
+.final{background:var(--ink);color:var(--on-dark);padding:112px 0}
+.final .s-head p{color:#c9ccd2}
+.final .s-head p strong{color:#fff}
+.final .s-head h2{color:#fff}
+.final .tag{color:var(--glow)}
+.final-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:48px 0 0}
+.final-card{display:flex;flex-direction:column;gap:14px;padding:28px 28px 26px;border-radius:18px;border:1px solid #3a3e46;background:#1d2025}
+.final-card h3{margin:0;font-size:19px;font-weight:900}
+.final-card p{margin:0;color:#c9ccd2;font-size:15px;line-height:1.85;flex:1}
+.final-card .btn{align-self:flex-start}
+.final-note{margin:24px 0 0;color:var(--dark-mute);font-size:13px;line-height:1.9}
+.final-note a{color:#e2e4e8}
+
+/* ファクトチェック */
+.fc-btn{display:inline-flex;align-items:center;gap:.6em;min-height:44px;margin-top:28px;padding:8px 16px;border:1px solid currentColor;border-radius:999px;background:transparent;color:var(--gray);font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.fc-btn:hover{color:var(--ink)}
+.fc-sub{font-size:12px;font-weight:400;opacity:.75}
+
+/* 市場データ */
+.mkt{padding:96px 0;background:var(--paper);border-top:1px solid var(--line)}
+.mkt-eb{margin:0 0 10px;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.2em;color:var(--ac)}
+.mkt-h{margin:0 0 40px;font-weight:900;font-size:clamp(1.4rem,2.8vw,2rem);line-height:1.5}
+.mkt-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--line)}
+.mkt-c{display:flex;flex-direction:column;padding:28px 20px 4px;border-left:1px solid var(--line)}
+.mkt-c:first-child{border-left:none;padding-left:0}
+.mkt-no{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.12em;color:var(--mute);margin-bottom:12px}
+.mkt-no b{color:var(--ink2);font-family:"Noto Sans JP",sans-serif;letter-spacing:.04em;margin-left:6px}
+.mkt-n{display:block;font-family:var(--mono);font-weight:600;font-size:clamp(32px,3.6vw,50px);line-height:1;letter-spacing:-.03em;color:var(--ac);white-space:nowrap}
+.mkt-n i{font-style:normal;font-family:"Noto Sans JP",sans-serif;font-size:.42em;font-weight:700;margin-left:2px;letter-spacing:0}
+.mkt-d{font-size:14px;line-height:1.8;color:var(--ink);margin:14px 0 12px}
+.mkt-src{display:block;margin-top:auto;min-height:44px;padding:6px 0;font-size:12px;line-height:1.6;color:var(--mute);text-decoration:none}
+.mkt-src::after{content:"↗";margin-left:.25em;white-space:nowrap}
+.mkt-src:hover,.mkt-src:focus-visible{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.mkt-bridge{margin:36px 0 0;font-size:17px;font-weight:700;line-height:1.8}
+
+footer.site{background:var(--ink);color:var(--dark-mute);padding:40px 0 48px;font-size:13px}
+footer.site .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 28px}
+footer.site b{color:var(--on-dark)}
+footer.site a{color:var(--on-dark);text-underline-offset:3px;display:inline-block;padding:10px 0;margin-right:18px}
+
+.sp{display:none}
+@media (max-width:1100px){
+  .flow ol{grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+  .fs{padding:14px 12px}
+  .steps6{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .steps6 li:nth-child(4){border-left:0}
+}
+@media (max-width:900px){
+  .s-head{grid-template-columns:1fr;gap:16px}
+  .hero-bg::after{background:linear-gradient(180deg,rgba(21,23,27,.82) 0%,rgba(21,23,27,.86) 50%,rgba(21,23,27,.94) 100%)}
+  .flow ol{grid-template-columns:1fr;gap:8px}
+  .fs{display:grid;grid-template-columns:7.5em 1fr;gap:4px 14px;align-items:center;padding:12px 14px}
+  .fs-top{grid-column:1;grid-row:1}
+  .fs h3{grid-column:1;grid-row:2;margin:0;font-size:15px}
+  .fs-body{grid-column:2;grid-row:1/3;min-height:0}
+  .fs .slides{grid-template-columns:repeat(6,1fr)}
+  .fs .vid{max-width:180px}
+  .topics{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .topics li:nth-child(3){padding-left:0;border-left:0}
+  .split,.approve,.demo{grid-template-columns:1fr}
+  .split .us ol{columns:1}
+  .arrow{height:56px}
+  .arrow svg{transform:rotate(90deg)}
+  .faces ul,.plans,.limits,.notfor,.final-grid{grid-template-columns:1fr}
+  .faces li+li{padding-left:0;border-left:0;border-top:1px solid var(--line2)}
+  .limits li:nth-child(2n){padding-left:0;border-left:0}
+  .sample-cta{grid-template-columns:1fr}
+  .mkt-grid{grid-template-columns:1fr}
+  .mkt-c{border-left:none;border-bottom:1px solid var(--line);padding:24px 0}
+  .mkt-n{font-size:44px}
+  .scene{aspect-ratio:16/10}
+  .hd nav a:not(.hd-cta){display:none}
+  /* 比較表はカード表示 */
+  .cmp-wrap{overflow:visible}
+  table.cmp,table.cmp tbody,table.cmp tr,table.cmp th,table.cmp td{display:block;min-width:0;width:100%}
+  table.cmp{border:0;background:none}
+  table.cmp thead{display:none}
+  table.cmp tr{margin:0 0 14px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--white)}
+  table.cmp tbody th{background:var(--ink);color:#fff}
+  table.cmp td{display:grid;grid-template-columns:8.5em 1fr;gap:10px}
+  table.cmp td::before{content:attr(data-col);font-weight:700;color:var(--ink2);font-size:13px}
+}
+@media (max-width:640px){
+  .wrap{width:min(var(--lp-max),100% - 32px)}
+  .sp{display:inline}
+  .hero{padding:52px 0 0}
+  .hero-lead{font-size:16px}
+  .btn{width:100%}
+  section.s,.final{padding:76px 0}
+  .scene{aspect-ratio:4/3;margin-bottom:40px}
+  .scene::after{background:linear-gradient(180deg,rgba(17,18,21,0) 25%,rgba(17,18,21,.8) 100%)}
+  .scene figcaption{max-width:none;right:20px}
+  .topics{grid-template-columns:1fr}
+  .topics li+li{padding-left:0;border-left:0;border-top:1px solid var(--line2)}
+  .steps6{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps6 li:nth-child(3),.steps6 li:nth-child(5){border-left:0}
+  .steps6 li:nth-child(4){border-left:1px solid var(--line)}
+  .split > div{padding:24px 20px}
+  .outs{grid-template-columns:1fr}
+  .ui-list li{grid-template-columns:56px 1fr auto}
+  .faq .a{padding-left:0;padding-right:0}
+  .honest{padding:18px 18px}
+  .sample-cta{padding:24px 20px}
+}
+.plan .pick{align-self:flex-start;margin:-6px 0 8px;padding:2px 10px;border-radius:999px;background:var(--ac);color:#fff;font-size:12px;font-weight:700}
+.notfor li{grid-template-columns:26px 1fr}
+.notfor li::before{display:none}
+.notfor li svg{width:24px;height:24px;color:var(--ac);margin-top:3px}
+.switch{background:var(--alt);color:var(--ink);border-block:1px solid var(--line)}
+.switch small{color:var(--gray)}
+.switch svg{color:var(--ac)}
+.notfor-last{background:var(--white);color:var(--ink);border:1px solid var(--ink)}
+@media (max-width:900px){table.cmp tr{display:flex;flex-direction:column}table.cmp tbody th{order:-2}table.cmp td.me{order:-1;border-bottom:2px solid var(--ac)}}
+@media (max-width:640px){.brand{white-space:nowrap;font-size:15px}.brand small{display:none}.hd nav .hd-cta{white-space:nowrap;padding:8px 14px}}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <div class="wrap">
+    <a class="brand" href="#top"><i><svg viewBox="0 0 24 24" fill="none" stroke="#1b120c" stroke-width="2.4" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></i>話すだけチャンネル<small>（仮称）</small></a>
+    <nav aria-label="ページ内">
+      <a href="#how">しくみ</a>
+      <a href="#compare">比較</a>
+      <a href="#price">料金</a>
+      <a href="#faq">質問</a>
+      <a class="hd-cta" href="#sample">見本を見る</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<!-- ============ ヒーロー ============ -->
+<section class="hero" aria-label="話すだけチャンネル">
+  <div class="hero-bg"><img src="img/hero.webp" alt="" width="1672" height="941" fetchpriority="high"><span class="hero-bg-cap">背景写真は生成イメージ</span></div>
+  <div class="wrap">
+    <div class="hero-in">
+      <p class="eyebrow">中小企業の経営者のための、動画発信の自動化　<b>話すだけチャンネル</b></p>
+      <div class="hc" id="hc" title="押すと、3つのコピーと見出しを並べて読めます">
+        <h1 id="tw" data-keep-phrase>撮り直し3回目で、<br>今週も出せなかった</h1>
+      </div>
+      <div class="rot">
+        <div class="dots" role="group" aria-label="コピーの切り替え">
+          <button type="button" aria-label="コピー1" aria-current="true"></button>
+          <button type="button" aria-label="コピー2" aria-current="false"></button>
+          <button type="button" aria-label="コピー3" aria-current="false"></button>
+        </div>
+      </div>
+      <p class="hero-lead">スマホに話した声から、AIが資料と解説動画を作り、会社のYouTubeとSNSへ届けます。<strong>社長がするのは、話すことと、公開前の確認だけです。</strong></p>
+      <div class="hero-links">
+        <a class="btn btn-glow" href="#sample"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>できあがりの見本を見る</a>
+        <a class="btn btn-line" href="#how">しくみを見る</a>
+      </div>
+      <p class="hero-note">見本は当社の説明動画で、資料からアバター動画を作る部分をお見せしています。料金はページの後半にあります。</p>
+    </div>
+
+    <div class="flow" aria-label="話してから届くまでの5段（画面イメージ）">
+      <p class="flow-cap"><b>FROM VOICE TO CHANNEL</b><span>画面イメージ。見本の会社は架空です</span></p>
+      <ol id="flow">
+        <li class="fs"><div class="fs-top"><span>01</span><em>済</em></div><h3>話す</h3><div class="fs-body"><div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>7:40 録音　9分12秒</div></li>
+        <li class="fs"><div class="fs-top"><span>02</span><em>済</em></div><h3>文字にする</h3><div class="fs-body" aria-hidden="true"><span class="txl" style="width:92%"></span><span class="txl" style="width:78%"></span><span class="txl" style="width:86%"></span><span class="txl" style="width:54%"></span></div></li>
+        <li class="fs"><div class="fs-top"><span>03</span><em>済</em></div><h3>資料にする</h3><div class="fs-body"><div class="slides" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div></div></li>
+        <li class="fs"><div class="fs-top"><span>04</span><em>済</em></div><h3>解説動画にする</h3><div class="fs-body"><div class="vid" aria-hidden="true"><span class="wipe"></span><span class="sub"></span></div></div></li>
+        <li class="fs"><div class="fs-top"><span>05</span><em>確認後</em></div><h3>届ける</h3><div class="fs-body"><ul class="dest"><li><b>YouTube</b><span>公開</span></li><li><b>X・Instagram</b><span>告知</span></li><li><b>Facebook・LINE</b><span>告知</span></li></ul></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 01 ============ -->
+<section class="s" id="s1" aria-labelledby="h1-1">
+  <div class="wrap">
+    <figure class="scene">
+      <img src="img/scene-morning.webp" alt="夕方、社用車の運転席でスマートフォンに話す経営者" width="1400" height="788">
+      <figcaption><span class="time">17:40 — 帰りの車</span><span class="line">新商品の話を、一人でしていた。<br>まだ、誰にも届いていない。</span></figcaption>
+      <span class="im">写真は生成イメージ。場面もイメージです</span>
+    </figure>
+    <div class="s-head">
+      <div><span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16v10H8l-4 4z"/></svg>01　TALK</span>
+      <h2 id="h1-1">話したいことは、<br>社長の頭の中にある</h2></div>
+      <p>会社の強みも、新しい商品のことも、採用で伝えたいことも、<strong>中身はもう社長の中にあります。</strong>足りないのは話の中身ではなく、それを外に出す手間をかけられる時間です。</p>
+    </div>
+    <ul class="topics">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg><h3>会社の強み</h3><p>他社と何が違うのか。商談のたびに話している、あの説明。</p></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l8 4v10l-8 4-8-4V7z"/><path d="M4 7l8 4 8-4M12 11v10"/></svg><h3>新しい商品</h3><p>始めたばかりのサービスや設備。届けたい相手まで、もう見えている話。</p></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M16 4.5a3 3 0 0 1 0 6M18 14c2 .6 3 2.6 3 6"/></svg><h3>採用の話</h3><p>どんな人と働きたいか。求人票には書ききれない社長の言葉。</p></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3a6 6 0 0 1 3.5 10.9V17h-7v-3.1A6 6 0 0 1 12 3zM9.5 21h5"/></svg><h3>社長の考え</h3><p>値上げの理由、業界の見通し、お客様への約束。朝礼で話したこと。</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 02 ============ -->
+<section class="s alt" id="s2" aria-labelledby="h1-2">
+  <div class="wrap">
+    <figure class="scene">
+      <img src="img/scene-night.webp" alt="夜の事務所。机の上にノートPCと三脚に付けたスマホ、丸めたメモ" width="1400" height="787">
+      <figcaption><span class="time">23:48 — 誰もいない事務所</span><span class="line">三脚のスマホを、また片づけた。<br>話したいことは、今週も外に出ない。</span></figcaption>
+      <span class="im">写真は生成イメージ。場面もイメージです</span>
+    </figure>
+    <div class="s-head">
+      <div><span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>02　WHY IT STOPS</span>
+      <h2 id="h1-2">撮影から告知まで、<br>工程が多すぎる</h2></div>
+      <p>動画の発信が止まる理由は、やる気ではありません。<strong>1本を世に出すまでに、少なくとも6つの工程があります。</strong>どれか1つで止まると、その週は出ません。</p>
+    </div>
+    <ol class="steps6">
+      <li><b>台本</b><span>何をどの順で話すかを決める</span></li>
+      <li><b>撮影</b><span>照明・音・言い間違いで撮り直し</span><em class="stop">止まりやすい</em></li>
+      <li><b>編集・字幕</b><span>切って、つないで、文字を入れる</span><em class="stop">止まりやすい</em></li>
+      <li><b>サムネイル</b><span>一覧で目に留まる画像を作る</span></li>
+      <li><b>投稿</b><span>タイトル・説明欄・タグを書いて上げる</span></li>
+      <li><b>告知</b><span>SNSごとに文面を変えて知らせる</span><em class="stop">忘れやすい</em></li>
+    </ol>
+    <p class="big-line">このサービスは、6つのうち<em>社長の手から5つを外します。</em><br>残るのは、話すことと公開前の確認だけです。</p>
+    <button class="fc-btn" type="button" data-fc-section="撮影から告知まで、工程が多すぎる" data-fc-claim="企業がYouTubeに動画を1本公開するまでには、一般に台本・撮影・編集と字幕・サムネイル作成・投稿（タイトル・説明欄・タグ）・SNSでの告知の工程がある／撮影と編集が、社内で続けるときに止まりやすい工程である">ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button>
+  </div>
+</section>
+
+<!-- ============ 03 ============ -->
+<section class="s" id="how" aria-labelledby="h1-3">
+  <div class="wrap">
+    <figure class="scene">
+      <img src="img/scene-site.webp" alt="建設現場の休憩所でスマートフォンに話す経営者" width="1400" height="788" style="object-position:70% 40%">
+      <figcaption><span class="time">12:10 — 現場の休憩所</span><span class="line">スマホに向かって、<br>いつもの話を10分だけ。</span></figcaption>
+      <span class="im">写真は生成イメージ。場面もイメージです</span>
+    </figure>
+    <div class="s-head">
+      <div><span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h6l2-6 3 12 2-6h3"/></svg>03　HOW IT WORKS</span>
+      <h2 id="h1-3">社長がするのは、<br>話すことと確認だけ</h2></div>
+      <p>社長の担当は2つです。<strong>話すことと、できあがった一式を見て「公開」を押すこと。</strong>文字起こしから告知までは、AIと当社が受け持ちます。</p>
+    </div>
+    <div class="split">
+      <div class="me">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>社長がすること</h3>
+        <p class="sub">週に1回、合わせて15分ほどの想定です<span class="kari">仮</span></p>
+        <ol>
+          <li><i>01</i><div><span class="big">スマホに話す</span><small>車の中でも、現場でも。台本は要りません。1回10分前後が目安です</small></div></li>
+          <li><i>02</i><div><span class="big">確認して「公開」を押す</span><small>本編・ショート・告知文を1つの画面でまとめて見ます</small></div></li>
+        </ol>
+      </div>
+      <div class="us">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M7 9h4M7 13h10"/></svg>AIと当社がすること</h3>
+        <p class="sub">動画を作る04・05は、当社の「アバター動画スタジオ」で動いています。01〜03と06は提供に向けて準備中です<span class="kari">仮</span></p>
+        <ol>
+          <li><i>01</i><div>声を文字にする<small>言い直し・脱線を整える</small></div></li>
+          <li><i>02</i><div>資料にまとめる<small>話の要点を数枚のスライドに</small></div></li>
+          <li><i>03</i><div>台本を書く<small>ページごとに読み上げの文を作る</small></div></li>
+          <li><i>04</i><div>アバターが解説する動画に<small>字幕と「ライトアップ」編集つき</small></div></li>
+          <li><i>05</i><div>ショートに切り分ける<small>10・15・30・60秒から選べる</small></div></li>
+          <li><i>06</i><div>タイトル・説明欄・告知文を書く<small>SNSごとに文面を変える<span class="kari">仮</span></small></div></li>
+          <li><i>07</i><div>当社スタッフが事前に目を通す<small>誤字や固有名詞の読み間違い<span class="kari">仮</span></small></div></li>
+          <li><i>08</i><div>YouTubeとSNSへ上げる<small>社長の「公開」のあとに</small></div></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="approve">
+      <div>
+        <h3>確認は、1つの画面で<br class="sp">まとめて済ませます</h3>
+        <p>本編・ショート・告知文が並んだ画面を見て、そのままでよければ「公開」、気になる所があれば「直してほしい」を押すだけです。直したあとは、直した所だけをもう一度見ていただきます。</p>
+      </div>
+      <div>
+        <div class="ui" aria-label="確認画面のイメージ">
+          <div class="ui-top"><b>今週の公開待ち　1件</b><span>10/16 9:02</span></div>
+          <ul class="ui-list">
+            <li><span class="thumb v"></span><div><b>試作が3日で出せるようになった理由</b><small>本編　4分12秒・字幕あり</small></div><span class="chk">チェック済</span></li>
+            <li><span class="thumb sh"></span><div><b>ショート　30秒×3本</b><small>本編から切り分け</small></div><span class="chk">チェック済</span></li>
+            <li><span class="thumb tx">SNS</span><div><b>告知文　X・Instagram・Facebook・LINE</b><small>媒体ごとに文面を変えています</small></div><span class="chk">チェック済</span></li>
+          </ul>
+          <div class="ui-foot"><span>直してほしい</span><span class="go">公開する</span></div>
+        </div>
+        <p class="ui-cap">画面イメージです。実際の画面とは異なります。会社名・数字は架空です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 ============ -->
+<section class="s alt" id="sample" aria-labelledby="h1-4">
+  <div class="wrap">
+    <figure class="scene">
+      <img src="img/scene-phone.webp" alt="店先でスマートフォンを見てほほえむ店主" width="1400" height="787" style="object-position:40% 30%">
+      <figcaption><span class="time">翌日 9:02 — 店先で</span><span class="line">本編とショートが、<br>確認待ちで並んでいた。</span></figcaption>
+      <span class="im">写真は生成イメージ。場面もイメージです</span>
+    </figure>
+    <div class="s-head">
+      <div><span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></svg>04　ONE TALK, MANY POSTS</span>
+      <h2 id="h1-4">1回の話から、<br>資料と動画と告知文まで</h2></div>
+      <p>9分ほど話した声が、どこまでの物になるかを見本で示します。<strong>話は1回、できあがるのは4種類です。</strong>見本の会社と話の中身は架空です。</p>
+    </div>
+
+    <div class="demo">
+      <div class="voice">
+        <div class="voice-h"><span class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="#1b120c" stroke-width="2.4" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span><div><b>社長が話した声（抜粋）</b><small>金属加工の会社（架空）／9分12秒</small></div></div>
+        <blockquote>「えー、今日は新しく入れた機械の話をします。これまで試作品は、お客さんに出すまで<span>だいたい2週間</span>かかってたんですね。それが、この機械を入れてから、早ければ<span>3日で出せる</span>ようになった。何が変わったかというと、まず…」</blockquote>
+        <p class="vnote">言い直しや「えー」は、文字にする段階で整えます。</p>
+      </div>
+      <div class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <ul class="outs">
+        <li><div class="k"><span>OUTPUT 1</span><b>資料</b></div><h3>説明用のスライド6枚</h3><p>話の要点を、見出し・図・数字で整理。PDFでも受け取れるので、営業資料としても使えます。</p></li>
+        <li><div class="k"><span>OUTPUT 2</span><b>本編</b></div><h3>アバターの解説動画</h3><p>資料を映しながら、アバターが説明する動画です。字幕つき。話している所を明るく残す「ライトアップ」編集も入れられます。</p></li>
+        <li><div class="k"><span>OUTPUT 3</span><b>ショート</b></div><h3>10〜60秒の短い動画</h3><p>本編を、話の切れ目で切り分けたもの。長さは10・15・30・60秒から選べます。</p></li>
+        <li><div class="k"><span>OUTPUT 4</span><b>告知文</b><span class="kari">仮</span></div><h3>SNSごとの告知文</h3><p class="post">試作品が、最短3日で出せるようになりました。新しい機械で何が変わったのか、社長が4分で話しています。▶ YouTubeで見る</p></li>
+      </ul>
+    </div>
+
+    <div class="honest">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
+      <p>出せる数は増えますが、見られるかどうかは別の話です。<small>再生数・問い合わせ・採用の結果はお約束できません。約束できるのは、毎週止まらずに出し続けられる形をつくることです。</small></p>
+    </div>
+
+    <div class="faces">
+      <h3>画面に出る人は、3通りあります</h3>
+      <p>顔を出したくない社長も、資料だけの動画にできます。どれを使えるかはプランによります。</p>
+      <ul>
+        <li><b>社長の分身<span class="kari">仮</span></b><span>社長ご本人の顔と声のアバター。最初に一度だけ、撮影と録音をお願いする想定です。</span></li>
+        <li><b>案内役のアバター</b><span>当社が用意する説明役が話します。社長の顔は出ません。</span></li>
+        <li><b>資料だけ</b><span>人物を出さず、資料を画面いっぱいに映して、声と字幕で説明します。</span></li>
+      </ul>
+    </div>
+
+    <div class="sample-cta">
+      <p>当社の説明動画も、この仕組みのアバターで作っています。<small>代表・白石崇のアバターが資料を説明する見本。音声からではなく、資料からアバター動画を作る部分をご覧いただけます。</small></p>
+      <a class="btn btn-ink" href="https://main.d3low1bgvvu24.amplifyapp.com/videos" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>見本の動画を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 切り替えの帯 ============ -->
+<div class="switch" role="note">
+  <div class="wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h13M13 3l4 4-4 4M20 17H7M11 13l-4 4 4 4"/></svg><p>ここからは、条件の話です。<small>他のやり方との比較、料金、自動にできない所、向かない会社の順に並べました。</small></p></div>
+</div>
+
+<!-- ============ 06 比較 ============ -->
+<section class="s" id="compare" aria-labelledby="h1-6">
+  <div class="wrap">
+    <div class="s-head">
+      <div><span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>05　COMPARE</span>
+      <h2 id="h1-6">凝った1本なら外注を。<br>毎週続けるならこちら</h2></div>
+      <p>動画の発信には、ほかにもやり方があります。<strong>作り込みの質では、制作会社のほうが上です。</strong>このサービスが向くのは、毎週止まらずに出すことを優先したいときです。</p>
+    </div>
+    <div class="cmp-wrap">
+      <table class="cmp">
+        <thead><tr><th scope="col">比べる点</th><th scope="col">自分で撮る<small>スマホ・社内で</small></th><th scope="col">制作会社に外注<small>プルークスの公開価格</small></th><th scope="col">YouTube運用代行<small>TaTap の公開価格</small></th><th scope="col">AIアバターツール<small>HeyGen・Synthesia</small></th><th scope="col" class="me">話すだけチャンネル<small>このサービス（仮称）</small></th></tr></thead>
+        <tbody>
+          <tr><th scope="row">社長の手間</th><td data-col="自分で撮る" class="b">台本・撮影・編集・投稿まで全部</td><td data-col="制作会社" >打ち合わせと撮影の立ち会い</td><td data-col="運用代行">企画の確認と撮影への出演</td><td data-col="AIツール" class="b">台本書き・画面操作・投稿は自分</td><td data-col="このサービス" class="me g">話すことと、公開前の確認</td></tr>
+          <tr><th scope="row">費用の目安</th><td data-col="自分で撮る" class="g">機材代と社長の時間</td><td data-col="制作会社" class="b">サービス紹介・営業用で1本50〜100万円（プルークス）</td><td data-col="運用代行">最小構成で月30万円（ショート4本＋進行費・税別）、初期費用10万円</td><td data-col="AIツール" class="g">月29ドルから（HeyGen・Synthesiaの月払い）</td><td data-col="このサービス" class="me">月4本で月15万円（税別・仮）</td></tr>
+          <tr><th scope="row">作り込みの質</th><td data-col="自分で撮る">撮る人の腕による</td><td data-col="制作会社" class="g">高い。演出・撮影を作り込める</td><td data-col="運用代行" class="g">企画・撮影・編集まで人が作る</td><td data-col="AIツール">ツールの型の範囲</td><td data-col="このサービス" class="me b">資料とアバターの型の範囲</td></tr>
+          <tr><th scope="row">顔出し</th><td data-col="自分で撮る" class="b">必要</td><td data-col="制作会社">実写なら必要</td><td data-col="運用代行">実写なら必要</td><td data-col="AIツール" class="g">不要（アバター）</td><td data-col="このサービス" class="me g">不要。案内役か資料だけ（分身は月8本プランから・仮）</td></tr>
+          <tr><th scope="row">毎週続けるには</th><td data-col="自分で撮る" class="b">社長の時間しだい</td><td data-col="制作会社" class="b">1本ごとに発注と打ち合わせ</td><td data-col="運用代行" class="g">契約の本数どおり進む</td><td data-col="AIツール" class="b">自分の時間しだい</td><td data-col="このサービス" class="me g">契約の本数どおり進む</td></tr>
+          <tr><th scope="row">YouTube・SNSへの投稿</th><td data-col="自分で撮る">自分で</td><td data-col="制作会社">制作が中心（公開価格の範囲）</td><td data-col="運用代行" class="g">投稿まで含む</td><td data-col="AIツール" class="b">料金ページに投稿機能の記載なし</td><td data-col="このサービス" class="me g">YouTubeとSNSの告知まで</td></tr>
+          <tr><th scope="row">企画の提案</th><td data-col="自分で撮る">なし</td><td data-col="制作会社" class="g">あり</td><td data-col="運用代行" class="g">あり</td><td data-col="AIツール">なし</td><td data-col="このサービス" class="me">月1回の振り返り（月8本プランから・仮）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cmp-legend"><span><i style="background:var(--good)"></i>読み手にとって有利</span><span><i style="background:var(--bad)"></i>読み手にとって不利</span><span>色の無いマスは、どちらとも言えない点</span></p>
+    <p class="cmp-src">出典：各社公式サイトの公開情報（2026年10月16日確認）。<a href="https://proox.co.jp/price/" target="_blank" rel="noopener">プルークス 料金</a>／<a href="https://tatap.jp/service/youtube/" target="_blank" rel="noopener">TaTap YouTube運用代行</a>／<a href="https://www.heygen.com/pricing" target="_blank" rel="noopener">HeyGen Pricing</a>／<a href="https://www.synthesia.io/pricing" target="_blank" rel="noopener">Synthesia Pricing</a>。外貨の料金は税の表記なし。各社の条件は変わることがあるため、最新は各社のページでご確認ください。</p>
+    <p class="verdict">この表で勝っているのは、<em>社長の手間と続けやすさ。</em><br>作り込みの質では、負けています。</p>
+    <button class="fc-btn" type="button" data-fc-section="他のやり方との比較表" data-fc-claim="制作会社（プルークス）：サービス紹介・営業ツールの動画は1本50〜100万円／YouTube運用代行（TaTap）：最小構成で月30万円（ショート4本＋コンサル・進行費、税別）、初期費用10万円、企画・台本・撮影・編集・投稿を含む／AIアバターツール：HeyGen Creator 月29ドル、Synthesia Starter 月29ドル（月払い）。料金ページにYouTubeやSNSへの投稿機能の記載はない／話すだけチャンネル（ライトアップ・仮称）：月4本で月15万円（税別・仮）、社長は話すことと公開前の確認だけ、YouTubeとSNSの告知まで行う。作り込みの質は資料とアバターの型の範囲／出典：各社公式サイト（2026年10月16日確認）" data-fc-extra="各社の記載は、いま公式サイトで確認できる情報と一致するか／この表で、話すだけチャンネルが有利に見えすぎている行・不利な行はどれか／どういう会社にはどのやり方が向くか、中立の立場で">ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button>
+  </div>
+</section>
+
+<!-- ============ 07 料金 ============ -->
+<section class="s alt" id="price" aria-labelledby="h1-7">
+  <div class="wrap">
+    <div class="s-head">
+      <div><span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg>06　PRICE</span>
+      <h2 id="h1-7">月15万円から。<br>本数と届け先で3段階</h2></div>
+      <p>3つのプランの違いは、<strong>月に出す本数、届け先の数、画面に出るアバター</strong>です。プランの中身は、いまの案です<span class="kari">仮</span>。</p>
+    </div>
+    <div class="plans">
+      <div class="plan mid">
+        <span class="pick">迷ったらここから</span>
+        <span class="pn">月4本プラン</span>
+        <b class="pp">15<i>万円／月</i></b><span class="tax">税別<span class="kari">仮</span></span>
+        <p class="for">週に1回、社長の話を出す。まず続くかを確かめたい会社に</p>
+        <dl>
+          <div><dt>本編の動画</dt><dd>月4本</dd></div>
+          <div><dt>1本の長さ</dt><dd>3〜5分が目安</dd></div>
+          <div><dt>ショート</dt><dd class="off">なし</dd></div>
+          <div><dt>届け先</dt><dd>YouTube＋SNS2つ</dd></div>
+          <div><dt>アバター</dt><dd>案内役1人</dd></div>
+          <div><dt>直し</dt><dd>1本につき1回</dd></div>
+          <div><dt>振り返り</dt><dd class="off">なし</dd></div>
+        </dl>
+      </div>
+      <div class="plan">
+        <span class="pn">月8本プラン</span>
+        <b class="pp">30<i>万円／月</i></b><span class="tax">税別<span class="kari">仮</span></span>
+        <p class="for">週2回。社長の分身で話し、ショートでSNSにも出したい会社に</p>
+        <dl>
+          <div><dt>本編の動画</dt><dd>月8本</dd></div>
+          <div><dt>1本の長さ</dt><dd>3〜5分が目安</dd></div>
+          <div><dt>ショート</dt><dd>本編1本から3本</dd></div>
+          <div><dt>届け先</dt><dd>YouTube＋SNS4つ</dd></div>
+          <div><dt>アバター</dt><dd>社長の分身1人</dd></div>
+          <div><dt>直し</dt><dd>1本につき2回</dd></div>
+          <div><dt>振り返り</dt><dd>月1回・30分</dd></div>
+        </dl>
+      </div>
+      <div class="plan">
+        <span class="pn">月12本〜プラン</span>
+        <b class="pp">50<i>万円〜／月</i></b><span class="tax">税別<span class="kari">仮</span></span>
+        <p class="for">採用用・商品用など、チャンネルや話し手を分けたい会社に</p>
+        <dl>
+          <div><dt>本編の動画</dt><dd>月12本から</dd></div>
+          <div><dt>1本の長さ</dt><dd>3〜10分が目安</dd></div>
+          <div><dt>ショート</dt><dd>本編1本から5本</dd></div>
+          <div><dt>届け先</dt><dd>YouTube複数＋SNS4つ</dd></div>
+          <div><dt>アバター</dt><dd>社長＋社員など3人まで</dd></div>
+          <div><dt>直し</dt><dd>1本につき2回</dd></div>
+          <div><dt>振り返り</dt><dd>月1回＋企画の相談</dd></div>
+        </dl>
+      </div>
+    </div>
+    <p class="price-note">※ プランの中身・税の扱いは、いまの案です<span class="kari">仮</span>。初期設定（チャンネルとSNSの連携、アバターの作成）の費用、契約期間、本数を超えたときの扱いは調整中です。ご相談のときに、書面でお出しします。<br>※ 50万円〜の金額を決めるのは、本数・チャンネル数・話し手の人数。<br>※ XやLINEなど一部のSNSは、投稿や配信の量に応じた利用料が別にかかります（くわしくは「自動にできない所」）。</p>
+    <p class="price-tip">迷ったら、月4本から。<br class="sp">続けられると分かってから増やしてください。</p>
+    <div class="price-cta">
+      <a class="btn btn-ink" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">料金と中身を相談する</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 自動にできない所 ============ -->
+<section class="s" id="limits" aria-labelledby="h1-8">
+  <div class="wrap">
+    <div class="s-head">
+      <div><span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17v.5"/></svg>07　LIMITS</span>
+      <h2 id="h1-8">自動にできない所も、<br>先にお伝えします</h2></div>
+      <p>「全部自動」と言い切れない所があります。<strong>契約のあとで知るより、いま知っていただくほうがよい、というのが当社の考えです。</strong></p>
+    </div>
+    <ul class="limits">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h12l4 4v12H4z"/><path d="M8 12h8M8 16h5"/></svg><div><h3>noteは、自動では投稿しません</h3><p>noteの公式APIは、法人向けの「note pro」を契約した会社に限られます。それ以外の場合は、当社が書いた紹介文を、御社の手で貼っていただく形です。</p></div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 5l14 14M19 5L5 19"/></svg><div><h3>Xの自動投稿には、1件ごとの利用料</h3><p>XのAPIは使った分だけの課金で、リンク付きの投稿は1件0.2ドルです（2026年10月時点の公式料金）。プランの料金に含めるかは調整中です。</p></div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/></svg><div><h3>Instagramは「プロアカウント」が条件</h3><p>自動で投稿できるのは、Instagramのプロアカウントからです。個人用のアカウントのままでは使えません。</p></div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v11H9l-5 4z"/></svg><div><h3>LINEは、送る通数で料金が変わる</h3><p>LINE公式アカウントは、無料プランだと月200通まで。友だちが多い会社は、月5,000円（税別）のプランなどへの切り替えが要ります。</p></div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9l5 3-5 3z"/></svg><div><h3>YouTubeは、御社の許可と申告から</h3><p>最初にいただくのは、御社のチャンネルへ当社が投稿する許可です。動画はAIで作ったものとして、YouTubeの「改変・合成されたコンテンツ」の項目で申告します。</p></div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg><div><h3>話の中身が正しいかは、社長にしか分からない</h3><p>誤字や読み間違いなら、当社でも気づけます。ただ、数字や約束ごとの正しさを確かめられるのは社長だけ。だから、公開前の確認を既定にしています。</p></div></li>
+    </ul>
+    <button class="fc-btn" type="button" data-fc-section="自動にできない所" data-fc-claim="noteの公式APIは、法人向けのnote pro契約企業に限られる／X APIは従量課金で、URL付きの投稿は1件0.2ドル（2026年10月時点）／Instagramのコンテンツ公開APIで投稿できるのはプロアカウントから／LINE公式アカウントの無料プランは月200通まで、ライトプランは月5,000円（税別）で5,000通／YouTube Data APIには、改変・合成されたコンテンツを申告する項目（containsSyntheticMedia）がある">ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button>
+  </div>
+</section>
+
+<!-- ============ 09 向かない ============ -->
+<section class="s alt" id="notfor" aria-labelledby="h1-9">
+  <div class="wrap">
+    <div class="s-head">
+      <div><span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>08　NOT FOR YOU</span>
+      <h2 id="h1-9">毎週話すことがない<br>会社には向きません</h2></div>
+      <p>このサービスは、話す中身があることが前提です。<strong>次のどれかに当てはまるなら、いまは契約しないほうがよいと思います。</strong></p>
+    </div>
+    <ul class="notfor">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg><div>月に4回、話したいことが思いつかない<span>月4本でも、話の中身がなければ15万円は高い買い物です。</span></div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg><div>凝った映像で、ブランドを作りたい<span>撮影と編集に手をかける1本なら、制作会社のほうが向いています。</span></div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg><div>社名を出して発信するか、社内で決まっていない<span>まず、何を外に出してよいかを社内で決めるのが先です。</span></div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg><div>YouTubeが、もう自分たちで回っている<span>毎週出せているなら、いまのやり方を続けるほうが安く済みます。</span></div></li>
+    </ul>
+    <p class="notfor-last">相談の結果、「いまは何も契約しないほうがいい」とお伝えすることもあります。</p>
+  </div>
+</section>
+
+<!-- ============ 10 FAQ ============ -->
+<section class="s" id="faq" aria-labelledby="h1-10">
+  <div class="wrap">
+    <div class="s-head">
+      <div><span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17v.5"/></svg>09　FAQ</span>
+      <h2 id="h1-10">始める前に、<br>よく聞かれる7つのこと</h2></div>
+      <p>ご相談のときによく聞かれそうなことを、先にまとめました。<span class="kari">仮</span>の付いた答えは、いまの案です。</p>
+    </div>
+    <div class="faq">
+      <details><summary>自分の顔と声のアバターを作れますか</summary><div class="a"><p>作れる想定です<span class="kari">仮</span>。最初に一度だけ、撮影と声の録音をお願いします。使うのは、書面で同意をいただいたうえで、ご本人の動画だけです。</p></div></details>
+      <details><summary>話した中に、社外に出せない話が混ざったら</summary><div class="a"><p>公開前の確認で止められます。文字にした段階・資料にした段階で、当社のスタッフも目を通します<span class="kari">仮</span>。気になる所は「直してほしい」から指示してください。</p></div></details>
+      <details><summary>公開したあとで、間違いに気づいたら</summary><div class="a"><p>YouTubeの動画は、すぐに非公開へ切り替えられます。そのあと直した版を作り、もう一度ご確認いただく流れです。SNSの投稿は、各SNSの機能で削除します。</p></div></details>
+      <details><summary>YouTubeのチャンネルが、まだありません</summary><div class="a"><p>始められます。チャンネルの開設から、当社が一緒に進めるので心配はいりません。チャンネルとSNSのアカウントは、御社の名義で作る前提です<span class="kari">仮</span>。</p></div></details>
+      <details><summary>AIで作った動画だと、見る人に分かりますか</summary><div class="a"><p>分かるようにします。YouTubeには、動画が「改変・合成されたコンテンツ」かを申告する項目があり、当社はAIアバターの動画として申告して上げます<span class="kari">仮</span>。説明欄にも、AIアバターで作った旨を書きます。</p></div></details>
+      <details><summary>確認を外して、全部自動にできますか</summary><div class="a"><p>外せます<span class="kari">仮</span>。ただ、話の中身の間違いは、社長にしか気づけないことが多いため、最初の3か月は確認ありをおすすめしています。</p></div></details>
+      <details><summary>途中でプランを変えられますか</summary><div class="a"><p>月の単位で変えられる想定です<span class="kari">仮</span>。本数が足りない月・余る月が続いたら、振り返りのときにご相談ください。</p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11 最終CTA ============ -->
+<section class="final" id="start" aria-labelledby="h1-11">
+  <div class="wrap">
+    <div class="s-head">
+      <div><span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>10　NEXT STEP</span>
+      <h2 id="h1-11">まず、見本の動画を<br>1本見てください</h2></div>
+      <p>アバターの話し方が、御社のお客様に合うかどうか。<strong>それを確かめるのが最初の一歩です。</strong>合いそうなら、ご相談ください。</p>
+    </div>
+    <div class="final-grid">
+      <div class="final-card">
+        <h3>見本の動画を見る</h3>
+        <p>当社の説明動画です。代表・白石崇のアバターが、資料を映しながら話しています。話し方と画面の雰囲気を、実物で確かめられます。</p>
+        <a class="btn btn-glow" href="https://main.d3low1bgvvu24.amplifyapp.com/videos" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>見本の動画を見る</a>
+      </div>
+      <div class="final-card">
+        <h3>相談する</h3>
+        <p>お問い合わせ窓口から「話すだけチャンネルの相談」とお書きください。いまの発信の状況、始めたい時期、話したいことを伺い、合うプランか、そもそも要らないかをお伝えします。</p>
+        <a class="btn btn-line" href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">お問い合わせ窓口へ</a>
+      </div>
+    </div>
+    <p class="final-note">運営：株式会社ライトアップ（東証グロース 6580）。動画の生成には、当社の「アバター動画スタジオ」を使います。</p>
+  </div>
+</section>
+
+<!-- ============ 市場データ（フッター直前） ============ -->
+<section class="mkt" aria-labelledby="mkt-h">
+  <div class="wrap">
+    <p class="mkt-eb">MARKET DATA</p>
+    <h2 class="mkt-h" id="mkt-h">見る人はいる。<br class="sp">足りないのは、出す手</h2>
+    <ol class="mkt-grid">
+      <li class="mkt-c"><span class="mkt-no">01<b>広がり</b></span><b class="mkt-n">84.9<i>%</i></b><p class="mkt-d">50代のYouTube利用率。全年代では81.5%。経営者の世代にも、見る習慣があります。</p><a class="mkt-src" href="https://www.soumu.go.jp/main_content/001079141.pdf" target="_blank" rel="noopener">総務省 情報通信政策研究所「令和7年度 情報通信メディアの利用時間と情報行動に関する調査」2025年12月・n=1,800（PDF）</a></li>
+      <li class="mkt-c"><span class="mkt-no">02<b>痛み</b></span><b class="mkt-n">60.0<i>%</i></b><p class="mkt-d">人手が不足していると答えた中小企業の割合。発信に人を割く余裕は、多くの会社にありません。</p><a class="mkt-src" href="https://www.jcci.or.jp/news/research/2026/0915140001.html" target="_blank" rel="noopener">日本商工会議所・東京商工会議所「多様な人材の活躍等に関する調査」2026年7〜8月・n=2,654</a></li>
+      <li class="mkt-c"><span class="mkt-no">03<b>壁</b></span><b class="mkt-n">85.5<i>%</i></b><p class="mkt-d">DXに取り組む企業のうち、DXを進める人材の「量」が足りないと答えた割合。人を雇って解くのは難しい状況です。</p><a class="mkt-src" href="https://www.ipa.go.jp/digital/chousa/dx-trend/rcu1hd0000017uk8-att/dx-trend-2026.pdf" target="_blank" rel="noopener">IPA「DX動向2026」2026年4〜6月・n=1,799（PDF）</a></li>
+      <li class="mkt-c"><span class="mkt-no">04<b>効き目</b></span><b class="mkt-n">23.0<i>%</i></b><p class="mkt-d">成長に向けたAI活用に取り組んだ中小企業の、付加価値額の伸び（中央値・2019→2024年）。取り組んでいない企業は17.9%。白書は因果関係までは示していません。</p><a class="mkt-src" href="https://www.chusho.meti.go.jp/pamflet/hakusyo/2026/chusho/b2_2_1.html" target="_blank" rel="noopener">中小企業庁「2026年版 中小企業白書」第2-2-12図（元データ：帝国データバンク、n=12,215）</a></li>
+      <li class="mkt-c"><span class="mkt-no">05<b>今やる理由</b></span><b class="mkt-n">68.9<i>%</i></b><p class="mkt-d">生成AIの活用方針を定めている日本企業の割合。前年の49.7%から、1年で大きく増えました。</p><a class="mkt-src" href="https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r08/pdf/n1210000.pdf" target="_blank" rel="noopener">総務省「情報通信白書 令和8年版」図表Ⅰ-2-1-1　2026年1〜2月・日本企業n=515（PDF）</a></li>
+    </ol>
+    <p class="mkt-bridge">見る人はいて、人は足りず、AIで手を省く会社が増えています。だから、社長は話すだけで済む形にしました。</p>
+    <button class="fc-btn" type="button" data-fc-section="市場データ" data-fc-claim="50代のYouTube利用率84.9%、全年代81.5%（総務省 情報通信政策研究所 令和7年度調査、2025年12月、n=1,800）／人手が不足している中小企業60.0%（日本商工会議所・東京商工会議所、2026年7〜8月、n=2,654）／DXに取り組む企業でDX推進人材の量が不足85.5%（IPA DX動向2026、n=1,799）／成長に向けたAI活用に取り組んだ中小企業の付加価値額変化率（中央値、2019→2024年）23.0%、取り組んでいない企業17.9%（2026年版中小企業白書 第2-2-12図）／生成AIの活用方針を定めている日本企業68.9%、前年49.7%（情報通信白書 令和8年版）">ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div><b>話すだけチャンネル（仮称）</b>　株式会社ライトアップ</div>
+    <div><a href="https://www.writeup.jp/company/" target="_blank" rel="noopener">会社概要</a><a href="https://www.writeup.jp/privacy/" target="_blank" rel="noopener">個人情報保護方針</a></div>
+  </div>
+</footer>
+
+<dialog class="pop" id="pop" aria-labelledby="popT">
+  <div class="pop-h"><p id="popT">このページを、見出しだけで読む</p><button type="button" class="pop-x" id="popX" aria-label="閉じる">×</button></div>
+  <div class="pop-b">
+    <p class="pop-lbl"><span class="en">Hero copy</span>いちばん上で切り替わっている3つのコピー</p>
+    <ol class="copies" id="copies"></ol>
+    <div class="pop-story">
+      <p class="pop-lbl"><span class="en">Headlines</span>見出しをつなげると、こういう話です</p>
+      <ol id="story"></ol>
+    </div>
+    <p class="pop-f">見出しを押すと、そのセクションへ移ります。</p>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  /* ===== ヒーロー：3つのコピーのローテーション ===== */
+  var COPIES=[
+    {c:'撮り直し3回目で、\n今週も出せなかった',s:'どんな場面のためか。撮影・編集・投稿のどこかで止まり、話したいことが外に出ないまま週が終わる。その場面をなくすためのサービスです。'},
+    {c:'スマホに話すだけで、\nYouTubeとSNSまで',s:'何を売るのか。話した声を、資料・解説動画・YouTubeへの公開・SNSの告知まで、まとめて仕上げます。社長がするのは、話すことと確認だけです。'},
+    {c:'毎週の撮影は要りません。\n声だけください',s:'何が違うのか。毎週の撮影はしません。スマホに録った声から、資料と説明役のアバターで動画にします。人物を出さない動画も作れます。'}
+  ];
+  var TYPE_MS=55, HOLD_MS=5200, ERASE_MS=22;
+  var h1=document.getElementById('tw'), hc=document.getElementById('hc');
+  var dots=[].slice.call(document.querySelectorAll('.dots button'));
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var idx=0, timer=null, paused=false;
+  function put(t){ h1.textContent=''; t.split('\n').forEach(function(line,k){ if(k) h1.appendChild(document.createElement('br')); h1.appendChild(document.createTextNode(line)); }); }
+  function reserve(){ var cur=COPIES[idx].c, max=0; hc.style.minHeight=''; COPIES.forEach(function(o){ put(o.c); max=Math.max(max,h1.offsetHeight); }); put(cur); hc.style.minHeight=max+'px'; }
+  function mark(i){ dots.forEach(function(d,k){ d.setAttribute('aria-current',k===i?'true':'false'); }); }
+  function clear(){ if(timer){ clearTimeout(timer); timer=null; } }
+  function show(i,typing){ clear(); idx=i; mark(i); var t=COPIES[i].c; if(reduce||!typing){ put(t); schedule(); return; } var n=0; (function step(){ put(t.slice(0,++n)); if(n<t.length){ timer=setTimeout(step,TYPE_MS); } else { schedule(); } })(); }
+  function erase(next){ var t=COPIES[idx].c; (function step(){ if(t.length){ t=t.slice(0,-1); put(t); timer=setTimeout(step,ERASE_MS); } else { show(next,true); } })(); }
+  function schedule(){ clear(); if(paused) return; timer=setTimeout(function(){ var next=(idx+1)%COPIES.length; if(reduce){ show(next,false); } else { erase(next); } },HOLD_MS); }
+  dots.forEach(function(d,k){ d.addEventListener('click',function(e){ e.stopPropagation(); show(k,false); }); });
+  window.addEventListener('resize',function(){ reserve(); });
+  if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(reserve); }
+  reserve(); schedule();
+
+  /* ===== ポップアップ ===== */
+  var pop=document.getElementById('pop');
+  var copiesEl=document.getElementById('copies'), storyEl=document.getElementById('story');
+  COPIES.forEach(function(o,k){ var li=document.createElement('li'); li.innerHTML='<span class="n">0'+(k+1)+'</span><div><p class="c"></p><p class="s"></p></div>'; li.querySelector('.c').textContent=o.c.replace(/\n/g,''); li.querySelector('.s').textContent=o.s; copiesEl.appendChild(li); });
+  document.querySelectorAll('main section h2[id]').forEach(function(h){ var li=document.createElement('li'), a=document.createElement('a'); a.href='#'+h.closest('section').id; a.textContent=h.textContent; a.dataset.h=h.id; li.appendChild(a); storyEl.appendChild(li); });
+  var opener=null;
+  function openPop(e){ opener=hc; paused=true; clear(); put(COPIES[idx].c); if(pop.showModal){ pop.showModal(); } else { pop.setAttribute('open',''); } }
+  function closePop(){ if(pop.close){ pop.close(); } else { pop.removeAttribute('open'); } }
+  pop.addEventListener('close',function(){ paused=false; schedule(); if(opener&&!pop.dataset.jump){ opener.focus(); } delete pop.dataset.jump; });
+  hc.addEventListener('click',openPop);
+  hc.setAttribute('tabindex','0'); hc.setAttribute('role','button'); hc.setAttribute('aria-haspopup','dialog');
+  hc.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openPop(e); } });
+  document.getElementById('popX').addEventListener('click',closePop);
+  pop.addEventListener('click',function(e){ if(e.target===pop) closePop(); });
+  storyEl.addEventListener('click',function(e){ var a=e.target.closest('a'); if(!a) return; e.preventDefault(); pop.dataset.jump='1'; closePop(); var h=document.getElementById(a.dataset.h), sec=h.closest('section'); sec.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'}); h.setAttribute('tabindex','-1'); setTimeout(function(){ h.focus({preventScroll:true}); },reduce?0:450); history.replaceState(null,'',a.getAttribute('href')); });
+
+  /* ===== ヒーロー下：5段の流れを順に点灯 ===== */
+  var fs=[].slice.call(document.querySelectorAll('#flow .fs')), fi=-1;
+  function stepFlow(){ fi=(fi+1)%(fs.length+2); fs.forEach(function(el,k){ el.classList.toggle('on',k===fi); el.classList.toggle('done',k<fi); }); }
+  if(reduce){ fs.forEach(function(el){ el.classList.add('done'); }); } else { stepFlow(); setInterval(stepFlow,1400); }
+
+  /* ===== ヘッダー：下で隠れ、上で出る ===== */
+  var hd=document.querySelector('.hd'), last=window.scrollY, ticking=false, TH=8, TOP=120;
+  function upd(){ var y=window.scrollY, d=y-last; if(y<TOP||hd.contains(document.activeElement)){ hd.classList.remove('is-hidden'); } else if(d>TH){ hd.classList.add('is-hidden'); } else if(d<-TH){ hd.classList.remove('is-hidden'); } if(Math.abs(d)>TH) last=y; ticking=false; }
+  window.addEventListener('scroll',function(){ if(!ticking){ ticking=true; requestAnimationFrame(upd); } },{passive:true});
+  hd.addEventListener('focusin',function(){ hd.classList.remove('is-hidden'); });
+
+  /* ===== ChatGPTでファクトチェック ===== */
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('.fc-btn'); if(!b) return;
+    var c=document.querySelector('link[rel=canonical]'); var url=c?c.href:location.href;
+    var p='次のLPの記載が事実として正しいか、第三者の立場で確認してください。\n\n【対象ページ】'+url+'\n【セクション】'+b.dataset.fcSection+'\n【記載内容】\n'+b.dataset.fcClaim.split('／').join('\n')+'\n\n【確認してほしいこと】\n'+(b.dataset.fcExtra?b.dataset.fcExtra.split('／').map(function(x){return '- '+x;}).join('\n')+'\n':'')+'- 記載は一般的な事実・相場・公的情報と照らして正しいか\n- 誤り・誇張・古い情報があれば指摘する\n- 反対の見方や、読み手が注意すべき点\n- 確認できないことは「確認できない」と書き、推測で補わない';
+    window.open('https://chatgpt.com/?q='+encodeURIComponent(p),'_blank','noopener,noreferrer');
+    if(navigator.clipboard){ navigator.clipboard.writeText(p).catch(function(){}); }
+  });
+})();
+</script>
+<script data-click-marker>
+/* クリック黄色マーカー v2（全HTML標準・正本 ~/.claude/click-marker.js / 仕様 ~/.claude/lp-click-marker.md）
+   文字をクリックすると表示上の1行に黄色マーカー。再クリックで消える。
+   暗い背景では文字が黄色に光る（multiply合成）。レイアウトは動かさない。
+   止める：<meta name="click-marker" content="off">／要素単位で data-no-marker */
+(function () {
+  if (window.__clickMarker) return;
+  window.__clickMarker = 1;
+  var d = document, root = d.documentElement;
+  var off = d.querySelector('meta[name="click-marker"]');
+  if (off && off.getAttribute('content') === 'off') return;
+
+  var SKIP = 'a,button,input,textarea,select,option,label,summary,video,audio,iframe,canvas,svg,img,form,dialog,' +
+    '[role=button],[role=link],[role=tab],[role=menuitem],[contenteditable=""],[contenteditable=true],' +
+    '[onclick],[data-no-marker],[data-click-marker-layer]';
+  var layer = null, marks = [], down = null, lastW = innerWidth, raf = 0;
+
+  function ensureLayer() {
+    if (layer) return layer;
+    var st = d.createElement('style');
+    st.textContent =
+      '[data-click-marker-layer]{position:absolute;left:0;top:0;width:0;height:0;pointer-events:none;' +
+      'z-index:2147483000;mix-blend-mode:multiply}' +
+      '[data-click-marker-layer]>i{position:absolute;display:block;background:#ffe14a;border-radius:3px;' +
+      'opacity:0;transition:opacity .18s ease-out;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
+      '[data-click-marker-layer]>i.on{opacity:.85}';
+    (d.head || root).appendChild(st);
+    layer = d.createElement('div');
+    layer.setAttribute('data-click-marker-layer', '');
+    layer.setAttribute('aria-hidden', 'true');
+    root.appendChild(layer);
+    return layer;
+  }
+
+  function isBlock(el) {
+    return !/^(inline|contents)/.test(getComputedStyle(el).display);
+  }
+  function blockOf(el) {
+    while (el && el !== d.body && el !== root && !isBlock(el)) el = el.parentElement;
+    return el;
+  }
+
+  // ブロック直下の文字（入れ子のブロックは除く）を表示上の行ごとにまとめる
+  function lines(block) {
+    var rects = [], r = d.createRange();
+    var w = d.createTreeWalker(block, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (t) {
+        if (!t.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        for (var p = t.parentElement; p && p !== block; p = p.parentElement) {
+          if (isBlock(p)) return NodeFilter.FILTER_REJECT;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    for (var t; (t = w.nextNode());) {
+      r.selectNodeContents(t);
+      var cr = r.getClientRects();
+      for (var i = 0; i < cr.length; i++) if (cr[i].width > 0.5 && cr[i].height > 0.5) rects.push(cr[i]);
+    }
+    rects.sort(function (a, b) { return a.top - b.top || a.left - b.left; });
+    var ls = [];
+    rects.forEach(function (c) {
+      var cm = (c.top + c.bottom) / 2, hit = null;
+      for (var i = 0; i < ls.length; i++) {
+        var g = ls[i], gm = (g.top + g.bottom) / 2;
+        if ((cm >= g.top && cm <= g.bottom) || (gm >= c.top && gm <= c.bottom)) { hit = g; break; }
+      }
+      if (hit) {
+        hit.left = Math.min(hit.left, c.left); hit.right = Math.max(hit.right, c.right);
+        hit.top = Math.min(hit.top, c.top); hit.bottom = Math.max(hit.bottom, c.bottom);
+      } else {
+        ls.push({ left: c.left, right: c.right, top: c.top, bottom: c.bottom });
+      }
+    });
+    ls.sort(function (a, b) { return a.top - b.top; });
+    return ls;
+  }
+
+  // 中スクロールの枠外へ出た行はマーカーを隠す（枠をはみ出して塗らない）
+  function clipped(block, L) {
+    for (var p = block; p && p !== d.body && p !== root; p = p.parentElement) {
+      var cs = getComputedStyle(p);
+      if (cs.overflowX === 'visible' && cs.overflowY === 'visible') continue;
+      var r = p.getBoundingClientRect();
+      if (L.bottom <= r.top || L.top >= r.bottom || L.right <= r.left || L.left >= r.right) return true;
+    }
+    return false;
+  }
+
+  function place(mk, L) {
+    var s = mk.el.style, pad = 2;
+    s.visibility = clipped(mk.block, L) ? 'hidden' : '';
+    s.left = (L.left + scrollX - pad) + 'px';
+    s.top = (L.top + scrollY) + 'px';
+    s.width = (L.right - L.left + pad * 2) + 'px';
+    s.height = (L.bottom - L.top) + 'px';
+  }
+  function drop(mk) {
+    var el = mk.el;
+    el.classList.remove('on');
+    setTimeout(function () { el.remove(); }, 200);
+  }
+  function clearAll() { marks.forEach(drop); marks = []; }
+  function refresh() {
+    raf = 0;
+    marks = marks.filter(function (mk) {
+      if (!mk.block.isConnected) { mk.el.remove(); return false; }
+      var ls = lines(mk.block);
+      if (ls.length !== mk.n || !ls[mk.idx]) { mk.el.remove(); return false; }
+      place(mk, ls[mk.idx]);
+      return true;
+    });
+  }
+  function later() { if (marks.length && !raf) raf = requestAnimationFrame(refresh); }
+
+  d.addEventListener('pointerdown', function (e) { down = { x: e.clientX, y: e.clientY }; }, true);
+
+  d.addEventListener('click', function (e) {
+    if (e.button !== 0 || e.detail > 1 || e.defaultPrevented) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    if (down && Math.abs(e.clientX - down.x) + Math.abs(e.clientY - down.y) > 6) return; // ドラッグ
+    var sel = window.getSelection && getSelection();
+    if (sel && !sel.isCollapsed && String(sel).trim()) return; // 文字選択中
+    var t = e.target;
+    if (!(t instanceof Element) || t.closest(SKIP)) return;
+    for (var p = t; p && p !== root; p = p.parentElement) {
+      var cs = getComputedStyle(p);
+      if (cs.cursor === 'pointer') return; // 既存のクリック操作（H1ポップアップ等）を優先
+      if (cs.position === 'fixed' || cs.position === 'sticky') return; // 追従要素は対象外
+    }
+    var block = blockOf(t);
+    if (!block || block === d.body || block === root) return;
+    var ls = lines(block), idx = -1;
+    for (var i = 0; i < ls.length; i++) {
+      var L = ls[i];
+      if (e.clientY >= L.top - 1 && e.clientY <= L.bottom + 1 && e.clientX >= L.left - 6 && e.clientX <= L.right + 6) { idx = i; break; }
+    }
+    if (idx < 0) return; // 余白のクリック
+    for (var j = 0; j < marks.length; j++) {
+      if (marks[j].block === block && marks[j].idx === idx) { drop(marks[j]); marks.splice(j, 1); return; }
+    }
+    var el = d.createElement('i');
+    ensureLayer().appendChild(el);
+    var mk = { block: block, idx: idx, n: ls.length, el: el };
+    marks.push(mk);
+    place(mk, ls[idx]);
+    requestAnimationFrame(function () { requestAnimationFrame(function () { el.classList.add('on'); }); });
+  });
+
+  // 画面幅が変わると折り返しが変わるので消す。それ以外のずれは位置を引き直す
+  addEventListener('resize', function () {
+    if (innerWidth !== lastW) { lastW = innerWidth; clearAll(); } else later();
+  });
+  d.addEventListener('scroll', function (e) { if (e.target !== d) later(); }, true);
+  function watch() { if (window.ResizeObserver && d.body) new ResizeObserver(later).observe(d.body); }
+  if (d.body) watch(); else d.addEventListener('DOMContentLoaded', watch);
+})();
+</script>
+</body>
+</html>
