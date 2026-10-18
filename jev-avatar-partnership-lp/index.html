@@ -64,21 +64,32 @@
     /* Persistent partner guide: a 180px rail at desktop sizes. */
     @media(min-width:900px){body{padding-right:180px}.site-header{right:180px}.container{width:min(1200px,calc(100% - 48px))}}
     @media(min-width:760px) and (max-width:899px){body{padding-right:90px}.site-header{right:90px}.container{width:min(1200px,calc(100% - 40px))}}
-    .partner-guide,.partner-chat{position:fixed;right:0;width:180px;background:#fff;color:var(--ink);border-left:1px solid #d5dddf;z-index:110}
-    .partner-guide{top:0;height:min(350px,50vh);overflow:auto;padding:8px;background:#f5f6f4;border-bottom:1px solid #d5dddf;scrollbar-width:thin}
-    .guide-open{display:flex;flex-direction:column;align-items:center;gap:4px;width:100%;padding:0;border:0;background:none;color:inherit;text-align:center}
-    .guide-open img{width:100%;height:98px;border-radius:7px;object-fit:cover;object-position:center 24%}.guide-open strong{font-size:11px;line-height:1.3}.guide-open small{font-size:9px;line-height:1.25;color:#62727a}
-    .guide-copy{margin:7px 0;padding:8px 2px;border-top:1px solid #dbe2e2;border-bottom:1px solid #dbe2e2;min-height:100px}.guide-label{display:block;color:#88643d;font-size:9px;font-weight:800}.guide-lines{font-size:12px;font-weight:750;line-height:1.5;white-space:pre-line;overflow-wrap:anywhere}.guide-lines.is-extra{font-size:11px}.guide-extra{display:block;color:#a65f3d;font-size:9px;font-weight:800}.guide-copy.is-expired .guide-lines,.guide-copy.is-expired .guide-extra{display:none}
-    .guide-copy.is-expired{display:none}
-    .guide-modes{display:flex;gap:4px}.guide-modes button{flex:1;min-width:0;min-height:44px;padding:2px;border:1px solid #c9d4d5;border-radius:7px;background:#fff;color:#334b56;font-size:10px;font-weight:800}.guide-modes button[aria-pressed="true"]{border-color:#173346;background:#173346;color:#fff}.guide-note{display:block;margin-top:5px;color:#718087;font-size:9px;line-height:1.3}
-    .partner-chat{top:min(350px,50vh);bottom:0;display:flex;flex-direction:column;min-height:0}.chat-top{display:none}.chat-log{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;align-items:flex-start;gap:7px;padding:8px}.chat-msg{max-width:100%;padding:8px;border-radius:9px;background:#edf2f1;color:#243c47;font-size:11px;line-height:1.5;white-space:pre-line;overflow-wrap:anywhere}.chat-msg.user{align-self:flex-end;background:#173346;color:#fff}.chat-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;padding:5px}.chat-choices button{min-height:34px;padding:4px 2px;border:1px solid #d0d9d8;border-radius:18px;background:#f8faf8;color:#354f58;font-size:10px;font-weight:750}.chat-form{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:6px;border-top:1px solid #e3e9e8}.chat-form input{grid-column:1/-1;min-width:0;width:100%;min-height:36px;padding:7px 9px;border:1px solid #d0d9d8;border-radius:18px;font-size:11px}.chat-form button{min-height:34px;border:0;border-radius:7px;background:#173346;color:#fff}.chat-form .chat-voice{background:#e9efec;color:#284e4d}.chat-disclose{margin:0;padding:0 7px 7px;color:#6f7b7d;font-size:9px;line-height:1.35}
-    @media(max-width:759px){.partner-guide{top:auto;right:8px;bottom:8px;width:180px;height:auto;max-height:220px;border:1px solid #cdd9d8;border-radius:14px;box-shadow:0 12px 40px rgba(12,28,42,.2);padding:6px;background:#fff}.guide-open{flex-direction:row;gap:7px;text-align:left}.guide-open img{width:42px;height:42px;flex:none}.guide-open strong{font-size:11px}.guide-copy{min-height:0;margin:5px 0;padding:5px 1px}.guide-lines{font-size:11px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.guide-note{display:none}.partner-chat{display:none;top:auto;right:8px;bottom:8px;width:min(340px,calc(100% - 16px));height:min(560px,75vh);border:1px solid #cdd9d8;border-radius:13px;box-shadow:0 18px 55px rgba(12,28,42,.28);overflow:hidden;z-index:112}.partner-chat.is-open{display:flex}.chat-top{display:flex;align-items:center;gap:7px;padding:8px;background:var(--navy);color:#fff}.chat-top img{width:35px;height:35px;border-radius:50%;object-fit:cover;object-position:top}.chat-top strong{font-size:12px}.chat-top button{margin-left:auto;width:36px;height:36px;border:0;background:rgba(255,255,255,.15);color:#fff;font-size:22px}.chat-modes{padding:6px;border-bottom:1px solid #e3e9e8}.chat-log{font-size:12px}.chat-msg{font-size:12px}.chat-choices button{min-height:38px}.chat-disclose{font-size:10px}}
-    @media(min-width:760px){.chat-modes{display:none}.partner-chat.is-open{display:flex}}
+    /* Right rail, pattern A: the avatar sits on top and the chat / voice / 575 tabs share one panel below it. */
+    .partner-guide{position:fixed;z-index:110;top:76px;right:14px;width:280px;height:calc(100vh - 90px);max-height:780px;display:flex;flex-direction:column;overflow:hidden;background:#fff;color:var(--ink);border:1px solid #d5dddf;border-radius:17px;box-shadow:0 17px 54px rgba(12,28,42,.18)}
+    .guide-stage{position:relative;flex:none;height:clamp(150px,32vh,270px);overflow:hidden;background:linear-gradient(160deg,#154578,#102547)}
+    .guide-stage:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,18,42,.08) 30%,rgba(5,20,43,.55));pointer-events:none}
+    .guide-stage>video,.guide-stage>video img{width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:saturate(.85)}
+    .guide-stage-tag{position:absolute;z-index:1;left:14px;top:13px;color:#fff;font:800 10px/1.3 system-ui,sans-serif;letter-spacing:.15em;text-shadow:0 1px 8px #0b2440}
+    .guide-speaking{position:absolute;z-index:2;left:12px;bottom:10px;display:none;padding:3px 10px;border-radius:20px;background:#e77f36;color:#fff;font-size:10px;font-weight:850}.partner-guide.is-speaking .guide-speaking{display:block}
+    .guide-minimize{position:absolute;z-index:2;top:9px;right:9px;width:28px;height:28px;border:0;border-radius:50%;background:rgba(5,23,52,.66);color:#fff;font-size:18px;line-height:1}
+    .guide-expand{position:absolute;z-index:2;left:50%;bottom:9px;transform:translateX(-50%);display:none;width:max-content;max-width:calc(100% - 16px);min-height:34px;padding:5px 13px;border:0;border-radius:24px;background:#e77f36;color:#fff;font-size:11px;font-weight:900}
+    .guide-body{flex:1;min-height:0;display:flex;flex-direction:column;gap:8px;padding:10px 12px}
+    .guide-modes{flex:none;display:flex;gap:2px;padding:3px;border-radius:24px;background:#e7edf6}.guide-modes button{flex:1;min-width:0;min-height:34px;padding:2px;border:0;border-radius:18px;background:transparent;color:#445774;font-size:11px;font-weight:800}.guide-modes button[aria-pressed="true"]{background:#fff;color:#183651;box-shadow:0 1px 5px rgba(20,50,75,.12)}
+    .guide-panel{flex:1;min-height:0;display:flex;flex-direction:column;gap:7px}.guide-panel[hidden]{display:none}
+    .chat-log{flex:1;min-height:60px;overflow:auto;display:flex;flex-direction:column;align-items:flex-start;gap:7px;padding:2px 1px}.chat-msg{max-width:100%;padding:8px 9px;border-radius:9px;background:#edf2f1;color:#243c47;font-size:12px;line-height:1.55;white-space:pre-line;overflow-wrap:anywhere}.chat-msg.user{align-self:flex-end;background:#173346;color:#fff}
+    .chat-choices{flex:none;display:flex;flex-wrap:wrap;gap:4px}.chat-choices[hidden]{display:none}.chat-choices button{min-height:30px;padding:3px 10px;border:1px solid #d0d9d8;border-radius:18px;background:#f8faf8;color:#354f58;font-size:10px;font-weight:750}.chat-choices button:hover{background:#eaf1ee}
+    .chat-form{flex:none;display:flex;gap:4px}.chat-form input{flex:1;min-width:0;min-height:36px;padding:6px 11px;border:1px solid #d0d9d8;border-radius:18px;font-size:12px}.chat-form button{flex:none;min-height:36px;padding:0 13px;border:0;border-radius:18px;background:#173346;color:#fff;font-size:11px;font-weight:800}
+    .voice-help{flex:none;margin:0;color:#56676f;font-size:11px;line-height:1.55}.voice-heard{flex:none;margin:0;color:#6f7b7d;font-size:10px;line-height:1.45;overflow-wrap:anywhere}.voice-reply{flex:1;min-height:0;overflow:auto;margin:0;padding:10px;border-radius:9px;background:#edf2f1;color:#243c47;font-size:12px;font-weight:750;line-height:1.6;white-space:pre-line;overflow-wrap:anywhere}.voice-reply.is-haiku{display:flex;align-items:center;justify-content:center;text-align:center;font-size:15px;line-height:1.75}.voice-heard[hidden],.voice-reply[hidden]{display:none}
+    .voice-start{flex:none;min-height:42px;margin-top:auto;padding:6px 12px;border:0;border-radius:28px;background:#e77f36;color:#fff;font-size:12px;font-weight:900}.voice-start:hover{background:#cc6525}.voice-start.is-on{background:#173346}
+    .guide-status{flex:none;margin:0;color:#77868c;font-size:9px;line-height:1.35}
+    .partner-guide.is-minimized{height:auto}.partner-guide.is-minimized .guide-stage{height:96px}.partner-guide.is-minimized .guide-body{display:none}.partner-guide.is-minimized .guide-expand{display:block}.partner-guide.is-minimized .guide-speaking{bottom:auto;top:34px}
+    @media(min-width:760px) and (max-width:1119px){.partner-guide{top:72px;right:0;width:180px;height:calc(100vh - 72px);max-height:none;border-right:0;border-bottom:0;border-radius:11px 0 0 0}.guide-stage{height:clamp(110px,24vh,185px)}.guide-stage-tag{font-size:8px}.guide-body{gap:6px;padding:8px}.guide-modes button{min-height:30px;font-size:10px}.chat-msg{padding:7px;font-size:11px}.chat-form button{padding:0 9px}.voice-help{font-size:10px}.voice-reply{font-size:11px}.voice-start{font-size:11px}}
+    @media(max-width:759px){.partner-guide{top:auto;right:8px;bottom:8px;width:min(340px,calc(100% - 16px));height:min(540px,74vh);max-height:none;border-color:#cdd9d8;border-radius:14px;box-shadow:0 18px 55px rgba(12,28,42,.28)}.guide-stage{height:120px}.partner-guide.is-minimized{width:180px}.partner-guide.is-minimized .guide-stage{height:84px}.guide-stage-tag{font-size:8px}.chat-choices button{min-height:34px}}
 
     /* Jev concept: one visual decision flow, with the avatar reserved for the persistent rail. */
     .hero-preview-intro{display:block;margin:23px 0 22px;font-size:20px;line-height:1.4}.hero-route{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:10px 0 0;padding:9px 12px;border:1px solid rgba(232,193,142,.65);background:rgba(216,170,114,.12)}.hero-route span{color:#e8c18e;font:800 10px/1.3 system-ui,sans-serif;letter-spacing:.08em}.hero-route strong{font-size:13px;color:#fff}.hero-panel-note{margin:15px 0 0}
     .experience-grid{grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:46px;align-items:start}.experience-copy{padding-top:18px}.experience-copy h2{font-size:clamp(35px,3.3vw,49px);line-height:1.3}.experience-copy>p:not(.eyebrow):not(.small){color:#344a55;font-size:16px}.experience-copy .small{margin-top:24px}.experience-copy .small a{text-underline-offset:3px}.decision-board{padding:29px;background:#fff;border:1px solid #d3dedc;box-shadow:0 20px 52px rgba(15,49,62,.09)}.decision-board-kicker{display:flex;justify-content:space-between;gap:10px;margin:0 0 22px;color:#9c7448;font:800 11px/1.3 system-ui,sans-serif;letter-spacing:.14em}.decision-board-kicker span{color:#65757b;letter-spacing:0}.decision-input,.decision-core{padding:13px 18px;background:#f2f5f3;border:1px solid #d8e1df}.decision-input span,.decision-core span{display:block;margin-bottom:4px;color:#94704a;font:800 10px/1.3 system-ui,sans-serif;letter-spacing:.12em}.decision-input strong,.decision-core strong{display:block;font-size:17px;line-height:1.4}.decision-core{background:#142b3a;border-color:#142b3a;color:#fff}.decision-core span{color:#e4bb89}.decision-core small{display:block;margin-top:7px;color:#d0dcdd;font-size:11px;line-height:1.5}.decision-arrow{text-align:center;color:#ab895f;font-weight:900;line-height:1.8}.decision-outcomes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.decision-outcomes>div{min-width:0;min-height:100px;padding:12px 9px;border:1px solid #d7dfde;background:#fbfcfb}.decision-outcomes b{display:block;color:#a47a49;font:800 10px/1.2 system-ui,sans-serif}.decision-outcomes strong{display:block;margin-top:9px;font-size:14px;line-height:1.3}.decision-outcomes small{display:block;margin-top:4px;color:#62737a;font-size:10px;line-height:1.4}.decision-board-note{margin:15px 0 0!important;color:#536770;font-size:12px;line-height:1.65}.decision-trials{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin-top:21px;padding-top:17px;border-top:1px solid #e2e7e5}.decision-trials span{width:100%;color:#51646e;font-size:11px;font-weight:800}.decision-trials button{min-height:38px;padding:6px 10px;border:1px solid #b7c8c8;border-radius:20px;background:#fff;color:#25404e;font-size:11px;font-weight:800}.decision-trials button:hover,.decision-trials button:focus-visible{background:#eaf1ee;border-color:#647f79}
-    .guide-route{display:block;margin:3px 0 6px;color:#1f5a52;font-size:9px;font-weight:800}.decision-msg{width:100%;border:1px solid #d6e2dd;background:#f3f8f5}.decision-badge{display:block;margin-bottom:5px;color:#1b6657;font-size:9px;font-weight:900}.decision-answer{display:block}.decision-msg a{display:inline-block;margin-top:8px;color:#174c65;font-size:10px;font-weight:800;text-underline-offset:2px}
+    .decision-msg{width:100%;border:1px solid #d6e2dd;background:#f3f8f5}.decision-badge{display:block;margin-bottom:5px;color:#1b6657;font-size:9px;font-weight:900}.decision-answer{display:block}.decision-msg a{display:inline-block;margin-top:8px;color:#174c65;font-size:10px;font-weight:800;text-underline-offset:2px}
     @media(max-width:900px){.experience-grid{grid-template-columns:1fr;gap:28px}.experience-copy{padding-top:0}.decision-board{max-width:620px}.market-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.market-grid li:nth-child(odd){border-left:0}}
     @media(max-width:680px){.decision-board{padding:18px}.decision-outcomes{gap:5px}.decision-outcomes>div{padding:10px 6px}.decision-outcomes strong{font-size:12px}.decision-outcomes small{font-size:9px}.market-grid{grid-template-columns:1fr}.market-grid li{border-left:0}}
 
@@ -86,29 +97,10 @@
     .hero-photo-note{display:block;margin-top:3px;color:#aebfc4;font-size:11px}
     @media(min-width:1120px){body{padding-right:300px}.site-header{right:300px}}
     @media(min-width:760px) and (max-width:1119px){body{padding-right:180px}.site-header{right:180px}}
-    .partner-guide{top:76px;right:14px;bottom:auto;width:280px;height:auto;max-height:calc(100vh - 90px);overflow:auto;padding:0;border:1px solid #d5dddf;border-radius:17px;background:#fff;box-shadow:0 17px 54px rgba(12,28,42,.18);scrollbar-width:thin}
-    .guide-stage{position:relative;height:296px;overflow:hidden;background:linear-gradient(160deg,#154578,#102547);border-radius:16px 16px 0 0}
-    .guide-stage:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,18,42,.08) 20%,rgba(3,19,43,.3) 56%,rgba(5,20,43,.83));pointer-events:none}
-    .guide-stage>video,.guide-stage>video img{width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:saturate(.85)}
-    .guide-stage-tag{position:absolute;z-index:1;left:16px;top:15px;color:#fff;font:800 10px/1.3 system-ui,sans-serif;letter-spacing:.15em;text-shadow:0 1px 8px #0b2440}
-    .guide-minimize{position:absolute;z-index:2;top:10px;right:10px;width:28px;height:28px;border:0;border-radius:50%;background:rgba(5,23,52,.66);color:#fff;font-size:18px;line-height:1}
-    .guide-speak{position:absolute;z-index:2;left:50%;bottom:25px;transform:translateX(-50%);width:max-content;max-width:calc(100% - 24px);min-height:42px;padding:8px 14px;border:0;border-radius:28px;background:#e77f36;color:#fff;box-shadow:0 5px 15px rgba(0,0,0,.2);font-size:12px;font-weight:900}
-    .guide-speak:hover{background:#cc6525}.guide-body{padding:12px 13px 14px}.guide-modes{display:flex;gap:2px;padding:3px;border-radius:24px;background:#e7edf6}.guide-modes button{min-height:34px;border:0;border-radius:18px;background:transparent;color:#445774;font-size:11px}.guide-modes button[aria-pressed="true"]{background:#fff;color:#183651;box-shadow:0 1px 5px rgba(20,50,75,.12)}
-    .guide-copy{min-height:0;margin:10px 0 0;padding:0;border:0}.guide-label{font-size:10px;color:#365372}.guide-route{margin:3px 0 5px}.guide-lines{font-size:12px;line-height:1.55}.guide-note{margin:8px 0 11px;color:#64748b;font-size:10px;line-height:1.55}.guide-chat-trigger{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:37px;padding:6px 11px;border:1px solid #bdcedb;border-radius:7px;background:#fff;color:#22465d;font-size:11px;font-weight:850}.guide-chat-trigger:hover{background:#eef5f8}.guide-disclose{display:block;margin-top:8px;color:#77868c;font-size:9px;line-height:1.3}.guide-copy.is-expired{display:block}.guide-copy.is-expired .guide-lines,.guide-copy.is-expired .guide-route{display:none}
-    .partner-guide.is-minimized{overflow:hidden}.partner-guide.is-minimized .guide-stage{height:72px;border-radius:16px}.partner-guide.is-minimized .guide-body,.partner-guide.is-minimized .guide-speak{display:none}.partner-guide.is-minimized .guide-stage-tag{top:30px}
-    .partner-chat{display:none;top:76px;right:308px;bottom:auto;width:min(310px,calc(100vw - 330px));height:min(520px,calc(100vh - 94px));min-height:0;border:1px solid #cbd6d8;border-radius:14px;box-shadow:0 24px 75px rgba(6,22,35,.27);overflow:hidden}.partner-chat.is-open{display:flex}.chat-top{display:flex;align-items:center;gap:7px;padding:8px;background:var(--navy);color:#fff}.chat-top img{width:35px;height:35px;border-radius:50%;object-fit:cover;object-position:top}.chat-top strong{font-size:12px}.chat-top button{margin-left:auto;width:36px;height:36px;border:0;background:rgba(255,255,255,.15);color:#fff;font-size:22px}.chat-modes{display:flex;padding:6px;border-bottom:1px solid #e3e9e8}
-    @media(min-width:760px) and (max-width:1119px){.partner-guide{top:72px;right:0;width:180px;border-radius:11px 0 0 11px}.guide-stage{height:185px;border-radius:10px 0 0 0}.guide-stage-tag{font-size:8px}.guide-speak{bottom:14px;min-height:35px;padding:6px 8px;font-size:9px}.guide-body{padding:9px}.guide-lines{font-size:11px}.guide-note{font-size:9px}.partner-chat{right:187px;width:min(310px,calc(100vw - 200px));top:72px}}
-    @media(max-width:759px){.partner-guide{top:auto;right:8px;bottom:8px;width:180px;max-height:calc(100vh - 70px);border-radius:13px}.guide-stage{height:105px;border-radius:12px 12px 0 0}.guide-stage-tag{top:8px;left:9px;font-size:8px}.guide-speak{bottom:8px;min-height:31px;padding:5px 8px;font-size:9px}.guide-body{padding:7px}.guide-modes button{min-height:29px}.guide-label,.guide-route{font-size:9px}.guide-copy{margin:6px 0 0}.guide-lines{font-size:10px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.guide-note{display:none}.guide-chat-trigger{min-height:30px;font-size:9px}.guide-disclose{font-size:8px}.partner-chat{top:auto;right:8px;bottom:8px;width:min(340px,calc(100% - 16px));height:min(560px,75vh)}.partner-chat.is-open{display:flex}}
-    @media(max-width:759px){.guide-stage{height:76px}.guide-speak{bottom:5px;min-height:26px;padding:3px 8px}.guide-body{padding:6px}.guide-modes button{min-height:26px}.guide-copy{margin-top:4px}.guide-route,.guide-disclose{display:none}.guide-lines{font-size:9px;line-height:1.3;-webkit-line-clamp:2}.guide-chat-trigger{min-height:27px;margin-top:4px}.partner-guide.is-minimized .guide-stage{height:66px}}
-    .guide-copy.is-haiku{text-align:center}
-    .guide-copy.is-haiku .guide-lines{display:block;overflow:visible;-webkit-line-clamp:unset;animation:haikuCycle 3s ease-in-out 5;white-space:pre-line}
-    .guide-copy.is-haiku.is-expired .guide-lines{display:none}
-    .decision-msg.is-haiku .decision-answer{text-align:center;white-space:pre-line}
-    @keyframes haikuCycle{0%{opacity:.82;transform:translateY(2px)}20%,80%{opacity:1;transform:translateY(0)}100%{opacity:.82;transform:translateY(-2px)}}
     /* Quiet right-hand surface gives the guide its own space without another photograph. */
     @media(min-width:760px){body::before{content:"";position:fixed;z-index:0;right:0;top:0;bottom:0;width:180px;border-left:1px solid #d8e3e9;background:repeating-linear-gradient(135deg,rgba(36,73,104,.028) 0 1px,transparent 1px 19px),radial-gradient(circle at 78% 9%,#f9fbfd,#e9f1f6 76%);pointer-events:none}}
     @media(min-width:1120px){body::before{width:300px}}
-    @media(prefers-reduced-motion:reduce){#guideVideo{display:none}.guide-stage{background:#e8eef1 url('assets/kiba-avatar.jpg') center 30%/cover no-repeat}.guide-copy.is-haiku .guide-lines{animation:none}}
+    @media(prefers-reduced-motion:reduce){#guideVideo{display:none}.guide-stage{background:#e8eef1 url('assets/kiba-avatar.jpg') center 30%/cover no-repeat}}
     /* The opening story floats across the hero and the first editorial section. */
     .prologue-bridge{position:relative;z-index:2;margin-top:-84px;margin-bottom:-96px}.prologue-card{position:relative;max-width:990px;margin-inline:auto;padding:54px 80px 51px;border:1px solid #e5d5bf;border-radius:23px;background:linear-gradient(155deg,#fffefa 0%,#faf6ef 100%);box-shadow:0 28px 65px rgba(11,30,42,.2),0 5px 14px rgba(11,30,42,.08);text-align:center;overflow:hidden}.prologue-card:before{content:"";position:absolute;inset:0 0 auto;height:5px;background:linear-gradient(90deg,#b1814a,#e7c397,#b1814a)}.prologue-kicker{display:flex;align-items:center;justify-content:center;gap:13px;margin:0 0 18px;color:#8d663a;font:800 11px/1.3 system-ui,sans-serif;letter-spacing:.17em}.prologue-kicker span:first-child{color:#78532e;font-size:13px;letter-spacing:.2em}.prologue-kicker span+span:before{content:"";display:inline-block;width:23px;height:1px;margin:0 13px 3px 0;background:#c6ad8d}.prologue-card h2{margin:0 auto 25px;font-size:clamp(31px,3.25vw,44px);line-height:1.4}.prologue-origin,.prologue-story,.prologue-text{max-width:48em;margin:0 auto;color:#43525a;font-size:16px;line-height:1.9}.prologue-question{max-width:28em;margin:19px auto;color:#815b30;font-size:clamp(20px,2.25vw,27px);font-weight:850;line-height:1.5}.prologue-story{max-width:47em}.prologue-text{max-width:47em;margin-top:13px}.prologue-signoff{margin:22px 0 0;color:#85633e;font-size:12px;font-weight:800;letter-spacing:.08em}.opportunity{position:relative;z-index:1;padding-top:170px}
     @media(max-width:900px){.prologue-card{padding:43px 38px 42px}.prologue-bridge{margin-top:-65px;margin-bottom:-78px}.opportunity{padding-top:143px}}
@@ -161,20 +153,24 @@
 
   </main>
   <footer class="site-footer"><div class="container footer-inner"><div><strong>株式会社ライトアップ</strong><small>AIアバター共同事業パートナー募集｜企画検討用プレビュー</small></div><nav aria-label="会社情報"><a href="https://www.writeup.jp/company/" target="_blank" rel="noopener">会社概要</a><a href="https://www.writeup.jp/privacy/" target="_blank" rel="noopener">個人情報保護方針</a><a href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">公式お問い合わせ</a></nav></div></footer>
-  <aside class="partner-guide" id="partnerGuide" aria-label="閲覧区画に合わせた案内" data-avatar-api="https://aio.elliot-tech.jp/api/lp/partner-avatar/token">
-    <div class="guide-stage"><video id="guideVideo" autoplay muted loop playsinline preload="metadata" poster="assets/kiba-avatar.jpg" aria-label="共同事業の案内役アバターの無音ループ動画"><source src="assets/kiba-guide-loop.mp4" type="video/mp4"><img src="assets/kiba-avatar.jpg" alt="共同事業の案内役アバター"></video><video id="guideLive" autoplay playsinline hidden aria-label="共同事業の案内役アバターの映像"></video><span class="guide-stage-tag">AI AVATAR GUIDE</span><button class="guide-minimize" id="guideMinimize" type="button" aria-label="小さく表示">−</button><button class="guide-speak" id="guideSpeak" type="button">▶ 声で説明を聞く</button></div>
-    <div class="guide-body"><div class="guide-modes" role="group" aria-label="話し方"><button type="button" data-rail-mode="haiku" aria-pressed="false">575</button><button type="button" data-rail-mode="normal" aria-pressed="true">ふつう</button></div>
-      <div class="guide-copy" id="guideCopy" role="status" aria-live="polite"><span class="guide-label" id="guideLabel">閲覧中の説明</span><span class="guide-route" id="guideRoute">固定ルート：説明する</span><div class="guide-lines" id="guideLines">読んでいる内容をご案内します。</div></div>
-      <p class="guide-note">ページを読み進めると、いま見ている内容をご案内します。音声は「声で説明を聞く」を押すか、チャットで質問した後だけ再生します。</p><button class="guide-chat-trigger" id="guideOpen" type="button">文字で質問する <span aria-hidden="true">↗</span></button><small class="guide-disclose" id="guideDisclose">Jev API未接続・声は押した後だけ</small>
+  <aside class="partner-guide" id="partnerGuide" aria-label="共同事業の案内役" data-avatar-api="https://aio.elliot-tech.jp/api/lp/partner-avatar/token">
+    <div class="guide-stage"><video id="guideVideo" autoplay muted loop playsinline preload="metadata" poster="assets/kiba-avatar.jpg" aria-label="共同事業の案内役アバターの無音ループ動画"><source src="assets/kiba-guide-loop.mp4" type="video/mp4"><img src="assets/kiba-avatar.jpg" alt="共同事業の案内役アバター"></video><video id="guideLive" autoplay playsinline hidden aria-label="共同事業の案内役アバターの映像"></video><span class="guide-stage-tag">AI AVATAR GUIDE</span><span class="guide-speaking" aria-hidden="true">会話中</span><button class="guide-minimize" id="guideMinimize" type="button" aria-label="小さく表示" aria-controls="guideBody" aria-expanded="true">−</button><button class="guide-expand" id="guideExpand" type="button">質問・相談する ↗</button></div>
+    <div class="guide-body" id="guideBody">
+      <div class="guide-modes" role="group" aria-label="会話モード"><button type="button" data-rail-mode="chat" aria-pressed="true">チャット</button><button type="button" data-rail-mode="normal" aria-pressed="false">音声</button><button type="button" data-rail-mode="haiku" aria-pressed="false">五七五</button></div>
+      <div class="guide-panel" id="chatPanel">
+        <div class="chat-log" id="chatLog" role="log" aria-live="polite" aria-label="案内役との会話"><div class="chat-msg">こんにちは。御社の知見をどう届けるか、一緒に考えましょう。用途・進め方・費用について質問できます。</div></div>
+        <div class="chat-choices"><button type="button" data-chat-prompt="営業・商談">営業・商談</button><button type="button" data-chat-prompt="Web接客">Web接客</button><button type="button" data-chat-prompt="用途がまだ未定です">用途は未定</button><button type="button" data-chat-prompt="費用と契約条件は？">費用・契約</button></div>
+        <form class="chat-form" id="chatForm"><input id="chatText" aria-label="質問を入力" placeholder="質問を入力" autocomplete="off" maxlength="500"><button type="submit">送信</button></form>
+      </div>
+      <div class="guide-panel" id="voicePanel" hidden>
+        <p class="voice-help" id="voiceHelp"></p>
+        <p class="voice-heard" id="voiceHeard" hidden></p>
+        <p class="voice-reply" id="voiceReply" aria-live="polite" aria-atomic="true" hidden></p>
+        <div class="chat-choices" id="voiceChoices" hidden><button type="button" data-voice-prompt="営業・商談">営業・商談</button><button type="button" data-voice-prompt="Web接客">Web接客</button><button type="button" data-voice-prompt="用途がまだ未定です">用途は未定</button><button type="button" data-voice-prompt="費用と契約条件は？">費用・契約</button></div>
+        <button class="voice-start" id="voiceStart" type="button">マイクをオンにして話す</button>
+      </div>
+      <p class="guide-status" id="guideDisclose" role="status">待機中・音声停止（Jev API未接続）</p>
     </div>
-  </aside>
-  <aside class="partner-chat" id="partnerChat" aria-label="共同事業の案内チャット">
-    <div class="chat-top"><img src="assets/kiba-avatar.jpg" alt=""><strong>共同事業の案内役</strong><button id="closeChat" type="button" aria-label="閉じる">×</button></div>
-    <div class="guide-modes chat-modes" role="group" aria-label="回答形式"><button type="button" data-rail-mode="normal" aria-pressed="true">通常</button><button type="button" data-rail-mode="haiku" aria-pressed="false">五七五</button></div>
-    <div class="chat-log" id="chatLog" role="log" aria-live="polite"><div class="chat-msg">こんにちは。御社の知見をどう届けるか、一緒に考えましょう。</div></div>
-    <div class="chat-choices"><button type="button" data-chat-prompt="営業・商談">営業・商談</button><button type="button" data-chat-prompt="Web接客">Web接客</button><button type="button" data-chat-prompt="用途がまだ未定です">用途は未定</button><button type="button" data-chat-prompt="費用と契約条件は？">費用・契約</button></div>
-    <form class="chat-form" id="chatForm"><input id="chatText" aria-label="質問を入力" placeholder="文字で質問する" autocomplete="off"><button class="chat-voice" id="chatVoiceInput" type="button" aria-label="音声で質問">🎙</button><button class="chat-voice" id="chatVoiceOutput" type="button" aria-label="最後の回答を読み上げ">♪</button><button type="submit" aria-label="送信">↗</button></form>
-    <p class="chat-disclose">体験版：Jev API未接続・固定シナリオ。入力は保存・送信しません。</p>
   </aside>
   <dialog class="copy-modal" id="copyModal" aria-label="見出しの候補とページ構成"><button class="modal-close" type="button" id="modalClose" aria-label="閉じる">×</button><p class="eyebrow">THREE WAYS TO BEGIN</p><h2>事業の入口になる、3つの言葉</h2><ol id="modalCopies"></ol><div class="modal-story"><p class="eyebrow">THE STORY</p><ol id="modalStory"></ol></div></dialog>
   <script>
@@ -187,64 +183,24 @@
     const modal=document.getElementById('copyModal');titles.forEach((item,i)=>{const li=document.createElement('li'),headline=document.createElement('strong'),note=document.createElement('span');headline.className='modal-headline';headline.textContent=item.lines.join(' ');note.textContent=item.note;li.append('0'+(i+1)+'　',headline,note);document.getElementById('modalCopies').append(li)});document.querySelectorAll('main section h2').forEach(el=>{const li=document.createElement('li'),a=document.createElement('a');a.href='#'+el.closest('section').id;a.textContent=el.textContent;li.append(a);document.getElementById('modalStory').append(li)});
     function openModal(){paused=true;clearTimeout(timer);renderTitle(active,fullLen(active));modal.showModal()}titleButton.addEventListener('click',openModal);document.getElementById('modalClose').addEventListener('click',()=>modal.close());modal.addEventListener('close',()=>{paused=false;schedule()});modal.addEventListener('click',e=>{if(e.target===modal)modal.close()});document.getElementById('modalStory').addEventListener('click',e=>{if(e.target.closest('a'))modal.close()});schedule();
     const header=document.getElementById('siteHeader');let last=scrollY,ticking=false;function updateHeader(){const y=scrollY,d=y-last;if(y<120||header.contains(document.activeElement))header.classList.remove('is-hidden');else if(d>8)header.classList.add('is-hidden');else if(d< -8)header.classList.remove('is-hidden');if(Math.abs(d)>8)last=y;ticking=false}addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(updateHeader)}},{passive:true});header.addEventListener('focusin',()=>header.classList.remove('is-hidden'));
-    const guide=document.getElementById('partnerGuide'),chat=document.getElementById('partnerChat'),guideCopy=document.getElementById('guideCopy'),guideLines=document.getElementById('guideLines'),chatLog=document.getElementById('chatLog');
-    const guideVideo=document.getElementById('guideVideo'),guideLive=document.getElementById('guideLive'),guideDisclose=document.getElementById('guideDisclose');let avatar=null,avatarCtx=null,avatarConnecting=false,avatarGen=0,avatarFailedAt=0,avatarPending='',avatarTimer=null,answerHoldUntil=0;function syncGuideVideo(){if(reduce||document.hidden||avatar){guideVideo.pause();return}guideVideo.play().catch(()=>{})}document.addEventListener('visibilitychange',syncGuideVideo);syncGuideVideo();
-    const sectionCopy={
-      top:{label:'共同事業の入口',route:'説明する',normal:'御社の知見を誰に届けるか。AIアバターを使った新事業を一緒に考えます。',haiku:['その知恵を','誰に届ける','共に解く'],haikuReading:['そのちえを','だれにとどける','ともにとく']},
-      prologue:{label:'事業を始めた理由',route:'説明する',normal:'試行錯誤を重ねて完成させたエンジンを、御社の現場で使っていただきたい。知見を掛け合わせ、新しい事業を一緒に育てます。',haiku:['エンジンを','仕事で使う','その知恵で'],haikuReading:['えんじんを','しごとでつかう','そのちえで']},
-      opportunity:{label:'私たちが作りたいこと',route:'説明する',normal:'人が持つ説明や考え方を、必要な相手に届けるサービスを構想しています。',haiku:['人の知恵','次の接点','作り出す'],haikuReading:['ひとのちえ','つぎのせってん','つくりだす']},
-      possibilities:{label:'6つの活用領域',route:'用途を選ぶ',normal:'営業、Web接客、社内支援、育成、採用、顧客サポート。御社に合う用途から検討します。',haiku:['六つの案','業界に合う','分身を'],haikuReading:['むつのあん','ぎょうかいにあう','ぶんしんを']},
-      experience:{label:'Jevの判断構想',route:'対応を選ぶ',normal:'質問に応じて「説明・追加確認・人へ」の対応を選ぶ構想です。この画面は固定ルールで動いています。',haiku:['選ぶだけ','会話を試す','ここで見る'],haikuReading:['えらぶだけ','かいわをためす','ここでみる']},
-      bring:{label:'持ち寄る強み',route:'説明する',normal:'御社の知見と顧客接点に、ライトアップの試作・運用設計を組み合わせて検討します。',haiku:['持ち寄って','知恵を形に','共に作る'],haikuReading:['もちよって','ちえをかたちに','ともにつく']},
-      models:{label:'提携の形',route:'条件を確認',normal:'共同販売、自社ブランド、既存サービスへの組み込みなど、条件は個別に協議します。',haiku:['組み方は','合わせて決める','相談で'],haikuReading:['くみかたは','あわせてきめる','そうだんで']},
-      process:{label:'進め方',route:'説明する',normal:'用途と素材を整理し、小さく試作して顧客に確かめてから販売条件を決めます。',haiku:['まずは聞く','小さく試す','共に行く'],haikuReading:['まずはきく','ちいさくためす','ともにゆく']},
-      faq:{label:'よくある確認事項',route:'条件を確認',normal:'費用、顔・声の利用、OEM条件はまだ確定していません。用途に応じて相談します。',haiku:['不安には','条件確かめ','共に見る'],haikuReading:['ふあんには','じょうけんたしかめ','ともにみる']},
-      contact:{label:'共同事業の相談',route:'人につなぐ',normal:'完成した企画書は不要です。御社の強みと届けたい相手を、公式窓口で教えてください。',haiku:['その知恵を','次の仕事へ','話そうよ'],haikuReading:['そのちえを','つぎのしごとへ','はなそうよ']},
-      market:{label:'市場調査の数字',route:'数字の範囲を説明',normal:'掲載数値は世界のAI活用調査です。この事業の成果や国内需要を示す数字ではありません。',haiku:['数字だけ','答えは出ない','共に見る'],haikuReading:['すうじだけ','こたえはでない','ともにみる']}
-    };
-    const sections=[...document.querySelectorAll('main section[id]')];let mode='normal',activeSection=null,verseTimer=null,scrollFrame=null,lastAnswer='',voiceOn=false;
-    function moraCount(line){return [...line].reduce((n,c)=>n+(/[ぁぃぅぇぉゃゅょゎァィゥェォャュョヮ]/.test(c)?0:1),0)}
-    function renderGuidance(){
-      if(!activeSection)return;
-      clearTimeout(verseTimer);
-      const item=sectionCopy[activeSection],haiku=mode==='haiku';
-      guideCopy.classList.remove('is-expired');
-      guideCopy.classList.toggle('is-haiku',haiku);
-      document.getElementById('guideLabel').textContent=item.label;
-      document.getElementById('guideRoute').textContent='固定ルート：'+item.route;
-      guideLines.replaceChildren();
-      guideLines.style.animation='none';
-      if(!haiku){guideLines.classList.remove('is-extra');guideLines.textContent=item.normal;return}
-      const beats=[5,7,5],extra=item.haikuReading.some((line,i)=>moraCount(line)>beats[i]);
-      guideLines.classList.toggle('is-extra',extra);
-      guideLines.textContent=item.haiku.join('\n');
-      if(extra){const mark=document.createElement('span');mark.className='guide-extra';mark.textContent='（字余り）';guideLines.append(mark)}
-      // Reset the five 3-second cycles whenever the viewed section changes.
-      void guideLines.offsetWidth;
-      guideLines.style.animation='';
-      verseTimer=setTimeout(()=>guideCopy.classList.add('is-expired'),15000);
-    }
-    function setMode(next){if(!['normal','haiku'].includes(next))return;mode=next;document.querySelectorAll('[data-rail-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.railMode===next)));renderGuidance();if(voiceOn)speakGuide()}
-    document.querySelectorAll('[data-rail-mode]').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.railMode)));
-    function visibleSection(){const y=innerHeight*.48;return sections.find(s=>{const r=s.getBoundingClientRect();return r.top<=y&&r.bottom>=y})?.id||null}
-    function updateSection(){scrollFrame=null;if(document.hidden)return;const next=visibleSection();if(!next||next===activeSection)return;activeSection=next;renderGuidance();if(voiceOn)speakGuide()}
-    function scheduleSection(){if(scrollFrame===null)scrollFrame=requestAnimationFrame(updateSection)}
-    addEventListener('scroll',scheduleSection,{passive:true});addEventListener('resize',scheduleSection);document.addEventListener('visibilitychange',scheduleSection);scheduleSection();
-    function openChat(){chat.classList.add('is-open');document.getElementById('chatText').focus()}
-    function closeChat(){chat.classList.remove('is-open');hushVoice()}
+    const guide=document.getElementById('partnerGuide'),chatLog=document.getElementById('chatLog'),chatText=document.getElementById('chatText'),chatPanel=document.getElementById('chatPanel'),voicePanel=document.getElementById('voicePanel'),voiceHelp=document.getElementById('voiceHelp'),voiceHeard=document.getElementById('voiceHeard'),voiceReply=document.getElementById('voiceReply'),voiceChoices=document.getElementById('voiceChoices'),voiceStart=document.getElementById('voiceStart');
+    const guideVideo=document.getElementById('guideVideo'),guideLive=document.getElementById('guideLive'),guideDisclose=document.getElementById('guideDisclose');let avatar=null,avatarCtx=null,avatarConnecting=false,avatarGen=0,avatarFailedAt=0,avatarPending='';function syncGuideVideo(){if(reduce||document.hidden||avatar){guideVideo.pause();return}guideVideo.play().catch(()=>{})}document.addEventListener('visibilitychange',syncGuideVideo);syncGuideVideo();
+    // Pattern A (lp-avatar-note #mock): chat is the default; voice and 575 start only after the visitor presses the mic button.
+    const Recognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+    let mode='chat',talking=false,rec=null,listenTimer=null,talkTimer=null,resumeAt=0,micNote='';
+    const greeting={normal:'こんにちは。御社の知見をどう届けるか、声で質問してください。',haiku:['ようこそね','御社の知恵を','聞かせてね']};
     // Anam avatar (ADR 0181 in aio-master): AIO issues the session token; the avatar only reads the fixed text below via talk().
-    const AVATAR_SDK='https://cdn.jsdelivr.net/npm/@anam-ai/js-sdk@4.27.1/+esm',AVATAR_PATH='/api/lp/partner-avatar/token',AVATAR_MAX_MS=600000,AVATAR_RETRY_MS=60000,ANSWER_HOLD_MS=12000;
-    const discloseText={idle:'Jev API未接続・声は押した後だけ',connecting:'アバターに接続しています…',live:'アバターが固定文を読み上げ中（最長10分）',fallback:'アバターにつながらないため端末の音声で読み上げ中'};
-    function setDisclose(state){guideDisclose.textContent=discloseText[state]}
+    const AVATAR_SDK='https://cdn.jsdelivr.net/npm/@anam-ai/js-sdk@4.27.1/+esm',AVATAR_PATH='/api/lp/partner-avatar/token',AVATAR_MAX_MS=600000,AVATAR_RETRY_MS=60000;
+    const discloseText={idle:'待機中・音声停止（Jev API未接続）',ready:'音声開始前・まだ接続していません',connecting:'アバターに接続しています…',live:'アバターが固定文を読み上げ中（最長10分）',fallback:'アバターにつながらないため端末の音声で読み上げ中'};
+    function refreshStatus(){guideDisclose.textContent=discloseText[talking?(avatar?'live':avatarConnecting?'connecting':'fallback'):mode==='chat'?'idle':'ready'];guide.classList.toggle('is-speaking',talking)}
     // ?avatarApi= is for testing only; only the origin is used and it must be AIO, an AIO branch build, or localhost.
     function avatarEndpoint(){try{const q=new URLSearchParams(location.search).get('avatarApi');if(q){const o=new URL(q).origin;if(o==='https://aio.elliot-tech.jp'||/^https:\/\/[a-z0-9-]+\.do9kd4ht7lupn\.amplifyapp\.com$/.test(o)||/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(o))return o+AVATAR_PATH}}catch{}return guide.dataset.avatarApi}
     function visitorToken(){try{let t=localStorage.getItem('partnerAvatarVisitor');if(!t){t=crypto.randomUUID();localStorage.setItem('partnerAvatarVisitor',t)}return t}catch{return 'v'+Math.random().toString(36).slice(2)+Date.now().toString(36)}}
     function browserSay(text){if(!('speechSynthesis'in window))return;speechSynthesis.cancel();const utterance=new SpeechSynthesisUtterance(text);utterance.lang='ja-JP';utterance.rate=.96;speechSynthesis.speak(utterance)}
     function say(text){if(!text)return;if(avatar){try{avatar.interruptPersona()}catch{}avatar.talk(text).catch(e=>console.warn('[partner-avatar] talk failed',e));return}if(avatarConnecting){avatarPending=text;return}browserSay(text)}
-    function hushVoice(){if(avatar){try{avatar.interruptPersona()}catch{}}if('speechSynthesis'in window)speechSynthesis.cancel()}
     async function startAvatar(){
       if(avatar||avatarConnecting||Date.now()-avatarFailedAt<AVATAR_RETRY_MS)return;
-      const gen=++avatarGen;avatarConnecting=true;setDisclose('connecting');
+      const gen=++avatarGen;avatarConnecting=true;refreshStatus();
       let ctx=null,client=null;
       try{
         // Create the AudioContext inside the click (before any await) so Safari does not leave it suspended. Its silent stream is the avatar's only input.
@@ -257,13 +213,12 @@
         if(gen!==avatarGen)throw new Error('cancelled');
         client=sdk.createClient(json.sessionToken);
         const ready=new Promise((resolve,reject)=>{const t=setTimeout(()=>reject(new Error('ready timeout')),20000);client.addListener(sdk.AnamEvent.SESSION_READY,()=>{clearTimeout(t);resolve()})});
-        client.addListener(sdk.AnamEvent.CONNECTION_CLOSED,reason=>{if(avatar!==client)return;console.warn('[partner-avatar] closed',reason);stopAvatar();avatarFailedAt=Date.now();if(voiceOn)setDisclose('fallback')});
+        client.addListener(sdk.AnamEvent.CONNECTION_CLOSED,reason=>{if(avatar!==client)return;console.warn('[partner-avatar] closed',reason);stopAvatar();avatarFailedAt=Date.now()});
         await client.streamToVideoElement('guideLive',silent);
         await ready;
         if(gen!==avatarGen)throw new Error('cancelled');
         avatar=client;avatarCtx=ctx;avatarConnecting=false;
-        guideLive.hidden=false;guideVideo.hidden=true;guideVideo.pause();guideLive.play().catch(e=>console.warn('[partner-avatar] play failed',e));setDisclose('live');
-        avatarTimer=setTimeout(()=>setVoice(false),AVATAR_MAX_MS);
+        guideLive.hidden=false;guideVideo.hidden=true;guideVideo.pause();guideLive.play().catch(e=>console.warn('[partner-avatar] play failed',e));refreshStatus();
         if('speechSynthesis'in window)speechSynthesis.cancel();
         const line=avatarPending;avatarPending='';say(line);
       }catch(e){
@@ -272,35 +227,49 @@
         if(gen!==avatarGen)return;
         avatarConnecting=false;avatarFailedAt=Date.now();console.warn('[partner-avatar] using browser voice',e);
         const line=avatarPending;avatarPending='';
-        if(voiceOn){setDisclose('fallback');browserSay(line)}else setDisclose('idle');
+        if(talking)browserSay(line);refreshStatus();
       }
     }
-    function stopAvatar(){avatarGen++;avatarConnecting=false;avatarPending='';clearTimeout(avatarTimer);const client=avatar;avatar=null;if(client)client.stopStreaming().catch(()=>{});if(avatarCtx){avatarCtx.close().catch(()=>{});avatarCtx=null}guideLive.hidden=true;guideVideo.hidden=false;syncGuideVideo();setDisclose('idle')}
-    addEventListener('pagehide',stopAvatar);
-    function guideText(){const item=sectionCopy[activeSection];return mode==='haiku'?item.haiku.join('、'):item.normal}
-    // A chat answer being read is not talked over by the section narration for 12 seconds.
-    function speakGuide(){if(!voiceOn||!activeSection||Date.now()<answerHoldUntil)return;say(guideText())}
-    const guideSpeak=document.getElementById('guideSpeak');
-    function setVoice(on){voiceOn=on;guideSpeak.textContent=on?'■ 声を止める':'▶ 声で説明を聞く';if(on){startAvatar();return}stopAvatar();if('speechSynthesis'in window)speechSynthesis.cancel()}
-    function speakAnswer(text){if(!text)return;answerHoldUntil=Date.now()+ANSWER_HOLD_MS;if(!voiceOn)setVoice(true);else startAvatar();say(text)}
-    guideSpeak.addEventListener('click',()=>{if(voiceOn){setVoice(false);return}setVoice(true);speakGuide()});
-    document.getElementById('guideMinimize').addEventListener('click',e=>{const small=guide.classList.toggle('is-minimized');e.currentTarget.setAttribute('aria-label',small?'大きく表示':'小さく表示');e.currentTarget.textContent=small?'+':'−'});
-    document.getElementById('guideOpen').addEventListener('click',openChat);document.getElementById('openSample').addEventListener('click',openChat);document.getElementById('closeChat').addEventListener('click',closeChat);
-    function addMessage(value,user=false){const el=document.createElement('div');el.className='chat-msg'+(user?' user':'');el.textContent=value;chatLog.append(el);chatLog.scrollTop=chatLog.scrollHeight;return el}
-    function addDecision(choice,answer,verse){const haiku=mode==='haiku',reply=document.createElement('div'),badge=document.createElement('span'),body=document.createElement('span');reply.className='chat-msg decision-msg'+(haiku?' is-haiku':'');badge.className='decision-badge';badge.textContent='固定ルート / '+choice;body.className='decision-answer';body.textContent=haiku?verse.join('\n'):answer;reply.append(badge,body);if(choice==='人につなぐ'){const a=document.createElement('a');a.href='https://www.writeup.jp/contact/';a.target='_blank';a.rel='noopener';a.textContent='公式窓口へ ↗';reply.append(a)}chatLog.append(reply);chatLog.scrollTop=chatLog.scrollHeight;lastAnswer=haiku?verse.join('、'):answer;if(haiku)setTimeout(()=>reply.remove(),15000)}
-    function respond(raw){const q=raw.trim();if(!q)return;addMessage(q,true);let choice,answer,verse;
-      if(/費用|価格|料金|収益|OEM|契約|顔|声|データ|個人情報/.test(q)){choice='人につなぐ';answer='費用・契約・人物やデータの利用条件は個別協議です。この場では確約せず、公式窓口へご相談ください。';verse=['費用など','個別に決める','人へ継ぐ']}
-      else if(/営業|商談|販売/.test(q)){choice='説明する';answer='営業・商談なら、商品の説明が得意な担当者の知見から始められそうです。誰に、どの質問まで答えるかを一緒に整理しましょう。';verse=['営業の','知恵を届ける','その先へ']}
-      else if(/Web|サイト|接客|LP|ページ/i.test(q)){choice='説明する';answer='Web接客なら、訪問者が迷う区画と質問を先に洗い出し、人に渡す条件を決めます。';verse=['そのページ','迷う人へと','道しるべ']}
-      else if(/育成|採用|面接|研修/.test(q)){choice='説明する';answer='育成・採用では、会話の目的と評価に使う範囲を先に定めます。人物の顔や声を使う場合は、本人の許諾を確認します。';verse=['学び合う','対話で育つ','力かな']}
-      else{choice='追加で聞く';answer='まだ用途を決めなくて大丈夫です。御社が持つ知見と、届けたい相手を一つずつ教えてください。';verse=['まずは聞く','知恵のありかを','共に見る']}
-      addDecision(choice,answer,verse);document.getElementById('chatText').value='';speakAnswer(lastAnswer)
+    function stopAvatar(){avatarGen++;avatarConnecting=false;avatarPending='';const client=avatar;avatar=null;if(client)client.stopStreaming().catch(()=>{});if(avatarCtx){avatarCtx.close().catch(()=>{});avatarCtx=null}guideLive.hidden=true;guideVideo.hidden=false;syncGuideVideo();refreshStatus()}
+    function renderVoice(){
+      voiceStart.textContent=talking?'会話を終了する':Recognition?'マイクをオンにして話す':'声の回答を始める';voiceStart.classList.toggle('is-on',talking);
+      voiceHelp.textContent=micNote||(!Recognition?'このブラウザは音声入力に対応していません。下の質問を押すと、声で答えます。':talking?'話しかけてください。答え終わると、また聞き取ります。':'モードを選んだだけでは始まりません。ボタンを押すと、マイクとアバターの声が動きます。');
+      voiceChoices.hidden=!!Recognition&&!micNote;
     }
+    function showReply(heard,text,haiku){voiceHeard.hidden=!heard;voiceHeard.textContent=heard?'聞き取った質問：'+heard:'';voiceReply.hidden=false;voiceReply.classList.toggle('is-haiku',haiku);voiceReply.textContent=text}
+    // Recognition pauses while the answer is read, so the avatar's own voice is not picked up as the next question.
+    function holdListening(text){resumeAt=Date.now()+Math.min(15000,1500+text.length*180)}
+    function listen(delay=0){clearTimeout(listenTimer);if(!Recognition||!talking||micNote)return;listenTimer=setTimeout(()=>{if(!talking||rec)return;const r=new Recognition();rec=r;r.lang='ja-JP';r.interimResults=false;r.onresult=e=>askVoice(e.results[0][0].transcript);r.onerror=e=>{if(e.error==='not-allowed'||e.error==='service-not-allowed'){micNote='マイクが許可されていません。下の質問を押すか、チャットで質問してください。';renderVoice()}};r.onend=()=>{if(rec===r)rec=null;listen(300)};try{r.start()}catch{rec=null}},Math.max(delay,resumeAt-Date.now()))}
+    function startTalk(){if(talking)return;talking=true;startAvatar();talkTimer=setTimeout(endTalk,AVATAR_MAX_MS);const haiku=mode==='haiku',text=haiku?greeting.haiku.join('、'):greeting.normal;showReply('',haiku?greeting.haiku.join('\n'):greeting.normal,haiku);holdListening(text);say(text);listen();renderVoice();refreshStatus()}
+    function endTalk(){if(!talking)return;talking=false;clearTimeout(listenTimer);clearTimeout(talkTimer);if(rec){const r=rec;rec=null;r.onend=null;try{r.abort()}catch{}}stopAvatar();if('speechSynthesis'in window)speechSynthesis.cancel();renderVoice();refreshStatus()}
+    addEventListener('pagehide',endTalk);document.addEventListener('visibilitychange',()=>{if(document.hidden)endTalk()});
+    function setMode(next){if(!['chat','normal','haiku'].includes(next)||next===mode)return;endTalk();mode=next;micNote='';document.querySelectorAll('[data-rail-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.railMode===next)));chatPanel.hidden=next!=='chat';voicePanel.hidden=next==='chat';voiceHeard.hidden=voiceReply.hidden=true;renderVoice();refreshStatus()}
+    document.querySelectorAll('[data-rail-mode]').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.railMode)));
+    voiceStart.addEventListener('click',()=>talking?endTalk():startTalk());
+    const guideMinimize=document.getElementById('guideMinimize');
+    function setMinimized(small){guide.classList.toggle('is-minimized',small);guideMinimize.setAttribute('aria-label',small?'大きく表示':'小さく表示');guideMinimize.setAttribute('aria-expanded',String(!small));guideMinimize.textContent=small?'+':'−'}
+    guideMinimize.addEventListener('click',()=>setMinimized(!guide.classList.contains('is-minimized')));document.getElementById('guideExpand').addEventListener('click',()=>setMinimized(false));
+    // On phones the panel starts folded so it does not cover the page; tapping it opens the chat.
+    if(matchMedia('(max-width:759px)').matches)setMinimized(true);
+    function openChat(){setMinimized(false);setMode('chat');chatText.focus({preventScroll:true})}
+    document.getElementById('openSample').addEventListener('click',openChat);
+    function addMessage(value,user=false){const el=document.createElement('div');el.className='chat-msg'+(user?' user':'');el.textContent=value;chatLog.append(el);chatLog.scrollTop=chatLog.scrollHeight;return el}
+    function addDecision(choice,answer){const reply=document.createElement('div'),badge=document.createElement('span'),body=document.createElement('span');reply.className='chat-msg decision-msg';badge.className='decision-badge';badge.textContent='固定ルート / '+choice;body.className='decision-answer';body.textContent=answer;reply.append(badge,body);if(choice==='人につなぐ'){const a=document.createElement('a');a.href='https://www.writeup.jp/contact/';a.target='_blank';a.rel='noopener';a.textContent='公式窓口へ ↗';reply.append(a)}chatLog.append(reply);chatLog.scrollTop=chatLog.scrollHeight}
+    function decide(q){
+      if(/費用|価格|料金|収益|OEM|契約|顔|声|データ|個人情報/.test(q))return{choice:'人につなぐ',answer:'費用・契約・人物やデータの利用条件は個別協議です。この場では確約せず、公式窓口へご相談ください。',verse:['費用など','個別に決める','人へ継ぐ']};
+      if(/営業|商談|販売/.test(q))return{choice:'説明する',answer:'営業・商談なら、商品の説明が得意な担当者の知見から始められそうです。誰に、どの質問まで答えるかを一緒に整理しましょう。',verse:['営業の','知恵を届ける','その先へ']};
+      if(/Web|サイト|接客|LP|ページ/i.test(q))return{choice:'説明する',answer:'Web接客なら、訪問者が迷う区画と質問を先に洗い出し、人に渡す条件を決めます。',verse:['そのページ','迷う人へと','道しるべ']};
+      if(/育成|採用|面接|研修/.test(q))return{choice:'説明する',answer:'育成・採用では、会話の目的と評価に使う範囲を先に定めます。人物の顔や声を使う場合は、本人の許諾を確認します。',verse:['学び合う','対話で育つ','力かな']};
+      return{choice:'追加で聞く',answer:'まだ用途を決めなくて大丈夫です。御社が持つ知見と、届けたい相手を一つずつ教えてください。',verse:['まずは聞く','知恵のありかを','共に見る']};
+    }
+    // Chat answers stay text-only; starting the avatar opens a billed Anam session, so it waits for the voice tabs.
+    function respond(raw){const q=raw.trim();if(!q)return;addMessage(q,true);const r=decide(q);addDecision(r.choice,r.answer);chatText.value=''}
+    function askVoice(raw){const q=raw.trim();if(!q)return;const haiku=mode==='haiku',r=decide(q),text=haiku?r.verse.join('、'):r.answer;if(!talking)startTalk();showReply(q,haiku?r.verse.join('\n'):r.answer,haiku);holdListening(text);say(text)}
     document.querySelectorAll('[data-demo-prompt]').forEach(b=>b.addEventListener('click',()=>{openChat();respond(b.dataset.demoPrompt)}));
     document.querySelectorAll('[data-chat-prompt]').forEach(b=>b.addEventListener('click',()=>respond(b.dataset.chatPrompt)));
-    document.getElementById('chatForm').addEventListener('submit',e=>{e.preventDefault();respond(document.getElementById('chatText').value)});
-    document.getElementById('chatVoiceInput').addEventListener('click',()=>{const Recognition=window.SpeechRecognition||window.webkitSpeechRecognition;if(!Recognition){addMessage('このブラウザは音声入力に対応していません。文字で質問してください。');return}const rec=new Recognition();rec.lang='ja-JP';rec.onresult=e=>respond(e.results[0][0].transcript);rec.onerror=()=>addMessage('音声を聞き取れませんでした。文字でも質問できます。');rec.start()});
-    document.getElementById('chatVoiceOutput').addEventListener('click',()=>{if(!lastAnswer){addMessage('先に質問を選ぶか入力してください。');return}speakAnswer(lastAnswer)});
+    document.querySelectorAll('[data-voice-prompt]').forEach(b=>b.addEventListener('click',()=>askVoice(b.dataset.voicePrompt)));
+    document.getElementById('chatForm').addEventListener('submit',e=>{e.preventDefault();respond(chatText.value)});
+    renderVoice();refreshStatus();
     const form=document.getElementById('inquiryForm');form.addEventListener('submit',e=>e.preventDefault());document.getElementById('copyInquiry').addEventListener('click',async()=>{const data=new FormData(form),labels={company:'会社名',person:'お名前',email:'会社メール',website:'会社URL',usecase:'考えている用途',assets:'持ち込める知見や顧客との接点',model:'希望する提携形態',message:'補足・相談したいこと'},out=['AIアバター共同事業の相談'];Object.entries(labels).forEach(([k,label])=>out.push(label+'：'+(String(data.get(k)||'').trim()||'未記入')));const value=out.join('\n');const status=document.getElementById('copyStatus');try{await navigator.clipboard.writeText(value);status.textContent='入力内容をコピーしました。公式お問い合わせへ貼り付けてください。'}catch{const t=document.createElement('textarea');t.value=value;t.style.position='fixed';t.style.opacity='0';document.body.append(t);t.select();const ok=document.execCommand('copy');t.remove();status.textContent=ok?'入力内容をコピーしました。公式お問い合わせへ貼り付けてください。':'コピーできませんでした。入力内容を手動でコピーしてください。'}});
     document.getElementById('factCheck').addEventListener('click',()=>{const prompt='McKinsey & Company「The state of AI in 2026: On the road to ROI」（2026年8月25日）を一次資料で確認し、次の記載が正しいか中立的に検証してください。44%が全社でAIを拡大、年商10億ドル未満の企業では22%がAIエージェントを拡大、37%がAIのEBITへのプラスの寄与を報告、AI高成果層は6%、60%が翌年のAI投資増加を予想。数字の調査対象と定義、誤解を招く表現を指摘し、国内アバター市場や特定商材の成果への一般化はしないでください。';window.open('https://chatgpt.com/?q='+encodeURIComponent(prompt),'_blank','noopener,noreferrer')});
   })();
