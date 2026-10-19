@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>AIアバター｜パートナー向け説明ノート（社内限）</title>
+<link rel="canonical" href="https://writeup-inc.github.io/saas/avatar-solution/b04/">
+<meta name="description" content="社内限定。AIアバターの取り扱いが決まったOEMパートナーの営業が、自社のお客様へ説明するときの台本（孫トーク）、切り出し方、ライブと動画の勧め分け、価格の伝え方、切り返し、言ってはいけない言い方をまとめたノートです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== lp-base.css（改行制御・最小文字サイズ・固定CTAの逃げは消さない） ===== */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] { word-break: normal; }
+}
+.nobr { white-space: nowrap; }
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+:root { --lp-max: 1200px; }
+
+/* ===== トークン（B-01と同じ。白黒グレー＋紺1色。アバターの紫は印だけ） ===== */
+:root{
+  --ink:#14181f; --g1:#454c59; --g2:#646b78; --g3:#a9afba;
+  --ln:#dcdfe5; --ln2:#eceef2; --soft:#f4f5f7;
+  --ac:#0b2c5c; --acl:#eef2f8; --acm:#9fb0cc;
+  --pt:#5a46b0; --ptl:#f1eefb;
+  --ng:#b42318;
+  --head:"Zen Kaku Gothic New","Noto Sans JP",sans-serif;
+  --num:"Inter","Noto Sans JP",sans-serif;
+}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:#fff;color:var(--ink);font-family:"Noto Sans JP",sans-serif;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--ac)}
+p{margin:0 0 1em}
+.wrap{width:min(var(--lp-max),100% - 40px);margin-inline:auto}
+h1,h2,h3{font-family:var(--head);font-weight:900;letter-spacing:-.01em;margin:0}
+h3{font-size:1.18rem;line-height:1.55}
+.eyebrow{margin:0 0 12px;font:800 13px/1.4 var(--num);letter-spacing:.14em;color:var(--ac)}
+.tbd{display:inline;padding:0 4px;background:#fff4d6;color:#7a4f00;font-weight:700}
+.kari{color:#7a4f00;font-weight:700}
+.muted{color:var(--g2);font-size:15px;margin:0 0 12px}
+
+/* ===== 社内限の帯 ===== */
+.confidential{margin:0;padding:12px 20px;background:#fff;border-bottom:2px solid var(--ng);color:var(--ng);font-weight:700;font-size:16px;line-height:1.6;text-align:center}
+.confidential .ib{display:inline-block}
+
+/* ===== ヘッダー ===== */
+.site-header{border-bottom:1px solid var(--ln2)}
+.site-header .wrap{display:flex;align-items:center;gap:16px;min-height:64px}
+.brand{display:flex;align-items:baseline;align-content:center;min-height:44px;flex-wrap:wrap;gap:4px 12px;text-decoration:none;color:var(--ink)}
+.brand b{font-family:var(--head);font-size:18px;font-weight:900}
+.brand small{font:800 12px/1 var(--num);letter-spacing:.14em;color:var(--g2)}
+.hd-ng{margin-left:auto;font-size:15px;font-weight:700;color:var(--ng);white-space:nowrap}
+
+/* ===== 表紙 ===== */
+.doc-head{padding:64px 0 44px}
+.doc-head h1{font-size:clamp(1.9rem,5.2vw,3.25rem);line-height:1.3}
+.doc-meta{display:flex;flex-wrap:wrap;gap:4px 24px;margin:20px 0 0;font-size:15px;color:var(--g2)}
+.doc-meta .num{font-family:var(--num);font-weight:700;color:var(--ink)}
+.doc-intro{max-width:40em;margin:22px 0 0;color:var(--g1);line-height:1.95}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:40px 0 0;padding:0;list-style:none;border-top:2px solid var(--ink)}
+.facts li{padding:20px 18px 6px 0}
+.facts li+li{padding-left:18px;border-left:1px solid var(--ln)}
+.facts b{display:block;font:800 clamp(1.9rem,3.6vw,2.6rem)/1.1 var(--num);color:var(--ac)}
+.facts b small{font-size:.42em;margin-left:3px;font-family:"Noto Sans JP",sans-serif;font-weight:700}
+.facts span{display:block;margin-top:8px;font-size:15px;color:var(--g1);line-height:1.6}
+.facts-note{margin:14px 0 0;font-size:14px;color:var(--g2)}
+@media(max-width:900px){.facts{grid-template-columns:1fr 1fr}.facts li:nth-child(3){padding-left:0;border-left:0}.facts li:nth-child(n+3){border-top:1px solid var(--ln)}}
+@media(max-width:480px){.facts{grid-template-columns:1fr}.facts li,.facts li+li{padding:16px 0 4px;border-left:0}.facts li+li{border-top:1px solid var(--ln)}}
+
+/* ===== 目次 ===== */
+.toc{padding:28px 0 32px;background:var(--soft)}
+.toc-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 20px;margin:0 0 10px}
+.toc-title{margin:0;font:800 13px/1 var(--num);letter-spacing:.16em;color:var(--g2)}
+.print-btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 4px;border:0;background:none;color:var(--ac);font:inherit;font-size:15px;font-weight:700;cursor:pointer}
+.print-btn svg{width:18px;height:18px}
+.toc ol{display:grid;grid-template-columns:repeat(5,1fr);gap:0 24px;margin:0;padding:0;list-style:none;border-top:2px solid var(--ink)}
+.toc li{border-bottom:1px solid var(--ln)}
+.toc a{display:flex;align-items:baseline;gap:10px;min-height:52px;padding:12px 0;color:var(--ink);text-decoration:none;font-weight:700;font-size:16px;line-height:1.5}
+.toc a b{flex:none;font:800 13px/1 var(--num);color:var(--ac)}
+.toc a:hover{color:var(--ac)}
+@media(max-width:1000px){.toc ol{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.toc ol{grid-template-columns:1fr 1fr;gap:0 16px}}
+@media(max-width:380px){.toc ol{grid-template-columns:1fr}}
+
+/* ===== 区画 ===== */
+main section{padding:88px 0;border-top:1px solid var(--ln)}
+main section.alt{background:var(--soft)}
+@media(max-width:700px){main section{padding:64px 0}}
+.sec-head{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:20px 64px;align-items:end;margin:0 0 40px}
+.sec-head h2{font-size:clamp(1.45rem,3vw,2.1rem);line-height:1.45}
+.sec-lead{margin:0;max-width:40em;color:var(--g1);line-height:1.95}
+@media(max-width:900px){.sec-head{grid-template-columns:1fr}}
+.sub-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;margin:48px 0 6px;padding:14px 0 0;border-top:2px solid var(--ink)}
+.sub-h:first-of-type{margin-top:0}
+.sub-h h3{font-size:1.3rem}
+.sub-h span{font:800 13px/1 var(--num);letter-spacing:.1em;color:var(--ac)}
+
+/* 00 使い方 */
+.rules{margin:0;padding:0;list-style:none;counter-reset:r;border-top:2px solid var(--ink)}
+.rules li{counter-increment:r;display:grid;grid-template-columns:2.6em 1fr;gap:12px;padding:16px 0;border-bottom:1px solid var(--ln);color:var(--g1)}
+.rules li::before{content:counter(r,decimal-leading-zero);font:800 15px/1.8 var(--num);color:var(--ac)}
+.rules strong{display:block;color:var(--ink);font-size:17px}
+
+/* 01 最初と最後 */
+.relay{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:0;margin:0;padding:0;list-style:none;border-top:2px solid var(--ink)}
+.relay li{padding:22px 24px 22px 0}
+.relay li+li{padding-left:24px;border-left:1px solid var(--ln)}
+.relay li.mid{background:var(--ptl);padding-right:24px}
+.relay .k{display:block;margin:0 0 8px;font:800 13px/1 var(--num);letter-spacing:.14em;color:var(--ac)}
+.relay li.mid .k{color:var(--pt)}
+.relay h3{font-size:1.35rem;margin:0 0 4px}
+.relay .who{margin:0 0 10px;font-weight:700;color:var(--ink)}
+.relay p{margin:0;color:var(--g1);font-size:16px}
+.relay-why{margin:22px 0 0;font-family:var(--head);font-weight:900;font-size:1.2rem;line-height:1.7}
+@media(max-width:820px){.relay{grid-template-columns:1fr}.relay li,.relay li+li{padding:18px 0;border-left:0;border-bottom:1px solid var(--ln)}.relay li.mid{padding:18px 16px}}
+
+/* 話す言葉 */
+.say{margin:14px 0 0;padding:22px 26px;background:var(--soft)}
+.alt .say{background:#fff}
+.say-label{display:block;margin:0 0 8px;font-size:14px;font-weight:700;color:var(--ac)}
+.say p{margin:0;font-size:18px;line-height:2}
+.say p+p{margin-top:.8em}
+.say .stage-dir{color:var(--g2);font-size:16px}
+@media(max-width:560px){.say{padding:18px 16px}.say p{font-size:17px}}
+
+/* 3分版の区切り */
+.beats{margin:14px 0 0;padding:0;list-style:none;border-top:1px solid var(--ln)}
+.beats li{display:grid;grid-template-columns:8.5em 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--ln)}
+.beat-t{font:800 15px/1.5 var(--num);color:var(--ac)}
+.beat-t small{display:block;margin-top:2px;font-family:"Noto Sans JP",sans-serif;font-size:14px;font-weight:700;color:var(--g2)}
+.beat-b strong{display:block;margin:0 0 4px;font-size:17px}
+.beat-b p{margin:0;font-size:17px;line-height:1.95}
+@media(max-width:560px){.beats li{grid-template-columns:1fr;gap:4px}}
+
+/* 表（汎用） */
+.tbl{width:100%;border-collapse:collapse;font-size:16px;line-height:1.75;border-top:2px solid var(--ink)}
+.tbl th,.tbl td{padding:14px 14px;border-bottom:1px solid var(--ln);text-align:left;vertical-align:top}
+.tbl thead th{font-size:14px;color:var(--g2);font-weight:700;white-space:nowrap}
+.tbl tbody th{font-weight:700;min-width:8em}
+.tbl td{color:var(--g1)}
+.tbl td.q{color:var(--ink)}
+.tbl .t-time{white-space:nowrap;font-family:var(--num);font-weight:800;color:var(--ac)}
+.tbl .use{font-weight:700;color:var(--ink);white-space:nowrap}
+.tbl .use.live{color:var(--pt)}
+@media(max-width:760px){
+  .tbl thead{display:none}
+  .tbl,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:100%}
+  .tbl tr{padding:14px 0;border-bottom:1px solid var(--ln)}
+  .tbl th,.tbl td{border:0;padding:3px 0}
+  .tbl tbody th{font-size:17px;margin-bottom:4px}
+  .tbl td[data-l]::before{content:attr(data-l);display:block;margin-top:6px;color:var(--g2);font-size:14px;font-weight:700}
+  .tbl .use{white-space:normal}
+}
+
+/* 02 切り出し */
+.openers{display:grid;grid-template-columns:repeat(3,1fr);gap:0 36px;border-top:2px solid var(--ink)}
+.opener{padding:22px 0 0}
+.opener .who{margin:0 0 6px;font:800 13px/1.4 var(--num);letter-spacing:.06em;color:var(--ac)}
+.opener h3{margin:0 0 6px}
+.opener .when{margin:0 0 14px;color:var(--g2);font-size:15px}
+.opener dl{margin:0}
+.opener dt{margin:14px 0 2px;padding:12px 0 0;border-top:1px solid var(--ln);font-size:14px;font-weight:700;color:var(--g2)}
+.opener dd{margin:0;color:var(--g1);font-size:16px}
+.opener dd.q{color:var(--ink);font-size:17px;font-weight:500}
+.opener dd.warn{color:var(--ng)}
+@media(max-width:900px){.openers{grid-template-columns:1fr}.opener+.opener{margin-top:32px;border-top:1px solid var(--ln)}}
+
+/* 03 勧め分け */
+.twoway{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:0 0 40px}
+.twoway>div{padding:0 40px 0 0}
+.twoway>div+div{padding:0 0 0 40px;border-left:1px solid var(--ln)}
+.twoway .k{display:block;margin:0 0 10px;font:800 13px/1 var(--num);letter-spacing:.14em;color:var(--ac)}
+.twoway .live .k{color:var(--pt)}
+.twoway h3{font-size:1.35rem;margin:0 0 10px}
+.twoway p{color:var(--g1);font-size:16px}
+.twoway ul{margin:12px 0 0;padding:0;list-style:none;border-top:1px solid var(--ln)}
+.twoway li{padding:10px 0;border-bottom:1px solid var(--ln);font-size:16px;color:var(--g1)}
+.twoway li b{color:var(--ink)}
+@media(max-width:820px){.twoway{grid-template-columns:1fr}.twoway>div,.twoway>div+div{padding:0;border-left:0}.twoway>div+div{margin-top:32px;padding-top:28px;border-top:1px solid var(--ln)}}
+.rule-line{margin:28px 0 0;font-family:var(--head);font-weight:900;font-size:1.2rem;line-height:1.7}
+
+/* 04 価格 */
+.price2{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
+.pcol{border-top:2px solid var(--ink)}
+.pcol.wait{border-top-color:var(--g3)}
+.pcol-t{margin:14px 0 6px;font-size:15px;font-weight:700;color:var(--g2)}
+.pcol ul{margin:0;padding:0;list-style:none}
+.pcol li{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--ln);font-size:16px}
+.pcol li span{color:var(--g1)}
+.pcol li b{text-align:right;font-weight:700}
+.pcol li b.n{font-family:var(--num)}
+.pcol .foot{margin:12px 0 0;font-size:14px;color:var(--g2)}
+@media(max-width:820px){.price2{grid-template-columns:1fr;gap:36px}}
+
+/* 05 切り返し */
+.qa{margin:0;padding:0;list-style:none;counter-reset:qa;border-top:2px solid var(--ink)}
+.qa>li{counter-increment:qa;display:grid;grid-template-columns:3em 1fr;gap:12px;padding:22px 0;border-bottom:1px solid var(--ln)}
+.qa>li::before{content:counter(qa,decimal-leading-zero);font:800 17px/1.6 var(--num);color:var(--ac)}
+.qa h3{font-size:clamp(1.05rem,4.6vw,1.18rem);margin:0 0 10px}
+.qa .ans{margin:0;font-size:17px;line-height:1.95}
+.qa .ans::before{content:"返す言葉";display:block;margin:0 0 2px;font-size:14px;font-weight:700;color:var(--ac)}
+.qa .ans2{margin:12px 0 0;color:var(--g1);font-size:15px;line-height:1.85}
+.qa .ans2 b{color:var(--ink)}
+@media(max-width:560px){.qa>li{grid-template-columns:1fr;gap:4px}}
+
+/* 06 言ってはいけない */
+.ng-list{margin:0;padding:0;list-style:none;border-top:2px solid var(--ink)}
+.ng-list li{display:grid;grid-template-columns:1fr 1fr;gap:0 32px;padding:16px 0;border-bottom:1px solid var(--ln)}
+.ng-list .bad::before,.ng-list .good::before{display:block;margin:0 0 4px;font-size:13px;font-weight:700}
+.ng-list .bad{color:var(--ink);font-size:16px}
+.ng-list .bad::before{content:"言わない";color:var(--ng)}
+.ng-list .good{color:var(--g1);font-size:16px}
+.ng-list .good::before{content:"こう言う";color:var(--ac)}
+@media(max-width:700px){.ng-list li{grid-template-columns:1fr;gap:10px}}
+
+/* 07 締め */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:14px 0 0;padding:0;list-style:none;border-top:2px solid var(--ink)}
+.steps li{padding:18px 16px 18px 0}
+.steps li+li{padding-left:16px;border-left:1px solid var(--ln)}
+.steps b{display:block;margin:0 0 8px;font:800 13px/1 var(--num);letter-spacing:.12em;color:var(--ac)}
+.steps strong{display:block;font-family:var(--head);font-size:1.05rem;line-height:1.5}
+.steps span{display:block;margin-top:4px;font-size:15px;color:var(--g1);line-height:1.7}
+@media(max-width:900px){.steps{grid-template-columns:1fr}.steps li,.steps li+li{padding:14px 0;border-left:0;border-bottom:1px solid var(--ln)}}
+.stop3{margin:14px 0 0;padding:0;list-style:none;border-top:1px solid var(--ln)}
+.stop3 li{display:grid;grid-template-columns:2em 1fr;gap:8px;padding:14px 0;border-bottom:1px solid var(--ln)}
+.stop3 li::before{content:"×";font-weight:800;color:var(--ng);font-size:18px;line-height:1.6}
+.stop3 strong{display:block}
+.stop3 span{color:var(--g1);font-size:16px}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px 20px;margin:32px 0 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;background:var(--ac);color:#fff;font-weight:700;text-decoration:none}
+.btn:hover{background:#071f43}
+.btn-line{background:none;color:var(--ac);box-shadow:inset 0 0 0 1.5px var(--ac)}
+.btn-line:hover{background:var(--acl)}
+
+/* 08 未決 */
+.st{display:inline-block;padding:1px 8px;font-size:13px;font-weight:700;white-space:nowrap}
+.st.kr{background:#fff4d6;color:#7a4f00}
+.st.ng{background:#fde8e4;color:#9a3412}
+
+/* フッター */
+footer{padding:48px 0 40px;background:#0b1424;color:#b9c3d6;font-size:15px}
+.foot{display:grid;grid-template-columns:1.4fr 1fr;gap:32px}
+.foot-warn{margin:0 0 10px;color:#ff9b91;font-weight:700}
+footer h4{margin:0 0 10px;font:800 12px/1 var(--num);letter-spacing:.14em;color:#8e9bb4}
+footer ul{margin:0;padding:0;list-style:none}
+footer a{display:inline-flex;align-items:center;min-height:44px;color:#dfe5ef;text-decoration:none}
+footer a:hover{text-decoration:underline}
+footer .copy{margin:28px 0 0;font-size:13px;color:#8e9bb4}
+footer .copy2{margin-top:4px}
+.tbl td a,.pcol .foot a{display:inline-flex;align-items:center;min-height:44px}
+@media(max-width:760px){.foot{grid-template-columns:1fr}}
+
+/* 印刷 */
+@media print{
+  @page{margin:14mm}
+  body{font-size:11pt}
+  .print-btn{display:none}
+  .toc,main section.alt,.say,.relay li.mid{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  main section{padding:28px 0;break-before:auto}
+  .doc-head{padding:24px 0}
+  .say,.qa>li,.ng-list li,.opener,.beats li,.tbl tr,.steps li,.relay li{break-inside:avoid}
+  .sub-h,h2,h3{break-after:avoid}
+  footer{background:#fff;color:var(--ink);border-top:2px solid var(--ink)}
+  footer a{color:var(--ink)}
+  .foot-warn{color:var(--ng)}
+  footer h4,footer .copy{color:var(--g2)}
+}
+</style>
+</head>
+<body>
+
+<p class="confidential" role="note"><span class="ib">社内限定です。</span><span class="ib">お客様へURLを送らないでください</span></p>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top"><b>AIアバター</b><small>B-04 PARTNER NOTE</small></a>
+    <span class="hd-ng">社内限</span>
+  </div>
+</header>
+
+<div id="top" class="wrap doc-head">
+  <p class="eyebrow">B-04 説明ノート｜取り扱いが決まったOEMパートナー向け</p>
+  <h1>AIアバター<br>説明ノート</h1>
+  <p class="doc-meta"><span>更新 <span class="num">2026-10-19</span></span><span>読み手：OEMパートナーの営業担当／弊社の営業担当</span></p>
+  <p class="doc-intro">貴社の営業が、自社のお客様（主に中小企業の社長）へAIアバターを説明するときの台本です。誰が話しても同じ中身になるように、話す言葉をそのまま書いています。お客様に話す言葉を、このノートでは「孫トーク」と呼びます。</p>
+  <ul class="facts">
+    <li><b>5,000<small>円</small></b><span>説明動画1本の基準（直販の公開価格・税別）</span></li>
+    <li><b>5<small>分前後</small></b><span>資料から作る、社長の分身の説明動画</span></li>
+    <li><b>1<small>回</small></b><span>撮影と声の収録は、最初の1回だけ</span></li>
+    <li><b>10<small>分</small></b><span>代表の分身と話せる見本の、1回の最長</span></li>
+  </ul>
+  <p class="facts-note">数字は、このノートとB-01に書いてあるものだけを使ってください。卸値・推奨売価・ライブ（会話）の料金は<span class="tbd">【調整中】</span>です。</p>
+</div>
+
+<nav class="toc" aria-label="目次">
+  <div class="wrap">
+    <div class="toc-top">
+      <p class="toc-title">CONTENTS</p>
+      <button type="button" class="print-btn" id="printBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9V3h12v6M6 18H4v-7h16v7h-2M8 14h8v7H8z"/></svg>印刷する</button>
+    </div>
+    <ol>
+      <li><a href="#use"><b>00</b>このノートの使い方</a></li>
+      <li><a href="#relay"><b>01</b>最初と最後は人</a></li>
+      <li><a href="#talk"><b>02</b>孫トーク 30秒・3分・15分</a></li>
+      <li><a href="#opener"><b>03</b>切り出し3パターン</a></li>
+      <li><a href="#choose"><b>04</b>ライブと動画の勧め分け</a></li>
+      <li><a href="#price"><b>05</b>価格の伝え方</a></li>
+      <li><a href="#qa"><b>06</b>切り返し10本</a></li>
+      <li><a href="#ng"><b>07</b>言ってはいけない</a></li>
+      <li><a href="#close"><b>08</b>クロージングと次回アポ</a></li>
+      <li><a href="#open"><b>09</b>まだ決まっていないこと</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main>
+
+<!-- ===== 00 ===== -->
+<section id="use" aria-labelledby="h-use">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <p class="eyebrow">00 HOW TO USE</p>
+      <h2 id="h-use">このノートの使い方</h2>
+    </div>
+      <p class="sec-lead">お客様の前で迷ったときに、ここへ戻ってきてください。決まりは5つだけです。</p>
+    </div>
+    <ul class="rules">
+      <li><div><strong>数字は、このノートにあるものだけ。</strong>件数・効果・社名・卸値は、聞かれても作らない。見本の数字は実績ではありません。</div></li>
+      <li><div><strong>【調整中】【仮】は、その場で埋めない。</strong>「確認してお答えします」と言い切り、聞かれたことをそのまま控えて弊社へ回す。あいまいに濁すより信用されます。</div></li>
+      <li><div><strong>孫トークでは「OEM」「卸値」「粗利」を使わない。</strong>お客様には関係のない言葉で、不信のもとになります。商品名は、貴社で決めた名前で話してください<span class="kari">【仮】</span>。</div></li>
+      <li><div><strong>体験ページは、体験版として見せる。</strong>LPの案内役の体験ページは、判断特化型AI「Jev」のAPIに未接続です。サイトに置ける完成品のように見せない。</div></li>
+      <li><div><strong>このノートより、書面と契約書が優先。</strong>お客様と、取り扱いを検討中の会社にはURLを送らない。条件が決まったら、09の表と本文の【】を書き換えます。</div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 01 ===== -->
+<section id="relay" class="alt" aria-labelledby="h-relay">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <p class="eyebrow">01 FIRST AND LAST</p>
+      <h2 id="h-relay">分身が受け持つのは途中、<br>最初と最後は人です。</h2>
+    </div>
+      <p class="sec-lead">この考え方を、どの長さのトークでも必ず一度は話してください。「社長の代わりにAIが全部やる」と受け取られると、期待がずれて、あとで信用を失います。</p>
+    </div>
+    <ol class="relay">
+      <li>
+        <span class="k">FIRST</span>
+        <h3>最初</h3>
+        <p class="who">人（社長・貴社の営業）</p>
+        <p>信頼をつくる場面。会って、困りごとを聞く。誰が相手かを、お客様が確かめるところです。</p>
+      </li>
+      <li class="mid">
+        <span class="k">MIDDLE</span>
+        <h3>途中</h3>
+        <p class="who">社長の分身</p>
+        <p>説明を受け持つ場面。商品や会社の説明、よくある質問への答え、資料の説明。社長が出られない夜や休日、同じ時間の別の場所でも話せます。答えきれないことは、追加で聞くか、人へつなぐ設計です。</p>
+      </li>
+      <li>
+        <span class="k">LAST</span>
+        <h3>最後</h3>
+        <p class="who">人（社長）</p>
+        <p>決断の場面。見積もり・条件の相談・契約。決めるのはお客様で、それに応えるのは社長です。</p>
+      </li>
+    </ol>
+    <p class="relay-why">買い手が人間だから、最初と最後は人が担う。<br>分身は、社長が何度も繰り返している説明を引き受けます。</p>
+    <div class="say">
+      <span class="say-label">お客様に話す言葉</span>
+      <p>分身が受け持つのは、途中の説明です。最初にお客様と信頼をつくるところと、最後に決めていただくところは、これまでどおり社長や担当の方が担います。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 02 ===== -->
+<section id="talk" aria-labelledby="h-talk">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <p class="eyebrow">02 TALK SCRIPT｜最重要</p>
+      <h2 id="h-talk">孫トーク<br>30秒・3分・15分</h2>
+    </div>
+      <p class="sec-lead">お客様に使える時間に合わせて、3つの長さを使い分けます。どれも入口は「聞く」、出口は「見本を一緒に見る」。</p>
+    </div>
+
+    <div class="sub-h"><span>30 SEC</span><h3>30秒版</h3></div>
+    <p class="muted">定例の雑談、保守や更新の打ち合わせの最後、電話の締めに。</p>
+    <div class="say">
+      <span class="say-label">お客様に話す言葉</span>
+      <p>社長、同じ説明を何度もされている場面はありませんか。<span class="stage-dir">（答えを聞く）</span></p>
+      <p>社長の顔と声で、AIの分身をつくれる仕組みがあります。資料を渡すと、その分身が説明する5分前後の動画になって、YouTubeに上がるところまで進みます。撮影は最初の1回だけです。社長が出られない場面の説明を、分身に受け持たせる形です。一度、見本を見てみませんか。</p>
+    </div>
+
+    <div class="sub-h"><span>3 MIN</span><h3>3分版</h3></div>
+    <p class="muted">「もう少し詳しく」と言われたら。聞く→分ける→仕組み→正直に→次、の5つの区切りで話します。</p>
+    <ol class="beats">
+      <li>
+        <div class="beat-t">〜0:30<small>聞く</small></div>
+        <div class="beat-b"><strong>時間を取られている説明を聞く</strong><p>「社長がいちばん時間を取られている説明は、どれですか。商談の前の説明、採用の会社説明、よくある質問への答え。いろいろあると思います」</p></div>
+      </li>
+      <li>
+        <div class="beat-t">〜1:00<small>分ける</small></div>
+        <div class="beat-b"><strong>社長は1人</strong><p>「商品をいちばんうまく説明できるのは、たいてい社長です。ただ、社長は1人なので、同じ時間に2か所では話せません。そこで、途中の説明だけを分身に任せる、という考え方です」</p></div>
+      </li>
+      <li>
+        <div class="beat-t">〜2:00<small>仕組み</small></div>
+        <div class="beat-b"><strong>撮影は1回、あとは資料と台本</strong><p>「最初の1回だけ、社長の撮影と声の収録をします。あとは資料を入れるだけ。AIが1ページごとに台本を下書きして、社長の分身が説明する5分前後の動画になります。直したいページだけ直せて、字幕や読み方の辞書も付いています。できた動画は、公開の範囲を選んでYouTubeへ。限定公開にして、商談の前にお送りする使い方もできます。もう一つ、サイトに来た方の質問に分身がその場で答える使い方もあって、こちらは見本でお試しいただけます」</p></div>
+      </li>
+      <li>
+        <div class="beat-t">〜2:40<small>正直に</small></div>
+        <div class="beat-b"><strong>約束しないこと</strong><p>「ただ、問い合わせや受注が何件増える、とはお約束できません。それと、最初にお客様と信頼をつくるところと、最後に決めていただくところは、これまでどおり社長や担当の方です。分身が受け持つのは、その間の説明です。公開する前に、台本は必ず人が確かめます」</p></div>
+      </li>
+      <li>
+        <div class="beat-t">〜3:00<small>次</small></div>
+        <div class="beat-b"><strong>見本を1本見る</strong><p>「まず見本の動画を1本、一緒に見ていただけますか。3分ほどです。見たうえで、分身に話させたい資料があるかどうかを決めていただければ十分です」</p></div>
+      </li>
+    </ol>
+
+    <div class="sub-h"><span>15 MIN</span><h3>15分版</h3></div>
+    <p class="muted">時間を取っていただいた打ち合わせの本編。見本を画面に映しながら進めます。</p>
+    <div class="scroll-x">
+      <table class="tbl">
+        <thead><tr><th scope="col">時間</th><th scope="col">話すこと</th><th scope="col">見せるもの・確かめること</th></tr></thead>
+        <tbody>
+          <tr><td class="t-time" data-l="時間">0〜2分</td><td class="q" data-l="話すこと">先に聞く。同じ説明を何度もしている場面はどこか。資料（会社案内・商品説明）はどれくらいあるか。YouTubeのチャンネルはあるか。</td><td data-l="見せるもの・確かめること">聞いた答えを、03の切り出しと04の勧め分けにそのまま使う。</td></tr>
+          <tr><td class="t-time" data-l="時間">2〜4分</td><td class="q" data-l="話すこと">社長は1人、分身は何か所でも。最初と最後は人、途中は分身。</td><td data-l="見せるもの・確かめること">01の3つの場面を口で話すか、この画面を見せる。</td></tr>
+          <tr><td class="t-time" data-l="時間">4〜7分</td><td class="q" data-l="話すこと">見本の動画を1本、一緒に見る。</td><td data-l="見せるもの・確かめること"><a href="https://avatar-news-service.vercel.app/" target="_blank" rel="noopener">見本3本</a>（各3分台）から、お客様の関心に近いものを1本。撮影も編集もしていない、と添える。</td></tr>
+          <tr><td class="t-time" data-l="時間">7〜9分</td><td class="q" data-l="話すこと">代表の分身と話す見本を、お客様に試してもらう。</td><td data-l="見せるもの・確かめること"><a href="https://main.d3low1bgvvu24.amplifyapp.com/" target="_blank" rel="noopener">代表の分身と話す見本</a>はマイクの許可が要る。1回最長10分なので、2〜3問で止める。LPの案内役の体験ページを見せるなら「判断のAIにはまだつながっていない体験版」と先に言う。</td></tr>
+          <tr><td class="t-time" data-l="時間">9〜11分</td><td class="q" data-l="話すこと">作り方と手間。最初の1回の撮影と声、資料を入れる、台本を確かめる、公開範囲を選ぶ。</td><td data-l="見せるもの・確かめること">社長の手間は、初回の収録と台本の確認。資料を入れて台本を確かめるのを貴社とお客様のどちらが担うかは<span class="tbd">【調整中】</span>。</td></tr>
+          <tr><td class="t-time" data-l="時間">11〜13分</td><td class="q" data-l="話すこと">料金の形。動画は本数で決まる。</td><td data-l="見せるもの・確かめること">05の伝え方どおり。ライブ（会話）の料金は<span class="tbd">【調整中】</span>と言い切る。</td></tr>
+          <tr><td class="t-time" data-l="時間">13〜15分</td><td class="q" data-l="話すこと">次の一手を決める。誰を分身にするか、最初の1本にする資料、初回収録の日程。</td><td data-l="見せるもの・確かめること">08の締め。答えられなかった質問は控えて、確認してから返すと約束する。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03 ===== -->
+<section id="opener" class="alt" aria-labelledby="h-opener">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <p class="eyebrow">03 OPENERS</p>
+      <h2 id="h-opener">切り出しの<br>3パターン</h2>
+    </div>
+      <p class="sec-lead">新しく売り込むより、貴社が普段売っているものの「次の一手」として出すほうが話は進みます。最初の一言は、B-01の切り出しと同じです。</p>
+    </div>
+    <div class="openers">
+      <div class="opener">
+        <p class="who">WEB・HP制作</p>
+        <h3>サイトに案内役を</h3>
+        <p class="when">リニューアルや保守の更新の場面。「サイトから問い合わせが来ない」と言われたとき。</p>
+        <dl>
+          <dt>最初の一言</dt>
+          <dd class="q">「作ったサイトで、社長が説明しているところを想像してみてください」</dd>
+          <dt>続け方</dt>
+          <dd>「夜や休日にサイトを見た方にも、社長の分身が説明できる形です」と言い、代表の分身と話す見本を試してもらう。サイトに置く形の料金と提供時期は<span class="tbd">【調整中】</span>なので、まずは資料を話す動画をサイトに載せる形から出す。</dd>
+          <dt>気をつけること</dt>
+          <dd class="warn">体験ページを「もうサイトに置けます」と見せない。</dd>
+        </dl>
+      </div>
+      <div class="opener">
+        <p class="who">広告・販促</p>
+        <h3>広告の先に説明動画を</h3>
+        <p class="when">広告の運用報告や、次の月の提案の場面。</p>
+        <dl>
+          <dt>最初の一言</dt>
+          <dd class="q">「広告で呼んだ人に、社長の説明を5分見てもらう形にしませんか」</dd>
+          <dt>続け方</dt>
+          <dd>今ある資料から説明動画を作り、YouTubeに置く。ショートへの切り分けもできるので、広告の素材の相談とつなげる。</dd>
+          <dt>気をつけること</dt>
+          <dd class="warn">「反応率が上がる」「問い合わせが増える」と言わない。</dd>
+        </dl>
+      </div>
+      <div class="opener">
+        <p class="who">IT販社・士業・支援機関</p>
+        <h3>サポートと社内向けに</h3>
+        <p class="when">導入後のサポート、顧問先との定例、会員への案内の場面。</p>
+        <dl>
+          <dt>最初の一言</dt>
+          <dd class="q">「同じ説明を何度もしている場面は、どこにありますか」</dd>
+          <dt>続け方</dt>
+          <dd>使い方の説明、社員への方針説明、採用の会社説明など、答えが出た場面をそのまま動画の題材にする。限定公開にすれば、渡したい相手だけに届けられる。</dd>
+          <dt>気をつけること</dt>
+          <dd class="warn">社長以外の人を分身にするときも、その本人の同意が要る。</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04 ===== -->
+<section id="choose" aria-labelledby="h-choose">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <p class="eyebrow">04 LIVE OR VIDEO</p>
+      <h2 id="h-choose">ライブと動画、<br>どちらから出すか</h2>
+    </div>
+      <p class="sec-lead">同じ分身に、使い方が2つあります。迷ったら動画から出してください。価格が公開されていて、最初の1本で中身を確かめられるからです。ライブは、見本で体験してもらい、関心を控えておきます。</p>
+    </div>
+    <div class="twoway">
+      <div>
+        <span class="k">VIDEO｜資料を話す</span>
+        <h3>動画から出す</h3>
+        <p>資料を入れると、社長の分身が説明する5分前後の動画になります。</p>
+        <ul>
+          <li><b>元の資料</b>　PDF 100ページまで。台本は全体で約1時間分（25,000文字）まで</li>
+          <li><b>台本</b>　AIが1ページごとに下書きし、ページ単位で直せる</li>
+          <li><b>仕上げ</b>　字幕・ワイプ・読み方の辞書・ショートへの切り分け</li>
+          <li><b>公開</b>　YouTubeへ自動アップ（公開範囲を選べる）。noteは掲載まで弊社</li>
+        </ul>
+      </div>
+      <div class="live">
+        <span class="k">LIVE｜その場で話す</span>
+        <h3>ライブは見本で関心を測る</h3>
+        <p>サイトの訪問者・見込み客・利用中の顧客の質問に、分身がその場で答えます。判断は判断特化型AI「Jev」です。</p>
+        <ul>
+          <li><b>見本</b>　代表の分身と声で会話できる（1回最長10分）</li>
+          <li><b>体験版</b>　LPの案内役の体験ページ（Jev API未接続）</li>
+          <li><b>料金と同時に話せる数</b>　<span class="tbd">【調整中】</span></li>
+          <li><b>サイトに置く形の提供時期</b>　<span class="tbd">【調整中】</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="scroll-x">
+      <table class="tbl">
+        <thead><tr><th scope="col">お客様の様子</th><th scope="col">先に出す</th><th scope="col">言い方・理由</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">資料はあるが、説明する人と時間が足りない</th><td class="use" data-l="先に出す">動画</td><td data-l="言い方・理由">「今ある資料を、そのまま社長の説明にできます」。新しく資料を作らなくても始められる。</td></tr>
+          <tr><th scope="row">広告やYouTubeで人を集めている、集めたい</th><td class="use" data-l="先に出す">動画</td><td data-l="言い方・理由">説明動画とショートを毎月出す形。広告の先に置く説明として提案する。</td></tr>
+          <tr><th scope="row">社員・採用候補・導入後の顧客に、同じ説明を繰り返している</th><td class="use" data-l="先に出す">動画（限定公開）</td><td data-l="言い方・理由">URLを渡した相手だけが見られる形から始められる。外に出す前の試しにもなる。</td></tr>
+          <tr><th scope="row">夜や休日に、サイトから問い合わせが来る</th><td class="use live" data-l="先に出す">ライブ（見本）</td><td data-l="言い方・理由">代表の分身と話す見本を試してもらう。料金と提供時期は<span class="tbd">【調整中】</span>と伝え、関心があったことを弊社へ回す。その間は、よくある質問を動画にして載せる形を勧める。</td></tr>
+          <tr><th scope="row">商談の前に、同じ質問を何度も受ける</th><td class="use" data-l="先に出す">動画 → ライブ</td><td data-l="言い方・理由">よくある質問を先に動画で答え、その場の会話は決まりしだい足す。答えの正本（料金・よくある質問・人へつなぐ条件）は、どちらにも使える。</td></tr>
+          <tr><th scope="row">迷った、判断がつかない</th><td class="use" data-l="先に出す">動画</td><td data-l="言い方・理由">最初の1本を一緒に作るところから。ライブはあとから足せる。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 05 ===== -->
+<section id="price" class="alt" aria-labelledby="h-price">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <p class="eyebrow">05 PRICING</p>
+      <h2 id="h-price">価格の伝え方</h2>
+    </div>
+      <p class="sec-lead">直販の価格は公開されていて、お客様も調べられます。それを基準に、言える数字とまだ言えない数字を混ぜないことがいちばん大事です。お客様には、貴社で決めた金額で答えてください。</p>
+    </div>
+    <div class="price2">
+      <div class="pcol">
+        <p class="pcol-t">言える数字（直販の公開価格・動画・税別）</p>
+        <ul>
+          <li><span>動画1本の基準</span><b class="n">5,000円</b></li>
+          <li><span>年間パック ライト</span><b>100万円・200本</b></li>
+          <li><span>年間パック スタンダード</span><b>300万円・700本</b></li>
+          <li><span>年間パック プレミアム</span><b>500万円・1,200本</b></li>
+          <li><span>月額プラン</span><b>15万円・30本／30万円・60本／50万円・100本</b></li>
+          <li><span>初期費用</span><b>通常50万円、いまは0円</b></li>
+          <li><span>契約期間</span><b>1年</b></li>
+        </ul>
+        <p class="foot">掲載先：<a href="https://avatar-news-service.vercel.app/" target="_blank" rel="noopener">直販の申込ページ（アバターニュース・仮称）</a>。</p>
+      </div>
+      <div class="pcol wait">
+        <p class="pcol-t">まだ言えない数字</p>
+        <ul>
+          <li><span>卸値</span><b class="tbd">【調整中】</b></li>
+          <li><span>推奨売価</span><b class="tbd">【調整中】</b></li>
+          <li><span>ライブ（会話）の料金</span><b class="tbd">【調整中】</b></li>
+          <li><span>ライブで同時に話せる数</span><b class="tbd">【調整中】</b></li>
+          <li><span>貴社とお客様の間の最低契約期間と解約</span><b class="tbd">【調整中】</b></li>
+        </ul>
+        <p class="foot">ライブは、会話の長さで費用が変わる仕組みを想定しています。金額は、決まるまで口にしない。</p>
+      </div>
+    </div>
+
+    <div class="sub-h" style="margin-top:56px"><span>BRANCH</span><h3>聞かれ方ごとの返し方</h3></div>
+    <div class="scroll-x">
+      <table class="tbl">
+        <thead><tr><th scope="col">聞かれた場面</th><th scope="col">返す言葉</th><th scope="col">次の一手</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">「いくら？」</th><td class="q" data-l="返す言葉">「動画は、1年で何本作るかで料金が決まります。年間のパックと、月ごとのプランがあります」と先に形を言い、貴社で決めた金額で答える。</td><td data-l="次の一手">推奨売価が決まるまでは、金額を出す前に弊社に確認する。</td></tr>
+          <tr><th scope="row">「会話のほうはいくら？」</th><td class="q" data-l="返す言葉">「その場で話すほうの料金は、まだ決まっていません。会話の長さで料金が変わる形を想定しています。決まりしだい、お伝えします」</td><td data-l="次の一手">金額を推測で言わない。聞かれたこと、使いたい場面を控えて弊社へ回す。</td></tr>
+          <tr><th scope="row">「安くならない？」</th><td class="q" data-l="返す言葉">「本数の多いプランほど、1本あたりの金額は下がる形です。最初に、年に何本くらい作りたいかを一緒に数えませんか」</td><td data-l="次の一手">値引きの範囲は卸値と一緒に<span class="tbd">【調整中】</span>。その場で値引きを約束しない。</td></tr>
+          <tr><th scope="row">「ネットで見た価格と違う」</th><td class="q" data-l="返す言葉">「そちらは開発元が直接販売している価格です。私どもでは、〇〇（貴社が受け持つこと）まで含めてお引き受けしています」</td><td data-l="次の一手">直販を悪く言わない。貴社が受け持つ範囲（最初の窓口など）は<span class="kari">【仮】</span>なので、決まった範囲だけを言う。</td></tr>
+          <tr><th scope="row">「税込？」</th><td class="q" data-l="返す言葉">貴社の価格表示に合わせて答える。直販の価格は税別で表示されている。</td><td data-l="次の一手">税込の総額を聞かれたら、その場で計算して伝える。</td></tr>
+          <tr><th scope="row">「高い」</th><td class="q" data-l="返す言葉">06の切り返し03へ。</td><td data-l="次の一手">値段の前に、いま社長が同じ説明にかけている時間を聞く。</td></tr>
+          <tr><th scope="row">貴社の社内で「うちの取り分は？」</th><td class="q" data-l="返す言葉">「卸値と推奨売価は調整中です。取扱商材と顧客層を伺ったうえで、弊社から書面でお出しします」</td><td data-l="次の一手">B-01の計算機で、見込みの形だけ確かめる。数字は約束ではない。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 06 ===== -->
+<section id="qa" aria-labelledby="h-qa">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <p class="eyebrow">06 OBJECTIONS</p>
+      <h2 id="h-qa">切り返し10本</h2>
+    </div>
+      <p class="sec-lead">答えは、このノートにある事実の範囲だけです。効果は約束しません。決まっていないものは「確認してお答えします」と言い切ってください。</p>
+    </div>
+    <ol class="qa">
+      <li><div>
+        <h3>「AIだと伝わらない」</h3>
+        <p class="ans">「伝わるかどうかは、見本を見て社長ご自身で判断してください。3分ほどの動画です。分身が受け持つのは途中の説明で、最初にお会いするのも、最後に決めていただくのも、これまでどおり社長です」</p>
+        <p class="ans2"><b>補足</b>　「本人と区別がつかない」とは言わない。見本は撮影も編集もしていない、という事実だけを添える。</p>
+      </div></li>
+      <li><div>
+        <h3>「顔を出したくない」</h3>
+        <p class="ans">「分身をつくるには、最初の1回だけ、ご本人の撮影と声の収録が要ります。社長でなくても、ご本人が同意された方なら分身にできます。どなたを分身にするかは、御社で決めていただけます」</p>
+        <p class="ans2"><b>補足</b>　顔を出さない作り方があるとは言わない。誰も同意しないなら、無理に勧めない。</p>
+      </div></li>
+      <li><div>
+        <h3>「高い」</h3>
+        <p class="ans">「人に動画を作ってもらうと、1本で数十万円かかる例もあります。こちらは資料を渡すだけで、台本の下書きから字幕、YouTubeへのアップまで進みます。いま社長が、同じ説明に月どれくらい時間を使っているか、一度並べてみませんか」</p>
+        <p class="ans2"><b>補足</b>　比べる数字はB-01の比較表の範囲（動画制作会社の公開価格で、サービス紹介・営業用が1本50〜100万円。プルークスの公開情報、2026年10月16日確認）。費用対効果は約束しない。</p>
+      </div></li>
+      <li><div>
+        <h3>「HeyGenで自分で作れる」</h3>
+        <p class="ans">「作れます。月29ドルからのツールもあって、ご自分で操作する時間がある会社なら、そのほうが安いこともあります。違うのは、資料を渡すだけで台本の下書きから公開まで進むことと、台本の相談を私どもにしていただけることです」</p>
+        <p class="ans2"><b>補足</b>　他社ツールを悪く言わない。画質の勝ち負けで話さない。「台本の相談」を貴社が受けるかは、分担（<span class="tbd">【調整中】</span>）に合わせて言い換える。</p>
+      </div></li>
+      <li><div>
+        <h3>「うちはYouTubeやってない」</h3>
+        <p class="ans">「限定公開にして、URLを知っている方だけに見ていただく使い方もできます。商談の前にお送りする、採用の候補者にお送りする、社員の方に見ていただく、といった形です。YouTubeで発信を始めるかどうかは、別に決めていただけます」</p>
+        <p class="ans2"><b>補足</b>　どのチャンネルに上げるかは<span class="tbd">【調整中】</span>（お客様のチャンネルに載せる形を想定）。チャンネルの用意が要るかを聞かれたら、確認して返す。</p>
+      </div></li>
+      <li><div>
+        <h3>「効果は？」</h3>
+        <p class="ans">「問い合わせや受注が何件増える、とはお約束できません。お約束できるのは、資料から社長の説明動画ができて、公開されるところまでです。何に効いたかを確かめられるように、最初に、どの場面で使うかを一緒に決めておきましょう」</p>
+        <p class="ans2"><b>補足</b>　他社の事例や件数を作らない。外部の導入事例として名前を出せるものは、このノートにはありません。</p>
+      </div></li>
+      <li><div>
+        <h3>「社長が忙しい」</h3>
+        <p class="ans">「社長に時間をいただくのは、最初の1回の撮影と声の収録です。あとはAIが資料1ページごとに台本を下書きするので、確かめて、直したいページだけ直していただきます。忙しい社長の説明を、分身が代わりに話す道具です」</p>
+        <p class="ans2"><b>補足</b>　収録にかかる時間や、台本の確認にかかる時間を数字で言わない。台本を確かめるのが貴社かお客様かは<span class="tbd">【調整中】</span>。</p>
+      </div></li>
+      <li><div>
+        <h3>「炎上・誤回答が心配」</h3>
+        <p class="ans">「動画は、公開する前に台本を必ず人が確かめます。公開の範囲も選べるので、限定公開から始められます。その場で話すほうは、答えきれないことは追加で聞くか、人へおつなぎする設計です。最初に、料金やよくある質問の答えの正本をそろえておきます」</p>
+        <p class="ans2"><b>補足</b>　「誤回答はありません」と言わない。問い合わせの最初の窓口は貴社、技術的な原因の調べと直しは弊社<span class="kari">【仮】</span>。発言の誤りなど、内容の苦情の扱いは<span class="tbd">【調整中】</span>。</p>
+      </div></li>
+      <li><div>
+        <h3>「解約できる？」</h3>
+        <p class="ans">「契約の期間と解約の条件は、確認して書面でお答えします」</p>
+        <p class="ans2"><b>補足</b>　直販は1年契約。貴社とお客様の間の最低契約期間と解約は<span class="tbd">【調整中】</span>。決まるまで「解約できます」とも「できません」とも言わない。</p>
+      </div></li>
+      <li><div>
+        <h3>「社員が反発しない？」</h3>
+        <p class="ans">「分身が受け持つのは、社長が何度も繰り返している説明です。社員の方にとっては、社長の考えを何度でも見返せる形になります。どの説明を分身に任せるかを、先に社内で話しておくと進めやすいです」</p>
+        <p class="ans2"><b>補足</b>　「人がいらなくなる」「人を減らせる」と言わない。社員を分身にするなら、その本人の同意が要る。</p>
+      </div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== 07 ===== -->
+<section id="ng" class="alt" aria-labelledby="h-ng">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <p class="eyebrow">07 DON'T SAY</p>
+      <h2 id="h-ng">言ってはいけない<br>言い方</h2>
+    </div>
+      <p class="sec-lead">一度言うと、あとで取り消せません。左は、貴社の営業も弊社の営業も使わない言い方です。</p>
+    </div>
+    <ul class="ng-list">
+      <li><div class="bad">「問い合わせが月◯件増えます」「受注が増えます」など、件数や効果の約束</div><div class="good">「件数はお約束できません。お約束できるのは、説明動画ができて公開されるところまでです」</div></li>
+      <li><div class="bad">「人がいらなくなります」「営業を減らせます」</div><div class="good">「社長が何度も繰り返している説明を、分身が受け持ちます。最初と最後は人です」</div></li>
+      <li><div class="bad">体験ページを見せて「もうサイトに置けます」「これが本番です」</div><div class="good">「これは体験版で、判断のAIにはまだつながっていません。サイトに置く形の時期は確認中です」</div></li>
+      <li><div class="bad">「どなたの分身でも作れます」「写真があれば作れます」</div><div class="good">「ご本人の同意がある方だけです。最初の1回、撮影と声の収録が要ります」</div></li>
+      <li><div class="bad">「本人と見分けがつきません」</div><div class="good">「見本を見て、ご自身で判断してください」</div></li>
+      <li><div class="bad">「会話のほうは月◯円くらいです」と、決まっていない金額を推測で言う</div><div class="good">「その場で話すほうの料金は、まだ決まっていません。決まりしだいお伝えします」</div></li>
+      <li><div class="bad">「作るコストが10分の1なので、安くできます」</div><div class="good">開発の開示にある「従来の10分の1以下の目処」は当社試算で、お客様の価格の約束ではない。価格の話に使わない</div></li>
+      <li><div class="bad">「再生回数が伸びます」「YouTubeでお客さんが増えます」</div><div class="good">「公開の範囲を選んで、YouTubeへ上がるところまで進みます」</div></li>
+      <li><div class="bad">お客様の前で「OEM」「卸値」「粗利」と言う</div><div class="good">お客様には、サービスの中身と貴社の料金だけを話す</div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 08 ===== -->
+<section id="close" aria-labelledby="h-close">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <p class="eyebrow">08 CLOSING</p>
+      <h2 id="h-close">クロージングと<br>次回アポ</h2>
+    </div>
+      <p class="sec-lead">その場で契約まで進めなくて大丈夫です。見本を一緒に見たら、最初の1本の資料と初回収録の日程を仮で押さえて、次の打ち合わせにつなぎます。</p>
+    </div>
+
+    <ol class="steps">
+      <li><b>STEP 1</b><strong>見本を一緒に見る</strong><span>動画を1本、会話の見本を2〜3問</span></li>
+      <li><b>STEP 2</b><strong>誰を分身にするか</strong><span>ご本人の同意を確かめる</span></li>
+      <li><b>STEP 3</b><strong>最初の1本の資料</strong><span>今ある資料から1つ選ぶ</span></li>
+      <li><b>STEP 4</b><strong>初回収録を仮押さえ</strong><span>日程の候補を2つ伺う</span></li>
+      <li><b>STEP 5</b><strong>台本と公開範囲</strong><span>確かめる人と、限定公開から始めるか</span></li>
+    </ol>
+
+    <div class="sub-h" style="margin-top:48px"><span>CLOSE</span><h3>お客様との締め</h3></div>
+    <div class="say">
+      <span class="say-label">お客様に話す言葉</span>
+      <p>今日の見本で、社長の説明のどこを分身に任せられそうか、少し見えてきたと思います。最初の1本にする資料を、一つ選んでいただけますか。</p>
+      <p>分身づくりの撮影と声の収録は、最初の1回だけです。日程の候補を、仮で押さえておきませんか。正式に決めるのは、条件をご確認いただいてからで大丈夫です。</p>
+    </div>
+
+    <div class="sub-h" style="margin-top:48px"><span>NEXT</span><h3>次回アポまでにすること</h3></div>
+    <ul class="rules">
+      <li><div><strong>その場で、次の打ち合わせの日を決める。</strong>候補日を2つ出す。初回収録の日程は弊社と合わせるので、お客様の候補だけを伺っておく（収録の担当は弊社<span class="kari">【仮】</span>）。</div></li>
+      <li><div><strong>同意を取る段取りを伝える。</strong>顔と声を使う同意は、貴社がお客様から取る形です<span class="kari">【仮】</span>。同意書のひな形は弊社が用意する想定です。</div></li>
+      <li><div><strong>答えられなかった質問を控える。</strong>【調整中】の項目は、質問した人の言葉のまま弊社へ回し、確認してから返す。</div></li>
+    </ul>
+
+    <div class="sub-h" style="margin-top:48px"><span>STOP</span><h3>その日は勧めない3つの場合</h3></div>
+    <ul class="stop3">
+      <li><div><strong>分身になる人の同意が取れない</strong><span>分身づくりは、ご本人の同意がある人だけです。</span></div></li>
+      <li><div><strong>件数や効果の約束を求めている</strong><span>受注や問い合わせの件数は約束できません。約束がないと決められないなら、その日は勧めない。</span></div></li>
+      <li><div><strong>公開前に台本を確かめる人がいない</strong><span>台本はAIの下書きです。公開の前に、人が確かめる必要があります。</span></div></li>
+    </ul>
+
+    <div class="btn-row">
+      <a class="btn" href="../b01/">B-01 OEM提供のご案内</a>
+      <a class="btn btn-line" href="https://avatar-news-service.vercel.app/" target="_blank" rel="noopener">見本の動画3本 ↗</a>
+      <a class="btn btn-line" href="https://main.d3low1bgvvu24.amplifyapp.com/" target="_blank" rel="noopener">代表の分身と話す ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 09 ===== -->
+<section id="open" class="alt" aria-labelledby="h-open">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <p class="eyebrow">09 OPEN ITEMS</p>
+      <h2 id="h-open">まだ決まって<br>いないこと</h2>
+    </div>
+      <p class="sec-lead">聞かれたら、真ん中の列のとおりに答えてください。推測で埋めないこと。決まった行は、この表から外して本文の【】を書き換えます。</p>
+    </div>
+    <div class="scroll-x">
+      <table class="tbl">
+        <thead><tr><th scope="col">項目</th><th scope="col">聞かれたら</th><th scope="col">状態</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">卸値・推奨売価</th><td data-l="聞かれたら">取扱商材と顧客層を伺ったうえで、弊社から書面でお出しします。お客様には貴社で決めた金額で。</td><td data-l="状態"><span class="st ng">調整中</span></td></tr>
+          <tr><th scope="row">ライブの料金と、同時に話せる数</th><td data-l="聞かれたら">まだ決まっていません。会話の長さで料金が変わる形を想定しています。</td><td data-l="状態"><span class="st ng">調整中</span></td></tr>
+          <tr><th scope="row">ライブをサイトに置く形の提供時期</th><td data-l="聞かれたら">体験ページはJev API未接続の体験版です。代表の分身と話す見本は、いま試せます。</td><td data-l="状態"><span class="st ng">調整中</span></td></tr>
+          <tr><th scope="row">名前とロゴを替えられる範囲</th><td data-l="聞かれたら">貴社の名前とロゴで売る形です。どの画面・動画・通知まで替えられるかは、いま確認しています。</td><td data-l="状態"><span class="st kr">仮</span></td></tr>
+          <tr><th scope="row">問い合わせの最初の窓口</th><td data-l="聞かれたら">最初の窓口は貴社、技術的な原因の調べと直しは弊社、という分け方です。</td><td data-l="状態"><span class="st kr">仮</span></td></tr>
+          <tr><th scope="row">分身づくりと同意</th><td data-l="聞かれたら">初回の撮影と声の収録は弊社、お客様の社長から同意を取るのは貴社。同意書のひな形は弊社が用意する想定です。</td><td data-l="状態"><span class="st kr">仮</span></td></tr>
+          <tr><th scope="row">資料を入れて台本を確かめる担当</th><td data-l="聞かれたら">貴社とお客様のどちらが担うかは確認中です。</td><td data-l="状態"><span class="st ng">調整中</span></td></tr>
+          <tr><th scope="row">請求と回収、契約の当事者</th><td data-l="聞かれたら">利用規約をどちらの名前で結ぶかも含めて、確認しています。</td><td data-l="状態"><span class="st ng">調整中</span></td></tr>
+          <tr><th scope="row">最低契約期間と解約</th><td data-l="聞かれたら">直販は1年契約です。貴社とお客様の間の条件は、書面でお答えします。</td><td data-l="状態"><span class="st ng">調整中</span></td></tr>
+          <tr><th scope="row">noteの掲載名義とYouTubeのアップ先</th><td data-l="聞かれたら">お客様のチャンネル・アカウントに載せる形を想定。noteは公式の投稿APIがないため、掲載の作業は弊社が行います。</td><td data-l="状態"><span class="st ng">調整中</span></td></tr>
+          <tr><th scope="row">分身の発言の誤りなど、内容の苦情の扱い</th><td data-l="聞かれたら">条件のすり合わせで決めます。</td><td data-l="状態"><span class="st ng">調整中</span></td></tr>
+          <tr><th scope="row">地域・業種の排他</th><td data-l="聞かれたら">設けるかどうかを含めて未定です。</td><td data-l="状態"><span class="st ng">調整中</span></td></tr>
+          <tr><th scope="row">貴社名入りの説明資料・管理画面</th><td data-l="聞かれたら">どこまで用意できるかは、これから決めます。</td><td data-l="状態"><span class="st ng">調整中</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <p class="foot-warn">社内限定です。お客様へURLを送らないでください</p>
+        <p>AIアバター B-04 パートナー向け説明ノート。提供：株式会社ライトアップ（東証グロース 6580）。このノートより、書面と契約書の内容が優先です。AIアバターエンジンの開発完了は、2026年10月13日に適時開示しています。</p>
+      </div>
+      <div>
+        <h4>PACK</h4>
+        <ul>
+          <li><a href="../">アバターソリューションの資料インデックス</a></li>
+          <li><a href="../b01/">B-01 OEM提供のご案内</a></li>
+          <li><a href="../b02/">B-02 パートナー説明会</a></li>
+          <li><a href="https://avatar-news-service.vercel.app/" target="_blank" rel="noopener">直販の申込ページ（アバターニュース・仮称）</a></li>
+          <li><a href="https://www.writeup.co.jp/company/" target="_blank" rel="noopener">会社概要</a></li>
+          <li><a href="https://www.writeup.co.jp/privacy/" target="_blank" rel="noopener">個人情報保護方針</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copy">【仮】【調整中】は、確定前の内容です。</p>
+    <p class="copy copy2">© 2026 Writeup Co., Ltd.</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById('printBtn').addEventListener('click',function(){ window.print(); });
+</script>
+<script data-click-marker>
+/* クリック黄色マーカー v3（全HTML標準・正本 ~/.claude/click-marker.js / 仕様 ~/.claude/lp-click-marker.md）
+   文字をクリックすると表示上の1行に黄色マーカー。再クリックで消える。
+   表（td・th）の中は、文字ではなくそのセルの背景を薄い黄色にする（v3・2026-10-18 本人指示）。
+   暗い背景では文字が黄色に光る（multiply合成）。レイアウトは動かさない。
+   止める：<meta name="click-marker" content="off">／要素単位で data-no-marker */
+(function () {
+  if (window.__clickMarker) return;
+  window.__clickMarker = 1;
+  var d = document, root = d.documentElement;
+  var off = d.querySelector('meta[name="click-marker"]');
+  if (off && off.getAttribute('content') === 'off') return;
+
+  var SKIP = 'a,button,input,textarea,select,option,label,summary,video,audio,iframe,canvas,svg,img,form,dialog,' +
+    '[role=button],[role=link],[role=tab],[role=menuitem],[contenteditable=""],[contenteditable=true],' +
+    '[onclick],[data-no-marker],[data-click-marker-layer]';
+  var layer = null, marks = [], down = null, lastW = innerWidth, raf = 0;
+
+  function ensureLayer() {
+    if (layer) return layer;
+    var st = d.createElement('style');
+    st.textContent =
+      '[data-click-marker-layer]{position:absolute;left:0;top:0;width:0;height:0;pointer-events:none;' +
+      'z-index:2147483000;mix-blend-mode:multiply}' +
+      '[data-click-marker-layer]>i{position:absolute;display:block;background:#ffe14a;border-radius:3px;' +
+      'opacity:0;transition:opacity .18s ease-out;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
+      '[data-click-marker-layer]>i.on{opacity:.85}' +
+      '[data-cm-cell]{background-image:linear-gradient(rgba(255,225,74,.32),rgba(255,225,74,.32))!important;' +
+      '-webkit-print-color-adjust:exact;print-color-adjust:exact}';
+    (d.head || root).appendChild(st);
+    layer = d.createElement('div');
+    layer.setAttribute('data-click-marker-layer', '');
+    layer.setAttribute('aria-hidden', 'true');
+    root.appendChild(layer);
+    return layer;
+  }
+
+  function isBlock(el) {
+    return !/^(inline|contents)/.test(getComputedStyle(el).display);
+  }
+  function blockOf(el) {
+    while (el && el !== d.body && el !== root && !isBlock(el)) el = el.parentElement;
+    return el;
+  }
+
+  // ブロック直下の文字（入れ子のブロックは除く）を表示上の行ごとにまとめる
+  function lines(block) {
+    var rects = [], r = d.createRange();
+    var w = d.createTreeWalker(block, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (t) {
+        if (!t.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        for (var p = t.parentElement; p && p !== block; p = p.parentElement) {
+          if (isBlock(p)) return NodeFilter.FILTER_REJECT;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    for (var t; (t = w.nextNode());) {
+      r.selectNodeContents(t);
+      var cr = r.getClientRects();
+      for (var i = 0; i < cr.length; i++) if (cr[i].width > 0.5 && cr[i].height > 0.5) rects.push(cr[i]);
+    }
+    rects.sort(function (a, b) { return a.top - b.top || a.left - b.left; });
+    var ls = [];
+    rects.forEach(function (c) {
+      var cm = (c.top + c.bottom) / 2, hit = null;
+      for (var i = 0; i < ls.length; i++) {
+        var g = ls[i], gm = (g.top + g.bottom) / 2;
+        if ((cm >= g.top && cm <= g.bottom) || (gm >= c.top && gm <= c.bottom)) { hit = g; break; }
+      }
+      if (hit) {
+        hit.left = Math.min(hit.left, c.left); hit.right = Math.max(hit.right, c.right);
+        hit.top = Math.min(hit.top, c.top); hit.bottom = Math.max(hit.bottom, c.bottom);
+      } else {
+        ls.push({ left: c.left, right: c.right, top: c.top, bottom: c.bottom });
+      }
+    });
+    ls.sort(function (a, b) { return a.top - b.top; });
+    return ls;
+  }
+
+  // 中スクロールの枠外へ出た行はマーカーを隠す（枠をはみ出して塗らない）
+  function clipped(block, L) {
+    for (var p = block; p && p !== d.body && p !== root; p = p.parentElement) {
+      var cs = getComputedStyle(p);
+      if (cs.overflowX === 'visible' && cs.overflowY === 'visible') continue;
+      var r = p.getBoundingClientRect();
+      if (L.bottom <= r.top || L.top >= r.bottom || L.right <= r.left || L.left >= r.right) return true;
+    }
+    return false;
+  }
+
+  function place(mk, L) {
+    var s = mk.el.style, pad = 2;
+    s.visibility = clipped(mk.block, L) ? 'hidden' : '';
+    s.left = (L.left + scrollX - pad) + 'px';
+    s.top = (L.top + scrollY) + 'px';
+    s.width = (L.right - L.left + pad * 2) + 'px';
+    s.height = (L.bottom - L.top) + 'px';
+  }
+  function drop(mk) {
+    var el = mk.el;
+    el.classList.remove('on');
+    setTimeout(function () { el.remove(); }, 200);
+  }
+  function clearAll() { marks.forEach(drop); marks = []; }
+  function refresh() {
+    raf = 0;
+    marks = marks.filter(function (mk) {
+      if (!mk.block.isConnected) { mk.el.remove(); return false; }
+      var ls = lines(mk.block);
+      if (ls.length !== mk.n || !ls[mk.idx]) { mk.el.remove(); return false; }
+      place(mk, ls[mk.idx]);
+      return true;
+    });
+  }
+  function later() { if (marks.length && !raf) raf = requestAnimationFrame(refresh); }
+
+  d.addEventListener('pointerdown', function (e) { down = { x: e.clientX, y: e.clientY }; }, true);
+
+  d.addEventListener('click', function (e) {
+    if (e.button !== 0 || e.detail > 1 || e.defaultPrevented) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    if (down && Math.abs(e.clientX - down.x) + Math.abs(e.clientY - down.y) > 6) return; // ドラッグ
+    var sel = window.getSelection && getSelection();
+    if (sel && !sel.isCollapsed && String(sel).trim()) return; // 文字選択中
+    var t = e.target;
+    if (!(t instanceof Element) || t.closest(SKIP)) return;
+    for (var p = t; p && p !== root; p = p.parentElement) {
+      var cs = getComputedStyle(p);
+      if (cs.cursor === 'pointer') return; // 既存のクリック操作（H1ポップアップ等）を優先
+      if (cs.position === 'fixed' || cs.position === 'sticky') return; // 追従要素は対象外
+    }
+    // 表のセルは、セルの背景を薄い黄色に（再クリックで戻す）。文字の行マーカーは付けない
+    var cell = t.closest('td,th');
+    if (cell) {
+      ensureLayer();
+      if (cell.hasAttribute('data-cm-cell')) cell.removeAttribute('data-cm-cell');
+      else cell.setAttribute('data-cm-cell', '');
+      return;
+    }
+    var block = blockOf(t);
+    if (!block || block === d.body || block === root) return;
+    var ls = lines(block), idx = -1;
+    for (var i = 0; i < ls.length; i++) {
+      var L = ls[i];
+      if (e.clientY >= L.top - 1 && e.clientY <= L.bottom + 1 && e.clientX >= L.left - 6 && e.clientX <= L.right + 6) { idx = i; break; }
+    }
+    if (idx < 0) return; // 余白のクリック
+    for (var j = 0; j < marks.length; j++) {
+      if (marks[j].block === block && marks[j].idx === idx) { drop(marks[j]); marks.splice(j, 1); return; }
+    }
+    var el = d.createElement('i');
+    ensureLayer().appendChild(el);
+    var mk = { block: block, idx: idx, n: ls.length, el: el };
+    marks.push(mk);
+    place(mk, ls[idx]);
+    requestAnimationFrame(function () { requestAnimationFrame(function () { el.classList.add('on'); }); });
+  });
+
+  // 画面幅が変わると折り返しが変わるので消す。それ以外のずれは位置を引き直す
+  addEventListener('resize', function () {
+    if (innerWidth !== lastW) { lastW = innerWidth; clearAll(); } else later();
+  });
+  d.addEventListener('scroll', function (e) { if (e.target !== d) later(); }, true);
+  function watch() { if (window.ResizeObserver && d.body) new ResizeObserver(later).observe(d.body); }
+  if (d.body) watch(); else d.addEventListener('DOMContentLoaded', watch);
+})();
+</script>
+</body>
+</html>

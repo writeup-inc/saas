@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="lp-type" content="両脳/資料/I興味">
+<title>AIアバター｜OEM提供のご案内（パートナー向け）</title>
+<link rel="canonical" href="https://writeup-inc.github.io/saas/avatar-solution/b01/">
+<meta name="description" content="ライトアップのAIアバターを、貴社の名前とロゴで自社のお客様へ販売する会社向けのご案内です。その場で話すライブと、資料を説明する動画の2つの使い方、分担、収益の形、決まっていないことをまとめています。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== lp-base.css（改行制御・最小文字サイズ・固定CTAの逃げは消さない） ===== */
+h1, h2, h3, h4, h5,
+.lead, .catch, .hero__title, [data-keep-phrase] {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3, h4, h5,
+  .lead, .catch, .hero__title, [data-keep-phrase] { word-break: normal; }
+}
+.nobr { white-space: nowrap; }
+:root { --fs-min: 12px; --fs-body: 16px; }
+body { font-size: var(--fs-body); line-height: 1.8; }
+small, .note, figcaption { font-size: var(--fs-min); line-height: 1.7; }
+h1, .hero__title { font-size: clamp(1.55rem, 5.2vw, 3.25rem); line-height: 1.35; }
+h2 { font-size: clamp(1.3rem, 3.6vw, 2.1rem); line-height: 1.45; }
+:root { --fixed-cta-h: 0px; }
+body { padding-bottom: calc(var(--fixed-cta-h) + env(safe-area-inset-bottom, 0px)); }
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+main > *, section > *, .grid > *, .flex > * { min-width: 0; }
+pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+:root { --lp-max: 1200px; }
+
+/* ===== トークン（白黒グレー＋紺1色。アバターの紫は印だけ） ===== */
+:root{
+  --ink:#14181f; --g1:#454c59; --g2:#646b78; --g3:#a9afba;
+  --ln:#dcdfe5; --ln2:#eceef2; --soft:#f4f5f7;
+  --ac:#0b2c5c; --acl:#eef2f8; --acm:#9fb0cc;
+  --pt:#5a46b0; --ptl:#f1eefb;
+  --up:#c8102e;
+  --head:"Zen Kaku Gothic New","Noto Sans JP",sans-serif;
+  --num:"Inter","Noto Sans JP",sans-serif;
+}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:#fff;color:var(--ink);font-family:"Noto Sans JP",sans-serif;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--ac)}
+p{margin:0 0 1em}
+.wrap{width:min(var(--lp-max),100% - 40px);margin-inline:auto}
+h1,h2,h3{font-family:var(--head);font-weight:900;letter-spacing:-.01em;margin:0}
+h3{font-size:1.18rem;line-height:1.55}
+.eyebrow{margin:0 0 12px;font:800 13px/1 var(--num);letter-spacing:.16em;color:var(--ac)}
+.tbd{display:inline;padding:0 4px;background:#fff4d6;color:#7a4f00;font-weight:700}
+.kari{color:#7a4f00;font-weight:700}
+mark.tbd{background:#fff4d6;color:#7a4f00;font-weight:700;padding:0 4px}
+
+/* ===== ボタン ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;background:var(--ac);color:#fff;font-weight:700;text-decoration:none;transition:background .2s}
+.btn:hover{background:#071f43}
+.btn svg{width:18px;height:18px}
+.btn-line{background:none;color:var(--ac);box-shadow:inset 0 0 0 1.5px var(--ac)}
+.btn-line:hover{background:var(--acl)}
+.tl{display:inline-flex;align-items:center;min-height:44px;font-weight:700;text-underline-offset:4px}
+
+/* ===== ヘッダー（スクロールで隠れる） ===== */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--ln2);transition:transform .25s}
+.site-header.is-hidden{transform:translateY(-100%)}
+.site-header .wrap{display:flex;align-items:center;gap:20px;min-height:64px}
+.brand{display:flex;align-items:center;min-height:44px;gap:10px;text-decoration:none;color:var(--ink)}
+.brand b{font-family:var(--head);font-size:18px;font-weight:900}
+.brand small{font:800 12px/1 var(--num);letter-spacing:.14em;color:var(--g2)}
+.nav{display:flex;gap:2px;margin-left:auto}
+.nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;color:var(--g1);font-size:15px;font-weight:700;text-decoration:none}
+.nav a:hover{color:var(--ac)}
+.site-header .btn{min-height:44px;padding:0 18px;font-size:15px}
+@media(max-width:1000px){.nav{display:none}.site-header .btn{margin-left:auto}}
+@media(max-width:420px){.brand small{display:none}.hide-s{display:none}}
+
+/* ===== ヒーロー ===== */
+.hx{position:relative;color:#fff;overflow:hidden;background:#101826}
+.hx-bg{position:absolute;inset:0;background:url(img/hero.webp) center/cover no-repeat}
+.hx-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,20,36,.95) 0%,rgba(11,20,36,.86) 44%,rgba(11,20,36,.62) 74%,rgba(11,20,36,.72) 100%),linear-gradient(180deg,rgba(11,20,36,.35),rgba(11,20,36,0) 30%,rgba(11,20,36,.4))}
+@media(max-width:900px){.hx-bg::after{background:rgba(11,20,36,.86)}}
+.hx-grid{position:relative;display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center;padding:88px 0 84px}
+@media(max-width:900px){.hx-grid{grid-template-columns:1fr;gap:40px;padding:56px 0 64px}}
+.hx-eb{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin:0 0 22px;font-size:15px;font-weight:700;color:#cfd8e8}
+.hx-eb b{font:800 13px/1 var(--num);letter-spacing:.14em;color:#fff;padding:6px 10px;background:rgba(255,255,255,.12)}
+.hc{position:relative;cursor:pointer;outline-offset:6px}
+.hx h1{margin:0;font-size:clamp(1.4rem,3.4vw,2.85rem);line-height:1.4;color:#fff}
+@media(max-width:900px){.hx h1{font-size:clamp(1.45rem,6.9vw,2.6rem)}}
+.hx h1::after{content:"";display:inline-block;width:3px;height:.9em;margin-left:6px;vertical-align:-.08em;background:#fff;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.dots{display:flex;gap:2px;margin:10px 0 0}
+.dots button{width:44px;height:44px;padding:0;border:0;background:none;cursor:pointer;position:relative}
+.dots button::before{content:"";position:absolute;left:10px;right:10px;top:20px;height:4px;background:rgba(255,255,255,.3)}
+.dots button[aria-current="true"]::before{background:#fff}
+.hx-lead{max-width:34em;margin:14px 0 0;color:#dfe5ef;font-size:17px;line-height:1.9}
+.hx-cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px;margin:28px 0 0}
+.hx .btn{background:#fff;color:var(--ac)}
+.hx .btn:hover{background:#e8edf6}
+.hx .tl{color:#fff}
+.hx-by{margin:26px 0 0;font-size:15px;color:#b9c3d6}
+.hx-note{position:absolute;right:16px;bottom:10px;margin:0;font-size:12px;color:#9eabc2}
+
+/* 右：2つの使い方の画面イメージ */
+.stage{background:#fff;color:var(--ink);box-shadow:0 30px 60px -24px rgba(0,0,0,.55)}
+.st-bar{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--ln2)}
+.st-logo{display:grid;place-items:center;width:40px;height:40px;background:var(--ac);color:#fff;font:800 11px/1.1 var(--num);text-align:center;transition:background .3s}
+.st-name{display:flex;flex-direction:column;line-height:1.3}
+.st-name b{font-family:var(--head);font-size:16px;transition:opacity .3s}
+.st-name small{font-size:12px;color:var(--g2)}
+.st-name b.fade{opacity:0}
+.stage.swap .st-logo{background:var(--pt)}
+.st-tag{margin-left:auto;font-size:12px;font-weight:700;color:var(--g2)}
+.st-body{display:grid;grid-template-columns:1fr 1fr}
+.st-col{padding:16px 16px 18px}
+.st-col+.st-col{border-left:1px solid var(--ln2)}
+.st-h{display:flex;align-items:center;gap:8px;margin:0 0 12px;font:800 12px/1 var(--num);letter-spacing:.12em;color:var(--g2)}
+.st-h i{width:8px;height:8px;border-radius:50%;background:#e2483d;animation:pulse 1.6s infinite}
+@keyframes pulse{50%{opacity:.25}}
+.face{display:flex;align-items:center;gap:10px;margin:0 0 10px}
+.face span{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--ptl);color:var(--pt);font-weight:900;font-size:13px}
+.face em{font-style:normal;font-size:13px;font-weight:700}
+.bub{margin:0 0 8px;padding:8px 10px;font-size:13px;line-height:1.6;background:var(--soft);opacity:0;transform:translateY(6px);transition:opacity .4s,transform .4s}
+.bub.me{background:var(--acl)}
+.bub.on{opacity:1;transform:none}
+.player{position:relative;aspect-ratio:16/9;background:#1c2433 url(img/v-second.webp) center/cover no-repeat}
+.player .slide{position:absolute;left:10%;top:14%;width:56%;height:52%;background:#fff;opacity:.92}
+.player .slide::before,.player .slide::after{content:"";position:absolute;left:10%;height:6px;background:var(--ln)}
+.player .slide::before{top:22%;width:70%}.player .slide::after{top:44%;width:50%}
+.player .wipe{position:absolute;right:8%;bottom:12%;width:28%;aspect-ratio:1;border-radius:50%;background:var(--ptl);border:2px solid #fff}
+.prog{height:4px;background:var(--ln2)}
+.prog i{display:block;height:100%;width:0;background:var(--ac);transition:width 1s linear}
+.vstat{list-style:none;margin:10px 0 0;padding:0;font-size:13px}
+.vstat li{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px solid var(--ln2);color:var(--g3);transition:color .3s}
+.vstat li.on{color:var(--ink)}
+.vstat li b{font-weight:700}
+.vstat li.on b{color:var(--ac)}
+.st-foot{margin:0;padding:10px 18px;border-top:1px solid var(--ln2);font-size:12px;color:var(--g2)}
+@media(max-width:520px){.st-body{grid-template-columns:1fr}.st-col+.st-col{border-left:0;border-top:1px solid var(--ln2)}}
+
+/* ===== 共通の区画 ===== */
+section{padding:104px 0}
+@media(max-width:700px){section{padding:72px 0}}
+.alt{background:var(--soft)}
+.sec-head{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:24px 64px;align-items:end;margin:0 0 48px}
+.sec-head h2{font-size:clamp(1.6rem,3vw,2.15rem);line-height:1.45}
+@media(max-width:700px){.sec-head h2{font-size:clamp(1.38rem,6.4vw,2.15rem)}}
+.sec-lead{margin:0;max-width:38em;color:var(--g1);line-height:1.95}
+@media(max-width:900px){.sec-head{grid-template-columns:1fr}}
+
+/* 01 場面 */
+.scene{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.scene figure{margin:0}
+.scene img{display:block;width:100%;height:auto}
+.scene figcaption{margin-top:8px;color:var(--g2);font-size:14px}
+.seats{list-style:none;margin:28px 0 0;padding:0;border-top:1px solid var(--ln)}
+.seats li{display:grid;grid-template-columns:9.5em 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--ln)}
+.seats h3{font-size:1.05rem}
+.seats p{margin:0;color:var(--g1);font-size:16px}
+.bignum{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 14px;margin:30px 0 0}
+.bignum b{font:800 clamp(2.4rem,5vw,3.4rem)/1 var(--num);color:var(--ac)}
+.bignum b small{font-size:.4em;margin-left:4px}
+.bignum span{font-size:15px;color:var(--g1)}
+@media(max-width:900px){.scene{grid-template-columns:1fr;gap:32px}}
+@media(max-width:560px){.seats li{grid-template-columns:1fr;gap:4px}}
+
+/* 02 2つの使い方 */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.two>div{padding:8px 44px 8px 0}
+.two>div+div{padding:8px 0 8px 44px;border-left:1px solid var(--ln)}
+.two .k{display:inline-block;margin:0 0 14px;font:800 13px/1 var(--num);letter-spacing:.14em;color:var(--pt)}
+.two h3{font-size:1.45rem;margin:0 0 12px}
+.two p{color:var(--g1)}
+.two ul{margin:16px 0 0;padding:0;list-style:none;border-top:1px solid var(--ln)}
+.two li{display:grid;grid-template-columns:6.5em 1fr;gap:10px;padding:11px 0;border-bottom:1px solid var(--ln);font-size:16px}
+.two li b{color:var(--ink)}
+.two .see{margin:18px 0 0;display:flex;flex-wrap:wrap;gap:4px 20px}
+.two .see a{display:inline-flex;align-items:center;min-height:44px;font-size:15px;font-weight:700}
+@media(max-width:900px){.two{grid-template-columns:1fr}.two>div,.two>div+div{padding:0}.two>div+div{margin-top:48px;padding-top:40px;border-left:0;border-top:1px solid var(--ln)}}
+
+/* 03 名前とロゴ */
+.brandband{background:var(--ac);color:#fff}
+.brandband .eyebrow{color:#9fb6dc}
+.brandband .sec-lead{color:#d3dced}
+.bb-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center}
+.bb-card{background:#fff;color:var(--ink)}
+.bb-card .bar{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--ln2)}
+.bb-card .logo{display:grid;place-items:center;width:40px;height:40px;background:var(--ac);color:#fff;font:800 11px/1.1 var(--num);text-align:center}
+.bb-card.you .logo{background:var(--pt)}
+.bb-card .nm{font-family:var(--head);font-weight:900;line-height:1.3}
+.bb-card .nm small{display:block;font-family:"Noto Sans JP";font-weight:500;font-size:12px;color:var(--g2)}
+.bb-card .lb{margin-left:auto;font-size:12px;font-weight:700;color:var(--g2)}
+.bb-card dl{margin:0;padding:6px 18px 12px}
+.bb-card dl div{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--ln2);font-size:14px}
+.bb-card dl div:last-child{border:0}
+.bb-card dt{color:var(--g2)} .bb-card dd{margin:0;font-weight:700}
+.bb-arrow{font:800 28px/1 var(--num);color:#9fb6dc}
+.bb-note{margin:16px 0 0;font-size:14px;color:#c4cfe3}
+.vs{margin:56px 0 0;width:100%;border-collapse:collapse;color:#fff;font-size:16px}
+.vs caption{text-align:left;font-family:var(--head);font-weight:900;font-size:1.15rem;padding:0 0 14px}
+.vs th,.vs td{padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.18);text-align:left;vertical-align:top}
+.vs thead th{font-size:14px;color:#9fb6dc}
+.vs tbody th{width:9em;color:#c4cfe3;font-weight:700}
+.vs td.us{font-weight:700}
+@media(max-width:900px){.bb-grid{grid-template-columns:1fr}.bb-arrow{transform:rotate(90deg);justify-self:center}}
+@media(max-width:640px){
+  .vs thead{display:none}
+  .vs,.vs tbody,.vs tr,.vs th,.vs td{display:block;width:100%}
+  .vs tr{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.18)}
+  .vs th,.vs td{border:0;padding:3px 0}
+  .vs td::before{content:attr(data-l)"：";color:#9fb6dc;font-weight:400}
+}
+
+/* 04 向く会社 */
+.fit{display:grid;grid-template-columns:1.2fr .8fr;gap:56px}
+.fit h3{margin:0 0 6px;padding:0 0 12px;border-bottom:2px solid var(--ink)}
+.fit .no h3{border-color:var(--g3);color:var(--g1)}
+.fit ul{margin:0;padding:0;list-style:none}
+.fit li{padding:14px 0;border-bottom:1px solid var(--ln);color:var(--g1);font-size:16px}
+.fit li b{display:block;color:var(--ink);font-size:17px}
+@media(max-width:900px){.fit{grid-template-columns:1fr;gap:40px}}
+
+/* 05 既存のお客様への出し方 */
+.offer{display:grid;grid-template-columns:repeat(3,1fr);gap:0 40px;border-top:2px solid var(--ink)}
+.offer>div{padding:24px 0 0}
+.offer .who{margin:0 0 8px;font:800 13px/1.4 var(--num);letter-spacing:.06em;color:var(--ac)}
+.offer h3{margin:0 0 10px}
+.offer p{color:var(--g1);font-size:16px}
+.offer .say{margin:14px 0 0;padding:12px 0 0;border-top:1px solid var(--ln);font-size:15px;color:var(--ink)}
+.offer .say::before{content:"切り出しの一言";display:block;font-size:13px;font-weight:700;color:var(--g2)}
+.offer-fig{margin:0 0 48px}
+.offer-fig img{display:block;width:100%;height:320px;object-fit:cover;object-position:center 60%;background:#fff}
+.offer-fig figcaption{margin-top:10px;color:var(--g1);font-size:15px}
+@media(max-width:900px){.offer{grid-template-columns:1fr}.offer>div+div{margin-top:28px;border-top:1px solid var(--ln)}.offer-fig img{height:220px}}
+
+/* 切り替えの帯 */
+.switch{padding:40px 0;background:#fff;border-top:1px solid var(--ln);border-bottom:1px solid var(--ln)}
+.switch .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 28px}
+.sw-h{margin:0;font-family:var(--head);font-weight:900;font-size:1.25rem}
+.sw-links{display:flex;flex-wrap:wrap;gap:0 4px;margin:0;padding:0;list-style:none}
+.sw-links a{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;font-size:15px;font-weight:700;text-decoration:none;color:var(--g1)}
+.sw-links a:hover{color:var(--ac)}
+
+/* 06 比較表 */
+.cmp-wrap{border-top:2px solid var(--ink)}
+.cmp{width:100%;border-collapse:collapse;font-size:15px;line-height:1.7}
+.cmp th,.cmp td{padding:14px 12px;border-bottom:1px solid var(--ln);text-align:left;vertical-align:top}
+.cmp thead th{font-size:13px;color:var(--g2);white-space:nowrap}
+.cmp tbody th{font-weight:700;min-width:9em}
+.cmp tbody th small{display:block;font-weight:500;color:var(--g2);font-size:13px}
+.cmp tr.us{background:var(--acl)}
+.cmp tr.us th,.cmp tr.us td{font-weight:700}
+.cmp td.good{color:var(--ac)}
+.cmp td.bad{color:#9a3412}
+.cmp-src{margin:14px 0 0;font-size:14px;color:var(--g2)}
+.cmp-src a{display:inline-flex;align-items:center;min-height:44px;margin-right:14px}
+.verdict{margin:28px 0 0;font-family:var(--head);font-weight:900;font-size:1.25rem;line-height:1.6}
+@media(max-width:900px){
+  .cmp thead{display:none}
+  .cmp,.cmp tbody,.cmp tr,.cmp th,.cmp td{display:block;width:100%}
+  .cmp tr{padding:14px 4px;border-bottom:1px solid var(--ln)}
+  .cmp th,.cmp td{border:0;padding:3px 0}
+  .cmp tbody th{font-size:17px;margin-bottom:6px}
+  .cmp td{display:grid;grid-template-columns:7.5em 1fr;gap:8px}
+  .cmp td>.v{min-width:0}
+  .cmp td::before{content:attr(data-l);color:var(--g2);font-weight:400;font-size:14px}
+}
+
+/* ファクトチェック */
+.fc-row{margin:28px 0 0}
+.fc-btn{display:inline-flex;align-items:center;flex-wrap:wrap;gap:4px 10px;min-height:48px;padding:8px 18px;border:0;background:var(--soft);color:var(--ink);font:inherit;font-size:15px;font-weight:700;cursor:pointer}
+.fc-btn:hover{background:var(--ln2)}
+.fc-btn svg{width:18px;height:18px}
+.fc-sub{font-size:13px;font-weight:500;color:var(--g2)}
+.alt .fc-btn,.mkt .fc-btn{background:#fff}
+
+/* 07 分担 */
+.resp{width:100%;border-collapse:collapse;font-size:16px;border-top:2px solid var(--ink)}
+.resp th,.resp td{padding:14px 14px;border-bottom:1px solid var(--ln);text-align:left;vertical-align:top}
+.resp thead th{font-size:13px;color:var(--g2)}
+.resp tbody th{font-weight:700;width:36%}
+.resp td.who{white-space:nowrap;font-weight:700}
+.resp td.memo{color:var(--g1);font-size:15px}
+.resp tr.sep th{padding:22px 14px 8px;font-family:var(--head);font-size:1.05rem;width:auto;border-bottom:1px solid var(--ink)}
+.resp .st{display:inline-block;padding:1px 8px;font-size:13px;font-weight:700}
+.st.ok{background:var(--acl);color:var(--ac)}
+.st.kr{background:#fff4d6;color:#7a4f00}
+.st.ng{background:#fde8e4;color:#9a3412}
+@media(max-width:760px){
+  .resp thead{display:none}
+  .resp,.resp tbody,.resp tr,.resp th,.resp td{display:block;width:100%}
+  .resp tr{padding:12px 0;border-bottom:1px solid var(--ln)}
+  .resp th,.resp td{border:0;padding:3px 0}
+  .resp tbody th{width:100%;margin-bottom:4px}
+  .resp td{display:grid;grid-template-columns:4.5em 1fr;gap:8px}
+  .resp td::before{content:attr(data-l);color:var(--g2);font-weight:400;font-size:14px}
+  .resp td.who{white-space:normal}
+  .resp tr.sep{padding:20px 0 4px;border-bottom:1px solid var(--ink)}
+  .resp tr.sep th{padding:0;border:0}
+}
+
+/* 08 収益と計算機 */
+.rev{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px}
+.ref{border-top:2px solid var(--ink);position:sticky;top:96px;align-self:start}
+@media(max-width:900px){.ref{position:static}}
+.ref p.l{margin:16px 0 4px;font-size:14px;font-weight:700;color:var(--g2)}
+.ref .main{display:flex;align-items:baseline;gap:8px}
+.ref .main b{font:800 2.6rem/1 var(--num)}
+.ref ul{margin:16px 0 0;padding:0;list-style:none}
+.ref li{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--ln);font-size:15px}
+.ref li b{font-weight:700;text-align:right}
+.ref .note{margin:12px 0 0;color:var(--g2);font-size:14px}
+.formula{margin:0 0 24px;padding:18px 20px;background:#fff}
+.formula p{margin:0}
+.formula .eq{font-family:var(--head);font-weight:900;font-size:1.1rem;line-height:1.8}
+.formula .eq span{color:#7a4f00}
+.sim{background:#fff;padding:24px}
+.sim h3{margin:0 0 6px}
+.sim .pre{margin:0 0 18px;font-size:14px;color:var(--g2)}
+.sim-in{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px}
+.fld label{display:block;font-size:14px;font-weight:700;margin:0 0 4px}
+.fld input,.fld select{width:100%;min-height:46px;padding:8px 10px;border:0;border-bottom:2px solid var(--ink);background:var(--soft);font:inherit;font-size:16px}
+.fld .hint{display:block;margin-top:4px;font-size:13px;color:var(--g2)}
+.sim-out{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:22px 0 0;border-top:1px solid var(--ln)}
+.sim-out div{padding:12px 12px 12px 0}
+.sim-out span{display:block;font-size:13px;color:var(--g2)}
+.sim-out b{font:800 1.3rem/1.3 var(--num)}
+.chart{position:relative;margin:16px 0 0}
+.chart svg{display:block;width:100%;height:auto}
+.chart .gl{stroke:var(--ln2)} .chart .ax{font:600 11px var(--num);fill:var(--g2)}
+.chart .bar{fill:var(--acm)} .chart .bar.last{fill:var(--ac)}
+.chart .lbl{font:800 12px var(--num);fill:var(--ac)}
+.sim-f{margin:8px 0 0;font-size:13px;color:var(--g2)}
+@media(max-width:900px){.rev{grid-template-columns:1fr;gap:40px}}
+@media(max-width:560px){.sim{padding:18px 14px}.sim-in{grid-template-columns:1fr}.sim-out{grid-template-columns:1fr}}
+
+/* 09 手間 */
+.time3{display:grid;grid-template-columns:repeat(3,1fr);gap:0 40px;border-top:2px solid var(--ink)}
+.time3>div{padding:22px 0 0}
+.time3 .k{margin:0 0 6px;font:800 13px/1 var(--num);letter-spacing:.12em;color:var(--ac)}
+.time3 h3{margin:0 0 12px}
+.time3 ul{margin:0;padding:0;list-style:none}
+.time3 li{padding:9px 0;border-bottom:1px solid var(--ln);font-size:16px;color:var(--g1)}
+.time3 li b{display:block;color:var(--ink)}
+@media(max-width:900px){.time3{grid-template-columns:1fr}.time3>div+div{margin-top:28px}}
+
+/* 09 手間の流れ */
+.flow7{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin:0;padding:0;list-style:none;counter-reset:f}
+.flow7 li{counter-increment:f;position:relative;padding:16px 12px 18px;background:var(--ac);color:#fff;min-height:130px}
+.flow7 li.auto{background:#e3e6eb;color:var(--ink)}
+.flow7 li::before{content:counter(f);display:block;font:800 13px/1 var(--num);margin:0 0 10px;opacity:.75}
+.flow7 b{display:block;font-family:var(--head);font-size:16px;line-height:1.45}
+.flow7 span{display:block;margin-top:6px;font-size:13px;line-height:1.5;opacity:.85}
+.flow-key{display:flex;flex-wrap:wrap;gap:6px 20px;margin:16px 0 0;font-size:15px;color:var(--g1)}
+.flow-key i{display:inline-block;width:14px;height:14px;margin-right:6px;vertical-align:-2px;background:var(--ac)}
+.flow-key i.a{background:#e3e6eb}
+@media(max-width:1000px){.flow7{grid-template-columns:1fr}.flow7 li{min-height:0;display:grid;grid-template-columns:2em 1fr;gap:0 8px}.flow7 li::before{margin:0;padding-top:3px}.flow7 span{grid-column:2}}
+.thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0 0 40px}
+.thumbs a{display:block;text-decoration:none;color:var(--ink)}
+.thumbs img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.thumbs b{display:block;margin-top:8px;font-size:15px}
+.thumbs span{font:700 13px var(--num);color:var(--g2)}
+@media(max-width:700px){.thumbs{grid-template-columns:1fr}}
+/* 10 一式 */
+.kit{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.kit h3{padding:0 0 12px;border-bottom:2px solid var(--ink)}
+.kit ul{margin:0;padding:0;list-style:none}
+.kit li{display:grid;grid-template-columns:1fr auto;gap:4px 16px;align-items:center;padding:14px 0;border-bottom:1px solid var(--ln)}
+.kit li b{display:block;font-size:17px}
+.kit li span{display:block;font-size:15px;color:var(--g1)}
+.kit li a{display:inline-flex;align-items:center;min-height:44px;font-size:15px;font-weight:700;white-space:nowrap}
+@media(max-width:900px){.kit{grid-template-columns:1fr;gap:40px}}
+@media(max-width:520px){.kit li{grid-template-columns:1fr}}
+
+/* 11 流れ */
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:0;padding:0;list-style:none;border-top:2px solid var(--ink)}
+.flow li{padding:20px 18px 20px 0}
+.flow li+li{padding-left:18px;border-left:1px solid var(--ln)}
+.flow b{display:block;font:800 13px/1 var(--num);letter-spacing:.12em;color:var(--ac);margin:0 0 10px}
+.flow strong{display:block;font-family:var(--head);font-size:1.08rem}
+.flow span{display:block;margin-top:4px;font-size:15px;color:var(--g1)}
+@media(max-width:900px){.flow{grid-template-columns:1fr}.flow li,.flow li+li{padding:16px 0;border-left:0;border-bottom:1px solid var(--ln)}}
+
+/* 12 FAQ */
+.faq{border-top:2px solid var(--ink)}
+.faq details{border-bottom:1px solid var(--ln)}
+.faq summary{position:relative;list-style:none;cursor:pointer;padding:20px 44px 20px 0;font-weight:700;font-size:17px;min-height:44px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:8px;top:16px;font:700 1.4rem/1 var(--num);color:var(--ac)}
+.faq details[open] summary::after{content:"−"}
+.faq .a{padding:0 0 22px;color:var(--g1)}
+.faq .a p:last-child{margin:0}
+.faq .a a{display:inline-flex;align-items:center;min-height:44px}
+
+/* 13 CTA */
+.close{background:var(--acl);color:var(--ink);border-top:3px solid var(--ac)}
+.close h2{color:var(--ink)}
+.close-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.close-grid p{color:var(--g1)}
+.close .btn{width:100%}
+.close .sub{margin:14px 0 0;font-size:15px;color:var(--g1)}
+@media(max-width:900px){.close-grid{grid-template-columns:1fr;gap:28px}}
+
+/* 14 市場データ */
+.mkt{background:var(--soft)}
+.mkt-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:0;padding:0;list-style:none;border-top:2px solid var(--ink)}
+.mkt-c{padding:22px 18px 8px 0}
+.mkt-c+.mkt-c{padding-left:18px;border-left:1px solid var(--ln)}
+.mkt-no{display:block;font:800 13px/1 var(--num);letter-spacing:.08em;color:var(--ac)}
+.mkt-n{display:block;margin:14px 0 10px;font:800 clamp(32px,4vw,54px)/1 var(--num)}
+.mkt-n i{font-style:normal;font-size:.44em;margin-left:2px}
+.mkt-d{margin:0 0 10px;font-size:15px;line-height:1.75;color:var(--g1)}
+.mkt-src{display:inline-block;padding:12px 0;font-size:13px;line-height:1.6;color:var(--g2);text-decoration:none}
+.mkt-src::after{content:" ↗"}
+.mkt-src:hover{text-decoration:underline}
+.mkt-bridge{margin:32px 0 0;font-family:var(--head);font-weight:900;font-size:1.2rem;line-height:1.7}
+@media(max-width:900px){.mkt-grid{grid-template-columns:1fr}.mkt-c,.mkt-c+.mkt-c{padding:20px 0;border-left:0;border-bottom:1px solid var(--ln)}}
+
+/* フッター */
+footer{padding:48px 0 40px;background:#0b1424;color:#b9c3d6;font-size:15px}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+footer h4{margin:0 0 10px;font:800 12px/1 var(--num);letter-spacing:.14em;color:#7f8ca6}
+footer ul{margin:0;padding:0;list-style:none}
+footer a{display:inline-flex;align-items:center;min-height:44px;color:#dfe5ef;text-decoration:none}
+footer a:hover{text-decoration:underline}
+footer .fcopy{margin:28px 0 0;font-size:13px;color:#7f8ca6}
+@media(max-width:760px){.foot{grid-template-columns:1fr}}
+
+/* ポップアップ */
+dialog.pop{width:min(880px,calc(100% - 32px));max-height:calc(100dvh - 48px);padding:0;border:0;color:var(--ink)}
+dialog.pop::backdrop{background:rgba(11,20,34,.55);backdrop-filter:blur(3px)}
+.pop-h{position:sticky;top:0;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 18px 14px 28px;background:#fff;border-bottom:1px solid var(--ln2)}
+.pop-h p{margin:0;font-family:var(--head);font-size:16px;font-weight:900}
+.pop-x{flex:none;width:44px;height:44px;border:0;background:var(--soft);font-size:20px;line-height:1;cursor:pointer;color:var(--g1)}
+.pop-b{padding:26px 28px 32px}
+.pop-lbl{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;margin:0 0 12px;font-size:15px;font-weight:700;color:var(--g2)}
+.pop-lbl .en{font:800 13px var(--num);color:var(--ac)}
+.copies{list-style:none;margin:0;padding:0;border-top:1px solid var(--ln)}
+.copies li{display:grid;grid-template-columns:2.6em 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--ln)}
+.copies .n{font:800 15px var(--num);color:var(--ac);padding-top:6px}
+.copies .c{margin:0;word-break:auto-phrase;line-break:strict;font-family:var(--head);font-size:clamp(1.25rem,2.6vw,1.6rem);font-weight:900;line-height:1.5}
+.copies .s{margin:6px 0 0;font-size:15px;line-height:1.8;color:var(--g2)}
+.story{margin:30px 0 0}
+.story ol{list-style:none;margin:0;padding:0;counter-reset:h}
+.story li{counter-increment:h}
+.story a{display:grid;grid-template-columns:2.2em 1fr;gap:10px;padding:9px 6px;text-decoration:none;color:var(--ink);font-size:17px;line-height:1.75;word-break:auto-phrase;line-break:strict}
+.story a::before{content:counter(h,decimal-leading-zero);font:800 14px var(--num);color:var(--acm);padding-top:3px}
+.story a:hover{background:var(--acl)}
+.pop-f{margin:22px 0 0;font-size:14px;color:var(--g2)}
+@media(max-width:600px){.pop-b{padding:20px 18px 26px}.pop-h{padding-left:18px}.copies li{grid-template-columns:1fr;gap:4px}.copies .n{padding-top:0}.story a{font-size:16px}}
+@media (prefers-reduced-motion:reduce){.hx h1::after,.st-h i{animation:none}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="AIアバター パートナー向けご案内 トップへ"><b>AIアバター</b><small>FOR PARTNERS</small></a>
+    <nav class="nav" aria-label="ページ内">
+      <a href="#two">2つの使い方</a>
+      <a href="#brand">名前とロゴ</a>
+      <a href="#compare">比較</a>
+      <a href="#share">分担</a>
+      <a href="#revenue">収益</a>
+      <a href="#faq">ご質問</a>
+    </nav>
+    <a class="btn" href="../b02/"><span class="hide-s">説明会に</span>申し込む</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===== ヒーロー ===== -->
+<section class="hx" aria-label="AIアバター OEM提供のご案内" style="padding:0">
+  <div class="hx-bg" aria-hidden="true"></div>
+  <div class="wrap hx-grid">
+    <div>
+      <p class="hx-eb"><b>FOR PARTNERS</b>AIアバター OEM提供のご案内</p>
+      <div class="hc" id="hc" title="押すと、3つのコピーと見出しを並べて読めます">
+        <h1 id="tw" class="hero__title" data-keep-phrase>貴社の名前とロゴで、<br>AIアバターを売れます。</h1>
+      </div>
+      <div class="dots" role="group" aria-label="コピーの切り替え">
+        <button type="button" aria-label="コピー1" aria-current="true"></button>
+        <button type="button" aria-label="コピー2" aria-current="false"></button>
+        <button type="button" aria-label="コピー3" aria-current="false"></button>
+      </div>
+      <p class="hx-lead">その場で話す分身と、資料を説明する動画。ライトアップが開発したAIアバターを、完成品のまま貴社の商材として扱えます。名前とロゴの替え方は<span class="kari" style="color:#ffd88a">【仮】</span>で、範囲は説明会でお示しします。</p>
+      <div class="hx-cta">
+        <a class="btn" href="#two">2つの使い方を見る
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 4v11M5 10l5 5 5-5"/></svg></a>
+        <a class="tl" href="https://main.d3low1bgvvu24.amplifyapp.com/" target="_blank" rel="noopener">代表の分身と話してみる ↗</a>
+      </div>
+      <p class="hx-by">提供：株式会社ライトアップ（東証グロース 6580）</p>
+    </div>
+
+    <div class="stage" id="stage" role="img" aria-label="貴社の名前に変えたAIアバターが、ライブで質問に答え、動画をYouTubeへ上げる様子の画面イメージ">
+      <div class="st-bar" aria-hidden="true">
+        <span class="st-logo" id="stLogo">LOGO</span>
+        <span class="st-name"><b id="stName">AIアバター</b><small>話す分身と説明動画</small></span>
+        <span class="st-tag">画面イメージ</span>
+      </div>
+      <div class="st-body" aria-hidden="true">
+        <div class="st-col">
+          <p class="st-h"><i></i>LIVE</p>
+          <div class="face"><span>分身</span><em>社長の分身</em></div>
+          <p class="bub me" data-k="1">費用はどのくらいですか。</p>
+          <p class="bub" data-k="2">ご利用の範囲で変わります。3つ伺ってもいいですか。</p>
+          <p class="bub me" data-k="3">担当の方と話したいです。</p>
+          <p class="bub" data-k="4">担当者におつなぎします。</p>
+        </div>
+        <div class="st-col">
+          <p class="st-h">VIDEO</p>
+          <div class="player" role="img" aria-label="見本動画（経営判断OS：セカンド）の1コマ"></div>
+          <div class="prog"><i id="prog"></i></div>
+          <ul class="vstat">
+            <li data-v="1"><span>台本（AIの下書き）</span><b>確認済み</b></li>
+            <li data-v="2"><span>説明動画 3分24秒</span><b>生成済み</b></li>
+            <li data-v="3"><span>YouTubeへ</span><b>アップ済み</b></li>
+          </ul>
+        </div>
+      </div>
+      <p class="st-foot">左はその場の会話のイメージ。右の動画の1コマは、実際の見本（経営判断OS：セカンド）です。</p>
+    </div>
+  </div>
+  <p class="hx-note">背景写真：Pixabay</p>
+</section>
+
+<!-- ===== 01 ===== -->
+<section id="one" aria-labelledby="s1">
+  <div class="wrap scene">
+    <div>
+      <p class="eyebrow">ONE PERSON</p>
+      <h2 id="s1">経営者の説明は、<br>1人分しか届きません。</h2>
+      <p class="sec-lead" style="margin-top:20px">商品をいちばん上手に説明できるのは、たいてい社長です。けれど、社長の体は1つしかありません。同じ時間に、2つの席には座れません。</p>
+      <ul class="seats">
+        <li><h3>営業の席</h3><p>商談の前の説明や、よくある質問への答え。何度も同じ話をしています。</p></li>
+        <li><h3>採用の面接</h3><p>会社の考え方を伝える場面。社長が出られる回数には限りがあります。</p></li>
+        <li><h3>サイトの問い合わせ</h3><p>夜中や休日に読まれても、その時間に答えられる人はいません。</p></li>
+      </ul>
+      <p class="bignum"><b>約2,500<small>人/日</small></b><span>国内の人口は、1日にこのペースで減っています。<br>2025年の自然減91万8,263人を365日で割った数（厚生労働省の確定数をもとに当社算出）</span></p>
+      <div class="fc-row"><button class="fc-btn" type="button" data-fc-section="経営者の説明は1人分しか届かない" data-fc-claim="2025年の日本の人口の自然減（出生数−死亡数）は91万8,263人で、1日あたり約2,500人のペース（厚生労働省 人口動態統計 確定数をもとに算出）" data-fc-ask="自然減の数字と1日あたりの換算は、厚生労働省の公表値と合っているか"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button></div>
+    </div>
+    <figure>
+      <img src="img/night.webp" alt="夜の机に、資料を映したタブレットが置かれている" width="1200" height="800" loading="lazy">
+      <figcaption>夜中に比べているお客様にも、説明が届くかどうか。イラストはAIで生成したイメージです。</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ===== 02 ===== -->
+<section id="two" class="alt" aria-labelledby="s2">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <p class="eyebrow">TWO WAYS</p>
+      <h2 id="s2">分身は、その場でも<br>動画でも話せます。</h2>
+    </div>
+      <p class="sec-lead">同じAIアバターに、使い方が2つあります。片方からでも両方からでも売れる商材です。中身のエンジンは、声と動きの違和感の一部を独自技術で解消し、生成コストを従来の10分の1以下にする目処を立てました（当社試算）。</p>
+    </div>
+    <div class="two">
+      <div>
+        <span class="k">01 ／ LIVE</span>
+        <h3>その場で話す</h3>
+        <p>サイトの訪問者や見込み客の質問に、分身がその場で答えます。答えきれないことは、追加で聞くか、人へつなぐ設計です。</p>
+        <ul>
+          <li><b>置く場所</b>Webサイト・LP・商談の前</li>
+          <li><b>話す相手</b>サイトの訪問者・見込み客・利用中の顧客</li>
+          <li><b>話し方</b>声と文字。代表の分身との会話は1回最長10分の見本</li>
+          <li><b>判断</b>説明する・聞く・人へつなぐを、判断特化型AI「Jev」が選ぶ設計（体験版は未接続）</li>
+        </ul>
+        <p class="see"><a href="https://main.d3low1bgvvu24.amplifyapp.com/" target="_blank" rel="noopener">代表の分身と話す ↗</a><a href="https://jev-avatar-lp.vercel.app/" target="_blank" rel="noopener">LPの案内役を体験する ↗</a></p>
+        <p class="note" style="color:var(--g2);font-size:14px">LPの案内役の体験ページは、Jev APIに未接続の体験版です。</p>
+      </div>
+      <div>
+        <span class="k">02 ／ VIDEO</span>
+        <h3>資料を話す</h3>
+        <p>資料を入れると、社長の分身が説明する動画になります（直販では1本5分前後を想定、見本の3本は3分台）。YouTubeへ自動で上げ、短い動画に切り分け、noteへの掲載は弊社が担当。</p>
+        <ul>
+          <li><b>元の資料</b>PDF 100ページまで・台本は全体で約1時間分まで</li>
+          <li><b>台本</b>AIが1ページごとに下書きし、ページ単位で直せる</li>
+          <li><b>仕上げ</b>字幕・ワイプ・読み方の辞書・ショートへの切り分け</li>
+          <li><b>公開</b>YouTubeへ自動アップ（公開範囲を選べる）、noteは掲載まで弊社</li>
+        </ul>
+        <p class="see"><a href="https://avatar-news-service.vercel.app/" target="_blank" rel="noopener">見本の動画3本を見る ↗</a></p>
+        <p class="note" style="color:var(--g2);font-size:14px">見本は弊社サービスの説明動画で、撮影も編集もしていません。直販名は「アバターニュース（仮称）」です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03 ===== -->
+<section id="brand" class="brandband" aria-labelledby="s3">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <p class="eyebrow">YOUR BRAND</p>
+      <h2 id="s3">企画からではなく、<br>完成品から扱えます。</h2>
+    </div>
+      <p class="sec-lead">中身はライトアップのAIアバターのまま、お客様に見せる名前とロゴを、貴社のものに替えて売る形です<span style="color:#ffd88a;font-weight:700">【仮】</span>。新しい事業を一から企画しなくても、今のお客様に、貴社の新しいサービスとして案内できます。</p>
+    </div>
+    <div class="bb-grid">
+      <div class="bb-card"><div class="bar"><span class="logo">LOGO</span><span class="nm">AIアバター<small>今週の動画と会話</small></span><span class="lb">弊社の直販</span></div><dl><div><dt>説明動画</dt><dd>アップ済み</dd></div><div><dt>公開範囲</dt><dd>限定公開</dd></div><div><dt>ショート</dt><dd>切り分け済み</dd></div></dl></div>
+      <span class="bb-arrow" aria-hidden="true">→</span>
+      <div class="bb-card you"><div class="bar"><span class="logo">貴社<br>LOGO</span><span class="nm">貴社のサービス名<small>今週の動画と会話</small></span><span class="lb">貴社が売るとき</span></div><dl><div><dt>説明動画</dt><dd>アップ済み</dd></div><div><dt>公開範囲</dt><dd>限定公開</dd></div><div><dt>ショート</dt><dd>切り分け済み</dd></div></dl></div>
+    </div>
+    <p class="bb-note">中身は同じで、名前だけが変わる、という考え方を示したイメージです。名前とロゴをどの画面まで替えられるかは<span style="color:#ffd88a;font-weight:700">【調整中】</span>です。</p>
+  </div>
+</section>
+
+<!-- ===== 04 ===== -->
+<section id="fit" aria-labelledby="s4">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <p class="eyebrow">WHO SHOULD RESELL</p>
+      <h2 id="s4">経営者と取引のある<br>会社に向いています。</h2>
+    </div>
+      <p class="sec-lead">業種より大事なのは、お客様の社長との関係です。Web・HP制作、広告・販促、IT販社、士業・経営コンサル、支援機関など、業種ごとの出し方は次の区画にまとめました。</p>
+    </div>
+    <div class="fit">
+      <div>
+        <h3>向いている会社</h3>
+        <ul>
+          <li><b>社長と直接話せる窓口がある</b>分身になるのは、お客様の社長です。同意と最初の収録を頼める関係が要ります</li>
+          <li><b>納めた後も会い続ける</b>保守・更新・顧問・定例など、台本の確認や公開を相談できる場があります</li>
+          <li><b>毎月、何かを提案している</b>広告・販促・発信の提案に、説明動画とショートを足せます</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h3>向いていない会社</h3>
+        <ul>
+          <li><b>経営者と接点が薄い</b>分身づくりには、社長本人の同意と初回の収録が要ります</li>
+          <li><b>売り切りで終わる</b>台本の確認や公開の相談など、導入後に話す場面があります</li>
+          <li><b>成果を約束して売る</b>受注や問い合わせの件数は約束できません</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 05 ===== -->
+<section id="offer" class="alt" aria-labelledby="s5">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <p class="eyebrow">TO YOUR CLIENTS</p>
+      <h2 id="s5">HPには案内役、<br>広告には動画を足せます。</h2>
+    </div>
+      <p class="sec-lead">新しいお客様を探さなくても、今のお客様に出す理由があります。貴社が普段売っているものの「次の一手」として切り出してください。開示した想定用途は6つあり、営業・Web接客・経営者の判断支援・営業育成・採用面接・顧客サポートが入ります。</p>
+    </div>
+    <figure class="offer-fig">
+      <img src="img/shop.webp" alt="店先の受付に立つ人を描いた線画" width="1200" height="800" loading="lazy">
+      <figcaption>サイトや店先の受付に、社長の分身を1人置くイメージ。人が出られない時間の説明を、分身が受け持ちます（イラストはAIで生成したイメージ）。</figcaption>
+    </figure>
+    <div class="offer">
+      <div>
+        <p class="who">WEB・HP制作</p>
+        <h3>サイトに案内役を</h3>
+        <p>納めたサイトの右端に、社長の分身が立つ形です。リニューアルや保守の更新のたびに、提案の機会があります。</p>
+        <p class="say">「作ったサイトで、社長が説明しているところを想像してみてください」</p>
+      </div>
+      <div>
+        <p class="who">広告・販促</p>
+        <h3>広告の先に説明動画を</h3>
+        <p>広告から来た人が見る説明動画を、資料から作ってYouTubeに置きます。切り分けたショートは、そのまま広告の素材にも。</p>
+        <p class="say">「広告で呼んだ人に、社長の説明を3分見てもらう形にしませんか」</p>
+      </div>
+      <div>
+        <p class="who">IT販社・士業・支援機関</p>
+        <h3>サポートと社内向けに</h3>
+        <p>導入後の使い方の説明、社員への方針説明、採用の会社説明など。限定公開の動画でも届けられます。</p>
+        <p class="say">「同じ説明を何度もしている場面は、どこにありますか」</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 切り替えの帯 ===== -->
+<div class="switch" role="note" aria-label="ここから取り扱いの条件">
+  <div class="wrap">
+    <p class="sw-h">ここからは、取り扱いの条件です。</p>
+    <ul class="sw-links">
+      <li><a href="#compare">他社との比較</a></li><li><a href="#share">分担</a></li><li><a href="#revenue">収益</a></li><li><a href="#effort">手間</a></li><li><a href="#faq">ご質問</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===== 06 ===== -->
+<section id="compare" aria-labelledby="s6">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <p class="eyebrow">COMPARED TO</p>
+      <h2 id="s6">違いは画質より、<br>費用と公開の手間です。</h2>
+    </div>
+      <p class="sec-lead">貴社のお客様が比べそうな相手を並べました。各社の公式サイトで確かめた公開情報だけを載せ、こちらが不利な行も残しています。表の中身は、下のボタンからChatGPTに確かめさせてください。</p>
+    </div>
+    <div class="cmp-wrap scroll-x">
+      <table class="cmp">
+        <thead><tr><th scope="col">手段</th><th scope="col">料金の形・目安</th><th scope="col">その場の会話</th><th scope="col">説明動画</th><th scope="col">公開まで</th></tr></thead>
+        <tbody>
+          <tr class="us"><th scope="row">このAIアバター<small>OEM</small></th><td data-l="料金"><span class="v">直販の動画は1本5,000円が基準（税別）。ライブは<span class="tbd">【調整中】</span></span></td><td data-l="会話" class="good"><span class="v">あり（声と文字）</span></td><td data-l="動画" class="good"><span class="v">資料から自動で台本と動画</span></td><td data-l="公開まで" class="good"><span class="v">YouTubeは自動アップ、noteは弊社が掲載</span></td></tr>
+          <tr><th scope="row">動画制作会社<small>プルークスの公開価格</small></th><td data-l="料金"><span class="v">サービス紹介・営業用で1本50〜100万円</span></td><td data-l="会話"><span class="v">なし</span></td><td data-l="動画" class="good"><span class="v">演出・撮影まで作り込める</span></td><td data-l="公開まで"><span class="v">制作が中心</span></td></tr>
+          <tr><th scope="row">YouTube運用代行<small>TaTapの公開価格</small></th><td data-l="料金"><span class="v">最小構成で月30万円（ショート4本＋進行費・税別）、初期10万円</span></td><td data-l="会話"><span class="v">なし</span></td><td data-l="動画"><span class="v">企画・撮影・編集まで人が作る</span></td><td data-l="公開まで" class="good"><span class="v">投稿まで含む</span></td></tr>
+          <tr><th scope="row">ツールで自作<small>HeyGen・Synthesia</small></th><td data-l="料金" class="good"><span class="v">月29ドルから</span></td><td data-l="会話"><span class="v">HeyGenはリアルタイム対話のAPI・SDKを提供</span></td><td data-l="動画"><span class="v">ツールの型の範囲で自作</span></td><td data-l="公開まで" class="bad"><span class="v">台本・操作・投稿まで自分</span></td></tr>
+          <tr><th scope="row">Web埋め込みのアバター<small>D-ID Agents</small></th><td data-l="料金"><span class="v">このページでは未確認</span></td><td data-l="会話" class="good"><span class="v">動画アバター・音声・チャットをWebに埋め込める</span></td><td data-l="動画"><span class="v">—</span></td><td data-l="公開まで"><span class="v">—</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cmp-src">出典：各社公式サイトの公開情報（動画は2026年10月16日、会話は2026年9月28日に確認）。<a href="https://proox.co.jp/price/" target="_blank" rel="noopener">プルークス</a><a href="https://tatap.jp/service/youtube/" target="_blank" rel="noopener">TaTap</a><a href="https://www.heygen.com/pricing" target="_blank" rel="noopener">HeyGen</a><a href="https://www.synthesia.io/pricing" target="_blank" rel="noopener">Synthesia</a><a href="https://www.d-id.com/" target="_blank" rel="noopener">D-ID</a> 外貨の料金は税の表記なし。表は機能の優劣や費用対効果を示すものではありません。</p>
+    <p class="verdict">月額の安さは、海外のツールが勝ちます。違うのは、<br>資料を渡せば、台本の下書きからYouTubeへの公開まで進むことです。</p>
+    <p class="cmp-src" style="margin-top:12px">名前とロゴを替えて売れるかどうかは、各社の公開情報では確かめられませんでした。このAIアバターは、替えて売る形を仮で置いています【仮】。</p>
+    <div class="fc-row"><button class="fc-btn" type="button" data-fc-section="AIアバター・説明動画の手段の比較（2026年10月確認）" data-fc-claim="このAIアバター（OEM）：直販の動画は1本5,000円が基準（税別）、ライブの価格は調整中、声と文字の会話あり、資料から台本と動画を自動で作る、YouTubeへ自動アップ・noteは提供会社が掲載／プルークス：サービス紹介・営業用の動画で1本50〜100万円／TaTap：YouTube運用代行は最小構成で月30万円（ショート4本＋進行費・税別）、初期10万円、投稿まで含む／HeyGen・Synthesia：月29ドルから、HeyGenはリアルタイム対話のAPI・SDKを提供／D-ID Agents：動画アバター・音声・チャットをWebに埋め込める" data-fc-ask="各社の記載は、いま公式サイトで確認できる情報と一致するか／この表で、このAIアバターが有利に見えすぎている行・不利な行はどれか／どういう会社にはどの手段が向くか、中立の立場で"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>ChatGPTで比較を確かめる<span class="fc-sub">別タブで開きます</span></button></div>
+  </div>
+</section>
+
+<!-- ===== 07 ===== -->
+<section id="share" class="alt" aria-labelledby="s7">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <p class="eyebrow">WHO DOES WHAT</p>
+      <h2 id="s7">売るのは貴社、<br>制作と運用は弊社です。</h2>
+    </div>
+      <p class="sec-lead">OEMの話は、ここが曖昧なまま進むと途中で止まります。決まっていること、仮で置いていること、まだ決まっていないことを、同じ表に並べました。</p>
+    </div>
+    <div class="scroll-x">
+    <table class="resp">
+      <thead><tr><th scope="col">項目</th><th scope="col">担当</th><th scope="col">補足</th></tr></thead>
+      <tbody>
+        <tr class="sep"><th colspan="3" scope="colgroup">決まっていること</th></tr>
+        <tr><th scope="row">AIアバターエンジン（声・表情・動きの生成）</th><td class="who" data-l="担当">弊社</td><td class="memo" data-l="補足">2026年10月13日に開発完了を開示しました。</td></tr>
+        <tr><th scope="row">動画の生成（台本の下書き・字幕・ワイプ・読み方辞書・ショート）</th><td class="who" data-l="担当">弊社</td><td class="memo" data-l="補足">資料は100ページまで、台本は全体で約1時間分まで。</td></tr>
+        <tr><th scope="row">YouTubeへ自動で上げる仕組み</th><td class="who" data-l="担当">弊社</td><td class="memo" data-l="補足">公開範囲は選択式で、限定公開から始められます。</td></tr>
+        <tr><th scope="row">今のお客様への提案と販売</th><td class="who" data-l="担当">貴社</td><td class="memo" data-l="補足">どのお客様に出すかの判断も、貴社が担います。</td></tr>
+        <tr class="sep"><th colspan="3" scope="colgroup">仮で置いていること</th></tr>
+        <tr><th scope="row">名前とロゴを貴社のものに替える</th><td class="who" data-l="担当">貴社が決める</td><td class="memo" data-l="補足">どの画面・動画・通知まで替えられるかは調整中です。</td></tr>
+        <tr><th scope="row">お客様からの問い合わせの最初の窓口</th><td class="who" data-l="担当">貴社</td><td class="memo" data-l="補足">技術的な問い合わせは、貴社から弊社へつなぐ形。</td></tr>
+        <tr><th scope="row">分身づくり（初回の撮影と声の収録）</th><td class="who" data-l="担当">弊社</td><td class="memo" data-l="補足">場所と手順は、取り扱いが決まってからご案内します。</td></tr>
+        <tr><th scope="row">お客様の社長から、顔と声を使う同意を取る</th><td class="who" data-l="担当">貴社</td><td class="memo" data-l="補足">同意書のひな形は弊社が用意する想定。</td></tr>
+        <tr class="sep"><th colspan="3" scope="colgroup">まだ決まっていないこと</th></tr>
+        <tr><th scope="row">卸値と推奨売価</th><td class="who" data-l="担当">—</td><td class="memo" data-l="補足">説明会のあと、取扱商材と顧客層を伺ってお示しします。</td></tr>
+        <tr><th scope="row">ライブ（会話）の料金と、同時に話せる数</th><td class="who" data-l="担当">—</td><td class="memo" data-l="補足">会話の長さで費用が変わる仕組みを想定。</td></tr>
+        <tr><th scope="row">請求と料金の回収、契約の当事者</th><td class="who" data-l="担当">—</td><td class="memo" data-l="補足">利用規約をどちらの名前で結ぶかを含みます。</td></tr>
+        <tr><th scope="row">noteの掲載名義と、YouTubeのアップ先</th><td class="who" data-l="担当">—</td><td class="memo" data-l="補足">お客様のチャンネル・アカウントに載せる形を想定。</td></tr>
+        <tr><th scope="row">毎回の資料の入れ込みと台本の確認</th><td class="who" data-l="担当">—</td><td class="memo" data-l="補足">貴社とお客様のどちらが担うかを含めて調整中。</td></tr>
+        <tr><th scope="row">地域や業種での排他</th><td class="who" data-l="担当">—</td><td class="memo" data-l="補足">設けるかどうかを含めて未定です。</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 08 ===== -->
+<section id="revenue" aria-labelledby="s8">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <p class="eyebrow">REVENUE MODEL</p>
+      <h2 id="s8">卸値は調整中です。<br>貴社の見込みで試せます。</h2>
+    </div>
+      <p class="sec-lead">代わりに、直販の公開価格を参考に置きました。貴社の見込みを入れると、1年分の売上と粗利の形が見えます。</p>
+    </div>
+    <div class="rev">
+      <div class="ref">
+        <p class="l">参考：直販の公開価格（動画・税別）</p>
+        <div class="main"><b>5,000</b><span>円／本</span></div>
+        <ul>
+          <li><span>年間パック ライト</span><b>100万円・200本</b></li>
+          <li><span>年間パック スタンダード</span><b>300万円・700本</b></li>
+          <li><span>年間パック プレミアム</span><b>500万円・1,200本</b></li>
+          <li><span>月額プラン</span><b>月15万円・30本／30万円・60本／50万円・100本</b></li>
+          <li><span>ライブ（会話）</span><b class="tbd">【調整中】</b></li>
+        </ul>
+        <p class="note">直販の申込ページに載っている価格です。貴社のお客様もこの価格を調べられる、という前提で売価を組んでください。直販の初期費用は通常50万円、いまは0円です。</p>
+        <div class="formula" style="margin-top:20px;background:var(--soft)"><p class="eq">貴社の粗利 ＝ 契約数 ×（貴社の売価 − <span>卸値【調整中】</span>）</p></div>
+      </div>
+      <div>
+        <div class="sim" id="sim">
+          <h3>1年の積み上げを、<br>貴社の見込みで確かめる</h3>
+          <p class="pre">入力した数字で計算するだけの道具で、弊社が約束する数字ではありません。解約なし・金額はすべて税別の前提です。</p>
+          <div class="sim-in">
+            <div class="fld"><label for="sm-k">売り方</label><select id="sm-k"><option value="y">年間パック（1年分を一括）</option><option value="m">月額プラン（毎月）</option></select></div>
+            <div class="fld"><label for="sm-n">毎月、新しく増えるお客様（社）</label><input id="sm-n" type="number" inputmode="numeric" min="0" max="50" step="1" value="1"></div>
+            <div class="fld"><label for="sm-p">貴社がお客様に出す金額（1社）</label><input id="sm-p" type="number" inputmode="numeric" min="0" step="10000" value="1000000"><span class="hint" id="sm-ph">年額。初期値は直販のライト（100万円）</span></div>
+            <div class="fld"><label for="sm-w">卸値（1社）</label><input id="sm-w" type="number" inputmode="numeric" min="0" step="10000" placeholder="決まったら入力"><span class="hint">【調整中】。決まったら入れてください</span></div>
+          </div>
+          <div class="sim-out" aria-live="polite">
+            <div><span>12か月後の契約数</span><b id="sm-c">12社</b></div>
+            <div><span>1年間の売上</span><b id="sm-s">—</b></div>
+            <div><span id="sm-gl">1年間の粗利</span><b id="sm-g">—</b></div>
+          </div>
+          <div class="chart" id="sm-chart" role="img" aria-label="月ごとの売上の累計"></div>
+          <p class="sim-f">棒は、その月までの売上の累計です（貴社の売価ベース）。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 09 ===== -->
+<section id="effort" class="alt" aria-labelledby="s9">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <p class="eyebrow">YOUR EFFORT</p>
+      <h2 id="s9">撮影は最初の1回、あとは<br>資料と台本の確認です。</h2>
+    </div>
+      <p class="sec-lead">分身をつくる手間は最初の1回だけです。そのあと人の手が要るのは、何を話すかを決めて、公開の前に確かめるところ。濃い紺の箱が、人の手の要る工程です。</p>
+    </div>
+    <ol class="flow7">
+      <li><b>撮影と声の収録</b><span>最初の1回だけ</span></li>
+      <li><b>資料を入れる</b><span>PDF・メモ・URL</span></li>
+      <li class="auto"><b>台本の下書き</b><span>資料1ページごと</span></li>
+      <li><b>台本を確かめる</b><span>直したいページだけ</span></li>
+      <li class="auto"><b>動画・字幕・ショート</b><span>読み方の辞書も反映</span></li>
+      <li><b>公開する動画を選ぶ</b><span>どれを、いつ出すか</span></li>
+      <li class="auto"><b>YouTubeへアップ</b><span>公開範囲を選べる</span></li>
+    </ol>
+    <p class="flow-key"><span><i></i>人の手が要る</span><span><i class="a"></i>自動で進む</span></p>
+    <p style="margin:18px 0 0;color:var(--g1)">2・4・6を貴社とお客様のどちらが担うかは<span class="tbd">【調整中】</span>です。ライブで使う場合は、最初に料金・よくある質問・人へつなぐ条件といった「答えの正本」をそろえます。</p>
+  </div>
+</section>
+
+<!-- ===== 10 ===== -->
+<section id="kit" aria-labelledby="s10">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <p class="eyebrow">SALES KIT</p>
+      <h2 id="s10">売るための道具も、<br>一式でお渡しします。</h2>
+    </div>
+      <p class="sec-lead">お客様の前で見せる物と、貴社の営業が使う物に分けました。いま開けるものはリンクを付けています。</p>
+    </div>
+    <div class="thumbs">
+      <a href="https://avatar-news-service.vercel.app/" target="_blank" rel="noopener"><img src="img/v-second.webp" alt="見本動画「経営判断OS：セカンド」の1コマ" width="800" height="450" loading="lazy"><b>経営判断OS：セカンド</b><span>3:24</span></a>
+      <a href="https://avatar-news-service.vercel.app/" target="_blank" rel="noopener"><img src="img/v-elliot.webp" alt="見本動画「Elliot Sales Engine」の1コマ" width="800" height="450" loading="lazy"><b>Elliot Sales Engine</b><span>3:04</span></a>
+      <a href="https://avatar-news-service.vercel.app/" target="_blank" rel="noopener"><img src="img/v-partner.webp" alt="見本動画「AIアバター共同事業」の1コマ" width="800" height="450" loading="lazy"><b>AIアバター共同事業</b><span>3:18</span></a>
+    </div>
+    <div class="kit">
+      <div>
+        <h3>お客様に見せる物</h3>
+        <ul>
+          <li><div><b>見本の動画 3本</b><span>経営判断OS：セカンド 3分24秒／Elliot Sales Engine 3分04秒／AIアバター共同事業 3分18秒</span></div><a href="https://avatar-news-service.vercel.app/" target="_blank" rel="noopener">見る ↗</a></li>
+          <li><div><b>代表の分身と話せる見本</b><span>マイクを許可すると声で会話できます。1回最長10分</span></div><a href="https://main.d3low1bgvvu24.amplifyapp.com/" target="_blank" rel="noopener">話す ↗</a></li>
+          <li><div><b>LPの案内役の体験ページ</b><span>読んでいる場所に合わせて説明します（Jev API未接続の体験版）</span></div><a href="https://jev-avatar-lp.vercel.app/" target="_blank" rel="noopener">開く ↗</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>貴社の営業が使う物</h3>
+        <ul>
+          <li><div><b>説明会の投影資料（B-03）</b><span>各ページに話す言葉つき</span></div><a href="../b03/">開く</a></li>
+          <li><div><b>お客様への話し方（B-04）</b><span>30秒・3分の説明と切り返し。取り扱いが決まった会社へお渡しします</span></div></li>
+          <li><div><b>貴社名入りの説明資料・管理画面</b><span>どこまで用意できるかは<mark class="tbd">【調整中】</mark>です</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 11 ===== -->
+<section id="steps" class="alt" aria-labelledby="s11">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <p class="eyebrow">HOW TO START</p>
+      <h2 id="s11">説明会のあと、<br>条件を決めて始めます。</h2>
+    </div>
+      <p class="sec-lead">取り扱うかどうかは、条件を見てから決めて間に合います。始めるまでの期間をお示しできるのは、条件がそろってから。</p>
+    </div>
+    <ol class="flow">
+      <li><b>STEP 1</b><strong>説明会</strong><span>2つの使い方と見本を見る</span></li>
+      <li><b>STEP 2</b><strong>条件のすり合わせ</strong><span>卸値・分担・名義</span></li>
+      <li><b>STEP 3</b><strong>契約</strong><span>条件に合意したら</span></li>
+      <li><b>STEP 4</b><strong>貴社の見本づくり</strong><span>貴社の名前で1本作る</span></li>
+      <li><b>STEP 5</b><strong>取り扱い開始</strong><span>今のお客様へ案内</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== 12 ===== -->
+<section id="faq" aria-labelledby="s12">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <p class="eyebrow">FAQ</p>
+      <h2 id="s12">未定のことも、<br>未定と書いておきます。</h2>
+    </div>
+      <p class="sec-lead">【調整中】は、答えがまだ決まっていない項目の印です。条件は、このページより契約書の内容が優先です。</p>
+    </div>
+    <div class="faq">
+      <details><summary>途中で解約できますか。</summary><div class="a"><p>直販は1年契約です。OEMでの弊社と貴社の間、貴社とお客様の間の契約期間と解約の条件は<span class="tbd">【調整中】</span>です。</p></div></details>
+      <details><summary>同じ地域の競合にも、取り扱いを出しますか。</summary><div class="a"><p>地域や業種での排他を設けるかどうかは<span class="tbd">【調整中】</span>です。説明会でご要望を伺います。</p></div></details>
+      <details><summary>お客様からクレームが来たら、誰が受けますか。</summary><div class="a"><p>最初の窓口は貴社、技術的な原因の調べと直しは弊社、という分け方を仮で置いています<span class="tbd">【仮】</span>。分身の発言の誤りなど、内容の苦情の扱いは条件のすり合わせで決めます。</p></div></details>
+      <details><summary>ライブ（会話）の料金はいくらですか。</summary><div class="a"><p><span class="tbd">【調整中】</span>です。会話の長さで費用が変わる仕組みを想定しています。決まりしだい、このページでお知らせします。</p></div></details>
+      <details><summary>分身は、誰の顔と声でも作れますか。</summary><div class="a"><p>ご本人の同意がある方だけです。利用目的・保存方法・使う範囲を、作る前に確かめます。</p></div></details>
+      <details><summary>AIの分身だと、お客様に伝わりますか。</summary><div class="a"><p>見本の動画と会話をご覧ください。分身が受け持つのは途中の説明です。最初の信頼づくりと最後の決断は、人が担う使い方をおすすめしています。</p></div></details>
+      <details><summary>noteにも、貴社の名前で載りますか。</summary><div class="a"><p>noteの掲載名義は<span class="tbd">【調整中】</span>です。掲載の作業は弊社が行います。</p></div></details>
+      <details><summary>共同事業パートナー募集とは、何が違いますか。</summary><div class="a"><p>OEMは、完成品を貴社の名前で売る形です<span class="tbd">【仮】</span>。共同事業は、新しい事業を一緒に企画する形。始めるまでの流れも違い、OEMは説明会→条件→契約→見本づくり、共同事業は用途の整理→試作→顧客検証→条件の合意です。共同事業のご案内は<a href="https://writeup-inc.github.io/saas/jev-avatar-partnership-lp/" target="_blank" rel="noopener">こちら</a>。</p></div></details>
+      <details><summary>説明会の日程が合いません。</summary><div class="a"><p><a href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">お問い合わせフォーム</a>から「AIアバターOEMの個別説明」とお書きください。</p></div></details>
+      <details><summary>LPの案内役は、もう使えますか。</summary><div class="a"><p>体験ページは、判断特化型AI「Jev」のAPIに未接続の体験版です。サイトに置く形での提供時期は<span class="tbd">【調整中】</span>です。代表の分身と声で話す見本は、いまお試しいただけます。</p></div></details>
+      <details><summary>受注や問い合わせは増えますか。</summary><div class="a"><p>件数はお約束できません。お客様に伝えるときも、件数や売上を約束して売らないでください。</p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 13 ===== -->
+<section id="start" class="close" aria-labelledby="s13">
+  <div class="wrap">
+    <div class="close-grid">
+      <div>
+        <p class="eyebrow">START HERE</p>
+        <h2 id="s13">取扱条件は、<br>説明会でお渡しします。</h2>
+        <p style="margin-top:20px">卸値・分担・名義は、貴社の取扱商材と顧客層を伺ってからお示しします。お話しした結果、いまは取り扱わないほうがいい、という結論になることも珍しくありません。</p>
+        <p class="sub">AIアバターエンジンの開発完了は、2026年10月13日に適時開示済みです。</p>
+      </div>
+      <div>
+        <a class="btn" href="../b02/">パートナー説明会に申し込む
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg></a>
+        <p class="sub">申込ページで、会社名と取扱商材を伺います。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 14 市場データ ===== -->
+<section id="market" class="mkt" aria-labelledby="s14">
+  <div class="wrap">
+    <p class="eyebrow">MARKET DATA</p>
+    <h2 id="s14" style="margin:0 0 36px">見る人はいて、<br>説明する人が足りません。</h2>
+    <ol class="mkt-grid">
+      <li class="mkt-c"><span class="mkt-no">01 広がり</span><b class="mkt-n">84.9<i>%</i></b><p class="mkt-d">50代のYouTube利用率。全年代では81.5%。経営者の世代にも、見る習慣があります。</p><a class="mkt-src" href="https://www.soumu.go.jp/main_content/001079141.pdf" target="_blank" rel="noopener">総務省 情報通信政策研究所「令和7年度 情報通信メディアの利用時間と情報行動に関する調査」2025年12月・n=1,800（PDF）</a></li>
+      <li class="mkt-c"><span class="mkt-no">02 痛み</span><b class="mkt-n">60.0<i>%</i></b><p class="mkt-d">人手が不足していると答えた中小企業の割合。説明や発信に人を割ける会社は多くありません。</p><a class="mkt-src" href="https://www.jcci.or.jp/news/research/2026/0915140001.html" target="_blank" rel="noopener">日本商工会議所・東京商工会議所「多様な人材の活躍等に関する調査」2026年7〜8月・n=2,654</a></li>
+      <li class="mkt-c"><span class="mkt-no">03 壁</span><b class="mkt-n">85.5<i>%</i></b><p class="mkt-d">DXに取り組む企業のうち、DXを進める人材の「量」が足りないと答えた割合。</p><a class="mkt-src" href="https://www.ipa.go.jp/digital/chousa/dx-trend/rcu1hd0000017uk8-att/dx-trend-2026.pdf" target="_blank" rel="noopener">IPA「DX動向2026」2026年4〜6月・n=1,799（PDF）</a></li>
+      <li class="mkt-c"><span class="mkt-no">04 効き目</span><b class="mkt-n">23.0<i>%</i></b><p class="mkt-d">AI活用に取り組んだ中小企業の付加価値額の伸び（中央値・2019→2024年）。取り組んでいない企業は17.9%。因果関係までは示されていません。</p><a class="mkt-src" href="https://www.chusho.meti.go.jp/pamflet/hakusyo/2026/chusho/b2_2_1.html" target="_blank" rel="noopener">中小企業庁「2026年版 中小企業白書」第2-2-12図（元データ：帝国データバンク）</a></li>
+      <li class="mkt-c"><span class="mkt-no">05 今やる理由</span><b class="mkt-n">68.9<i>%</i></b><p class="mkt-d">生成AIの活用方針を定めている日本企業の割合。前年の49.7%から、1年で大きく増えました。</p><a class="mkt-src" href="https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r08/pdf/n1210000.pdf" target="_blank" rel="noopener">総務省「情報通信白書 令和8年版」図表Ⅰ-2-1-1・日本企業n=515（PDF）</a></li>
+    </ol>
+    <p class="mkt-bridge">だから、話すのは分身に任せ、売るのは貴社の名前で、という形にしました。</p>
+    <div class="fc-row"><button class="fc-btn" type="button" data-fc-section="市場データ" data-fc-claim="50代のYouTube利用率84.9%、全年代81.5%（総務省 情報通信政策研究所 令和7年度調査、2025年12月、n=1,800）／人手が不足している中小企業60.0%（日本商工会議所・東京商工会議所、2026年7〜8月、n=2,654）／DXに取り組む企業でDX推進人材の量が不足85.5%（IPA DX動向2026、n=1,799）／AI活用に取り組んだ中小企業の付加価値額変化率（中央値、2019→2024年）23.0%、取り組んでいない企業17.9%（2026年版中小企業白書 第2-2-12図）／生成AIの活用方針を定めている日本企業68.9%、前年49.7%（情報通信白書 令和8年版）"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>ChatGPTでファクトチェック<span class="fc-sub">別タブで開きます</span></button></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <p style="margin:0;font-family:var(--head);font-weight:900;color:#fff;font-size:18px">AIアバター <span style="font:800 12px var(--num);letter-spacing:.14em;color:#7f8ca6">FOR PARTNERS</span></p>
+        <p style="margin:10px 0 0">OEMパートナー向けのご案内です（資料番号B-01）。提供：株式会社ライトアップ（東証グロース 6580）</p>
+      </div>
+      <div>
+        <h4>FOR PARTNERS</h4>
+        <ul>
+          <li><a href="../b02/">パートナー説明会</a></li>
+          <li><a href="../">アバターソリューションの資料インデックス</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>COMPANY</h4>
+        <ul>
+          <li><a href="https://www.writeup.jp/contact/" target="_blank" rel="noopener">お問い合わせ</a></li>
+          <li><a href="https://www.writeup.co.jp/company/" target="_blank" rel="noopener">会社概要</a></li>
+          <li><a href="https://www.writeup.co.jp/privacy/" target="_blank" rel="noopener">個人情報保護方針</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="fcopy">【仮】【調整中】の印がある項目は、確定前の内容です。背景写真：Pixabay。イラストはAIで生成したイメージです。© 2026 Writeup Co., Ltd.</p>
+  </div>
+</footer>
+
+<dialog class="pop" id="pop" aria-labelledby="popT">
+  <div class="pop-h"><p id="popT">このページを、見出しだけで読む</p><button type="button" class="pop-x" id="popX" aria-label="閉じる">×</button></div>
+  <div class="pop-b">
+    <p class="pop-lbl"><span class="en">HERO COPY</span>いちばん上で切り替わっている3つのコピー</p>
+    <ol class="copies" id="copies"></ol>
+    <div class="story">
+      <p class="pop-lbl"><span class="en">HEADLINES</span>見出しをつなげると、こういう話です</p>
+      <ol id="story"></ol>
+    </div>
+    <p class="pop-f">見出しを押すと、そのセクションへ移ります。</p>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  /* ===== ヒーロー：3つのコピーのローテーション ===== */
+  var COPIES=[
+    {c:'貴社の名前とロゴで、\nAIアバターを売れます。',s:'何を売るのか。貴社の名前とロゴで、話す分身と説明する動画の2つを扱えます。'},
+    {c:'お客様のサイトで、\n社長の分身が案内します。',s:'どんな場面か。貴社が納めたサイトや動画の中で、お客様の社長の分身が話します。'},
+    {c:'社長は1人。\n分身は、何か所でも。',s:'何が違うのか。社長本人は1か所にしか立てませんが、分身はサイトにも動画にも同時に立てます。'}
+  ];
+  var TYPE_MS=55, HOLD_MS=5200, ERASE_MS=22;
+  var h1=document.getElementById('tw'), hc=document.getElementById('hc');
+  var dots=[].slice.call(document.querySelectorAll('.dots button'));
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var idx=0, timer=null, paused=false;
+  function put(t){ h1.textContent=''; t.split('\n').forEach(function(line,k){ if(k) h1.appendChild(document.createElement('br')); h1.appendChild(document.createTextNode(line)); }); }
+  function reserve(){ var cur=h1.innerHTML, max=0; hc.style.minHeight=''; COPIES.forEach(function(o){ put(o.c); max=Math.max(max,h1.offsetHeight); }); h1.innerHTML=cur; hc.style.minHeight=max+'px'; }
+  function mark(i){ dots.forEach(function(d,k){ d.setAttribute('aria-current',k===i?'true':'false'); }); }
+  function clear(){ if(timer){ clearTimeout(timer); timer=null; } }
+  function show(i,typing){
+    clear(); idx=i; mark(i);
+    var t=COPIES[i].c;
+    if(reduce||!typing){ put(t); schedule(); return; }
+    var n=0;
+    (function step(){ put(t.slice(0,++n)); if(n<t.length){ timer=setTimeout(step,TYPE_MS); } else { schedule(); } })();
+  }
+  function erase(next){ var t=COPIES[idx].c; (function step(){ if(t.length){ t=t.slice(0,-1); put(t); timer=setTimeout(step,ERASE_MS); } else { show(next,true); } })(); }
+  function schedule(){ clear(); if(paused) return; timer=setTimeout(function(){ var next=(idx+1)%COPIES.length; if(reduce){ show(next,false); } else { erase(next); } },HOLD_MS); }
+  dots.forEach(function(d,k){ d.addEventListener('click',function(){ show(k,false); }); });
+  window.addEventListener('resize',reserve);
+  if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(reserve); }
+  reserve(); schedule();
+
+  /* ===== ポップアップ ===== */
+  var pop=document.getElementById('pop'), copiesEl=document.getElementById('copies'), storyEl=document.getElementById('story');
+  COPIES.forEach(function(o,k){
+    var li=document.createElement('li');
+    li.innerHTML='<span class="n">0'+(k+1)+'</span><div><p class="c"></p><p class="s"></p></div>';
+    li.querySelector('.c').textContent=o.c.replace(/\n/g,''); li.querySelector('.s').textContent=o.s;
+    copiesEl.appendChild(li);
+  });
+  document.querySelectorAll('main section h2[id]').forEach(function(h){
+    var li=document.createElement('li'), a=document.createElement('a');
+    a.href='#'+h.closest('section').id; a.textContent=h.textContent; a.dataset.h=h.id;
+    li.appendChild(a); storyEl.appendChild(li);
+  });
+  var opener=null;
+  function openPop(e){ opener=e&&e.currentTarget; paused=true; clear(); put(COPIES[idx].c); if(pop.showModal){ pop.showModal(); } else { pop.setAttribute('open',''); } }
+  function closePop(){ if(pop.close){ pop.close(); } else { pop.removeAttribute('open'); } }
+  pop.addEventListener('close',function(){ paused=false; schedule(); if(opener&&!pop.dataset.jump){ opener.focus(); } delete pop.dataset.jump; });
+  hc.setAttribute('tabindex','0');
+  hc.addEventListener('click',openPop);
+  hc.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openPop(e); } });
+  document.getElementById('popX').addEventListener('click',closePop);
+  pop.addEventListener('click',function(e){ if(e.target===pop) closePop(); });
+  storyEl.addEventListener('click',function(e){
+    var a=e.target.closest('a'); if(!a) return;
+    e.preventDefault(); pop.dataset.jump='1'; closePop();
+    var h=document.getElementById(a.dataset.h), sec=h.closest('section');
+    sec.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+    h.setAttribute('tabindex','-1'); setTimeout(function(){ h.focus({preventScroll:true}); },reduce?0:450);
+    history.replaceState(null,'',a.getAttribute('href'));
+  });
+})();
+</script>
+<script>
+document.addEventListener('click', function (e) {
+  var b = e.target.closest && e.target.closest('.fc-btn'); if (!b) return;
+  var l = document.querySelector('link[rel=canonical]'); var url = l ? l.href : location.href;
+  var p = '次のLPの記載が事実として正しいか、第三者の立場で確認してください。\n\n【対象ページ】' + url +
+    '\n【セクション】' + b.dataset.fcSection + '\n【記載内容】\n' + b.dataset.fcClaim.split('／').join('\n') +
+    '\n\n【確認してほしいこと】\n' + (b.dataset.fcAsk ? b.dataset.fcAsk.split('／').map(function(x){return '- '+x;}).join('\n') + '\n' : '- 記載は一般的な事実・相場・公的情報と照らして正しいか\n- 誤り・誇張・古い情報があれば指摘する\n- 反対の見方や、読み手が注意すべき点\n') + '- 確認できないことは「確認できない」と書き、推測で補わない';
+  window.open('https://chatgpt.com/?q=' + encodeURIComponent(p), '_blank', 'noopener,noreferrer');
+  if (navigator.clipboard) navigator.clipboard.writeText(p).catch(function () {});
+});
+</script>
+<script>
+(function(){
+  /* ===== ヒーローの画面イメージ：会話が進み、動画がアップされ、名前が貴社名に替わる ===== */
+  var st=document.getElementById('stage'); if(!st) return;
+  var bubs=[].slice.call(st.querySelectorAll('.bub')), vs=[].slice.call(st.querySelectorAll('.vstat li')),
+      pg=document.getElementById('prog'), nm=document.getElementById('stName'), lg=document.getElementById('stLogo');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function brand(on){ st.classList.toggle('swap',on); nm.classList.add('fade');
+    setTimeout(function(){ nm.textContent=on?'貴社のサービス名':'AIアバター'; lg.innerHTML=on?'貴社<br>LOGO':'LOGO'; nm.classList.remove('fade'); },300); }
+  if(reduce){ bubs.forEach(function(b){ b.classList.add('on'); }); vs.forEach(function(v){ v.classList.add('on'); }); pg.style.width='100%'; return; }
+  var steps=[
+    function(){ bubs.forEach(function(b){ b.classList.remove('on'); }); vs.forEach(function(v){ v.classList.remove('on'); }); pg.style.transition='none'; pg.style.width='0'; },
+    function(){ bubs[0].classList.add('on'); pg.style.transition=''; pg.style.width='30%'; vs[0].classList.add('on'); },
+    function(){ bubs[1].classList.add('on'); pg.style.width='65%'; },
+    function(){ bubs[2].classList.add('on'); pg.style.width='100%'; vs[1].classList.add('on'); },
+    function(){ bubs[3].classList.add('on'); vs[2].classList.add('on'); },
+    function(){ brand(!st.classList.contains('swap')); },
+    function(){}
+  ];
+  var i=0; (function tick(){ steps[i](); i=(i+1)%steps.length; setTimeout(tick,i===0?2400:1400); })();
+})();
+</script>
+<script>
+(function(){
+  /* ===== 計算機 ===== */
+  var k=document.getElementById('sm-k'); if(!k) return;
+  var n=document.getElementById('sm-n'), pr=document.getElementById('sm-p'), wh=document.getElementById('sm-w'), ph=document.getElementById('sm-ph'), box=document.getElementById('sm-chart');
+  function yen(v){ return Math.round(v).toLocaleString('ja-JP')+'円'; }
+  function man(v){ return v>=100000000? (Math.round(v/10000000)/10)+'億' : v>=10000? Math.round(v/10000).toLocaleString('ja-JP')+'万' : String(v); }
+  k.addEventListener('change',function(){
+    if(k.value==='m'){ pr.value=150000; pr.step=10000; ph.textContent='月額。初期値は直販の月額ライト（月15万円）'; }
+    else { pr.value=1000000; pr.step=100000; ph.textContent='年額。初期値は直販のライト（100万円）'; }
+    calc();
+  });
+  function draw(vals){
+    var W=Math.max(280,Math.round(box.clientWidth)||560),H=210,L=W<460?40:48,B=26,T=18,R=8,narrow=W<460,max=Math.max.apply(null,vals)||1;
+    var step=Math.pow(10,Math.floor(Math.log10(max))); var top=Math.ceil(max/step)*step; if(top/step<3){ step/=2; top=Math.ceil(max/step)*step; }
+    var bw=(W-L-R)/vals.length, g='', pad=narrow?2:4;
+    for(var y=0;y<=top+1e-6;y+=step){ var yy=H-B-(H-B-T)*y/top; g+='<line class="gl" x1="'+L+'" x2="'+(W-R)+'" y1="'+yy+'" y2="'+yy+'"/><text class="ax" x="'+(L-6)+'" y="'+(yy+4)+'" text-anchor="end">'+man(y)+'</text>'; }
+    vals.forEach(function(v,i){ var h=(H-B-T)*v/top, x=L+i*bw+pad, w=bw-pad*2, y=H-B-h;
+      g+='<rect class="bar'+(i===vals.length-1?' last':'')+'" x="'+x+'" y="'+y+'" width="'+w+'" height="'+Math.max(0,h)+'"/>';
+      if(!narrow||i%2===1) g+='<text class="ax" x="'+(x+w/2)+'" y="'+(H-8)+'" text-anchor="middle">'+(i+1)+'月</text>'; });
+    var li=vals.length-1, lx=L+li*bw+bw/2, ly=H-B-(H-B-T)*vals[li]/top-6;
+    g+='<text class="lbl" x="'+lx+'" y="'+Math.max(12,ly)+'" text-anchor="end">'+man(vals[li])+'円</text>';
+    box.innerHTML='<svg viewBox="0 0 '+W+' '+H+'" aria-hidden="true">'+g+'</svg>';
+  }
+  function calc(){
+    var per=Math.max(0,Math.min(50,Math.floor(+n.value||0))), p=Math.max(0,+pr.value||0), w=wh.value===''?null:Math.max(0,+wh.value||0);
+    var vals=[], cum=0, cost=0;
+    for(var m=1;m<=12;m++){
+      var add = k.value==='y' ? per*p : per*m*p;
+      var c   = w===null ? 0 : (k.value==='y' ? per*w : per*m*w);
+      cum+=add; cost+=c; vals.push(cum);
+    }
+    document.getElementById('sm-c').textContent=(per*12)+'社';
+    document.getElementById('sm-s').textContent=yen(cum);
+    var gl=document.getElementById('sm-gl'), g=document.getElementById('sm-g');
+    if(w===null){ gl.textContent='1年間の粗利（卸値を入れると出ます）'; g.textContent='—'; }
+    else { gl.textContent='1年間の粗利'; g.textContent=yen(cum-cost); }
+    draw(vals);
+  }
+  [n,pr,wh].forEach(function(e){ e.addEventListener('input',calc); });
+  var rt; window.addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(calc,150); });
+  calc();
+})();
+</script>
+<script>
+(function(){
+  /* ===== ヘッダー：下へスクロールで隠し、上へ戻すと出す ===== */
+  var hd=document.querySelector('.site-header'); if(!hd) return;
+  var last=window.scrollY, ticking=false, TH=8, TOP=120;
+  function upd(){
+    var y=window.scrollY, d=y-last;
+    if(y<TOP||hd.contains(document.activeElement)){ hd.classList.remove('is-hidden'); }
+    else if(d>TH){ hd.classList.add('is-hidden'); }
+    else if(d<-TH){ hd.classList.remove('is-hidden'); }
+    if(Math.abs(d)>TH) last=y;
+    ticking=false;
+  }
+  window.addEventListener('scroll',function(){ if(!ticking){ ticking=true; requestAnimationFrame(upd); } },{passive:true});
+  hd.addEventListener('focusin',function(){ hd.classList.remove('is-hidden'); });
+})();
+</script>
+<script data-click-marker>
+/* クリック黄色マーカー v3（全HTML標準・正本 ~/.claude/click-marker.js / 仕様 ~/.claude/lp-click-marker.md）
+   文字をクリックすると表示上の1行に黄色マーカー。再クリックで消える。
+   表（td・th）の中は、文字ではなくそのセルの背景を薄い黄色にする（v3・2026-10-18 本人指示）。
+   暗い背景では文字が黄色に光る（multiply合成）。レイアウトは動かさない。
+   止める：<meta name="click-marker" content="off">／要素単位で data-no-marker */
+(function () {
+  if (window.__clickMarker) return;
+  window.__clickMarker = 1;
+  var d = document, root = d.documentElement;
+  var off = d.querySelector('meta[name="click-marker"]');
+  if (off && off.getAttribute('content') === 'off') return;
+
+  var SKIP = 'a,button,input,textarea,select,option,label,summary,video,audio,iframe,canvas,svg,img,form,dialog,' +
+    '[role=button],[role=link],[role=tab],[role=menuitem],[contenteditable=""],[contenteditable=true],' +
+    '[onclick],[data-no-marker],[data-click-marker-layer]';
+  var layer = null, marks = [], down = null, lastW = innerWidth, raf = 0;
+
+  function ensureLayer() {
+    if (layer) return layer;
+    var st = d.createElement('style');
+    st.textContent =
+      '[data-click-marker-layer]{position:absolute;left:0;top:0;width:0;height:0;pointer-events:none;' +
+      'z-index:2147483000;mix-blend-mode:multiply}' +
+      '[data-click-marker-layer]>i{position:absolute;display:block;background:#ffe14a;border-radius:3px;' +
+      'opacity:0;transition:opacity .18s ease-out;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
+      '[data-click-marker-layer]>i.on{opacity:.85}' +
+      '[data-cm-cell]{background-image:linear-gradient(rgba(255,225,74,.32),rgba(255,225,74,.32))!important;' +
+      '-webkit-print-color-adjust:exact;print-color-adjust:exact}';
+    (d.head || root).appendChild(st);
+    layer = d.createElement('div');
+    layer.setAttribute('data-click-marker-layer', '');
+    layer.setAttribute('aria-hidden', 'true');
+    root.appendChild(layer);
+    return layer;
+  }
+
+  function isBlock(el) {
+    return !/^(inline|contents)/.test(getComputedStyle(el).display);
+  }
+  function blockOf(el) {
+    while (el && el !== d.body && el !== root && !isBlock(el)) el = el.parentElement;
+    return el;
+  }
+
+  // ブロック直下の文字（入れ子のブロックは除く）を表示上の行ごとにまとめる
+  function lines(block) {
+    var rects = [], r = d.createRange();
+    var w = d.createTreeWalker(block, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (t) {
+        if (!t.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        for (var p = t.parentElement; p && p !== block; p = p.parentElement) {
+          if (isBlock(p)) return NodeFilter.FILTER_REJECT;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    for (var t; (t = w.nextNode());) {
+      r.selectNodeContents(t);
+      var cr = r.getClientRects();
+      for (var i = 0; i < cr.length; i++) if (cr[i].width > 0.5 && cr[i].height > 0.5) rects.push(cr[i]);
+    }
+    rects.sort(function (a, b) { return a.top - b.top || a.left - b.left; });
+    var ls = [];
+    rects.forEach(function (c) {
+      var cm = (c.top + c.bottom) / 2, hit = null;
+      for (var i = 0; i < ls.length; i++) {
+        var g = ls[i], gm = (g.top + g.bottom) / 2;
+        if ((cm >= g.top && cm <= g.bottom) || (gm >= c.top && gm <= c.bottom)) { hit = g; break; }
+      }
+      if (hit) {
+        hit.left = Math.min(hit.left, c.left); hit.right = Math.max(hit.right, c.right);
+        hit.top = Math.min(hit.top, c.top); hit.bottom = Math.max(hit.bottom, c.bottom);
+      } else {
+        ls.push({ left: c.left, right: c.right, top: c.top, bottom: c.bottom });
+      }
+    });
+    ls.sort(function (a, b) { return a.top - b.top; });
+    return ls;
+  }
+
+  // 中スクロールの枠外へ出た行はマーカーを隠す（枠をはみ出して塗らない）
+  function clipped(block, L) {
+    for (var p = block; p && p !== d.body && p !== root; p = p.parentElement) {
+      var cs = getComputedStyle(p);
+      if (cs.overflowX === 'visible' && cs.overflowY === 'visible') continue;
+      var r = p.getBoundingClientRect();
+      if (L.bottom <= r.top || L.top >= r.bottom || L.right <= r.left || L.left >= r.right) return true;
+    }
+    return false;
+  }
+
+  function place(mk, L) {
+    var s = mk.el.style, pad = 2;
+    s.visibility = clipped(mk.block, L) ? 'hidden' : '';
+    s.left = (L.left + scrollX - pad) + 'px';
+    s.top = (L.top + scrollY) + 'px';
+    s.width = (L.right - L.left + pad * 2) + 'px';
+    s.height = (L.bottom - L.top) + 'px';
+  }
+  function drop(mk) {
+    var el = mk.el;
+    el.classList.remove('on');
+    setTimeout(function () { el.remove(); }, 200);
+  }
+  function clearAll() { marks.forEach(drop); marks = []; }
+  function refresh() {
+    raf = 0;
+    marks = marks.filter(function (mk) {
+      if (!mk.block.isConnected) { mk.el.remove(); return false; }
+      var ls = lines(mk.block);
+      if (ls.length !== mk.n || !ls[mk.idx]) { mk.el.remove(); return false; }
+      place(mk, ls[mk.idx]);
+      return true;
+    });
+  }
+  function later() { if (marks.length && !raf) raf = requestAnimationFrame(refresh); }
+
+  d.addEventListener('pointerdown', function (e) { down = { x: e.clientX, y: e.clientY }; }, true);
+
+  d.addEventListener('click', function (e) {
+    if (e.button !== 0 || e.detail > 1 || e.defaultPrevented) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    if (down && Math.abs(e.clientX - down.x) + Math.abs(e.clientY - down.y) > 6) return; // ドラッグ
+    var sel = window.getSelection && getSelection();
+    if (sel && !sel.isCollapsed && String(sel).trim()) return; // 文字選択中
+    var t = e.target;
+    if (!(t instanceof Element) || t.closest(SKIP)) return;
+    for (var p = t; p && p !== root; p = p.parentElement) {
+      var cs = getComputedStyle(p);
+      if (cs.cursor === 'pointer') return; // 既存のクリック操作（H1ポップアップ等）を優先
+      if (cs.position === 'fixed' || cs.position === 'sticky') return; // 追従要素は対象外
+    }
+    // 表のセルは、セルの背景を薄い黄色に（再クリックで戻す）。文字の行マーカーは付けない
+    var cell = t.closest('td,th');
+    if (cell) {
+      ensureLayer();
+      if (cell.hasAttribute('data-cm-cell')) cell.removeAttribute('data-cm-cell');
+      else cell.setAttribute('data-cm-cell', '');
+      return;
+    }
+    var block = blockOf(t);
+    if (!block || block === d.body || block === root) return;
+    var ls = lines(block), idx = -1;
+    for (var i = 0; i < ls.length; i++) {
+      var L = ls[i];
+      if (e.clientY >= L.top - 1 && e.clientY <= L.bottom + 1 && e.clientX >= L.left - 6 && e.clientX <= L.right + 6) { idx = i; break; }
+    }
+    if (idx < 0) return; // 余白のクリック
+    for (var j = 0; j < marks.length; j++) {
+      if (marks[j].block === block && marks[j].idx === idx) { drop(marks[j]); marks.splice(j, 1); return; }
+    }
+    var el = d.createElement('i');
+    ensureLayer().appendChild(el);
+    var mk = { block: block, idx: idx, n: ls.length, el: el };
+    marks.push(mk);
+    place(mk, ls[idx]);
+    requestAnimationFrame(function () { requestAnimationFrame(function () { el.classList.add('on'); }); });
+  });
+
+  // 画面幅が変わると折り返しが変わるので消す。それ以外のずれは位置を引き直す
+  addEventListener('resize', function () {
+    if (innerWidth !== lastW) { lastW = innerWidth; clearAll(); } else later();
+  });
+  d.addEventListener('scroll', function (e) { if (e.target !== d) later(); }, true);
+  function watch() { if (window.ResizeObserver && d.body) new ResizeObserver(later).observe(d.body); }
+  if (d.body) watch(); else d.addEventListener('DOMContentLoaded', watch);
+})();
+</script>
+</body>
+</html>
