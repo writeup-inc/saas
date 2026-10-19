@@ -206,7 +206,7 @@
     const guideVideo=document.getElementById('guideVideo'),guideLive=document.getElementById('guideLive'),guideDisclose=document.getElementById('guideDisclose');let avatar=null,avatarCtx=null,avatarConnecting=false,avatarGen=0,avatarFailedAt=0,avatarPending='';function syncGuideVideo(){if(reduce||document.hidden||avatar){guideVideo.pause();return}guideVideo.play().catch(()=>{})}document.addEventListener('visibilitychange',syncGuideVideo);syncGuideVideo();
     // Pattern A (lp-avatar-note #mock): chat is the default; voice and 575 start only after the visitor presses the mic button.
     const Recognition=window.SpeechRecognition||window.webkitSpeechRecognition;
-    let mode='chat',talking=false,talkGen=0,voiceAsking=false,rec=null,listenTimer=null,talkTimer=null,resumeAt=0,micNote='';
+    let mode='chat',talking=false,talkGen=0,voiceAsking=false,rec=null,listenTimer=null,talkTimer=null,speakingUntil=0,echoUntil=0,speakingText='',micNote='';
     const greeting={normal:'こんにちは。御社の知見をどう届けるか、声で質問してください。',haiku:['ようこそね','御社の知恵を','聞かせてね']};
     // Anam avatar (ADR 0181 in aio-master): AIO issues the session token and writes the answers; the avatar only reads them via talk().
     const AVATAR_SDK='https://cdn.jsdelivr.net/npm/@anam-ai/js-sdk@4.27.1/+esm',AVATAR_PATH='/api/lp/partner-avatar/token',AVATAR_MAX_MS=600000,AVATAR_RETRY_MS=60000;
@@ -215,7 +215,7 @@
     // ?avatarApi= is for testing only; only the origin is used and it must be AIO, an AIO branch build, or localhost.
     function avatarEndpoint(){try{const q=new URLSearchParams(location.search).get('avatarApi');if(q){const o=new URL(q).origin;if(o==='https://aio.elliot-tech.jp'||/^https:\/\/[a-z0-9-]+\.do9kd4ht7lupn\.amplifyapp\.com$/.test(o)||/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(o))return o+AVATAR_PATH}}catch{}return guide.dataset.avatarApi}
     function visitorToken(){try{let t=localStorage.getItem('partnerAvatarVisitor');if(!t){t=crypto.randomUUID();localStorage.setItem('partnerAvatarVisitor',t)}return t}catch{return 'v'+Math.random().toString(36).slice(2)+Date.now().toString(36)}}
-    function browserSay(text){if(!('speechSynthesis'in window))return;speechSynthesis.cancel();const utterance=new SpeechSynthesisUtterance(text);utterance.lang='ja-JP';utterance.rate=.96;speechSynthesis.speak(utterance)}
+    function browserSay(text){if(!('speechSynthesis'in window))return;speechSynthesis.cancel();const utterance=new SpeechSynthesisUtterance(text);utterance.lang='ja-JP';utterance.rate=.96;utterance.onend=()=>{if(speakingText===text){speakingUntil=0;echoUntil=Date.now()+1500}};speechSynthesis.speak(utterance)}
     function say(text){if(!text)return;if(avatar){try{avatar.interruptPersona()}catch{}avatar.talk(text).catch(e=>console.warn('[partner-avatar] talk failed',e));return}if(avatarConnecting){avatarPending=text;return}browserSay(text)}
     async function startAvatar(){
       if(avatar||avatarConnecting||Date.now()-avatarFailedAt<AVATAR_RETRY_MS)return;
@@ -239,7 +239,7 @@
         avatar=client;avatarCtx=ctx;avatarConnecting=false;
         guideLive.hidden=false;guideVideo.hidden=true;guideVideo.pause();guideLive.play().catch(e=>console.warn('[partner-avatar] play failed',e));refreshStatus();
         if('speechSynthesis'in window)speechSynthesis.cancel();
-        const line=avatarPending;avatarPending='';if(line){stopListening();holdListening(line);say(line);listen()}
+        const line=avatarPending;avatarPending='';if(line){markSpeaking(line);say(line)}
       }catch(e){
         if(client)client.stopStreaming().catch(()=>{});
         if(ctx)ctx.close().catch(()=>{});
@@ -252,17 +252,21 @@
     function stopAvatar(){avatarGen++;avatarConnecting=false;avatarPending='';const client=avatar;avatar=null;if(client)client.stopStreaming().catch(()=>{});if(avatarCtx){avatarCtx.close().catch(()=>{});avatarCtx=null}guideLive.hidden=true;guideVideo.hidden=false;syncGuideVideo();refreshStatus()}
     function renderVoice(){
       voiceStart.textContent=talking?'会話を終了する':Recognition?'マイクをオンにして話す':'声の回答を始める';voiceStart.classList.toggle('is-on',talking);
-      voiceHelp.textContent=micNote||(!Recognition?'このブラウザは音声入力に対応していません。下の質問を押すと、声で答えます。':talking?'話しかけてください。答え終わると、また聞き取ります。':'モードを選んだだけでは始まりません。ボタンを押すと、マイクとアバターの声が動きます。');
+      voiceHelp.textContent=micNote||(!Recognition?'このブラウザは音声入力に対応していません。下の質問を押すと、声で答えます。':talking?'話しかけてください。答えの途中でも、話しかけると止まって聞きます。':'モードを選んだだけでは始まりません。ボタンを押すと、マイクとアバターの声が動きます。');
       voiceChoices.hidden=!!Recognition&&!micNote;
       voiceTitle.textContent=mode==='haiku'?'五七五で話す':'音声で話す';voiceIdle.hidden=talking||!voiceReply.hidden;
     }
     function showReply(heard,text,haiku){voiceIdle.hidden=true;voiceHeard.hidden=!heard;voiceHeard.textContent=heard?'聞き取った質問：'+heard:'';voiceReply.hidden=false;voiceReply.classList.toggle('is-haiku',haiku);voiceReply.textContent=text}
-    // Recognition pauses while the answer is read, so the avatar's own voice is not picked up as the next question.
-    function holdListening(text){resumeAt=Date.now()+Math.min(60000,2000+text.length*200)}
-    function stopListening(){clearTimeout(listenTimer);if(rec){const r=rec;rec=null;r.onend=null;try{r.abort()}catch{}}}
-    function listen(delay=0){clearTimeout(listenTimer);if(!Recognition||!talking||micNote)return;listenTimer=setTimeout(()=>{if(!talking||rec)return;const r=new Recognition();rec=r;r.lang='ja-JP';r.interimResults=false;r.onresult=e=>askVoice(e.results[0][0].transcript);r.onerror=e=>{if(e.error==='not-allowed'||e.error==='service-not-allowed'){micNote='マイクが許可されていません。下の質問を押すか、チャットで質問してください。';renderVoice()}};r.onend=()=>{if(rec===r)rec=null;listen(300)};try{r.start()}catch{rec=null}},Math.max(delay,resumeAt-Date.now()))}
-    function startTalk(){if(talking)return;talking=true;talkGen++;startAvatar();talkTimer=setTimeout(endTalk,AVATAR_MAX_MS);const haiku=mode==='haiku',text=haiku?greeting.haiku.join('、'):greeting.normal;showReply('',haiku?greeting.haiku.join('\n'):greeting.normal,haiku);holdListening(text);say(text);listen();renderVoice();refreshStatus()}
-    function endTalk(){if(!talking)return;talking=false;talkGen++;voiceAsking=false;stopListening();clearTimeout(talkTimer);stopAvatar();if('speechSynthesis'in window)speechSynthesis.cancel();renderVoice();refreshStatus()}
+        function stopListening(){clearTimeout(listenTimer);if(rec){const r=rec;rec=null;r.onend=null;try{r.abort()}catch{}}}
+    // Barge-in: recognition keeps running while the guide speaks. When the visitor starts talking, the guide stops at once.
+    // What the mic hears of the guide's own voice is ignored by comparing it with the text being read.
+    function markSpeaking(text){speakingText=text;speakingUntil=Date.now()+Math.min(60000,2000+text.length*200);echoUntil=speakingUntil+5000}
+    function normSpeech(t){return t.replace(/[\s、。，．,.!?！？「」…]/g,'')}
+    function isEcho(t){if(Date.now()>echoUntil)return false;const a=normSpeech(t),b=normSpeech(speakingText);if(a.length<3)return true;let hit=0,n=0;for(let k=0;k<a.length-1;k++){n++;if(b.includes(a.slice(k,k+2)))hit++}return hit/n>=.5}
+    function interruptSpeech(){speakingUntil=0;if(avatar){try{avatar.interruptPersona()}catch{}}avatarPending='';if('speechSynthesis'in window)speechSynthesis.cancel();voiceReply.classList.remove('is-haiku');voiceReply.textContent='聞いています…'}
+    function listen(delay=300){clearTimeout(listenTimer);if(!Recognition||!talking||micNote)return;listenTimer=setTimeout(()=>{if(!talking||rec)return;const r=new Recognition();rec=r;r.lang='ja-JP';r.interimResults=true;r.onresult=e=>{let t='',fin=false;for(const x of e.results){t+=x[0].transcript;if(x.isFinal)fin=true}t=t.trim();if(!t)return;if(isEcho(t))return;if(Date.now()<speakingUntil)interruptSpeech();if(fin)askVoice(t)};r.onerror=e=>{if(e.error==='not-allowed'||e.error==='service-not-allowed'){micNote='マイクが許可されていません。下の質問を押すか、チャットで質問してください。';renderVoice()}};r.onend=()=>{if(rec===r)rec=null;listen()};try{r.start()}catch{rec=null}},delay)}
+    function startTalk(){if(talking)return;talking=true;talkGen++;startAvatar();talkTimer=setTimeout(endTalk,AVATAR_MAX_MS);const haiku=mode==='haiku',text=haiku?greeting.haiku.join('、'):greeting.normal;showReply('',haiku?greeting.haiku.join('\n'):greeting.normal,haiku);markSpeaking(text);say(text);listen();renderVoice();refreshStatus()}
+    function endTalk(){if(!talking)return;talking=false;speakingUntil=echoUntil=0;speakingText='';talkGen++;voiceAsking=false;stopListening();clearTimeout(talkTimer);stopAvatar();if('speechSynthesis'in window)speechSynthesis.cancel();renderVoice();refreshStatus()}
     addEventListener('pagehide',endTalk);document.addEventListener('visibilitychange',()=>{if(document.hidden)endTalk()});
     function setMode(next){if(!['chat','normal','haiku'].includes(next)||next===mode)return;endTalk();mode=next;micNote='';document.querySelectorAll('[data-rail-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.railMode===next)));chatPanel.hidden=next!=='chat';voicePanel.hidden=next==='chat';voiceHeard.hidden=voiceReply.hidden=true;renderVoice();refreshStatus()}
     document.querySelectorAll('[data-rail-mode]').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.railMode)));
@@ -307,7 +311,7 @@
     // While waiting, recognition is stopped; a stale answer (talk restarted or mode switched meanwhile) is dropped.
     async function askVoice(raw){const q=raw.trim();if(!q||voiceAsking)return;const asked=mode;if(!talking)startTalk();const gen=talkGen;voiceAsking=true;stopListening();showReply(q,'考えています…',false);
       const r=await ask(q,asked==='haiku'?'haiku':'normal');if(gen!==talkGen||mode!==asked||!talking)return;voiceAsking=false;const lines=asked==='haiku'&&r.verse?r.verse:null,text=lines?lines.join('、'):r.answer;
-      showReply(q,lines?lines.join('\n'):r.answer,!!lines);stopListening();holdListening(text);say(text);listen()}
+      showReply(q,lines?lines.join('\n'):r.answer,!!lines);markSpeaking(text);say(text);listen()}
     document.querySelectorAll('[data-demo-prompt]').forEach(b=>b.addEventListener('click',()=>{openChat();respond(b.dataset.demoPrompt,true)}));
     document.querySelectorAll('[data-chat-prompt]').forEach(b=>b.addEventListener('click',()=>respond(b.dataset.chatPrompt)));
     document.querySelectorAll('[data-voice-prompt]').forEach(b=>b.addEventListener('click',()=>askVoice(b.dataset.voicePrompt)));
