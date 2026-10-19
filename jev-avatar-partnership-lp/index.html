@@ -215,8 +215,10 @@
     // ?avatarApi= is for testing only; only the origin is used and it must be AIO, an AIO branch build, or localhost.
     function avatarEndpoint(){try{const q=new URLSearchParams(location.search).get('avatarApi');if(q){const o=new URL(q).origin;if(o==='https://aio.elliot-tech.jp'||/^https:\/\/[a-z0-9-]+\.do9kd4ht7lupn\.amplifyapp\.com$/.test(o)||/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(o))return o+AVATAR_PATH}}catch{}return guide.dataset.avatarApi}
     function visitorToken(){try{let t=localStorage.getItem('partnerAvatarVisitor');if(!t){t=crypto.randomUUID();localStorage.setItem('partnerAvatarVisitor',t)}return t}catch{return 'v'+Math.random().toString(36).slice(2)+Date.now().toString(36)}}
-    function browserSay(text){if(!('speechSynthesis'in window))return;speechSynthesis.cancel();const utterance=new SpeechSynthesisUtterance(text);utterance.lang='ja-JP';utterance.rate=.96;utterance.onend=()=>{if(speakingText===text){speakingUntil=0;echoUntil=Date.now()+1500}};speechSynthesis.speak(utterance)}
-    function say(text){if(!text)return;if(avatar){try{avatar.interruptPersona()}catch{}avatar.talk(text).catch(e=>console.warn('[partner-avatar] talk failed',e));return}if(avatarConnecting){avatarPending=text;return}browserSay(text)}
+    function browserSay(text){if(!('speechSynthesis'in window))return;speechSynthesis.cancel();const utterance=new SpeechSynthesisUtterance(text);utterance.lang='ja-JP';utterance.rate=.96;const mine=speakingText;utterance.onend=()=>{if(speakingText===mine){speakingUntil=0;echoUntil=Date.now()+1500}};speechSynthesis.speak(utterance)}
+    // Reading fixes for the voice only; the screen keeps the written form.
+    const READINGS=[[/御社/g,'おんしゃ']];
+    function say(text){if(!text)return;text=READINGS.reduce((t,[re,r])=>t.replace(re,r),text);if(avatar){try{avatar.interruptPersona()}catch{}avatar.talk(text).catch(e=>console.warn('[partner-avatar] talk failed',e));return}if(avatarConnecting){avatarPending=text;return}browserSay(text)}
     async function startAvatar(){
       if(avatar||avatarConnecting||Date.now()-avatarFailedAt<AVATAR_RETRY_MS)return;
       const gen=++avatarGen;avatarConnecting=true;refreshStatus();
