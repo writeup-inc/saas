@@ -76,6 +76,22 @@
     .guide-body{flex:1;min-height:0;display:flex;flex-direction:column;gap:8px;padding:10px 12px}
     .guide-modes{flex:none;display:flex;gap:2px;padding:3px;border-radius:24px;background:#e7edf6}.guide-modes button{flex:1;min-width:0;min-height:34px;padding:2px;border:0;border-radius:18px;background:transparent;color:#445774;font-size:11px;font-weight:800}.guide-modes button[aria-pressed="true"]{background:#fff;color:#183651;box-shadow:0 1px 5px rgba(20,50,75,.12)}
     .guide-panel{flex:1;min-height:0;display:flex;flex-direction:column;gap:7px}.guide-panel[hidden]{display:none}
+    .guide-panel-title{flex:none;margin:0;color:#183651;font-size:12px;font-weight:850;letter-spacing:.02em}
+    .chat-starter{width:100%;display:flex;flex-direction:column;gap:5px;margin-top:4px}
+    .chat-starter p{margin:0 0 1px;color:#77868c;font-size:10px;font-weight:750}
+    .chat-starter button{display:flex;flex-direction:column;gap:1px;width:100%;padding:8px 10px;border:1px solid #dbe4e2;border-radius:10px;background:#fff;color:#243c47;text-align:left;cursor:pointer;transition:border-color .16s ease,background-color .16s ease}
+    .chat-starter button:hover{border-color:#9fb8b2;background:#f6faf8}
+    .chat-starter b{color:#1b6657;font-size:9px;font-weight:900;letter-spacing:.04em}
+    .chat-starter span{font-size:11px;font-weight:750;line-height:1.45}
+    .chat-msg.is-thinking{color:#77868c}
+    .chat-msg a{display:inline-block;margin-top:6px;color:#174c65;font-size:10px;font-weight:800;text-underline-offset:2px}
+    .voice-idle{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:10px;border-radius:12px;background:linear-gradient(180deg,#f3f7f6,#e9f0ee);color:#56676f;text-align:center}
+    .voice-idle[hidden]{display:none}
+    .voice-idle p{margin:0;font-size:11px;line-height:1.6}
+    .voice-idle-mic{position:relative;display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:#fff;color:#e77f36;box-shadow:0 4px 16px rgba(20,50,75,.12)}
+    .voice-idle-mic:before{content:"";position:absolute;inset:-8px;border-radius:50%;border:1px solid rgba(231,127,54,.35);animation:micRing 2.4s ease-out infinite}
+    @keyframes micRing{0%{transform:scale(.9);opacity:1}100%{transform:scale(1.25);opacity:0}}
+    @media (prefers-reduced-motion:reduce){.voice-idle-mic:before{animation:none}}
     .chat-log{flex:1;min-height:60px;overflow:auto;display:flex;flex-direction:column;align-items:flex-start;gap:7px;padding:2px 1px}.chat-msg{max-width:100%;padding:8px 9px;border-radius:9px;background:#edf2f1;color:#243c47;font-size:12px;line-height:1.55;white-space:pre-line;overflow-wrap:anywhere}.chat-msg.user{align-self:flex-end;background:#173346;color:#fff}
     .chat-choices{flex:none;display:flex;flex-wrap:wrap;gap:4px}.chat-choices[hidden]{display:none}.chat-choices button{min-height:30px;padding:3px 10px;border:1px solid #d0d9d8;border-radius:18px;background:#f8faf8;color:#354f58;font-size:10px;font-weight:750}.chat-choices button:hover{background:#eaf1ee}
     .chat-form{flex:none;display:flex;gap:4px}.chat-form input{flex:1;min-width:0;min-height:36px;padding:6px 11px;border:1px solid #d0d9d8;border-radius:18px;font-size:12px}.chat-form button{flex:none;min-height:36px;padding:0 13px;border:0;border-radius:18px;background:#173346;color:#fff;font-size:11px;font-weight:800}
@@ -133,7 +149,7 @@
       <article class="possibility"><div class="top"><span>06 / SUCCESS</span></div><div class="possibility-art" aria-hidden="true"><svg viewBox="0 0 160 104"><rect class="paper" x="17" y="22" width="93" height="63" rx="7"/><path d="M28 35h71M31 74h47M32 47h47M32 59h36"/><circle class="accent" cx="116" cy="45" r="25"/><path d="M104 46c0-9 5-16 12-16s12 7 12 16M104 45v10h7V44h-7m17 0v11h7V45h-7M110 67h13"/></svg></div><h3>顧客サポートアバター</h3><p>契約後の使い方や設定を案内し、問い合わせを受ける役。</p><span class="audience">話す相手：利用中の顧客</span></article>
     </div><div class="beyond"><span>BEYOND THESE SIX</span><strong>あなたの業界なら、誰の分身を作りますか。</strong><a href="#contact">構想を相談する ↗</a></div></div></section>
 
-    <section class="section experience" id="experience"><div class="container experience-grid"><div class="experience-copy"><p class="eyebrow">WHY JEV / THE DECISION LAYER</p><h2>話す前に、<br>次の対応を選ぶ。</h2><p>Jevの役割は、状況に合わせて決められた選択肢から次の対応を選ぶこと。確信が足りないときは、追加で聞くか人に渡す。アバターは、その判断の先で必要な説明を届けます。</p><p>どこまで案内し、何を聞き、いつ人に渡すか。御社の知見をこの判断ルールに落とし込み、事業の体験を設計します。</p><p class="small">このLPはJev API未接続の固定シナリオです。下の分岐は構想例で、実際のAI判断や自由回答ではありません。<a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev" target="_blank" rel="noopener">Jevの公開説明 ↗</a></p><button class="button dark" id="openSample" type="button">右端の案内役に聞く</button></div><div class="decision-board" aria-label="Jevを使った対応選択の構想フロー"><p class="decision-board-kicker">DECISION DESIGN <span>固定サンプル</span></p><div class="decision-input"><span>INPUT</span><strong>閲覧区画・質問・利用条件</strong></div><div class="decision-arrow" aria-hidden="true">↓</div><div class="decision-core"><span>JEV / CHOICE</span><strong>次の対応を選ぶ</strong><small>本番構想では、選択肢・確信度の基準・引き継ぎ条件を先に設計</small></div><div class="decision-arrow" aria-hidden="true">↓</div><div class="decision-outcomes"><div><b>01</b><strong>説明する</strong><small>確認済みの案内を届ける</small></div><div><b>02</b><strong>追加で聞く</strong><small>足りない条件を確かめる</small></div><div><b>03</b><strong>人につなぐ</strong><small>個別条件は担当者へ</small></div></div><p class="decision-board-note">回答の言い方は通常・五七五で切り替え。対応の判断とは分けて設計します。</p><div class="decision-trials"><span>3つの分岐を試す</span><button type="button" data-demo-prompt="営業・商談">説明する</button><button type="button" data-demo-prompt="用途がまだ未定です">追加で聞く</button><button type="button" data-demo-prompt="費用と契約条件は？">人につなぐ</button></div></div></div></section>
+    <section class="section experience" id="experience"><div class="container experience-grid"><div class="experience-copy"><p class="eyebrow">WHY JEV / THE DECISION LAYER</p><h2>話す前に、<br>次の対応を選ぶ。</h2><p>Jevの役割は、状況に合わせて決められた選択肢から次の対応を選ぶこと。確信が足りないときは、追加で聞くか人に渡す。アバターは、その判断の先で必要な説明を届けます。</p><p>どこまで案内し、何を聞き、いつ人に渡すか。御社の知見をこの判断ルールに落とし込み、事業の体験を設計します。</p><p class="small">下の分岐はJev API未接続の固定シナリオで、構想例です。右端の案内役に自分で質問したときは、AIがこのページの内容の範囲で答えます。<a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev" target="_blank" rel="noopener">Jevの公開説明 ↗</a></p><button class="button dark" id="openSample" type="button">右端の案内役に聞く</button></div><div class="decision-board" aria-label="Jevを使った対応選択の構想フロー"><p class="decision-board-kicker">DECISION DESIGN <span>固定サンプル</span></p><div class="decision-input"><span>INPUT</span><strong>閲覧区画・質問・利用条件</strong></div><div class="decision-arrow" aria-hidden="true">↓</div><div class="decision-core"><span>JEV / CHOICE</span><strong>次の対応を選ぶ</strong><small>本番構想では、選択肢・確信度の基準・引き継ぎ条件を先に設計</small></div><div class="decision-arrow" aria-hidden="true">↓</div><div class="decision-outcomes"><div><b>01</b><strong>説明する</strong><small>確認済みの案内を届ける</small></div><div><b>02</b><strong>追加で聞く</strong><small>足りない条件を確かめる</small></div><div><b>03</b><strong>人につなぐ</strong><small>個別条件は担当者へ</small></div></div><p class="decision-board-note">回答の言い方は通常・五七五で切り替え。対応の判断とは分けて設計します。</p><div class="decision-trials"><span>3つの分岐を試す</span><button type="button" data-demo-prompt="営業・商談">説明する</button><button type="button" data-demo-prompt="用途がまだ未定です">追加で聞く</button><button type="button" data-demo-prompt="費用と契約条件は？">人につなぐ</button></div></div></div></section>
 
     <div class="transition-band"><div class="container"><p>アイデアを眺めるところから、<br><strong>事業として育てる話へ。</strong></p><span>LET'S BUILD TOGETHER</span></div></div>
 
@@ -158,12 +174,15 @@
     <div class="guide-body" id="guideBody">
       <div class="guide-modes" role="group" aria-label="会話モード"><button type="button" data-rail-mode="chat" aria-pressed="true">チャット</button><button type="button" data-rail-mode="normal" aria-pressed="false">音声</button><button type="button" data-rail-mode="haiku" aria-pressed="false">五七五</button></div>
       <div class="guide-panel" id="chatPanel">
-        <div class="chat-log" id="chatLog" role="log" aria-live="polite" aria-label="案内役との会話"><div class="chat-msg">こんにちは。御社の知見をどう届けるか、一緒に考えましょう。用途・進め方・費用について質問できます。</div></div>
-        <div class="chat-choices"><button type="button" data-chat-prompt="営業・商談">営業・商談</button><button type="button" data-chat-prompt="Web接客">Web接客</button><button type="button" data-chat-prompt="用途がまだ未定です">用途は未定</button><button type="button" data-chat-prompt="費用と契約条件は？">費用・契約</button></div>
-        <form class="chat-form" id="chatForm"><input id="chatText" aria-label="質問を入力" placeholder="質問を入力" autocomplete="off" maxlength="500"><button type="submit">送信</button></form>
+        <p class="guide-panel-title">文字で質問する</p>
+        <div class="chat-log" id="chatLog" role="log" aria-live="polite" aria-label="案内役との会話"><div class="chat-msg">こんにちは。御社の知見をどう届けるか、一緒に考えましょう。思いついたことを、そのまま書いてください。</div><div class="chat-starter" id="chatStarter"><p>たとえば、こんな話から</p><button type="button" data-chat-prompt="うちの業界でも使えますか？"><b>業界に合うか</b><span>うちの業界でも使えますか？</span></button><button type="button" data-chat-prompt="営業担当の知見をアバターにしたいです"><b>誰の分身にするか</b><span>営業担当の知見をアバターにしたい</span></button><button type="button" data-chat-prompt="まず何から始めればいいですか？"><b>始め方</b><span>まず何から始めればいい？</span></button></div></div>
+        <div class="chat-choices"><button type="button" data-chat-prompt="どんな用途がありますか？">どんな用途？</button><button type="button" data-chat-prompt="進め方を教えてください">進め方は？</button></div>
+        <form class="chat-form" id="chatForm"><input id="chatText" aria-label="質問を入力" placeholder="質問を入力" autocomplete="off" maxlength="300"><button type="submit">送信</button></form>
       </div>
       <div class="guide-panel" id="voicePanel" hidden>
+        <p class="guide-panel-title" id="voiceTitle">音声で話す</p>
         <p class="voice-help" id="voiceHelp"></p>
+        <div class="voice-idle" id="voiceIdle"><span class="voice-idle-mic" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span><p id="voiceIdleText">「どんな用途がある？」のように、<br>声で話しかけてください。</p></div>
         <p class="voice-heard" id="voiceHeard" hidden></p>
         <p class="voice-reply" id="voiceReply" aria-live="polite" aria-atomic="true" hidden></p>
         <div class="chat-choices" id="voiceChoices" hidden><button type="button" data-voice-prompt="営業・商談">営業・商談</button><button type="button" data-voice-prompt="Web接客">Web接客</button><button type="button" data-voice-prompt="用途がまだ未定です">用途は未定</button><button type="button" data-voice-prompt="費用と契約条件は？">費用・契約</button></div>
@@ -183,15 +202,15 @@
     const modal=document.getElementById('copyModal');titles.forEach((item,i)=>{const li=document.createElement('li'),headline=document.createElement('strong'),note=document.createElement('span');headline.className='modal-headline';headline.textContent=item.lines.join(' ');note.textContent=item.note;li.append('0'+(i+1)+'　',headline,note);document.getElementById('modalCopies').append(li)});document.querySelectorAll('main section h2').forEach(el=>{const li=document.createElement('li'),a=document.createElement('a');a.href='#'+el.closest('section').id;a.textContent=el.textContent;li.append(a);document.getElementById('modalStory').append(li)});
     function openModal(){paused=true;clearTimeout(timer);renderTitle(active,fullLen(active));modal.showModal()}titleButton.addEventListener('click',openModal);document.getElementById('modalClose').addEventListener('click',()=>modal.close());modal.addEventListener('close',()=>{paused=false;schedule()});modal.addEventListener('click',e=>{if(e.target===modal)modal.close()});document.getElementById('modalStory').addEventListener('click',e=>{if(e.target.closest('a'))modal.close()});schedule();
     const header=document.getElementById('siteHeader');let last=scrollY,ticking=false;function updateHeader(){const y=scrollY,d=y-last;if(y<120||header.contains(document.activeElement))header.classList.remove('is-hidden');else if(d>8)header.classList.add('is-hidden');else if(d< -8)header.classList.remove('is-hidden');if(Math.abs(d)>8)last=y;ticking=false}addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(updateHeader)}},{passive:true});header.addEventListener('focusin',()=>header.classList.remove('is-hidden'));
-    const guide=document.getElementById('partnerGuide'),chatLog=document.getElementById('chatLog'),chatText=document.getElementById('chatText'),chatPanel=document.getElementById('chatPanel'),voicePanel=document.getElementById('voicePanel'),voiceHelp=document.getElementById('voiceHelp'),voiceHeard=document.getElementById('voiceHeard'),voiceReply=document.getElementById('voiceReply'),voiceChoices=document.getElementById('voiceChoices'),voiceStart=document.getElementById('voiceStart');
+    const guide=document.getElementById('partnerGuide'),chatLog=document.getElementById('chatLog'),chatText=document.getElementById('chatText'),chatPanel=document.getElementById('chatPanel'),voicePanel=document.getElementById('voicePanel'),voiceHelp=document.getElementById('voiceHelp'),voiceHeard=document.getElementById('voiceHeard'),voiceReply=document.getElementById('voiceReply'),voiceChoices=document.getElementById('voiceChoices'),voiceStart=document.getElementById('voiceStart'),voiceIdle=document.getElementById('voiceIdle'),voiceTitle=document.getElementById('voiceTitle');
     const guideVideo=document.getElementById('guideVideo'),guideLive=document.getElementById('guideLive'),guideDisclose=document.getElementById('guideDisclose');let avatar=null,avatarCtx=null,avatarConnecting=false,avatarGen=0,avatarFailedAt=0,avatarPending='';function syncGuideVideo(){if(reduce||document.hidden||avatar){guideVideo.pause();return}guideVideo.play().catch(()=>{})}document.addEventListener('visibilitychange',syncGuideVideo);syncGuideVideo();
     // Pattern A (lp-avatar-note #mock): chat is the default; voice and 575 start only after the visitor presses the mic button.
     const Recognition=window.SpeechRecognition||window.webkitSpeechRecognition;
-    let mode='chat',talking=false,rec=null,listenTimer=null,talkTimer=null,resumeAt=0,micNote='';
+    let mode='chat',talking=false,talkGen=0,voiceAsking=false,rec=null,listenTimer=null,talkTimer=null,resumeAt=0,micNote='';
     const greeting={normal:'こんにちは。御社の知見をどう届けるか、声で質問してください。',haiku:['ようこそね','御社の知恵を','聞かせてね']};
-    // Anam avatar (ADR 0181 in aio-master): AIO issues the session token; the avatar only reads the fixed text below via talk().
+    // Anam avatar (ADR 0181 in aio-master): AIO issues the session token and writes the answers; the avatar only reads them via talk().
     const AVATAR_SDK='https://cdn.jsdelivr.net/npm/@anam-ai/js-sdk@4.27.1/+esm',AVATAR_PATH='/api/lp/partner-avatar/token',AVATAR_MAX_MS=600000,AVATAR_RETRY_MS=60000;
-    const discloseText={idle:'待機中・音声停止（Jev API未接続）',ready:'音声開始前・まだ接続していません',connecting:'アバターに接続しています…',live:'アバターが固定文を読み上げ中（最長10分）',fallback:'アバターにつながらないため端末の音声で読み上げ中'};
+    const discloseText={idle:'AIがこのページの内容で答えます。条件の確約はしません',ready:'音声開始前・まだ接続していません',connecting:'アバターに接続しています…',live:'アバターが回答を読み上げ中（最長10分）',fallback:'アバターにつながらないため端末の音声で読み上げ中'};
     function refreshStatus(){guideDisclose.textContent=discloseText[talking?(avatar?'live':avatarConnecting?'connecting':'fallback'):mode==='chat'?'idle':'ready'];guide.classList.toggle('is-speaking',talking)}
     // ?avatarApi= is for testing only; only the origin is used and it must be AIO, an AIO branch build, or localhost.
     function avatarEndpoint(){try{const q=new URLSearchParams(location.search).get('avatarApi');if(q){const o=new URL(q).origin;if(o==='https://aio.elliot-tech.jp'||/^https:\/\/[a-z0-9-]+\.do9kd4ht7lupn\.amplifyapp\.com$/.test(o)||/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(o))return o+AVATAR_PATH}}catch{}return guide.dataset.avatarApi}
@@ -220,7 +239,7 @@
         avatar=client;avatarCtx=ctx;avatarConnecting=false;
         guideLive.hidden=false;guideVideo.hidden=true;guideVideo.pause();guideLive.play().catch(e=>console.warn('[partner-avatar] play failed',e));refreshStatus();
         if('speechSynthesis'in window)speechSynthesis.cancel();
-        const line=avatarPending;avatarPending='';say(line);
+        const line=avatarPending;avatarPending='';if(line){stopListening();holdListening(line);say(line);listen()}
       }catch(e){
         if(client)client.stopStreaming().catch(()=>{});
         if(ctx)ctx.close().catch(()=>{});
@@ -235,13 +254,15 @@
       voiceStart.textContent=talking?'会話を終了する':Recognition?'マイクをオンにして話す':'声の回答を始める';voiceStart.classList.toggle('is-on',talking);
       voiceHelp.textContent=micNote||(!Recognition?'このブラウザは音声入力に対応していません。下の質問を押すと、声で答えます。':talking?'話しかけてください。答え終わると、また聞き取ります。':'モードを選んだだけでは始まりません。ボタンを押すと、マイクとアバターの声が動きます。');
       voiceChoices.hidden=!!Recognition&&!micNote;
+      voiceTitle.textContent=mode==='haiku'?'五七五で話す':'音声で話す';voiceIdle.hidden=talking||!voiceReply.hidden;
     }
-    function showReply(heard,text,haiku){voiceHeard.hidden=!heard;voiceHeard.textContent=heard?'聞き取った質問：'+heard:'';voiceReply.hidden=false;voiceReply.classList.toggle('is-haiku',haiku);voiceReply.textContent=text}
+    function showReply(heard,text,haiku){voiceIdle.hidden=true;voiceHeard.hidden=!heard;voiceHeard.textContent=heard?'聞き取った質問：'+heard:'';voiceReply.hidden=false;voiceReply.classList.toggle('is-haiku',haiku);voiceReply.textContent=text}
     // Recognition pauses while the answer is read, so the avatar's own voice is not picked up as the next question.
-    function holdListening(text){resumeAt=Date.now()+Math.min(15000,1500+text.length*180)}
+    function holdListening(text){resumeAt=Date.now()+Math.min(60000,2000+text.length*200)}
+    function stopListening(){clearTimeout(listenTimer);if(rec){const r=rec;rec=null;r.onend=null;try{r.abort()}catch{}}}
     function listen(delay=0){clearTimeout(listenTimer);if(!Recognition||!talking||micNote)return;listenTimer=setTimeout(()=>{if(!talking||rec)return;const r=new Recognition();rec=r;r.lang='ja-JP';r.interimResults=false;r.onresult=e=>askVoice(e.results[0][0].transcript);r.onerror=e=>{if(e.error==='not-allowed'||e.error==='service-not-allowed'){micNote='マイクが許可されていません。下の質問を押すか、チャットで質問してください。';renderVoice()}};r.onend=()=>{if(rec===r)rec=null;listen(300)};try{r.start()}catch{rec=null}},Math.max(delay,resumeAt-Date.now()))}
-    function startTalk(){if(talking)return;talking=true;startAvatar();talkTimer=setTimeout(endTalk,AVATAR_MAX_MS);const haiku=mode==='haiku',text=haiku?greeting.haiku.join('、'):greeting.normal;showReply('',haiku?greeting.haiku.join('\n'):greeting.normal,haiku);holdListening(text);say(text);listen();renderVoice();refreshStatus()}
-    function endTalk(){if(!talking)return;talking=false;clearTimeout(listenTimer);clearTimeout(talkTimer);if(rec){const r=rec;rec=null;r.onend=null;try{r.abort()}catch{}}stopAvatar();if('speechSynthesis'in window)speechSynthesis.cancel();renderVoice();refreshStatus()}
+    function startTalk(){if(talking)return;talking=true;talkGen++;startAvatar();talkTimer=setTimeout(endTalk,AVATAR_MAX_MS);const haiku=mode==='haiku',text=haiku?greeting.haiku.join('、'):greeting.normal;showReply('',haiku?greeting.haiku.join('\n'):greeting.normal,haiku);holdListening(text);say(text);listen();renderVoice();refreshStatus()}
+    function endTalk(){if(!talking)return;talking=false;talkGen++;voiceAsking=false;stopListening();clearTimeout(talkTimer);stopAvatar();if('speechSynthesis'in window)speechSynthesis.cancel();renderVoice();refreshStatus()}
     addEventListener('pagehide',endTalk);document.addEventListener('visibilitychange',()=>{if(document.hidden)endTalk()});
     function setMode(next){if(!['chat','normal','haiku'].includes(next)||next===mode)return;endTalk();mode=next;micNote='';document.querySelectorAll('[data-rail-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.railMode===next)));chatPanel.hidden=next!=='chat';voicePanel.hidden=next==='chat';voiceHeard.hidden=voiceReply.hidden=true;renderVoice();refreshStatus()}
     document.querySelectorAll('[data-rail-mode]').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.railMode)));
@@ -262,10 +283,32 @@
       if(/育成|採用|面接|研修/.test(q))return{choice:'説明する',answer:'育成・採用では、会話の目的と評価に使う範囲を先に定めます。人物の顔や声を使う場合は、本人の許諾を確認します。',verse:['学び合う','対話で育つ','力かな']};
       return{choice:'追加で聞く',answer:'まだ用途を決めなくて大丈夫です。御社が持つ知見と、届けたい相手を一つずつ教えてください。',verse:['まずは聞く','知恵のありかを','共に見る']};
     }
+    // The visitor's own questions are answered by AIO (ADR 0181 §6): fees, contracts and face/voice terms get a fixed hand-off there, and the rest is answered from this page's content.
+    // The Jev demo buttons (data-demo-prompt) keep the fixed routes above. If AIO cannot answer, the fixed route is used instead.
+    const ANSWER_PATH='/api/lp/partner-avatar/answer',history=[];
+    function answerEndpoint(){return new URL(avatarEndpoint()).origin+ANSWER_PATH}
+    async function ask(q,style){
+      try{
+        const res=await fetch(answerEndpoint(),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({visitorToken:visitorToken(),style,question:q.slice(0,300),history:history.slice(-8)}),signal:AbortSignal.timeout?AbortSignal.timeout(20000):undefined});
+        const json=await res.json().catch(()=>({}));
+        // Only the visitor's own lines are sent back as history; AIO does not accept the guide's replies from the page.
+        if(res.ok&&json.answer){history.push(q.slice(0,300));return{answer:json.answer,verse:Array.isArray(json.verse)?json.verse:null,handoff:json.source==='handoff'||json.source==='guarded'}}
+        if(json.error)return{answer:json.error,verse:null,handoff:false};
+      }catch(e){console.warn('[partner-avatar] answer failed',e)}
+      const r=decide(q);return{answer:r.answer,verse:r.verse,handoff:r.choice==='人につなぐ'};
+    }
+    function addContactLink(el){const a=document.createElement('a');a.href='https://www.writeup.jp/contact/';a.target='_blank';a.rel='noopener';a.textContent='公式窓口へ ↗';el.append(a)}
+    let asking=false;
     // Chat answers stay text-only; starting the avatar opens a billed Anam session, so it waits for the voice tabs.
-    function respond(raw){const q=raw.trim();if(!q)return;addMessage(q,true);const r=decide(q);addDecision(r.choice,r.answer);chatText.value=''}
-    function askVoice(raw){const q=raw.trim();if(!q)return;const haiku=mode==='haiku',r=decide(q),text=haiku?r.verse.join('、'):r.answer;if(!talking)startTalk();showReply(q,haiku?r.verse.join('\n'):r.answer,haiku);holdListening(text);say(text)}
-    document.querySelectorAll('[data-demo-prompt]').forEach(b=>b.addEventListener('click',()=>{openChat();respond(b.dataset.demoPrompt)}));
+    async function respond(raw,demo=false){const q=raw.trim();if(!q||asking)return;document.getElementById('chatStarter')?.remove();addMessage(q,true);chatText.value='';
+      if(demo){const r=decide(q);addDecision(r.choice,r.answer);return}
+      const send=document.querySelector('#chatForm button');asking=true;send.disabled=true;const el=addMessage('考えています…');el.classList.add('is-thinking');
+      const r=await ask(q,'normal');asking=false;send.disabled=false;el.classList.remove('is-thinking');el.textContent=r.answer;if(r.handoff)addContactLink(el);chatLog.scrollTop=chatLog.scrollHeight}
+    // While waiting, recognition is stopped; a stale answer (talk restarted or mode switched meanwhile) is dropped.
+    async function askVoice(raw){const q=raw.trim();if(!q||voiceAsking)return;const asked=mode;if(!talking)startTalk();const gen=talkGen;voiceAsking=true;stopListening();showReply(q,'考えています…',false);
+      const r=await ask(q,asked==='haiku'?'haiku':'normal');if(gen!==talkGen||mode!==asked||!talking)return;voiceAsking=false;const lines=asked==='haiku'&&r.verse?r.verse:null,text=lines?lines.join('、'):r.answer;
+      showReply(q,lines?lines.join('\n'):r.answer,!!lines);stopListening();holdListening(text);say(text);listen()}
+    document.querySelectorAll('[data-demo-prompt]').forEach(b=>b.addEventListener('click',()=>{openChat();respond(b.dataset.demoPrompt,true)}));
     document.querySelectorAll('[data-chat-prompt]').forEach(b=>b.addEventListener('click',()=>respond(b.dataset.chatPrompt)));
     document.querySelectorAll('[data-voice-prompt]').forEach(b=>b.addEventListener('click',()=>askVoice(b.dataset.voicePrompt)));
     document.getElementById('chatForm').addEventListener('submit',e=>{e.preventDefault();respond(chatText.value)});
