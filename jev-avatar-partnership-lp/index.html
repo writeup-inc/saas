@@ -95,7 +95,21 @@
     .chat-log{flex:1;min-height:60px;overflow:auto;display:flex;flex-direction:column;align-items:flex-start;gap:7px;padding:2px 1px}.chat-msg{max-width:100%;padding:8px 9px;border-radius:9px;background:#edf2f1;color:#243c47;font-size:12px;line-height:1.55;white-space:pre-line;overflow-wrap:anywhere}.chat-msg.user{align-self:flex-end;background:#173346;color:#fff}
     .chat-choices{flex:none;display:flex;flex-wrap:wrap;gap:4px}.chat-choices[hidden]{display:none}.chat-choices button{min-height:30px;padding:3px 10px;border:1px solid #d0d9d8;border-radius:18px;background:#f8faf8;color:#354f58;font-size:10px;font-weight:750}.chat-choices button:hover{background:#eaf1ee}
     .chat-form{flex:none;display:flex;gap:4px}.chat-form input{flex:1;min-width:0;min-height:36px;padding:6px 11px;border:1px solid #d0d9d8;border-radius:18px;font-size:12px}.chat-form button{flex:none;min-height:36px;padding:0 13px;border:0;border-radius:18px;background:#173346;color:#fff;font-size:11px;font-weight:800}
-    .voice-help{flex:none;margin:0;color:#56676f;font-size:11px;line-height:1.55}.voice-heard{flex:none;margin:0;color:#6f7b7d;font-size:10px;line-height:1.45;overflow-wrap:anywhere}.voice-reply{flex:1;min-height:0;overflow:auto;margin:0;padding:10px;border-radius:9px;background:#edf2f1;color:#243c47;font-size:12px;font-weight:750;line-height:1.6;white-space:pre-line;overflow-wrap:anywhere}.voice-reply.is-haiku{display:flex;align-items:center;justify-content:center;text-align:center;font-size:15px;line-height:1.75}.voice-heard[hidden],.voice-reply[hidden]{display:none}
+    .voice-help{flex:none;margin:0;color:#56676f;font-size:11px;line-height:1.55}.voice-heard{flex:none;margin:0;color:#6f7b7d;font-size:10px;line-height:1.45;overflow-wrap:anywhere}.voice-reply{flex:1;min-height:0;overflow:auto;margin:0;padding:10px;border-radius:9px;background:#edf2f1;color:#243c47;font-size:12px;font-weight:750;line-height:1.6;white-space:pre-line;overflow-wrap:anywhere}.voice-reply.is-haiku{display:flex;align-items:center;justify-content:center;padding:14px 10px;background:radial-gradient(circle at 20% 15%,rgba(255,255,255,.7),transparent 55%),radial-gradient(circle at 85% 90%,rgba(180,150,100,.12),transparent 60%),#f6f1e6;border:1px solid #e4d9c3;box-shadow:inset 0 0 18px rgba(150,120,70,.08)}
+    .verse{position:relative;display:flex;flex-direction:row-reverse;gap:.55em;height:100%;min-height:150px;padding:4px 4px 4px 34px;font-family:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho","YuMincho","Noto Serif JP",serif;color:#2a2622}
+    .verse-line{writing-mode:vertical-rl;font-size:19px;font-weight:600;letter-spacing:.18em;line-height:1;margin-top:calc(var(--i) * 1.3em);opacity:0;animation:verseIn .9s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--i) * .7s)}
+    .verse-seal{position:absolute;left:2px;bottom:4px;writing-mode:vertical-rl;padding:5px 3px;border:1.5px solid #b8402a;border-radius:3px;color:#b8402a;font-size:9px;font-weight:700;letter-spacing:.12em;line-height:1.1;opacity:0;animation:verseIn .6s ease forwards;animation-delay:2.1s;transform:rotate(-3deg)}
+    @keyframes verseIn{from{opacity:0;transform:translateY(-6px);filter:blur(2px)}to{opacity:1;transform:none;filter:none}}
+    @media (prefers-reduced-motion:reduce){.verse-line,.verse-seal{animation:none;opacity:1}}
+    .is-haiku-mode .guide-panel-title{font-family:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;font-size:14px;letter-spacing:.12em}
+    .is-haiku-mode .voice-idle{background:#f6f1e6;border:1px solid #e4d9c3;color:#5b5247}
+    .is-haiku-mode .voice-idle p{writing-mode:vertical-rl;font-family:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;font-size:14px;letter-spacing:.2em;line-height:1.9;height:9.5em}
+    .is-haiku-mode .voice-idle-mic{display:none}
+    .is-haiku-mode .voice-start{background:#2a2622;font-family:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;letter-spacing:.12em}
+    .is-haiku-mode .voice-start:hover{background:#45403a}
+    .is-haiku-mode .voice-start.is-on{background:#b8402a}
+    #guideLive{position:absolute;inset:0;opacity:0;transition:opacity .6s ease}
+    #guideLive.is-live{opacity:1}.voice-heard[hidden],.voice-reply[hidden]{display:none}
     .voice-start{flex:none;min-height:42px;margin-top:auto;padding:6px 12px;border:0;border-radius:28px;background:#e77f36;color:#fff;font-size:12px;font-weight:900}.voice-start:hover{background:#cc6525}.voice-start.is-on{background:#173346}
     .guide-status{flex:none;margin:0;color:#77868c;font-size:9px;line-height:1.35}
     .partner-guide.is-minimized{height:auto}.partner-guide.is-minimized .guide-stage{height:96px}.partner-guide.is-minimized .guide-body{display:none}.partner-guide.is-minimized .guide-expand{display:block}.partner-guide.is-minimized .guide-speaking{bottom:auto;top:34px}
@@ -218,7 +232,11 @@
     function browserSay(text){if(!('speechSynthesis'in window))return;speechSynthesis.cancel();const utterance=new SpeechSynthesisUtterance(text);utterance.lang='ja-JP';utterance.rate=.96;const mine=speakingText;utterance.onend=()=>{if(speakingText===mine){speakingUntil=0;echoUntil=Date.now()+1500}};speechSynthesis.speak(utterance)}
     // Reading fixes for the voice only; the screen keeps the written form.
     const READINGS=[[/御社/g,'おんしゃ']];
-    function say(text){if(!text)return;text=READINGS.reduce((t,[re,r])=>t.replace(re,r),text);if(avatar){try{avatar.interruptPersona()}catch{}avatar.talk(text).catch(e=>console.warn('[partner-avatar] talk failed',e));return}if(avatarConnecting){avatarPending=text;return}browserSay(text)}
+    // Fade the avatar's voice out before cutting it, so stopping or interrupting does not end with a click.
+    function fadeVoice(ms){const v=guideLive,from=v.volume;if(v.hidden||from===0)return Promise.resolve();return new Promise(done=>{const t0=performance.now();function step(now){const k=Math.min(1,(now-t0)/ms);v.volume=from*(1-k);if(k<1)requestAnimationFrame(step);else done()}requestAnimationFrame(step)})}
+    let softCut=Promise.resolve();
+    function softInterrupt(){const client=avatar;softCut=fadeVoice(260).then(()=>{if(client){try{client.interruptPersona()}catch{}}guideLive.volume=1});return softCut}
+    function say(text){if(!text)return;text=READINGS.reduce((t,[re,r])=>t.replace(re,r),text);if(avatar){const client=avatar;softInterrupt().then(()=>{if(avatar===client)client.talk(text).catch(e=>console.warn('[partner-avatar] talk failed',e))});return}if(avatarConnecting){avatarPending=text;return}browserSay(text)}
     async function startAvatar(){
       if(avatar||avatarConnecting||Date.now()-avatarFailedAt<AVATAR_RETRY_MS)return;
       const gen=++avatarGen;avatarConnecting=true;refreshStatus();
@@ -239,7 +257,7 @@
         await ready;
         if(gen!==avatarGen)throw new Error('cancelled');
         avatar=client;avatarCtx=ctx;avatarConnecting=false;
-        guideLive.hidden=false;guideVideo.hidden=true;guideVideo.pause();guideLive.play().catch(e=>console.warn('[partner-avatar] play failed',e));refreshStatus();
+        guideLive.volume=1;guideLive.hidden=false;requestAnimationFrame(()=>guideLive.classList.add('is-live'));guideVideo.hidden=true;guideVideo.pause();guideLive.play().catch(e=>console.warn('[partner-avatar] play failed',e));refreshStatus();
         if('speechSynthesis'in window)speechSynthesis.cancel();
         const line=avatarPending;avatarPending='';if(line){markSpeaking(line);say(line)}
       }catch(e){
@@ -251,23 +269,25 @@
         if(talking)browserSay(line);refreshStatus();
       }
     }
-    function stopAvatar(){avatarGen++;avatarConnecting=false;avatarPending='';const client=avatar;avatar=null;if(client)client.stopStreaming().catch(()=>{});if(avatarCtx){avatarCtx.close().catch(()=>{});avatarCtx=null}guideLive.hidden=true;guideVideo.hidden=false;syncGuideVideo();refreshStatus()}
+    function stopAvatar(){avatarGen++;avatarConnecting=false;avatarPending='';const client=avatar,ctx=avatarCtx,gen=avatarGen;avatar=null;avatarCtx=null;guideLive.classList.remove('is-live');fadeVoice(600).then(()=>{if(client)client.stopStreaming().catch(()=>{});if(ctx)ctx.close().catch(()=>{});if(gen===avatarGen&&!avatar){guideLive.hidden=true;guideLive.volume=1}});guideVideo.hidden=false;syncGuideVideo();refreshStatus()}
     function renderVoice(){
-      if(mode==='haiku'){voiceStart.textContent=talking?'解説を止める':'五七五で解説を聞く';voiceStart.classList.toggle('is-on',talking);voiceHelp.textContent=talking?'ページを読み進めてください。読んでいる節をJevが見極めて、句で解説します。':'マイクは使いません。読んでいる節をJevが見極め、その節を五七五で解説します。';voiceChoices.hidden=true;voiceTitle.textContent='五七五で解説';voiceIdleText.innerHTML='ページを読み進めると、<br>読んでいる節を句で解説します。';voiceIdle.hidden=talking||!voiceReply.hidden;return}
+      if(mode==='haiku'){voiceStart.textContent=talking?'解説を止める':'五七五で解説を聞く';voiceStart.classList.toggle('is-on',talking);voiceHelp.textContent=talking?'ページを読み進めてください。読んでいる節をJevが見極めて、句で解説します。':'マイクは使いません。読んでいる節をJevが見極め、その節を五七五で解説します。';voiceChoices.hidden=true;voiceTitle.textContent='五七五で解説';voiceIdleText.innerHTML='読み進め<br>節ごとに句を<br>添えましょう';voiceIdle.hidden=talking||!voiceReply.hidden;return}
       voiceIdleText.innerHTML='「どんな用途がある？」のように、<br>声で話しかけてください。';
       voiceStart.textContent=talking?'会話を終了する':Recognition?'マイクをオンにして話す':'声の回答を始める';voiceStart.classList.toggle('is-on',talking);
       voiceHelp.textContent=micNote||(!Recognition?'このブラウザは音声入力に対応していません。下の質問を押すと、声で答えます。':talking?'話しかけてください。答えの途中でも、話しかけると止まって聞きます。':'モードを選んだだけでは始まりません。ボタンを押すと、マイクとアバターの声が動きます。');
       voiceChoices.hidden=!!Recognition&&!micNote;
       voiceTitle.textContent=mode==='haiku'?'五七五で話す':'音声で話す';voiceIdle.hidden=talking||!voiceReply.hidden;
     }
-    function showReply(heard,text,haiku){voiceIdle.hidden=true;voiceHeard.hidden=!heard;voiceHeard.textContent=heard?'聞き取った質問：'+heard:'';voiceReply.hidden=false;voiceReply.classList.toggle('is-haiku',haiku);voiceReply.textContent=text}
+    function showReply(heard,text,haiku){voiceIdle.hidden=true;voiceHeard.hidden=!heard;voiceHeard.textContent=heard?'聞き取った質問：'+heard:'';voiceReply.hidden=false;voiceReply.classList.toggle('is-haiku',haiku);if(haiku)showVerse(text.split('\n'),'');else voiceReply.textContent=text}
+    // A verse is written vertically on paper, line by line, stepping down like a hand-written haiku.
+    function showVerse(lines,label){voiceReply.hidden=false;voiceReply.classList.add('is-haiku');const box=document.createElement('div');box.className='verse';lines.forEach((l,i)=>{const sp=document.createElement('span');sp.className='verse-line';sp.style.setProperty('--i',i);sp.textContent=l;box.append(sp)});if(label){const seal=document.createElement('span');seal.className='verse-seal';seal.textContent=label;box.append(seal)}voiceReply.replaceChildren(box)}
         function stopListening(){clearTimeout(listenTimer);if(rec){const r=rec;rec=null;r.onend=null;try{r.abort()}catch{}}}
     // Barge-in: recognition keeps running while the guide speaks. When the visitor starts talking, the guide stops at once.
     // What the mic hears of the guide's own voice is ignored by comparing it with the text being read.
     function markSpeaking(text){speakingText=text;speakingUntil=Date.now()+Math.min(60000,2000+text.length*200);echoUntil=speakingUntil+5000}
     function normSpeech(t){return t.replace(/[\s、。，．,.!?！？「」…]/g,'')}
     function isEcho(t){if(Date.now()>echoUntil)return false;const a=normSpeech(t),b=normSpeech(speakingText);if(a.length<3)return true;let hit=0,n=0;for(let k=0;k<a.length-1;k++){n++;if(b.includes(a.slice(k,k+2)))hit++}return hit/n>=.5}
-    function interruptSpeech(){speakingUntil=0;if(avatar){try{avatar.interruptPersona()}catch{}}avatarPending='';if('speechSynthesis'in window)speechSynthesis.cancel();voiceReply.classList.remove('is-haiku');voiceReply.textContent='聞いています…'}
+    function interruptSpeech(){speakingUntil=0;if(avatar)softInterrupt();avatarPending='';if('speechSynthesis'in window)speechSynthesis.cancel();voiceReply.classList.remove('is-haiku');voiceReply.textContent='聞いています…'}
     function listen(delay=300){clearTimeout(listenTimer);if(!Recognition||!talking||micNote||mode==='haiku')return;listenTimer=setTimeout(()=>{if(!talking||rec)return;const r=new Recognition();rec=r;r.lang='ja-JP';r.interimResults=true;r.onresult=e=>{let t='',fin=false;for(const x of e.results){t+=x[0].transcript;if(x.isFinal)fin=true}t=t.trim();if(!t)return;if(isEcho(t))return;if(Date.now()<speakingUntil)interruptSpeech();if(fin)askVoice(t)};r.onerror=e=>{if(e.error==='not-allowed'||e.error==='service-not-allowed'){micNote='マイクが許可されていません。下の質問を押すか、チャットで質問してください。';renderVoice()}};r.onend=()=>{if(rec===r)rec=null;listen()};try{r.start()}catch{rec=null}},delay)}
     function startTalk(){if(talking)return;talking=true;talkGen++;startAvatar();talkTimer=setTimeout(endTalk,AVATAR_MAX_MS);const haiku=mode==='haiku',text=haiku?greeting.haiku.join('、'):greeting.normal;showReply('',haiku?greeting.haiku.join('\n'):greeting.normal,haiku);markSpeaking(text);say(text);if(haiku){spokeAt=Date.now();reading.spoken=[];guideTimer=setInterval(guideTick,4000)}else listen();renderVoice();refreshStatus()}
     function endTalk(){if(!talking)return;talking=false;clearInterval(guideTimer);guideTimer=null;speakingUntil=echoUntil=0;speakingText='';talkGen++;voiceAsking=false;stopListening();clearTimeout(talkTimer);stopAvatar();if('speechSynthesis'in window)speechSynthesis.cancel();renderVoice();refreshStatus()}
@@ -285,8 +305,8 @@
     async function guideTick(){if(!talking||mode!=='haiku'||guideBusy||avatarConnecting||document.hidden||Date.now()<speakingUntil)return;guideBusy=true;const gen=talkGen,snap=guideSnapshot();let decision;
       try{const res=await fetch(new URL(avatarEndpoint()).origin+GUIDE_PATH,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({visitorToken:visitorToken(),...snap}),signal:AbortSignal.timeout?AbortSignal.timeout(6000):undefined});const json=await res.json().catch(()=>({}));decision=res.ok&&json.decision?json.decision:localGuide(snap)}catch{decision=localGuide(snap)}
       guideBusy=false;if(gen!==talkGen||!talking||mode!=='haiku'||!decision.speak)return;const item=sectionVerse[decision.section];if(!item||reading.spoken.includes(decision.section))return;
-      reading.spoken.push(decision.section);spokeAt=Date.now();const text=item.verse.join('、');voiceHeard.hidden=false;voiceHeard.textContent='いま解説している節：'+item.label;voiceIdle.hidden=true;voiceReply.hidden=false;voiceReply.classList.add('is-haiku');voiceReply.textContent=item.verse.join('\n');markSpeaking(text);say(text)}
-    function setMode(next){if(!['chat','normal','haiku'].includes(next)||next===mode)return;endTalk();mode=next;micNote='';document.querySelectorAll('[data-rail-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.railMode===next)));chatPanel.hidden=next!=='chat';voicePanel.hidden=next==='chat';voiceHeard.hidden=voiceReply.hidden=true;renderVoice();refreshStatus()}
+      reading.spoken.push(decision.section);spokeAt=Date.now();const text=item.verse.join('、');voiceHeard.hidden=true;voiceIdle.hidden=true;showVerse(item.verse,item.label);markSpeaking(text);say(text)}
+    function setMode(next){if(!['chat','normal','haiku'].includes(next)||next===mode)return;endTalk();mode=next;micNote='';document.querySelectorAll('[data-rail-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.railMode===next)));chatPanel.hidden=next!=='chat';voicePanel.hidden=next==='chat';voicePanel.classList.toggle('is-haiku-mode',next==='haiku');voiceHeard.hidden=voiceReply.hidden=true;renderVoice();refreshStatus()}
     document.querySelectorAll('[data-rail-mode]').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.railMode)));
     voiceStart.addEventListener('click',()=>talking?endTalk():startTalk());
     const guideMinimize=document.getElementById('guideMinimize');
