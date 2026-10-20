@@ -11,6 +11,9 @@
   <meta property="og:description" content="御社の強みと顧客接点から、AIアバターを使った新しい事業を一緒に考える。">
   <meta name="theme-color" content="#0c1c2a">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap">
   <title>AIアバター共同事業｜御社の知見を、話せる新事業へ</title>
   <style>
     :root{--navy:#0c1c2a;--navy2:#142b3a;--ink:#14242e;--muted:#596974;--line:#dce2e3;--paper:#fff;--wash:#f6f5f1;--gold:#d8aa72;--gold2:#f2ddbe;--wrap:1200px}
@@ -87,7 +90,7 @@
     .chat-msg a{display:inline-block;margin-top:6px;color:#174c65;font-size:10px;font-weight:800;text-underline-offset:2px}
     .voice-idle{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:10px;border-radius:12px;background:linear-gradient(180deg,#f3f7f6,#e9f0ee);color:#56676f;text-align:center}
     .voice-idle[hidden]{display:none}
-    .voice-idle p{margin:0;font-size:11px;line-height:1.6}
+    .voice-idle-text{margin:0;font-size:11px;line-height:1.6}
     .voice-idle-mic{position:relative;display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:#fff;color:#e77f36;box-shadow:0 4px 16px rgba(20,50,75,.12)}
     .voice-idle-mic:before{content:"";position:absolute;inset:-8px;border-radius:50%;border:1px solid rgba(231,127,54,.35);animation:micRing 2.4s ease-out infinite}
     @keyframes micRing{0%{transform:scale(.9);opacity:1}100%{transform:scale(1.25);opacity:0}}
@@ -95,15 +98,19 @@
     .chat-log{flex:1;min-height:60px;overflow:auto;display:flex;flex-direction:column;align-items:flex-start;gap:7px;padding:2px 1px}.chat-msg{max-width:100%;padding:8px 9px;border-radius:9px;background:#edf2f1;color:#243c47;font-size:12px;line-height:1.55;white-space:pre-line;overflow-wrap:anywhere}.chat-msg.user{align-self:flex-end;background:#173346;color:#fff}
     .chat-choices{flex:none;display:flex;flex-wrap:wrap;gap:4px}.chat-choices[hidden]{display:none}.chat-choices button{min-height:30px;padding:3px 10px;border:1px solid #d0d9d8;border-radius:18px;background:#f8faf8;color:#354f58;font-size:10px;font-weight:750}.chat-choices button:hover{background:#eaf1ee}
     .chat-form{flex:none;display:flex;gap:4px}.chat-form input{flex:1;min-width:0;min-height:36px;padding:6px 11px;border:1px solid #d0d9d8;border-radius:18px;font-size:12px}.chat-form button{flex:none;min-height:36px;padding:0 13px;border:0;border-radius:18px;background:#173346;color:#fff;font-size:11px;font-weight:800}
-    .voice-help{flex:none;margin:0;color:#56676f;font-size:11px;line-height:1.55}.voice-heard{flex:none;margin:0;color:#6f7b7d;font-size:10px;line-height:1.45;overflow-wrap:anywhere}.voice-reply{flex:1;min-height:0;overflow:auto;margin:0;padding:10px;border-radius:9px;background:#edf2f1;color:#243c47;font-size:12px;font-weight:750;line-height:1.6;white-space:pre-line;overflow-wrap:anywhere}.voice-reply.is-haiku{display:flex;align-items:center;justify-content:center;padding:14px 10px;background:radial-gradient(circle at 20% 15%,rgba(255,255,255,.7),transparent 55%),radial-gradient(circle at 85% 90%,rgba(180,150,100,.12),transparent 60%),#f6f1e6;border:1px solid #e4d9c3;box-shadow:inset 0 0 18px rgba(150,120,70,.08)}
-    .verse{position:relative;display:flex;flex-direction:row-reverse;gap:.55em;height:100%;min-height:150px;padding:4px 4px 4px 34px;font-family:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho","YuMincho","Noto Serif JP",serif;color:#2a2622}
-    .verse-line{writing-mode:vertical-rl;font-size:19px;font-weight:600;letter-spacing:.18em;line-height:1;margin-top:calc(var(--i) * 1.3em);opacity:0;animation:verseIn .9s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--i) * .7s)}
-    .verse-seal{position:absolute;left:2px;bottom:4px;writing-mode:vertical-rl;padding:5px 3px;border:1.5px solid #b8402a;border-radius:3px;color:#b8402a;font-size:9px;font-weight:700;letter-spacing:.12em;line-height:1.1;opacity:0;animation:verseIn .6s ease forwards;animation-delay:2.1s;transform:rotate(-3deg)}
-    @keyframes verseIn{from{opacity:0;transform:translateY(-6px);filter:blur(2px)}to{opacity:1;transform:none;filter:none}}
-    @media (prefers-reduced-motion:reduce){.verse-line,.verse-seal{animation:none;opacity:1}}
+    .voice-help{flex:none;margin:0;color:#56676f;font-size:11px;line-height:1.55}.voice-heard{flex:none;margin:0;color:#6f7b7d;font-size:10px;line-height:1.45;overflow-wrap:anywhere}.voice-reply{flex:1;min-height:0;overflow:auto;margin:0;padding:10px;border-radius:9px;background:#edf2f1;color:#243c47;font-size:12px;font-weight:750;line-height:1.6;white-space:pre-line;overflow-wrap:anywhere}.voice-reply.is-haiku{display:flex;padding:0}.voice-reply.is-haiku,.is-haiku-mode .voice-idle{border-radius:12px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .28 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),radial-gradient(ellipse at 50% 45%,#fbf8f1 0%,#f4eee2 70%,#ece3d1 100%);border:1px solid #e2d6bf;box-shadow:inset 0 0 0 5px rgba(255,255,255,.35),inset 0 0 24px rgba(140,110,60,.1)}
+    /* One verse component for both the idle card and the spoken verse: brush font, centred, lines stepping down right to left. */
+    .verse{position:relative;flex:1;align-self:stretch;min-height:150px;display:flex;align-items:center;justify-content:center;container-type:size;font-family:"Yuji Syuku","Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;color:#1f1a15}
+    .verse-body{display:flex;flex-direction:row-reverse;align-items:flex-start;gap:calc(var(--fs) * .95);--fs:clamp(16px,calc(100cqh / 14),27px);font-size:var(--fs)}
+    .verse-line{writing-mode:vertical-rl;font-weight:400;letter-spacing:.14em;line-height:1;margin-top:calc(var(--i) * 1.1em);text-shadow:0 0 .5px rgba(31,26,21,.55),.3px .4px 1px rgba(31,26,21,.18);clip-path:inset(0 0 100% 0);animation:inkWrite 1.1s cubic-bezier(.45,.05,.3,1) forwards;animation-delay:calc(var(--i) * .75s)}
+    .verse-seal{position:absolute;left:14px;bottom:14px;writing-mode:vertical-rl;padding:6px 3px;border:1.5px solid #b23a24;border-radius:2px;background:rgba(178,58,36,.04);color:#b23a24;font-family:"Shippori Mincho","Hiragino Mincho ProN",serif;font-size:10px;font-weight:700;letter-spacing:.14em;line-height:1.1;opacity:0;animation:sealIn .5s ease forwards;animation-delay:calc(var(--n) * .75s + .5s);transform:rotate(-3deg)}
+    .verse.is-still .verse-line,.verse.is-still .verse-seal{animation:none;clip-path:none;opacity:1}
+    @keyframes inkWrite{from{clip-path:inset(0 0 100% 0);filter:blur(1.2px)}to{clip-path:inset(0 0 -2% 0);filter:none}}
+    @keyframes sealIn{from{opacity:0;transform:rotate(-3deg) scale(1.25)}to{opacity:.92;transform:rotate(-3deg) scale(1)}}
+    @media (prefers-reduced-motion:reduce){.verse-line,.verse-seal{animation:none;clip-path:none;opacity:1}}
     .is-haiku-mode .guide-panel-title{font-family:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;font-size:14px;letter-spacing:.12em}
-    .is-haiku-mode .voice-idle{background:#f6f1e6;border:1px solid #e4d9c3;color:#5b5247}
-    .is-haiku-mode .voice-idle p{writing-mode:vertical-rl;font-family:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;font-size:14px;letter-spacing:.2em;line-height:1.9;height:9.5em}
+    .is-haiku-mode .voice-idle{padding:0;gap:0}
+    .is-haiku-mode .voice-idle-text{flex:1;align-self:stretch;display:flex}
     .is-haiku-mode .voice-idle-mic{display:none}
     .is-haiku-mode .voice-start{background:#2a2622;font-family:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;letter-spacing:.12em}
     .is-haiku-mode .voice-start:hover{background:#45403a}
@@ -196,7 +203,7 @@
       <div class="guide-panel" id="voicePanel" hidden>
         <p class="guide-panel-title" id="voiceTitle">音声で話す</p>
         <p class="voice-help" id="voiceHelp"></p>
-        <div class="voice-idle" id="voiceIdle"><span class="voice-idle-mic" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span><p id="voiceIdleText">「どんな用途がある？」のように、<br>声で話しかけてください。</p></div>
+        <div class="voice-idle" id="voiceIdle"><span class="voice-idle-mic" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span><div class="voice-idle-text" id="voiceIdleText">「どんな用途がある？」のように、<br>声で話しかけてください。</div></div>
         <p class="voice-heard" id="voiceHeard" hidden></p>
         <p class="voice-reply" id="voiceReply" aria-live="polite" aria-atomic="true" hidden></p>
         <div class="chat-choices" id="voiceChoices" hidden><button type="button" data-voice-prompt="営業・商談">営業・商談</button><button type="button" data-voice-prompt="Web接客">Web接客</button><button type="button" data-voice-prompt="用途がまだ未定です">用途は未定</button><button type="button" data-voice-prompt="費用と契約条件は？">費用・契約</button></div>
@@ -271,7 +278,7 @@
     }
     function stopAvatar(){avatarGen++;avatarConnecting=false;avatarPending='';const client=avatar,ctx=avatarCtx,gen=avatarGen;avatar=null;avatarCtx=null;guideLive.classList.remove('is-live');fadeVoice(600).then(()=>{if(client)client.stopStreaming().catch(()=>{});if(ctx)ctx.close().catch(()=>{});if(gen===avatarGen&&!avatar){guideLive.hidden=true;guideLive.volume=1}});guideVideo.hidden=false;syncGuideVideo();refreshStatus()}
     function renderVoice(){
-      if(mode==='haiku'){voiceStart.textContent=talking?'解説を止める':'五七五で解説を聞く';voiceStart.classList.toggle('is-on',talking);voiceHelp.textContent=talking?'ページを読み進めてください。読んでいる節をJevが見極めて、句で解説します。':'マイクは使いません。読んでいる節をJevが見極め、その節を五七五で解説します。';voiceChoices.hidden=true;voiceTitle.textContent='五七五で解説';voiceIdleText.innerHTML='読み進め<br>節ごとに句を<br>添えましょう';voiceIdle.hidden=talking||!voiceReply.hidden;return}
+      if(mode==='haiku'){voiceStart.textContent=talking?'解説を止める':'五七五で解説を聞く';voiceStart.classList.toggle('is-on',talking);voiceHelp.textContent=talking?'ページを読み進めてください。読んでいる節をJevが見極めて、句で解説します。':'マイクは使いません。読んでいる節をJevが見極め、その節を五七五で解説します。';voiceChoices.hidden=true;voiceTitle.textContent='五七五で解説';voiceIdleText.replaceChildren(buildVerse(['読み進め','節ごとに句を','添えましょう'],'五七五',true));voiceIdle.hidden=talking||!voiceReply.hidden;return}
       voiceIdleText.innerHTML='「どんな用途がある？」のように、<br>声で話しかけてください。';
       voiceStart.textContent=talking?'会話を終了する':Recognition?'マイクをオンにして話す':'声の回答を始める';voiceStart.classList.toggle('is-on',talking);
       voiceHelp.textContent=micNote||(!Recognition?'このブラウザは音声入力に対応していません。下の質問を押すと、声で答えます。':talking?'話しかけてください。答えの途中でも、話しかけると止まって聞きます。':'モードを選んだだけでは始まりません。ボタンを押すと、マイクとアバターの声が動きます。');
@@ -280,7 +287,8 @@
     }
     function showReply(heard,text,haiku){voiceIdle.hidden=true;voiceHeard.hidden=!heard;voiceHeard.textContent=heard?'聞き取った質問：'+heard:'';voiceReply.hidden=false;voiceReply.classList.toggle('is-haiku',haiku);if(haiku)showVerse(text.split('\n'),'');else voiceReply.textContent=text}
     // A verse is written vertically on paper, line by line, stepping down like a hand-written haiku.
-    function showVerse(lines,label){voiceReply.hidden=false;voiceReply.classList.add('is-haiku');const box=document.createElement('div');box.className='verse';lines.forEach((l,i)=>{const sp=document.createElement('span');sp.className='verse-line';sp.style.setProperty('--i',i);sp.textContent=l;box.append(sp)});if(label){const seal=document.createElement('span');seal.className='verse-seal';seal.textContent=label;box.append(seal)}voiceReply.replaceChildren(box)}
+    function buildVerse(lines,label,still){const box=document.createElement('div'),body=document.createElement('div');box.className='verse'+(still?' is-still':'');body.className='verse-body';lines.forEach((l,i)=>{const sp=document.createElement('span');sp.className='verse-line';sp.style.setProperty('--i',i);sp.textContent=l;body.append(sp)});box.append(body);const seal=document.createElement('span');seal.className='verse-seal';seal.style.setProperty('--n',lines.length);seal.textContent=label||'Jev';box.append(seal);return box}
+    function showVerse(lines,label){voiceReply.hidden=false;voiceReply.classList.add('is-haiku');voiceReply.replaceChildren(buildVerse(lines,label))}
         function stopListening(){clearTimeout(listenTimer);if(rec){const r=rec;rec=null;r.onend=null;try{r.abort()}catch{}}}
     // Barge-in: recognition keeps running while the guide speaks. When the visitor starts talking, the guide stops at once.
     // What the mic hears of the guide's own voice is ignored by comparing it with the text being read.
