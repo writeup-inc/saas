@@ -103,6 +103,22 @@ figcaption{font-size:12px;color:var(--sub);margin-top:8px;line-height:1.6}
 
 .extra{display:grid;grid-template-columns:150px 1fr;gap:24px;align-items:start;margin-top:20px}
 .extra p{margin:0}
+.menu-list{margin:0;border-top:1px solid var(--line)}
+.menu-list dt{padding:10px 0 0;font-weight:700;color:var(--navy)}
+.menu-list dd{margin:0;padding:0 0 10px;border-bottom:1px solid var(--line);font-size:14px}
+.tag{display:inline-block;margin-left:8px;padding:0 8px;border:1px solid var(--accent);border-radius:3px;font-size:11px;line-height:1.7;font-weight:700;color:var(--accent);white-space:nowrap}
+
+/* 有料プラン */
+.plan-wrap{margin-top:20px}
+.plan{width:100%;border-collapse:collapse;table-layout:fixed;font-size:14px}
+.plan th,.plan td{padding:9px 10px;border:1px solid var(--line);line-height:1.6;text-align:center}
+.plan th:first-child{width:40%;text-align:left;font-weight:500}
+.plan thead th{background:var(--navy);border-color:var(--navy);color:#fff;font-weight:700}
+.plan thead th:first-child{font-weight:700}
+.plan .price th,.plan .price td,.plan .aim th,.plan .aim td{background:var(--soft)}
+.plan .price b{font-size:20px;color:var(--navy)}
+.plan .aim td{font-size:13px;color:var(--sub)}
+.sub-head{margin:28px 0 0;font-size:16px}
 footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:13px;color:var(--sub)}
 footer b{color:var(--ink)}
 
@@ -112,6 +128,11 @@ footer b{color:var(--ink)}
   h2{font-size:18px}
   .shots.two,.extra{grid-template-columns:1fr}
   .extra figure{max-width:180px}
+  .plan{font-size:12px}
+  .plan th,.plan td{padding:7px 4px}
+  .plan th:first-child{width:34%}
+  .plan .price b{font-size:15px}
+  .plan .aim td{font-size:11px}
 }
 @media print{
   section{break-inside:avoid-page}
@@ -131,7 +152,7 @@ footer b{color:var(--ink)}
   <dl class="meta">
     <div><dt>対象</dt><dd>はじめてご利用になる方</dd></div>
     <div><dt>所要時間</dt><dd>約10分</dd></div>
-    <div><dt>最終更新</dt><dd>2026年10月8日</dd></div>
+    <div><dt>最終更新</dt><dd>2026年10月30日</dd></div>
   </dl>
 
   <nav class="toc" aria-label="目次">
@@ -142,7 +163,8 @@ footer b{color:var(--ink)}
       <li><a href="#s3"><b>STEP 3</b>制度をさがす</a></li>
       <li><a href="#s4"><b>STEP 4</b>「気になる」で検討中へ</a></li>
       <li><a href="#s5"><b>STEP 5</b>専門家に相談</a></li>
-      <li><a href="#s6"><b>INFO</b>そのほか</a></li>
+      <li><a href="#s6"><b>INFO</b>そのほかのメニュー</a></li>
+      <li><a href="#s8"><b>PLAN</b>有料プラン</a></li>
       <li><a href="#s7"><b>Q&amp;A</b>よくある質問</a></li>
     </ol>
   </nav>
@@ -325,8 +347,6 @@ footer b{color:var(--ink)}
     <li>左メニュー<span class="mk">「専門家に相談」</span>のページが開くので、そこから相談します。</li>
   </ol>
 
-  <div class="memo"><b>ご案内</b>専門家の情報はまもなく追加予定です。現時点で相談をご希望の方は、お手数ですが担当営業までお問い合わせください。</div>
-
   <div class="shots">
     <figure>
       <div class="shot" style="--W:1560;--H:820">
@@ -351,18 +371,29 @@ footer b{color:var(--ink)}
 <section id="s6">
   <div class="step-head">
     <div class="num plain">INFO</div>
-    <h2>そのほか</h2>
+    <h2>そのほかのメニュー</h2>
   </div>
   <div class="extra">
     <figure>
-      <div class="shot" style="--W:310;--H:590">
-        <img src="img/09-menu.jpg" alt="左メニュー。会員特典、専門家に相談、特集・セミナー" loading="lazy">
-        <span class="mark" style="--x:4;--y:345;--w:268;--h:182"></span>
+      <div class="shot" style="--W:372;--H:984">
+        <img src="img/15-menu-paid.jpg" alt="左メニュー。さがす、学ぶ（有料）、AI CFO（有料）" loading="lazy">
       </div>
     </figure>
     <div>
-      <p style="margin-top:0">左メニューの<span class="btn">特集・セミナー</span>では、<span class="mk">開催予定のセミナー</span>を見られます。<span class="btn">詳細を見る →</span>で参加条件を確認して、そのまま申し込めます。</p>
-      <p style="margin-top:12px"><span class="btn">会員特典</span>なども、<span class="mk">内容を随時追加していく予定です。</span>新しいものが入ったら、ホームや「届いたお知らせ」でご案内します。</p>
+      <dl class="menu-list">
+        <dt>特集・セミナー</dt>
+        <dd>特集記事と<span class="mk">開催予定のセミナー</span>を見られます。セミナーは<span class="btn">詳細を見る →</span>で参加条件を確認して、そのまま申し込めます。</dd>
+        <dt>会員特典</dt>
+        <dd>会員向けのサービスのご案内を見られます。新しいものが入ったら、ホームや「届いたお知らせ」でご案内します。</dd>
+        <dt>有識者インタビュー<span class="tag">ライトプランから</span></dt>
+        <dd>有識者のインタビュー記事を読めます。</dd>
+        <dt>ナレッジライブラリ<span class="tag">ライトプランから</span></dt>
+        <dd>過去に採択された事業計画書や、申請のひな型を見られます。</dd>
+        <dt>AI家庭教師<span class="tag">スタンダードプランから</span></dt>
+        <dd>業務へのAIの取り入れ方を相談できます。毎月3時間まで無料です。</dd>
+        <dt>AI CFO<span class="tag">スタンダードプランから</span></dt>
+        <dd>6つのAIエージェントと話しながら、事業計画書を作成できます。</dd>
+      </dl>
       <div class="memo"><b>ポイント</b>まずは STEP 2 の会社カルテだけでも登録しておくと、合う制度が届きはじめます。</div>
     </div>
   </div>
@@ -373,6 +404,58 @@ footer b{color:var(--ink)}
         <span class="mark" style="--x:23;--y:107;--w:951;--h:480" data-l="開催予定のセミナー"></span>
       </div>
       <figcaption>特集・セミナー：気になるセミナーの「詳細を見る →」から申し込めます</figcaption>
+    </figure>
+  </div>
+</section>
+
+
+<!-- 有料プラン -->
+<section id="s8">
+  <div class="step-head">
+    <div class="num plain">PLAN</div>
+    <h2>有料プラン</h2>
+  </div>
+  <p class="why">ここまでの手順は無料プランのままお使いいただけます。<span class="mk">計画書の実例を見たい、自分で書けるようになりたい</span>ときは、有料プランをご検討ください。</p>
+
+  <div class="plan-wrap">
+    <table class="plan">
+      <thead>
+        <tr><th>使えるもの</th><th>無料プラン</th><th>ライトプラン</th><th>スタンダードプラン</th></tr>
+      </thead>
+      <tbody>
+        <tr class="price"><th>月額（税込）</th><td><b>0</b>円</td><td><b>3,300</b>円</td><td><b>33,000</b>円</td></tr>
+        <tr class="aim"><th>こんな方に</th><td>制度を知る</td><td>申請書のたたきを受け取る</td><td>自分で書けるようになる</td></tr>
+        <tr><th>制度の検索・ブックマーク</th><td>○</td><td>○</td><td>○</td></tr>
+        <tr><th>自社に合った制度をメールで定期的に受け取る</th><td>○</td><td>○</td><td>○</td></tr>
+        <tr><th>会員特典の利用</th><td>○</td><td>○</td><td>○</td></tr>
+        <tr><th>専門家への相談</th><td>○</td><td>○</td><td>○</td></tr>
+        <tr><th>特集記事やセミナー情報の閲覧</th><td>○</td><td>○</td><td>○</td></tr>
+        <tr><th>有識者インタビュー記事の閲覧</th><td>－</td><td>○</td><td>○</td></tr>
+        <tr><th>ナレッジライブラリ（過去に採択された事業計画書・申請のひな型）</th><td>－</td><td>○</td><td>○</td></tr>
+        <tr><th>会員限定ウェビナーへの参加</th><td>－</td><td>○</td><td>○</td></tr>
+        <tr><th>AI家庭教師への業務AI化の相談（毎月3時間まで無料）</th><td>－</td><td>－</td><td>○</td></tr>
+        <tr><th>事業計画書の作成（6つのAIエージェントとの対話）</th><td>－</td><td>－</td><td>○</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="sub-head">プランを変えるには</h3>
+  <ol class="todo">
+    <li>左メニューの<span class="btn">設定</span>を開き、<span class="btn">ご利用プラン</span>を押します。</li>
+    <li>使いたいプランの<span class="btn">このプランにアップグレードする</span>を押します。</li>
+    <li>お支払いの画面で、<span class="mk">クレジットカード</span>を登録します。</li>
+  </ol>
+
+  <div class="memo"><b>解約するとき</b>同じ「ご利用プラン」の画面にある<span class="btn">解約・プランを下げるご相談はこちら</span>から、お問い合わせフォームでご連絡ください。担当者が確認のうえ、お手続きをご案内します。</div>
+
+  <div class="shots">
+    <figure>
+      <div class="shot" style="--W:1400;--H:1105">
+        <img src="img/14-plans.jpg" alt="設定のご利用プラン画面。無料・ライト・スタンダードの3つのプランが並ぶ" loading="lazy">
+        <span class="mark l-left" style="--x:472;--y:942;--w:391;--h:70" data-l="ここを押す"></span>
+        <span class="mark l-left" style="--x:955;--y:942;--w:389;--h:70" data-l="ここを押す"></span>
+      </div>
+      <figcaption>設定 › ご利用プラン：使いたいプランの「このプランにアップグレードする」を押します</figcaption>
     </figure>
   </div>
 </section>
