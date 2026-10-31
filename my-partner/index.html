@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="catalog-card" content="true">
+<meta http-equiv="refresh" content="0;url=https://w-partners.vercel.app/my-partner-8edc8859d7f87d57ef2365dcc61711f5/">
+<link rel="canonical" href="https://w-partners.vercel.app/my-partner-8edc8859d7f87d57ef2365dcc61711f5/">
+<title>マイパートナーシリーズ｜シリーズ一覧</title>
+<meta name="description" content="CA・美容部員・ナイトパートナーと、下段のVIPパートナーをまとめたシリーズ一覧への入口です。">
+<style>
+:root{color-scheme:light dark}*{box-sizing:border-box}body{margin:0;background:#f7f8f7;color:#292e32;font:17px/1.9 system-ui,'Noto Sans CJK JP',sans-serif}main{max-width:720px;margin:12vh auto;padding:32px}p{margin:16px 0}h1{font-size:clamp(28px,6vw,42px);line-height:1.6;font-weight:500}a{color:#245d96;text-underline-offset:5px}a:focus-visible{outline:3px solid #245d96;outline-offset:5px}.label{font-size:13px;color:#61696e}.action{display:inline-block;padding:12px 20px;border:1px solid currentColor;text-decoration:none}.note{font-size:14px;color:#61696e}@media(prefers-color-scheme:dark){body{background:#22282c;color:#f0f0e9}a{color:#a3caed}.label,.note{color:#bbc3c8}}
+</style>
+</head>
+<body>
+<main>
+<p class="label">MY PARTNER SERIES ／ シリーズ一覧</p>
+<h1>マイパートナー<br>シリーズ</h1>
+<p>CA・美容部員・ナイトパートナーの3シリーズと、<br>下段のVIPパートナーをまとめた一覧です。</p>
+<p><a class="action" href="https://w-partners.vercel.app/my-partner-8edc8859d7f87d57ef2365dcc61711f5/">シリーズ一覧を開く</a></p>
+<p class="note">シリーズ一覧へ移動します。自動で切り替わらない場合は、上のリンクからお進みください。</p>
+<p><a href="../#my-partner">商材一覧へ戻る</a></p>
+</main>
+<script data-click-marker>
+/* クリック黄色マーカー v2（全HTML標準・正本 ~/.claude/click-marker.js / 仕様 ~/.claude/lp-click-marker.md）
+   文字をクリックすると表示上の1行に黄色マーカー。再クリックで消える。
+   暗い背景では文字が黄色に光る（multiply合成）。レイアウトは動かさない。
+   止める：<meta name="click-marker" content="off">／要素単位で data-no-marker */
+(function () {
+  if (window.__clickMarker) return;
+  window.__clickMarker = 1;
+  var d = document, root = d.documentElement;
+  var off = d.querySelector('meta[name="click-marker"]');
+  if (off && off.getAttribute('content') === 'off') return;
+
+  var SKIP = 'a,button,input,textarea,select,option,label,summary,video,audio,iframe,canvas,svg,img,form,dialog,' +
+    '[role=button],[role=link],[role=tab],[role=menuitem],[contenteditable=""],[contenteditable=true],' +
+    '[onclick],[data-no-marker],[data-click-marker-layer]';
+  var layer = null, marks = [], down = null, lastW = innerWidth, raf = 0;
+
+  function ensureLayer() {
+    if (layer) return layer;
+    var st = d.createElement('style');
+    st.textContent =
+      '[data-click-marker-layer]{position:absolute;left:0;top:0;width:0;height:0;pointer-events:none;' +
+      'z-index:2147483000;mix-blend-mode:multiply}' +
+      '[data-click-marker-layer]>i{position:absolute;display:block;background:#ffe14a;border-radius:3px;' +
+      'opacity:0;transition:opacity .18s ease-out;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
+      '[data-click-marker-layer]>i.on{opacity:.85}';
+    (d.head || root).appendChild(st);
+    layer = d.createElement('div');
+    layer.setAttribute('data-click-marker-layer', '');
+    layer.setAttribute('aria-hidden', 'true');
+    root.appendChild(layer);
+    return layer;
+  }
+
+  function isBlock(el) {
+    return !/^(inline|contents)/.test(getComputedStyle(el).display);
+  }
+  function blockOf(el) {
+    while (el && el !== d.body && el !== root && !isBlock(el)) el = el.parentElement;
+    return el;
+  }
+
+  // ブロック直下の文字（入れ子のブロックは除く）を表示上の行ごとにまとめる
+  function lines(block) {
+    var rects = [], r = d.createRange();
+    var w = d.createTreeWalker(block, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (t) {
+        if (!t.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        for (var p = t.parentElement; p && p !== block; p = p.parentElement) {
+          if (isBlock(p)) return NodeFilter.FILTER_REJECT;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    for (var t; (t = w.nextNode());) {
+      r.selectNodeContents(t);
+      var cr = r.getClientRects();
+      for (var i = 0; i < cr.length; i++) if (cr[i].width > 0.5 && cr[i].height > 0.5) rects.push(cr[i]);
+    }
+    rects.sort(function (a, b) { return a.top - b.top || a.left - b.left; });
+    var ls = [];
+    rects.forEach(function (c) {
+      var cm = (c.top + c.bottom) / 2, hit = null;
+      for (var i = 0; i < ls.length; i++) {
+        var g = ls[i], gm = (g.top + g.bottom) / 2;
+        if ((cm >= g.top && cm <= g.bottom) || (gm >= c.top && gm <= c.bottom)) { hit = g; break; }
+      }
+      if (hit) {
+        hit.left = Math.min(hit.left, c.left); hit.right = Math.max(hit.right, c.right);
+        hit.top = Math.min(hit.top, c.top); hit.bottom = Math.max(hit.bottom, c.bottom);
+      } else {
+        ls.push({ left: c.left, right: c.right, top: c.top, bottom: c.bottom });
+      }
+    });
+    ls.sort(function (a, b) { return a.top - b.top; });
+    return ls;
+  }
+
+  // 中スクロールの枠外へ出た行はマーカーを隠す（枠をはみ出して塗らない）
+  function clipped(block, L) {
+    for (var p = block; p && p !== d.body && p !== root; p = p.parentElement) {
+      var cs = getComputedStyle(p);
+      if (cs.overflowX === 'visible' && cs.overflowY === 'visible') continue;
+      var r = p.getBoundingClientRect();
+      if (L.bottom <= r.top || L.top >= r.bottom || L.right <= r.left || L.left >= r.right) return true;
+    }
+    return false;
+  }
+
+  function place(mk, L) {
+    var s = mk.el.style, pad = 2;
+    s.visibility = clipped(mk.block, L) ? 'hidden' : '';
+    s.left = (L.left + scrollX - pad) + 'px';
+    s.top = (L.top + scrollY) + 'px';
+    s.width = (L.right - L.left + pad * 2) + 'px';
+    s.height = (L.bottom - L.top) + 'px';
+  }
+  function drop(mk) {
+    var el = mk.el;
+    el.classList.remove('on');
+    setTimeout(function () { el.remove(); }, 200);
+  }
+  function clearAll() { marks.forEach(drop); marks = []; }
+  function refresh() {
+    raf = 0;
+    marks = marks.filter(function (mk) {
+      if (!mk.block.isConnected) { mk.el.remove(); return false; }
+      var ls = lines(mk.block);
+      if (ls.length !== mk.n || !ls[mk.idx]) { mk.el.remove(); return false; }
+      place(mk, ls[mk.idx]);
+      return true;
+    });
+  }
+  function later() { if (marks.length && !raf) raf = requestAnimationFrame(refresh); }
+
+  d.addEventListener('pointerdown', function (e) { down = { x: e.clientX, y: e.clientY }; }, true);
+
+  d.addEventListener('click', function (e) {
+    if (e.button !== 0 || e.detail > 1 || e.defaultPrevented) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    if (down && Math.abs(e.clientX - down.x) + Math.abs(e.clientY - down.y) > 6) return; // ドラッグ
+    var sel = window.getSelection && getSelection();
+    if (sel && !sel.isCollapsed && String(sel).trim()) return; // 文字選択中
+    var t = e.target;
+    if (!(t instanceof Element) || t.closest(SKIP)) return;
+    for (var p = t; p && p !== root; p = p.parentElement) {
+      var cs = getComputedStyle(p);
+      if (cs.cursor === 'pointer') return; // 既存のクリック操作（H1ポップアップ等）を優先
+      if (cs.position === 'fixed' || cs.position === 'sticky') return; // 追従要素は対象外
+    }
+    var block = blockOf(t);
+    if (!block || block === d.body || block === root) return;
+    var ls = lines(block), idx = -1;
+    for (var i = 0; i < ls.length; i++) {
+      var L = ls[i];
+      if (e.clientY >= L.top - 1 && e.clientY <= L.bottom + 1 && e.clientX >= L.left - 6 && e.clientX <= L.right + 6) { idx = i; break; }
+    }
+    if (idx < 0) return; // 余白のクリック
+    for (var j = 0; j < marks.length; j++) {
+      if (marks[j].block === block && marks[j].idx === idx) { drop(marks[j]); marks.splice(j, 1); return; }
+    }
+    var el = d.createElement('i');
+    ensureLayer().appendChild(el);
+    var mk = { block: block, idx: idx, n: ls.length, el: el };
+    marks.push(mk);
+    place(mk, ls[idx]);
+    requestAnimationFrame(function () { requestAnimationFrame(function () { el.classList.add('on'); }); });
+  });
+
+  // 画面幅が変わると折り返しが変わるので消す。それ以外のずれは位置を引き直す
+  addEventListener('resize', function () {
+    if (innerWidth !== lastW) { lastW = innerWidth; clearAll(); } else later();
+  });
+  d.addEventListener('scroll', function (e) { if (e.target !== d) later(); }, true);
+  function watch() { if (window.ResizeObserver && d.body) new ResizeObserver(later).observe(d.body); }
+  if (d.body) watch(); else d.addEventListener('DOMContentLoaded', watch);
+})();
+</script>
+</body>
+</html>
