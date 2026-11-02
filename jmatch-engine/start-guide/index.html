@@ -85,7 +85,7 @@ ol.todo li::before{
 figure{margin:0;min-width:0}
 .shots>*,.extra>*{min-width:0}
 .shot{position:relative;border:1px solid var(--line);border-radius:4px;background:#fff;overflow:visible}
-.shot img{display:block;width:100%;height:auto;border-radius:4px}
+.shot img{display:block;width:100%;height:auto;aspect-ratio:var(--W) / var(--H);border-radius:4px}
 .mark{
   position:absolute;z-index:3;
   left:calc(var(--x) / var(--W) * 100%);top:calc(var(--y) / var(--H) * 100%);
@@ -119,6 +119,10 @@ figcaption{font-size:12px;color:var(--sub);margin-top:8px;line-height:1.6}
 .plan .price b{font-size:20px;color:var(--navy)}
 .plan .aim td{font-size:13px;color:var(--sub)}
 .sub-head{margin:28px 0 0;font-size:16px}
+.next{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:20px;padding:16px 20px;border:1px solid var(--navy);border-radius:6px;color:var(--ink);text-decoration:none}
+.next:hover{background:var(--soft)}
+.next b{color:var(--navy)}
+.next span{font-size:13px;color:var(--sub)}
 footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:13px;color:var(--sub)}
 footer b{color:var(--ink)}
 
@@ -164,12 +168,8 @@ footer b{color:var(--ink)}
       <li><a href="#s4"><b>STEP 4</b>「気になる」で検討中へ</a></li>
       <li><a href="#s5"><b>STEP 5</b>専門家に相談</a></li>
       <li><a href="#s6"><b>INFO</b>そのほかのメニュー</a></li>
-      <li><a href="#s8"><b>PLAN</b>有料プラン</a></li>
-      <li><a href="#s9"><b>PLAN 1</b>有識者インタビュー</a></li>
-      <li><a href="#s10"><b>PLAN 2</b>ナレッジライブラリ</a></li>
-      <li><a href="#s11"><b>PLAN 3</b>AI家庭教師</a></li>
-      <li><a href="#s12"><b>PLAN 4</b>AI CFO</a></li>
       <li><a href="#s7"><b>Q&amp;A</b>よくある質問</a></li>
+      <li><a href="plan/"><b>PLAN</b>有料プランの使い方 →</a></li>
     </ol>
   </nav>
 </header>
@@ -399,6 +399,7 @@ footer b{color:var(--ink)}
         <dd>6つのAIエージェントと話しながら、事業計画書を作成できます。</dd>
       </dl>
       <div class="memo"><b>ポイント</b>まずは STEP 2 の会社カルテだけでも登録しておくと、合う制度が届きはじめます。</div>
+      <a class="next" href="plan/"><div><b>有料プランの使い方</b><br><span>料金と、有識者インタビュー・ナレッジライブラリ・AI家庭教師・AI CFOの使い方</span></div><b>→</b></a>
     </div>
   </div>
   <div class="shots">
@@ -410,189 +411,6 @@ footer b{color:var(--ink)}
       <figcaption>特集・セミナー：気になるセミナーの「詳細を見る →」から申し込めます</figcaption>
     </figure>
   </div>
-</section>
-
-
-<!-- 有料プラン -->
-<section id="s8">
-  <div class="step-head">
-    <div class="num plain">PLAN</div>
-    <h2>有料プラン</h2>
-  </div>
-  <p class="why">ここまでの手順は無料プランのままお使いいただけます。<span class="mk">計画書の実例を見たい、自分で書けるようになりたい</span>ときは、有料プランをご検討ください。</p>
-
-  <div class="plan-wrap">
-    <table class="plan">
-      <thead>
-        <tr><th>使えるもの</th><th>無料プラン</th><th>ライトプラン</th><th>スタンダードプラン</th></tr>
-      </thead>
-      <tbody>
-        <tr class="price"><th>月額（税込）</th><td><b>0</b>円</td><td><b>3,300</b>円</td><td><b>33,000</b>円</td></tr>
-        <tr class="aim"><th>こんな方に</th><td>制度を知る</td><td>申請書のたたきを受け取る</td><td>自分で書けるようになる</td></tr>
-        <tr><th>制度の検索・ブックマーク</th><td>○</td><td>○</td><td>○</td></tr>
-        <tr><th>自社に合った制度をメールで定期的に受け取る</th><td>○</td><td>○</td><td>○</td></tr>
-        <tr><th>会員特典の利用</th><td>○</td><td>○</td><td>○</td></tr>
-        <tr><th>専門家への相談</th><td>○</td><td>○</td><td>○</td></tr>
-        <tr><th>特集記事やセミナー情報の閲覧</th><td>○</td><td>○</td><td>○</td></tr>
-        <tr><th>有識者インタビュー記事の閲覧</th><td>－</td><td>○</td><td>○</td></tr>
-        <tr><th>ナレッジライブラリ（過去に採択された事業計画書・申請のひな型）</th><td>－</td><td>○</td><td>○</td></tr>
-        <tr><th>会員限定ウェビナーへの参加</th><td>－</td><td>○</td><td>○</td></tr>
-        <tr><th>AI家庭教師への業務AI化の相談（毎月2時間まで無料）</th><td>－</td><td>－</td><td>○</td></tr>
-        <tr><th>事業計画書の作成（6つのAIエージェントとの対話）</th><td>－</td><td>－</td><td>○</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h3 class="sub-head">プランを変えるには</h3>
-  <ol class="todo">
-    <li>左メニューの<span class="btn">設定</span>を開き、<span class="btn">ご利用プラン</span>を押します。</li>
-    <li>使いたいプランの<span class="btn">このプランにアップグレードする</span>を押します。</li>
-    <li>お支払いの画面で、<span class="mk">クレジットカード</span>を登録します。</li>
-  </ol>
-
-  <div class="memo"><b>解約するとき</b>同じ「ご利用プラン」の画面にある<span class="btn">解約・プランを下げるご相談はこちら</span>から、お問い合わせフォームでご連絡ください。担当者が確認のうえ、お手続きをご案内します。</div>
-
-  <div class="shots">
-    <figure>
-      <div class="shot" style="--W:1400;--H:1105">
-        <img src="img/14-plans.jpg" alt="設定のご利用プラン画面。無料・ライト・スタンダードの3つのプランが並ぶ" loading="lazy">
-        <span class="mark l-left" style="--x:472;--y:942;--w:391;--h:70" data-l="ここを押す"></span>
-        <span class="mark l-left" style="--x:955;--y:942;--w:389;--h:70" data-l="ここを押す"></span>
-      </div>
-      <figcaption>設定 › ご利用プラン：使いたいプランの「このプランにアップグレードする」を押します</figcaption>
-    </figure>
-  </div>
-</section>
-
-
-<!-- PLAN 1 -->
-<section id="s9">
-  <div class="step-head">
-    <div class="num">PLAN 1</div>
-    <h2>有識者インタビュー</h2>
-  </div>
-  <p class="why">制度づくりや審査に携わってきた方、実際に採択された経営者の方のお話を、<span class="mk">ご本人の言葉で読めます。</span>ライトプランからお使いいただけます。</p>
-
-  <ol class="todo">
-    <li>左メニュー「学ぶ（有料）」の<span class="btn">有識者インタビュー</span>を開きます。</li>
-    <li>上の<span class="btn">すべて</span><span class="btn">助成金</span><span class="btn">補助金</span>で、読みたい分野にしぼれます。</li>
-    <li>読みたい記事を押すと、記事が開きます。動画つきの回は、移動中に聞き流すこともできます。</li>
-  </ol>
-
-  <div class="shots">
-    <figure>
-      <div class="shot" style="--W:1650;--H:826">
-        <img src="img/17-interview.jpg" alt="有識者インタビューの画面。分野の切り替えと記事の一覧" loading="lazy">
-        <span class="mark" style="--x:65;--y:410;--w:1515;--h:49" data-l="② 分野をしぼる"></span>
-        <span class="mark" style="--x:65;--y:477;--w:364;--h:340" data-l="③ 記事を押す"></span>
-      </div>
-      <figcaption>読みたい記事を押すと開きます</figcaption>
-    </figure>
-  </div>
-</section>
-
-
-<!-- PLAN 2 -->
-<section id="s10">
-  <div class="step-head">
-    <div class="num">PLAN 2</div>
-    <h2>ナレッジライブラリ</h2>
-  </div>
-  <p class="why">実際に採択された事業計画書（過去事例）や、採択・不採択の分析、<span class="mk">すぐ使えるひな形</span>を見られます。ライトプランからお使いいただけます。</p>
-
-  <ol class="todo">
-    <li>左メニュー「学ぶ（有料）」の<span class="btn">ナレッジライブラリ</span>を開きます。</li>
-    <li>上の欄にことば（例：就業規則）を入れて探すか、<span class="btn">過去事例</span><span class="btn">分析</span><span class="btn">ひな形</span><span class="btn">公募要領</span>でしぼります。</li>
-    <li>見たい資料を押すと、中身を見られます。<span class="btn">まとめてダウンロード</span>を押すと、表示中の資料をまとめて保存できます。</li>
-  </ol>
-
-  <div class="memo"><b>ポイント</b>計画書を書くときの手本として、そのままお使いいただけます。AI CFOで計画書を作るときの参考資料にもなります。</div>
-
-  <div class="shots">
-    <figure>
-      <div class="shot" style="--W:1645;--H:815">
-        <img src="img/19-knowledge.jpg" alt="ナレッジライブラリの画面。検索欄、種類の切り替え、まとめてダウンロード、資料の一覧" loading="lazy">
-        <span class="mark" style="--x:67;--y:126;--w:1515;--h:76" data-l="② 探す・しぼる"></span>
-        <span class="mark" style="--x:67;--y:220;--w:182;--h:46"></span>
-        <span class="mark l-below" style="--x:67;--y:284;--w:490;--h:365" data-l="③ 資料を押す"></span>
-      </div>
-      <figcaption>種類でしぼって、見たい資料を押します。左上の「まとめてダウンロード」で、まとめて保存できます</figcaption>
-    </figure>
-  </div>
-</section>
-
-
-<!-- PLAN 3 -->
-<section id="s11">
-  <div class="step-head">
-    <div class="num">PLAN 3</div>
-    <h2>AI家庭教師</h2>
-  </div>
-  <p class="why">AIにくわしい講師（AIバード）に、<span class="mk">オンラインで相談できます。</span>スタンダードプランからお使いいただけます。毎月2時間まで無料です（お打ち合わせの時間も含みます）。</p>
-
-  <dl class="menu-list">
-    <dt>AI CFOの始め方</dt>
-    <dd>Claudeのアプリの入れ方や、AI CFOのつなぎ方を、画面を見ながら一緒に進めます。</dd>
-    <dt>事業計画書の相談</dt>
-    <dd>AI CFOで作った計画書の中身や、何を書けばよいかを一緒に考えます。</dd>
-    <dt>仕事にAIを取り入れる相談</dt>
-    <dd>御社の毎日の仕事のうち、AIで楽にできるところがないかを一緒に考えます。</dd>
-  </dl>
-
-  <ol class="todo">
-    <li>左メニュー「学ぶ（有料）」の<span class="btn">AI家庭教師</span>を開きます。</li>
-    <li>相談したい講師の<span class="btn">この人に相談する</span>を押します。</li>
-    <li>AIバードに登録し、ご都合のよい日時を予約します。</li>
-    <li>予約した日時に、オンラインで相談します。</li>
-  </ol>
-
-  <div class="shots">
-    <figure>
-      <div class="shot" style="--W:1411;--H:829">
-        <img src="img/16-aibird.jpg" alt="AI家庭教師のおすすめのAIバード。講師ごとに「この人に相談する」ボタンがある" loading="lazy">
-        <span class="mark l-below" style="--x:83;--y:718;--w:372;--h:60" data-l="ここを押す"></span>
-      </div>
-      <figcaption style="margin-top:30px">相談したい講師の「この人に相談する」を押します</figcaption>
-    </figure>
-  </div>
-</section>
-
-
-<!-- PLAN 4 -->
-<section id="s12">
-  <div class="step-head">
-    <div class="num">PLAN 4</div>
-    <h2>AI CFO</h2>
-  </div>
-  <p class="why">御社の相談相手になるAIです。社長のお話を聞きながら、相談の中身に合わせて専門の視点を持つAIの仲間が加わり、<span class="mk">書類づくりを御社と一緒に進めます。</span>スタンダードプランからお使いいただけます。</p>
-
-  <dl class="menu-list">
-    <dt>補助金の申請の準備</dt>
-    <dd>使いたい補助金の公募ページのURLを渡すと、申請までの段取り、そろえる書類、事業計画書の下書き、様式の記入までを一緒に進めます。最後に、審査の目線で書類を見直します。</dd>
-    <dt>事業計画書をとりあえず作る</dt>
-    <dd>いくつかの質問に答えるだけで、A4・2枚の事業計画書ができます。補助金に限らず、社内や取引先への説明にも使えます。</dd>
-    <dt>融資の準備</dt>
-    <dd>資金の計画と返済の見通しを立て、銀行に出す事業計画書と、面談で聞かれそうなことをまとめます。</dd>
-    <dt>人のこと・助成金</dt>
-    <dd>就業規則や賃金の決まりなどの書類づくりと、雇用の助成金に必要な準備を手伝います。</dd>
-    <dt>会社の強み・弱みの整理</dt>
-    <dd>質問に答えるだけで、強み・弱み・追い風・向かい風と「まず取り組むこと」を、A4・1枚にまとめます。</dd>
-    <dt>3年後の会社を描く</dt>
-    <dd>雑談をしながら、3年後にどんな会社になっていたいかと、そこまでの道のりをまとめます。</dd>
-    <dt>今週のおすすめ制度から選ぶ</dt>
-    <dd>毎週届く制度の中から、御社のやりたいことに合うものを選んでご紹介します。</dd>
-  </dl>
-
-  <h3 class="sub-head">始め方（最初の1回だけ・約3分）</h3>
-  <p>AI CFOは、「Claude（クロード）」というAIのアプリにつないで使います。先にClaudeのアプリを入れて、ログインしておいてください。</p>
-  <ol class="todo">
-    <li>左メニューの<span class="btn">事業計画書をつくる</span>を開き、表示されるURLの<span class="btn">コピー</span>を押します。</li>
-    <li>Claudeの<span class="btn">設定</span>→<span class="btn">コネクタ</span>→<span class="btn">カスタムコネクタを追加</span>を開き、名前を「AI CFO」にして、コピーしたURLを貼ります。</li>
-    <li><span class="btn">連携する</span>を押すと、Jマッチのログイン画面が開きます。ログインして<span class="btn">許可する</span>を押します。</li>
-    <li>Claudeのアプリで<span class="btn">Code</span>を開き、<span class="mk">「AI CFOを始めたいです。」</span>と送ります。AI CFOが質問を始めます。</li>
-  </ol>
-  <div class="memo"><b>ポイント</b>つなぐのは最初の1回だけです。2回目からは、Claudeで「AI CFOを始めたいです。」と送るだけで始められます。つなぎ方で迷ったら、<a href="#s11">AI家庭教師</a>で講師と一緒に進められます。</div>
-  <div class="memo"><b>ご注意</b>AI CFOに出てくる専門家（診断士・税理士など）は、AIの視点です。資格を持つ人が対応するものではありません。申請を代わりに行うこともありません。申請まで相談したいときは、<a href="#s5">専門家に相談</a>をご利用ください。</div>
 </section>
 
 
