@@ -1,0 +1,29 @@
+/* LP common controls. Version navigation remains visible when header is hidden. */
+[data-lp-header]{transition:transform .24s ease;will-change:transform}
+[data-lp-header].lp-header-hidden{transform:translateY(calc(-100% - 2px))}
+.lp-versions{position:fixed;z-index:70;top:20px;right:max(20px,calc((100vw - 1200px)/2));display:flex;gap:2px;padding:4px;border:1px solid var(--line,#d8dde3);border-radius:8px;background:var(--surface,#fff);box-shadow:0 2px 9px #00000008;font-family:SiteSans,sans-serif}
+.lp-versions a{display:flex;align-items:center;justify-content:center;min-width:44px;height:44px;padding:0 8px;border-radius:4px;font-size:12px!important;line-height:1;font-weight:700;letter-spacing:0;color:var(--muted,#596374);text-decoration:none}
+.lp-versions a:hover{background:var(--soft,#eef2f5);color:var(--ink,#17212b)}
+.lp-versions a[aria-current=page]{background:var(--ink,#17212b);color:var(--paper,#fff)}
+.lp-versions a:focus-visible{outline:2px solid var(--blue,#2455d9);outline-offset:3px}
+header .header-inner{padding-right:174px}
+h1,h2,h3,h4,.lead,.catch{word-break:auto-phrase;line-break:strict;overflow-wrap:anywhere}
+body{font-size:16px}
+@media(max-width:680px){
+ .lp-versions{top:11px;right:16px}
+ header .header-inner{padding-right:0;position:relative}
+ header .menu-button{position:fixed;right:166px;top:15px;margin:0;width:44px;height:44px}
+ header .brand-title small{display:none}
+ header .brand-title{font-size:15px}
+ header .brand-mark{display:none}
+ header .brand{gap:0}
+ .footer-links{gap:16px;flex-wrap:wrap}
+ .footer-bottom{flex-wrap:wrap}
+ .footer-bottom .copyright{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){[data-lp-header]{transition:none}}
+header .brand,header .nav-cta{min-height:44px}
+.text-link,.text-action{min-height:44px;align-items:center}
+.mobile-nav a{display:flex;align-items:center;min-height:44px}
+.footer-links a{min-height:44px;align-items:center}
+.theme-control select{min-height:44px}
