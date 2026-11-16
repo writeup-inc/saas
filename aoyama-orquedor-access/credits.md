@@ -11,6 +11,8 @@
 - 同ビル入居施設 https://www.eri-clinic.com/access/ ：1a出口徒歩4分。同施設の7階はオルクドールの受付階として使わない。
 - ライヴェックス https://www.livex-inc.com/office_and/tokyo/3rd-minami-aoyama/ ：1a出口から表参道方面、南青山三丁目交差点通過の道順と現地写真。住所は建物管理者・サロン運営者の一次資料を優先。
 
+- ボルボ・カー・ジャパン https://www.volvocars.com/jp/l/studios/tokyo/ ：1階の目印「Volvo Studio Tokyo」の名称・所在地。公式発表 https://jp.volvocars.com/pressrelease/wp-content/uploads/2024/04/20240405_Volvo-Studio-Tokyo1%E5%91%A8%E5%B9%B4%E8%A8%98%E5%BF%B5%E3%80%8C1st-Aniversary-Spring-Festival%E3%80%8D%E3%82%92%E9%96%8B%E5%82%AC.pdf に1F・青山通り沿いと記載（2026-11-16確認）。サロンへの入館は現地の館内案内に従う旨を併記。
+
 ## 催し固有の未確認情報
 
 今回の講演会の受付階・日時・入口運用・受付連絡先は未提供。12階に固定せず、主催者の開催案内を優先する旨をファーストビューと本文に明記する。日本橋の9階乗り換え・32階・黒い扉等の説明は青山へ流用しない。
