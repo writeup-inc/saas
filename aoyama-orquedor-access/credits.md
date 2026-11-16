@@ -13,6 +13,8 @@
 
 - ボルボ・カー・ジャパン https://www.volvocars.com/jp/l/studios/tokyo/ ：1階の目印「Volvo Studio Tokyo」の名称・所在地。公式発表 https://jp.volvocars.com/pressrelease/wp-content/uploads/2024/04/20240405_Volvo-Studio-Tokyo1%E5%91%A8%E5%B9%B4%E8%A8%98%E5%BF%B5%E3%80%8C1st-Aniversary-Spring-Festival%E3%80%8D%E3%82%92%E9%96%8B%E5%82%AC.pdf に1F・青山通り沿いと記載（2026-11-16確認）。サロンへの入館は現地の館内案内に従う旨を併記。
 
+- `images/volvo-studio-tokyo-exterior.jpg`：ボルボ・カー・ジャパンの2023年4月5日公式プレスリリース掲載の実写外観写真。出典 https://jp.volvocars.com/pressrelease/2023-04-05/ 、元画像 https://jp.volvocars.com/pressrelease/wp-content/uploads/2023/04/Main_Volvo-Studio-Tokyo.jpg 。原寸ファイルを無加工で同梱し、ブラウザで表示範囲のみ調整。クリックで写真全体を開ける。写真直下に出典と公開年を明記し、展示車や装飾は現況と異なる場合がある旨を併記（2026-11-16確認）。
+
 ## 催し固有の未確認情報
 
 今回の講演会の受付階・日時・入口運用・受付連絡先は未提供。12階に固定せず、主催者の開催案内を優先する旨をファーストビューと本文に明記する。日本橋の9階乗り換え・32階・黒い扉等の説明は青山へ流用しない。
